@@ -11225,8 +11225,12 @@ class Client(OpenApiClient):
     ) -> main_models.GenerateFileImportTemplateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.field_selection_enabled):
+            query['FieldSelectionEnabled'] = request.field_selection_enabled
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.selected_field_names):
+            query['SelectedFieldNames'] = request.selected_field_names
         if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
         req = open_api_util_models.OpenApiRequest(
@@ -11255,8 +11259,12 @@ class Client(OpenApiClient):
     ) -> main_models.GenerateFileImportTemplateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.field_selection_enabled):
+            query['FieldSelectionEnabled'] = request.field_selection_enabled
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.selected_field_names):
+            query['SelectedFieldNames'] = request.selected_field_names
         if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
         req = open_api_util_models.OpenApiRequest(
@@ -22797,10 +22805,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.field_selection_enabled):
+            query['FieldSelectionEnabled'] = request.field_selection_enabled
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.password_initialization):
             query['PasswordInitialization'] = request.password_initialization
+        if not DaraCore.is_null(request.selected_field_names):
+            query['SelectedFieldNames'] = request.selected_field_names
         if not DaraCore.is_null(request.synchronization_scope_config):
             query['SynchronizationScopeConfig'] = request.synchronization_scope_config
         if not DaraCore.is_null(request.target_id):
@@ -22837,10 +22849,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.field_selection_enabled):
+            query['FieldSelectionEnabled'] = request.field_selection_enabled
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.password_initialization):
             query['PasswordInitialization'] = request.password_initialization
+        if not DaraCore.is_null(request.selected_field_names):
+            query['SelectedFieldNames'] = request.selected_field_names
         if not DaraCore.is_null(request.synchronization_scope_config):
             query['SynchronizationScopeConfig'] = request.synchronization_scope_config
         if not DaraCore.is_null(request.target_id):

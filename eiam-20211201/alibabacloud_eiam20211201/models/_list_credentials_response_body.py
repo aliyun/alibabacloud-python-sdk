@@ -18,13 +18,13 @@ class ListCredentialsResponseBody(DaraModel):
     ):
         # The list of credentials.
         self.credentials = credentials
-        # The maximum number of entries per page for paging.
+        # The maximum number of rows per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned in this call.
+        # The pagination token returned by this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -100,7 +100,7 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The creation time, in UNIX timestamp format. Unit: milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The credential content.
         self.credential_content = credential_content
@@ -108,6 +108,7 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         # - system_init: Created by the system.
         # - user_custom: Created by the user.
         self.credential_creation_type = credential_creation_type
+        # The external unique identifiers of the credentials.
         self.credential_external_id = credential_external_id
         # The credential ID.
         self.credential_id = credential_id
@@ -115,15 +116,18 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         self.credential_identifier = credential_identifier
         # The credential name.
         self.credential_name = credential_name
-        # The scenarios label of the credential. Valid values:
-        # - llm: large language model.
-        # - saas: third-party SaaS service.
+        # The usage scenario label of the credential. Valid values:
+        # - llm: Large language model.
+        # - saas: Third-party SaaS service.
         self.credential_scenario_label = credential_scenario_label
+        # The credential sharing scope. Valid values:
+        # - common: common
+        # - user_exclusive: account-exclusive
         self.credential_sharing_scope = credential_sharing_scope
-        # The subject ID to which the credential belongs.
+        # The subject ID of the credential.
         self.credential_subject_id = credential_subject_id
-        # The subject type to which the credential belongs. Valid values:
-        # - authentication_token_provider: authentication token provider.
+        # The subject type of the credential. Valid values:
+        # - authentication_token_provider: Authentication token provider.
         self.credential_subject_type = credential_subject_type
         # The credential type. Valid values:
         # - api_key: API key authentication credential.
@@ -131,6 +135,7 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         self.credential_type = credential_type
         # The credential description.
         self.description = description
+        # The exclusive user ID of the credential.
         self.exclusive_user_id = exclusive_user_id
         # The EIAM instance ID.
         self.instance_id = instance_id
@@ -138,7 +143,7 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         # - enabled: Enabled.
         # - diasbled: Disabled.
         self.status = status
-        # The update time, in UNIX timestamp format. Unit: milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -264,7 +269,7 @@ class ListCredentialsResponseBodyCredentialsCredentialContent(DaraModel):
         self,
         oauth_client_content: main_models.ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent = None,
     ):
-        # The credential content of the OAuth client authentication credential type.
+        # The credential content for the OAuth client authentication credential type.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -294,7 +299,7 @@ class ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent(
         self,
         client_id: str = None,
     ):
-        # The client_id of the OAuth protocol.
+        # The client ID of the OAuth protocol.
         self.client_id = client_id
 
     def validate(self):

@@ -11,8 +11,10 @@ class RunSynchronizationJobRequest(DaraModel):
     def __init__(
         self,
         description: str = None,
+        field_selection_enabled: bool = None,
         instance_id: str = None,
         password_initialization: bool = None,
+        selected_field_names: List[str] = None,
         synchronization_scope_config: main_models.RunSynchronizationJobRequestSynchronizationScopeConfig = None,
         target_id: str = None,
         target_type: str = None,
@@ -20,21 +22,26 @@ class RunSynchronizationJobRequest(DaraModel):
     ):
         # The description of the synchronization task.
         self.description = description
+        # Specifies whether field selection is enabled.
+        self.field_selection_enabled = field_selection_enabled
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether to initialize the password.
         self.password_initialization = password_initialization
+        # The selected fields.
+        self.selected_field_names = selected_field_names
         # The synchronization scope configuration.
         self.synchronization_scope_config = synchronization_scope_config
-        # The synchronization target ID.
+        # The ID of the synchronization target.
         # 
         # This parameter is required.
         self.target_id = target_id
-        # The synchronization target type. Valid values:
+        # The type of the synchronization target. Valid values:
         # 
         # - identity_provider: identity provider
+        # 
         # - application: application
         # 
         # This parameter is required.
@@ -54,11 +61,17 @@ class RunSynchronizationJobRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.field_selection_enabled is not None:
+            result['FieldSelectionEnabled'] = self.field_selection_enabled
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
         if self.password_initialization is not None:
             result['PasswordInitialization'] = self.password_initialization
+
+        if self.selected_field_names is not None:
+            result['SelectedFieldNames'] = self.selected_field_names
 
         if self.synchronization_scope_config is not None:
             result['SynchronizationScopeConfig'] = self.synchronization_scope_config.to_map()
@@ -79,11 +92,17 @@ class RunSynchronizationJobRequest(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('FieldSelectionEnabled') is not None:
+            self.field_selection_enabled = m.get('FieldSelectionEnabled')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
         if m.get('PasswordInitialization') is not None:
             self.password_initialization = m.get('PasswordInitialization')
+
+        if m.get('SelectedFieldNames') is not None:
+            self.selected_field_names = m.get('SelectedFieldNames')
 
         if m.get('SynchronizationScopeConfig') is not None:
             temp_model = main_models.RunSynchronizationJobRequestSynchronizationScopeConfig()

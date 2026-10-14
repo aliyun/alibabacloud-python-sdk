@@ -1,3 +1,11 @@
+2026-10-14 Version: 3.0.1
+- Update API GenerateFileImportTemplate: add request parameters FieldSelectionEnabled.
+- Update API GenerateFileImportTemplate: add request parameters SelectedFieldNames.
+- Update API ListSynchronizationJobs: add response parameters Body.SynchronizationJobs.$.Result.OrganizationalUnitStatistics.Exported.
+- Update API RunSynchronizationJob: add request parameters FieldSelectionEnabled.
+- Update API RunSynchronizationJob: add request parameters SelectedFieldNames.
+
+
 2026-10-13 Version: 3.0.0
 - Update API GetCloudAccount: delete response parameters Body.CloudAccount.CloudAccountRoleCreationType.
 

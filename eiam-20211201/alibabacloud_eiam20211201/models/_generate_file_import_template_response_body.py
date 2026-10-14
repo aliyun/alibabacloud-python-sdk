@@ -10,7 +10,7 @@ class GenerateFileImportTemplateResponseBody(DaraModel):
         file_download_url: str = None,
         request_id: str = None,
     ):
-        # The download URL of the template.
+        # The template download URL.
         self.file_download_url = file_download_url
         # The request ID.
         self.request_id = request_id
