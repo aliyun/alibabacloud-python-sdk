@@ -116,11 +116,11 @@ class DescribeKnowledgeBaseFilesResponseBodyItems(DaraModel):
         self.file_id = file_id
         # The file name.
         self.file_name = file_name
-        # The file size, in bytes.
+        # The file size in bytes.
         self.file_size = file_size
         # The file type.
         self.file_type = file_type
-        # Indicates whether the chunking strategy is inherited from the knowledge space.
+        # Indicates whether the knowledge space chunking strategy is inherited.
         self.inherit_space_strategy = inherit_space_strategy
         # The knowledge base ID.
         self.knowledge_base_id = knowledge_base_id
@@ -132,15 +132,19 @@ class DescribeKnowledgeBaseFilesResponseBodyItems(DaraModel):
         self.osspath = osspath
         # The number of shards.
         self.shard_count = shard_count
-        # The chunking strategy configuration currently in effect for the document. This value may be empty if the complete configuration was not saved for existing objects.
+        # The chunking strategy configuration currently in effect for the document. This value may be empty if the complete configuration was not saved for existing instances.
         self.sharding_strategy_config = sharding_strategy_config
         # The source type.
         self.source_type = source_type
         # The status.
         self.status = status
         # The update time.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.updated_at = updated_at
         # The upload time.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.upload_time = upload_time
 
     def validate(self):
@@ -353,7 +357,7 @@ class DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStra
     ):
         # The parameter list.
         self.parameters = parameters
-        # The chunking strategy type applied after a rule is matched.
+        # The chunking strategy type after a rule is matched.
         self.type = type
 
     def validate(self):

@@ -20,10 +20,9 @@ class DescribeHALogsRequest(DaraModel):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The node ID.
-        # 
-        # > 这是一个optional 字段，需要增加一个条件If specified,If specified, queries the high availability (HA) switchover records of `DBNodeId`. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the detailed information about all clusters under your account, including node IDs.
+        # > Queries the HA failover records of the specified DBNodeId. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including node IDs.
         self.dbnode_id = dbnode_id
-        # The end of the time range to query. The end time must be later than the start time. The time follows the `YYYY-MM-DDThh:mm:ssZ` format (UTC time).
+        # The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
         self.end_time = end_time
         # The log type.
         # 
@@ -31,9 +30,9 @@ class DescribeHALogsRequest(DaraModel):
         self.log_type = log_type
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 5 to 50. Default value: 10.
+        # The number of entries per page. Valid values: 5 to 50. Default value: 10.
         self.page_size = page_size
-        # The beginning of the time range to query. The time follows the `YYYY-MM-DDThh:mm:ssZ` format (UTC time).
+        # The start time of the query. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
         self.start_time = start_time
 
     def validate(self):

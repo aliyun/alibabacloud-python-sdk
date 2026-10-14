@@ -97,6 +97,8 @@ class SearchMemoriesResponseBodyResults(DaraModel):
         update_time: str = None,
     ):
         # The creation time.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The memory ID.
         self.id = id
@@ -111,6 +113,8 @@ class SearchMemoriesResponseBodyResults(DaraModel):
         # The score.
         self.score = score
         # The update time.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.update_time = update_time
 
     def validate(self):

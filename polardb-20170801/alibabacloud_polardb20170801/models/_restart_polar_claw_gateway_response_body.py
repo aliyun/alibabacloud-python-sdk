@@ -32,13 +32,13 @@ class RestartPolarClawGatewayResponseBody(DaraModel):
         self.message = message
         # The actual restart mode used.
         self.mode = mode
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.ok = ok
         # The operation name. This value is returned when Async is set to true.
         self.operation = operation
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the gateway has been confirmed available after the restart. This value is returned synchronously.
+        # Indicates whether the gateway is confirmed available after the restart. This value is returned synchronously.
         self.restarted = restarted
         # The initial state of the asynchronous task. This value is returned when Async is set to true.
         self.state = state

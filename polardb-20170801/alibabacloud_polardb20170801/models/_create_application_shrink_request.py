@@ -56,55 +56,53 @@ class CreateApplicationShrinkRequest(DaraModel):
         vpc_nat_gateway_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of an existing model operator instance to associate. This parameter takes effect only when ApplicationType is set to polarclaw.
+        # The ID of the existing model operator instance to associate. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.aidbcluster_id = aidbcluster_id
-        # The AgenticDB branch specification.
+        # The AgenticDB branch specifications.
         self.agentic_dbbranch_spec_shrink = agentic_dbbranch_spec_shrink
-        # The AgenticDB cluster ID.
+        # The ID of the AgenticDB cluster.
         self.agentic_dbcluster_id = agentic_dbcluster_id
         # The application type. Valid values:
-        # 
-        # - supabase: Set this value to create a managed Supabase application.
-        # - raycluster: Set this value to create a managed Ray Cluster application.
-        # - polarclaw: Set this value to create a managed PolarClaw application.
+        # - supabase: Specify this value to create a managed Supabase application.
+        # - raycluster: Specify this value to create a managed Ray Cluster application.
+        # - polarclaw: Specify this value to create a managed PolarClaw application.
         # 
         # This parameter is required.
         self.application_type = application_type
         # The CPU architecture. Valid values:
-        # 
         # - x86
         # 
         # This parameter is required.
         self.architecture = architecture
-        # The authentication service provider.
+        # The authentication provider.
         self.auth_provider = auth_provider
         # The authentication provider configuration.
         self.auth_provider_config = auth_provider_config
-        # Specifies whether to automatically create an elastic IP address (EIP) and associate it with the instance.
+        # Specifies if automatic creation is enabled and the instance will attach and associate with an EIP.
         self.auto_allocate_public_eip = auto_allocate_public_eip
-        # Specifies whether to enable automatic creation of a cold storage Polarlakebase. Valid values:
-        # * false (default): Automatic creation is disabled.
-        # * true: Automatic creation is enabled.
+        # Specifies whether to automatically create a Polarlakebase cold storage instance. Valid values:
+        # * false: Does not automatically create the instance. This is the default value.
+        # * true: Automatically creates the instance.
         self.auto_create_polar_fs = auto_create_polar_fs
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
         # Specifies whether to automatically use coupons. Valid values:
-        # * true (default): Use coupons.
-        # * false: Do not use coupons.
+        # - true: Uses coupons. This is the default value.
+        # - false: Does not use coupons.
         self.auto_use_coupon = auto_use_coupon
-        # The list of user-defined application subcomponents.
+        # The list of custom application subcomponents.
         self.components_shrink = components_shrink
-        # The instance ID of the PolarDB instance on which the application depends.
+        # The ID of the PolarDB instance on which the application depends.
         self.dbcluster_id = dbcluster_id
-        # The description of the application.
+        # The description or remark of the application.
         self.description = description
-        # The list of expected DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. This parameter can be left empty, which indicates that no DNAT entries are created.
+        # The expected list of DNAT entries for NAT mapping. This parameter must be specified together with VpcNatGatewayId. It can be left empty, which indicates that no DNAT entries are created.
         self.dnat_entries_shrink = dnat_entries_shrink
-        # The DNAT-dedicated NAT IP address allocated by the customer, which must be separate from the SNAT IP address. The IP address must belong to the specified gateway and be in an available state. The vSwitch where the gateway resides must be in a primary CIDR block reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: The customer has bound an SNAT entry to the vSwitch where the application resides.
+        # The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the NAT gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is associated with the vSwitch where the application resides.
         self.dnat_ip_address = dnat_ip_address
-        # Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed without actually creating the resource.
+        # Specifies whether to perform a dry run. Default value: `false`. If you set this parameter to `true`, the system only checks the parameters and resources without actually creating the resources.
         self.dry_run = dry_run
-        # The list of user-defined service endpoints. By default, a VPC endpoint is created.
+        # The list of custom service endpoints. By default, a VPC endpoint is created.
         self.endpoints_shrink = endpoints_shrink
         # Required for knowledge applications.
         self.knowledge_application_spec_shrink = knowledge_application_spec_shrink
@@ -112,47 +110,44 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.mem_application_spec_shrink = mem_application_spec_shrink
         # The model API. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_api = model_api
-        # The model API key. This parameter takes effect only when ApplicationType is set to polarclaw.
+        # The API key of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_api_key = model_api_key
-        # The model base URL. This parameter takes effect only when ApplicationType is set to polarclaw.
+        # The base URL of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_base_url = model_base_url
         # The model source. Valid values:
-        # 
-        # * bailian: Bailian model.
-        # * custom: Custom model.
-        # * maas: PolarDB model operator.
+        # * bailian: Model Studio models.
+        # * custom: Custom models.
+        # * maas: PolarDB model operators.
         self.model_from = model_from
         # The model name. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_name = model_name
         # The list of parameters.
         self.parameters_shrink = parameters_shrink
-        # The billing type.
+        # The billing method.
         self.pay_type = pay_type
-        # The subscription type (yearly or monthly).
+        # The subscription period unit.
         self.period = period
-        # The instance ID of the Polarlakebase cold storage or high-performance edition. Default value: empty. If specified, the corresponding storage is mounted to the application.
-        # 
-        # Currently, only the following applications support this parameter:
+        # The ID of the Polarlakebase cold storage or high-performance instance. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application. This parameter is supported only for the following applications:
         # - supabase
         # - raycluster
         self.polar_fsinstance_id = polar_fsinstance_id
         # The coupon code. If you do not specify this parameter, the default coupon is used.
         self.promotion_code = promotion_code
-        # The region. Default value: the region of the instance.
+        # The region ID. Default value: the region of the instance.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The name of the IP whitelist group. Default value: `default`.
+        # The name of the IP address whitelist group. Default value: `default`.
         self.security_iparray_name = security_iparray_name
-        # The IP whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+        # The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
         self.security_iplist = security_iplist
         # The type of the IP address.
         self.security_iptype = security_iptype
         # The skill template ID.
         self.skill_template_id = skill_template_id
-        # The list of application storages.
+        # The list of storage resources for the application.
         self.storages_shrink = storages_shrink
         # The tags.
         self.tag = tag
@@ -160,13 +155,13 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.target_version = target_version
         # The subscription duration.
         self.used_time = used_time
-        # The vSwitch. Default value: the vSwitch in the primary zone of the instance.
+        # The vSwitch ID. Default value: the current vSwitch in the primary zone of the instance.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in active status.
+        # NAT mapping: the user-created VPC NAT gateway ID. If you specify this parameter, NAT mapping is enabled when the instance is created. The NAT gateway must reside in the same VPC as the application, be of the private network (intranet) type, and be in the active state.
         self.vpc_nat_gateway_id = vpc_nat_gateway_id
-        # The zone. Default value: the primary zone of the instance.
+        # The zone ID. Default value: the primary zone of the instance.
         self.zone_id = zone_id
 
     def validate(self):

@@ -55,7 +55,9 @@ class CreateAIDBClusterApiKeyResponseBodyApiKey(DaraModel):
     ):
         # The API key for model serving.
         self.api_key = api_key
-        # The creation time.
+        # The time when the API key was created.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The description.
         self.description = description

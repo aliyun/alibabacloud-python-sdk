@@ -18,7 +18,7 @@ class UpgradePolarClawPluginResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The response status code.
+        # The HTTP status code.
         self.code = code
         # The response message.
         self.message = message
@@ -26,11 +26,11 @@ class UpgradePolarClawPluginResponseBody(DaraModel):
         self.npm_package = npm_package
         # Indicates whether the operation was successful.
         self.ok = ok
-        # The ID of the upgraded plugin.
+        # The ID of the upgraded plug-in.
         self.plugin_id = plugin_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the gateway restarted.
+        # Indicates whether the gateway was restarted.
         self.restarted = restarted
 
     def validate(self):

@@ -33,16 +33,18 @@ class DescribeKnowledgeSpaceAttributeResponseBody(DaraModel):
         total_size_bytes: int = None,
     ):
         # The access control list (ACL) mode of the knowledge space. Valid values:
-        # - DISABLED
-        # - ENFORCED
+        # - DISABLED: ACL is disabled.
+        # - ENFORCED: ACL is enforced.
         self.aclmode = aclmode
-        # The time when the knowledge space was created.
+        # The creation time.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
         # The ID of the PolarDB instance.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
         self.dbname = dbname
-        # The type of the database engine. Valid values:
+        # The database engine type. Valid values:
         # * MySQL
         # * PostgreSQL
         self.dbtype = dbtype
@@ -68,7 +70,7 @@ class DescribeKnowledgeSpaceAttributeResponseBody(DaraModel):
         self.rerank_model = rerank_model
         # The chunk size in tokens.
         self.shard_size = shard_size
-        # The default chunking strategy configuration of the knowledge space. This parameter may be empty if existing instances do not have the complete configuration saved.
+        # The default chunking strategy configuration of the knowledge space. This value may be empty if existing instances do not have a complete configuration saved.
         self.sharding_strategy_config = sharding_strategy_config
         # The instance status.
         self.status = status
@@ -319,7 +321,7 @@ class DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStra
     ):
         # The parameter details.
         self.parameters = parameters
-        # The chunking strategy type used when a rule is matched.
+        # The chunking strategy type used when the rule is matched.
         self.type = type
 
     def validate(self):

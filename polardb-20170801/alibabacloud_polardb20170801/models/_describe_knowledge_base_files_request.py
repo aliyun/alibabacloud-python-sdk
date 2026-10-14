@@ -16,15 +16,15 @@ class DescribeKnowledgeBaseFilesRequest(DaraModel):
         region_id: str = None,
         source_type: str = None,
     ):
-        # The list of file IDs, separated by commas (,).
+        # The list of file IDs, separated by commas.
         self.file_ids = file_ids
-        # The keyword used to filter file names.
+        # The keyword for the file name.
         self.keyword = keyword
-        # The unique ID of the knowledge base.
+        # The unique identifier of the knowledge base.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
-        # The unique ID of the synchronization link.
+        # The unique identifier of the synchronization link.
         self.link_id = link_id
         # The page number.
         self.page_number = page_number

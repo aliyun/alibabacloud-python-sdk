@@ -13,12 +13,19 @@ class DescribeAgenticDBTenantApiKeysRequest(DaraModel):
         region_id: str = None,
         tenant_name: str = None,
     ):
+        # The AgenticDB cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 30. Maximum value: 100.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Filters results by tenant name.
         self.tenant_name = tenant_name
 
     def validate(self):

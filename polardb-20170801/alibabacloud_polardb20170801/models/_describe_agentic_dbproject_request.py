@@ -12,12 +12,20 @@ class DescribeAgenticDBProjectRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
+        # The AgenticDB cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ID of the target project.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the tenant to which the project belongs.
+        # 
         # This parameter is required.
         self.tenant_id = tenant_id
 

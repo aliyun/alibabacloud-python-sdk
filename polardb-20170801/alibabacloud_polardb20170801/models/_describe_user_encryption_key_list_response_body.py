@@ -23,13 +23,13 @@ class DescribeUserEncryptionKeyListResponseBody(DaraModel):
         self.key_list = key_list
         # The page number.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The number of records on the current page.
         self.page_record_count = page_record_count
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):

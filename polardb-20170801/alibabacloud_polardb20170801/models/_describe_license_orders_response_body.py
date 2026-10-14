@@ -98,37 +98,35 @@ class DescribeLicenseOrdersResponseBodyItems(DaraModel):
     ):
         # The number of activation codes that have been generated.
         self.activated_code_count = activated_code_count
-        # The quota for requesting activation codes.
+        # The quota of activation codes that can be requested.
         self.activation_code_quota = activation_code_quota
         # The Alibaba Cloud order ID or virtual order ID.
         self.aliyun_order_id = aliyun_order_id
-        # Specifies whether the System Identifier can be left empty when an activation code is generated.
+        # Indicates whether the System Identifier field can be left empty when generating an activation code.
         self.allow_empty_system_identifier = allow_empty_system_identifier
-        # The database type, such as PG, Oracle, or MySQL.
+        # The database engine type, such as PG, Oracle, or MySQL.
         self.engine = engine
-        # The creation time.
+        # The time when the order was created.
         self.gmt_created = gmt_created
-        # The update time.
+        # The time when the order was last updated.
         self.gmt_modified = gmt_modified
-        # Indicates whether the order is a virtual order. Virtual orders allow for pre-generating activation codes.
+        # Indicates whether the order is a virtual order. Virtual orders allow pre-generation of activation codes.
         self.is_virtual_order = is_virtual_order
-        # Indicates whether the virtual order is frozen. No more activation codes can be generated from a frozen order.
+        # Indicates whether the virtual order is frozen. A frozen virtual order does not allow further generation of activation codes.
         self.is_virtual_order_frozen = is_virtual_order_frozen
         # The package type. Valid values:
         # 
-        # - single_node_subscribe: single node (subscription)
-        # 
-        # - single_node_long_term: single node (long-term)
-        # 
-        # - primary_backup_subscribe: primary/standby (subscription)
-        # 
-        # - primary_backup_long_term: primary/standby (long-term)
-        # 
-        # - pre_generation_long_term: pre-generated (long-term)
+        # - single_node_subscribe: single node (subscription).
+        # - single_node_long_term: single node (long-term).
+        # - primary_backup_subscribe: primary/secondary (subscription).
+        # - primary_backup_long_term: primary/secondary (long-term).
+        # - pre_generation_long_term: pre-generation (long-term).
         self.package_type = package_type
-        # The validity period of the package. Common options are one year or long-term (30 years).
+        # The validity period of the package. Typical values are one year or long-term (30 years).
         self.package_validity = package_validity
-        # The purchase channel. Valid values: \\`aliyun_market\\` (Alibaba Cloud Marketplace) and \\`aliyun_public\\` (standard purchase page).
+        # The purchase channel. Valid values:
+        # - aliyun_market: Alibaba Cloud Marketplace.
+        # - aliyun_public: standard purchase page.
         self.purchase_channel = purchase_channel
         # The virtual order ID.
         self.virtual_aliyun_order_id = virtual_aliyun_order_id

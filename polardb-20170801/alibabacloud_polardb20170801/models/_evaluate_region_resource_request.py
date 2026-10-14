@@ -22,89 +22,65 @@ class EvaluateRegionResourceRequest(DaraModel):
         sub_domain: str = None,
         zone_id: str = None,
     ):
-        # The link type of the cluster. The backend randomly selects a default value. Valid values:
-        # 
-        # - **lvs**: Linux Virtual Server.
-        # 
-        # - **proxy**: proxy server.
-        # 
-        # - **dns**: Domain Name System.
+        # The cluster link type. The backend randomly selects a default value. Valid values:
+        # * **lvs**: Linux virtual server.
+        # * **proxy**: proxy server.
+        # * **dns**: Domain Name System.
         self.dbinstance_conn_type = dbinstance_conn_type
-        # The node specifications. For more information, see the following documents:
+        # The node specification. For more information, see the following topics:
         # 
         # - PolarDB for MySQL: [Compute node specifications](https://help.aliyun.com/document_detail/102542.html).
-        # 
-        # - PolarDB for PostgreSQL (Oracle Compatible): [Compute node specifications](https://help.aliyun.com/document_detail/207921.html).
-        # 
+        # - PolarDB for PostgreSQL (Compatible with Oracle): [Compute node specifications](https://help.aliyun.com/document_detail/207921.html).
         # - PolarDB for PostgreSQL: [Compute node specifications](https://help.aliyun.com/document_detail/209380.html).
         # 
         # This parameter is required.
         self.dbnode_class = dbnode_class
-        # The database engine type. Valid values:
-        # 
+        # The type of the database engine. Valid values:
         # - **MySQL**
-        # 
         # - **PostgreSQL**
-        # 
         # - **Oracle**
         # 
         # This parameter is required.
         self.dbtype = dbtype
-        # The version of the database engine.
-        # 
-        # - Valid values for MySQL:
-        # 
-        #   - **5.6**
-        # 
-        #   - **5.7**
-        # 
-        #   - **8.0**
-        # 
-        # - Valid values for PostgreSQL:
-        # 
-        #   - **11**
-        # 
-        #   - **14**
-        # 
-        # - Valid values for Oracle:
-        # 
-        #   - **11**
-        # 
-        #   - **14**
+        # The database DPI engine version number.
+        # * Valid version numbers for MySQL: 
+        #     * **5.6**
+        #     * **5.7**
+        #     * **8.0**
+        # * Valid version numbers for PostgreSQL:
+        #     * **11**
+        #     * **14**
+        # * Valid version numbers for Oracle:
+        #     * **11**
+        #     * **14**
         # 
         # This parameter is required.
         self.dbversion = dbversion
         # Specifies whether to return the list of zones that support single-zone deployment. Valid values:
-        # 
-        # - **0** (default): The list is not returned.
-        # 
-        # - **1**: The list is returned.
+        # * **0** (default): does not return the list.
+        # * **1**: returns the list.
         self.dispense_mode = dispense_mode
-        # Specifies whether to create a MaxScale cluster. Valid values:
-        # 
-        # - **true** (default): A MaxScale cluster is created.
-        # 
-        # - **false**: A MaxScale cluster is not created.
+        # Specifies whether to create MaxScale. Valid values:
+        # * **true** (default): creates MaxScale.
+        # * **false**: does not create MaxScale.
         # 
         # This parameter is required.
         self.need_max_scale_link = need_max_scale_link
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
-        # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The subdomain. A subdomain is a level below a top-level domain. For example, if the parent domain is \\`cn-beijing\\`, a valid subdomain is \\`cn-beijing-i-aliyun\\`.
+        # The subdomain. The subdomain is the next level under the top-level domain (first-level domain or parent domain). For example, if the parent domain is cn-beijing, the subdomain can be cn-beijing-i-aliyun.
         self.sub_domain = sub_domain
         # The zone ID.
-        # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available zones.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
         # 
         # This parameter is required.
         self.zone_id = zone_id

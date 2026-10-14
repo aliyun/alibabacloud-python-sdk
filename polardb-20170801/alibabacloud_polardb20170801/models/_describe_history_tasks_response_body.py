@@ -16,15 +16,15 @@ class DescribeHistoryTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of tasks.
+        # The task list.
         self.items = items
-        # The page number of the query result.
+        # The page number of the query results.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of tasks that meet the conditions, regardless of paging factors.
+        # The total number of tasks that meet the filter conditions, regardless of pagination.
         self.total_count = total_count
 
     def validate(self):
@@ -105,21 +105,21 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
     ):
         # The allowed operation information.
         # 
-        # > This feature is not supported yet.
+        # > This feature is not supported.
         self.action_info = action_info
         # The request source. Valid values:
-        # 
-        # - **System**: system
-        # 
-        # - **User**: user
+        # * **System**: system.
+        # * **User**: user.
         self.caller_source = caller_source
-        # The ID of the requesting user. If `CallerSource` is `User`, this is the user\\"s UID.
+        # The ID of the requesting user. When CallerSource is set to User, this value represents the user UID.
         self.caller_uid = caller_uid
-        # The name of the current step being executed. If this parameter is empty, the task has not started.
+        # The name of the current step being executed. An empty value indicates that the task has not started.
         self.current_step_name = current_step_name
         # The database type.
         self.db_type = db_type
-        # The end time of the task.
+        # The task end time.
+        # 
+        # The time is in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
         # The resource ID.
         self.instance_id = instance_id
@@ -129,33 +129,29 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         self.instance_type = instance_type
         # The product.
         self.product = product
-        # The completion progress of the task, from 0.0 to 100.0.
+        # The current progress.
         self.progress = progress
-        # The reason for initiating the current task.
+        # The reason why the current task was initiated.
         self.reason_code = reason_code
         # The region ID.
         self.region_id = region_id
-        # The estimated remaining execution time, in seconds (s).
+        # The estimated remaining execution duration. Unit: seconds.
         # 
-        # > This value is for reference only. The actual execution time prevails.
+        # > This value is for reference only. The actual execution duration may vary.
         self.remain_time = remain_time
-        # The start time of the task.
+        # The task start time.
+        # 
+        # The time is in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
-        # The final status of the task.
+        # The task status.
         # 
-        # - Scheduled: waiting for execution
-        # 
-        # - Running: executing
-        # 
-        # - Succeed: executed successfully
-        # 
-        # - Failed: execution failed
-        # 
-        # - Cancelling: stopping
-        # 
-        # - Canceled: stopped
-        # 
-        # - Waiting: waiting for preset time
+        # * Scheduled: Waiting for execution.
+        # * Running: Running.
+        # * Succeed: Succeeded.
+        # * Failed: Failed.
+        # * Cancelling: Being canceled.
+        # * Canceled: Canceled.
+        # * Waiting: Waiting for the scheduled time.
         self.status = status
         # The task details.
         self.task_detail = task_detail
@@ -163,7 +159,7 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         self.task_id = task_id
         # The task type.
         self.task_type = task_type
-        # The UID of the account that owns the resource.
+        # The ID of the user to whom the resource belongs.
         self.uid = uid
 
     def validate(self):

@@ -16,10 +16,15 @@ class DescribeAgenticDBTenantApiKeysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of API keys.
         self.items = items
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -86,13 +91,25 @@ class DescribeAgenticDBTenantApiKeysResponseBodyItems(DaraModel):
         tenant_id: str = None,
         tenant_name: str = None,
     ):
+        # The resource ID of the API key.
         self.api_key_id = api_key_id
+        # The masked API key value.
         self.api_key_masked = api_key_masked
+        # The time when the API key was created.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
+        # The description of the API key.
         self.description = description
+        # The time when the API key expires.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
+        # The status of the API key.
         self.status = status
+        # The ID of the tenant to which the API key belongs.
         self.tenant_id = tenant_id
+        # The name of the tenant to which the API key belongs.
         self.tenant_name = tenant_name
 
     def validate(self):

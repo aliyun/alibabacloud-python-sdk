@@ -13,7 +13,7 @@ class CreateOrGetVirtualLicenseOrderRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The type of the engine. Valid values: PG, Oracle, and MySQL.
+        # The engine type. Valid values: PG, Oracle, and MySQL.
         # 
         # This parameter is required.
         self.engine = engine

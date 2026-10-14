@@ -22,7 +22,7 @@ class DeleteAgenticDBComputeClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The project ID to which the resource belongs.
+        # The project ID.
         self.project_id = project_id
         # The region ID.
         # 

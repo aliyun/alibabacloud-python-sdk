@@ -17,7 +17,7 @@ class SearchMemoriesRequest(DaraModel):
         query: str = None,
         top_k: str = None,
     ):
-        # The application ID.
+        # The application ID. Example: pa-**************.
         # 
         # This parameter is required.
         self.application_id = application_id

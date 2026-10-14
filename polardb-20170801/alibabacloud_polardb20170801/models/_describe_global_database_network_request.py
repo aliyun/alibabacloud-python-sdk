@@ -15,7 +15,7 @@ class DescribeGlobalDatabaseNetworkRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the Global Database Network (GDN).
+        # GDN ID。
         # 
         # This parameter is required.
         self.gdnid = gdnid

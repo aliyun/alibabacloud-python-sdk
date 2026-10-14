@@ -31,7 +31,6 @@ class CreateKnowledgeBaseRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         # The search mode. Valid values:
-        # 
         # * balanced (default): balanced mode
         # * precise: precise mode
         # * semantic: semantic mode

@@ -22,7 +22,7 @@ class DescribeAgenticDBClustersResponseBody(DaraModel):
         self.items = items
         # The maximum number of entries to return. Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call. If there is no next query, do not pass this parameter.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call. If there is no next query, do not specify this parameter.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
@@ -139,6 +139,8 @@ class DescribeAgenticDBClustersResponseBodyItems(DaraModel):
         # - **NormalMultimaster**: Multi-master Cluster (Database/Table)
         self.category = category
         # The time when the cluster was created.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The cluster description.
         self.dbcluster_description = dbcluster_description
@@ -152,6 +154,8 @@ class DescribeAgenticDBClustersResponseBodyItems(DaraModel):
         self.dbversion = dbversion
         # The expiration time of the cluster.
         # > A specific value is returned only for clusters whose billing method is **Prepaid** (subscription). An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
         # 
@@ -164,8 +168,8 @@ class DescribeAgenticDBClustersResponseBodyItems(DaraModel):
         # The lock status of the cluster. Valid values: 
         # 
         # - **Unlock**: Normal. 
-        # - **ManualLock**: Manually locked. 
-        # - **LockByExpiration**: Automatically locked due to cluster expiration.
+        # - **ManualLock**: manually locked. 
+        # - **LockByExpiration**: automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
         # The billing method. Valid values: 
         # 
@@ -178,7 +182,7 @@ class DescribeAgenticDBClustersResponseBodyItems(DaraModel):
         self.scale_max = scale_max
         # The minimum value: 0 to 32 PCUs. The minimum value must be less than or equal to the maximum value. Unit: PCU.
         self.scale_min = scale_min
-        # The serverless type. A value of **AgileServerless** indicates that the cluster is a serverless cluster.
+        # The serverless type. A return value of **AgileServerless** indicates that the cluster is a serverless cluster.
         self.serverless_type = serverless_type
         # The storage type. Valid values:
         # * **essdpl0**
@@ -188,7 +192,7 @@ class DescribeAgenticDBClustersResponseBodyItems(DaraModel):
         self.storage_type = storage_type
         # The storage usage of the cluster. Unit: bytes.
         self.storage_used = storage_used
-        # The tag key. You can filter the cluster list by tag. You can specify up to 20 tag pairs. The number n for each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key corresponds to Tag.n.Value.
+        # The tag key. You can use tags to filter clusters. You can specify up to 20 tags. The number n for each tag pair must be unique and must be a consecutive integer that starts from 1. The Tag.n.Key parameter is paired with the Tag.n.Value parameter.
         self.tags = tags
         # The ID of the virtual private cloud (VPC) in which the endpoint resides.
         self.vpc_id = vpc_id

@@ -14,7 +14,7 @@ class DescribeKnowledgeBasesRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The keyword for searching knowledge bases.
+        # The keyword used to filter knowledge bases.
         self.keyword = keyword
         # The unique identifier of the knowledge space.
         self.knowledge_space_id = knowledge_space_id

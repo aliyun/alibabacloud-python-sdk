@@ -15,14 +15,15 @@ class DescribeAgenticDBBranchLineageRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The anchor branch ID. If this parameter is not specified, the primary branch of the project is used by default.
+        # The ID of the anchor branch. If this parameter is not specified, the primary branch of the project is used by default.
         self.branch_id = branch_id
-        # The AgenticDB cluster ID.
+        # The ID of the AgenticDB cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to include branches in the Destroying state. Default value: false.
         self.include_destroying = include_destroying
+        # The maximum number of levels to return in the view, including the anchor branch itself. Valid values: 1 to 20. Default value: 3. The server automatically allocates the budget for ancestor and descendant levels with a downward bias.
         self.max_view_depth = max_view_depth
         # The project ID.
         # 

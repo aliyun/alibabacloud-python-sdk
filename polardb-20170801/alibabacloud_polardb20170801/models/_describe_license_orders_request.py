@@ -18,27 +18,24 @@ class DescribeLicenseOrdersRequest(DaraModel):
         resource_owner_id: int = None,
         virtual_order: bool = None,
     ):
-        # The Alibaba Cloud order ID. This can be a virtual order ID.
+        # The Alibaba Cloud order ID, including virtual order IDs.
         self.aliyun_order_id = aliyun_order_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The package type. Valid values:
-        # 
-        # - single_node_subscribe: single node (subscription)
-        # 
-        # - single_node_long_term: single node (long-term)
-        # 
-        # - primary_backup_subscribe: primary/standby (subscription)
-        # 
-        # - primary_backup_long_term: primary/standby (long-term)
-        # 
-        # - pre_generation_long_term: pre-generated (long-term)
+        # - single_node_subscribe: single node (subscription).
+        # - single_node_long_term: single node (long-term).
+        # - primary_backup_subscribe: primary/secondary (subscription).
+        # - primary_backup_long_term: primary/secondary (long-term).
+        # - pre_generation_long_term: pre-generation (long-term).
         self.package_type = package_type
-        # The page number to query.
+        # The page number of the page to return.
         self.page_number = page_number
-        # The number of records to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The purchase channel. Valid values: \\`aliyun_market\\` (Alibaba Cloud Marketplace) and \\`aliyun_public\\` (standard purchase page).
+        # The purchase channel. Valid values:
+        # - aliyun_market: Alibaba Cloud Marketplace.
+        # - aliyun_public: standard purchase page.
         self.purchase_channel = purchase_channel
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

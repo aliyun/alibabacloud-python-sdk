@@ -60,6 +60,8 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         # The API key.
         self.api_key = api_key
         # The time when the cluster was created.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
         # The custom model OSS path currently used by the instance.
         self.custom_oss_path = custom_oss_path
@@ -91,11 +93,13 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         self.dedicated_host_model = dedicated_host_model
         # The security group ID.
         self.ecs_security_group_id = ecs_security_group_id
-        # The list of network connection addresses of the instance.
+        # The list of network endpoints of the instance.
         self.endpoint_list = endpoint_list
         # The expiration time of the cluster.
         # 
-        # > Only clusters whose billing method is **Prepaid** (subscription) return a specific value. **Postpaid** (pay-as-you-go) clusters return an empty value.
+        # > Only clusters with the billing method of **Prepaid** (subscription) return a specific value. **Postpaid** (pay-as-you-go) clusters return an empty value.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
         # 
@@ -111,7 +115,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         self.kvcache_instance_id = kvcache_instance_id
         # The ACK cluster ID.
         self.kube_cluster_id = kube_cluster_id
-        # The lock mode of the instance. The value **lock** indicates that the instance is automatically expired or has an overdue payment.
+        # The lock mode of the instance. The value is **lock**, which indicates that the instance is automatically expired or has an overdue payment.
         self.lock_mode = lock_mode
         # The maximum number of requests per minute.
         self.max_qpm = max_qpm
@@ -468,7 +472,7 @@ class DescribeAIDBClusterAttributeResponseBodyVolumes(DaraModel):
     ):
         # The mount path inside the container.
         self.mount_path = mount_path
-        # The cloud disk name.
+        # The disk name.
         self.name = name
         # The storage size.
         self.size_gb = size_gb
@@ -764,9 +768,9 @@ class DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems(DaraModel
         net_type: str = None,
         port: str = None,
     ):
-        # The database connection address.
+        # The database endpoint.
         self.connection_string = connection_string
-        # The network type of the connection string. Valid values:
+        # The network type of the endpoint. Valid values:
         # * **Public**: public endpoint
         # * **Private**: private endpoint
         # * **Inner**: private endpoint (classic network)
@@ -832,6 +836,8 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         # The number of CPU cores of the node.
         self.cpu_cores = cpu_cores
         # The creation time.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
         # The cluster specifications.
         self.dbnode_class = dbnode_class
@@ -862,7 +868,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         self.public_ip = public_ip
         # The supported APIs.
         self.supported_apis = supported_apis
-        # The ID of the Kubernetes virtual node.
+        # The Kubernetes virtual node ID.
         self.vnode_id = vnode_id
         # The VPC ID.
         self.vpcid = vpcid
@@ -1069,9 +1075,9 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes(DaraModel):
     ):
         # The actual mount path.
         self.mount_path = mount_path
-        # The cloud disk name.
+        # The disk name.
         self.name = name
-        # The size of the storage cloud disk.
+        # The storage disk size.
         self.size_gb = size_gb
         # The storage type.
         self.storage_category = storage_category

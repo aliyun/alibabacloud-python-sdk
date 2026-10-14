@@ -22,14 +22,14 @@ class DescribeModelApisRequest(DaraModel):
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The model API IDs.
+        # The IDs of the model APIs.
         self.model_api_ids = model_api_ids
-        # The model category. Valid values:
+        # The category. Valid values:
         # * **text**
         # * **embedding**
         # * **rerank**
         self.model_category = model_category
-        # The model API name.
+        # The name of the model API.
         self.name = name
         # The page number.
         self.page_number = page_number
@@ -37,7 +37,6 @@ class DescribeModelApisRequest(DaraModel):
         # * **30**
         # * **50**
         # * **100**
-        # 
         # Default value: **30**.
         self.page_size = page_size
         # The API path prefix.
@@ -51,7 +50,7 @@ class DescribeModelApisRequest(DaraModel):
         self.protocol = protocol
         # The region ID.
         self.region_id = region_id
-        # The model API status.
+        # The status of the model API.
         self.status = status
 
     def validate(self):

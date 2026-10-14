@@ -23,13 +23,13 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
     ):
         # The cluster engine.
         self.engine = engine
-        # The database engine version.
+        # The DPI engine version.
         self.engine_version = engine_version
         # The cluster endpoint details.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The total number of records on the current page.
+        # The total number of records on the page.
         self.page_record_count = page_record_count
         # The number of records per page.
         self.page_size = page_size
@@ -146,12 +146,16 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         tune_arch: str = None,
     ):
         # The task completion time.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.completed_time = completed_time
         # The creation time.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The node description.
         self.dbnode_description = dbnode_description
-        # The template operator instance ID.
+        # The model operator instance ID.
         self.dbnode_id = dbnode_id
         # The instance status. This parameter may not be returned.
         self.dbnode_status = dbnode_status
@@ -161,7 +165,7 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         self.data_zone_id = data_zone_id
         # The cluster engine.
         self.engine = engine
-        # The database engine version.
+        # The DPI engine version.
         self.engine_version = engine_version
         # The model name.
         self.model_name = model_name
@@ -169,15 +173,17 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         self.model_path = model_path
         # The model source.
         self.model_source = model_source
-        # The running parameters.
+        # The runtime parameters.
         self.running_times = running_times
         # The task start time.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
         # The mode.
         self.train_mode = train_mode
         # The type.
         self.train_type = train_type
-        # The tuning framework.
+        # The fine-tuning framework.
         self.tune_arch = tune_arch
 
     def validate(self):

@@ -31,7 +31,7 @@ class DescribeAgenticDBProjectsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tenant ID to which the project belongs.
+        # The ID of the tenant to which the project belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

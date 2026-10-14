@@ -59,7 +59,7 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
     ):
         # The acceleration type.
         self.accelerate_type = accelerate_type
-        # The acceleration storage space, in GB.
+        # The acceleration storage space. Unit: GB.
         self.accelerated_storage_space = accelerated_storage_space
         # Indicates whether the acceleration cache is enabled. Valid values:
         # - **ON**: Enabled.
@@ -69,9 +69,9 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.authorized_user_arn_ids = authorized_user_arn_ids
         # The list of authorized UIDs, separated by commas.
         self.authorized_user_ids = authorized_user_ids
-        # The bandwidth, in MB/s.
+        # The bandwidth. Unit: MB/s.
         self.bandwidth = bandwidth
-        # The bandwidth baseline, in MB/s/TiB.
+        # The bandwidth baseline. Unit: MB/s/TiB.
         self.bandwidth_base_line = bandwidth_base_line
         # The bucket ID.
         self.bucket_id = bucket_id
@@ -86,6 +86,8 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         # The client download URL.
         self.client_download_path = client_download_path
         # The creation time.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The custom bucket path.
         self.custom_bucket_path = custom_bucket_path
@@ -97,11 +99,13 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         # * **MySQL**
         # * **PostgreSQL**
         self.dbtype = dbtype
-        # The list of endpoints, including endpoint information for NAS, S3Gateway, and other types.
+        # The list of endpoints, including endpoint information for types such as NAS and S3Gateway.
         self.endpoint_items = endpoint_items
         # The expiration time of the cluster.
         # 
         # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription). An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
         # Indicates whether the cluster has expired.
         # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription).
@@ -116,13 +120,13 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.lock_mode = lock_mode
         # The proxy endpoint ID.
         self.maxscale_endpoint_id = maxscale_endpoint_id
-        # The metadata service cluster endpoint.
+        # The cluster endpoint of the metadata service.
         self.meta_conn_string = meta_conn_string
         # The metadata instance name.
         self.meta_instance_name = meta_instance_name
-        # The metadata proxy service cluster endpoint.
+        # The cluster endpoint of the metadata proxy service.
         self.meta_mxs_conn_string = meta_mxs_conn_string
-        # The metadata address for Fuse mount (encrypted).
+        # The metadata address for Fuse mounting (encrypted).
         self.meta_url = meta_url
         # The minor version of the instance.
         self.minor_version = minor_version
@@ -140,8 +144,8 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         # The Polarlakebase instance status.
         self.polar_fs_status = polar_fs_status
         # The instance version. Valid values:
-        # - **PolarFS 2.0**: 2.0
-        # - **PolarFS 1.0**: 1.0
+        # - **PolarFS 2.0**: 2.0.
+        # - **PolarFS 1.0**: 1.0.
         self.polar_fs_type = polar_fs_type
         # The version.
         self.polar_fs_version = polar_fs_version
@@ -155,16 +159,16 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The managed security group ID.
         self.security_group_id = security_group_id
-        # The storage space, in GB.
+        # The storage space. Unit: GB.
         self.storage_space = storage_space
-        # The storage type for the High-performance Edition. Valid values:
+        # Storage types for the High-performance Edition. Valid values:
         # * **ESSDPL1**
         # * **ESSDPL0**
         # 
-        # The storage type for the Basic Edition. Valid values:
-        # * **city_redundancy**: cross-zone redundancy.
+        # Storage types for the Basic Edition. Valid values:
+        # * **city_redundancy**: zone-redundant storage.
         self.storage_type = storage_type
-        # The storage usage, in bytes.
+        # The used storage space. Unit: bytes.
         self.storage_used = storage_used
         # The default user account name for S3 Gateway.
         self.user_default_acc_name = user_default_acc_name
@@ -597,7 +601,7 @@ class DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The endpoint of the protocol connection.
+        # The protocol endpoint.
         self.connection_string = connection_string
         # The IP address.
         self.ipaddress = ipaddress

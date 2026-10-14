@@ -25,7 +25,7 @@ class CreateAgenticDBTenantApiKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tenant name. The name must be unique within the cluster and contain 2 to 64 characters.
+        # The tenant name. The name must be unique within the cluster and must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.tenant_name = tenant_name

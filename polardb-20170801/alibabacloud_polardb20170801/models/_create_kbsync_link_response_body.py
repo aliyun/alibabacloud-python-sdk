@@ -20,11 +20,9 @@ class CreateKBSyncLinkResponseBody(DaraModel):
     ):
         # The client ID.
         self.client_id = client_id
-        # The time when the synchronization link was created.
-        # 
-        # The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time. The time is in ISO 8601 format and the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
-        # The description of the synchronization link.
+        # The description of the link.
         self.description = description
         # The source channel of the synchronization link. Valid values:
         # - FEISHU 
@@ -32,13 +30,13 @@ class CreateKBSyncLinkResponseBody(DaraModel):
         self.im_platform = im_platform
         # The ID of the synchronization link.
         self.link_id = link_id
-        # The name of the synchronization link.
+        # The name of the link.
         self.link_name = link_name
         # Id of the request
         self.request_id = request_id
-        # The directory address of the synchronization source.
+        # The source directory address for synchronization.
         self.source_dir = source_dir
-        # The synchronization interval. Unit: minutes.
+        # The synchronization interval, in minutes.
         self.sync_interval_minutes = sync_interval_minutes
         # The synchronization status. Valid values:
         # - CREATING

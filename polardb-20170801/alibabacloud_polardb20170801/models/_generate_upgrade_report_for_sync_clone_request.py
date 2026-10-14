@@ -20,51 +20,42 @@ class GenerateUpgradeReportForSyncCloneRequest(DaraModel):
         resource_owner_id: int = None,
         source_dbcluster_id: str = None,
     ):
-        # The product series. Valid values:
+        # The edition of the cluster. Valid values:
+        # * **Normal**: Cluster Edition (default)
+        # * **SENormal**: Standard Edition
         # 
-        # - **Normal**: Cluster Edition (default)
-        # 
-        # - **SENormal**: Standard Edition
-        # 
-        # See [Product series](https://help.aliyun.com/document_detail/183258.html).
+        # For more information about cluster editions, see [Product editions](https://help.aliyun.com/document_detail/183258.html).
         self.creation_category = creation_category
-        # The creation method. Valid values:
+        # The creation pattern. Valid values: 
         # 
-        # - **MigrationFromRDS**: Migrate data from an existing RDS instance to a new PolarDB cluster. The created PolarDB cluster is in read-only mode and has binary logging enabled by default. For operations in the console, see [Upgrade an ApsaraDB RDS for MySQL instance to PolarDB for MySQL](https://help.aliyun.com/document_detail/121582.html).
+        # * **MigrationFromRDS**: migrates data from an existing ApsaraDB RDS instance to a new PolarDB cluster. The created PolarDB cluster is in read-only mode and has binary logging enabled by default. For more information about the console operation, see [Upgrade an ApsaraDB RDS for MySQL instance to a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/121582.html).
         # 
-        # - **UpgradeFromPolarDB**: Upgrade and migrate data from a PolarDB cluster. See [Upgrade the major version](https://help.aliyun.com/document_detail/459712.html).
+        # * **UpgradeFromPolarDB**: performs instance migration from PolarDB. For more information about the console operation, see [Major engine version upgrade](https://help.aliyun.com/document_detail/459712.html).
         self.creation_option = creation_option
         # The name of the database. You can specify only one database name.
         # 
-        # > This parameter is supported only for PolarDB for PostgreSQL (Oracle Compatible) clusters.
+        # > Only PolarDB for PostgreSQL (Compatible with Oracle) clusters support this parameter.
         self.dbname = dbname
         # The type of the database engine. Valid values:
-        # 
         # - **MySQL**
-        # 
         # - **Oracle**
         self.dbtype = dbtype
-        # The version of the destination database engine.
-        # 
-        # - Valid values for MySQL:
-        # 
-        #   - **5.6**
-        # 
-        #   - **5.7**
-        # 
-        #   - **8.0**
-        # 
-        # - Valid value for Oracle: **14**.
+        # The version number of the destination database DPI engine.
+        # * Valid values for MySQL: 
+        #     * **5.6**
+        #     * **5.7**
+        #     * **8.0**
+        # * Valid value for Oracle: **14**.
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
         self.region_id = region_id
-        # A reserved parameter in the JSON string format.
+        # The reserved parameter. The value is a JSON string.
         self.reserve = reserve
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the source instance.
+        # The source instance ID.
         self.source_dbcluster_id = source_dbcluster_id
 
     def validate(self):

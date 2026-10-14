@@ -11,9 +11,9 @@ class GenerateUpgradeReportForSyncCloneResponseBody(DaraModel):
         source_dbcluster_id: str = None,
         task_id: int = None,
     ):
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The ID of the source instance.
+        # The source instance ID.
         self.source_dbcluster_id = source_dbcluster_id
         # The ID of the asynchronous task.
         self.task_id = task_id

@@ -14,11 +14,13 @@ class DeleteAccountZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The account name.
+        # The name of the account.
         # 
         # This parameter is required.
         self.account_name = account_name
         # The cluster ID.
+        # 
+        # > Note: This parameter accepts only the ID of a PolarDB on ENS cluster (CloudProvider=ENS). For standard cloud clusters, use the DeleteAccount API. You can call the DescribeDBClustersZonal operation to query existing PolarDB on ENS clusters.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

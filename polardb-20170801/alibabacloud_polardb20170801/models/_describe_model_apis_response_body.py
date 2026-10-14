@@ -21,15 +21,15 @@ class DescribeModelApisResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The number of entries per page. Valid values: **30**, **50**, or **100**.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**.
         # 
         # Default value: **30**.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -105,17 +105,18 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         route_rules: str = None,
         status: str = None,
     ):
-        # The model category. Valid values:
+        # The category. Valid values:
         # * **text**
         # * **embedding**
         # * **rerank**
         self.category = category
+        # The gateway retry configuration.
         self.config = config
         # The creation time.
         self.gmt_created = gmt_created
-        # The model API IDs.
+        # The IDs of the model APIs.
         self.model_api_id = model_api_id
-        # The model API name.
+        # The name of the model API.
         self.name = name
         # The API path prefix.
         self.path_prefix = path_prefix
@@ -126,13 +127,13 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         # * **bailian**
         # * **vllm**
         self.protocol = protocol
-        # The number of input tokens.
+        # The number of input points.
         self.record_input = record_input
-        # The number of output tokens.
+        # The number of output points.
         self.record_output = record_output
-        # The routing rules list (JSON array string).
+        # The list of routing rules, formatted as a JSON array string.
         self.route_rules = route_rules
-        # The model API status.
+        # The status of the model API.
         self.status = status
 
     def validate(self):

@@ -22,19 +22,16 @@ class DescribeUpgradeReportRequest(DaraModel):
         task_id: str = None,
         type: str = None,
     ):
-        # The product series. Valid values:
+        # The edition. Valid values:
+        # * **Normal**: Cluster Edition (default).
+        # * **SENormal**: Standard Edition.
         # 
-        # - **Normal**: Cluster Edition (default)
-        # 
-        # - **SENormal**: Standard Edition
-        # 
-        # For more information, see [Product series](https://help.aliyun.com/document_detail/183258.html).
+        # For more information about editions, see [Product editions](https://help.aliyun.com/document_detail/183258.html).
         self.creation_category = creation_category
         # The database type. Valid values:
         # 
-        # - **MySQL**
-        # 
-        # - **Oracle**
+        # - **MySQL**.
+        # - **Oracle**.
         self.dbtype = dbtype
         # The compatible database version.
         self.dbversion = dbversion
@@ -44,19 +41,18 @@ class DescribeUpgradeReportRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the region.
-        # 
-        # > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
+        # The region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the source instance.
+        # The source instance ID.
         self.source_dbcluster_id = source_dbcluster_id
         # The task status.
         self.status = status
         # The task ID.
         self.task_id = task_id
-        # A special metric. This parameter is supported only for instances that use the Tair architecture.
+        # The special metric. Currently, only tair (PolarTair architecture) is supported.
         self.type = type
 
     def validate(self):

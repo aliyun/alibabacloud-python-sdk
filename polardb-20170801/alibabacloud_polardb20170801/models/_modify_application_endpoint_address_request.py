@@ -31,7 +31,7 @@ class ModifyApplicationEndpointAddressRequest(DaraModel):
         # 
         # This parameter is required.
         self.net_type = net_type
-        # The new endpoint prefix.
+        # The new endpoint address prefix.
         self.new_connection_string_prefix = new_connection_string_prefix
         # The list of new ports.
         self.new_ports = new_ports

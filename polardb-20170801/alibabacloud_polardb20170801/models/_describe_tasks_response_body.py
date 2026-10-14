@@ -19,20 +19,24 @@ class DescribeTasksResponseBody(DaraModel):
         tasks: main_models.DescribeTasksResponseBodyTasks = None,
         total_record_count: int = None,
     ):
-        # The ID of the cluster to which the task belongs.
+        # The cluster ID associated with the task.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query.
+        # The end time of the query.
+        # 
+        # The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mmZ).
         self.end_time = end_time
         # The page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of records on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range to query.
+        # The start time of the query.
+        # 
+        # The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mmZ).
         self.start_time = start_time
         self.tasks = tasks
-        # The total number of entries returned.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):

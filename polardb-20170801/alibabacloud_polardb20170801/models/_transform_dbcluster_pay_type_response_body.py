@@ -23,6 +23,8 @@ class TransformDBClusterPayTypeResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The expiration time of the instance.
         # > This response parameter is returned only when **PayType** is set to **Prepaid**.
+        # 
+        # The time follows the ISO 8601 standard in the format of YYYY-MM-DDTHH:mm:ssZ. The time is displayed in UTC.
         self.expired_time = expired_time
         # The order ID.
         self.order_id = order_id

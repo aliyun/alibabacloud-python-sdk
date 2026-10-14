@@ -19,6 +19,8 @@ class CreateAgenticDBProjectResponseBody(DaraModel):
         # The ID of the compute instance associated with the default branch.
         self.branch_compute_cluster_id = branch_compute_cluster_id
         # The time when the project was created.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The default branch ID.
         self.default_branch_id = default_branch_id

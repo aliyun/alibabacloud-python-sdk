@@ -12,19 +12,19 @@ class UpgradePolarClawPluginRequest(DaraModel):
         plugin_id: str = None,
         restart: bool = None,
     ):
-        # The application ID.
+        # The PolarClaw application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The name and version of the new npm package.
+        # The new npm package name, including the version number.
         # 
         # This parameter is required.
         self.npm_package = npm_package
-        # The ID of the plugin to upgrade.
+        # The ID of the plug-in to upgrade.
         # 
         # This parameter is required.
         self.plugin_id = plugin_id
-        # Specifies whether to restart the gateway after the upgrade. The default is true.
+        # Specifies whether to restart the gateway after the upgrade. Default value: true.
         self.restart = restart
 
     def validate(self):

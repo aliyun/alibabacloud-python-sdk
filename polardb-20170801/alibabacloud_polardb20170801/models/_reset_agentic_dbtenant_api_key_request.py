@@ -12,12 +12,20 @@ class ResetAgenticDBTenantApiKeyRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the target API key.
+        # 
         # This parameter is required.
         self.api_key_id = api_key_id
+        # The AgenticDB cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the target tenant.
+        # 
         # This parameter is required.
         self.tenant_id = tenant_id
 

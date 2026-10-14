@@ -31,11 +31,11 @@ class ModifyCronJobPolicyServerlessRequest(DaraModel):
     ):
         # Specifies whether to enable No-activity Suspension. Valid values:
         # 
-        # - **true**: Enables the feature.
+        # - **true**: Enabled.
         # 
-        # - **false** (default): Disables the feature.
+        # - **false** (default): Disabled.
         self.allow_shut_down = allow_shut_down
-        # The Cron expression.
+        # The cron expression.
         # 
         # This parameter is required.
         self.cron_expression = cron_expression
@@ -45,9 +45,11 @@ class ModifyCronJobPolicyServerlessRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The end time.
         # 
+        # Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the scheduled task.
+        # The scheduled task ID.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -61,27 +63,26 @@ class ModifyCronJobPolicyServerlessRequest(DaraModel):
         self.scale_ap_ro_num_max = scale_ap_ro_num_max
         # The minimum number of read-only column store nodes. Valid values: 0 to 15.
         self.scale_ap_ro_num_min = scale_ap_ro_num_min
-        # The maximum number of PCUs. Valid values: 1 to 32.
+        # The maximum value. Valid values: 1 to 32. Unit: PCU.
         self.scale_max = scale_max
-        # The minimum number of PolarDB Capacity Units (PCUs). Valid values: 0.25 to 32. This value must be less than or equal to the value of ScaleMax.
+        # The minimum value. Valid values: 0.25 to 32. The minimum value must be less than or equal to the maximum value. Unit: PCU.
         self.scale_min = scale_min
-        # The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        # The maximum number of read-only nodes for scaling. The value cannot be less than the minimum value. Valid values: 0 to 15.
         self.scale_ro_num_max = scale_ro_num_max
         # The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
         self.scale_ro_num_min = scale_ro_num_min
-        # The detection period for No-activity Suspension. Unit: minutes. Valid values: 5 to 1440. The value must be a multiple of 5.
+        # The detection duration for No-activity Suspension. Valid values: 5 to 1440. Unit: minutes. The detection duration must be a multiple of 5 minutes.
         self.seconds_until_auto_pause = seconds_until_auto_pause
-        # The CPU utilization threshold for a scale-up. Unit: percent. Valid values: 40 to 100.
+        # The CPU scale-up threshold. Valid values: 40 to 100. Unit: %.
         self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
-        # The CPU utilization threshold for a scale-down. Unit: percent. Valid values: 10 to 100. The value of ServerlessRuleCpuEnlargeThreshold minus the value of this parameter must be greater than or equal to 30.
+        # The CPU scale-down threshold. Valid values: 10 to 100. Unit: %. The difference between the scale-up threshold and the scale-down threshold must be at least 30.
         self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
         # The scaling sensitivity. Valid values:
         # 
-        # - normal
-        # 
-        # - flexible
+        # - normal: standard.
+        # - flexible: sensitive.
         self.serverless_rule_mode = serverless_rule_mode
-        # The start time. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The start time. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
         self.start_time = start_time
 
     def validate(self):

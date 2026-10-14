@@ -14,17 +14,16 @@ class ModifyEncryptionDBSecretResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The returned message.
-        # 
-        # > If the request is successful, \\`Successful\\` is returned. If the request fails, an error message is returned, such as an error code.
+        # The message returned for the request.
+        # >If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The result of the request. Valid values:
         # 
-        # - **true**
+        # - **true**: The request is successful.
         # 
-        # - **false**
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

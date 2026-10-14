@@ -24,36 +24,36 @@ class DescribeAIDBClustersRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeAIDBClustersRequestTag] = None,
     ):
-        # The node type. Multiple types are supported. Separate two values with a comma (,).
+        # The node type. You can specify multiple types separated by commas (,). Valid values:
         # 
         # - vnode: managed by Kubernetes.
         # - container: logon-enabled container.
         # - maas: model service.
         self.ai_node_type = ai_node_type
-        # The cluster description. Fuzzy match is supported.
+        # The description of the cluster. Fuzzy match is supported.
         self.dbcluster_description = dbcluster_description
-        # The cluster ID. Separate multiple cluster IDs with commas (,).
+        # The cluster IDs. Separate multiple cluster IDs with commas (,).
         self.dbcluster_ids = dbcluster_ids
-        # The cluster status. Valid values:
+        # The status of the cluster. Valid values:
         # 
-        # - **Creating**: being created.
-        # - **Running**: running.
-        # - **Deleting**: being released.
-        # - **Rebooting**: being restarted.
-        # - **DBNodeCreating**: a node is being added (increase).
-        # - **DBNodeDeleting**: a node is being deleted.
-        # - **ClassChanging**: node specifications are being changed.
-        # - **NetAddressCreating**: a network connectivity is being created.
-        # - **NetAddressDeleting**: a network connectivity is being deleted.
-        # - **NetAddressModifying**: a network connectivity is being modified. 
-        # - **Deleted**: released.
-        # * **ClassChanged**: resources are being revoked after a decrease the quota operation.
+        # - **Creating**: The cluster is being created.
+        # - **Running**: The cluster is running.
+        # - **Deleting**: The cluster is being released.
+        # - **Rebooting**: The cluster is being restarted.
+        # - **DBNodeCreating**: Nodes are being increased.
+        # - **DBNodeDeleting**: Nodes are being deleted.
+        # - **ClassChanging**: The node specifications are being changed.
+        # - **NetAddressCreating**: The network connectivity is being created.
+        # - **NetAddressDeleting**: The network connectivity is being deleted.
+        # - **NetAddressModifying**: The network connectivity is being modified. 
+        # - **Deleted**: The cluster is released.
+        # - **ClassChanged**: Resources are being revoked after you upgrade or decrease the quota.
         self.dbcluster_status = dbcluster_status
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **30**, **50**, and **100**.
+        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
         #                               
         # Default value: **30**.
         self.page_size = page_size
@@ -68,7 +68,7 @@ class DescribeAIDBClustersRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The list of tags.
+        # The tag list.
         self.tag = tag
 
     def validate(self):
@@ -177,7 +177,7 @@ class DescribeAIDBClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can filter the cluster list by tag. You can specify up to 20 tag pairs. The number n for each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key corresponds to Tag.n.Value.
+        # The tag key. You can filter clusters by tag. You can specify up to 20 tag key-value pairs. The number n in each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key is Tag.n.Value.
         self.key = key
         # The tag value that corresponds to the tag key.
         self.value = value

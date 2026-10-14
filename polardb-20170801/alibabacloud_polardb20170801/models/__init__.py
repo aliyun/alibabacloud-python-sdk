@@ -763,6 +763,9 @@ from ._describe_history_tasks_response import DescribeHistoryTasksResponse
 from ._describe_history_tasks_stat_request import DescribeHistoryTasksStatRequest
 from ._describe_history_tasks_stat_response_body import DescribeHistoryTasksStatResponseBody
 from ._describe_history_tasks_stat_response import DescribeHistoryTasksStatResponse
+from ._describe_kbsync_link_attribute_request import DescribeKBSyncLinkAttributeRequest
+from ._describe_kbsync_link_attribute_response_body import DescribeKBSyncLinkAttributeResponseBody
+from ._describe_kbsync_link_attribute_response import DescribeKBSyncLinkAttributeResponse
 from ._describe_kbsync_links_request import DescribeKBSyncLinksRequest
 from ._describe_kbsync_links_response_body import DescribeKBSyncLinksResponseBody
 from ._describe_kbsync_links_response import DescribeKBSyncLinksResponse
@@ -1557,6 +1560,8 @@ from ._describe_application_attribute_response_body import DescribeApplicationAt
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyEndpoints
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyMemApplicationAttribute
+from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding
+from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodySecurityGroups
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodySecurityIPArrays
@@ -1611,6 +1616,7 @@ from ._describe_cold_storage_instance_response_body import DescribeColdStorageIn
 from ._describe_cold_storage_instance_response_body import DescribeColdStorageInstanceResponseBodyTables
 from ._describe_consumer_groups_response_body import DescribeConsumerGroupsResponseBodyItems
 from ._describe_consumers_response_body import DescribeConsumersResponseBodyItems
+from ._describe_cost_rules_response_body import DescribeCostRulesResponseBodyItemsInputTokenTiers
 from ._describe_cost_rules_response_body import DescribeCostRulesResponseBodyItems
 from ._describe_cron_job_policy_serverless_response_body import DescribeCronJobPolicyServerlessResponseBodyItems
 from ._describe_cross_cloud_levels_response_body import DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList
@@ -1740,6 +1746,7 @@ from ._describe_history_events_response_body import DescribeHistoryEventsRespons
 from ._describe_history_events_response_body import DescribeHistoryEventsResponseBodyItems
 from ._describe_history_tasks_response_body import DescribeHistoryTasksResponseBodyItems
 from ._describe_history_tasks_stat_response_body import DescribeHistoryTasksStatResponseBodyItems
+from ._describe_kbsync_link_attribute_response_body import DescribeKBSyncLinkAttributeResponseBodyConfig
 from ._describe_kbsync_links_response_body import DescribeKBSyncLinksResponseBodyItems
 from ._describe_knowledge_base_answer_response_body import DescribeKnowledgeBaseAnswerResponseBodySourcesImageResources
 from ._describe_knowledge_base_answer_response_body import DescribeKnowledgeBaseAnswerResponseBodySources
@@ -2675,6 +2682,9 @@ __all__ = [
     DescribeHistoryTasksStatRequest,
     DescribeHistoryTasksStatResponseBody,
     DescribeHistoryTasksStatResponse,
+    DescribeKBSyncLinkAttributeRequest,
+    DescribeKBSyncLinkAttributeResponseBody,
+    DescribeKBSyncLinkAttributeResponse,
     DescribeKBSyncLinksRequest,
     DescribeKBSyncLinksResponseBody,
     DescribeKBSyncLinksResponse,
@@ -3469,6 +3479,8 @@ __all__ = [
     DescribeApplicationAttributeResponseBodyEndpoints,
     DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore,
     DescribeApplicationAttributeResponseBodyMemApplicationAttribute,
+    DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding,
+    DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute,
     DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute,
     DescribeApplicationAttributeResponseBodySecurityGroups,
     DescribeApplicationAttributeResponseBodySecurityIPArrays,
@@ -3523,6 +3535,7 @@ __all__ = [
     DescribeColdStorageInstanceResponseBodyTables,
     DescribeConsumerGroupsResponseBodyItems,
     DescribeConsumersResponseBodyItems,
+    DescribeCostRulesResponseBodyItemsInputTokenTiers,
     DescribeCostRulesResponseBodyItems,
     DescribeCronJobPolicyServerlessResponseBodyItems,
     DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList,
@@ -3652,6 +3665,7 @@ __all__ = [
     DescribeHistoryEventsResponseBodyItems,
     DescribeHistoryTasksResponseBodyItems,
     DescribeHistoryTasksStatResponseBodyItems,
+    DescribeKBSyncLinkAttributeResponseBodyConfig,
     DescribeKBSyncLinksResponseBodyItems,
     DescribeKnowledgeBaseAnswerResponseBodySourcesImageResources,
     DescribeKnowledgeBaseAnswerResponseBodySources,

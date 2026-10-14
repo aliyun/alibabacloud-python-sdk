@@ -21,9 +21,11 @@ class DescribeKnowledgeBaseAttributeResponseBody(DaraModel):
         total_docs: int = None,
         total_size_bytes: int = None,
     ):
-        # The number of AI applications bound to the knowledge base.
+        # The number of AI applications associated with the knowledge base.
         self.binding_app_count = binding_app_count
-        # The creation time.
+        # The time when the knowledge base was created.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
         # The description of the knowledge base.
         self.description = description

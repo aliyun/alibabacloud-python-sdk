@@ -14,6 +14,7 @@ class DescribeAgenticDBComputeClustersRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
+        # The compute instance ID for fuzzy match (pc-xxxx), such as pc-2ze8k.
         self.compute_cluster_id = compute_cluster_id
         # The AgenticDB cluster ID.
         # 
@@ -27,7 +28,7 @@ class DescribeAgenticDBComputeClustersRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The status filter. Valid values: Running, Stopped, and Waiting.
+        # Filters compute instances by status. Valid values: Running, Stopped, and Waiting.
         self.status = status
 
     def validate(self):

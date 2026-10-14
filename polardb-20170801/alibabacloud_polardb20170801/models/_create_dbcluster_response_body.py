@@ -24,7 +24,7 @@ class CreateDBClusterResponseBody(DaraModel):
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

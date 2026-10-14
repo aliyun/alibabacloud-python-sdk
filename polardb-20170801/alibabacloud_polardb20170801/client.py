@@ -5160,14 +5160,24 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.cache_creation_cost_points_per_million):
+            query['CacheCreationCostPointsPerMillion'] = request.cache_creation_cost_points_per_million
+        if not DaraCore.is_null(request.effective_start_time):
+            query['EffectiveStartTime'] = request.effective_start_time
         if not DaraCore.is_null(request.effective_target_type):
             query['EffectiveTargetType'] = request.effective_target_type
         if not DaraCore.is_null(request.effective_target_value):
             query['EffectiveTargetValue'] = request.effective_target_value
+        if not DaraCore.is_null(request.explicit_cache_cost_points_per_million):
+            query['ExplicitCacheCostPointsPerMillion'] = request.explicit_cache_cost_points_per_million
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.image_cost_points_per_count):
+            query['ImageCostPointsPerCount'] = request.image_cost_points_per_count
         if not DaraCore.is_null(request.input_cost_points_per_million):
             query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.input_token_tiers):
+            query['InputTokenTiers'] = request.input_token_tiers
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.model_service_id):
@@ -5176,6 +5186,8 @@ class Client(OpenApiClient):
             query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.video_cost_points_per_second):
+            query['VideoCostPointsPerSecond'] = request.video_cost_points_per_second
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5204,14 +5216,24 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.cache_creation_cost_points_per_million):
+            query['CacheCreationCostPointsPerMillion'] = request.cache_creation_cost_points_per_million
+        if not DaraCore.is_null(request.effective_start_time):
+            query['EffectiveStartTime'] = request.effective_start_time
         if not DaraCore.is_null(request.effective_target_type):
             query['EffectiveTargetType'] = request.effective_target_type
         if not DaraCore.is_null(request.effective_target_value):
             query['EffectiveTargetValue'] = request.effective_target_value
+        if not DaraCore.is_null(request.explicit_cache_cost_points_per_million):
+            query['ExplicitCacheCostPointsPerMillion'] = request.explicit_cache_cost_points_per_million
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.image_cost_points_per_count):
+            query['ImageCostPointsPerCount'] = request.image_cost_points_per_count
         if not DaraCore.is_null(request.input_cost_points_per_million):
             query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.input_token_tiers):
+            query['InputTokenTiers'] = request.input_token_tiers
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.model_service_id):
@@ -5220,6 +5242,8 @@ class Client(OpenApiClient):
             query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.video_cost_points_per_second):
+            query['VideoCostPointsPerSecond'] = request.video_cost_points_per_second
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7248,6 +7272,8 @@ class Client(OpenApiClient):
             query['ClientSecret'] = request.client_secret
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.feishu_chat_member_stale_ttl_seconds):
+            query['FeishuChatMemberStaleTtlSeconds'] = request.feishu_chat_member_stale_ttl_seconds
         if not DaraCore.is_null(request.knowledge_base_id):
             query['KnowledgeBaseId'] = request.knowledge_base_id
         if not DaraCore.is_null(request.link_name):
@@ -7270,6 +7296,8 @@ class Client(OpenApiClient):
             query['UserAccessToken'] = request.user_access_token
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.user_refresh_token):
+            query['UserRefreshToken'] = request.user_refresh_token
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7302,6 +7330,8 @@ class Client(OpenApiClient):
             query['ClientSecret'] = request.client_secret
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.feishu_chat_member_stale_ttl_seconds):
+            query['FeishuChatMemberStaleTtlSeconds'] = request.feishu_chat_member_stale_ttl_seconds
         if not DaraCore.is_null(request.knowledge_base_id):
             query['KnowledgeBaseId'] = request.knowledge_base_id
         if not DaraCore.is_null(request.link_name):
@@ -7324,6 +7354,8 @@ class Client(OpenApiClient):
             query['UserAccessToken'] = request.user_access_token
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.user_refresh_token):
+            query['UserRefreshToken'] = request.user_refresh_token
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -18684,12 +18716,16 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeCostRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cost_rule_id):
+            query['CostRuleId'] = request.cost_rule_id
         if not DaraCore.is_null(request.effective_target_type):
             query['EffectiveTargetType'] = request.effective_target_type
         if not DaraCore.is_null(request.effective_target_value):
             query['EffectiveTargetValue'] = request.effective_target_value
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_token_tier):
+            query['InputTokenTier'] = request.input_token_tier
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.model_service_id):
@@ -18726,12 +18762,16 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeCostRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cost_rule_id):
+            query['CostRuleId'] = request.cost_rule_id
         if not DaraCore.is_null(request.effective_target_type):
             query['EffectiveTargetType'] = request.effective_target_type
         if not DaraCore.is_null(request.effective_target_value):
             query['EffectiveTargetValue'] = request.effective_target_value
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.input_token_tier):
+            query['InputTokenTier'] = request.input_token_tier
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.model_service_id):
@@ -24230,6 +24270,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeHistoryTasksStatResponse:
         runtime = RuntimeOptions()
         return await self.describe_history_tasks_stat_with_options_async(request, runtime)
+
+    def describe_kbsync_link_attribute_with_options(
+        self,
+        request: main_models.DescribeKBSyncLinkAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKBSyncLinkAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKBSyncLinkAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKBSyncLinkAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_kbsync_link_attribute_with_options_async(
+        self,
+        request: main_models.DescribeKBSyncLinkAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeKBSyncLinkAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            query['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.link_id):
+            query['LinkId'] = request.link_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeKBSyncLinkAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeKBSyncLinkAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_kbsync_link_attribute(
+        self,
+        request: main_models.DescribeKBSyncLinkAttributeRequest,
+    ) -> main_models.DescribeKBSyncLinkAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_kbsync_link_attribute_with_options(request, runtime)
+
+    async def describe_kbsync_link_attribute_async(
+        self,
+        request: main_models.DescribeKBSyncLinkAttributeRequest,
+    ) -> main_models.DescribeKBSyncLinkAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_kbsync_link_attribute_with_options_async(request, runtime)
 
     def describe_kbsync_links_with_options(
         self,
@@ -34640,12 +34758,20 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.cache_creation_cost_points_per_million):
+            query['CacheCreationCostPointsPerMillion'] = request.cache_creation_cost_points_per_million
         if not DaraCore.is_null(request.cost_rule_id):
             query['CostRuleId'] = request.cost_rule_id
+        if not DaraCore.is_null(request.explicit_cache_cost_points_per_million):
+            query['ExplicitCacheCostPointsPerMillion'] = request.explicit_cache_cost_points_per_million
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.image_cost_points_per_count):
+            query['ImageCostPointsPerCount'] = request.image_cost_points_per_count
         if not DaraCore.is_null(request.input_cost_points_per_million):
             query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.input_token_tiers):
+            query['InputTokenTiers'] = request.input_token_tiers
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.model_service_id):
@@ -34654,6 +34780,8 @@ class Client(OpenApiClient):
             query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.video_cost_points_per_second):
+            query['VideoCostPointsPerSecond'] = request.video_cost_points_per_second
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -34682,12 +34810,20 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
+        if not DaraCore.is_null(request.cache_creation_cost_points_per_million):
+            query['CacheCreationCostPointsPerMillion'] = request.cache_creation_cost_points_per_million
         if not DaraCore.is_null(request.cost_rule_id):
             query['CostRuleId'] = request.cost_rule_id
+        if not DaraCore.is_null(request.explicit_cache_cost_points_per_million):
+            query['ExplicitCacheCostPointsPerMillion'] = request.explicit_cache_cost_points_per_million
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.image_cost_points_per_count):
+            query['ImageCostPointsPerCount'] = request.image_cost_points_per_count
         if not DaraCore.is_null(request.input_cost_points_per_million):
             query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.input_token_tiers):
+            query['InputTokenTiers'] = request.input_token_tiers
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.model_service_id):
@@ -34696,6 +34832,8 @@ class Client(OpenApiClient):
             query['OutputCostPointsPerMillion'] = request.output_cost_points_per_million
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.video_cost_points_per_second):
+            query['VideoCostPointsPerSecond'] = request.video_cost_points_per_second
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -44068,6 +44206,8 @@ class Client(OpenApiClient):
             query['ClientId'] = request.client_id
         if not DaraCore.is_null(request.client_secret):
             query['ClientSecret'] = request.client_secret
+        if not DaraCore.is_null(request.feishu_chat_member_stale_ttl_seconds):
+            query['FeishuChatMemberStaleTtlSeconds'] = request.feishu_chat_member_stale_ttl_seconds
         if not DaraCore.is_null(request.knowledge_base_id):
             query['KnowledgeBaseId'] = request.knowledge_base_id
         if not DaraCore.is_null(request.link_id):
@@ -44086,6 +44226,8 @@ class Client(OpenApiClient):
             query['UserAccessToken'] = request.user_access_token
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.user_refresh_token):
+            query['UserRefreshToken'] = request.user_refresh_token
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -44116,6 +44258,8 @@ class Client(OpenApiClient):
             query['ClientId'] = request.client_id
         if not DaraCore.is_null(request.client_secret):
             query['ClientSecret'] = request.client_secret
+        if not DaraCore.is_null(request.feishu_chat_member_stale_ttl_seconds):
+            query['FeishuChatMemberStaleTtlSeconds'] = request.feishu_chat_member_stale_ttl_seconds
         if not DaraCore.is_null(request.knowledge_base_id):
             query['KnowledgeBaseId'] = request.knowledge_base_id
         if not DaraCore.is_null(request.link_id):
@@ -44134,6 +44278,8 @@ class Client(OpenApiClient):
             query['UserAccessToken'] = request.user_access_token
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.user_refresh_token):
+            query['UserRefreshToken'] = request.user_refresh_token
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

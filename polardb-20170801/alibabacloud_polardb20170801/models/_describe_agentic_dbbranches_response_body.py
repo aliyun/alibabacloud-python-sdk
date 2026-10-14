@@ -16,10 +16,15 @@ class DescribeAgenticDBBranchesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of branches.
         self.items = items
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -94,21 +99,43 @@ class DescribeAgenticDBBranchesResponseBodyItems(DaraModel):
         status: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the compute cluster associated with the branch.
         self.branch_compute_cluster_id = branch_compute_cluster_id
+        # The number of compute nodes. The value is fixed to 1 in the first phase.
         self.branch_compute_node_count = branch_compute_node_count
+        # The branch ID.
         self.branch_id = branch_id
+        # The branch name.
         self.branch_name = branch_name
+        # The time when the branch was created.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
+        # The description of the branch.
         self.description = description
+        # Indicates whether the branch is the default branch.
         self.is_default_branch = is_default_branch
+        # The time when the branch was last activated.
         self.last_activated_at = last_activated_at
+        # The maximum compute unit.
         self.max_cu = max_cu
+        # The minimum compute unit.
         self.min_cu = min_cu
+        # The ID of the parent branch.
         self.parent_branch_id = parent_branch_id
+        # The name of the parent branch.
         self.parent_branch_name = parent_branch_name
+        # The ID of the project to which the branch belongs.
         self.project_id = project_id
+        # The name of the project to which the branch belongs.
         self.project_name = project_name
+        # The status of the branch. Valid values:
+        # 
+        # - Running
+        # - Pending
+        # - Paused
         self.status = status
+        # The ID of the tenant to which the branch belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

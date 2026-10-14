@@ -16,6 +16,8 @@ class CreateGwConsumerOrderResponseBody(DaraModel):
         # The redemption code used for subsequent activation.
         self.credit_token = credit_token
         # The expiration time.
+        # 
+        # The time is in ISO 8601 format in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
         # The ID of the AI gateway instance.
         self.gateway_id = gateway_id

@@ -13,9 +13,9 @@ class DescribeNetworkChannelResponseBody(DaraModel):
         channel_infos: List[main_models.DescribeNetworkChannelResponseBodyChannelInfos] = None,
         request_id: str = None,
     ):
-        # A list of network channels.
+        # The list of network channels.
         self.channel_infos = channel_infos
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,22 +68,23 @@ class DescribeNetworkChannelResponseBodyChannelInfos(DaraModel):
     ):
         # The channel name.
         self.channel_name = channel_name
-        # The ID of the source cluster.
+        # The source instance name.
         self.dbcluster_id = dbcluster_id
+        # The ID of the elastic network interfaces (ENIs) used by the reverse access link of the network channel. The network interface controller (NIC) is used for the connection.
         self.eni_id = eni_id
-        # The notes about the channel.
+        # The remarks.
         self.notes = notes
         # The region ID.
         self.region_id = region_id
-        # The ID of the target cluster.
+        # The target instance name.
         self.target_dbcluster_id = target_dbcluster_id
-        # The IP address of the target cluster.
+        # The IP address of the target instance.
         self.target_ip = target_ip
-        # The port of the target cluster.
+        # The port of the target instance.
         self.target_port = target_port
-        # The type of the target cluster.
+        # The target instance type.
         self.target_type = target_type
-        # The ID of the VPC that contains the endpoint.
+        # The ID of the VPC where the access endpoint resides.
         self.vpc_id = vpc_id
 
     def validate(self):

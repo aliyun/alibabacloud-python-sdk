@@ -16,7 +16,7 @@ class DescribeGlobalDataNetworkListResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
-        # The details of the Global Data Networks (GDNs).
+        # The GDN details.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -119,45 +119,34 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworks(DaraModel):
         network_status: str = None,
         network_topology: main_models.DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology = None,
     ):
-        # The synchronization channels.
+        # The list of synchronization channels.
         self.channels = channels
-        # The time when the GDN was created.
+        # The creation time of the GDN.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The description of the GDN.
         self.network_description = network_description
-        # The ID of the GDN.
+        # GDN ID
         self.network_id = network_id
-        # The status of the GDN. Valid values:
+        # The GDN status. Valid values:
         # 
-        # - **Creating**: The GDN is being created.
-        # 
-        # - **Running**: The GDN is running.
-        # 
-        # - **Syncing**: The GDN is synchronizing data.
-        # 
-        # - **SyncFinished**: Data synchronization is complete.
-        # 
-        # - **SyncFailed**: Data synchronization failed.
-        # 
-        # - **SyncPartialFailed**: Data synchronization partially failed.
-        # 
-        # - **Stopped**: The GDN is stopped.
-        # 
-        # - **Maintaining**: The GDN is under maintenance.
-        # 
-        # - **Restarting**: The GDN is restarting.
-        # 
-        # - **Locking**: The GDN is being locked.
-        # 
-        # - **Locked**: The GDN is locked.
-        # 
-        # - **Unlocking**: The GDN is being unlocked.
-        # 
-        # - **Deleting**: The GDN is being deleted.
-        # 
-        # - **Deleted**: The GDN is deleted.
+        # - **Creating**: Being created.
+        # - **Running**: Running.
+        # - **Syncing**: Being synchronized.
+        # - **SyncFinished**: Synchronization completed.
+        # - **SyncFailed**: Synchronization failed.
+        # - **SyncPartialFailed**: Partial synchronization failed.
+        # - **Stopped**: Stopped.
+        # - **Maintaining**: Under maintenance.
+        # - **Restarting**: Being restarted.
+        # - **Locking**: Being locked.
+        # - **Locked**: Locked.
+        # - **Unlocking**: Being unlocked.
+        # - **Deleting**: Being deleted.
+        # - **Deleted**: Deleted.
         self.network_status = network_status
-        # The network topology of the GDN.
+        # The GDN network topology.
         self.network_topology = network_topology
 
     def validate(self):
@@ -227,9 +216,9 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology(Dara
         destinations: List[main_models.DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations] = None,
         sources: List[main_models.DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources] = None,
     ):
-        # The synchronization destinations.
+        # The list of synchronization destinations.
         self.destinations = destinations
-        # The synchronization sources.
+        # The list of synchronization sources.
         self.sources = sources
 
     def validate(self):
@@ -285,15 +274,14 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySourc
     ):
         # The source path.
         self.source_file_system_path = source_file_system_path
-        # The ID of the source Polarlakebase instance.
+        # The source Polarlakebase instance.
         self.source_id = source_id
-        # The region of the source.
+        # The source region.
         self.source_region = source_region
-        # The type of the source. Valid values:
+        # The source type. Valid values:
         # 
-        # - **pfs**: Polarlakebase High-performance Edition.
-        # 
-        # - **pcs**: Polarlakebase Cold Storage Edition.
+        #   - **pfs**: Polarlakebase High-performance Edition.
+        #   - **pcs**: Polarlakebase Cold Storage Edition.
         self.source_type = source_type
 
     def validate(self):
@@ -344,15 +332,13 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDesti
     ):
         # The destination path.
         self.destination_file_system_path = destination_file_system_path
-        # Destination PolarDB instance
+        # The destination Polarlakebase instance.
         self.destination_id = destination_id
-        # The region of the destination.
+        # The destination region.
         self.destination_region = destination_region
-        # The type of the destination. Valid values:
-        # 
-        # - **pfs**: Polarlakebase High-performance Edition.
-        # 
-        # - **pcs**: Polarlakebase Cold Storage Edition.
+        # The destination type. Valid values:
+        #   - **pfs**: Polarlakebase High-performance Edition.
+        #   - **pcs**: Polarlakebase Cold Storage Edition.
         self.destination_type = destination_type
 
     def validate(self):
@@ -401,43 +387,30 @@ class DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels(DaraModel):
         freeze_source_during_sync: bool = None,
         progress: str = None,
     ):
-        # The ID of the synchronization channel.
+        # The synchronization channel ID.
         self.channel_id = channel_id
-        # The status of the synchronization channel. Valid values:
+        # The synchronization channel status. Valid values:
         # 
-        # - **Creating**: The channel is being created.
-        # 
-        # - **Running**: The channel is running.
-        # 
-        # - **Syncing**: The channel is synchronizing data.
-        # 
-        # - **SyncFinished**: Data synchronization is complete.
-        # 
-        # - **SyncFailed**: Data synchronization failed.
-        # 
-        # - **SyncPartialFailed**: Data synchronization partially failed.
-        # 
-        # - **Stopped**: The channel is stopped.
-        # 
-        # - **Maintaining**: The channel is under maintenance.
-        # 
-        # - **Restarting**: The channel is restarting.
-        # 
-        # - **Locking**: The channel is being locked.
-        # 
-        # - **Locked**: The channel is locked.
-        # 
-        # - **Unlocking**: The channel is being unlocked.
-        # 
-        # - **Deleting**: The channel is being deleted.
-        # 
-        # - **Deleted**: The channel is deleted.
+        # - **Creating**: Being created.
+        # - **Running**: Running.
+        # - **Syncing**: Being synchronized.
+        # - **SyncFinished**: Synchronization completed.
+        # - **SyncFailed**: Synchronization failed.
+        # - **SyncPartialFailed**: Partial synchronization failed.
+        # - **Stopped**: Stopped.
+        # - **Maintaining**: Under maintenance.
+        # - **Restarting**: Being restarted.
+        # - **Locking**: Being locked.
+        # - **Locked**: Locked.
+        # - **Unlocking**: Being unlocked.
+        # - **Deleting**: Being deleted.
+        # - **Deleted**: Deleted.
         self.channel_status = channel_status
-        # Indicates whether the source path is frozen during data transmission.
+        # Specifies whether to freeze the source path during the transfer.
         self.freeze_source_during_sync = freeze_source_during_sync
-        # The synchronization progress.
+        # The current synchronization progress.
         # 
-        # > The value is a percentage that is accurate to two decimal places.
+        # > The value is a floating-point percentage with two decimal places.
         self.progress = progress
 
     def validate(self):

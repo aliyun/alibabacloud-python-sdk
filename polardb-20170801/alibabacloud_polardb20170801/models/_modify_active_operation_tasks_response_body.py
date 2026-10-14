@@ -12,7 +12,7 @@ class ModifyActiveOperationTasksResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The task IDs.
+        # The list of task IDs.
         self.task_ids = task_ids
 
     def validate(self):

@@ -23,21 +23,23 @@ class DescribeAccountsZonalRequest(DaraModel):
         self.account_name = account_name
         # The cluster ID.
         # 
+        # > Note: Only the IDs of edge clusters (clusters created by setting the CloudProvider parameter to ENS when calling CreateDBCluster) are supported. If you specify the ID of common clusters, the CrossCloudOpenAPI.CallError error is returned.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The maximum number of entries to return in a single request.
+        # The maximum number of entries to return for this request.
         self.max_results = max_results
-        # The token to retrieve the next page of results. You do not need to specify this parameter for the first request. In a subsequent request, set this parameter to the NextToken value returned in the previous response.
+        # The query token. Set the value to the NextToken value returned in the last API call. If no subsequent query is required, do not specify this parameter.
         self.next_token = next_token
-        # The node type. This parameter is required when you query the accounts of a PolarDB Search node.
+        # The node type. This parameter is required when you query the accounts of PolarDB Search nodes. Valid values:
         # 
         # - Search
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be an integer that is greater than 0. The default value is 1.
+        # The page number. Valid values: integers greater than 0 and less than or equal to the maximum value of the Integer type. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # - 30
         # 
@@ -45,7 +47,7 @@ class DescribeAccountsZonalRequest(DaraModel):
         # 
         # - 100
         # 
-        # The default value is 30.
+        # Default value: 30.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

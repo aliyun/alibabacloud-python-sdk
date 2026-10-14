@@ -10,7 +10,7 @@ class RemovePolarClawMCPServerRequest(DaraModel):
         application_id: str = None,
         server_name: str = None,
     ):
-        # The application ID.
+        # The PolarClaw application ID.
         # 
         # This parameter is required.
         self.application_id = application_id

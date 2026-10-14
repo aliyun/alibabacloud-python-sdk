@@ -15,12 +15,23 @@ class ResetAgenticDBTenantApiKeyResponseBody(DaraModel):
         tenant_id: str = None,
         tenant_name: str = None,
     ):
+        # The new API key in plaintext. This value is returned only in this response.
         self.api_key = api_key
+        # The resource ID of the API key. This value remains unchanged after the reset.
         self.api_key_id = api_key_id
+        # The reset time, which is the effective period of the new key.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
+        # The expiration time.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
+        # The request ID.
         self.request_id = request_id
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The tenant name.
         self.tenant_name = tenant_name
 
     def validate(self):

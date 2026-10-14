@@ -22,7 +22,9 @@ class DescribeSlowLogsResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query.
+        # The end date of the query.
+        # 
+        # The date is in UTC. Format: YYYY-MM-DDZ.
         self.end_time = end_time
         # The database engine.
         self.engine = engine
@@ -33,7 +35,9 @@ class DescribeSlowLogsResponseBody(DaraModel):
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The start time of the query.
+        # The start date of the query.
+        # 
+        # The date is in UTC. Format: YYYY-MM-DDZ.
         self.start_time = start_time
         # The total number of records.
         self.total_record_count = total_record_count

@@ -127,7 +127,7 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
     ):
         # Indicates whether the key is active.
         self.active = active
-        # The full API key. Returned only in this response.
+        # The complete API key. Returned only in this response.
         self.api_key = api_key
         # The MD5 hash of the API key.
         self.api_key_md_5 = api_key_md_5
@@ -150,12 +150,14 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
         # The application description or remarks.
         self.description = description
         # The expiration time.
+        # 
+        # The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
-        # Indicates whether the key is expired.
+        # Indicates whether the key has expired.
         self.expired = expired
         # The creation time.
         self.gmt_created = gmt_created
-        # The last modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id

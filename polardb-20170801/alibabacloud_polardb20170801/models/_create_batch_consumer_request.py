@@ -21,7 +21,7 @@ class CreateBatchConsumerRequest(DaraModel):
         self.consumer_group_id = consumer_group_id
         # The number of user API keys.
         self.count = count
-        # The redemption code. If specified, the recharge-type activation branch is used, and the count and quota are populated from the database.
+        # The redemption code. If specified, the recharge activation branch is used, and the count and quota are populated from the database.
         self.credit_token = credit_token
         # The consumer description prefix.
         self.description = description

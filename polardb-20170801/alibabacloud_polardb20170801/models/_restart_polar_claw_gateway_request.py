@@ -10,13 +10,13 @@ class RestartPolarClawGatewayRequest(DaraModel):
         application_id: str = None,
         mode: str = None,
     ):
-        # The application ID.
+        # The PolarClaw application ID. Example: pa-xxx.
         # 
         # This parameter is required.
         self.application_id = application_id
         # The restart mode. Valid values:
-        # - in-process: lightweight restart without applying environment variable changes. This is the default value.
-        # - pkill: cold start that applies environment variable changes.
+        # - in-process: lightweight restart. Environment variables do not take effect. This is the default value.
+        # - pkill: cold start. Environment variables take effect.
         self.mode = mode
 
     def validate(self):

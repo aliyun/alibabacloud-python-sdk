@@ -26,47 +26,43 @@ class DescribeAIDBClusterDatasetsResponseBody(DaraModel):
         total_count: str = None,
         total_records: str = None,
     ):
-        # The continuation token from the request.
+        # The ContinuationToken element is included in the response if the ContinuationToken parameter is specified in the request.
         self.continuation_token = continuation_token
-        # The data service ID.
+        # The instance ID of the dataset management service.
         self.data_service_id = data_service_id
         # The dataset ID.
         self.dataset_id = dataset_id
-        # The training mode. Valid values:
+        # The training mode of the dataset. Valid values:
         # 
-        # - **sft**: Supervised Fine-Tuning (SFT).
-        # 
-        # - **grpo**: Reinforcement Learning (RL).
-        # 
-        # - **text**: Text generation.
+        # * **sft**: supervised fine-tuning.
+        # * **grpo**: reinforcement learning.
+        # * **text**: text generation.
         self.dataset_mode = dataset_mode
-        # The dataset type. Valid values:
+        # The type of the dataset. Valid values:
         # 
-        # - **train**: The training set.
-        # 
-        # - **eval**: The evaluation set.
+        # * **train**: training dataset.
+        # * **eval**: evaluation dataset.
         self.dataset_type = dataset_type
-        # An array of dataset objects.
+        # The datasets.
         self.datasets = datasets
-        # The total number of files in the dataset.
+        # The total number of files.
         self.file_count = file_count
-        # Indicates if more datasets are available. Valid values:
+        # Indicates whether more datasets exist. Valid values:
         # 
-        # - **true**: More datasets are available.
-        # 
-        # - **false**: All datasets have been listed.
+        # * **true**: More datasets exist.
+        # * **false**: No more datasets exist.
         self.is_truncated = is_truncated
-        # The token for retrieving the next page of results. This parameter is returned only if `IsTruncated` is `true`.
+        # The ContinuationToken for the next listing of files.
         self.next_continuation_token = next_continuation_token
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The relative DB cluster ID.
+        # The ID of the database management service.
         self.relative_dbcluster_id = relative_dbcluster_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The total count of datasets.
+        # The total number of records. This parameter is returned only when you query a list.
         self.total_count = total_count
         # The total number of records.
         self.total_records = total_records
@@ -197,37 +193,36 @@ class DescribeAIDBClusterDatasetsResponseBodyDatasets(DaraModel):
         storage_type: str = None,
         train_mode: str = None,
     ):
-        # The bucket name.
+        # The bucket to which the dataset belongs.
         self.bucket_name = bucket_name
-        # The file size in bytes.
+        # The file size.
         self.capacity = capacity
-        # The time the file was created, in UTC and formatted as ISO 8601.
+        # The creation time.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
         # The dataset ID.
         self.dataset_id = dataset_id
-        # The dataset type. Valid values:
+        # The type of the dataset. Valid values:
         # 
-        # - **train**: The training set.
-        # 
-        # - **eval**: The evaluation set.
+        # * **train**: training dataset.
+        # * **eval**: evaluation dataset.
         self.dataset_type = dataset_type
         # The file name.
         self.file_name = file_name
-        # The time the file was last modified, in UTC and formatted as ISO 8601.
+        # The last modified time.
         self.last_modified = last_modified
-        # The file path.
+        # The dataset path.
         self.path = path
-        # The storage type. The only valid value is:
+        # The storage type. Valid values:
         # 
-        # - **Standard**.
+        # * **Standard**: Standard storage.
         self.storage_type = storage_type
-        # The training mode. Valid values:
+        # The training mode of the dataset. Valid values:
         # 
-        # - **sft**: Supervised Fine-Tuning (SFT).
-        # 
-        # - **grpo**: Reinforcement Learning (RL).
-        # 
-        # - **text**: Text generation.
+        # * **sft**: supervised fine-tuning.
+        # * **grpo**: reinforcement learning.
+        # * **text**: text generation.
         self.train_mode = train_mode
 
     def validate(self):

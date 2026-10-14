@@ -38,28 +38,28 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         # The instance type.
         self.dbinstance_class = dbinstance_class
         self.dataservice_mode = dataservice_mode
-        # The training dataset ID. This parameter is required for fine-tuning.
+        # The ID of the training dataset. This parameter is required for fine-tuning.
         self.dataset_path = dataset_path
-        # The validation dataset ID. This parameter is required for evaluation.
+        # The ID of the validation dataset. This parameter is required for evaluation.
         self.eval_dataset_path = eval_dataset_path
-        # The model service type. Valid values:
-        #  * **aitrain**: model operator tuning
+        # The type of the model service. Valid values:
+        #  * **aitrain**: Model operator tuning.
         # 
         # This parameter is required.
         self.kube_type = kube_type
-        # The model name.
-        # * **For a preset model, specify the name of the selected model.**
-        # * **For a custom model, specify the path where the model is stored (the model trained in a cold storage instance).**
+        # The name of the model.
+        # * **For a preset model, specify the selected model name.**
+        # * **For a custom model, specify the path of the model (the trained model in a cold storage instance).**
         # 
         # This parameter is required.
         self.model_name = model_name
-        # The model source. Valid values:
-        # * **public**: preset model
-        # * **custom**: custom model
+        # The source of the model. Valid values:
+        # * **public**: Preset model.
+        # * **custom**: Custom model.
         # 
         # This parameter is required.
         self.model_source = model_source
-        # The custom model type.
+        # The type of the custom model.
         self.model_type = model_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -67,18 +67,18 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The running parameters in a JSON string.
+        # The runtime parameters. The value is a JSON string.
         # 
         # This parameter is required.
         self.running_parameter = running_parameter
         # The security group ID.
         self.security_group_id = security_group_id
-        # The model service description.
+        # The description of the model service.
         self.task_name = task_name
         self.tune_arch = tune_arch
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpcid = vpcid
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         # The zone ID.
         self.zone_id = zone_id

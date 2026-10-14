@@ -18,11 +18,11 @@ class DescribeApplicationsRequest(DaraModel):
         region_id: str = None,
         tag: List[main_models.DescribeApplicationsRequestTag] = None,
     ):
-        # The list of application IDs. If specified, only information about these applications is returned.
+        # The list of application IDs. If specified, only the information of these applications is returned.
         self.application_ids = application_ids
         # The application engine filter.
         self.application_types = application_types
-        # The PolarDB instance ID. If specified, only application information related to this PolarDB instance is returned.
+        # The PolarDB instance ID. If specified, only the application information related to this PolarDB instance is returned.
         self.dbcluster_id = dbcluster_id
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -37,7 +37,7 @@ class DescribeApplicationsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tags.
+        # The tag.
         self.tag = tag
 
     def validate(self):

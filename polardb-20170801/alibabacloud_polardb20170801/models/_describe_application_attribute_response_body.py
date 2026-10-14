@@ -32,6 +32,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         nat_gateway_id: str = None,
         nat_mapping_snat_ip_address: str = None,
         pay_type: str = None,
+        polar_claw_application_attribute: main_models.DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute = None,
         polar_claw_saa_sapplication_attribute: main_models.DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute = None,
         polar_fsinstance_id: str = None,
         region_id: str = None,
@@ -61,80 +62,89 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         # The list of subcomponents.
         self.components = components
         # The creation time.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The instance ID of the PolarDB instance on which the application depends.
+        # The PolarDB instance ID on which the application depends.
         self.dbcluster_id = dbcluster_id
-        # The description of the application.
+        # The application description.
         self.description = description
-        # The list of DNAT mapping entries for NAT mapping.
+        # The NAT mapping: the list of DNAT mapping entries.
         self.dnat_mappings = dnat_mappings
-        # The list of endpoints of the application.
+        # The list of endpoints for the application.
         self.endpoints = endpoints
         # The expiration time.
         # 
-        # This value is empty if the billing method is Postpaid.
+        # This parameter is empty when the billing method is pay-as-you-go.
+        # 
+        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expire_time = expire_time
         # Indicates whether the application has expired.
         self.expired = expired
-        # Indicates whether this is the latest version.
+        # Indicates whether the application is of the latest version.
         self.is_latest_version = is_latest_version
         # The latest version number.
         self.latest_version = latest_version
         # The lock mode. Valid values:
         # 
-        # - Unlock: Not locked.
+        # - Unlock: Unlocked.
         # - Lock: Locked.
         self.lock_mode = lock_mode
         # The end time of the maintenance window.
+        # 
+        # The time is displayed in UTC in the HH:mmZ format.
         self.maintain_end_time = maintain_end_time
         # The start time of the maintenance window.
+        # 
+        # The time is displayed in UTC in the HH:mmZ format.
         self.maintain_start_time = maintain_start_time
         # The Mem0 application attributes.
         self.mem_application_attribute = mem_application_attribute
         # The minor version number.
         self.minor_version = minor_version
-        # The NAT gateway ID.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This is a customer-managed SNAT entry that is discovered and returned by the control plane in real time. It is not related to the Internet NAT gateway SNAT.
+        # The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This parameter refers to customer-managed SNAT entries that are discovered and returned in real time by the control plane, and is independent of the Internet NAT gateway SNAT.
         self.nat_mapping_snat_ip_address = nat_mapping_snat_ip_address
         # The billing method.
         self.pay_type = pay_type
-        # The PolarClaw SaaS application attributes.
+        # The attributes of the PolarClaw application.
+        self.polar_claw_application_attribute = polar_claw_application_attribute
+        # The attributes of the PolarClaw SaaS application.
         self.polar_claw_saa_sapplication_attribute = polar_claw_saa_sapplication_attribute
-        # The instance ID of PolarFS Cold Storage Edition or High Performance Edition.
+        # The instance ID of the PolarFS Cold Storage Edition or High-performance Edition.
         self.polar_fsinstance_id = polar_fsinstance_id
         # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The list of security groups at the application level.
+        # The list of application-level security groups.
         self.security_groups = security_groups
-        # The list of whitelists at the application level.
+        # The list of application-level whitelists.
         self.security_iparrays = security_iparrays
         # The serverless type. Valid values:
-        # - 2: agile.
-        # - 3: steady.
+        # - 2: Agile.
+        # - 3: Stable.
         self.serverless_type = serverless_type
         # The SNAT status. Valid values: on and off.
         self.snat_status = snat_status
         # The application status. Valid values:
-        # 
-        # - Creating: Being created.
-        # - Activated: Running.
-        # - Maintaining: Under maintenance.
-        # - ClassChanging: Configuration is being changed.
-        # - Transing: Being migrated.
-        # - MinorVersionUpgrading: Minor version is being upgraded.
-        # - NetCreating: Endpoint is being created.
-        # - NetDeleting: Endpoint is being deleted.
-        # - NetModifying: Endpoint is being modified.
-        # - Restarting: Being restarted.
-        # - Locking: Being locked.
-        # - Locked: Locked.
-        # - Unlocking: Being unlocked.
-        # - Deleting: Being deleted.
+        # - Creating: The application is being created.
+        # - Activated: The application is running.
+        # - Maintaining: The application is under maintenance.
+        # - ClassChanging: The application specifications are being changed.
+        # - Transing: The application is being migrated.
+        # - MinorVersionUpgrading: The minor version of the application is being upgraded.
+        # - NetCreating: The endpoint is being created.
+        # - NetDeleting: The endpoint is being deleted.
+        # - NetModifying: The endpoint is being modified.
+        # - Restarting: The application is being restarted.
+        # - Locking: The application is being locked.
+        # - Locked: The application is locked.
+        # - Unlocking: The application is being unlocked.
+        # - Deleting: The application is being deleted.
         self.status = status
-        # The storage resource information.
+        # The storage resources.
         self.storages = storages
         # Indicates whether an upgrade is available.
         self.upgrade_available = upgrade_available
@@ -144,7 +154,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.v_switch_id = v_switch_id
         # The application version.
         self.version = version
-        # The customer-created VPC NAT gateway ID for NAT mapping.
+        # The customer-managed VPC NAT gateway ID for NAT mapping.
         self.vpc_nat_gateway_id = vpc_nat_gateway_id
         # The zone ID.
         self.zone_id = zone_id
@@ -164,6 +174,8 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
                     v1.validate()
         if self.mem_application_attribute:
             self.mem_application_attribute.validate()
+        if self.polar_claw_application_attribute:
+            self.polar_claw_application_attribute.validate()
         if self.polar_claw_saa_sapplication_attribute:
             self.polar_claw_saa_sapplication_attribute.validate()
         if self.security_groups:
@@ -255,6 +267,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+
+        if self.polar_claw_application_attribute is not None:
+            result['PolarClawApplicationAttribute'] = self.polar_claw_application_attribute.to_map()
 
         if self.polar_claw_saa_sapplication_attribute is not None:
             result['PolarClawSaaSApplicationAttribute'] = self.polar_claw_saa_sapplication_attribute.to_map()
@@ -390,6 +405,10 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 
+        if m.get('PolarClawApplicationAttribute') is not None:
+            temp_model = main_models.DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute()
+            self.polar_claw_application_attribute = temp_model.from_map(m.get('PolarClawApplicationAttribute'))
+
         if m.get('PolarClawSaaSApplicationAttribute') is not None:
             temp_model = main_models.DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute()
             self.polar_claw_saa_sapplication_attribute = temp_model.from_map(m.get('PolarClawSaaSApplicationAttribute'))
@@ -518,9 +537,9 @@ class DescribeApplicationAttributeResponseBodySecurityIPArrays(DaraModel):
         self.security_iparray_name = security_iparray_name
         # The tag of the IP address group.
         self.security_iparray_tag = security_iparray_tag
-        # The whitelisted IP addresses, separated by commas (,).
+        # The whitelist IP addresses, separated by commas.
         self.security_iplist = security_iplist
-        # The network type of the whitelisted IP addresses. Default value: `mix`.
+        # The network type of the whitelist IP addresses. Default value: `mix`.
         self.security_ipnet_type = security_ipnet_type
         # The type of the IP address.
         self.security_iptype = security_iptype
@@ -578,14 +597,13 @@ class DescribeApplicationAttributeResponseBodySecurityGroups(DaraModel):
         security_group_name: str = None,
     ):
         # The network type. Valid values: 
-        # 
         # - vpc
         self.net_type = net_type
         # The region ID.
         self.region_id = region_id
         # The security group ID.
         self.security_group_id = security_group_id
-        # The name of the security group.
+        # The security group name.
         self.security_group_name = security_group_name
 
     def validate(self):
@@ -636,7 +654,7 @@ class DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute(
         # The authentication callback URL.
         self.auth_callback_url = auth_callback_url
         self.auth_providers = auth_providers
-        # The Supabase cluster ID.
+        # The identifier of the Supabase cluster.
         self.supabase_cluster_id = supabase_cluster_id
 
     def validate(self):
@@ -671,6 +689,109 @@ class DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute(
 
         return self
 
+class DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute(DaraModel):
+    def __init__(
+        self,
+        langfuse_binding: main_models.DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding = None,
+    ):
+        # The Langfuse binding information.
+        self.langfuse_binding = langfuse_binding
+
+    def validate(self):
+        if self.langfuse_binding:
+            self.langfuse_binding.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.langfuse_binding is not None:
+            result['LangfuseBinding'] = self.langfuse_binding.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LangfuseBinding') is not None:
+            temp_model = main_models.DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding()
+            self.langfuse_binding = temp_model.from_map(m.get('LangfuseBinding'))
+
+        return self
+
+class DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding(DaraModel):
+    def __init__(
+        self,
+        activated_at: int = None,
+        api_key_id: str = None,
+        binding_task_id: int = None,
+        langfuse_application_id: str = None,
+        phase: str = None,
+        project_id: str = None,
+    ):
+        # The effective period of the attach. The value is a UNIX timestamp.
+        self.activated_at = activated_at
+        # Langfuse API Key ID
+        self.api_key_id = api_key_id
+        # The ID of the binding task.
+        self.binding_task_id = binding_task_id
+        # The ID of the Langfuse application.
+        self.langfuse_application_id = langfuse_application_id
+        # The phase of the binding.
+        self.phase = phase
+        # The ID of the Langfuse project.
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.activated_at is not None:
+            result['ActivatedAt'] = self.activated_at
+
+        if self.api_key_id is not None:
+            result['ApiKeyId'] = self.api_key_id
+
+        if self.binding_task_id is not None:
+            result['BindingTaskId'] = self.binding_task_id
+
+        if self.langfuse_application_id is not None:
+            result['LangfuseApplicationId'] = self.langfuse_application_id
+
+        if self.phase is not None:
+            result['Phase'] = self.phase
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActivatedAt') is not None:
+            self.activated_at = m.get('ActivatedAt')
+
+        if m.get('ApiKeyId') is not None:
+            self.api_key_id = m.get('ApiKeyId')
+
+        if m.get('BindingTaskId') is not None:
+            self.binding_task_id = m.get('BindingTaskId')
+
+        if m.get('LangfuseApplicationId') is not None:
+            self.langfuse_application_id = m.get('LangfuseApplicationId')
+
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
+        return self
+
 class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel):
     def __init__(
         self,
@@ -691,7 +812,7 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel)
         self.graph_llm_model_name = graph_llm_model_name
         # The LLM model name.
         self.llm_model_name = llm_model_name
-        # The project name, which corresponds to the schema that stores project data in the database.
+        # The project name, which corresponds to the schema where project data is stored in the database.
         self.project_name = project_name
         # The reranker model name.
         self.reranker_model_name = reranker_model_name
@@ -774,11 +895,11 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStor
     ):
         # The account source. Valid values: reuse_vector and existing. This parameter is returned only when the status is ENABLED.
         self.account_mode = account_mode
-        # The PolarDB cluster ID used for session storage. This parameter is returned only when the status is ENABLED.
+        # The ID of the PolarDB cluster used for session storage. This parameter is returned only when the status is ENABLED.
         self.dbcluster_id = dbcluster_id
-        # The session database name. This parameter is returned only when the status is ENABLED.
+        # The name of the session database. This parameter is returned only when the status is ENABLED.
         self.dbname = dbname
-        # The session storage status. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
+        # The status of the session store. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
         self.status = status
 
     def validate(self):
@@ -838,8 +959,8 @@ class DescribeApplicationAttributeResponseBodyEndpoints(DaraModel):
         # The IP address.
         self.ip = ip
         # The endpoint type. Valid values:
-        # - Private: VPC endpoint.
-        # - Public: Public endpoint.
+        # - Private: VPC address.
+        # - Public: Internet address.
         self.net_type = net_type
         # The port.
         self.port = port
@@ -912,7 +1033,7 @@ class DescribeApplicationAttributeResponseBodyDnatMappings(DaraModel):
         port_name: str = None,
         status: str = None,
     ):
-        # The access address in the format of NatIp:FrontPort. This address can be used directly from the office network.
+        # The access address in the NatIp:FrontPort format. It can be directly used on the office network.
         self.access_address = access_address
         # The backend service port.
         self.backend_port = backend_port
@@ -990,29 +1111,29 @@ class DescribeApplicationAttributeResponseBodyComponents(DaraModel):
         status: str = None,
         topology: main_models.DescribeApplicationAttributeResponseBodyComponentsTopology = None,
     ):
-        # The specification of the application subcomponent.
+        # The specifications of the application subcomponent.
         self.component_class = component_class
-        # The specification description of the application subcomponent.
+        # The description of the application subcomponent specifications.
         self.component_class_description = component_class_description
         # The subcomponent ID.
         self.component_id = component_id
-        # The maximum number of replicas of the application subcomponent.
+        # The maximum number of replicas for the application subcomponent.
         self.component_max_replica = component_max_replica
-        # The number of replicas of the application subcomponent.
+        # The number of replicas for the application subcomponent.
         self.component_replica = component_replica
-        # The group name of the replicas of the application subcomponent.
+        # The replica group name of the application subcomponent.
         self.component_replica_group_name = component_replica_group_name
         # The type of the application subcomponent.
         self.component_type = component_type
         # The list of security groups at the subcomponent level.
         # 
-        # If the security groups at the subcomponent level are the same as those at the application level, this response element is omitted.
+        # If the security groups at the subcomponent level are the same as those at the application level, this return value is omitted.
         self.security_groups = security_groups
-        # The list of whitelist addresses at the subcomponent level.
+        # The list of whitelist IP addresses at the subcomponent level.
         # 
-        # If the whitelists at the subcomponent level are the same as those at the application level, this response element is omitted.
+        # If the whitelist at the subcomponent level is the same as that at the application level, this return value is omitted.
         self.security_iparrays = security_iparrays
-        # The component status. Valid values are the same as those of the application status.
+        # The component status. The valid values are the same as the application status.
         self.status = status
         # The topology information of the application subcomponent.
         self.topology = topology
@@ -1124,11 +1245,11 @@ class DescribeApplicationAttributeResponseBodyComponentsTopology(DaraModel):
         layer: str = None,
         parents: List[str] = None,
     ):
-        # The list of topology child node IDs or child node subcomponent types of the current application subcomponent.
+        # The list of topology child node IDs or child node subcomponent types for the current application subcomponent.
         self.children = children
-        # The topology layer of the current application subcomponent.
+        # The topology layer of the topology information for the current application subcomponent.
         self.layer = layer
-        # The list of topology parent node IDs or parent node subcomponent types of the current application subcomponent.
+        # The list of topology parent node IDs or parent node subcomponent types for the current application subcomponent.
         self.parents = parents
 
     def validate(self):
@@ -1176,9 +1297,9 @@ class DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays(DaraMod
         self.security_iparray_name = security_iparray_name
         # The tag of the IP address group.
         self.security_iparray_tag = security_iparray_tag
-        # The whitelisted IP addresses, separated by commas (,).
+        # The whitelist IP addresses, separated by commas.
         self.security_iplist = security_iplist
-        # The network type of the whitelisted IP addresses. Default value: `mix`.
+        # The network type of the whitelist IP addresses. Default value: `mix`.
         self.security_ipnet_type = security_ipnet_type
         # The type of the IP address.
         self.security_iptype = security_iptype
@@ -1236,14 +1357,13 @@ class DescribeApplicationAttributeResponseBodyComponentsSecurityGroups(DaraModel
         security_group_name: str = None,
     ):
         # The network type. Valid values: 
-        # 
         # - vpc
         self.net_type = net_type
         # The region ID.
         self.region_id = region_id
         # The security group ID.
         self.security_group_id = security_group_id
-        # The name of the security group.
+        # The security group name.
         self.security_group_name = security_group_name
 
     def validate(self):

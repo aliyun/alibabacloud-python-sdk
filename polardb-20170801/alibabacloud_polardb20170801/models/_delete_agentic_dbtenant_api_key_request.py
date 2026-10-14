@@ -16,7 +16,7 @@ class DeleteAgenticDBTenantApiKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.api_key_id = api_key_id
-        # The AgenticDB cluster ID.
+        # The ID of the AgenticDB cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -24,7 +24,7 @@ class DeleteAgenticDBTenantApiKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tenant ID, which is used for secondary authentication on the backend.
+        # The tenant ID, which is used for secondary verification on the backend.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

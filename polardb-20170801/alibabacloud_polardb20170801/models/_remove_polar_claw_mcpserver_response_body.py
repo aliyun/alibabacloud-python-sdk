@@ -16,13 +16,13 @@ class RemovePolarClawMCPServerResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The status code.
+        # The response status code.
         self.code = code
         # The response message.
         self.message = message
-        # Indicates whether the request was successful. A value of `true` indicates success.
+        # Indicates whether the operation was successful.
         self.ok = ok
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The ID of the deleted MCP server.
         self.server_name = server_name

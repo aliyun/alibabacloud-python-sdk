@@ -22,24 +22,22 @@ class DescribeHALogsResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The instance type. Valid values:
-        # 
-        # - **polardb_mysql_rw**: read-write instance.
+        # The instance type. Valid values: 
+        # - **polardb_mysql_rw**: read/write instance.
         # - **polardb_mysql_ro**: read-only instance.
         # - **polardb_mysql_standby**: standby instance.
         self.dbinstance_type = dbinstance_type
-        # The list of primary/secondary 这里 AI 机翻使用了 failover，但代码里用了 switch，建议保持一致，都改为 swichover logs.
+        # The list of primary/secondary switchover logs.
         self.ha_log_items = ha_log_items
         # Indicates whether primary/secondary switchover records exist. Valid values:
-        # 
-        # - **1**: No
-        # - **0**: Yes
+        # - **1**: No records exist.
+        # - **0**: Records exist.
         self.ha_status = ha_status
         # The number of items in the log list on the current page.
         self.items_numbers = items_numbers
-        # The page number. The value is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: 1.
+        # The page number. The value is a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page. Valid values: 30 to 100. Default value: 30.
+        # The number of entries per page. Valid values: 30 to 100. Default value: 30.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -131,15 +129,19 @@ class DescribeHALogsResponseBodyHaLogItems(DaraModel):
         switch_id: str = None,
         switch_start_time: str = None,
     ):
-        # The cause code of the switchover.
+        # The switchover cause code.
         self.switch_cause_code = switch_cause_code
-        # The cause of the switchover.
+        # The switchover cause.
         self.switch_cause_detail = switch_cause_detail
         # The end time of the switchover.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.switch_finish_time = switch_finish_time
         # The ID of the primary/secondary switchover log.
         self.switch_id = switch_id
         # The start time of the switchover.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.switch_start_time = switch_start_time
 
     def validate(self):

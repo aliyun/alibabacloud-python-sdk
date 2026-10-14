@@ -111,9 +111,12 @@ class DescribeAgenticDBComputeClustersResponseBodyItems(DaraModel):
         # The number of compute nodes. The value is fixed to 1 in the first phase.
         self.compute_node_count = compute_node_count
         # The time when the compute instance was created.
+        # 
+        # The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The description of the compute instance.
         self.description = description
+        # Indicates whether the compute instance is the default branch.
         self.is_default_branch = is_default_branch
         # The time when the compute instance was last activated.
         self.last_activated_at = last_activated_at
@@ -123,7 +126,9 @@ class DescribeAgenticDBComputeClustersResponseBodyItems(DaraModel):
         self.min_cu = min_cu
         # The operator type.
         self.operator_type = operator_type
+        # The ID of the parent branch. This value is an empty string for the root branch.
         self.parent_branch_id = parent_branch_id
+        # The name of the parent branch. This value is an empty string for the root branch.
         self.parent_branch_name = parent_branch_name
         # The ID of the associated project.
         self.project_id = project_id
@@ -131,7 +136,7 @@ class DescribeAgenticDBComputeClustersResponseBodyItems(DaraModel):
         self.project_name = project_name
         # The status of the compute instance.
         self.status = status
-        # The amount of used data, in bytes.
+        # The amount of data used, in bytes.
         self.storage_size = storage_size
         # The ID of the associated tenant.
         self.tenant_id = tenant_id

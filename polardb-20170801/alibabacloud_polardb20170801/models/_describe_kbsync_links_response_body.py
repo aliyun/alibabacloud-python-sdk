@@ -95,6 +95,8 @@ class DescribeKBSyncLinksResponseBodyItems(DaraModel):
         # The client ID.
         self.client_id = client_id
         # The creation time.
+        # 
+        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
         # The description of the synchronization link.
         self.description = description

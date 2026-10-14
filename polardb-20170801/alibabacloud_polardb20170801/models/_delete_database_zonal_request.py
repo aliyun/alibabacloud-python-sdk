@@ -14,7 +14,9 @@ class DeleteDatabaseZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
+        # 
+        # > Note: The DBClusterId must be the ID of a PolarDB on ENS cluster created by calling CreateDBCluster(CloudProvider=ENS, EnsRegionId=xxx).
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

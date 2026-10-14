@@ -41,7 +41,7 @@ class TransformDBClusterPayTypeRequest(DaraModel):
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The subscription type of the subscription instance. Valid values:
+        # The unit of the subscription duration for the instance. Valid values:
         # 
         # - **Year**: yearly subscription
         # 
@@ -61,9 +61,9 @@ class TransformDBClusterPayTypeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The subscription duration. Valid values:
         # 
-        # - If **Period** is set to **Year**, set **UsedTime** to a value from 1 to 3.
+        # - If **Period** is set to **Year**, set UsedTime to a value from 1 to 3.
         # 
-        # - If **Period** is set to **Month**, set **UsedTime** to a value from 1 to 9.
+        # - If **Period** is set to **Month**, set UsedTime to a value from 1 to 9.
         # 
         # > This parameter is required when **PayType** is set to **Prepaid**.
         self.used_time = used_time

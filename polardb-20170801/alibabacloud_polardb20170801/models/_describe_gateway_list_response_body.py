@@ -17,23 +17,20 @@ class DescribeGatewayListResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
-        # A list of gateway instances.
+        # The list of gateway instances.
         self.items = items
-        # The page number.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The number of entries per page.
-        # 
-        # - **30**
-        # 
-        # - **50**
-        # 
-        # - **100**
+        # The number of entries per page. Valid values:
+        # * **30**
+        # * **50**
+        # * **100**
         # 
         # Default value: 30.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The total number of entries.
         self.total_record_count = total_record_count
@@ -112,17 +109,19 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The time when the gateway instance was created.
+        # The creation time.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The database type.
         self.db_type = db_type
-        # The expiration time of the gateway instance.
+        # The expiration time of the cluster.
+        # - If the billing method of the cluster is subscription, the actual expiration time is returned.
+        # - If the billing method of the cluster is pay-as-you-go, an empty value is returned.
         # 
-        # - For subscription instances, this parameter indicates the expiration time.
-        # 
-        # - This parameter is empty for pay-as-you-go instances.
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
-        # Indicates whether the gateway instance has expired. Valid values:
+        # Indicates whether the cluster has expired. Valid values:
         # 
         # - **true**
         # 
@@ -130,27 +129,27 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
         self.expired = expired
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The description of the gateway instance.
+        # The gateway description.
         self.gw_description = gw_description
-        # The time when the gateway instance was last modified.
+        # The last modification time.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.modify_time = modify_time
-        # The billing method. Valid values:
+        # The billing method. Valid values: 
         # 
-        # - **Postpaid**: pay-as-you-go
-        # 
-        # - **Prepaid**: subscription
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
         # The region ID.
         self.region_id = region_id
-        # The status of the gateway instance. Valid values:
+        # The application status. Valid values:
         # 
-        # - **CREATE**: creating
-        # 
-        # - **ACTIVATION**: running
+        # - CREATE: being created.
+        # - ACTIVATION: running.
         self.status = status
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

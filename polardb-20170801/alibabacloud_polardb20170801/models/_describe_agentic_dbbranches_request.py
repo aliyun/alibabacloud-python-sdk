@@ -16,15 +16,29 @@ class DescribeAgenticDBBranchesRequest(DaraModel):
         status: str = None,
         tenant_id: str = None,
     ):
+        # The branch name for fuzzy match.
         self.branch_name = branch_name
+        # The AgenticDB cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 30. Maximum value: 100.
         self.page_size = page_size
+        # The ID of the project to which the branch belongs.
         self.project_id = project_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The status filter. Valid values:
+        # 
+        # - Running
+        # - Pending
+        # - Paused
         self.status = status
+        # The ID of the tenant to which the branch belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

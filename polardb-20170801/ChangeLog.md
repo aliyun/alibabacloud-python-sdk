@@ -1,3 +1,34 @@
+2026-10-14 Version: 8.5.0
+- Support API DescribeKBSyncLinkAttribute.
+- Update API CreateCostRule: add request parameters CacheCreationCostPointsPerMillion.
+- Update API CreateCostRule: add request parameters EffectiveStartTime.
+- Update API CreateCostRule: add request parameters ExplicitCacheCostPointsPerMillion.
+- Update API CreateCostRule: add request parameters ImageCostPointsPerCount.
+- Update API CreateCostRule: add request parameters InputTokenTiers.
+- Update API CreateCostRule: add request parameters VideoCostPointsPerSecond.
+- Update API CreateKBSyncLink: add request parameters FeishuChatMemberStaleTtlSeconds.
+- Update API CreateKBSyncLink: add request parameters UserRefreshToken.
+- Update API DescribeApplicationAttribute: add response parameters Body.PolarClawApplicationAttribute.
+- Update API DescribeCostRules: add request parameters CostRuleId.
+- Update API DescribeCostRules: add request parameters InputTokenTier.
+- Update API DescribeCostRules: add response parameters Body.Items.$.CacheCreationCostPointsPerMillion.
+- Update API DescribeCostRules: add response parameters Body.Items.$.EffectiveEndTime.
+- Update API DescribeCostRules: add response parameters Body.Items.$.EffectiveStartTime.
+- Update API DescribeCostRules: add response parameters Body.Items.$.ExplicitCacheCostPointsPerMillion.
+- Update API DescribeCostRules: add response parameters Body.Items.$.ImageCostPointsPerCount.
+- Update API DescribeCostRules: add response parameters Body.Items.$.InputTokenTier.
+- Update API DescribeCostRules: add response parameters Body.Items.$.InputTokenTiers.
+- Update API DescribeCostRules: add response parameters Body.Items.$.ModelServiceName.
+- Update API DescribeCostRules: add response parameters Body.Items.$.VideoCostPointsPerSecond.
+- Update API ModifyCostRule: add request parameters CacheCreationCostPointsPerMillion.
+- Update API ModifyCostRule: add request parameters ExplicitCacheCostPointsPerMillion.
+- Update API ModifyCostRule: add request parameters ImageCostPointsPerCount.
+- Update API ModifyCostRule: add request parameters InputTokenTiers.
+- Update API ModifyCostRule: add request parameters VideoCostPointsPerSecond.
+- Update API UpdateKBSyncLink: add request parameters FeishuChatMemberStaleTtlSeconds.
+- Update API UpdateKBSyncLink: add request parameters UserRefreshToken.
+
+
 2026-09-23 Version: 8.4.3
 - Update API CreateNetworkChannel: add request parameters SecurityGroupId.
 - Update API DescribeNetworkChannel: add response parameters Body.ChannelInfos.$.EniId.

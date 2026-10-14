@@ -17,7 +17,7 @@ class DescribeAgenticDBBranchEndpointsRequest(DaraModel):
         # 
         # This parameter is required.
         self.branch_id = branch_id
-        # The AgenticDB cluster ID.
+        # The ID of the AgenticDB cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

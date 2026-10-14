@@ -17,11 +17,11 @@ class DescribeModifyParameterLogResponseBody(DaraModel):
     ):
         # The cluster engine.
         self.engine = engine
-        # The engine version.
+        # The database engine version.
         self.engine_version = engine_version
         # The list of parameter modification history.
         self.items = items
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -79,7 +79,9 @@ class DescribeModifyParameterLogResponseBodyItems(DaraModel):
         parameter_name: str = None,
         status: str = None,
     ):
-        # The time when the parameter was last modified.
+        # The last modification time.
+        # 
+        # The time is in the ISO 8601 format. The time is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.modify_time = modify_time
         # The parameter value after the modification.
         self.new_parameter_value = new_parameter_value
@@ -87,7 +89,7 @@ class DescribeModifyParameterLogResponseBodyItems(DaraModel):
         self.old_parameter_value = old_parameter_value
         # The parameter name.
         self.parameter_name = parameter_name
-        # Indicates whether the modification was applied successfully.
+        # Indicates whether the modification is applied.
         self.status = status
 
     def validate(self):

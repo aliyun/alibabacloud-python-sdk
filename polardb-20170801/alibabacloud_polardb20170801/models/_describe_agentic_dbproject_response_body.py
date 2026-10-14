@@ -17,14 +17,29 @@ class DescribeAgenticDBProjectResponseBody(DaraModel):
         status: str = None,
         tenant_id: str = None,
     ):
+        # The time when the project was created.
+        # 
+        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
+        # The ID of the default branch.
         self.default_branch_id = default_branch_id
+        # The name of the default branch.
         self.default_branch_name = default_branch_name
+        # The description of the project.
         self.description = description
+        # Project ID
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The project status. Valid values:
+        # 
+        # - Active: Normal.
+        # - Destroying: Being destroyed.
+        # - Destroyed: Destroyed.
         self.status = status
+        # The ID of the tenant to which the project belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

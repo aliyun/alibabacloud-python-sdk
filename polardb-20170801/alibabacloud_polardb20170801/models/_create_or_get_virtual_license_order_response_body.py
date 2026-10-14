@@ -21,31 +21,31 @@ class CreateOrGetVirtualLicenseOrderResponseBody(DaraModel):
         request_id: str = None,
         virtual_order_id: str = None,
     ):
-        # The number of generated activation codes.
+        # The number of activation codes that have been generated.
         self.activated_code_count = activated_code_count
-        # The maximum number of activation codes that you can apply for.
+        # The quota of activation codes that can be requested.
         self.activation_code_quota = activation_code_quota
-        # The Alibaba Cloud order ID (including the virtual order ID).
+        # The Alibaba Cloud order ID, which includes the virtual order ID.
         self.aliyun_order_id = aliyun_order_id
-        # Indicates whether activation codes can be generated without the system identifier.
+        # Indicates whether the System Identifier can be left empty when generating an activation code.
         self.allow_empty_system_identifier = allow_empty_system_identifier
         # The time when the order was created.
         self.gmt_created = gmt_created
         # The time when the order was last updated.
         self.gmt_modified = gmt_modified
-        # Indicates whether the order is a virtual order (virtual orders allow pre-generation of activation codes).
+        # Indicates whether the order is a virtual order. Virtual orders allow pre-generation of activation codes.
         self.is_virtual_order = is_virtual_order
-        # Indicates whether the virtual order is frozen (activation codes cannot be generated for a frozen virtual order).
+        # Indicates whether the virtual order is frozen. A frozen virtual order does not allow further generation of activation codes.
         self.is_virtual_order_frozen = is_virtual_order_frozen
-        # The plan type.
+        # The package type.
         self.package_type = package_type
-        # The validity period of the plan, which is one year (common) or thirty years (long-term).
+        # The validity period of the package. Typical values are one year or long-term (30 years).
         self.package_validity = package_validity
         # The purchase channel.
         self.purchase_channel = purchase_channel
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The ID of the virtual order.
+        # The virtual order ID.
         self.virtual_order_id = virtual_order_id
 
     def validate(self):

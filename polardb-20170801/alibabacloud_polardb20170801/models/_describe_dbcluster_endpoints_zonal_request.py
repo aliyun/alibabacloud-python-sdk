@@ -17,11 +17,13 @@ class DescribeDBClusterEndpointsZonalRequest(DaraModel):
     ):
         # The cluster ID.
         # 
+        # > Note: Only edge cluster (Zonal) IDs are supported. Regular PolarDB cluster IDs are not supported. You can call DescribeDBClustersZonal to retrieve the list of edge clusters.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The cluster endpoint ID.
         self.dbendpoint_id = dbendpoint_id
-        # Specifies whether to return information about AI nodes.
+        # Specifies whether to return AI node information.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -27,25 +27,21 @@ class DescribeDBClusterVersionZonalResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The latest version of the database kernel.
+        # The latest version of the database kernel engine.
         self.dblatest_version = dblatest_version
-        # The minor version of the database engine.
+        # The minor version number of the database engine.
+        # * If `DBVersion` is **8.0**, valid values are:
+        #     * **8.0.2**
+        #     * **8.0.1**
+        # * If `DBVersion` is **5.7**, the value is **5.7.28**.
         # 
-        # - If `DBVersion` is **8.0**, the valid values are:
-        # 
-        #   - **8.0.2**
-        # 
-        #   - **8.0.1**
-        # 
-        # - If `DBVersion` is **5.7**, the value is **5.7.28**.
-        # 
-        # - If `DBVersion` is **5.6**, the value is **5.6.16**.
+        # * If `DBVersion` is **5.6**, the value is **5.6.16**.
         self.dbminor_version = dbminor_version
-        # The patch version of the database engine.
+        # The revision version number of the database engine.
         self.dbrevision_version = dbrevision_version
         # The list of upgradable versions.
         self.dbrevision_version_list = dbrevision_version_list
-        # The major version of the database engine. Valid values:
+        # The major version number of the database engine. Valid values:
         # 
         # - 8.0
         # 
@@ -53,51 +49,48 @@ class DescribeDBClusterVersionZonalResponseBody(DaraModel):
         # 
         # - 5.6
         self.dbversion = dbversion
-        # The status of the current minor version of the database. Valid values:
+        # The status of the current database minor version. Valid values:
         # 
         # - Stable: The current version is stable.
         # 
         # - Old: The current version is outdated. Upgrade to the latest version.
         # 
-        # - HighRisk: The current version has critical bugs. Upgrade to the latest version immediately.
+        # - HighRisk: The current version has critical defects. Upgrade to the latest version immediately.
         # 
-        # - Beta: The current version is a beta version.
+        # - Beta: The current version is a beta release.
         self.dbversion_status = dbversion_status
-        # Indicates whether the current database kernel version is the latest version. Valid values:
+        # Indicates whether the current database kernel engine version is the latest version. Valid values:
         # 
         # - true
         # 
         # - false
         self.is_latest_version = is_latest_version
-        # Indicates whether the current database proxy version is the latest version. Valid values:
+        # Indicates whether the current database kernel engine version is the latest version. Valid values:
         # 
         # - true
         # 
         # - false
         self.is_proxy_latest_version = is_proxy_latest_version
-        # The latest version of the database proxy.
+        # The latest version of PolarProxy.
         self.proxy_latest_version = proxy_latest_version
-        # The version of the database proxy.
+        # The version of PolarProxy.
         self.proxy_revision_version = proxy_revision_version
-        # The list of upgradable database proxy versions.
+        # The release status of the PolarProxy version. Valid values:
         # 
         # - **Stable**: The current version is stable.
-        # 
         # - **Old**: The current version is outdated. Do not upgrade to this version.
-        # 
-        # - **HighRisk**: The current version has critical bugs. Do not upgrade to this version.
-        # 
-        # - **Beta**: The current version is a beta version.
+        # - **HighRisk**: The current version has critical defects. Do not upgrade to this version.
+        # - **Beta**: The current version is a beta release.
         self.proxy_revision_version_list = proxy_revision_version_list
-        # The status of the database proxy version. Valid values:
+        # The version status of PolarProxy. Valid values:
         # 
         # - Stable: The current version is stable.
         # 
         # - Old: The current version is outdated. Upgrade to the latest version.
         # 
-        # - HighRisk: The current version has critical bugs. Upgrade to the latest version immediately.
+        # - HighRisk: The current version has critical defects. Upgrade to the latest version immediately.
         # 
-        # - Beta: The current version is a beta version.
+        # - Beta: The current version is a beta release.
         self.proxy_version_status = proxy_version_status
         # The request ID.
         self.request_id = request_id
@@ -228,14 +221,12 @@ class DescribeDBClusterVersionZonalResponseBodyProxyRevisionVersionList(DaraMode
         # The release notes.
         self.release_note = release_note
         # The release type. Valid values:
-        # 
-        # - **LTS**: Long-Term Support (LTS) version.
-        # 
-        # - **BETA**: Preview version.
+        # * **LTS**: Long-term support version.
+        # * **BETA**: Preview version.
         self.release_type = release_type
-        # The code of the patch version for the database proxy. Use this code to specify the target version for an upgrade.
+        # The revision version code of the PolarProxy engine, which is used to specify the target version for the upgrade.
         self.revision_version_code = revision_version_code
-        # The patch version of the database proxy.
+        # The revision version number of the PolarProxy engine.
         self.revision_version_name = revision_version_name
 
     def validate(self):
@@ -287,18 +278,14 @@ class DescribeDBClusterVersionZonalResponseBodyDBRevisionVersionList(DaraModel):
         # The release notes.
         self.release_note = release_note
         # The release status of the database version. Valid values:
-        # 
-        # - **Stable**: The current version is stable.
-        # 
-        # - **Old**: The current version is outdated. Do not upgrade to this version.
-        # 
-        # - **HighRisk**: The current version has critical bugs. Do not upgrade to this version.
-        # 
-        # - **Beta**: The current version is a beta version.
+        # * **Stable**: The current version is stable.
+        # * **Old**: The current version is outdated. Do not upgrade to this version.
+        # * **HighRisk**: The current version has critical defects. Do not upgrade to this version.
+        # * **Beta**: The current version is a beta release.
         self.release_type = release_type
-        # The code of the patch version for the database engine. Use this code to specify the target version for an upgrade.
+        # The revision version code of the database engine, which is used to specify the target version for the upgrade.
         self.revision_version_code = revision_version_code
-        # The patch version of the database engine.
+        # The revision version number of the database engine.
         self.revision_version_name = revision_version_name
 
     def validate(self):

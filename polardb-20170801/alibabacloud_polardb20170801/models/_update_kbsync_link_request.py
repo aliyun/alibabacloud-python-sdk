@@ -9,6 +9,7 @@ class UpdateKBSyncLinkRequest(DaraModel):
         self,
         client_id: str = None,
         client_secret: str = None,
+        feishu_chat_member_stale_ttl_seconds: int = None,
         knowledge_base_id: str = None,
         link_id: str = None,
         mcp_endpoint: str = None,
@@ -18,35 +19,40 @@ class UpdateKBSyncLinkRequest(DaraModel):
         sync_interval_minutes: int = None,
         user_access_token: str = None,
         user_id: str = None,
+        user_refresh_token: str = None,
     ):
         # The client ID.
         self.client_id = client_id
         # The client secret.
         self.client_secret = client_secret
-        # The unique ID of the knowledge base.
+        # The validity period of a successful Lark group member snapshot used for fallback reuse, in seconds. This parameter can be explicitly set only for FEISHU synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 disables snapshot fallback reuse. A positive integer indicates the maximum age of a snapshot allowed for reuse. If this parameter is omitted, the original value is retained. Explicitly passing -1 restores the default behavior.
+        self.feishu_chat_member_stale_ttl_seconds = feishu_chat_member_stale_ttl_seconds
+        # The unique identifier of the knowledge base.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
-        # The synchronization link ID.
+        # The ID of the synchronization link.
         # 
         # This parameter is required.
         self.link_id = link_id
-        # The DingTalk document MCP Server endpoint.
+        # The endpoint of the DingTalk Docs MCP server.
         self.mcp_endpoint = mcp_endpoint
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The DingTalk spreadsheet MCP Server endpoint.
+        # The endpoint of the DingTalk Sheets MCP server.
         self.sheet_mcp_endpoint = sheet_mcp_endpoint
-        # Specifies whether to enable automatic synchronization. This parameter can only be modified independently and cannot be changed together with other configurations.
+        # Specifies whether to enable automatic synchronization. This parameter must be modified individually and cannot be changed along with other configurations.
         self.sync_enabled = sync_enabled
         # 20
         self.sync_interval_minutes = sync_interval_minutes
         # The new Lark user access token.
         self.user_access_token = user_access_token
-        # The DingTalk user ID of the operator.
+        # The ID of the DingTalk user that performs the operation.
         self.user_id = user_id
+        # The new Lark user refresh token. Pass this parameter together with UserAccessToken. Passing empty strings for both parameters indicates deletion.
+        self.user_refresh_token = user_refresh_token
 
     def validate(self):
         pass
@@ -61,6 +67,9 @@ class UpdateKBSyncLinkRequest(DaraModel):
 
         if self.client_secret is not None:
             result['ClientSecret'] = self.client_secret
+
+        if self.feishu_chat_member_stale_ttl_seconds is not None:
+            result['FeishuChatMemberStaleTtlSeconds'] = self.feishu_chat_member_stale_ttl_seconds
 
         if self.knowledge_base_id is not None:
             result['KnowledgeBaseId'] = self.knowledge_base_id
@@ -89,6 +98,9 @@ class UpdateKBSyncLinkRequest(DaraModel):
         if self.user_id is not None:
             result['UserId'] = self.user_id
 
+        if self.user_refresh_token is not None:
+            result['UserRefreshToken'] = self.user_refresh_token
+
         return result
 
     def from_map(self, m: dict = None):
@@ -98,6 +110,9 @@ class UpdateKBSyncLinkRequest(DaraModel):
 
         if m.get('ClientSecret') is not None:
             self.client_secret = m.get('ClientSecret')
+
+        if m.get('FeishuChatMemberStaleTtlSeconds') is not None:
+            self.feishu_chat_member_stale_ttl_seconds = m.get('FeishuChatMemberStaleTtlSeconds')
 
         if m.get('KnowledgeBaseId') is not None:
             self.knowledge_base_id = m.get('KnowledgeBaseId')
@@ -125,6 +140,9 @@ class UpdateKBSyncLinkRequest(DaraModel):
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+
+        if m.get('UserRefreshToken') is not None:
+            self.user_refresh_token = m.get('UserRefreshToken')
 
         return self
 

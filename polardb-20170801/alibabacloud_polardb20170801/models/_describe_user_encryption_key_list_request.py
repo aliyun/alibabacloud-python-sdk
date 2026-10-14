@@ -18,22 +18,21 @@ class DescribeUserEncryptionKeyListRequest(DaraModel):
         tderegion: str = None,
     ):
         # The cluster ID.
-        # 
-        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in the destination region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in the specified region, including the cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The region ID.
         # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about the available regions of the destination account, including region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions for the current account, including the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The region of the transparent data encryption (TDE) key.
+        # The region where the TDE key resides.
         self.tderegion = tderegion
 
     def validate(self):

@@ -19,11 +19,11 @@ class DescribeAgenticDBBranchLineageResponseBody(DaraModel):
         root_branch_id: str = None,
         tenant_id: str = None,
     ):
-        # The anchor branch ID.
+        # The ID of the anchor branch.
         self.anchor_branch_id = anchor_branch_id
         # The list of lineage nodes.
         self.items = items
-        # The total number of returned nodes.
+        # The total number of nodes returned.
         self.node_count = node_count
         # The project ID.
         self.project_id = project_id
@@ -31,7 +31,7 @@ class DescribeAgenticDBBranchLineageResponseBody(DaraModel):
         self.project_name = project_name
         # The request ID.
         self.request_id = request_id
-        # The primary branch ID.
+        # The ID of the primary branch.
         self.root_branch_id = root_branch_id
         # The tenant ID.
         self.tenant_id = tenant_id
@@ -125,7 +125,7 @@ class DescribeAgenticDBBranchLineageResponseBodyItems(DaraModel):
         parent_branch_name: str = None,
         status: str = None,
     ):
-        # The compute cluster ID of the branch.
+        # The ID of the compute cluster associated with the branch.
         self.branch_compute_cluster_id = branch_compute_cluster_id
         # The branch description.
         self.branch_description = branch_description
@@ -134,8 +134,10 @@ class DescribeAgenticDBBranchLineageResponseBodyItems(DaraModel):
         # The branch name.
         self.branch_name = branch_name
         # The time when the branch was created.
+        # 
+        # The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
-        # The depth relative to the anchor branch. The anchor branch has a depth of 0. Ancestor branches have negative values. Descendant branches have positive values.
+        # The depth relative to the anchor branch. The anchor branch has a depth of 0. Ancestor branches have negative values, and descendant branches have positive values.
         self.depth = depth
         # The total number of direct child branches.
         self.direct_child_count = direct_child_count
@@ -145,12 +147,13 @@ class DescribeAgenticDBBranchLineageResponseBodyItems(DaraModel):
         self.has_more_children = has_more_children
         # Indicates whether the branch is the anchor branch.
         self.is_anchor = is_anchor
+        # Indicates whether the branch is the default branch.
         self.is_default_branch = is_default_branch
         # Indicates whether the branch is the primary branch.
         self.is_root = is_root
-        # The parent branch ID.
+        # The ID of the parent branch.
         self.parent_branch_id = parent_branch_id
-        # The parent branch name.
+        # The name of the parent branch.
         self.parent_branch_name = parent_branch_name
         # The branch status. Valid values:
         # - Active

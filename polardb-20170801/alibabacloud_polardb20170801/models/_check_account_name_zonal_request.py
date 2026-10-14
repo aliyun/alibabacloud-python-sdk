@@ -20,6 +20,8 @@ class CheckAccountNameZonalRequest(DaraModel):
         self.account_name = account_name
         # The cluster ID.
         # 
+        # > Note: This parameter accepts only edge cluster IDs, which you can obtain by calling the DescribeDBClustersZonal operation. For common PolarDB clusters, use the CheckAccountName operation.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account

@@ -32,7 +32,7 @@ class DescribeAgenticDBClustersRequest(DaraModel):
         self.dbcluster_status = dbcluster_status
         # The maximum number of entries to return. Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call. If there is no next query, do not pass this parameter.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call. If there is no next query, do not specify this parameter.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
@@ -143,7 +143,7 @@ class DescribeAgenticDBClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can filter the cluster list by tag. You can specify up to 20 tag pairs. The number n for each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key corresponds to Tag.n.Value.
+        # The tag key. You can use tags to filter clusters. You can specify up to 20 tags. The number n for each tag pair must be unique and must be a consecutive integer that starts from 1. The Tag.n.Key parameter is paired with the Tag.n.Value parameter.
         self.key = key
         # The tag value that corresponds to the tag key.
         self.value = value

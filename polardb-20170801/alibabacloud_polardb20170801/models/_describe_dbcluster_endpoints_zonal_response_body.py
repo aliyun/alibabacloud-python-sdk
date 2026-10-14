@@ -13,7 +13,7 @@ class DescribeDBClusterEndpointsZonalResponseBody(DaraModel):
         items: List[main_models.DescribeDBClusterEndpointsZonalResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The details of the cluster endpoints.
+        # The cluster endpoint details.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -79,65 +79,58 @@ class DescribeDBClusterEndpointsZonalResponseBodyItems(DaraModel):
         self.auto_add_new_nodes = auto_add_new_nodes
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The name of the endpoint.
+        # The endpoint name.
         self.dbendpoint_description = dbendpoint_description
         # The endpoint ID.
         self.dbendpoint_id = dbendpoint_id
         # The advanced configurations of the cluster endpoint.
         # 
-        # - **DistributedTransaction**: The status of transaction splitting. Valid values:
+        # * **DistributedTransaction**: The transaction splitting status. Valid values:
+        #     * **on**: Transaction splitting is enabled.
+        #     * **off**: Transaction splitting is disabled.
         # 
-        #   - **on**: Transaction splitting is enabled.
+        # * **ConsistLevel**: The session consistency level. Valid values:
+        #     * **0**: Eventual consistency.
+        #     * **1**: Session consistency.
+        #     * **2**: Global consistency.
         # 
-        #   - **off**: Transaction splitting is disabled.
+        # *  **LoadBalanceStrategy**: The load balancing policy. Automatic scheduling based on load. The value is fixed as **load**.
         # 
-        # - **ConsistLevel**: The consistency level. Valid values:
-        # 
-        #   - **0**: Eventual consistency.
-        # 
-        #   - **1**: Session consistency.
-        # 
-        #   - **2**: Global consistency.
-        # 
-        # - **LoadBalanceStrategy**: The load balancing policy for automatic scheduling based on loads. The value is fixed as **load**.
-        # 
-        # - **MasterAcceptReads**: Specifies whether the primary node accepts read requests. Valid values:
-        # 
-        #   - **on**: The primary node accepts read requests.
-        # 
-        #   - **off**: The primary node does not accept read requests.
+        # * **MasterAcceptReads**: Specifies whether the primary database accepts reads. Valid values:
+        #     * **on**: The primary database accepts reads.
+        #     * **off**: Offload reads from primary node.
         self.endpoint_config = endpoint_config
-        # The type of the cluster endpoint. Valid values:
+        # The cluster endpoint type. Valid values:
         # 
-        # - Cluster: the default cluster endpoint.
+        # - Cluster: Default cluster endpoint.
         # 
-        # - Primary: the primary endpoint.
+        # - Primary: Primary endpoint.
         # 
-        # - Custom: a custom cluster endpoint.
+        # - Custom: Custom cluster endpoint.
         self.endpoint_type = endpoint_type
-        # The role of each node in the endpoint. The primary node has the Writer role. Because multiple read-only nodes can be added to an endpoint, each read-only node is assigned a role name suffixed with a number, such as Reader1 and Reader2.
+        # The role names of the nodes under the target endpoint. The primary node is named Writer. Because multiple read-only nodes can be added to an endpoint, a number is appended to the role name of each read-only node for distinction, such as Reader1 and Reader2.
         self.node_with_roles = node_with_roles
-        # The list of nodes that are configured for the endpoint.
+        # The list of nodes configured for the endpoint.
         self.nodes = nodes
-        # The policy for global consistency timeout. Valid values:
+        # The global consistency timeout policy. Valid values:
         # 
         # - 0: Sends the request to the primary node.
         # 
-        # - 2: Degrades the request. If a global consistency read times out, the query is automatically degraded to a regular request. The client does not receive an error message.
+        # - 2: Downgrades upon timeout. If a global consistency read times out, the query is automatically downgraded to regular requests, and the client does not receive an error message.
         self.polar_scc_timeout_action = polar_scc_timeout_action
-        # The timeout period for global consistency.
+        # The global consistency timeout period.
         self.polar_scc_wait_timeout = polar_scc_wait_timeout
         # The read/write mode. Valid values:
         # 
-        # - ReadWrite: read and write (automatic read/write splitting).
+        # - ReadWrite: Read and write (automatic read/write splitting).
         # 
-        # - ReadOnly: read-only.
+        # - ReadOnly: Read-only.
         self.read_write_mode = read_write_mode
-        # Specifies whether global consistency (high-performance mode) is enabled for the node. Valid values:
+        # Specifies whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
         # 
-        # - on: enabled.
+        # - on: Enabled.
         # 
-        # - off: disabled.
+        # - off: Disabled.
         self.scc_mode = scc_mode
 
     def validate(self):
@@ -255,9 +248,9 @@ class DescribeDBClusterEndpointsZonalResponseBodyItemsAddressItems(DaraModel):
     ):
         # The connection string.
         self.connection_string = connection_string
-        # Specifies whether the endpoint is the dashboard endpoint of a PolarDB search node. Valid values:
+        # Specifies whether the address is the dashboard address of a PolarDB Search node. Valid values:
         # 
-        # - True: Yes.
+        # - Ture: Yes.
         # 
         # - False: No.
         self.dashboard_used = dashboard_used
@@ -267,17 +260,17 @@ class DescribeDBClusterEndpointsZonalResponseBodyItemsAddressItems(DaraModel):
         # 
         # - Public: Internet.
         # 
-        # - Private: internal network.
+        # - Private: Private network.
         self.net_type = net_type
-        # The port number.
+        # The port.
         self.port = port
-        # The private domain name that is bound to the endpoint.
+        # The bound private domain name.
         self.private_zone_connection_string = private_zone_connection_string
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID.
         self.vpcid = vpcid
-        # The virtual switch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC instance ID.
+        # The VPC-connected instance ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

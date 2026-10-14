@@ -13,7 +13,7 @@ class DescribeCrossCloudLevelsResponseBody(DaraModel):
         cross_cloud_level_list: List[main_models.DescribeCrossCloudLevelsResponseBodyCrossCloudLevelList] = None,
         request_id: str = None,
     ):
-        # The list of supported cross-cloud specifications.
+        # The list of specifications supported for cross-cloud scenarios.
         self.cross_cloud_level_list = cross_cloud_level_list
         # The request ID.
         self.request_id = request_id
