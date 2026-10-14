@@ -111,9 +111,11 @@ class DescribeForwardTableEntriesResponseBodyForwardTableEntries(DaraModel):
         self.internal_port = internal_port
         # The protocol. Valid values:
         # 
-        # *   **TCP**: forwards TCP packets.
-        # *   **UDP**: forwards UDP packets.
-        # *   **Any**: forwards all packets.
+        # - **TCP**: forwards TCP packets.
+        # 
+        # - **UDP**: forwards UDP packets.
+        # 
+        # - **Any**: forwards all packets.
         self.ip_protocol = ip_protocol
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
@@ -121,16 +123,21 @@ class DescribeForwardTableEntriesResponseBodyForwardTableEntries(DaraModel):
         self.standby_external_ip = standby_external_ip
         # The status of the secondary EIP. Valid values:
         # 
-        # *   Running
-        # *   Stopping
-        # *   Stopped
-        # *   Starting
+        # - Running
+        # 
+        # - Stopping
+        # 
+        # - Stopped
+        # 
+        # - Starting
         self.standby_status = standby_status
         # The status of the DNAT entry. Valid values:
         # 
-        # *   Pending: The DNAT entry is being created or modified.
-        # *   Available: The DNAT entry is available.
-        # *   Deleting: The DNAT entry is being deleted.
+        # - Pending: The DNAT entry is being created or modified.
+        # 
+        # - Available: The DNAT entry is available.
+        # 
+        # - Deleting: The DNAT entry is being deleted.
         self.status = status
 
     def validate(self):

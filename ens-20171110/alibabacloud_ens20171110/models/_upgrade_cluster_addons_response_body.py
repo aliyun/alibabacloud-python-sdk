@@ -10,8 +10,9 @@ class UpgradeClusterAddonsResponseBody(DaraModel):
         cluster_id: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

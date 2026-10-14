@@ -9,7 +9,7 @@ class ReleaseAICInstanceRequest(DaraModel):
         self,
         server_id: str = None,
     ):
-        # The ID of the server.
+        # The server instance ID.
         # 
         # This parameter is required.
         self.server_id = server_id

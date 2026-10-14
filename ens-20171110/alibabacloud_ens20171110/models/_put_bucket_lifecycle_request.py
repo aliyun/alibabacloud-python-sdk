@@ -15,39 +15,43 @@ class PutBucketLifecycleRequest(DaraModel):
         rule_id: str = None,
         status: str = None,
     ):
-        # Specifies whether to allow overlapped prefixes. Valid values:
+        # Whether to allow overlapping prefixes. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Overlapping prefixes are allowed.
+        # 
+        # - **false** (default): Overlapping prefixes are not allowed.
         self.allow_same_action_overlap = allow_same_action_overlap
         # The name of the bucket.
         # 
         # This parameter is required.
         self.bucket_name = bucket_name
-        # The expiration time. EOS executes a lifecycle rule for objects that were last updated before the expiration time.
+        # The date before which objects expire. The system applies the lifecycle rule to objects last modified before this date.
         # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # Use ISO 8601 format and UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
         # 
-        # >  ExpirationDays and CreateBeforeDate are mutually exclusive.
+        # > ExpirationDays and CreatedBeforeDate are mutually exclusive. Specify one.
         self.created_before_date = created_before_date
-        # The number of days from when the objects were last modified to when the lifecycle rule takes effect. The value must be a positive integer that is greater than 0.
+        # The number of days after an object\\"s last modification when the lifecycle rule takes effect. Must be a positive integer greater than zero.
         # 
-        # >  ExpirationDays and CreateBeforeDate are mutually exclusive.
+        # > ExpirationDays and CreatedBeforeDate are mutually exclusive. Specify one.
         self.expiration_days = expiration_days
-        # The prefix of a object name. The prefix must be unique.
+        # The prefix that the rule applies to. You cannot set duplicate prefixes.
         # 
-        # *   If you specify a prefix, the rule applies only to objects in the bucket that match the prefix.
-        # *   If you do not specify a prefix, the rule applies to all objects in the bucket.
+        # - If you specify a prefix, the rule applies only to objects in the bucket whose names start with that prefix.
+        # 
+        # - If you leave Prefix empty, the rule applies to all objects in the bucket.
         self.prefix = prefix
-        # The unique ID of the rule. The ID of a lifecycle rule can be up to 255 bytes in length.
+        # A unique ID that identifies the rule. Maximum length is 255 bytes.
         # 
-        # *   You do not need to configure this parameter when you create a rule. The system automatically generates a unique ID.
-        # *   When you update a rule, you need to specify this parameter. Make sure that the rule specified by RuleId exists. Otherwise, an error occurs.
+        # - Omit this parameter when creating a new rule. The system generates a unique ID automatically.
+        # 
+        # - Specify RuleId when updating an existing rule. The rule must exist. Otherwise, the call fails.
         self.rule_id = rule_id
         # The status of the rule. Valid values:
         # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # - **Enabled**: The system runs the rule on schedule.
+        # 
+        # - **Disabled**: The system ignores the rule.
         # 
         # This parameter is required.
         self.status = status

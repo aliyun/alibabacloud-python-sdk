@@ -13,9 +13,9 @@ class CopySDGResponseBody(DaraModel):
         data: main_models.CopySDGResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data object.
+        # The returned Data object.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,14 +53,14 @@ class CopySDGResponseBodyData(DaraModel):
         result: main_models.CopySDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The response message. Success is returned for a successful request.
+        # The response message. The value success indicates a successful request.
         self.message = message
-        # The execution result of the synchronization request.
+        # The execution result of the synchronous request.
         self.result = result
-        # Indicates whether all tasks are successful. Valid values:
+        # Indicates whether all requests were successful. Valid values:
         # 
-        # *   **true**: All tasks are successful.
-        # *   **false**: Failed tasks exist.
+        # - **true**: All requests were successful.
+        # - **false**: Some tasks failed.
         self.success = success
 
     def validate(self):
@@ -104,11 +104,11 @@ class CopySDGResponseBodyDataResult(DaraModel):
         failed_items: List[main_models.CopySDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
-        # The number of failed nodes.
+        # The number of failed edge zones.
         self.failed_count = failed_count
-        # Details of failed nodes.
+        # The list of failed edge zone details.
         self.failed_items = failed_items
-        # The number of successful nodes.
+        # The number of successful operations.
         self.success_count = success_count
 
     def validate(self):
@@ -157,7 +157,7 @@ class CopySDGResponseBodyDataResultFailedItems(DaraModel):
         destination_region_id: str = None,
         error_message: str = None,
     ):
-        # The ID of the destination node.
+        # The ID of the destination edge zone.
         self.destination_region_id = destination_region_id
         # The error message.
         self.error_message = error_message

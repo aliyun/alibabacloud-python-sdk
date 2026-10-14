@@ -10,11 +10,11 @@ class DescribeLoadBalancerTCPListenerAttributeRequest(DaraModel):
         listener_port: int = None,
         load_balancer_id: str = None,
     ):
-        # The listening port that you want to query. Valid values: **1** to **65535**.
+        # The listener port. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
-        # The ID of the ELB instance.
+        # The ID of the load balancer instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id

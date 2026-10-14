@@ -14,9 +14,9 @@ class CreateInstanceResponseBody(DaraModel):
         instance_ids: main_models.CreateInstanceResponseBodyInstanceIds = None,
         request_id: str = None,
     ):
-        # The return code. A value of 0 indicates that the request is successful.
+        # The return code. A value of 0 indicates success.
         # 
-        # >  If you call this operation by using SDKs, the return value is of the integer type. If you call this operation by using common methods or HTTP requests, the return value is of the string type.
+        # > If you call this API operation by using an SDK, the return type is Integer. If you call this API operation by using a common method or HTTP, the return type is String.
         self.code = code
         self.instance_ids = instance_ids
         # The request ID.

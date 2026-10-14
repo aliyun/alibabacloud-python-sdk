@@ -12,11 +12,19 @@ class ModifyClusterNodePoolShrinkRequest(DaraModel):
         nodepool_info_shrink: str = None,
         scaling_group_shrink: str = None,
     ):
+        # The cluster ID.
+        # 
+        # Only ECK cluster IDs with the eck- prefix are supported. You can obtain the ID by calling the DescribeClustersV1 operation. Serverless cluster IDs returned by the DescribeCluster operation are not supported. The cluster must be in the running state. After creation, it typically takes 10 to 20 minutes to complete initialization.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The Kubernetes configuration.
         self.kubernetes_config_shrink = kubernetes_config_shrink
+        # The node pool information.
+        # 
         # This parameter is required.
         self.nodepool_info_shrink = nodepool_info_shrink
+        # The scaling group configuration.
         self.scaling_group_shrink = scaling_group_shrink
 
     def validate(self):

@@ -22,11 +22,15 @@ class ListApplicationsRequest(DaraModel):
         self.cluster_names = cluster_names
         # The region level by which edge resources of the application are collected. The value is of the enumeration type. Valid values:
         # 
-        # *   National: Chinese mainland
-        # *   Big: area
-        # *   Middle: province
-        # *   Small: city
-        # *   RegionId: edge node
+        # - National: Chinese mainland
+        # 
+        # - Big: area
+        # 
+        # - Middle: province
+        # 
+        # - Small: city
+        # 
+        # - RegionId: edge node
         # 
         # Default value: National.
         self.level = level

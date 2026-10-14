@@ -13,7 +13,7 @@ class PreloadRegionSDGResponseBody(DaraModel):
         data: main_models.PreloadRegionSDGResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data object.
+        # The Data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -53,14 +53,14 @@ class PreloadRegionSDGResponseBodyData(DaraModel):
         result: main_models.PreloadRegionSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The message returned.
+        # The response message.
         self.message = message
-        # The execution result of the synchronization request.
+        # The execution result of the synchronous request.
         self.result = result
-        # Indicates whether all tasks are successful. Valid values:
+        # Indicates whether all requests are successful. Valid values:
         # 
-        # *   true: All tasks are successful.
-        # *   false: Failed tasks exist.
+        # - true: All requests are successful.
+        # - false: Some tasks failed.
         self.success = success
 
     def validate(self):
@@ -104,11 +104,11 @@ class PreloadRegionSDGResponseBodyDataResult(DaraModel):
         failed_items: List[main_models.PreloadRegionSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
-        # The number of failed tasks.
+        # The number of failures.
         self.failed_count = failed_count
-        # Details about the failed tasks.
+        # The list of failure details.
         self.failed_items = failed_items
-        # The number of successful tasks.
+        # The number of successes.
         self.success_count = success_count
 
     def validate(self):
@@ -157,9 +157,9 @@ class PreloadRegionSDGResponseBodyDataResultFailedItems(DaraModel):
         destination_region_id: str = None,
         error_message: str = None,
     ):
-        # The ID of the destination node.
+        # The ID of the destination edge zone.
         self.destination_region_id = destination_region_id
-        # The error message that is returned.
+        # The error message.
         self.error_message = error_message
 
     def validate(self):

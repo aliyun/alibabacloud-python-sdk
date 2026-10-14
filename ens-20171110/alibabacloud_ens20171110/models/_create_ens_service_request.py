@@ -16,8 +16,9 @@ class CreateEnsServiceRequest(DaraModel):
         self.ens_service_id = ens_service_id
         # The operation to perform after you preview the created edge service. Valid values:
         # 
-        # *   **Buy**: create
-        # *   **Upgrade**: change
+        # - **Buy**: create
+        # 
+        # - **Upgrade**: change
         # 
         # This parameter is required.
         self.order_type = order_type

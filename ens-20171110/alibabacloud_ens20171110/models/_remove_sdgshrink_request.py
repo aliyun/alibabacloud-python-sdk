@@ -9,7 +9,7 @@ class RemoveSDGShrinkRequest(DaraModel):
         self,
         instance_ids_shrink: str = None,
     ):
-        # IDs of Android in Container (AIC) instances.
+        # The list of AIC instance IDs.
         # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink

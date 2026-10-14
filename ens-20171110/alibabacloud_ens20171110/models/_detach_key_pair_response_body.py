@@ -17,17 +17,17 @@ class DetachKeyPairResponseBody(DaraModel):
         results: List[main_models.DetachKeyPairResponseBodyResults] = None,
         total_count: int = None,
     ):
-        # The number of instances to which the SSH key pair failed to be bound.
+        # The number of instances for which the detach operation failed.
         self.fail_count = fail_count
-        # The ID of the SSH key pair.
+        # The ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The name of the SSH key pair.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
         # The request ID.
         self.request_id = request_id
-        # The operation results.
+        # The results of the operation for each instance.
         self.results = results
-        # The total number of instances to which the SSH key pair is bound.
+        # The total number of instances specified in the request.
         self.total_count = total_count
 
     def validate(self):
@@ -96,13 +96,13 @@ class DetachKeyPairResponseBodyResults(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The status code of the operation. 200 indicates that the operation succeeded.
+        # The status code for the operation on a specific instance. A value of `200` indicates a successful operation.
         self.code = code
         # The instance ID.
         self.instance_id = instance_id
-        # The message of the operation. If the value of the Code parameter is 200, the value of this parameter is successful.
+        # The response message for the operation. If the `Code` is `200`, the message is `successful`.
         self.message = message
-        # Indicates whether the operation is successful.
+        # Indicates whether the operation on the instance succeeded. Valid values: `true` and `false`.
         self.success = success
 
     def validate(self):

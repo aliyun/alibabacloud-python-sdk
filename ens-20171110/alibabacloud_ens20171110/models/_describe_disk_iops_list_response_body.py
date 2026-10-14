@@ -13,7 +13,7 @@ class DescribeDiskIopsListResponseBody(DaraModel):
         disk_iops_list: List[main_models.DescribeDiskIopsListResponseBodyDiskIopsList] = None,
         request_id: str = None,
     ):
-        # The IOPS monitoring data of the cloud disk.
+        # The list of cloud disk I/O monitoring data.
         self.disk_iops_list = disk_iops_list
         # Id of the request
         self.request_id = request_id
@@ -65,21 +65,21 @@ class DescribeDiskIopsListResponseBodyDiskIopsList(DaraModel):
         write_latency: int = None,
         write_ops: int = None,
     ):
-        # The business time . The time is displayed in the yyyy-MM-dd HH:mm:ss.
+        # The business time in the format of yyyy-MM-dd HH:mm:ss.
         self.biz_time = biz_time
-        # The ID of the disk.
+        # The disk ID.
         self.disk_id = disk_id
-        # The read throughput. Unit: bytes.
+        # The read throughput (in bytes).
         self.read_bytes = read_bytes
-        # The read latency. Unit: ms.
+        # The read latency (in microseconds).
         self.read_latency = read_latency
         # The read IOPS.
         self.read_ops = read_ops
-        # The ID of the node.
+        # The edge zone ID.
         self.region_id = region_id
-        # The write throughput. Unit: bytes.
+        # The write throughput (in bytes).
         self.write_bytes = write_bytes
-        # The write latency. Unit: microseconds.
+        # The write latency (in microseconds).
         self.write_latency = write_latency
         # The write IOPS.
         self.write_ops = write_ops

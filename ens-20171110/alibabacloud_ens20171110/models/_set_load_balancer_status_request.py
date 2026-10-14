@@ -16,8 +16,9 @@ class SetLoadBalancerStatusRequest(DaraModel):
         self.load_balancer_id = load_balancer_id
         # The new instance status. Valid values:
         # 
-        # *   **Active**
-        # *   **InActive**
+        # - **Active**
+        # 
+        # - **InActive**
         # 
         # This parameter is required.
         self.load_balancer_status = load_balancer_status

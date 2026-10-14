@@ -14,7 +14,7 @@ class CreateSecurityGroupPermissionsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.permissions_shrink = permissions_shrink
-        # The IDs of the security groups.
+        # The security group ID.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id

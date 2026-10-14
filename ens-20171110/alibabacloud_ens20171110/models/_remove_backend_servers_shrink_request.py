@@ -10,11 +10,11 @@ class RemoveBackendServersShrinkRequest(DaraModel):
         backend_servers_shrink: str = None,
         load_balancer_id: str = None,
     ):
-        # The list of backend servers that you want to remove. You can remove up to 20 backend servers at a time.
+        # The list of backend servers to remove. You can remove up to 20 backend servers per call.
         # 
         # This parameter is required.
         self.backend_servers_shrink = backend_servers_shrink
-        # The ID of the Edge Load Balancer (ELB) instance.
+        # The ID of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id

@@ -15,13 +15,13 @@ class RescaleDeviceServiceResponseBody(DaraModel):
         request_id: str = None,
         resource_detail_infos: List[main_models.RescaleDeviceServiceResponseBodyResourceDetailInfos] = None,
     ):
-        # The IDs of the devices.
+        # The list of device IDs.
         self.device_ids = device_ids
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The key properties of the device.
+        # The list of primary device attributes.
         self.resource_detail_infos = resource_detail_infos
 
     def validate(self):
@@ -82,21 +82,21 @@ class RescaleDeviceServiceResponseBodyResourceDetailInfos(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The ID of the device.
+        # The device ID.
         self.id = id
-        # The IP address of the device.
+        # The device IP address.
         self.ip = ip
-        # The Internet service provider (ISP) to which the device belongs.
+        # The ISP of the device.
         self.isp = isp
-        # The media access control (MAC) address of the device.
+        # The MAC address of the device.
         self.mac = mac
-        # The ID of the edge node to which the device belongs.
+        # The ID of the edge node where the device is located.
         self.region_id = region_id
-        # The name of the server on which the device is deployed.
+        # The name of the server NC where the device is located.
         self.server = server
-        # The status of the device.
+        # The device status.
         self.status = status
-        # The type of the instance.
+        # The device type.
         self.type = type
 
     def validate(self):

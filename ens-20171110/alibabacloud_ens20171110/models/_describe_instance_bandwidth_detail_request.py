@@ -16,23 +16,23 @@ class DescribeInstanceBandwidthDetailRequest(DaraModel):
         service_type: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. The maximum interval between the beginning time and the end time is 86400 seconds. The interval is left-closed and right-open. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+        # The end time. The maximum difference from the start time is 86400 seconds. The query range is left-closed and right-open. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the ENS node.
+        # The ENS node ID.
         self.ens_region_id = ens_region_id
-        # The plan ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # The type of the instance, such as vm, eip, single_tenant, and nc. You can leave this parameter empty. The type of the instance, such as vm, eip, single_tenant, and nc.
+        # The instance type, such as vm, eip, single_tenant, or nc. You can leave this parameter empty if no special query is required.
         self.instance_type = instance_type
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 200.
         self.page_size = page_size
-        # The type of the service, such as vm, eip, esk, and meta.
+        # The service type, such as vm, eip, esk, or meta.
         self.service_type = service_type
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+        # The start time in the yyyy-MM-dd HH:mm:ss format.
         # 
         # This parameter is required.
         self.start_time = start_time

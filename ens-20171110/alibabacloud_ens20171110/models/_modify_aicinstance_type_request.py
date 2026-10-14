@@ -14,14 +14,34 @@ class ModifyAICInstanceTypeRequest(DaraModel):
         instance_type: str = None,
         resolution: str = None,
     ):
+        # One or more environment variables to set during instance initialization.
         self.environment_var = environment_var
+        # The refresh rate. Unit: Hz. Valid values:
+        # - 30
+        # - 60
+        # - 120
         self.frequency = frequency
+        # The image ID.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The ID of the instance whose specifications you want to modify.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The target AIC container instance specifications.
+        # 
         # This parameter is required.
         self.instance_type = instance_type
+        # The resolution. Valid values:
+        # - 1920*1080
+        # - 1080*1920
+        # - 1280*720
+        # - 720*1280
+        # - 2400*1080
+        # - 1080*2400
+        # - 1920*864
+        # - 864*1920
         self.resolution = resolution
 
     def validate(self):

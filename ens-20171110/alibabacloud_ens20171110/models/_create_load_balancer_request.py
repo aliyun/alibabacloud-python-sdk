@@ -17,36 +17,42 @@ class CreateLoadBalancerRequest(DaraModel):
         pay_type: str = None,
         v_switch_id: str = None,
     ):
+        # The billing cycle of the ELB instance.
         self.billing_cycle = billing_cycle
-        # The client token that is used to ensure the idempotence of the request. This prevents repeated operations caused by multiple retries.
+        # Ensures the idempotency of the request to avoid duplicate operations caused by multiple retries.
+        # - Generate a parameter value from your client and ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # *   You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
-        # *   If you retry an API request with the same client token and request parameters after it has completed successfully, the result of the original request is returned. The server status does not change.
-        # *   You can initiate a retry when the operation times out or the error code is PROCESSING. The idempotence is valid. If HTTP status code 200 is returned, the client receives the same result as the last request. However, your server status is not affected. If HTTP status code 4xx is returned and error code is not PROCESSING, the idempotence is invalid.
-        # *   A client token is valid for 10 minutes.
+        # - If you use a ClientToken that has been used before and the other request parameters remain unchanged, the client receives the same result as the first submission, with no impact on your server-side state.
+        # 
+        # - You can retry when the API times out or returns the PROCESSING error code, and idempotency takes effect. If the return result is an HTTP 200 status code, the retry returns the same result as the previous call with no impact on your server-side state. If the return result is an HTTP 4xx status code and the error code is not PROCESSING, idempotency does not take effect.
+        # - The ClientToken is valid for 10 minutes.
         self.client_token = client_token
-        # The ID of the Edge Node Service (ENS) node.
+        # The ID of the ENS edge zone.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # The name of the ELB instance. The name must be 1 to 80 characters in length. If you leave this parameter empty, the system randomly allocates a name as the value of this parameter.
+        # The name of the load balancing instance. The name must be 1 to 80 characters in length and can contain letters and Chinese characters. If you do not specify this parameter, the system automatically assigns an instance name.
         # 
-        # >  The value cannot start with `http://` or `https://`.
+        # > The name cannot start with `http://` or `https://`.
         self.load_balancer_name = load_balancer_name
-        # The specification of the ELB instance.
+        # The specification of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_spec = load_balancer_spec
+        # The type of the Edge Load Balancing instance.
+        # 
+        # - CLB: Classic Load Balancing instance.
+        # - InternetDR: Public pattern load balancing instance.
         self.load_balancer_type = load_balancer_type
-        # The network ID of the created ELB instance.
+        # The network ID of the Edge Load Balancing (ELB) instance to create.
         # 
         # This parameter is required.
         self.network_id = network_id
-        # The billing method of the cluster. Valid value: PostPaid. PostPaid specifies the pay-as-you-go billing method.
+        # The billing type. PostPaid (currently the only supported type): pay-as-you-go.
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The ID of the vSwitch to which the internal-facing ELB instance belongs.
+        # The ID of the vSwitch to which the VPC instance belongs.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

@@ -9,7 +9,7 @@ class DescribeInstanceVncUrlRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the instance
+        # The instance ID. The instance must be in the Running state. You can call DescribeInstances to query the current state.
         # 
         # This parameter is required.
         self.instance_id = instance_id

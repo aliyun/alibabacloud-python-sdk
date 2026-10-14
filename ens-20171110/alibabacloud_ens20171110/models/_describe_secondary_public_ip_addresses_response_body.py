@@ -16,15 +16,15 @@ class DescribeSecondaryPublicIpAddressesResponseBody(DaraModel):
         secondary_public_ip_addresses: List[main_models.DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses] = None,
         total_count: int = None,
     ):
-        # The page number returned.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for paging queries.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The array of returned secondary IP addresses.
+        # The list of secondary public IP addresses.
         self.secondary_public_ip_addresses = secondary_public_ip_addresses
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,24 +91,24 @@ class DescribeSecondaryPublicIpAddressesResponseBodySecondaryPublicIpAddresses(D
         secondary_public_ip_address: str = None,
         secondary_public_ip_id: str = None,
     ):
-        # The subnet mask of the CIDR block.
+        # The CIDR mask of the IP address.
         self.cidr_mask = cidr_mask
-        # The time when the secondary public IP address was created. The time is displayed in UTC.
+        # The creation time in UTC format.
         self.creation_time = creation_time
-        # The ID of the edge node.
+        # The ID of the ENS edge zone.
         self.ens_region_id = ens_region_id
         # The gateway.
         self.gateway = gateway
-        # The version of the IP address. Valid values:
+        # The IP address version. Valid values:
         # 
-        # *   **ipv4**
-        # *   **ipv6**
+        # - **ipv4**: IPv4 address.
+        # 
+        # - **ipv6**: IPv6 address.
         self.ip_version = ip_version
-        # The Internet service provider. Valid values:
-        # 
-        # *   cmcc: China Mobile.
-        # *   unicom: China Unicom.
-        # *   telecom: China Telecom.
+        # The Internet service provider (ISP). Valid values:
+        # - cmcc: China Mobile.
+        # - unicom: China Unicom.
+        # - telecom: China Telecom.
         self.isp = isp
         # The secondary public IP address.
         self.secondary_public_ip_address = secondary_public_ip_address

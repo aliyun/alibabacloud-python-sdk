@@ -12,15 +12,16 @@ class ModifyInstanceBootConfigurationRequest(DaraModel):
         disk_set: str = None,
         instance_id: str = None,
     ):
-        # The startup method.
+        # The boot method.
         self.boot_set = boot_set
-        # The startup type.
+        # The boot type.
+        # Governance testing has confirmed that the value disk passes parameter validation, whereas the original example value pxe returns Parameter.Invalid. Other values have not been confirmed.
         # 
         # This parameter is required.
         self.boot_type = boot_type
-        # Specifies whether the startup depends on the disk.
+        # Specifies whether the boot process depends on a disk.
         self.disk_set = disk_set
-        # The ID of the instance for which you want to modify the configuration. You can specify only one ID.
+        # The ID of the instance whose boot configuration you want to modify. You can specify only one instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

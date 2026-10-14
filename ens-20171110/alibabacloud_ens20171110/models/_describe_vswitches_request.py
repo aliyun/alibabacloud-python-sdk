@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class DescribeVSwitchesRequest(DaraModel):
     def __init__(
         self,
+        enable_ipv_6: bool = None,
         ens_region_id: str = None,
         ens_region_ids: List[str] = None,
         network_id: str = None,
@@ -18,21 +19,22 @@ class DescribeVSwitchesRequest(DaraModel):
         v_switch_ids: List[str] = None,
         v_switch_name: str = None,
     ):
+        self.enable_ipv_6 = enable_ipv_6
         # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The IDs of edge nodes. You can specify 1 to 100 IDs.
+        # The IDs of the ENS nodes. You can specify 1 to 100 IDs.
         self.ens_region_ids = ens_region_ids
-        # The ID of the VPC to which the vSwitch belongs.
+        # The ID of the VPC to which the VSwitch belongs.
         self.network_id = network_id
         # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the vSwitch.
+        # The ID of the VSwitch.
         self.v_switch_id = v_switch_id
-        # The IDs of vSwitches. You can specify 1 to 100 IDs.
+        # The IDs of the vSwitches. You can specify 1 to 100 IDs.
         self.v_switch_ids = v_switch_ids
-        # The name of the vSwitch.
+        # The name of the VSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):
@@ -43,6 +45,9 @@ class DescribeVSwitchesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enable_ipv_6 is not None:
+            result['EnableIpv6'] = self.enable_ipv_6
+
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
 
@@ -71,6 +76,9 @@ class DescribeVSwitchesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableIpv6') is not None:
+            self.enable_ipv_6 = m.get('EnableIpv6')
+
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
 

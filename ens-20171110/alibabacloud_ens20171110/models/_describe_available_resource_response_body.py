@@ -15,10 +15,10 @@ class DescribeAvailableResourceResponseBody(DaraModel):
         request_id: str = None,
         support_resources: main_models.DescribeAvailableResourceResponseBodySupportResources = None,
     ):
-        # The returned service code. 0 indicates that the request was successful.
+        # The business return code. The value 0 indicates success.
         self.code = code
         self.images = images
-        # The ID of the request. This is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        # The common parameter. Each request ID is unique and active for troubleshooting.
         self.request_id = request_id
         self.support_resources = support_resources
 

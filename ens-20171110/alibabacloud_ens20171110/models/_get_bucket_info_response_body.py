@@ -11,9 +11,9 @@ class GetBucketInfoResponseBody(DaraModel):
         bucket_info: main_models.GetBucketInfoResponseBodyBucketInfo = None,
         request_id: str = None,
     ):
-        # The list of bucket information.
+        # Bucket information list.
         self.bucket_info = bucket_info
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,21 +54,23 @@ class GetBucketInfoResponseBodyBucketInfo(DaraModel):
         logical_bucket_type: str = None,
         modify_time: str = None,
     ):
-        # The ACL of the bucket.
+        # Bucket access control list type:
         # 
-        # *   **public-read-write**
-        # *   **public-read**
-        # *   **private** (default)
+        # - **public-read-write**: public-read-write
+        # 
+        # - **public-read**: public-read
+        # 
+        # - **private**: private (default)
         self.bucket_acl = bucket_acl
-        # The name of the bucket.
+        # Bucket name.
         self.bucket_name = bucket_name
-        # The remarks.
+        # Comments.
         self.comment = comment
-        # The time when the bucket was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # Bucket creation time. Represented in ISO8601 standard, using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # Single-node storage. Set the value to sink.
+        # Single node storage. Value: sink.
         self.logical_bucket_type = logical_bucket_type
-        # The time when the bucket was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # Bucket modification time. Represented in ISO8601 standard, using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.modify_time = modify_time
 
     def validate(self):

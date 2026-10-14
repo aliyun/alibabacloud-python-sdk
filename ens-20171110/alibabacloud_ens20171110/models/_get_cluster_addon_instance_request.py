@@ -10,8 +10,12 @@ class GetClusterAddonInstanceRequest(DaraModel):
         cluster_id: str = None,
         instance_name: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The add-on name.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
 

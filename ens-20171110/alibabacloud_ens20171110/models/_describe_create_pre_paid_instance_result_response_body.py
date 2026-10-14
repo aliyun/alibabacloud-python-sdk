@@ -52,10 +52,13 @@ class DescribeCreatePrePaidInstanceResultResponseBodyInstanceCreateResult(DaraMo
     ):
         # The status of the instance creation.
         # 
-        # *   Accepted
-        # *   Creating
-        # *   Failed
-        # *   Successed
+        # - Accepted
+        # 
+        # - Creating
+        # 
+        # - Failed
+        # 
+        # - Successed
         self.instance_create_status = instance_create_status
         # The ID of the instance.
         self.instance_id = instance_id

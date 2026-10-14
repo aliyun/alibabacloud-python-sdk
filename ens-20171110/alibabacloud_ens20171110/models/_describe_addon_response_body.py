@@ -13,6 +13,7 @@ class DescribeAddonResponseBody(DaraModel):
         addons: List[main_models.DescribeAddonResponseBodyAddons] = None,
         request_id: str = None,
     ):
+        # The add-on information.
         self.addons = addons
         # Id of the request
         self.request_id = request_id
@@ -59,9 +60,13 @@ class DescribeAddonResponseBodyAddons(DaraModel):
         name: str = None,
         version: str = None,
     ):
+        # Indicates whether associated cloud resources are automatically cleaned up.
         self.cleanup_cloud_resources = cleanup_cloud_resources
+        # The schema of custom parameters for the add-on.
         self.config_schema = config_schema
+        # The name of the add-on.
         self.name = name
+        # The add-on version.
         self.version = version
 
     def validate(self):
@@ -118,9 +123,13 @@ class DescribeAddonResponseBodyAddonsConfigSchema(DaraModel):
         name: str = None,
         params: Any = None,
     ):
+        # The application version.
         self.app_version = app_version
+        # The configuration version.
         self.config_version = config_version
+        # The name of the add-on.
         self.name = name
+        # The custom parameters of the add-on.
         self.params = params
 
     def validate(self):

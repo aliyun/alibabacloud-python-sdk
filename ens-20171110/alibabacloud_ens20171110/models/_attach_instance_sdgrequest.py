@@ -16,12 +16,26 @@ class AttachInstanceSDGRequest(DaraModel):
         load_opt: main_models.AttachInstanceSDGRequestLoadOpt = None,
         sdgid: str = None,
     ):
+        # The cloud disk access protocol type. Valid values:
+        # 
+        # - iscsi: the default protocol for standard cloud disks. Both rbd cloud disks and standard cloud disks support this protocol.
+        # 
+        #  - rbd: the default protocol for rbd cloud disks. Only rbd cloud disks support this mount protocol.
         self.disk_access_protocol = disk_access_protocol
+        # The type of the shared cloud disk to be created. Valid values:
+        # 
+        # - standard: standard cloud disk.
+        # - rbd: rbd cloud disk.
+        # 
+        # > 
+        # > - If no shared cloud disk type is specified, a standard cloud disk is created by default.
+        # > - An rbd shared cloud disk can be created only when the parent disk type is rbd.
         self.disk_type = disk_type
-        # The IDs of the instances.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The file loading rate optimization parameter.
         self.load_opt = load_opt
         # The ID of the SDG.
         # 
@@ -82,9 +96,13 @@ class AttachInstanceSDGRequestLoadOpt(DaraModel):
         cache: bool = None,
         cache_size: int = None,
     ):
+        # Specifies whether to enable block device read/write splitting. Default value: false.
         self.block_rw_split = block_rw_split
+        # The size for block device read/write splitting, in GiB. A value of 0 indicates that the default size is used.
         self.block_rw_split_size = block_rw_split_size
+        # Specifies whether to enable caching. Block device read/write splitting must be enabled before caching can be used. Default value: false.
         self.cache = cache
+        # The cache size, in GiB. A value of 0 indicates that the default size is used.
         self.cache_size = cache_size
 
     def validate(self):

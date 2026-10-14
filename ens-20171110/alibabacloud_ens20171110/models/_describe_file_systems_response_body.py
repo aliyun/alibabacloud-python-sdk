@@ -99,6 +99,7 @@ class DescribeFileSystemsResponseBodyFileSystems(DaraModel):
         self.capacity = capacity
         # The time when the file system was created.
         self.creation_time = creation_time
+        # Description.
         self.description = description
         # The ID of the region.
         self.ens_region_id = ens_region_id
@@ -114,22 +115,29 @@ class DescribeFileSystemsResponseBodyFileSystems(DaraModel):
         self.pay_type = pay_type
         # The protocol type of the file system. Valid values:
         # 
-        # *   NFS: Network File System (NFS)
-        # *   SMB: Server Message Block (SMB)
+        # - NFS: Network File System (NFS)
+        # 
+        # - SMB: Server Message Block (SMB)
         self.protocol_type = protocol_type
         # The status of the file system. Valid values:
         # 
-        # *   pending: The file system is being created or modified.
-        # *   running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the running state.
-        # *   stopped: The file system is unavailable.
-        # *   extending: The file system is being scaled out.
-        # *   stopping: The file system is being disabled.
-        # *   deleting: The file system is being deleted.
+        # - pending: The file system is being created or modified.
+        # 
+        # - running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the running state.
+        # 
+        # - stopped: The file system is unavailable.
+        # 
+        # - extending: The file system is being scaled out.
+        # 
+        # - stopping: The file system is being disabled.
+        # 
+        # - deleting: The file system is being deleted.
         self.status = status
         # The storage type. Valid values:
         # 
-        # *   capacity: Capacity NAS file systems
-        # *   performance: Performance NAS file systems
+        # - capacity: Capacity NAS file systems
+        # 
+        # - performance: Performance NAS file systems
         self.storage_type = storage_type
 
     def validate(self):
@@ -242,10 +250,13 @@ class DescribeFileSystemsResponseBodyFileSystemsMountTargets(DaraModel):
         self.net_work_id = net_work_id
         # The status of the mount target. Valid values:
         # 
-        # *   active: The mount target is available.
-        # *   inactive: The mount target is unavailable.
-        # *   pending: The task is running.
-        # *   deleting: The mount target is being deleted.
+        # - active: The mount target is available.
+        # 
+        # - inactive: The mount target is unavailable.
+        # 
+        # - pending: The task is running.
+        # 
+        # - deleting: The mount target is being deleted.
         self.status = status
 
     def validate(self):

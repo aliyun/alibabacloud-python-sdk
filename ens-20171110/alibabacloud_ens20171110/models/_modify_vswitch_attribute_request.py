@@ -8,22 +8,28 @@ class ModifyVSwitchAttributeRequest(DaraModel):
     def __init__(
         self,
         description: str = None,
+        enable_ipv_6: bool = None,
+        ipv_6cidr_block: str = None,
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
-        # The description of the listener.
+        # Description.
         # 
-        # *   The description must be 2 to 256 characters in length.
-        # *   It must start with a letter but cannot start with http:// or https://.
+        # - Must be 2 to 256 characters in length and can contain English or Chinese characters.
+        # 
+        # - Cannot start with http\\:// or https\\://.
         self.description = description
-        # The ID of the vSwitch.
+        self.enable_ipv_6 = enable_ipv_6
+        self.ipv_6cidr_block = ipv_6cidr_block
+        # vSwitch ID.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The name of the vSwitch.
+        # vSwitch name.
         # 
-        # *   The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-).
-        # *   It must start with a letter but cannot start with http:// or https://.
+        # - Must be 2 to 128 characters long. Can contain letters, digits, Chinese characters, underscores (_), and hyphens (-).
+        # 
+        # - Must start with a letter or a Chinese character. Cannot start with http\\:// or https\\://.
         self.v_switch_name = v_switch_name
 
     def validate(self):
@@ -37,6 +43,12 @@ class ModifyVSwitchAttributeRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.enable_ipv_6 is not None:
+            result['EnableIPv6'] = self.enable_ipv_6
+
+        if self.ipv_6cidr_block is not None:
+            result['Ipv6CidrBlock'] = self.ipv_6cidr_block
+
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
 
@@ -49,6 +61,12 @@ class ModifyVSwitchAttributeRequest(DaraModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('EnableIPv6') is not None:
+            self.enable_ipv_6 = m.get('EnableIPv6')
+
+        if m.get('Ipv6CidrBlock') is not None:
+            self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')

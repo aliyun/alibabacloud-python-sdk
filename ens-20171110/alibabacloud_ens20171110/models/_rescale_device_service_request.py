@@ -18,34 +18,37 @@ class RescaleDeviceServiceRequest(DaraModel):
         service_id: str = None,
         timeout: int = None,
     ):
-        # The ID of the application.
-        self.app_id = app_id
-        # The ID of the image.
-        self.image_id = image_id
-        # The type of the network. The value must be of the enumerated data type. Valid values:
+        # The application ID.
         # 
-        # *   **1** (default): Internet
-        # *   **2**: internal network
+        # This parameter is required. If you do not specify this parameter, the service returns error code 100001. You can call ListApplications to obtain the application ID. To create an application, call CreateApplication first.
+        self.app_id = app_id
+        # The image ID.
+        self.image_id = image_id
+        # The network type. Valid values:
+        # 
+        # - **1** (default): Internet
+        # 
+        # - **2**: internal network
         self.ip_type = ip_type
-        # The region level of the scale-out. Set the value to RegionId. RegionId specifies that resource scale-out is performed based on the ID of the edge node.
+        # The region level for scaling out resources. Valid values: RegionId (specifies an edge node ID).
         # 
         # This parameter is required.
         self.rescale_level = rescale_level
-        # The scaling operation. Set the value to Add to add new resources.
+        # The resource scaling method. Valid values: Add (provisions new resources).
         # 
         # This parameter is required.
         self.rescale_type = rescale_type
-        # The information about the resource specification template. The value must be a JSON string.
+        # The resource specification template information. The value is a string in JSON format.
         self.resource_info = resource_info
-        # The required resources. The value must be a JSON string.
+        # The region requirements for scaling out resources. The value is a string in JSON array format.
         # 
         # This parameter is required.
         self.resource_selector = resource_selector
-        # The resource specification.
+        # The resource specification name.
         self.resource_spec = resource_spec
-        # The ID of the service.
+        # The service ID.
         self.service_id = service_id
-        # The timeout period for asynchronous scale-out. Unit: seconds. Default value: 300.
+        # The timeout period for asynchronous resource scaling, in seconds. Default value: 300.
         self.timeout = timeout
 
     def validate(self):

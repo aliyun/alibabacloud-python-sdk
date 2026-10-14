@@ -16,15 +16,15 @@ class DescribeARMServerInstancesResponseBody(DaraModel):
         servers: List[main_models.DescribeARMServerInstancesResponseBodyServers] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the instance list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page that was specified in the request.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the servers and the AIC instances.
+        # The array of ARM server and AIC instance information.
         self.servers = servers
-        # The total number of entries returned.
+        # The total number of instances returned.
         self.total_count = total_count
 
     def validate(self):
@@ -96,42 +96,41 @@ class DescribeARMServerInstancesResponseBodyServers(DaraModel):
         status: str = None,
         tags: List[main_models.DescribeARMServerInstancesResponseBodyServersTags] = None,
     ):
-        # The information about the AIC instances.
+        # The array of AIC instance information.
         self.aicinstances = aicinstances
         # The time when the instance was created.
         self.creation_time = creation_time
-        # The ID of the ENS node.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
         # The time when the instance expires.
         self.expired_time = expired_time
-        # The operation that was most recently performed.
+        # The most recent operation.
         self.latest_action = latest_action
-        # The name of the server.
+        # The server name.
         self.name = name
-        # The namespace of the cluster to which the server belongs.
+        # The namespace of the cluster to which the card belongs.
         self.namespace = namespace
         # The billing method.
         self.pay_type = pay_type
-        # The ID of the server.
+        # The server ID.
         self.server_id = server_id
         # The server specification.
         self.spec_name = spec_name
-        # The operation status of the server. Valid values:
-        # 
-        # *   **success**
-        # *   **failed**
-        # *   **creating**
-        # *   **releasing**
-        # *   **rebooting**
-        # *   **upgrading**
+        # The operation state of the server. Valid values:
+        # - **success**: Succeeded.
+        # - **failed**: Failed.
+        # - **creating**: Being created.
+        # - **releasing**: Being released.
+        # - **rebooting**: Being restarted.
+        # - **upgrading**: Being upgraded.
         self.state = state
         # The running status of the server. Valid values:
-        # 
-        # *   **running**
-        # *   **stopping**
-        # *   **down**
-        # *   **starting**
+        # - **running**: Running.
+        # - **stopping**: Being stopped.
+        # - **down**: Shut down.
+        # - **starting**: Being started.
         self.status = status
+        # The collection of tags.
         self.tags = tags
 
     def validate(self):
@@ -249,7 +248,9 @@ class DescribeARMServerInstancesResponseBodyServersTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -295,36 +296,34 @@ class DescribeARMServerInstancesResponseBodyServersAICInstances(DaraModel):
     ):
         # The refresh rate of the AIC instance. Unit: Hz.
         self.frequency = frequency
-        # The ID of the AIC image.
+        # The AIC image ID.
         self.image_id = image_id
-        # The ID of the AIC instance.
+        # The AIC instance ID.
         self.instance_id = instance_id
-        # The operation that was most recently performed.
+        # The most recent operation.
         self.latest_action = latest_action
-        # The name of the container.
+        # The container name.
         self.name = name
-        # The network attributes of the AIC instance.
+        # The network attributes.
         self.network_attributes = network_attributes
         # The resolution of the AIC instance.
         self.resolution = resolution
-        # The information about the shared data group (SDG) that is deployed on the AIC instance.
+        # The shared data group (SDG) information deployed on the instance.
         self.sdg_deploy_info = sdg_deploy_info
         # The specification of the AIC instance.
         self.spec = spec
-        # The operation status of the AIC instance. Valid values:
-        # 
-        # *   **success**
-        # *   **failed**
-        # *   **creating**
-        # *   **releasing**
-        # *   **rebooting**
-        # *   **reseting**
+        # The operation state of the AIC instance. Valid values:
+        # - **success**: Succeeded.
+        # - **failed**: Failed.
+        # - **creating**: Being created.
+        # - **releasing**: Being released.
+        # - **rebooting**: Being restarted.
+        # - **reseting**: Being reset.
         self.state = state
         # The running status of the AIC instance. Valid values:
-        # 
-        # *   **running**
-        # *   **pending**
-        # *   **terminating**
+        # - **running**: Running.
+        # - **pending**: Pending.
+        # - **terminating**: Being terminated.
         self.status = status
 
     def validate(self):
@@ -422,9 +421,11 @@ class DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo(Dar
         self.sdgid = sdgid
         # The deployment status of the SDG. Valid values:
         # 
-        # *   **sdg_deploying**
-        # *   **failed**
-        # *   **success**
+        # - **sdg_deploying**: Being deployed.
+        # 
+        # - **failed**: Deployment failed.
+        # 
+        # - **success**: Deployment succeeded.
         self.status = status
 
     def validate(self):

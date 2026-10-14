@@ -14,9 +14,9 @@ class RemoveInstanceSDGResponseBody(DaraModel):
         data: main_models.RemoveInstanceSDGResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned service code. 0 indicates that the request was successful.
+        # The business code returned. A value of 0 indicates success.
         self.code = code
-        # The returned data object.
+        # The returned Data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -62,14 +62,14 @@ class RemoveInstanceSDGResponseBodyData(DaraModel):
         result: main_models.RemoveInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The response message. Success is returned for a successful request.
+        # The response message. A value of success indicates a successful request.
         self.message = message
-        # The execution result of the synchronization request.
+        # The execution result of the synchronous request.
         self.result = result
-        # Indicates whether all tasks are successful. Valid values:
+        # Indicates whether all requests are successful. Valid values:
         # 
-        # *   **true**: All tasks are successful.
-        # *   **false**: Failed tasks exist.
+        # - **true**: All requests are successful.
+        # - **false**: Some tasks failed.
         self.success = success
 
     def validate(self):
@@ -115,7 +115,7 @@ class RemoveInstanceSDGResponseBodyDataResult(DaraModel):
     ):
         # The number of failed tasks.
         self.failed_count = failed_count
-        # Details about the failed tasks.
+        # The list of failure details.
         self.failed_items = failed_items
         # The number of successful tasks.
         self.success_count = success_count
@@ -166,9 +166,9 @@ class RemoveInstanceSDGResponseBodyDataResultFailedItems(DaraModel):
         err_message: str = None,
         instance_id: str = None,
     ):
-        # The error message that is returned.
+        # The error message.
         self.err_message = err_message
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

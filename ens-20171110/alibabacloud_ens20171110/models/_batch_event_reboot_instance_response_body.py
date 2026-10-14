@@ -13,9 +13,9 @@ class BatchEventRebootInstanceResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchEventRebootInstanceResponseBodyResults] = None,
     ):
-        # The ID of the request.
+        # Id of the request。
         self.request_id = request_id
-        # The result.
+        # The results.
         self.results = results
 
     def validate(self):
@@ -62,11 +62,11 @@ class BatchEventRebootInstanceResponseBodyResults(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The ID of the system event.
+        # The system event ID.
         self.event_id = event_id
-        # The message of the operation. If the value of the Code parameter is 200, the value of this parameter is successful.
+        # The operation message. When code is 200, the message is successful.
         self.message = message
-        # The resource IDs.
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

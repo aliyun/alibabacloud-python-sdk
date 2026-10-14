@@ -12,8 +12,9 @@ class DescribeClusterUserKubeconfigResponseBody(DaraModel):
         config: Any = None,
         request_id: str = None,
     ):
+        # The kubeconfig file of the cluster.
         self.config = config
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

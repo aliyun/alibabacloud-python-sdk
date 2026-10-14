@@ -16,15 +16,15 @@ class DescribeSDGResponseBody(DaraModel):
         sdgs: List[main_models.DescribeSDGResponseBodySDGs] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for the current query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about the SDGs.
+        # The list of SDG information.
         self.sdgs = sdgs
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -98,34 +98,38 @@ class DescribeSDGResponseBodySDGs(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # SDGs that have snapshots.
+        # The list of edge zones where SDG snapshots exist.
         self.avaliable_region_ids = avaliable_region_ids
+        # The billing cycle of the shared disk.
         self.billing_cycle = billing_cycle
+        # The billing type.
         self.billing_type = billing_type
+        # The disk type of the source disk used to create the SDG.
         self.creation_disk_type = creation_disk_type
-        # The ID of the instance on which the SDG is created.
+        # The instance ID of the instance from which the SDG was created.
         self.creation_instance_id = creation_instance_id
-        # The ID of the node on which the SDG is created.
+        # The ID of the edge zone where the SDG was created.
         self.creation_region_id = creation_region_id
-        # The time when the first SDG in the node was created.
+        # The time when the SDG was first created.
         self.creation_time = creation_time
         # The description of the SDG.
         self.description = description
-        # The ID of the source SDG from which you want to create an SDG. The value of this parameter is the value of the **FromSDGId** parameter that you need to specify when you call the [CreateSDG](https://help.aliyun.com/document_detail/608128.html) operation.
+        # The ID of the source SDG for incremental creation. This is the FromSDGId parameter specified when you called [CreateSDG](https://help.aliyun.com/document_detail/608128.html).
         self.parent_sdgid = parent_sdgid
+        # The sharing ratio of the SDG.
         self.performance_level = performance_level
-        # The preload information.
+        # The preload configuration information.
         self.preload_infos = preload_infos
         # The ID of the SDG.
         self.sdgid = sdgid
         # The size of the SDG. Unit: GB.
         self.size = size
-        # The status of the SDG creation. Valid values:
+        # The creation status of the SDG. Valid values:
         # 
-        # *   **sdg_making**
-        # *   **sdg_saving**
-        # *   **failed**
-        # *   **success**
+        # - **sdg_making**: Being created.
+        # - **sdg_saving**: Being saved.
+        # - **failed**: Creation failed.
+        # - **success**: Creation succeeded.
         self.status = status
         # The time when the SDG was last updated.
         self.update_time = update_time
@@ -261,16 +265,17 @@ class DescribeSDGResponseBodySDGsPreloadInfos(DaraModel):
         region_id: str = None,
         update_time: str = None,
     ):
-        # The time when the SDG was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The disk type of the redundant shared disks.
         self.disk_type = disk_type
         # The namespace.
         self.namespace = namespace
-        # The number of redundant replicas to quickly respond to shared mounts.
+        # The number of redundant copies for fast shared mounting response.
         self.redundant_num = redundant_num
-        # The ID of the node.
+        # The edge zone ID.
         self.region_id = region_id
-        # The time when the status was last updated.
+        # The most recent status update time.
         self.update_time = update_time
 
     def validate(self):
@@ -331,19 +336,19 @@ class DescribeSDGResponseBodySDGsAvaliableRegionIds(DaraModel):
         snapshot_id: str = None,
         status: str = None,
     ):
-        # The time when the SDG was created on the node.
+        # The creation time of the SDG in the edge zone.
         self.creation_time = creation_time
-        # The ID of the node.
+        # The edge zone ID.
         self.region_id = region_id
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The status of the SDG on the node. Valid values:
+        # The status of the SDG in the edge zone. Valid values:
         # 
-        # *   **sdg_making**
-        # *   **sdg_saving**
-        # *   **sdg_copying**
-        # *   **failed**
-        # *   **success**
+        # - **sdg_making**: Being created.
+        # - **sdg_saving**: Being saved.
+        # - **sdg_copying**: Being synchronized across edge zones.
+        # - **failed**: Creation failed.
+        # - **success**: Creation succeeded.
         self.status = status
 
     def validate(self):

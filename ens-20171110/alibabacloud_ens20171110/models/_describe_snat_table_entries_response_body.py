@@ -96,10 +96,11 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(DaraModel):
     ):
         # Specifies whether to enable EIP affinity. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: no
         # 
-        # **
+        # - **1**: yes
+        # 
+        # \\*\\*
         # 
         # **Description** After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
         self.eip_affinity = eip_affinity
@@ -125,16 +126,21 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntries(DaraModel):
         self.standby_snat_ip = standby_snat_ip
         # The status of the secondary EIP. Valid values:
         # 
-        # *   Running
-        # *   Stopping
-        # *   Stopped
-        # *   Starting
+        # - Running
+        # 
+        # - Stopping
+        # 
+        # - Stopped
+        # 
+        # - Starting
         self.standby_status = standby_status
         # The status of the SNAT entry. Valid values:
         # 
-        # *   Pending: The SNAT entry is being created or modified.
-        # *   Available: The SNAT entry is available.
-        # *   Deleting: The SNAT entry is being deleted.
+        # - Pending: The SNAT entry is being created or modified.
+        # 
+        # - Available: The SNAT entry is available.
+        # 
+        # - Deleting: The SNAT entry is being deleted.
         self.status = status
 
     def validate(self):

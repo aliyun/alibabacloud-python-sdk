@@ -16,9 +16,9 @@ class DescribeHaVipsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # Details of the HAVIPs.
+        # The details of the HaVips.
         self.ha_vips = ha_vips
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -94,32 +94,31 @@ class DescribeHaVipsResponseBodyHaVips(DaraModel):
         status: str = None,
         v_switch_id: str = None,
     ):
-        # The elastic IP addresses (EIPs) that are associated with the HAVIP.
+        # The elastic IP addresses (EIPs) associated with the HaVip.
         self.associated_eip_addresses = associated_eip_addresses
-        # The information about instances that are associated with the HAVIP.
+        # The instances associated with the HaVip.
         self.associated_instances = associated_instances
-        # The time when the HAVIP was created.
+        # The time when the HaVip was created. The time is in the ISO 8601 UTC format of YYYY-MM-DDTHH:mm:ssZ.
         self.creation_time = creation_time
-        # The description of the HAVIP.
+        # The description of the HaVip instance.
         self.description = description
-        # The ID of the region.
+        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The ID of the HAVIP.
+        # The HaVip instance ID.
         self.ha_vip_id = ha_vip_id
-        # The IP address of the HAVIP.
+        # The IP address of the HaVip.
         self.ip_address = ip_address
-        # The name of the HAVIP.
+        # The name of the HaVip instance.
         self.name = name
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
-        # The status of the HAVIP. Valid values:
-        # 
-        # *   Creating
-        # *   Available
-        # *   InUse
-        # *   Deleting
+        # The HaVip status. Valid values:
+        # - Creating: The HaVip is being created.
+        # - Available: The HaVip is available.
+        # - InUse: The HaVip is in use.
+        # - Deleting: The HaVip is being deleted.
         self.status = status
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -228,22 +227,21 @@ class DescribeHaVipsResponseBodyHaVipsAssociatedInstances(DaraModel):
         ip_address: str = None,
         status: str = None,
     ):
-        # The time when the instance was created.
+        # The time when the association was created. The time is in the ISO 8601 UTC format of YYYY-MM-DDTHH:mm:ssZ.
         self.creation_time = creation_time
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The type of the instance that is associated with the HAVIP. Valid values:
+        # The type of the instance to attach to the HaVip. Valid values:
         # 
-        # *   EnsInstance: ENS instance
-        # *   NetworkInterface: elastic network interface (ENI)
+        # - EnsInstance: An ENS cloud server instance.
+        # - NetworkInterface: An elastic network interfaces (ENIs) instance, which is a network interface controller (NIC).
         self.instance_type = instance_type
-        # The private IP address of the instance that is associated with the HAVIP. Valid values:
+        # The private IP address of the associated instance.
         self.ip_address = ip_address
-        # The association status of the HAVIP. Valid values:
-        # 
-        # *   Associating
-        # *   InUse
-        # *   Unassociating
+        # The association status of the HaVip instance. Valid values:
+        # - Associating: The HaVip is being associated.
+        # - InUse: The HaVip is available.
+        # - Unassociating: The HaVip is being disassociated.
         self.status = status
 
     def validate(self):
@@ -296,7 +294,7 @@ class DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses(DaraModel):
         eip: str = None,
         eip_id: str = None,
     ):
-        # The EIP.
+        # The IP address of the EIP.
         self.eip = eip
         # The ID of the EIP.
         self.eip_id = eip_id

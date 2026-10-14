@@ -11,13 +11,13 @@ class AttachKeyPairShrinkRequest(DaraModel):
         key_pair_id: str = None,
         key_pair_name: str = None,
     ):
-        # The instance IDs.
+        # A list of instance IDs.
         # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
-        # The key pair ID.
+        # The unique ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The name of the SSH key pair.
+        # The key pair name.
         self.key_pair_name = key_pair_name
 
     def validate(self):

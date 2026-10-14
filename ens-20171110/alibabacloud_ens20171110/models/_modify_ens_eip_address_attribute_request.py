@@ -18,9 +18,9 @@ class ModifyEnsEipAddressAttributeRequest(DaraModel):
         self.allocation_id = allocation_id
         # The peak bandwidth of the EIP. Default value: 5. Valid values: **5** to **10000**. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The new description of the EIP. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        # The new description of the EIP. The description must be 2 to 256 characters in length and cannot start with http\\:// or https\\://.
         self.description = description
-        # The new name of the EIP. The name must be 2 to 128 characters in length and cannot start with http:// or https://.
+        # The new name of the EIP. The name must be 2 to 128 characters in length and cannot start with http\\:// or https\\://.
         self.name = name
 
     def validate(self):

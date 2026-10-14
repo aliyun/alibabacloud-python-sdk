@@ -10,14 +10,16 @@ class UnAssociateEnsEipAddressRequest(DaraModel):
         allocation_id: str = None,
         force: bool = None,
     ):
-        # The ID of the EIP.
+        # The instance ID of the edge elastic IP address (EIP).
+        # 
+        # If the EIP is referenced by an SNAT entry, invoke DeleteSnatIpForSnatEntry to remove it first. If the EIP is referenced by a DNAT entry, invoke DeleteForwardEntry to delete it first, or set Force to true under Settings as needed.
         # 
         # This parameter is required.
         self.allocation_id = allocation_id
-        # Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
+        # Specifies whether to forcibly disassociate the EIP when the EIP is bound to a NAT gateway that has DNAT or SNAT entries. Valid values:
         # 
-        # *   **false** (default): does not disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
-        # *   **true**: disassociates the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
+        # - **false** (default): does not forcibly disassociate the EIP.
+        # - **true**: forcibly disassociates the EIP.
         self.force = force
 
     def validate(self):

@@ -14,7 +14,7 @@ class ShareAICImageShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The user groups.
+        # The user group.
         # 
         # This parameter is required.
         self.users_shrink = users_shrink

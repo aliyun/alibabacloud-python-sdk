@@ -14,13 +14,15 @@ class DescribeSecurityGroupsRequest(DaraModel):
     ):
         # The page number.
         # 
-        # *   Pages start from page 1.
-        # *   Default value: 1
+        # - Pages start from page 1.
+        # 
+        # - Default value: 1
         self.page_number = page_number
         # The number of entries per page.
         # 
-        # *   Maximum value: 50.
-        # *   Default value: 10
+        # - Maximum value: 50.
+        # 
+        # - Default value: 10
         self.page_size = page_size
         # The ID of the security group.
         self.security_group_id = security_group_id

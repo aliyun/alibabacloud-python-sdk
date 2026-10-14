@@ -23,9 +23,11 @@ class DescribeEnsRouteEntryListRequest(DaraModel):
         self.next_hop_id = next_hop_id
         # The type of next hop of the custom route entry. Valid values:
         # 
-        # *   Instance (default): an ENS instance.
-        # *   HaVip: a high-availability virtual IP address (HAVIP).
-        # *   NetworkPeer: VPC peering connection.
+        # - Instance (default): an ENS instance.
+        # 
+        # - HaVip: a high-availability virtual IP address (HAVIP).
+        # 
+        # - NetworkPeer: VPC peering connection.
         self.next_hop_type = next_hop_type
         # The page number of the returned page. Valid values: integers that are greater than 0. Default value: 1.
         self.page_number = page_number
@@ -37,8 +39,9 @@ class DescribeEnsRouteEntryListRequest(DaraModel):
         self.route_entry_name = route_entry_name
         # The route type. Valid values:
         # 
-        # *   Custom: custom route
-        # *   System: system route
+        # - Custom: custom route
+        # 
+        # - System: system route
         self.route_entry_type = route_entry_type
         # The ID of the route table that you want to query.
         self.route_table_id = route_table_id

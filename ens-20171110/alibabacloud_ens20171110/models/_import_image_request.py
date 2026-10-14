@@ -24,54 +24,56 @@ class ImportImageRequest(DaraModel):
         platform: str = None,
         target_ossregion_id: str = None,
     ):
-        # System architecture. Allowed values:</br>
+        # The system architecture. Valid values:</br>
         # 
-        # - x86_64.</br>
+        # - x86_64
         # 
         # Currently, only x86_64 is supported.
         # 
         # This parameter is required.
         self.architecture = architecture
-        # `Image Type`
-        # ens_vm: ens virtual machine image (default)
+        # The image type. Valid values:
+        # 
+        # ens_vm: ENS virtual machine image (default).
         # 
         # This parameter is required.
         self.compute_type = compute_type
-        # List of custom image information being created.
+        # The list of custom image information.
         self.disk_device_mapping = disk_device_mapping
-        # Image format. Allowed values:</br>
+        # The image format. Valid values:</br>
         # qcow2.</br>
         # Currently, only qcow2 is supported.
         # 
         # This parameter is required.
         self.image_format = image_format
-        # Image name. The length should be [2, 128] English or Chinese characters. It must start with a letter (uppercase or lowercase) or a Chinese character, and cannot start with http:// or https://. It can contain numbers, colons (:), underscores (_), or hyphens (-).
+        # The image name. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         # 
         # This parameter is required.
         self.image_name = image_name
+        # The image license type. Valid values: Aliyun (Alibaba Cloud license) and BYOL (Bring Your Own Key).
         self.license_type = license_type
-        # The OSS Bucket where the image file is located.
+        # The OSS bucket that stores the image file.
         self.ossbucket = ossbucket
         # The name of the image file.
         self.ossobject = ossobject
-        # The Region where the image is located. Currently, only cn-beijing is supported.
+        # The region where the image resides. Currently, only cn-beijing is supported.
         self.ossregion = ossregion
-        # Operating system platform type. Allowed values:
+        # The type of the operating system platform. Valid values:
         # 
-        # - windows.
-        # - linux.
+        # - windows
+        # - linux
         # 
         # Currently, only linux is supported.
         # 
         # This parameter is required.
         self.ostype = ostype
-        # Operating system distribution version
+        # The version of the operating system distribution.
         self.osversion = osversion
-        # Operating system distribution. Allowed values:
+        # The operating system distribution. Valid values:
         # * centos
         # * ubuntu
         self.platform = platform
-        # The target OSS region where the image will be stored.</br>
+        # The region of the destination OSS bucket where the image is stored.</br>
         # 
         # > Currently, only cn-beijing and ap-southeast-1 are supported.
         self.target_ossregion_id = target_ossregion_id
@@ -183,11 +185,11 @@ class ImportImageRequestDiskDeviceMapping(DaraModel):
         ossobject: str = None,
         ossregion: str = None,
     ):
-        # The OSS Bucket where the image is stored.
+        # The OSS bucket that stores the image.
         self.ossbucket = ossbucket
-        # The filename (key) of the image file after it is uploaded to the OSS Bucket.
+        # The file name (key) of the image file stored in the OSS bucket after the image is uploaded.
         self.ossobject = ossobject
-        # The Region where the image is located.
+        # The region where the image resides.
         self.ossregion = ossregion
 
     def validate(self):

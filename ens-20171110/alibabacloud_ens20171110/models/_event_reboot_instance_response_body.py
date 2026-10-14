@@ -9,7 +9,7 @@ class EventRebootInstanceResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The ID of the Request.
         self.request_id = request_id
 
     def validate(self):

@@ -12,9 +12,11 @@ class PutBucketAclRequest(DaraModel):
     ):
         # The access control list (ACL) of the bucket.
         # 
-        # *   **public-read-write**
-        # *   **public-read**
-        # *   **private** (default)
+        # - **public-read-write**
+        # 
+        # - **public-read**
+        # 
+        # - **private** (default)
         # 
         # This parameter is required.
         self.bucket_acl = bucket_acl

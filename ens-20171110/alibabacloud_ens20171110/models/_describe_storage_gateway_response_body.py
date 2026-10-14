@@ -107,10 +107,13 @@ class DescribeStorageGatewayResponseBodyStorageGateways(DaraModel):
         self.service_ip = service_ip
         # The status of the storage gateway. Valid values:
         # 
-        # *   creating
-        # *   available
-        # *   deleting
-        # *   deleted
+        # - creating
+        # 
+        # - available
+        # 
+        # - deleting
+        # 
+        # - deleted
         self.status = status
         # The ID of the storage gateway.
         self.storage_gateway_id = storage_gateway_id

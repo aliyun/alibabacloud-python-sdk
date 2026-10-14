@@ -25,100 +25,87 @@ class SetLoadBalancerHTTPListenerAttributeRequest(DaraModel):
         unhealthy_threshold: int = None,
         xforwarded_for: str = None,
     ):
-        # The name of the listener. The value must be **1** to **80** characters in length.
+        # The listener name. The name must be **1** to **80** characters in length.
         # 
-        # >  The value cannot start with `http://` or `https://`.
+        # > The name cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to enable the health check feature. Valid values:
-        # 
-        # *   **on**
-        # *   **off**
+        # Specifies whether to enable health checks. Valid values:
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.health_check = health_check
-        # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+        # The port used for health checks. Valid values: **1** to **65535**. If this parameter is not configured in Settings, the backend service port (BackendServerPort) is used.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.health_check_connect_port = health_check_connect_port
-        # The domain name that is used for health checks.
+        # The domain name used for health checks.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.health_check_domain = health_check_domain
-        # The HTTP status code for a successful health check. Valid values:
+        # The HTTP status code that indicates a successful health check. Valid values:
         # 
-        # *   **http_2xx** (default)
-        # *   **http_3xx**.
-        # *   **http_4xx**
-        # *   **http_5xx**
+        # - **http_2xx** (default).
+        # - **http_3xx**.
+        # - **http_4xx**.
+        # - **http_5xx**.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.health_check_http_code = health_check_http_code
-        # The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+        # The interval between two consecutive health checks. Valid values: **1** to **50**. Unit: seconds.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.health_check_interval = health_check_interval
-        # The HTTP request method for health checks. Valid values:
+        # The health check method for the HTTP listener. Valid values:
         # 
-        # *   **head**
-        # *   **get**
+        # - **head**.
+        # - **get**.
         # 
-        # >  This parameter takes effect only if the HealthCheck parameter is set to on.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.health_check_method = health_check_method
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
-        # 
-        # *   Default value: 5.
-        # *   Valid values: **1** to **300**.
-        # *   Unit: seconds.
-        # 
-        # > 
-        # 
-        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
-        # 
-        # *   If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
+        # The amount of time to wait for a response from a health check. If the backend ECS instance does not respond within the specified time, the health check fails.
+        # - Default value: 5 seconds.
+        # - Valid values: **1** to **300**.
+        # - Unit: seconds.
+        # > - This parameter takes effect only when HealthCheck is set to on.
+        # >- If the value of HealthCheckTimeout is less than the value of HealthCheckInterval, HealthCheckTimeout becomes ineffective and the timeout period equals the value of HealthCheckInterval.
         self.health_check_timeout = health_check_timeout
         # The URI used for health checks. The URI must be **1** to **80** characters in length.
         # 
-        # > 
-        # 
-        # *   A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
-        # 
-        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
+        # > - The URI cannot be only `/` but must start with `/`.
+        # >- This parameter takes effect only when HealthCheck is set to on.
         self.health_check_uri = health_check_uri
-        # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
-        # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # The number of consecutive successful health checks required before a backend server is declared healthy (changing the status from fail to success). Valid values: **2** to **10**.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.healthy_threshold = healthy_threshold
-        # The timeout period for idle connections. Default value: 15. Valid values: **1** to **60**. Unit: seconds.
+        # The idle connection timeout period. Default value: 15 seconds. Valid values: **1** to **60**. Unit: seconds.
         # 
-        # >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, CLB establishes a new connection.
+        # > If no access request is received within the timeout period, the load balancing instance temporarily breaks the current connection and re-establishes a new connection when the next request arrives.
         self.idle_timeout = idle_timeout
-        # The listener port whose attributes are to be modified. Valid values: **1** to **65535**.
+        # The listener port whose attributes you want to modify. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
-        # The ID of the Edge Load Balancer (ELB) instance.
+        # The ID of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The timeout period of requests. Default value: 60. Valid values: **1** to **180**. Unit: seconds.
+        # The request timeout period. Default value: 60 seconds. Valid values: **1** to **180**. Unit: seconds.
         # 
-        # >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
+        # > If no response is received from the backend server within the timeout period, the load balancing instance stops waiting and returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
         # The scheduling algorithm. Valid values:
-        # 
-        # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
-        # *   **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
-        # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
+        # - **wrr**: Backend servers with higher weights are polled more frequently.
+        # - **wlc**: Requests are distributed based on the weight and actual load (number of connections) of each backend server. When the weights are the same, backend servers with fewer connections are polled more frequently.
+        # - **rr**: Requests are distributed to backend servers in sequence.
+        # - **sch**: Consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # - **qch**: Consistent hashing based on QUIC Connection IDs. Requests with the same QUIC Connection ID are distributed to the same backend server.
+        # - **iqch**: Consistent hashing based on specific three bytes of the iQUIC CID. Requests with the same 2nd to 4th bytes are distributed to the same backend server.
         self.scheduler = scheduler
-        # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
-        # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # The number of consecutive failed health checks required before a backend server is declared unhealthy (changing the status from success to fail). Valid values: **2** to **10**.
+        # > This parameter takes effect only when HealthCheck is set to on.
         self.unhealthy_threshold = unhealthy_threshold
-        # Specifies whether to use the X-Forwarded-For header to obtain the real IP address of the client. Valid values:
-        # 
-        # *   **on** (default)
-        # *   **off**
+        # Specifies whether to use the X-Forwarded-For header to retrieve the originating IP address of the client. Valid values:
+        # - **on** (default): enabled.
+        # - **off**: disabled.
         self.xforwarded_for = xforwarded_for
 
     def validate(self):

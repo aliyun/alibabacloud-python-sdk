@@ -22,57 +22,67 @@ class CreateLoadBalancerUDPListenerRequest(DaraModel):
         scheduler: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The port used by the backend ELB server of the ELB instance. Valid values: **1** to **65535**.
+        # The port used by the backend servers. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
-        # The name of the listener. The value must be **1** to **80** characters in length.
+        # The name of the listener. The name must be **1** to **80** characters long.
         # 
-        # >  The value cannot start with `http://` or `https://`.
+        # > The name cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+        # Specifies whether EIP pass-through is enabled. Valid values:
         # 
-        # *   **on**
-        # *   **off** (default)
+        # - **on**: Enables EIP pass-through.
+        # 
+        # - **off** (default): Disables EIP pass-through.
         self.eip_transmit = eip_transmit
-        # The timeout period of a connection. Valid values: **10** to **900**. Default value: **900**. Unit: seconds.
+        # The timeout for established connections. Valid values: **10** to **900**. Default value: **900**. Unit: seconds.
         self.established_timeout = established_timeout
-        # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+        # The port used for health checks. Valid values: **1** to **65535**. If you do not specify this parameter, the port specified by `BackendServerPort` is used.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
+        # The maximum time to wait for a response to a health check. A health check fails if a backend ENS instance does not respond within this time.
         # 
-        # *   Default value: 5.
-        # *   Valid values: **1** to **300**.
-        # *   Unit: seconds.
+        # - Default value: 5.
         # 
-        # >  If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+        # - Valid values: **1** to **300**.
+        # 
+        # - Unit: seconds.
+        # 
+        # > If this timeout is shorter than the health check interval (`HealthCheckInterval`), the interval value is used for the timeout instead.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The response string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+        # The expected response string for UDP health checks. The string must be up to 64 characters long and contain only letters and digits.
         self.health_check_exp = health_check_exp
-        # The interval at which health checks are performed. Valid values: **1** to **50**. Default value: **2**. Unit: seconds.
+        # The interval between health checks, in seconds. Valid values: **1** to **50**. Default value: **2**.
         self.health_check_interval = health_check_interval
-        # The request string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+        # The request string for UDP health checks. The string must be up to 64 characters long and contain only letters and digits.
         self.health_check_req = health_check_req
-        # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
+        # The number of consecutive successful health checks required for a backend server to be considered healthy. Valid values: **2** to **10**. Default value: **3**.
         self.healthy_threshold = healthy_threshold
-        # The listener port that is used by Edge Load Balancer (ELB) to receive requests and forward the requests to backend servers. Valid values: **1** to **65535**.
+        # The listener port used to receive requests and forward them to backend servers. Valid values: **1** to **65535**.
         # 
-        # >  You cannot specify ports 250, 4789, or 4790 for UDP listeners. They are system reserved ports.
+        # > For UDP listeners, ports 250, 4789, and 4790 are system-reserved and not available for use.
         # 
         # This parameter is required.
         self.listener_port = listener_port
-        # The ID of the Edge Load Balancer (ELB) instance.
+        # The ID of the load balancer instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The scheduling algorithm. Valid values:
         # 
-        # *   **wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
-        # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: Consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: Consistent hashing based on Quick UDP Internet Connection (QUIC) IDs. Requests that contain the same QUIC ID are scheduled to the same backend server.
-        # *   **iqch**: Consistent hashing based on three specific bytes of iQUIC CID. Requests with the same second, third, and forth bytes are scheduled to the same backend server.
+        # - **wrr** (default): Weighted Round Robin. Backend servers with a higher weight receive more requests.
+        # 
+        # - **wlc**: Weighted Least Connections. Requests are distributed based on both the weight and the number of current connections of each backend server. If multiple backend servers have the same weight, the one with the fewest active connections receives the next request.
+        # 
+        # - **rr**: Round Robin. Requests are distributed to backend servers sequentially.
+        # 
+        # - **sch**: Source IP Hash. Requests from the same source IP address are routed to the same backend server.
+        # 
+        # - **tch**: Four-tuple Hash. Requests are routed to backend servers based on a hash of four values: source IP address, destination IP address, source port, and destination port. Flows with the same four values are routed to the same backend server.
+        # 
+        # - **qch**: QUIC Connection ID Hash. Requests with the same QUIC Connection ID are routed to the same backend server.
+        # 
+        # - **iqch**: A consistent hash algorithm for iQUIC Connection IDs. Flows with the same second, third, and fourth bytes in the iQUIC CID are routed to the same backend server.
         self.scheduler = scheduler
-        # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
+        # The number of consecutive failed health checks required for a backend server to be considered unhealthy. Valid values: **2** to **10**. Default value: **3**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):

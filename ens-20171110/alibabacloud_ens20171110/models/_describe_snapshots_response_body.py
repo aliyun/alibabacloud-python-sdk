@@ -16,13 +16,13 @@ class DescribeSnapshotsResponseBody(DaraModel):
         snapshots: List[main_models.DescribeSnapshotsResponseBodySnapshots] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current query.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about the snapshots.
+        # The collection of snapshot details.
         self.snapshots = snapshots
         # The total number of snapshots.
         self.total_count = total_count
@@ -88,6 +88,7 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         size: str = None,
         snapshot_id: str = None,
         snapshot_name: str = None,
+        snapshot_type: str = None,
         source_disk_category: str = None,
         source_disk_id: str = None,
         source_disk_type: str = None,
@@ -95,42 +96,44 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         source_snapshot_id: str = None,
         status: str = None,
     ):
-        # The creation time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The creation time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ss format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the snapshot.
+        # The description.
         self.description = description
-        # The ID of the edge node.
+        # The ID of the ENS edge zone.
         self.ens_region_id = ens_region_id
-        # The capacity of the disk. Unit: MiB.
+        # The disk capacity. Unit: MiB.
         self.size = size
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The name of the snapshot. This parameter is returned only if a snapshot name was specified when the snapshot was created.
+        # The display name of the snapshot. This field is returned if a display name was specified when the snapshot was created.
         self.snapshot_name = snapshot_name
-        # The type of the disk. Valid value:
+        # The snapshot type.
+        self.snapshot_type = snapshot_type
+        # The disk type. Valid values:
         # 
-        # *   cloud_efficiency: ultra disk
-        # *   cloud_ssd: all-flash disk
-        # *   local_hdd: local HDD
-        # *   local_ssd: local SSD
+        # - cloud_efficiency: ultra cloud disk.
+        # - cloud_ssd: all-flash cloud disk.
+        # - local_hdd: local HDD.
+        # - local_ssd: local SSD.
         self.source_disk_category = source_disk_category
-        # The ID of the source disk. This parameter is retained even after the source disk for which the snapshot was created is released.
+        # The ID of the source cloud disk. This field is retained even if the source cloud disk of the snapshot has been released.
         self.source_disk_id = source_disk_id
-        # The type of the disk. Valid value:
+        # The disk property. Valid values:
         # 
-        # *   1: system disk
-        # *   2: data disk
+        # - 1: system cloud disk.
+        # - 2: data cloud disk.
         self.source_disk_type = source_disk_type
-        # The ID of the source edge node.
+        # The ID of the source ENS edge zone.
         self.source_ens_region_id = source_ens_region_id
         # The ID of the source snapshot.
         self.source_snapshot_id = source_snapshot_id
-        # The status of the snapshot. Valid value:
+        # The snapshot status. Valid values:
         # 
-        # *   creating: The snapshot is being created.
-        # *   Available: The snapshot is available.
-        # *   deleting: The snapshot is being deleted.
-        # *   error: An error occurred on the snapshot.
+        # - creating: The snapshot is being created.
+        # - available: The snapshot is available.
+        # - deleting: The snapshot is being deleted.
+        # - error: An error occurred.
         self.status = status
 
     def validate(self):
@@ -158,6 +161,9 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
 
         if self.snapshot_name is not None:
             result['SnapshotName'] = self.snapshot_name
+
+        if self.snapshot_type is not None:
+            result['SnapshotType'] = self.snapshot_type
 
         if self.source_disk_category is not None:
             result['SourceDiskCategory'] = self.source_disk_category
@@ -198,6 +204,9 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
 
         if m.get('SnapshotName') is not None:
             self.snapshot_name = m.get('SnapshotName')
+
+        if m.get('SnapshotType') is not None:
+            self.snapshot_type = m.get('SnapshotType')
 
         if m.get('SourceDiskCategory') is not None:
             self.source_disk_category = m.get('SourceDiskCategory')

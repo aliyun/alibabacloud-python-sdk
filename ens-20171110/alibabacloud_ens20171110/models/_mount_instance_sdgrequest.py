@@ -12,7 +12,7 @@ class MountInstanceSDGRequest(DaraModel):
         instance_ids: List[str] = None,
         sdgid: str = None,
     ):
-        # The IDs of the instances.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

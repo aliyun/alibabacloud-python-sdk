@@ -15,7 +15,7 @@ class GetBucketLifecycleResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The detailed information about the rule.
+        # The rule details.
         self.rule = rule
 
     def validate(self):
@@ -64,12 +64,13 @@ class GetBucketLifecycleResponseBodyRule(DaraModel):
         self.expiration = expiration
         # The unique ID of the rule.
         self.id = id
-        # The prefix that is applied to the rule.
+        # The prefix to which the rule applies.
         self.prefix = prefix
         # The status of the rule. Valid values:
         # 
-        # *   **Enabled**: The rule is periodically executed.
-        # *   **Disabled**: The rule is ignored.
+        # - **Enabled**: The rule is executed periodically.
+        # 
+        # - **Disabled**: The rule is ignored.
         self.status = status
 
     def validate(self):
@@ -118,9 +119,9 @@ class GetBucketLifecycleResponseBodyRuleExpiration(DaraModel):
         created_before_date: str = None,
         days: str = None,
     ):
-        # The expiration date.
+        # The expiration date in ISO 8601 UTC format, which is YYYY-MM-DDTHH:mm:ssZ.
         self.created_before_date = created_before_date
-        # The validity period, in days.
+        # The number of days before expiration.
         self.days = days
 
     def validate(self):

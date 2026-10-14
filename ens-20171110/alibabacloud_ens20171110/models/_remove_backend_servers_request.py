@@ -13,11 +13,11 @@ class RemoveBackendServersRequest(DaraModel):
         backend_servers: List[main_models.RemoveBackendServersRequestBackendServers] = None,
         load_balancer_id: str = None,
     ):
-        # The list of backend servers that you want to remove. You can remove up to 20 backend servers at a time.
+        # The list of backend servers to remove. You can remove up to 20 backend servers per call.
         # 
         # This parameter is required.
         self.backend_servers = backend_servers
-        # The ID of the Edge Load Balancer (ELB) instance.
+        # The ID of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
@@ -67,16 +67,15 @@ class RemoveBackendServersRequestBackendServers(DaraModel):
     ):
         # The IP address of the backend server.
         self.ip = ip
-        # The backend port that is used by the Edge Load Balancer (ELB) instance.
+        # The port used by the backend servers of the load balancing instance.
         self.port = port
         # The instance ID of the backend server.
         # 
         # This parameter is required.
         self.server_id = server_id
-        # The type of backend server. Valid values:
-        # 
-        # *   **ens**: an Edge Node Service (ENS) instance.
-        # *   **eni**: an Elastic Network Interface (ENI).
+        # The backend server type. Valid values:
+        # - **ens**: ENS instance.
+        # - **eni**: network interface controller (NIC).
         self.type = type
         # The weight of the backend server.
         self.weight = weight

@@ -25,46 +25,45 @@ class DescribeNetworkInterfacesRequest(DaraModel):
         type: str = None,
         v_switch_id: str = None,
     ):
-        # The region ID of the instance.
+        # The ID of the region where the instance resides.
         self.ens_region_id = ens_region_id
-        # The IDs of edge nodes. N indicates the number of edge node IDs that you can specify at the same time. Valid values of N: 1 to 100.
+        # The IDs of the ENS edge zones. N indicates the sequence number of the edge zone ID. Valid values of N: 1 to 100.
         self.ens_region_ids = ens_region_ids
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
+        # The IPv6 addresses of the elastic network interfaces (ENIs). N indicates the settings for multiple IPv6 addresses. Valid values of N: 1 to 100.
         self.ipv_6address = ipv_6address
         # The ID of the network.
         self.network_id = network_id
-        # The ID of the ENI.
+        # The ID of the elastic network interfaces (ENIs).
         self.network_interface_id = network_interface_id
-        # The IDs of the elastic network interfaces (ENIs). N indicates the number of ENI IDs that you can specify at the same time. Valid values of N: 1 to 100.
+        # The list of IDs of the elastic network interfaces (ENIs). N indicates the settings for multiple elastic network interfaces (ENIs) IDs. Valid values of N: 1 to 100.
         self.network_interface_ids = network_interface_ids
-        # The name of the ENI.
+        # The name of the elastic network interfaces (ENIs).
         self.network_interface_name = network_interface_name
-        # The page number of the returned page. Pages start from page 1. Default value: 1.
+        # The page number of the instance status list. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 100. Default value: 50.
+        # The number of entries per page for paging queries. Maximum value: 100. Default value: 50.
         self.page_size = page_size
-        # The primary IP address of the ENI.
+        # The primary IP address of the elastic network interfaces (ENIs).
         self.primary_ip_address = primary_ip_address
-        # The ID of the security group to which the secondary ENI belongs. To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
+        # The ID of the security group to which the secondary ENI belongs. Specify this parameter if you want to query the information about secondary ENIs by security group ID.
         self.security_group_id = security_group_id
-        # The status of the ENI. Valid values:
+        # The stateful status of the elastic network interfaces (ENIs). Valid values:
         # 
-        # *   Available: The ENI is available.
-        # *   Attaching: The ENI is being attached to an instance.
-        # *   InUse: The ENI is attached to an instance.
-        # *   Detaching: The ENI is being detached from an instance.
-        # *   Deleting: The ENI is being deleted.
+        # - Available: available.
+        # - Attaching: attaching.
+        # - InUse: in use.
+        # - Detaching: detaching.
+        # - Deleting: the delete operation is in progress.
         # 
-        # This parameter is empty by default, which indicates that ENIs in all states are queried.
+        # Default value: empty, which indicates that all statuses are queried.
         self.status = status
-        # The type of the ENI. Valid values:
+        # The type of the elastic network interfaces (ENIs). Valid values:
+        # - Primary: primary network interface controller (NIC).
+        # - Secondary: secondary network interface controller (NIC).
         # 
-        # *   Primary: the primary ENI.
-        # *   Secondary: the secondary ENI.
-        # 
-        # This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
+        # Default value: empty, which indicates that all types are queried.
         self.type = type
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id

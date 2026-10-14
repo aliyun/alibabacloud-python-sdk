@@ -25,72 +25,66 @@ class SetLoadBalancerTCPListenerAttributeRequest(DaraModel):
         unhealthy_threshold: int = None,
     ):
         # The description of the listener. The description must be **1** to **80** characters in length.
-        # 
-        # >  The value cannot start with `http://` or `https://`.
+        # > The description cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
+        # Specifies whether to enable EIP pass-through. Valid values:
         # 
-        # *   **on**
-        # *   **off** (default)
+        # - **on**: Enabled.
+        # - **off** (default): Disabled.
         self.eip_transmit = eip_transmit
-        # The timeout period of a connection. Valid values: **10** to **900**. Unit: seconds.
+        # The connection timeout period. Valid values: **10** to **900**. Unit: seconds.
         self.established_timeout = established_timeout
-        # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+        # The port used for health checks. Valid values: **1** to **65535**. If this parameter is not set, the backend service port (BackendServerPort) is used.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period for a health check response. If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
+        # The maximum amount of time to wait for a response from a health check. If the backend ENS does not respond within the specified time, the health check fails.
+        # - Default value: 5 seconds.
+        # - Valid values: **1** to **300**.
+        # - Unit: seconds.
         # 
-        # *   Default value: 5.
-        # *   Valid values: **1** to **300**.
-        # *   Unit: seconds.
-        # 
-        # >  If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter is ignored and the period of time specified by the HealthCheckInterval parameter is used as the timeout period.
+        # > If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period is set to the value of HealthCheckInterval.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The domain name that you want to use for health checks.
+        # The domain name used for health checks.
         self.health_check_domain = health_check_domain
-        # The HTTP status code for a successful health check. Valid values:
+        # The HTTP status code for a Normal health check. Valid values:
         # 
-        # *   **http_2xx** (default)
-        # *   **http_3xx**.
-        # *   **http_4xx**
-        # *   **http_5xx**
+        # - **http_2xx** (default).
+        # - **http_3xx**.
+        # - **http_4xx**.
+        # - **http_5xx**.
         self.health_check_http_code = health_check_http_code
-        # The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+        # The interval between two consecutive health checks. Valid values: **1** to **50**. Unit: seconds.
         self.health_check_interval = health_check_interval
-        # The type of health checks. Valid values:
-        # 
-        # *   **tcp** (default)
-        # *   **http**
+        # The health check type. Valid values:
+        # - **tcp** (default).
+        # - **http**.
         self.health_check_type = health_check_type
-        # The Uniform Resource Identifier (URI) that you want to use for health checks. The URI must be **1** to **80** characters in length.
-        # 
-        # >  The URL must start with `/` and contain characters other than `/`.
+        # The URI used for health checks. The URI must be **1** to **80** characters in length.
+        # > The URI cannot be only `/` but must start with `/`.
         self.health_check_uri = health_check_uri
-        # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+        # The number of consecutive successful health checks required before the health check status of a backend server changes from fail (unreachable) to success (reachable). Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
-        # The listener port whose attributes are to be modified. Valid values: **1** to **65535**.
+        # The listener port whose attributes you want to modify. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
-        # The ID of the Edge Load Balancer (ELB) instance.
+        # The ID of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The timeout period of session persistence.
         # 
-        # *   Default value: 0. If the default value is used, the system disables session persistence.
-        # *   Valid values: **0** to **3600**.
-        # *   Unit: seconds.
+        # - Default value: 0, which indicates that session persistence is disabled.
+        # - Valid values: **0** to **3600**.
+        # - Unit: seconds.
         self.persistence_timeout = persistence_timeout
         # The scheduling algorithm. Valid values:
-        # 
-        # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
-        # *   **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
-        # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
+        # - **wrr**: Backend servers with higher weights receive more requests.
+        # - **wlc**: Requests are distributed based on the weight and actual load (number of connections) of each backend server. When the weights are the same, backend servers with fewer connections receive more requests.
+        # - **rr**: Requests are distributed to backend servers in sequence.
+        # - **sch**: Consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # - **tch**: Consistent hashing based on four factors: source IP address, destination IP address, source port, and destination port. Requests from the same flow are distributed to the same backend server.
         self.scheduler = scheduler
-        # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+        # The number of consecutive failed health checks required before the health check status of a backend server changes from success (reachable) to fail (unreachable). Valid values: **2** to **10**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):

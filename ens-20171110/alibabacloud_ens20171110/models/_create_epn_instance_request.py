@@ -21,10 +21,13 @@ class CreateEpnInstanceRequest(DaraModel):
         self.epninstance_type = epninstance_type
         # The billing method for network usage. Valid values:
         # 
-        # *   **BandwidthByDay**: Pay by daily peak bandwidth.
-        # *   **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth.
-        # *   **PayByBandwidth4thMonth**: Pay by monthly fourth peak bandwidth.
-        # *   **PayByBandwidth**: Pay by fixed bandwidth.
+        # - **BandwidthByDay**: Pay by daily peak bandwidth.
+        # 
+        # - **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth.
+        # 
+        # - **PayByBandwidth4thMonth**: Pay by monthly fourth peak bandwidth.
+        # 
+        # - **PayByBandwidth**: Pay by fixed bandwidth.
         # 
         # You can specify only one metering method for network usage and cannot overwrite the existing metering method.
         # 
@@ -36,9 +39,11 @@ class CreateEpnInstanceRequest(DaraModel):
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # The networking mode. Valid values:
         # 
-        # *   **SpeedUp**: intelligent acceleration network (Internet)
-        # *   **Connection**: internal network
-        # *   **SpeedUpAndConnection**: intelligent acceleration network and internal network
+        # - **SpeedUp**: intelligent acceleration network (Internet)
+        # 
+        # - **Connection**: internal network
+        # 
+        # - **SpeedUpAndConnection**: intelligent acceleration network and internal network
         # 
         # This parameter is required.
         self.networking_model = networking_model

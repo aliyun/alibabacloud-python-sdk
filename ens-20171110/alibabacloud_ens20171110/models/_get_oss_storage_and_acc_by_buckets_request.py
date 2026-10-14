@@ -9,7 +9,9 @@ class GetOssStorageAndAccByBucketsRequest(DaraModel):
         self,
         bucket_list: str = None,
     ):
-        # The information about the bucket.
+        # The bucket information.
+        # 
+        # This parameter is required. If this parameter is not specified, the service returns error code 160002401.
         self.bucket_list = bucket_list
 
     def validate(self):

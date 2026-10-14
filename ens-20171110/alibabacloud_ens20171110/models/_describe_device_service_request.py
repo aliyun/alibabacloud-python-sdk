@@ -14,15 +14,15 @@ class DescribeDeviceServiceRequest(DaraModel):
         region_id: str = None,
         service_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # This parameter does not take effect.
+        # Invalid parameter.
         self.ens_region_id = ens_region_id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the Edge Node Service (ENS) node.
+        # The ID of the ENS edge node.
         self.region_id = region_id
         # Service ID
         self.service_id = service_id

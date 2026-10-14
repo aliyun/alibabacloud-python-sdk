@@ -12,23 +12,24 @@ class RenewARMServerInstanceRequest(DaraModel):
         period: int = None,
         period_unit: str = None,
     ):
-        # Specifies whether to enable auto-renewal for the premium bandwidth plan. Valid values:
+        # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   **true**.
-        # *   **false** (default).
+        # - **true**: Auto-renewal is enabled.
+        # - **false**: Auto-renewal is not enabled. This is the default value.
         self.auto_renew = auto_renew
-        # The ID of the instance that you want to renew.
+        # The ID of the server instance to be renewed.
+        # 
+        # Pass the ServerId (with the cas- prefix) returned by DescribeARMServerInstances, not the InstanceId (with the aic- prefix) in AICInstances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The renewal period. By default, instances are renewed on a monthly basis. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, and 12.
+        # The renewal period. By default, the instance is renewed on a monthly basis. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, and 12.
         # 
         # This parameter is required.
         self.period = period
         # The unit of the renewal period. Valid values:
-        # 
-        # *   Month (default)
-        # *   Year
+        # - Month (default)
+        # - Year
         # 
         # This parameter is required.
         self.period_unit = period_unit

@@ -10,7 +10,7 @@ class CreateNetworkResponseBody(DaraModel):
         network_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
         # The request ID.
         self.request_id = request_id

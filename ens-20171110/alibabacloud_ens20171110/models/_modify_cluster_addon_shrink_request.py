@@ -11,9 +11,14 @@ class ModifyClusterAddonShrinkRequest(DaraModel):
         cluster_id: str = None,
         component_name: str = None,
     ):
+        # The parameter settings of the add-on.
         self.addon_shrink = addon_shrink
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The name of the add-on. It must reference an installed add-on in the target cluster.
+        # 
         # This parameter is required.
         self.component_name = component_name
 

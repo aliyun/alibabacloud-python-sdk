@@ -13,7 +13,9 @@ class DescribeDataDownloadURLRequest(DaraModel):
         expire_timeout: int = None,
         server_filter_strategy: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
+        # 
+        # You can call ListApplications to obtain the AppId. The call chain is as follows: call CreateApplication to create an application, call PushApplicationData or DistApplicationData to upload data, and then call this operation to query the download URL.
         # 
         # This parameter is required.
         self.app_id = app_id
@@ -21,13 +23,13 @@ class DescribeDataDownloadURLRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_name = data_name
-        # The version number of the data file.
+        # The version number of the data.
         # 
         # This parameter is required.
         self.data_version = data_version
-        # This parameter is reserved.
+        # A reserved parameter.
         self.expire_timeout = expire_timeout
-        # The condition that you want to use to filter file servers. You can specify multiple canary release policies. By default, all resources are queried.
+        # The filter condition for file servers. Multiple canary release strategies are supported. By default, all file servers are queried.
         self.server_filter_strategy = server_filter_strategy
 
     def validate(self):

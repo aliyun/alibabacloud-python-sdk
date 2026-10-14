@@ -13,15 +13,15 @@ class CreateLoadBalancerResponseBody(DaraModel):
         request_id: str = None,
         v_switch_id: str = None,
     ):
-        # The ID of the ELB instance.
+        # The ID of the load balancing instance.
         self.load_balancer_id = load_balancer_id
-        # The name of the ELB instance.
+        # The name of the load balancing instance.
         self.load_balancer_name = load_balancer_name
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the vSwitch to which the ELB instance belongs.
+        # The ID of the vSwitch to which the load balancing instance belongs.
         self.v_switch_id = v_switch_id
 
     def validate(self):

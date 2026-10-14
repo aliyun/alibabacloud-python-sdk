@@ -11,10 +11,16 @@ class AttachInstancesToNodePoolShrinkRequest(DaraModel):
         instances_shrink: str = None,
         nodepool_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The array of instances, including the instance information.
+        # 
         # This parameter is required.
         self.instances_shrink = instances_shrink
+        # The node pool ID.
+        # 
         # This parameter is required.
         self.nodepool_id = nodepool_id
 

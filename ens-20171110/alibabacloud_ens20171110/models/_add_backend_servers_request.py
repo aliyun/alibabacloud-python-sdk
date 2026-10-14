@@ -13,13 +13,13 @@ class AddBackendServersRequest(DaraModel):
         backend_servers: List[main_models.AddBackendServersRequestBackendServers] = None,
         load_balancer_id: str = None,
     ):
-        # The list of backend servers that you want to add to the Edge Load Balancer (ELB) instance. You can add up to 20 backend servers at a time.
+        # The list of backend servers to add. You can add up to 20 backend servers per invoke.
         # 
-        # >  Only Edge Node Service (ENS) instances that are in the running state can be added to the ELB instance as backend servers.
+        # > Backend servers (ENS instances) must be in the Running state before they can be added to a load balancing instance.
         # 
         # This parameter is required.
         self.backend_servers = backend_servers
-        # The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+        # The frontend port used by the load balancing instance. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
@@ -69,20 +69,19 @@ class AddBackendServersRequestBackendServers(DaraModel):
     ):
         # The IP address of the backend server.
         self.ip = ip
-        # The backend port that is used by the ELB instance.
+        # The backend port used by the load balancing instance.
         self.port = port
-        # The ID of the ENS instance.
+        # The ENS instance ID.
         # 
         # This parameter is required.
         self.server_id = server_id
-        # The type of the backend server. Valid values:
-        # 
-        # *   **ens**: ENS instance
-        # *   **eni**: elastic network interface (ENI)
+        # The backend server type. Valid values:
+        # - **ens**: ENS instance.
+        # - **eni**: network interface controller (NIC) instance.
         self.type = type
         # The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
         # 
-        # >  The value 0 indicates that requests are not forwarded to the backend server.
+        # > A value of 0 indicates that no requests are forwarded to the backend server.
         self.weight = weight
 
     def validate(self):

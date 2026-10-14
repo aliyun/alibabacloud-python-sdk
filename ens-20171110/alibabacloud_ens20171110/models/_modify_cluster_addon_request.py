@@ -14,9 +14,14 @@ class ModifyClusterAddonRequest(DaraModel):
         cluster_id: str = None,
         component_name: str = None,
     ):
+        # The parameter settings of the add-on.
         self.addon = addon
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The name of the add-on. It must reference an installed add-on in the target cluster.
+        # 
         # This parameter is required.
         self.component_name = component_name
 
@@ -61,8 +66,11 @@ class ModifyClusterAddonRequestAddon(DaraModel):
         name: str = None,
         version: str = None,
     ):
+        # The schema of the custom parameters for the add-on.
         self.config_schema = config_schema
+        # The name of the add-on.
         self.name = name
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -113,9 +121,13 @@ class ModifyClusterAddonRequestAddonConfigSchema(DaraModel):
         name: str = None,
         params: Dict[str, Any] = None,
     ):
+        # The application version.
         self.app_version = app_version
+        # The configuration version.
         self.config_version = config_version
+        # The name of the add-on.
         self.name = name
+        # The custom parameters.
         self.params = params
 
     def validate(self):

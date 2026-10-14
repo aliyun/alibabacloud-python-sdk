@@ -13,9 +13,9 @@ class DescribeServerLoadBalancerMonitorResponseBody(DaraModel):
         request_id: str = None,
         server_load_balancer_monitor_data: List[main_models.DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData] = None,
     ):
-        # The ID of the request.
+        # Id of the request。
         self.request_id = request_id
-        # The array of the monitoring data.
+        # The array of objects.
         self.server_load_balancer_monitor_data = server_load_balancer_monitor_data
 
     def validate(self):
@@ -71,29 +71,29 @@ class DescribeServerLoadBalancerMonitorResponseBodyServerLoadBalancerMonitorData
     ):
         # The total number of requests.
         self.acc = acc
-        # The business time of the log. Logs are collected every minute.
+        # The log business time. The log collection granularity is 1 minute.
         self.biz_time = biz_time
-        # The ID of the node to which the ELB instance belongs.
+        # The ID of the edge zone.
         self.ens_region_id = ens_region_id
-        # The ID of the ELB instance.
+        # The load balancing instance ID.
         self.load_balancer_id = load_balancer_id
-        # The name of the ELB instance.
+        # The load balancing instance name.
         self.load_balancer_name = load_balancer_name
-        # The specification of the ELB instance.
+        # The load balancing instance specification.
         self.load_balancer_spec = load_balancer_spec
-        # The number of requests with HTTP 2xx status code returned.
+        # The number of requests with 2xx HTTP status codes.
         self.reqs_2xx = reqs_2xx
-        # The number of requests with HTTP 3xx status code returned.
+        # The number of requests with 3xx HTTP status codes.
         self.reqs_3xx = reqs_3xx
-        # The number of requests with HTTP 4xx status code returned.
+        # The number of requests with 4xx HTTP status codes.
         self.reqs_4xx = reqs_4xx
-        # The number of requests with HTTP 5xx status code returned.
+        # The number of requests with 5xx HTTP status codes.
         self.reqs_5xx = reqs_5xx
-        # The average response time. Unit: milliseconds.
+        # The average request latency. Unit: milliseconds.
         self.rt_avg = rt_avg
         # The virtual IP address (VIP) of the instance.
         self.vip = vip
-        # The ID of the tunnel.
+        # The tunnel ID.
         self.vni = vni
 
     def validate(self):

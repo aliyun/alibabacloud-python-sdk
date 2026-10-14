@@ -17,17 +17,17 @@ class AttachKeyPairResponseBody(DaraModel):
         results: List[main_models.AttachKeyPairResponseBodyResults] = None,
         total_count: int = None,
     ):
-        # The number of instances from which the SSH key pair failed to be unbound.
+        # The number of instances where the attachment failed.
         self.fail_count = fail_count
-        # The ID of the SSH key pair.
+        # The key pair ID.
         self.key_pair_id = key_pair_id
-        # The name of the SSH key pair.
+        # The key pair name.
         self.key_pair_name = key_pair_name
         # The request ID.
         self.request_id = request_id
-        # The result set of the unbind operation.
+        # The attachment results for each instance.
         self.results = results
-        # The total number of instances from which the SSH key pair is unbound.
+        # The total number of instances in the request.
         self.total_count = total_count
 
     def validate(self):
@@ -96,13 +96,13 @@ class AttachKeyPairResponseBodyResults(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The status code of the operation. 200 indicates that the operation succeeded.
+        # The status code for the operation. A value of `200` indicates success.
         self.code = code
         # The instance ID.
         self.instance_id = instance_id
-        # The message of the operation. If the value of the Code parameter is 200, the value of this parameter is successful.
+        # The response message. If the `Code` is `200`, this message is `successful`.
         self.message = message
-        # Indicates whether the operation is successful.
+        # Indicates if the operation succeeded for the instance.
         self.success = success
 
     def validate(self):

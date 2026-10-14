@@ -12,17 +12,19 @@ class RollbackApplicationRequest(DaraModel):
         timeout: int = None,
         to_app_version: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
+        # 
+        # The AppId is returned by the CreateApplication operation. FromAppVersion and ToAppVersion must be existing versions created by calling CreateAppVersion. You can call ListAppVersions to query the versions.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The current version number.
+        # The version number to be rolled back.
         # 
         # This parameter is required.
         self.from_app_version = from_app_version
-        # The timeout period of the asynchronous rollback operation. Unit: seconds. Default value: 300.
+        # The timeout period for the asynchronous rollback operation. Unit: seconds. Default value: 300.
         self.timeout = timeout
-        # The target version number. By default, the system automatically rolls back the container version to the previous version.
+        # The target version number. By default, the application is automatically rolled back to the previous version.
         self.to_app_version = to_app_version
 
     def validate(self):

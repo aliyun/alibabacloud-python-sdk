@@ -12,7 +12,7 @@ class CreateVSwitchResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the vSwitch.
+        # The ID of the VSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

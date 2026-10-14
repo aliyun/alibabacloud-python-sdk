@@ -11,9 +11,14 @@ class ScaleClusterNodePoolShrinkRequest(DaraModel):
         cluster_id: str = None,
         nodepool_id: str = None,
     ):
+        # The HTTP request body.
         self.body_shrink = body_shrink
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The node pool ID.
+        # 
         # This parameter is required.
         self.nodepool_id = nodepool_id
 

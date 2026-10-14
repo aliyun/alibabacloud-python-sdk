@@ -17,13 +17,13 @@ class DescribeNetworksResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.networks = networks
-        # The page number of the returned page.
+        # Current page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # Number of entries per page in the current query.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # Total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -115,6 +115,7 @@ class DescribeNetworksResponseBodyNetworksNetwork(DaraModel):
         description: str = None,
         ens_region_id: str = None,
         gateway_route_table_id: str = None,
+        ipv_6cidr_blocks: main_models.DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks = None,
         network_acl_id: str = None,
         network_id: str = None,
         network_name: str = None,
@@ -131,6 +132,7 @@ class DescribeNetworksResponseBodyNetworksNetwork(DaraModel):
         self.description = description
         self.ens_region_id = ens_region_id
         self.gateway_route_table_id = gateway_route_table_id
+        self.ipv_6cidr_blocks = ipv_6cidr_blocks
         self.network_acl_id = network_acl_id
         self.network_id = network_id
         self.network_name = network_name
@@ -143,6 +145,8 @@ class DescribeNetworksResponseBodyNetworksNetwork(DaraModel):
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
+        if self.ipv_6cidr_blocks:
+            self.ipv_6cidr_blocks.validate()
         if self.route_table_ids:
             self.route_table_ids.validate()
         if self.secondary_cidr_blocks:
@@ -171,6 +175,9 @@ class DescribeNetworksResponseBodyNetworksNetwork(DaraModel):
 
         if self.gateway_route_table_id is not None:
             result['GatewayRouteTableId'] = self.gateway_route_table_id
+
+        if self.ipv_6cidr_blocks is not None:
+            result['Ipv6CidrBlocks'] = self.ipv_6cidr_blocks.to_map()
 
         if self.network_acl_id is not None:
             result['NetworkAclId'] = self.network_acl_id
@@ -220,6 +227,10 @@ class DescribeNetworksResponseBodyNetworksNetwork(DaraModel):
 
         if m.get('GatewayRouteTableId') is not None:
             self.gateway_route_table_id = m.get('GatewayRouteTableId')
+
+        if m.get('Ipv6CidrBlocks') is not None:
+            temp_model = main_models.DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks()
+            self.ipv_6cidr_blocks = temp_model.from_map(m.get('Ipv6CidrBlocks'))
 
         if m.get('NetworkAclId') is not None:
             self.network_acl_id = m.get('NetworkAclId')
@@ -421,6 +432,84 @@ class DescribeNetworksResponseBodyNetworksNetworkRouteTableIds(DaraModel):
         m = m or dict()
         if m.get('RouteTableId') is not None:
             self.route_table_id = m.get('RouteTableId')
+
+        return self
+
+class DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocks(DaraModel):
+    def __init__(
+        self,
+        ipv_6cidr_block: List[main_models.DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock] = None,
+    ):
+        self.ipv_6cidr_block = ipv_6cidr_block
+
+    def validate(self):
+        if self.ipv_6cidr_block:
+            for v1 in self.ipv_6cidr_block:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Ipv6CidrBlock'] = []
+        if self.ipv_6cidr_block is not None:
+            for k1 in self.ipv_6cidr_block:
+                result['Ipv6CidrBlock'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ipv_6cidr_block = []
+        if m.get('Ipv6CidrBlock') is not None:
+            for k1 in m.get('Ipv6CidrBlock'):
+                temp_model = main_models.DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock()
+                self.ipv_6cidr_block.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeNetworksResponseBodyNetworksNetworkIpv6CidrBlocksIpv6CidrBlock(DaraModel):
+    def __init__(
+        self,
+        ipv_6cidr_block: str = None,
+        ipv_6isp: str = None,
+        type: str = None,
+    ):
+        self.ipv_6cidr_block = ipv_6cidr_block
+        self.ipv_6isp = ipv_6isp
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.ipv_6cidr_block is not None:
+            result['Ipv6CidrBlock'] = self.ipv_6cidr_block
+
+        if self.ipv_6isp is not None:
+            result['Ipv6Isp'] = self.ipv_6isp
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ipv6CidrBlock') is not None:
+            self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
+
+        if m.get('Ipv6Isp') is not None:
+            self.ipv_6isp = m.get('Ipv6Isp')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

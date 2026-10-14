@@ -15,13 +15,13 @@ class DescribeDataDownloadURLResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # The download URLs of data files.
+        # The list of download URLs for data files.
         self.data = data
-        # The response message. Success is returned for a successful request.
+        # The response message. A value of success indicates that the request was successful.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class DescribeDataDownloadURLResponseBodyData(DaraModel):
         server_list: List[main_models.DescribeDataDownloadURLResponseBodyDataServerList] = None,
         url: str = None,
     ):
-        # The time when the data file expires. The time is displayed in UTC.
+        # The expiration time of the download URL in UTC.
         self.expire_time = expire_time
-        # The file servers.
+        # The list of file servers.
         self.server_list = server_list
-        # The download URL of the data file.
+        # The download URL of the file.
         self.url = url
 
     def validate(self):
@@ -126,7 +126,7 @@ class DescribeDataDownloadURLResponseBodyDataServerList(DaraModel):
     ):
         # The host address of the file server.
         self.host = host
-        # The ID of the Edge Node Service (ENS) node.
+        # The ID of the ENS edge node.
         self.region_id = region_id
 
     def validate(self):

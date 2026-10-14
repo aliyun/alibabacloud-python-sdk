@@ -17,7 +17,7 @@ class StopLoadBalancerListenerRequest(DaraModel):
         self.listener_port = listener_port
         # The frontend protocol that is used by the ELB instance.
         # 
-        # >  This parameter is required if the same port is used by listeners that use different protocols.
+        # > This parameter is required if the same port is used by listeners that use different protocols.
         self.listener_protocol = listener_protocol
         # The ID of the ELB instance.
         # 

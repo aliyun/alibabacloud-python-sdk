@@ -11,9 +11,9 @@ class PrepareUploadResponseBody(DaraModel):
         endpoint: str = None,
         request_id: str = None,
     ):
-        # The name of the bucket. This parameter is available only when the OSS SDK is used.
+        # The name of the physical storage. Pass this value when you use the OSS SDK.
         self.bucket_name = bucket_name
-        # The endpoint. This parameter is available only when the OSS SDK is used.
+        # The endpoint. Pass this value when you use the OSS SDK.
         self.endpoint = endpoint
         # The request ID.
         self.request_id = request_id

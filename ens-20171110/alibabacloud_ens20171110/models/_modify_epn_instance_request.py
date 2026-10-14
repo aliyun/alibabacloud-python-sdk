@@ -22,11 +22,13 @@ class ModifyEpnInstanceRequest(DaraModel):
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # The networking mode. Valid values:
         # 
-        # *   **SpeedUp**: Intelligent acceleration network (Internet).
-        # *   **Connection**: Internal network.
-        # *   **SpeedUpAndConnection**: Intelligent acceleration network and internal network.
+        # - **SpeedUp**: Intelligent acceleration network (Internet).
         # 
-        # >  The internal network supports only **Connection** and **SpeedUpAndConnection**.
+        # - **Connection**: Internal network.
+        # 
+        # - **SpeedUpAndConnection**: Intelligent acceleration network and internal network.
+        # 
+        # > The internal network supports only **Connection** and **SpeedUpAndConnection**.
         self.networking_model = networking_model
 
     def validate(self):

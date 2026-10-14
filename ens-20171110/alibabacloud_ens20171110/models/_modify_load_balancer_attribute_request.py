@@ -16,7 +16,7 @@ class ModifyLoadBalancerAttributeRequest(DaraModel):
         self.load_balancer_id = load_balancer_id
         # The name of the ELB instance. The name must be **2** to **128** characters in length.
         # 
-        # >  The value cannot start with `http://` or `https://`.
+        # > The value cannot start with `http://` or `https://`.
         # 
         # This parameter is required.
         self.load_balancer_name = load_balancer_name

@@ -14,11 +14,11 @@ class CreateSecurityGroupRequest(DaraModel):
         permissions: List[main_models.CreateSecurityGroupRequestPermissions] = None,
         security_group_name: str = None,
     ):
-        # The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        # The description of the security group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         self.description = description
-        # An array of security group rules. You can specify up to 200 IDs of security group rules.
+        # The rules of the security group. Valid values of N: 0 to 200.
         self.permissions = permissions
-        # The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
+        # The name of the security group. The name must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`. By default, this parameter is empty.
         self.security_group_name = security_group_name
 
     def validate(self):
@@ -76,54 +76,63 @@ class CreateSecurityGroupRequestPermissions(DaraModel):
         source_cidr_ip: str = None,
         source_port_range: str = None,
     ):
-        # The description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
+        # The description of the security group rule. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The destination IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+        # The destination IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported.
         self.dest_cidr_ip = dest_cidr_ip
-        # The direction in which the security group rule is applied.
+        # The direction of the security group rule. Valid values:
         # 
-        # *   egress
-        # *   ingress
+        # - egress: outbound
+        # 
+        # - ingress: inbound
         # 
         # This parameter is required.
         self.direction = direction
-        # The protocol type. Valid values:
+        # The transport layer protocol. Valid values:
         # 
-        # *   TCP
-        # *   UDP
-        # *   ICMP
-        # *   ALL: All protocols are supported.
+        # - TCP
+        # 
+        # - UDP
+        # 
+        # - ICMP
+        # 
+        # - ALL
         # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # The action of the security group rule. Valid values:
+        # The policy of the security group rule. Valid values:
         # 
-        # *   Accept
-        # *   Drop
+        # - Accept: allows access.
+        # 
+        # - Drop: denies access.
         # 
         # This parameter is required.
         self.policy = policy
-        # The range of destination port numbers for the protocols specified in the security group rule. Valid values:
+        # The range of the destination ports for the security group rule. Valid values:
         # 
-        # *   If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
-        # *   If you set IpProtocol to ICMP, the port number range is -1/-1.
-        # *   If you set IpProtocol to ALL, the port number range is -1/-1.
+        # - If you set the IpProtocol to TCP or UDP, the port range is 1 to 65535. You must use a forward slash (/) to separate the start port and the end port, for example, 1/200.
+        # 
+        # - If you set the IpProtocol to ICMP, the port range is -1/-1.
+        # 
+        # - If you set the IpProtocol to ALL, the port range is -1/-1.
         # 
         # This parameter is required.
         self.port_range = port_range
-        # The priority of the security group rule. A smaller value specifies a higher priority. Valid values: 1 to 100.
+        # The priority of the security group rule. A smaller value indicates a higher priority. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.priority = priority
-        # The source IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+        # The source IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported.
         self.source_cidr_ip = source_cidr_ip
-        # The range of source port numbers for the protocols specified in the security group rule. Valid values:
+        # The range of the source ports for the security group rule. Valid values:
         # 
-        # *   If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
-        # *   If you set IpProtocol to ICMP, the port number range is -1/-1.
-        # *   If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
+        # - If you set the IpProtocol to TCP or UDP, the port range is 1 to 65535. You must use a forward slash (/) to separate the start port and the end port, for example, 1/200.
+        # 
+        # - If you set the IpProtocol to ICMP, the port range is -1/-1.
+        # 
+        # - If you set the IpProtocol to ALL, the port range is -1/-1.
         self.source_port_range = source_port_range
 
     def validate(self):

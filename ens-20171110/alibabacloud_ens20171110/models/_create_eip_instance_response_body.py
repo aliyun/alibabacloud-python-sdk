@@ -10,9 +10,9 @@ class CreateEipInstanceResponseBody(DaraModel):
         allocation_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the EIP.
+        # The ID of the EIP instance.
         self.allocation_id = allocation_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

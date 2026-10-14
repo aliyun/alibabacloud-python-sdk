@@ -16,12 +16,17 @@ class ReleaseInstanceResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   instance
-        # *   eip
-        # *   disk
-        # *   network
-        # *   natgateway
-        # *   vswitch
+        # - instance
+        # 
+        # - eip
+        # 
+        # - disk
+        # 
+        # - network
+        # 
+        # - natgateway
+        # 
+        # - vswitch
         self.resource_type = resource_type
 
     def validate(self):

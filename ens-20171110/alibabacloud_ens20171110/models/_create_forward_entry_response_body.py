@@ -12,7 +12,7 @@ class CreateForwardEntryResponseBody(DaraModel):
     ):
         # The ID of the DNAT entry.
         self.forward_entry_id = forward_entry_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

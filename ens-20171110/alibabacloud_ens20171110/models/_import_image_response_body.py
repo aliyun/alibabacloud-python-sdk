@@ -10,9 +10,9 @@ class ImportImageResponseBody(DaraModel):
         image_id: str = None,
         request_id: str = None,
     ):
-        # Image ID.
+        # The image ID.
         self.image_id = image_id
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

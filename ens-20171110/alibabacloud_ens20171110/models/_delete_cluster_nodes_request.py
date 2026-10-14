@@ -14,10 +14,15 @@ class DeleteClusterNodesRequest(DaraModel):
         cluster_id: str = None,
         release_node: bool = None,
     ):
+        # The request body parameters.
+        # 
         # This parameter is required.
         self.body = body
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to release the ENS instance where the node resides. Default value: true.
         self.release_node = release_node
 
     def validate(self):
@@ -59,6 +64,8 @@ class DeleteClusterNodesRequestBody(DaraModel):
         self,
         nodes: List[str] = None,
     ):
+        # The information about the nodes to be removed.
+        # 
         # This parameter is required.
         self.nodes = nodes
 

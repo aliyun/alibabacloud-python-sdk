@@ -10,8 +10,11 @@ class DeleteClusterRequest(DaraModel):
         cluster_id: str = None,
         retain_resources: bool = None,
     ):
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to retain cloud resources. Default value: false.
         self.retain_resources = retain_resources
 
     def validate(self):

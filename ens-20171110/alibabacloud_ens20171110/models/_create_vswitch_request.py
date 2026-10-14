@@ -13,36 +13,41 @@ class CreateVSwitchRequest(DaraModel):
         cidr_block: str = None,
         description: str = None,
         ens_region_id: str = None,
+        ipv_6cidr_block: str = None,
         network_id: str = None,
         tag: List[main_models.CreateVSwitchRequestTag] = None,
         v_switch_name: str = None,
     ):
-        # The CIDR block of the vSwitch. Take note of the following limits:
+        # The CIDR block of the VSwitch. The following requirements apply:
         # 
-        # *   The subnet mask must be 16 to 29 bits in length.
-        # *   The CIDR block of the vSwitch must fall within the CIDR block of the VPC to which the vSwitch belongs.
-        # *   The CIDR block of the vSwitch cannot be the same as the destination CIDR block in a route entry of the VPC. However, it can be a subset of the destination CIDR block.
+        # - The prefix length must be an integer from 16 to 29.
+        # 
+        # - The CIDR block of the VSwitch must be a subset of the CIDR block of the VPC to which the VSwitch belongs.
+        # 
+        # - The CIDR block of the VSwitch cannot be the same as the destination CIDR block of an existing route in the VPC, but it can be a subset of the destination CIDR block.
         # 
         # This parameter is required.
         self.cidr_block = cidr_block
-        # The description of the vSwitch.
+        # The description of the VSwitch.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        # The description must be 2 to 256 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of the edge node.
+        # The ID of the ENS node.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # The ID of the network to which the vSwitch that you want to create belongs.
+        self.ipv_6cidr_block = ipv_6cidr_block
+        # The ID of the network to which the VSwitch belongs.
         self.network_id = network_id
-        # The tags.
+        # The tags of the resource. You can specify up to 20 tags.
         self.tag = tag
-        # The name of the vSwitch. The name must meet the following requirements:
+        # The name of the VSwitch. The following requirements apply:
         # 
-        # *   The name must be 2 to 128 characters in length.
-        # *   The name must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # - The name must be 2 to 128 characters in length.
         # 
-        # Default value: null.
+        # - The name must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+        # 
+        # Default value: an empty string.
         self.v_switch_name = v_switch_name
 
     def validate(self):
@@ -64,6 +69,9 @@ class CreateVSwitchRequest(DaraModel):
 
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
+
+        if self.ipv_6cidr_block is not None:
+            result['Ipv6CidrBlock'] = self.ipv_6cidr_block
 
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
@@ -89,6 +97,9 @@ class CreateVSwitchRequest(DaraModel):
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
 
+        if m.get('Ipv6CidrBlock') is not None:
+            self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
+
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
 
@@ -109,13 +120,15 @@ class CreateVSwitchRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that are to add to the instance. Valid values of N: **1** to **20**.
+        # The key of the tag.
         # 
-        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        # *   The key must be up to 64 characters in length.
-        # *   The tag key cannot be an empty string.
+        # - The tag key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # 
+        # - The tag key can be up to 64 characters long.
+        # 
+        # - The tag key cannot be an empty string.
         self.key = key
-        # The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+        # The value of the tag. It can be up to 128 characters long, can be an empty string, and cannot start with `acs:` or contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

@@ -13,8 +13,12 @@ class InstallClusterAddonsRequest(DaraModel):
         addons: List[main_models.InstallClusterAddonsRequestAddons] = None,
         cluster_id: str = None,
     ):
+        # The component information.
+        # 
         # This parameter is required.
         self.addons = addons
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
 
@@ -59,8 +63,11 @@ class InstallClusterAddonsRequestAddons(DaraModel):
         name: str = None,
         version: str = None,
     ):
+        # The schema for the custom parameters of the component.
         self.config_schema = config_schema
+        # The plug-in name.
         self.name = name
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -111,9 +118,13 @@ class InstallClusterAddonsRequestAddonsConfigSchema(DaraModel):
         name: str = None,
         params: Dict[str, Any] = None,
     ):
+        # The application version.
         self.app_version = app_version
+        # The configuration version.
         self.config_version = config_version
+        # The component name.
         self.name = name
+        # The custom parameters of the component.
         self.params = params
 
     def validate(self):

@@ -20,7 +20,16 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-beijing': 'ens.aliyuncs.com',
+            'cn-chengdu': 'ens.aliyuncs.com',
+            'cn-hangzhou': 'ens.aliyuncs.com',
+            'cn-heyuan': 'ens.aliyuncs.com',
+            'cn-shanghai': 'ens.aliyuncs.com',
+            'cn-wulanchabu': 'ens.aliyuncs.com',
+            'cn-zhangjiakou': 'ens.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ens', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2071,12 +2080,16 @@ class Client(OpenApiClient):
             query['ControlPlaneConfig'] = request.control_plane_config_shrink
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.isp):
+            query['Isp'] = request.isp
         if not DaraCore.is_null(request.kubernetes_version):
             query['KubernetesVersion'] = request.kubernetes_version
         if not DaraCore.is_null(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not DaraCore.is_null(request.pod_vswitch_ids_shrink):
             query['PodVswitchIds'] = request.pod_vswitch_ids_shrink
         if not DaraCore.is_null(request.profile):
@@ -2131,12 +2144,16 @@ class Client(OpenApiClient):
             query['ControlPlaneConfig'] = request.control_plane_config_shrink
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.isp):
+            query['Isp'] = request.isp
         if not DaraCore.is_null(request.kubernetes_version):
             query['KubernetesVersion'] = request.kubernetes_version
         if not DaraCore.is_null(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not DaraCore.is_null(request.pod_vswitch_ids_shrink):
             query['PodVswitchIds'] = request.pod_vswitch_ids_shrink
         if not DaraCore.is_null(request.profile):
@@ -4347,8 +4364,12 @@ class Client(OpenApiClient):
             query['CidrBlock'] = request.cidr_block
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.ipv_6isp):
+            query['Ipv6Isp'] = request.ipv_6isp
         if not DaraCore.is_null(request.network_name):
             query['NetworkName'] = request.network_name
         if not DaraCore.is_null(request.tag):
@@ -4383,8 +4404,12 @@ class Client(OpenApiClient):
             query['CidrBlock'] = request.cidr_block
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.ipv_6isp):
+            query['Ipv6Isp'] = request.ipv_6isp
         if not DaraCore.is_null(request.network_name):
             query['NetworkName'] = request.network_name
         if not DaraCore.is_null(request.tag):
@@ -5315,6 +5340,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
         if not DaraCore.is_null(request.network_id):
             query['NetworkId'] = request.network_id
         if not DaraCore.is_null(request.tag):
@@ -5353,6 +5380,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
         if not DaraCore.is_null(request.network_id):
             query['NetworkId'] = request.network_id
         if not DaraCore.is_null(request.tag):
@@ -9459,10 +9488,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.profile):
+            query['Profile'] = request.profile
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9491,10 +9524,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cluster_type):
+            query['ClusterType'] = request.cluster_type
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.profile):
+            query['Profile'] = request.profile
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13042,9 +13079,16 @@ class Client(OpenApiClient):
 
     def describe_instance_types_with_options(
         self,
+        request: main_models.DescribeInstanceTypesRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DescribeInstanceTypesResponse:
-        req = open_api_util_models.OpenApiRequest()
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'DescribeInstanceTypes',
             version = '2017-11-10',
@@ -13063,9 +13107,16 @@ class Client(OpenApiClient):
 
     async def describe_instance_types_with_options_async(
         self,
+        request: main_models.DescribeInstanceTypesRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DescribeInstanceTypesResponse:
-        req = open_api_util_models.OpenApiRequest()
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'DescribeInstanceTypes',
             version = '2017-11-10',
@@ -13082,13 +13133,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_instance_types(self) -> main_models.DescribeInstanceTypesResponse:
+    def describe_instance_types(
+        self,
+        request: main_models.DescribeInstanceTypesRequest,
+    ) -> main_models.DescribeInstanceTypesResponse:
         runtime = RuntimeOptions()
-        return self.describe_instance_types_with_options(runtime)
+        return self.describe_instance_types_with_options(request, runtime)
 
-    async def describe_instance_types_async(self) -> main_models.DescribeInstanceTypesResponse:
+    async def describe_instance_types_async(
+        self,
+        request: main_models.DescribeInstanceTypesRequest,
+    ) -> main_models.DescribeInstanceTypesResponse:
         runtime = RuntimeOptions()
-        return await self.describe_instance_types_with_options_async(runtime)
+        return await self.describe_instance_types_with_options_async(request, runtime)
 
     def describe_instance_vnc_url_with_options(
         self,
@@ -16817,6 +16874,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeVSwitchesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not DaraCore.is_null(request.ens_region_ids):
@@ -16859,6 +16918,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeVSwitchesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.enable_ipv_6):
+            query['EnableIpv6'] = request.enable_ipv_6
         if not DaraCore.is_null(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not DaraCore.is_null(request.ens_region_ids):
@@ -21533,6 +21594,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_ipv_6):
+            query['EnableIPv6'] = request.enable_ipv_6
+        if not DaraCore.is_null(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.v_switch_name):
@@ -21565,6 +21630,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_ipv_6):
+            query['EnableIPv6'] = request.enable_ipv_6
+        if not DaraCore.is_null(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.v_switch_name):
@@ -24459,6 +24528,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.amount):
             query['Amount'] = request.amount
+        if not DaraCore.is_null(request.auto_install_cloud_assistant):
+            query['AutoInstallCloudAssistant'] = request.auto_install_cloud_assistant
         if not DaraCore.is_null(request.auto_release_time):
             query['AutoReleaseTime'] = request.auto_release_time
         if not DaraCore.is_null(request.auto_renew):
@@ -24469,6 +24540,8 @@ class Client(OpenApiClient):
             query['BillingCycle'] = request.billing_cycle
         if not DaraCore.is_null(request.carrier):
             query['Carrier'] = request.carrier
+        if not DaraCore.is_null(request.cloud_assistant_region):
+            query['CloudAssistantRegion'] = request.cloud_assistant_region
         if not DaraCore.is_null(request.data_disk_shrink):
             query['DataDisk'] = request.data_disk_shrink
         if not DaraCore.is_null(request.deletion_protection):
@@ -24583,6 +24656,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.amount):
             query['Amount'] = request.amount
+        if not DaraCore.is_null(request.auto_install_cloud_assistant):
+            query['AutoInstallCloudAssistant'] = request.auto_install_cloud_assistant
         if not DaraCore.is_null(request.auto_release_time):
             query['AutoReleaseTime'] = request.auto_release_time
         if not DaraCore.is_null(request.auto_renew):
@@ -24593,6 +24668,8 @@ class Client(OpenApiClient):
             query['BillingCycle'] = request.billing_cycle
         if not DaraCore.is_null(request.carrier):
             query['Carrier'] = request.carrier
+        if not DaraCore.is_null(request.cloud_assistant_region):
+            query['CloudAssistantRegion'] = request.cloud_assistant_region
         if not DaraCore.is_null(request.data_disk_shrink):
             query['DataDisk'] = request.data_disk_shrink
         if not DaraCore.is_null(request.deletion_protection):

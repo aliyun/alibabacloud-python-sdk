@@ -10,11 +10,11 @@ class PrepareUploadRequest(DaraModel):
         bucket_name: str = None,
         client_ip: str = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         # 
         # This parameter is required.
         self.bucket_name = bucket_name
-        # The specified IP address. This parameter is applicable to scenarios where the user IP address is inconsistent with the operation calling IP address, such as the scenario where the server obtains authorization and sends the authorization to the client.
+        # The client\\"s IP address. Use this parameter when the client\\"s IP address differs from the IP address used to call the API. For example, a server obtains authorization and then sends it to a client.
         self.client_ip = client_ip
 
     def validate(self):

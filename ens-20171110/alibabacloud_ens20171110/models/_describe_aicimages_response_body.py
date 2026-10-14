@@ -16,17 +16,17 @@ class DescribeAICImagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the images.
+        # The array of image information.
         self.images = images
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for paging.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -92,18 +92,19 @@ class DescribeAICImagesResponseBodyImages(DaraModel):
         status: str = None,
         user: str = None,
     ):
+        # The Android version of the image.
         self.android_version = android_version
-        # The time when the image was created.
+        # The time when the image was created, in the YYYY-MM-DD HH:mm:ss format.
         self.creation_time = creation_time
         # The description of the image.
         self.description = description
-        # The image ID of the AIC instance.
+        # The ID of the Android in Container (AIC) image.
         self.image_id = image_id
         # The URL of the AIC image repository.
         self.image_url = image_url
-        # The status of the image. **Available** is returned for this parameter. Available indicates that the image is available.
+        # The image status. Valid values: **available**.
         self.status = status
-        # The username of the image repository.
+        # The repository username of the image.
         self.user = user
 
     def validate(self):

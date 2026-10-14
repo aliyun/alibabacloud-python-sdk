@@ -10,9 +10,9 @@ class DeleteImageResponseBody(DaraModel):
         code: int = None,
         request_id: str = None,
     ):
-        # The returned service code. A value of 0 indicates that the operation was successful.
+        # The business code. The value 0 is returned for success.
         self.code = code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

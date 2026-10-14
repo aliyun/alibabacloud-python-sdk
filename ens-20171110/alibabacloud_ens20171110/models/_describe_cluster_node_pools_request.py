@@ -15,9 +15,9 @@ class DescribeClusterNodePoolsRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # This parameter is required.
+        # The page number. Pages start from 1.
         self.page_number = page_number
-        # This parameter is required.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

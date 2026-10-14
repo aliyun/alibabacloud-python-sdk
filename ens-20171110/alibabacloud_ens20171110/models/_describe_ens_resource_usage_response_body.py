@@ -87,9 +87,11 @@ class DescribeEnsResourceUsageResponseBodyEnsResourceUsage(DaraModel):
         self.running_count = running_count
         # The type of the service. Valid values:
         # 
-        # *   1: subscription instance.
-        # *   2: edge service instance.
-        # *   3: pay-as-you-go instance.
+        # - 1: subscription instance.
+        # 
+        # - 2: edge service instance.
+        # 
+        # - 3: pay-as-you-go instance.
         self.service_type = service_type
         # The total disk size.
         self.storage_sum = storage_sum

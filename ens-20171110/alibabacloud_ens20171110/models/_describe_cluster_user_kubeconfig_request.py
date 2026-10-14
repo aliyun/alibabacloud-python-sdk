@@ -10,8 +10,11 @@ class DescribeClusterUserKubeconfigRequest(DaraModel):
         cluster_id: str = None,
         private_ip_address: bool = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to use the internal access address. The default value is false.
         self.private_ip_address = private_ip_address
 
     def validate(self):

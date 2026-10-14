@@ -105,20 +105,25 @@ class DescribeStorageVolumeResponseBodyStorageVolumes(DaraModel):
         self.ens_region_id = ens_region_id
         # Indicates whether authentication is enabled. Valid values:
         # 
-        # *   **1**: Authentication is enabled.
-        # *   **0** (default): Authentication is disabled.
+        # - **1**: Authentication is enabled.
+        # 
+        # - **0** (default): Authentication is disabled.
         self.is_auth = is_auth
         # Indicates whether the volume is enabled. Valid values:
         # 
-        # *   **1** (default): The volume is enabled.
-        # *   **0**: The volume is disabled.
+        # - **1** (default): The volume is enabled.
+        # 
+        # - **0**: The volume is disabled.
         self.is_enable = is_enable
         # The status of the volume. Valid values:
         # 
-        # *   creating
-        # *   available
-        # *   deleting
-        # *   deleted
+        # - creating
+        # 
+        # - available
+        # 
+        # - deleting
+        # 
+        # - deleted
         self.status = status
         # The ID of the storage gateway.
         self.storage_gateway_id = storage_gateway_id

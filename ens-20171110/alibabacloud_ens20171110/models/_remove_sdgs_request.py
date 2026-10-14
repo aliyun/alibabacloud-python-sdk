@@ -12,11 +12,11 @@ class RemoveSDGsRequest(DaraModel):
         instance_ids: List[str] = None,
         sdg_ids: List[str] = None,
     ):
-        # The IDs of the instances.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The IDs of SDG.
+        # The list of SDG IDs.
         self.sdg_ids = sdg_ids
 
     def validate(self):

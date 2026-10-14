@@ -17,20 +17,20 @@ class DescribeSecondaryPublicIpAddressesRequest(DaraModel):
         secondary_public_ip_address: str = None,
         secondary_public_ip_id: str = None,
     ):
-        # The ID of the edge node.
+        # The ID of the ENS edge zone.
         self.ens_region_id = ens_region_id
+        # The array of ENS edge zone IDs. Array length: 1 to 100.
         self.ens_region_ids = ens_region_ids
-        # The Internet service provider. Valid values:
-        # 
-        # *   cmcc: China Mobile.
-        # *   unicom: China Unicom.
-        # *   telecom: China Telecom.
+        # The Internet service provider (ISP). Valid values:
+        # - cmcc: China Mobile.
+        # - unicom: China Unicom.
+        # - telecom: China Telecom.
         self.isp = isp
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+        # The number of entries per page for paging queries. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # The secondary IP address.
+        # The secondary public IP address.
         self.secondary_public_ip_address = secondary_public_ip_address
         # The ID of the secondary public IP address.
         self.secondary_public_ip_id = secondary_public_ip_id

@@ -12,7 +12,7 @@ class CreateFileSystemRequest(DaraModel):
         self,
         order_details: List[main_models.CreateFileSystemRequestOrderDetails] = None,
     ):
-        # The information about the orders.
+        # The list of orders. Each element in the list contains the details of an order.
         # 
         # This parameter is required.
         self.order_details = order_details
@@ -57,22 +57,22 @@ class CreateFileSystemRequestOrderDetails(DaraModel):
         protocol_type: str = None,
         storge_type: str = None,
     ):
-        # The billing method of the NAS file system. Valid values:
-        # 
-        # *   PrePaid: subscription. This billing method is not supported.
-        # *   PostPaid: pay-as-you-go.
+        # The billable methods of NAS. Valid values:  
+        # - PrePaid: subscription (currently not supported).  
+        # - PostPaid: pay-as-you-go billing method.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The ID of the edge node.
+        # The edge zone ID.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # The name of the file system. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # The file system name.
+        # The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
         # This parameter is required.
         self.file_system_name = file_system_name
-        # The name of the mount target. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # The mount target name. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
         # This parameter is required.
         self.mount_target_domain = mount_target_domain
@@ -80,18 +80,19 @@ class CreateFileSystemRequestOrderDetails(DaraModel):
         # 
         # This parameter is required.
         self.network_id = network_id
-        # The type of the order. Set the value to BUY.
+        # The order type. Valid values: BUY.
         # 
         # This parameter is required.
         self.order_type = order_type
-        # The storage protocol. Set the value to nfs.
+        # The storage protocol. Valid values: nfs.
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
         # The storage type. Valid values:
         # 
-        # *   Capacity.
-        # *   Performance.
+        # - capacity: storage-optimized.
+        # 
+        # - Performance: ultra-fast.
         # 
         # This parameter is required.
         self.storge_type = storge_type

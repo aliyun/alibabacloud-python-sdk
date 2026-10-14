@@ -20,30 +20,29 @@ class DescribeHaVipsRequest(DaraModel):
         status: str = None,
         v_switch_id: str = None,
     ):
-        # The ID of the region.
+        # The region ID.
         self.ens_region_id = ens_region_id
-        # The IDs of edge nodes. You can specify 1 to 100 IDs.
+        # The IDs of ENS nodes. Array length: 1 to 100.
         self.ens_region_ids = ens_region_ids
-        # The IP address of the HAVIP.
+        # The IP address of the HaVip instance.
         self.ha_vip_address = ha_vip_address
-        # The ID of the HAVIP.
+        # The HaVip instance ID.
         self.ha_vip_id = ha_vip_id
-        # The name of the HAVIP.
+        # The name of the HaVip instance.
         self.name = name
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query. Settings for paging.
         self.page_size = page_size
-        # The status of the HAVIP. Valid values:
-        # 
-        # *   Creating
-        # *   Available
-        # *   InUse
-        # *   Deleting
+        # The HaVip status. Valid values:
+        # - Creating: The HaVip is being created.
+        # - Available: The HaVip is available.
+        # - InUse: The HaVip is in use.
+        # - Deleting: The HaVip is being deleted.
         self.status = status
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):

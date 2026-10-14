@@ -11,13 +11,17 @@ class DescribeServcieScheduleRequest(DaraModel):
         pod_config_name: str = None,
         uuid: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
+        # 
+        # You can obtain this value after you call the CreateApplication operation to create an application.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # This parameter does not take effect.
+        # This parameter is invalid.
         self.pod_config_name = pod_config_name
-        # The unique ID of the device.
+        # The unique ID of the terminal device.
+        # 
+        # You can obtain this value after you call the RunServiceSchedule operation and set ServiceAction to Start to start service scheduling.
         # 
         # This parameter is required.
         self.uuid = uuid

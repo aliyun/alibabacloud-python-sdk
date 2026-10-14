@@ -9,7 +9,7 @@ class ReleaseARMServerInstanceRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the server.
+        # The server instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

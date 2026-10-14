@@ -15,11 +15,19 @@ class ModifyClusterNodePoolRequest(DaraModel):
         nodepool_info: main_models.ModifyClusterNodePoolRequestNodepoolInfo = None,
         scaling_group: main_models.ModifyClusterNodePoolRequestScalingGroup = None,
     ):
+        # The cluster ID.
+        # 
+        # Only ECK cluster IDs with the eck- prefix are supported. You can obtain the ID by calling the DescribeClustersV1 operation. Serverless cluster IDs returned by the DescribeCluster operation are not supported. The cluster must be in the running state. After creation, it typically takes 10 to 20 minutes to complete initialization.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The Kubernetes configuration.
         self.kubernetes_config = kubernetes_config
+        # The node pool information.
+        # 
         # This parameter is required.
         self.nodepool_info = nodepool_info
+        # The scaling group configuration.
         self.scaling_group = scaling_group
 
     def validate(self):
@@ -81,14 +89,23 @@ class ModifyClusterNodePoolRequestScalingGroup(DaraModel):
         system_disk_size: int = None,
         vswitch_ids: List[str] = None,
     ):
+        # The data cloud disk information.
         self.data_disks = data_disks
+        # The instance image ID.
         self.image_id = image_id
+        # The instance billing type.
         self.instance_charge_type = instance_charge_type
+        # The instance types.
         self.instance_types = instance_types
+        # The instance key pair. This parameter is mutually exclusive with password.
         self.key_pair_name = key_pair_name
+        # The instance password. This parameter is mutually exclusive with key_pair_name.
         self.password = password
+        # The system cloud disk type.
         self.system_disk_category = system_disk_category
+        # The system cloud disk size.
         self.system_disk_size = system_disk_size
+        # The vSwitches used by instances.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -173,7 +190,9 @@ class ModifyClusterNodePoolRequestScalingGroupDataDisks(DaraModel):
         category: str = None,
         size: int = None,
     ):
+        # The data cloud disk type.
         self.category = category
+        # The data cloud disk size.
         self.size = size
 
     def validate(self):
@@ -205,8 +224,12 @@ class ModifyClusterNodePoolRequestScalingGroupDataDisks(DaraModel):
 class ModifyClusterNodePoolRequestNodepoolInfo(DaraModel):
     def __init__(
         self,
+        name: str = None,
         nodepool_id: str = None,
     ):
+        self.name = name
+        # The node pool ID.
+        # 
         # This parameter is required.
         self.nodepool_id = nodepool_id
 
@@ -218,6 +241,9 @@ class ModifyClusterNodePoolRequestNodepoolInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.name is not None:
+            result['Name'] = self.name
+
         if self.nodepool_id is not None:
             result['NodepoolId'] = self.nodepool_id
 
@@ -225,6 +251,9 @@ class ModifyClusterNodePoolRequestNodepoolInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
         if m.get('NodepoolId') is not None:
             self.nodepool_id = m.get('NodepoolId')
 
@@ -236,7 +265,9 @@ class ModifyClusterNodePoolRequestKubernetesConfig(DaraModel):
         pre_user_data: str = None,
         user_data: str = None,
     ):
+        # The script to run after instance creation but before joining the cluster. The content must be Base64-encoded.
         self.pre_user_data = pre_user_data
+        # The script to run after instance creation and after joining the cluster. The content must be Base64-encoded.
         self.user_data = user_data
 
     def validate(self):

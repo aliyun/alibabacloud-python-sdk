@@ -107,8 +107,9 @@ class DescribeNetworkAclsResponseBodyNetworkAcls(DaraModel):
         self.resources = resources
         # The status of the network ACL. Valid values:
         # 
-        # *   **Available**: The network ACL is available.
-        # *   **Modifying**: The network ACL is being configured.
+        # - **Available**: The network ACL is available.
+        # 
+        # - **Modifying**: The network ACL is being configured.
         self.status = status
 
     def validate(self):
@@ -215,9 +216,11 @@ class DescribeNetworkAclsResponseBodyNetworkAclsResources(DaraModel):
         self.resource_type = resource_type
         # The association status of the resource. Valid values:
         # 
-        # *   **BINDED**: The resource is associated with the network ACL.
-        # *   **BINDING**: The resource is being associated with the network ACL.
-        # *   **UNBINDING**: The resource is being disassociated from the network ACL.
+        # - **BINDED**: The resource is associated with the network ACL.
+        # 
+        # - **BINDING**: The resource is being associated with the network ACL.
+        # 
+        # - **UNBINDING**: The resource is being disassociated from the network ACL.
         self.status = status
 
     def validate(self):
@@ -276,6 +279,7 @@ class DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries(DaraModel):
         self.cidr_block = cidr_block
         # The description of the inbound rule.
         self.description = description
+        # The destination network.
         self.destination_cidr_block = destination_cidr_block
         # The ID of the inbound rule.
         self.network_acl_entry_id = network_acl_entry_id
@@ -283,27 +287,33 @@ class DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries(DaraModel):
         self.network_acl_entry_name = network_acl_entry_name
         # The action that is performed on network traffic that matches the rule. Valid values:
         # 
-        # *   **accept**: allows the network traffic.
-        # *   **drop**: blocks the network traffic.
+        # - **accept**: allows the network traffic.
+        # 
+        # - **drop**: blocks the network traffic.
         self.policy = policy
         # The destination port range of the inbound rule.
         # 
-        # *   If **Protocol** of the inbound rule is set to **all** or **icmp**, the port range is **-1/-1**, which indicates all ports.
-        # *   If **Protocol** of the inbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
+        # - If **Protocol** of the inbound rule is set to **all** or **icmp**, the port range is **-1/-1**, which indicates all ports.
+        # 
+        # - If **Protocol** of the inbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
         self.port_range = port_range
         # The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
         self.priority = priority
         # The protocol type. Valid values:
         # 
-        # *   **icmp**: ICMP.
-        # *   **tcp**: TCP.
-        # *   **udp**: UDP.
-        # *   **all**: all protocols.
+        # - **icmp**: ICMP.
+        # 
+        # - **tcp**: TCP.
+        # 
+        # - **udp**: UDP.
+        # 
+        # - **all**: all protocols.
         self.protocol = protocol
         # The type of the rule. Valid values:
         # 
-        # *   **system**: The rule is created by the system.
-        # *   **custom**: The rule is created by a user.
+        # - **system**: The rule is created by the system.
+        # 
+        # - **custom**: The rule is created by a user.
         self.type = type
 
     def validate(self):
@@ -403,27 +413,33 @@ class DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries(DaraModel):
         self.network_acl_entry_name = network_acl_entry_name
         # The action that is performed on network traffic that matches the rule. Valid values:
         # 
-        # *   **accept**: allows the network traffic.
-        # *   **drop**: blocks the network traffic.
+        # - **accept**: allows the network traffic.
+        # 
+        # - **drop**: blocks the network traffic.
         self.policy = policy
         # The destination port range of the outbound rule.
         # 
-        # *   If **Protocol** of the outbound rule is set to **all** or **icmp** the port range is **-1/-1**, which indicates all ports.
-        # *   If **Protocol** of the outbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
+        # - If **Protocol** of the outbound rule is set to **all** or **icmp** the port range is **-1/-1**, which indicates all ports.
+        # 
+        # - If **Protocol** of the outbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200. 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
         self.port_range = port_range
         # The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
         self.priority = priority
         # The protocol type. Valid values:
         # 
-        # *   **icmp**: ICMP.
-        # *   **tcp**: TCP.
-        # *   **udp**: UDP.
-        # *   **all**: all protocols.
+        # - **icmp**: ICMP.
+        # 
+        # - **tcp**: TCP.
+        # 
+        # - **udp**: UDP.
+        # 
+        # - **all**: all protocols.
         self.protocol = protocol
         # The type of the rule. Valid values:
         # 
-        # *   **system**: The rule is created by the system.
-        # *   **custom**: The rule is created by a user.
+        # - **system**: The rule is created by the system.
+        # 
+        # - **custom**: The rule is created by a user.
         self.type = type
 
     def validate(self):

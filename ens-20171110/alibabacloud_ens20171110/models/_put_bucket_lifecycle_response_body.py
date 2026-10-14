@@ -10,9 +10,9 @@ class PutBucketLifecycleResponseBody(DaraModel):
         request_id: str = None,
         rule_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):

@@ -16,15 +16,15 @@ class DescribeInstanceSDGStatusResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The deployment information of the SDGs.
+        # The list of SDG deployment information.
         self.deployment_status = deployment_status
-        # The number of the page to return. Pages start from page 1. Default value: 1
+        # The page number. Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The Settings for the number of entries per page for paging in a paged query. Default value: **10**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of queried deployment records.
+        # The total number of deployment records returned.
         self.total_count = total_count
 
     def validate(self):
@@ -94,23 +94,27 @@ class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The size of the writable layer of the block device. Unit: GiB. A value of 0 indicates that this feature is disabled.
         self.block_rw_split_size = block_rw_split_size
+        # The cache size. Unit: GiB. A value of 0 indicates that this feature is disabled.
         self.cache_size = cache_size
+        # The disk access protocol type of the mounted shared cloud disk.
         self.disk_access_protocol = disk_access_protocol
+        # The disk type of the mounted shared cloud disk.
         self.disk_type = disk_type
-        # The ID of the edge node.
+        # The edge zone ID.
         self.ens_region_id = ens_region_id
-        # The ID of the AIC instance.
+        # The AIC instance ID.
         self.instance_id = instance_id
         # The deployment type of the SDG.
         self.mount_type = mount_type
-        # Deployment Phase
+        # The deployment phase of the SDG.
         self.phase = phase
         # The ID of the SDG.
         self.sdgid = sdgid
         # The deployment status of the SDG.
         self.status = status
-        # The time when the status was last updated.
+        # The latest status update time. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

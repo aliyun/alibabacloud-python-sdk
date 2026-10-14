@@ -36,13 +36,15 @@ class CreateStorageVolumeRequest(DaraModel):
         self.gateway_id = gateway_id
         # Specifies whether to enable authentication. Valid values:
         # 
-        # *   **1**: Authentication is enabled.
-        # *   **0** (default): Authentication is disabled.
+        # - **1**: Authentication is enabled.
+        # 
+        # - **0** (default): Authentication is disabled.
         self.is_auth = is_auth
         # Indicates whether the volume is enabled. Valid values:
         # 
-        # *   **1** (default): The volume is enabled.
-        # *   **0**: The volume is disabled.
+        # - **1** (default): The volume is enabled.
+        # 
+        # - **0**: The volume is disabled.
         self.is_enable = is_enable
         # The ID of the storage medium.
         # 

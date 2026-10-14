@@ -18,12 +18,13 @@ class DescribeVSwitchesResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
+        # A collection of VSwitches.
         self.v_switches = v_switches
 
     def validate(self):
@@ -115,6 +116,7 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(DaraModel):
         description: str = None,
         ens_region_id: str = None,
         free_ip_count: int = None,
+        ipv_6cidr_block: str = None,
         network_id: str = None,
         status: str = None,
         tags: main_models.DescribeVSwitchesResponseBodyVSwitchesVSwitchTags = None,
@@ -126,6 +128,7 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(DaraModel):
         self.description = description
         self.ens_region_id = ens_region_id
         self.free_ip_count = free_ip_count
+        self.ipv_6cidr_block = ipv_6cidr_block
         self.network_id = network_id
         self.status = status
         self.tags = tags
@@ -155,6 +158,9 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(DaraModel):
 
         if self.free_ip_count is not None:
             result['FreeIpCount'] = self.free_ip_count
+
+        if self.ipv_6cidr_block is not None:
+            result['Ipv6CidrBlock'] = self.ipv_6cidr_block
 
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
@@ -189,6 +195,9 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(DaraModel):
 
         if m.get('FreeIpCount') is not None:
             self.free_ip_count = m.get('FreeIpCount')
+
+        if m.get('Ipv6CidrBlock') is not None:
+            self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
 
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')

@@ -10,7 +10,9 @@ class DescribeClusterAttachScriptsResponseBody(DaraModel):
         request_id: str = None,
         script: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The cluster attachment script, Base64-encoded.
         self.script = script
 
     def validate(self):

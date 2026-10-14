@@ -28,102 +28,115 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(DaraModel):
         status: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The port used by the backend server of the ELB instance. Valid values: **1** to **65535**.
+        # The port used by the backend servers. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
-        # The peak bandwidth of the Edge Load Balancer (ELB) instance. The default value is -1, which indicates that the bandwidth is not limited.
+        # The peak bandwidth of the load balancer. The default value is -1, which indicates unlimited bandwidth.
         self.bandwidth = bandwidth
-        # The name of the listener.
+        # The description of the listener.
         self.description = description
-        # Indicates whether EIP pass-through is enabled. Valid values:
+        # Specifies whether EIP passthrough is enabled. Valid values:
         # 
-        # *   **on**
-        # *   **off** (default)
+        # - **on**: enable
+        # 
+        # - **off** (Default): disable
         self.eip_transmit = eip_transmit
-        # The timeout period of a connection. Valid values: **10** to **900**. Unit: seconds.
+        # The connection timeout. Valid values: **10** to **900**. Unit: seconds.
         self.established_timeout = established_timeout
-        # Indicates whether the health check feature is enabled. Valid values:
+        # Specifies whether to enable health checks. Valid values:
         # 
-        # *   **on**
-        # *   **off**
+        # - **on**: enable
+        # 
+        # - **off**: disable
         self.health_check = health_check
-        # The port that is used for health checks. Valid values: **1** to **65535**. If an empty string is returned for this parameter, the port specified by BackendServerPort is used for health checks.
+        # The port used for health checks. Valid values: **1** to **65535**. If this parameter is not specified, the value of `BackendServerPort` is used.
         # 
-        # >  This parameter is returned only if you set HealthCheck to on.
+        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
+        # The response timeout for a health check. If a backend ENS instance does not respond within this timeout period, the health check fails.
         # 
-        # *   Default value: 5.
-        # *   Valid values: **1** to **300**.
-        # *   Unit: seconds.
+        # - Default value: 5.
         # 
-        # > 
+        # - Valid values: **1** to **300**.
         # 
-        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
+        # - Unit: seconds.
         # 
-        # *   If the value of the HealthCheckTimeout property is smaller than the value of the HealthCheckInterval property, the timeout period specified by the HealthCheckTimeout property becomes invalid and the value of the HealthCheckInterval property is used as the timeout period.
+        # > * This parameter takes effect only when the HealthCheck parameter is set to `on`.
+        # >
+        # > * If this value is less than the `HealthCheckInterval` value, the `HealthCheckInterval` value is used as the timeout period instead.
         self.health_check_connect_timeout = health_check_connect_timeout
-        # The domain name that is used for health checks.
+        # The domain name used for health checks.
         # 
-        # >  This parameter is returned only if you set HealthCheck to on.
+        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
         self.health_check_domain = health_check_domain
-        # The HTTP status codes for a successful health check. Valid values:
+        # The HTTP status codes that indicate a successful health check. Valid values:
         # 
-        # *   **http_2xx** (default)
-        # *   **http_3xx**
-        # *   **http_4xx**
-        # *   **http_5xx**
+        # - **http_2xx** (Default)
         # 
-        # >  This parameter is returned only if you set HealthCheck to on.
+        # - **http_3xx**
+        # 
+        # - **http_4xx**
+        # 
+        # - **http_5xx**
+        # 
+        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
         self.health_check_http_code = health_check_http_code
-        # The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+        # The interval between health checks. Valid values: **1** to **50**. Unit: seconds.
         self.health_check_interval = health_check_interval
-        # The type of health checks. Valid values:
+        # The health check type. Valid values:
         # 
-        # *   **tcp** (default)
-        # *   **http**
+        # - **tcp** (Default)
+        # 
+        # - **http**
         self.health_check_type = health_check_type
-        # The URI used for health checks. The URI must be **1** to **80** characters in length.
+        # The URI used for health checks. Length: **1** to **80** characters.
         # 
-        # > 
-        # 
-        # *   A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
-        # 
-        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
+        # > - The URI must start with `/` but cannot consist solely of `/`.
+        # >
+        # > - This parameter takes effect only when the HealthCheck parameter is set to `on`.
         self.health_check_uri = health_check_uri
-        # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+        # The number of consecutive successful health checks required to change the health status of a backend server from `fail` (unhealthy) to `success` (healthy). Valid values: **2** to **10**.
         # 
-        # >  This parameter is returned only if you set HealthCheck to on.
+        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
         self.healthy_threshold = healthy_threshold
-        # The frontend port that is used by the ELB instance.
+        # The frontend port used by the load balancer instance.
         self.listener_port = listener_port
-        # The timeout period of session persistence.
+        # The session persistence timeout.
         # 
-        # *   Default value: 0. If the default value is used, the system disables session persistence.
-        # *   Valid values: **0** to **3600**.
-        # *   Unit: seconds.
+        # - Default value: 0. A value of 0 indicates that session persistence is disabled.
+        # 
+        # - Valid values: **0** to **3600**.
+        # 
+        # - Unit: seconds.
         self.persistence_timeout = persistence_timeout
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The routing algorithm. Valid values:
+        # The scheduling algorithm. Valid values:
         # 
-        # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
-        # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+        # - **wrr**: Weighted Round Robin. Backend servers with higher weights receive more requests.
+        # 
+        # - **wlc**: Weighted Least Connections. In addition to weights, the system considers the number of active connections to each backend server. If multiple backend servers have the same weight, the system selects the backend server with the fewest active connections.
+        # 
+        # - **rr**: Round Robin. The system distributes requests sequentially to the backend servers.
+        # 
+        # - **sch**: Source IP Hash. The system routes requests from the same source IP address to the same backend server.
+        # 
+        # - **tch**: 4-Tuple Hash. The system routes requests that share the same 4-tuple (source IP address, destination IP address, source port, and destination port) to the same backend server.
         self.scheduler = scheduler
         # The status of the listener. Valid values:
         # 
-        # *   **Running**
-        # *   **Stopped**
-        # *   **Starting**
-        # *   **Configuring**
-        # *   **Stopping**
-        self.status = status
-        # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+        # - **Running**: The listener is running.
         # 
-        # >  This parameter is returned only if you set HealthCheck to on.
+        # - **Stopped**: The listener is stopped.
+        # 
+        # - **Starting**: The listener is being started.
+        # 
+        # - **Configuring**: The listener is being configured.
+        # 
+        # - **Stopping**: The listener is being stopped.
+        self.status = status
+        # The number of consecutive failed health checks required to change the health status of a backend server from `success` (healthy) to `fail` (unhealthy). Valid values: **2** to **10**.
+        # 
+        # > This parameter takes effect only when the HealthCheck parameter is set to `on`.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):

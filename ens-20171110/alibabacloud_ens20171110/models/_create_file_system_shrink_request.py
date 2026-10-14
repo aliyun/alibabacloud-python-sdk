@@ -9,7 +9,7 @@ class CreateFileSystemShrinkRequest(DaraModel):
         self,
         order_details_shrink: str = None,
     ):
-        # The information about the orders.
+        # The list of orders. Each element in the list contains the details of an order.
         # 
         # This parameter is required.
         self.order_details_shrink = order_details_shrink

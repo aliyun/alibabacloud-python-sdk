@@ -28,9 +28,11 @@ class DescribeEpnInstanceAttributeResponseBody(DaraModel):
         self.instances = instances
         # The networking mode. Valid values:
         # 
-        # *   SpeedUp: intelligent acceleration network (Internet)
-        # *   Connection: internal network
-        # *   SpeedUpAndConnection: intelligent acceleration network and internal network
+        # - SpeedUp: intelligent acceleration network (Internet)
+        # 
+        # - Connection: internal network
+        # 
+        # - SpeedUpAndConnection: intelligent acceleration network and internal network
         self.networking_model = networking_model
         # The request ID.
         self.request_id = request_id
@@ -193,9 +195,11 @@ class DescribeEpnInstanceAttributeResponseBodyInstances(DaraModel):
         self.instance_name = instance_name
         # The ISP. Valid values:
         # 
-        # *   cmcc: China Mobile
-        # *   unicom: China Unicom
-        # *   telecom: China Telecom
+        # - cmcc: China Mobile
+        # 
+        # - unicom: China Unicom
+        # 
+        # - telecom: China Telecom
         self.isp = isp
         # The private IP address.
         self.private_ip_address = private_ip_address
@@ -203,9 +207,11 @@ class DescribeEpnInstanceAttributeResponseBodyInstances(DaraModel):
         self.public_ip_address = public_ip_address
         # The status of the instance. Valid values:
         # 
-        # *   Running
-        # *   Stopped
-        # *   Expired
+        # - Running
+        # 
+        # - Stopped
+        # 
+        # - Expired
         self.status = status
 
     def validate(self):

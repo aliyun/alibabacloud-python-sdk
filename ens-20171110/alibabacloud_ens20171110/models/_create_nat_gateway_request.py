@@ -18,22 +18,23 @@ class CreateNatGatewayRequest(DaraModel):
         tag: List[main_models.CreateNatGatewayRequestTag] = None,
         v_switch_id: str = None,
     ):
-        # The ID of the Edge Node Service (ENS) node.
+        # The ID of the ENS edge zone.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
+        # The billing cycle of the instance. Valid values: Hour and Month.
         self.instance_billing_cycle = instance_billing_cycle
-        # The instance type of the NAT gateway. Set the value to **enat.default**.
+        # The NAT gateway specification. Valid value: **enat.default**.
         self.instance_type = instance_type
-        # The name of the NAT gateway. The name must be 1 to 128 characters in length. The name cannot start with `http://` or `https://`.
+        # The name of the NAT gateway. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
-        # The ID of the network.
+        # The network ID.
         # 
         # This parameter is required.
         self.network_id = network_id
-        # The tags.
+        # The resource tags.
         self.tag = tag
-        # The ID of the new vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -106,13 +107,13 @@ class CreateNatGatewayRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the instance. Valid values of N: **1** to **20**.
+        # The tag key of the instance. Valid values of N: **1** to **20**.
         # 
-        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        # *   The key must be up to 64 characters in length.
-        # *   The tag key cannot be an empty string.
+        # - Cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # - Can be up to 64 characters in length.
+        # - Cannot be an empty string.
         self.key = key
-        # The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+        # The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length, cannot start with acs:, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

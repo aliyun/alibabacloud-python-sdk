@@ -12,7 +12,7 @@ class DescribeInstanceVncUrlResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The URL of the VNC management terminal.
+        # The management terminal URL.
         self.vnc_url = vnc_url
 
     def validate(self):

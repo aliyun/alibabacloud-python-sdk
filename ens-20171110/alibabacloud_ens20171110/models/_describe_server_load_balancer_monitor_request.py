@@ -11,15 +11,15 @@ class DescribeServerLoadBalancerMonitorRequest(DaraModel):
         load_balancer_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. The maximum range between StartTime and EndTime is 24 hours.
+        # The end time. The maximum interval between StartTime and EndTime cannot exceed 24 hours.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the ELB instance.
+        # The load balancing instance ID.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The start time in the format of yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.start_time = start_time

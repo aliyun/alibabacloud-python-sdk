@@ -9,7 +9,7 @@ class DeleteSDGShrinkRequest(DaraModel):
         self,
         sdgid_shrink: str = None,
     ):
-        # The IDs of the SDGs that you want to delete.
+        # The list of SDGs to delete.
         # 
         # This parameter is required.
         self.sdgid_shrink = sdgid_shrink

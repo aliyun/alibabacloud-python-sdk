@@ -13,7 +13,7 @@ class AttachInstanceSDGResponseBody(DaraModel):
         data: main_models.AttachInstanceSDGResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data object.
+        # The returned Data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -53,14 +53,14 @@ class AttachInstanceSDGResponseBodyData(DaraModel):
         result: main_models.AttachInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The response message. Success is returned for a successful request.
+        # The response message. A value of success indicates a successful request.
         self.message = message
-        # The execution result of the synchronization request.
+        # The execution result of the synchronous request.
         self.result = result
-        # Indicates whether all tasks are successful. Valid values:
+        # Indicates whether all requests succeeded. Valid values:
         # 
-        # *   **true**: All tasks are successful.
-        # *   **false**: Failed tasks exist.
+        # - **true**: All requests succeeded.
+        # - **false**: Some requests failed.
         self.success = success
 
     def validate(self):
@@ -104,11 +104,11 @@ class AttachInstanceSDGResponseBodyDataResult(DaraModel):
         failed_items: List[main_models.AttachInstanceSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
-        # The number of failed tasks.
+        # The number of failures.
         self.failed_count = failed_count
-        # Details about failed tasks.
+        # The list of failure details.
         self.failed_items = failed_items
-        # The number of successful tasks.
+        # The number of successes.
         self.success_count = success_count
 
     def validate(self):
@@ -159,7 +159,7 @@ class AttachInstanceSDGResponseBodyDataResultFailedItems(DaraModel):
     ):
         # The error message.
         self.err_message = err_message
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

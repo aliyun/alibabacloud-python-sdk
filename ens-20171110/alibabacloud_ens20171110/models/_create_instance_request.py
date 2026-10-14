@@ -36,91 +36,94 @@ class CreateInstanceRequest(DaraModel):
     ):
         self.data_disk = data_disk
         self.system_disk = system_disk
-        # Specifies whether to enable the auto-renewal feature. Valid values: **True** and **False**. Default value: False.
+        # Specifies whether to enable auto-renewal. Valid values: **True** | **False** (default).
         self.auto_renew = auto_renew
-        # The auto-renewal period for the instance. This parameter is required when the **AutoRenew** parameter is set to **True**. Valid values: **1** to **12**. Unit: months.
+        # The auto-renewal period. This parameter is required when **AutoRenew** is set to **True**. Valid values: **1** to **12**. Unit: months.
         self.auto_renew_period = auto_renew_period
         # The region ID.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # The hostname of the Elastic Compute Service (ECS) instance. General naming rules: The hostname cannot start or end with a period (.) or hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
+        # The hostname of the instance.
+        # General naming conventions: Periods (.) and hyphens (-) cannot be used as the first or last character and cannot be used consecutively.
         # 
-        # Naming rules for specific instances:
-        # 
-        # *   For Windows instances, the hostname must be **2** to **15** characters in length and cannot contain periods (.) or contain only digits. The hostname cannot contain periods (.) or contain only digits.
-        # *   For instances that run one of other operating systems such as Linux, the hostname must be **2** to **64** characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+        # Specific naming conventions:
+        # - Windows instances: The hostname must be **2** to **15** characters in length. Periods (.) are not supported. The hostname cannot consist entirely of digits. Uppercase letters, lowercase letters, digits, and hyphens (-) are allowed.
+        # - Other instances (such as Linux): The hostname must be **2** to **64** characters in length. Multiple periods (.) are supported. Each segment separated by a period can contain uppercase letters, lowercase letters, digits, and hyphens (-).
         self.host_name = host_name
-        # The ID of the image file that you select when creating the instance.
+        # The ID of the image that is used to start the instance.
         self.image_id = image_id
-        # The name of the instance. The name must conform to the following naming conventions:
+        # The name of the instance. Naming conventions:
         # 
-        # *   The name must be **2** to **128** characters in length.
-        # *   It must start with a letter but cannot start with http:// or https://.
-        # *   The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # - The name must be **2** to **128** characters in length and can contain letters and Chinese characters.
+        # - The name must start with an uppercase letter, a lowercase letter, or a Chinese character. It cannot start with http:// or https://.
+        # - The name can contain digits, colons (:), underscores (_), periods (.), or hyphens (-).
         # 
-        # If you do not specify this parameter, the instance ID is used as the instance name by default.
+        # If this parameter is not specified, the default value is the InstanceId of the instance.
         self.instance_name = instance_name
-        # The type of the instance.
+        # The instance type.
         # 
-        # For more information, see [](~~66124~~).
+        # For details about instance types, see [Limits](https://help.aliyun.com/document_detail/66124.html).
         # 
         # This parameter is required.
         self.instance_type = instance_type
-        # This parameter is required if you create the instance for the first time. The existing billing method is used by default if you have created an instance. Valid values:
+        # This parameter is required when you create an instance for the first time. If you already have instance resources, the existing billing method is used by default. Valid values:
         # 
-        # *   **BandwidthByDay**: Pay by daily peak bandwidth.
-        # *   **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth.
+        # - **BandwidthByDay**: daily peak bandwidth.
+        # 
+        # - **95BandwidthByMonth**: monthly 95th percentile bandwidth.
         self.internet_charge_type = internet_charge_type
-        # The type of the IP address. Valid values:
+        # The IP type. Valid values:
         # 
-        # *   **ipv4** (default)
-        # *   **ipv6**
-        # *   **ipv4Andipv6**
+        # - **ipv4** (default): IPv4.
+        # 
+        # - **ipv6**: IPv6.
+        # 
+        # - **ipv4Andipv6**: IPv4 and IPv6.
         self.ip_type = ip_type
-        # The name of the key pair. You can specify only one name.
+        # The name of the key pair. Only a single name is supported.
         self.key_pair_name = key_pair_name
         self.owner_id = owner_id
         # The password of the instance.
         # 
-        # The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: ``()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/``
+        # The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: ```()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/```
         self.password = password
         # Specifies whether to use the preset password of the image. Valid values:
         # 
-        # - **true**: The password preset in the image is used, and the **Password** parameter must be null. For secure access, make sure that the selected image has a password configured.
-        # 
-        # - **false**: does not use the password preset in the image.
+        # - **true**: The preset password of the image is used. The **Password** parameter must be empty, and you must make sure that the image has a preset password.
+        # - **false**: The preset password of the image is not used.
         self.password_inherit = password_inherit
-        # The billing method of the instance. Set the value to Subscription.
+        # The payment method. Currently, this is a fixed value of Subscription (subscription instance). Modification is not supported.
         self.payment_type = payment_type
-        # The subscription period of the instance. Valid values: **1** to **9** and **12**. Unit: months.
+        # The subscription duration. Valid values: **1** to **9** and **12**. Unit: months.
         # 
         # This parameter is required.
         self.period = period
-        # The internal IP address. If this parameter is specified, you must specify the vSwitch ID. The vSwitch must be created first. Otherwise, an error is returned.
+        # The private IP address. If you specify a private IP address, you must also specify the VSwitchId parameter. The vSwitch must be created in advance. Otherwise, an error is returned.
         self.private_ip_address = private_ip_address
         # Specifies whether a public IP address can be assigned to the specified instance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true** (default): A public IP address can be assigned.
+        # - **false**: A public IP address cannot be assigned.
         self.public_ip_identification = public_ip_identification
         # The number of instances.
         # 
         # This parameter is required.
         self.quantity = quantity
-        # Specifies whether to automatically append sequential suffixes to the hostnames specified by the **HostName** parameter and instance names specified by the **InstanceName** parameter. The sequential suffixes range from **001** to **999**.
+        # Specifies whether to add sequential suffixes to **HostName** and **InstanceName**. The sequential suffixes start from **001** and cannot exceed **999**.
         # 
-        # Examples: **LocalHost001** and **LocalHost002**, and **MyInstance001** and **MyInstance002**.
+        # Example: **LocalHost001**, **LocalHost002**, **MyInstance001**, and **MyInstance002**.
         # 
         # Default value: **false**.
         self.unique_suffix = unique_suffix
-        # Custom data. The data starts with `#!`. The data can be at most 256 characters in length and 16 KB in size. Only custom scripts are supported and cannot be rendered by InstanceMetaData.
+        # The custom data. The data must start with `#!`. The maximum length is 256 characters and the maximum size is 16 KB. Only custom data scripts are supported. InstanceMetaData rendering is not supported.
         # 
-        # You can specify custom data. The data is encoded in Base64. The system does not encrypt your custom data when API requests are initiated. We recommend that you do not pass in confidential information such as passwords and private keys in plaintext. If you want to provide sensitive data such as passwords and private keys, encrypt the data and then encode it in Base64. The data is decrypted on the instance in the way it is encrypted.
         # 
-        # For more information, see [User data formats](https://cloudinit.readthedocs.io/en/latest/topics/format.html).
+        # You can pass in custom data that is Base64-encoded. When you call the API to initiate a request, the custom data you specify is not encrypted. Do not pass in confidential information such as passwords and private keys in plaintext. If you need to pass in passwords or private keys, encrypt the content first and then Base64-encode it before passing it in. Decrypt the content in the same way inside the instance.
+        # 
+        # For more information, see [Data format](https://cloudinit.readthedocs.io/en/latest/topics/format.html).
         self.user_data = user_data
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -291,7 +294,7 @@ class CreateInstanceRequestSystemDisk(DaraModel):
         self,
         size: str = None,
     ):
-        # The size of the system disk. Unit: GiB. Valid values: **20** and **40**. The value cannot be smaller than the size of the image and must be a multiple of 10 GiB.
+        # The size of the system cloud disk. Unit: GiB. The value must be a multiple of 10 and cannot be smaller than the image size. For the valid range, refer to the SystemDiskMinSize and SystemDiskMaxSize values returned by DescribeAvailableResourceInfo. 20 GiB and 40 GiB are common configurations and do not indicate that only these two values are supported.
         self.size = size
 
     def validate(self):
@@ -319,7 +322,7 @@ class CreateInstanceRequestDataDisk(DaraModel):
         self,
         size: str = None,
     ):
-        # The capacity of the first data disk. Unit: GiB. The capacity is at least 20 GiB and is a multiple of 10 GiB.
+        # The size of the first data cloud disk. Unit: GiB. The size must be at least 20 GiB and a multiple of 10.
         self.size = size
 
     def validate(self):

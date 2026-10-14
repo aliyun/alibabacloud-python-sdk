@@ -17,12 +17,15 @@ class DescribeEnsNetDistrictRequest(DaraModel):
         # 
         # If you specify this parameter, only nodes in the regions of the level that is specified by this parameter are queried.
         self.net_district_code = net_district_code
+        # Region code
         self.net_district_code_node = net_district_code_node
         # The level of the region.
         # 
-        # *   **Big**: area
-        # *   **Middle**: province
-        # *   **Small**: city
+        # - **Big**: area
+        # 
+        # - **Middle**: province
+        # 
+        # - **Small**: city
         # 
         # This parameter is required.
         self.net_level_code = net_level_code

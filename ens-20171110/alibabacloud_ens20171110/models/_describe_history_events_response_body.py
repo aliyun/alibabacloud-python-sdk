@@ -16,15 +16,15 @@ class DescribeHistoryEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried events.
+        # The list of events.
         self.events = events
-        # The page number. Pages start from page 1. Default value: 1.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -94,47 +94,44 @@ class DescribeHistoryEventsResponseBodyEvents(DaraModel):
         reason: str = None,
         resource_id: str = None,
     ):
-        # The ID of the event.
+        # The event ID.
         self.event_id = event_id
-        # The level of the specific event. Valid values:
-        # 
-        # *   CRITICAL
-        # *   WARN
-        # *   INFO
+        # The event level. Valid values:
+        # - CRITICAL: Critical.
+        # - WARN: Warning.
+        # - INFO: Information.
         self.event_level = event_level
-        # The status of the event. Valid values:
-        # 
-        # *   Inquiring
-        # *   Scheduled
-        # *   Executing
-        # *   Executed
-        # *   Failed
-        # *   Canceled
-        # *   Avoided
+        # The event status. Valid values:
+        # - Inquiring: Inquiring.
+        # - Scheduled: Scheduled.
+        # - Executing: Executing.
+        # - Executed: Executed.
+        # - Failed: Failed.
+        # - Canceled: Canceled.
+        # - Avoided: Avoided.
         self.event_status = event_status
-        # The type of the event. Description:
-        # 
-        # *   Instance:SystemFailure.Redeploy: The instance is redeployed due to system issues.
-        # *   Instance:SystemFailure.Reboot: The instance is restarted due to a system error.
-        # *   Instance:RegionNetworkDown: The node network is interrupted.
-        # *   Disk:Stalled: The disk performance is impaired.
-        # *   EnsRegion:NetworkMigration: The instance is migrated due to a system error.
-        # *   IP:SafeRisk: IP alerts.
-        # *   IP:SafeBan: IP blocking.
-        # *   Instance:SystemUpgrade.Migrate: The instance needs to be migrated due to underlying upgrades.
-        # *   Instance:SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
+        # The event type. Valid values:
+        # - Instance:SystemFailure.Redeploy: The instance deployment due to a system fault.
+        # - Instance:SystemFailure.Reboot: The instance is restarted due to a system fault.
+        # - Instance:RegionNetworkDown: The edge zone network break.
+        # - Disk:Stalled: The disk performance is degraded.
+        # - EnsRegion:NetworkMigration: Instance migration due to a system fault.
+        # - IP:SafeRisk: IP alerting.
+        # - IP:SafeBan: The IP address is blocked.
+        # - Instance:SystemUpgrade.Migrate: The instance needs to be migrated due to an underlying upgrade.
+        # - Instance:SystemMaintenance.Redeploy: The instance deployment due to system maintenance.
         self.event_type = event_type
-        # The extended attributes.
+        # The extended attribute.
         self.extended_attribute = extended_attribute
-        # The scheduled execution time of the event in milliseconds.
+        # The scheduled execution time of the event, in milliseconds.
         self.not_before = not_before
         self.not_before_utc_time = not_before_utc_time
-        # The release time in milliseconds.
+        # The publish time, in milliseconds.
         self.publish_time = publish_time
         self.publish_utc_time = publish_utc_time
-        # The event cause.
+        # The reason for the event.
         self.reason = reason
-        # The ID of the associated resources.
+        # The ID of the associated resource.
         self.resource_id = resource_id
 
     def validate(self):

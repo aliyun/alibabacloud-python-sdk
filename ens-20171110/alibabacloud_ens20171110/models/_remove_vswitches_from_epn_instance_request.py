@@ -10,11 +10,11 @@ class RemoveVSwitchesFromEpnInstanceRequest(DaraModel):
         epninstance_id: str = None,
         v_switches_info: str = None,
     ):
-        # The ID of theEPN instance.
+        # The Edge Private Network (EPN) instance ID. The NetworkingModel of the EPN instance must be Connection or SpeedUpAndConnection. The SpeedUp pattern does not support vSwitch operations.
         # 
         # This parameter is required.
         self.epninstance_id = epninstance_id
-        # The internal networking information that you want to delete.
+        # The internal network configuration information to remove.
         # 
         # This parameter is required.
         self.v_switches_info = v_switches_info

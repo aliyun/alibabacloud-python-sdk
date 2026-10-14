@@ -9,6 +9,7 @@ class UpdateClusterCertificateRequest(DaraModel):
         self,
         cluster_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):

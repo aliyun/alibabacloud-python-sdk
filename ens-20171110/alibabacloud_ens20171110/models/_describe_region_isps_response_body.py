@@ -58,9 +58,9 @@ class DescribeRegionIspsResponseBodyIsps(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The code of the ISP.
+        # The ISP code.
         self.code = code
-        # The name of the ISP.
+        # The ISP name.
         self.name = name
 
     def validate(self):

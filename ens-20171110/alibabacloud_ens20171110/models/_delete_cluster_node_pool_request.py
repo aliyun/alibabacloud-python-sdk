@@ -10,8 +10,12 @@ class DeleteClusterNodePoolRequest(DaraModel):
         cluster_id: str = None,
         nodepool_id: str = None,
     ):
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the node pool.
+        # 
         # This parameter is required.
         self.nodepool_id = nodepool_id
 

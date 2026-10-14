@@ -16,15 +16,15 @@ class ListAICPublicKeyDeliveriesRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # Public Key Grouping
+        # The group of the public key.
         self.key_group = key_group
-        # Public Key Name
+        # The name of the public key.
         self.key_name = key_name
-        # Public key type
+        # The type of the public key.
         self.key_type = key_type
-        # The page number of the page to return.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records to display per page.
         self.page_size = page_size
 
     def validate(self):

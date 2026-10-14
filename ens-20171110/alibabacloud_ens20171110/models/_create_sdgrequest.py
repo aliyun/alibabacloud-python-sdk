@@ -15,36 +15,43 @@ class CreateSDGRequest(DaraModel):
         performance_level: int = None,
         size: str = None,
     ):
+        # The billing logic for SDG child disks. This parameter specifies the billing method for the RBD child disks produced by this SDG. This parameter does not apply to standard cloud disks.
+        # Optional parameter values:
+        # 
+        # - Hour.
+        # 
+        # -  Day. This is the default value.
+        # 
+        # 
+        # > - Parameter description: The longer the cycle, the lower the cost. If the disk is released before the billing cycle ends, a service fee is charged.
         self.billing_cycle = billing_cycle
         # The description of the SDG.
-        # 
-        # >  We recommend that you specify this parameter in details for subsequent queries.
+        # > Provide a detailed description for easier future queries.
         self.description = description
+        # The type of the source disk.
+        # Optional parameter values:
+        # -  standard: standard cloud disk. This is the default value.
+        # -  rbd: RBD disk.
+        # 
+        # > - Limits: RBD disk SDGs and standard disk SDGs cannot inherit from each other.
         self.disk_type = disk_type
-        # The ID of the SDG from which you want to create an SDG.
-        # 
-        # > 
-        # 
-        # *   The first time you create an SDG, the **FromSDGId** parameter is empty.
-        # 
-        # *   If the value of the **FromSDGId** parameter is invalid or does not correspond to an original disk, an error is reported.
-        # 
-        # *   If the value of the **FromSDGId** parameter is not empty, you have created an SDG, and the operation is performed on the existing SDG.
+        # The ID of an existing SDG.
+        # > - If you are creating an SDG for the first time, leave **FromSDGId** empty.
+        # >- If **FromSDGId** is invalid or the corresponding raw cloud disk cannot be found, an error is returned.
+        # >- If **FromSDGId** is not empty, this indicates that you are operating on an existing SDG rather than creating one for the first time.
         self.from_sdgid = from_sdgid
-        # The ID of the AIC instance. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the ID.
+        # The AIC instance ID. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to obtain the InstanceId value.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The SDG sharing ratio parameter. This parameter supports cloud disks with different maximum sharing ratios.
         self.performance_level = performance_level
         # The maximum capacity of the SDG. Unit: GB.
+        # >- To reduce costs, evaluate the required capacity as needed.
+        # >- If you are creating an SDG for the first time, **Size** is required.
+        # >- If the data volume increases later, pass a new **Size** value to expand the capacity. If **Size** is not empty and is greater than the original **Size** value of the SDG, the raw cloud disk of the SDG is expanded to the specified **Size**. If **Size** is empty or the specified **Size** is less than the original **Size** value of the SDG, no action is taken.
         # 
-        # > 
-        # 
-        # *   To save costs, we recommend that you specify this parameter based on your business requirements.
-        # 
-        # *   The first time that you create an SDG, the **Size** parameter is required.
-        # 
-        # *   When the amount of data increases, you can pass a new **Size** parameter for resizing. If the value of the new **Size** parameter is greater than the value of the old **Size** parameter, the disk size of the SDG is increased to the size that is specified by the new **Size** parameter. If the value of the new **Size** parameter is empty or smaller than that of the old **Size** parameter, no operation is performed.
+        # The minimum tested usable value is 150 GB.
         self.size = size
 
     def validate(self):

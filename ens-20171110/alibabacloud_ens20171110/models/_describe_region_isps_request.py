@@ -9,7 +9,7 @@ class DescribeRegionIspsRequest(DaraModel):
         self,
         ens_region_id: str = None,
     ):
-        # The ID of the node. You can specify only one node ID in a call.
+        # The edge node ID. Only a single query is supported.
         self.ens_region_id = ens_region_id
 
     def validate(self):

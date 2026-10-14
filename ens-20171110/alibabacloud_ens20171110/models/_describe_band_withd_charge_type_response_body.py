@@ -17,8 +17,9 @@ class DescribeBandWithdChargeTypeResponseBody(DaraModel):
         self.band_with_type_info = band_with_type_info
         # The metering type.
         # 
-        # *   ChargeByUnified: unified metering.
-        # *   ChargeByGrade: differential metering.
+        # - ChargeByUnified: unified metering.
+        # 
+        # - ChargeByGrade: differential metering.
         self.charge_contract_type = charge_contract_type
         # The metering cycle. Currently, this parameter is empty in the response.
         self.charge_cycle_info = charge_cycle_info

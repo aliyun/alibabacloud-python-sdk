@@ -13,7 +13,7 @@ class ModifyNetworkAttributeRequest(DaraModel):
     ):
         # The description of the network.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http\\:// or https\\://.
         self.description = description
         # The ID of the network.
         # 
@@ -21,9 +21,11 @@ class ModifyNetworkAttributeRequest(DaraModel):
         self.network_id = network_id
         # The name of the network. The name must meet the following requirements:
         # 
-        # *   The name must be 2 to 128 characters in length
-        # *   It must start with a letter but cannot start with http:// or https://.
-        # *   The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # - The name must be 2 to 128 characters in length
+        # 
+        # - It must start with a letter but cannot start with http\\:// or https\\://.
+        # 
+        # - The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.network_name = network_name
 
     def validate(self):

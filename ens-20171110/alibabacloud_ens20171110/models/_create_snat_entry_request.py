@@ -20,16 +20,18 @@ class CreateSnatEntryRequest(DaraModel):
     ):
         # Specifies whether to enable IP affinity. If you do not specify this parameter, IP affinity is enabled by default. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**
         # 
-        # >  After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
+        # - **true**
+        # 
+        # > After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
         self.eip_affinity = eip_affinity
         # The timeout period for idle connections. Valid values: **1** to **86400**. Unit: seconds.
         self.idle_timeout = idle_timeout
         # Whether to enable operator affinity. Value taking:
         # 
         # - false:Do not open.
+        # 
         # - true:Open.
         self.isp_affinity = isp_affinity
         # The ID of the Network Address Translation (NAT) gateway.
@@ -44,15 +46,15 @@ class CreateSnatEntryRequest(DaraModel):
         self.snat_ip = snat_ip
         # The CIDR block. You can specify the CIDR block of a network, a vSwitch, or an instance. You can also specify a custom CIDR block. All instances within the CIDR block can access the Internet or external networks by using SNAT.
         # 
-        # >  If you specify **SourceVSwitchId** and **SourceCIDR**, **SourceVSwitchId** does not take effect. The value that you specified for **SourceCIDR** takes precedence.
+        # > If you specify **SourceVSwitchId** and **SourceCIDR**, **SourceVSwitchId** does not take effect. The value that you specified for **SourceCIDR** takes precedence.
         self.source_cidr = source_cidr
         # The ID of the network. This parameter specifies that all ENS instances in the network can use the SNAT entry to access the Internet.
         # 
-        # >  If you specify **SourceNetworkId** and **SourceVSwitchId** or **SourceCIDR**, **SourceNetworkId** does not take effect. The value that you specified for **SourceCIDR** takes precedence. Priority: **SourceCIDR** > **SourceVSwitchId** > **SourceNetworkId**.
+        # > If you specify **SourceNetworkId** and **SourceVSwitchId** or **SourceCIDR**, **SourceNetworkId** does not take effect. The value that you specified for **SourceCIDR** takes precedence. Priority: **SourceCIDR** > **SourceVSwitchId** > **SourceNetworkId**.
         self.source_network_id = source_network_id
         # The ID of the vSwitch that you need to access over the Internet. This parameter specifies that Edge Node Service (ENS) instances in the vSwitch can use the SNAT entry to access the Internet.
         # 
-        # >  If you specify **SourceVSwitchId** and **SourceCIDR**, **SourceVSwitchId** does not take effect. The value that you specified for **SourceCIDR** takes precedence.
+        # > If you specify **SourceVSwitchId** and **SourceCIDR**, **SourceVSwitchId** does not take effect. The value that you specified for **SourceCIDR** takes precedence.
         self.source_vswitch_id = source_vswitch_id
         # The secondary EIP in the SNAT entry. Separate multiple secondary EIPs with commas (,).
         self.standby_snat_ip = standby_snat_ip

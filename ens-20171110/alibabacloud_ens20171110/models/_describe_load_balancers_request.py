@@ -22,31 +22,31 @@ class DescribeLoadBalancersRequest(DaraModel):
         server_id: str = None,
         v_switch_id: str = None,
     ):
-        # The IP address that the ELB instance uses to provide services.
+        # The service address of the load balancing instance.
         self.address = address
-        # The ID of the Edge Node Service (ENS) node.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
-        # The IDs of the Edge Node Service (ENS) nodes.
+        # The list of ENS edge zone IDs.
         self.ens_region_ids = ens_region_ids
-        # The ID of the ELB instance.
+        # The ID of the load balancing instance.
         self.load_balancer_id = load_balancer_id
-        # The name of the ELB instance.
+        # The name of the load balancing instance.
         self.load_balancer_name = load_balancer_name
-        # The status of the listener for the ELB instance. Valid values:
-        # 
-        # *   **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
-        # *   **InActive**: The listener for the instance does not forward the received traffic.
+        # The listener status of the load balancing instance. Valid values:
+        # - **Active**: The listeners in the instance can forward accepted traffic based on rules.
+        # - **InActive**: The listeners in the instance no longer forward accepted traffic.
         self.load_balancer_status = load_balancer_status
+        # The type of the load balancing instance.
         self.load_balancer_type = load_balancer_type
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
-        # The page number. Default value: 1.
+        # The page number of the list. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 10. Valid values: **10** to **100**.
+        # The Settings for the number of entries per page during paging in a paged query. Default value: 10. Valid values: **10** to **100**.
         self.page_size = page_size
-        # The ID of the backend server.
+        # The backend server instance ID.
         self.server_id = server_id
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):

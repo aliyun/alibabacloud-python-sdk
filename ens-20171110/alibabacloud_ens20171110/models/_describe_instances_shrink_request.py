@@ -31,63 +31,55 @@ class DescribeInstancesShrinkRequest(DaraModel):
         vpd_id: str = None,
         vpd_vswitch_id: str = None,
     ):
+        # The list of EIP addresses used to filter instances.
         self.eip_addresses_shrink = eip_addresses_shrink
         # The region ID.
         self.ens_region_id = ens_region_id
-        # The IDs of the regions. The value is a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
+        # The list of edge zone IDs. This parameter is a formatted JSON array that contains up to 100 IDs separated by commas (,).
         self.ens_region_ids = ens_region_ids
-        # The ID of the edge service. You can use the ID to query information about the instances that are created in the edge service.
+        # The Edge Node Service ID. You can use this ID to query the instances created under the edge service.
         self.ens_service_id = ens_service_id
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs. Separate IDs with commas (,).
+        # The list of instance IDs. This parameter is a formatted JSON array that contains up to 100 IDs separated by commas (,).
         self.instance_ids = instance_ids
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
-        # The condition that you want to use to filter instances by category. Valid values:
-        # 
-        # *   EnsInstance: ENS instances that you purchase.
-        # *   EnsService: ENS instances that belong to edge services.
-        # *   BuildMachine: ENS instances that are configured with image builders.
-        # *   EnsPostPaidInstance: Pay-as-you-go ENS instances that you purchase.
+        # The filter type. Valid values:
         self.instance_resource_type = instance_resource_type
         # The instance type.
         self.instance_type = instance_type
-        # The internal IP address of the instance.
+        # The internal IP address.
         self.intranet_ip = intranet_ip
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
-        # The method that you want to use to sort instances. The value of this parameter is in the JSON format.
-        # 
-        # You can sort instances by name, expiration time, node ID, or creation time. You can specify one or more methods.
+        # The sorting parameter in JSON format.
         self.order_by_params = order_by_params
-        # The page number. Pages start from page **1**.
-        # 
-        # Default value: **1**.
+        # The page number of the instance status list. The value starts from **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. The maximum value is **100**.
-        # 
-        # Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **100**.
         self.page_size = page_size
-        # The keyword that you use to query the logs of the service. You can specify the values of parameters such as **ip**, **InstanceName**, and **InstanceId** as the keyword.
+        # The search keyword. Supports parameters such as **ip**, **InstanceName**, and **InstanceId**.
         self.search_key = search_key
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The status of the service. Valid values.
+        # The business status of the instance, which does not represent the actual running status of the instance.
         self.service_status_shrink = service_status_shrink
-        # The status of the instance. Valid values:
+        # The instance status. Valid values:
         # 
-        # *   Running
-        # *   Stopped
-        # *   Expired
+        # - Running: Running.
+        # - Stopped: Stopped.
+        # - Expired: Expired.
         self.status = status
-        # The tags that are added to the resource. This operation does not return tag information. You can call this operation in combination with the tag-related operations.
+        # The resource tags. This operation does not return tag information. Use this parameter in combination with the APIs in the tag category.
         self.tags_shrink = tags_shrink
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPD network ID.
         self.vpd_id = vpd_id
+        # The VPD vSwitch ID.
         self.vpd_vswitch_id = vpd_vswitch_id
 
     def validate(self):

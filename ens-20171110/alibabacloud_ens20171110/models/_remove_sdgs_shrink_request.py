@@ -10,11 +10,11 @@ class RemoveSDGsShrinkRequest(DaraModel):
         instance_ids_shrink: str = None,
         sdg_ids_shrink: str = None,
     ):
-        # The IDs of the instances.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
-        # The IDs of SDG.
+        # The list of SDG IDs.
         self.sdg_ids_shrink = sdg_ids_shrink
 
     def validate(self):

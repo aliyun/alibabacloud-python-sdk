@@ -12,7 +12,7 @@ class BatchEventRebootInstanceRequest(DaraModel):
         self,
         event_infos: List[main_models.BatchEventRebootInstanceRequestEventInfos] = None,
     ):
-        # The details of events.
+        # The list of events.
         self.event_infos = event_infos
 
     def validate(self):
@@ -52,17 +52,18 @@ class BatchEventRebootInstanceRequestEventInfos(DaraModel):
         plan_utc_time: str = None,
         resource_id: str = None,
     ):
-        # The ID of the system event.
+        # The system event ID.
         self.event_id = event_id
-        # The type of the O\\&M task.
+        # The O&M task type. Valid values:
         # 
-        # *   immediate
-        # *   scheduled
+        # - immediate: immediate execution.
+        # 
+        # - scheduled: scheduled execution.
         self.ops_type = ops_type
-        # The execution time of the reservation. The timestamp is measured in milliseconds. If the OpsType parameter is set to scheduled, this parameter is required.
+        # The scheduled execution time. The value is a timestamp in milliseconds. This parameter is required when OpsType is set to scheduled.
         self.plan_time = plan_time
         self.plan_utc_time = plan_utc_time
-        # A client ID.
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

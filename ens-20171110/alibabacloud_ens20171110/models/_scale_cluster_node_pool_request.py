@@ -12,9 +12,14 @@ class ScaleClusterNodePoolRequest(DaraModel):
         cluster_id: str = None,
         nodepool_id: str = None,
     ):
+        # The HTTP request body.
         self.body = body
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The node pool ID.
+        # 
         # This parameter is required.
         self.nodepool_id = nodepool_id
 
@@ -57,6 +62,8 @@ class ScaleClusterNodePoolRequestBody(DaraModel):
         self,
         count: int = None,
     ):
+        # The expected number of instances.
+        # 
         # This parameter is required.
         self.count = count
 

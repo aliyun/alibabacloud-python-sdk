@@ -9,7 +9,7 @@ class DescribeLoadBalancerAttributeRequest(DaraModel):
         self,
         load_balancer_id: str = None,
     ):
-        # The ID of the ELB instance.
+        # The ID of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id

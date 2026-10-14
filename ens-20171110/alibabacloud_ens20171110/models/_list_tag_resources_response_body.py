@@ -14,11 +14,11 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The token of the first page to query.
+        # The token for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The tags that are added to specified one or more resources.
+        # The collection of tagged resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -69,13 +69,13 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the associated resources.
+        # The ID of the associated resource.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
         # The tag key of the instance.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

@@ -10,11 +10,13 @@ class JoinVSwitchesToEpnInstanceRequest(DaraModel):
         epninstance_id: str = None,
         v_switches_info: str = None,
     ):
-        # The ID of the edge network instance.
+        # The edge-to-edge communication instance ID.
+        # 
+        # The NetworkingModel of the EPN instance must be Connection or SpeedUpAndConnection. The SpeedUp pattern does not allow you to associate vSwitches.
         # 
         # This parameter is required.
         self.epninstance_id = epninstance_id
-        # The information about the internal networking to which you want to add the edge network instance.
+        # The internal networking information to be added.
         # 
         # This parameter is required.
         self.v_switches_info = v_switches_info

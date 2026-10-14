@@ -12,7 +12,7 @@ class BatchEventRedeployInstanceRequest(DaraModel):
         self,
         event_infos: List[main_models.BatchEventRedeployInstanceRequestEventInfos] = None,
     ):
-        # List of events.
+        # The list of events.
         self.event_infos = event_infos
 
     def validate(self):
@@ -52,17 +52,17 @@ class BatchEventRedeployInstanceRequestEventInfos(DaraModel):
         plan_utc_time: str = None,
         resource_id: str = None,
     ):
-        # System event ID.
+        # The system event ID.
         self.event_id = event_id
-        # Operation type, value range:
+        # The O&M task type. Valid values:
         # 
-        # - immediate: Execute immediately.
+        # - immediate: Immediate execution.
         # - scheduled: Scheduled execution.
         self.ops_type = ops_type
-        # Scheduled execution time, in timestamp, unit is milliseconds. This field is required when OpsType=scheduled.
+        # The scheduled execution time. The value is a timestamp in milliseconds. This parameter is required when OpsType is set to scheduled.
         self.plan_time = plan_time
         self.plan_utc_time = plan_utc_time
-        # Resource ID.
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

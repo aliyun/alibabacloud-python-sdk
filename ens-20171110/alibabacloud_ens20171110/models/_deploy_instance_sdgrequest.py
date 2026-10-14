@@ -15,11 +15,26 @@ class DeployInstanceSDGRequest(DaraModel):
         instance_ids: List[str] = None,
         sdgid: str = None,
     ):
-        # The deployment type of the SDG. shared: shared read/write splitting deployment. The content of the SDG is read-only, and data updates are written to the local storage of the instance.
+        # The SDG deployment type. Set the value to shared, which indicates read/write splitting shared deployment. In this mode, the SDG content is read-only, and data updates are written to the local storage of the instance.
+        # 
+        # This parameter is required. Currently, only the value shared is supported. If this parameter is not specified, the service returns a Parameter.Invalid error.
         self.deployment_type = deployment_type
+        # The access protocol type of the cloud disk. Valid values:
+        # 
+        # - iscsi: the default protocol for standard cloud disks. Both RBD cloud disks and standard cloud disks support this protocol.
+        # 
+        # - rbd: the default protocol for RBD cloud disks. Only RBD cloud disks support this mount protocol.
         self.disk_access_protocol = disk_access_protocol
+        # The type of the shared cloud disk to be created. Valid values:
+        # 
+        # - standard: standard cloud disk.
+        # - rbd: RBD cloud disk.
+        # 
+        # > 
+        # > - If this parameter is not specified, a standard cloud disk is created by default.
+        # > - An RBD shared cloud disk can be created only when the source disk type is RBD.
         self.disk_type = disk_type
-        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs.
+        # The list of instance IDs. The value is a JSON array. A maximum of 100 IDs can be specified.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

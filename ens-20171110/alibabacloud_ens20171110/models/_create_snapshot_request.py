@@ -15,18 +15,23 @@ class CreateSnapshotRequest(DaraModel):
     ):
         # The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # 
-        # By default, this parameter is left empty.
+        # Default value: empty.
         self.description = description
-        # The ID of the cloud disk.
+        # The cloud disk ID.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # The ID of the edge node.
+        # The ENS edge zone ID.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
+        # The billing cycle of the instance. Valid values:
+        # 
+        # - Hour
+        # - Day
+        # - Month
         self.instance_billing_cycle = instance_billing_cycle
-        # The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The display name of the snapshot. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-).
         self.snapshot_name = snapshot_name
 
     def validate(self):

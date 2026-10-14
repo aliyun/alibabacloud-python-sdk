@@ -12,10 +12,13 @@ class DescribeExportImageStatusResponseBody(DaraModel):
     ):
         # The export status of the image. Valid values:
         # 
-        # *   Exporting
-        # *   Exported
-        # *   ExportError
-        # *   Unexported
+        # - Exporting
+        # 
+        # - Exported
+        # 
+        # - ExportError
+        # 
+        # - Unexported
         self.image_export_status = image_export_status
         # The ID of the request.
         self.request_id = request_id

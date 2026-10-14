@@ -17,16 +17,16 @@ class DescribeDisksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned service code. 0 indicates that the request was successful.
+        # The returned business code. A value of 0 indicates success.
         self.code = code
         self.disks = disks
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of returned pages.
+        # The total number of pages for a paged query.
         self.total_count = total_count
 
     def validate(self):

@@ -10,9 +10,9 @@ class DescribeSDGsShrinkRequest(DaraModel):
         instance_ids_shrink: str = None,
         sdgids_shrink: str = None,
     ):
-        # The AIC instance ID to be queried.
+        # The list of AIC instance IDs to query.
         self.instance_ids_shrink = instance_ids_shrink
-        # The IDs of SDGs that you want to query. By default, all SDGs are queried.
+        # The list of SDG IDs to query.
         self.sdgids_shrink = sdgids_shrink
 
     def validate(self):

@@ -14,7 +14,7 @@ class PushApplicationDataResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.push_results = push_results
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

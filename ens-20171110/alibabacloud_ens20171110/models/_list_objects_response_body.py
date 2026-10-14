@@ -39,8 +39,9 @@ class ListObjectsResponseBody(DaraModel):
         self.encoding_type = encoding_type
         # Indicates whether the listed objects are truncated. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**
+        # 
+        # - **true**
         self.is_truncated = is_truncated
         # The number of keys returned for this request.
         self.key_count = key_count
@@ -173,9 +174,11 @@ class ListObjectsResponseBodyContents(DaraModel):
     ):
         # The entity tag (ETag). When an object is created, an ETag is created to identify the content of the object.
         # 
-        # *   For an object that is created by calling the PutObject operation, the ETag value of the object is the MD5 hash of the object content.
-        # *   For an object that is not created by calling the PutObject operation, the ETag value of the object is the UUID of the object content.
-        # *   The ETag of an object can be used to check whether the object content is modified. However, we recommend that you use the MD5 hash of an object rather than the ETag value of the object to verify data integrity.
+        # - For an object that is created by calling the PutObject operation, the ETag value of the object is the MD5 hash of the object content.
+        # 
+        # - For an object that is not created by calling the PutObject operation, the ETag value of the object is the UUID of the object content.
+        # 
+        # - The ETag of an object can be used to check whether the object content is modified. However, we recommend that you use the MD5 hash of an object rather than the ETag value of the object to verify data integrity.
         self.etag = etag
         # The name of the object.
         self.key = key

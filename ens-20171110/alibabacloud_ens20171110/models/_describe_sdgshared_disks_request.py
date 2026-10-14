@@ -15,13 +15,13 @@ class DescribeSDGSharedDisksRequest(DaraModel):
     ):
         # The namespace.
         self.namespace = namespace
-        # The page number, which is used for paged query
+        # The page number for paging in a paged query.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # sdg ID
+        # The ID of the SDG. You can call the DescribeSDGs operation to query the IDs of existing SDGs. To create an SDG, call the CreateSDG and SaveSDG operations in sequence after the AIC instance is running.
         # 
         # This parameter is required.
         self.sdg_id = sdg_id

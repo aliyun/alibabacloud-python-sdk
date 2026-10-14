@@ -10,9 +10,9 @@ class ModifyPrepayInstanceSpecRequest(DaraModel):
         instance_id: str = None,
         instance_type: str = None,
     ):
-        # The ID of the instance that you want to upgrade or downgrade.
+        # The instance ID of the instance for which you want to perform an Upgrade/Downgrade.
         self.instance_id = instance_id
-        # The updated configuration.
+        # The new instance type.
         self.instance_type = instance_type
 
     def validate(self):

@@ -9,7 +9,7 @@ class BatchEventRedeployInstanceShrinkRequest(DaraModel):
         self,
         event_infos_shrink: str = None,
     ):
-        # List of events.
+        # The list of events.
         self.event_infos_shrink = event_infos_shrink
 
     def validate(self):

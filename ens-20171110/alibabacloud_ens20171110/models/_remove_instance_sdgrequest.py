@@ -11,7 +11,7 @@ class RemoveInstanceSDGRequest(DaraModel):
         self,
         instance_ids: List[str] = None,
     ):
-        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs.
+        # The list of instance IDs. The value is a JSON array. A maximum of 100 IDs can be specified.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

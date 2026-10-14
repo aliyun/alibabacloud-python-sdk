@@ -10,9 +10,9 @@ class CreateNatGatewayResponseBody(DaraModel):
         nat_gateway_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the NAT gateway.
+        # The instance ID of the created NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -20,10 +20,13 @@ class ModifyForwardEntryRequest(DaraModel):
         self.external_ip = external_ip
         # The external port or port range that is used for port forwarding.
         # 
-        # *   Valid values: 1 to 65535.
-        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20. The first port and the last port are included.
-        # *   If you set ExternalPort to a port range, you must also set InternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
-        # *   The maximum port range is 1000.
+        # - Valid values: 1 to 65535.
+        # 
+        # - To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20. The first port and the last port are included.
+        # 
+        # - If you set ExternalPort to a port range, you must also set InternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
+        # 
+        # - The maximum port range is 1000.
         self.external_port = external_port
         # The ID of the DNAT entry.
         # 
@@ -37,16 +40,21 @@ class ModifyForwardEntryRequest(DaraModel):
         self.internal_ip = internal_ip
         # The private port or port range that is used in port forwarding.
         # 
-        # *   Valid values: 1 to 65535.
-        # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20. The first port and the last port are included.
-        # *   If you set InternalPort to a port range, you must also set ExternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
-        # *   The maximum port range is 1000.
+        # - Valid values: 1 to 65535.
+        # 
+        # - To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20. The first port and the last port are included.
+        # 
+        # - If you set InternalPort to a port range, you must also set ExternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
+        # 
+        # - The maximum port range is 1000.
         self.internal_port = internal_port
         # The protocol. Valid values:
         # 
-        # *   **TCP**: forwards TCP packets.
-        # *   **UDP**: forwards UDP packets.
-        # *   **Any** (default): forwards all packets.
+        # - **TCP**: forwards TCP packets.
+        # 
+        # - **UDP**: forwards UDP packets.
+        # 
+        # - **Any** (default): forwards all packets.
         self.ip_protocol = ip_protocol
 
     def validate(self):

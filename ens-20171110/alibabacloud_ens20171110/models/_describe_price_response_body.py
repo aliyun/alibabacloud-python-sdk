@@ -84,8 +84,9 @@ class DescribePriceResponseBodyPriceInfoPrice(DaraModel):
     ):
         # The type of currency.
         # 
-        # *   USD: US dollar
-        # *   JPY: Japanese Yen
+        # - USD: US dollar
+        # 
+        # - JPY: Japanese Yen
         self.currency = currency
         # The discount.
         self.discount_price = discount_price

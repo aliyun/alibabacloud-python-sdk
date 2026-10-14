@@ -13,9 +13,9 @@ class DescribeElbAvailableResourceInfoResponseBody(DaraModel):
         elb_available_resource_info: List[main_models.DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo] = None,
         request_id: str = None,
     ):
-        # The information about resources.
+        # The collection of resource information.
         self.elb_available_resource_info = elb_available_resource_info
-        # The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use the ID to troubleshoot issues.
+        # The common parameter. The ID of the request. Each request has a unique ID, which is active for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -65,19 +65,19 @@ class DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo(DaraM
         province: str = None,
     ):
         self.ability = ability
-        # The ID of the region.
+        # The area.
         self.area = area
-        # The number of resources that you can purchase.
+        # The quantity available for purchase.
         self.can_buy_count = can_buy_count
-        # The name of the node.
+        # The English name of the edge zone.
         self.en_name = en_name
-        # The ID of the Edge Node Service (ENS) node.
+        # The ID of the ENS edge zone.
         self.ens_region_id = ens_region_id
-        # The specifications of the ELB instances.
+        # The specification of the load balancing instance.
         self.load_balancer_spec = load_balancer_spec
-        # The Chinese name of the node.
+        # The name of the edge zone.
         self.name = name
-        # The province where the node is deployed.
+        # The province.
         self.province = province
 
     def validate(self):

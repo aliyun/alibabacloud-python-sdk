@@ -17,12 +17,22 @@ class GetClusterAddonInstanceResponseBody(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # Indicates whether associated cloud resources are automatically cleaned up.
         self.cleanup_cloud_resources = cleanup_cloud_resources
+        # The schema of custom parameters for the add-on.
         self.config_schema = config_schema
+        # The add-on name.
         self.name = name
         # Id of the request
         self.request_id = request_id
+        # The current component instance status. Valid values:
+        # 
+        # - **enabled**: Running normally.
+        # - **deleting**: Stopping.
+        # - **enabling**: Starting.
+        # - **upgrading**: In upgrade or configuration.
         self.status = status
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -91,9 +101,13 @@ class GetClusterAddonInstanceResponseBodyConfigSchema(DaraModel):
         name: str = None,
         params: str = None,
     ):
+        # The application version.
         self.app_version = app_version
+        # The configuration version.
         self.config_version = config_version
+        # The add-on name.
         self.name = name
+        # The custom parameters of the add-on.
         self.params = params
 
     def validate(self):

@@ -16,15 +16,15 @@ class DescribeSDGSharedDisksResponseBody(DaraModel):
         shared_disks: List[main_models.DescribeSDGSharedDisksResponseBodySharedDisks] = None,
         total_count: int = None,
     ):
-        # Current page number when paging
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Shared disk list
+        # The list of shared disks.
         self.shared_disks = shared_disks
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,21 +91,21 @@ class DescribeSDGSharedDisksResponseBodySharedDisks(DaraModel):
         shared_num: int = None,
         status: str = None,
     ):
-        # The time when the shared disk was created.
+        # The time when the shared disk was created. The time follows the ISO 8601 standard and includes a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.creation_time = creation_time
-        # shared disk id
+        # The ID of the shared disk.
         self.disk_id = disk_id
-        # Shared disk type
+        # The type of the shared disk.
         self.disk_type = disk_type
-        # The namespace of the service.
+        # The namespace.
         self.namespace = namespace
-        # The node ID.
+        # The region ID.
         self.region_id = region_id
-        # SdgId of the shared disk
+        # The ID of the SDG.
         self.sdg_id = sdg_id
-        # Number of shared mounts
+        # The number of shared mounts.
         self.shared_num = shared_num
-        # Shared disk status
+        # The status of the shared disk.
         self.status = status
 
     def validate(self):

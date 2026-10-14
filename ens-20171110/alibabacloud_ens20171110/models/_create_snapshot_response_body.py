@@ -13,11 +13,11 @@ class CreateSnapshotResponseBody(DaraModel):
         request_id: str = None,
         snap_shot_id: List[str] = None,
     ):
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The IDs of the snapshots.
+        # The snapshot ID.
         self.snap_shot_id = snap_shot_id
 
     def validate(self):

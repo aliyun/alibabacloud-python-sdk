@@ -13,7 +13,12 @@ class UnInstallClusterAddonsRequest(DaraModel):
         addons: List[main_models.UnInstallClusterAddonsRequestAddons] = None,
         cluster_id: str = None,
     ):
+        # The add-on information.
         self.addons = addons
+        # The ID of the cluster.
+        # 
+        # The target cluster must be in the running state. You can call DescribeClustersV1 to query the cluster state.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
 
@@ -56,6 +61,7 @@ class UnInstallClusterAddonsRequestAddons(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the add-on.
         self.name = name
 
     def validate(self):

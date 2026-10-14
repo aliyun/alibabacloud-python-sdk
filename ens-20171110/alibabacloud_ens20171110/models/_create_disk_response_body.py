@@ -13,11 +13,9 @@ class CreateDiskResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The IDs of the instances.
+        # The collection of instance IDs.
         self.instance_ids = instance_ids
-        # The ID of the order. Multiple IDs are separated by commas (,).
-        # 
-        # >  This parameter is not returned for the pay-as-you-go billing method.
+        # The order ID. Multiple IDs are separated by commas (,).
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

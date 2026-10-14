@@ -15,7 +15,7 @@ class DescribeSDGsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the SDGs.
+        # The list of SDG information.
         self.sdgs = sdgs
 
     def validate(self):
@@ -71,34 +71,38 @@ class DescribeSDGsResponseBodySDGs(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The IDs of available edge nodes.
+        # The list of available edge zones.
         self.avaliable_region_ids = avaliable_region_ids
+        # The billing cycle of the shared disk.
         self.billing_cycle = billing_cycle
+        # The billing type.
         self.billing_type = billing_type
+        # The disk type of the source disk used to create the SDG.
         self.creation_disk_type = creation_disk_type
-        # The ID of the instance on which the SDG is created.
+        # The instance ID of the instance used to create the SDG.
         self.creation_instance_id = creation_instance_id
-        # The ID of the node on which the SDG is created.
+        # The edge zone ID where the SDG was created.
         self.creation_region_id = creation_region_id
         # The time when the SDG was first created.
         self.creation_time = creation_time
-        # The deployment information.
+        # The list of deployment status information.
         self.deployed_instance_ids = deployed_instance_ids
         # The description of the SDG.
         self.description = description
-        # The ID of the source SDG from which you want to create an SDG. The value of this parameter is the value of the **FromSDGId** parameter that you need to specify when you call the [CreateSDG](https://help.aliyun.com/document_detail/608128.html) operation.
+        # The ID of the source SDG used for incremental creation. This is the **FromSDGId** parameter passed when calling [CreateSDG](https://help.aliyun.com/document_detail/608128.html).
         self.parent_sdgid = parent_sdgid
+        # The sharing ratio of the SDG.
         self.performance_level = performance_level
-        # The ID of the SDG.
+        # The SDG ID.
         self.sdgid = sdgid
         # The size of the SDG. Unit: GB.
         self.size = size
-        # The status of the SDG creation. Valid values:
+        # The creation status of the SDG. Valid values:
         # 
-        # *   **sdg_making**
-        # *   **sdg_saving**
-        # *   **failed**
-        # *   **success**
+        # - **sdg_making**: Being created.
+        # - **sdg_saving**: Being saved.
+        # - **failed**: Creation failed.
+        # - **success**: Creation succeeded.
         self.status = status
         # The time when the SDG was last updated.
         self.update_time = update_time
@@ -234,18 +238,18 @@ class DescribeSDGsResponseBodySDGsDeployedInstanceIds(DaraModel):
     ):
         # The time when the SDG was deployed on the instance.
         self.creation_time = creation_time
-        # The deployment type of the SDG. Valid values:
+        # The SDG deployment type. Valid values:
         # 
-        # *   common: common deployment.
-        # *   overlay: read/write splitting deployment.
+        # - common: standard deployment
+        # - overlay: read/write splitting deployment
         self.deployment_type = deployment_type
-        # The ID of the instance.
+        # The AIC instance ID.
         self.instance_id = instance_id
         # The deployment status. Valid values:
         # 
-        # *   **sdg_deploying**
-        # *   **failed**
-        # *   **success**
+        # - **sdg_deploying**: Being deployed.
+        # - **failed**: Deployment failed.
+        # - **success**: Deployment succeeded.
         self.status = status
 
     def validate(self):
@@ -294,19 +298,19 @@ class DescribeSDGsResponseBodySDGsAvaliableRegionIds(DaraModel):
         snapshot_id: str = None,
         status: str = None,
     ):
-        # The time when the SDG was created on the node.
+        # The creation time of the SDG in the edge zone.
         self.creation_time = creation_time
-        # The ID of the edge node.
+        # The edge zone ID.
         self.region_id = region_id
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The status of the SDG on the node. Valid values:
+        # The status of the SDG in the edge zone. Valid values:
         # 
-        # *   **sdg_making**
-        # *   **sdg_saving**
-        # *   **sdg_copying**
-        # *   **failed**
-        # *   **success**
+        # - **sdg_making**: Being created.
+        # - **sdg_saving**: Being saved.
+        # - **sdg_copying**: Being synchronized across edge zones.
+        # - **failed**: Creation failed.
+        # - **success**: Creation succeeded.
         self.status = status
 
     def validate(self):

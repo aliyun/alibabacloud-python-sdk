@@ -33,15 +33,18 @@ class DescribeSnatAttributeResponseBody(DaraModel):
         self.dest_cidr = dest_cidr
         # Specifies whether to enable IP affinity. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**
         # 
-        # >  After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
+        # - **true**
+        # 
+        # > After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
         self.eip_affinity = eip_affinity
         # The timeout period. Unit: seconds.
         self.idle_timeout = idle_timeout
         # Whether to enable operator affinity. Value taking:
+        # 
         # - false:Do not open.
+        # 
         # - true:Open.
         self.isp_affinity = isp_affinity
         # The ID of the Network Address Translation (NAT) gateway.
@@ -62,21 +65,27 @@ class DescribeSnatAttributeResponseBody(DaraModel):
         self.standby_snat_ip = standby_snat_ip
         # The status of the secondary EIP.
         # 
-        # *   Running
-        # *   Stopping
-        # *   Stopped
-        # *   Starting
+        # - Running
+        # 
+        # - Stopping
+        # 
+        # - Stopped
+        # 
+        # - Starting
         self.standby_status = standby_status
         # The status of the SNAT entry.
         # 
-        # *   Pending: The SNAT entry is being created or modified.
-        # *   Available: The SNAT entry is available.
-        # *   Deleting: The SNAT entry is being deleted.
+        # - Pending: The SNAT entry is being created or modified.
+        # 
+        # - Available: The SNAT entry is available.
+        # 
+        # - Deleting: The SNAT entry is being deleted.
         self.status = status
         # The type of the NAT.
         # 
-        # *   Empty: symmetric NAT.
-        # *   FullCone: full cone NAT.
+        # - Empty: symmetric NAT.
+        # 
+        # - FullCone: full cone NAT.
         self.type = type
 
     def validate(self):
@@ -210,11 +219,15 @@ class DescribeSnatAttributeResponseBodySnatIps(DaraModel):
         self.ip = ip
         # The status of the IP address.
         # 
-        # *   Running
-        # *   Stopping
-        # *   Stopped
-        # *   Starting
-        # *   Releasing
+        # - Running
+        # 
+        # - Stopping
+        # 
+        # - Stopped
+        # 
+        # - Starting
+        # 
+        # - Releasing
         self.status = status
 
     def validate(self):

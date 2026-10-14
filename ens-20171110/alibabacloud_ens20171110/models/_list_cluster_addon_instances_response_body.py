@@ -13,9 +13,9 @@ class ListClusterAddonInstancesResponseBody(DaraModel):
         addons: List[main_models.ListClusterAddonInstancesResponseBodyAddons] = None,
         request_id: str = None,
     ):
-        # List of addon information.
+        # The list of add-on information.
         self.addons = addons
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -61,13 +61,13 @@ class ListClusterAddonInstancesResponseBodyAddons(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # Whether to automatically clean up associated cloud resources.
+        # Specifies whether to automatically clean up associated cloud resources.
         self.cleanup_cloud_resources = cleanup_cloud_resources
-        # List of custom parameter schemas for the addon.
+        # The list of schemas for custom add-on parameters.
         self.config_schema = config_schema
-        # Addon name.
+        # The plug-in name.
         self.name = name
-        # Current addon status. Values:
+        # The current add-on status. Valid values:
         # 
         # - **enabling**: Enabling.
         # - **enabled**: Enabled.
@@ -75,7 +75,7 @@ class ListClusterAddonInstancesResponseBodyAddons(DaraModel):
         # - **disabled**: Disabled.
         # - **upgrading**: Upgrading.
         self.status = status
-        # Version number.
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -138,13 +138,13 @@ class ListClusterAddonInstancesResponseBodyAddonsConfigSchema(DaraModel):
         name: str = None,
         params: str = None,
     ):
-        # Application version.
+        # The application version.
         self.app_version = app_version
-        # Configuration version.
+        # The configuration version.
         self.config_version = config_version
-        # Component name.
+        # The add-on name.
         self.name = name
-        # Custom parameters.
+        # The custom add-on parameters.
         self.params = params
 
     def validate(self):

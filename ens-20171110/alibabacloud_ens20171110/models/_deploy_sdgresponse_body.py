@@ -13,9 +13,9 @@ class DeploySDGResponseBody(DaraModel):
         data: main_models.DeploySDGResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data object.
+        # The returned Data object.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,14 +53,14 @@ class DeploySDGResponseBodyData(DaraModel):
         result: main_models.DeploySDGResponseBodyDataResult = None,
         success: bool = None,
     ):
-        # The response message. Success is returned for a successful request.
+        # The response message. A value of success indicates a successful request.
         self.message = message
         # The task result.
         self.result = result
-        # Indicates whether all tasks are successful. Valid values:
+        # Indicates whether all requests are successful. Valid values:
         # 
-        # *   true: All tasks are successful.
-        # *   false: Failed tasks exist.
+        # - true: All successful.
+        # - false: Some tasks failed.
         self.success = success
 
     def validate(self):
@@ -106,7 +106,7 @@ class DeploySDGResponseBodyDataResult(DaraModel):
     ):
         # The number of failed tasks.
         self.failed_count = failed_count
-        # Details of failed tasks.
+        # The list of failed task details.
         self.failed_items = failed_items
         # The number of successful tasks.
         self.success_count = success_count
@@ -159,7 +159,7 @@ class DeploySDGResponseBodyDataResultFailedItems(DaraModel):
     ):
         # The error message.
         self.err_message = err_message
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

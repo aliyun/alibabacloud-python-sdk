@@ -16,22 +16,23 @@ class DescribeDataPushResultRequest(DaraModel):
         page_size: int = None,
         region_ids: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The name of the data file. Separate multiple names with commas (,). By default, all data files are queried.
+        # The names of the data files. This is a filter condition for the query. Multiple values are supported and separated by commas (,). By default, all data files are queried.
         self.data_names = data_names
-        # The version number of the data file. Separate multiple numbers with commas (,). By default, all versions of data files are queried.
+        # The version numbers of the data files. This is a filter condition for the query. Multiple values are supported and separated by commas (,). By default, all versions are queried.
         self.data_versions = data_versions
-        # The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+        # The end time of the query. Format: YYYY-MM-DD. By default, there is no time limit.
         self.max_date = max_date
-        # The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+        # The start time of the query. Format: YYYY-MM-DD. By default, there is no time limit.
         self.min_date = min_date
+        # The page number. Pages start from 1. This parameter is not required when you export all information.
         self.page_number = page_number
-        # The number of entries per page. This parameter is optional if you want to return the push status of all data files.
+        # The number of entries per page set in Settings for paging during a paged query. This parameter is not required when you export all entries.
         self.page_size = page_size
-        # The IDs of ENS nodes. Separate multiple IDs with commas (,). By default, all ENS nodes are queried.
+        # The IDs of the edge nodes. This is a filter condition for the query. Multiple values are supported and separated by commas (,). By default, all edge nodes are queried.
         self.region_ids = region_ids
 
     def validate(self):

@@ -12,11 +12,18 @@ class CreateClusterNodePoolShrinkRequest(DaraModel):
         nodepool_info_shrink: str = None,
         scaling_group_shrink: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The cluster-related configurations.
         self.kubernetes_config_shrink = kubernetes_config_shrink
+        # The node pool configurations.
+        # 
         # This parameter is required.
         self.nodepool_info_shrink = nodepool_info_shrink
+        # The scaling group configurations.
+        # 
         # This parameter is required.
         self.scaling_group_shrink = scaling_group_shrink
 

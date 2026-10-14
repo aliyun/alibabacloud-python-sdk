@@ -1,3 +1,41 @@
+2026-10-14 Version: 12.0.0
+- Update API CreateCluster: add request parameters Isp.
+- Update API CreateCluster: add request parameters NatGatewayId.
+- Update API CreateNetwork: add request parameters EnableIpv6.
+- Update API CreateNetwork: add request parameters Ipv6Isp.
+- Update API CreateVSwitch: add request parameters Ipv6CidrBlock.
+- Update API DescribeClusterDetail: add response parameters Body.ControlPlaneMeta.
+- Update API DescribeClusterDetail: add response parameters Body.Created.
+- Update API DescribeClusterDetail: add response parameters Body.Isp.
+- Update API DescribeClusterDetail: add response parameters Body.NatGatewayId.
+- Update API DescribeClusterDetail: add response parameters Body.NodeCount.
+- Update API DescribeClusterDetail: add response parameters Body.PodStatus.
+- Update API DescribeClusterNodePools: add response parameters Body.NodePools.$.Created.
+- Update API DescribeClusterNodes: add response parameters Body.Nodes.$.NodeInfo.
+- Update API DescribeClustersV1: add request parameters ClusterType.
+- Update API DescribeClustersV1: add request parameters Profile.
+- Update API DescribeClustersV1: add response parameters Body.Clusters.$.Created.
+- Update API DescribeClustersV1: add response parameters Body.Clusters.$.Isp.
+- Update API DescribeImageInfos: add response parameters Body.Images.$.ImageOwnerAlias.
+- Update API DescribeInstanceTypes: add request parameters InstanceType.
+- Update API DescribeInstanceTypes: add response parameters Body.InstanceTypes.$.InstanceBandwidthRx.
+- Update API DescribeInstanceTypes: add response parameters Body.InstanceTypes.$.InstanceBandwidthTx.
+- Update API DescribeInstanceTypes: add response parameters Body.InstanceTypes.$.InstanceType.
+- Update API DescribeInstanceTypes: add request The number of query or body parameters has changed from zero to many.
+- Update API DescribeNetworkAttribute: add response parameters Body.Ipv6CidrBlocks.
+- Update API DescribeNetworks: add response parameters Body.Networks.$.Ipv6CidrBlocks.
+- Update API DescribeSnapshots: add response parameters Body.Snapshots.$.SnapshotType.
+- Update API DescribeVSwitchAttributes: add response parameters Body.Ipv6CidrBlock.
+- Update API DescribeVSwitches: add request parameters EnableIpv6.
+- Update API DescribeVSwitches: add response parameters Body.VSwitches.$.Ipv6CidrBlock.
+- Update API ModifyClusterNodePool: add request parameters NodepoolInfo.Name.
+- Update API ModifyVSwitchAttribute: add request parameters EnableIPv6.
+- Update API ModifyVSwitchAttribute: add request parameters Ipv6CidrBlock.
+- Update API RunInstances: add request parameters AutoInstallCloudAssistant.
+- Update API RunInstances: add request parameters CloudAssistantRegion.
+- Update API SetBackendServers: add request parameters BackendServers.$.Ip.
+
+
 2026-05-18 Version: 11.1.4
 - Update API RunInstances: add request parameters DeploymentSetId.
 

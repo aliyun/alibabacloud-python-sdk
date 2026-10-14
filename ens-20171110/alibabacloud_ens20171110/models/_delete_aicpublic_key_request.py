@@ -9,7 +9,7 @@ class DeleteAICPublicKeyRequest(DaraModel):
         self,
         key_name: str = None,
     ):
-        # Public Key Name
+        # The name of the public key.
         # 
         # This parameter is required.
         self.key_name = key_name

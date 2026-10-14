@@ -96,8 +96,9 @@ class DescribeEnsRouteTablesResponseBodyRouteTables(DaraModel):
     ):
         # The type of the resource with which the route table is associated. Valid values:
         # 
-        # *   **VSwitch**
-        # *   **Gateway**
+        # - **VSwitch**
+        # 
+        # - **Gateway**
         self.associate_type = associate_type
         # The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
@@ -117,12 +118,13 @@ class DescribeEnsRouteTablesResponseBodyRouteTables(DaraModel):
         self.route_table_name = route_table_name
         # The status. Valid values:
         # 
-        # *   Available: The route table is available.
+        # - Available: The route table is available.
         self.status = status
         # The type of the route table. Examples:
         # 
-        # *   Custom: custom route table.
-        # *   System: system route table.
+        # - Custom: custom route table.
+        # 
+        # - System: system route table.
         self.type = type
         # The vSwitches that are associated with the route table.
         self.v_switch_ids = v_switch_ids

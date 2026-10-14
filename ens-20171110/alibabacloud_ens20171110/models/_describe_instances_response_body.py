@@ -17,16 +17,16 @@ class DescribeInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned service code. 0 indicates that the request was successful.
+        # The business code returned. A value of 0 indicates success.
         self.code = code
         self.instances = instances
-        # The page number.
+        # The page number of the instance list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page that was specified in the request.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of instances returned.
         self.total_count = total_count
 
     def validate(self):

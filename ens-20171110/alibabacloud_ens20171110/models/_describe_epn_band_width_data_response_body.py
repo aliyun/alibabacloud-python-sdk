@@ -53,11 +53,11 @@ class DescribeEpnBandWidthDataResponseBodyMonitorData(DaraModel):
         max_down_band_width: int = None,
         max_up_band_width: int = None,
     ):
-        # The bandwidth data.
+        # The bandwidth monitoring data.
         self.band_width_monitor_data = band_width_monitor_data
-        # The maximum outbound bandwidth within the queried time range. Unit: bit/s.
+        # The maximum downstream bandwidth within the queried time range. Unit: bit/s.
         self.max_down_band_width = max_down_band_width
-        # The maximum inbound bandwidth within the queried time range. Unit: bit/s.
+        # The maximum upstream bandwidth within the queried time range. Unit: bit/s.
         self.max_up_band_width = max_up_band_width
 
     def validate(self):
@@ -109,15 +109,15 @@ class DescribeEpnBandWidthDataResponseBodyMonitorDataBandWidthMonitorData(DaraMo
         time_stamp: str = None,
         up_band_width: int = None,
     ):
-        # The outbound bandwidth. Unit: bit/s.
+        # The downstream bandwidth. Unit: bit/s.
         self.down_band_width = down_band_width
-        # The Internet traffic to the instance. Unit: bytes.
+        # The inbound public network traffic of the instance. Unit: bits.
         self.internet_rx = internet_rx
-        # The Internet traffic from the instance. Unit: bytes.
+        # The outbound public network traffic of the instance. Unit: bits.
         self.internet_tx = internet_tx
-        # The timestamp when the monitoring data was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The timestamp of the monitoring data. The time is in UTC and in the format of yyyy-MM-DDThh:mm:ssZ.
         self.time_stamp = time_stamp
-        # The inbound bandwidth. Unit: bit/s.
+        # The upstream bandwidth. Unit: bit/s.
         self.up_band_width = up_band_width
 
     def validate(self):

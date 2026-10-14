@@ -13,19 +13,19 @@ class DescribeMountTargetsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The name of the mount target.
+        # The mount target name.
         self.mount_target_name = mount_target_name
-        # The number of the page to return. Pages start from page 1. Default value: 1
+        # The page number, starting from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page. Maximum value: 100. Default value: 10.
+        # The number of rows per page, with a maximum value of 100. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

@@ -9,7 +9,7 @@ class RemoveInstanceSDGShrinkRequest(DaraModel):
         self,
         instance_ids_shrink: str = None,
     ):
-        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs.
+        # The list of instance IDs. The value is a JSON array. A maximum of 100 IDs can be specified.
         # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink

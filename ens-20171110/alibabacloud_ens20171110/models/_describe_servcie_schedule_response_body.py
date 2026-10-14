@@ -19,21 +19,21 @@ class DescribeServcieScheduleResponseBody(DaraModel):
         request_repeated: bool = None,
         tcp_ports: str = None,
     ):
-        # The index number of the scheduled virtual device (pod).
+        # The index number of the scheduled target virtual device (container pod).
         self.index = index
-        # The ID of the scheduled instance.
+        # The target instance ID for scheduling.
         self.instance_id = instance_id
-        # The ID of the scheduled instance.
+        # The IP address of the scheduled target instance.
         self.instance_ip = instance_ip
-        # The start port of the scheduled instance.
+        # The start port of the scheduled target instance.
         self.instance_port = instance_port
-        # The summary information about the scheduled virtual device.
+        # The summary information of the scheduled virtual device pod.
         self.pod_abstract_info = pod_abstract_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is repeated.
+        # Indicates whether the resource has been created.
         self.request_repeated = request_repeated
-        # The TCP port range of the scheduled instance or container. The value is in the ${from}-$-{to} format. Example: 80-88.
+        # The TCP service port range of the scheduled target virtual machine instance or container. Valid values are in the ${from}-${to} format, such as 80-88.
         self.tcp_ports = tcp_ports
 
     def validate(self):
@@ -113,13 +113,13 @@ class DescribeServcieScheduleResponseBodyPodAbstractInfo(DaraModel):
         # The name of the container service.
         self.container_service = container_service
         self.container_statuses = container_statuses
-        # The name of the pod.
+        # The pod name.
         self.name = name
-        # The name of the namespace.
+        # The namespace name.
         self.namespace = namespace
-        # The pod scope.
+        # The scope where the pod is located.
         self.resource_scope = resource_scope
-        # The status of the pod.
+        # The pod status.
         self.status = status
 
     def validate(self):

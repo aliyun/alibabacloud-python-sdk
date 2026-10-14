@@ -10,11 +10,11 @@ class DescribeMeasurementDataRequest(DaraModel):
         end_date: str = None,
         start_date: str = None,
     ):
-        # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start time in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
         # 
         # This parameter is required.
         self.start_date = start_date

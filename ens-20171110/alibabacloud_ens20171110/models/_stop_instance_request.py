@@ -12,8 +12,9 @@ class StopInstanceRequest(DaraModel):
     ):
         # Specifies whether to forcibly stop the instance.
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**
+        # 
+        # - **false** (default)
         self.force_stop = force_stop
         # The ID of the instance that you want to stop. You can specify only one instance ID.
         # 

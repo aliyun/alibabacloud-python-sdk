@@ -17,13 +17,13 @@ class DescribeNetworkInterfacesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.network_interface_sets = network_interface_sets
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The page number of the instance status list. Pages start from **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

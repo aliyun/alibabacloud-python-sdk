@@ -12,13 +12,15 @@ class DescribeClusterNodesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # This parameter is required.
+        # The node pool ID.
         self.nodepool_id = nodepool_id
-        # This parameter is required.
+        # The page number. Pages start from 1.
         self.page_number = page_number
-        # This parameter is required.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

@@ -11,7 +11,9 @@ class UpdateClusterCertificateResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The response message. The value is success if the request is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id

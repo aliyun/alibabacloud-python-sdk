@@ -10,9 +10,9 @@ class CreateClusterResponseBody(DaraModel):
         cluster_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.cluster_id = cluster_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

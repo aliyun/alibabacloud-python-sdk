@@ -11,15 +11,15 @@ class DescribeDiskIopsListRequest(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The ID of the disk. Format: d-\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*.
+        # The disk ID in the format of d-***********.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss. The time range specified by the StartTime and EndTime parameters cannot exceed one day for a query.
+        # The end time in the format of yyyy-MM-dd HH:mm:ss. The time span between the start time and end time cannot exceed one day.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The start time in the format of yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.start_time = start_time

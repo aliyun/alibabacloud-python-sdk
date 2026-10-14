@@ -12,11 +12,11 @@ class CopySDGRequest(DaraModel):
         destination_region_ids: List[str] = None,
         sdgid: str = None,
     ):
-        # The destination nodes.
+        # The list of destination edge zones.
         # 
         # This parameter is required.
         self.destination_region_ids = destination_region_ids
-        # The ID of the SDG that you want to copy.
+        # The ID of the SDG to copy.
         # 
         # This parameter is required.
         self.sdgid = sdgid

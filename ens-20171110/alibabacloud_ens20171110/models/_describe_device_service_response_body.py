@@ -18,13 +18,13 @@ class DescribeDeviceServiceResponseBody(DaraModel):
     ):
         # The basic properties of the application.
         self.app_meta_data = app_meta_data
-        # The status information of the application.
+        # The application status information.
         self.app_status = app_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the devices.
+        # The device list.
         self.resource_detail_infos = resource_detail_infos
-        # The information about the instances.
+        # The list of resource instance information.
         self.resource_infos = resource_infos
 
     def validate(self):
@@ -110,29 +110,29 @@ class DescribeDeviceServiceResponseBodyResourceInfos(DaraModel):
         region_id: str = None,
         region_name: str = None,
     ):
-        # The version of the application.
+        # The application version number.
         self.app_version = app_version
         # The area code.
         self.area_code = area_code
-        # The region name.
+        # The area name.
         self.area_name = area_name
-        # The time when the application was created.
+        # The time when the resource was created.
         self.create_time = create_time
-        # The information about the devices.
+        # The list of device information.
         self.device_infos = device_infos
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The status of the instance.
+        # The instance status.
         self.instance_status = instance_status
-        # The internal IP addresses.
+        # The list of internal IP addresses.
         self.internal_ips = internal_ips
         # The public IP addresses.
         self.public_ips = public_ips
-        # The ID of the region.
+        # The region code.
         self.region_code = region_code
-        # The ID of the ENS node.
+        # The ID of the ENS edge node.
         self.region_id = region_id
-        # The name of the region.
+        # The area name.
         self.region_name = region_name
 
     def validate(self):
@@ -252,7 +252,7 @@ class DescribeDeviceServiceResponseBodyResourceInfosPublicIps(DaraModel):
         self,
         ip: str = None,
     ):
-        # The public IP address.
+        # The IP address.
         self.ip = ip
 
     def validate(self):
@@ -280,7 +280,7 @@ class DescribeDeviceServiceResponseBodyResourceInfosInternalIps(DaraModel):
         self,
         ip: str = None,
     ):
-        # The internal IP address.
+        # The IP address.
         self.ip = ip
 
     def validate(self):
@@ -310,9 +310,9 @@ class DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos(DaraModel):
         network: List[main_models.DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork] = None,
         status: str = None,
     ):
-        # The name of the device.
+        # The device name.
         self.name = name
-        # The network information.
+        # The list of network information.
         self.network = network
         # The status.
         self.status = status
@@ -365,16 +365,16 @@ class DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork(DaraModel
         host_ports: str = None,
         protocol: str = None,
     ):
-        # The port of the container.
+        # The container port.
         self.container_ports = container_ports
         # The public IP address.
         self.external_ip = external_ip
-        # The port range.
+        # The host port range.
         self.host_ports = host_ports
-        # The protocol of the gateway. The value is of the enumeration type. Valid values:
+        # The gateway protocol. Valid values:
         # 
-        # *   TCP
-        # *   UDP
+        # - TCP
+        # - UDP
         self.protocol = protocol
 
     def validate(self):
@@ -429,25 +429,25 @@ class DescribeDeviceServiceResponseBodyResourceDetailInfos(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The name of the device.
+        # The device name.
         self.device_name = device_name
-        # The ID of the cloud device.
+        # The cloud device ID.
         self.id = id
         # The IP address.
         self.ip = ip
-        # The Internet service provider (ISP).
+        # The Internet service provider (ISP) information.
         self.isp = isp
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The media access control (MAC) address of the device.
+        # The MAC address of the device.
         self.mac = mac
-        # The ID of the ENS node.
+        # The ID of the ENS edge node.
         self.region_id = region_id
-        # The server name of the ENS node.
+        # The server NC name of the ENS edge node.
         self.server = server
-        # The status of the device.
+        # The device status.
         self.status = status
-        # The type of the device.
+        # The device type.
         self.type = type
 
     def validate(self):
@@ -531,24 +531,23 @@ class DescribeDeviceServiceResponseBodyAppStatus(DaraModel):
         status_descrip: str = None,
         update_time: str = None,
     ):
-        # The status of the application. The value is of the enumeration type. Valid values:
+        # The application status. Valid values:
         # 
         # Three intermediate states:
-        # 
-        # *   CREATING
-        # *   UPDATING
-        # *   DELETING
+        # -   CREATING
+        # -   UPDATING
+        # -   DELETING
         # 
         # Four final states:
-        # 
-        # *   CREATE_FAILED
-        # *   UPDATE_FAILED
-        # *   DELETE_FAILED
-        # *   RUNNING
+        #   
+        # - CREATE_FAILED
+        # -   UPDATE_FAILED
+        # -   DELETE_FAILED
+        # -   RUNNING
         self.phase = phase
         # The description of the application status.
         self.status_descrip = status_descrip
-        # The time when the status was last updated.
+        # The most recent status update time.
         self.update_time = update_time
 
     def validate(self):
@@ -594,18 +593,18 @@ class DescribeDeviceServiceResponseBodyAppMetaData(DaraModel):
         create_time: str = None,
         description: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
         # The stable version number of the application.
         self.app_stable_version = app_stable_version
-        # The type of the application. The value is of the enumeration type. Valid values:
+        # The application type. Valid values:
         # 
-        # *   Common
-        # *   Scheduler
+        # - Common: common.
+        # - Scheduler: schedule resource.
         self.app_type = app_type
-        # The name of the application cluster.
+        # The application cluster name.
         self.cluster_name = cluster_name
         # The time when the application was created.
         self.create_time = create_time

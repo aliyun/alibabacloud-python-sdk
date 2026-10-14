@@ -10,7 +10,12 @@ class UnInstallClusterAddonsShrinkRequest(DaraModel):
         addons_shrink: str = None,
         cluster_id: str = None,
     ):
+        # The add-on information.
         self.addons_shrink = addons_shrink
+        # The ID of the cluster.
+        # 
+        # The target cluster must be in the running state. You can call DescribeClustersV1 to query the cluster state.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
 

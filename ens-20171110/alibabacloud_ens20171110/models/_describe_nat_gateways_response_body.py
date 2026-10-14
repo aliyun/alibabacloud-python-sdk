@@ -109,10 +109,13 @@ class DescribeNatGatewaysResponseBodyNatGateways(DaraModel):
         self.spec = spec
         # The status of the NAT gateway. Valid values:
         # 
-        # *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
-        # *   **Available**: The NAT gateway is in the Available state after the creation is complete.
-        # *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
+        # - **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
+        # 
+        # - **Available**: The NAT gateway is in the Available state after the creation is complete.
+        # 
+        # - **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
         self.status = status
+        # The collection of tags.
         self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
@@ -216,9 +219,13 @@ class DescribeNatGatewaysResponseBodyNatGatewaysTags(DaraModel):
         tag_value: str = None,
         value: str = None,
     ):
+        # Tag key.
         self.key = key
+        # Tag key.
         self.tag_key = tag_key
+        # Tag value.
         self.tag_value = tag_value
+        # Tag value.
         self.value = value
 
     def validate(self):
@@ -272,9 +279,11 @@ class DescribeNatGatewaysResponseBodyNatGatewaysIpLists(DaraModel):
         self.ip_address = ip_address
         # The association between the EIP and the Internet NAT gateway. Valid values:
         # 
-        # *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
-        # *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
-        # *   **Idle**: The EIP is not specified in an SNAT entry or a DNAT entry.
+        # - **UsedByForwardTable**: The EIP is specified in a DNAT entry.
+        # 
+        # - **UsedBySnatTable**: The EIP is specified in an SNAT entry.
+        # 
+        # - **Idle**: The EIP is not specified in an SNAT entry or a DNAT entry.
         self.using_status = using_status
 
     def validate(self):

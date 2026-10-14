@@ -14,8 +14,11 @@ class DescribeClusterNodePoolsResponseBody(DaraModel):
         page: main_models.DescribeClusterNodePoolsResponseBodyPage = None,
         request_id: str = None,
     ):
+        # The list of node pools.
         self.node_pools = node_pools
+        # The current page number.
         self.page = page
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,8 +71,11 @@ class DescribeClusterNodePoolsResponseBodyPage(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page specified in the request.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -108,15 +114,23 @@ class DescribeClusterNodePoolsResponseBodyNodePools(DaraModel):
     def __init__(
         self,
         cluster_id: str = None,
+        created: str = None,
         kubernetes_config: main_models.DescribeClusterNodePoolsResponseBodyNodePoolsKubernetesConfig = None,
         nodepool_info: main_models.DescribeClusterNodePoolsResponseBodyNodePoolsNodepoolInfo = None,
         scaling_group: main_models.DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroup = None,
         status: main_models.DescribeClusterNodePoolsResponseBodyNodePoolsStatus = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The creation time.
+        self.created = created
+        # The Kubernetes-related configurations.
         self.kubernetes_config = kubernetes_config
+        # The node pool information.
         self.nodepool_info = nodepool_info
+        # The scaling group.
         self.scaling_group = scaling_group
+        # The status of the node pool.
         self.status = status
 
     def validate(self):
@@ -137,6 +151,9 @@ class DescribeClusterNodePoolsResponseBodyNodePools(DaraModel):
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
 
+        if self.created is not None:
+            result['Created'] = self.created
+
         if self.kubernetes_config is not None:
             result['KubernetesConfig'] = self.kubernetes_config.to_map()
 
@@ -155,6 +172,9 @@ class DescribeClusterNodePoolsResponseBodyNodePools(DaraModel):
         m = m or dict()
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+
+        if m.get('Created') is not None:
+            self.created = m.get('Created')
 
         if m.get('KubernetesConfig') is not None:
             temp_model = main_models.DescribeClusterNodePoolsResponseBodyNodePoolsKubernetesConfig()
@@ -185,12 +205,23 @@ class DescribeClusterNodePoolsResponseBodyNodePoolsStatus(DaraModel):
         state: str = None,
         total_nodes: int = None,
     ):
+        # The expected number of instances.
         self.desired_nodes = desired_nodes
+        # The number of nodes that failed to be created in the node pool.
         self.failed_nodes = failed_nodes
+        # The number of instances that are being created.
         self.initial_nodes = initial_nodes
+        # The number of instances that are being deleted.
         self.removing_nodes = removing_nodes
+        # The number of instances in use.
         self.serving_nodes = serving_nodes
+        # The state of the node pool.
+        # 
+        # - active: The desired state is reached.
+        # - scaling: Scaling out.
+        # - removing_nodes: Scaling in.
         self.state = state
+        # The total number of instances, including those that are being created, in use, and being deleted.
         self.total_nodes = total_nodes
 
     def validate(self):
@@ -262,14 +293,23 @@ class DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroup(DaraModel):
         system_disk_size: int = None,
         vswitch_ids: List[str] = None,
     ):
+        # The list of data cloud disks. The parameter limits are the same as those of the system cloud disk.
         self.data_disks = data_disks
+        # The image ID.
         self.image_id = image_id
+        # The billing method of the instance.
         self.instance_charge_type = instance_charge_type
+        # The list of instance types.
         self.instance_types = instance_types
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # The password of the instance.
         self.password = password
+        # The system cloud disk category of the node. Valid values: local_ssd, cloud_ssd, cloud_efficiency, and local_hdd.
         self.system_disk_category = system_disk_category
+        # The size of the system cloud disk for the node.
         self.system_disk_size = system_disk_size
+        # The vSwitch ID.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -354,7 +394,9 @@ class DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroupDataDisks(DaraMod
         category: str = None,
         size: int = None,
     ):
+        # The cloud disk category.
         self.category = category
+        # The cloud disk size. Unit: GB.
         self.size = size
 
     def validate(self):
@@ -390,8 +432,11 @@ class DescribeClusterNodePoolsResponseBodyNodePoolsNodepoolInfo(DaraModel):
         name: str = None,
         nodepool_id: str = None,
     ):
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
+        # The name of the node pool.
         self.name = name
+        # The node pool ID.
         self.nodepool_id = nodepool_id
 
     def validate(self):
@@ -432,7 +477,9 @@ class DescribeClusterNodePoolsResponseBodyNodePoolsKubernetesConfig(DaraModel):
         pre_user_data: str = None,
         user_data: str = None,
     ):
+        # The script to execute after the instance is created and before it is added to the cluster. The content must be Base64-encoded.
         self.pre_user_data = pre_user_data
+        # The script to execute after the instance is created and added to the cluster. The content must be Base64-encoded.
         self.user_data = user_data
 
     def validate(self):

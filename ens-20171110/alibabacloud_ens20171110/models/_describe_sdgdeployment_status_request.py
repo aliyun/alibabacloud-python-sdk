@@ -20,14 +20,15 @@ class DescribeSDGDeploymentStatusRequest(DaraModel):
     ):
         # The deployment type.
         self.deployment_type = deployment_type
+        # The list of disk IDs.
         self.disk_ids = disk_ids
-        # IDs of Android in Container (AIC) instances.
+        # The list of AIC instance IDs.
         self.instance_ids = instance_ids
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The page number. Pages start from **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The IDs of the nodes.
+        # The list of region IDs.
         self.region_ids = region_ids
         # The ID of the SDG.
         # 

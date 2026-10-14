@@ -26,9 +26,11 @@ class DescribeForwardTableEntriesRequest(DaraModel):
         self.internal_ip = internal_ip
         # The protocol. Valid values:
         # 
-        # *   **TCP**: forwards TCP packets.
-        # *   **UDP**: forwards UDP packets.
-        # *   **Any**: forwards all packets.
+        # - **TCP**: forwards TCP packets.
+        # 
+        # - **UDP**: forwards UDP packets.
+        # 
+        # - **Any**: forwards all packets.
         self.ip_protocol = ip_protocol
         # The ID of the NAT gateway.
         # 

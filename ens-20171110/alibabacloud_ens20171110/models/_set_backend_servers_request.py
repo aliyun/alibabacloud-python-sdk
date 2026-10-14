@@ -13,11 +13,11 @@ class SetBackendServersRequest(DaraModel):
         backend_servers: List[main_models.SetBackendServersRequestBackendServers] = None,
         load_balancer_id: str = None,
     ):
-        # The list of backend servers that you added. You can modify the weights of up to 20 backend servers in each request.
+        # The list of backend servers to add. You can modify up to 20 backend servers in each call.
         # 
         # This parameter is required.
         self.backend_servers = backend_servers
-        # The ID of the Edge Load Balancer (ELB) instance.
+        # The ID of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
@@ -59,22 +59,24 @@ class SetBackendServersRequest(DaraModel):
 class SetBackendServersRequestBackendServers(DaraModel):
     def __init__(
         self,
+        ip: str = None,
         server_id: str = None,
         type: str = None,
         weight: int = None,
     ):
-        # The ID of the instance that you use as the backend server.
+        # The IP address.
+        self.ip = ip
+        # The instance ID of the backend server.
         # 
         # This parameter is required.
         self.server_id = server_id
-        # The type of the backend server. Valid values:
-        # 
-        # *   **ens**: ENS instance
-        # *   **eni**: elastic network interface (ENI)
+        # The server type of the backend server. Valid values:
+        # - **ens**: ENS instance.
+        # - **eni**: elastic network interfaces (ENIs) instance. The backend server is a network interface controller (NIC).
         self.type = type
         # The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
         # 
-        # >  The value 0 indicates that requests are not forwarded to the backend server.
+        # > A value of 0 indicates that no requests are forwarded to the backend server.
         # 
         # This parameter is required.
         self.weight = weight
@@ -87,6 +89,9 @@ class SetBackendServersRequestBackendServers(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ip is not None:
+            result['Ip'] = self.ip
+
         if self.server_id is not None:
             result['ServerId'] = self.server_id
 
@@ -100,6 +105,9 @@ class SetBackendServersRequestBackendServers(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+
         if m.get('ServerId') is not None:
             self.server_id = m.get('ServerId')
 

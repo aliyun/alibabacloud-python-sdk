@@ -13,9 +13,9 @@ class DescribeClusterResponseBody(DaraModel):
         clusters: List[main_models.DescribeClusterResponseBodyClusters] = None,
         request_id: str = None,
     ):
-        # An array that consists of the information about clusters.
+        # The list of cluster information.
         self.clusters = clusters
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,18 +63,13 @@ class DescribeClusterResponseBodyClusters(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The version of the cluster.
+        # The version information of the current cluster.
         self.current_version = current_version
         # The cluster name.
         self.name = name
-        # The next version of the cluster.
+        # The next version information of the cluster.
         self.next_version = next_version
-        # The health status of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   healthy
-        # *   unhealthy
+        # The health status of the cluster.
         self.status = status
 
     def validate(self):

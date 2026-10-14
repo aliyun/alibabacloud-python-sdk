@@ -13,9 +13,9 @@ class ModifyInstanceChargeTypeResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
-        # The IDs of the instances.
+        # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The ID of the order.
+        # The generated order ID.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

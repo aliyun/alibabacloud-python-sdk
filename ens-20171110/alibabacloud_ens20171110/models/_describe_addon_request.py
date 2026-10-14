@@ -10,8 +10,11 @@ class DescribeAddonRequest(DaraModel):
         addon_name: str = None,
         addon_version: str = None,
     ):
+        # The name of the add-on.
+        # 
         # This parameter is required.
         self.addon_name = addon_name
+        # The version of the add-on. If you do not specify a version, all available versions are returned by default.
         self.addon_version = addon_version
 
     def validate(self):

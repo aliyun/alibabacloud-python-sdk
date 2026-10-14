@@ -21,8 +21,9 @@ class DescribeEnsRouteTablesRequest(DaraModel):
     ):
         # The type of the resource with which the route table is associated. Valid values:
         # 
-        # *   **VSwitch**
-        # *   **Gateway**
+        # - **VSwitch**
+        # 
+        # - **Gateway**
         self.associate_type = associate_type
         # The ID of the ENS node.
         self.ens_region_id = ens_region_id
@@ -40,7 +41,7 @@ class DescribeEnsRouteTablesRequest(DaraModel):
         self.route_table_name = route_table_name
         # The SNAT type.
         # 
-        # *   FullCone: full cone NAT.
+        # - FullCone: full cone NAT.
         self.type = type
 
     def validate(self):

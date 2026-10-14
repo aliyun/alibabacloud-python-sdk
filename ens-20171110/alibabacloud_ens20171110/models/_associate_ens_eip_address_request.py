@@ -12,28 +12,28 @@ class AssociateEnsEipAddressRequest(DaraModel):
         instance_type: str = None,
         standby: bool = None,
     ):
-        # The ID of the EIP that you want to associate.
+        # The ID of the EIP to be associated.
         # 
         # This parameter is required.
         self.allocation_id = allocation_id
-        # The ID of the cloud service with which the EIP is associated.
-        # 
-        # >  You can specify the ID of an Edge Load Balancer (ELB) instance ID.
+        # The ID of the cloud product instance to attach the EIP to.
+        # >Load balancing (ELB) instance IDs are supported.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of instance with which you want to associate the EIP. Valid values:
+        # The type of the EIP instance. Valid values:
         # 
-        # *   **Nat**: NAT gateway.
-        # *   **SlbInstance**: Edge Load Balancer (ELB) instance.
-        # *   **NetworkInterface**: secondary elastic network interface (ENI).
-        # *   **NatSlbInstance**: If you want to associate multiple EIPs with an ELB instance, you need to set the parameter to this value.
-        # *   **EnsInstance** (default): ENS instance.
+        # - **Nat**: NAT gateway.
+        # - **SlbInstance**: load balancing (ELB).
+        # - **NetworkInterface**: secondary network interface controller (NIC).
+        # - **NatSlbInstance**: select this value when attaching multiple EIPs to an ELB.
+        # - **EnsInstance** (default): ENS instance.
         self.instance_type = instance_type
-        # Specifies whether the EIP is a secondary EIP. Valid values:
+        # Specifies whether the EIP is a standby EIP. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: standby.
+        # 
+        # - false: not standby.
         self.standby = standby
 
     def validate(self):

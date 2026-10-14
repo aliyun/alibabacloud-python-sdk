@@ -14,7 +14,7 @@ class GetBucketLifecycleRequest(DaraModel):
         # 
         # This parameter is required.
         self.bucket_name = bucket_name
-        # The ID of the rule that you want to query. If this parameter is not specified, all rules are returned.
+        # The ID of the rule to retrieve. If this parameter is not specified, information about all rules is retrieved.
         self.rule_id = rule_id
 
     def validate(self):

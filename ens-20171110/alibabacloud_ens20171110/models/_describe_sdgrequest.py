@@ -14,13 +14,13 @@ class DescribeSDGRequest(DaraModel):
         sdgids: List[str] = None,
         same_disk_id: bool = None,
     ):
-        # The page number.
+        # The page number for paging.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of rows per page in a paging query.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The IDs of SDGs that you want to query. By default, all SDGs are queried.
+        # The IDs of the SDGs to query. By default, all SDGs are queried.
         self.sdgids = sdgids
         self.same_disk_id = same_disk_id
 

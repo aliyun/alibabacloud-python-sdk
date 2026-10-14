@@ -15,14 +15,19 @@ class CopySnapshotRequest(DaraModel):
         instance_billing_cycle: str = None,
         snapshot_id: str = None,
     ):
-        # The IDs of destination nodes.
+        # The list of destination edge zone IDs.
         # 
         # This parameter is required.
         self.destination_region_ids = destination_region_ids
         # The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.destination_snapshot_description = destination_snapshot_description
-        # The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The display name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-).
         self.destination_snapshot_name = destination_snapshot_name
+        # The billing cycle of the instance. Valid values:
+        # 
+        # - Hour
+        # - Day
+        # - Month
         self.instance_billing_cycle = instance_billing_cycle
         # The ID of the source snapshot.
         # 

@@ -15,7 +15,7 @@ class DescribeClusterKubeConfigResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The cluster certificate.
         self.kubeconfig = kubeconfig
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

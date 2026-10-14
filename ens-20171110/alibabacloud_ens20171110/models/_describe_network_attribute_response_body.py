@@ -18,6 +18,7 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
         gateway_route_table_id: str = None,
         ha_vip_ids: main_models.DescribeNetworkAttributeResponseBodyHaVipIds = None,
         instance_ids: main_models.DescribeNetworkAttributeResponseBodyInstanceIds = None,
+        ipv_6cidr_blocks: main_models.DescribeNetworkAttributeResponseBodyIpv6CidrBlocks = None,
         load_balancer_ids: main_models.DescribeNetworkAttributeResponseBodyLoadBalancerIds = None,
         nat_gateway_ids: main_models.DescribeNetworkAttributeResponseBodyNatGatewayIds = None,
         network_acl_id: str = None,
@@ -35,37 +36,39 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
         # The IPv4 CIDR block of the network.
         self.cidr_block = cidr_block
         self.cloud_resources = cloud_resources
-        # The time when the network was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time at which the network was created. The time is in UTC and is formatted as yyyy-MM-ddTHH:mm:ssZ.
         self.created_time = created_time
         # The description of the network.
         self.description = description
-        # The ID of the edge node.
+        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
-        # The ID of the gateway route table.
+        # The gateway route table ID.
         self.gateway_route_table_id = gateway_route_table_id
         self.ha_vip_ids = ha_vip_ids
         self.instance_ids = instance_ids
+        self.ipv_6cidr_blocks = ipv_6cidr_blocks
         self.load_balancer_ids = load_balancer_ids
         self.nat_gateway_ids = nat_gateway_ids
-        # The ID of the network access control list (ACL).
+        # The ID of the network ACL.
         self.network_acl_id = network_acl_id
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
         self.network_interface_ids = network_interface_ids
-        # The name of the network.
+        # The network name.
         self.network_name = network_name
         # The request ID.
         self.request_id = request_id
-        # The ID of the route table.
+        # The route table ID.
         self.route_table_id = route_table_id
         self.route_table_ids = route_table_ids
-        # The ID of the route table.
+        # The route table ID.
         self.router_table_id = router_table_id
         self.secondary_cidr_blocks = secondary_cidr_blocks
         # The status of the network. Valid values:
         # 
-        # *   Pending
-        # *   Available
+        # - Pending: The network is being configured.
+        # 
+        # - Available: The network is ready for use.
         self.status = status
         self.v_switch_ids = v_switch_ids
 
@@ -76,6 +79,8 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
             self.ha_vip_ids.validate()
         if self.instance_ids:
             self.instance_ids.validate()
+        if self.ipv_6cidr_blocks:
+            self.ipv_6cidr_blocks.validate()
         if self.load_balancer_ids:
             self.load_balancer_ids.validate()
         if self.nat_gateway_ids:
@@ -117,6 +122,9 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
 
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids.to_map()
+
+        if self.ipv_6cidr_blocks is not None:
+            result['Ipv6CidrBlocks'] = self.ipv_6cidr_blocks.to_map()
 
         if self.load_balancer_ids is not None:
             result['LoadBalancerIds'] = self.load_balancer_ids.to_map()
@@ -187,6 +195,10 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
         if m.get('InstanceIds') is not None:
             temp_model = main_models.DescribeNetworkAttributeResponseBodyInstanceIds()
             self.instance_ids = temp_model.from_map(m.get('InstanceIds'))
+
+        if m.get('Ipv6CidrBlocks') is not None:
+            temp_model = main_models.DescribeNetworkAttributeResponseBodyIpv6CidrBlocks()
+            self.ipv_6cidr_blocks = temp_model.from_map(m.get('Ipv6CidrBlocks'))
 
         if m.get('LoadBalancerIds') is not None:
             temp_model = main_models.DescribeNetworkAttributeResponseBodyLoadBalancerIds()
@@ -394,6 +406,84 @@ class DescribeNetworkAttributeResponseBodyLoadBalancerIds(DaraModel):
         m = m or dict()
         if m.get('LoadBalancerId') is not None:
             self.load_balancer_id = m.get('LoadBalancerId')
+
+        return self
+
+class DescribeNetworkAttributeResponseBodyIpv6CidrBlocks(DaraModel):
+    def __init__(
+        self,
+        ipv_6cidr_block: List[main_models.DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock] = None,
+    ):
+        self.ipv_6cidr_block = ipv_6cidr_block
+
+    def validate(self):
+        if self.ipv_6cidr_block:
+            for v1 in self.ipv_6cidr_block:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Ipv6CidrBlock'] = []
+        if self.ipv_6cidr_block is not None:
+            for k1 in self.ipv_6cidr_block:
+                result['Ipv6CidrBlock'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ipv_6cidr_block = []
+        if m.get('Ipv6CidrBlock') is not None:
+            for k1 in m.get('Ipv6CidrBlock'):
+                temp_model = main_models.DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock()
+                self.ipv_6cidr_block.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeNetworkAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock(DaraModel):
+    def __init__(
+        self,
+        ipv_6cidr_block: str = None,
+        ipv_6isp: str = None,
+        type: str = None,
+    ):
+        self.ipv_6cidr_block = ipv_6cidr_block
+        self.ipv_6isp = ipv_6isp
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.ipv_6cidr_block is not None:
+            result['Ipv6CidrBlock'] = self.ipv_6cidr_block
+
+        if self.ipv_6isp is not None:
+            result['Ipv6Isp'] = self.ipv_6isp
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ipv6CidrBlock') is not None:
+            self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
+
+        if m.get('Ipv6Isp') is not None:
+            self.ipv_6isp = m.get('Ipv6Isp')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

@@ -14,7 +14,7 @@ class DescribeImageInfosResponseBody(DaraModel):
         images: main_models.DescribeImageInfosResponseBodyImages = None,
         request_id: str = None,
     ):
-        # The HTTP status code that is returned.
+        # The return code.
         self.code = code
         self.images = images
         # The request ID.
@@ -96,6 +96,7 @@ class DescribeImageInfosResponseBodyImagesImage(DaraModel):
         description: str = None,
         disk_device_mappings: main_models.DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings = None,
         image_id: str = None,
+        image_owner_alias: str = None,
         image_size: str = None,
         image_version: str = None,
         osname: str = None,
@@ -106,6 +107,7 @@ class DescribeImageInfosResponseBodyImagesImage(DaraModel):
         self.description = description
         self.disk_device_mappings = disk_device_mappings
         self.image_id = image_id
+        self.image_owner_alias = image_owner_alias
         self.image_size = image_size
         self.image_version = image_version
         self.osname = osname
@@ -132,6 +134,9 @@ class DescribeImageInfosResponseBodyImagesImage(DaraModel):
 
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+
+        if self.image_owner_alias is not None:
+            result['ImageOwnerAlias'] = self.image_owner_alias
 
         if self.image_size is not None:
             result['ImageSize'] = self.image_size
@@ -164,6 +169,9 @@ class DescribeImageInfosResponseBodyImagesImage(DaraModel):
 
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+
+        if m.get('ImageOwnerAlias') is not None:
+            self.image_owner_alias = m.get('ImageOwnerAlias')
 
         if m.get('ImageSize') is not None:
             self.image_size = m.get('ImageSize')

@@ -15,11 +15,18 @@ class CreateClusterNodePoolRequest(DaraModel):
         nodepool_info: main_models.CreateClusterNodePoolRequestNodepoolInfo = None,
         scaling_group: main_models.CreateClusterNodePoolRequestScalingGroup = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The cluster-related configurations.
         self.kubernetes_config = kubernetes_config
+        # The node pool configurations.
+        # 
         # This parameter is required.
         self.nodepool_info = nodepool_info
+        # The scaling group configurations.
+        # 
         # This parameter is required.
         self.scaling_group = scaling_group
 
@@ -83,17 +90,30 @@ class CreateClusterNodePoolRequestScalingGroup(DaraModel):
         system_disk_size: int = None,
         vswitch_ids: List[str] = None,
     ):
+        # The size of the data cloud disk. Unit: GB.
         self.data_disks = data_disks
+        # The expected number of instances.
         self.desired_size = desired_size
+        # The image ID of the instance.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The billing method of the instance.
         self.instance_charge_type = instance_charge_type
+        # The list of instance types for the nodes in the node pool.
+        # 
         # This parameter is required.
         self.instance_types = instance_types
+        # The key pair of the instance. This parameter and Password are mutually exclusive.
         self.key_pair_name = key_pair_name
+        # The password used when creating instances in the node pool. This parameter and KeyPairName are mutually exclusive.
         self.password = password
+        # The category of the system cloud disk. Valid values: local_ssd, local_hdd, cloud_efficiency, and cloud_ssd.
         self.system_disk_category = system_disk_category
+        # The size of the system cloud disk. Unit: GB. Minimum value: 20. The value must be a multiple of 10.
         self.system_disk_size = system_disk_size
+        # The vSwitches used by the instances.
+        # 
         # This parameter is required.
         self.vswitch_ids = vswitch_ids
 
@@ -185,7 +205,9 @@ class CreateClusterNodePoolRequestScalingGroupDataDisks(DaraModel):
         category: str = None,
         size: int = None,
     ):
+        # The disk category.
         self.category = category
+        # The size of the data cloud disk. Unit: GB. Minimum value: 20. The value must be a multiple of 10.
         self.size = size
 
     def validate(self):
@@ -219,6 +241,8 @@ class CreateClusterNodePoolRequestNodepoolInfo(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the node pool.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -248,7 +272,9 @@ class CreateClusterNodePoolRequestKubernetesConfig(DaraModel):
         pre_user_data: str = None,
         user_data: str = None,
     ):
+        # The script to be executed after the machine is created and before it is added to the cluster. The content must be Base64-encoded.
         self.pre_user_data = pre_user_data
+        # The script to be executed after the machine is created and added to the cluster. The content must be Base64-encoded.
         self.user_data = user_data
 
     def validate(self):

@@ -13,13 +13,13 @@ class DetachKeyPairRequest(DaraModel):
         key_pair_id: str = None,
         key_pair_name: str = None,
     ):
-        # The instance IDs.
+        # An array of instance IDs from which to detach the key pair.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The key pair ID.
+        # The ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The name of the SSH key pair.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
 
     def validate(self):

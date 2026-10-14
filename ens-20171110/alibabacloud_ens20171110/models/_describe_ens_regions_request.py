@@ -9,9 +9,9 @@ class DescribeEnsRegionsRequest(DaraModel):
         self,
         ens_region_id: str = None,
     ):
-        # The ID of the node.
+        # The ID of the edge zone.
         # 
-        # By default, all available node IDs are returned.
+        # If you do not specify this parameter, the IDs of all active edge zones are returned.
         self.ens_region_id = ens_region_id
 
     def validate(self):

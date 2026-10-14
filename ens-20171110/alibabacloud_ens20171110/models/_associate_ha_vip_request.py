@@ -21,8 +21,9 @@ class AssociateHaVipRequest(DaraModel):
         self.instance_id = instance_id
         # The type of the instance to be associated with the HAVIP. Valid values:
         # 
-        # *   EnsInstance (default): ENS instance
-        # *   NetworkInterface: elastic network interface (ENI)
+        # - EnsInstance (default): ENS instance
+        # 
+        # - NetworkInterface: elastic network interface (ENI)
         self.instance_type = instance_type
 
     def validate(self):

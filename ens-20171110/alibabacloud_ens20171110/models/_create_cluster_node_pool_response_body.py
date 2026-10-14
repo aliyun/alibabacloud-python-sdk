@@ -13,7 +13,9 @@ class CreateClusterNodePoolResponseBody(DaraModel):
         nodepool: main_models.CreateClusterNodePoolResponseBodyNodepool = None,
         request_id: str = None,
     ):
+        # The node pool configurations.
         self.nodepool = nodepool
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,15 @@ class CreateClusterNodePoolResponseBodyNodepool(DaraModel):
         scaling_group: main_models.CreateClusterNodePoolResponseBodyNodepoolScalingGroup = None,
         status: main_models.CreateClusterNodePoolResponseBodyNodepoolStatus = None,
     ):
+        # The instance ID.
         self.cluster_id = cluster_id
+        # The Kubernetes-related configurations.
         self.kubernetes_config = kubernetes_config
+        # The node pool information.
         self.nodepool_info = nodepool_info
+        # The ID of the resource group to which the newly created scaling group belongs. You can assign the newly created scaling group to a specified resource group. If you do not specify this parameter, the scaling group is assigned to the default resource group.
         self.scaling_group = scaling_group
+        # The status information of the node pool.
         self.status = status
 
     def validate(self):
@@ -125,12 +132,23 @@ class CreateClusterNodePoolResponseBodyNodepoolStatus(DaraModel):
         state: str = None,
         total_nodes: int = None,
     ):
+        # The expected number of instances.
         self.desired_nodes = desired_nodes
+        # The nodes that failed to be created in the node pool.
         self.failed_nodes = failed_nodes
+        # The number of instances that are being created.
         self.initial_nodes = initial_nodes
+        # The number of instances that are being deleted.
         self.removing_nodes = removing_nodes
+        # The number of instances that are in use.
         self.serving_nodes = serving_nodes
+        # The state of the node pool. Valid values:
+        # 
+        # - active: The desired state is reached.
+        # - scaling: The node pool is scaling out.
+        # - removing_nodes: The node pool is scaling in.
         self.state = state
+        # The total number of instances, including instances that are being created, in use, and being deleted.
         self.total_nodes = total_nodes
 
     def validate(self):
@@ -202,14 +220,23 @@ class CreateClusterNodePoolResponseBodyNodepoolScalingGroup(DaraModel):
         system_disk_size: int = None,
         vswitch_ids: List[str] = None,
     ):
+        # The data cloud disk information of the nodes.
         self.data_disks = data_disks
+        # The image ID of the control plane virtual machine.
         self.image_id = image_id
+        # The billing method of the instance.
         self.instance_charge_type = instance_charge_type
+        # The list of instance types for the nodes in the node pool.
         self.instance_types = instance_types
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
+        # The logon password of the instance.
         self.password = password
+        # The system cloud disk category of the node.
         self.system_disk_category = system_disk_category
+        # The size of the system cloud disk. Unit: GB.
         self.system_disk_size = system_disk_size
+        # The IDs of the vSwitches where the cluster nodes reside.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -294,7 +321,9 @@ class CreateClusterNodePoolResponseBodyNodepoolScalingGroupDataDisks(DaraModel):
         category: str = None,
         size: int = None,
     ):
+        # The disk category.
         self.category = category
+        # The size of the data cloud disk. Unit: GB.
         self.size = size
 
     def validate(self):
@@ -330,8 +359,11 @@ class CreateClusterNodePoolResponseBodyNodepoolNodepoolInfo(DaraModel):
         name: str = None,
         nodepool_id: str = None,
     ):
+        # The ENS region ID of the cluster.
         self.ens_region_id = ens_region_id
+        # The cluster name.
         self.name = name
+        # The node pool ID.
         self.nodepool_id = nodepool_id
 
     def validate(self):
@@ -372,7 +404,9 @@ class CreateClusterNodePoolResponseBodyNodepoolKubernetesConfig(DaraModel):
         pre_user_data: str = None,
         user_data: str = None,
     ):
+        # The script to be executed after the instance is created and before it is added to the cluster. The content must be Base64-encoded.
         self.pre_user_data = pre_user_data
+        # The script to be executed after the instance is created and added to the cluster. The content must be Base64-encoded.
         self.user_data = user_data
 
     def validate(self):

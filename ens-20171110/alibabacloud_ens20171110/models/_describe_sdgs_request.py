@@ -12,9 +12,9 @@ class DescribeSDGsRequest(DaraModel):
         instance_ids: List[str] = None,
         sdgids: List[str] = None,
     ):
-        # The AIC instance ID to be queried.
+        # The list of AIC instance IDs to query.
         self.instance_ids = instance_ids
-        # The IDs of SDGs that you want to query. By default, all SDGs are queried.
+        # The list of SDG IDs to query.
         self.sdgids = sdgids
 
     def validate(self):

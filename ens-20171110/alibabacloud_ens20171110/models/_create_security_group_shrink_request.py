@@ -11,11 +11,11 @@ class CreateSecurityGroupShrinkRequest(DaraModel):
         permissions_shrink: str = None,
         security_group_name: str = None,
     ):
-        # The description. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        # The description of the security group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         self.description = description
-        # An array of security group rules. You can specify up to 200 IDs of security group rules.
+        # The rules of the security group. Valid values of N: 0 to 200.
         self.permissions_shrink = permissions_shrink
-        # The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
+        # The name of the security group. The name must be 2 to 128 characters in length, and can contain digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`. By default, this parameter is empty.
         self.security_group_name = security_group_name
 
     def validate(self):

@@ -11,10 +11,15 @@ class DescribeClusterAttachScriptsRequest(DaraModel):
         nodepool_id: str = None,
         options: str = None,
     ):
+        # The ID of the ECK cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the node pool to which the node will be added.
+        # 
         # This parameter is required.
         self.nodepool_id = nodepool_id
+        # Optional parameters for the script, provided as a JSON string.
         self.options = options
 
     def validate(self):

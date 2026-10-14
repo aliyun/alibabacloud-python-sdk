@@ -9,7 +9,7 @@ class GetBucketInfoRequest(DaraModel):
         self,
         bucket_name: str = None,
     ):
-        # The name of the bucket.
+        # Bucket name.
         # 
         # This parameter is required.
         self.bucket_name = bucket_name

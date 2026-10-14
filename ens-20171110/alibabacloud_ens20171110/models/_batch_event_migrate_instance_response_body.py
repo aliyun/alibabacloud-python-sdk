@@ -13,9 +13,9 @@ class BatchEventMigrateInstanceResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchEventMigrateInstanceResponseBodyResults] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # The results.
+        # The list of results.
         self.results = results
 
     def validate(self):
@@ -60,13 +60,13 @@ class BatchEventMigrateInstanceResponseBodyResults(DaraModel):
         message: str = None,
         resource_id: str = None,
     ):
-        # The error code.
+        # The status code.
         self.code = code
-        # The ID of the event.
+        # The event ID.
         self.event_id = event_id
-        # When Code!=200, it indicates the specific error message.
+        # The error message returned when Code is not 200.
         self.message = message
-        # The resource IDs.
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

@@ -10,7 +10,7 @@ class ModifyInstanceAttributeResponseBody(DaraModel):
         code: int = None,
         request_id: str = None,
     ):
-        # The returned service code. 0 indicates that the request was successful.
+        # The business return code. A value of 0 indicates success.
         self.code = code
         # The request ID.
         self.request_id = request_id

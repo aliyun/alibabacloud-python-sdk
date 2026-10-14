@@ -13,11 +13,11 @@ class CreateARMServerInstancesResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The IDs of instances.
+        # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

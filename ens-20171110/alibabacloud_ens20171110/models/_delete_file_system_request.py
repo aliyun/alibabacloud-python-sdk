@@ -10,11 +10,11 @@ class DeleteFileSystemRequest(DaraModel):
         ens_region_id: str = None,
         file_system_id: str = None,
     ):
-        # The ID of the edge node.
+        # The edge zone ID.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # The ID of the file system that you want to delete.
+        # The ID of the file system to delete.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

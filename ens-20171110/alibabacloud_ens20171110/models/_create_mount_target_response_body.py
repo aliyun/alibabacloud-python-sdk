@@ -14,10 +14,13 @@ class CreateMountTargetResponseBody(DaraModel):
         self.request_id = request_id
         # The state of the mount target. Valid values:
         # 
-        # *   active
-        # *   inactive
-        # *   pending
-        # *   deleting
+        # - active
+        # 
+        # - inactive
+        # 
+        # - pending
+        # 
+        # - deleting
         self.status = status
 
     def validate(self):

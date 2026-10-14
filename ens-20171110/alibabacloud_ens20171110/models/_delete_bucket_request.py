@@ -9,7 +9,7 @@ class DeleteBucketRequest(DaraModel):
         self,
         bucket_name: str = None,
     ):
-        # The name of the bucket that you want to delete. You can delete only one bucket at a time.
+        # The name of the bucket to delete. Only one bucket can be deleted at a time.
         # 
         # This parameter is required.
         self.bucket_name = bucket_name

@@ -10,6 +10,8 @@ class DescribeClusterKubeConfigRequest(DaraModel):
         cluster_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is essentially required. If it is not provided, the service returns BadRequest. The target cluster must also have completed control plane deployment and certificate generation. You cannot obtain the kubeconfig for a cluster in the initial state.
         self.cluster_id = cluster_id
 
     def validate(self):

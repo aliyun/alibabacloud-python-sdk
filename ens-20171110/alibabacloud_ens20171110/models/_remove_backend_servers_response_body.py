@@ -14,7 +14,7 @@ class RemoveBackendServersResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.backend_servers = backend_servers
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

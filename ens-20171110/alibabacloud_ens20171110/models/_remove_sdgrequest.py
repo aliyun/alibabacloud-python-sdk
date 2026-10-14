@@ -11,7 +11,7 @@ class RemoveSDGRequest(DaraModel):
         self,
         instance_ids: List[str] = None,
     ):
-        # IDs of Android in Container (AIC) instances.
+        # The list of AIC instance IDs.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

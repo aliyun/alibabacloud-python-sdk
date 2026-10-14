@@ -23,64 +23,64 @@ class DescribeDisksRequest(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The category of the disk.
+        # The disk category.
         # 
-        # *   cloud_efficiency: ultra disk.
-        # *   cloud_ssd: all-flash disk.
-        # *   local_hdd: local HDD.
-        # *   local_ssd: local SSD.
+        # - cloud_efficiency: ultra cloud disk
+        # - cloud_ssd: all-flash cloud disk
+        # - local_hdd: local HDD
+        # - local_ssd: local SSD
         self.category = category
-        # The billing method.
+        # The billing type.
         # 
-        # *   prePay: subscription.
-        # *   postpay: pay-as-you-go.
+        # - prepay: subscription
+        # - postpay: pay-as-you-go
         self.disk_charge_type = disk_charge_type
-        # The ID of the disk.
+        # The ID of the cloud disk.
         self.disk_id = disk_id
-        # The ID of the disk.
+        # The disk IDs.
         self.disk_ids = disk_ids
         # The name of the disk.
         self.disk_name = disk_name
-        # The purchase method of the disk. Valid values:
+        # The disk purchase method.
         # 
-        # *   ServiceDisk: The disk is purchased when ENS is activated.
-        # *   ResoureDisk: The disk is purchased when the instance is created.
-        # *   PostPayDisk: The disk is separately purchased.
+        # - ServiceDisk: disk created by an edge service
+        # - ResoureDisk: purchased with an instance
+        # - PostPayDisk: purchased separately
         self.disk_type = disk_type
-        # The ID of the edge node.
+        # The ID of the ENS edge zone.
         self.ens_region_id = ens_region_id
-        # The node information.
+        # The list of edge zones.
         self.ens_region_ids = ens_region_ids
-        # The ID of the instance to which the disk is attached.
+        # The instance to which the cloud disk is mounted.
         self.instance_id = instance_id
-        # The order in which you want to sort the returned data. Example: {"EnsRegionId":"desc"}. By default, the nodes are sorted by IDs in descending order.
+        # The sorting parameter. Format example: {"EnsRegionId":"desc"}. By default, results are sorted by edge zone ID in descending order.
         self.order_by_params = order_by_params
-        # The number of the page to return. Pages start from page **1**.
+        # The page number of the query list. Minimum value: **1**.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**.
+        # The number of entries per page for a paged query. Maximum value: **50**.
         # 
         # Default value: **10**.
         self.page_size = page_size
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
-        # The status of the disk. Valid values:
+        # The disk status.
         # 
-        # *   In-use: The disk is in use.
-        # *   Available: The disk can be attached.
-        # *   Attaching: The disk is being attached.
-        # *   Detaching: The disk is being detached.
-        # *   Creating: The disk is being created.
-        # *   ReIniting: The disk is being reset.
-        # *   Deleting: The disk is being released.
-        # *   Deleted: The disk is released.
-        # *   Expiring: The disk is about to expire.
+        # - In-use: in use
+        # - Available: to be mounted
+        # - Attaching: being mounted
+        # - Detaching: being unmounted
+        # - Creating: being created
+        # - ReIniting: being reset
+        # - Deleting: being released
+        # - Deleted: released
+        # - Expiring: about to expire
         self.status = status
-        # The type of the disk. Valid values:
+        # The disk property.
         # 
-        # *   system: system disk.
-        # *   data: data disk.
+        # - system: system cloud disk
+        # - data: data cloud disk
         self.type = type
 
     def validate(self):

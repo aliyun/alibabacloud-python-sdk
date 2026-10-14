@@ -74,9 +74,11 @@ class ListBucketsResponseBodyBucketInfos(DaraModel):
     ):
         # The access control list (ACL) of the bucket.
         # 
-        # *   **public-read-write**
-        # *   **public-read**
-        # *   **private** (default)
+        # - **public-read-write**
+        # 
+        # - **public-read**
+        # 
+        # - **private** (default)
         self.bucket_acl = bucket_acl
         # The name of the bucket.
         self.bucket_name = bucket_name

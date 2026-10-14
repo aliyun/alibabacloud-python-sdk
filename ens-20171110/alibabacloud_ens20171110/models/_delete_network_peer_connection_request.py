@@ -9,6 +9,8 @@ class DeleteNetworkPeerConnectionRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID of the network peer connection to delete.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

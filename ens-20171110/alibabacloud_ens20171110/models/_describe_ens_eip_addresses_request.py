@@ -23,34 +23,43 @@ class DescribeEnsEipAddressesRequest(DaraModel):
         standby: str = None,
         status: str = None,
     ):
-        # The ID of the EIP that you want to query. You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+        # The ID of the EIP instance to query. You can specify up to 50 EIP instance IDs separated by commas (,).
         self.allocation_id = allocation_id
-        # The ID of the instance with which you want to associate the EIP.
+        # The instance ID of the cloud service.
         self.associated_instance_id = associated_instance_id
-        # The type of the instance that is associated with the EIP. Valid values:
+        # The type of the cloud service instance to associate. Valid values: 
         # 
-        # *   **EnsInstance**: ENS instance in a VPC
-        # *   **SlbInstance**: SLB instance
+        # - **EnsInstance**: a VPC-type ENS instance.
+        # 
+        # - **SlbInstance**: a load balancing instance.
         self.associated_instance_type = associated_instance_type
-        # The EIP that you want to query. You can specify up to 50 EIPs. Separate multiple EIPs with commas (,).
+        # The IP address of the EIP to query. You can specify up to 50 EIP addresses separated by commas (,).
         self.eip_address = eip_address
         # The name of the EIP.
         self.eip_name = eip_name
-        # The ID of the Edge Node Service (ENS) node.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
-        # The IDs of edge nodes. You can specify 1 to 100 IDs.
+        # The array of ENS edge zone IDs. Array length: 1 to 100.
         self.ens_region_ids = ens_region_ids
-        self.icmp_reply_enabled = icmp_reply_enabled
-        self.lock_reason = lock_reason
-        # The page number. Default value: 1.
-        self.page_number = page_number
-        # The number of entries per page. Maximum value: 100. Default value: 10.
-        self.page_size = page_size
-        # Specifies whether the EIP is a secondary EIP. Valid values:
+        # Specifies whether ICMP echo reply is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true** (default): enabled.
+        # - **false**: disabled.
+        self.icmp_reply_enabled = icmp_reply_enabled
+        # The lock type.
+        # - financial: locked due to overdue payment.
+        self.lock_reason = lock_reason
+        # The page number of the list. Default value: 1.
+        self.page_number = page_number
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+        self.page_size = page_size
+        # Specifies whether the EIP is a standby EIP. Valid values:
+        # 
+        # - **true**: standby.
+        # 
+        # - **false**: not standby.
         self.standby = standby
+        # The status of the EIP. Valid values: Associating: being associated. Unassociating: being disassociated. InUse: allocated. Available: available.
         self.status = status
 
     def validate(self):

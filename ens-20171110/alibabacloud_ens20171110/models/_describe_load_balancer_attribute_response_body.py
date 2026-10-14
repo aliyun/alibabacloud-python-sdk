@@ -30,47 +30,47 @@ class DescribeLoadBalancerAttributeResponseBody(DaraModel):
         request_id: str = None,
         v_switch_id: str = None,
     ):
-        # The IP address that the Edge Load Balancer (ELB) instance uses to provide services.
+        # The service address of the load balancing instance.
         self.address = address
-        # The IP version of the ELB instance. Valid values: ipv4 and ipv6.
+        # The IP version of the load balancing instance. Valid values: ipv4 or ipv6.
         self.address_ipversion = address_ipversion
+        # The address type of the load balancing instance.
         self.address_type = address_type
         # The list of backend servers.
         self.backend_servers = backend_servers
-        # The peak bandwidth of the ELB. The default value is -1, which indicates that the bandwidth is unlimited.
+        # The peak bandwidth of the load balancing instance. The default value is -1, which indicates that bandwidth is not throttled.
         self.bandwidth = bandwidth
-        # The time when the ELB instance was created. The time is displayed in UTC.
+        # The creation time of the load balancing instance (UTC).
         self.create_time = create_time
-        # The time when the ELB instance was disabled.
+        # The end time of the load balancing instance in ISO 8601 UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.end_time = end_time
-        # The ID of the ENS node.
+        # The ENS node ID.
         self.ens_region_id = ens_region_id
-        # The frontend ports that are used by the ELB instance.
+        # The frontend ports used by the load balancing instance.
         self.listener_ports = listener_ports
-        # The frontend ports and protocols that are used by the ELB instance.
+        # The frontend ports and protocols used by the load balancing instance.
         self.listener_ports_and_protocols = listener_ports_and_protocols
-        # The ID of the ELB instance.
+        # The ID of the load balancing instance.
         self.load_balancer_id = load_balancer_id
-        # The name of the ELB instance.
+        # The name of the load balancing instance.
         self.load_balancer_name = load_balancer_name
-        # The specifications of the ELB instance.
+        # The specification of the load balancing instance.
         self.load_balancer_spec = load_balancer_spec
-        # The status of the ELB instance. Valid values:
-        # 
-        # *   **Active** (default): The listener for the instance can forward the received traffic based on the rule.
-        # *   **InActive**: The listener for the instance does not forward the received traffic.
+        # The listener status of the load balancing instance. Valid values:
+        # - **Active**: The listeners of the instance can forward received traffic based on rules.
+        # - **InActive**: The listeners of the instance no longer forward received traffic.
         self.load_balancer_status = load_balancer_status
+        # The type of the load balancing instance.
         self.load_balancer_type = load_balancer_type
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
         # The billing method. Valid values:
-        # 
-        # *   **PrePaid**: subscription.
-        # *   **PostPaid**: pay-as-you-go. Only this billing method is supported.
+        # - **PrePaid**: subscription.
+        # - **PostPaid** (currently the only supported billing method): pay-as-you-go.
         self.pay_type = pay_type
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -228,17 +228,17 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols(DaraMod
         listener_port: int = None,
         listener_protocol: str = None,
     ):
-        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The backend port used by the load balancing instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
-        # The description of the listener.
+        # The description.
         self.description = description
-        # The destination listening port to which requests are forwarded.
+        # The destination listener port to which traffic is forwarded.
         self.forward_port = forward_port
-        # Indicates whether the listener is enabled.
+        # Indicates whether listener forwarding is enabled.
         self.listener_forward = listener_forward
-        # The listener port of the instance.
+        # The listener port.
         self.listener_port = listener_port
-        # The listener protocol of the instance.
+        # The listener protocol.
         self.listener_protocol = listener_protocol
 
     def validate(self):
@@ -302,11 +302,11 @@ class DescribeLoadBalancerAttributeResponseBodyBackendServers(DaraModel):
     ):
         # The IP address of the backend server.
         self.ip = ip
-        # The port that is used by the backend server.
+        # The port used by the backend server.
         self.port = port
-        # The ID of the backend server.
+        # The instance ID of the backend server.
         self.server_id = server_id
-        # The type of backend server.
+        # The server type of the backend server.
         self.type = type
         # The weight of the backend server.
         self.weight = weight

@@ -13,7 +13,7 @@ class RunInstancesResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The IDs of instances.
+        # The list of instance IDs.
         self.instance_ids = instance_ids
         # The order ID.
         self.order_id = order_id

@@ -15,15 +15,19 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token of the first page to query.
+        # The token for the next query.
         self.next_token = next_token
-        # The IDs of resources. Valid values of N: 1 to 50.
+        # The resource ID. Valid values of N: 1 to 50.
+        # 
+        # You must specify at least one of ResourceId and Tag. Otherwise, the MissingParameter.ResourceIdsOrTags error is returned.
         self.resource_id = resource_id
-        # The resource type. Set the value to instance.
+        # The resource type. Valid values: instance (instance).
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The tag list.
+        # 
+        # You must specify at least one of ResourceId and Tag. Otherwise, the MissingParameter.ResourceIdsOrTags error is returned.
         self.tag = tag
 
     def validate(self):
@@ -78,17 +82,17 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the instance. Valid values of N: **1** to **20**.
+        # The tag key of the instance. Valid values of N: **1** to **20**.
         # 
-        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        # *   The key must be up to 64 characters in length.
-        # *   The tag key cannot be an empty string.
+        # - The tag key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # - The tag key can be up to 64 characters in length.
+        # - The tag key cannot be an empty string.
         self.key = key
-        # The value of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
+        # The tag value of the topic. You must specify both **Key** and **Value** or neither. If both are specified, the system filters topics based on the tag. If neither is specified, all topics are queried.
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   The value of this parameter can be an empty string.
-        # *   The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        # - Valid values of N: 1 to 20.
+        # - The tag value can be an empty string.
+        # - The tag value can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
         self.value = value
 
     def validate(self):

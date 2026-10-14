@@ -15,16 +15,16 @@ class CopySnapshotResponseBody(DaraModel):
         request_id: str = None,
         un_allocation_id: List[main_models.CopySnapshotResponseBodyUnAllocationId] = None,
     ):
-        # The list of created snapshots.
+        # The list of successfully created snapshots.
         self.allocation_id = allocation_id
-        # The success status code.
+        # The status code indicating success. Valid values:
         # 
-        # *   **PartSuccess**: partially succeeded.
-        # *   **AllSuccess**: all succeeded.
+        # - **PartSuccess**: Partially successful.
+        # - **AllSuccess**: All successful.
         self.biz_status_code = biz_status_code
         # The request ID.
         self.request_id = request_id
-        # The list of nodes that are not created.
+        # The list of edge zones where snapshot creation failed.
         self.un_allocation_id = un_allocation_id
 
     def validate(self):
@@ -87,7 +87,7 @@ class CopySnapshotResponseBodyUnAllocationId(DaraModel):
         self,
         ens_region_id: str = None,
     ):
-        # The ID of the node.
+        # The ID of the edge zone where the snapshot resides.
         self.ens_region_id = ens_region_id
 
     def validate(self):
@@ -116,9 +116,9 @@ class CopySnapshotResponseBodyAllocationId(DaraModel):
         ens_region_id: str = None,
         instance_id: List[str] = None,
     ):
-        # The ID of the node.
+        # The ID of the edge zone where the snapshot resides.
         self.ens_region_id = ens_region_id
-        # The IDs of the instances.
+        # The array of instance IDs.
         self.instance_id = instance_id
 
     def validate(self):

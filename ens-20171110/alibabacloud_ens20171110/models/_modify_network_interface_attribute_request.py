@@ -11,13 +11,13 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         network_interface_id: str = None,
         network_interface_name: str = None,
     ):
-        # The description. The description must be 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description. The description must be 1 to 256 characters in length and cannot start with http\\:// or https\\://.
         self.description = description
         # The ID of the ENI.
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
-        # The name of the ENI. The name must be 1 to 128 characters in length, The name cannot start with http:// or https://.
+        # The name of the ENI. The name must be 1 to 128 characters in length, The name cannot start with http\\:// or https\\://.
         self.network_interface_name = network_interface_name
 
     def validate(self):

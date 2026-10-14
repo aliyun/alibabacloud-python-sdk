@@ -17,6 +17,7 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         ens_region_id: str = None,
         ha_vip_ids: main_models.DescribeVSwitchAttributesResponseBodyHaVipIds = None,
         instance_ids: main_models.DescribeVSwitchAttributesResponseBodyInstanceIds = None,
+        ipv_6cidr_block: str = None,
         load_balancer_ids: main_models.DescribeVSwitchAttributesResponseBodyLoadBalancerIds = None,
         nat_gateway_ids: main_models.DescribeVSwitchAttributesResponseBodyNatGatewayIds = None,
         network_id: str = None,
@@ -26,34 +27,37 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
-        # The number of available IP addresses in the VSwitch.
+        # The number of available IP addresses in the vSwitch.
         self.available_ip_address_count = available_ip_address_count
         # The IPv4 CIDR block of the network.
         self.cidr_block = cidr_block
-        # The creation time, in UTC format (yyyy-MM-ddTHH:mm:ssZ).
+        # The time when the vSwitch was created. This value uses UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
         self.created_time = created_time
-        # The description of the VSwitch.
+        # The description of the vSwitch.
         self.description = description
-        # The ENS node ID.
+        # The ID of the ENS edge zone.
         self.ens_region_id = ens_region_id
         self.ha_vip_ids = ha_vip_ids
         self.instance_ids = instance_ids
+        self.ipv_6cidr_block = ipv_6cidr_block
         self.load_balancer_ids = load_balancer_ids
         self.nat_gateway_ids = nat_gateway_ids
-        # The network ID.
+        # The ID of the network.
         self.network_id = network_id
         self.network_interface_ids = network_interface_ids
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The status of the VSwitch, as follows:
+        # The status of the vSwitch. Valid values:
         # 
-        # - Pending
-        # - Available
-        # - Releasing
+        # - Pending: The vSwitch is being configured.
+        # 
+        # - Available: The vSwitch is active.
+        # 
+        # - Releasing: The vSwitch is being released.
         self.status = status
-        # The ID of the VSwitch.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The name of the VSwitch.
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):
@@ -93,6 +97,9 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
 
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids.to_map()
+
+        if self.ipv_6cidr_block is not None:
+            result['Ipv6CidrBlock'] = self.ipv_6cidr_block
 
         if self.load_balancer_ids is not None:
             result['LoadBalancerIds'] = self.load_balancer_ids.to_map()
@@ -144,6 +151,9 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         if m.get('InstanceIds') is not None:
             temp_model = main_models.DescribeVSwitchAttributesResponseBodyInstanceIds()
             self.instance_ids = temp_model.from_map(m.get('InstanceIds'))
+
+        if m.get('Ipv6CidrBlock') is not None:
+            self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
 
         if m.get('LoadBalancerIds') is not None:
             temp_model = main_models.DescribeVSwitchAttributesResponseBodyLoadBalancerIds()

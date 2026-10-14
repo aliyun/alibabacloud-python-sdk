@@ -10,11 +10,11 @@ class DeleteBucketLifecycleRequest(DaraModel):
         bucket_name: str = None,
         rule_id: str = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         # 
         # This parameter is required.
         self.bucket_name = bucket_name
-        # The ID of the rule. If this parameter is not specified, all rules are removed.
+        # The rule ID. If this parameter is not specified, all rules are deleted.
         self.rule_id = rule_id
 
     def validate(self):

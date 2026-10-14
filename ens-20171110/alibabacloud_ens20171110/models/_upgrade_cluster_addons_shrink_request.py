@@ -10,7 +10,10 @@ class UpgradeClusterAddonsShrinkRequest(DaraModel):
         addons_shrink: str = None,
         cluster_id: str = None,
     ):
+        # The component information.
         self.addons_shrink = addons_shrink
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
 

@@ -10,9 +10,9 @@ class ResetAICInstanceRequest(DaraModel):
         instance_id: str = None,
         server_id: str = None,
     ):
-        # The ID of the AIC instance.
+        # The AIC instance ID.
         self.instance_id = instance_id
-        # The ID of the server.
+        # The server instance ID.
         self.server_id = server_id
 
     def validate(self):

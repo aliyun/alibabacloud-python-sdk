@@ -13,19 +13,19 @@ class UploadAICPublicKeyRequest(DaraModel):
         key_name: str = None,
         key_type: str = None,
     ):
-        # Public Key
+        # The content of the public key.
         # 
         # This parameter is required.
         self.content = content
-        # The description of the document.
+        # The description of the public key.
         self.description = description
-        # Public Key Grouping
+        # The group of the public key.
         self.key_group = key_group
-        # Public Key Name
+        # The name of the public key.
         # 
         # This parameter is required.
         self.key_name = key_name
-        # Public key type
+        # The type of the public key.
         # 
         # This parameter is required.
         self.key_type = key_type

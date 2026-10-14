@@ -16,17 +16,17 @@ class CreateFileSystemResponseBody(DaraModel):
         request_id: str = None,
         un_allocation_id: List[str] = None,
     ):
-        # The information about the file system that was created.
+        # The file systems that are created.
         self.allocation_id = allocation_id
+        # The list of instance allocation information for the file system across ENS edge zones.
         self.allocation_ids = allocation_ids
-        # The status code for successful operations. Valid values:
-        # 
-        # *   PartSuccess: The operation is partially successful.
-        # *   AllSuccess: The operation is successful.
+        # The status code that indicates the result. Valid values:  
+        # - PartSuccess: partially successful.
+        # - AllSuccess: all successful.
         self.biz_status_code = biz_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the file system that failed to be created.
+        # The file systems that failed to be created.
         self.un_allocation_id = un_allocation_id
 
     def validate(self):
@@ -87,7 +87,9 @@ class CreateFileSystemResponseBodyAllocationIds(DaraModel):
         ens_region_id: str = None,
         instance_id: str = None,
     ):
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

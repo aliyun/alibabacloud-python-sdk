@@ -16,10 +16,15 @@ class DescribeNetworkPeerConnectionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # A list of the network peering connections.
         self.network_peer_connects = network_peer_connects
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -88,15 +93,31 @@ class DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnects(DaraModel):
         network_id: str = None,
         status: str = None,
     ):
+        # Details of the accepter network.
         self.accepting_network = accepting_network
+        # The network ID of the accepter.
         self.accepting_network_id = accepting_network_id
+        # The creation time in UTC.
         self.creation_time = creation_time
+        # The description of the network peering connection.
         self.description = description
+        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
+        # The ID of the network peering connection.
         self.instance_id = instance_id
+        # The name of the network peering connection.
         self.name = name
+        # Details of the requester network.
         self.network = network
+        # The network ID of the requester.
         self.network_id = network_id
+        # The status of the network peering connection. Valid values:
+        # 
+        # - `Creating`: The connection is being created.
+        # 
+        # - `Activated`: The connection is active.
+        # 
+        # - `Deleting`: The connection is being deleted.
         self.status = status
 
     def validate(self):
@@ -184,7 +205,9 @@ class DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsNetwork(DaraM
         ipv_4cidrs: List[str] = None,
         network_id: str = None,
     ):
+        # The CIDR blocks of the requester network.
         self.ipv_4cidrs = ipv_4cidrs
+        # The network ID of the requester.
         self.network_id = network_id
 
     def validate(self):
@@ -219,7 +242,9 @@ class DescribeNetworkPeerConnectionsResponseBodyNetworkPeerConnectsAcceptingNetw
         ipv_4cidrs: List[str] = None,
         network_id: str = None,
     ):
+        # The CIDR blocks of the accepter network.
         self.ipv_4cidrs = ipv_4cidrs
+        # The network ID of the accepter.
         self.network_id = network_id
 
     def validate(self):

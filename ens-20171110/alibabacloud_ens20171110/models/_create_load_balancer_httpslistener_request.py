@@ -35,85 +35,93 @@ class CreateLoadBalancerHTTPSListenerRequest(DaraModel):
         self.backend_server_port = backend_server_port
         # The cookie that is configured on the server. The cookie must be **1** to **200** characters in length and contain only ASCII characters and digits.
         # 
-        # >  This parameter is required if you set StickySession to on and StickySessionType to server.
+        # > This parameter is required if you set StickySession to on and StickySessionType to server.
         self.cookie = cookie
         # The timeout period of a cookie. Valid values: **1** to **86400**. Unit: seconds.
         # 
-        # >  This parameter is required if you set StickySession to on and StickySessionType to insert.
+        # > This parameter is required if you set StickySession to on and StickySessionType to insert.
         self.cookie_timeout = cookie_timeout
         # The description of the listener. The description must be **1** to **80** characters in length.
         # 
-        # >  The value cannot start with `http://` or `https://`.
+        # > The value cannot start with `http://` or `https://`.
         self.description = description
         # The listener port that is used to redirect HTTP requests to HTTPS.
         self.forward_port = forward_port
         # Indicates whether the health check feature is enabled. Valid values:
         # 
-        # *   **on**
-        # *   **off**
+        # - **on**
+        # 
+        # - **off**
         # 
         # This parameter is required.
         self.health_check = health_check
         # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # > This parameter takes effect only if you set HealthCheck to on.
         self.health_check_connect_port = health_check_connect_port
         # The domain name that you want to use for health checks.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # > This parameter takes effect only if you set HealthCheck to on.
         self.health_check_domain = health_check_domain
         # The HTTP status code for a successful health check. Valid values:
         # 
-        # *   **http_2xx** (default)
-        # *   **http_3xx**
-        # *   **http_4xx**
-        # *   **http_5xx**
+        # - **http_2xx** (default)
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # - **http_3xx**
+        # 
+        # - **http_4xx**
+        # 
+        # - **http_5xx**
+        # 
+        # > This parameter takes effect only if you set HealthCheck to on.
         self.health_check_http_code = health_check_http_code
         # The interval at which health checks are performed. Valid values: **1** to **50**. Default value: **2**. Unit: seconds.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # > This parameter takes effect only if you set HealthCheck to on.
         self.health_check_interval = health_check_interval
         # The HTTP request method for health checks. Valid values:
         # 
-        # *   **head** (default): requests the head of the page.
-        # *   **get**: requests the specified part of the page and returns the entity body.
+        # - **head** (default): requests the head of the page.
         # 
-        # >  This parameter takes effect only if the HealthCheck parameter is set to on.
+        # - **get**: requests the specified part of the page and returns the entity body.
+        # 
+        # > This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_method = health_check_method
         # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
         # 
-        # *   Default value: 5.
-        # *   Valid values: **1** to **300**.
-        # *   Unit: seconds.
+        # - Default value: 5.
         # 
-        # > 
+        # - Valid values: **1** to **300**.
         # 
-        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
+        # - Unit: seconds.
         # 
-        # *   If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
+        # >
+        # 
+        # - This parameter takes effect only if the HealthCheck parameter is set to on.
+        # 
+        # - If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
         self.health_check_timeout = health_check_timeout
         # The URI used for health checks. The URI must be **1** to **80** characters in length.
         # 
-        # >  A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
+        # > A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # > This parameter takes effect only if you set HealthCheck to on.
         self.healthy_threshold = healthy_threshold
         # The timeout period for idle connections. Default value: 15. Valid values: **1** to **60**. Unit: seconds.
         # 
-        # >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, ELB establishes a new connection.
+        # > If no request is received within the specified timeout period, ELB closes the connection. When another request is received, ELB establishes a new connection.
         self.idle_timeout = idle_timeout
         # Specifies whether to enable redirection from HTTP to HTTPS. Valid values:
         # 
-        # *   **on**
-        # *   **off** (default)
+        # - **on**
+        # 
+        # - **off** (default)
         self.listener_forward = listener_forward
         # The listening port that is used by Edge Load Balancer (ELB) to receive requests and forward the requests to backend servers. Valid values: **1** to **65535**.
         # 
-        # >  We recommend that you use port 443 for HTTPS.
+        # > We recommend that you use port 443 for HTTPS.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -123,16 +131,21 @@ class CreateLoadBalancerHTTPSListenerRequest(DaraModel):
         self.load_balancer_id = load_balancer_id
         # The timeout period of requests. Default value: 60. Valid values: **1** to **180**. Unit: seconds.
         # 
-        # >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
+        # > If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
         # The scheduling algorithm. Valid values:
         # 
-        # *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
-        # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
-        # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
+        # - **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+        # 
+        # - **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+        # 
+        # - **rr**: Requests are distributed to backend servers in sequence.
+        # 
+        # - **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # 
+        # - **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
+        # 
+        # - **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
         self.scheduler = scheduler
         # The ID of the server certificate.
         # 
@@ -140,14 +153,15 @@ class CreateLoadBalancerHTTPSListenerRequest(DaraModel):
         self.server_certificate_id = server_certificate_id
         # The method that is used to handle cookies. Valid values:
         # 
-        # *   **insert**: inserts a cookie. ELB inserts a session cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. Subsequent requests to ELB carry this cookie, and ELB determines the destination servers of the requests based on the cookies.
-        # *   **server**: rewrites the original cookie. SLB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
+        # - **insert**: inserts a cookie. ELB inserts a session cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. Subsequent requests to ELB carry this cookie, and ELB determines the destination servers of the requests based on the cookies.
         # 
-        # >  This parameter is required when the StickySession parameter is set to on.
+        # - **server**: rewrites the original cookie. SLB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
+        # 
+        # > This parameter is required when the StickySession parameter is set to on.
         self.sticky_session_type = sticky_session_type
         # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
         # 
-        # >  This parameter takes effect only if you set HealthCheck to on.
+        # > This parameter takes effect only if you set HealthCheck to on.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):

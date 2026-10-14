@@ -17,19 +17,19 @@ class DescribeNetworksRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the edge node.
+        # ENS node ID.
         self.ens_region_id = ens_region_id
-        # The IDs of edge nodes. You can specify 1 to 100 IDs.
+        # Array of ENS edge zone IDs. Array length: 1–100.
         self.ens_region_ids = ens_region_ids
-        # The ID of the network.
+        # Network ID.
         self.network_id = network_id
-        # The IDs of VPCs You can specify 1 to 100 IDs.
+        # Array of network IDs. Array length: 1–100.
         self.network_ids = network_ids
-        # The name of the network.
+        # Network name.
         self.network_name = network_name
-        # The page number of the returned page. Default value: **1**.
+        # Page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
+        # Number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
 
     def validate(self):

@@ -16,21 +16,21 @@ class DescribeSnapshotsRequest(DaraModel):
         snapshot_id: str = None,
         snapshot_name: str = None,
     ):
-        # The ID of the disk.
+        # The ID of the specified cloud disk.
         self.disk_id = disk_id
-        # The ID of the ENS node. You can query the node ID by calling the [DescribeEnsRegions](https://help.aliyun.com/document_detail/2637662.html) operation.
+        # The ID of the ENS edge zone. You can call [DescribeEnsRegions](https://help.aliyun.com/document_detail/2637662.html) to query edge zone IDs.
         self.ens_region_id = ens_region_id
-        # The node information.
+        # The array of ENS edge zone IDs. Array length: 1 to 100.
         self.ens_region_ids = ens_region_ids
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The page number.
+        # The page number of the current query.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
-        # The ID of the snapshot. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate the snapshot IDs with commas (,).
+        # The snapshot ID. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate multiple IDs with commas (,).
         self.snapshot_id = snapshot_id
-        # The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The display name of the snapshot. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), or hyphens (-).
         self.snapshot_name = snapshot_name
 
     def validate(self):

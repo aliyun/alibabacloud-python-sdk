@@ -13,7 +13,7 @@ class GetOssStorageAndAccByBucketsResponseBody(DaraModel):
         bucket_list: List[main_models.GetOssStorageAndAccByBucketsResponseBodyBucketList] = None,
         request_id: str = None,
     ):
-        # The information about the bucket.
+        # The bucket information.
         self.bucket_list = bucket_list
         # The request ID.
         self.request_id = request_id
@@ -59,11 +59,11 @@ class GetOssStorageAndAccByBucketsResponseBodyBucketList(DaraModel):
         bucket: str = None,
         storage_usage_byte: int = None,
     ):
-        # The number of times that the bucket is accessed.
+        # The number of access requests.
         self.acc = acc
-        # The name of the bucket.
+        # The OSS bucket name.
         self.bucket = bucket
-        # The storage usage of the bucket. Unit: bytes.
+        # The storage usage, in bytes.
         self.storage_usage_byte = storage_usage_byte
 
     def validate(self):

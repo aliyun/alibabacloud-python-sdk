@@ -16,15 +16,15 @@ class DescribeInstanceBandwidthDetailResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the maximum public bandwidth.
+        # The collection of Internet bandwidth cap information.
         self.bandwidths = bandwidths
-        # The page number of the current page.
+        # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -96,25 +96,27 @@ class DescribeInstanceBandwidthDetailResponseBodyBandwidths(DaraModel):
     ):
         # The user ID.
         self.ali_uid = ali_uid
-        # The bandwidth service time. The data granularity is 5 minutes.
+        # The bandwidth business time. The bandwidth calculation granularity is 5 minutes.
         self.biz_time = biz_time
         # The node ID.
         self.ens_region_id = ens_region_id
-        # The type of the bandwidth. Valid values: 1, which indicates public network bandwidth. 2, which indicates internal network bandwidth.
+        # The bandwidth type. Valid values:
+        # - 1: public network.
+        # - 2: internal network.
         self.flow_type = flow_type
-        # The plan ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # The type of the instance, such as vm, eip, single_tenant, and nc.
+        # The instance type, such as vm, eip, single_tenant, or nc.
         self.instance_type = instance_type
-        # null
+        # The IP address of the instance.
         self.ip = ip
-        # The Internet service provider to which the IP address belongs.
+        # The Internet service provider (ISP) of the IP address.
         self.isp = isp
-        # null
+        # The inbound bandwidth. Unit: bit/s.
         self.rx_bw = rx_bw
-        # The type of the service, such as vm, eip, esk, and meta.
+        # The service type, such as vm, eip, esk, or meta.
         self.service_type = service_type
-        # null
+        # The outbound bandwidth. Unit: bit/s.
         self.tx_bw = tx_bw
 
     def validate(self):

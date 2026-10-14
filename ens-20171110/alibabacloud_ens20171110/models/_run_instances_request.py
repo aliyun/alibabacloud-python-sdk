@@ -11,11 +11,13 @@ class RunInstancesRequest(DaraModel):
     def __init__(
         self,
         amount: int = None,
+        auto_install_cloud_assistant: bool = None,
         auto_release_time: str = None,
         auto_renew: bool = None,
         auto_use_coupon: str = None,
         billing_cycle: str = None,
         carrier: str = None,
+        cloud_assistant_region: str = None,
         data_disk: List[main_models.RunInstancesRequestDataDisk] = None,
         deletion_protection: bool = None,
         deployment_set_id: str = None,
@@ -56,170 +58,190 @@ class RunInstancesRequest(DaraModel):
         vpd_id: str = None,
         vpd_vswitch_ids: List[str] = None,
     ):
-        # The number of instances that you want to create. Valid values: 1 to 100.
+        # The number of instances to create. Valid values: 1 to 100.
         self.amount = amount
-        # The time when to automatically release the pay-as-you-go instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in Coordinated Universal Time (UTC).
+        # Specifies whether to automatically install the Cloud Assistant client on the instance.
+        self.auto_install_cloud_assistant = auto_install_cloud_assistant
+        # The automatic release time of the pay-as-you-go instance. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         # 
-        # *   If the value of `ss` is not `00`, the start time is automatically rounded down to the nearest minute based on the value of `mm`.
-        # *   The specified time must be at least one hour later than the current time.
+        # - If the value of seconds (`ss`) is not `00`, the time is automatically set to the start of the current minute (`mm`).
+        # 
+        # - The earliest release time is one hour after the current time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.auto_release_time = auto_release_time
-        # Specifies whether to enable auto-renewal for the premium bandwidth plan. Valid values:
+        # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   **true**.
-        # *   **false** (default).
+        # - **true**: enables auto-renewal.
+        # - **false**: does not enable auto-renewal. (Default)
         # 
-        # >  This parameter is not available when InstanceChargeType is set to PostPaid.
+        # >This parameter is invalid for pay-as-you-go instances.
         self.auto_renew = auto_renew
-        # Specifies whether to use coupons. Default value: true.
+        # Specifies whether to use coupons. Default value: true (AutoUseCoupon=true).
         self.auto_use_coupon = auto_use_coupon
-        # The billing cycle of computing resources of the instance. Only pay-as-you-go instances are supported. Valid values:
+        # The billing cycle for instance compute resources. Only instance-level pay-as-you-go is supported. Valid values:
         # 
-        # *   **Day**.
-        # *   **Month**.
+        # - **Day**: daily billing.
+        # 
+        # - **Month**: monthly billing.
         self.billing_cycle = billing_cycle
-        # The Internet service provider (ISP).
-        # 
-        # >  This parameter required if ScheduleAreaLevel is set to Region.\\
-        # If you set ScheduleAreaLevel to Region, a node has multiple ISPs, and you do not specify an ISP, then the create instance uses the ISP of the node. If the node has two ISPs, such as China Mobile and China Unicom, the created instance has two ISPs.\\
-        # You can call the DescribeRegionIsps operation to query ISPs of the edge node.[](~~2637461~~)
+        # The carrier.
+        # >This parameter is required for region-level scheduling.</br>
+        # >For node-level scheduling, if a node has multiple carriers and you do not specify a carrier, instances are created for each carrier on the node. For example, if a node has both China Mobile and China Unicom carriers, instances with two ISPs are created.</br>You can call [DescribeRegionIsps](https://help.aliyun.com/document_detail/2637461.html) to query the carrier information of a node.
         self.carrier = carrier
-        # The specifications of data disks.
+        # The region for Cloud Assistant access. Valid values: cn-zhangjiakou (Zhangjiakou) and ap-southeast-1 (Singapore).
+        self.cloud_assistant_region = cloud_assistant_region
+        # The data cloud disk specifications.
         self.data_disk = data_disk
+        # The release protection property of the instance. Specifies whether the instance can be released from the console or by calling an API operation. Valid values: 
+        # 
+        # -  true: Enables instance release protection.
+        # -  false: Disables instance release protection.
+        # 
+        # Default value: false.
+        # 
+        # > This property applies only to pay-as-you-go instances and can only restrict manual release operations. It does not take effect on system-initiated release operations.
         self.deletion_protection = deletion_protection
+        # The deployment set ID.
         self.deployment_set_id = deployment_set_id
-        # The ID of the node.
+        # The node ID.
         # 
-        # >  This parameter is required if ScheduleAreaLevel is set to Region and is not available if ScheduleAreaLevel is set to other values.
+        # > This parameter is required for node-level scheduling and is invalid for region-level scheduling.
         self.ens_region_id = ens_region_id
-        # The name of the host.
+        # The hostname.
         self.host_name = host_name
-        # The ID of the image. For ARM PCB-based server instances, leave this parameter empty. For other instances, this parameter is required.
+        # The image ID. This parameter cannot be specified for ARM-based instances. This parameter is required for other instance types.
         self.image_id = image_id
-        # The billing policy of the instance. Valid values:
+        # The instance billing strategy. Valid values:
         # 
-        # *   **instance**: Bills are generated based on instances.
-        # *   If you do not specify this parameter, bills are generated based on users.
+        # - **instance**: instance-level billing.
+        # - If not specified, the default is user-level billing.
         self.instance_charge_strategy = instance_charge_strategy
         # The billing method of the instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription.
-        # *   **PostPaid:** pay-as-you-go.
+        # - **PrePaid**: subscription.
+        # - **PostPaid**: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
-        # The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The instance name. The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It cannot start with `http://` or `https://`. It can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
         # 
-        # The default value of this parameter is the value of the InstanceId parameter.
+        # Default value: the InstanceId of the instance.
         self.instance_name = instance_name
         # The instance type.
         self.instance_type = instance_type
-        # The bandwidth billing method. Valid values:
+        # Billable methods for bandwidth. Valid values:
+        # - **BandwidthByDay**: daily peak bandwidth
+        # - **95BandwidthByMonth**: monthly 95th percentile bandwidth
         # 
-        # *   **BandwidthByDay**: pay by daily peak bandwidth
-        # *   **95BandwidthByMonth**: pay by monthly 95th percentile bandwidth
-        # 
-        # >  This parameter is required if you purchase an ENS instance for the first time. The value that you specified is used as the default value for subsequent purchases.
+        # > You can select a billing method only for the first purchase. Subsequent purchases use the billing method selected during the first purchase by default.
         self.internet_charge_type = internet_charge_type
-        # The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is assigned to the instance.
+        # The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is automatically assigned to the instance.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The type of the IP address. Valid values:
+        # The IP type. Valid values:
         # 
-        # *   **ipv4** (default).
-        # *   **ipv6**.
-        # *   **ipv4Andipv6** (single stack).
-        # *   **ipv4Withipv6** (dual stack).
+        # - **ipv4** (default): IPv4.
+        # 
+        # - **ipv6**: IPv6.
+        # 
+        # - **ipv4Andipv6**: IPv4 and IPv6 (single stack).
+        # - **ipv4Withipv6**: IPv4 and IPv6 (dual-stack).
         self.ip_type = ip_type
+        # The number of randomly generated IPv6 addresses to assign to the primary ENI of the private network.
         self.ipv_6address_count = ipv_6address_count
-        # The name of the key pair.
-        # 
-        # >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
+        # The key pair name.
+        # > Specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
         self.key_pair_name = key_pair_name
+        # The ID of the instance launch template.
         self.launch_template_id = launch_template_id
+        # The name of the instance launch template.
         self.launch_template_name = launch_template_name
+        # The version of the instance launch template.
         self.launch_template_version = launch_template_version
-        # The code of the region.
-        # 
-        # >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
+        # The region code.
+        # >This parameter is required for region-level scheduling and is invalid for node-level scheduling.
         self.net_district_code = net_district_code
-        # The ID of the network.
+        # The network ID.
         # 
-        # >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs.
+        # >This parameter can only be used for node-level scheduling. An error is returned if this parameter is specified for region-level scheduling. If you do not specify vSwitch information, only the validity of the network ID is verified. The actual resource creation does not use this network ID.
         self.net_work_id = net_work_id
-        # The password that is used to connect to the instance.
+        # The instance password.
         # 
-        # >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
+        # > Specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
         self.password = password
         # Specifies whether to use the preset password of the image. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: uses the preset password.
+        # - **false**: does not use the preset password.
         # 
-        # >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
+        # > Specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
         self.password_inherit = password_inherit
-        # The unit of the subscription period.
+        # The duration of the purchased resource.
         # 
-        # *   If **PeriodUnit** is set to **Day**, **Period** can only be set to **3**.
-        # *   If **PeriodUnit** is **Month**, **Period** can be set to **1 to 9** or **12**.
+        # - If **PeriodUnit** is set to **Day**, **Period** can only be set to **3**.
+        # 
+        # - If **PeriodUnit** is set to **Month**, **Period** can be set to **1-9** or **12**.
         self.period = period
-        # The unit of the subscription period. Valid values:
-        # 
-        # *   **Month** (default).
-        # *   **Day**.
+        # The unit of the purchase duration. Valid values:
+        # - **Month** (default): monthly purchase.
+        # - **Day**: daily purchase.
         self.period_unit = period_unit
         # The private IP address.
-        # 
-        # >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs. If you specify a private IP address, the number of instances must be 1. The private IP address takes effect only when the private IP address and the vSwitch ID are not empty.
+        # >This parameter can only be used for node-level scheduling. An error is returned if this parameter is specified for region-level scheduling.
+        # If a private IP address is specified, the number of instances can only be 1. The private IP address takes effect only when both the private IP address and vSwitch ID are specified.
         self.private_ip_address = private_ip_address
-        # Specifies whether to enable public IP address identification. Valid values: true and false. Default value: false.
+        # Specifies whether to enable public IP identification. Valid values:
+        # 
+        # - true: enables public IP identification.
+        # 
+        # - false: does not enable public IP identification.
+        # 
+        # Default value: true.
         self.public_ip_identification = public_ip_identification
-        # The scheduling level. This parameter specifies area-level scheduling or node-level scheduling. Valid values:
+        # The scheduling level. Use this parameter to specify node-level or region-level scheduling. Valid values:
         # 
-        # *   **Big**: greater area
-        # *   **Middle**: province
-        # *   **Small**: city
-        # *   **Region**: node
+        # - **Big**: major area
+        # - **Middle**: province
+        # - **Small**: city
+        # - **Region**: node
         self.schedule_area_level = schedule_area_level
-        # The scheduling price policy. Valid values:
+        # The scheduling price strategy. Valid values:
         # 
-        # *   **PriceHighPriority**: The high price prevails.
-        # *   **PriceLowPriority**: The low price prevails.
+        # - **PriceHighPriority**: high price first
+        # - **PriceLowPriority**: low price first
         self.scheduling_price_strategy = scheduling_price_strategy
-        # The scheduling policy of the taint. Valid values:
+        # The scheduling strategy. Valid values:
         # 
-        # *   **Concentrate**
-        # *   **Disperse**
+        # - **Concentrate**: concentrated
+        # - **Disperse**: dispersed
         # 
-        # >  If ScheduleAreaLevel is set to Region, set this parameter to **Concentrate**. If ScheduleAreaLevel is set to other values, set this parameter to Concentrate or Disperse based on your business requirements.
+        # > For node-level scheduling, the value is **Concentrate**. For region-level scheduling, select a value based on your requirements.
         self.scheduling_strategy = scheduling_strategy
-        # The ID of security group.
+        # The security group ID.
         self.security_id = security_id
-        # The protection period of the preemptible instance. Unit: hours. Default value: 1. Valid values:
+        # The protection period of the spot instance.
         # 
-        # *   1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
-        # *   0: After a preemptible instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
-        # 
-        # Alibaba Cloud sends an ECS system event to notify you 5 minutes before the instance is released. Preemptible instances are billed by second. We recommend that you specify an appropriate protection period based on your business requirements.
+        # Unit: hours.
         self.spot_duration = spot_duration
-        # The bidding policy for the pay-as-you-go instance. This parameter is valid only when the `InstanceChargeType` parameter is set to `PostPaid`. Valid values:
+        # The bidding policy for the pay-as-you-go instance. This parameter takes effect when the `InstanceChargeType` parameter is set to `PostPaid`. Valid values:
         # 
-        # *   NoSpot: The elastic container instances are pay-as-you-go instances.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bidding price.
+        # - NoSpot: a regular pay-as-you-go instance.
+        # - SpotAsPriceGo: the system automatically bids at the current market price.
         # 
         # Default value: NoSpot.
         self.spot_strategy = spot_strategy
-        # The specification of the system disk.
+        # The system cloud disk specifications.
         self.system_disk = system_disk
-        # The tags.
+        # The tags that are bound to the instance.
         self.tag = tag
-        # Specifies whether to append sequential suffixes to the hostname specified by the **HostName** parameter and to the instance name specified by the **InstanceName** parameter. The sequential suffixes range from 001 to 999.
+        # Specifies whether to add sequential suffixes to **HostName** and **InstanceName**. The sequential suffixes start from 001 and cannot exceed 999.
         self.unique_suffix = unique_suffix
-        # The custom data. The maximum data size is 16 KB. You can specify **UserData**. **UserData** must be Base64-encoded.
+        # The custom user data. Maximum size: 16 KB. You can pass in **UserData** information. **UserData** is Base64-encoded.
         self.user_data = user_data
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         # 
-        # >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs.
+        # >This parameter can only be used for node-level scheduling. An error is returned if this parameter is specified for region-level scheduling.
         self.v_switch_id = v_switch_id
+        # The VPD network ID.
         self.vpd_id = vpd_id
+        # The list of VPD vSwitch IDs.
         self.vpd_vswitch_ids = vpd_vswitch_ids
 
     def validate(self):
@@ -242,6 +264,9 @@ class RunInstancesRequest(DaraModel):
         if self.amount is not None:
             result['Amount'] = self.amount
 
+        if self.auto_install_cloud_assistant is not None:
+            result['AutoInstallCloudAssistant'] = self.auto_install_cloud_assistant
+
         if self.auto_release_time is not None:
             result['AutoReleaseTime'] = self.auto_release_time
 
@@ -256,6 +281,9 @@ class RunInstancesRequest(DaraModel):
 
         if self.carrier is not None:
             result['Carrier'] = self.carrier
+
+        if self.cloud_assistant_region is not None:
+            result['CloudAssistantRegion'] = self.cloud_assistant_region
 
         result['DataDisk'] = []
         if self.data_disk is not None:
@@ -385,6 +413,9 @@ class RunInstancesRequest(DaraModel):
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
 
+        if m.get('AutoInstallCloudAssistant') is not None:
+            self.auto_install_cloud_assistant = m.get('AutoInstallCloudAssistant')
+
         if m.get('AutoReleaseTime') is not None:
             self.auto_release_time = m.get('AutoReleaseTime')
 
@@ -399,6 +430,9 @@ class RunInstancesRequest(DaraModel):
 
         if m.get('Carrier') is not None:
             self.carrier = m.get('Carrier')
+
+        if m.get('CloudAssistantRegion') is not None:
+            self.cloud_assistant_region = m.get('CloudAssistantRegion')
 
         self.data_disk = []
         if m.get('DataDisk') is not None:
@@ -532,9 +566,9 @@ class RunInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The custom tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value. The tag value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -569,9 +603,9 @@ class RunInstancesRequestSystemDisk(DaraModel):
         category: str = None,
         size: int = None,
     ):
-        # The category of the system disk.
+        # The type of the system cloud disk.
         self.category = category
-        # The size of the system disk. Unit: GiB.
+        # The size of the system cloud disk. Unit: GiB.
         self.size = size
 
     def validate(self):
@@ -608,26 +642,27 @@ class RunInstancesRequestDataDisk(DaraModel):
         kmskey_id: str = None,
         size: int = None,
     ):
-        # The category of the disk. Valid values:
-        # 
-        # *   **cloud_efficiency**: ultra disk.
-        # *   **cloud_ssd**: all-flash disk.
-        # *   **local_hdd**: local HDD.
-        # *   **local_ssd**: local SSD.
+        # The disk category. Valid values:
+        # - **cloud_efficiency**: ultra cloud disk
+        # - **cloud_ssd**: all-flash cloud disk
+        # - **local_hdd**: local HDD
+        # - **local_ssd**: local SSD
         self.category = category
-        # Specifies whether to encrypt the disk. Valid values:
+        # Specifies whether to encrypt the cloud disk. Valid values:
         # 
-        # *   true.
-        # *   false (default).
+        # - true: encrypts the cloud disk.
+        # 
+        # - false (default): does not encrypt the cloud disk.
         self.encrypted = encrypted
-        # The ID of the Key Management Service (KMS) key that is used for the disk. Valid values:
+        # The ID of the KMS key used by the cloud disk. Valid values:
         # 
-        # *   true.
-        # *   false (default).
+        # - true: encrypts the cloud disk.
         # 
-        # >  If you set the Encrypted parameter to true, the default service key is used when the KMSKeyId parameter is empty.
+        # - false (default): does not encrypt the cloud disk.
+        # 
+        # > If Encrypted is set to true and KMSKeyId is empty, the default service key is used.
         self.kmskey_id = kmskey_id
-        # The size of a data disk. Unit: GiB.
+        # The size of the data cloud disk. Unit: GiB.
         self.size = size
 
     def validate(self):

@@ -10,11 +10,11 @@ class SetBackendServersShrinkRequest(DaraModel):
         backend_servers_shrink: str = None,
         load_balancer_id: str = None,
     ):
-        # The list of backend servers that you added. You can modify the weights of up to 20 backend servers in each request.
+        # The list of backend servers to add. You can modify up to 20 backend servers in each call.
         # 
         # This parameter is required.
         self.backend_servers_shrink = backend_servers_shrink
-        # The ID of the Edge Load Balancer (ELB) instance.
+        # The ID of the load balancing instance.
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id

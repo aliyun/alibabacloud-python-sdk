@@ -10,11 +10,11 @@ class CopySDGShrinkRequest(DaraModel):
         destination_region_ids_shrink: str = None,
         sdgid: str = None,
     ):
-        # The destination nodes.
+        # The list of destination edge zones.
         # 
         # This parameter is required.
         self.destination_region_ids_shrink = destination_region_ids_shrink
-        # The ID of the SDG that you want to copy.
+        # The ID of the SDG to copy.
         # 
         # This parameter is required.
         self.sdgid = sdgid

@@ -15,35 +15,32 @@ class RevokeSecurityGroupEgressRequest(DaraModel):
         security_group_id: str = None,
         source_port_range: str = None,
     ):
-        # The destination IP addresses. CIDR blocks and IPv4 addresses are supported.
+        # The destination IP address range. CIDR blocks and IPv4 address ranges are supported.
         # 
-        # By default, this parameter is empty.
+        # Default value: null.
         # 
         # This parameter is required.
         self.dest_cidr_ip = dest_cidr_ip
-        # The transport layer protocol. The value of this parameter is case-sensitive. Valid values:
-        # 
-        # *   tcp
-        # *   udp
-        # *   icmp
-        # *   gre
-        # *   all: All protocols are supported.
+        # The transport layer protocol. The value is case-sensitive. Valid values:
+        # - tcp
+        # - udp
+        # - icmp
+        # - gre
+        # - all: all protocols are supported
         # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
-        # The action of the security group rule. Valid values:
-        # 
-        # *   **accept**: allows access.
-        # *   **drop**: denies access and returns no responses.
+        # Settings for access permissions. Valid values:
+        # - **accept**: accepts access.
+        # - **drop**: deny access without returning any denial information.
         # 
         # Default value: **accept**.
         self.policy = policy
-        # The range of destination ports that correspond to the transport layer protocol for the security group rule. Valid values:
-        # 
-        # *   If you set the IpProtocol parameter to tcp or udp, the port number ranges from **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
-        # *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
-        # *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
-        # *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
+        # The range of destination ports that correspond to the transport layer protocol. Valid values:
+        # - TCP/UDP protocol: Valid values are **1** to **65535**. Separate the start port and the end port with a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+        # - ICMP protocol: **-1/-1**.
+        # - GRE protocol: **-1/-1**.
+        # - If IpProtocol is set to all: **-1/-1**.
         # 
         # This parameter is required.
         self.port_range = port_range
@@ -51,16 +48,15 @@ class RevokeSecurityGroupEgressRequest(DaraModel):
         # 
         # Default value: **1**.
         self.priority = priority
-        # The ID of the security group.
+        # The security group ID.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
-        # The range of port numbers that correspond to the transport layer protocol for the source security group. Valid values:
-        # 
-        # *   If you set the IpProtocol parameter to tcp or udp, the port number ranges from **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
-        # *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
-        # *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
-        # *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
+        # The range of source ports that correspond to the transport layer protocol. Valid values:
+        # - TCP/UDP protocol: Valid values are **1** to **65535**. Separate the start port and the end port with a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+        # - ICMP protocol: **-1/-1**.
+        # - GRE protocol: **-1/-1**.
+        # - If IpProtocol is set to all: **-1/-1**.
         self.source_port_range = source_port_range
 
     def validate(self):

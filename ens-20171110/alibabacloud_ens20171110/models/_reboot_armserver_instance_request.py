@@ -9,7 +9,7 @@ class RebootARMServerInstanceRequest(DaraModel):
         self,
         server_id: str = None,
     ):
-        # The ID of the server.
+        # The server instance ID.
         self.server_id = server_id
 
     def validate(self):

@@ -59,8 +59,9 @@ class UnmountInstanceSDGResponseBodyData(DaraModel):
         self.result = result
         # Indicates whether all tasks are successful. Valid values:
         # 
-        # *   true: All tasks are successful.
-        # *   false: Failed tasks exist.
+        # - true: All tasks are successful.
+        # 
+        # - false: Failed tasks exist.
         self.success = success
 
     def validate(self):

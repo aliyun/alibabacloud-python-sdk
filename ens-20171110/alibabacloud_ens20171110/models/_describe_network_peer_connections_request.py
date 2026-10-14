@@ -16,11 +16,17 @@ class DescribeNetworkPeerConnectionsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
+        # The ID of the network peer connection.
         self.instance_id = instance_id
+        # The name of the network peer connection.
         self.name = name
+        # The IDs of the networks involved in the connection. The query does not distinguish between the requester and accepter.
         self.network_ids = network_ids
+        # The page number for the returned results. Default: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Default: **10**. Valid values: **10** to **100**.
         self.page_size = page_size
 
     def validate(self):

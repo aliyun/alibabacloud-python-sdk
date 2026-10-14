@@ -13,9 +13,9 @@ class BatchEventRedeployInstanceResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchEventRedeployInstanceResponseBodyResults] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of results.
+        # The list of results.
         self.results = results
 
     def validate(self):
@@ -60,13 +60,13 @@ class BatchEventRedeployInstanceResponseBodyResults(DaraModel):
         message: str = None,
         resource_id: str = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # System event ID.
+        # The system event ID.
         self.event_id = event_id
-        # Operational message, when code=200, the message is \\"successful\\".
+        # The operation message. When code is 200, the message is successful.
         self.message = message
-        # Resource ID.
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

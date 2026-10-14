@@ -19,8 +19,9 @@ class CreateStorageGatewayResponseBody(DaraModel):
         self.allocation_id = allocation_id
         # The success status code.
         # 
-        # *   **PartSuccess**: partially succeeded.
-        # *   **AllSuccess**: all succeeded.
+        # - **PartSuccess**: partially succeeded.
+        # 
+        # - **AllSuccess**: all succeeded.
         self.biz_status_code = biz_status_code
         # The request ID.
         self.request_id = request_id

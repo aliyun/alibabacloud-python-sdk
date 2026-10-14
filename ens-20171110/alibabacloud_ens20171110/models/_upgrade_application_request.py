@@ -17,10 +17,13 @@ class UpgradeApplicationRequest(DaraModel):
         self.app_id = app_id
         # The information template for phased update. The value must be a JSON string and contain the following information:
         # 
-        # *   Version range that you want to update
-        # *   Configuration information of the target version
-        # *   Canary release policy for resources
-        # *   Intelligent upgrade policy that contains information such as the time window and resource usage limit
+        # - Version range that you want to update
+        # 
+        # - Configuration information of the target version
+        # 
+        # - Canary release policy for resources
+        # 
+        # - Intelligent upgrade policy that contains information such as the time window and resource usage limit
         # 
         # This parameter is required.
         self.template = template

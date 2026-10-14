@@ -14,7 +14,7 @@ class DescribeInstanceTypesResponseBody(DaraModel):
         instance_types: main_models.DescribeInstanceTypesResponseBodyInstanceTypes = None,
         request_id: str = None,
     ):
-        # The status code. If the request is successful, 0 is returned. If the request fails, a non-zero error code is returned.
+        # The business code. A value of 0 indicates success. An error code is returned upon failure.
         self.code = code
         self.instance_types = instance_types
         # The request ID.
@@ -93,11 +93,17 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
     def __init__(
         self,
         cpu_core_count: int = None,
+        instance_bandwidth_rx: int = None,
+        instance_bandwidth_tx: int = None,
+        instance_type: str = None,
         instance_type_id: str = None,
         instance_type_name: str = None,
         memory_size: int = None,
     ):
         self.cpu_core_count = cpu_core_count
+        self.instance_bandwidth_rx = instance_bandwidth_rx
+        self.instance_bandwidth_tx = instance_bandwidth_tx
+        self.instance_type = instance_type
         self.instance_type_id = instance_type_id
         self.instance_type_name = instance_type_name
         self.memory_size = memory_size
@@ -112,6 +118,15 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
             result = _map
         if self.cpu_core_count is not None:
             result['CpuCoreCount'] = self.cpu_core_count
+
+        if self.instance_bandwidth_rx is not None:
+            result['InstanceBandwidthRx'] = self.instance_bandwidth_rx
+
+        if self.instance_bandwidth_tx is not None:
+            result['InstanceBandwidthTx'] = self.instance_bandwidth_tx
+
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
 
         if self.instance_type_id is not None:
             result['InstanceTypeId'] = self.instance_type_id
@@ -128,6 +143,15 @@ class DescribeInstanceTypesResponseBodyInstanceTypesInstanceType(DaraModel):
         m = m or dict()
         if m.get('CpuCoreCount') is not None:
             self.cpu_core_count = m.get('CpuCoreCount')
+
+        if m.get('InstanceBandwidthRx') is not None:
+            self.instance_bandwidth_rx = m.get('InstanceBandwidthRx')
+
+        if m.get('InstanceBandwidthTx') is not None:
+            self.instance_bandwidth_tx = m.get('InstanceBandwidthTx')
+
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
 
         if m.get('InstanceTypeId') is not None:
             self.instance_type_id = m.get('InstanceTypeId')

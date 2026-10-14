@@ -15,14 +15,19 @@ class ModifySnatEntryRequest(DaraModel):
     ):
         # Specifies whether to enable IP affinity. Default value: true. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**
         # 
-        # >  Description After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
+        # - **true**
+        # 
+        # > Description After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
         self.eip_affinity = eip_affinity
+        # Specifies whether to enable carrier affinity.
         self.isp_affinity = isp_affinity
+        # The ID of the SNAT entry.
+        # 
         # This parameter is required.
         self.snat_entry_id = snat_entry_id
+        # The name of the SNAT entry. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.snat_entry_name = snat_entry_name
         # Separate multiple EIPs in the SNAT entry with commas (,).
         self.snat_ip = snat_ip

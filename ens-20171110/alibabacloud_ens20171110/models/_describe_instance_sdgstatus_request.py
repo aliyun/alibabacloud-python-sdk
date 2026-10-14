@@ -15,15 +15,15 @@ class DescribeInstanceSDGStatusRequest(DaraModel):
         sdgids: List[str] = None,
         status: str = None,
     ):
-        # The ID of the AIC instance.
+        # The AIC instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The IDs of SDGs that you want to query. By default, all SDGs are queried.
+        # The IDs of the SDGs to query. By default, all SDGs are queried.
         self.sdgids = sdgids
         # The deployment status of the SDG.
         self.status = status

@@ -16,19 +16,19 @@ class DescribeHistoryEventsRequest(DaraModel):
         page_size: int = None,
         resource_ids: List[str] = None,
     ):
-        # The levels of the event-triggered alerts.
+        # The list of event levels.
         self.event_levels = event_levels
-        # Event status list.
+        # The list of event statuses.
         self.event_status = event_status
         # The list of event types.
         # 
         # This parameter is required.
         self.event_types = event_types
-        # The page number. Pages start from page 1. Default value: 1.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
-        # The IDs of resources.
+        # The list of resource IDs.
         self.resource_ids = resource_ids
 
     def validate(self):

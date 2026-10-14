@@ -16,40 +16,40 @@ class DescribeEpnBandWidthDataRequest(DaraModel):
         period: str = None,
         start_time: str = None,
     ):
-        # The ID of the EPN instance.
+        # The instance ID of the edge-to-edge network.
         self.epninstance_id = epninstance_id
         # The end of the time range to query.
         # 
-        # *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+        # - The time must be in UTC and in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
+        # 
+        # - If the seconds value is not 00, the end time is automatically set to the beginning of the next minute.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the Edge Node Service (ENS) node.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The Internet service provider (ISP). Valid values:
-        # 
-        # *   cmcc: China Mobile
-        # *   telecom: China Telecom
-        # *   unicom: China Unicom
-        # *   multiCarrier: multi-line ISP
+        # - cmcc: China Mobile.
+        # - telecom: China Telecom.
+        # - unicom: China Unicom.
+        # - multiCarrier: multi-ISP.
         self.isp = isp
         # The networking mode. Valid values:
-        # 
-        # *   **SpeedUp**: intelligent acceleration network (Internet)
-        # *   **Connection**: internal network
-        # *   **SpeedUpAndConnection**: intelligent acceleration network and internal network
+        # - **SpeedUp**: intelligent acceleration (public network).
+        # - **Connection**: internal network connectivity (internal network mode).
+        # - **SpeedUpAndConnection**: intelligent acceleration and internal network connectivity (internal network mode).
         self.networking_model = networking_model
-        # The precision of the monitoring data that you want to obtain. Valid values: 300, 1200, 3600, and 14400. Default value: 300. Unit: seconds.
+        # The precision of the monitoring data. Valid values: 300 (default), 1200, 3600, and 14400. Unit: seconds.
         # 
         # This parameter is required.
         self.period = period
-        # The beginning of the time range to query.
+        # The start of the time range to query.
         # 
-        # *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+        # - The time must be in UTC and in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
+        # 
+        # - If the seconds value is not 00, the start time is automatically set to the beginning of the next minute.
         # 
         # This parameter is required.
         self.start_time = start_time

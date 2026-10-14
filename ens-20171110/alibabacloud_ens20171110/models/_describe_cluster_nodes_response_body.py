@@ -14,8 +14,11 @@ class DescribeClusterNodesResponseBody(DaraModel):
         page: main_models.DescribeClusterNodesResponseBodyPage = None,
         request_id: str = None,
     ):
+        # The node information.
         self.nodes = nodes
+        # The pagination information.
         self.page = page
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,8 +71,11 @@ class DescribeClusterNodesResponseBodyPage(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -112,21 +118,37 @@ class DescribeClusterNodesResponseBodyNodes(DaraModel):
         image_id: str = None,
         instance_id: str = None,
         ip_address: List[str] = None,
+        node_info: main_models.DescribeClusterNodesResponseBodyNodesNodeInfo = None,
         nodepool_id: str = None,
         pay_type: str = None,
         state: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
+        # The instance image ID.
         self.image_id = image_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The IP address of the ENS instance.
         self.ip_address = ip_address
+        # The node information.
+        self.node_info = node_info
+        # The node pool ID.
         self.nodepool_id = nodepool_id
+        # The billing method. Valid values:
+        # - PostPaid: pay-as-you-go.
         self.pay_type = pay_type
+        # The status of the node pool. Valid values:
+        # - initial: The node pool is being created.
+        # - running: The node pool is created.
+        # - removing: The node pool is being removed.
         self.state = state
 
     def validate(self):
-        pass
+        if self.node_info:
+            self.node_info.validate()
 
     def to_map(self):
         result = dict()
@@ -147,6 +169,9 @@ class DescribeClusterNodesResponseBodyNodes(DaraModel):
 
         if self.ip_address is not None:
             result['IpAddress'] = self.ip_address
+
+        if self.node_info is not None:
+            result['NodeInfo'] = self.node_info.to_map()
 
         if self.nodepool_id is not None:
             result['NodepoolId'] = self.nodepool_id
@@ -176,6 +201,10 @@ class DescribeClusterNodesResponseBodyNodes(DaraModel):
         if m.get('IpAddress') is not None:
             self.ip_address = m.get('IpAddress')
 
+        if m.get('NodeInfo') is not None:
+            temp_model = main_models.DescribeClusterNodesResponseBodyNodesNodeInfo()
+            self.node_info = temp_model.from_map(m.get('NodeInfo'))
+
         if m.get('NodepoolId') is not None:
             self.nodepool_id = m.get('NodepoolId')
 
@@ -184,6 +213,52 @@ class DescribeClusterNodesResponseBodyNodes(DaraModel):
 
         if m.get('State') is not None:
             self.state = m.get('State')
+
+        return self
+
+class DescribeClusterNodesResponseBodyNodesNodeInfo(DaraModel):
+    def __init__(
+        self,
+        container_runtime_version: str = None,
+        kubelet_version: str = None,
+        os_image: str = None,
+    ):
+        # The container runtime version.
+        self.container_runtime_version = container_runtime_version
+        # The kubelet version of the node.
+        self.kubelet_version = kubelet_version
+        # The operating system image of the node.
+        self.os_image = os_image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.container_runtime_version is not None:
+            result['ContainerRuntimeVersion'] = self.container_runtime_version
+
+        if self.kubelet_version is not None:
+            result['KubeletVersion'] = self.kubelet_version
+
+        if self.os_image is not None:
+            result['OsImage'] = self.os_image
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContainerRuntimeVersion') is not None:
+            self.container_runtime_version = m.get('ContainerRuntimeVersion')
+
+        if m.get('KubeletVersion') is not None:
+            self.kubelet_version = m.get('KubeletVersion')
+
+        if m.get('OsImage') is not None:
+            self.os_image = m.get('OsImage')
 
         return self
 

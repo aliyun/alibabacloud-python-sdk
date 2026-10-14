@@ -21,8 +21,9 @@ class DescribeStorageVolumeRequest(DaraModel):
         self.gateway_id = gateway_id
         # Specifies whether to enable the volume. Valid values:
         # 
-        # *   **1** (default): enables the volume.
-        # *   **0**: disables the volume.
+        # - **1** (default): enables the volume.
+        # 
+        # - **0**: disables the volume.
         self.is_enable = is_enable
         # The page number. Default value: **1**.
         self.page_number = page_number
