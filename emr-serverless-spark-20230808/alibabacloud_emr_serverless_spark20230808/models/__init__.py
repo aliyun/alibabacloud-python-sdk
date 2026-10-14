@@ -185,6 +185,9 @@ from ._list_members_response import ListMembersResponse
 from ._list_network_services_request import ListNetworkServicesRequest
 from ._list_network_services_response_body import ListNetworkServicesResponseBody
 from ._list_network_services_response import ListNetworkServicesResponse
+from ._list_queue_top_jobs_request import ListQueueTopJobsRequest
+from ._list_queue_top_jobs_response_body import ListQueueTopJobsResponseBody
+from ._list_queue_top_jobs_response import ListQueueTopJobsResponse
 from ._list_ray_cluster_request import ListRayClusterRequest
 from ._list_ray_cluster_response_body import ListRayClusterResponseBody
 from ._list_ray_cluster_response import ListRayClusterResponse
@@ -326,6 +329,7 @@ from ._get_cu_hours_response_body import GetCuHoursResponseBodyData
 from ._get_doctor_application_response_body import GetDoctorApplicationResponseBodyData
 from ._get_job_run_response_body import GetJobRunResponseBodyJobRunConfigurationOverrides
 from ._get_job_run_response_body import GetJobRunResponseBodyJobRunStateChangeReason
+from ._get_job_run_response_body import GetJobRunResponseBodyJobRunTokenDetails
 from ._get_job_run_response_body import GetJobRunResponseBodyJobRun
 from ._get_kyuubi_service_response_body import GetKyuubiServiceResponseBodyData
 from ._get_kyuubi_token_response_body import GetKyuubiTokenResponseBodyDataAutoExpireConfiguration
@@ -383,6 +387,8 @@ from ._list_network_services_response_body import ListNetworkServicesResponseBod
 from ._list_network_services_response_body import ListNetworkServicesResponseBodyNetworkServices
 from ._list_network_services_response_body import ListNetworkServicesResponseBodyQueuesStateChangeReason
 from ._list_network_services_response_body import ListNetworkServicesResponseBodyQueues
+from ._list_queue_top_jobs_response_body import ListQueueTopJobsResponseBodyQueueTopJobsJobs
+from ._list_queue_top_jobs_response_body import ListQueueTopJobsResponseBodyQueueTopJobs
 from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClustersHeadSpec
 from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClustersWorkerSpec
 from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClusters
@@ -615,6 +621,9 @@ __all__ = [
     ListNetworkServicesRequest,
     ListNetworkServicesResponseBody,
     ListNetworkServicesResponse,
+    ListQueueTopJobsRequest,
+    ListQueueTopJobsResponseBody,
+    ListQueueTopJobsResponse,
     ListRayClusterRequest,
     ListRayClusterResponseBody,
     ListRayClusterResponse,
@@ -756,6 +765,7 @@ __all__ = [
     GetDoctorApplicationResponseBodyData,
     GetJobRunResponseBodyJobRunConfigurationOverrides,
     GetJobRunResponseBodyJobRunStateChangeReason,
+    GetJobRunResponseBodyJobRunTokenDetails,
     GetJobRunResponseBodyJobRun,
     GetKyuubiServiceResponseBodyData,
     GetKyuubiTokenResponseBodyDataAutoExpireConfiguration,
@@ -813,6 +823,8 @@ __all__ = [
     ListNetworkServicesResponseBodyNetworkServices,
     ListNetworkServicesResponseBodyQueuesStateChangeReason,
     ListNetworkServicesResponseBodyQueues,
+    ListQueueTopJobsResponseBodyQueueTopJobsJobs,
+    ListQueueTopJobsResponseBodyQueueTopJobs,
     ListRayClusterResponseBodyRayClustersHeadSpec,
     ListRayClusterResponseBodyRayClustersWorkerSpec,
     ListRayClusterResponseBodyRayClusters,

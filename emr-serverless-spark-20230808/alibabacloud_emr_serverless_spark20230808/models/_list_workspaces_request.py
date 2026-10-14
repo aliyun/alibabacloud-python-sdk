@@ -18,17 +18,24 @@ class ListWorkspacesRequest(DaraModel):
         state: str = None,
         tag: List[main_models.ListWorkspacesRequestTag] = None,
     ):
-        # The maximum number of records to retrieve in a single request.
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
-        # The name of the workspace. Fuzzy match is supported.
+        # The name of the workspace. Fuzzy search by workspace name is supported.
         self.name = name
-        # The pagination token that marks the current read position.
+        # The token that indicates the position from which to start reading.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The workspace status.
+        # The state of the workspace. Valid values:
+        # - Starting: The workspace is starting.
+        # - Running: The workspace is running.
+        # - Stopping: The workspace is stopping.
+        # - Stopped: The workspace is stopped.
+        # - Error: The workspace failed.
         self.state = state
+        # The list of tags used to filter workspaces.
         self.tag = tag
 
     def validate(self):
@@ -101,7 +108,9 @@ class ListWorkspacesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

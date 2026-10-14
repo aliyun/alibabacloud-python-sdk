@@ -21,17 +21,19 @@ class UpdateWorkspaceRequest(DaraModel):
         workspace_name: str = None,
         region_id: str = None,
     ):
-        # The upper limit of workspace resources.
+        # The resource limit of the workspace.
         self.cu = cu
-        # The number of GPU cards.
+        # The number of GPUs.
         self.gpu = gpu
         # The GPU instance type.
         self.gpu_spec = gpu_spec
+        # The GPU subscription information.
         self.gpu_subscription = gpu_subscription
+        # The workspace IP address whitelist.
         self.ip_white_list = ip_white_list
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The information for converting from pay-as-you-go to subscription.
+        # The information about switching the billing method from pay-as-you-go to subscription.
         self.subscription = subscription
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -130,19 +132,19 @@ class UpdateWorkspaceRequestSubscription(DaraModel):
         payment_duration_unit: str = None,
         queue: List[str] = None,
     ):
-        # Specifies whether to enable auto-renewal. This parameter is required for the pre-paid billing type.
+        # Specifies whether to enable auto-renewal. This parameter is required for the subscription billing method.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. This parameter is required for the pre-paid billing type.
+        # The auto-renewal period. This parameter is required for the subscription billing method.
         self.auto_renew_period = auto_renew_period
-        # The auto-renewal period unit. This parameter is required for the pre-paid billing type.
+        # The auto-renewal cycle. This parameter is required for the subscription billing method.
         self.auto_renew_period_unit = auto_renew_period_unit
-        # The idempotency token.
+        # The client token for idempotency verification.
         self.client_token = client_token
-        # The number of subscription periods. This parameter is required for the pre-paid billing type.
+        # The number of subscription periods. This parameter is required for the subscription billing method.
         self.duration = duration
         # The subscription period unit.
         self.payment_duration_unit = payment_duration_unit
-        # The list of running queues to be converted.
+        # The list of running queues to be switched.
         self.queue = queue
 
     def validate(self):
@@ -212,12 +214,19 @@ class UpdateWorkspaceRequestGpuSubscription(DaraModel):
         operation: str = None,
         payment_duration_unit: str = None,
     ):
+        # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
+        # The number of subscription periods.
         self.duration = duration
+        # The number of GPU machines.
         self.gpu_machine_num = gpu_machine_num
+        # The ID of the GPU quota instance to be upgraded. This parameter is required when the operation parameter is set to UPGRADE.
         self.instance_id = instance_id
+        # The GPU instance type.
         self.instance_type_id = instance_type_id
+        # The operation type. Valid values: BUY and UPGRADE. BUY indicates a new purchase, and UPGRADE indicates an upgrade. If you set this parameter to UPGRADE, you must specify the orderId parameter. Default value: BUY.
         self.operation = operation
+        # The subscription period unit.
         self.payment_duration_unit = payment_duration_unit
 
     def validate(self):

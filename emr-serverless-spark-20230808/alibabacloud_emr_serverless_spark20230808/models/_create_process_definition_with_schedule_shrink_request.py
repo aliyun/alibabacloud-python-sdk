@@ -25,18 +25,18 @@ class CreateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         task_relation_json_shrink: str = None,
         timeout: int = None,
     ):
-        # The email address to which alerts are sent.
+        # The email address for alert notifications.
         self.alert_email_address = alert_email_address
-        # The description of the workflow.
+        # The workflow description.
         # 
         # This parameter is required.
         self.description = description
-        # The execution policy.
+        # The execution strategy.
         # 
         # This parameter is required.
         self.execution_type = execution_type
         self.global_params_shrink = global_params_shrink
-        # The name of the workflow.
+        # The workflow name.
         # 
         # This parameter is required.
         self.name = name
@@ -52,23 +52,23 @@ class CreateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         self.resource_queue = resource_queue
         # The number of retries.
         self.retry_times = retry_times
-        # The Alibaba Cloud UID of the user who runs the workflow.
+        # The Alibaba Cloud UID of the execution user.
         self.run_as = run_as
-        # The scheduling configuration.
+        # The scheduling structure.
         self.schedule_shrink = schedule_shrink
         # The tags.
         self.tags_shrink = tags_shrink
-        # A JSON array of task definitions. This array contains the details for all tasks in the workflow.
+        # The JSON array of task definitions. It contains the description information of all tasks in the workflow.
         # 
         # This parameter is required.
         self.task_definition_json_shrink = task_definition_json_shrink
-        # The degree of parallelism for tasks.
+        # The task concurrency.
         self.task_parallelism = task_parallelism
-        # A JSON array of task dependencies. \\`preTaskCode\\` specifies the upstream task ID and \\`postTaskCode\\` specifies the downstream task ID. Each task must have a unique ID. For tasks without an upstream dependency, set \\`preTaskCode\\` to 0.
+        # The JSON array of task dependencies. It contains the dependencies among all tasks in the workflow. preTaskCode specifies the upstream task ID, and postTaskCode specifies the downstream task ID. Each task must have a unique ID. If a task node does not have an upstream task, you must add a dependency with preTaskCode set to 0.
         # 
         # This parameter is required.
         self.task_relation_json_shrink = task_relation_json_shrink
-        # The default timeout period for a workflow run.
+        # The default timeout period for workflow execution, in seconds.
         self.timeout = timeout
 
     def validate(self):

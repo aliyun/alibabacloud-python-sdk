@@ -5257,6 +5257,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_network_services_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_queue_top_jobs_with_options(
+        self,
+        workspace_id: str,
+        queue_name: str,
+        request: main_models.ListQueueTopJobsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQueueTopJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.top_n):
+            query['topN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQueueTopJobs',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/queues/{DaraURL.percent_encode(queue_name)}/topJobs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQueueTopJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_queue_top_jobs_with_options_async(
+        self,
+        workspace_id: str,
+        queue_name: str,
+        request: main_models.ListQueueTopJobsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQueueTopJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.top_n):
+            query['topN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQueueTopJobs',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/queues/{DaraURL.percent_encode(queue_name)}/topJobs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQueueTopJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_queue_top_jobs(
+        self,
+        workspace_id: str,
+        queue_name: str,
+        request: main_models.ListQueueTopJobsRequest,
+    ) -> main_models.ListQueueTopJobsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_queue_top_jobs_with_options(workspace_id, queue_name, request, headers, runtime)
+
+    async def list_queue_top_jobs_async(
+        self,
+        workspace_id: str,
+        queue_name: str,
+        request: main_models.ListQueueTopJobsRequest,
+    ) -> main_models.ListQueueTopJobsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_queue_top_jobs_with_options_async(workspace_id, queue_name, request, headers, runtime)
+
     def list_ray_cluster_with_options(
         self,
         workspace_id: str,

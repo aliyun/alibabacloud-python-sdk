@@ -16,15 +16,15 @@ class ListMembersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned per page.
+        # The maximum number of records to return per request.
         self.max_results = max_results
         # The list of members.
         self.members = members
-        # The token for the next page of results.
+        # The pagination token for the next page.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -91,19 +91,21 @@ class ListMembersResponseBodyMembers(DaraModel):
         user_type: str = None,
         visible: bool = None,
     ):
-        # The list of operations allowed for this user.
+        # The list of actions allowed for the user.
         self.actions = actions
-        # The time when the member was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The display name of the user.
         self.display_name = display_name
-        # The Alibaba Cloud Resource Name (ARN) of the user.
+        # The ARN of the member.
         self.member_arn = member_arn
         # The list of roles in the workspace.
         self.roles = roles
         # The username.
         self.user_name = user_name
-        # The type of the user.
+        # The type of the user. Valid values:
+        # - ROLE
+        # - MEMBER
         self.user_type = user_type
         # Indicates whether the member is visible.
         self.visible = visible
@@ -198,7 +200,7 @@ class ListMembersResponseBodyMembersRoles(DaraModel):
     ):
         # The list of permissions.
         self.actions = actions
-        # The time when the role was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
@@ -270,9 +272,9 @@ class ListMembersResponseBodyMembersRolesActions(DaraModel):
     ):
         # The ARN of the action.
         self.action_arn = action_arn
-        # The name of the permission.
+        # The name of the action.
         self.action_name = action_name
-        # The list of action dependencies.
+        # The list of dependencies for the action.
         self.dependencies = dependencies
         # The description of the action.
         self.description = description
@@ -334,9 +336,9 @@ class ListMembersResponseBodyMembersActions(DaraModel):
     ):
         # The ARN of the action.
         self.action_arn = action_arn
-        # The name of the permission.
+        # The name of the action.
         self.action_name = action_name
-        # The list of action dependencies.
+        # The list of dependencies for the action.
         self.dependencies = dependencies
         # The description of the action.
         self.description = description

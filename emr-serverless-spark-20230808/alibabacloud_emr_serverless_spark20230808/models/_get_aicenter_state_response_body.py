@@ -12,13 +12,10 @@ class GetAICenterStateResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The state of the AI center. Valid values:
-        # 
-        # - Running
-        # 
-        # - inactive
-        # 
-        # - activating
+        # The status of AI Hub. Valid values:
+        # * active
+        # * inactive
+        # * activating
         self.state = state
 
     def validate(self):

@@ -16,19 +16,19 @@ class UpdateProcessDefinitionWithScheduleResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The return code from the backend API.
+        # The return code from the API backend.
         self.code = code
         # The returned data.
         self.data = data
-        # The number of failed operations.
+        # The number of failures.
         self.failed = failed
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The detailed description that corresponds to the return code.
+        # The detailed description corresponding to the request code.
         self.msg = msg
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -112,19 +112,19 @@ class UpdateProcessDefinitionWithScheduleResponseBodyData(DaraModel):
         version: int = None,
         version_hash_code: str = None,
     ):
-        # The email address for alerts.
+        # The email address for alert notifications.
         self.alert_email_address = alert_email_address
         # The workspace ID.
         self.biz_id = biz_id
         # The workflow definition ID.
         self.code = code
-        # The time when the workflow definition was created.
+        # The creation time of the workflow definition. The time is in UTC and follows the ISO 8601 standard.
         self.create_time = create_time
         # The cron expression for scheduling.
         self.crontab = crontab
-        # The description of the workflow definition.
+        # The node definition description.
         self.description = description
-        # The end time of the schedule.
+        # The end time of the task time range. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The execution policy.
         self.execution_type = execution_type
@@ -134,21 +134,21 @@ class UpdateProcessDefinitionWithScheduleResponseBodyData(DaraModel):
         self.name = name
         # The name of the project to which the workflow belongs.
         self.project_name = project_name
-        # The release state of the workflow.
+        # The online status of the workflow.
         self.release_state = release_state
-        # The start time of the schedule.
+        # The start time of the scheduling.
         self.start_time = start_time
         # The time zone ID.
         self.timezone_id = timezone_id
-        # The time when the workflow definition was updated.
+        # The update time of the workflow definition. The time is in UTC and follows the ISO 8601 standard.
         self.update_time = update_time
-        # The ID of the user who scheduled the workflow.
+        # The ID of the scheduling user.
         self.user_id = user_id
-        # The name of the user who scheduled the workflow.
+        # The name of the scheduling user.
         self.user_name = user_name
         # The version number.
         self.version = version
-        # The hash code of the version.
+        # The version hash code.
         self.version_hash_code = version_hash_code
 
     def validate(self):

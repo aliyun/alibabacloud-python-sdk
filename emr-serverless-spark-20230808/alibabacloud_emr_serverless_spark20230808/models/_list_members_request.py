@@ -11,9 +11,9 @@ class ListMembersRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The maximum number of entries to return on each page.
+        # The maximum number of records to return per request.
         self.max_results = max_results
-        # The token that marks the start of the next page of results.
+        # The pagination token that specifies the starting position for the query.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id

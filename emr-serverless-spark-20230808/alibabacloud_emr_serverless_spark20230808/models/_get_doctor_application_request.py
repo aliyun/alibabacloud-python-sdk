@@ -11,9 +11,9 @@ class GetDoctorApplicationRequest(DaraModel):
         query_time: str = None,
         region_id: str = None,
     ):
-        # The language of diagnostic information.
+        # The language of the diagnostic information.
         self.locale = locale
-        # The query time.
+        # The query date in the YYYY-MM-DD format.
         self.query_time = query_time
         # The region ID.
         self.region_id = region_id

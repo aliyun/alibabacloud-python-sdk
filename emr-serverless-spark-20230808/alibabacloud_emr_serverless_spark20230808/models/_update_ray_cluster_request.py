@@ -25,15 +25,15 @@ class UpdateRayClusterRequest(DaraModel):
         self.display_release_version = display_release_version
         # The extra parameters. The value must be in JSON format.
         self.extra_param = extra_param
-        # The Ray cluster head node information.
+        # The head node information for the Ray cluster.
         self.head_spec = head_spec
-        # The Ray cluster name. The name must be 1 to 64 characters in length.
+        # The name of the Ray cluster. The name must be 1 to 64 characters in length.
         self.name = name
-        # The network connectivity name.
+        # The network connection name.
         self.network_service_name = network_service_name
-        # The list of managed folder IDs to mount.
+        # The list of managed directory IDs to mount.
         self.volume_ids = volume_ids
-        # The Ray cluster worker node information. A maximum of 50 groups are supported.
+        # The worker node information for the Ray cluster. A maximum of 50 worker groups are supported.
         self.worker_spec = worker_spec
 
     def validate(self):
@@ -139,7 +139,7 @@ class UpdateRayClusterRequestWorkerSpec(DaraModel):
         self.max_replica = max_replica
         # The memory size. Unit: GiB.
         self.memory = memory
-        # The minimum number of workers. Minimum value: 1. The value must be less than or equal to maxReplica.
+        # The minimum number of workers. Minimum value: 1. The value must be less than or equal to the value of maxReplica.
         self.min_replica = min_replica
         # The queue name.
         self.queue_name = queue_name
@@ -255,17 +255,17 @@ class UpdateRayClusterRequestHeadSpec(DaraModel):
         self.cpu = cpu
         # The Ray DPI engine version.
         self.display_release_version = display_release_version
-        # Specifies whether to enable automatic scaling.
+        # Specifies whether to enable auto scaling.
         self.enable_auto_scaling = enable_auto_scaling
         # The environment variables.
         self.env = env
-        # The GCS Fault Tolerance configuration.
+        # The GCS fault tolerance configuration.
         self.gft_config = gft_config
-        # Specifies whether to enable GCS Fault Tolerance.
+        # Specifies whether to enable GCS fault tolerance.
         self.gft_enabled = gft_enabled
         # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The idle timeout period of workers after automatic scaling is enabled.
+        # The idle timeout period for workers after auto scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
         # The memory size. Unit: GiB.
         self.memory = memory

@@ -1,3 +1,8 @@
+2026-10-14 Version: 2.2.0
+- Support API ListQueueTopJobs.
+- Update API GetJobRun: add response parameters Body.jobRun.tokenDetails.
+
+
 2026-09-17 Version: 2.1.0
 - Support API CreateWorkspaceQueue.
 

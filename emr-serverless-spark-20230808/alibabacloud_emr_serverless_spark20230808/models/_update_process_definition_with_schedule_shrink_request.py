@@ -26,7 +26,7 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         task_relation_json_shrink: str = None,
         timeout: int = None,
     ):
-        # The email address for alerts.
+        # The alert email address.
         self.alert_email_address = alert_email_address
         # The workflow description.
         self.description = description
@@ -47,29 +47,29 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         self.publish = publish
         # The region ID.
         self.region_id = region_id
-        # The release state of the workflow.
+        # The online status of the workflow.
         self.release_state = release_state
         # The resource queue.
         self.resource_queue = resource_queue
         # The number of retries.
         self.retry_times = retry_times
-        # The user to run the workflow.
+        # The execution user.
         self.run_as = run_as
-        # The scheduling configuration.
+        # The scheduling structure.
         self.schedule_shrink = schedule_shrink
         # The tags.
         self.tags_shrink = tags_shrink
-        # A JSON array of task definitions. This array contains the descriptive information for all tasks in the workflow.
+        # The JSON array of node definitions, which contains the description information of all nodes in the workflow.
         # 
         # This parameter is required.
         self.task_definition_json_shrink = task_definition_json_shrink
-        # The degree of concurrent execution for workflow nodes.
+        # The concurrency of workflow node execution.
         self.task_parallelism = task_parallelism
-        # A JSON array that defines the dependencies between tasks in the workflow. \\`preTaskCode\\` specifies the upstream task ID, and \\`postTaskCode\\` specifies the downstream task ID. Each task must have a unique ID. For a task node without an upstream task, add a dependency and set \\`preTaskCode\\` to 0.
+        # The JSON array of node dependencies, which contains the dependencies among all nodes in the workflow. preTaskCode is the upstream node ID, and postTaskCode is the downstream node ID. Each node must have a unique ID. If a node does not have an upstream node, you must add a dependency with preTaskCode set to 0.
         # 
         # This parameter is required.
         self.task_relation_json_shrink = task_relation_json_shrink
-        # The default timeout period for the workflow execution.
+        # The default timeout for workflow execution.
         self.timeout = timeout
 
     def validate(self):

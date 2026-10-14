@@ -81,61 +81,55 @@ class GetSessionClusterResponseBodySessionCluster(DaraModel):
         self.auto_start_configuration = auto_start_configuration
         # The auto-stop configuration.
         self.auto_stop_configuration = auto_stop_configuration
+        # The token used to connect to the session cluster.
         self.connection_token = connection_token
-        # The version that is displayed in the console.
+        # The version actually displayed in the console.
         self.display_release_version = display_release_version
-        # The domain name of the Spark UI for the session.
+        # The domain to which the session Spark UI belongs.
         self.domain = domain
-        # The internal same-region endpoint.
+        # The internal domain name.
         self.domain_inner = domain_inner
-        # The ID of the developer job that is attached to the session.
+        # The ID of the development job bound to the session.
         self.draft_id = draft_id
         # The environment ID.
         self.env_id = env_id
         # The extra metadata of the session.
         self.extra = extra
-        # Specifies whether to enable acceleration using the Fusion engine.
+        # Specifies whether Fusion engine acceleration is enabled.
         self.fusion = fusion
-        # The time when the session was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The job type. This parameter is required and cannot be modified after the job is created.
-        # 
-        # - SQLSCRIPT: an SQL job.
-        # 
-        # - JAR: a JAR job.
-        # 
-        # - PYTHON: a Python job.
+        # The effective job type. This parameter is required and cannot be modified after creation. Valid values:
+        # - SQLSCRIPT: SQL job.
+        # - JAR: JAR job.
+        # - PYTHON: Python job.
         self.kind = kind
         # The session name.
         self.name = name
+        # Specifies whether the public network access endpoint is enabled.
         self.public_endpoint_enabled = public_endpoint_enabled
         # The queue name.
         self.queue_name = queue_name
         # The Serverless Spark version.
         self.release_version = release_version
-        # The session cluster ID.
+        # The interactive job session ID.
         self.session_cluster_id = session_cluster_id
-        # The time when the session started.
+        # The start time.
         self.start_time = start_time
-        # The state of the job.
-        # 
+        # The job status. Valid values:
         # - Starting: The job is starting.
-        # 
         # - Running: The job is running.
-        # 
         # - Stopping: The job is stopping.
-        # 
         # - Stopped: The job is stopped.
-        # 
-        # - Error: The job failed.
+        # - Error: The job has failed.
         self.state = state
         # The reason for the state change.
         self.state_change_reason = state_change_reason
         # The user ID.
         self.user_id = user_id
-        # The name of the user who created the session.
+        # The name of the session creator.
         self.user_name = user_name
-        # The URL of the Spark UI for the session.
+        # The URL of the session Spark UI.
         self.web_ui = web_ui
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -327,9 +321,9 @@ class GetSessionClusterResponseBodySessionClusterStateChangeReason(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # The state change code.
+        # The code for the state change.
         self.code = code
-        # The state change message.
+        # The message for the state change.
         self.message = message
 
     def validate(self):
@@ -364,13 +358,11 @@ class GetSessionClusterResponseBodySessionClusterAutoStopConfiguration(DaraModel
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
-        # Specifies whether to enable auto-stop.
-        # 
-        # - true: Auto-stop is enabled.
-        # 
-        # - false: Auto-stop is disabled.
+        # Specifies whether auto-stop is allowed. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.enable = enable
-        # The number of minutes a session can be idle before it is automatically stopped.
+        # The idle timeout in minutes after which the session is automatically stopped.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -404,11 +396,9 @@ class GetSessionClusterResponseBodySessionClusterAutoStartConfiguration(DaraMode
         self,
         enable: bool = None,
     ):
-        # Specifies whether to enable auto-start.
-        # 
-        # - true: Auto-start is enabled.
-        # 
-        # - false: Auto-start is disabled.
+        # Specifies whether auto-start is enabled. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.enable = enable
 
     def validate(self):
@@ -438,7 +428,7 @@ class GetSessionClusterResponseBodySessionClusterApplicationConfigs(DaraModel):
         config_item_key: str = None,
         config_item_value: str = None,
     ):
-        # The name of the configuration file.
+        # The configuration file name.
         self.config_file_name = config_file_name
         # The configuration key.
         self.config_item_key = config_item_key

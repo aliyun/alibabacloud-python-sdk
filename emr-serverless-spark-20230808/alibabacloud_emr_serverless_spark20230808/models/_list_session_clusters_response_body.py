@@ -16,15 +16,15 @@ class ListSessionClustersResponseBody(DaraModel):
         session_clusters: List[main_models.ListSessionClustersResponseBodySessionClusters] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned for the request.
+        # The maximum number of records returned in the current request.
         self.max_results = max_results
-        # The token that marks the start of the next page of results.
+        # The token that indicates the position of the returned data.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # A list of sessions.
+        # The list of sessions.
         self.session_clusters = session_clusters
-        # The total number of entries that match the query criteria.
+        # The total number of records that meet the current request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -107,59 +107,56 @@ class ListSessionClustersResponseBodySessionClusters(DaraModel):
         web_ui: str = None,
         workspace_id: str = None,
     ):
-        # The session configurations. These are equivalent to the configurations of the underlying Spark job.
+        # The session configurations, which are equivalent to the configurations of the underlying Spark job.
         self.application_configs = application_configs
         # The auto-start configuration.
         self.auto_start_configuration = auto_start_configuration
         # The auto-stop configuration.
         self.auto_stop_configuration = auto_stop_configuration
+        # The token used to connect to the session cluster.
         self.connection_token = connection_token
-        # The version displayed in the console.
+        # The version actually displayed in the console.
         self.display_release_version = display_release_version
-        # The public endpoint of the Thrift server.
+        # The public domain name of the Thrift server.
         self.domain = domain
-        # The internal same-region endpoint of the Thrift server.
+        # The internal domain name of the Thrift server.
         self.domain_inner = domain_inner
-        # The ID of the developer job that is attached to the session.
+        # The ID of the development job bound to the session.
         self.draft_id = draft_id
         # The extra metadata of the session.
         self.extra = extra
-        # Indicates whether acceleration by the Fusion engine is enabled.
+        # Specifies whether Fusion engine acceleration is enabled.
         self.fusion = fusion
-        # The time when the session was created.
+        # The creation time.
         self.gmt_create = gmt_create
         # The session type.
         self.kind = kind
         # The session name.
         self.name = name
+        # Specifies whether the public network access endpoint is enabled.
         self.public_endpoint_enabled = public_endpoint_enabled
-        # The name of the queue in which the session runs.
+        # The name of the queue where the session runs.
         self.queue_name = queue_name
         # The Serverless Spark version.
         self.release_version = release_version
         # The session ID.
         self.session_cluster_id = session_cluster_id
-        # The time when the session was started.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The session state.
-        # 
-        # - Starting: The session is starting.
-        # 
-        # - Running: The session is running.
-        # 
-        # - Stopping: The session is stopping.
-        # 
-        # - Stopped: The session is stopped.
-        # 
-        # - Error: The session has failed.
+        # The session status. Valid values:
+        # - Starting: Starting.
+        # - Running: Running.
+        # - Stopping: Stopping.
+        # - Stopped: Stopped.
+        # - Error: Failed.
         self.state = state
-        # The details of the last state change of the session.
+        # The details of the most recent session status change.
         self.state_change_reason = state_change_reason
         # The user ID.
         self.user_id = user_id
         # The username.
         self.user_name = user_name
-        # The URL of the Spark UI for the session.
+        # The Spark UI URL of the session.
         self.web_ui = web_ui
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -345,9 +342,9 @@ class ListSessionClustersResponseBodySessionClustersStateChangeReason(DaraModel)
         code: str = None,
         message: str = None,
     ):
-        # The state change code.
+        # The status change code.
         self.code = code
-        # The state change message.
+        # The status change message.
         self.message = message
 
     def validate(self):
@@ -382,9 +379,9 @@ class ListSessionClustersResponseBodySessionClustersAutoStopConfiguration(DaraMo
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
-        # Indicates whether auto-stop is enabled.
+        # Specifies whether auto-stop is enabled.
         self.enable = enable
-        # The number of minutes of inactivity before the session is automatically stopped.
+        # The number of idle minutes after which the session is automatically stopped.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -418,7 +415,7 @@ class ListSessionClustersResponseBodySessionClustersAutoStartConfiguration(DaraM
         self,
         enable: bool = None,
     ):
-        # Indicates whether auto-start is enabled.
+        # Specifies whether auto-start is enabled.
         self.enable = enable
 
     def validate(self):

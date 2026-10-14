@@ -51,7 +51,7 @@ class ListKyuubiServicesResponseBodyData(DaraModel):
         self,
         kyuubi_services: List[main_models.ListKyuubiServicesResponseBodyDataKyuubiServices] = None,
     ):
-        # The list of KyuubiServer instances.
+        # The list of Kyuubi servers.
         self.kyuubi_services = kyuubi_services
 
     def validate(self):
@@ -102,35 +102,35 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(DaraModel):
         state: str = None,
         web_ui: str = None,
     ):
-        # The KyuubiServer instance type.
+        # The instance specifications of the Kyuubi server.
         self.compute_instance = compute_instance
-        # The creation time.
+        # The creation time. The time is in UTC and follows the ISO 8601 standard.
         self.create_time = create_time
-        # The UID of the user who created the KyuubiServer.
+        # The UID of the creator.
         self.creator = creator
-        # The internal network endpoint.
+        # The internal domain name.
         self.inner_endpoint = inner_endpoint
-        # The KyuubiServer configurations.
+        # The Kyuubi server configurations.
         self.kyuubi_configs = kyuubi_configs
-        # The KyuubiServer version.
+        # The version of the Kyuubi server.
         self.kyuubi_release_version = kyuubi_release_version
-        # KyuubiServer ID。
+        # The KyuubiServer ID.
         self.kyuubi_service_id = kyuubi_service_id
-        # The KyuubiServer name.
+        # The name of the Kyuubi server.
         self.name = name
         # The public domain name.
         self.public_endpoint = public_endpoint
-        # The queue name.
+        # The name of the queue.
         self.queue = queue
-        # The Spark DPI engine database engine version number.
+        # The Spark DPI engine version.
         self.release_version = release_version
-        # The number of KyuubiServer replicas.
+        # The number of replicas of the Kyuubi server.
         self.replica = replica
-        # The default configurations for Spark applications started by KyuubiServer.
+        # The default configurations for the Kyuubi server to start a Spark application.
         self.spark_configs = spark_configs
-        # The most recent start time of KyuubiServer.
+        # The most recent start time of the Kyuubi server. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The KyuubiServer status.
+        # The state of the Kyuubi server.
         self.state = state
         # The WebUI of the Kyuubi Gateway.
         self.web_ui = web_ui

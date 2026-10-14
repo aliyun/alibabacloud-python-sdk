@@ -18,17 +18,17 @@ class CreateProcessDefinitionWithScheduleResponseBody(DaraModel):
     ):
         # The API return code.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
         # Indicates whether the request failed.
         self.failed = failed
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # A detailed message for the return code.
+        # The detailed description corresponding to the request code.
         self.msg = msg
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -95,9 +95,9 @@ class CreateProcessDefinitionWithScheduleResponseBodyData(DaraModel):
         code: int = None,
         id: int = None,
     ):
-        # The ID of the workflow definition.
+        # The workflow definition ID.
         self.code = code
-        # The serial number of the workflow definition.
+        # The workflow definition number.
         self.id = id
 
     def validate(self):

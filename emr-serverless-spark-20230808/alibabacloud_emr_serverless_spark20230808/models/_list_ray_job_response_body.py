@@ -14,7 +14,7 @@ class ListRayJobResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of Ray Jobs.
+        # The list of Ray jobs.
         self.ray_jobs = ray_jobs
         # The request ID.
         self.request_id = request_id
@@ -78,40 +78,40 @@ class ListRayJobResponseBodyRayJobs(DaraModel):
         submit_time: int = None,
     ):
         # The status of the corresponding Ray cluster. Valid values:
-        # - Deleted: deleted.
-        # - Submitted: submitted but not yet being created.
-        # - Pending: being created.
-        # - Running: running.
+        # - Deleted: The cluster is deleted.
+        # - Submitted: The cluster is submitted but not yet created.
+        # - Pending: The cluster is being created.
+        # - Running: The cluster is running.
         self.cluster_state = cluster_state
         # The nickname of the creator.
         self.creator_name = creator_name
-        # The number of compute units (CUs) consumed during the job execution cycle. This value is an estimate. The actual value is subject to the bill.
+        # The number of compute units (CUs) consumed during the job runtime. This value is an estimate. The actual value is subject to the bill.
         self.cu_hours = cu_hours
-        # The URL of the Ray cluster dashboard. When the Ray cluster is in the Running state, the URL points to the Runtime UI. After the cluster is in the Deleted state, the URL points to the History UI. The History UI is supported only in err-1.2.0 and later versions.
+        # The URL of the Ray cluster dashboard. If the Ray cluster is in the Running state, the URL points to the Runtime UI. If the cluster is in the Deleted state, the URL points to the History UI. The History UI is supported only in err-1.2.0 and later.
         self.dashboard_url = dashboard_url
-        # The execution duration of the job. Unit: seconds.
+        # The execution duration of the job, in seconds.
         self.duration = duration
-        # The time when the job ended.
+        # The time when the job ended. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The name of the Ray Job.
+        # The name of the Ray job.
         self.name = name
-        # The Ray DPI engine version.
+        # The Ray engine version.
         self.resource_queue = resource_queue
-        # The time when the job was started.
+        # The time when the job was started. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The job status. Valid values:
-        # - Submitted: submitted.
-        # - Pending: the cluster is being created.
-        # - Running: the job is running.
-        # - Succeeded: the job succeeded.
-        # - Failed: the job failed.
-        # - Cancelling: the job is being canceled.
-        # - Cancelled: the job is canceled.
-        # - Timeout: the job timed out and was canceled.
+        # The status of the job. Valid values:
+        # - Submitted: The job is submitted.
+        # - Pending: The cluster is being created.
+        # - Running: The job is running.
+        # - Succeeded: The job succeeded.
+        # - Failed: The job failed.
+        # - Cancelling: The job is being cancelled.
+        # - Cancelled: The job is cancelled.
+        # - Timeout: The job is cancelled due to a timeout.
         self.status = status
-        # The ID of the Ray Job.
+        # The ID of the Ray job.
         self.submission_id = submission_id
-        # The time when the job was submitted.
+        # The time when the job was submitted. The value is a UNIX timestamp in milliseconds.
         self.submit_time = submit_time
 
     def validate(self):

@@ -13,9 +13,9 @@ class GetLivyComputeResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code. A value of 1000000 indicates a successful request. Other values indicate a failed request. Check the message parameter for the error details.
+        # The return code of the request. The value 1000000 indicates that the request succeeded. Other values indicate that the request failed. For details about the error, see the message field.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
         # The error message.
         self.message = message
@@ -94,49 +94,52 @@ class GetLivyComputeResponseBodyData(DaraModel):
         self.auto_stop_configuration = auto_stop_configuration
         # The ID of the Livy Gateway.
         self.compute_id = compute_id
-        # The number of CPU cores for the Livy server.
+        # The number of CPU cores for the Livy Server. Valid values:
+        # - 1
+        # - 2
+        # - 4
         self.cpu_limit = cpu_limit
         # The name of the creator.
         self.created_by = created_by
-        # The version number of the Spark engine.
+        # The Spark DPI engine version number.
         self.display_release_version = display_release_version
-        # The status of the public endpoint switch.
+        # The status of the public network address switch.
         self.enable_public = enable_public
-        # The public endpoint.
+        # The public network connection address.
         self.endpoint = endpoint
-        # The internal endpoint.
+        # The internal network connection address.
         self.endpoint_inner = endpoint_inner
-        # The ID of the runtime environment.
+        # The runtime environment ID.
         self.environment_id = environment_id
-        # Indicates whether the fusion switch is enabled.
+        # Specifies whether the fusion feature is enabled.
         self.fusion = fusion
         # The creation time.
         self.gmt_create = gmt_create
         # The Livy Gateway configuration in JSON format. The following files are supported:
         # 
         # - sparkDefaultsConf
-        # 
         # - sparkBlackListConf
-        # 
         # - livyConf
-        # 
         # - livyClientConf
         self.livy_server_conf = livy_server_conf
         # The Livy version.
         self.livy_version = livy_version
-        # The memory size of the Livy server.
+        # The memory size of the Livy Server. Valid values:
+        # - 4Gi
+        # - 8Gi
+        # - 16Gi
         self.memory_limit = memory_limit
         # The name.
         self.name = name
-        # The name of the network connection.
+        # The network connectivity name.
         self.network_name = network_name
         # The queue name.
         self.queue_name = queue_name
         # The ID of the creator.
         self.ram_user_id = ram_user_id
-        # The version number of the Spark engine. This parameter is deprecated. Use displayReleaseVersion instead.
+        # The Spark DPI engine version number. This field is deprecated. Use displayReleaseVersion instead.
         self.release_version = release_version
-        # The start time.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The running status.
         self.status = status
@@ -295,13 +298,11 @@ class GetLivyComputeResponseBodyDataAutoStopConfiguration(DaraModel):
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
-        # Indicates whether to automatically start the gateway after it is created.
-        # 
+        # Specifies whether to automatically start after creation. Valid values:
         # - true: Yes.
-        # 
         # - false: No.
         self.enable = enable
-        # The number of minutes after which the Livy Gateway is automatically stopped if it is idle.
+        # The number of idle minutes after which the Livy Gateway automatically stops.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):

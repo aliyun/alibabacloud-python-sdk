@@ -32,32 +32,33 @@ class ListJobRunsRequest(DaraModel):
         self.application_configs = application_configs
         # The UID of the user who created the job.
         self.creator = creator
-        # The end time range of the job.
+        # The time range for the end time of the job run.
         self.end_time = end_time
+        # Specifies whether to aggregate and return statistical results by job run state.
         self.group_by_state = group_by_state
-        # Specifies whether the job is a workflow job.
+        # Specifies whether the job run is a workflow job.
         self.is_workflow = is_workflow
-        # The job ID of the streaming job deployment.
+        # The ID of the streaming job deployment.
         self.job_run_deployment_id = job_run_deployment_id
-        # The job ID.
+        # The ID of the job run.
         self.job_run_id = job_run_id
-        # The maximum number of records to retrieve in a single request. Maximum value: 100.
+        # The maximum number of entries to return in a single call. The maximum value is 100.
         self.max_results = max_results
-        # The minimum execution duration of the job, in milliseconds.
+        # The minimum execution duration of the job run, in milliseconds.
         self.min_duration = min_duration
-        # The job name.
+        # The name of the job.
         self.name = name
-        # The pagination token that marks the position from which to start reading.
+        # The pagination token that specifies the starting position for the query.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
-        # The name of the resource queue on which the Spark job runs.
+        # The name of the resource queue in which the Spark job runs.
         self.resource_queue_id = resource_queue_id
         # The runtime configurations.
         self.runtime_configs = runtime_configs
-        # The start time range of the job.
+        # The time range for the start time of the job run.
         self.start_time = start_time
-        # The job states.
+        # The states of the job runs.
         self.states = states
         # The list of tags.
         self.tags = tags
@@ -235,9 +236,9 @@ class ListJobRunsRequestStartTime(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end of the start time range.
+        # The end time of the time range. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The beginning of the start time range.
+        # The start time of the time range. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -272,9 +273,9 @@ class ListJobRunsRequestEndTime(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end of the end time range.
+        # The end time of the time range. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The beginning of the end time range.
+        # The start time of the time range. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListSessionClustersRequest(DaraModel):
     ):
         # The session type.
         self.kind = kind
-        # The maximum number of records to return.
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
-        # The token that marks the start of the next page of results.
+        # The token that indicates the position from which to start reading.
         self.next_token = next_token
         # The queue name.
         self.queue_name = queue_name
         # The region ID.
         self.region_id = region_id
-        # The name of the job.
+        # The job name.
         self.session_cluster_id = session_cluster_id
 
     def validate(self):

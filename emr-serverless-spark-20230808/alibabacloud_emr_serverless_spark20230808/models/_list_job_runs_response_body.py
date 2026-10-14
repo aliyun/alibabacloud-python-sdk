@@ -17,16 +17,17 @@ class ListJobRunsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The statistical results aggregated by job state.
         self.aggregations = aggregations
-        # The list of Spark jobs.
+        # The list of Spark job runs.
         self.job_runs = job_runs
-        # The maximum number of records returned in this request.
+        # The maximum number of records returned for the request.
         self.max_results = max_results
-        # The position from which the data was read.
+        # The position of the data read.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of records that match the request conditions.
+        # The total number of records that meet the request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -114,7 +115,7 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         web_ui: str = None,
         workspace_id: str = None,
     ):
-        # The job code type. Valid values:
+        # The code type of the job. Valid values:
         # 
         # SQL
         # 
@@ -122,47 +123,49 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         # 
         # PYTHON.
         self.code_type = code_type
-        # The Spark advanced configurations. This parameter is not returned by the List operation.
+        # The advanced Spark configurations. This parameter is not returned by the List operation.
         self.configuration_overrides = configuration_overrides
         # The UID of the user who created the job.
         self.creator = creator
-        # The number of compute units (CUs) consumed during the job run cycle. This value is an estimate. The actual value is subject to the bill.
+        # The number of compute units (CUs) consumed during the job run. This value is an estimate and the final value is subject to the bill.
         self.cu_hours = cu_hours
-        # The version of the Spark DPI engine used to run the job.
+        # The Spark DPI engine version of the running job.
         self.display_release_version = display_release_version
-        # The job end time.
+        # The time when the job ended. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The execution timeout period, in seconds.
+        # The execution timeout period.
         self.execution_timeout_seconds = execution_timeout_seconds
-        # Indicates whether the Fusion engine acceleration is enabled.
+        # Specifies whether Fusion engine acceleration is enabled.
         self.fusion = fusion
-        # The Spark Driver information. This parameter is not returned by the List operation.
+        # The information about the Spark driver. This parameter is not returned by the List operation.
         self.job_driver = job_driver
-        # The job ID.
+        # The ID of the job run.
         self.job_run_id = job_run_id
-        # The path of the run log.
+        # The path to the execution log.
         self.log = log
-        # The total amount of allocated memory multiplied by the number of seconds the job has been running.
+        # The total amount of memory allocated to the job multiplied by the number of seconds the job has run.
         self.mb_seconds = mb_seconds
-        # The job name.
+        # The name of the job.
         self.name = name
+        # The priority of the Spark job.
         self.priority = priority
-        # The version of the Spark DPI engine used to run the job.
+        # The Spark DPI engine version of the running job.
         self.release_version = release_version
+        # The name of the resource queue in which the Spark job runs.
         self.resource_queue_id = resource_queue_id
-        # The job states.
+        # The states of the job runs.
         self.state = state
         # The reason for the state change.
         self.state_change_reason = state_change_reason
-        # The job submission time.
+        # The time when the job was submitted. The value is a UNIX timestamp in milliseconds.
         self.submit_time = submit_time
         # The tags.
         self.tags = tags
-        # The total number of allocated vcores multiplied by the number of seconds the job has been running.
+        # The total number of vcores allocated to the job multiplied by the number of seconds the job has run.
         self.vcore_seconds = vcore_seconds
-        # The job Web UI.
+        # The web UI of the job.
         self.web_ui = web_ui
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

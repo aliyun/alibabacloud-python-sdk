@@ -20,22 +20,29 @@ class ListKyuubiSparkApplicationsShrinkRequest(DaraModel):
         start_time_shrink: str = None,
         states: str = None,
     ):
-        # The ID of the Spark application submitted by Kyuubi, used for searching.
+        # The ID of the Spark application submitted by Kyuubi, used for search.
         self.application_id = application_id
-        # The name of the Spark application submitted by Kyuubi, used for searching.
+        # The name of the Spark application submitted by Kyuubi, used for search.
         self.application_name = application_name
+        # The end time range of the task.
         self.end_time_shrink = end_time_shrink
+        # The list of statuses of the latest SQL statement used for filtering.
         self.latest_sql_statement_statuses = latest_sql_statement_statuses
-        # The maximum number of records to return.
+        # The maximum number of records to retrieve at a time.
         self.max_results = max_results
+        # The minimum execution duration of the application, in milliseconds.
         self.min_duration = min_duration
-        # The token to retrieve the next page of results.
+        # The token for the next page.
         self.next_token = next_token
+        # The list of sort fields.
         self.order_by_shrink = order_by_shrink
+        # The resource queue ID used to filter Spark applications.
         self.resource_queue_id = resource_queue_id
+        # The sort order. A value of asc indicates ascending order, and desc indicates descending order.
         self.sort = sort
-        # The time range when the task started.
+        # The start time range of the task.
         self.start_time_shrink = start_time_shrink
+        # The list of Spark application states used for filtering.
         self.states = states
 
     def validate(self):

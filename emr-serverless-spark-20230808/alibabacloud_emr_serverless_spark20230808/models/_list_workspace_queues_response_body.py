@@ -16,7 +16,7 @@ class ListWorkspaceQueuesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records returned per request.
+        # The maximum number of records to return per request.
         self.max_results = max_results
         # The token for the next page.
         self.next_token = next_token
@@ -104,34 +104,36 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         used_resource: str = None,
         workspace_id: str = None,
     ):
-        # The list of allowed actions on the queue.
+        # The list of allowed operations for the queue.
         self.allow_actions = allow_actions
-        # The time when the workspace was created.
+        # The time when the workspace was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The UID of the user who created the queue.
+        # The UID of the creator.
         self.creator = creator
         # The description.
         self.description = description
-        # The list of queue environment types.
+        # The list of environment types for the queue.
         self.environments = environments
+        # The number of GPU machines.
         self.gpu_machine_num = gpu_machine_num
-        # The list of GPU models.
+        # The list of GPU instance types.
         self.gpu_spec = gpu_spec
+        # The ID of the resource instance associated with the queue.
         self.instance_id = instance_id
         # The maximum resource capacity of the queue.
         self.max_resource = max_resource
         # The minimum resource capacity of the queue.
         self.min_resource = min_resource
-        # The billing type. Valid values:
+        # The billing method. Valid values:
         # 
-        # - PayAsYouGo: pay-as-you-go.
-        # - Pre: subscription.
+        # - PayAsYouGo: pay-as-you-go
+        # - Pre: subscription
         self.payment_type = payment_type
-        # Indicates whether resource prefetch is enabled.
+        # Specifies whether resource prefetching is performed.
         self.preheat = preheat
         # The queue label.
         self.properties = properties
-        # The queue category, CPU or GPU.
+        # The queue category, such as CPU or GPU.
         self.queue_category = queue_category
         # The queue name.
         self.queue_name = queue_name
@@ -308,13 +310,13 @@ class ListWorkspaceQueuesResponseBodyQueuesAllowActions(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
-        # The action ARN.
+        # The ARN of the action.
         self.action_arn = action_arn
         # The permission name.
         self.action_name = action_name
-        # The list of action dependencies.
+        # The list of dependencies for the action.
         self.dependencies = dependencies
-        # The action description.
+        # The description of the action.
         self.description = description
         # The display name of the permission.
         self.display_name = display_name

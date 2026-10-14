@@ -49,7 +49,7 @@ class CreateSqlStatementResponseBodyData(DaraModel):
         self,
         statement_id: str = None,
     ):
-        # The ID of the interactive query.
+        # The interactive query ID.
         self.statement_id = statement_id
 
     def validate(self):

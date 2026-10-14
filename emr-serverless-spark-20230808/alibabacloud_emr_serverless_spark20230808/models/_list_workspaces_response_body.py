@@ -16,9 +16,9 @@ class ListWorkspacesResponseBody(DaraModel):
         total_count: int = None,
         workspaces: List[main_models.ListWorkspacesResponseBodyWorkspaces] = None,
     ):
-        # The maximum number of records to retrieve in a single request.
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
-        # The token for the next page.
+        # The next token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -109,52 +109,57 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # Indicates whether auto-renewal is enabled. This parameter is required for the prepaid type.
+        # Specifies whether to enable auto-renewal. This parameter is required for subscription resources.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. This parameter is required for the prepaid type.
+        # The auto-renewal duration. This parameter is required for subscription resources.
         self.auto_renew_period = auto_renew_period
-        # The auto-renewal epoch unit. This parameter is required for the prepaid type.
+        # The auto-renewal epoch. This parameter is required for subscription resources.
         self.auto_renew_period_unit = auto_renew_period_unit
-        # The time when the workspace was created.
+        # The time when the workspace was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The DLF Catalog information.
+        # The DLF catalog information.
         self.dlf_catalog_id = dlf_catalog_id
-        # The DLF binding type.
+        # The type of the associated DLF.
         self.dlf_type = dlf_type
-        # The subscription period quantity. This parameter is required for the prepaid type.
+        # The duration of the subscription. This parameter is required for subscription resources.
         self.duration = duration
-        # The time when the workspace was released.
+        # The time when the workspace was released. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The failure reason.
+        # The reason for the failure.
         self.fail_reason = fail_reason
+        # The list of GPU models.
         self.gpu_spec = gpu_spec
+        # The IP whitelist of the workspace.
         self.ip_white_list = ip_white_list
-        # The subscription period unit. This parameter is required for the prepaid type.
+        # The unit of the subscription period. This parameter is required for subscription resources.
         self.payment_duration_unit = payment_duration_unit
         # The payment status.
         self.payment_status = payment_status
-        # The payment type.
+        # The billing method.
         self.payment_type = payment_type
-        # The prepaid resource quota information.
+        # The information about the subscription resource quota.
         self.pre_paid_quota = pre_paid_quota
+        # The list of GPU subscription quotas.
         self.pre_paid_quota_gpu = pre_paid_quota_gpu
         # The region ID.
         self.region_id = region_id
         # The reason why the workspace was released.
         self.release_type = release_type
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The resource specification.
         self.resource_spec = resource_spec
-        # The state change information of the workspace.
+        # The information about the workspace status change.
         self.state_change_reason = state_change_reason
         # The OSS path.
         self.storage = storage
+        # The list of workspace tags.
         self.tags = tags
-        # Workspace ID。
+        # The workspace ID.
         self.workspace_id = workspace_id
-        # The workspace name.
+        # The name of the workspace.
         self.workspace_name = workspace_name
-        # The workspace status.
+        # The status of the workspace.
         self.workspace_status = workspace_status
 
     def validate(self):
@@ -356,7 +361,9 @@ class ListWorkspacesResponseBodyWorkspacesTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -441,20 +448,35 @@ class ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu(DaraModel):
         order_id: str = None,
         payment_status: str = None,
     ):
+        # Specifies whether auto-renewal is enabled.
         self.auto_renewal = auto_renewal
+        # The number of CPU cores.
         self.cpu_core_count = cpu_core_count
+        # The time when the GPU subscription quota was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The expiration time of the GPU subscription quota. The value is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
+        # The number of GPUs.
         self.gpu_amount = gpu_amount
+        # The number of GPU machines.
         self.gpu_machine_num = gpu_machine_num
+        # The GPU memory size.
         self.gpu_memory_size = gpu_memory_size
+        # The number of GPUs.
         self.gpu_num = gpu_num
+        # The GPU model.
         self.gpu_spec = gpu_spec
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance family.
         self.instance_type_family = instance_type_family
+        # The instance type ID.
         self.instance_type_id = instance_type_id
+        # The memory size.
         self.memory_size = memory_size
+        # The order ID.
         self.order_id = order_id
+        # The order status.
         self.payment_status = payment_status
 
     def validate(self):
@@ -576,23 +598,23 @@ class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(DaraModel):
     ):
         # The amount of resources currently allocated.
         self.allocated_resource = allocated_resource
-        # Indicates whether auto-renewal is enabled for the resource. Valid values:
-        # 
+        # Specifies whether auto-renewal is enabled for the resource. Valid values:
         # - true: Auto-renewal is enabled. The resource is automatically renewed upon expiration.
-        # - false: Auto-renewal is not enabled. The resource stops being available upon expiration.
+        # - false: Auto-renewal is disabled. The resource is stopped upon expiration.
         self.auto_renewal = auto_renewal
-        # The time when the resource quota was created.
+        # The time when the resource quota was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The time when the resource quota expires.
+        # The expiration time of the resource quota. The value is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
         # The instance ID of the resource associated with the quota.
         self.instance_id = instance_id
-        # The maximum amount of resources available.
+        # The maximum amount of resources that can be used.
         self.max_resource = max_resource
+        # The order ID.
         self.order_id = order_id
         # The payment status of the current resource. Valid values:
-        # - NORMAL: Active.
-        # - WAIT_FOR_EXPIRE: About to expire.
+        # - NORMAL: Valid.
+        # - WAIT_FOR_EXPIRE: Expiring.
         # - EXPIRED: Expired.
         self.payment_status = payment_status
         # The amount of resources currently used.

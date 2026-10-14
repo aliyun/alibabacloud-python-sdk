@@ -11,7 +11,7 @@ class GetKyuubiServiceResponseBody(DaraModel):
         data: main_models.GetKyuubiServiceResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The returned result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -64,37 +64,37 @@ class GetKyuubiServiceResponseBodyData(DaraModel):
         start_time: str = None,
         state: str = None,
     ):
-        # The specifications of the Kyuubi service.
+        # The Kyuubi service specifications.
         self.compute_instance = compute_instance
-        # The timestamp when the service was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The UID of the creator.
         self.creator = creator
-        # The internal same-region endpoint.
+        # The internal network domain name.
         self.inner_endpoint = inner_endpoint
-        # The configuration of the Kyuubi service.
+        # The Kyuubi service configuration.
         self.kyuubi_configs = kyuubi_configs
-        # The Kyuubi service engine version.
+        # The Kyuubi service DPI engine version.
         self.kyuubi_release_version = kyuubi_release_version
-        # The ID of the Kyuubi service.
+        # Kyuubi Service ID。
         self.kyuubi_service_id = kyuubi_service_id
-        # The name of the Kyuubi service.
+        # The Kyuubi service name.
         self.name = name
         # The public domain name.
         self.public_endpoint = public_endpoint
-        # Indicates whether public network access is enabled.
+        # Specifies whether public network access is enabled.
         self.public_endpoint_enabled = public_endpoint_enabled
-        # The name of the queue.
+        # The queue name.
         self.queue = queue
-        # The Spark engine version.
+        # The Spark DPI engine version.
         self.release_version = release_version
-        # The number of high-availability (HA) replicas.
+        # The number of replicas enabled for high availability.
         self.replica = replica
         # The Spark configuration.
         self.spark_configs = spark_configs
-        # The timestamp when the service was started.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The state of the Kyuubi service.
+        # The Kyuubi service status.
         self.state = state
 
     def validate(self):

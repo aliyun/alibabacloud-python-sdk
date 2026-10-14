@@ -23,22 +23,29 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
         start_time: main_models.ListKyuubiSparkApplicationsRequestStartTime = None,
         states: str = None,
     ):
-        # The ID of the Spark application submitted by Kyuubi, used for searching.
+        # The ID of the Spark application submitted by Kyuubi, used for search.
         self.application_id = application_id
-        # The name of the Spark application submitted by Kyuubi, used for searching.
+        # The name of the Spark application submitted by Kyuubi, used for search.
         self.application_name = application_name
+        # The end time range of the task.
         self.end_time = end_time
+        # The list of statuses of the latest SQL statement used for filtering.
         self.latest_sql_statement_statuses = latest_sql_statement_statuses
-        # The maximum number of records to return.
+        # The maximum number of records to retrieve at a time.
         self.max_results = max_results
+        # The minimum execution duration of the application, in milliseconds.
         self.min_duration = min_duration
-        # The token to retrieve the next page of results.
+        # The token for the next page.
         self.next_token = next_token
+        # The list of sort fields.
         self.order_by = order_by
+        # The resource queue ID used to filter Spark applications.
         self.resource_queue_id = resource_queue_id
+        # The sort order. A value of asc indicates ascending order, and desc indicates descending order.
         self.sort = sort
-        # The time range when the task started.
+        # The start time range of the task.
         self.start_time = start_time
+        # The list of Spark application states used for filtering.
         self.states = states
 
     def validate(self):
@@ -138,9 +145,9 @@ class ListKyuubiSparkApplicationsRequestStartTime(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end of the time range.
+        # The end point of the task start time range. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The start of the time range.
+        # The start point of the task start time range. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -175,7 +182,9 @@ class ListKyuubiSparkApplicationsRequestEndTime(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # The end point of the task end time range. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
+        # The start point of the task end time range. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

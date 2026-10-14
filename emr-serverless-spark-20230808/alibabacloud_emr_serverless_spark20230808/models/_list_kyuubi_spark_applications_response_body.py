@@ -16,11 +16,11 @@ class ListKyuubiSparkApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of application details.
+        # The list of application details.
         self.applications = applications
-        # The maximum number of records returned.
+        # The maximum number of records to retrieve at a time.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The token for the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -103,33 +103,34 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
         self.application_id = application_id
         # The name of the Spark application submitted by Kyuubi.
         self.application_name = application_name
-        # The number of CUs consumed during the task lifecycle. This is an estimated value. The final amount is subject to your bill.
+        # The number of compute units (CUs) consumed during the task execution. This value is an estimate. The actual value is subject to the bill.
         self.cu_hours = cu_hours
-        # The time when the task ended.
+        # The end time of the task. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # The exit code.
+        # The exit reason of the application.
         self.exit_reason = exit_reason
+        # The ID of the Kyuubi service that submitted the Spark application.
         self.kyuubi_service_id = kyuubi_service_id
-        # The status of the last task execution in the session.
+        # The execution status of the latest SQL statement in the application.
         self.latest_sql_statement_status = latest_sql_statement_status
-        # The total memory allocated to the task in MB, multiplied by the number of seconds the task ran.
+        # The total memory allocated to the task multiplied by the task execution duration in seconds.
         self.mb_seconds = mb_seconds
+        # The priority of the Spark application.
         self.priority = priority
-        # The name of the resource queue where the Spark task runs.
+        # The name of the resource queue in which the Spark task runs.
         self.resource_queue_id = resource_queue_id
+        # The application log.
         self.run_log = run_log
-        # The time when the task started.
+        # The start time of the task. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The status of the Spark application.
-        # 
+        # The state of the Spark application. Valid values:
         # - STARTING: The application is starting.
-        # 
         # - RUNNING: The application is running.
-        # 
         # - TERMINATED: The application is terminated.
         self.state = state
+        # The list of tags for the Spark application.
         self.tags = tags
-        # The total vCores allocated to the task, multiplied by the number of seconds the task ran.
+        # The total number of vcores allocated to the task multiplied by the task execution duration in seconds.
         self.vcore_seconds = vcore_seconds
         # The URL of the Spark application UI.
         self.web_ui = web_ui

@@ -12,7 +12,7 @@ class UpdateWorkspaceResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # The order ID.
         self.order_id = order_id

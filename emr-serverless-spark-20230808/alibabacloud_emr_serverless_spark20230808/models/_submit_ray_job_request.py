@@ -32,25 +32,25 @@ class SubmitRayJobRequest(DaraModel):
         worker_spec: List[main_models.SubmitRayJobRequestWorkerSpec] = None,
         working_dir: str = None,
     ):
-        # The timeout period of the job, which includes the cluster creation time and job runtime. The job is canceled if this period is exceeded.
+        # The job timeout period, which includes the cluster creation and job execution time. The job is canceled if it exceeds this period.
         self.active_deadline_seconds = active_deadline_seconds
-        # The ID of an existing Ray cluster to which the job is submitted.
+        # The ID of the existing Ray cluster.
         self.cluster_id = cluster_id
-        # The Ray DPI engine version number.
+        # The Ray DPI engine database engine version number.
         self.display_release_version = display_release_version
-        # The startup command.
+        # The entrypoint command.
         self.entrypoint = entrypoint
-        # The memory size requested by the entrypoint task.
+        # The memory size requested by the entrypoint job.
         self.entrypoint_memory = entrypoint_memory
-        # The number of CPUs requested by the entrypoint task.
+        # The number of CPUs requested by the entrypoint job.
         self.entrypoint_num_cpus = entrypoint_num_cpus
-        # The number of GPUs requested by the entrypoint task.
+        # The number of GPUs requested by the entrypoint job.
         self.entrypoint_num_gpus = entrypoint_num_gpus
-        # The custom resource request JSON string for the entrypoint task.
+        # The custom resource request JSON string for the entrypoint job.
         self.entrypoint_resources = entrypoint_resources
-        # The extra parameters in a JSON string.
+        # The JSON string for additional parameters.
         self.extra_param = extra_param
-        # The Ray cluster head node parameters.
+        # The parameters of the Ray cluster head node.
         self.head_spec = head_spec
         # The job metadata JSON string.
         self.metadata_json = metadata_json
@@ -66,13 +66,13 @@ class SubmitRayJobRequest(DaraModel):
         self.submission_mode = submission_mode
         # The tags.
         self.tags = tags
-        # The number of seconds to wait before destroying the cluster. This parameter takes effect only when shutdownAfterJobFinishes is set to true.
+        # The wait time in seconds before the cluster is destroyed. This parameter takes effect only when shutdownAfterJobFinishes is set to true.
         self.ttl_seconds_after_finished = ttl_seconds_after_finished
         # The list of mounted volume IDs.
         self.volume_ids = volume_ids
-        # The parameters of the worker nodes in the Ray cluster.
+        # The Ray cluster worker node parameters.
         self.worker_spec = worker_spec
-        # The URL of the job code working directory.
+        # The URL of the working directory for the job code.
         self.working_dir = working_dir
 
     def validate(self):
@@ -251,17 +251,17 @@ class SubmitRayJobRequestWorkerSpec(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The database engine version.
+        # The DPI engine version.
         self.display_release_version = display_release_version
         # The GPU instance type.
         self.gpu_spec = gpu_spec
         # The worker group name.
         self.group_name = group_name
-        # The maximum number of workers after automatic scaling is enabled.
+        # The maximum number of workers when automatic scaling is enabled.
         self.max_replica = max_replica
-        # The memory size. Unit: GiB.
+        # The memory size, in Gi.
         self.memory = memory
-        # The minimum number of workers after automatic scaling is enabled.
+        # The minimum number of workers when automatic scaling is enabled.
         self.min_replica = min_replica
         # The queue name.
         self.queue_name = queue_name
@@ -394,15 +394,15 @@ class SubmitRayJobRequestHeadSpec(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The Ray DPI engine version.
+        # The Ray DPI engine database engine version.
         self.display_release_version = display_release_version
-        # Specifies whether to enable automatic scaling for workers.
+        # Specifies whether to enable auto-scaling for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
         # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The worker idle timeout period after automatic scaling is enabled.
+        # The idle time for worker nodes after auto-scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
-        # The memory size. Unit: GiB.
+        # The memory size, in Gi.
         self.memory = memory
         # The queue name.
         self.queue_name = queue_name

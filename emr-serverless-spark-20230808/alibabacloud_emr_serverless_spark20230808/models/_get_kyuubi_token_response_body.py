@@ -13,7 +13,7 @@ class GetKyuubiTokenResponseBody(DaraModel):
         data: main_models.GetKyuubiTokenResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,24 +60,24 @@ class GetKyuubiTokenResponseBodyData(DaraModel):
         token: str = None,
         token_id: str = None,
     ):
-        # The automatic expiration configuration.
+        # The auto-expiration configuration struct.
         self.auto_expire_configuration = auto_expire_configuration
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The creator name.
+        # The name of the creator.
         self.created_by = created_by
-        # The expiration time.
+        # The expiration time. The value is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
-        # The last used time.
+        # The last used time. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
-        # The Alibaba Cloud Resource Names (ARNs) of the authorized users.
+        # The list of authorized user ARNs.
         self.member_arns = member_arns
         # The token name.
         self.name = name
         self.spark_role = spark_role
         # The masked token.
         self.token = token
-        # The token ID.
+        # Token ID。
         self.token_id = token_id
 
     def validate(self):
@@ -162,9 +162,9 @@ class GetKyuubiTokenResponseBodyDataAutoExpireConfiguration(DaraModel):
         enable: bool = None,
         expire_days: int = None,
     ):
-        # Indicates whether the token automatically expires.
+        # Specifies whether auto-expiration is enabled.
         self.enable = enable
-        # The expiration period, in days.
+        # The expiration period in days.
         self.expire_days = expire_days
 
     def validate(self):

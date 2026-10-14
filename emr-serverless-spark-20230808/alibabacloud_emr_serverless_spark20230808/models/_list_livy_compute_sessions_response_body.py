@@ -80,15 +80,15 @@ class ListLivyComputeSessionsResponseBodySessions(DaraModel):
     ):
         # The ID of the Livy Gateway.
         self.compute_id = compute_id
-        # The time when the session was created. This is a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The number of compute units (CUs) consumed during the task execution. This is an estimated value. The actual value is subject to the bill.
+        # The number of compute units (CUs) consumed during the job runtime. This value is an estimate. The actual value is subject to the bill.
         self.cu_hours = cu_hours
-        # The time when the session ended. This is a UNIX timestamp in milliseconds.
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The runtime information.
         self.info = info
-        # The total amount of memory in MB allocated to the task multiplied by the number of seconds the task has been running.
+        # The total amount of memory allocated to the job multiplied by the number of seconds the job has run.
         self.mb_seconds = mb_seconds
         # The session name.
         self.name = name
@@ -98,21 +98,16 @@ class ListLivyComputeSessionsResponseBodySessions(DaraModel):
         self.session_id = session_id
         # The Spark job configuration.
         self.spark_conf = spark_conf
-        # The session state.
-        # 
-        # - starting: The session is starting.
-        # 
-        # - running: The session is running.
-        # 
-        # - terminating: The session is being terminated.
-        # 
-        # - terminated: The session is terminated.
-        # 
-        # - error: The session failed.
+        # The session status. Valid values:
+        # - starting: Starting.
+        # - running: Running.
+        # - terminating: Terminating.
+        # - terminated: Terminated.
+        # - error: Error.
         self.state = state
-        # The total number of vCores allocated to the task multiplied by the number of seconds the task has been running.
+        # The total number of vcores allocated to the job multiplied by the number of seconds the job has run.
         self.vcore_seconds = vcore_seconds
-        # The web UI URL of the session.
+        # The web UI address of the session.
         self.web_ui = web_ui
 
     def validate(self):

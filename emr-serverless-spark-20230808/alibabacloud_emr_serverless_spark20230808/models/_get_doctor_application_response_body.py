@@ -12,7 +12,7 @@ class GetDoctorApplicationResponseBody(DaraModel):
         self,
         data: main_models.GetDoctorApplicationResponseBodyData = None,
     ):
-        # The data returned.
+        # The returned result.
         self.data = data
 
     def validate(self):
@@ -42,7 +42,7 @@ class GetDoctorApplicationResponseBodyData(DaraModel):
         self,
         suggestions: List[str] = None,
     ):
-        # The diagnostics list.
+        # The list of diagnostic information.
         self.suggestions = suggestions
 
     def validate(self):

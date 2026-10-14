@@ -69,11 +69,12 @@ class GetJobRunResponseBodyJobRun(DaraModel):
         state_change_reason: main_models.GetJobRunResponseBodyJobRunStateChangeReason = None,
         submit_time: int = None,
         tags: List[main_models.Tag] = None,
+        token_details: List[main_models.GetJobRunResponseBodyJobRunTokenDetails] = None,
         total_tokens: int = None,
         web_ui: str = None,
         workspace_id: str = None,
     ):
-        # The code type of the job. Valid values:
+        # The job code type. Valid values:
         # 
         # - SQL
         # 
@@ -85,13 +86,13 @@ class GetJobRunResponseBodyJobRun(DaraModel):
         self.configuration_overrides = configuration_overrides
         # The version displayed in the console.
         self.display_release_version = display_release_version
-        # The time when the job ended.
+        # The job end time. The value is a Unix timestamp in milliseconds.
         self.end_time = end_time
         # The environment ID.
         self.environment_id = environment_id
-        # The execution timeout period, in seconds.
+        # The execution timeout period.
         self.execution_timeout_seconds = execution_timeout_seconds
-        # Indicates whether the Fusion engine acceleration is enabled.
+        # Specifies whether the Fusion engine acceleration is enabled.
         self.fusion = fusion
         # The Spark Driver information.
         self.job_driver = job_driver
@@ -99,26 +100,28 @@ class GetJobRunResponseBodyJobRun(DaraModel):
         self.job_run_id = job_run_id
         # The path of the run log.
         self.log = log
-        # The job run name.
+        # The job name.
         self.name = name
-        # The download URL of the NOTEBOOK file. This parameter is returned only when the job type is NOTEBOOK.
+        # The download URL of the NOTEBOOK file. This parameter is returned only if the job type is NOTEBOOK.
         self.notebook_access_url = notebook_access_url
         # The job priority.
         self.priority = priority
-        # The Spark DPI engine version used to run the job.
+        # The Spark DPI engine version used to run the node.
         self.release_version = release_version
         # The UID of the user who created the job.
         self.resource_owner_id = resource_owner_id
         # The name of the queue used to run the job.
         self.resource_queue_id = resource_queue_id
-        # The job run state.
+        # The job status.
         self.state = state
-        # The reason for the state change.
+        # The reason for the status change.
         self.state_change_reason = state_change_reason
-        # The time when the job was submitted.
+        # The job submission time. The value is a Unix timestamp in milliseconds.
         self.submit_time = submit_time
-        # The list of tags.
+        # The tag list.
         self.tags = tags
+        # The details of token consumption.
+        self.token_details = token_details
         # The total number of tokens consumed.
         self.total_tokens = total_tokens
         # The web UI of the job.
@@ -137,6 +140,10 @@ class GetJobRunResponseBodyJobRun(DaraModel):
             self.state_change_reason.validate()
         if self.tags:
             for v1 in self.tags:
+                 if v1:
+                    v1.validate()
+        if self.token_details:
+            for v1 in self.token_details:
                  if v1:
                     v1.validate()
 
@@ -206,6 +213,11 @@ class GetJobRunResponseBodyJobRun(DaraModel):
         if self.tags is not None:
             for k1 in self.tags:
                 result['tags'].append(k1.to_map() if k1 else None)
+
+        result['tokenDetails'] = []
+        if self.token_details is not None:
+            for k1 in self.token_details:
+                result['tokenDetails'].append(k1.to_map() if k1 else None)
 
         if self.total_tokens is not None:
             result['totalTokens'] = self.total_tokens
@@ -287,6 +299,12 @@ class GetJobRunResponseBodyJobRun(DaraModel):
                 temp_model = main_models.Tag()
                 self.tags.append(temp_model.from_map(k1))
 
+        self.token_details = []
+        if m.get('tokenDetails') is not None:
+            for k1 in m.get('tokenDetails'):
+                temp_model = main_models.GetJobRunResponseBodyJobRunTokenDetails()
+                self.token_details.append(temp_model.from_map(k1))
+
         if m.get('totalTokens') is not None:
             self.total_tokens = m.get('totalTokens')
 
@@ -295,6 +313,79 @@ class GetJobRunResponseBodyJobRun(DaraModel):
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        return self
+
+class GetJobRunResponseBodyJobRunTokenDetails(DaraModel):
+    def __init__(
+        self,
+        enable_thinking: str = None,
+        input_modality: str = None,
+        model_name: str = None,
+        token_range: str = None,
+        token_source: str = None,
+        token_used: int = None,
+    ):
+        # Specifies whether thinking mode is enabled.
+        self.enable_thinking = enable_thinking
+        # The input modality.
+        self.input_modality = input_modality
+        # The model name.
+        self.model_name = model_name
+        # The input token range.
+        self.token_range = token_range
+        # The token source. Valid values: input and output.
+        self.token_source = token_source
+        # The number of tokens consumed.
+        self.token_used = token_used
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable_thinking is not None:
+            result['enableThinking'] = self.enable_thinking
+
+        if self.input_modality is not None:
+            result['inputModality'] = self.input_modality
+
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+
+        if self.token_range is not None:
+            result['tokenRange'] = self.token_range
+
+        if self.token_source is not None:
+            result['tokenSource'] = self.token_source
+
+        if self.token_used is not None:
+            result['tokenUsed'] = self.token_used
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableThinking') is not None:
+            self.enable_thinking = m.get('enableThinking')
+
+        if m.get('inputModality') is not None:
+            self.input_modality = m.get('inputModality')
+
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+
+        if m.get('tokenRange') is not None:
+            self.token_range = m.get('tokenRange')
+
+        if m.get('tokenSource') is not None:
+            self.token_source = m.get('tokenSource')
+
+        if m.get('tokenUsed') is not None:
+            self.token_used = m.get('tokenUsed')
 
         return self
 
@@ -340,7 +431,7 @@ class GetJobRunResponseBodyJobRunConfigurationOverrides(DaraModel):
         self,
         configurations: List[main_models.Configuration] = None,
     ):
-        # The list of configurations.
+        # The configuration list.
         self.configurations = configurations
 
     def validate(self):
