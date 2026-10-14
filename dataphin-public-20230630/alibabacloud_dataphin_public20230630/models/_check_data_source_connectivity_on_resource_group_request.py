@@ -14,10 +14,15 @@ class CheckDataSourceConnectivityOnResourceGroupRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
+        # The check object.
+        # 
         # This parameter is required.
         self.check_command = check_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -62,9 +67,13 @@ class CheckDataSourceConnectivityOnResourceGroupRequestCheckCommand(DaraModel):
         resource_group_id: str = None,
         type: str = None,
     ):
+        # The connection configuration items. If DataSourceId is specified, this parameter is optional and the saved configurations of the data source are used by default.
         self.config_item_list = config_item_list
+        # The data source ID. This parameter is optional. If specified, the check result is associated with the data source and visible on the data source page, and the old check records of the data source on the target resource group are cleared first. If Type and ConfigItemList are not specified, the saved type and configurations of the data source are used for the check.
         self.data_source_id = data_source_id
+        # The ID of the schedule resource group. The connectivity check task is executed on this resource group.
         self.resource_group_id = resource_group_id
+        # The data source type. If DataSourceId is specified, this parameter is optional and the saved type of the data source is used by default.
         self.type = type
 
     def validate(self):
@@ -119,7 +128,9 @@ class CheckDataSourceConnectivityOnResourceGroupRequestCheckCommandConfigItemLis
         key: str = None,
         value: str = None,
     ):
+        # The key of the configuration item.
         self.key = key
+        # The configuration value.
         self.value = value
 
     def validate(self):

@@ -11,10 +11,15 @@ class BatchHandoverAssetShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
+        # The batch transfer command.
+        # 
         # This parameter is required.
         self.handover_command_shrink = handover_command_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):

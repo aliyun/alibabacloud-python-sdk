@@ -17,11 +17,17 @@ class GetSourceTableMetaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The metadata of the integration source table, including the table description and field list.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The backend exception details.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class GetSourceTableMetaResponseBodyData(DaraModel):
         table_comment: str = None,
         table_name: str = None,
     ):
+        # The column list.
         self.columns = columns
+        # The globally unique identifier (GUID) of the table.
         self.guid = guid
+        # The table description or comment.
         self.table_comment = table_comment
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -146,12 +156,19 @@ class GetSourceTableMetaResponseBodyDataColumns(DaraModel):
         raw_data_type: str = None,
         seq_number: int = None,
     ):
+        # The column comment.
         self.comment = comment
+        # The column data type.
         self.data_type = data_type
+        # The column name.
         self.name = name
+        # Indicates whether the column is a primary key.
         self.pk = pk
+        # Indicates whether the column is a partition column.
         self.pt = pt
+        # The raw column data type.
         self.raw_data_type = raw_data_type
+        # The column sequence number.
         self.seq_number = seq_number
 
     def validate(self):

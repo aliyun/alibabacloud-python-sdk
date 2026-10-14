@@ -11,10 +11,15 @@ class ListScheduleTemplatesShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
+        # The query conditions for the scheduling template list. This is a JSON object that supports keyword search and pagination.
+        # 
         # This parameter is required.
         self.list_schedule_templates_command_shrink = list_schedule_templates_command_shrink
+        # The tenant ID, which indicates the tenant for the current operation.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):

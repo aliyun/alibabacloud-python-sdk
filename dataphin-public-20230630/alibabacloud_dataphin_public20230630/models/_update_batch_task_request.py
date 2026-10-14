@@ -18,7 +18,7 @@ class UpdateBatchTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The update request.
         # 
@@ -97,39 +97,46 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         valid_end_date: str = None,
         valid_start_date: str = None,
     ):
+        # The base schedule template ID. This parameter takes effect when the configuration method is set to schedule template. If this parameter and all other schedule fields are not specified, the original binding is retained.
         self.base_schedule_template_id = base_schedule_template_id
-        # The code of the node.
+        # The task code.
         # 
         # This parameter is required.
         self.code = code
+        # Specifies whether to enable conditional scheduling.
         self.condition_schedule_enable = condition_schedule_enable
+        # The conditional scheduling configuration details. This parameter overwrites the existing configurations. If this parameter is not specified, the original configurations are retained. This parameter is supported only for periodic tasks.
         self.condition_schedule_param_list = condition_schedule_param_list
+        # The conditional schedule template ID.
         self.condition_schedule_template_id = condition_schedule_template_id
+        # The cross-node parameters. These are output parameters declared by the current node for downstream nodes to reference. This parameter overwrites the existing parameters. If this parameter is not specified, the original parameters are retained.
         self.context_param_list = context_param_list
-        # The cron expression for automatic scheduling. Refer to Linux cron expressions.
+        # The cron expression for automatic scheduling. You can refer to Linux cron expressions.
         self.cron_expression = cron_expression
         # The custom schedule interval configuration.
         self.custom_schedule_config = custom_schedule_config
-        # The catalog for database SQL nodes. This parameter applies only to datasource types that require a catalog, such as Presto.
+        # The data source catalog for database SQL tasks. This parameter takes effect only for data source types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
-        # The datasource ID for database SQL nodes.
+        # The data source ID for database SQL tasks.
         self.data_source_id = data_source_id
-        # The schema for database SQL nodes. This parameter applies only to datasource types that require a schema, such as Oracle.
+        # The data source schema for database SQL tasks. This parameter takes effect only for data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
+        # The HTTP path in the development environment for Databricks tasks.
         self.dev_http_path = dev_http_path
+        # The ID of the schedule resource group for development tasks.
         self.dev_resource_group_id = dev_resource_group_id
         # The list of development owner IDs.
         self.develop_owner_id_list = develop_owner_id_list
-        # The execution engine for the node, such as for Python nodes. Valid values:
-        # - PYTHON2_7
-        # - PYTHON3_7
-        # - PYTHON3_11
+        # The task execution engine, such as Python tasks. Valid values:
+        # - PYTHON2_7: Python 2.7.
+        # - PYTHON3_7: Python 3.7.
+        # - PYTHON3_11: Python 3.11.
         self.engine = engine
-        # The node ID in the folder tree.
+        # The ID of the task directory tree node.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The name of the offline node.
+        # The name of the offline task.
         # 
         # This parameter is required.
         self.name = name
@@ -137,46 +144,52 @@ class UpdateBatchTaskRequestUpdateCommand(DaraModel):
         self.node_description = node_description
         # The list of node output names.
         self.node_output_name_list = node_output_name_list
-        # The node status. Valid values:
+        # The status of the node. Valid values:
         # - 1: Normal.
         # - 2: Paused.
         # - 3: Dry run.
         self.node_status = node_status
+        # The list of O&M owner IDs. If you do not specify this parameter, the O&M owners are not modified.
         self.ops_owner_id_list = ops_owner_id_list
         # The list of custom parameters.
         self.param_list = param_list
         # The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
+        # The HTTP path in the production environment. This parameter is used for Databricks nodes.
         self.prod_http_path = prod_http_path
         # The ID of the project to which the node belongs.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The third-party Python packages required by the node.
+        # The list of third-party Python packages on which the node depends.
         self.python_module_list = python_module_list
+        # The ID of the scheduling resource group for the production node.
         self.resource_group_id = resource_group_id
-        # The schedule period. Valid values:
-        # - YEARLY
-        # - MONTHLY
-        # - WEEKLY
-        # - DAILY
-        # - HOURLY
-        # - MINUTELY
+        # The scheduling cycle. Valid values:
+        # - YEARLY: Yearly.
+        # - MONTHLY: Monthly.
+        # - WEEKLY: Weekly.
+        # - DAILY: Daily.
+        # - HOURLY: Hourly.
+        # - MINUTELY: Minutely.
         self.schedule_period = schedule_period
-        # The Spark client information.
+        # The Spark client.
         self.spark_client_info = spark_client_info
+        # The list of node tags. This parameter overwrites all existing tags. If you do not specify this parameter, the original tags remain unchanged.
         self.task_tag_list = task_tag_list
-        # The node type. Valid values:
-        # - 1: Hive_SQL.
-        # - 5: MaxCompute_SQL.
+        # The type of the node. Valid values:
+        # - 1: Hive SQL.
+        # - 5: MaxCompute SQL.
         # - 10: Shell.
         # - 21: Python.
         # 
         # This parameter is required.
         self.task_type = task_type
-        # The upstream dependencies.
+        # The list of upstream dependencies.
         self.up_stream_list = up_stream_list
+        # The end date of the validity period. Format: yyyy-MM-dd. This parameter must be specified together with the ValidStartDate parameter.
         self.valid_end_date = valid_end_date
+        # The start date of the validity period. Format: yyyy-MM-dd. This parameter must be specified together with the ValidEndDate parameter.
         self.valid_start_date = valid_start_date
 
     def validate(self):
@@ -451,25 +464,25 @@ class UpdateBatchTaskRequestUpdateCommandUpStreamList(DaraModel):
         source_node_output_name: str = None,
         source_table_name: str = None,
     ):
-        # The dependency period.
+        # The dependency cycle.
         self.depend_period = depend_period
         # The dependency strategy. Valid values:
-        # - ALL: all.
-        # - FIRST: first.
-        # - LAST: last.
-        # - NEAR: nearest.
+        # - ALL: All.
+        # - FIRST: First.
+        # - LAST: Last.
+        # - NEAR: Nearest.
         self.depend_strategy = depend_strategy
-        # The fields of the dependent logical table.
+        # The list of dependent logical table fields.
         self.field_list = field_list
         # The type of the upstream dependency node. Valid values:
-        # - PHYSICAL: physical node.
-        # - LOGICAL: logical table dependency.
+        # - PHYSICAL: Physical node.
+        # - LOGICAL: Logical table dependency.
         self.node_type = node_type
-        # The period difference. A value of 0 indicates same-period dependency. A positive number indicates dependency on the previous N periods.
+        # The cycle difference. A value of 0 indicates a dependency on the same cycle. A positive integer indicates a dependency on the previous N cycles.
         # 
         # This parameter is required.
         self.period_diff = period_diff
-        # Indicates whether the upstream node is enabled.
+        # Specifies whether the upstream node is enabled.
         self.source_node_enabled = source_node_enabled
         # The ID of the upstream node.
         self.source_node_id = source_node_id
@@ -556,13 +569,13 @@ class UpdateBatchTaskRequestUpdateCommandUpStreamListDependPeriod(DaraModel):
         period_offset: int = None,
         period_type: str = None,
     ):
-        # The period offset. This parameter is required when dependencyPeriodType is set to LAST_N_PERIOD.
+        # The cycle offset. This parameter is required when the PeriodType parameter is set to LAST_N_PERIOD.
         self.period_offset = period_offset
-        # The type of the dependency period. Valid values:
-        # - CURRENT_PERIOD: current period.
-        # - LAST_PERIOD: previous period.
-        # - LAST_N_PERIOD: last N days.
-        # - LAST_24_HOUR: last 24 hours.
+        # The type of the dependency cycle. Valid values:
+        # - CURRENT_PERIOD: Current cycle.
+        # - LAST_PERIOD: Last cycle.
+        # - LAST_N_PERIOD: Last N days.
+        # - LAST_24_HOUR: Last 24 hours.
         # 
         # This parameter is required.
         self.period_type = period_type
@@ -633,7 +646,7 @@ class UpdateBatchTaskRequestUpdateCommandParamList(DaraModel):
         # 
         # This parameter is required.
         self.key = key
-        # The parameter value.
+        # The value of the parameter.
         # 
         # This parameter is required.
         self.value = value
@@ -673,7 +686,7 @@ class UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig(DaraModel):
         schedule_period: str = None,
         start_time: str = None,
     ):
-        # The end time in the format of HH:mm.
+        # The end time in the HH:mm format.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -682,22 +695,22 @@ class UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig(DaraModel):
         # This parameter is required.
         self.interval = interval
         # The interval unit. Valid values:
-        # - MINUTE: minute.
-        # - HOUR: hour.
+        # - MINUTE: Minutes.
+        # - HOUR: Hours.
         # 
         # This parameter is required.
         self.interval_unit = interval_unit
         # The schedule period. Valid values:
-        # - YEARLY
-        # - MONTHLY
-        # - WEEKLY
-        # - DAILY
-        # - HOURLY
-        # - MINUTELY
+        # - YEARLY: Yearly.
+        # - MONTHLY: Monthly.
+        # - WEEKLY: Weekly.
+        # - DAILY: Daily.
+        # - HOURLY: Hourly.
+        # - MINUTELY: Minutely.
         # 
         # This parameter is required.
         self.schedule_period = schedule_period
-        # The start time in the format of HH:mm.
+        # The start time in the HH:mm format.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -753,8 +766,11 @@ class UpdateBatchTaskRequestUpdateCommandContextParamList(DaraModel):
         desc: str = None,
         param_key: str = None,
     ):
+        # The default value.
         self.default_value = default_value
+        # The parameter description.
         self.desc = desc
+        # The parameter name.
         self.param_key = param_key
 
     def validate(self):
@@ -800,12 +816,22 @@ class UpdateBatchTaskRequestUpdateCommandConditionScheduleParamList(DaraModel):
         schedule_condition_json: str = None,
         schedule_time: str = None,
     ):
+        # The condition name.
         self.condition_name = condition_name
+        # The cron expression used after the condition is met.
         self.cron_expression = cron_expression
+        # Specifies whether to enable the condition.
         self.enable = enable
+        # Specifies whether to follow the primary schedule parameter.
         self.follow_schedule_param = follow_schedule_param
+        # The node schedule status after the condition is met. Valid values:
+        # - 1: Normal.
+        # - 2: Paused.
+        # - 3: Dry run.
         self.node_status = node_status
+        # The JSON string of the conditional expression tree. The keys are in lower camel case characters and must be parsed by the invoker.
         self.schedule_condition_json = schedule_condition_json
+        # The schedule time used after the condition is met.
         self.schedule_time = schedule_time
 
     def validate(self):

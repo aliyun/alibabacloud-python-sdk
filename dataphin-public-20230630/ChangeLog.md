@@ -1,3 +1,10 @@
+2026-10-14 Version: 2.14.1
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.PythonModuleList.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.PythonVersion.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.PythonModuleList.
+- Update API GetBatchTaskInfoByVersion: add response parameters Body.TaskInfo.PythonVersion.
+
+
 2026-10-08 Version: 2.14.0
 - Support API BatchHandoverAsset.
 - Support API CheckDataSourceConnectivityOnResourceGroup.

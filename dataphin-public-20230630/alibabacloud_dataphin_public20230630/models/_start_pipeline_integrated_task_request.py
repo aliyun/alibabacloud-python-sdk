@@ -13,11 +13,18 @@ class StartPipelineIntegratedTaskRequest(DaraModel):
         op_user_id: str = None,
         start_command: main_models.StartPipelineIntegratedTaskRequestStartCommand = None,
     ):
+        # The request context.
+        # 
         # This parameter is required.
         self.context = context
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
+        # The startup parameters.
+        # 
         # This parameter is required.
         self.start_command = start_command
 
@@ -77,14 +84,27 @@ class StartPipelineIntegratedTaskRequestStartCommand(DaraModel):
         quota_group_id: str = None,
         sync_mode: str = None,
     ):
+        # The bandwidth limit for the offline full task. Unit: MB/s.
         self.byte_speed = byte_speed
+        # The specified time checkpoint for starting in pure incremental mode.
         self.checkpoint = checkpoint
+        # The concurrency for the offline full task.
         self.concurrent = concurrent
+        # The startup mode for the full table task. Valid values:
+        # - INIT
+        # - RELAY
         self.full_task_mode = full_task_mode
+        # The incremental instance ID required when restarting the instance.
         self.incremental_task_id = incremental_task_id
+        # The memory for the offline full task. Unit: MB.
         self.memory = memory
+        # The ID of the real-time node required when starting from a node.
         self.node_id = node_id
+        # The ID of the resource group used by the full table instance.
         self.quota_group_id = quota_group_id
+        # The synchronization mode. Valid values:
+        # - DI_DF
+        # - DI
         self.sync_mode = sync_mode
 
     def validate(self):
@@ -161,8 +181,14 @@ class StartPipelineIntegratedTaskRequestContext(DaraModel):
         env: str = None,
         project_id: int = None,
     ):
+        # The current operating environment. Valid values:
+        # - DEV: Development environment.
+        # - PROD: Production environment.
+        # 
         # This parameter is required.
         self.env = env
+        # The ID of the project to which the integration pipeline node belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

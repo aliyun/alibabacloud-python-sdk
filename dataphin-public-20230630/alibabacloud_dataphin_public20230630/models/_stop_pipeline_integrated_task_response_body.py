@@ -17,11 +17,17 @@ class StopPipelineIntegratedTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The batch results of stopping integrated incremental and full instances.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class StopPipelineIntegratedTaskResponseBodyData(DaraModel):
         fail: int = None,
         success: int = None,
     ):
+        # The stop results for each instance.
         self.dev_ops_action_res_dtolist = dev_ops_action_res_dtolist
+        # The number of failed stops.
         self.fail = fail
+        # The number of successful stops.
         self.success = success
 
     def validate(self):
@@ -134,8 +143,11 @@ class StopPipelineIntegratedTaskResponseBodyDataDevOpsActionResDTOList(DaraModel
         owner: str = None,
         status: str = None,
     ):
+        # The job name.
         self.job_name = job_name
+        # The job owner.
         self.owner = owner
+        # The operation status.
         self.status = status
 
     def validate(self):

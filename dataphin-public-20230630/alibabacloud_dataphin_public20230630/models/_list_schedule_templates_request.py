@@ -12,10 +12,15 @@ class ListScheduleTemplatesRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
+        # The query conditions for the scheduling template list. This is a JSON object that supports keyword search and pagination.
+        # 
         # This parameter is required.
         self.list_schedule_templates_command = list_schedule_templates_command
+        # The tenant ID, which indicates the tenant for the current operation.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -60,9 +65,16 @@ class ListScheduleTemplatesRequestListScheduleTemplatesCommand(DaraModel):
         page_size: int = None,
         schedule_template_type: str = None,
     ):
+        # The keyword for fuzzy matching by template name. If this parameter is empty or not specified, no filtering is applied.
         self.keyword = keyword
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 50. Maximum value: 100.
         self.page_size = page_size
+        # The scheduling templatetype. Valid values:
+        # - BASE_SCHEDULE_TEMPLATE: basic scheduling template
+        # - CONDITION_SCHEDULE_TEMPLATE: conditional scheduling template
+        # If this parameter is not specified, all types are returned.
         self.schedule_template_type = schedule_template_type
 
     def validate(self):

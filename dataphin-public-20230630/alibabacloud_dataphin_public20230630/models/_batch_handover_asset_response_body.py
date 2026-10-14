@@ -17,11 +17,17 @@ class BatchHandoverAssetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The result of the batch asset owner transfer.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The backend exception details.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,11 +92,22 @@ class BatchHandoverAssetResponseBodyData(DaraModel):
         success_count: int = None,
         total_count: int = None,
     ):
+        # The error message. This parameter is empty if no error occurs.
         self.error_message = error_message
+        # The number of failed transfers.
         self.fail_count = fail_count
+        # The list of asset GUIDs for which the transfer failed. This parameter is empty if all transfers succeed.
         self.failed_guids = failed_guids
+        # The status of the batch transfer task. Valid values:
+        # - INIT: Initial.
+        # - HANDOVER_RECORDS_GENERATED: Records generated.
+        # - PROCESSING_WITHOUT_APPROVAL: Processing.
+        # - SUCCESS: Success.
+        # - FINISHED_WITH_EXCEPTION: Finished with failures.
         self.status = status
+        # The number of successful transfers.
         self.success_count = success_count
+        # The total number of transferred assets.
         self.total_count = total_count
 
     def validate(self):

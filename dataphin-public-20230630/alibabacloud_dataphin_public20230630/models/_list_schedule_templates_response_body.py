@@ -17,11 +17,17 @@ class ListScheduleTemplatesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. OK indicates that the request is successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The schedule template list response.
         self.list_schedule_templates_response = list_schedule_templates_response
+        # The error message of the request.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListScheduleTemplatesResponseBodyListScheduleTemplatesResponse(DaraModel):
         count: int = None,
         result_data: List[main_models.ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultData] = None,
     ):
+        # The total number of schedule templates that meet the specified conditions. This number is not limited by pagination.
         self.count = count
+        # The schedule templates.
         self.result_data = result_data
 
     def validate(self):
@@ -145,27 +153,49 @@ class ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultData(D
         valid_end_date: str = None,
         valid_start_date: str = None,
     ):
+        # The condition-based schedule parameters. This parameter has a value only for condition-based schedule templates.
         self.condition_schedule_param_list = condition_schedule_param_list
+        # The cron expression for automatic scheduling. Refer to Linux cron expressions.
         self.cron_expression = cron_expression
+        # Specifies whether a custom cron expression is used.
         self.custom_cron_expression = custom_cron_expression
+        # The custom schedule interval configuration. This configuration takes effect only when used together with CustomIntervalConfigType.
         self.custom_interval_config = custom_interval_config
+        # The type of the custom interval configuration. Valid values: TIME_POINT, TIME_PERIOD, CUSTOM_TIME_POINT, and CUSTOM_TIME_PERIOD.
         self.custom_interval_config_type = custom_interval_config_type
+        # The custom schedule interval configurations. This parameter is valid only when CustomIntervalConfigType is set to CUSTOM_TIME_PERIOD.
         self.custom_interval_configs = custom_interval_configs
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.gmt_create = gmt_create
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.gmt_modify = gmt_modify
+        # Specifies whether the schedule template is referenced by a node.
         self.has_reference = has_reference
+        # The ID of the modifier.
         self.modifier_id = modifier_id
+        # The name of the modifier.
         self.modifier_name = modifier_name
+        # The schedule interval type. Valid values: YEARLY, MONTHLY, WEEKLY, DAILY, HOURLY, and MINUTELY.
         self.schedule_interval_type = schedule_interval_type
+        # The description of the schedule template.
         self.schedule_template_desc = schedule_template_desc
+        # The ID of the schedule template, which is used to bind a schedule template when updating a node.
         self.schedule_template_id = schedule_template_id
+        # The name of the schedule template.
         self.schedule_template_name = schedule_template_name
+        # The templatetype. Valid values: BASE_SCHEDULE_TEMPLATE: basic scheduling template, CONDITION_SCHEDULE_TEMPLATE: conditional scheduling template.
         self.schedule_template_type = schedule_template_type
+        # The schedule type. Valid values: normal scheduling, dry run scheduling, and paused scheduling.
         self.schedule_type = schedule_type
+        # The ID of the tenant to which the schedule template belongs.
         self.tenant_id = tenant_id
+        # The ID of the creator.
         self.user_id = user_id
+        # The name of the creator.
         self.user_name = user_name
+        # The end date of the effective period, in the yyyy-MM-dd format.
         self.valid_end_date = valid_end_date
+        # The start date of the effective period, in the yyyy-MM-dd format.
         self.valid_start_date = valid_start_date
 
     def validate(self):
@@ -343,10 +373,15 @@ class ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCu
         schedule_period: str = None,
         start_time: str = None,
     ):
+        # The end time of the effective period.
         self.end_time = end_time
+        # The interval value.
         self.interval = interval
+        # The interval unit.
         self.interval_unit = interval_unit
+        # The schedule period to which the interval belongs.
         self.schedule_period = schedule_period
+        # The start time of the effective period.
         self.start_time = start_time
 
     def validate(self):
@@ -402,10 +437,15 @@ class ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCu
         schedule_period: str = None,
         start_time: str = None,
     ):
+        # The end time of the effective period.
         self.end_time = end_time
+        # The interval value.
         self.interval = interval
+        # The interval unit.
         self.interval_unit = interval_unit
+        # The schedule period to which the interval belongs.
         self.schedule_period = schedule_period
+        # The start time of the effective period.
         self.start_time = start_time
 
     def validate(self):
@@ -463,12 +503,22 @@ class ListScheduleTemplatesResponseBodyListScheduleTemplatesResponseResultDataCo
         schedule_condition_json: str = None,
         schedule_time: str = None,
     ):
+        # The name of the condition.
         self.condition_name = condition_name
+        # The cron expression used after the condition is met.
         self.cron_expression = cron_expression
+        # Specifies whether the condition is enabled.
         self.enable = enable
+        # Specifies whether to follow the main schedule parameter.
         self.follow_schedule_param = follow_schedule_param
+        # The node schedule status after the condition is met. Valid values:
+        # - 1: Normal.
+        # - 2: Paused.
+        # - 3: Dry run.
         self.node_status = node_status
+        # The conditional expression tree as a JSON character string. The keys are in lower camel case and must be parsed by the caller.
         self.schedule_condition_json = schedule_condition_json
+        # The schedule time used after the condition is met.
         self.schedule_time = schedule_time
 
     def validate(self):

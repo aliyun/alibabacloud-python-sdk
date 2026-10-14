@@ -15,11 +15,18 @@ class StopPipelineIntegratedTaskRequest(DaraModel):
         op_user_id: str = None,
         stop_command: main_models.StopPipelineIntegratedTaskRequestStopCommand = None,
     ):
+        # The request context information.
+        # 
         # This parameter is required.
         self.context = context
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
+        # The stop parameters.
+        # 
         # This parameter is required.
         self.stop_command = stop_command
 
@@ -71,6 +78,8 @@ class StopPipelineIntegratedTaskRequestStopCommand(DaraModel):
         self,
         task_ids: List[str] = None,
     ):
+        # The list of instance IDs of the incremental instances to stop.
+        # 
         # This parameter is required.
         self.task_ids = task_ids
 
@@ -100,8 +109,12 @@ class StopPipelineIntegratedTaskRequestContext(DaraModel):
         env: str = None,
         project_id: int = None,
     ):
+        # The current operating environment. Valid values: DEV: development environment. PROD: production environment.
+        # 
         # This parameter is required.
         self.env = env
+        # The ID of the project to which the integration pipeline task belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

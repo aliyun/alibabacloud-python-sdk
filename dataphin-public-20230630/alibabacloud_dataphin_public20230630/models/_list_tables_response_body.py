@@ -19,15 +19,15 @@ class ListTablesResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The HTTP status code.
+        # The HTTP response code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class ListTablesResponseBodyPageResult(DaraModel):
         table_list: List[main_models.ListTablesResponseBodyPageResultTableList] = None,
         total_count: int = None,
     ):
-        # The list of tables.
+        # The table list.
         self.table_list = table_list
         # The total number of records.
         self.total_count = total_count
@@ -164,35 +164,33 @@ class ListTablesResponseBodyPageResultTableList(DaraModel):
     ):
         # The asset inventory tags.
         self.asset_tag_list = asset_tag_list
-        # The ID of the business unit.
+        # The business unit ID.
         self.biz_unit_id = biz_unit_id
-        # The name of the business unit.
+        # The business unit name.
         self.biz_unit_name = biz_unit_name
-        # The comment of the table.
+        # The table comment.
         self.comment = comment
         # The creation time.
         self.create_time = create_time
-        # The ID of the creator.
+        # The creator ID.
         self.creator = creator
-        # The ID of the data domain.
+        # The data domain ID.
         self.data_domain_id = data_domain_id
-        # The name of the data domain.
+        # The subject area name.
         self.data_domain_name = data_domain_name
-        # The ID of the data source.
+        # The data source ID.
         self.data_source_id = data_source_id
-        # The display name of the table.
+        # The table display name.
         self.display_name = display_name
-        # The environment. Valid values:
-        # - dev
-        # - prod.
+        # The environment. Valid values: dev and prod.
         self.env = env
-        # The file ID. This value is used to navigate to the ODM model.
+        # The file ID used to navigate to the ODM model.
         self.file_id = file_id
-        # The GUID of the table.
+        # The table GUID.
         self.guid = guid
-        # Indicates whether the project or business version to which the table belongs is in Basic mode.
+        # Specifies whether the project or business version to which the table belongs is in Basic mode.
         self.is_basic_mode = is_basic_mode
-        # Indicates whether the table is a partitioned table.
+        # Specifies whether the table is a partitioned table.
         self.is_partition_table = is_partition_table
         # The time when the table DDL was last modified.
         self.last_ddl_time = last_ddl_time
@@ -202,27 +200,25 @@ class ListTablesResponseBodyPageResultTableList(DaraModel):
         self.last_query_time = last_query_time
         # The lifecycle of the table, in days.
         self.life_cycle = life_cycle
-        # The name of the table.
+        # The table name.
         self.name = name
-        # The Dataphin user ID of the table owner. This value may be empty if the owner is not bound.
+        # The user ID of the table owner in Dataphin. This parameter may be empty if the owner is not bound.
         self.owner = owner
-        # The ID of the parent model. This value is used to navigate to the ODM model.
+        # The parent model ID used to navigate to the ODM model.
         self.parent_model_id = parent_model_id
-        # The ID of the logical project.
+        # The logical project ID.
         self.project_id = project_id
-        # The name of the logical project.
+        # The logical project name.
         self.project_name = project_name
         # The security classification.
         self.security_level = security_level
         # The abbreviation of the security classification name.
         self.security_level_abbreviation = security_level_abbreviation
-        # The name of the security classification.
+        # The security classification name.
         self.security_level_name = security_level_name
-        # The storage type. Valid values:
-        # - HIVE
-        # - MAX_COMPUTE.
+        # The storage type. Valid values: HIVE and MAX_COMPUTE.
         self.storage_type = storage_type
-        # The dynamic properties of the real-time meta table.
+        # The dynamic properties of the real-time metatable.
         self.stream_table_config = stream_table_config
         # The total storage size of the table, in bytes.
         self.table_size_in_bytes = table_size_in_bytes

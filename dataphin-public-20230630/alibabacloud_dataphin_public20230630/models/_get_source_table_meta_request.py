@@ -13,11 +13,18 @@ class GetSourceTableMetaRequest(DaraModel):
         op_user_id: str = None,
         query: main_models.GetSourceTableMetaRequestQuery = None,
     ):
+        # The request context.
+        # 
         # This parameter is required.
         self.context = context
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
+        # The query conditions for the integration source table.
+        # 
         # This parameter is required.
         self.query = query
 
@@ -73,10 +80,17 @@ class GetSourceTableMetaRequestQuery(DaraModel):
         schema_name: str = None,
         table_name: str = None,
     ):
+        # The catalog name.
         self.catalog = catalog
+        # The identifier of the data source or compute source. If QueryMode is set to DATA_SOURCE, specify the physical data source ID. If QueryMode is set to PROJECT_COMPUTE_SOURCE, specify the data source ID bound to the compute source.
         self.id = id
+        # The query mode. Valid values:
+        # - DATA_SOURCE: physical data source. This is the default value. It includes direct queries and automatic routing of external data source metadata.
+        # - PROJECT_COMPUTE_SOURCE: tables under the project or compute source. The data source is parsed based on the compute source of the project specified by Context.ProjectId.
         self.query_mode = query_mode
+        # The schema name.
         self.schema_name = schema_name
+        # The table name. The schema.table format is supported.
         self.table_name = table_name
 
     def validate(self):
@@ -129,7 +143,11 @@ class GetSourceTableMetaRequestContext(DaraModel):
         env: str = None,
         project_id: int = None,
     ):
+        # The current operation environment. Valid values:
+        # - DEV: development environment.
+        # - PROD: production environment.
         self.env = env
+        # The ID of the project to which the integration pipeline task belongs.
         self.project_id = project_id
 
     def validate(self):

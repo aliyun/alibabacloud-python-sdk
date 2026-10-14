@@ -14,10 +14,15 @@ class BatchHandoverAssetRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
+        # The batch transfer command.
+        # 
         # This parameter is required.
         self.handover_command = handover_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -60,8 +65,12 @@ class BatchHandoverAssetRequestHandoverCommand(DaraModel):
         guid_list: List[str] = None,
         target_user_id: str = None,
     ):
+        # The list of asset GUIDs to be transferred. A maximum of 50 assets can be transferred at a time. Currently, only physical tables and logical tables are supported. Data source tables are not supported.
+        # 
         # This parameter is required.
         self.guid_list = guid_list
+        # The user ID of the transfer recipient.
+        # 
         # This parameter is required.
         self.target_user_id = target_user_id
 

@@ -17,17 +17,17 @@ class ListPipelinesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
-        # The paged query result.
+        # The paging query result.
         self.data = data
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message returned if the request failed.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,15 +91,15 @@ class ListPipelinesResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The list of node information on the current page.
+        # The list of task information on the current page.
         self.list = list
-        # The cursor for the next page (an opaque cursor that the caller does not need to interpret). A null value indicates that there are no more pages. Otherwise, pass this value as the nextCursor parameter in the next request to retrieve the next page.
+        # The cursor for the next page in cursor-based pagination. This is an opaque cursor and does not need to be parsed. A value of null indicates that there are no more pages. Otherwise, pass this value as the nextCursor parameter in the next request to retrieve the next page.
         self.next_cursor = next_cursor
-        # The current page number, starting from 1.
+        # The current page number. Pages start from 1.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of records that match the conditions. For the first page request, the actual total count is returned. For subsequent page requests (when nextCursor is passed in), if totalCount is included in the request, the same value is returned. Otherwise, this field is not returned. The total value is a snapshot taken at the time of the first page query and is not updated in real time as data changes during pagination.
+        # The total number of records that meet the query conditions.
         self.total = total
 
     def validate(self):
@@ -169,42 +169,39 @@ class ListPipelinesResponseBodyDataList(DaraModel):
         task_status: str = None,
         task_type: int = None,
     ):
-        # The list of user IDs of development owners.
+        # The list of user IDs of the development owners.
         self.develop_owners = develop_owners
-        # The directory where the node is located.
+        # The directory.
         self.directory = directory
         # The file ID.
         self.file_id = file_id
-        # The schedule node ID.
+        # The scheduling node ID.
         self.node_id = node_id
-        # The node name.
+        # The task name.
         self.node_name = node_name
-        # The list of user IDs of O&M owners.
+        # The list of user IDs of the O&M owners.
         self.ops_owners = ops_owners
         # The pipeline ID.
         self.pipeline_id = pipeline_id
         # The schedule type. Valid values:
-        # 
-        # - 1: periodic scheduling.
-        # - 3: manual scheduling.
-        # - 5: real-time scheduling.
+        # - 1: Periodic scheduling.
+        # - 3: Manual scheduling.
+        # - 5: Real-time scheduling.
         self.schedule_type = schedule_type
-        # The list of node tag names.
+        # The list of task tag names.
         self.tags = tags
-        # The node status. Valid values:
-        # 
-        # - DRAFT: draft.
-        # - SUBMITTING: being submitted.
-        # - SUBMITTED: submitted.
-        # - PUBLISHED: published.
+        # The task status. Valid values:
+        # - DRAFT: Draft.
+        # - SUBMITTING: Submitting.
+        # - SUBMITTED: Submitted.
+        # - PUBLISHED: Published.
         self.task_status = task_status
-        # The node type. Valid values:
-        # 
-        # - 0: offline integration.
-        # - 1: real-time integration.
-        # - 13: data aggregation.
-        # - 14: offline unstructured workflow.
-        # - 15: real-time unstructured workflow.
+        # The task type. Valid values:
+        # - 0: Offline integration.
+        # - 1: Real-time integration.
+        # - 13: Data aggregation.
+        # - 14: Offline unstructured workflow.
+        # - 15: Real-time unstructured workflow.
         self.task_type = task_type
 
     def validate(self):

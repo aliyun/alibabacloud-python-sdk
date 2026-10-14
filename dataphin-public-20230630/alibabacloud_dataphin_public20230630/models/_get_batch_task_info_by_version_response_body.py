@@ -17,15 +17,15 @@ class GetBatchTaskInfoByVersionResponseBody(DaraModel):
         success: bool = None,
         task_info: main_models.GetBatchTaskInfoByVersionResponseBodyTaskInfo = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code of the request. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message of the request.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The task details.
         self.task_info = task_info
@@ -114,6 +114,8 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         priority: int = None,
         project_id: int = None,
         published: bool = None,
+        python_module_list: List[main_models.GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList] = None,
+        python_version: str = None,
         remark: str = None,
         rerunable: bool = None,
         schedule_period: str = None,
@@ -123,52 +125,49 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         task_type: int = None,
         up_stream_list: List[main_models.GetBatchTaskInfoByVersionResponseBodyTaskInfoUpStreamList] = None,
     ):
-        # The task code.
+        # The code of the task.
         self.code = code
-        # The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
+        # The cron expression for automatic scheduling. You can refer to Linux cron expressions.
         self.cron_expression = cron_expression
         # The custom scheduling interval configuration.
         self.custom_schedule_config = custom_schedule_config
         # The ID of the DAG to which the task belongs.
         self.dag_id = dag_id
-        # The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
+        # The catalog of the data source. This parameter takes effect only for database SQL tasks and data source types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
-        # The data source ID for database SQL nodes.
+        # The ID of the data source for the database SQL task.
         self.data_source_id = data_source_id
-        # The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
+        # The schema of the data source. This parameter takes effect only for database SQL tasks and data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
-        # The list of development owner IDs.
+        # The IDs of the developers.
         self.develop_owner_id_list = develop_owner_id_list
-        # The list of development owner names.
+        # The names of the developers.
         self.develop_owner_name_list = develop_owner_name_list
-        # The node ID in the directory tree.
+        # The node ID of the task directory tree.
         self.file_id = file_id
-        # Indicates whether the task has a development environment node.
+        # Indicates whether a development environment node exists.
         self.has_dev_node = has_dev_node
-        # The task name.
+        # The name of the task.
         self.name = name
         # Indicates whether the task needs to be published.
         self.need_publish = need_publish
-        # The task description.
+        # The description of the task.
         self.node_description = node_description
-        # The source of the node, indicating the organization or application that created the node.
+        # The source of the node. This indicates the organization or application that created the node.
         self.node_from = node_from
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
-        # The node name.
+        # The name of the node.
         self.node_name = node_name
-        # The list of node output names.
+        # The output names of the node.
         self.node_output_name_list = node_output_name_list
-        # The node status. Valid values:
-        # - 1: Normal.
-        # - 2: Paused.
-        # - 3: Dry run.
+        # The status of the node. Valid values: 1 (Normal), 2 (Paused), and 3 (Dry run).
         self.node_status = node_status
-        # The user ID of the current operator.
+        # The ID of the user who performs the current operation.
         self.operator_user_id = operator_user_id
-        # The list of O&M owner IDs.
+        # The IDs of the O&M owners.
         self.ops_owner_id_list = ops_owner_id_list
-        # The list of O&M owner names.
+        # The names of the O&M owners.
         self.ops_owner_name_list = ops_owner_name_list
         # The name of the node owner.
         self.owner_name = owner_name
@@ -176,38 +175,42 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         self.owner_user_id = owner_user_id
         # The list of custom parameters for the node.
         self.param_list = param_list
-        # Indicates whether the node is paused for scheduling.
+        # Indicates whether the scheduling of the node is paused.
         self.paused = paused
-        # The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
+        # The scheduling priority of the task. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # Indicates whether the task is published.
+        # Indicates whether the node is published.
         self.published = published
-        # The remarks.
+        # The list of third-party packages that the Python task depends on.
+        self.python_module_list = python_module_list
+        # The Python version of the Python task, such as Python 3.7.
+        self.python_version = python_version
+        # The remark.
         self.remark = remark
-        # Indicates whether the node can be rerun.
+        # Indicates whether the task can be rerun.
         self.rerunable = rerunable
         # The scheduling period. Valid values:
-        # - YEARLY
-        # - MONTHLY
-        # - WEEKLY
-        # - DAILY
-        # - HOURLY
-        # - MINUTELY
+        # - YEARLY: Yearly.
+        # - MONTHLY: Monthly.
+        # - WEEKLY: Weekly.
+        # - DAILY: Daily.
+        # - HOURLY: Hourly.
+        # - MINUTELY: Minutely.
         self.schedule_period = schedule_period
         # The node type. Valid values:
-        # - 1: periodic node.
-        # - 3: manual node.
+        # - 1: Periodic task.
+        # - 3: Manual task.
         self.schedule_type = schedule_type
-        # The Spark client information.
+        # The Spark client.
         self.spark_client_info = spark_client_info
-        # The submit status. Valid values:
-        # - 0: draft.
-        # - 1: submitted.
-        # - 100: in development.
+        # The publish status. Valid values:
+        # - 0: Draft.
+        # - 1: Submitted.
+        # - 100: In development.
         self.status = status
-        # The task type. For more information, refer to the API operation for creating batch tasks.
+        # The task type. For more information, see the API operation for creating an offline computing task.
         self.task_type = task_type
         # The upstream dependencies.
         self.up_stream_list = up_stream_list
@@ -217,6 +220,10 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
             self.custom_schedule_config.validate()
         if self.param_list:
             for v1 in self.param_list:
+                 if v1:
+                    v1.validate()
+        if self.python_module_list:
+            for v1 in self.python_module_list:
                  if v1:
                     v1.validate()
         if self.spark_client_info:
@@ -319,6 +326,14 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
 
         if self.published is not None:
             result['Published'] = self.published
+
+        result['PythonModuleList'] = []
+        if self.python_module_list is not None:
+            for k1 in self.python_module_list:
+                result['PythonModuleList'].append(k1.to_map() if k1 else None)
+
+        if self.python_version is not None:
+            result['PythonVersion'] = self.python_version
 
         if self.remark is not None:
             result['Remark'] = self.remark
@@ -441,6 +456,15 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfo(DaraModel):
         if m.get('Published') is not None:
             self.published = m.get('Published')
 
+        self.python_module_list = []
+        if m.get('PythonModuleList') is not None:
+            for k1 in m.get('PythonModuleList'):
+                temp_model = main_models.GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList()
+                self.python_module_list.append(temp_model.from_map(k1))
+
+        if m.get('PythonVersion') is not None:
+            self.python_version = m.get('PythonVersion')
+
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
 
@@ -488,27 +512,31 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfoUpStreamList(DaraModel):
     ):
         # The dependency period.
         self.depend_period = depend_period
-        # The dependency strategy. Valid values: ALL, FIRST, LAST, NEAR.
+        # The dependency strategy. Valid values:
+        # - ALL
+        # - FIRST
+        # - LAST
+        # - NEAR
         self.depend_strategy = depend_strategy
-        # The dependent logical table fields.
+        # The fields of the dependent logical table.
         self.field_list = field_list
-        # The type of the upstream dependency node. Valid values:
-        # - PHYSICAL: physical node.
-        # - LOGICAL: logical table dependency.
+        # The node type of the upstream dependency. Valid values:
+        # - PHYSICAL: Physical node.
+        # - LOGICAL: Logical table dependency.
         self.node_type = node_type
-        # The period difference. A value of 0 indicates a same-cycle dependency. A positive number indicates a dependency on the previous N cycles.
+        # The period difference. A value of 0 indicates a same-period dependency. A positive integer indicates a dependency on the previous N periods.
         self.period_diff = period_diff
         # Indicates whether the upstream node is enabled.
         self.source_node_enabled = source_node_enabled
-        # The upstream node ID.
+        # The ID of the upstream node.
         self.source_node_id = source_node_id
-        # The upstream node name.
+        # The name of the upstream node.
         self.source_node_name = source_node_name
         # The output name of the upstream node.
         self.source_node_output_name = source_node_output_name
-        # The username of the upstream node owner.
+        # The upstream username.
         self.source_node_user_name = source_node_user_name
-        # The input table name.
+        # The name of the input table.
         self.source_table_name = source_table_name
 
     def validate(self):
@@ -639,7 +667,7 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfoSparkClientInfo(DaraModel):
         self,
         spark_client_version: str = None,
     ):
-        # The Spark client version name.
+        # The name of the Spark client.
         self.spark_client_version = spark_client_version
 
     def validate(self):
@@ -662,15 +690,70 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfoSparkClientInfo(DaraModel):
 
         return self
 
+class GetBatchTaskInfoByVersionResponseBodyTaskInfoPythonModuleList(DaraModel):
+    def __init__(
+        self,
+        module_id: int = None,
+        name: str = None,
+        python_version: str = None,
+        version: str = None,
+    ):
+        # The ID of the third-party package.
+        self.module_id = module_id
+        # The name of the third-party package.
+        self.name = name
+        # The Python version that the third-party package depends on.
+        self.python_version = python_version
+        # The version number of the third-party package.
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.module_id is not None:
+            result['ModuleId'] = self.module_id
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.python_version is not None:
+            result['PythonVersion'] = self.python_version
+
+        if self.version is not None:
+            result['Version'] = self.version
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModuleId') is not None:
+            self.module_id = m.get('ModuleId')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('PythonVersion') is not None:
+            self.python_version = m.get('PythonVersion')
+
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+
+        return self
+
 class GetBatchTaskInfoByVersionResponseBodyTaskInfoParamList(DaraModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The parameter name.
+        # The name of the parameter.
         self.key = key
-        # The parameter value.
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -708,15 +791,15 @@ class GetBatchTaskInfoByVersionResponseBodyTaskInfoCustomScheduleConfig(DaraMode
         schedule_period: str = None,
         start_time: str = None,
     ):
-        # The end time in the format of HH:mm.
+        # The end time in the HH:mm format.
         self.end_time = end_time
         # The custom interval.
         self.interval = interval
-        # The interval unit. Valid values: MINUTE, HOUR.
+        # The unit of the interval. Valid values: MINUTE and HOUR.
         self.interval_unit = interval_unit
         # The scheduling period.
         self.schedule_period = schedule_period
-        # The start time in the format of HH:mm.
+        # The start time in the HH:mm format.
         self.start_time = start_time
 
     def validate(self):

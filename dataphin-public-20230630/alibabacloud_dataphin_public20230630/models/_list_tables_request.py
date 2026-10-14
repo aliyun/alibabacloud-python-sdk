@@ -20,6 +20,7 @@ class ListTablesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -66,15 +67,29 @@ class ListTablesRequestListQuery(DaraModel):
         page_size: int = None,
         sub_types: List[str] = None,
     ):
-        # The asset catalog, such as the project name or business unit name.
+        # The asset catalog: project name and business unit name.
         self.catalog = catalog
-        # The keyword for searching. Table names are supported.
+        # The supported keyword: table name.
         self.keyword = keyword
+        # The ID of the owner.
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of records per page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The table types. If you do not specify this parameter or pass an empty list, all table types are queried. Valid values:
+        # - PHYSICAL_TABLE: Physical table of the compute source.
+        # - PHYSICAL_VIEW: View of the compute source.
+        # - PHYSICAL_MATERIALIZED_VIEW: Materialized view of the compute source.
+        # - STREAM_TABLE: Meta table.
+        # - MIRROR_TABLE: Mirror table.
+        # - DIM: Logical dimension table.
+        # - FACT: Logical fact table.
+        # - SUM_BIZ_UNIT: Logical aggregate table.
+        # - LOGIC_VIEW: Logical view.
+        # - DATASOURCE_TABLE: Data source table.
+        # - DATASOURCE_VIEW: Data source view.
+        # - DATASOURCE_MATERIALIZED_VIEW: Data source materialized view.
         self.sub_types = sub_types
 
     def validate(self):

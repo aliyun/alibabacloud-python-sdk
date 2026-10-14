@@ -14,17 +14,17 @@ class SyncDepartmentUserResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request error code. OK indicates a successful request.
+        # The error code of the request. A value of OK indicates that the request is normal.
         self.code = code
         # The response result.
         self.data = data
-        # The HTTP status code returned by the backend.
+        # The HTTP status code of the backend response.
         self.http_status_code = http_status_code
-        # The request error message.
+        # The error message of the request.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
