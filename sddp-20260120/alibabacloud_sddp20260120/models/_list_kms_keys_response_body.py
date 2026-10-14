@@ -13,7 +13,9 @@ class ListKmsKeysResponseBody(DaraModel):
         items: List[main_models.ListKmsKeysResponseBodyItems] = None,
         request_id: str = None,
     ):
+        # The list of records returned by this query.
         self.items = items
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListKmsKeysResponseBodyItems(DaraModel):
         alias_name: str = None,
         key_id: str = None,
     ):
+        # The alias of the KMS key.
         self.alias_name = alias_name
+        # The ID of the KMS key.
         self.key_id = key_id
 
     def validate(self):

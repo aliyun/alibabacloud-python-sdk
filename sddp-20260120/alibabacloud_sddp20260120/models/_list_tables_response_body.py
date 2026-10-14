@@ -19,13 +19,21 @@ class ListTablesResponseBody(DaraModel):
         total_count: int = None,
         truncated: str = None,
     ):
+        # The page number of the returned data.
         self.current_page = current_page
+        # The list of records returned by this query.
         self.items = items
+        # The pagination cursor used in this query.
         self.marker = marker
+        # The cursor used to query the next page.
         self.next_marker = next_marker
+        # The number of records per page in this query.
         self.page_size = page_size
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
+        # The total number of entries that match the current statistical or query scope.
         self.total_count = total_count
+        # Indicates whether more pages are available. A value of true indicates that more data exists. A value of false indicates that no more data exists.
         self.truncated = truncated
 
     def validate(self):
@@ -118,21 +126,37 @@ class ListTablesResponseBodyItems(DaraModel):
         tenant_name: str = None,
         total_count: int = None,
     ):
+        # The comment of the data table.
         self.comment = comment
+        # The creation time of the data object. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
         self.creation_time = creation_time
+        # The cloud instance identity.
         self.data_asset_source_id = data_asset_source_id
+        # The database name.
         self.data_source_name = data_source_name
+        # The description of the database instance.
         self.instance_description = instance_description
+        # The data table name. Some engines return the name in the schema.table format.
         self.name = name
+        # The Alibaba Cloud account ID of the data table owner.
         self.owner = owner
+        # The cloud product code.
         self.product_code = product_code
+        # The sensitivity level ID.
         self.risk_level_id = risk_level_id
+        # The sensitivity level name.
         self.risk_level_name = risk_level_name
+        # The list of detection models or rules.
         self.rule_list = rule_list
+        # Indicates whether the data is detected as sensitive data.
         self.sensitive = sensitive
+        # The number of sensitive data entries within the current statistical scope.
         self.sensitive_count = sensitive_count
+        # The proportion of sensitive data.
         self.sensitive_ratio = sensitive_ratio
+        # The tenant name to which the data asset belongs.
         self.tenant_name = tenant_name
+        # The total number of entries that match the current statistical or query scope.
         self.total_count = total_count
 
     def validate(self):
@@ -260,8 +284,11 @@ class ListTablesResponseBodyItemsRuleList(DaraModel):
         name: str = None,
         risk_level_id: int = None,
     ):
+        # The number of hits for this detection rule.
         self.count = count
+        # The detection model or rule name.
         self.name = name
+        # The sensitivity level ID.
         self.risk_level_id = risk_level_id
 
     def validate(self):

@@ -9,6 +9,7 @@ class SyncDataAssetsResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The request ID, which can be used to locate the API call.
         self.request_id = request_id
 
     def validate(self):

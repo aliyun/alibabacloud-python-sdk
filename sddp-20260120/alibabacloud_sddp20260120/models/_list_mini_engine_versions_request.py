@@ -12,9 +12,20 @@ class ListMiniEngineVersionsRequest(DaraModel):
         product_code: str = None,
         product_id: int = None,
     ):
+        # The instance identity of the database. You can obtain this value from Items[].InstanceId returned by the ListDataMaskingInstances operation.
         self.instance_id = instance_id
+        # The language of the response description. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
+        # The code of the cloud product. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
         self.product_code = product_code
+        # The identifier of the cloud product type. Valid values:
+        # - 5: ApsaraDB RDS.
+        # - 8: PolarDB.
+        # - 27: PolarDBX2.
+        # 
+        # If you specify both ProductId and ProductCode, the values must correspond to each other.
         self.product_id = product_id
 
     def validate(self):

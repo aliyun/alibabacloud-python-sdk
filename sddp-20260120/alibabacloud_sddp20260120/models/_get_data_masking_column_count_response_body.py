@@ -11,7 +11,9 @@ class GetDataMaskingColumnCountResponseBody(DaraModel):
         column_count: main_models.GetDataMaskingColumnCountResponseBodyColumnCount = None,
         request_id: str = None,
     ):
+        # The column encryption statistics.
         self.column_count = column_count
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +52,13 @@ class GetDataMaskingColumnCountResponseBodyColumnCount(DaraModel):
         sensitive_count: int = None,
         total_count: int = None,
     ):
+        # The number of encrypted columns within the current scope.
         self.masked_count = masked_count
+        # The number of columns that failed to be encrypted within the current scope.
         self.masking_failed_count = masking_failed_count
+        # The number of sensitive columns within the current scope.
         self.sensitive_count = sensitive_count
+        # The total number of columns within the current scope.
         self.total_count = total_count
 
     def validate(self):

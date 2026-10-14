@@ -18,12 +18,19 @@ class ListDataSourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned data.
         self.current_page = current_page
+        # The list of records returned by the query.
         self.items = items
+        # The maximum number of records that can be returned for the current cursor-based pagination.
         self.max_results = max_results
+        # A compatible pagination cursor field. The ListDataSources operation uses page number-based pagination and does not rely on this field to determine whether more pages exist.
         self.next_token = next_token
+        # The number of records returned on each page.
         self.page_size = page_size
+        # The request identity, which is active when you invoke this API call.
         self.request_id = request_id
+        # The total number of entries that meet the current statistics or query scope.
         self.total_count = total_count
 
     def validate(self):
@@ -115,26 +122,59 @@ class ListDataSourcesResponseBodyItems(DaraModel):
         tenant_id: str = None,
         user_name: str = None,
     ):
+        # The connection status of the data source. Valid values:
+        # - UnConnected: Not connected.
+        # - Processing: Connecting.
+        # - Success: Connected.
+        # - Failed: Connection failed.
         self.connect_status = connect_status
+        # The identifier of the data asset in Data Security Center.
         self.data_asset_id = data_asset_id
+        # The identifier of the data source in Data Security Center.
         self.data_source_id = data_source_id
+        # The statistical value of the data source capacity. This field is not used in the column encryption process for relational databases.
         self.data_source_size = data_source_size
+        # The name of the database.
         self.db_name = db_name
+        # The description of the data source.
         self.description = description
+        # The type of the database engine.
         self.engine_type = engine_type
+        # The business error code of the record or operation. This field can be empty if no error occurs. Evaluate this field together with ErrorMessage.
         self.error_code = error_code
+        # The business error message of the record or operation.
         self.error_message = error_message
+        # The identifier of the record.
         self.id = id
+        # The status of the data source detection switch. Valid values:
+        # - Enable: Submitted for enabling.
+        # - Enabling: Enabling.
+        # - Enabled: Enabled.
+        # - EnableFailed: Enabling failed.
+        # - Disable: Submitted for disabling.
+        # - Disabling: Disabling.
+        # - Disabled: Disabled.
+        # - DisableFailed: Disabling failed.
         self.identify_status = identify_status
+        # The database instance identity.
         self.instance_id = instance_id
+        # The identity of the member accounts to which the asset belongs.
         self.member_account = member_account
+        # The port for the database connection.
         self.port = port
+        # The code of the cloud service.
         self.product_code = product_code
+        # The identifier of the cloud service type. 5: ApsaraDB RDS; 8: PolarDB; 27: PolarDB-X 2.0.
         self.product_id = product_id
+        # The ID of the region where the asset resides.
         self.region_id = region_id
+        # The name of the region where the asset resides.
         self.region_name = region_name
+        # The ID of the resource group to which the asset belongs.
         self.resource_group_id = resource_group_id
+        # The identifier of the database tenant.
         self.tenant_id = tenant_id
+        # The name of the database account used to connect to the data source.
         self.user_name = user_name
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListMiniEngineVersionsResponseBody(DaraModel):
         kernel_versions: List[main_models.ListMiniEngineVersionsResponseBodyKernelVersions] = None,
         request_id: str = None,
     ):
+        # The list of available kernel versions.
         self.kernel_versions = kernel_versions
+        # The request ID. You can use this ID to locate the API call.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class ListMiniEngineVersionsResponseBodyKernelVersions(DaraModel):
         kernel_version: str = None,
         kernel_version_name: str = None,
     ):
+        # The release type of the kernel version. This value is the same as the value returned by the corresponding database product. For example, for ApsaraDB RDS, LTS indicates a long-term support version and BETA indicates a preview version. For PolarDB, the value can be Stable, Old, HighRisk, or Beta.
         self.kernel_release_type = kernel_release_type
+        # The available kernel version number.
         self.kernel_version = kernel_version
+        # The display name of the kernel version.
         self.kernel_version_name = kernel_version_name
 
     def validate(self):

@@ -12,9 +12,15 @@ class ListIdentifyModelsRequest(DaraModel):
         lang: str = None,
         template_id: int = None,
     ):
+        # A reserved feature type parameter. This parameter is not used to filter results in the current query. You do not need to specify this parameter for column encryption calls.
         self.feature_type = feature_type
+        # Specifies whether to return only detection models supported in audit scenarios. If this parameter is set to true, only audit-supported models such as phone number, ID card, and bank card models are returned. You do not need to specify this parameter for column encryption scenarios.
         self.filter_audit_model = filter_audit_model
+        # The language of the response description. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
+        # The ID of the data classification template. You can obtain this value from Items[].Id in the response of the ListTemplates operation. The template must be consistent with the selected sensitivity level and detection models.
         self.template_id = template_id
 
     def validate(self):

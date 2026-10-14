@@ -18,15 +18,25 @@ class GetInstanceAttributeResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The current kernel version of the instance.
         self.current_kernel_version = current_kernel_version
+        # The database engine type.
         self.engine = engine
+        # The major version of the database engine.
         self.engine_version = engine_version
+        # The business error code for the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
         self.error_code = error_code
+        # The business error message for the record or operation.
         self.error_message = error_message
+        # Indicates whether the instance supports column encryption by using KMS keys.
         self.kms_encryption_supported = kms_encryption_supported
+        # The end time of the O&M window. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. The UTC time of the O&M window is combined with the date of the query day and returned.
         self.maintain_end_time = maintain_end_time
+        # The start time of the O&M window. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. The UTC time of the O&M window is combined with the date of the query day and returned.
         self.maintain_start_time = maintain_start_time
+        # The request ID. You can use this ID to locate the API call.
         self.request_id = request_id
+        # The current running status of the instance.
         self.status = status
 
     def validate(self):

@@ -11,8 +11,11 @@ class CheckDataMaskingInstanceResponseBody(DaraModel):
         error_message: str = None,
         request_id: str = None,
     ):
+        # The instance check result code. A value of Success indicates that the check passed. For other values, handle the error based on ErrorMessage.
         self.error_code = error_code
+        # The instance check result description. A specific reason is returned when the check fails.
         self.error_message = error_message
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
 
     def validate(self):

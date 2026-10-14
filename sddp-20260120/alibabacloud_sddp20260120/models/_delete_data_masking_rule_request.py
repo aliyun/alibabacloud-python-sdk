@@ -17,11 +17,24 @@ class DeleteDataMaskingRuleRequest(DaraModel):
         product_id: int = None,
         sub_rule_list: List[main_models.DeleteDataMaskingRuleRequestSubRuleList] = None,
     ):
+        # The database engine type. This value must match the EngineType of the target instance, such as MySQL or PostgreSQL.
         self.engine_type = engine_type
+        # The database instance identity. You can obtain this value from Items[].InstanceId in the response of ListDataMaskingInstances.
         self.instance_id = instance_id
+        # The language of the response description. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
+        # The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two must correspond to each other.
         self.product_code = product_code
+        # The cloud product type identifier. Valid values:
+        # - 5: RDS.
+        # - 8: POLARDB.
+        # - 27: PolarDBX2.
+        # 
+        # If both ProductId and ProductCode are specified, they must correspond to each other.
         self.product_id = product_id
+        # The list of column encryption targets grouped by database and table.
         self.sub_rule_list = sub_rule_list
 
     def validate(self):
@@ -89,8 +102,11 @@ class DeleteDataMaskingRuleRequestSubRuleList(DaraModel):
         db_name: str = None,
         table_name: str = None,
     ):
+        # The list of target column names. Separate multiple column names with commas (,).
         self.columns = columns
+        # The name of the target database.
         self.db_name = db_name
+        # The name of the target table.
         self.table_name = table_name
 
     def validate(self):

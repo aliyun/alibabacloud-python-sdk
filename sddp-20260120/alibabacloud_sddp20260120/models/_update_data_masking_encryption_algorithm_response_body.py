@@ -9,6 +9,7 @@ class UpdateDataMaskingEncryptionAlgorithmResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
 
     def validate(self):

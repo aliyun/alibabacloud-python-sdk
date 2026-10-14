@@ -17,14 +17,30 @@ class ListDataAssetAccountsRequest(DaraModel):
         product_code: str = None,
         product_ids: str = None,
     ):
+        # The database account name. Filters by exact account name.
         self.account_name = account_name
+        # The column encryption access permissions. Valid values:
+        # 
+        # - fullAccess: plaintext access.
+        # - restrictedAccess: restricted access.
+        # - noneAccess: decryption prohibited. noneAccess applies only to ApsaraDB RDS for MySQL instances whose current effective key pattern is client_key.
         self.auth_role = auth_role
+        # The query business scenario. Use DataMasking for the column encryption scenario. This value is case-sensitive.
         self.biz_type = biz_type
+        # The page number of the current query. Pages start from 1.
         self.current_page = current_page
+        # The database instance identity. You can obtain this value from Items[].InstanceId returned by ListDataMaskingInstances.
         self.instance_id = instance_id
+        # The language of the response description. Valid values:
+        # 
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
+        # The number of records per page. Keep other filter conditions consistent when querying the next page.
         self.page_size = page_size
+        # The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two values must correspond to each other.
         self.product_code = product_code
+        # The list of cloud product type identifiers. Separate multiple values with commas (,). Valid values for the column encryption scenario: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
         self.product_ids = product_ids
 
     def validate(self):

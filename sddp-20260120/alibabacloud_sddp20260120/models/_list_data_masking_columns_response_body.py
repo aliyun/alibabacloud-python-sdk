@@ -16,10 +16,15 @@ class ListDataMaskingColumnsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned data.
         self.current_page = current_page
+        # The list of records returned by the current query.
         self.items = items
+        # The number of records per page for the current query.
         self.page_size = page_size
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
+        # The total number of records that match the current query scope.
         self.total_count = total_count
 
     def validate(self):
@@ -96,23 +101,50 @@ class ListDataMaskingColumnsResponseBodyItems(DaraModel):
         rule_name: str = None,
         table_name: str = None,
     ):
+        # The data type of the database column.
         self.data_type = data_type
+        # The database name.
         self.db_name = db_name
+        # The database engine type.
         self.engine_type = engine_type
+        # The business error code of the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
         self.error_code = error_code
+        # The business error description of the record or operation.
         self.error_message = error_message
+        # The ID of the column record.
         self.id = id
+        # The instance identity of the database.
         self.instance_id = instance_id
+        # The column encryption status. Valid values:
+        # - NotEncrypted: Not encrypted.
+        # - Processing: Being processed.
+        # - Success: Encryption succeeded.
+        # - Failed: Encryption failed.
+        # - Deleting: Being disabled.
+        # - DeleteFailed: Disabling failed.
         self.masking_status = masking_status
+        # The list of matched model tags.
         self.model_tags = model_tags
+        # The name of the data column.
         self.name = name
+        # The cloud product code.
         self.product_code = product_code
+        # The cloud product type ID. Valid values:
+        # - 5: RDS.
+        # - 8: POLARDB.
+        # - 27: PolarDBX2.
         self.product_id = product_id
+        # The region ID of the asset.
         self.region_id = region_id
+        # The ID of the sensitivity level.
         self.risk_level_id = risk_level_id
+        # The name of the sensitivity level.
         self.risk_level_name = risk_level_name
+        # The ID of the matched detection rule.
         self.rule_id = rule_id
+        # The name of the matched detection rule.
         self.rule_name = rule_name
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -251,7 +283,9 @@ class ListDataMaskingColumnsResponseBodyItemsModelTags(DaraModel):
         id: int = None,
         name: str = None,
     ):
+        # The ID of the model tag.
         self.id = id
+        # The name of the model tag.
         self.name = name
 
     def validate(self):

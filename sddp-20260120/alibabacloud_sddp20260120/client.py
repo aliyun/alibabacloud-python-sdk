@@ -1170,6 +1170,8 @@ class Client(OpenApiClient):
             query['DataSourceId'] = request.data_source_id
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
+        if not DaraCore.is_null(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.identify_status):
             query['IdentifyStatus'] = request.identify_status
         if not DaraCore.is_null(request.instance_id):
@@ -1182,6 +1184,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.product_id):
@@ -1224,6 +1228,8 @@ class Client(OpenApiClient):
             query['DataSourceId'] = request.data_source_id
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
+        if not DaraCore.is_null(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.identify_status):
             query['IdentifyStatus'] = request.identify_status
         if not DaraCore.is_null(request.instance_id):
@@ -1236,6 +1242,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         if not DaraCore.is_null(request.product_id):

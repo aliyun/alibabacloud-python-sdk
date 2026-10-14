@@ -13,7 +13,9 @@ class ListRiskLevelsResponseBody(DaraModel):
         request_id: str = None,
         risk_level_list: List[main_models.ListRiskLevelsResponseBodyRiskLevelList] = None,
     ):
+        # The request ID. You can use this ID to locate the API call.
         self.request_id = request_id
+        # The list of sensitivity levels.
         self.risk_level_list = risk_level_list
 
     def validate(self):
@@ -58,9 +60,13 @@ class ListRiskLevelsResponseBodyRiskLevelList(DaraModel):
         name: str = None,
         reference_num: int = None,
     ):
+        # The description of the sensitivity level.
         self.description = description
+        # The ID of the sensitivity level.
         self.id = id
+        # The name of the sensitivity level.
         self.name = name
+        # The number of references to the sensitivity level.
         self.reference_num = reference_num
 
     def validate(self):

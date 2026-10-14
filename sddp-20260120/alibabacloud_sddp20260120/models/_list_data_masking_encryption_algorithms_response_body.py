@@ -13,7 +13,9 @@ class ListDataMaskingEncryptionAlgorithmsResponseBody(DaraModel):
         algorithms: List[main_models.ListDataMaskingEncryptionAlgorithmsResponseBodyAlgorithms] = None,
         request_id: str = None,
     ):
+        # The list of column encryption algorithms.
         self.algorithms = algorithms
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class ListDataMaskingEncryptionAlgorithmsResponseBodyAlgorithms(DaraModel):
         error_message: str = None,
         name: str = None,
     ):
+        # The business error code for the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
         self.error_code = error_code
+        # The business error description for the record or operation.
         self.error_message = error_message
+        # The algorithm name.
         self.name = name
 
     def validate(self):
