@@ -21,43 +21,49 @@ class DescribeHistoryTasksRequest(DaraModel):
         to_exec_time: int = None,
         to_start_time: str = None,
     ):
-        # Minimum task execution time. Used to filter tasks with execution time greater than this value, in seconds. Default 0, meaning no limit.
+        # The minimum execution duration of the task. This parameter is used to filter tasks whose execution duration is greater than this value. Unit: seconds. Default value: 0, which indicates no limit.
         self.from_exec_time = from_exec_time
-        # Start time of task start time, indicating querying tasks whose start time is after this time. Expressed according to ISO8601 standard, and must use UTC +0 time, format: yyyy-MM-ddTHH:mm:ssZ. Earliest supports 30 days ago, automatically converts to 30 days ago if more than 30 days from current time.
+        # The start time of the time range to query task start times. Tasks that start after this time are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The earliest supported time is 30 days ago. If the specified time is more than 30 days before the current time, it is automatically changed to 30 days ago.
         # 
         # This parameter is required.
         self.from_start_time = from_start_time
-        # The cluster ID. Separate multiple cluster IDs with commas (,). Maximum 30 cluster IDs. If not filled, defaults to querying historical tasks of all clusters in that region.
+        # The cluster ID. You can specify multiple cluster IDs separated by commas (,). You can specify up to 30 cluster IDs. If this parameter is left empty, historical tasks of all clusters in the region are queried by default.
         self.instance_id = instance_id
-        # The instance type. The value is fixed to Instance.
+        # The instance type. Set the value to Instance.
         self.instance_type = instance_type
-        # The number of the page to return. Valid range: positive integers. Default value: 1
+        # The page number of the query result. Valid values: positive integers. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 10 to 100. Default value: 10.
         self.page_size = page_size
-        # The region ID
+        # The region ID.
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The state of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**: The task failed.
-        # *   **Cancelling**
-        # *   **Canceled**
-        # *   **Waiting**
+        # - **Scheduled**: Pending execution.
         # 
-        # If querying multiple statuses, separate them with English commas. Default is empty, meaning select all.
+        # - **Running**: Running.
+        # 
+        # - **Succeed**: Succeeded.
+        # 
+        # - **Failed**: Failed.
+        # 
+        # - **Cancelling**: Being canceled.
+        # 
+        # - **Canceled**: Canceled.
+        # 
+        # - **Waiting**: Waiting for the scheduled time.
+        # 
+        # You can specify multiple values separated by commas (,). If this parameter is left empty, all statuses are queried by default.
         self.status = status
-        # The job IDs. Separate multiple task IDs with commas (,). Maximum 30 task IDs. If not filled, defaults to querying historical tasks of all clusters.
+        # The task ID. You can specify multiple task IDs separated by commas (,). You can specify up to 30 task IDs. If this parameter is left empty, historical tasks of all clusters are queried by default.
         self.task_id = task_id
-        # Task type, used to query specific type task situations. If multiple, separate with English commas (,), maximum 30 supported. Default is empty, meaning no restriction.
+        # The task type. This parameter is used to query tasks of a specific type. You can specify multiple task types separated by commas (,). You can specify up to 30 task types. If this parameter is left empty, no limit is applied.
         self.task_type = task_type
-        # Maximum task execution time. Used to filter tasks with execution time not less than this value, in seconds. Default 0, meaning no limit.
+        # The maximum execution duration of the task. This parameter is used to filter tasks whose execution duration does not exceed this value. Unit: seconds. Default value: 0, which indicates no limit.
         self.to_exec_time = to_exec_time
-        # End time of task start time, indicating querying tasks whose start time is before this time. Expressed according to ISO8601 standard, and must use UTC +0 time, format: yyyy-MM-ddTHH:mm:ssZ.
+        # The end time of the time range to query task start times. Tasks that start before this time are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.to_start_time = to_start_time

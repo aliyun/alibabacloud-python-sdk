@@ -17,40 +17,33 @@ class DescribeSparkSQLDiagnosisListRequest(DaraModel):
         statement_id: int = None,
     ):
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in a specific region, including the cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The latest start time.
+        # The maximum start time. Format: yyyy-MM-dd HH:mm:ss.
         self.max_start_time = max_start_time
-        # The earliest start time.
+        # The minimum start time. Format: yyyy-MM-dd HH:mm:ss.
         self.min_start_time = min_start_time
-        # The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"MaxExclusiveTime","Type":"Asc"}]`.
+        # Sorts the query results by a specified field. The value must be a JSON string. Example: `[{"Field":"MaxExclusiveTime","Type":"Asc"}]`. Parameters in the JSON string:
+        # - `Field`: the sort field. Valid values:
+        #     - `MaxExclusiveTime`: the maximum execution time.
+        #     - `PeakMemory`: the peak memory usage.
+        #     - `QueryStartTime`: the query start time.
+        #     - `QueryWallclockTime`: the query execution time.
         # 
-        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # - `Type`: the sort order. Valid values:
+        #     - `Asc`: ascending order.
+        #     - `Desc`: descending order.
         # 
-        #     *   `MaxExclusiveTime`: the maximum execution duration.
-        #     *   `PeakMemory`: the peak memory.
-        #     *   `QueryStartTime`: the start time of the query.
-        #     *   `QueryWallclockTime`: the execution duration of the query.
-        # 
-        # *   `Type` specifies the sorting order. Valid values:
-        # 
-        #     *   `Asc`: ascending order.
-        #     *   `Desc`: descending order.
-        # 
-        # > 
-        # 
-        # *   If you do not specify this parameter, query results are sorted by `MaxExclusiveTime` in ascending order.
+        # > - If this parameter is not specified, the results are sorted in ascending order by the `MaxExclusiveTime` field by default.
         self.order = order
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

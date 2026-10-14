@@ -13,13 +13,13 @@ class DescribeOperatorPermissionResponseBody(DaraModel):
         privileges: str = None,
         request_id: str = None,
     ):
-        # The time when the permissions take effect.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.created_time = created_time
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The time when the permissions expire.
+        # The expiration time of the authorization. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.expired_time = expired_time
-        # The queried permissions.
+        # The authorization details.
         self.privileges = privileges
         # The request ID.
         self.request_id = request_id

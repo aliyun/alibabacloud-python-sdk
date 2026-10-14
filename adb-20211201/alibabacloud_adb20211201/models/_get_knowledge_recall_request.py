@@ -8,27 +8,33 @@ class GetKnowledgeRecallRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        images: str = None,
         path: str = None,
         question: str = None,
+        semantic_rules: str = None,
         tags: str = None,
         topk: int = None,
         user: str = None,
     ):
-        # The ID of the ADB MySQL cluster.
+        # The ID of the AnalyticDB for MySQL cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The file path prefix. Only files that match the specified path prefix are recalled.
+        # The array of images to retrieve during image retrieval. Currently, only one image is supported.
+        self.images = images
+        # The file path prefix. Only files that match the path prefix are retrieved.
         self.path = path
-        # The question for knowledge base recall.
+        # The question for knowledge base retrieval.
         # 
         # This parameter is required.
         self.question = question
+        # The semantic rules. Currently, only "all" and "" are supported.
+        self.semantic_rules = semantic_rules
         # The list of tags in JSON format.
         self.tags = tags
-        # The top K associated files to recall.
+        # The top K value for retrieving associated files.
         self.topk = topk
-        # The username. Only files that the specified user has permission to access are recalled.
+        # The username. Only files that the user has permissions to access are retrieved.
         self.user = user
 
     def validate(self):
@@ -42,11 +48,17 @@ class GetKnowledgeRecallRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
+        if self.images is not None:
+            result['Images'] = self.images
+
         if self.path is not None:
             result['Path'] = self.path
 
         if self.question is not None:
             result['Question'] = self.question
+
+        if self.semantic_rules is not None:
+            result['SemanticRules'] = self.semantic_rules
 
         if self.tags is not None:
             result['Tags'] = self.tags
@@ -64,11 +76,17 @@ class GetKnowledgeRecallRequest(DaraModel):
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 
+        if m.get('Images') is not None:
+            self.images = m.get('Images')
+
         if m.get('Path') is not None:
             self.path = m.get('Path')
 
         if m.get('Question') is not None:
             self.question = m.get('Question')
+
+        if m.get('SemanticRules') is not None:
+            self.semantic_rules = m.get('SemanticRules')
 
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')

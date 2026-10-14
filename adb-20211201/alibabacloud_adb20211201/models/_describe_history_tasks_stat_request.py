@@ -19,40 +19,46 @@ class DescribeHistoryTasksStatRequest(DaraModel):
         to_exec_time: int = None,
         to_start_time: str = None,
     ):
-        # Minimum task execution time, used to filter tasks with execution time greater than this value, in seconds. Default 0, meaning no limit
+        # The minimum execution duration of the task, in seconds. This parameter is used to filter tasks whose execution duration is greater than the specified value. Default value: 0, which indicates no limit.
         self.from_exec_time = from_exec_time
-        # Query start time.
+        # The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.from_start_time = from_start_time
-        # Cluster ID.
+        # The cluster ID.
         self.instance_id = instance_id
-        # The ID of the region where the instance resides.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.security_token = security_token
-        # The state of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**: The task failed.
-        # *   **Cancelling**
-        # *   **Canceled**
-        # *   **Waiting**
+        # - **Scheduled**: Pending execution.
         # 
-        # Separate multiple states with commas (,). This parameter is empty by default, which indicates that tasks in all states are queried.
+        # - **Running**: Running.
+        # 
+        # - **Succeed**: Succeeded.
+        # 
+        # - **Failed**: Failed.
+        # 
+        # - **Cancelling**: Cancelling.
+        # 
+        # - **Canceled**: Canceled.
+        # 
+        # - **Waiting**: Waiting for the scheduled time.
+        # 
+        # Separate multiple values with commas (,). By default, this parameter is left empty, which indicates that all statuses are queried.
         self.status = status
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Task type.
+        # The task type.
         self.task_type = task_type
-        # Maximum task execution time, used to filter tasks with execution time not less than this value, in seconds. Default 0, meaning no limit
+        # The maximum execution duration of the task, in seconds. This parameter is used to filter tasks whose execution duration is less than or equal to the specified value. Default value: 0, which indicates no limit.
         self.to_exec_time = to_exec_time
-        # Represents tasks whose start time is before this time.
+        # The end time of the query. Only tasks whose start time is earlier than the specified end time are returned. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.to_start_time = to_start_time

@@ -56,9 +56,9 @@ class GetKnowledgeRecallResponseBodyData(DaraModel):
     ):
         # The total number of entries.
         self.count = count
-        # The prompt message.
+        # The message.
         self.message = message
-        # The recall results.
+        # The retrieval results.
         self.results = results
         # The Tracing Analysis ID.
         self.trace_id = trace_id

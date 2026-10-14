@@ -11,11 +11,11 @@ class DescribeApsDatasourceRequest(DaraModel):
         datasource_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL cluster.
+        # The ADB instance ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The data source ID.
+        # The ID of the data source.
         # 
         # This parameter is required.
         self.datasource_id = datasource_id

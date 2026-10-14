@@ -11,7 +11,7 @@ class GetSparkAppAttemptLogResponseBody(DaraModel):
         data: main_models.GetSparkAppAttemptLogResponseBodyData = None,
         request_id: str = None,
     ):
-        # The queried log.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -55,13 +55,14 @@ class GetSparkAppAttemptLogResponseBodyData(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The content of the log.
+        # The log content.
         self.log_content = log_content
-        # The number of log entries. A value of 0 indicates that no valid logs are returned.
+        # The number of log lines. A value of 0 indicates that no valid logs exist.
         self.log_size = log_size
-        # The alert message returned for the request, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
+        # The alert message, such as task execution failure or insufficient resources. This parameter is empty if no alert is generated.
         self.message = message
 
     def validate(self):

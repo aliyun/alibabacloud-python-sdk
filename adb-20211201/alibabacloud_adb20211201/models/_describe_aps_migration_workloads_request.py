@@ -15,11 +15,11 @@ class DescribeApsMigrationWorkloadsRequest(DaraModel):
         start_time: str = None,
         workload_name: str = None,
     ):
-        # The cluster ID.
+        # The instance ID. This parameter is required. You can call the DescribeDBClusters operation to query the instance ID in the destination region.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query.
+        # The end time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # The Object Storage Service (OSS) URL.
+        # The OSS address.
         self.oss_location = oss_location
         # The page number.
         # 
@@ -29,7 +29,7 @@ class DescribeApsMigrationWorkloadsRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The start of the time range to query.
+        # The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
         # The name of the workload.
         self.workload_name = workload_name

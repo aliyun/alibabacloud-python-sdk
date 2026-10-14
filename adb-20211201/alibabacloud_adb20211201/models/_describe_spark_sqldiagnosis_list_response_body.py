@@ -17,7 +17,7 @@ class DescribeSparkSQLDiagnosisListResponseBody(DaraModel):
         sqldiagnosis_list: List[main_models.DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList] = None,
         total_count: int = None,
     ):
-        # The information about the request denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The page number.
         self.page_number = page_number
@@ -25,9 +25,9 @@ class DescribeSparkSQLDiagnosisListResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried diagnostic information.
+        # The SQL diagnostics information collection.
         self.sqldiagnosis_list = sqldiagnosis_list
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -103,29 +103,28 @@ class DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList(DaraModel):
         statement_id: int = None,
     ):
         # The application ID.
-        # 
-        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
+        # > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the ID of the Spark application.
         self.app_id = app_id
-        # The execution duration of the query. Unit: milliseconds.
+        # The actual running time. Unit: milliseconds.
         self.elapsed_time = elapsed_time
-        # The ID of the query executed within the Spark application.
+        # The internal query execution ID within the Spark application.
         self.inner_query_id = inner_query_id
-        # The maximum operator execution duration. Unit: milliseconds.
+        # The maximum operator execution time. Unit: milliseconds.
         self.max_exclusive_time = max_exclusive_time
-        # The maximum operator memory used. Unit: bytes.
+        # The maximum operator memory consumption. Unit: bytes.
         self.peak_memory = peak_memory
         # The SQL statement.
         self.sql = sql
-        # The number of entries scanned.
+        # The number of scanned rows.
         self.scan_row_count = scan_row_count
-        # The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
+        # The start time of the query. Format: <i>yyyy-MM-ddTHH:mmZ</i> (UTC time).
         self.start_time = start_time
-        # The execution status of the query. Valid values:
+        # The final execution state of the query. Valid values:
         # 
-        # *   COMPLETED
-        # *   CANCELED
-        # *   ABORTED
-        # *   FAILED
+        # - COMPLETED: The query is completed.
+        # - CANCELED: The query is canceled.
+        # - ABORTED: The query is aborted.
+        # - FAILED: The query failed.
         self.state = state
         # The unique ID of the code block in the Spark job.
         self.statement_id = statement_id

@@ -37,7 +37,7 @@ class CreateDBResourceGroupRequest(DaraModel):
     ):
         # The PromQL resource group configuration.
         self.atm_config = atm_config
-        # The auto-stop interval, in minutes (m).
+        # The automatic stop interval, in minutes (m).
         self.auto_stop_interval = auto_stop_interval
         # The classification of the resource group. Valid values:
         # - SQL
@@ -64,7 +64,7 @@ class CreateDBResourceGroupRequest(DaraModel):
         self.engine = engine
         # The engine configuration.
         self.engine_params = engine_params
-        # The GPU time-based elastic plan.
+        # The GPU time-sharing elastic plan.
         self.gpu_elastic_plan = gpu_elastic_plan
         # The name of the resource group.
         # - The name can be up to 255 characters in length.
@@ -76,15 +76,15 @@ class CreateDBResourceGroupRequest(DaraModel):
         # The type of the resource group. Valid values:
         # - **Interactive**
         # - **Job**
-        # > For more information about Data Lakehouse Edition resource groups, see [Introduction to resource groups (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
         # 
         # This parameter is required.
         self.group_type = group_type
         # A reserved parameter (not applicable).
         self.max_cluster_count = max_cluster_count
         # The maximum reserved computing resources, in ACUs.
-        # - If the resource group type is Interactive, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 16 ACUs.
-        # - If the resource group type is Job, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 8 ACUs.
+        # - If the resource group type is Interactive, the maximum reserved computing resources are the current unallocated resources of the cluster, with a step size of 16 ACUs.
+        # - If the resource group type is Job, the maximum reserved computing resources are the current unallocated resources of the cluster, with a step size of 8 ACUs.
         self.max_compute_resource = max_compute_resource
         # The maximum number of GPUs.
         self.max_gpu_quantity = max_gpu_quantity
@@ -106,13 +106,13 @@ class CreateDBResourceGroupRequest(DaraModel):
         # The job routing rules.
         self.rules = rules
         # The scaling policy of the resource group. Valid values:
-        # - AutoScaling: enables the AutoScaling auto-scaling policy.
-        # - Disable: disables auto-scaling.
-        # - MultiCluster: enables the MultiCluster auto-scaling policy.
+        # - AutoScaling: enables the AutoScaling automatic scaling policy.
+        # - Disable: disables automatic scaling.
+        # - MultiCluster: enables the MultiCluster automatic scaling policy.
         self.scale_policy = scale_policy
         # The specification name.
         self.spec_name = spec_name
-        # The name of the destination resource group.
+        # The name of the target resource group.
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):
@@ -304,7 +304,7 @@ class CreateDBResourceGroupRequestRules(DaraModel):
         self.group_name = group_name
         # The query execution time threshold, in milliseconds (ms).
         self.query_time = query_time
-        # The name of the destination resource group.
+        # The name of the target resource group.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -342,6 +342,7 @@ class CreateDBResourceGroupRequestRules(DaraModel):
 class CreateDBResourceGroupRequestRayConfig(DaraModel):
     def __init__(
         self,
+        auth_token: str = None,
         category: str = None,
         enable_user_eni: bool = None,
         head_allocate_unit: str = None,
@@ -352,23 +353,26 @@ class CreateDBResourceGroupRequestRayConfig(DaraModel):
         user_defined_requirements: str = None,
         worker_groups: List[main_models.CreateDBResourceGroupRequestRayConfigWorkerGroups] = None,
     ):
+        # The Ray authentication token.
+        self.auth_token = auth_token
         # The Ray cluster type. Valid values:
         # 
-        # - BASIC: the basic type, which is non-highly available.
+        # - BASIC: basic type, non-high-availability.
         # 
-        # - HIGH_AVAILABILITY: the highly available type.
+        # - HIGH_AVAILABILITY: high-availability type.
         self.category = category
-        # Specifies whether to enable user Elastic Network Interface (ENI) connectivity.
+        # Specifies whether to enable user ENI connectivity.
         self.enable_user_eni = enable_user_eni
         # The allocation unit of the head node.
         self.head_allocate_unit = head_allocate_unit
         # The disk size of the head node.
         self.head_disk_capacity = head_disk_capacity
-        # The specification of the head node.
+        # The node specifications of the head node.
         self.head_spec = head_spec
         # The resource type of the head node.
         self.head_spec_type = head_spec_type
         self.storage_mounts = storage_mounts
+        # The custom Python dependencies for RayCluster. The content follows the requirements.txt format, with one pip dependency per line. A maximum of 200 lines are supported, and each line can be up to 512 characters in length. Version constraints, extras, PEP 440 direct URLs, and # comments are supported. Shell metacharacters are not supported. This parameter applies only to AI resource groups of the RayCluster type.
         self.user_defined_requirements = user_defined_requirements
         # The list of Ray worker group configurations.
         self.worker_groups = worker_groups
@@ -388,6 +392,9 @@ class CreateDBResourceGroupRequestRayConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auth_token is not None:
+            result['AuthToken'] = self.auth_token
+
         if self.category is not None:
             result['Category'] = self.category
 
@@ -423,6 +430,9 @@ class CreateDBResourceGroupRequestRayConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthToken') is not None:
+            self.auth_token = m.get('AuthToken')
+
         if m.get('Category') is not None:
             self.category = m.get('Category')
 
@@ -479,7 +489,7 @@ class CreateDBResourceGroupRequestRayConfigWorkerGroups(DaraModel):
         self.min_worker_quantity = min_worker_quantity
         # The disk size of the worker node.
         self.worker_disk_capacity = worker_disk_capacity
-        # The specification of the worker node.
+        # The node specifications of the worker node.
         self.worker_spec_name = worker_spec_name
         # The resource type of the worker node.
         self.worker_spec_type = worker_spec_type
@@ -636,9 +646,9 @@ class CreateDBResourceGroupRequestGpuElasticPlanRules(DaraModel):
         end_cron_expression: str = None,
         start_cron_expression: str = None,
     ):
-        # The end time as a cron expression. The interval must be at least 1 hour.
+        # The end time, specified as a cron expression. The interval must be at least 1 hour.
         self.end_cron_expression = end_cron_expression
-        # The start time as a cron expression. The interval must be at least 1 hour.
+        # The start time, specified as a cron expression. The interval must be at least 1 hour.
         self.start_cron_expression = start_cron_expression
 
     def validate(self):
@@ -684,17 +694,17 @@ class CreateDBResourceGroupRequestAtmConfig(DaraModel):
     ):
         # The number of authentication nodes.
         self.auth_node_num = auth_node_num
-        # The authentication node specification ([0-9+]ACU).
+        # The node specifications of authentication nodes ([0-9+]ACU).
         self.auth_node_spec = auth_node_spec
         # The number of insert nodes.
         self.insert_node_num = insert_node_num
-        # The insert node specification ([0-9+]ACU).
+        # The node specifications of insert nodes ([0-9+]ACU).
         self.insert_node_spec = insert_node_spec
         # The cache size of query nodes (GB).
         self.select_node_cache_size = select_node_cache_size
         # The number of query nodes.
         self.select_node_num = select_node_num
-        # The query node specification ([0-9+]ACU).
+        # The node specifications of query nodes ([0-9+]ACU).
         self.select_node_spec = select_node_spec
         # The disk size of storage nodes.
         self.storage_node_disk_size = storage_node_disk_size
@@ -702,7 +712,7 @@ class CreateDBResourceGroupRequestAtmConfig(DaraModel):
         self.storage_node_disk_type = storage_node_disk_type
         # The number of storage nodes.
         self.storage_node_num = storage_node_num
-        # The storage node specification ([0-9+]ACU).
+        # The node specifications of storage nodes ([0-9+]ACU).
         self.storage_node_spec = storage_node_spec
 
     def validate(self):

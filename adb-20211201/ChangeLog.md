@@ -1,3 +1,9 @@
+2026-10-14 Version: 4.5.1
+- Update API CreateDBResourceGroup: add request parameters RayConfig.AuthToken.
+- Update API GetKnowledgeRecall: add request parameters Images.
+- Update API GetKnowledgeRecall: add request parameters SemanticRules.
+
+
 2026-09-16 Version: 4.4.0
 - Support API ListKnowledgeFiles.
 

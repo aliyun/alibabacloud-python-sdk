@@ -34,7 +34,7 @@ class CreateDBResourceGroupShrinkRequest(DaraModel):
     ):
         # The PromQL resource group configuration.
         self.atm_config_shrink = atm_config_shrink
-        # The auto-stop interval, in minutes (m).
+        # The automatic stop interval, in minutes (m).
         self.auto_stop_interval = auto_stop_interval
         # The classification of the resource group. Valid values:
         # - SQL
@@ -61,7 +61,7 @@ class CreateDBResourceGroupShrinkRequest(DaraModel):
         self.engine = engine
         # The engine configuration.
         self.engine_params_shrink = engine_params_shrink
-        # The GPU time-based elastic plan.
+        # The GPU time-sharing elastic plan.
         self.gpu_elastic_plan_shrink = gpu_elastic_plan_shrink
         # The name of the resource group.
         # - The name can be up to 255 characters in length.
@@ -73,15 +73,15 @@ class CreateDBResourceGroupShrinkRequest(DaraModel):
         # The type of the resource group. Valid values:
         # - **Interactive**
         # - **Job**
-        # > For more information about Data Lakehouse Edition resource groups, see [Introduction to resource groups (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
         # 
         # This parameter is required.
         self.group_type = group_type
         # A reserved parameter (not applicable).
         self.max_cluster_count = max_cluster_count
         # The maximum reserved computing resources, in ACUs.
-        # - If the resource group type is Interactive, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 16 ACUs.
-        # - If the resource group type is Job, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 8 ACUs.
+        # - If the resource group type is Interactive, the maximum reserved computing resources are the current unallocated resources of the cluster, with a step size of 16 ACUs.
+        # - If the resource group type is Job, the maximum reserved computing resources are the current unallocated resources of the cluster, with a step size of 8 ACUs.
         self.max_compute_resource = max_compute_resource
         # The maximum number of GPUs.
         self.max_gpu_quantity = max_gpu_quantity
@@ -103,13 +103,13 @@ class CreateDBResourceGroupShrinkRequest(DaraModel):
         # The job routing rules.
         self.rules_shrink = rules_shrink
         # The scaling policy of the resource group. Valid values:
-        # - AutoScaling: enables the AutoScaling auto-scaling policy.
-        # - Disable: disables auto-scaling.
-        # - MultiCluster: enables the MultiCluster auto-scaling policy.
+        # - AutoScaling: enables the AutoScaling automatic scaling policy.
+        # - Disable: disables automatic scaling.
+        # - MultiCluster: enables the MultiCluster automatic scaling policy.
         self.scale_policy = scale_policy
         # The specification name.
         self.spec_name = spec_name
-        # The name of the destination resource group.
+        # The name of the target resource group.
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):

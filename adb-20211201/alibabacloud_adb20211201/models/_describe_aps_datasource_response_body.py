@@ -11,9 +11,9 @@ class DescribeApsDatasourceResponseBody(DaraModel):
         aps_datasource: main_models.DescribeApsDatasourceResponseBodyApsDatasource = None,
         request_id: str = None,
     ):
-        # The queried APS data source.
+        # -
         self.aps_datasource = aps_datasource
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeApsDatasourceResponseBodyApsDatasource(DaraModel):
         rds_mysql_info: main_models.DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo = None,
         sls_info: main_models.DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo = None,
     ):
-        # The time when the data source was created.
+        # The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
-        # The cluster ID.
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The information about Databricks.
+        # The Databricks information.
         self.databricks_info = databricks_info
         # The description of the data source.
         self.datasource_description = datasource_description
@@ -71,13 +71,13 @@ class DescribeApsDatasourceResponseBodyApsDatasource(DaraModel):
         self.datasource_name = datasource_name
         # The type of the data source.
         self.datasource_type = datasource_type
-        # The information about the Hive data source.
+        # The Hive data source information.
         self.hive_info = hive_info
-        # The information about the Kafka instance.
+        # The Kafka instance information.
         self.kafka_info = kafka_info
-        # The parameter is no longer supported.
+        # This parameter is no longer supported.
         self.polar_dbmysql_info = polar_dbmysql_info
-        # The parameter is no longer supported.
+        # This parameter is no longer supported.
         self.rds_mysql_info = rds_mysql_info
         # The Simple Log Service (SLS) project.
         self.sls_info = sls_info
@@ -189,10 +189,10 @@ class DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo(DaraModel):
         source_region_id: str = None,
         store: str = None,
     ):
-        # Indicates whether the data source is a cross-account resource. Valid values:
+        # Specifies whether the resource is cross-account. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The current network instance is a cross-account resource.
+        # - **false**: The current network instance belongs to the current account.
         self.across = across
         # The name of the cross-account role.
         self.across_role = across_role
@@ -200,7 +200,7 @@ class DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo(DaraModel):
         self.across_uid = across_uid
         # The name of the SLS project.
         self.project = project
-        # The region ID.
+        # The ID of the region to which the production site belongs.
         self.source_region_id = source_region_id
         # The name of the SLS Logstore.
         self.store = store
@@ -264,15 +264,15 @@ class DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo(DaraModel):
         security_group: str = None,
         user_name: str = None,
     ):
-        # The parameter is no longer supported.
+        # -
         self.connect_url = connect_url
-        # The parameter is no longer supported.
+        # -
         self.instance_id = instance_id
-        # The parameter is no longer supported.
+        # -
         self.region_id = region_id
-        # The parameter is no longer supported.
+        # -
         self.security_group = security_group
-        # The parameter is no longer supported.
+        # -
         self.user_name = user_name
 
     def validate(self):
@@ -331,21 +331,21 @@ class DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo(DaraModel):
         security_group: str = None,
         user_name: str = None,
     ):
-        # The parameter is no longer supported.
+        # -
         self.across = across
-        # The parameter is no longer supported.
+        # -
         self.across_role = across_role
-        # The parameter is no longer supported.
+        # -
         self.across_uid = across_uid
-        # The parameter is no longer supported.
+        # -
         self.connect_url = connect_url
-        # The parameter is no longer supported.
+        # -
         self.instance_id = instance_id
-        # The parameter is no longer supported.
+        # -
         self.region_id = region_id
-        # The parameter is no longer supported.
+        # -
         self.security_group = security_group
-        # The parameter is no longer supported.
+        # -
         self.user_name = user_name
 
     def validate(self):
@@ -416,9 +416,9 @@ class DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo(DaraModel):
         kafka_cluster_id: str = None,
         kafka_topic: str = None,
     ):
-        # The ID of the Kafka instance.
+        # The Kafka instance ID.
         self.kafka_cluster_id = kafka_cluster_id
-        # The topic of the Kafka instance.
+        # kafka topic
         self.kafka_topic = kafka_topic
 
     def validate(self):
@@ -457,11 +457,11 @@ class DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo(DaraModel):
     ):
         # The ID of the E-MapReduce (EMR) cluster.
         self.emr_cluster_id = emr_cluster_id
-        # The URL of the Hive Metastore.
+        # The Hive metastore URL.
         self.meta_store_uri = meta_store_uri
-        # The security group ID.
+        # The ID of the security group.
         self.security_group = security_group
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.vswitch = vswitch
 
     def validate(self):
@@ -508,7 +508,7 @@ class DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo(DaraModel):
         access_token: str = None,
         workspace_url: str = None,
     ):
-        # The token that is used to access Databricks.
+        # The token used to access Databricks.
         self.access_token = access_token
         # The URL of the workspace.
         self.workspace_url = workspace_url

@@ -992,6 +992,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.cancel_spark_warehouse_batch_sqlwith_options_async(request, runtime)
 
+    def cancel_sql_pattern_compare_report_with_options(
+        self,
+        request: main_models.CancelSqlPatternCompareReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelSqlPatternCompareReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelSqlPatternCompareReport',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelSqlPatternCompareReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_sql_pattern_compare_report_with_options_async(
+        self,
+        request: main_models.CancelSqlPatternCompareReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelSqlPatternCompareReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelSqlPatternCompareReport',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelSqlPatternCompareReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_sql_pattern_compare_report(
+        self,
+        request: main_models.CancelSqlPatternCompareReportRequest,
+    ) -> main_models.CancelSqlPatternCompareReportResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_sql_pattern_compare_report_with_options(request, runtime)
+
+    async def cancel_sql_pattern_compare_report_async(
+        self,
+        request: main_models.CancelSqlPatternCompareReportRequest,
+    ) -> main_models.CancelSqlPatternCompareReportResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_sql_pattern_compare_report_with_options_async(request, runtime)
+
     def check_bind_ram_user_with_options(
         self,
         request: main_models.CheckBindRamUserRequest,
@@ -3719,6 +3797,100 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSparkTemplateResponse:
         runtime = RuntimeOptions()
         return await self.create_spark_template_with_options_async(request, runtime)
+
+    def create_sql_pattern_compare_report_with_options(
+        self,
+        request: main_models.CreateSqlPatternCompareReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSqlPatternCompareReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.compare_end_time):
+            query['CompareEndTime'] = request.compare_end_time
+        if not DaraCore.is_null(request.compare_start_time):
+            query['CompareStartTime'] = request.compare_start_time
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.pattern_type):
+            query['PatternType'] = request.pattern_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSqlPatternCompareReport',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSqlPatternCompareReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sql_pattern_compare_report_with_options_async(
+        self,
+        request: main_models.CreateSqlPatternCompareReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSqlPatternCompareReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.compare_end_time):
+            query['CompareEndTime'] = request.compare_end_time
+        if not DaraCore.is_null(request.compare_start_time):
+            query['CompareStartTime'] = request.compare_start_time
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.pattern_type):
+            query['PatternType'] = request.pattern_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSqlPatternCompareReport',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSqlPatternCompareReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sql_pattern_compare_report(
+        self,
+        request: main_models.CreateSqlPatternCompareReportRequest,
+    ) -> main_models.CreateSqlPatternCompareReportResponse:
+        runtime = RuntimeOptions()
+        return self.create_sql_pattern_compare_report_with_options(request, runtime)
+
+    async def create_sql_pattern_compare_report_async(
+        self,
+        request: main_models.CreateSqlPatternCompareReportRequest,
+    ) -> main_models.CreateSqlPatternCompareReportResponse:
+        runtime = RuntimeOptions()
+        return await self.create_sql_pattern_compare_report_with_options_async(request, runtime)
 
     def delete_account_with_options(
         self,
@@ -12936,6 +13108,202 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_sql_pattern_with_options_async(request, runtime)
 
+    def describe_sql_pattern_compare_report_with_options(
+        self,
+        request: main_models.DescribeSqlPatternCompareReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSqlPatternCompareReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.change_rate):
+            query['ChangeRate'] = request.change_rate
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.include_pattern):
+            query['IncludePattern'] = request.include_pattern
+        if not DaraCore.is_null(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSqlPatternCompareReport',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSqlPatternCompareReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sql_pattern_compare_report_with_options_async(
+        self,
+        request: main_models.DescribeSqlPatternCompareReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSqlPatternCompareReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.change_rate):
+            query['ChangeRate'] = request.change_rate
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.include_pattern):
+            query['IncludePattern'] = request.include_pattern
+        if not DaraCore.is_null(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSqlPatternCompareReport',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSqlPatternCompareReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sql_pattern_compare_report(
+        self,
+        request: main_models.DescribeSqlPatternCompareReportRequest,
+    ) -> main_models.DescribeSqlPatternCompareReportResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sql_pattern_compare_report_with_options(request, runtime)
+
+    async def describe_sql_pattern_compare_report_async(
+        self,
+        request: main_models.DescribeSqlPatternCompareReportRequest,
+    ) -> main_models.DescribeSqlPatternCompareReportResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sql_pattern_compare_report_with_options_async(request, runtime)
+
+    def describe_sql_pattern_compare_reports_with_options(
+        self,
+        request: main_models.DescribeSqlPatternCompareReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSqlPatternCompareReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSqlPatternCompareReports',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSqlPatternCompareReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sql_pattern_compare_reports_with_options_async(
+        self,
+        request: main_models.DescribeSqlPatternCompareReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSqlPatternCompareReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSqlPatternCompareReports',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSqlPatternCompareReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sql_pattern_compare_reports(
+        self,
+        request: main_models.DescribeSqlPatternCompareReportsRequest,
+    ) -> main_models.DescribeSqlPatternCompareReportsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sql_pattern_compare_reports_with_options(request, runtime)
+
+    async def describe_sql_pattern_compare_reports_async(
+        self,
+        request: main_models.DescribeSqlPatternCompareReportsRequest,
+    ) -> main_models.DescribeSqlPatternCompareReportsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sql_pattern_compare_reports_with_options_async(request, runtime)
+
     def describe_storage_resource_usage_with_options(
         self,
         request: main_models.DescribeStorageResourceUsageRequest,
@@ -14985,14 +15353,20 @@ class Client(OpenApiClient):
             query['Path'] = request.path
         if not DaraCore.is_null(request.question):
             query['Question'] = request.question
+        if not DaraCore.is_null(request.semantic_rules):
+            query['SemanticRules'] = request.semantic_rules
         if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         if not DaraCore.is_null(request.topk):
             query['Topk'] = request.topk
         if not DaraCore.is_null(request.user):
             query['User'] = request.user
+        body = {}
+        if not DaraCore.is_null(request.images):
+            body['Images'] = request.images
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'GetKnowledgeRecall',
@@ -15023,14 +15397,20 @@ class Client(OpenApiClient):
             query['Path'] = request.path
         if not DaraCore.is_null(request.question):
             query['Question'] = request.question
+        if not DaraCore.is_null(request.semantic_rules):
+            query['SemanticRules'] = request.semantic_rules
         if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         if not DaraCore.is_null(request.topk):
             query['Topk'] = request.topk
         if not DaraCore.is_null(request.user):
             query['User'] = request.user
+        body = {}
+        if not DaraCore.is_null(request.images):
+            body['Images'] = request.images
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'GetKnowledgeRecall',

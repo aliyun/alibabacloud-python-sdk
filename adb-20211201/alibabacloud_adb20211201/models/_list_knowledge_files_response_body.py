@@ -13,7 +13,9 @@ class ListKnowledgeFilesResponseBody(DaraModel):
         data: main_models.ListKnowledgeFilesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -54,11 +56,19 @@ class ListKnowledgeFilesResponseBodyData(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The list of file information.
         self.files = files
+        # The message returned for the request.
         self.message = message
+        # The current page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # Indicates whether the request was successful. Valid values:
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -134,16 +144,31 @@ class ListKnowledgeFilesResponseBodyDataFiles(DaraModel):
         process_status: str = None,
         updated_at: str = None,
     ):
+        # The time when the file was added to the knowledge base. The format is yyyy-MM-dd HH:mm:ss.
         self.created_at = created_at
+        # The ID of the file.
         self.file_id = file_id
+        # The size of the file.
         self.file_size_bytes = file_size_bytes
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The format of the file.
         self.format = format
+        # Indicates whether the file is a directory.
         self.is_directory = is_directory
+        # The file_id of the content host.
         self.owner_file_id = owner_file_id
+        # The total number of pages in the file, such as the number of pages in a PDF file.
         self.page_count = page_count
+        # The processing information of the knowledge base file.
         self.process_message = process_message
+        # The status of the file in the knowledge base. Valid values:
+        # 
+        # - Processing: The file is being processed.
+        # 
+        # - Finished: The file has been processed.
         self.process_status = process_status
+        # The update time. The format is yyyy-MM-dd HH:mm:ss.
         self.updated_at = updated_at
 
     def validate(self):

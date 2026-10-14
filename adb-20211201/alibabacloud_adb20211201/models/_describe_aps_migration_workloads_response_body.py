@@ -16,15 +16,15 @@ class DescribeApsMigrationWorkloadsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried migration workloads.
+        # The list of migration workloads.
         self.migration_workloads = migration_workloads
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on the current page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -94,27 +94,27 @@ class DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads(DaraModel):
         target_type: str = None,
         workload_sub_type: str = None,
     ):
-        # The number of AnalyticDB compute units (ACUs).
+        # The number of ACUs.
         self.acu_count = acu_count
-        # The time when the job was created.
+        # The time when the task was created. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
         self.create_time = create_time
         # The error message.
         self.failed_msg = failed_msg
-        # The job ID.
+        # The task ID.
         self.id = id
         # The maximum response time.
         self.max_rt = max_rt
-        # The time when the migration job was modified.
+        # The time when the task was modified. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
         self.modify_time = modify_time
-        # The name of the workload.
+        # The name.
         self.name = name
-        # The OSS URL.
+        # The OSS address.
         self.oss_location = oss_location
         # The status.
         self.state = state
         # The destination type.
         self.target_type = target_type
-        # The sub-type of the workload.
+        # The subtask type.
         self.workload_sub_type = workload_sub_type
 
     def validate(self):

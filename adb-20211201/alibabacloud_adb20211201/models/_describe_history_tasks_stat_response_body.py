@@ -18,25 +18,24 @@ class DescribeHistoryTasksStatResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The queried information about the request denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # API status or POP error code.
+        # The API status code or POP error code.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The tasks.
+        # The list of tasks.
         self.items = items
-        # The returned message. Valid values:
+        # The additional information about the call result. Valid values:
         # 
-        # *   If the request was successful, an success message is returned.
-        # *   If the request failed, an error message is returned.
+        # - If the request is normal, OK is returned.
+        # - If the request is abnormal, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -112,15 +111,21 @@ class DescribeHistoryTasksStatResponseBodyItems(DaraModel):
         status: str = None,
         total_count: int = None,
     ):
-        # The status of the APS job.
+        # The task status. Valid values:
         # 
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**: The task failed.
-        # *   **Cancelling**
-        # *   **Canceled**
-        # *   **Waiting**
+        # - **Scheduled**: Pending execution.
+        # 
+        # - **Running**: Running.
+        # 
+        # - **Succeed**: Succeeded.
+        # 
+        # - **Failed**: Failed.
+        # 
+        # - **Cancelling**: Cancelling.
+        # 
+        # - **Canceled**: Canceled.
+        # 
+        # - **Waiting**: Waiting for the scheduled time.
         self.status = status
         # The total number of tasks.
         self.total_count = total_count
@@ -162,28 +167,26 @@ class DescribeHistoryTasksStatResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # Authorized action
+        # The authentication action.
         self.auth_action = auth_action
-        # The display name of the requester.
+        # The display name of the authorized principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The ID of the Alibaba Cloud account to which the authentication principal belongs.
+        # The Alibaba Cloud account ID of the authenticated principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The requester type.
+        # The type of the authorized principal.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the policy denial. Valid values:
-        # 
-        # *   **ImplicitDeny**: The resource holder has not configured a policy for the current user. By default, unauthorized operations are denied.
-        # *   **ExplicitDeny**: The RAM policy configured by the resource holder explicitly denies the current user access to the corresponding resources.
+        # The type of the access policy denial. Valid values:
+        # - **ImplicitDeny**: The resource owner has not configured a relevant access policy for the current user, and unauthorized operations are denied by default.
+        # - **ExplicitDeny**: The RAM policy configured by the resource owner explicitly denies the current user access to the corresponding resource.
         self.no_permission_type = no_permission_type
-        # The type of the policy that causes the access denied error.
-        # 
-        # *   **ControlPolicy**: control policy
-        # *   **SessionPolicy**: an additional policy that is added to the temporary token.
-        # *   **AssumeRolePolicy**: the authorization policy of the RAM role.
-        # *   **AccountLevelIdentityBasedPolicy**: the principal policies of the account authorization scope, including custom policies and system policies.
-        # *   **ResourceGroupLevelIdentityBasedPolicy**: the principal policy of the resource group authorization scope, including custom policies and system policies.
+        # The type of the policy that caused the permission denial. Valid values:
+        # - **ControlPolicy**: Control policy.
+        # - **SessionPolicy**: An additional permission policy added to the temporary token.
+        # - **AssumeRolePolicy**: The trust policy of the RAM role.
+        # - **AccountLevelIdentityBasedPolicy**: The identity-access policy at the account level, including custom policies and system policies.
+        # - **ResourceGroupLevelIdentityBasedPolicy**: The identity-access policy at the resource group level, including custom policies and system policies.
         self.policy_type = policy_type
 
     def validate(self):

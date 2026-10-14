@@ -16,13 +16,13 @@ class DescribeApsDatasourcesRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL cluster.
+        # The ADB instance ID. This parameter is required. You can invoke the DescribeDBClusters operation to query the cluster ID in the specified region.
         self.dbcluster_id = dbcluster_id
         # The name of the data source.
         self.datasource_name = datasource_name
         # The type of the data source.
         self.datasource_type = datasource_type
-        # The end of the time range to query.
+        # The end date. Format: yyyy-MM-dd.
         self.end_time = end_time
         # The page number.
         # 
@@ -34,7 +34,7 @@ class DescribeApsDatasourcesRequest(DaraModel):
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query.
+        # The start date. Format: yyyy-MM-dd.
         self.start_time = start_time
 
     def validate(self):

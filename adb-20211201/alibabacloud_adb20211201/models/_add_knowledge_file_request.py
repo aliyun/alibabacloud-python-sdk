@@ -15,19 +15,19 @@ class AddKnowledgeFileRequest(DaraModel):
         tags: str = None,
         upload_user: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL cluster.
+        # The AnalyticDB for MySQL cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The file location. Currently, only OSS paths are supported.
+        # The file location. Only OSS paths are supported.
         # 
         # This parameter is required.
         self.file_location = file_location
         # The file type.
         self.file_type = file_type
-        # Specifies whether the path is a directory.
+        # Specifies whether the path is a folder.
         self.is_dir = is_dir
-        # The confidence level or weight of the file.
+        # The credibility or weight of the file.
         self.priority = priority
         # The file tags in JSON format.
         self.tags = tags

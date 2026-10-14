@@ -21,31 +21,29 @@ class DescribeHistoryTasksResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # null
+        # The details of the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code that is returned.
+        # The API status code or POP error code.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The task list.
         self.items = items
-        # The returned message. null
-        # 
-        # *   null****
-        # *   null
+        # The additional information about the call result. Valid values:
+        # - If the request is normal, **Success** is returned. 
+        # - If the request is abnormal, a specific error code is returned.
         self.message = message
-        # The page number of the returned page.
+        # The page number of the query result.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call is successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
-        # Total record count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -157,56 +155,63 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         task_type: str = None,
         uid: str = None,
     ):
-        # Allowed operation information. When used specifically, matches operation Action based on currentStepName+status in this information. If no Action is matched, represents task current status does not support operations.
+        # The allowed operation information. When you use this parameter, the system matches the operation action based on the currentStepName and status in this information. If no action is matched, the current task status does not support the operation.
         self.action_info = action_info
-        # null
+        # The ID of the requesting user. If callerSource is User, it represents the user UID.
         self.caller_source = caller_source
-        # null
+        # The request source. Valid values:
         # 
-        # *   **null**
-        # *   **null**
+        # - **System**: System.
+        # 
+        # - **User**: User.
         self.caller_uid = caller_uid
-        # Current executing step name. If empty, represents task has not started.
+        # The name of the current step. If this parameter is empty, the task has not started.
         self.current_step_name = current_step_name
-        # The database engine type.
+        # The database type.
         self.db_type = db_type
-        # Task end time.
+        # The end time of the task. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.end_time = end_time
-        # Cluster ID.
+        # The cluster ID.
         self.instance_id = instance_id
-        # The instance ID.
+        # The instance name.
         self.instance_name = instance_name
-        # Instance type.
+        # The instance type.
         self.instance_type = instance_type
-        # The service name.
+        # The product.
         self.product = product
-        # Indicates the task progress.
+        # The current progress.
         self.progress = progress
-        # The reason why the current task was initiated.
+        # The reason why the current task is initiated.
         self.reason_code = reason_code
         # The region ID.
         self.region_id = region_id
-        # Estimated remaining execution time, in seconds.
+        # The estimated remaining execution time. Unit: seconds.
         self.remain_time = remain_time
-        # Task start time.
+        # The start time of the task. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.start_time = start_time
-        # Task status. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**: The task failed.
-        # *   **Cancelling**
-        # *   **Canceled**
-        # *   **Waiting**
+        # - **Scheduled**: Pending execution.
+        # 
+        # - **Running**: Running.
+        # 
+        # - **Succeed**: Succeeded.
+        # 
+        # - **Failed**: Failed.
+        # 
+        # - **Cancelling**: Being canceled.
+        # 
+        # - **Canceled**: Canceled.
+        # 
+        # - **Waiting**: Waiting for the scheduled time.
         self.status = status
         # The task details.
         self.task_detail = task_detail
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Task type.
+        # The task type.
         self.task_type = task_type
-        # null
+        # The ID of the user to which the resource belongs.
         self.uid = uid
 
     def validate(self):
@@ -354,28 +359,26 @@ class DescribeHistoryTasksResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # null
+        # The authentication action.
         self.auth_action = auth_action
-        # null
+        # The display name of the authorization principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # null
+        # The Alibaba Cloud account ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # null
+        # The type of the authorization principal.
         self.auth_principal_type = auth_principal_type
-        # null
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # null
-        # 
-        # *   **null**
-        # *   **null**
+        # The type of the access policy denial. Valid values:
+        # - **ImplicitDeny**: The resource owner has not configured a relevant access policy for the current user, and unauthorized operations are denied by default.
+        # - **ExplicitDeny**: The RAM policy configured by the resource owner explicitly denies the current user from accessing the corresponding resource.
         self.no_permission_type = no_permission_type
-        # null
-        # 
-        # *   **null**
-        # *   **null**
-        # *   **null**
-        # *   **null**
-        # *   **null**
+        # The type of the policy that causes the permission denial. Valid values:
+        # - **ControlPolicy**: Control policy.
+        # - **SessionPolicy**: Session policy, which is an additional permission policy added to a temporary token.
+        # - **AssumeRolePolicy**: Assume role policy, which is the trust policy of a RAM role.
+        # - **AccountLevelIdentityBasedPolicy**: Account-level identity-access policy, which includes custom policies and system policies.
+        # - **ResourceGroupLevelIdentityBasedPolicy**: Resource group-level identity-access policy, which includes custom policies and system policies.
         self.policy_type = policy_type
 
     def validate(self):

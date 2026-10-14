@@ -20,16 +20,15 @@ class DescribeApsJobsResponseBody(DaraModel):
         success: bool = None,
         total_count: str = None,
     ):
-        # The queried APS jobs.
+        # The list of APS tasks.
         self.apsjobs = apsjobs
-        # The HTTP status code.
+        # The backend error code.
         self.code = code
-        # The status code. A value of 200 indicates that the request was successful.
+        # The HTTP status code returned for the request. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message. Valid values:
-        # 
-        # *   If the request was successful, a success message is returned.****
-        # *   If the request failed, an error message is returned.
+        # The additional information about the call result. Valid values:
+        # - If the request is successful, **Success** is returned. 
+        # - If the request fails, a specific error code is returned.
         self.message = message
         # The page number.
         self.page_number = page_number
@@ -37,12 +36,11 @@ class DescribeApsJobsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -135,25 +133,25 @@ class DescribeApsJobsResponseBodyAPSJobs(DaraModel):
         status: str = None,
         sub_status: str = None,
     ):
-        # The job ID.
+        # The ID of the task.
         self.aps_job_id = aps_job_id
-        # The name of the APS job.
+        # The name of the task.
         self.aps_job_name = aps_job_name
-        # The time when the APS job was created.
+        # The creation time in the yyyy-MM-dd HH:mm:ss format.
         self.create_time = create_time
         # The synchronization latency.
         self.delay = delay
-        # The destination cluster ID.
+        # The destination instance ID.
         self.destination_instance_id = destination_instance_id
         # The error message.
         self.err_message = err_message
         # The progress.
         self.projress = projress
-        # The ID of the source instance or cluster.
+        # The source instance ID.
         self.source_instance_id = source_instance_id
-        # The status of the APS job.
-        self.status = status
         # The status of the task.
+        self.status = status
+        # The status of the subtask.
         self.sub_status = sub_status
 
     def validate(self):

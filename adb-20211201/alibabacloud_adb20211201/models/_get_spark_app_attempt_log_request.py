@@ -12,17 +12,16 @@ class GetSparkAppAttemptLogRequest(DaraModel):
         page_number: int = None,
         page_size: str = None,
     ):
-        # The ID of the log.
-        # 
-        # > You can call the [ListSparkAppAttempts](https://help.aliyun.com/document_detail/455887.html) operation to query the information about the retry attempts of a Spark application, including the retry log IDs.
+        # The ID of the retry log.
+        # > Call the [ListSparkAppAttempts](https://help.aliyun.com/document_detail/455887.html) operation to query the retry history of an application, which includes the retry log ID.
         # 
         # This parameter is required.
         self.attempt_id = attempt_id
-        # The number of log entries to return. Valid values: 1 to 500. Default value: 300.
+        # The number of lines in the retry log. Valid values: 1 to 500. Default value: 300.
         self.log_length = log_length
-        # The log offset.
+        # The start offset for reading logs.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of data rows per page.
         self.page_size = page_size
 
     def validate(self):

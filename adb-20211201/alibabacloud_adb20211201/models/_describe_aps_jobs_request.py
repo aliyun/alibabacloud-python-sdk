@@ -14,11 +14,11 @@ class DescribeApsJobsRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The name of the APS job.
+        # The name of the task.
         self.aps_job_name = aps_job_name
-        # The end of the time range to query.
+        # The end time of creation.
         self.create_time_end = create_time_end
-        # The beginning of the time range to query.
+        # The start time of creation.
         self.create_time_start = create_time_start
         # The page number.
         # 

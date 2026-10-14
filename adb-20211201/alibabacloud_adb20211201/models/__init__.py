@@ -34,6 +34,7 @@ from ._open_struct_mv_detail_model import OpenStructMvDetailModel
 from ._open_struct_mv_recommend_sub_task_model import OpenStructMvRecommendSubTaskModel
 from ._open_struct_mv_recommend_task_model import OpenStructMvRecommendTaskModel
 from ._open_struct_refresh_job_model import OpenStructRefreshJobModel
+from ._items_metric_values_value import ItemsMetricValuesValue
 from ._add_knowledge_file_request import AddKnowledgeFileRequest
 from ._add_knowledge_file_response_body import AddKnowledgeFileResponseBody
 from ._add_knowledge_file_response import AddKnowledgeFileResponse
@@ -68,6 +69,9 @@ from ._cancel_spark_repl_statement_response import CancelSparkReplStatementRespo
 from ._cancel_spark_warehouse_batch_sqlrequest import CancelSparkWarehouseBatchSQLRequest
 from ._cancel_spark_warehouse_batch_sqlresponse_body import CancelSparkWarehouseBatchSQLResponseBody
 from ._cancel_spark_warehouse_batch_sqlresponse import CancelSparkWarehouseBatchSQLResponse
+from ._cancel_sql_pattern_compare_report_request import CancelSqlPatternCompareReportRequest
+from ._cancel_sql_pattern_compare_report_response_body import CancelSqlPatternCompareReportResponseBody
+from ._cancel_sql_pattern_compare_report_response import CancelSqlPatternCompareReportResponse
 from ._check_bind_ram_user_request import CheckBindRamUserRequest
 from ._check_bind_ram_user_response_body import CheckBindRamUserResponseBody
 from ._check_bind_ram_user_response import CheckBindRamUserResponse
@@ -149,6 +153,9 @@ from ._create_semantic_view_response import CreateSemanticViewResponse
 from ._create_spark_template_request import CreateSparkTemplateRequest
 from ._create_spark_template_response_body import CreateSparkTemplateResponseBody
 from ._create_spark_template_response import CreateSparkTemplateResponse
+from ._create_sql_pattern_compare_report_request import CreateSqlPatternCompareReportRequest
+from ._create_sql_pattern_compare_report_response_body import CreateSqlPatternCompareReportResponseBody
+from ._create_sql_pattern_compare_report_response import CreateSqlPatternCompareReportResponse
 from ._delete_account_request import DeleteAccountRequest
 from ._delete_account_response_body import DeleteAccountResponseBody
 from ._delete_account_response import DeleteAccountResponse
@@ -462,6 +469,12 @@ from ._describe_spark_sqldiagnosis_list_response import DescribeSparkSQLDiagnosi
 from ._describe_sql_pattern_request import DescribeSqlPatternRequest
 from ._describe_sql_pattern_response_body import DescribeSqlPatternResponseBody
 from ._describe_sql_pattern_response import DescribeSqlPatternResponse
+from ._describe_sql_pattern_compare_report_request import DescribeSqlPatternCompareReportRequest
+from ._describe_sql_pattern_compare_report_response_body import DescribeSqlPatternCompareReportResponseBody
+from ._describe_sql_pattern_compare_report_response import DescribeSqlPatternCompareReportResponse
+from ._describe_sql_pattern_compare_reports_request import DescribeSqlPatternCompareReportsRequest
+from ._describe_sql_pattern_compare_reports_response_body import DescribeSqlPatternCompareReportsResponseBody
+from ._describe_sql_pattern_compare_reports_response import DescribeSqlPatternCompareReportsResponse
 from ._describe_storage_resource_usage_request import DescribeStorageResourceUsageRequest
 from ._describe_storage_resource_usage_response_body import DescribeStorageResourceUsageResponseBody
 from ._describe_storage_resource_usage_response import DescribeStorageResourceUsageResponse
@@ -856,6 +869,10 @@ from ._filters import FiltersSubmitTimeRange
 from ._filters import FiltersTermiatedTimeRange
 from ._operator_node import OperatorNodeStats
 from ._open_struct_mv_detail_model import OpenStructMvDetailModelBaseTableInfos
+from ._items_metric_values_value import ItemsMetricValuesValueTime2
+from ._items_metric_values_value import ItemsMetricValuesValueAvg
+from ._items_metric_values_value import ItemsMetricValuesValueSum
+from ._items_metric_values_value import ItemsMetricValuesValueMax
 from ._add_knowledge_tags_response_body import AddKnowledgeTagsResponseBodyDataSkipped
 from ._add_knowledge_tags_response_body import AddKnowledgeTagsResponseBodyData
 from ._add_knowledge_upload_user_response_body import AddKnowledgeUploadUserResponseBodyDataSkipped
@@ -1053,6 +1070,8 @@ from ._describe_spark_audit_log_records_response_body import DescribeSparkAuditL
 from ._describe_spark_sqldiagnosis_attribute_response_body import DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics
 from ._describe_spark_sqldiagnosis_list_response_body import DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList
 from ._describe_sql_pattern_response_body import DescribeSqlPatternResponseBodyItems
+from ._describe_sql_pattern_compare_report_response_body import DescribeSqlPatternCompareReportResponseBodyItems
+from ._describe_sql_pattern_compare_reports_response_body import DescribeSqlPatternCompareReportsResponseBodyItems
 from ._describe_storage_resource_usage_response_body import DescribeStorageResourceUsageResponseBodyDataAcuInfo
 from ._describe_storage_resource_usage_response_body import DescribeStorageResourceUsageResponseBodyData
 from ._describe_table_access_count_response_body import DescribeTableAccessCountResponseBodyItems
@@ -1187,6 +1206,7 @@ __all__ = [
     OpenStructMvRecommendSubTaskModel,
     OpenStructMvRecommendTaskModel,
     OpenStructRefreshJobModel,
+    ItemsMetricValuesValue,
     AddKnowledgeFileRequest,
     AddKnowledgeFileResponseBody,
     AddKnowledgeFileResponse,
@@ -1221,6 +1241,9 @@ __all__ = [
     CancelSparkWarehouseBatchSQLRequest,
     CancelSparkWarehouseBatchSQLResponseBody,
     CancelSparkWarehouseBatchSQLResponse,
+    CancelSqlPatternCompareReportRequest,
+    CancelSqlPatternCompareReportResponseBody,
+    CancelSqlPatternCompareReportResponse,
     CheckBindRamUserRequest,
     CheckBindRamUserResponseBody,
     CheckBindRamUserResponse,
@@ -1302,6 +1325,9 @@ __all__ = [
     CreateSparkTemplateRequest,
     CreateSparkTemplateResponseBody,
     CreateSparkTemplateResponse,
+    CreateSqlPatternCompareReportRequest,
+    CreateSqlPatternCompareReportResponseBody,
+    CreateSqlPatternCompareReportResponse,
     DeleteAccountRequest,
     DeleteAccountResponseBody,
     DeleteAccountResponse,
@@ -1615,6 +1641,12 @@ __all__ = [
     DescribeSqlPatternRequest,
     DescribeSqlPatternResponseBody,
     DescribeSqlPatternResponse,
+    DescribeSqlPatternCompareReportRequest,
+    DescribeSqlPatternCompareReportResponseBody,
+    DescribeSqlPatternCompareReportResponse,
+    DescribeSqlPatternCompareReportsRequest,
+    DescribeSqlPatternCompareReportsResponseBody,
+    DescribeSqlPatternCompareReportsResponse,
     DescribeStorageResourceUsageRequest,
     DescribeStorageResourceUsageResponseBody,
     DescribeStorageResourceUsageResponse,
@@ -2009,6 +2041,10 @@ __all__ = [
     FiltersTermiatedTimeRange,
     OperatorNodeStats,
     OpenStructMvDetailModelBaseTableInfos,
+    ItemsMetricValuesValueTime2,
+    ItemsMetricValuesValueAvg,
+    ItemsMetricValuesValueSum,
+    ItemsMetricValuesValueMax,
     AddKnowledgeTagsResponseBodyDataSkipped,
     AddKnowledgeTagsResponseBodyData,
     AddKnowledgeUploadUserResponseBodyDataSkipped,
@@ -2206,6 +2242,8 @@ __all__ = [
     DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics,
     DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList,
     DescribeSqlPatternResponseBodyItems,
+    DescribeSqlPatternCompareReportResponseBodyItems,
+    DescribeSqlPatternCompareReportsResponseBodyItems,
     DescribeStorageResourceUsageResponseBodyDataAcuInfo,
     DescribeStorageResourceUsageResponseBodyData,
     DescribeTableAccessCountResponseBodyItems,

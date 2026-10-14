@@ -16,7 +16,7 @@ class DescribeApsDatasourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The queried APS data sources.
+        # The data sources.
         self.aps_datasources = aps_datasources
         # The page number.
         self.page_number = page_number
@@ -24,7 +24,7 @@ class DescribeApsDatasourcesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,11 +89,11 @@ class DescribeApsDatasourcesResponseBodyApsDatasources(DaraModel):
         datasource_type: str = None,
         has_job: bool = None,
     ):
-        # The time when the data source was created.
+        # The creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
         # The description of the data source.
         self.datasource_description = datasource_description
-        # The data source ID.
+        # The ID of the data source.
         self.datasource_id = datasource_id
         # The name of the data source.
         self.datasource_name = datasource_name
