@@ -21,31 +21,31 @@ class ConnectorProperties(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The channel type: custom or apig. This parameter is optional for model_service and defaults to custom.
+        # The channel type. Valid values: custom and apig. This parameter is optional for model_service. Default value: custom.
         self.channel_type = channel_type
-        # The sample request body provided by the user for verifying endpoint connectivity. This parameter is required when dryRun is set to All and type is set to agent_app. The value is not persisted.
+        # Specifies the sample request body provided by the user to verify endpoint connectivity. This parameter is required when dryRun is set to All and type is set to agent_app. The request body is not persisted.
         self.dry_run_request_body = dry_run_request_body
-        # The number of retries after a failed invocation of the dial-test registration service. Valid values: 0 to 10. Default value: 3.
+        # The number of retry attempts after a failed service invocation when you invoke the synthetic monitoring registration service. Valid values: 0 to 10. Default value: 3.
         self.max_retries = max_retries
         # The list of supported models in comma-separated format. This parameter is required for model_service.
         self.model_list = model_list
-        # The network type: internet or aliyun-vpc.
+        # The network type. Valid values: internet and aliyun-vpc.
         self.network = network
-        # The protocol type: openai, openai-compatible, or anthropic. This parameter is required for model_service.
+        # The protocol type. Valid values: openai, openai-compatible, and anthropic. This parameter is required for model_service.
         self.protocol = protocol
-        # The QPS limit for the dial-test registration service. A value of 0 indicates no throttling. Otherwise, valid values: 0.1 to 1000. Default value: 20 for agent_app, 100 for model_service.
+        # The queries per second (QPS) limit for the dial test registration service. A value of 0 indicates no throttling. Otherwise, valid values are 0.1 to 1000. Default value: 20 for agent_app and 100 for model_service.
         self.qps_limit = qps_limit
         # The region. This parameter is required when the network type is aliyun-vpc.
         self.region = region
-        # The JSON Path extraction path for the response body. This parameter is optional for agent_app.
+        # The JSONPath extraction path for the response body. This parameter is optional for agent_app.
         self.response_body_path = response_body_path
-        # The security group ID. This parameter is optional for agent_app.
+        # The ID of the security group. This parameter is optional for agent_app.
         self.security_group_id = security_group_id
-        # The timeout for a single call, in milliseconds. Valid values: 1000 to 1800000. Default value: 300000.
+        # The timeout period for a single call in milliseconds. Valid values: 1000 to 1800000. Default value: 300000.
         self.timeout_ms = timeout_ms
-        # The vSwitch ID. This parameter is optional for agent_app.
+        # The ID of the vSwitch. This parameter is optional for agent_app.
         self.v_switch_id = v_switch_id
-        # The VPC ID. This parameter is optional for agent_app.
+        # The ID of the virtual private cloud (VPC). This parameter is optional for agent_app.
         self.vpc_id = vpc_id
 
     def validate(self):

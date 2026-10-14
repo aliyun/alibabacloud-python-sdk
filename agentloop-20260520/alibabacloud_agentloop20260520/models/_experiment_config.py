@@ -21,11 +21,11 @@ class ExperimentConfig(DaraModel):
         request_header_template: str = None,
         request_method: str = None,
     ):
-        # The endpoint connector ID. This parameter is required in user/agent mode.
+        # The endpoint connector ID, which is required in user or agent mode.
         self.endpoint_connector_id = endpoint_connector_id
-        # The experiment label (A/B/C/D/E).
+        # The experiment label (A, B, C, D, or E).
         self.label = label
-        # The model name. You can set this parameter to agent in agent scenarios.
+        # The model name, which can be set to agent for agent scenarios.
         self.model_name = model_name
         # The model parameters.
         self.model_parameters = model_parameters
@@ -33,11 +33,11 @@ class ExperimentConfig(DaraModel):
         self.model_provider = model_provider
         # The experiment name.
         self.name = name
-        # The prompt message template. Supports {{variable name}} placeholders.
+        # The prompt message template, which supports {{variable name}} placeholders.
         self.prompt_template = prompt_template
-        # The agent request body template. This parameter is required in agent mode. Supports {{variable name}} placeholders.
+        # The agent request body template, which is required in agent mode and supports {{variable name}} placeholders.
         self.request_body_template = request_body_template
-        # The agent request header template. This parameter is optional in agent mode. Supports {{variable name}} placeholders.
+        # The agent request header template, which is optional in agent mode and supports {{variable name}} placeholders.
         self.request_header_template = request_header_template
         # The agent request method. Valid values: POST (default) and GET.
         self.request_method = request_method

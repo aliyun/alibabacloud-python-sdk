@@ -10,7 +10,9 @@ class PromptTemplateItem(DaraModel):
         content: str = None,
         role: str = None,
     ):
+        # The content, which supports {{variable name}} placeholders.
         self.content = content
+        # The role: system/user/assistant.
         self.role = role
 
     def validate(self):

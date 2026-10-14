@@ -21,17 +21,19 @@ class SearchContextRequest(DaraModel):
     ):
         # The structured filter conditions. The key is the field name, and the value is the expected matching value.
         self.filter = filter
-        # Specifies whether to apply structured formatting to the returned results.
+        # Specifies whether to structurally format the returned results.
         self.formatted = formatted
+        # Specifies whether to include memories with sourceState=inactive. Default value: false.
         self.include_inactive = include_inactive
-        # The maximum number of returned results (similarity Top-N).
+        # The maximum number of returned results, which corresponds to the Top-N similarity.
         self.limit = limit
         # The retrieval query text. Natural language is supported.
         # 
         # This parameter is required.
         self.query = query
-        # The retrieval options that control the retrieval strategy.
+        # The retrieval options used to control the retrieval strategy.
         self.retrieval_option = retrieval_option
+        # The recall scope. If a field with the same name conflicts with the filter, a 400 ScopeFilterConflict error is returned.
         self.scope = scope
         # The similarity threshold. Results with a similarity score lower than this value are filtered out. Valid values: 0 to 1.
         self.threshold = threshold
@@ -108,9 +110,13 @@ class SearchContextRequestScope(DaraModel):
         run_id: str = None,
         user_id: str = None,
     ):
+        # Agent Id
         self.agent_id = agent_id
+        # The application ID.
         self.app_id = app_id
+        # The run ID.
         self.run_id = run_id
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._audit_task_state import AuditTaskState
 from ._backfill_strategy import BackfillStrategy
 from ._batch_group import BatchGroup
 from ._connector_properties import ConnectorProperties
@@ -52,6 +53,12 @@ from ._create_experiment_plan_response import CreateExperimentPlanResponse
 from ._create_experiment_run_request import CreateExperimentRunRequest
 from ._create_experiment_run_response_body import CreateExperimentRunResponseBody
 from ._create_experiment_run_response import CreateExperimentRunResponse
+from ._create_optimize_run_request import CreateOptimizeRunRequest
+from ._create_optimize_run_response_body import CreateOptimizeRunResponseBody
+from ._create_optimize_run_response import CreateOptimizeRunResponse
+from ._create_optimize_task_request import CreateOptimizeTaskRequest
+from ._create_optimize_task_response_body import CreateOptimizeTaskResponseBody
+from ._create_optimize_task_response import CreateOptimizeTaskResponse
 from ._create_pipeline_request import CreatePipelineRequest
 from ._create_pipeline_response_body import CreatePipelineResponseBody
 from ._create_pipeline_response import CreatePipelineResponse
@@ -85,6 +92,9 @@ from ._delete_experiment_plan_response import DeleteExperimentPlanResponse
 from ._delete_experiment_run_request import DeleteExperimentRunRequest
 from ._delete_experiment_run_response_body import DeleteExperimentRunResponseBody
 from ._delete_experiment_run_response import DeleteExperimentRunResponse
+from ._delete_optimize_task_request import DeleteOptimizeTaskRequest
+from ._delete_optimize_task_response_body import DeleteOptimizeTaskResponseBody
+from ._delete_optimize_task_response import DeleteOptimizeTaskResponse
 from ._delete_pipeline_request import DeletePipelineRequest
 from ._delete_pipeline_response_body import DeletePipelineResponseBody
 from ._delete_pipeline_response import DeletePipelineResponse
@@ -124,6 +134,12 @@ from ._get_experiment_plan_response import GetExperimentPlanResponse
 from ._get_experiment_run_request import GetExperimentRunRequest
 from ._get_experiment_run_response_body import GetExperimentRunResponseBody
 from ._get_experiment_run_response import GetExperimentRunResponse
+from ._get_optimize_run_request import GetOptimizeRunRequest
+from ._get_optimize_run_response_body import GetOptimizeRunResponseBody
+from ._get_optimize_run_response import GetOptimizeRunResponse
+from ._get_optimize_task_request import GetOptimizeTaskRequest
+from ._get_optimize_task_response_body import GetOptimizeTaskResponseBody
+from ._get_optimize_task_response import GetOptimizeTaskResponse
 from ._get_pipeline_request import GetPipelineRequest
 from ._get_pipeline_response_body import GetPipelineResponseBody
 from ._get_pipeline_response import GetPipelineResponse
@@ -164,6 +180,12 @@ from ._list_experiment_plans_response import ListExperimentPlansResponse
 from ._list_experiment_runs_request import ListExperimentRunsRequest
 from ._list_experiment_runs_response_body import ListExperimentRunsResponseBody
 from ._list_experiment_runs_response import ListExperimentRunsResponse
+from ._list_optimize_runs_request import ListOptimizeRunsRequest
+from ._list_optimize_runs_response_body import ListOptimizeRunsResponseBody
+from ._list_optimize_runs_response import ListOptimizeRunsResponse
+from ._list_optimize_tasks_request import ListOptimizeTasksRequest
+from ._list_optimize_tasks_response_body import ListOptimizeTasksResponseBody
+from ._list_optimize_tasks_response import ListOptimizeTasksResponse
 from ._list_pipeline_runs_request import ListPipelineRunsRequest
 from ._list_pipeline_runs_response_body import ListPipelineRunsResponseBody
 from ._list_pipeline_runs_response import ListPipelineRunsResponse
@@ -215,9 +237,16 @@ from ._update_experiment_plan_response import UpdateExperimentPlanResponse
 from ._update_experiment_run_request import UpdateExperimentRunRequest
 from ._update_experiment_run_response_body import UpdateExperimentRunResponseBody
 from ._update_experiment_run_response import UpdateExperimentRunResponse
+from ._update_optimize_run_request import UpdateOptimizeRunRequest
+from ._update_optimize_run_response_body import UpdateOptimizeRunResponseBody
+from ._update_optimize_run_response import UpdateOptimizeRunResponse
+from ._update_optimize_task_request import UpdateOptimizeTaskRequest
+from ._update_optimize_task_response_body import UpdateOptimizeTaskResponseBody
+from ._update_optimize_task_response import UpdateOptimizeTaskResponse
 from ._update_pipeline_request import UpdatePipelineRequest
 from ._update_pipeline_response_body import UpdatePipelineResponseBody
 from ._update_pipeline_response import UpdatePipelineResponse
+from ._audit_task_state import AuditTaskStateRuntimeError
 from ._create_context_store_request import CreateContextStoreRequestConfigAudit
 from ._create_context_store_request import CreateContextStoreRequestConfigExtractionPolicyModel
 from ._create_context_store_request import CreateContextStoreRequestConfigExtractionPolicy
@@ -314,6 +343,8 @@ from ._list_evaluation_runs_response_body import ListEvaluationRunsResponseBodyE
 from ._list_evaluation_tasks_response_body import ListEvaluationTasksResponseBodyEvaluationTasks
 from ._list_evaluator_skills_response_body import ListEvaluatorSkillsResponseBodySkills
 from ._list_evaluators_response_body import ListEvaluatorsResponseBodyEvaluators
+from ._list_optimize_runs_response_body import ListOptimizeRunsResponseBodyOptimizeRuns
+from ._list_optimize_tasks_response_body import ListOptimizeTasksResponseBodyOptimizeTasks
 from ._list_pipeline_runs_response_body import ListPipelineRunsResponseBodyRuns
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExecutePolicyContinuous
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce
@@ -382,6 +413,7 @@ from ._update_pipeline_request import UpdatePipelineRequestSourceTrajectory
 from ._update_pipeline_request import UpdatePipelineRequestSource
 
 __all__ = [
+    AuditTaskState,
     BackfillStrategy,
     BatchGroup,
     ConnectorProperties,
@@ -432,6 +464,12 @@ __all__ = [
     CreateExperimentRunRequest,
     CreateExperimentRunResponseBody,
     CreateExperimentRunResponse,
+    CreateOptimizeRunRequest,
+    CreateOptimizeRunResponseBody,
+    CreateOptimizeRunResponse,
+    CreateOptimizeTaskRequest,
+    CreateOptimizeTaskResponseBody,
+    CreateOptimizeTaskResponse,
     CreatePipelineRequest,
     CreatePipelineResponseBody,
     CreatePipelineResponse,
@@ -465,6 +503,9 @@ __all__ = [
     DeleteExperimentRunRequest,
     DeleteExperimentRunResponseBody,
     DeleteExperimentRunResponse,
+    DeleteOptimizeTaskRequest,
+    DeleteOptimizeTaskResponseBody,
+    DeleteOptimizeTaskResponse,
     DeletePipelineRequest,
     DeletePipelineResponseBody,
     DeletePipelineResponse,
@@ -504,6 +545,12 @@ __all__ = [
     GetExperimentRunRequest,
     GetExperimentRunResponseBody,
     GetExperimentRunResponse,
+    GetOptimizeRunRequest,
+    GetOptimizeRunResponseBody,
+    GetOptimizeRunResponse,
+    GetOptimizeTaskRequest,
+    GetOptimizeTaskResponseBody,
+    GetOptimizeTaskResponse,
     GetPipelineRequest,
     GetPipelineResponseBody,
     GetPipelineResponse,
@@ -544,6 +591,12 @@ __all__ = [
     ListExperimentRunsRequest,
     ListExperimentRunsResponseBody,
     ListExperimentRunsResponse,
+    ListOptimizeRunsRequest,
+    ListOptimizeRunsResponseBody,
+    ListOptimizeRunsResponse,
+    ListOptimizeTasksRequest,
+    ListOptimizeTasksResponseBody,
+    ListOptimizeTasksResponse,
     ListPipelineRunsRequest,
     ListPipelineRunsResponseBody,
     ListPipelineRunsResponse,
@@ -595,9 +648,16 @@ __all__ = [
     UpdateExperimentRunRequest,
     UpdateExperimentRunResponseBody,
     UpdateExperimentRunResponse,
+    UpdateOptimizeRunRequest,
+    UpdateOptimizeRunResponseBody,
+    UpdateOptimizeRunResponse,
+    UpdateOptimizeTaskRequest,
+    UpdateOptimizeTaskResponseBody,
+    UpdateOptimizeTaskResponse,
     UpdatePipelineRequest,
     UpdatePipelineResponseBody,
     UpdatePipelineResponse,
+    AuditTaskStateRuntimeError,
     CreateContextStoreRequestConfigAudit,
     CreateContextStoreRequestConfigExtractionPolicyModel,
     CreateContextStoreRequestConfigExtractionPolicy,
@@ -694,6 +754,8 @@ __all__ = [
     ListEvaluationTasksResponseBodyEvaluationTasks,
     ListEvaluatorSkillsResponseBodySkills,
     ListEvaluatorsResponseBodyEvaluators,
+    ListOptimizeRunsResponseBodyOptimizeRuns,
+    ListOptimizeTasksResponseBodyOptimizeTasks,
     ListPipelineRunsResponseBodyRuns,
     ListPipelinesResponseBodyPipelinesExecutePolicyContinuous,
     ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce,

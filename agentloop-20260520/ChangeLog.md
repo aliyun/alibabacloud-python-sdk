@@ -1,3 +1,15 @@
+2026-10-14 Version: 2.4.0
+- Support API CreateOptimizeRun.
+- Support API CreateOptimizeTask.
+- Support API DeleteOptimizeTask.
+- Support API GetOptimizeRun.
+- Support API GetOptimizeTask.
+- Support API ListOptimizeRuns.
+- Support API ListOptimizeTasks.
+- Support API UpdateOptimizeRun.
+- Support API UpdateOptimizeTask.
+
+
 2026-10-10 Version: 2.3.9
 - Update API CreateContextStore: add request parameters body.config.audit.
 - Update API CreateContextStore: add request parameters body.config.extractionPolicy.

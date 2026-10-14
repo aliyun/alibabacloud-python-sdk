@@ -12,9 +12,9 @@ class UpdateExperimentPlanResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The prompt message.
+        # The message.
         self.message = message
-        # The experiment plan ID.
+        # The ID of the experiment plan.
         self.plan_id = plan_id
         # The request ID.
         self.request_id = request_id

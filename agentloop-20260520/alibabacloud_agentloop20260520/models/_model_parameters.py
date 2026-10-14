@@ -17,12 +17,19 @@ class ModelParameters(DaraModel):
         top_k: int = None,
         top_p: float = None,
     ):
+        # The frequency penalty. Positive values reduce repetition. Valid values: -2.0 to 2.0.
         self.frequency_penalty = frequency_penalty
+        # The maximum number of output tokens.
         self.max_tokens = max_tokens
+        # The presence penalty. Positive values encourage new topics. Valid values: -2.0 to 2.0.
         self.presence_penalty = presence_penalty
+        # The stop sequences. Generation stops immediately when any of these sequences is encountered.
         self.stop_sequences = stop_sequences
+        # The temperature parameter that controls the randomness of the output. Valid values: 0 to 2.
         self.temperature = temperature
+        # The top-k sampling parameter. Valid values: 1 to 100.
         self.top_k = top_k
+        # The top-p sampling parameter. Valid values: 0 to 1.
         self.top_p = top_p
 
     def validate(self):

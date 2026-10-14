@@ -11,8 +11,11 @@ class OfflineExperimentConfig(DaraModel):
         label: str = None,
         name: str = None,
     ):
+        # The experiment description.
         self.desc = desc
+        # The experiment label.
         self.label = label
+        # The experiment name.
         self.name = name
 
     def validate(self):

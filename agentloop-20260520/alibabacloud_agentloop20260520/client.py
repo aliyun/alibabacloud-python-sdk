@@ -1193,6 +1193,202 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_experiment_run_with_options_async(agent_space, request, headers, runtime)
 
+    def create_optimize_run_with_options(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.CreateOptimizeRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOptimizeRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.input):
+            body['input'] = request.input
+        if not DaraCore.is_null(request.preview):
+            body['preview'] = request.preview
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOptimizeRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}/runs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOptimizeRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_optimize_run_with_options_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.CreateOptimizeRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOptimizeRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.input):
+            body['input'] = request.input
+        if not DaraCore.is_null(request.preview):
+            body['preview'] = request.preview
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOptimizeRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}/runs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOptimizeRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_optimize_run(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.CreateOptimizeRunRequest,
+    ) -> main_models.CreateOptimizeRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_optimize_run_with_options(agent_space, optimize_task_name, request, headers, runtime)
+
+    async def create_optimize_run_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.CreateOptimizeRunRequest,
+    ) -> main_models.CreateOptimizeRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_optimize_run_with_options_async(agent_space, optimize_task_name, request, headers, runtime)
+
+    def create_optimize_task_with_options(
+        self,
+        agent_space: str,
+        request: main_models.CreateOptimizeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOptimizeTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.optimize_task_name):
+            body['optimizeTaskName'] = request.optimize_task_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOptimizeTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOptimizeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_optimize_task_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateOptimizeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOptimizeTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.optimize_task_name):
+            body['optimizeTaskName'] = request.optimize_task_name
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOptimizeTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOptimizeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_optimize_task(
+        self,
+        agent_space: str,
+        request: main_models.CreateOptimizeTaskRequest,
+    ) -> main_models.CreateOptimizeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_optimize_task_with_options(agent_space, request, headers, runtime)
+
+    async def create_optimize_task_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateOptimizeTaskRequest,
+    ) -> main_models.CreateOptimizeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_optimize_task_with_options_async(agent_space, request, headers, runtime)
+
     def create_pipeline_with_options(
         self,
         agent_space: str,
@@ -2104,6 +2300,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_experiment_run_with_options_async(agent_space, record_id, request, headers, runtime)
+
+    def delete_optimize_task_with_options(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.DeleteOptimizeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOptimizeTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOptimizeTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOptimizeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_optimize_task_with_options_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.DeleteOptimizeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOptimizeTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOptimizeTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOptimizeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_optimize_task(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.DeleteOptimizeTaskRequest,
+    ) -> main_models.DeleteOptimizeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_optimize_task_with_options(agent_space, optimize_task_name, request, headers, runtime)
+
+    async def delete_optimize_task_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.DeleteOptimizeTaskRequest,
+    ) -> main_models.DeleteOptimizeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_optimize_task_with_options_async(agent_space, optimize_task_name, request, headers, runtime)
 
     def delete_pipeline_with_options(
         self,
@@ -3164,6 +3444,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_experiment_run_with_options_async(agent_space, record_id, request, headers, runtime)
+
+    def get_optimize_run_with_options(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        optimize_run_id: str,
+        request: main_models.GetOptimizeRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOptimizeRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOptimizeRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}/runs/{DaraURL.percent_encode(optimize_run_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOptimizeRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_optimize_run_with_options_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        optimize_run_id: str,
+        request: main_models.GetOptimizeRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOptimizeRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOptimizeRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}/runs/{DaraURL.percent_encode(optimize_run_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOptimizeRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_optimize_run(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        optimize_run_id: str,
+        request: main_models.GetOptimizeRunRequest,
+    ) -> main_models.GetOptimizeRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_optimize_run_with_options(agent_space, optimize_task_name, optimize_run_id, request, headers, runtime)
+
+    async def get_optimize_run_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        optimize_run_id: str,
+        request: main_models.GetOptimizeRunRequest,
+    ) -> main_models.GetOptimizeRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_optimize_run_with_options_async(agent_space, optimize_task_name, optimize_run_id, request, headers, runtime)
+
+    def get_optimize_task_with_options(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.GetOptimizeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOptimizeTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOptimizeTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOptimizeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_optimize_task_with_options_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.GetOptimizeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOptimizeTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOptimizeTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOptimizeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_optimize_task(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.GetOptimizeTaskRequest,
+    ) -> main_models.GetOptimizeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_optimize_task_with_options(agent_space, optimize_task_name, request, headers, runtime)
+
+    async def get_optimize_task_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.GetOptimizeTaskRequest,
+    ) -> main_models.GetOptimizeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_optimize_task_with_options_async(agent_space, optimize_task_name, request, headers, runtime)
 
     def get_pipeline_with_options(
         self,
@@ -4376,6 +4812,198 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_experiment_runs_with_options_async(agent_space, request, headers, runtime)
+
+    def list_optimize_runs_with_options(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.ListOptimizeRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOptimizeRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.window_start_time_begin):
+            query['windowStartTimeBegin'] = request.window_start_time_begin
+        if not DaraCore.is_null(request.window_start_time_end):
+            query['windowStartTimeEnd'] = request.window_start_time_end
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOptimizeRuns',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}/runs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOptimizeRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_optimize_runs_with_options_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.ListOptimizeRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOptimizeRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.window_start_time_begin):
+            query['windowStartTimeBegin'] = request.window_start_time_begin
+        if not DaraCore.is_null(request.window_start_time_end):
+            query['windowStartTimeEnd'] = request.window_start_time_end
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOptimizeRuns',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}/runs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOptimizeRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_optimize_runs(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.ListOptimizeRunsRequest,
+    ) -> main_models.ListOptimizeRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_optimize_runs_with_options(agent_space, optimize_task_name, request, headers, runtime)
+
+    async def list_optimize_runs_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.ListOptimizeRunsRequest,
+    ) -> main_models.ListOptimizeRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_optimize_runs_with_options_async(agent_space, optimize_task_name, request, headers, runtime)
+
+    def list_optimize_tasks_with_options(
+        self,
+        agent_space: str,
+        request: main_models.ListOptimizeTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOptimizeTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOptimizeTasks',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOptimizeTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_optimize_tasks_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.ListOptimizeTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOptimizeTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOptimizeTasks',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOptimizeTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_optimize_tasks(
+        self,
+        agent_space: str,
+        request: main_models.ListOptimizeTasksRequest,
+    ) -> main_models.ListOptimizeTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_optimize_tasks_with_options(agent_space, request, headers, runtime)
+
+    async def list_optimize_tasks_async(
+        self,
+        agent_space: str,
+        request: main_models.ListOptimizeTasksRequest,
+    ) -> main_models.ListOptimizeTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_optimize_tasks_with_options_async(agent_space, request, headers, runtime)
 
     def list_pipeline_runs_with_options(
         self,
@@ -6088,6 +6716,202 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_experiment_run_with_options_async(agent_space, record_id, request, headers, runtime)
+
+    def update_optimize_run_with_options(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        optimize_run_id: str,
+        request: main_models.UpdateOptimizeRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOptimizeRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.extra):
+            body['extra'] = request.extra
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOptimizeRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}/runs/{DaraURL.percent_encode(optimize_run_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOptimizeRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_optimize_run_with_options_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        optimize_run_id: str,
+        request: main_models.UpdateOptimizeRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOptimizeRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.extra):
+            body['extra'] = request.extra
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOptimizeRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}/runs/{DaraURL.percent_encode(optimize_run_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOptimizeRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_optimize_run(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        optimize_run_id: str,
+        request: main_models.UpdateOptimizeRunRequest,
+    ) -> main_models.UpdateOptimizeRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_optimize_run_with_options(agent_space, optimize_task_name, optimize_run_id, request, headers, runtime)
+
+    async def update_optimize_run_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        optimize_run_id: str,
+        request: main_models.UpdateOptimizeRunRequest,
+    ) -> main_models.UpdateOptimizeRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_optimize_run_with_options_async(agent_space, optimize_task_name, optimize_run_id, request, headers, runtime)
+
+    def update_optimize_task_with_options(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.UpdateOptimizeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOptimizeTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOptimizeTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOptimizeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_optimize_task_with_options_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.UpdateOptimizeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOptimizeTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOptimizeTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/optimizetasks/{DaraURL.percent_encode(optimize_task_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOptimizeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_optimize_task(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.UpdateOptimizeTaskRequest,
+    ) -> main_models.UpdateOptimizeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_optimize_task_with_options(agent_space, optimize_task_name, request, headers, runtime)
+
+    async def update_optimize_task_async(
+        self,
+        agent_space: str,
+        optimize_task_name: str,
+        request: main_models.UpdateOptimizeTaskRequest,
+    ) -> main_models.UpdateOptimizeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_optimize_task_with_options_async(agent_space, optimize_task_name, request, headers, runtime)
 
     def update_pipeline_with_options(
         self,

@@ -14,9 +14,11 @@ class SearchContextResponseBody(DaraModel):
         request_id: str = None,
         results: List[Dict[str, Any]] = None,
     ):
+        # The audit write status. Valid values: ok and degraded.
         self.audit_status = audit_status
+        # The recall event ID. You can use this ID to call the GetContextStoreRecall operation to view audit details.
         self.recall_event_id = recall_event_id
-        # The request ID. You can use this ID to locate and troubleshoot issues.
+        # The request ID, which can be used to locate the request during troubleshooting.
         self.request_id = request_id
         # The list of retrieval results, sorted by similarity in descending order.
         self.results = results

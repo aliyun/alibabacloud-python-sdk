@@ -33,27 +33,49 @@ class ExperimentRecord(DaraModel):
         status: str = None,
         total_tasks: int = None,
     ):
+        # The completion time in milliseconds.
         self.completed_at = completed_at
+        # The number of completed tasks.
         self.completed_tasks = completed_tasks
+        # The data source type. Valid values: simple, dataset-full, and dataset-partial.
         self.data_source_type = data_source_type
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The SLS project where the dataset is located.
         self.dataset_project = dataset_project
+        # The error message.
         self.error_message = error_message
+        # The ID of the associated evaluation task.
         self.evaluation_task_id = evaluation_task_id
+        # The list of evaluators.
         self.evaluators = evaluators
+        # The execution time in milliseconds.
         self.executed_at = executed_at
+        # The list of experiment configurations.
         self.experiment_config = experiment_config
+        # The ID of the associated experiment plan.
         self.experiment_plan_id = experiment_plan_id
+        # The number of failed tasks.
         self.failed_tasks = failed_tasks
+        # The single-line input in SIMPLE mode.
         self.input = input
+        # The list of model names used.
         self.model_names = model_names
+        # The name of the associated experiment plan.
         self.plan_name = plan_name
+        # The execution progress, ranging from 0 to 1.
         self.progress = progress
+        # The custom query SQL clause in dataset-partial mode.
         self.query_sql = query_sql
+        # The experiment record ID.
         self.record_id = record_id
+        # The experiment record name.
         self.record_name = record_name
+        # The list of selected data item IDs in dataset-partial mode.
         self.selected_item_ids = selected_item_ids
+        # The status. Valid values: pending, running, completed, and failed.
         self.status = status
+        # The total number of tasks.
         self.total_tasks = total_tasks
 
     def validate(self):

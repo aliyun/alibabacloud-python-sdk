@@ -16,15 +16,15 @@ class ListPipelinesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries per page that was specified in the request. This value is echoed back.
+        # The maximum number of entries per page specified in the request.
         self.max_results = max_results
         # The token for the next page. An empty string indicates that the current page is the last page.
         self.next_token = next_token
         # The list of pipelines.
         self.pipelines = pipelines
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The request ID, which is used to locate the request during troubleshooting.
         self.request_id = request_id
-        # The total number of pipelines that match the filter conditions.
+        # The total number of pipelines that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -106,21 +106,15 @@ class ListPipelinesResponseBodyPipelines(DaraModel):
         self.pipeline_name = pipeline_name
         # The region ID.
         self.region_id = region_id
-        # The scheduling status. Valid values:
-        # - None: no scheduling. This value is returned for RunOnce pipelines.
-        # - Active: active.
-        # - Paused: paused.
-        # - Terminated: terminated.
+        # The scheduling status. Valid values: None for no scheduling in RunOnce pipelines, Active, Paused, and Terminated.
         self.schedule_status = schedule_status
-        # The scheduling type. Valid values:
-        # - RunOnce: one-time execution.
-        # - Scheduled: periodic scheduling.
+        # The scheduling type. Valid values: RunOnce for single execution, Scheduled for periodic scheduling, and Continuous for continuous execution driven by trace source signals.
         self.schedule_type = schedule_type
-        # The pipeline sink (data write destination).
+        # The pipeline sink, which is the destination for data writing.
         self.sink = sink
-        # The pipeline data source.
+        # The data source of the pipeline.
         self.source = source
-        # The time when the pipeline was last updated, in ISO 8601 UTC format.
+        # The time when the pipeline was last updated. The time is in the ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -226,11 +220,13 @@ class ListPipelinesResponseBodyPipelinesSource(DaraModel):
     ):
         # The dataset datasource config in the current AgentSpace.
         self.dataset = dataset
+        # The input fields and their types, applicable to all data source types.
         self.input_fields = input_fields
         # The Simple Log Service (SLS) Logstore datasource config.
         self.logstore = logstore
+        # The trajectory data configuration. This parameter is optional and takes effect only when the type is trace. It obtains ATIF standard trajectory data from the trajectory scrubbing service and extends it by feature.
         self.trajectory = trajectory
-        # The data source type. Valid values: logstore or dataset.
+        # The data source type. Valid values: logstore, dataset, and trace. The trace value indicates a trajectory signal-driven processing mode. The validity of the enumerated values is verified by the server.
         self.type = type
 
     def validate(self):
@@ -299,6 +295,7 @@ class ListPipelinesResponseBodyPipelinesSourceTrajectory(DaraModel):
         self,
         enrich: main_models.ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich = None,
     ):
+        # The trajectory enrichment configuration. It mounts trajectory data into the scrubbing result based on the trace_id. When writing to the dataset, the data is stored in the fixed column agent_trajectory, and the column value is the trajectory JSON content.
         self.enrich = enrich
 
     def validate(self):
@@ -329,7 +326,9 @@ class ListPipelinesResponseBodyPipelinesSourceTrajectoryEnrich(DaraModel):
         columns: List[str] = None,
         enabled: bool = None,
     ):
+        # The list of enrichment columns. This parameter is retained for compatibility. The current implementation outputs only the fixed column agent_trajectory, and this parameter no longer affects the output.
         self.columns = columns
+        # Specifies whether to enable trajectory enrichment.
         self.enabled = enabled
 
     def validate(self):
@@ -369,7 +368,7 @@ class ListPipelinesResponseBodyPipelinesSourceLogstore(DaraModel):
         self.logstore = logstore
         # The name of the SLS project.
         self.project = project
-        # The data filtered query statement in SLS query/analysis syntax.
+        # The data filtered query statement, which uses the SLS query and analysis syntax.
         self.query = query
 
     def validate(self):
@@ -410,7 +409,9 @@ class ListPipelinesResponseBodyPipelinesSourceInputFields(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the field.
         self.name = name
+        # The type of the field. Valid values: text, long, double, and json.
         self.type = type
 
     def validate(self):
@@ -483,11 +484,11 @@ class ListPipelinesResponseBodyPipelinesSink(DaraModel):
         dataset: main_models.ListPipelinesResponseBodyPipelinesSinkDataset = None,
         type: str = None,
     ):
-        # The conditional routing configuration. This parameter is used only when sink.type is set to condition.
+        # The conditional routing configuration. This is used only when the sink type is condition.
         self.condition = condition
-        # The destination dataset configuration for the dataset sink. This parameter is used only when sink.type is set to dataset.
+        # The destination dataset configuration for the dataset sink. This is used only when the sink type is dataset.
         self.dataset = dataset
-        # The destination type. Valid values: dataset or condition.
+        # The destination type. Valid values: dataset, condition.
         self.type = type
 
     def validate(self):
@@ -571,11 +572,11 @@ class ListPipelinesResponseBodyPipelinesSinkCondition(DaraModel):
         match_mode: str = None,
         routes: List[main_models.ListPipelinesResponseBodyPipelinesSinkConditionRoutes] = None,
     ):
-        # The default write destination that is used when no condition route is matched.
+        # The default write destination used when no conditional route is matched.
         self.default_sink = default_sink
         # The route matching mode. Currently, only all is supported.
         self.match_mode = match_mode
-        # The list of condition routes.
+        # The list of conditional routes.
         self.routes = routes
 
     def validate(self):
@@ -628,9 +629,9 @@ class ListPipelinesResponseBodyPipelinesSinkConditionRoutes(DaraModel):
         id: str = None,
         sink: main_models.ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink = None,
     ):
-        # The route expression in SPL. Only where, project, and extend are supported.
+        # The route expression in Search Processing Language (SPL). Only where, project, and extend are supported.
         self.expression = expression
-        # The route ID.
+        # The ID of the route.
         self.id = id
         # The write destination of the route.
         self.sink = sink
@@ -677,7 +678,7 @@ class ListPipelinesResponseBodyPipelinesSinkConditionRoutesSink(DaraModel):
     ):
         # The destination dataset of the route.
         self.dataset = dataset
-        # The type of the route destination. Currently, only dataset is supported.
+        # The destination type of the route. Currently, only dataset is supported.
         self.type = type
 
     def validate(self):
@@ -753,7 +754,7 @@ class ListPipelinesResponseBodyPipelinesSinkConditionDefaultSink(DaraModel):
     ):
         # The default destination dataset.
         self.dataset = dataset
-        # The type of the default destination. Currently, only dataset is supported.
+        # The default destination type. Currently, only dataset is supported.
         self.type = type
 
     def validate(self):
@@ -829,14 +830,13 @@ class ListPipelinesResponseBodyPipelinesExecutePolicy(DaraModel):
         run_once: main_models.ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce = None,
         scheduled: main_models.ListPipelinesResponseBodyPipelinesExecutePolicyScheduled = None,
     ):
+        # The continuous execution configuration. This is used when the type is trace. The processing frequency is a fixed value managed by the server.
         self.continuous = continuous
-        # The scheduling mode. Valid values:
-        # - RunOnce: one-time execution.
-        # - Scheduled: periodic scheduling.
+        # The scheduling mode. Valid values: RunOnce for single execution, Scheduled for periodic execution, and Continuous for continuous execution. Continuous mode is only for trace data sources. The processing frequency is a fixed value managed by the server, and data is automatically processed at minute intervals after the trace is completed.
         self.mode = mode
-        # The parameters for one-time execution. This parameter has a value only when mode is set to RunOnce.
+        # The parameters for single execution. This field has a value only when the mode is RunOnce.
         self.run_once = run_once
-        # The parameters for periodic scheduling. This parameter has a value only when mode is set to Scheduled.
+        # The parameters for periodic scheduling. This field has a value only when the mode is Scheduled.
         self.scheduled = scheduled
 
     def validate(self):
@@ -891,9 +891,9 @@ class ListPipelinesResponseBodyPipelinesExecutePolicyScheduled(DaraModel):
         from_time: int = None,
         interval: str = None,
     ):
-        # The scheduling start time, in UNIX millisecond timestamp format.
+        # The scheduling start time as a UNIX timestamp in seconds.
         self.from_time = from_time
-        # The scheduling interval, such as 1h or 30m.
+        # The scheduling interval. Valid values: 1h, 6h, 12h, and 1d.
         self.interval = interval
 
     def validate(self):
@@ -928,9 +928,9 @@ class ListPipelinesResponseBodyPipelinesExecutePolicyRunOnce(DaraModel):
         from_time: int = None,
         to_time: int = None,
     ):
-        # The start of the time slice, in UNIX millisecond timestamp format.
+        # The start time of the time slice as a UNIX timestamp in seconds.
         self.from_time = from_time
-        # The end of the time slice, in UNIX millisecond timestamp format.
+        # The end time of the time slice as a UNIX timestamp in seconds.
         self.to_time = to_time
 
     def validate(self):
@@ -964,6 +964,7 @@ class ListPipelinesResponseBodyPipelinesExecutePolicyContinuous(DaraModel):
         self,
         from_time: int = None,
     ):
+        # The bootstrap history start time as a UNIX timestamp in seconds. It has the same precision as runOnce or scheduled fromTime. Millisecond values greater than or equal to 1e12 are automatically converted. The cursor starts from the grid-aligned time and catches up window by window. After catching up, it switches to minute intervals. By default, it starts from the current time and only processes incremental data.
         self.from_time = from_time
 
     def validate(self):
