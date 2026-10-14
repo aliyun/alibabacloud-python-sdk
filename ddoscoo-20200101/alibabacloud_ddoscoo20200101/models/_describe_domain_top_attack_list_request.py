@@ -12,18 +12,19 @@ class DescribeDomainTopAttackListRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-        # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # > The value must be on the hour or half hour.
         # 
         # This parameter is required.
         self.end_time = end_time
+        # The time granularity of the query data. Unit: seconds.
+        # - Valid values: 300, 3600, 14400, 28800, and 86400.
+        # - If you do not specify this parameter or specify an unsupported value, the default value 3600 is used.
         self.interval = interval
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Pro and Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-        # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # > The value must be on the hour or half hour.
         # 
         # This parameter is required.
         self.start_time = start_time

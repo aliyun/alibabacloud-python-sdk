@@ -13,7 +13,7 @@ class DescribeNetworkRuleAttributesResponseBody(DaraModel):
         network_rule_attributes: List[main_models.DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes] = None,
         request_id: str = None,
     ):
-        # An array that consists of the mitigation settings of the port forwarding rule for a non-website service. The mitigation settings include session persistence and DDoS mitigation policies.
+        # The protection settings of port forwarding rules for non-website services, including session persistence and DDoS mitigation policies.
         self.network_rule_attributes = network_rule_attributes
         # The ID of the request.
         self.request_id = request_id
@@ -60,16 +60,15 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributes(DaraModel):
         instance_id: str = None,
         protocol: str = None,
     ):
-        # The mitigation settings of the port forwarding rule.
+        # The protection settings of the port forwarding rules.
         self.config = config
         # The forwarding port.
         self.frontend_port = frontend_port
-        # The ID of the instance.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.instance_id = instance_id
         # The forwarding protocol. Valid values:
-        # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**
+        # - **udp**
         self.protocol = protocol
 
     def validate(self):
@@ -123,25 +122,23 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfig(DaraM
         slimit: main_models.DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSlimit = None,
         synproxy: str = None,
     ):
-        # The protection policy applied when the number of connections initiated from a source IP address frequently exceeds the limit.
+        # The policy for controlling sources that frequently exceed connection limits.
         self.cc = cc
-        # The status of the Empty Connection switch. Valid values:
-        # 
-        # *   **on**: The switch is turned on.
-        # *   **off**: The switch is turned off.
+        # The status of the Empty Connection filter. Valid values:
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.nodata_conn = nodata_conn
-        # The settings of the Packet Length Limit policy.
+        # The Packet Length Limit configuration.
         self.payload_len = payload_len
         # The timeout period of session persistence. Valid values: **30** to **3600**. Unit: seconds. Default value: **0**, which indicates that session persistence is disabled.
         self.persistence_timeout = persistence_timeout
-        # The settings of the Speed Limit for Destination policy.
+        # The Speed Limit for Destination configuration.
         self.sla = sla
-        # The settings of the Speed Limit for Source policy.
+        # The source rate limiting configuration.
         self.slimit = slimit
-        # The status of the False Source switch. Valid values:
-        # 
-        # *   **on**: The switch is turned on.
-        # *   **off**: The switch is turned off.
+        # The status of the False Source filter. Valid values:
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.synproxy = synproxy
 
     def validate(self):
@@ -222,28 +219,25 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSlimit
         maxconn_enable: int = None,
         pps: int = None,
     ):
-        # The bandwidth limit for a source IP address. Valid values: **1024** to **268435456**. Unit: bytes/s. Default value: **0**, which indicates that the bandwidth for a source IP address is unlimited.
+        # The source bandwidth throttling value. Valid values: **1024** to **268435456**. Unit: Byte/s. Default value: **0**, which indicates that source bandwidth throttling is disabled.
         self.bps = bps
-        # The maximum number of new connections per second that can be initiated from a source IP address. Valid values: **1** to **500000**.
+        # The maximum number of new connections from a source IP address. Valid values: **1** to **500000**.
         self.cps = cps
-        # The status of the Source New Connection Rate Limit switch. Valid values:
-        # 
-        # *   **0**: The switch is turned off.
-        # *   **1**: The switch is turned on.
+        # The status of the maximum number of new connections from a source IP address. Valid values:
+        # - **0**: disabled.
+        # - **1**: enabled.
         self.cps_enable = cps_enable
-        # The mode of the Source New Connection Rate Limit switch. Valid values:
-        # 
-        # *   **1**: the manual mode
-        # *   **2**: the automatic mode
+        # The mode of the maximum number of new connections from a source IP address. Valid values:
+        # - **1**: manual.
+        # - **2**: automatic.
         self.cps_mode = cps_mode
-        # The maximum number of concurrent connections initiated from a source IP address. Valid values: **1** to **500000**.
+        # The maximum number of concurrent connections from a source IP address. Valid values: **1** to **500000**.
         self.maxconn = maxconn
-        # The status of the Source Concurrent Connection Rate Limit switch. Valid values:
-        # 
-        # *   **0**: The switch is turned off.
-        # *   **1**: The switch is turned on.
+        # The status of the maximum number of concurrent connections from a source IP address. Valid values:
+        # - **0**: disabled.
+        # - **1**: enabled.
         self.maxconn_enable = maxconn_enable
-        # The packets per second (pps) limit for a source IP address. Valid values: **1** to **100000**. Unit: packets/s. Default value: **0**, which indicates that the pps for a source IP address is unlimited.
+        # The source packets per second (PPS) rate limit. Valid values: **1** to **100000**. Unit: Packet/s. Default value: **0**, which indicates that source PPS rate limiting is disabled.
         self.pps = pps
 
     def validate(self):
@@ -310,19 +304,17 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigSla(Da
         maxconn: int = None,
         maxconn_enable: int = None,
     ):
-        # The maximum number of new connections per second that can be established over the port of the destination instance. Valid values: **100** to **100000**.
+        # The maximum number of new connections to a destination IP address. Valid values: **100** to **100000**.
         self.cps = cps
-        # The status of the Destination New Connection Rate Limit switch. Valid values:
-        # 
-        # *   **0**: The switch is turned off.
-        # *   **1**: The switch is turned on.
+        # The status of the maximum number of new connections to a destination IP address. Valid values:
+        # - **0**: disabled.
+        # - **1**: enabled.
         self.cps_enable = cps_enable
-        # The maximum number of concurrent connections that can be established over the port of the destination instance. Valid values: **1000** to **1000000**.
+        # The maximum number of concurrent connections to a destination IP address. Valid values: **1000** to **1000000**.
         self.maxconn = maxconn
-        # The status of the Destination Concurrent Connection Rate Limit switch. Valid values:
-        # 
-        # *   **0**: The switch is turned off.
-        # *   **1**: The switch is turned on.
+        # The status of the maximum number of concurrent connections to a destination IP address. Valid values:
+        # - **0**: disabled.
+        # - **1**: enabled.
         self.maxconn_enable = maxconn_enable
 
     def validate(self):
@@ -369,9 +361,9 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigPayloa
         max: int = None,
         min: int = None,
     ):
-        # The maximum length of a packet. Valid values: **0** to **6000**. Unit: bytes.
+        # The maximum packet length. Valid values: **0** to **6000**. Unit: bytes.
         self.max = max
-        # The minimum length of a packet. Valid values: **0** to **6000**. Unit: bytes.
+        # The minimum packet length. Valid values: **0** to **6000**. Unit: bytes.
         self.min = min
 
     def validate(self):
@@ -405,7 +397,7 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCc(Dar
         self,
         sblack: List[main_models.DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcSblack] = None,
     ):
-        # The protection policy that a source IP address is added to the blacklist when the number of connections initiated from the IP address frequently exceeds the limit.
+        # The policy for adding a source IP address to the blacklist when the source connection exceeds the limit multiple times.
         self.sblack = sblack
 
     def validate(self):
@@ -444,18 +436,17 @@ class DescribeNetworkRuleAttributesResponseBodyNetworkRuleAttributesConfigCcSbla
         expires: int = None,
         type: int = None,
     ):
-        # The threshold that the number of connections initiated from a source IP address can exceed the limit. Set the value to **5**. If the number of connections initiated from a source IP address exceeds the limit five times during the check, the source IP address is added to the blacklist.
+        # The number of times the source connection exceeds the limit. The value is fixed at **5**, which indicates that if the source connection exceeds the limit 5 times within the check interval, the source IP address is added to the blacklist.
         self.cnt = cnt
-        # The interval at which checks are performed. Set the value to **60**. Unit: seconds.
+        # The check interval. The value is fixed at **60**. Unit: seconds.
         self.during = during
-        # The validity period of the IP address in the blacklist. Valid values: **60** to **604800**. Unit: seconds.
+        # The validity period of the blacklist entry. Valid values: **60** to **604800**. Unit: seconds.
         self.expires = expires
-        # The type of the limit that causes a source IP address to be added to the blacklist. Valid values:
-        # 
-        # *   **1**: Source New Connection Rate Limit
-        # *   **2**: Source Concurrent Connection Rate Limit
-        # *   **3**: PPS Limit for Source
-        # *   **4**: Bandwidth Limit for Source
+        # The type of the source IP address blacklist configuration. Valid values:
+        # - **1**: IP blacklist for the maximum number of new connections from a source IP address.
+        # - **2**: IP blacklist for the maximum number of concurrent connections from a source IP address.
+        # - **3**: IP blacklist for source PPS rate limiting.
+        # - **4**: IP blacklist for source bandwidth throttling.
         self.type = type
 
     def validate(self):

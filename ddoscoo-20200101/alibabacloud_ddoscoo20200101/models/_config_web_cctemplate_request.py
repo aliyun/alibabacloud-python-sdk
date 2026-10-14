@@ -11,20 +11,18 @@ class ConfigWebCCTemplateRequest(DaraModel):
         resource_group_id: str = None,
         template: str = None,
     ):
-        # The domain name of the website.
-        # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # The domain name of the website service.
+        # > The domain name must have a website forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         # 
         # This parameter is required.
         self.domain = domain
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. By default, this parameter is empty, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The mode of the Frequency Control policy. Valid values:
-        # 
-        # *   **default**: Normal
-        # *   **gf_under_attack**: Emergency
-        # *   **gf_sos_verify**: Strict
-        # *   **gf_sos_enhance**: Super Strict
+        # The defense mode for frequency control (HTTP flood mitigation). Valid values:
+        # - **default**: Normal.
+        # - **gf_under_attack**: Emergency.
+        # - **gf_sos_verify**: Strict.
+        # - **gf_sos_enhance**: Super Strict.
         # 
         # This parameter is required.
         self.template = template

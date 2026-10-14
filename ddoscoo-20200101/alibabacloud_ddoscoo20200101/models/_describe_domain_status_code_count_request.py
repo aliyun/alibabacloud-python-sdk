@@ -12,19 +12,21 @@ class DescribeDomainStatusCodeCountRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The domain name of the website.
+        # The domain name of the website to query. If you leave this parameter unspecified, the statistics on all domain names are queried.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # > The domain name must be protected by Anti-DDoS Proxy. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names that are protected by Anti-DDoS Proxy.
         self.domain = domain
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. The value is a timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         # 

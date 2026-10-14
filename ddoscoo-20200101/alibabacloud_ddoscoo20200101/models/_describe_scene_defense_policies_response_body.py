@@ -14,14 +14,13 @@ class DescribeSceneDefensePoliciesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # An array that consists of the configurations of the scenario-specific custom policy.
+        # The detailed configurations of the scenario-specific policies.
         self.policies = policies
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -78,34 +77,31 @@ class DescribeSceneDefensePoliciesResponseBodyPolicies(DaraModel):
         template: str = None,
     ):
         # The execution status of the policy. Valid values:
-        # 
-        # *   **1**: not executed or execution completed
-        # *   **0**: being executed
-        # *   **-1**: execution failed
+        # - **1**: not executed or execution completed.
+        # - **0**: being executed.
+        # - **-1**: execution failed.
         self.done = done
-        # The time at which the policy expires. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the policy stops taking effect. The value is a timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # The name of the policy.
+        # The policy name.
         self.name = name
-        # The number of objects that are protected by the policy.
+        # The number of protected objects in the policy.
         self.object_count = object_count
-        # The ID of the policy.
+        # The policy ID.
         self.policy_id = policy_id
-        # The running rules of the policy.
+        # The runtime rules of the policy.
         self.runtime_policies = runtime_policies
-        # The time at which the policy takes effect. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the policy starts to take effect. The value is a timestamp. Unit: milliseconds.
         self.start_time = start_time
         # The status of the policy. Valid values:
-        # 
-        # *   **0**: disabled
-        # *   **1**: pending enabling
-        # *   **2**: enabled
-        # *   **3**: expired
+        # - **0**: disabled.
+        # - **1**: pending activation.
+        # - **2**: active.
+        # - **3**: expired.
         self.status = status
-        # The type of the template that is used to create the policy. Valid values:
-        # 
-        # *   **promotion**: the Important Activity template
-        # *   **bypass**: the Forward All template
+        # The templatetype used by the policy. Valid values:
+        # - **promotion**: Important Activity template.
+        # - **bypass**: full forwarding template.
         self.template = template
 
     def validate(self):
@@ -192,32 +188,30 @@ class DescribeSceneDefensePoliciesResponseBodyPoliciesRuntimePolicies(DaraModel)
         status: int = None,
         old_value: str = None,
     ):
-        # The protection rule that is applied when the policy takes effect.
+        # The protection rule when the policy takes effect.
         # 
-        # If you set **PolicyType** to **1**, the value is **{"cc_rule_enable": false }**. The value indicates that the Frequency Control policy is disabled.
+        # If **PolicyType** is **1**, the value is **{"cc_rule_enable": false }**, which indicates that frequency control is disabled.
         # 
-        # If you set **PolicyType** to **2**, the value is **{"ai_rule_enable": 0}**. The value indicates that the Intelligent Protection policy is disabled.
+        # If **PolicyType** is **2**, the value is **{"ai_rule_enable": 0}**, which indicates that AI-based intelligent analysis is disabled.
         self.new_value = new_value
-        # The protection policy whose status is changed when the policy takes effect. Valid values:
-        # 
-        # *   **1**: indicates that the Frequency Control policy is changed.
-        # *   **2**: indicates that the Intelligent Protection policy is changed.
+        # The type of protection feature change triggered when the policy takes effect. Valid values:
+        # - **1**: frequency control feature change.
+        # - **2**: AI-based intelligent analysis feature change.
         self.policy_type = policy_type
-        # The running status of the policy. Valid values:
-        # 
-        # *   **0**: The policy has not been issued or is restored.
-        # *   **1**: The policy is pending.
-        # *   **2**: The policy is being restored.
-        # *   **3**: The policy takes effect.
-        # *   **4**: The policy fails to take effect.
-        # *   **5**:The policy fails to be restored.
-        # *   **6**: The configurations of the protected objects for the policy does not exist because the configurations may be deleted.
+        # The runtime status of the policy. Valid values:
+        # - **0**: not delivered or policy restored successfully.
+        # - **1**: active (policy takes effect).
+        # - **2**: being restored (policy restoration).
+        # - **3**: policy took effect successfully.
+        # - **4**: policy failed to take effect.
+        # - **5**: policy restoration failed.
+        # - **6**: the configuration of the object associated with the policy does not exist (may have been deleted).
         self.status = status
-        # The protection rule that is applied before the policy takes effect.
+        # The protection rule before the policy takes effect.
         # 
-        # If you set **PolicyType** to **1**, the value is **{"cc_rule_enable": true}**. The value indicates that the Frequency Control policy is enabled.
+        # If **PolicyType** is **1**, the value is **{"cc_rule_enable": true}**, which indicates that frequency control is enabled.
         # 
-        # If you set **PolicyType** to **2**, the value is **{"ai_rule_enable": 1}**. The value indicates that the Intelligent Protection policy is enabled.
+        # If **PolicyType** is **2**, the value is **{"ai_rule_enable": 1}**, which indicates that AI-based intelligent analysis is enabled.
         self.old_value = old_value
 
     def validate(self):

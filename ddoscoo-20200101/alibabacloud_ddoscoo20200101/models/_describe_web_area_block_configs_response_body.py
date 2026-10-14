@@ -13,7 +13,7 @@ class DescribeWebAreaBlockConfigsResponseBody(DaraModel):
         area_block_configs: List[main_models.DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs] = None,
         request_id: str = None,
     ):
-        # An array that consists of the configurations of the Location Blacklist (Domain Names) policy.
+        # The configuration information of the Location Blacklist feature (for domain names).
         self.area_block_configs = area_block_configs
         # The ID of the request.
         self.request_id = request_id
@@ -60,7 +60,7 @@ class DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigs(DaraModel):
     ):
         # The domain name of the website.
         self.domain = domain
-        # The configuration of the blocked locations.
+        # The information about the blocked regions.
         self.region_list = region_list
 
     def validate(self):
@@ -103,12 +103,13 @@ class DescribeWebAreaBlockConfigsResponseBodyAreaBlockConfigsRegionList(DaraMode
         block: int = None,
         region: str = None,
     ):
-        # Indicates whether the location is blocked. Valid values:
+        # The blocking status. Valid values:
         # 
-        # *   **0**: yes
-        # *   **1**: no
+        # - **0**: not blocked
+        # 
+        # - **1**: blocked
         self.block = block
-        # The name of the location.
+        # The region.
         self.region = region
 
     def validate(self):

@@ -14,11 +14,11 @@ class DescribeDDoSEventsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The DDoS attack events.
+        # A list of DDoS attack events.
         self.ddo_sevents = ddo_sevents
         # The ID of the request.
         self.request_id = request_id
-        # The total number of returned attack events.
+        # The total number of attack events.
         self.total = total
 
     def validate(self):
@@ -73,33 +73,39 @@ class DescribeDDoSEventsResponseBodyDDoSEvents(DaraModel):
         region: str = None,
         start_time: int = None,
     ):
-        # The bandwidth of attack traffic. Unit: bit/s.
+        # The bandwidth of the attack traffic. Unit: Mbps.
         self.bps = bps
-        # The time when the DDoS attack stopped. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the attack ended. This is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
         # The type of the attack event. Valid values:
         # 
-        # *   **defense**: traffic scrubbing events
-        # *   **blackhole**: blackhole filtering events
+        # - **defense**: scrubbing events.
+        # 
+        # - **blackhole**: blackhole filtering events.
         self.event_type = event_type
         # The attacked IP address.
         self.ip = ip
         # The attacked port.
         self.port = port
-        # The packet forwarding rate of attack traffic. Unit: packets per second (pps).
+        # The packet forwarding rate of the attack traffic. Unit: pps.
         self.pps = pps
-        # The region from which the attack was launched. Valid values:
+        # The source location of the attack. Valid values:
         # 
-        # *   **cn**: a region in the Chinese mainland
-        # *   **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
-        # *   **alb-ap-southeast-gf-x**: Singapore
-        # *   **alb-cn-hongkong-gf-x**: Hong Kong (China)
-        # *   **alb-eu-central-1-gf-x**: Germany (Frankfurt)
-        # *   **alb-us-west-1-gf-x**: US (Silicon Valley)
+        # - **cn**: the Chinese mainland.
         # 
-        # > The values except **cn** are returned only when **RegionId** is set to **ap-southeast-1**.
+        # - **alb-ap-northeast-1-gf-x**: Japan.
+        # 
+        # - **alb-ap-southeast-gf-x**: Singapore.
+        # 
+        # - **alb-cn-hongkong-gf-x**: Hong Kong (China).
+        # 
+        # - **alb-eu-central-1-gf-x**: Germany.
+        # 
+        # - **alb-us-west-1-gf-x**: US (West).
+        # 
+        # > Values other than **cn** are available only for the Anti-DDoS Premium service, for which the **RegionId** is **ap-southeast-1**.
         self.region = region
-        # The time when the DDoS attack started. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the attack started. This is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

@@ -19,26 +19,31 @@ class SwitchSchedulerRuleRequest(DaraModel):
         self.rule_name = rule_name
         # The type of the scheduling rule. Valid values:
         # 
-        # *   **2**: tiered protection rule
-        # *   **3**: network acceleration rule
-        # *   **5**: Alibaba Cloud CDN (CDN) interaction rule
-        # *   **6**: cloud service interaction rule
+        # - **2**: tiered protection rule
+        # 
+        # - **3**: network acceleration rule
+        # 
+        # - **5**: Alibaba Cloud CDN (CDN) interaction rule
+        # 
+        # - **6**: cloud service interaction rule
         # 
         # This parameter is required.
         self.rule_type = rule_type
         # The configuration that is used to switch service traffic. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that includes the following parameters:
         # 
-        # *   **Value**: required. The IP address of the associated resource. Data type: string.
+        # - **Value**: required. The IP address of the associated resource. Data type: string.
         # 
-        # *   **State**: required. The operation type. Data type: integer. Valid values:
+        # - **State**: required. The operation type. Data type: integer. Valid values:
         # 
-        #     *   **0**: switches service traffic from the associated resource to your Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing.
-        #     *   **1**: switches service traffic back to the associated cloud resource.
+        #   - **0**: switches service traffic from the associated resource to your Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing.
         # 
-        # *   **Interval**: optional. The waiting time that is required before the service traffic is switched back. Unit: minutes. Data type: integer. Usage notes:
+        #   - **1**: switches service traffic back to the associated cloud resource.
         # 
-        #     *   If the **State** parameter is set to **0**, you must set this parameter to \\*\\*-1\\*\\*. Otherwise, the call fails.
-        #     *   If the **State** parameter is set to **1**, you do not need to set this parameter.
+        # - **Interval**: optional. The waiting time that is required before the service traffic is switched back. Unit: minutes. Data type: integer. Usage notes:
+        # 
+        #   - If the **State** parameter is set to **0**, you must set this parameter to \\*\\*-1\\*\\*. Otherwise, the call fails.
+        # 
+        #   - If the **State** parameter is set to **1**, you do not need to set this parameter.
         # 
         # This parameter is required.
         self.switch_data = switch_data

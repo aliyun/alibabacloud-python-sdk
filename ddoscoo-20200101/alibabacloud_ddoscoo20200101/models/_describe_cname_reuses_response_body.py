@@ -13,7 +13,9 @@ class DescribeCnameReusesResponseBody(DaraModel):
         cname_reuses: List[main_models.DescribeCnameReusesResponseBodyCnameReuses] = None,
         request_id: str = None,
     ):
+        # The CNAME reuse information.
         self.cname_reuses = cname_reuses
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,15 @@ class DescribeCnameReusesResponseBodyCnameReuses(DaraModel):
         domain: str = None,
         enable: int = None,
     ):
+        # The reused canonical name value.
         self.cname = cname
+        # The domain name of the website.
         self.domain = domain
+        # Indicates whether CNAME reuse is enabled. Valid values:
+        # 
+        # - **0**: disabled
+        # 
+        # - **1**: enabled
         self.enable = enable
 
     def validate(self):

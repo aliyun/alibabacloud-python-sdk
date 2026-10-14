@@ -9,7 +9,7 @@ class ModifyWebCCRuleResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):

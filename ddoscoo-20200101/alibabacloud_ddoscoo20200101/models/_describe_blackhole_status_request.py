@@ -11,9 +11,9 @@ class DescribeBlackholeStatusRequest(DaraModel):
         self,
         instance_ids: List[str] = None,
     ):
-        # The ID of the instance.
+        # The ID of the Anti-DDoS Proxy instance.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

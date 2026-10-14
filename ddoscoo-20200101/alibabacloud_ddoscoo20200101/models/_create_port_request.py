@@ -13,30 +13,35 @@ class CreatePortRequest(DaraModel):
         frontend_port: str = None,
         frontend_protocol: str = None,
         instance_id: str = None,
+        ip_mode: str = None,
         proxy_enable: int = None,
         real_servers: List[str] = None,
     ):
-        # The port of the origin server. Valid values: **0** to **65535**.
+        # The origin server port. Valid values: **0** to **65535**.
         self.backend_port = backend_port
-        # The forwarding port. Valid values: **0** to **65535**.
+        # The forward port. Valid values: **0** to **65535**.
         # 
         # This parameter is required.
         self.frontend_port = frontend_port
-        # The type of the forwarding protocol. Valid values:
+        # The forwarding protocol type. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**: TCP protocol.
+        # - **udp**: UDP protocol.
         # 
         # This parameter is required.
         self.frontend_protocol = frontend_protocol
         # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.ip_mode = ip_mode
+        # The traffic redirection switch. Valid values:
+        # - **0**: disabled.
+        # - **1**: enabled.
         self.proxy_enable = proxy_enable
-        # An array that consists of the IP addresses of origin servers.
+        # The list of origin server IP addresses.
         # 
         # This parameter is required.
         self.real_servers = real_servers
@@ -61,6 +66,9 @@ class CreatePortRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.ip_mode is not None:
+            result['IpMode'] = self.ip_mode
+
         if self.proxy_enable is not None:
             result['ProxyEnable'] = self.proxy_enable
 
@@ -82,6 +90,9 @@ class CreatePortRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('IpMode') is not None:
+            self.ip_mode = m.get('IpMode')
 
         if m.get('ProxyEnable') is not None:
             self.proxy_enable = m.get('ProxyEnable')

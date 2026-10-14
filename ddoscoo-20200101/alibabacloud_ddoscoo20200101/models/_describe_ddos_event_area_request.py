@@ -12,21 +12,22 @@ class DescribeDDosEventAreaRequest(DaraModel):
         range: int = None,
         start_time: int = None,
     ):
-        # The type of the attack event that you want to query. Valid values:
+        # The event type of the attack event to query. Valid values:
         # 
-        # *   **defense**: attack events that trigger traffic scrubbing
-        # *   **blackhole**: attack events that trigger blackhole filtering
+        # - **defense**: traffic scrubbing events for volumetric attacks.
+        # - **blackhole**: blackhole filtering events for volumetric attacks.
         # 
         # This parameter is required.
         self.event_type = event_type
-        # The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # The attacked IP Address of Anti-DDoS Proxy instance of Anti-DDoS Pro and Anti-DDoS Premium.
         # 
         # This parameter is required.
         self.ip = ip
+        # The number of data entries to return. Unit: entries.
         self.range = range
-        # The UNIX timestamp when the query starts. Unit: seconds.
+        # The start timestamp of the event to query. Unit: seconds.
         # 
-        # > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+        # > You can call [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) to query the start time of all events.
         # 
         # This parameter is required.
         self.start_time = start_time

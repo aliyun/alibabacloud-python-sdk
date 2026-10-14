@@ -15,7 +15,7 @@ class DescribeDomainViewSourceCountriesResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # An array consisting of the country or area from which the requests are sent.
+        # The information about request source countries for the website service.
         self.source_countrys = source_countrys
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeDomainViewSourceCountriesResponseBodySourceCountrys(DaraModel):
         count: int = None,
         country_id: str = None,
     ):
-        # The total number of requests.
+        # The number of requests.
         self.count = count
-        # The abbreviation of the country or area. For more information, see the **Codes of countries and areas** section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic. For example, **cn** indicates China, and **us** indicates the United States.
+        # The abbreviation of the country. For more information, see the **Chinese mainland and regions outside China** section in [Country codes](https://help.aliyun.com/document_detail/167926.html). For example, **cn** indicates China and **us** indicates the United States.
         self.country_id = country_id
 
     def validate(self):

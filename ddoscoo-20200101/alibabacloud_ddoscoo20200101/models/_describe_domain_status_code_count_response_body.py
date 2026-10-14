@@ -25,31 +25,33 @@ class DescribeDomainStatusCodeCountResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The number of 200 status codes within the specified period of time.
+        # The number of 200 status codes within the query time range.
         self.status_200 = status_200
-        # The number of 2xx status codes within the specified period of time.
+        # The number of 2XX status codes within the query time range.
         self.status_2xx = status_2xx
-        # The number of 3xx status codes within the specified period of time.
+        # The number of 3XX status codes within the query time range.
         self.status_3xx = status_3xx
-        # The number of 403 status codes within the specified period of time.
+        # The number of 403 status codes within the query time range.
         self.status_403 = status_403
-        # The number of 404 status codes within the specified period of time.
+        # The number of 404 status codes within the query time range.
         self.status_404 = status_404
-        # The number of 405 status codes within the specified period of time.
+        # The number of 405 status codes within the query time range.
         self.status_405 = status_405
+        # The number of 410 status codes within the query time range.
         self.status_410 = status_410
+        # The number of 499 status codes within the query time range.
         self.status_499 = status_499
-        # The number of 4xx status codes within the specified period of time.
+        # The number of 4XX status codes within the query time range.
         self.status_4xx = status_4xx
-        # The number of 501 status codes within the specified period of time.
+        # The number of 501 status codes within the query time range.
         self.status_501 = status_501
-        # The number of 502 status codes within the specified period of time.
+        # The number of 502 status codes within the query time range.
         self.status_502 = status_502
-        # The number of 503 status codes within the specified period of time.
+        # The number of 503 status codes within the query time range.
         self.status_503 = status_503
-        # The number of 504 status codes within the specified period of time.
+        # The number of 504 status codes within the query time range.
         self.status_504 = status_504
-        # The number of 5xx status codes within the specified period of time.
+        # The number of 5XX status codes within the query time range.
         self.status_5xx = status_5xx
 
     def validate(self):

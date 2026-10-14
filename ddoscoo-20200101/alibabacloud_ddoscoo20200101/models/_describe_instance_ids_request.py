@@ -13,16 +13,19 @@ class DescribeInstanceIdsRequest(DaraModel):
         instance_ids: List[str] = None,
         resource_group_id: str = None,
     ):
-        # The type of the instance to query. Valid values:
+        # The edition of the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Valid values:
         # 
-        # *   **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
-        # *   **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
-        # *   **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
-        # *   **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan
-        # *   **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+        # - **0**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Insurance Edition.
+        # - **1**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Unlimited Edition.
+        # - **2**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Acceleration Line.
+        # - **3**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Secure Acceleration Line.
+        # - **9**: Anti-DDoS Pro or Anti-DDoS Premium (the Chinese mainland) Professional Edition.
         self.edition = edition
-        # The IDs of instances to query.
+        # The IDs of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. Maximum value of N: 200.
         self.instance_ids = instance_ids
+        # The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -10,17 +10,8 @@ class ModifyBizBandWidthModeRequest(DaraModel):
         instance_id: str = None,
         mode: str = None,
     ):
-        # The ID of the instance.
-        # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The metering method of the burstable clean bandwidth feature. Valid values:
-        # 
-        # *   **month**: the metering method of monthly 95th percentile
-        # *   **day**: the metering method of daily 95th percentile
-        # 
         # This parameter is required.
         self.mode = mode
 

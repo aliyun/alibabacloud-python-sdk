@@ -11,11 +11,11 @@ class DescribeUnBlockCountResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The remaining number of times that you can enable the near-origin traffic diversion feature.
+        # The remaining number of available near-origin traffic diversion sessions.
         self.remain_count = remain_count
         # The request ID.
         self.request_id = request_id
-        # The total number of times that you can enable the near-origin traffic diversion feature.
+        # The total number of available near-origin traffic diversion sessions.
         self.total_count = total_count
 
     def validate(self):

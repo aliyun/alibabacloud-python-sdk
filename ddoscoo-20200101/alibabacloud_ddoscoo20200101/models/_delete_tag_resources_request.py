@@ -16,28 +16,29 @@ class DeleteTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the specified resource. Valid values:
+        # Specifies whether to remove all tags from the resource. Valid values:
         # 
-        # *   **true**: yes.
-        # *   **false** no. This is the default value.
+        # - **true**
+        # 
+        # - **false** (default)
         self.all = all
-        # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Proxy (Chinese Mainland) instance.
+        # The region ID of the Anti-DDoS instance. The value is fixed to **cn-hangzhou**, which indicates the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs in Resource Management.
+        # The ID of the resource group to which the Anti-DDoS instance belongs in Resource Management.
         # 
-        # If you do not configure this parameter, the instance belongs to the default resource group.
+        # If you do not set this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # An array consisting of the IDs of instances from which you want to remove tags.
+        # A list of IDs of the Anti-DDoS instances from which you want to remove tags.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
-        # The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+        # The resource type. The value is fixed to **INSTANCE**, which indicates an Anti-DDoS instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # An array consisting of the keys of the tags that you want to remove.
+        # A list of tag keys to remove.
         self.tag_key = tag_key
 
     def validate(self):

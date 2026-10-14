@@ -13,9 +13,9 @@ class DescribeDomainTopHttpMethodResponseBody(DaraModel):
         domain_top_method: List[main_models.DescribeDomainTopHttpMethodResponseBodyDomainTopMethod] = None,
         request_id: str = None,
     ):
-        # The information about top HTTP methods.
+        # The list of top HTTP methods for the domain name.
         self.domain_top_method = domain_top_method
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -61,9 +61,9 @@ class DescribeDomainTopHttpMethodResponseBodyDomainTopMethod(DaraModel):
     ):
         # The domain name of the website.
         self.domain = domain
-        # The HTTP method.
+        # The HTTP method of the domain name.
         self.http_method = http_method
-        # The page views.
+        # The number of matching requests.
         self.pv = pv
 
     def validate(self):

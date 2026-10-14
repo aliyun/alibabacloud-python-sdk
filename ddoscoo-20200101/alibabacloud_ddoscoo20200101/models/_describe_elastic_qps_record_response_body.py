@@ -83,9 +83,11 @@ class DescribeElasticQpsRecordResponseBodyElasticQpsList(DaraModel):
         self.qps_peak = qps_peak
         # Indicates whether the instance has expired or is released. Valid values:
         # 
-        # *   **1**: The instance runs as expected.
-        # *   **2**: The instance has expired.
-        # *   **4**: The instance is released.
+        # - **1**: The instance runs as expected.
+        # 
+        # - **2**: The instance has expired.
+        # 
+        # - **4**: The instance is released.
         self.status = status
 
     def validate(self):

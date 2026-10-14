@@ -11,11 +11,11 @@ class DescribeUnBlackholeCountResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The remaining quota that you can deactivate blackhole filtering.
+        # The remaining number of times that blackhole filtering can be deactivated.
         self.remain_count = remain_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total quota that you can deactivate blackhole filtering.
+        # The total number of times that blackhole filtering can be deactivated.
         self.total_count = total_count
 
     def validate(self):

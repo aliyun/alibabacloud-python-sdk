@@ -16,17 +16,17 @@ class DescribeDDoSEventsRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. This is a UNIX timestamp. Unit: seconds.
         # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > The timestamp must be on the minute.
         self.end_time = end_time
-        # The ID of the instance.
+        # The IDs of the Anti-DDoS Pro or Anti-DDoS Premium instances.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > Call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro and Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # The number of the page to return. For example, to query the first page, set this parameter to **1**.
         # 
         # This parameter is required.
         self.page_number = page_number
@@ -34,11 +34,11 @@ class DescribeDDoSEventsRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group in Resource Management to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs. By default, this parameter is empty, which means that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. This is a UNIX timestamp. Unit: seconds.
         # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > The timestamp must be on the minute.
         # 
         # This parameter is required.
         self.start_time = start_time

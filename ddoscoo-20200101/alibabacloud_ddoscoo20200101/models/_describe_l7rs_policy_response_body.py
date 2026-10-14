@@ -20,9 +20,11 @@ class DescribeL7RsPolicyResponseBody(DaraModel):
         self.attributes = attributes
         # The scheduling algorithm for back-to-origin traffic. Valid values:
         # 
-        # *   **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
-        # *   **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
-        # *   **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+        # - **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+        # 
+        # - **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
+        # 
+        # - **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
         self.proxy_mode = proxy_mode
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -30,8 +32,9 @@ class DescribeL7RsPolicyResponseBody(DaraModel):
         self.rs_attr_rw_timeout_max = rs_attr_rw_timeout_max
         # The back-to-origin retry switch. Valid values:
         # 
-        # *   **1**: on
-        # *   **0**: off
+        # - **1**: on
+        # 
+        # - **0**: off
         self.upstream_retry = upstream_retry
 
     def validate(self):
@@ -99,8 +102,9 @@ class DescribeL7RsPolicyResponseBodyAttributes(DaraModel):
         self.real_server = real_server
         # The address type of the origin server. Valid values:
         # 
-        # *   **0**: IP address
-        # *   **1**: domain name
+        # - **0**: IP address
+        # 
+        # - **1**: domain name
         self.rs_type = rs_type
 
     def validate(self):
@@ -156,14 +160,15 @@ class DescribeL7RsPolicyResponseBodyAttributesAttribute(DaraModel):
         self.max_fails = max_fails
         # The primary/secondary flag. Valid values:
         # 
-        # *   **active**: primary
-        # *   **backup**: secondary
+        # - **active**: primary
+        # 
+        # - **backup**: secondary
         self.mode = mode
         # The timeout period for a read connection. Valid values: **10** to **300**. Unit: seconds. Default value: **120**.
         self.read_timeout = read_timeout
         # The timeout period for a write connection. Valid values: **10** to **300**. Unit: seconds. Default value: **120**.
         self.send_timeout = send_timeout
-        # The weight of the origin server. This parameter takes effect only if the value of **ProxyMode** is **rr** or **ip_hash**.****
+        # The weight of the origin server. This parameter takes effect only if the value of **ProxyMode** is **rr** or **ip_hash**.\\*\\*\\*\\*
         # 
         # Valid values: **1** to **100**. Default value: **100**. A server with a higher weight receives more requests.
         self.weight = weight

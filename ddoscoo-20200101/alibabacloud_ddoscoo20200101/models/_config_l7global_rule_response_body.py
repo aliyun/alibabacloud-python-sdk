@@ -9,6 +9,7 @@ class ConfigL7GlobalRuleResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request that can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

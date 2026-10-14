@@ -9,7 +9,7 @@ class EmptySlsLogstoreResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):

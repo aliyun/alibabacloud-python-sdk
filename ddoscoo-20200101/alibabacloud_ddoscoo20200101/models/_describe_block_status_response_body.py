@@ -15,7 +15,7 @@ class DescribeBlockStatusResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # An array that consists of details of the Diversion from Origin Server configurations of the instance.
+        # The near-origin traffic diversion configurations of the Anti-DDoS Pro and Anti-DDoS Premium instances.
         self.status_list = status_list
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeBlockStatusResponseBodyStatusList(DaraModel):
         block_status_list: List[main_models.DescribeBlockStatusResponseBodyStatusListBlockStatusList] = None,
         ip: str = None,
     ):
-        # An array that consists of details of the Diversion from Origin Server configuration.
+        # The near-origin traffic diversion configurations.
         self.block_status_list = block_status_list
-        # The IP address of the instance.
+        # The IP address of the Anti-DDoS Pro and Anti-DDoS Premium instance.
         self.ip = ip
 
     def validate(self):
@@ -105,19 +105,17 @@ class DescribeBlockStatusResponseBodyStatusListBlockStatusList(DaraModel):
         line: str = None,
         start_time: int = None,
     ):
-        # The blocking status of the network traffic. Valid values:
-        # 
-        # *   **areablock**: Network traffic is blocked.
-        # *   **normal**: Network traffic is not blocked.
+        # The traffic blocking status. Valid values:
+        # - **areablock**: Blocked.
+        # - **normal**: Normal (not blocked).
         self.block_status = block_status
-        # The end time of the blocking. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the blocking. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
-        # The Internet service provider (ISP) line from which the traffic is blocked. Valid values:
-        # 
-        # *   **ct**: China Telecom (International)
-        # *   **cut**: China Unicom (International)
+        # The type of the blocked line. Valid values:
+        # - **ct**: China Telecom international line.
+        # - **cut**: China Unicom international line.
         self.line = line
-        # The start time of the blocking. This value is a UNIX timestamp. Unit: seconds.
+        # The start time of the blocking. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

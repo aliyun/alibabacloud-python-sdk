@@ -16,7 +16,7 @@ class DescribeSlaEventListRequest(DaraModel):
     ):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
-        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -28,14 +28,15 @@ class DescribeSlaEventListRequest(DaraModel):
         self.page_size = page_size
         # The type of the service Valid values:
         # 
-        # *   **cn**: Anti-DDoS Pro
-        # *   **cn-hongkong**: Anti-DDoS Premium
+        # - **cn**: Anti-DDoS Pro
+        # 
+        # - **cn-hongkong**: Anti-DDoS Premium
         # 
         # This parameter is required.
         self.region = region
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
-        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         # 
         # This parameter is required.
         self.start_time = start_time

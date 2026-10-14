@@ -11,22 +11,27 @@ class ModifyElasticBizQpsRequest(DaraModel):
         mode: str = None,
         ops_elastic_qps: int = None,
     ):
-        # The ID of the Anti-DDoS Proxy instance.
+        # The ID of the Anti-DDoS instance.
         # 
-        # >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The metering method for the burstable QPS. Valid values:
         # 
-        # *   **month**: monthly 95th percentile
-        # *   **day**: daily 95th percentile QPS
+        # - **month**: Monthly 95th percentile
+        # 
+        # - **day**: Daily 95th percentile
         # 
         # This parameter is required.
         self.mode = mode
-        # The burstable QPS value.
+        # The burstable QPS value. After burstable QPS is enabled, the default value is three times the basic QPS, but it cannot exceed the maximum burstable QPS:
         # 
-        # >  The default value is 300,000 for the Chinese mainland and 150,000 for regions outside the Chinese mainland.
+        # - **Anti-DDoS Proxy (Chinese Mainland) IPv4 instance**: The maximum value is 300,000 QPS.
+        # 
+        # - **Anti-DDoS Proxy (Chinese Mainland) IPv6 instance**: The maximum value is 100,000 QPS.
+        # 
+        # - **Anti-DDoS Proxy (Outside Chinese Mainland) instance**: The maximum value is 150,000 QPS.
         self.ops_elastic_qps = ops_elastic_qps
 
     def validate(self):

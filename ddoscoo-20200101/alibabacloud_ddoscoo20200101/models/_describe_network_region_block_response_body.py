@@ -13,7 +13,7 @@ class DescribeNetworkRegionBlockResponseBody(DaraModel):
         config: main_models.DescribeNetworkRegionBlockResponseBodyConfig = None,
         request_id: str = None,
     ):
-        # The configuration of blocked locations.
+        # The configuration of the location blacklist.
         self.config = config
         # The ID of the request.
         self.request_id = request_id
@@ -53,14 +53,13 @@ class DescribeNetworkRegionBlockResponseBodyConfig(DaraModel):
         provinces: List[int] = None,
         region_block_switch: str = None,
     ):
-        # The codes of the countries or areas from which the requests are blocked.
+        # The list of blocked region codes outside China.
         self.countries = countries
-        # The codes of the administrative regions in China from which the requests are blocked.
+        # The list of blocked region codes in China.
         self.provinces = provinces
-        # The status of the Location Blacklist policy. Valid values:
-        # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # The status of the location blacklist. Valid values:
+        # - **on**: enabled
+        # - **off**: disabled
         self.region_block_switch = region_block_switch
 
     def validate(self):

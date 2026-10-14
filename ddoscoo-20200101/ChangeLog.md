@@ -1,3 +1,7 @@
+2026-10-14 Version: 4.0.4
+- Update API DescribeInstanceSpecs: add response parameters Body.InstanceSpecs.$.BaseProtectionBandwidth.
+
+
 2026-03-20 Version: 4.0.2
 - Update API DescribeDomainH2Fingerprint: add request parameters QueryType.
 - Update API DescribeDomainTopFingerprint: add request parameters QueryType.

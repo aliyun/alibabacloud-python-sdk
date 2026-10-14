@@ -14,27 +14,27 @@ class DescribeSystemLogRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The bills of the burstable clean bandwidth that are issued before this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
+        # The end time to query bills of burstable clean bandwidth that are generated before the specified time. This value is a timestamp in milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The IP address of the instance.
+        # The IP address of the Anti-DDoS instance to query.
         # 
-        # > You can call the [DescribeInstanceDetails](https://help.aliyun.com/document_detail/91490.html) operation to query the IP addresses of all instances.
+        # > You can call [DescribeInstanceDetails](https://help.aliyun.com/document_detail/91490.html) to query the IP addresses of Anti-DDoS instances.
         self.entity_object = entity_object
-        # The type of the system log. Set the value to **20**, which indicates the billing logs for the burstable clean bandwidth.
+        # The type of system logs to query. The value is fixed at **20**, which indicates the billing logs of burstable clean bandwidth.
         # 
-        # > You must specify this parameter. Otherwise, the call fails.
+        # > You must set this parameter. Otherwise, the call fails.
         self.entity_type = entity_type
-        # The number of the page to return.
+        # The page number of the returned page.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of logs to return on each page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The beginning of the time range to query. The bills of the burstable clean bandwidth that are issued after this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start time to query bills of burstable clean bandwidth that are generated after the specified time. This value is a timestamp in milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time

@@ -15,33 +15,30 @@ class AssociateWebCertRequest(DaraModel):
         domain: str = None,
         key: str = None,
     ):
-        # The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+        # The public key of the certificate to associate. This parameter must be used together with CertName and Key. 
         # 
-        # >  If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+        # > If you specify CertName, Cert, and Key, you do not need to specify CertId.
         self.cert = cert
-        # The ID of the certificate.
-        # 
-        # >  If you specify a certificate ID, you do not need to specify a value for the CertName, Cert, and Key parameters. You can specify only one of this parameter and the CertIdentifier parameter.
+        # The certificate ID.
+        # > If you specify the certificate ID, you do not need to specify CertName, Cert, or Key. This parameter cannot be used together with CertIdentifier.
         self.cert_id = cert_id
-        # The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
-        # 
-        # >  You can specify only one of this parameter and the CertId parameter.
+        # The global certificate ID, which is in the format of certificate ID + "-cn-hangzhou". For example, if the certificate ID is 123, set CertIdentifier to "123-cn-hangzhou".
+        # > This parameter cannot be used together with CertId.
         self.cert_identifier = cert_identifier
-        # The name of the certificate.
+        # The certificate name. 
         # 
-        # >  You can specify the name of the certificate that you want to associate. This parameter must be used together with the Cert and Key parameters.
+        # > The name of the certificate to associate. This parameter must be used together with Cert and Key.
         self.cert_name = cert_name
-        # The region of the certificate. Valid values: **cn-hangzhou** and **ap-southeast-1**. Default value: **cn-hangzhou**.
+        # The region where the certificate is stored. Valid values: **cn-hangzhou** and **ap-southeast-1**. Default value: **cn-hangzhou**.
         self.cert_region = cert_region
-        # The domain name of the website.
-        # 
-        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # The domain name of the website service.
+        # > The domain name must have a website forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         # 
         # This parameter is required.
         self.domain = domain
-        # The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+        # The private key of the certificate to associate. This parameter must be used together with CertName and Cert. 
         # 
-        # >  If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+        # > If you specify CertName, Cert, and Key, you do not need to specify CertId.
         self.key = key
 
     def validate(self):

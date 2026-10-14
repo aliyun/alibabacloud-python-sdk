@@ -11,19 +11,19 @@ class AddAutoCcWhitelistRequest(DaraModel):
         instance_id: str = None,
         whitelist: str = None,
     ):
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated.
         # 
-        # > This parameter indicates the validity period of the IP address blacklist. By default, the traffic from the IP addresses that you add to the whitelist is always allowed. You do not need to set this parameter.
+        # > This parameter specifies the validity period of blacklist IP addresses. Whitelist IP addresses are permanently valid by default. You do not need to set this parameter.
         self.expire_time = expire_time
-        # The ID of the instance.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance for which you want to add whitelist IP addresses.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > You can invoke [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configuration of the IP addresses that you want to add to the whitelist. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # The configuration of the whitelist IP addresses to add. This parameter is a string that is converted from a JSON array. Each element in the JSON array is a whitelist IP struct that contains the following field:
         # 
-        # *   **src**: the IP address that you want to add. This parameter is required. Data type: string.
+        # - **src**: String | Required | The IP address to add to the whitelist.
         # 
         # This parameter is required.
         self.whitelist = whitelist

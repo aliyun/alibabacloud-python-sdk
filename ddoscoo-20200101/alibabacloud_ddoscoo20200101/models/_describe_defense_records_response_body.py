@@ -14,11 +14,11 @@ class DescribeDefenseRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of details of the log of an advanced mitigation session.
+        # The advanced mitigation logs.
         self.defense_records = defense_records
         # The ID of the request.
         self.request_id = request_id
-        # The total number of advanced mitigation sessions.
+        # The total number of advanced mitigation records.
         self.total_count = total_count
 
     def validate(self):
@@ -71,20 +71,21 @@ class DescribeDefenseRecordsResponseBodyDefenseRecords(DaraModel):
         start_time: int = None,
         status: int = None,
     ):
-        # The peak attack traffic. Unit: bit/s.
+        # The peak attack throughput. Unit: bps.
         self.attack_peak = attack_peak
-        # The end time of the advanced mitigation session. This value is a UNIX timestamp. Units: miliseconds.
+        # The end time of the mitigation. This is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
         # The number of attacks.
         self.event_count = event_count
-        # The ID of the instance.
+        # The ID of the Anti-DDoS instance.
         self.instance_id = instance_id
-        # The start time of the advanced mitigation session. This value is a UNIX timestamp. Units: miliseconds.
+        # The start time of the mitigation. This is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
-        # The status of the advanced mitigation session. Valid values:
+        # The status of advanced mitigation. Valid values:
         # 
-        # *   **0**: The advanced mitigation session is being used.
-        # *   **1**: The advanced mitigation session is used.
+        # - **0**: in use
+        # 
+        # - **1**: ended
         self.status = status
 
     def validate(self):

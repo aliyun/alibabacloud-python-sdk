@@ -13,9 +13,9 @@ class DescribeDomainTopRefererResponseBody(DaraModel):
         domain_top_referer: List[main_models.DescribeDomainTopRefererResponseBodyDomainTopReferer] = None,
         request_id: str = None,
     ):
-        # The information about top referers.
+        # The top referer data of the website.
         self.domain_top_referer = domain_top_referer
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeDomainTopRefererResponseBodyDomainTopReferer(DaraModel):
         pv: int = None,
         referer: str = None,
     ):
-        # The domain name of the website.
+        # The domain name of the website service.
         self.domain = domain
-        # The page views.
+        # The number of request matches.
         self.pv = pv
-        # The Base64-encoded referer.
+        # The Base64-encoded value of the referer.
         self.referer = referer
 
     def validate(self):

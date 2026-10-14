@@ -15,8 +15,9 @@ class DescribeDestinationPortEventRequest(DaraModel):
     ):
         # The type of the attack event that you want to query. Valid values:
         # 
-        # *   **defense**: attack events that trigger traffic scrubbing.
-        # *   **blackhole**: attack events that trigger blackhole filtering.
+        # - **defense**: attack events that trigger traffic scrubbing.
+        # 
+        # - **blackhole**: attack events that trigger blackhole filtering.
         # 
         # This parameter is required.
         self.event_type = event_type
@@ -30,14 +31,15 @@ class DescribeDestinationPortEventRequest(DaraModel):
         self.range = range
         # The region in which your service is deployed. Valid values:
         # 
-        # *   **cn**: a region in the Chinese mainland.
-        # *   **cn-hongkong**: a region outside the Chinese mainland.
+        # - **cn**: a region in the Chinese mainland.
+        # 
+        # - **cn-hongkong**: a region outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region = region
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
-        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         # 
         # This parameter is required.
         self.start_time = start_time

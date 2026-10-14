@@ -11,24 +11,25 @@ class ModifyWebAreaBlockSwitchRequest(DaraModel):
         domain: str = None,
         resource_group_id: str = None,
     ):
-        # Specifies whether to enable or disable the Location Blacklist (Domain Names) policy for a domain name. The value is a string that consists of a JSON struct. The JSON struct contains the following parameters:
+        # The status of the Location Blacklist feature (for domain names). This parameter is a string that is converted from a JSON struct. The JSON struct contains the following parameter:
         # 
-        # *   **RegionblockEnable**: the status of the Location Blacklist (Domain Names) policy. This parameter is required and must be of the INTEGER type. Valid values:
+        # - **RegionblockEnable**: An Integer value that is required. The status of the Location Blacklist feature (for domain names). Valid values:
         # 
-        #     *   **1**: enables the policy.
-        #     *   **0**: disables the policy.
+        #   - **1**: enables the feature.
+        # 
+        #   - **0**: disables the feature.
         # 
         # This parameter is required.
         self.config = config
-        # The domain name for which you want to enable or disable the Location Blacklist policy.
+        # The domain name for which you want to set the Location Blacklist feature.
         # 
-        # > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # > You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names that are protected by Anti-DDoS Proxy.
         # 
         # This parameter is required.
         self.domain = domain
-        # The ID of the resource group to which the instance belongs in Resource Management.
+        # The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management.
         # 
-        # If you do not configure this parameter, the instance belongs to the default resource group.
+        # If you do not set this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
 
     def validate(self):

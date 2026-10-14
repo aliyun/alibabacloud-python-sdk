@@ -11,7 +11,7 @@ class DescribeInstanceSpecsRequest(DaraModel):
         self,
         instance_ids: List[str] = None,
     ):
-        # An array that consists of the IDs of instances to query.
+        # The IDs of the Anti-DDoS Pro or Anti-DDoS Premium instances to query.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids

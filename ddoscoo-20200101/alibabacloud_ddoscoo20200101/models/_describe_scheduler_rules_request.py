@@ -12,10 +12,15 @@ class DescribeSchedulerRulesRequest(DaraModel):
         resource_group_id: str = None,
         rule_name: str = None,
     ):
+        # The page number of the returned page. For example, to query the results on the first page, enter **1**.
         self.page_number = page_number
+        # The number of records displayed on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The resource group ID of the Anti-DDoS Proxy instance in Resource Management. The default value is empty, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):

@@ -11,39 +11,39 @@ class ConfigUdpReflectRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The configuration of the filtering policy for UDP reflection attacks.
+        # The configuration of the UDP reflection attack attack prevention protection policy to add.
         # 
-        # The value is a string that consists of a JSON struct. The JSON struct contains the following field:
+        # This parameter is a string that represents a JSON structure transformed into a character string. The JSON structure contains the following field:
         # 
-        # *   **UdpSports**: the source ports of the UDP traffic that you want to block. This field is required and must be of the ARRAY type. Example: `[17,19]`.
+        # - **UdpSports**: Array type. Required. The UDP reflection source ports to block. Example: `[17,19]`.
         # 
-        #     We recommend that you block the following source ports of UDP traffic:
+        #     Block the following source ports that are commonly used in UDP reflection attacks:
         # 
-        #     *   UDP 17: QOTD reflection attacks
-        #     *   UDP 19: CharGEN reflection attacks
-        #     *   UDP 69: TFTP reflection attacks
-        #     *   UDP 111: Portmap reflection attacks
-        #     *   UDP 123: NTP reflection attacks
-        #     *   UDP 137: NetBIOS reflection attacks
-        #     *   UDP 161: SNMPv2 reflection attacks
-        #     *   UDP 389: CLDAP reflection attacks
-        #     *   UDP 1194: OpenVPN reflection attacks
-        #     *   UDP 1900: SSDP reflection attacks
-        #     *   UDP 3389: RDP reflection attacks
-        #     *   UDP 11211: memcached reflection attacks
+        #     - UDP 17: QOTD reflection attacks
+        #     - UDP 19: CharGEN reflection attacks
+        #     - UDP 69: TFTP reflection attacks
+        #     - UDP 111: Portmap reflection attacks
+        #     - UDP 123: NTP reflection attacks
+        #     - UDP 137: NetBIOS reflection attacks
+        #     - UDP 161: SNMPv2 reflection attacks
+        #     - UDP 389: CLDAP reflection attacks
+        #     - UDP 1194: OpenVPN reflection attacks
+        #     - UDP 1900: SSDP reflection attacks
+        #     - UDP 3389: RDP reflection attacks
+        #     - UDP 11211: Memcached reflection attacks
         # 
         # This parameter is required.
         self.config = config
-        # The ID of the instance.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to manage.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > You can invoke [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the Anti-DDoS Proxy instance. Valid values:
+        # The region ID of the Anti-DDoS Pro or Anti-DDoS Premium instance. Valid values:
         # 
-        # *   **cn-hangzhou**: indicates an Anti-DDoS Proxy (Chinese Mainland) instance. This is the default value.
-        # *   **ap-southeast-1**: indicates an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
+        # - **cn-hangzhou** (default): the Chinese mainland, which indicates an Anti-DDoS Pro instance.
+        # - **ap-southeast-1**: outside the Chinese mainland, which indicates an Anti-DDoS Premium instance.
         self.region_id = region_id
 
     def validate(self):

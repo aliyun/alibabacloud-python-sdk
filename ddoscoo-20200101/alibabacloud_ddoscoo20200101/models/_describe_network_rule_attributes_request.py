@@ -9,11 +9,10 @@ class DescribeNetworkRuleAttributesRequest(DaraModel):
         self,
         network_rules: str = None,
     ):
-        # The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
-        # 
-        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # The port forwarding rules to query. This parameter is a JSON string with the following structure:
+        # - **InstanceId**: String type. Required. The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # - **Protocol**: String type. Required. The forwarding protocol type. Valid values: **tcp**, **udp**.
+        # - **FrontendPort**: Integer type. Required. The forwarding port.
         # 
         # This parameter is required.
         self.network_rules = network_rules

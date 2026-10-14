@@ -13,9 +13,9 @@ class DescribeElasticQpsResponseBody(DaraModel):
         elastic_qps: List[main_models.DescribeElasticQpsResponseBodyElasticQps] = None,
         request_id: str = None,
     ):
-        # The information about the burstable QPS.
+        # The time-series data of elastic QPS.
         self.elastic_qps = elastic_qps
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The unique ID generated for the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -66,24 +66,25 @@ class DescribeElasticQpsResponseBodyElasticQps(DaraModel):
         status_5: int = None,
         ups: int = None,
     ):
-        # The index number of the returned data.
+        # The index of the returned data point.
         self.index = index
-        # The peak QPS of the normal service.
+        # The peak normal business QPS.
         self.max_normal_qps = max_normal_qps
         # The peak inbound QPS.
         self.max_qps = max_qps
-        # The total number of requests during the step size period.
+        # The total number of requests within the sampling interval.
         self.pv = pv
-        # The total number of HTTP 2xx status codes during the step size period.
+        # The number of 2xx status codes within the sampling interval.
         self.status_2 = status_2
-        # The total number of HTTP 3xx status codes during the step size period.
+        # The number of 3xx status codes within the sampling interval.
         self.status_3 = status_3
-        # The total number of HTTP 4xx status codes during the step size period.
+        # The number of 4xx status codes within the sampling interval.
         self.status_4 = status_4
+        # The number of 410 status codes within the sampling interval.
         self.status_410pv = status_410pv
-        # The total number of HTTP 5xx status codes during the step size period.
+        # The number of 5xx status codes within the sampling interval.
         self.status_5 = status_5
-        # The total number of origin requests during the step size period.
+        # The total number of origin-pull requests within the sampling interval.
         self.ups = ups
 
     def validate(self):

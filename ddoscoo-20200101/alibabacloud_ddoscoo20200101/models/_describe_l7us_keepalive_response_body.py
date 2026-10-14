@@ -11,9 +11,9 @@ class DescribeL7UsKeepaliveResponseBody(DaraModel):
         request_id: str = None,
         rs_keepalive: main_models.DescribeL7UsKeepaliveResponseBodyRsKeepalive = None,
     ):
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
-        # The value of the Back-to-origin Persistent Connections parameter.
+        # The configured back-to-origin persistent connection parameters.
         self.rs_keepalive = rs_keepalive
 
     def validate(self):
@@ -53,14 +53,14 @@ class DescribeL7UsKeepaliveResponseBodyRsKeepalive(DaraModel):
         keepalive_timeout: int = None,
     ):
         self.ds_keepalive_timeout = ds_keepalive_timeout
-        # Indicates whether Back-to-origin Persistent Connections is turned on. Valid values:
+        # Indicates whether back-to-origin persistent connections are enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.enabled = enabled
-        # The number of requests that reuse persistent connections.
+        # The number of requests that can reuse a persistent connection.
         self.keepalive_requests = keepalive_requests
-        # The timeout period of idle persistent connections.
+        # The idle timeout period of a persistent connection.
         self.keepalive_timeout = keepalive_timeout
 
     def validate(self):

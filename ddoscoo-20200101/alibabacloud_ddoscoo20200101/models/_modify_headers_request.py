@@ -12,36 +12,53 @@ class ModifyHeadersRequest(DaraModel):
         embedded_headers: str = None,
         resource_group_id: str = None,
     ):
-        # The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+        # The custom header, specified as a key-value pair. The key is the header name and the value is the header value. You can specify up to 5 key-value pairs. The total length cannot exceed 200 characters.
         # 
-        # Take note of the following items:
+        # Important:
         # 
-        # *   Do not use the following default HTTP headers:
+        # - - X-Forwarded-ClientSrcPort: Used by default to retrieve the client port that accesses the Layer 7 engine of Anti-DDoS Pro.
         # 
-        #     *   X-Forwarded-ClientSrcPort: This header is used to obtain the source ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
-        #     *   X-Forwarded-ProxyPort: This header is used to obtain the ports of listeners that access Anti-DDoS Proxy (a Layer 7 proxy).
-        #     *   X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+        #   - X-Forwarded-ProxyPort: Used by default to retrieve the listening port of the Layer 7 engine of Anti-DDoS Pro.
         # 
-        # *   Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
+        #   - X-Forwarded-For: Used by default to retrieve the client IP address that accesses the Layer 7 engine of Anti-DDoS Pro.
         # 
-        # >  If you specify a key of X-Forwarded-ClientSrcPort, the system obtains the originating ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy). In this case, the value is an empty string.
+        # - Do not use standard HTTP header fields (such as `host`, `user-agent`, `connection`, and `upgrade`) or common custom HTTP header fields (such as `x-real-ip`, `x-true-ip`, `x-client-ip`, `web-server-type`, `wl-proxy-client-ip`, `eagleeye-rpcid`, `eagleeye-traceid`, `x-forwarded-cluster`, and `x-forwarded-proto`) as they will overwrite the original header values in requests.
+        # 
+        # > To use the `X-Forwarded-ClientSrcPort` key to retrieve the client port that accesses the Layer 7 engine of Anti-DDoS Pro, set the value to `""`.
         # 
         # This parameter is required.
         self.custom_headers = custom_headers
-        # The domain name of the website.
+        # The domain of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # > A website service forwarding rule must be configured for the domain. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all your domains.
         # 
         # This parameter is required.
         self.domain = domain
+        # The forwarding configuration for request headers. This parameter is a JSON string of key-value pairs where the key is the header field name and the value is a boolean. Set the value to `true` to enable forwarding or `false` to disable it.
+        # 
+        # Field description:
+        # 
+        # `X-Client-IP`: Forwards the client\\"s real IP address.
+        # 
+        # `X-True-IP`: Forwards the client\\"s connection IP address.
+        # 
+        # `Web-Server-Type`: Informs the back-end server about the type of front-end web server or proxy that is handling the request.
+        # 
+        # `WL-Proxy-Client-IP`: A request header specific to Oracle WebLogic Server that provides the same functionality as `X-Client-IP`.
+        # 
+        # `X-Forwarded-Proto`: Indicates the protocol used for the connection between the client and the first proxy.
+        # 
+        # Important:
+        # 
+        # - **Supported Headers**: The configuration supports only the five preset header fields listed above.
+        # 
+        # - **Default settings**: All the listed header fields are enabled by default. To make changes, you must explicitly set the corresponding value to `false`.
         self.embedded_headers = embedded_headers
-        # The ID of the resource group to which the instance belongs.
+        # The ID of the resource group.
         # 
-        # > 
+        # > - You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain a list of resource group IDs. For more information, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
         # 
-        # *   You can query resource group IDs in the Anti-DDoS Pro or Anti-DDoS Premium console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
-        # 
-        # *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the current resource group of the instance.
+        # - To find the current resource group of an instance before changing it, call the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation.
         self.resource_group_id = resource_group_id
 
     def validate(self):

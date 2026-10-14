@@ -9,15 +9,14 @@ class ConfigNetworkRulesRequest(DaraModel):
         self,
         network_rules: str = None,
     ):
-        # The details of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+        # The details of the port forwarding rules. The value is a JSON format character string that contains the following structure:
+        # - **InstanceId**: String. Required. The instance ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # - **Protocol**: String. Required. The forwarding protocol type. Valid values: **tcp**, **udp**.
+        # - **FrontendPort**: Integer. Required. The Redirection Port.
+        # - **BackendPort**: Integer. Required. The origin server port.
+        # - **RealServers**: JSON array. Required. The list of origin server IP addresses. A maximum of 20 IP addresses are supported.
         # 
-        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
-        # *   **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
-        # *   **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
-        # 
-        # > You can modify only the value of **RealServers** when you modify a port forwarding rule.
+        # > When you edit port forwarding rules, you can modify only **RealServers**, which specifies the origin server IP addresses.
         # 
         # This parameter is required.
         self.network_rules = network_rules

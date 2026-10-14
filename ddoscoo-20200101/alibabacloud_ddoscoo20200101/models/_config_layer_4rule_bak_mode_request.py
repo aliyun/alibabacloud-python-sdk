@@ -10,24 +10,23 @@ class ConfigLayer4RuleBakModeRequest(DaraModel):
         bak_mode: str = None,
         listeners: str = None,
     ):
-        # The mode that you want to use to forward service traffic. Valid values:
-        # 
-        # *   **0**: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](https://help.aliyun.com/document_detail/157482.html) operation to create a port forwarding rule.
-        # *   **1**: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](https://help.aliyun.com/document_detail/312684.html) operation to configure IP addresses.
+        # The back-to-origin mode. Valid values:
+        # - **0**: The default back-to-origin mode. Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin server IP address that you specified when you called [CreateNetworkRules](https://help.aliyun.com/document_detail/157482.html) to create the port forwarding rule.
+        # - **1**: The origin redundancy mode. Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the primary origin server IP address or secondary origin server IP address that you configured by calling [ConfigLayer4RulePolicy](https://help.aliyun.com/document_detail/312684.html).
         # 
         # This parameter is required.
         self.bak_mode = bak_mode
-        # The port forwarding rule that you want to manage.
+        # The port forwarding rule to configure.
         # 
-        # This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
+        # This parameter is a string converted from a JSON array. Each element in the JSON array represents a created port forwarding rule. You can configure up to one port forwarding rule at a time.
         # 
-        # > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
+        # > You can call [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query all created port forwarding rules.
         # 
         # Each port forwarding rule contains the following fields:
         # 
-        # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
-        # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
-        # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # - **InstanceId**: String type. Required. The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # - **Protocol**: String type. Required. The forwarding protocol type. Valid values: **tcp**, **udp**.
+        # - **FrontendPort**: Integer type. Required. The Redirection Port.
         # 
         # This parameter is required.
         self.listeners = listeners

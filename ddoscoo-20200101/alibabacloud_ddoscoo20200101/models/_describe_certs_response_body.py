@@ -13,7 +13,7 @@ class DescribeCertsResponseBody(DaraModel):
         certs: List[main_models.DescribeCertsResponseBodyCerts] = None,
         request_id: str = None,
     ):
-        # The certificate information about the website.
+        # The certificate information.
         self.certs = certs
         # The ID of the request.
         self.request_id = request_id
@@ -64,20 +64,21 @@ class DescribeCertsResponseBodyCerts(DaraModel):
         name: str = None,
         start_date: str = None,
     ):
-        # The global certificate ID, which is in the certificate ID-cn-hangzhou format. If the ID of the certificate is 123, CertIdentifier is 123-cn-hangzhou.
+        # The global certificate ID. The value is a string that consists of the certificate ID and the region ID, separated by a hyphen (-). For example, if the certificate ID is \\`123\\` and the region is \\`cn-hangzhou\\`, the value of \\`CertIdentifier\\` is \\`123-cn-hangzhou\\`.
         self.cert_identifier = cert_identifier
         # The domain name that is associated with the certificate.
         self.common = common
         # Indicates whether the certificate is associated with the domain name. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The certificate is associated with the domain name.
+        # 
+        # - **false**: The certificate is not associated with the domain name.
         self.domain_related = domain_related
         # The expiration date of the certificate. The value is a string.
         self.end_date = end_date
-        # The certificate ID.
+        # The ID of the certificate.
         self.id = id
-        # The certificate authority (CA) that issued the certificate.
+        # The certification authority (CA) that issued the certificate.
         self.issuer = issuer
         # The name of the certificate.
         self.name = name

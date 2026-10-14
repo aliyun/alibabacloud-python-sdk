@@ -13,22 +13,22 @@ class DescribePortRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The forwarding port to query. Valid values: **0** to **65535**.
+        # The forward port to query. Valid values: **0** to **65535**.
         self.frontend_port = frontend_port
-        # The type of the forwarding protocol to query. Valid values:
+        # The Forwarding Protocol type to query. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**: TCP protocol.
+        # - **udp**: UDP protocol.
         self.frontend_protocol = frontend_protocol
-        # The ID of the instance to query.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to query.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > You can invoke [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. For example, if you want to obtain results on the first page, set the value to **1**.
+        # The page number to return in a paged query. For example, set this parameter to **1** to return the first page of results.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records on each page in a paged query.
         self.page_size = page_size
 
     def validate(self):

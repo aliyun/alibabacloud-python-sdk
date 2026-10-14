@@ -11,13 +11,13 @@ class DescribeWebAccessLogDispatchStatusRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the current page in a paginated query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of domain names on each page in a paginated query. Default value: **10**.
         self.page_size = page_size
-        # The ID of the resource group to which the instance belongs in Resource Management.
+        # The ID of the resource group to which the Anti-DDoS Pro instance belongs in Resource Management.
         # 
-        # If you do not configure this parameter, the instance belongs to the default resource group.
+        # If you do not set this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
 
     def validate(self):

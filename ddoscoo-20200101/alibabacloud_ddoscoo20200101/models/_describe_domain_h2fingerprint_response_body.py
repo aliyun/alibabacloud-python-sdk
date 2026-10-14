@@ -13,9 +13,9 @@ class DescribeDomainH2FingerprintResponseBody(DaraModel):
         domain_h2fp: List[main_models.DescribeDomainH2FingerprintResponseBodyDomainH2Fp] = None,
         request_id: str = None,
     ):
-        # The information about top N HTTP/2 fingerprints.
+        # The list of top N HTTP/2.0 fingerprints for the domain name.
         self.domain_h2fp = domain_h2fp
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -61,9 +61,9 @@ class DescribeDomainH2FingerprintResponseBodyDomainH2Fp(DaraModel):
     ):
         # The domain name of the website.
         self.domain = domain
-        # The HTTP/2 fingerprint.
+        # The HTTP/2.0 fingerprint.
         self.h_2fingerprint = h_2fingerprint
-        # The page views.
+        # The number of times the HTTP/2.0 fingerprint is matched for the domain name.
         self.pv = pv
 
     def validate(self):

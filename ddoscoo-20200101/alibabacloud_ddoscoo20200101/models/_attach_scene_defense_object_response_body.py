@@ -10,12 +10,11 @@ class AttachSceneDefenseObjectResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

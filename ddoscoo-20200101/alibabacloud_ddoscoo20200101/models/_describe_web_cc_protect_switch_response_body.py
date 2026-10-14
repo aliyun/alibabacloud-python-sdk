@@ -13,9 +13,9 @@ class DescribeWebCcProtectSwitchResponseBody(DaraModel):
         protect_switch_list: List[main_models.DescribeWebCcProtectSwitchResponseBodyProtectSwitchList] = None,
         request_id: str = None,
     ):
-        # The status of each mitigation policy for the website.
+        # The status of protection features for website services.
         self.protect_switch_list = protect_switch_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,56 +67,47 @@ class DescribeWebCcProtectSwitchResponseBodyProtectSwitchList(DaraModel):
         precise_rule_enable: int = None,
         region_block_enable: int = None,
     ):
-        # The mode of Intelligent Protection. Valid values:
-        # 
-        # *   **watch**: Warning
-        # *   **defense**: Defense
+        # The mode of AI-based intelligent analysis. Valid values:
+        # - **watch**: Warning mode
+        # - **defense**: Defense mode
         self.ai_mode = ai_mode
-        # The status of Intelligent Protection. Valid values:
-        # 
-        # *   **0**: turned off
-        # *   **1:** turned on
+        # The status of the AI-based intelligent analysis feature. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled
         self.ai_rule_enable = ai_rule_enable
-        # The level of Intelligent Protection. Valid values:
-        # 
-        # *   **level30**: Loose
-        # *   **level60**: Normal
-        # *   **level90**: Strict
+        # The level of AI-based intelligent analysis. Valid values:
+        # - **level30**: Loose
+        # - **level60**: Normal
+        # - **level90**: Strict
         self.ai_template = ai_template
-        # The status of Blacklist/Whitelist (Domain Names). Valid values:
-        # 
-        # *   **0**: turned off
-        # *   **1:** turned on
+        # The status of the blacklists and whitelists feature for the domain name. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled
         self.black_white_list_enable = black_white_list_enable
-        # The status of the Custom Rules switch for Frequency Control. Valid values:
-        # 
-        # *   **0**: turned off
-        # *   **1:** turned on
+        # The status of the custom frequency control (HTTP flood mitigation) feature. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled
         self.cc_custom_rule_enable = cc_custom_rule_enable
-        # The status of Frequency Control. Valid values:
-        # 
-        # *   **0**: turned off
-        # *   **1:** turned on
+        # The status of the frequency control (HTTP flood mitigation) feature. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled
         self.cc_enable = cc_enable
         self.cc_global_switch = cc_global_switch
-        # The mode of Frequency Control. Valid values:
-        # 
-        # *   **default**: Normal
-        # *   **gf_under_attack**: Emergency
-        # *   **gf_sos_verify**: Strict
-        # *   **gf_sos_enhance**: Super Strict
+        # The mode of frequency control (HTTP flood mitigation). Valid values:
+        # - **default**: Normal
+        # - **gf_under_attack**: Emergency
+        # - **gf_sos_verify**: Strict
+        # - **gf_sos_enhance**: Super Strict
         self.cc_template = cc_template
         # The domain name of the website.
         self.domain = domain
-        # The status of Accurate Access Control. Valid values:
-        # 
-        # *   **0**: turned off
-        # *   **1:** turned on
+        # The status of the accurate access control feature. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled
         self.precise_rule_enable = precise_rule_enable
-        # The status of Location Blacklist (Domain Names). Valid values:
-        # 
-        # *   **0**: turned off
-        # *   **1:** turned on
+        # The status of the location blacklist feature for the domain name. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled
         self.region_block_enable = region_block_enable
 
     def validate(self):

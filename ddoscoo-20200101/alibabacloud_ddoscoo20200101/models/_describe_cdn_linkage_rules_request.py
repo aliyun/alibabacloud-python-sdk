@@ -12,11 +12,19 @@ class DescribeCdnLinkageRulesRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
+        # The domain name of your website.
+        # 
+        # > The domain name must be added to your Anti-DDoS instance. Call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         self.domain = domain
+        # The number of the page to return for a paged query.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page for a paged query.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the resource group to which the Anti-DDoS instance belongs in Resource Management. If you leave this parameter empty, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

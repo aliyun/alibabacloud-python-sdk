@@ -15,7 +15,7 @@ class DescribeWebInstanceRelationsResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The information about the instances to which a website service is added.
+        # The information about Anti-DDoS Pro or Anti-DDoS Premium instances associated with website services.
         self.web_instance_relations = web_instance_relations
 
     def validate(self):
@@ -60,7 +60,7 @@ class DescribeWebInstanceRelationsResponseBodyWebInstanceRelations(DaraModel):
     ):
         # The domain name of the website.
         self.domain = domain
-        # The information about the instance to which a website service is added.
+        # The information about the associated Anti-DDoS Pro or Anti-DDoS Premium instances.
         self.instance_details = instance_details
 
     def validate(self):
@@ -104,14 +104,13 @@ class DescribeWebInstanceRelationsResponseBodyWebInstanceRelationsInstanceDetail
         function_version: str = None,
         instance_id: str = None,
     ):
-        # The IP addresses of the instance.
+        # The list of IP addresses of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.eip_list = eip_list
-        # The function plan of the instance. Valid values:
-        # 
-        # *   **default**: Standard function plan
-        # *   **enhance**: Enhanced function plan
+        # The function plan type. Valid values:
+        # - **default**: Standard function.
+        # - **enhance**: Enhanced function.
         self.function_version = function_version
-        # The ID of the instance.
+        # The Anti-DDoS Pro or Anti-DDoS Premium instance ID.
         self.instance_id = instance_id
 
     def validate(self):

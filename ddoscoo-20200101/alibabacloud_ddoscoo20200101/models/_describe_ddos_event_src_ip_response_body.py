@@ -13,9 +13,9 @@ class DescribeDDosEventSrcIpResponseBody(DaraModel):
         ips: List[main_models.DescribeDDosEventSrcIpResponseBodyIps] = None,
         request_id: str = None,
     ):
-        # An array that consists of information about the source IP address of the volumetric attack.
+        # The information about attack source IP addresses.
         self.ips = ips
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,30 +59,30 @@ class DescribeDDosEventSrcIpResponseBodyIps(DaraModel):
         isp: str = None,
         src_ip: str = None,
     ):
-        # The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
+        # The region code of the attack source. For more information, see [Region codes](https://help.aliyun.com/document_detail/167926.html). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
         self.area_id = area_id
-        # The Internet service provider (ISP) for the volumetric attack. Valid values:
+        # The Internet service provider (ISP) of the attack source. Valid values:
         # 
-        # *   **100017**: China Telecom
-        # *   **100026**: China Unicom
-        # *   **100025**: China Mobile
-        # *   **100027**: China Education and Research Network
-        # *   **100020**: China Mobile Tietong
-        # *   **1000143**: Dr.Peng Telecom & Media Group
-        # *   **100080**: Beijing Gehua CATV Network
-        # *   **1000139**: National Radio and Television Administration
-        # *   **100023**: Oriental Cable Network
-        # *   **100063**: Founder Broadband
-        # *   **1000337**: China Internet Exchange
-        # *   **100021**: 21Vianet Group
-        # *   **1000333**: Wasu Media Holding
-        # *   **100093**: Wangsu Science & Technology
-        # *   **1000401**: Tencent
-        # *   **100099**: Baidu
-        # *   **1000323**: Alibaba Cloud
-        # *   **100098**: Alibaba
+        # - **100017**: China Telecom
+        # - **100026**: China Unicom
+        # - **100025**: China Mobile
+        # - **100027**: CERNET
+        # - **100020**: China Tietong
+        # - **1000143**: Dr. Peng
+        # - **100080**: Gehua
+        # - **1000139**: China Broadcasting Network
+        # - **100023**: Wired
+        # - **100063**: Founder Broadband
+        # - **1000337**: Haonet
+        # - **100021**: 21Vianet
+        # - **1000333**: Wasu Media
+        # - **100093**: ChinaNetCenter
+        # - **1000401**: Tencent
+        # - **100099**: Baidu
+        # - **1000323**: Alibaba Cloud
+        # - **100098**: Alibaba
         self.isp = isp
-        # The source IP address of the volumetric attack.
+        # The attack source IP address.
         self.src_ip = src_ip
 
     def validate(self):

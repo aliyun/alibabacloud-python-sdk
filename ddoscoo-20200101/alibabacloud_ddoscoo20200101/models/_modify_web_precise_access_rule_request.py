@@ -12,43 +12,53 @@ class ModifyWebPreciseAccessRuleRequest(DaraModel):
         resource_group_id: str = None,
         rules: str = None,
     ):
-        # The domain name of the website.
+        # The domain of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # > You must configure a forwarding rule for the domain. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domains.
         # 
         # This parameter is required.
         self.domain = domain
-        # The validity period of the rule. Unit: seconds. This parameter takes effect only when **action** of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. If you do not specify this parameter, this rule takes effect all the time.
+        # The validity period of the rule, in seconds. This parameter applies only when **action** is set to **block**. Requests that match the rule are blocked for the specified duration. If you do not specify this parameter, the rule is permanently effective.
         self.expires = expires
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Pro instance belongs. If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The settings of the accurate access control rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
+        # The configuration of the precise access control rule, specified as a JSON-formatted string. The string has the following structure:
         # 
-        # *   **action**: the action that is performed if the rule is matched. This field is required and must be of the string type. Valid values:
+        # - **action**: String. Required. The action to perform on matching requests. Valid values:
         # 
-        #     *   **accept**: allows the requests that match the rule.
-        #     *   **block**: blocks the requests that match the rule.
-        #     *   **challenge**: implements a CAPTCHA for the requests that match the rule.
+        #   - **accept**: Allows the request.
         # 
-        # *   **name**: the name of the rule. This field is required and must be of the string type.
+        #   - **block**: Blocks the request.
         # 
-        # *   **condition**: the match conditions. This field is required and must be of the map type. A match condition contains the following parameters.
+        #   - **challenge**: Initiates a challenge to verify the request.
         # 
-        #     **
+        #   - **watch**: Monitors the request.
         # 
-        #     **Note**The AND logical operator is used to define the relationship among multiple match conditions.
+        # - **name**: String. Required. The name of the rule.
         # 
-        #     *   **field**: the match field. This parameter is required and must be of the string type.
+        # - **condition**: Map. Required. The match conditions. The structure is as follows:
         # 
-        #     *   **match_method**: the logical relation. This parameter is required and must be of the string type.
+        #   > If you specify multiple match conditions, they are evaluated with a logical AND.
         # 
-        #         **
+        #   - **field**: String. Required. The match field.
         # 
-        #         **Note**For information about the mappings between the **field** and **match_method** parameters, see the Mappings between the field and match_method parameters table in this topic.
+        #   - **match_method**: String. Required. The match method.
         # 
-        #     *   **content**: the match content. This parameter is required and must be of the string type.
+        #     > For information about the valid values for **field** and **match_method**, see the "Additional information about request parameters" section.
         # 
-        # *   **header_name**: the HTTP header. This parameter is optional and must be of the string type. This parameter takes effect only when **field** is **header**.
+        #   - **content**: String. The value to match. You can specify either this parameter or `content_list`.
+        # 
+        #   - **content_list**: String. A list of values to match. You can specify either this parameter or `content`.
+        # 
+        #   > For information about the valid values for **match_method** and **content/content_list**, see the "Additional information about request parameters" section.
+        # 
+        # - **header_name**: String. Optional. The name of the request header. This parameter applies only when **field** is set to **header**.
+        # 
+        # - **case_insensitive**: Boolean. Optional. The default value is false. Valid values:
+        # 
+        #   - **false**: case-sensitive
+        # 
+        #   - **true**: case-insensitive
         # 
         # This parameter is required.
         self.rules = rules

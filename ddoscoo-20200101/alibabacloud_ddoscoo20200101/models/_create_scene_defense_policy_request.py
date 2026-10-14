@@ -12,22 +12,21 @@ class CreateSceneDefensePolicyRequest(DaraModel):
         start_time: int = None,
         template: str = None,
     ):
-        # The end time of the policy. This value is a UNIX timestamp. Units: milliseconds.
+        # The end time when the policy takes effect. This value is a UNIX timestamp. Unit: milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The name of the policy.
+        # The policy name.
         # 
         # This parameter is required.
         self.name = name
-        # The start time of the policy. This value is a UNIX timestamp. Units: milliseconds.
+        # The start time when the policy takes effect. This value is a UNIX timestamp. Unit: milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The template of the policy. Valid values:
-        # 
-        # *   **promotion**: important activity.
-        # *   **bypass**: all traffic forwarded.
+        # The policy template. Valid values:
+        # - **promotion**: Important Activity template.
+        # - **bypass**: full forwarding.
         # 
         # This parameter is required.
         self.template = template

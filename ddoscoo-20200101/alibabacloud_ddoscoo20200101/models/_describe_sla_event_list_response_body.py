@@ -75,8 +75,9 @@ class DescribeSlaEventListResponseBodySlaEvent(DaraModel):
         self.ip = ip
         # The region to which the destination IP address belongs. Valid values:
         # 
-        # *   **cn**: a region in the Chinese mainland
-        # *   **cn-hongkong**: China (Hong Kong)
+        # - **cn**: a region in the Chinese mainland
+        # 
+        # - **cn-hongkong**: China (Hong Kong)
         self.region = region
         # The beginning of the time range. Unit: seconds.
         self.start_time = start_time

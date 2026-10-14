@@ -9,7 +9,7 @@ class DescribeUnBlockCountRequest(DaraModel):
         self,
         resource_group_id: str = None,
     ):
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. By default, this parameter is empty, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

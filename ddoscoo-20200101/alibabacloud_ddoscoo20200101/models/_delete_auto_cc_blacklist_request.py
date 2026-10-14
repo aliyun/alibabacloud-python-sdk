@@ -11,15 +11,15 @@ class DeleteAutoCcBlacklistRequest(DaraModel):
         instance_id: str = None,
         query_type: str = None,
     ):
-        # The IP addresses that you want to manage. This parameter is a JSON string. The string contains the following fields:
+        # A JSON string that contains the IP addresses to remove from the blacklist. The string has the following structure:
         # 
-        # *   **src**: the IP address. This field is required and must be of the STRING type.
+        # - **src**: The IP address to remove. This is a required string.
         # 
         # This parameter is required.
         self.blacklist = blacklist
-        # The ID of the instance.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > Call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro and Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id

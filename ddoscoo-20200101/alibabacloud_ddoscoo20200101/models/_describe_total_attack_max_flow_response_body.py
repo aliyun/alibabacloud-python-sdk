@@ -11,11 +11,8 @@ class DescribeTotalAttackMaxFlowResponseBody(DaraModel):
         pps: int = None,
         request_id: str = None,
     ):
-        # The peak bandwidth of attack traffic. Unit: bit/s.
         self.bps = bps
-        # The peak packet rate of attack traffic. Unit: packets per second (pps).
         self.pps = pps
-        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

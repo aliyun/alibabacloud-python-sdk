@@ -13,7 +13,7 @@ class DescribeDDosEventAttackTypeResponseBody(DaraModel):
         attack_types: List[main_models.DescribeDDosEventAttackTypeResponseBodyAttackTypes] = None,
         request_id: str = None,
     ):
-        # The information about the attack types.
+        # The attack type information.
         self.attack_types = attack_types
         # The ID of the request.
         self.request_id = request_id
@@ -58,49 +58,49 @@ class DescribeDDosEventAttackTypeResponseBodyAttackTypes(DaraModel):
         attack_type: str = None,
         in_pkts: int = None,
     ):
-        # The type of the attack Valid values:
+        # The attack type. Valid values:
         # 
-        # *   **QOTD-Reflect-Flood**: QOTD reflection attacks
-        # *   **CharGEN-Reflect-Flood**: CHARGEN reflection attacks
-        # *   **DNS-Reflect-Flood**: DNS reflection attacks
-        # *   **TFTP-Reflect-Flood**: TFTP reflection attacks
-        # *   **Portmap-Reflect-Flood**: Portmap reflection attacks
-        # *   **NTP-Reflect-Flood**: NTP reflection attacks
-        # *   **NetBIOS-Reflect-Flood**: NetBIOS reflection attacks
-        # *   **SNMPv2-Reflect-Flood**: SNMPv2 reflection attacks
-        # *   **CLDAP-Reflect-Flood**: CLDAP reflection attacks
-        # *   **Ripv1-Reflect-Flood**: RIPv1 reflection attacks
-        # *   **OpenVPN-Reflect-Flood**: OpenVPN reflection attacks
-        # *   **SSDP-Reflect-Flood**: SSDP reflection attacks
-        # *   **NetAssistant-Reflect-Flood**: NetAssistant reflection attacks
-        # *   **WSDiscovery-Reflect-Flood**: WS-Discovery reflection attacks
-        # *   **Kad-Reflect-Flood**: Kad reflection attacks
-        # *   **mDNS-Reflect-Flood**: mDNS reflection attacks
-        # *   **10001-Reflect-Flood**: reflection attacks over port 10001
-        # *   **Memcached-Reflect-Flood**: Memcached reflection attacks
-        # *   **QNP-Reflect-Flood**: QNP reflection attacks
-        # *   **DVR-Reflect-Flood**: DVR reflection attacks
-        # *   **CoAP-Reflect-Flood**: CoAP reflection attacks
-        # *   **ADDP-Reflect-Flood**: ADDP reflection attacks
-        # *   **Tcp-Syn**: TCP SYN flood attacks
-        # *   **Tcp-Fin**: TCP FIN flood attacks
-        # *   **Tcp-Ack**: TCP ACK flood attacks
-        # *   **Tcp-Rst**: TCP RST flood attacks
-        # *   **Tcp-Pushack**: TCP PSH-ACK flood attacks
-        # *   **Tcp-Synack**: TCP SYN-ACK flood attacks
-        # *   **Udp-None**: UDP attacks
-        # *   **Udp-Ssh**: UDP-based SSH attacks
-        # *   **Udp-Dns**: UDP-based DNS attacks
-        # *   **Udp-Http**: UDP-based HTTP attacks
-        # *   **Udp-Https**: UDP-based HTTPS attacks
-        # *   **Udp-Ntp**: UDP-based NTP attacks
-        # *   **Udp-Ldap**: UDP-based LDAP attacks
-        # *   **Udp-Ssdp**: UDP-based SSDP attacks
-        # *   **Udp-Memcached**: Memcached UDP reflection attacks
-        # *   **Tcp-Other**: other TCP attacks
-        # *   **Icmp**: ICMP flood attacks
-        # *   **Igmp**: IGMP flood attacks
-        # *   **Ipv6**: IPv6 attacks
+        # - **QOTD-Reflect-Flood**: QOTD reflection attack
+        # - **CharGEN-Reflect-Flood**: CharGEN reflection attack
+        # - **DNS-Reflect-Flood**: DNS reflection attack
+        # - **TFTP-Reflect-Flood**: TFTP reflection attack
+        # - **Portmap-Reflect-Flood**: Portmap reflection attack
+        # - **NTP-Reflect-Flood**: NTP reflection attack
+        # - **NetBIOS-Reflect-Flood**: NetBIOS reflection attack
+        # - **SNMPv2-Reflect-Flood**: SNMPv2 reflection attack
+        # - **CLDAP-Reflect-Flood**: CLDAP reflection attack
+        # - **Ripv1-Reflect-Flood**: Ripv1 reflection attack
+        # - **OpenVPN-Reflect-Flood**: OpenVPN reflection attack
+        # - **SSDP-Reflect-Flood**: SSDP reflection attack
+        # - **NetAssistant-Reflect-Flood**: NetAssistant reflection attack
+        # - **WSDiscovery-Reflect-Flood**: WSDiscovery reflection attack
+        # - **Kad-Reflect-Flood**: Kad reflection attack
+        # - **mDNS-Reflect-Flood**: mDNS reflection attack
+        # - **10001-Reflect-Flood**: 10001 reflection attack
+        # - **Memcached-Reflect-Flood**: Memcached reflection attack
+        # - **QNP-Reflect-Flood**: QNP reflection attack
+        # - **DVR-Reflect-Flood**: DVR reflection attack
+        # - **CoAP-Reflect-Flood**: CoAP reflection attack
+        # - **ADDP-Reflect-Flood**: ADDP reflection attack
+        # - **Tcp-Syn**: TCP SYN flood attacks
+        # - **Tcp-Fin**: TCP FIN flood attack
+        # - **Tcp-Ack**: TCP ACK Flood attacks
+        # - **Tcp-Rst**: TCP RST flood attack
+        # - **Tcp-Pushack**: TCP PSH+ACK flood attack
+        # - **Tcp-Synack**: TCP SYN+ACK flood attack
+        # - **Udp-None**: UDP attack
+        # - **Udp-Ssh**: UDP SSH protocol attack
+        # - **Udp-Dns**: UDP DNS protocol attack
+        # - **Udp-Http**: UDP HTTP protocol attack
+        # - **Udp-Https**: UDP HTTPS protocol attack
+        # - **Udp-Ntp**: UDP NTP protocol attack
+        # - **Udp-Ldap**: UDP LDAP protocol attack
+        # - **Udp-Ssdp**: UDP SSDP protocol attack
+        # - **Udp-Memcached**: Memcache UDP reflection amplification attack
+        # - **Tcp-Other**: TCP other type attack
+        # - **Icmp**: ICMP flood attack
+        # - **Igmp**: IGMP flood attack
+        # - **Ipv6**: IPv6 attack
         self.attack_type = attack_type
         # The number of request packets of the attack type.
         self.in_pkts = in_pkts

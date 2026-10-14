@@ -10,17 +10,15 @@ class ModifyWebAccessModeRequest(DaraModel):
         access_mode: int = None,
         domain: str = None,
     ):
-        # The mode in which a website service is added to Anti-DDoS Pro or Anti-DDoS Premium. Valid values:
-        # 
-        # *   **0**: A record mode
-        # *   **1**: anti-DDoS mode
-        # *   **2**: origin redundancy mode
+        # The access mode for website services. Valid values:
+        # - **0**: A record
+        # - **1**: Anti-DDoS Pro mode
+        # - **2**: Back-to-origin mode
         # 
         # This parameter is required.
         self.access_mode = access_mode
-        # The domain name of the website.
-        # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # The domain name of the website service.
+        # > The domain name must have forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         # 
         # This parameter is required.
         self.domain = domain

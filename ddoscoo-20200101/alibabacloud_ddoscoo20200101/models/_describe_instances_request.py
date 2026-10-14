@@ -23,43 +23,43 @@ class DescribeInstancesRequest(DaraModel):
         status: List[int] = None,
         tag: List[main_models.DescribeInstancesRequestTag] = None,
     ):
-        # The mitigation plan of the instance to query. Valid values:
+        # The mitigation plan edition of the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Valid values:
         # 
-        # *   **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
-        # *   **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
-        # *   **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
-        # *   **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+        # - **0**: Anti-DDoS Pro and Anti-DDoS Premium (outside the Chinese mainland) Insurance edition.
+        # - **1**: Anti-DDoS Pro and Anti-DDoS Premium (outside the Chinese mainland) Unlimited edition.
+        # - **2**: Anti-DDoS Pro and Anti-DDoS Premium (outside the Chinese mainland) acceleration line.
+        # - **9**: Anti-DDoS Pro and Anti-DDoS Premium (the Chinese mainland) Professional Edition.
         self.edition = edition
-        # The traffic forwarding status of the instance to query. Valid values:
+        # The service traffic forwarding status of the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Valid values:
         # 
-        # *   **0**: The instance no longer forwards service traffic.
-        # *   **1**: The instance forwards service traffic as expected.
+        # - **0**: Service traffic forwarding is stopped.
+        # - **1**: Service traffic forwarding is normal.
         self.enabled = enabled
-        # The end of the time range to query. Instances whose expiration time is earlier than the point in time are queried. This value is a UNIX timestamp. Unit: milliseconds.
+        # The latest expiration time of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. This means that only instances whose expiration time is earlier than the value of **ExpireEndTime** are queried. The value is a UNIX timestamp in milliseconds.
         self.expire_end_time = expire_end_time
-        # The beginning of the time range to query. Instances whose expiration time is later than the point in time are queried. This value is a UNIX timestamp. Unit: milliseconds.
+        # The earliest expiration time of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. This means that only instances whose expiration time is later than the value of **ExpireStartTime** are queried. The value is a UNIX timestamp in milliseconds.
         self.expire_start_time = expire_start_time
-        # The IDs of the instances to query. You can specify up to 200 instance IDs.
+        # The IDs of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. You can specify up to 200 Anti-DDoS Pro or Anti-DDoS Premium instances.
         self.instance_ids = instance_ids
-        # The IP address of the instance to query.
+        # The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance to query.
         self.ip = ip
-        # The number of the page to return.
+        # The page number for paging.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of instances per page for paging. Valid values: 1 to 50.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The remarks of the instance to query. Fuzzy match is supported.
+        # The remark of the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Fuzzy match is supported.
         self.remark = remark
-        # The ID of the resource group to which the instance belongs in Resource Management.
+        # The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management.
         # 
-        # If you do not specify this parameter, the instance belongs to the default resource group.
+        # If you do not specify this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
-        # The states of the instances to query. You can specify up to two states.
+        # The statuses of the Anti-DDoS Pro or Anti-DDoS Premium instances to query. You can specify up to 2 Anti-DDoS Pro or Anti-DDoS Premium instance statuses.
         self.status = status
-        # The tags that are added to the instances to query.
+        # The tags attached to the Anti-DDoS Pro or Anti-DDoS Premium instances to query.
         self.tag = tag
 
     def validate(self):
@@ -162,19 +162,19 @@ class DescribeInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the instance to query. You can specify up to 200 tag keys. When you specify tags, take note of the following rules:
+        # The tag key attached to the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Maximum value of N: 200, which means you can specify up to 200 tag keys. The configuration rules are as follows:
         # 
-        # *   Each tag consists of a key (**Key**) and a value (**Value**), which are separated with a comma (,).
-        # *   Separate multiple tags with commas (,).
+        # - Each tag consists of a tag key (**Key**) and a tag value (**Value**), separated by a comma (,).
+        # - Tags are separated by commas (,).
         # 
-        # >  The tag key (**Key**) and tag value (**Value**) must be specified in pairs.
+        # > The tag key (**Key**) and tag value (**Value**) must appear in pairs.
         self.key = key
-        # The value of the tag that is added to the instance to query. You can specify up to 200 tag values. When you specify tags, take note of the following rules:
+        # The tag value attached to the Anti-DDoS Pro or Anti-DDoS Premium instance to query. Maximum value of N: 200, which means you can specify up to 200 tag values. The configuration rules are as follows:
         # 
-        # *   Each tag consists of a key (**Key**) and a value (**Value**), which are separated with a comma (,).
-        # *   Separate multiple tags with commas (,).
+        # - Each tag consists of a tag key (**Key**) and a tag value (**Value**), separated by a comma (,).
+        # - Tags are separated by commas (,).
         # 
-        # >  The tag key (**Key**) and tag value (**Value**) must be specified in pairs.
+        # > The tag key (**Key**) and tag value (**Value**) must appear in pairs.
         self.value = value
 
     def validate(self):

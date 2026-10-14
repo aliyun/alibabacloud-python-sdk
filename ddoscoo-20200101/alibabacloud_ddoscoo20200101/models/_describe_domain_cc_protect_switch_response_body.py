@@ -13,7 +13,9 @@ class DescribeDomainCcProtectSwitchResponseBody(DaraModel):
         protect_switch_list: List[main_models.DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList] = None,
         request_id: str = None,
     ):
+        # The status of each protection feature for the website.
         self.protect_switch_list = protect_switch_list
+        # The ID of the request. This ID is unique to the request. Use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -65,16 +67,73 @@ class DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList(DaraModel):
         precise_rule_enable: int = None,
         region_block_enable: int = None,
     ):
+        # The mode of AI-powered protection. Valid values:
+        # 
+        # - **watch**: Warning mode
+        # 
+        # - **defense**: Defense mode
         self.ai_mode = ai_mode
+        # The status of the AI-powered protection feature. Valid values:
+        # 
+        # - **0**: Disabled
+        # 
+        # - **1**: Enabled
         self.ai_rule_enable = ai_rule_enable
+        # The level of AI-powered protection. Valid values:
+        # 
+        # - **level30**: Loose
+        # 
+        # - **level60**: Normal
+        # 
+        # - **level90**: Strict
         self.ai_template = ai_template
+        # The status of the blacklists and whitelists feature. Valid values:
+        # 
+        # - **0**: Disabled
+        # 
+        # - **1**: Enabled
         self.black_white_list_enable = black_white_list_enable
+        # The status of custom CC rules. Valid values:
+        # 
+        # - **0**: Disabled
+        # 
+        # - **1**: Enabled
         self.cc_custom_rule_enable = cc_custom_rule_enable
+        # The status of the rate limiting (CC protection) feature. Valid values:
+        # 
+        # - **0**: Disabled
+        # 
+        # - **1**: Enabled
         self.cc_enable = cc_enable
+        # The status of the global switch for custom and precise CC protection. Valid values:
+        # 
+        # - **open**: Enabled
+        # 
+        # - **close**: Disabled
         self.cc_global_switch = cc_global_switch
+        # The CC protection mode. Valid values:
+        # 
+        # - **default**: Normal
+        # 
+        # - **gf_under_attack**: Emergency
+        # 
+        # - **gf_sos_verify**: Strict
+        # 
+        # - **gf_sos_enhance**: Very Strict
         self.cc_template = cc_template
+        # The domain name of the website.
         self.domain = domain
+        # The status of the precise access control feature. Valid values:
+        # 
+        # - **0**: Disabled
+        # 
+        # - **1**: Enabled
         self.precise_rule_enable = precise_rule_enable
+        # The status of the Location Blacklist (Domain Names) feature. Valid values:
+        # 
+        # - **0**: Disabled
+        # 
+        # - **1**: Enabled
         self.region_block_enable = region_block_enable
 
     def validate(self):

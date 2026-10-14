@@ -11,12 +11,12 @@ class DescribeAttackAnalysisMaxQpsRequest(DaraModel):
         ip: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. Use the UNIX timestamp format. Unit: seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.ip = ip
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. Use the UNIX timestamp format. Unit: seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

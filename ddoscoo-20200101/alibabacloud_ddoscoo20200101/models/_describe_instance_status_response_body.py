@@ -11,14 +11,11 @@ class DescribeInstanceStatusResponseBody(DaraModel):
         instance_status: int = None,
         request_id: str = None,
     ):
-        # The ID of the instance.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.instance_id = instance_id
-        # The status of the instance. Valid values:
+        # The status of the Anti-DDoS Pro or Anti-DDoS Premium instance. Valid values:
         # 
-        # *   **1**: normal
-        # *   **2**: expired
-        # *   **3**: overdue
-        # *   **4**: released
+        # - **1**: Normal.
         self.instance_status = instance_status
         # The ID of the request.
         self.request_id = request_id

@@ -17,53 +17,55 @@ class CreateWebRuleRequest(DaraModel):
         rs_type: int = None,
         rules: str = None,
     ):
-        # The ID of the associated defense. This parameter applies to scenarios in which other cloud services, such as Object Storage Service (OSS), are integrated with Anti-DDoS Pro or Anti-DDoS Premium.
+        # The ID of the protection rule to associate. This parameter is used when an Alibaba Cloud service, such as Object Storage Service (OSS), is integrated with an Anti-DDoS instance.
         # 
-        # > This parameter is in internal preview. Do not use this parameter.
+        # > This parameter is for internal use. Do not use this parameter.
         # 
-        # For example, if you integrate OSS with Anti-DDoS Pro or Anti-DDoS Premium, Anti-DDoS Pro or Anti-DDoS Premium allocates an IP address pool for the OSS production account. Each IP address corresponds to a unique defense ID. A defense ID is a CNAME, which is automatically resolved to the IP address of the required Anti-DDoS Pro or Anti-DDoS Premium instance. A defense ID can be resolved to the same IP address to facilitate scheduling.
+        # For example, if your OSS is integrated with an Anti-DDoS Proxy instance, the instance allocates a resource pool of IP addresses to the OSS tenant account. Each IP address has a unique protection ID. The protection ID is a CNAME that resolves to the IP address of the Anti-DDoS instance by default. You can resolve the CNAME to an IP address. This lets you reuse the IP address for flexible scheduling.
         # 
-        # > You can specify only one of the following parameters: **InstanceIds** and **DefenseId**.
+        # > You cannot specify both **InstanceIds** and **DefenseId**.
         self.defense_id = defense_id
-        # The domain name of the website that you want to add to the instance.
+        # The domain name of the website to add to the Anti-DDoS Proxy instance for protection.
         # 
         # This parameter is required.
         self.domain = domain
-        # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # The advanced HTTPS settings. This parameter takes effect only when the value of **ProxyType** includes **https**. This parameter is a JSON string. The value is a JSON object that contains the following fields:
         # 
-        # *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        # - **Http2https**: This field is an integer. Optional. Specifies whether to forcibly redirect HTTP requests to HTTPS requests. Valid values: **0** (disabled) and **1** (enabled). The default value is 0.
         # 
-        #     If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+        #   This setting is available when your website supports both HTTP and HTTPS. If you enable this setting, all HTTP requests are redirected to HTTPS requests over port 443.
         # 
-        # *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        # - **Https2http**: This field is an integer. Optional. Specifies whether to enable HTTP back-to-origin. Valid values: **0** (disabled) and **1** (enabled). The default value is 0.
         # 
-        #     If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+        #   This setting applies to websites that do not support HTTPS back-to-origin. If you enable this setting, all HTTPS requests are sent to the origin server over HTTP on port 80 by default. All WebSockets requests are sent to the origin server over WebSocket.
         # 
-        # *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        # - **Http2**: This field is an integer. Optional. Specifies whether to enable HTTP/2. Valid values: **0** (disabled) and **1** (enabled). The default value is 0.
         # 
-        #     After you turn on Enable HTTP/2, the protocol type is HTTP/2.
+        #   If you enable this setting, HTTP/2 is used.
         self.https_ext = https_ext
-        # An array consisting of the IDs of instances that you want to associate.
+        # The IDs of the Anti-DDoS Proxy instances to associate.
         self.instance_ids = instance_ids
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management. If you leave this parameter empty, the instance belongs to the default resource group.
         # 
         # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
         # The address type of the origin server. Valid values:
         # 
-        # *   **0**: IP address
-        # *   **1**: domain name The domain name of the origin server is returned if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the instance. In this case, the address of the proxy, such as the CNAME provided by WAF, is returned.
+        # - **0**: IP address.
+        # 
+        # - **1**: domain name. This value is typically used when a proxy service, such as Web Application Firewall (WAF), is deployed between the origin server and the Anti-DDoS Proxy instance. The domain name is the back-to-origin address of the proxy service, such as the canonical name (CNAME) of WAF.
         # 
         # This parameter is required.
         self.rs_type = rs_type
-        # The details of the forwarding rule. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # The details of the forwarding rule, in a JSON string format. The value is an array of objects. Each object contains the following fields:
         # 
-        # *   **ProxyRules**: the information about the origin server. The information includes the port number and IP address. This field is required and must be a JSON array. Each element in a JSON array is a JSON struct that contains the following fields:
+        # - **ProxyRules**: This field is a JSON array. Required. The information about the origin server, including the port number and server address. Each object in the array contains the following fields:
         # 
-        #     *   **ProxyPort**: the port number. This field is required and must be an integer.
-        #     *   **RealServers**: the IP address. This field is required and must be a string array.
+        #   - **ProxyPort**: This field is an integer. Required. The port number that is used by the protocol.
         # 
-        # *   **ProxyType**: the protocol type. This field is required and must be a string. Valid values: **http**, **https**, **websocket**, and **websockets**.
+        #   - **RealServers**: This field is a string array. Required. The addresses of the origin servers.
+        # 
+        # - **ProxyType**: This field is a string. Required. The protocol of the website. Valid values: **http**, **https**, **websocket**, and **websockets**.
         # 
         # This parameter is required.
         self.rules = rules

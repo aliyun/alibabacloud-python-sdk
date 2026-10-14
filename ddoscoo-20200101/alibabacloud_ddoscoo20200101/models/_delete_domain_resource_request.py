@@ -9,7 +9,7 @@ class DeleteDomainResourceRequest(DaraModel):
         self,
         domain: str = None,
     ):
-        # The domain name for which the forwarding rule is configured.
+        # The domain name corresponding to the website business forwarding rule to be deleted.
         # 
         # This parameter is required.
         self.domain = domain

@@ -13,9 +13,9 @@ class DescribeDomainTopAttackListResponseBody(DaraModel):
         attack_list: List[main_models.DescribeDomainTopAttackListResponseBodyAttackList] = None,
         request_id: str = None,
     ):
-        # The peak QPS of the website.
+        # The peak QPS data of website services.
         self.attack_list = attack_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeDomainTopAttackListResponseBodyAttackList(DaraModel):
         count: int = None,
         domain: str = None,
     ):
-        # The attack QPS. Unit: QPS
+        # The attack QPS. Unit: QPS.
         self.attack = attack
-        # The number of all QPS, which includes normal and attack QPS. Unit: QPS.
+        # The total QPS, including normal service requests and attacks. Unit: QPS.
         self.count = count
-        # The domain name of the website.
+        # The website domain name.
         self.domain = domain
 
     def validate(self):

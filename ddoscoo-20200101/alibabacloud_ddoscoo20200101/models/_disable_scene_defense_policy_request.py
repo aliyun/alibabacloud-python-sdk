@@ -9,9 +9,9 @@ class DisableSceneDefensePolicyRequest(DaraModel):
         self,
         policy_id: str = None,
     ):
-        # The ID of the policy that you want to disable.
+        # The ID of the policy to disable.
         # 
-        # > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+        # > Call [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) to query all policy IDs.
         # 
         # This parameter is required.
         self.policy_id = policy_id

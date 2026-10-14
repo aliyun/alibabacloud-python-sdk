@@ -14,23 +14,23 @@ class DescribePortViewSourceIspsRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the request data to query. Specify a UNIX timestamp. Unit: seconds.
         # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > The value must be on the minute.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The IDs of the Anti-DDoS Proxy instances to query.
+        # The IDs of the Anti-DDoS Pro or Anti-DDoS Premium instances to query.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management.
+        # The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management.
         # 
-        # If you do not specify this parameter, the instance belongs to the default resource group.
+        # If you do not set this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The start time of the request data to query. Specify a UNIX timestamp. Unit: seconds.
         # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > The value must be on the minute.
         # 
         # This parameter is required.
         self.start_time = start_time

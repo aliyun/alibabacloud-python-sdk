@@ -10,8 +10,14 @@ class DescribeL7GlobalRuleRequest(DaraModel):
         domain: str = None,
         lang: str = None,
     ):
+        # The domain name of the website service to operate on.
+        # 
         # This parameter is required.
         self.domain = domain
+        # The language type for the request and response messages. Valid values:
+        # 
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
 
     def validate(self):

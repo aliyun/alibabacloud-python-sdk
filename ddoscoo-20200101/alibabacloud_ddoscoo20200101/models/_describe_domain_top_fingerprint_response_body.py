@@ -13,9 +13,9 @@ class DescribeDomainTopFingerprintResponseBody(DaraModel):
         domain_top_fp: List[main_models.DescribeDomainTopFingerprintResponseBodyDomainTopFp] = None,
         request_id: str = None,
     ):
-        # The information about the fingerprints of the clients.
+        # The list of client fingerprints for the website.
         self.domain_top_fp = domain_top_fp
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -61,9 +61,9 @@ class DescribeDomainTopFingerprintResponseBodyDomainTopFp(DaraModel):
     ):
         # The domain name of the website.
         self.domain = domain
-        # The fingerprint of the client.
+        # The client fingerprint.
         self.fingerprinting = fingerprinting
-        # The page views.
+        # The number of request matches.
         self.pv = pv
 
     def validate(self):

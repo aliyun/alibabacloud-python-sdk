@@ -13,9 +13,7 @@ class DescribeWebReportTopIpResponseBody(DaraModel):
         data_list: List[main_models.DescribeWebReportTopIpResponseBodyDataList] = None,
         request_id: str = None,
     ):
-        # The information about the IP addresses.
         self.data_list = data_list
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,32 +58,9 @@ class DescribeWebReportTopIpResponseBodyDataList(DaraModel):
         isp: str = None,
         source_ip: str = None,
     ):
-        # The ID of the location.
         self.area_id = area_id
-        # The number of entries returned.
         self.count = count
-        # The Internet service provider (ISP) for the attack. Valid values:
-        # 
-        # *   **100017**: China Telecom
-        # *   **100026**: China Unicom
-        # *   **100025**: China Mobile
-        # *   **100027**: China Education and Research Network
-        # *   **100020**: China Mobile Tietong
-        # *   **1000143**: Dr.Peng Telecom & Media Group
-        # *   **100080**: Beijing Gehua CATV Network
-        # *   **1000139**: National Radio and Television Administration
-        # *   **100023**: Oriental Cable Network
-        # *   **100063**: Founder Broadband
-        # *   **1000337**: China Internet Exchange
-        # *   **100021**: 21Vianet Group
-        # *   **1000333**: Wasu Media Holding
-        # *   **100093**: Wangsu Science & Technology
-        # *   **1000401**: Tencent
-        # *   **100099**: Baidu
-        # *   **1000323**: Alibaba Cloud
-        # *   **100098**: Alibaba
         self.isp = isp
-        # The source IP address.
         self.source_ip = source_ip
 
     def validate(self):

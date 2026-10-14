@@ -12,14 +12,13 @@ class DescribeWebCCRulesV2Request(DaraModel):
         owner: str = None,
         page_size: str = None,
     ):
-        # The domain name of the website that you want to add to the Anti-DDoS Proxy instance for protection.
+        # The domain name of the website that is added to Anti-DDoS Pro and Anti-DDoS Premium for protection.
         self.domain = domain
-        # The number of entries that you want the system to skip before the system returns entries. Default value: **0**.
+        # The start index, which specifies the position from which the results are displayed. Default value: **0**.
         self.offset = offset
-        # The method used to create the rule. Valid values:
-        # 
-        # *   **manual** (default): manually created.
-        # *   **clover**: automatically created.
+        # The source of the rule. Valid values:
+        # - **manual** (default): manually added.
+        # - **clover**: automatically generated.
         self.owner = owner
         # The number of entries per page. Maximum value: **20**. Default value: **20**.
         self.page_size = page_size

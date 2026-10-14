@@ -15,7 +15,7 @@ class DescribeDomainStatusCodeListResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The statistics on response status codes.
+        # The statistics information on response status codes.
         self.status_code_list = status_code_list
 
     def validate(self):
@@ -76,9 +76,9 @@ class DescribeDomainStatusCodeListResponseBodyStatusCodeList(DaraModel):
         self.index = index
         # The number of 200 status codes.
         self.status_200 = status_200
-        # The number of 2xx status codes.
+        # The number of 2XX status codes.
         self.status_2xx = status_2xx
-        # The number of 3xx status codes.
+        # The number of 3XX status codes.
         self.status_3xx = status_3xx
         # The number of 403 status codes.
         self.status_403 = status_403
@@ -86,9 +86,11 @@ class DescribeDomainStatusCodeListResponseBodyStatusCodeList(DaraModel):
         self.status_404 = status_404
         # The number of 405 status codes.
         self.status_405 = status_405
+        # The number of 410 status codes.
         self.status_410 = status_410
+        # The number of 499 status codes.
         self.status_499 = status_499
-        # The number of 4xx status codes.
+        # The number of 4XX status codes.
         self.status_4xx = status_4xx
         # The number of 501 status codes.
         self.status_501 = status_501
@@ -98,9 +100,9 @@ class DescribeDomainStatusCodeListResponseBodyStatusCodeList(DaraModel):
         self.status_503 = status_503
         # The number of 504 status codes.
         self.status_504 = status_504
-        # The number of 5xx status codes.
+        # The number of 5XX status codes.
         self.status_5xx = status_5xx
-        # The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
+        # The time of the statistic. This value is a UNIX timestamp. Unit: seconds.
         self.time = time
 
     def validate(self):

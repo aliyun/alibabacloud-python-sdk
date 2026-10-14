@@ -13,7 +13,7 @@ class DescribeInstanceExtRequest(DaraModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
         self.instance_id = instance_id
         # The number of the page. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number

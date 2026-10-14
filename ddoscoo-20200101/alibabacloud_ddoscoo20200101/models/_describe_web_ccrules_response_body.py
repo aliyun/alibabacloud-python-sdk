@@ -14,11 +14,11 @@ class DescribeWebCCRulesResponseBody(DaraModel):
         total_count: int = None,
         web_ccrules: List[main_models.DescribeWebCCRulesResponseBodyWebCCRules] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of custom frequency control rules.
+        # The total number of frequency control (HTTP flood mitigation) custom rules.
         self.total_count = total_count
-        # The custom frequency control rule.
+        # The frequency control (HTTP flood mitigation) custom rules.
         self.web_ccrules = web_ccrules
 
     def validate(self):
@@ -72,25 +72,23 @@ class DescribeWebCCRulesResponseBodyWebCCRules(DaraModel):
         ttl: int = None,
         uri: str = None,
     ):
-        # The action triggered if the rule is matched. Valid values:
-        # 
-        # *   **close**: The requests that match the rule are blocked.
-        # *   **captcha**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
+        # The blocking type. Valid values:
+        # - **close**: blocks the request.
+        # - **captcha**: implements CAPTCHA verification.
         self.act = act
-        # The number of requests that are allowed from a single IP address. Valid values: **2** to **2000**.
+        # The number of visits from a single IP address. Valid values: **2** to **2000**.
         self.count = count
-        # The check interval. Valid values: **5** to **10800**. Unit: seconds.
+        # The detection interval. Valid values: **5** to **10800**. Unit: seconds.
         self.interval = interval
-        # The match mode. Valid values:
-        # 
-        # *   **prefix**: prefix match.
-        # *   **match**: exact match.
+        # The matching mode. Valid values:
+        # - **prefix**: prefix match.
+        # - **match**: exact match.
         self.mode = mode
-        # The name of the rule.
+        # The rule name.
         self.name = name
-        # The validity period. Valid values: **1** to **1440**. Unit: minutes.
+        # The blocking duration. Valid values: **1** to **1440**. Unit: minutes.
         self.ttl = ttl
-        # The check path.
+        # The detection path.
         self.uri = uri
 
     def validate(self):

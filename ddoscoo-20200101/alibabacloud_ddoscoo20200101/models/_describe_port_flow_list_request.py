@@ -15,38 +15,34 @@ class DescribePortFlowListRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. Specify the value as a UNIX timestamp. Unit: seconds.
         # 
-        # **
-        # 
-        # **This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > The value must be on the minute.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # An array that consists of the IDs of instances.
+        # The ID of the Anti-DDoS Pro and Anti-DDoS Premium instance.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The interval for returning data. Unit: seconds. The interval that you can specify varies based on the time range to query. The time range to query is determined by the values of **StartTime** and **EndTime**.
+        # The interval at which data is returned. Unit: seconds. The supported interval values vary based on the query time range (determined by **StartTime** and **EndTime**). Recommended settings:
         # 
-        # *   If the time range to query is no greater than 1 hour, we recommend that you specify the interval from 60 seconds to the time range to query.
-        # *   If the time range to query is greater than 1 hour but no greater than 6 hours, we recommend that you specify the interval from 600 seconds to the time range to query.
-        # *   If the time range to query is greater than 6 hours but no greater than 24 hours, we recommend that you specify the interval from 1,800 seconds to the time range to query.
-        # *   If the time range to query is greater than 24 hours but no greater than 7 days, we recommend that you specify the interval from 3,600 seconds to the time range to query.
-        # *   If the time range to query is greater than 7 days but no greater than 15 days, we recommend that you specify the interval from 14,400 seconds to the time range to query.
-        # *   If the time range to query is greater than 15 days, we recommend that you specify the interval from 43,200 seconds to the time range to query.
+        # - Query time range ≤ 1 hour: minimum interval of 60 seconds, maximum not exceeding the query time range.
+        # - Query time range > 1 hour and ≤ 6 hours: minimum interval of 600 seconds, maximum not exceeding the query time range.
+        # - Query time range > 6 hours and ≤ 24 hours: minimum interval of 1800 seconds, maximum not exceeding the query time range.
+        # - Query time range > 24 hours and ≤ 7 days: minimum interval of 3600 seconds, maximum not exceeding the query time range.
+        # - Query time range > 7 days and ≤ 15 days: minimum interval of 14400 seconds, maximum not exceeding the query time range.
+        # - Query time range > 15 days: minimum interval of 43200 seconds, maximum not exceeding the query time range.
         # 
         # This parameter is required.
         self.interval = interval
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Pro and Anti-DDoS Premium instance belongs in Resource Management. By default, this parameter is empty, which indicates that the instance belongs to the default resource group.
         # 
         # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. Specify the value as a UNIX timestamp. Unit: seconds.
         # 
-        # **
-        # 
-        # **This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > The value must be on the minute.
         # 
         # This parameter is required.
         self.start_time = start_time

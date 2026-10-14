@@ -11,24 +11,21 @@ class ModifyPortAutoCcStatusRequest(DaraModel):
         mode: str = None,
         switch: str = None,
     ):
-        # The ID of the instance.
-        # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The mode of the Intelligent Protection policy. Valid values:
-        # 
-        # *   **normal**
-        # *   **loose**
-        # *   **strict**
+        # The mode of AI-based intelligent protection for non-website services. Valid values:
+        # - **normal**: Normal.
+        # - **loose**: Loose.
+        # - **strict**: Strict.
         # 
         # This parameter is required.
         self.mode = mode
-        # Specifies the status of the Intelligent Protection policy. Valid values:
-        # 
-        # *   **on**: enables the policy.
-        # *   **off**: disables the policy.
+        # The status of AI-based intelligent protection for non-website services. Valid values:
+        # - **on**: enabled
+        # - **off**: disabled
         # 
         # This parameter is required.
         self.switch = switch

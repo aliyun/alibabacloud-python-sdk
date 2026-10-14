@@ -14,11 +14,11 @@ class DescribeDomainResourceResponseBody(DaraModel):
         total_count: int = None,
         web_rules: List[main_models.DescribeDomainResourceResponseBodyWebRules] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of forwarding rules.
+        # The total number of web rules returned.
         self.total_count = total_count
-        # The configurations of the forwarding rule.
+        # An array of web rule configurations.
         self.web_rules = web_rules
 
     def validate(self):
@@ -90,111 +90,135 @@ class DescribeDomainResourceResponseBodyWebRules(DaraModel):
         ssl_protocols: str = None,
         white_list: List[str] = None,
     ):
-        # The IP addresses that are included in the blacklist of the domain name.
+        # An array of IP addresses on the blocklist for the domain.
         self.black_list = black_list
-        # Indicates whether Frequency Control is enabled. Valid values:
+        # Whether CC protection is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.cc_enabled = cc_enabled
-        # Indicates whether the Custom Rules switch of Frequency Control is turned on. Valid values:
+        # Whether custom CC protection rules are enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.cc_rule_enabled = cc_rule_enabled
-        # The mode of Frequency Control. Valid values:
+        # The CC protection mode. Valid values:
         # 
-        # *   **default**: the Normal mode
-        # *   **gf_under_attack**: the Emergency mode
-        # *   **gf_sos_verify**: the Strict mode
-        # *   **gf_sos_verify**: the Super Strict mode
+        # - **default**: normal mode
+        # 
+        # - **gf_under_attack**: Emergency mode
+        # 
+        # - **gf_sos_verify**: Strict mode
+        # 
+        # - **gf_sos_enhance**: Super Strict mode
         self.cc_template = cc_template
-        # The name of the SSL certificate used by the domain name.
+        # The name of the SSL certificate used by the domain.
         self.cert_name = cert_name
-        # The CNAME provided by the instance to which the domain name is added.
+        # The CNAME assigned to the domain by Anti-DDoS Pro.
         self.cname = cname
-        # The custom cipher suites.
+        # An array of custom cipher suites.
         self.custom_ciphers = custom_ciphers
-        # The domain name of the website.
+        # The domain name.
         self.domain = domain
-        # Indicates whether Enable HTTP/2 is turned on. Valid values:
+        # Whether HTTP/2 is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.http_2enable = http_2enable
-        # Indicates whether Enable HTTPS Redirection is turned on. Valid values:
+        # Whether forced HTTPS redirect is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.http_2https_enable = http_2https_enable
-        # Indicates whether Enable HTTP Redirection of Back-to-origin Requests is turned on. Valid values:
+        # Whether HTTP back-to-source is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.https_2http_enable = https_2http_enable
-        # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # The advanced HTTPS settings, formatted as a JSON string. These settings apply only when the domain uses HTTPS (the `ProxyType` value includes `https`). The string contains the following fields:
         # 
-        # *   **Http2https**: indicates whether Enable HTTPS Redirection is turned on. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTPS Redirection is turned on. The value 1 indicates that Enable HTTPS Redirection is turned off.
-        # *   **Https2http**: indicates whether Enable HTTP Redirection of Back-to-origin Requests is turned on. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that the feature is turned on. The value 1 indicates that the feature is turned off.
-        # *   **Http2**: indicates whether Enable HTTP/2 is turned on. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on.
+        # - **Http2https**: integer. Specifies whether to enable forced HTTPS redirect. Valid values: **0** (disabled) and **1** (enabled).
+        # 
+        # - **Https2http**: integer. Specifies whether to enable HTTP back-to-source. Valid values: **0** (disabled) and **1** (enabled).
+        # 
+        # - **Http2**: integer. Specifies whether to enable HTTP/2. Valid values: **0** (disabled) and **1** (enabled).
         self.https_ext = https_ext
-        # The IDs of the instances to which the domain name is added.
+        # An array of IDs for the Anti-DDoS Pro instances associated with the domain.
         self.instance_ids = instance_ids
-        # Indicates whether the Online Certificate Status Protocol (OCSP) feature is turned on. Valid values:
+        # Whether Online Certificate Status Protocol (OCSP) is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.ocsp_enabled = ocsp_enabled
-        # The scheduling algorithm for back-to-origin traffic. Valid values:
+        # The back-to-source load balancing algorithm. This algorithm determines how traffic is distributed to origin servers. Valid values:
         # 
-        # *   **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
-        # *   **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
-        # *   **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from the instance to origin servers based on the intelligent DNS resolution feature.
+        # - **ip_hash**: IP Hash. This algorithm hashes the source IP address and routes all requests from the same IP address to the same origin server.
+        # 
+        # - **rr**: Round Robin. This algorithm distributes requests across origin servers in turn.
+        # 
+        # - **least_time**: Least Time. This algorithm uses intelligent DNS resolution to minimize end-to-end latency from the protection node to the origin server.
         self.policy_mode = policy_mode
-        # Indicates whether the instance forwards the traffic that is destined for the website. Valid values:
+        # Whether Anti-DDoS Pro forwards traffic for the domain. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Forwarding is enabled.
+        # 
+        # - **false**: Forwarding is disabled.
         self.proxy_enabled = proxy_enabled
-        # The details about the protocol type and port number.
+        # An array of proxy configurations for the domain, each specifying a protocol and its associated ports.
         self.proxy_types = proxy_types
-        # The reason why the domain name is invalid. Valid values:
+        # The reason the domain is penalized. Valid values:
         # 
-        # *   **1**: No Content Provider (ICP) filing is completed for the domain name.
-        # *   **2**: The business for which you registered the domain name does not meet regulatory requirements.
+        # - **1**: The domain does not have an ICP filing.
         # 
-        # If the two reasons are both involved, the value **2** is returned.
+        # - **2**: The business hosted on the domain does not meet regulatory requirements.
+        # 
+        # If both reasons apply, this parameter returns **2**.
         self.punish_reason = punish_reason
-        # Indicates whether the domain name is invalid. Valid values:
+        # Whether the domain is penalized. Valid values:
         # 
-        # *   **true**: The domain name is invalid. You can view the specific reasons from the **PunishReason** parameter.
-        # *   **false**: The domain name is valid.
+        # - **true**: The domain is penalized. For more information, see the `PunishReason` parameter.
+        # 
+        # - **false**: The domain is not penalized.
         self.punish_status = punish_status
-        # The addresses of origin servers.
+        # An array of origin server addresses.
         self.real_servers = real_servers
         # The address type of the origin server. Valid values:
         # 
-        # *   **0**: IP address
-        # *   **1**: domain name
+        # - **0**: IP address
+        # 
+        # - **1**: domain
         self.rs_type = rs_type
-        # Indicates whether TLS 1.3 is supported. Valid values:
+        # Whether TLS 1.3 is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.ssl_13enabled = ssl_13enabled
-        # The type of the cipher suite. Valid values:
+        # The cipher suite configuration type. Valid values:
         # 
-        # *   **default**: custom cipher suite
-        # *   **all**: all cipher suites
-        # *   **strong**: strong cipher suites
+        # - **default**: Custom
+        # 
+        # - **all**: All
+        # 
+        # - **strong**: Strong
+        # 
+        # - **improved**: Improved
         self.ssl_ciphers = ssl_ciphers
-        # The version of the TLS protocol. Valid values:
+        # The minimum TLS protocol version. Valid values:
         # 
-        # *   **tls1.0**: TLS 1.0 or later
-        # *   **tls1.1**: TLS 1.1 or later
-        # *   **tls1.2**: TLS 1.2 or later
+        # - **tls1.0**: TLS 1.0 and later versions.
+        # 
+        # - **tls1.1**: TLS 1.1 and later versions.
+        # 
+        # - **tls1.2**: TLS 1.2 and later versions.
         self.ssl_protocols = ssl_protocols
-        # The IP addresses that are included in the whitelist of the domain name.
+        # An array of IP addresses on the allowlist for the domain.
         self.white_list = white_list
 
     def validate(self):
@@ -375,14 +399,17 @@ class DescribeDomainResourceResponseBodyWebRulesProxyTypes(DaraModel):
         proxy_ports: List[str] = None,
         proxy_type: str = None,
     ):
-        # The port numbers.
+        # The array of ports associated with the protocol.
         self.proxy_ports = proxy_ports
-        # The type of the protocol. Valid values:
+        # The proxy protocol. Valid values:
         # 
-        # *   **http**
-        # *   **https**
-        # *   **websocket**
-        # *   **websockets**
+        # - **http**: HTTP
+        # 
+        # - **https**: HTTPS
+        # 
+        # - **websocket**: WebSocket
+        # 
+        # - **websockets**: WebSockets
         self.proxy_type = proxy_type
 
     def validate(self):

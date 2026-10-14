@@ -15,7 +15,7 @@ class DescribeDomainViewTopUrlResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # An array consisting of the URLs that receive the most requests.
+        # The list of top URLs by access volume for the website service.
         self.url_list = url_list
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeDomainViewTopUrlResponseBodyUrlList(DaraModel):
         domain: str = None,
         url: str = None,
     ):
-        # The total number of requests.
+        # The number of requests.
         self.count = count
-        # The domain name of the website.
+        # The website domain name.
         self.domain = domain
-        # The URL that is Base64-encoded.
+        # The URL. The value is Base64-encoded.
         self.url = url
 
     def validate(self):

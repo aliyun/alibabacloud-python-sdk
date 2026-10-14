@@ -13,9 +13,9 @@ class DescribeDomainViewSourceProvincesResponseBody(DaraModel):
         request_id: str = None,
         source_provinces: List[main_models.DescribeDomainViewSourceProvincesResponseBodySourceProvinces] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array consisting of the details of the administrative region in China from which the requests are sent.
+        # The information about request source provinces in China for the website service.
         self.source_provinces = source_provinces
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeDomainViewSourceProvincesResponseBodySourceProvinces(DaraModel):
         count: int = None,
         province_id: str = None,
     ):
-        # The total number of requests.
+        # The number of requests.
         self.count = count
-        # The ID of the region inside China. For more information, see the **Codes of administrative regions in China** section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic. For example, **110000** indicates Beijing, and **120000** indicates Tianjin.
+        # The province ID. For more information, see the **China region codes** section in [China and overseas region codes](https://help.aliyun.com/document_detail/167926.html). For example, **110000** indicates Beijing and **120000** indicates Tianjin.
         self.province_id = province_id
 
     def validate(self):

@@ -15,18 +15,19 @@ class DescribeDomainResourceRequest(DaraModel):
         page_size: int = None,
         query_domain_pattern: str = None,
     ):
-        # The domain name of the website that you want to query.
+        # The domain name to query.
         self.domain = domain
-        # An array that consists of the IDs of instances to query.
+        # The IDs of the Anti-DDoS Pro instances to query.
         self.instance_ids = instance_ids
-        # The page number. Default value: **1**.
+        # The number of the page to return. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of forwarding rules per page.
         self.page_size = page_size
-        # The match mode. Valid values:
+        # The matching pattern for the query. Valid values:
         # 
-        # *   **fuzzy**: fuzzy match. This is the default value.
-        # *   **exact**: exact match.
+        # - **fuzzy** (default): Specifies a fuzzy search.
+        # 
+        # - **exact**: Specifies an exact match.
         self.query_domain_pattern = query_domain_pattern
 
     def validate(self):

@@ -14,23 +14,20 @@ class DescribePortMaxConnsRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-        # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # The end time of the query. This value is a UNIX timestamp. Unit: seconds.
+        # > The value must be on the minute.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The IDs of the Anti-DDoS Proxy instances.
-        # 
-        # >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Proxy instances.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # > You can invoke [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-        # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # The start time of the query. This value is a UNIX timestamp. Unit: seconds.
+        # > The value must be on the minute.
         # 
         # This parameter is required.
         self.start_time = start_time

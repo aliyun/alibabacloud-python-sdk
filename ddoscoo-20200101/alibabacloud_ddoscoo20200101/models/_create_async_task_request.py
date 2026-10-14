@@ -11,28 +11,26 @@ class CreateAsyncTaskRequest(DaraModel):
         task_params: str = None,
         task_type: int = None,
     ):
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. If this parameter is empty, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The details of the asynchronous export task. The value is a JSON string. The field in the value varies with **TaskType**.
+        # The task parameter information. The value is a JSON-formatted string. The required task parameters vary based on the value of **TaskType**.
         # 
-        # If **TaskType** is set to **1**, **3**, **4**, **5**, or **6**, the following filed is returned:
+        # If **TaskType** is set to **1**, **3**, **4**, **5**, or **6**, the task parameters use the following structure:
+        # - **instanceId**: String type. Required. The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         # 
-        # *   **instanceId**: the ID of the instance. This field is required and must be of the STRING type.
-        # 
-        # If **TaskType** is set to **2**, the following field is returned:
-        # 
-        # *   **domain**: the domain name of the website, which must be of the STRING type. If you do not specify this field, the forwarding rules of all websites are exported.
+        # If **TaskType** is set to **2**, the task parameters use the following structure:
+        # - **domain**: String type. Optional. The domain name of the website. If this parameter is not specified, the forwarding rules of all websites are exported.
         # 
         # This parameter is required.
         self.task_params = task_params
-        # The type of the asynchronous export task that you want to create. Valid values:
+        # The type of the export task to create. Valid values:
         # 
-        # *   **1**: the task to export the port forwarding rules of an instance
-        # *   **2**: the task to export the forwarding rules of a website protected by an instance
-        # *   **3**: the task to export the session persistence and health check settings of an instance
-        # *   **4**: the task to export the anti-DDoS mitigation policies of an instance
-        # *   **5**: the task to download the blacklist for destination IP addresses of an instance
-        # *   **6**: the task to download the whitelist for destination IP addresses of an instance
+        # - **1**: Layer 4 export task. Exports port forwarding rules of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # - **2**: Layer 7 export task. Exports website forwarding rules.
+        # - **3**: Session persistence and health check export task. Exports session persistence and health check configurations of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # - **4**: DDoS mitigation policy export task. Exports DDoS mitigation policy configurations of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # - **5**: Blacklist (destination IP address-based) download task. Exports blacklisted IP addresses for the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # - **6**: Whitelist (destination IP address-based) download task. Exports whitelisted IP addresses for the Anti-DDoS Pro or Anti-DDoS Premium instance.
         # 
         # This parameter is required.
         self.task_type = task_type

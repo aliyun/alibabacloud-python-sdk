@@ -13,7 +13,7 @@ class DescribePortFlowListResponseBody(DaraModel):
         port_flow_list: List[main_models.DescribePortFlowListResponseBodyPortFlowList] = None,
         request_id: str = None,
     ):
-        # The returned traffic data.
+        # The traffic data.
         self.port_flow_list = port_flow_list
         # The ID of the request.
         self.request_id = request_id
@@ -73,40 +73,47 @@ class DescribePortFlowListResponseBodyPortFlowList(DaraModel):
         sla_pps_drop_pps: int = None,
         time: int = None,
     ):
-        # The bandwidth of attack traffic. Unit: bit/s.
+        # The attack bandwidth. Unit: bit/s.
         self.attack_bps = attack_bps
-        # The packet forwarding rate of attack traffic. Unit: pps.
+        # The attack packet forwarding rate. Unit: pps.
         self.attack_pps = attack_pps
         # The inbound bandwidth. Unit: bit/s.
         self.in_bps = in_bps
-        # The packet forwarding rate of inbound traffic. Unit: packets per second.
+        # The inbound packet forwarding rate. Unit: pps.
         self.in_pps = in_pps
         # The index number of the returned data.
         self.index = index
         # The outbound bandwidth. Unit: bit/s.
         self.out_bps = out_bps
-        # The packet forwarding rate of outbound traffic. Unit: packets per second (pps).
+        # The outbound packet forwarding rate. Unit: pps.
         self.out_pps = out_pps
-        # The source region of the traffic. Valid values:
+        # The source location of the access traffic. Valid values:
+        # - **cn**: the Chinese mainland.
+        # - **alb-ap-northeast-1-gf-x**: Japan.
+        # - **alb-ap-southeast-gf-x**: Singapore.
+        # - **alb-cn-hongkong-gf-x**: Hong Kong (China).
+        # - **alb-eu-central-1-gf-x**: Germany.
+        # - **alb-us-west-1-gf-x**: US West.
         # 
-        # *   **cn**: mainland China
-        # *   **alb-ap-northeast-1-gf-x**: Japan (Tokyo)
-        # *   **alb-ap-southeast-gf-x**: Singapore
-        # *   **alb-cn-hongkong-gf-x**: Hong Kong (China)
-        # *   **alb-eu-central-1-gf-x**: Germany (Frankfurt)
-        # *   **alb-us-west-1-gf-x**: US (Silicon Valley)
-        # 
-        # > The values except **cn** are returned only when **RegionId** is set to **ap-southeast-1**.
+        # > Values other than **cn** are available only for Anti-DDoS Pro and Anti-DDoS Premium (**RegionId** is **ap-southeast-1**).
         self.region = region
+        # The destination bandwidth rate limiting. Unit: bit/s.
         self.sla_bps_drop_bps = sla_bps_drop_bps
+        # The destination bandwidth packet forwarding rate. Unit: pps.
         self.sla_bps_drop_pps = sla_bps_drop_pps
+        # The destination concurrent connections rate limiting. Unit: bit/s.
         self.sla_conn_drop_bps = sla_conn_drop_bps
+        # The destination concurrent connections packet forwarding rate. Unit: pps.
         self.sla_conn_drop_pps = sla_conn_drop_pps
+        # The destination new connections rate limiting. Unit: bit/s.
         self.sla_cps_drop_bps = sla_cps_drop_bps
+        # The destination new connections packet forwarding rate. Unit: pps.
         self.sla_cps_drop_pps = sla_cps_drop_pps
+        # The destination packets rate limiting. Unit: bit/s.
         self.sla_pps_drop_bps = sla_pps_drop_bps
+        # The destination packets packet forwarding rate. Unit: pps.
         self.sla_pps_drop_pps = sla_pps_drop_pps
-        # The time when the data was collected. The value is a UNIX timestamp. Unit: seconds.
+        # The statistics time. The value is a UNIX timestamp. Unit: seconds.
         self.time = time
 
     def validate(self):

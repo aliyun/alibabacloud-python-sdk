@@ -9,9 +9,8 @@ class DescribeL7UsKeepaliveRequest(DaraModel):
         self,
         domain: str = None,
     ):
-        # The domain name of the website.
-        # 
-        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # The domain name of the website service.
+        # > The domain name must have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         self.domain = domain
 
     def validate(self):

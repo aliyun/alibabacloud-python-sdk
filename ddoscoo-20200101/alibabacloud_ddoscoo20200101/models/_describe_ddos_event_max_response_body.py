@@ -12,13 +12,13 @@ class DescribeDDosEventMaxResponseBody(DaraModel):
         qps: int = None,
         request_id: str = None,
     ):
-        # The peak of connection flood attacks. Unit: connections per seconds (CPS).
+        # The peak attack throughput of connection flood attacks. Unit: cps.
         self.cps = cps
-        # The peak of volumetric attacks. Unit: Mbit/s.
+        # The peak attack throughput of volumetric traffic attacks. Unit: Mbps.
         self.mbps = mbps
-        # The peak of resource exhaustion attacks. Unit: queries per second (QPS).
+        # The peak attack throughput of web resource exhaustion attacks. Unit: qps.
         self.qps = qps
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

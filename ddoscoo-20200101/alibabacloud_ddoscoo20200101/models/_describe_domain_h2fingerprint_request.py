@@ -15,20 +15,18 @@ class DescribeDomainH2FingerprintRequest(DaraModel):
     ):
         # The domain name of the website.
         # 
-        # >  You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names of all websites that are protected by Anti-DDoS Proxy.
+        # > You can invoke [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query the domain names of all websites that are protected by Anti-DDoS Pro and Anti-DDoS Premium.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-        # 
-        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > The value must be on the hour or half hour.
         self.end_time = end_time
-        # The maximum number of entries to return.
+        # The number of entries to return.
         # 
         # This parameter is required.
         self.limit = limit
         self.query_type = query_type
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-        # 
-        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # > The value must be on the hour or half hour.
         # 
         # This parameter is required.
         self.start_time = start_time

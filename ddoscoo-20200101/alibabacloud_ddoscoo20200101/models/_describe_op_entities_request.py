@@ -15,22 +15,22 @@ class DescribeOpEntitiesRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
         # 
-        # > The time must be in the latest 30 days.
+        # > The time range cannot exceed 30 days.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The operation object that you want to query.
+        # The operation object used to filter results.
         self.entity_object = entity_object
-        # The type of the operation object that you want to query. Valid values:
+        # The type of the operation object used to filter results. Valid values:
         # 
-        # *   **1**: the IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance
-        # *   **2**: Anti-DDoS plans
-        # *   **3**: ECS instances
-        # *   **4**: all logs
+        # - **1**: IP Address of Anti-DDoS Proxy instance
+        # - **2**: Anti-DDoS Pro and Anti-DDoS Premium mitigation plan
+        # - **3**: ECS instance
+        # - **4**: full logs
         self.entity_type = entity_type
-        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # The page number to return in a paging query. For example, to query the first page, set the value to **1**.
         # 
         # This parameter is required.
         self.page_number = page_number
@@ -38,11 +38,11 @@ class DescribeOpEntitiesRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Pro and Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
         # 
-        # > The time must be in the latest 30 days.
+        # > The time range cannot exceed 30 days.
         # 
         # This parameter is required.
         self.start_time = start_time

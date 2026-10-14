@@ -13,9 +13,9 @@ class DescribeWebCustomPortsResponseBody(DaraModel):
         request_id: str = None,
         web_custom_ports: List[main_models.DescribeWebCustomPortsResponseBodyWebCustomPorts] = None,
     ):
-        # The ID of the request.
+        # The ID of this request.
         self.request_id = request_id
-        # An array consisting of information about supported custom ports that are used by a website.
+        # The custom port information for website services.
         self.web_custom_ports = web_custom_ports
 
     def validate(self):
@@ -58,12 +58,13 @@ class DescribeWebCustomPortsResponseBodyWebCustomPorts(DaraModel):
         proxy_ports: List[str] = None,
         proxy_type: str = None,
     ):
-        # An array that consists of supported custom ports.
+        # The available port range.
         self.proxy_ports = proxy_ports
-        # The type of the protocol. Valid values:
+        # The Protocol Type. Valid values:
         # 
-        # *   **http**
-        # *   **https**
+        # - **http**
+        # 
+        # - **https**
         self.proxy_type = proxy_type
 
     def validate(self):

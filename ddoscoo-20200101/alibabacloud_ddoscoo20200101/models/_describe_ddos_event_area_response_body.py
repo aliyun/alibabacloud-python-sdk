@@ -13,7 +13,7 @@ class DescribeDDosEventAreaResponseBody(DaraModel):
         areas: List[main_models.DescribeDDosEventAreaResponseBodyAreas] = None,
         request_id: str = None,
     ):
-        # The information about the source region from which the volumetric attack was initiated.
+        # The information about the attack source regions.
         self.areas = areas
         # The ID of the request.
         self.request_id = request_id
@@ -58,9 +58,11 @@ class DescribeDDosEventAreaResponseBodyAreas(DaraModel):
         area: str = None,
         in_pkts: int = None,
     ):
-        # The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
+        # The code of the attack source region, including Chinese regions (at the province or city level) and international regions (at the country level). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
+        # 
+        # > For more information about the valid values of this parameter, see [China and international regions](https://help.aliyun.com/document_detail/167926.html).
         self.area = area
-        # The number of request packets that were sent from the source region.
+        # The number of request packets from the attack source region.
         self.in_pkts = in_pkts
 
     def validate(self):

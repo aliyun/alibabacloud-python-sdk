@@ -17,26 +17,49 @@ class ModifyWebCCRuleRequest(DaraModel):
         ttl: int = None,
         uri: str = None,
     ):
+        # The blocking type. Valid values:
+        # 
+        # - **close**: block
+        # 
+        # - **captcha**: bot detection
+        # 
         # This parameter is required.
         self.act = act
+        # The number of access attempts from a single IP address. Valid values: **2** to **2000**.
+        # 
         # This parameter is required.
         self.count = count
+        # The domain name of the website business.
+        # 
+        # > The domain name must have a configured website business forwarding rule. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
+        # 
         # This parameter is required.
         self.domain = domain
+        # The detection duration. Valid values: **5** to **10800**. Unit: seconds.
+        # 
         # This parameter is required.
         self.interval = interval
+        # The matching pattern. Valid values:
+        # 
+        # - **prefix**: prefix match
+        # 
+        # - **match**: exact match
+        # 
         # This parameter is required.
         self.mode = mode
+        # The rule name.
+        # 
         # This parameter is required.
         self.name = name
+        # The resource group ID to which the Anti-DDoS Proxy instance belongs in the Resource Management product. The default value is empty, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The blocking duration. Valid values: **60** to **86400**. Unit: seconds.
         # 
         # This parameter is required.
         self.ttl = ttl
-        # The check path.
+        # The detection path.
         # 
-        # >  You cannot modify the Uniform Resource Identifier (URI). The domain name of the website, the check path, and the rule name uniquely identify a rule.
+        # > The URI cannot be modified. A rule is uniquely identified by the domain name of the website business, the detection path, and the rule name.
         # 
         # This parameter is required.
         self.uri = uri

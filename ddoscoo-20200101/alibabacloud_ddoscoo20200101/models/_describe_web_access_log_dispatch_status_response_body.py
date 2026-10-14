@@ -16,9 +16,9 @@ class DescribeWebAccessLogDispatchStatusResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the log analysis feature is enabled for domain names.
+        # The full log switch status of the domain names.
         self.sls_config_status = sls_config_status
-        # The total number of entries returned.
+        # The total number of domain names queried.
         self.total_count = total_count
 
     def validate(self):
@@ -69,10 +69,9 @@ class DescribeWebAccessLogDispatchStatusResponseBodySlsConfigStatus(DaraModel):
     ):
         # The domain name.
         self.domain = domain
-        # Indicates whether the log analysis feature is enabled. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
+        # Indicates whether full log collection is enabled. Valid values:
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.enable = enable
 
     def validate(self):

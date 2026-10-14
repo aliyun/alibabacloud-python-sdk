@@ -14,8 +14,11 @@ class DescribeCdnLinkageRulesResponseBody(DaraModel):
         scheduler_rules: List[main_models.DescribeCdnLinkageRulesResponseBodySchedulerRules] = None,
         total_count: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The traffic scheduling rules.
         self.scheduler_rules = scheduler_rules
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -65,8 +68,15 @@ class DescribeCdnLinkageRulesResponseBodySchedulerRules(DaraModel):
         cdn_linkage_rule: main_models.DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRule = None,
         domain: str = None,
     ):
+        # Specifies whether CDN interaction is enabled. Valid values:
+        # 
+        # - **0**: Disabled
+        # 
+        # - **1**: Enabled
         self.cdn_linkage_enable = cdn_linkage_enable
+        # The CDN interaction rule.
         self.cdn_linkage_rule = cdn_linkage_rule
+        # The domain name.
         self.domain = domain
 
     def validate(self):
@@ -111,9 +121,13 @@ class DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRule(DaraModel)
         rule_name: str = None,
         rules: List[main_models.DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleRules] = None,
     ):
+        # The canonical name of the Anti-DDoS instance that is associated with the domain name.
         self.cname = cname
+        # The resource for interaction.
         self.param = param
+        # The name of the traffic scheduling rule.
         self.rule_name = rule_name
+        # The rule information.
         self.rules = rules
 
     def validate(self):
@@ -175,11 +189,31 @@ class DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleRules(DaraM
         value: str = None,
         value_type: int = None,
     ):
+        # The priority of the rule. Valid values: 0 to 100. A larger value indicates a higher priority.
         self.priority = priority
+        # The region ID. The default value is empty.
         self.region_id = region_id
+        # The status of the rule. Valid values:
+        # 
+        # - **0**: Inactive
+        # 
+        # - **1**: Active
         self.status = status
+        # The format of the resource address. Valid values:
+        # 
+        # - **A**: IPv4 address
+        # 
+        # - **AAAA**: IPv6 address
+        # 
+        # - **CNAME**: canonical name
         self.type = type
+        # The resource address.
         self.value = value
+        # The type of the resource address. Valid values:
+        # 
+        # - **1**: Anti-DDoS IP
+        # 
+        # - **5**: Accelerated domain name for CDN interaction
         self.value_type = value_type
 
     def validate(self):
@@ -238,7 +272,13 @@ class DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleParam(DaraM
         param_data: main_models.DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleParamParamData = None,
         param_type: str = None,
     ):
+        # The interaction conditions.
         self.param_data = param_data
+        # The type of the resource for interaction. Valid values:
+        # 
+        # - **cdn**: Alibaba Cloud CDN
+        # 
+        # - **dcdn**: DCDN
         self.param_type = param_type
 
     def validate(self):
@@ -275,7 +315,9 @@ class DescribeCdnLinkageRulesResponseBodySchedulerRulesCdnLinkageRuleParamParamD
         access_qps: int = None,
         upstream_qps: int = None,
     ):
+        # The QPS threshold that triggers a resource switch.
         self.access_qps = access_qps
+        # A reserved field. The default value is 0.
         self.upstream_qps = upstream_qps
 
     def validate(self):

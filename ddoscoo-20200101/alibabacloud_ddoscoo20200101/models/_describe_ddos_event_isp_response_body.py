@@ -13,9 +13,9 @@ class DescribeDDosEventIspResponseBody(DaraModel):
         isps: List[main_models.DescribeDDosEventIspResponseBodyIsps] = None,
         request_id: str = None,
     ):
-        # The ISPs for the volumetric attack.
+        # The ISP information of attack sources.
         self.isps = isps
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,28 +58,28 @@ class DescribeDDosEventIspResponseBodyIsps(DaraModel):
         in_pkts: int = None,
         isp: str = None,
     ):
-        # The number of request packets that were sent from the ISP.
+        # The number of request packets from the ISP.
         self.in_pkts = in_pkts
-        # The code of the ISP. Valid values:
+        # The code of the attack source ISP. Valid values:
         # 
-        # *   **100017**: China Telecom
-        # *   **100026**: China Unicom
-        # *   **100025**: China Mobile
-        # *   **100027**: China Education and Research Network
-        # *   **100020**: China Mobile Tietong
-        # *   **1000143**: Dr.Peng Telecom & Media Group
-        # *   **100080**: Beijing Gehua CATV Network
-        # *   **1000139**: National Radio and Television Administration
-        # *   **100023**: Oriental Cable Network
-        # *   **100063**: Founder Broadband
-        # *   **1000337**: China Internet Exchange
-        # *   **100021**: 21Vianet Group
-        # *   **1000333**: Wasu Media Holding
-        # *   **100093**: Wangsu Science & Technology
-        # *   **1000401**: Tencent
-        # *   **100099**: Baidu
-        # *   **1000323**: Alibaba Cloud
-        # *   **100098**: Alibaba
+        # - **100017**: China Telecom
+        # - **100026**: China Unicom
+        # - **100025**: China Mobile
+        # - **100027**: CERNET
+        # - **100020**: China Tietong
+        # - **1000143**: Dr. Peng
+        # - **100080**: Gehua
+        # - **1000139**: China Broadcasting Network
+        # - **100023**: Youxiantong
+        # - **100063**: Founder Broadband
+        # - **1000337**: Haokuan Network
+        # - **100021**: 21Vianet
+        # - **1000333**: Wasu Media
+        # - **100093**: ChinaNetCenter
+        # - **1000401**: Tencent
+        # - **100099**: Baidu
+        # - **1000323**: Alibaba Cloud
+        # - **100098**: Alibaba
         self.isp = isp
 
     def validate(self):

@@ -72,8 +72,9 @@ class DescribeInstanceExtResponseBodyInstanceExtSpecs(DaraModel):
     ):
         # The function plan. Valid values:
         # 
-        # *   **0**: Standard
-        # *   **1**: Enhanced
+        # - **0**: Standard
+        # 
+        # - **1**: Enhanced
         self.function_version = function_version
         # The ID of the instance.
         self.instance_id = instance_id
@@ -81,11 +82,15 @@ class DescribeInstanceExtResponseBodyInstanceExtSpecs(DaraModel):
         self.normal_bandwidth = normal_bandwidth
         # The type of the instance. Valid values:
         # 
-        # *   **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
-        # *   **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
-        # *   **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
-        # *   **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan
-        # *   **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+        # - **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
+        # 
+        # - **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
+        # 
+        # - **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
+        # 
+        # - **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan
+        # 
+        # - **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
         self.product_plan = product_plan
         # The Internet service provider (ISP) line of the Anti-DDoS Proxy (Chinese Mainland) instance.
         self.service_partner = service_partner

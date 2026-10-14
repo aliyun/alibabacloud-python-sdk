@@ -12,7 +12,7 @@ class DescribeElasticBandwidthSpecResponseBody(DaraModel):
         elastic_bandwidth_spec: List[str] = None,
         request_id: str = None,
     ):
-        # An array that consists of the available burstable protection bandwidths. Unit: Gbit/s.
+        # The list of available burstable protection bandwidth specifications. Unit: Gbit/s.
         self.elastic_bandwidth_spec = elastic_bandwidth_spec
         # The ID of the request.
         self.request_id = request_id

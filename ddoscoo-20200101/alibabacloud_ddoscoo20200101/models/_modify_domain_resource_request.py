@@ -23,17 +23,17 @@ class ModifyDomainResourceRequest(DaraModel):
         self.domain = domain
         # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
         # 
-        # *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        # - **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
         # 
-        #     If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+        #   If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
         # 
-        # *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        # - **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
         # 
-        #     If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+        #   If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
         # 
-        # *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        # - **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
         # 
-        #     After you turn on the switch, HTTP/2 is used.
+        #   After you turn on the switch, HTTP/2 is used.
         self.https_ext = https_ext
         # An array consisting of the IDs of instances that you want to associate.
         # 
@@ -49,11 +49,11 @@ class ModifyDomainResourceRequest(DaraModel):
         self.real_servers = real_servers
         # The address type of the origin server. Valid values:
         # 
-        # *   **0**: IP address
+        # - **0**: IP address
         # 
-        # *   **1**: domain name
+        # - **1**: domain name
         # 
-        #     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        #   If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
         # 
         # This parameter is required.
         self.rs_type = rs_type
@@ -128,10 +128,13 @@ class ModifyDomainResourceRequestProxyTypes(DaraModel):
         self.proxy_ports = proxy_ports
         # The type of the protocol. Valid values:
         # 
-        # *   **http**
-        # *   **https**
-        # *   **websocket**
-        # *   **websockets**
+        # - **http**
+        # 
+        # - **https**
+        # 
+        # - **websocket**
+        # 
+        # - **websockets**
         self.proxy_type = proxy_type
 
     def validate(self):

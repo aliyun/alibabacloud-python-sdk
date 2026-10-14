@@ -9,7 +9,7 @@ class ModifyPortResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

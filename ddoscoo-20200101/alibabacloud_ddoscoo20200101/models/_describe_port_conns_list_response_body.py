@@ -63,7 +63,7 @@ class DescribePortConnsListResponseBodyConnsList(DaraModel):
     ):
         # The number of active connections.
         self.act_conns = act_conns
-        # >  This parameter is in internal preview. Do not use this parameter.
+        # > This parameter is in internal preview. Do not use this parameter.
         self.conns = conns
         # The number of new connections.
         self.cps = cps

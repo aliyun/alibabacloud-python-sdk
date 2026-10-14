@@ -16,7 +16,7 @@ class ModifyPortRequest(DaraModel):
         proxy_enable: int = None,
         real_servers: List[str] = None,
     ):
-        # The port of the origin server. Valid values: **0** to **65535**.
+        # The origin server port. Valid values: **0** to **65535**.
         # 
         # This parameter is required.
         self.backend_port = backend_port
@@ -26,19 +26,25 @@ class ModifyPortRequest(DaraModel):
         self.frontend_port = frontend_port
         # The type of the forwarding protocol. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**: TCP protocol.
+        # 
+        # - **udp**: UDP protocol.
         # 
         # This parameter is required.
         self.frontend_protocol = frontend_protocol
-        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
+        # The ID of the Anti-DDoS Proxy instance to which the port forwarding rule belongs.
         # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Proxy instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Indicates whether the traffic diversion switch is on. Valid values:
+        # 
+        # - **0**: off.
+        # 
+        # - **1**: on.
         self.proxy_enable = proxy_enable
-        # An array that consists of the IP addresses of origin servers.
+        # The IP addresses of origin servers.
         # 
         # This parameter is required.
         self.real_servers = real_servers

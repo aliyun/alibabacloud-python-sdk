@@ -13,7 +13,7 @@ class DescribeWebAccessModeResponseBody(DaraModel):
         domain_modes: List[main_models.DescribeWebAccessModeResponseBodyDomainModes] = None,
         request_id: str = None,
     ):
-        # An array consisting of the modes in which the website service is added.
+        # The access mode information of website businesses.
         self.domain_modes = domain_modes
         # The ID of the request.
         self.request_id = request_id
@@ -58,11 +58,13 @@ class DescribeWebAccessModeResponseBodyDomainModes(DaraModel):
         access_mode: int = None,
         domain: str = None,
     ):
-        # The mode in which the website service is added. Valid values:
+        # The access mode. Valid values:
         # 
-        # *   **0**: A record
-        # *   **1**: anti-DDoS mode
-        # *   **2**: origin redundancy mode
+        # - **0**: A record access
+        # 
+        # - **1**: Anti-DDoS Proxy mode
+        # 
+        # - **2**: Back-to-origin mode
         self.access_mode = access_mode
         # The domain name of the website.
         self.domain = domain

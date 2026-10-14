@@ -13,7 +13,7 @@ class DescribePortMaxConnsResponseBody(DaraModel):
         port_max_conns: List[main_models.DescribePortMaxConnsResponseBodyPortMaxConns] = None,
         request_id: str = None,
     ):
-        # The details of the maximum number of connections that can be established over a port of the instance.
+        # The peak connection information of ports on the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.port_max_conns = port_max_conns
         # The ID of the request.
         self.request_id = request_id
@@ -59,11 +59,11 @@ class DescribePortMaxConnsResponseBodyPortMaxConns(DaraModel):
         ip: str = None,
         port: str = None,
     ):
-        # The maximum number of connections per second (CPS).
+        # The maximum number of connections per second.
         self.cps = cps
-        # The IP address of the instance.
+        # The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.ip = ip
-        # The port of the instance.
+        # The port of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.port = port
 
     def validate(self):

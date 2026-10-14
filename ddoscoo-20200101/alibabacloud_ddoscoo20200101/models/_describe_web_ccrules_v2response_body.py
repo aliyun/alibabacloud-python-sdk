@@ -17,11 +17,11 @@ class DescribeWebCCRulesV2ResponseBody(DaraModel):
     ):
         # The domain name of the website.
         self.domain = domain
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
-        # The total number of returned custom frequency control rules.
+        # The total number of frequency control rules.
         self.total_count = total_count
-        # The custom frequency control rules.
+        # The frequency control (HTTP flood mitigation) custom rules.
         self.web_ccrules = web_ccrules
 
     def validate(self):
@@ -78,16 +78,13 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRules(DaraModel):
         owner: str = None,
         rule_detail: main_models.DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail = None,
     ):
-        # The validity period of the rule. Unit: seconds. If the Action parameter is set to block, the system blocks the requests that match the rule within the validity period of the rule. The value 0 indicates that the rule is permanently valid.
+        # The validity period of the rule. Unit: seconds. This parameter takes effect when the matching action is set to block (action is block). Access requests are blocked within the validity period. A value of 0 indicates that the rule is permanently effective.
         self.expires = expires
         # The name of the rule.
         self.name = name
-        # The method used to create the rule. Valid values:
-        # 
-        # *   **manual** (default): manually created.
-        # *   **clover**: automatically created.
+        # The source of the rule. Valid values:
         self.owner = owner
-        # The details of the rule.
+        # The rule details.
         self.rule_detail = rule_detail
 
     def validate(self):
@@ -145,32 +142,31 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail(DaraModel):
         ttl: int = None,
         uri: str = None,
     ):
-        # The action triggered if the rule is matched. Valid values:
-        # 
-        # *   **accept**: The requests that match the rule are allowed.
-        # *   **block**: The requests that match the rule are blocked.
-        # *   **challenge**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
-        # *   **watch**: The requests that match the rule are recorded in logs and allowed.
+        # The matching action. Valid values:
+        # - **accept**: Allow.
+        # - **block**: Block.
+        # - **challenge**: JavaScript Challenge.
+        # - **watch**: Monitor.
         self.action = action
-        # The match conditions.
+        # The list of matching conditions.
         self.condition = condition
-        # The parameter is deprecated.
+        # The legacy rule format. This parameter is deprecated.
         self.count = count
-        # The parameter is deprecated.
+        # The legacy rule format. This parameter is deprecated.
         self.interval = interval
-        # The parameter is deprecated.
+        # The legacy rule format. This parameter is deprecated.
         self.mode = mode
         # The name of the rule.
         self.name = name
         # The frequency statistics.
         self.rate_limit = rate_limit
-        # The statistics after deduplication. By default, the system collects statistics before deduplication.
+        # The deduplication statistics. This parameter is optional. If this parameter is not specified, deduplication is not performed.
         self.statistics = statistics
-        # The status codes.
+        # The status code.
         self.status_code = status_code
-        # The parameter is deprecated.
+        # The legacy rule format. This parameter is deprecated.
         self.ttl = ttl
-        # The parameter is deprecated.
+        # The legacy rule format. This parameter is deprecated.
         self.uri = uri
 
     def validate(self):
@@ -281,22 +277,16 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode(DaraModel):
     ):
         # The status code. Valid values: **100** to **599**.
         # 
-        # *   **200**: The request was successful.
-        # *   Other codes: The request failed.
+        # - **200**: Successful.
+        # - Other values: An error code.
         self.code = code
-        # If a ratio is not used, the handling action is triggered only when the number of requests of the corresponding status code reaches the value of **CountThreshold**. Valid values: **2** to **50000**.
+        # When the ratio is not used, the action is triggered only when the corresponding status code reaches **CountThreshold**. Valid range: **2** to **50000**.
         self.count_threshold = count_threshold
-        # Indicates whether the status code is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the feature is enabled. Valid values:
         self.enabled = enabled
-        # If a ratio is used, the handling action is triggered only when the number of requests of the corresponding status code reaches the value of **RatioThreshold**. Valid values: **1** to **100**.
+        # When the ratio is used, the action is triggered only when the corresponding status code reaches **RatioThreshold**. Valid range: **1** to **100**.
         self.ratio_threshold = ratio_threshold
-        # Indicates whether to use a ratio.
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether to use the ratio:
         self.use_ratio = use_ratio
 
     def validate(self):
@@ -350,18 +340,14 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics(DaraModel):
         header_name: str = None,
         mode: str = None,
     ):
-        # The statistical method. Valid values:
-        # 
-        # *   **ip**
-        # *   **header**
-        # *   **uri**
+        # The statistics source. Valid values:
+        # - **ip**: by IP address
+        # - **header**: by header
+        # - **uri**: by URI
         self.field = field
-        # The name of the header. This parameter is required only when the Field parameter is set to header.
+        # This parameter is required only when the statistics source is set to header.
         self.header_name = header_name
-        # Indicates whether the system collects statistics after deduplication. Valid values:
-        # 
-        # *   **count**: The system collects statistics before deduplication.
-        # *   **distinct**: The system collects statistics after deduplication.
+        # The deduplication mode. Valid values:
         self.mode = mode
 
     def validate(self):
@@ -407,12 +393,9 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit(DaraModel):
     ):
         # The statistical period. Unit: seconds.
         self.interval = interval
-        # The name of the field. This parameter is required only when the Target parameter is set to header.
+        # The field name. This parameter is required only when the statistics source is set to header.
         self.sub_key = sub_key
-        # The statistical method. Valid values:
-        # 
-        # *   **ip**
-        # *   **header**
+        # The statistics source. Valid values:
         self.target = target
         # The trigger threshold.
         self.threshold = threshold
@@ -472,17 +455,15 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition(DaraModel):
         header_name: str = None,
         match_method: str = None,
     ):
-        # The match content.
+        # The matching content.
         self.content = content
-        # The match content when the match method is Equals to One of Multiple Values.
+        # The matching content when the matching method is set to equal to one of multiple values.
         self.content_list = content_list
-        # The match field.
+        # The matching field.
         self.field = field
-        # The custom HTTP request header.
-        # 
-        # >  This parameter takes effect only when **Field** is set to **header**.
+        # The name of the custom HTTP header field.
         self.header_name = header_name
-        # The match method.
+        # The matching method.
         self.match_method = match_method
 
     def validate(self):

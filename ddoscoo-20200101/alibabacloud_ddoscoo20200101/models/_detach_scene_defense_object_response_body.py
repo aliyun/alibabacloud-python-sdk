@@ -14,8 +14,9 @@ class DetachSceneDefenseObjectResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes
+        # 
+        # - **false**: no
         self.success = success
 
     def validate(self):

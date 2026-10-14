@@ -14,11 +14,11 @@ class DescribeAutoCcBlacklistResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the details of the IP addresses in the blacklist of the instance.
+        # The list of blacklisted IP addresses for the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.auto_cc_blacklist = auto_cc_blacklist
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The total number of returned IP addresses in the blacklist.
+        # The total number of blacklisted IP addresses.
         self.total_count = total_count
 
     def validate(self):
@@ -69,16 +69,17 @@ class DescribeAutoCcBlacklistResponseBodyAutoCcBlacklist(DaraModel):
         source_ip: str = None,
         type: str = None,
     ):
-        # The IP address of the instance.
+        # The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.dest_ip = dest_ip
-        # The validity period of the IP address in the blacklist. The value is a UNIX timestamp. Unit: seconds.
+        # The expiration time of the blacklisted IP address. This value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
-        # The IP address in the blacklist.
+        # The blacklisted IP address.
         self.source_ip = source_ip
-        # The mode of how the IP address is added to the blacklist. Valid values:
+        # The source of the blacklisted IP address. Valid values:
         # 
-        # *   **manual**: manually added
-        # *   **auto**: automatically added
+        # - **manual**: The IP address is manually added.
+        # 
+        # - **auto**: The IP address is automatically added.
         self.type = type
 
     def validate(self):

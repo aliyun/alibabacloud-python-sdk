@@ -13,8 +13,9 @@ class DescribeInstanceIdsResponseBody(DaraModel):
         instance_ids: List[main_models.DescribeInstanceIdsResponseBodyInstanceIds] = None,
         request_id: str = None,
     ):
-        # The ID, type, description, and IP version of the instance.
+        # The IDs, editions, remarks, and IP types of the Anti-DDoS Pro or Anti-DDoS Premium instances.
         self.instance_ids = instance_ids
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,27 +61,27 @@ class DescribeInstanceIdsResponseBodyInstanceIds(DaraModel):
         ip_version: str = None,
         remark: str = None,
     ):
-        # The type of the instance. Valid values:
+        # The edition of the instance. Valid values:
         # 
-        # *   **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
-        # *   **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
-        # *   **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the CMA mitigation plan
-        # *   **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Sec-CMA mitigation plan
-        # *   **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+        # - **0**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Insurance Edition.
+        # - **1**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Unlimited Edition.
+        # - **2**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Acceleration Line.
+        # - **3**: Anti-DDoS Pro or Anti-DDoS Premium (outside the Chinese mainland) Secure Acceleration Line.
+        # - **9**: Anti-DDoS Pro or Anti-DDoS Premium (the Chinese mainland) Professional Edition.
         self.edition = edition
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The IP address-based forwarding mode of the instance. Valid values:
+        # The IP forwarding mode of the instance. Valid values:
         # 
-        # *   **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
-        # *   **v6tov4**: All requests are forwarded to origin servers that use IPv4 addresses.
+        # - **fnat**: The IP versions of the origin server and the client are the same. IPv4 client requests are forwarded to the IPv4 origin server, and IPv6 client requests are forwarded to the IPv6 origin server.
+        # - **v6tov4**: Both IPv6 and IPv4 client requests are forwarded to the IPv4 origin server.
         self.ip_mode = ip_mode
-        # The IP version of the instance. Valid values:
+        # The IP protocol version of the instance. Valid values:
         # 
-        # *   **Ipv4**
-        # *   **Ipv6**
+        # - **Ipv4**: IPv4.
+        # - **Ipv6**: IPv6.
         self.ip_version = ip_version
-        # The description of the instance.
+        # The remark of the instance.
         self.remark = remark
 
     def validate(self):

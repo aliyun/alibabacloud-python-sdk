@@ -14,19 +14,19 @@ class DescribeSlsLogstoreInfoResponseBody(DaraModel):
         ttl: int = None,
         used: int = None,
     ):
-        # The Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # The log store that is associated with Anti-DDoS Pro and Anti-DDoS Premium.
         self.log_store = log_store
-        # The Logstore project of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # The log project that is associated with Anti-DDoS Pro and Anti-DDoS Premium.
         self.project = project
         # The available log storage capacity. Unit: bytes.
         self.quota = quota
         # The ID of the request.
         self.request_id = request_id
-        # The log storage duration. Unit: days.
+        # The storage duration of logs. Unit: days.
         self.ttl = ttl
-        # The used log storage capacity. Unit: bytes.
+        # The used storage capacity. Unit: bytes.
         # 
-        # > The statistics on Log Service are delayed for about two hours.
+        # > The statistics from Simple Log Service have a delay of approximately two hours.
         self.used = used
 
     def validate(self):

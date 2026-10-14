@@ -12,10 +12,11 @@ class DescribeHeadersResponseBody(DaraModel):
         embedded_headers: str = None,
         request_id: str = None,
     ):
-        # The information about the custom header.
+        # The custom header information.
         self.custom_header = custom_header
+        # The request header that can be used to mark the Layer 7 attack. The value is a string that consists of a JSON object. The JSON object contains the following fields:
         self.embedded_headers = embedded_headers
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,7 +61,7 @@ class DescribeHeadersResponseBodyCustomHeader(DaraModel):
     ):
         # The domain name of the website.
         self.domain = domain
-        # The header of the response.
+        # The custom headers. The value is a string that consists of a JSON object. The JSON object contains the following fields:
         self.headers = headers
 
     def validate(self):

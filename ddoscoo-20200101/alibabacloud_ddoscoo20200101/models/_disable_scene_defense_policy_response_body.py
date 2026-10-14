@@ -12,10 +12,11 @@ class DisableSceneDefensePolicyResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Yes
+        # 
+        # - **false**: No
         self.success = success
 
     def validate(self):

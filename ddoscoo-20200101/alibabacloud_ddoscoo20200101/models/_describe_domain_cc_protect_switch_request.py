@@ -12,8 +12,13 @@ class DescribeDomainCcProtectSwitchRequest(DaraModel):
         domains: List[str] = None,
         resource_group_id: str = None,
     ):
+        # The domain names of the websites. You can specify up to five domain names.
+        # 
+        # > A website forwarding rule must be configured for the domain name. Call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
+        # 
         # This parameter is required.
         self.domains = domains
+        # The ID of the resource group to which the Anti-DDoS Pro instance belongs in Resource Management. If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

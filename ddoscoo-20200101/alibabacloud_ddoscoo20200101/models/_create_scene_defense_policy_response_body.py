@@ -10,12 +10,11 @@ class CreateSceneDefensePolicyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
+        # Indicates whether the policy is created. Valid values:
+        # - **true**: The policy is created.
+        # - **false**: The policy failed to be created.
         self.success = success
 
     def validate(self):

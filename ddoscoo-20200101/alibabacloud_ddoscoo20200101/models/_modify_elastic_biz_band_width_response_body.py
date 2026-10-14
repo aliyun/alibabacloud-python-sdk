@@ -9,7 +9,6 @@ class ModifyElasticBizBandWidthResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

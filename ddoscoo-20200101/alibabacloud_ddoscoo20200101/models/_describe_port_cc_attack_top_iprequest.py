@@ -12,18 +12,11 @@ class DescribePortCcAttackTopIPRequest(DaraModel):
         port: str = None,
         start_timestamp: int = None,
     ):
-        # The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance to query.
-        # 
         # This parameter is required.
         self.ip = ip
-        # The maximum number of entries to return.
         self.limit = limit
-        # The attacked port.
-        # 
         # This parameter is required.
         self.port = port
-        # The beginning of the time range to query. Unit: seconds.
-        # 
         # This parameter is required.
         self.start_timestamp = start_timestamp
 

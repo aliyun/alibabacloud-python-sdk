@@ -68,8 +68,9 @@ class DescribeHealthCheckListResponseBodyHealthCheckList(DaraModel):
         self.instance_id = instance_id
         # The forwarding protocol. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**
+        # 
+        # - **udp**
         self.protocol = protocol
 
     def validate(self):
@@ -126,7 +127,7 @@ class DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck(DaraModel):
     ):
         # The domain name.
         # 
-        # >  This parameter is returned only when the Layer 7 health check configuration is queried.
+        # > This parameter is returned only when the Layer 7 health check configuration is queried.
         self.domain = domain
         # The number of consecutive failed health checks that must occur before a port is declared unhealthy. Valid values: **1** to **10**.
         self.down = down
@@ -138,14 +139,15 @@ class DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck(DaraModel):
         self.timeout = timeout
         # The type of the protocol. Valid values:
         # 
-        # *   **tcp**: The Layer 4 health check configuration was queried.
-        # *   **http**: The Layer 7 health check configuration was queried.
+        # - **tcp**: The Layer 4 health check configuration was queried.
+        # 
+        # - **http**: The Layer 7 health check configuration was queried.
         self.type = type
         # The number of consecutive successful health checks that must occur before a port is declared healthy. Valid values: **1** to **10**.
         self.up = up
         # The check path.
         # 
-        # >  This parameter is returned only when the Layer 7 health check configuration is queried.
+        # > This parameter is returned only when the Layer 7 health check configuration is queried.
         self.uri = uri
 
     def validate(self):

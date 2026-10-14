@@ -10,8 +10,21 @@ class ConfigL7GlobalRuleRequest(DaraModel):
         domain: str = None,
         rule_attr: str = None,
     ):
+        # The domain name of the website service to configure.
+        # 
         # This parameter is required.
         self.domain = domain
+        # The action and switch settings for global template rules. The value is a string converted from a JSON struct array. The JSON struct contains the following fields:
+        # 
+        #  - **RuleId**: String | Required | The rule ID.
+        #  - **Action**: String | Required | The rule action. Valid values:
+        #     - **block**: Block.
+        #     - **watch**: Monitor.
+        #     - **challenge**: JavaScript Challenge.
+        #  - **Enabled**: Integer | Required | The rule switch. Valid values:
+        #     - **1**: enables the rule.
+        #     - **0**: disables the rule.
+        # 
         # This parameter is required.
         self.rule_attr = rule_attr
 

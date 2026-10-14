@@ -13,9 +13,9 @@ class DescribeDomainTopUserAgentResponseBody(DaraModel):
         domain_top_ua: List[main_models.DescribeDomainTopUserAgentResponseBodyDomainTopUa] = None,
         request_id: str = None,
     ):
-        # The information about the user agents.
+        # The list of User-Agent data.
         self.domain_top_ua = domain_top_ua
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeDomainTopUserAgentResponseBodyDomainTopUa(DaraModel):
         pv: int = None,
         user_agent: str = None,
     ):
-        # The domain name of the website.
+        # The website domain name.
         self.domain = domain
-        # The page views.
+        # The number of request matches.
         self.pv = pv
-        # The Base64-encoded user agent.
+        # The Base64-encoded value of the User-Agent.
         self.user_agent = user_agent
 
     def validate(self):

@@ -12,14 +12,15 @@ class ModifyWebCCGlobalSwitchRequest(DaraModel):
     ):
         # Specifies whether the HTTP flood mitigation feature is enabled. Valid values:
         # 
-        # *   **open**
-        # *   **close**
+        # - **open**
+        # 
+        # - **close**
         # 
         # This parameter is required.
         self.cc_global_switch = cc_global_switch
         # The domain name of the website.
         # 
-        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         # 
         # This parameter is required.
         self.domain = domain

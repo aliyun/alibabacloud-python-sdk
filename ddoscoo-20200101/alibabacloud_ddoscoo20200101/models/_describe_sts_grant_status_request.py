@@ -10,13 +10,13 @@ class DescribeStsGrantStatusRequest(DaraModel):
         resource_group_id: str = None,
         role: str = None,
     ):
-        # The ID of the resource group to which the instance belongs in Resource Management.
+        # The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management.
         # 
-        # If you do not configure this parameter, the instance belongs to the default resource group.
+        # If you do not specify this parameter, the default resource group is used.
         self.resource_group_id = resource_group_id
-        # The name of the RAM role to query. Set the value to **AliyunDDoSCOODefaultRole**, which indicates the default role of Anti-DDoS Pro or Anti-DDoS Premium.
+        # The name of the RAM role that you want to query. The value is fixed as **AliyunDDoSCOODefaultRole**, which indicates the default role of Anti-DDoS Proxy.
         # 
-        # > Anti-DDoS Pro or Anti-DDoS Premium uses the default role to access other cloud services.
+        # > Anti-DDoS Proxy use this role by default to access your resources in other cloud services.
         # 
         # This parameter is required.
         self.role = role

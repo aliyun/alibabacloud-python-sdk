@@ -10,32 +10,24 @@ class ConfigNetworkRegionBlockRequest(DaraModel):
         config: str = None,
         instance_id: str = None,
     ):
-        # The details of the configurations of blocked locations. This parameter is a JSON string. The value consists of the following fields:
+        # The configuration of the location blacklist, expressed as a JSON string with the following structure:
+        # - **RegionBlockSwitch**: String type. Required. The switch status of the location blacklist. Valid values:
+        #     - **on**: enabled
+        #     - **off**: disabled
+        # - **Countries**: Array type. Optional. The list of international region codes to block.
+        #     > For more information about international region codes, see [Parameters for China and international regions](https://help.aliyun.com/document_detail/167926.html).
         # 
-        # *   **RegionBlockSwitch**: the status of the location blacklist feature. This field is required and must be of the string type. Valid values:
         # 
-        #     *   **on**
-        #     *   **off**
+        # - **Provinces**: Array type. Optional. The list of China region codes to block.
         # 
-        # *   **Countries**: the codes of the countries and areas from which you want to block requests. This field is optional and must be of the array type.
+        #     > For more information about China region codes, see [Parameters for China and international regions](https://help.aliyun.com/document_detail/167926.html).
         # 
-        #     **
-        # 
-        #     **Note** For more information about the codes of countries and areas, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
-        # 
-        # *   **Provinces**: the codes of the administrative regions in China from which you want to block requests. This field is optional and must be of the array type.
-        # 
-        #     **
-        # 
-        #     **Note** For more information about the codes of administrative regions in China, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
-        # 
-        #     For example, `[11,12]` specifies Beijing and Tianjin.
+        #     For example, `[11,12]` indicates Beijing and Tianjin.
         # 
         # This parameter is required.
         self.config = config
-        # The ID of the instance.
-        # 
-        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id

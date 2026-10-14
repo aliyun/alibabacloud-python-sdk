@@ -1603,6 +1603,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateNetworkRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ip_mode):
+            query['IpMode'] = request.ip_mode
         if not DaraCore.is_null(request.network_rules):
             query['NetworkRules'] = request.network_rules
         req = open_api_util_models.OpenApiRequest(
@@ -1631,6 +1633,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateNetworkRulesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ip_mode):
+            query['IpMode'] = request.ip_mode
         if not DaraCore.is_null(request.network_rules):
             query['NetworkRules'] = request.network_rules
         req = open_api_util_models.OpenApiRequest(
@@ -1681,6 +1685,8 @@ class Client(OpenApiClient):
             query['FrontendProtocol'] = request.frontend_protocol
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.ip_mode):
+            query['IpMode'] = request.ip_mode
         if not DaraCore.is_null(request.proxy_enable):
             query['ProxyEnable'] = request.proxy_enable
         if not DaraCore.is_null(request.real_servers):
@@ -1719,6 +1725,8 @@ class Client(OpenApiClient):
             query['FrontendProtocol'] = request.frontend_protocol
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.ip_mode):
+            query['IpMode'] = request.ip_mode
         if not DaraCore.is_null(request.proxy_enable):
             query['ProxyEnable'] = request.proxy_enable
         if not DaraCore.is_null(request.real_servers):

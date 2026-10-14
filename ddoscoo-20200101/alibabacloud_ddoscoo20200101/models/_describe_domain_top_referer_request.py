@@ -14,31 +14,27 @@ class DescribeDomainTopRefererRequest(DaraModel):
         region: str = None,
         start_time: int = None,
     ):
-        # The domain name of the website.
-        # 
-        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # The domain name of the website service.
+        # > The domain name must have a website traffic forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         self.domain = domain
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-        # 
-        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # The end time of the query. This value is a UNIX timestamp. Unit: seconds.
+        # > The value must be on the hour or half hour.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The maximum number of entries to return.
+        # The number of data entries to return.
         # 
         # This parameter is required.
         self.limit = limit
         self.query_type = query_type
-        # The region in which your service is deployed. Valid values:
-        # 
-        # *   **cn**: a region in the Chinese mainland.
-        # *   **cn-hongkong**: a region outside the Chinese mainland.
+        # The region of the service. Valid values:
+        # - **cn**: the Chinese mainland.
+        # - **cn-hongkong**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region = region
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-        # 
-        # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # The start time of the query. This value is a UNIX timestamp. Unit: seconds.
+        # > The value must be on the hour or half hour.
         # 
         # This parameter is required.
         self.start_time = start_time

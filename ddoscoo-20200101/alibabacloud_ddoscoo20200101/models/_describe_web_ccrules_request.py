@@ -12,19 +12,18 @@ class DescribeWebCCRulesRequest(DaraModel):
         page_size: str = None,
         resource_group_id: str = None,
     ):
-        # The domain name of the website.
-        # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # The domain name of the website service.
+        # > The domain name must have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         # 
         # This parameter is required.
         self.domain = domain
-        # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # The page number of the page to return in a paging query. For example, to query the first page, set this parameter to **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of records displayed on each page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -13,7 +13,7 @@ class DescribeStsGrantStatusResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The authorization status of Anti-DDoS Pro or Anti-DDoS Premium.
+        # The authorization status of Anti-DDoS Pro and Anti-DDoS Premium.
         self.sts_grant = sts_grant
 
     def validate(self):
@@ -51,8 +51,9 @@ class DescribeStsGrantStatusResponseBodyStsGrant(DaraModel):
     ):
         # The authorization status. Valid values:
         # 
-        # *   **0**: Anti-DDoS Pro or Anti-DDoS Premium is not authorized to access other cloud services.
-        # *   **1**: Anti-DDoS Pro or Anti-DDoS Premium is authorized to access other cloud services.
+        # - **0**: Anti-DDoS Proxy are not authorized to access resources of other cloud services.
+        # 
+        # - **1**: Anti-DDoS Proxy are authorized to access resources of other cloud services.
         self.status = status
 
     def validate(self):

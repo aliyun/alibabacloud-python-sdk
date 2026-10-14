@@ -13,7 +13,7 @@ class DescribeWebPreciseAccessRuleResponseBody(DaraModel):
         precise_access_config_list: List[main_models.DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList] = None,
         request_id: str = None,
     ):
-        # The configuration of the accurate access control rule that is created for the website.
+        # The precise access control rules for the website.
         self.precise_access_config_list = precise_access_config_list
         # The ID of the request.
         self.request_id = request_id
@@ -60,7 +60,7 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList(DaraModel)
     ):
         # The domain name of the website.
         self.domain = domain
-        # The scheduling rules.
+        # The list of rules.
         self.rule_list = rule_list
 
     def validate(self):
@@ -107,23 +107,27 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList(Da
         name: str = None,
         owner: str = None,
     ):
-        # The action triggered if the rule is matched. Valid values:
+        # The action that is performed on requests that match the rule. Valid values:
         # 
-        # *   **accept**: The requests that match the rule are allowed.
-        # *   **block**: The requests that match the rule are blocked.
-        # *   **challenge**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
+        # - **accept**: allows the requests.
+        # 
+        # - **block**: blocks the requests.
+        # 
+        # - **challenge**: triggers a JavaScript Challenge for the requests.
         self.action = action
-        # The match conditions.
+        # The list of match conditions.
         self.condition_list = condition_list
+        # The validity period of the rule. This value is a UNIX timestamp. Unit: seconds.
         self.expire_period = expire_period
-        # The validity period of the rule. Unit: seconds. This parameter takes effect only when **action** of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. The value **0** indicates that the whitelist takes effect all the time.
+        # The validity period of the rule. Unit: seconds. This parameter is required only when the **action** of the rule is **block**. Requests that match the rule are blocked within the validity period. A value of **0** indicates that the rule is permanently valid.
         self.expires = expires
-        # The name of the scheduling rule.
+        # The name of the rule.
         self.name = name
         # The source of the rule. Valid values:
         # 
-        # *   **manual** (default): manually created.
-        # *   **auto**: automatically generated.
+        # - **manual** (default): The rule is manually created.
+        # 
+        # - **clover**: The rule is automatically generated.
         self.owner = owner
 
     def validate(self):
@@ -195,12 +199,25 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListCon
     ):
         # The match content.
         self.content = content
+        # The match conditions of the rule. The value is a JSON string. The value contains the following fields:
+        # 
+        # > If you specify multiple match conditions, the logical relation between these conditions is AND.
+        # 
+        # - **field**: The match field. This parameter is of the string type.
+        # 
+        # - **match_method**: The match method. This parameter is of the string type.
+        # 
+        #   > For more information about the valid values of **field** and **match_method**, see the "Additional information about field and match_method" section in this topic.
+        # 
+        # - **content**: The match content. This parameter is of the string type.
+        # 
+        # - **header_name**: The name of the header field. This parameter is of the string type. This parameter is required only when **field** is set to **header**.
         self.content_list = content_list
         # The match field.
         self.field = field
-        # The custom HTTP request header.
+        # The name of the custom HTTP header field.
         # 
-        # >  This parameter takes effect only when **Field** is set to **header**.
+        # > This parameter is required only when **Field** is set to **header**.
         self.header_name = header_name
         # The logical operator.
         self.match_method = match_method

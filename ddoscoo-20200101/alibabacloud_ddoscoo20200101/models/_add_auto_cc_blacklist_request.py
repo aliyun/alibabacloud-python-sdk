@@ -11,16 +11,22 @@ class AddAutoCcBlacklistRequest(DaraModel):
         expire_time: int = None,
         instance_id: str = None,
     ):
-        # The IP addresses that you want to manage. This parameter is a JSON string. The string contains the following field:
+        # The IP addresses to add to the blacklist. This is a JSON array. Each object in the array contains the following field:
         # 
-        # *   **src**: the IP address. This field is required and must be of the STRING type.
+        # - **src**: String. Required. The IP address to add.
         # 
-        # >  You can manually add up to 2,000 IP addresses to the IP address blacklist. Separate multiple IP addresses with spaces or line breaks.
+        # > You can add up to 2,000 IP addresses per request.
         # 
         # This parameter is required.
         self.blacklist = blacklist
+        # The expiration time for the blacklist entries, in seconds. Valid values: **300** to **604800**.
+        # 
         # This parameter is required.
         self.expire_time = expire_time
+        # The ID of the Anti-DDoS Pro instance.
+        # 
+        # > Call the **DescribeInstanceIds** operation to query the IDs of all Anti-DDoS Pro instances.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

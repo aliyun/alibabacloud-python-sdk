@@ -10,9 +10,9 @@ class DescribeAttackAnalysisMaxQpsResponseBody(DaraModel):
         qps: int = None,
         request_id: str = None,
     ):
-        # The peak queries per second (QPS) of DDoS attacks. Units: QPS.
+        # The peak value of the DDoS attack. Unit: QPS.
         self.qps = qps
-        # The ID of the request.
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):

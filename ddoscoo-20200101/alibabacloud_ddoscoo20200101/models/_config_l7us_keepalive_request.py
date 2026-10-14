@@ -11,16 +11,16 @@ class ConfigL7UsKeepaliveRequest(DaraModel):
         downstream_keepalive: str = None,
         upstream_keepalive: str = None,
     ):
-        # The domain name of the website.
-        # 
-        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # The domain name of the website service.
+        # > The domain name must have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         self.domain = domain
+        # The idle timeout period of the persistent connection between the client and Anti-DDoS Proxy.
         self.downstream_keepalive = downstream_keepalive
-        # The settings for back-to-origin persistent connections. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # The persistent connection settings for back-to-origin requests of Anti-DDoS Proxy. The value is a string that represents a JSON struct. The JSON struct contains the following fields:
         # 
-        # *   **enabled**: the switch for back-to-origin persistent connections. This field is required, and the value is of the Boolean type.
-        # *   **keepalive_requests**: the number of requests that reuse a persistent connection. This field is required, and the value is of the integer type.
-        # *   **keepalive_timeout**: the timeout period for an idle persistent connection. This field is required, and the value is of the integer type.
+        # - **enabled**: Boolean | Required | Specifies whether to enable persistent connections for back-to-origin requests.
+        # - **keepalive_requests**: Integer | Required | The number of requests that can be sent over a persistent connection.
+        # - **keepalive_timeout**: Integer | Required | The idle timeout period of a persistent connection.
         # 
         # This parameter is required.
         self.upstream_keepalive = upstream_keepalive

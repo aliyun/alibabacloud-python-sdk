@@ -13,9 +13,7 @@ class DescribePortCcAttackTopIPResponseBody(DaraModel):
         request_id: str = None,
         top_ip: List[main_models.DescribePortCcAttackTopIPResponseBodyTopIp] = None,
     ):
-        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # The top IP addresses from which most attacks are initiated.
         self.top_ip = top_ip
 
     def validate(self):
@@ -59,11 +57,8 @@ class DescribePortCcAttackTopIPResponseBodyTopIp(DaraModel):
         pv: int = None,
         src_ip: str = None,
     ):
-        # The code of the location from which the attack is initiated. For more information, see [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
         self.area_id = area_id
-        # The number of attacks from the IP address.
         self.pv = pv
-        # The source IP address of the attack.
         self.src_ip = src_ip
 
     def validate(self):

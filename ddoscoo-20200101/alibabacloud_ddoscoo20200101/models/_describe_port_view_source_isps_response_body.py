@@ -13,7 +13,7 @@ class DescribePortViewSourceIspsResponseBody(DaraModel):
         isps: List[main_models.DescribePortViewSourceIspsResponseBodyIsps] = None,
         request_id: str = None,
     ):
-        # An array that consists of the details of the ISP.
+        # The request source ISP information of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.isps = isps
         # The ID of the request.
         self.request_id = request_id
@@ -58,11 +58,11 @@ class DescribePortViewSourceIspsResponseBodyIsps(DaraModel):
         count: int = None,
         isp_id: str = None,
     ):
-        # The total number of requests that are sent from the ISP.
+        # The relative number of requests.
         # 
-        # > This parameter does not indicate the accurate number of requests. You can use this parameter to calculate the proportion of requests from different ISPs.
+        # > This value does not represent the actual number of requests. You can use this value to calculate the proportion of requests from different ISPs.
         self.count = count
-        # The ID of the ISP. For more information, see the ISP codes table.
+        # The ISP ID. For more information, see the ISP code table below the response parameters. The ISP ID corresponds to the code in the table.
         self.isp_id = isp_id
 
     def validate(self):

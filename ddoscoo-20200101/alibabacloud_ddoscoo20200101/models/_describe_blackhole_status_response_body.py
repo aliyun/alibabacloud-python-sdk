@@ -13,7 +13,7 @@ class DescribeBlackholeStatusResponseBody(DaraModel):
         blackhole_status: List[main_models.DescribeBlackholeStatusResponseBodyBlackholeStatus] = None,
         request_id: str = None,
     ):
-        # An array that consists of the blackhole filtering status of the instance.
+        # The blackhole filtering status information of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.blackhole_status = blackhole_status
         # The ID of the request.
         self.request_id = request_id
@@ -60,16 +60,17 @@ class DescribeBlackholeStatusResponseBodyBlackholeStatus(DaraModel):
         ip: str = None,
         start_time: int = None,
     ):
-        # Indicates whether blackhole filtering is triggered for the instance. Valid values:
+        # The blackhole filtering status. Valid values:
         # 
-        # *   **blackhole**: yes
-        # *   **normal**: no
+        # - **blackhole**: Black Hole Activated
+        # 
+        # - **normal**: Normal
         self.black_status = black_status
-        # The end time of blackhole filtering. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of blackhole filtering. This value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
-        # The IP address of the instance.
+        # The IP address of the Anti-DDoS Proxy instance.
         self.ip = ip
-        # The start time of blackhole filtering. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of blackhole filtering. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

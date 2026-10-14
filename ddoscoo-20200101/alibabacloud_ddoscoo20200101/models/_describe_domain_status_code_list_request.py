@@ -14,30 +14,29 @@ class DescribeDomainStatusCodeListRequest(DaraModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The domain name of the website. If you do not specify this parameter, the statistics on response status codes of all domain names are queried.
+        # The domain name of the website service.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # > You can invoke [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query the domain names of all website services that are added to Anti-DDoS Pro or Anti-DDoS Premium.
         self.domain = domain
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
-        # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # The end of the time range to query. Specify a UNIX timestamp. Unit: seconds.
+        # > The value must be on the exact minute.
         self.end_time = end_time
-        # The interval for returning data. Unit: seconds.
+        # The time interval between consecutive data entries returned. Unit: seconds. This parameter specifies how frequently a query result is returned.
         # 
         # This parameter is required.
         self.interval = interval
-        # The source of the statistics. Valid values:
-        # 
-        # *   **gf**: Anti-DDoS Pro or Anti-DDoS Premium
-        # *   **upstrem**: origin server
+        # The source of the query data. Valid values:
+        # - **gf**: Anti-DDoS Pro or Anti-DDoS Premium response data.
+        # - **upstream**: origin server response data.
         # 
         # This parameter is required.
         self.query_type = query_type
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
-        self.resource_group_id = resource_group_id
-        # The start time of the event. The value is a UNIX timestamp. Unit: seconds.
+        # The ID of the resource group to which the Anti-DDoS Pro or Anti-DDoS Premium instance belongs in Resource Management. By default, this parameter is empty, which indicates that the instance belongs to the default resource group.
         # 
-        # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # For more information about resource groups, refer to [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        self.resource_group_id = resource_group_id
+        # The beginning of the time range to query. Specify a UNIX timestamp. Unit: seconds.
+        # > The value must be on the exact minute.
         # 
         # This parameter is required.
         self.start_time = start_time

@@ -11,17 +11,17 @@ class DescribeAsyncTasksRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # The number of the page to return.
+        # The page number for the paged query.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of asynchronous export tasks to return on each page for the paged query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the resource group to which the instance belongs in Resource Management.
+        # The resource group ID of the Anti-DDoS instance in Resource Management.
         # 
-        # If you do not configure this parameter, the instance belongs to the default resource group.
+        # If this parameter is not specified, the default resource group is used.
         self.resource_group_id = resource_group_id
 
     def validate(self):

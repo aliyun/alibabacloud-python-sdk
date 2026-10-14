@@ -13,7 +13,9 @@ class DescribeL7GlobalRuleResponseBody(DaraModel):
         global_rules: List[main_models.DescribeL7GlobalRuleResponseBodyGlobalRules] = None,
         request_id: str = None,
     ):
+        # The global template rule information.
         self.global_rules = global_rules
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -60,11 +62,28 @@ class DescribeL7GlobalRuleResponseBodyGlobalRules(DaraModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
+        # The action that the rule performs. Valid values:
+        # 
+        # - **watch**: Monitor.
+        # - **block**: Block.
+        # - **challenge**: JavaScript Challenge.
         self.action = action
+        # The default action of the rule. Valid values:
+        # 
+        # - **watch**: Monitor.
+        # - **block**: Block.
+        # - **challenge**: JavaScript Challenge.
         self.action_default = action_default
+        # The rule description.
         self.description = description
+        # Indicates whether the rule is enabled. Valid values:
+        # 
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.enabled = enabled
+        # The rule ID.
         self.rule_id = rule_id
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):

@@ -13,9 +13,7 @@ class DescribeDomainSecurityProfileResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.DescribeDomainSecurityProfileResponseBodyResult] = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # The returned results.
         self.result = result
 
     def validate(self):
@@ -58,16 +56,7 @@ class DescribeDomainSecurityProfileResponseBodyResult(DaraModel):
         global_enable: bool = None,
         global_mode: str = None,
     ):
-        # Indicates whether the global mitigation policy is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.global_enable = global_enable
-        # The mode of the global mitigation policy. Valid values:
-        # 
-        # *   **weak**: the Low mode
-        # *   **default**: the Normal mode
-        # *   **hard**: the Strict mode
         self.global_mode = global_mode
 
     def validate(self):
