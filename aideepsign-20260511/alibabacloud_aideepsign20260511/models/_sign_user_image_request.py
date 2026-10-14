@@ -9,14 +9,11 @@ class SignUserImageRequest(DaraModel):
         self,
         client_token: str = None,
         image_url: str = None,
-        object_key: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. The client generates this value. Make sure the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The URL of the image to be signed. HTTP and HTTPS URLs are supported. Specify at least one of `ImageUrl` and `ObjectKey`.
+        # The URL of the image to be signed. HTTP/HTTPS URLs are supported. Specify either `ImageUrl` or `ObjectKey`. At least one of them is required.
         self.image_url = image_url
-        # The ObjectKey of the image to be signed in OSS. When you use `ObjectKey`, make sure the key belongs to the namespace of the current caller. Specify at least one of `ImageUrl` and `ObjectKey`.
-        self.object_key = object_key
 
     def validate(self):
         pass
@@ -32,9 +29,6 @@ class SignUserImageRequest(DaraModel):
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
 
-        if self.object_key is not None:
-            result['ObjectKey'] = self.object_key
-
         return result
 
     def from_map(self, m: dict = None):
@@ -44,9 +38,6 @@ class SignUserImageRequest(DaraModel):
 
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
-
-        if m.get('ObjectKey') is not None:
-            self.object_key = m.get('ObjectKey')
 
         return self
 

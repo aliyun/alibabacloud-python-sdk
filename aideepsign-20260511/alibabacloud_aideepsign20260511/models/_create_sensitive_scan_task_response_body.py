@@ -26,7 +26,7 @@ class CreateSensitiveScanTaskResponseBody(DaraModel):
         # - true: The call was successful.
         # - false: The call failed.
         self.success = success
-        # The task ID. You can use this ID to call the GetSensitiveScanResult operation to query the result.
+        # The task ID. You can use this ID to call `GetSensitiveScanResult` to query the result.
         self.task_id = task_id
 
     def validate(self):

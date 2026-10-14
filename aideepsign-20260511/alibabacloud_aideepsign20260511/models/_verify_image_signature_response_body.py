@@ -26,7 +26,7 @@ class VerifyImageSignatureResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The issuer information.
         self.issuer = issuer
-        # Indicates whether the issuer is trusted. A value of true indicates that the issuer certificate is issued by a trusted CA.
+        # Indicates whether the issuer is trusted. A value of true indicates that the issuer certificate is issued by a trusted certification authority (CA).
         self.issuer_trusted = issuer_trusted
         # The content credentials manifest information. This parameter is returned only when the image contains a C2PA signature.
         self.manifest = manifest
@@ -37,9 +37,10 @@ class VerifyImageSignatureResponseBody(DaraModel):
         # Indicates whether the request is successful.
         self.success = success
         # The signature verification status. Valid values:
-        # - Valid: The signature is valid.
-        # - Invalid: The signature is invalid or has been tampered with.
-        # - Trusted: The signature is valid and trusted.
+        # - Unsigned: The image does not contain C2PA data.
+        # - Invalid: The signature, data hash, or C2PA structure is invalid.
+        # - Valid: The signature and data hash are valid, but the issuer is not necessarily trusted.
+        # - Trusted: The signature is valid and the issuer certificate is trusted.
         self.verification_state = verification_state
 
     def validate(self):
@@ -121,7 +122,7 @@ class VerifyImageSignatureResponseBodyManifest(DaraModel):
         assertions: List[main_models.VerifyImageSignatureResponseBodyManifestAssertions] = None,
         signature_info: main_models.VerifyImageSignatureResponseBodyManifestSignatureInfo = None,
     ):
-        # The list of assertions, which contains metadata such as the origin and editing history of the image.
+        # The list of assertions, which contains metadata such as the provenance and editing history of the image.
         self.assertions = assertions
         # The signature details.
         self.signature_info = signature_info

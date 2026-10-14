@@ -14,11 +14,11 @@ class CreateImageTaskResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
-        # The business error code. The value `OK` is returned if the request succeeds.
+        # The business error code. The value `OK` is returned if the request was successful.
         self.code = code
-        # The HTTP status code. The value `200` is returned if the request succeeds.
+        # The HTTP status code. The value `200` is returned if the request was successful.
         self.http_status_code = http_status_code
-        # The additional information. The value `success` is returned if the request succeeds.
+        # The additional information. The value `success` is returned if the request was successful.
         self.message = message
         # The request ID.
         self.request_id = request_id

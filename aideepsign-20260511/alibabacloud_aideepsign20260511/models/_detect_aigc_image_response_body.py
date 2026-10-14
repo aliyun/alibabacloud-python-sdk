@@ -19,17 +19,17 @@ class DetectAigcImageResponseBody(DaraModel):
     ):
         # The list of AIGC detection result labels.
         self.body = body
-        # The business error code. The value `OK` is returned if the request was successful.
+        # The business error code. The value `OK` is returned if the request is successful.
         self.code = code
-        # The HTTP status code. The value `200` is returned if the request was successful.
+        # The HTTP status code. The value `200` is returned if the request is successful.
         self.http_status_code = http_status_code
-        # The additional information. The value `success` is returned if the request was successful.
+        # The additional information. The value `success` is returned if the request is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
-        # - true: The call was successful.
-        # - false: The call failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -90,15 +90,13 @@ class DetectAigcImageResponseBody(DaraModel):
 
         return self
 
-
-
 class DetectAigcImageResponseBodyBody(DaraModel):
     def __init__(
         self,
         confidence: str = None,
         label: str = None,
     ):
-        # The confidence level. Value range: 0 to 1. A higher value indicates a higher probability.
+        # The confidence score. Value range: 0 to 1. A higher value indicates a higher probability.
         self.confidence = confidence
         # The detection label. Valid values:
         # - `ai_generated`: AI-generated.

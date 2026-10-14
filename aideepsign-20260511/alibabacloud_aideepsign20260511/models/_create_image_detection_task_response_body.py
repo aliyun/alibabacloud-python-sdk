@@ -14,17 +14,17 @@ class CreateImageDetectionTaskResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
-        # The business error code. The value `OK` is returned if the request was successful.
+        # The business error code. `OK` is returned if the request was successful.
         self.code = code
-        # The HTTP status code. The value `200` is returned if the request was successful.
+        # The HTTP status code. `200` is returned if the request was successful.
         self.http_status_code = http_status_code
-        # The additional information. The value `success` is returned if the request was successful.
+        # The additional information. `success` is returned if the request was successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The task ID. You can use this ID to call `GetImageDetectionTaskResult` to query the result.
+        # The task ID, which is used to call `GetImageDetectionTaskResult` to query results.
         self.task_id = task_id
 
     def validate(self):

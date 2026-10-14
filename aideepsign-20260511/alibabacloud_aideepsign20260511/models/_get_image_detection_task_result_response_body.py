@@ -21,31 +21,31 @@ class GetImageDetectionTaskResultResponseBody(DaraModel):
         tamper: main_models.GetImageDetectionTaskResultResponseBodyTamper = None,
         task_id: str = None,
     ):
-        # The business error code. The value `"OK"` is returned when the request succeeds.
+        # The business error code. The value "OK" is returned when the request succeeds.
         self.code = code
         # The detection mode that was actually executed. Valid values:
         # - aigc: AIGC only.
         # - tamper: tamper detection.
         # 
-        # This parameter is returned only when `Status` is `succeeded`.
+        # This field is returned only when Status is succeeded.
         self.detect_mode = detect_mode
-        # The HTTP status code. The value `200` is returned when the request succeeds.
+        # The HTTP status code. The value 200 is returned when the request succeeds.
         self.http_status_code = http_status_code
-        # The list of AIGC detection result labels. This parameter is returned only when `Status` is `succeeded` and the task includes AIGC detection.
+        # The list of detection result labels. This field is returned only when Status is succeeded and AIGC detection is included. The label values and confidence ranges vary depending on DetectMode. In aigc mode, AIGC generation identification labels are returned (see the table below). In tamper mode, aigc/aips labels are returned (confidence range: 0 to 1).
         self.labels = labels
-        # The additional information. The value `"success"` is returned when the request succeeds. An error message is returned when the task fails. This parameter is returned only when `Status` is `failed`.
+        # The additional information. The value "success" is returned when the request succeeds. The error message is returned when the task fails. This field is returned only when Status is failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # The task status. Valid values:
-        # - `pending`: waiting.
-        # - `running`: in progress.
-        # - `succeeded`: completed.
-        # - `failed`: failed.
+        # - pending: waiting.
+        # - running: in progress.
+        # - succeeded: completed.
+        # - failed: failed.
         self.status = status
         # Indicates whether the request was successful.
         self.success = success
-        # The tamper detection results. This parameter is returned only when `DetectType` is `tamper` or `auto` (and the image is identified as a credential-type image).
+        # The tamper detection result.
         self.tamper = tamper
         # The task ID.
         self.task_id = task_id
@@ -138,19 +138,28 @@ class GetImageDetectionTaskResultResponseBody(DaraModel):
 class GetImageDetectionTaskResultResponseBodyTamper(DaraModel):
     def __init__(
         self,
+        ai_watermark: str = None,
         base_results: main_models.GetImageDetectionTaskResultResponseBodyTamperBaseResults = None,
+        final_conclusion: str = None,
         llm_result: str = None,
-        risk_code: str = None,
-        risk_reasons: List[str] = None,
+        metadata_ai_flag: str = None,
+        metadata_ai_source: str = None,
+        risk_level: str = None,
     ):
-        # The basic detection results, including detection scores across multiple dimensions.
+        # The AI visible watermark. This field is returned only in large model mode. It is empty in small model mode.
+        self.ai_watermark = ai_watermark
+        # The basic algorithm detection results, including multi-dimensional detection scores and risk labels.
         self.base_results = base_results
+        # The final conclusion.
+        self.final_conclusion = final_conclusion
         # The comprehensive analysis result from the large language model.
         self.llm_result = llm_result
-        # The risk code. A value of `"0"` indicates no risk.
-        self.risk_code = risk_code
-        # The list of risk reasons. An empty array is returned when no risk is detected.
-        self.risk_reasons = risk_reasons
+        # The metadata AI flag. This field is always returned.
+        self.metadata_ai_flag = metadata_ai_flag
+        # The source of the metadata AI flag. This field is returned only in large model mode. It is empty in small model mode.
+        self.metadata_ai_source = metadata_ai_source
+        # The determination result. This field is always returned.
+        self.risk_level = risk_level
 
     def validate(self):
         if self.base_results:
@@ -161,34 +170,52 @@ class GetImageDetectionTaskResultResponseBodyTamper(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ai_watermark is not None:
+            result['AiWatermark'] = self.ai_watermark
+
         if self.base_results is not None:
             result['BaseResults'] = self.base_results.to_map()
+
+        if self.final_conclusion is not None:
+            result['FinalConclusion'] = self.final_conclusion
 
         if self.llm_result is not None:
             result['LlmResult'] = self.llm_result
 
-        if self.risk_code is not None:
-            result['RiskCode'] = self.risk_code
+        if self.metadata_ai_flag is not None:
+            result['MetadataAiFlag'] = self.metadata_ai_flag
 
-        if self.risk_reasons is not None:
-            result['RiskReasons'] = self.risk_reasons
+        if self.metadata_ai_source is not None:
+            result['MetadataAiSource'] = self.metadata_ai_source
+
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiWatermark') is not None:
+            self.ai_watermark = m.get('AiWatermark')
+
         if m.get('BaseResults') is not None:
             temp_model = main_models.GetImageDetectionTaskResultResponseBodyTamperBaseResults()
             self.base_results = temp_model.from_map(m.get('BaseResults'))
 
+        if m.get('FinalConclusion') is not None:
+            self.final_conclusion = m.get('FinalConclusion')
+
         if m.get('LlmResult') is not None:
             self.llm_result = m.get('LlmResult')
 
-        if m.get('RiskCode') is not None:
-            self.risk_code = m.get('RiskCode')
+        if m.get('MetadataAiFlag') is not None:
+            self.metadata_ai_flag = m.get('MetadataAiFlag')
 
-        if m.get('RiskReasons') is not None:
-            self.risk_reasons = m.get('RiskReasons')
+        if m.get('MetadataAiSource') is not None:
+            self.metadata_ai_source = m.get('MetadataAiSource')
+
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
 
         return self
 
@@ -199,15 +226,18 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResults(DaraModel):
         aips: main_models.GetImageDetectionTaskResultResponseBodyTamperBaseResultsAips = None,
         img_type: str = None,
         ps_loc: main_models.GetImageDetectionTaskResultResponseBodyTamperBaseResultsPsLoc = None,
+        recap: main_models.GetImageDetectionTaskResultResponseBodyTamperBaseResultsRecap = None,
     ):
-        # The AIGC detection score.
+        # The AIGC detection result.
         self.aigc = aigc
         # The AI post-processing detection score.
         self.aips = aips
         # The image type.
         self.img_type = img_type
-        # The PS tamper localization results.
+        # The PS tamper localization result.
         self.ps_loc = ps_loc
+        # The recapture/copy detection result.
+        self.recap = recap
 
     def validate(self):
         if self.aigc:
@@ -216,6 +246,8 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResults(DaraModel):
             self.aips.validate()
         if self.ps_loc:
             self.ps_loc.validate()
+        if self.recap:
+            self.recap.validate()
 
     def to_map(self):
         result = dict()
@@ -233,6 +265,9 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResults(DaraModel):
 
         if self.ps_loc is not None:
             result['PsLoc'] = self.ps_loc.to_map()
+
+        if self.recap is not None:
+            result['Recap'] = self.recap.to_map()
 
         return result
 
@@ -253,6 +288,56 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResults(DaraModel):
             temp_model = main_models.GetImageDetectionTaskResultResponseBodyTamperBaseResultsPsLoc()
             self.ps_loc = temp_model.from_map(m.get('PsLoc'))
 
+        if m.get('Recap') is not None:
+            temp_model = main_models.GetImageDetectionTaskResultResponseBodyTamperBaseResultsRecap()
+            self.recap = temp_model.from_map(m.get('Recap'))
+
+        return self
+
+class GetImageDetectionTaskResultResponseBodyTamperBaseResultsRecap(DaraModel):
+    def __init__(
+        self,
+        desc: str = None,
+        risk: str = None,
+        score: float = None,
+    ):
+        # The recapture/copy detection result description.
+        self.desc = desc
+        # The recapture/copy dimension risk label.
+        self.risk = risk
+        # The recapture/copy detection score. Value range: 0 to 1. A higher value indicates a greater likelihood of recapture or copying.
+        self.score = score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.desc is not None:
+            result['Desc'] = self.desc
+
+        if self.risk is not None:
+            result['Risk'] = self.risk
+
+        if self.score is not None:
+            result['Score'] = self.score
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+
+        if m.get('Risk') is not None:
+            self.risk = m.get('Risk')
+
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+
         return self
 
 class GetImageDetectionTaskResultResponseBodyTamperBaseResultsPsLoc(DaraModel):
@@ -261,7 +346,7 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResultsPsLoc(DaraModel):
         desc: str = None,
         items: List[main_models.GetImageDetectionTaskResultResponseBodyTamperBaseResultsPsLocItems] = None,
     ):
-        # The description of the PS tamper localization result.
+        # The PS tamper localization result description.
         self.desc = desc
         # The list of tampered regions.
         self.items = items
@@ -306,9 +391,9 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResultsPsLocItems(DaraMod
         bbox: List[float] = None,
         score: float = None,
     ):
-        # The bounding box coordinates of the tampered region in the format `[x1, y1, x2, y2]`.
+        # The bounding box coordinates of the tampered region, in the format `[x1, y1, x2, y2]`.
         self.bbox = bbox
-        # The tamper confidence level for the region. Value range: `0 to 1`.
+        # The tamper confidence of the region. Value range: 0 to 1.
         self.score = score
 
     def validate(self):
@@ -341,10 +426,13 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResultsAips(DaraModel):
     def __init__(
         self,
         desc: str = None,
+        risk: str = None,
         score: float = None,
     ):
-        # The description of the AI post-processing detection result.
+        # The AI post-processing detection result description.
         self.desc = desc
+        # The local PS/AI editing dimension risk label.
+        self.risk = risk
         # The AI post-processing detection score. Value range: 0 to 1. A higher value indicates a greater likelihood of AI post-processing.
         self.score = score
 
@@ -359,6 +447,9 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResultsAips(DaraModel):
         if self.desc is not None:
             result['Desc'] = self.desc
 
+        if self.risk is not None:
+            result['Risk'] = self.risk
+
         if self.score is not None:
             result['Score'] = self.score
 
@@ -369,6 +460,9 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResultsAips(DaraModel):
         if m.get('Desc') is not None:
             self.desc = m.get('Desc')
 
+        if m.get('Risk') is not None:
+            self.risk = m.get('Risk')
+
         if m.get('Score') is not None:
             self.score = m.get('Score')
 
@@ -378,10 +472,13 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResultsAigc(DaraModel):
     def __init__(
         self,
         desc: str = None,
+        risk: str = None,
         score: float = None,
     ):
-        # The description of the AIGC detection result.
+        # The AIGC detection result description.
         self.desc = desc
+        # The AIGC dimension risk label.
+        self.risk = risk
         # The AIGC detection score. Value range: 0 to 1. A higher value indicates a greater likelihood of AI generation.
         self.score = score
 
@@ -396,6 +493,9 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResultsAigc(DaraModel):
         if self.desc is not None:
             result['Desc'] = self.desc
 
+        if self.risk is not None:
+            result['Risk'] = self.risk
+
         if self.score is not None:
             result['Score'] = self.score
 
@@ -405,6 +505,9 @@ class GetImageDetectionTaskResultResponseBodyTamperBaseResultsAigc(DaraModel):
         m = m or dict()
         if m.get('Desc') is not None:
             self.desc = m.get('Desc')
+
+        if m.get('Risk') is not None:
+            self.risk = m.get('Risk')
 
         if m.get('Score') is not None:
             self.score = m.get('Score')
@@ -419,9 +522,7 @@ class GetImageDetectionTaskResultResponseBodyLabels(DaraModel):
     ):
         # The confidence level. Value range: 0 to 1.
         self.confidence = confidence
-        # The detection label. Valid values:
-        # - ai_generated: AI-generated.
-        # - non_ai_generated: not AI-generated.
+        # The detection label. When DetectMode is aigc, valid values are: risk_aigc (the image is suspected to be AIGC-generated), risk_fake (the image is suspected to be a composite image), risk_edit (the image is suspected to be AI-edited). When DetectMode is tamper, valid values are: aigc (AIGC detection score), aips (AI post-processing detection score).
         self.label = label
 
     def validate(self):

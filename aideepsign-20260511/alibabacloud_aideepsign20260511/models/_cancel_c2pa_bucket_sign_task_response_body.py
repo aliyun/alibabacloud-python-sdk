@@ -1,0 +1,88 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CancelC2paBucketSignTaskResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+        task_id: str = None,
+    ):
+        # The return code.
+        self.code = code
+        # The HTTP status code.
+        self.http_status_code = http_status_code
+        # The response message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # The stop processing status. CANCELING indicates that the stop process is being finalized. Repeated requests may return the completed CANCELED status.
+        self.status = status
+        # Indicates whether the request was successful.
+        self.success = success
+        # The ID of the bucket batch signing task.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+
+        return self
+

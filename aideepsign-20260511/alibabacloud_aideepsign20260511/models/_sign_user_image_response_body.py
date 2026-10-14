@@ -22,11 +22,11 @@ class SignUserImageResponseBody(DaraModel):
         self.algorithm = algorithm
         # The subject information of the signing certificate.
         self.certificate_subject = certificate_subject
-        # The business error code. The value "OK" is returned if the request succeeds.
+        # The business error code. "OK" is returned if the request is successful.
         self.code = code
-        # The HTTP status code. The value 200 is returned if the request succeeds.
+        # The HTTP status code. 200 is returned if the request is successful.
         self.http_status_code = http_status_code
-        # The additional information. The value "success" is returned if the request succeeds.
+        # The additional information. "success" is returned if the request is successful.
         self.message = message
         # The ObjectKey of the signed image in OSS. You can use this value for subsequent API calls.
         self.object_key = object_key
@@ -36,7 +36,7 @@ class SignUserImageResponseBody(DaraModel):
         self.sign_time = sign_time
         # The pre-signed download URL of the signed image.
         self.signed_image_url = signed_image_url
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

@@ -9,14 +9,11 @@ class CreateSensitiveScanTaskRequest(DaraModel):
         self,
         client_token: str = None,
         image_url: str = None,
-        object_key: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotence of the request. The client generates this parameter value, which must be unique across different requests. `ClientToken` supports only ASCII characters and cannot exceed 64 characters.
         self.client_token = client_token
-        # The URL of the image to scan. Only HTTP and HTTPS protocols are supported. The image size cannot exceed 10 MB. You must specify at least one of ImageUrl and ObjectKey.
+        # The URL of the image to be scanned. Only HTTP/HTTPS protocols are supported. The image size cannot exceed 10 MB. You must specify either `ImageUrl` or `ObjectKey`.
         self.image_url = image_url
-        # The ObjectKey of the image to scan in OSS. When you use ObjectKey, make sure that the key belongs to the namespace of the current caller. You must specify at least one of ImageUrl and ObjectKey.
-        self.object_key = object_key
 
     def validate(self):
         pass
@@ -32,9 +29,6 @@ class CreateSensitiveScanTaskRequest(DaraModel):
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
 
-        if self.object_key is not None:
-            result['ObjectKey'] = self.object_key
-
         return result
 
     def from_map(self, m: dict = None):
@@ -44,9 +38,6 @@ class CreateSensitiveScanTaskRequest(DaraModel):
 
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
-
-        if m.get('ObjectKey') is not None:
-            self.object_key = m.get('ObjectKey')
 
         return self
 

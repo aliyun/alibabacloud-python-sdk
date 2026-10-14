@@ -17,13 +17,13 @@ class DetectImageBasicInfoResponseBody(DaraModel):
         success: bool = None,
         type: str = None,
     ):
-        # The business error code. "OK" is returned if the request was successful.
+        # The business error code. Returns "OK" when the request succeeds.
         self.code = code
-        # The image resolution (width × height), such as 1920 × 1080. This value is empty if the resolution cannot be identified.
+        # The image resolution (width × height), such as 1920 × 1080. Empty if the resolution cannot be identified.
         self.dpi = dpi
-        # The HTTP status code. 200 is returned if the request was successful.
+        # The HTTP status code. Returns 200 when the request succeeds.
         self.http_status_code = http_status_code
-        # The additional information. "success" is returned if the request was successful.
+        # The additional information. Returns "success" when the request succeeds.
         self.message = message
         # The file name.
         self.name = name
@@ -31,9 +31,9 @@ class DetectImageBasicInfoResponseBody(DaraModel):
         self.request_id = request_id
         # The file size in a human-readable format, such as 1.5 MB or 256 KB.
         self.size = size
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The image format, such as JPEG, PNG, GIF, or WEBP. UNKNOWN is returned if the format cannot be identified.
+        # The image format, such as JPEG, PNG, GIF, or WEBP. Returns `UNKNOWN` if the format cannot be identified.
         self.type = type
 
     def validate(self):
