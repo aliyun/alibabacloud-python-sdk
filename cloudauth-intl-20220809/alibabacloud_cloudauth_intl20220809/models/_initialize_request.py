@@ -45,6 +45,7 @@ class InitializeRequest(DaraModel):
         meta_info: str = None,
         mobile: str = None,
         model: str = None,
+        need_multi_face_check: str = None,
         ocr: str = None,
         ocr_value_standard: str = None,
         pages: str = None,
@@ -172,6 +173,7 @@ class InitializeRequest(DaraModel):
         # > - For supported SDK versions, see [SDK release notes](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
         # > - Flash-based dual liveness detection is not supported on PCs.
         self.model = model
+        self.need_multi_face_check = need_multi_face_check
         # Specifies whether to enable OCR. This is an input parameter for the IDV product.
         self.ocr = ocr
         # Specifies whether to additionally return OCR recognition results in standardized format fields:
@@ -363,6 +365,9 @@ class InitializeRequest(DaraModel):
         if self.model is not None:
             result['Model'] = self.model
 
+        if self.need_multi_face_check is not None:
+            result['NeedMultiFaceCheck'] = self.need_multi_face_check
+
         if self.ocr is not None:
             result['Ocr'] = self.ocr
 
@@ -543,6 +548,9 @@ class InitializeRequest(DaraModel):
 
         if m.get('Model') is not None:
             self.model = m.get('Model')
+
+        if m.get('NeedMultiFaceCheck') is not None:
+            self.need_multi_face_check = m.get('NeedMultiFaceCheck')
 
         if m.get('Ocr') is not None:
             self.ocr = m.get('Ocr')

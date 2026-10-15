@@ -15,9 +15,9 @@ class FaceGuardRiskRequest(DaraModel):
     ):
         # The customer business ID.
         self.biz_id = biz_id
-        # The device token obtained from the Face Guard SDK.
+        # The device token obtained through the Face Guard SDK.
         self.device_token = device_token
-        # The merchant-defined unique business identifier, used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Make sure the value is unique.
+        # The custom unique business identifier on the merchant side, used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
         # The product code. Set the value to FACE_GUARD.
         self.product_code = product_code

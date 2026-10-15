@@ -19,7 +19,7 @@ class FaceGuardRiskResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -72,13 +72,13 @@ class FaceGuardRiskResponseBodyResult(DaraModel):
     ):
         # The device risk probability predicted by the Face Guard algorithm. A higher score indicates a higher device risk.
         # 
-        # Value range: 0 to 100.
+        # Valid values: 0 to 100.
         self.guard_risk_score = guard_risk_score
-        # The extended information in JSON format. The response is customized based on tenant requirements.
+        # The extended information in JSON format. The returned content is customized based on tenant requirements.
         self.risk_extends = risk_extends
         # The device risk tags.
         # 
-        # - Multiple device risk tags are separated by commas (,), such as "ROOT,VPN,HOOK".
+        # - Multiple device risk tags are separated by commas (,), such as ROOT,VPN,HOOK.
         # 
         # - For more information about device risk tags and their meanings, refer to the Face Guard tag description in the official documentation.
         self.risk_tags = risk_tags

@@ -6350,6 +6350,8 @@ class Client(OpenApiClient):
             query['Mobile'] = request.mobile
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
+        if not DaraCore.is_null(request.need_multi_face_check):
+            query['NeedMultiFaceCheck'] = request.need_multi_face_check
         if not DaraCore.is_null(request.ocr):
             query['Ocr'] = request.ocr
         if not DaraCore.is_null(request.ocr_value_standard):
@@ -6500,6 +6502,8 @@ class Client(OpenApiClient):
             query['Mobile'] = request.mobile
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
+        if not DaraCore.is_null(request.need_multi_face_check):
+            query['NeedMultiFaceCheck'] = request.need_multi_face_check
         if not DaraCore.is_null(request.ocr):
             query['Ocr'] = request.ocr
         if not DaraCore.is_null(request.ocr_value_standard):
@@ -6666,6 +6670,8 @@ class Client(OpenApiClient):
             query['Mobile'] = request.mobile
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
+        if not DaraCore.is_null(request.need_multi_face_check):
+            query['NeedMultiFaceCheck'] = request.need_multi_face_check
         if not DaraCore.is_null(request.ocr):
             query['Ocr'] = request.ocr
         if not DaraCore.is_null(request.ocr_value_standard):
@@ -6820,6 +6826,8 @@ class Client(OpenApiClient):
             query['Mobile'] = request.mobile
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
+        if not DaraCore.is_null(request.need_multi_face_check):
+            query['NeedMultiFaceCheck'] = request.need_multi_face_check
         if not DaraCore.is_null(request.ocr):
             query['Ocr'] = request.ocr
         if not DaraCore.is_null(request.ocr_value_standard):
