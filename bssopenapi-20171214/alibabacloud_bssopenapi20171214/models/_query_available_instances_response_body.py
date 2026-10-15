@@ -16,13 +16,13 @@ class QueryAvailableInstancesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -81,13 +81,13 @@ class QueryAvailableInstancesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The instances returned.
+        # The list of instance information.
         self.instance_list = instance_list
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -158,51 +158,48 @@ class QueryAvailableInstancesResponseBodyDataInstanceList(DaraModel):
         sub_status: str = None,
         subscription_type: str = None,
     ):
-        # The time when the specified instance was created.
+        # The creation time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
-        # The time when the instance was expired.
+        # The end time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.end_time = end_time
-        # The time when the specified instance was expected to be released.
+        # The expected release time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.expected_release_time = expected_release_time
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the instance owner.
+        # The owner ID.
         self.owner_id = owner_id
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The ID of the region in which the instance resides.
+        # The region.
         self.region = region
-        # The time when the instance was released.
+        # The release time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.release_time = release_time
-        # The renewal status of the specified instance. Valid values:
-        # 
-        # *   AutoRenewal: The instance is automatically renewed.
-        # *   ManualRenewal: The instance is manually renewed.
-        # *   NotRenewal: The instance is not renewed.
+        # The renewal status. Valid values:
+        # - AutoRenewal: auto-renewal.
+        # - ManualRenewal: manual renewal.
+        # - NotRenewal: no renewal.
         self.renew_status = renew_status
-        # The number of auto-renewal cycles.
+        # The number of auto-renewal epochs.
         self.renewal_duration = renewal_duration
-        # The unit of the auto-renewal cycle. Valid values:
-        # 
-        # *   M: month
-        # *   Y: year
+        # The unit of the auto-renewal epoch. Valid values:
+        # - M: month.
+        # - Y: year.
         self.renewal_duration_unit = renewal_duration_unit
         # The seller.
         self.seller = seller
-        # The ID of the seller.
+        # The seller ID.
         self.seller_id = seller_id
-        # The status of the instance.
+        # The status.
         self.status = status
-        # The time when the specified instance was suspended.
+        # The stop time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.stop_time = stop_time
-        # The sub-status of the specified instance.
+        # The sub-status.
         self.sub_status = sub_status
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: subscription
-        # *   PayAsYouGo: pay-as-you-go
+        # The subscription type. Valid values:
+        # - Subscription: subscription.
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

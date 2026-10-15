@@ -14,15 +14,15 @@ class GetAccountRelationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The request status code.
         self.code = code
         # data
         self.data = data
-        # The message returned.
+        # The message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -83,29 +83,28 @@ class GetAccountRelationResponseBodyData(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The ID of the Alibaba Cloud account that is used as a member.
+        # The UID of the child account.
         self.child_user_id = child_user_id
-        # The time when the financial relationship between the management account and the member was terminated.
+        # The end time of the account linking, in the YYYY-MM-DD format.
         self.end_time = end_time
-        # The time when the financial relationship between the management account and the member was modified.
+        # The update time of the account linking.
         self.gmt_modified = gmt_modified
-        # The ID of the financial relationship.
+        # The account linking ID.
         self.id = id
-        # The ID of the Alibaba Cloud account that is used as the management account.
+        # The UID of the parent account.
         self.parent_user_id = parent_user_id
-        # The time when the financial relationship between the management account and the member was established.
+        # The start time of the account linking, in the YYYY-MM-DD format.
         self.start_time = start_time
-        # The status of the financial relationship between the management account and the member.
-        # 
-        # - RELATED [Association established]
-        # - CONFIRMING [To be confirmed by the other party]
-        # - REJECTED [Refused by the other party]
-        # - CONNECTION_CANCELED [Financial sub-account cancel request]
-        # - CONNECTION_MASTER_CANCEL [Financial master account cancel invitation]
-        # - CHANGE_CONFIRMING [Relationship change to be confirmed]
-        # - INITIAL [Initial new relationship status]
+        # The account linking status. Valid values:
+        # - RELATED: linked.
+        # - CONFIRMING: pending confirmation from the other party.
+        # - REJECTED: rejected by the other party.
+        # - CONNECTION_CANCELED: application canceled by the child account.
+        # - CONNECTION_MASTER_CANCEL: invitation canceled by the main account.
+        # - CHANGE_CONFIRMING: pending confirmation for relationship change.
+        # - INITIAL: initial status of a newly created linking.
         self.status = status
-        # The type of the financial relationship.
+        # The account linking type.
         self.type = type
 
     def validate(self):

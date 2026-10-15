@@ -17,17 +17,17 @@ class QueryInstanceByTagResponseBody(DaraModel):
         success: bool = None,
         tag_resource: List[main_models.QueryInstanceByTagResponseBodyTagResource] = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the QueryInstanceByTag operation was called.
+        # The token used to query the next page of results. This is the `NextToken` value returned from the previous API call.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # The instances returned.
+        # A list of instance information.
         self.tag_resource = tag_resource
 
     def validate(self):
@@ -97,9 +97,9 @@ class QueryInstanceByTagResponseBodyTagResource(DaraModel):
     ):
         # The ID of the resource.
         self.resource_id = resource_id
-        # The type of the resource. The returned resource type indicates a savings plan instance.
+        # The type of the resource. `instance` indicates a savings plan instance.
         self.resource_type = resource_type
-        # The tags.
+        # A list of tags.
         self.tag = tag
 
     def validate(self):

@@ -14,13 +14,13 @@ class QueryRelationListRequest(DaraModel):
         status_list: List[str] = None,
         user_id: int = None,
     ):
-        # The number of the page to return. Default value: 1.
+        # The page number. The default value is 1.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20.
+        # The number of entries per page. The default value is 20.
         self.page_size = page_size
-        # The states of the relationships between the management account and its members. The valid values of this parameter are the enumeration members of the RelationshipStatusEnum data type. If you do not specify this parameter, valid relationship states are queried by default.
+        # A list of relationship statuses. The value is an enumeration of RelationshipStatusEnum. If you do not specify this parameter, only relationships that are in effect are queried.
         self.status_list = status_list
-        # The ID of the Alibaba Cloud account.
+        # The UID of the Alibaba Cloud account.
         # 
         # This parameter is required.
         self.user_id = user_id

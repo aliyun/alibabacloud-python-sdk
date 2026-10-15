@@ -16,7 +16,7 @@ class DescribeCostBudgetsSummaryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
         # The data that is returned.
         self.data = data
@@ -24,7 +24,7 @@ class DescribeCostBudgetsSummaryResponseBody(DaraModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,15 +82,15 @@ class DescribeCostBudgetsSummaryResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The site of the host.
+        # The website.
         self.host_id = host_id
-        # The data that is returned.
+        # The list of items.
         self.items = items
-        # The maximum number of entries that are returned.
+        # The maximum number of entries returned on the current page.
         self.max_results = max_results
-        # The token that is used to retrieve the next page
+        # The token for the next page of results.
         self.next_token = next_token
-        # The total number of entries that are returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -155,7 +155,13 @@ class DescribeCostBudgetsSummaryResponseBodyDataItems(DaraModel):
         calculated_values: Dict[str, Any] = None,
         consume_period: Dict[str, Any] = None,
     ):
-        # The information about the budget. The BudgetCycleType parameter indicates the cycle of the budget. Valid values: daily, monthly, quarterly, and yearly. The TotalBudgetAmount parameter indicates the total budget. The BudgetMemo parameter indicates the remarks of the budget.
+        # Information about the budget.
+        # 
+        # - BudgetCycleType: The budget period. Valid values: daily, monthly, quarterly, and yearly.
+        # 
+        # - TotalBudgetAmount: The total budget amount.
+        # 
+        # - BudgetMemo: The notes for the budget.
         self.budget = budget
         # The name of the budget.
         self.budget_name = budget_name
@@ -163,9 +169,19 @@ class DescribeCostBudgetsSummaryResponseBodyDataItems(DaraModel):
         self.budget_status = budget_status
         # The type of the budget.
         self.budget_type = budget_type
-        # The information about the estimate-to-actual analysis. The ActualConsumeSum parameter indicates the accumulated actual value. The ActualAddForecastedAmount parameter indicates the sum of accumulated actual value and predicted value. If the BudgetType parameter is set to cost, the sum of actual value and predicted value includes the actual cost incurred from the budget start date to the current date and the predicted cost from the current date to the budget end date. If the BudgetType parameter is set to asset, the sum of actual value and predicted value includes the actual usage or coverage from the budget start date to the budget end date. If the budget end date minus the current date is more than one year, the part that exceeds one year is not included. The ActualAndBudgetComparison parameter indicates the comparison between the actual value and the predicted value. The value of the ActualAndBudgetComparison parameter is calculated based on the following formula: Accumulated actual value/Total budget × 100%.
+        # Information about the estimate-to-actual comparison.
+        # 
+        # - ActualConsumeSum: The accumulated actual consumption.
+        # 
+        # - ActualAddForecastedAmount: The sum of the accumulated actual value and the predicted value. For a cost budget, this value represents the actual spending to date plus the forecasted spending until the budget period ends.
+        # 
+        # - ActualAndBudgetComparison: The comparison of the actual consumption to the budget. This value is calculated using the following formula: (Accumulated actual value / Total budget amount) × 100%.
         self.calculated_values = calculated_values
-        # The information about the billing cycle. The ConsumePeriodBegin parameter indicates the start date of the budget. The ConsumePeriodEnd parameter indicates the end date of the budget.
+        # Information about the billing cycle.
+        # 
+        # - ConsumePeriodBegin: The start date of the budget.
+        # 
+        # - ConsumePeriodEnd: The end date of the budget.
         self.consume_period = consume_period
 
     def validate(self):

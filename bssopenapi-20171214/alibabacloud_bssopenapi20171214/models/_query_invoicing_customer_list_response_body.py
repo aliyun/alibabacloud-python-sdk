@@ -18,11 +18,11 @@ class QueryInvoicingCustomerListResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -78,7 +78,6 @@ class QueryInvoicingCustomerListResponseBodyData(DaraModel):
         self,
         customer_invoice_list: main_models.QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceList = None,
     ):
-        # The information about the invoice.
         self.customer_invoice_list = customer_invoice_list
 
     def validate(self):
@@ -163,56 +162,26 @@ class QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoi
         user_id: int = None,
         user_nick: str = None,
     ):
-        # The type of invoice that was changed to.
         self.adjust_type = adjust_type
-        # The bank that issues the invoice.
         self.bank = bank
-        # The bank account number.
         self.bank_no = bank_no
-        # The authentication type of Alipay. Valid values:
-        # 
-        # *   1: individual
-        # *   2: company
         self.customer_type = customer_type
-        # The default note that is attached when the title is specified.
         self.default_remark = default_remark
-        # The time when the payment ended.
         self.end_cycle = end_cycle
-        # The time when the invoice was created. The time was in the yyyy-mm-dd hh:mm:ss format.
         self.gmt_create = gmt_create
-        # The ID of the invoice.
         self.id = id
-        # The company name in the invoice title.
         self.invoice_title = invoice_title
-        # The type of issue.
         self.issue_type = issue_type
-        # The address of the business license.
         self.operating_license_address = operating_license_address
-        # The phone number of the business license.
         self.operating_license_phone = operating_license_phone
-        # The tax registration number.
         self.register_no = register_no
-        # The time when the payment started.
         self.start_cycle = start_cycle
-        # The status of the invoice title.
         self.status = status
-        # The path and file name of the scanned copy of the tax registration certificate.
         self.taxation_license = taxation_license
-        # The type of the taxpayer. Valid values:
-        # 
-        # *   1: general taxpayer
-        # *   2: special taxpayer
         self.taxpayer_type = taxpayer_type
-        # The instruction document of the invoice title change.
         self.title_change_instructions = title_change_instructions
-        # The type of the invoice. Valid values:
-        # 
-        # *   0: plain value-added tax (VAT) invoice
-        # *   1: special VAT invoice
         self.type = type
-        # The ID of the user.
         self.user_id = user_id
-        # The nickname of the user.
         self.user_nick = user_nick
 
     def validate(self):

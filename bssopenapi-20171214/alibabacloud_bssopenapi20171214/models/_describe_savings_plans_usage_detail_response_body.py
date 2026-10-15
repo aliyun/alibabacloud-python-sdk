@@ -18,13 +18,13 @@ class DescribeSavingsPlansUsageDetailResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The return data.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,11 +80,11 @@ class DescribeSavingsPlansUsageDetailResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The data entries.
+        # The data items.
         self.items = items
-        # The token of the next page.
+        # The token for the next page.
         self.next_token = next_token
-        # The total number of entries.
+        # The total number of data records.
         self.total_count = total_count
 
     def validate(self):
@@ -146,31 +146,32 @@ class DescribeSavingsPlansUsageDetailResponseBodyDataItems(DaraModel):
     ):
         # The currency.
         self.currency = currency
-        # The used amount of the savings plan.
+        # The amount spent from the savings plan, which is the used commitment.
         self.deduct_value = deduct_value
         # The end time.
         self.end_period = end_period
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The total amount of the savings plan.
         self.pool_value = pool_value
-        # The pay-as-you-go cost.
+        # The standard pay-as-you-go cost.
         self.postpaid_cost = postpaid_cost
-        # The amount that is saved.
+        # The net savings amount.
         self.saved_cost = saved_cost
         # The start time.
         self.start_period = start_period
-        # The status of the instance.
+        # The current status. Valid values:
         # 
-        # A value of -1 indicates that the payment is overdue. A value of 1 indicates that the instance is active.
+        # - -1: overdue payment.
+        # - 1: active.
         self.status = status
-        # The type of the savings plan. Valid values: universal and ECS compute.
+        # The type of the savings plan, such as general-purpose or ECS compute.
         self.type = type
-        # The usage.
+        # The usage percentage.
         self.usage_percentage = usage_percentage
-        # The ID of the account.
+        # The account ID.
         self.user_id = user_id
-        # The username of the account.
+        # The account name.
         self.user_name = user_name
 
     def validate(self):

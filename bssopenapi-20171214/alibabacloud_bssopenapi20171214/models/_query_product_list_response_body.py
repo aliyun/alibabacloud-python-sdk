@@ -16,13 +16,13 @@ class QueryProductListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The response status code.
         self.code = code
-        # The information about all Alibaba Cloud services.
+        # The Alibaba Cloud product information.
         self.data = data
-        # The message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -81,13 +81,12 @@ class QueryProductListResponseBodyData(DaraModel):
         product_list: main_models.QueryProductListResponseBodyDataProductList = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.page_num = page_num
-        # The number of entries returned on each page.
+        # The number of records displayed per page.
         self.page_size = page_size
-        # The service definitions.
         self.product_list = product_list
-        # The total number of services.
+        # The total number of product records.
         self.total_count = total_count
 
     def validate(self):
@@ -173,16 +172,9 @@ class QueryProductListResponseBodyDataProductListProduct(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The code of the service.
         self.product_code = product_code
-        # The name of the service.
         self.product_name = product_name
-        # The type of the service.
         self.product_type = product_type
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: subscription
-        # *   PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
 
     def validate(self):

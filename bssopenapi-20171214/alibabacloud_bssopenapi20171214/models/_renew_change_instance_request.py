@@ -18,14 +18,31 @@ class RenewChangeInstanceRequest(DaraModel):
         product_type: str = None,
         renew_period: int = None,
     ):
+        # Ensures the idempotence of the request.
         self.client_token = client_token
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # Module list
         self.parameter = parameter
+        # The product code. To obtain it, call **QueryProductList**.
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # Product type
         self.product_type = product_type
+        # The subscription renewal duration, in months. Valid values:
+        # 
+        # - 1-9
+        # 
+        # - 12
+        # 
+        # - 24
+        # 
+        # - 36
+        # 
         # This parameter is required.
         self.renew_period = renew_period
 
@@ -99,8 +116,12 @@ class RenewChangeInstanceRequestParameter(DaraModel):
         code: str = None,
         value: str = None,
     ):
+        # The code configuration for the Nth module property. The value of N can be an integer from 1 to 100. If you have multiple module properties, create a separate parameter for each by setting n to 1, 2, 3, and so on.
+        # 
         # This parameter is required.
         self.code = code
+        # The value configuration for the nth module property. The value of n ranges from 1 to 100.
+        # 
         # This parameter is required.
         self.value = value
 

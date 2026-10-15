@@ -88,7 +88,6 @@ class GetResourcePackagePriceResponseBodyData(DaraModel):
         self.discount_price = discount_price
         # The original price. Unit: CNY.
         self.original_price = original_price
-        # The details of the discount.
         self.promotions = promotions
         # The price at which the transaction is made. Unit: CNY.
         self.trade_price = trade_price
@@ -180,9 +179,7 @@ class GetResourcePackagePriceResponseBodyDataPromotionsPromotion(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The ID of the promotion.
         self.id = id
-        # The description of the discount.
         self.name = name
 
     def validate(self):

@@ -9,7 +9,7 @@ class QueryFinancialAccountInfoRequest(DaraModel):
         self,
         user_id: int = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         # 
         # This parameter is required.
         self.user_id = user_id

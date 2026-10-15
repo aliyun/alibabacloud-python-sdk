@@ -18,13 +18,13 @@ class DescribeSavingsPlansCoverageDetailResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The return data.
+        # The returned query data.
         self.data = data
-        # The message returned.
+        # The message returned for the API call.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):
@@ -80,9 +80,9 @@ class DescribeSavingsPlansCoverageDetailResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The data entries.
+        # The data items.
         self.items = items
-        # The token of the next page.
+        # The token for the next page.
         self.next_token = next_token
         # The total number of entries.
         self.total_count = total_count
@@ -144,7 +144,7 @@ class DescribeSavingsPlansCoverageDetailResponseBodyDataItems(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # The coverage.
+        # The coverage percentage.
         self.coverage_percentage = coverage_percentage
         # The currency.
         self.currency = currency
@@ -152,10 +152,11 @@ class DescribeSavingsPlansCoverageDetailResponseBodyDataItems(DaraModel):
         self.deduct_amount = deduct_amount
         # The end time.
         self.end_period = end_period
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The specifications.
+        # The instance type.
         self.instance_spec = instance_spec
+        # The ID of the owner of the deducted commodity.
         self.owner_id = owner_id
         # The pay-as-you-go cost.
         self.postpaid_cost = postpaid_cost
@@ -165,9 +166,9 @@ class DescribeSavingsPlansCoverageDetailResponseBodyDataItems(DaraModel):
         self.start_period = start_period
         # The total expenditure.
         self.total_amount = total_amount
-        # The ID of the account.
+        # The user ID.
         self.user_id = user_id
-        # The username of the account.
+        # The username.
         self.user_name = user_name
 
     def validate(self):

@@ -16,13 +16,13 @@ class QueryUserOmsDataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -80,10 +80,11 @@ class QueryUserOmsDataResponseBodyData(DaraModel):
         marker: str = None,
         oms_data: List[Dict[str, Any]] = None,
     ):
-        # The ID of the host.
+        # The host ID.
         self.host_id = host_id
-        # Indicates that the returned usage data starts from the next page. If no value is returned for this parameter or this parameter is not returned, no data can be queried.
+        # The NextToken field for the start of the next page. If this field is empty or not present, it indicates that no more data is available.
         self.marker = marker
+        # The OMS data list.
         self.oms_data = oms_data
 
     def validate(self):

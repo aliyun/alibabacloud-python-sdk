@@ -19,21 +19,21 @@ class QueryResourcePackageInstancesResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The page number of the returned page.
+        # The page number.
         self.page = page
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The total number of returned entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -109,15 +109,14 @@ class QueryResourcePackageInstancesResponseBodyData(DaraModel):
         page_size: str = None,
         total_count: str = None,
     ):
-        # The ID of the host.
+        # The host ID.
         self.host_id = host_id
-        # The details of the instances.
         self.instances = instances
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -219,36 +218,19 @@ class QueryResourcePackageInstancesResponseBodyDataInstancesInstance(DaraModel):
         total_amount: str = None,
         total_amount_unit: str = None,
     ):
-        # The services to which the resource plan is applicable.
         self.applicable_products = applicable_products
-        # The commodity code.
         self.commodity_code = commodity_code
-        # The deduction type. Example: Absolute.
         self.deduct_type = deduct_type
-        # The time when the resource plan took effect.
         self.effective_time = effective_time
-        # The time when the resource plan expired.
         self.expiry_time = expiry_time
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The type of the resource plan.
         self.package_type = package_type
-        # The ID of the region.
         self.region = region
-        # The remaining quota.
         self.remaining_amount = remaining_amount
-        # The unit of the remaining quota.
         self.remaining_amount_unit = remaining_amount_unit
-        # The remarks on the resource plan. The remarks must be made in Chinese.
         self.remark = remark
-        # The status of the resource plan. Valid values:
-        # 
-        # *   Available
-        # *   Expired
         self.status = status
-        # The total quota of the resource plan.
         self.total_amount = total_amount
-        # The unit of the total quota.
         self.total_amount_unit = total_amount_unit
 
     def validate(self):

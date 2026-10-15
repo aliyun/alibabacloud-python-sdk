@@ -2,6 +2,11 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._attribute_detail_dto import AttributeDetailDTO
+from ._attribute_info_dto import AttributeInfoDTO
+from ._attribute_value_info_dto import AttributeValueInfoDTO
+from ._base_attribute_info_dto import BaseAttributeInfoDTO
+from ._selected_component_config_dto import SelectedComponentConfigDTO
 from ._add_account_relation_request import AddAccountRelationRequest
 from ._add_account_relation_response_body import AddAccountRelationResponseBody
 from ._add_account_relation_response import AddAccountRelationResponse
@@ -306,6 +311,12 @@ from ._untag_resources_response import UntagResourcesResponse
 from ._upgrade_resource_package_request import UpgradeResourcePackageRequest
 from ._upgrade_resource_package_response_body import UpgradeResourcePackageResponseBody
 from ._upgrade_resource_package_response import UpgradeResourcePackageResponse
+from ._attribute_detail_dto import AttributeDetailDTOValues
+from ._attribute_value_info_dto import AttributeValueInfoDTOBoundedValue
+from ._selected_component_config_dto import SelectedComponentConfigDTOAttributeConfigsBoundedValueLowerBound
+from ._selected_component_config_dto import SelectedComponentConfigDTOAttributeConfigsBoundedValueUpperBound
+from ._selected_component_config_dto import SelectedComponentConfigDTOAttributeConfigsBoundedValue
+from ._selected_component_config_dto import SelectedComponentConfigDTOAttributeConfigs
 from ._add_account_relation_response_body import AddAccountRelationResponseBodyData
 from ._allocate_cost_unit_resource_request import AllocateCostUnitResourceRequestResourceInstanceList
 from ._allocate_cost_unit_resource_response_body import AllocateCostUnitResourceResponseBodyData
@@ -418,6 +429,7 @@ from ._get_resource_package_price_response_body import GetResourcePackagePriceRe
 from ._get_subscription_price_request import GetSubscriptionPriceRequestModuleList
 from ._get_subscription_price_response_body import GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail
 from ._get_subscription_price_response_body import GetSubscriptionPriceResponseBodyDataModuleDetails
+from ._get_subscription_price_response_body import GetSubscriptionPriceResponseBodyDataPaymentScheme
 from ._get_subscription_price_response_body import GetSubscriptionPriceResponseBodyDataPromotionDetailsPromotionDetail
 from ._get_subscription_price_response_body import GetSubscriptionPriceResponseBodyDataPromotionDetails
 from ._get_subscription_price_response_body import GetSubscriptionPriceResponseBodyData
@@ -540,6 +552,11 @@ from ._tag_resources_request import TagResourcesRequestTag
 from ._upgrade_resource_package_response_body import UpgradeResourcePackageResponseBodyData
 
 __all__ = [
+    AttributeDetailDTO,
+    AttributeInfoDTO,
+    AttributeValueInfoDTO,
+    BaseAttributeInfoDTO,
+    SelectedComponentConfigDTO,
     AddAccountRelationRequest,
     AddAccountRelationResponseBody,
     AddAccountRelationResponse,
@@ -844,6 +861,12 @@ __all__ = [
     UpgradeResourcePackageRequest,
     UpgradeResourcePackageResponseBody,
     UpgradeResourcePackageResponse,
+    AttributeDetailDTOValues,
+    AttributeValueInfoDTOBoundedValue,
+    SelectedComponentConfigDTOAttributeConfigsBoundedValueLowerBound,
+    SelectedComponentConfigDTOAttributeConfigsBoundedValueUpperBound,
+    SelectedComponentConfigDTOAttributeConfigsBoundedValue,
+    SelectedComponentConfigDTOAttributeConfigs,
     AddAccountRelationResponseBodyData,
     AllocateCostUnitResourceRequestResourceInstanceList,
     AllocateCostUnitResourceResponseBodyData,
@@ -956,6 +979,7 @@ __all__ = [
     GetSubscriptionPriceRequestModuleList,
     GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail,
     GetSubscriptionPriceResponseBodyDataModuleDetails,
+    GetSubscriptionPriceResponseBodyDataPaymentScheme,
     GetSubscriptionPriceResponseBodyDataPromotionDetailsPromotionDetail,
     GetSubscriptionPriceResponseBodyDataPromotionDetails,
     GetSubscriptionPriceResponseBodyData,

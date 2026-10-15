@@ -16,15 +16,15 @@ class QueryAccountBillResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,19 +84,18 @@ class QueryAccountBillResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The ID of your Alibaba Cloud account.
+        # The account ID.
         self.account_id = account_id
-        # The name of the Alibaba Cloud account.
+        # The account name.
         self.account_name = account_name
         # The billing cycle. Format: YYYY-MM.
         self.billing_cycle = billing_cycle
-        # The details of the bills.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries displayed per page.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -218,62 +217,27 @@ class QueryAccountBillResponseBodyDataItemsItem(DaraModel):
         product_name: str = None,
         subscription_type: str = None,
     ):
-        # The amount deducted by using credit refunds.
         self.adjust_amount = adjust_amount
-        # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
-        # The name of the account to which the bill belongs.
         self.bill_account_name = bill_account_name
-        # The billing date.
         self.billing_date = billing_date
-        # The business type.
         self.biz_type = biz_type
-        # The amount paid in cash. The amount that was deducted by using credit refunds is not included.
         self.cash_amount = cash_amount
-        # The cost center.
         self.cost_unit = cost_unit
-        # The type of the currency. Valid values:
-        # 
-        # *   CNY
-        # *   USD
-        # *   JPY
         self.currency = currency
-        # The amount deducted by using vouchers.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
-        # The amount deducted by using coupons.
         self.deducted_by_coupons = deducted_by_coupons
-        # The amount deducted by using prepaid cards.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
-        # The discount amount.
         self.invoice_discount = invoice_discount
-        # The unsettled amount or the amount settled with credits.
         self.outstanding_amount = outstanding_amount
-        # The ID of the member.
         self.owner_id = owner_id
-        # The name of the member.
         self.owner_name = owner_name
-        # The amount paid in cash. The amount that was deducted by using credit refunds is included.
         self.payment_amount = payment_amount
-        # The code of the service. The service code is consistent with that displayed in User Center.
         self.pip_code = pip_code
-        # The pretax amount.
         self.pretax_amount = pretax_amount
-        # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
-        # The code of the service.
-        # 
-        # > A value is returned only if the **IsGroupByProduct** parameter is set to true.
         self.product_code = product_code
-        # The name of the service.
-        # 
-        # > A value is returned only if the **IsGroupByProduct** parameter is set to true.
         self.product_name = product_name
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: the subscription billing method
-        # *   PayAsYouGo: the pay-as-you-go billing method
-        # 
-        # > A value is returned only if the IsGroupByProduct parameter is set to true.
         self.subscription_type = subscription_type
 
     def validate(self):

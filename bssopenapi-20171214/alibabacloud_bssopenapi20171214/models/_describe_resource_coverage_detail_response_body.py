@@ -20,11 +20,11 @@ class DescribeResourceCoverageDetailResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -81,13 +81,13 @@ class DescribeResourceCoverageDetailResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The data entries.
+        # The data items.
         self.items = items
         # The number of entries returned on the current page.
         self.max_results = max_results
-        # The token of the next page.
+        # The token for the next page.
         self.next_token = next_token
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -160,43 +160,43 @@ class DescribeResourceCoverageDetailResponseBodyDataItems(DaraModel):
         zone: str = None,
         zone_name: str = None,
     ):
-        # The unit that is used to measure the resources deducted from deduction plans.
+        # The deduction unit.
         self.capacity_unit = capacity_unit
-        # The code of the service.
+        # The code of the product detail.
         self.commodity_code = commodity_code
-        # The name and billing method of the service.
+        # The product detail.
         self.commodity_name = commodity_name
-        # The coverage rate of a deduction plan.
+        # The coverage percentage.
         self.coverage_percentage = coverage_percentage
-        # The currency in which deduction plans were priced.
+        # The currency.
         self.currency = currency
-        # The amount of the resources deducted from a deduction plan.
+        # The deducted quantity.
         self.deduct_quantity = deduct_quantity
-        # The end of the time range in which the coverage details were queried.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # The ID of a pay-as-you-go instance.
+        # The pay-as-you-go instance ID.
         self.instance_id = instance_id
-        # The specifications of a deduction plan.
+        # The instance type.
         self.instance_spec = instance_spec
-        # The amount of the bill.
+        # The bill amount.
         self.payment_amount = payment_amount
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The name of the service.
+        # The product name.
         self.product_name = product_name
         # The region.
         self.region = region
-        # The code of the region.
+        # The region ID.
         self.region_no = region_no
-        # The beginning of the time range in which the coverage details were queried.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The total amount of resources consumed.
+        # The total usage.
         self.total_quantity = total_quantity
-        # The ID of the account.
+        # The account ID.
         self.user_id = user_id
-        # The username of the account.
+        # The account name.
         self.user_name = user_name
-        # The code of the zone.
+        # The zone ID.
         self.zone = zone
         # The zone.
         self.zone_name = zone_name

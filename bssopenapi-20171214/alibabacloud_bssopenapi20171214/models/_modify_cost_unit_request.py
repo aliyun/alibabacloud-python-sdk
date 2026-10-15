@@ -12,7 +12,7 @@ class ModifyCostUnitRequest(DaraModel):
         self,
         unit_entity_list: List[main_models.ModifyCostUnitRequestUnitEntityList] = None,
     ):
-        # The cost centers to be modified.
+        # The list of financial units.
         self.unit_entity_list = unit_entity_list
 
     def validate(self):
@@ -50,15 +50,15 @@ class ModifyCostUnitRequestUnitEntityList(DaraModel):
         owner_uid: int = None,
         unit_id: int = None,
     ):
-        # The new name of the cost center.
+        # The new name of the financial unit.
         # 
         # This parameter is required.
         self.new_unit_name = new_unit_name
-        # The user ID of the cost center owner.
+        # The user ID of the financial unit owner.
         # 
         # This parameter is required.
         self.owner_uid = owner_uid
-        # The ID of the cost center.
+        # The ID of the financial unit.
         # 
         # This parameter is required.
         self.unit_id = unit_id

@@ -12,7 +12,7 @@ class CreateCostUnitRequest(DaraModel):
         self,
         unit_entity_list: List[main_models.CreateCostUnitRequestUnitEntityList] = None,
     ):
-        # The list of cost centers.
+        # The list of financial units.
         self.unit_entity_list = unit_entity_list
 
     def validate(self):
@@ -50,15 +50,15 @@ class CreateCostUnitRequestUnitEntityList(DaraModel):
         parent_unit_id: int = None,
         unit_name: str = None,
     ):
-        # The user ID of the owner of the cost center.
+        # The ID of the owner of the new financial unit.
         # 
         # This parameter is required.
         self.owner_uid = owner_uid
-        # The ID of the parent cost center. A value of -1 indicates the root cost center.
+        # The ID of the parent financial unit. A value of -1 indicates the root financial unit.
         # 
         # This parameter is required.
         self.parent_unit_id = parent_unit_id
-        # The name of the cost center.
+        # The name of the financial unit.
         # 
         # This parameter is required.
         self.unit_name = unit_name

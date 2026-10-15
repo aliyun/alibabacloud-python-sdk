@@ -11,14 +11,13 @@ class QueryCashCouponsRequest(DaraModel):
         expiry_time_end: str = None,
         expiry_time_start: str = None,
     ):
-        # Specifies whether the voucher takes effect. Valid values:
-        # 
-        # *   true: The voucher takes effect.
-        # *   false: The voucher does not take effect.
+        # Specifies whether the voucher is valid. Valid values:
+        # - true
+        # - false
         self.effective_or_not = effective_or_not
-        # The end time of the validity period of the voucher. Specify the parameter in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2018-08-01T00:00:00Z.
+        # The end of the expiration time range for the voucher. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.expiry_time_end = expiry_time_end
-        # The start time of the validity period of the voucher. Specify the parameter in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2018-08-01T00:00:00Z.
+        # The start of the expiration time range for the voucher. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.expiry_time_start = expiry_time_start
 
     def validate(self):

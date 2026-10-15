@@ -18,13 +18,13 @@ class QueryOrdersResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The message returned.
+        # The response data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -84,13 +84,12 @@ class QueryOrdersResponseBodyData(DaraModel):
     ):
         # The hostname.
         self.host_name = host_name
-        # The orders returned.
         self.order_list = order_list
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page. Set this parameter to a maximum of 20. A larger value may cause a timeout.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -195,53 +194,22 @@ class QueryOrdersResponseBodyDataOrderListOrder(DaraModel):
         subscription_type: str = None,
         tax: str = None,
     ):
-        # The aftertax amount of the order.
         self.after_tax_amount = after_tax_amount
-        # The service code.
         self.commodity_code = commodity_code
-        # The time when the order was created.
         self.create_time = create_time
-        # The currency.
         self.currency = currency
-        # The ID of the order.
         self.order_id = order_id
-        # The type of the order. Valid values:
-        # 
-        # *   New: purchases an instance.
-        # *   Renew: renews an instance.
-        # *   Upgrade: upgrades the configurations of an instance.
-        # *   Refund: applies for a refund.
         self.order_type = order_type
-        # The currency of payment.
         self.payment_currency = payment_currency
-        # The status of payment. Valid values for a non-refund order:
-        # 
-        # *   Unpaid: The order is not paid.
-        # *   Paid: The order is paid.
-        # *   Cancelled: The order is canceled.
-        # 
-        # > : The value is NULL for a refund order.
         self.payment_status = payment_status
-        # The time of payment.
         self.payment_time = payment_time
-        # The pretax amount of the order.
         self.pretax_amount = pretax_amount
-        # The pretax amount of the order in local currency.
         self.pretax_amount_local = pretax_amount_local
-        # The pretax gross amount of the order.
         self.pretax_gross_amount = pretax_gross_amount
-        # The code of the main service.
         self.product_code = product_code
-        # The type of the main service.
         self.product_type = product_type
-        # The ID of the associated order.
         self.related_order_id = related_order_id
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: subscription
-        # *   PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
-        # The tax of the order.
         self.tax = tax
 
     def validate(self):

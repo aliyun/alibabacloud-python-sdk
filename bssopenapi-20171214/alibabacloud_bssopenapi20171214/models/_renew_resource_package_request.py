@@ -13,23 +13,24 @@ class RenewResourcePackageRequest(DaraModel):
         owner_id: int = None,
         pricing_cycle: str = None,
     ):
-        # The renewal period of the resource plan.
+        # The renewal duration of the resource package.
         # 
         # This parameter is required.
         self.duration = duration
-        # The time when the resource plan takes effect. If you leave this parameter empty, the resource plan immediately takes effect by default.
+        # The time when the resource package takes effect. If you leave this parameter empty, the resource package takes effect immediately.
         # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time zone must be UTC.
         self.effective_date = effective_date
-        # The ID of the resource plan.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
-        # The unit of the validity period for the resource plan. Valid values:
+        # The unit of the renewal duration. Valid values:
         # 
-        # *   Month
-        # *   Year
+        # - Month
+        # 
+        # - Year
         # 
         # Default value: Month.
         # 

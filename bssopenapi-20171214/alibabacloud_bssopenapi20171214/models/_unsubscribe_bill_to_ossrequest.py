@@ -10,21 +10,20 @@ class UnsubscribeBillToOSSRequest(DaraModel):
         mult_account_rel_subscribe: str = None,
         subscribe_type: str = None,
     ):
-        # The type of accounts whose bills are to be pushed if multi-tier accounts are involved. Valid values:
+        # For multi-level accounts, specifies the type of bill to push. Valid values:
         # 
-        # *   MA: management account.
-        # *   ACP1: member account of a virtual network operator (VNO).
+        # - MA: Pushes the bill of the main account.
+        # - ACP1: Pushes the bill of the Partner Platform V2.0 sub-account.
         # 
         # Default value: MA.
         self.mult_account_rel_subscribe = mult_account_rel_subscribe
-        # The type of the bill to which you want to subscribe. Valid values:
-        # 
-        # *   BillingItemDetailForBillingPeriod: bills of billable items
-        # *   InstanceDetailForBillingPeriod: bills of instances
-        # *   BillingItemDetailMonthly: billable item-based bills summarized by billing cycle
-        # *   InstanceDetailMonthly: instance-based bills summarized by billing cycle
-        # *   SplitItemDetailDaily: split bills summarized by day
-        # *   MonthBill: monthly bills in the PDF format You can subscribe to the monthly PDF bills only of the master account.
+        # The subscription type. Valid values:
+        # - BillingItemDetailForBillingPeriod: billable item-level consumption details.
+        # - InstanceDetailForBillingPeriod: instance-level consumption details.
+        # - BillingItemDetailMonthly: billable item-level consumption summary by billing cycle.
+        # - InstanceDetailMonthly: instance-level consumption summary by billing cycle.
+        # - SplitItemDetailDaily: split bill summarized by day.
+        # - MonthBill: monthly bill in PDF format. Only MA subscriptions are supported.
         # 
         # This parameter is required.
         self.subscribe_type = subscribe_type

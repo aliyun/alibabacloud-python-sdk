@@ -12,15 +12,15 @@ class QueryCostUnitRequest(DaraModel):
         page_size: int = None,
         parent_unit_id: int = None,
     ):
-        # The user ID of the cost center owner.
+        # The owner of the financial unit.
         # 
         # This parameter is required.
         self.owner_uid = owner_uid
-        # The page number of the page to return.
+        # The page number.
         self.page_num = page_num
-        # The number of entries per page. A maximum of 300 entries can be returned per page.
+        # The number of entries per page. Maximum value: 300.
         self.page_size = page_size
-        # The ID of the parent cost center. A value of -1 indicates the root cost center.
+        # The ID of the parent financial unit. A value of -1 indicates the root of the financial unit tree.
         # 
         # This parameter is required.
         self.parent_unit_id = parent_unit_id

@@ -16,29 +16,27 @@ class AllocateCostUnitResourceRequest(DaraModel):
         to_unit_id: int = None,
         to_unit_user_id: int = None,
     ):
-        # The ID of the source cost center.
-        # 
-        # *   A value of 0 indicates that the resources to be transferred have not been allocated to a cost center.
-        # *   A value greater than 0 indicates the ID of an existing cost center.
+        # The ID of the source financial unit. This parameter is required.
+        # - 0 indicates the unallocated financial unit ID.
+        # - A value greater than 0 indicates an allocated financial unit ID.
         # 
         # This parameter is required.
         self.from_unit_id = from_unit_id
-        # The user ID of the owner of the source cost center.
+        # The ID of the owner of the source financial unit. This parameter is required.
         # 
         # This parameter is required.
         self.from_unit_user_id = from_unit_user_id
-        # The resource instances to be transferred.
+        # The list of resource instances.
         # 
         # This parameter is required.
         self.resource_instance_list = resource_instance_list
-        # The ID of the destination cost center.
-        # 
-        # *   A value of -1 indicates that the allocated resources are changed to unallocated.
-        # *   A value greater than 0 indicates the ID of an existing cost center.
+        # The ID of the destination financial unit. Valid values:
+        # - -1: moves the allocated resource to the unallocated state.
+        # - A value greater than 0: allocates the resource to the specified financial unit.
         # 
         # This parameter is required.
         self.to_unit_id = to_unit_id
-        # The user ID of the owner of the destination cost center.
+        # The ID of the owner of the destination financial unit.
         # 
         # This parameter is required.
         self.to_unit_user_id = to_unit_user_id
@@ -103,20 +101,19 @@ class AllocateCostUnitResourceRequestResourceInstanceList(DaraModel):
         resource_id: str = None,
         resource_user_id: int = None,
     ):
-        # The split item of the shared instance. This parameter is required only for shared instances.
-        # 
-        # *   Eight cloud services support bill splitting. The commodity codes of the eight services are oss, dcdn, snapshot, vod, cdn, live, and cbwp.
-        # *   You can obtain the split item of a shared instance by calling QueryCostUnitResource operation to obtain all resource instances within a cost center.
+        # The attached resource type of the attached-resource-based instance. This parameter is required only for attached-resource-based product instances.
+        # - Currently, eight commodities support attached resources. Their commodity codes are oss, dcdn, snapshot, vod, cdn, live, and cbwp.
+        # - This attached resource field is typically obtained by calling QueryCostUnitResource to retrieve all billing instances (including attached-resource-based instances with attached resource information) under a specific financial unit (including the unallocated unit) of a user.
         self.apportion_code = apportion_code
-        # The commodity code of the resource instance.
+        # The commodity code of the billing instance. This parameter is required.
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
-        # The ID of the resource instance.
+        # The instance ID of the billing instance. This parameter is required.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The user ID of the resource instance owner.
+        # The ID of the owner of the billing instance. This parameter is required.
         # 
         # This parameter is required.
         self.resource_user_id = resource_user_id

@@ -18,13 +18,12 @@ class QueryCashCouponsResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
         self.data = data
-        # The message returned.
+        # The execution result message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call is successful. Valid values: true (the call is successful) and false (the call fails).
         self.success = success
 
     def validate(self):
@@ -123,31 +122,16 @@ class QueryCashCouponsResponseBodyDataCashCoupon(DaraModel):
         nominal_value: str = None,
         status: str = None,
     ):
-        # The service to which the voucher is applicable.
         self.applicable_products = applicable_products
-        # The scenario to which the voucher is applicable.
         self.applicable_scenarios = applicable_scenarios
-        # The remaining quota of the voucher.
         self.balance = balance
-        # The ID of the voucher.
         self.cash_coupon_id = cash_coupon_id
-        # The code of the voucher.
         self.cash_coupon_no = cash_coupon_no
-        # The description of the voucher.
         self.description = description
-        # The time when the voucher took effect.
         self.effective_time = effective_time
-        # The time when the voucher expired.
         self.expiry_time = expiry_time
-        # The time when the voucher was released.
         self.granted_time = granted_time
-        # The denomination of the voucher.
         self.nominal_value = nominal_value
-        # The state of the voucher. Valid values:
-        # 
-        # *   Available: The voucher is valid.
-        # *   Expired: The voucher has expired.
-        # *   Cancelled: The voucher is canceled.
         self.status = status
 
     def validate(self):

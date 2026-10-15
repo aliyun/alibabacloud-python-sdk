@@ -18,13 +18,13 @@ class GetPayAsYouGoPriceResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,15 +80,12 @@ class GetPayAsYouGoPriceResponseBodyData(DaraModel):
         module_details: main_models.GetPayAsYouGoPriceResponseBodyDataModuleDetails = None,
         promotion_details: main_models.GetPayAsYouGoPriceResponseBodyDataPromotionDetails = None,
     ):
-        # The type of the currency. Valid values:
-        # 
-        # *   CNY: Chinese Yuan
-        # *   USD: US dollar
-        # *   JPY: Japanese Yen
+        # The currency. Valid values:
+        # - CNY: Chinese Yuan.
+        # - USD: US Dollar.
+        # - JPY: Japanese Yen.
         self.currency = currency
-        # The price details of the pricing module.
         self.module_details = module_details
-        # The details of the discount.
         self.promotion_details = promotion_details
 
     def validate(self):
@@ -170,11 +167,8 @@ class GetPayAsYouGoPriceResponseBodyDataPromotionDetailsPromotionDetail(DaraMode
         promotion_id: int = None,
         promotion_name: str = None,
     ):
-        # The description of the discount.
         self.promotion_desc = promotion_desc
-        # The ID of the discount.
         self.promotion_id = promotion_id
-        # The name of the discount.
         self.promotion_name = promotion_name
 
     def validate(self):
@@ -253,15 +247,10 @@ class GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail(DaraModel):
         original_cost: float = None,
         unit_price: float = None,
     ):
-        # The discount price.
         self.cost_after_discount = cost_after_discount
-        # The discount that was applied.
         self.invoice_discount = invoice_discount
-        # The code of the pricing module.
         self.module_code = module_code
-        # The original price.
         self.original_cost = original_cost
-        # The unit price.
         self.unit_price = unit_price
 
     def validate(self):

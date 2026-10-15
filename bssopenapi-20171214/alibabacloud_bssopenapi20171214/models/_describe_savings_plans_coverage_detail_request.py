@@ -18,22 +18,22 @@ class DescribeSavingsPlansCoverageDetailRequest(DaraModel):
         start_period: str = None,
         token: str = None,
     ):
-        # The ID of the account for which you want to query coverage details.
+        # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The end of the time range to query. The end time is excluded from the time range. If you do not set this parameter, the end time is the current time. Format: yyyy-MM-dd HH:mm:ss.
         self.end_period = end_period
         self.filter_param = filter_param
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
+        # The time granularity for querying the usage summary. Valid values: MONTH, DAY, HOUR.
         # 
         # This parameter is required.
         self.period_type = period_type
-        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The beginning of the time range to query. The start time is included in the time range. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.start_period = start_period
-        # The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
+        # The pagination token. Leave this parameter empty for the first page. The response returns the token for the next page. An empty token in the response indicates that all data has been returned.
         self.token = token
 
     def validate(self):

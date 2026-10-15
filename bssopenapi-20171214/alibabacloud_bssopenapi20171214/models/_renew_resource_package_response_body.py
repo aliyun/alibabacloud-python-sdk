@@ -15,17 +15,17 @@ class RenewResourcePackageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
         # The ID of the order.
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -86,7 +86,7 @@ class RenewResourcePackageResponseBodyData(DaraModel):
         instance_id: str = None,
         order_id: int = None,
     ):
-        # The ID of the resource plan.
+        # The ID of the instance.
         self.instance_id = instance_id
         # The ID of the order.
         self.order_id = order_id

@@ -20,50 +20,52 @@ class QueryInstanceBillRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
+        # The ID of the account that owns the resources. This account is the actual user of the resources.
         self.bill_owner_id = bill_owner_id
-        # The billing cycle. Format: YYYY-MM.
+        # The billing cycle in YYYY-MM format. Data from the last 18 months is supported.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The billing date. This parameter is required only if the **Granularity** parameter is set to DAILY. Format: YYYY-MM-DD.
+        # The billing date. This parameter is required only when the **Granularity** parameter is set to DAILY. The value must be in the YYYY-MM-DD format.
         self.billing_date = billing_date
-        # The granularity at which bills are queried. Valid values:
+        # The granularity at which to query bills. Valid values:
         # 
-        # *   MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
-        # *   DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
+        # - MONTHLY: queries bills by month. The data is consistent with the bill details on the Billing Cycle tab of the Bills page in the User Center.
         # 
-        # You must set the **BillingDate** parameter before you can set the Granularity parameter to DAILY.
+        # - DAILY: queries bills by day. The data is consistent with the bill details on the By Day tab of the Bills page in the User Center.
+        # 
+        # If you set this parameter to DAILY, you must also specify the **BillingDate** parameter.
         self.granularity = granularity
-        # Specifies whether to query data by billable item. Valid values:
+        # Specifies whether to query data by billable item.
         # 
-        # *   false: does not query data by billable item. The data queried is consistent with the data that is displayed for the specified instance on the Billing Details tab of the Bill Details page in User Center.
-        # *   true: queries data by billable item. The data queried is consistent with the data that is displayed for the specified billable item on the Billing Details tab of the Bill Details page in User Center.
+        # - false: The data is consistent with the bill details on the Instance tab of the Bills page in the User Center.
+        # 
+        # - true: The data is consistent with the bill details on the Billable Item tab of the Bills page in the User Center.
         # 
         # Default value: false.
         self.is_billing_item = is_billing_item
-        # Specifies whether to filter out a bill whose pretax gross amount and pretax amount are 0. Default value: false.******** Valid values:
+        # Specifies whether to filter out bills for which the pretax gross amount (**PretaxGrossAmount**) and pretax amount (**PretaxAmount**) are both 0. Valid values:
         # 
-        # *   false: does not filter the bill.
-        # *   true: filters the bill.
+        # - false.
+        # 
+        # - true.
         self.is_hide_zero_charge = is_hide_zero_charge
         self.owner_id = owner_id
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20. Maximum value: 300.
+        # The number of entries per page. Default value: 20. Maximum value: 300.
         self.page_size = page_size
-        # The code of the service.
+        # The code of the product.
         self.product_code = product_code
-        # The type of the service. This parameter is required if the ProductCode parameter is set to the service code of Alibaba Cloud Marketplace.
+        # The type of the product. Required when the ProductCode parameter is set to the code of an Alibaba Cloud Marketplace product.
         self.product_type = product_type
-        # The billing method. Valid values:
+        # The subscription type. Valid values:
         # 
-        # *   Subscription: the subscription billing method
-        # *   PayAsYouGo: the pay-as-you-go billing method
+        # - Subscription: subscription.
         # 
-        # **
+        # - PayAsYouGo: pay-as-you-go.
         # 
-        # ****This parameter must be used together with the **ProductCode** parameter.
+        # > This parameter must be used with the **ProductCode** parameter.
         self.subscription_type = subscription_type
 
     def validate(self):

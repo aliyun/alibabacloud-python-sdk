@@ -16,11 +16,11 @@ class ModifyInstanceResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -77,7 +77,7 @@ class ModifyInstanceResponseBodyData(DaraModel):
         host_id: str = None,
         order_id: str = None,
     ):
-        # The ID of the host.
+        # The host ID.
         self.host_id = host_id
         # The ID of the order that was created.
         self.order_id = order_id

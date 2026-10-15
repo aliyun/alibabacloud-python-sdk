@@ -14,15 +14,15 @@ class RefundInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response code.
         self.code = code
-        # The returned data.
+        # data
         self.data = data
         # The description of the execution result.
         self.message = message
-        # The ID of the request.
+        # The Tracing Analysis character string for the execute. Provide this string to the platform when troubleshooting issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the call is successful. A value of true indicates that the call is complete. A value of false indicates that an error occurred.
         self.success = success
 
     def validate(self):
@@ -77,9 +77,9 @@ class RefundInstanceResponseBodyData(DaraModel):
         host_id: str = None,
         order_id: int = None,
     ):
-        # The site of the execution host.
+        # The site where the execution host resides.
         self.host_id = host_id
-        # The ID of the refund order that is returned only if the instance is unsubscribed from.
+        # The refund order ID returned when the unsubscription is successful.
         self.order_id = order_id
 
     def validate(self):

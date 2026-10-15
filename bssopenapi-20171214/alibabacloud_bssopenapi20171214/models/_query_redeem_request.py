@@ -13,20 +13,19 @@ class QueryRedeemRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
-        # Specifies whether the redemption coupon takes effect. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether the redemption ticket is effective. Valid values:
+        # - true: Effective.
+        # - false: Not effective.
         # 
         # Default value: false.
         self.effective_or_not = effective_or_not
-        # The end time when the redemption coupon expires. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The end time of the expiration period. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.expiry_time_end = expiry_time_end
-        # The start time when the redemption coupon expires. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The start time of the expiration period. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.expiry_time_start = expiry_time_start
-        # The number of the page to return.
+        # The page number.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries per page. The value cannot exceed 300.
         self.page_size = page_size
 
     def validate(self):

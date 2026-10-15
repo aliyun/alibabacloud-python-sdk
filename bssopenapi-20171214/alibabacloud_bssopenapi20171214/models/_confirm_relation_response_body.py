@@ -14,13 +14,13 @@ class ConfirmRelationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The backend business status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The unique ID of the request.
+        # The unique identifier of the request.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -76,7 +76,7 @@ class ConfirmRelationResponseBodyData(DaraModel):
         self,
         host_id: str = None,
     ):
-        # HostId
+        # The host ID.
         self.host_id = host_id
 
     def validate(self):

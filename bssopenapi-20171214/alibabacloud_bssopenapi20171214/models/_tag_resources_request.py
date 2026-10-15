@@ -14,15 +14,15 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
-        # The IDs of resources.
+        # The list of resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Specify savings plan instance as the type of the resource.
+        # The resource type. Set the value to instance for savings plan instances.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The list of tags. You can add 1 to 20 tags at a time.
         # 
         # This parameter is required.
         self.tag = tag
@@ -73,11 +73,11 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can create N tag keys at a time. Valid values of N: 1 to 20. The value of this parameter can be an empty string.
+        # The tag key. An empty string is allowed.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the tag N. Valid values of N: 1 to 20.
+        # The tag value.
         # 
         # This parameter is required.
         self.value = value

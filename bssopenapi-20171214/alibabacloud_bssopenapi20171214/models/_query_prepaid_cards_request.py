@@ -11,14 +11,13 @@ class QueryPrepaidCardsRequest(DaraModel):
         expiry_time_end: str = None,
         expiry_time_start: str = None,
     ):
-        # Specifies whether the prepaid card takes effect. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether the card package is effective. Valid values:
+        # - true: Effective.
+        # - false: Ineffective.
         self.effective_or_not = effective_or_not
-        # The end of the expiration time of prepaid cards to query. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The end time of card package expiration. Format: yyyy-MM-dd HH:mm:ss.
         self.expiry_time_end = expiry_time_end
-        # The start of the expiration time of prepaid cards to query. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The start time of card package expiration. Format: yyyy-MM-dd.
         self.expiry_time_start = expiry_time_start
 
     def validate(self):

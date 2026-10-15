@@ -16,13 +16,13 @@ class QueryRedeemResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -81,13 +81,12 @@ class QueryRedeemResponseBodyData(DaraModel):
         redeem: main_models.QueryRedeemResponseBodyDataRedeem = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The details of the redemption coupon.
         self.redeem = redeem
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -179,36 +178,15 @@ class QueryRedeemResponseBodyDataRedeemRedeem(DaraModel):
         specification: str = None,
         status: str = None,
     ):
-        # The services to which the redemption coupon is applicable.
         self.applicable_products = applicable_products
-        # The balance of the redemption coupon.
         self.balance = balance
-        # The time when the redemption coupon took effect.
         self.effective_time = effective_time
-        # The time when the redemption coupon expired.
         self.expiry_time = expiry_time
-        # The time when the redemption coupon was issued.
         self.granted_time = granted_time
-        # The nominal value of the redemption coupon.
         self.nominal_value = nominal_value
-        # The ID of the redemption coupon.
         self.redeem_id = redeem_id
-        # The number of the redemption coupon.
         self.redeem_no = redeem_no
-        # The specifications of the redemption coupon.
         self.specification = specification
-        # The status of the redemption coupon. Valid values:
-        # 
-        # *   Generated
-        # *   CallBack
-        # *   RefundPending
-        # *   Canceled
-        # *   Order_Canceled
-        # *   ActivePending
-        # *   ActiveSuccess
-        # *   ExchangePending
-        # *   ExchangeSuccess
-        # *   Expired
         self.status = status
 
     def validate(self):

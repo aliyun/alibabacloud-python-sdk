@@ -16,15 +16,15 @@ class QueryPriceEntityListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
-        # The data that is returned.
+        # The returned data.
         self.data = data
-        # The message that is returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -78,7 +78,7 @@ class QueryPriceEntityListResponseBodyData(DaraModel):
         self,
         price_entity_info_list: List[main_models.QueryPriceEntityListResponseBodyDataPriceEntityInfoList] = None,
     ):
-        # The information about the billable items.
+        # The list of pricing entities.
         self.price_entity_info_list = price_entity_info_list
 
     def validate(self):
@@ -116,11 +116,11 @@ class QueryPriceEntityListResponseBodyDataPriceEntityInfoList(DaraModel):
         price_entity_name: str = None,
         price_factor_list: List[main_models.QueryPriceEntityListResponseBodyDataPriceEntityInfoListPriceFactorList] = None,
     ):
-        # The code of the billable item.
+        # The code of the pricing entity.
         self.price_entity_code = price_entity_code
-        # The name of the billable item.
+        # The name of the pricing entity.
         self.price_entity_name = price_entity_name
-        # The factors of the billable item.
+        # The list of pricing factors for the pricing entity.
         self.price_factor_list = price_factor_list
 
     def validate(self):
@@ -170,11 +170,11 @@ class QueryPriceEntityListResponseBodyDataPriceEntityInfoListPriceFactorList(Dar
         price_factor_name: str = None,
         price_factor_value_list: List[str] = None,
     ):
-        # The code of the factor.
+        # The code of the pricing factor.
         self.price_factor_code = price_factor_code
-        # The name of the factor.
+        # The name of the pricing factor.
         self.price_factor_name = price_factor_name
-        # The values of the factor.
+        # The list of pricing factor values.
         self.price_factor_value_list = price_factor_value_list
 
     def validate(self):

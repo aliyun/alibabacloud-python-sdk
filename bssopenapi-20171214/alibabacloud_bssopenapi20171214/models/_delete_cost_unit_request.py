@@ -10,11 +10,11 @@ class DeleteCostUnitRequest(DaraModel):
         owner_uid: int = None,
         unit_id: int = None,
     ):
-        # The user ID of the cost center owner.
+        # The ID of the owner of the financial unit.
         # 
         # This parameter is required.
         self.owner_uid = owner_uid
-        # The ID of the cost center. A value of -1 indicates the root cost center.
+        # The ID of the financial unit. A value of -1 indicates the root financial unit.
         # 
         # This parameter is required.
         self.unit_id = unit_id

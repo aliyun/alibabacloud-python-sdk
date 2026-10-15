@@ -21,8 +21,8 @@ class GetResourcePackagePriceRequest(DaraModel):
         # 
         # This parameter is required.
         self.duration = duration
-        # The time when the resource plan takes effect. If you do not specify this parameter, the resource plan immediately takes effect by default. 
-        # When the **OrderType** is **BUY**, resource packs with the **EffectiveDate longer than the current time of 6 months** are not supported. 
+        # The time when the resource plan takes effect. If you do not specify this parameter, the resource plan immediately takes effect by default.
+        # When the **OrderType** is **BUY**, resource packs with the **EffectiveDate longer than the current time of 6 months** are not supported.
         # If the **OrderType** is **UPGRADE**, the **EffectiveDate** **must be less than or equal to** the actual expiration time of the upgraded instance.
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time must be in UTC.
         self.effective_date = effective_date
@@ -30,9 +30,11 @@ class GetResourcePackagePriceRequest(DaraModel):
         self.instance_id = instance_id
         # The type of the order. Valid values:
         # 
-        # *   BUY: You place the order to purchase an instance.
-        # *   UPGRADE: You place the order to upgrade an instance.
-        # *   RENEW: You place the order to renew an instance.
+        # - BUY: You place the order to purchase an instance.
+        # 
+        # - UPGRADE: You place the order to upgrade an instance.
+        # 
+        # - RENEW: You place the order to renew an instance.
         # 
         # Default value: BUY.
         self.order_type = order_type
@@ -43,8 +45,9 @@ class GetResourcePackagePriceRequest(DaraModel):
         self.package_type = package_type
         # The unit of validity period of the resource plan. Valid values:
         # 
-        # *   Month
-        # *   Year
+        # - Month
+        # 
+        # - Year
         self.pricing_cycle = pricing_cycle
         # The code of service. You can query the service code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud Services**.
         # 

@@ -16,10 +16,15 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -78,11 +83,17 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The account ID.
         self.account_id = account_id
+        # The user account.
         self.account_name = account_name
+        # The data entries.
         self.items = items
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
+        # The token that marks the position of the next query.
         self.next_token = next_token
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -196,54 +207,113 @@ class DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems(DaraModel
         round_down_discount: float = None,
         subscription_type: str = None,
     ):
+        # The amount after discount.
         self.after_discount_amount = after_discount_amount
+        # The amortization month.
+        # Format: YYYYMM.
         self.amortization_period = amortization_period
+        # The amortization status. Valid values:
+        # 
+        # - amortized: The cost is amortized.
+        # 
+        # - unAmortized: The cost is not amortized.
         self.amortization_status = amortization_status
+        # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
+        # The name of the account to which the bill belongs.
         self.bill_account_name = bill_account_name
+        # The ID of the resource owner.
         self.bill_owner_id = bill_owner_id
+        # The name of the resource owner.
         self.bill_owner_name = bill_owner_name
+        # The business type.
         self.biz_type = biz_type
+        # The billing cycle.
+        # Format: YYYYMM.
         self.consume_period = consume_period
+        # The amortized amount for the current period after discount.
         self.current_amortization_after_discount_amount = current_amortization_after_discount_amount
+        # The amount deducted by cash coupons that is amortized in the current period.
         self.current_amortization_deducted_by_cash_coupons = current_amortization_deducted_by_cash_coupons
+        # The amount deducted by coupons that is amortized in the current period.
         self.current_amortization_deducted_by_coupons = current_amortization_deducted_by_coupons
+        # The amount paid with a prepaid card that is amortized in the current period.
         self.current_amortization_deducted_by_prepaid_card = current_amortization_deducted_by_prepaid_card
+        # The expenditure amount (which can be invoiced) amortized in the current period.
         self.current_amortization_expenditure_amount = current_amortization_expenditure_amount
+        # The discount amortized in the current period.
         self.current_amortization_invoice_discount = current_amortization_invoice_discount
+        # The pretax amount amortized in the current period.
         self.current_amortization_pretax_amount = current_amortization_pretax_amount
+        # The list price amortized in the current period.
         self.current_amortization_pretax_gross_amount = current_amortization_pretax_gross_amount
+        # The amount deducted by rounding down that is amortized in the current period.
         self.current_amortization_round_down_discount = current_amortization_round_down_discount
+        # The amount deducted by cash coupons.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
+        # The amount deducted by coupons.
         self.deducted_by_coupons = deducted_by_coupons
+        # The amount paid with a prepaid card.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
+        # The expenditure amount (which can be invoiced).
         self.expenditure_amount = expenditure_amount
+        # The discount.
         self.invoice_discount = invoice_discount
+        # The pretax amount.
         self.pretax_amount = pretax_amount
+        # The list price.
         self.pretax_gross_amount = pretax_gross_amount
+        # The previously amortized amount after discount.
         self.previously_amortized_after_discount_amount = previously_amortized_after_discount_amount
+        # The previously amortized amount deducted by cash coupons.
         self.previously_amortized_deducted_by_cash_coupons = previously_amortized_deducted_by_cash_coupons
+        # The previously amortized amount deducted by coupons.
         self.previously_amortized_deducted_by_coupons = previously_amortized_deducted_by_coupons
+        # The previously amortized amount paid with a prepaid card.
         self.previously_amortized_deducted_by_prepaid_card = previously_amortized_deducted_by_prepaid_card
+        # The previously amortized expenditure amount (which can be invoiced).
         self.previously_amortized_expenditure_amount = previously_amortized_expenditure_amount
+        # The previously amortized discount.
         self.previously_amortized_invoice_discount = previously_amortized_invoice_discount
+        # The previously amortized pretax amount.
         self.previously_amortized_pretax_amount = previously_amortized_pretax_amount
+        # The previously amortized list price.
         self.previously_amortized_pretax_gross_amount = previously_amortized_pretax_gross_amount
+        # The previously amortized amount deducted by rounding down.
         self.previously_amortized_round_down_discount = previously_amortized_round_down_discount
+        # The product code.
         self.product_code = product_code
+        # The product details.
         self.product_detail = product_detail
+        # The code of the product details.
         self.product_detail_code = product_detail_code
+        # The product name.
         self.product_name = product_name
+        # The remaining unamortized amount after discount.
         self.remaining_amortization_after_discount_amount = remaining_amortization_after_discount_amount
+        # The remaining unamortized amount deducted by cash coupons.
         self.remaining_amortization_deducted_by_cash_coupons = remaining_amortization_deducted_by_cash_coupons
+        # The remaining unamortized amount deducted by coupons.
         self.remaining_amortization_deducted_by_coupons = remaining_amortization_deducted_by_coupons
+        # The remaining unamortized amount paid with a prepaid card.
         self.remaining_amortization_deducted_by_prepaid_card = remaining_amortization_deducted_by_prepaid_card
+        # The remaining unamortized expenditure amount (which can be invoiced).
         self.remaining_amortization_expenditure_amount = remaining_amortization_expenditure_amount
+        # The remaining unamortized discount.
         self.remaining_amortization_invoice_discount = remaining_amortization_invoice_discount
+        # The remaining unamortized pretax amount.
         self.remaining_amortization_pretax_amount = remaining_amortization_pretax_amount
+        # The remaining unamortized list price.
         self.remaining_amortization_pretax_gross_amount = remaining_amortization_pretax_gross_amount
+        # The remaining unamortized amount deducted by rounding down.
         self.remaining_amortization_round_down_discount = remaining_amortization_round_down_discount
+        # The amount deducted by rounding down.
         self.round_down_discount = round_down_discount
+        # The subscription type. Valid values:
+        # 
+        # - Subscription: subscription.
+        # 
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

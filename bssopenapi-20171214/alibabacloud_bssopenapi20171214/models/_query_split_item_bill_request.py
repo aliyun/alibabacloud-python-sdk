@@ -16,22 +16,25 @@ class QuerySplitItemBillRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The ID of the member. If you specify a value for this parameter, you can query the split bills of the specified member. If you leave this parameter empty, the split bills of the current account are queried by default.
+        # The ID of the account that owns the resource. The resource owner is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
-        # The billing cycle, in the YYYY-MM format.
+        # The billing cycle. Format: YYYY-MM.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
         self.owner_id = owner_id
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20. Maximum value: 300.
+        # The number of entries per page. Default value: 20. Maximum value: 300.
         self.page_size = page_size
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The billing method. Valid values: Subscription: subscription PayAsYouGo: pay-as-you-go This parameter must be used together with the ProductCode parameter.
+        # The subscription type. Valid values:
+        # Subscription: subscription.
+        # PayAsYouGo: pay-as-you-go.
+        # Note: This parameter must be used with the ProductCode parameter.
         self.subscription_type = subscription_type
 
     def validate(self):

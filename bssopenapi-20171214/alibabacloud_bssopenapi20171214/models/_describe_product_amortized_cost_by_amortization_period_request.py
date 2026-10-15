@@ -20,30 +20,36 @@ class DescribeProductAmortizedCostByAmortizationPeriodRequest(DaraModel):
         product_detail: str = None,
         subscription_type: str = None,
     ):
-        # The instance ID that is used to filter bills. You can specify multiple instance IDs to query bills of multiple instances. If you leave this parameter empty, the bills of all instances are queried by default. You can specify a maximum of 10 instance IDs.
+        # The IDs of resource owners. The resource owner is the account that uses the resources.
+        # You can specify a maximum of 10 IDs.
         self.bill_owner_id_list = bill_owner_id_list
-        # The ID of the member that needs to settle the bill. The member ID is used to filter bills. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account and all members of the current account are queried by default. You can specify a maximum of 10 IDs.
+        # The IDs of billable accounts. This parameter is used to filter bills by the RAM user who pays for the resources. If you specify this parameter, you can query the bills of the specified RAM user. If you leave this parameter empty, the bills of the current account and all its RAM users are queried.
+        # You can specify a maximum of 10 IDs.
         self.bill_user_id_list = bill_user_id_list
-        # The allocation month. Format: YYYY-MM.
+        # The amortization month.
+        # Format: YYYY-MM.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The billing cycle that is used to filter bills. You can specify a maximum of 10 billing cycles.
+        # The filter for billing cycle months.
+        # You can specify a maximum of 10 elements.
         self.consume_period_filter = consume_period_filter
         # The code of the cost center.
         self.cost_unit_code = cost_unit_code
         # The maximum number of entries to return. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The position from which the query starts. The parameter must be left empty or set to the value of the NextToken parameter returned from the last call. Otherwise, an error is returned. If this parameter is left empty, data is queried from the beginning.
+        # The token that marks the position to start the query. If you leave this parameter empty, the query starts from the beginning. Set this parameter to the value of NextToken that is returned in the last response to query the next page of results.
         self.next_token = next_token
-        # The code of the service. You can obtain the value of this parameter by calling the QueryProductList operation or the DescribeResourcePackageProduct operation.
+        # The product code.
+        # For more information about how to obtain this parameter, see QueryProductList and DescribeResourcePackageProduct.
         self.product_code = product_code
-        # The specific service resource.
+        # The details of the product.
         self.product_detail = product_detail
-        # The billing method. Valid values:
+        # The subscription type. Valid values:
         # 
-        # *   Subscription: the subscription billing method
-        # *   PayAsYouGo: the pay-as-you-go billing method
+        # - Subscription: subscription.
+        # 
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

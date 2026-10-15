@@ -18,11 +18,11 @@ class GetSubscriptionPriceResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The information about the service price.
+        # The product price information.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -80,32 +80,34 @@ class GetSubscriptionPriceResponseBodyData(DaraModel):
         discount_price: float = None,
         module_details: main_models.GetSubscriptionPriceResponseBodyDataModuleDetails = None,
         original_price: float = None,
+        payment_scheme: main_models.GetSubscriptionPriceResponseBodyDataPaymentScheme = None,
         promotion_details: main_models.GetSubscriptionPriceResponseBodyDataPromotionDetails = None,
         quantity: int = None,
         trade_price: float = None,
     ):
-        # The type of currency. Valid values:
-        # 
-        # *   CNY: Chinese Yuan
-        # *   USD: US dollar
-        # *   JPY: Japanese Yen
+        # The currency. Valid values:
+        # - CNY: Chinese yuan.
+        # - USD: US dollar.
+        # - JPY: Japanese yen.
         self.currency = currency
-        # The discount that was applied.
+        # The discount amount.
         self.discount_price = discount_price
-        # The price details of the pricing module.
         self.module_details = module_details
-        # The original price of the service.
+        # The original price.
         self.original_price = original_price
-        # The details of the discount.
+        # The parameters for fixed-fee installments.
+        self.payment_scheme = payment_scheme
         self.promotion_details = promotion_details
         # The quantity.
         self.quantity = quantity
-        # The discount price.
+        # The discounted price.
         self.trade_price = trade_price
 
     def validate(self):
         if self.module_details:
             self.module_details.validate()
+        if self.payment_scheme:
+            self.payment_scheme.validate()
         if self.promotion_details:
             self.promotion_details.validate()
 
@@ -125,6 +127,9 @@ class GetSubscriptionPriceResponseBodyData(DaraModel):
 
         if self.original_price is not None:
             result['OriginalPrice'] = self.original_price
+
+        if self.payment_scheme is not None:
+            result['PaymentScheme'] = self.payment_scheme.to_map()
 
         if self.promotion_details is not None:
             result['PromotionDetails'] = self.promotion_details.to_map()
@@ -151,6 +156,10 @@ class GetSubscriptionPriceResponseBodyData(DaraModel):
 
         if m.get('OriginalPrice') is not None:
             self.original_price = m.get('OriginalPrice')
+
+        if m.get('PaymentScheme') is not None:
+            temp_model = main_models.GetSubscriptionPriceResponseBodyDataPaymentScheme()
+            self.payment_scheme = temp_model.from_map(m.get('PaymentScheme'))
 
         if m.get('PromotionDetails') is not None:
             temp_model = main_models.GetSubscriptionPriceResponseBodyDataPromotionDetails()
@@ -206,11 +215,8 @@ class GetSubscriptionPriceResponseBodyDataPromotionDetailsPromotionDetail(DaraMo
         promotion_id: int = None,
         promotion_name: str = None,
     ):
-        # The description of the discount.
         self.promotion_desc = promotion_desc
-        # The ID of the discount.
         self.promotion_id = promotion_id
-        # The name of the discount.
         self.promotion_name = promotion_name
 
     def validate(self):
@@ -242,6 +248,72 @@ class GetSubscriptionPriceResponseBodyDataPromotionDetailsPromotionDetail(DaraMo
 
         if m.get('PromotionName') is not None:
             self.promotion_name = m.get('PromotionName')
+
+        return self
+
+class GetSubscriptionPriceResponseBodyDataPaymentScheme(DaraModel):
+    def __init__(
+        self,
+        order_down_payment_fee: str = None,
+        order_down_payment_settle_fee: str = None,
+        order_total_fee: str = None,
+        order_total_settle_fee: str = None,
+        payment_type: str = None,
+    ):
+        # The payable amount for the order, in cents.
+        self.order_down_payment_fee = order_down_payment_fee
+        # The payable amount in the settlement currency for the order, in cents.
+        self.order_down_payment_settle_fee = order_down_payment_settle_fee
+        # The total payable amount for the order, including the prepayment and installment parts, in cents.
+        self.order_total_fee = order_total_fee
+        # The total payable amount in the settlement currency for the order, including the prepayment and installment parts, in cents.
+        self.order_total_settle_fee = order_total_settle_fee
+        # The fixed-fee installment type. Valid values:
+        # - PAYMENT_NORMAL: non-fixed-fee installment products.
+        # - PAYMENT_PHASED: fixed-fee installment products.
+        self.payment_type = payment_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.order_down_payment_fee is not None:
+            result['OrderDownPaymentFee'] = self.order_down_payment_fee
+
+        if self.order_down_payment_settle_fee is not None:
+            result['OrderDownPaymentSettleFee'] = self.order_down_payment_settle_fee
+
+        if self.order_total_fee is not None:
+            result['OrderTotalFee'] = self.order_total_fee
+
+        if self.order_total_settle_fee is not None:
+            result['OrderTotalSettleFee'] = self.order_total_settle_fee
+
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderDownPaymentFee') is not None:
+            self.order_down_payment_fee = m.get('OrderDownPaymentFee')
+
+        if m.get('OrderDownPaymentSettleFee') is not None:
+            self.order_down_payment_settle_fee = m.get('OrderDownPaymentSettleFee')
+
+        if m.get('OrderTotalFee') is not None:
+            self.order_total_fee = m.get('OrderTotalFee')
+
+        if m.get('OrderTotalSettleFee') is not None:
+            self.order_total_settle_fee = m.get('OrderTotalSettleFee')
+
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
 
         return self
 
@@ -289,15 +361,10 @@ class GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail(DaraModel):
         original_cost: float = None,
         unit_price: float = None,
     ):
-        # The discount price.
         self.cost_after_discount = cost_after_discount
-        # The discount that was applied.
         self.invoice_discount = invoice_discount
-        # The identifier of the pricing module.
         self.module_code = module_code
-        # The original price of the service.
         self.original_cost = original_cost
-        # The unit price.
         self.unit_price = unit_price
 
     def validate(self):

@@ -17,23 +17,45 @@ class QueryAccountTransactionDetailsRequest(DaraModel):
         transaction_number: str = None,
         transaction_type: str = None,
     ):
-        # The end of the creation time range to query.
+        # The end time of creation.
         self.create_time_end = create_time_end
-        # The beginning of the creation time range to query.
+        # The start time of creation.
         self.create_time_start = create_time_start
-        # This parameter is invalid.
+        # An invalid parameter.
         self.max_results = max_results
-        # The token that is used for paging.
+        # The paging token for the paged query.
         self.next_token = next_token
-        # The ID of the order or bill.
+        # The order ID or bill ID.
         self.record_id = record_id
-        # The transaction channel.
+        # The transaction channel. If you specify one of the following transaction channel types, the query returns results of the specified type. If no results are found, an empty result is returned. If you do not specify this parameter, all types are returned by default.
+        # 
+        # Valid values:
+        # 
+        # - AccountBalance: account balance
+        # - BankTransfer: bank transfer
+        # - Alipay: Alipay
+        # - AntCreditPay: Ant Credit Pay
+        # - OfflineRemittance: offline remittance
+        # - RegularBankCreditRefund: credit limit refund
+        # - CreditCard: credit card
+        # - MyBankCredit: MYbank credit
+        # - HuaxiaBankCInstallment: Huaxia Bank installment
+        # - ApplePay: Apple Pay
         self.transaction_channel = transaction_channel
-        # The serial number of the transaction channel.
+        # The payment reference No. of the transaction channel.
         self.transaction_channel_sn = transaction_channel_sn
-        # The number of the transaction.
+        # The transaction number.
         self.transaction_number = transaction_number
-        # The type of the transaction.
+        # The transaction type. If you specify one of the following transaction types, the query returns results of the specified type. If no results are found, an empty result is returned. If you do not specify this parameter, all types are returned by default.
+        # 
+        # Valid values:
+        # 
+        # - Payment: top-up
+        # - Withdraw: withdrawal
+        # - Refund: refund
+        # - Consumption: consumption
+        # - Transfer: transfer
+        # - Adjust: adjustment
         self.transaction_type = transaction_type
 
     def validate(self):

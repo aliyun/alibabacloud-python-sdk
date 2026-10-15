@@ -16,13 +16,13 @@ class QueryAccountTransactionDetailsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The response status code.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
-        # The message returned.
+        # The result description.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -82,15 +82,14 @@ class QueryAccountTransactionDetailsResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The name of the account.
+        # The account name.
         self.account_name = account_name
-        # The details of the transactions within the account.
         self.account_transactions_list = account_transactions_list
-        # This parameter is invalid.
+        # An invalid parameter.
         self.max_results = max_results
-        # The token that is used for paging.
+        # The pagination token.
         self.next_token = next_token
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -191,37 +190,18 @@ class QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccou
         transaction_time: str = None,
         transaction_type: str = None,
     ):
-        # The amount of the transaction.
         self.amount = amount
-        # The balance of the account.
         self.balance = balance
-        # The billing cycle.
         self.billing_cycle = billing_cycle
-        # The type of transaction payment. Valid values:
-        # 
-        # Cash: pay for the transaction in cash. Deposit: pay for the transaction with deposit. RegularBankCreditRefund: pay for the transaction with credit refund controlled by a bank. DirectPay: directly pay for the transaction.
         self.fund_type = fund_type
-        # The ID of the order or bill.
         self.record_id = record_id
-        # The remarks.
         self.remarks = remarks
-        # The transaction account.
         self.transaction_account = transaction_account
-        # The transaction channel.
         self.transaction_channel = transaction_channel
-        # The serial number of the transaction channel.
         self.transaction_channel_sn = transaction_channel_sn
-        # Indicates whether the transaction is of the income type or the expenditure type. If one of the following types is specified, results for the specific type are returned. If the type that you specified for the parameter does not belong to the following types, no result is returned. If the parameter is left empty, results for transactions of the income and expenditure types are all returned. Valid values:
-        # 
-        # Income and Expense.
         self.transaction_flow = transaction_flow
-        # The number of the transaction.
         self.transaction_number = transaction_number
-        # The time when the transaction was made.
         self.transaction_time = transaction_time
-        # The type of the transaction. If one of the following transaction types is specified, results for the specified transaction type are returned. If the transaction type that you specified does not belong to the following transaction types, no result is returned. If the parameter is left empty, results for all transaction types are returned. Valid values:
-        # 
-        # Payment, Withdraw, Refund, Consumption, Transfer, and Adjust.
         self.transaction_type = transaction_type
 
     def validate(self):

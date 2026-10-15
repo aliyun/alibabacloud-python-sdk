@@ -15,23 +15,28 @@ class DescribeResourceUsageDetailRequest(DaraModel):
         resource_type: str = None,
         start_period: str = None,
     ):
-        # The ID of the account whose data you want to query. If you do not specify this parameter, the data of the current Alibaba Cloud account and its Resource Access Management (RAM) users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+        # The ID of the account whose data you want to query. If this parameter is left empty, the data of the current account and its trusteeship linked accounts is queried. You can specify the ID of a trusteeship linked account to query only the data of that account.
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss. The specified time is excluded from the query. If this parameter is left empty, the current time is used.
         self.end_period = end_period
-        # The maximum number of entries to return. Default value: 20. The maximum value is 300.
+        # The maximum number of entries to return in a single request. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If NextToken is empty, no next page exists.
+        # The pagination token. Leave this parameter empty when you query the first page. The token for the next page is returned in the response. If the returned token is empty, all results have been returned.
         self.next_token = next_token
-        # The time granularity at which usage details are queried. Valid values: MONTH, DAY, and HOUR.
+        # The time granularity. Valid values:
+        # - MONTH: Monthly.
+        # - DAY: Daily.
+        # - HOUR: Hourly.
         # 
         # This parameter is required.
         self.period_type = period_type
-        # The type of deduction plan whose usage details are queried. Valid values: RI and SCU.
+        # The type of the resource plan. Valid values:
+        # - RI: reserved instance.
+        # - SCU: storage capacity unit.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss. The specified time is included in the query.
         # 
         # This parameter is required.
         self.start_period = start_period

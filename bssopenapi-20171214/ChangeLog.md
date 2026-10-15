@@ -1,3 +1,7 @@
+2026-10-15 Version: 5.1.2
+- Update API GetSubscriptionPrice: add response parameters Body.Data.PaymentScheme.
+
+
 2026-01-29 Version: 5.1.1
 - Update API DescribeSavingsPlansCoverageDetail: add request parameters FilterParam.
 - Update API DescribeSavingsPlansCoverageTotal: add request parameters FilterParam.

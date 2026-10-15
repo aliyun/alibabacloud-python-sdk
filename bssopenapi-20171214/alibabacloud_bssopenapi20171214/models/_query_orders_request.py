@@ -18,38 +18,43 @@ class QueryOrdersRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The end time of the period during which the orders were created. By default, orders within the last hour are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time of the creation time range. By default, orders created within the last hour are queried. Specify the time in the ISO 8601 standard in the YYYY-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.create_time_end = create_time_end
-        # The start time of the period during which the orders were created. By default, orders within the last hour are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start time of the creation time range. By default, orders created within the last hour are queried. Specify the time in the ISO 8601 standard in the YYYY-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.create_time_start = create_time_start
-        # The type of the order. Valid values:
-        # 
-        # *   New: purchases an instance.
-        # *   Renew: renews an instance.
-        # *   Upgrade: upgrades the configurations of an instance.
-        # *   Refund: applies for a refund.
+        # The order type. Valid values:
+        # - New: new purchase
+        # - Renew: renewal
+        # - Upgrade: upgrade
+        # - TempUpgrade: temporary upgrade
+        # - Downgrade: downgrade
+        # - Refund: refund
+        # - Convert: billing method conversion
+        # - ResizeDisk: disk resizing
+        # - CompensatoryRenew: compensatory renewal
+        # - IncreaseUpgrade: bandwidth upgrade
+        # - Exchange: exchange
+        # - ChangeOperatingSystem: operating system replacement
         self.order_type = order_type
         self.owner_id = owner_id
-        # The page number of the page to return.
+        # The page number.
         self.page_num = page_num
-        # The number of entries to return per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The status of payment. Valid values for a non-refund order:
+        # The payment status. For non-refund orders, valid values:
+        # - Unpaid: unpaid
+        # - Paid: paid
+        # - Cancelled: canceled
         # 
-        # *   Unpaid: The order is not paid.
-        # *   Paid: The order is paid.
-        # *   Cancelled: The order is canceled.
-        # 
-        # > : You can set this parameter to NULL for a refund order.
+        # > For refund orders, this parameter can be set to NULL.
         self.payment_status = payment_status
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: subscription
-        # *   PayAsYouGo: pay-as-you-go
+        # The subscription type. Valid values:
+        # - Subscription: subscription
+        # - PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
 
     def validate(self):

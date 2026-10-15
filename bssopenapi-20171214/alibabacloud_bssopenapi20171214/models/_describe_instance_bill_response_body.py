@@ -18,13 +18,13 @@ class DescribeInstanceBillResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -84,19 +84,19 @@ class DescribeInstanceBillResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The ID of the account.
+        # The account ID.
         self.account_id = account_id
-        # The name of the account.
+        # The user account.
         self.account_name = account_name
-        # The billing cycle in the YYYY-MM format.
+        # The billing date. Format: YYYY-MM.
         self.billing_cycle = billing_cycle
-        # The details of the bill.
+        # The bill details.
         self.items = items
-        # The maximum number of entries returned.
+        # The maximum number of records returned for the current request.
         self.max_results = max_results
-        # The position where the query stopped. If this parameter is left empty, all the results are returned. If you perform another call, you must set the NextToken parameter to the value of this parameter.
+        # The token that indicates the position from which the current call resumes reading. An empty value indicates that all data has been read. For the next call, set this value to the NextToken request parameter.
         self.next_token = next_token
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -214,110 +214,104 @@ class DescribeInstanceBillResponseBodyDataItems(DaraModel):
         usage_unit: str = None,
         zone: str = None,
     ):
-        # The amount deducted with credit refund.
         self.adjust_amount = adjust_amount
+        # The amount after discount, including the payable amount after coupon deduction. Calculation rule: Amount after discount = List price - Discount amount.
         self.after_discount_amount = after_discount_amount
         # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
         # The name of the account to which the bill belongs.
         self.bill_account_name = bill_account_name
-        # The billing date. This parameter is returned only if the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+        # The billing date. This parameter has a value only when Granularity is set to DAILY. Format: YYYY-MM-DD.
         self.billing_date = billing_date
-        # The billable item. A value is returned only if the IsBillingItem parameter is set to true.
+        # The billable item. This parameter has a value only when IsBillingItem is set to true.
         self.billing_item = billing_item
-        # The code of the billable item.
+        # The billable item code.
         self.billing_item_code = billing_item_code
         # The billing method.
         self.billing_type = billing_type
-        # The type of business.
+        # The business type.
         self.biz_type = biz_type
-        # The amount paid in cash. The amount deducted with credit refund is not included.
         self.cash_amount = cash_amount
-        # The code of the commodity. The code is the same as that in Cost Center.
+        # The commodity code, which is the same as the product detail code in the User Center.
         self.commodity_code = commodity_code
-        # The cost center.
+        # The cost unit.
         self.cost_unit = cost_unit
-        # The type of currency. Valid values:
-        # 
-        # *   CNY
-        # *   USD
-        # *   JPY
+        # The currency. Valid values:
+        # - CNY
+        # - USD
+        # - JPY
         self.currency = currency
-        # The amount deducted with vouchers.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
-        # The amount deducted with coupons.
+        # The coupon discount amount.
         self.deducted_by_coupons = deducted_by_coupons
-        # The amount deducted with prepaid cards.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
-        # The amount deducted with resource plans. This parameter is valid only when the isBillingItem parameter is set to true.
+        # The amount deducted by resource plans. This parameter is valid only when isBillingItem is set to true.
         self.deducted_by_resource_package = deducted_by_resource_package
-        # The configurations of the instance.
+        # The detailed instance configuration.
         self.instance_config = instance_config
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The type of the instance.
+        # The instance specifications.
         self.instance_spec = instance_spec
         # The public IP address.
         self.internet_ip = internet_ip
-        # The private IP address.
+        # The internal IP address.
         self.intranet_ip = intranet_ip
         # The discount amount.
         self.invoice_discount = invoice_discount
-        # The type of the bill.
-        # 
-        # *   SubscriptionOrder: the subscription bill.
-        # *   PayAsYouGoBill: the pay-as-you-go bill,
-        # *   Refund: the refund.
-        # *   Adjustment: the adjustment bill.
+        # The bill type. Valid values:
+        # - SubscriptionOrder: subscription order
+        # - PayAsYouGoBill: pay-as-you-go bill
+        # - Refund: refund
+        # - Adjustment: adjustment
         self.item = item
-        # The name of the project.
+        # The item name.
         self.item_name = item_name
-        # The unit price of the service. This parameter is valid only when the isBillingItem parameter is set to true.
+        # The unit price. This parameter is valid only when isBillingItem is set to true.
         self.list_price = list_price
-        # The unit of the unit price. This parameter is valid only when the isBillingItem parameter is set to true.
+        # The unit of the unit price. This parameter is valid only when isBillingItem is set to true.
         self.list_price_unit = list_price_unit
-        # The name of the instance.
+        # The instance nickname.
         self.nick_name = nick_name
-        # The unsettled amount.
         self.outstanding_amount = outstanding_amount
-        # The ID of the account that owns the resource. This parameter is returned in multi-account payment scenario.
+        # The account ID of the resource owner in multi-account payment scenarios.
         self.owner_id = owner_id
-        # The amount paid in cash. The amount deducted with credit refund is not included.
         self.payment_amount = payment_amount
-        # The code of the service. The code is the same as that in Cost Center.
+        # The product code, which is consistent with the product code in the bills of the User Center.
         self.pip_code = pip_code
-        # The pretax amount.
+        # The payable amount.
         self.pretax_amount = pretax_amount
-        # The pretax gross amount.
+        # The original amount.
         self.pretax_gross_amount = pretax_gross_amount
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The details of the service.
+        # The product detail.
         self.product_detail = product_detail
-        # The name of the service.
+        # The product name.
         self.product_name = product_name
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The ID of the region.
+        # The region.
         self.region = region
-        # The ID of the resource group.
+        # The resource group.
         self.resource_group = resource_group
         # The service duration.
         self.service_period = service_period
         # The unit of the service duration.
         self.service_period_unit = service_period_unit
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: the subscription billing method.
-        # *   PayAsYouGo: the pay-as-you-go billing method.
+        # The subscription type. Valid values:
+        # - Subscription: subscription
+        # - PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
-        # The tag of the resource.
+        # The resource tag.
         self.tag = tag
-        # The usage of the service. This parameter is valid only when the isBillingItem parameter is set to true. The usage is the total usage in all bills in the billing cycle, not the amount that you purchase. For example, if 1 GB of storage is used and bills are generated every hour, the usage is 1 GB per hour. In this case, the usage is 24 GB per day.
+        # The usage.
+        # 
+        # > This parameter is valid only when isBillingItem is set to true. The usage data is the sum of usage across all bills within the cycle, not the actual purchased amount. For example, if 1 GB of storage is used and billed hourly, the hourly usage is 1 GB, and the daily aggregated bill usage is 1 GB × 24 = 24 GB.
         self.usage = usage
-        # The unit of usage. This parameter is valid only when the isBillingItem parameter is set to true.
+        # The usage unit. This parameter is valid only when isBillingItem is set to true.
         self.usage_unit = usage_unit
-        # The ID of the zone.
+        # The zone.
         self.zone = zone
 
     def validate(self):

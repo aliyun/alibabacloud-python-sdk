@@ -13,10 +13,15 @@ class SetResellerUserAlarmThresholdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned when the call fails. For more information, see Error codes.
         self.code = code
+        # Indicates whether the call was successful.
         self.data = data
+        # The additional information about the call result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. A value of true indicates that the call was completed. A value of false indicates that an error occurred.
         self.success = success
 
     def validate(self):

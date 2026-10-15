@@ -13,10 +13,15 @@ class CreateResellerUserQuotaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code that is returned if the call fails. For more information, see Error codes.
         self.code = code
+        # Indicates whether the call was successful.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates that the request was successful. A value of false indicates that the request failed.
         self.success = success
 
     def validate(self):

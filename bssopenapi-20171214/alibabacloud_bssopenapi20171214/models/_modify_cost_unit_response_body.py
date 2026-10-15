@@ -18,13 +18,13 @@ class ModifyCostUnitResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -86,11 +86,11 @@ class ModifyCostUnitResponseBodyData(DaraModel):
         owner_uid: int = None,
         unit_id: int = None,
     ):
-        # Indicates whether the cost center was modified.
+        # Indicates whether the operation was successful.
         self.is_success = is_success
-        # The user ID of the cost center owner.
+        # The user ID of the financial unit owner.
         self.owner_uid = owner_uid
-        # The ID of the cost center.
+        # The ID of the new financial unit.
         self.unit_id = unit_id
 
     def validate(self):

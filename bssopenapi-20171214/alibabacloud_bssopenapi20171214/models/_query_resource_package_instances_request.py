@@ -15,18 +15,18 @@ class QueryResourcePackageInstancesRequest(DaraModel):
         page_size: int = None,
         product_code: str = None,
     ):
-        # The end of the expiration time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The expiration end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.expiry_time_end = expiry_time_end
-        # The beginning of the expiration time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The expiration start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.expiry_time_start = expiry_time_start
-        # Specifies whether partners are involved.
+        # Specifies whether to include partners.
         self.include_partner = include_partner
         self.owner_id = owner_id
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20. Maximum value: 300.
+        # The number of entries per page. Default value: 20. Maximum value: 300.
         self.page_size = page_size
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
 
     def validate(self):

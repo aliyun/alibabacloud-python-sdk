@@ -12,15 +12,15 @@ class QueryCostUnitResourceRequest(DaraModel):
         page_size: int = None,
         unit_id: int = None,
     ):
-        # The user ID of the cost center owner.
+        # The user ID of the financial unit owner.
         # 
         # This parameter is required.
         self.owner_uid = owner_uid
-        # The number of the page to return.
+        # The page number.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the cost center.
+        # The ID of the financial unit.
         # 
         # This parameter is required.
         self.unit_id = unit_id

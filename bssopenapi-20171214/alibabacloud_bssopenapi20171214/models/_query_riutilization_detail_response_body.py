@@ -18,13 +18,13 @@ class QueryRIUtilizationDetailResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -81,13 +81,12 @@ class QueryRIUtilizationDetailResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The usage details of the RI.
         self.detail_list = detail_list
-        # The number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -178,23 +177,14 @@ class QueryRIUtilizationDetailResponseBodyDataDetailListDetailList(DaraModel):
         instance_spec: str = None,
         riinstance_id: str = None,
     ):
-        # The time when the fees are deducted by using the RI.
         self.deduct_date = deduct_date
-        # The total amount of computing power of the RI or capacity of SCU in the time period.
         self.deduct_factor_total = deduct_factor_total
-        # The deduct factor. This parameter is returned only if the RICommodityCode parameter is set to ecsRi.
         self.deduct_hours = deduct_hours
-        # The computing power or capacity of the pay-as-you-go instance whose fees are deducted by using the RI.
         self.deduct_quantity = deduct_quantity
-        # The code of the service whose fees are deducted by using the RI.
         self.deducted_commodity_code = deducted_commodity_code
-        # The ID of the instance whose fees are deducted by using the RI.
         self.deducted_instance_id = deducted_instance_id
-        # The name of the service whose fees are deducted by using the RI.
         self.deducted_product_detail = deducted_product_detail
-        # The instance type of the instance whose fees are deducted by using the RI.
         self.instance_spec = instance_spec
-        # The ID of the RI.
         self.riinstance_id = riinstance_id
 
     def validate(self):

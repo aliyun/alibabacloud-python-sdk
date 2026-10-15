@@ -11,7 +11,10 @@ class SetResellerUserAlarmThresholdRequest(DaraModel):
         alarm_type: str = None,
         owner_id: int = None,
     ):
+        # The list of user alert rules for this alert type. If this parameter is not specified, no alert threshold is set.
         self.alarm_thresholds = alarm_thresholds
+        # The alert type. Valid value: quota_low_balance, which indicates a low-balance alert for quotas.
+        # 
         # This parameter is required.
         self.alarm_type = alarm_type
         # This parameter is required.

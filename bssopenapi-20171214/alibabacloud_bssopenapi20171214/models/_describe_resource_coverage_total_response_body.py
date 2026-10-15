@@ -20,11 +20,11 @@ class DescribeResourceCoverageTotalResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class DescribeResourceCoverageTotalResponseBodyData(DaraModel):
         period_coverage: List[main_models.DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage] = None,
         total_coverage: main_models.DescribeResourceCoverageTotalResponseBodyDataTotalCoverage = None,
     ):
-        # The information about the coverage rate of deduction plans within a period.
+        # The coverage rate by time period.
         self.period_coverage = period_coverage
-        # The information about the total coverage data of deduction plans.
+        # The total coverage rate.
         self.total_coverage = total_coverage
 
     def validate(self):
@@ -129,13 +129,13 @@ class DescribeResourceCoverageTotalResponseBodyDataTotalCoverage(DaraModel):
         deduct_quantity: float = None,
         total_quantity: float = None,
     ):
-        # The unit that is used to measure the resources deducted from deduction plans.
+        # The offset unit.
         self.capacity_unit = capacity_unit
-        # The total coverage rate of deduction plans.
+        # The total coverage rate.
         self.coverage_percentage = coverage_percentage
-        # The total amount of the resources deducted from deduction plans.
+        # The total offset amount.
         self.deduct_quantity = deduct_quantity
-        # The total amount of resources consumed.
+        # The total usage.
         self.total_quantity = total_quantity
 
     def validate(self):
@@ -182,11 +182,9 @@ class DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage(DaraModel):
         coverage_percentage: float = None,
         period: str = None,
     ):
-        # The coverage rate of deduction plans within the specified period.
+        # The coverage rate.
         self.coverage_percentage = coverage_percentage
-        # The period.
-        # 
-        # The value is in the format of yyyyMMddHH.
+        # The time period. Format: yyyyMMddHH.
         self.period = period
 
     def validate(self):

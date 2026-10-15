@@ -22,51 +22,47 @@ class DescribeInstanceBillRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The ID of the member. If you specify this parameter, the bills of the member are queried. If you do not specify this parameter, the bills of the current account are queried by default.
+        # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
-        # The billing cycle. Specify the parameter in the YYYY-MM format.
-        # Only the latest 18 month billing cycle is supported.
+        # The billing cycle in the YYYY-MM format. Only the last 18 billing cycles are supported.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The billing date. This parameter is required only when the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+        # The billing date. This parameter is required only when Granularity is set to DAILY. Format: YYYY-MM-DD.
+        # 
+        # > The value of BillingDate must be in the same month as the value of BillingCycle. For example, if BillingCycle is set to 2020-03, BillingDate must be set to 2020-03-DD. If the months are inconsistent, the query results are returned based on the time specified by BillingCycle.
         self.billing_date = billing_date
         # The granularity at which bills are queried. Valid values:
         # 
-        # *   MONTHLY: queries bills on a monthly basis. The data that you query is the same as the data searched by instances on the Billing Details tab of the Bill Details page in the User Center console.
-        # *   DAILY: queries bills on a daily basis. The data that you query is the same as the data searched by days on the Billing Details tab of the Bill Details page in the User Center console.
+        # - MONTHLY: monthly. The data is consistent with the monthly bills in Expenses and Costs > Bills > Bill Details > Monthly Bills.
+        # - DAILY: daily. The data is consistent with the daily bills in Expenses and Costs > Bills > Bill Details > Daily Bills.
         # 
-        # The BillingDate parameter is required if you set the Granularity parameter to DAILY.
+        # > If you select DAILY, you must specify BillingDate.
         self.granularity = granularity
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # Specifies whether to query data by billable items. Valid values:
-        # 
-        # *   false: The data that you query is the same as the data searched by instances on the Billing Details tab of the Bill Details page in the User Center console.
-        # *   true: The data that you query is the same as the data searched by billable items on the Billing Details tab of the Bill Details page in the User Center console.
-        # 
-        # Default value: false.
+        # Specifies whether to retrieve data by billable item. Valid values:
+        # - false (default): The data is consistent with the instance bills in Expenses and Costs > Bills > Bill Details > Instance Bills.
+        # - true: The data is consistent with the billable item bills in Expenses and Costs > Bills > Bill Details > Billable Item Bills.
         self.is_billing_item = is_billing_item
-        # Specifies whether to filter bills if both the pretax gross amount and pretax amount are 0. Valid values:
-        # 
-        # *   false: does not filter bills.
-        # *   true: filters bills.
+        # Specifies whether to filter out records where both the original price (PretaxGrossAmount) and the payable amount (PretaxAmount) are 0. Valid values:
+        # - false
+        # - true
         self.is_hide_zero_charge = is_hide_zero_charge
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
+        # The maximum number of data records to read in the current call. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The token that is used to indicate the position where the results for the current call start. The parameter must be left empty or set to the value of the NextToken parameter that is returned from the last call. Otherwise, an error is returned. If the parameter is left empty, data is queried from the first item.
+        # The position from which the current call starts to read data. The value must be empty or set to the NextToken value returned in the previous response. Otherwise, an error occurs. An empty value indicates that the reading starts from the beginning.
         self.next_token = next_token
         self.owner_id = owner_id
-        # The code of the service. The code is the same as that in Cost Center.
+        # The product code, which is consistent with the product code in the bills of the User Center.
         self.pip_code = pip_code
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: the subscription billing method.
-        # *   PayAsYouGo: the pay-as-you-go billing method.
+        # The subscription type. Valid values:
+        # - Subscription: subscription.
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

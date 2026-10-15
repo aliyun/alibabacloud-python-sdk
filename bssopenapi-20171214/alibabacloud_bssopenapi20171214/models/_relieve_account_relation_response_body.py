@@ -14,15 +14,15 @@ class RelieveAccountRelationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
         # The unique ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class RelieveAccountRelationResponseBodyData(DaraModel):
         self,
         host_id: str = None,
     ):
-        # hostid
+        # The ID of the host.
         self.host_id = host_id
 
     def validate(self):

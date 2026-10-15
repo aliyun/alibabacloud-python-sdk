@@ -21,38 +21,40 @@ class ApplyInvoiceRequest(DaraModel):
         user_remark: str = None,
         emails: str = None,
     ):
-        # The ID of the address to which the invoice is delivered. This parameter is required if the invoice is a paper invoice. Set the ID to the value of the AddressId parameter returned by calling the QueryCustomerAddressList operation.
+        # The ID of the mailing address, which corresponds to the ID parameter returned by the QueryCustomerAddressList operation.
         # 
         # This parameter is required.
         self.address_id = address_id
-        # The nickname of the applicant. The system does not verify the nickname.
+        # The nickname of the applicant. The system does not verify this parameter.
         # 
         # This parameter is required.
         self.apply_user_nick = apply_user_nick
-        # The ID of the customer. Set the ID to the value of the CustomerId parameter returned by calling the QueryInvoicingCustomerList operation.
+        # The ID of the invoice title information, which corresponds to the ID parameter returned by the QueryInvoicingCustomerList operation.
         # 
         # This parameter is required.
         self.customer_id = customer_id
-        # The amount of the invoice. Unit: Cent.
+        # The requested invoice amount, in cents.
         # 
         # This parameter is required.
         self.invoice_amount = invoice_amount
-        # Specifies whether to invoice by amount. A value of true indicates that the user applies for the invoice based on the InvoiceAmount parameter. A value of false indicates that the user applies for the invoice based on the total amount of the invoicing items.
+        # Specifies whether to issue the invoice based on a specified amount. If this parameter is set to true, the invoice is applied for based on the specified InvoiceAmount. Otherwise, the invoice is applied for based on the total amount of the selected objects to be invoiced.
         self.invoice_by_amount = invoice_by_amount
-        # The type of the invoice. Valid values:
-        # 
-        # *   0: paper invoice
-        # *   1: electronic invoice
+        # The invoice type. Valid values:
+        # - 0: VAT special invoice.
+        # - 1: VAT general invoice.
         self.invoicing_type = invoicing_type
         self.owner_id = owner_id
-        # The channel that is used to process the invoice. A value of 0 indicates that the invoice is processed by Alibaba Cloud. A value of 1 indicates that the invoice is processed by the tax platform. Set the value to 1.
+        # The invoicing channel. Set this parameter to 1. Valid values:
+        # - 0: Processed by Alibaba Cloud.
+        # - 1: Processed by the tax platform.
         self.process_way = process_way
-        # The IDs of the selected invoicing items. Set the IDs to the IDs returned by calling the QueryEvaluateList operation.
+        # The list of IDs of the selected objects to be invoiced, which correspond to the ID parameters returned by the QueryEvaluateList operation.
         # 
         # This parameter is required.
         self.selected_ids = selected_ids
-        # The remarks made by the user.
+        # The user remarks.
         self.user_remark = user_remark
+        # The email addresses for receiving the invoice. The maximum length of this field is 200 characters. Separate multiple email addresses with commas (,).
         self.emails = emails
 
     def validate(self):

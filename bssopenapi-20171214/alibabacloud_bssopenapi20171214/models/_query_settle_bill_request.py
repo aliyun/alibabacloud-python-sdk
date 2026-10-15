@@ -20,18 +20,38 @@ class QuerySettleBillRequest(DaraModel):
         subscription_type: str = None,
         type: str = None,
     ):
+        # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
+        # The billing cycle, in the format of YYYY-MM.
+        # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
         self.is_display_local_currency = is_display_local_currency
+        # Specifies whether to filter based on whether the original price (PretaxGrossAmount) is 0. Default value: false (compatible with existing logic). Valid values:
+        # - true: Yes.
+        # - false: No.
         self.is_hide_zero_charge = is_hide_zero_charge
+        # The maximum number of data records to read in this request. Default value: 20. Maximum value: 300.
         self.max_results = max_results
+        # The token that marks the position from which the next query starts. Leave this parameter empty to start from the beginning.
         self.next_token = next_token
         self.owner_id = owner_id
+        # The product code.
         self.product_code = product_code
+        # The product type.
         self.product_type = product_type
+        # The order ID or bill ID.
         self.record_id = record_id
+        # The subscription type. Valid values:
+        # - Subscription: subscription
+        # - PayAsYouGo: pay-as-you-go
+        # >  This parameter must be used together with the ProductCode parameter.
         self.subscription_type = subscription_type
+        # The type. Valid values:
+        # - SubscriptionOrder: prepaid order
+        # - PayAsYouGoBill: pay-as-you-go bill
+        # - Refund: refund bill
+        # - Adjustment: adjustment bill
         self.type = type
 
     def validate(self):

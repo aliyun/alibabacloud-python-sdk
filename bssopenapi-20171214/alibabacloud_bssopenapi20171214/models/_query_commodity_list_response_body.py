@@ -16,15 +16,15 @@ class QueryCommodityListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The additional information about the call result.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the information about the service was queried.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -78,7 +78,7 @@ class QueryCommodityListResponseBodyData(DaraModel):
         self,
         commodity_list: List[main_models.QueryCommodityListResponseBodyDataCommodityList] = None,
     ):
-        # The information about the service.
+        # The commodity list.
         self.commodity_list = commodity_list
 
     def validate(self):
@@ -116,11 +116,13 @@ class QueryCommodityListResponseBodyDataCommodityList(DaraModel):
         commodity_code: str = None,
         commodity_name: str = None,
     ):
-        # The payment type. Valid values: POSTPAY (pay-as-you-go) and PREPAY (subscription).
+        # The billing method. Valid values:
+        # - POSTPAY: pay-as-you-go.
+        # - PREPAY: subscription.
         self.charge_type = charge_type
-        # The code of the service, which is the same as that on the Billing Management page.
+        # The commodity code, which is the same as the product detail code in Billing Management.
         self.commodity_code = commodity_code
-        # The name of the service.
+        # The commodity name.
         self.commodity_name = commodity_name
 
     def validate(self):

@@ -16,13 +16,13 @@ class ApplyInvoiceResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class ApplyInvoiceResponseBodyData(DaraModel):
         self,
         invoice_apply_id: int = None,
     ):
-        # The ID of the application.
+        # The ID of the invoice application record.
         self.invoice_apply_id = invoice_apply_id
 
     def validate(self):

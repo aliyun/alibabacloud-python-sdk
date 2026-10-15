@@ -18,11 +18,11 @@ class QueryEvaluateListResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -84,19 +84,18 @@ class QueryEvaluateListResponseBodyData(DaraModel):
         total_invoice_amount: int = None,
         total_un_applied_invoice_amount: int = None,
     ):
-        # The data returned.
         self.evaluate_list = evaluate_list
         # The ID of the host.
         self.host_id = host_id
-        # The number of the page returned.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
-        # The invoiced amount that meets the query conditions. Unit: Cent.
+        # The total invoiced amount that meets the filter criteria. Unit: cents.
         self.total_invoice_amount = total_invoice_amount
-        # The invoiceable amount that meets the query conditions. Unit: Cent.
+        # The total invoiceable amount that meets the filter criteria. Unit: cents.
         self.total_un_applied_invoice_amount = total_un_applied_invoice_amount
 
     def validate(self):
@@ -217,57 +216,26 @@ class QueryEvaluateListResponseBodyDataEvaluateListEvaluate(DaraModel):
         user_id: int = None,
         user_nick: str = None,
     ):
-        # The billing cycle.
         self.bill_cycle = bill_cycle
-        # The ID of the bill.
         self.bill_id = bill_id
-        # The time.
         self.biz_time = biz_time
-        # The market type in the invoice. Valid values:
-        # 
-        # *   ALIYUN: Alibaba Cloud
-        # *   MARKETPLACE: Alibaba Cloud Marketplace
         self.biz_type = biz_type
-        # The invoiceable amount.
         self.can_invoice_amount = can_invoice_amount
-        # The creation time.
         self.gmt_create = gmt_create
-        # The modification time.
         self.gmt_modified = gmt_modified
-        # The ID of the invoice.
         self.id = id
-        # The invoiced amount.
         self.invoiced_amount = invoiced_amount
-        # The ID of the item.
         self.item_id = item_id
-        # The name of the object to be invoiced.
         self.name = name
-        # If a refund is issued due to an order such as an unsubscription order or a configuration downgrade order, the refund amount is used to offset the amount of the invoice. The value is consistent with the value of the **OffsetCostAmount** parameter.
         self.offset_accept_amount = offset_accept_amount
-        # The refund amount used to offset the amount of the invoice. If a refund is issued due to an order such as an unsubscription order or a configuration downgrade order, the refund amount is used to offset the amount of the invoice. The value is consistent with the value of the **OffsetAcceptAmount** parameter.
         self.offset_cost_amount = offset_cost_amount
-        # The ID of the external object.
         self.op_id = op_id
-        # The original amount.
         self.original_amount = original_amount
-        # The ID of the external order.
         self.out_biz_id = out_biz_id
-        # The balance.
         self.present_amount = present_amount
-        # The status of the invoiceable amount.
         self.status = status
-        # The type of orders that are queried. Valid values:
-        # 
-        # *   1: the orders in which the invoiceable amount is negative.
-        # *   2: the orders in which the invoiceable amount is positive.
-        # *   3: the orders in which the invoiceable amount is not 0.
-        # *   4: the orders in which the amount that has been invoiced is greater than 0.
-        # 
-        # >  By default, this parameter is left empty. If this parameter is left empty, all orders are queried.
         self.type = type
-        # The ID of the user.
         self.user_id = user_id
-        # The nickname of the user.
         self.user_nick = user_nick
 
     def validate(self):

@@ -10,8 +10,9 @@ class QueryCommodityListRequest(DaraModel):
         lang: str = None,
         product_code: str = None,
     ):
+        # The language. If this parameter is not specified, the default value zh (Chinese) is used.
         self.lang = lang
-        # The code of the service.
+        # The product code.
         # 
         # This parameter is required.
         self.product_code = product_code

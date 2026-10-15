@@ -15,25 +15,23 @@ class QuerySavingsPlansDeductLogRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The end of the time range to query.
         self.end_time = end_time
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The type of the instance ID based on which the data is queried. Valid values:
+        # The query type. Valid values:
         # 
-        # *   spn: queries data based on the ID of the savings plan instance.
-        # *   product: queries data based on the ID of the cloud service instance.
+        # - spn: savings plan instance
+        # 
+        # - product: deducted cloud service instance
         self.instance_type = instance_type
-        # The language of the return data. Valid values:
-        # 
-        # *   ZH: Chinese
-        # *   EN: English
+        # The language of the response. Default value: ZH. Valid values: \\`ZH\\`: Chinese. \\`EN\\`: English.
         self.locale = locale
-        # The number of the page to return.
+        # The page number.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The beginning of the time range to query.
         self.start_time = start_time
 
     def validate(self):

@@ -14,30 +14,28 @@ class ConvertChargeTypeRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
-        # The subscription duration. Unit: months. This parameter is required if you switch the billing method to subscription. Valid values:
-        # 
-        # *   1 to 9
-        # *   12
-        # *   24
-        # *   36
+        # The subscription period in months. If you convert the billing method to subscription, specify the subscription period. Valid values:
+        # - 1 to 9.
+        # - 12.
+        # - 24.
+        # - 36.
         self.period = period
-        # The code of the service to which the instance belongs.
+        # The product code.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The type of the service to which the instance belongs.
+        # The product type.
         self.product_type = product_type
-        # The billing method of the instance. Valid values:
+        # The current billing method of the instance. Valid values:
+        # - Subscription: subscription.
+        # - PayAsYouGo: pay-as-you-go.
         # 
-        # *   Subscription: subscription
-        # *   PayAsYouGo: pay-as-you-go
-        # 
-        # >  After the call is successful, the billing method of the instance is switched.
+        # > After a successful call, the resource is changed to the opposite billing method.
         # 
         # This parameter is required.
         self.subscription_type = subscription_type

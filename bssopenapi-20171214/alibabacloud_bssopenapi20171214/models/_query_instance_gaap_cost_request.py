@@ -14,12 +14,23 @@ class QueryInstanceGaapCostRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
+        # The billing cycle, in the YYYY-MM format.
+        # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        # The product code.
         self.product_code = product_code
+        # The product type.
         self.product_type = product_type
+        # The billing method. Valid values:
+        # 
+        # - `Subscription`: subscription
+        # 
+        # - `PayAsYouGo`: pay-as-you-go
         self.subscription_type = subscription_type
 
     def validate(self):

@@ -16,15 +16,15 @@ class QueryPermissionListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
         # The data returned.
         self.data = data
         # The message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -85,21 +85,21 @@ class QueryPermissionListResponseBodyData(DaraModel):
         start_time: str = None,
         state: str = None,
     ):
-        # The time when the relationship expired. If no value is returned, the relationship is still valid.
+        # The time when the relationship expires. If this parameter is empty, the relationship has not expired.
         self.end_time = end_time
-        # The ID of the management account.
+        # The ID of the Alibaba Cloud account.
         self.master_id = master_id
-        # The ID of the member.
+        # The ID of the member account.
         self.member_id = member_id
         # The list of permissions.
         self.permission_list = permission_list
         # The type of the relationship. Valid values: FinancialManagement and FinancialTrusteeship.
         self.relation_type = relation_type
-        # The time when the relationship was established. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the relationship was established at 20:00:00 on May 23, 2016 (UTC+8).
+        # The time when the relationship was established. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2016-05-23T12:00:00Z is 20:00:00 on May 23, 2016 in UTC+8.
         self.setup_time = setup_time
-        # The time when the relationship took effect. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the relationship took effect at 20:00:00 on May 23, 2016 (UTC+8).
+        # The time when the relationship takes effect. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2016-05-23T12:00:00Z is 20:00:00 on May 23, 2016 in UTC+8.
         self.start_time = start_time
-        # The status of the relationship. For more information about valid values of this parameter, see the enumeration values of the RelationshipStatusEnum type in the following table.
+        # The status of the relationship. The value is an enumeration member of RelationshipStatusEnum.
         self.state = state
 
     def validate(self):
@@ -180,13 +180,13 @@ class QueryPermissionListResponseBodyDataPermissionList(DaraModel):
         permission_name: str = None,
         start_time: str = None,
     ):
-        # The time when the permission expired. If no value is returned, the permission is still valid. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the permission expired at 20:00:00 on May 23, 2016 (UTC+8).
+        # The time when the permission expires. If this parameter is empty, the permission is still valid. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2016-05-23T12:00:00Z is 20:00:00 on May 23, 2016 in UTC+8.
         self.end_time = end_time
-        # The code of the permission.
+        # The permission code.
         self.permission_code = permission_code
-        # The name of the permission.
+        # The permission name.
         self.permission_name = permission_name
-        # The time when the permission took effect. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the permission took effect at 20:00:00 on May 23, 2016 (UTC+8).
+        # The time when the permission takes effect. The time is in UTC and follows the ISO 8601 standard. The format is YYYY-MM-DDThh:mm:ssZ. For example, 2016-05-23T12:00:00Z is 20:00:00 on May 23, 2016 in UTC+8.
         self.start_time = start_time
 
     def validate(self):

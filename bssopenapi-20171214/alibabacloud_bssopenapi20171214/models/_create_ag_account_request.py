@@ -17,25 +17,25 @@ class CreateAgAccountRequest(DaraModel):
         postcode: str = None,
         province_name: str = None,
     ):
-        # The attribute of the account. To view the attribute of the account, use the account to log on to the Alibaba Cloud Management Console, move the pointer over the profile picture in the upper-right corner, and then click **Security Settings**.
+        # The properties of the new account. In the console, click Account Properties in the top menu bar to go to the **Security Settings** page and view the properties.
         self.account_attr = account_attr
-        # The name of the city.
+        # The name of the city in English.
         self.city_name = city_name
-        # The name of the enterprise.
+        # The name of the enterprise. This is the enterprise name that corresponds to the Unified Social Credit Code.
         self.enterprise_name = enterprise_name
-        # The first name.
+        # The first name of the user under the level 1 category.
         self.first_name = first_name
-        # The last name.
+        # The last name of the user.
         # 
-        # The last name can be up to 64 characters in length.
+        # Maximum length: 64 characters.
         self.last_name = last_name
-        # The email address used to log on to the account.
+        # The logon email address of the member account.
         # 
         # This parameter is required.
         self.login_email = login_email
         # The country code.
         self.nation_code = nation_code
-        # The zip code.
+        # The postal code.
         self.postcode = postcode
         # The name of the province. This parameter is optional.
         self.province_name = province_name

@@ -16,18 +16,17 @@ class GetCustomerListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # 
-        # *   **true**: The call is successful.
-        # *   **false**: The call failed.
+        # Indicates whether the call was successful.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -81,7 +80,7 @@ class GetCustomerListResponseBodyData(DaraModel):
         self,
         uid_list: List[str] = None,
     ):
-        # The list of customer IDs.
+        # The list of user UIDs.
         self.uid_list = uid_list
 
     def validate(self):

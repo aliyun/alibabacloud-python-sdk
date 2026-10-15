@@ -14,11 +14,15 @@ class RenewChangeInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data that is returned.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # success=true indicates that the call was successful. success=false indicates that an error occurred.
         self.success = success
 
     def validate(self):
@@ -73,7 +77,9 @@ class RenewChangeInstanceResponseBodyData(DaraModel):
         host_id: str = None,
         order_id: str = None,
     ):
+        # The site where the host runs.
         self.host_id = host_id
+        # The ID of the successfully created order.
         self.order_id = order_id
 
     def validate(self):

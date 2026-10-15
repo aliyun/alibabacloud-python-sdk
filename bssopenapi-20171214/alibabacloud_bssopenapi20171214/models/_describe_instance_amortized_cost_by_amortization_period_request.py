@@ -21,32 +21,41 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodRequest(DaraModel):
         product_detail: str = None,
         subscription_type: str = None,
     ):
-        # The ID of the member to which the bill belongs. The member ID is used to filter bills. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account and all members of the current account are queried. You can specify a maximum of 10 IDs.
+        # The filter condition for the account to which the resource belongs.
+        # The resource ownership account is the account that actually uses the resource.
+        # Maximum number of elements: 10.
         self.bill_owner_id_list = bill_owner_id_list
-        # The ID of the member that needs to settle the bill. The member ID is used to filter bills. If you specify a value for this parameter, you can query the bills of the specified member account. If you leave this parameter empty, the bills of the current account and all members of the current account are queried by default. You can specify a maximum of 10 IDs.
+        # The filter condition for the ID of the bill owner.
+        # This parameter specifies the ID of a RAM user. You can set this parameter to query the bills of a RAM user. If you do not set this parameter, the bills of the current account and all RAM users of the current account are queried.
+        # Maximum number of elements: 10.
         self.bill_user_id_list = bill_user_id_list
-        # The allocation month. Format: YYYY-MM.
+        # The amortization month.
+        # Format: YYYY-MM.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The billing cycle that is used to filter bills. You can specify a maximum of 10 billing cycles.
+        # The filter condition for the billing cycle.
+        # Maximum number of elements: 10.
         self.consume_period_filter = consume_period_filter
         # The code of the cost center.
         self.cost_unit_code = cost_unit_code
-        # The instance ID that is used to filter bills. You can specify multiple instance IDs to query bills of multiple instances. If you leave this parameter empty, the bills of all instances are queried by default. You can specify a maximum of 10 instance IDs.
+        # The filter condition for the instance ID.
+        # You can query multiple instances. If you do not set this parameter, all instances are queried.
+        # Maximum number of elements: 10.
         self.instance_id_list = instance_id_list
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
+        # The maximum number of data records to return. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The position from which the query starts. The parameter must be left empty or set to the value of the NextToken parameter returned from the last call. Otherwise, an error is returned. If this parameter is left empty, data is queried from the beginning.
+        # The position from which to start reading the current call. The value of this parameter must be empty or the value of NextToken that is returned in the last call. Otherwise, an error is reported. If this parameter is empty, the query starts from the beginning.
         self.next_token = next_token
-        # The code of the service. You can obtain the value of this parameter by calling the QueryProductList operation or the DescribeResourcePackageProduct operation.
+        # The product code. To obtain the value of this parameter, call QueryProductList or DescribeResourcePackageProduct.
         self.product_code = product_code
-        # The specific service resource.
+        # The details of the product.
         self.product_detail = product_detail
-        # The billing method. Valid values:
+        # The subscription type. Valid values:
         # 
-        # *   Subscription: the subscription billing method
-        # *   PayAsYouGo: the pay-as-you-go billing method
+        # - Subscription: subscription.
+        # 
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

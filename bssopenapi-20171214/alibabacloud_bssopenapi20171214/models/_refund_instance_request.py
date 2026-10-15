@@ -13,15 +13,15 @@ class RefundInstanceRequest(DaraModel):
         product_code: str = None,
         product_type: str = None,
     ):
-        # This parameter is required for scenarios that need idempotence. The UUID that is used to ensure the idempotence of the request.
+        # Required for idempotent scenarios. A UUID-generated string. This field is used for idempotence. If the same value is passed in multiple calls, the result of the first call is returned. If a result is returned after the call, you can parse the refund order ID, which indicates that the call is successful.
         self.client_token = client_token
-        # This parameter is required for unsubscription scenarios. Valid values: 1 and 0. A value of 1 specifies that the instance is immediately released. A value of 0 specifies that the instance is shut down based on the shutdown policy. This parameter is supported only for specified services. Default value: 1.
+        # Required for unsubscription scenarios. Valid values: 1: immediately releases the instance. 0: stops the instance first based on the shutdown policy. Only some products support this value. Default value: 1.
         self.immediately_release = immediately_release
-        # The ID of the instance. This parameter is required for unsubscription scenarios. Do not specify a custom name for this parameter.
+        # Required for unsubscription scenarios. The instance ID, not the custom name.
         self.instance_id = instance_id
-        # The code of the service. This parameter is required for unsubscription scenarios.
+        # Required for unsubscription scenarios. The product code. If the error code returned after the call indicates that the product is not supported, submit a ticket to request that the cloud service enable this feature.
         self.product_code = product_code
-        # The type of the service. This parameter is required for unsubscription scenarios. Unless otherwise specified, set this parameter to an empty string.
+        # Required for unsubscription scenarios. The product type. Unless otherwise specified, pass an empty string. In the debugging tool, you do not need to manually enter a value. Hover over the input box, and a button labeled "Enter empty string" appears. Click this button. When initiating an unsubscription through code, pass an empty string "".
         self.product_type = product_type
 
     def validate(self):

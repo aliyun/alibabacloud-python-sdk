@@ -21,52 +21,21 @@ class CreateSavingsPlansInstanceShrinkRequest(DaraModel):
         type: str = None,
     ):
         self.auto_pay = auto_pay
-        # The code of the service.
-        # 
         # This parameter is required.
         self.commodity_code = commodity_code
-        # The service duration. This parameter is used together with the PricingCycle parameter.
-        # 
         # This parameter is required.
         self.duration = duration
-        # The time when the savings plan takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.effective_date = effective_date
-        # The extended parameters.
         self.extend_map_shrink = extend_map_shrink
-        # The payment mode. Valid values:
-        # 
-        # *   total: all upfront
-        # *   half: partial upfront
-        # *   zero: no upfront
-        # 
         # This parameter is required.
         self.pay_mode = pay_mode
-        # The contracted amount. unit: CNY
-        # 
         # This parameter is required.
         self.pool_value = pool_value
-        # The unit of the subscription duration. This parameter is used together with Duration. Valid values:
-        # 
-        # *   Year
-        # *   Month
-        # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
-        # The ID of the region in which you create the savings plan. You must specify this parameter if the Type parameter is not set to universal.
         self.region = region
-        # The specification type. This parameter is used together with the Specification parameter. You must specify this parameter if the Type parameter is not set to universal. Valid values:
-        # 
-        # *   group: specification group
-        # *   family: specification family
         self.spec_type = spec_type
-        # The specifications of the savings plan. This parameter is used together with the SpecType parameter.
         self.specification = specification
-        # The type of the savings plan. Valid values:
-        # 
-        # *   universal: general-purpose type
-        # *   ecs: Elastic Compute Service (ECS) compute type
-        # *   elasticy: elastic type
-        # 
         # This parameter is required.
         self.type = type
 

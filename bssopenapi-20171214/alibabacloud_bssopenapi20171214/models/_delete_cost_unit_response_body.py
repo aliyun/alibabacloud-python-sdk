@@ -16,13 +16,13 @@ class DeleteCostUnitResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -78,11 +78,11 @@ class DeleteCostUnitResponseBodyData(DaraModel):
         owner_uid: int = None,
         unit_id: int = None,
     ):
-        # Indicates whether the call is complete.
+        # Indicates whether the operation is complete.
         self.is_success = is_success
-        # The user ID of the cost center owner.
+        # The ID of the owner of the financial unit.
         self.owner_uid = owner_uid
-        # The ID of the cost center.
+        # The ID of the new financial unit.
         self.unit_id = unit_id
 
     def validate(self):

@@ -14,15 +14,15 @@ class InquiryPriceRefundInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response code.
         self.code = code
         # data
         self.data = data
         # The description of the execution result.
         self.message = message
-        # The ID of the request.
+        # The Tracing Analysis character string for the execute operation. You can provide this string to the platform for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the call is successful. A value of true indicates that the call is complete. A value of false indicates that an error occurred.
         self.success = success
 
     def validate(self):
@@ -81,11 +81,11 @@ class InquiryPriceRefundInstanceResponseBodyData(DaraModel):
     ):
         # The currency.
         self.currency = currency
-        # The site of the execution host.
+        # The site where the execution host resides.
         self.host_id = host_id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The refundable amount.
+        # The refund amount.
         self.refund_amount = refund_amount
 
     def validate(self):

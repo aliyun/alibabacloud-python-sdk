@@ -19,37 +19,33 @@ class QuerySavingsPlansDiscountRequest(DaraModel):
         spn_commodity_code: str = None,
         spn_type: str = None,
     ):
-        # The code of the service.
+        # The commodity code.
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
-        # The cycle based on which queries are performed.
+        # The query cycle.
         # 
         # This parameter is required.
         self.cycle = cycle
-        # The identifier of the language.
-        # 
-        # Valid values:
-        # 
-        # *   EN: English.
-        # *   ZH: Chinese.
+        # The language of the response.
         self.locale = locale
-        # The code of the pricing module.
+        # The code of the module.
         self.module_code = module_code
-        # The number of the page to return.
+        # The page number.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The payment mode. Valid values: total: all upfront. half: half upfront. zero: no upfront.
+        # The payment mode. Valid values: total: all upfront. half: partial upfront. zero: no upfront.
         # 
         # This parameter is required.
         self.pay_mode = pay_mode
-        # The ID of the region.
+        # The region.
         self.region = region
-        # The type of the resource.
+        # The resource type.
         self.spec = spec
+        # The commodity code of the savings plan.
         self.spn_commodity_code = spn_commodity_code
-        # The type of the savings plan. Valid values: ecs: Elastic Compute Service (ECS) compute type. universal: general-purpose type.
+        # The type of the savings plan. Valid values: ecs: compute-optimized. universal: universal.
         # 
         # This parameter is required.
         self.spn_type = spn_type

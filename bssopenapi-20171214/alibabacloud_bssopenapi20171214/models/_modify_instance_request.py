@@ -19,30 +19,28 @@ class ModifyInstanceRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
         self.client_token = client_token
-        # The ID of the instance for which you want to modify the configurations.
+        # The instance ID of the instance whose configuration you want to modify.
         self.instance_id = instance_id
-        # The type of configuration modifications. Valid values:
-        # 
-        # *   Upgrade: upgrades the configurations of the instance.
-        # *   Downgrade: downgrades the configurations of the instance.
+        # The type of configuration change. Valid values:
+        # - Upgrade: upgrade.
+        # - Downgrade: downgrade.
         # 
         # This parameter is required.
         self.modify_type = modify_type
         self.owner_id = owner_id
-        # The details about the parameters.
+        # The list of parameters.
         self.parameter = parameter
-        # The code of the service to which the instance belongs.
+        # The product code.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The type of the service to which the instance belongs.
+        # The product type.
         self.product_type = product_type
         # The billing method. Valid values:
-        # 
-        # *   Subscription: subscription
-        # *   PayAsYouGo: pay-as-you-go
+        # - Subscription: subscription.
+        # - PayAsYouGo: pay-as-you-go.
         # 
         # This parameter is required.
         self.subscription_type = subscription_type
@@ -123,13 +121,13 @@ class ModifyInstanceRequestParameter(DaraModel):
         code: str = None,
         value: str = None,
     ):
-        # The code of the parameter n. Valid values of n: 1 to 100. Multiple parameters are concatenated in the order of n.
+        # The code of the nth module property. Valid values of n: 1 to 100. If multiple module properties exist, concatenate the parameters in the format of n=1,2,3…n.
         # 
-        # >  Only the parameters of the attributes that you want to modify for the instance must be configured. For example, if the instance has Attribute A and Attribute B and only Attribute A must be modified, configure only the parameter of Attribute A.
+        # > Specify only the module properties that need to be changed. For example, if only property A needs to be changed among properties A and B, pass only the information related to property A.
         # 
         # This parameter is required.
         self.code = code
-        # The value of the parameter n. Valid values of n: 1 to 100.
+        # The value of the nth module property. Valid values of n: 1 to 100.
         # 
         # This parameter is required.
         self.value = value

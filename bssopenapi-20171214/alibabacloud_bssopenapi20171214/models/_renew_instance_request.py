@@ -16,23 +16,22 @@ class RenewInstanceRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The ID of the instance
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
-        # The code of the service to which the instance belongs.
+        # The product code.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The duration of the subscription renewal. Unit: months. Valid values:
-        # 
-        # *   1 to 9
-        # *   12
-        # *   24
-        # *   36
+        # The renewal period for the subscription instance. Unit: months. Valid values:
+        # - 1 to 9.
+        # - 12.
+        # - 24.
+        # - 36.
         # 
         # This parameter is required.
         self.renew_period = renew_period

@@ -20,28 +20,29 @@ class QuerySavingsPlansInstanceRequest(DaraModel):
         status: str = None,
         tag: List[main_models.QuerySavingsPlansInstanceRequestTag] = None,
     ):
+        # The commodity code.
         self.commodity_code = commodity_code
-        # The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The end time. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.end_time = end_time
         # The ID of the savings plan instance.
         self.instance_id = instance_id
-        # The language of the return data. Valid values:
+        # The language of the response.
         # 
-        # *   ZH: Chinese
-        # *   EN: English
+        # - EN: English
+        # 
+        # - ZH: Chinese
         self.locale = locale
-        # The number of the page to return.
+        # The page number.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The start time. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.start_time = start_time
-        # The status of the Instance. 
-        # 
-        # *  NORMAL
-        # * RELEASE
+        # The status of the instance. Valid values:
+        # NORMAL: The instance is active.
+        # RELEASE: The instance is released.
         self.status = status
-        # The tags.
+        # The list of tag elements.
         self.tag = tag
 
     def validate(self):
@@ -126,9 +127,9 @@ class QuerySavingsPlansInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag to query.
+        # The key of the tag.
         self.key = key
-        # The value of the tag to query.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

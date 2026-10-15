@@ -16,28 +16,27 @@ class QueryRIUtilizationDetailRequest(DaraModel):
         riinstance_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance whose fees are deducted by using the RI. If this parameter is left empty, the usage details of all instances are queried.
+        # The ID of the deducted instance. If this parameter is left empty, the details of all instances are returned.
         self.deducted_instance_id = deducted_instance_id
-        # The time when the RI expires. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The instance type of the RI.
+        # The instance type corresponding to the reserved instance.
         self.instance_spec = instance_spec
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20. Maximum value: 300.
+        # The number of entries per page. Default value: 20. Maximum value: 300.
         self.page_size = page_size
-        # The code of the service to which the RI is applied. Default value: ecsRi. Valid values:
-        # 
-        # *   ecsRi: ECS RI.
-        # *   scu_bag: storage capacity unit (SCU).
+        # Valid values:
+        # - ecsRi: ECS reserved instances. This is the default value.
+        # - scu_bag: Storage capacity unit (SCU) plans.
         # 
         # This parameter is required.
         self.ricommodity_code = ricommodity_code
-        # The ID of the RI. If this parameter is left empty, the usage details of all RIs are queried.
+        # The instance ID of the reserved instance for the filtered query. If this parameter is left empty, the details of all used reserved instances are returned.
         self.riinstance_id = riinstance_id
-        # The time when the RI was created. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         # 
         # This parameter is required.
         self.start_time = start_time

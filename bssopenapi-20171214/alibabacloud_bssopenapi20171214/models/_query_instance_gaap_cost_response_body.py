@@ -16,10 +16,15 @@ class QueryInstanceGaapCostResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -77,10 +82,15 @@ class QueryInstanceGaapCostResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The ID of the host.
         self.host_id = host_id
+        # A container for cost details.
         self.modules = modules
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

@@ -18,13 +18,13 @@ class DescribePricingModuleResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,7 @@ class DescribePricingModuleResponseBodyData(DaraModel):
         attribute_list: main_models.DescribePricingModuleResponseBodyDataAttributeList = None,
         module_list: main_models.DescribePricingModuleResponseBodyDataModuleList = None,
     ):
-        # The module attributes.
         self.attribute_list = attribute_list
-        # The pricing information of modules.
         self.module_list = module_list
 
     def validate(self):
@@ -160,20 +158,9 @@ class DescribePricingModuleResponseBodyDataModuleListModule(DaraModel):
         price_type: str = None,
     ):
         self.config_list = config_list
-        # The currency. Default value: CNY.
         self.currency = currency
-        # The code of the pricing module.
         self.module_code = module_code
-        # The name of the pricing module.
         self.module_name = module_name
-        # The price type. Valid values:
-        # 
-        # *   Usage: usage price
-        # *   Hour: hourly price
-        # *   Day: daily price
-        # *   Week: weekly price
-        # *   Month: monthly price
-        # *   Year: annual price
         self.price_type = price_type
 
     def validate(self):
@@ -292,13 +279,9 @@ class DescribePricingModuleResponseBodyDataAttributeListAttribute(DaraModel):
         unit: str = None,
         values: main_models.DescribePricingModuleResponseBodyDataAttributeListAttributeValues = None,
     ):
-        # The code of the attribute.
         self.code = code
-        # The name of the attribute.
         self.name = name
-        # The unit of the attribute.
         self.unit = unit
-        # The attribute values.
         self.values = values
 
     def validate(self):
@@ -384,18 +367,9 @@ class DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttribute
         type: str = None,
         value: str = None,
     ):
-        # The attribute value that corresponds to the module code.
         self.name = name
-        # The description of the module values.
         self.remark = remark
-        # The type of the attribute value that corresponds to the module code. Valid values:
-        # 
-        # *   single_float: single value
-        # *   range_float: range value
         self.type = type
-        # The attribute value that corresponds to the module code.
-        # 
-        # >  If the Type parameter is set to range_float, the valid values of this parameter range from 1024 to 1024000. A value of 1024 indicates that the step size is 1024.
         self.value = value
 
     def validate(self):

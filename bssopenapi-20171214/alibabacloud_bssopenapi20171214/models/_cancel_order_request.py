@@ -10,7 +10,7 @@ class CancelOrderRequest(DaraModel):
         order_id: str = None,
         owner_id: int = None,
     ):
-        # The ID of the order.
+        # The order ID.
         # 
         # This parameter is required.
         self.order_id = order_id

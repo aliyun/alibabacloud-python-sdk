@@ -15,24 +15,15 @@ class CreateResourcePackageRequest(DaraModel):
         product_code: str = None,
         specification: str = None,
     ):
-        # The ID of the resource plan.
-        # 
         # This parameter is required.
         self.duration = duration
-        # The data returned.
         self.effective_date = effective_date
         self.owner_id = owner_id
-        # The ID of the order.
-        # 
         # This parameter is required.
         self.package_type = package_type
         self.pricing_cycle = pricing_cycle
-        # Indicates whether the request is successful.
-        # 
         # This parameter is required.
         self.product_code = product_code
-        # The ID of the order.
-        # 
         # This parameter is required.
         self.specification = specification
 

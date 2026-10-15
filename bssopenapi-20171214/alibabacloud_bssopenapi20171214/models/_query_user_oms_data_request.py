@@ -15,33 +15,32 @@ class QueryUserOmsDataRequest(DaraModel):
         start_time: str = None,
         table: str = None,
     ):
-        # The time type of the usage data. Set the parameter based on the description in the documentation of the specified service. Valid values:
-        # 
-        # *   Raw
-        # *   Hour
-        # *   Day
-        # *   Month
+        # The data timestamp type of the metering data. Refer to the specific service documentation for details. Valid values:
+        # - Raw: hourly
+        # - Hour: hourly
+        # - Day: daily
+        # - Month: monthly
         # 
         # This parameter is required.
         self.data_type = data_type
-        # The end of the time range to query.
+        # The end time of the request.
         # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The date format must comply with the ISO 8601 standard and use UTC time. Format: yyyy-mm-ddThh:mm:ssZ.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The name of the record from which the usage data starts to return. The usage data records whose names are alphabetically after the value of the Marker parameter are returned. By default, the usage data starts to return from the earliest record.
+        # The marker that specifies the starting point for returning results in alphabetical order after the NextToken. By default, results are returned from the beginning.
         self.marker = marker
         self.owner_id = owner_id
-        # The number of entries to return on each page. Valid values: 1 to 200. Default value: 100.
+        # The number of rows per page for paging in a paged query. Valid values: 1 to 200. Default value: 100.
         self.page_size = page_size
-        # The beginning of the time range to query.
+        # The start time of the request.
         # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The date format must comply with the ISO 8601 standard and use UTC time. Format: yyyy-mm-ddThh:mm:ssZ.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The service whose usage data you want to query and the details of the usage data. The parameter value is usually set to the code of a service. Various usage models are provided for different services.
+        # The product and detail information for the usage data, which is typically the ProductCode. Different services support multiple metering models.
         # 
         # This parameter is required.
         self.table = table

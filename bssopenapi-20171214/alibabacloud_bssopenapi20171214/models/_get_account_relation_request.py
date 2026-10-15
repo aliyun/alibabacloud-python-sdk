@@ -10,9 +10,9 @@ class GetAccountRelationRequest(DaraModel):
         relation_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the financial relationship. Value returned by calling the AddAccountRelation operation.
+        # The account linking ID.
         self.relation_id = relation_id
-        # The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
+        # The unique request ID, used to identify the request and facilitate troubleshooting.
         self.request_id = request_id
 
     def validate(self):

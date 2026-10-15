@@ -16,11 +16,11 @@ class QueryRelationListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
@@ -81,13 +81,13 @@ class QueryRelationListResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The relationships.
+        # The list of relationships.
         self.financial_relation_info_list = financial_relation_info_list
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -150,25 +150,25 @@ class QueryRelationListResponseBodyDataFinancialRelationInfoList(DaraModel):
         start_time: str = None,
         state: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The UID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The name of the account.
+        # The logon name of the Alibaba Cloud account.
         self.account_name = account_name
         # The display name of the account.
         self.account_nick_name = account_nick_name
-        # The type of the account. Valid values: MASTER and MEMBER.
+        # The type of the financial account. Valid values: MASTER and MEMBER.
         self.account_type = account_type
-        # The time when the relationship became invalid. If no value is returned, the relationship is still valid.
+        # The time when the relationship expires. If this parameter is empty, the relationship does not expire.
         self.end_time = end_time
-        # The ID of the relationship.
+        # The relationship ID.
         self.relation_id = relation_id
-        # The type of the relationship. Valid values: FinancialManagement and FinancialTrusteeship.
+        # The relationship type. `FinancialManagement` indicates Financial Management and `FinancialTrusteeship` indicates finance trusteeship.
         self.relation_type = relation_type
-        # The time when the relationship was established. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. Example: 2016-05-23T12:00:00Z.
+        # The time when the relationship was established. The time is in UTC and follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.setup_time = setup_time
-        # The time when the relationship became valid. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. Example: 2016-05-23T12:00:00Z.
+        # The time when the relationship takes effect. The time is in UTC and follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.start_time = start_time
-        # The state of the relationship. One of the enumeration members of the RelationshipStatusEnum data type is returned.
+        # The status of the relationship. The value is an enumeration of RelationshipStatusEnum.
         self.state = state
 
     def validate(self):

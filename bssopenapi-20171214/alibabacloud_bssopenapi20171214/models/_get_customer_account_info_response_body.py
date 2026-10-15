@@ -14,15 +14,15 @@ class GetCustomerAccountInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        # Indicates whether the call was successful. A value of true indicates that the call was completed. A value of false indicates that an error occurred.
         self.success = success
 
     def validate(self):
@@ -81,29 +81,36 @@ class GetCustomerAccountInfoResponseBodyData(DaraModel):
         login_email: str = None,
         mpk: int = None,
     ):
-        # The type of the account. A value of 1 indicates an enterprise account. A value of 0 indicates an individual account.
+        # The account type. Valid values:
+        # 
+        # - 1: enterprise account.
+        # - 0: individual account.
         self.account_type = account_type
-        # The business status of the customer. Valid values:
+        # The business type of the end user.
         # 
-        # Freeze: The business is frozen.
+        # Valid values:
         # 
-        # Thaw: The business is unfrozen.
+        # 1. Freeze: The user is in a frozen state.
         # 
-        # Trusteeship: The business is hosted.
+        # 2. Thaw: The user is in a thawed state.
         # 
-        # TrusteeshipCancel: The business is not hosted.
+        # 3. Trusteeship: The user is in a trusteeship state.
+        # 
+        # 4. TrusteeshipCancel: The user is in a non-trusteeship state.
         self.credit_limit_status = credit_limit_status
-        # The hosting status of the credit information and instances of the customer. If the credit information and instances of the customer are managed on Alibaba Cloud, Alibaba Cloud suspends a customer service upon overdue payment. Valid values:
+        # The hosting status. This parameter is provided by the credit control system and indicates whether the instance is managed by Alibaba Cloud. If the instance is managed, Alibaba Cloud handles resource suspension/resumption due to overdue payments.
         # 
-        # FREEZE: The business of the customer is frozen.
+        # Valid values:
         # 
-        # TRUSTEESHIP: The business of the customer is hosted.
+        # 1. FREEZE: The user\\"s business is frozen.
+        # 
+        # 2. TRUSTEESHIP: The user\\"s business is under trusteeship.
         self.hosting_status = hosting_status
-        # Indicates whether the account passes the real-name verification.
+        # The real-name verification status.
         self.is_certified = is_certified
-        # The email address of the customer.
+        # The email address of the end customer.
         self.login_email = login_email
-        # The ID of the management account.
+        # The MPK of the parent account.
         self.mpk = mpk
 
     def validate(self):

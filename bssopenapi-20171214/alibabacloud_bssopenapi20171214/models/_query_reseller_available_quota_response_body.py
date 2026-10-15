@@ -13,10 +13,15 @@ class QueryResellerAvailableQuotaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the call fails. See the "Error codes" section of this topic.
         self.code = code
+        # The available quota balance of the user.
         self.data = data
+        # Additional information about the result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. A value of `true` indicates that the call was successful. A value of `false` indicates that the call failed.
         self.success = success
 
     def validate(self):

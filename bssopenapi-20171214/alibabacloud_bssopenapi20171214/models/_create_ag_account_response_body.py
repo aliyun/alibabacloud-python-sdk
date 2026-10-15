@@ -14,15 +14,15 @@ class CreateAgAccountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The relationship between the account that is used to call the CreateAgAccount operation and the account that is created.
+        # The level 2 relationship between the master account (MPK) and the member account (PK).
         self.ag_relation_dto = ag_relation_dto
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,13 +79,13 @@ class CreateAgAccountResponseBodyAgRelationDto(DaraModel):
         ram_admin_role_name: str = None,
         type: str = None,
     ):
-        # The ID of the account that is used to call the CreateAgAccount operation.
+        # The UID of the master account (MPK).
         self.mpk = mpk
-        # The ID of the account that is created.
+        # The UID of the member account (PK) that is managed by the master account (MPK).
         self.pk = pk
-        # The role of the account that is created.
+        # The name of the RAM role.
         self.ram_admin_role_name = ram_admin_role_name
-        # The type of the relationship.
+        # The type of the account linking relationship.
         self.type = type
 
     def validate(self):

@@ -18,13 +18,13 @@ class QueryCustomerAddressListResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -78,7 +78,6 @@ class QueryCustomerAddressListResponseBodyData(DaraModel):
         self,
         customer_invoice_address_list: main_models.QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressList = None,
     ):
-        # The details of addresses to which invoices are mailed.
         self.customer_invoice_address_list = customer_invoice_address_list
 
     def validate(self):
@@ -154,29 +153,17 @@ class QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomer
         user_id: int = None,
         user_nick: str = None,
     ):
-        # The addressee.
         self.addressee = addressee
-        # The business type.
         self.biz_type = biz_type
-        # The city to which the invoice is mailed.
         self.city = city
-        # The name of the district to which the invoice is mailed.
         self.county = county
-        # The detailed address to which the invoice is mailed. This parameter is returned after fields are concatenated.
         self.delivery_address = delivery_address
-        # The ID.
         self.id = id
-        # The phone number of the addressee.
         self.phone = phone
-        # The postcode.
         self.postal_code = postal_code
-        # The province to which the invoice is mailed.
         self.province = province
-        # The name of the street to which the invoice is mailed.
         self.street = street
-        # The ID of the user.
         self.user_id = user_id
-        # The nickname of the user.
         self.user_nick = user_nick
 
     def validate(self):

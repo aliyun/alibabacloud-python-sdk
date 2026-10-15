@@ -10,6 +10,7 @@ class QueryResellerUserAlarmThresholdRequest(DaraModel):
         alarm_type: str = None,
         owner_id: int = None,
     ):
+        # The type of alert. This parameter is required. Set the value to quota_low_balance, which indicates a low quota alert.
         self.alarm_type = alarm_type
         self.owner_id = owner_id
 

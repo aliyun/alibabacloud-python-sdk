@@ -15,25 +15,28 @@ class DescribeResourceCoverageDetailRequest(DaraModel):
         resource_type: str = None,
         start_period: str = None,
     ):
-        # The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+        # The ID of the account to which the resource belongs. The resource ownership account is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The end time of the query period. Format: yyyy-MM-dd HH:mm:ss. The specified time is excluded from the query. If this parameter is left empty, the current time is used as the end time.
         self.end_period = end_period
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
+        # The maximum number of entries to return in a single request. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
+        # The pagination token. Leave this parameter empty when you query the first page. The token for the next page is returned in the response. If the returned token is empty, all results have been retrieved.
         self.next_token = next_token
-        # The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
+        # The time granularity of the query. Valid values:
+        # - MONTH: month.
+        # - DAY: day.
+        # - HOUR: hour.
         # 
         # This parameter is required.
         self.period_type = period_type
-        # The type of deduction plans whose coverage details are queried. Valid values: RI and SCU.
+        # The type of the resource. Valid values:
+        # - RI: reserved instance.
+        # - SCU: storage capacity unit.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The beginning of the time range to query.
-        # 
-        # The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The start time of the query period. Format: yyyy-MM-dd HH:mm:ss. The specified time is included in the query.
         # 
         # This parameter is required.
         self.start_period = start_period

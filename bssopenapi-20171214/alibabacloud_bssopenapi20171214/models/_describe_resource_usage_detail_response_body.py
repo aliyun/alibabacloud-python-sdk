@@ -16,15 +16,15 @@ class DescribeResourceUsageDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The HTTP status code.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -83,11 +83,11 @@ class DescribeResourceUsageDetailResponseBodyData(DaraModel):
     ):
         # The data entries.
         self.items = items
-        # The number of entries returned on the current page.
+        # The maximum number of entries to return in a single request. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next page.
         self.next_token = next_token
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -163,51 +163,51 @@ class DescribeResourceUsageDetailResponseBodyDataItems(DaraModel):
         zone: str = None,
         zone_name: str = None,
     ):
-        # The unit that is used to measure the resources that are deducted.
+        # The deduction unit.
         self.capacity_unit = capacity_unit
-        # The type of the currency.
+        # The currency.
         self.currency = currency
-        # The amount of the deducted resources.
+        # The deducted amount.
         self.deduct_quantity = deduct_quantity
-        # The end of the time range in which the usage details were queried.
+        # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
         # The operating system.
         self.image_type = image_type
         # The instance type.
         self.instance_spec = instance_spec
-        # The equivalent of pay-as-you-go costs.
+        # The equivalent pay-as-you-go cost.
         self.postpaid_cost = postpaid_cost
         # The potential net savings.
         self.potential_saved_cost = potential_saved_cost
-        # The number of deduction plans.
+        # The resource count.
         self.quantity = quantity
         # The region.
         self.region = region
-        # The code of the region.
+        # The region ID.
         self.region_no = region_no
-        # The fee of the deduction plan.
+        # The purchase cost of the resource.
         self.reservation_cost = reservation_cost
-        # The ID of the deduction plan.
+        # The instance ID.
         self.resource_instance_id = resource_instance_id
         # The net savings.
         self.saved_cost = saved_cost
-        # The beginning of the time range in which the usage details were queried.
+        # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The status of the deduction plan.
+        # The status.
         self.status = status
-        # The name of the status.
+        # The status name.
         self.status_name = status_name
-        # The total capacity of the deduction plan.
+        # The total number of resources.
         self.total_quantity = total_quantity
-        # The usage rate of the deduction plan.
+        # The usage rate.
         self.usage_percentage = usage_percentage
         # The account ID.
         self.user_id = user_id
-        # The username of the account.
+        # The account name.
         self.user_name = user_name
         # The zone.
         self.zone = zone
-        # The code of the zone.
+        # The zone ID.
         self.zone_name = zone_name
 
     def validate(self):

@@ -16,15 +16,15 @@ class QuerySkuPriceListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
-        # The data that is returned.
+        # The returned data.
         self.data = data
-        # The message that is returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -78,7 +78,7 @@ class QuerySkuPriceListResponseBodyData(DaraModel):
         self,
         sku_price_page: main_models.QuerySkuPriceListResponseBodyDataSkuPricePage = None,
     ):
-        # The SKUs of the pricing object.
+        # The pricing entity SKU information.
         self.sku_price_page = sku_price_page
 
     def validate(self):
@@ -110,9 +110,9 @@ class QuerySkuPriceListResponseBodyDataSkuPricePage(DaraModel):
         sku_price_list: List[main_models.QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList] = None,
         total_count: int = None,
     ):
-        # The token that is used to query the next page.
+        # The token for the next page.
         self.next_page_token = next_page_token
-        # The SKUs.
+        # The SKU list.
         self.sku_price_list = sku_price_list
         # The total number of SKUs.
         self.total_count = total_count
@@ -164,11 +164,11 @@ class QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList(DaraModel):
         sku_code: str = None,
         sku_factor_map: Dict[str, str] = None,
     ):
-        # The prices of the SKUs.
+        # The SKU price list.
         self.csku_price_list = csku_price_list
-        # The code of the SKU.
+        # sku code
         self.sku_code = sku_code
-        # The values of the pricing factors.
+        # The collection of factor values. Different commodities have their own factors under pricing entities. For example, the instance_type pricing entity of the ECS commodity has factors such as `vm_region_no, iooptimized, vm_os_kind, instance_type`.
         self.sku_factor_map = sku_factor_map
 
     def validate(self):
@@ -223,7 +223,7 @@ class QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList(Dar
         range_list: List[main_models.QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRangeList] = None,
         usage_unit: str = None,
     ):
-        # The unique code of the SKU price.
+        # The CSKU code, which is the unique price identifier.
         self.csku_code = csku_code
         # The currency.
         self.currency = currency
@@ -231,11 +231,11 @@ class QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList(Dar
         self.price = price
         # The pricing mode.
         self.price_mode = price_mode
-        # The pricing type.
+        # The price type.
         self.price_type = price_type
-        # The unit of the price.
+        # The price unit.
         self.price_unit = price_unit
-        # If the PriceMode parameter is set to STEP_ACCUMULATION or STEP_ARRIVE, the value of this field exists and specifies the range. If the PriceMode parameter is set to NORMAL_PRICE, the value of this field is null.
+        # This field has a value when PriceMode is STEP_ACCUMULATION or STEP_ARRIVE, specifying the range. When PriceMode is NORMAL_PRICE, this field is NULL.
         self.range_list = range_list
         # The usage unit.
         self.usage_unit = usage_unit
@@ -318,13 +318,13 @@ class QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRang
         min: str = None,
         type: str = None,
     ):
-        # The code of the pricing factor.
+        # The factor code.
         self.factor_code = factor_code
         # The maximum value.
         self.max = max
         # The minimum value.
         self.min = min
-        # The closure type of the interval.
+        # The interval closure type.
         self.type = type
 
     def validate(self):

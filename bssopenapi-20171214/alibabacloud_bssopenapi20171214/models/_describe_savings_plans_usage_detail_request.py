@@ -18,22 +18,26 @@ class DescribeSavingsPlansUsageDetailRequest(DaraModel):
         start_period: str = None,
         token: str = None,
     ):
-        # The ID of the account for which you want to query usage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+        # The ID of the account. If this parameter is left empty, data of the current account and its trusteeship linked accounts is queried. You can specify a trusteeship linked account ID to query data of that account.
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The end time. Format: yyyy-MM-dd HH:mm:ss. The query excludes data at this time. If this parameter is left empty, the query covers data up to the current time.
         self.end_period = end_period
         self.filter_param = filter_param
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
+        # The maximum number of data records to return. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The time granularity at which usage details are queried. Valid values: MONTH, DAY, and HOUR.
+        # The time granularity for querying usage details. Valid values:
+        # 
+        # - MONTH: monthly granularity.
+        # - DAY: daily granularity.
+        # - HOUR: hourly granularity.
         # 
         # This parameter is required.
         self.period_type = period_type
-        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The start time. Format: yyyy-MM-dd HH:mm:ss. The query includes data at this time.
         # 
         # This parameter is required.
         self.start_period = start_period
-        # The token that is used to retrieve the next page of results. You do not need to set this parameter if you query usage details within a specific time range for the first time. The response returns a token that you can use to query usage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
+        # The pagination token. Leave this parameter empty for the first page. The query result returns the token for the next page. If the returned token is empty, all data has been retrieved.
         self.token = token
 
     def validate(self):

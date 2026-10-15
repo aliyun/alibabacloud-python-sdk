@@ -71,8 +71,6 @@ class AddAccountRelationResponseBody(DaraModel):
 
         return self
 
-
-
 class AddAccountRelationResponseBodyData(DaraModel):
     def __init__(
         self,

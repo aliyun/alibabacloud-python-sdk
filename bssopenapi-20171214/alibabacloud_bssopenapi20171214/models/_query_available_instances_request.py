@@ -21,39 +21,36 @@ class QueryAvailableInstancesRequest(DaraModel):
         renew_status: str = None,
         subscription_type: str = None,
     ):
-        # The end time when the specified instance is created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time of the creation time range. Specify the time in the ISO 8601 standard in the UTC format.
         self.create_time_end = create_time_end
-        # The start time when the specified instance is created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start time of the creation time range. Specify the time in the ISO 8601 standard in the UTC format.
         self.create_time_start = create_time_start
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-05-23T12:00:00Z.
+        # The end time of the expiration time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
         self.end_time_end = end_time_end
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-05-23T12:00:00Z.
+        # The start time of the expiration time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
         self.end_time_start = end_time_start
-        # The ID of the instance. Separate multiple IDs with commas (,). You can specify a maximum of 100 IDs.
+        # The instance IDs. Separate multiple IDs with commas. You can specify up to 100 IDs.
         self.instance_ids = instance_ids
         self.owner_id = owner_id
-        # The number of the page to return.
+        # The page number.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries per page. Default value: 20. Maximum value: 300.
         self.page_size = page_size
-        # The code of the service. You can query the service code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud services**.
-        # 
-        # >This parameter cannot be left empty if the region is specified.
+        # The product code. You can call the **QueryProductList** operation to query product codes.
+        # > If the region is specified, this parameter cannot be empty.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The ID of the region in which the instance resides.
+        # The region.
         self.region = region
-        # The renewal status of the specified instance. Valid values:
-        # 
-        # *   AutoRenewal: The instance is automatically renewed.
-        # *   ManualRenewal: The instance is manually renewed.
-        # *   NotRenewal: The instance is not renewed.
+        # The renewal status. Valid values:
+        # - AutoRenewal: auto-renewal.
+        # - ManualRenewal: manual renewal.
+        # - NotRenewal: no renewal.
         self.renew_status = renew_status
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: subscription
-        # *   PayAsYouGo: pay-as-you-go
+        # The subscription type.
+        # - Subscription: subscription.
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

@@ -18,13 +18,13 @@ class QuerySavingsPlansInstanceResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The return data.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,7 +81,7 @@ class QuerySavingsPlansInstanceResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The details about the instances.
+        # The list of instance information.
         self.items = items
         # The page number of the returned page.
         self.page_num = page_num
@@ -164,59 +164,78 @@ class QuerySavingsPlansInstanceResponseBodyDataItems(DaraModel):
         total_save: str = None,
         utilization: str = None,
     ):
-        # The allocation status. Valid values:
+        # The allocation status.
         # 
-        # *   unallocated
-        # *   allocated
-        # *   beAllocated
+        # - unallocated: Not allocated.
+        # 
+        # - allocated: Allocating.
+        # 
+        # - beAllocated: Allocated to this account.
         self.allocation_status = allocation_status
+        # The commodity code.
         self.commodity_code = commodity_code
-        # The currency. Valid values: CNY and USD.
+        # The currency. Valid values: CNY: Chinese Yuan. USD: US Dollar.
         self.currency = currency
+        # For a savings plan with a monthly cycle, this is the commitment for the current cycle. Unit: CNY.
         self.current_pool_value = current_pool_value
+        # The purchased duration.
         self.cycle = cycle
+        # The deduction cycle.
+        # HOUR: hourly
+        # DAY: daily
+        # ONCE: one-time (the total amount decreases over time)
         self.deduct_cycle_type = deduct_cycle_type
-        # The time when the instance expires. The time is in the format of yyyy-MM-dd HH:mm:ss.
+        # The expiration time of the instance. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.end_time = end_time
+        # The end timestamp.
         self.end_timestamp = end_timestamp
-        # The instance family information. For an instance of the Elastic Compute Service (ECS) compute type, the value indicates the ECS instance family or the ECS instance family package.
+        # For a compute-optimized savings plan, this parameter indicates the corresponding instance family or instance family package.
         self.instance_family = instance_family
         # The ID of the savings plan instance.
         self.instance_id = instance_id
+        # The total deduction amount in the previous cycle. Unit: CNY.
         self.last_bill_total_usage = last_bill_total_usage
+        # The utilization in the previous cycle.
         self.last_bill_utilization = last_bill_utilization
-        # The payment type. Valid values:
+        # The payment type.
         # 
-        # *   total: All Upfront
-        # *   half: Partial Upfront
-        # *   zero: No Upfront
+        # - total: All Upfront
+        # 
+        # - half: Partial Upfront
+        # 
+        # - zero: No Upfront
         self.pay_mode = pay_mode
-        # The commitment.
+        # The commitment. Unit: CNY.
         self.pool_value = pool_value
-        # The prepaid amount.
+        # The upfront payment. Unit: CNY.
         self.prepay_fee = prepay_fee
         # The region.
         self.region = region
+        # For a flexible savings plan with a monthly or daily commitment, this is the remaining amount in the current cycle. Unit: CNY.
         self.rest_pool_value = rest_pool_value
-        # The type of the savings plan. Valid values:
+        # The type of the savings plan.
         # 
-        # *   universal: general-purpose
-        # *   ecs: ECS compute
+        # - unversal: general-purpose
+        # 
+        # - ecs: compute-optimized
         self.savings_type = savings_type
-        # The time when the instance takes effect. The time is in the format of yyyy-MM-dd HH:mm:ss.
+        # The effective time of the instance. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.start_time = start_time
+        # The start timestamp.
         self.start_timestamp = start_timestamp
-        # The status of the instance. Valid values:
+        # The current status.
         # 
-        # *   NORMAL: normal
-        # *   LIMIT: stopped due to overdue payment
-        # *   RELEASE: released
+        # - NORMAL: The instance is active.
+        # 
+        # - LIMIT: The instance is suspended due to an overdue payment.
+        # 
+        # - RELEASE: The instance is released.
         self.status = status
-        # The details about the tags.
+        # The list of tag information.
         self.tags = tags
-        # The total amount that is saved.
+        # The total savings. Unit: CNY.
         self.total_save = total_save
-        # The total usage.
+        # The total utilization.
         self.utilization = utilization
 
     def validate(self):
@@ -391,9 +410,9 @@ class QuerySavingsPlansInstanceResponseBodyDataItemsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

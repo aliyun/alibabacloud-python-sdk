@@ -13,15 +13,15 @@ class DescribeCostBudgetsSummaryRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The name of the budget. Fuzzy match is supported.
+        # The name of the budget. Supports fuzzy search.
         self.budget_name = budget_name
-        # The status of the budget. Valid values: overdue and notOverdue. A value of overdue specifies to filter expired budgets. A value of notOverdue specifies to filter budgets that do not expire. By default, if you do not specify this parameter, information about all budgets is to be returned.
+        # The status of the budget. If you do not specify this parameter, budgets in all statuses are returned.
         self.budget_status = budget_status
-        # The type of the budget. Valid values: cost, byquantity, and asset. A value of cost specifies to filter expense budgets. A value of byquantity specifies to filter budgets calculated based on the resource usage. A value of asset specifies to filter usage or coverage budgets. By default, information about all budgets is returned if you do not specify this parameter.
+        # The type of the budget. If you do not specify this parameter, budgets of all types are returned.
         self.budget_type = budget_type
-        # The number of entries to return on each page. Default value: 10. Maximum value: 10. Minimum value: 1.
+        # The maximum number of items to return. Valid values: 1 to 10. Default value: 10.
         self.max_results = max_results
-        # The position in which the query starts. You must set this parameter to null or the token that is obtained from the previous query. Otherwise, an error is returned. If you set the NextToken parameter to null, the query starts from the beginning. The default value is null.
+        # The token that is used to retrieve the next page of results. Set this parameter to the NextToken value that is returned in the response to the previous request. If you do not specify this parameter, the query starts from the first page.
         self.next_token = next_token
 
     def validate(self):

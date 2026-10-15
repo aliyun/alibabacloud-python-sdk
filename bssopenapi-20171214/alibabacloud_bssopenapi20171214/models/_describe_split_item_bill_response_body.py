@@ -18,13 +18,13 @@ class DescribeSplitItemBillResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -84,19 +84,19 @@ class DescribeSplitItemBillResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The ID of the account.
+        # The account ID.
         self.account_id = account_id
-        # The ID of the account.
+        # The user account.
         self.account_name = account_name
         # The billing cycle. Format: YYYY-MM.
         self.billing_cycle = billing_cycle
-        # The details of the bill.
+        # The bill details.
         self.items = items
-        # The maximum number of entries returned.
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
-        # The token used for the next query. If this parameter is empty, all the results are returned. When you perform the next query, you must set the NextToken parameter to this value.
+        # The token that indicates the position where the current call stops reading. An empty value indicates that all data has been read. Set this value to the NextToken request parameter in the next call.
         self.next_token = next_token
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -222,112 +222,116 @@ class DescribeSplitItemBillResponseBodyDataItems(DaraModel):
         usage_unit: str = None,
         zone: str = None,
     ):
-        # The amount deducted with credit refund.
         self.adjust_amount = adjust_amount
+        # The amount after discount, which includes the payable amount after coupon deduction. Calculation rule: Amount after discount = List price - Discount amount.
         self.after_discount_amount = after_discount_amount
         # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
         # The name of the account to which the bill belongs.
         self.bill_account_name = bill_account_name
-        # The billing date. Format: YYYY-MM-DD. This parameter is not supported.
+        # The billing date in the YYYY-MM-DD format. This parameter is not supported.
         self.billing_date = billing_date
-        # The billable item.
+        # The billing item.
         self.billing_item = billing_item
-        # The code of the billable item.
+        # The billing item code.
         self.billing_item_code = billing_item_code
         # The billing method.
         self.billing_type = billing_type
-        # The type of the business.
+        # The business type.
         self.biz_type = biz_type
-        # The amount paid in cash. The amount deducted with credit refund is not included.
         self.cash_amount = cash_amount
-        # The code of the commodity. The code is the same as that displayed in the Split Bill module of the User Center console.
+        # The commodity code, which is the same as the product detail code in the User Center.
         self.commodity_code = commodity_code
-        # The cost center.
+        # The cost unit.
         self.cost_unit = cost_unit
-        # The type of currency. Valid values: CNY, USD, and JPY.
+        # The currency. Valid values:
+        # - CNY
+        # - USD
+        # - JPY
         self.currency = currency
-        # The amount deducted with vouchers.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
-        # The amount deducted with coupons.
+        # The coupon discount amount.
         self.deducted_by_coupons = deducted_by_coupons
-        # The amount deducted with prepaid cards.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
-        # The amount deducted with resource plans.
+        # The amount deducted by resource plans.
         self.deducted_by_resource_package = deducted_by_resource_package
-        # The configurations of the instance.
+        # The detailed instance configuration.
         self.instance_config = instance_config
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The type of the instance.
+        # The instance specifications.
         self.instance_spec = instance_spec
         # The public IP address.
         self.internet_ip = internet_ip
-        # The private IP address.
+        # The internal IP address.
         self.intranet_ip = intranet_ip
         # The discount amount.
         self.invoice_discount = invoice_discount
-        # The type of the bill. Valid values: SubscriptionOrder: the subscription bill. PayAsYouGoBill: the pay-as-you-go bill. Refund: the refund. Adjustment: the adjustment bill.
+        # The bill type. Valid values:
+        # - SubscriptionOrder: Subscription order.
+        # - PayAsYouGoBill: Pay-as-you-go bill.
+        # - Refund: Refund.
+        # - Adjustment: Adjustment.
         self.item = item
-        # The name of the split item.
+        # The item name.
         self.item_name = item_name
         # The unit price.
         self.list_price = list_price
         # The unit of the unit price.
         self.list_price_unit = list_price_unit
-        # The name of the instance.
+        # The instance nickname.
         self.nick_name = nick_name
-        # The amount that is unsettled.
         self.outstanding_amount = outstanding_amount
-        # The ID of the account that owns the resource. This parameter is returned in multi-account scenario.
+        # The account ID of the resource owner in multi-account payment scenarios.
         self.owner_id = owner_id
-        # The amount paid in cash. The amount deducted with credit refund is included.
         self.payment_amount = payment_amount
-        # The code of the service. The code is the same as that displayed in the Split Bill module of the User Center console.
+        # The product code, which is the same as the bill product code in the User Center.
         self.pip_code = pip_code
-        # The pretax amount.
+        # The payable amount.
         self.pretax_amount = pretax_amount
-        # The pretax gross amount.
+        # The original amount.
         self.pretax_gross_amount = pretax_gross_amount
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The details of the service.
+        # The product detail.
         self.product_detail = product_detail
-        # The name of the service.
+        # The product name.
         self.product_name = product_name
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The ID of the region.
+        # The region.
         self.region = region
-        # The ID of the resource group.
+        # The resource group.
         self.resource_group = resource_group
-        # The duration of the service.
+        # The service duration.
         self.service_period = service_period
         # The unit of the service duration.
         self.service_period_unit = service_period_unit
-        # The ID of the account to which the split bill belongs.
+        # The account ID of the attached resource.
         self.split_account_id = split_account_id
-        # The name of the account to which the split item belongs.
+        # The account name of the attached resource.
         self.split_account_name = split_account_name
-        # The billing cycle in which the bill is split.
+        # The split bill month.
         self.split_billing_cycle = split_billing_cycle
-        # The day on which the bill is split.
+        # The split bill date.
         self.split_billing_date = split_billing_date
-        # The code of the split item.
+        # The commodity code of the attached resource.
         self.split_commodity_code = split_commodity_code
-        # The ID of the split item.
+        # The ID of the attached resource.
         self.split_item_id = split_item_id
-        # The name of the split item.
+        # The name of the attached resource.
         self.split_item_name = split_item_name
-        # The details of the service.
+        # The product detail name of the attached resource.
         self.split_product_detail = split_product_detail
-        # The billing method. Valid values: Subscription: the subscription billing method. PayAsYouGo: the pay-as-you-go billing method.
+        # The subscription type. Valid values:
+        # - Subscription: Subscription.
+        # - PayAsYouGo: Pay-as-you-go.
         self.subscription_type = subscription_type
-        # The tag of the resource. If tags added to resources change, the bills generated during the period in which resources and tags are associated are returned.
+        # The resource tag. If a tag on a resource is changed, the bills generated during the validity period will include this tag.
         self.tag = tag
-        # The amount of resource usage.
+        # The usage.
         self.usage = usage
-        # The unit of usage.
+        # The usage unit.
         self.usage_unit = usage_unit
         # The zone.
         self.zone = zone

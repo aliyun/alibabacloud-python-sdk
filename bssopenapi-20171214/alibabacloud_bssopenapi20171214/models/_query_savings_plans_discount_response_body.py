@@ -16,15 +16,15 @@ class QuerySavingsPlansDiscountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned.
+        # The error code.
         self.code = code
-        # data
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class QuerySavingsPlansDiscountResponseBodyData(DaraModel):
         host_id: str = None,
         items: List[main_models.QuerySavingsPlansDiscountResponseBodyDataItems] = None,
     ):
-        # The IP address of the request.
+        # The request IP address.
         self.host_id = host_id
-        # The information about the discounts on saving plans.
+        # The list of discount information.
         self.items = items
 
     def validate(self):
@@ -132,27 +132,29 @@ class QuerySavingsPlansDiscountResponseBodyDataItems(DaraModel):
         spec: str = None,
         spn_type: str = None,
     ):
-        # The details of the service.
+        # The product details.
         self.commodity_name = commodity_name
-        # The contracted discount.
+        # The contract discount rate.
         self.contract_discount_rate = contract_discount_rate
-        # The cycle based on which queries were performed.
+        # The query cycle.
         self.cycle = cycle
-        # The discount provided by the official website.
+        # The official discount rate.
         self.discount_rate = discount_rate
         # The name of the pricing module.
         self.module_name = module_name
-        # The payment mode. Valid values:
+        # The payment mode.
         # 
-        # *   total: all upfront
-        # *   half: half upfront
-        # *   zero: no upfront
+        # - total: All upfront
+        # 
+        # - half: Partial upfront
+        # 
+        # - zero: No upfront
         self.pay_mode = pay_mode
-        # The ID of the region.
+        # The region.
         self.region = region
-        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+        # The ID of the region where the instance resides. For more information, see [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html).
         self.region_code = region_code
-        # The type of the resource.
+        # The resource type.
         self.spec = spec
         # The type of the savings plan.
         self.spn_type = spn_type

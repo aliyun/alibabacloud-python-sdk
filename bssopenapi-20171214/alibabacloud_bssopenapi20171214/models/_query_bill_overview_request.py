@@ -13,20 +13,19 @@ class QueryBillOverviewRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
-        # The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
+        # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
-        # The billing cycle, in the YYYY-MM format.
+        # The billing date in the YYYY-MM format.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: the subscription billing method
-        # *   PayAsYouGo: the pay-as-you-go billing method
+        # The subscription type. Valid values:
+        # - Subscription: upfront.
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

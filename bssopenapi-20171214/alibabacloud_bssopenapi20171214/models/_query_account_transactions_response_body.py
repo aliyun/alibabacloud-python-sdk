@@ -16,13 +16,13 @@ class QueryAccountTransactionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -82,15 +82,14 @@ class QueryAccountTransactionsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The name of your Alibaba Cloud account.
+        # The user account.
         self.account_name = account_name
-        # The information about transactions.
         self.account_transactions_list = account_transactions_list
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -191,57 +190,18 @@ class QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTran
         transaction_time: str = None,
         transaction_type: str = None,
     ):
-        # The amount.
         self.amount = amount
-        # The balance of the account.
         self.balance = balance
-        # The billing cycle. Format: YYYY-MM.
         self.billing_cycle = billing_cycle
-        # The type of transaction payment. Valid values:
-        # 
-        # *   Cash: pay for the transaction in cash.
-        # *   Deposit: pay for the transaction with deposit.
-        # *   RegularBankCreditRefund: pay for the transaction with credit refund controlled by a bank.
-        # *   DirectPay: directly pay for the transaction.
         self.fund_type = fund_type
-        # The number of the order or bill.
         self.record_id = record_id
-        # The remarks on the transaction.
         self.remarks = remarks
-        # The transaction account. For example, the account is a recharge account in Alipay or a transfer account.
         self.transaction_account = transaction_account
-        # The transaction channel.
-        # 
-        # *   AccountBalance
-        # *   BankTransfer
-        # *   Alipay
-        # *   AntCreditPay
-        # *   OfflineRemittance
-        # *   RegularBankCreditRefund
-        # *   CreditCard
-        # *   MyBankCredit
-        # *   HuaxiaBankCInstallment
-        # *   ApplePay
         self.transaction_channel = transaction_channel
-        # The serial number of the transaction channel.
         self.transaction_channel_sn = transaction_channel_sn
-        # The type of the transaction flow.
-        # 
-        # *   Income
-        # *   Expense
         self.transaction_flow = transaction_flow
-        # The number of the transaction.
         self.transaction_number = transaction_number
-        # The time when the transaction was made.
         self.transaction_time = transaction_time
-        # The type of the transaction.
-        # 
-        # *   Payment
-        # *   Withdraw
-        # *   Refund
-        # *   Consumption
-        # *   Transfer
-        # *   Adjust
         self.transaction_type = transaction_type
 
     def validate(self):

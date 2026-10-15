@@ -16,7 +16,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
         # The data returned.
         self.data = data
@@ -24,7 +24,7 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBody(DaraModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -87,13 +87,13 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyData(DaraModel
         self.account_id = account_id
         # The name of the account.
         self.account_name = account_name
-        # The data entries returned.
+        # The data entries.
         self.items = items
         # The maximum number of entries returned.
         self.max_results = max_results
-        # The position from which the results started to return. The parameter must be left empty or set to the value of the NextToken parameter returned from the last call. Otherwise, an error is returned. If this parameter is left empty, data is queried from the beginning.
+        # The token that is used to query the next page of results.
         self.next_token = next_token
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -207,105 +207,113 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(Dara
         round_down_discount: float = None,
         subscription_type: str = None,
     ):
+        # The amount after a discount is applied.
         self.after_discount_amount = after_discount_amount
-        # The allocation month. Format: YYYYMM.
+        # The amortization month.
+        # Format: YYYYMM.
         self.amortization_period = amortization_period
-        # The allocation status. Valid values:
+        # The amortization status. Valid values:
         # 
-        # *   amortized: allocated
-        # *   unAmortized: not allocated
+        # - amortized: The cost is amortized.
+        # 
+        # - unAmortized: The cost is not amortized.
         self.amortization_status = amortization_status
         # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
         # The name of the account to which the bill belongs.
         self.bill_account_name = bill_account_name
-        # The ID of the account to which the resource belongs.
+        # The ID of the resource owner.
         self.bill_owner_id = bill_owner_id
-        # The name of the account to which the resource belongs.
+        # The name of the resource owner.
         self.bill_owner_name = bill_owner_name
         # The business type.
         self.biz_type = biz_type
-        # The billing cycle. Format: YYYYMM.
+        # The billing cycle.
+        # Format: YYYYMM.
         self.consume_period = consume_period
+        # The amount that is amortized in the current period, after a discount is applied.
         self.current_amortization_after_discount_amount = current_amortization_after_discount_amount
-        # The amount deducted by using vouchers and allocated to the current allocation month.
+        # The amount deducted by cash coupons that is amortized in the current period.
         self.current_amortization_deducted_by_cash_coupons = current_amortization_deducted_by_cash_coupons
-        # The amount deducted by using coupons and allocated to the current allocation month.
+        # The amount deducted by coupons that is amortized in the current period.
         self.current_amortization_deducted_by_coupons = current_amortization_deducted_by_coupons
-        # The amount deducted by using prepaid cards and allocated to the current allocation month.
+        # The amount paid by prepaid card that is amortized in the current period.
         self.current_amortization_deducted_by_prepaid_card = current_amortization_deducted_by_prepaid_card
-        # The expenditure amount allocated to the current allocation month. Invoicing is supported.
+        # The expenditure amount that is amortized in the current period. This amount can be invoiced.
         self.current_amortization_expenditure_amount = current_amortization_expenditure_amount
-        # The discount amount allocated to the current allocation month.
+        # The discount that is amortized in the current period.
         self.current_amortization_invoice_discount = current_amortization_invoice_discount
-        # The pretax amount allocated to the current allocation month.
+        # The pretax amount that is amortized in the current period.
         self.current_amortization_pretax_amount = current_amortization_pretax_amount
-        # The pretax gross amount allocated to the current allocation month.
+        # The pretax gross amount that is amortized in the current period.
         self.current_amortization_pretax_gross_amount = current_amortization_pretax_gross_amount
-        # The round-off amount allocated to the current allocation month.
+        # The amount rounded down that is amortized in the current period.
         self.current_amortization_round_down_discount = current_amortization_round_down_discount
-        # The amount deducted by using vouchers.
+        # The amount deducted by cash coupons.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
-        # The amount deducted by using coupons.
+        # The amount deducted by coupons.
         self.deducted_by_coupons = deducted_by_coupons
-        # The amount deducted by using prepaid cards.
+        # The amount paid by prepaid card.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
-        # The expenditure amount. Invoicing is supported.
+        # The expenditure amount. This amount can be invoiced.
         self.expenditure_amount = expenditure_amount
-        # The discount amount.
+        # The discount.
         self.invoice_discount = invoice_discount
         # The pretax amount.
         self.pretax_amount = pretax_amount
         # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
+        # The amount that was amortized before the beginning of the period, after a discount is applied.
         self.previously_amortized_after_discount_amount = previously_amortized_after_discount_amount
-        # The amount deducted by using vouchers and allocated before the current allocation month.
+        # The amount deducted by cash coupons that was amortized before the beginning of the period.
         self.previously_amortized_deducted_by_cash_coupons = previously_amortized_deducted_by_cash_coupons
-        # The amount deducted by using coupons and allocated before the current allocation month.
+        # The amount deducted by coupons that was amortized before the beginning of the period.
         self.previously_amortized_deducted_by_coupons = previously_amortized_deducted_by_coupons
-        # The amount deducted by using prepaid cards and allocated before the current allocation month.
+        # The amount paid by prepaid card that was amortized before the beginning of the period.
         self.previously_amortized_deducted_by_prepaid_card = previously_amortized_deducted_by_prepaid_card
-        # The expenditure amount allocated before the current allocation month. Invoicing is supported.
+        # The expenditure amount that was amortized before the beginning of the period. This amount can be invoiced.
         self.previously_amortized_expenditure_amount = previously_amortized_expenditure_amount
-        # The discount amount allocated before the current allocation month.
+        # The discount that was amortized before the beginning of the period.
         self.previously_amortized_invoice_discount = previously_amortized_invoice_discount
-        # The pretax amount allocated before the current allocation month.
+        # The pretax amount that was amortized before the beginning of the period.
         self.previously_amortized_pretax_amount = previously_amortized_pretax_amount
-        # The pretax gross amount allocated before the current allocation month.
+        # The pretax gross amount that was amortized before the beginning of the period.
         self.previously_amortized_pretax_gross_amount = previously_amortized_pretax_gross_amount
-        # The round-off amount allocated before the current allocation month.
+        # The amount rounded down that was amortized before the beginning of the period.
         self.previously_amortized_round_down_discount = previously_amortized_round_down_discount
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The specific service resource.
+        # The details of the product.
         self.product_detail = product_detail
-        # The code of the specific service resource.
+        # The code of the product details.
         self.product_detail_code = product_detail_code
-        # The name of the service.
+        # The product name.
         self.product_name = product_name
+        # The unamortized amount at the end of the period, after a discount is applied.
         self.remaining_amortization_after_discount_amount = remaining_amortization_after_discount_amount
-        # The amount deducted by using vouchers and to be allocated to one or more future allocation months.
+        # The unamortized amount deducted by cash coupons at the end of the period.
         self.remaining_amortization_deducted_by_cash_coupons = remaining_amortization_deducted_by_cash_coupons
-        # The amount deducted by using coupons and to be allocated to one or more future allocation months.
+        # The unamortized amount deducted by coupons at the end of the period.
         self.remaining_amortization_deducted_by_coupons = remaining_amortization_deducted_by_coupons
-        # The amount deducted by using prepaid cards and to be allocated to one or more future allocation months.
+        # The unamortized amount paid by prepaid card at the end of the period.
         self.remaining_amortization_deducted_by_prepaid_card = remaining_amortization_deducted_by_prepaid_card
-        # The expenditure amount to be allocated to one or more future allocation months. Invoicing is supported.
+        # The unamortized expenditure amount at the end of the period. This amount can be invoiced.
         self.remaining_amortization_expenditure_amount = remaining_amortization_expenditure_amount
-        # The discount amount to be allocated to one or more future allocation months.
+        # The unamortized discount at the end of the period.
         self.remaining_amortization_invoice_discount = remaining_amortization_invoice_discount
-        # The pretax amount to be allocated to one or more future allocation months.
+        # The unamortized pretax amount at the end of the period.
         self.remaining_amortization_pretax_amount = remaining_amortization_pretax_amount
-        # The pretax gross amount to be allocated to one or more future allocation months.
+        # The unamortized pretax gross amount at the end of the period.
         self.remaining_amortization_pretax_gross_amount = remaining_amortization_pretax_gross_amount
-        # The round-off amount to be allocated to one or more future allocation months.
+        # The unamortized amount rounded down at the end of the period.
         self.remaining_amortization_round_down_discount = remaining_amortization_round_down_discount
-        # The round-off amount.
+        # The amount rounded down.
         self.round_down_discount = round_down_discount
-        # The billing method. Valid values:
+        # The subscription type. Valid values:
         # 
-        # *   Subscription: the subscription billing method
-        # *   PayAsYouGo: the pay-as-you-go billing method
+        # - Subscription: subscription.
+        # 
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

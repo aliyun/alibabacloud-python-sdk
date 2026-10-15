@@ -14,17 +14,17 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags. This parameter is valid only if the TagKey.n parameter is not set. Valid values: true and false.
+        # Specifies whether to remove all tags. This parameter is valid only when `TagKey.N` is not specified. Valid values: `true` and `false`.
         self.all = all
-        # The IDs of resources.
+        # The list of resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Specify the savings plan instance as the type of the resource.
+        # The resource type. Set the value to `instance`. This value indicates a savings plan instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag keys.
+        # The list of tag keys.
         self.tag_key = tag_key
 
     def validate(self):

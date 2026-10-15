@@ -16,10 +16,15 @@ class QuerySettleBillResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,12 +84,18 @@ class QuerySettleBillResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The account ID.
         self.account_id = account_id
+        # The account name.
         self.account_name = account_name
+        # The billing cycle, in the format of YYYY-MM.
         self.billing_cycle = billing_cycle
         self.items = items
+        # The maximum number of records returned in this request.
         self.max_results = max_results
+        # The token that indicates the position where the current call reads to. An empty value indicates that all data has been read.
         self.next_token = next_token
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

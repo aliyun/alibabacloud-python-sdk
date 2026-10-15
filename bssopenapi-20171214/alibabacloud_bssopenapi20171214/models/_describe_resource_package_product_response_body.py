@@ -87,7 +87,6 @@ class DescribeResourcePackageProductResponseBodyData(DaraModel):
         self,
         resource_packages: main_models.DescribeResourcePackageProductResponseBodyDataResourcePackages = None,
     ):
-        # The details about the resource plans.
         self.resource_packages = resource_packages
 
     def validate(self):
@@ -155,13 +154,9 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         product_code: str = None,
         product_type: str = None,
     ):
-        # The name of the resource plan.
         self.name = name
-        # The types of the resource plans.
         self.package_types = package_types
-        # The code of the service.
         self.product_code = product_code
-        # The type of the service.
         self.product_type = product_type
 
     def validate(self):
@@ -247,13 +242,9 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         properties: main_models.DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeProperties = None,
         specifications: main_models.DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecifications = None,
     ):
-        # The code of the resource plan.
         self.code = code
-        # The name of the resource plan type.
         self.name = name
-        # The properties of the resource plan.
         self.properties = properties
-        # The specifications of the resource plan.
         self.specifications = specifications
 
     def validate(self):
@@ -341,11 +332,8 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         name: str = None,
         value: str = None,
     ):
-        # The validity periods available for the resource plan.
         self.available_durations = available_durations
-        # The name of the specification.
         self.name = name
-        # The value of the specification.
         self.value = value
 
     def validate(self):
@@ -424,16 +412,8 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         unit: str = None,
         value: int = None,
     ):
-        # The name of the validity period.
         self.name = name
-        # The unit of the validity period for the resource plan. Valid values:
-        # 
-        # *   Month
-        # *   Year
-        # 
-        # Default value: Month.
         self.unit = unit
-        # The value of the validity period.
         self.value = value
 
     def validate(self):
@@ -509,9 +489,7 @@ class DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePack
         name: str = None,
         value: str = None,
     ):
-        # The name of the property.
         self.name = name
-        # The value of the property.
         self.value = value
 
     def validate(self):

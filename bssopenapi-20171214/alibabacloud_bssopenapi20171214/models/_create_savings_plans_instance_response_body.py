@@ -14,15 +14,10 @@ class CreateSavingsPlansInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
         self.code = code
-        # The data returned.
         self.data = data
-        # The error message returned.
         self.message = message
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -76,7 +71,6 @@ class CreateSavingsPlansInstanceResponseBodyData(DaraModel):
         self,
         order_id: int = None,
     ):
-        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):

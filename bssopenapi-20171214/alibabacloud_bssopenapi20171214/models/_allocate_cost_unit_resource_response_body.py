@@ -14,13 +14,13 @@ class AllocateCostUnitResourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The message code. Example: success.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -78,14 +78,13 @@ class AllocateCostUnitResourceResponseBodyData(DaraModel):
         to_unit_id: int = None,
         to_unit_user_id: int = None,
     ):
-        # Indicates whether resources are allocated to the specified cost center. Valid values:
-        # 
-        # *   true: The resources are allocated to the specified cost center.
-        # *   false: The resources fail to be allocated to the specified cost center.
+        # Indicates whether the financial unit resource allocation is successful.
+        # - true: The allocation succeeded.
+        # - false: The allocation failed.
         self.is_success = is_success
-        # The ID of the destination cost center.
+        # The ID of the destination financial unit.
         self.to_unit_id = to_unit_id
-        # The user ID of the owner of the destination cost center.
+        # The ID of the owner of the destination financial unit.
         self.to_unit_user_id = to_unit_user_id
 
     def validate(self):

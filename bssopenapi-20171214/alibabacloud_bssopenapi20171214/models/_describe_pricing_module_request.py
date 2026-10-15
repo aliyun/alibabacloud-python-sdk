@@ -13,16 +13,16 @@ class DescribePricingModuleRequest(DaraModel):
         subscription_type: str = None,
     ):
         self.owner_id = owner_id
-        # The service code. You can query the service code by calling the **QueryProductList** operation.
+        # The product code. You can call the **QueryProductList** operation to query product codes.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The type of the service. You can query the service type by calling the **QueryProductList** operation.
+        # The product type. You can call the **QueryProductList** operation to query product types.
+        # >Notice: The value must be the same as the product type returned by the **QueryProductList** operation.</notice>
         self.product_type = product_type
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: subscription
-        # *   PayAsYouGo: pay-as-you-go
+        # The subscription type. Valid values:
+        # - Subscription: subscription.
+        # - PayAsYouGo: pay-as-you-go.
         # 
         # This parameter is required.
         self.subscription_type = subscription_type

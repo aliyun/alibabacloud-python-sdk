@@ -18,13 +18,13 @@ class QuerySavingsPlansDeductLogResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The return data.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,11 +81,11 @@ class QuerySavingsPlansDeductLogResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The deduction details.
+        # The list of deduction details.
         self.items = items
         # The page number of the returned page.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -158,37 +158,45 @@ class QuerySavingsPlansDeductLogResponseBodyDataItems(DaraModel):
         start_time: str = None,
         user_id: int = None,
     ):
-        # The billable item for which the fee is deducted.
+        # The deducted billable item.
         self.bill_module = bill_module
+        # The billing cycle.
         self.billing_cycle = billing_cycle
+        # The list price of the deducted bill, in CNY.
         self.billing_official_price = billing_official_price
-        # The service for which the fee is deducted.
+        # The deducted service.
         self.deduct_commodity = deduct_commodity
-        # The deducted amount.
+        # The deducted fee, in CNY.
         self.deduct_fee = deduct_fee
-        # The ID of the instance for which the fee is deducted.
+        # The ID of the deducted cloud service instance.
         self.deduct_instance_id = deduct_instance_id
         # The deduction rate.
         self.deduct_rate = deduct_rate
+        # The list price of the deducted amount, in CNY.
         self.deducted_official_price = deducted_official_price
-        # The discount used for the current deduction.
+        # The discount that is used for the deduction.
         self.discount_rate = discount_rate
-        # The end of the billing cycle for which the fee is deducted.
+        # The end time.
         self.end_time = end_time
         # The ID of the savings plan instance.
         self.instance_id = instance_id
+        # The instance type of the deducted instance.
         self.instance_spec = instance_spec
+        # The instance family of the deducted instance.
         self.instance_type_family = instance_type_family
+        # The ID of the owner.
         self.owner_id = owner_id
+        # The region of the deducted instance.
         self.region = region
         # The type of the savings plan. Valid values:
         # 
-        # *   universal: general-purpose
-        # *   ecs: ECS compute
+        # - universal: general-purpose
+        # 
+        # - ecs: compute-optimized
         self.savings_type = savings_type
-        # The beginning of the billing cycle for which the fee is deducted. The time is in the format of yyyy-MM-dd HH:mm:ss.
+        # The start time.
         self.start_time = start_time
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

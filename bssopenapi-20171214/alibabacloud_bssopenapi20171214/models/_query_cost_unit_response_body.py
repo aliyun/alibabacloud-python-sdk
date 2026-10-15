@@ -18,11 +18,11 @@ class QueryCostUnitResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -81,13 +81,13 @@ class QueryCostUnitResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The cost centers.
+        # The list of financial units.
         self.cost_unit_dto_list = cost_unit_dto_list
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -144,13 +144,13 @@ class QueryCostUnitResponseBodyDataCostUnitDtoList(DaraModel):
         unit_id: int = None,
         unit_name: str = None,
     ):
-        # The user ID of the cost center owner.
+        # The owner of the financial unit.
         self.owner_uid = owner_uid
-        # The ID of the parent cost center. A value of -1 indicates the root cost center.
+        # The ID of the parent financial unit. A value of -1 indicates the root of the financial unit tree.
         self.parent_unit_id = parent_unit_id
-        # The ID of the cost center.
+        # The ID of the financial unit.
         self.unit_id = unit_id
-        # The name of the cost center.
+        # The name of the financial unit.
         self.unit_name = unit_name
 
     def validate(self):

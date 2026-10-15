@@ -10,10 +10,11 @@ class QueryPriceEntityListRequest(DaraModel):
         commodity_code: str = None,
         lang: str = None,
     ):
-        # The code of the service.
+        # The commodity code. You can call the **QueryCommodityList** operation to query the commodity code.
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
+        # The language. Default value: zh (Chinese).
         self.lang = lang
 
     def validate(self):

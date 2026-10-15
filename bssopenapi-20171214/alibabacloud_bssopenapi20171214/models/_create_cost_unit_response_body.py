@@ -18,13 +18,13 @@ class CreateCostUnitResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -78,7 +78,7 @@ class CreateCostUnitResponseBodyData(DaraModel):
         self,
         cost_unit_dto_list: List[main_models.CreateCostUnitResponseBodyDataCostUnitDtoList] = None,
     ):
-        # The list of cost center entities.
+        # The list of financial unit entities.
         self.cost_unit_dto_list = cost_unit_dto_list
 
     def validate(self):
@@ -117,13 +117,13 @@ class CreateCostUnitResponseBodyDataCostUnitDtoList(DaraModel):
         unit_id: int = None,
         unit_name: str = None,
     ):
-        # The user ID of the owner of the cost center.
+        # The ID of the owner of the new financial unit.
         self.owner_uid = owner_uid
-        # The ID of the parent cost center. A value of -1 indicates the root cost center.
+        # The ID of the parent financial unit. A value of -1 indicates the root financial unit.
         self.parent_unit_id = parent_unit_id
-        # The ID of the cost center.
+        # The ID of the financial unit.
         self.unit_id = unit_id
-        # The name of the cost center.
+        # The name of the financial unit.
         self.unit_name = unit_name
 
     def validate(self):

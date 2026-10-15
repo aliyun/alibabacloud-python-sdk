@@ -18,13 +18,13 @@ class DescribeSavingsPlansCoverageTotalResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The return data.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class DescribeSavingsPlansCoverageTotalResponseBodyData(DaraModel):
         period_coverage: List[main_models.DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage] = None,
         total_coverage: main_models.DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage = None,
     ):
-        # The coverage in different periods.
+        # The coverage rate by period.
         self.period_coverage = period_coverage
-        # The coverage summary.
+        # The total coverage rate.
         self.total_coverage = total_coverage
 
     def validate(self):
@@ -127,9 +127,9 @@ class DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage(DaraModel):
         coverage_percentage: float = None,
         deduct_amount: float = None,
     ):
-        # The total coverage.
+        # The total coverage rate.
         self.coverage_percentage = coverage_percentage
-        # The total deducted amount.
+        # The total offset amount.
         self.deduct_amount = deduct_amount
 
     def validate(self):
@@ -164,11 +164,9 @@ class DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage(DaraModel)
         percentage: float = None,
         period: str = None,
     ):
-        # The coverage.
+        # The coverage rate.
         self.percentage = percentage
-        # The period.
-        # 
-        # The value is in the format of yyyyMMddHH.
+        # The period. Format: yyyyMMddHH.
         self.period = period
 
     def validate(self):

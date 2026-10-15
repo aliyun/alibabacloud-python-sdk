@@ -16,22 +16,23 @@ class QuerySkuPriceListRequest(DaraModel):
         price_entity_code: str = None,
         price_factor_condition_map: Dict[str, List[str]] = None,
     ):
-        # The code of the service.
+        # The commodity code. You can call the **QueryCommodityList** operation to query the commodity code.
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
+        # The language. Default value: zh (Chinese).
         self.lang = lang
-        # The token that is used to retrieve the next page. You do not need to set this parameter if you query coverage details for the first time. The response returns a token that you can use to query coverage details of the next page. If a null value is returned for the NextPageToken parameter, no more coverage details can be queried.
+        # The pagination token. Leave this parameter empty for the first page query. The query result returns a token for the next page. An empty token in the result indicates that all data has been retrieved. You can obtain the next page token from the **NextPageToken** field in the query result.
         self.next_page_token = next_page_token
-        # The number of entries to be returned on each page. Maximum value: 50.
+        # The number of entries per page. Maximum value: 50.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The code of the pricing object.
+        # The pricing entity code. You can call the **QueryPriceEntityList** operation to query the pricing entity code.
         # 
         # This parameter is required.
         self.price_entity_code = price_entity_code
-        # The conditions of the pricing factors.
+        # The collection of pricing factor conditions. You can call the **QueryPriceEntityList** operation to query pricing factor codes and pricing factor values.
         self.price_factor_condition_map = price_factor_condition_map
 
     def validate(self):

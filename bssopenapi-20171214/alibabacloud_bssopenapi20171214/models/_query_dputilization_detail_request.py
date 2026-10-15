@@ -18,32 +18,31 @@ class QueryDPUtilizationDetailRequest(DaraModel):
         prod_code: str = None,
         start_time: str = None,
     ):
-        # The code of the resource, such as ecsRi and scu_bag. If this parameter is specified, the ProdCode parameter does not take effect for the request.
+        # The commodity code, such as ecsRi and scu_bag. If this parameter is specified, the ProdCode parameter does not take effect.
         self.commodity_code = commodity_code
-        # The ID of the deducted instance. If this parameter is not specified, the details of all instances are returned.
+        # The ID of the deducted instance. If this parameter is left empty, the details of all instances are returned.
         self.deducted_instance_id = deducted_instance_id
-        # The end of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+        # The end time. Format: YYYY-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Specifies whether to query the resource plan usage of linked accounts. Valid values:
-        # 
-        # *   true: queries the resource plan usage of linked accounts.
-        # *   false: does not query the resource plan usage of linked accounts.
+        # Specifies whether to include the resource plan usage of member accounts in finance trusteeship. Valid values:
+        # - true: Included.
+        # - false: Not included.
         # 
         # This parameter is required.
         self.include_share = include_share
-        # The ID of the instance to query. If this parameter is not specified, the details of all used instances are returned.
+        # The instance ID for the filtered query. If this parameter is left empty, the details of all used instances are returned.
         self.instance_id = instance_id
-        # The instance type of the instance.
+        # The instance type.
         self.instance_spec = instance_spec
-        # The token that is used to retrieve the next page of results. For the first query, set the value to null. For subsequent queries, set the value to the token that is obtained from the NextToken parameter.
+        # The token that specifies the start position of the query. Set this parameter to null for the first query. For subsequent queries, use the NextToken value returned in the previous response.
         self.last_token = last_token
-        # The number of entries to return on each page. Default value: 20. Maximum value: 300.
+        # The number of entries to return per query. Default value: 20. Maximum value: 300.
         self.limit = limit
-        # The code of the service. Example: ecs.
+        # The product code, such as ecs.
         self.prod_code = prod_code
-        # The beginning of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+        # The start time. Format: YYYY-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.start_time = start_time

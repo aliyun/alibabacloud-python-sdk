@@ -16,13 +16,13 @@ class QueryDPUtilizationDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -79,9 +79,8 @@ class QueryDPUtilizationDetailResponseBodyData(DaraModel):
         detail_list: main_models.QueryDPUtilizationDetailResponseBodyDataDetailList = None,
         next_token: str = None,
     ):
-        # The detailed resource plan usage.
         self.detail_list = detail_list
-        # The token that is used to retrieve the next page of results. You can set the LastToken parameter to this value in the next request. If null is returned, all results are queried.
+        # The token that specifies the start position of the next query. Pass this value to the LastToken parameter in the next request. If this parameter is returned as null, the query is complete.
         self.next_token = next_token
 
     def validate(self):
@@ -165,36 +164,19 @@ class QueryDPUtilizationDetailResponseBodyDataDetailListDetailList(DaraModel):
         share_uid: int = None,
         uid: int = None,
     ):
-        # The deduction date.
         self.deduct_date = deduct_date
-        # The total computing capacity or storage capacity of the RI or SCU during the deduction.
         self.deduct_factor_total = deduct_factor_total
-        # The deduct factor. This parameter is returned only if the CommodityCode parameter is set to ecsRi.
         self.deduct_hours = deduct_hours
-        # The original measured amount.
         self.deduct_measure = deduct_measure
-        # The computing capacity or storage capacity that is deducted in a pay-as-you-go instance.
         self.deduct_quantity = deduct_quantity
-        # The code of the deducted service.
         self.deducted_commodity_code = deducted_commodity_code
-        # The ID of the deducted instance.
         self.deducted_instance_id = deducted_instance_id
-        # The name of the deducted service.
         self.deducted_product_detail = deducted_product_detail
-        # The ID of the RI.
         self.instance_id = instance_id
-        # The instance type of the deducted instance.
         self.instance_spec = instance_spec
-        # The region in which the instance resides. This parameter can be left empty.
         self.region = region
-        # The billable item.
         self.res_code = res_code
-        # The UID of the deducted instance.
-        # 
-        # *   If the deduction is shared, the value of this parameter indicates the UID of the deducted instance.
-        # *   If the deduction is not shared, the value of this parameter is the same as that of the uid parameter.
         self.share_uid = share_uid
-        # The UID of the deducted instance.
         self.uid = uid
 
     def validate(self):

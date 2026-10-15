@@ -16,15 +16,15 @@ class QueryBillToOSSSubscriptionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
         # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,11 +80,10 @@ class QueryBillToOSSSubscriptionResponseBodyData(DaraModel):
         account_name: str = None,
         items: main_models.QueryBillToOSSSubscriptionResponseBodyDataItems = None,
     ):
-        # The ID of the account used to perform the query.
+        # The ID of the current query account.
         self.account_id = account_id
-        # The name of the account used to perform the query.
+        # The name of the current query account.
         self.account_name = account_name
-        # The details of the subscribed bill.
         self.items = items
 
     def validate(self):
@@ -167,27 +166,12 @@ class QueryBillToOSSSubscriptionResponseBodyDataItemsItem(DaraModel):
         subscribe_time: str = None,
         subscribe_type: str = None,
     ):
-        # The owner ID of the Object Storage Service (OSS) bucket.
         self.bucket_owner_id = bucket_owner_id
-        # The path in the OSS bucket.
         self.bucket_path = bucket_path
-        # The maximum number of data rows in a single file. If the number of data rows in a bill exceeds the upper limit, the bill is split into multiple files. Then, multiple files are merged and compressed into a package.
         self.row_limit_per_file = row_limit_per_file
-        # The ID of the OSS bucket that stores the subscribed bill.
         self.subscribe_bucket = subscribe_bucket
-        # The code of the language.
-        # 
-        # Valid values:
-        # 
-        # *   en: English
-        # *   zh: Chinese
         self.subscribe_language = subscribe_language
-        # The time when the subscribed bill was stored in the OSS bucket. The time is displayed in the YYYY-MM-DD hh:mm:ss format.
         self.subscribe_time = subscribe_time
-        # The type of the subscribed bill. Valid values:
-        # 
-        # *   BillingItemDetailForBillingPeriod: the bill of a billable item.
-        # *   InstanceDetailForBillingPeriod: the bill of an instance.
         self.subscribe_type = subscribe_type
 
     def validate(self):

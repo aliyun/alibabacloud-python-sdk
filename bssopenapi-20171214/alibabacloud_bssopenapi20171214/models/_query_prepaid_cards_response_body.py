@@ -16,13 +16,12 @@ class QueryPrepaidCardsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -122,29 +121,15 @@ class QueryPrepaidCardsResponseBodyDataPrepaidCard(DaraModel):
         prepaid_card_no: str = None,
         status: str = None,
     ):
-        # The services to which the prepaid card is applicable.
         self.applicable_products = applicable_products
-        # The scenario to which the prepaid card is applicable.
         self.applicable_scenarios = applicable_scenarios
-        # The balance of the prepaid card.
         self.balance = balance
-        # The time when the prepaid card took effect.
         self.effective_time = effective_time
-        # The time when the prepaid card expired.
         self.expiry_time = expiry_time
-        # The time when the prepaid card was issued.
         self.granted_time = granted_time
-        # The nominal value of the prepaid card.
         self.nominal_value = nominal_value
-        # The ID of the prepaid card.
         self.prepaid_card_id = prepaid_card_id
-        # The number of the prepaid card.
         self.prepaid_card_no = prepaid_card_no
-        # The status of the prepaid card. Valid values:
-        # 
-        # *   Available: The prepaid card is valid.
-        # *   Expired: The prepaid card expired.
-        # *   Cancelled: The prepaid card is invalid.
         self.status = status
 
     def validate(self):

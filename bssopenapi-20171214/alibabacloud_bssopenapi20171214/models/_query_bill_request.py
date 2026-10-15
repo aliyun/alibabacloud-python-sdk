@@ -19,41 +19,37 @@ class QueryBillRequest(DaraModel):
         subscription_type: str = None,
         type: str = None,
     ):
-        # The ID of the member.
+        # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
         # The billing cycle, in the YYYY-MM format.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # Specifies whether to display local currency information in bills. The parameter will be discontinued.
         self.is_display_local_currency = is_display_local_currency
-        # Specifies whether to filter out a bill whose pretax gross amount is 0. By default, a bill whose pretax gross amount is 0 is not filtered out. Valid values:
-        # 
-        # *   true: filters out a bill whose pretax gross amount is 0.
-        # *   false: does not filter out a bill whose pretax gross amount is 0.
+        # Specifies whether to filter out bills with a original price (PretaxGrossAmount) of 0. Default value: false (compatible with existing logic). Valid values:
+        # - true: filters out zero-charge bills.
+        # - false: does not filter out zero-charge bills.
         self.is_hide_zero_charge = is_hide_zero_charge
         self.owner_id = owner_id
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20. Maximum value: 300.
+        # The number of entries per page. Default value: 20. Maximum value: 300.
         self.page_size = page_size
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The billing method. Valid values:
+        # The subscription type. Valid values:
+        # - Subscription
+        # - PayAsYouGo
         # 
-        # *   Subscription
-        # *   PayAsYouGo
-        # 
-        # This parameter must be used together with the ProductCode parameter.
+        # > This parameter must be used together with the ProductCode parameter.
         self.subscription_type = subscription_type
-        # The type of the bill. Valid values:
-        # 
-        # *   SubscriptionOrder
-        # *   PayAsYouGoBill
-        # *   Refund
-        # *   Adjustment
+        # The type. Valid values:
+        # - SubscriptionOrder
+        # - PayAsYouGoBill
+        # - Refund
+        # - Adjustment
         self.type = type
 
     def validate(self):

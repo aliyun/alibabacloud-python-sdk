@@ -22,46 +22,45 @@ class CreateInstanceRequest(DaraModel):
         renewal_status: str = None,
         subscription_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. The server checks whether a request that uses the same client token has been received. If a request that uses the same client token has been received, the server returns the same request result as the previous request.
+        # The client idempotency token. The server checks whether a request with the same ClientToken has been made. If yes, the server returns the result of the previous call.
         self.client_token = client_token
-        # The logistics address of this order. This parameter is generally valid for physical orders.
+        # The logistics address for this order. This parameter is typically valid for orders of physical products.
         self.logistics = logistics
         self.owner_id = owner_id
-        # The details of the modules.
+        # The list of modules.
         self.parameter = parameter
-        # The subscription duration. Unit: month. The value must be an integral multiple of 12.
-        # 
-        # >  This parameter is required if you create a subscription instance.
+        # The subscription period. Unit: months. For yearly subscription products, specify a multiple of 12.
         self.period = period
-        # The cycle type of the prepaid period
-        # - PricingCycle=1 indicates that the unit of the prepaid period is in years; 
-        # - PricingCycle=2 indicates that the unit of the prepaid period is in months; 
-        # - PricingCycle=3 indicates that the unit of the prepaid period is in days;
-        # - Default value: PricingCycle=2
+        # The unit of the subscription period.
         # 
-        # Applicable only to certain product types (ProductType being ddos_originpre_public_cn, ddosDip, ddoscoo, ddos_originpre_public_intl, ddosDip_intl, ddoscoo_intl)
+        # - PricingCycle=1: The unit of the subscription period is year.
+        # 
+        # - PricingCycle=2: The unit of the subscription period is month.
+        # 
+        # - PricingCycle=3: The unit of the subscription period is day.
+        # 
+        # Default value: PricingCycle=2.
+        # 
+        # This parameter is applicable only to specific product types (ProductType is ddos_originpre_public_cn, ddosDip, ddoscoo, ddos_originpre_public_intl, ddosDip_intl, or ddoscoo_intl).
         self.pricing_cycle = pricing_cycle
-        # The code of the service to which the instance belongs. You can query the service code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud Services**.
+        # The product code. You can call the **QueryProductList** operation to query the product code.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The auto-renewal period. Unit: month.
-        # 
-        # >  This parameter is required if the **RenewalStatus** parameter is set to **AutoRenewal**.
+        # The auto-renewal epoch. Unit: months.
+        # > This parameter is required when you set **RenewalStatus** to **AutoRenewal** in Settings.
         self.renew_period = renew_period
-        # The renewal method. Valid values:
-        # 
-        # *   AutoRenewal: The instance is automatically renewed.
-        # *   ManualRenewal: The instance is manually renewed.
+        # The auto-renewal status. Valid values:
+        # - AutoRenewal: auto-renewal is enabled.
+        # - ManualRenewal: manual renewal.
         # 
         # Default value: ManualRenewal.
         self.renewal_status = renewal_status
         # The billing method. Valid values:
-        # 
-        # *   Subscription: the subscription billing method.
-        # *   PayAsYouGo: the pay-as-you-go billing method.
+        # - Subscription: subscription.
+        # - PayAsYouGo: pay-as-you-go.
         # 
         # This parameter is required.
         self.subscription_type = subscription_type
@@ -160,11 +159,11 @@ class CreateInstanceRequestParameter(DaraModel):
         code: str = None,
         value: str = None,
     ):
-        # The code property of the Nth module. Value of N: 1 to 100. If multiple module property parameters are involved, concatenate multiple parameters based on the value of N in sequence.
+        # The code of the Nth module property. Valid values of N: 1 to 100. If multiple module properties exist, concatenate them in the format of N=1, 2, 3...N.
         # 
         # This parameter is required.
         self.code = code
-        # The value property of the Nth module. Value of N: 1 to 100.
+        # The value of the Nth module property. Valid values of N: 1 to 100.
         # 
         # This parameter is required.
         self.value = value

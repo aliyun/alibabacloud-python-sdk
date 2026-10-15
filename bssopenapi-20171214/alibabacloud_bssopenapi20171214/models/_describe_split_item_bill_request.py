@@ -26,44 +26,48 @@ class DescribeSplitItemBillRequest(DaraModel):
         subscription_type: str = None,
         tag_filter: List[main_models.DescribeSplitItemBillRequestTagFilter] = None,
     ):
-        # The ID of the member. If you specify this parameter, the bills of the member are queried. If you do not specify this parameter, the bills of the current account are queried by default.
+        # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
-        # The billing cycle. Specify the parameter in the YYYY-MM format.
+        # The billing cycle. Format: YYYY-MM.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The billing date. This parameter is required only when the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+        # The billing date. This parameter is required only when Granularity is set to DAILY. Format: YYYY-MM-DD.
         self.billing_date = billing_date
         # The granularity at which bills are queried. Valid values:
+        # - MONTHLY: monthly. This value corresponds to the monthly bills on the Split Bill page in the User Center.
+        # - DAILY: daily. This value corresponds to the daily bills on the Split Bill page in the User Center.
         # 
-        # *   MONTHLY: queries bills on a monthly basis. The data that you query is the same as the data that is queried by billing cycles in the Split Bill module of the User Center console.
-        # *   DAILY: queries bills on a daily basis. The data that you query is the same as the data that is queried by days in the Split Bill module of the User Center console.
-        # 
-        # If you specify DAILY for this parameter, the BillingDate parameter is required.
+        # > If you set this parameter to DAILY, you must specify the BillingDate parameter.
         self.granularity = granularity
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # Specifies whether to filter bills if both the pretax gross amount and pretax amount are 0. Valid values:
+        # Specifies whether to filter out bills where both the original price (PretaxGrossAmount) and the payable amount (PretaxAmount) are 0. Valid values:
         # 
-        # *   false: does not filter bills.
-        # *   true: filters bills.
+        # - false: does not filter out the bills.
+        # - true: filters out the bills.
         self.is_hide_zero_charge = is_hide_zero_charge
-        # The maximum number of entries to query. Default value: 20. Maximum value: 300.
+        # The maximum number of entries to return in the current call. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The token that is used for the next query. The parameter must be left empty or set to the value of the NextToken parameter returned in the last call. Otherwise, an error is returned. If the parameter is left empty, the data is queried from the first entry.
+        # The token that specifies the position from which the current call starts to read data. The value must be empty or the value of NextToken returned in the previous response. Otherwise, an error occurs. An empty value indicates that the read operation starts from the beginning.
         self.next_token = next_token
         self.owner_id = owner_id
-        # The code of the service. The code is the same as that in Cost Center.
+        # The product code. This value is the same as the product code in the bills of the User Center.
         self.pip_code = pip_code
-        # The code of the service.
+        # The product code.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The ID of the split item.
+        # The ID of the attached resource.
         self.split_item_id = split_item_id
-        # The billing method. Valid values: Subscription: the subscription billing method. PayAsYouGo: the pay-as-you-go billing method. This parameter must be used with the ProductCode parameter.
+        # The subscription type. Valid values:
+        # 
+        # - Subscription: subscription.
+        # - PayAsYouGo: pay-as-you-go.
+        # 
+        # > This parameter must be used together with the ProductCode parameter.
         self.subscription_type = subscription_type
-        # The tags that are used to filter split bills. You can specify multiple tag values. If you specify multiple tag values, split bills that match one of the tag values are queried.
+        # The tag filter conditions. Multiple sets of TagValues query conditions are supported. The logical relationship between multiple sets of TagValues conditions is OR.
         self.tag_filter = tag_filter
 
     def validate(self):
@@ -184,16 +188,15 @@ class DescribeSplitItemBillRequestTagFilter(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The TagFilter.N parameter is used to query bills that match a specified tag. The value of the TagFilter.N parameter must be a key-value pair. The tag key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+        # TagFilter.N is used to query bills that match the specified tags. It consists of a key-value pair. The tag key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
         # 
-        # *   If only the TagFilter.N.TagKey parameter is specified, all bills associated with the tag key are queried.
-        # *   If you specify multiple tag key-value pairs at the same time, bills that meet any one of the tag key-value pairs are queried.
-        # *   If the tags added to resources change, you can query only the bills that are generated within the period in which the tags and resources are associated.
+        # - If you specify only TagFilter.N.TagKey, all bills associated with the tag key are returned.
+        # - If you specify multiple tag key-value pairs, bills that match any of the tag key-value pairs are returned.
+        # - If the tags on a resource change, you can only query the bills generated during the period when the tags were attached to the resource.
         self.tag_key = tag_key
-        # You can specify the TagValues.N parameter to query bills that match the specified tag value. The value of the TagValues.N parameter must be a string. The tag value must be 1 to 128 characters in length. Valid values of N: 1 to 20.
-        # 
-        # *   If you specify the TagValues.N parameter, the TagFilter.N.TagKey parameter is required. Otherwise, the error message InvalidParameter.TagValues is returned.
-        # *   If you specify multiple tag values, split bills that match one of the tag values are queried.
+        # TagValues.N is used to query bills that match the specified tag values. It consists of a list of strings. The tag value must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+        # - If you specify TagValues.N, you must also specify TagFilter.N.TagKey. Otherwise, the InvalidParameter.TagValues error is reported.
+        # - If you specify multiple tag values, bills that match any of the tag values are returned.
         self.tag_values = tag_values
 
     def validate(self):

@@ -16,7 +16,7 @@ class GetOrderDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The status code.
         self.code = code
         # The returned data.
         self.data = data
@@ -24,7 +24,7 @@ class GetOrderDetailResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -84,13 +84,12 @@ class GetOrderDetailResponseBodyData(DaraModel):
     ):
         # The hostname.
         self.host_name = host_name
-        # The orders returned.
         self.order_list = order_list
         # The page number.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -208,65 +207,35 @@ class GetOrderDetailResponseBodyDataOrderListOrder(DaraModel):
         usage_end_time: str = None,
         usage_start_time: str = None,
     ):
-        # The aftertaxt amount of the order.
         self.after_tax_amount = after_tax_amount
-        # The billing information about the configurations.
         self.bill_module_config = bill_module_config
-        # The commodity code.
         self.commodity_code = commodity_code
-        # The configurations of the main service.
         self.config = config
-        # The time when the order was created.
         self.create_time = create_time
-        # The currency. Valid values: CNY, USD, and JPY.
         self.currency = currency
-        # The additional information about the order.
         self.extend_infos = extend_infos
-        # The instance IDs.
         self.instance_ids = instance_ids
-        # The ID of the Resource Access Management (RAM) user that performs operations on the order. If no RAM user is involved, this parameter is empty.
         self.operator = operator
-        # The order ID.
         self.order_id = order_id
-        # The type of the suborder. A value of productsuborder indicates service suborder. A value of refundsuborder indicates refund suborder.
         self.order_sub_type = order_sub_type
-        # The type of the order. Valid values: new, renew, upgrade, and refund.
         self.order_type = order_type
-        # The configuration information that is not formatted.
         self.original_config = original_config
-        # The information about the configurations.
         self.original_module_config = original_module_config
-        # The currency used for payment. Valid values: CNY, USD, and JPY.
         self.payment_currency = payment_currency
-        # The payment state. Valid values: unpaid, paid, and canceled.
         self.payment_status = payment_status
-        # The time of payment.
         self.payment_time = payment_time
-        # The pretax amount of the order.
         self.pretax_amount = pretax_amount
-        # The pretax amount of the order in local currency.
         self.pretax_amount_local = pretax_amount_local
-        # The pretax gross amount of the order.
         self.pretax_gross_amount = pretax_gross_amount
-        # The code of the main service.
         self.product_code = product_code
-        # The type of the main service.
         self.product_type = product_type
-        # The number of main services.
         self.quantity = quantity
-        # The region ID.
         self.region = region
-        # The ID of the associated order.
         self.related_order_id = related_order_id
-        # The ID of the suborder.
         self.sub_order_id = sub_order_id
-        # The billing method. Valid values: Subscription and PayAsYouGo.
         self.subscription_type = subscription_type
-        # The tax of the order.
         self.tax = tax
-        # The time when the service ends.
         self.usage_end_time = usage_end_time
-        # The time when the service starts.
         self.usage_start_time = usage_start_time
 
     def validate(self):
@@ -510,11 +479,8 @@ class GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalMo
         module_properties: main_models.GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties = None,
         name: str = None,
     ):
-        # The code of the configuration item.
         self.code = code
-        # The attributes of the configured item.
         self.module_properties = module_properties
-        # The name of the configuration item.
         self.name = name
 
     def validate(self):
@@ -593,11 +559,8 @@ class GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalMo
         name: str = None,
         value: str = None,
     ):
-        # The attribute code of the configured item.
         self.code = code
-        # The attribute name of the configured item.
         self.name = name
-        # The attribute value of the configured item.
         self.value = value
 
     def validate(self):
@@ -675,13 +638,9 @@ class GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConf
         code: str = None,
         name: str = None,
     ):
-        # The API code of the configuration item.
         self.api_code = api_code
-        # The attributes of the configured item.
         self.bill_module_properties = bill_module_properties
-        # The code of the configuration item.
         self.code = code
-        # The name of the configuration item.
         self.name = name
 
     def validate(self):
@@ -766,11 +725,8 @@ class GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConf
         module_api_code: str = None,
         value: str = None,
     ):
-        # The attribute code of the configured item.
         self.attr_api_code = attr_api_code
-        # The API code of the configured item.
         self.module_api_code = module_api_code
-        # The attribute value of the configuration item.
         self.value = value
 
     def validate(self):

@@ -16,31 +16,34 @@ class ChangeResellerConsumeAmountRequest(DaraModel):
         owner_id: int = None,
         source: str = None,
     ):
-        # The type of the consumption amount adjustment. Valid values: increase: The consumption amount increases because new consumption occurs. decrease: The consumption amount decreases because funds are added to the account. This parameter is required.
+        # The adjustment direction of the consumption amount. Valid values:
+        # - increase: Increases the consumption amount.
+        # - decrease: Decreases the consumption amount for user top-ups.
+        # This parameter is required.
         # 
         # This parameter is required.
         self.adjust_type = adjust_type
-        # The amount to be adjusted. Unit: CNY
+        # The adjustment amount in CNY. The amount must be greater than 0.
         # 
         # This parameter is required.
         self.amount = amount
-        # The type of the business.
+        # The business type.
         # 
         # This parameter is required.
         self.business_type = business_type
-        # The type of the currency.
+        # The currency.
         # 
         # This parameter is required.
         self.currency = currency
-        # The extended field of a message.
+        # The extended message fields.
         self.extend_map = extend_map
-        # The ID of the primary key for external business. The ID is used for idempotence verification.
+        # The external business primary key ID used for idempotence verification.
         # 
         # This parameter is required.
         self.out_biz_id = out_biz_id
         # This parameter is required.
         self.owner_id = owner_id
-        # The source of the request. Specify the system name for the parameter.
+        # The request source. Specify the system name.
         # 
         # This parameter is required.
         self.source = source

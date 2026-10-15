@@ -16,15 +16,15 @@ class QuerySplitItemBillResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,19 +84,18 @@ class QuerySplitItemBillResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The ID of the account.
+        # The account ID.
         self.account_id = account_id
-        # The name of the account.
+        # The user account.
         self.account_name = account_name
-        # The billing cycle, in the YYYY-MM format.
+        # The billing cycle. Format: YYYY-MM.
         self.billing_cycle = billing_cycle
-        # The details of the bills.
         self.items = items
-        # The page number of the returned page. Default value: 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of entries returned on each page. Default value: 20. Maximum value: 300.
+        # The number of entries per page. Default value: 20. Maximum value: 300.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -244,101 +243,53 @@ class QuerySplitItemBillResponseBodyDataItemsItem(DaraModel):
         usage_unit: str = None,
         zone: str = None,
     ):
-        # The amount deducted by using credit refunds.
         self.adjust_amount = adjust_amount
-        # The billing date, in the YYYY-MM-DD format.
         self.billing_date = billing_date
-        # The billable item.
         self.billing_item = billing_item
-        # The billing type.
         self.billing_type = billing_type
-        # The amount paid in cash. The amount that was deducted by using credit refunds is not included.
         self.cash_amount = cash_amount
-        # The code of the commodity. The commodity code is the same as that displayed in User Center.
         self.commodity_code = commodity_code
-        # The cost center.
         self.cost_unit = cost_unit
-        # The type of the currency. Valid values: CNY, USD, and JPY.
         self.currency = currency
-        # The amount deducted by using vouchers.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
-        # The amount deducted by using coupons.
         self.deducted_by_coupons = deducted_by_coupons
-        # The amount deducted by using prepaid cards.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
-        # The amount deducted by using resource plans.
         self.deducted_by_resource_package = deducted_by_resource_package
-        # The configurations of the instance.
         self.instance_config = instance_config
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The instance type of the instance.
         self.instance_spec = instance_spec
-        # The public IP address.
         self.internet_ip = internet_ip
-        # The private IP address.
         self.intranet_ip = intranet_ip
-        # The discount amount.
         self.invoice_discount = invoice_discount
-        # The type of the bill. Valid values: SubscriptionOrder: subscription order PayAsYouGoBill: pay-as-you-go bill Refund: refund Adjustment: reconciliation
         self.item = item
-        # The unit price. This parameter is returned only if the isBillingItem parameter is set to true.
         self.list_price = list_price
-        # The unit of the unit price. This parameter is returned only if the isBillingItem parameter is set to true.
         self.list_price_unit = list_price_unit
-        # The name of the instance.
         self.nick_name = nick_name
-        # The unsettled amount of the bill.
         self.outstanding_amount = outstanding_amount
-        # The ID of the member. This parameter is returned in a multi-account payment scenario.
         self.owner_id = owner_id
-        # The amount paid in cash.
         self.payment_amount = payment_amount
-        # The code of the service. The service code is the same as that displayed in User Center.
         self.pip_code = pip_code
-        # The pretax amount.
         self.pretax_amount = pretax_amount
-        # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
-        # The code of the service.
         self.product_code = product_code
-        # The details of the service.
         self.product_detail = product_detail
-        # The name of the service.
         self.product_name = product_name
-        # The type of the service.
         self.product_type = product_type
-        # The ID of the region.
         self.region = region
-        # The resource group.
         self.resource_group = resource_group
-        # The validity period.
         self.service_period = service_period
-        # The unit of the validity period.
         self.service_period_unit = service_period_unit
-        # The ID of the account to which the split bill belongs.
         self.split_account_id = split_account_id
-        # The name of the account to which the split item belongs.
         self.split_account_name = split_account_name
-        # The month in which the split item is used.
         self.split_billing_cycle = split_billing_cycle
-        # The commodity code of the split item.
         self.split_commodity_code = split_commodity_code
-        # The ID of the split item.
         self.split_item_id = split_item_id
-        # The name of the split item.
         self.split_item_name = split_item_name
-        # The name of the service to which the split item belongs.
         self.split_product_detail = split_product_detail
-        # The billing method. Valid values: Subscription: subscription PayAsYouGo: pay-as-you-go This parameter is returned together with the ProductCode parameter.
         self.subscription_type = subscription_type
-        # The tag.
         self.tag = tag
-        # The usage of the split item. This parameter is returned only if the isBillingItem parameter is set to true.
         self.usage = usage
-        # The unit of usage. This parameter is returned only if the isBillingItem parameter is set to true.
         self.usage_unit = usage_unit
-        # The ID of the zone.
         self.zone = zone
 
     def validate(self):

@@ -16,15 +16,15 @@ class QueryBillResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
         # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,19 +84,18 @@ class QueryBillResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The ID of the account.
+        # The account ID.
         self.account_id = account_id
-        # The name of the account.
+        # The account name.
         self.account_name = account_name
         # The billing cycle, in the YYYY-MM format.
         self.billing_cycle = billing_cycle
-        # The details of the bills.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -228,86 +227,37 @@ class QueryBillResponseBodyDataItemsItem(DaraModel):
         usage_end_time: str = None,
         usage_start_time: str = None,
     ):
-        # The amount deducted by using credit refunds.
         self.adjust_amount = adjust_amount
-        # The amount paid after tax is deducted.
         self.after_tax_amount = after_tax_amount
-        # The amount paid in cash. The amount that was deducted by using credit refunds is not included.
         self.cash_amount = cash_amount
-        # The code of the commodity.
         self.commodity_code = commodity_code
-        # The type of the currency.
-        # 
-        # *   CNY
-        # *   USD
-        # *   JPY
         self.currency = currency
-        # The amount deducted by using vouchers.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
-        # The amount deducted by using coupons.
         self.deducted_by_coupons = deducted_by_coupons
-        # The amount deducted by using prepaid cards.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
-        # The discount amount.
         self.invoice_discount = invoice_discount
-        # The type of the bill.
-        # 
-        # *   SubscriptionOrder
-        # *   PayAsYouGoBill
-        # *   Refund
-        # *   Adjustment
         self.item = item
-        # The unsettled amount of the bill.
         self.outstanding_amount = outstanding_amount
-        # The ID of the member. This parameter is returned in a multi-account payment scenario.
         self.owner_id = owner_id
-        # The amount paid with cash.
         self.payment_amount = payment_amount
-        # The currency used for payment.
         self.payment_currency = payment_currency
-        # The time when the order was paid.
         self.payment_time = payment_time
-        # The ID of the transaction.
         self.payment_transaction_id = payment_transaction_id
-        # The code of the service.
         self.pip_code = pip_code
-        # The pretax amount
         self.pretax_amount = pretax_amount
-        # The pretax amount paid in local currency.
         self.pretax_amount_local = pretax_amount_local
-        # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
-        # The code of the service.
         self.product_code = product_code
-        # The details of the service.
         self.product_detail = product_detail
-        # The name of the service.
         self.product_name = product_name
-        # The type of the service.
         self.product_type = product_type
-        # The ID of the order or bill.
         self.record_id = record_id
-        # The round down discount.
         self.round_down_discount = round_down_discount
-        # The payment status of the bill. Valid values:
-        # 
-        # *   PayFinish: The bill is paid.
-        # *   PayUnclear: The bill is not cleared.
-        # *   PayUnsettle: The bill is not settled.
-        # *   NoSettle: The bill is free of settlement.
         self.status = status
-        # The ID of the order corresponding to the bill.
         self.sub_order_id = sub_order_id
-        # The billing method. Valid values:
-        # 
-        # *   Subscription
-        # *   PayAsYouGo
         self.subscription_type = subscription_type
-        # The tax.
         self.tax = tax
-        # The time when the bill ends.
         self.usage_end_time = usage_end_time
-        # The time when the bill starts.
         self.usage_start_time = usage_start_time
 
     def validate(self):

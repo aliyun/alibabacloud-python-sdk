@@ -18,11 +18,11 @@ class QueryCostUnitResourceResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -83,17 +83,17 @@ class QueryCostUnitResourceResponseBodyData(DaraModel):
         resource_instance_dto_list: List[main_models.QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList] = None,
         total_count: int = None,
     ):
-        # The information about the cost center.
+        # The financial unit information.
         self.cost_unit = cost_unit
-        # The statistical information about the cost center.
+        # The statistics information of the financial unit.
         self.cost_unit_statis_info = cost_unit_statis_info
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The resource instances.
+        # The list of resource instances.
         self.resource_instance_dto_list = resource_instance_dto_list
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -179,15 +179,15 @@ class QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList(DaraModel):
         resource_user_id: int = None,
         resource_user_name: str = None,
     ):
-        # The split code of the resource.
+        # The attached resource code.
         self.apportion_code = apportion_code
-        # The split name of the resource.
+        # The attached resource name.
         self.apportion_name = apportion_name
-        # The product code of the resource.
+        # The commodity code of the resource.
         self.commodity_code = commodity_code
         # The commodity name of the resource.
         self.commodity_name = commodity_name
-        # The code of the service. The code is the same as that in Cost Center.
+        # The product code, which is the same as the product code in User Center bills.
         self.pip_code = pip_code
         # The resources related to the resource instance.
         self.related_resources = related_resources
@@ -195,15 +195,15 @@ class QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList(DaraModel):
         self.resource_group = resource_group
         # The instance ID of the resource.
         self.resource_id = resource_id
-        # The custom name of the resource.
+        # The custom nickname of the resource.
         self.resource_nick = resource_nick
-        # The source of the resource. Value:
-        # - AUTO_ALLOCATE
-        # - MANUAL_ALLOCATE
+        # The source of the resource. Valid values:
+        # - AUTO_ALLOCATE: automatic allocation.
+        # - MANUAL_ALLOCATE: manual allocation.
         self.resource_source = resource_source
         # The status of the resource.
         self.resource_status = resource_status
-        # The tags of the resource.
+        # The tag of the resource.
         self.resource_tag = resource_tag
         # The type of the resource.
         self.resource_type = resource_type
@@ -327,19 +327,19 @@ class QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo(DaraModel):
         total_user_count: int = None,
         user_count: int = None,
     ):
-        # The number of resource instances in the cost center.
+        # The number of resource instances in the current financial unit.
         self.resource_count = resource_count
-        # The number of resource groups in the cost center.
+        # The number of resource groups in the current financial unit.
         self.resource_group_count = resource_group_count
-        # The number of sub-cost centers in the cost center.
+        # The number of sub-units in the current financial unit.
         self.sub_unit_count = sub_unit_count
-        # The total number of resource instances, including resource instances of sub-cost centers, in the cost center.
+        # The total number of resource instances in the current financial unit, including those in sub-financial units.
         self.total_resource_count = total_resource_count
-        # The total number of resource groups, including resource groups of sub-cost centers, in the cost center.
+        # The total number of resource groups in the current financial unit, including those in sub-financial units.
         self.total_resource_group_count = total_resource_group_count
-        # The total number of the associated accounts, including associated accounts of sub-cost centers, in the cost center.
+        # The total number of linked accounts in the current financial unit, including those in sub-financial units.
         self.total_user_count = total_user_count
-        # The number of sub-cost centers in the cost center.
+        # The number of sub-units in the current financial unit.
         self.user_count = user_count
 
     def validate(self):
@@ -406,13 +406,13 @@ class QueryCostUnitResourceResponseBodyDataCostUnit(DaraModel):
         unit_id: int = None,
         unit_name: str = None,
     ):
-        # The user ID of the cost center owner.
+        # The user ID of the financial unit owner.
         self.owner_uid = owner_uid
-        # The ID of the parent cost center. A value of -1 indicates the root cost center.
+        # The ID of the parent financial unit. A value of -1 indicates the root financial unit.
         self.parent_unit_id = parent_unit_id
-        # The ID of the cost center.
+        # The ID of the financial unit.
         self.unit_id = unit_id
-        # The name of the cost center.
+        # The name of the financial unit.
         self.unit_name = unit_name
 
     def validate(self):

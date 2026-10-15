@@ -18,13 +18,13 @@ class DescribeSavingsPlansUsageTotalResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The return data.
+        # The returned query data.
         self.data = data
-        # The message returned.
+        # The message returned for the API call.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class DescribeSavingsPlansUsageTotalResponseBodyData(DaraModel):
         period_coverage: List[main_models.DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage] = None,
         total_usage: main_models.DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage = None,
     ):
-        # The usage in different periods.
+        # The usage data for each time period.
         self.period_coverage = period_coverage
-        # The usage summary.
+        # The total usage overview.
         self.total_usage = total_usage
 
     def validate(self):
@@ -129,13 +129,13 @@ class DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage(DaraModel):
         saved_cost: float = None,
         usage_percentage: float = None,
     ):
-        # The total amount of the savings plan.
+        # The total amount of savings plans.
         self.pool_value = pool_value
         # The pay-as-you-go cost.
         self.postpaid_cost = postpaid_cost
-        # The amount that is saved.
+        # The amount saved.
         self.saved_cost = saved_cost
-        # The total usage.
+        # The total usage percentage.
         self.usage_percentage = usage_percentage
 
     def validate(self):
@@ -182,11 +182,9 @@ class DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage(DaraModel):
         percentage: float = None,
         period: str = None,
     ):
-        # The usage.
+        # The usage percentage.
         self.percentage = percentage
-        # The period.
-        # 
-        # The value is in the format of yyyyMMddHH.
+        # The time period to which the data belongs. Format: yyyyMMddHH.
         self.period = period
 
     def validate(self):

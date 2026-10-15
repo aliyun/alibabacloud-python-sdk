@@ -13,15 +13,15 @@ class ChangeResellerConsumeAmountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call failed. For more information, see the "Error codes" section of the topic.
+        # The error code returned when the call fails. For more information, see Error codes.
         self.code = code
-        # The consumption quota for the quota ledger after adjustment.
+        # The consumption quota of the corresponding quota ledger after the update.
         self.data = data
-        # The message returned.
+        # The additional information about the call result.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+        # Indicates whether the call was successful. A value of true indicates that the call was successful. A value of false indicates that an error occurred.
         self.success = success
 
     def validate(self):

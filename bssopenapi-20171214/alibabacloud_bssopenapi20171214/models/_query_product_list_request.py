@@ -11,13 +11,13 @@ class QueryProductListRequest(DaraModel):
         page_size: int = None,
         query_total_count: bool = None,
     ):
-        # The page number of the page to return.
+        # The current page number.
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of entries to return on each page. Default value: 20.
+        # The number of records per page. Maximum value: 300. Default value: 20.
         self.page_size = page_size
-        # Specifies whether to return the total number of services. Default value: false.
+        # Specifies whether to return the total number of products. Default value: false.
         self.query_total_count = query_total_count
 
     def validate(self):

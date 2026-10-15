@@ -14,13 +14,13 @@ class QueryInstanceByTagRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.QueryInstanceByTagRequestTag] = None,
     ):
-        # The IDs of resources.
+        # A list of resource IDs.
         self.resource_id = resource_id
-        # The type of the resource. Specify the savings plan instance as the type of the resource.
+        # The type of the resource. Set this parameter to `instance` to query savings plan instances.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # A list of tags.
         self.tag = tag
 
     def validate(self):

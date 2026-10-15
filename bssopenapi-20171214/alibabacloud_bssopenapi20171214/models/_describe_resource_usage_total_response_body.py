@@ -16,11 +16,11 @@ class DescribeResourceUsageTotalResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The status code.
         self.code = code
-        # The queried data.
+        # The data.
         self.data = data
-        # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -79,9 +79,9 @@ class DescribeResourceUsageTotalResponseBodyData(DaraModel):
         period_coverage: List[main_models.DescribeResourceUsageTotalResponseBodyDataPeriodCoverage] = None,
         total_usage: main_models.DescribeResourceUsageTotalResponseBodyDataTotalUsage = None,
     ):
-        # The usage of resource plans in the specified period.
+        # The usage by period.
         self.period_coverage = period_coverage
-        # The total usage of resource plans.
+        # The total usage.
         self.total_usage = total_usage
 
     def validate(self):
@@ -130,15 +130,15 @@ class DescribeResourceUsageTotalResponseBodyDataTotalUsage(DaraModel):
         saved_cost: float = None,
         usage_percentage: float = None,
     ):
-        # The total costs of pay-as-you-go instances.
+        # The total cost of pay-as-you-go instances.
         self.postpaid_cost = postpaid_cost
-        # The total potential savings.
+        # The potential total savings.
         self.potential_saved_cost = potential_saved_cost
-        # The fee of purchased resource plans.
+        # The total resource purchase cost.
         self.reservation_cost = reservation_cost
         # The total savings.
         self.saved_cost = saved_cost
-        # The total usage of resource plans.
+        # The total usage.
         self.usage_percentage = usage_percentage
 
     def validate(self):
@@ -193,7 +193,7 @@ class DescribeResourceUsageTotalResponseBodyDataPeriodCoverage(DaraModel):
     ):
         # The period.
         self.period = period
-        # The usage of resource plans.
+        # The usage percentage.
         self.usage_percentage = usage_percentage
 
     def validate(self):

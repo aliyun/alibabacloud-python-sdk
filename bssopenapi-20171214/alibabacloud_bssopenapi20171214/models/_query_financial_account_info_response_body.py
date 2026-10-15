@@ -16,11 +16,11 @@ class QueryFinancialAccountInfoResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The data message body.
         self.data = data
-        # The message returned.
+        # The message description.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -81,17 +81,21 @@ class QueryFinancialAccountInfoResponseBodyData(DaraModel):
         member_nick_name: str = None,
         user_name: str = None,
     ):
-        # The type of the financial account. A value of MASTER indicates that the account is a management account. A value of MEMBER indicates that the account is a member.
+        # The enterprise financial account type. Valid values:
+        # - MASTER: primary account.
+        # - MEMBER: member accounts.
         self.account_type = account_type
-        # Indicates whether the account is a financial account. A value of true indicates that the account is a financial account. A value of false indicates that the account is not a financial account.
+        # Indicates whether the account is an enterprise financial account. Valid values:
+        # - true: The account is an enterprise financial account.
+        # - false: The account is not an enterprise financial account.
         self.is_financial_account = is_financial_account
-        # The ID of the group to which the member belongs.
+        # The ID of the group to which the member accounts belong.
         self.member_group_id = member_group_id
-        # The name of the group to which the member belongs.
+        # The name of the group to which the member accounts belong.
         self.member_group_name = member_group_name
-        # The display name of the member.
+        # The display name of the member accounts.
         self.member_nick_name = member_nick_name
-        # The username of the account.
+        # The logon name of the account.
         self.user_name = user_name
 
     def validate(self):

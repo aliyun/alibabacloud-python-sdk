@@ -13,15 +13,15 @@ class RelieveAccountRelationRequest(DaraModel):
         relation_type: str = None,
         request_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account that is used as the member. You must set the RelationId parameter or all of the ParentUserId, ChildUserId, and RelationType parameters.
+        # The UID of the RAM user. You must specify either the RelationId parameter, or the ParentUserId, ChildUserId, and RelationType parameters.
         self.child_user_id = child_user_id
-        # The ID of the Alibaba Cloud account that is used as the management account. You must set the RelationId parameter or all of the ParentUserId, ChildUserId, and RelationType parameters.
+        # The UID of the Alibaba Cloud account. You must specify either the RelationId parameter, or the ParentUserId, ChildUserId, and RelationType parameters.
         self.parent_user_id = parent_user_id
-        # The ID of the financial relationship between the management account and the member. You must set the RelationId parameter or all of the ParentUserId, ChildUserId, and RelationType parameters.
+        # The ID of the account association. You must specify either the RelationId parameter, or the ParentUserId, ChildUserId, and RelationType parameters.
         self.relation_id = relation_id
-        # The type of the financial relationship. Set the value to enterprise_group.
+        # The relationship type. Only enterprise_group is supported.
         self.relation_type = relation_type
-        # The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
+        # The unique ID of the request. This ID is used to troubleshoot issues.
         # 
         # This parameter is required.
         self.request_id = request_id
