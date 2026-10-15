@@ -9,15 +9,18 @@ class GetKeywordLibRequest(DaraModel):
         self,
         lib_id: str = None,
         region_id: str = None,
+        service_code: str = None,
         tenant_code: str = None,
     ):
-        # The keyword library ID.
+        # The ID of the keyword library.
         self.lib_id = lib_id
         # The region ID.
         self.region_id = region_id
-        # The library code.
+        # The service code. This parameter is required when you query the preprocessing configurations (PreprocessList) of the library.
+        self.service_code = service_code
+        # The code of the keyword library.
         # 
-        # - desensitize: masking library
+        # - desensitize: Desensitization keyword library.
         self.tenant_code = tenant_code
 
     def validate(self):
@@ -34,6 +37,9 @@ class GetKeywordLibRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+
         if self.tenant_code is not None:
             result['TenantCode'] = self.tenant_code
 
@@ -46,6 +52,9 @@ class GetKeywordLibRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
 
         if m.get('TenantCode') is not None:
             self.tenant_code = m.get('TenantCode')

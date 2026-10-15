@@ -5203,6 +5203,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id
+        if not DaraCore.is_null(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -5237,6 +5239,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.lib_id):
             body['LibId'] = request.lib_id
+        if not DaraCore.is_null(request.service_code):
+            body['ServiceCode'] = request.service_code
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
@@ -7902,6 +7906,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_code):
+            query['ServiceCode'] = request.service_code
         if not DaraCore.is_null(request.tenant_code):
             query['TenantCode'] = request.tenant_code
         req = open_api_util_models.OpenApiRequest(
@@ -7932,6 +7938,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_code):
+            query['ServiceCode'] = request.service_code
         if not DaraCore.is_null(request.tenant_code):
             query['TenantCode'] = request.tenant_code
         req = open_api_util_models.OpenApiRequest(
@@ -10855,6 +10863,8 @@ class Client(OpenApiClient):
             body['KeywordFilterLibs'] = request.keyword_filter_libs
         if not DaraCore.is_null(request.keyword_hit_libs):
             body['KeywordHitLibs'] = request.keyword_hit_libs
+        if not DaraCore.is_null(request.keyword_lib_process_conf):
+            body['KeywordLibProcessConf'] = request.keyword_lib_process_conf
         if not DaraCore.is_null(request.manual_machine_config):
             body['ManualMachineConfig'] = request.manual_machine_config
         if not DaraCore.is_null(request.resource_type):
@@ -10909,6 +10919,8 @@ class Client(OpenApiClient):
             body['KeywordFilterLibs'] = request.keyword_filter_libs
         if not DaraCore.is_null(request.keyword_hit_libs):
             body['KeywordHitLibs'] = request.keyword_hit_libs
+        if not DaraCore.is_null(request.keyword_lib_process_conf):
+            body['KeywordLibProcessConf'] = request.keyword_lib_process_conf
         if not DaraCore.is_null(request.manual_machine_config):
             body['ManualMachineConfig'] = request.manual_machine_config
         if not DaraCore.is_null(request.resource_type):

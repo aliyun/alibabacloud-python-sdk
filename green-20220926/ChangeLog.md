@@ -1,3 +1,11 @@
+2026-10-15 Version: 1.13.5
+- Update API GetKeywordLib: add request parameters ServiceCode.
+- Update API GetKeywordLib: add response parameters Body.Data.PreprocessList.
+- Update API ListKeywordLibs: add request parameters ServiceCode.
+- Update API ListKeywordLibs: add response parameters Body.Data.$.PreprocessList.
+- Update API UpdateServiceConfig: add request parameters KeywordLibProcessConf.
+
+
 2026-09-22 Version: 1.13.4
 - Update API ExportCipStats: add request parameters Query.
 

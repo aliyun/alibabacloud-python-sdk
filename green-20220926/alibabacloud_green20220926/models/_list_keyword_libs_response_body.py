@@ -20,9 +20,9 @@ class ListKeywordLibsResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -86,6 +86,7 @@ class ListKeywordLibsResponseBodyData(DaraModel):
         keyword_count: str = None,
         lib_id: str = None,
         lib_name: str = None,
+        preprocess_list: List[str] = None,
         service_codes: str = None,
         uid: str = None,
     ):
@@ -93,13 +94,15 @@ class ListKeywordLibsResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The number of keywords.
         self.keyword_count = keyword_count
-        # The library ID.
+        # The ID of the library.
         self.lib_id = lib_id
-        # The library name.
+        # The name of the library.
         self.lib_name = lib_name
-        # The service codes.
+        # The preprocessing list of the library. If ServiceCode is not specified or not configured, an empty array is returned.
+        self.preprocess_list = preprocess_list
+        # The associated services.
         self.service_codes = service_codes
-        # UID。
+        # The UID.
         self.uid = uid
 
     def validate(self):
@@ -122,6 +125,9 @@ class ListKeywordLibsResponseBodyData(DaraModel):
         if self.lib_name is not None:
             result['LibName'] = self.lib_name
 
+        if self.preprocess_list is not None:
+            result['PreprocessList'] = self.preprocess_list
+
         if self.service_codes is not None:
             result['ServiceCodes'] = self.service_codes
 
@@ -143,6 +149,9 @@ class ListKeywordLibsResponseBodyData(DaraModel):
 
         if m.get('LibName') is not None:
             self.lib_name = m.get('LibName')
+
+        if m.get('PreprocessList') is not None:
+            self.preprocess_list = m.get('PreprocessList')
 
         if m.get('ServiceCodes') is not None:
             self.service_codes = m.get('ServiceCodes')

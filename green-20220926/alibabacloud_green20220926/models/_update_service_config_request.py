@@ -12,6 +12,7 @@ class UpdateServiceConfigRequest(DaraModel):
         file_config: str = None,
         keyword_filter_libs: str = None,
         keyword_hit_libs: str = None,
+        keyword_lib_process_conf: str = None,
         manual_machine_config: str = None,
         region_id: str = None,
         resource_type: str = None,
@@ -21,16 +22,18 @@ class UpdateServiceConfigRequest(DaraModel):
         service_config: str = None,
         video_config: str = None,
     ):
-        # The client-generated idempotency token used to prevent duplicate operations caused by network retries. The token must be unique across requests and contain only printable ASCII characters (ASCII 32-126).
+        # The client-generated idempotency token. It prevents duplicate operations caused by network retries and must be unique across different requests. Only printable ASCII characters (ASCII 32-126) are supported.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. When set to true, only parameter validation and business logic checks are performed without actually creating or updating resources.
+        # Specifies whether to enable dry run mode. When set to true, only parameter validation and business logic checks are performed, and resources are not actually created or updated.
         self.dry_run = dry_run
         # The document configuration.
         self.file_config = file_config
         # The keyword filter libraries.
         self.keyword_filter_libs = keyword_filter_libs
-        # The keyword hit libraries.
+        # The matched keyword libraries.
         self.keyword_hit_libs = keyword_hit_libs
+        # The keyword library preprocessing configuration in JSON format. The format maps a libId to a list of preprocessing types, such as {"libId":["fps"]}. If this parameter is not passed, the configuration is not updated. An empty object {} clears all configurations. An empty array for a libId clears the configuration for that library.
+        self.keyword_lib_process_conf = keyword_lib_process_conf
         # The human-machine moderation configuration.
         self.manual_machine_config = manual_machine_config
         # The region ID.
@@ -39,7 +42,7 @@ class UpdateServiceConfigRequest(DaraModel):
         self.resource_type = resource_type
         # The moderation scenario.
         self.scene = scene
-        # The scenario configuration.
+        # The scenario configuration information.
         self.scene_config = scene_config
         # The service code.
         self.service_code = service_code
@@ -70,6 +73,9 @@ class UpdateServiceConfigRequest(DaraModel):
 
         if self.keyword_hit_libs is not None:
             result['KeywordHitLibs'] = self.keyword_hit_libs
+
+        if self.keyword_lib_process_conf is not None:
+            result['KeywordLibProcessConf'] = self.keyword_lib_process_conf
 
         if self.manual_machine_config is not None:
             result['ManualMachineConfig'] = self.manual_machine_config
@@ -113,6 +119,9 @@ class UpdateServiceConfigRequest(DaraModel):
 
         if m.get('KeywordHitLibs') is not None:
             self.keyword_hit_libs = m.get('KeywordHitLibs')
+
+        if m.get('KeywordLibProcessConf') is not None:
+            self.keyword_lib_process_conf = m.get('KeywordLibProcessConf')
 
         if m.get('ManualMachineConfig') is not None:
             self.manual_machine_config = m.get('ManualMachineConfig')

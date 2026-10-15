@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_green20220926 import models as main_models
 from darabonba.model import DaraModel
 
@@ -18,9 +20,9 @@ class GetKeywordLibResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -78,17 +80,20 @@ class GetKeywordLibResponseBodyData(DaraModel):
         keyword_count: str = None,
         lib_id: str = None,
         lib_name: str = None,
+        preprocess_list: List[str] = None,
         uid: str = None,
     ):
         # The last modification time.
         self.gmt_modified = gmt_modified
         # The number of keywords.
         self.keyword_count = keyword_count
-        # The keyword library ID.
+        # The ID of the keyword library.
         self.lib_id = lib_id
-        # The library name.
+        # The name of the keyword library.
         self.lib_name = lib_name
-        # The Alibaba Cloud account ID.
+        # The preprocessing list of the keyword library. If ServiceCode is not specified or no preprocessing is configured, an empty array is returned.
+        self.preprocess_list = preprocess_list
+        # The ID of the Alibaba Cloud account.
         self.uid = uid
 
     def validate(self):
@@ -111,6 +116,9 @@ class GetKeywordLibResponseBodyData(DaraModel):
         if self.lib_name is not None:
             result['LibName'] = self.lib_name
 
+        if self.preprocess_list is not None:
+            result['PreprocessList'] = self.preprocess_list
+
         if self.uid is not None:
             result['Uid'] = self.uid
 
@@ -129,6 +137,9 @@ class GetKeywordLibResponseBodyData(DaraModel):
 
         if m.get('LibName') is not None:
             self.lib_name = m.get('LibName')
+
+        if m.get('PreprocessList') is not None:
+            self.preprocess_list = m.get('PreprocessList')
 
         if m.get('Uid') is not None:
             self.uid = m.get('Uid')
