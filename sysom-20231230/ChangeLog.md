@@ -1,3 +1,6 @@
+2026-10-15 Version: 3.0.1
+- Generated python 2023-12-30 for SysOM.
+
 2026-10-14 Version: 3.0.0
 - Support API CheckAgentConfigSupported.
 - Support API CreateAgentConfig.
