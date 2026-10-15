@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_fcsandbox20260509 import models as main_models
 from darabonba.model import DaraModel
 
@@ -15,10 +17,11 @@ class PublicTemplateSandboxConfig(DaraModel):
         ready_command: str = None,
         registry_config: main_models.PublicTemplateRegistryConfig = None,
         start_command: str = None,
+        steps: List[main_models.PublicTemplateStep] = None,
     ):
-        # The ACR Enterprise instance ID.
+        # The ID of the ACR Enterprise instance.
         self.acr_instance_id = acr_instance_id
-        # The sandbox generation. A value of 1 indicates the first-generation sandbox. A value of 2 indicates the second-generation sandbox.
+        # The sandbox generation. A value of 1 indicates the first-generation sandbox, and a value of 2 indicates the second-generation sandbox.
         self.generation = generation
         # The image address.
         self.image = image
@@ -30,10 +33,16 @@ class PublicTemplateSandboxConfig(DaraModel):
         self.registry_config = registry_config
         # The sandbox startup command.
         self.start_command = start_command
+        # The list of custom build steps.
+        self.steps = steps
 
     def validate(self):
         if self.registry_config:
             self.registry_config.validate()
+        if self.steps:
+            for v1 in self.steps:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -61,6 +70,11 @@ class PublicTemplateSandboxConfig(DaraModel):
         if self.start_command is not None:
             result['startCommand'] = self.start_command
 
+        result['steps'] = []
+        if self.steps is not None:
+            for k1 in self.steps:
+                result['steps'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -86,6 +100,12 @@ class PublicTemplateSandboxConfig(DaraModel):
 
         if m.get('startCommand') is not None:
             self.start_command = m.get('startCommand')
+
+        self.steps = []
+        if m.get('steps') is not None:
+            for k1 in m.get('steps'):
+                temp_model = main_models.PublicTemplateStep()
+                self.steps.append(temp_model.from_map(k1))
 
         return self
 

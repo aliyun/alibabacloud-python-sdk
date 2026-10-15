@@ -10,11 +10,14 @@ class CreateTemplateBuildConfig(DaraModel):
         self,
         copy: main_models.CreateTemplateCopyAction = None,
         envd_inject: main_models.CreateTemplateEnvdInjectAction = None,
+        install_storage_clients: bool = None,
     ):
         # The image copy build action.
         self.copy = copy
         # The envd injection build action.
         self.envd_inject = envd_inject
+        # The installation of clients required for storage mounting.
+        self.install_storage_clients = install_storage_clients
 
     def validate(self):
         if self.copy:
@@ -33,6 +36,9 @@ class CreateTemplateBuildConfig(DaraModel):
         if self.envd_inject is not None:
             result['envdInject'] = self.envd_inject.to_map()
 
+        if self.install_storage_clients is not None:
+            result['installStorageClients'] = self.install_storage_clients
+
         return result
 
     def from_map(self, m: dict = None):
@@ -44,6 +50,9 @@ class CreateTemplateBuildConfig(DaraModel):
         if m.get('envdInject') is not None:
             temp_model = main_models.CreateTemplateEnvdInjectAction()
             self.envd_inject = temp_model.from_map(m.get('envdInject'))
+
+        if m.get('installStorageClients') is not None:
+            self.install_storage_clients = m.get('installStorageClients')
 
         return self
 

@@ -11,8 +11,11 @@ class E2BTemplateTag(DaraModel):
         created_at: str = None,
         tag: str = None,
     ):
+        # The ID of the template build associated with the tag.
         self.build_id = build_id
+        # The creation time of the tag.
         self.created_at = created_at
+        # The name of the template tag.
         self.tag = tag
 
     def validate(self):

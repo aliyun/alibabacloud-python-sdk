@@ -10,6 +10,7 @@ class CreateTemplateCacheRequest(DaraModel):
         self,
         body: main_models.CreateTemplateCacheInput = None,
     ):
+        # The request struct for creating a template cache.
         self.body = body
 
     def validate(self):

@@ -30,22 +30,25 @@ class ApiKey(DaraModel):
     ):
         # The unique identifier of the API key.
         self.api_key_id = api_key_id
-        # The masked display value of the API key.
+        # The display value of the API key.
         self.api_key_mask = api_key_mask
         # The name of the API key.
         self.api_key_name = api_key_name
         # The value of the API key.
         self.api_key_value = api_key_value
-        # The time when the API key was created.
+        # The creation time.
         self.created_time = created_time
         # The expiration time.
         self.expire_time = expire_time
+        # The list of IP addresses that are prohibited from using the API key.
         self.ip_blacklist = ip_blacklist
+        # The list of IP addresses that are allowed to use the API key.
         self.ip_whitelist = ip_whitelist
-        # The time when the API key was last used.
+        # The last used time.
         self.last_used_time = last_used_time
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The source of the API key.
         self.source = source
         # The status. Valid values:
         # - active
@@ -55,6 +58,7 @@ class ApiKey(DaraModel):
         self.team_id = team_id
         # The name of the team.
         self.team_name = team_name
+        # The plan of the team to which the API key belongs.
         self.team_plan = team_plan
         # The UID of the creator.
         self.user_id = user_id

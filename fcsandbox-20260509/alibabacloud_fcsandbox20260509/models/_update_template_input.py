@@ -13,9 +13,13 @@ class UpdateTemplateInput(DaraModel):
         network_configuration: main_models.NetworkConfiguration = None,
         team_id: str = None,
     ):
+        # The container image configuration of the template.
         self.container_configuration = container_configuration
+        # The Log Service configuration of the template.
         self.log_configuration = log_configuration
+        # The VPC configuration of the template.
         self.network_configuration = network_configuration
+        # The unique identifier of the team to which the template belongs.
         self.team_id = team_id
 
     def validate(self):

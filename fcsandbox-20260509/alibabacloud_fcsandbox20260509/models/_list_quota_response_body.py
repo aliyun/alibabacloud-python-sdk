@@ -19,10 +19,11 @@ class ListQuotaResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
+        # The maximum number of records per page returned in this response.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token obtained from the previous response.
+        # The pagination token used to retrieve more results. You do not need to specify this parameter for the first query. You can obtain the token for subsequent queries from the response.
         self.next_token = next_token
         # The list of quota configurations.
         self.quotas = quotas

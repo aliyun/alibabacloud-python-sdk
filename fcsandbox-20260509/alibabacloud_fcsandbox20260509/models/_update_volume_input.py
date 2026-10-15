@@ -10,7 +10,9 @@ class UpdateVolumeInput(DaraModel):
         status: str = None,
         team_id: str = None,
     ):
+        # The target status of the volume.
         self.status = status
+        # The unique identifier of the team to which the volume belongs.
         self.team_id = team_id
 
     def validate(self):

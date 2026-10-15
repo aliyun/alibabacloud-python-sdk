@@ -21,7 +21,9 @@ class ResetApiKeyResponseBody(DaraModel):
         self.api_key = api_key
         # The error code.
         self.code = code
+        # The list of IP addresses blocked from using the API key.
         self.ip_blacklist = ip_blacklist
+        # The list of IP addresses allowed to use the API key.
         self.ip_whitelist = ip_whitelist
         # The response message.
         self.message = message

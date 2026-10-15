@@ -19,11 +19,11 @@ class ListTemplatesResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The maximum number of entries to return.
+        # The maximum number of results to return.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page.
+        # The next page token.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id

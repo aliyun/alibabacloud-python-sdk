@@ -11,8 +11,11 @@ class AgenticFSVolumeConfig(DaraModel):
         server_addr: str = None,
         user_id: int = None,
     ):
+        # The group ID (GID) for accessing the mounted directory in the sandbox.
         self.group_id = group_id
+        # The service address of the AgenticFS access point.
         self.server_addr = server_addr
+        # The user ID (UID) for accessing the mounted directory in the sandbox.
         self.user_id = user_id
 
     def validate(self):

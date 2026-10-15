@@ -30,25 +30,45 @@ class E2BSandbox(DaraModel):
         template_name: str = None,
         user_id: str = None,
     ):
+        # The access endpoint of the sandbox.
         self.access_endpoint = access_endpoint
+        # The number of CPU cores used by the sandbox.
         self.cpu_count = cpu_count
+        # The disk size of the sandbox, in MB.
         self.disk_size_mb = disk_size_mb
+        # The domain name used to access the sandbox.
         self.domain = domain
+        # The end time of the sandbox.
         self.end_at = end_at
+        # The name of the Function Compute function corresponding to the sandbox.
         self.fc_function_name = fc_function_name
+        # The ID of the Function Compute instance corresponding to the sandbox.
         self.fc_instance_id = fc_instance_id
+        # The ID of the Function Compute session corresponding to the sandbox.
         self.fc_session_id = fc_session_id
+        # The memory size of the sandbox, in MB.
         self.memory_mb = memory_mb
+        # The custom metadata of the sandbox.
         self.metadata = metadata
+        # The ID of the resource group to which the sandbox belongs.
         self.resource_group_id = resource_group_id
+        # The ID of the sandbox.
         self.sandbox_id = sandbox_id
+        # The start time of the sandbox.
         self.started_at = started_at
+        # The current state of the sandbox.
         self.state = state
+        # The unique identifier of the team to which the sandbox belongs.
         self.team_id = team_id
+        # The name of the team to which the sandbox belongs.
         self.team_name = team_name
+        # The plan of the team to which the sandbox belongs.
         self.team_plan = team_plan
+        # The ID of the template used to create the sandbox.
         self.template_id = template_id
+        # The name of the template.
         self.template_name = template_name
+        # The ID of the user who created the sandbox.
         self.user_id = user_id
 
     def validate(self):

@@ -14,6 +14,7 @@ class UpdateTeamInput(DaraModel):
     ):
         # The description.
         self.description = description
+        # The plan used by the team.
         self.plan = plan
         # The resource group ID.
         self.resource_group_id = resource_group_id

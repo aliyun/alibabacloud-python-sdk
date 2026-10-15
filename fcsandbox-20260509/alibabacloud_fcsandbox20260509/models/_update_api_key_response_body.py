@@ -17,11 +17,13 @@ class UpdateApiKeyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # API Key。
+        # The API key.
         self.api_key = api_key
         # The response status code.
         self.code = code
+        # The list of IP addresses blocked from using the API key.
         self.ip_blacklist = ip_blacklist
+        # The list of IP addresses allowed to use the API key.
         self.ip_whitelist = ip_whitelist
         # The response message.
         self.message = message

@@ -19,16 +19,19 @@ class DescribeApiKeyResponseBody(DaraModel):
         permission_policy: main_models.PermissionPolicy = None,
         request_id: str = None,
     ):
-        # The Bailian API key.
+        # The Model Studio API key.
         self.api_key = api_key
         # The error code.
         self.code = code
+        # The set of permissions currently in effect for the API key.
         self.effective_permissions = effective_permissions
+        # The list of IP addresses that are blocked from using the API key.
         self.ip_blacklist = ip_blacklist
         # The IP whitelist.
         self.ip_whitelist = ip_whitelist
         # The response message.
         self.message = message
+        # The access policy configured for the API key.
         self.permission_policy = permission_policy
         # The request ID.
         self.request_id = request_id

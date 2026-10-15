@@ -22,23 +22,23 @@ class GetTemplateResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The time when the template was created.
+        # The creation time in UTC format that complies with RFC 3339, such as 2026-08-31T12:00:00Z.
         self.created_time = created_time
         # The response message.
         self.message = message
-        # The template name.
+        # The name of the template.
         self.name = name
         # Id of the request
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The runtime configuration of the template.
         self.runtime_config = runtime_config
-        # The template status.
+        # The status of the template.
         self.status = status
         # The unique identifier of the team.
         self.team_id = team_id
-        # The team name.
+        # The name of the team.
         self.team_name = team_name
         # The unique identifier of the template.
         self.template_id = template_id

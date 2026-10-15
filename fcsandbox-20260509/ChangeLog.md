@@ -1,3 +1,6 @@
+2026-10-15 Version: 1.6.1
+- Generated python 2026-05-09 for FCSandbox.
+
 2026-09-19 Version: 1.6.0
 - Support API CreateTemplateCache.
 - Support API DeleteTemplateCache.

@@ -10,7 +10,9 @@ class IPConfig(DaraModel):
         description: str = None,
         ip_address: str = None,
     ):
+        # The description of the IP configuration.
         self.description = description
+        # The IP address or CIDR block.
         self.ip_address = ip_address
 
     def validate(self):

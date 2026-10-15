@@ -18,17 +18,19 @@ class E2BTeam(DaraModel):
         team_name: str = None,
         user_id: str = None,
     ):
-        # Indicates whether the team name can be modified.
+        # Specifies whether the team name can be modified.
         self.allow_update_team_name = allow_update_team_name
-        # The time when the team was created.
+        # The creation time.
         self.created_time = created_time
         # The description.
         self.description = description
+        # The plan used by the team.
         self.plan = plan
+        # Specifies whether the team is read-only.
         self.read_only = read_only
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The status of the team.
+        # The status.
         self.status = status
         # The unique identifier of the team.
         self.team_id = team_id

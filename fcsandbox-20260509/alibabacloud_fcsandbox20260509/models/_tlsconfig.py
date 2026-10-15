@@ -13,8 +13,11 @@ class TLSConfig(DaraModel):
         max_version: str = None,
         min_version: str = None,
     ):
+        # The list of allowed TLS cipher suites.
         self.cipher_suites = cipher_suites
+        # The maximum allowed TLS version.
         self.max_version = max_version
+        # The minimum allowed TLS version.
         self.min_version = min_version
 
     def validate(self):

@@ -12,8 +12,11 @@ class ContainerConfiguration(DaraModel):
         image: str = None,
         registry_credential: main_models.ContainerConfigurationRegistryCredential = None,
     ):
+        # The ID of the ACR Enterprise instance to which the container image belongs.
         self.acr_instance_id = acr_instance_id
+        # The container image address.
         self.image = image
+        # The repository credentials used to pull private images.
         self.registry_credential = registry_credential
 
     def validate(self):
@@ -58,7 +61,9 @@ class ContainerConfigurationRegistryCredential(DaraModel):
         password: str = None,
         username: str = None,
     ):
+        # The password of the image repository.
         self.password = password
+        # The username of the image repository.
         self.username = username
 
     def validate(self):

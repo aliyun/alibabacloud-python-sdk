@@ -53,6 +53,7 @@ from ._public_template_runtime_config import PublicTemplateRuntimeConfig
 from ._public_template_sandbox_config import PublicTemplateSandboxConfig
 from ._public_template_status import PublicTemplateStatus
 from ._public_template_status_reason import PublicTemplateStatusReason
+from ._public_template_step import PublicTemplateStep
 from ._public_template_vpcconfig import PublicTemplateVPCConfig
 from ._public_update_template_build_config import PublicUpdateTemplateBuildConfig
 from ._public_update_template_copy_action import PublicUpdateTemplateCopyAction
@@ -220,6 +221,7 @@ __all__ = [
     PublicTemplateSandboxConfig,
     PublicTemplateStatus,
     PublicTemplateStatusReason,
+    PublicTemplateStep,
     PublicTemplateVPCConfig,
     PublicUpdateTemplateBuildConfig,
     PublicUpdateTemplateCopyAction,

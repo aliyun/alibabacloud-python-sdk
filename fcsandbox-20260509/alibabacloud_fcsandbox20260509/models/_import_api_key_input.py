@@ -12,9 +12,13 @@ class ImportApiKeyInput(DaraModel):
         expire_time: str = None,
         team_id: str = None,
     ):
+        # The name of the API key.
         self.api_key_name = api_key_name
+        # The value of the API key to import.
         self.api_key_value = api_key_value
+        # The expiration time of the API key.
         self.expire_time = expire_time
+        # The unique identifier of the team to which the API key belongs.
         self.team_id = team_id
 
     def validate(self):

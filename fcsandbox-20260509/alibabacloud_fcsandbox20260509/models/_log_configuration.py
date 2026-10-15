@@ -10,7 +10,9 @@ class LogConfiguration(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
+        # The name of the Simple Log Service Logstore.
         self.logstore = logstore
+        # The name of the Simple Log Service project.
         self.project = project
 
     def validate(self):

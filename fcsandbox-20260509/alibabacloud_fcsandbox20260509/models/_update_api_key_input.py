@@ -16,11 +16,13 @@ class UpdateApiKeyInput(DaraModel):
         ip_whitelist: List[main_models.IPConfig] = None,
         status: str = None,
     ):
-        # The API key name.
+        # The name of the API key.
         self.api_key_name = api_key_name
         # The expiration time.
         self.expire_time = expire_time
+        # The list of IP addresses that are blocked from using the API key.
         self.ip_blacklist = ip_blacklist
+        # The list of IP addresses that are allowed to use the API key.
         self.ip_whitelist = ip_whitelist
         # The status. Valid values:
         # - active

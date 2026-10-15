@@ -11,7 +11,7 @@ class ListTemplatesRequest(DaraModel):
         next_token: str = None,
         team_id: str = None,
     ):
-        # The maximum number of entries to return.
+        # The maximum number of results to return.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

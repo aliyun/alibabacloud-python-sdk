@@ -12,9 +12,13 @@ class OSSVolumeConfig(DaraModel):
         endpoint: str = None,
         read_only: bool = None,
     ):
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
+        # The path to mount within the bucket.
         self.bucket_path = bucket_path
+        # The OSS access endpoint.
         self.endpoint = endpoint
+        # Specifies whether to mount the volume in read-only mode.
         self.read_only = read_only
 
     def validate(self):

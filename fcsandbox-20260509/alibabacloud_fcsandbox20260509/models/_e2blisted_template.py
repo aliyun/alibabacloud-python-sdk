@@ -30,24 +30,43 @@ class E2BListedTemplate(DaraModel):
         updated_at: str = None,
         user_id: str = None,
     ):
+        # The build status of the template.
         self.build_status = build_status
+        # The category of the template.
         self.category = category
+        # The container image configuration of the template.
         self.container_configuration = container_configuration
+        # The number of CPU cores configured for the template.
         self.cpu_count = cpu_count
+        # The time when the template was created.
         self.created_at = created_at
+        # The name of the Function Compute function corresponding to the template.
         self.function_name = function_name
+        # The log configuration of the template.
         self.log_configuration = log_configuration
+        # The memory size configured for the template, in MB.
         self.memory_mb = memory_mb
+        # The list of template names.
         self.names = names
+        # Indicates whether the template is publicly available.
         self.public = public
+        # The ID of the resource group to which the template belongs.
         self.resource_group_id = resource_group_id
+        # The reason for the build status of the template.
         self.status_reason = status_reason
+        # The list of tags for the template.
         self.tags = tags
+        # The unique identifier of the team to which the template belongs.
         self.team_id = team_id
+        # The name of the team to which the template belongs.
         self.team_name = team_name
+        # The plan of the team to which the template belongs.
         self.team_plan = team_plan
+        # The unique identifier of the template.
         self.template_id = template_id
+        # The time when the template was last updated.
         self.updated_at = updated_at
+        # The ID of the user who created the template.
         self.user_id = user_id
 
     def validate(self):

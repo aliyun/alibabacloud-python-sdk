@@ -15,11 +15,17 @@ class CustomDomainResp(DaraModel):
         tls_config: main_models.TLSConfig = None,
         updated_at: int = None,
     ):
+        # The certificate configuration used by the domain name.
         self.cert_config = cert_config
+        # The creation time of the custom domain name.
         self.created_at = created_at
+        # The description of the custom domain name.
         self.description = description
+        # The custom domain name.
         self.domain_name = domain_name
+        # The TLS configuration used by the domain name.
         self.tls_config = tls_config
+        # The last update time of the custom domain name.
         self.updated_at = updated_at
 
     def validate(self):
