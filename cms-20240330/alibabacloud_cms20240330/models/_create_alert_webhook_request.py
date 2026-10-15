@@ -18,7 +18,7 @@ class CreateAlertWebhookRequest(DaraModel):
         webhook_id: str = None,
         workspace: str = None,
     ):
-        # The content type of the data. Valid values:
+        # The data content type. Valid values:
         # - JSON (default)
         # - FORM
         self.content_type = content_type

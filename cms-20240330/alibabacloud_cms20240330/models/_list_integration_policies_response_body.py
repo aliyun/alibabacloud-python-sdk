@@ -16,7 +16,11 @@ class ListIntegrationPoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page size.
+        # The maximum number of entries per page.
+        # Default value:
+        # 	50
+        # Maximum value:
+        # 	50
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
@@ -97,29 +101,29 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # The names of all components installed in this policy.
+        # The names of all add-ons installed in this policy.
         self.addon_names = addon_names
-        # The bound resource information.
+        # The information about the bound resources.
         self.bind_resource = bind_resource
-        # The umodel installation status in the container environment.
+        # The installation status of umodel in the container environment.
         self.cs_umodel_status = cs_umodel_status
         # The entity group.
         self.entity_group = entity_group
         # The billing type.
         self.fee_package = fee_package
-        # The policy network management information.
+        # The network management information of the policy.
         self.managed_info = managed_info
         # The policy ID.
         self.policy_id = policy_id
         # The rule name.
         self.policy_name = policy_name
-        # The access center policy type.
+        # The Access Center policy type.
         self.policy_type = policy_type
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The sub-release count.
+        # The number of sub-releases.
         self.sub_addon_release = sub_addon_release
         # The user ID.
         self.user_id = user_id
@@ -279,7 +283,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesManagedInfo(DaraModel):
         security_group_id: str = None,
         vswitch_id: str = None,
     ):
-        # The ENI ID of the managed probe. Example: eni-xxxx.
+        # The ID of the elastic network interface (ENI) for the managed probe. Example: eni-xxxx.
         self.eni_id = eni_id
         # The security group ID.
         self.security_group_id = security_group_id
@@ -432,7 +436,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules(DaraMode
         self.field_rules = field_rules
         # The instance IDs.
         self.instance_ids = instance_ids
-        # The IP match rule.
+        # The IP address matching rule.
         self.ip_match_rule = ip_match_rule
         # The labels.
         self.labels = labels
@@ -647,9 +651,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesIpMatchRu
         ip_cidr: str = None,
         ip_field_key: str = None,
     ):
-        # The IP CIDR block.
+        # The IP address CIDR block.
         self.ip_cidr = ip_cidr
-        # The key of the IP field.
+        # The key of the IP address field.
         self.ip_field_key = ip_field_key
 
     def validate(self):
@@ -687,7 +691,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRule
     ):
         # The unique identifier of the field.
         self.field_key = field_key
-        # The field values. Multiple values are separated by commas (,).
+        # The field values. Separate multiple values with commas (,).
         self.field_values = field_values
         # The operation to perform.
         self.op = op
@@ -775,6 +779,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesBindResource(DaraModel):
         self,
         cluster_id: str = None,
         cluster_type: str = None,
+        entity_user_id: str = None,
         vpc_cidr: str = None,
         vpc_id: str = None,
     ):
@@ -782,9 +787,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesBindResource(DaraModel):
         self.cluster_id = cluster_id
         # The cluster type.
         self.cluster_type = cluster_type
+        # The UID of the actual owner of the bound resource in cross-account scenarios.
+        self.entity_user_id = entity_user_id
         # The VPC CIDR block.
         self.vpc_cidr = vpc_cidr
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -801,6 +808,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesBindResource(DaraModel):
         if self.cluster_type is not None:
             result['clusterType'] = self.cluster_type
 
+        if self.entity_user_id is not None:
+            result['entityUserId'] = self.entity_user_id
+
         if self.vpc_cidr is not None:
             result['vpcCidr'] = self.vpc_cidr
 
@@ -816,6 +826,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesBindResource(DaraModel):
 
         if m.get('clusterType') is not None:
             self.cluster_type = m.get('clusterType')
+
+        if m.get('entityUserId') is not None:
+            self.entity_user_id = m.get('entityUserId')
 
         if m.get('vpcCidr') is not None:
             self.vpc_cidr = m.get('vpcCidr')

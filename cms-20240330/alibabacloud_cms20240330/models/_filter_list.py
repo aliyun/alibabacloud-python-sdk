@@ -19,7 +19,7 @@ class FilterList(DaraModel):
         # 
         # This parameter is required.
         self.type = type
-        # The filter value. This parameter can be left empty when type is set to ALL or DISABLED.
+        # The filter value, which can be empty when the type is ALL or DISABLED.
         self.value = value
 
     def validate(self):

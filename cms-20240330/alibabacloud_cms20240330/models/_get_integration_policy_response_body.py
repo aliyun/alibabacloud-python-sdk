@@ -63,11 +63,11 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # The names of all components installed in this policy.
+        # The names of all components installed in the policy.
         self.addon_names = addon_names
-        # The bound resource information.
+        # The information about the bound resource.
         self.bind_resource = bind_resource
-        # The umodel installation status in the container environment.
+        # The installation status of umodel in the container environment.
         self.cs_umodel_status = cs_umodel_status
         # The entity group.
         self.entity_group = entity_group
@@ -293,7 +293,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroup(DaraModel):
         self.entity_group_name = entity_group_name
         # The entity rules.
         self.entity_rules = entity_rules
-        # Used for querying.
+        # The query.
         self.query = query
         # The region ID.
         self.region_id = region_id
@@ -385,17 +385,17 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules(DaraModel):
         self.entity_types = entity_types
         # The list of property rules.
         self.field_rules = field_rules
-        # The instance IDs.
+        # The instance ID.
         self.instance_ids = instance_ids
         # The IP matching rule.
         self.ip_match_rule = ip_match_rule
-        # The labels.
+        # The tags.
         self.labels = labels
         # The list of region IDs.
         self.region_ids = region_ids
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tag values.
+        # The tag value.
         self.tags = tags
 
     def validate(self):
@@ -690,7 +690,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations(Da
         self.op = op
         # The tag key.
         self.tag_key = tag_key
-        # The tag values.
+        # The tag value.
         self.tag_values = tag_values
 
     def validate(self):
@@ -730,6 +730,7 @@ class GetIntegrationPolicyResponseBodyPolicyBindResource(DaraModel):
         self,
         cluster_id: str = None,
         cluster_type: str = None,
+        entity_user_id: str = None,
         vpc_cidr: str = None,
         vpc_id: str = None,
     ):
@@ -737,6 +738,8 @@ class GetIntegrationPolicyResponseBodyPolicyBindResource(DaraModel):
         self.cluster_id = cluster_id
         # The cluster type.
         self.cluster_type = cluster_type
+        # The UID of the actual owner of the bound resource in cross-account scenarios.
+        self.entity_user_id = entity_user_id
         # The VPC CIDR block.
         self.vpc_cidr = vpc_cidr
         # The VPC ID.
@@ -756,6 +759,9 @@ class GetIntegrationPolicyResponseBodyPolicyBindResource(DaraModel):
         if self.cluster_type is not None:
             result['clusterType'] = self.cluster_type
 
+        if self.entity_user_id is not None:
+            result['entityUserId'] = self.entity_user_id
+
         if self.vpc_cidr is not None:
             result['vpcCidr'] = self.vpc_cidr
 
@@ -771,6 +777,9 @@ class GetIntegrationPolicyResponseBodyPolicyBindResource(DaraModel):
 
         if m.get('clusterType') is not None:
             self.cluster_type = m.get('clusterType')
+
+        if m.get('entityUserId') is not None:
+            self.entity_user_id = m.get('entityUserId')
 
         if m.get('vpcCidr') is not None:
             self.vpc_cidr = m.get('vpcCidr')

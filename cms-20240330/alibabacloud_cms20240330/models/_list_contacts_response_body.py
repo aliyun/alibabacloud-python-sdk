@@ -16,7 +16,7 @@ class ListContactsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of alert contacts.
+        # The list of contacts.
         self.contacts = contacts
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -24,7 +24,7 @@ class ListContactsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -94,27 +94,27 @@ class ListContactsResponseBodyContacts(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
-        # The ID of the alert contact.
+        # The ID of the on-duty contact.
         self.contact_id = contact_id
-        # The email address of the alert contact.
+        # The email address of the contact.
         self.email = email
-        # Indicates whether the email address is verified.
+        # Indicates whether the email address is activated.
         self.email_verify = email_verify
-        # The contact groups to which the alert contact belongs.
+        # The contact groups to which the contact belongs.
         self.group_list = group_list
-        # The mapping of instant messaging user IDs. Multiple instant messaging tools are supported.
+        # The IM user ID mapping. Multiple instant messaging tools are supported.
         self.im_user_ids = im_user_ids
         # The language.
         self.lang = lang
-        # The name of the alert contact.
+        # The name of the contact.
         self.name = name
-        # The phone number of the alert contact.
+        # The mobile phone number of the contact.
         self.phone = phone
-        # Indicates whether the phone number of the alert contact is verified.
+        # Indicates whether the mobile phone number of the contact is activated.
         self.phone_verify = phone_verify
-        # The time when the alert contact was last updated. Format: yyyy-MM-dd HH:mm:ss.
+        # The update time. Format: yyyy-MM-dd HH:mm:ss.
         self.update_time = update_time
-        # The workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

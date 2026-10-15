@@ -22,6 +22,7 @@ from ._alert_rule_rca_config import AlertRuleRcaConfig
 from ._alert_rule_send import AlertRuleSend
 from ._alert_rule_sls_query_join import AlertRuleSlsQueryJoin
 from ._alert_rule_template import AlertRuleTemplate
+from ._alert_rule_template_apply_record import AlertRuleTemplateApplyRecord
 from ._alert_rule_time_span import AlertRuleTimeSpan
 from ._alert_rule_v2 import AlertRuleV2
 from ._apm_composite_compare_config import ApmCompositeCompareConfig
@@ -1273,6 +1274,7 @@ __all__ = [
     AlertRuleSend,
     AlertRuleSlsQueryJoin,
     AlertRuleTemplate,
+    AlertRuleTemplateApplyRecord,
     AlertRuleTimeSpan,
     AlertRuleV2,
     ApmCompositeCompareConfig,

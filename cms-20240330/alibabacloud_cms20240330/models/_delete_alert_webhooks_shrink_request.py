@@ -9,7 +9,7 @@ class DeleteAlertWebhooksShrinkRequest(DaraModel):
         self,
         webhook_ids_shrink: str = None,
     ):
-        # Unique webhook identifiers.
+        # The unique identifiers of the webhooks.
         # 
         # This parameter is required.
         self.webhook_ids_shrink = webhook_ids_shrink

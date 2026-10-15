@@ -97,31 +97,31 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
+        # The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
         self.create_time = create_time
-        # The instance type:
-        # prom-view: aggregated view of the new version.
-        # global-view: aggregated view of the legacy version.
+        # The instance type. Valid values:
+        # - prom-view: new version of the aggregate view
+        # - global-view: legacy version of the aggregate view
         self.instance_type = instance_type
-        # The billing type. Currently, the fixed value is FREE.
+        # The billing method. The value is fixed to FREE.
         self.payment_type = payment_type
-        # The product to which the Prometheus instance belongs (arms or cms).
+        # The product to which the Prometheus instance belongs, such as ARMS or CMS.
         self.product = product
         # The number of Prometheus instances included in the view.
         self.prometheus_instance_count = prometheus_instance_count
-        # The Prometheus view ID.
+        # The ID of the Prometheus view.
         self.prometheus_view_id = prometheus_view_id
-        # The Prometheus view name.
+        # The name of the Prometheus view.
         self.prometheus_view_name = prometheus_view_name
         # The region ID.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The fixed value: PrometheusView.
+        # The resource type. The value is fixed to PrometheusView.
         self.resource_type = resource_type
-        # The backend data storage status.
+        # The status of the backend data storage.
         self.status = status
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
         # The version.
         self.version = version

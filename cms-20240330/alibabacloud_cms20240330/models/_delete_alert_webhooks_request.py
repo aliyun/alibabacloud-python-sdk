@@ -11,7 +11,7 @@ class DeleteAlertWebhooksRequest(DaraModel):
         self,
         webhook_ids: List[str] = None,
     ):
-        # Unique webhook identifiers.
+        # The unique identifiers of the webhooks.
         # 
         # This parameter is required.
         self.webhook_ids = webhook_ids

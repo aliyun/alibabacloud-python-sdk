@@ -22,17 +22,17 @@ class ListIntegrationPoliciesShrinkRequest(DaraModel):
         tag_shrink: str = None,
         workspace: str = None,
     ):
-        # The addon name.
+        # The add-on name.
         self.addon_name = addon_name
         # The ID of the bound resource.
         self.bind_resource_id = bind_resource_id
-        # The entity IDs used for filtering. Separate multiple IDs with commas (,).
+        # The entity IDs used for filtering, separated by commas.
         self.entity_group_ids = entity_group_ids
-        # The region IDs used for region-based queries. Separate multiple region IDs with commas (,).
+        # The region IDs used for the query, separated by commas.
         self.filter_region_ids = filter_region_ids
         # The maximum number of results to return. Default value: 30. Maximum value: 100.
         self.max_results = max_results
-        # The token used to retrieve more results. You do not need to specify this parameter for the first query. For subsequent queries, use the token obtained from the previous response.
+        # The token used to retrieve more results. This parameter is not required for the first query. For subsequent queries, use the token returned in the previous response.
         self.next_token = next_token
         # The policy ID.
         self.policy_id = policy_id
@@ -42,11 +42,11 @@ class ListIntegrationPoliciesShrinkRequest(DaraModel):
         self.policy_type = policy_type
         # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # The general query string.
+        # The query string for general queries.
         self.query = query
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The list of tags.
         self.tag_shrink = tag_shrink
         # The workspace.
         self.workspace = workspace

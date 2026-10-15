@@ -14,17 +14,17 @@ class ListAlertRobotsShrinkRequest(DaraModel):
         types_shrink: str = None,
         workspace: str = None,
     ):
-        # The robot name. Prefix fuzzy match is supported.
+        # The name of the chatbot. Prefix-based fuzzy match is supported.
         self.name = name
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # The robot IDs.
+        # The chatbot IDs.
         self.robot_ids_shrink = robot_ids_shrink
-        # The robot types.
+        # The chatbot types.
         self.types_shrink = types_shrink
-        # The workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

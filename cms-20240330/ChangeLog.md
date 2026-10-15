@@ -1,3 +1,8 @@
+2026-10-15 Version: 10.5.4
+- Update API GetIntegrationPolicy: add response parameters Body.policy.bindResource.entityUserId.
+- Update API ListIntegrationPolicies: add response parameters Body.policies.$.bindResource.entityUserId.
+
+
 2026-09-21 Version: 10.5.3
 - Update API CreateDataPipeline: add request parameters body.outputs.$.processors.$.config.assignments.
 - Update API CreateDataPipeline: add request parameters body.outputs.$.processors.$.config.parameters.

@@ -44,51 +44,51 @@ class AlertRuleV2(DaraModel):
         self.action_integration_config = action_integration_config
         # The annotations.
         self.annotations = annotations
-        # The Application Real-Time Monitoring Service (ARMS) integration configuration.
+        # The ARMS integration configuration.
         self.arms_integration_config = arms_integration_config
-        # The business source (read-only, such as managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, or sls).
+        # The business source (read-only, such as managed_service_for_prometheus / umodel / application_insights / cloud_monitoring / sls).
         self.biz_source = biz_source
-        # The detection condition configuration aggregation (Prometheus simple, UModel, APM simple, or APM composite).
+        # The detection condition configuration aggregate (Prometheus simple / UModel / APM simple / APM composite).
         self.condition_config = condition_config
         # The content template.
         self.content_template = content_template
         # The creation time (read-only), in ISO 8601 format.
         self.created_at = created_at
-        # The datasource config aggregation (PROMETHEUS, UMODEL, and APM share a single object, with fields selected based on type).
+        # The datasource configuration aggregate (shared by PROMETHEUS / UMODEL / APM in a single object; fields are selected based on the type).
         self.datasource_config = datasource_config
-        # The data source type (read-only, derived).
+        # The datasource type (read-only, derived).
         self.datasource_type = datasource_type
         # The display name.
         self.display_name = display_name
-        # Indicates whether the alert rule is enabled.
+        # Specifies whether the alert rule is enabled.
         self.enabled = enabled
         # The labels.
         self.labels = labels
-        # The rule manager (read-only). An empty value indicates a user-created rule. A non-empty value indicates the rule is created and managed by the corresponding cloud service.
+        # The rule manager (read-only). An empty value indicates a user-created rule. A non-empty value indicates that the rule was created and managed by the corresponding cloud service.
         self.managed_by = managed_by
-        # The notification configuration aggregation (currently only DIRECT_NOTIFY, corresponding to DirectNotifyConfig).
+        # The notification configuration aggregate (currently only DIRECT_NOTIFY, corresponding to DirectNotifyConfig).
         self.notify_config = notify_config
-        # The notification policy ID (read-only, derived, the first entry in the notification policy list).
+        # The notification policy ID (read-only, derived from the first entry in the notification policy list).
         self.notify_strategy_id = notify_strategy_id
         # The observable resource configuration.
         self.observe_resource_config = observe_resource_config
-        # **[Deprecated]** Indicates whether the rule takes effect on all resources of this type (read-only, derived). For new integrations, use observeResourceConfig.relationType to check whether the value is ALL for equivalent semantics.
+        # **[Deprecated]** Specifies whether the rule applies to all resources of the resource type (read-only, derived). For new integrations, use observeResourceConfig.relationType to check whether the value is ALL for equivalent semantics.
         self.observe_resource_global_scope = observe_resource_global_scope
-        # The list of observable resource IDs (read-only, derived).
+        # The observable resource ID list (read-only, derived).
         self.observe_resource_list = observe_resource_list
         # **[Deprecated]** The observable resource type (read-only, derived). For new integrations, use observeResourceConfig.entityType instead.
         self.observe_resource_type = observe_resource_type
         # The partition key (read-only, maintained by the system for rule routing and sharding).
         self.partition_key = partition_key
-        # The query configuration aggregation (PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, or APM_MULTI_QUERY).
+        # The query configuration aggregate (PROMETHEUS_SINGLE_QUERY / UMODEL_METRICSET_QUERY / APM_MULTI_QUERY).
         self.query_config = query_config
-        # The Root Cause Analysis (RCA) configuration.
+        # The RCA (root cause analysis) configuration.
         self.rca_config = rca_config
-        # The region ID (aligned with V1 AlertRule.regionId. Priority: regionId in the request body > callerRegionId from the gateway).
+        # The region ID (aligned with V1 AlertRule.regionId; priority: request body regionId > gateway callerRegionId).
         self.region_id = region_id
-        # The scheduling configuration aggregation (currently only FIXED is supported).
+        # The scheduling configuration aggregate (currently only FIXED is supported).
         self.schedule_config = schedule_config
-        # The severity levels covered by this rule, comma-separated (read-only, derived. Same format as the filter.severityLevels query parameter).
+        # The severity levels covered by this rule, comma-separated (read-only, derived; consistent with the filter.severityLevels query parameter format).
         self.severity_levels = severity_levels
         # The alert status (read-only).
         self.status = status

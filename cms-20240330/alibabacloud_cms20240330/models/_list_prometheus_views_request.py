@@ -21,7 +21,7 @@ class ListPrometheusViewsRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Filters by region ID.
+        # Filters the results by region ID. Currently, only a single region ID is supported.
         self.filter_region_ids = filter_region_ids
         # The maximum number of records to return.
         self.max_results = max_results
@@ -29,17 +29,17 @@ class ListPrometheusViewsRequest(DaraModel):
         self.next_token = next_token
         # The list of Prometheus view instance IDs.
         self.prometheus_view_ids = prometheus_view_ids
-        # The Prometheus view name.
+        # The name of the Prometheus view.
         self.prometheus_view_name = prometheus_view_name
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The resource type.
         self.resource_type = resource_type
         # The list of tags.
         self.tag = tag
-        # The instance version: V1 or V2.
+        # The instance version.
         self.version = version
-        # The workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

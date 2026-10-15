@@ -16,7 +16,7 @@ class ListAlertActionsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of action integration configurations.
+        # The list of alert action integration configurations.
         self.alert_actions = alert_actions
         # The page number.
         self.page_number = page_number
@@ -94,9 +94,9 @@ class ListAlertActionsResponseBodyAlertActions(DaraModel):
         type: str = None,
         webhook_param: main_models.ListAlertActionsResponseBodyAlertActionsWebhookParam = None,
     ):
-        # The unique IDs of the action integrations.
+        # The unique identifiers of the alert action integrations.
         self.alert_action_id = alert_action_id
-        # The name of the action integration.
+        # The name of the alert action integration.
         self.alert_action_name = alert_action_name
         # The EventBridge parameters.
         self.eb_param = eb_param
@@ -112,7 +112,7 @@ class ListAlertActionsResponseBodyAlertActions(DaraModel):
         self.pager_duty_param = pager_duty_param
         # The Simple Log Service parameters.
         self.sls_param = sls_param
-        # The type of the action integration.
+        # The type of the alert action integration.
         self.type = type
         # The webhook parameters.
         self.webhook_param = webhook_param
@@ -282,9 +282,9 @@ class ListAlertActionsResponseBodyAlertActionsSlsParam(DaraModel):
         project: str = None,
         region_id: str = None,
     ):
-        # The name of the Simple Log Service Logstore.
+        # The name of the Logstore in Simple Log Service.
         self.logstore = logstore
-        # The name of the Simple Log Service project.
+        # The name of the project in Simple Log Service.
         self.project = project
         # The region ID.
         self.region_id = region_id
@@ -327,9 +327,9 @@ class ListAlertActionsResponseBodyAlertActionsPagerDutyParam(DaraModel):
         key: str = None,
         url: str = None,
     ):
-        # The integration key of PagerDuty.
+        # The integration key for PagerDuty.
         self.key = key
-        # The integration webhook of PagerDuty. V1 and V2 versions are supported.
+        # The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
         self.url = url
 
     def validate(self):
@@ -365,9 +365,9 @@ class ListAlertActionsResponseBodyAlertActionsMnsParam(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The resource type of Simple Message Queue (formerly MNS).
+        # The resource type in Simple Message Queue (formerly MNS).
         self.mns_type = mns_type
-        # The resource name.
+        # The name of the resource.
         # 
         # - If the resource type is queue, the resource name is the queue name.
         # - If the resource type is topic, the resource name is the topic name.
@@ -414,7 +414,7 @@ class ListAlertActionsResponseBodyAlertActionsFcParam(DaraModel):
         region_id: str = None,
         service: str = None,
     ):
-        # The function name of the Function Compute service.
+        # The name of the function in Function Compute.
         self.function = function
         # The region ID.
         self.region_id = region_id
@@ -460,7 +460,7 @@ class ListAlertActionsResponseBodyAlertActionsFc3Param(DaraModel):
         qualifier: str = None,
         region_id: str = None,
     ):
-        # The function name of the Function Compute service.
+        # The name of the function in Function Compute.
         self.function = function
         # The version or alias of the function.
         self.qualifier = qualifier

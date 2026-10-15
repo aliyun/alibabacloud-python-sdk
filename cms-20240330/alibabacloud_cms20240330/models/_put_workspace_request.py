@@ -26,7 +26,7 @@ class PutWorkspaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.sls_project = sls_project
-        # The tags attached to the workspace when it is created.
+        # The tags bound to the workspace when it is created.
         self.tags = tags
 
     def validate(self):
