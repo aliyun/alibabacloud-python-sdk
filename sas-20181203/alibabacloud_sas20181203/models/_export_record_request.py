@@ -13,91 +13,58 @@ class ExportRecordRequest(DaraModel):
         params: str = None,
         resource_directory_account_id: int = None,
     ):
-        # The type of file to export. Valid values:
+        # Specifies the type of the file to be exported. Valid values:
         # 
-        # - **virusScanExport**: Exports details of a virus scan task. This parameter is required when ExportType is set to virusScanExport.
+        # - **virusScanExport**: Exports the virus scan task details. This value is required and can only be used when ExportType is set to virusScanExport.
         self.export_file_type = export_file_type
-        # The type of records to export. Valid values:
+        # Specifies the type of the detection result list to be exported. Valid values:
         # 
-        # - **assetInstance**: The list of servers in Asset Center
-        # 
-        # - **user**: The list of account asset fingerprints
-        # 
-        # - **port**: The list of port asset fingerprints
-        # 
-        # - **process**: The list of process asset fingerprints
-        # 
-        # - **sca**: The list of middleware asset fingerprints
-        # 
-        # - **database**: The list of database asset fingerprints
-        # 
-        # - **web**: The list of web service asset fingerprints
-        # 
-        # - **software**: The list of software asset fingerprints
-        # 
-        # - **cron**: The list of scheduled task (cron) asset fingerprints
-        # 
-        # - **autorun**: The list of startup item asset fingerprints
-        # 
-        # - **lkm**: The list of kernel module asset fingerprints
-        # 
-        # - **webserver**: The list of website asset fingerprints
-        # 
-        # - **virusScanExport**: The list of virus scan task details
-        # 
-        # - **imageVulExport**: The list of system vulnerabilities in images
-        # 
-        # - imageVulExport: The list of system vulnerabilities in images
-        # 
-        # - **imageBaseLineExport**: The list of image baseline check results
-        # 
-        # - **imageAffectedMaliciousExport**: The list of malicious sample check results for images
-        # 
-        # - **baselineCspm**: The list of cloud platform configuration check results
-        # 
-        # - **attack**: The list of attack analysis alerts
-        # 
-        # - **accessKey**: The list of AK leakage detection alerts
-        # 
-        # - **exportObjectScanEvents**: The list of malicious file detection alerts
-        # 
-        # - **domainDetail**: Website assets
-        # 
-        # - **assetsPropertyScaProcessDetail**: RASP-protected processes
-        # 
-        # - **exportHcWarning**: The list of system baseline risks
-        # 
-        # - **raspAttackAlert**: The list of RASP attack alerts
-        # 
-        # - **raspApplicationConfiguration**: The list of RASP application configurations
-        # 
-        # - **raspWeaknessDetection**: The list of RASP weakness detection results
-        # 
-        # - **raspInMemoryWebshellDetection**: The list of RASP alerts for in-memory webshell detection
-        # 
-        # - **raspInMemoryWebshellInsertion**: The list of RASP alerts for in-memory webshell insertion
-        # 
-        # - **listAgentExport**: The list of agents
-        # 
-        # - **listSkillExport**: The list of skills
-        # 
-        # - **listModelExport**: The list of models
+        # - **assetInstance**: the server list in the Asset Center
+        # - **user**: the Asset Fingerprints list of accounts
+        # - **port**: the Asset Fingerprints list of ports
+        # - **process**: the Asset Fingerprints list of processes
+        # - **sca**: the Asset Fingerprints list of middleware
+        # - **database**: the Asset Fingerprints list of databases
+        # - **web**: the Asset Fingerprints list of web services
+        # - **software**: the Asset Fingerprints list of software
+        # - **cron**: the Asset Fingerprints list of scheduled nodes
+        # - **autorun**: the Asset Fingerprints list of startup items
+        # - **lkm**: the Asset Fingerprints list of kernel modules
+        # - **webserver**: the Asset Fingerprints list of websites
+        # - **virusScanExport**: the virus scan node details list
+        # - **imageVulExport**: the image system vulnerability list
+        # - **imageBaseLineExport**: the image baseline check result list
+        # - **imageAffectedMaliciousExport**: the image malicious sample check result list
+        # - **baselineCspm**: the cloud platform configuration check result list
+        # - **attack**: the attack analysis alerting event list
+        # - **accessKey**: the AccessKey leak detection alerting event list
+        # - **exportObjectScanEvents**: the malicious file detection alerting event list
+        # - **domainDetail**: the website assets
+        # - **assetsPropertyScaProcessDetail**: the RASP-protected processes in Application Protection
+        # - **exportHcWarning**: the system baseline risk list
+        # - **raspAttackAlert**: the Application Protection attack alerting list
+        # - **raspApplicationConfiguration**: the Application Protection application configuration list
+        # - **raspWeaknessDetection**: the Application Protection weakness detection list
+        # - **raspInMemoryWebshellDetection**: the Application Protection in-memory webshell detection alerting list
+        # - **raspInMemoryWebshellInsertion**: the Application Protection in-memory webshell injection alerting list
+        # - **listAgentExport**: the agent list
+        # - **listSkillExport**: the skill list
+        # - **listModelExport**: the model list
+        # - **listAiAgentEventExport**: the agent risk list
         # 
         # This parameter is required.
         self.export_type = export_type
-        # The language of the content in the request and response. Default value: **zh**. Valid values:
+        # Specifies the language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The filter conditions for the exported content.
+        # Specifies the filter conditions for the exported content.
         # 
-        # > This is a general-purpose operation for exporting various detection lists from Cloud Security Center. As parameter configurations vary by feature, we recommend that you omit this parameter to export the complete list. You can then filter the data in the exported Excel file.
+        # > This operation is a general export operation for exporting detection lists of multiple features in Security Center. The configuration fields of this parameter vary based on the feature. Do not specify this parameter when you call the operation. You can export the information list without specifying this parameter and then filter the target data in the exported Excel file.
         self.params = params
-        # The ID of the management account for a member in Resource Directory.
-        # 
-        # > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

@@ -1,3 +1,10 @@
+2026-10-15 Version: 10.3.1
+- Update API DescribeVersionConfig: add response parameters Body.PostPaidFirstTrialTime.
+- Update API DescribeVersionConfig: add response parameters Body.PostPaidLastTrialTime.
+- Update API DescribeVersionConfig: add response parameters Body.PostPaidTrialExpiredTime.
+- Update API GetCanTrySas: add response parameters Body.Data.PostPaidCanTry.
+
+
 2026-10-13 Version: 10.3.0
 - Support API CreateFileDeepAnalyze.
 

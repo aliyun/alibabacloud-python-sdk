@@ -10,15 +10,15 @@ class GetCanTrySasRequest(DaraModel):
         from_ecs: bool = None,
         lang: str = None,
     ):
-        # Specifies whether the request is redirected from the Elastic Compute Service (ECS) console. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Specifies whether the request is from the ECS console. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.from_ecs = from_ecs
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # Specifies the language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # 
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):
