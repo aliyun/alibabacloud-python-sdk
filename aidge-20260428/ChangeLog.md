@@ -1,3 +1,15 @@
+2026-10-15 Version: 5.10.0
+- Support API ImageMattingAsync.
+- Support API ImageRecognitionAsync.
+- Support API ImageRemovalProAsync.
+- Support API ImageRemoveAsync.
+- Support API ImageTranslationPlusAsync.
+- Support API ImageTranslationProAsync.
+- Support API ImageTranslationStandardAsync.
+- Support API SizeChartExtractAsync.
+- Support API TextTranslateAsync.
+
+
 2026-10-15 Version: 5.9.0
 - Support API MerchandisePlacementDetectionLite.
 - Support API MerchandisePriceTagDetection.

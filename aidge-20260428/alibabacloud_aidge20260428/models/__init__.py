@@ -42,26 +42,49 @@ from ._image_cropping_response import ImageCroppingResponse
 from ._image_matting_request import ImageMattingRequest
 from ._image_matting_response_body import ImageMattingResponseBody
 from ._image_matting_response import ImageMattingResponse
+from ._image_matting_async_request import ImageMattingAsyncRequest
+from ._image_matting_async_response_body import ImageMattingAsyncResponseBody
+from ._image_matting_async_response import ImageMattingAsyncResponse
 from ._image_recognition_request import ImageRecognitionRequest
 from ._image_recognition_shrink_request import ImageRecognitionShrinkRequest
 from ._image_recognition_response_body import ImageRecognitionResponseBody
 from ._image_recognition_response import ImageRecognitionResponse
+from ._image_recognition_async_request import ImageRecognitionAsyncRequest
+from ._image_recognition_async_shrink_request import ImageRecognitionAsyncShrinkRequest
+from ._image_recognition_async_response_body import ImageRecognitionAsyncResponseBody
+from ._image_recognition_async_response import ImageRecognitionAsyncResponse
 from ._image_removal_pro_request import ImageRemovalProRequest
 from ._image_removal_pro_response_body import ImageRemovalProResponseBody
 from ._image_removal_pro_response import ImageRemovalProResponse
+from ._image_removal_pro_async_request import ImageRemovalProAsyncRequest
+from ._image_removal_pro_async_response_body import ImageRemovalProAsyncResponseBody
+from ._image_removal_pro_async_response import ImageRemovalProAsyncResponse
 from ._image_remove_request import ImageRemoveRequest
 from ._image_remove_shrink_request import ImageRemoveShrinkRequest
 from ._image_remove_response_body import ImageRemoveResponseBody
 from ._image_remove_response import ImageRemoveResponse
+from ._image_remove_async_request import ImageRemoveAsyncRequest
+from ._image_remove_async_shrink_request import ImageRemoveAsyncShrinkRequest
+from ._image_remove_async_response_body import ImageRemoveAsyncResponseBody
+from ._image_remove_async_response import ImageRemoveAsyncResponse
 from ._image_translation_plus_request import ImageTranslationPlusRequest
 from ._image_translation_plus_response_body import ImageTranslationPlusResponseBody
 from ._image_translation_plus_response import ImageTranslationPlusResponse
+from ._image_translation_plus_async_request import ImageTranslationPlusAsyncRequest
+from ._image_translation_plus_async_response_body import ImageTranslationPlusAsyncResponseBody
+from ._image_translation_plus_async_response import ImageTranslationPlusAsyncResponse
 from ._image_translation_pro_request import ImageTranslationProRequest
 from ._image_translation_pro_response_body import ImageTranslationProResponseBody
 from ._image_translation_pro_response import ImageTranslationProResponse
+from ._image_translation_pro_async_request import ImageTranslationProAsyncRequest
+from ._image_translation_pro_async_response_body import ImageTranslationProAsyncResponseBody
+from ._image_translation_pro_async_response import ImageTranslationProAsyncResponse
 from ._image_translation_standard_request import ImageTranslationStandardRequest
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBody
 from ._image_translation_standard_response import ImageTranslationStandardResponse
+from ._image_translation_standard_async_request import ImageTranslationStandardAsyncRequest
+from ._image_translation_standard_async_response_body import ImageTranslationStandardAsyncResponseBody
+from ._image_translation_standard_async_response import ImageTranslationStandardAsyncResponse
 from ._language_detect_request import LanguageDetectRequest
 from ._language_detect_response_body import LanguageDetectResponseBody
 from ._language_detect_response import LanguageDetectResponse
@@ -114,6 +137,10 @@ from ._size_chart_extract_request import SizeChartExtractRequest
 from ._size_chart_extract_shrink_request import SizeChartExtractShrinkRequest
 from ._size_chart_extract_response_body import SizeChartExtractResponseBody
 from ._size_chart_extract_response import SizeChartExtractResponse
+from ._size_chart_extract_async_request import SizeChartExtractAsyncRequest
+from ._size_chart_extract_async_shrink_request import SizeChartExtractAsyncShrinkRequest
+from ._size_chart_extract_async_response_body import SizeChartExtractAsyncResponseBody
+from ._size_chart_extract_async_response import SizeChartExtractAsyncResponse
 from ._storefront_scene_recognition_request import StorefrontSceneRecognitionRequest
 from ._storefront_scene_recognition_response_body import StorefrontSceneRecognitionResponseBody
 from ._storefront_scene_recognition_response import StorefrontSceneRecognitionResponse
@@ -127,6 +154,10 @@ from ._text_translate_request import TextTranslateRequest
 from ._text_translate_shrink_request import TextTranslateShrinkRequest
 from ._text_translate_response_body import TextTranslateResponseBody
 from ._text_translate_response import TextTranslateResponse
+from ._text_translate_async_request import TextTranslateAsyncRequest
+from ._text_translate_async_shrink_request import TextTranslateAsyncShrinkRequest
+from ._text_translate_async_response_body import TextTranslateAsyncResponseBody
+from ._text_translate_async_response import TextTranslateAsyncResponse
 from ._video_generation_request import VideoGenerationRequest
 from ._video_generation_shrink_request import VideoGenerationShrinkRequest
 from ._video_generation_response_body import VideoGenerationResponseBody
@@ -167,10 +198,15 @@ from ._general_rephotography_detection_response_body import GeneralRephotography
 from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyData
 from ._image_cropping_response_body import ImageCroppingResponseBodyData
 from ._image_matting_response_body import ImageMattingResponseBodyData
+from ._image_matting_async_response_body import ImageMattingAsyncResponseBodyData
 from ._image_recognition_response_body import ImageRecognitionResponseBodyData
+from ._image_recognition_async_response_body import ImageRecognitionAsyncResponseBodyData
 from ._image_removal_pro_response_body import ImageRemovalProResponseBodyData
+from ._image_removal_pro_async_response_body import ImageRemovalProAsyncResponseBodyData
 from ._image_remove_response_body import ImageRemoveResponseBodyData
+from ._image_remove_async_response_body import ImageRemoveAsyncResponseBodyData
 from ._image_translation_plus_response_body import ImageTranslationPlusResponseBodyData
+from ._image_translation_plus_async_response_body import ImageTranslationPlusAsyncResponseBodyData
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect
@@ -181,6 +217,7 @@ from ._image_translation_pro_response_body import ImageTranslationProResponseBod
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFiles
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataResultList
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyData
+from ._image_translation_pro_async_response_body import ImageTranslationProAsyncResponseBodyData
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyDataEditInfoGoodsRects
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyDataEditInfoTextAreasTextsImageRect
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyDataEditInfoTextAreasTextsTextRect
@@ -188,6 +225,7 @@ from ._image_translation_standard_response_body import ImageTranslationStandardR
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyDataEditInfoTextAreas
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyDataEditInfo
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyData
+from ._image_translation_standard_async_response_body import ImageTranslationStandardAsyncResponseBodyData
 from ._language_detect_response_body import LanguageDetectResponseBodyData
 from ._material_inspection_response_body import MaterialInspectionResponseBodyDataResultSteps
 from ._material_inspection_response_body import MaterialInspectionResponseBodyDataResult
@@ -234,6 +272,7 @@ from ._product_hotspot_detection_response_body import ProductHotspotDetectionRes
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBodyData
 from ._size_chart_detect_response_body import SizeChartDetectResponseBodyData
 from ._size_chart_extract_response_body import SizeChartExtractResponseBodyData
+from ._size_chart_extract_async_response_body import SizeChartExtractAsyncResponseBodyData
 from ._storefront_scene_recognition_response_body import StorefrontSceneRecognitionResponseBodyDataResultDetails
 from ._storefront_scene_recognition_response_body import StorefrontSceneRecognitionResponseBodyDataResultGroundingRegions
 from ._storefront_scene_recognition_response_body import StorefrontSceneRecognitionResponseBodyDataResultGrounding
@@ -243,6 +282,7 @@ from ._submit_product_match_response_body import SubmitProductMatchResponseBodyD
 from ._text_correct_response_body import TextCorrectResponseBodyData
 from ._text_translate_response_body import TextTranslateResponseBodyDataTranslations
 from ._text_translate_response_body import TextTranslateResponseBodyData
+from ._text_translate_async_response_body import TextTranslateAsyncResponseBodyData
 from ._video_generation_request import VideoGenerationRequestInputAssetBindings
 from ._video_generation_request import VideoGenerationRequestInput
 from ._video_generation_request import VideoGenerationRequestIntent
@@ -293,26 +333,49 @@ __all__ = [
     ImageMattingRequest,
     ImageMattingResponseBody,
     ImageMattingResponse,
+    ImageMattingAsyncRequest,
+    ImageMattingAsyncResponseBody,
+    ImageMattingAsyncResponse,
     ImageRecognitionRequest,
     ImageRecognitionShrinkRequest,
     ImageRecognitionResponseBody,
     ImageRecognitionResponse,
+    ImageRecognitionAsyncRequest,
+    ImageRecognitionAsyncShrinkRequest,
+    ImageRecognitionAsyncResponseBody,
+    ImageRecognitionAsyncResponse,
     ImageRemovalProRequest,
     ImageRemovalProResponseBody,
     ImageRemovalProResponse,
+    ImageRemovalProAsyncRequest,
+    ImageRemovalProAsyncResponseBody,
+    ImageRemovalProAsyncResponse,
     ImageRemoveRequest,
     ImageRemoveShrinkRequest,
     ImageRemoveResponseBody,
     ImageRemoveResponse,
+    ImageRemoveAsyncRequest,
+    ImageRemoveAsyncShrinkRequest,
+    ImageRemoveAsyncResponseBody,
+    ImageRemoveAsyncResponse,
     ImageTranslationPlusRequest,
     ImageTranslationPlusResponseBody,
     ImageTranslationPlusResponse,
+    ImageTranslationPlusAsyncRequest,
+    ImageTranslationPlusAsyncResponseBody,
+    ImageTranslationPlusAsyncResponse,
     ImageTranslationProRequest,
     ImageTranslationProResponseBody,
     ImageTranslationProResponse,
+    ImageTranslationProAsyncRequest,
+    ImageTranslationProAsyncResponseBody,
+    ImageTranslationProAsyncResponse,
     ImageTranslationStandardRequest,
     ImageTranslationStandardResponseBody,
     ImageTranslationStandardResponse,
+    ImageTranslationStandardAsyncRequest,
+    ImageTranslationStandardAsyncResponseBody,
+    ImageTranslationStandardAsyncResponse,
     LanguageDetectRequest,
     LanguageDetectResponseBody,
     LanguageDetectResponse,
@@ -365,6 +428,10 @@ __all__ = [
     SizeChartExtractShrinkRequest,
     SizeChartExtractResponseBody,
     SizeChartExtractResponse,
+    SizeChartExtractAsyncRequest,
+    SizeChartExtractAsyncShrinkRequest,
+    SizeChartExtractAsyncResponseBody,
+    SizeChartExtractAsyncResponse,
     StorefrontSceneRecognitionRequest,
     StorefrontSceneRecognitionResponseBody,
     StorefrontSceneRecognitionResponse,
@@ -378,6 +445,10 @@ __all__ = [
     TextTranslateShrinkRequest,
     TextTranslateResponseBody,
     TextTranslateResponse,
+    TextTranslateAsyncRequest,
+    TextTranslateAsyncShrinkRequest,
+    TextTranslateAsyncResponseBody,
+    TextTranslateAsyncResponse,
     VideoGenerationRequest,
     VideoGenerationShrinkRequest,
     VideoGenerationResponseBody,
@@ -418,10 +489,15 @@ __all__ = [
     GeneralRephotographyDetectionResponseBodyData,
     ImageCroppingResponseBodyData,
     ImageMattingResponseBodyData,
+    ImageMattingAsyncResponseBodyData,
     ImageRecognitionResponseBodyData,
+    ImageRecognitionAsyncResponseBodyData,
     ImageRemovalProResponseBodyData,
+    ImageRemovalProAsyncResponseBodyData,
     ImageRemoveResponseBodyData,
+    ImageRemoveAsyncResponseBodyData,
     ImageTranslationPlusResponseBodyData,
+    ImageTranslationPlusAsyncResponseBodyData,
     ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects,
     ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect,
     ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect,
@@ -432,6 +508,7 @@ __all__ = [
     ImageTranslationProResponseBodyDataGenFiles,
     ImageTranslationProResponseBodyDataResultList,
     ImageTranslationProResponseBodyData,
+    ImageTranslationProAsyncResponseBodyData,
     ImageTranslationStandardResponseBodyDataEditInfoGoodsRects,
     ImageTranslationStandardResponseBodyDataEditInfoTextAreasTextsImageRect,
     ImageTranslationStandardResponseBodyDataEditInfoTextAreasTextsTextRect,
@@ -439,6 +516,7 @@ __all__ = [
     ImageTranslationStandardResponseBodyDataEditInfoTextAreas,
     ImageTranslationStandardResponseBodyDataEditInfo,
     ImageTranslationStandardResponseBodyData,
+    ImageTranslationStandardAsyncResponseBodyData,
     LanguageDetectResponseBodyData,
     MaterialInspectionResponseBodyDataResultSteps,
     MaterialInspectionResponseBodyDataResult,
@@ -485,6 +563,7 @@ __all__ = [
     QueryAsyncTaskResultResponseBodyData,
     SizeChartDetectResponseBodyData,
     SizeChartExtractResponseBodyData,
+    SizeChartExtractAsyncResponseBodyData,
     StorefrontSceneRecognitionResponseBodyDataResultDetails,
     StorefrontSceneRecognitionResponseBodyDataResultGroundingRegions,
     StorefrontSceneRecognitionResponseBodyDataResultGrounding,
@@ -494,6 +573,7 @@ __all__ = [
     TextCorrectResponseBodyData,
     TextTranslateResponseBodyDataTranslations,
     TextTranslateResponseBodyData,
+    TextTranslateAsyncResponseBodyData,
     VideoGenerationRequestInputAssetBindings,
     VideoGenerationRequestInput,
     VideoGenerationRequestIntent,

@@ -1112,6 +1112,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.image_matting_with_options_async(request, runtime)
 
+    def image_matting_async_with_options(
+        self,
+        request: main_models.ImageMattingAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageMattingAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.back_ground_type):
+            query['BackGroundType'] = request.back_ground_type
+        if not DaraCore.is_null(request.bg_color):
+            query['BgColor'] = request.bg_color
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.target_height):
+            query['TargetHeight'] = request.target_height
+        if not DaraCore.is_null(request.target_width):
+            query['TargetWidth'] = request.target_width
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageMattingAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageMattingAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_matting_async_with_options_async(
+        self,
+        request: main_models.ImageMattingAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageMattingAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.back_ground_type):
+            query['BackGroundType'] = request.back_ground_type
+        if not DaraCore.is_null(request.bg_color):
+            query['BgColor'] = request.bg_color
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.target_height):
+            query['TargetHeight'] = request.target_height
+        if not DaraCore.is_null(request.target_width):
+            query['TargetWidth'] = request.target_width
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageMattingAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageMattingAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_matting_async(
+        self,
+        request: main_models.ImageMattingAsyncRequest,
+    ) -> main_models.ImageMattingAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.image_matting_async_with_options(request, runtime)
+
+    async def image_matting_async_async(
+        self,
+        request: main_models.ImageMattingAsyncRequest,
+    ) -> main_models.ImageMattingAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.image_matting_async_with_options_async(request, runtime)
+
     def image_recognition_with_options(
         self,
         tmp_req: main_models.ImageRecognitionRequest,
@@ -1222,6 +1308,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.image_recognition_with_options_async(request, runtime)
 
+    def image_recognition_async_with_options(
+        self,
+        tmp_req: main_models.ImageRecognitionAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageRecognitionAsyncResponse:
+        tmp_req.validate()
+        request = main_models.ImageRecognitionAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.non_object_detect_elements):
+            request.non_object_detect_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.non_object_detect_elements, 'NonObjectDetectElements', 'json')
+        if not DaraCore.is_null(tmp_req.object_detect_elements):
+            request.object_detect_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_detect_elements, 'ObjectDetectElements', 'json')
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.non_object_detect_elements_shrink):
+            query['NonObjectDetectElements'] = request.non_object_detect_elements_shrink
+        if not DaraCore.is_null(request.object_detect_elements_shrink):
+            query['ObjectDetectElements'] = request.object_detect_elements_shrink
+        if not DaraCore.is_null(request.return_border_pixel):
+            query['ReturnBorderPixel'] = request.return_border_pixel
+        if not DaraCore.is_null(request.return_character):
+            query['ReturnCharacter'] = request.return_character
+        if not DaraCore.is_null(request.return_character_prop):
+            query['ReturnCharacterProp'] = request.return_character_prop
+        if not DaraCore.is_null(request.return_product_num):
+            query['ReturnProductNum'] = request.return_product_num
+        if not DaraCore.is_null(request.return_product_prop):
+            query['ReturnProductProp'] = request.return_product_prop
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageRecognitionAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageRecognitionAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_recognition_async_with_options_async(
+        self,
+        tmp_req: main_models.ImageRecognitionAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageRecognitionAsyncResponse:
+        tmp_req.validate()
+        request = main_models.ImageRecognitionAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.non_object_detect_elements):
+            request.non_object_detect_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.non_object_detect_elements, 'NonObjectDetectElements', 'json')
+        if not DaraCore.is_null(tmp_req.object_detect_elements):
+            request.object_detect_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_detect_elements, 'ObjectDetectElements', 'json')
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.non_object_detect_elements_shrink):
+            query['NonObjectDetectElements'] = request.non_object_detect_elements_shrink
+        if not DaraCore.is_null(request.object_detect_elements_shrink):
+            query['ObjectDetectElements'] = request.object_detect_elements_shrink
+        if not DaraCore.is_null(request.return_border_pixel):
+            query['ReturnBorderPixel'] = request.return_border_pixel
+        if not DaraCore.is_null(request.return_character):
+            query['ReturnCharacter'] = request.return_character
+        if not DaraCore.is_null(request.return_character_prop):
+            query['ReturnCharacterProp'] = request.return_character_prop
+        if not DaraCore.is_null(request.return_product_num):
+            query['ReturnProductNum'] = request.return_product_num
+        if not DaraCore.is_null(request.return_product_prop):
+            query['ReturnProductProp'] = request.return_product_prop
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageRecognitionAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageRecognitionAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_recognition_async(
+        self,
+        request: main_models.ImageRecognitionAsyncRequest,
+    ) -> main_models.ImageRecognitionAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.image_recognition_async_with_options(request, runtime)
+
+    async def image_recognition_async_async(
+        self,
+        request: main_models.ImageRecognitionAsyncRequest,
+    ) -> main_models.ImageRecognitionAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.image_recognition_async_with_options_async(request, runtime)
+
     def image_removal_pro_with_options(
         self,
         request: main_models.ImageRemovalProRequest,
@@ -1295,6 +1491,76 @@ class Client(OpenApiClient):
     ) -> main_models.ImageRemovalProResponse:
         runtime = RuntimeOptions()
         return await self.image_removal_pro_with_options_async(request, runtime)
+
+    def image_removal_pro_async_with_options(
+        self,
+        request: main_models.ImageRemovalProAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageRemovalProAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageRemovalProAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageRemovalProAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_removal_pro_async_with_options_async(
+        self,
+        request: main_models.ImageRemovalProAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageRemovalProAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageRemovalProAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageRemovalProAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_removal_pro_async(
+        self,
+        request: main_models.ImageRemovalProAsyncRequest,
+    ) -> main_models.ImageRemovalProAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.image_removal_pro_async_with_options(request, runtime)
+
+    async def image_removal_pro_async_async(
+        self,
+        request: main_models.ImageRemovalProAsyncRequest,
+    ) -> main_models.ImageRemovalProAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.image_removal_pro_async_with_options_async(request, runtime)
 
     def image_remove_with_options(
         self,
@@ -1410,6 +1676,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.image_remove_with_options_async(request, runtime)
 
+    def image_remove_async_with_options(
+        self,
+        tmp_req: main_models.ImageRemoveAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageRemoveAsyncResponse:
+        tmp_req.validate()
+        request = main_models.ImageRemoveAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.non_object_remove_elements):
+            request.non_object_remove_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.non_object_remove_elements, 'NonObjectRemoveElements', 'json')
+        if not DaraCore.is_null(tmp_req.object_remove_elements):
+            request.object_remove_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_remove_elements, 'ObjectRemoveElements', 'json')
+        if not DaraCore.is_null(tmp_req.user_image):
+            request.user_image_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_image, 'UserImage', 'json')
+        if not DaraCore.is_null(tmp_req.user_text):
+            request.user_text_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_text, 'UserText', 'json')
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.mask):
+            query['Mask'] = request.mask
+        if not DaraCore.is_null(request.non_object_remove_elements_shrink):
+            query['NonObjectRemoveElements'] = request.non_object_remove_elements_shrink
+        if not DaraCore.is_null(request.object_remove_elements_shrink):
+            query['ObjectRemoveElements'] = request.object_remove_elements_shrink
+        if not DaraCore.is_null(request.position):
+            query['Position'] = request.position
+        if not DaraCore.is_null(request.user_image_shrink):
+            query['UserImage'] = request.user_image_shrink
+        if not DaraCore.is_null(request.user_text_shrink):
+            query['UserText'] = request.user_text_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageRemoveAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageRemoveAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_remove_async_with_options_async(
+        self,
+        tmp_req: main_models.ImageRemoveAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageRemoveAsyncResponse:
+        tmp_req.validate()
+        request = main_models.ImageRemoveAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.non_object_remove_elements):
+            request.non_object_remove_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.non_object_remove_elements, 'NonObjectRemoveElements', 'json')
+        if not DaraCore.is_null(tmp_req.object_remove_elements):
+            request.object_remove_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_remove_elements, 'ObjectRemoveElements', 'json')
+        if not DaraCore.is_null(tmp_req.user_image):
+            request.user_image_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_image, 'UserImage', 'json')
+        if not DaraCore.is_null(tmp_req.user_text):
+            request.user_text_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_text, 'UserText', 'json')
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.mask):
+            query['Mask'] = request.mask
+        if not DaraCore.is_null(request.non_object_remove_elements_shrink):
+            query['NonObjectRemoveElements'] = request.non_object_remove_elements_shrink
+        if not DaraCore.is_null(request.object_remove_elements_shrink):
+            query['ObjectRemoveElements'] = request.object_remove_elements_shrink
+        if not DaraCore.is_null(request.position):
+            query['Position'] = request.position
+        if not DaraCore.is_null(request.user_image_shrink):
+            query['UserImage'] = request.user_image_shrink
+        if not DaraCore.is_null(request.user_text_shrink):
+            query['UserText'] = request.user_text_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageRemoveAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageRemoveAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_remove_async(
+        self,
+        request: main_models.ImageRemoveAsyncRequest,
+    ) -> main_models.ImageRemoveAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.image_remove_async_with_options(request, runtime)
+
+    async def image_remove_async_async(
+        self,
+        request: main_models.ImageRemoveAsyncRequest,
+    ) -> main_models.ImageRemoveAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.image_remove_async_with_options_async(request, runtime)
+
     def image_translation_plus_with_options(
         self,
         request: main_models.ImageTranslationPlusRequest,
@@ -1503,6 +1883,100 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationPlusResponse:
         runtime = RuntimeOptions()
         return await self.image_translation_plus_with_options_async(request, runtime)
+
+    def image_translation_plus_async_with_options(
+        self,
+        request: main_models.ImageTranslationPlusAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationPlusAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.glossary):
+            query['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            query['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            query['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            query['UseImageEditor'] = request.use_image_editor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationPlusAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationPlusAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_translation_plus_async_with_options_async(
+        self,
+        request: main_models.ImageTranslationPlusAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationPlusAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.glossary):
+            query['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            query['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            query['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            query['UseImageEditor'] = request.use_image_editor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationPlusAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationPlusAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_translation_plus_async(
+        self,
+        request: main_models.ImageTranslationPlusAsyncRequest,
+    ) -> main_models.ImageTranslationPlusAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.image_translation_plus_async_with_options(request, runtime)
+
+    async def image_translation_plus_async_async(
+        self,
+        request: main_models.ImageTranslationPlusAsyncRequest,
+    ) -> main_models.ImageTranslationPlusAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.image_translation_plus_async_with_options_async(request, runtime)
 
     def image_translation_pro_with_options(
         self,
@@ -1602,6 +2076,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.image_translation_pro_with_options_async(request, runtime)
 
+    def image_translation_pro_async_with_options(
+        self,
+        request: main_models.ImageTranslationProAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationProAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.glossary):
+            query['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            query['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            query['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            query['UseImageEditor'] = request.use_image_editor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationProAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationProAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_translation_pro_async_with_options_async(
+        self,
+        request: main_models.ImageTranslationProAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationProAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.glossary):
+            query['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            query['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            query['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            query['UseImageEditor'] = request.use_image_editor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationProAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationProAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_translation_pro_async(
+        self,
+        request: main_models.ImageTranslationProAsyncRequest,
+    ) -> main_models.ImageTranslationProAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.image_translation_pro_async_with_options(request, runtime)
+
+    async def image_translation_pro_async_async(
+        self,
+        request: main_models.ImageTranslationProAsyncRequest,
+    ) -> main_models.ImageTranslationProAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.image_translation_pro_async_with_options_async(request, runtime)
+
     def image_translation_standard_with_options(
         self,
         request: main_models.ImageTranslationStandardRequest,
@@ -1695,6 +2263,100 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationStandardResponse:
         runtime = RuntimeOptions()
         return await self.image_translation_standard_with_options_async(request, runtime)
+
+    def image_translation_standard_async_with_options(
+        self,
+        request: main_models.ImageTranslationStandardAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationStandardAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.glossary):
+            query['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            query['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            query['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            query['UseImageEditor'] = request.use_image_editor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationStandardAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationStandardAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_translation_standard_async_with_options_async(
+        self,
+        request: main_models.ImageTranslationStandardAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationStandardAsyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.glossary):
+            query['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            query['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            query['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            query['UseImageEditor'] = request.use_image_editor
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationStandardAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationStandardAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_translation_standard_async(
+        self,
+        request: main_models.ImageTranslationStandardAsyncRequest,
+    ) -> main_models.ImageTranslationStandardAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.image_translation_standard_async_with_options(request, runtime)
+
+    async def image_translation_standard_async_async(
+        self,
+        request: main_models.ImageTranslationStandardAsyncRequest,
+    ) -> main_models.ImageTranslationStandardAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.image_translation_standard_async_with_options_async(request, runtime)
 
     def language_detect_with_options(
         self,
@@ -2948,6 +3610,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.size_chart_extract_with_options_async(request, runtime)
 
+    def size_chart_extract_async_with_options(
+        self,
+        tmp_req: main_models.SizeChartExtractAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SizeChartExtractAsyncResponse:
+        tmp_req.validate()
+        request = main_models.SizeChartExtractAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.column_name_list):
+            request.column_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.column_name_list, 'ColumnNameList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.column_name_list_shrink):
+            query['ColumnNameList'] = request.column_name_list_shrink
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.language_model):
+            query['LanguageModel'] = request.language_model
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SizeChartExtractAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SizeChartExtractAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def size_chart_extract_async_with_options_async(
+        self,
+        tmp_req: main_models.SizeChartExtractAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SizeChartExtractAsyncResponse:
+        tmp_req.validate()
+        request = main_models.SizeChartExtractAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.column_name_list):
+            request.column_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.column_name_list, 'ColumnNameList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.column_name_list_shrink):
+            query['ColumnNameList'] = request.column_name_list_shrink
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.language_model):
+            query['LanguageModel'] = request.language_model
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SizeChartExtractAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SizeChartExtractAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def size_chart_extract_async(
+        self,
+        request: main_models.SizeChartExtractAsyncRequest,
+    ) -> main_models.SizeChartExtractAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.size_chart_extract_async_with_options(request, runtime)
+
+    async def size_chart_extract_async_async(
+        self,
+        request: main_models.SizeChartExtractAsyncRequest,
+    ) -> main_models.SizeChartExtractAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.size_chart_extract_async_with_options_async(request, runtime)
+
     def storefront_scene_recognition_with_options(
         self,
         request: main_models.StorefrontSceneRecognitionRequest,
@@ -3287,6 +4035,112 @@ class Client(OpenApiClient):
     ) -> main_models.TextTranslateResponse:
         runtime = RuntimeOptions()
         return await self.text_translate_with_options_async(request, runtime)
+
+    def text_translate_async_with_options(
+        self,
+        tmp_req: main_models.TextTranslateAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TextTranslateAsyncResponse:
+        tmp_req.validate()
+        request = main_models.TextTranslateAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.source_text_list):
+            request.source_text_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_text_list, 'SourceTextList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.biz_name):
+            query['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.format_type):
+            query['FormatType'] = request.format_type
+        if not DaraCore.is_null(request.glossary):
+            query['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.source_text_list_shrink):
+            query['SourceTextList'] = request.source_text_list_shrink
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translate_scene):
+            query['TranslateScene'] = request.translate_scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TextTranslateAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TextTranslateAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def text_translate_async_with_options_async(
+        self,
+        tmp_req: main_models.TextTranslateAsyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TextTranslateAsyncResponse:
+        tmp_req.validate()
+        request = main_models.TextTranslateAsyncShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.source_text_list):
+            request.source_text_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_text_list, 'SourceTextList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.biz_name):
+            query['BizName'] = request.biz_name
+        if not DaraCore.is_null(request.format_type):
+            query['FormatType'] = request.format_type
+        if not DaraCore.is_null(request.glossary):
+            query['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.source_language):
+            query['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.source_text_list_shrink):
+            query['SourceTextList'] = request.source_text_list_shrink
+        if not DaraCore.is_null(request.target_language):
+            query['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translate_scene):
+            query['TranslateScene'] = request.translate_scene
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TextTranslateAsync',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TextTranslateAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def text_translate_async(
+        self,
+        request: main_models.TextTranslateAsyncRequest,
+    ) -> main_models.TextTranslateAsyncResponse:
+        runtime = RuntimeOptions()
+        return self.text_translate_async_with_options(request, runtime)
+
+    async def text_translate_async_async(
+        self,
+        request: main_models.TextTranslateAsyncRequest,
+    ) -> main_models.TextTranslateAsyncResponse:
+        runtime = RuntimeOptions()
+        return await self.text_translate_async_with_options_async(request, runtime)
 
     def video_generation_with_options(
         self,

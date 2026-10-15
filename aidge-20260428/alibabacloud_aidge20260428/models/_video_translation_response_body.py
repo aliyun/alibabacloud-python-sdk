@@ -22,7 +22,9 @@ class VideoTranslationResponseBody(DaraModel):
         self.message = message
         # The request tracking ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true (successful) and false (failed).
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
