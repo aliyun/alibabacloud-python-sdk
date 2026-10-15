@@ -12,8 +12,16 @@ class PublicTemplateStatus(DaraModel):
         reason: main_models.PublicTemplateStatusReason = None,
         state: str = None,
     ):
+        # The time when the template reached the current desired state, in UTC and RFC 3339 format. This parameter is empty when the template is still being built or updated.
         self.finished_at = finished_at
+        # The reason why the template entered a failure state. This parameter is returned only when state is error or updateFailed.
         self.reason = reason
+        # The template status. Valid values:
+        # - building: The template is being built.
+        # - ready: The template is active.
+        # - updating: The template is being updated.
+        # - updateFailed: The template failed to be updated.
+        # - error: The template failed to be built.
         self.state = state
 
     def validate(self):

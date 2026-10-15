@@ -13,10 +13,17 @@ class AgenticBucketVolumeConfig(DaraModel):
         endpoint: str = None,
         read_only: bool = None,
     ):
+        # The name of the AgenticBucket.
         self.agentic_bucket = agentic_bucket
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
+        # The path of the mounted OSS bucket.
         self.bucket_path = bucket_path
+        # The OSS endpoint address.
         self.endpoint = endpoint
+        # Specifies whether the mount directory has read-only access permissions after the OSS bucket is mounted. Valid values:
+        # - true: Read-only.
+        # - false: Read and write.
         self.read_only = read_only
 
     def validate(self):

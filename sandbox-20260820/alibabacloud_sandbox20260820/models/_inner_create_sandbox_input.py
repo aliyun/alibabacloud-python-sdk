@@ -23,17 +23,29 @@ class InnerCreateSandboxInput(DaraModel):
         timeout: int = None,
         volume_mounts: main_models.InnerCreateSandboxVolumeMounts = None,
     ):
+        # Specifies whether the sandbox is allowed to access external networks.
         self.allow_internet_access = allow_internet_access
+        # Specifies whether to automatically pause after timeout.
         self.auto_pause = auto_pause
+        # Specifies whether to automatically resume.
         self.auto_resume = auto_resume
+        # The environment variable configuration.
         self.env_vars = env_vars
+        # The metadata configuration.
         self.metadata = metadata
+        # The network configuration.
         self.network = network
+        # The runtime configuration.
         self.runtime = runtime
+        # Specifies whether authentication is required to access the sandbox envd.
         self.secure = secure
+        # The unique identifier of the team.
         self.team_id = team_id
+        # The unique identifier of the template.
         self.template_id = template_id
+        # The timeout period. Unit: seconds.
         self.timeout = timeout
+        # The volume mount configuration.
         self.volume_mounts = volume_mounts
 
     def validate(self):

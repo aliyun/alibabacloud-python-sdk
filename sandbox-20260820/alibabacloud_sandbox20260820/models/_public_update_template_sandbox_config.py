@@ -17,13 +17,21 @@ class PublicUpdateTemplateSandboxConfig(DaraModel):
         registry_type: str = None,
         start_command: str = None,
     ):
+        # The ID of the Container Registry Enterprise instance.
         self.acr_instance_id = acr_instance_id
+        # The sandbox generation. A value of 1 indicates rund, and a value of 2 indicates micro.
         self.generation = generation
+        # The image address.
         self.image = image
+        # The operating system type.
         self.os_type = os_type
+        # The readiness probe command for the micro sandbox. Only the second generation supports this parameter.
         self.ready_command = ready_command
+        # The image repository configuration.
         self.registry_config = registry_config
+        # The image repository type.
         self.registry_type = registry_type
+        # The startup command for the micro sandbox. Only the second generation supports this parameter.
         self.start_command = start_command
 
     def validate(self):

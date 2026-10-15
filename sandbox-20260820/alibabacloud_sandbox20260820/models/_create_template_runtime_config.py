@@ -16,12 +16,19 @@ class CreateTemplateRuntimeConfig(DaraModel):
         sandbox_config: main_models.CreateTemplateSandboxConfig = None,
         vpc_config: main_models.CreateTemplateVPCConfig = None,
     ):
+        # The CPU specification of the sandboxed container instance, in cores.
         self.cpu = cpu
+        # The disk specification of the sandboxed container instance, in MB.
         self.disk_size = disk_size
+        # Specifies whether the sandboxed container instance is allowed to access the Internet.
         self.internet_access = internet_access
+        # The log delivery configuration of the sandboxed container instance.
         self.log_config = log_config
+        # The memory specification of the sandboxed container instance, in MB.
         self.memory_size = memory_size
+        # The image and startup configuration of the sandboxed container instance.
         self.sandbox_config = sandbox_config
+        # The VPC configuration of the sandboxed container instance.
         self.vpc_config = vpc_config
 
     def validate(self):

@@ -1,3 +1,6 @@
+2026-10-15 Version: 1.2.1
+- Generated python 2026-08-20 for Sandbox.
+
 2026-09-21 Version: 1.2.0
 - Support API CreateApiKey.
 - Support API CreateTeam.

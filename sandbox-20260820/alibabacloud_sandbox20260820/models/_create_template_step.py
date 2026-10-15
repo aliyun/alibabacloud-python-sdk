@@ -12,7 +12,9 @@ class CreateTemplateStep(DaraModel):
         args: List[str] = None,
         type: str = None,
     ):
+        # The instruction parameter list.
         self.args = args
+        # The instruction type.
         self.type = type
 
     def validate(self):

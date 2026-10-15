@@ -16,10 +16,17 @@ class UpdateApiKeyInput(DaraModel):
         ip_whitelist: List[main_models.IPConfig] = None,
         status: str = None,
     ):
+        # The new name of the API key. The name can be up to 128 characters in length and can contain letters, digits, spaces, hyphens (-), underscores (_), and periods (.).
         self.api_key_name = api_key_name
+        # The expiration time of the API key, in UTC, in RFC 3339 format. Leave this parameter empty to indicate that the API key never expires.
         self.expire_time = expire_time
+        # The IP blacklist. If specified, the existing blacklist is entirely overwritten. This parameter is mutually exclusive with ipWhitelist.
         self.ip_blacklist = ip_blacklist
+        # The IP whitelist. If specified, the existing whitelist is entirely overwritten. This parameter is mutually exclusive with ipBlacklist.
         self.ip_whitelist = ip_whitelist
+        # The new status of the API key. Valid values:
+        # - active: Enabled.
+        # - inactive: Disabled.
         self.status = status
 
     def validate(self):

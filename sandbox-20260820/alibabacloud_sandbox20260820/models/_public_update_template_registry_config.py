@@ -12,8 +12,11 @@ class PublicUpdateTemplateRegistryConfig(DaraModel):
         cert_config: main_models.PublicUpdateTemplateRegistryCertConfig = None,
         network_config: main_models.PublicUpdateTemplateRegistryNetworkConfig = None,
     ):
+        # The image repository authentication configuration.
         self.auth_config = auth_config
+        # The image repository certificate configuration.
         self.cert_config = cert_config
+        # The image repository network configuration.
         self.network_config = network_config
 
     def validate(self):

@@ -18,15 +18,32 @@ class E2BTeam(DaraModel):
         team_name: str = None,
         user_id: str = None,
     ):
+        # Specifies whether the team name can be modified. The default team does not allow modification.
         self.allow_update_team_name = allow_update_team_name
+        # The creation time of the team in UTC, in RFC 3339 format.
         self.created_time = created_time
+        # The team description.
         self.description = description
+        # The team plan specification. Valid values:
+        # - eco: economy.
+        # - std: standard.
+        # - pro: professional.
+        # - ent: enterprise.
         self.plan = plan
+        # Indicates whether the current caller has read-only access to the team. If the value is true, the team configuration cannot be modified.
         self.read_only = read_only
+        # The ID of the Alibaba Cloud resource group to which the team belongs.
         self.resource_group_id = resource_group_id
+        # The team status. Valid values:
+        # - active: Normal.
+        # - deleting: Being deleted.
+        # - delete_failed: Failed to delete.
         self.status = status
+        # The ID of the team to which the resource belongs, in UUID format.
         self.team_id = team_id
+        # The team name.
         self.team_name = team_name
+        # The user ID of the team creator, in UUID format.
         self.user_id = user_id
 
     def validate(self):

@@ -9,6 +9,7 @@ class PublicUpdateTemplateRegistryCertConfig(DaraModel):
         self,
         insecure: bool = None,
     ):
+        # Specifies whether to skip repository certificate verification.
         self.insecure = insecure
 
     def validate(self):

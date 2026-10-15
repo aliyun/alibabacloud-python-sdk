@@ -13,9 +13,13 @@ class UpdateTemplateInput(DaraModel):
         network_configuration: main_models.NetworkConfiguration = None,
         team_id: str = None,
     ):
+        # The new container image configuration of the template. When passed in, this overwrites the existing configuration entirely.
         self.container_configuration = container_configuration
+        # The new log delivery configuration of the template. When passed in, this overwrites the existing configuration entirely.
         self.log_configuration = log_configuration
+        # The new network configuration of the template. When passed in, this overwrites the existing configuration entirely.
         self.network_configuration = network_configuration
+        # The ID of the team to which the template belongs, in UUID format. This parameter is used to locate the template to be updated.
         self.team_id = team_id
 
     def validate(self):

@@ -10,7 +10,9 @@ class CreateTemplateCacheInput(DaraModel):
         team_id: str = None,
         template_id: str = None,
     ):
+        # The team ID.
         self.team_id = team_id
+        # The unique identifier of the template.
         self.template_id = template_id
 
     def validate(self):

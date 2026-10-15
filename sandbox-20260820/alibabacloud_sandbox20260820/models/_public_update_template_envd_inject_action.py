@@ -9,6 +9,7 @@ class PublicUpdateTemplateEnvdInjectAction(DaraModel):
         self,
         enabled: bool = None,
     ):
+        # Specifies whether envd injection is enabled.
         self.enabled = enabled
 
     def validate(self):

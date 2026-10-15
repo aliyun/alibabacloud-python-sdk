@@ -10,9 +10,14 @@ class PublicUpdateTemplateBuildConfig(DaraModel):
         self,
         copy: main_models.PublicUpdateTemplateCopyAction = None,
         envd_inject: main_models.PublicUpdateTemplateEnvdInjectAction = None,
+        install_storage_clients: bool = None,
     ):
+        # The image replication action configuration.
         self.copy = copy
+        # The envd injection action configuration.
         self.envd_inject = envd_inject
+        # Installs the clients required for storage mounting.
+        self.install_storage_clients = install_storage_clients
 
     def validate(self):
         if self.copy:
@@ -31,6 +36,9 @@ class PublicUpdateTemplateBuildConfig(DaraModel):
         if self.envd_inject is not None:
             result['envdInject'] = self.envd_inject.to_map()
 
+        if self.install_storage_clients is not None:
+            result['installStorageClients'] = self.install_storage_clients
+
         return result
 
     def from_map(self, m: dict = None):
@@ -42,6 +50,9 @@ class PublicUpdateTemplateBuildConfig(DaraModel):
         if m.get('envdInject') is not None:
             temp_model = main_models.PublicUpdateTemplateEnvdInjectAction()
             self.envd_inject = temp_model.from_map(m.get('envdInject'))
+
+        if m.get('installStorageClients') is not None:
+            self.install_storage_clients = m.get('installStorageClients')
 
         return self
 

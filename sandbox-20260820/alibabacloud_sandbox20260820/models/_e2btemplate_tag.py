@@ -11,8 +11,11 @@ class E2BTemplateTag(DaraModel):
         created_at: str = None,
         tag: str = None,
     ):
+        # The ID of the template build output that this label points to, in UUID format.
         self.build_id = build_id
+        # The creation time of the label, in UTC and RFC 3339 format.
         self.created_at = created_at
+        # The label name.
         self.tag = tag
 
     def validate(self):

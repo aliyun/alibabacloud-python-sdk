@@ -17,13 +17,21 @@ class PublicTemplate(DaraModel):
         team_name: str = None,
         template_id: str = None,
     ):
+        # The creation time of the template, in UTC and formatted as RFC 3339.
         self.created_time = created_time
+        # The template name, which is unique within the same team.
         self.name = name
+        # The ID of the Alibaba Cloud resource group to which the team belongs.
         self.resource_group_id = resource_group_id
+        # The runtime configuration of the template, which determines the specifications and environment of sandbox instances created from this template.
         self.runtime_config = runtime_config
+        # The current status of the template.
         self.status = status
+        # The ID of the team to which the resource belongs, in UUID format.
         self.team_id = team_id
+        # The team name.
         self.team_name = team_name
+        # The sandbox template ID.
         self.template_id = template_id
 
     def validate(self):

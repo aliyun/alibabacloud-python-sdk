@@ -12,9 +12,13 @@ class UpdateTeamInput(DaraModel):
         resource_group_id: str = None,
         team_name: str = None,
     ):
+        # The new description of the team.
         self.description = description
+        # The new plan specification of the team. Valid values: eco (economy), std (standard), pro (professional), ent (enterprise).
         self.plan = plan
+        # The ID of the new Alibaba Cloud resource group to which the team belongs.
         self.resource_group_id = resource_group_id
+        # The new name of the team. The name can be modified only when allowUpdateTeamName of the team is set to true.
         self.team_name = team_name
 
     def validate(self):

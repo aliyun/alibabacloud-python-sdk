@@ -14,9 +14,13 @@ class CreateTemplateVPCConfig(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The ARN of the RAM role assumed by the sandboxed container instance when accessing the VPC. Format: acs:ram::{account ID}:role/{role name}.
         self.role = role
+        # The ID of the security group used by the sandboxed container instance.
         self.security_group_id = security_group_id
+        # The list of vSwitch IDs that the sandboxed container instance connects to. Configure vSwitches in multiple zones to improve availability.
         self.v_switch_ids = v_switch_ids
+        # The ID of the VPC that the sandboxed container instance connects to.
         self.vpc_id = vpc_id
 
     def validate(self):

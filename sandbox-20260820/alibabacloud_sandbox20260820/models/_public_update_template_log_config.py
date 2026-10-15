@@ -10,7 +10,9 @@ class PublicUpdateTemplateLogConfig(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
+        # The name of the SLS Logstore.
         self.logstore = logstore
+        # The name of the Simple Log Service (SLS) project.
         self.project = project
 
     def validate(self):

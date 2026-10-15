@@ -12,9 +12,13 @@ class CreateTeamInput(DaraModel):
         resource_group_id: str = None,
         team_name: str = None,
     ):
+        # The description of the team.
         self.description = description
+        # The plan specification of the team. Valid values: eco (economy), std (standard), pro (professional), ent (enterprise).
         self.plan = plan
+        # The ID of the Alibaba Cloud resource group to which the team belongs. If this parameter is not specified, the default resource group of the account is used.
         self.resource_group_id = resource_group_id
+        # The name of the team.
         self.team_name = team_name
 
     def validate(self):

@@ -14,9 +14,13 @@ class NetworkConfiguration(DaraModel):
         vpc_id: str = None,
         vswitch_ids: List[str] = None,
     ):
+        # The network access mode. Valid values: PUBLIC (public network only), PRIVATE (VPC only), PUBLIC_AND_PRIVATE (both public network and VPC are reachable).
         self.network_mode = network_mode
+        # The ID of the security group used by the sandboxed container instances.
         self.security_group_id = security_group_id
+        # The ID of the VPC to which the sandboxed container instances are connected.
         self.vpc_id = vpc_id
+        # The list of vSwitch IDs to which the sandboxed container instances are connected. Configure vSwitches in multiple zones to improve availability.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):

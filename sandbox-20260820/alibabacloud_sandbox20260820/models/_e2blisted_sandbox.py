@@ -26,21 +26,46 @@ class E2BListedSandbox(DaraModel):
         template_name: str = None,
         user_id: str = None,
     ):
+        # The number of vCPUs.
         self.cpu_count = cpu_count
+        # The temporary disk specification.
         self.disk_size_mb = disk_size_mb
+        # The end time.
         self.end_at = end_at
+        # The sandbox version.
         self.generation = generation
+        # The memory specification.
         self.memory_mb = memory_mb
+        # The metadata.
         self.metadata = metadata
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The sandbox ID.
         self.sandbox_id = sandbox_id
+        # The start time.
         self.started_at = started_at
+        # The sandbox status. Valid values:
+        # - running: Running.
+        # - pausing: Being paused.
+        # - paused: Paused.
+        # - resuming: Being resumed.
+        # - pause_fail: Failed to pause.
+        # - resume_fail: Failed to resume.
+        # - snapshotting: Creating a snapshot.
+        # - snapshot_failed: Failed to create a snapshot.
+        # - terminated: Terminated.
         self.state = state
+        # The unique identifier of the team.
         self.team_id = team_id
+        # The team name.
         self.team_name = team_name
+        # The QoS version.
         self.team_plan = team_plan
+        # The unique identifier of the template.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
+        # The UID of the creator.
         self.user_id = user_id
 
     def validate(self):

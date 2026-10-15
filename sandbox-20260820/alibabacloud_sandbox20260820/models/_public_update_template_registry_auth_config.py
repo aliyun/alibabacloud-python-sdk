@@ -10,7 +10,9 @@ class PublicUpdateTemplateRegistryAuthConfig(DaraModel):
         password: str = None,
         user_name: str = None,
     ):
+        # The repository password.
         self.password = password
+        # The repository username.
         self.user_name = user_name
 
     def validate(self):

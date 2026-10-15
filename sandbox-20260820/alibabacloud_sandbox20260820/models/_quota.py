@@ -12,9 +12,13 @@ class Quota(DaraModel):
         memory_gb: int = None,
         tag_value: str = None,
     ):
+        # The vCPU quota. Unit: cores.
         self.cpu_cores = cpu_cores
+        # The quota for the number of running instances.
         self.instance_count = instance_count
+        # The memory quota. Unit: GB.
         self.memory_gb = memory_gb
+        # The quota tag value, which is set to the team ID. Quotas are independently calculated based on this dimension.
         self.tag_value = tag_value
 
     def validate(self):

@@ -24,20 +24,38 @@ class E2BVolume(DaraModel):
         volume_id: str = None,
         volume_name: str = None,
     ):
+        # The AgenticBucket volume configuration.
         self.agentic_bucket_volume_config = agentic_bucket_volume_config
+        # The AgenticFS volume configuration.
         self.agentic_fsvolume_config = agentic_fsvolume_config
+        # The time when the volume was created, in UTC. The time is in the yyyy-MM-ddTHH:mm:ss.SSSSSSZ format, with exactly 6 decimal places for fractional seconds (microsecond precision).
         self.created_at = created_at
+        # The JuiceFS volume configuration.
         self.juice_fsvolume_config = juice_fsvolume_config
+        # The mount configuration.
         self.mount_config = mount_config
+        # The OSS volume configuration.
         self.oss_volume_config = oss_volume_config
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The volume status. Valid values:
+        # - AVAILABLE
         self.status = status
+        # The status reason.
         self.status_reason = status_reason
+        # The storage type. Valid values:
+        # - OSS
+        # - AGENTIC_FS
         self.storage_class = storage_class
+        # The unique identifier of the team.
         self.team_id = team_id
+        # The time when the volume was last updated, in UTC. The time is in the yyyy-MM-ddTHH:mm:ss.SSSSSSZ format, with exactly 6 decimal places for fractional seconds (microsecond precision).
         self.updated_at = updated_at
+        # The UID of the creator.
         self.user_id = user_id
+        # The unique identifier of the volume.
         self.volume_id = volume_id
+        # The name, which is unique within the team.
         self.volume_name = volume_name
 
     def validate(self):

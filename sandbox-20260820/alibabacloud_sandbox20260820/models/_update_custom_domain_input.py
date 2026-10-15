@@ -12,8 +12,11 @@ class UpdateCustomDomainInput(DaraModel):
         description: str = None,
         tls_config: main_models.TLSConfig = None,
     ):
+        # The new HTTPS certificate configuration for the domain name. When specified, this overwrites the existing configuration.
         self.cert_config = cert_config
+        # The new description of the custom domain name.
         self.description = description
+        # The new TLS protocol configuration for the domain name. When specified, this overwrites the existing configuration.
         self.tls_config = tls_config
 
     def validate(self):

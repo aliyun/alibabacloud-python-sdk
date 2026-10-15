@@ -14,9 +14,13 @@ class E2BNetwork(DaraModel):
         deny_out: List[str] = None,
         mask_request_host: str = None,
     ):
+        # The allowlist for outbound access from the sandbox. After configuration, the sandbox can access only the destinations in the list.
         self.allow_out = allow_out
+        # Specifies whether to allow Direct Internet Access to the sandbox.
         self.allow_public_traffic = allow_public_traffic
+        # The denylist for outbound access from the sandbox. After configuration, the sandbox cannot access the destinations in the list.
         self.deny_out = deny_out
+        # The domain name used to rewrite the request Host header when accessing the sandbox. If this parameter is not specified, the original Host is retained.
         self.mask_request_host = mask_request_host
 
     def validate(self):

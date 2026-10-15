@@ -12,9 +12,13 @@ class OSSVolumeConfig(DaraModel):
         endpoint: str = None,
         read_only: bool = None,
     ):
+        # The name of the OSS bucket to mount as a storage volume.
         self.bucket_name = bucket_name
+        # The path prefix within the bucket to use as the mount source. If this parameter is not specified, the entire bucket is mounted.
         self.bucket_path = bucket_path
+        # The OSS service registration address used to access the bucket. Use an internal network address in the same region as the sandboxed container.
         self.endpoint = endpoint
+        # Specifies whether the storage volume is mounted as read-only in the sandboxed container.
         self.read_only = read_only
 
     def validate(self):

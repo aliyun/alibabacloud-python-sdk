@@ -11,7 +11,9 @@ class PublicUpdateTemplateInput(DaraModel):
         build_config: main_models.PublicUpdateTemplateBuildConfig = None,
         runtime_config: main_models.PublicUpdateTemplateRuntimeConfig = None,
     ):
+        # The build configuration.
         self.build_config = build_config
+        # The runtime configuration.
         self.runtime_config = runtime_config
 
     def validate(self):

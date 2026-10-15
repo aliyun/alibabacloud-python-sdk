@@ -13,9 +13,13 @@ class CreateTemplateInput(DaraModel):
         runtime_config: main_models.CreateTemplateRuntimeConfig = None,
         team_id: str = None,
     ):
+        # The build configuration of the template. The build process is specified in blocks by action. If this parameter is not specified, the service automatically infers the configuration based on the source image: public runtime images are used directly without building, and other images automatically execute copy and envdInject.
         self.build_config = build_config
+        # The template name, which must be unique within the same team.
         self.name = name
+        # The runtime configuration of the template. This configuration determines the specifications and environment of sandbox instances created from this template.
         self.runtime_config = runtime_config
+        # The ID of the team to which the template belongs, in UUID format. If this parameter is not specified, the default team of the current account is used.
         self.team_id = team_id
 
     def validate(self):

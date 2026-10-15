@@ -15,10 +15,15 @@ class JuiceFSVolumeConfig(DaraModel):
         token: str = None,
         volume_name: str = None,
     ):
+        # The additional mount parameters.
         self.args = args
+        # The access point address.
         self.base_url = base_url
+        # The remote mount directory.
         self.remote_dir = remote_dir
+        # The access token.
         self.token = token
+        # The JuiceFS volume name.
         self.volume_name = volume_name
 
     def validate(self):

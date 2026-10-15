@@ -30,24 +30,53 @@ class E2BListedTemplate(DaraModel):
         updated_at: str = None,
         user_id: str = None,
     ):
+        # The template build status. Valid values:
+        # - waiting: Waiting to build.
+        # - building: Building.
+        # - ready: Build succeeded.
+        # - error: Build failed.
         self.build_status = build_status
+        # The template category. Valid values:
+        # - builtin: A system built-in template.
+        # - custom: A user-created template.
         self.category = category
+        # The container image configuration of the template.
         self.container_configuration = container_configuration
+        # The CPU specification of the sandbox instance, in cores.
         self.cpu_count = cpu_count
+        # The creation time in UTC, in RFC 3339 format.
         self.created_at = created_at
+        # The Function Compute function name that the template currently points to. This value is empty when the template is in a failed state.
         self.function_name = function_name
+        # The log delivery configuration of the template.
         self.log_configuration = log_configuration
+        # The memory specification of the sandbox instance, in MB.
         self.memory_mb = memory_mb
+        # The list of template names, including the template name and all its aliases.
         self.names = names
+        # Indicates whether the template is public to all teams.
         self.public = public
+        # The Alibaba Cloud resource group ID to which the team belongs.
         self.resource_group_id = resource_group_id
+        # The desensitized description of the reason why the template build failed. This value is empty when the build succeeds.
         self.status_reason = status_reason
+        # The list of template labels. Each label points to a specific build.
         self.tags = tags
+        # The ID of the team to which the resource belongs, in UUID format.
         self.team_id = team_id
+        # The team name.
         self.team_name = team_name
+        # The team plan specification. Valid values:
+        # - eco: economy.
+        # - std: standard.
+        # - pro: professional.
+        # - ent: enterprise.
         self.team_plan = team_plan
+        # The sandbox template ID.
         self.template_id = template_id
+        # The last update time in UTC, in RFC 3339 format.
         self.updated_at = updated_at
+        # The user ID of the resource creator, in UUID format.
         self.user_id = user_id
 
     def validate(self):

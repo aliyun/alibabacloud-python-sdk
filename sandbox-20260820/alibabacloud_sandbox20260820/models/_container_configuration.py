@@ -12,8 +12,11 @@ class ContainerConfiguration(DaraModel):
         image: str = None,
         registry_credential: main_models.ContainerConfigurationRegistryCredential = None,
     ):
+        # The instance ID of the Container Registry Enterprise instance. Required when registryType is set to acree.
         self.acr_instance_id = acr_instance_id
+        # The base image address of the sandbox.
         self.image = image
+        # The repository access credentials used to pull the image. Not required when using a public image.
         self.registry_credential = registry_credential
 
     def validate(self):
@@ -58,7 +61,9 @@ class ContainerConfigurationRegistryCredential(DaraModel):
         password: str = None,
         username: str = None,
     ):
+        # The logon password or access token for the image repository. Stored with server-side encryption and not returned in plaintext when queried.
         self.password = password
+        # The username for logging on to the image repository.
         self.username = username
 
     def validate(self):

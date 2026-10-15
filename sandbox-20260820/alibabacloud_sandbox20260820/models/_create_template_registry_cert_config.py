@@ -9,6 +9,7 @@ class CreateTemplateRegistryCertConfig(DaraModel):
         self,
         insecure: bool = None,
     ):
+        # Specifies whether to skip HTTPS certificate validation for the image repository. Enable this option only for private repositories that use self-signed certificates.
         self.insecure = insecure
 
     def validate(self):

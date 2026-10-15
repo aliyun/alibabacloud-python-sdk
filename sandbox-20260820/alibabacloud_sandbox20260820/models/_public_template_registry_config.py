@@ -10,6 +10,7 @@ class PublicTemplateRegistryConfig(DaraModel):
         self,
         network_config: main_models.PublicTemplateRegistryNetworkConfig = None,
     ):
+        # The VPC configuration used to access the image repository.
         self.network_config = network_config
 
     def validate(self):

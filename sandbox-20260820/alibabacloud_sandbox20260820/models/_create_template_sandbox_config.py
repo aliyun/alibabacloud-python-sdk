@@ -20,14 +20,23 @@ class CreateTemplateSandboxConfig(DaraModel):
         start_command: str = None,
         steps: List[main_models.CreateTemplateStep] = None,
     ):
+        # The ID of the Container Registry Enterprise instance. This parameter is required when registryType is set to acree.
         self.acr_instance_id = acr_instance_id
+        # The sandbox generation. Valid values: 1 (first generation) and 2 (second generation). Default value: 1.
         self.generation = generation
+        # The address of the sandbox base image.
         self.image = image
+        # The operating system type of the second-generation sandbox. Valid values: linux-amd64, android-36-osworld, and windows-osworld.
         self.os_type = os_type
+        # The sandbox readiness probe command. A successful execution indicates that the sandbox is ready to accept requests. This parameter is supported only for first-generation sandboxes.
         self.ready_command = ready_command
+        # The credential, TLS, and network configuration required to access the source image repository.
         self.registry_config = registry_config
+        # The image repository type. Valid values: oci (standard OCI repository), acr (Container Registry Personal Edition), and acree (Container Registry Enterprise Edition). If not specified, the type is inferred from the image address.
         self.registry_type = registry_type
+        # The startup command for the sandbox container. This parameter is supported only for first-generation sandboxes.
         self.start_command = start_command
+        # The list of custom build instructions. This is not supported in the current version. Passing a non-empty list returns an error.
         self.steps = steps
 
     def validate(self):

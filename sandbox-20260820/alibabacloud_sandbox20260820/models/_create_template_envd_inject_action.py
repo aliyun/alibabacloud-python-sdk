@@ -9,6 +9,7 @@ class CreateTemplateEnvdInjectAction(DaraModel):
         self,
         enabled: bool = None,
     ):
+        # Specifies whether to enable the envd injection action. This parameter is required when this action block is specified.
         self.enabled = enabled
 
     def validate(self):

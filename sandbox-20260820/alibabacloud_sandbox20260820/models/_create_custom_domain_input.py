@@ -13,9 +13,13 @@ class CreateCustomDomainInput(DaraModel):
         domain_name: str = None,
         tls_config: main_models.TLSConfig = None,
     ):
+        # The HTTPS certificate configuration used by the domain name.
         self.cert_config = cert_config
+        # The description of the custom domain name.
         self.description = description
+        # The custom domain name.
         self.domain_name = domain_name
+        # The TLS protocol configuration used by the domain name.
         self.tls_config = tls_config
 
     def validate(self):

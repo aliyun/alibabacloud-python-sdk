@@ -17,14 +17,23 @@ class PublicTemplateCache(DaraModel):
         team_id: str = None,
         template_id: str = None,
     ):
+        # The creation time in UTC.
         self.created_time = created_time
+        # The digest of the cached image.
         self.image_digest = image_digest
+        # The size of the cached image, in MB.
         self.image_size_mb = image_size_mb
+        # The prefetch progress percentage.
         self.progress = progress
+        # The ready time in UTC.
         self.ready_time = ready_time
+        # The cache status. Valid values: InProgress, Success, Failed, Deleting, and Evicted.
         self.status = status
+        # The reason for the status. This parameter is backfilled when the status is not Success.
         self.status_reason = status_reason
+        # The team ID.
         self.team_id = team_id
+        # The unique identifier of the template.
         self.template_id = template_id
 
     def validate(self):

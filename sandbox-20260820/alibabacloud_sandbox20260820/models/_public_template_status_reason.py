@@ -10,7 +10,9 @@ class PublicTemplateStatusReason(DaraModel):
         message: str = None,
         step: str = None,
     ):
+        # The details of the failure reason.
         self.message = message
+        # The identity of the failed step.
         self.step = step
 
     def validate(self):

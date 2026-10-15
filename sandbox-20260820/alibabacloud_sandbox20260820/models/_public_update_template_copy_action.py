@@ -14,10 +14,15 @@ class PublicUpdateTemplateCopyAction(DaraModel):
         registry_config: main_models.PublicUpdateTemplateRegistryConfig = None,
         registry_type: str = None,
     ):
+        # The ID of the destination ACR Enterprise instance.
         self.acr_instance_id = acr_instance_id
+        # Indicates whether image replication is enabled.
         self.enabled = enabled
+        # The destination image address for replication.
         self.image = image
+        # The image repository configuration.
         self.registry_config = registry_config
+        # The type of the destination repository.
         self.registry_type = registry_type
 
     def validate(self):

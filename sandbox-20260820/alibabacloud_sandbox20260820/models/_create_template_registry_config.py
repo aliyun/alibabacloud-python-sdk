@@ -12,8 +12,11 @@ class CreateTemplateRegistryConfig(DaraModel):
         cert_config: main_models.CreateTemplateRegistryCertConfig = None,
         network_config: main_models.CreateTemplateRegistryNetworkConfig = None,
     ):
+        # The logon credentials for the image repository. No configuration is required when accessing a public repository.
         self.auth_config = auth_config
+        # The certificate validation configuration for accessing the image repository.
         self.cert_config = cert_config
+        # The VPC configuration used to access the image repository. Configuration is required only when the repository is reachable only within a VPC.
         self.network_config = network_config
 
     def validate(self):

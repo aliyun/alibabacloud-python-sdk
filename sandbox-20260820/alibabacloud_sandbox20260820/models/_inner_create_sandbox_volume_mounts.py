@@ -14,8 +14,11 @@ class InnerCreateSandboxVolumeMounts(DaraModel):
         named: main_models.InnerCreateSandboxVolumeMountsNamed = None,
         oss: main_models.InnerCreateSandboxVolumeMountsOss = None,
     ):
+        # The AgenticFS mount configuration.
         self.agentic_fs = agentic_fs
+        # The predefined volume mount configuration.
         self.named = named
+        # The OSS mount configuration.
         self.oss = oss
 
     def validate(self):
@@ -63,6 +66,7 @@ class InnerCreateSandboxVolumeMountsOss(DaraModel):
         self,
         mount_points: List[main_models.InnerCreateSandboxVolumeMountsOssMountPoints] = None,
     ):
+        # The mount point configuration.
         self.mount_points = mount_points
 
     def validate(self):
@@ -102,10 +106,17 @@ class InnerCreateSandboxVolumeMountsOssMountPoints(DaraModel):
         mount_dir: str = None,
         read_only: bool = None,
     ):
+        # The bucket name.
         self.bucket_name = bucket_name
+        # The OSS bucket path to mount.
         self.bucket_path = bucket_path
+        # The endpoint URL of OSS.
         self.endpoint = endpoint
+        # The local mount directory.
         self.mount_dir = mount_dir
+        # Specifies whether the mount is read-only. Valid values:
+        # - true: Read-only.
+        # - false: Read and write.
         self.read_only = read_only
 
     def validate(self):
@@ -157,6 +168,7 @@ class InnerCreateSandboxVolumeMountsNamed(DaraModel):
         self,
         mount_points: List[main_models.InnerCreateSandboxVolumeMountsNamedMountPoints] = None,
     ):
+        # The mount point configuration.
         self.mount_points = mount_points
 
     def validate(self):
@@ -193,7 +205,9 @@ class InnerCreateSandboxVolumeMountsNamedMountPoints(DaraModel):
         mount_dir: str = None,
         volume_name: str = None,
     ):
+        # The local mount directory.
         self.mount_dir = mount_dir
+        # The volume name.
         self.volume_name = volume_name
 
     def validate(self):
@@ -229,8 +243,11 @@ class InnerCreateSandboxVolumeMountsAgenticFs(DaraModel):
         mount_points: List[main_models.InnerCreateSandboxVolumeMountsAgenticFsMountPoints] = None,
         user_id: int = None,
     ):
+        # The group ID for the local mount.
         self.group_id = group_id
+        # The mount point configuration.
         self.mount_points = mount_points
+        # The user ID for the local mount.
         self.user_id = user_id
 
     def validate(self):
@@ -279,7 +296,9 @@ class InnerCreateSandboxVolumeMountsAgenticFsMountPoints(DaraModel):
         mount_dir: str = None,
         server_addr: str = None,
     ):
+        # The local mount directory.
         self.mount_dir = mount_dir
+        # The AgenticFS access point address.
         self.server_addr = server_addr
 
     def validate(self):

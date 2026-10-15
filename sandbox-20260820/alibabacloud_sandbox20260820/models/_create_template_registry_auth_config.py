@@ -10,7 +10,9 @@ class CreateTemplateRegistryAuthConfig(DaraModel):
         password: str = None,
         user_name: str = None,
     ):
+        # The logon password or access token for the image repository. The value is encrypted on the server side and is not returned in plaintext when queried.
         self.password = password
+        # The username for logging on to the image repository.
         self.user_name = user_name
 
     def validate(self):

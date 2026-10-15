@@ -12,9 +12,13 @@ class ImportApiKeyInput(DaraModel):
         expire_time: str = None,
         team_id: str = None,
     ):
+        # The API key name. The name can be up to 128 characters in length and can contain letters, digits, spaces, hyphens (-), underscores (_), and periods (.).
         self.api_key_name = api_key_name
+        # The plaintext value of the API key to import. After the import, the source of the key is set to custom.
         self.api_key_value = api_key_value
+        # The expiration time of the API key in UTC. The time is in RFC 3339 format. If this parameter is left empty, the API key never expires.
         self.expire_time = expire_time
+        # The ID of the team to which the API key belongs, in UUID format. If this parameter is not specified, the default team of the current account is used.
         self.team_id = team_id
 
     def validate(self):

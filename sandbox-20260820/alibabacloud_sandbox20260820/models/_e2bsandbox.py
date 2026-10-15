@@ -38,32 +38,68 @@ class E2BSandbox(DaraModel):
         user_id: str = None,
         volume_mounts: main_models.InnerSandboxVolumeMount = None,
     ):
+        # The access endpoint.
         self.access_endpoint = access_endpoint
+        # Specifies whether the sandbox is allowed to access external networks.
         self.allow_internet_access = allow_internet_access
+        # The vCPU specifications.
         self.cpu_count = cpu_count
+        # The ephemeral disk specifications.
         self.disk_size_mb = disk_size_mb
+        # The access domain name of the sandbox.
         self.domain = domain
+        # The end time.
         self.end_at = end_at
+        # The environment variables.
         self.env_vars = env_vars
+        # The authentication credential for accessing the envd daemon process inside the sandbox, in UUID format. Automatically generated only when secure is set to true.
         self.envd_access_token = envd_access_token
+        # The Function Compute function name.
         self.fc_function_name = fc_function_name
+        # The Function Compute instance ID.
         self.fc_instance_id = fc_instance_id
+        # The Function Compute session ID corresponding to the sandbox, in UUID format. Used to locate the underlying session when pausing, resuming, or deleting the sandbox.
         self.fc_session_id = fc_session_id
+        # The sandbox version.
         self.generation = generation
+        # The memory specifications.
         self.memory_mb = memory_mb
+        # The metadata configuration.
         self.metadata = metadata
+        # The network configuration.
         self.network = network
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The runtime configuration.
         self.runtime = runtime
+        # The unique identifier of the sandbox.
         self.sandbox_id = sandbox_id
+        # The start time.
         self.started_at = started_at
+        # The sandbox status. Valid values:
+        # - running: Running.
+        # - pausing: Pausing.
+        # - paused: Paused.
+        # - resuming: Resuming.
+        # - pause_fail: Pause failed.
+        # - resume_fail: Resume failed.
+        # - snapshotting: Creating a snapshot.
+        # - snapshot_failed: Snapshot creation failed.
+        # - terminated: Terminated.
         self.state = state
+        # The unique identifier of the team.
         self.team_id = team_id
+        # The team name.
         self.team_name = team_name
+        # The QoS version.
         self.team_plan = team_plan
+        # The unique identifier of the template.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
+        # The UID of the creator.
         self.user_id = user_id
+        # The mount configuration.
         self.volume_mounts = volume_mounts
 
     def validate(self):

@@ -11,8 +11,11 @@ class PublicUpdateTemplateRegistryNetworkConfig(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the security group used to access the repository.
         self.security_group_id = security_group_id
+        # The ID of the vSwitch where the repository resides.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC where the repository resides.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -16,12 +16,19 @@ class PublicTemplateRuntimeConfig(DaraModel):
         sandbox_config: main_models.PublicTemplateSandboxConfig = None,
         vpc_config: main_models.PublicTemplateVPCConfig = None,
     ):
+        # The CPU specification of the sandbox instance, in cores.
         self.cpu = cpu
+        # The disk specification of the sandbox instance, in MB.
         self.disk_size = disk_size
+        # Specifies whether the sandbox instance is allowed to access the Internet.
         self.internet_access = internet_access
+        # The log delivery configuration of the sandbox instance.
         self.log_config = log_config
+        # The memory specification of the sandbox instance, in MB.
         self.memory_size = memory_size
+        # The image and startup configuration of the sandbox instance.
         self.sandbox_config = sandbox_config
+        # The VPC configuration of the sandbox instance.
         self.vpc_config = vpc_config
 
     def validate(self):
