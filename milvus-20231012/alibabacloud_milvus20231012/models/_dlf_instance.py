@@ -13,15 +13,15 @@ class DlfInstance(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The unique ID of the DLF instance.
+        # The DLF instance ID.
         self.instance_id = instance_id
-        # The name of the DLF instance.
+        # The DLF instance name.
         self.instance_name = instance_name
-        # The type of the DLF instance.
+        # The instance type.
         self.instance_type = instance_type
-        # The ID of the region where the DLF instance is located.
+        # The region ID.
         self.region_id = region_id
-        # The current status of the DLF instance.
+        # The instance status.
         self.status = status
 
     def validate(self):

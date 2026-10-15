@@ -14,7 +14,7 @@ class UpdatePublicNetworkStatusRequest(DaraModel):
     ):
         # The CIDR block.
         self.cidr = cidr
-        # The component type. Valid value:
+        # The component type. Valid values:
         # 
         # - Proxy
         # 
@@ -24,7 +24,7 @@ class UpdatePublicNetworkStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to enable public network access.
+        # Specifies whether public network access is enabled.
         # 
         # This parameter is required.
         self.public_network_enabled = public_network_enabled

@@ -1160,11 +1160,15 @@ class Client(OpenApiClient):
 
     def modify_instance_config_with_options(
         self,
-        request: main_models.ModifyInstanceConfigRequest,
+        tmp_req: main_models.ModifyInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ModifyInstanceConfigResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyInstanceConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -1172,9 +1176,13 @@ class Client(OpenApiClient):
             query['Reason'] = request.reason
         if not DaraCore.is_null(request.user_config):
             query['UserConfig'] = request.user_config
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ModifyInstanceConfig',
@@ -1184,7 +1192,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'json',
+            req_body_type = 'formData',
             body_type = 'json'
         )
         return DaraCore.from_map(
@@ -1194,11 +1202,15 @@ class Client(OpenApiClient):
 
     async def modify_instance_config_with_options_async(
         self,
-        request: main_models.ModifyInstanceConfigRequest,
+        tmp_req: main_models.ModifyInstanceConfigRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ModifyInstanceConfigResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyInstanceConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
@@ -1206,9 +1218,13 @@ class Client(OpenApiClient):
             query['Reason'] = request.reason
         if not DaraCore.is_null(request.user_config):
             query['UserConfig'] = request.user_config
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ModifyInstanceConfig',
@@ -1218,7 +1234,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'json',
+            req_body_type = 'formData',
             body_type = 'json'
         )
         return DaraCore.from_map(

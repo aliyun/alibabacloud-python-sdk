@@ -56,6 +56,7 @@ from ._list_instances_v2shrink_request import ListInstancesV2ShrinkRequest
 from ._list_instances_v2response_body import ListInstancesV2ResponseBody
 from ._list_instances_v2response import ListInstancesV2Response
 from ._modify_instance_config_request import ModifyInstanceConfigRequest
+from ._modify_instance_config_shrink_request import ModifyInstanceConfigShrinkRequest
 from ._modify_instance_config_response_body import ModifyInstanceConfigResponseBody
 from ._modify_instance_config_response import ModifyInstanceConfigResponse
 from ._tag_resources_request import TagResourcesRequest
@@ -114,6 +115,7 @@ from ._list_instances_response_body import ListInstancesResponseBodyDataClusterI
 from ._list_instances_response_body import ListInstancesResponseBodyDataTags
 from ._list_instances_response_body import ListInstancesResponseBodyData
 from ._list_instances_v2request import ListInstancesV2RequestTag
+from ._modify_instance_config_request import ModifyInstanceConfigRequestBody
 from ._tag_resources_request import TagResourcesRequestTag
 from ._update_instance_request import UpdateInstanceRequestComponentsDataDisk
 from ._update_instance_request import UpdateInstanceRequestComponents
@@ -173,6 +175,7 @@ __all__ = [
     ListInstancesV2ResponseBody,
     ListInstancesV2Response,
     ModifyInstanceConfigRequest,
+    ModifyInstanceConfigShrinkRequest,
     ModifyInstanceConfigResponseBody,
     ModifyInstanceConfigResponse,
     TagResourcesRequest,
@@ -231,6 +234,7 @@ __all__ = [
     ListInstancesResponseBodyDataTags,
     ListInstancesResponseBodyData,
     ListInstancesV2RequestTag,
+    ModifyInstanceConfigRequestBody,
     TagResourcesRequestTag,
     UpdateInstanceRequestComponentsDataDisk,
     UpdateInstanceRequestComponents

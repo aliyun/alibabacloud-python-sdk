@@ -14,9 +14,9 @@ class CreateInstanceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned data.
+        # The returned result.
         self.data = data
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

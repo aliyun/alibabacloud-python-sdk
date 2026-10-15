@@ -18,9 +18,9 @@ class DlfFieldSchema(DaraModel):
         nullable: bool = None,
         unsupported_reason: str = None,
     ):
-        # A comment for the field.
+        # The field comment.
         self.comment = comment
-        # The dimension of the vector field. This parameter applies only when `isVectorField` is `true`.
+        # The vector dimensions.
         self.dimension = dimension
         # The DLF field type.
         self.dlf_field_type = dlf_field_type
@@ -28,15 +28,15 @@ class DlfFieldSchema(DaraModel):
         self.field_name = field_name
         # Indicates whether the field is a primary key.
         self.is_primary_key = is_primary_key
-        # Indicates whether the DLF field type can be mapped to a Milvus field type.
+        # Indicates whether mapping is supported.
         self.is_supported = is_supported
         # Indicates whether the field is a vector field.
         self.is_vector_field = is_vector_field
-        # The corresponding Milvus field type.
+        # The Milvus field type.
         self.milvus_field_type = milvus_field_type
         # Indicates whether the field can be null.
         self.nullable = nullable
-        # The reason the DLF field type is unsupported. This field is present only when `isSupported` is `false`.
+        # The reason mapping is not supported.
         self.unsupported_reason = unsupported_reason
 
     def validate(self):

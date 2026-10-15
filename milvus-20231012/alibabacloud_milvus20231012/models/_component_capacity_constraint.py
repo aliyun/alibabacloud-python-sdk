@@ -11,8 +11,11 @@ class ComponentCapacityConstraint(DaraModel):
         max_capacity: int = None,
         min_capacity: int = None,
     ):
+        # The component type.
         self.component_type = component_type
+        # The maximum capacity allowed for the component.
         self.max_capacity = max_capacity
+        # The minimum capacity allowed for the component.
         self.min_capacity = min_capacity
 
     def validate(self):

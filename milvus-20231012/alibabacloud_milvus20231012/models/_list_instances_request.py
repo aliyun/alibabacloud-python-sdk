@@ -103,9 +103,9 @@ class ListInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

@@ -14,7 +14,7 @@ class MigrationSource(DaraModel):
     ):
         # The authentication information of the migration source.
         self.auth_info = auth_info
-        # The name of the database to migrate.
+        # The name of the database to be migrated.
         self.database = database
         # The endpoint information of the migration source.
         self.endpoint = endpoint
@@ -62,7 +62,7 @@ class MigrationSourceEndpoint(DaraModel):
         endpoint: str = None,
         port: str = None,
     ):
-        # The endpoint address of the migration source.
+        # The endpoint of the migration source.
         self.endpoint = endpoint
         # The port number of the migration source.
         self.port = port

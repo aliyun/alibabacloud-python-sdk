@@ -21,31 +21,31 @@ class ScalingActivity(DaraModel):
         start_time: str = None,
         time_zone: str = None,
     ):
-        # The types of components involved in the scaling activity.
+        # The types of components involved in the auto scaling activity.
         self.component_types = component_types
-        # The description of the scaling activity.
+        # The detailed description of the auto scaling activity, which can be used to identify the cause when the activity fails.
         self.description = description
-        # The end time of the scaling activity.
+        # The end time of the auto scaling activity.
         self.end_time = end_time
-        # The ID of the instance.
+        # The ID of the Milvus instance.
         self.instance_id = instance_id
-        # The type of the scaling policy.
+        # The type of the elastic scaling policy.
         self.policy_type = policy_type
-        # The ID of the scaling activity.
+        # The ID of the elastic scaling activity.
         self.scaling_activity_id = scaling_activity_id
-        # The state of the scaling activity.
+        # The execution status of the auto scaling activity.
         self.scaling_activity_state = scaling_activity_state
-        # The ID of the scaling policy.
+        # The ID of the elastic scaling policy.
         self.scaling_policy_id = scaling_policy_id
-        # The details of the scaling rule.
+        # The details of the elastic scaling rule.
         self.scaling_rule_detail = scaling_rule_detail
-        # The ID of the scaling rule.
+        # The ID of the elastic scaling rule.
         self.scaling_rule_id = scaling_rule_id
-        # The name of the scaling rule that triggered the activity.
+        # The name of the rule that triggered the auto scaling activity.
         self.scaling_rule_name = scaling_rule_name
-        # The start time of the scaling activity.
+        # The start time of the auto scaling activity.
         self.start_time = start_time
-        # The time zone of the scaling activity.
+        # The time zone used by the elastic scaling rule.
         self.time_zone = time_zone
 
     def validate(self):

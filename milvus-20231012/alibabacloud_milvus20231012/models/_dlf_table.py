@@ -13,15 +13,15 @@ class DlfTable(DaraModel):
         table_name: str = None,
         table_type: str = None,
     ):
-        # A description of the table.
+        # The table description.
         self.description = description
-        # The location of the table data, specified as an Object Storage Service (OSS) URI.
+        # The table storage location.
         self.location = location
-        # The table format, such as `PAIMON`.
+        # The table format.
         self.table_format = table_format
         # The table name.
         self.table_name = table_name
-        # The table type. For example, `MANAGED` indicates that DLF manages the data and metadata lifecycle.
+        # The table type.
         self.table_type = table_type
 
     def validate(self):

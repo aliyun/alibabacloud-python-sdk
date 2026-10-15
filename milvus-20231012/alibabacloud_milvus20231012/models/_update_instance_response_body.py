@@ -18,7 +18,7 @@ class UpdateInstanceResponseBody(DaraModel):
         self.data = data
         # The order ID.
         self.order_id = order_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

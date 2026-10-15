@@ -19,21 +19,21 @@ class ScalingRule(DaraModel):
         start_time: int = None,
         time_zone: str = None,
     ):
-        # The adjustment information of the scaling rule.
+        # The list of target resource configurations for each component.
         self.adjust_infos = adjust_infos
-        # The cron expression for the scaling schedule.
+        # The scheduled execution expression of the rule.
         self.cron_str = cron_str
-        # Indicates whether the scaling rule is disabled.
+        # Indicates whether the rule is disabled.
         self.disabled = disabled
-        # The end time of the scaling rule. Unit: milliseconds.
+        # The end time of the effective period for the rule.
         self.end_time = end_time
-        # The ID of the scaling rule.
+        # The ID of the elastic scaling rule.
         self.rule_id = rule_id
-        # The name of the scaling rule.
+        # The name of the elastic scaling rule.
         self.scaling_rule_name = scaling_rule_name
-        # The start time of the scaling rule. Unit: milliseconds.
+        # The start time of the effective period for the rule.
         self.start_time = start_time
-        # The time zone of the scaling rule.
+        # The time zone used for the execution time of the rule.
         self.time_zone = time_zone
 
     def validate(self):
@@ -112,9 +112,9 @@ class ScalingRuleAdjustInfos(DaraModel):
         component_type: str = None,
         target_value: str = None,
     ):
-        # The type of the component to be adjusted.
+        # index  query data proxy streaming mix_coordinator
         self.component_type = component_type
-        # The target value for the adjustment.
+        # The target number of nodes for the component after the rule is executed.
         self.target_value = target_value
 
     def validate(self):

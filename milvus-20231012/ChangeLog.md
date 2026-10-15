@@ -1,3 +1,7 @@
+2026-10-15 Version: 1.3.5
+- Update API ModifyInstanceConfig: add request parameters body.
+
+
 2026-09-20 Version: 1.3.4
 - Update API ListInstances: add response parameters Body.Data.$.ResourceOwnerId.
 - Update API ListInstances: add response parameters Body.Data.$.ClusterInfo.ResourceOwnerId.

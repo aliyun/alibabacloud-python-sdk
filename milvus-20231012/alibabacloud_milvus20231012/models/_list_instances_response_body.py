@@ -19,9 +19,9 @@ class ListInstancesResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # The returned data.
+        # The response data.
         self.data = data
         # The error code.
         self.err_code = err_code
@@ -31,7 +31,7 @@ class ListInstancesResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total count.
         self.total = total
@@ -135,35 +135,35 @@ class ListInstancesResponseBodyData(DaraModel):
     ):
         # Indicates whether automatic backup is enabled.
         self.auto_backup = auto_backup
-        # The start time.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.begin_time = begin_time
         # The instance details.
         self.cluster_info = cluster_info
         # The instance name.
         self.cluster_name = cluster_name
-        # The expiration time.
+        # The expiration time. The value is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
         # The instance ID.
         self.instance_id = instance_id
         # The instance status. Valid values:
-        # - creating: Being created.
-        # - running: Running.
-        # - updating: Being upgraded. This includes specification changes, configuration changes, and enabling or disabling public network access.
-        # - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
-        # - deleting: Being deleted.
-        # - deleted: Deleted.
+        # - creating: The instance is being created.
+        # - running: The instance is running.
+        # - updating: The instance is being upgraded, such as cluster specification changes, configuration modifications, and public endpoint toggling.
+        # - disable: The instance is unavailable because the cluster has expired and requires renewal.
+        # - deleting: The instance is being deleted.
+        # - deleted: The instance is deleted.
         self.instance_status = instance_status
         # The node type.
         self.node_type = node_type
-        # Indicates whether public network access is enabled.
+        # Indicates whether the public endpoint is enabled.
         self.open_public_net = open_public_net
-        # The edition. Valid values:
-        # - trial: Trial Edition.
-        # - standard: Standard Edition.
+        # The edition details. Valid values:
+        # - trial: trial edition
+        # - standard: standard edition
         self.package_type = package_type
-        # The billing type. Valid values:
-        # - 0: Pay-as-you-go.
-        # - 1: Subscription.
+        # The billing method. Valid values:
+        # - 0: pay-as-you-go
+        # - 1: subscription
         self.pay_type = pay_type
         # The commodity code.
         self.product_code = product_code
@@ -171,15 +171,17 @@ class ListInstancesResponseBodyData(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the resource owner account.
+        # The account ID of the resource owner.
         self.resource_owner_id = resource_owner_id
-        # The running time.
+        # The running duration of the instance, in seconds.
         self.running_time = running_time
         # The security group ID.
         self.sg_id = sg_id
         # The tag information.
         self.tags = tags
+        # The software stack version.
         self.template_version = template_version
+        # The Milvus version.
         self.version = version
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -357,9 +359,9 @@ class ListInstancesResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -410,9 +412,9 @@ class ListInstancesResponseBodyDataClusterInfo(DaraModel):
         self.milvus_resource_info_list = milvus_resource_info_list
         # The proxy port.
         self.proxy_port = proxy_port
-        # The ID of the resource owner account.
+        # The account ID of the resource owner.
         self.resource_owner_id = resource_owner_id
-        # The number of CUs.
+        # The number of compute units (CUs).
         self.total_cu_num = total_cu_num
         # The total disk size.
         self.total_disk_size = total_disk_size
@@ -504,7 +506,7 @@ class ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList(DaraModel):
         # - index
         # - data
         self.component_type = component_type
-        # The number of CUs.
+        # The number of compute units (CUs).
         self.cu_num = cu_num
         # The disk size.
         self.disk_size = disk_size

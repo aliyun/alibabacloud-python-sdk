@@ -34,7 +34,7 @@ class InstanceDetail(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The automatic backup configuration.
+        # The automatic backup.
         self.auto_backup = auto_backup
         # The component information.
         self.components = components
@@ -46,25 +46,27 @@ class InstanceDetail(DaraModel):
         self.create_time = create_time
         # The instance version.
         self.db_version = db_version
-        # Indicates whether data encryption is enabled.
+        # Specifies whether data encryption is enabled.
         self.encrypted = encrypted
         # The expiration time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.expire_time = expire_time
-        # Indicates whether high availability is enabled.
+        # Specifies whether high availability is enabled.
         self.ha = ha
         # The instance ID.
         self.instance_id = instance_id
         # The instance name.
         self.instance_name = instance_name
-        # kms key Id。
+        # The KMS key ID.
         self.kms_key_id = kms_key_id
-        # The multi-zone deployment mode.
+        # The multi-zone mode.
         self.multi_zone_mode = multi_zone_mode
         # The order ID.
         self.order_id = order_id
-        # The billing method. Valid values: PayAsYouGo: pay-as-you-go billing method. Subscription: subscription.
+        # The billing method. Valid values:
+        # - PayAsYouGo: pay-as-you-go billing method.
+        # - Subscription: subscription.
         self.payment_type = payment_type
         # The region ID.
         self.region_id = region_id
@@ -75,13 +77,12 @@ class InstanceDetail(DaraModel):
         # The security group IDs.
         self.security_group_ids = security_group_ids
         # The instance status. Valid values:
-        # 
-        # - creating: Being created.
-        # - running: Running.
-        # - updating: Being upgraded. This includes specification changes, configuration changes, and public network access changes.
-        # - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
-        # - deleting: Being deleted.
-        # - deleted: Deleted.
+        # - creating: The instance is being created.
+        # - running: The instance is running.
+        # - updating: The instance is being upgraded, such as cluster scaling, configuration changes, and enabling or disabling public network access.
+        # - disable: The instance is unavailable. The cluster has expired and must be renewed for activation.
+        # - deleting: The instance is being deleted.
+        # - deleted: The instance is deleted.
         self.status = status
         # The tags.
         self.tags = tags
@@ -360,10 +361,13 @@ class InstanceDetailComponents(DaraModel):
         self.cu_num = cu_num
         # The CU type.
         self.cu_type = cu_type
+        # The query node data cloud disk configuration.
         self.data_disk = data_disk
-        # The disk size type for the Query Node. Set this parameter to Large for storage-optimized configurations, and to Normal for other configurations.
+        # The disk size type of the query node. The value is Large for storage-optimized configurations, and Normal for other configurations.
         self.disk_size_type = disk_size_type
+        # The billing method of the component.
         self.pay_type = pay_type
+        # The pod list of the component.
         self.pods_list = pods_list
         # The number of replicas.
         self.replica = replica
@@ -449,7 +453,9 @@ class InstanceDetailComponentsPodsList(DaraModel):
         pod_id: str = None,
         pod_name: str = None,
     ):
+        # The Pod ID.
         self.pod_id = pod_id
+        # The pod name.
         self.pod_name = pod_name
 
     def validate(self):
@@ -486,9 +492,13 @@ class InstanceDetailComponentsDataDisk(DaraModel):
         size: int = None,
         storage_class: str = None,
     ):
+        # Specifies whether to enable the data cloud disk for the query node.
         self.enabled = enabled
+        # The performance level of the ESSD.
         self.performance_level = performance_level
+        # The capacity of the data cloud disk, in GiB.
         self.size = size
+        # The storage class of the data cloud disk.
         self.storage_class = storage_class
 
     def validate(self):

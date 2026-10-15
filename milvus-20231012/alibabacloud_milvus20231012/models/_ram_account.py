@@ -12,13 +12,13 @@ class RamAccount(DaraModel):
         uid: str = None,
         user_name: str = None,
     ):
-        # Specifies whether the RamAccount can be bound to other resources.
+        # Indicates whether the RAM user can be bound.
         self.bindable = bindable
-        # The display name for the RamAccount, which appears in the console.
+        # The display name.
         self.display_name = display_name
-        # The unique identifier for the RamAccount.
+        # The Alibaba Cloud UID.
         self.uid = uid
-        # The user name for the RamAccount.
+        # The RAM username.
         self.user_name = user_name
 
     def validate(self):

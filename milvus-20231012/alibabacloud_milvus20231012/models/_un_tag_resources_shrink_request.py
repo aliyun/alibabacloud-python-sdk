@@ -13,7 +13,7 @@ class UnTagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_key_shrink: str = None,
     ):
-        # Specifies whether to remove all tags from the resources. This parameter takes effect only when the TagKey parameter is left empty. Valid values: true and false (default).
+        # Specifies whether to remove all tags from the resources. This parameter takes effect only when the TagKey parameter is left empty. Valid values: true, false, True, and False. Default: false.
         self.all = all
         # The region ID.
         # 

@@ -18,7 +18,7 @@ class GetInstanceDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The response data.
         self.data = data
@@ -30,7 +30,7 @@ class GetInstanceDetailResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -129,9 +129,9 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         zone_id: str = None,
         maintainable_period_time_zone: str = None,
     ):
-        # The public network access control ACL ID.
+        # The ID of the public network access control list (ACL).
         self.acl_id = acl_id
-        # The start time.
+        # The start time. It is a UNIX timestamp in milliseconds.
         self.begin_time = begin_time
         # The bucket name.
         self.bucket_name = bucket_name
@@ -141,42 +141,46 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         self.cluster_info = cluster_info
         # The instance name.
         self.cluster_name = cluster_name
-        # Indicates whether high availability (HA) is enabled.
+        # Indicates whether high availability is enabled.
         self.enable_ha = enable_ha
+        # The encryption information of the instance.
         self.encrypted = encrypted
-        # The expiration time.
+        # The expiration time. It is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
+        # The high availability configuration information of the instance.
         self.high_availability = high_availability
         # The instance ID.
         self.instance_id = instance_id
         # The instance status. Valid values:
-        # - creating: Being created.
-        # - running: Running.
-        # - updating: Being upgraded. This includes specification changes, configuration changes, and public network access toggling.
-        # - disable: Unavailable. The cluster has expired and requires renewal to reactivate.
-        # - deleting: Being deleted.
-        # - deleted: Deleted.
+        # - creating: The instance is being created.
+        # - running: The instance is running.
+        # - updating: The instance is being updated. This includes specification changes, configuration changes, and enabling or disabling public network access.
+        # - disable: The instance is unavailable. The cluster has expired and must be renewed to be activated.
+        # - deleting: The instance is being deleted.
+        # - deleted: The instance is deleted.
         self.instance_status = instance_status
+        # The KMS key ID.
         self.kms_key_id = kms_key_id
+        # The maintenance window of the instance.
         self.maintainable_period = maintainable_period
         # The configuration information.
         self.measure_config = measure_config
-        # Single,Two,Three
+        # The zone deployment mode of the instance.
         self.multi_zone_mode = multi_zone_mode
         # The node type. Valid values:
-        # * perf: compute-optimized instance.
-        # * cap: storage-optimized.
+        # * perf: compute-optimized
+        # * cap: storage-optimized
         self.node_type = node_type
         # Indicates whether public network access is enabled.
         self.open_public_net = open_public_net
-        # The edition. Valid values:
+        # The edition details. Valid values:
         # 
-        # - trial: Trial Edition.
-        # - standard: Standard Edition.
+        # - trial: starter edition
+        # - standard: standard edition
         self.package_type = package_type
-        # The billing type. Valid values:
-        # - 0: pay-as-you-go.
-        # - 1: subscription.
+        # The billing method. Valid values:
+        # - 0: pay-as-you-go
+        # - 1: subscription
         self.pay_type = pay_type
         # The commodity code.
         self.product_code = product_code
@@ -184,7 +188,7 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The running time.
+        # The running time of the instance, in seconds.
         self.running_time = running_time
         # The security group ID.
         self.sg_id = sg_id
@@ -192,8 +196,9 @@ class GetInstanceDetailResponseBodyData(DaraModel):
         self.tags = tags
         # The software stack version.
         self.template_version = template_version
-        # The user-defined configuration.
+        # The custom user configuration.
         self.user_config = user_config
+        # The list of vSwitches associated with the instance.
         self.v_switches = v_switches
         # The Milvus version.
         self.version = version
@@ -455,7 +460,9 @@ class GetInstanceDetailResponseBodyDataVSwitches(DaraModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
+        # The vSwitch ID.
         self.vsw_id = vsw_id
+        # The zone ID of the vSwitch.
         self.zone_id = zone_id
 
     def validate(self):
@@ -490,9 +497,9 @@ class GetInstanceDetailResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -535,23 +542,23 @@ class GetInstanceDetailResponseBodyDataMeasureConfig(DaraModel):
         query_node_cu_num: int = None,
         query_node_replica: int = None,
     ):
-        # The number of CUs for data nodes.
+        # The number of compute units (CUs) for data nodes.
         self.data_node_cu_num = data_node_cu_num
         # The number of replicas for data nodes.
         self.data_node_replica = data_node_replica
-        # The number of CUs for index nodes.
+        # The number of compute units (CUs) for index nodes.
         self.index_node_cu_num = index_node_cu_num
         # The number of replicas for index nodes.
         self.index_node_replica = index_node_replica
-        # The number of CUs for MixCoordinator nodes.
+        # The number of compute units (CUs) for MixCoordinator nodes.
         self.mix_coodinator_node_cu_num = mix_coodinator_node_cu_num
         # The number of replicas for MixCoordinator nodes.
         self.mix_coodinator_node_replica = mix_coodinator_node_replica
-        # The number of CUs for proxy nodes.
+        # The number of compute units (CUs) for proxy nodes.
         self.proxy_node_cu_num = proxy_node_cu_num
         # The number of replicas for proxy nodes.
         self.proxy_node_replica = proxy_node_replica
-        # The number of CUs for query nodes.
+        # The number of compute units (CUs) for query nodes.
         self.query_node_cu_num = query_node_cu_num
         # The number of replicas for query nodes.
         self.query_node_replica = query_node_replica
@@ -638,9 +645,13 @@ class GetInstanceDetailResponseBodyDataHighAvailability(DaraModel):
         primary_zone_id: str = None,
         secondary_zone_id: str = None,
     ):
+        # The current active zone.
         self.current_active_az = current_active_az
+        # The high availability pattern.
         self.mode = mode
+        # The ID of the primary zone in the high availability deployment.
         self.primary_zone_id = primary_zone_id
+        # The ID of the secondary zone in the high availability deployment.
         self.secondary_zone_id = secondary_zone_id
 
     def validate(self):
@@ -699,9 +710,9 @@ class GetInstanceDetailResponseBodyDataClusterInfo(DaraModel):
         total_cu_num: int = None,
         total_disk_size: int = None,
     ):
-        # The Attu component port.
+        # The port of the Attu component.
         self.attu_port = attu_port
-        # The HTTPS download URL of the CA certificate.
+        # The HTTPS download URL for the CA certificate.
         self.ca_cert_url = ca_cert_url
         # The certificate trust type.
         self.certificate_trust = certificate_trust
@@ -711,11 +722,11 @@ class GetInstanceDetailResponseBodyDataClusterInfo(DaraModel):
         self.intranet_url = intranet_url
         # The resource details.
         self.milvus_resource_info_list = milvus_resource_info_list
-        # The OSS storage data size.
+        # The size of data stored in OSS.
         self.oss_storage_size = oss_storage_size
-        # The OSS storage metric timestamp.
+        # The time when the OSS storage metric is collected.
         self.oss_storage_timestamp = oss_storage_timestamp
-        # The proxy port.
+        # The port of the proxy.
         self.proxy_port = proxy_port
         # The TLS public domain name.
         self.secure_internet_url = secure_internet_url
@@ -861,23 +872,26 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(DaraMod
         # The number of compute units (CUs).
         self.cu_num = cu_num
         # The CU specification. Valid values:
-        # * 4: 1 core corresponds to 4 GB.
-        # * 8: 1 core corresponds to 8 GB.
+        # - 4: 1 core corresponds to 4 GB.
+        # - 8: 1 core corresponds to 8 GB.
         self.cu_ratio = cu_ratio
         # The disk size.
         self.disk_size = disk_size
         # The disk type.
         self.disk_type = disk_type
+        # The billing method of the component.
         self.pay_type = pay_type
         # The number of replicas.
         self.replica = replica
+        # The ID of the zone where the component is deployed.
         self.zone_id = zone_id
         # Indicates whether the data cloud disk is enabled.
         self.data_disk_enabled = data_disk_enabled
-        # The data cloud disk capacity, in GiB.
+        # The capacity of the data cloud disk. Unit: GiB.
         self.data_disk_size = data_disk_size
-        # The StorageClass of the data cloud disk.
+        # The storage class of the data cloud disk.
         self.data_disk_storage_class = data_disk_storage_class
+        # The list of pods for the component.
         self.pods_list = pods_list
 
     def validate(self):
@@ -980,7 +994,9 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoListPodsList
         pod_id: str = None,
         pod_name: str = None,
     ):
+        # The pod ID.
         self.pod_id = pod_id
+        # The name of the pod.
         self.pod_name = pod_name
 
     def validate(self):

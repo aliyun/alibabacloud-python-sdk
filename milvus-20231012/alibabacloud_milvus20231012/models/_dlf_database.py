@@ -11,11 +11,11 @@ class DlfDatabase(DaraModel):
         description: str = None,
         table_count: int = None,
     ):
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
-        # The description of the database.
+        # The database description.
         self.description = description
-        # The number of tables in the database. Read-only.
+        # The number of tables.
         self.table_count = table_count
 
     def validate(self):

@@ -14,11 +14,11 @@ class DBVersionDetail(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # The specifications supported by the version.
+        # The list of specifications supported by the database version.
         self.specs = specs
-        # The status of the version.
+        # The status of the database version.
         self.status = status
-        # The version number.
+        # The database version.
         self.version = version
 
     def validate(self):
@@ -70,15 +70,15 @@ class DBVersionDetailSpecs(DaraModel):
         is_standalone_pro: bool = None,
         zone_mode: str = None,
     ):
-        # The component specifications.
+        # The list of component specification configurations.
         self.component_specs = component_specs
-        # Indicates whether the high availability (HA) edition is supported.
+        # Specifies whether high-availability deployment is supported.
         self.is_ha = is_ha
-        # Indicates whether the Standalone edition is supported.
+        # Specifies whether standalone deployment is supported.
         self.is_standalone = is_standalone
-        # Indicates whether the Standalone Pro edition is supported.
+        # Specifies whether Standalone Pro deployment is supported.
         self.is_standalone_pro = is_standalone_pro
-        # The zone mode of the specification.
+        # The zone deployment mode supported by the specification.
         self.zone_mode = zone_mode
 
     def validate(self):
@@ -148,15 +148,15 @@ class DBVersionDetailSpecsComponentSpecs(DaraModel):
     ):
         # The default number of replicas for the component.
         self.default_replicas = default_replicas
-        # The maximum number of replicas for the component.
+        # The maximum number of replicas allowed for the component.
         self.max_replicas = max_replicas
-        # The minimum number of replicas for the component.
+        # The minimum number of replicas allowed for the component.
         self.min_replicas = min_replicas
         # The name of the component.
         self.name = name
-        # The available specifications for the component.
+        # The list of specifications supported by the component.
         self.specs = specs
-        # The step size for scaling the number of replicas.
+        # The step size for adjusting the number of replicas for the component.
         self.step = step
         # The type of the component.
         self.type = type

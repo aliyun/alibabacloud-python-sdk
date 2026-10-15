@@ -15,9 +15,9 @@ class UpdatePublicNetworkStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details about the access denied error.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The returned data.
+        # The response data.
         self.data = data
         # The error code.
         self.err_code = err_code
@@ -27,7 +27,7 @@ class UpdatePublicNetworkStatusResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

@@ -11,11 +11,11 @@ class RamBindingEntry(DaraModel):
         bound_user_name: str = None,
         milvus_username: str = None,
     ):
-        # The unique identifier (UID) of the bound RAM user.
+        # The bound Alibaba Cloud UID.
         self.bound_uid = bound_uid
-        # The bound RAM username.
+        # The name of the bound RAM user.
         self.bound_user_name = bound_user_name
-        # The Milvus username.
+        # The Milvus database username.
         self.milvus_username = milvus_username
 
     def validate(self):

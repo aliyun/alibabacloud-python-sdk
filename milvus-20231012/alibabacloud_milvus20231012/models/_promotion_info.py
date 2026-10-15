@@ -15,17 +15,17 @@ class PromotionInfo(DaraModel):
         promotion_option_no: str = None,
         selected: bool = None,
     ):
-        # The fee that can be covered by the promotion.
+        # The available discount amount.
         self.can_prom_fee = can_prom_fee
-        # Indicates whether the promotion is selected.
+        # Specifies whether the promotion is selected.
         self.is_selected = is_selected
-        # The description of the promotion.
+        # The promotion description.
         self.promotion_desc = promotion_desc
-        # The name of the promotion.
+        # The promotion name.
         self.promotion_name = promotion_name
-        # The code of the promotion option.
+        # The promotion option code.
         self.promotion_option_code = promotion_option_code
-        # The number of the promotion option.
+        # The promotion option number.
         self.promotion_option_no = promotion_option_no
         # Indicates whether the promotion is selected.
         self.selected = selected
