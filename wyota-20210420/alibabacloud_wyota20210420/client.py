@@ -369,6 +369,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.bind_password_free_login_user_with_options_async(request, runtime)
 
+    def create_user_invitation_code_with_options(
+        self,
+        request: main_models.CreateUserInvitationCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserInvitationCodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.terminal_group_id):
+            body['TerminalGroupId'] = request.terminal_group_id
+        if not DaraCore.is_null(request.validity_minutes):
+            body['ValidityMinutes'] = request.validity_minutes
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUserInvitationCode',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserInvitationCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_user_invitation_code_with_options_async(
+        self,
+        request: main_models.CreateUserInvitationCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserInvitationCodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.terminal_group_id):
+            body['TerminalGroupId'] = request.terminal_group_id
+        if not DaraCore.is_null(request.validity_minutes):
+            body['ValidityMinutes'] = request.validity_minutes
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUserInvitationCode',
+            version = '2021-04-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserInvitationCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_user_invitation_code(
+        self,
+        request: main_models.CreateUserInvitationCodeRequest,
+    ) -> main_models.CreateUserInvitationCodeResponse:
+        runtime = RuntimeOptions()
+        return self.create_user_invitation_code_with_options(request, runtime)
+
+    async def create_user_invitation_code_async(
+        self,
+        request: main_models.CreateUserInvitationCodeRequest,
+    ) -> main_models.CreateUserInvitationCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.create_user_invitation_code_with_options_async(request, runtime)
+
     def delete_clients_with_options(
         self,
         request: main_models.DeleteClientsRequest,

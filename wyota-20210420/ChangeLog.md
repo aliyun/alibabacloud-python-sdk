@@ -1,3 +1,7 @@
+2026-10-15 Version: 3.2.0
+- Support API CreateUserInvitationCode.
+
+
 2026-08-25 Version: 3.1.0
 - Support API GetCustomResourceStats.
 - Support API GetTerminalCount.

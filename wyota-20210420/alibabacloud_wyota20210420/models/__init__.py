@@ -14,6 +14,9 @@ from ._bind_account_less_login_user_response import BindAccountLessLoginUserResp
 from ._bind_password_free_login_user_request import BindPasswordFreeLoginUserRequest
 from ._bind_password_free_login_user_response_body import BindPasswordFreeLoginUserResponseBody
 from ._bind_password_free_login_user_response import BindPasswordFreeLoginUserResponse
+from ._create_user_invitation_code_request import CreateUserInvitationCodeRequest
+from ._create_user_invitation_code_response_body import CreateUserInvitationCodeResponseBody
+from ._create_user_invitation_code_response import CreateUserInvitationCodeResponse
 from ._delete_clients_request import DeleteClientsRequest
 from ._delete_clients_response_body import DeleteClientsResponseBody
 from ._delete_clients_response import DeleteClientsResponse
@@ -46,6 +49,7 @@ from ._unbind_password_free_login_user_response_body import UnbindPasswordFreeLo
 from ._unbind_password_free_login_user_response import UnbindPasswordFreeLoginUserResponse
 from ._add_terminals_request import AddTerminalsRequestAddTerminalParams
 from ._add_terminals_response_body import AddTerminalsResponseBodyData
+from ._create_user_invitation_code_response_body import CreateUserInvitationCodeResponseBodyData
 from ._describe_clients_response_body import DescribeClientsResponseBodyDataFunctionSupport
 from ._describe_clients_response_body import DescribeClientsResponseBodyDataHardwareInfo
 from ._describe_clients_response_body import DescribeClientsResponseBodyData
@@ -69,6 +73,9 @@ __all__ = [
     BindPasswordFreeLoginUserRequest,
     BindPasswordFreeLoginUserResponseBody,
     BindPasswordFreeLoginUserResponse,
+    CreateUserInvitationCodeRequest,
+    CreateUserInvitationCodeResponseBody,
+    CreateUserInvitationCodeResponse,
     DeleteClientsRequest,
     DeleteClientsResponseBody,
     DeleteClientsResponse,
@@ -101,6 +108,7 @@ __all__ = [
     UnbindPasswordFreeLoginUserResponse,
     AddTerminalsRequestAddTerminalParams,
     AddTerminalsResponseBodyData,
+    CreateUserInvitationCodeResponseBodyData,
     DescribeClientsResponseBodyDataFunctionSupport,
     DescribeClientsResponseBodyDataHardwareInfo,
     DescribeClientsResponseBodyData,
