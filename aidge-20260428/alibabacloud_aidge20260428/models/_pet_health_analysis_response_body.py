@@ -14,15 +14,10 @@ class PetHealthAnalysisResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
         self.code = code
-        # The asynchronous task submit status.
         self.data = data
-        # The response message or failure description.
         self.message = message
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -76,7 +71,6 @@ class PetHealthAnalysisResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID used for QueryAsyncTaskResult queries.
         self.task_id = task_id
 
     def validate(self):

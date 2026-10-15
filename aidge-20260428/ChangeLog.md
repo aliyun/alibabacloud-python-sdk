@@ -1,3 +1,14 @@
+2026-10-15 Version: 5.9.0
+- Support API MerchandisePlacementDetectionLite.
+- Support API MerchandisePriceTagDetection.
+- Support API MerchandiseSceneDetection.
+- Support API MilkPowderCanBottomCodeRephotographyDetection.
+- Support API MilkPowderCartonCodeRephotographyDetection.
+- Support API StorefrontSceneRecognition.
+- Update API EcomVideoRecreation: add request parameters Input.RecreateMode.
+- Update API VideoTranslation: add request parameters EnableQualityCheck.
+
+
 2026-09-24 Version: 5.8.0
 - Support API DiduiAreaDeductionPro.
 - Support API GeneralRephotographyDetection.

@@ -16,9 +16,9 @@ class ImageTranslationStandardResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. 200 indicates a successful call. For other response codes, refer to the error code information.
+        # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
         self.code = code
-        # The translation result data, including the URL of the translated image and usage information.
+        # The translation result data, including the translated image URL and usage information.
         self.data = data
         # The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call.
         self.message = message
@@ -137,15 +137,15 @@ class ImageTranslationStandardResponseBodyDataEditInfo(DaraModel):
     ):
         # The list of fonts used.
         self.font = font
-        # The rectangle of the product area.
+        # The product area rectangles.
         self.goods_rects = goods_rects
-        # The URL of the product image.
+        # The product image URL.
         self.goods_url = goods_url
         # The list of target languages.
         self.languages = languages
-        # The URL of the original image.
+        # The original image URL.
         self.pict_url = pict_url
-        # The URL of the repaired image.
+        # The repaired image URL.
         self.repaired_url = repaired_url
         # The list of repaired image URLs.
         self.repaired_urls = repaired_urls
@@ -260,7 +260,7 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreas(DaraModel):
         self.fontsize = fontsize
         # The horizontal layout.
         self.horizontal_layout = horizontal_layout
-        # The number of lines.
+        # The line count.
         self.line_count = line_count
         # The list of texts.
         self.texts = texts
@@ -355,7 +355,7 @@ class ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts(DaraModel):
         self.image_rect = image_rect
         # The language.
         self.language = language
-        # The number of lines.
+        # The line count.
         self.line_count = line_count
         # The text area.
         self.text_rect = text_rect

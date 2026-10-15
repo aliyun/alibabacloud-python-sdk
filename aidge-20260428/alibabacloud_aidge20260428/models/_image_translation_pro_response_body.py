@@ -20,11 +20,13 @@ class ImageTranslationProResponseBody(DaraModel):
         self.code = code
         # The translation result data. ResultList contains the URLs of the translation results. GenFiles contains EditInfo, which includes the recognized text information.
         self.data = data
-        # The error message. "Success" is returned for successful calls. A specific error message is returned for failed calls, such as "The content contains sensitive data. Try other input."
+        # The error message. "Success" is returned if the call is successful. A specific error message is returned if the call fails, such as "The content contains sensitive data. Try other input."
         self.message = message
         # The request ID, which uniquely identifies the request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

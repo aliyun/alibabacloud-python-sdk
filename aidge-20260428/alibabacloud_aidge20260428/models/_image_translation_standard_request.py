@@ -17,26 +17,30 @@ class ImageTranslationStandardRequest(DaraModel):
     ):
         # The intervention glossary ID. This parameter is optional. You must create the glossary separately in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
         self.glossary = glossary
-        # - Image URL: The URL must be publicly accessible.
+        # - Image URL: Must be publicly accessible.
         # - Format: png, jpeg, jpg, bmp, or webp.
-        # - Pixels: The width and height must not exceed 4000 pixels each.
-        # - File size: The original file must be 10 MB or smaller.
+        # - Pixels: Both width and height must not exceed 4000.
+        # - File size: The original file must be ≤ 10 MB.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Specifies whether to translate text on the product area of the image. This parameter is optional. Default value: false. This helps protect information by preventing translation of embedded content such as product names.
+        # Specifies whether to translate text on the image subject. This parameter is optional. Default value: false. This helps protect information and avoids translating embedded information such as product names.
         self.including_product_area = including_product_area
-        # The source language code. This parameter is required. For supported language directions, see [Language direction mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+        # The source language code. This parameter is required.   
+        # <props="china">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).      
+        # <props="intl">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
         # 
         # This parameter is required.
         self.source_language = source_language
-        # The target language code. This parameter is required. For supported language directions, see [Language direction mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+        # The target language code. This parameter is required.   
+        # <props="china">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html).      
+        # <props="intl">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
         # 
         # This parameter is required.
         self.target_language = target_language
         # Specifies whether to translate brand names on the image. This parameter is optional. Default value: false. This helps protect brand name information from being translated.
         self.translating_brand_in_the_product = translating_brand_in_the_product
-        # Specifies whether to return layer information such as text position, font, and color. If you set this parameter to true, layer information is returned for secondary editing through an image editor. Default value: false.
+        # Specifies whether to return layer information such as text position, font, and color. If this parameter is set to true, layer information is returned, which can be used to connect to an image editor for secondary editing. Default value: false.
         self.use_image_editor = use_image_editor
 
     def validate(self):

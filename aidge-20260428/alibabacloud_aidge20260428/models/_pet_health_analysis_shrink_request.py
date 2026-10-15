@@ -11,13 +11,9 @@ class PetHealthAnalysisShrinkRequest(DaraModel):
         system_prompt: str = None,
         user_prompt: str = None,
     ):
-        # The list of HTTPS URLs of images to analyze. At least one accessible image must be provided.
-        # 
         # This parameter is required.
         self.image_url_shrink = image_url_shrink
-        # The system prompt used to specify the response role or requirements. The value must comply with JSON string escaping rules.
         self.system_prompt = system_prompt
-        # The custom analysis requirement. If not specified or set to an empty string, excrement analysis is performed by default. The value must comply with JSON string escaping rules.
         self.user_prompt = user_prompt
 
     def validate(self):

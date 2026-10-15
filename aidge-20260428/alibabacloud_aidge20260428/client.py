@@ -1942,6 +1942,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.merchandise_placement_detection_with_options_async(request, runtime)
 
+    def merchandise_placement_detection_lite_with_options(
+        self,
+        request: main_models.MerchandisePlacementDetectionLiteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandisePlacementDetectionLiteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandisePlacementDetectionLite',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandisePlacementDetectionLiteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def merchandise_placement_detection_lite_with_options_async(
+        self,
+        request: main_models.MerchandisePlacementDetectionLiteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandisePlacementDetectionLiteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandisePlacementDetectionLite',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandisePlacementDetectionLiteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def merchandise_placement_detection_lite(
+        self,
+        request: main_models.MerchandisePlacementDetectionLiteRequest,
+    ) -> main_models.MerchandisePlacementDetectionLiteResponse:
+        runtime = RuntimeOptions()
+        return self.merchandise_placement_detection_lite_with_options(request, runtime)
+
+    async def merchandise_placement_detection_lite_async(
+        self,
+        request: main_models.MerchandisePlacementDetectionLiteRequest,
+    ) -> main_models.MerchandisePlacementDetectionLiteResponse:
+        runtime = RuntimeOptions()
+        return await self.merchandise_placement_detection_lite_with_options_async(request, runtime)
+
     def merchandise_placement_detection_pro_with_options(
         self,
         request: main_models.MerchandisePlacementDetectionProRequest,
@@ -2019,6 +2089,286 @@ class Client(OpenApiClient):
     ) -> main_models.MerchandisePlacementDetectionProResponse:
         runtime = RuntimeOptions()
         return await self.merchandise_placement_detection_pro_with_options_async(request, runtime)
+
+    def merchandise_price_tag_detection_with_options(
+        self,
+        request: main_models.MerchandisePriceTagDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandisePriceTagDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandisePriceTagDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandisePriceTagDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def merchandise_price_tag_detection_with_options_async(
+        self,
+        request: main_models.MerchandisePriceTagDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandisePriceTagDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandisePriceTagDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandisePriceTagDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def merchandise_price_tag_detection(
+        self,
+        request: main_models.MerchandisePriceTagDetectionRequest,
+    ) -> main_models.MerchandisePriceTagDetectionResponse:
+        runtime = RuntimeOptions()
+        return self.merchandise_price_tag_detection_with_options(request, runtime)
+
+    async def merchandise_price_tag_detection_async(
+        self,
+        request: main_models.MerchandisePriceTagDetectionRequest,
+    ) -> main_models.MerchandisePriceTagDetectionResponse:
+        runtime = RuntimeOptions()
+        return await self.merchandise_price_tag_detection_with_options_async(request, runtime)
+
+    def merchandise_scene_detection_with_options(
+        self,
+        request: main_models.MerchandiseSceneDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandiseSceneDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandiseSceneDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandiseSceneDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def merchandise_scene_detection_with_options_async(
+        self,
+        request: main_models.MerchandiseSceneDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MerchandiseSceneDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MerchandiseSceneDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MerchandiseSceneDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def merchandise_scene_detection(
+        self,
+        request: main_models.MerchandiseSceneDetectionRequest,
+    ) -> main_models.MerchandiseSceneDetectionResponse:
+        runtime = RuntimeOptions()
+        return self.merchandise_scene_detection_with_options(request, runtime)
+
+    async def merchandise_scene_detection_async(
+        self,
+        request: main_models.MerchandiseSceneDetectionRequest,
+    ) -> main_models.MerchandiseSceneDetectionResponse:
+        runtime = RuntimeOptions()
+        return await self.merchandise_scene_detection_with_options_async(request, runtime)
+
+    def milk_powder_can_bottom_code_rephotography_detection_with_options(
+        self,
+        request: main_models.MilkPowderCanBottomCodeRephotographyDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MilkPowderCanBottomCodeRephotographyDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MilkPowderCanBottomCodeRephotographyDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MilkPowderCanBottomCodeRephotographyDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def milk_powder_can_bottom_code_rephotography_detection_with_options_async(
+        self,
+        request: main_models.MilkPowderCanBottomCodeRephotographyDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MilkPowderCanBottomCodeRephotographyDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MilkPowderCanBottomCodeRephotographyDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MilkPowderCanBottomCodeRephotographyDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def milk_powder_can_bottom_code_rephotography_detection(
+        self,
+        request: main_models.MilkPowderCanBottomCodeRephotographyDetectionRequest,
+    ) -> main_models.MilkPowderCanBottomCodeRephotographyDetectionResponse:
+        runtime = RuntimeOptions()
+        return self.milk_powder_can_bottom_code_rephotography_detection_with_options(request, runtime)
+
+    async def milk_powder_can_bottom_code_rephotography_detection_async(
+        self,
+        request: main_models.MilkPowderCanBottomCodeRephotographyDetectionRequest,
+    ) -> main_models.MilkPowderCanBottomCodeRephotographyDetectionResponse:
+        runtime = RuntimeOptions()
+        return await self.milk_powder_can_bottom_code_rephotography_detection_with_options_async(request, runtime)
+
+    def milk_powder_carton_code_rephotography_detection_with_options(
+        self,
+        request: main_models.MilkPowderCartonCodeRephotographyDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MilkPowderCartonCodeRephotographyDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MilkPowderCartonCodeRephotographyDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MilkPowderCartonCodeRephotographyDetectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def milk_powder_carton_code_rephotography_detection_with_options_async(
+        self,
+        request: main_models.MilkPowderCartonCodeRephotographyDetectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MilkPowderCartonCodeRephotographyDetectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MilkPowderCartonCodeRephotographyDetection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MilkPowderCartonCodeRephotographyDetectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def milk_powder_carton_code_rephotography_detection(
+        self,
+        request: main_models.MilkPowderCartonCodeRephotographyDetectionRequest,
+    ) -> main_models.MilkPowderCartonCodeRephotographyDetectionResponse:
+        runtime = RuntimeOptions()
+        return self.milk_powder_carton_code_rephotography_detection_with_options(request, runtime)
+
+    async def milk_powder_carton_code_rephotography_detection_async(
+        self,
+        request: main_models.MilkPowderCartonCodeRephotographyDetectionRequest,
+    ) -> main_models.MilkPowderCartonCodeRephotographyDetectionResponse:
+        runtime = RuntimeOptions()
+        return await self.milk_powder_carton_code_rephotography_detection_with_options_async(request, runtime)
 
     def package_weight_size_check_with_options(
         self,
@@ -2598,6 +2948,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.size_chart_extract_with_options_async(request, runtime)
 
+    def storefront_scene_recognition_with_options(
+        self,
+        request: main_models.StorefrontSceneRecognitionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StorefrontSceneRecognitionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StorefrontSceneRecognition',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StorefrontSceneRecognitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def storefront_scene_recognition_with_options_async(
+        self,
+        request: main_models.StorefrontSceneRecognitionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StorefrontSceneRecognitionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StorefrontSceneRecognition',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StorefrontSceneRecognitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def storefront_scene_recognition(
+        self,
+        request: main_models.StorefrontSceneRecognitionRequest,
+    ) -> main_models.StorefrontSceneRecognitionResponse:
+        runtime = RuntimeOptions()
+        return self.storefront_scene_recognition_with_options(request, runtime)
+
+    async def storefront_scene_recognition_async(
+        self,
+        request: main_models.StorefrontSceneRecognitionRequest,
+    ) -> main_models.StorefrontSceneRecognitionResponse:
+        runtime = RuntimeOptions()
+        return await self.storefront_scene_recognition_with_options_async(request, runtime)
+
     def submit_product_match_with_options(
         self,
         request: main_models.SubmitProductMatchRequest,
@@ -2975,6 +3395,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.capabilities_shrink):
             body['Capabilities'] = request.capabilities_shrink
+        if not DaraCore.is_null(request.enable_quality_check):
+            body['EnableQualityCheck'] = request.enable_quality_check
         if not DaraCore.is_null(request.source_language):
             body['SourceLanguage'] = request.source_language
         if not DaraCore.is_null(request.target_language):
@@ -3013,6 +3435,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.capabilities_shrink):
             body['Capabilities'] = request.capabilities_shrink
+        if not DaraCore.is_null(request.enable_quality_check):
+            body['EnableQualityCheck'] = request.enable_quality_check
         if not DaraCore.is_null(request.source_language):
             body['SourceLanguage'] = request.source_language
         if not DaraCore.is_null(request.target_language):
