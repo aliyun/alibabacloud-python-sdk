@@ -152,6 +152,9 @@ from ._list_acceleration_of_workspace_response import ListAccelerationOfWorkspac
 from ._list_api_datasource_request import ListApiDatasourceRequest
 from ._list_api_datasource_response_body import ListApiDatasourceResponseBody
 from ._list_api_datasource_response import ListApiDatasourceResponse
+from ._list_auth_config_by_resource_request import ListAuthConfigByResourceRequest
+from ._list_auth_config_by_resource_response_body import ListAuthConfigByResourceResponseBody
+from ._list_auth_config_by_resource_response import ListAuthConfigByResourceResponse
 from ._list_by_user_group_id_request import ListByUserGroupIdRequest
 from ._list_by_user_group_id_response_body import ListByUserGroupIdResponseBody
 from ._list_by_user_group_id_response import ListByUserGroupIdResponse
@@ -377,6 +380,9 @@ from ._smartq_query_ability_response import SmartqQueryAbilityResponse
 from ._transfer_usergroup_request import TransferUsergroupRequest
 from ._transfer_usergroup_response_body import TransferUsergroupResponseBody
 from ._transfer_usergroup_response import TransferUsergroupResponse
+from ._update_authorization_attributes_request import UpdateAuthorizationAttributesRequest
+from ._update_authorization_attributes_response_body import UpdateAuthorizationAttributesResponseBody
+from ._update_authorization_attributes_response import UpdateAuthorizationAttributesResponse
 from ._update_cube_by_sql_request import UpdateCubeBySqlRequest
 from ._update_cube_by_sql_response_body import UpdateCubeBySqlResponseBody
 from ._update_cube_by_sql_response import UpdateCubeBySqlResponse
@@ -431,6 +437,7 @@ from ._list_acceleration_of_workspace_response_body import ListAccelerationOfWor
 from ._list_acceleration_of_workspace_response_body import ListAccelerationOfWorkspaceResponseBodyResult
 from ._list_api_datasource_response_body import ListApiDatasourceResponseBodyResultData
 from ._list_api_datasource_response_body import ListApiDatasourceResponseBodyResult
+from ._list_auth_config_by_resource_response_body import ListAuthConfigByResourceResponseBodyResult
 from ._list_by_user_group_id_response_body import ListByUserGroupIdResponseBodyResultUserGroupModels
 from ._list_by_user_group_id_response_body import ListByUserGroupIdResponseBodyResult
 from ._list_collections_response_body import ListCollectionsResponseBodyResult
@@ -696,6 +703,9 @@ __all__ = [
     ListApiDatasourceRequest,
     ListApiDatasourceResponseBody,
     ListApiDatasourceResponse,
+    ListAuthConfigByResourceRequest,
+    ListAuthConfigByResourceResponseBody,
+    ListAuthConfigByResourceResponse,
     ListByUserGroupIdRequest,
     ListByUserGroupIdResponseBody,
     ListByUserGroupIdResponse,
@@ -921,6 +931,9 @@ __all__ = [
     TransferUsergroupRequest,
     TransferUsergroupResponseBody,
     TransferUsergroupResponse,
+    UpdateAuthorizationAttributesRequest,
+    UpdateAuthorizationAttributesResponseBody,
+    UpdateAuthorizationAttributesResponse,
     UpdateCubeBySqlRequest,
     UpdateCubeBySqlResponseBody,
     UpdateCubeBySqlResponse,
@@ -975,6 +988,7 @@ __all__ = [
     ListAccelerationOfWorkspaceResponseBodyResult,
     ListApiDatasourceResponseBodyResultData,
     ListApiDatasourceResponseBodyResult,
+    ListAuthConfigByResourceResponseBodyResult,
     ListByUserGroupIdResponseBodyResultUserGroupModels,
     ListByUserGroupIdResponseBodyResult,
     ListCollectionsResponseBodyResult,

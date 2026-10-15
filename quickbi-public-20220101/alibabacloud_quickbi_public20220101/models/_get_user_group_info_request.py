@@ -9,7 +9,7 @@ class GetUserGroupInfoRequest(DaraModel):
         self,
         keyword: str = None,
     ):
-        # Keyword of the user group name.
+        # The keyword of the user group name.
         # 
         # This parameter is required.
         self.keyword = keyword

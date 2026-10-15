@@ -16,7 +16,7 @@ class IpWhiteListConfigResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The IP address whitelist.
+        # The IP whitelist.
         self.result = result
         # Indicates whether the request was successful.
         self.success = success
@@ -60,7 +60,7 @@ class IpWhiteListConfigResponseBodyResult(DaraModel):
         self,
         ip_white_list: List[str] = None,
     ):
-        # The IP address whitelist array.
+        # The IP whitelist array.
         self.ip_white_list = ip_white_list
 
     def validate(self):

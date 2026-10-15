@@ -14,15 +14,15 @@ class ListApiDatasourceRequest(DaraModel):
     ):
         # The keyword of the API data source name.
         self.key_word = key_word
-        # Current page number for API data source list:
+        # The page number of the API data source list.
         # 
-        # *   Pages start from page 1.
-        # *   Default value: 1.
+        # - Minimum value: 1.
+        # - Default value: 1.
         self.page_num = page_num
         # The number of rows per page in a paged query.
         # 
-        # *   Default value: 10.
-        # *   Valid values: 1 to 100.
+        # - Default value: 10.
+        # - Maximum value: 100.
         self.page_size = page_size
         # The workspace ID.
         # 

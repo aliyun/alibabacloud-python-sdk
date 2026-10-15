@@ -11,17 +11,17 @@ class AddShareReportResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The execution result of the interface is returned. Valid values:
+        # The execution result of the operation. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request fails.
+        # - true: Successful.
+        # - false: Failed.
         self.result = result
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

@@ -12,16 +12,19 @@ class SmartqQueryAbilityRequest(DaraModel):
         user_id: str = None,
         user_question: str = None,
     ):
-        # The ID of the dataset. To obtain the ID, navigate to \\*\\*Workbench\\*\\* > \\*\\*Dataset\\*\\* in the Quick BI console. Open the dataset and find the \\`cubeId\\` in the URL.
+        # The dataset ID.
         # 
-        # In multi-table scenarios, this parameter must be empty.
+        # Navigate to Workbench > Datasets, open the desired dataset, and find the cubeId in the URL.
+        # 
+        # In multi-table scenarios, leave this parameter empty.
         self.cube_id = cube_id
-        # A list of dataset IDs. The model selects one or more tables from the list to generate an answer based on the question. This parameter is required for multi-table scenarios and is not used for single-table scenarios.
+        # The list of multiple dataset IDs.
+        # The model selects one or more tables from the list based on the question to generate an answer. This parameter is required in multi-table scenarios and is not needed in single-table scenarios.
         self.multiple_cube_ids = multiple_cube_ids
-        # The ID of the user.
-        # >Notice: If you do not specify this parameter, data is queried as the organization owner by default.
+        # The user ID.
+        # >Notice: If this parameter is not specified, data is queried as the organization owner by default.
         self.user_id = user_id
-        # The question in text format.
+        # The question text.
         # 
         # This parameter is required.
         self.user_question = user_question

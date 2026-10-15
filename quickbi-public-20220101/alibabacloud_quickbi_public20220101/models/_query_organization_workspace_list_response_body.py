@@ -16,12 +16,11 @@ class QueryOrganizationWorkspaceListResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The paginated query results. The Data parameter contains the details of each workspace.
+        # The paginated result of the workspace list. The detailed information of workspaces is stored in the Data response parameter.
         self.result = result
-        # Whether the request succeeded. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: The request succeeded.
-        # 
+        # - true: The request was successful.
         # - false: The request failed.
         self.success = success
 
@@ -68,13 +67,13 @@ class QueryOrganizationWorkspaceListResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # An array of workspace objects.
+        # The list of workspaces.
         self.data = data
         # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of rows per page specified in the request.
         self.page_size = page_size
-        # The total number of workspaces.
+        # The total number of rows.
         self.total_num = total_num
         # The total number of pages.
         self.total_pages = total_pages
@@ -151,40 +150,39 @@ class QueryOrganizationWorkspaceListResponseBodyResultData(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # Whether works in the workspace can be published. Valid values:
+        # Indicates whether works can be made public. Valid values:
         # 
-        # - true: Publishing is allowed.
-        # 
-        # - false: Publishing is not allowed.
+        # - true: Public.
+        # - false: Not public.
         self.allow_publish_operation = allow_publish_operation
-        # Whether works in the workspace can be shared. Valid values:
+        # Indicates whether works can be shared with authorization. Valid values:
         # 
-        # - true: Sharing is allowed.
-        # 
-        # - false: Sharing is not allowed.
+        # - true: Authorized.
+        # - false: Not authorized.
         self.allow_share_operation = allow_share_operation
         # The time when the workspace was created.
         self.create_time = create_time
-        # The creator\\"s Quick BI user ID.
+        # The Quick BI user ID of the creator.
         self.create_user = create_user
-        # The creator\\"s Alibaba Cloud account name.
+        # The Alibaba Cloud account name of the creator.
         self.create_user_account_name = create_user_account_name
         # The time when the workspace was last modified.
         self.modified_time = modified_time
-        # The modifier\\"s Quick BI user ID.
+        # The Quick BI user ID of the modifier.
         self.modify_user = modify_user
-        # The modifier\\"s Alibaba Cloud account name.
+        # The Alibaba Cloud account name of the modifier.
         self.modify_user_account_name = modify_user_account_name
-        # The ID of the workspace\\"s organization.
+        # The ID of the organization to which the workspace belongs.
         self.organization_id = organization_id
-        # The workspace owner\\"s Quick BI user ID.
+        # The Quick BI user ID of the workspace owner.
         self.owner = owner
-        # The workspace owner\\"s Alibaba Cloud account name.
+        # The Alibaba Cloud account name of the workspace owner.
         self.owner_account_name = owner_account_name
-        # The workspace owner\\"s Quick BI account name.
+        # The Quick BI account name of the workspace owner.
         self.real_owner_account_name = real_owner_account_name
-        # The workspace description.
+        # The description of the workspace.
         self.workspace_description = workspace_description
+        # The workspace export configuration.
         self.workspace_export_config = workspace_export_config
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -316,14 +314,26 @@ class QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig(
         image_export: bool = None,
         pdf_export: bool = None,
     ):
+        # Specifies how images are handled when exporting Excel files with formatting. This field takes effect only when configured at the organization level.
+        # Valid values:
+        #  * false: Image fields are not converted to images.
+        #  * true: Image fields can be converted to images. The option appears on the report export page, and users must manually select it to convert images.
         self.allow_excel_image_file = allow_excel_image_file
+        # Specifies whether to allow exporting data as an Excel file.
         self.data_export = data_export
+        # The default export type (with formatting: true. Without formatting: false).
         self.default_export_type = default_export_type
+        # The master switch for export. If set to false, all export settings below do not take effect.
         self.export_main_switch = export_main_switch
+        # Specifies whether to allow exporting to a local device.
         self.export_to_local = export_to_local
+        # Specifies whether public links of works support export.
         self.export_to_public_work = export_to_public_work
+        # Specifies whether to allow exporting to a server.
         self.export_to_server = export_to_server
+        # Specifies whether to allow exporting as an image.
         self.image_export = image_export
+        # Specifies whether to allow exporting as a PDF.
         self.pdf_export = pdf_export
 
     def validate(self):

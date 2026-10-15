@@ -21,18 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'ap-northeast-1': 'quickbi-public.ap-northeast-1.aliyuncs.com',
-            'ap-southeast-1': 'quickbi-public.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'quickbi-public.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-5': 'quickbi-public.ap-southeast-5.aliyuncs.com',
-            'cn-hangzhou': 'quickbi-public.cn-hangzhou.aliyuncs.com',
-            'cn-hongkong': 'quickbi-public.cn-hongkong.aliyuncs.com',
-            'us-east-1': 'quickbi-public.us-east-1.aliyuncs.com',
-            'eu-central-1': 'quickbi-public.eu-central-1.aliyuncs.com',
-            'me-central-1': 'quickbi-public.me-central-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'quickbi-public.cn-shanghai-finance-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('quickbi-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -3991,6 +3979,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListApiDatasourceResponse:
         runtime = RuntimeOptions()
         return await self.list_api_datasource_with_options_async(request, runtime)
+
+    def list_auth_config_by_resource_with_options(
+        self,
+        request: main_models.ListAuthConfigByResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthConfigByResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.has_auth):
+            query['HasAuth'] = request.has_auth
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.share_to_type):
+            query['ShareToType'] = request.share_to_type
+        if not DaraCore.is_null(request.works_type):
+            query['WorksType'] = request.works_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthConfigByResource',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthConfigByResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_auth_config_by_resource_with_options_async(
+        self,
+        request: main_models.ListAuthConfigByResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthConfigByResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.has_auth):
+            query['HasAuth'] = request.has_auth
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.share_to_type):
+            query['ShareToType'] = request.share_to_type
+        if not DaraCore.is_null(request.works_type):
+            query['WorksType'] = request.works_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthConfigByResource',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthConfigByResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_auth_config_by_resource(
+        self,
+        request: main_models.ListAuthConfigByResourceRequest,
+    ) -> main_models.ListAuthConfigByResourceResponse:
+        runtime = RuntimeOptions()
+        return self.list_auth_config_by_resource_with_options(request, runtime)
+
+    async def list_auth_config_by_resource_async(
+        self,
+        request: main_models.ListAuthConfigByResourceRequest,
+    ) -> main_models.ListAuthConfigByResourceResponse:
+        runtime = RuntimeOptions()
+        return await self.list_auth_config_by_resource_with_options_async(request, runtime)
 
     def list_by_user_group_id_with_options(
         self,
@@ -9681,6 +9755,88 @@ class Client(OpenApiClient):
     ) -> main_models.TransferUsergroupResponse:
         runtime = RuntimeOptions()
         return await self.transfer_usergroup_with_options_async(request, runtime)
+
+    def update_authorization_attributes_with_options(
+        self,
+        request: main_models.UpdateAuthorizationAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationAttributesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.edit_permission_type):
+            query['EditPermissionType'] = request.edit_permission_type
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.use_permission_type):
+            query['UsePermissionType'] = request.use_permission_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationAttributes',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authorization_attributes_with_options_async(
+        self,
+        request: main_models.UpdateAuthorizationAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationAttributesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.edit_permission_type):
+            query['EditPermissionType'] = request.edit_permission_type
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.use_permission_type):
+            query['UsePermissionType'] = request.use_permission_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationAttributes',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authorization_attributes(
+        self,
+        request: main_models.UpdateAuthorizationAttributesRequest,
+    ) -> main_models.UpdateAuthorizationAttributesResponse:
+        runtime = RuntimeOptions()
+        return self.update_authorization_attributes_with_options(request, runtime)
+
+    async def update_authorization_attributes_async(
+        self,
+        request: main_models.UpdateAuthorizationAttributesRequest,
+    ) -> main_models.UpdateAuthorizationAttributesResponse:
+        runtime = RuntimeOptions()
+        return await self.update_authorization_attributes_with_options_async(request, runtime)
 
     def update_cube_by_sql_with_options(
         self,

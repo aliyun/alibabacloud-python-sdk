@@ -13,32 +13,32 @@ class QueryWorksByOrganizationRequest(DaraModel):
         third_part_auth_flag: int = None,
         works_type: str = None,
     ):
-        # Page number.
+        # The page number.
         # 
-        # - Default value is 1.
+        # - Default value: 1.
         self.page_num = page_num
-        # Number of items per page.
+        # The number of rows per page.
         # 
-        # - Default value is 10.
+        # - Default value: 10.
         self.page_size = page_size
-        # The status of the work to query. Possible values:
+        # The status of the works to query. Valid values:
         # 
-        # - 0: Unpublished
-        # - 1: Published
-        # - 2: Modified but not published
-        # - 3: Offline
+        # - 0: Unpublished.
+        # - 1: Published.
+        # - 2: Modified but not published.
+        # - 3: Offline.
         self.status = status
-        # Third-party embedding status. Possible values:
+        # The third-party embedding status. Valid values:
         # 
-        # - 0: Embedding not enabled
-        # - 1: Embedding enabled
+        # - 0: Embedding is not enabled.
+        # - 1: Embedding is enabled.
         self.third_part_auth_flag = third_part_auth_flag
-        # The type of work to query. Leave blank to query all types. Possible values:
+        # The type of works to query. Leave this parameter empty to query all types. Valid values:
         # 
-        # - DATAPRODUCT: Data Portal
-        # - PAGE: Dashboard
-        # - REPORT: Spreadsheet
-        # - dashboardOfflineQuery: Self-service Data Retrieval
+        # - DATAPRODUCT: data portal
+        # - PAGE: dashboard
+        # - REPORT: workbook
+        # - dashboardOfflineQuery: custom query
         self.works_type = works_type
 
     def validate(self):

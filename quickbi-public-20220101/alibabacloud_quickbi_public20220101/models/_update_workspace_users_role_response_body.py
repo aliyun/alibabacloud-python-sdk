@@ -14,14 +14,14 @@ class UpdateWorkspaceUsersRoleResponseBody(DaraModel):
         result: main_models.UpdateWorkspaceUsersRoleResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returns the result of the interface execution.
+        # The execution result of the operation.
         self.result = result
-        # Indicates whether the request was successful. Value range:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful, some members may have been updated successfully while others failed, refer to FailureDetail in the response for reasons of failure
-        # - false: The request failed, no data will be persisted
+        # - true: The request is successful. Some members may be updated successfully while others fail. For the failure reasons, refer to FailureDetail in the response.
+        # - false: The request fails and no data is persisted.
         self.success = success
 
     def validate(self):
@@ -66,13 +66,13 @@ class UpdateWorkspaceUsersRoleResponseBodyResult(DaraModel):
         success: int = None,
         total: int = None,
     ):
-        # Number of users that failed to update.
+        # The number of users whose roles failed to be updated.
         self.failure = failure
-        # Reasons for the update failures.
+        # The reasons for the update failures.
         self.failure_detail = failure_detail
-        # Number of users that were updated successfully.
+        # The number of users whose roles were successfully updated.
         self.success = success
-        # Modify the total number of users.
+        # The total number of users to be updated.
         self.total = total
 
     def validate(self):

@@ -14,14 +14,13 @@ class QueryUserInfoByUserIdResponseBody(DaraModel):
         result: main_models.QueryUserInfoByUserIdResponseBodyResult = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the organization user.
+        # The organization user information returned.
         self.result = result
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: The request is successful.
-        # 
+        # - true: The request was successful.
         # - false: The request failed.
         self.success = success
 
@@ -79,46 +78,42 @@ class QueryUserInfoByUserIdResponseBodyResult(DaraModel):
         self.account_id = account_id
         # The Alibaba Cloud account name.
         self.account_name = account_name
-        # Indicates whether the organization administrator role is assigned to the user. Valid values:
+        # Indicates whether the user is an organization administrator. Valid values:
         # 
-        # - true: The role is assigned.
+        # - true: Yes.
+        # - false: No.
         # 
-        # - false: The role is not assigned.
-        # 
-        # >Notice: 
-        # 
-        # This parameter is deprecated. Use the `RoleIdList` parameter instead.
+        # <notice>This parameter is deprecated. Use the RoleIdList parameter instead.</notice>
         self.admin_user = admin_user
-        # Indicates whether the permission administrator role is assigned to the user. Valid values:
+        # Indicates whether the user has the permission management administrator role attached. Valid values:
         # 
-        # - true: The role is assigned.
+        # - true: Yes.
+        # - false: No.
         # 
-        # - false: The role is not assigned.
-        # 
-        # >Notice: 
-        # 
-        # This parameter is deprecated. Use the `RoleIdList` parameter instead.
+        # <notice>This parameter has expired and is no longer recommended. Use the RoleIList parameter instead.</notice>
         self.auth_admin_user = auth_admin_user
-        # The list of `CopilotModules` available to the user.
+        # The intelligent quota owned by the user.
         self.copilot_modules = copilot_modules
-        # The email address of the user.
+        # The email address.
         self.email = email
+        # Indicates whether the user is disabled. Valid values:
+        # 
+        # - true: Disabled.
+        # - false: Active.
         self.is_deleted = is_deleted
-        # The nickname of the user.
+        # The nickname.
         self.nick_name = nick_name
-        # The phone number of the user.
+        # The phone number.
         self.phone = phone
-        # The list of organization role IDs that are assigned to the user.
+        # The list of organization role IDs bound to the user.
         self.role_id_list = role_id_list
-        # The user ID in Quick BI.
+        # The UserID in Quick BI.
         self.user_id = user_id
         # The user type of the organization member. Valid values:
         # 
-        # - `1`: developer
-        # 
-        # - `2`: viewer
-        # 
-        # - `3`: analyst
+        # - 1: Developer.
+        # - 2: Viewer.
+        # - 3: Analyst.
         self.user_type = user_type
 
     def validate(self):

@@ -14,14 +14,13 @@ class ListRecentViewReportsResponseBody(DaraModel):
         result: main_models.ListRecentViewReportsResponseBodyResult = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The query results are returned.
+        # The query result.
         self.result = result
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # Indicates whether the request was successful. Valid values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -68,20 +67,20 @@ class ListRecentViewReportsResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # Attention
+        # The notice indicating that pagination parameters (such as TotalNum) returned by this API will be deprecated soon.
         self.attention = attention
         # The list of queried works.
         self.data = data
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries per page.
         # 
-        # *   Default value: 10.
-        # *   Maximum of 100 articles
+        # - Default value: 10.
+        # - Maximum value: 100.
         self.page_size = page_size
-        # The total number of rows in the table.
+        # The total number of rows.
         self.total_num = total_num
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -161,15 +160,15 @@ class ListRecentViewReportsResponseBodyResultData(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # Queries whether the user has collected the work.
+        # Indicates whether the queried user has added the work to favorites.
         self.favorite = favorite
         # The timestamp when the work was created.
         self.gmt_create = gmt_create
-        # The timestamp when the work was modified.
+        # The timestamp when the work was last modified.
         self.gmt_modified = gmt_modified
-        # The query user has the editing rights of the work.
+        # Indicates whether the queried user has edit permissions on the work.
         self.has_edit_auth = has_edit_auth
-        # The query user has the permission to view the work.
+        # Indicates whether the queried user has view permissions on the work.
         self.has_view_auth = has_view_auth
         # The timestamp when the work was last accessed.
         self.latest_view_time = latest_view_time
@@ -179,22 +178,20 @@ class ListRecentViewReportsResponseBodyResultData(DaraModel):
         self.owner_name = owner_name
         # The UserID of the work owner.
         self.owner_num = owner_num
-        # The publication status of the work. Valid values:
-        # 
-        # *   0: unpublished
-        # *   1: published
-        # *   2: modified and saved but not published.
-        # *   3: unpublished
+        # The publish status of the work. Valid values:
+        # - 0: Unpublished.
+        # - 1: Published.
+        # - 2: Modified and saved but not published.
+        # - 3: Offline.
         self.publish_status = publish_status
         # The ID of the work.
         self.tree_id = tree_id
         # The type of the work. Valid values:
-        # 
-        # *   DATAPRODUCT: BI portal
-        # *   PAGE: Dashboard
-        # *   REPORT: workbook
+        # - DATAPRODUCT: data portal
+        # - PAGE: dashboard
+        # - REPORT: workbook
         self.type = type
-        # The number of times the work was accessed.
+        # The number of times the work has been accessed.
         self.view_count = view_count
         # The ID of the workspace to which the work belongs.
         self.workspace_id = workspace_id

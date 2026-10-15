@@ -16,12 +16,12 @@ class ListApiDatasourceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The query results are returned.
+        # The query result.
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -66,11 +66,11 @@ class ListApiDatasourceResponseBodyResult(DaraModel):
         page_size: int = None,
         total_num: int = None,
     ):
-        # The list of API data sources that were queried.
+        # The list of API data sources.
         self.data = data
-        # The page number.
+        # The page number of the returned data, used for pagination.
         self.page_num = page_num
-        # The number of rows per page set when the interface is requested.
+        # The number of rows per page specified in the request.
         self.page_size = page_size
         # The total number of rows.
         self.total_num = total_num
@@ -137,35 +137,26 @@ class ListApiDatasourceResponseBodyResultData(DaraModel):
     ):
         # The ID of the API data source.
         self.api_id = api_id
-        # The parameter configuration of the query statement in JSON format. You can customize the parameter configuration.
+        # The query statement parameter settings in JSON format, which can be user-defined.
         self.body = body
         # The data volume of the API data source.
-        # 
-        # *   Unit: Kbit/s
+        # - Unit: KB.
         self.data_size = data_size
-        # The last synchronization time of the API data source.
+        # The last synchronization time of the API data source. Format example: YYYY-MM-DD HH:mm:ss.
         self.date_update_time = date_update_time
-        # The time when the quota plan was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the optimization job was modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # The job ID.
+        # The task ID.
         self.job_id = job_id
-        # The parameter configurations in the JSONArray format.
-        # 
-        # *   name: parameter name
-        # *   value: the parameter value
+        # The parameter settings in JSONArray format.
+        # - name: the parameter name.
+        # - value: the parameter value.
         self.parameters = parameters
         # The name of the API data source.
         self.show_name = show_name
-        # The status of the API data source synchronization task.
-        # 
-        # Valid values:
-        # 
-        # *   0: the to be run.
-        # *   1: The is running.
-        # *   2: The is successfully.
-        # *   3: failed.
+        # The synchronization task status of the API data source.
         self.status_type = status_type
 
     def validate(self):

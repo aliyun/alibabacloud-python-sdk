@@ -13,22 +13,22 @@ class GetWorksEmbedListRequest(DaraModel):
         works_type: str = None,
         ws_id: str = None,
     ):
-        # Report name (fuzzy match)
+        # The report name for fuzzy match.
         self.keyword = keyword
-        # Page number (defaults to 1 if empty)
+        # The page number. Default value: 1.
         self.page_no = page_no
-        # Number of items per page (defaults to 10 if empty)
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Report type
+        # The report type. Valid values:
         # 
-        # - page, Dashboard
-        # - screen, Data Screen
-        # - report, Spreadsheet
-        # - ANALYSIS, Ad-hoc Analysis
-        # - dashboardOfflineQuery, Self-service Data Retrieval
-        # - dataForm, Data Entry Form
+        # - page: dashboard.
+        # - screen: data screen.
+        # - report: workbook.
+        # - ANALYSIS: ad hoc analysis.
+        # - dashboardOfflineQuery: self-service data retrieval.
+        # - dataForm: data entry form.
         self.works_type = works_type
-        # Workspace ID
+        # The workspace ID.
         self.ws_id = ws_id
 
     def validate(self):

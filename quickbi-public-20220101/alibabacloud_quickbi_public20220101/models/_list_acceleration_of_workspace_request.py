@@ -13,15 +13,15 @@ class ListAccelerationOfWorkspaceRequest(DaraModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
-        # The user ID in Quick BI. This is not your Alibaba Cloud account ID. Call the QueryUserInfoByAccount operation to obtain the user ID.
+        # The user ID in Quick BI, not your Alibaba Cloud account ID. You can call the QueryUserInfoByAccount operation to obtain the user ID.
         self.creator_id = creator_id
-        # The name of the dataset.
+        # The dataset name.
         self.cube_name = cube_name
-        # The page number. If this parameter is left empty, the default value is 1.
+        # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of rows on each page for a paged query.
+        # The number of rows per page for a paged query.
         # 
-        # - Default value: 10.
+        # Default value: 10.
         self.page_size = page_size
         # The workspace ID.
         # 

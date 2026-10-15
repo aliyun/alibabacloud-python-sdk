@@ -14,14 +14,14 @@ class QueryWorksResponseBody(DaraModel):
         result: main_models.QueryWorksResponseBodyResult = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the work.
+        # The details of the data work.
         self.result = result
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -80,64 +80,61 @@ class QueryWorksResponseBodyResult(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # Third-party embedding status. Valid values:
+        # The third-party embedding status. Valid values:
         # 
-        # *   0: The embed service is not enabled.
-        # *   1: Embed is enabled.
+        # - 0: Embedding is not enabled.
+        # - 1: Embedding is enabled.
         self.auth_3rd_flag = auth_3rd_flag
-        # Remarks on the work.
+        # The remarks of the data work.
         self.description = description
-        # The directory to which the work belongs.
+        # The directory to which the data work belongs.
         self.directory = directory
+        # The array of global parameters.
         self.global_param_vo_list = global_param_vo_list
-        # The timestamp of the creation of the work in milliseconds.
+        # The timestamp when the data work was created, in milliseconds.
         self.gmt_create = gmt_create
-        # The timestamp of the modification of the work in milliseconds.
+        # The timestamp when the data work was last modified, in milliseconds.
         self.gmt_modify = gmt_modify
-        # The Alibaba Cloud account name of the person who modified the work.
+        # The Alibaba Cloud account name of the user who last modified the data work.
         self.modify_name = modify_name
-        # The user ID of the work owner in the Quick BI.
+        # The Quick BI UserID of the data work owner.
         self.owner_id = owner_id
-        # The Alibaba Cloud account name of the work owner.
+        # The Alibaba Cloud account name of the data work owner.
         self.owner_name = owner_name
-        # Is it public
+        # Indicates whether the data work is public.
         self.public_flag = public_flag
-        # Deadline for the public release of the report
+        # The expiration date for the public access of the report. This value is a UNIX timestamp in milliseconds.
         self.public_invalid_time = public_invalid_time
-        # Security policies for collaborative authorization of works. Valid values:
+        # The security policy for collaborative authorization of the data work. Valid values:
+        # - 0: Private.
+        # - 12: Authorized to specified members.
+        # - 1 or 11: Authorized to all workspace members.
         # 
-        # *   0: private
-        # *   12: Authorize specified members
-        # *   1 or 11: Authorize all workspace members
-        # 
-        # > 
-        # 
-        # *   If you use legacy permissions, the return value is 1.
-        # 
-        # *   If you use the new permissions, the return value is 11.
+        # >- If you use the legacy permission model, the return value is 1.
+        # >- If you use the new permission model, the return value is 11.
         self.security_level = security_level
-        # The status of the report. Valid values:
+        # The report status. Valid values:
         # 
-        # *   0: unpublished
-        # *   1: published
-        # *   2: modified but not published
-        # *   3: unpublished
+        # - 0: Unpublished.
+        # - 1: Published.
+        # - 2: Modified but not published.
+        # - 3: Offline.
         self.status = status
-        # The name of the work.
+        # The name of the data work.
         self.work_name = work_name
-        # Queries the types of works. Fill in the blanks to query all types. Valid values:
+        # The type of the data work. Leave this parameter empty to query all types. Valid values:
         # 
-        # *   DATAPRODUCT: BI portal
-        # *   PAGE: Dashboard
-        # *   FULLPAGE: full-screen dashboards
-        # *   REPORT: workbook
-        # *   dashboardOfflineQuery: self-service data retrieval
+        # - DATAPRODUCT: data portal
+        # - PAGE: dashboard
+        # - FULLPAGE: full-screen dashboard
+        # - REPORT: workbook
+        # - dashboardOfflineQuery: custom query
         self.work_type = work_type
-        # The ID of the work.
+        # The ID of the data work.
         self.works_id = works_id
-        # The ID of the workspace to which the work belongs.
+        # The ID of the workspace to which the data work belongs.
         self.workspace_id = workspace_id
-        # The name of the workspace to which the work belongs.
+        # The name of the workspace to which the data work belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -281,9 +278,18 @@ class QueryWorksResponseBodyResultGlobalParamVoList(DaraModel):
         param_name: str = None,
         required: bool = None,
     ):
+        # The field type. Valid values:
+        # 
+        # - enum: enumeration
+        # - string: text
+        # - number: numeric
+        # - datetime: date
         self.data_type = data_type
+        # The parameter alias.
         self.param_alias = param_alias
+        # The parameter name.
         self.param_name = param_name
+        # Indicates whether the parameter is required.
         self.required = required
 
     def validate(self):
@@ -332,13 +338,13 @@ class QueryWorksResponseBodyResultDirectory(DaraModel):
         path_id: str = None,
         path_name: str = None,
     ):
-        # The ID of the directory.
+        # The ID of the directory to which the data work belongs.
         self.id = id
-        # The name of the directory.
+        # The directory name.
         self.name = name
-        # The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
+        # The hierarchical path of the directory IDs, separated by a forward slash (/).
         self.path_id = path_id
-        # The hierarchical structure of the directory to which the directory belongs. Separate the hierarchical structure with a (/).
+        # The hierarchical path of the directory names, separated by a forward slash (/).
         self.path_name = path_name
 
     def validate(self):

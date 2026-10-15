@@ -14,14 +14,14 @@ class ListByUserGroupIdResponseBody(DaraModel):
         result: main_models.ListByUserGroupIdResponseBodyResult = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The user group query result is returned.
+        # The query results of the user groups.
         self.result = result
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -64,9 +64,9 @@ class ListByUserGroupIdResponseBodyResult(DaraModel):
         failed_user_group_ids: List[str] = None,
         user_group_models: List[main_models.ListByUserGroupIdResponseBodyResultUserGroupModels] = None,
     ):
-        # List of failed user groups.
+        # The list of user group IDs that failed to be queried.
         self.failed_user_group_ids = failed_user_group_ids
-        # The details of the user group that was queried.
+        # The details of the queried user groups.
         self.user_group_models = user_group_models
 
     def validate(self):
@@ -116,21 +116,21 @@ class ListByUserGroupIdResponseBodyResultUserGroupModels(DaraModel):
         usergroup_id: str = None,
         usergroup_name: str = None,
     ):
-        # The time when the Secret was created.
+        # The creation time in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The UserID of the creator in the Quick BI.
+        # The UserID of the creator in Quick BI.
         self.create_user = create_user
         # The path of the user group.
         self.identified_path = identified_path
-        # The time when the protection policy was last modified.
+        # The modification time in the format of YYYY-MM-DD HH:mm:ss.
         self.modified_time = modified_time
-        # The UserID of the modifier in the Quick BI.
+        # The UserID of the modifier in Quick BI.
         self.modify_user = modify_user
         # The ID of the parent user group.
         self.parent_usergroup_id = parent_usergroup_id
         # The description of the user group.
         self.usergroup_desc = usergroup_desc
-        # The ID of the user group.
+        # The user group ID.
         self.usergroup_id = usergroup_id
         # The name of the user group.
         self.usergroup_name = usergroup_name

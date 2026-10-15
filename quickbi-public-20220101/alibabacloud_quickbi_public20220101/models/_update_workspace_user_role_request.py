@@ -12,20 +12,20 @@ class UpdateWorkspaceUserRoleRequest(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # Preset workspace role ID, existing roles will be overwritten. Value range:
-        # - 25: Workspace Administrator
-        # - 26: Workspace Developer
-        # - 27: Workspace Analyst
-        # - 30: Workspace Viewer
+        # The preset workspace role ID. The existing role is overwritten. Valid values:
+        # - 25: workspace administrator
+        # - 26: workspace developer
+        # - 27: workspace analyst
+        # - 30: workspace viewer
         self.role_id = role_id
-        # Multiple workspace role IDs, separated by commas. If this value is provided, it takes precedence.
+        # Multiple workspace role IDs, separated by commas. If this parameter is specified, it takes precedence.
         # >Notice: roleId and roleIds cannot both be empty
         self.role_ids = role_ids
-        # Quick BI user ID.
+        # The Quick BI user ID.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # Workspace ID.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

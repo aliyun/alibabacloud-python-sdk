@@ -14,13 +14,13 @@ class AddWorkspaceUsersResponseBody(DaraModel):
         result: main_models.AddWorkspaceUsersResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returns the result of the API execution.
+        # The execution result of the operation.
         self.result = result
-        # Indicates whether the request was successful. Value range:
-        # - true: The request was successful. There may be cases where some members are added successfully and others fail. For the reasons of failure, refer to the FailureDetail in the response.
-        # - false: The request failed, and no data will be persisted.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful. Some members may be added successfully while others fail. For the reasons of failures, refer to FailureDetail in the response.
+        # - false: The request failed. No data is persisted.
         self.success = success
 
     def validate(self):
@@ -65,13 +65,13 @@ class AddWorkspaceUsersResponseBodyResult(DaraModel):
         success: int = None,
         total: int = None,
     ):
-        # Number of users that failed to be added.
+        # The number of users that failed to be added.
         self.failure = failure
-        # Reasons for the failures.
+        # The reasons for the failures.
         self.failure_detail = failure_detail
-        # Number of users that were added successfully.
+        # The number of users that were added.
         self.success = success
-        # Total number of users being added.
+        # The total number of users to be added.
         self.total = total
 
     def validate(self):

@@ -14,14 +14,14 @@ class QueryWorksByOrganizationResponseBody(DaraModel):
         result: main_models.QueryWorksByOrganizationResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returns a list of all works under the organization that meet the request criteria.
+        # The list of all works in the organization that match the request conditions.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: Request succeeded
-        # - false: Request failed
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -67,15 +67,15 @@ class QueryWorksByOrganizationResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # Details of the work list.
+        # The details of the works list.
         self.data = data
-        # Page number.
+        # The page number.
         self.page_num = page_num
-        # The number of rows per page set when requesting the interface.
+        # The number of rows per page specified in the request.
         self.page_size = page_size
-        # Total number of rows.
+        # The total number of rows.
         self.total_num = total_num
-        # Total number of pages.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -151,52 +151,52 @@ class QueryWorksByOrganizationResponseBodyResultData(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # Third-party embedding status. Possible values:
+        # The third-party embedding status. Valid values:
         # 
-        # - 0: Embedding not enabled
-        # - 1: Embedding enabled
+        # - 0: Embedding is not enabled.
+        # - 1: Embedding is enabled.
         self.auth_3rd_flag = auth_3rd_flag
-        # Notes for the work.
+        # The description of the work.
         self.description = description
-        # Directory to which the work belongs.
+        # The directory to which the work belongs.
         self.directory = directory
-        # Timestamp (in milliseconds) when the work was created.
+        # The timestamp when the work was created, in milliseconds.
         self.gmt_create = gmt_create
-        # Millisecond-level timestamp of the work modification.
+        # The timestamp when the work was last modified, in milliseconds.
         self.gmt_modify = gmt_modify
-        # The Alibaba Cloud account name of the work modifier.
+        # The Alibaba Cloud account name of the user who last modified the work.
         self.modify_name = modify_name
-        # The UserID of the work\\"s owner in Quick BI.
+        # The Quick BI user ID of the work owner.
         self.owner_id = owner_id
-        # The Alibaba Cloud account name of the work\\"s owner.
+        # The Alibaba Cloud account name of the work owner.
         self.owner_name = owner_name
-        # Whether it is public
+        # Indicates whether the work is public.
         self.public_flag = public_flag
-        # The expiration date for the report to be made public
+        # The expiration date for the public report, in UNIX timestamp format. Unit: milliseconds.
         self.public_invalid_time = public_invalid_time
-        # The security policy for collaborative authorization of the work. Values:
-        # - 0: Private
-        # - 12: Authorize specific members
-        # - 1 or 11: Authorize all space members
+        # The security policy for collaborative authorization of the work. Valid values:
+        # - 0: Private.
+        # - 12: Authorized to specified members.
+        # - 1 or 11: Authorized to all workspace members.
         # 
-        # >- If you are using the old version of permissions, the returned value is 1.
-        # >- If you are using the new version of permissions, the returned value is 11.
+        # >- If you use the legacy permissions, the return value is 1.
+        # >- If you use the new permissions, the return value is 11.
         self.security_level = security_level
-        # The status of the report. Value range:
+        # The report status. Valid values:
         # 
-        # - 0: Unpublished
-        # - 1: Published
-        # - 2: Modified but not published
-        # - 3: Offline
+        # - 0: Unpublished.
+        # - 1: Published.
+        # - 2: Modified but not published.
+        # - 3: Offline.
         self.status = status
         # The name of the work.
         self.work_name = work_name
-        # The type of the work. Value range:
+        # The type of the work. Valid values:
         # 
-        # - DATAPRODUCT: Data portal
-        # - PAGE: Dashboard
-        # - REPORT: Spreadsheet
-        # - dashboardOfflineQuery: Self-service data retrieval
+        # - DATAPRODUCT: data portal
+        # - PAGE: dashboard
+        # - REPORT: workbook
+        # - dashboardOfflineQuery: custom query
         self.work_type = work_type
         # The ID of the work.
         self.works_id = works_id
@@ -331,13 +331,13 @@ class QueryWorksByOrganizationResponseBodyResultDataDirectory(DaraModel):
         path_id: str = None,
         path_name: str = None,
     ):
-        # ID of the directory to which it belongs.
+        # The ID of the directory.
         self.id = id
-        # Name of the directory to which it belongs.
+        # The name of the directory.
         self.name = name
-        # Hierarchical structure of the directory ID, separated by『/』.
+        # The hierarchical structure of directory IDs, separated by forward slashes (/).
         self.path_id = path_id
-        # Hierarchical structure of the directory name, separated by『/』.
+        # The hierarchical structure of directory names, separated by forward slashes (/).
         self.path_name = path_name
 
     def validate(self):

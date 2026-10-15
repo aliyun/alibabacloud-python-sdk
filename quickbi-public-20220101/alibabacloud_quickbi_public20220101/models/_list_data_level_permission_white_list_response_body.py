@@ -14,14 +14,14 @@ class ListDataLevelPermissionWhiteListResponseBody(DaraModel):
         result: main_models.ListDataLevelPermissionWhiteListResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Whitelist for the specified row-level permission type.
+        # The whitelist of the specified row-level or column-level permission type.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: Request succeeded
-        # - false: Request failed
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -65,14 +65,14 @@ class ListDataLevelPermissionWhiteListResponseBodyResult(DaraModel):
         rule_type: str = None,
         users_model: main_models.ListDataLevelPermissionWhiteListResponseBodyResultUsersModel = None,
     ):
-        # Dataset ID.
+        # The dataset ID.
         self.cube_id = cube_id
-        # Type of dataset row and column permissions. Possible values:
+        # The type of row and column permission for the dataset. Valid values:
         # 
-        # - ROW_LEVEL: Row-level permission
-        # - COLUMN_LEVEL: Column-level permission
+        # - ROW_LEVEL: row-level permission
+        # - COLUMN_LEVEL: column-level permission
         self.rule_type = rule_type
-        # Whitelist information.
+        # The whitelist information.
         self.users_model = users_model
 
     def validate(self):
@@ -115,9 +115,9 @@ class ListDataLevelPermissionWhiteListResponseBodyResultUsersModel(DaraModel):
         user_groups: List[str] = None,
         users: List[str] = None,
     ):
-        # UserGroups.
+        # The list of user group IDs.
         self.user_groups = user_groups
-        # Users.
+        # The list of Quick BI user IDs.
         self.users = users
 
     def validate(self):

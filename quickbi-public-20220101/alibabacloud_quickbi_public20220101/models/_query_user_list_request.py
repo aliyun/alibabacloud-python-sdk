@@ -18,7 +18,7 @@ class QueryUserListRequest(DaraModel):
         # - Minimum value: 1
         # - Default value: 1
         self.page_num = page_num
-        # The number of rows per page in a paged query.
+        # The number of rows per page for a paged query.
         # 
         # - Default value: 10
         # - Maximum value: 1000

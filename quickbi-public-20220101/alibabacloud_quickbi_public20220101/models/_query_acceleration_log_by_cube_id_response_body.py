@@ -16,16 +16,14 @@ class QueryAccelerationLogByCubeIdResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result of the API request.
+        # The execution result of the operation. Valid values:
         # 
         # - true: The execution succeeded.
-        # 
         # - false: The execution failed.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful.
-        # 
+        # - true: The request succeeded.
         # - false: The request failed.
         self.success = success
 
@@ -74,7 +72,7 @@ class QueryAccelerationLogByCubeIdResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # An array of acceleration task logs.
+        # The array of acceleration task logs.
         self.data = data
         # The next page. A value of NULL or 0 indicates that no next page exists.
         self.next = next
@@ -163,29 +161,24 @@ class QueryAccelerationLogByCubeIdResponseBodyResultData(DaraModel):
         jon_start_date: str = None,
         log: str = None,
     ):
-        # The task duration in seconds.
+        # The duration. Unit: seconds.
         self.duration = duration
         # The task history ID.
         self.job_history_id = job_history_id
         # The task ID.
         self.job_id = job_id
-        # The status of the task.
+        # The task status. Valid values:
         # 
-        # - 0: Pending
-        # 
-        # - 1: Running
-        # 
-        # - 2: Succeeded
-        # 
-        # - 3: Failed
-        # 
-        # - 4: Canceled
-        # 
-        # - 5: Warning
+        # - 0: pending
+        # - 1: running
+        # - 2: succeeded
+        # - 3: failed
+        # - 4: canceled
+        # - 5: warning
         self.job_status = job_status
-        # The start time of the task.
+        # The task start time. Format: yyyy/MM/dd HH:mm:ss. Time zone: UTC+8.
         self.jon_start_date = jon_start_date
-        # The log content.
+        # The log.
         self.log = log
 
     def validate(self):

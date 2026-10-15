@@ -35,9 +35,9 @@ class UpdateUserRequest(DaraModel):
         # Pass the parameter as a JSON array. Each array element contains the following fields:
         # 
         # moduleType -- The intelligent module.
-        # - smartQAskNum -- Smart Q questions.
+        # - smartQAskNum -- Smart Q question count.
         # - smartQDevNum -- Smart Q building.
-        # - qreport -- Smart Q reports.
+        # - qreport -- Smart Q report.
         # - qExploreNum -- Smart Q exploration edition.
         # 
         # status -- Specifies whether to enable the module.
@@ -52,7 +52,7 @@ class UpdateUserRequest(DaraModel):
         # The nickname.
         # 
         # - Format check: The maximum length is 50 characters.
-        # - Special format check: Chinese characters, English characters, digits, _ \\ / | () ] [
+        # - Special format check: Chinese characters, English letters, digits, _ \\ / | () ] [
         self.nick_name = nick_name
         # The IDs of preset or custom organization roles to attach to the user, separated by commas (,). A maximum of three role IDs are supported. Valid values:
         # - Organization administrator (preset role): 111111111

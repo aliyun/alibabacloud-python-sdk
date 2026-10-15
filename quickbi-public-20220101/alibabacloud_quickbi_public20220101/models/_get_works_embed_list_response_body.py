@@ -14,11 +14,11 @@ class GetWorksEmbedListResponseBody(DaraModel):
         result: main_models.GetWorksEmbedListResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Array of report objects
+        # The report array object.
         self.result = result
-        # Whether the request was successful
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -64,15 +64,15 @@ class GetWorksEmbedListResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # Array of reports
+        # The report array.
         self.data = data
-        # Page number
+        # The page number.
         self.page_no = page_no
-        # Number of items per page
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of items
+        # The total number of entries.
         self.total_num = total_num
-        # Total number of pages
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -136,15 +136,15 @@ class GetWorksEmbedListResponseBodyResultData(DaraModel):
         works_type: str = None,
         workspace_id: str = None,
     ):
-        # Embed time
+        # The time when the report was embedded, in the format of YYYY-mm-DD hh:MM:ss.
         self.embed_time = embed_time
-        # Report ID
+        # The report ID.
         self.works_id = works_id
-        # Report name
+        # The report name.
         self.works_name = works_name
-        # Report type
+        # The report type.
         self.works_type = works_type
-        # Workspace ID
+        # The ID of the workspace to which the report belongs.
         self.workspace_id = workspace_id
 
     def validate(self):

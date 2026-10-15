@@ -14,27 +14,26 @@ class ListRecentViewReportsRequest(DaraModel):
         tree_type: str = None,
         user_id: str = None,
     ):
-        # Keyword of the name of the work.
+        # The keyword in the name of the work.
         self.keyword = keyword
-        # The number of days to query data in the last few days. Default value: 10.
+        # The number of recent days to query data for. Default value: 10.
         self.offset_day = offset_day
-        # Query the number of rows in the work list:
+        # The number of rows in the work list to query:
         # 
-        # *   Default value: 10.
-        # *   Maximum value: 9999
+        # - Default value: 10.
+        # - Maximum value: 9999.
         self.page_size = page_size
         # The query mode. Valid values:
         # 
-        # *   1: Sort by number of visits
-        # *   2: Sort by Last Access Time
+        # - 1: Sorted by number of visits.
+        # - 2: Sorted by most recent visit time.
         self.query_mode = query_mode
-        # Query the type of the work (fill in the blank to query all types). Valid values:
-        # 
-        # *   DATAPRODUCT: BI portal
-        # *   PAGE: Dashboard
-        # *   REPORT: workbook
+        # The type of work to query. Leave this parameter empty to query all types. Valid values:
+        # - DATAPRODUCT: data portal
+        # - PAGE: dashboard
+        # - REPORT: workbook
         self.tree_type = tree_type
-        # The UserID of the user in the Quick BI.
+        # The UserID of the user to query in Quick BI.
         # 
         # This parameter is required.
         self.user_id = user_id

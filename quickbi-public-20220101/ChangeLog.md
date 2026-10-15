@@ -1,3 +1,8 @@
+2026-10-15 Version: 1.18.0
+- Support API ListAuthConfigByResource.
+- Support API UpdateAuthorizationAttributes.
+
+
 2026-09-01 Version: 1.17.1
 - Update API QueryOrganizationWorkspaceList: add response parameters Body.Result.Data.$.WorkspaceExportConfig.
 - Update API QueryUserInfoByAccount: add response parameters Body.Result.IsDeleted.

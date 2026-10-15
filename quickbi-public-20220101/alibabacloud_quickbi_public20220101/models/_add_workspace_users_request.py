@@ -11,21 +11,21 @@ class AddWorkspaceUsersRequest(DaraModel):
         user_ids: str = None,
         workspace_id: str = None,
     ):
-        # Preset space role ID. Value range:
-        # - 25: Space Administrator
-        # - 26: Space Developer
-        # - 27: Space Analyst
-        # - 30: Space Viewer
+        # The ID of the preset workspace role. Valid values:
+        # - 25: storage management administrator
+        # - 26: workspace developer
+        # - 27: storage analysis analyst
+        # - 30: workspace viewer
         # 
         # This parameter is required.
         self.role_id = role_id
-        # User ID. This is the UserID for Quick BI, not the Alibaba Cloud UID.
+        # The user IDs. These are Quick BI user IDs, not Alibaba Cloud UIDs.
         # 
-        # - Supports batch parameters, with user IDs separated by commas (,).
+        # - You can pass multiple user IDs separated by commas (,).
         # 
         # This parameter is required.
         self.user_ids = user_ids
-        # Workspace ID.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

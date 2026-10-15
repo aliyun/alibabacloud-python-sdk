@@ -10,13 +10,13 @@ class IpWhiteListConfigRequest(DaraModel):
         ip_white_list: str = None,
         operation: str = None,
     ):
-        # Required for increase and delete operations. The IP whitelist. Separate multiple IP addresses with commas.
+        # Required for add and delete operations. The IP whitelist. Separate multiple IP addresses with commas.
         self.ip_white_list = ip_white_list
         # The operation type. Valid values:
         # 
-        # - ADD: incrementally adds entries.
-        # - DELETE: deletes entries.
-        # - QUERY: queries entries.
+        # - ADD: Incrementally adds entries.
+        # - DELETE: Deletes entries.
+        # - QUERY: Queries entries.
         # 
         # This parameter is required.
         self.operation = operation

@@ -15,8 +15,8 @@ class UpdateUserResponseBody(DaraModel):
         self.request_id = request_id
         # The execution result of the operation. Valid values:
         # 
-        # - true: Successful.
-        # - false: Failed.
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 

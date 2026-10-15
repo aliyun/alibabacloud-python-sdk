@@ -146,39 +146,39 @@ class QueryUserListResponseBodyResultData(DaraModel):
         user_id: str = None,
         user_type: int = None,
     ):
-        # The Alibaba Cloud account ID. For users who are not added through RAM self-service, the Alibaba Cloud ID can only be obtained after they log on.
+        # The Alibaba Cloud account ID. For users who are not added through RAM self-service reading, the Alibaba Cloud account ID can be obtained only after they log on.
         self.account_id = account_id
         # The Alibaba Cloud account name.
         self.account_name = account_name
-        # Indicates whether the user is bound to the organization administrator role. Valid values:
+        # Indicates whether the organization administrator role is bound. Valid values:
         # 
         # - true: Yes.
         # - false: No.
         # 
         # <notice>This parameter is deprecated. Use the RoleIdList parameter instead.</notice>
         self.admin_user = admin_user
-        # Indicates whether the user is attached to the permission management administrator role. Valid values:
+        # Indicates whether the permission management administrator role is attached. Valid values:
         # 
         # - true: Yes.
         # - false: No.
         # 
-        # <notice>This parameter has expired and is no longer recommended. Use the RoleIdList parameter instead.</notice>
+        # <notice>This parameter is expired and no longer recommended. Use the RoleIdList parameter instead.</notice>
         self.auth_admin_user = auth_admin_user
         # The intelligent module quota of the user.
         # 
         # - qreport: Q report
-        # - qExploreNum: Q exploration edition
-        # - smartQAskNum: Q data inquiry
+        # - qExploreNum: Q explore edition
+        # - smartQAskNum: Q data query
         # - smartQDevNum: Q builder
         self.copilot_modules = copilot_modules
         # The user status. Valid values: 
         # 
-        # - false: active
-        # - true: inactive
+        # - false: activated
+        # - true: deactivated
         self.is_deleted = is_deleted
-        # The date when the member joined the organization.
+        # The date when the member joined the organization. This value is a UNIX timestamp in milliseconds.
         self.joined_date = joined_date
-        # The last logon time.
+        # The last logon time. This value is a UNIX timestamp in milliseconds.
         self.last_login_time = last_login_time
         # The nickname of the organization member.
         self.nick_name = nick_name

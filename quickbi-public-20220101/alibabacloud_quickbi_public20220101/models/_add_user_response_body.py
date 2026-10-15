@@ -20,9 +20,8 @@ class AddUserResponseBody(DaraModel):
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -75,41 +74,32 @@ class AddUserResponseBodyResult(DaraModel):
     ):
         # The Alibaba Cloud account.
         self.account_name = account_name
-        # Indicates whether the organization administrator role is assigned. Valid values:
+        # Indicates whether the organization administrator role is bound. Valid values:
         # 
-        # - true
+        # - true: Yes.
+        # - false: No.
         # 
-        # - false
-        # 
-        # >Notice: 
-        # 
-        # This parameter is deprecated. It does not take effect when `RoleIdList` is specified.
+        # <notice>This parameter is deprecated. When RoleIdList is specified, this parameter does not take effect.</notice>
         self.admin_user = admin_user
-        # Indicates whether the permission administrator role is assigned. Valid values:
+        # Indicates whether the permission management administrator role is attached. Valid values:
         # 
-        # - true
+        # - true: Yes.
+        # - false: No.
         # 
-        # - false
-        # 
-        # >Notice: 
-        # 
-        # This parameter is deprecated. It does not take effect when `RoleIdList` is specified.
+        # <notice>This parameter has expired and is no longer recommended. When RoleIdList is specified, this parameter does not take effect.</notice>
         self.auth_admin_user = auth_admin_user
-        # The Copilot modules for which the user has a quota.
+        # The intelligent module quotas owned by the user.
         self.copilot_modules = copilot_modules
         # The nickname of the Alibaba Cloud account.
         self.nick_name = nick_name
-        # A list of organization role IDs assigned to the user.
+        # The list of organization role IDs bound to the user.
         self.role_id_list = role_id_list
         # The user ID in Quick BI.
         self.user_id = user_id
-        # The user type. Valid values:
-        # 
-        # - 1: developer
-        # 
-        # - 2: viewer
-        # 
-        # - 3: analyst
+        # The user type of the organization member. Valid values:
+        # - 1: Developer.
+        # - 2: Visitor.
+        # - 3: Analyst.
         self.user_type = user_type
 
     def validate(self):

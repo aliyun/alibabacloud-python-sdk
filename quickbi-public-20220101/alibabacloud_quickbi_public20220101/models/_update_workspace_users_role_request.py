@@ -11,21 +11,21 @@ class UpdateWorkspaceUsersRoleRequest(DaraModel):
         user_ids: str = None,
         workspace_id: str = None,
     ):
-        # Preset space role ID, existing roles will be overwritten. Value range:
-        # - 25: Space Administrator
-        # - 26: Space Developer
-        # - 27: Space Analyst
-        # - 30: Space Viewer
+        # The ID of the preset workspace role. Existing roles are overwritten. Valid values:
+        # - 25: workspace administrator
+        # - 26: workspace developer
+        # - 27: workspace analyst
+        # - 30: workspace viewer
         # 
         # This parameter is required.
         self.role_id = role_id
-        # User ID. This is the UserID for Quick BI, not the UID for Alibaba Cloud.
+        # The user IDs. The IDs are Quick BI user IDs, not Alibaba Cloud UIDs.
         # 
-        # - Supports batch parameters, separate user IDs with a comma (,).
+        # - You can specify multiple user IDs separated by commas (,).
         # 
         # This parameter is required.
         self.user_ids = user_ids
-        # Workspace ID.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

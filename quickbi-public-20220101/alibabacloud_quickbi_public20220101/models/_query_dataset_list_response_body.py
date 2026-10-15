@@ -16,12 +16,11 @@ class QueryDatasetListResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The paged results of the dataset list. The details of the datasets are returned in the Data parameter.
+        # The paginated result of the dataset list. The detailed information of the dataset list is stored in the Data response parameter.
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
         # - true: The request was successful.
-        # 
         # - false: The request failed.
         self.success = success
 
@@ -72,9 +71,9 @@ class QueryDatasetListResponseBodyResult(DaraModel):
         self.data = data
         # The page number.
         self.page_num = page_num
-        # The number of entries per page specified in the request.
+        # The number of rows per page specified in the request.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of rows.
         self.total_num = total_num
         # The total number of pages.
         self.total_pages = total_pages
@@ -148,9 +147,9 @@ class QueryDatasetListResponseBodyResultData(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The time when the dataset was created.
+        # The creation time, in the yyyy-MM-dd HH:mm:ss format.
         self.create_time = create_time
-        # The information about the data source to which the dataset belongs.
+        # The data source information of the dataset.
         self.data_source = data_source
         # The dataset ID.
         self.dataset_id = dataset_id
@@ -158,25 +157,23 @@ class QueryDatasetListResponseBodyResultData(DaraModel):
         self.dataset_name = dataset_name
         # The description of the dataset.
         self.description = description
-        # The information about the folder in which the dataset is located.
+        # The directory information of the dataset.
         self.directory = directory
-        # The time when the dataset was last modified.
+        # The modification time, in the yyyy-MM-dd HH:mm:ss format.
         self.modify_time = modify_time
-        # Indicates whether extraction-based acceleration is enabled. Valid values:
+        # Indicates whether extraction acceleration is enabled. Valid values:
         # 
-        # - true: Enabled
-        # 
-        # - false: Disabled
+        # - true: Enabled.
+        # - false: Disabled.
         self.open_offline_acceleration = open_offline_acceleration
-        # The user ID of the dataset owner in Quick BI.
+        # The Quick BI user ID of the dataset owner.
         self.owner_id = owner_id
         # The nickname of the dataset owner.
         self.owner_name = owner_name
         # Indicates whether row-level permissions are enabled. Valid values:
         # 
-        # - true: Enabled
-        # 
-        # - false: Disabled
+        # - true: Enabled.
+        # - false: Disabled.
         self.row_level = row_level
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -288,13 +285,13 @@ class QueryDatasetListResponseBodyResultDataDirectory(DaraModel):
         path_id: str = None,
         path_name: str = None,
     ):
-        # The folder ID.
+        # The directory ID.
         self.id = id
-        # The folder name.
+        # The directory name.
         self.name = name
-        # The ID of the folder path.
+        # The ID of the directory path.
         self.path_id = path_id
-        # The name of the folder path.
+        # The name of the directory path.
         self.path_name = path_name
 
     def validate(self):

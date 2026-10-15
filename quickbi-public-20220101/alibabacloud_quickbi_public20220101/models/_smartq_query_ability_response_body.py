@@ -14,7 +14,7 @@ class SmartqQueryAbilityResponseBody(DaraModel):
         result: main_models.SmartqQueryAbilityResponseBodyResult = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -67,17 +67,17 @@ class SmartqQueryAbilityResponseBodyResult(DaraModel):
         meta_type: List[main_models.SmartqQueryAbilityResponseBodyResultMetaType] = None,
         values: List[main_models.SmartqQueryAbilityResponseBodyResultValues] = None,
     ):
-        # The recommended chart type.
+        # The suggested chart type.
         self.chart_type = chart_type
-        # The summary.
+        # The summary information.
         self.conclusion_text = conclusion_text
-        # The list of data that is returned only in multi-step scenarios. Each element corresponds to a set of chart data.
+        # The data list returned only in multi-step scenarios. Each element corresponds to a chart dataset.
         self.data_list = data_list
-        # The visual logical SQL statement.
+        # The visualization logic SQL.
         self.logic_sql = logic_sql
-        # A list of column tuple types.
+        # The list of column tuple types.
         self.meta_type = meta_type
-        # An array of data value lists.
+        # The array of data value lists.
         self.values = values
 
     def validate(self):
@@ -152,7 +152,7 @@ class SmartqQueryAbilityResponseBodyResultValues(DaraModel):
         self,
         row: List[str] = None,
     ):
-        # The data values in a row.
+        # The data values for each row.
         self.row = row
 
     def validate(self):
@@ -182,15 +182,14 @@ class SmartqQueryAbilityResponseBodyResultMetaType(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The name of the column tuple.
+        # The column tuple name.
         self.key = key
-        # The type of the metadata. Valid values:
+        # The metadata row or column type.
         # 
-        # - Dimension
-        # 
-        # - Measure
+        # - Dimension: dimension
+        # - Measure: measure
         self.type = type
-        # The type of the column tuple.
+        # The column tuple type.
         self.value = value
 
     def validate(self):

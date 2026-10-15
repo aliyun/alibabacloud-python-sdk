@@ -13,32 +13,32 @@ class AddShareReportRequest(DaraModel):
         share_to_type: int = None,
         works_id: str = None,
     ):
-        # The scope of authorization. Valid values:
+        # The authorization type. Valid values:
         # 
-        # *   1: view only
-        # *   3: View and export
+        # - 1: View only.
+        # - 3: View and export.
         # 
         # This parameter is required.
         self.auth_point = auth_point
-        # The validity period of the share. The value is a timestamp in milliseconds.
+        # The expiration time of the sharing, in millisecond-level UNIX timestamp format.
         # 
         # This parameter is required.
         self.expire_date = expire_date
-        # The ID of the person to be shared, which may be the user ID of the Quick BI or the user group ID.
+        # The ID of the share recipient. The value can be a Quick BI user ID or a user group ID.
         # 
-        # *   If ShareToType is 0 (user), ShareTo is the user ID.
-        # *   When ShareToType is set to 1 (user group), ShareTo is the user group ID.
-        # *   When ShareToType=2 (organization), ShareTo is the ID of the organization.
+        # - ShareToType=0 (user): ShareTo is the user ID.
+        # - ShareToType=1 (user group): ShareTo is the user group ID.
+        # - ShareToType=2 (organization): ShareTo is the organization ID.
         self.share_to_id = share_to_id
-        # The share type of the template. Valid values:
+        # The sharing type. Valid values:
         # 
-        # *   0: user
-        # *   1: user group
-        # *   2: organization
+        # - 0: user
+        # - 1: user group
+        # - 2: organization
         # 
         # This parameter is required.
         self.share_to_type = share_to_type
-        # The ID of the shared work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+        # The ID of the work to share. Works include data portals, dashboards, workbooks, and ad hoc queries.
         # 
         # This parameter is required.
         self.works_id = works_id

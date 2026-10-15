@@ -14,11 +14,11 @@ class GetUserGroupInfoResponseBody(DaraModel):
         result: List[main_models.GetUserGroupInfoResponseBodyResult] = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # User group information.
+        # The user group information.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request was successful. Valid values:
         # 
         # - true: The request was successful.
         # - false: The request failed.
@@ -77,23 +77,23 @@ class GetUserGroupInfoResponseBodyResult(DaraModel):
         usergroup_id: str = None,
         usergroup_name: str = None,
     ):
-        # Creation time of the user group.
+        # The time when the user group was created, in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # Creator of the sub-user group. This is the UserID in Quick BI, not the UID in Alibaba Cloud.
+        # The creator of the child user group. This is the UserID in Quick BI, not the UID of the Alibaba Cloud account.
         self.create_user = create_user
-        # Directory level of the user group.
+        # The folder hierarchy of the user group.
         self.identified_path = identified_path
-        # Last modified time of the user group.
+        # The time when the user group was last modified, in the format of YYYY-MM-DD HH:mm:ss.
         self.modified_time = modified_time
-        # Modifier of the user group. This is the UserID in Quick BI, not the UID in Alibaba Cloud.
+        # The user who last modified the user group. This is the UserID in Quick BI, not the UID of the Alibaba Cloud account.
         self.modify_user = modify_user
-        # Parent user group ID.
+        # The ID of the parent user group.
         self.parent_usergroup_id = parent_usergroup_id
-        # Description of the user group.
+        # The description of the user group.
         self.usergroup_desc = usergroup_desc
-        # User group ID.
+        # The ID of the user group.
         self.usergroup_id = usergroup_id
-        # Name of the user group.
+        # The name of the user group.
         self.usergroup_name = usergroup_name
 
     def validate(self):
