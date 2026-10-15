@@ -19,9 +19,9 @@ class ListInvoiceCandidateResponseBody(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The list of data entries.
+        # The data list.
         self.data = data
-        # The metadata of the response.
+        # The response structure metadata.
         self.metadata = metadata
         # The number of entries per page.
         self.page_size = page_size
@@ -123,15 +123,15 @@ class ListInvoiceCandidateResponseBodyData(DaraModel):
         self.billing_cycle = billing_cycle
         # The business document number.
         self.business_id = business_id
-        # The time when the business event occurred.
+        # The time when the transaction occurred, in the YYYY-MM-DD HH:mm:ss format.
         self.business_time = business_time
         # The commodity code.
         self.commodity_code = commodity_code
         # The commodity name.
         self.commodity_name = commodity_name
-        # The creation time.
+        # The creation time, in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The ID of the invoice candidate.
+        # The ID of the invoicing object.
         self.id = id
         # The invoice issuer.
         self.invoice_issuer = invoice_issuer
@@ -145,15 +145,15 @@ class ListInvoiceCandidateResponseBodyData(DaraModel):
         self.product_code = product_code
         # The product name.
         self.product_name = product_name
-        # The ID of the resource owner account.
+        # The resource ownership account ID.
         self.resource_owner_account_id = resource_owner_account_id
-        # The name of the resource owner account.
+        # The resource ownership account name.
         self.resource_owner_account_name = resource_owner_account_name
-        # The status of the invoice candidate.
+        # The invoice object status.
         self.status = status
         # The total amount.
         self.total_amount = total_amount
-        # The type of the invoice candidate.
+        # The invoice object type.
         self.type = type
 
     def validate(self):

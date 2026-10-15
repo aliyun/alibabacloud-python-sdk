@@ -21,32 +21,32 @@ class CreateReportDefinitionResponseBody(DaraModel):
         request_id: str = None,
         subscribe_create_time: str = None,
     ):
-        # The start billing cycle for push. After a successful subscription, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly bill PDF subscriptions and does not trigger re-push of historical data. Data within the last year can be pushed.
+        # The start billing cycle for data push. After the subscription is created, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly billing PDF subscriptions, and historical data is not pushed again. Data within the most recent year can be pushed.
         self.begin_billing_cycle = begin_billing_cycle
-        # The response struct metadata.
+        # The metadata of the response structure.
         self.metadata = metadata
-        # The name of the OSS bucket for file storage.
+        # The name of the OSS bucket that stores the files.
         self.oss_bucket_name = oss_bucket_name
-        # The UID of the OSS owner that stores the files. If you are a Bid/Reseller subscriber and need to push files to a sub-account\\"s OSS, specify this parameter. The account must be a sub-account of the calling account, and the AliyunConsumeDump2OSSRole permission must be granted to this account. Regular users do not need to specify this parameter. The default value is the calling account.
+        # The UID of the OSS owner that stores the files. Specify this parameter if the subscription is made by a bidder or reseller and the files need to be pushed to the OSS bucket of a RAM user. The RAM user must be a subordinate account of the calling account and must be granted the AliyunConsumeDump2OSSRole permission. Regular users do not need to specify this parameter. The default value is the calling account.
         self.oss_bucket_owner_account_id = oss_bucket_owner_account_id
-        # The OSS bucket storage path.
+        # The storage path in the OSS bucket.
         self.oss_bucket_path = oss_bucket_path
-        # The subscription source name.
+        # The name of the subscription source.
         self.report_source_name = report_source_name
         # The subscription source. Valid values: OSS and MC.
         self.report_source_type = report_source_type
-        # The bill subscription task ID.
+        # The ID of the billing subscription task.
         self.report_task_id = report_task_id
         # The subscription type. Valid values:
-        # - consumeDetailBillV2: consumption details (supported only for OSS/MC subscriptions).
-        # - splitDetailBillV2: split details (supported only for OSS/MC subscriptions).
-        # - costDetailBillV2: cost details (supported only for OSS/MC subscriptions).
-        # - monthBillOverview: monthly bill summary (supported only for OSS/MSC_EMAIL subscriptions).
-        # - focus: FOCUS bill (supported only for OSS/MC subscriptions).
+        # - consumeDetailBillV2: consumption details. Supported only for OSS and MC subscriptions.
+        # - splitDetailBillV2: split details. Supported only for OSS and MC subscriptions.
+        # - costDetailBillV2: cost details. Supported only for OSS and MC subscriptions.
+        # - monthBillOverview: monthly bill overview. Supported only for OSS and MSC_EMAIL subscriptions.
+        # - focus: focus bills. Supported only for OSS and MC subscriptions.
         self.report_type = report_type
         # The request ID.
         self.request_id = request_id
-        # The time when the subscription was created.
+        # The time when the subscription was created. The format is YYYY-MM-DD HH:mm:ss.
         self.subscribe_create_time = subscribe_create_time
 
     def validate(self):

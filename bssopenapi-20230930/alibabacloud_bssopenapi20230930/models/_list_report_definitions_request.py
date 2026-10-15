@@ -9,7 +9,7 @@ class ListReportDefinitionsRequest(DaraModel):
         self,
         nbid: str = None,
     ):
-        # The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+        # Primary sales site ID. If empty, the current user\\"s site ID is used by default
         self.nbid = nbid
 
     def validate(self):

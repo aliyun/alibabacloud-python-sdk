@@ -17,17 +17,17 @@ class GetFundAccountTransactionDetailsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Current page number
+        # The current page number.
         self.current_page = current_page
-        # Data list
+        # The data list.
         self.data = data
-        # Response structure metadata
+        # The metadata of the response structure.
         self.metadata = metadata
-        # Page size
+        # The page size.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total number of records
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -111,73 +111,58 @@ class GetFundAccountTransactionDetailsResponseBodyData(DaraModel):
         transaction_time: str = None,
         transaction_type: str = None,
     ):
-        # Balance after the operation
+        # The balance after the operation.
         self.balance = balance
-        # Order number or bill number
+        # The order number or bill number.
         self.bill_number = bill_number
-        # External transaction serial number
+        # The external transaction serial number.
         self.channel_transaction_number = channel_transaction_number
-        # Transaction amount currency
+        # The currency of the transaction amount.
         self.currency = currency
-        # Enterprise entity ID
+        # The enterprise entity ID.
         self.fund_account_ecid = fund_account_ecid
-        # Account ID
+        # The account ID.
         self.fund_account_id = fund_account_id
-        # Account name
+        # The account name.
         self.fund_account_name = fund_account_name
-        # Alibaba Cloud account ID of the account owner
+        # The Alibaba Cloud account ID of the account owner.
         self.fund_account_owner_account_id = fund_account_owner_account_id
-        # Fund type
+        # The fund type.
         self.fund_type = fund_type
-        # Primary marketplace
+        # The primary marketplace.
         self.nbid = nbid
-        # Remarks
+        # The remark.
         self.remark = remark
-        # Site
+        # The site.
         self.site = site
-        # Corresponding transaction account, such as the Alipay top-up account or the counterparty account for transfers.
+        # The corresponding transaction account, such as the Alipay top-up account or the counterparty account for a transfer.
         self.transaction_account = transaction_account
-        # Transaction amount
+        # The transaction amount.
         self.transaction_amount = transaction_amount
-        # Transaction channel. If specified, the query filters by transaction channel. If not specified, all channels are queried by default.
-        # 
-        # User balance: ACCT_CASH.
-        # 
-        # Alipay: ALIPAY.
-        # 
-        # Alipay Zhifutong: ALIPAY_ZHIFUTONG.
-        # 
-        # Offline remittance: OFFLINE_REMIT.
-        # 
-        # Credit control quota refund: REFUND.
-        # 
-        # Online banking: UNION_PAY_BANK.
-        # 
-        # Credit card: CREDIT_CARD. (International site only)
-        # 
-        # PayPal: PAYPAL. (International site only)
+        # The list of transaction channels. If you specify this parameter, transactions are queried by channel. If you do not specify this parameter, all channels are queried by default. Valid values:
+        # - ACCT_CASH: User balance.
+        # - ALIPAY: Alipay.
+        # - ALIPAY_ZHIFUTONG: Alipay Zhifutong.
+        # - OFFLINE_REMIT: Corporate remittance.
+        # - REFUND: Credit limit refund.
+        # - UNION_PAY_BANK: Online banking.
+        # - CREDIT_CARD: Credit card. Available only on the international site.
+        # - AYPAL: PayPal. Available only on the international site.
         self.transaction_channel = transaction_channel
-        # Transaction direction: in/out (income/expenditure)
+        # The transaction direction. Valid values: in (income) and out (expense).
         self.transaction_direction = transaction_direction
-        # Transaction serial number
+        # The transaction number.
         self.transaction_number = transaction_number
-        # Formatted transaction time string
+        # The formatted string of the transaction time.
         self.transaction_time = transaction_time
-        # Transaction type. If a transaction type is specified, only results of that type are returned. If the specified type does not exist, the result is empty. If not specified, all types are returned by default.
-        # 
-        # Top-up: CHARGE.
-        # 
-        # Withdrawal: WITHDRAW.
-        # 
-        # Refund: REFUND.
-        # 
-        # Payment: PAY.
-        # 
-        # Transfer: TRANSFER.
-        # 
-        # Adjustment: ADJUST.
-        # 
-        # Order expiration refund: PAY_FAILED.
+        # The transaction type. If you specify a transaction type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+        # - CHARGE: Top-up.
+        # - WITHDRAW: Withdrawal.
+        # - REFUND: Refund.
+        # - PAY: Payment.
+        # - TRANSFER: Transfer.
+        # - ADJUST: Adjustment.
+        # - PAY_FAILED: Refund for failed order.
         self.transaction_type = transaction_type
 
     def validate(self):

@@ -24,7 +24,7 @@ class GetOrdersResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -87,9 +87,9 @@ class GetOrdersResponseBodyData(DaraModel):
         self.order_list = order_list
         # The page number.
         self.page_num = page_num
-        # The number of entries per page. A maximum of 20 entries per page is recommended. Excessive entries may cause a timeout.
+        # The number of entries per page. Set this parameter to a maximum of 20. A larger value may cause a timeout.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

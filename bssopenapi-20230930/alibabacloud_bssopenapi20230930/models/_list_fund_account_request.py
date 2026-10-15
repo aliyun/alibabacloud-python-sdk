@@ -11,11 +11,11 @@ class ListFundAccountRequest(DaraModel):
         query_only_in_use: bool = None,
         query_only_manage: bool = None,
     ):
-        # Level-1 marketplace ID. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
+        # The ID of the primary marketplace. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
         self.nbid = nbid
-        # Specifies whether to query only the active account list. Default value: false.
+        # Specifies whether to query only in-use accounts. Default value: false.
         self.query_only_in_use = query_only_in_use
-        # Specifies whether to query only the managed account list. Default value: false.
+        # Specifies whether to query only managed accounts. Default value: false.
         self.query_only_manage = query_only_manage
 
     def validate(self):

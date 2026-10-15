@@ -14,11 +14,11 @@ class ListInvoiceTitleResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
-        # Invoice title list
+        # The list of invoice titles.
         self.data = data
-        # Response metadata.
+        # The response metadata.
         self.metadata = metadata
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,23 +74,23 @@ class ListInvoiceTitleResponseBodyData(DaraModel):
         registered_landline: str = None,
         unified_social_credit_code: str = None,
     ):
-        # Bank name.
+        # The account bank name.
         self.account_bank_name = account_bank_name
-        # Account ID.
+        # The account ID.
         self.account_id = account_id
-        # Basic bank account number.
+        # The bank account number.
         self.bank_account_number = bank_account_number
-        # The time when the invoice title was created.
+        # The time when the invoice title was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # Invoice title ID.
+        # The invoice title ID.
         self.id = id
-        # Invoice title.
+        # The invoice title.
         self.invoice_title = invoice_title
-        # Registered address.
+        # The registered address.
         self.registered_address = registered_address
-        # Registered landline number.
+        # The registered landline number.
         self.registered_landline = registered_landline
-        # Unified social credit code. 15, 17, 18, or 20 characters.
+        # The unified social credit code. The code is 15, 17, 18, or 20 characters in length.
         self.unified_social_credit_code = unified_social_credit_code
 
     def validate(self):

@@ -134,6 +134,7 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.account_id = account_id
         # The account name.
         self.account_name = account_name
+        # The auto-purchase information.
         self.auto_purchase = auto_purchase
         # The capacity type name.
         self.capacitiy_type_name = capacitiy_type_name
@@ -155,24 +156,25 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.curr_capacity_view_unit = curr_capacity_view_unit
         # The current capacity display value.
         self.curr_capacity_view_value = curr_capacity_view_value
-        # The commitment cycle.
+        # The commitment period.
         self.cycle_type = cycle_type
-        # The commitment cycle code.
+        # The commitment period code.
         self.cycle_type_code = cycle_type_code
-        # The commitment cycle name.
+        # The commitment period name.
         self.cycle_type_name = cycle_type_name
-        # The list of deductible regions.
+        # The list of regions where deductions are applicable.
         self.deduct_regions = deduct_regions
+        # Indicates whether the deduction rule is enabled.
         self.enable_deduct_rule = enable_deduct_rule
-        # Indicates whether exchange is supported.
+        # Indicates whether exchanges are supported.
         self.enable_exchange = enable_exchange
         # Indicates whether renewal is supported.
         self.enable_renew = enable_renew
-        # Indicates whether upgrade is supported.
+        # Indicates whether upgrades are supported.
         self.enable_upgrade = enable_upgrade
-        # The expiration time.
+        # The expiration time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The exchange commodity code.
+        # The commodity code for exchange.
         self.exchange_commodity_code = exchange_commodity_code
         # The initial capacity base unit.
         self.init_capacity_base_unit = init_capacity_base_unit
@@ -188,7 +190,7 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.period_capacity_view_unit = period_capacity_view_unit
         # The period capacity display value.
         self.period_capacity_view_value = period_capacity_view_value
-        # The period time.
+        # The period time unit, such as hour for hours.
         self.period_time = period_time
         # The product.
         self.product = product
@@ -196,15 +198,15 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.product_code = product_code
         # The product name.
         self.product_name = product_name
-        # The purchase time.
+        # The purchase time. The value is a UNIX timestamp in milliseconds.
         self.purchase_time = purchase_time
         # The region.
         self.region = region
         # The region name.
         self.region_name = region_name
-        # The specification.
+        # The specifications.
         self.spec = spec
-        # The effective period.
+        # The effective period. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The resource status.
         self.status = status
@@ -554,9 +556,9 @@ class DescribeFrInstancesResponseBodyDataTemplate(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -591,9 +593,9 @@ class DescribeFrInstancesResponseBodyDataStatus(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -628,9 +630,9 @@ class DescribeFrInstancesResponseBodyDataProduct(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -665,9 +667,9 @@ class DescribeFrInstancesResponseBodyDataDeductRegions(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The deductible region code.
+        # The code of the region where deductions are applicable.
         self.code = code
-        # The deductible region.
+        # The region where deductions are applicable.
         self.name = name
 
     def validate(self):
@@ -702,9 +704,9 @@ class DescribeFrInstancesResponseBodyDataCycleType(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The commitment cycle code.
+        # The commitment period code.
         self.code = code
-        # The commitment cycle name.
+        # The commitment period name.
         self.name = name
 
     def validate(self):
@@ -739,9 +741,9 @@ class DescribeFrInstancesResponseBodyDataCommodity(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -776,9 +778,9 @@ class DescribeFrInstancesResponseBodyDataCapacityType(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -814,8 +816,11 @@ class DescribeFrInstancesResponseBodyDataAutoPurchase(DaraModel):
         setting_auto_purchase: bool = None,
         support_auto_purchase: bool = None,
     ):
+        # Indicates whether the resource has been auto-purchased.
         self.already_auto_purchase = already_auto_purchase
+        # Indicates whether auto-purchase is configured.
         self.setting_auto_purchase = setting_auto_purchase
+        # Indicates whether auto-purchase is supported.
         self.support_auto_purchase = support_auto_purchase
 
     def validate(self):

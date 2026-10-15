@@ -35,17 +35,17 @@ class DescribeFrInstancesRequest(DaraModel):
         self.commodity_code = commodity_code
         # The cycle type.
         self.cycle_type = cycle_type
-        # The enterprise and account list. If empty, the current account is queried.
+        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
-        # The end time.
+        # The end time, specified as a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The resource dimension for the query.
+        # The resource dimension.
         self.group = group
         # The instance name.
         self.instance_id = instance_id
-        # The instance tag label value of the resource plan instance.
+        # The label value of the resource plan instance tag.
         self.instance_tag = instance_tag
-        # The primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+        # The primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
         # The current page number.
         self.page_num = page_num
@@ -55,11 +55,11 @@ class DescribeFrInstancesRequest(DaraModel):
         self.product_code = product_code
         # The sort field.
         self.sort_field = sort_field
-        # The collation for sorting.
+        # The sorting collation.
         self.sort_rule = sort_rule
-        # The specification.
+        # The specifications.
         self.spec = spec
-        # The start time.
+        # The start time, specified as a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The resource status.
         self.status = status
@@ -202,7 +202,7 @@ class DescribeFrInstancesRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # The account list to access. If empty, all accounts under the current entity ID are selected.
+        # The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
         # The enterprise entity ID.
         # 

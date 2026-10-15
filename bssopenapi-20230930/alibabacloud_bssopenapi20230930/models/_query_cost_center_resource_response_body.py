@@ -21,13 +21,13 @@ class QueryCostCenterResourceResponseBody(DaraModel):
         self.cost_center_resource_dto_list = cost_center_resource_dto_list
         # The maximum number of records to return in a single query.
         self.max_results = max_results
-        # The response metadata.
+        # The metadata of the response structure.
         self.metadata = metadata
-        # The token for the next query. If this parameter is empty, no more results exist.
+        # The token for the next query. An empty value indicates that no more results are available.
         # 
         # This parameter is required.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -129,9 +129,9 @@ class QueryCostCenterResourceResponseBodyCostCenterResourceDtoList(DaraModel):
         root_cost_center_id: int = None,
         start_billing_month: int = None,
     ):
-        # The add strategy.
+        # The allocation strategy.
         self.add_strategy = add_strategy
-        # The Policy Name of the add policy.
+        # The added policy name.
         self.add_strategy_name = add_strategy_name
         # The number of refreshed billing cycles.
         self.applicable_period_num = applicable_period_num
@@ -145,61 +145,61 @@ class QueryCostCenterResourceResponseBodyCostCenterResourceDtoList(DaraModel):
         self.commodity_name = commodity_name
         # The code of the cost center.
         self.cost_center_code = cost_center_code
-        # The time when the cost center was created.
+        # The creation time of the cost center. The format is YYYY-MM-DD HH:mm:ss.
         self.cost_center_create_time = cost_center_create_time
         # The ID of the cost center.
         self.cost_center_id = cost_center_id
         # The name of the cost center.
         self.cost_center_name = cost_center_name
-        # The time when the cost center was last updated.
+        # The last update time of the cost center. The format is YYYY-MM-DD HH:mm:ss.
         self.cost_center_update_time = cost_center_update_time
-        # The rule version.
+        # The version of the rule.
         self.finance_unit_rule_version = finance_unit_rule_version
-        # The billing granularity ID.
+        # The ID of the billing granularity.
         self.instance_id = instance_id
-        # The associated commodity code.
+        # The code of the associated commodity.
         self.master_commodity_code = master_commodity_code
         # The associated instance ID.
         self.master_instance_id = master_instance_id
-        # The ID of the customer to whom the cost center belongs.
+        # The ID of the customer to which the cost center belongs.
         self.owner_account_id = owner_account_id
-        # The name of the customer to whom the cost center belongs.
+        # The name of the customer to which the cost center belongs.
         self.owner_account_name = owner_account_name
         # The ID of the parent cost center.
         self.parent_cost_center_id = parent_cost_center_id
-        # The product code, which is the same as the product code in User Center bills.
+        # The product code, which is the same as the product code in the User Center bill.
         self.pip_code = pip_code
-        # The product name.
+        # The name of the product.
         self.pip_name = pip_name
-        # The most recent billing cycle.
+        # The latest billing cycle.
         self.recent_billing_month = recent_billing_month
-        # The region name.
+        # The name of the region.
         self.region_name = region_name
         # The region.
         self.region_no = region_no
         # The resource group to which the resource belongs.
         self.resource_group = resource_group
-        # The resource ID.
+        # The ID of the resource.
         self.resource_id = resource_id
         # The custom nickname of the resource.
         self.resource_nick = resource_nick
-        # The resource source. Valid values:
-        # - AUTO_ALLOCATE: automatic allocation.
-        # - MANUAL_ALLOCATE: manual allocation.
+        # The source of the resource. Valid values:
+        # - AUTO_ALLOCATE: Automatic allocation.
+        # - MANUAL_ALLOCATE: Manual allocation.
         self.resource_source = resource_source
         # The tag of the resource.
         self.resource_tag = resource_tag
-        # The resource type.
+        # The type of the resource.
         self.resource_type = resource_type
-        # The time when the cost center was last updated. This is a reserved field and is currently unavailable.
+        # The last update time of the cost center. This is a reserved field and is currently unavailable. The format is YYYY-MM-DD HH:mm:ss.
         self.resource_update_time = resource_update_time
-        # The user ID of the resource owner.
+        # The ID of the user that owns the resource.
         self.resource_user_id = resource_user_id
-        # The username of the resource owner.
+        # The name of the user that owns the resource.
         self.resource_user_name = resource_user_name
         # The ID of the root cost center.
         self.root_cost_center_id = root_cost_center_id
-        # The billing cycle in which the rule takes effect.
+        # The billing cycle when the rule takes effect.
         self.start_billing_month = start_billing_month
 
     def validate(self):

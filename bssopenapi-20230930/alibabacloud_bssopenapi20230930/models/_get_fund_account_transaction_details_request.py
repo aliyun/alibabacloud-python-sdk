@@ -22,59 +22,44 @@ class GetFundAccountTransactionDetailsRequest(DaraModel):
         transaction_type: str = None,
         transaction_type_list: List[str] = None,
     ):
-        # Transaction order number
+        # The transaction order number.
         self.bill_number = bill_number
-        # Transaction channel serial number
+        # The payment reference No.
         self.channel_transaction_number = channel_transaction_number
-        # Current page number
+        # The current page number.
         self.current_page = current_page
-        # Query end timestamp (milliseconds)
+        # The end timestamp for the query. Unit: milliseconds.
         self.end_time = end_time
-        # Fund account ID. If not specified, the account ID owned by the current account (owner) is used by default.
+        # The ID of the fund account. If you do not specify this parameter, the ID of the account owned by the current user is used by default.
         self.fund_account_id = fund_account_id
-        # Page size (maximum 200)
+        # The number of entries per page. Maximum value: 200.
         self.page_size = page_size
-        # Query start timestamp (milliseconds)
+        # The start timestamp for the query. Unit: milliseconds.
         self.start_time = start_time
-        # Transaction channel. If specified, the query filters by transaction channel. If not specified, all channels are queried by default.
-        # 
-        # User balance: ACCT_CASH.
-        # 
-        # Alipay: ALIPAY.
-        # 
-        # Alipay Zhifutong: ALIPAY_ZHIFUTONG.
-        # 
-        # Offline remittance: OFFLINE_REMIT.
-        # 
-        # Credit control quota refund: REFUND.
-        # 
-        # Online banking: UNION_PAY_BANK.
-        # 
-        # Credit card: CREDIT_CARD. (International site only)
-        # 
-        # PayPal: PAYPAL. (International site only)
+        # The list of transaction channels. If you specify this parameter, transactions are queried by channel. If you do not specify this parameter, all channels are queried by default. Valid values:
+        # - ACCT_CASH: User balance.
+        # - ALIPAY: Alipay.
+        # - ALIPAY_ZHIFUTONG: Alipay Zhifutong.
+        # - OFFLINE_REMIT: Corporate remittance.
+        # - REFUND: Credit limit refund.
+        # - UNION_PAY_BANK: Online banking.
+        # - CREDIT_CARD: Credit card. Available only on the international site.
+        # - AYPAL: PayPal. Available only on the international site.
         self.transaction_channel_list = transaction_channel_list
-        # Transaction direction: in/out (fund inflow/outflow)
+        # The direction of the transaction.
         self.transaction_direction = transaction_direction
-        # Transaction serial number
+        # The transaction number.
         self.transaction_number = transaction_number
-        # Transaction type. If a transaction type is specified, only results of that type are returned. If the specified type does not exist, the result is empty. If not specified, all types are returned by default.
-        # 
-        # Top-up: CHARGE.
-        # 
-        # Withdrawal: WITHDRAW.
-        # 
-        # Refund: REFUND.
-        # 
-        # Payment: PAY.
-        # 
-        # Transfer: TRANSFER.
-        # 
-        # Adjustment: ADJUST.
-        # 
-        # Order expiration refund: PAY_FAILED.
+        # The transaction type. If you specify a transaction type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+        # - CHARGE: Top-up.
+        # - WITHDRAW: Withdrawal.
+        # - REFUND: Refund.
+        # - PAY: Payment.
+        # - TRANSFER: Transfer.
+        # - ADJUST: Adjustment.
+        # - PAY_FAILED: Refund for failed order.
         self.transaction_type = transaction_type
-        # Transaction type list. Supports querying with multiple parameters.
+        # The list of transaction types. You can specify multiple parameters for a parameter query.
         self.transaction_type_list = transaction_type_list
 
     def validate(self):

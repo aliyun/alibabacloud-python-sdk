@@ -17,38 +17,38 @@ class CreateInvoiceShrinkRequest(DaraModel):
         nbid: str = None,
         recipient_emails_shrink: str = None,
     ):
-        # Specifies the invoice amount. Supports up to two decimal places.
-        # - If not specified, the invoice will be issued for the total invoiceable amount of all invoiceCandidateIds.
-        # - If specified, the invoice will be issued for the specified amount. The specified amount cannot exceed the total invoiceable amount of all invoiceCandidateIds.
+        # Specifies the invoice amount. Two decimal places are supported.
+        # - If left empty, the invoice is issued for the total invoiceable amount of all invoice candidate IDs.
+        # - If specified, the invoice is issued for the specified amount. The specified amount cannot exceed the total invoiceable amount of all invoice candidate IDs.
         self.amount = amount
-        # Enterprise and account list. If empty, the current account is queried.
+        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
-        # List of invoice candidate IDs.
+        # The list of invoice candidate IDs.
         # 
         # This parameter is required.
         self.invoice_candidate_ids_shrink = invoice_candidate_ids_shrink
-        # Invoice mode.
-        # - 0: Independent invoicing. Expenses of multiple accounts under the enterprise are invoiced separately for each account.
-        # - 1: Consolidated invoicing. Expenses of multiple accounts under the enterprise are consolidated and invoiced under the invoicing entity.
-        # If only one account is passed in the AccountIds parameter, independent invoicing is applied.
+        # The invoicing mode. Valid values:
+        # - 0: Independent invoicing. The consumption of multiple accounts under an enterprise is invoiced independently for each account.
+        # - 1: Consolidated invoicing. The consumption of multiple accounts under an enterprise is consolidated and invoiced based on the invoicing entity.
+        # If only one account is specified in the AccountIds request parameter, independent invoicing is applied.
         # 
         # This parameter is required.
         self.invoice_mode = invoice_mode
-        # Invoice remark.
+        # The invoice remark.
         self.invoice_remark = invoice_remark
-        # Invoice title ID.
+        # The invoice title ID.
         # 
-        # - The ID parameter returned by the ListInvoiceTitle API for the current logged-in account.
+        # - The ID returned by the ListInvoiceTitle operation for the current logon account.
         # 
         # This parameter is required.
         self.invoice_title_id = invoice_title_id
-        # Invoice type.
+        # The invoice type.
         # 
         # This parameter is required.
         self.invoice_type = invoice_type
-        # Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
+        # The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
-        # List of email addresses to receive the invoice. A maximum of 3 can be specified.
+        # The list of email addresses that receive the invoice. You can specify up to three email addresses.
         # 
         # This parameter is required.
         self.recipient_emails_shrink = recipient_emails_shrink

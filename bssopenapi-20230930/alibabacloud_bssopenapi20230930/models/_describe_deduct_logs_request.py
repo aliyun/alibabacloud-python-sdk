@@ -23,33 +23,33 @@ class DescribeDeductLogsRequest(DaraModel):
         page_size: int = None,
         relation_account_ids: List[int] = None,
     ):
-        # The instance ID for billing deduction.
+        # The ID of the instance for which the billing is deducted.
         self.bill_instance_id = bill_instance_id
-        # The commodity code of the deducted item.
+        # The commodity code for deduction.
         self.billing_commodity_code = billing_commodity_code
-        # The billing end time.
+        # The billing end time. The value is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.billing_end_time = billing_end_time
-        # The billing start time.
+        # The billing start time. The value is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.billing_start_time = billing_start_time
         # The commodity code.
         self.commodity_code = commodity_code
-        # The enterprise and account list. If this parameter is empty, the current account is queried.
+        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
-        # The resource dimension for the query.
+        # The resource dimension.
         self.group = group
         # The instance name.
         self.instance_id = instance_id
-        # The primary marketplace ID. If this parameter is empty, the marketplace ID of the current user is used by default.
+        # The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
         # The current page number.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The list of deduction accounts.
+        # The list of accounts for deduction.
         self.relation_account_ids = relation_account_ids
 
     def validate(self):
@@ -152,7 +152,7 @@ class DescribeDeductLogsRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # The list of accounts to access. If this parameter is empty, all accounts under the current entity ID are selected.
+        # The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
         # The enterprise entity ID.
         # 

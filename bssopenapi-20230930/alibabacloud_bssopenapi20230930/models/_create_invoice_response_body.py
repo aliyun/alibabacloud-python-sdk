@@ -14,11 +14,11 @@ class CreateInvoiceResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
-        # Data list.
+        # The data list.
         self.data = data
-        # Response metadata.
+        # The metadata of the response structure.
         self.metadata = metadata
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -70,15 +70,15 @@ class CreateInvoiceResponseBodyData(DaraModel):
         invoice_issuer: str = None,
         message: str = None,
     ):
-        # Account ID.
+        # The account ID.
         self.account_id = account_id
-        # Invoice amount.
+        # The invoice amount.
         self.amount = amount
-        # Error code.
+        # The error code.
         self.error_code = error_code
-        # Invoice issuer.
+        # The invoicing entity.
         self.invoice_issuer = invoice_issuer
-        # Error message.
+        # The error message.
         self.message = message
 
     def validate(self):

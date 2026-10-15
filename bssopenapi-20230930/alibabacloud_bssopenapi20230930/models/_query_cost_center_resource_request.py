@@ -25,9 +25,9 @@ class QueryCostCenterResourceRequest(DaraModel):
         self.max_results = max_results
         # The ID of the primary marketplace. If this parameter is empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
-        # The token for the next query. If this parameter is empty, no more results exist.
+        # The token for the next query. An empty value indicates that no more results are available.
         self.next_token = next_token
-        # The ID of the owner of the financial unit.
+        # The ID of the owner account for the financial unit.
         self.owner_account_id = owner_account_id
 
     def validate(self):
@@ -94,7 +94,7 @@ class QueryCostCenterResourceRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # The list of account IDs to access. If this parameter is empty, all accounts under the current entity ID are selected.
+        # The list of accounts to access. If this parameter is empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
         # The ID of the enterprise entity.
         # 

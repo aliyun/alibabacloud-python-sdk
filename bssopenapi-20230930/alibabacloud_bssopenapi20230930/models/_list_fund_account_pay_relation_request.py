@@ -15,17 +15,17 @@ class ListFundAccountPayRelationRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # Fund account ID.
+        # The fund account ID.
         # 
         # This parameter is required.
         self.fund_account_id = fund_account_id
-        # The primary marketplace ID. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
+        # The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
         # The number of entries per page.
         self.page_size = page_size
-        # The relationship status.
-        # valid: valid.
-        # expired: invalid.
+        # The relationship status. Valid values:
+        # - valid: Valid.
+        # - expired: Invalid.
         self.status = status
 
     def validate(self):

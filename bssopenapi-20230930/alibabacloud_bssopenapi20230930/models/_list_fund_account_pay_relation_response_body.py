@@ -21,7 +21,7 @@ class ListFundAccountPayRelationResponseBody(DaraModel):
         self.current_page = current_page
         # The data list.
         self.data = data
-        # The response metadata.
+        # The metadata of the response structure.
         self.metadata = metadata
         # The number of entries per page.
         self.page_size = page_size
@@ -106,40 +106,37 @@ class ListFundAccountPayRelationResponseBodyData(DaraModel):
         site: str = None,
         status: str = None,
     ):
-        # The account ID of the user associated with the payment relationship, that is, the account that uses this account for payment.
+        # The account ID of the user associated with the payment relationship, which is the account that uses this account for payment.
         self.account_id = account_id
-        # The user name.
+        # The username.
         self.account_name = account_name
         # The enterprise entity ID of the user associated with the payment relationship.
         self.ecid = ecid
-        # The time when the payment relationship takes effect.
+        # The effective period of the payment relationship. The format is YYYY-MM-DD HH:mm:ss.
         self.effective_time = effective_time
         # The account ID.
         self.fund_account_id = fund_account_id
         # The Alibaba Cloud account ID of the account owner.
         self.fund_account_owner_account_id = fund_account_owner_account_id
-        # The time when the payment relationship expires.
+        # The time when the payment relationship expires. The format is YYYY-MM-DD HH:mm:ss.
         self.ineffective_time = ineffective_time
-        # The primary marketplace.
+        # The level-1 marketplace.
         self.nbid = nbid
-        # The operator name.
-        # When the operator type is aliyun_pk, the operator name is the Alibaba Cloud nickname.
-        # When the operator type is system, the operator name is "Alibaba Cloud assistant".
+        # The name of the operator. If the operator type is aliyun_pk, the value is the Alibaba Cloud nickname. If the operator type is system, the value is "Alibaba Cloud Support".
         self.operator_name = operator_name
-        # The authorized operator.
-        # When the operator type is aliyun_pk, operatorNo is the Alibaba Cloud account ID.
+        # The authorized operator. If the operator type is aliyun_pk, the value is the Alibaba Cloud account ID.
         self.operator_no = operator_no
-        # The type of the authorized operator.
-        # aliyun_pk: user.
-        # system: Alibaba Cloud system.
+        # The type of the authorized operator. Valid values:
+        # - aliyun_pk: User.
+        # - system: Alibaba Cloud system.
         self.operator_type = operator_type
-        # The relationship type, which can be collection relationship or payment relationship.
+        # The relationship type, which can be a collection relationship or a payment relationship.
         self.relation_type = relation_type
         # The site.
         self.site = site
-        # The relationship status.
-        # valid: valid.
-        # expired: invalid.
+        # The relationship status. Valid values:
+        # - valid: Valid.
+        # - expired: Invalid.
         self.status = status
 
     def validate(self):

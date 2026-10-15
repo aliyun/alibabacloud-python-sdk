@@ -136,19 +136,19 @@ class DescribeDeductLogsResponseBodyData(DaraModel):
         self.billing_commodity = billing_commodity
         # The deducted commodity code.
         self.billing_commodity_code = billing_commodity_code
-        # The deducted commodity name.
+        # The name of the offset commodity.
         self.billing_commodity_name = billing_commodity_name
-        # The expiration time.
+        # The expiration time, specified as a UNIX timestamp in milliseconds.
         self.billing_end_time = billing_end_time
-        # The deduction instance.
+        # The offset instance.
         self.billing_instance_id = billing_instance_id
-        # The deduction billable item.
+        # The offset billable item.
         self.billing_price_field = billing_price_field
-        # The deduction billable item code.
+        # The offset billable item code.
         self.billing_price_field_code = billing_price_field_code
-        # The deduction billable item name.
+        # The offset billable item name.
         self.billing_price_field_name = billing_price_field_name
-        # The effective period.
+        # The effective period, specified as a UNIX timestamp in milliseconds.
         self.billing_start_time = billing_start_time
         # The display unit of the capacity after deduction.
         self.capacity_after_deduct_view_unit = capacity_after_deduct_view_unit
@@ -174,33 +174,33 @@ class DescribeDeductLogsResponseBodyData(DaraModel):
         self.commodity_code = commodity_code
         # The commodity name.
         self.commodity_name = commodity_name
-        # The commitment cycle.
+        # The commitment period.
         self.cycle_type = cycle_type
-        # The commitment cycle code.
+        # The commitment period code.
         self.cycle_type_code = cycle_type_code
-        # The commitment cycle name.
+        # The commitment period name.
         self.cycle_type_name = cycle_type_name
-        # The deduction time.
+        # The deduction time. This value is a UNIX timestamp in milliseconds.
         self.deduct_time = deduct_time
-        # The deduction factor.
+        # The offset factor.
         self.factor = factor
-        # The ID of the account to which the instance belongs.
+        # The account ID of the instance owner.
         self.instance_belong_account_id = instance_belong_account_id
-        # The name of the account to which the instance belongs.
+        # The account name of the instance owner.
         self.instance_belong_account_name = instance_belong_account_name
         # The instance name.
         self.instance_id = instance_id
-        # The display unit of the metering amount after deduction.
+        # The display unit of the metered amount after offset.
         self.measure_after_deduct_view_unit = measure_after_deduct_view_unit
-        # The display value of the metering amount after deduction.
+        # The display value of the metered amount after offset.
         self.measure_after_deduct_view_value = measure_after_deduct_view_value
-        # The display unit of the metering amount before deduction.
+        # The display unit of the metered amount before offset.
         self.measure_before_deduct_view_unit = measure_before_deduct_view_unit
-        # The display value of the metering amount before deduction.
+        # The display value of the metered amount before offset.
         self.measure_before_deduct_view_value = measure_before_deduct_view_value
-        # The display unit of the deducted metering amount.
+        # The display unit of the metered offset amount.
         self.measure_deducted_view_unit = measure_deducted_view_unit
-        # The display value of the deducted metering amount.
+        # The display value of the metered offset amount.
         self.measure_deducted_view_value = measure_deducted_view_value
         # The product.
         self.product = product
@@ -208,9 +208,9 @@ class DescribeDeductLogsResponseBodyData(DaraModel):
         self.product_code = product_code
         # The product name.
         self.product_name = product_name
-        # The deduction account ID.
+        # The ID of the account for deduction.
         self.relation_account_id = relation_account_id
-        # The deduction account name.
+        # The name of the deduction account.
         self.relation_account_name = relation_account_name
         # The template.
         self.template = template
@@ -603,9 +603,9 @@ class DescribeDeductLogsResponseBodyDataCycleType(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The commitment cycle code.
+        # The commitment period code.
         self.code = code
-        # The commitment cycle name.
+        # The commitment period name.
         self.name = name
 
     def validate(self):

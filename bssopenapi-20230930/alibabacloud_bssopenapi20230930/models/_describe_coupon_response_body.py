@@ -20,7 +20,7 @@ class DescribeCouponResponseBody(DaraModel):
         self.current_page = current_page
         # The data list.
         self.data = data
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -110,6 +110,7 @@ class DescribeCouponResponseBodyData(DaraModel):
     ):
         # The face value.
         self.amount = amount
+        # CertainAmount
         self.certain_amount = certain_amount
         # The coupon ID.
         self.coupon_id = coupon_id
@@ -121,13 +122,13 @@ class DescribeCouponResponseBodyData(DaraModel):
         self.coupon_type_name = coupon_type_name
         # The currency.
         self.currency = currency
-        # The end time.
+        # The end time in ISO 8601 format. The time is displayed in UTC.
         self.end_time = end_time
-        # Indicates whether there is a first purchase restriction.
+        # Indicates whether the coupon is limited to first-time purchases.
         self.first_buy = first_buy
-        # The coupon issuance time.
+        # The time when the coupon was issued.
         self.gmt_create = gmt_create
-        # The product code list.
+        # The list of product codes.
         self.item_names = item_names
         # The amount limit.
         self.money_limit = money_limit
@@ -135,27 +136,27 @@ class DescribeCouponResponseBodyData(DaraModel):
         self.order_time_rule = order_time_rule
         # The remaining amount.
         self.remain_amount = remain_amount
-        # The remarks.
+        # The remark.
         self.remark = remark
-        # The shared account list.
+        # The list of shared accounts.
         self.share_uid_list = share_uid_list
-        # Indicates whether to display the tag deduction button.
+        # Specifies whether the tag deduction button is displayed.
         self.show_set_deduct_tag_button = show_set_deduct_tag_button
         # The site.
         self.site = site
         # The site name.
         self.site_name = site_name
-        # The start time.
+        # The start time in ISO 8601 format. The time is displayed in UTC.
         self.start_time = start_time
         # The status.
         self.status = status
         # The applicable account.
         self.suit_account = suit_account
-        # The applicable product type. Valid values: all, which indicates that the coupon is applicable to all products. white, which indicates that the coupon is applicable to specified products. black, which indicates that the coupon is not applicable to specified products.
+        # The applicable product type: all for all products, white for specified applicable products, and black for specified inapplicable products.
         self.suit_item_type = suit_item_type
-        # The coupon applicable scope.
+        # The application scope of the coupon.
         self.universal_type = universal_type
-        # The list of order types applicable to the coupon.
+        # The list of applicable order types for the coupon.
         self.yh_order_types = yh_order_types
 
     def validate(self):

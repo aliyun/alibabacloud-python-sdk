@@ -32,6 +32,7 @@ class DescribeCouponRequest(DaraModel):
         self.coupon_id = coupon_id
         # The coupon code.
         self.coupon_no = coupon_no
+        # The list of coupon template IDs.
         self.coupon_template_id_list = coupon_template_id_list
         # The coupon type.
         self.coupon_type = coupon_type
@@ -39,25 +40,29 @@ class DescribeCouponRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The enterprise and account list. If this parameter is left empty, the current account is queried.
+        # The list of enterprises and accounts. If this parameter is left empty, the coupons of the current account are queried.
         self.ec_id_account_ids = ec_id_account_ids
-        # The effective end time.
+        # The effective end time, specified as a UNIX timestamp in milliseconds.
         self.effective_end_time = effective_end_time
-        # The effective start time.
+        # The effective start time, specified as a UNIX timestamp in milliseconds.
         self.effective_start_time = effective_start_time
-        # The expiration end time.
+        # The expiration end time, specified as a UNIX timestamp in milliseconds.
         self.expire_end_date = expire_end_date
-        # The expiration start time.
+        # The expiration start time, specified as a UNIX timestamp in milliseconds.
         self.expire_start_date = expire_start_date
+        # Specifies whether to include shared coupons.
         self.include_share = include_share
+        # The maximum number of entries to return for a single request.
         self.max_results = max_results
-        # The primary campaign information.
+        # The first-level site information.
         self.nbid = nbid
+        # The token for the next query. If this parameter is empty, no more pages are available.
         self.next_token = next_token
-        # The number of entries per page.
+        # The page size.
         # 
         # This parameter is required.
         self.page_size = page_size
+        # The product code.
         self.product_code = product_code
         # The status.
         self.status = status
@@ -192,7 +197,7 @@ class DescribeCouponRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
+        # The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
         # The enterprise entity ID.
         self.ec_id = ec_id

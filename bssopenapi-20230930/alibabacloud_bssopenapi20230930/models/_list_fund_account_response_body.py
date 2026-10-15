@@ -14,11 +14,11 @@ class ListFundAccountResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
-        # Data list
+        # The data list.
         self.data = data
-        # Response metadata
+        # The metadata of the response structure.
         self.metadata = metadata
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,35 +76,35 @@ class ListFundAccountResponseBodyData(DaraModel):
         permissions: List[str] = None,
         site: str = None,
     ):
-        # Account creation time
+        # The time when the account was created. The format is YYYY-MM-DD HH:mm:ss.
         self.create_date = create_date
-        # Account ID of the MA user associated with the account
+        # The account ID of the MA user corresponding to the account.
         self.fund_account_admin_account_id = fund_account_admin_account_id
-        # Name of the MA user associated with the account
+        # The username of the MA user corresponding to the account.
         self.fund_account_admin_account_name = fund_account_admin_account_name
-        # Account ID
+        # The fund account ID.
         self.fund_account_id = fund_account_id
-        # Account name
+        # The fund account name.
         self.fund_account_name = fund_account_name
-        # Account ID of the fund account owner
+        # The account ID of the fund account owner.
         self.fund_account_owner_account_id = fund_account_owner_account_id
-        # Account status.
-        # VALID: valid.
-        # FROZEN: frozen.
-        # CLOSED: closed.
+        # The account status. Valid values:
+        # - VALID: Valid.
+        # - FROZEN: Frozen. 
+        # - CLOSED: Closed.
         self.fund_account_status = fund_account_status
-        # Account type.
-        # DIRECT_USER: Alibaba Cloud direct customer account.
-        # RESELLER_QUOTA: ecosystem account.
+        # The account type. Valid values:
+        # - DIRECT_USER: Alibaba Cloud direct customer account. 
+        # - RESELLER_QUOTA: Ecosystem account.
         self.fund_account_type = fund_account_type
-        # Level-1 marketplace
+        # The primary marketplace.
         self.nbid = nbid
-        # Set of account permissions that the user has.
-        # using: use.
-        # manage: manage.
-        # owner: own.
+        # The set of account permissions owned by the user. Valid values:
+        # - using: Use.
+        # - manage: Manage.
+        # - owner: Own.
         self.permissions = permissions
-        # Site
+        # The site.
         self.site = site
 
     def validate(self):

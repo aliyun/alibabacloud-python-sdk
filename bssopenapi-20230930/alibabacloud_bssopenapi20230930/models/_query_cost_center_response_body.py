@@ -17,11 +17,11 @@ class QueryCostCenterResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of cost center data.
+        # The data list.
         self.cost_center_dto_list = cost_center_dto_list
         # The current page number.
         self.current_page = current_page
-        # The metadata of the response struct.
+        # The response metadata.
         self.metadata = metadata
         # The number of entries per page.
         self.page_size = page_size
@@ -106,9 +106,9 @@ class QueryCostCenterResponseBodyCostCenterDtoList(DaraModel):
         self.cost_center_id = cost_center_id
         # The name of the cost center. The name must be unique within the same account.
         self.cost_center_name = cost_center_name
-        # The level of the cost center node.
+        # The node level of the cost center.
         self.level = level
-        # The ID of the user who owns the cost center.
+        # The ID of the owner account for the cost center.
         self.owner_account_id = owner_account_id
         # The ID of the parent cost center.
         self.parent_cost_center_id = parent_cost_center_id

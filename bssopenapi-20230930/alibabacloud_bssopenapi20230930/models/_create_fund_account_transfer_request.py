@@ -24,11 +24,11 @@ class CreateFundAccountTransferRequest(DaraModel):
         # This parameter is required.
         self.currency = currency
         # The asset type. Currently, only cash is supported. Valid values:
-        # - cash: cash.
+        # - cash: Cash.
         # 
         # This parameter is required.
         self.finance_type = finance_type
-        # The ID of the source account (payer account ID).
+        # The ID of the source account.
         # 
         # This parameter is required.
         self.from_fund_account_id = from_fund_account_id
@@ -36,13 +36,13 @@ class CreateFundAccountTransferRequest(DaraModel):
         # 
         # This parameter is required.
         self.remark = remark
-        # The ID of the destination account (payee account ID).
+        # The ID of the destination account.
         # 
         # This parameter is required.
         self.to_fund_account_id = to_fund_account_id
         # The transfer type. Valid values:
-        # - grant: transfer.
-        # - recycle: revocation.
+        # - grant: Allocation.
+        # - recycle: Revocation.
         # 
         # This parameter is required.
         self.transfer_type = transfer_type

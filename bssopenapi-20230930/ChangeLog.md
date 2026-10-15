@@ -1,3 +1,7 @@
+2026-10-15 Version: 2.0.1
+- Update API ListReportDefinitions: add response parameters Body.ReportDefinitions.$.AutoTagFields.
+
+
 2026-09-23 Version: 2.0.0
 - Support API AddCreditSeats.
 - Support API CreateCreditSeat.
