@@ -29,23 +29,41 @@ class AppServiceAggregate(DaraModel):
         status: str = None,
         user_id: str = None,
     ):
+        # The business ID of the application instance.
         self.biz_id = biz_id
+        # The deletion flag.
         self.deleted = deleted
+        # The end time. It is in ISO 8601 format and uses the UTC (Z) time zone.
         self.end_time = end_time
+        # esp bizId
         self.esp_biz_id = esp_biz_id
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The operation address of the application.
         self.group = group
+        # The associated business ID.
         self.instance_biz_id = instance_biz_id
+        # The service name.
         self.name = name
+        # The list of flow nodes.
         self.node_list = node_list
+        # The unique identifier for an operation.
         self.operation_address = operation_address
+        # The configuration information of the application service.
         self.profile = profile
+        # The service type.
         self.service_type = service_type
+        # The description of the service type.
         self.service_type_text = service_type_text
+        # The application identifier.
         self.slug = slug
+        # The start time. It is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The status.
         self.status = status
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

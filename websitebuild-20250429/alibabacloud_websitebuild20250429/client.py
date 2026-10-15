@@ -382,6 +382,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.deploy_type):
+            query['DeployType'] = request.deploy_type
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.domain_type):
@@ -418,6 +420,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.deploy_type):
+            query['DeployType'] = request.deploy_type
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.domain_type):
@@ -554,6 +558,8 @@ class Client(OpenApiClient):
             query['BelongIdType'] = request.belong_id_type
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.desired_total):
+            query['DesiredTotal'] = request.desired_total
         if not DaraCore.is_null(request.esp_biz_id):
             query['EspBizId'] = request.esp_biz_id
         if not DaraCore.is_null(request.order_component_params):
@@ -594,6 +600,8 @@ class Client(OpenApiClient):
             query['BelongIdType'] = request.belong_id_type
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.desired_total):
+            query['DesiredTotal'] = request.desired_total
         if not DaraCore.is_null(request.esp_biz_id):
             query['EspBizId'] = request.esp_biz_id
         if not DaraCore.is_null(request.order_component_params):
@@ -1720,6 +1728,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.butler_channel_types_json):
+            query['ButlerChannelTypesJson'] = request.butler_channel_types_json
+        if not DaraCore.is_null(request.butler_fields_json):
+            query['ButlerFieldsJson'] = request.butler_fields_json
         if not DaraCore.is_null(request.channels_json):
             query['ChannelsJson'] = request.channels_json
         if not DaraCore.is_null(request.description):
@@ -1770,6 +1782,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.butler_channel_types_json):
+            query['ButlerChannelTypesJson'] = request.butler_channel_types_json
+        if not DaraCore.is_null(request.butler_fields_json):
+            query['ButlerFieldsJson'] = request.butler_fields_json
         if not DaraCore.is_null(request.channels_json):
             query['ChannelsJson'] = request.channels_json
         if not DaraCore.is_null(request.description):
@@ -2646,6 +2662,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
         req = open_api_util_models.OpenApiRequest(
@@ -2676,6 +2694,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
         req = open_api_util_models.OpenApiRequest(

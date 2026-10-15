@@ -26,10 +26,11 @@ class ListAppInstancesRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
+        # The list of business IDs for the application instances.
         self.biz_ids = biz_ids
-        # The start time of the expiration range.
+        # The expiration start time.
         self.end_time_begin = end_time_begin
-        # The end time of the expiration range.
+        # The expiration end time.
         self.end_time_end = end_time_end
         # The extended information.
         self.extend = extend
@@ -37,19 +38,19 @@ class ListAppInstancesRequest(DaraModel):
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if there is no next query.
+        # The token used to start the next query. This parameter is empty if no next query exists.
         self.next_token = next_token
-        # The field used for sorting.
+        # The sort field.
         self.order_column = order_column
-        # The sort type. Valid values: ASC and DESC.
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The query parameter.
+        # The query parameters.
         self.query = query
-        # The query mode. CONTENT_CREATION indicates a lightweight query for the content creation site selector, which only queries published sites and does not load aggregated information such as Profile, services, or AI Staff.
+        # The query mode. A value of CONTENT_CREATION indicates a lightweight query for the content creation site selector, which queries only published sites and does not load aggregated information such as profiles, services, and AI staff.
         self.query_mode = query_mode
         # The status range.
         self.status_list = status_list

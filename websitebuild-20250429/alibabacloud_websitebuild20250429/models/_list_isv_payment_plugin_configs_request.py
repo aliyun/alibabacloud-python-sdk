@@ -13,11 +13,11 @@ class ListIsvPaymentPluginConfigsRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
-        # The number of entries per query.
+        # The maximum number of results to return per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if there is no next query.
+        # The token that is used to start the next query. If no more results are available, this value is empty.
         self.next_token = next_token
 
     def validate(self):

@@ -12,10 +12,13 @@ class AppAiStaff(DaraModel):
         staff_type: str = None,
         status: str = None,
     ):
+        # The employee ID.
         self.staff_id = staff_id
+        # The employee name.
         self.staff_name = staff_name
+        # The employee type.
         self.staff_type = staff_type
-        # 可能的值：unknown, init, testing, online
+        # Valid values: unknown, init, testing, and online.
         self.status = status
 
     def validate(self):

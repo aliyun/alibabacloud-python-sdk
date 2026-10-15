@@ -50,7 +50,7 @@ class ListPromotionActivitiesForPartnerResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The root error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is processed synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -222,13 +222,13 @@ class ListPromotionActivitiesForPartnerResponseBodyModuleActivities(DaraModel):
         self.activity_type = activity_type
         # The consumed quota.
         self.consumed_quota = consumed_quota
-        # The creation time.
+        # The creation time. The value is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The user who created the activity.
         self.created_by = created_by
         # The eligibility configuration in JSON format.
         self.eligibility_config = eligibility_config
-        # The end date.
+        # The end date. The value is in the YYYY-MM-DD HH:mm:ss Z format, where Z is the time zone offset.
         self.end_date = end_date
         # The offer configuration in JSON format.
         self.offer_config = offer_config
@@ -236,7 +236,7 @@ class ListPromotionActivitiesForPartnerResponseBodyModuleActivities(DaraModel):
         self.offer_config_summary = offer_config_summary
         # The remaining quota.
         self.remaining_quota = remaining_quota
-        # The start date.
+        # The start date. The value is in the ISO 8601 format with the time zone set to UTC (Z).
         self.start_date = start_date
         # The activity status.
         self.status = status
@@ -244,7 +244,7 @@ class ListPromotionActivitiesForPartnerResponseBodyModuleActivities(DaraModel):
         self.total_quota = total_quota
         # The touchpoint configuration in JSON format.
         self.touchpoint_config = touchpoint_config
-        # The update time.
+        # The update time. The value is in the ISO 8601 format with a time zone offset.
         self.update_time = update_time
         # The user who last updated the activity.
         self.updated_by = updated_by

@@ -24,26 +24,26 @@ class ListIsvPaymentPluginConfigsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reasons why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
         # The app name.
         self.app_name = app_name
-        # The dynamic code. Not currently used. Ignore this parameter.
+        # The dynamic code. This parameter is not used and can be ignored.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
-        # The number of entries per query.
+        # The maximum number of results to return per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response data.
         self.module = module
-        # The token for the next query. This parameter is empty if there is no next query.
+        # The token that is used to start the next query. If no more results are available, this value is empty.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -171,13 +171,13 @@ class ListIsvPaymentPluginConfigsResponseBodyModule(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
-        # The extension information.
+        # The extended information.
         self.extend = extend
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in seconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The modification time.
+        # The update time. The value is in the ISO 8601 format and the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time

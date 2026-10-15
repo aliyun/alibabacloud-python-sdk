@@ -15,12 +15,19 @@ class AppServiceProfile(DaraModel):
         service_spec: str = None,
         service_spec_text: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The design type.
         self.design_type = design_type
+        # The design type description.
         self.design_type_text = design_type_text
+        # The Lingxiao instance ID.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
+        # The service specification.
         self.service_spec = service_spec
+        # The service specification description.
         self.service_spec_text = service_spec_text
 
     def validate(self):

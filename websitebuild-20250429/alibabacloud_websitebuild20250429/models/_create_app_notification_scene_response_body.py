@@ -22,7 +22,7 @@ class CreateAppNotificationSceneResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
@@ -40,9 +40,9 @@ class CreateAppNotificationSceneResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -132,7 +132,7 @@ class CreateAppNotificationSceneResponseBodyModule(DaraModel):
         self,
         id: str = None,
     ):
-        # The ID of the created scenario.
+        # The ID of the newly created scenario.
         self.id = id
 
     def validate(self):

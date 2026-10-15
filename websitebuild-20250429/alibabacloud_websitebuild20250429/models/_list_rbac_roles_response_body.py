@@ -36,7 +36,7 @@ class ListRbacRolesResponseBody(DaraModel):
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
-        # The number of entries per query.
+        # The maximum number of entries to return per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
@@ -172,7 +172,7 @@ class ListRbacRolesResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Indicates whether the query results exceed the server-side limit of 1,000 records (excluding pagination limits). If the results exceed 1,000 entries, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # Indicates whether the server-side result limit is reached. The server processes up to 1,000 recent records beyond pagination limits. If the results exceed 1,000, **ResultLimit** is **true** and you must narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -268,13 +268,13 @@ class ListRbacRolesResponseBodyModuleNext(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # The time when the task was created.
+        # The time when the task was created. The value is in the YYYY-MM-DD HH:mm:ss format.
         self.created_at = created_at
         # The primary key.
         self.id = id
-        # Indicates whether this is the default private gateway.
+        # Indicates whether this is the default dedicated gateway.
         self.is_default = is_default
-        # Indicates whether this is a system-defined approval template. Valid values:
+        # Indicates whether the approval template is system-defined. Valid values:
         # - 1: Yes.
         # - 0: No.
         self.is_system = is_system
@@ -343,7 +343,7 @@ class ListRbacRolesResponseBodyModuleData(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # The creation date.
+        # The creation date. The value is in ISO 8601 format with the time zone set to UTC (Z).
         self.created_at = created_at
         # The primary key.
         self.id = id
@@ -351,7 +351,7 @@ class ListRbacRolesResponseBodyModuleData(DaraModel):
         # - **0**: Not the default report.
         # - **1**: The default report.
         self.is_default = is_default
-        # Indicates whether this is a system-defined approval template. Valid values:
+        # Indicates whether the approval template is system-defined. Valid values:
         # - 1: Yes.
         # - 0: No.
         self.is_system = is_system

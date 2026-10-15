@@ -24,9 +24,9 @@ class QuerySupabaseConfigsForAdminResponseBody(DaraModel):
     ):
         # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Indicates whether retries are allowed. Valid values:
+        # - false: Retries are not allowed.
+        # - true: Retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -34,7 +34,7 @@ class QuerySupabaseConfigsForAdminResponseBody(DaraModel):
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The error parameters returned.
         self.error_args = error_args
         # The task object.
         self.module = module
@@ -42,7 +42,7 @@ class QuerySupabaseConfigsForAdminResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # Indicates whether the request is synchronously processed.
         self.synchro = synchro

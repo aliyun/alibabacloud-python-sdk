@@ -28,19 +28,15 @@ class ListAppTemplatesRequest(DaraModel):
         self.industry = industry
         # The search keyword.
         self.keyword = keyword
-        # The number of entries per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The number of results returned per query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. This parameter is empty if there is no next query.
         self.next_token = next_token
-        # The sort field. Only copyCount and gmtModified are supported.
         self.order_column = order_column
-        # The sort direction. Valid values: ASC and DESC. Default value: DESC.
         self.order_type = order_type
         # The page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The edition.
         self.product_version = product_version

@@ -40,9 +40,9 @@ class AllocateSupabaseForAdminResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is processed synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -166,11 +166,11 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         self.db_public_url = db_public_url
         # The database type.
         self.db_type = db_type
-        # The additional information.
+        # The extra information.
         self.extra = extra
         # The time when the instance creation was completed.
         self.instance_create_finished_time = instance_create_finished_time
-        # The creation status of the instance.
+        # The instance creation status.
         self.instance_create_status = instance_create_status
         # The deletion flag.
         self.is_deleted = is_deleted
@@ -179,8 +179,8 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         # The service key.
         self.service_key = service_key
         # The instance status. Valid values:
-        # - 0: paused
-        # - 1: running
+        # - 0: Paused.
+        # - 1: Running.
         self.status = status
         # The password for the Supabase Dashboard.
         self.supabase_dashboard_password = supabase_dashboard_password

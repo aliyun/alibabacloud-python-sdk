@@ -22,18 +22,18 @@ class UpdateAppChatMessageResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reasons for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
-        # The dynamic code. This parameter is not currently used. Ignore this parameter.
+        # The dynamic code. This parameter is not used and can be ignored.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error arguments.
+        # The error parameters.
         self.error_args = error_args
         # The response object.
         self.module = module
@@ -41,7 +41,7 @@ class UpdateAppChatMessageResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The root error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # Indicates whether the request is processed synchronously.
         self.synchro = synchro
@@ -151,44 +151,44 @@ class UpdateAppChatMessageResponseBodyModule(DaraModel):
         self.bot_id = bot_id
         # The chat ID.
         self.chat_id = chat_id
-        # The current conversation status.
+        # The current chat status.
         self.chat_status = chat_status
-        # The ID of the data API operation that is called.
+        # The ID of the called data API.
         self.content = content
         # The content type.
         self.content_type = content_type
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in seconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The modification time.
+        # The update time in ISO 8601 format in the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
         # The message ID.
         self.message_id = message_id
-        # The business extension metadata in Map format. The value must be a JSON string.
+        # The business extension metadata in map format. The value must be a JSON string.
         self.meta_data = meta_data
-        # The probability of not wearing a mask, not wearing work clothes, or not wearing a hat.
+        # The probability of not wearing a mask, uniform, or hat.
         self.no = no
         # The role of the conversation participant. Valid values:
         # 
-        # - user: user
+        # - user: User
         # 
-        # - assistant: assistant
+        # - assistant: Assistant
         # 
-        # - system: system
-        # - function: function
+        # - system: System
+        # - function: Function
         # 
-        # - plugin: plug-in
+        # - plugin: Plug-in
         # 
-        # - tool: tool
+        # - tool: Tool
         self.role = role
         # The section ID of the check item.
         self.section_id = section_id
-        # The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
         # The file type.
         self.type = type

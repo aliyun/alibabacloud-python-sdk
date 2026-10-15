@@ -22,24 +22,25 @@ class ListAppPublishHistoryRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
+        # The deployment channel.
         self.deploy_channel = deploy_channel
         # The search keyword.
         self.keyword = keyword
-        # The number of entries per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The maximum number of entries to return for a single query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. This parameter is empty if no next query is available.
         self.next_token = next_token
         # The page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
+        # The release environment.
         self.publish_env = publish_env
-        # The sort method.
+        # The sort order.
         self.sort = sort
-        # The publish status.
+        # The release status.
         self.status = status
+        # The release subchannel.
         self.subchannel = subchannel
         # The website domain name.
         self.website_domain = website_domain

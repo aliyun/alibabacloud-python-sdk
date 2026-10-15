@@ -30,10 +30,10 @@ class QuerySupabaseInstanceInfoForAdminResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage** response element.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the **DtsJobId** request parameter is invalid.
+        # The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The error parameters returned.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -41,9 +41,9 @@ class QuerySupabaseInstanceInfoForAdminResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -159,29 +159,27 @@ class QuerySupabaseInstanceInfoForAdminResponseBodyModule(DaraModel):
         self.anon_key = anon_key
         # The business ID.
         self.biz_id = biz_id
-        # The time when the database instance was created.
+        # The creation time of the database instance.
         self.db_instance_create_time = db_instance_create_time
         # The database instance ID.
         self.db_instance_id = db_instance_id
         # The public URL of the database.
         self.db_public_url = db_public_url
-        # The database type. Valid values:
-        # - rds
-        # - polardb.
+        # The database type (rds/polardb).
         self.db_type = db_type
-        # The additional information.
+        # The extra information.
         self.extra = extra
         # The time when the instance creation was completed.
         self.instance_create_finished_time = instance_create_finished_time
-        # The creation status of the instance.
+        # The instance creation status.
         self.instance_create_status = instance_create_status
         # The deletion flag.
         self.is_deleted = is_deleted
-        # The password for accessing the ApsaraDB RDS database.
+        # The access password of the RDS database.
         self.rds_database_password = rds_database_password
         # The service key.
         self.service_key = service_key
-        # The instance status. Valid values:
+        # The status. Valid values:
         # - 0: Paused.
         # - 1: Running.
         self.status = status
@@ -189,7 +187,7 @@ class QuerySupabaseInstanceInfoForAdminResponseBodyModule(DaraModel):
         self.supabase_dashboard_password = supabase_dashboard_password
         # The username for the Supabase Dashboard.
         self.supabase_dashboard_user_name = supabase_dashboard_user_name
-        # The time when the Supabase instance was created.
+        # The creation time of the Supabase instance.
         self.supabase_instance_create_time = supabase_instance_create_time
         # The Supabase instance ID.
         self.supabase_instance_id = supabase_instance_id

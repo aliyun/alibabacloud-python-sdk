@@ -17,11 +17,9 @@ class ListAppChatMessagesRequest(DaraModel):
         self.chat_id = chat_id
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The number of entries per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The maximum number of results per query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. This parameter is empty if there is no next query.
         self.next_token = next_token
         # The section ID.
         self.section_id = section_id

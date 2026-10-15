@@ -9,7 +9,7 @@ class GetAppInstanceTempShortUrlRequest(DaraModel):
         self,
         biz_id: str = None,
     ):
-        # The business ID of the application.
+        # The application business ID.
         self.biz_id = biz_id
 
     def validate(self):

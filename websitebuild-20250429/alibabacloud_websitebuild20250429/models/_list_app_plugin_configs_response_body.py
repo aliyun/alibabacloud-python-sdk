@@ -24,7 +24,7 @@ class ListAppPluginConfigsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
@@ -32,8 +32,8 @@ class ListAppPluginConfigsResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** return parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The returned error parameters.
         self.error_args = error_args
@@ -51,7 +51,7 @@ class ListAppPluginConfigsResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is processed synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -183,11 +183,11 @@ class ListAppPluginConfigsResponseBodyModule(DaraModel):
         self.enabled = enabled
         # The extension information.
         self.extend = extend
-        # The creation time.
+        # The creation time. The time is in ISO 8601 format in UTC (Z).
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The modification time.
+        # The modification time. The time is in ISO 8601 format in UTC (Z).
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time

@@ -24,25 +24,23 @@ class ListAppTemplatesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not used and can be ignored.
         self.dynamic_message = dynamic_message
-        # The error arguments.
+        # The error parameters.
         self.error_args = error_args
-        # The number of entries per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The number of results returned per query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response data.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. This parameter is empty if there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -162,7 +160,7 @@ class ListAppTemplatesResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The request result.
+        # The request results.
         self.data = data
         # The decision weight.
         self.next = next
@@ -172,7 +170,7 @@ class ListAppTemplatesResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to the pagination limit, the server processes a maximum of 1000 recent records for the current query. If the result exceeds 1000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # Indicates whether the query result is truncated. In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is set to **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is set to **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -296,7 +294,7 @@ class ListAppTemplatesResponseBodyModuleNext(DaraModel):
         self.color_scheme = color_scheme
         # The color scheme name.
         self.color_scheme_name = color_scheme_name
-        # The actual amount of data copied from the original table during a DMS lock-free schema change.
+        # The actual amount of data copied from the original table during a DMS lock-free change.
         self.copy_count = copy_count
         # The tenant user information.
         self.creator = creator
@@ -306,41 +304,42 @@ class ListAppTemplatesResponseBodyModuleNext(DaraModel):
         self.gmt_modified = gmt_modified
         # The primary key.
         self.id = id
-        # The industry. Default value: **common** (general industry). Valid values:
+        # The industry. Default value: **common** (General industry). Valid values:
         # 
-        # - **microVideo**: short video industry.
+        # - **microVideo**: Short video industry.
         # 
-        # - **common**: general industry.
+        # - **common**: General industry.
         self.industry = industry
         # The industry name.
         self.industry_name = industry_name
+        # Specifies whether the template is recommended.
         self.is_recommended = is_recommended
-        # The ID of the user who last modified the resource.
+        # The ID of the last modifier.
         self.last_modifier = last_modifier
         # The number of likes.
         self.like_count = like_count
-        # Indicates whether the current user has liked this item.
+        # Indicates whether the current user has liked the item.
         self.liked = liked
-        # The fix content.
+        # The fix details.
         self.metadata = metadata
         # The preview URL.
         self.preview_url = preview_url
-        # The product edition. Valid values:
+        # The product version. Valid values:
         # - **BasicVersion**: Basic Edition.
         # - **EnterpriseVersion**: Enterprise Edition.
-        # > This parameter is required only when ProductForm is set to IntegrationForm.
+        # > Specify this parameter only when ProductForm is set to IntegrationForm.
         self.product_version = product_version
-        # The product edition name.
+        # The edition name.
         self.product_version_name = product_version_name
         # The number of shares.
         self.share_count = share_count
-        # The status. Valid values: unknown, init, testing, online.
+        # The status. Valid values: unknown, init, testing, and online.
         self.status = status
         # The template ID.
         self.template_id = template_id
         # The template name.
         self.template_name = template_name
-        # The application thumbnail URL.
+        # The application thumbnail.
         self.thumbnail_url = thumbnail_url
         # The number of views.
         self.view_count = view_count
@@ -555,41 +554,42 @@ class ListAppTemplatesResponseBodyModuleData(DaraModel):
         self.color_scheme = color_scheme
         # The color scheme name.
         self.color_scheme_name = color_scheme_name
-        # The actual amount of data copied from the original table during a DMS lock-free schema change.
+        # The actual amount of data copied from the original table during a DMS lock-free change.
         self.copy_count = copy_count
         # The creator ID.
         self.creator = creator
-        # The creation time.
+        # The creation time. The time is displayed in ISO 8601 format in UTC (Z).
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The modification time.
+        # The modification time. The time is a UNIX timestamp in milliseconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
         # The primary key.
         self.id = id
-        # The industry of the file to be analyzed. Default value: **common** (general industry). Select an appropriate industry so that the backend matches the algorithm combination applicable to the industry. Valid values: 
+        # The industry of the file to be analyzed. Default value: **common** (general industry). Select an appropriate industry so that the backend can match the applicable algorithm combination. Valid values: 
         # 
-        # - **microVideo**: short video industry.
-        # - **common**: general industry.
+        # - **microVideo**: short video industry
+        # - **common**: general industry
         self.industry = industry
         # The industry name.
         self.industry_name = industry_name
+        # Specifies whether the template is recommended.
         self.is_recommended = is_recommended
-        # The ID of the last modifier.
+        # The last modifier ID.
         self.last_modifier = last_modifier
         # The number of likes.
         self.like_count = like_count
-        # Indicates whether the current user has liked this item.
+        # Indicates whether the current user has liked the item.
         self.liked = liked
         # The repair action.
         self.metadata = metadata
         # The preview URL.
         self.preview_url = preview_url
         # The product version. Valid values:
-        # - **BasicVersion**: Basic Edition.
-        # - **EnterpriseVersion**: Enterprise Edition.
+        # - **BasicVersion**: Basic Edition
+        # - **EnterpriseVersion**: Enterprise Edition
         self.product_version = product_version
         # The edition name.
         self.product_version_name = product_version_name
@@ -600,9 +600,9 @@ class ListAppTemplatesResponseBodyModuleData(DaraModel):
         # The template ID.
         self.template_id = template_id
         # The template name.
-        # - Maximum length: 128.
+        # - The maximum length is 128 characters.
         self.template_name = template_name
-        # The application thumbnail URL.
+        # The application thumbnail.
         self.thumbnail_url = thumbnail_url
         # The number of views.
         self.view_count = view_count

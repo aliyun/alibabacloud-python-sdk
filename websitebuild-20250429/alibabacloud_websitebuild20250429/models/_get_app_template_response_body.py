@@ -22,7 +22,7 @@ class GetAppTemplateResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied details.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
@@ -30,20 +30,20 @@ class GetAppTemplateResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
         # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
-        # Indicates whether the deletion is successful.
+        # Indicates whether the deletion was successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -173,7 +173,7 @@ class GetAppTemplateResponseBodyModule(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # modify time
+        # The modification time in ISO 8601 format. The time zone is UTC (Z).
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
@@ -199,7 +199,7 @@ class GetAppTemplateResponseBodyModule(DaraModel):
         # 
         # > The `file_path` field in the metadata map of a document search knowledge base is meaningless. Do not use it in your business code.
         # 
-        # > When retrieving a document search knowledge base, if a chunk contains images, the image URL is returned through the `image_url` field in the metadata map, along with an expiration time.
+        # > When retrieving a document search knowledge base, if a chunk contains images, the image URL is returned in the `image_url` field of the metadata map, along with an expiration time.
         # 
         # 
         # <props="intl">
@@ -208,7 +208,7 @@ class GetAppTemplateResponseBodyModule(DaraModel):
         # 
         # > The `file_path` field in the metadata map of a document search knowledge base is meaningless. Do not use it in your business code.
         # 
-        # > When retrieving a document search knowledge base, if a chunk contains images, the image URL is returned through the `image_url` field in the metadata map, along with an expiration time.
+        # > When retrieving a document search knowledge base, if a chunk contains images, the image URL is returned in the `image_url` field of the metadata map, along with an expiration time.
         self.metadata = metadata
         # The preview URL.
         self.preview_url = preview_url
@@ -233,7 +233,7 @@ class GetAppTemplateResponseBodyModule(DaraModel):
         self.view_count = view_count
         # The weight of the hot word. Valid values: integers in the range of [1, 5].
         # Common value: 4.
-        # If the effect is not obvious, increase the weight as needed. However, a large weight may cause negative effects and lead to inaccurate recognition of other words.
+        # If the effect is not obvious, increase the weight as needed. However, an excessively large weight may cause negative effects and lead to inaccurate recognition of other words.
         self.weight = weight
 
     def validate(self):

@@ -15,6 +15,10 @@ from ._app_service import AppService
 from ._app_service_aggregate import AppServiceAggregate
 from ._app_service_group import AppServiceGroup
 from ._app_service_profile import AppServiceProfile
+from ._brand_knowledge_document import BrandKnowledgeDocument
+from ._content_plan import ContentPlan
+from ._content_plan_generation_task import ContentPlanGenerationTask
+from ._content_plan_topic import ContentPlanTopic
 from ._promotion_activity import PromotionActivity
 from ._template_record import TemplateRecord
 from ._tree_node import TreeNode
@@ -599,6 +603,9 @@ from ._upload_material_file_for_admin_response import UploadMaterialFileForAdmin
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetailBindData
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetail
 from ._app_instance_aggregate import AppInstanceAggregateTags
+from ._app_instance_profile import AppInstanceProfileIndependentDeployment
+from ._content_plan_generation_task import ContentPlanGenerationTaskAnalysisModules
+from ._content_plan_generation_task import ContentPlanGenerationTaskAnalysis
 from ._module_data_components_value import ModuleDataComponentsValueInstancePropertyValues
 from ._module_data_components_value import ModuleDataComponentsValueInstanceProperty
 from ._module_data_properties_value import ModuleDataPropertiesValueValues
@@ -851,6 +858,10 @@ __all__ = [
     AppServiceAggregate,
     AppServiceGroup,
     AppServiceProfile,
+    BrandKnowledgeDocument,
+    ContentPlan,
+    ContentPlanGenerationTask,
+    ContentPlanTopic,
     PromotionActivity,
     TemplateRecord,
     TreeNode,
@@ -1435,6 +1446,9 @@ __all__ = [
     AppInstanceAggregatePartnerDetailBindData,
     AppInstanceAggregatePartnerDetail,
     AppInstanceAggregateTags,
+    AppInstanceProfileIndependentDeployment,
+    ContentPlanGenerationTaskAnalysisModules,
+    ContentPlanGenerationTaskAnalysis,
     ModuleDataComponentsValueInstancePropertyValues,
     ModuleDataComponentsValueInstanceProperty,
     ModuleDataPropertiesValueValues,

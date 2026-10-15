@@ -12,10 +12,13 @@ class AppServiceGroup(DaraModel):
         type: str = None,
         url: str = None,
     ):
+        # The name.
         self.name = name
+        # The QR code.
         self.qr_code = qr_code
-        # 例如：dingtalk、wx 等
+        # The group type, such as dingtalk and wx.
         self.type = type
+        # The URL.
         self.url = url
 
     def validate(self):

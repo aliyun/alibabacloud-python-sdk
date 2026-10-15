@@ -22,17 +22,17 @@ class GetAppInstanceTempShortUrlResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
-        # The dynamic code. This parameter is not in use. Ignore this parameter.
+        # The dynamic code. This field is currently unused and can be ignored.
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -40,7 +40,7 @@ class GetAppInstanceTempShortUrlResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro
@@ -134,11 +134,11 @@ class GetAppInstanceTempShortUrlResponseBodyModule(DaraModel):
         temp_short_url: str = None,
         url: str = None,
     ):
-        # The expiration time.
+        # The expiration time in UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.expire_at_time = expire_at_time
-        # The temporary short URL.
+        # The temporary short link.
         self.temp_short_url = temp_short_url
         # The full URL.
         self.url = url

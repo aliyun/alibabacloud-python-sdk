@@ -29,7 +29,7 @@ class NotifyAppNotificationForAdminResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the %s variable in the ErrMessage response parameter.
+        # The dynamic error message. This parameter is used to replace the %s placeholder in the ErrMessage error message.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
@@ -41,7 +41,7 @@ class NotifyAppNotificationForAdminResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

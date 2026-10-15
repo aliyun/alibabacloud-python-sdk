@@ -22,18 +22,18 @@ class GetAppConversationResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
+        # The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -41,9 +41,9 @@ class GetAppConversationResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Specifies whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -151,11 +151,11 @@ class GetAppConversationResponseBodyModule(DaraModel):
         self.chat_num = chat_num
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in seconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The update time.
+        # The update time in ISO 8601 format in the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
@@ -163,7 +163,7 @@ class GetAppConversationResponseBodyModule(DaraModel):
         self.meta_data = meta_data
         # The section ID of the check item.
         self.section_id = section_id
-        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
         self.site_id = site_id
         # The current viewpoint, which is equivalent to the news title.
         self.title = title

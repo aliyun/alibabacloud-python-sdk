@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
 class AppInstanceProfile(DaraModel):
@@ -10,12 +11,15 @@ class AppInstanceProfile(DaraModel):
         application_type: str = None,
         application_type_text: str = None,
         biz_id: str = None,
+        case_audit_status: str = None,
+        case_shelf_status: str = None,
         chatbi_task_id: str = None,
         chatbi_task_status: str = None,
         commodity_code: str = None,
         customer_service: str = None,
         deploy_area: str = None,
         icpba_no: str = None,
+        independent_deployment: main_models.AppInstanceProfileIndependentDeployment = None,
         instance_id: str = None,
         open_chat_bi: bool = None,
         ord_time: str = None,
@@ -30,47 +34,60 @@ class AppInstanceProfile(DaraModel):
         template_etag: str = None,
         template_id: str = None,
     ):
-        # The application type code.
+        # The application type code. For example, PC_WebSite indicates a PC website.
         self.application_type = application_type
-        # The application type text description.
+        # The display name of the application type.
         self.application_type_text = application_type_text
-        # The business ID.
+        # The business identifier of the application instance.
         self.biz_id = biz_id
+        # The audit status.
+        self.case_audit_status = case_audit_status
+        # The listing status.
+        self.case_shelf_status = case_shelf_status
+        # The ID of the ChatBI BuildSchemaIndex asynchronous task.
         self.chatbi_task_id = chatbi_task_id
+        # The status of the ChatBI BuildSchemaIndex task. Valid values: running, finish, and failed.
         self.chatbi_task_status = chatbi_task_status
-        # The commodity code.
+        # The commodity code used when placing the order.
         self.commodity_code = commodity_code
-        # The customer service information.
+        # The customer service contact information or description.
         self.customer_service = customer_service
-        # The deployment area.
+        # The deployment region code of the application.
         self.deploy_area = deploy_area
+        # The ICP filing number bound to the custom domain name. Multiple filing numbers are separated by commas (,).
         self.icpba_no = icpba_no
-        # The associated instance ID.
+        # The dedicated server information. This field is computed in real time by DescribeAppInstance and is not populated in list API responses.
+        self.independent_deployment = independent_deployment
+        # The ID of the associated Lingxiao instance.
         self.instance_id = instance_id
+        # Indicates whether the current user is included in the ChatBI feature canary release whitelist.
         self.open_chat_bi = open_chat_bi
-        # The time when the order was placed.
+        # The time when the order was placed, in the yyyy-MM-dd HH:mm:ss format.
         self.ord_time = ord_time
         # The order ID.
         self.order_id = order_id
-        # The payment time.
+        # The time when the payment was made, in the yyyy-MM-dd HH:mm:ss format.
         self.pay_time = pay_time
+        # The URL used to access the application preview page.
         self.preview_url = preview_url
-        # The SEO site information.
+        # The SEO site configuration identifier.
         self.seo_site = seo_site
+        # The switch for the share rendering watermark. A value of 1 indicates enabled, and a value of 0 indicates disabled. This field is empty if not configured.
         self.share_render_watermark = share_render_watermark
         # The site version code.
         self.site_version = site_version
-        # The site version text description.
+        # The display name of the site version, including the deployment region.
         self.site_version_text = site_version_text
-        # The source information.
+        # The identifier of the creation or synchronization source.
         self.source = source
-        # The template ETag identifier.
+        # The ETag identifier of the current application template.
         self.template_etag = template_etag
-        # The template ID.
+        # The template ID used by the current application.
         self.template_id = template_id
 
     def validate(self):
-        pass
+        if self.independent_deployment:
+            self.independent_deployment.validate()
 
     def to_map(self):
         result = dict()
@@ -85,6 +102,12 @@ class AppInstanceProfile(DaraModel):
 
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+
+        if self.case_audit_status is not None:
+            result['CaseAuditStatus'] = self.case_audit_status
+
+        if self.case_shelf_status is not None:
+            result['CaseShelfStatus'] = self.case_shelf_status
 
         if self.chatbi_task_id is not None:
             result['ChatbiTaskId'] = self.chatbi_task_id
@@ -103,6 +126,9 @@ class AppInstanceProfile(DaraModel):
 
         if self.icpba_no is not None:
             result['IcpbaNo'] = self.icpba_no
+
+        if self.independent_deployment is not None:
+            result['IndependentDeployment'] = self.independent_deployment.to_map()
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -156,6 +182,12 @@ class AppInstanceProfile(DaraModel):
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
 
+        if m.get('CaseAuditStatus') is not None:
+            self.case_audit_status = m.get('CaseAuditStatus')
+
+        if m.get('CaseShelfStatus') is not None:
+            self.case_shelf_status = m.get('CaseShelfStatus')
+
         if m.get('ChatbiTaskId') is not None:
             self.chatbi_task_id = m.get('ChatbiTaskId')
 
@@ -173,6 +205,10 @@ class AppInstanceProfile(DaraModel):
 
         if m.get('IcpbaNo') is not None:
             self.icpba_no = m.get('IcpbaNo')
+
+        if m.get('IndependentDeployment') is not None:
+            temp_model = main_models.AppInstanceProfileIndependentDeployment()
+            self.independent_deployment = temp_model.from_map(m.get('IndependentDeployment'))
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
@@ -212,6 +248,104 @@ class AppInstanceProfile(DaraModel):
 
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+
+        return self
+
+class AppInstanceProfileIndependentDeployment(DaraModel):
+    def __init__(
+        self,
+        can_retry: bool = None,
+        deploy_area: str = None,
+        dns_record_type: str = None,
+        eligibility: str = None,
+        enable_status: str = None,
+        independent_ip: str = None,
+        server_spec: str = None,
+        task_id: int = None,
+    ):
+        # Specifies whether a retry is allowed after the dedicated server fails to start.
+        self.can_retry = can_retry
+        # The deployment region code of the dedicated server.
+        self.deploy_area = deploy_area
+        # The DNS record type used when binding a domain name to the dedicated IP address.
+        self.dns_record_type = dns_record_type
+        # The eligibility status of the dedicated server. Valid values:
+        # - UPGRADE_REQUIRED: A version upgrade is required.
+        # - AVAILABLE: The dedicated server can be started.
+        # - UNAVAILABLE: The dedicated server is currently unavailable.
+        self.eligibility = eligibility
+        # The status of the dedicated server. Valid values:
+        # - NOT_ENABLED: Not started.
+        # - ENABLING: Starting.
+        # - ACTIVE: Started.
+        # - FAILED: Failed to start.
+        self.enable_status = enable_status
+        # The dedicated IP address assigned after the dedicated server is started.
+        self.independent_ip = independent_ip
+        # The display specification of the dedicated server. This does not represent the real-time resource usage of the container.
+        self.server_spec = server_spec
+        # The task ID for starting the dedicated server.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.can_retry is not None:
+            result['CanRetry'] = self.can_retry
+
+        if self.deploy_area is not None:
+            result['DeployArea'] = self.deploy_area
+
+        if self.dns_record_type is not None:
+            result['DnsRecordType'] = self.dns_record_type
+
+        if self.eligibility is not None:
+            result['Eligibility'] = self.eligibility
+
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+
+        if self.independent_ip is not None:
+            result['IndependentIp'] = self.independent_ip
+
+        if self.server_spec is not None:
+            result['ServerSpec'] = self.server_spec
+
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanRetry') is not None:
+            self.can_retry = m.get('CanRetry')
+
+        if m.get('DeployArea') is not None:
+            self.deploy_area = m.get('DeployArea')
+
+        if m.get('DnsRecordType') is not None:
+            self.dns_record_type = m.get('DnsRecordType')
+
+        if m.get('Eligibility') is not None:
+            self.eligibility = m.get('Eligibility')
+
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+
+        if m.get('IndependentIp') is not None:
+            self.independent_ip = m.get('IndependentIp')
+
+        if m.get('ServerSpec') is not None:
+            self.server_spec = m.get('ServerSpec')
+
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
 
         return self
 

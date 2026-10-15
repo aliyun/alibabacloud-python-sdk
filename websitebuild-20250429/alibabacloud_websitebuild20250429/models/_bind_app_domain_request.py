@@ -8,6 +8,7 @@ class BindAppDomainRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
+        deploy_type: str = None,
         domain_name: str = None,
         domain_type: str = None,
         extend: str = None,
@@ -15,10 +16,14 @@ class BindAppDomainRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
+        # The domain hosting method. Valid values:
+        # - CUSTOMER_ESA: Uses the customer\\"s own Edge Security Acceleration (ESA). Only supported when DomainType is set to CUSTOM.
+        # 
+        # If this parameter is not specified, the original hosting process is used.
+        self.deploy_type = deploy_type
         # The domain name.
         self.domain_name = domain_name
         # The domain management type. Valid values:
-        # 
         # - CUSTOM
         # - PLATFORM_PREFIX
         # 
@@ -40,6 +45,9 @@ class BindAppDomainRequest(DaraModel):
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
 
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
 
@@ -58,6 +66,9 @@ class BindAppDomainRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
 
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')

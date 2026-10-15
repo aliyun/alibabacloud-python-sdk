@@ -22,19 +22,19 @@ class BatchCheckResourceMeasureResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reasons for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retries are allowed.
+        # Specifies whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the app.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
-        # The response object.
+        # The returned object.
         self.module = module
         # Id of the request
         self.request_id = request_id
@@ -42,7 +42,7 @@ class BatchCheckResourceMeasureResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Specifies whether synchronous processing is used.
         self.synchro = synchro
 
     def validate(self):
@@ -133,9 +133,9 @@ class BatchCheckResourceMeasureResponseBodyModule(DaraModel):
         all_passed: bool = None,
         results: Dict[str, main_models.ModuleResultsValue] = None,
     ):
-        # Indicates whether all checks passed.
+        # Indicates whether all checks are passed.
         self.all_passed = all_passed
-        # The check result for each resource, where the key is resourceCode.
+        # The check results for each resource. The key is the resourceCode.
         self.results = results
 
     def validate(self):

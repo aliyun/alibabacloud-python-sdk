@@ -24,25 +24,25 @@ class QueryInspirationConsumeRecordsResponseBody(DaraModel):
     ):
         # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The name of the application to query.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not used. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
-        # Indicates whether the deletion is successful.
+        # Specifies whether the deletion is successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Specifies whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -142,17 +142,17 @@ class QueryInspirationConsumeRecordsResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The request result.
+        # The request results.
         self.data = data
         # The ID of the next feature.
         self.next = next
-        # Indicates whether a next page exists.
+        # Specifies whether a next page exists.
         self.next_page = next_page
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Indicates whether a previous page exists.
+        # Specifies whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -248,15 +248,17 @@ class QueryInspirationConsumeRecordsResponseBodyModuleNext(DaraModel):
         meta_data: str = None,
         scene_name: str = None,
     ):
-        # The number of inspiration points consumed.
+        # The number of consumed inspiration points.
         self.amount = amount
+        # The exact number of consumed inspiration points. The value is a string that supports decimal display.
         self.amount_str = amount_str
-        # The consumption time.
+        # The consumption time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.consume_time = consume_time
+        # The consumption type.
         self.consume_type = consume_type
         # The extended information in JSON string format.
         self.meta_data = meta_data
-        # The consumption scenario name, such as AI application development, AI creative illustration, AI video creation, or AI content creation.
+        # The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, or AI content creation.
         self.scene_name = scene_name
 
     def validate(self):
@@ -320,16 +322,19 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
         record_key: str = None,
         scene_name: str = None,
     ):
-        # The number of inspiration points consumed.
+        # The number of consumed inspiration points.
         self.amount = amount
+        # The exact number of consumed inspiration points. The value is a string that supports decimal display.
         self.amount_str = amount_str
-        # The consumption time.
+        # The consumption time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.consume_time = consume_time
+        # The consumption type.
         self.consume_type = consume_type
         # The extended information in JSON string format.
         self.meta_data = meta_data
+        # The unique identifier of the consumption record.
         self.record_key = record_key
-        # The consumption scenario name, such as AI application development, AI creative illustration, AI video creation, or AI content creation.
+        # The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, or AI content creation.
         self.scene_name = scene_name
 
     def validate(self):

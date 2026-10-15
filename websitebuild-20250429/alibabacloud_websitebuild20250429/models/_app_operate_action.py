@@ -12,13 +12,13 @@ class AppOperateAction(DaraModel):
         enable: bool = None,
         href: str = None,
     ):
-        # 用于唯一标识一个操作行为
+        # The key used to uniquely identify an action.
         self.action_key = action_key
-        # 用于在界面中展示操作名称
+        # The text used to display the action name in the user interface.
         self.action_text = action_text
-        # 标识该操作是否可用
+        # Indicates whether the action is available.
         self.enable = enable
-        # 点击操作时跳转的URL地址
+        # The URL to navigate to when the action is clicked.
         self.href = href
 
     def validate(self):

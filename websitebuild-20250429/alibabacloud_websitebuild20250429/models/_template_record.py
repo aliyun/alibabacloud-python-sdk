@@ -15,14 +15,23 @@ class TemplateRecord(DaraModel):
         template_id: str = None,
         user_id: str = None,
     ):
+        # The business ID of the application instance.
         self.biz_id = biz_id
+        # The replication status.
         self.copy_status = copy_status
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create = gmt_create
+        # The modification time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified = gmt_modified
+        # The record ID.
         self.id = id
+        # The template ID.
         self.template_id = template_id
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

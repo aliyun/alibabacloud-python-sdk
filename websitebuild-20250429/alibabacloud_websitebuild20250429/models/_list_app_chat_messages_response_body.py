@@ -24,26 +24,24 @@ class ListAppChatMessagesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied detail.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error arguments.
+        # The returned error parameters.
         self.error_args = error_args
-        # The number of entries per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The maximum number of results per query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response data.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. This parameter is empty if there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -175,46 +173,46 @@ class ListAppChatMessagesResponseBodyModule(DaraModel):
     ):
         # The bot ID.
         self.bot_id = bot_id
-        # The unique ID of a single message.
+        # The unique ID of the utterance.
         self.chat_id = chat_id
-        # The current chat status.
+        # The current conversation status.
         self.chat_status = chat_status
-        # The ID of the data API operation that is called.
+        # The ID of the called data API.
         self.content = content
         # The content type.
         self.content_type = content_type
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in seconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The modification time.
+        # The modification time. The time is in ISO 8601 format and the UTC time zone (Z).
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
         # The message ID.
         self.message_id = message_id
-        # The business extension metadata in Map format. The value must be a JSON string.
+        # The business extension metadata. The value must be a JSON string in map format.
         self.meta_data = meta_data
-        # The region sequence number. This parameter is deprecated.
+        # **[Deprecated]** The region sequence number.
         self.no = no
         # The role of the conversation participant. Valid values:
         # 
-        # - user: user
+        # - user: User
         # 
-        # - assistant: assistant
+        # - assistant: Assistant
         # 
-        # - system: system
-        # - function: function
+        # - system: System
+        # - function: Function
         # 
-        # - plugin: plug-in
+        # - plugin: Plug-in
         # 
-        # - tool: tool
+        # - tool: Tool
         self.role = role
         # The section ID of the check item.
         self.section_id = section_id
-        # The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
         # The file type.
         self.type = type

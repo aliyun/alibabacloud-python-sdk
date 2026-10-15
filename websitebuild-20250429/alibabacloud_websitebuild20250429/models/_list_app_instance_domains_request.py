@@ -20,38 +20,25 @@ class ListAppInstanceDomainsRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
-        # The domain name keyword. This parameter is optional and used for fuzzy match.
+        # The domain name keyword for fuzzy match. This parameter is optional.
         self.domain_keyword = domain_keyword
-        # The domain management type. Valid values:
-        # 
-        # - CUSTOM
-        # - PLATFORM_PREFIX
-        # 
-        # Default value: CUSTOM.
+        # The domain name management type. Valid values: CUSTOM and PLATFORM_PREFIX. If this parameter is not specified, the default value is CUSTOM.
         self.domain_type = domain_type
-        # The number of entries per query.
+        # The number of entries to return for a single query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results are available.
+        # The token used to start the next query. If no next query is available, this value is empty.
         self.next_token = next_token
-        # The field by which to sort the results.
+        # The field used for sorting.
         self.order_column = order_column
-        # The sort type. Valid values:
-        # 
-        # - ASC
-        # - DESC
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The domain status query mode. Valid values:
-        # 
-        # - BASIC: returns only the persisted status.
-        # - REALTIME: refreshes the external service status.
-        # 
-        # Default value: REALTIME.
+        # The query mode for the domain name status. Valid values: BASIC and REALTIME. BASIC returns only the persisted status. REALTIME refreshes the status from external services. If this parameter is not specified, the default value is REALTIME.
         self.status_query_mode = status_query_mode
 
     def validate(self):

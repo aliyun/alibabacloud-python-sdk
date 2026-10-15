@@ -29,9 +29,9 @@ class QueryMaterialTaskListResponseBody(DaraModel):
     ):
         # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Indicates whether a retry is allowed. Valid values:
+        # - false: No retry is allowed.
+        # - true: A retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -61,7 +61,7 @@ class QueryMaterialTaskListResponseBody(DaraModel):
         self.root_error_msg = root_error_msg
         # Indicates whether the request was successful.
         self.success = success
-        # Indicates whether the request is processed synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -190,7 +190,7 @@ class QueryMaterialTaskListResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The query results.
+        # The request result.
         self.data = data
         # Indicates whether a next page exists.
         self.next_page = next_page
@@ -198,7 +198,7 @@ class QueryMaterialTaskListResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Apart from pagination limits, the server processes up to 1000 recent records per query. If the results exceed 1000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # Apart from pagination limits, the server processes up to 1000 recent records per query. If the results exceed 1000 records, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num

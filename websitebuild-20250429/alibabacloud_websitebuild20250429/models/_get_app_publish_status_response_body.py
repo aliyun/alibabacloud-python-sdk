@@ -22,9 +22,9 @@ class GetAppPublishStatusResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason for access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -32,7 +32,7 @@ class GetAppPublishStatusResponseBody(DaraModel):
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -155,6 +155,7 @@ class GetAppPublishStatusResponseBodyModule(DaraModel):
         self.can_quick_revert = can_quick_revert
         # The current step of the task.
         self.current_step = current_step
+        # The code of the current publish step.
         self.current_step_code = current_step_code
         # The deployment channel.
         self.deploy_channel = deploy_channel
@@ -162,6 +163,7 @@ class GetAppPublishStatusResponseBodyModule(DaraModel):
         self.description = description
         # The publish process.
         self.error_step = error_step
+        # The code of the publish step where the error occurred.
         self.error_step_code = error_step_code
         # Indicates whether the task is completed.
         self.is_finish = is_finish
@@ -169,12 +171,13 @@ class GetAppPublishStatusResponseBodyModule(DaraModel):
         # 
         # - `true`: The call is successful.
         # 
-        # - `false`: The call failed.
+        # - `false`: The call fails.
         self.is_success = is_success
-        # The additional description.
+        # The additional information.
         self.msg = msg
-        # The sort type. Valid values: ASC and DESC.
+        # The sort order.
         self.order_type = order_type
+        # The code of the publish order type.
         self.order_type_code = order_type_code
         # The task completion percentage.
         self.percent = percent
@@ -182,15 +185,17 @@ class GetAppPublishStatusResponseBodyModule(DaraModel):
         self.publish_number = publish_number
         # The publish order ID.
         self.publish_order_id = publish_order_id
-        # The scheduled publish time.
+        # The scheduled publish time in the UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.publish_time = publish_time
         # The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
+        # The list of publish step codes.
         self.step_codes = step_codes
         # The error level. Valid values: FATAL, ERROR, WARNING, and CRITICAL.
         self.steps = steps
+        # The publish subchannel.
         self.subchannel = subchannel
 
     def validate(self):

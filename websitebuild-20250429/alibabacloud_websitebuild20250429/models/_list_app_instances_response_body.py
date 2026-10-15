@@ -31,21 +31,21 @@ class ListAppInstancesResponseBody(DaraModel):
         synchro: bool = None,
         total_page_num: int = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reasons for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
         # The current page number.
         self.current_page_num = current_page_num
-        # The request result. When QueryMode is set to CONTENT_CREATION, only BizId, Name, Domain, and Version are guaranteed to be valid. Version returns V2.0 only for 2.0 sites and is empty for 1.0 sites.
+        # The request result.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not used and can be ignored.
         self.dynamic_message = dynamic_message
-        # The error arguments returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The maximum number of results per query.
         # 
@@ -53,7 +53,7 @@ class ListAppInstancesResponseBody(DaraModel):
         self.max_results = max_results
         # Indicates whether a next page exists.
         self.next_page = next_page
-        # The token for the next query. This parameter is empty if there is no next query.
+        # The token used to start the next query. This parameter is empty if no next query exists.
         self.next_token = next_token
         # The page size.
         self.page_size = page_size
@@ -61,9 +61,9 @@ class ListAppInstancesResponseBody(DaraModel):
         self.pre_page = pre_page
         # Id of the request
         self.request_id = request_id
-        # In addition to the pagination limit, the server processes a maximum of 1000 recent records for the current query. If the results exceed 1000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # The error code.
+        # The root error code.
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg

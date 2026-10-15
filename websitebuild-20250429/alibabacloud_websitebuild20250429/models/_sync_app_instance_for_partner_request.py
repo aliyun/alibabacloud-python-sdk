@@ -95,15 +95,15 @@ class SyncAppInstanceForPartnerRequestAppInstance(DaraModel):
         self.app_type = app_type
         # The website business ID.
         self.biz_id = biz_id
-        # Specifies whether the instance is logically deleted.
+        # Indicates whether the instance is logically deleted.
         self.deleted = deleted
         # The domain name.
         self.domain = domain
-        # The end time of the event, in UNIX timestamp format.
+        # The end time of the event. The value is a UNIX timestamp.
         self.end_time = end_time
         # The deletion time.
         self.gmt_delete = gmt_delete
-        # The timestamp when the vulnerability was published, in milliseconds.
+        # The timestamp when the vulnerability was published. Unit: milliseconds.
         self.gmt_publish = gmt_publish
         # The URL of the application icon.
         self.icon_url = icon_url
@@ -115,17 +115,18 @@ class SyncAppInstanceForPartnerRequestAppInstance(DaraModel):
         self.site_host = site_host
         # The website SiteID.
         self.slug = slug
-        # The start time of the query. If you do not specify the start time or end time, all historical deployment records of the instance are queried.
+        # The start time of the query. If you do not specify the start time or end time, all historical deployment records of the instance are queried. Specify the time in the ISO 8601 standard in the UTC (Z) time zone.
         self.start_time = start_time
         # The running status of the instance. Valid values:
-        # - NotRun: not running.
-        # - Running: running.
-        # - WaitTime: waiting for TriggerTime.
-        # - CheckingCondition: checking branch conditions.
-        # - WaitResource: waiting for resources.
-        # - Failure: execution failed.
-        # - Success: execution succeeded.
-        # - Checking: submitted for data quality check.
+        # 
+        # - NotRun: Not running.
+        # - Running: Running.
+        # - WaitTime: Waiting for the trigger time.
+        # - CheckingCondition: Checking branch conditions.
+        # - WaitResource: Waiting for resources.
+        # - Failure: Execution failed.
+        # - Success: Execution succeeded.
+        # - Checking: Submitted for data quality check.
         self.status = status
         # The URL of the thumbnail.
         self.thumbnail_url = thumbnail_url
@@ -256,7 +257,7 @@ class SyncAppInstanceForPartnerRequestAppInstanceProfile(DaraModel):
     ):
         # The deployment region.
         self.deploy_area = deploy_area
-        # The LingXiao instance ID.
+        # The Lingxiao instance ID.
         self.lx_instance_id = lx_instance_id
         # The order ID.
         self.order_id = order_id

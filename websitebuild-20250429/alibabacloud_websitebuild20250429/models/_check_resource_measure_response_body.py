@@ -22,18 +22,18 @@ class CheckResourceMeasureResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response element.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The application module.
         self.module = module
@@ -43,7 +43,7 @@ class CheckResourceMeasureResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -131,19 +131,28 @@ class CheckResourceMeasureResponseBody(DaraModel):
 class CheckResourceMeasureResponseBodyModule(DaraModel):
     def __init__(
         self,
+        desired_total: int = None,
         error_code: str = None,
         error_message: str = None,
+        limit: int = None,
         passed: bool = None,
         resource_code: str = None,
+        upgrade_available: bool = None,
     ):
-        # The error code when the check fails. This value is null when the check passes.
+        # This field is returned only for APP_WORKSPACE quantity pre-checks. It specifies the final total quantity to be saved, not the current increment. The issue quantity is the sum of common issues and word-of-mouth issues, and the competitor quantity is the total number of competitors after editing. This field is empty for APP and USER checks.
+        self.desired_total = desired_total
+        # The error code returned when the check fails. This field is null when the check passes.
         self.error_code = error_code
-        # The error message when the check fails. This value is null when the check passes.
+        # The error message returned when the check fails. This field is null when the check passes.
         self.error_message = error_message
+        # This field is returned only for APP_WORKSPACE quantity pre-checks. It specifies the maximum number of issues or competitors allowed by the current commodity edition, not the remaining quota. This field is empty for APP and USER checks, or when the edition benefits cannot be determined.
+        self.limit = limit
         # Indicates whether the check is passed.
         self.passed = passed
         # The resource identifier.
         self.resource_code = resource_code
+        # Indicates whether a purchasable higher edition exists that can accommodate the DesiredTotal. This field is true only when the capacity of the current edition is insufficient and a higher edition meets the requirement. Otherwise, it is false. This field may be empty for APP and USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
+        self.upgrade_available = upgrade_available
 
     def validate(self):
         pass
@@ -153,11 +162,17 @@ class CheckResourceMeasureResponseBodyModule(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.desired_total is not None:
+            result['DesiredTotal'] = self.desired_total
+
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
 
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+
+        if self.limit is not None:
+            result['Limit'] = self.limit
 
         if self.passed is not None:
             result['Passed'] = self.passed
@@ -165,21 +180,33 @@ class CheckResourceMeasureResponseBodyModule(DaraModel):
         if self.resource_code is not None:
             result['ResourceCode'] = self.resource_code
 
+        if self.upgrade_available is not None:
+            result['UpgradeAvailable'] = self.upgrade_available
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DesiredTotal') is not None:
+            self.desired_total = m.get('DesiredTotal')
+
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
 
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
 
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+
         if m.get('Passed') is not None:
             self.passed = m.get('Passed')
 
         if m.get('ResourceCode') is not None:
             self.resource_code = m.get('ResourceCode')
+
+        if m.get('UpgradeAvailable') is not None:
+            self.upgrade_available = m.get('UpgradeAvailable')
 
         return self
 

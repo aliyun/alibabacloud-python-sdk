@@ -17,7 +17,9 @@ class UpdateAppSeoStatusRequest(DaraModel):
         self.biz_id = biz_id
         # The domain name.
         self.domain = domain
+        # The security authentication information.
         self.se_auth_info = se_auth_info
+        # The index status.
         self.se_index_status = se_index_status
         # The search engine type.
         self.se_type = se_type

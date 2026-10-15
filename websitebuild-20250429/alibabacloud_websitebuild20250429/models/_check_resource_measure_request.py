@@ -10,28 +10,29 @@ class CheckResourceMeasureRequest(DaraModel):
         belong_id: str = None,
         belong_id_type: str = None,
         biz_type: str = None,
+        desired_total: int = None,
         esp_biz_id: str = None,
         order_component_params: str = None,
         resource_code: str = None,
         resource_value: int = None,
     ):
-        # The owner ID, which can be a website ID or an Alibaba Cloud account ID.
+        # The owner ID, which can be a website ID or an Alibaba Cloud user ID.
         self.belong_id = belong_id
-        # The type of the owner ID. Valid values:
-        # - siteId
-        # - uid.
+        # The owner ID type. Valid values: siteId and uid.
         self.belong_id_type = belong_id_type
         # The ESP business type.
         self.biz_type = biz_type
+        # This parameter is used only for APP_WORKSPACE. It specifies the final total amount of issues or competitors after editing. For legacy APP or USER, it retains the incremental semantics of ResourceValue.
+        self.desired_total = desired_total
         # The ESP business ID.
         self.esp_biz_id = esp_biz_id
-        # The order module information. If this parameter is empty, espBizId and bizType cannot be empty.
+        # The order component parameters. If this parameter is empty, EspBizId and BizType cannot be empty.
         self.order_component_params = order_component_params
         # The resource identifier.
         self.resource_code = resource_code
-        # The resource value. This parameter is empty by default and is required only for feature-type resources. Valid values:
-        # - 0: not supported
-        # - 1: supported.
+        # The resource value. This parameter is required only for feature resources and is empty by default. Valid values:
+        # - 0: Not supported.
+        # - 1: Supported.
         self.resource_value = resource_value
 
     def validate(self):
@@ -50,6 +51,9 @@ class CheckResourceMeasureRequest(DaraModel):
 
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+
+        if self.desired_total is not None:
+            result['DesiredTotal'] = self.desired_total
 
         if self.esp_biz_id is not None:
             result['EspBizId'] = self.esp_biz_id
@@ -75,6 +79,9 @@ class CheckResourceMeasureRequest(DaraModel):
 
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+
+        if m.get('DesiredTotal') is not None:
+            self.desired_total = m.get('DesiredTotal')
 
         if m.get('EspBizId') is not None:
             self.esp_biz_id = m.get('EspBizId')

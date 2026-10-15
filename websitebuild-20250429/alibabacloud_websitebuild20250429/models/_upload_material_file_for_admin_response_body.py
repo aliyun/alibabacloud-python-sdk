@@ -32,7 +32,7 @@ class UploadMaterialFileForAdminResponseBody(DaraModel):
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The error parameters.
         self.error_args = error_args
         # The file object.
         self.module = module
@@ -149,9 +149,9 @@ class UploadMaterialFileForAdminResponseBodyModule(DaraModel):
         self.biz_id = biz_id
         # The file content type.
         self.content_type = content_type
-        # The creation time.
+        # The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The time when the file was moved to the recycle bin or deleted.
+        # The time when the file was moved to the recycle bin or deleted. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.deleted_time = deleted_time
         # The directory ID.
         self.directory_id = directory_id
@@ -159,7 +159,7 @@ class UploadMaterialFileForAdminResponseBodyModule(DaraModel):
         self.file_id = file_id
         # The file path.
         self.file_url = file_url
-        # The height.
+        # The height of the file.
         self.height = height
         # The file name.
         self.name = name
@@ -171,7 +171,7 @@ class UploadMaterialFileForAdminResponseBodyModule(DaraModel):
         self.suffix = suffix
         # The file type.
         self.type = type
-        # The width.
+        # The width of the file.
         self.width = width
 
     def validate(self):

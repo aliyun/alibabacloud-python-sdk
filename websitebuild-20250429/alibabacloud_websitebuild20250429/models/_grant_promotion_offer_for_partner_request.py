@@ -14,6 +14,7 @@ class GrantPromotionOfferForPartnerRequest(DaraModel):
         employee_code: str = None,
         remark: str = None,
     ):
+        # The activity code.
         self.activity_code = activity_code
         # The activity ID.
         self.activity_id = activity_id
@@ -23,7 +24,7 @@ class GrantPromotionOfferForPartnerRequest(DaraModel):
         self.channel = channel
         # The employee code.
         self.employee_code = employee_code
-        # The operation remarks (audit information).
+        # The operation remark (audit information).
         self.remark = remark
 
     def validate(self):

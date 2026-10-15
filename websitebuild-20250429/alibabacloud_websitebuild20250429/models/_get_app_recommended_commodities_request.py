@@ -12,13 +12,13 @@ class GetAppRecommendedCommoditiesRequest(DaraModel):
         resource_conditions: str = None,
         scene: str = None,
     ):
-        # The application instance business ID. Required in scenario 1 and used for instance version filtering.
+        # The business ID of the application instance. This parameter is required in Scenario 1 and is used to filter instance versions.
         self.biz_id = biz_id
+        # The extended information.
         self.extend = extend
+        # The resource filtering conditions.
         self.resource_conditions = resource_conditions
-        # The scenarios. Valid values:
-        # - ai_chat
-        # - inspiration
+        # The scenarios. Valid values: ai_chat and inspiration.
         self.scene = scene
 
     def validate(self):

@@ -19,6 +19,7 @@ class QuerySupabaseConfigsForAdminRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The environment identifier.
         self.env = env
         # The field used for sorting.
         self.order_column = order_column

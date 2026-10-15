@@ -46,39 +46,66 @@ class AppInstanceAggregate(DaraModel):
         version: str = None,
     ):
         self.ai_staff_list = ai_staff_list
+        # The application operation address.
         self.app_operation_address = app_operation_address
         self.app_service_list = app_service_list
+        # The application subtype.
         self.app_sub_type = app_sub_type
+        # The application type.
         self.app_type = app_type
+        # The business ID of the application instance.
         self.biz_id = biz_id
+        # The build type.
         self.build_type = build_type
+        # The creation time.
         self.create_time = create_time
+        # Indicates whether the instance is deleted.
         self.deleted = deleted
+        # The application description.
         self.description = description
+        # The business ID of the design specification.
         self.design_spec_biz_id = design_spec_biz_id
+        # The design specification ID.
         self.design_spec_id = design_spec_id
+        # The primary domain name.
         self.domain = domain
+        # The end time.
         self.end_time = end_time
+        # The ID of the associated delivery order.
         self.esp_biz_id = esp_biz_id
+        # The deletion time.
         self.gmt_delete = gmt_delete
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The publish time.
         self.gmt_publish = gmt_publish
+        # The application icon.
         self.icon_url = icon_url
+        # The application name.
         self.name = name
+        # The details.
         self.partner_detail = partner_detail
         self.profile = profile
         self.resource_group_id = resource_group_id
+        # The website domain name.
         self.site_host = site_host
+        # The application identifier.
         self.slug = slug
+        # The source type.
         self.source_type = source_type
+        # The start time.
         self.start_time = start_time
-        # Valid values: trial, draft, live, refunded, expired, released.
+        # trial,draft,live,refunded,expired,released
         self.status = status
+        # The status text.
         self.status_text = status_text
         self.tags = tags
         self.template_record = template_record
+        # The application thumbnail.
         self.thumbnail_url = thumbnail_url
+        # The user ID.
         self.user_id = user_id
+        # The version.
         self.version = version
 
     def validate(self):
@@ -343,7 +370,13 @@ class AppInstanceAggregateTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the instance. Valid values of N: **1** to **20**. If this parameter is specified, it cannot be an empty string.
+        # 
+        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_key = tag_key
+        # The tag value of the instance. Valid values of N: **1** to **20**. If this parameter is specified, it can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -379,7 +412,9 @@ class AppInstanceAggregatePartnerDetail(DaraModel):
         partner_id: str = None,
         status: str = None,
     ):
+        # data
         self.bind_data = bind_data
+        # The partner ID.
         self.partner_id = partner_id
         self.status = status
 
@@ -432,11 +467,17 @@ class AppInstanceAggregatePartnerDetailBindData(DaraModel):
         user_id: str = None,
     ):
         self.biz_id = biz_id
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The record ID.
         self.id = id
+        # The mobile phone number.
         self.mobile = mobile
+        # The primary key of the parent record.
         self.parent_pk = parent_pk
+        # The partner ID.
         self.partner_id = partner_id
         self.user_id = user_id
 

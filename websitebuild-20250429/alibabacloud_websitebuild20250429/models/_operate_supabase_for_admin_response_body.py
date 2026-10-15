@@ -41,7 +41,7 @@ class OperateSupabaseForAdminResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The error message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro

@@ -22,28 +22,28 @@ class ListAIStaffChatEventsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reasons for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the ErrMessage response element.
-        # > For example, if ErrMessage returns **The Value of Input Parameter %s is not valid** and DynamicMessage returns **DtsJobId**, the DtsJobId request parameter is invalid.
+        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The invalid parameters.
         self.error_args = error_args
-        # The response object.
+        # The returned object.
         self.module = module
         # Id of the request
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The root error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Specifies whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -136,11 +136,11 @@ class ListAIStaffChatEventsResponseBodyModule(DaraModel):
         events: List[main_models.ListAIStaffChatEventsResponseBodyModuleEvents] = None,
         last_event_id: int = None,
     ):
-        # The unique ID of a single utterance.
+        # The unique ID of the message.
         self.chat_id = chat_id
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The event list.
+        # The object ID.
         self.events = events
         # The ID of the last SSE event.
         self.last_event_id = last_event_id
@@ -198,11 +198,11 @@ class ListAIStaffChatEventsResponseBodyModuleEvents(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The fault information.
+        # The error message.
         self.data = data
         # The primary key.
         self.id = id
-        # The event name.
+        # The website name.
         self.name = name
 
     def validate(self):

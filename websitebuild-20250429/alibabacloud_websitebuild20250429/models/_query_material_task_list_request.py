@@ -19,7 +19,7 @@ class QueryMaterialTaskListRequest(DaraModel):
         status_list: List[str] = None,
         task_type_list: List[str] = None,
     ):
-        # The business group ID.
+        # The ID of the business group.
         self.biz_group_id = biz_group_id
         # The number of entries per query.
         # 

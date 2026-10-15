@@ -24,11 +24,11 @@ class ListAppConversationsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name. Queries the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -36,13 +36,13 @@ class ListAppConversationsResponseBody(DaraModel):
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
-        # The number of results returned per query.
+        # The number of entries per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response data.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results are available.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -155,13 +155,13 @@ class ListAppConversationsResponseBodyModule(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The request results.
+        # The request result.
         self.data = data
         # The page number. Default value: 1.
         self.page_num = page_num
         # The page size.
         self.page_size = page_size
-        # The resource count that matches the conditional filter.
+        # The resource count that matches the conditional filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -233,11 +233,11 @@ class ListAppConversationsResponseBodyModuleData(DaraModel):
         self.chat_num = chat_num
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The creation time.
+        # The creation time in ISO 8601 format with a time zone offset.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The modification time.
+        # The modification time in ISO 8601 format with the UTC (Z) time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time

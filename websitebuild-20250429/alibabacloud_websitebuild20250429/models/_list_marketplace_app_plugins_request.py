@@ -13,7 +13,7 @@ class ListMarketplaceAppPluginsRequest(DaraModel):
         page_size: int = None,
         platform: str = None,
     ):
-        # Filters by category.
+        # Filters the results by category.
         self.category = category
         # The search keyword.
         self.keyword = keyword
@@ -21,7 +21,7 @@ class ListMarketplaceAppPluginsRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # Filters by platform (web/miniprogram).
+        # Filters the results by platform. Valid values: web and miniprogram.
         self.platform = platform
 
     def validate(self):

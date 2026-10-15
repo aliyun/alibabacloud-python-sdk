@@ -22,15 +22,15 @@ class DeleteAppDomainRedirectResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason for the access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The application name used for the query.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
@@ -42,7 +42,7 @@ class DeleteAppDomainRedirectResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request was processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -132,7 +132,7 @@ class DeleteAppDomainRedirectResponseBodyModule(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the operation is successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

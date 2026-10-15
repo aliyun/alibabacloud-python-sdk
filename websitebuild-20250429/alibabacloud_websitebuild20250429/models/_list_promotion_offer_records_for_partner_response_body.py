@@ -26,13 +26,13 @@ class ListPromotionOfferRecordsForPartnerResponseBody(DaraModel):
     ):
         # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
         # The application name. The application with this name is queried.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the %s variable in the ErrMessage response parameter.
+        # The dynamic error message. This message is used to replace the %s variable in the ErrMessage response parameter.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
@@ -48,7 +48,7 @@ class ListPromotionOfferRecordsForPartnerResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro
@@ -232,7 +232,7 @@ class ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords(DaraModel):
         self.employee_code = employee_code
         # The failure reason.
         self.fail_reason = fail_reason
-        # The issuance time.
+        # The issuance time. Format: YYYY-MM-DD.
         self.issuance_time = issuance_time
         # The benefit snapshot in JSON format.
         self.offer_snapshot = offer_snapshot

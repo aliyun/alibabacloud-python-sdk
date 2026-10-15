@@ -17,7 +17,7 @@ class ListRbacRolesRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
-        # The number of entries per query.
+        # The maximum number of entries to return per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
@@ -25,9 +25,7 @@ class ListRbacRolesRequest(DaraModel):
         self.next_token = next_token
         # The field by which to sort the results.
         self.order_column = order_column
-        # The sort order. Valid values:
-        # - ASC
-        # - DESC
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num

@@ -21,15 +21,25 @@ class TreeNode(DaraModel):
         parent_node_id: str = None,
         step_no: int = None,
     ):
+        # The list of child nodes.
         self.children = children
+        # The final step number.
         self.final_step_no = final_step_no
+        # The completion time.
         self.finish_time = finish_time
+        # Specifies whether the node is a container node.
         self.is_container_node = is_container_node
+        # The node ID.
         self.node_id = node_id
+        # The node name.
         self.node_name = node_name
+        # The node status.
         self.node_status = node_status
+        # The operator role.
         self.operator_role = operator_role
+        # The parent node ID.
         self.parent_node_id = parent_node_id
+        # The step number.
         self.step_no = step_no
 
     def validate(self):

@@ -17,7 +17,7 @@ class QueryMaterialTaskListShrinkRequest(DaraModel):
         status_list_shrink: str = None,
         task_type_list_shrink: str = None,
     ):
-        # The business group ID.
+        # The ID of the business group.
         self.biz_group_id = biz_group_id
         # The number of entries per query.
         # 

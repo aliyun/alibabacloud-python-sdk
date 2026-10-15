@@ -32,8 +32,8 @@ class ListRbacOrgTreeResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** parameter.
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** return parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
@@ -163,7 +163,7 @@ class ListRbacOrgTreeResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The request results.
+        # The query results.
         self.data = data
         # The next feature ID.
         self.next = next
@@ -173,7 +173,7 @@ class ListRbacOrgTreeResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Indicates whether the server processes a maximum of 1,000 most recent records beyond the pagination limit. If the results exceed 1,000 entries, **ResultLimit** is **true**, and you must narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -268,7 +268,7 @@ class ListRbacOrgTreeResponseBodyModuleNext(DaraModel):
         name: str = None,
         path: str = None,
     ):
-        # The creation date.
+        # The creation date. The time is in ISO 8601 format in the UTC (Z) time zone.
         self.created_at = created_at
         # The category level. The root category is 1.
         self.depth = depth
@@ -332,7 +332,7 @@ class ListRbacOrgTreeResponseBodyModuleData(DaraModel):
         name: str = None,
         path: str = None,
     ):
-        # The creation time.
+        # The creation time. The time is in ISO 8601 format in the UTC (Z) time zone.
         self.created_at = created_at
         # The directory level.
         self.depth = depth

@@ -14,10 +14,11 @@ class ReconnectAppChatRequest(DaraModel):
     ):
         # The chat record ID.
         self.chat_id = chat_id
-        # The session ID.
+        # The conversation ID.
         self.conversation_id = conversation_id
         # The last event ID.
         self.last_event_id = last_event_id
+        # The creation time of the latest message.
         self.latest_message_create_time = latest_message_create_time
 
     def validate(self):

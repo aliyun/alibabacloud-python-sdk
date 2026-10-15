@@ -30,8 +30,8 @@ class GetAppSeoStatusResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** return parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
@@ -149,11 +149,11 @@ class GetAppSeoStatusResponseBodyModule(DaraModel):
         self.biz_id = biz_id
         # The primary domain name.
         self.domain = domain
-        # The time when the output was created.
+        # The creation time of the output artifact. The time is in ISO 8601 format and includes a time zone offset.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The time when the output was last modified.
+        # The modification time. The time is in ISO 8601 format with the time zone set to UTC (Z).
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time

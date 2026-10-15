@@ -16,6 +16,7 @@ class NotifyAppNotificationForAdminRequest(DaraModel):
         self.biz_id = biz_id
         # The environment identifier.
         self.env = env
+        # The notification content.
         self.payload = payload
         # The scene ID.
         self.scene_id = scene_id

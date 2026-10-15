@@ -133,7 +133,8 @@ class QuerySupabaseAuthConfigsForAdminResponseBodyModule(DaraModel):
         configs: Dict[str, Any] = None,
     ):
         # The configuration value. Valid values:
-        # - cc_rule: HTTP flood mitigation rule.
+        # 
+        # - cc_rule: HTTP flood protection rule.
         # 
         # - ddos_dispatch: DDoS interaction scheduling.
         # 

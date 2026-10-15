@@ -26,23 +26,41 @@ class PromotionActivity(DaraModel):
         updated_by: str = None,
         warning_threshold: int = None,
     ):
+        # The campaign code.
         self.activity_code = activity_code
+        # The campaign name.
         self.activity_name = activity_name
+        # The campaign type.
         self.activity_type = activity_type
+        # The consumed quota.
         self.consumed_quota = consumed_quota
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.created_by = created_by
+        # The eligibility configuration in JSON format.
         self.eligibility_config = eligibility_config
+        # The end date.
         self.end_date = end_date
+        # The privilege configuration in JSON format.
         self.offer_config = offer_config
+        # The privilege configuration summary.
         self.offer_config_summary = offer_config_summary
+        # The remaining quota.
         self.remaining_quota = remaining_quota
+        # The start date.
         self.start_date = start_date
+        # The campaign status.
         self.status = status
+        # The total quota.
         self.total_quota = total_quota
+        # The touchpoint configuration in JSON format.
         self.touchpoint_config = touchpoint_config
+        # The update time.
         self.update_time = update_time
+        # The updater.
         self.updated_by = updated_by
+        # The warning threshold.
         self.warning_threshold = warning_threshold
 
     def validate(self):

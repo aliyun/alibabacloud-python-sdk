@@ -24,6 +24,7 @@ class OperateSupabaseForAdminRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The environment identifier.
         self.env = env
         # The SQL statement.
         self.execute_sql = execute_sql
@@ -31,9 +32,9 @@ class OperateSupabaseForAdminRequest(DaraModel):
         self.operate_type = operate_type
         # The ORDER BY clause.
         self.order_by_clause = order_by_clause
-        # The field by which to sort the results.
+        # The column used for sorting.
         self.order_column = order_column
-        # The sort order. Valid values: ASC and DESC.
+        # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number.
         self.page_num = page_num

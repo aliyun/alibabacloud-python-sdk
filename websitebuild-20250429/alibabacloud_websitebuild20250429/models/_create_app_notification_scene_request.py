@@ -8,6 +8,8 @@ class CreateAppNotificationSceneRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
+        butler_channel_types_json: str = None,
+        butler_fields_json: str = None,
         channels_json: str = None,
         description: str = None,
         email_fields_json: str = None,
@@ -22,6 +24,10 @@ class CreateAppNotificationSceneRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
+        # The list of mobile butler delivery platform types in a JSON string array. Valid values: wechat, dingtalk, wecom, and feishu.
+        self.butler_channel_types_json = butler_channel_types_json
+        # The list of mobile butler notification fields in a JSON string array. This parameter is required when the butler channel is selected. A maximum of 10 fields are supported. The butler fields in JSON format.
+        self.butler_fields_json = butler_fields_json
         # The notification channels in a JSON array string, such as ["sms","email"].
         self.channels_json = channels_json
         # The description of the scenario.
@@ -55,6 +61,12 @@ class CreateAppNotificationSceneRequest(DaraModel):
             result = _map
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+
+        if self.butler_channel_types_json is not None:
+            result['ButlerChannelTypesJson'] = self.butler_channel_types_json
+
+        if self.butler_fields_json is not None:
+            result['ButlerFieldsJson'] = self.butler_fields_json
 
         if self.channels_json is not None:
             result['ChannelsJson'] = self.channels_json
@@ -95,6 +107,12 @@ class CreateAppNotificationSceneRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('ButlerChannelTypesJson') is not None:
+            self.butler_channel_types_json = m.get('ButlerChannelTypesJson')
+
+        if m.get('ButlerFieldsJson') is not None:
+            self.butler_fields_json = m.get('ButlerFieldsJson')
 
         if m.get('ChannelsJson') is not None:
             self.channels_json = m.get('ChannelsJson')
