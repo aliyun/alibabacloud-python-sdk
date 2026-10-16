@@ -25,42 +25,6 @@ class Client(OpenApiClient):
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'ap-northeast-1': 'kms.ap-northeast-1.aliyuncs.com',
-            'ap-northeast-2': 'kms.ap-northeast-2.aliyuncs.com',
-            'ap-southeast-7': 'kms.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'kms.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'kms.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'kms.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'kms.ap-southeast-1.aliyuncs.com',
-            'cn-hongkong': 'kms.cn-hongkong.aliyuncs.com',
-            'cn-chengdu': 'kms.cn-chengdu.aliyuncs.com',
-            'cn-wulanchabu': 'kms.cn-wulanchabu.aliyuncs.com',
-            'cn-huhehaote': 'kms.cn-huhehaote.aliyuncs.com',
-            'cn-zhangjiakou': 'kms.cn-zhangjiakou.aliyuncs.com',
-            'cn-beijing': 'kms.cn-beijing.aliyuncs.com',
-            'cn-qingdao': 'kms.cn-qingdao.aliyuncs.com',
-            'cn-guangzhou': 'kms.cn-guangzhou.aliyuncs.com',
-            'cn-heyuan': 'kms.cn-heyuan.aliyuncs.com',
-            'cn-shenzhen': 'kms.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai': 'kms.cn-shanghai.aliyuncs.com',
-            'cn-hangzhou': 'kms.cn-hangzhou.aliyuncs.com',
-            'cn-fuzhou': 'kms.cn-fuzhou.aliyuncs.com',
-            'cn-wuhan-lr': 'kms.cn-wuhan-lr.aliyuncs.com',
-            'cn-zhengzhou-jva': 'kms.cn-zhengzhou-jva.aliyuncs.com',
-            'na-south-1': 'kms.na-south-1.aliyuncs.com',
-            'eu-central-1': 'kms.eu-central-1.aliyuncs.com',
-            'eu-west-1': 'kms.eu-west-1.aliyuncs.com',
-            'us-west-1': 'kms.us-west-1.aliyuncs.com',
-            'us-east-1': 'kms.us-east-1.aliyuncs.com',
-            'me-central-1': 'kms.me-central-1.aliyuncs.com',
-            'me-east-1': 'kms.me-east-1.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'kms.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-hangzhou-finance': 'kms.cn-hangzhou-finance.aliyuncs.com',
-            'cn-shanghai-finance-1': 'kms.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'kms.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-beijing-finance-1': 'kms.cn-beijing-finance-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('kms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1285,8 +1249,6 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not DaraCore.is_null(request.rotation_interval):
             query['RotationInterval'] = request.rotation_interval
-        if not DaraCore.is_null(request.secret_data):
-            query['SecretData'] = request.secret_data
         if not DaraCore.is_null(request.secret_data_type):
             query['SecretDataType'] = request.secret_data_type
         if not DaraCore.is_null(request.secret_name):
@@ -1297,8 +1259,12 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
+        body = {}
+        if not DaraCore.is_null(request.secret_data):
+            body['SecretData'] = request.secret_data
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateSecret',
@@ -1341,8 +1307,6 @@ class Client(OpenApiClient):
             query['Policy'] = request.policy
         if not DaraCore.is_null(request.rotation_interval):
             query['RotationInterval'] = request.rotation_interval
-        if not DaraCore.is_null(request.secret_data):
-            query['SecretData'] = request.secret_data
         if not DaraCore.is_null(request.secret_data_type):
             query['SecretDataType'] = request.secret_data_type
         if not DaraCore.is_null(request.secret_name):
@@ -1353,8 +1317,12 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
+        body = {}
+        if not DaraCore.is_null(request.secret_data):
+            body['SecretData'] = request.secret_data
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateSecret',
@@ -5319,8 +5287,6 @@ class Client(OpenApiClient):
     ) -> main_models.PutSecretValueResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.secret_data):
-            query['SecretData'] = request.secret_data
         if not DaraCore.is_null(request.secret_data_type):
             query['SecretDataType'] = request.secret_data_type
         if not DaraCore.is_null(request.secret_name):
@@ -5329,8 +5295,12 @@ class Client(OpenApiClient):
             query['VersionId'] = request.version_id
         if not DaraCore.is_null(request.version_stages):
             query['VersionStages'] = request.version_stages
+        body = {}
+        if not DaraCore.is_null(request.secret_data):
+            body['SecretData'] = request.secret_data
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'PutSecretValue',
@@ -5355,8 +5325,6 @@ class Client(OpenApiClient):
     ) -> main_models.PutSecretValueResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.secret_data):
-            query['SecretData'] = request.secret_data
         if not DaraCore.is_null(request.secret_data_type):
             query['SecretDataType'] = request.secret_data_type
         if not DaraCore.is_null(request.secret_name):
@@ -5365,8 +5333,12 @@ class Client(OpenApiClient):
             query['VersionId'] = request.version_id
         if not DaraCore.is_null(request.version_stages):
             query['VersionStages'] = request.version_stages
+        body = {}
+        if not DaraCore.is_null(request.secret_data):
+            body['SecretData'] = request.secret_data
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'PutSecretValue',

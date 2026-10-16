@@ -16,47 +16,41 @@ class GenerateDataKeyRequest(DaraModel):
         number_of_bytes: int = None,
         recipient: str = None,
     ):
-        # Specifies whether to enable the DryRun mode.
+        # Specifies whether to enable DryRun mode.
         # 
-        # - true: enables the DryRun mode.
+        # - true: enabled.
+        # - false (default): disabled.
         # 
-        # - false (default): disables the DryRun mode.
+        # DryRun mode is used to test API calls, verify that you have the required permissions on the relevant resources, and check whether request parameters are configured correctly. When DryRun mode is enabled, KMS always returns a failure with a reason. Possible failure reasons include:
         # 
-        # The DryRun mode is used to test the API call. It verifies whether you have the permissions to access the specified resources and whether the request parameters are valid. If you enable the DryRun mode, KMS always returns a failure response and a failure reason. The failure reasons include the following:
-        # 
-        # - DryRunOperationError: The request succeeds if the DryRun parameter is not specified.
-        # 
-        # - ValidationError: The parameters specified in the request are invalid.
-        # 
-        # - AccessDeniedError: You are not authorized to perform this operation on the KMS resource.
+        # - DryRunOperationError: The request would succeed if the DryRun parameter were not set.
+        # - ValidationError: A parameter specified in the request is invalid.
+        # - AccessDeniedError: You do not have permission to perform the operation on the KMS resource.
         self.dry_run = dry_run
-        # A JSON string that consists of key-value pairs.
+        # A JSON string of key-value pairs.
         # 
-        # If you specify this parameter, you must also specify the same parameter when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
+        # If you specify this parameter, you must provide the same parameter when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
-        # The ID of the key. You can also specify the alias or the key resource name (ARN) of the key. For more information about aliases, see [Manage aliases](https://help.aliyun.com/document_detail/480655.html).
-        # 
-        # > When you access a key in another Alibaba Cloud account, you must enter the ARN of the key. The key ARN is in the format of `acs:kms:${region}:${account}:key/${keyid}`.
+        # The ID of the key. You can also specify a key alias or a key Amazon Resource Name (ARN). For more information about aliases, see [Manage key aliases](https://help.aliyun.com/document_detail/480655.html).
+        # >To access a key in another Alibaba Cloud account, you must specify the key ARN. The key ARN format is `acs:kms:${region}:${account}:key/${keyid}`.
         # 
         # This parameter is required.
         self.key_id = key_id
-        # The length of the data key to be generated. Valid values:
+        # The length of the data key (DK) to generate. Valid values:
         # 
         # - AES_256: a 256-bit symmetric key.
         # 
         # - AES_128: a 128-bit symmetric key.
         # 
-        # > We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If you do not specify either of the parameters, KMS generates a 256-bit data key. If you specify both parameters, KMS ignores the KeySpec parameter.
+        # > Use KeySpec or NumberOfBytes to specify the DK length. If neither is specified, KMS generates a 256-bit DK. If both are specified, KMS ignores the KeySpec parameter.
         self.key_spec = key_spec
-        # The length of the data key that you want to generate. Unit: bytes.
+        # The length of the data key (DK) to generate, in bytes.
         # 
         # Valid values: 1 to 1024.
         # 
-        # Default values:
-        # 
-        # - If you set KeySpec to AES_256, the default value of NumberOfBytes is 32.
-        # 
-        # - If you set KeySpec to AES_128, the default value of NumberOfBytes is 16.
+        # Default value:
+        # - When KeySpec is set to AES_256, the default value of NumberOfBytes is 32.
+        # - When KeySpec is set to AES_128, the default value of NumberOfBytes is 16.
         self.number_of_bytes = number_of_bytes
         self.recipient = recipient
 
