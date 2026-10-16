@@ -23,11 +23,11 @@ class UpdateCustomAgentResponseBody(DaraModel):
         self.data = data
         # The HTTP status code of the request. A value of 200 indicates success.
         self.http_status_code = http_status_code
-        # The processing result message of the request. The value is success if the request is successful.
+        # The processing result message of the request. The value is success if the request succeeds.
         self.message = message
-        # The unique identifier of the request, which is used to locate and troubleshoot issues.
+        # The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. A successful creation, update, or deletion does not mean that the background operation is complete.
+        # Indicates whether the request is successful. A value of true indicates that the request is successful. Note that a successful creation, update, or deletion does not mean that the background operation is complete.
         self.success = success
 
     def validate(self):
@@ -114,7 +114,7 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         self.agent_id = agent_id
         # The latest submitted list of additional AgenticFS mounts.
         self.agentic_fs_mounts = agentic_fs_mounts
-        # The latest submitted deployment artifact configuration, including the service listening port and ACR container image. Check latestVersionStatus to determine whether the configuration has taken effect.
+        # The latest submitted deployment artifact configuration, including the service listening port and the ACR container image. To check whether the configuration has taken effect, refer to latestVersionStatus.
         self.artifact = artifact
         # The creation method of the agent. The value is CUSTOM for custom agents.
         self.create_mode = create_mode
@@ -122,21 +122,21 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         self.created_at = created_at
         # The deployment method of the agent. Custom agents are deployed and managed by the platform, and the value is MANAGED.
         self.deploy_type = deploy_type
-        # The description of the agent\\"s purpose.
+        # The description of the agent.
         self.description = description
         # The environment variable configuration for the agent process.
         self.environment = environment
-        # The HTTP health check configuration of the agent. This field is empty if no configuration is specified.
+        # The HTTP health check configuration of the agent. This field is empty if no health check is configured.
         self.health_check = health_check
         # The waiting or execution error of the latest configuration version. This field is returned only when the version is waiting for a retry or fails to execute.
         self.latest_execution_error = latest_execution_error
-        # The current latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
+        # The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
         self.latest_spec_version = latest_spec_version
         # The execution status corresponding to latestSpecVersion. Valid values:
         # - pending: Waiting for execution.
         # - processing: Executing.
-        # - waiting_retry: Waiting for retry.
-        # - succeeded: Execution succeeded.
+        # - waiting_retry: Waiting for a retry.
+        # - succeeded: Executed successfully.
         # - failed: Execution failed.
         # - superseded: Superseded by a subsequent version.
         self.latest_version_status = latest_version_status
@@ -144,7 +144,7 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         self.logging = logging
         # The name of the custom agent.
         self.name = name
-        # The network access configuration of the agent. The actual access scope is also restricted by the workspace network configuration.
+        # The network access configuration of the agent. The actual access scope is also limited by the network configuration of the workspace.
         self.network = network
         # The latest submitted list of OSS directory mounts.
         self.oss_mounts = oss_mounts
@@ -156,11 +156,18 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         self.role_arn = role_arn
         # The latest committed runtime configurations, including compute specifications, session policy, and elastic policy.
         self.runtime = runtime
-        # The counts of running instances by phase. Keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed). Only phases that actually occur are returned. Missing keys are treated as 0.
+        # The instance counts grouped by running instance phase. Keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed). Only phases that actually occur are returned. Missing keys are treated as 0.
         self.sandbox_phase_counts = sandbox_phase_counts
-        # The overall status of the agent. Valid values: Creating (creating), Running (running), Failed (failed), Updating (updating), Deleting (deleting), and Deleted (deleted). To check the execution progress of the latest configuration, query latestVersionStatus.
+        # The overall status of the agent. Valid values:
+        # - Creating: The agent is being created.
+        # - Running: The agent is running.
+        # - Failed: The agent failed.
+        # - Updating: The agent is being updated.
+        # - Deleting: The agent is being deleted.
+        # - Deleted: The agent is deleted.
+        # To query the execution progress of the latest configuration, check latestVersionStatus.
         self.status = status
-        # The time when the agent was last updated. The time follows the ISO 8601 standard. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
+        # The time when the agent was last updated. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
         self.updated_at = updated_at
         # The ID of the workspace to which the custom agent belongs.
         self.workspace_id = workspace_id
@@ -434,9 +441,13 @@ class UpdateCustomAgentResponseBodyDataRuntimeSessionPolicy(DaraModel):
         header_name: str = None,
         type: str = None,
     ):
-        # The name of the HTTP request header used by the session policy. This parameter is applicable to ISOLATED_HEADER_FIELD.
+        # The name of the HTTP request header used by the session policy. This parameter applies to ISOLATED_HEADER_FIELD.
         self.header_name = header_name
-        # The type of the session policy. Valid values: AFFINITY (session affinity), ISOLATED_HEADER_FIELD (associates sessions by using the request header specified by headerName), and ISOLATED_COOKIE (not recommended). The compatible value DISABLED in requests is returned as AFFINITY.
+        # The type of the session policy. Valid values:
+        # - AFFINITY: Session affinity.
+        # - ISOLATED_HEADER_FIELD: Uses the request header specified by headerName to associate sessions.
+        # - ISOLATED_COOKIE: Not recommended.
+        # Note: The compatible value DISABLED in a request is returned as AFFINITY.
         # 
         # This parameter is required.
         self.type = type
@@ -476,7 +487,9 @@ class UpdateCustomAgentResponseBodyDataRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether elastic scaling is enabled. A value of true indicates that elastic scaling is enabled, and a value of false indicates that elastic scaling is disabled.
+        # Specifies whether elastic scaling is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         # 
         # This parameter is required.
         self.enabled = enabled
@@ -573,7 +586,7 @@ class UpdateCustomAgentResponseBodyDataProtocol(DaraModel):
         paths: List[main_models.UpdateCustomAgentResponseBodyDataProtocolPaths] = None,
         type: str = None,
     ):
-        # The request header configurations for the current protocol, where the key is the name and the value is a string.
+        # The request header configurations for the current protocol. The key is the header name and the value is a string.
         self.headers = headers
         # The list of API paths corresponding to the current protocol.
         self.paths = paths
@@ -678,7 +691,7 @@ class UpdateCustomAgentResponseBodyDataOssMounts(DaraModel):
         self.mount_path = mount_path
         # The object directory prefix in the mounted bucket.
         self.path = path
-        # Specifies whether the mount is read-only. A value of true indicates read-only, and a value of false indicates read and write.
+        # Specifies whether the mount is read-only. A value of true indicates a read-only mount, and a value of false indicates a read-write mount.
         self.read_only = read_only
 
     def validate(self):
@@ -725,9 +738,9 @@ class UpdateCustomAgentResponseBodyDataNetwork(DaraModel):
         access_internet: main_models.UpdateCustomAgentResponseBodyDataNetworkAccessInternet = None,
         access_vpc: main_models.UpdateCustomAgentResponseBodyDataNetworkAccessVpc = None,
     ):
-        # The Internet access configuration of the agent. If this field is not configured, Internet access is allowed on the agent side, but it is still restricted by the workspace.
+        # The Internet access configuration of the agent. If this field is not configured, Internet access is allowed on the agent side, but it is still limited by the workspace.
         self.access_internet = access_internet
-        # The user VPC access configuration of the agent. If this field is not configured, user VPC access is allowed on the agent side, but it is still restricted by the workspace.
+        # The user VPC access configuration of the agent. If this field is not configured, user VPC access is allowed on the agent side, but it is still limited by the workspace.
         self.access_vpc = access_vpc
 
     def validate(self):
@@ -766,7 +779,7 @@ class UpdateCustomAgentResponseBodyDataNetworkAccessVpc(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether access to the user VPC configured for the workspace is allowed on the agent side. The actual access is still restricted by the workspace.
+        # Specifies whether access to the user VPC configured for the workspace is allowed on the agent side. The actual access is still limited by the workspace.
         self.enabled = enabled
 
     def validate(self):
@@ -794,7 +807,7 @@ class UpdateCustomAgentResponseBodyDataNetworkAccessInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether Internet access is allowed on the agent side. The actual access is still restricted by the workspace.
+        # Specifies whether Internet access is allowed on the agent side. The actual access is still limited by the workspace.
         self.enabled = enabled
 
     def validate(self):
@@ -891,11 +904,11 @@ class UpdateCustomAgentResponseBodyDataLatestExecutionError(DaraModel):
         message: str = None,
         retryable: bool = None,
     ):
-        # The reason code for the waiting or execution failure of the latest configuration. This code is used to determine the subsequent processing method.
+        # The reason code for the waiting or execution failure of the latest configuration. This code is used to determine the subsequent handling method.
         self.code = code
         # The description of the reason why the latest configuration is waiting or failed to execute. Refer to code and retryable to determine what to do next.
         self.message = message
-        # Specifies whether automatic retry is performed. If the value is true, you can query again later. If the value is false, check and fix the configuration based on the reason, and then resubmit.
+        # Specifies whether automatic retry is performed. If the value is true, you can query again later. If the value is false, check and fix the configuration based on the reason, and then resubmit the request.
         self.retryable = retryable
 
     def validate(self):
@@ -944,7 +957,7 @@ class UpdateCustomAgentResponseBodyDataHealthCheck(DaraModel):
         self.healthy_threshold = healthy_threshold
         # The interval between two consecutive health checks, in seconds.
         self.interval_seconds = interval_seconds
-        # The health check path.
+        # The Health Check Path for HTTP health checks.
         self.path = path
         # The port accessed for the HTTP health check.
         self.port = port
@@ -1091,7 +1104,7 @@ class UpdateCustomAgentResponseBodyDataArtifact(DaraModel):
         self.code = code
         # The latest submitted ACR container image configuration.
         self.container = container
-        # The TCP port listened on by the agent service.
+        # The TCP port listened to by the agent service.
         # 
         # This parameter is required.
         self.port = port
@@ -1161,7 +1174,7 @@ class UpdateCustomAgentResponseBodyDataArtifactContainer(DaraModel):
         # 
         # This parameter is required.
         self.tag = tag
-        # The image source type. A value of acr indicates Alibaba Cloud Container Registry (ACR).
+        # The image source type. A value of acr indicates Alibaba Cloud Container Registry.
         # 
         # This parameter is required.
         self.type = type
@@ -1278,11 +1291,11 @@ class UpdateCustomAgentResponseBodyDataAgenticFsMounts(DaraModel):
     ):
         # The AgenticFS mount directory in the container, located under /mnt/agenticfs/.
         self.mount_path = mount_path
-        # The relative directory within the mounted AccessPoint.
+        # The relative directory in the mounted access point.
         self.path = path
-        # Specifies whether the mount is read-only. A value of true indicates read-only, and a value of false indicates read and write.
+        # Specifies whether the mount is read-only. A value of true indicates a read-only mount, and a value of false indicates a read-write mount.
         self.read_only = read_only
-        # The domain name of the AgenticFS AccessPoint used for the mount.
+        # The domain name of the AgenticFS access point used for the mount.
         self.server = server
 
     def validate(self):

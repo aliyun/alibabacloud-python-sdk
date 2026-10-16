@@ -24,19 +24,19 @@ class ListWorkspacesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The list of workspaces.
+        # The workspace list.
         self.items = items
-        # The maximum number of records per page used in this request.
+        # The maximum number of records per page used for this request.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page. This parameter is empty if no more pages are available.
+        # The cursor for the next page. This parameter is empty if there is no next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The total number of workspaces that match the query conditions.
+        # The total number of workspaces that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -126,19 +126,15 @@ class ListWorkspacesResponseBodyItems(DaraModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
-        # The time when the workspace was created.
+        # The creation time.
         self.create_time = create_time
-        # The name of the workspace.
+        # The workspace name.
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration
-        # The region ID of the workspace.
+        # The ID of the region where the workspace resides.
         self.region_id = region_id
-        # The workspace status. Valid values:
-        # - Initializing
-        # - Initialized
-        # - Deleting
-        # - Deleted.
+        # The workspace status. Valid values: Initializing, Initialized, Deleting, and Deleted.
         self.status = status
         # The ID of the tenant to which the workspace belongs.
         self.tenant_id = tenant_id
@@ -206,9 +202,15 @@ class ListWorkspacesResponseBodyItems(DaraModel):
 class ListWorkspacesResponseBodyItemsNetworkConfiguration(DaraModel):
     def __init__(
         self,
+        public_egress_enabled: bool = None,
+        public_ingress_enabled: bool = None,
         vpc: main_models.ListWorkspacesResponseBodyItemsNetworkConfigurationVpc = None,
     ):
-        # The VPC network configuration of the user.
+        # Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This setting only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egresses, or the public network egress of the user VPC.
+        self.public_egress_enabled = public_egress_enabled
+        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. After this setting is disabled, the public network ingress for all agent endpoints in the workspace is closed. After it is re-enabled, the original public network ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
+        self.public_ingress_enabled = public_ingress_enabled
+        # The network configuration of the user VPC.
         self.vpc = vpc
 
     def validate(self):
@@ -220,6 +222,12 @@ class ListWorkspacesResponseBodyItemsNetworkConfiguration(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.public_egress_enabled is not None:
+            result['publicEgressEnabled'] = self.public_egress_enabled
+
+        if self.public_ingress_enabled is not None:
+            result['publicIngressEnabled'] = self.public_ingress_enabled
+
         if self.vpc is not None:
             result['vpc'] = self.vpc.to_map()
 
@@ -227,6 +235,12 @@ class ListWorkspacesResponseBodyItemsNetworkConfiguration(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('publicEgressEnabled') is not None:
+            self.public_egress_enabled = m.get('publicEgressEnabled')
+
+        if m.get('publicIngressEnabled') is not None:
+            self.public_ingress_enabled = m.get('publicIngressEnabled')
+
         if m.get('vpc') is not None:
             temp_model = main_models.ListWorkspacesResponseBodyItemsNetworkConfigurationVpc()
             self.vpc = temp_model.from_map(m.get('vpc'))

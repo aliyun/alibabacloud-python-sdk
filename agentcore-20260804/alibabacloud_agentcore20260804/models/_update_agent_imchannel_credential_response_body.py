@@ -17,17 +17,17 @@ class UpdateAgentIMChannelCredentialResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value is SUCCESS if the request succeeds.
+        # The business status code. The value is SUCCESS when the request is successful.
         self.code = code
-        # The summary of the updated IM channel credential.
+        # The summary of the updated IM channel credentials.
         self.data = data
-        # The HTTP status code. The value is 200 if the request succeeds.
+        # The HTTP status code. The value is 200 when the request is successful.
         self.http_status_code = http_status_code
-        # The result message of the request.
+        # The message indicating the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class UpdateAgentIMChannelCredentialResponseBodyData(DaraModel):
         configured_secret_fields: List[str] = None,
         non_secret_fields: Dict[str, str] = None,
     ):
-        # The list of configured secret field names. Secret values are not included.
+        # The list of configured secret field names, excluding the secret values.
         self.configured_secret_fields = configured_secret_fields
         # The non-sensitive credential fields and their values.
         self.non_secret_fields = non_secret_fields

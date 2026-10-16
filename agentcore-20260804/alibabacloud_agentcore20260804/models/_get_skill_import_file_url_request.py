@@ -9,7 +9,7 @@ class GetSkillImportFileUrlRequest(DaraModel):
         self,
         content_type: str = None,
     ):
-        # The Content-Type of the upload file. Default value: application/zip.
+        # The Content-Type of the uploaded file. Default value: application/zip.
         self.content_type = content_type
 
     def validate(self):

@@ -17,17 +17,17 @@ class ListPredefinedModelsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value SUCCESS indicates success.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
         # The list of predefined models.
         self.data = data
-        # The HTTP status code. The value 200 indicates success.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The request processing result message.
+        # The message indicating the request processing result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -97,15 +97,15 @@ class ListPredefinedModelsResponseBodyData(DaraModel):
         model_name: str = None,
         release_date: str = None,
     ):
-        # The model capability configuration.
+        # The model capability configurations.
         self.capabilities = capabilities
-        # The model context window size in tokens. The value must be a positive integer.
+        # The context window size of the model, in tokens. The value must be a positive integer.
         self.context_size = context_size
         # The maximum number of output tokens supported by the model in a single generation.
         self.max_tokens = max_tokens
         # The upstream model name.
         self.model_name = model_name
-        # The model release date in the format of YYYY-MM-DD.
+        # The release date of the model. The format is YYYY-MM-DD.
         self.release_date = release_date
 
     def validate(self):
@@ -170,11 +170,11 @@ class ListPredefinedModelsResponseBodyDataCapabilities(DaraModel):
         self.audio = audio
         # Indicates whether the model supports document input.
         self.document = document
-        # Indicates whether the model is able to invoke multiple tool calling requests in a single response.
+        # Specifies whether the model is able to invoke multiple tool calling in a single response.
         self.multi_tool_call = multi_tool_call
         # Indicates whether the model supports reasoning capabilities.
         self.reasoning = reasoning
-        # Indicates whether the model supports streaming tool calling.
+        # Specifies whether the model is able to invoke streaming tool calling.
         self.stream_tool_call = stream_tool_call
         # Indicates whether the model supports tool calling.
         self.tool_call = tool_call

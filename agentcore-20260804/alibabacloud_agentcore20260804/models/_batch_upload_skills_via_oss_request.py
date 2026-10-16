@@ -45,7 +45,7 @@ class BatchUploadSkillsViaOssRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.oss_object_name = oss_object_name
-        # Specifies whether to overwrite an existing Skill. Default value: false.
+        # Specifies whether to overwrite existing skills. Default value: false.
         self.overwrite = overwrite
 
     def validate(self):

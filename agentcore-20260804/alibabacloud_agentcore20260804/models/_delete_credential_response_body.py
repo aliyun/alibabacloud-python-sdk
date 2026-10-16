@@ -25,7 +25,7 @@ class DeleteCredentialResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -89,7 +89,7 @@ class DeleteCredentialResponseBodyData(DaraModel):
     ):
         # The credential ID.
         self.credential_id = credential_id
-        # The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+        # The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 128 characters in length. Runtime reserved names cannot be used.
         self.name = name
         # The workspace ID.
         self.workspace_id = workspace_id

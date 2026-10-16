@@ -43,7 +43,7 @@ class CreateAgentSpecVersionRequestBody(DaraModel):
     ):
         # The existing version on which the draft is based.
         self.based_on_version = based_on_version
-        # The version number of the draft. If this parameter is not specified, the version number is automatically incremented.
+        # Specifies the draft version number. If you do not specify this parameter, the version number is automatically incremented.
         self.target_version = target_version
 
     def validate(self):

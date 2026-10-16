@@ -43,17 +43,15 @@ class CreateIdentityProviderRequestBody(DaraModel):
         metadata: main_models.CreateIdentityProviderRequestBodyMetadata = None,
         sync_enabled: bool = None,
     ):
-        # The type of the external identity provider. Valid values:
-        # - DingTalk
-        # - Feishu
+        # The type of the external identity provider. Valid values: DingTalk and Feishu.
         # 
         # This parameter is required.
         self.identity_provider_type = identity_provider_type
-        # Specifies whether workspace users are allowed to log on through this external identity provider.
+        # Specifies whether workspace users can log on through the external identity provider.
         self.login_enabled = login_enabled
-        # The application configuration of the external identity provider. When binding DingTalk, you must provide appKey, appSecret, and corpId. When binding Lark, you must provide appId and appSecret.
+        # The application configuration for the external identity provider. When you bind DingTalk, you must provide appKey, appSecret, and corpId. When you bind Feishu, you must provide appId and appSecret.
         self.metadata = metadata
-        # Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
+        # Specifies whether to enable organization member synchronization. If enabled, organization members are synchronized to workspace users from the external identity provider.
         self.sync_enabled = sync_enabled
 
     def validate(self):
@@ -110,13 +108,13 @@ class CreateIdentityProviderRequestBodyMetadata(DaraModel):
         self.app_id = app_id
         # The AppKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
         self.app_key = app_key
-        # Required. The secret of the external identity provider application. This parameter is write-only and is not returned by query operations.
+        # Required. The application secret of the external identity provider. This parameter is used only for write operations and is not returned by query operations.
         self.app_secret = app_secret
         # The CorpId of the DingTalk organization. This parameter is required when the binding type is DingTalk.
         self.corp_id = corp_id
-        # The data encryption key for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
+        # The data encryption key for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
         self.encrypt_key = encrypt_key
-        # The verification token for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is write-only and is not returned by query operations.
+        # The verification token for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
         self.verification_token = verification_token
 
     def validate(self):

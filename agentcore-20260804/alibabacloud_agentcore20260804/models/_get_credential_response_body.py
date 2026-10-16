@@ -27,7 +27,7 @@ class GetCredentialResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -100,25 +100,25 @@ class GetCredentialResponseBodyData(DaraModel):
     ):
         # The list of agents bound to the credential.
         self.bound_agents = bound_agents
-        # The creation time in UTC, formatted according to RFC 3339.
+        # The creation time in UTC format compliant with RFC 3339.
         self.created_at = created_at
         # The credential ID.
         self.credential_id = credential_id
-        # The masked content of the credential. When credentialType is apiKey, the value of apiKey is returned as asterisks (*) of equal length.
+        # The masked result of the credential content. When credentialType is apiKey, the value of apiKey is returned as asterisks (*) of the same length.
         self.credential_metadata = credential_metadata
         # The credential type. Currently, only apiKey is supported.
         self.credential_type = credential_type
-        # The credential description, up to 256 characters in length.
+        # The credential description, which cannot exceed 256 characters in length.
         self.description = description
-        # The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+        # The credential name. It must be unique within the workspace, contain only letters, digits, periods (.), underscores (_), and hyphens (-), be 3 to 128 characters in length, and cannot use runtime reserved names.
         self.name = name
-        # The region ID where the resource resides.
+        # The region ID of the resource.
         self.region_id = region_id
-        # Each item contains resourceType, resourceId, and resourceName. If the resource has been deleted, resourceName is empty.
+        # Each item includes resourceType, resourceId, and resourceName. If the resource is deleted, resourceName is empty.
         self.resource_refs = resource_refs
-        # The scope of resources to which the credential applies.
+        # The application scope of the credential resource.
         self.resource_scope = resource_scope
-        # The time of the last modification in UTC, formatted according to RFC 3339.
+        # The time of the last modification in UTC format compliant with RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -235,7 +235,7 @@ class GetCredentialResponseBodyDataResourceRefs(DaraModel):
     ):
         # The unique identifier of the resource.
         self.resource_id = resource_id
-        # The resource name. This value is empty if the resource has been deleted.
+        # The resource name. This field is empty if the resource is deleted.
         self.resource_name = resource_name
         # The resource type, such as agent.
         self.resource_type = resource_type

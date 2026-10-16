@@ -15,17 +15,17 @@ class DeleteManagedAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value SUCCESS is returned if the request succeeds.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
         # The summary information of the deleted managed agent.
         self.data = data
-        # The HTTP status code. The value 200 is returned if the request succeeds.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The message returned for the request processing result.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -105,7 +105,7 @@ class DeleteManagedAgentResponseBodyData(DaraModel):
         self.deploy_type = deploy_type
         # The description of the managed agent.
         self.description = description
-        # The latest specification version number.
+        # The latest specification version.
         self.latest_spec_version = latest_spec_version
         # The name of the managed agent.
         self.name = name

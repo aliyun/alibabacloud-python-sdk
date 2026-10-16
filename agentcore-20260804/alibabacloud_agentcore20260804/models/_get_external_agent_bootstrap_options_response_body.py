@@ -17,17 +17,17 @@ class GetExternalAgentBootstrapOptionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value SUCCESS is returned if the request succeeds.
+        # The business status code. The value is SUCCESS when the request is successful.
         self.code = code
-        # The network access information available for the external agent.
+        # The access network information available for the external agent.
         self.data = data
-        # The HTTP status code. The value 200 is returned if the request succeeds.
+        # The HTTP status code. The value is 200 when the request is successful.
         self.http_status_code = http_status_code
-        # The result message of the request.
+        # The request processing result message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,7 +91,7 @@ class GetExternalAgentBootstrapOptionsResponseBodyData(DaraModel):
     ):
         # The external agent ID.
         self.agent_id = agent_id
-        # The list of available network access options.
+        # The list of available access networks.
         self.network_options = network_options
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -142,11 +142,9 @@ class GetExternalAgentBootstrapOptionsResponseBodyDataNetworkOptions(DaraModel):
         available: bool = None,
         network_type: str = None,
     ):
-        # Indicates whether the network access type is available.
+        # Indicates whether the access network is available.
         self.available = available
-        # The network type. Valid values:
-        # - INTRANET: internal network.
-        # - INTERNET: public network.
+        # The access network type. Valid values: INTRANET (internal network) and INTERNET (public network).
         self.network_type = network_type
 
     def validate(self):

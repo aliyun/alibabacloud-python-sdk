@@ -25,7 +25,7 @@ class VerifyWorkspaceAcrRamAuthorizationResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -92,17 +92,17 @@ class VerifyWorkspaceAcrRamAuthorizationResponseBodyData(DaraModel):
         role_source: str = None,
         workspace_id: str = None,
     ):
-        # The ACR Enterprise instance ID.
+        # The ID of the ACR Enterprise instance.
         self.acr_instance_id = acr_instance_id
-        # The policy attachment status for the target repository.
+        # The current attachment status of the policy for the target repository.
         self.authorization_status = authorization_status
-        # The prerequisite status for access. This is not the Secret Ready status.
+        # The access prerequisite status. This does not indicate that the secret is ready.
         self.eligibility_status = eligibility_status
         # The stable reason code for unauthorized or unmet conditions. This field is omitted when no reason exists.
         self.reason_code = reason_code
-        # The human-readable reason. This field is omitted when no reason exists.
+        # The user-readable reason message. This field is omitted when no reason exists.
         self.reason_message = reason_message
-        # The shared role name selected by the backend. This value is not editable on the frontend.
+        # The name of the shared role selected by the backend. This field is not editable on the frontend.
         self.role_name = role_name
         # The source of the shared role. This does not indicate that authorization is complete.
         self.role_source = role_source

@@ -25,7 +25,7 @@ class UpdateUserResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -97,15 +97,15 @@ class UpdateUserResponseBodyData(DaraModel):
     ):
         # The user ID.
         self.agent_core_user_id = agent_core_user_id
-        # The authentication method of the user. password indicates local password authentication within the workspace. dingtalk and feishu indicate that the user is synchronized and authenticated by the corresponding external identity provider.
+        # The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
         self.auth_method = auth_method
-        # The creation time in UTC, formatted in RFC 3339.
+        # The creation time, in UTC and RFC 3339 format.
         self.created_at = created_at
-        # The display name of the user. The name is 1 to 32 characters in length.
+        # The display name of the user. The name must be 1 to 32 characters in length.
         self.display_name = display_name
-        # The email address of the user. The address can be up to 256 characters in length.
+        # The email address of the user. The email address can be up to 256 characters in length.
         self.email = email
-        # The username. The name must be unique within the workspace and can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit and be 1 to 32 characters in length.
+        # The username. The username must be unique within the workspace, can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length.
         self.name = name
         # The note for the user. The note can be up to 1,024 characters in length.
         self.note = note
@@ -113,7 +113,7 @@ class UpdateUserResponseBodyData(DaraModel):
         self.region_id = region_id
         # The user status. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
         self.status = status
-        # The time of the last modification in UTC, formatted in RFC 3339.
+        # The time of the last update, in UTC and RFC 3339 format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id

@@ -25,7 +25,7 @@ class DeleteCustomAgentResponseBody(DaraModel):
         self.message = message
         # The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. A successful creation, update, or deletion does not mean that the background operation is complete.
+        # Indicates whether the request was successful. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
         self.success = success
 
     def validate(self):
@@ -95,13 +95,13 @@ class DeleteCustomAgentResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The unique identifier of the custom agent. You can retrieve it from the response of CreateCustomAgent or ListCustomAgents.
+        # The unique identifier of the custom agent. You can obtain it from the response of CreateCustomAgent or ListCustomAgents.
         self.agent_id = agent_id
         # The creation method of the agent. The value is CUSTOM for custom agents.
         self.create_mode = create_mode
         # The time when the agent was created. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
         self.created_at = created_at
-        # The deployment method of the agent. Custom agents are deployed and managed by the platform, and the value is MANAGED.
+        # The deployment method of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED.
         self.deploy_type = deploy_type
         # The description of the agent\\"s purpose.
         self.description = description
@@ -111,7 +111,14 @@ class DeleteCustomAgentResponseBodyData(DaraModel):
         self.name = name
         # The compute specifications of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
         self.runtime = runtime
-        # The overall status of the agent. Valid values: Creating: The agent is being created. Running: The agent is running. Failed: The agent failed. Updating: The agent is being updated. Deleting: The agent is being deleted. Deleted: The agent is deleted. To query the execution progress of the latest configuration, call GetCustomAgent.
+        # The overall status of the agent. Valid values:
+        # - Creating: The agent is being created.
+        # - Running: The agent is running.
+        # - Failed: The agent is in a failed state.
+        # - Updating: The agent is being updated.
+        # - Deleting: The agent is being deleted.
+        # - Deleted: The agent has been deleted.
+        # Call GetCustomAgent to retrieve the latest configuration execution progress.
         self.status = status
         # The time when the agent was last updated. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
         self.updated_at = updated_at

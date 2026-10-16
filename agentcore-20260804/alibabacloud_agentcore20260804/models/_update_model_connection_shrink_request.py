@@ -12,7 +12,7 @@ class UpdateModelConnectionShrinkRequest(DaraModel):
     ):
         # The request body.
         self.body_shrink = body_shrink
-        # The client token used for idempotence. Not currently supported.
+        # The client token used for idempotence. This parameter is not supported.
         self.client_token = client_token
 
     def validate(self):

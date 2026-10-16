@@ -11,15 +11,15 @@ class GetWorkspaceAcrRamAuthorizeUrlRequest(DaraModel):
         namespace: str = None,
         repository: str = None,
     ):
-        # The ACR Enterprise instance ID.
+        # The ID of the ACR Enterprise instance.
         # 
         # This parameter is required.
         self.acr_instance_id = acr_instance_id
-        # The target ACR namespace, which corresponds to Agent artifact.container.namespace. This is not a Kubernetes namespace. Together with the instance and repository, this parameter determines the authorization scope.
+        # The target ACR namespace, which corresponds to artifact.container.namespace of the agent. This is not a Kubernetes namespace. It determines the authorization scope together with the instance and repository.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The target repository name, which corresponds to Agent artifact.container.repo. Do not include a tag, namespace, or path separator. Wildcards are not accepted.
+        # The target repository name, which corresponds to artifact.container.repo of the agent. It does not include tags, namespaces, or path separators. Wildcards are not supported.
         # 
         # This parameter is required.
         self.repository = repository

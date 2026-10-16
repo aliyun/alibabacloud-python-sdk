@@ -30,11 +30,11 @@ class ListCustomAgentsResponseBody(DaraModel):
         self.max_results = max_results
         # The description of the processing result for this request. The value is success if the request is successful.
         self.message = message
-        # The opaque token used to query the next page. An empty value indicates that there are no more pages. Pass the token as is in subsequent requests.
+        # The opaque token used to query the next page. If this value is empty, no more pages are available. Pass this value as is in subsequent requests.
         self.next_token = next_token
-        # The unique identifier of the request. You can use the ID to locate and troubleshoot issues.
+        # The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. true indicates that the request was processed successfully. A successful creation, update, or deletion does not mean that the background operation is complete.
+        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. A successful creation, update, or deletion does not indicate that the background operation is complete.
         self.success = success
         # The total number of custom agents that meet the query conditions in the specified workspace.
         self.total_count = total_count
@@ -131,15 +131,15 @@ class ListCustomAgentsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The unique identifier of the custom agent. You can obtain the value from the response of CreateCustomAgent or ListCustomAgents.
+        # The unique identifier of the custom agent. You can obtain this value from the response of CreateCustomAgent or ListCustomAgents.
         self.agent_id = agent_id
         # The creation method of the agent. The value is CUSTOM for custom agents.
         self.create_mode = create_mode
-        # The time when the agent was created. The time is displayed in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
+        # The time when the agent was created. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
         self.created_at = created_at
-        # The deployment method of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED.
+        # The deployment method of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED for custom agents.
         self.deploy_type = deploy_type
-        # The description of the agent\\"s purpose.
+        # The description of the agent.
         self.description = description
         # The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
         self.latest_spec_version = latest_spec_version
@@ -149,9 +149,16 @@ class ListCustomAgentsResponseBodyItems(DaraModel):
         self.protocol = protocol
         # The compute specifications of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
         self.runtime = runtime
-        # The overall status of the agent. Valid values: Creating: The agent is being created. Running: The agent is running. Failed: The agent failed to run. Updating: The agent is being updated. Deleting: The agent is being deleted. Deleted: The agent is deleted. To query the execution progress of the latest configuration, call GetCustomAgent.
+        # The overall status of the agent. Valid values:
+        # - Creating: The agent is being created.
+        # - Running: The agent is running.
+        # - Failed: The agent failed.
+        # - Updating: The agent is being updated.
+        # - Deleting: The agent is being deleted.
+        # - Deleted: The agent is deleted.
+        # To check the execution progress of the latest configuration, call GetCustomAgent.
         self.status = status
-        # The time when the agent was last updated. The time is displayed in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
+        # The time when the agent was last updated. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
         self.updated_at = updated_at
         # The ID of the workspace to which the custom agent belongs.
         self.workspace_id = workspace_id
@@ -261,7 +268,10 @@ class ListCustomAgentsResponseBodyItemsProtocol(DaraModel):
         self.headers = headers
         # The list of API paths corresponding to the current protocol.
         self.paths = paths
-        # The invoke Protocol Type. Valid values: agui: AG-UI protocol. openai-chat-completion: OpenAI Chat Completions compatible protocol. custom: custom protocol.
+        # The invocation protocol type. Valid values:
+        # - agui: AG-UI protocol.
+        # - openai-chat-completion: OpenAI Chat Completions compatible protocol.
+        # - custom: Custom protocol.
         # 
         # This parameter is required.
         self.type = type
@@ -312,7 +322,7 @@ class ListCustomAgentsResponseBodyItemsProtocolPaths(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The description of the purpose of the current API path.
+        # The description of the current API path.
         self.description = description
         # The API path corresponding to the current protocol.
         # 

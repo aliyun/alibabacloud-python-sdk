@@ -11,7 +11,7 @@ class GetSkillImportFileUrlResponseBody(DaraModel):
         data: main_models.GetSkillImportFileUrlResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -52,13 +52,13 @@ class GetSkillImportFileUrlResponseBodyData(DaraModel):
         oss_object_name: str = None,
         upload_url: str = None,
     ):
-        # The Content-Type of the upload file.
+        # The Content-Type of the uploaded file.
         self.content_type = content_type
-        # The maximum file size allowed for upload, in bytes.
+        # The maximum allowed file size for upload, in bytes.
         self.max_size = max_size
         # The OSS object name.
         self.oss_object_name = oss_object_name
-        # The OSS pre-signed upload URL.
+        # The OSS presigned upload URL.
         self.upload_url = upload_url
 
     def validate(self):

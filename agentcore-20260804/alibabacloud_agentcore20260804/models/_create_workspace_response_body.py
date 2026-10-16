@@ -27,7 +27,7 @@ class CreateWorkspaceResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -101,37 +101,37 @@ class CreateWorkspaceResponseBodyData(DaraModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
-        # The AI Registry namespace ID. This value is returned after the related resources are bound. It may be empty during initialization.
+        # The AI Registry namespace ID. It is returned after related resources are bound and may be empty during initialization.
         self.ai_registry_namespace_id = ai_registry_namespace_id
         # The OSS storage authorization status.
         self.authorization_status = authorization_status
         # The name of the private OSS bucket.
         self.bucket_name = bucket_name
-        # The CloudMonitor workspace ID. This value is returned after the related resources are bound. It may be empty during initialization.
+        # The CloudMonitor workspace ID. It is returned after related resources are bound and may be empty during initialization.
         self.cms_workspace_id = cms_workspace_id
         # The time when the workspace was created, in ISO 8601 format.
         # 
         # This parameter is required.
         self.create_time = create_time
-        # The workspace name.
+        # The name of the workspace.
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration
-        # The region ID of the workspace.
+        # The ID of the region where the workspace resides.
         self.region_id = region_id
-        # The ID of the resource group to which the workspace belongs. This value may be empty if no resource group is specified.
+        # The ID of the resource group to which the workspace belongs. It may be empty if no resource group is specified.
         self.resource_group_id = resource_group_id
-        # The workspace status.
+        # The status of the workspace.
         self.status = status
-        # The supplementary reason for the current workspace status. This value is used to display the specific reason when initialization fails or authorization is pending. It may be empty under normal conditions.
+        # The supplementary reason for the current status of the workspace. It is used to display the specific reason when initialization fails or when waiting for authorization. It may be empty under normal circumstances.
         self.status_reason = status_reason
         # The storage type of the workspace.
         self.storage_type = storage_type
-        # The list of workspace tags. An empty array is returned if no tags are set.
+        # The list of tags for the workspace. An empty array is returned if no tags are set.
         # 
         # This parameter is required.
         self.tags = tags
-        # The ID of the tenant to which the workspace belongs.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -295,9 +295,15 @@ class CreateWorkspaceResponseBodyDataTags(DaraModel):
 class CreateWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
     def __init__(
         self,
+        public_egress_enabled: bool = None,
+        public_ingress_enabled: bool = None,
         vpc: main_models.CreateWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
-        # The VPC network configuration of the user.
+        # Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public network egress of the user VPC.
+        self.public_egress_enabled = public_egress_enabled
+        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public network ingress for all agent endpoints in the workspace is closed. The original public network ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
+        self.public_ingress_enabled = public_ingress_enabled
+        # The user VPC network configuration.
         self.vpc = vpc
 
     def validate(self):
@@ -309,6 +315,12 @@ class CreateWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.public_egress_enabled is not None:
+            result['publicEgressEnabled'] = self.public_egress_enabled
+
+        if self.public_ingress_enabled is not None:
+            result['publicIngressEnabled'] = self.public_ingress_enabled
+
         if self.vpc is not None:
             result['vpc'] = self.vpc.to_map()
 
@@ -316,6 +328,12 @@ class CreateWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('publicEgressEnabled') is not None:
+            self.public_egress_enabled = m.get('publicEgressEnabled')
+
+        if m.get('publicIngressEnabled') is not None:
+            self.public_ingress_enabled = m.get('publicIngressEnabled')
+
         if m.get('vpc') is not None:
             temp_model = main_models.CreateWorkspaceResponseBodyDataNetworkConfigurationVpc()
             self.vpc = temp_model.from_map(m.get('vpc'))
@@ -329,11 +347,11 @@ class CreateWorkspaceResponseBodyDataNetworkConfigurationVpc(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Specifies whether to enable VPC networking.
+        # Specifies whether to enable the VPC network.
         self.enabled = enabled
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The ID of the user VPC.
+        # The user VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

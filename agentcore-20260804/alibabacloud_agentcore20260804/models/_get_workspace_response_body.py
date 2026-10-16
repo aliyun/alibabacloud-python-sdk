@@ -27,7 +27,7 @@ class GetWorkspaceResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -101,11 +101,11 @@ class GetWorkspaceResponseBodyData(DaraModel):
         self.authorization_status = authorization_status
         # The name of the private OSS bucket.
         self.bucket_name = bucket_name
-        # The time when the workspace was created.
+        # The creation time.
         self.create_time = create_time
         # The workspace name.
         self.name = name
-        # The workspace network configuration.
+        # The network configuration of the workspace.
         self.network_configuration = network_configuration
         # The region ID of the workspace.
         self.region_id = region_id
@@ -113,7 +113,7 @@ class GetWorkspaceResponseBodyData(DaraModel):
         self.status = status
         # The reason for the workspace status.
         self.status_reason = status_reason
-        # The workspace storage type.
+        # The storage type of the workspace.
         self.storage_type = storage_type
         # The ID of the tenant to which the workspace belongs.
         self.tenant_id = tenant_id
@@ -205,12 +205,18 @@ class GetWorkspaceResponseBodyData(DaraModel):
 class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
     def __init__(
         self,
+        public_egress_enabled: bool = None,
         public_egress_ip: str = None,
+        public_ingress_enabled: bool = None,
         vpc: main_models.GetWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
+        # Returns the target configuration value. Updating indicates that the change is still being executed, and UpdateFailed indicates that the current change failed. This setting only controls the use of the platform public egress for the latest versions of managed and custom agents. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+        self.public_egress_enabled = public_egress_enabled
         # The public egress IP address of the workspace.
         self.public_egress_ip = public_egress_ip
-        # The user VPC network configuration.
+        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public ingress for all agent endpoints in the workspace is closed. When re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
+        self.public_ingress_enabled = public_ingress_enabled
+        # The VPC network configuration of the user.
         self.vpc = vpc
 
     def validate(self):
@@ -222,8 +228,14 @@ class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.public_egress_enabled is not None:
+            result['publicEgressEnabled'] = self.public_egress_enabled
+
         if self.public_egress_ip is not None:
             result['publicEgressIp'] = self.public_egress_ip
+
+        if self.public_ingress_enabled is not None:
+            result['publicIngressEnabled'] = self.public_ingress_enabled
 
         if self.vpc is not None:
             result['vpc'] = self.vpc.to_map()
@@ -232,8 +244,14 @@ class GetWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('publicEgressEnabled') is not None:
+            self.public_egress_enabled = m.get('publicEgressEnabled')
+
         if m.get('publicEgressIp') is not None:
             self.public_egress_ip = m.get('publicEgressIp')
+
+        if m.get('publicIngressEnabled') is not None:
+            self.public_ingress_enabled = m.get('publicIngressEnabled')
 
         if m.get('vpc') is not None:
             temp_model = main_models.GetWorkspaceResponseBodyDataNetworkConfigurationVpc()
@@ -252,7 +270,7 @@ class GetWorkspaceResponseBodyDataNetworkConfigurationVpc(DaraModel):
         self.enabled = enabled
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The user VPC ID.
+        # The VPC ID of the user.
         self.vpc_id = vpc_id
 
     def validate(self):

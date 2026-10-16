@@ -12,7 +12,7 @@ class UpdateWorkspaceShrinkRequest(DaraModel):
     ):
         # The request body for updating a workspace.
         self.body_shrink = body_shrink
-        # The client idempotency token.
+        # The client token used to ensure idempotence.
         self.client_token = client_token
 
     def validate(self):

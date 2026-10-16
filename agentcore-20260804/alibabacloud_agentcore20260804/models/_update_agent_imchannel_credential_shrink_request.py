@@ -12,7 +12,7 @@ class UpdateAgentIMChannelCredentialShrinkRequest(DaraModel):
     ):
         # The request body.
         self.body_shrink = body_shrink
-        # Reserved idempotency token. The backend does not provide persistent idempotence guarantees in the current version.
+        # The reserved idempotence token. The backend does not provide persistent idempotence guarantees in the current phase.
         self.client_token = client_token
 
     def validate(self):

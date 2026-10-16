@@ -40,7 +40,7 @@ class UpdateSkillBizTagsRequestBody(DaraModel):
         self,
         biz_tags: str = None,
     ):
-        # The business tags as a JSON array string.
+        # The JSON array string of business tags.
         # 
         # This parameter is required.
         self.biz_tags = biz_tags

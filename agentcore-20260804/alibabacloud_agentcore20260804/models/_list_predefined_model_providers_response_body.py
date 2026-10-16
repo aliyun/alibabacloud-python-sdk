@@ -17,11 +17,17 @@ class ListPredefinedModelProvidersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
+        # The list of predefined model providers.
         self.data = data
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
+        # The message about the request processing result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,9 +96,13 @@ class ListPredefinedModelProvidersResponseBodyData(DaraModel):
         display_name: str = None,
         provider_type: str = None,
     ):
+        # The default model service endpoint of the provider.
         self.default_endpoint = default_endpoint
+        # The default model invocation protocol of the provider.
         self.default_protocol = default_protocol
+        # The display name of the model provider.
         self.display_name = display_name
+        # The model provider type.
         self.provider_type = provider_type
 
     def validate(self):

@@ -20,23 +20,23 @@ class ListExternalAgentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. The value SUCCESS is returned for a successful request.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The HTTP status code. The value 200 is returned for a successful request.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The list of external agents.
         self.items = items
         # The maximum number of entries returned per page for this request.
         self.max_results = max_results
-        # The message that indicates the result of the request.
+        # The message about the request processing result.
         self.message = message
-        # The token for the next page. An empty value indicates that the last page has been reached.
+        # The token for the next page. An empty value indicates that the last page is reached.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The total number of records that match the query conditions.
+        # The total number of records that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -130,7 +130,7 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The external agent ID.
+        # The ID of the external agent.
         self.agent_id = agent_id
         # The creation mode.
         self.create_mode = create_mode
@@ -146,13 +146,7 @@ class ListExternalAgentsResponseBodyItems(DaraModel):
         self.name = name
         # The runtime type reported by the external agent.
         self.runtime = runtime
-        # The status of the external agent. Valid values:
-        # - Creating: The agent is being created.
-        # - Running: The agent is running.
-        # - Failed: The agent has failed.
-        # - Updating: The agent is being updated.
-        # - Deleting: The agent is being deleted.
-        # - Deleted: The agent has been deleted.
+        # The status of the external agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
         self.status = status
         # The update time in RFC 3339 format.
         self.updated_at = updated_at

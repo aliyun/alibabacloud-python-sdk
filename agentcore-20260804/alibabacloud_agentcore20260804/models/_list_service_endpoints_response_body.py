@@ -26,17 +26,17 @@ class ListServiceEndpointsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The list of service endpoints.
         self.items = items
-        # The maximum number of records per page that takes effect for this query.
+        # The maximum number of records per page that takes effect in this query.
         self.max_results = max_results
         # The response message. An error description is returned when the request fails.
         self.message = message
-        # The pagination token for the next page. This value is empty when no more pages are available.
+        # The cursor for the next page. This parameter is empty if no next page exists.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The total number of service endpoints that match the query conditions.
+        # The total number of service endpoints that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -135,23 +135,23 @@ class ListServiceEndpointsResponseBodyItems(DaraModel):
         self.access_urls = access_urls
         # The authentication configuration of the service endpoint.
         self.authentication = authentication
-        # The creation time in UTC, formatted in RFC 3339.
+        # The creation time in UTC format compliant with RFC 3339.
         self.created_at = created_at
-        # The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
+        # The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by a user.
         self.endpoint_type = endpoint_type
-        # The service endpoint name. The name is unique within the workspace and is 1 to 128 characters in length.
+        # The service endpoint name. The name must be unique within the workspace and 1 to 128 characters in length.
         self.name = name
         # The region ID of the service endpoint.
         self.region_id = region_id
         # The service endpoint ID.
         self.service_endpoint_id = service_endpoint_id
-        # The service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, DELETING.
+        # The service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
         self.status = status
-        # The reason for the service endpoint status. A specific reason is returned when the status is abnormal.
+        # The reason for the service endpoint status. The specific reason is returned when the status is abnormal.
         self.status_reason = status_reason
         # The target routing configuration of the service endpoint.
         self.target = target
-        # The time of the last modification in UTC, formatted in RFC 3339.
+        # The last update time in UTC format compliant with RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -265,15 +265,15 @@ class ListServiceEndpointsResponseBodyItemsTarget(DaraModel):
         resource_binding_id: str = None,
         target_type: str = None,
     ):
-        # The target agent ID. Returned when the target type is AGENT_VERSION.
+        # The target agent ID. This parameter is returned when the target type is AGENT_VERSION.
         self.agent_id = agent_id
-        # The target agent version number. Returned when the target type is AGENT_VERSION.
+        # The target agent version. This parameter is returned when the target type is AGENT_VERSION.
         self.agent_version = agent_version
-        # The collaboration component type. Returned when the target type is TEAM_COLLABORATION.
+        # The collaboration component type. This parameter is returned when the target type is TEAM_COLLABORATION.
         self.collaboration_component = collaboration_component
-        # The workspace resource binding ID associated with the target collaboration component. Returned when the target type is TEAM_COLLABORATION.
+        # The workspace resource binding ID associated with the target collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
         self.resource_binding_id = resource_binding_id
-        # The target type. Valid values: AGENT_VERSION, TEAM_COLLABORATION.
+        # The target type. Valid values: AGENT_VERSION and TEAM_COLLABORATION.
         self.target_type = target_type
 
     def validate(self):
@@ -325,7 +325,7 @@ class ListServiceEndpointsResponseBodyItemsAuthentication(DaraModel):
         self,
         type: str = None,
     ):
-        # The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key through the x-api-key request header.
+        # The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key in the x-api-key request header.
         self.type = type
 
     def validate(self):
@@ -356,11 +356,11 @@ class ListServiceEndpointsResponseBodyItemsAccessUrls(DaraModel):
         status_reason: str = None,
         url: str = None,
     ):
-        # The access URL type. Valid values: INTERNET, VPC.
+        # The access URL type. Valid values: INTERNET and VPC.
         self.access_type = access_type
-        # The access URL status. Valid values: CREATING, READY, DEGRADED.
+        # The access URL status. Valid values: CREATING, READY, and DEGRADED.
         self.status = status
-        # The reason for the access URL status. A specific reason is returned when the status is abnormal.
+        # The reason for the access URL status. The specific reason is returned when the status is abnormal.
         self.status_reason = status_reason
         # The access URL.
         self.url = url

@@ -15,17 +15,17 @@ class GetServiceEndpointApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The value is SUCCESS when the request succeeds.
+        # The response code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The currently active API Key information for the service endpoint.
+        # The information about the currently active API key for the service endpoint.
         self.data = data
-        # The HTTP status code. The value is 200 when the request succeeds.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
-        # The response message. The value is success when the request succeeds.
+        # The response message. The value is success if the request is successful.
         self.message = message
-        # The request ID, used for troubleshooting and tracing.
+        # The request ID, which is used to troubleshoot and trace the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. The value is true when the request succeeds.
+        # Indicates whether the request is successful. The value is true if the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,21 +91,20 @@ class GetServiceEndpointApiKeyResponseBodyData(DaraModel):
         service_endpoint_id: str = None,
         workspace_id: str = None,
     ):
-        # The currently active API Key for the service endpoint. The service reads this value from the gateway consumer in real time. AgentCore does not persist the plaintext. When calling the service endpoint, include this value in the request header specified by apiKeyName. Do not log this value or expose it in public configurations.
+        # The currently active API key for the service endpoint. The service reads this value from the gateway consumer in real time, and AgentCore does not persist the plaintext. When calling the service endpoint, include this value in the request header specified by apiKeyName. Do not log this value or expose it in public configurations.
         self.api_key = api_key
-        # The API Key fingerprint, which consists of the first 12 lowercase hexadecimal characters of the SHA-256 digest of the API Key. It can be used to identify the key version but cannot replace the API Key for authentication.
+        # The fingerprint of the API key, which consists of the first 12 lowercase hexadecimal characters of the SHA-256 hash of the API key. It can be used to identify the key version but cannot be used in place of the API key for authentication.
         self.api_key_fingerprint = api_key_fingerprint
-        # The name of the HTTP request header used to pass the API Key. The value is currently fixed to x-api-key.
+        # The name of the HTTP request header used to pass the API key. The value is fixed to x-api-key.
         self.api_key_name = api_key_name
-        # The location where the API Key is passed. The value is currently fixed to Header, indicating that the API Key is passed through an HTTP request header.
+        # The location where the API key is passed. The value is fixed to Header, which indicates that the API key is passed through an HTTP request header.
         self.api_key_source = api_key_source
         # The authentication type of the service endpoint. Valid values:
         # - NONE: Authentication is not enabled.
-        # - API_KEY: API Key authentication is used.
-        # 
-        # This operation succeeds only when the authentication type is API_KEY. Therefore, the value API_KEY is always returned in a successful response.
+        # - API_KEY: API key authentication is used.
+        # This operation succeeds only when the authentication type is API_KEY. Therefore, a successful response always returns API_KEY.
         self.authentication_type = authentication_type
-        # The service endpoint ID.
+        # The ID of the service endpoint.
         self.service_endpoint_id = service_endpoint_id
         # The ID of the workspace to which the service endpoint belongs.
         self.workspace_id = workspace_id

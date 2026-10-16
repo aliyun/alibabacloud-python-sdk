@@ -56,7 +56,7 @@ class CreateCredentialRequestBody(DaraModel):
         resource_refs: List[main_models.CreateCredentialRequestBodyResourceRefs] = None,
         resource_scope: str = None,
     ):
-        # The credential content. The value is a JSON string. When credentialType is set to apiKey, the content can contain only the apiKey field, and the value cannot be empty. After being written, the content can only be queried in masked form.
+        # The credential content, which is a JSON string. If credentialType is apiKey, this parameter can only contain the apiKey field, and the value cannot be empty. After the credential is written, only desensitized queries are supported.
         # 
         # This parameter is required.
         self.credential_metadata = credential_metadata
@@ -64,15 +64,15 @@ class CreateCredentialRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.credential_type = credential_type
-        # The credential description. The description can be up to 256 characters in length.
+        # The description of the credential. The description can be up to 256 characters in length.
         self.description = description
-        # The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+        # The name of the credential. The name must be unique within the workspace, can only contain letters, digits, periods, underscores, and hyphens, and must be 3 to 128 characters in length. Runtime reserved names cannot be used.
         # 
         # This parameter is required.
         self.name = name
-        # This parameter is required and must be a non-empty array when resourceScope is set to SPECIFIED. Each item contains resourceType and resourceId. resourceName is optional.
+        # If resourceScope is SPECIFIED, this parameter must be a non-empty array. Each item must contain resourceType and resourceId. resourceName is optional.
         self.resource_refs = resource_refs
-        # ALL indicates all resources. SPECIFIED indicates that the credential applies only to the resources specified in resourceRefs.
+        # The application scope of the credential resource. A value of ALL indicates all resources. A value of SPECIFIED indicates that the credential is applied only to the resources specified by resourceRefs.
         self.resource_scope = resource_scope
 
     def validate(self):
@@ -142,9 +142,9 @@ class CreateCredentialRequestBodyResourceRefs(DaraModel):
     ):
         # The unique identifier of the resource.
         self.resource_id = resource_id
-        # The resource name. This value is empty if the resource has been deleted.
+        # The name of the resource. This parameter is empty if the resource is deleted.
         self.resource_name = resource_name
-        # The resource type, such as agent.
+        # The type of the resource, such as agent.
         self.resource_type = resource_type
 
     def validate(self):

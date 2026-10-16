@@ -57,15 +57,15 @@ class CreateUserRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The email address of the user. The address can be up to 256 characters in length.
+        # The email address of the user. The email address can be up to 256 characters in length.
         self.email = email
-        # The username. The name must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or digit and must be 1 to 32 characters in length. Reserved names such as manager, admin, or names starting with worker- cannot be used.
+        # The username. The username must be unique within the workspace, can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length. Reserved names such as manager, admin, or names starting with worker- are not allowed.
         # 
         # This parameter is required.
         self.name = name
-        # The remarks of the user. The remarks can be up to 1024 characters in length.
+        # The note for the user. The note can be up to 1,024 characters in length.
         self.note = note
-        # The initial password of the user. The password must be 8 to 32 characters in length and must contain uppercase letters, lowercase letters, digits, and special characters. The password cannot contain the username. If this parameter is not specified, the server generates a random password and returns it in the initialPassword field of the response.
+        # The initial password of the user. The password must be 8 to 32 characters in length and must contain uppercase letters, lowercase letters, digits, and special characters. It cannot contain the username. If this parameter is not specified, the server generates a random password and returns it in the initialPassword field of the response.
         self.password = password
 
     def validate(self):

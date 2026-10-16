@@ -21,11 +21,11 @@ class InstallWorkspacePluginResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request fails.
+        # The response message. Returns an error description when the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

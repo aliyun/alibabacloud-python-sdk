@@ -16,21 +16,21 @@ class ListServiceEndpointsRequest(DaraModel):
         status: str = None,
         target_type: str = None,
     ):
-        # Filters by target agent ID.
+        # Filters the results by target agent ID.
         self.agent_id = agent_id
-        # Filters by target agent version number.
+        # Filters the results by target agent version.
         self.agent_version = agent_version
-        # Filters by collaboration component type. Valid values: MATRIX_CLIENT, MATRIX_FEDERATION, ELEMENT_WEB.
+        # Filters the results by collaboration component type. Valid values: MATRIX_CLIENT, MATRIX_FEDERATION, and ELEMENT_WEB.
         self.collaboration_component = collaboration_component
-        # The maximum number of records per page. Valid values: 1 to 100. If this parameter is not specified, 20 records are returned by default.
+        # The maximum number of records to return per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next page. Do not specify this parameter for the first request. For subsequent requests, set this parameter to the nextToken value returned in the previous response.
+        # The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned in the previous response.
         self.next_token = next_token
-        # Filters by the workspace resource binding ID of the target collaboration component.
+        # Filters the results by the workspace resource binding ID of the target collaboration component.
         self.resource_binding_id = resource_binding_id
-        # Filters by service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, DELETING.
+        # Filters the results by service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
         self.status = status
-        # Filters by target type. Valid values: AGENT_VERSION, TEAM_COLLABORATION.
+        # Filters the results by target type. Valid values: AGENT_VERSION and TEAM_COLLABORATION.
         self.target_type = target_type
 
     def validate(self):

@@ -13,7 +13,7 @@ class BatchUploadSkillsViaOssResponseBody(DaraModel):
         data: main_models.BatchUploadSkillsViaOssResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id

@@ -13,7 +13,7 @@ class CreateModelRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The client token for idempotence. Not currently supported.
+        # The client token used for idempotence. This parameter is not supported.
         self.client_token = client_token
 
     def validate(self):
@@ -54,17 +54,17 @@ class CreateModelRequestBody(DaraModel):
         max_tokens: int = None,
         model_name: str = None,
     ):
-        # The model capability configuration.
+        # The model capability configurations.
         self.capabilities = capabilities
         # The model connection ID.
         # 
         # This parameter is required.
         self.connection_id = connection_id
-        # The model context window size, in tokens. The value must be a positive integer.
+        # The context window size of the model, in tokens. It must be a positive integer.
         self.context_size = context_size
         # The model description. Maximum length: 255 characters.
         self.description = description
-        # The maximum number of output tokens supported per model generation.
+        # The maximum number of output tokens supported per generation.
         self.max_tokens = max_tokens
         # The upstream model name.
         # 
@@ -139,11 +139,11 @@ class CreateModelRequestBodyCapabilities(DaraModel):
         self.audio = audio
         # Specifies whether the model supports document input.
         self.document = document
-        # Specifies whether the model is able to invoke multiple tools in a single response.
+        # Specifies whether the model is able to invoke multiple tool calling operations in a single response.
         self.multi_tool_call = multi_tool_call
         # Specifies whether the model supports reasoning capabilities.
         self.reasoning = reasoning
-        # Specifies whether the model supports streaming tool calling.
+        # Specifies whether the model is able to invoke tool calling in a streaming manner.
         self.stream_tool_call = stream_tool_call
         # Specifies whether the model supports tool calling.
         self.tool_call = tool_call

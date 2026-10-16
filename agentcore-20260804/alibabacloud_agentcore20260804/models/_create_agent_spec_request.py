@@ -45,7 +45,7 @@ class CreateAgentSpecRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.agent_spec_name = agent_spec_name
-        # The draft version number. If not specified, the default value is 0.0.1.
+        # Specifies the draft version number. If not specified, the default value is 0.0.1.
         self.target_version = target_version
 
     def validate(self):

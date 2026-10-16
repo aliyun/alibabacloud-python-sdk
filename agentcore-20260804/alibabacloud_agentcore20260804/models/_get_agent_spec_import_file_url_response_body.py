@@ -11,7 +11,7 @@ class GetAgentSpecImportFileUrlResponseBody(DaraModel):
         data: main_models.GetAgentSpecImportFileUrlResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -52,13 +52,13 @@ class GetAgentSpecImportFileUrlResponseBodyData(DaraModel):
         oss_object_name: str = None,
         upload_url: str = None,
     ):
-        # The Content-Type to use for the OSS PUT request.
+        # The Content-Type used for the OSS PUT request.
         self.content_type = content_type
         # The maximum number of bytes allowed for the upload.
         self.max_size = max_size
         # The OSS object name.
         self.oss_object_name = oss_object_name
-        # The OSS pre-signed upload URL.
+        # The OSS presigned upload URL.
         self.upload_url = upload_url
 
     def validate(self):

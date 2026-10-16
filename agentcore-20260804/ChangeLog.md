@@ -1,3 +1,18 @@
+2026-10-16 Version: 2.3.1
+- Update API CreateWorkspace: add request parameters body.networkConfiguration.publicEgressEnabled.
+- Update API CreateWorkspace: add request parameters body.networkConfiguration.publicIngressEnabled.
+- Update API CreateWorkspace: add response parameters Body.data.networkConfiguration.publicEgressEnabled.
+- Update API CreateWorkspace: add response parameters Body.data.networkConfiguration.publicIngressEnabled.
+- Update API GetWorkspace: add response parameters Body.data.networkConfiguration.publicEgressEnabled.
+- Update API GetWorkspace: add response parameters Body.data.networkConfiguration.publicIngressEnabled.
+- Update API ListWorkspaces: add response parameters Body.items.$.networkConfiguration.publicEgressEnabled.
+- Update API ListWorkspaces: add response parameters Body.items.$.networkConfiguration.publicIngressEnabled.
+- Update API UpdateWorkspace: add request parameters body.networkConfiguration.publicEgressEnabled.
+- Update API UpdateWorkspace: add request parameters body.networkConfiguration.publicIngressEnabled.
+- Update API UpdateWorkspace: add response parameters Body.data.networkConfiguration.publicEgressEnabled.
+- Update API UpdateWorkspace: add response parameters Body.data.networkConfiguration.publicIngressEnabled.
+
+
 2026-10-13 Version: 2.3.0
 - Support API AddMemories.
 - Support API CreateMemoryStore.

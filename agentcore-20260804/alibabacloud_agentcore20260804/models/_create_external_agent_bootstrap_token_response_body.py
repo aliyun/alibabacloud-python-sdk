@@ -15,17 +15,17 @@ class CreateExternalAgentBootstrapTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. The value SUCCESS is returned if the request is successful.
+        # The business status code. The value is SUCCESS when the operation is successful.
         self.code = code
-        # The bootstrap token and CMS configuration required for connecting the external agent.
+        # The Bootstrap token and CMS configuration required to onboard the external agent.
         self.data = data
-        # The HTTP status code. The value 200 is returned if the request is successful.
+        # The HTTP status code. The value is 200 when the operation is successful.
         self.http_status_code = http_status_code
-        # The message that indicates the result of the request.
+        # The result message of the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -92,15 +92,13 @@ class CreateExternalAgentBootstrapTokenResponseBodyData(DaraModel):
     ):
         # The external agent ID.
         self.agent_id = agent_id
-        # The bootstrap token used for connecting the external agent.
+        # The Bootstrap token used to onboard the external agent.
         self.bootstrap_token = bootstrap_token
-        # The CMS configuration used for connecting the external agent.
+        # The CMS configuration used to onboard the external agent.
         self.cms = cms
-        # The network type for connection. Valid values:
-        # - INTERNET: public network
-        # - INTRANET: internal network
+        # The network type for onboarding. Valid values: INTRANET (internal network) and INTERNET (Internet).
         self.network_type = network_type
-        # The fingerprint of the bootstrap token.
+        # The fingerprint of the Bootstrap token.
         self.token_fingerprint = token_fingerprint
         # The workspace ID.
         self.workspace_id = workspace_id

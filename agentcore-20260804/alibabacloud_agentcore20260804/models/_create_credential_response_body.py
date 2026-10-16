@@ -19,7 +19,7 @@ class CreateCredentialResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The created credential information.
+        # The information about the created credential.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class CreateCredentialResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -97,25 +97,25 @@ class CreateCredentialResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The creation time in UTC, formatted in RFC 3339.
+        # The time when the credential was created. The time is displayed in UTC and follows the RFC 3339 format.
         self.created_at = created_at
         # The credential ID.
         self.credential_id = credential_id
-        # The masked credential content. When credentialType is apiKey, the apiKey value is returned as asterisks (*) of equal length.
+        # The desensitized result of the credential content. If credentialType is apiKey, the value of apiKey is returned as asterisks (*) of the same length.
         self.credential_metadata = credential_metadata
         # The credential type. Currently, only apiKey is supported.
         self.credential_type = credential_type
-        # The credential description. The description can be up to 256 characters in length.
+        # The description of the credential. The description can be up to 256 characters in length.
         self.description = description
-        # The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+        # The name of the credential. The name must be unique within the workspace, can only contain letters, digits, periods, underscores, and hyphens, and must be 3 to 128 characters in length. Runtime reserved names cannot be used.
         self.name = name
-        # The region ID where the resource resides.
+        # The region ID of the resource.
         self.region_id = region_id
-        # Each item contains resourceType, resourceId, and resourceName. resourceName is empty if the resource has been deleted.
+        # Each item contains resourceType, resourceId, and resourceName. If the resource is deleted, resourceName is empty.
         self.resource_refs = resource_refs
-        # The credential resource scope.
+        # The application scope of the credential resource.
         self.resource_scope = resource_scope
-        # The time of the last modification in UTC, formatted in RFC 3339.
+        # The time when the credential was last modified. The time is displayed in UTC and follows the RFC 3339 format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -217,9 +217,9 @@ class CreateCredentialResponseBodyDataResourceRefs(DaraModel):
     ):
         # The unique identifier of the resource.
         self.resource_id = resource_id
-        # The resource name. This value is empty if the resource has been deleted.
+        # The name of the resource. This parameter is empty if the resource is deleted.
         self.resource_name = resource_name
-        # The resource type, such as agent.
+        # The type of the resource, such as agent.
         self.resource_type = resource_type
 
     def validate(self):

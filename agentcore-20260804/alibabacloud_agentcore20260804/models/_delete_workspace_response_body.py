@@ -17,7 +17,7 @@ class DeleteWorkspaceResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The result of the delete request.
+        # The deletion request result.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

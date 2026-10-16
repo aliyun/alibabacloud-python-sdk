@@ -69,9 +69,9 @@ class GetAgentSpecResponseBodyData(DaraModel):
         self.description = description
         # The number of downloads.
         self.download_count = download_count
-        # The version that is currently being edited.
+        # The version currently being edited.
         self.editing_version = editing_version
-        # Indicates whether the AgentSpec is enabled.
+        # Indicates whether it is enabled.
         self.enable = enable
         # The source.
         self.from_ = from_
@@ -81,11 +81,11 @@ class GetAgentSpecResponseBodyData(DaraModel):
         self.name = name
         # The number of online versions.
         self.online_cnt = online_cnt
-        # The version that is currently under review.
+        # The version currently under review.
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
-        # The update time. This value is a UNIX timestamp in milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The list of version summaries.
         self.versions = versions
@@ -202,9 +202,9 @@ class GetAgentSpecResponseBodyDataVersions(DaraModel):
         update_time: int = None,
         version: str = None,
     ):
-        # The version author.
+        # The author of the version.
         self.author = author
-        # The creation time. This value is a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
@@ -214,7 +214,7 @@ class GetAgentSpecResponseBodyDataVersions(DaraModel):
         self.publish_pipeline_info = publish_pipeline_info
         # The status.
         self.status = status
-        # The update time. This value is a UNIX timestamp in milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The version number.
         self.version = version

@@ -21,11 +21,11 @@ class CreateIdentityProviderResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request failed.
+        # The response message. If the request fails, an error description is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -89,24 +89,22 @@ class CreateIdentityProviderResponseBodyData(DaraModel):
         sync_enabled: bool = None,
         workspace_id: str = None,
     ):
-        # The type of the external identity provider. Valid values:
-        # - DingTalk
-        # - Feishu
+        # The type of the external identity provider. Valid values: DingTalk and Feishu.
         self.identity_provider_type = identity_provider_type
-        # Specifies whether workspace users are allowed to log on through this external identity provider.
+        # Specifies whether workspace users can log on through the external identity provider.
         self.login_enabled = login_enabled
         # The binding status. Valid values:
-        # - CONFIGURED: The configuration has been accepted and is waiting for user pool provisioning.
+        # - CONFIGURED: The configuration is accepted, and the system is waiting to activate the user pool.
         # - SYNCING: Organization members are being synchronized.
-        # - SYNCED: Organization member synchronization is complete.
-        # - READY: The binding is active.
+        # - SYNCED: Organization member synchronization is completed.
+        # - READY: The binding is in effect.
         # - SYNC_FAILED: Organization member synchronization failed.
         # - UPDATING: The configuration is being updated.
         # - UPDATE_FAILED: The configuration update failed.
-        # - DISCONNECTING: The binding is being removed.
+        # - DISCONNECTING: The unbinding is in progress.
         # - DISCONNECT_FAILED: The unbinding failed.
         self.status = status
-        # Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
+        # Specifies whether to enable organization member synchronization. If enabled, organization members are synchronized to workspace users from the external identity provider.
         self.sync_enabled = sync_enabled
         # The workspace ID.
         self.workspace_id = workspace_id

@@ -11,15 +11,15 @@ class GetWorkspaceAgenticFsMountRamAuthorizeUrlRequest(DaraModel):
         file_system_id: str = None,
         server: str = None,
     ):
-        # The ID of the target NAS AccessPoint. This parameter corresponds to the server and fileSystemId parameters.
+        # The ID of the target NAS access point. This parameter corresponds to the server and fileSystemId parameters.
         # 
         # This parameter is required.
         self.access_point_id = access_point_id
-        # The ID of the NAS file system to which the target AccessPoint belongs. This parameter corresponds to the server and accessPointId parameters.
+        # The ID of the NAS file system to which the target access point belongs. This parameter corresponds to the server and accessPointId parameters.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The domain name of the target AccessPoint, obtained from the DomainName field of the NAS ListAccessPoints operation. Do not include the protocol, port, or path.
+        # The domain name of the target access point. Obtain this value from the DomainName field in the NAS ListAccessPoints response. Do not include the protocol, port, or path.
         # 
         # This parameter is required.
         self.server = server

@@ -13,9 +13,9 @@ class ListSkillReferencesResponseBody(DaraModel):
         data: main_models.ListSkillReferencesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The skill reference relationship data returned by the paged query. The data is returned with paging.
+        # The skill reference relationship data returned by the paging query.
         self.data = data
-        # The request ID, which is used for troubleshooting.
+        # The request ID used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -60,7 +60,7 @@ class ListSkillReferencesResponseBodyData(DaraModel):
         self.page_number = page_number
         # The total number of available pages.
         self.pages_available = pages_available
-        # The total number of reference relationships that match the filter conditions.
+        # The total number of reference relationships that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -120,7 +120,7 @@ class ListSkillReferencesResponseBodyDataPageItems(DaraModel):
         skill_name: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the referencing entity (the identifier of the Agent or AgentSpec).
+        # The ID of the referencing entity, which is the identifier of the agent or agent spec.
         self.owner_id = owner_id
         # The type of the referencing entity. Valid values: AGENT and AGENTSPEC.
         self.owner_type = owner_type
@@ -128,11 +128,11 @@ class ListSkillReferencesResponseBodyDataPageItems(DaraModel):
         self.owner_version = owner_version
         # The reference selector type. Valid values: LABEL and VERSION.
         self.selector_type = selector_type
-        # The reference selector value, such as latest, a named label, HEAD, or a specific version.
+        # The reference selector value. Valid values: latest, a named label, HEAD, or a specific version.
         self.selector_value = selector_value
         # The name of the referenced skill.
         self.skill_name = skill_name
-        # The workspace ID to which the reference belongs.
+        # The ID of the workspace to which the reference belongs.
         self.workspace_id = workspace_id
 
     def validate(self):

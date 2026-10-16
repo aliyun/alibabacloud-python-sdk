@@ -17,7 +17,7 @@ class GetModelResponseBody(DaraModel):
     ):
         # The business status code. A value of SUCCESS indicates success.
         self.code = code
-        # The model details.
+        # The detailed information about the model.
         self.data = data
         # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
@@ -25,7 +25,7 @@ class GetModelResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -95,23 +95,23 @@ class GetModelResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The model capability configuration.
+        # The capability configurations of the model.
         self.capabilities = capabilities
         # The model connection ID.
         self.connection_id = connection_id
-        # The model context window size, in tokens. The value must be a positive integer.
+        # The context window size of the model, in tokens. It must be a positive integer.
         self.context_size = context_size
         # The time when the resource was created, in RFC 3339 UTC format.
         self.created_at = created_at
-        # The model description, up to 255 characters.
+        # The description of the model, up to 255 characters in length.
         self.description = description
-        # The maximum number of output tokens supported per model generation.
+        # The maximum number of output tokens supported by the model in a single generation.
         self.max_tokens = max_tokens
         # The model ID.
         self.model_id = model_id
-        # The upstream model name.
+        # The name of the upstream model.
         self.model_name = model_name
-        # The region ID to which the resource belongs.
+        # The ID of the region to which the resource belongs.
         self.region_id = region_id
         # The time when the resource was last updated, in RFC 3339 UTC format.
         self.updated_at = updated_at
@@ -216,11 +216,11 @@ class GetModelResponseBodyDataCapabilities(DaraModel):
         self.audio = audio
         # Indicates whether the model supports document input.
         self.document = document
-        # Indicates whether the model is able to invoke multiple tool calling requests in a single response.
+        # Indicates whether the model supports tool calling and is able to invoke multiple tools in a single response.
         self.multi_tool_call = multi_tool_call
         # Indicates whether the model supports reasoning capabilities.
         self.reasoning = reasoning
-        # Indicates whether the model supports streaming tool calling.
+        # Indicates whether the model supports tool calling and is able to invoke tools in a streaming manner.
         self.stream_tool_call = stream_tool_call
         # Indicates whether the model supports tool calling.
         self.tool_call = tool_call

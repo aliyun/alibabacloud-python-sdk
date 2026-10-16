@@ -13,7 +13,7 @@ class ListWorkspacesRequest(DaraModel):
     ):
         # The maximum number of records to return per page.
         self.max_results = max_results
-        # The pagination token used to retrieve the next page.
+        # The cursor used to query the next page.
         self.next_token = next_token
         # The number of workspaces to skip.
         self.skip = skip

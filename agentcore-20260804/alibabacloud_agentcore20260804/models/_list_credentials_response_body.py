@@ -24,19 +24,19 @@ class ListCredentialsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The list of credentials.
+        # The credential list.
         self.items = items
-        # The maximum number of records per page that takes effect for this query.
+        # The maximum number of records per page that takes effect in this query.
         self.max_results = max_results
         # The response message. An error description is returned if the request fails.
         self.message = message
-        # The pagination token for the next page. This value is empty if there is no next page.
+        # The cursor for the next page. It is empty if there is no next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The total number of credentials that match the query conditions.
+        # The total number of credentials that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -131,27 +131,27 @@ class ListCredentialsResponseBodyItems(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The number of agents bound to this credential.
+        # The number of agents bound to the credential.
         self.bound_agents_counts = bound_agents_counts
-        # The creation time in UTC, formatted according to RFC 3339.
+        # The creation time in UTC format compliant with RFC 3339.
         self.created_at = created_at
         # The credential ID.
         self.credential_id = credential_id
-        # The masked content of the credential. When credentialType is apiKey, the apiKey value is returned as asterisks (*) of equal length.
+        # The masked credential content. When credentialType is apiKey, the apiKey value is returned as asterisks (*) of the same length.
         self.credential_metadata = credential_metadata
         # The credential type. Currently, only apiKey is supported.
         self.credential_type = credential_type
-        # The credential description. The description can be up to 256 characters in length.
+        # The credential description, which cannot exceed 256 characters in length.
         self.description = description
-        # The credential name. The name must be unique within the workspace and can contain only letters, digits, periods (.), underscores (_), and hyphens (-). The name must be 3 to 128 characters in length and cannot use runtime reserved names.
+        # The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 128 characters in length. Runtime reserved names cannot be used.
         self.name = name
-        # The region ID where the resource resides.
+        # The region ID of the resource.
         self.region_id = region_id
         # The list of resources to which the credential can be applied.
         self.resource_refs = resource_refs
-        # The resource scope of the credential.
+        # The application scope of the credential resource.
         self.resource_scope = resource_scope
-        # The time of the last modification in UTC, formatted according to RFC 3339.
+        # The time of the last modification in UTC format compliant with RFC 3339.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -259,7 +259,7 @@ class ListCredentialsResponseBodyItemsResourceRefs(DaraModel):
     ):
         # The unique identifier of the resource.
         self.resource_id = resource_id
-        # The resource name. This value is empty if the resource has been deleted.
+        # The resource name. It is empty if the resource has been deleted.
         self.resource_name = resource_name
         # The resource type, such as agent.
         self.resource_type = resource_type

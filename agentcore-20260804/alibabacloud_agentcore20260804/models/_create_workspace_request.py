@@ -13,7 +13,7 @@ class CreateWorkspaceRequest(DaraModel):
         body: main_models.CreateWorkspaceRequestBody = None,
         client_token: str = None,
     ):
-        # The request body for creating a workspace.
+        # The workspace creation request body.
         self.body = body
         # The client idempotency token.
         self.client_token = client_token
@@ -53,15 +53,13 @@ class CreateWorkspaceRequestBody(DaraModel):
         network_configuration: main_models.CreateWorkspaceRequestBodyNetworkConfiguration = None,
         storage_type: str = None,
     ):
-        # The workspace name.
+        # The name of the workspace.
         # 
         # This parameter is required.
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration
-        # The storage type of the workspace. Valid values:
-        # - PLATFORM: Platform-managed storage.
-        # - PRIVATE: User-owned private OSS storage.
+        # The workspace storage type. PLATFORM indicates platform-managed storage, and PRIVATE indicates user private OSS storage.
         self.storage_type = storage_type
 
     def validate(self):
@@ -101,11 +99,15 @@ class CreateWorkspaceRequestBody(DaraModel):
 class CreateWorkspaceRequestBodyNetworkConfiguration(DaraModel):
     def __init__(
         self,
+        public_egress_enabled: bool = None,
+        public_ingress_enabled: bool = None,
         vpc: main_models.CreateWorkspaceRequestBodyNetworkConfigurationVpc = None,
     ):
-        # The VPC network configuration of the user.
-        # 
-        # This parameter is required.
+        # Specifies whether to allow public outbound access from the platform. If this parameter is not specified, the default value is true. This setting only controls whether the latest versions of managed and custom agents use the public outbound endpoint of the platform. It does not affect fixed historical versions, model or MCP proxy endpoints, or the public outbound endpoint of the user VPC.
+        self.public_egress_enabled = public_egress_enabled
+        # Specifies whether to allow public inbound access. If this parameter is not specified, the default value is true. If disabled, the public inbound endpoints of all agent endpoints in the workspace are closed, and the original public inbound endpoints are restored when re-enabled. INNER_DIRECT and user VPC endpoints are not affected. Collaboration and Element Web endpoints are not controlled by this parameter.
+        self.public_ingress_enabled = public_ingress_enabled
+        # The user VPC network configuration.
         self.vpc = vpc
 
     def validate(self):
@@ -117,6 +119,12 @@ class CreateWorkspaceRequestBodyNetworkConfiguration(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.public_egress_enabled is not None:
+            result['publicEgressEnabled'] = self.public_egress_enabled
+
+        if self.public_ingress_enabled is not None:
+            result['publicIngressEnabled'] = self.public_ingress_enabled
+
         if self.vpc is not None:
             result['vpc'] = self.vpc.to_map()
 
@@ -124,6 +132,12 @@ class CreateWorkspaceRequestBodyNetworkConfiguration(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('publicEgressEnabled') is not None:
+            self.public_egress_enabled = m.get('publicEgressEnabled')
+
+        if m.get('publicIngressEnabled') is not None:
+            self.public_ingress_enabled = m.get('publicIngressEnabled')
+
         if m.get('vpc') is not None:
             temp_model = main_models.CreateWorkspaceRequestBodyNetworkConfigurationVpc()
             self.vpc = temp_model.from_map(m.get('vpc'))
@@ -137,11 +151,11 @@ class CreateWorkspaceRequestBodyNetworkConfigurationVpc(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # Specifies whether to enable VPC networking.
+        # Specifies whether to enable the VPC network.
         self.enabled = enabled
-        # The list of vSwitch IDs. When VPC networking is enabled, at least one vSwitch must be included, and all vSwitches must belong to the VPC specified by VpcId.
+        # The list of vSwitch IDs. When the VPC network is enabled, the list must contain at least one vSwitch, and all vSwitches must belong to the VPC specified by VpcId.
         self.v_switch_ids = v_switch_ids
-        # The ID of the user VPC.
+        # The user VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
