@@ -16,11 +16,11 @@ class DescribeScansResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The task list.
+        # The list of tasks.
         self.items = items
-        # The page size.
+        # The number of entries per page.
         self.max_results = max_results
-        # The pagination token. An empty value indicates the last page.
+        # The pagination token. An empty value indicates that the last page is returned.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -99,49 +99,49 @@ class DescribeScansResponseBodyItems(DaraModel):
         updated_at: str = None,
         worker_id: str = None,
     ):
-        # The code bundle ID.
+        # The ID of the code package.
         self.code_bundle_id = code_bundle_id
         # The time when the task was created.
         self.created_at = created_at
-        # The user ID of the task creator.
+        # The ID of the user who created the task.
         self.created_by = created_by
-        # The scan phase. Valid values:
-        # * threat_model: Threat modeling.
-        # * discovery: Vulnerability discovery.
-        # * panel: Vulnerability review.
-        # * adversarial: Adversarial verification.
-        # * finalize: Report generation.
+        # The current scan phase. Valid values:
+        # * threat_model: threat modeling
+        # * discovery: vulnerability discovery
+        # * panel: vulnerability review
+        # * adversarial: adversarial verification
+        # * finalize: report compilation
         self.current_phase = current_phase
-        # The supported scan types.
+        # The supported types.
         self.engine_snapshot = engine_snapshot
-        # The time when the scan finished.
+        # The time when the scan ended.
         self.finished_at = finished_at
-        # The task ID.
+        # The ID of the task.
         self.id = id
         # The scan type. Valid values:
-        # * full: Full scan.
-        # * incremental: Incremental scan.
+        # * full: full scan
+        # * incremental: incremental scan
         self.kind = kind
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The scan result statistics information.
+        # The statistics information of the scan results.
         self.scan_metrics = scan_metrics
-        # The task progress.
+        # The progress of the task.
         self.scan_progress = scan_progress
         # The time when the task started.
         self.started_at = started_at
-        # The task status. Valid values:
-        # * running: Running.
-        # * completed: Completed.
-        # * failed: Failed.
-        # * canceling: Being canceled. 
-        # * canceled: Canceled.
+        # The status of the task. Valid values:
+        # * running: The task is running.
+        # * completed: The task is completed.
+        # * failed: The task failed.
+        # * canceling: The task is being canceled. 
+        # * canceled: The task is canceled.
         self.status = status
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
-        # The time when the task was last updated.
+        # The time when the task was updated.
         self.updated_at = updated_at
-        # Deprecated.
+        # **[Deprecated]**
         self.worker_id = worker_id
 
     def validate(self):
@@ -273,7 +273,7 @@ class DescribeScansResponseBodyItemsScanMetrics(DaraModel):
         self.file_count = file_count
         # The number of lines of code.
         self.lines_of_code = lines_of_code
-        # Deprecated.
+        # **[Deprecated]**
         self.token_total = token_total
 
     def validate(self):

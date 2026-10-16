@@ -20,11 +20,11 @@ class DescribeProjectsResponseBody(DaraModel):
         self.items = items
         # The page size.
         # 
-        # > If not specified, all projects are displayed.
+        # > If this parameter is not specified, all projects are returned.
         self.max_results = max_results
         # The pagination token. An empty value indicates the last page.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -91,6 +91,7 @@ class DescribeProjectsResponseBodyItems(DaraModel):
         engines: main_models.DescribeProjectsResponseBodyItemsEngines = None,
         id: int = None,
         instruction_prompt: str = None,
+        last_scan_time: str = None,
         name: str = None,
         source: main_models.DescribeProjectsResponseBodyItemsSource = None,
         updated_at: str = None,
@@ -103,12 +104,14 @@ class DescribeProjectsResponseBodyItems(DaraModel):
         self.created_by = created_by
         # The description.
         self.description = description
-        # The engine switches for the project or scan snapshot (SAST and SCA only).
+        # The engine switches in the project or scan snapshot. Only SAST and SCA are supported.
         self.engines = engines
         # The project ID.
         self.id = id
-        # The natural language prompt provided by the user that describes scanning or result processing preferences, such as ignoring low-risk vulnerabilities.
+        # The natural language prompt provided by the user that describes scanning or result processing preferences, such as ignoring low-severity vulnerabilities.
         self.instruction_prompt = instruction_prompt
+        # The time when a task was last created.
+        self.last_scan_time = last_scan_time
         # The project name.
         self.name = name
         # The project source.
@@ -148,6 +151,9 @@ class DescribeProjectsResponseBodyItems(DaraModel):
         if self.instruction_prompt is not None:
             result['instructionPrompt'] = self.instruction_prompt
 
+        if self.last_scan_time is not None:
+            result['lastScanTime'] = self.last_scan_time
+
         if self.name is not None:
             result['name'] = self.name
 
@@ -182,6 +188,9 @@ class DescribeProjectsResponseBodyItems(DaraModel):
 
         if m.get('instructionPrompt') is not None:
             self.instruction_prompt = m.get('instructionPrompt')
+
+        if m.get('lastScanTime') is not None:
+            self.last_scan_time = m.get('lastScanTime')
 
         if m.get('name') is not None:
             self.name = m.get('name')
@@ -223,21 +232,28 @@ class DescribeProjectsResponseBodyItemsSource(DaraModel):
 
         return self
 
-
-
 class DescribeProjectsResponseBodyItemsEngines(DaraModel):
     def __init__(
         self,
         sast: bool = None,
+        sast_config: main_models.DescribeProjectsResponseBodyItemsEnginesSastConfig = None,
         sca: bool = None,
+        sca_config: main_models.DescribeProjectsResponseBodyItemsEnginesScaConfig = None,
     ):
         # Indicates whether SAST is supported.
         self.sast = sast
+        # The engine-level configuration.
+        self.sast_config = sast_config
         # Indicates whether SCA is supported.
         self.sca = sca
+        # The engine-level configuration.
+        self.sca_config = sca_config
 
     def validate(self):
-        pass
+        if self.sast_config:
+            self.sast_config.validate()
+        if self.sca_config:
+            self.sca_config.validate()
 
     def to_map(self):
         result = dict()
@@ -247,8 +263,14 @@ class DescribeProjectsResponseBodyItemsEngines(DaraModel):
         if self.sast is not None:
             result['sast'] = self.sast
 
+        if self.sast_config is not None:
+            result['sastConfig'] = self.sast_config.to_map()
+
         if self.sca is not None:
             result['sca'] = self.sca
+
+        if self.sca_config is not None:
+            result['scaConfig'] = self.sca_config.to_map()
 
         return result
 
@@ -257,8 +279,72 @@ class DescribeProjectsResponseBodyItemsEngines(DaraModel):
         if m.get('sast') is not None:
             self.sast = m.get('sast')
 
+        if m.get('sastConfig') is not None:
+            temp_model = main_models.DescribeProjectsResponseBodyItemsEnginesSastConfig()
+            self.sast_config = temp_model.from_map(m.get('sastConfig'))
+
         if m.get('sca') is not None:
             self.sca = m.get('sca')
+
+        if m.get('scaConfig') is not None:
+            temp_model = main_models.DescribeProjectsResponseBodyItemsEnginesScaConfig()
+            self.sca_config = temp_model.from_map(m.get('scaConfig'))
+
+        return self
+
+class DescribeProjectsResponseBodyItemsEnginesScaConfig(DaraModel):
+    def __init__(
+        self,
+        remediation: bool = None,
+    ):
+        # Specifies whether to generate remediation suggestions.
+        self.remediation = remediation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.remediation is not None:
+            result['remediation'] = self.remediation
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('remediation') is not None:
+            self.remediation = m.get('remediation')
+
+        return self
+
+class DescribeProjectsResponseBodyItemsEnginesSastConfig(DaraModel):
+    def __init__(
+        self,
+        remediation: bool = None,
+    ):
+        # Specifies whether to generate remediation suggestions.
+        self.remediation = remediation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.remediation is not None:
+            result['remediation'] = self.remediation
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('remediation') is not None:
+            self.remediation = m.get('remediation')
 
         return self
 

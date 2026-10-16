@@ -1,3 +1,7 @@
+2026-10-16 Version: 1.1.1
+- Update API DescribeScans: add request parameters query.
+
+
 2026-08-31 Version: 1.0.1
 - Update API DescribeScans: add response parameters Body.items.$.currentPhase.
 

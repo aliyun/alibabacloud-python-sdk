@@ -27,7 +27,7 @@ class DescribeScanResultsByEngineResponseBody(DaraModel):
         self.items = items
         # The number of entries per page.
         self.max_results = max_results
-        # The pagination token. Do not pass nextToken or pass an empty string for the first page. To retrieve the next page, pass the nextToken value from the previous response without any modification. When the nextToken in the response is empty, you have reached the last page.
+        # The pagination token. Do not specify this parameter for the first page or set it to an empty string. For subsequent pages, pass the nextToken value from the previous response without any modification. If the nextToken value in the response is empty, the last page has been reached.
         self.next_token = next_token
         # The project ID.
         self.project_id = project_id
@@ -137,15 +137,15 @@ class DescribeScanResultsByEngineResponseBodyItems(DaraModel):
         taint_flow_summary: str = None,
         title: str = None,
     ):
-        # Filters results by incremental scan baseline status. Valid values: new, unchanged, absent, updated.
+        # Filters results by the baseline state of incremental scans. Valid values: new, unchanged, absent, and updated.
         self.baseline_state = baseline_state
-        # The category. The system classifies files based on file name extensions and MIME types. Common categories include doc, image, audio, and video.
+        # The category. PDS classifies files based on their file name extensions and MIME types. Main categories include doc, image, audio, and video.
         self.category = category
         # The code snippet near the primary location (SAST).
         self.code_snippet = code_snippet
-        # The rule confidence level, ranging from 0 to 1. This field is common in SAST results and is omitted if not applicable.
+        # The rule confidence level, ranging from 0 to 1. This is common in SAST results and is omitted if not available.
         self.confidence = confidence
-        # The time when the finding record was created (RFC 3339 format).
+        # The time when the finding record was created, in RFC 3339 format.
         self.created_at = created_at
         # The associated CWE ID.
         self.cwe_id = cwe_id
@@ -157,7 +157,7 @@ class DescribeScanResultsByEngineResponseBodyItems(DaraModel):
         self.file_path = file_path
         # The project ID.
         self.id = id
-        # The brief summary of the finding. Unlike description, this field is more of a conclusion statement.
+        # The brief summary of the finding. Unlike description, this is more of a conclusion statement.
         self.item_summary = item_summary
         # The OWASP category.
         self.owasp_category = owasp_category
@@ -169,7 +169,7 @@ class DescribeScanResultsByEngineResponseBodyItems(DaraModel):
         self.remediation_suggestion = remediation_suggestion
         # The rule ID.
         self.rule_id = rule_id
-        # The SCA component information. This field is returned only when engine is set to sca.
+        # The SCA component information. This is returned only when engine is set to sca.
         self.sca_component = sca_component
         # The task ID.
         self.scan_id = scan_id
@@ -188,9 +188,9 @@ class DescribeScanResultsByEngineResponseBodyItems(DaraModel):
         # * completed: Completed.
         # * failed: Failed.
         self.status = status
-        # The SAST taint analysis call chain that describes the complete propagation path of sensitive data from the taint source to the dangerous sink. This field is returned only when engine is set to sast.
+        # The SAST taint analysis call chain, which describes the complete propagation path of sensitive data from the taint source to the dangerous sink. This is returned only when engine is set to sast.
         self.taint_flow = taint_flow
-        # The text summary of the taint call chain. This field is returned only when engine is set to sast.
+        # The text summary of the taint call chain. This is returned only when engine is set to sast.
         self.taint_flow_summary = taint_flow_summary
         # The issue title.
         self.title = title
@@ -385,16 +385,16 @@ class DescribeScanResultsByEngineResponseBodyItemsTaintFlow(DaraModel):
         # The file path.
         self.file = file
         # The role type in the taint propagation chain. Valid values:
-        # * source: taint source.
-        # * propagator: propagation node.	
-        # * validation: validation or scrubbing center.	
-        # * sink: dangerous sink.
+        # * source: taint source
+        # * propagator: propagation node	
+        # * validation: validation or scrubbing center	
+        # * sink: dangerous sink
         self.kind = kind
         # The line number.
         self.line = line
         # The remarks.
         self.note = note
-        # The step number, starting from 0 and incrementing.
+        # The step sequence number, starting from 0 and incrementing.
         self.step = step
 
     def validate(self):
@@ -450,26 +450,44 @@ class DescribeScanResultsByEngineResponseBodyItemsTaintFlow(DaraModel):
 class DescribeScanResultsByEngineResponseBodyItemsScaComponent(DaraModel):
     def __init__(
         self,
+        component_type: str = None,
         cve_count: int = None,
         cve_details: List[main_models.DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails] = None,
+        declared_in: str = None,
+        ecosystem: str = None,
         intro_paths: List[str] = None,
         is_direct: bool = None,
+        license: main_models.DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense = None,
         package_name: str = None,
+        purl: str = None,
         remediation: str = None,
+        scope: str = None,
         version: str = None,
     ):
+        # The component type, such as library, application, or framework.
+        self.component_type = component_type
         # The number of CVEs.
         self.cve_count = cve_count
         # The list of CVE details associated with a component in the SCA finding.
         self.cve_details = cve_details
-        # The list of dependency introduction paths in the SCA component information. This field is returned only when engine is set to sca.
+        # The manifest file in which the dependency is declared.
+        self.declared_in = declared_in
+        # The component ecosystem, such as npm, maven, pypi, or go.
+        self.ecosystem = ecosystem
+        # The list of dependency introduction paths in the SCA component information. This is returned only when engine is set to sca.
         self.intro_paths = intro_paths
-        # Indicates whether the component is a direct dependency.
+        # Indicates whether the dependency is a direct dependency.
         self.is_direct = is_direct
+        # The license determination result.
+        self.license = license
         # The component coordinate.
         self.package_name = package_name
+        # The Package URL, which serves as the unique coordinate of the component within the scan.
+        self.purl = purl
         # The component-level remediation suggestion.
         self.remediation = remediation
+        # The dependency scope, such as runtime, required, optional, or dev.
+        self.scope = scope
         # The component version.
         self.version = version
 
@@ -478,12 +496,17 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponent(DaraModel):
             for v1 in self.cve_details:
                  if v1:
                     v1.validate()
+        if self.license:
+            self.license.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.component_type is not None:
+            result['componentType'] = self.component_type
+
         if self.cve_count is not None:
             result['cveCount'] = self.cve_count
 
@@ -492,17 +515,32 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponent(DaraModel):
             for k1 in self.cve_details:
                 result['cveDetails'].append(k1.to_map() if k1 else None)
 
+        if self.declared_in is not None:
+            result['declaredIn'] = self.declared_in
+
+        if self.ecosystem is not None:
+            result['ecosystem'] = self.ecosystem
+
         if self.intro_paths is not None:
             result['introPaths'] = self.intro_paths
 
         if self.is_direct is not None:
             result['isDirect'] = self.is_direct
 
+        if self.license is not None:
+            result['license'] = self.license.to_map()
+
         if self.package_name is not None:
             result['packageName'] = self.package_name
 
+        if self.purl is not None:
+            result['purl'] = self.purl
+
         if self.remediation is not None:
             result['remediation'] = self.remediation
+
+        if self.scope is not None:
+            result['scope'] = self.scope
 
         if self.version is not None:
             result['version'] = self.version
@@ -511,6 +549,9 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponent(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('componentType') is not None:
+            self.component_type = m.get('componentType')
+
         if m.get('cveCount') is not None:
             self.cve_count = m.get('cveCount')
 
@@ -520,20 +561,136 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponent(DaraModel):
                 temp_model = main_models.DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails()
                 self.cve_details.append(temp_model.from_map(k1))
 
+        if m.get('declaredIn') is not None:
+            self.declared_in = m.get('declaredIn')
+
+        if m.get('ecosystem') is not None:
+            self.ecosystem = m.get('ecosystem')
+
         if m.get('introPaths') is not None:
             self.intro_paths = m.get('introPaths')
 
         if m.get('isDirect') is not None:
             self.is_direct = m.get('isDirect')
 
+        if m.get('license') is not None:
+            temp_model = main_models.DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense()
+            self.license = temp_model.from_map(m.get('license'))
+
         if m.get('packageName') is not None:
             self.package_name = m.get('packageName')
+
+        if m.get('purl') is not None:
+            self.purl = m.get('purl')
 
         if m.get('remediation') is not None:
             self.remediation = m.get('remediation')
 
+        if m.get('scope') is not None:
+            self.scope = m.get('scope')
+
         if m.get('version') is not None:
             self.version = m.get('version')
+
+        return self
+
+class DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense(DaraModel):
+    def __init__(
+        self,
+        concluded: str = None,
+        detected: List[main_models.DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected] = None,
+    ):
+        # The concluded license expression (SPDX expression, which may contain OR or AND). This is an identifier string only, without full names or OSI/FSF annotations.
+        self.concluded = concluded
+        # The list of detected licenses.
+        self.detected = detected
+
+    def validate(self):
+        if self.detected:
+            for v1 in self.detected:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.concluded is not None:
+            result['concluded'] = self.concluded
+
+        result['detected'] = []
+        if self.detected is not None:
+            for k1 in self.detected:
+                result['detected'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('concluded') is not None:
+            self.concluded = m.get('concluded')
+
+        self.detected = []
+        if m.get('detected') is not None:
+            for k1 in m.get('detected'):
+                temp_model = main_models.DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected()
+                self.detected.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected(DaraModel):
+    def __init__(
+        self,
+        is_fsf_libre: bool = None,
+        is_osi_approved: bool = None,
+        name: str = None,
+        spdx_id: str = None,
+    ):
+        # Indicates whether the license is listed as a free license by the FSF. If this key is absent, it means the license is not annotated, which differs from an explicit false value.
+        self.is_fsf_libre = is_fsf_libre
+        # Indicates whether the license is OSI-approved.
+        self.is_osi_approved = is_osi_approved
+        # The full name of the license.
+        self.name = name
+        # The SPDX license identifier. If the license cannot be determined, the value is NOASSERTION. The value may be in a non-standard format, such as Apache 2.0.
+        self.spdx_id = spdx_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.is_fsf_libre is not None:
+            result['isFsfLibre'] = self.is_fsf_libre
+
+        if self.is_osi_approved is not None:
+            result['isOsiApproved'] = self.is_osi_approved
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.spdx_id is not None:
+            result['spdxId'] = self.spdx_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isFsfLibre') is not None:
+            self.is_fsf_libre = m.get('isFsfLibre')
+
+        if m.get('isOsiApproved') is not None:
+            self.is_osi_approved = m.get('isOsiApproved')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('spdxId') is not None:
+            self.spdx_id = m.get('spdxId')
 
         return self
 
@@ -543,7 +700,9 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails(DaraMod
         cve_id: str = None,
         cvss: float = None,
         cvss_version: str = None,
+        cwe_id: str = None,
         description: str = None,
+        fixed_version: str = None,
         references: List[str] = None,
         severity: str = None,
     ):
@@ -553,8 +712,12 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails(DaraMod
         self.cvss = cvss
         # The CVSS version.
         self.cvss_version = cvss_version
+        # The associated CWE ID. This value can be absent or an empty string.
+        self.cwe_id = cwe_id
         # The description.
         self.description = description
+        # The target version for the fix. This value can be absent or an empty string.
+        self.fixed_version = fixed_version
         # The reference information.
         self.references = references
         # The severity level. Valid values:
@@ -581,8 +744,14 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails(DaraMod
         if self.cvss_version is not None:
             result['cvssVersion'] = self.cvss_version
 
+        if self.cwe_id is not None:
+            result['cweId'] = self.cwe_id
+
         if self.description is not None:
             result['description'] = self.description
+
+        if self.fixed_version is not None:
+            result['fixedVersion'] = self.fixed_version
 
         if self.references is not None:
             result['references'] = self.references
@@ -603,8 +772,14 @@ class DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails(DaraMod
         if m.get('cvssVersion') is not None:
             self.cvss_version = m.get('cvssVersion')
 
+        if m.get('cweId') is not None:
+            self.cwe_id = m.get('cweId')
+
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('fixedVersion') is not None:
+            self.fixed_version = m.get('fixedVersion')
 
         if m.get('references') is not None:
             self.references = m.get('references')

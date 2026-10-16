@@ -9,19 +9,22 @@ class DescribeScansRequest(DaraModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        query: str = None,
         status: str = None,
         task_name: str = None,
     ):
-        # The number of entries per page. Default value: 20. Maximum value: 100.
+        # The maximum number of entries per page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The pagination token. Do not specify this parameter or set it to an empty string for the first page. For subsequent pages, pass the nextToken value from the previous response without any modification. If the nextToken value in the response is empty, the last page has been reached.
+        # The pagination token. To query the first page, leave this parameter empty or do not specify it. To query subsequent pages, pass the nextToken value returned in the previous response. If the nextToken value in the response is empty, the last page is returned.
         self.next_token = next_token
-        # The task status. Valid values:
-        # * running: Running.
-        # * completed: Completed.
-        # * failed: Failed.
+        # The query string. You can perform a fuzzy match by project name or prompt.
+        self.query = query
+        # The status of the task. Valid values:
+        # * running: The task is running.
+        # * completed: The task is completed.
+        # * failed: The task failed.
         self.status = status
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -38,6 +41,9 @@ class DescribeScansRequest(DaraModel):
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
+        if self.query is not None:
+            result['query'] = self.query
+
         if self.status is not None:
             result['status'] = self.status
 
@@ -53,6 +59,9 @@ class DescribeScansRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('query') is not None:
+            self.query = m.get('query')
 
         if m.get('status') is not None:
             self.status = m.get('status')

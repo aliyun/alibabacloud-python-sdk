@@ -2,19 +2,53 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._complete_code_bundle_request import CompleteCodeBundleRequest
+from ._complete_code_bundle_response_body import CompleteCodeBundleResponseBody
+from ._complete_code_bundle_response import CompleteCodeBundleResponse
+from ._create_code_bundle_request import CreateCodeBundleRequest
+from ._create_code_bundle_response_body import CreateCodeBundleResponseBody
+from ._create_code_bundle_response import CreateCodeBundleResponse
+from ._create_project_request import CreateProjectRequest
+from ._create_project_shrink_request import CreateProjectShrinkRequest
+from ._create_project_response_body import CreateProjectResponseBody
+from ._create_project_response import CreateProjectResponse
+from ._create_scan_request import CreateScanRequest
+from ._create_scan_response_body import CreateScanResponseBody
+from ._create_scan_response import CreateScanResponse
+from ._create_scan_sbom_export_request import CreateScanSbomExportRequest
+from ._create_scan_sbom_export_response_body import CreateScanSbomExportResponseBody
+from ._create_scan_sbom_export_response import CreateScanSbomExportResponse
 from ._describe_projects_request import DescribeProjectsRequest
 from ._describe_projects_response_body import DescribeProjectsResponseBody
 from ._describe_projects_response import DescribeProjectsResponse
+from ._describe_scan_request import DescribeScanRequest
+from ._describe_scan_response_body import DescribeScanResponseBody
+from ._describe_scan_response import DescribeScanResponse
 from ._describe_scan_results_by_engine_request import DescribeScanResultsByEngineRequest
 from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBody
 from ._describe_scan_results_by_engine_response import DescribeScanResultsByEngineResponse
 from ._describe_scans_request import DescribeScansRequest
 from ._describe_scans_response_body import DescribeScansResponseBody
 from ._describe_scans_response import DescribeScansResponse
+from ._create_code_bundle_response_body import CreateCodeBundleResponseBodyUpload
+from ._create_project_request import CreateProjectRequestEnginesSastConfig
+from ._create_project_request import CreateProjectRequestEnginesScaConfig
+from ._create_project_request import CreateProjectRequestEngines
+from ._create_project_request import CreateProjectRequestSource
+from ._create_project_response_body import CreateProjectResponseBodyEngines
+from ._create_project_response_body import CreateProjectResponseBodySource
+from ._create_scan_response_body import CreateScanResponseBodyEngineSnapshot
+from ._create_scan_response_body import CreateScanResponseBodyScanMetrics
+from ._describe_projects_response_body import DescribeProjectsResponseBodyItemsEnginesSastConfig
+from ._describe_projects_response_body import DescribeProjectsResponseBodyItemsEnginesScaConfig
 from ._describe_projects_response_body import DescribeProjectsResponseBodyItemsEngines
 from ._describe_projects_response_body import DescribeProjectsResponseBodyItemsSource
 from ._describe_projects_response_body import DescribeProjectsResponseBodyItems
+from ._describe_scan_response_body import DescribeScanResponseBodyEngineSnapshot
+from ._describe_scan_response_body import DescribeScanResponseBodyScanMetrics
 from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails
+from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected
+from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense
 from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItemsScaComponent
 from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItemsTaintFlow
 from ._describe_scan_results_by_engine_response_body import DescribeScanResultsByEngineResponseBodyItems
@@ -23,19 +57,53 @@ from ._describe_scans_response_body import DescribeScansResponseBodyItemsScanMet
 from ._describe_scans_response_body import DescribeScansResponseBodyItems
 
 __all__ = [
+    CompleteCodeBundleRequest,
+    CompleteCodeBundleResponseBody,
+    CompleteCodeBundleResponse,
+    CreateCodeBundleRequest,
+    CreateCodeBundleResponseBody,
+    CreateCodeBundleResponse,
+    CreateProjectRequest,
+    CreateProjectShrinkRequest,
+    CreateProjectResponseBody,
+    CreateProjectResponse,
+    CreateScanRequest,
+    CreateScanResponseBody,
+    CreateScanResponse,
+    CreateScanSbomExportRequest,
+    CreateScanSbomExportResponseBody,
+    CreateScanSbomExportResponse,
     DescribeProjectsRequest,
     DescribeProjectsResponseBody,
     DescribeProjectsResponse,
+    DescribeScanRequest,
+    DescribeScanResponseBody,
+    DescribeScanResponse,
     DescribeScanResultsByEngineRequest,
     DescribeScanResultsByEngineResponseBody,
     DescribeScanResultsByEngineResponse,
     DescribeScansRequest,
     DescribeScansResponseBody,
     DescribeScansResponse,
+    CreateCodeBundleResponseBodyUpload,
+    CreateProjectRequestEnginesSastConfig,
+    CreateProjectRequestEnginesScaConfig,
+    CreateProjectRequestEngines,
+    CreateProjectRequestSource,
+    CreateProjectResponseBodyEngines,
+    CreateProjectResponseBodySource,
+    CreateScanResponseBodyEngineSnapshot,
+    CreateScanResponseBodyScanMetrics,
+    DescribeProjectsResponseBodyItemsEnginesSastConfig,
+    DescribeProjectsResponseBodyItemsEnginesScaConfig,
     DescribeProjectsResponseBodyItemsEngines,
     DescribeProjectsResponseBodyItemsSource,
     DescribeProjectsResponseBodyItems,
+    DescribeScanResponseBodyEngineSnapshot,
+    DescribeScanResponseBodyScanMetrics,
     DescribeScanResultsByEngineResponseBodyItemsScaComponentCveDetails,
+    DescribeScanResultsByEngineResponseBodyItemsScaComponentLicenseDetected,
+    DescribeScanResultsByEngineResponseBodyItemsScaComponentLicense,
     DescribeScanResultsByEngineResponseBodyItemsScaComponent,
     DescribeScanResultsByEngineResponseBodyItemsTaintFlow,
     DescribeScanResultsByEngineResponseBodyItems,
