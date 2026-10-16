@@ -1,3 +1,9 @@
+2026-10-16 Version: 5.10.1
+- Update API VideoTranslation: add request parameters EraseOnly.
+- Update API VideoTranslation: add request parameters RemoveLogo.
+- Update API VideoTranslation: add request parameters SubtitleMode.
+
+
 2026-10-15 Version: 5.10.0
 - Support API ImageMattingAsync.
 - Support API ImageRecognitionAsync.

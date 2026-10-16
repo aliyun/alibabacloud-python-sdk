@@ -4246,6 +4246,13 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.capabilities):
             request.capabilities_shrink = Utils.array_to_string_with_specified_style(tmp_req.capabilities, 'Capabilities', 'json')
+        query = {}
+        if not DaraCore.is_null(request.erase_only):
+            query['EraseOnly'] = request.erase_only
+        if not DaraCore.is_null(request.remove_logo):
+            query['RemoveLogo'] = request.remove_logo
+        if not DaraCore.is_null(request.subtitle_mode):
+            query['SubtitleMode'] = request.subtitle_mode
         body = {}
         if not DaraCore.is_null(request.capabilities_shrink):
             body['Capabilities'] = request.capabilities_shrink
@@ -4258,6 +4265,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.video_url):
             body['VideoUrl'] = request.video_url
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -4286,6 +4294,13 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.capabilities):
             request.capabilities_shrink = Utils.array_to_string_with_specified_style(tmp_req.capabilities, 'Capabilities', 'json')
+        query = {}
+        if not DaraCore.is_null(request.erase_only):
+            query['EraseOnly'] = request.erase_only
+        if not DaraCore.is_null(request.remove_logo):
+            query['RemoveLogo'] = request.remove_logo
+        if not DaraCore.is_null(request.subtitle_mode):
+            query['SubtitleMode'] = request.subtitle_mode
         body = {}
         if not DaraCore.is_null(request.capabilities_shrink):
             body['Capabilities'] = request.capabilities_shrink
@@ -4298,6 +4313,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.video_url):
             body['VideoUrl'] = request.video_url
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
