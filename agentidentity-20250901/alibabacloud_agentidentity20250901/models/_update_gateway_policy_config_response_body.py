@@ -11,7 +11,9 @@ class UpdateGatewayPolicyConfigResponseBody(DaraModel):
         gateway_policy_config: main_models.UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig = None,
         request_id: str = None,
     ):
+        # The gateway policy configuration.
         self.gateway_policy_config = gateway_policy_config
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -48,7 +50,11 @@ class UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig(DaraModel):
         enforcement_mode: str = None,
         policy_set_arn: str = None,
     ):
+        # The policy enforcement mode. Valid values:
+        # - ENFORCE: Intercepts non-compliant requests and allows compliant requests.
+        # - LOG_ONLY: Only logs non-compliant requests without intercepting them.
         self.enforcement_mode = enforcement_mode
+        # The ARN of the policy set.
         self.policy_set_arn = policy_set_arn
 
     def validate(self):

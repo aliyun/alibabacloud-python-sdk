@@ -9,6 +9,7 @@ class GetWorkloadIdentityRequest(DaraModel):
         self,
         workload_identity_name: str = None,
     ):
+        # The unique name of the workload identity.
         self.workload_identity_name = workload_identity_name
 
     def validate(self):

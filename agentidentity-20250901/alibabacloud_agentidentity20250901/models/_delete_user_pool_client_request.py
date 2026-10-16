@@ -10,7 +10,9 @@ class DeleteUserPoolClientRequest(DaraModel):
         client_name: str = None,
         user_pool_name: str = None,
     ):
+        # The name of the client to delete.
         self.client_name = client_name
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

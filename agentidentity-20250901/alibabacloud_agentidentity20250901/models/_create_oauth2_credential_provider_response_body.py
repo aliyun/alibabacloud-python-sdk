@@ -11,7 +11,9 @@ class CreateOAuth2CredentialProviderResponseBody(DaraModel):
         oauth2_credential_provider: main_models.CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider = None,
         request_id: str = None,
     ):
+        # The credential provider.
         self.oauth2_credential_provider = oauth2_credential_provider
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -57,16 +59,25 @@ class CreateOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider(DaraMod
         token_vault_name: str = None,
         update_time: str = None,
     ):
+        # The unique callback URL assigned to the provider. You must configure this URL in the list of allowed callback URLs of the identity provider.
         self.callback_url = callback_url
+        # The creation time.
         self.create_time = create_time
+        # The ARN of the newly created credential provider.
         self.credential_provider_arn = credential_provider_arn
+        # The vendor of the provider.
         self.credential_provider_vendor = credential_provider_vendor
+        # The description of the OAuth 2.0 credential provider.
         self.description = description
+        # The name of the credential provider.
         self.oauth2_credential_provider_name = oauth2_credential_provider_name
+        # The object that contains provider-specific configurations, such as clientId and clientSecret.
         self.oauth2_provider_config = oauth2_provider_config
         self.oauth_type = oauth_type
         self.source_platform = source_platform
+        # The name of the token vault.
         self.token_vault_name = token_vault_name
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

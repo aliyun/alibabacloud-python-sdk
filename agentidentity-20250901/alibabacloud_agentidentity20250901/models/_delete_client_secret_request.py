@@ -12,9 +12,13 @@ class DeleteClientSecretRequest(DaraModel):
         client_secret_id: str = None,
         user_pool_name: str = None,
     ):
+        # The client ID. Specify either this parameter or ClientName. If both are specified, ClientId takes precedence.
         self.client_id = client_id
+        # The client name. Specify either this parameter or ClientId.
         self.client_name = client_name
+        # The key ID of the client secret to delete.
         self.client_secret_id = client_secret_id
+        # The user pool name.
         self.user_pool_name = user_pool_name
 
     def validate(self):

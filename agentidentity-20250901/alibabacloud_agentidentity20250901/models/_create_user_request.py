@@ -14,11 +14,19 @@ class CreateUserRequest(DaraModel):
         user_name: str = None,
         user_pool_name: str = None,
     ):
+        # The description of the user. It must be 0 to 256 characters in length.
         self.description = description
+        # The display name of the user. It must be 0 to 128 characters in length.
         self.display_name = display_name
+        # The email address of the user.
         self.email = email
+        # The status of the user. Valid values:
+        # - Enabled: Enabled.
+        # - Disabled: Disabled.
         self.status = status
+        # The username. It can contain letters, digits, underscores (_), periods (.), and hyphens (-), and must be 3 to 128 characters in length.
         self.user_name = user_name
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

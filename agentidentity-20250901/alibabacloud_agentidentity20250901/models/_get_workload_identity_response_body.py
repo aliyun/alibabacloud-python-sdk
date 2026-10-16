@@ -13,7 +13,9 @@ class GetWorkloadIdentityResponseBody(DaraModel):
         request_id: str = None,
         workload_identity: main_models.GetWorkloadIdentityResponseBodyWorkloadIdentity = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The workload identity.
         self.workload_identity = workload_identity
 
     def validate(self):
@@ -60,17 +62,29 @@ class GetWorkloadIdentityResponseBodyWorkloadIdentity(DaraModel):
         workload_identity_arn: str = None,
         workload_identity_name: str = None,
     ):
+        # The whitelist of consent authorization callback URLs for the workload identity, which restricts the allowed callback addresses in the offline delegation (OfflineAccess) authorization flow.
         self.allowed_consent_callback_urls = allowed_consent_callback_urls
+        # The list of allowed OAuth2 return URLs.
         self.allowed_resource_oauth2_return_urls = allowed_resource_oauth2_return_urls
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The configured identity provider.
         self.identity_provider_name = identity_provider_name
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # Indicates whether session binding is enabled.
         self.session_binding_enabled = session_binding_enabled
+        # The ARN of the source agent.
         self.source_agent_arn = source_agent_arn
+        # The creation source.
         self.source_platform = source_platform
+        # The update time.
         self.update_time = update_time
+        # The ARN of the workload identity.
         self.workload_identity_arn = workload_identity_arn
+        # The unique name of the workload identity.
         self.workload_identity_name = workload_identity_name
 
     def validate(self):

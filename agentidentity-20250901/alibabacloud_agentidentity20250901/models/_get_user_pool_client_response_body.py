@@ -13,7 +13,9 @@ class GetUserPoolClientResponseBody(DaraModel):
         client: main_models.GetUserPoolClientResponseBodyClient = None,
         request_id: str = None,
     ):
+        # The client information.
         self.client = client
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,17 +62,28 @@ class GetUserPoolClientResponseBodyClient(DaraModel):
         update_time: str = None,
         user_pool_name: str = None,
     ):
+        # The validity period of the access token, in seconds.
         self.access_token_validity = access_token_validity
+        # The client ID.
         self.client_id = client_id
+        # The name of the client.
         self.client_name = client_name
+        # The list of default client scopes.
         self.client_scopes = client_scopes
         self.client_type = client_type
+        # The time when the client was created, in ISO 8601 format (UTC).
         self.create_time = create_time
+        # Specifies whether PKCE is enforced.
         self.enforce_pkce = enforce_pkce
+        # The list of OAuth redirect URIs.
         self.redirect_uris = redirect_uris
+        # The validity period of the refresh token, in seconds.
         self.refresh_token_validity = refresh_token_validity
+        # Specifies whether an application secret is required.
         self.secret_required = secret_required
+        # The time when the client was updated, in ISO 8601 format (UTC).
         self.update_time = update_time
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):
@@ -173,7 +186,9 @@ class GetUserPoolClientResponseBodyClientClientScopes(DaraModel):
         description: str = None,
         scope_name: str = None,
     ):
+        # The description of the scope.
         self.description = description
+        # The name of the scope.
         self.scope_name = scope_name
 
     def validate(self):

@@ -9,9 +9,14 @@ class CreatePolicySetRequest(DaraModel):
         self,
         description: str = None,
         policy_set_name: str = None,
+        source_platform: str = None,
     ):
+        # The description.
         self.description = description
+        # The name of the policy set. The name must be unique within the current Alibaba Cloud account.
         self.policy_set_name = policy_set_name
+        # The source platform.
+        self.source_platform = source_platform
 
     def validate(self):
         pass
@@ -27,6 +32,9 @@ class CreatePolicySetRequest(DaraModel):
         if self.policy_set_name is not None:
             result['PolicySetName'] = self.policy_set_name
 
+        if self.source_platform is not None:
+            result['SourcePlatform'] = self.source_platform
+
         return result
 
     def from_map(self, m: dict = None):
@@ -36,6 +44,9 @@ class CreatePolicySetRequest(DaraModel):
 
         if m.get('PolicySetName') is not None:
             self.policy_set_name = m.get('PolicySetName')
+
+        if m.get('SourcePlatform') is not None:
+            self.source_platform = m.get('SourcePlatform')
 
         return self
 

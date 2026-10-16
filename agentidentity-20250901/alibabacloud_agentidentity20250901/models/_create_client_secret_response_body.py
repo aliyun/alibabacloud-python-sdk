@@ -11,7 +11,9 @@ class CreateClientSecretResponseBody(DaraModel):
         client_secret: main_models.CreateClientSecretResponseBodyClientSecret = None,
         request_id: str = None,
     ):
+        # The client secret information.
         self.client_secret = client_secret
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,11 +54,17 @@ class CreateClientSecretResponseBodyClientSecret(DaraModel):
         create_time: str = None,
         user_pool_name: str = None,
     ):
+        # The ID of the client.
         self.client_id = client_id
+        # The name of the client.
         self.client_name = client_name
+        # The client key ID.
         self.client_secret_id = client_secret_id
+        # The plaintext client secret. This value is returned only once upon creation and cannot be retrieved later. Store it securely.
         self.client_secret_value = client_secret_value
+        # The time when the client secret was created, in ISO 8601 format (UTC).
         self.create_time = create_time
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

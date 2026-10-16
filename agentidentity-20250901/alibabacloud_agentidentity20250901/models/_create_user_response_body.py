@@ -11,7 +11,9 @@ class CreateUserResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.CreateUserResponseBodyUser = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The user information.
         self.user = user
 
     def validate(self):
@@ -53,12 +55,25 @@ class CreateUserResponseBodyUser(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The description of the user.
         self.description = description
+        # The display name of the user.
         self.display_name = display_name
+        # The email address of the user.
         self.email = email
+        # The status of the user. Valid values:
+        # - Enabled: Enabled.
+        # - Disabled: Disabled.
         self.status = status
+        # The type of the user. Valid values:
+        # - Manual: The user is manually created by calling an API operation.
+        # - JIT: The user is created through JIT.
+        # - SCIM: The user is synchronized through the System for Cross-domain Identity Management protocol.
+        # - SYNC_DINGTALK: The user is synchronized from DingTalk.
         self.type = type
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):

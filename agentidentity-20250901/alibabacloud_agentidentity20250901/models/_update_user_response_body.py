@@ -11,7 +11,9 @@ class UpdateUserResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.UpdateUserResponseBodyUser = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The user information.
         self.user = user
 
     def validate(self):
@@ -55,14 +57,28 @@ class UpdateUserResponseBodyUser(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The description of the user.
         self.description = description
+        # The display name of the user.
         self.display_name = display_name
+        # The email address of the user.
         self.email = email
+        # The status of the user. Valid values:
+        # - Enabled: The user is enabled.
+        # - Disabled: The user is disabled.
         self.status = status
+        # The type of the user. Valid values:
+        # - Manual: The user is manually created by calling an API operation.
+        # - JIT: The user is created by using JIT.
+        # - SYNC_DINGTALK: The user is synchronized from DingTalk.
         self.type = type
+        # The update time.
         self.update_time = update_time
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):

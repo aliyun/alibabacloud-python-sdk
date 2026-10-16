@@ -10,7 +10,9 @@ class DeleteOAuth2CredentialProviderRequest(DaraModel):
         oauth2_credential_provider_name: str = None,
         token_vault_name: str = None,
     ):
+        # The name of the credential provider.
         self.oauth2_credential_provider_name = oauth2_credential_provider_name
+        # The name of the TokenVault.
         self.token_vault_name = token_vault_name
 
     def validate(self):

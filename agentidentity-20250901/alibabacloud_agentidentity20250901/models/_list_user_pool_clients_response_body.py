@@ -16,10 +16,15 @@ class ListUserPoolClientsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of clients.
         self.clients = clients
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. An empty value indicates that no more data is available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of clients that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -90,17 +95,28 @@ class ListUserPoolClientsResponseBodyClients(DaraModel):
         update_time: str = None,
         user_pool_name: str = None,
     ):
+        # The validity period of the access token, in seconds.
         self.access_token_validity = access_token_validity
+        # The client ID.
         self.client_id = client_id
+        # The client name.
         self.client_name = client_name
+        # The list of default scopes for the client.
         self.client_scopes = client_scopes
         self.client_type = client_type
+        # The time when the client was created, in ISO 8601 format (UTC).
         self.create_time = create_time
+        # Indicates whether PKCE is enforced.
         self.enforce_pkce = enforce_pkce
+        # The list of OAuth redirect URIs.
         self.redirect_uris = redirect_uris
+        # The validity period of the refresh token, in seconds.
         self.refresh_token_validity = refresh_token_validity
+        # Indicates whether a client secret is required.
         self.secret_required = secret_required
+        # The time when the client was updated, in ISO 8601 format (UTC).
         self.update_time = update_time
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):
@@ -203,7 +219,9 @@ class ListUserPoolClientsResponseBodyClientsClientScopes(DaraModel):
         description: str = None,
         scope_name: str = None,
     ):
+        # The description of the scope.
         self.description = description
+        # The name of the scope.
         self.scope_name = scope_name
 
     def validate(self):

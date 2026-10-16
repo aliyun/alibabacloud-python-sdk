@@ -17,12 +17,19 @@ class UpdateWorkloadIdentityRequest(DaraModel):
         session_binding_enabled: str = None,
         workload_identity_name: str = None,
     ):
+        # The whitelist of consent authorization callback URLs for the workload identity, which restricts the allowed callback URLs in the offline access delegation authorization flow.
         self.allowed_consent_callback_urls = allowed_consent_callback_urls
+        # The list of allowed OAuth2 return URLs.
         self.allowed_resource_oauth2_return_urls = allowed_resource_oauth2_return_urls
+        # The description.
         self.description = description
+        # The configured identity provider.
         self.identity_provider_name = identity_provider_name
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # Specifies whether session binding is enabled. If enabled, each session is bound to a specific workload identity instance.
         self.session_binding_enabled = session_binding_enabled
+        # The unique name of the workload identity.
         self.workload_identity_name = workload_identity_name
 
     def validate(self):

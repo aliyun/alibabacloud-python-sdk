@@ -10,7 +10,9 @@ class DeleteUserRequest(DaraModel):
         user_name: str = None,
         user_pool_name: str = None,
     ):
+        # The username of the user to delete.
         self.user_name = user_name
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

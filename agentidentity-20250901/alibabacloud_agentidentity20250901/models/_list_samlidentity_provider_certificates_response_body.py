@@ -13,7 +13,9 @@ class ListSAMLIdentityProviderCertificatesResponseBody(DaraModel):
         request_id: str = None,
         x_509certificates: List[main_models.ListSAMLIdentityProviderCertificatesResponseBodyX509Certificates] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of X.509 certificates.
         self.x_509certificates = x_509certificates
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListSAMLIdentityProviderCertificatesResponseBodyX509Certificates(DaraModel
         certificate_id: str = None,
         x_509certificate: str = None,
     ):
+        # The certificate ID.
         self.certificate_id = certificate_id
+        # The content of the X.509 certificate in PEM format.
         self.x_509certificate = x_509certificate
 
     def validate(self):

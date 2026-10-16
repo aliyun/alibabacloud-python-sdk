@@ -12,9 +12,13 @@ class UpdateIdentityProviderShrinkRequest(DaraModel):
         discovery_url: str = None,
         identity_provider_name: str = None,
     ):
+        # The allowed audiences. A token is allowed if its aud claim contains any of the specified audiences.
         self.allowed_audience_shrink = allowed_audience_shrink
+        # The description.
         self.description = description
+        # The metadata URL used to retrieve the OpenID configuration or authorization server metadata.
         self.discovery_url = discovery_url
+        # The name of the identity provider.
         self.identity_provider_name = identity_provider_name
 
     def validate(self):

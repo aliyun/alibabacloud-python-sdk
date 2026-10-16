@@ -11,7 +11,9 @@ class GetPolicySetResponseBody(DaraModel):
         policy_set: main_models.GetPolicySetResponseBodyPolicySet = None,
         request_id: str = None,
     ):
+        # The details of the policy set.
         self.policy_set = policy_set
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,12 +51,20 @@ class GetPolicySetResponseBodyPolicySet(DaraModel):
         description: str = None,
         policy_set_arn: str = None,
         policy_set_name: str = None,
+        source_platform: str = None,
         update_time: str = None,
     ):
+        # The creation time in UTC ISO 8601 format.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The ARN of the policy set.
         self.policy_set_arn = policy_set_arn
+        # The name of the policy set. The name must be unique within the current Alibaba Cloud account.
         self.policy_set_name = policy_set_name
+        # The source platform.
+        self.source_platform = source_platform
+        # The update time in UTC ISO 8601 format.
         self.update_time = update_time
 
     def validate(self):
@@ -77,6 +87,9 @@ class GetPolicySetResponseBodyPolicySet(DaraModel):
         if self.policy_set_name is not None:
             result['PolicySetName'] = self.policy_set_name
 
+        if self.source_platform is not None:
+            result['SourcePlatform'] = self.source_platform
+
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
@@ -95,6 +108,9 @@ class GetPolicySetResponseBodyPolicySet(DaraModel):
 
         if m.get('PolicySetName') is not None:
             self.policy_set_name = m.get('PolicySetName')
+
+        if m.get('SourcePlatform') is not None:
+            self.source_platform = m.get('SourcePlatform')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')

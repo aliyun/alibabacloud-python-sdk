@@ -11,7 +11,9 @@ class CreateAPIKeyCredentialProviderResponseBody(DaraModel):
         apikey_credential_provider: main_models.CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider = None,
         request_id: str = None,
     ):
+        # The API key credential provider.
         self.apikey_credential_provider = apikey_credential_provider
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider(DaraMod
         source_platform: str = None,
         token_vault_name: str = None,
     ):
+        # The name of the credential provider.
         self.apikey_credential_provider_name = apikey_credential_provider_name
+        # The creation time.
         self.create_time = create_time
+        # The ARN of the newly created credential provider.
         self.credential_provider_arn = credential_provider_arn
+        # The description of the credential provider.
         self.description = description
         self.source_platform = source_platform
         self.token_vault_name = token_vault_name

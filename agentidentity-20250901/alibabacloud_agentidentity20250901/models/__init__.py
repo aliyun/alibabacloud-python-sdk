@@ -117,6 +117,9 @@ from ._get_gateway_policy_config_response import GetGatewayPolicyConfigResponse
 from ._get_identity_provider_request import GetIdentityProviderRequest
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBody
 from ._get_identity_provider_response import GetIdentityProviderResponse
+from ._get_identity_provider_sync_scope_request import GetIdentityProviderSyncScopeRequest
+from ._get_identity_provider_sync_scope_response_body import GetIdentityProviderSyncScopeResponseBody
+from ._get_identity_provider_sync_scope_response import GetIdentityProviderSyncScopeResponse
 from ._get_login_preference_request import GetLoginPreferenceRequest
 from ._get_login_preference_response_body import GetLoginPreferenceResponseBody
 from ._get_login_preference_response import GetLoginPreferenceResponse
@@ -165,6 +168,9 @@ from ._list_apikey_credential_providers_response import ListAPIKeyCredentialProv
 from ._list_client_secrets_request import ListClientSecretsRequest
 from ._list_client_secrets_response_body import ListClientSecretsResponseBody
 from ._list_client_secrets_response import ListClientSecretsResponse
+from ._list_identity_provider_departments_request import ListIdentityProviderDepartmentsRequest
+from ._list_identity_provider_departments_response_body import ListIdentityProviderDepartmentsResponseBody
+from ._list_identity_provider_departments_response import ListIdentityProviderDepartmentsResponse
 from ._list_identity_providers_request import ListIdentityProvidersRequest
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBody
 from ._list_identity_providers_response import ListIdentityProvidersResponse
@@ -284,6 +290,8 @@ from ._create_workload_identity_response_body import CreateWorkloadIdentityRespo
 from ._get_apikey_credential_provider_response_body import GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider
 from ._get_gateway_policy_config_response_body import GetGatewayPolicyConfigResponseBodyGatewayPolicyConfig
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyIdentityProvider
+from ._get_identity_provider_sync_scope_response_body import GetIdentityProviderSyncScopeResponseBodySelectedDepartments
+from ._get_identity_provider_sync_scope_response_body import GetIdentityProviderSyncScopeResponseBodySyncScope
 from ._get_login_preference_response_body import GetLoginPreferenceResponseBodyLoginPreference
 from ._get_login_preference_response_body import GetLoginPreferenceResponseBodyPasswordPolicy
 from ._get_oauth2_credential_provider_response_body import GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider
@@ -305,6 +313,7 @@ from ._get_user_pool_sync_job_response_body import GetUserPoolSyncJobResponseBod
 from ._get_workload_identity_response_body import GetWorkloadIdentityResponseBodyWorkloadIdentity
 from ._list_apikey_credential_providers_response_body import ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders
 from ._list_client_secrets_response_body import ListClientSecretsResponseBodyClientSecrets
+from ._list_identity_provider_departments_response_body import ListIdentityProviderDepartmentsResponseBodyDepartments
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyIdentityProviders
 from ._list_oauth2_credential_providers_response_body import ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders
 from ._list_policies_response_body import ListPoliciesResponseBodyPolicies
@@ -445,6 +454,9 @@ __all__ = [
     GetIdentityProviderRequest,
     GetIdentityProviderResponseBody,
     GetIdentityProviderResponse,
+    GetIdentityProviderSyncScopeRequest,
+    GetIdentityProviderSyncScopeResponseBody,
+    GetIdentityProviderSyncScopeResponse,
     GetLoginPreferenceRequest,
     GetLoginPreferenceResponseBody,
     GetLoginPreferenceResponse,
@@ -493,6 +505,9 @@ __all__ = [
     ListClientSecretsRequest,
     ListClientSecretsResponseBody,
     ListClientSecretsResponse,
+    ListIdentityProviderDepartmentsRequest,
+    ListIdentityProviderDepartmentsResponseBody,
+    ListIdentityProviderDepartmentsResponse,
     ListIdentityProvidersRequest,
     ListIdentityProvidersResponseBody,
     ListIdentityProvidersResponse,
@@ -612,6 +627,8 @@ __all__ = [
     GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider,
     GetGatewayPolicyConfigResponseBodyGatewayPolicyConfig,
     GetIdentityProviderResponseBodyIdentityProvider,
+    GetIdentityProviderSyncScopeResponseBodySelectedDepartments,
+    GetIdentityProviderSyncScopeResponseBodySyncScope,
     GetLoginPreferenceResponseBodyLoginPreference,
     GetLoginPreferenceResponseBodyPasswordPolicy,
     GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider,
@@ -633,6 +650,7 @@ __all__ = [
     GetWorkloadIdentityResponseBodyWorkloadIdentity,
     ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders,
     ListClientSecretsResponseBodyClientSecrets,
+    ListIdentityProviderDepartmentsResponseBodyDepartments,
     ListIdentityProvidersResponseBodyIdentityProviders,
     ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders,
     ListPoliciesResponseBodyPolicies,

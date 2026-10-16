@@ -10,7 +10,9 @@ class DeleteSAMLIdentityProviderCertificateRequest(DaraModel):
         certificate_id: str = None,
         user_pool_name: str = None,
     ):
+        # The ID of the certificate to delete.
         self.certificate_id = certificate_id
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

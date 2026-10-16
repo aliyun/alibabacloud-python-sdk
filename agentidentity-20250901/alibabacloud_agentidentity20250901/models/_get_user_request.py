@@ -13,8 +13,10 @@ class GetUserRequest(DaraModel):
         user_pool_name: str = None,
     ):
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
         self.user_pool_id = user_pool_id
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

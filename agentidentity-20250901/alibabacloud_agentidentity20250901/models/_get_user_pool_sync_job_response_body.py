@@ -11,7 +11,9 @@ class GetUserPoolSyncJobResponseBody(DaraModel):
         request_id: str = None,
         synchronization_job: main_models.GetUserPoolSyncJobResponseBodySynchronizationJob = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The synchronization task information.
         self.synchronization_job = synchronization_job
 
     def validate(self):
@@ -54,13 +56,31 @@ class GetUserPoolSyncJobResponseBodySynchronizationJob(DaraModel):
         synchronization_job_id: str = None,
         trigger_type: str = None,
     ):
+        # The end time of the synchronization.
         self.end_time = end_time
+        # The error message.
         self.error_message = error_message
+        # The type of the identity provider.
         self.identity_provider_type = identity_provider_type
+        # The synchronization result statistics information.
         self.job_summary = job_summary
+        # The start time of the synchronization.
         self.start_time = start_time
+        # The status of the synchronization task. Valid values:
+        # 
+        # - Pending: The initial state.
+        # 
+        # - Running: The task is running.
+        # 
+        # - Failed: The task failed.
+        # 
+        # - PartialSuccess: The task partially succeeded.
+        # 
+        # - Success: The task succeeded.
         self.status = status
+        # The ID of the synchronization task.
         self.synchronization_job_id = synchronization_job_id
+        # The trigger type of the synchronization task. Valid values: Manual (manually triggered). Only manual triggering is supported.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -135,9 +155,13 @@ class GetUserPoolSyncJobResponseBodySynchronizationJobJobSummary(DaraModel):
         same: str = None,
         updated: str = None,
     ):
+        # The statistics of created users in JSON format, including the following four fields: total (total count), success (success count), failed (failure count), and skipped (skipped count).
         self.created = created
+        # The statistics of deleted users in JSON format, including the following four fields: total (total count), success (success count), failed (failure count), and skipped (skipped count).
         self.deleted = deleted
+        # The statistics of unchanged users in JSON format, including the following four fields: total (total count), success (success count), failed (failure count), and skipped (skipped count).
         self.same = same
+        # The statistics of updated users in JSON format, including the following four fields: total (total count), success (success count), failed (failure count), and skipped (skipped count).
         self.updated = updated
 
     def validate(self):

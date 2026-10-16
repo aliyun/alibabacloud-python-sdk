@@ -16,10 +16,17 @@ class ListOAuth2CredentialProvidersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The pagination token used to retrieve the next page of results.
+        # 
+        # Leave this parameter empty for the first request. For subsequent requests, specify the NextToken value returned in the previous response.
         self.next_token = next_token
+        # The credential providers.
         self.oauth2_credential_providers = oauth2_credential_providers
+        # The unique identifier of the request.
         self.request_id = request_id
+        # The total number of credential providers.
         self.total_count = total_count
 
     def validate(self):
@@ -93,20 +100,35 @@ class ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders(DaraMod
         token_vault_name: str = None,
         update_time: str = None,
     ):
+        # The unique callback URL assigned to the provider. You must configure this URL in the list of allowed callback URLs of the identity provider.
+        # Format: https://agentidentitydata.{{region}}.aliyuncs.com/oauth2/callback/{{UUID}}
+        # If a value is specified, the specified value is used.
+        # If no value is specified, the server automatically generates one.
         self.callback_url = callback_url
+        # The creation time.
         self.create_time = create_time
+        # The ARN of the credential provider.
         self.credential_provider_arn = credential_provider_arn
+        # The vendor of the provider, such as AliyunOAuth2, AlibabaCloudOAuth2, DingTalkOAuth2, FeiShuOAuth2, and CustomOAuth2.
         self.credential_provider_vendor = credential_provider_vendor
+        # The description of the OAuth 2.0 credential provider.
         self.description = description
+        # The IDaaS instance ID.
         self.idaa_sinstance_id = idaa_sinstance_id
+        # The name of the credential provider.
         self.oauth2_credential_provider_name = oauth2_credential_provider_name
+        # The object that contains provider-specific configurations, such as clientId and clientSecret.
         self.oauth2_provider_config = oauth2_provider_config
         self.oauth_type = oauth_type
+        # The ID of the outbound application.
         self.outbound_application_id = outbound_application_id
+        # The outbound audience.
         self.outbound_audience = outbound_audience
+        # The outbound client ID.
         self.outbound_client_id = outbound_client_id
         self.source_platform = source_platform
         self.token_vault_name = token_vault_name
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

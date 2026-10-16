@@ -18,13 +18,29 @@ class SetSAMLIdentityProviderRequest(DaraModel):
         user_pool_name: str = None,
         x_509certificates: List[str] = None,
     ):
+        # The IdP identifier. This is the EntityID from the SAML metadata of the external IdP.
         self.entity_id = entity_id
+        # The enabling status of Just-In-Time (JIT) user synchronization and creation. Valid values:
+        # - Enabled: Enabled. If a user with the same name does not exist in the user pool during SAML logon, automatic creation is performed.
+        # - Disabled: Shutdown. If the user is not found, the logon is failed. Default value.
         self.jitprovision_status = jitprovision_status
+        # The enabling status of updating user information through synchronization. Valid values:
+        # - Enabled: The update is enabled. If a user with the same name exists during SAML logon, the user information is updated based on the attributes (DisplayName and Description) passed by the IdP.
+        # - Disabled: The update is disabled. Only the logon state is updated, and user attributes are not updated. Default value.
         self.jitupdate_status = jitupdate_status
+        # The IdP logon URL. When a user logs on, the browser is redirected to this URL to complete SAML authentication.
         self.login_url = login_url
+        # The SAML protocol binding type. Valid values:
+        # - HTTP-Redirect: AuthnRequest is sent by using HTTP redirect. Default value.
+        # - HTTP-POST: AuthnRequest is sent by using HTTP POST.
         self.samlbinding_type = samlbinding_type
+        # The enabling status of single sign-on (SSO). Valid values:
+        # - Enabled: SAML SSO is enabled, and users can log on through an external IdP.
+        # - Disabled: SAML SSO is disabled, and users cannot log on through the IdP. Default value.
         self.ssostatus = ssostatus
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
+        # The list of X.509 certificates in PEM format. If you specify this parameter, all existing certificates are replaced.
         self.x_509certificates = x_509certificates
 
     def validate(self):

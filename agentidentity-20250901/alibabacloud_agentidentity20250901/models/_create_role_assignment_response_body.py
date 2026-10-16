@@ -11,7 +11,9 @@ class CreateRoleAssignmentResponseBody(DaraModel):
         request_id: str = None,
         role_assignment: main_models.CreateRoleAssignmentResponseBodyRoleAssignment = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The role assignment.
         self.role_assignment = role_assignment
 
     def validate(self):
@@ -53,12 +55,19 @@ class CreateRoleAssignmentResponseBodyRoleAssignment(DaraModel):
         role_name: str = None,
         user_pool_id: str = None,
     ):
+        # The time when the role assignment was created, in ISO 8601 format (UTC).
         self.create_time = create_time
+        # The ID of the principal. When PrincipalType is User, this is the user ID.
         self.principal_id = principal_id
+        # The name of the principal. When PrincipalType is User, this is the username.
         self.principal_name = principal_name
+        # The type of the principal. Only User is currently supported.
         self.principal_type = principal_type
+        # The ID of the role.
         self.role_id = role_id
+        # The name of the role.
         self.role_name = role_name
+        # The ID of the user pool.
         self.user_pool_id = user_pool_id
 
     def validate(self):

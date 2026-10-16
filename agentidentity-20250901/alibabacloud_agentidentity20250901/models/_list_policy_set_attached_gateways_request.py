@@ -12,9 +12,18 @@ class ListPolicySetAttachedGatewaysRequest(DaraModel):
         next_token: str = None,
         policy_set_name: str = None,
     ):
+        # The gateway type. Valid values:
+        # 
+        # - AIGateway: Alibaba Cloud AI Gateway
+        # - AgentRunMCP: AgentRun MCP tool
+        # 
+        # Default value: AIGateway.
         self.gateway_type = gateway_type
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The token used for pagination. You do not need to specify this parameter for the first call. For subsequent calls, pass the NextToken value returned from the previous call.
         self.next_token = next_token
+        # The name of the policy set. The name must be unique within the current Alibaba Cloud account.
         self.policy_set_name = policy_set_name
 
     def validate(self):

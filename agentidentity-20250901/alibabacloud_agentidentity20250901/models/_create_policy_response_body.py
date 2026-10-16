@@ -11,7 +11,9 @@ class CreatePolicyResponseBody(DaraModel):
         policy: main_models.CreatePolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
+        # The policy details.
         self.policy = policy
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,11 +54,17 @@ class CreatePolicyResponseBodyPolicy(DaraModel):
         policy_name: str = None,
         policy_set_name: str = None,
     ):
+        # The time when the policy was created, in UTC ISO 8601 format.
         self.create_time = create_time
+        # The policy definition.
         self.definition = definition
+        # The description.
         self.description = description
+        # The ARN of the policy.
         self.policy_arn = policy_arn
+        # The name of the policy. The name must be unique within the policy set to which the policy belongs.
         self.policy_name = policy_name
+        # The name of the policy set. The name must be unique within the current Alibaba Cloud account.
         self.policy_set_name = policy_set_name
 
     def validate(self):

@@ -10,7 +10,9 @@ class RunUserPoolSyncJobResponseBody(DaraModel):
         request_id: str = None,
         synchronization_job_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the created synchronization task. You can call GetUserPoolSyncJob to query the execution details of the task.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):

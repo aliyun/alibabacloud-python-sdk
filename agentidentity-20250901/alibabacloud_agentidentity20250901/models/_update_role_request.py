@@ -11,8 +11,11 @@ class UpdateRoleRequest(DaraModel):
         role_name: str = None,
         user_pool_name: str = None,
     ):
+        # The new description of the role. The description must be 0 to 128 characters in length.
         self.description = description
+        # The name of the role.
         self.role_name = role_name
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

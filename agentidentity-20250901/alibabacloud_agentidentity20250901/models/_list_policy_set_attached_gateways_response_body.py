@@ -16,10 +16,15 @@ class ListPolicySetAttachedGatewaysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of attached gateways.
         self.attached_gateways = attached_gateways
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The token used for pagination. You do not need to specify this parameter for the first call. For subsequent calls, pass the NextToken value returned from the previous call.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -83,10 +88,21 @@ class ListPolicySetAttachedGatewaysResponseBodyAttachedGateways(DaraModel):
         gateway_arn: str = None,
         gateway_type: str = None,
     ):
+        # The name of the policy set that is currently in effect on the gateway.
         self.attached_policy_set_name = attached_policy_set_name
+        # The time when the policy set was attached to the gateway, in UTC and ISO 8601 format.
         self.attached_time = attached_time
+        # The policy enforcement mode. Valid values:
+        # 
+        # - ENFORCE: Blocks non-compliant requests and allows compliant requests.
+        # - LOG_ONLY: Only logs non-compliant requests without blocking them.
         self.enforcement_mode = enforcement_mode
+        # The ARN of the target gateway.
         self.gateway_arn = gateway_arn
+        # The gateway type. Valid values:
+        # 
+        # - AIGateway: Alibaba Cloud AI Gateway
+        # - AgentRunMCP: AgentRun MCP tool
         self.gateway_type = gateway_type
 
     def validate(self):

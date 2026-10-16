@@ -10,7 +10,14 @@ class GetGatewayPolicyConfigRequest(DaraModel):
         gateway_arn: str = None,
         gateway_type: str = None,
     ):
+        # The ARN of the target gateway.
         self.gateway_arn = gateway_arn
+        # The gateway type. Valid values:
+        # 
+        # - AIGateway: Alibaba Cloud AI gateway.
+        # - AgentRunMCP: AgentRun MCP tool.
+        # 
+        # If this parameter is not specified, the default value is AIGateway.
         self.gateway_type = gateway_type
 
     def validate(self):

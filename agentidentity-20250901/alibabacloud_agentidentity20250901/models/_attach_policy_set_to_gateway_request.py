@@ -12,9 +12,18 @@ class AttachPolicySetToGatewayRequest(DaraModel):
         gateway_type: str = None,
         policy_set_name: str = None,
     ):
+        # The policy enforcement mode. Valid values: ENFORCE (blocks non-compliant requests and allows compliant requests) and LOG_ONLY (records non-compliant requests but does not block them).
         self.enforcement_mode = enforcement_mode
+        # The ARN of the target gateway.
         self.gateway_arn = gateway_arn
+        # The gateway type. Valid values:
+        # 
+        # - AIGateway: Alibaba Cloud AI gateway.
+        # - AgentRunMCP: AgentRun MCP tool.
+        # 
+        # Default value: AIGateway.
         self.gateway_type = gateway_type
+        # The name of the policy set. The name must be unique within the current Alibaba Cloud account.
         self.policy_set_name = policy_set_name
 
     def validate(self):

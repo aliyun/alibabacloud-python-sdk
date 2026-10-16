@@ -10,7 +10,9 @@ class GetSpecificIdentityProviderRequest(DaraModel):
         identity_provider_type: str = None,
         user_pool_name: str = None,
     ):
+        # The type of the identity provider. Currently, only DingTalk is supported.
         self.identity_provider_type = identity_provider_type
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

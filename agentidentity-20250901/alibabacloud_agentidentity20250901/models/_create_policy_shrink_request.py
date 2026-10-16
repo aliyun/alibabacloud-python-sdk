@@ -12,9 +12,13 @@ class CreatePolicyShrinkRequest(DaraModel):
         policy_name: str = None,
         policy_set_name: str = None,
     ):
+        # The policy definition.
         self.definition_shrink = definition_shrink
+        # The description.
         self.description = description
+        # The name of the policy. The name must be unique within the policy set to which the policy belongs.
         self.policy_name = policy_name
+        # The name of the policy set. The name must be unique within the current Alibaba Cloud account.
         self.policy_set_name = policy_set_name
 
     def validate(self):

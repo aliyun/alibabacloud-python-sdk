@@ -14,15 +14,29 @@ class CreateUserPoolClientRequest(DaraModel):
         enforce_pkce: bool = None,
         redirect_uris: List[str] = None,
         refresh_token_validity: str = None,
+        scopes: List[str] = None,
         secret_required: bool = None,
         user_pool_name: str = None,
     ):
+        # The validity period of the access token, in seconds. Valid values: 900 to 10800. Default value: 3600.
         self.access_token_validity = access_token_validity
+        # The name of the client. The name must be unique within the same user pool and must be 1 to 64 characters in length.
         self.client_name = client_name
+        # Specifies whether to enforce Proof Key for Code Exchange (PKCE). Valid values:
+        # - true: Enforced. The code_challenge parameter is required in the authorization code flow.
+        # - false: Not enforced.
         self.enforce_pkce = enforce_pkce
+        # The list of OAuth redirect URIs. After authorization is complete, the user\\"s browser is redirected to one of the URIs in the list.
         self.redirect_uris = redirect_uris
+        # The validity period of the refresh token, in seconds. Valid values: 7200 to 31536000 (90 days). Default value: 2592000 (30 days).
         self.refresh_token_validity = refresh_token_validity
+        # The scopes granted to the application. You can specify multiple scopes.
+        self.scopes = scopes
+        # Specifies whether an application secret is required. Valid values:
+        # - true: Required. This value applies to confidential clients such as server-side applications. You must call CreateClientSecret to create a secret.
+        # - false: Not required. This value applies to public clients such as single-page applications (SPAs) and mobile applications.
         self.secret_required = secret_required
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):
@@ -48,6 +62,9 @@ class CreateUserPoolClientRequest(DaraModel):
         if self.refresh_token_validity is not None:
             result['RefreshTokenValidity'] = self.refresh_token_validity
 
+        if self.scopes is not None:
+            result['Scopes'] = self.scopes
+
         if self.secret_required is not None:
             result['SecretRequired'] = self.secret_required
 
@@ -72,6 +89,9 @@ class CreateUserPoolClientRequest(DaraModel):
 
         if m.get('RefreshTokenValidity') is not None:
             self.refresh_token_validity = m.get('RefreshTokenValidity')
+
+        if m.get('Scopes') is not None:
+            self.scopes = m.get('Scopes')
 
         if m.get('SecretRequired') is not None:
             self.secret_required = m.get('SecretRequired')

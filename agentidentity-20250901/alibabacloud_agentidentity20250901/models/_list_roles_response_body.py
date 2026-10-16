@@ -16,10 +16,15 @@ class ListRolesResponseBody(DaraModel):
         roles: List[main_models.ListRolesResponseBodyRoles] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
+        # The token used to query the next page of data. An empty value indicates that no more data is available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The list of roles.
         self.roles = roles
+        # The total number of roles that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListRolesResponseBodyRoles(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The creation time in ISO 8601 format (UTC).
         self.create_time = create_time
+        # The role description.
         self.description = description
+        # The role ID.
         self.role_id = role_id
+        # The role name.
         self.role_name = role_name
+        # The role type. Default indicates a default role. Manual indicates a custom role.
         self.type = type
+        # The update time in ISO 8601 format (UTC).
         self.update_time = update_time
 
     def validate(self):

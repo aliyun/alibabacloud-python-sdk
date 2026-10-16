@@ -16,10 +16,15 @@ class ListUsersResponseBody(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersResponseBodyUsers] = None,
     ):
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
+        # The token used to query the next page of data. An empty value indicates that no more data is available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of users that meet the conditions.
         self.total_count = total_count
+        # The list of users.
         self.users = users
 
     def validate(self):
@@ -87,14 +92,20 @@ class ListUsersResponseBodyUsers(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The creation time. The time is in the ISO 8601 format in UTC.
         self.create_time = create_time
+        # The description of the user.
         self.description = description
+        # The display name of the user.
         self.display_name = display_name
         self.email = email
         self.status = status
         self.type = type
+        # The update time. The time is in the ISO 8601 format in UTC.
         self.update_time = update_time
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):

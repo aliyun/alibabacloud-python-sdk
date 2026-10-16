@@ -20,15 +20,25 @@ class CreateWorkloadIdentityRequest(DaraModel):
         source_platform: str = None,
         workload_identity_name: str = None,
     ):
+        # The allowlist of Consent authorization callback URLs for the workload identity, which constrains the allowed redirect addresses during the offline delegation (OfflineAccess) authorization flow.
         self.allowed_consent_callback_urls = allowed_consent_callback_urls
+        # The list of allowed OAuth2 return URLs.
         self.allowed_resource_oauth2_return_urls = allowed_resource_oauth2_return_urls
+        # Specifies whether to automatically create an associated RAM role. When set to true, the system automatically creates a RAM role with the same name as the workload identity.
         self.create_ramrole = create_ramrole
+        # The description.
         self.description = description
+        # The configured identity provider.
         self.identity_provider_name = identity_provider_name
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # Specifies whether to enable session binding. When enabled, each session is bound to a specific workload identity instance.
         self.session_binding_enabled = session_binding_enabled
+        # The ARN of the source agent.
         self.source_agent_arn = source_agent_arn
+        # The source platform.
         self.source_platform = source_platform
+        # The unique name of the workload identity.
         self.workload_identity_name = workload_identity_name
 
     def validate(self):

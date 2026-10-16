@@ -16,12 +16,21 @@ class CreateOAuth2CredentialProviderRequest(DaraModel):
         oauth_type: str = None,
         token_vault_name: str = None,
     ):
+        # The unique callback URL assigned to the provider. You must configure this URL in the list of allowed callback URLs of the identity provider.
+        # Format: https://agentidentitydata.{{region}}.aliyuncs.com/oauth2/callback/{{UUID}}
+        # If you specify this parameter, the specified value is used.
+        # If you do not specify this parameter, the server automatically generates a value.
         self.callback_url = callback_url
+        # The vendor of the provider, such as AliyunOAuth2, AlibabaCloudOAuth2, DingTalkOAuth2, FeiShuOAuth2, or CustomOAuth2.
         self.credential_provider_vendor = credential_provider_vendor
+        # The description of the OAuth 2.0 credential provider.
         self.description = description
+        # The name of the credential provider.
         self.oauth2_credential_provider_name = oauth2_credential_provider_name
+        # The object that contains provider-specific configurations, such as clientId and clientSecret.
         self.oauth2_provider_config = oauth2_provider_config
         self.oauth_type = oauth_type
+        # The name of the token vault.
         self.token_vault_name = token_vault_name
 
     def validate(self):

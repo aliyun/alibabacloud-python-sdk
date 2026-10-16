@@ -11,7 +11,9 @@ class CreatePolicySetResponseBody(DaraModel):
         policy_set: main_models.CreatePolicySetResponseBodyPolicySet = None,
         request_id: str = None,
     ):
+        # The policy set details.
         self.policy_set = policy_set
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,11 +51,18 @@ class CreatePolicySetResponseBodyPolicySet(DaraModel):
         description: str = None,
         policy_set_arn: str = None,
         policy_set_name: str = None,
+        source_platform: str = None,
     ):
+        # The creation time in UTC ISO 8601 format.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The ARN of the policy set.
         self.policy_set_arn = policy_set_arn
+        # The name of the policy set. The name must be unique within the current Alibaba Cloud account.
         self.policy_set_name = policy_set_name
+        # The source platform.
+        self.source_platform = source_platform
 
     def validate(self):
         pass
@@ -75,6 +84,9 @@ class CreatePolicySetResponseBodyPolicySet(DaraModel):
         if self.policy_set_name is not None:
             result['PolicySetName'] = self.policy_set_name
 
+        if self.source_platform is not None:
+            result['SourcePlatform'] = self.source_platform
+
         return result
 
     def from_map(self, m: dict = None):
@@ -90,6 +102,9 @@ class CreatePolicySetResponseBodyPolicySet(DaraModel):
 
         if m.get('PolicySetName') is not None:
             self.policy_set_name = m.get('PolicySetName')
+
+        if m.get('SourcePlatform') is not None:
+            self.source_platform = m.get('SourcePlatform')
 
         return self
 

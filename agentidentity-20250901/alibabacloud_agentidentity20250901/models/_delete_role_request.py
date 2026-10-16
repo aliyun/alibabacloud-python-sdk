@@ -10,7 +10,9 @@ class DeleteRoleRequest(DaraModel):
         role_name: str = None,
         user_pool_name: str = None,
     ):
+        # The name of the role to delete.
         self.role_name = role_name
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

@@ -12,8 +12,11 @@ class GetLoginPreferenceResponseBody(DaraModel):
         password_policy: main_models.GetLoginPreferenceResponseBodyPasswordPolicy = None,
         request_id: str = None,
     ):
+        # The logon preference configuration.
         self.login_preference = login_preference
+        # The password policy configuration.
         self.password_policy = password_policy
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,15 +70,25 @@ class GetLoginPreferenceResponseBodyPasswordPolicy(DaraModel):
         require_symbols: bool = None,
         require_upper_case_chars: bool = None,
     ):
+        # Indicates whether logon is prohibited after a password expires. A value of true indicates that the password must be reset by an administrator before the user can log on.
         self.hard_expire = hard_expire
+        # The maximum number of consecutive logon failures. Default value: 5. This value cannot be modified.
         self.max_login_attempts = max_login_attempts
+        # The maximum validity period of a password in days. Default value: 7. This value cannot be modified.
         self.max_password_age = max_password_age
+        # The maximum length of the password. Fixed value: 32.
         self.max_password_length = max_password_length
+        # The minimum length of the password. Fixed value: 8.
         self.min_password_length = min_password_length
+        # Indicates whether the password must not contain the username.
         self.password_not_contain_user_name = password_not_contain_user_name
+        # Indicates whether lowercase letters are required.
         self.require_lower_case_chars = require_lower_case_chars
+        # Indicates whether numbers are required.
         self.require_numbers = require_numbers
+        # Indicates whether special characters are required.
         self.require_symbols = require_symbols
+        # Indicates whether uppercase letters are required.
         self.require_upper_case_chars = require_upper_case_chars
 
     def validate(self):
@@ -157,6 +170,7 @@ class GetLoginPreferenceResponseBodyLoginPreference(DaraModel):
         self,
         enable_password_login: bool = None,
     ):
+        # Indicates whether password logon is enabled.
         self.enable_password_login = enable_password_login
 
     def validate(self):

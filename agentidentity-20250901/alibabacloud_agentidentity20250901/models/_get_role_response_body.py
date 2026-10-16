@@ -11,7 +11,9 @@ class GetRoleResponseBody(DaraModel):
         request_id: str = None,
         role: main_models.GetRoleResponseBodyRole = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The role information.
         self.role = role
 
     def validate(self):
@@ -52,11 +54,17 @@ class GetRoleResponseBodyRole(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The creation time in ISO 8601 format (UTC).
         self.create_time = create_time
+        # The description of the role.
         self.description = description
+        # The role ID.
         self.role_id = role_id
+        # The name of the role.
         self.role_name = role_name
+        # The type of the role. Default indicates a default role, and Manual indicates a custom role.
         self.type = type
+        # The update time in ISO 8601 format (UTC).
         self.update_time = update_time
 
     def validate(self):

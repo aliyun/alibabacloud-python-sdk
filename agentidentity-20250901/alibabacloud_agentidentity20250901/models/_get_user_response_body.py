@@ -11,7 +11,9 @@ class GetUserResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.GetUserResponseBodyUser = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The user information.
         self.user = user
 
     def validate(self):
@@ -55,14 +57,20 @@ class GetUserResponseBodyUser(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The creation time in ISO 8601 format (UTC).
         self.create_time = create_time
+        # The description of the user.
         self.description = description
+        # The display name of the user.
         self.display_name = display_name
         self.email = email
         self.status = status
         self.type = type
+        # The update time in ISO 8601 format (UTC).
         self.update_time = update_time
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):

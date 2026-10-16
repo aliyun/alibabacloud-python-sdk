@@ -13,7 +13,9 @@ class GetSAMLIdentityProviderResponseBody(DaraModel):
         request_id: str = None,
         ssoidentity_provider_configuration: main_models.GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The detailed configuration of the identity provider.
         self.ssoidentity_provider_configuration = ssoidentity_provider_configuration
 
     def validate(self):
@@ -55,12 +57,27 @@ class GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration(DaraMo
         ssostatus: str = None,
         x_509certificates: List[main_models.GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates] = None,
     ):
+        # The IdP identifier.
         self.entity_id = entity_id
+        # The enabling status of just-in-time (JIT) user provisioning. Valid values:
+        # - Enabled: JIT user provisioning is enabled.
+        # - Disabled: JIT user provisioning is disabled.
         self.jitprovision_status = jitprovision_status
+        # The enabling status of updating user information through synchronization. Valid values:
+        # - Enabled: The feature is enabled.
+        # - Disabled: The feature is disabled.
         self.jitupdate_status = jitupdate_status
+        # The logon URL of the IdP.
         self.login_url = login_url
+        # The SAML protocol binding type. Valid values:
+        # - HTTP-Redirect
+        # - HTTP-POST
         self.samlbinding_type = samlbinding_type
+        # The enabling status of single sign-on (SSO). Valid values:
+        # - Enabled: SSO is enabled.
+        # - Disabled: SSO is disabled.
         self.ssostatus = ssostatus
+        # The list of X509 certificates.
         self.x_509certificates = x_509certificates
 
     def validate(self):
@@ -133,7 +150,9 @@ class GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Cer
         certificate_id: str = None,
         x_509certificate: str = None,
     ):
+        # The certificate ID.
         self.certificate_id = certificate_id
+        # The content of the X509 certificate in PEM format.
         self.x_509certificate = x_509certificate
 
     def validate(self):

@@ -649,6 +649,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.policy_set_name):
             body['PolicySetName'] = request.policy_set_name
+        if not DaraCore.is_null(request.source_platform):
+            body['SourcePlatform'] = request.source_platform
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -679,6 +681,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.policy_set_name):
             body['PolicySetName'] = request.policy_set_name
+        if not DaraCore.is_null(request.source_platform):
+            body['SourcePlatform'] = request.source_platform
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1136,6 +1140,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.redirect_uris):
             request.redirect_uris_shrink = Utils.array_to_string_with_specified_style(tmp_req.redirect_uris, 'RedirectURIs', 'json')
+        if not DaraCore.is_null(tmp_req.scopes):
+            request.scopes_shrink = Utils.array_to_string_with_specified_style(tmp_req.scopes, 'Scopes', 'json')
         body = {}
         if not DaraCore.is_null(request.access_token_validity):
             body['AccessTokenValidity'] = request.access_token_validity
@@ -1147,6 +1153,8 @@ class Client(OpenApiClient):
             body['RedirectURIs'] = request.redirect_uris_shrink
         if not DaraCore.is_null(request.refresh_token_validity):
             body['RefreshTokenValidity'] = request.refresh_token_validity
+        if not DaraCore.is_null(request.scopes_shrink):
+            body['Scopes'] = request.scopes_shrink
         if not DaraCore.is_null(request.secret_required):
             body['SecretRequired'] = request.secret_required
         if not DaraCore.is_null(request.user_pool_name):
@@ -1180,6 +1188,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.redirect_uris):
             request.redirect_uris_shrink = Utils.array_to_string_with_specified_style(tmp_req.redirect_uris, 'RedirectURIs', 'json')
+        if not DaraCore.is_null(tmp_req.scopes):
+            request.scopes_shrink = Utils.array_to_string_with_specified_style(tmp_req.scopes, 'Scopes', 'json')
         body = {}
         if not DaraCore.is_null(request.access_token_validity):
             body['AccessTokenValidity'] = request.access_token_validity
@@ -1191,6 +1201,8 @@ class Client(OpenApiClient):
             body['RedirectURIs'] = request.redirect_uris_shrink
         if not DaraCore.is_null(request.refresh_token_validity):
             body['RefreshTokenValidity'] = request.refresh_token_validity
+        if not DaraCore.is_null(request.scopes_shrink):
+            body['Scopes'] = request.scopes_shrink
         if not DaraCore.is_null(request.secret_required):
             body['SecretRequired'] = request.secret_required
         if not DaraCore.is_null(request.user_pool_name):
@@ -2674,6 +2686,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_identity_provider_with_options_async(request, runtime)
 
+    def get_identity_provider_sync_scope_with_options(
+        self,
+        request: main_models.GetIdentityProviderSyncScopeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderSyncScopeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderSyncScope',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderSyncScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_sync_scope_with_options_async(
+        self,
+        request: main_models.GetIdentityProviderSyncScopeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderSyncScopeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderSyncScope',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderSyncScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider_sync_scope(
+        self,
+        request: main_models.GetIdentityProviderSyncScopeRequest,
+    ) -> main_models.GetIdentityProviderSyncScopeResponse:
+        runtime = RuntimeOptions()
+        return self.get_identity_provider_sync_scope_with_options(request, runtime)
+
+    async def get_identity_provider_sync_scope_async(
+        self,
+        request: main_models.GetIdentityProviderSyncScopeRequest,
+    ) -> main_models.GetIdentityProviderSyncScopeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_identity_provider_sync_scope_with_options_async(request, runtime)
+
     def get_login_preference_with_options(
         self,
         request: main_models.GetLoginPreferenceRequest,
@@ -3841,6 +3927,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListClientSecretsResponse:
         runtime = RuntimeOptions()
         return await self.list_client_secrets_with_options_async(request, runtime)
+
+    def list_identity_provider_departments_with_options(
+        self,
+        request: main_models.ListIdentityProviderDepartmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIdentityProviderDepartmentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.parent_department_id):
+            body['ParentDepartmentId'] = request.parent_department_id
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListIdentityProviderDepartments',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListIdentityProviderDepartmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_identity_provider_departments_with_options_async(
+        self,
+        request: main_models.ListIdentityProviderDepartmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIdentityProviderDepartmentsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.parent_department_id):
+            body['ParentDepartmentId'] = request.parent_department_id
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListIdentityProviderDepartments',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListIdentityProviderDepartmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_identity_provider_departments(
+        self,
+        request: main_models.ListIdentityProviderDepartmentsRequest,
+    ) -> main_models.ListIdentityProviderDepartmentsResponse:
+        runtime = RuntimeOptions()
+        return self.list_identity_provider_departments_with_options(request, runtime)
+
+    async def list_identity_provider_departments_async(
+        self,
+        request: main_models.ListIdentityProviderDepartmentsRequest,
+    ) -> main_models.ListIdentityProviderDepartmentsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_identity_provider_departments_with_options_async(request, runtime)
 
     def list_identity_providers_with_options(
         self,
@@ -6206,6 +6378,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.redirect_uris):
             request.redirect_uris_shrink = Utils.array_to_string_with_specified_style(tmp_req.redirect_uris, 'RedirectURIs', 'json')
+        if not DaraCore.is_null(tmp_req.scopes):
+            request.scopes_shrink = Utils.array_to_string_with_specified_style(tmp_req.scopes, 'Scopes', 'json')
         body = {}
         if not DaraCore.is_null(request.access_token_validity):
             body['AccessTokenValidity'] = request.access_token_validity
@@ -6217,6 +6391,8 @@ class Client(OpenApiClient):
             body['RedirectURIs'] = request.redirect_uris_shrink
         if not DaraCore.is_null(request.refresh_token_validity):
             body['RefreshTokenValidity'] = request.refresh_token_validity
+        if not DaraCore.is_null(request.scopes_shrink):
+            body['Scopes'] = request.scopes_shrink
         if not DaraCore.is_null(request.secret_required):
             body['SecretRequired'] = request.secret_required
         if not DaraCore.is_null(request.user_pool_name):
@@ -6250,6 +6426,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.redirect_uris):
             request.redirect_uris_shrink = Utils.array_to_string_with_specified_style(tmp_req.redirect_uris, 'RedirectURIs', 'json')
+        if not DaraCore.is_null(tmp_req.scopes):
+            request.scopes_shrink = Utils.array_to_string_with_specified_style(tmp_req.scopes, 'Scopes', 'json')
         body = {}
         if not DaraCore.is_null(request.access_token_validity):
             body['AccessTokenValidity'] = request.access_token_validity
@@ -6261,6 +6439,8 @@ class Client(OpenApiClient):
             body['RedirectURIs'] = request.redirect_uris_shrink
         if not DaraCore.is_null(request.refresh_token_validity):
             body['RefreshTokenValidity'] = request.refresh_token_validity
+        if not DaraCore.is_null(request.scopes_shrink):
+            body['Scopes'] = request.scopes_shrink
         if not DaraCore.is_null(request.secret_required):
             body['SecretRequired'] = request.secret_required
         if not DaraCore.is_null(request.user_pool_name):

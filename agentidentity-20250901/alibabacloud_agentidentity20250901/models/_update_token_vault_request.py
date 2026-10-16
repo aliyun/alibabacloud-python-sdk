@@ -11,8 +11,11 @@ class UpdateTokenVaultRequest(DaraModel):
         role_arn: str = None,
         token_vault_name: str = None,
     ):
+        # The description.
         self.description = description
+        # The ARN of the RAM role used to grant the AgentIdentity service access to other cloud resources such as KMS.
         self.role_arn = role_arn
+        # The name of the token vault. The name must be unique within the current Alibaba Cloud account.
         self.token_vault_name = token_vault_name
 
     def validate(self):

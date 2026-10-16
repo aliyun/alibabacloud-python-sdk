@@ -11,8 +11,11 @@ class RunUserPoolSyncJobRequest(DaraModel):
         max_sync_users: str = None,
         user_pool_name: str = None,
     ):
+        # The identity provider type. Currently, only DingTalk is supported.
         self.identity_provider_type = identity_provider_type
+        # The maximum number of users to synchronize in a single task.
         self.max_sync_users = max_sync_users
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

@@ -11,7 +11,9 @@ class GetUserPoolResponseBody(DaraModel):
         request_id: str = None,
         user_pool: main_models.GetUserPoolResponseBodyUserPool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The user pool information.
         self.user_pool = user_pool
 
     def validate(self):
@@ -54,13 +56,21 @@ class GetUserPoolResponseBodyUserPool(DaraModel):
         user_pool_id: str = None,
         user_pool_name: str = None,
     ):
+        # The creation time in ISO 8601 format (UTC).
         self.create_time = create_time
+        # The description of the user pool.
         self.description = description
+        # The discovery URL for the OpenID Connect (OIDC) protocol.
         self.oidcdiscovery_url = oidcdiscovery_url
+        # The base URL for logon.
         self.signin_base_url = signin_base_url
+        # The source platform.
         self.source_platform = source_platform
+        # The update time in ISO 8601 format (UTC).
         self.update_time = update_time
+        # The ID of the user pool.
         self.user_pool_id = user_pool_id
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

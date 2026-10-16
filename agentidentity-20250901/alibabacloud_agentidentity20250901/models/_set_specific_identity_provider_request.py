@@ -12,9 +12,15 @@ class SetSpecificIdentityProviderRequest(DaraModel):
         ssostatus: str = None,
         user_pool_name: str = None,
     ):
+        # The IdP metadata. For the DingTalk type, the metadata is in JSON format and includes fields such as corpId, appKey, appSecret, encryptKey, verificationToken, and syncCallbackStatus.
         self.idpmetadata = idpmetadata
+        # The type of the identity provider. Currently, only DingTalk is supported.
         self.identity_provider_type = identity_provider_type
+        # The SSO enabling status. Valid values:
+        # - Enabled: Enabled.
+        # - Disabled: Disabled.
         self.ssostatus = ssostatus
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

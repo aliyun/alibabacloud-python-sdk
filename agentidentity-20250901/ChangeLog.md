@@ -1,3 +1,14 @@
+2026-10-16 Version: 1.3.0
+- Support API GetIdentityProviderSyncScope.
+- Support API ListIdentityProviderDepartments.
+- Update API CreatePolicySet: add request parameters SourcePlatform.
+- Update API CreatePolicySet: add response parameters Body.PolicySet.SourcePlatform.
+- Update API CreateUserPoolClient: add request parameters Scopes.
+- Update API GetPolicySet: add response parameters Body.PolicySet.SourcePlatform.
+- Update API ListPolicySets: add response parameters Body.PolicySets.$.SourcePlatform.
+- Update API UpdateUserPoolClient: add request parameters Scopes.
+
+
 2026-09-08 Version: 1.2.2
 - Update API CreateAPIKeyCredentialProvider: add response parameters Body.APIKeyCredentialProvider.SourcePlatform.
 - Update API CreateOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.SourcePlatform.

@@ -11,8 +11,16 @@ class DetachPolicySetFromGatewayRequest(DaraModel):
         gateway_type: str = None,
         policy_set_name: str = None,
     ):
+        # The ARN of the target gateway.
         self.gateway_arn = gateway_arn
+        # The gateway type. Valid values:
+        # 
+        # - AIGateway: Alibaba Cloud AI Gateway.
+        # - AgentRunMCP: AgentRun MCP tool.
+        # 
+        # Default value: AIGateway.
         self.gateway_type = gateway_type
+        # The name of the policy set. The name must be unique within the current Alibaba Cloud account.
         self.policy_set_name = policy_set_name
 
     def validate(self):

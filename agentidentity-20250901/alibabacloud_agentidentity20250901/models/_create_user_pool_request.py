@@ -10,7 +10,9 @@ class CreateUserPoolRequest(DaraModel):
         description: str = None,
         user_pool_name: str = None,
     ):
+        # The description of the user pool. The description must be 0 to 128 characters in length.
         self.description = description
+        # The name of the user pool. The name must be unique within the same Alibaba Cloud account and must be 3 to 64 characters in length.
         self.user_pool_name = user_pool_name
 
     def validate(self):

@@ -10,7 +10,9 @@ class SetUserPasswordResponseBody(DaraModel):
         random_password: str = None,
         request_id: str = None,
     ):
+        # The system-generated random password returned when GenerateRandomPassword is set to true.
         self.random_password = random_password
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

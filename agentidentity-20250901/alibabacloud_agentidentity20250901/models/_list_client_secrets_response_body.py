@@ -13,7 +13,9 @@ class ListClientSecretsResponseBody(DaraModel):
         client_secrets: List[main_models.ListClientSecretsResponseBodyClientSecrets] = None,
         request_id: str = None,
     ):
+        # The list of client secrets.
         self.client_secrets = client_secrets
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,10 +61,15 @@ class ListClientSecretsResponseBodyClientSecrets(DaraModel):
         create_time: str = None,
         user_pool_name: str = None,
     ):
+        # The client ID.
         self.client_id = client_id
+        # The client name.
         self.client_name = client_name
+        # The client key ID.
         self.client_secret_id = client_secret_id
+        # The creation time of the client secret in ISO 8601 format (UTC).
         self.create_time = create_time
+        # The user pool name.
         self.user_pool_name = user_pool_name
 
     def validate(self):

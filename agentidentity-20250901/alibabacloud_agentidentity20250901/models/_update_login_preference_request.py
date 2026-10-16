@@ -15,7 +15,9 @@ class UpdateLoginPreferenceRequest(DaraModel):
         user_pool_name: str = None,
     ):
         self.allowed_post_logout_redirect_uris = allowed_post_logout_redirect_uris
+        # The logon preference configuration object. It contains the logon configuration fields to be updated.
         self.login_preference = login_preference
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):
@@ -57,6 +59,7 @@ class UpdateLoginPreferenceRequestLoginPreference(DaraModel):
         self,
         enable_password_login: bool = None,
     ):
+        # Specifies whether to enable password logon for users.
         self.enable_password_login = enable_password_login
 
     def validate(self):

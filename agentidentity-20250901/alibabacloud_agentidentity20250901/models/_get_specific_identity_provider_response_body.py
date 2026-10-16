@@ -11,7 +11,9 @@ class GetSpecificIdentityProviderResponseBody(DaraModel):
         request_id: str = None,
         specific_identity_provider_configuration: main_models.GetSpecificIdentityProviderResponseBodySpecificIdentityProviderConfiguration = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The identity provider configuration information.
         self.specific_identity_provider_configuration = specific_identity_provider_configuration
 
     def validate(self):
@@ -49,8 +51,11 @@ class GetSpecificIdentityProviderResponseBodySpecificIdentityProviderConfigurati
         identity_provider_type: str = None,
         ssostatus: str = None,
     ):
+        # The IdP metadata content.
         self.idpmetadata = idpmetadata
+        # The type of the identity provider.
         self.identity_provider_type = identity_provider_type
+        # The SSO enabling status.
         self.ssostatus = ssostatus
 
     def validate(self):

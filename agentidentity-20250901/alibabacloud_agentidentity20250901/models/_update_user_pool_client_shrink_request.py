@@ -12,15 +12,25 @@ class UpdateUserPoolClientShrinkRequest(DaraModel):
         enforce_pkce: bool = None,
         redirect_uris_shrink: str = None,
         refresh_token_validity: str = None,
+        scopes_shrink: str = None,
         secret_required: bool = None,
         user_pool_name: str = None,
     ):
+        # The validity period of the access token, in seconds. Valid values: 900 to 10800. Default value: 3600.
         self.access_token_validity = access_token_validity
+        # The name of the client.
         self.client_name = client_name
+        # Specifies whether Proof Key for Code Exchange (PKCE) is enforced.
         self.enforce_pkce = enforce_pkce
+        # The new list of OAuth callback URLs. Specifying this parameter replaces all existing callback URLs.
         self.redirect_uris_shrink = redirect_uris_shrink
+        # The validity period of the refresh token, in seconds. Valid values: 7200 to 31536000 (90 days). Default value: 2592000 (30 days).
         self.refresh_token_validity = refresh_token_validity
+        # The scopes granted to the application. You can specify multiple scopes.
+        self.scopes_shrink = scopes_shrink
+        # Specifies whether an application secret is required. A value of true indicates a confidential client, and a value of false indicates a public client.
         self.secret_required = secret_required
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):
@@ -46,6 +56,9 @@ class UpdateUserPoolClientShrinkRequest(DaraModel):
         if self.refresh_token_validity is not None:
             result['RefreshTokenValidity'] = self.refresh_token_validity
 
+        if self.scopes_shrink is not None:
+            result['Scopes'] = self.scopes_shrink
+
         if self.secret_required is not None:
             result['SecretRequired'] = self.secret_required
 
@@ -70,6 +83,9 @@ class UpdateUserPoolClientShrinkRequest(DaraModel):
 
         if m.get('RefreshTokenValidity') is not None:
             self.refresh_token_validity = m.get('RefreshTokenValidity')
+
+        if m.get('Scopes') is not None:
+            self.scopes_shrink = m.get('Scopes')
 
         if m.get('SecretRequired') is not None:
             self.secret_required = m.get('SecretRequired')

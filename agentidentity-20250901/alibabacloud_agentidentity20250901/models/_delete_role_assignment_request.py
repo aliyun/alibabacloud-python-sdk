@@ -12,9 +12,13 @@ class DeleteRoleAssignmentRequest(DaraModel):
         role_name: str = None,
         user_pool_name: str = None,
     ):
+        # The name of the identity. If PrincipalType is set to User, specify the username.
         self.principal_name = principal_name
+        # The identity type. Currently, only User is supported.
         self.principal_type = principal_type
+        # The name of the role to be removed.
         self.role_name = role_name
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

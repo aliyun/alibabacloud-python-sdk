@@ -9,6 +9,7 @@ class DeleteIdentityProviderRequest(DaraModel):
         self,
         identity_provider_name: str = None,
     ):
+        # The name of the identity provider.
         self.identity_provider_name = identity_provider_name
 
     def validate(self):

@@ -81,12 +81,14 @@ class ListPolicySetsResponseBodyPolicySets(DaraModel):
         description: str = None,
         policy_set_arn: str = None,
         policy_set_name: str = None,
+        source_platform: str = None,
         update_time: str = None,
     ):
         self.create_time = create_time
         self.description = description
         self.policy_set_arn = policy_set_arn
         self.policy_set_name = policy_set_name
+        self.source_platform = source_platform
         self.update_time = update_time
 
     def validate(self):
@@ -109,6 +111,9 @@ class ListPolicySetsResponseBodyPolicySets(DaraModel):
         if self.policy_set_name is not None:
             result['PolicySetName'] = self.policy_set_name
 
+        if self.source_platform is not None:
+            result['SourcePlatform'] = self.source_platform
+
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
@@ -127,6 +132,9 @@ class ListPolicySetsResponseBodyPolicySets(DaraModel):
 
         if m.get('PolicySetName') is not None:
             self.policy_set_name = m.get('PolicySetName')
+
+        if m.get('SourcePlatform') is not None:
+            self.source_platform = m.get('SourcePlatform')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')

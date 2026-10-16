@@ -10,7 +10,9 @@ class GetUserPoolSyncJobRequest(DaraModel):
         synchronization_job_id: str = None,
         user_pool_name: str = None,
     ):
+        # The ID of the synchronization task.
         self.synchronization_job_id = synchronization_job_id
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

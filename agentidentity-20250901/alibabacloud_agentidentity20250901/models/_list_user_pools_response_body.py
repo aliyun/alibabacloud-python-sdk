@@ -16,10 +16,15 @@ class ListUserPoolsResponseBody(DaraModel):
         total_count: int = None,
         user_pools: List[main_models.ListUserPoolsResponseBodyUserPools] = None,
     ):
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
+        # The token used to query the next page of data. An empty value indicates that no more data is available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of user pools that meet the conditions.
         self.total_count = total_count
+        # The list of user pools.
         self.user_pools = user_pools
 
     def validate(self):
@@ -86,13 +91,21 @@ class ListUserPoolsResponseBodyUserPools(DaraModel):
         user_pool_id: str = None,
         user_pool_name: str = None,
     ):
+        # The creation time in ISO 8601 format (UTC).
         self.create_time = create_time
+        # The description of the user pool.
         self.description = description
+        # The OpenID Connect (OIDC) discovery URL.
         self.oidcdiscovery_url = oidcdiscovery_url
+        # The base sign-in URL.
         self.signin_base_url = signin_base_url
+        # The creation source.
         self.source_platform = source_platform
+        # The update time in ISO 8601 format (UTC).
         self.update_time = update_time
+        # The ID of the user pool.
         self.user_pool_id = user_pool_id
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

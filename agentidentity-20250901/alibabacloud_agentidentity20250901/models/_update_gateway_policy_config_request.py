@@ -11,8 +11,16 @@ class UpdateGatewayPolicyConfigRequest(DaraModel):
         gateway_arn: str = None,
         gateway_type: str = None,
     ):
+        # The policy enforcement mode. Valid values:
+        # - ENFORCE: Intercepts non-compliant requests and allows compliant requests.
+        # - LOG_ONLY: Only logs non-compliant requests without intercepting them.
         self.enforcement_mode = enforcement_mode
+        # The ARN of the target gateway.
         self.gateway_arn = gateway_arn
+        # The gateway type. Valid values:
+        # - AIGateway: Alibaba Cloud AI gateway.
+        # - AgentRunMCP: AgentRun MCP tool.
+        # If you do not specify this parameter, the default value is AIGateway.
         self.gateway_type = gateway_type
 
     def validate(self):

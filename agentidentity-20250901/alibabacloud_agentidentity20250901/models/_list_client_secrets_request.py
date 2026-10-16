@@ -10,7 +10,9 @@ class ListClientSecretsRequest(DaraModel):
         client_name: str = None,
         user_pool_name: str = None,
     ):
+        # The client name.
         self.client_name = client_name
+        # The user pool name.
         self.user_pool_name = user_pool_name
 
     def validate(self):

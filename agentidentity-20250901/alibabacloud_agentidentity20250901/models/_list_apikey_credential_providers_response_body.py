@@ -16,10 +16,15 @@ class ListAPIKeyCredentialProvidersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of API key credential provider summaries.
         self.apikey_credential_providers = apikey_credential_providers
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The pagination token used to retrieve the next page of results. Leave this parameter empty for the first request. For subsequent requests, specify the NextToken value returned in the previous response.
         self.next_token = next_token
+        # The unique identifier of the request.
         self.request_id = request_id
+        # The total number of credential providers.
         self.total_count = total_count
 
     def validate(self):
@@ -85,12 +90,18 @@ class ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders(DaraMod
         token_vault_name: str = None,
         update_time: str = None,
     ):
+        # The name of the credential provider.
         self.apikey_credential_provider_name = apikey_credential_provider_name
+        # The creation time.
         self.create_time = create_time
+        # The ARN of the credential provider.
         self.credential_provider_arn = credential_provider_arn
+        # The description of the credential provider.
         self.description = description
         self.source_platform = source_platform
+        # The name of the TokenVault.
         self.token_vault_name = token_vault_name
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

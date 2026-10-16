@@ -12,9 +12,13 @@ class CreateTokenVaultShrinkRequest(DaraModel):
         role_arn: str = None,
         token_vault_name: str = None,
     ):
+        # The description of the token vault.
         self.description = description
+        # The encryption configuration of the token vault. The value is a JSON string.
         self.encryption_config_shrink = encryption_config_shrink
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role used to authorize the AgentIdentity service to access other cloud resources such as KMS.
         self.role_arn = role_arn
+        # The name of the token vault. The name must be unique within the current Alibaba Cloud account.
         self.token_vault_name = token_vault_name
 
     def validate(self):

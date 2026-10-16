@@ -12,9 +12,14 @@ class CreateRoleAssignmentRequest(DaraModel):
         role_name: str = None,
         user_pool_name: str = None,
     ):
+        # The name of the principal. When PrincipalType is set to User, specify the username.
         self.principal_name = principal_name
+        # The type of the principal. Valid values:
+        # - User: User. Only this value is currently supported.
         self.principal_type = principal_type
+        # The name of the role to assign.
         self.role_name = role_name
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

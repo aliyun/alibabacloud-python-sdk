@@ -12,9 +12,13 @@ class CreateAPIKeyCredentialProviderRequest(DaraModel):
         description: str = None,
         token_vault_name: str = None,
     ):
+        # The API key value to be securely stored.
         self.apikey = apikey
+        # The name of the credential provider.
         self.apikey_credential_provider_name = apikey_credential_provider_name
+        # The description of the credential provider.
         self.description = description
+        # The TokenVault name.
         self.token_vault_name = token_vault_name
 
     def validate(self):

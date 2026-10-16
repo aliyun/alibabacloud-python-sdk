@@ -11,7 +11,9 @@ class GetTokenVaultResponseBody(DaraModel):
         request_id: str = None,
         token_vault: main_models.GetTokenVaultResponseBodyTokenVault = None,
     ):
+        # The unique identifier of the request.
         self.request_id = request_id
+        # The details of the token vault.
         self.token_vault = token_vault
 
     def validate(self):
@@ -53,12 +55,19 @@ class GetTokenVaultResponseBodyTokenVault(DaraModel):
         token_vault_name: str = None,
         update_time: str = None,
     ):
+        # The creation time in UTC ISO 8601 format.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The encryption configuration of the token vault.
         self.encryption_config = encryption_config
+        # The ARN of the RAM role used to authorize the AgentIdentity service to access other cloud resources such as KMS.
         self.role_arn = role_arn
+        # The ARN of the token vault.
         self.token_vault_arn = token_vault_arn
+        # The name of the token vault. The name must be unique within the current Alibaba Cloud account.
         self.token_vault_name = token_vault_name
+        # The update time in UTC ISO 8601 format.
         self.update_time = update_time
 
     def validate(self):
@@ -125,7 +134,9 @@ class GetTokenVaultResponseBodyTokenVaultEncryptionConfig(DaraModel):
         key_type: str = None,
         kms_key_arn: str = None,
     ):
+        # The type of the encryption key. Valid values: SERVICE_MANAGED_KEY (service-managed key) and CUSTOMER_MANAGED_KEY (customer-managed KMS key).
         self.key_type = key_type
+        # The ARN of the KMS key used when KeyType is set to CUSTOMER_MANAGED_KEY.
         self.kms_key_arn = kms_key_arn
 
     def validate(self):

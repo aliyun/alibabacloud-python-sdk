@@ -11,8 +11,11 @@ class CreateClientSecretRequest(DaraModel):
         client_name: str = None,
         user_pool_name: str = None,
     ):
+        # The ID of the client. If you specify ClientId, you do not need to specify UserPoolName. Specify either ClientName or ClientId. If both are specified, ClientId takes precedence.
         self.client_id = client_id
+        # The name of the client. Specify either ClientName or ClientId.
         self.client_name = client_name
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

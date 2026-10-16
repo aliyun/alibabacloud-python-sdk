@@ -12,9 +12,13 @@ class SetUserPasswordRequest(DaraModel):
         user_name: str = None,
         user_pool_name: str = None,
     ):
+        # Specifies whether to generate a random password. If this parameter is set to true, the system automatically generates a random password that complies with the password policy. This parameter is mutually exclusive with Password.
         self.generate_random_password = generate_random_password
+        # The password of the user. The password must comply with the password policy of the user pool and is mutually exclusive with GenerateRandomPassword.
         self.password = password
+        # The username.
         self.user_name = user_name
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

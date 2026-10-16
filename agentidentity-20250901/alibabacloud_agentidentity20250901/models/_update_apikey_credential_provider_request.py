@@ -12,9 +12,13 @@ class UpdateAPIKeyCredentialProviderRequest(DaraModel):
         description: str = None,
         token_vault_name: str = None,
     ):
+        # The new API key value.
         self.apikey = apikey
+        # The name of the credential provider to update.
         self.apikey_credential_provider_name = apikey_credential_provider_name
+        # The new description of the credential provider.
         self.description = description
+        # The name of the token vault. Default value: default.
         self.token_vault_name = token_vault_name
 
     def validate(self):

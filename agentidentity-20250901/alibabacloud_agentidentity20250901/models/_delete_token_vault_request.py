@@ -9,6 +9,7 @@ class DeleteTokenVaultRequest(DaraModel):
         self,
         token_vault_name: str = None,
     ):
+        # The name of the token vault. The name must be unique within the current Alibaba Cloud account.
         self.token_vault_name = token_vault_name
 
     def validate(self):

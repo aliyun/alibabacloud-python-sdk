@@ -12,7 +12,9 @@ class UpdateLoginPreferenceShrinkRequest(DaraModel):
         user_pool_name: str = None,
     ):
         self.allowed_post_logout_redirect_uris_shrink = allowed_post_logout_redirect_uris_shrink
+        # The logon preference configuration object. It contains the logon configuration fields to be updated.
         self.login_preference_shrink = login_preference_shrink
+        # The name of the user pool.
         self.user_pool_name = user_pool_name
 
     def validate(self):

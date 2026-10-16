@@ -10,7 +10,11 @@ class ListWorkloadIdentitiesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The pagination token. Used to request the next page of results.
+        # - Leave this parameter empty for the first request.
+        # - Pass the NextToken value returned in the previous response for subsequent requests.
         self.next_token = next_token
 
     def validate(self):

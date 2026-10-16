@@ -10,7 +10,9 @@ class ListUserPoolsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The maximum number of entries to return per page. Valid values: 1 to 1000. Default value: 100.
         self.max_results = max_results
+        # The token used to query the next page of data. You do not need to specify this parameter for the first call. If a NextToken is returned in the response of the previous call, specify it in the current call to obtain the next page.
         self.next_token = next_token
 
     def validate(self):

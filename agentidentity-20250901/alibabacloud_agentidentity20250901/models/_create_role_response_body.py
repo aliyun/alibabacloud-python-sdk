@@ -11,7 +11,9 @@ class CreateRoleResponseBody(DaraModel):
         request_id: str = None,
         role: main_models.CreateRoleResponseBodyRole = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The role information.
         self.role = role
 
     def validate(self):
@@ -52,11 +54,19 @@ class CreateRoleResponseBodyRole(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The time when the role was created. The time is displayed in ISO 8601 format (UTC).
         self.create_time = create_time
+        # The description of the role.
         self.description = description
+        # The ID of the role.
         self.role_id = role_id
+        # The name of the role.
         self.role_name = role_name
+        # The type of the role. Valid values:
+        # - Default: the default role that is automatically provisioned when the user pool is created
+        # - Manual: a custom role that is manually created by calling an API operation
         self.type = type
+        # The time when the role was updated. The time is displayed in ISO 8601 format (UTC).
         self.update_time = update_time
 
     def validate(self):

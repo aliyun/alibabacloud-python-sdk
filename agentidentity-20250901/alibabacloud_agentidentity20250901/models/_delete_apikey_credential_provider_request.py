@@ -10,7 +10,9 @@ class DeleteAPIKeyCredentialProviderRequest(DaraModel):
         apikey_credential_provider_name: str = None,
         token_vault_name: str = None,
     ):
+        # The name of the credential provider.
         self.apikey_credential_provider_name = apikey_credential_provider_name
+        # The name of the TokenVault.
         self.token_vault_name = token_vault_name
 
     def validate(self):

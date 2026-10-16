@@ -9,6 +9,7 @@ class DeletePolicySetRequest(DaraModel):
         self,
         policy_set_name: str = None,
     ):
+        # The name of the policy set. The name must be unique within the current Alibaba Cloud account.
         self.policy_set_name = policy_set_name
 
     def validate(self):

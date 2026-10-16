@@ -16,10 +16,15 @@ class ListWorkloadIdentitiesResponseBody(DaraModel):
         total_count: int = None,
         workload_identities: List[main_models.ListWorkloadIdentitiesResponseBodyWorkloadIdentities] = None,
     ):
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The pagination token used to retrieve the next page of results. This field is not returned if no more results are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of workload identities.
         self.total_count = total_count
+        # The list of workload identities.
         self.workload_identities = workload_identities
 
     def validate(self):
@@ -90,17 +95,29 @@ class ListWorkloadIdentitiesResponseBodyWorkloadIdentities(DaraModel):
         workload_identity_arn: str = None,
         workload_identity_name: str = None,
     ):
+        # The whitelist of consent authorization callback URLs for the workload identity. This whitelist restricts the allowed callback addresses in the offline delegation (OfflineAccess) authorization flow.
         self.allowed_consent_callback_urls = allowed_consent_callback_urls
+        # The list of allowed OAuth2 return URLs.
         self.allowed_resource_oauth2_return_urls = allowed_resource_oauth2_return_urls
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The configured identity provider.
         self.identity_provider_name = identity_provider_name
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # Specifies whether session binding is enabled.
         self.session_binding_enabled = session_binding_enabled
+        # The ARN of the source agent.
         self.source_agent_arn = source_agent_arn
+        # The creation source.
         self.source_platform = source_platform
+        # The update time.
         self.update_time = update_time
+        # The ARN of the workload identity.
         self.workload_identity_arn = workload_identity_arn
+        # The unique name of the workload identity.
         self.workload_identity_name = workload_identity_name
 
     def validate(self):

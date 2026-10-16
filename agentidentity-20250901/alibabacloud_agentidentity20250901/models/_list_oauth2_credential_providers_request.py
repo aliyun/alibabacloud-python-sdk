@@ -11,8 +11,14 @@ class ListOAuth2CredentialProvidersRequest(DaraModel):
         next_token: str = None,
         token_vault_name: str = None,
     ):
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The pagination token used to retrieve the next page of results.
+        # 
+        # Leave this parameter empty for the first request.
+        # For subsequent requests, specify the NextToken value returned in the previous response.
         self.next_token = next_token
+        # The name of the TokenVault.
         self.token_vault_name = token_vault_name
 
     def validate(self):
