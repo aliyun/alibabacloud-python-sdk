@@ -6057,6 +6057,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListResourcesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.count):
+            query['Count'] = request.count
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -6099,6 +6101,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListResourcesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.count):
+            query['Count'] = request.count
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

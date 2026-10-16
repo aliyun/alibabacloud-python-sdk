@@ -13,7 +13,7 @@ class GetRoleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the role.
+        # The role information.
         self.role = role
 
     def validate(self):
@@ -59,17 +59,17 @@ class GetRoleResponseBodyRole(DaraModel):
         role_principal_name: str = None,
         update_date: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the role.
+        # The resource descriptor of the role.
         self.arn = arn
-        # The document of the policy in which the identity that can assume the role is specified.
+        # The content of the access policy that specifies one or more entities entrusted to assume the role.
         self.assume_role_policy_document = assume_role_policy_document
-        # The time when the role was created.
+        # The time when the role was created. The time is in RFC 3339 UTC format, indicated by Z.
         self.create_date = create_date
         # The description of the role.
         self.description = description
         # Indicates whether the role is a service-linked role.
         self.is_service_linked_role = is_service_linked_role
-        # The information of the most recent deletion task.
+        # The information about the most recent deletion task.
         self.latest_deletion_task = latest_deletion_task
         # The maximum session duration of the role.
         self.max_session_duration = max_session_duration
@@ -77,9 +77,9 @@ class GetRoleResponseBodyRole(DaraModel):
         self.role_id = role_id
         # The name of the role.
         self.role_name = role_name
-        # The name of the role after authorization.
+        # The name of the authorized role.
         self.role_principal_name = role_principal_name
-        # The time when the role was updated.
+        # The time when the role was last updated. The time is in RFC 3339 UTC format, indicated by Z.
         self.update_date = update_date
 
     def validate(self):
@@ -170,7 +170,7 @@ class GetRoleResponseBodyRoleLatestDeletionTask(DaraModel):
         create_date: str = None,
         deletion_task_id: str = None,
     ):
-        # The time when the deletion task was created.
+        # The time when the deletion task was created. The time is in RFC 3339 UTC format, indicated by Z.
         self.create_date = create_date
         # The ID of the deletion task.
         self.deletion_task_id = deletion_task_id

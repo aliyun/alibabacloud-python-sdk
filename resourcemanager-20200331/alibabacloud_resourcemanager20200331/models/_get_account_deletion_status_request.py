@@ -9,7 +9,7 @@ class GetAccountDeletionStatusRequest(DaraModel):
         self,
         account_id: str = None,
     ):
-        # The Alibaba Cloud account ID of the member.
+        # The ID of the member account.
         # 
         # This parameter is required.
         self.account_id = account_id

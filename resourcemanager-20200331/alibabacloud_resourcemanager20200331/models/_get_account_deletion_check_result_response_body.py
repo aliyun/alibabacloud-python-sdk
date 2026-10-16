@@ -13,9 +13,9 @@ class GetAccountDeletionCheckResultResponseBody(DaraModel):
         account_deletion_check_result_info: main_models.GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo = None,
         request_id: str = None,
     ):
-        # The result of the deletion check for the member.
+        # The result of the member deletion check.
         self.account_deletion_check_result_info = account_deletion_check_result_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,23 +54,21 @@ class GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo(Da
         not_allow_reason: List[main_models.GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason] = None,
         status: str = None,
     ):
-        # The check items that you can choose to ignore for the member deletion.
+        # The check items that you can choose to abandon and proceed with the member deletion.
         # 
-        # >  This parameter may be returned if the value of AllowDelete is true.
+        # > This parameter may be returned when AllowDelete is set to true.
         self.abandonable_checks = abandonable_checks
-        # Indicates whether the member can be deleted. Valid values:
-        # 
-        # *   true: The member can be deleted.
-        # *   false: The member cannot be deleted.
+        # Indicates whether the member account can be deleted. Valid values:
+        # - true: The member account can be deleted.
+        # - false: The member account cannot be deleted.
         self.allow_delete = allow_delete
-        # The reasons why the member cannot be deleted.
-        # 
-        # >  This parameter is returned only if the value of AllowDelete is false.
+        # The reasons why the member account cannot be deleted.
+        # > This parameter is returned only when AllowDelete is set to false.
         self.not_allow_reason = not_allow_reason
-        # The status of the check. Valid values:
+        # The check status. Valid values:
         # 
-        # *   PreCheckComplete: The check is complete.
-        # *   PreChecking: The check is in progress.
+        # - PreCheckComplete: The check is complete.
+        # - PreChecking: The check is in progress.
         self.status = status
 
     def validate(self):
@@ -137,7 +135,7 @@ class GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNot
     ):
         # The ID of the check item.
         self.check_id = check_id
-        # The name of the cloud service to which the check item belongs.
+        # The service name of the cloud service to which the check item belongs.
         self.check_name = check_name
         # The description of the check item.
         self.description = description
@@ -183,7 +181,7 @@ class GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAba
     ):
         # The ID of the check item.
         self.check_id = check_id
-        # The name of the cloud service to which the check item belongs.
+        # The service name of the cloud service to which the check item belongs.
         self.check_name = check_name
         # The description of the check item.
         self.description = description

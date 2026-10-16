@@ -19,25 +19,25 @@ class LookupResourceGroupEventsRequest(DaraModel):
         resource_group_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. The time is displayed in UTC.
+        # The end time of the event. The format is YYYY-MM-DD HH:mm:ss and does not include a time zone identifier.
         self.end_time = end_time
         # The event type.
         # 
         # This parameter is required.
         self.event_category = event_category
-        # The attributes used for advanced search.
+        # The lookup attributes.
         self.lookup_attributes = lookup_attributes
         # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token for the next query.
         self.next_token = next_token
         # The resource group name.
         self.resource_group_display_name = resource_group_display_name
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query. The time is displayed in UTC.
+        # The start time of the event. The format is YYYY-MM-DD HH:mm:ss and does not include a time zone identifier.
         self.start_time = start_time
 
     def validate(self):
@@ -116,9 +116,9 @@ class LookupResourceGroupEventsRequestLookupAttributes(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the attribute.
+        # The key of the lookup attribute.
         self.key = key
-        # The value of the attribute.
+        # The value of the lookup attribute.
         self.value = value
 
     def validate(self):

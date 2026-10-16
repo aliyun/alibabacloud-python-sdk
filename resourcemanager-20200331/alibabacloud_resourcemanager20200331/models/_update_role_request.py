@@ -16,17 +16,17 @@ class UpdateRoleRequest(DaraModel):
         self.new_assume_role_policy_document = new_assume_role_policy_document
         # The description of the RAM role.
         # 
-        # The description must be 1 to 1,024 characters in length.
+        # The description must be 1 to 1024 characters in length.
         self.new_description = new_description
-        # The maximum session time of the RAM role.
+        # The maximum session duration of the RAM role.
         # 
         # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
         # 
-        # If you do not specify this parameter, the default value is used.
+        # If this parameter is left empty, the default value is used.
         self.new_max_session_duration = new_max_session_duration
         # The name of the RAM role.
         # 
-        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.role_name = role_name

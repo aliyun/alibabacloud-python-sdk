@@ -16,38 +16,38 @@ class ListPolicyAttachmentsRequest(DaraModel):
         principal_type: str = None,
         resource_group_id: str = None,
     ):
-        # The language in which you want to return the description of the system policy. Valid values:
+        # The language type. The description of the system access policy is returned in the specified language.
         # 
-        # *   en: English
-        # *   zh-CN: Chinese
-        # *   ja: Japanese
+        # - en: English.
+        # - zh-CN: Chinese.
+        # - ja: Japanese.
         self.language = language
         # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The name of the permission policy.
+        # Policy Name of the access policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
+        # Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         self.policy_name = policy_name
-        # The type of the permission policy. If you do not configure this parameter, all types of policies are returned. Valid values:
+        # The type of the access policy. If this parameter is left empty, all types of access policies are listed.
         # 
-        # *   Custom
-        # *   System
+        # - Custom: custom policy.
+        # - System: system policy.
         self.policy_type = policy_type
-        # The name of the object to which you want to attach the permission policy.
+        # The name of the principal.
         self.principal_name = principal_name
-        # The type of the object to which you want to attach the permission policy. If you do not configure this parameter, the system lists all types of objects. Valid values:
+        # The authorization object type. If this parameter is left empty, all types of authorization objects are listed.
         # 
-        # *   IMSUser: RAM user
-        # *   IMSGroup: RAM user group
-        # *   ServiceRole: RAM role
+        # - IMSUser: Resource Access Management (RAM) user.
+        # - IMSGroup: RAM user group.
+        # - ServiceRole: RAM role.
         self.principal_type = principal_type
-        # The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not configure this parameter, the system lists all policy attachment records within the current account.
+        # The ID of the resource group or the Alibaba Cloud account ID to which the resource group belongs. If this parameter is left empty, all authorization records under the current account are listed.
         self.resource_group_id = resource_group_id
 
     def validate(self):

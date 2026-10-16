@@ -11,9 +11,9 @@ class UpdateAccountResponseBody(DaraModel):
         account: main_models.UpdateAccountResponseBodyAccount = None,
         request_id: str = None,
     ):
-        # The information of the member.
+        # The member information.
         self.account = account
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,36 +58,36 @@ class UpdateAccountResponseBodyAccount(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The ID of the Alibaba Cloud account that corresponds to the member.
+        # The ID of the member.
         self.account_id = account_id
-        # The name of the Alibaba Cloud account that corresponds to the member.
+        # The name of the Alibaba Cloud account.
         self.account_name = account_name
-        # The display name of the member.
+        # The name of the member.
         self.display_name = display_name
         # The ID of the folder.
         self.folder_id = folder_id
-        # The way in which the member joins the resource directory. Valid values:
+        # The method used by the member to join the resource directory. Valid values:
         # 
-        # *   invited: The member is invited to join the resource directory.
-        # *   created: The member is directly created in the resource directory.
+        # - invited: invited.
+        # - created: created.
         self.join_method = join_method
-        # The time when the member joined the resource directory. The time is displayed in UTC.
+        # The time when the member joined the resource directory (UTC).
         self.join_time = join_time
-        # The time when the member was modified. The time is displayed in UTC.
+        # The time when the member was last modified (UTC).
         self.modify_time = modify_time
         # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id
-        # The status of the member. Valid values:
+        # The join status of the member. Valid values:
         # 
-        # *   CreateSuccess: The member is created.
-        # *   InviteSuccess: The member accepts the invitation.
-        # *   Removed: The member is removed.
-        # *   SwitchSuccess: The type of the member is switched.
+        # - CreateSuccess: Created.
+        # - InviteSuccess: Invited.
+        # - Removed: Removed.
+        # - SwitchSuccess: Switched.
         self.status = status
         # The type of the member. Valid values:
         # 
-        # *   CloudAccount: cloud account
-        # *   ResourceAccount: resource account
+        # - CloudAccount: cloud account.
+        # - ResourceAccount: resource account.
         self.type = type
 
     def validate(self):

@@ -10,15 +10,15 @@ class AttachControlPolicyRequest(DaraModel):
         policy_id: str = None,
         target_id: str = None,
     ):
-        # The ID of the access control policy.
+        # The ID of the control policy.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The ID of the object to which you want to attach the access control policy. Access control policies can be attached to the following objects:
+        # The target node. Valid values:
         # 
-        # *   Root folder
-        # *   Subfolders of the Root folder
-        # *   Members
+        # - Root ID: attaches the control policy to the Root resource folder.
+        # - Resource folder ID: attaches the control policy to a resource folder.
+        # - Member ID: attaches the control policy to a member.
         # 
         # This parameter is required.
         self.target_id = target_id

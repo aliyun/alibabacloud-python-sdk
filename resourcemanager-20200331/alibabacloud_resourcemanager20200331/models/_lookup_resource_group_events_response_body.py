@@ -14,9 +14,9 @@ class LookupResourceGroupEventsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The queried events.
+        # The list of events.
         self.events = events
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -75,9 +75,9 @@ class LookupResourceGroupEventsResponseBodyEvents(DaraModel):
         source_resource_group_info: main_models.LookupResourceGroupEventsResponseBodyEventsSourceResourceGroupInfo = None,
         target_resource_group_info: main_models.LookupResourceGroupEventsResponseBodyEventsTargetResourceGroupInfo = None,
     ):
-        # The type of the resource change event.
+        # The change type of the event.
         self.change_type = change_type
-        # The time when the event was triggered.
+        # The event time in RFC 3339 UTC format, indicated by Z for UTC.
         self.event_time = event_time
         # The region ID.
         self.region_id = region_id
@@ -89,15 +89,15 @@ class LookupResourceGroupEventsResponseBodyEvents(DaraModel):
         self.resource_id = resource_id
         # The resource type.
         # 
-        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the value from the **Resource Type** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.resource_type = resource_type
-        # The service code.
+        # The cloud service code.
         # 
-        # You can obtain the code from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the value from the **Cloud Service Code** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.service = service
         # The source resource group.
         self.source_resource_group_info = source_resource_group_info
-        # The destination resource group.
+        # The target resource group.
         self.target_resource_group_info = target_resource_group_info
 
     def validate(self):

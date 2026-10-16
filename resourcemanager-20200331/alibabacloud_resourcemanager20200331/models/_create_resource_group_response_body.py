@@ -15,7 +15,7 @@ class CreateResourceGroupResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information of the resource group.
+        # The resource group information.
         self.resource_group = resource_group
 
     def validate(self):
@@ -57,22 +57,20 @@ class CreateResourceGroupResponseBodyResourceGroup(DaraModel):
         region_statuses: main_models.CreateResourceGroupResponseBodyResourceGroupRegionStatuses = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource group belongs.
+        # The Alibaba Cloud account ID to which the resource group belongs.
         self.account_id = account_id
-        # The time when the resource group was created. The time is displayed in UTC.
+        # The time when the resource group was created (UTC).
         self.create_date = create_date
         # The display name of the resource group.
         self.display_name = display_name
-        # The ID of the resource group.
+        # The resource group ID.
         self.id = id
         # The unique identifier of the resource group.
         self.name = name
-        # The status of the resource group in all regions.
         self.region_statuses = region_statuses
         # The status of the resource group. Valid values:
-        # 
-        # *   Creating: The resource group is being created.
-        # *   OK: The resource group is created.
+        # - Creating: Being created.
+        # - OK: Created.
         self.status = status
 
     def validate(self):
@@ -174,12 +172,7 @@ class CreateResourceGroupResponseBodyResourceGroupRegionStatusesRegionStatus(Dar
         region_id: str = None,
         status: str = None,
     ):
-        # The region ID.
         self.region_id = region_id
-        # The status of the resource group. Valid values:
-        # 
-        # *   Creating: The resource group is being created.
-        # *   OK: The resource group is created.
         self.status = status
 
     def validate(self):

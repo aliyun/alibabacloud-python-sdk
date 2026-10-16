@@ -10,15 +10,15 @@ class GetRoleRequest(DaraModel):
         language: str = None,
         role_name: str = None,
     ):
-        # The language in which you want to return the description of the role. Valid values:
+        # The language type. The role description is returned in the specified language. Valid values:
         # 
-        # *   en: English
-        # *   zh-CN: Chinese
-        # *   ja: Japanese
+        # - en: English.
+        # - zh-CN: Chinese.
+        # - ja: Japanese.
         self.language = language
-        # The name of the role.
+        # The role name.
         # 
-        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.role_name = role_name

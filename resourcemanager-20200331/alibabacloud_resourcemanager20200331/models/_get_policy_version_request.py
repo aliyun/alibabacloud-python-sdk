@@ -11,20 +11,20 @@ class GetPolicyVersionRequest(DaraModel):
         policy_type: str = None,
         version_id: str = None,
     ):
-        # The name of the permission policy.
+        # Policy Name of the access policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
+        # Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The type of the permission policy. Valid values:
+        # The type of the access policy. Valid values:
         # 
-        # *   Custom
-        # *   System
+        # - Custom: custom policy.
+        # - System: system policy.
         # 
         # This parameter is required.
         self.policy_type = policy_type
-        # The ID of the policy version.
+        # The ID of the access policy version.
         # 
         # This parameter is required.
         self.version_id = version_id

@@ -16,20 +16,24 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
         # The token that is used to start the next query.
         self.next_token = next_token
-        # The resource ID.
-        self.resource_id = resource_id
-        # The type of the objects whose tags you want to query. This parameter specifies a filter condition for the query. Valid values:
+        # The resource group ID or resource directory member ID. This parameter is used as a filter condition.
         # 
-        # *   ResourceGroup: resource group. This is the default value.
-        # *   Account: member.
+        # > To query the tags that are attached to a resource directory member, you must specify both `ResourceId` and `ResourceType`, and set `ResourceType` to `Account`.
+        self.resource_id = resource_id
+        # The resource type. This parameter is used as a filter condition. Valid values:
+        # 
+        # - ResourceGroup (default): queries the tags of a resource group.
+        # - Account: queries the tags of a resource directory member.
         self.resource_type = resource_type
-        # The tag key and value.
+        # The tags. This parameter is used as a filter condition.
+        # 
+        # You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -90,9 +94,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # A tag key.
+        # The tag key.
         self.key = key
-        # A tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

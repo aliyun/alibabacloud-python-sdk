@@ -9,7 +9,7 @@ class DeleteFolderRequest(DaraModel):
         self,
         folder_id: str = None,
     ):
-        # The ID of the folder.
+        # The folder ID.
         # 
         # This parameter is required.
         self.folder_id = folder_id

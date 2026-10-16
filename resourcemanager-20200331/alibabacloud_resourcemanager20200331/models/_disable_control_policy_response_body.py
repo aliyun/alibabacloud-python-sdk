@@ -10,14 +10,14 @@ class DisableControlPolicyResponseBody(DaraModel):
         enablement_status: str = None,
         request_id: str = None,
     ):
-        # The status of the Control Policy feature. Valid values:
+        # The status of the control policy feature. Valid values:
         # 
-        # *   Enabled: The Control Policy feature is enabled.
-        # *   PendingEnable: The Control Policy feature is being enabled.
-        # *   Disabled: The Control Policy feature is disabled.
-        # *   PendingDisable: The Control Policy feature is being disabled.
+        # - Enabled: The control policy feature is enabled.
+        # - PendingEnable: The control policy feature is being enabled.
+        # - Disabled: The control policy feature is disabled.
+        # - PendingDisable: The control policy feature is being disabled.
         self.enablement_status = enablement_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

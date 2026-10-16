@@ -13,12 +13,12 @@ class UpdateAssociatedTransferSettingRequest(DaraModel):
         enable_existing_resources_transfer: str = None,
         rule_settings: List[main_models.UpdateAssociatedTransferSettingRequestRuleSettings] = None,
     ):
-        # Specifies whether to enable the Transfer Existing Associated Resources feature. Valid values:
+        # Specifies whether to start the task for transferring existing associated resources to the resource group. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false: Does not start the task for transferring existing associated resources to the resource group.
+        # - true: Starts the task for transferring existing associated resources to the resource group.
         self.enable_existing_resources_transfer = enable_existing_resources_transfer
-        # The settings of transfer rules.
+        # The rule settings of the associated resource group transfer feature.
         self.rule_settings = rule_settings
 
     def validate(self):
@@ -64,26 +64,26 @@ class UpdateAssociatedTransferSettingRequestRuleSettings(DaraModel):
         master_service: str = None,
         status: str = None,
     ):
-        # The type of the associated resource.
+        # The resource type of the associated resource.
         # 
-        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the resource type from the **Resource Type** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.associated_resource_type = associated_resource_type
-        # The service code of the associated resource.
+        # The cloud service code of the associated resource.
         # 
-        # You can obtain the service code from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the cloud service code from the **Cloud Service Code** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.associated_service = associated_service
-        # The type of the primary resource.
+        # The resource type of the master resource.
         # 
-        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the resource type from the **Resource Type** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.master_resource_type = master_resource_type
-        # The service code of the primary resource.
+        # The cloud service code of the master resource.
         # 
-        # You can obtain the service code from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the cloud service code from the **Cloud Service Code** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.master_service = master_service
-        # The status of the Transfer Associated Resources feature. Valid values:
+        # The enabling status of the associated resource group transfer feature. Valid values:
         # 
-        # *   Enable: enabled
-        # *   Disable: disabled
+        # - Enable: Enabled.
+        # - Disable: Disabled.
         # 
         # This parameter is required.
         self.status = status

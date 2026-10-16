@@ -17,17 +17,17 @@ class ListResourceGroupsWithAuthDetailsResponseBody(DaraModel):
         resource_groups: List[main_models.ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups] = None,
         total_count: int = None,
     ):
-        # The authorization details for resource groups.
+        # The list of authorization details for resource groups.
         self.auth_details = auth_details
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The response parameters.
+        # The request ID.
         self.request_id = request_id
-        # The information of the resource groups.
+        # The list of resource groups.
         self.resource_groups = resource_groups
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -108,23 +108,22 @@ class ListResourceGroupsWithAuthDetailsResponseBodyResourceGroups(DaraModel):
         status: str = None,
         tags: List[main_models.ListResourceGroupsWithAuthDetailsResponseBodyResourceGroupsTags] = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource group belongs.
+        # The Alibaba Cloud account ID to which the resource group belongs.
         self.account_id = account_id
-        # The time when the resource group was created. The time is displayed in UTC.
+        # The time when the resource group was created (UTC).
         self.create_date = create_date
         # The display name of the resource group.
         self.display_name = display_name
-        # The ID of your Alibaba Cloud resource group.
+        # The resource group ID.
         self.id = id
         # The unique identifier of the resource group.
         self.name = name
         # The status of the resource group. Valid values:
-        # 
-        # *   Creating: The resource group is being created.
-        # *   OK: The resource group is created.
-        # *   PendingDelete: The resource group is waiting to be deleted.
+        # - Creating: Being created.
+        # - OK: Created.
+        # - PendingDelete: Pending deletion.
         self.status = status
-        # The tags.
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -236,17 +235,17 @@ class ListResourceGroupsWithAuthDetailsResponseBodyAuthDetails(DaraModel):
         resource_type: str = None,
         service: str = None,
     ):
-        # Indicates whether the user has account-level authorization for this resource type.
+        # Indicates whether the user has account-level authorization for the resource type.
         self.account_scope_auth = account_scope_auth
-        # The permission details for the resource groups on the specified resource types.
+        # The permissions of resource groups on the resource type.
         self.auth_of_resource_groups = auth_of_resource_groups
         # The resource type.
         # 
-        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the resource type from the **Resource Type** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.resource_type = resource_type
-        # The ID of the Alibaba Cloud service.
+        # The cloud service ID.
         # 
-        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the cloud service ID from the **Cloud Service Code** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.service = service
 
     def validate(self):
@@ -301,7 +300,7 @@ class ListResourceGroupsWithAuthDetailsResponseBodyAuthDetailsAuthOfResourceGrou
         has_permission: bool = None,
         resource_group_id: str = None,
     ):
-        # Indicates whether the user has permissions on the resource group for the specified resource type.
+        # Indicates whether the resource group has permissions.
         self.has_permission = has_permission
         # The resource group ID.
         self.resource_group_id = resource_group_id

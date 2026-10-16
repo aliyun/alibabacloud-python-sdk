@@ -11,9 +11,9 @@ class GetFolderResponseBody(DaraModel):
         folder: main_models.GetFolderResponseBodyFolder = None,
         request_id: str = None,
     ):
-        # The information of the folder.
+        # The folder information.
         self.folder = folder
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,15 +53,15 @@ class GetFolderResponseBodyFolder(DaraModel):
         parent_folder_id: str = None,
         resource_directory_path: str = None,
     ):
-        # The time when the folder was created.
+        # The time when the folder was created. The time is displayed in UTC in RFC 3339 format, indicated by Z.
         self.create_time = create_time
-        # The ID of the folder.
+        # The folder ID.
         self.folder_id = folder_id
         # The name of the folder.
         self.folder_name = folder_name
         # The ID of the parent folder.
         self.parent_folder_id = parent_folder_id
-        # The path of the folder in the resource directory.
+        # The path ID (RDPath) of the folder in the resource directory.
         self.resource_directory_path = resource_directory_path
 
     def validate(self):

@@ -11,9 +11,9 @@ class ResendCreateCloudAccountEmailResponseBody(DaraModel):
         account: main_models.ResendCreateCloudAccountEmailResponseBodyAccount = None,
         request_id: str = None,
     ):
-        # The information of the member account.
+        # The member account information.
         self.account = account
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,43 +59,43 @@ class ResendCreateCloudAccountEmailResponseBodyAccount(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The ID of the account.
+        # The account ID.
         self.account_id = account_id
-        # The name of the account.
+        # The account name.
         self.account_name = account_name
         # The display name of the member account.
         self.display_name = display_name
-        # The ID of the folder.
+        # The ID of the resource folder.
         self.folder_id = folder_id
-        # The way in which the member account joined the resource directory. Valid values:
+        # The method used by the member account to join the resource directory. Valid values:
         # 
-        # *   invited: The member account is invited to join the resource directory.
-        # *   created: The member account is directly created in the resource directory.
+        # - invited: Invited.
+        # - created: Created.
         self.join_method = join_method
-        # The time when the member account joined the resource directory.
+        # The time when the member account joined the resource directory. The time is displayed in UTC, as specified by RFC 3339, with Z indicating UTC.
         self.join_time = join_time
-        # The time when the member account was modified.
+        # The time when the member account was last modified. The time is displayed in UTC, as specified by RFC 3339, with Z indicating UTC.
         self.modify_time = modify_time
         # The account record ID.
         self.record_id = record_id
         # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id
-        # The status of the member account. Valid values:
+        # The join status of the member account. Valid values:
         # 
-        # *   CreateSuccess: The member account is created.
-        # *   CreateVerifying: The creation of the member account is under confirmation.
-        # *   CreateFailed: The member account failed to be created.
-        # *   CreateExpired: The creation of the member account expired.
-        # *   CreateCancelled: The creation of the member account is canceled.
-        # *   PromoteVerifying: The upgrade of the member account is under confirmation.
-        # *   PromoteFailed: The member account failed to be upgraded.
-        # *   PromoteExpired: The upgrade of the member account expired.
-        # *   PromoteCancelled: The upgrade of the member account is canceled.
-        # *   PromoteSuccess: The member account is upgraded.
-        # *   InviteSuccess: The owner of the member account accepted the invitation.
-        # *   Removed: The member account is removed from the resource directory.
+        # - CreateSuccess: Created.
+        # - CreateVerifying: Pending creation confirmation.
+        # - CreateFailed: Creation failed.
+        # - CreateExpired: Creation expired.
+        # - CreateCancelled: Creation canceled.
+        # - PromoteVerifying: Pending upgrade confirmation.
+        # - PromoteFailed: Upgrade failed.
+        # - PromoteExpired: Upgrade expired.
+        # - PromoteCancelled: Upgrade canceled.
+        # - PromoteSuccess: Upgraded.
+        # - InviteSuccess: Invited.
+        # - Removed: Removed.
         self.status = status
-        # The type of the member account. The value CloudAccount indicates that the member account is a cloud account.
+        # The type of the member account. The value CloudAccount indicates a cloud account.
         self.type = type
 
     def validate(self):

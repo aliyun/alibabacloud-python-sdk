@@ -16,14 +16,14 @@ class ListTargetAttachmentsForControlPolicyResponseBody(DaraModel):
         target_attachments: main_models.ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.target_attachments = target_attachments
-        # The total number of objects to which the control policy is attached.
+        # The number of target nodes to which the control policy is attached.
         self.total_count = total_count
 
     def validate(self):

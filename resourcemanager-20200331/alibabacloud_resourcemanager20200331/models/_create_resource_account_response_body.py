@@ -11,7 +11,7 @@ class CreateResourceAccountResponseBody(DaraModel):
         account: main_models.CreateResourceAccountResponseBodyAccount = None,
         request_id: str = None,
     ):
-        # The information about the member.
+        # The member information.
         self.account = account
         # The request ID.
         self.request_id = request_id
@@ -60,26 +60,26 @@ class CreateResourceAccountResponseBodyAccount(DaraModel):
     ):
         # The ID of the member.
         self.account_id = account_id
-        # The Alibaba Cloud account ID of the member.
+        # The name of the account.
         self.account_name = account_name
         # The display name of the member.
         self.display_name = display_name
         # The ID of the folder.
         self.folder_id = folder_id
-        # The way in which the member joins the resource directory. Valid values:
+        # The method used by the member to join the resource directory. Valid values:
         # 
-        # *   invited: The member is invited to join the resource directory.
-        # *   created: The member is directly created in the resource directory.
+        # - invited: invited.
+        # - created: created.
         self.join_method = join_method
-        # The time when the member joined the resource directory. The time is displayed in UTC.
+        # The time when the member joined the resource directory (UTC).
         self.join_time = join_time
-        # The time when the member was modified. The time is displayed in UTC.
+        # The time when the member was last modified (UTC).
         self.modify_time = modify_time
         # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id
-        # The status of the member. The value CreateSuccess indicates that the member is created.
+        # The join status of the member. The value CreateSuccess indicates that the member is created.
         self.status = status
-        # The type of the member. The value ResourceAccount indicates that the member is a resource account.
+        # The type of the member. The value ResourceAccount indicates a resource account.
         self.type = type
 
     def validate(self):

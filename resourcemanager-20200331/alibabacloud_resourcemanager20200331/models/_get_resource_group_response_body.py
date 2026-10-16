@@ -13,9 +13,9 @@ class GetResourceGroupResponseBody(DaraModel):
         request_id: str = None,
         resource_group: main_models.GetResourceGroupResponseBodyResourceGroup = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the resource group.
+        # The resource group information.
         self.resource_group = resource_group
 
     def validate(self):
@@ -58,22 +58,22 @@ class GetResourceGroupResponseBodyResourceGroup(DaraModel):
         status: str = None,
         tags: main_models.GetResourceGroupResponseBodyResourceGroupTags = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource group belongs.
+        # The Alibaba Cloud account ID to which the resource group belongs.
         self.account_id = account_id
-        # The time when the resource group was created. The time is displayed in UTC.
+        # The time when the resource group was created (UTC).
         self.create_date = create_date
         # The display name of the resource group.
         self.display_name = display_name
-        # The ID of the resource group.
+        # The resource group ID.
         self.id = id
-        # The identifier of the resource group.
+        # The unique identifier of the resource group.
         self.name = name
         self.region_statuses = region_statuses
         # The status of the resource group. Valid values:
         # 
-        # *   Creating: The resource group is being created.
-        # *   OK: The resource group is created.
-        # *   PendingDelete: The resource group is waiting to be deleted.
+        # - Creating: The resource group is being created.
+        # - OK: The resource group is created.
+        # - PendingDelete: The resource group is waiting to be deleted.
         self.status = status
         self.tags = tags
 

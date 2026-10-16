@@ -9,7 +9,7 @@ class GetAccountDeletionCheckResultRequest(DaraModel):
         self,
         account_id: str = None,
     ):
-        # The ID of the member that you want to delete.
+        # The ID of the member account that you want to delete.
         # 
         # This parameter is required.
         self.account_id = account_id

@@ -13,9 +13,9 @@ class GetAccountDeletionStatusResponseBody(DaraModel):
         rd_account_deletion_status: main_models.GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus = None,
         request_id: str = None,
     ):
-        # The deletion status of the member.
+        # The deletion status of the member account.
         self.rd_account_deletion_status = rd_account_deletion_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,28 +56,28 @@ class GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus(DaraModel):
         fail_reason_list: List[main_models.GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList] = None,
         status: str = None,
     ):
-        # The Alibaba Cloud account ID of the member.
+        # The ID of the member account.
         self.account_id = account_id
-        # The start time of the deletion.
+        # The time when the deletion started, in RFC 3339 format with a UTC offset of +08:00.
         self.create_time = create_time
-        # The end time of the deletion.
+        # The time when the deletion ended, in RFC 3339 format with a UTC offset of +08:00.
         # 
         # This parameter is required.
         self.deletion_time = deletion_time
-        # The type of the deletion. Valid values:
+        # The deletion type. Valid values:
         # 
-        # *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
-        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](https://help.aliyun.com/document_detail/446079.html)
+        # - 0: direct deletion. If the member account has no pay-as-you-go resources in the last 30 days, the system directly deletes the member account.
+        # - 1: cool-down period deletion. If the member account has pay-as-you-go resources in the last 30 days, the member account enters a cool-down period. The system starts to delete the member account after the cool-down period ends. For more information about the cool-down period, see [What is the cool-down period for member account deletion](https://help.aliyun.com/document_detail/446079.html).
         self.deletion_type = deletion_type
-        # The reasons why the member fails to be deleted.
+        # The reasons for the deletion failure.
         self.fail_reason_list = fail_reason_list
         # The status. Valid values:
         # 
-        # *   Success: The member is deleted.
-        # *   Checking: A deletion check is being performed for the member.
-        # *   Deleting: The member is being deleted.
-        # *   CheckFailed: The deletion check for the member fails.
-        # *   DeleteFailed: The member fails to be deleted.
+        # - Success: The member account is deleted.
+        # - Checking: The check is in progress.
+        # - Deleting: The deletion is in progress.
+        # - CheckFailed: The check failed.
+        # - DeleteFailed: The deletion failed.
         self.status = status
 
     def validate(self):
@@ -146,7 +146,7 @@ class GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList(
     ):
         # The description of the check item.
         self.description = description
-        # The name of the cloud service to which the check item belongs.
+        # The service name of the cloud service to which the check item belongs.
         self.name = name
 
     def validate(self):

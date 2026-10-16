@@ -14,14 +14,14 @@ class SetMemberDeletionPermissionResponseBody(DaraModel):
     ):
         # The ID of the management account of the resource directory.
         self.management_account_id = management_account_id
-        # The status of the member deletion feature. Valid values:
+        # The status of the member deletion permission. Valid values:
         # 
-        # *   Enabled: The feature is enabled.
-        # *   Disabled: The feature is disabled.
+        # - Enabled: The member deletion permission is enabled.
+        # - Disabled: The member deletion permission is disabled.
         self.member_deletion_status = member_deletion_status
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource directory.
+        # The resource directory ID.
         self.resource_directory_id = resource_directory_id
 
     def validate(self):

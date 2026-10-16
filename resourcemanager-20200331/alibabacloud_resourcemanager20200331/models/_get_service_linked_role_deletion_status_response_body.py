@@ -14,17 +14,17 @@ class GetServiceLinkedRoleDeletionStatusResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The cause for the failure of the deletion task.
+        # The reason why the deletion task failed.
         self.reason = reason
         # The request ID.
         self.request_id = request_id
-        # The status of the task.
+        # The task status. Valid values:
         # 
-        # *   SUCCEEDED
-        # *   IN_PROGRESS
-        # *   FAILED
-        # *   NOT_STARTED
-        # *   INTERNAL_ERROR
+        # - SUCCEEDED: The deletion was successful.
+        # - IN_PROGRESS: The deletion is in progress.
+        # - FAILED: The deletion failed.
+        # - NOT_STARTED: The deletion has not started.
+        # - INTERNAL_ERROR: An internal error occurred.
         self.status = status
 
     def validate(self):
@@ -67,7 +67,7 @@ class GetServiceLinkedRoleDeletionStatusResponseBodyReason(DaraModel):
         message: str = None,
         role_usages: main_models.GetServiceLinkedRoleDeletionStatusResponseBodyReasonRoleUsages = None,
     ):
-        # The failure information.
+        # The error message.
         self.message = message
         self.role_usages = role_usages
 

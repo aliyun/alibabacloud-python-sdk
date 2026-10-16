@@ -12,11 +12,11 @@ class CreateRoleRequest(DaraModel):
         max_session_duration: int = None,
         role_name: str = None,
     ):
-        # The document of the policy that specifies
+        # The content of the access policy for assuming the role.
         # 
-        # one or more trusted entities to assume the role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+        # Specifies one or more entities that are allowed to assume the role. The trusted entity can be an Alibaba Cloud account, an Alibaba Cloud service, or an identity provider.
         # 
-        # >  RAM users cannot assume the RAM roles of trusted Alibaba Cloud services.
+        # > A Resource Access Management (RAM) user cannot assume a RAM role whose trusted entity is an Alibaba Cloud service.
         # 
         # This parameter is required.
         self.assume_role_policy_document = assume_role_policy_document
@@ -28,11 +28,11 @@ class CreateRoleRequest(DaraModel):
         # 
         # Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
         # 
-        # If you do not specify this parameter, the default value is used.
+        # If this parameter is left empty, the default value is used.
         self.max_session_duration = max_session_duration
         # The name of the role.
         # 
-        # The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+        # The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.role_name = role_name

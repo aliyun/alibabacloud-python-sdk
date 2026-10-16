@@ -11,9 +11,9 @@ class GetControlPolicyResponseBody(DaraModel):
         control_policy: main_models.GetControlPolicyResponseBodyControlPolicy = None,
         request_id: str = None,
     ):
-        # The details of the access control policy.
+        # The details of the control policy.
         self.control_policy = control_policy
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,29 +57,29 @@ class GetControlPolicyResponseBodyControlPolicy(DaraModel):
         policy_type: str = None,
         update_date: str = None,
     ):
-        # The number of times that the access control policy is referenced.
+        # The number of times the control policy is referenced.
         self.attachment_count = attachment_count
-        # The time when the access control policy was created.
+        # The time when the control policy was created. The time is displayed in UTC in RFC 3339 format, indicated by Z.
         self.create_date = create_date
-        # The description of the access control policy.
+        # The description of the control policy.
         self.description = description
-        # The effective scope of the access control policy. Valid values:
+        # The effective scope of the control policy. Valid values:
         # 
-        # *   All: The access control policy is in effect for Alibaba Cloud accounts, RAM users, and RAM roles.
-        # *   RAM: The access control policy is in effect only for RAM users and RAM roles.
+        # - All: The control policy takes effect for Alibaba Cloud accounts, Resource Access Management (RAM) users, and RAM roles.
+        # - RAM: The control policy takes effect only for RAM users and RAM roles.
         self.effect_scope = effect_scope
-        # The document of the access control policy.
+        # The content of the control policy.
         self.policy_document = policy_document
-        # The ID of the access control policy.
+        # The ID of the control policy.
         self.policy_id = policy_id
-        # The name of the access control policy.
+        # The Policy Name of the control policy.
         self.policy_name = policy_name
-        # The type of the access control policy. Valid values:
+        # The type of the control policy. Valid values:
         # 
-        # *   System: system access control policy
-        # *   Custom: custom access control policy
+        # - System: system control policy.
+        # - Custom: custom control policy.
         self.policy_type = policy_type
-        # The time when the access control policy was updated.
+        # The time when the control policy was updated. The time is displayed in UTC in RFC 3339 format, indicated by Z.
         self.update_date = update_date
 
     def validate(self):

@@ -10,14 +10,14 @@ class GetResourceGroupRequest(DaraModel):
         include_tags: bool = None,
         resource_group_id: str = None,
     ):
-        # Specifies whether to return the information of tags. Valid values:
+        # Specifies whether to return tag information. Valid values:
         # 
-        # *   false (default value)
-        # *   true
+        # - false (default): does not return tag information.
+        # - true: returns tag information.
         self.include_tags = include_tags
-        # The ID of the resource group.
+        # The resource group ID.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the ID of the resource group.
+        # You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group IDs.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id

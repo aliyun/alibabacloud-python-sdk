@@ -11,7 +11,7 @@ class GetPolicyResponseBody(DaraModel):
         policy: main_models.GetPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # The information about the permission policy.
+        # The access policy information.
         self.policy = policy
         # The request ID.
         self.request_id = request_id
@@ -56,24 +56,24 @@ class GetPolicyResponseBodyPolicy(DaraModel):
         policy_type: str = None,
         update_date: str = None,
     ):
-        # The number of references to the permission policy.
+        # The number of references.
         self.attachment_count = attachment_count
-        # The time when the permission policy was created.
+        # The time when the access policy was created. The time is in RFC 3339 UTC format, indicated by Z.
         self.create_date = create_date
-        # The default version of the permission policy.
+        # The default version of the access policy.
         self.default_version = default_version
-        # The description of the permission policy.
+        # The description of the access policy.
         self.description = description
-        # The document of the permission policy.
+        # The content of the access policy.
         self.policy_document = policy_document
-        # The name of the permission policy.
+        # The Policy Name of the access policy.
         self.policy_name = policy_name
-        # The type of the permission policy. Valid values:
+        # The type of the access policy. Valid values:
         # 
-        # *   Custom
-        # *   System
+        # - Custom: custom policy.
+        # - System: system policy.
         self.policy_type = policy_type
-        # The time when the permission policy was updated.
+        # The time when the access policy was last updated. The time is in RFC 3339 UTC format, indicated by Z.
         self.update_date = update_date
 
     def validate(self):

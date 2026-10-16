@@ -16,14 +16,14 @@ class ListResourceGroupsResponseBody(DaraModel):
         resource_groups: main_models.ListResourceGroupsResponseBodyResourceGroups = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.resource_groups = resource_groups
-        # The total number of entries returned.
+        # The total number of entries that match the conditional request parameter criteria.
         self.total_count = total_count
 
     def validate(self):

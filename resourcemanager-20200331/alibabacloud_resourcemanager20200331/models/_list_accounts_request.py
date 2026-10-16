@@ -15,20 +15,19 @@ class ListAccountsRequest(DaraModel):
         page_size: int = None,
         tag: List[main_models.ListAccountsRequestTag] = None,
     ):
-        # Specifies whether to return the information of tags. Valid values:
-        # 
-        # *   false (default value)
-        # *   true
+        # Specifies whether to return tag information. Valid values:
+        # - false (default): does not return tag information.
+        # - true: returns tag information.
         self.include_tags = include_tags
-        # The number of the page to return.
+        # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The tag key and value.
+        # The tags used to filter member accounts.
         self.tag = tag
 
     def validate(self):
@@ -83,9 +82,9 @@ class ListAccountsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # A tag key.
+        # The tag key.
         self.key = key
-        # A tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

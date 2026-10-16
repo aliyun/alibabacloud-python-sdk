@@ -12,17 +12,17 @@ class ListTagKeysRequest(DaraModel):
         next_token: str = None,
         resource_type: str = None,
     ):
-        # The tag key for a fuzzy query.
+        # The tag key for fuzzy match.
         self.key_filter = key_filter
-        # The maximum number of entries to return for a single request.
+        # The maximum number of entries to return in a single request.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The token that is used to start the next query.
+        # The token that determines the start point of the next query.
         self.next_token = next_token
         # The resource type.
         # 
-        # The value Account indicates the members of the resource directory.
+        # Set this parameter to Account, which indicates a member account of a resource directory.
         # 
         # This parameter is required.
         self.resource_type = resource_type

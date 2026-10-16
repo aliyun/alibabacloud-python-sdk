@@ -13,34 +13,34 @@ class DetachPolicyRequest(DaraModel):
         principal_type: str = None,
         resource_group_id: str = None,
     ):
-        # The name of the permission policy.
+        # Policy Name of the access policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
+        # Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The type of the permission policy. Valid values:
+        # The type of the access policy. Valid values:
         # 
-        # *   Custom
-        # *   System
+        # - Custom: custom policy.
+        # - System: system policy.
         # 
         # This parameter is required.
         self.policy_type = policy_type
-        # The name of the object to which you want to attach the permission policy.
+        # The name of the object from which you want to detach the policy.
         # 
         # This parameter is required.
         self.principal_name = principal_name
-        # The type of the object to which you want to attach the permission policy. Valid values:
+        # The authorization object type. Valid values:
         # 
-        # *   IMSUser: RAM user
-        # *   IMSGroup: RAM user group
-        # *   ServiceRole: RAM role
+        # - IMSUser: Resource Access Management (RAM) user.
+        # - IMSGroup: RAM user group.
+        # - ServiceRole: RAM role.
         # 
         # This parameter is required.
         self.principal_type = principal_type
-        # The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
+        # The ID of the resource group or the ID of the Alibaba Cloud account that owns the resource group.
         # 
-        # This parameter specifies the resource group or Alibaba Cloud account for which you want to revoke permissions.
+        # Specifies the resource group or Alibaba Cloud account from which to detach the policy.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id

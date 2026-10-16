@@ -11,19 +11,19 @@ class CreatePolicyRequest(DaraModel):
         policy_document: str = None,
         policy_name: str = None,
     ):
-        # The description of the permission policy.
+        # The description of the access policy.
         # 
         # The description must be 1 to 1,024 characters in length.
         self.description = description
-        # The document of the policy.
+        # The content of the access policy.
         # 
-        # The document must be 1 to 6,144 characters in length.
+        # The content must be 1 to 6,144 characters in length.
         # 
         # This parameter is required.
         self.policy_document = policy_document
-        # The name of the permission policy.
+        # Policy Name of the access policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name

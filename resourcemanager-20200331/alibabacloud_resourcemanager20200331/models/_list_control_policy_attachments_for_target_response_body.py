@@ -14,7 +14,7 @@ class ListControlPolicyAttachmentsForTargetResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.control_policy_attachments = control_policy_attachments
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

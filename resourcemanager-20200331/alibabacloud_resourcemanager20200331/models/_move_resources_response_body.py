@@ -13,9 +13,9 @@ class MoveResourcesResponseBody(DaraModel):
         request_id: str = None,
         responses: List[main_models.MoveResourcesResponseBodyResponses] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # The response results.
         self.responses = responses
 
     def validate(self):
@@ -64,28 +64,27 @@ class MoveResourcesResponseBodyResponses(DaraModel):
         service: str = None,
         status: str = None,
     ):
-        # The error code returned.
+        # The error code.
         # 
-        # >  This parameter is returned if the resource failed to be moved.
+        # > This parameter is returned only when the resource transfer fails.
         self.error_code = error_code
-        # The error message returned.
-        # 
-        # >  This parameter is returned if the resource failed to be moved.
+        # The error message.
+        # > This parameter is returned only when the resource transfer fails.
         self.error_msg = error_msg
         # The region ID of the resource.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
-        # The ID of the Alibaba Cloud service.
+        # The cloud service code.
         self.service = service
-        # The status of the move task. Valid values:
+        # The status. Valid values:
         # 
-        # *   SUCCESS
-        # *   FAIL
+        # - SUCCESS: Succeeded.
+        # - FAIL: Failed.
         self.status = status
 
     def validate(self):

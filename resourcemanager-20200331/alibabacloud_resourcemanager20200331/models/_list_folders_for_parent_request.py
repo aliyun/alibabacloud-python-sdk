@@ -12,19 +12,19 @@ class ListFoldersForParentRequest(DaraModel):
         parent_folder_id: str = None,
         query_keyword: str = None,
     ):
-        # The number of the page to return.
+        # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The ID of the parent folder.
         # 
-        # If you leave this parameter empty, the information of the first-level subfolders of the Root folder is queried.
+        # If you leave this parameter empty, the subfolders at the next level of the Root folder are queried.
         self.parent_folder_id = parent_folder_id
-        # The keyword used for the query, such as a folder name.
+        # The query keyword, such as a folder name.
         # 
         # Fuzzy match is supported.
         self.query_keyword = query_keyword

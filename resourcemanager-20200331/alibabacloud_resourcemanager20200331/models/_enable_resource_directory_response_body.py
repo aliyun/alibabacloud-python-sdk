@@ -11,9 +11,9 @@ class EnableResourceDirectoryResponseBody(DaraModel):
         request_id: str = None,
         resource_directory: main_models.EnableResourceDirectoryResponseBodyResourceDirectory = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the resource directory.
+        # The resource directory information.
         self.resource_directory = resource_directory
 
     def validate(self):
@@ -53,7 +53,7 @@ class EnableResourceDirectoryResponseBodyResourceDirectory(DaraModel):
         resource_directory_id: str = None,
         root_folder_id: str = None,
     ):
-        # The time when the resource directory was enabled.
+        # The time when the resource directory was enabled. The time is displayed in UTC in RFC 3339 format, indicated by Z.
         self.create_time = create_time
         # The ID of the management account.
         self.master_account_id = master_account_id
@@ -61,7 +61,7 @@ class EnableResourceDirectoryResponseBodyResourceDirectory(DaraModel):
         self.master_account_name = master_account_name
         # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id
-        # The ID of the Root folder.
+        # The ID of the root folder.
         self.root_folder_id = root_folder_id
 
     def validate(self):

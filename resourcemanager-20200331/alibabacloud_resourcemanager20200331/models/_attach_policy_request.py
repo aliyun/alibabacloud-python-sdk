@@ -13,41 +13,41 @@ class AttachPolicyRequest(DaraModel):
         principal_type: str = None,
         resource_group_id: str = None,
     ):
-        # The name of the permission policy.
+        # Policy Name of the access policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+        # Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The type of the permission policy. Valid values:
+        # The type of the access policy. Valid values:
         # 
-        # *   Custom
-        # *   System
+        # - Custom: custom access policy.
+        # - System: system access policy.
         # 
         # This parameter is required.
         self.policy_type = policy_type
-        # The name of the object to which you want to attach the permission policy.
+        # The name of the authorization object. The format varies based on the object type:
         # 
-        # *   If you want to attach the permission policy to a RAM user, specify the name in the @.onaliyun.com format. indicates the name of the RAM user, and indicates the alias of the Alibaba Cloud account to which the RAM user belongs.
-        # *   If you want to attach the permission policy to a RAM user group, specify the name in the @group..onaliyun.com format. indicates the name of the RAM user group, and indicates the alias of the Alibaba Cloud account to which the RAM user group belongs.
-        # *   If you want to attach the permission policy to a RAM role, specify the name in the @role..onaliyunservice.com format. indicates the name of the RAM role, and indicates the alias of the Alibaba Cloud account to which the RAM role belongs.
+        # - Resource Access Management (RAM) user: <UserName>@<AccountAlias>.onaliyun.com, where <UserName> is the RAM username and <AccountAlias> is the account alias.
+        # - RAM user group: <GroupName>@group.<AccountAlias>.onaliyun.com, where <GroupName> is the RAM user group name and <AccountAlias> is the account alias.
+        # - RAM role: <RoleName>@role.<AccountAlias>.onaliyunservice.com, where <RoleName> is the RAM role name and <AccountAlias> is the account alias.
         # 
-        # >  The alias of an Alibaba Cloud account is a part of the default domain name. You can call the [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html) operation to obtain the alias of an Alibaba Cloud account.
+        # > The account alias is part of the default domain name. Invoke [GetDefaultDomain](https://help.aliyun.com/document_detail/186720.html) to obtain the account alias.
         # 
         # This parameter is required.
         self.principal_name = principal_name
-        # The type of the object to which you want to attach the permission policy. Valid values:
+        # The authorization object type. Valid values:
         # 
-        # *   IMSUser: RAM user
-        # *   IMSGroup: RAM user group
-        # *   ServiceRole: RAM role
+        # - IMSUser: Resource Access Management (RAM) user.
+        # - IMSGroup: RAM user group.
+        # - ServiceRole: RAM role.
         # 
         # This parameter is required.
         self.principal_type = principal_type
-        # The effective scope of the permission policy. Valid values:
+        # The authorization scope. Valid values:
         # 
-        # *   ID of a resource group: indicates that the permission policy takes effect for the resources in the resource group.
-        # *   ID of the Alibaba Cloud account to which the authorized object belongs: indicates that the permission policy takes effect for the resources within the Alibaba Cloud account.
+        # - Resource group ID: The permissions take effect within the specified resource group.
+        # - Alibaba Cloud account ID: The ID of the Alibaba Cloud account to which the principal belongs. The permissions take effect within the Alibaba Cloud account.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id

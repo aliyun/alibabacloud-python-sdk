@@ -19,7 +19,7 @@ class ListAutoGroupingRemediationsResponseBody(DaraModel):
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token for the next query.
         self.next_token = next_token
         # The remediation records.
         self.remediations = remediations
@@ -87,19 +87,19 @@ class ListAutoGroupingRemediationsResponseBodyRemediations(DaraModel):
         self.region_id = region_id
         # The remediation record ID.
         self.remediation_id = remediation_id
-        # The remediation time.
+        # The remediation time. The format is YYYY-MM-DD HH:mm:ss without a time zone identifier.
         self.remediation_time = remediation_time
         # The resource ID.
         self.resource_id = resource_id
         # The resource type.
         # 
-        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the resource type from the **Resource Type** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.resource_type = resource_type
-        # The ID of the Alibaba Cloud service.
+        # The cloud service ID.
         # 
-        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the cloud service ID from the **Cloud Service Code** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.service = service
-        # The information about the new resource group.
+        # The information about the target resource group for remediation.
         self.target_resource_group_info = target_resource_group_info
 
     def validate(self):

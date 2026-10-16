@@ -12,7 +12,7 @@ class CreateAutoGroupingRuleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):

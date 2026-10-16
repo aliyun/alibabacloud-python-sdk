@@ -9,7 +9,7 @@ class RetryChangeAccountEmailRequest(DaraModel):
         self,
         account_id: str = None,
     ):
-        # The Alibaba Cloud account ID of the member.
+        # The member account ID.
         # 
         # This parameter is required.
         self.account_id = account_id

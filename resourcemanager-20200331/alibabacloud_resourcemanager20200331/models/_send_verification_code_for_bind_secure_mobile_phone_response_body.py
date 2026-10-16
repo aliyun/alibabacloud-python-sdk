@@ -10,9 +10,9 @@ class SendVerificationCodeForBindSecureMobilePhoneResponseBody(DaraModel):
         expiration_date: str = None,
         request_id: str = None,
     ):
-        # The time when the verification code expires.
+        # The expiration time of the verification code. The time is in RFC 3339 UTC format, indicated by Z for UTC.
         self.expiration_date = expiration_date
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

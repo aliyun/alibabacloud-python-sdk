@@ -14,7 +14,7 @@ class ListAncestorsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.folders = folders
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

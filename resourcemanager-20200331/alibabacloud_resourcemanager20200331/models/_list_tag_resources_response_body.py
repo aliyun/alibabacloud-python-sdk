@@ -14,12 +14,12 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # Indicates whether the next query is required.
+        # Indicates whether the `NextToken` parameter is returned for the next query. Valid values:
         # 
-        # *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
-        # *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+        # - If `NextToken` is empty, which is displayed as `"NextToken": ""`, no next query exists.
+        # - If `NextToken` is returned with a value, the value is the token that is used to start the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The tags.
         self.tag_resources = tag_resources
@@ -72,12 +72,12 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the resource group or member.
+        # The resource group ID or resource directory member ID.
         self.resource_id = resource_id
-        # The type of the object whose tags are queried. Valid values:
+        # The resource type. Valid values:
         # 
-        # *   resourcegroup: resource group
-        # *   Account: member
+        # - resourcegroup: resource group.
+        # - Account: resource directory member.
         self.resource_type = resource_type
         # The tag key.
         self.tag_key = tag_key

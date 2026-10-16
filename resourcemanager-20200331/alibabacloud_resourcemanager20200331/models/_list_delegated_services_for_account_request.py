@@ -9,7 +9,7 @@ class ListDelegatedServicesForAccountRequest(DaraModel):
         self,
         account_id: str = None,
     ):
-        # The ID of the member.
+        # The member ID.
         # 
         # This parameter is required.
         self.account_id = account_id

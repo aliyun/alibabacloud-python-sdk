@@ -23,36 +23,35 @@ class CreateAutoGroupingRuleRequest(DaraModel):
         rule_name: str = None,
         rule_type: str = None,
     ):
-        # The IDs of regions to be excluded. Separate multiple IDs with commas (,).
+        # The region IDs to exclude. Separate multiple region IDs with commas (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
+        # The resource group IDs to exclude. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
-        # The IDs of resources to be excluded. Separate multiple IDs with commas (,).
+        # The resource IDs to exclude. Separate multiple resource IDs with commas (,).
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # The resource types to be excluded. Separate multiple resource types with commas (,).
+        # The resource types to exclude. Separate multiple resource types with commas (,).
         self.exclude_resource_types_scope = exclude_resource_types_scope
-        # The IDs of regions. Separate multiple IDs with commas (,).
+        # The scope of region IDs. Separate multiple region IDs with commas (,).
         self.region_ids_scope = region_ids_scope
-        # The IDs of resource groups. Separate multiple IDs with commas (,).
+        # The scope of resource group IDs. Separate multiple resource group IDs with commas (,).
         self.resource_group_ids_scope = resource_group_ids_scope
-        # The IDs of resources. Separate multiple IDs with commas (,).
+        # The scope of resource IDs. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The resource types. Separate multiple resource types with commas (,).
+        # The scope of resource types. Separate multiple resource types with commas (,).
         self.resource_types_scope = resource_types_scope
-        # The content records of the rule.
+        # The list of rule content entries.
         # 
         # This parameter is required.
         self.rule_contents = rule_contents
-        # The description of the rule.
+        # The rule description.
         self.rule_desc = rule_desc
-        # The name of the rule.
+        # The rule name.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The type of the rule. Valid values:
-        # 
-        # *   custom_condition: custom transfer rule
-        # *   associated_transfer: transfer rule for associated resources
+        # The rule type. Valid values:
+        # - custom_condition: custom allocation rule.
+        # - associated_transfer: attached-resource allocation rule.
         # 
         # This parameter is required.
         self.rule_type = rule_type
@@ -157,9 +156,9 @@ class CreateAutoGroupingRuleRequestRuleContents(DaraModel):
         auto_grouping_scope_condition: str = None,
         target_resource_group_condition: str = None,
     ):
-        # The condition for the range of resources to be automatically transferred.
+        # The scope condition for automatic allocation. Specifies the scope of resources to be automatically allocated.
         self.auto_grouping_scope_condition = auto_grouping_scope_condition
-        # The condition for the destination resource group.
+        # The target resource group condition. Specifies the target resource group for automatic allocation.
         # 
         # This parameter is required.
         self.target_resource_group_condition = target_resource_group_condition

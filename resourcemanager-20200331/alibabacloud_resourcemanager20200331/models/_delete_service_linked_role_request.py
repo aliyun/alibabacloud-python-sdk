@@ -9,7 +9,7 @@ class DeleteServiceLinkedRoleRequest(DaraModel):
         self,
         role_name: str = None,
     ):
-        # The name of the role.
+        # The role name.
         # 
         # This parameter is required.
         self.role_name = role_name

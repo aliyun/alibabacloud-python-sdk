@@ -9,7 +9,7 @@ class DeleteAutoGroupingRuleRequest(DaraModel):
         self,
         rule_id: str = None,
     ):
-        # The ID of the rule.
+        # The rule ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id

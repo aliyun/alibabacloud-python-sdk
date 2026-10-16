@@ -11,9 +11,9 @@ class GetHandshakeResponseBody(DaraModel):
         handshake: main_models.GetHandshakeResponseBodyHandshake = None,
         request_id: str = None,
     ):
-        # The information of the invitation.
+        # The handshake information.
         self.handshake = handshake
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,15 +61,15 @@ class GetHandshakeResponseBodyHandshake(DaraModel):
         target_entity: str = None,
         target_type: str = None,
     ):
-        # The time when the invitation was created. The time is displayed in UTC.
+        # The creation time of the handshake (UTC).
         self.create_time = create_time
-        # The time when the invitation expires. The time is displayed in UTC.
+        # The expiration time of the handshake (UTC).
         self.expire_time = expire_time
-        # The ID of the invitation.
+        # The handshake ID.
         self.handshake_id = handshake_id
-        # The real-name verification information of the invitee.
+        # The real-name verification information of the invited account.
         # 
-        # >  This parameter is available only when an invitee calls this operation.
+        # > This parameter is visible only when the invited account calls this operation.
         self.invited_account_real_name = invited_account_real_name
         # The ID of the management account of the resource directory.
         self.master_account_id = master_account_id
@@ -77,28 +77,28 @@ class GetHandshakeResponseBodyHandshake(DaraModel):
         self.master_account_name = master_account_name
         # The real-name verification information of the management account of the resource directory.
         # 
-        # >  This parameter is available only when an invitee calls this operation.
+        # > This parameter is visible only when the invited account calls this operation.
         self.master_account_real_name = master_account_real_name
-        # The time when the invitation was modified. The time is displayed in UTC.
+        # The modification time of the handshake (UTC).
         self.modify_time = modify_time
-        # The comment on the invitation.
+        # The remarks.
         self.note = note
-        # The ID of the resource directory.
+        # The resource directory ID.
         self.resource_directory_id = resource_directory_id
-        # The status of the invitation. Valid values:
+        # The status of the handshake. Valid values:
         # 
-        # *   Pending: The invitation is waiting for confirmation.
-        # *   Accepted: The invitation is accepted.
-        # *   Cancelled: The invitation is canceled.
-        # *   Declined: The invitation is rejected.
-        # *   Expired: The invitation expires.
+        # - Pending: Waiting for confirmation.
+        # - Accepted: Accepted.
+        # - Cancelled: Cancelled.
+        # - Declined: Rejected.
+        # - Expired: Expired.
         self.status = status
         # The ID or logon email address of the invited account.
         self.target_entity = target_entity
         # The type of the invited account. Valid values:
         # 
-        # *   Account: indicates the ID of the account.
-        # *   Email: indicates the logon email address of the account.
+        # - Account: account ID.
+        # - Email: logon email address of the account.
         self.target_type = target_type
 
     def validate(self):

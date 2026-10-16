@@ -10,7 +10,7 @@ class RegisterDelegatedAdministratorRequest(DaraModel):
         account_id: str = None,
         service_principal: str = None,
     ):
-        # The ID of the member in the resource directory.
+        # The UID of a member account in the resource directory.
         # 
         # This parameter is required.
         self.account_id = account_id

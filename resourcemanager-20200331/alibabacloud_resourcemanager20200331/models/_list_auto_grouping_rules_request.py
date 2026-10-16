@@ -13,18 +13,17 @@ class ListAutoGroupingRulesRequest(DaraModel):
         rule_name: str = None,
         rule_type: str = None,
     ):
-        # The maximum number of entries to return for a single request. Valid values: 1 to 50.
+        # The maximum number of entries to return in a single request. Valid values: 1 to 50.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # If the response is truncated, you can use NextToken to send another request to retrieve the content after the current truncation point.
         self.next_token = next_token
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The type of the rule. Valid values:
-        # 
-        # *   custom_condition: custom transfer rule
-        # *   associated_transfer: transfer rule for associated resources
+        # The rule type. Valid values:
+        # - custom_condition: custom rule-based group transfer.
+        # - associated_transfer: attached-resource allocation group transfer.
         self.rule_type = rule_type
 
     def validate(self):

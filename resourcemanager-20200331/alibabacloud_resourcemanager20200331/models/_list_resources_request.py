@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class ListResourcesRequest(DaraModel):
     def __init__(
         self,
+        count: bool = None,
         page_number: int = None,
         page_size: int = None,
         region: str = None,
@@ -19,9 +20,13 @@ class ListResourcesRequest(DaraModel):
         resource_types: List[main_models.ListResourcesRequestResourceTypes] = None,
         service: str = None,
     ):
+        # Specifies whether to query the total number of resources. Default value: true. Valid values:
+        # - true: Queries the total number of resources and returns the result in the TotalCount parameter.
+        # - false: Does not query the total number of resources. The TotalCount parameter returns -1, and the resources are still paginated based on the PageNumber and PageSize parameters.
+        self.count = count
         # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
         # 
@@ -35,15 +40,15 @@ class ListResourcesRequest(DaraModel):
         self.resource_id = resource_id
         # The resource type.
         # 
-        # For more information about the supported resource types, see the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the resource type from the **Resource Type** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.resource_type = resource_type
-        # The resource types. A maximum of 50 resource types are supported.
+        # The list of resource types. A maximum of 50 resource types are supported.
         # 
-        # >  If you configure `ResourceTypes`, you must configure both `Service` and `ResourceType`. Otherwise, the configured Service or ResourceType does not take effect.
+        # > If you configure the Settings for ResourceTypes, the Service and ResourceType request parameter specified separately do not take effect.
         self.resource_types = resource_types
-        # The ID of the Alibaba Cloud service.
+        # The code of the cloud service.
         # 
-        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the code from the **Cloud Service Code** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.service = service
 
     def validate(self):
@@ -57,6 +62,9 @@ class ListResourcesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.count is not None:
+            result['Count'] = self.count
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -87,6 +95,9 @@ class ListResourcesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 
@@ -126,17 +137,15 @@ class ListResourcesRequestResourceTypes(DaraModel):
         # 
         # Valid values of N: 1 to 50.
         # 
-        # For more information about the supported resource types, see the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
-        # 
-        # >  You must configure both `Service` and `ResourceType` in `ResourceTypes`. Otherwise, the two parameters do not take effect.
+        # You can obtain the resource type from the **Resource Type** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
+        # > The Service and ResourceType parameters in ResourceTypes must be specified at the same time. Otherwise, they do not take effect.
         self.resource_type = resource_type
-        # The ID of the Alibaba Cloud service.
+        # The code of the cloud service.
         # 
         # Valid values of N: 1 to 50.
         # 
-        # You can obtain the ID from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
-        # 
-        # >  You must configure both `Service` and `ResourceType` in `ResourceTypes`. Otherwise, the two parameters do not take effect.
+        # You can obtain the code from the **Cloud Service Code** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
+        # > The Service and ResourceType parameters in ResourceTypes must be specified at the same time. Otherwise, they do not take effect.
         self.service = service
 
     def validate(self):

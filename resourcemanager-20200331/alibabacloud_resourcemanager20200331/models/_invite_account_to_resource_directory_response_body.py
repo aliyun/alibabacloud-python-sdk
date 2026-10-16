@@ -11,9 +11,9 @@ class InviteAccountToResourceDirectoryResponseBody(DaraModel):
         handshake: main_models.InviteAccountToResourceDirectoryResponseBodyHandshake = None,
         request_id: str = None,
     ):
-        # The information of the invitation.
+        # The invitation information.
         self.handshake = handshake
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,9 +59,9 @@ class InviteAccountToResourceDirectoryResponseBodyHandshake(DaraModel):
         target_entity: str = None,
         target_type: str = None,
     ):
-        # The time when the invitation was created. The time is displayed in UTC.
+        # The creation time of the invitation (UTC).
         self.create_time = create_time
-        # The time when the invitation expires. The time is displayed in UTC.
+        # The expiration time of the invitation (UTC).
         self.expire_time = expire_time
         # The ID of the invitation.
         self.handshake_id = handshake_id
@@ -69,26 +69,26 @@ class InviteAccountToResourceDirectoryResponseBodyHandshake(DaraModel):
         self.master_account_id = master_account_id
         # The name of the management account of the resource directory.
         self.master_account_name = master_account_name
-        # The time when the invitation was modified. The time is displayed in UTC.
+        # The modification time of the invitation (UTC).
         self.modify_time = modify_time
-        # The comment on the invitation.
+        # The remarks.
         self.note = note
         # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id
-        # The status of the invitation.
+        # The status of the invitation. Valid values:
         # 
-        # *   Pending: The invitation is waiting for confirmation.
-        # *   Accepted: The invitation is accepted.
-        # *   Cancelled: The invitation is canceled.
-        # *   Declined: The invitation is rejected.
-        # *   Expired: The invitation expires.
+        # - Pending: Waiting for confirmation.
+        # - Accepted: Accepted.
+        # - Cancelled: Canceled.
+        # - Declined: Rejected.
+        # - Expired: Expired.
         self.status = status
-        # The ID or logon email address of the invited account.
+        # The ID or logon email address of the account that is invited.
         self.target_entity = target_entity
         # The type of the invited account. Valid values:
         # 
-        # *   Account: indicates the ID of the account.
-        # *   Email: indicates the logon email address of the account.
+        # - Account: account ID.
+        # - Email: logon email address of the account.
         self.target_type = target_type
 
     def validate(self):

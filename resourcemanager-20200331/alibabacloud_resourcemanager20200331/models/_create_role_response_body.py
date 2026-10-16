@@ -13,7 +13,7 @@ class CreateRoleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the role.
+        # The role information.
         self.role = role
 
     def validate(self):
@@ -56,11 +56,11 @@ class CreateRoleResponseBodyRole(DaraModel):
         role_name: str = None,
         role_principal_name: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the role.
+        # The resource descriptor of the role.
         self.arn = arn
-        # The document of the policy in which the entity that can assume the role is specified.
+        # The content of the access policy for assuming the role.
         self.assume_role_policy_document = assume_role_policy_document
-        # The time when the role was created.
+        # The time when the role was created. The time is in RFC 3339 UTC format, indicated by Z.
         self.create_date = create_date
         # The description of the role.
         self.description = description
@@ -70,7 +70,7 @@ class CreateRoleResponseBodyRole(DaraModel):
         self.role_id = role_id
         # The name of the role.
         self.role_name = role_name
-        # The name of the role after authorization.
+        # The name of the authorized role.
         self.role_principal_name = role_principal_name
 
     def validate(self):

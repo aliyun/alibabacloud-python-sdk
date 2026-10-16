@@ -10,7 +10,7 @@ class DeleteServiceLinkedRoleResponseBody(DaraModel):
         deletion_task_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the deletion task.
+        # The deletion task ID.
         self.deletion_task_id = deletion_task_id
         # The request ID.
         self.request_id = request_id

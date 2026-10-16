@@ -11,20 +11,19 @@ class UpdateAccountRequest(DaraModel):
         new_account_type: str = None,
         new_display_name: str = None,
     ):
-        # The ID of the Alibaba Cloud account that corresponds to the member.
+        # The ID of the member.
         # 
         # This parameter is required.
         self.account_id = account_id
         # The new type of the member. Valid values:
         # 
-        # *   ResourceAccount: resource account
-        # *   CloudAccount: cloud account
+        # - ResourceAccount: switches the specified cloud account to a resource account.
+        # - CloudAccount: switches the specified resource account to a cloud account.
         # 
-        # >  You can configure either the `NewDisplayName` or `NewAccountType` parameter.
+        # > Set either NewDisplayName or NewAccountType. You cannot set both of them at the same time.
         self.new_account_type = new_account_type
-        # The new display name of the member.
-        # 
-        # >  You can configure either the `NewDisplayName` or `NewAccountType` parameter.
+        # The new name of the member.
+        # > Set either NewDisplayName or NewAccountType. You cannot set both of them at the same time.
         self.new_display_name = new_display_name
 
     def validate(self):

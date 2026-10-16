@@ -10,11 +10,11 @@ class UpdateFolderRequest(DaraModel):
         folder_id: str = None,
         new_folder_name: str = None,
     ):
-        # The ID of the folder.
+        # The folder ID.
         # 
         # This parameter is required.
         self.folder_id = folder_id
-        # The new name of the folder.
+        # The new folder name.
         # 
         # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
         # 

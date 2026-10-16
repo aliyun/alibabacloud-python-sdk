@@ -1,3 +1,7 @@
+2026-10-16 Version: 2.6.2
+- Update API ListResources: add request parameters Count.
+
+
 2026-02-27 Version: 2.6.1
 - Update API ListResourceGroupCapability: add response parameters Body.Capabilities.$.ResourceCenterResourceType.
 

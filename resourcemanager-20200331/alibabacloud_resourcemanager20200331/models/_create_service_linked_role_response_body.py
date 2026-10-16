@@ -13,7 +13,7 @@ class CreateServiceLinkedRoleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the role.
+        # The role information.
         self.role = role
 
     def validate(self):
@@ -56,24 +56,24 @@ class CreateServiceLinkedRoleResponseBodyRole(DaraModel):
         role_name: str = None,
         role_principal_name: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the role.
+        # The resource descriptor of the role.
         self.arn = arn
-        # The document of the trust policy for the role.
+        # The trust policy of the role.
         self.assume_role_policy_document = assume_role_policy_document
-        # The time when the role was created. The time is displayed in UTC.
+        # The time when the role was created (UTC).
         self.create_date = create_date
         # The description of the role.
         self.description = description
         # Indicates whether the role is a service-linked role. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The role is a service-linked role.
+        # - false: The role is not a service-linked role.
         self.is_service_linked_role = is_service_linked_role
-        # The ID of the role.
+        # The role ID.
         self.role_id = role_id
-        # The name of the role.
+        # The role name.
         self.role_name = role_name
-        # The role name that uses a domain name as the suffix.
+        # The role name with the domain name suffix.
         self.role_principal_name = role_principal_name
 
     def validate(self):

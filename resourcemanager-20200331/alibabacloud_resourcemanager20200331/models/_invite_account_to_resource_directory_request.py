@@ -15,20 +15,20 @@ class InviteAccountToResourceDirectoryRequest(DaraModel):
         target_entity: str = None,
         target_type: str = None,
     ):
-        # The comment on the invitation.
+        # The remarks.
         # 
-        # The comment can be up to 1,024 characters in length.
+        # Maximum length: 1024 characters.
         self.note = note
-        # The tag key and value.
+        # The tags.
         self.tag = tag
-        # The ID or logon email address of the account that you want to invite.
+        # The ID or logon email address of the account that is invited.
         # 
         # This parameter is required.
         self.target_entity = target_entity
-        # The type of the account. Valid values:
+        # The type of the account that is invited. Valid values:
         # 
-        # *   Account: indicates the ID of the account.
-        # *   Email: indicates the logon email address of the account.
+        # - Account: account ID.
+        # - Email: logon email address of the account.
         # 
         # This parameter is required.
         self.target_type = target_type
@@ -85,9 +85,9 @@ class InviteAccountToResourceDirectoryRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # A tag key.
+        # The tag key.
         self.key = key
-        # A tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

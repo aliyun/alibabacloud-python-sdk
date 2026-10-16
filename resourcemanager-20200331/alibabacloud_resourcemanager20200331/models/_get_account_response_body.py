@@ -13,9 +13,9 @@ class GetAccountResponseBody(DaraModel):
         account: main_models.GetAccountResponseBodyAccount = None,
         request_id: str = None,
     ):
-        # The information of the member.
+        # The member account information.
         self.account = account
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,55 +65,54 @@ class GetAccountResponseBodyAccount(DaraModel):
         tags: List[main_models.GetAccountResponseBodyAccountTags] = None,
         type: str = None,
     ):
-        # The Alibaba Cloud account ID of the member.
+        # The member account ID.
         self.account_id = account_id
-        # The Alibaba Cloud account name of the member.
+        # The name of the account.
         self.account_name = account_name
-        # The display name of the member.
+        # The display name of the member account.
         self.display_name = display_name
-        # The status of the modification for the email address bound to the member. Valid values:
+        # The email status. Valid values:
         # 
-        # *   WAIT_MODIFY: in progress
-        # *   CANCELLED: canceled
-        # *   EXPIRED: expired
-        # 
-        # If the value of this parameter is empty, no modification is performed for the email address.
+        # - Empty: No email modification record exists.
+        # - WAIT_MODIFY: The modification is in progress.
+        # - CANCELLED: The modification is canceled.
+        # - EXPIRED: The modification has expired.
         self.email_status = email_status
         # The ID of the folder.
         self.folder_id = folder_id
         # The real-name verification information.
         self.identity_information = identity_information
-        # The way in which the member joins the resource directory. Valid values:
+        # The method used by the member account to join the resource directory. Valid values:
         # 
-        # *   invited: The member is invited to join the resource directory.
-        # *   created: The member is directly created in the resource directory.
+        # - invited: Invited.
+        # - created: Created.
         self.join_method = join_method
-        # The time when the member joined the resource directory.
+        # The time when the member account joined the resource directory. The time is displayed in UTC, as specified by RFC 3339, with Z indicating UTC.
         self.join_time = join_time
-        # The location of the member in the resource directory.
+        # The location of the member account in the resource directory.
         self.location = location
-        # The time when the member was modified.
+        # The time when the member account was last modified. The time is displayed in UTC, as specified by RFC 3339, with Z indicating UTC.
         self.modify_time = modify_time
         # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id
-        # The path of the member in the resource directory.
+        # The path ID (RDPath) of the member account in the resource directory.
         self.resource_directory_path = resource_directory_path
-        # The status of the member. Valid values:
+        # The join status of the member account. Valid values:
         # 
-        # *   CreateSuccess: The member is created.
-        # *   PromoteVerifying: The upgrade of the member is being confirmed.
-        # *   PromoteFailed: The upgrade of the member fails.
-        # *   PromoteExpired: The upgrade of the member expires.
-        # *   PromoteCancelled: The upgrade of the member is canceled.
-        # *   PromoteSuccess: The member is upgraded.
-        # *   InviteSuccess: The member accepts the invitation.
+        # - CreateSuccess: Created.
+        # - PromoteVerifying: Upgrade is being confirmed.
+        # - PromoteFailed: Upgrade failed.
+        # - PromoteExpired: Upgrade expired.
+        # - PromoteCancelled: Upgrade canceled.
+        # - PromoteSuccess: Upgrade succeeded.
+        # - InviteSuccess: Invitation succeeded.
         self.status = status
-        # The tags that are added to the member.
+        # The tags.
         self.tags = tags
-        # The type of the member. Valid values:
+        # The type of the member account. Valid values:
         # 
-        # *   CloudAccount: cloud account
-        # *   ResourceAccount: resource account
+        # - CloudAccount: Cloud account.
+        # - ResourceAccount: Resource account.
         self.type = type
 
     def validate(self):
@@ -234,9 +233,9 @@ class GetAccountResponseBodyAccountTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # A tag key.
+        # The tag key.
         self.key = key
-        # A tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

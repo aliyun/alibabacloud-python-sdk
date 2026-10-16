@@ -10,14 +10,14 @@ class GetAccountRequest(DaraModel):
         account_id: str = None,
         include_tags: bool = None,
     ):
-        # The Alibaba Cloud account ID of the member.
+        # The member account ID.
         # 
         # This parameter is required.
         self.account_id = account_id
-        # Specifies whether to return the information of tags. Valid values:
+        # Specifies whether to return tag information. Valid values:
         # 
-        # *   false (default value)
-        # *   true
+        # - false (default): Does not return tag information.
+        # - true: Returns tag information.
         self.include_tags = include_tags
 
     def validate(self):

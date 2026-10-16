@@ -15,13 +15,13 @@ class ListAutoGroupingRulesResponseBody(DaraModel):
         request_id: str = None,
         rules: List[main_models.ListAutoGroupingRulesResponseBodyRules] = None,
     ):
-        # The maximum number of entries returned for a single request. Valid values: 1 to 50.
+        # The maximum number of entries to return in a single request. Valid values: 1 to 50.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # If the response is truncated, you can use NextToken to send another request to retrieve the content after the current truncation point.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The queried rules.
+        # The list of rules.
         self.rules = rules
 
     def validate(self):
@@ -89,38 +89,37 @@ class ListAutoGroupingRulesResponseBodyRules(DaraModel):
         rule_name: str = None,
         rule_type: str = None,
     ):
-        # The time when the rule was created.
+        # The time when the rule was created, in RFC 3339 format with a UTC offset of +08:00.
         self.create_time = create_time
-        # The IDs of excluded regions. Multiple IDs are separated by commas (,).
+        # The excluded region IDs. Multiple region IDs are separated by commas (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # The IDs of excluded resource groups. Multiple IDs are separated by commas (,).
+        # The excluded resource group IDs. Multiple resource group IDs are separated by commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
-        # The IDs of excluded resources. Multiple IDs are separated by commas (,).
+        # The excluded resource IDs. Multiple resource IDs are separated by commas (,).
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
         # The excluded resource types. Multiple resource types are separated by commas (,).
         self.exclude_resource_types_scope = exclude_resource_types_scope
-        # The time when the rule was updated.
+        # The time when the rule was last updated, in RFC 3339 format with a UTC offset of +08:00.
         self.modify_time = modify_time
-        # The IDs of regions. Multiple IDs are separated by commas (,).
+        # The region IDs in scope. Multiple region IDs are separated by commas (,).
         self.region_ids_scope = region_ids_scope
-        # The IDs of resource groups. Multiple IDs are separated by commas (,).
+        # The resource group IDs in scope. Multiple resource group IDs are separated by commas (,).
         self.resource_group_ids_scope = resource_group_ids_scope
-        # The IDs of resources. Multiple IDs are separated by commas (,).
+        # The resource IDs in scope. Multiple resource IDs are separated by commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The resource types. Multiple resource types are separated by commas (,).
+        # The resource types in scope. Multiple resource types are separated by commas (,).
         self.resource_types_scope = resource_types_scope
-        # The content records of the rule.
+        # The list of rule contents.
         self.rule_contents = rule_contents
-        # The description of the rule.
+        # The rule description.
         self.rule_desc = rule_desc
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The type of the rule. Valid values:
-        # 
-        # *   custom_condition: custom transfer rule
-        # *   associated_transfer: transfer rule for associated resources
+        # The rule type. Valid values:
+        # - custom_condition: custom rule-based group transfer.
+        # - associated_transfer: attached-resource allocation group transfer.
         self.rule_type = rule_type
 
     def validate(self):
@@ -242,11 +241,11 @@ class ListAutoGroupingRulesResponseBodyRulesRuleContents(DaraModel):
         rule_content_id: str = None,
         target_resource_group_condition: str = None,
     ):
-        # The condition for the range of resources that are automatically transferred.
+        # The automatic group transfer scope condition, which specifies the scope of resources to be automatically transferred to a group.
         self.auto_grouping_scope_condition = auto_grouping_scope_condition
-        # The ID of the content record.
+        # The rule content ID.
         self.rule_content_id = rule_content_id
-        # The condition for the destination resource group.
+        # The target resource group condition, which specifies the target resource group for automatic grouping.
         self.target_resource_group_condition = target_resource_group_condition
 
     def validate(self):

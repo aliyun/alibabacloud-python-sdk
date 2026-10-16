@@ -10,11 +10,11 @@ class ListHandshakesForAccountRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The number of the page to return.
+        # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size

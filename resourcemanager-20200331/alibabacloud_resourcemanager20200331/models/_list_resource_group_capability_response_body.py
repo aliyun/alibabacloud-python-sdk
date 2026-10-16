@@ -13,7 +13,7 @@ class ListResourceGroupCapabilityResponseBody(DaraModel):
         capabilities: List[main_models.ListResourceGroupCapabilityResponseBodyCapabilities] = None,
         request_id: str = None,
     ):
-        # Indicates whether a specific resource type or cloud service supports resource group events.
+        # The list of capability items.
         self.capabilities = capabilities
         # The request ID.
         self.request_id = request_id
@@ -60,16 +60,17 @@ class ListResourceGroupCapabilityResponseBodyCapabilities(DaraModel):
         service: str = None,
         support_resource_group_event: bool = None,
     ):
+        # The resource center resource type code.
         self.resource_center_resource_type = resource_center_resource_type
         # The resource type.
         # 
-        # You can obtain the resource type from the **Resource type** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the resource type from the **Resource Type** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.resource_type = resource_type
-        # The service code.
+        # The cloud service code.
         # 
-        # You can obtain the code from the **Service code** column in [Services that work with Resource Group](https://help.aliyun.com/document_detail/94479.html).
+        # You can obtain the cloud service code from the **Cloud Service Code** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.service = service
-        # Indicates whether a specific resource type or cloud service supports resource group events.
+        # Specifies whether resource group events are supported.
         self.support_resource_group_event = support_resource_group_event
 
     def validate(self):

@@ -9,7 +9,7 @@ class CancelHandshakeRequest(DaraModel):
         self,
         handshake_id: str = None,
     ):
-        # The ID of the invitation.
+        # The handshake ID.
         # 
         # This parameter is required.
         self.handshake_id = handshake_id

@@ -11,9 +11,9 @@ class GetResourceDirectoryResponseBody(DaraModel):
         request_id: str = None,
         resource_directory: main_models.GetResourceDirectoryResponseBodyResourceDirectory = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the resource directory.
+        # The resource directory information.
         self.resource_directory = resource_directory
 
     def validate(self):
@@ -56,25 +56,24 @@ class GetResourceDirectoryResponseBodyResourceDirectory(DaraModel):
         resource_directory_id: str = None,
         root_folder_id: str = None,
     ):
-        # The status of the Control Policy feature. Valid values:
+        # The status of the control policy. Valid values:
         # 
-        # *   Enabled: The feature is enabled.
-        # *   PendingEnable: The feature is being enabled.
-        # *   Disabled: The feature is disabled.
-        # *   PendingDisable: The feature is being disabled.
+        # - Enabled: Enabled.
+        # - PendingEnable: Being enabled.
+        # - Disabled: Disabled.
+        # - PendingDisable: Being disabled.
         self.control_policy_status = control_policy_status
-        # The time when the resource directory was enabled.
+        # The time when the resource directory was created. The time is displayed in UTC in RFC 3339 format, indicated by Z.
         self.create_time = create_time
-        # The real-name verification information.
+        # The real-name verification information of the member.
         self.identity_information = identity_information
         # The ID of the management account.
         self.master_account_id = master_account_id
         # The name of the management account.
         self.master_account_name = master_account_name
-        # The status of the member deletion feature. Valid values:
-        # 
-        # *   Enabled: The feature is enabled. You can call the [DeleteAccount](https://help.aliyun.com/document_detail/311546.html) operation to delete members of the resource account type.
-        # *   Disabled: The feature is disabled. You cannot delete members of the resource account type.
+        # Indicates whether member deletion is enabled. Valid values:
+        # - Enabled: Enabled. You can call [DeleteAccount](https://help.aliyun.com/document_detail/311546.html) to delete members of the resource account type.
+        # - Disabled: Disabled. You cannot delete members of the resource account type.
         self.member_deletion_status = member_deletion_status
         # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id

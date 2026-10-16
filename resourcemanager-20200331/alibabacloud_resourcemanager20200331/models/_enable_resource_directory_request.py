@@ -12,28 +12,33 @@ class EnableResourceDirectoryRequest(DaraModel):
         masecure_mobile_phone: str = None,
         verification_code: str = None,
     ):
-        # The mode in which you enable a resource directory. Valid values:
+        # The method used to enable the resource directory. Valid values:
         # 
-        # *   CurrentAccount: indicates that the current account is used to enable a resource directory.
-        # *   NewManagementAccount: indicates that a newly created account is used to enable a resource directory. If you select this mode, you must configure the `MAName`, `MASecureMobilePhone`, and `VerificationCode` parameters.
+        # - CurrentAccount: enables the resource directory by using the current logon account.
+        # - NewManagementAccount: enables the resource directory by creating a new management account. If you select this method, you must configure `MAName`, `MASecureMobilePhone`, and `VerificationCode`.
         # 
         # This parameter is required.
         self.enable_mode = enable_mode
-        # The name of the newly created account.
+        # The name of the new management account.
         # 
-        # Specify the name in the `<Prefix>@rdadmin.aliyunid.com` format. The prefix can contain letters, digits, and special characters but cannot contain consecutive special characters. The prefix must start with a letter or digit and end with a letter or digit. Valid special characters include underscores (_), periods (.), and hyphens (-). The prefix must be 2 to 50 characters in length.
+        # Format: `<Prefix>@rdadmin.aliyunid.com`. The prefix can contain letters, digits, and the special characters `_.-`. The prefix must start and end with a letter or digit, and cannot contain consecutive special characters. The prefix must be 2 to 50 characters in length.
         self.maname = maname
-        # The mobile phone number that is bound to the newly created account.
+        # The secure phone number of the new management account.
         # 
-        # If you leave this parameter empty, the mobile phone number that is bound to the current account is used. The mobile phone number you specify must be the same as the mobile phone number that you specify when you call the [SendVerificationCodeForEnableRD](https://help.aliyun.com/document_detail/364248.html) operation to obtain a verification code.
+        # If you leave this parameter empty, the secure phone number of the current logon account is used. The phone number must be the same as the one used to authenticate and obtain the verification code in [SendVerificationCodeForEnableRD](https://help.aliyun.com/document_detail/364248.html).
         # 
-        # Specify the mobile phone number in the `<Country code>-<Mobile phone number>` format.
+        # Format: `<Country code>-<Phone number>`.
         # 
-        # >  Mobile phone numbers in the `86-<Mobile phone number>` format in the Chinese mainland are not supported.
+        # <props="intl">
+        # > Phone numbers from the Chinese mainland in the format `86-<Phone number>` are not supported.
+        # 
+        # 
+        # <props="china">
+        # > Only phone numbers from the Chinese mainland in the format `86-<Phone number>` are supported.
         self.masecure_mobile_phone = masecure_mobile_phone
         # The verification code.
         # 
-        # You can call the [SendVerificationCodeForEnableRD](https://help.aliyun.com/document_detail/364248.html) operation to obtain the verification code.
+        # You can call [SendVerificationCodeForEnableRD](https://help.aliyun.com/document_detail/364248.html) to obtain the verification code.
         self.verification_code = verification_code
 
     def validate(self):

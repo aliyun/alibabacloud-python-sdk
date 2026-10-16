@@ -12,7 +12,7 @@ class GetResourceGroupNotificationSettingResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the group event notification is enabled.
+        # Indicates whether group event notification is enabled.
         self.resource_group_notification_enable_status = resource_group_notification_enable_status
 
     def validate(self):

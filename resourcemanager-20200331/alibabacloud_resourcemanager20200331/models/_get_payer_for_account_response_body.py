@@ -11,11 +11,11 @@ class GetPayerForAccountResponseBody(DaraModel):
         payer_account_name: str = None,
         request_id: str = None,
     ):
-        # The ID of the settlement account.
+        # The ID of the billing account.
         self.payer_account_id = payer_account_id
-        # The name of the settlement account.
+        # The name of the billing account.
         self.payer_account_name = payer_account_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

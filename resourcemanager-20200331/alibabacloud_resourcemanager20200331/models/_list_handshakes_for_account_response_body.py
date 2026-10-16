@@ -17,13 +17,13 @@ class ListHandshakesForAccountResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.handshakes = handshakes
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of invitations.
+        # The total number of invitation records.
         self.total_count = total_count
 
     def validate(self):

@@ -15,7 +15,7 @@ class GetResourceGroupResourceCountsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The numbers of the resources.
+        # The resource count.
         self.resource_counts = resource_counts
 
     def validate(self):
@@ -59,9 +59,9 @@ class GetResourceGroupResourceCountsResponseBodyResourceCounts(DaraModel):
         group_by_key: str = None,
         resource_group_id: str = None,
     ):
-        # The number of the resources.
+        # The resource count.
         self.count = count
-        # The dimension by which resources are queried.
+        # The grouping dimension for resource count statistics.
         self.group_by_key = group_by_key
         # The resource group ID.
         self.resource_group_id = resource_group_id

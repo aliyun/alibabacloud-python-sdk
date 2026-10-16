@@ -13,13 +13,13 @@ class MoveResourcesRequest(DaraModel):
         resource_group_id: str = None,
         resources: List[main_models.MoveResourcesRequestResources] = None,
     ):
-        # The ID of the resource group to which you want to move the resources.
+        # The ID of the destination resource group.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
-        # The resources that you want to move.
+        # The list of resources to move.
         # 
-        # >  You can move a maximum of 10 resources at a time. If you want to move more than 10 resources, move them in batches.
+        # > A maximum of 10 resources can be moved at a time. Move resources in batches if you have more than 10.
         # 
         # This parameter is required.
         self.resources = resources
@@ -68,11 +68,15 @@ class MoveResourcesRequestResources(DaraModel):
     ):
         # The region ID of the resource.
         self.region_id = region_id
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
+        # 
+        # You can obtain the value from the **Resource Type** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.resource_type = resource_type
-        # The ID of the Alibaba Cloud service to which the resource belongs.
+        # The cloud service code.
+        # 
+        # You can obtain the value from the **Cloud Service Code** column in [Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
         self.service = service
 
     def validate(self):

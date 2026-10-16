@@ -14,14 +14,14 @@ class ListTagValuesResponseBody(DaraModel):
         request_id: str = None,
         tags: List[main_models.ListTagValuesResponseBodyTags] = None,
     ):
-        # Indicates whether the next query is required.
+        # The token that determines whether the next query is required. Valid values:
         # 
-        # *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
-        # *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+        # - If NextToken is empty, that is, `"NextToken": ""`, no additional results exist.
+        # - If NextToken has a value, the value is the token that is used to start the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the tag values.
+        # The tag value information.
         self.tags = tags
 
     def validate(self):

@@ -11,9 +11,9 @@ class UpdateResourceGroupResponseBody(DaraModel):
         request_id: str = None,
         resource_group: main_models.UpdateResourceGroupResponseBodyResourceGroup = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the resource group.
+        # The resource group information.
         self.resource_group = resource_group
 
     def validate(self):
@@ -53,13 +53,13 @@ class UpdateResourceGroupResponseBodyResourceGroup(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource group belongs.
+        # The Alibaba Cloud account ID to which the resource group belongs.
         self.account_id = account_id
-        # The time when the resource group was created. The time is displayed in UTC.
+        # The time when the resource group was created (UTC).
         self.create_date = create_date
         # The display name of the resource group.
         self.display_name = display_name
-        # The ID of the resource group.
+        # The resource group ID.
         self.id = id
         # The unique identifier of the resource group.
         self.name = name

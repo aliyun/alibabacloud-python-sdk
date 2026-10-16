@@ -13,7 +13,7 @@ class ListAssociatedTransferSettingResponseBody(DaraModel):
         associated_transfer_setting: main_models.ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting = None,
         request_id: str = None,
     ):
-        # The settings of the Transfer Associated Resources feature.
+        # The settings of the associated resource group transfer feature.
         self.associated_transfer_setting = associated_transfer_setting
         # The request ID.
         self.request_id = request_id
@@ -54,19 +54,19 @@ class ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting(DaraMod
         rule_settings: List[main_models.ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSettings] = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.account_id = account_id
-        # Indicates whether the Transfer Existing Associated Resources feature is enabled. Valid values:
+        # Indicates whether the task for transferring existing associated resources to the same resource group is started. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false: The task is not started.
+        # - true: The task is started.
         self.enable_existing_resources_transfer = enable_existing_resources_transfer
-        # The settings of transfer rules.
+        # The rule settings of the associated resource group transfer feature.
         self.rule_settings = rule_settings
-        # The status of the Transfer Associated Resources feature. Valid values:
+        # The status of the associated resource group transfer feature. Valid values:
         # 
-        # *   Enable: enabled
-        # *   Disable: disabled
+        # - Enable: enabled.
+        # - Disable: disabled.
         self.status = status
 
     def validate(self):
@@ -124,18 +124,18 @@ class ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSett
         master_service: str = None,
         status: str = None,
     ):
-        # The type of the associated resource.
+        # The resource type of the associated resource.
         self.associated_resource_type = associated_resource_type
-        # The service code of the associated resource.
+        # The cloud service code of the associated resource.
         self.associated_service = associated_service
-        # The type of the primary resource.
+        # The resource type of the master resource.
         self.master_resource_type = master_resource_type
-        # The service code of the primary resource.
+        # The cloud service code of the master resource.
         self.master_service = master_service
-        # The status of the Transfer Associated Resources feature. Valid values:
+        # The status of the associated resource group transfer feature. Valid values:
         # 
-        # *   Enable: enabled
-        # *   Disable: disabled
+        # - Enable: enabled.
+        # - Disable: disabled.
         self.status = status
 
     def validate(self):

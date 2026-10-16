@@ -12,29 +12,29 @@ class CreateControlPolicyRequest(DaraModel):
         policy_document: str = None,
         policy_name: str = None,
     ):
-        # The description of the access control policy.
+        # The description of the control policy.
         # 
-        # The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
+        # The description must be 1 to 1024 characters in length, must start with a letter, and can contain letters, digits, underscores (_), and hyphens (-).
         self.description = description
-        # The effective scope of the access control policy.
+        # The effective scope of the control policy.
         # 
-        # The value RAM indicates that the access control policy takes effect only for RAM users and RAM roles.
+        # Valid values: RAM, which indicates that the control policy takes effect only for Resource Access Management (RAM) users or RAM roles.
         # 
         # This parameter is required.
         self.effect_scope = effect_scope
-        # The document of the access control policy.
+        # The content of the control policy.
         # 
-        # The document can be a maximum of 4,096 characters in length.
+        # The maximum length is 4096 characters.
         # 
-        # For more information about the languages of access control policies, see [Languages of access control policies](https://help.aliyun.com/document_detail/179096.html).
+        # For information about the control policy language, see [Control policy language](https://help.aliyun.com/document_detail/179096.html).
         # 
-        # For more information about the examples of access control policies, see [Examples of custom access control policies](https://help.aliyun.com/document_detail/181474.html).
+        # For examples of control policies, see [Examples of custom control policies](https://help.aliyun.com/document_detail/181474.html).
         # 
         # This parameter is required.
         self.policy_document = policy_document
-        # The name of the access control policy.
+        # Policy Name of the control policy.
         # 
-        # The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
+        # Policy Name must be 1 to 128 characters in length, must start with a letter, and can contain letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name

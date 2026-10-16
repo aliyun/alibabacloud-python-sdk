@@ -16,9 +16,9 @@ class UpdateResourceGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.new_display_name = new_display_name
-        # The ID of the resource group.
+        # The resource group ID.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the ID.
+        # You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to obtain the resource group ID.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id

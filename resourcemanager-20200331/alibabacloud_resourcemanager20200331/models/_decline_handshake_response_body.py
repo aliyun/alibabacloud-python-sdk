@@ -11,9 +11,9 @@ class DeclineHandshakeResponseBody(DaraModel):
         handshake: main_models.DeclineHandshakeResponseBodyHandshake = None,
         request_id: str = None,
     ):
-        # The information of the invitation.
+        # The handshake information.
         self.handshake = handshake
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,36 +59,36 @@ class DeclineHandshakeResponseBodyHandshake(DaraModel):
         target_entity: str = None,
         target_type: str = None,
     ):
-        # The time when the invitation was created.
+        # The creation time of the handshake in RFC 3339 UTC format, indicated by Z for UTC.
         self.create_time = create_time
-        # The time when the invitation expires.
+        # The expiration time of the handshake in RFC 3339 UTC format, indicated by Z for UTC.
         self.expire_time = expire_time
-        # The ID of the invitation.
+        # The handshake ID.
         self.handshake_id = handshake_id
-        # The ID of the enterprise management account of the resource directory.
+        # The ID of the management account of the resource directory.
         self.master_account_id = master_account_id
-        # The name of the enterprise management account of the resource directory.
+        # The name of the management account of the resource directory.
         self.master_account_name = master_account_name
-        # The time when the invitation was modified.
+        # The modification time of the handshake in RFC 3339 UTC format, indicated by Z for UTC.
         self.modify_time = modify_time
-        # The invitation note.
+        # The remarks.
         self.note = note
-        # The ID of the resource directory.
+        # The resource directory ID.
         self.resource_directory_id = resource_directory_id
-        # The status of the invitation. Valid values:
+        # The handshake status. Valid values:
         # 
-        # *   Pending: The invitation is waiting for confirmation.
-        # *   Accepted: The invitation is accepted.
-        # *   Cancelled: The invitation is canceled.
-        # *   Declined: The invitation is rejected.
-        # *   Expired: The invitation expired.
+        # - Pending: Waiting for confirmation.
+        # - Accepted: Accepted.
+        # - Cancelled: Cancelled.
+        # - Declined: Declined.
+        # - Expired: Expired.
         self.status = status
         # The ID or logon email address of the invited account.
         self.target_entity = target_entity
         # The type of the invited account. Valid values:
         # 
-        # *   Account: indicates the ID of the account.
-        # *   Email: indicates the logon email address of the account.
+        # - Account: account ID.
+        # - Email: account logon email address.
         self.target_type = target_type
 
     def validate(self):

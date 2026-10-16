@@ -10,15 +10,15 @@ class DeletePolicyVersionRequest(DaraModel):
         policy_name: str = None,
         version_id: str = None,
     ):
-        # The name of the permission policy.
+        # Policy Name of the access policy.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, and hyphen (-).
+        # Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.policy_name = policy_name
-        # The ID of the policy version.
+        # The ID of the access policy version.
         # 
-        # You can call the [ListPolicyVersions](https://help.aliyun.com/document_detail/159982.html) operation to query the ID.
+        # You can call [ListPolicyVersions](https://help.aliyun.com/document_detail/159982.html) to query access policy version IDs.
         # 
         # This parameter is required.
         self.version_id = version_id

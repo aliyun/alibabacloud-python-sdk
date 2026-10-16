@@ -9,9 +9,9 @@ class DeleteResourceGroupRequest(DaraModel):
         self,
         resource_group_id: str = None,
     ):
-        # The ID of the resource group.
+        # The resource group ID.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the ID.
+        # You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query the resource group ID.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id

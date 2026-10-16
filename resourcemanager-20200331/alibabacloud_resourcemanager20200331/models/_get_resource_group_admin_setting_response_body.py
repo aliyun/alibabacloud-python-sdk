@@ -10,7 +10,7 @@ class GetResourceGroupAdminSettingResponseBody(DaraModel):
         creator_as_admin: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether enable the Use Creator as Administrator feature.
+        # Indicates whether the resource group creator is set as the resource group administrator.
         self.creator_as_admin = creator_as_admin
         # The request ID.
         self.request_id = request_id

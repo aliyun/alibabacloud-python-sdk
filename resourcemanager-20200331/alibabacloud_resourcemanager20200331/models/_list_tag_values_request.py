@@ -13,7 +13,7 @@ class ListTagValuesRequest(DaraModel):
         tag_key: str = None,
         value_filter: str = None,
     ):
-        # The maximum number of entries to return for a single request.
+        # The maximum number of entries to return in a single request.
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
@@ -21,15 +21,15 @@ class ListTagValuesRequest(DaraModel):
         self.next_token = next_token
         # The resource type.
         # 
-        # The value Account indicates the members of the resource directory.
+        # Set the value to Account, which indicates a member of a resource directory.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag key. This parameter specifies a filter condition for the query.
+        # The tag key that is used as a filter condition for the query.
         # 
         # This parameter is required.
         self.tag_key = tag_key
-        # The tag value for a fuzzy query.
+        # The tag value for fuzzy match.
         self.value_filter = value_filter
 
     def validate(self):

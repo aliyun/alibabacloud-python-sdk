@@ -10,15 +10,15 @@ class GetControlPolicyRequest(DaraModel):
         language: str = None,
         policy_id: str = None,
     ):
-        # The language in which you want to return the description of the access control policy. Valid values:
+        # The language in which the control policy description is returned. Valid values:
         # 
-        # *   zh-CN (default value): Chinese
-        # *   en: English
-        # *   ja: Japanese
+        # - zh-CN (default): Chinese.
+        # - en: English.
+        # - ja: Japanese.
         # 
-        # >  This parameter is valid only for system access control policies.
+        # > This parameter is valid only for system control policies.
         self.language = language
-        # The ID of the access control policy.
+        # The ID of the control policy.
         # 
         # This parameter is required.
         self.policy_id = policy_id

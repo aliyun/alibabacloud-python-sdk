@@ -14,29 +14,28 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the specified resource groups or members. Valid values:
-        # 
-        # *   false (default value)
-        # *   true
+        # Specifies whether to unbind all tags from the specified resource group or resource directory member. Valid values:
+        # - false (default): No.
+        # - true: Yes.
         self.all = all
-        # The ID of a resource group or member.
+        # The ID of the resource group or resource directory member.
         # 
-        # You can specify a maximum of 50 IDs.
+        # You can specify up to 50 IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the objects from which you want to remove tags. Valid values:
+        # The resource type. Valid values:
         # 
-        # *   ResourceGroup: resource group. This is the default value.
-        # *   Account: member.
+        # - ResourceGroup (default): Unbinds tags from a resource group.
+        # - Account: Unbinds tags from a resource directory member.
         # 
-        # >  This parameter is required if you remove tags from members in a resource directory.
+        # > This parameter is required when you unbind tags from a resource directory member.
         self.resource_type = resource_type
-        # A tag key.
+        # The tag key.
         # 
-        # You can specify a maximum of 20 tag keys.
+        # You can unbind up to 20 tag keys.
         # 
-        # >  If you set the `All` parameter to `true`, you do not need to configure this parameter.
+        # > If the `All` parameter for unbinding all tags is set to `true`, you do not need to specify tag keys.
         self.tag_key = tag_key
 
     def validate(self):

@@ -10,19 +10,19 @@ class ListControlPolicyAttachmentsForTargetRequest(DaraModel):
         language: str = None,
         target_id: str = None,
     ):
-        # The language in which you want to return the descriptions of the access control policies. Valid values:
+        # The language in which the control policy descriptions are returned. Valid values:
         # 
-        # *   zh-CN (default value): Chinese
-        # *   en: English
-        # *   ja: Japanese
+        # - zh-CN (default): Chinese.
+        # - en: English.
+        # - ja: Japanese.
         # 
-        # >  This parameter is valid only for system access control policies.
+        # > This parameter is valid only for system control policies.
         self.language = language
-        # The ID of the object whose access control policies you want to query. Access control policies can be attached to the following objects:
+        # The target node. Valid values:
         # 
-        # *   Root folder
-        # *   Subfolders of the Root folder
-        # *   Members
+        # - Root ID: queries the control policies attached to the Root node.
+        # - Resource folder ID: queries the control policies attached to a resource folder.
+        # - Member ID: queries the control policies attached to a member.
         # 
         # This parameter is required.
         self.target_id = target_id

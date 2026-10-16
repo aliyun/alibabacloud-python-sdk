@@ -9,7 +9,7 @@ class GetPayerForAccountRequest(DaraModel):
         self,
         account_id: str = None,
     ):
-        # The ID of the account.
+        # The ID of the member account.
         # 
         # This parameter is required.
         self.account_id = account_id

@@ -10,9 +10,9 @@ class CreateFolderRequest(DaraModel):
         folder_name: str = None,
         parent_folder_id: str = None,
     ):
-        # The name of the folder.
+        # The name of the resource folder.
         # 
-        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.),and hyphens (-).
+        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.folder_name = folder_name
