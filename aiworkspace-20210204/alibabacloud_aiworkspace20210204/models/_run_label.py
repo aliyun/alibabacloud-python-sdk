@@ -13,17 +13,17 @@ class RunLabel(DaraModel):
         run_id: str = None,
         value: str = None,
     ):
-        # Time when the label was created
+        # The creation time.
         self.gmt_create_time = gmt_create_time
-        # Time when the label was last modified
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
-        # Key of the label
+        # The tag key.
         # 
         # This parameter is required.
         self.key = key
-        # ID of the Run that owns this label
+        # The associated Run ID.
         self.run_id = run_id
-        # Value of the label
+        # The tag value.
         # 
         # This parameter is required.
         self.value = value

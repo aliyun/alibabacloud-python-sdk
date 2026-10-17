@@ -26,21 +26,21 @@ class Run(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The visibility of the run.
+        # The accessibility.
         self.accessibility = accessibility
         # The ID of the experiment associated with the run.
         self.experiment_id = experiment_id
-        # The time when the run was created.
+        # The creation time.
         self.gmt_create_time = gmt_create_time
-        # The time when the run was last modified.
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
         # The list of labels for the run.
         self.labels = labels
         # The list of metrics for the run.
         self.metrics = metrics
-        # Name
+        # The name.
         self.name = name
-        # The ID of the owner\\"s root account.
+        # The Alibaba Cloud account ID of the owner.
         self.owner_id = owner_id
         # The list of hyperparameters for the run.
         self.params = params

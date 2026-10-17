@@ -10,31 +10,31 @@ class ListConfigsRequest(DaraModel):
         category_name: str = None,
         config_keys: str = None,
         labels: str = None,
+        options: str = None,
         verbose: str = None,
     ):
-        # The category of the configuration item. The following categories are supported:
-        # 
-        # - CommonResourceConfig: common resource configuration.
-        # - DLCAutoRecycle: DLC automatic recycling.
-        # - DLCPriorityConfig: DLC priority settings.
-        # - DSWPriorityConfig: DSW priority settings.
-        # - QuotaMaximumDuration: maximum runtime duration configuration for DLC jobs in a quota.
-        # - CommonTagConfig: tag settings.
+        # The categorization of the configuration item. Valid values:
+        # - CommonResourceConfig: general resource configuration
+        # - DLCAutoRecycle: automatic DLC revoke
+        # - DLCPriorityConfig: DLC priority settings
+        # - DSWPriorityConfig: DSW priority settings
+        # - QuotaMaximumDuration: maximum runtime configuration of DLC nodes for a quota
+        # - CommonTagConfig: label settings
         self.category_name = category_name
-        # The keys of the configuration items. The following keys are supported:
-        # 
-        # - tempStoragePath: the temporary storage path. This ConfigKey can be used only when CategoryName is set to CommonResourceConfig.
-        # - isAutoRecycle: the automatic recycling configuration. This ConfigKey can be used only when CategoryName is set to DLCAutoRecycle.
-        # - priorityConfig: the priority configuration. This ConfigKey can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # - quotaMaximumDuration: the maximum runtime duration configuration for DLC jobs in a quota. This ConfigKey can be used only when CategoryName is set to QuotaMaximumDuration.
-        # - predefinedTags: the preset tags for the workspace. Resources that are created must include these tags.
+        # The keys of the configuration items. Valid values:
+        # - tempStoragePath: Temporary storage path. This key is allowed only when CategoryName is set to CommonResourceConfig.
+        # - isAutoRecycle: Automatic revoke configuration. This key is allowed only when CategoryName is set to DLCAutoRecycle.
+        # - priorityConfig: Priority configuration. This key is allowed only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # - quotaMaximumDuration: Maximum runtime configuration of DLC nodes for a quota. This key is allowed only when CategoryName is set to QuotaMaximumDuration.
+        # - predefinedTags: Preset labels for the workspace. Resources created must have these labels.
         self.config_keys = config_keys
-        # The labels used as filter conditions. Separate multiple conditions with commas. These conditions are evaluated using a logical AND.
+        # The labels used as filter conditions. Separate multiple conditions with commas. These conditions are combined by using the AND operator.
         self.labels = labels
+        # The additional options. Currently, only ThrowExceptionOnError is supported, which indicates that an error is thrown when an exception occurs.
+        self.options = options
         # Specifies whether to display label information. Valid values:
-        # 
-        # - true: Display label information.
-        # - false: Do not display label information.
+        # - true: Displays label information.
+        # - false: Does not display label information.
         self.verbose = verbose
 
     def validate(self):
@@ -54,6 +54,9 @@ class ListConfigsRequest(DaraModel):
         if self.labels is not None:
             result['Labels'] = self.labels
 
+        if self.options is not None:
+            result['Options'] = self.options
+
         if self.verbose is not None:
             result['Verbose'] = self.verbose
 
@@ -69,6 +72,9 @@ class ListConfigsRequest(DaraModel):
 
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
 
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')

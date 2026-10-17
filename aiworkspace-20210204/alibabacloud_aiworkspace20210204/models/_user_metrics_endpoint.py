@@ -10,7 +10,9 @@ class UserMetricsEndpoint(DaraModel):
         path: str = None,
         port: int = None,
     ):
+        # The HTTP path of the metric collection API.
         self.path = path
+        # The port number on which the metric collection service listens.
         self.port = port
 
     def validate(self):

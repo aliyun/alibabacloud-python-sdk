@@ -34,11 +34,11 @@ class Experiment(DaraModel):
         self.gmt_create_time = gmt_create_time
         # The time when the experiment was last modified.
         self.gmt_modified_time = gmt_modified_time
-        # The list of labels for the experiment.
+        # The list of experiment labels.
         self.labels = labels
-        # LatestRun
+        # The information about the latest run associated with the experiment.
         self.latest_run = latest_run
-        # The name of the experiment.
+        # The experiment name.
         self.name = name
         # The Alibaba Cloud account ID of the experiment owner.
         self.owner_id = owner_id

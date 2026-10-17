@@ -18,7 +18,7 @@ class ListConfigsResponseBody(DaraModel):
         self.configs = configs
         # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of returned items.
         self.total_count = total_count
 
     def validate(self):
@@ -73,19 +73,18 @@ class ListConfigsResponseBodyConfigs(DaraModel):
     ):
         # The configuration ID, which is globally unique.
         self.config_id = config_id
-        # The key of the configuration item. The following keys are supported:
-        # 
-        # - tempStoragePath: the temporary storage path. This ConfigKey can be used only when CategoryName is set to CommonResourceConfig.
-        # - isAutoRecycle: the automatic recycling configuration. This ConfigKey can be used only when CategoryName is set to DLCAutoRecycle.
-        # - priorityConfig: the priority configuration. This ConfigKey can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # - quotaMaximumDuration: the maximum runtime duration configuration for DLC jobs in a quota. This ConfigKey can be used only when CategoryName is set to QuotaMaximumDuration.
-        # - predefinedTags: the preset tags for the workspace. Resources that are created must include these tags.
+        # The key of the configuration item. Valid values:
+        # - tempStoragePath: Temporary storage path. This key is allowed only when CategoryName is set to CommonResourceConfig.
+        # - isAutoRecycle: Automatic revoke configuration. This key is allowed only when CategoryName is set to DLCAutoRecycle.
+        # - priorityConfig: Priority configuration. This key is allowed only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # - quotaMaximumDuration: Maximum runtime configuration of DLC nodes for a quota. This key is allowed only when CategoryName is set to QuotaMaximumDuration.
+        # - predefinedTags: Preset labels for the workspace. Resources created must have these labels.
         self.config_key = config_key
         # The configuration value.
         self.config_value = config_value
         # The UTC time when the configuration item was created.
         self.gmt_create_time = gmt_create_time
-        # The UTC time when the configuration item was last modified.
+        # The UTC time when the configuration item was modified.
         self.gmt_modified_time = gmt_modified_time
         # The list of labels for the configuration item.
         self.labels = labels

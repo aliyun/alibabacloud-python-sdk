@@ -6507,6 +6507,8 @@ class Client(OpenApiClient):
             query['ConfigKeys'] = request.config_keys
         if not DaraCore.is_null(request.labels):
             query['Labels'] = request.labels
+        if not DaraCore.is_null(request.options):
+            query['Options'] = request.options
         if not DaraCore.is_null(request.verbose):
             query['Verbose'] = request.verbose
         req = open_api_util_models.OpenApiRequest(
@@ -6544,6 +6546,8 @@ class Client(OpenApiClient):
             query['ConfigKeys'] = request.config_keys
         if not DaraCore.is_null(request.labels):
             query['Labels'] = request.labels
+        if not DaraCore.is_null(request.options):
+            query['Options'] = request.options
         if not DaraCore.is_null(request.verbose):
             query['Verbose'] = request.verbose
         req = open_api_util_models.OpenApiRequest(

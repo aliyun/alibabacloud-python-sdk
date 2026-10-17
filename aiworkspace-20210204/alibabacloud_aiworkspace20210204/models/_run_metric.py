@@ -16,9 +16,9 @@ class RunMetric(DaraModel):
         # 
         # This parameter is required.
         self.key = key
-        # The step when the metric was recorded.
+        # The step count at which the metric is generated.
         self.step = step
-        # The timestamp when the metric was recorded.
+        # The timestamp at which the metric is generated.
         self.timestamp = timestamp
         # The metric value.
         # 

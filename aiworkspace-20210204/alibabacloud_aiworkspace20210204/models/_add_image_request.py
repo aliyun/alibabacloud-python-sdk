@@ -24,19 +24,20 @@ class AddImageRequest(DaraModel):
     ):
         # The visibility of the image. Valid values:
         # 
-        # - PUBLIC: All members in the current workspace can access the image.
-        # - PRIVATE: Only the creator can access the image.
+        # - PUBLIC: All members in the current workspace can manage the image.
+        # - PRIVATE: Only the creator can manage the image.
         self.accessibility = accessibility
         # The description of the image.
         self.description = description
-        # The image ID. If you do not specify this parameter, the system automatically generates one. The format is image- followed by 18 uppercase or lowercase letters or digits.
+        # The ID of the image. If you do not specify this parameter, the system automatically generates an image ID.
+        # The format is image- followed by 18 uppercase or lowercase letters or digits.
         self.image_id = image_id
-        # The image URI, which can be duplicated. For information about how to view the image URI, see [ListImage](https://help.aliyun.com/document_detail/449118.html).
+        # The URI of the image. The URI can be duplicated. For more information about how to view the image URI, see [ListImage](https://help.aliyun.com/document_detail/449118.html).
         # 
         # This parameter is required.
         self.image_uri = image_uri
-        # The image labels. This is an array in which each item contains a key field and a value field.
-        # Official images have the following label: system.official=true
+        # The labels of the image. This parameter is an array, and each item in the array contains the key and value fields.
+        # Official images have the following label: system.official=true.
         # The following keys are supported:
         # 
         # - system.chipType
@@ -58,24 +59,24 @@ class AddImageRequest(DaraModel):
         # - system.supported.dlc
         # - system.supported.dsw
         self.labels = labels
-        # The image name. Naming rules:
+        # The name of the image. The naming rules are as follows:
         # - The name must be 1 to 50 characters in length.
         # - The name can contain lowercase letters, digits, and hyphens (-), and must start with a letter.
         # - The name must be unique within the same workspace.
         # 
         # This parameter is required.
         self.name = name
-        # The image size, in GB.
+        # The size of the image. Unit: GB.
         self.size = size
-        # The image source ID. If the image source type is Build, the source ID corresponds to the image build ID.
+        # The source ID of the image. If the source type of the image is Build, the source ID is the image build ID.
         self.source_id = source_id
-        # The image source type. Valid values:
-        # - Import: import.
-        # - Build: generate.
+        # The source type of the image. Valid values:
+        # - Import: The image is imported.
+        # - Build: The image is built.
         self.source_type = source_type
         # The user ID (UID) of the image creator.
         self.user_id = user_id
-        # The ID of the workspace to which the image belongs. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The ID of the workspace to which the image belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):
