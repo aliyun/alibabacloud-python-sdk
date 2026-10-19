@@ -36,6 +36,9 @@ from ._associate_ens_eip_address_response import AssociateEnsEipAddressResponse
 from ._associate_ha_vip_request import AssociateHaVipRequest
 from ._associate_ha_vip_response_body import AssociateHaVipResponseBody
 from ._associate_ha_vip_response import AssociateHaVipResponse
+from ._associate_network_cidr_block_request import AssociateNetworkCidrBlockRequest
+from ._associate_network_cidr_block_response_body import AssociateNetworkCidrBlockResponseBody
+from ._associate_network_cidr_block_response import AssociateNetworkCidrBlockResponse
 from ._attach_disk_request import AttachDiskRequest
 from ._attach_disk_response_body import AttachDiskResponseBody
 from ._attach_disk_response import AttachDiskResponse
@@ -1046,6 +1049,9 @@ from ._unassociate_ha_vip_response import UnassociateHaVipResponse
 from ._unassociate_network_acl_request import UnassociateNetworkAclRequest
 from ._unassociate_network_acl_response_body import UnassociateNetworkAclResponseBody
 from ._unassociate_network_acl_response import UnassociateNetworkAclResponse
+from ._unassociate_network_cidr_block_request import UnassociateNetworkCidrBlockRequest
+from ._unassociate_network_cidr_block_response_body import UnassociateNetworkCidrBlockResponseBody
+from ._unassociate_network_cidr_block_response import UnassociateNetworkCidrBlockResponse
 from ._unload_region_sdgrequest import UnloadRegionSDGRequest
 from ._unload_region_sdgshrink_request import UnloadRegionSDGShrinkRequest
 from ._unload_region_sdgresponse_body import UnloadRegionSDGResponseBody
@@ -1586,6 +1592,9 @@ __all__ = [
     AssociateHaVipRequest,
     AssociateHaVipResponseBody,
     AssociateHaVipResponse,
+    AssociateNetworkCidrBlockRequest,
+    AssociateNetworkCidrBlockResponseBody,
+    AssociateNetworkCidrBlockResponse,
     AttachDiskRequest,
     AttachDiskResponseBody,
     AttachDiskResponse,
@@ -2596,6 +2605,9 @@ __all__ = [
     UnassociateNetworkAclRequest,
     UnassociateNetworkAclResponseBody,
     UnassociateNetworkAclResponse,
+    UnassociateNetworkCidrBlockRequest,
+    UnassociateNetworkCidrBlockResponseBody,
+    UnassociateNetworkCidrBlockResponse,
     UnloadRegionSDGRequest,
     UnloadRegionSDGShrinkRequest,
     UnloadRegionSDGResponseBody,

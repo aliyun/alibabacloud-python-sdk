@@ -9,7 +9,7 @@ class DescribeVSwitchAttributesRequest(DaraModel):
         self,
         v_switch_id: str = None,
     ):
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

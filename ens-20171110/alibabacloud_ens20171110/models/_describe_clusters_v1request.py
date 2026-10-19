@@ -13,13 +13,15 @@ class DescribeClustersV1Request(DaraModel):
         name: str = None,
         profile: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The cluster type. Valid values: Kubernetes and ManagedKubernetes. A value of Kubernetes indicates an ECK cluster. A value of ManagedKubernetes indicates a serverless virtual cluster. This parameter must be used together with the profile parameter.
         self.cluster_type = cluster_type
-        # The ENS region ID where the cluster resides.
+        # The ENS region ID of the cluster.
         self.ens_region_id = ens_region_id
-        # The cluster name.
+        # The name of the cluster.
         self.name = name
+        # The cluster profile. Valid values: Default and Serverless. A value of Default indicates an ECK cluster. A value of Serverless indicates a serverless virtual cluster. This parameter must be used together with the cluster_type parameter.
         self.profile = profile
 
     def validate(self):

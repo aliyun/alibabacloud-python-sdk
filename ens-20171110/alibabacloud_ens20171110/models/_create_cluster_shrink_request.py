@@ -23,42 +23,46 @@ class CreateClusterShrinkRequest(DaraModel):
         vpc_id: str = None,
         vswitch_ids_shrink: str = None,
     ):
-        # Kubernetes or ManagedKubernetes. The former indicates an ECK cluster, and the latter indicates a serverless VC.
-        # Must be used together with the profile parameter.
+        # Kubernetes or ManagedKubernetes. The former indicates an ECK cluster, and the latter indicates a serverless VC. This parameter must be used together with the Profile parameter.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
-        # The pod network CIDR block. The CIDR block must be a valid private CIDR block, which includes the following CIDR blocks and their subnets: 10.0.0.0/8, 172.16-31.0.0/12-16, and 192.168.0.0/16. The CIDR block cannot overlap with the CIDR blocks used by the VPC or existing Kubernetes clusters in the VPC. You cannot modify the CIDR block after the cluster is created.
+        # The CIDR block for pods. It must be a valid private CIDR block, such as 10.0.0.0/8, 172.16.0.0/12 to 172.31.0.0/16, or 192.168.0.0/16, and their subnets. The CIDR block cannot overlap with the CIDR block of the VPC or the CIDR blocks used by existing Kubernetes clusters in the VPC. The CIDR block cannot be modified after the cluster is created.
         self.container_cidr = container_cidr
         # The control plane configuration.
         self.control_plane_config_shrink = control_plane_config_shrink
-        # The ENS Region ID of the cluster.
+        # The ID of the Edge Node Service (ENS) region where the cluster is deployed.
         self.ens_region_id = ens_region_id
+        # The Internet service provider (ISP) information. Valid values:
+        # 
+        # - **cmcc**: China Mobile.
+        # - **unicom**: China Unicom.
+        # - **telecom**: China Telecom.
         self.isp = isp
-        # The cluster version, which is consistent with the Kubernetes community baseline version. Select the latest version. If you do not specify this parameter, the latest version is used by default.
+        # The Kubernetes version of the cluster. The version aligns with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
         self.kubernetes_version = kubernetes_version
-        # The ID of the CLB instance used for API Server access. If you specify this parameter, automatic creation of a CLB instance for the API Server is skipped.
+        # The ID of the Classic Load Balancer (CLB) instance used for API server access. If you specify this parameter, automatic creation of a CLB instance for the API server is skipped.
         self.load_balancer_id = load_balancer_id
-        # The cluster name.
+        # The name of the cluster.
         self.name = name
+        # The ID of the NAT gateway used by the cluster. If you specify this parameter, automatic creation of a NAT gateway is skipped.
         self.nat_gateway_id = nat_gateway_id
-        # Each pod vSwitch corresponds to a worker node vSwitch. The zone of the pod vSwitch must be the same as that of the worker node vSwitch. If you do not specify this parameter, vswitch_ids is used by default.
+        # The IDs of the pod vSwitches. Each pod vSwitch corresponds to a worker node vSwitch. The pod vSwitch and the worker node vSwitch must be in the same zone. If you do not specify this parameter, the vSwitches specified by the VswitchIds parameter are used by default.
         self.pod_vswitch_ids_shrink = pod_vswitch_ids_shrink
-        # Default or Serverless. The former indicates an ECK cluster, and the latter indicates a serverless VC.
-        # Must be used together with the cluster_type parameter.
+        # Default or Serverless. The former indicates an ECK cluster, and the latter indicates a serverless VC. This parameter must be used together with the ClusterType parameter.
         # 
         # This parameter is required.
         self.profile = profile
-        # Specifies whether to enable public network access. The API Server is exposed through an EIP to enable public access to the cluster.
-        # ● true: Enable public network access.
-        # ● false: Disable public network access. If you select this option, you cannot access the cluster API Server from the Internet.
+        # Specifies whether to enable public network access. You can expose the API server by using an elastic IP address (EIP) to enable public network access to the cluster. Valid values:
+        # - true: enables public network access.
+        # - false: disables public network access. If you select false, you cannot access the API server of the cluster over the Internet.
         # Default value: false.
         self.public_access = public_access
-        # The service network CIDR block. Valid ranges: 10.0.0.0/16-24, 172.16-31.0.0/16-24, and 192.168.0.0/16-24. The CIDR block cannot overlap with the VPC CIDR block 10.1.0.0/21 or the CIDR blocks used by existing Kubernetes clusters in the VPC. You cannot modify the CIDR block after the cluster is created.
+        # The CIDR block for Services. Valid ranges include 10.0.0.0/16 to 10.0.0.0/24, 172.16.0.0/16 to 172.31.0.0/24, and 192.168.0.0/16 to 192.168.0.0/24. The CIDR block cannot overlap with the VPC CIDR block 10.1.0.0/21 or the CIDR blocks used by existing Kubernetes clusters in the VPC. The CIDR block cannot be modified after the cluster is created.
         self.service_cidr = service_cidr
-        # The VPC used by the cluster.
+        # The ID of the virtual private cloud (VPC) used by the cluster.
         self.vpc_id = vpc_id
-        # The IDs of the vSwitches for cluster nodes. The ENS Region of the vswitch_ids must be the same as the ens_region_id value.
+        # The IDs of the vSwitches where the cluster nodes are deployed. The ENS region of the vSwitches must be the same as the ENS region specified by the EnsRegionId parameter.
         self.vswitch_ids_shrink = vswitch_ids_shrink
 
     def validate(self):

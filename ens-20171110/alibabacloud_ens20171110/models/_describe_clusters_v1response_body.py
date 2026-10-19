@@ -76,40 +76,41 @@ class DescribeClustersV1ResponseBodyClusters(DaraModel):
     ):
         # The user ID.
         self.ali_uid = ali_uid
-        # The cluster instance ID.
+        # The instance ID of the cluster.
         self.cluster_id = cluster_id
-        # The cluster kubeconfig.
+        # The kubeconfig of the cluster.
         self.config = config
-        # The pod network CIDR block. The value must be a valid private CIDR block, which includes the following CIDR blocks and their subnets: 10.0.0.0/8, 172.16-31.0.0/12-16, and 192.168.0.0/16. The CIDR block cannot overlap with the VPC CIDR block or the CIDR blocks used by existing Kubernetes clusters in the VPC. You cannot modify this value after the cluster is created.
+        # The CIDR block for pods. It must be a valid private CIDR block, specifically one of the following CIDR blocks or their subnets: 10.0.0.0/8, 172.16.0.0/12 to 172.31.0.0/16, and 192.168.0.0/16. The CIDR block cannot overlap with the CIDR block of the VPC or the CIDR blocks used by existing Kubernetes clusters in the VPC. The CIDR block cannot be modified after the cluster is created.
         self.container_cidr = container_cidr
-        # The control plane configuration.
+        # The configuration of the control plane.
         self.control_plane_config = control_plane_config
+        # The time when the cluster was created.
         self.created = created
-        # The ENS node ID.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
+        # The ISP information.
         self.isp = isp
-        # The authentication token for cluster access.
+        # The authentication token for joining the cluster.
         self.join_token = join_token
-        # The cluster version, which is consistent with the Kubernetes community baseline version. Use the latest version. If you do not specify this parameter, the latest version is used by default.
+        # The Kubernetes version of the cluster, which aligns with the Kubernetes community baseline version. Select the latest version. If this parameter is not specified, the latest version is used by default.
         self.kubernetes_version = kubernetes_version
         # The load balancing instance ID.
         self.load_balancer_id = load_balancer_id
-        # The cluster name.
+        # The name of the cluster.
         self.name = name
-        # The vSwitch IDs for pods. Each pod vSwitch corresponds to a worker node vSwitch, and the zones of the pod vSwitch and the worker node vSwitch must be the same. If you leave this parameter empty, the value of vswitch_ids is used by default.
+        # The IDs of the vSwitches for pods. Each pod vSwitch corresponds to a worker node vSwitch. The pod vSwitch and the worker node vSwitch must be in the same zone. If this parameter is not specified, the value of vswitch_ids is used by default.
         self.pod_vswitch_ids = pod_vswitch_ids
-        # Indicates whether public network access is enabled. The API Server is exposed through an EIP to enable public access to the cluster. Valid values:
-        # 
-        # - true: Public network access is enabled.
-        # - false: Public network access is disabled. If you select this option, the cluster API Server cannot be accessed from the Internet.
+        # Specifies whether to enable public network access. An elastic IP address (EIP) is used to expose the API server to enable public access to the cluster. Valid values:
+        # - true: enables public network access.
+        # - false: disables public network access. If you set this parameter to false, you cannot access the API server of the cluster over the Internet.
         self.public_access = public_access
-        # The service network CIDR block. Valid ranges: 10.0.0.0/16-24, 172.16-31.0.0/16-24, and 192.168.0.0/16-24. The CIDR block cannot overlap with the VPC CIDR block 10.1.0.0/21 or the CIDR blocks used by existing Kubernetes clusters in the VPC. You cannot modify this value after the cluster is created.
+        # The CIDR block for services. Valid CIDR blocks: 10.0.0.0/16 to 10.0.0.0/24, 172.16.0.0/16 to 172.31.0.0/24, and 192.168.0.0/16 to 192.168.0.0/24. The CIDR block cannot overlap with the VPC CIDR block 10.1.0.0/21 or the CIDR blocks used by existing Kubernetes clusters in the VPC. The CIDR block cannot be modified after the cluster is created.
         self.service_cidr = service_cidr
-        # The cluster status.
+        # The status of the cluster.
         self.state = state
         # The VPC used by the cluster.
         self.vpc_id = vpc_id
-        # The vSwitch IDs of the cluster nodes. The ENS region of the vSwitch IDs must be the same as the value of ens_region_id.
+        # The IDs of the vSwitches where the cluster nodes reside. The ENS region of the vSwitches must be the same as the value of ens_region_id.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -247,19 +248,19 @@ class DescribeClustersV1ResponseBodyClustersControlPlaneConfig(DaraModel):
         system_disk_category: str = None,
         system_disk_size: int = None,
     ):
-        # The container runtime type.
+        # The type of the container runtime.
         self.container_runtime = container_runtime
-        # The image ID.
+        # The ID of the image.
         self.image_id = image_id
         # The instance type.
         self.instance_spec = instance_spec
-        # The node service port range.
+        # The edge zone service port range.
         self.node_port_range = node_port_range
         # The number of control plane nodes.
         self.size = size
-        # The system cloud disk type of the node. Valid values: local_ssd, cloud_ssd, cloud_efficiency, and local_hdd.
+        # The category of the system cloud disk for nodes. Valid values: local_ssd, cloud_ssd, cloud_efficiency, and local_hdd.
         self.system_disk_category = system_disk_category
-        # The system cloud disk size. Unit: GB.
+        # The size of the system cloud disk. Unit: GB.
         self.system_disk_size = system_disk_size
 
     def validate(self):

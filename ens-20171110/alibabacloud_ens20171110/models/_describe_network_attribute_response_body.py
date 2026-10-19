@@ -36,11 +36,11 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
         # The IPv4 CIDR block of the network.
         self.cidr_block = cidr_block
         self.cloud_resources = cloud_resources
-        # The time at which the network was created. The time is in UTC and is formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The creation time. The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format.
         self.created_time = created_time
         # The description of the network.
         self.description = description
-        # The ID of the ENS node.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
         # The gateway route table ID.
         self.gateway_route_table_id = gateway_route_table_id
@@ -66,9 +66,8 @@ class DescribeNetworkAttributeResponseBody(DaraModel):
         self.secondary_cidr_blocks = secondary_cidr_blocks
         # The status of the network. Valid values:
         # 
-        # - Pending: The network is being configured.
-        # 
-        # - Available: The network is ready for use.
+        # - Pending: Configuring.
+        # - Available: Available.
         self.status = status
         self.v_switch_ids = v_switch_ids
 

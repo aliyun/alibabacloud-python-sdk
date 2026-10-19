@@ -17,13 +17,13 @@ class DescribeNetworksResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.networks = networks
-        # Current page number.
+        # The page number of the current query.
         self.page_number = page_number
-        # Number of entries per page in the current query.
+        # The number of entries per page in the current query.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of entries.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):

@@ -10,11 +10,11 @@ class ShareAICImageShrinkRequest(DaraModel):
         image_id: str = None,
         users_shrink: str = None,
     ):
-        # The image name.
+        # The ID of the AIC image. You can call DescribeAICImages to obtain the ID.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The user group.
+        # The user groups.
         # 
         # This parameter is required.
         self.users_shrink = users_shrink

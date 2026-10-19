@@ -591,6 +591,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.associate_ha_vip_with_options_async(request, runtime)
 
+    def associate_network_cidr_block_with_options(
+        self,
+        request: main_models.AssociateNetworkCidrBlockRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateNetworkCidrBlockResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not DaraCore.is_null(request.ipv_6isp):
+            query['Ipv6Isp'] = request.ipv_6isp
+        if not DaraCore.is_null(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not DaraCore.is_null(request.secondary_cidr_block):
+            query['SecondaryCidrBlock'] = request.secondary_cidr_block
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateNetworkCidrBlock',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateNetworkCidrBlockResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_network_cidr_block_with_options_async(
+        self,
+        request: main_models.AssociateNetworkCidrBlockRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateNetworkCidrBlockResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not DaraCore.is_null(request.ipv_6isp):
+            query['Ipv6Isp'] = request.ipv_6isp
+        if not DaraCore.is_null(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not DaraCore.is_null(request.secondary_cidr_block):
+            query['SecondaryCidrBlock'] = request.secondary_cidr_block
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateNetworkCidrBlock',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateNetworkCidrBlockResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_network_cidr_block(
+        self,
+        request: main_models.AssociateNetworkCidrBlockRequest,
+    ) -> main_models.AssociateNetworkCidrBlockResponse:
+        runtime = RuntimeOptions()
+        return self.associate_network_cidr_block_with_options(request, runtime)
+
+    async def associate_network_cidr_block_async(
+        self,
+        request: main_models.AssociateNetworkCidrBlockRequest,
+    ) -> main_models.AssociateNetworkCidrBlockResponse:
+        runtime = RuntimeOptions()
+        return await self.associate_network_cidr_block_with_options_async(request, runtime)
+
     def attach_disk_with_options(
         self,
         request: main_models.AttachDiskRequest,
@@ -26988,6 +27070,84 @@ class Client(OpenApiClient):
     ) -> main_models.UnassociateNetworkAclResponse:
         runtime = RuntimeOptions()
         return await self.unassociate_network_acl_with_options_async(request, runtime)
+
+    def unassociate_network_cidr_block_with_options(
+        self,
+        request: main_models.UnassociateNetworkCidrBlockRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnassociateNetworkCidrBlockResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
+        if not DaraCore.is_null(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not DaraCore.is_null(request.secondary_cidr_block):
+            query['SecondaryCidrBlock'] = request.secondary_cidr_block
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnassociateNetworkCidrBlock',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnassociateNetworkCidrBlockResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unassociate_network_cidr_block_with_options_async(
+        self,
+        request: main_models.UnassociateNetworkCidrBlockRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnassociateNetworkCidrBlockResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ipv_6cidr_block):
+            query['Ipv6CidrBlock'] = request.ipv_6cidr_block
+        if not DaraCore.is_null(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not DaraCore.is_null(request.secondary_cidr_block):
+            query['SecondaryCidrBlock'] = request.secondary_cidr_block
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnassociateNetworkCidrBlock',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnassociateNetworkCidrBlockResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unassociate_network_cidr_block(
+        self,
+        request: main_models.UnassociateNetworkCidrBlockRequest,
+    ) -> main_models.UnassociateNetworkCidrBlockResponse:
+        runtime = RuntimeOptions()
+        return self.unassociate_network_cidr_block_with_options(request, runtime)
+
+    async def unassociate_network_cidr_block_async(
+        self,
+        request: main_models.UnassociateNetworkCidrBlockRequest,
+    ) -> main_models.UnassociateNetworkCidrBlockResponse:
+        runtime = RuntimeOptions()
+        return await self.unassociate_network_cidr_block_with_options_async(request, runtime)
 
     def unload_region_sdgwith_options(
         self,

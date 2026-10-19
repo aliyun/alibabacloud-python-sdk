@@ -18,35 +18,40 @@ class CreateNetworkRequest(DaraModel):
         network_name: str = None,
         tag: List[main_models.CreateNetworkRequestTag] = None,
     ):
-        # The CIDR block of the network. You can use one of the following CIDR blocks or their subsets:
+        # The CIDR block of the network. You can use one of the following CIDR blocks or their subsets as the CIDR block of the network:
         # 
         # - 10.0.0.0/8 (default).
-        # 
         # - 172.16.0.0/12.
-        # 
         # - 192.168.0.0/16.
         # 
         # This parameter is required.
         self.cidr_block = cidr_block
-        # A description of the network.
+        # The description of the network.
         # 
-        # Must be 2 to 256 characters long, start with a letter or a Chinese character, and cannot start with http\\:// or https\\://.
+        # The description must be 2 to 256 characters in length, and must start with a letter or a Chinese character. It cannot start with http:// or https://.
         self.description = description
+        # Specifies whether to enable IPv6. Valid values:
+        # 
+        # - false (default): disables IPv6.
+        # - true: enables IPv6.
         self.enable_ipv_6 = enable_ipv_6
-        # The node ID of ENS.
+        # The ID of the ENS edge zone.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
+        # The ISP of the IPv6 address. Valid values:
+        # 
+        # - cmcc
+        # - telecom
+        # - unicom
         self.ipv_6isp = ipv_6isp
-        # The network name. Follow these naming rules:
+        # The name of the network. The name must meet the following requirements:
         # 
-        # - Must be 2 to 128 characters long, using English or Chinese characters.
-        # 
-        # - Must start with a letter or a Chinese character. Cannot start with http\\:// or https\\://.
-        # 
-        # - Can contain digits, colons (:), underscores (_), or hyphens (-).
+        # - The name must be 2 to 128 characters in length.
+        # - The name must start with a letter or a Chinese character, and cannot start with http:// or https://.
+        # - The name can contain digits, colons (:), underscores (_), and hyphens (-).
         self.network_name = network_name
-        # Resource tags.
+        # The resource tags.
         self.tag = tag
 
     def validate(self):
@@ -119,15 +124,13 @@ class CreateNetworkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key for the instance. N ranges from **1** to **20**.
+        # The key of tag N of the instance. Valid values of N: **1** to **20**.
         # 
-        # - Cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        # 
-        # - Supports up to 64 characters.
-        # 
-        # - Cannot be an empty string.
+        # - The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # - The key can be up to 64 characters in length.
+        # - The key cannot be an empty string.
         self.key = key
-        # The tag value for the resource. N ranges from 1 to 20. This value can be an empty string once provided. It supports up to 128 characters, cannot start with acs:, and cannot contain http\\:// or https\\://.
+        # The value of tag N of the resource. Valid values of N: 1 to 20. The value can be an empty string. The value can be up to 128 characters in length, and cannot start with acs: or contain http:// or https://.
         self.value = value
 
     def validate(self):

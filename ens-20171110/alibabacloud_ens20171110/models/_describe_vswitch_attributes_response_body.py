@@ -31,33 +31,32 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         self.available_ip_address_count = available_ip_address_count
         # The IPv4 CIDR block of the network.
         self.cidr_block = cidr_block
-        # The time when the vSwitch was created. This value uses UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
+        # The creation time. The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format.
         self.created_time = created_time
         # The description of the vSwitch.
         self.description = description
-        # The ID of the ENS edge zone.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
         self.ha_vip_ids = ha_vip_ids
         self.instance_ids = instance_ids
+        # The IPv6 CIDR block of the vSwitch.
         self.ipv_6cidr_block = ipv_6cidr_block
         self.load_balancer_ids = load_balancer_ids
         self.nat_gateway_ids = nat_gateway_ids
-        # The ID of the network.
+        # The network ID.
         self.network_id = network_id
         self.network_interface_ids = network_interface_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The status of the vSwitch. Valid values:
         # 
         # - Pending: The vSwitch is being configured.
-        # 
-        # - Available: The vSwitch is active.
-        # 
+        # - Available: The vSwitch is available.
         # - Releasing: The vSwitch is being released.
         self.status = status
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The name of the vSwitch.
+        # The vSwitch name.
         self.v_switch_name = v_switch_name
 
     def validate(self):

@@ -19,22 +19,27 @@ class DescribeVSwitchesRequest(DaraModel):
         v_switch_ids: List[str] = None,
         v_switch_name: str = None,
     ):
+        # Specifies whether to query vSwitches with IPv6 CIDR blocks enabled. Valid values:
+        # - true: Queries vSwitches with IPv6 CIDR blocks enabled in the specified region.
+        # - false: Does not query vSwitches with IPv6 CIDR blocks enabled in the specified region.
+        # 
+        # If you do not specify this parameter, the system queries all vSwitches by default.
         self.enable_ipv_6 = enable_ipv_6
-        # The ID of the ENS node.
+        # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
-        # The IDs of the ENS nodes. You can specify 1 to 100 IDs.
+        # The array of ENS edge zone IDs. Array length: 1 to 100.
         self.ens_region_ids = ens_region_ids
-        # The ID of the VPC to which the VSwitch belongs.
+        # The ID of the VPC to which the vSwitch to be queried belongs.
         self.network_id = network_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the VSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The IDs of the vSwitches. You can specify 1 to 100 IDs.
+        # The array of vSwitch IDs. Array length: 1 to 100.
         self.v_switch_ids = v_switch_ids
-        # The name of the VSwitch.
+        # The vSwitch name.
         self.v_switch_name = v_switch_name
 
     def validate(self):

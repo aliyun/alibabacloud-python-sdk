@@ -12,7 +12,7 @@ class InstallClusterAddonsResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

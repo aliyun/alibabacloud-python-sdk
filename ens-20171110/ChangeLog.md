@@ -1,3 +1,8 @@
+2026-10-19 Version: 12.1.0
+- Support API AssociateNetworkCidrBlock.
+- Support API UnassociateNetworkCidrBlock.
+
+
 2026-10-14 Version: 12.0.0
 - Update API CreateCluster: add request parameters Isp.
 - Update API CreateCluster: add request parameters NatGatewayId.

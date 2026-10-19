@@ -13,7 +13,7 @@ class ListAddonsResponseBody(DaraModel):
         addons: List[main_models.ListAddonsResponseBodyAddons] = None,
         request_id: str = None,
     ):
-        # A list of component information.
+        # The list of component information.
         self.addons = addons
         # Id of the request
         self.request_id = request_id
@@ -60,13 +60,13 @@ class ListAddonsResponseBodyAddons(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # Indicates whether to automatically clean up associated cloud resources.
+        # Indicates whether associated cloud resources are automatically cleaned up.
         self.cleanup_cloud_resources = cleanup_cloud_resources
-        # The schemas for the custom parameters of the component.
+        # The list of schemas for custom parameters of the component.
         self.config_schema = config_schema
-        # The name of the component.
+        # The component name.
         self.name = name
-        # The version of the component.
+        # The component version.
         self.version = version
 
     def validate(self):
@@ -127,7 +127,7 @@ class ListAddonsResponseBodyAddonsConfigSchema(DaraModel):
         self.app_version = app_version
         # The configuration version.
         self.config_version = config_version
-        # The name of the component.
+        # The component name.
         self.name = name
         # The custom parameters of the component.
         self.params = params

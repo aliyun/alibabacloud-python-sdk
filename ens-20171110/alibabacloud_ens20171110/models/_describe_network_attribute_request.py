@@ -9,7 +9,7 @@ class DescribeNetworkAttributeRequest(DaraModel):
         self,
         network_id: str = None,
     ):
-        # The ID of the network.
+        # The network ID.
         # 
         # This parameter is required.
         self.network_id = network_id

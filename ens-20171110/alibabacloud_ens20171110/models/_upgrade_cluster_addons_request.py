@@ -13,7 +13,7 @@ class UpgradeClusterAddonsRequest(DaraModel):
         addons: List[main_models.UpgradeClusterAddonsRequestAddons] = None,
         cluster_id: str = None,
     ):
-        # The component information.
+        # The add-on information.
         self.addons = addons
         # The cluster ID.
         # 
@@ -61,9 +61,9 @@ class UpgradeClusterAddonsRequestAddons(DaraModel):
         name: str = None,
         next_version: str = None,
     ):
-        # The schema of the custom parameters for the component.
+        # The schema of the custom parameters for the add-on.
         self.config_schema = config_schema
-        # The component name.
+        # The add-on name.
         self.name = name
         # The target version for the upgrade.
         self.next_version = next_version
@@ -120,9 +120,9 @@ class UpgradeClusterAddonsRequestAddonsConfigSchema(DaraModel):
         self.app_version = app_version
         # The configuration version.
         self.config_version = config_version
-        # The component name.
+        # The add-on name.
         self.name = name
-        # The custom parameters for the component.
+        # The custom parameters of the add-on.
         self.params = params
 
     def validate(self):

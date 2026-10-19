@@ -40,43 +40,49 @@ class DescribeClusterDetailResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The cluster kubeconfig.
         self.config = config
-        # The CIDR block for pods.
+        # The pod CIDR block.
         self.container_cidr = container_cidr
         # The control plane configuration.
         self.control_plane_config = control_plane_config
+        # The control plane metadata.
         self.control_plane_meta = control_plane_meta
+        # The time when the cluster was created.
         self.created = created
         # The ENS edge zone ID.
         self.ens_region_id = ens_region_id
+        # The ISP information.
         self.isp = isp
-        # The authentication token for cluster access.
+        # The authentication token for joining the cluster.
         self.join_token = join_token
-        # The cluster version, which is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
+        # The cluster version, which aligns with the Kubernetes community baseline version. Select the latest version. If not specified, the latest version is used by default.
         self.kubernetes_version = kubernetes_version
-        # The CLB instance ID of the API server.
+        # The ID of the Classic Load Balancer (CLB) instance for the API server.
         self.load_balancer_id = load_balancer_id
         # The cluster name.
         self.name = name
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The number of nodes in the cluster.
         self.node_count = node_count
+        # The pod status information of the cluster.
         self.pod_status = pod_status
-        # The vSwitch IDs for pods.
+        # The pod vSwitch IDs.
         self.pod_vswitch_ids = pod_vswitch_ids
         # Indicates whether public network access is enabled.
         self.public_access = public_access
-        # Id of the request。
+        # The ID of the request.
         self.request_id = request_id
-        # The CIDR block for services.
+        # The service CIDR block.
         self.service_cidr = service_cidr
-        # The cluster status. Valid values:
-        # - **initial**: Being created.
+        # The cluster state. Valid values:
+        # - **initial**: Creating.
         # - **failed**: Creation failed.
         # - **running**: Running.
-        # - **deleting**: Being released.
+        # - **deleting**: Releasing.
         self.state = state
         # The VPC used by the cluster.
         self.vpc_id = vpc_id
-        # The vSwitch IDs of the cluster nodes.
+        # The vSwitch IDs where the cluster nodes reside.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -248,7 +254,9 @@ class DescribeClusterDetailResponseBodyPodStatus(DaraModel):
         running: int = None,
         total: int = None,
     ):
+        # The number of pods in the Running state.
         self.running = running
+        # The total number of pods.
         self.total = total
 
     def validate(self):
@@ -283,7 +291,9 @@ class DescribeClusterDetailResponseBodyNodeCount(DaraModel):
         ready: int = None,
         total: int = None,
     ):
+        # The number of ready nodes.
         self.ready = ready
+        # The total number of nodes.
         self.total = total
 
     def validate(self):
@@ -318,7 +328,9 @@ class DescribeClusterDetailResponseBodyControlPlaneMeta(DaraModel):
         master_instances: List[main_models.DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances] = None,
         master_url: main_models.DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl = None,
     ):
+        # The master node information.
         self.master_instances = master_instances
+        # The API server address.
         self.master_url = master_url
 
     def validate(self):
@@ -364,7 +376,9 @@ class DescribeClusterDetailResponseBodyControlPlaneMetaMasterUrl(DaraModel):
         private_url: str = None,
         public_url: str = None,
     ):
+        # The private endpoint of the API server.
         self.private_url = private_url
+        # The public address of the API server.
         self.public_url = public_url
 
     def validate(self):
@@ -400,8 +414,11 @@ class DescribeClusterDetailResponseBodyControlPlaneMetaMasterInstances(DaraModel
         ip: str = None,
         name: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance IP address.
         self.ip = ip
+        # The node name.
         self.name = name
 
     def validate(self):
@@ -447,17 +464,17 @@ class DescribeClusterDetailResponseBodyControlPlaneConfig(DaraModel):
         system_disk_category: str = None,
         system_disk_size: int = None,
     ):
-        # The container runtime type.
+        # The runtime type.
         self.container_runtime = container_runtime
-        # The image ID of the control plane virtual machine.
+        # The ID of the control plane virtual machine image.
         self.image_id = image_id
-        # The node instance type.
+        # The instance type of the node.
         self.instance_spec = instance_spec
         # The node service port range.
         self.node_port_range = node_port_range
         # The number of control plane nodes.
         self.size = size
-        # The system cloud disk type of the node.
+        # The system cloud disk category of the node.
         self.system_disk_category = system_disk_category
         # The system cloud disk size of the node.
         self.system_disk_size = system_disk_size

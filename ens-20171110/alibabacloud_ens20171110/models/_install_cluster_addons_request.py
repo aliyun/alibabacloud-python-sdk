@@ -13,7 +13,7 @@ class InstallClusterAddonsRequest(DaraModel):
         addons: List[main_models.InstallClusterAddonsRequestAddons] = None,
         cluster_id: str = None,
     ):
-        # The component information.
+        # The add-on information.
         # 
         # This parameter is required.
         self.addons = addons
@@ -65,7 +65,7 @@ class InstallClusterAddonsRequestAddons(DaraModel):
     ):
         # The schema for the custom parameters of the component.
         self.config_schema = config_schema
-        # The plug-in name.
+        # The add-on name.
         self.name = name
         # The version number.
         self.version = version
