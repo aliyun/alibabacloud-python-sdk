@@ -48,7 +48,7 @@ class ListCasesShrinkRequest(DaraModel):
         self.disposition_codes_shrink = disposition_codes_shrink
         # The list of disposition reasons.
         self.disposition_reasons_shrink = disposition_reasons_shrink
-        # Specifies whether the version is a draft version.
+        # Specifies whether it is a draft version.
         self.draft_version = draft_version
         # The end time.
         self.end_time = end_time
@@ -56,7 +56,7 @@ class ListCasesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The label search condition.
+        # The label search criteria.
         self.label_search_shrink = label_search_shrink
         # The maximum ringing duration.
         self.max_ringing_duration = max_ringing_duration
@@ -84,7 +84,7 @@ class ListCasesShrinkRequest(DaraModel):
         self.script_id = script_id
         # The start time.
         self.start_time = start_time
-        # The list of case states.
+        # The list of case statuses.
         self.states_shrink = states_shrink
 
     def validate(self):

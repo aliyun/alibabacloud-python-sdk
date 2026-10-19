@@ -20,17 +20,17 @@ class ListCasesResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The paged data.
+        # The paginated data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The pass-through parameters.
+        # The pass-through parameter.
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -99,7 +99,7 @@ class ListCasesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of cases.
+        # The case list.
         self.list = list
         # The current page number.
         self.page_number = page_number
@@ -180,8 +180,9 @@ class ListCasesResponseBodyDataList(DaraModel):
         session_id: str = None,
         state: str = None,
         talk_time: int = None,
+        talk_turns: int = None,
     ):
-        # The number of dial attempts.
+        # The number of call attempts.
         self.attempted_count = attempted_count
         # The caller number.
         self.caller_number = caller_number
@@ -191,7 +192,7 @@ class ListCasesResponseBodyDataList(DaraModel):
         self.campaign_name = campaign_name
         # The case ID.
         self.case_id = case_id
-        # The time when the case was created.
+        # The creation time.
         self.created_time = created_time
         # The custom variables in JSON string format.
         self.custom_variables = custom_variables
@@ -205,11 +206,11 @@ class ListCasesResponseBodyDataList(DaraModel):
         self.instance_id = instance_id
         # The list of labels.
         self.labels = labels
-        # The time of the last dial attempt.
+        # The time of the last call attempt.
         self.last_attempted_time = last_attempted_time
         # The called number.
         self.phone_number = phone_number
-        # The priority of the case.
+        # The priority.
         self.priority = priority
         # The reference ID.
         self.reference_id = reference_id
@@ -223,10 +224,12 @@ class ListCasesResponseBodyDataList(DaraModel):
         self.script_name = script_name
         # The session ID of the last call.
         self.session_id = session_id
-        # The case state.
+        # The case status.
         self.state = state
-        # The talk time.
+        # The call duration.
         self.talk_time = talk_time
+        # The number of dialogue turns.
+        self.talk_turns = talk_turns
 
     def validate(self):
         if self.labels:
@@ -310,6 +313,9 @@ class ListCasesResponseBodyDataList(DaraModel):
         if self.talk_time is not None:
             result['TalkTime'] = self.talk_time
 
+        if self.talk_turns is not None:
+            result['TalkTurns'] = self.talk_turns
+
         return result
 
     def from_map(self, m: dict = None):
@@ -386,6 +392,9 @@ class ListCasesResponseBodyDataList(DaraModel):
         if m.get('TalkTime') is not None:
             self.talk_time = m.get('TalkTime')
 
+        if m.get('TalkTurns') is not None:
+            self.talk_turns = m.get('TalkTurns')
+
         return self
 
 class ListCasesResponseBodyDataListLabels(DaraModel):
@@ -400,7 +409,7 @@ class ListCasesResponseBodyDataListLabels(DaraModel):
     ):
         # The candidate values of the label.
         self.candidate_values = candidate_values
-        # Indicates whether the item is collected.
+        # Indicates whether the label is collected.
         self.collected = collected
         # The description of the label.
         self.description = description
@@ -408,7 +417,7 @@ class ListCasesResponseBodyDataListLabels(DaraModel):
         self.matched_value = matched_value
         # The name of the label.
         self.name = name
-        # The system label.
+        # Indicates whether the label is a system label.
         self.system = system
 
     def validate(self):

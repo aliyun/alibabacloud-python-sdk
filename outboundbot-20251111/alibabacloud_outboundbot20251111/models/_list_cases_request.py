@@ -50,7 +50,7 @@ class ListCasesRequest(DaraModel):
         self.disposition_codes = disposition_codes
         # The list of disposition reasons.
         self.disposition_reasons = disposition_reasons
-        # Specifies whether the version is a draft version.
+        # Specifies whether it is a draft version.
         self.draft_version = draft_version
         # The end time.
         self.end_time = end_time
@@ -58,7 +58,7 @@ class ListCasesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The label search condition.
+        # The label search criteria.
         self.label_search = label_search
         # The maximum ringing duration.
         self.max_ringing_duration = max_ringing_duration
@@ -86,7 +86,7 @@ class ListCasesRequest(DaraModel):
         self.script_id = script_id
         # The start time.
         self.start_time = start_time
-        # The list of case states.
+        # The list of case statuses.
         self.states = states
 
     def validate(self):

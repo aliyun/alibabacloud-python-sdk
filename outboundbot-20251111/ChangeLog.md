@@ -1,3 +1,7 @@
+2026-10-19 Version: 1.6.2
+- Update API ListCases: add response parameters Body.Data.List.$.TalkTurns.
+
+
 2026-10-10 Version: 1.6.1
 - Update API ListScripts: add request parameters BuilderType.
 - Update API ListScripts: add request parameters NluEngine.
