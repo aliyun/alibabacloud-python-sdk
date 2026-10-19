@@ -12,13 +12,13 @@ class EventMatchRule(DaraModel):
         prefix: str = None,
         suffix: str = None,
     ):
-        # Specifies whether to match.
+        # Indicates whether the rule is matched.
         self.match_state = match_state
-        # The full name to match.
+        # The full name matching rule.
         self.name = name
-        # The prefix to match.
+        # The prefix matching rule.
         self.prefix = prefix
-        # The suffix to match.
+        # The suffix matching rule.
         self.suffix = suffix
 
     def validate(self):

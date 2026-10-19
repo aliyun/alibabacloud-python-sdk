@@ -1,3 +1,6 @@
+2026-10-19 Version: 1.4.1
+- Generated python 2022-01-19 for Mns-open.
+
 2026-07-13 Version: 1.3.4
 - Update API CreateQueue: add request parameters EnableSSE.
 - Update API CreateQueue: add request parameters KmsKeyId.

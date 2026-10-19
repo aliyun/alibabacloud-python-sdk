@@ -16,17 +16,9 @@ class ListQueueRequest(DaraModel):
         queue_type: str = None,
         tag: List[main_models.ListQueueRequestTag] = None,
     ):
-        # The page number of the results to return.
-        # 
-        # Valid values: 1 to 100000000.
-        # 
-        # If you set this parameter to a value less than 1, the system uses 1 by default. If you set this parameter to a value greater than 100000000, the system uses 100000000 by default.
+        # The page number of the returned results. Valid values: 1 to 100000000. If the specified value is less than 1, the system defaults to 1. If the specified value is greater than 100000000, the system defaults to 100000000.
         self.page_num = page_num
-        # The number of entries to return on each page.
-        # 
-        # Valid values: 10 to 50.
-        # 
-        # If you set this parameter to a value less than 10, the system uses 10 by default. If you set this parameter to a value greater than 50, the system uses 50 by default.
+        # The number of entries to return on each page. Valid values: 10 to 50. If the specified value is less than 10, the system defaults to 10. If the specified value is greater than 50, the system defaults to 50.
         self.page_size = page_size
         # The name of the queue.
         self.queue_name = queue_name
@@ -95,9 +87,9 @@ class ListQueueRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

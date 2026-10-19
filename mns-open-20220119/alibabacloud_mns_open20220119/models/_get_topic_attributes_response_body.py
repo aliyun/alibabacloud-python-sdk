@@ -23,9 +23,9 @@ class GetTopicAttributesResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The response status.
+        # The status of the response.
         self.status = status
         # Indicates whether the request was successful.
         self.success = success
@@ -102,36 +102,41 @@ class GetTopicAttributesResponseBodyData(DaraModel):
         topic_type: str = None,
         topic_url: str = None,
     ):
-        # The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the topic was created. The value is a UNIX timestamp in seconds in UTC.
         self.create_time = create_time
+        # Indicates whether storage encryption is enabled. Valid values: true and false.
         self.enable_sse = enable_sse
+        # Indicates whether storage encryption is enabled.
         self.encryption_enabled = encryption_enabled
+        # The KMS key ID.
         self.kms_key_id = kms_key_id
-        # The most recent time when the topic attributes were modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the topic attributes were last modified. The value is a UNIX timestamp in seconds in UTC.
         self.last_modify_time = last_modify_time
-        # Indicates whether the Log Management feature is enabled. Valid values:
-        # 
+        # Indicates whether the log management feature is enabled. Valid values:
         # - True: Enabled.
-        # 
         # - False: Disabled.
         self.logging_enabled = logging_enabled
-        # The maximum length of the message body sent to the topic. Unit: bytes.
+        # The maximum size of a message body sent to the topic. Unit: bytes.
         self.max_message_size = max_message_size
         # The number of messages in the topic.
         self.message_count = message_count
-        # The maximum duration for which a message is retained in the topic. After the period of time specified by this parameter elapses since the message is sent to the topic, the message is deleted regardless of whether it is successfully pushed to the user. Unit: seconds.
+        # The maximum retention period of a message in the topic. After the specified period elapses from the time the message is sent to the topic, the message is deleted regardless of whether it was successfully pushed to users. Unit: seconds.
         self.message_retention_period = message_retention_period
+        # The storage encryption algorithm. Currently, only AES-256-GCM is supported. If this parameter is not specified, the default algorithm is used.
         self.sse_algorithm = sse_algorithm
+        # The storage encryption type. Valid values: SMQ and KMS.
         self.sse_type = sse_type
         # The list of resource tags.
         self.tags = tags
+        # The internal access URL of the topic.
         self.topic_inner_url = topic_inner_url
         # The name of the topic.
         self.topic_name = topic_name
-        # The type of the topic. Valid values:
-        #    * normal: normal topic
-        #    * fifo: FIFO topic
+        # The topic type. Valid values:
+        # - normal: Normal topic.
+        # - fifo: FIFO topic.
         self.topic_type = topic_type
+        # The public network access URL of the topic.
         self.topic_url = topic_url
 
     def validate(self):
@@ -258,9 +263,9 @@ class GetTopicAttributesResponseBodyDataTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

@@ -25,7 +25,7 @@ class GetSubscriptionAttributesResponseBody(DaraModel):
         self.request_id = request_id
         # The status of the response.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -95,18 +95,17 @@ class GetSubscriptionAttributesResponseBodyData(DaraModel):
         topic_name: str = None,
         topic_owner: str = None,
     ):
-        # The time when the subscription was created. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
+        # The time when the subscription was created. The value is a UNIX timestamp in seconds in UTC.
         self.create_time = create_time
         # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
-        # The endpoint of the subscription.
+        # The endpoint address of the subscription.
         self.endpoint = endpoint
-        # The tag used for message filtering. Only messages that have a matching tag are pushed.
+        # The tag used for message filtering in the subscription. Only messages with matching tags are pushed.
         self.filter_tag = filter_tag
-        # The time when the subscription properties were last modified. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
+        # The time when the subscription attributes were last modified. The value is a UNIX timestamp in seconds in UTC.
         self.last_modify_time = last_modify_time
-        # The format of the message content that is pushed to an endpoint.
-        # Valid values:
+        # The format of the message content pushed to the endpoint. Valid values:
         # 
         # - XML
         # 
@@ -114,7 +113,7 @@ class GetSubscriptionAttributesResponseBodyData(DaraModel):
         # 
         # - SIMPLIFIED
         self.notify_content_format = notify_content_format
-        # The retry policy that is used when a message fails to be pushed to an endpoint. Valid values:
+        # The retry strategy used when an error occurs while pushing messages to the endpoint. Valid values:
         # 
         # - BACKOFF_RETRY: backoff retry.
         # 
@@ -122,10 +121,11 @@ class GetSubscriptionAttributesResponseBodyData(DaraModel):
         self.notify_strategy = notify_strategy
         # The name of the subscription.
         self.subscription_name = subscription_name
+        # The throttling policy.
         self.tenant_rate_limit_policy = tenant_rate_limit_policy
-        # The name of the topic to which the subscription belongs.
+        # The name of the subscribed topic.
         self.topic_name = topic_name
-        # The AccountId of the owner of the topic to which the subscription belongs.
+        # The account ID of the owner of the subscribed topic.
         self.topic_owner = topic_owner
 
     def validate(self):
@@ -219,7 +219,9 @@ class GetSubscriptionAttributesResponseBodyDataTenantRateLimitPolicy(DaraModel):
         enabled: bool = None,
         max_receives_per_second: int = None,
     ):
+        # Indicates whether throttling is enabled. Valid values: true or false.
         self.enabled = enabled
+        # The maximum number of messages received per second.
         self.max_receives_per_second = max_receives_per_second
 
     def validate(self):
@@ -254,7 +256,7 @@ class GetSubscriptionAttributesResponseBodyDataDlqPolicy(DaraModel):
         dead_letter_target_queue: str = None,
         enabled: bool = None,
     ):
-        # The target queue to which dead-letter messages are delivered.
+        # The destination queue for dead-letter message delivery.
         self.dead_letter_target_queue = dead_letter_target_queue
         # Indicates whether dead-letter message delivery is enabled.
         self.enabled = enabled

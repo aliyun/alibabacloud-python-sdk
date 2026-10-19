@@ -21,40 +21,31 @@ class SetQueueAttributesShrinkRequest(DaraModel):
         tenant_rate_limit_policy_shrink: str = None,
         visibility_timeout: int = None,
     ):
-        # The delay time for all messages sent to this queue. Messages sent to the queue can be consumed only after the delay time specified by this parameter has elapsed.
-        # 
+        # The delay time for all messages sent to the queue. Messages sent to the queue become consumable only after the delay time specified by this parameter elapses.
         # Valid values: 0 to 604800. Unit: seconds.
-        # 
         # Default value: 0.
         self.delay_seconds = delay_seconds
         # The dead-letter queue policy.
         self.dlq_policy_shrink = dlq_policy_shrink
-        # Specifies whether to enable the log management feature. Valid values:
+        # Specifies whether to enable the Log Management feature. Valid values:
         # 
         # - true: Enabled.
         # 
         # - false: Disabled.
-        # 
         # Default value: false.
         self.enable_logging = enable_logging
         self.enable_sse = enable_sse
         self.kms_key_id = kms_key_id
-        # The maximum length of the message body sent to this queue.
-        # 
+        # The maximum length of the message body sent to the queue.
         # Valid values: 1024 to 65536. Unit: bytes.
-        # 
         # Default value: 65536.
         self.maximum_message_size = maximum_message_size
-        # The maximum duration for which a message is retained in this queue. After the time specified by this parameter has elapsed since the message was sent to the queue, the message is deleted regardless of whether it has been consumed.
-        # 
+        # The maximum lifetime of a message in the queue. After the time specified by this parameter elapses since the message is sent to the queue, the message is deleted regardless of whether it has been consumed.
         # Valid values: 60 to 604800. Unit: seconds.
-        # 
         # Default value: 345600.
         self.message_retention_period = message_retention_period
-        # The maximum wait time for a ReceiveMessage request on this queue when no messages are available in the queue.
-        # 
+        # The maximum wait time for a ReceiveMessage request on the queue when no messages are available in the queue.
         # Valid values: 0 to 30. Unit: seconds.
-        # 
         # Default value: 0.
         self.polling_wait_seconds = polling_wait_seconds
         # The name of the queue.
@@ -65,9 +56,7 @@ class SetQueueAttributesShrinkRequest(DaraModel):
         self.sse_type = sse_type
         self.tenant_rate_limit_policy_shrink = tenant_rate_limit_policy_shrink
         # The duration for which a message stays in the Inactive state after it is consumed from the queue and changes from the Active state to the Inactive state.
-        # 
         # Valid values: 1 to 43200. Unit: seconds.
-        # 
         # Default value: 30.
         self.visibility_timeout = visibility_timeout
 

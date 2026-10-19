@@ -25,9 +25,9 @@ class GetQueueAttributesResponseBody(DaraModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # The status of the response.
+        # The response status.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -109,52 +109,57 @@ class GetQueueAttributesResponseBodyData(DaraModel):
     ):
         # The approximate total number of messages in the Active state in the queue.
         # 
-        # <warning>This field will be deprecated and defaults to 0. Use the CloudMonitor API to retrieve this metric instead.</warning>
+        # <warning>This field will be deprecated and default to 0. We recommend that you use the CloudMonitor API to obtain metrics.</warning>
         self.active_messages = active_messages
-        # The time when the queue was created.
+        # The time when the queue was created. The value is a UNIX timestamp in seconds in UTC.
         self.create_time = create_time
         # The approximate total number of messages in the Delayed state in the queue.
         # 
-        # <warning>This field will be deprecated and defaults to 0. Use the CloudMonitor API to retrieve this metric instead.</warning>
+        # <warning>This field will be deprecated and default to 0. We recommend that you use the CloudMonitor API to obtain metrics.</warning>
         self.delay_messages = delay_messages
-        # The delay period for all messages sent to the queue. Messages sent to the queue can be consumed only after the delay period specified by this parameter elapses. Unit: seconds.
+        # The delay time for all messages sent to the queue. Messages sent to the queue can be consumed only after the delay time specified by this parameter elapses. Unit: seconds.
         self.delay_seconds = delay_seconds
         # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
+        # Specifies whether server-side encryption is enabled. Valid values: true and false.
         self.enable_sse = enable_sse
+        # Specifies whether server-side encryption is enabled.
         self.encryption_enabled = encryption_enabled
         # The approximate total number of messages in the Inactive state in the queue.
         # 
-        # <warning>This field will be deprecated and defaults to 0. Use the CloudMonitor API to retrieve this metric instead.</warning>
+        # <warning>This field will be deprecated and default to 0. We recommend that you use the CloudMonitor API to obtain metrics.</warning>
         self.inactive_messages = inactive_messages
+        # The KMS key ID.
         self.kms_key_id = kms_key_id
-        # The most recent time when the queue attributes were modified. The value is a UNIX timestamp representing the number of seconds elapsed since 1970-01-01 00:00:00.
+        # The time when the queue attributes were last modified. The value is a UNIX timestamp in seconds in UTC.
         self.last_modify_time = last_modify_time
-        # Indicates whether the log management feature is enabled.
+        # Specifies whether the log management feature is enabled.
         # 
         # - True: Enabled.
         # 
         # - False: Disabled.
         self.logging_enabled = logging_enabled
-        # The maximum length of the message body sent to the queue. Unit: bytes.
+        # The maximum length of the message body that can be sent to the queue. Unit: bytes.
         self.maximum_message_size = maximum_message_size
-        # The maximum duration for which a message is retained in the queue. After the period specified by this parameter elapses since the message is sent to the queue, the message is deleted regardless of whether it has been consumed. Unit: seconds.
+        # The maximum retention period of messages in the queue. After the time specified by this parameter elapses from the time when a message is sent to the queue, the message is deleted regardless of whether it has been consumed. Unit: seconds.
         self.message_retention_period = message_retention_period
-        # The maximum wait time for a ReceiveMessage request on the queue when the queue has no messages. Unit: seconds.
+        # The maximum waiting time for a ReceiveMessage request when the queue is empty. Unit: seconds.
         self.polling_wait_seconds = polling_wait_seconds
         # The name of the queue.
         self.queue_name = queue_name
-        # The type of the queue. Valid values:
-        #    * normal: standard queue
-        #    * fifo: FIFO queue
+        # The queue type. Valid values:
+        # - normal: Standard queue.
+        # - fifo: FIFO queue.
         self.queue_type = queue_type
+        # The server-side encryption algorithm. Currently, only AES-256-GCM is supported. If this parameter is not specified, the default algorithm is used.
         self.sse_algorithm = sse_algorithm
+        # The server-side encryption method. Valid values: SMQ and KMS.
         self.sse_type = sse_type
         # The list of resource tags.
         self.tags = tags
-        # The rate limiting policy.
+        # The throttling policy.
         self.tenant_rate_limit_policy = tenant_rate_limit_policy
-        # The duration for which a message stays in the Inactive state after it is consumed from the queue and changes from the Active state to the Inactive state.
+        # The duration for which a message remains in the Inactive state after it is consumed from the queue.
         # Valid values: 1 to 43200. Unit: seconds.
         # Default value: 30.
         self.visibility_timeout = visibility_timeout
@@ -319,7 +324,7 @@ class GetQueueAttributesResponseBodyDataTenantRateLimitPolicy(DaraModel):
         enabled: bool = None,
         max_receives_per_second: int = None,
     ):
-        # Specifies whether rate limiting is enabled. Valid values:
+        # Specifies whether throttling is enabled. Valid values:
         # - true
         # - false
         self.enabled = enabled
@@ -358,9 +363,9 @@ class GetQueueAttributesResponseBodyDataTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -396,11 +401,11 @@ class GetQueueAttributesResponseBodyDataDlqPolicy(DaraModel):
         enabled: bool = None,
         max_receive_count: str = None,
     ):
-        # The target queue for dead-letter message delivery.
+        # The destination queue for dead-letter message delivery.
         self.dead_letter_target_queue = dead_letter_target_queue
-        # Indicates whether dead-letter message delivery is enabled.
+        # Specifies whether dead-letter message delivery is enabled.
         self.enabled = enabled
-        # The maximum number of times a message can be delivered.
+        # The maximum number of delivery attempts for a message.
         self.max_receive_count = max_receive_count
 
     def validate(self):

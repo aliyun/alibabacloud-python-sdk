@@ -25,9 +25,9 @@ class GetEndpointAttributeResponseBody(DaraModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # The status of the response.
+        # The response status.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -134,13 +134,13 @@ class GetEndpointAttributeResponseBodyDataCidrList(DaraModel):
         cidr: str = None,
         create_time: int = None,
     ):
-        # The access control list (ACL) policy. Valid value:
+        # The ACL policy. Valid values:
         # 
-        # - **allow**: The endpoint allows access from the specified CIDR block. This is the only supported value.
+        # - **allow**: The endpoint allows access from the corresponding CIDR block. Currently, only allow is supported.
         self.acl_strategy = acl_strategy
         # The CIDR block.
         self.cidr = cidr
-        # The time when the CIDR block was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
 
     def validate(self):

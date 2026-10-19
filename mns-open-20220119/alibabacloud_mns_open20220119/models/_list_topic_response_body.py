@@ -27,7 +27,7 @@ class ListTopicResponseBody(DaraModel):
         self.request_id = request_id
         # The status of the response.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -94,7 +94,7 @@ class ListTopicResponseBodyData(DaraModel):
         self.page_data = page_data
         # The page number of the returned results.
         self.page_num = page_num
-        # The number of results returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The total number of results.
         self.total = total
@@ -165,26 +165,29 @@ class ListTopicResponseBodyDataPageData(DaraModel):
         topic_type: str = None,
         topic_url: str = None,
     ):
-        # The time when the subscription was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the topic was created. The value is a UTC UNIX timestamp in seconds.
         self.create_time = create_time
+        # Specifies whether server-side encryption is enabled. Valid values: true and false.
         self.enable_sse = enable_sse
+        # Indicates whether server-side encryption is enabled.
         self.encryption_enabled = encryption_enabled
+        # The KMS key ID.
         self.kms_key_id = kms_key_id
-        # The time when the subscription attributes were last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the topic attributes were last modified. The value is a UTC UNIX timestamp in seconds.
         self.last_modify_time = last_modify_time
-        # Indicates whether the Log Management feature is enabled. Valid values:
-        # 
-        # - True: Enabled.
-        # 
-        # - False: Disabled.
+        # Indicates whether the log management feature is enabled. Valid values:
+        # - True: enabled
+        # - False: disabled
         self.logging_enabled = logging_enabled
-        # The maximum length of the message body sent to the topic. Unit: bytes.
+        # The maximum length of the message body that can be sent to the topic. Unit: bytes.
         self.max_message_size = max_message_size
         # The number of messages in the topic.
         self.message_count = message_count
-        # The maximum duration for which a message is retained in the topic. After the time specified by this parameter elapses since the message is sent to the topic, the message is deleted regardless of whether it has been successfully pushed to the user. Unit: seconds.
+        # The maximum retention period of messages in the topic. After the specified period elapses from the time a message is sent to the topic, the message is deleted regardless of whether it is successfully pushed to users. Unit: seconds.
         self.message_retention_period = message_retention_period
+        # The server-side encryption algorithm. Currently, AES-256-GCM is supported. If this parameter is not specified, the default algorithm is used.
         self.sse_algorithm = sse_algorithm
+        # The server-side encryption method. Valid values: SMQ and KMS.
         self.sse_type = sse_type
         # The list of resource tags.
         self.tags = tags

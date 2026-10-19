@@ -14,7 +14,7 @@ class GetSubscriptionAttributesRequest(DaraModel):
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
-        # The name of the topic to which the subscription belongs.
+        # The name of the subscribed topic.
         # 
         # This parameter is required.
         self.topic_name = topic_name

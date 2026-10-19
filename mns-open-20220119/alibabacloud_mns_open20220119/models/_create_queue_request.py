@@ -26,15 +26,13 @@ class CreateQueueRequest(DaraModel):
         tenant_rate_limit_policy: main_models.CreateQueueRequestTenantRateLimitPolicy = None,
         visibility_timeout: int = None,
     ):
-        # The delay period for all messages sent to the queue. A message sent to the queue can be consumed only after the delay period specified by this parameter elapses. Unit: seconds.
-        # 
-        # Valid values: 0 to 604800.
-        # 
+        # The delay period for all messages sent to the queue. A message sent to the queue can be consumed only after the delay period specified by this parameter elapses.
+        # Valid values: 0 to 604800. Unit: seconds.
         # Default value: 0.
         self.delay_seconds = delay_seconds
         # The dead-letter policy.
         self.dlq_policy = dlq_policy
-        # Specifies whether to enable the log management feature. Valid values:
+        # Specifies whether to enable the Log Management feature. Valid values:
         # 
         # - true: Enabled.
         # 
@@ -44,22 +42,16 @@ class CreateQueueRequest(DaraModel):
         self.enable_logging = enable_logging
         self.enable_sse = enable_sse
         self.kms_key_id = kms_key_id
-        # The maximum size of a message body that can be sent to the queue. Unit: bytes.
-        # 
-        # Valid values: 1024 to 65536.
-        # 
+        # The maximum size of a message body that can be sent to the queue.
+        # Valid values: 1024 to 65536. Unit: bytes.
         # Default value: 65536.
         self.maximum_message_size = maximum_message_size
-        # The maximum duration for which a message is retained in the queue. After the specified duration elapses from the time the message is sent to the queue, the message is deleted regardless of whether it has been consumed. Unit: seconds.
-        # 
-        # Valid values: 60 to 604800.
-        # 
+        # The maximum duration for which a message is retained in the queue. After the specified duration elapses since a message is sent to the queue, the message is deleted regardless of whether it has been consumed.
+        # Valid values: 60 to 604800. Unit: seconds.
         # Default value: 345600.
         self.message_retention_period = message_retention_period
-        # The maximum wait time for a ReceiveMessage request when the queue is empty. Unit: seconds.
-        # 
-        # Valid values: 0 to 30.
-        # 
+        # The maximum duration for which a ReceiveMessage request waits when the queue has no messages.
+        # Valid values: 0 to 30. Unit: seconds.
         # Default value: 0.
         self.polling_wait_seconds = polling_wait_seconds
         # The name of the queue.
@@ -74,12 +66,10 @@ class CreateQueueRequest(DaraModel):
         self.sse_type = sse_type
         # The list of resource tags.
         self.tag = tag
-        # The rate limiting policy.
+        # The throttling policy.
         self.tenant_rate_limit_policy = tenant_rate_limit_policy
-        # The duration for which a consumed message stays in the Inactive state after it is changed from the Active state. Unit: seconds.
-        # 
-        # Valid values: 1 to 43200.
-        # 
+        # The duration for which a message stays in the Inactive state after it is consumed from the queue and changes from the Active state to the Inactive state.
+        # Valid values: 1 to 43200. Unit: seconds.
         # Default value: 30.
         self.visibility_timeout = visibility_timeout
 
@@ -207,7 +197,7 @@ class CreateQueueRequestTenantRateLimitPolicy(DaraModel):
         enabled: bool = None,
         max_receives_per_second: int = None,
     ):
-        # Specifies whether to enable rate limiting. Valid values:
+        # Specifies whether to enable throttling. Valid values:
         # 
         # - true
         # - false
@@ -285,7 +275,7 @@ class CreateQueueRequestDlqPolicy(DaraModel):
         enabled: bool = None,
         max_receive_count: int = None,
     ):
-        # The target queue for dead-letter message delivery.
+        # The target queue to which dead-letter messages are delivered.
         self.dead_letter_target_queue = dead_letter_target_queue
         # Specifies whether to enable dead-letter message delivery.
         self.enabled = enabled

@@ -21,37 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'us-west-1': 'mns-open.us-west-1.aliyuncs.com',
-            'us-east-1': 'mns-open.us-east-1.aliyuncs.com',
-            'me-east-1': 'mns-open.me-east-1.aliyuncs.com',
-            'me-central-1': 'mns-open.me-central-1.aliyuncs.com',
-            'eu-west-1': 'mns-open.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'mns-open.eu-central-1.aliyuncs.com',
-            'cn-zhengzhou-jva': 'mns-open.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-zhangjiakou': 'mns-open.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'mns-open.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'mns-open.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'mns-open.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'mns-open.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'mns-open.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'mns-open.cn-qingdao.aliyuncs.com',
-            'cn-huhehaote': 'mns-open.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'mns-open.cn-hongkong.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'mns-open.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-heyuan': 'mns-open.cn-heyuan.aliyuncs.com',
-            'cn-hangzhou-finance': 'mns-open.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hangzhou': 'mns-open.cn-hangzhou.aliyuncs.com',
-            'cn-guangzhou': 'mns-open.cn-guangzhou.aliyuncs.com',
-            'cn-chengdu': 'mns-open.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'mns-open.cn-beijing.aliyuncs.com',
-            'ap-southeast-7': 'mns-open.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-5': 'mns-open.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'mns-open.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'mns-open.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-2': 'mns-open.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'mns-open.ap-northeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('mns-open', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -872,6 +841,66 @@ class Client(OpenApiClient):
     ) -> main_models.EnableEndpointResponse:
         runtime = RuntimeOptions()
         return await self.enable_endpoint_with_options_async(request, runtime)
+
+    def get_account_attributes_with_options(
+        self,
+        request: main_models.GetAccountAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccountAttributesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAccountAttributes',
+            version = '2022-01-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAccountAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_account_attributes_with_options_async(
+        self,
+        request: main_models.GetAccountAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccountAttributesResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAccountAttributes',
+            version = '2022-01-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAccountAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_account_attributes(
+        self,
+        request: main_models.GetAccountAttributesRequest,
+    ) -> main_models.GetAccountAttributesResponse:
+        runtime = RuntimeOptions()
+        return self.get_account_attributes_with_options(request, runtime)
+
+    async def get_account_attributes_async(
+        self,
+        request: main_models.GetAccountAttributesRequest,
+    ) -> main_models.GetAccountAttributesResponse:
+        runtime = RuntimeOptions()
+        return await self.get_account_attributes_with_options_async(request, runtime)
 
     def get_endpoint_attribute_with_options(
         self,
@@ -1696,6 +1725,92 @@ class Client(OpenApiClient):
     ) -> main_models.RevokeEndpointAclResponse:
         runtime = RuntimeOptions()
         return await self.revoke_endpoint_acl_with_options_async(request, runtime)
+
+    def set_account_attributes_with_options(
+        self,
+        request: main_models.SetAccountAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAccountAttributesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.log_enabled):
+            query['LogEnabled'] = request.log_enabled
+        if not DaraCore.is_null(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not DaraCore.is_null(request.message_trace_enabled):
+            query['MessageTraceEnabled'] = request.message_trace_enabled
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAccountAttributes',
+            version = '2022-01-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAccountAttributesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_account_attributes_with_options_async(
+        self,
+        request: main_models.SetAccountAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAccountAttributesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.log_enabled):
+            query['LogEnabled'] = request.log_enabled
+        if not DaraCore.is_null(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not DaraCore.is_null(request.message_trace_enabled):
+            query['MessageTraceEnabled'] = request.message_trace_enabled
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAccountAttributes',
+            version = '2022-01-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAccountAttributesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_account_attributes(
+        self,
+        request: main_models.SetAccountAttributesRequest,
+    ) -> main_models.SetAccountAttributesResponse:
+        runtime = RuntimeOptions()
+        return self.set_account_attributes_with_options(request, runtime)
+
+    async def set_account_attributes_async(
+        self,
+        request: main_models.SetAccountAttributesRequest,
+    ) -> main_models.SetAccountAttributesResponse:
+        runtime = RuntimeOptions()
+        return await self.set_account_attributes_with_options_async(request, runtime)
 
     def set_queue_attributes_with_options(
         self,
