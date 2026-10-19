@@ -17,11 +17,11 @@ class ResetAccountPasswordRequest(DaraModel):
         security_token: str = None,
         source_biz: str = None,
     ):
-        # The name of the account. You can call the [DescribeAccounts](~~DescribeAccounts~~) operation to obtain the name of the account.
+        # The account name. You can call [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) to query the account name.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The new password for the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`
+        # The new password. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: `!@#$%^&*()_+-=`.
         # 
         # This parameter is required.
         self.account_password = account_password

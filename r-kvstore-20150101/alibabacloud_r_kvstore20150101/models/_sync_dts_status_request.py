@@ -17,7 +17,7 @@ class SyncDtsStatusRequest(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -28,14 +28,12 @@ class SyncDtsStatusRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # Disables configuration changes for the instance. Valid values:
-        # 
-        # *   **0**: does not disable configuration changes.
-        # *   **1**: disables configuration changes. In this case, if you attempt to modify the configurations of the instance, the system informs you that the operation cannot be performed.
+        # Specifies whether to restrict specification changes on the instance. Valid values:
+        # * **0**: Unrestricted.
+        # * **1**: Restricted. Users are prompted when they perform a specification change.
         self.status = status
-        # The ID of the DTS instance. You can view the ID in the [DTS console](https://dts.console.aliyun.com/).
-        # 
-        # >  A Tair (Redis OSS-compatible) instance may be involved in multiple data migration or synchronization tasks. If you want to cancel the restriction on the instance, you can specify this parameter to prevent repeated operation calls.
+        # Instance ID of the DTS instance. You can log on to the [DTS console](https://dts.console.aliyun.com/) to view instance ID.
+        # > An instance may be involved in multiple DTS migration or synchronization tasks simultaneously. To remove the specification change restrictions on the instance, pass this parameter to avoid calling this operation multiple times.
         self.task_id = task_id
 
     def validate(self):

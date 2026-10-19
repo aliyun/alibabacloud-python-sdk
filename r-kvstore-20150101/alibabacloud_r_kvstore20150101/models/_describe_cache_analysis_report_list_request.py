@@ -18,25 +18,24 @@ class DescribeCacheAnalysisReportListRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The time range to query. Default value: 7. Unit: days.
+        # The number of days within which analysis results are queried. By default, analysis results of the last 7 days are queried.
         # 
-        # > If daily automatic analysis has not started and manual analysis is not performed, no records are returned.
+        # > If the automatic analysis for the current day has not started when you query and no manual analysis task has been initiated, no records exist for the current day.
         self.days = days
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the child node in the cluster instance.
+        # The child node ID of a cluster instance.
         # 
-        # >  If you do not specify this parameter, the analysis results of all child nodes in the instance are returned.
+        # > If you do not specify this parameter, the analysis results of all child nodes are returned.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return.
+        # The page number to return.
         self.page_numbers = page_numbers
         # The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
-        # 
-        # > The default value is **30**.
+        # > Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

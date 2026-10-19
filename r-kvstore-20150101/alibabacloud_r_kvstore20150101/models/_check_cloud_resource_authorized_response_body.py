@@ -10,13 +10,12 @@ class CheckCloudResourceAuthorizedResponseBody(DaraModel):
         authorization_state: int = None,
         request_id: str = None,
     ):
-        # Indicates whether the instance is authorized to use KMS. Valid values:
-        # 
-        # *   **0**: The instance is authorized to use KMS.
-        # *   **1**: The instance is not authorized to use KMS.
-        # *   **2**: KMS is not activated. For more information, see [Activate KMS](https://help.aliyun.com/document_detail/153781.html).
+        # The authorization status. Valid values:
+        # * **0**: Not authorized.
+        # * **1**: Authorized.
+        # * **2**: KMS is not activated. For more information, see [Activate KMS](https://help.aliyun.com/document_detail/153781.html).
         self.authorization_state = authorization_state
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

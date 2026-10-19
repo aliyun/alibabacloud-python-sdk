@@ -11,11 +11,11 @@ class RenewInstanceResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The end time of the order.
+        # The end time of the order. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

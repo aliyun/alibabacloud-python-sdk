@@ -22,24 +22,21 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_connection_string = current_connection_string
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type of the endpoint. Valid values:
-        # 
-        # *   **Private**: internal network
-        # *   **Public**: Internet
+        # * **Private**: virtual private cloud (VPC).
+        # * **Public**: Internet.
         self.iptype = iptype
-        # The prefix of the new endpoint. Specify the endpoint in the `<prefix>.redis.rds.aliyuncs.com` format. The prefix must be 8 to 40 characters in length and can contain lowercase letters and digits. It must start with a lowercase letter.
-        # 
-        # >  You must specify one of the **NewConnectionString** and **Port** parameters.
+        # The prefix of the new endpoint. The endpoint of the instance is in the format of `<prefix>.redis.rds.aliyuncs.com`. The prefix must start with a lowercase letter and can contain lowercase letters and digits. The prefix must be 8 to 40 characters in length.
+        # > You must specify at least one of the request parameters **NewConnectionString** and **Port**.
         self.new_connection_string = new_connection_string
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The port number of the instance. Valid values: **1024** to **65535**.
-        # 
-        # >  You must specify one of the **NewConnectionString** and **Port** parameters.
+        # The service port number of the instance. Valid values: **1** to **65535**.
+        # > You must specify at least one of the request parameters **NewConnectionString** and **Port**.
         self.port = port
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

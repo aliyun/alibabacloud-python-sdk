@@ -20,22 +20,22 @@ class DescribeRunningLogRecordsResponseBody(DaraModel):
         start_time: str = None,
         total_record_count: int = None,
     ):
-        # The type of the database engine.
+        # The database engine.
         self.engine = engine
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         self.items = items
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of log entries returned on the current page.
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
-        # The maximum number of entries returned on each page.
+        # The maximum number of entries returned per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The beginning of the time range to query.
+        # The start time of the query. The time is in the YYYY-MM-DDTHH:mmZ format and is in UTC.
         self.start_time = start_time
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

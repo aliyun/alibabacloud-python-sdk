@@ -18,21 +18,21 @@ class ModifyAccountPasswordRequest(DaraModel):
         security_token: str = None,
         source_biz: str = None,
     ):
-        # The username of the account for which you want to change the password. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) operation to query the username of the account.
+        # The name of the account whose password you want to modify. You can call [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) to query the account name.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The new password to be set for the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # The new password to set for the account. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@#$%^&*()_+-=`.
         # 
         # This parameter is required.
         self.new_account_password = new_account_password
-        # The current password of the account.
-        #  
-        # > If you forget your password, you can call the [ResetAccountPassword](https://help.aliyun.com/document_detail/473815.html) operation to reset your password.
+        # The original password of the account.
+        # 
+        # > If you forget the password of the account, you can call [ResetAccountPassword](https://help.aliyun.com/document_detail/473815.html) to reset the password.
         # 
         # This parameter is required.
         self.old_account_password = old_account_password
@@ -41,7 +41,7 @@ class ModifyAccountPasswordRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # This parameter is used only for internal maintenance. You do not need to specify this parameter.
+        # This parameter is used only for internal maintenance purposes. You do not need to specify this parameter.
         self.source_biz = source_biz
 
     def validate(self):

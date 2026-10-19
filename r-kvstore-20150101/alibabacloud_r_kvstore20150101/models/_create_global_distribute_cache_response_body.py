@@ -11,9 +11,9 @@ class CreateGlobalDistributeCacheResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the distributed instance.
+        # The distributed instance ID.
         self.global_instance_id = global_instance_id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id

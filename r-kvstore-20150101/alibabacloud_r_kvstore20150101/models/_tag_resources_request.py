@@ -25,7 +25,7 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -35,7 +35,7 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags of the instance.
+        # The tags of the instances.
         # 
         # This parameter is required.
         self.tag = tag
@@ -116,16 +116,16 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag associated with the instance.
+        # The key of the label.
         # 
-        # > * **N** specifies the serial number of the tag. For example, **Tag.1.Key** specifies the key of the first tag and **Tag.2.Key** specifies the key of the second tag.
-        # > * If the key of the tag does not exist, the key is automatically created.
+        # > * **N** specifies the sequence number of the label key. For example, **Tag.1.Key** specifies the key of the first label, and **Tag.2.Key** specifies the key of the second label.
+        # > * If the label key does not exist, automatic creation of the key is performed.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the tag associated with the instance.
+        # The value of the tag.
         # 
-        # > **N** specifies the serial number of the tag. For example, **Tag.1.Value** specifies the value of the first tag and **Tag.2.Value** specifies the value of the second tag.
+        # > **N** specifies the sequence number of the tag value. For example, **Tag.1.Value** specifies the value of the first tag, and **Tag.2.Value** specifies the value of the second tag.
         # 
         # This parameter is required.
         self.value = value

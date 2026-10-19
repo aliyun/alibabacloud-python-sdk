@@ -19,14 +19,15 @@ class ModifyGlobalSecurityIPGroupRequest(DaraModel):
         security_token: str = None,
     ):
         # The IP addresses in the IP whitelist template.
+        # > This parameter overwrites the original value.
         # 
         # This parameter is required.
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
-        # 
-        # *   The name can contain lowercase letters, digits, and underscores (_).
-        # *   The name must start with a letter and end with a letter or a digit.
-        # *   The name must be 2 to 120 characters in length.
+        # - The name can contain lowercase letters, digits, and underscores (_).
+        # - The name must start with a letter and end with a letter or digit.
+        # - The name must be 2 to 120 characters in length.
+        # > This parameter overwrites the original value.
         # 
         # This parameter is required.
         self.global_ig_name = global_ig_name
@@ -40,7 +41,7 @@ class ModifyGlobalSecurityIPGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

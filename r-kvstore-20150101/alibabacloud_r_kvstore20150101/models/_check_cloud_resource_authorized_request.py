@@ -15,7 +15,7 @@ class CheckCloudResourceAuthorizedRequest(DaraModel):
         role_arn: str = None,
         security_token: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+        # The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -23,13 +23,10 @@ class CheckCloudResourceAuthorizedRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that you want to attach to your Tair (Redis OSS-compatible) instance. The ARN must be in the format of `acs:ram::$accountID:role/$roleName`. After the role is attached, your Tair (Redis OSS-compatible) instance can use KMS.
+        # The global resource descriptor Alibaba Cloud Resource Name (ARN) of the role to be authorized. After the role is granted authorization, the related KMS can be used. Format: `acs:ram::$accountID:role/$roleName`.
         # 
-        # > 
-        # 
-        # *   `$accountID`: the ID of the Alibaba Cloud account. To view the account ID, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner of the page, and then click **Security Settings**.
-        # 
-        # *   `$roleName`: the name of the RAM role. Replace $roleName with **AliyunRdsInstanceEncryptionDefaultRole**.
+        # > * `$accountID`: the ID of the Alibaba Cloud account. Log on to the Alibaba Cloud Management Console, move the mouse pointer over the profile picture in the upper-right corner, and then click **Security Settings** to view the account ID.
+        # > * `$roleName`: the name of the RAM role. Set this value to **AliyunRdsInstanceEncryptionDefaultRole**.
         self.role_arn = role_arn
         self.security_token = security_token
 

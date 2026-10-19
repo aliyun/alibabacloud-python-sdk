@@ -20,9 +20,8 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token used to start the next query to retrieve more results.
-        # 
-        # > This parameter is not required in the first query. If not all results are returned in one query, you can specify the **NextToken** value returned for the query to perform the next query.
+        # The token used to start the next query to return more results.
+        # > You do not need to provide this parameter for the first query. If a query does not return all results, you can pass the **NextToken** value returned from the previous query in subsequent queries to continue the query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30,9 +29,9 @@ class ListTagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the instances.
+        # The list of instance IDs.
         # 
-        # > *   You must specify this parameter or the **Tag** parameter.
+        # > * You must specify at least one of this parameter and the **Tag** parameter.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -40,7 +39,7 @@ class ListTagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags of the instance. You must specify this parameter or the **ResourceId** parameter.
+        # The tag information of the instance. You must specify at least one of this parameter and the **ResourceId** parameter.
         self.tag = tag
 
     def validate(self):
@@ -125,9 +124,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The keys of the tags associated with the instances you want to query.
+        # The key of the tag.
         self.key = key
-        # The values of the tags associated with the instances you want to query.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

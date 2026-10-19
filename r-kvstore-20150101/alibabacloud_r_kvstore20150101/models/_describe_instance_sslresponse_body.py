@@ -14,20 +14,21 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         sslenabled: str = None,
         sslexpired_time: str = None,
     ):
-        # The common name of the CA certificate. The default value is the internal endpoint of the instance.
+        # The common name of the CA certificate. The default value is the internal network endpoint of the instance.
         self.cert_common_name = cert_common_name
         # The download URL of the CA certificate.
         self.cert_download_url = cert_download_url
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The status of the TLS (SSL) encryption feature. Valid values:
-        # 
-        # *   **Enable**: SSL encryption is enabled.
-        # *   **Disable**: SSL encryption is disabled.
+        # * **Enable**: Enabled.
+        # * **Disable**: Disabled.
         self.sslenabled = sslenabled
-        # The time when the CA certificate expires.
+        # The expiration time of the CA certificate.
+        # 
+        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.sslexpired_time = sslexpired_time
 
     def validate(self):

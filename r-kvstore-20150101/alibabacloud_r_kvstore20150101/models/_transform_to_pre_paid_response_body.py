@@ -11,11 +11,13 @@ class TransformToPrePaidResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The expiration time of the instance\\"s new subscription.
+        # The time when the instance expires after the billing method of the instance is changed to subscription.
+        # 
+        # The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.end_time = end_time
-        # The order ID.
+        # The ID of the order.
         self.order_id = order_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

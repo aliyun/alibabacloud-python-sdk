@@ -22,12 +22,7 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-qingdao': 'r-kvstore.aliyuncs.com',
-            'cn-beijing': 'r-kvstore.aliyuncs.com',
-            'cn-wulanchabu': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou': 'r-kvstore.aliyuncs.com',
-            'cn-shanghai': 'r-kvstore.aliyuncs.com',
-            'cn-heyuan': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou-finance': 'r-kvstore.aliyuncs.com',
             'ap-northeast-2-pop': 'r-kvstore.aliyuncs.com',
             'cn-beijing-finance-pop': 'r-kvstore.aliyuncs.com',
@@ -58,39 +53,7 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'r-kvstore.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'r-kvstore.aliyuncs.com',
             'eu-west-1-oxs': 'r-kvstore.aliyuncs.com',
-            'rus-west-1-pop': 'r-kvstore.aliyuncs.com',
-            'cn-zhengzhou-jva': 'r-kvstore.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-wuhan-lr': 'r-kvstore.cn-wuhan-lr.aliyuncs.com',
-            'cn-hongkong': 'r-kvstore.cn-hongkong.aliyuncs.com',
-            'cn-zhangjiakou': 'r-kvstore.cn-zhangjiakou.aliyuncs.com',
-            'cn-shenzhen': 'r-kvstore.cn-shenzhen.aliyuncs.com',
-            'cn-nanjing': 'r-kvstore.cn-nanjing.aliyuncs.com',
-            'ap-northeast-2': 'r-kvstore.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'r-kvstore.ap-northeast-1.aliyuncs.com',
-            'cn-fuzhou': 'r-kvstore.cn-fuzhou.aliyuncs.com',
-            'cn-chengdu': 'r-kvstore.cn-chengdu.aliyuncs.com',
-            'cn-guangzhou': 'r-kvstore.cn-guangzhou.aliyuncs.com',
-            'ap-southeast-1': 'r-kvstore.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-2': 'r-kvstore.ap-southeast-2.aliyuncs.com',
-            'ap-southeast-3': 'r-kvstore.ap-southeast-3.aliyuncs.com',
-            'cn-huhehaote': 'r-kvstore.cn-huhehaote.aliyuncs.com',
-            'ap-southeast-5': 'r-kvstore.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-6': 'r-kvstore.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-7': 'r-kvstore.ap-southeast-7.aliyuncs.com',
-            'us-east-1': 'r-kvstore.us-east-1.aliyuncs.com',
-            'us-southeast-1': 'r-kvstore.us-southeast-1.aliyuncs.com',
-            'eu-west-1': 'r-kvstore.eu-west-1.aliyuncs.com',
-            'us-west-1': 'r-kvstore.us-west-1.aliyuncs.com',
-            'eu-central-1': 'r-kvstore.eu-central-1.aliyuncs.com',
-            'na-south-1': 'r-kvstore.na-south-1.aliyuncs.com',
-            'me-east-1': 'r-kvstore.me-east-1.aliyuncs.com',
-            'me-central-1': 'r-kvstore.me-central-1.aliyuncs.com',
-            'ap-south-1': 'r-kvstore.ap-south-1.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'r-kvstore.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'r-kvstore.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-beijing-finance-1': 'r-kvstore.cn-beijing-finance-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'r-kvstore.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'r-kvstore.cn-wulanchabu-gic-1.aliyuncs.com'
+            'rus-west-1-pop': 'r-kvstore.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('r-kvstore', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -10236,14 +10199,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_util_models.OpenApiRequest(
@@ -10274,14 +10229,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         req = open_api_util_models.OpenApiRequest(

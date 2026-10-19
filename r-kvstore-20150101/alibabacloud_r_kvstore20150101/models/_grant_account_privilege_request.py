@@ -17,14 +17,14 @@ class GrantAccountPrivilegeRequest(DaraModel):
         security_token: str = None,
         source_biz: str = None,
     ):
-        # The name of the account. You can call the [DescribeAccounts](~~DescribeAccounts~~) operation to obtain the name of the account.
+        # The account name. You can call [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) to obtain the account name.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The permissions of the account. Default value: RoleReadWrite. Valid values:
+        # The permissions of the account. Valid values:
         # 
-        # *   RoleReadOnly: The account has the read-only permissions.
-        # *   RoleReadWrite: The account has the read and write permissions.
+        # * RoleReadOnly: read-only permissions.
+        # * RoleReadWrite: read and write permissions. This is the default value.
         # 
         # This parameter is required.
         self.account_privilege = account_privilege

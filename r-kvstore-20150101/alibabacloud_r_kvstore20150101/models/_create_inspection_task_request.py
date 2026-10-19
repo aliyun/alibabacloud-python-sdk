@@ -14,14 +14,32 @@ class CreateInspectionTaskRequest(DaraModel):
         report_language: str = None,
         start_time: str = None,
     ):
+        # The end time of the inspection time range.
+        # 
+        # The time is in the YYYY-MM-DDTHH:mm:ssZ format and in UTC.
         self.end_time = end_time
+        # The specified inspection items. Valid values:
+        # - RESOURCE_USAGE
+        # - BIGKEY
+        # - HOTKEY
+        # - PERFORMANCE_METRICS
+        # - SLOWLOG
+        # 
         # This parameter is required.
         self.inspection_items = inspection_items
+        # The ID of the assistant instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of associated instance IDs.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The language of the report.
         self.report_language = report_language
+        # The start time of the inspection time range.
+        # 
+        # The time is in the YYYY-MM-DDTHH:mm:ssZ format and in UTC.
         self.start_time = start_time
 
     def validate(self):

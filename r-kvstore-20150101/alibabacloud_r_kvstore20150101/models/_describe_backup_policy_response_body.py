@@ -24,12 +24,12 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         # The number of days for which backup data is retained.
         self.backup_retention_period = backup_retention_period
         # Indicates whether the backup service is enabled for the instance. Valid values:
-        # * **1**: enabled.
-        # * **0**: disabled.
+        # * **1**: Enabled.
+        # * **0**: Disabled.
         self.dbs_instance = dbs_instance
         # Indicates whether incremental backup is enabled. Valid values:
-        # * **1**: enabled.
-        # * **0**: disabled.
+        # * **1**: Enabled.
+        # * **0**: Disabled.
         self.enable_backup_log = enable_backup_log
         # The backup cycle. Valid values:
         # * **Monday**

@@ -16,40 +16,33 @@ class DescribeInstanceConfigResponseBody(DaraModel):
         param_sentinel_compat_enable: str = None,
         request_id: str = None,
     ):
-        # The default configuration parameters of the instance. To view the full list of parameters, call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation.
+        # The default configuration parameters of the instance. For more comprehensive parameter settings, call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation.
         self.config = config
-        # Specifies whether to enable Sentinel compatibility mode. This parameter applies only to non-cluster instances. Valid values:
+        # The Sentinel compatibility mode. This parameter applies to non-cluster instances. Valid values:
         # 
-        # - **no** (default): Disabled
-        # 
-        # - **yes**: Enabled
-        # 
+        # * **no** (default): disabled.
+        # * **yes**: enabled.
         # > For more information, see [Sentinel compatibility mode](https://help.aliyun.com/document_detail/178911.html).
         self.param_no_loose_sentinel_enabled = param_no_loose_sentinel_enabled
-        # Specifies whether to allow password-free execution of Sentinel commands when Sentinel compatibility mode is enabled. Valid values:
+        # Specifies whether to allow password-free execution of Sentinel-related commands when Sentinel mode is enabled. Valid values:
         # 
-        # - **no** (default): Disabled.
-        # 
-        # - **yes**: Enabled. Allows you to run Sentinel commands on any connection without a password and use the `SENTINEL` command to subscribe to the `+switch-master` channel.
+        # * **no** (default): disabled.
+        # * **yes**: enabled. After this parameter is enabled, you can run Sentinel commands without a password on any connection and use the SENTINEL command to listen on the +switch-master channel.
         self.param_no_loose_sentinel_password_free_access = param_no_loose_sentinel_password_free_access
-        # Additional commands that can be run without a password. This parameter is valid only when Sentinel compatibility mode is enabled and `ParamNoLooseSentinelPasswordFreeAccess` is set to `yes`. By default, this parameter is empty.
+        # After Sentinel mode and the ParamNoLooseSentinelPasswordFreeAccess parameter are enabled, you can use this parameter to add additional password-free commands to the list. The default value is empty.
         self.param_no_loose_sentinel_password_free_commands = param_no_loose_sentinel_password_free_commands
-        # The replication mode. Valid values:
+        # The synchronization mode. Valid values:
         # 
-        # - **async** (default): asynchronous mode
-        # 
-        # - **semisync**: semi-synchronous mode
+        # * **async** (default): asynchronous mode.
+        # * **semisync**: semi-synchronous mode.
         self.param_repl_mode = param_repl_mode
-        # The degradation threshold for the semi-synchronous mode. This parameter is valid only in semi-synchronous mode. Unit: milliseconds. Valid values: 10 to 60000. Default value: 500.
-        # 
-        # > If replication latency exceeds this threshold, the replication mode degrades to asynchronous mode. When the replication latency returns to normal, the mode reverts to semi-synchronous mode.
+        # The degradation threshold for semi-synchronous mode. This parameter can be configured only in semi-synchronous mode. Unit: ms. Valid values: 10 to 60000. Default value: 500.
+        # > When the synchronization latency exceeds this threshold, the synchronization mode automatically switches to asynchronous mode. When the synchronization latency is eliminated, the synchronization mode automatically switches back to semi-synchronous mode.
         self.param_repl_timeout = param_repl_timeout
-        # Specifies whether to enable Sentinel compatibility mode. This parameter applies to instances that use the cluster architecture with proxy connection mode or the read/write splitting architecture. Valid values:
+        # The Sentinel compatibility mode. This parameter applies to instances that use the proxy connection mode in cluster architecture or the read/write splitting architecture. Valid values:
         # 
-        # - **0** (default): Disabled
-        # 
-        # - **1**: Enabled
-        # 
+        # * **0** (default): disabled.
+        # * **1**: enabled.
         # > For more information, see [Sentinel compatibility mode](https://help.aliyun.com/document_detail/178911.html).
         self.param_sentinel_compat_enable = param_sentinel_compat_enable
         # The request ID.

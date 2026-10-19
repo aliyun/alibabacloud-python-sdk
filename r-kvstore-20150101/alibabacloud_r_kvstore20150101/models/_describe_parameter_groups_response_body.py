@@ -13,7 +13,7 @@ class DescribeParameterGroupsResponseBody(DaraModel):
         parameter_groups: List[main_models.DescribeParameterGroupsResponseBodyParameterGroups] = None,
         request_id: str = None,
     ):
-        # The list of parameter templates.
+        # The parameter templates.
         self.parameter_groups = parameter_groups
         # The request ID.
         self.request_id = request_id
@@ -65,21 +65,21 @@ class DescribeParameterGroupsResponseBodyParameterGroups(DaraModel):
         parameter_group_name: str = None,
     ):
         # The product category. Valid values:
-        # - **0**: Redis Community Edition
-        # - **1**: Tair (Enhanced Edition)
+        # - **0**: open-source Redis.
+        # - **1**: Tair (Enterprise Edition).
         self.category = category
-        # The creation time of the parameter template.
+        # The time when the parameter template was created.
         self.created = created
         # The engine type. Valid values:
-        # - **redis**: Redis Community Edition or Tair (Enhanced Edition) in-memory type.
-        # - **tair_pena**: Tair (Enhanced Edition) persistent memory type.
-        # - **tair_pdb**: Tair (Enhanced Edition) cloud disk type.
+        # - **redis**: open-source Redis or Tair (Memory-optimized).
+        # - **tair_pena**: Tair (Persistent Memory-optimized).
+        # - **tair_pdb**: Tair (Disk-optimized).
         self.engine = engine
-        # The engine-compatible version.
+        # The compatible engine version.
         self.engine_version = engine_version
-        # The most recent modification time of the parameter template.
+        # The time when the parameter template was last modified.
         self.modified = modified
-        # The parameter template ID.
+        # The ID of the parameter template.
         self.param_group_id = param_group_id
         # The description of the parameter template.
         self.parameter_group_desc = parameter_group_desc

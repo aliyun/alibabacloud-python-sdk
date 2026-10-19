@@ -26,35 +26,34 @@ class CreateTairSkvDdbWorkspaceResponseBody(DaraModel):
         # The bandwidth limit of the instance. Unit: MB/s.
         self.bandwidth = bandwidth
         # The billing method. Valid values:
-        # 
         # * `PrePaid`: subscription.
         # * `PostPaid`: pay-as-you-go.
         self.charge_type = charge_type
-        # The detailed configuration of the instance.
+        # The detailed configurations of the instance.
         self.config = config
-        # The internal endpoint of the Redis instance.
+        # The internal network connection endpoint of the Redis instance.
         self.connection_domain = connection_domain
-        # The maximum number of connections supported by the instance.
+        # The maximum number of connections to the instance.
         self.connections = connections
         # The globally unique instance ID.
         self.instance_id = instance_id
         # The instance name.
         self.instance_name = instance_name
-        # The current status of the instance. The return value is fixed as Creating.
+        # The current status of the instance. The value is fixed as Creating.
         self.instance_status = instance_status
         # The order ID.
         self.order_id = order_id
         # The Redis service port.
         self.port = port
-        # The queries per second (QPS). This value is the theoretical value for the current instance specifications.
+        # The queries per second (QPS). This is the theoretical value for the current instance specifications.
         self.qps = qps
-        # The region in which the instance resides.
+        # The region where the instance is deployed.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the task flow that is executed for the creation.
+        # The ID of the task flow executed for creation.
         self.task_id = task_id
-        # The zone ID of the instance.
+        # The ID of the zone where the instance is deployed.
         self.zone_id = zone_id
 
     def validate(self):

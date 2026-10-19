@@ -17,17 +17,16 @@ class CreateGlobalSecurityIPGroupRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The IP addresses in the IP whitelist template.
+        # The IP addresses in the whitelist template.
         # 
-        # >  Separate multiple IP addresses with commas (,). The maximum number of IP addresses is 1,000.
+        # > Separate multiple IP addresses with commas (,). IP addresses cannot be duplicated. You can add up to 1,000 IP addresses.
         # 
         # This parameter is required.
         self.gip_list = gip_list
-        # The name of the IP whitelist template. The name must meet the following requirements:
-        # 
-        # *   The name can contain lowercase letters, digits, and underscores (_).
-        # *   The name must start with a letter and end with a letter or digit.
-        # *   The name must be 2 to 120 characters in length.
+        # The name of the IP address whitelist template. The name must meet the following requirements:
+        # - The name can contain lowercase letters, digits, and underscores (_).
+        # - The name must start with a letter and end with a letter or digit.
+        # - The name must be 2 to 120 characters in length.
         # 
         # This parameter is required.
         self.global_ig_name = global_ig_name

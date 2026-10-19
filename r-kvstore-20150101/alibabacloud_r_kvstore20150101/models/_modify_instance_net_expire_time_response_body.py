@@ -14,10 +14,10 @@ class ModifyInstanceNetExpireTimeResponseBody(DaraModel):
         net_info_items: main_models.ModifyInstanceNetExpireTimeResponseBodyNetInfoItems = None,
         request_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         self.net_info_items = net_info_items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

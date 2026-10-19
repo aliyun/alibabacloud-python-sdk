@@ -12,10 +12,18 @@ class ModifyAccountParameterRequest(DaraModel):
         parameters: str = None,
         security_token: str = None,
     ):
+        # The account name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The account parameters to modify, in JSON format. The modified values overwrite the original values. For example, if you want to modify only the access-db-id parameter to 1, pass in {"access-db-id":"1"}.
+        # Only two parameters are supported: access-db-id (accessible DB ID) and cu-limit (CU Limit).
+        # >Notice: Currently, only Tair Serverless KV instances are supported.
+        # 
         # This parameter is required.
         self.parameters = parameters
         self.security_token = security_token

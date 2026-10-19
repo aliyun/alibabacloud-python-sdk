@@ -15,11 +15,13 @@ class ModifyDBInstanceMonitorRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The instance ID.
+        # The ID of the Tair instance. This operation is used only to modify the monitoring collection granularity of a Tair instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # This parameter is deprecated. The monitoring granularity is fixed at 60 seconds.
+        # **[Deprecated]** This parameter is deprecated and uses a fixed value of 60.
+        # 
+        # The collection granularity of monitoring data. Unit: seconds. Default value: 60.
         # 
         # This parameter is required.
         self.interval = interval

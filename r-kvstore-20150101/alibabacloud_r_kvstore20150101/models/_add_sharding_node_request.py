@@ -21,23 +21,21 @@ class AddShardingNodeRequest(DaraModel):
         source_biz: str = None,
         v_switch_id: str = None,
     ):
-        # Specifies whether to enable auto-renewal. Valid values:
+        # Specifies whether to enable automatic payment. Valid values:
+        # * **true**: Automatic payment is enabled. Make sure that your account has sufficient balance.
+        # * **false**: Automatic payment is disabled. You must manually complete the payment in the console. For more information, see [Manual renewal](https://help.aliyun.com/document_detail/26352.html).
         # 
-        # *   **true**: enables auto-renewal. Make sure that your account has sufficient balance.
-        # *   **false**: disables auto-renewal. You must manually renew the instance in the console before the instance expires. For more information, see [Instance renewal](https://help.aliyun.com/document_detail/26352.html).
-        # 
-        # >  Default value: **true**.
+        # > Default value: **true**.
         self.auto_pay = auto_pay
-        # The business information. This is an additional parameter.
+        # The additional parameter for business information.
         self.business_info = business_info
-        # The ID of the coupon.
+        # The coupon code.
         self.coupon_no = coupon_no
-        # Specifies whether to enable forced transmission during a configuration change. Valid values:
-        # 
-        # *   **false** (default): Before the configuration change, the system checks the minor version of the instance. If the minor version of the instance is outdated, an error is reported. You must update the minor version of the instance and try again.
-        # *   **true**: The system skips the version check and directly performs the configuration change.
+        # Specifies whether to enable forced transmission. Valid values:
+        # - **false** (default): Before the Upgrade/Downgrade, the system checks the current minor engine version of the instance. If the minor engine version is outdated, an error is returned. You must upgrade the minor engine version and retry.
+        # - **true**: Skips the check and directly executes the Upgrade/Downgrade operation.
         self.force_trans = force_trans
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -46,13 +44,13 @@ class AddShardingNodeRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The number of data shards that you want to add. Default value: **1**.
-        # 
-        # >  The instance can contain 2 to 256 data shards. You can add up to 64 data shards at a time. Make sure that the number of shards does not exceed this limit.
+        # The number of shards to add. Default value: **1**.
+        # > The minimum total number of shards for an instance is 2. You can add up to 64 shards in a single operation, and the total number of shards for an instance cannot exceed 256. Make sure that the number of shards does not exceed this limit.
         self.shard_count = shard_count
-        # The source of the operation. This parameter is used only for internal maintenance. You do not need to specify this parameter.
+        # The request source. This parameter is used only for internal maintenance and does not need to be specified.
         self.source_biz = source_biz
-        # The vSwitch ID. You can specify a different vSwitch within the same virtual private cloud (VPC). In this case, the new data shards are created in the specified vSwitch. If you do not specify this parameter, the new data shards are created in the original vSwitch.
+        # The ID of a different vSwitch within the same VPC. The new data shards are created under the specified vSwitch.
+        # If you leave this parameter empty, the new data shards are created under the original vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

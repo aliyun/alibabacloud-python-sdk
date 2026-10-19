@@ -14,8 +14,11 @@ class DescribeInspectionTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The task data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -60,9 +63,13 @@ class DescribeInspectionTasksResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The list of tasks.
         self.items = items
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -126,16 +133,40 @@ class DescribeInspectionTasksResponseBodyDataItems(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The time when the task was created.
+        # 
+        # The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
+        # The end time of the task.
+        # 
+        # The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
+        # The completion time of the task.
+        # 
+        # The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
         self.finish_time = finish_time
+        # The specified inspection items. The following inspection items are supported:
+        # - RESOURCE_USAGE
+        # - BIGKEY
+        # - HOTKEY
+        # - PERFORMANCE_METRICS
+        # - SLOWLOG
         self.inspection_items = inspection_items
+        # The list of associated instance IDs.
         self.instance_ids = instance_ids
+        # The language of the report.
         self.report_language = report_language
+        # The ID of the scheduled task.
         self.schedule_id = schedule_id
+        # The source of the task.
         self.source = source
+        # The start time of the task.
+        # 
+        # The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
+        # The status of the task.
         self.status = status
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

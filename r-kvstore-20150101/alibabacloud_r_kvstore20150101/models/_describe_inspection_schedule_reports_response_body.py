@@ -14,8 +14,13 @@ class DescribeInspectionScheduleReportsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The task data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -60,9 +65,13 @@ class DescribeInspectionScheduleReportsResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The task items.
         self.items = items
+        # The returned page number.
         self.page_num = page_num
+        # The page size. Default value: 25.
         self.page_size = page_size
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -123,13 +132,29 @@ class DescribeInspectionScheduleReportsResponseBodyDataItems(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The creation time of the task.
+        # 
+        # The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The end time of the task.
+        # 
+        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.end_time = end_time
+        # The completion time of the task.
+        # 
+        # The time is displayed in the ISO 8601 format with an explicit time zone offset.
         self.finish_time = finish_time
+        # The summary of risk levels in the inspection results.
         self.level_summary = level_summary
+        # The language of the report.
         self.report_language = report_language
+        # The start time of the task.
+        # 
+        # The time is displayed in the YYYY-MM-DDTHH:mmZ format in UTC.
         self.start_time = start_time
+        # The status of the inspection task.
         self.status = status
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

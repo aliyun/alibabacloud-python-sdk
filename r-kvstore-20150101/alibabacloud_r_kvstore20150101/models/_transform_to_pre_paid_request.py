@@ -19,31 +19,27 @@ class TransformToPrePaidRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # Specifies whether to enable auto-payment. Valid values:
-        # 
-        # - **true**: Automatically completes the payment.
-        # 
-        # - **false** (default): An order is generated, but is not automatically paid. You must then log on to the console to pay for the *order*. For more information, see [Manually renew an instance](https://help.aliyun.com/document_detail/26352.html).
+        # Specifies whether to enable automatic payment. Valid values:
+        # * **true**: enables automatic payment.
+        # * **false**: disables automatic payment (default). You must manually renew the instance in the console. For more information, see [Manual renewal](https://help.aliyun.com/document_detail/26352.html).
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - **true**: Auto-renewal is enabled.
-        # 
-        # - **false**: Auto-renewal is disabled.
+        # * **true**: enables auto-renewal.
+        # * **false**: disables auto-renewal.
         self.auto_renew = auto_renew
-        # The auto-renewal period. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # The auto-renewal epoch. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
         # 
-        # > This parameter is required if **AutoRenew** is set to **true**.
+        # > This parameter is required when **AutoRenew** is set to **true**.
         self.auto_renew_period = auto_renew_period
-        # The coupon code.
         self.coupon_no = coupon_no
-        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
+        # Instance ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration. Unit: months. Valid values: **1**, **2**, **3**, **4**, **5**, **6**, **7**, **8**, **9**, **12**, **24**, and **36**.
+        # The subscription duration. Unit: months. Valid values: **1** to **9**, **12**, **24**, and **36**.
         # 
         # This parameter is required.
         self.period = period

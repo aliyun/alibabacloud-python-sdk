@@ -13,7 +13,7 @@ class DescribeGlobalSecurityIPGroupResponseBody(DaraModel):
         global_security_ipgroup: List[main_models.DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup] = None,
         request_id: str = None,
     ):
-        # An array of global IP whitelist templates.
+        # The IP whitelist template information.
         self.global_security_ipgroup = global_security_ipgroup
         # The ID of the request.
         self.request_id = request_id
@@ -61,17 +61,16 @@ class DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(DaraModel):
         global_security_group_id: str = None,
         region_id: str = None,
     ):
-        # An array of instance IDs that are associated with the global IP whitelist template.
+        # The instance IDs associated with the IP whitelist template.
         self.dbinstances = dbinstances
-        # The IP addresses in the global IP whitelist template.
-        # 
-        # > Separate multiple IP addresses with a comma.
+        # The IP addresses in the whitelist template.
+        # > Separate multiple IP addresses with commas (,).
         self.gip_list = gip_list
-        # The name of the global IP whitelist template.
+        # The name of the IP whitelist template.
         self.global_ig_name = global_ig_name
-        # The ID of the global IP whitelist template.
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

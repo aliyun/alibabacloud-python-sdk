@@ -21,9 +21,9 @@ class DescribeClusterBackupListRequest(DaraModel):
         security_token: str = None,
         start_time: str = None,
     ):
-        # The backup set ID.
+        # The cluster backup set ID.
         self.cluster_backup_id = cluster_backup_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+        # The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -31,42 +31,24 @@ class DescribeClusterBackupListRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to show backup set information for shards in the instance.
-        # 
-        # *   **true**: does not show backup set information for shards in the instance.
-        # *   **false** (default): shows backup set information for shards in the instance.
-        # 
-        # Valid values:
-        # 
-        # *   True
-        # *   False
+        # Specifies whether to display the details of the backup sets for cluster nodes. Valid values:
+        # * **false** (default): displays the backup set information of cluster nodes.
+        # * **true**: does not display the backup set information of cluster nodes.
         self.no_shard_backup = no_shard_backup
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
-        # 
-        # Valid values:
-        # 
-        # *   30
-        # *   50
-        # *   100
-        # *   200
-        # *   300
-        # *   5
-        # *   10
-        # *   15
-        # *   20
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

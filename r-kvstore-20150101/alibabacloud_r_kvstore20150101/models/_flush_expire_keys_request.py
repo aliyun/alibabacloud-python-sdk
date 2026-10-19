@@ -15,14 +15,13 @@ class FlushExpireKeysRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The time when you want to delete the expired keys. Default value: Immediately. Valid values:
+        # The execution time. Valid values:
+        # * **Immediately**: Executes the operation immediately. This is the default value.
+        # * **MaintainTime**: Executes the operation during the maintenance window.
         # 
-        # *   **Immediately**: deletes the keys immediately.
-        # *   **MaintainTime**: deletes the keys during the maintenance window.
-        # 
-        # >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of an instance.
+        # > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
         self.effective_time = effective_time
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

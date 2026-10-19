@@ -17,21 +17,20 @@ class DescribeCacheAnalysisReportResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # Details of the large keys.
+        # The list of big keys.
         self.big_keys = big_keys
-        # Details of the hotkeys.
-        # 
-        # > This parameter is not returned because Tair (Redis OSS-compatible) does not support hotkey analytics.
+        # The list of hot keys.
+        # > Hot key analysis is not supported. No value is returned.
         self.hot_keys = hot_keys
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
         # The number of entries returned on the current page.
         self.page_record_count = page_record_count
         # The maximum number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries returned across all pages.
         self.total_record_count = total_record_count
 
     def validate(self):

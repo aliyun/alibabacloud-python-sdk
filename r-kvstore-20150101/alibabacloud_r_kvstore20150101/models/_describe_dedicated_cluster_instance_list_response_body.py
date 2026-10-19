@@ -16,15 +16,15 @@ class DescribeDedicatedClusterInstanceListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the instances.
+        # The list of instance information.
         self.instances = instances
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -107,74 +107,67 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(DaraModel):
         vswitch_id: str = None,
         zone_id: str = None,
     ):
-        # The default bandwidth of the instance. Unit: Mbit/s.
+        # The default bandwidth of the instance. Unit: MB/s.
         self.band_width = band_width
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **logic**: cluster
-        # *   **normal**: standard
+        # The architecture type. Valid values:
+        # * **logic**: Cluster architecture.
+        # * **normal**: Standard architecture.
         self.character_type = character_type
-        # The ID of the dedicated cluster to which the instance belongs.
+        # The dedicated cluster ID.
         self.cluster_id = cluster_id
-        # The name of the dedicated cluster to which the instance belongs.
+        # The dedicated cluster name.
         self.cluster_name = cluster_name
-        # The private endpoint of the instance.
+        # The direct connection endpoint.
         self.connection_domain = connection_domain
-        # The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the instance was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The current bandwidth of the instance, which is the sum of the default bandwidth and any extra bandwidth that is purchased. Unit: Mbit/s.
+        # The current bandwidth of the instance. Unit: MB/s. The value is the sum of the default bandwidth and the increased bandwidth.
         self.current_band_width = current_band_width
-        # An internal parameter used for the maintenance and management of instances.
+        # An internal parameter used for instance maintenance.
         self.custom_id = custom_id
-        # The database engine. The return value is **redis**.
+        # The database engine. The value is fixed as **redis**.
         self.engine = engine
-        # The database engine version of the instance. The return value is **5.0**.
+        # The database engine version. The value is fixed as **5.0**.
         self.engine_version = engine_version
         # The instance type.
         self.instance_class = instance_class
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The instance name.
         self.instance_name = instance_name
-        # Details about the nodes.
+        # The list of node information.
         self.instance_node_list = instance_node_list
-        # The state of the instance. Valid values:
-        # 
-        # *   **Normal**: The instance is normal.
-        # *   **Creating**: The instance is being created.
-        # *   **Changing**: The configurations of the instance are being changed.
-        # *   **Inactive**: The instance is disabled.
-        # *   **Flushing**: The instance is being released.
-        # *   **Released**: The instance is released.
-        # *   **Transforming**: The billing method of the instance is being changed.
-        # *   **Unavailable**: The instance is unavailable.
-        # *   **Error**: The instance failed to be created.
-        # *   **Migrating**: The instance is being migrated.
-        # *   **BackupRecovering**: The instance is being restored from a backup.
-        # *   **MinorVersionUpgrading**: The minor version of the instance is being updated.
-        # *   **NetworkModifying**: The network type of the instance is being changed.
-        # *   **SSLModifying**: The SSL configurations of the instance are being changed.
-        # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
+        # The instance status. Valid values:
+        # * **Normal**: Normal.
+        # * **Creating**: Creating.
+        # * **Changing**: Changing.
+        # * **Inactive**: Disabled.
+        # * **Flushing**: Purge in progress.
+        # * **Released**: Released.
+        # * **Transforming**: Transforming.
+        # * **Unavailable**: Unavailable.
+        # * **Error**: Creation failed.
+        # * **Migrating**: Migrating.
+        # * **BackupRecovering**: Restoring from backup.
+        # * **MinorVersionUpgrading**: Minor version upgrade in progress.
+        # * **NetworkModifying**: Changing the network.
+        # * **SSLModifying**: Changing SSL configurations.
+        # * **MajorVersionUpgrading**: Major engine version upgrade in progress. The instance remains accessible.
         self.instance_status = instance_status
-        # The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
+        # The end time of the maintenance window. The time is in the <i>HH:mm</i>Z format. The time is displayed in UTC.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
+        # The start time of the maintenance window. The time is in the <i>HH:mm</i>Z format. The time is displayed in UTC.
         self.maintain_start_time = maintain_start_time
         # The number of proxy nodes.
-        # 
-        # > 
-        # 
-        # *   If the return value is **0**, the proxy mode is disabled for the instance. If the return value is an integer greater than **0**, such as **1**, the proxy mode is enabled for the instance.
-        # 
-        # *   This parameter is returned only when the instance is a [cluster](https://help.aliyun.com/document_detail/52228.html) instance.
+        # > * A value of **0** indicates that the proxy mode is disabled for the instance. A value greater than **0** (such as **1**) indicates that the proxy mode is enabled for the instance.
+        # > * This parameter is returned only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         self.proxy_count = proxy_count
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The number of shards.
-        # 
-        # >  This parameter is returned only when the instance is a [cluster](https://help.aliyun.com/document_detail/52228.html) instance.
+        # The number of data shards.
+        # > This parameter is returned only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         self.shard_count = shard_count
-        # The storage type of the instance. The return value is LOCAL_SSD, which indicates [enhanced SSDs (ESSDs)](https://help.aliyun.com/document_detail/122389.html).
+        # The storage type. The value is fixed as LOCAL_SSD ([ESSD cloud disk (standard SSD)](https://help.aliyun.com/document_detail/122389.html)).
         self.storage_type = storage_type
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -361,28 +354,26 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstancesInstanceNodeList(
         role: str = None,
         zone_id: str = None,
     ):
-        # The ID of the host in the dedicated cluster.
+        # The host ID in the dedicated cluster.
         self.dedicated_host_name = dedicated_host_name
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The node ID.
         self.node_id = node_id
         # The IP address of the node.
         self.node_ip = node_ip
         # The node type. Valid values:
-        # 
-        # *   **db**: data node.
-        # *   **proxy**: proxy node.
-        # *   **normal**: regular node. This value is returned when the instance runs in the standard architecture.
+        # * **db**: Data node.
+        # * **proxy**: Proxy node.
+        # * **normal**: Regular node. This value is returned for instances that use the standard architecture.
         self.node_type = node_type
-        # The port number that is used to connect to the node.
+        # The port of the node.
         self.port = port
-        # The role of the node. Valid values:
-        # 
-        # *   **master**: master node
-        # *   **slave**: replica node
+        # The node role. Valid values:
+        # * **master**: Primary node.
+        # * **slave**: Secondary node.
         self.role = role
-        # The zone ID of the node.
+        # The zone to which the node belongs.
         self.zone_id = zone_id
 
     def validate(self):

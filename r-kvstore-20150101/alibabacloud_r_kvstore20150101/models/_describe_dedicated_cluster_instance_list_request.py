@@ -24,53 +24,48 @@ class DescribeDedicatedClusterInstanceListRequest(DaraModel):
         security_token: str = None,
         zone_id: str = None,
     ):
-        # The ID of the dedicated cluster. You can view the dedicated cluster ID on the Dedicated Clusters page in the ApsaraDB for MyBase console.
-        # 
-        # > Separate multiple IDs with commas (,).
+        # The dedicated cluster ID. You can obtain the ID on the dedicated cluster information page in the ApsaraDB for MyBase console.
+        # > To specify multiple IDs, separate them with commas (,).
         self.cluster_id = cluster_id
-        # The ID of the host in the dedicated cluster. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) operation to query the host ID.
-        # 
-        # > Separate multiple IDs with commas (,).
+        # The host ID in the dedicated cluster. You can call [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) to query the host ID.
+        # > To specify multiple IDs, separate them with commas (,).
         self.dedicated_host_name = dedicated_host_name
-        # The database engine of the instance. Set the value to **Redis**.
+        # The database engine. Set the value to **Redis**.
         self.engine = engine
-        # The database engine version of the instance. Set the value to **5.0**.
+        # The database engine version. Set the value to **5.0**.
         self.engine_version = engine_version
-        # The ID of the instance.
-        # 
-        # > The instance must be created by using a dedicated cluster. For more information, see [What is ApsaraDB for MyBase?](https://help.aliyun.com/document_detail/141455.html)
+        # The instance ID.
+        # > The instance must be created in a dedicated cluster. For more information, see [ApsaraDB for MyBase](https://help.aliyun.com/document_detail/141455.html).
         self.instance_id = instance_id
-        # The network type of the instance. Valid values:
-        # 
-        # *   **0**: Internet
-        # *   **1**: classic network
-        # *   **2**: Virtual Private Cloud (VPC)
+        # The network type of the instance endpoint. Valid values:
+        # * **0**: Internet.
+        # * **1**: Classic network.
+        # * **2**: Virtual Private Cloud (VPC).
         self.instance_net_type = instance_net_type
-        # The state of the instance. Valid values:
-        # 
-        # *   **0**: The instance is being created.
-        # *   **1**: The instance is running.
-        # *   **3**: The instance is being deleted.
-        # *   **5**: The configurations of the instance are being changed.
-        # *   **6**: The instance is being migrated.
-        # *   **7**: The instance is being restored from a backup.
-        # *   **8**: A master-replica switchover is in progress.
-        # *   **9**: Expired data of the instance is being deleted.
+        # The instance status. Valid values:
+        # * **0**: Creating.
+        # * **1**: Running.
+        # * **3**: Deleting.
+        # * **5**: Changing specifications.
+        # * **6**: Migrating.
+        # * **7**: Restoring from backup.
+        # * **8**: Switching.
+        # * **9**: Deleting expired data.
         self.instance_status = instance_status
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+        # The page number. The value must be greater than **0** and less than or equal to the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+        # The maximum number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the most recent zone list.
+        # The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query zone IDs.
         self.zone_id = zone_id
 
     def validate(self):

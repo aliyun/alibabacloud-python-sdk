@@ -1,3 +1,12 @@
+2026-10-19 Version: 7.0.0
+- Update API DescribeHistoryMonitorValues: add response parameters Body.MonitorLegend.
+- Update API DescribeTairSkvDdbTable: add response parameters Body.Tables.$.GlobalSecondaryIndexList.
+- Update API DescribeTairSkvDdbTable: delete request parameters OwnerAccount.
+- Update API DescribeTairSkvDdbTable: delete request parameters OwnerId.
+- Update API DescribeTairSkvDdbTable: delete request parameters ResourceOwnerAccount.
+- Update API DescribeTairSkvDdbTable: delete request parameters ResourceOwnerId.
+
+
 2026-08-20 Version: 6.6.0
 - Support API ModifyAccountParameter.
 - Update API CreateAccount: add request parameters Parameters.

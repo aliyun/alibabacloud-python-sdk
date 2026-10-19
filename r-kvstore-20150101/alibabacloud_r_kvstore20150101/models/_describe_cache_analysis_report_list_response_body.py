@@ -15,9 +15,9 @@ class DescribeCacheAnalysisReportListResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.daily_tasks = daily_tasks
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

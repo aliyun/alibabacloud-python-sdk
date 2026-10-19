@@ -17,17 +17,16 @@ class ModifyInstanceParameterRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The parameter template ID.
-        # 
-        # > You can view the list of parameter templates in the target region, including the parameter template ID, through the DescribeParameterGroups interface.
+        # > You can call the DescribeParameterGroups operation to query the list of parameter templates in the target region, including parameter template IDs.
         self.parameter_group_id = parameter_group_id
-        # The information about parameters.
+        # The parameter information.
         self.parameters = parameters
         # The region ID.
         # 

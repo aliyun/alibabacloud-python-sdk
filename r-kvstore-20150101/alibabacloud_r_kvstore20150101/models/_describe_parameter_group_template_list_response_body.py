@@ -14,13 +14,11 @@ class DescribeParameterGroupTemplateListResponseBody(DaraModel):
         parameters: List[main_models.DescribeParameterGroupTemplateListResponseBodyParameters] = None,
         request_id: str = None,
     ):
-        # The compatible engine version. Valid values:
-        # 
-        # Redis Open Source Edition: 5.0, 6.0, and 7.0. Tair DRAM-based instances: 5.0 and 6.0. Tair persistent memory-optimized instances: 6.0. Tair ESSD-based instances: 4.0.
+        # The compatible version.
         self.engine_version = engine_version
-        # The information about parameters.
+        # The list of parameter details.
         self.parameters = parameters
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,13 +74,15 @@ class DescribeParameterGroupTemplateListResponseBodyParameters(DaraModel):
         support_modify_for_minor_version: bool = None,
         unit: str = None,
     ):
-        # The regular expression used to validate input.
+        # The value range of the parameter.
         self.checking_code = checking_code
-        # Indicates whether the modification takes effect. Valid values: 0 and 1. A value of 0 indicates that the modification does not take effect. A value of 1 indicates that the modification takes effect.
+        # Indicates whether the parameter has taken effect. Valid values:
+        # * **0**: No.
+        # * **1**: Yes.
         self.effective = effective
-        # A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
+        # The divisor factor. For integer and byte type parameters, the parameter value must not only fall within the valid range but also be a multiple of Factor (when Factor is not 0).
         self.factor = factor
-        # The description of the parameter.
+        # The parameter description.
         self.parameter_description = parameter_description
         # The parameter name.
         self.parameter_name = parameter_name
@@ -90,12 +90,17 @@ class DescribeParameterGroupTemplateListResponseBodyParameters(DaraModel):
         self.parameter_value = parameter_value
         # Indicates whether the parameter can be modified. Valid values:
         # 
-        # *   **0: The parameter cannot be modified.**
-        # *   **1**: The parameter can be modified.
+        # - **0**: The parameter cannot be modified.
+        # - **1**: The parameter can be modified.
         self.revisable = revisable
-        # Indicates whether the minor version can be changed. Valid values: true and false.
+        # Indicates whether modification for minor versions is supported. Valid values:
+        # * **true**: Supported.
+        # * **false**: Not supported.
         self.support_modify_for_minor_version = support_modify_for_minor_version
-        # The unit of the parameter value. Valid values: INT (ordinary integer), STRING (fixed string), and B (byte).
+        # The unit of the parameter value. Valid values:
+        # * **INT**: a common integer.
+        # * **STRING**: a fixed string.
+        # * **B**: bytes.
         self.unit = unit
 
     def validate(self):

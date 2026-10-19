@@ -15,9 +15,8 @@ class DescribeTagsRequest(DaraModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results.
-        # 
-        # > This parameter is not required for the first request. If not all results are returned in one query, you can specify the token that is obtained from the previous query as the value of **NextToken**.
+        # The token used to start the next query to return more results.
+        # > You do not need to provide this parameter for the first query. If a single query does not return all results, you can pass the **NextToken** value returned in the previous response to continue the query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27,7 +26,7 @@ class DescribeTagsRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource type. Valid values: **INSTANCE** or **instance**.
+        # The resource type. Valid values: **INSTANCE** and **instance**.
         self.resource_type = resource_type
 
     def validate(self):

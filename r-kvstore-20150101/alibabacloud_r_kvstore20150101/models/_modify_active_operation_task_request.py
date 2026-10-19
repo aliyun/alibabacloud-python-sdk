@@ -15,9 +15,8 @@ class ModifyActiveOperationTaskRequest(DaraModel):
         security_token: str = None,
         switch_time: str = None,
     ):
-        # The ID of the O\\&M task. Separate multiple IDs with commas (,).
-        # 
-        # > You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/473865.html) operation to query the ID of an O\\&M task.
+        # The O&M task IDs, separated by commas (,).
+        # > You can call [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/473865.html) to obtain the O&M task IDs.
         # 
         # This parameter is required.
         self.ids = ids
@@ -26,9 +25,8 @@ class ModifyActiveOperationTaskRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The scheduled switchover time to be specified. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/473865.html) operation to obtain the latest operation time, which is the value of the **Deadline** parameter in the response.
+        # The scheduled switchover time to set. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # > The time cannot be later than the latest operation time. You can call [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/473865.html) and check the value of the **Deadline** response parameter to obtain the latest operation time.
         # 
         # This parameter is required.
         self.switch_time = switch_time

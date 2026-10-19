@@ -19,15 +19,12 @@ class SwitchNetworkRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The retention period of the classic network endpoint. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
+        # The retention period of the classic network connectivity endpoint. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
         # 
-        # > 
-        # 
-        # *   This parameter is available and required only when the **RetainClassic** parameter is set to **True**.
-        # 
-        # *   After you complete the switchover operation, you can also call the [ModifyInstanceNetExpireTime](https://help.aliyun.com/document_detail/473793.html) operation to modify the retention period of the classic network endpoint.
+        # > * This parameter is active and required only when **RetainClassic** is set to **True**.
+        # > * After the switchover is complete, you can invoke [ModifyInstanceNetExpireTime](https://help.aliyun.com/document_detail/473793.html) to modify the retention period of the classic network connectivity endpoint.
         self.classic_expired_days = classic_expired_days
-        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+        # The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -35,27 +32,22 @@ class SwitchNetworkRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to retain the original classic network endpoint after you switch the instance from classic network to VPC. Default value: False. Valid values:
+        # Specifies whether to retain the classic network connectivity endpoint when you switch the instance from the classic network to a VPC. Valid values:
+        # * **True**: The classic network endpoint is retained.
+        # * **False**: The classic network endpoint is not retained. This is the default value.
         # 
-        # *   **True**: retains the classic network endpoint.
-        # *   **False**: does not retain the classic network endpoint.
-        # 
-        # > This parameter is available only when the network type of the instance is classic network.
+        # > This parameter is active only when the network type of the instance is classic network.
         self.retain_classic = retain_classic
         self.security_token = security_token
-        # The network type to which you want to switch. If you want to switch to VPC network, Set the value to **VPC**.
+        # The network type to which you want to switch. Set the value to **VPC**.
         self.target_network_type = target_network_type
-        # The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the vSwitch ID.
-        # 
-        # >  The vSwitch and the instance must be deployed in the same zone.
+        # The ID of the vSwitch in the destination VPC. You can call [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) to query vSwitch IDs.
+        # > The vSwitch must be in the same zone as the instance.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which you want to switch. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the VPC ID.
+        # The ID of the VPC to which you want to switch. You can call [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) to query VPC IDs.
         # 
-        # > 
-        # 
-        # *   The VPC and the instance must be deployed in the same region.
-        # 
-        # *   After you set this parameter, you must also set the **VSwitchId** parameter.
+        # > * The VPC must be in the same region as the instance.
+        # > * After you specify this parameter, you must also specify the **VSwitchId** parameter.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -14,8 +14,11 @@ class DescribeInspectionTaskReportResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The task report.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -62,11 +65,17 @@ class DescribeInspectionTaskReportResponseBodyData(DaraModel):
         summary: main_models.DescribeInspectionTaskReportResponseBodyDataSummary = None,
         task_id: str = None,
     ):
+        # The list of associated instance IDs.
         self.instance_ids = instance_ids
+        # The Markdown text of the report details.
         self.markdown_text = markdown_text
+        # The report language.
         self.report_language = report_language
+        # The task status.
         self.status = status
+        # The summary.
         self.summary = summary
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -129,9 +138,13 @@ class DescribeInspectionTaskReportResponseBodyDataSummary(DaraModel):
         normal: int = None,
         warning: int = None,
     ):
+        # The number of high-risk items.
         self.error = error
+        # The number of failed items.
         self.failed = failed
+        # The number of normal items.
         self.normal = normal
+        # The number of warning items.
         self.warning = warning
 
     def validate(self):

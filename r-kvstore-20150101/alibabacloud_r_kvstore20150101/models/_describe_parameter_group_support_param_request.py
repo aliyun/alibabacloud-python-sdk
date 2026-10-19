@@ -16,23 +16,20 @@ class DescribeParameterGroupSupportParamRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The service category. Valid values:
-        # 
-        # *   **standard**: ApsaraDB for Redis Community Edition
-        # *   **enterprise**: ApsaraDB for Redis Enhanced Edition (Tair)
+        # The product category. Valid values:
+        # * **standard**: ApsaraDB for Redis Community Edition.
+        # * **enterprise**: Tair (Redis Enterprise Edition).
         self.category = category
         # The engine type. Valid values:
-        # 
-        # *   **redis**: ApsaraDB for Redis Community Edition instance or Tair DRAM-based instance
-        # *   **tair_pena**: Tair persistent memory-optimized instance
-        # *   **tair_pdb**: Tair ESSD/SSD-based instance
+        # * **redis**: ApsaraDB for Redis Community Edition or Tair memory-optimized instances.
+        # * **tair_pena**: Tair persistent memory-optimized instances.
+        # * **tair_pdb**: Tair cloud-native (ESSD/SSD) instances.
         self.engine_type = engine_type
-        # The compatible engine version. Valid values:
-        # 
-        # *   For ApsaraDB for Redis Community Edition instances, set the parameter to **5.0**, **6.0**, or **7.0**.
-        # *   For Tair DRAM-based instances that are compatible with Redis 5.0 or Redis 6.0, set the parameter to **5.0** or **6.0**.
-        # *   For Tair persistent memory-optimized instances that are compatible with Redis 6.0, set the parameter to **1.0**.
-        # *   For Tair ESSD-based instances that are compatible with Redis 6.0, set the parameter to **1.0**. For Tair SSD-based instances that are compatible with Redis 6.0, set the parameter to **2.0**.
+        # The compatible version. Valid values:
+        # * ApsaraDB for Redis Community Edition supports **5.0**, **6.0**, and **7.0**.
+        # * Tair memory-optimized instances are compatible with Redis 5.0 and Redis 6.0 protocols. Set this parameter to **5.0** or **6.0**.
+        # * Tair persistent memory-optimized instances are compatible with the Redis 6.0 protocol. Set this parameter to **1.0**.
+        # * Tair cloud-native (ESSD/SSD) instances are compatible with the Redis 6.0 protocol. To create a parameter template for ESSD-based instances, set this parameter to **1.0**. To create a parameter template for SSD-based instances, set this parameter to **2.0**.
         # 
         # This parameter is required.
         self.engine_version = engine_version

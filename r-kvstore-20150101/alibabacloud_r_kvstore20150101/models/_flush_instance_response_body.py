@@ -9,7 +9,7 @@ class FlushInstanceResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The operation that you want to perform. Set the value to **FlushInstance**.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

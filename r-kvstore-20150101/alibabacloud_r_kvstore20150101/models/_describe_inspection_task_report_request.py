@@ -12,10 +12,15 @@ class DescribeInspectionTaskReportRequest(DaraModel):
         security_token: str = None,
         task_id: str = None,
     ):
+        # The ID of the inspection instance.
         self.inspection_ins_id = inspection_ins_id
+        # The assistant instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.security_token = security_token
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

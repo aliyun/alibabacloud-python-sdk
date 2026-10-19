@@ -11,14 +11,14 @@ class DescribeActiveOperationTaskCountResponseBody(DaraModel):
         request_id: str = None,
         task_count: int = None,
     ):
-        # Indicates whether any O\\&M tasks need pop-up windows to notify users actions. Valid values:
+        # Indicates whether there are O&M tasks that require a pop-up notification for user action. Valid values:
         # 
-        # *   **0**: No O\\&M tasks need pop-up windows to notify users actions.
-        # *   **1**: Some O\\&M tasks need pop-up windows to notify users actions.
+        # - **0**: No pop-up notification.
+        # - **1**: A pop-up notification exists.
         self.need_pop = need_pop
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # The number of pending O\\&M tasks.
+        # The number of pending O&M tasks.
         self.task_count = task_count
 
     def validate(self):

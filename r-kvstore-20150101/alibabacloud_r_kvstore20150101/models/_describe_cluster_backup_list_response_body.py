@@ -19,23 +19,22 @@ class DescribeClusterBackupListResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
-        # The backup sets of the instance. A backup contains the backup sets of all shards in the instance.
+        # The list of cluster backup sets. A cluster backup set contains the backup sets of all nodes in the cluster.
         self.cluster_backups = cluster_backups
-        # This parameter does not take effect. Ignore this parameter.
+        # <props="china">The free backup quota of the instance. Unit: bytes. The free quota is equal to the default memory capacity of the instance type. For more information, see the notice on backup commercialization. Full backups and log backups share this free quota. When you change the instance type, the free quota of the instance changes accordingly.
+        # <props="intl">This parameter is not in effect. Ignore this parameter.
         self.free_size = free_size
-        # The size of the full backup file of the instance. Unit: bytes. Full backups originate from scheduled backups, manual backups, and backups generated during cache analysis.
-        # 
-        # >  The value of this parameter is independent of the number and size of returned backup sets. Instead, it represents the size of all valid full backups of the instance.
+        # The size of full backup files for the current instance. Unit: bytes. Full backups are generated from daily scheduled backups, manual backups, and backups generated during cache analysis.
+        # > This value is independent of the number and size of backup sets returned in the current request. It represents the total size of all valid full backups for the instance.
         self.full_storage_size = full_storage_size
-        # The size of the log backup file of the instance. Unit: bytes. This parameter is valid only when flashback is enabled.
-        # 
-        # >  The value of this parameter is independent of the number and size of returned backup sets. Instead, it represents the size of all valid log backups of the instance.
+        # The size of the instance log backup files for the current instance. Unit: bytes. This value is valid only when the flashback feature is enabled.
+        # > This value is independent of the number and size of backup sets in the current response. It represents the total size of all valid instance log backups for the current instance.
         self.log_storage_size = log_storage_size
-        # The maximum number of entries returned.
+        # The maximum number of records returned by the current request.
         self.max_results = max_results
-        # The page number.
+        # The page number, which is the same as the request parameter.
         self.page_number = page_number
-        # The maximum number of entries returned per page.
+        # The maximum number of records per page, which is the same as the request parameter.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -125,31 +124,30 @@ class DescribeClusterBackupListResponseBodyClusterBackups(DaraModel):
         progress: str = None,
         shard_class_memory: int = None,
     ):
-        # The backup sets of all shards in the instance.
+        # The collection of backup sets for all child nodes under a single cluster backup set.
         self.backups = backups
-        # The end time of the backup.
+        # The end time of the cluster backup. The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
         self.cluster_backup_end_time = cluster_backup_end_time
-        # The ID of the backup set.
+        # The cluster backup set ID.
         self.cluster_backup_id = cluster_backup_id
-        # The backup mode.
+        # The cluster backup mode.
         self.cluster_backup_mode = cluster_backup_mode
-        # The size of the backup set.
+        # The size of the cluster backup set.
         self.cluster_backup_size = cluster_backup_size
-        # The start time of the backup.
+        # The start time of the cluster backup. The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
         self.cluster_backup_start_time = cluster_backup_start_time
-        # The status of the backup set.
-        # 
-        # *   OK
-        # *   RUNNING
-        # *   Failed
+        # The status of the cluster backup set. Valid values:
+        # - OK: The backup is successful.
+        # - RUNNING: The backup is in progress.
+        # - Other values: The backup failed.
         self.cluster_backup_status = cluster_backup_status
-        # The time-to-live (TTL) of the backup set, in the format yyyy-MM-ddTHH:mmZ (UTC time).
+        # The expiration time of the backup set. The time is in the yyyy-MM-ddTHH:mmZ format and displayed in UTC.
         self.expect_expire_time = expect_expire_time
-        # Indicates whether the backup set is valid. A value of 0 indicates that shard-level backups failed or have not been completed.
+        # Indicates whether the cluster backup set is valid. The value is 0 if the backup sets of child nodes are incomplete or failed.
         self.is_avail = is_avail
-        # The backup progress. The system displays only the progress of running backup tasks.
+        # The backup progress. This parameter is returned only for backups that are in progress.
         self.progress = progress
-        # The memory size of a single shard during a full backup. Unit: MB.
+        # The memory size of a single DB node when the full backup is created. Unit: MB.
         self.shard_class_memory = shard_class_memory
 
     def validate(self):
@@ -259,37 +257,34 @@ class DescribeClusterBackupListResponseBodyClusterBackupsBackups(DaraModel):
     ):
         # The public download URL of the backup file.
         self.backup_download_url = backup_download_url
-        # The end time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The end time of the backup. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format and displayed in UTC.
         self.backup_end_time = backup_end_time
         # The ID of the backup file.
         self.backup_id = backup_id
         # The internal download URL of the backup file.
-        # 
-        # >  You can use this URL to download the backup file from an Elastic Compute Service (ECS) instance that is connected to the Tair (Redis OSS-compatible) instance. The ECS instance must reside in the same virtual private cloud (VPC) as the Tair (Redis OSS-compatible) instance.
+        # > You can use this URL to download the backup file from an ECS instance that is connected to the current instance. Both instances must reside in the same VPC.
         self.backup_intranet_download_url = backup_intranet_download_url
-        # The name of the backup.
+        # The backup name.
         self.backup_name = backup_name
         # The size of the backup file. Unit: bytes.
         self.backup_size = backup_size
-        # The start time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time of the backup. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format and displayed in UTC.
         self.backup_start_time = backup_start_time
-        # The status of the backup. Valid values:
-        # 
-        # *   **OK**
-        # *   **ERROR**
+        # The backup status. Valid values:
+        # * **OK**: The backup is successful.
+        # * **ERROR**: The backup failed.
         self.backup_status = backup_status
-        # The database engine. The return value is **redis**.
+        # The database engine type. The value is fixed as **redis**.
         self.engine = engine
         # The additional information.
         self.extra_info = extra_info
-        # The instance name.
+        # The name of the instance.
         self.instance_name = instance_name
         # Indicates whether the backup set is available. Valid values:
-        # 
-        # *   **0**: unavailable
-        # *   **1**: available
+        # * **0**: unavailable.
+        # * **1**: available.
         self.is_avail = is_avail
-        # This parameter does not take effect. Ignore this parameter.
+        # This parameter is not in effect. Ignore this parameter.
         self.recover_config_mode = recover_config_mode
 
     def validate(self):
@@ -391,7 +386,7 @@ class DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo(DaraMo
         self,
         custins_db_version: str = None,
     ):
-        # The engine version.
+        # The database engine version.
         self.custins_db_version = custins_db_version
 
     def validate(self):

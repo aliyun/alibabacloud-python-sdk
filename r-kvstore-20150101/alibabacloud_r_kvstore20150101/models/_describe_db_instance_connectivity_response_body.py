@@ -12,17 +12,15 @@ class DescribeDbInstanceConnectivityResponseBody(DaraModel):
         conn_check_result: str = None,
         request_id: str = None,
     ):
-        # The error code for connection diagnosis. Valid values:
-        # 
-        # *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist.
-        # *   **CONNECTION_ABNORMAL**: The connection to the instance is normal.
+        # The connectivity diagnostics error code. Valid values:
+        # * **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist.
+        # * **CONNECTION_ABNORMAL**: The connection is normal.
         self.conn_check_error_code = conn_check_error_code
-        # The error message for connection diagnosis.
+        # The connectivity diagnostics error message.
         self.conn_check_error_message = conn_check_error_message
-        # The connection check result. Valid values:
-        # 
-        # *   **Success**
-        # *   **Failed**
+        # The connectivity diagnostics result. Valid values:
+        # * **Success**
+        # * **Failed**
         self.conn_check_result = conn_check_result
         # Id of the request
         self.request_id = request_id

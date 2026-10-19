@@ -16,7 +16,7 @@ class DeleteParameterGroupRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the parameter template.
+        # The parameter template ID.
         # 
         # This parameter is required.
         self.parameter_group_id = parameter_group_id

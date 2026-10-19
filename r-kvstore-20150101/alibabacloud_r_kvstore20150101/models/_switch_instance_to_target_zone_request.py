@@ -12,10 +12,22 @@ class SwitchInstanceToTargetZoneRequest(DaraModel):
         switch_type: str = None,
         target_zone_id: str = None,
     ):
+        # Instance ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the child node in a cluster instance.
+        # 
+        # > If you do not specify this parameter, all shards are switched to the destination zone.
         self.node_id = node_id
+        # The switch mode. Valid values:
+        # * **ReliabilityPriority** (default): Reliability priority. A primary/secondary switchover is performed only when data synchronization between the primary and secondary nodes has no latency. This ensures that no data is lost. However, in scenarios with a large write volume and continuous synchronization latency, the switchover may fail.
+        # * **AvailablePriority**: Availability priority. A primary/secondary switchover is performed immediately regardless of the synchronization latency between the primary and secondary nodes. A small amount of data may be lost.
+        # 
+        # > Select a switch mode based on your business requirements for data and services.
         self.switch_type = switch_type
+        # The ID of the destination zone.
+        # 
         # This parameter is required.
         self.target_zone_id = target_zone_id
 

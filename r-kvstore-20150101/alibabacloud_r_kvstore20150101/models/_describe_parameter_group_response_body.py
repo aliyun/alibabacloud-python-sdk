@@ -13,7 +13,7 @@ class DescribeParameterGroupResponseBody(DaraModel):
         parameter_group: main_models.DescribeParameterGroupResponseBodyParameterGroup = None,
         request_id: str = None,
     ):
-        # The information about the parameter template.
+        # The parameter template object.
         self.parameter_group = parameter_group
         # The request ID.
         self.request_id = request_id
@@ -59,24 +59,20 @@ class DescribeParameterGroupResponseBodyParameterGroup(DaraModel):
         parameter_group_desc: str = None,
         parameter_group_name: str = None,
     ):
-        # The service category. Valid values:
+        # The product category. Valid values:
         # 
-        # *   **0**: Redis Open-Source Edition
-        # *   **1**: Tair (Enterprise Edition)
+        # - **0**: Redis Community Edition.
+        # - **1**: Tair (Enterprise Edition).
         self.category = category
         # The time when the parameter template was created.
         self.created = created
-        # The engine type. Valid values:
-        # 
-        # * *redis*: Redis or Tair DRAM-based instance
-        # * *tair_pena*: Tair persistent memory-optimized instance
-        # * *tair_pdb*: Tair ESSD-based instance
+        # The engine of the parameter template.
         self.engine = engine
-        # The compatible engine version.
+        # The engine-compatible version.
         self.engine_version = engine_version
         # The time when the parameter template was last modified.
         self.modified = modified
-        # The parameter template ID, which is globally unique.
+        # The globally unique ID of the parameter template.
         self.param_group_id = param_group_id
         # The parameter details of the parameter template.
         self.param_groups_details = param_groups_details
@@ -167,9 +163,9 @@ class DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails(DaraMod
         param_name: str = None,
         param_value: str = None,
     ):
-        # The name of the parameter.
+        # The parameter name.
         self.param_name = param_name
-        # The value of the parameter.
+        # The parameter value.
         self.param_value = param_value
 
     def validate(self):

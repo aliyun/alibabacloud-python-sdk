@@ -15,7 +15,7 @@ class ModifyInstanceBandwidthRequest(DaraModel):
         security_token: str = None,
         target_intranet_bandwidth: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+        # The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -24,9 +24,8 @@ class ModifyInstanceBandwidthRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The total expected bandwidth of the instance.
-        # 
-        # > If the instance is a cluster instance, the TargetIntranetBandwidth must be divisible by the number of shards in the instance. This operation is not supported for read/write splitting instances.
+        # The total target bandwidth value of the instance.
+        # >Notice:  If the instance is a Cluster Edition instance, the total target bandwidth value must be evenly divisible by the number of shards. This operation is not supported for new-architecture read/write splitting instances.
         # 
         # This parameter is required.
         self.target_intranet_bandwidth = target_intranet_bandwidth

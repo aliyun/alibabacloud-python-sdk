@@ -15,7 +15,7 @@ class DescribeParameterGroupSupportParamResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The parameters.
+        # The list of parameters.
         self.resource_list = resource_list
 
     def validate(self):
@@ -60,13 +60,13 @@ class DescribeParameterGroupSupportParamResponseBodyResourceList(DaraModel):
         db_version: str = None,
         param_name: str = None,
     ):
-        # The service category.
+        # The product category.
         self.category = category
         # The engine type.
         self.db_type = db_type
-        # The engine version.
+        # The compatible engine version.
         self.db_version = db_version
-        # The name of the parameter.
+        # The configurable parameter.
         self.param_name = param_name
 
     def validate(self):

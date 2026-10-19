@@ -16,28 +16,27 @@ class ModifyTaskInfoRequest(DaraModel):
         task_action: str = None,
         task_id: str = None,
     ):
-        # The JSON-formatted parameters related to the action. Set this parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}` if the **TaskAction** parameter is set to **modifySwitchTime**.
+        # The parameters related to the action, in JSON format.
+        # If **TaskAction** is set to **modifySwitchTime**, the ActionParams value is `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
+        # * **recoverMode** specifies the task recovery mode. Valid values:
+        #   * **imePoint**: Execute at a specified point in time.
+        #   * **immediate**: Execute immediately.
+        #   * **maintainTime**: Execute during the O&M window.
         # 
-        # *   **recoverMode**: specifies the restoration mode for the task. Valid values:
-        # 
-        #     *   **timePoint**: performs the task at the specified point in time.
-        #     *   **immediate**: performs the task immediately.
-        #     *   **maintainTime**: performs the task within the maintenance window.
-        # 
-        # *   **recoverTime**: specifies the point in time for restoration. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter is required if the **recoverMode** parameter is set to **timePoint**.
+        # * **recoverTime** specifies the point in time, in UTC+0, in the yyyy-MM-ddTHH:mm:ssZ format. This parameter is required when **recoverMode** is set to **timePoint**.
         self.action_params = action_params
-        # The ID of the region where the instance is deployed.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The name of the current step.
+        # The name of the current execution step. You can call [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2400077.html) to query the current execution step of a specified node ID. A common value is **do_pause**, which indicates waiting for the preset time to execute.
         self.step_name = step_name
-        # The action name. Set the value to **modifySwitchTime**. The value specifies that you want to change the switching time or restoration time.
+        # The operation name. Currently, the valid value is **modifySwitchTime**, which indicates modifying the switchover time or recovery time.
         self.task_action = task_action
-        # The task ID. Separate multiple task IDs with commas (,). You can specify up to 30 task IDs.
+        # The node ID. To specify multiple IDs, separate them with commas (,). You can specify up to 30 IDs.
         # 
         # This parameter is required.
         self.task_id = task_id

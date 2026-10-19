@@ -22,38 +22,31 @@ class TransformInstanceChargeTypeRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true**: Automatic payment. This is the default value.
-        # 
-        # - **false**: Manual payment. In the console, choose **Billing Management** > **Renewal Management** in the top navigation bar. In the navigation pane on the left, click **Or\\*\\*rs** > **My Or\\*\\*rs** to find and pay for the or\\*er.
+        # * **true**: enables automatic payment. This is the default value.
+        # * **false**: disables automatic payment. You must manually pay for the order. To pay for the order, choose **Billing** > **Renewals** in the top navigation bar of the console, and then choose **Order Management** > **My Orders** in the left-side navigation pane to find and pay for the order.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. Valid values:
-        # 
-        # - **true**: Auto-renewal is enabled.
-        # 
-        # - **false** (default): Auto-renewal is disabled.
+        # Specifies whether to enable auto-renewal. Valid values:
+        # * **true**: enables auto-renewal.
+        # * **false**: disables auto-renewal. This is the default value.
         self.auto_renew = auto_renew
-        # The auto-renewal period, in months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # The auto-renewal epoch. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
         # 
-        # > This parameter is required when the **AutoRenew** parameter is set to **true**.
+        # > This parameter is required only when the **AutoRenew** parameter is set to **true**.
         self.auto_renew_period = auto_renew_period
-        # The target billing method. Valid values:
-        # 
-        # - **PrePaid**: subscription. If you set this parameter to this value, you must also specify the **Period** parameter.
-        # 
-        # - **PostPaid**: pay-as-you-go.
+        # The billing method to which you want to switch. Valid values:
+        # * **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period** parameter.
+        # * **PostPaid**: pay-as-you-go.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The coupon ID.
         self.coupon_no = coupon_no
-        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance IDs.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration, in months. Valid values: **1** to **9**, **12**, **24**, and **36**.
-        # 
+        # The subscription duration. Unit: months. Valid values: **1** to **9**, **12**, **24**, and **36**.
         # > This parameter is available and required only when the **ChargeType** parameter is set to **PrePaid**.
         self.period = period
         self.resource_owner_account = resource_owner_account

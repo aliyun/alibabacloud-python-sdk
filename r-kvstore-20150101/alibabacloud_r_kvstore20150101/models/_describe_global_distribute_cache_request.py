@@ -17,18 +17,18 @@ class DescribeGlobalDistributeCacheRequest(DaraModel):
         security_token: str = None,
         sub_instance_id: str = None,
     ):
-        # The ID of the distributed instance.
+        # The distributed instance ID.
         self.global_instance_id = global_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+        # The page number. Set the value to a number that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return each page.
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The ID of the child instance that is attached to the distributed instance.
+        # The child instance ID.
         self.sub_instance_id = sub_instance_id
 
     def validate(self):

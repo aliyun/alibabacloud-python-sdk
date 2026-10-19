@@ -16,9 +16,9 @@ class DescribePriceResponseBody(DaraModel):
         rules: main_models.DescribePriceResponseBodyRules = None,
         sub_orders: main_models.DescribePriceResponseBodySubOrders = None,
     ):
-        # The information about the order.
+        # The order information.
         self.order = order
-        # The parameters of the order. When OrderParamOut is set to `true`, this parameter is returned.
+        # The order parameters. This parameter is returned when OrderParamOut is set to `true`.
         self.order_params = order_params
         # The request ID.
         self.request_id = request_id
@@ -1172,28 +1172,28 @@ class DescribePriceResponseBodyOrder(DaraModel):
         # The order code.
         self.code = code
         self.coupons = coupons
-        # The currency used for payment. A value of CNY is used when the order was generated on the China site (aliyun.com), and a value of USD is used when the order was generated on the international site (alibabacloud.com).
+        # The currency. The value is CNY (Chinese Yuan) for the China site and USD (US Dollar) for the international site.
         self.currency = currency
-        # The activity information.
+        # The promotion information.
         self.depreciate_info = depreciate_info
         # The discount amount of the order.
         self.discount_amount = discount_amount
-        # The service fees of the order.
+        # The service fee.
         self.handling_fee_amount = handling_fee_amount
-        # Indicates whether eligibility for the contracted discount is met.
+        # Indicates whether a contract-based discount is applied.
         self.is_contract_activity = is_contract_activity
-        # The information about the order.
+        # The order information.
         self.message = message
         # The original price of the order.
         self.original_amount = original_amount
         self.rule_ids = rule_ids
-        # Indicates whether the discount information is displayed.
+        # Indicates whether discount information is displayed.
         self.show_discount_info = show_discount_info
-        # The discount.
+        # The discount price.
         self.stand_discount_price = stand_discount_price
         # The discounted price.
         self.stand_price = stand_price
-        # The transaction price of the order.
+        # The actual transaction price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -1343,25 +1343,25 @@ class DescribePriceResponseBodyOrderDepreciateInfo(DaraModel):
         month_price: int = None,
         original_stand_amount: int = None,
     ):
-        # The price reduction rate.
+        # The price reduction ratio.
         self.cheap_rate = cheap_rate
-        # The new total price displayed on the official website.
+        # The total price on the official website after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
-        # The activity information.
+        # The promotion information.
         self.contract_activity = contract_activity
-        # The promotional offer (displayed in the total order amount).
+        # The price difference discount, displayed in the order total.
         self.differential = differential
-        # The name of the promotional offer.
+        # The name of the price difference discount.
         self.differential_name = differential_name
-        # Indicates whether eligibility for the contracted discount is met.
+        # Indicates whether a contract-based discount is applied.
         self.is_contract_activity = is_contract_activity
-        # Indicates whether the price reduction rate is displayed.
+        # Indicates whether the price reduction is displayed.
         self.is_show = is_show
         # The list price.
         self.list_price = list_price
-        # The monthly price.
+        # The equivalent monthly price.
         self.month_price = month_price
-        # The original total price displayed on the official website.
+        # The original total price on the official website.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -1451,15 +1451,15 @@ class DescribePriceResponseBodyOrderDepreciateInfoContractActivity(DaraModel):
         option_ids: main_models.DescribePriceResponseBodyOrderDepreciateInfoContractActivityOptionIds = None,
         prod_fee: float = None,
     ):
-        # The activity ID.
+        # The promotion ID.
         self.activity_id = activity_id
-        # The activity name.
+        # The promotion name.
         self.activity_name = activity_name
-        # The preferential price.
+        # The price after the discount.
         self.final_fee = final_fee
         # The total discount amount.
         self.final_prom_fee = final_prom_fee
-        # The promotion code.
+        # The discount ID.
         self.option_code = option_code
         self.option_ids = option_ids
         # The original price.

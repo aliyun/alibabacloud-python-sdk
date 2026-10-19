@@ -15,13 +15,13 @@ class ModifyBackupExpireTimeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the backup file. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query the IDs of backup files.
+        # The backup file ID of the instance. You can call [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) to query the ID.
         self.backup_id = backup_id
-        # The point in time to which you want to extend the expiration time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The time cannot be earlier than the current expiration time.
+        # The point in time to which you want to extend the expiration. Specify the time in the yyyy-MM-ddTHH:mmZ format in UTC. The specified point in time cannot be earlier than the current expiration time.
         # 
         # This parameter is required.
         self.expect_expire_time = expect_expire_time
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

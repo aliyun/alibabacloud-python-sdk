@@ -10,9 +10,9 @@ class DeleteShardingNodeResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order. On the Orders page in the Billing Management console, you can obtain the details of the order based on the order ID.
+        # The order ID. You can use this order ID to obtain the detailed information about the order in the Orders section of the User Center.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

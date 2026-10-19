@@ -17,12 +17,13 @@ class DescribeGlobalSecurityIPGroupRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The database engine type. Valid values: redis (Redis engine) and memcache (Memcache engine).
         self.engine = engine
-        # The ID of the global IP whitelist template.
+        # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

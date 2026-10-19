@@ -23,33 +23,30 @@ class CreateTairInstanceResponseBody(DaraModel):
         task_id: str = None,
         zone_id: str = None,
     ):
-        # The maximum bandwidth in MB/s.
+        # The maximum bandwidth of the instance. Unit: MB/s.
         self.bandwidth = bandwidth
-        # The charge type. Valid values:
-        # 
-        # - **PrePaid**: prepaid.
-        # 
+        # The billing method of the instance. Valid values:
+        # - **PrePaid**: subscription.
         # - **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
-        # The detailed configuration of the instance, returned as a JSON string. For parameter details, see [Configuration parameters](https://help.aliyun.com/document_detail/43885.html).
+        # The detailed configurations of the instance, in the format of a JSON character string. For more information about the parameters, see Parameter settings description.
         self.config = config
-        # The internal connection address.
+        # The internal network connection endpoint of the instance.
         self.connection_domain = connection_domain
-        # The maximum number of connections.
+        # The maximum number of connections supported by the instance.
         self.connections = connections
         # The instance ID.
         self.instance_id = instance_id
         # The instance name.
-        # 
-        # > This parameter is returned only when the **InstanceName** parameter is specified in the request.
+        # > This parameter is returned only when the **InstanceName** request parameter is specified.
         self.instance_name = instance_name
-        # The instance status. The value is always **Creating**.
+        # The current status of the instance. The value is fixed as **Creating**.
         self.instance_status = instance_status
         # The order ID.
         self.order_id = order_id
-        # The instance port.
+        # The port number of the instance.
         self.port = port
-        # The theoretical maximum number of read and write operations per second (QPS) for the instance.
+        # The maximum number of read and write operations processed per second. Unit: operations per second. This value is the theoretical maximum for the current instance type.
         self.qps = qps
         # The region ID.
         self.region_id = region_id
@@ -57,7 +54,7 @@ class CreateTairInstanceResponseBody(DaraModel):
         self.request_id = request_id
         # The task ID.
         self.task_id = task_id
-        # The availability zone ID.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

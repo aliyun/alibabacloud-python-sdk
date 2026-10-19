@@ -16,15 +16,15 @@ class DescribeActiveOperationTaskResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of O\\&M tasks.
+        # The list of O&M tasks.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The maximum number of entries returned per page.
+        # The maximum number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -95,41 +95,40 @@ class DescribeActiveOperationTaskResponseBodyItems(DaraModel):
         switch_time: str = None,
         task_type: str = None,
     ):
-        # The time when the O\\&M task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the O&M task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.created_time = created_time
-        # The database type of the instance. The return value is **Redis**.
+        # The database type. Return value: **redis**.
         self.db_type = db_type
-        # The deadline before which the time to preform the O&M task can be modified. The time in UTC is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format.
+        # The latest time within the adjustable range for the O&M task execution time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.deadline = deadline
-        # The ID of the O&M task.
+        # The O&M task ID.
         self.id = id
-        # The ID of the instance.
+        # The instance ID.
         self.ins_name = ins_name
-        # The time when the O\\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the O&M task was modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.modified_time = modified_time
-        # The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
+        # The preparation time required between the O&M task start time and the switchover time. The time is in the <i>HH:mm:ss</i> format.
         self.prepare_interval = prepare_interval
-        # The region ID of the instance.
+        # The region ID.
         self.region = region
-        # The time when the O\\&M task was preformed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The execution time of the O&M task. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.start_time = start_time
-        # The state of the O&M task. Valid values:
-        # 
-        # *   **2**: The task is waiting for users to specify a switchover time.
-        # *   **3**: The task is waiting to be performed.
-        # *   **4**: The task is being performed. If the task is in this state, the **ModifyActiveOperationTask** operation cannot be called to modify the scheduled switchover time.
-        # *   **5**: The task is performed.
-        # *   **6**: The task fails.
-        # *   **7**: The task is canceled.
+        # The task status. Valid values:
+        # * **2**: Waiting for the user to specify a time.
+        # * **3**: Waiting to be processed.
+        # * **4**: Being processed. After the task enters this state, you cannot call **ModifyActiveOperationTask** to modify the scheduled switchover time.
+        # * **5**: Succeeded.
+        # * **6**: Failed.
+        # * **7**: Canceled.
         self.status = status
-        # The time when the system performs the switchover operation. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the system-initiated switchover operation is performed. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.switch_time = switch_time
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
-        # *   **rds_apsaradb_ha**: master-replica switchover
-        # *   **rds_apsaradb_transfer**: instance migration
-        # *   **rds_apsaradb_upgrade**: minor version update
-        # *   **all**: all types
+        # - **rds_apsaradb_ha**: node failover.
+        # - **rds_apsaradb_transfer**: instance migration.
+        # - **rds_apsaradb_upgrade**: minor engine version update.
+        # - **all**: all task types.
         self.task_type = task_type
 
     def validate(self):

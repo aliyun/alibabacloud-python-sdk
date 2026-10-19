@@ -14,13 +14,12 @@ class DescribeTagsResponseBody(DaraModel):
         request_id: str = None,
         tags: List[main_models.DescribeTagsResponseBodyTags] = None,
     ):
-        # The pagination token to use in the next request to get the next page. If this field is empty, there are no more results.
-        # 
-        # > If not all results are returned in one query, this parameter is returned. You can pass in the returned value of this parameter for the next query.
+        # The token used to start the next query.
+        # > This parameter is returned if a single query does not return all results. You can pass the value of this parameter in a subsequent query to continue the query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The details of the tags.
+        # The tag information.
         self.tags = tags
 
     def validate(self):
@@ -69,7 +68,7 @@ class DescribeTagsResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
         # The tag values.
         self.tag_values = tag_values

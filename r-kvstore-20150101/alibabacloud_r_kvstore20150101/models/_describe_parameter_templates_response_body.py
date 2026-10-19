@@ -16,14 +16,14 @@ class DescribeParameterTemplatesResponseBody(DaraModel):
         parameters: main_models.DescribeParameterTemplatesResponseBodyParameters = None,
         request_id: str = None,
     ):
-        # The database type. The return value is fixed as **Redis**.
+        # The database engine. The value is always **Redis**.
         self.engine = engine
-        # The major version of the instance.
+        # The major engine version of the instance.
         self.engine_version = engine_version
         # The number of parameters.
         self.parameter_count = parameter_count
         self.parameters = parameters
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

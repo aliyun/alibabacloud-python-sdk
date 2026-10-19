@@ -10,12 +10,13 @@ class DescribeServiceLinkedRoleExistsResponseBody(DaraModel):
         exists_service_linked_role: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the service-linked role is created for Tair (Redis OSS-compatible) in the current account. Valid values:
+        # Indicates whether the service-linked role has been authorized for the current account. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Authorized.
+        # 
+        # - **false**: Not authorized.
         self.exists_service_linked_role = exists_service_linked_role
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

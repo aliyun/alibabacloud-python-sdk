@@ -16,24 +16,21 @@ class CreateGlobalDistributeCacheRequest(DaraModel):
         security_token: str = None,
         seed_sub_instance_id: str = None,
     ):
-        # Specifies when to perform the operation. Valid values:
+        # The time when the operation is executed. Valid values:
+        # * **Immediately**: Executes the operation immediately.
+        # * **MaintainTime**: Executes the operation during the maintenance window. This is the default value.
         # 
-        # - **Immediately**: Performs the operation immediately.
-        # 
-        # - **MaintainTime**: Performs the operation during the maintenance window. This is the default value.
-        # 
-        # > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to change the maintenance window of the instance.
+        # > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
         self.effective_time = effective_time
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the resource group.
-        # 
-        # > This is a system parameter. You do not need to specify it.
+        # > You do not need to specify this system parameter.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The ID of the source instance.
+        # The instance ID to be transformed.
         # 
         # This parameter is required.
         self.seed_sub_instance_id = seed_sub_instance_id

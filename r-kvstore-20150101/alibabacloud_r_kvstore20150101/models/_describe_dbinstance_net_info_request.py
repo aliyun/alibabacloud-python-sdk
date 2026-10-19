@@ -19,7 +19,6 @@ class DescribeDBInstanceNetInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The network type.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id

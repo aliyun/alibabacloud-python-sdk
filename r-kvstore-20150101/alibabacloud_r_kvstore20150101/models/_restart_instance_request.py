@@ -16,12 +16,11 @@ class RestartInstanceRequest(DaraModel):
         security_token: str = None,
         upgrade_minor_version: bool = None,
     ):
-        # The time when you want to restart the instance. Default value: Immediately. Valid values:
-        # 
-        # *   **Immediately**: immediately restarts the instance.
-        # *   **MaintainTime**: restarts the instance during the maintenance window.
+        # The time when the instance is restarted. Valid values:
+        # * **Immediately**: The instance is restarted immediately. This is the default value.
+        # * **MaintainTime**: The instance is restarted during the maintenance window.
         self.effective_time = effective_time
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -30,12 +29,11 @@ class RestartInstanceRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # Specifies whether to update to the latest minor version when the instance is restarted. Valid values:
+        # Specifies whether to upgrade the minor version to the latest version when the instance is restarted. Valid values:
+        # * **true**: Upgrades the minor version.
+        # * **false**: Does not upgrade the minor version.
         # 
-        # *   **true**: updates the minor version.
-        # *   **false**: does not update the minor version.
-        # 
-        # > The default value is **true**.
+        # > Default value: **true**.
         self.upgrade_minor_version = upgrade_minor_version
 
     def validate(self):

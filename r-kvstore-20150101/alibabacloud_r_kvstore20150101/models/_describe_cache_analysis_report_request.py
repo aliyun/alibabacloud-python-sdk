@@ -19,31 +19,28 @@ class DescribeCacheAnalysisReportRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The type of analytics. Set the value to **BigKey**.
+        # The analysis type. Set the value to **BigKey**.
         # 
         # This parameter is required.
         self.analysis_type = analysis_type
-        # The date to query. You can query the report for one day each time. Specify the date in the *yyyy-MM-dd*Z format. The time must be in UTC.
+        # The date to query. You can query the offline full key analysis results for one day at a time. The format is <i>yyyy-MM-dd</i>Z (UTC time).
         # 
         # This parameter is required.
         self.date = date
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the child node in the cluster instance.
-        # 
-        # >  If you do not specify this parameter, the analysis results of all child nodes in the instance are returned.
+        # The ID of the child node in a cluster instance.
+        # > This parameter is required for cluster instances.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of the page to return.
-        # 
-        # > If the parameter value exceeds the maximum number of the returned pages, an empty large key list is returned.
+        # > If the value is greater than the maximum number of pages in the returned result, the returned big key results are empty.
         self.page_numbers = page_numbers
         # The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
-        # 
-        # > The default value is **30**.
+        # > Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

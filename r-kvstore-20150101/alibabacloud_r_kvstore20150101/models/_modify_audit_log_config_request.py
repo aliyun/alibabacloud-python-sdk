@@ -16,14 +16,13 @@ class ModifyAuditLogConfigRequest(DaraModel):
         retention: int = None,
         security_token: str = None,
     ):
-        # Specifies whether to enable the audit log feature. Default value: true. Valid values:
+        # Specifies whether to enable audit logging. Valid values:
+        # * **true** (default): Enabled.
+        # * **false**: Disabled.
         # 
-        # *   **true**: enables the audit log feature.
-        # *   **false**: disables the audit log feature.
-        # 
-        # > If the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting architecture](https://help.aliyun.com/document_detail/62870.html), the audit log feature is enabled or disabled for both the data nodes and proxy nodes. You cannot separately enable the audit log feature for the data nodes or proxy nodes.
+        # > If the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting architecture](https://help.aliyun.com/document_detail/62870.html), audit logs for data nodes and proxy nodes are enabled or disabled at the same time. You cannot enable them separately.
         self.db_audit = db_audit
-        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+        # The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -31,13 +30,9 @@ class ModifyAuditLogConfigRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The retention period of audit logs. Valid values: **1** to **365**. Unit: days.
-        # 
-        # > 
-        # 
-        # *   This parameter is required only when the **DbAudit** parameter is set to **true**.
-        # 
-        # *   The value of this parameter takes effect for all instances in the current region.
+        # The number of days for which audit logs are retained. Valid values: **1** to **365**.
+        # > * This parameter is required when **DbAudit** is set to **true**.
+        # > * This parameter takes effect on all instances in the current region.
         self.retention = retention
         self.security_token = security_token
 

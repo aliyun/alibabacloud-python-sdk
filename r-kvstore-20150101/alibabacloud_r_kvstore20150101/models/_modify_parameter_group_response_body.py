@@ -10,7 +10,7 @@ class ModifyParameterGroupResponseBody(DaraModel):
         param_group_id: str = None,
         request_id: str = None,
     ):
-        # The parameter template ID.
+        # The ID of the parameter template.
         self.param_group_id = param_group_id
         # The request ID.
         self.request_id = request_id

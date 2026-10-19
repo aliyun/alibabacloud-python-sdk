@@ -13,9 +13,9 @@ class ModifyInstanceParameterResponseBody(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

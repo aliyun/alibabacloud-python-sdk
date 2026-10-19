@@ -20,29 +20,26 @@ class DescribeBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # This parameter is deprecated.
+        # This group of parameters is deprecated. Ignore it.
         self.access_denied_detail = access_denied_detail
-        # Details about the backup sets.
         self.backups = backups
-        # <props="china">The free backup quota for the instance, in bytes. The free quota is equal to the default memory size of the instance type. For more information, see [Changes to the free backup quota policy](https://help.aliyun.com/document_detail/2664017.html).
-        # Full backups and log backups share this free quota. When the instance type is changed, the free quota also changes.
+        # <props="china">The free backup quota for the instance. Unit: bytes. The free quota is equal to the default memory capacity of the instance type. For more information, see [Notice on backup commercialization](https://help.aliyun.com/document_detail/2664017.html).
+        # Full backups and log backups share this free quota. When you change the instance type, the free quota of the instance changes accordingly.
         # <props="intl">This parameter is not in effect. Ignore this parameter.
         self.free_size = free_size
-        # The total size of full backups for the instance, in bytes. Full backups are generated from scheduled daily backups, manual backups, or cache analysis.
-        # 
-        # > This value represents the total size of all valid full backups for the instance, regardless of the backup sets returned in this request.
+        # The size of full backup files for the current instance. Unit: bytes. Full backups include daily scheduled backups, manual backups, and backups generated during cache analysis.
+        # > This value is independent of the number and size of backup sets returned in the current response. It represents the total size of all valid full backups for the instance.
         self.full_storage_size = full_storage_size
-        # The total size of log backups for the instance, in bytes. This parameter is returned only if flashback is enabled.
-        # 
-        # > This value represents the total size of all valid log backups for the instance, regardless of the backup sets returned in this request.
+        # The size of instance log backup files for the current instance. Unit: bytes. This value is valid only when the flashback feature is enabled.
+        # > This value is independent of the number and size of backup sets returned in the current response. It represents the total size of all valid instance log backups for the instance.
         self.log_storage_size = log_storage_size
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of backup sets.
+        # The total number of backups.
         self.total_count = total_count
 
     def validate(self):
@@ -311,19 +308,19 @@ class DescribeBackupsResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # This parameter is deprecated.
+        # See the preceding description.
         self.auth_action = auth_action
-        # This parameter is deprecated.
+        # See the preceding description.
         self.auth_principal_display_name = auth_principal_display_name
-        # This parameter is deprecated.
+        # See the preceding description.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # This parameter is deprecated.
+        # See the preceding description.
         self.auth_principal_type = auth_principal_type
-        # This parameter is deprecated.
+        # See the preceding description.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # This parameter is deprecated.
+        # See the preceding description.
         self.no_permission_type = no_permission_type
-        # This parameter is deprecated.
+        # See the preceding description.
         self.policy_type = policy_type
 
     def validate(self):

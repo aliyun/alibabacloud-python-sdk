@@ -10,9 +10,9 @@ class DeleteParameterGroupResponseBody(DaraModel):
         param_group_id: str = None,
         request_id: str = None,
     ):
-        # The parameter template ID, which is globally unique.
+        # The parameter template ID.
         self.param_group_id = param_group_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

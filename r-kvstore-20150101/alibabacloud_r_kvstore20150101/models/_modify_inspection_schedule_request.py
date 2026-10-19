@@ -18,16 +18,32 @@ class ModifyInspectionScheduleRequest(DaraModel):
         schedule_name: str = None,
         timezone: str = None,
     ):
+        # The cron expression.
         self.cron_expression = cron_expression
+        # Specifies whether to start the scheduled task. Default value: true.
         self.enabled = enabled
+        # The specified inspection items. The following inspection items are supported:
+        # - RESOURCE_USAGE
+        # - BIGKEY
+        # - HOTKEY
+        # - PERFORMANCE_METRICS
+        # - SLOWLOG
         self.inspection_items = inspection_items
+        # 1h
         self.inspection_window = inspection_window
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of associated instance IDs.
         self.instance_ids = instance_ids
+        # The report language.
         self.report_language = report_language
+        # The ID of the timed scheduling.
         self.schedule_id = schedule_id
+        # The name of the timed scheduling.
         self.schedule_name = schedule_name
+        # The time zone.
         self.timezone = timezone
 
     def validate(self):

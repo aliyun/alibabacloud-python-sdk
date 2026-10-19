@@ -12,8 +12,13 @@ class CreateInspectionTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The task data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -56,7 +61,9 @@ class CreateInspectionTaskResponseBodyData(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The task status.
         self.status = status
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -14,8 +14,11 @@ class DescribeInspectionSchedulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -60,9 +63,13 @@ class DescribeInspectionSchedulesResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The array of scheduled task configurations.
         self.items = items
+        # The current page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -128,18 +135,39 @@ class DescribeInspectionSchedulesResponseBodyDataItems(DaraModel):
         timezone: str = None,
         update_time: str = None,
     ):
+        # The time when the scheduled task configuration was created.
+        # 
+        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.create_time = create_time
+        # The cron expression.
         self.cron_expression = cron_expression
+        # Indicates whether the task is enabled.
         self.enabled = enabled
+        # The inspection items.
+        # > 
+        # > - Supported inspection items include RESOURCE_USAGE, BIGKEY, HOTKEY, PERFORMANCE_METRICS, and SLOWLOG.
         self.inspection_items = inspection_items
+        # The time window.
         self.inspection_window = inspection_window
+        # The list of associated instance IDs.
         self.instance_ids = instance_ids
+        # The next time the task is scheduled to run.
+        # 
+        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.next_fire_time = next_fire_time
+        # The notification configuration.
         self.notify_config = notify_config
+        # The language of the report.
         self.report_language = report_language
+        # The ID of the timed scheduling.
         self.schedule_id = schedule_id
+        # The name of the timed scheduling.
         self.schedule_name = schedule_name
+        # The time zone.
         self.timezone = timezone
+        # The update time.
+        # 
+        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.update_time = update_time
 
     def validate(self):

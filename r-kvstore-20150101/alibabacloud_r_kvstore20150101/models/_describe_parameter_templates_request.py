@@ -20,30 +20,29 @@ class DescribeParameterTemplatesRequest(DaraModel):
         security_token: str = None,
     ):
         # The architecture of the instance. For more information, see [Architecture overview](https://help.aliyun.com/document_detail/86132.html). Valid values:
+        # * **logic**: cluster or read/write splitting architecture
+        # * **normal**: standard architecture (primary/secondary)
         # 
-        # * **logic**: cluster or read/write splitting architecture.
-        # * **normal**: standard architecture (primary/secondary).
-        # 
-        # <props="china">If **EngineVersion** is set to **6.0**, this parameter does not support the value **logic**.
+        # <props="china">When **EngineVersion** is set to **6.0**, this parameter does not support the **logic** value.
         # 
         # This parameter is required.
         self.character_type = character_type
-        # The database type. Set the value to **Redis**.
+        # The database engine. Set the value to **Redis**.
         # 
         # This parameter is required.
         self.engine = engine
-        # The major version of the instance. Valid values: **4.0**, **5.0**, **6.0**, and **7.0**.
+        # The major engine version of the instance. Valid values: **4.0**, **5.0**, **6.0**, and **7.0**.
         # 
         # This parameter is required.
         self.engine_version = engine_version
-        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
+        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The parameter category.
+        # Specifies whether to query the account parameter template. Set the value to **account**.
         self.parameter_category = parameter_category
-        # The resource group ID. You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to obtain the resource group ID.
-        # > You can also obtain the resource group ID in the console. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The ID of the resource group. You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the ID of the resource group.
+        # > You can also obtain the resource group ID in the console. For related operations, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

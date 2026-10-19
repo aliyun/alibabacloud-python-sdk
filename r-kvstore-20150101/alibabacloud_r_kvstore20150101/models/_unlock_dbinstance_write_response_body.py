@@ -11,7 +11,7 @@ class UnlockDBInstanceWriteResponseBody(DaraModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The name of the instance.
+        # The instance name.
         self.dbinstance_name = dbinstance_name
         # The request ID.
         self.request_id = request_id

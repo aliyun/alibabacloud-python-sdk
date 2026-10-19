@@ -33,7 +33,7 @@ class DescribeInstancesOverviewRequest(DaraModel):
         # The architecture type. Valid values:
         # * **cluster**: Cluster Edition.
         # * **standard**: Standard Edition.
-        # * **rwsplit**: read/write splitting edition.
+        # * **rwsplit**: read/write splitting Edition.
         self.architecture_type = architecture_type
         # The billing method. Valid values:
         # * **PrePaid**: subscription.
@@ -84,7 +84,7 @@ class DescribeInstancesOverviewRequest(DaraModel):
         # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
         self.region_id = region_id
         # The resource group ID.
-        # > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID. Related operations, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID. Related operations: see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

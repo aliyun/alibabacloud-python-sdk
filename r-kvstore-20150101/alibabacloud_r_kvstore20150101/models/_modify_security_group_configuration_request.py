@@ -15,7 +15,7 @@ class ModifySecurityGroupConfigurationRequest(DaraModel):
         security_group_id: str = None,
         security_token: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -23,7 +23,8 @@ class ModifySecurityGroupConfigurationRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the security group that you want to manage. You can specify up to 10 security groups. Separate multiple security group IDs with commas (,).
+        # The IDs of the security groups that you want to set. You can specify up to 10 security group IDs, separated by commas (,).
+        # > This operation overwrites the existing settings. For valid values, query the basic information about the security groups that you created by calling [DescribeSecurityGroups](https://next.api.aliyun.com/api/Ecs/2014-05-26/DescribeSecurityGroups).
         # 
         # This parameter is required.
         self.security_group_id = security_group_id

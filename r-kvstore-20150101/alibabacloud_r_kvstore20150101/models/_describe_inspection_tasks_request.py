@@ -13,11 +13,18 @@ class DescribeInspectionTasksRequest(DaraModel):
         security_token: str = None,
         type: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
         self.security_token = security_token
+        # The task type.
+        # - 1: manual task
+        # - 2: scheduled task
         self.type = type
 
     def validate(self):

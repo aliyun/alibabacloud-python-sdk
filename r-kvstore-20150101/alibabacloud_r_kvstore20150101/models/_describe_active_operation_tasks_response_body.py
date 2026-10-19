@@ -16,15 +16,15 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of O\\&M events.
+        # The list of O&M events.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page. Default 25.
+        # The number of entries per page. Default value: 25.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The number of O\\&M events returned.
+        # The total number of O&M event records returned.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -111,67 +111,66 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
-        # Indicates whether the event can be canceled. The value 1 indicates that the event can be canceled. The value 0 indicates that the event cannot be canceled.
+        # Indicates whether the event can be canceled. A value of 1 indicates that the event can be canceled. A value of 0 indicates that the event cannot be canceled.
         self.allow_cancel = allow_cancel
-        # Indicates whether the switching time can be changed. The value 1 indicates that the switching time can be changed. The value 0 indicates that the switching time cannot be changed.
+        # Indicates whether the event time can be modified. A value of 1 indicates that the time can be modified. A value of 0 indicates that the time cannot be modified.
         self.allow_change = allow_change
-        # The code of the task level. The value S1 indicates the system O\\&M level. The value S0 indicates the exception fixing level.
+        # The event level code. S1 indicates system O&M. S0 indicates risk recovery.
         self.change_level = change_level
-        # The level of the task in English.
+        # The event level in English.
         self.change_level_en = change_level_en
-        # The level of the task in Chinese.
+        # The event level in Chinese.
         self.change_level_zh = change_level_zh
-        # The time when the O\\&M task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The creation time in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.created_time = created_time
         # The current zone.
         self.current_avz = current_avz
-        # The database type of the instance. The return value is **Redis**.
+        # The database type. Return value: **redis**.
         self.db_type = db_type
-        # The version of the database engine.
+        # The Milvus version number of the kernel.
         self.db_version = db_version
-        # The deadline before which the time to preform the O&M task can be modified. The time in UTC is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format.
+        # The latest deadline by which the task execution time can be adjusted, in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.deadline = deadline
-        # The ID of the O\\&M event.
+        # The O&M event ID.
         self.id = id
-        # The impact of the task.
+        # The event impact.
         self.impact = impact
-        # The impact of the task in English.
+        # The event impact in English.
         self.impact_en = impact_en
-        # The impact of the task in Chinese.
+        # The event impact in Chinese.
         self.impact_zh = impact_zh
-        # The alias and description of the instance.
+        # The instance alias or description.
         self.ins_comment = ins_comment
         # The instance ID.
         self.ins_name = ins_name
-        # The time when the O\\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The modification time in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.modified_time = modified_time
-        # The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
+        # The preparation time required between the start time and the switchover time. Format: HH:mm:ss.
         self.prepare_interval = prepare_interval
-        # The region ID of the instance.
+        # The region ID.
         self.region = region
-        # The information about the execution result.
+        # The execution result information.
         self.result_info = result_info
-        # The time when the event is executed in the backend. The time must be in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
+        # The time when the backend starts executing the event, in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.start_time = start_time
-        # The status of the O\\&M event. Valid values:
-        # 
-        # *   **3**: filters pending events.
-        # *   **4**: filters in-progress events.
-        # *   **5**: filters successful events.
-        # *   **6**: filters failed events.
-        # *   **7**: filters canceled events.
+        # The status of the O&M event. Valid values:
+        # - **3**: pending.
+        # - **4**: being processed.
+        # - **5**: ended successfully.
+        # - **6**: ended with failure.
+        # - **7**: canceled.
         self.status = status
         # The list of sub-events.
         self.sub_ins_names = sub_ins_names
-        # The time when the system performs the switchover operation. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the backend initiates the switchover operation, in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.switch_time = switch_time
-        # The O\\&M event parameters.
+        # The O&M event parameters.
         self.task_params = task_params
-        # The type of the O\\&M event.
+        # The type of the O&M event.
         self.task_type = task_type
-        # The cause of the O\\&M event.
+        # The reason for the O&M event in English.
         self.task_type_en = task_type_en
-        # The reason for the task in Chinese.
+        # The task reason in Chinese.
         self.task_type_zh = task_type_zh
 
     def validate(self):

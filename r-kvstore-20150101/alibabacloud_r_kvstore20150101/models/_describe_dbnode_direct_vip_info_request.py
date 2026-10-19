@@ -13,7 +13,7 @@ class DescribeDBNodeDirectVipInfoRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID.
+        # The instance ID. Only cloud-native instances are supported.
         # 
         # This parameter is required.
         self.instance_id = instance_id

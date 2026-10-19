@@ -18,25 +18,22 @@ class ModifyInstanceAutoRenewalAttributeRequest(DaraModel):
         security_token: str = None,
     ):
         # Specifies whether to enable auto-renewal. Valid values:
+        # * **true**: Enabled.
+        # * **false**: Disabled.
         # 
-        # *   **true**
-        # *   **false**
-        # 
-        # >  The default value is **false**.
+        # > Default value: **false**.
         self.auto_renew = auto_renew
-        # The ID of the instance. Separate multiple instance IDs with commas (,).
-        # 
+        # The instance ID. Separate multiple instance IDs with commas (,).
         # > You can specify up to 30 instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The auto-renewal period. Valid values: **1** to **12**. Unit: months. When the instance is about to expire, the instance is automatically renewed based on the number of months specified by this parameter.
-        # 
-        # > This parameter is available and required only if the **AutoRenew** parameter is set to **true**.
+        # The auto-renewal cycle. Valid values: **1** to **12**. Unit: months. When the instance is about to expire, the system automatically renews the instance for the specified duration.
+        # > This parameter is available and required only when **AutoRenew** is set to **true**.
         self.duration = duration
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The service. Set the value to kvstore.
+        # The product. Set the value to kvstore.
         self.product = product
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -10,7 +10,9 @@ class SwitchInstanceToTargetZoneResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # Id of the request
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

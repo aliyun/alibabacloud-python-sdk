@@ -11,6 +11,8 @@ class RetryInspectionTaskRequest(DaraModel):
         security_token: str = None,
         task_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.security_token = security_token

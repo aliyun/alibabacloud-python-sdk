@@ -13,9 +13,9 @@ class DescribeClusterMemberInfoResponseBody(DaraModel):
         cluster_children: List[main_models.DescribeClusterMemberInfoResponseBodyClusterChildren] = None,
         request_id: str = None,
     ):
-        # Details about data nodes in the cluster instance.
+        # The list of data node information for the cluster instance.
         self.cluster_children = cluster_children
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,44 +71,42 @@ class DescribeClusterMemberInfoResponseBodyClusterChildren(DaraModel):
         service_version: str = None,
         user_id: str = None,
     ):
-        # The maximum bandwidth of the node. Unit: MB/s.
-        # 
-        # > This parameter is returned only if the return value of **Service** is **redis**, which indicates a data node.
+        # The bandwidth of the node. Unit: MB/s.
+        # > This parameter is returned only when the **Service** parameter is set to **redis**, which indicates that the node is a data node.
         self.band_width = band_width
-        # The retention period of binlogs.
+        # The number of days for which binary logs are retained.
         self.binlog_retention_days = binlog_retention_days
-        # The type of workload. The return value is **ALIYUN**.
+        # The business type. The value is fixed as **ALIYUN**.
         self.biz_type = biz_type
-        # The maximum memory capacity per data node. Unit: MB.
-        # 
-        # > This parameter is returned only if the return value of **Service** is **redis**, which indicates a data node.
+        # The maximum memory capacity of a single data node. Unit: MB.
+        # > This parameter is returned only when the **Service** parameter is set to **redis**, which indicates that the node is a data node.
         self.capacity = capacity
-        # The specifications of the data node. For more information, see [Community Edition instances that use cloud disks](https://help.aliyun.com/document_detail/164477.html).
+        # The specifications of the data node. For more information, see [Cloud-native instance specifications](https://help.aliyun.com/document_detail/164477.html).
         self.class_code = class_code
-        # The maximum number of connections supported by the data node.
+        # The maximum number of connections for the data node.
         self.connections = connections
-        # The current bandwidth of the data node, which is the sum of the default bandwidth and any extra bandwidth that is purchased. Unit: Mbit/s.
-        self.current_band_width = current_band_width
-        # The storage capacity of the [enhanced SSD (ESSD)](https://help.aliyun.com/document_detail/122389.html) that is used by the data node. Unit: MB.
+        # The current bandwidth of the node. Unit: MB/s. The value is the sum of the default bandwidth and the increased bandwidth of the node.
         # 
-        # > The ESSD is used only to store system operating data, such as Persistent Memory (PMEM). It is not used as a medium to write and read data.
+        # <props="china">This parameter is returned only when the instance is created in a dedicated cluster.
+        self.current_band_width = current_band_width
+        # The storage space of the [ESSD cloud disk](https://help.aliyun.com/document_detail/122389.html) for the data node. Unit: MB.
+        # > The ESSD cloud disk is used only for system operations, such as data persistence, and is not used as a medium for data access.
         self.disk_size_mb = disk_size_mb
-        # The ID of the replica set in the node.
+        # The replica set ID of the node.
         self.id = id
-        # The name of the data node.
+        # The name of the node.
         self.name = name
-        # The number of replica nodes.
+        # The number of child nodes.
         self.replica_size = replica_size
         # The name of the resource group to which the node belongs.
         self.resource_group_name = resource_group_name
         # The node type. Valid values:
-        # 
-        # *   **redis**: data node
-        # *   **redis_cs**: config server
+        # * **redis**: data node.
+        # * **redis_cs**: configuration server node.
         self.service = service
         # The major version of the node.
         self.service_version = service_version
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

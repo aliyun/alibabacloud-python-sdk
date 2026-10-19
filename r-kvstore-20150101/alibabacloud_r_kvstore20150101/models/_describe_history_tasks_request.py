@@ -23,54 +23,50 @@ class DescribeHistoryTasksRequest(DaraModel):
         to_exec_time: int = None,
         to_start_time: str = None,
     ):
-        # The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
+        # The minimum execution duration. This parameter is used to filter tasks whose execution duration is greater than the specified value. Unit: seconds. Default value: 0, which indicates no restriction.
         self.from_exec_time = from_exec_time
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time.
+        # The earliest start time for querying tasks. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC). You can query data from up to 30 days ago.
         # 
         # This parameter is required.
         self.from_start_time = from_start_time
-        # The instance ID. This parameter is empty by default, which indicates that you can specify an unlimited number of instance IDs. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs.
+        # The instance ID. This parameter is used to query tasks for the specified instance. The default value is empty, which indicates no restriction. To specify multiple instances, separate them with commas (,). A maximum of 30 instances are supported.
         self.instance_id = instance_id
-        # Set the value to Instance.
+        # Currently fixed as Instance.
         self.instance_type = instance_type
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the query results. Valid values: positive integers. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 10 to 100. Default value: 10.
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+        # The region ID of the pending event. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The task status. Valid values:
-        # 
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**
-        # *   **Cancelling**
-        # *   **Canceled**
-        # *   **Waiting**
-        # 
-        # >  This parameter is empty by default, which indicates that tasks in all states are queried. Separate multiple states with commas (,).
+        # The task status. This parameter is used to filter tasks by status. Valid values:
+        # - **Scheduled**: Waiting for execution.
+        # - **Running**: Running.
+        # - **Succeed**: Succeeded.
+        # - **Failed**: Failed.
+        # - **Cancelling**: Being stopped.
+        # - **Canceled**: Stopped.
+        # - **Waiting**: Waiting for the scheduled time.
+        # > The default value is empty, which indicates all statuses. To specify multiple statuses, separate them with commas (,).
         self.status = status
-        # The task ID. This parameter is empty by default, which indicates that you can specify an unlimited number of task IDs. Separate multiple task IDs with commas (,). You can specify up to 30 task IDs.
+        # The task ID. This parameter is used to query tasks with known IDs. The default value is empty, which indicates no restriction. To specify multiple task IDs, separate them with commas (,). A maximum of 30 task IDs are supported.
         self.task_id = task_id
-        # The task type. This parameter is empty by default, which indicates that you can specify an unlimited number of task types.
-        # 
-        # *   **ModifyInsSpec**
-        # *   **DeleteInsNode**
-        # *   **AddInsNode**
-        # *   **HaSwitch**
-        # *   **RestartIns**
-        # *   **CreateIns**
-        # *   **ModifyInsConfig**
-        # 
-        # >  Separate multiple task types with commas (,).
+        # The task type. This parameter is used to query tasks of a specific type. The default value is empty, which indicates no restriction. Valid values:
+        # - **ModifyInsSpec**: Specification change or migration.
+        # - **DeleteInsNode**: Shard deletion.
+        # - **AddInsNode**: Shard addition.
+        # - **HaSwitch**: Primary/secondary switchover.
+        # - **RestartIns**: Instance restart.
+        # - **CreateIns**: Instance creation.
+        # - **ModifyInsConfig**: Configuration change.
+        # > To specify multiple task types, separate them with commas (,).
         self.task_type = task_type
-        # The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
+        # The maximum execution duration. This parameter is used to filter tasks whose execution duration is not less than the specified value. Unit: seconds. Default value: 0, which indicates no restriction.
         self.to_exec_time = to_exec_time
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried.
+        # The latest start time for querying tasks. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC). The value must be later than the earliest start time of the task.
         # 
         # This parameter is required.
         self.to_start_time = to_start_time

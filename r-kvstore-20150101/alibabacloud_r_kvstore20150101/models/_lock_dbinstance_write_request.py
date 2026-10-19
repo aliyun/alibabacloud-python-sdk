@@ -19,7 +19,7 @@ class LockDBInstanceWriteRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The reason why write operations on the instance are locked.
+        # The reason for locking the instance.
         # 
         # This parameter is required.
         self.lock_reason = lock_reason

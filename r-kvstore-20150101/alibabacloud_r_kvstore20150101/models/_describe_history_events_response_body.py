@@ -16,15 +16,15 @@ class DescribeHistoryEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of events.
+        # The list of events.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of returned events.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,21 +91,21 @@ class DescribeHistoryEventsResponseBodyItems(DaraModel):
         time: str = None,
         type: str = None,
     ):
-        # The data returned.
+        # The data overview.
         self.data = data
         # The ID of the task.
         self.id = id
-        # The region ID.
+        # The region.
         self.region = region
         # The source of the event.
         self.source = source
-        # The database engine version.
+        # The database version.
         self.specversion = specversion
         # The name of the pending event.
         self.subject = subject
-        # The amount of time that has elapsed from the start time of the query. Unit: seconds.
+        # The running duration of the query task. Unit: seconds.
         self.time = time
-        # The type of the event.
+        # The event type.
         self.type = type
 
     def validate(self):
@@ -203,96 +203,93 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         start_time: str = None,
         uid: str = None,
     ):
-        # The cloud service type of the application group. Valid values:
-        # 
-        # *   **web**: web application.
-        # *   **native**: local application.
+        # The type of the cloud service for the application group. Valid values:
+        # - **web**: Web applications.
+        # - **native**: Native applications.
         self.cms_product = cms_product
-        # The database type.
+        # The type of the database.
         self.db_type = db_type
         # The pagination parameter.
         self.detail_impact = detail_impact
         # The details of the instance operation.
         self.detail_reason = detail_reason
-        # The time when the alert was closed.
-        self.end_time = end_time
-        # The system event category. Valid values:
+        # The end time of the alert.
         # 
-        # *   **Exception**: abnormal events
-        # *   **Optimize**: optimization events.
-        # *   **Notification**: notification events.
-        # *   **Maintenance**: scheduled maintenance events.
+        # Specify the time in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC.
+        self.end_time = end_time
+        # The category of the system event. Valid values:
+        # - **Exception**: Exception events.
+        # - **Optimize**: Optimization events.
+        # - **Notification**: Notification events.
+        # - **Maintenance**: Scheduled O&M events.
         self.event_category = event_category
-        # The event code.
+        # The code of the event.
         self.event_code = event_code
-        # The event details.
+        # The details of the event.
         self.event_detail = event_detail
         # The ID of the event.
         self.event_id = event_id
-        # The event impact.
+        # The impact overview of the event.
         self.event_impact = event_impact
-        # The level of the event. Valid values:
-        # 
-        # *   **INFO**
-        # *   **WARN**
-        # *   **CRITICAL**
+        # The event level. Valid values:
+        # - **INFO**: Information.
+        # - **WARN**: Warning.
+        # - **CRITICAL**: Critical.
         self.event_level = event_level
-        # The event source.
+        # The source of the event operation.
         self.event_reason = event_reason
         # The status of the event. Valid values:
-        # 
-        # *   **Inquiring**
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**
-        # *   **Canceled**
+        # - **Inquiring**: Inquiring.
+        # - **Scheduled**: Scheduled.
+        # - **Running**: Running.
+        # - **Succeed**: Succeeded.
+        # - **Failed**: Failed.
+        # - **Canceled**: Canceled.
         self.event_status = event_status
-        # The type of the system event. Valid values:
-        # 
-        # *   **SystemMaintenance.Reboot**: The instance was restarted due to system maintenance.
-        # *   **SystemMaintenance.Redeploy**: The instance was redeployed due to system maintenance.
-        # *   **SystemFailure.Reboot**: The instance was restarted due to system failures.
-        # *   **SystemFailure.Redeploy**: The instance was redeployed due to system failures.
-        # *   **SystemFailure.Delete**: The instance was released due to an instance creation failure.
-        # *   **InstanceFailure.Reboot**: The instance was restarted due to an instance error.
-        # *   **InstanceExpiration.Stop**: The subscription instance was stopped due to expiration.
-        # *   **InstanceExpiration.Delete**: The subscription instance was released due to expiration.
-        # *   **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
-        # *   **AccountUnbalanced.Delete**: The pay-as-you-go instance was released due to an overdue payment.
+        # The system event type. Valid values: 
+        # - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
+        # - **SystemMaintenance.Redeploy**: Redeployment of the instance due to system maintenance.
+        # - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
+        # - **SystemFailure.Redeploy**: Redeployment of the instance due to a system fault.
+        # - **SystemFailure.Delete**: The instance is released due to a failed creation.
+        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
+        # - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
+        # - **InstanceExpiration.Delete**: The subscription instance is released due to expiration.
+        # - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
+        # - **AccountUnbalanced.Delete**: The pay-as-you-go instance is released due to an overdue payment.
         self.event_type = event_type
-        # The time when the event was created.
+        # The creation time of the event.
         self.gmt_created = gmt_created
-        # The time when the event was updated.
+        # The update time of the event.
         self.gmt_modified = gmt_modified
-        # The status of the event. Valid values:
+        # The handling status.
         self.handle_status = handle_status
         # Indicates whether the event has a lifecycle.
         self.has_life_cycle = has_life_cycle
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
+        # The name of the instance.
         self.instance_name = instance_name
         # Indicates whether the event is closed. Valid values:
-        # 
-        # *   **0**: closed.
-        # *   **1**: not closed.
+        # - **0**: Closed.
+        # - **1**: Open.
         self.is_closed = is_closed
         # The name of the product.
         self.product = product
         # The region ID.
         self.region_id = region_id
-        # The resource type of the instance. Valid values:
-        # 
-        # *   **Instance**: instance resources.
-        # *   **Host**: host resources.
-        # *   **User**: user resources.
+        # The type of the resource. Valid values:
+        # - **Instance**: Instance resources.
+        # - **Host**: Host resources.
+        # - **User**: User resources.
         self.resource_type = resource_type
         # The type of the source data.
         self.source_type = source_type
-        # The start time of the event.
+        # The start time.
+        # 
+        # Specify the time in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC.
         self.start_time = start_time
-        # The ID of the user to which the resources belong.
+        # The ID of the user to which the resource belongs.
         self.uid = uid
 
     def validate(self):

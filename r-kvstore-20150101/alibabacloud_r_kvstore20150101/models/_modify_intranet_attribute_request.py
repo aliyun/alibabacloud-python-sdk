@@ -16,20 +16,18 @@ class ModifyIntranetAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The amount of bandwidth that you want to add. Unit: Mbit/s. The value must be an integer greater than or equal to 0. In most cases, the maximum bandwidth that can be added can be two times the default maximum bandwidth of the current instance type. For more information about the bandwidth specifications supported by different instance types, see [Overview](https://help.aliyun.com/document_detail/26350.html). The bandwidth is also subject to the following limits:
+        # The bandwidth to add, in MB/s. The value must be an integer greater than or equal to 0. Typically, the maximum value is twice the default maximum bandwidth of the current instance type. For bandwidth information about each instance type, see [Instance type navigation](https://help.aliyun.com/document_detail/26350.html). However, the following limits also apply:
+        # * The bandwidth of a single instance cannot exceed 75% of the bandwidth of the host on which the instance resides. For information about host specifications and bandwidth, see [Host specification details](https://help.aliyun.com/document_detail/206343.html).
+        # * The total bandwidth of all instances on a host cannot exceed 150% of the bandwidth of the host. You can configure overcommitment to meet bandwidth requirements for staggered-peak deployment. For more information, see [Configure cluster overcommitment to reduce costs](https://help.aliyun.com/document_detail/183798.html).
         # 
-        # *   The bandwidth of an individual instance cannot exceed 75% of the bandwidth of the host. For more information about the host specifications and bandwidth, see [Instance types of hosts](https://help.aliyun.com/document_detail/206343.html).
-        # *   The total bandwidth of all of the instances on the host cannot exceed 150% of the bandwidth of the host. You can configure resource overcommitment to handle traffic spikes. For more information, see [Configure resource overcommitment to reduce costs](https://help.aliyun.com/document_detail/183798.html).
-        # 
-        # > If you do not specify this parameter for a standard instance, the bandwidth of the instance is set to two times that of the current bandwidth.
+        # > For instances that use the standard architecture, if you do not specify this parameter, the bandwidth of the instance is doubled based on the current bandwidth.
         self.band_width = band_width
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data node. You can call the [DescribeClusterMemberInfo](https://help.aliyun.com/document_detail/473783.html) operation to query the node ID. Separate multiple IDs with commas (,).
-        # 
-        # >  This parameter is required if the instance is a [cluster](https://help.aliyun.com/document_detail/52228.html) instance.
+        # The ID of the data node. You can call [DescribeClusterMemberInfo](https://help.aliyun.com/document_detail/473783.html) to query the ID. Separate multiple IDs with commas (,).
+        # > This parameter is available and required only when the instance uses the [Cluster Edition](https://help.aliyun.com/document_detail/52228.html).
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -28,68 +28,61 @@ class DescribeEngineVersionResponseBody(DaraModel):
         proxy_version_release: str = None,
         request_id: str = None,
     ):
-        # The latest minor version to which the instance can be updated.
+        # The information about the latest minor version to which the instance can be upgraded.
         self.dblatest_minor_version = dblatest_minor_version
-        # The release notes for the minor version of the instance, including the release date, minor version number, release type such as new feature, and description.
+        # The update notes for the minor version of the instance, including the release time, minor version number, type (such as new feature), and detailed description.
         self.dbversion_release = dbversion_release
-        # Indicates whether the instance major version can be upgraded. Valid values:
+        # Indicates whether the major version of the instance can be upgraded. Valid values:
+        # * **true**: The major version can be upgraded.
+        # * **false**: The major version cannot be upgraded, usually because it is already the latest version.
         # 
-        # *   **true**: The major version can be upgraded.
-        # *   **false**: The major version is the latest version and cannot be upgraded.
-        # 
-        # >  To upgrade the major version, call the [ModifyInstanceMajorVersion](https://help.aliyun.com/document_detail/473776.html) operation.
+        # > To upgrade the major version, call the [ModifyInstanceMajorVersion](https://help.aliyun.com/document_detail/473776.html) operation.
         self.enable_upgrade_major_version = enable_upgrade_major_version
-        # Indicates whether the instance minor version can be updated. Valid values:
+        # Indicates whether the minor version of the instance can be upgraded. Valid values:
         # 
-        # *   **true**: The minor version can be updated.
-        # *   **false**: The minor version is the latest version and cannot be updated.
+        # * **true**: The minor version can be upgraded.
+        # * **false**: The minor version is already the latest and cannot be upgraded. 
         # 
-        # >  To update the minor version, call the [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/473777.html) operation.
+        # > To upgrade the minor version, call the [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/473777.html) operation.
         self.enable_upgrade_minor_version = enable_upgrade_minor_version
-        # The database engine. Valid values: **redis** and **memcache**.
+        # The database engine type. Valid values: **redis** and **memcache**.
         self.engine = engine
-        # Indicates whether automatic minor version update is enabled. Valid values:
+        # Indicates whether automatic minor version upgrade is enabled. Valid values:
         # 
-        # *   **0**: Automatic minor version update is disabled.
-        # *   **1**: Automatic minor version update is enabled.
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.is_auto_upgrade_open = is_auto_upgrade_open
-        # Indicates whether the instance uses the latest minor version. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the minor version of the instance is the latest. Valid values:
+        # * **true**: Yes.
+        # * **false**: No.
         self.is_latest_version = is_latest_version
-        # Indicates whether Transport Layer Security (TLS) is enabled. Valid values:
-        # 
-        # *   **1**: TLS is enabled.
-        # *   **0**: TLS is disabled.
+        # Indicates whether the new TLS version is supported. Valid values:
+        # * **1**: Enabled.
+        # * **0**: Disabled.
         self.is_new_sslmode = is_new_sslmode
-        # Indicates whether the NGLB mode is enabled. Valid values:
-        # 
-        # *   **0**: The NGLB mode is disabled.
-        # *   **1**: The NGLB mode is enabled.
+        # Indicates whether NGLB mode is enabled. Valid values:
+        # * **0**: Disabled.
+        # * **1**: Enabled.
         self.is_open_nglb = is_open_nglb
-        # Indicates whether the instance runs a Redis version.
+        # Indicates whether the instance is a Redis-compatible version.
         self.is_redis_compatible_version = is_redis_compatible_version
         # Indicates whether SSL is enabled. Valid values:
-        # 
-        # *   **1**: SSL is enabled.
-        # *   **0**: TLS is disabled.
+        # * **1**: Enabled.
+        # * **0**: Disabled.
         self.is_sslenable = is_sslenable
         # The major version of the instance.
         self.major_version = major_version
         # The current minor version of the instance.
         self.minor_version = minor_version
-        # The latest minor version to which the proxy node can be updated.
+        # The information about the latest minor version to which the proxy node can be upgraded.
         self.proxy_latest_minor_version = proxy_latest_minor_version
         # The current minor version of the proxy node.
-        # 
-        # >  This parameter is returned only for cluster and read/write splitting instances.
+        # > This parameter is returned only for instances of the cluster or read/write splitting architecture.
         self.proxy_minor_version = proxy_minor_version
-        # The release notes for the minor version of proxy nodes. The release notes include the release date, minor version number, release type such as new feature, and description.
-        # 
-        # >  This parameter is returned only for cluster and read/write splitting instances.
+        # The update notes for the minor version of the proxy node, including the release time, minor version number, type (such as new feature), and detailed description.
+        # > This parameter is returned only for instances of the cluster or read/write splitting architecture.
         self.proxy_version_release = proxy_version_release
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -220,15 +213,14 @@ class DescribeEngineVersionResponseBodyProxyLatestMinorVersion(DaraModel):
         minor_version: str = None,
         version_release: main_models.DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease = None,
     ):
-        # The version update level. Valid values:
-        # 
-        # *   **0**: regular
-        # *   **1**: recommended
-        # *   **2**: critical
+        # The importance level of the version change. Valid values:
+        # * **0**: Normal.
+        # * **1**: Important.
+        # * **2**: Critical.
         self.level = level
         # The version number.
         self.minor_version = minor_version
-        # The version update path from the current minor version to the latest minor version of the instance, which is consistent with the version documentation. For more detailed information, you can directly refer to the release notes.
+        # The version evolution path from the current minor version of the instance to the latest minor version. This is consistent with the version documentation. You can refer to the version release notes for more detailed information.
         self.version_release = version_release
 
     def validate(self):
@@ -272,11 +264,10 @@ class DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease(Dar
         version_changes_level: str = None,
     ):
         self.release_info = release_info
-        # The version update level, which indicates how strongly the update is recommended. Valid values:
-        # 
-        # *   0: regular
-        # *   1: recommended
-        # *   2: critical
+        # The importance level of the version upgrade (recommended upgrade level). Valid values:
+        # * 0: Normal.
+        # * 1: Important.
+        # * 2: Critical.
         self.version_changes_level = version_changes_level
 
     def validate(self):
@@ -408,15 +399,14 @@ class DescribeEngineVersionResponseBodyDBLatestMinorVersion(DaraModel):
         minor_version: str = None,
         version_release: main_models.DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease = None,
     ):
-        # The version update level. Valid values:
-        # 
-        # *   **0**: regular
-        # *   **1**: recommended
-        # *   **2**: critical
+        # The importance level of the version change. Valid values:
+        # * **0**: Normal.
+        # * **1**: Important.
+        # * **2**: Critical.
         self.level = level
         # The version number.
         self.minor_version = minor_version
-        # The version update path from the current minor version to the latest minor version of the instance, which is consistent with the version documentation. For more detailed information, you can directly refer to the release notes.
+        # The version evolution path from the current minor version of the instance to the latest minor version. This is consistent with the version documentation. You can refer to the version release notes for more detailed information.
         self.version_release = version_release
 
     def validate(self):
@@ -460,11 +450,10 @@ class DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease(DaraMo
         version_changes_level: str = None,
     ):
         self.release_info = release_info
-        # The version update level, which indicates how strongly the update is recommended. Valid values:
-        # 
-        # *   0: regular
-        # *   1: recommended
-        # *   2: critical
+        # The importance level of the version upgrade (recommended upgrade level). Valid values:
+        # * 0: Normal.
+        # * 1: Important.
+        # * 2: Critical.
         self.version_changes_level = version_changes_level
 
     def validate(self):

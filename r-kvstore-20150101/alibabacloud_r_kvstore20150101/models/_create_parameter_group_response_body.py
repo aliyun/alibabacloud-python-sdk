@@ -12,7 +12,7 @@ class CreateParameterGroupResponseBody(DaraModel):
     ):
         # The parameter template ID.
         self.param_group_id = param_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -28,67 +28,54 @@ class TransformToEcsRequest(DaraModel):
     ):
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - **true**: enables auto-renewal.
-        # 
-        # - **false**: disables auto-renewal.
+        # * **true**: enabled.
+        # * **false**: disabled.
         self.auto_renew = auto_renew
-        # The auto-renewal cycle. Unit: month. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # The auto-renewal period. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
         # 
-        # > This parameter is required if you set **AutoRenew** to **true**.
+        # > This parameter is required when **AutoRenew** is set to **true**.
         self.auto_renew_period = auto_renew_period
-        # The billing method of the target instance. Valid values:
-        # 
-        # - **PostPaid**: pay-as-you-go
-        # 
-        # - **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period** parameter.
+        # The billing method to convert to. Valid values:
+        # * **PostPaid**: pay-as-you-go.
+        # * **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period** parameter.
         self.charge_type = charge_type
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # - **true**: performs a dry run to check the request. The check items include the required parameters, request format, service limits, and available resources. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
-        # 
-        # - **false** (default): sends a normal request and creates an instance after the request passes the check.
+        # Specifies whether to perform a dry run for this operation. Valid values:
+        # * **true**: performs a dry run without creating the cloud-native instance. The system checks items such as the request parameters, request format, service limits, and available inventory. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # * **false** (default): sends the request. If the check succeeds, the instance is created.
         self.dry_run = dry_run
-        # The time when to switch the database after data migration. Valid values:
-        # 
-        # - **Immediately**: The database is immediately switched after the migration is complete.
-        # 
-        # - **MaintainTime**: The database is switched within the maintenance window.
+        # The time when the database switchover is performed after data migration. Valid values: 
+        # * **Immediately**: The switchover is performed immediately after the migration is complete.
+        # * **MaintainTime**: The switchover is performed during the maintenance window.
         # 
         # > Default value: **Immediately**.
         self.effective_time = effective_time
-        # The Redis-compatible version of the instance. Valid values: **5.0**, **6.0**, and **7.0**.
+        # The Redis-compatible engine version of the instance. Valid values: **5.0**, **6.0**, and **7.0**.
         # 
         # This parameter is required.
         self.engine_version = engine_version
-        # The instance type of the target cloud-native instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/26350.html).
+        # The instance type of the target cloud-native instance. For more information, see [Overview of instance specifications](https://help.aliyun.com/document_detail/26350.html).
         # 
-        # > If you want to convert a cluster instance, you must specify the corresponding cloud-native cluster instance type that includes .with.proxy in its name and specify the ShardCount parameter.
-        # >
-        # > - For a cluster instance, you must provide the corresponding cloud-native cluster specification that includes `.proxy`. You must also specify the number of shards by using the `ShardCount` parameter.
+        # > This is the description content.
+        # > - For cluster instances, specify the corresponding cloud-native cluster instance type with .proxy, and specify the ShardCount parameter for the number of shards.
         # 
         # This parameter is required.
         self.instance_class = instance_class
-        # The ID of the classic instance that you want to convert.
+        # The ID of the classic architecture instance to convert.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to deploy the instance across availability zones. This feature is supported only for cluster instances.
         self.is_across_zone = is_across_zone
-        # The ID of the availability zone.
         self.iz_no = iz_no
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration. Unit: month. Valid values: **1**, **2**, **3**, **4**, **5**, 6, 7, 8, 9, 12, 24, and 36.
-        # 
-        # > This parameter is available and required only if you set the **ChargeType** parameter to **PrePaid**.
+        # The subscription duration. Unit: months. Valid values: **1** to **9**, **12**, **24**, and **36**.
+        # > This parameter is available and required only when **ChargeType** is set to **PrePaid**.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the secondary availability zone.
         self.secondary_iz_no = secondary_iz_no
-        # The number of data shards in the cloud-native cluster instance.
+        # The number of data shard nodes in the cloud-native cluster instance.
         self.shard_count = shard_count
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

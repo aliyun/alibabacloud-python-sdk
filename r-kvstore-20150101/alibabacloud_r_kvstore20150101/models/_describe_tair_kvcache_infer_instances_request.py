@@ -33,35 +33,35 @@ class DescribeTairKVCacheInferInstancesRequest(DaraModel):
         zone_id: str = None,
     ):
         # The billing method of the instance. Valid values:
-        # - **PrePaid**: subscription.
-        # - **PostPaid**: pay-as-you-go.
+        # - **PrePaid**: Subscription.
+        # - **PostPaid**: Pay-as-you-go.
         self.charge_type = charge_type
         # The expiration status of the instance. Valid values:
         # 
-        # * **true**: expired.
-        # * **false**: not expired.
+        # * **true**: Expired.
+        # * **false**: Not expired.
         self.expired = expired
         # The instance type.
         self.instance_class = instance_class
-        # The IDs of the instances that you want to query.
-        # > To specify multiple instance IDs, separate them with commas (,). You can specify up to 30 instance IDs in a single request.
+        # The IDs of the instances to query.
+        # > If you specify multiple instance IDs, separate them with commas (,). You can specify up to 30 instance IDs in a single request.
         self.instance_ids = instance_ids
         # The instance status. Valid values:
         # * **Normal**: Normal.
-        # * **Creating**: The instance is being created.
+        # * **Creating**: Creating.
         # 
-        # > For more information about instance statuses, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
+        # > For more information about instance statuses, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
         # The network type. Valid values:
-        # * **VPC**: virtual private cloud (VPC). This is the default value.
+        # * **VPC**: Virtual Private Cloud (VPC). This is the default value.
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value starts from 1. Default value: 1.
+        # The page number of the instance list. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 30.
         self.page_size = page_size
-        # The private IP address in the VPC. This parameter is deprecated.
+        # **[Deprecated]** The private IP address of the VPC.
         self.private_ip = private_ip
         # The region ID of the instance.
         # 
@@ -71,7 +71,7 @@ class DescribeTairKVCacheInferInstancesRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The keyword used for fuzzy search by instance name or instance ID.
+        # The search keyword. You can use this parameter to perform a fuzzy search by instance name or instance ID.
         self.search_key = search_key
         self.security_token = security_token
         # The tags of the instance.
@@ -237,10 +237,10 @@ class DescribeTairKVCacheInferInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. The key and value of a tag form a key-value pair.
-        # > You can specify up to 5 key-value pairs of tags in a single request.
+        # The tag key. A tag key and a tag value form a key-value pair.
+        # > You can specify up to 5 tag key-value pairs in a single request.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         # > **N** specifies the sequence number of the tag. For example, **Tag.1.Value** specifies the value of the first tag, and **Tag.2.Value** specifies the value of the second tag.
         self.value = value
 

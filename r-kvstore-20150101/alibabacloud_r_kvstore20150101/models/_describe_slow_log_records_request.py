@@ -24,47 +24,43 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         slow_log_record_type: str = None,
         start_time: str = None,
     ):
-        # The name of the database.
+        # The database name.
         self.dbname = dbname
-        # The end of the time range to query. The end time must be later than the start time. The time range cannot exceed one day. We recommend that you specify 1 hour. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The end time of the query. The end time must be later than the start time, and the time range cannot exceed 1 day. The recommended time range is 1 hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the node in the instance. You can set this parameter to query the slow query logs of a specified node.
-        # 
-        # >  This parameter is available only for read/write splitting and cluster instances.
+        # The node ID in the instance. Specify this parameter to query the slow query logs of a specific node.
+        # > This parameter is available only when the instance uses the read/write splitting or cluster architecture.
         self.node_id = node_id
-        # The dimension by which to sort the results. Default value: execution_time. Valid values:
-        # 
-        # *   **execution_time**: sorts the results by query start time.
-        # *   **latency**: sorts the results by query latency.
+        # The field based on which the returned results are sorted. Valid values:
+        # * **execution_time**: sorts the results based on the start time of request execution. This is the default value.
+        # * **latency**: sorts the results based on the execution duration of requests.
         self.order_by = order_by
-        # The sorting order of the results to return. Default value: DESC. Valid values:
-        # 
-        # *   **ASC**: ascending order
-        # *   **DESC**: descending order
+        # The sort order of the returned results. Valid values:
+        # * **ASC**: ascending order.
+        # * **DESC**: descending order. This is the default value.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+        # The maximum number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The keyword based on which slow logs are queried. You can set this parameter to a value of the string type.
+        # The keyword used to search the returned results.
         self.query_keyword = query_keyword
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The type of the slow logs. Default value: db. Valid values:
-        # 
-        # *   **proxy**: slow logs of proxy nodes
-        # *   **db**: slow logs of data nodes
+        # The slow log type. Valid values:
+        # * **proxy**: Slow query logs on proxy nodes.
+        # * **db**: Slow query logs on data nodes. This is the default value.
         self.slow_log_record_type = slow_log_record_type
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

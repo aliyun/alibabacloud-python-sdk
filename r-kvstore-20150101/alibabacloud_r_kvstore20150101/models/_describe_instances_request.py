@@ -39,92 +39,92 @@ class DescribeInstancesRequest(DaraModel):
         zone_id: str = None,
     ):
         # The architecture type. Valid values:
-        # * **cluster**: cluster.
-        # * **standard**: standard.
-        # * **rwsplit**: read/write splitting.
+        # * **cluster**: cluster edition
+        # * **standard**: standard edition
+        # * **rwsplit**: read/write splitting edition
         self.architecture_type = architecture_type
         # The billing method. Valid values:
-        # * **PrePaid**: subscription.
-        # * **PostPaid**: pay-as-you-go.
+        # * **PrePaid**: subscription
+        # * **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
-        # The edition of the instance. Valid values:
-        # * **Community**: ApsaraDB for Redis Community Edition.
-        # * **Enterprise**: Tair Enhanced Edition.
+        # The edition type of the instance. Valid values:
+        # * **Community**: open-source Redis
+        # * **Enterprise**: Tair Enterprise Edition
         self.edition_type = edition_type
         # The Redis-compatible engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
         self.engine_version = engine_version
         # The expiration status of the instance. Valid values:
         # 
-        # * **true**: expired.
-        # * **false**: not expired.
+        # * **true**: The instance has expired.
+        # * **false**: The instance has not expired.
         self.expired = expired
-        # Specifies whether to filter child instances of distributed instances from the returned instance list. Valid values:
-        # * **true**: returns only child instance information.
-        # * **false**: does not return child instance information.
+        # Specifies whether to filter child instances of distributed instances in the returned instance list. Valid values:
+        # * **true**: Only child instance information is returned.
+        # * **false**: Child instance information is not returned.
         self.global_instance = global_instance
-        # The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
+        # The instance specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/107984.html).
         self.instance_class = instance_class
-        # The IDs of the instances to query.
-        # > To specify multiple instance IDs, separate them with commas (,). A maximum of 30 instance IDs can be specified in a single request.
+        # The IDs of the instances to be queried.
+        # > To specify multiple instance IDs, separate the IDs with commas (,). You can specify up to 30 instance IDs in a single request.
         self.instance_ids = instance_ids
         # The status of the instance. Valid values:
-        # * **Normal**: normal.
-        # * **Creating**: being created.
-        # * **Changing**: being changed.
-        # * **Inactive**: disabled.
-        # * **Flushing**: being flushed.
-        # * **Released**: released.
-        # * **Transforming**: being transformed.
-        # * **Migrating**: being migrated.
-        # * **BackupRecovering**: being restored from a backup.
-        # * **MinorVersionUpgrading**: minor version being upgraded.
-        # * **NetworkModifying**: network type being changed.
-        # * **SSLModifying**: SSL being changed.
-        # * **MajorVersionUpgrading**: major version being upgraded. The instance can be accessed normally.
+        # * **Normal**: normal
+        # * **Creating**: creating
+        # * **Changing**: changing
+        # * **Inactive**: disabled
+        # * **Flushing**: purge in progress
+        # * **Released**: released
+        # * **Transforming**: transforming
+        # * **Migrating**: migrating
+        # * **BackupRecovering**: recovering from backup
+        # * **MinorVersionUpgrading**: minor version upgrade in progress
+        # * **NetworkModifying**: changing the network type
+        # * **SSLModifying**: changing SSL configurations
+        # * **MajorVersionUpgrading**: major engine version upgrade in progress, during which the instance remains accessible
         # 
         # > For more information about instance statuses, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
-        # The category of the instance. Valid values:
-        # * **Tair**: Tair (Enhanced Edition)
-        # * **Redis**: ApsaraDB for Redis Community Edition
-        # * **Memcache**
+        # The instance type. Valid values:
+        # * **Tair**: Tair (Enterprise Edition)
+        # * **Redis**: open-source Redis
+        # * **Memcache**: Memcache
         self.instance_type = instance_type
-        # The network type of the instance. Valid values:
-        # * **CLASSIC**: classic network.
-        # * **VPC**: virtual private cloud (VPC).
+        # The network type. Valid values:
+        # * **CLASSIC**: classic network
+        # * **VPC**: VPC
         self.network_type = network_type
         # The node type. Valid values:
-        # * **MASTER_SLAVE**: high availability (dual-replica)
-        # * **STAND_ALONE**: single replica
+        # * **MASTER_SLAVE**: high-availability (dual-replica)
+        # * **STAND_ALONE**: single-replica
         # * **double**: dual-replica
-        # * **single**: single replica
+        # * **single**: single-replica
         # > For cloud-native instances, select **MASTER_SLAVE** or **STAND_ALONE**. For classic instances, select **double** or **single**.
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number of the instance list. Pages start from **1**. Default value: **1**.
         self.page_number = page_number
-        # The maximum number of entries per page. Maximum value: **50**. Default value: **30**.
+        # The number of entries per page. Maximum value: **50**. Default value: **30**.
         self.page_size = page_size
-        # The private IP address of the VPC.
+        # The private IP address in the VPC.
         self.private_ip = private_ip
         # The region ID of the instance.
         # 
-        # > When calling this API, if the **Tag** parameter is specified, this parameter is required.
+        # > When you call this operation, if the **Tag** parameter is specified, this parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
-        # > You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) API or use the console to obtain the list of resource group IDs. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The resource group ID.
+        # > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the list of resource group IDs. For related operations, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The keyword used for fuzzy search by instance name or instance ID.
+        # The search keyword. Fuzzy match is supported for instance names and instance IDs.
         self.search_key = search_key
         self.security_token = security_token
-        # The tags of the instance.
+        # The tag information of the instance.
         self.tag = tag
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id
@@ -319,10 +319,10 @@ class DescribeInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. The tag key and value together form a key-value pair.
-        # > A maximum of 5 tag key-value pairs can be specified at a time.
+        # The tag key. It forms a key-value pair with the tag value.
+        # > You can specify up to 5 tag key-value pairs in a single request.
         self.key = key
-        # The value of the tag. The tag value and key together form a key-value pair.
+        # The tag value. It forms a key-value pair with the tag key.
         self.value = value
 
     def validate(self):

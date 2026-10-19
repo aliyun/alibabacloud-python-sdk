@@ -10,9 +10,9 @@ class ModifyActiveOperationTaskResponseBody(DaraModel):
         ids: str = None,
         request_id: str = None,
     ):
-        # The ID of the O\\&M task. IDs are separated by commas (,).
+        # The O&M task IDs, separated by commas (,).
         self.ids = ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

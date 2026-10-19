@@ -13,10 +13,15 @@ class DescribeInspectionScheduleReportsRequest(DaraModel):
         schedule_id: str = None,
         security_token: str = None,
     ):
+        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the timed scheduling.
         self.schedule_id = schedule_id
         self.security_token = security_token
 

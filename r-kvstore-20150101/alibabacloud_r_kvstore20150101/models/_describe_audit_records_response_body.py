@@ -20,19 +20,23 @@ class DescribeAuditRecordsResponseBody(DaraModel):
         total_record_count: int = None,
     ):
         # The end time of the query.
+        # 
+        # The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
         self.end_time = end_time
         # The name of the instance.
         self.instance_name = instance_name
         self.items = items
-        # The page number of the returned page.
+        # The page number of the page to return.
         self.page_number = page_number
-        # The maximum number of entries returned per page.
+        # The maximum number of entries to return on each page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
         # The start time of the query.
+        # 
+        # The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
         self.start_time = start_time
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

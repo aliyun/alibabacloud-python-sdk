@@ -23,14 +23,15 @@ class RebootProxyRequest(DaraModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The IDs of the proxy nodes that you want to restart or rebuild. Separate multiple IDs with commas (,).
+        # The IDs of the proxy nodes to operate. Separate multiple IDs with commas.
         self.proxy_list = proxy_list
-        # The IDs of the hosts on which the proxy nodes are deployed. Separate multiple IDs with commas (,).
+        # The IDs of the hosts on which the proxy nodes to operate reside. Separate multiple IDs with commas.
         self.proxy_node_list = proxy_node_list
-        # The type of operation that you want to perform. Valid values:
+        # The operation type. Valid values:
         # 
-        # *   **reboot**: restarts the proxy node.
-        # *   **rebuild**: rebuilds the proxy node.
+        # - **reboot**: Restarts the proxy node in place.
+        # 
+        # - **rebuild**: Rebuilds the proxy node.
         self.reboot_mode = reboot_mode
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

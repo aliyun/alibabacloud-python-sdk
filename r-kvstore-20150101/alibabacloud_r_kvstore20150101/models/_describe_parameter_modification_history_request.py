@@ -18,26 +18,25 @@ class DescribeParameterModificationHistoryRequest(DaraModel):
         security_token: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the node.
-        # 
-        # > You can set this parameter to query the parameter settings of the specified node in a cluster instance.
+        # The node ID.
+        # > Specify this parameter to query the parameter settings of a specific node in a cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The name of the parameter.
+        # The parameter name.
         self.parameter_name = parameter_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

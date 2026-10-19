@@ -17,14 +17,15 @@ class DescribeParameterGroupsRequest(DaraModel):
         security_token: str = None,
     ):
         # The engine type. Valid values:
-        # - **redis**: Redis Community Edition or Tair (Enhanced Edition) in-memory type.
-        # - **tair_pena**: Tair (Enhanced Edition) persistent memory type.
-        # - **tair_pdb**: Tair (Enhanced Edition) cloud disk type (ESSD/SSD).
+        # - **redis**: open-source Redis or Tair (Memory-optimized).
+        # - **tair_pena**: Tair (Persistent Memory-optimized).
+        # - **tair_pdb**: Tair (Disk-optimized, ESSD/SSD).
         self.db_type = db_type
+        # The compatible engine version.
         self.engine_version = engine_version
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query the region ID.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

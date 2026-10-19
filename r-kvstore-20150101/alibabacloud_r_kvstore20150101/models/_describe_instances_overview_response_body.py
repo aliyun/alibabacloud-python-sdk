@@ -14,7 +14,7 @@ class DescribeInstancesOverviewResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of instances.
+        # The array of instances.
         self.instances = instances
         # The request ID.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class DescribeInstancesOverviewResponseBodyInstances(DaraModel):
         # The architecture type. Valid values:
         # * **cluster**: Cluster Edition.
         # * **standard**: Standard Edition.
-        # * **rwsplit**: read/write splitting edition.
+        # * **rwsplit**: read/write splitting Edition.
         self.architecture_type = architecture_type
         # The storage capacity of the instance. Unit: MB.
         self.capacity = capacity
@@ -142,7 +142,7 @@ class DescribeInstancesOverviewResponseBodyInstances(DaraModel):
         # * **VPC**: virtual private cloud (VPC).
         self.network_type = network_type
         self.node_type = node_type
-        # The private IP address of the instance in a VPC. The IP address may change. Use ConnectionDomain (internal endpoint) to connect to the instance.
+        # The private IP address of the instance in a VPC. The IP address may change. Use ConnectionDomain (the internal endpoint) to connect to the instance.
         # > - This parameter is not returned if the network type of the instance is classic network.
         # > - This parameter is not returned for cloud-native instances.
         self.private_ip = private_ip

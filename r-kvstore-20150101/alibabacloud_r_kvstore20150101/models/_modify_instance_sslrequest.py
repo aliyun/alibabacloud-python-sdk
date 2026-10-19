@@ -23,13 +23,10 @@ class ModifyInstanceSSLRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to enable TLS (SSL) encryption. Valid values:
-        # 
-        # - **Disable**: disables SSL encryption.
-        # 
-        # - **Enable**: enables SSL encryption.
-        # 
-        # - **Update**: updates the SSL certificate.
+        # Modifies the TLS (SSL) settings. Valid values:
+        # * **Disable**: Disables TLS (SSL).
+        # * **Enable**: Enables TLS (SSL).
+        # * **Update**: Updates the certificate.
         # 
         # This parameter is required.
         self.sslenabled = sslenabled

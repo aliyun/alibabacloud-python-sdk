@@ -11,14 +11,13 @@ class DescribeAuditLogConfigResponseBody(DaraModel):
         request_id: str = None,
         retention: str = None,
     ):
-        # Indicates whether the audit log feature is enabled. Valid values:
+        # Indicates whether audit logging is enabled. Valid values:
+        # * **true**: Enabled.
+        # * **false**: Disabled.
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
-        # 
-        # > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) operation to enable or disable the audit log feature for a Tair (Redis OSS-compatible) instance.
+        # > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/473829.html) operation to enable or disable audit logging for the instance.
         self.db_audit = db_audit
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The retention period of audit logs. Unit: days.
         self.retention = retention

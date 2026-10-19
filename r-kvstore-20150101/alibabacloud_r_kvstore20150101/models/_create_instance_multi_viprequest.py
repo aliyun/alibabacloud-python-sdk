@@ -14,8 +14,12 @@ class CreateInstanceMultiVIPRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The number of LBs to add.
+        # 
         # This parameter is required.
         self.add_count = add_count
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account

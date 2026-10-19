@@ -13,7 +13,7 @@ class DescribeSecurityIpsResponseBody(DaraModel):
         request_id: str = None,
         security_ip_groups: main_models.DescribeSecurityIpsResponseBodySecurityIpGroups = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.security_ip_groups = security_ip_groups
 

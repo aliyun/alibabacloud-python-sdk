@@ -14,7 +14,7 @@ class FlushInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the request.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

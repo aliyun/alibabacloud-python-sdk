@@ -58,15 +58,14 @@ class DescribeHistoryTasksStatResponseBodyItems(DaraModel):
         status: str = None,
         total_count: int = None,
     ):
-        # The task state.
-        # 
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**
-        # *   **Cancelling**
-        # *   **Canceled**
-        # *   **Waiting**
+        # The task status. Valid values:
+        # - **Scheduled**: Waiting to be executed.
+        # - **Running**: Running.
+        # - **Succeed**: Succeeded.
+        # - **Failed**: Failed.
+        # - **Cancelling**: Being stopped.
+        # - **Canceled**: Stopped.
+        # - **Waiting**: Waiting for the scheduled time.
         self.status = status
         # The total number of tasks.
         self.total_count = total_count

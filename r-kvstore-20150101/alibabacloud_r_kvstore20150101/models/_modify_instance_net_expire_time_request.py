@@ -16,15 +16,15 @@ class ModifyInstanceNetExpireTimeRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The extension period to retain the classic network endpoint of the instance. Unit: days. Valid values: **14**, **30**, **60**, and **120**.
+        # The extended retention period of the classic network endpoint. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
         # 
         # This parameter is required.
         self.classic_expired_days = classic_expired_days
-        # The endpoint of the classic network.
+        # The classic network endpoint of the instance.
         # 
         # This parameter is required.
         self.connection_string = connection_string
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

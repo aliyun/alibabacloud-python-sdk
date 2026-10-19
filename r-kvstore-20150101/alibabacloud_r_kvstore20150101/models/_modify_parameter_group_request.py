@@ -19,35 +19,35 @@ class ModifyParameterGroupRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The service category. Valid values:
+        # The product category. Valid values:
         # 
-        # *   **standard**: Redis Open-Source Edition
-        # *   **enterprise**: Tair (Enterprise Edition)
+        # - **standard**: Redis Community Edition.
+        # - **enterprise**: Tair (Enhanced Edition).
         # 
         # This parameter is required.
         self.category = category
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The description of the parameter template. The description must be 0 to 200 characters in length.
+        # The description of the parameter template. The description can be up to 200 characters in length.
         self.parameter_group_desc = parameter_group_desc
-        # The parameter template ID.
+        # The ID of the parameter template.
         # 
         # This parameter is required.
         self.parameter_group_id = parameter_group_id
-        # The new name of the parameter template. The name must meet the following requirements:
+        # The name of the parameter template. The name must meet the following requirements:
         # 
-        # *   The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
-        # *   The name can be 8 to 64 characters in length.
+        # * The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        # * The name must be 8 to 64 characters in length.
+        # > This parameter is required. If you do not want to change the name of the parameter template, specify the original name.
         # 
         # This parameter is required.
         self.parameter_group_name = parameter_group_name
-        # A JSON-formatted object that specifies the parameter-value pairs. Format: {"Parameter 1":"Value 1","Parameter 2":"Value 2"...}. The specified value overwrites the original content.
-        # 
-        # >  The parameters that can be added for different editions are displayed in the console.
+        # The parameters and their values in JSON format: {"Parameter1":"Value1","Parameter2":"Value2",...}. The specified values overwrite the existing values.
+        # > The parameters that can be added vary by version. Refer to the console for details.
         # 
         # This parameter is required.
         self.parameters = parameters
-        # The region ID.
+        # The ID of the region where the instance resides. You can call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/473779.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -14,7 +14,7 @@ class DescribeEngineVersionRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
+        # Instance ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

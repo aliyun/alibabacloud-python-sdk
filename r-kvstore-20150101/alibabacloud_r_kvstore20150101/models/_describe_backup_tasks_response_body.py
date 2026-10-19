@@ -15,13 +15,13 @@ class DescribeBackupTasksResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The following parameters are no longer used. Ignore the parameters.
+        # **[Deprecated]** This group of parameters is deprecated. Ignore these parameters.
         self.access_denied_detail = access_denied_detail
         # The details of the backup tasks.
         self.backup_jobs = backup_jobs
         # The instance ID.
         self.instance_id = instance_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -87,32 +87,29 @@ class DescribeBackupTasksResponseBodyBackupJobs(DaraModel):
     ):
         # The ID of the backup task.
         self.backup_job_id = backup_job_id
-        # The state of the backup task. Valid values:
-        # 
-        # *   **NoStart**: The backup task is not started.
-        # *   **Preparing**: The backup task is being prepared.
-        # *   **Waiting**: The backup task is pending.
-        # *   **Uploading**: The system is uploading the backup file.
-        # *   **Checking**: The system is checking the uploaded backup file.
-        # *   **Finished**: The backup task is completed.
+        # The status of the backup task. Valid values:
+        # * **NoStart**: not started
+        # * **Preparing**: preparing
+        # * **Waiting**: waiting
+        # * **Uploading**: uploading
+        # * **Checking**: checking
+        # * **Finished**: completed
         self.backup_progress_status = backup_progress_status
         # The backup mode. Valid values:
-        # 
-        # *   **Automated**: automatic backup
-        # *   **Manual**: manual backup
+        # * **Automated**: automatic backup.
+        # * **Manual**: manual backup.
         self.job_mode = job_mode
         # The ID of the data node.
         self.node_id = node_id
-        # The progress of the backup task in percentage.
+        # The progress percentage of the backup task. This parameter is not recommended. Refer to the **Progress** parameter.
         self.process = process
-        # The backup progress.
+        # The progress percentage of the backup. Valid values: 0 to 100.
         self.progress = progress
-        # The start time of the backup task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The start time of the backup task. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.start_time = start_time
         # The type of the backup task. Valid values:
-        # 
-        # *   **TempBackupTask**: The backup task was manually performed.
-        # *   **NormalBackupTask**: The backup task was automatically performed.
+        # * **TempBackupTask**: temporary backup task, which indicates a manual backup.
+        # * **NormalBackupTask**: normal backup task, which indicates an automatic backup.
         self.task_action = task_action
 
     def validate(self):
@@ -188,19 +185,19 @@ class DescribeBackupTasksResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.auth_action = auth_action
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.auth_principal_display_name = auth_principal_display_name
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.auth_principal_type = auth_principal_type
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.no_permission_type = no_permission_type
-        # This parameter is no longer used. Ignore this parameter.
+        # Same as above.
         self.policy_type = policy_type
 
     def validate(self):

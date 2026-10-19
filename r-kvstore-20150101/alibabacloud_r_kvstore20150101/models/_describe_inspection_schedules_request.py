@@ -14,11 +14,17 @@ class DescribeInspectionSchedulesRequest(DaraModel):
         schedule_id: str = None,
         security_token: str = None,
     ):
+        # Specifies whether the scheduled task is enabled.
         self.enabled = enabled
+        # The instance ID of the assistant.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the timed scheduling.
         self.schedule_id = schedule_id
         self.security_token = security_token
 

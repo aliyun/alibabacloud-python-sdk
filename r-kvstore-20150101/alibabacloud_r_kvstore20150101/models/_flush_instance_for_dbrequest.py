@@ -14,11 +14,11 @@ class FlushInstanceForDBRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The index number of the database. Valid values: 0 to 255.
+        # The index number of the specified DB. Valid values: 0 to 255.
         # 
         # This parameter is required.
         self.db_index = db_index
-        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of the instance.
+        # The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

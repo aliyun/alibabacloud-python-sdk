@@ -15,7 +15,7 @@ class DescribeDbInstanceConnectivityRequest(DaraModel):
         security_token: str = None,
         src_ip: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -24,7 +24,7 @@ class DescribeDbInstanceConnectivityRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The IP address of the client.
+        # The source IP address of the user.
         # 
         # This parameter is required.
         self.src_ip = src_ip

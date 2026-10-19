@@ -19,9 +19,9 @@ class DescribeHistoryTasksStatRequest(DaraModel):
         to_exec_time: int = None,
         to_start_time: str = None,
     ):
-        # The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. Default value: 0. This value indicates that the minimum execution duration is unlimited.
+        # The minimum execution duration used to filter tasks whose execution duration is greater than this value. Unit: seconds. Default value: 0, which indicates no restriction.
         self.from_exec_time = from_exec_time
-        # The beginning of the time range to query. The time must be in UTC and formatted as *yyyy-MM-dd*t*hh:mm*Z.
+        # The beginning of the query time range. Specify the time in the <i>yyyy-mm-dd</i>t<i>hh:mm</i>z format (UTC).
         # 
         # This parameter is required.
         self.from_start_time = from_start_time
@@ -33,25 +33,23 @@ class DescribeHistoryTasksStatRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The task status. Valid values:
-        # 
-        # *   **Scheduled**
-        # *   **Running**
-        # *   **Succeed**
-        # *   **Failed**
-        # *   **Cancelling**
-        # *   **Canceled**
-        # *   **Waiting**
-        # 
-        # >  This parameter is empty by default, which indicates that tasks in all states are queried. Separate multiple states with commas (,).
+        # The task status. This parameter is used to filter tasks by status. Valid values:
+        # - **Scheduled**: Waiting to be executed.
+        # - **Running**: Running.
+        # - **Succeed**: Succeeded.
+        # - **Failed**: Failed.
+        # - **Cancelling**: Being stopped.
+        # - **Canceled**: Stopped.
+        # - **Waiting**: Waiting for the scheduled time.
+        # > By default, this parameter is empty, which indicates that tasks in all statuses are queried. To specify multiple statuses, separate them with commas (,).
         self.status = status
-        # The task IDs. You can specify this parameter to query specific tasks. This parameter is empty by default, which indicates that all tasks are queried. Separate multiple task IDs with commas (,). You can specify up to 30 task IDs.
+        # The task ID. This parameter is used to query a task with a known ID. By default, this parameter is empty, which indicates no restriction. To specify multiple task IDs, separate them with commas (,). A maximum of 30 task IDs are supported.
         self.task_id = task_id
-        # The type of the task.
+        # The task type.
         self.task_type = task_type
-        # Maximum task execution time. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. Default value: 0. This value indicates that the minimum execution duration is unlimited.
+        # The maximum execution duration used to filter tasks whose execution duration is not less than this value. Unit: seconds. Default value: 0, which indicates no restriction.
         self.to_exec_time = to_exec_time
-        # The end of the time range to query. The time must be in UTC and formatted as *yyyy-MM-dd*t*hh:mm*Z.
+        # The end of the query time range. Specify the time in the <i>yyyy-mm-dd</i>t<i>hh:mm</i>z format (UTC).
         # 
         # This parameter is required.
         self.to_start_time = to_start_time

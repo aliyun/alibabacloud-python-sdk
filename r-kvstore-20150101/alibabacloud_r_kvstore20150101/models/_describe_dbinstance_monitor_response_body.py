@@ -10,7 +10,7 @@ class DescribeDBInstanceMonitorResponseBody(DaraModel):
         interval: str = None,
         request_id: str = None,
     ):
-        # The collection frequency of the monitoring data. Unit: second.
+        # The collection granularity of monitoring data, in seconds.
         self.interval = interval
         # The request ID.
         self.request_id = request_id

@@ -18,38 +18,34 @@ class ModifyBackupPolicyRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The number of days for which you want to retain data backup files. Valid values: 7 to 730. Default value: 7.
+        # The number of days for which data backups are retained. Default value: 7. Valid values: 7 to 730.
         self.backup_retention_period = backup_retention_period
-        # Specifies whether to enable the data flashback feature for the instance. Valid values:
-        # 
-        # *   **1**: enables the data flashback feature. You must also enable append-only file (AOF) persistence by setting `appendonly` to `yes` in the parameter settings of the instance. Then, you can use the data flashback feature.
-        # *   **0** (default): disables the data flashback feature.
-        # 
-        # >  This parameter is available only for Tair (Enterprise Edition) DRAM-based and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/148479.html).
+        # Specifies whether to enable the data flashback feature. Valid values:
+        # * **1**: Enabled. Make sure that append-only file (AOF) persistence is enabled in the parameter settings of the instance (`appendonly` is set to `yes`). The data flashback feature is available only after AOF persistence is enabled.
+        # * **0**: Disabled. This is the default value.
+        # > This parameter is supported only by Tair (Enterprise Edition) memory-optimized and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/148479.html).
         self.enable_backup_log = enable_backup_log
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The days of the week to back up data. Valid values:
+        # The backup cycle. Valid values:
+        # * **Monday**
+        # * **Tuesday**
+        # * **Wednesday**
+        # * **Thursday**
+        # * **Friday**
+        # * **Saturday**
+        # * **Sunday**
         # 
-        # *   **Monday**
-        # *   **Tuesday**
-        # *   **Wednesday**
-        # *   **Thursday**
-        # *   **Friday**
-        # *   **Saturday**
-        # *   **Sunday**
-        # 
-        # > Separate multiple options with commas (,).
+        # > You can specify multiple values. Separate them with commas (,).
         # 
         # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
-        # The time range to back up data. Specify the time in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
-        # 
-        # > The beginning and end of the time range must be on the hour. The duration must be an hour.
+        # The backup time. Specify the time in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
+        # > The time must be on the hour, and the interval must be 1 hour.
         # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
