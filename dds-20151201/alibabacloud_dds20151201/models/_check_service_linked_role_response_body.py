@@ -12,7 +12,7 @@ class CheckServiceLinkedRoleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether an SLR is created.
+        # Indicates whether the service-linked role [AliyunServiceRoleForMongoDB](https://help.aliyun.com/document_detail/384051.html) has been created.
         self.service_linked_role_exists = service_linked_role_exists
 
     def validate(self):

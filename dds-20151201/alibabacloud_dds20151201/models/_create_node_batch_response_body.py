@@ -11,7 +11,7 @@ class CreateNodeBatchResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the added mongos or shard node.
+        # The ID of the added Mongos or shard node.
         self.node_id = node_id
         # The ID of the order.
         self.order_id = order_id

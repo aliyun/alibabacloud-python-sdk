@@ -23,13 +23,11 @@ class DescribeUserEncryptionKeyListRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role. Format: `acs:ram::$accountID:role/$roleName`. The default value is `acs:ram::$accountID:role/aliyunrdsinstanceencryptiondefaultrole`.
-        # 
-        # > - `$accountID`: The ID of your Alibaba Cloud account. To view the ID, log on to the Alibaba Cloud Management Console, move the pointer over your profile picture in the upper-right corner, and then click Security Settings.
-        # >
-        # > - `$roleName`: The name of the RAM role. To view the role name, log on to the RAM console. In the navigation pane on the left, click RAM Role Management. Find the role name in the RAM Role Name list.
+        # The Alibaba Cloud Resource Name (ARN) of the specified role. Format: `acs:ram::$accountID:role/$roleName `. Default value: `acs:ram::$accountID:role/aliyunrdsinstanceencryptiondefaultrole`.
+        # > - `$accountID`: the Alibaba Cloud account ID. You can log on to the Alibaba Cloud Management Console, move the mouse over the profile picture in the upper-right corner, and click Security Settings to view it.
+        # > - `$roleName`: the name of the RAM role. You can log on to the Resource Access Management (RAM) console, click RAM Roles in the left-side navigation pane, and view the name in the RAM role name list.
         self.role_arn = role_arn
-        # The ID of the destination region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query available regions.
+        # The target zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query available zones.
         self.target_region_id = target_region_id
 
     def validate(self):

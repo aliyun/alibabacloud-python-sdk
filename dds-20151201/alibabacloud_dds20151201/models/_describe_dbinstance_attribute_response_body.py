@@ -14,7 +14,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.dbinstances = dbinstances
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -101,6 +101,10 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
         dbinstance_type: str = None,
         destroy_time: str = None,
         disaster_recovery_info: str = None,
+        ebs_bandwidth: int = None,
+        ebs_iops: int = None,
+        ecs_bandwidth: int = None,
+        ecs_iops: int = None,
         encrypted: bool = None,
         encryption_key: str = None,
         engine: str = None,
@@ -161,6 +165,10 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
         self.dbinstance_type = dbinstance_type
         self.destroy_time = destroy_time
         self.disaster_recovery_info = disaster_recovery_info
+        self.ebs_bandwidth = ebs_bandwidth
+        self.ebs_iops = ebs_iops
+        self.ecs_bandwidth = ecs_bandwidth
+        self.ecs_iops = ecs_iops
         self.encrypted = encrypted
         self.encryption_key = encryption_key
         self.engine = engine
@@ -275,6 +283,18 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
 
         if self.disaster_recovery_info is not None:
             result['DisasterRecoveryInfo'] = self.disaster_recovery_info
+
+        if self.ebs_bandwidth is not None:
+            result['EbsBandwidth'] = self.ebs_bandwidth
+
+        if self.ebs_iops is not None:
+            result['EbsIOPS'] = self.ebs_iops
+
+        if self.ecs_bandwidth is not None:
+            result['EcsBandwidth'] = self.ecs_bandwidth
+
+        if self.ecs_iops is not None:
+            result['EcsIOPS'] = self.ecs_iops
 
         if self.encrypted is not None:
             result['Encrypted'] = self.encrypted
@@ -457,6 +477,18 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(DaraModel):
 
         if m.get('DisasterRecoveryInfo') is not None:
             self.disaster_recovery_info = m.get('DisasterRecoveryInfo')
+
+        if m.get('EbsBandwidth') is not None:
+            self.ebs_bandwidth = m.get('EbsBandwidth')
+
+        if m.get('EbsIOPS') is not None:
+            self.ebs_iops = m.get('EbsIOPS')
+
+        if m.get('EcsBandwidth') is not None:
+            self.ecs_bandwidth = m.get('EcsBandwidth')
+
+        if m.get('EcsIOPS') is not None:
+            self.ecs_iops = m.get('EcsIOPS')
 
         if m.get('Encrypted') is not None:
             self.encrypted = m.get('Encrypted')
@@ -792,6 +824,10 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         self,
         connect_string: str = None,
         current_kernel_version: str = None,
+        ebs_bandwidth: int = None,
+        ebs_iops: int = None,
+        ecs_bandwidth: int = None,
+        ecs_iops: int = None,
         lock_mode: str = None,
         max_connections: int = None,
         max_disk_mbps: str = None,
@@ -807,6 +843,10 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
     ):
         self.connect_string = connect_string
         self.current_kernel_version = current_kernel_version
+        self.ebs_bandwidth = ebs_bandwidth
+        self.ebs_iops = ebs_iops
+        self.ecs_bandwidth = ecs_bandwidth
+        self.ecs_iops = ecs_iops
         self.lock_mode = lock_mode
         self.max_connections = max_connections
         self.max_disk_mbps = max_disk_mbps
@@ -833,6 +873,18 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
 
         if self.current_kernel_version is not None:
             result['CurrentKernelVersion'] = self.current_kernel_version
+
+        if self.ebs_bandwidth is not None:
+            result['EbsBandwidth'] = self.ebs_bandwidth
+
+        if self.ebs_iops is not None:
+            result['EbsIOPS'] = self.ebs_iops
+
+        if self.ecs_bandwidth is not None:
+            result['EcsBandwidth'] = self.ecs_bandwidth
+
+        if self.ecs_iops is not None:
+            result['EcsIOPS'] = self.ecs_iops
 
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
@@ -879,6 +931,18 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
 
         if m.get('CurrentKernelVersion') is not None:
             self.current_kernel_version = m.get('CurrentKernelVersion')
+
+        if m.get('EbsBandwidth') is not None:
+            self.ebs_bandwidth = m.get('EbsBandwidth')
+
+        if m.get('EbsIOPS') is not None:
+            self.ebs_iops = m.get('EbsIOPS')
+
+        if m.get('EcsBandwidth') is not None:
+            self.ecs_bandwidth = m.get('EcsBandwidth')
+
+        if m.get('EcsIOPS') is not None:
+            self.ecs_iops = m.get('EcsIOPS')
 
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')

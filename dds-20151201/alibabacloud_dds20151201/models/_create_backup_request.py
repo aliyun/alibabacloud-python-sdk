@@ -15,25 +15,19 @@ class CreateBackupRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The backup method. Valid values:
+        # The backup method of the instance. Valid values:
+        # - **Snapshot**: snapshot backup
+        # - **Logical**: logical backup
+        # - **Physical**: physical backup (default)
         # 
-        # - **Snapshot**: A snapshot backup.
-        # 
-        # - **Logical**: A logical backup.
-        # 
-        # - **Physical** (default): A physical backup.
-        # 
-        # > * Instances with cloud disks support only snapshot backups.
-        # >
-        # > * This parameter applies only to replica set and sharded cluster instances. This parameter is not required for standalone instances, which use snapshot backups.
+        # > - Cloud disk instances support only snapshot backup.
+        # > - Only replica set and sharded cluster instances support selecting the backup method. You do not need to specify this parameter for standalone instances. The backup method is fixed to snapshot backup.
         self.backup_method = backup_method
-        # The backup retention period in days. This parameter applies only to replica set and sharded cluster instances that use cloud disks.
+        # The retention period of the backup. This parameter is applicable only to replica set and sharded cluster instances with cloud disks.
         # 
-        # > If you do not specify this parameter, the retention period from the default backup policy is used. You can set this parameter to one of the following values:
-        # >
-        # > - A value from 7 to 730
-        # >
-        # > - -1 (permanent retention)
+        # > If you do not specify this parameter, the default backup policy applies. Valid values: 
+        # > - 7 to 730: 7 to 730 days
+        # > - -1: long-term retention
         self.backup_retention_period = backup_retention_period
         # The instance ID.
         # 

@@ -14,15 +14,15 @@ class AllocatePublicNetworkAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the instance
+        # The instance ID.
         # 
         # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of the mongos, shard, or Configserver node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the ID of the mongos, shard, or Configserver node.
+        # Instance ID of the Mongos, shard, or ConfigServer node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query instance ID of the Mongos, shard, or ConfigServer node.
         # 
-        # > This parameter is required only when you specify the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+        # > This parameter is required if **DBInstanceId** is set to instance ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id

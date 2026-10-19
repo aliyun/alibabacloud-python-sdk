@@ -11,6 +11,7 @@ class ResetAccountPasswordRequest(DaraModel):
         account_password: str = None,
         character_type: str = None,
         dbinstance_id: str = None,
+        dbname: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -38,6 +39,8 @@ class ResetAccountPasswordRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # 账号所在库（账号建在/操作于哪个库），缺省 admin；规则：长度1~63，禁 /、\、.、空格、"、$，禁 local
+        self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -62,6 +65,9 @@ class ResetAccountPasswordRequest(DaraModel):
 
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -90,6 +96,9 @@ class ResetAccountPasswordRequest(DaraModel):
 
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

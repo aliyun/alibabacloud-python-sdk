@@ -12,6 +12,7 @@ class RestartDBInstanceRequest(DaraModel):
         node_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        parallel_restart_mongos: bool = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         switch_mode: str = None,
@@ -20,20 +21,20 @@ class RestartDBInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of a shard or Mongos node in a sharded cluster instance.
+        # The ID of the shard or mongos node in the sharded cluster instance.
         # 
-        # > If you do not specify this parameter for a sharded cluster instance, the entire instance is restarted.
+        # > If you do not specify this parameter for a sharded cluster instance, the entire sharded cluster instance is restarted.
         self.node_id = node_id
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # Specifies whether to restart mongos nodes in parallel. This parameter takes effect only when you restart multiple mongos nodes at a time.
+        self.parallel_restart_mongos = parallel_restart_mongos
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The time to restart the instance. Valid values:
-        # 
-        # - 0: The instance is restarted immediately.
-        # 
-        # - 1: The instance is restarted within the maintenance window.
+        # The time when the instance is restarted. Valid values:
+        # - 0: Immediately.
+        # - 1: Within the O&M window.
         self.switch_mode = switch_mode
 
     def validate(self):
@@ -58,6 +59,9 @@ class RestartDBInstanceRequest(DaraModel):
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.parallel_restart_mongos is not None:
+            result['ParallelRestartMongos'] = self.parallel_restart_mongos
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -86,6 +90,9 @@ class RestartDBInstanceRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('ParallelRestartMongos') is not None:
+            self.parallel_restart_mongos = m.get('ParallelRestartMongos')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

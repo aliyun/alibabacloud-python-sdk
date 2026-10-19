@@ -15,25 +15,22 @@ class AllocateDBInstanceSrvNetworkAddressRequest(DaraModel):
         resource_owner_id: int = None,
         srv_connection_type: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of a mongos or shard node in a sharded cluster instance.
+        # The ID of the Mongos or shard node in a sharded cluster instance.
         # 
-        # > This parameter is not currently required.
+        # > You do not need to specify this parameter.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of SRV connection string to enable.
-        # 
-        # - `vpc`: SRV connection string for the VPC.
-        # 
-        # - `public`: Public SRV connection string.
-        # 
-        # > The default is the VPC connection string.
+        # The type of the SRV address to apply for. Valid values:
+        # - **vpc**: VPC SRV address.
+        # - **public**: Public SRV address.
+        # > The default is the private SRV address.
         self.srv_connection_type = srv_connection_type
 
     def validate(self):

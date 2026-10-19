@@ -19,12 +19,10 @@ class DescribeBackupsResponseBody(DaraModel):
         self.backups = backups
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # - **30** (Default)
-        # 
+        # - **30** (default)
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The request ID.

@@ -14,7 +14,7 @@ class CheckCloudResourceAuthorizedRequest(DaraModel):
         resource_owner_id: int = None,
         target_region_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -22,7 +22,7 @@ class CheckCloudResourceAuthorizedRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the region ID of the instance.
+        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.target_region_id = target_region_id

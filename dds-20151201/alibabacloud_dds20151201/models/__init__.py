@@ -80,6 +80,12 @@ from ._describe_active_operation_task_type_response import DescribeActiveOperati
 from ._describe_active_operation_tasks_request import DescribeActiveOperationTasksRequest
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBody
 from ._describe_active_operation_tasks_response import DescribeActiveOperationTasksResponse
+from ._describe_advanced_backup_policy_request import DescribeAdvancedBackupPolicyRequest
+from ._describe_advanced_backup_policy_response_body import DescribeAdvancedBackupPolicyResponseBody
+from ._describe_advanced_backup_policy_response import DescribeAdvancedBackupPolicyResponse
+from ._describe_advanced_backup_status_request import DescribeAdvancedBackupStatusRequest
+from ._describe_advanced_backup_status_response_body import DescribeAdvancedBackupStatusResponseBody
+from ._describe_advanced_backup_status_response import DescribeAdvancedBackupStatusResponse
 from ._describe_audit_log_filter_request import DescribeAuditLogFilterRequest
 from ._describe_audit_log_filter_response_body import DescribeAuditLogFilterResponseBody
 from ._describe_audit_log_filter_response import DescribeAuditLogFilterResponse
@@ -266,6 +272,13 @@ from ._modify_active_operation_maintenance_config_response import ModifyActiveOp
 from ._modify_active_operation_tasks_request import ModifyActiveOperationTasksRequest
 from ._modify_active_operation_tasks_response_body import ModifyActiveOperationTasksResponseBody
 from ._modify_active_operation_tasks_response import ModifyActiveOperationTasksResponse
+from ._modify_advanced_backup_policy_request import ModifyAdvancedBackupPolicyRequest
+from ._modify_advanced_backup_policy_shrink_request import ModifyAdvancedBackupPolicyShrinkRequest
+from ._modify_advanced_backup_policy_response_body import ModifyAdvancedBackupPolicyResponseBody
+from ._modify_advanced_backup_policy_response import ModifyAdvancedBackupPolicyResponse
+from ._modify_advanced_backup_status_request import ModifyAdvancedBackupStatusRequest
+from ._modify_advanced_backup_status_response_body import ModifyAdvancedBackupStatusResponseBody
+from ._modify_advanced_backup_status_response import ModifyAdvancedBackupStatusResponse
 from ._modify_audit_log_filter_request import ModifyAuditLogFilterRequest
 from ._modify_audit_log_filter_response_body import ModifyAuditLogFilterResponseBody
 from ._modify_audit_log_filter_response import ModifyAuditLogFilterResponse
@@ -395,12 +408,15 @@ from ._upgrade_dbinstance_engine_version_response import UpgradeDBInstanceEngine
 from ._upgrade_dbinstance_kernel_version_request import UpgradeDBInstanceKernelVersionRequest
 from ._upgrade_dbinstance_kernel_version_response_body import UpgradeDBInstanceKernelVersionResponseBody
 from ._upgrade_dbinstance_kernel_version_response import UpgradeDBInstanceKernelVersionResponse
+from ._create_account_request import CreateAccountRequestRoles
 from ._create_dbinstance_request import CreateDBInstanceRequestTag
 from ._create_global_security_ipgroup_response_body import CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
 from ._create_sharding_dbinstance_request import CreateShardingDBInstanceRequestConfigServer
 from ._create_sharding_dbinstance_request import CreateShardingDBInstanceRequestMongos
 from ._create_sharding_dbinstance_request import CreateShardingDBInstanceRequestReplicaSet
 from ._create_sharding_dbinstance_request import CreateShardingDBInstanceRequestTag
+from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountsAccountRolesRole
+from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountsAccountRoles
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountsAccount
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccounts
 from ._describe_active_operation_maintenance_config_response_body import DescribeActiveOperationMaintenanceConfigResponseBodyConfig
@@ -408,6 +424,8 @@ from ._describe_active_operation_task_response_body import DescribeActiveOperati
 from ._describe_active_operation_task_region_response_body import DescribeActiveOperationTaskRegionResponseBodyRegionList
 from ._describe_active_operation_task_type_response_body import DescribeActiveOperationTaskTypeResponseBodyTypeList
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBodyItems
+from ._describe_advanced_backup_policy_response_body import DescribeAdvancedBackupPolicyResponseBodyAdvancedBackupDataPolicies
+from ._describe_advanced_backup_policy_response_body import DescribeAdvancedBackupPolicyResponseBodyAdvancedBackupLogPolicies
 from ._describe_audit_records_response_body import DescribeAuditRecordsResponseBodyItemsSQLRecord
 from ._describe_audit_records_response_body import DescribeAuditRecordsResponseBodyItems
 from ._describe_availability_zones_response_body import DescribeAvailabilityZonesResponseBodyAvailableZones
@@ -561,6 +579,8 @@ from ._describe_vpcs_for_mongo_dbresponse_body import DescribeVpcsForMongoDBResp
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._modify_advanced_backup_policy_request import ModifyAdvancedBackupPolicyRequestAdvancedBackupDataPolicies
+from ._modify_advanced_backup_policy_request import ModifyAdvancedBackupPolicyRequestAdvancedBackupLogPolicies
 from ._modify_global_security_ipgroup_name_response_body import ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup
 from ._tag_resources_request import TagResourcesRequestTag
 
@@ -643,6 +663,12 @@ __all__ = [
     DescribeActiveOperationTasksRequest,
     DescribeActiveOperationTasksResponseBody,
     DescribeActiveOperationTasksResponse,
+    DescribeAdvancedBackupPolicyRequest,
+    DescribeAdvancedBackupPolicyResponseBody,
+    DescribeAdvancedBackupPolicyResponse,
+    DescribeAdvancedBackupStatusRequest,
+    DescribeAdvancedBackupStatusResponseBody,
+    DescribeAdvancedBackupStatusResponse,
     DescribeAuditLogFilterRequest,
     DescribeAuditLogFilterResponseBody,
     DescribeAuditLogFilterResponse,
@@ -829,6 +855,13 @@ __all__ = [
     ModifyActiveOperationTasksRequest,
     ModifyActiveOperationTasksResponseBody,
     ModifyActiveOperationTasksResponse,
+    ModifyAdvancedBackupPolicyRequest,
+    ModifyAdvancedBackupPolicyShrinkRequest,
+    ModifyAdvancedBackupPolicyResponseBody,
+    ModifyAdvancedBackupPolicyResponse,
+    ModifyAdvancedBackupStatusRequest,
+    ModifyAdvancedBackupStatusResponseBody,
+    ModifyAdvancedBackupStatusResponse,
     ModifyAuditLogFilterRequest,
     ModifyAuditLogFilterResponseBody,
     ModifyAuditLogFilterResponse,
@@ -958,12 +991,15 @@ __all__ = [
     UpgradeDBInstanceKernelVersionRequest,
     UpgradeDBInstanceKernelVersionResponseBody,
     UpgradeDBInstanceKernelVersionResponse,
+    CreateAccountRequestRoles,
     CreateDBInstanceRequestTag,
     CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,
     CreateShardingDBInstanceRequestConfigServer,
     CreateShardingDBInstanceRequestMongos,
     CreateShardingDBInstanceRequestReplicaSet,
     CreateShardingDBInstanceRequestTag,
+    DescribeAccountsResponseBodyAccountsAccountRolesRole,
+    DescribeAccountsResponseBodyAccountsAccountRoles,
     DescribeAccountsResponseBodyAccountsAccount,
     DescribeAccountsResponseBodyAccounts,
     DescribeActiveOperationMaintenanceConfigResponseBodyConfig,
@@ -971,6 +1007,8 @@ __all__ = [
     DescribeActiveOperationTaskRegionResponseBodyRegionList,
     DescribeActiveOperationTaskTypeResponseBodyTypeList,
     DescribeActiveOperationTasksResponseBodyItems,
+    DescribeAdvancedBackupPolicyResponseBodyAdvancedBackupDataPolicies,
+    DescribeAdvancedBackupPolicyResponseBodyAdvancedBackupLogPolicies,
     DescribeAuditRecordsResponseBodyItemsSQLRecord,
     DescribeAuditRecordsResponseBodyItems,
     DescribeAvailabilityZonesResponseBodyAvailableZones,
@@ -1124,6 +1162,8 @@ __all__ = [
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
+    ModifyAdvancedBackupPolicyRequestAdvancedBackupDataPolicies,
+    ModifyAdvancedBackupPolicyRequestAdvancedBackupLogPolicies,
     ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup,
     TagResourcesRequestTag
 ]

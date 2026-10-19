@@ -11,7 +11,7 @@ class ModifyDBInstanceConnectionStringResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.modified_connection_string = modified_connection_string
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

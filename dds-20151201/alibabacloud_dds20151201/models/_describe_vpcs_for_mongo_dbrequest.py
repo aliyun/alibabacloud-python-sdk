@@ -19,9 +19,9 @@ class DescribeVpcsForMongoDBRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be an integer greater than 0. The default value is **1**.
+        # The page number. Valid values: an integer greater than 0 and up to the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. The value must be an integer greater than 0. The default value is **50**.
+        # The number of entries per page. Valid values: an integer greater than 0 and up to the maximum value of the Integer data type. Default value: **50**.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id

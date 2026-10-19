@@ -9,6 +9,7 @@ class DescribeDBInstanceEncryptionKeyRequest(DaraModel):
         self,
         dbinstance_id: str = None,
         encryption_key: str = None,
+        encryption_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -18,8 +19,12 @@ class DescribeDBInstanceEncryptionKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The custom key for the instance. You can call the [DescribeUserEncryptionKeyList](https://help.aliyun.com/document_detail/151729.html) operation to query the list of custom keys for an ApsaraDB for MongoDB instance.
+        # The custom encryption key of the instance. You can call [DescribeUserEncryptionKeyList](https://help.aliyun.com/document_detail/151729.html) to query the custom keys of the instance.
         self.encryption_key = encryption_key
+        # The key scenario to query. Valid values:
+        # - TDE: Queries transparent data encryption key information.
+        # - CloudDisk: Queries cloud disk encryption key information.
+        self.encryption_type = encryption_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -38,6 +43,9 @@ class DescribeDBInstanceEncryptionKeyRequest(DaraModel):
 
         if self.encryption_key is not None:
             result['EncryptionKey'] = self.encryption_key
+
+        if self.encryption_type is not None:
+            result['EncryptionType'] = self.encryption_type
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -60,6 +68,9 @@ class DescribeDBInstanceEncryptionKeyRequest(DaraModel):
 
         if m.get('EncryptionKey') is not None:
             self.encryption_key = m.get('EncryptionKey')
+
+        if m.get('EncryptionType') is not None:
+            self.encryption_type = m.get('EncryptionType')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

@@ -1,3 +1,35 @@
+2026-10-19 Version: 9.5.0
+- Support API DescribeAdvancedBackupPolicy.
+- Support API DescribeAdvancedBackupStatus.
+- Support API ModifyAdvancedBackupPolicy.
+- Support API ModifyAdvancedBackupStatus.
+- Update API CreateAccount: add request parameters AccountDescription.
+- Update API CreateAccount: add request parameters DBName.
+- Update API CreateAccount: add request parameters Roles.
+- Update API CreateAccount: add response parameters Body.TaskId.
+- Update API DescribeAccounts: add request parameters CharacterType.
+- Update API DescribeAccounts: add request parameters DBName.
+- Update API DescribeAccounts: add response parameters Body.Accounts.$.DBName.
+- Update API DescribeAccounts: add response parameters Body.Accounts.$.Roles.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.EbsBandwidth.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.EbsIOPS.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.EcsBandwidth.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.EcsIOPS.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.ShardList.$.EbsBandwidth.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.ShardList.$.EbsIOPS.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.ShardList.$.EcsBandwidth.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.ShardList.$.EcsIOPS.
+- Update API DescribeDBInstanceEncryptionKey: add request parameters EncryptionType.
+- Update API ModifyAccountDescription: add request parameters DBName.
+- Update API ModifyDBInstanceSpec: add request parameters AlignPrimaryZone.
+- Update API ModifyNodeSpec: add request parameters AlignPrimaryZone.
+- Update API ModifyNodeSpecBatch: add request parameters AlignPrimaryZone.
+- Update API ModifySecurityIps: add request parameters ClientToken.
+- Update API ModifySecurityIps: add request parameters DryRun.
+- Update API ResetAccountPassword: add request parameters DBName.
+- Update API RestartDBInstance: add request parameters ParallelRestartMongos.
+
+
 2026-08-10 Version: 9.4.2
 - Generated python 2015-12-01 for Dds.
 

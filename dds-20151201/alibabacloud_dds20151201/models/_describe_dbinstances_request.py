@@ -38,87 +38,64 @@ class DescribeDBInstancesRequest(DaraModel):
         zone_id: str = None,
     ):
         # The billing method of the instance. Valid values:
-        # 
         # - **PrePaid**: subscription.
-        # 
         # - **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
         # The endpoint of the node. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the endpoint.
         self.connection_domain = connection_domain
-        # The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+        # The instance specification. For more information about valid values, see [Instance specifications](https://help.aliyun.com/document_detail/57141.html).
         self.dbinstance_class = dbinstance_class
         # The instance name. The name must meet the following requirements:
         # 
         # - It must start with a Chinese character or a letter.
-        # 
         # - It can contain digits, Chinese characters, letters, underscores (_), and hyphens (-).
-        # 
         # - It must be 2 to 256 characters in length.
         self.dbinstance_description = dbinstance_description
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The instance status. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
+        # The instance status. For more details about valid values, see [Instance status table](https://help.aliyun.com/document_detail/63870.html).
         self.dbinstance_status = dbinstance_status
-        # The instance architecture. Valid values:
-        # 
+        # The instance type. Valid values: 
         # - **sharding**: sharded cluster instance.
-        # 
-        # - **replicate**: replica set or standalone instance. This is the default value.
-        # 
-        # <props="china">
-        # 
-        # - **serverless**: serverless instance.
+        # - **replicate**: default value. Replica set instance or single-node instance.
+        #  <props="china">
+        # - **serverless**: Serverless instance.
         self.dbinstance_type = dbinstance_type
-        # Filters instances by type. Valid values:
+        # Specifies whether to filter standard or test instances.
         # 
-        # 1. customized: standalone instances and DBFS instances.
-        # 
-        # 2. standard: standard instances, which include replica set and sharded cluster instances.
-        # 
-        # 3. default: all instances.
+        # 1. Single-node instances and DBFS instances: customized
+        # 2. Standard instances (replica set and sharded cluster): standard
+        # 3. Default (displays all instances): default
         self.dbnode_type = dbnode_type
         # The database engine. Set the value to **MongoDB**.
         self.engine = engine
         # The database engine version. Valid values:
-        # 
         # - **7.0**
-        # 
         # - **6.0**
-        # 
         # - **5.0**
-        # 
         # - **4.4**
-        # 
         # - **4.2**
-        # 
         # - **4.0**
-        # 
         # - **3.4**
         self.engine_version = engine_version
-        # The expiration time of the instance. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. This parameter is used to filter instances that expire on or before the specified time.
+        # The expiration time of the instance in the yyyy-MM-ddTHH:mm:ssZ format (UTC). This parameter is used to filter instances whose expiration time is earlier than or equal to the specified time.
         self.expire_time = expire_time
         # The expiration status of the instance. Valid values:
-        # 
-        # - **true**: The instance is expired.
-        # 
-        # - **false**: The instance is not expired.
+        # - **true**: expired.
+        # - **false**: not expired.
         self.expired = expired
         # The network type of the instance. Valid values:
-        # 
         # - **Classic**: classic network.
-        # 
-        # - **VPC**: virtual private cloud (VPC).
+        # - **VPC**: VPC.
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be greater than 0 and no greater than the maximum value of the integer data type. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # - **30** (default)
-        # 
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
@@ -126,16 +103,14 @@ class DescribeDBInstancesRequest(DaraModel):
         # The number of nodes in the replica set instance. Valid values:
         # 
         # - **3**
-        # 
         # - **5**
-        # 
         # - **7**
         self.replication_factor = replication_factor
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags of the instance.
+        # The tags.
         self.tag = tag
         # The vSwitch ID of the VPC.
         self.v_switch_id = v_switch_id
@@ -328,20 +303,16 @@ class DescribeDBInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. The value of N must be in the range of **1** to **20**.
+        # The tag key of the instance. Valid values of N: **1** to **20**.
         # 
         # - The tag key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        # 
         # - The tag key can be up to 64 characters in length.
-        # 
         # - The tag key cannot be an empty string.
         self.key = key
-        # The value of tag N. The value of N must be in the range of **1** to **20**.
+        # The tag value of the instance. Valid values of N: **1** to **20**.
         # 
-        # - The tag value cannot start with `aliyun`, `acs`:, `http://`, or `https://`.
-        # 
+        # - The tag value cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         # - The tag value can be up to 128 characters in length.
-        # 
         # - The tag value can be an empty string.
         self.value = value
 

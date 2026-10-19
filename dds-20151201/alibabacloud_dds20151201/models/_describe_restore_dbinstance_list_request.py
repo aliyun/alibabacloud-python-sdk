@@ -16,10 +16,10 @@ class DescribeRestoreDBInstanceListRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Find instances created after the specified time, formatted as *yyyy-MM-dd*T*HH:00:00*Z (UTC time).
+        # The start time used to query instances. Only instances created after this time are returned. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:00:00</i>Z format. The time must be in UTC.
         # 
-        # > - The time must be on the hour.
-        # >
+        # > 
+        # > - The time must be a time frame.
         # > - The time cannot be earlier than 7 days before the current time.
         # 
         # This parameter is required.
@@ -32,7 +32,7 @@ class DescribeRestoreDBInstanceListRequest(DaraModel):
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

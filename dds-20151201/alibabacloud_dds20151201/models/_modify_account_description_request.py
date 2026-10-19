@@ -11,6 +11,7 @@ class ModifyAccountDescriptionRequest(DaraModel):
         account_name: str = None,
         character_type: str = None,
         dbinstance_id: str = None,
+        dbname: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -42,6 +43,7 @@ class ModifyAccountDescriptionRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -66,6 +68,9 @@ class ModifyAccountDescriptionRequest(DaraModel):
 
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -94,6 +99,9 @@ class ModifyAccountDescriptionRequest(DaraModel):
 
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

@@ -20,47 +20,47 @@ class TransformInstanceChargeTypeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to enable automatic payment. Valid values:
+        # Specifies whether automatic payment is enabled for the order. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: enables automatic payment for the order.
+        # - **false**: requires manual payment for the order.
         # 
         # > Default value: **true**.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. Valid values:
+        # Specifies whether to enable auto-renewal upon expiration. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: enables auto-renewal.
+        # - **false**: disables auto-renewal.
         # 
         # > Default value: **false**.
         self.auto_renew = auto_renew
-        # The business information. This is an additional parameter.
+        # The additional parameter for business information.
         self.business_info = business_info
         # The billing method of the instance. Valid values:
-        # 
-        # - **PrePaid:** subscription.
-        # 
-        # - **PostPaid:** pay-as-you-go.
+        # - **PrePaid**: subscription.
+        # - **PostPaid**: pay-as-you-go.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+        # Specifies whether to use a coupon. Valid values:
+        # - **default** or **null** (default): uses a coupon.
+        # - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
         self.coupon_no = coupon_no
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9**\\*\\*\\*\\*, **12**, **24**, and **36**.
+        # The subscription duration. Valid values:
+        # 
+        # - If PricingCycle is set to Month: **1** to **9**.
+        # 
+        # - If PricingCycle is set to Year: **1**, **2**, **3**, and **5**.
         self.period = period
         # The unit of the subscription duration. Valid values:
-        # 
-        # - **Month**: month.
-        # 
-        # - **Year**: year.
+        # - **Month**: months.
+        # - **Year**: years.
         # 
         # Default value: Month.
         self.pricing_cycle = pricing_cycle

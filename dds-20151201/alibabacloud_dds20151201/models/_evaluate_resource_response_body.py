@@ -12,13 +12,11 @@ class EvaluateResourceResponseBody(DaraModel):
         engine_version: str = None,
         request_id: str = None,
     ):
-        # Indicates whether resources are available in the current region. Valid values:
-        # 
-        # - **1**: Resources are sufficient.
-        # 
-        # - **0**: Resources are insufficient.
+        # Indicates whether sufficient resources are available in the current region. Valid values:
+        # - **1**: Sufficient resources are available.
+        # - **0**: Insufficient resources are available.
         self.dbinstance_available = dbinstance_available
-        # The database engine. The value is fixed to MongoDB.
+        # The database engine. The value is fixed as MongoDB.
         self.engine = engine
         # The database engine version.
         self.engine_version = engine_version

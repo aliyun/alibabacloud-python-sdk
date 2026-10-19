@@ -16,15 +16,14 @@ class RestartNodeRequest(DaraModel):
         role_id: str = None,
         switch_mode: str = None,
     ):
-        # The instance ID.
-        # 
-        # > If the instance is a sharded cluster instance, also set the `NodeId` parameter.
+        # The instance ID. 
+        # > If the instance is a sharded cluster instance, you must also specify `NodeId`.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of the Mongos, shard, or Configserver node in the sharded cluster instance. Call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
+        # Instance ID of the Mongos node, Shard node, or ConfigServer node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query instance IDs of Mongos nodes, Shard nodes, or ConfigServer nodes.
         # 
-        # > This parameter is required if **DBInstanceId** is set to the ID of a sharded cluster instance.
+        # > This parameter is required when **DBInstanceId** is set to instance ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -32,19 +31,16 @@ class RestartNodeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The role ID of the node.
         # 
-        # 1. Call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/468469.html) operation to query the role ID of a node in a replica set instance.
-        # 
-        # 2. Call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/468472.html) operation to query the role ID of a node in a sharded cluster instance.
+        # 1.  You can call the [DescribeReplicaSetRole](https://help.aliyun.com/document_detail/468469.html) operation to query the node IDs of a replica set instance.
+        # 2.  You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/468472.html) operation to query the node IDs of a sharded cluster instance.
         # 
         # This parameter is required.
         self.role_id = role_id
-        # The time to execute the task. Valid values:
+        # The execution time. Valid values:
+        # * **0**: immediately. This is the default value.
+        # * **1**: during the maintenance window.
         # 
-        # - **0**: The task is executed immediately. This is the default value.
-        # 
-        # - **1**: The task is executed during the maintenance window.
-        # 
-        # > Call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
+        # > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
         self.switch_mode = switch_mode
 
     def validate(self):

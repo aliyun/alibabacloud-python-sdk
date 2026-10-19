@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyNodeSpecRequest(DaraModel):
     def __init__(
         self,
+        align_primary_zone: bool = None,
         auto_pay: bool = None,
         business_info: str = None,
         client_token: str = None,
@@ -29,57 +30,48 @@ class ModifyNodeSpecRequest(DaraModel):
         target_vswitch_id: str = None,
         target_zone_id: str = None,
     ):
+        # Specifies whether to automatically align the primary node to the primary zone after operations such as specification changes for multi-zone instances. If you choose not to align the node, one primary/secondary switchover (transient disconnection) is avoided. Default value: true.
+        self.align_primary_zone = align_primary_zone
         # Specifies whether to enable automatic payment. Valid values:
-        # 
-        # - **true** (default): Enables automatic payment. Make sure that your account has a sufficient balance.
-        # 
-        # - **false**: Disables automatic payment. You must manually pay for the order.
+        # - **true** (default): Automatic payment is enabled. Make sure that your account has sufficient balance.
+        # - **false**: Manual payment is enabled.
         self.auto_pay = auto_pay
-        # The business information. This is an additional parameter.
+        # The additional parameter that contains business information.
         self.business_info = business_info
-        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. Make sure that the value is unique across different requests and contains a maximum of 64 ASCII characters. The value cannot contain non-ASCII characters.
         self.client_token = client_token
         # Specifies whether to use a coupon. Valid values:
-        # 
-        # - **default** or **null** (default): A coupon is used.
-        # 
-        # - **youhuiquan_promotion_option_id_for_blank**: A coupon is not used.
+        # - **default** or **null** (default): Use a coupon.
+        # - **youhuiquan_promotion_option_id_for_blank**: Do not use a coupon.
         self.coupon_no = coupon_no
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The effective time of the configuration change. Valid values:
-        # 
-        # - **Immediately** (default): The change takes effect immediately.
-        # 
-        # - **MaintainTime**: The change takes effect during the O\\&M window of the instance.
+        # The effective period of the configuration change. Valid values: 
+        # - **Immediately** (default): The configuration change takes effect immediately.
+        # - **MaintainTime**: The configuration change takes effect within the maintenance window of the instance.
         self.effective_time = effective_time
         # The source of the request. Valid values:
-        # 
-        # - **OpenApi**: The request is from OpenAPI.
-        # 
-        # - **mongo_buy**: The request is from the console.
+        # - **OpenApi**: The request is sent from OpenAPI.
+        # - **mongo_buy**: The request is sent from the console.
         self.from_app = from_app
-        # The instance type of the shard or Mongos node. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+        # The specifications of the shard or mongos node. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/57141.html).
         self.node_class = node_class
-        # The ID of the shard or Mongos node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
+        # The ID of the shard or mongos node in the sharded cluster instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the node ID.
         # 
-        # > If you set this parameter to the ID of a shard node, you must also specify the **NodeStorage** parameter.
+        # > If the value is a shard node ID, you must also specify the **NodeStorage** parameter.
         # 
         # This parameter is required.
         self.node_id = node_id
-        # The storage space of the shard node. The step size is 10. Unit: GB.
+        # The storage space of the shard node. The step size is 10 GB.
         # 
-        # - SSD local disk: **10** to **2000**.
-        # 
-        # - ESSD PL1 disk: **20** to **16000**.
+        # - For local SSDs, valid values: **10** to **2000**.
+        # - For PL1 ESSDs, valid values: **20** to **16000**.
         self.node_storage = node_storage
         # The order type. Valid values:
-        # 
-        # - **UPGRADE**: upgrades the instance configuration.
-        # 
-        # - **DOWNGRADE**: downgrades the instance configuration.
+        # - **UPGRADE**: Upgrade.
+        # - **DOWNGRADE**: Downgrade.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -89,33 +81,20 @@ class ModifyNodeSpecRequest(DaraModel):
         self.readonly_replicas = readonly_replicas
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The time when the configuration change takes effect. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # > This parameter is deprecated. Use the EffectiveTime parameter instead.
+        # The time when the configuration change is executed. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
+        # > **[Deprecated]** This parameter is deprecated. Use the EffectiveTime parameter instead.
         self.switch_time = switch_time
-        # The hidden zone to which you want to migrate the instance.
-        # 
-        # >Notice: 
-        # 
-        # This parameter is applicable only to instances that use disks.
+        # The destination hidden zone for zone migration.
+        # >Notice: This parameter is supported only for cloud disk instances.</notice>
         self.target_hidden_zone_id = target_hidden_zone_id
-        # The secondary zone to which you want to migrate the instance.
-        # 
-        # >Notice: 
-        # 
-        # This parameter is applicable only to instances that use disks.
+        # The destination secondary zone for zone migration.
+        # >Notice: This parameter is supported only for cloud disk instances.</notice>
         self.target_secondary_zone_id = target_secondary_zone_id
-        # The ID of the vSwitch in the destination zone.
-        # 
-        # >Notice: 
-        # 
-        # This parameter is applicable only to instances that use disks.
+        # The ID of the destination vSwitch for zone migration.
+        # >Notice: This parameter is supported only for cloud disk instances.</notice>
         self.target_vswitch_id = target_vswitch_id
-        # The primary zone to which you want to migrate the instance.
-        # 
-        # >Notice: 
-        # 
-        # This parameter is applicable only to instances that use disks.
+        # The destination primary zone for zone migration.
+        # >Notice: This parameter is supported only for cloud disk instances.</notice>
         self.target_zone_id = target_zone_id
 
     def validate(self):
@@ -126,6 +105,9 @@ class ModifyNodeSpecRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.align_primary_zone is not None:
+            result['AlignPrimaryZone'] = self.align_primary_zone
+
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
 
@@ -193,6 +175,9 @@ class ModifyNodeSpecRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlignPrimaryZone') is not None:
+            self.align_primary_zone = m.get('AlignPrimaryZone')
+
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
 

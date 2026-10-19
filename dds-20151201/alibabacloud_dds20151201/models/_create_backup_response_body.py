@@ -11,13 +11,13 @@ class CreateBackupResponseBody(DaraModel):
         backup_job_id: str = None,
         request_id: str = None,
     ):
-        # The backup ID.
+        # The ID of the backup.
         # 
-        # > This parameter is deprecated. To obtain the backup ID, call the [DescribeBackups](https://help.aliyun.com/document_detail/468441.html) operation.
+        # > **[Deprecated]** This parameter will be deprecated soon. To obtain the backup ID, call the [DescribeBackups](https://help.aliyun.com/document_detail/468441.html) operation.
         self.backup_id = backup_id
-        # The backup job ID.
+        # The ID of the backup job.
         self.backup_job_id = backup_job_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -16,25 +16,23 @@ class DescribeParametersRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The role of the instance. Valid values:
+        # The role type of the instance. Valid values:
         # 
-        # - db: a shard node.
-        # 
-        # - cs: a Configserver node.
-        # 
-        # - mongos: a mongos node.
+        # - db: shard role
+        # - cs: config server role
+        # - mongos: mongos role
         self.character_type = character_type
         # The instance ID.
         # 
-        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If you specify the ID of a sharded cluster instance for this parameter, you must also specify the **NodeId** parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The parameter that is available in the future.
+        # The extended parameter.
         self.extra_param = extra_param
-        # The ID of the mongos or shard node in the specified sharded cluster instance.
+        # Instance ID of the mongos or shard node in the sharded cluster instance.
         # 
-        # > This parameter is valid when the **DBInstanceId** parameter is set to the ID of a sharded cluster instance.
+        # > This parameter is available only when the **DBInstanceId** parameter is set to instance ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id

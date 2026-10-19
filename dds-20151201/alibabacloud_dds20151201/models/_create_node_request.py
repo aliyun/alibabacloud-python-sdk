@@ -27,100 +27,74 @@ class CreateNodeRequest(DaraModel):
         search_storage: int = None,
         shard_direct: bool = None,
     ):
-        # The account name. The name must meet the following requirements:
+        # The username. Valid values:
         # 
-        # - Starts with a lowercase letter.
+        # - The username must start with a lowercase letter.
+        # - The username can contain lowercase letters, digits, and underscores (_).
+        # - The username must be 4 to 16 characters in length.
         # 
-        # - Consists of lowercase letters, digits, and underscores (_).
-        # 
-        # - Is 4 to 16 characters in length.
-        # 
-        # > * Keywords of ApsaraDB for MongoDB cannot be used as the account name.
-        # >
-        # > * The account has read-only permissions.
-        # >
-        # > * You must set the account name and password only when you enable a public endpoint for a shard node for the first time. These parameters are not required on subsequent requests.
+        # > - ApsaraDB for MongoDB does not support using keywords as usernames.
+        # > - The permissions of the account are fixed to read-only.
+        # > - When you apply for a direct connection endpoint for the shard node for the first time, you must set the username and password. You do not need to set them again for subsequent applications.
         self.account_name = account_name
-        # The password for the account. The password must meet the following requirements:
+        # The password of the account. Valid values:
+        # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - Special characters include !@#$%^&*()_+-=.
+        # - The password must be 8 to 32 characters in length.
         # 
-        # - Must contain characters from at least three of the following categories: uppercase letters, lowercase letters, digits, and special characters.
-        # 
-        # - Special characters include `!@#$%^&*()_+-=`.
-        # 
-        # - Is 8 to 32 characters in length.
-        # 
-        # > ApsaraDB for MongoDB does not support resetting the account password for shard nodes.
+        # > ApsaraDB for MongoDB does not support resetting the password of the account for the shard node.
         self.account_password = account_password
         # Specifies whether to enable automatic payment. Valid values:
+        # - **true**: enables automatic payment. This is the default value. Make sure that your account has sufficient balance.
+        # <props="china">- **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console, choose **Expenses** > **Expenses and Costs** in the upper-right corner, choose **Subscription Orders** > **My Orders** in the left-side navigation pane, and then pay for the order on the **Orders** tab.
+        # <props="intl">- **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console, choose **Expenses** > **Expenses and Costs** in the upper-right corner, click **Order Management** in the left-side navigation pane, and then pay for the order on the **Orders** page.
         # 
-        # - **true**: (Default) Enables automatic payment. Ensure that your account has a sufficient balance.
-        # 
-        # <props="china">
-        # 
-        # - **false**: Disables automatic payment. In this case, you must manually pay for the node. To do so, log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Billing** > **Billing Management**. In the left-side navigation pane, choose **Subscription Orders** > **My Orders**. On the **Product Orders** tab, find the order and complete the payment.
-        # 
-        # 
-        # 
-        # 
-        # <props="intl">
-        # 
-        # - **false**: Disables automatic payment. In this case, you must manually pay for the node. To do so, log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Billing** > **Billing Management**. In the left-side navigation pane, click **Order Management**. On the **Product Orders** page, find the order and complete the payment.
-        # 
-        # 
-        # 
-        # 
-        # > This parameter is required for subscription instances.
+        # > This parameter is required when the billing method is subscription.
         self.auto_pay = auto_pay
-        # Additional business information.
+        # The additional parameter that contains business information.
         self.business_info = business_info
-        # A client-generated token to ensure request idempotence. The token must be unique across requests, contain only ASCII characters, and not exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # Specifies whether to use a coupon. Valid values:
-        # 
-        # - **default** or **null**: (Default) An available coupon is automatically applied.
-        # 
-        # - **youhuiquan_promotion_option_id_for_blank**: No coupon is used.
+        # - **default** or **null**: uses a coupon. This is the default value.
+        # - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
         self.coupon_no = coupon_no
-        # The ID of the sharded cluster instance.
+        # The instance ID of the sharded cluster instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The instance type of the shard or mongos node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+        # The instance type of the shard node or mongos node. For more information about instance types, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
         # 
         # This parameter is required.
         self.node_class = node_class
-        # The storage space of the node. Unit: GB.
+        # The disk space of the node. Unit: GB.
         # 
-        # The valid values of this parameter vary based on the storage type of the instance. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+        # The valid values vary based on the storage type. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
         # 
-        # > This parameter is required when the node type is **shard**.
+        # > This parameter is required when the node type is **Shard**.
         self.node_storage = node_storage
         # The node type. Valid values:
-        # 
-        # - **shard**: A shard node.
-        # 
-        # - **mongos**: A mongos node.
+        # - **shard**: shard node.
+        # - **mongos**: mongos node.
         # 
         # This parameter is required.
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of read-only nodes in a shard node.
+        # The number of read-only nodes in the shard node.
         # 
-        # Valid values: **0** to **5**. The default value is **0**.
-        # 
-        # > This parameter is available only on the China site (aliyun.com).
+        # Valid values: **0** to **5**. Default value: **0**.
+        # > This parameter is supported only on the Alibaba Cloud China site.
         self.readonly_replicas = readonly_replicas
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.search_dbinstance_class = search_dbinstance_class
         self.search_node_count = search_node_count
         self.search_storage = search_storage
-        # Specifies whether to enable a public endpoint for the shard node. Valid values:
+        # Specifies whether to apply for a direct connection endpoint for the shard node. Valid values:
         # 
-        # - **true**: Enables a public endpoint for the shard node.
-        # 
-        # - **false**: (Default) Does not enable a public endpoint for the shard node.
+        # - **true**: applies for a direct connection endpoint for the shard node.
+        # - **false**: does not apply for a direct connection endpoint for the shard node. This is the default value.
         self.shard_direct = shard_direct
 
     def validate(self):

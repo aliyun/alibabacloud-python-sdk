@@ -8,18 +8,24 @@ class DescribeAccountsRequest(DaraModel):
     def __init__(
         self,
         account_name: str = None,
+        character_type: str = None,
         dbinstance_id: str = None,
+        dbname: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The name of the account. Set the value to **root**.
+        # The account name.
         self.account_name = account_name
+        # The account type.
+        self.character_type = character_type
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The database to which the account belongs.
+        self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -36,8 +42,14 @@ class DescribeAccountsRequest(DaraModel):
         if self.account_name is not None:
             result['AccountName'] = self.account_name
 
+        if self.character_type is not None:
+            result['CharacterType'] = self.character_type
+
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -58,8 +70,14 @@ class DescribeAccountsRequest(DaraModel):
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
 
+        if m.get('CharacterType') is not None:
+            self.character_type = m.get('CharacterType')
+
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

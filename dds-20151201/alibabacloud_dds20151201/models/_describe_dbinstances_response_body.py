@@ -19,11 +19,11 @@ class DescribeDBInstancesResponseBody(DaraModel):
         self.dbinstances = dbinstances
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of records per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The number of instances returned.
+        # The number of instances in the query result.
         self.total_count = total_count
 
     def validate(self):

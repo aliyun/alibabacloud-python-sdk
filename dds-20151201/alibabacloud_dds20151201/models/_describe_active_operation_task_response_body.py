@@ -18,13 +18,13 @@ class DescribeActiveOperationTaskResponseBody(DaraModel):
     ):
         # The list of tasks.
         self.items = items
-        # The page number of the returned page.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned per page. Default value: 30.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -97,53 +97,43 @@ class DescribeActiveOperationTaskResponseBodyItems(DaraModel):
         task_params: str = None,
         task_type: str = None,
     ):
-        # The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the O&M task was created. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         self.created_time = created_time
-        # The database type of the instance.
+        # The database type.
         self.db_type = db_type
-        # The deadline before which the time to preform the task can be modified. The time in UTC is displayed in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The latest time within the adjustable range for the execution time of the O&M task. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         self.deadline = deadline
         # The task ID.
         self.id = id
         # The instance ID.
         self.ins_name = ins_name
-        # The time when the task was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the O&M task was modified. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         self.modified_time = modified_time
-        # The required preparation period between the task start time and the switchover time. The time is displayed in the HH:mm:ss format.
+        # The preparation time required between the start time and the switchover time of the O&M task. The format is HH:mm:ss.
         self.prepare_interval = prepare_interval
-        # The region of the instance.
+        # The region ID.
         self.region = region
-        # The result information.
+        # The execution result information.
         self.result_info = result_info
-        # The time when the task was preformed. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The execution time of the O&M task. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         self.start_time = start_time
-        # The state of the task. Valid values:
-        # 
-        # - 2: The task is waiting for users to specify a switchover time.
-        # 
-        # - 3: The task is waiting to be performed.
-        # 
-        # - 4: The task is being performed. If the task is in this state, the ModifyActiveOperationTask operation cannot be called to modify the scheduled switchover time.
-        # 
-        # - 5: The task is performed.
-        # 
-        # - 6: The task fails.
-        # 
-        # - 7: The task is canceled.
+        # The task status. Valid values:
+        # - 2: Waiting for the user to specify a time.
+        # - 3: Waiting to be processed.
+        # - 4: Processing. After the task enters this state, the scheduled switchover time cannot be modified.
+        # - 5: Succeeded.
+        # - 6: Failed.
+        # - 7: Canceled.
         self.status = status
-        # The time when the system performs the switchover operation. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The switchover time of the O&M task. The format is `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
         self.switch_time = switch_time
         # The task parameters.
         self.task_params = task_params
-        # The type of the task. Valid values:
+        # The task type. Valid values:
         # 
-        # - rds_apsaradb_ha: master-replica switchover
-        # 
-        # - rds_apsaradb_transfer: instance migration
-        # 
-        # - rds_apsaradb_upgrade: minor version update
-        # 
-        # - all: all types
+        # - rds_apsaradb_ha: primary/secondary node switch.
+        # - rds_apsaradb_transfer: instance migration.
+        # - rds_apsaradb_upgrade: minor version update.
         self.task_type = task_type
 
     def validate(self):

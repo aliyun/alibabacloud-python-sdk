@@ -11,12 +11,11 @@ class CheckRecoveryConditionResponseBody(DaraModel):
         is_valid: bool = None,
         request_id: str = None,
     ):
-        # The instance ID
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # Indicates whether the data of the instance can be restored. Valid values:
-        # 
-        # *   **true**: The data of the instance can be restored.
-        # *   **false**: The data of the instance cannot be restored.
+        # Indicates whether the restoration conditions are met. Valid values:
+        # - **true**: The conditions are met.
+        # - **false**: The conditions are not met.
         self.is_valid = is_valid
         # The request ID.
         self.request_id = request_id

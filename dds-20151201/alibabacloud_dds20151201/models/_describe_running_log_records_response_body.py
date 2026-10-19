@@ -17,7 +17,7 @@ class DescribeRunningLogRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The database engine.
+        # The engine type of the current database.
         self.engine = engine
         self.items = items
         # The page number.

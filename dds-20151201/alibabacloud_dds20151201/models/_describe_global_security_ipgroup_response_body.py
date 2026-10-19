@@ -13,9 +13,9 @@ class DescribeGlobalSecurityIPGroupResponseBody(DaraModel):
         global_security_ipgroup: List[main_models.DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup] = None,
         request_id: str = None,
     ):
-        # The global IP whitelist templates.
+        # The list of global IP whitelist templates.
         self.global_security_ipgroup = global_security_ipgroup
-        # The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+        # The unique ID of the request. If you encounter any issues, provide this request ID to the support team for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -61,17 +61,17 @@ class DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(DaraModel):
         global_security_group_id: str = None,
         region_id: str = None,
     ):
-        # The instances associated with the global whitelist template.
+        # The list of instances bound to the global IP whitelist template.
         self.dbinstances = dbinstances
         # The IP addresses in the whitelist template.
         # 
-        # > Separate multiple IP addresses with commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP address whitelists.
+        # > Separate multiple IP addresses with commas (,). A maximum of 1,000 IP addresses or CIDR blocks can be added to all IP whitelists in total.
         self.gip_list = gip_list
         # The name of the IP whitelist template.
         self.global_ig_name = global_ig_name
         # The ID of the IP whitelist template.
         self.global_security_group_id = global_security_group_id
-        # The region ID of the instance.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

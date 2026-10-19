@@ -19,11 +19,11 @@ class DescribeRestoreDBInstanceListResponseBody(DaraModel):
         self.dbinstances = dbinstances
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The number of instances in the query results.
+        # The total number of instances returned in the query result.
         self.total_count = total_count
 
     def validate(self):

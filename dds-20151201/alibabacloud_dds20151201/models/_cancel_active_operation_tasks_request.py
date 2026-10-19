@@ -14,7 +14,7 @@ class CancelActiveOperationTasksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The IDs of the O\\&M events to cancel. Separate multiple IDs with commas (,).
+        # The IDs of the O&M events to be canceled in batches. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.ids = ids

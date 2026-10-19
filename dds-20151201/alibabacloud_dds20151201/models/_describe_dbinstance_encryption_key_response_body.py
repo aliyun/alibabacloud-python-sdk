@@ -19,25 +19,23 @@ class DescribeDBInstanceEncryptionKeyResponseBody(DaraModel):
     ):
         # The UID of the key creator.
         self.creator = creator
-        # The scheduled time when the key for the instance will be deleted. If the parameter is left empty, the key will not be deleted.
+        # The scheduled deletion time of the instance key. If this value is empty, the key is not automatically deleted.
         self.delete_date = delete_date
-        # The description of the key for the instance.
+        # The description of the instance key.
         self.description = description
-        # The key for the instance.
+        # The instance key.
         self.encryption_key = encryption_key
-        # Indicates whether the key for the instance is enabled. Valid values:
-        # 
-        # - **Enabled**
-        # 
-        # - **Disabled**
+        # The status of the instance key. Valid values:
+        # - **Enabled**: The instance key is available.
+        # - **Disabled**: The instance key is unavailable.
         self.encryption_key_status = encryption_key_status
-        # The purpose of the key for the instance.
+        # The purpose of the instance key.
         self.key_usage = key_usage
-        # The expiration time of the key for the instance. The time is displayed in UTC. If the parameter is left empty, the key for the instance will not expire.
+        # The expiration time of the key (UTC). If this value is empty, the key does not expire.
         self.material_expire_time = material_expire_time
-        # The source of the key for the instance.
+        # The source of the instance key.
         self.origin = origin
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

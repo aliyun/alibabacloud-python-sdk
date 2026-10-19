@@ -18,7 +18,7 @@ class DescribeVpcsForMongoDBResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -94,25 +94,25 @@ class DescribeVpcsForMongoDBResponseBodyVpcs(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # This parameter is deprecated. No value is returned.
+        # **[Deprecated]** This parameter is deprecated and no value is returned.
         self.ali_uid = ali_uid
-        # This parameter is deprecated. No value is returned.
+        # **[Deprecated]** This parameter is deprecated and no value is returned.
         self.bid = bid
         # The CIDR block of the VPC.
         self.cidr_block = cidr_block
-        # This parameter is deprecated. No value is returned.
+        # **[Deprecated]** This parameter is deprecated and no value is returned.
         self.gmt_create = gmt_create
-        # This parameter is deprecated. No value is returned.
+        # **[Deprecated]** This parameter is deprecated and no value is returned.
         self.gmt_modified = gmt_modified
-        # Indicates whether the VPC is the default one. Valid values:
+        # Indicates whether the VPC is the default VPC. Valid values:
         # 
-        # - **true**: The VPC is the default one.
+        # - **true**: Yes.
         # 
-        # - **false**: The VPC is not the default one.
+        # - **false**: No.
         self.is_default = is_default
         # The region ID.
         self.region_no = region_no
-        # The status of the VPC. A value of **Available** indicates that the VPC is active.
+        # The status of the VPC. **Available** indicates that the VPC is available.
         self.status = status
         # The list of vSwitches.
         self.v_switchs = v_switchs
@@ -223,19 +223,18 @@ class DescribeVpcsForMongoDBResponseBodyVpcsVSwitchs(DaraModel):
     ):
         # The CIDR block of the vSwitch.
         self.cidr_block = cidr_block
-        # This parameter is deprecated. No value is returned.
+        # **[Deprecated]** This parameter is deprecated and no value is returned.
         self.gmt_create = gmt_create
-        # This parameter is deprecated. No value is returned.
+        # **[Deprecated]** This parameter is deprecated and no value is returned.
         self.gmt_modified = gmt_modified
         # Indicates whether the vSwitch is the default vSwitch. Valid values:
         # 
         # - **true**: The vSwitch is the default vSwitch.
-        # 
         # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
-        # The zone to which the vSwitch belongs.
+        # The active zone to which the vSwitch belongs.
         self.iz_no = iz_no
-        # The status of the vSwitch. A value of **Available** indicates that the vSwitch is active.
+        # The status of the vSwitch. **Available** indicates that the vSwitch is active.
         self.status = status
         # The vSwitch ID.
         self.v_switch_id = v_switch_id

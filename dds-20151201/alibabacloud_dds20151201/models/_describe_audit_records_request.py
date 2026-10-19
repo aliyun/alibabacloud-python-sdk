@@ -25,54 +25,48 @@ class DescribeAuditRecordsRequest(DaraModel):
         user: str = None,
     ):
         # The instance ID.
-        # 
-        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If you specify a sharded cluster instance ID for this parameter, you must also specify the **NodeId** parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the database. By default, all databases are queried.
+        # The name of the database. The default value is all databases.
         self.database = database
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-        # 
-        # > The time range between the start time and the end time cannot exceed 24 hours. Otherwise, the operation fails.
+        # The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
+        # > The time range between the end time and the start time cannot exceed 24 hours. If the time range exceeds 24 hours, the call fails.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The format of the returned audit records. Valid values:
-        # 
-        # - **File**: Triggers the generation of an audit log file. If you set this parameter to File, only common parameters are returned.
-        # 
+        # The display format of the returned audit records. Valid values:
+        # - **File**: Triggers the generation of an audit log file. If you set this parameter to this value, only common parameters are returned.
         # - **Stream** (default): Returns a data stream.
         # 
-        # > The **File** parameter is deprecated.
+        # > The **File** value is deprecated.
         self.form = form
-        # The logical operator for the keyword search. The default value is and.
+        # The logical operator for keyword search. The default value is and.
         self.logical_operator = logical_operator
-        # The ID of a Mongos node or a shard node in the sharded cluster instance.
+        # Instance ID of a mongos node or shard node in the sharded cluster instance.
         # 
-        # > This parameter is available only when **DBInstanceId** is set to the ID of a sharded cluster instance.
+        # > This parameter is available only when **DBInstanceId** is set to instance ID of a sharded cluster instance.
         self.node_id = node_id
-        # The order in which to sort the returned audit log entries by time. Valid values:
-        # 
-        # - **asc**: Sorts the entries in ascending order.
-        # 
-        # - **desc**: Sorts the entries in descending order.
+        # The order in which the queried slow logs are sorted by time. Valid values:
+        # - **asc**: sorts results in ascending order by time.
+        # - **desc**: sorts results in descending order by time.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number to return. The value must be greater than 0 and must not exceed the maximum value of the integer data type. Default value: **1**.
+        # The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30** (default), **50**, and **100**.
+        # The number of records per page. Valid values: **30** (default), **50**, and **100**.
         self.page_size = page_size
-        # The keywords for the query. You can specify up to 10 keywords. Separate multiple keywords with spaces.
+        # The keywords to query. Separate multiple keywords with spaces. You can specify a maximum of 10 keywords.
         self.query_keywords = query_keywords
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The database account. By default, all accounts are queried.
+        # The database account. The default value is all accounts.
         self.user = user
 
     def validate(self):

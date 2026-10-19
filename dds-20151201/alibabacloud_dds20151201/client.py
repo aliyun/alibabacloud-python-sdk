@@ -81,19 +81,19 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'mongodb.aliyuncs.com',
             'eu-west-1-oxs': 'mongodb.aliyuncs.com',
             'rus-west-1-pop': 'mongodb.aliyuncs.com',
-            'us-southeast-1': 'mongodb.us-southeast-1.aliyuncs.com',
-            'na-south-1': 'mongodb.na-south-1.aliyuncs.com',
-            'me-central-1': 'mongodb.me-central-1.aliyuncs.com',
-            'cn-zhongwei': 'mongodb.cn-zhongwei.aliyuncs.com',
             'cn-zhengzhou-jva': 'mongodb.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'mongodb.cn-wulanchabu-gic-1.aliyuncs.com',
             'cn-wuhan-lr': 'mongodb.cn-wuhan-lr.aliyuncs.com',
             'cn-nanjing': 'mongodb.cn-nanjing.aliyuncs.com',
+            'ap-northeast-2': 'mongodb.ap-northeast-2.aliyuncs.com',
             'cn-fuzhou': 'mongodb.cn-fuzhou.aliyuncs.com',
-            'ap-southeast-8': 'mongodb.ap-southeast-8.aliyuncs.com',
-            'ap-southeast-7': 'mongodb.ap-southeast-7.aliyuncs.com',
             'ap-southeast-6': 'mongodb.ap-southeast-6.aliyuncs.com',
-            'ap-northeast-2': 'mongodb.ap-northeast-2.aliyuncs.com'
+            'ap-southeast-7': 'mongodb.ap-southeast-7.aliyuncs.com',
+            'us-southeast-1': 'mongodb.us-southeast-1.aliyuncs.com',
+            'sa-east-1': 'mongodb.sa-east-1.aliyuncs.com',
+            'na-south-1': 'mongodb.na-south-1.aliyuncs.com',
+            'me-central-1': 'mongodb.me-central-1.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'mongodb.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'mongodb.cn-wulanchabu-gic-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dds', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -791,6 +791,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAccountResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.account_description):
+            query['AccountDescription'] = request.account_description
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
         if not DaraCore.is_null(request.account_password):
@@ -799,6 +801,8 @@ class Client(OpenApiClient):
             query['CharacterType'] = request.character_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -807,6 +811,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.roles):
+            query['Roles'] = request.roles
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -833,6 +839,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAccountResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.account_description):
+            query['AccountDescription'] = request.account_description
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
         if not DaraCore.is_null(request.account_password):
@@ -841,6 +849,8 @@ class Client(OpenApiClient):
             query['CharacterType'] = request.character_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -849,6 +859,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.roles):
+            query['Roles'] = request.roles
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2257,8 +2269,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.character_type):
+            query['CharacterType'] = request.character_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -2295,8 +2311,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.character_type):
+            query['CharacterType'] = request.character_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -2921,6 +2941,146 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeActiveOperationTasksResponse:
         runtime = RuntimeOptions()
         return await self.describe_active_operation_tasks_with_options_async(request, runtime)
+
+    def describe_advanced_backup_policy_with_options(
+        self,
+        request: main_models.DescribeAdvancedBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAdvancedBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAdvancedBackupPolicy',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAdvancedBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_advanced_backup_policy_with_options_async(
+        self,
+        request: main_models.DescribeAdvancedBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAdvancedBackupPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAdvancedBackupPolicy',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAdvancedBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_advanced_backup_policy(
+        self,
+        request: main_models.DescribeAdvancedBackupPolicyRequest,
+    ) -> main_models.DescribeAdvancedBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.describe_advanced_backup_policy_with_options(request, runtime)
+
+    async def describe_advanced_backup_policy_async(
+        self,
+        request: main_models.DescribeAdvancedBackupPolicyRequest,
+    ) -> main_models.DescribeAdvancedBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_advanced_backup_policy_with_options_async(request, runtime)
+
+    def describe_advanced_backup_status_with_options(
+        self,
+        request: main_models.DescribeAdvancedBackupStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAdvancedBackupStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAdvancedBackupStatus',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAdvancedBackupStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_advanced_backup_status_with_options_async(
+        self,
+        request: main_models.DescribeAdvancedBackupStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAdvancedBackupStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAdvancedBackupStatus',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAdvancedBackupStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_advanced_backup_status(
+        self,
+        request: main_models.DescribeAdvancedBackupStatusRequest,
+    ) -> main_models.DescribeAdvancedBackupStatusResponse:
+        runtime = RuntimeOptions()
+        return self.describe_advanced_backup_status_with_options(request, runtime)
+
+    async def describe_advanced_backup_status_async(
+        self,
+        request: main_models.DescribeAdvancedBackupStatusRequest,
+    ) -> main_models.DescribeAdvancedBackupStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_advanced_backup_status_with_options_async(request, runtime)
 
     def describe_audit_log_filter_with_options(
         self,
@@ -4563,6 +4723,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.encryption_key):
             query['EncryptionKey'] = request.encryption_key
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -4601,6 +4763,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.encryption_key):
             query['EncryptionKey'] = request.encryption_key
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -8991,6 +9155,8 @@ class Client(OpenApiClient):
             query['CharacterType'] = request.character_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -9033,6 +9199,8 @@ class Client(OpenApiClient):
             query['CharacterType'] = request.character_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -9273,6 +9441,178 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyActiveOperationTasksResponse:
         runtime = RuntimeOptions()
         return await self.modify_active_operation_tasks_with_options_async(request, runtime)
+
+    def modify_advanced_backup_policy_with_options(
+        self,
+        tmp_req: main_models.ModifyAdvancedBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAdvancedBackupPolicyResponse:
+        tmp_req.validate()
+        request = main_models.ModifyAdvancedBackupPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.advanced_backup_data_policies):
+            request.advanced_backup_data_policies_shrink = Utils.array_to_string_with_specified_style(tmp_req.advanced_backup_data_policies, 'AdvancedBackupDataPolicies', 'json')
+        if not DaraCore.is_null(tmp_req.advanced_backup_log_policies):
+            request.advanced_backup_log_policies_shrink = Utils.array_to_string_with_specified_style(tmp_req.advanced_backup_log_policies, 'AdvancedBackupLogPolicies', 'json')
+        query = {}
+        if not DaraCore.is_null(request.advanced_backup_data_policies_shrink):
+            query['AdvancedBackupDataPolicies'] = request.advanced_backup_data_policies_shrink
+        if not DaraCore.is_null(request.advanced_backup_log_policies_shrink):
+            query['AdvancedBackupLogPolicies'] = request.advanced_backup_log_policies_shrink
+        if not DaraCore.is_null(request.backup_retention_policy_on_cluster_deletion):
+            query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not DaraCore.is_null(request.snapshot_backup_type):
+            query['SnapshotBackupType'] = request.snapshot_backup_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAdvancedBackupPolicy',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAdvancedBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_advanced_backup_policy_with_options_async(
+        self,
+        tmp_req: main_models.ModifyAdvancedBackupPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAdvancedBackupPolicyResponse:
+        tmp_req.validate()
+        request = main_models.ModifyAdvancedBackupPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.advanced_backup_data_policies):
+            request.advanced_backup_data_policies_shrink = Utils.array_to_string_with_specified_style(tmp_req.advanced_backup_data_policies, 'AdvancedBackupDataPolicies', 'json')
+        if not DaraCore.is_null(tmp_req.advanced_backup_log_policies):
+            request.advanced_backup_log_policies_shrink = Utils.array_to_string_with_specified_style(tmp_req.advanced_backup_log_policies, 'AdvancedBackupLogPolicies', 'json')
+        query = {}
+        if not DaraCore.is_null(request.advanced_backup_data_policies_shrink):
+            query['AdvancedBackupDataPolicies'] = request.advanced_backup_data_policies_shrink
+        if not DaraCore.is_null(request.advanced_backup_log_policies_shrink):
+            query['AdvancedBackupLogPolicies'] = request.advanced_backup_log_policies_shrink
+        if not DaraCore.is_null(request.backup_retention_policy_on_cluster_deletion):
+            query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.preferred_backup_time):
+            query['PreferredBackupTime'] = request.preferred_backup_time
+        if not DaraCore.is_null(request.snapshot_backup_type):
+            query['SnapshotBackupType'] = request.snapshot_backup_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAdvancedBackupPolicy',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAdvancedBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_advanced_backup_policy(
+        self,
+        request: main_models.ModifyAdvancedBackupPolicyRequest,
+    ) -> main_models.ModifyAdvancedBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return self.modify_advanced_backup_policy_with_options(request, runtime)
+
+    async def modify_advanced_backup_policy_async(
+        self,
+        request: main_models.ModifyAdvancedBackupPolicyRequest,
+    ) -> main_models.ModifyAdvancedBackupPolicyResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_advanced_backup_policy_with_options_async(request, runtime)
+
+    def modify_advanced_backup_status_with_options(
+        self,
+        request: main_models.ModifyAdvancedBackupStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAdvancedBackupStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAdvancedBackupStatus',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAdvancedBackupStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_advanced_backup_status_with_options_async(
+        self,
+        request: main_models.ModifyAdvancedBackupStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAdvancedBackupStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAdvancedBackupStatus',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAdvancedBackupStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_advanced_backup_status(
+        self,
+        request: main_models.ModifyAdvancedBackupStatusRequest,
+    ) -> main_models.ModifyAdvancedBackupStatusResponse:
+        runtime = RuntimeOptions()
+        return self.modify_advanced_backup_status_with_options(request, runtime)
+
+    async def modify_advanced_backup_status_async(
+        self,
+        request: main_models.ModifyAdvancedBackupStatusRequest,
+    ) -> main_models.ModifyAdvancedBackupStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_advanced_backup_status_with_options_async(request, runtime)
 
     def modify_audit_log_filter_with_options(
         self,
@@ -10725,6 +11065,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBInstanceSpecResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.align_primary_zone):
+            query['AlignPrimaryZone'] = request.align_primary_zone
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.business_info):
@@ -10795,6 +11137,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBInstanceSpecResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.align_primary_zone):
+            query['AlignPrimaryZone'] = request.align_primary_zone
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.business_info):
@@ -11463,6 +11807,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyNodeSpecResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.align_primary_zone):
+            query['AlignPrimaryZone'] = request.align_primary_zone
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.business_info):
@@ -11531,6 +11877,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyNodeSpecResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.align_primary_zone):
+            query['AlignPrimaryZone'] = request.align_primary_zone
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.business_info):
@@ -11613,6 +11961,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyNodeSpecBatchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.align_primary_zone):
+            query['AlignPrimaryZone'] = request.align_primary_zone
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.business_info):
@@ -11673,6 +12023,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyNodeSpecBatchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.align_primary_zone):
+            query['AlignPrimaryZone'] = request.align_primary_zone
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.business_info):
@@ -12037,8 +12389,12 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySecurityIpsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.modify_mode):
             query['ModifyMode'] = request.modify_mode
         if not DaraCore.is_null(request.owner_account):
@@ -12081,8 +12437,12 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySecurityIpsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.modify_mode):
             query['ModifyMode'] = request.modify_mode
         if not DaraCore.is_null(request.owner_account):
@@ -12637,6 +12997,8 @@ class Client(OpenApiClient):
             query['CharacterType'] = request.character_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -12679,6 +13041,8 @@ class Client(OpenApiClient):
             query['CharacterType'] = request.character_type
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -12737,6 +13101,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.parallel_restart_mongos):
+            query['ParallelRestartMongos'] = request.parallel_restart_mongos
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -12779,6 +13145,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.parallel_restart_mongos):
+            query['ParallelRestartMongos'] = request.parallel_restart_mongos
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):

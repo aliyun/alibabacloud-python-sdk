@@ -13,9 +13,10 @@ class DescribeKernelReleaseNotesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The minor version number of the instance. Example: **mongodb_20180522_0.4.8**.
+        # The minor engine version of the database. Example: **mongodb_20180522_0.4.8**.
         # 
-        # - This parameter is required. After you specify a version number for this parameter in a request, the release notes of the versions later than this version are returned.
+        # You can obtain the minor engine version in the **Specifications** section on the **Basic Information** page of the instance in the MongoDB console.
+        # > This parameter is required. The response includes a list of versions that are later than the specified version.
         self.kernel_version = kernel_version
         self.owner_account = owner_account
         self.owner_id = owner_id
