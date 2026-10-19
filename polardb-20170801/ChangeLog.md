@@ -1,3 +1,9 @@
+2026-10-19 Version: 9.0.1
+- Update API DescribeKnowledgeBaseAnswer: add response parameters Body.Sources.$.SourceUri.
+- Update API DescribeKnowledgeBaseFileShards: add response parameters Body.Shards.$.SourceUri.
+- Update API RetrievalKnowledgeBase: add response parameters Body.Results.$.SourceUri.
+
+
 2026-10-19 Version: 9.0.0
 - Support API ResizeAIDBClusterModel.
 - Update API CreateAIDBCluster: add request parameters Capacity.

@@ -149,6 +149,7 @@ class DescribeKnowledgeBaseAnswerResponseBodySources(DaraModel):
         shard_index: int = None,
         similarity_score: float = None,
         source_id: int = None,
+        source_uri: str = None,
     ):
         # The shard metadata.
         self.chunk_metadata = chunk_metadata
@@ -172,6 +173,8 @@ class DescribeKnowledgeBaseAnswerResponseBodySources(DaraModel):
         self.similarity_score = similarity_score
         # The source ID.
         self.source_id = source_id
+        # The URI of the original document.
+        self.source_uri = source_uri
 
     def validate(self):
         if self.image_resources:
@@ -219,6 +222,9 @@ class DescribeKnowledgeBaseAnswerResponseBodySources(DaraModel):
         if self.source_id is not None:
             result['SourceId'] = self.source_id
 
+        if self.source_uri is not None:
+            result['SourceUri'] = self.source_uri
+
         return result
 
     def from_map(self, m: dict = None):
@@ -258,6 +264,9 @@ class DescribeKnowledgeBaseAnswerResponseBodySources(DaraModel):
 
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
+
+        if m.get('SourceUri') is not None:
+            self.source_uri = m.get('SourceUri')
 
         return self
 

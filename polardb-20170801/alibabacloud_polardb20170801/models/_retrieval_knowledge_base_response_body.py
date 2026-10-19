@@ -84,6 +84,7 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
         shard_content: str = None,
         shard_index: int = None,
         similarity_score: float = None,
+        source_uri: str = None,
     ):
         # The list of captions for figures or tables associated with the chunk.
         self.captions = captions
@@ -107,6 +108,8 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
         self.shard_index = shard_index
         # The similarity score.
         self.similarity_score = similarity_score
+        # The URI of the source document.
+        self.source_uri = source_uri
 
     def validate(self):
         if self.image_resources:
@@ -154,6 +157,9 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
         if self.similarity_score is not None:
             result['SimilarityScore'] = self.similarity_score
 
+        if self.source_uri is not None:
+            result['SourceUri'] = self.source_uri
+
         return result
 
     def from_map(self, m: dict = None):
@@ -193,6 +199,9 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
 
         if m.get('SimilarityScore') is not None:
             self.similarity_score = m.get('SimilarityScore')
+
+        if m.get('SourceUri') is not None:
+            self.source_uri = m.get('SourceUri')
 
         return self
 

@@ -98,6 +98,7 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
         page_numbers: List[str] = None,
         shard_content: str = None,
         shard_index: int = None,
+        source_uri: str = None,
     ):
         # The list of figure or table captions associated with the shard.
         self.captions = captions
@@ -113,6 +114,8 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
         self.shard_content = shard_content
         # The index of the shard.
         self.shard_index = shard_index
+        # The URI of the source document.
+        self.source_uri = source_uri
 
     def validate(self):
         if self.image_resources:
@@ -148,6 +151,9 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
         if self.shard_index is not None:
             result['ShardIndex'] = self.shard_index
 
+        if self.source_uri is not None:
+            result['SourceUri'] = self.source_uri
+
         return result
 
     def from_map(self, m: dict = None):
@@ -175,6 +181,9 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
 
         if m.get('ShardIndex') is not None:
             self.shard_index = m.get('ShardIndex')
+
+        if m.get('SourceUri') is not None:
+            self.source_uri = m.get('SourceUri')
 
         return self
 
