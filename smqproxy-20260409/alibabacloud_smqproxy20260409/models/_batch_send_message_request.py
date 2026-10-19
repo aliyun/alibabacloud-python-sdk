@@ -12,6 +12,7 @@ class BatchSendMessageRequest(DaraModel):
         self,
         messages: List[main_models.BatchSendMessageRequestMessages] = None,
     ):
+        # The message list.
         self.messages = messages
 
     def validate(self):
@@ -51,9 +52,13 @@ class BatchSendMessageRequestMessages(DaraModel):
         priority: int = None,
         user_properties: Dict[str, main_models.MessagesUserPropertiesValue] = None,
     ):
+        # The delay in seconds before the message becomes consumable.
         self.delay_seconds = delay_seconds
+        # The message body.
         self.message_body = message_body
+        # The message group ID. Messages within the same group are delivered in order. This parameter is valid only for FIFO queues.
         self.message_group_id = message_group_id
+        # The priority. A smaller value indicates a higher priority. The value 1 represents the highest priority.
         self.priority = priority
         self.user_properties = user_properties
 

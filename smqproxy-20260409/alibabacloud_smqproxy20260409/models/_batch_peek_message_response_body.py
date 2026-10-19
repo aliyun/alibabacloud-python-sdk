@@ -12,6 +12,7 @@ class BatchPeekMessageResponseBody(DaraModel):
         self,
         messages: List[main_models.BatchPeekMessageResponseBodyMessages] = None,
     ):
+        # The message list.
         self.messages = messages
 
     def validate(self):
@@ -57,14 +58,23 @@ class BatchPeekMessageResponseBodyMessages(DaraModel):
         priority: int = None,
         user_properties: Dict[str, main_models.MessagesUserPropertiesValue] = None,
     ):
+        # The total number of times the message has been consumed.
         self.dequeue_count = dequeue_count
+        # The time when the message was sent to the queue. The value is a UNIX timestamp that starts from 1970-01-01 00:00:00.000.
         self.enqueue_time = enqueue_time
+        # The time when the message was first consumed. The value is a UNIX timestamp in milliseconds that starts from 1970-01-01 00:00:00.000. If DequeueCount is 0, this value is the same as EnqueueTime.
         self.first_dequeue_time = first_dequeue_time
+        # The message body.
         self.message_body = message_body
+        # The MD5 hash of the message body.
         self.message_body_md5 = message_body_md5
+        # The message group ID (FIFO queues only).
         self.message_group_id = message_group_id
+        # The message ID.
         self.message_id = message_id
+        # The priority. Valid values: 1 to 16. Default value: 8. A value of 1 indicates the highest priority.
         self.priority = priority
+        # The user-defined properties (JSON-formatted string).
         self.user_properties = user_properties
 
     def validate(self):

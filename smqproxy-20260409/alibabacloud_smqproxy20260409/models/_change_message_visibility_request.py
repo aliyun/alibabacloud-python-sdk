@@ -10,7 +10,9 @@ class ChangeMessageVisibilityRequest(DaraModel):
         receipt_handle: str = None,
         visibility_timeout: int = None,
     ):
+        # The temporary handle of the message returned after the last consumption.
         self.receipt_handle = receipt_handle
+        # The countdown from the current moment until the message becomes Active again. Valid values: 1 to 43200. Unit: seconds (1 second to 12 hours).
         self.visibility_timeout = visibility_timeout
 
     def validate(self):

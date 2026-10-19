@@ -12,6 +12,7 @@ class BatchReceiveMessageResponseBody(DaraModel):
         self,
         messages: List[main_models.BatchReceiveMessageResponseBodyMessages] = None,
     ):
+        # The array of messages.
         self.messages = messages
 
     def validate(self):
@@ -57,16 +58,27 @@ class BatchReceiveMessageResponseBodyMessages(DaraModel):
         receipt_handle: str = None,
         user_properties: Dict[str, main_models.MessagesUserPropertiesValue] = None,
     ):
+        # The total number of times the message has been consumed.
         self.dequeue_count = dequeue_count
+        # The time when the message was sent to the queue, in milliseconds since 1970-01-01 00:00:00 000.
         self.enqueue_time = enqueue_time
+        # The time when the message was first consumed, in milliseconds (timestamp). If `DequeueCount=0`, this value is the same as `EnqueueTime`.
         self.first_dequeue_time = first_dequeue_time
+        # The message body.
         self.message_body = message_body
+        # The MD5 hash of the message body.
         self.message_body_md5 = message_body_md5
+        # The message group ID. This parameter applies only to FIFO queues.
         self.message_group_id = message_group_id
+        # The message ID, which is unique within a queue.
         self.message_id = message_id
+        # The time when the message becomes available for consumption again, in milliseconds (timestamp).
         self.next_visible_time = next_visible_time
+        # The priority of the message. 1 indicates the highest priority.
         self.priority = priority
+        # The temporary handle generated for this message retrieval. This handle is used to delete or modify Inactive messages and is valid until NextVisibleTime.
         self.receipt_handle = receipt_handle
+        # The user-defined properties in JSON format.
         self.user_properties = user_properties
 
     def validate(self):

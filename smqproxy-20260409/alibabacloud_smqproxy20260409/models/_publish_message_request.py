@@ -13,9 +13,14 @@ class PublishMessageRequest(DaraModel):
         message_group_id: str = None,
         message_tag: str = None,
     ):
+        # **Message attributes**. You do not need to set this parameter when pushing messages to queues or HTTP endpoints.
         self.message_attributes = message_attributes
+        # **Message content**. Base64-encode the content beforehand.
+        # Maximum size: 64 KB.
         self.message_body = message_body
         self.message_group_id = message_group_id
+        # **Message tag**, used for message filtering on subscriptions.
+        # Maximum length: 64 characters.
         self.message_tag = message_tag
 
     def validate(self):
@@ -65,8 +70,11 @@ class PublishMessageRequestMessageAttributes(DaraModel):
         direct_sms: str = None,
         push: str = None,
     ):
+        # **Email push attributes** (JSON-formatted string).
         self.direct_mail = direct_mail
+        # SMS push attributes (JSON-formatted string), including `FreeSignName`, `TemplateCode`, `Type`, `Receiver`, and `SmsParams`.
         self.direct_sms = direct_sms
+        # Mobile push attributes (JSON-formatted string).
         self.push = push
 
     def validate(self):

@@ -10,7 +10,9 @@ class ChangeMessageVisibilityResponseBody(DaraModel):
         next_visible_time: int = None,
         receipt_handle: str = None,
     ):
+        # The time when the message can be consumed again (millisecond-level timestamp).
         self.next_visible_time = next_visible_time
+        # The new temporary handle. Use this new handle for subsequent delete or modification operations. This handle is valid before NextVisibleTime.
         self.receipt_handle = receipt_handle
 
     def validate(self):

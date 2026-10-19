@@ -10,7 +10,9 @@ class BatchPeekMessageRequest(DaraModel):
         num_of_messages: int = None,
         peekonly: bool = None,
     ):
+        # The maximum number of messages to peek at in this BatchPeekMessage request.
         self.num_of_messages = num_of_messages
+        # Indicates that this request only peeks at messages at the top of the queue without changing the message status. Fixed value: true.
         self.peekonly = peekonly
 
     def validate(self):

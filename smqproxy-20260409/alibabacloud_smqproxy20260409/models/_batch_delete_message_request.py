@@ -11,6 +11,7 @@ class BatchDeleteMessageRequest(DaraModel):
         self,
         receipt_handles: List[str] = None,
     ):
+        # The ReceiptHandle values of multiple messages.
         self.receipt_handles = receipt_handles
 
     def validate(self):

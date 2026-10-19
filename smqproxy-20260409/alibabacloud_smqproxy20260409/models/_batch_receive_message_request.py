@@ -10,7 +10,9 @@ class BatchReceiveMessageRequest(DaraModel):
         num_of_messages: int = None,
         waitseconds: int = None,
     ):
+        # The maximum number of messages to receive in this request.
         self.num_of_messages = num_of_messages
+        # The maximum polling wait time for this request, in seconds. Set to 0 for an immediate return.
         self.waitseconds = waitseconds
 
     def validate(self):

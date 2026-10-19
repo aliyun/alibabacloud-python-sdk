@@ -16,10 +16,15 @@ class SendMessageRequest(DaraModel):
         priority: int = None,
         user_properties: Dict[str, main_models.UserPropertiesValue] = None,
     ):
+        # The delay period after which the message can be consumed. Unit: seconds. Maximum value: 7 days.
         self.delay_seconds = delay_seconds
+        # The message body. We recommend that you Base64-encode the message body in advance to avoid issues with special characters.
         self.message_body = message_body
+        # The message group ID. Messages within the same group are delivered in order. This parameter is valid only for FIFO queues.
         self.message_group_id = message_group_id
+        # The message priority. A smaller value indicates a higher priority. The value 1 indicates the highest priority.
         self.priority = priority
+        # The user-defined properties.
         self.user_properties = user_properties
 
     def validate(self):
