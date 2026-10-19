@@ -18,12 +18,13 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBody(DaraModel):
         slb_traffic: main_models.GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic = None,
         storage_usage: main_models.GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage = None,
     ):
+        # The number of ACUs for each component of the Embodied platform.
         self.acu_details = acu_details
-        # The GPU usage details.
+        # The GPU usage.
         self.gpu_details = gpu_details
-        # The maximum number of embodiments that can be registered.
+        # The maximum number of registered devices.
         self.max_registered_devices = max_registered_devices
-        # The number of registered embodiments.
+        # The number of registered devices.
         self.registered_device_count = registered_device_count
         # Id of the request
         self.request_id = request_id
@@ -152,7 +153,7 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageOss(DaraMode
         self,
         standard_storage_size: int = None,
     ):
-        # The OSS standard storage usage. Unit: bytes.
+        # The OSS standard storage usage, in bytes.
         self.standard_storage_size = standard_storage_size
 
     def validate(self):
@@ -180,7 +181,7 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsageNas(DaraMode
         self,
         metered_size: int = None,
     ):
-        # The NAS standard storage usage. Unit: bytes.
+        # The NAS standard storage usage, in bytes.
         self.metered_size = metered_size
 
     def validate(self):
@@ -209,9 +210,9 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic(DaraModel):
         total_bytes_in: int = None,
         total_bytes_out: int = None,
     ):
-        # The upstream bandwidth traffic over the public network. Unit: bytes.
+        # The inbound Internet traffic, in bytes.
         self.total_bytes_in = total_bytes_in
-        # The downstream bandwidth traffic over the public network. Unit: bytes.
+        # The outbound Internet traffic, in bytes.
         self.total_bytes_out = total_bytes_out
 
     def validate(self):
@@ -251,7 +252,7 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails(DaraModel):
         self.allocated_unit = allocated_unit
         # The GPU model.
         self.gpu_model = gpu_model
-        # The number of GPUs of this model currently in use.
+        # The current number of GPUs in use for this model.
         self.total_count = total_count
 
     def validate(self):
@@ -294,9 +295,13 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails(DaraModel):
         ray_worker_acucount: float = None,
         total_acucount: float = None,
     ):
+        # The number of ACUs for the EAP web server.
         self.eap_webserver_acucount = eap_webserver_acucount
+        # The number of ACUs for the Ray head node.
         self.ray_head_acucount = ray_head_acucount
+        # The number of ACUs for the Ray worker node.
         self.ray_worker_acucount = ray_worker_acucount
+        # The total number of ACUs.
         self.total_acucount = total_acucount
 
     def validate(self):

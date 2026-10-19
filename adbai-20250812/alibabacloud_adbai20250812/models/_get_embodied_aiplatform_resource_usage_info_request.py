@@ -13,15 +13,15 @@ class GetEmbodiedAIPlatformResourceUsageInfoRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The instance cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range for querying network resource usage. Format: yyyy-MM-ddTHH:mmZ.
+        # The end time of the time range to query network resource usage. Format: yyyy-MM-ddTHH:mmZ.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
-        # The name of the embodied intelligence platform.
+        # The name of the Embodied platform.
         self.platform_name = platform_name
         # The region ID of the instance.
         # 
@@ -29,7 +29,7 @@ class GetEmbodiedAIPlatformResourceUsageInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start of the time range for querying network resource usage. Format: yyyy-MM-ddTHH:mmZ.
+        # The start time of the time range to query network resource usage. Format: yyyy-MM-ddTHH:mmZ.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time

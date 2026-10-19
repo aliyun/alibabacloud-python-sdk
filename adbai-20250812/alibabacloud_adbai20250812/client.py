@@ -23,17 +23,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'ap-northeast-1': 'adbai.ap-northeast-1.aliyuncs.com',
-            'ap-southeast-1': 'adbai.ap-southeast-1.aliyuncs.com',
-            'cn-beijing': 'adbai.cn-beijing.aliyuncs.com',
-            'cn-hangzhou': 'adbai.cn-hangzhou.aliyuncs.com',
-            'cn-shanghai': 'adbai.cn-shanghai.aliyuncs.com',
-            'cn-shenzhen': 'adbai.cn-shenzhen.aliyuncs.com',
-            'cn-guangzhou': 'adbai.cn-guangzhou.aliyuncs.com',
-            'cn-wulanchabu': 'adbai.cn-wulanchabu.aliyuncs.com',
-            'us-west-1': 'adbai.us-west-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('adbai', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -256,10 +245,28 @@ class Client(OpenApiClient):
     ) -> main_models.CreateMultiModelKnowledgeBaseResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adb_instance_name):
+            query['AdbInstanceName'] = request.adb_instance_name
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.db_cluster_acu):
+            query['DbClusterAcu'] = request.db_cluster_acu
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.lake_storage_bucket_name):
+            query['LakeStorageBucketName'] = request.lake_storage_bucket_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_acu_max):
+            query['ResourceAcuMax'] = request.resource_acu_max
+        if not DaraCore.is_null(request.resource_acu_min):
+            query['ResourceAcuMin'] = request.resource_acu_min
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -286,10 +293,28 @@ class Client(OpenApiClient):
     ) -> main_models.CreateMultiModelKnowledgeBaseResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adb_instance_name):
+            query['AdbInstanceName'] = request.adb_instance_name
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.db_cluster_acu):
+            query['DbClusterAcu'] = request.db_cluster_acu
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.lake_storage_bucket_name):
+            query['LakeStorageBucketName'] = request.lake_storage_bucket_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_acu_max):
+            query['ResourceAcuMax'] = request.resource_acu_max
+        if not DaraCore.is_null(request.resource_acu_min):
+            query['ResourceAcuMin'] = request.resource_acu_min
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -488,6 +513,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.mmkb_name):
+            query['MmkbName'] = request.mmkb_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -518,6 +545,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.mmkb_name):
+            query['MmkbName'] = request.mmkb_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(

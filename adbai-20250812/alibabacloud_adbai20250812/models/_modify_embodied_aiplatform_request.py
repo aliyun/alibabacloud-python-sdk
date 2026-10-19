@@ -18,18 +18,20 @@ class ModifyEmbodiedAIPlatformRequest(DaraModel):
         region_id: str = None,
         webserver_spec_name: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The total number of devices.
         self.device_count = device_count
-        # The name of the embodied intelligence multimodal data platform.
-        # > The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
+        # The name of the embodied AI multimodal data platform.
+        # > The name must be 1 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit.
         # 
         # This parameter is required.
         self.platform_name = platform_name
-        # The Ray specification information of the platform.
+        # The Ray specifications of the platform.
         self.ray_config = ray_config
+        # The configuration of development and training resources.
         self.ray_train_config = ray_train_config
         # The region ID.
         # 
@@ -108,8 +110,11 @@ class ModifyEmbodiedAIPlatformRequestRayTrainConfig(DaraModel):
         gpu_specs: List[main_models.ModifyEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs] = None,
         terminal_config: main_models.ModifyEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig = None,
     ):
+        # The number of CPU ACUs.
         self.cpu_acu = cpu_acu
+        # The list of GPU types to purchase.
         self.gpu_specs = gpu_specs
+        # The configuration of the development machine.
         self.terminal_config = terminal_config
 
     def validate(self):
@@ -160,6 +165,7 @@ class ModifyEmbodiedAIPlatformRequestRayTrainConfigTerminalConfig(DaraModel):
         self,
         acr_config: main_models.ModifyEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig = None,
     ):
+        # The configuration of the image repository.
         self.acr_config = acr_config
 
     def validate(self):
@@ -191,8 +197,11 @@ class ModifyEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig(DaraM
         namespaces: List[str] = None,
         registry: str = None,
     ):
+        # The instance ID of the image repository.
         self.instance_id = instance_id
+        # The list of namespaces.
         self.namespaces = namespaces
+        # The address of the image repository instance.
         self.registry = registry
 
     def validate(self):
@@ -234,8 +243,11 @@ class ModifyEmbodiedAIPlatformRequestRayTrainConfigGpuSpecs(DaraModel):
         count: int = None,
         spec_name: str = None,
     ):
+        # The allocation unit.
         self.allocate_unit = allocate_unit
+        # The number of GPUs.
         self.count = count
+        # The GPU model.
         self.spec_name = spec_name
 
     def validate(self):
@@ -279,13 +291,13 @@ class ModifyEmbodiedAIPlatformRequestRayConfig(DaraModel):
     ):
         # The type of the Ray cluster. Valid values:
         # 
-        # - BASIC: basic type, which does not support high availability.
+        # - BASIC: basic type, non-high-availability.
         # 
         # - HIGH_AVAILABILITY: high-availability type.
         self.category = category
         # The node specifications of the head node.
         self.head_spec = head_spec
-        # The configuration information of Ray worker groups.
+        # The configuration of the Ray worker groups.
         self.worker_groups = worker_groups
 
     def validate(self):
@@ -347,7 +359,7 @@ class ModifyEmbodiedAIPlatformRequestRayConfigWorkerGroups(DaraModel):
         self.max_worker_quantity = max_worker_quantity
         # The minimum number of workers.
         self.min_worker_quantity = min_worker_quantity
-        # The disk size of the worker node.
+        # The disk capacity of the worker node.
         self.worker_disk_capacity = worker_disk_capacity
         # The node specifications of the worker node.
         self.worker_spec_name = worker_spec_name

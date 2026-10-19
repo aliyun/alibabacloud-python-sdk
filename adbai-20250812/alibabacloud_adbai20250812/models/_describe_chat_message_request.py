@@ -13,7 +13,7 @@ class DescribeChatMessageRequest(DaraModel):
         skill: str = None,
         timezone: str = None,
     ):
-        # The question statement submitted by the user.
+        # The question asked by the user.
         # 
         # This parameter is required.
         self.query = query

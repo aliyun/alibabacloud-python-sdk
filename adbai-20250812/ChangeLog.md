@@ -1,3 +1,7 @@
+2026-10-19 Version: 1.9.3
+- Update API CreateMultiModelKnowledgeBase: add request parameters Description.
+
+
 2026-08-25 Version: 1.9.1
 - Generated python 2025-08-12 for ADBAI.
 

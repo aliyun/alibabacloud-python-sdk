@@ -19,7 +19,7 @@ class CreateEmbodiedAIPlatformShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ontology count.
+        # The device count.
         self.device_count = device_count
         # The name of the embodied intelligence multimodal data platform.
         # > The name can contain lowercase letters, digits, and underscores. It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
@@ -36,7 +36,7 @@ class CreateEmbodiedAIPlatformShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The webserver specification of the platform.
+        # The Webserver specification of the platform.
         self.webserver_spec_name = webserver_spec_name
 
     def validate(self):

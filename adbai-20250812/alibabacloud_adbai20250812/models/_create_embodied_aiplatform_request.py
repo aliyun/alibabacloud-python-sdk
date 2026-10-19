@@ -22,7 +22,7 @@ class CreateEmbodiedAIPlatformRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ontology count.
+        # The device count.
         self.device_count = device_count
         # The name of the embodied intelligence multimodal data platform.
         # > The name can contain lowercase letters, digits, and underscores. It must start with a letter and end with a letter or digit. The name can be up to 16 characters in length.
@@ -39,7 +39,7 @@ class CreateEmbodiedAIPlatformRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The webserver specification of the platform.
+        # The Webserver specification of the platform.
         self.webserver_spec_name = webserver_spec_name
 
     def validate(self):
@@ -112,7 +112,7 @@ class CreateEmbodiedAIPlatformRequestRayTrainConfig(DaraModel):
     ):
         # The number of CPU ACUs to purchase.
         self.cpu_acu = cpu_acu
-        # The list of GPU model specifications to purchase.
+        # The list of GPU model types to purchase.
         self.gpu_specs = gpu_specs
         # The development machine configuration.
         self.terminal_config = terminal_config
@@ -197,11 +197,11 @@ class CreateEmbodiedAIPlatformRequestRayTrainConfigTerminalConfigAcrConfig(DaraM
         namespaces: List[str] = None,
         registry: str = None,
     ):
-        # The instance ID of the image repository.
+        # The image repository instance ID.
         self.instance_id = instance_id
-        # The list of namespaces.
+        # The namespace list.
         self.namespaces = namespaces
-        # The address of the image repository instance.
+        # The image repository instance address.
         self.registry = registry
 
     def validate(self):
@@ -295,7 +295,7 @@ class CreateEmbodiedAIPlatformRequestRayConfig(DaraModel):
         # 
         # - HIGH_AVAILABILITY: high-availability type.
         self.category = category
-        # The node specifications of the head node.
+        # The head node specifications.
         self.head_spec = head_spec
         # The list of Ray worker group configurations.
         self.worker_groups = worker_groups
@@ -353,7 +353,7 @@ class CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups(DaraModel):
     ):
         # The allocation unit.
         self.allocate_unit = allocate_unit
-        # The name of the worker group.
+        # The worker group name.
         self.group_name = group_name
         # The maximum number of workers.
         self.max_worker_quantity = max_worker_quantity
@@ -361,9 +361,9 @@ class CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups(DaraModel):
         self.min_worker_quantity = min_worker_quantity
         # The disk size of the worker node.
         self.worker_disk_capacity = worker_disk_capacity
-        # The node specifications of the worker node.
+        # The worker node specifications.
         self.worker_spec_name = worker_spec_name
-        # The resource type of the worker node.
+        # The worker node resource type.
         self.worker_spec_type = worker_spec_type
 
     def validate(self):

@@ -8,12 +8,12 @@ class DeleteMultiModalKnowledgeBaseRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        mmkb_name: str = None,
         region_id: str = None,
     ):
         # The cluster ID.
-        # 
-        # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.mmkb_name = mmkb_name
         # The region ID.
         # 
         # > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
@@ -32,6 +32,9 @@ class DeleteMultiModalKnowledgeBaseRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
+        if self.mmkb_name is not None:
+            result['MmkbName'] = self.mmkb_name
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -41,6 +44,9 @@ class DeleteMultiModalKnowledgeBaseRequest(DaraModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('MmkbName') is not None:
+            self.mmkb_name = m.get('MmkbName')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

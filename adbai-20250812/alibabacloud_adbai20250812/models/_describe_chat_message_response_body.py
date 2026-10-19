@@ -37,7 +37,7 @@ class DescribeChatMessageResponseBody(DaraModel):
         self.completed_at = completed_at
         # The task content.
         self.content = content
-        # The creation time.
+        # The creation time, in ISO 8601 format and UTC.
         self.created_at = created_at
         # The result set.
         self.data = data
@@ -225,13 +225,13 @@ class DescribeChatMessageResponseBodyData(DaraModel):
         name: str = None,
         output: str = None,
     ):
-        # The parameters of the data API operation that is called.
+        # The parameters of the invoked data API.
         self.arguments = arguments
-        # The ID of the data API operation that is called.
+        # The ID of the invoked data API.
         self.call_id = call_id
-        # The name of the data API operation that is called.
+        # The name of the invoked data API.
         self.name = name
-        # The output of the data API operation that is called.
+        # The output of the invoked data API.
         self.output = output
 
     def validate(self):
@@ -390,11 +390,11 @@ class DescribeChatMessageResponseBodyContentData(DaraModel):
         name: str = None,
         output: str = None,
     ):
-        # The ID of the data API operation that is called.
+        # The ID of the invoked data API.
         self.call_id = call_id
-        # The name of the data API operation that is called.
+        # The name of the invoked data API.
         self.name = name
-        # The output of the data API operation that is called.
+        # The output of the invoked data API.
         self.output = output
 
     def validate(self):
