@@ -268,10 +268,12 @@ class ListModelsResponseBodyModelsPricesPrices(DaraModel):
         price: str = None,
         price_name: str = None,
         price_unit: str = None,
+        time_band: str = None,
     ):
         self.price = price
         self.price_name = price_name
         self.price_unit = price_unit
+        self.time_band = time_band
 
     def validate(self):
         pass
@@ -290,6 +292,9 @@ class ListModelsResponseBodyModelsPricesPrices(DaraModel):
         if self.price_unit is not None:
             result['priceUnit'] = self.price_unit
 
+        if self.time_band is not None:
+            result['timeBand'] = self.time_band
+
         return result
 
     def from_map(self, m: dict = None):
@@ -302,6 +307,9 @@ class ListModelsResponseBodyModelsPricesPrices(DaraModel):
 
         if m.get('priceUnit') is not None:
             self.price_unit = m.get('priceUnit')
+
+        if m.get('timeBand') is not None:
+            self.time_band = m.get('timeBand')
 
         return self
 

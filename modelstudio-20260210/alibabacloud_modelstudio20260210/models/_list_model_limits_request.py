@@ -13,13 +13,13 @@ class ListModelLimitsRequest(DaraModel):
         next_token: str = None,
         workspace_id: str = None,
     ):
-        # The maximum number of results to return. Valid values: 0 to 200.
+        # The maximum number of results. Valid values: 0 to 200.
         self.max_results = max_results
-        # The model for exact match.
+        # The single model for exact match.
         self.model = model
         # The model name for fuzzy match.
         self.name = name
-        # The pagination token.
+        # The page token.
         self.next_token = next_token
         # The workspace ID.
         self.workspace_id = workspace_id

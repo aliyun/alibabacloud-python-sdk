@@ -21,7 +21,7 @@ class UpdateApiKeyResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the API call is successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
         # - true: Successful.
         # - false: Failed.

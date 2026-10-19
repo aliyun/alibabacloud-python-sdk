@@ -15,7 +15,7 @@ class ListApiKeysRequest(DaraModel):
         order_by: str = None,
         workspace_id: str = None,
     ):
-        # The API key ID for exact match.
+        # The API Key ID for exact match.
         self.api_key_id = api_key_id
         # The keyword for fuzzy match by description.
         self.description = description
@@ -29,7 +29,7 @@ class ListApiKeysRequest(DaraModel):
         # 
         # - ASC
         self.order = order
-        # The field by which to sort results. Valid values:
+        # The field by which to sort the results. Valid values:
         # 
         # - apiKeyId (default)
         # 

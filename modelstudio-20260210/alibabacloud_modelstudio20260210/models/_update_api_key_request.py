@@ -13,9 +13,9 @@ class UpdateApiKeyRequest(DaraModel):
         auth: main_models.UpdateApiKeyRequestAuth = None,
         description: str = None,
     ):
-        # The API key permission settings.
+        # The API Key permission settings.
         # 
-        # > Do not fill in this section or fill it in completely for each UpdateApiKey operation. Otherwise, the configuration may not match your expectations.
+        # > Do not specify this parameter or specify it completely for each UpdateApiKey operation. Otherwise, the configuration may not match your expectations.
         self.auth = auth
         # The description.
         self.description = description
@@ -62,9 +62,9 @@ class UpdateApiKeyRequestAuth(DaraModel):
         self.access_ips = access_ips
         # The model access scope.
         self.model_access_scope = model_access_scope
-        # Valid values:
+        # The permission type. Valid values:
         # 
-        # - All: all permissions.
+        # - All: full permissions.
         # - Custom: custom permissions.
         self.type = type
 
@@ -109,9 +109,9 @@ class UpdateApiKeyRequestAuthModelAccessScope(DaraModel):
         allow_all_models: bool = None,
     ):
         # The list of accessible models.
-        # >Notice: The content takes effect only when allowAllModels is set to false.
+        # >Notice: The specified content takes effect only when allowAllModels is set to false.
         self.accessible_models = accessible_models
-        # Specifies whether to allow access to all models with granted inference permissions in the workspace. Valid values:
+        # Specifies whether all models with inference permissions in the workspace are accessible. Valid values:
         # 
         # - true
         # - false

@@ -10,8 +10,9 @@ class CreateWorkspaceRequest(DaraModel):
         service_site: str = None,
         workspace_name: str = None,
     ):
+        # The service deployment scope (the deployment scope for services that depend on GPU resources, such as inference, training, and deployment). The Beijing and Singapore regions are not supported.
         self.service_site = service_site
-        # The name of the business workspace.
+        # The workspace name.
         # 
         # This parameter is required.
         self.workspace_name = workspace_name

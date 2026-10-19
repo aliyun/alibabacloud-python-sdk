@@ -24,10 +24,10 @@ class CreateWorkspaceResponseBody(DaraModel):
         # Id of the request
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
-        # - true: Successful.
-        # - false: Failed.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
-        # The business workspace information.
+        # The workspace information.
         self.workspace = workspace
 
     def validate(self):
@@ -100,9 +100,9 @@ class CreateWorkspaceResponseBodyWorkspace(DaraModel):
         self.region = region
         # The service deployment scope. For more information, see [documentation](https://www.alibabacloud.com/help/zh/model-studio/regions/).
         self.service_site = service_site
-        # The business workspace ID.
+        # The workspace ID.
         self.workspace_id = workspace_id
-        # The name of the business workspace.
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

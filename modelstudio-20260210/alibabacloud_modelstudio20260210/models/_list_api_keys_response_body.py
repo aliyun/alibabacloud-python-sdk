@@ -20,7 +20,7 @@ class ListApiKeysResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The list of API keys.
+        # The list of API Keys.
         self.api_keys = api_keys
         # The response status code.
         self.code = code
@@ -34,7 +34,7 @@ class ListApiKeysResponseBody(DaraModel):
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the API call was successful. Valid values:
+        # Indicates whether the API call was successful.
         # 
         # - true: Successful.
         # - false: Failed.
@@ -133,7 +133,7 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
     ):
         # API Key ID。
         self.api_key_id = api_key_id
-        # The value of the API key.
+        # The value of the API Key.
         self.api_key_value = api_key_value
         # The permission settings.
         self.auth = auth
@@ -141,7 +141,7 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         self.created_by = created_by
         # The description.
         self.description = description
-        # Indicates whether the API key is disabled. Valid values:
+        # Indicates whether the API Key is disabled.
         # 
         # - **0**: Active.
         # - **1**: Disabled.
@@ -150,6 +150,7 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         self.gmt_create = gmt_create
         # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -233,7 +234,7 @@ class ListApiKeysResponseBodyApiKeysAuth(DaraModel):
         self.access_ips = access_ips
         # The model access scope.
         self.model_access_scope = model_access_scope
-        # All: all permissions. Custom: custom permissions.
+        # All: full permissions. Custom: custom permissions.
         self.type = type
 
     def validate(self):
@@ -278,7 +279,7 @@ class ListApiKeysResponseBodyApiKeysAuthModelAccessScope(DaraModel):
     ):
         # The list of accessible models.
         self.accessible_models = accessible_models
-        # Indicates whether access to all models with inference permissions in the workspace is allowed.
+        # Indicates whether all models with inference permissions granted in the workspace are accessible.
         self.allow_all_models = allow_all_models
 
     def validate(self):

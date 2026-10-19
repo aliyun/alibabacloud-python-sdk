@@ -1,3 +1,8 @@
+2026-10-19 Version: 2.2.3
+- Update API ListModelLimits: add response parameters Body.limits.$.workspaceId.
+- Update API ListModels: add response parameters Body.models.$.prices.$.prices.$.timeBand.
+
+
 2026-09-07 Version: 2.2.2
 - Update API GetApiKey: add response parameters Body.apiKey.workspaceName.
 - Update API ListApiKeys: add response parameters Body.apiKeys.$.workspaceName.

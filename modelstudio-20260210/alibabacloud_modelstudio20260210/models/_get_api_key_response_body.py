@@ -27,9 +27,9 @@ class GetApiKeyResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request was successful. Valid values:
+        # - true: Succeeded.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -112,10 +112,11 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
         # - **0**: Active.
         # - **1**: Disabled.
         self.disabled = disabled
-        # The time when the API key was created.
+        # The creation time.
         self.gmt_create = gmt_create
         # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -197,9 +198,12 @@ class GetApiKeyResponseBodyApiKeyAuth(DaraModel):
     ):
         # The IP access whitelist.
         self.access_ips = access_ips
-        # The model access scope.
+        # The model access scope. If configured, only the selected models can be called.
         self.model_access_scope = model_access_scope
-        # All: all permissions. Custom: custom permissions.
+        # The permission type. Valid values:
+        # 
+        # - All: all permissions.
+        # - Custom: custom permissions.
         self.type = type
 
     def validate(self):
@@ -244,7 +248,7 @@ class GetApiKeyResponseBodyApiKeyAuthModelAccessScope(DaraModel):
     ):
         # The list of accessible models.
         self.accessible_models = accessible_models
-        # Indicates whether all models with granted inference permissions in the workspace can be accessed. Valid values:
+        # Indicates whether all models with inference permissions granted in the specified workspace are accessible. Valid values:
         # 
         # - true
         # - false
