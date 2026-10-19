@@ -304,6 +304,202 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_user_group_members_with_options_async(request, headers, runtime)
 
+    def batch_cancel_todos_with_options(
+        self,
+        tmp_req: main_models.BatchCancelTodosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCancelTodosResponse:
+        tmp_req.validate()
+        request = main_models.BatchCancelTodosShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.todo_ids):
+            request.todo_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.todo_ids, 'todoIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.todo_ids_shrink):
+            body['todoIds'] = request.todo_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCancelTodos',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/batchCancelTodos',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCancelTodosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_cancel_todos_with_options_async(
+        self,
+        tmp_req: main_models.BatchCancelTodosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCancelTodosResponse:
+        tmp_req.validate()
+        request = main_models.BatchCancelTodosShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.todo_ids):
+            request.todo_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.todo_ids, 'todoIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.todo_ids_shrink):
+            body['todoIds'] = request.todo_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCancelTodos',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/batchCancelTodos',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCancelTodosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_cancel_todos(
+        self,
+        request: main_models.BatchCancelTodosRequest,
+    ) -> main_models.BatchCancelTodosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_cancel_todos_with_options(request, headers, runtime)
+
+    async def batch_cancel_todos_async(
+        self,
+        request: main_models.BatchCancelTodosRequest,
+    ) -> main_models.BatchCancelTodosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_cancel_todos_with_options_async(request, headers, runtime)
+
+    def batch_operate_work_items_with_options(
+        self,
+        tmp_req: main_models.BatchOperateWorkItemsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchOperateWorkItemsResponse:
+        tmp_req.validate()
+        request = main_models.BatchOperateWorkItemsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.work_item_ids):
+            request.work_item_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.work_item_ids, 'workItemIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.work_item_ids_shrink):
+            body['workItemIds'] = request.work_item_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchOperateWorkItems',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/batchOperateWorkItems',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchOperateWorkItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_operate_work_items_with_options_async(
+        self,
+        tmp_req: main_models.BatchOperateWorkItemsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchOperateWorkItemsResponse:
+        tmp_req.validate()
+        request = main_models.BatchOperateWorkItemsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.work_item_ids):
+            request.work_item_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.work_item_ids, 'workItemIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.work_item_ids_shrink):
+            body['workItemIds'] = request.work_item_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchOperateWorkItems',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/batchOperateWorkItems',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchOperateWorkItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_operate_work_items(
+        self,
+        request: main_models.BatchOperateWorkItemsRequest,
+    ) -> main_models.BatchOperateWorkItemsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_operate_work_items_with_options(request, headers, runtime)
+
+    async def batch_operate_work_items_async(
+        self,
+        request: main_models.BatchOperateWorkItemsRequest,
+    ) -> main_models.BatchOperateWorkItemsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_operate_work_items_with_options_async(request, headers, runtime)
+
     def batch_remove_operating_object_favorites_with_options(
         self,
         tmp_req: main_models.BatchRemoveOperatingObjectFavoritesRequest,
@@ -408,6 +604,302 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_remove_operating_object_favorites_with_options_async(request, headers, runtime)
 
+    def cancel_todo_with_options(
+        self,
+        request: main_models.CancelTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelTodoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/cancelTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelTodoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_todo_with_options_async(
+        self,
+        request: main_models.CancelTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelTodoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/cancelTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelTodoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_todo(
+        self,
+        request: main_models.CancelTodoRequest,
+    ) -> main_models.CancelTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.cancel_todo_with_options(request, headers, runtime)
+
+    async def cancel_todo_async(
+        self,
+        request: main_models.CancelTodoRequest,
+    ) -> main_models.CancelTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.cancel_todo_with_options_async(request, headers, runtime)
+
+    def check_app_resource_permission_with_options(
+        self,
+        request: main_models.CheckAppResourcePermissionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAppResourcePermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.permission):
+            body['permission'] = request.permission
+        if not DaraCore.is_null(request.resource_key):
+            body['resourceKey'] = request.resource_key
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.target_user_id):
+            body['targetUserId'] = request.target_user_id
+        if not DaraCore.is_null(request.target_user_tenant_id):
+            body['targetUserTenantId'] = request.target_user_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAppResourcePermission',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/checkAppResourcePermission',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAppResourcePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_app_resource_permission_with_options_async(
+        self,
+        request: main_models.CheckAppResourcePermissionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAppResourcePermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.permission):
+            body['permission'] = request.permission
+        if not DaraCore.is_null(request.resource_key):
+            body['resourceKey'] = request.resource_key
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.target_user_id):
+            body['targetUserId'] = request.target_user_id
+        if not DaraCore.is_null(request.target_user_tenant_id):
+            body['targetUserTenantId'] = request.target_user_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAppResourcePermission',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/checkAppResourcePermission',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAppResourcePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_app_resource_permission(
+        self,
+        request: main_models.CheckAppResourcePermissionRequest,
+    ) -> main_models.CheckAppResourcePermissionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.check_app_resource_permission_with_options(request, headers, runtime)
+
+    async def check_app_resource_permission_async(
+        self,
+        request: main_models.CheckAppResourcePermissionRequest,
+    ) -> main_models.CheckAppResourcePermissionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.check_app_resource_permission_with_options_async(request, headers, runtime)
+
+    def check_app_resource_permissions_batch_with_options(
+        self,
+        tmp_req: main_models.CheckAppResourcePermissionsBatchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAppResourcePermissionsBatchResponse:
+        tmp_req.validate()
+        request = main_models.CheckAppResourcePermissionsBatchShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.checks):
+            request.checks_shrink = Utils.array_to_string_with_specified_style(tmp_req.checks, 'checks', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.checks_shrink):
+            body['checks'] = request.checks_shrink
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        if not DaraCore.is_null(request.target_user_id):
+            body['targetUserId'] = request.target_user_id
+        if not DaraCore.is_null(request.target_user_tenant_id):
+            body['targetUserTenantId'] = request.target_user_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAppResourcePermissionsBatch',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/checkAppResourcePermissionsBatch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAppResourcePermissionsBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_app_resource_permissions_batch_with_options_async(
+        self,
+        tmp_req: main_models.CheckAppResourcePermissionsBatchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAppResourcePermissionsBatchResponse:
+        tmp_req.validate()
+        request = main_models.CheckAppResourcePermissionsBatchShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.checks):
+            request.checks_shrink = Utils.array_to_string_with_specified_style(tmp_req.checks, 'checks', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.checks_shrink):
+            body['checks'] = request.checks_shrink
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        if not DaraCore.is_null(request.target_user_id):
+            body['targetUserId'] = request.target_user_id
+        if not DaraCore.is_null(request.target_user_tenant_id):
+            body['targetUserTenantId'] = request.target_user_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAppResourcePermissionsBatch',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/checkAppResourcePermissionsBatch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAppResourcePermissionsBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_app_resource_permissions_batch(
+        self,
+        request: main_models.CheckAppResourcePermissionsBatchRequest,
+    ) -> main_models.CheckAppResourcePermissionsBatchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.check_app_resource_permissions_batch_with_options(request, headers, runtime)
+
+    async def check_app_resource_permissions_batch_async(
+        self,
+        request: main_models.CheckAppResourcePermissionsBatchRequest,
+    ) -> main_models.CheckAppResourcePermissionsBatchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.check_app_resource_permissions_batch_with_options_async(request, headers, runtime)
+
     def check_health_with_options(
         self,
         request: main_models.CheckHealthRequest,
@@ -483,6 +975,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.check_health_with_options_async(request, headers, runtime)
+
+    def clear_auto_memory_with_options(
+        self,
+        request: main_models.ClearAutoMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearAutoMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearAutoMemory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/clearAutoMemory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearAutoMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clear_auto_memory_with_options_async(
+        self,
+        request: main_models.ClearAutoMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearAutoMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearAutoMemory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/clearAutoMemory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearAutoMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clear_auto_memory(
+        self,
+        request: main_models.ClearAutoMemoryRequest,
+    ) -> main_models.ClearAutoMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.clear_auto_memory_with_options(request, headers, runtime)
+
+    async def clear_auto_memory_async(
+        self,
+        request: main_models.ClearAutoMemoryRequest,
+    ) -> main_models.ClearAutoMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.clear_auto_memory_with_options_async(request, headers, runtime)
 
     def clear_operating_object_favorites_with_options(
         self,
@@ -575,6 +1159,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.clear_operating_object_favorites_with_options_async(request, headers, runtime)
+
+    def close_workflow_todos_with_options(
+        self,
+        request: main_models.CloseWorkflowTodosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseWorkflowTodosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.source_workflow_id):
+            body['sourceWorkflowId'] = request.source_workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloseWorkflowTodos',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/closeWorkflowTodos',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloseWorkflowTodosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_workflow_todos_with_options_async(
+        self,
+        request: main_models.CloseWorkflowTodosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseWorkflowTodosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.source_workflow_id):
+            body['sourceWorkflowId'] = request.source_workflow_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CloseWorkflowTodos',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/closeWorkflowTodos',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CloseWorkflowTodosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_workflow_todos(
+        self,
+        request: main_models.CloseWorkflowTodosRequest,
+    ) -> main_models.CloseWorkflowTodosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.close_workflow_todos_with_options(request, headers, runtime)
+
+    async def close_workflow_todos_async(
+        self,
+        request: main_models.CloseWorkflowTodosRequest,
+    ) -> main_models.CloseWorkflowTodosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.close_workflow_todos_with_options_async(request, headers, runtime)
+
+    def count_todos_with_options(
+        self,
+        request: main_models.CountTodosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CountTodosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CountTodos',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/countTodos',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CountTodosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def count_todos_with_options_async(
+        self,
+        request: main_models.CountTodosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CountTodosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CountTodos',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/countTodos',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CountTodosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def count_todos(
+        self,
+        request: main_models.CountTodosRequest,
+    ) -> main_models.CountTodosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.count_todos_with_options(request, headers, runtime)
+
+    async def count_todos_async(
+        self,
+        request: main_models.CountTodosRequest,
+    ) -> main_models.CountTodosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.count_todos_with_options_async(request, headers, runtime)
 
     def create_announcement_with_options(
         self,
@@ -4642,6 +5398,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_tenant_directory_with_options_async(request, headers, runtime)
 
+    def create_todo_with_options(
+        self,
+        tmp_req: main_models.CreateTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTodoResponse:
+        tmp_req.validate()
+        request = main_models.CreateTodoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.assignee_user_ids):
+            request.assignee_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.assignee_user_ids, 'assigneeUserIds', 'json')
+        if not DaraCore.is_null(tmp_req.questions):
+            request.questions_shrink = Utils.array_to_string_with_specified_style(tmp_req.questions, 'questions', 'json')
+        if not DaraCore.is_null(tmp_req.source_context):
+            request.source_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_context, 'sourceContext', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.assignee_user_ids_shrink):
+            body['assigneeUserIds'] = request.assignee_user_ids_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.questions_shrink):
+            body['questions'] = request.questions_shrink
+        if not DaraCore.is_null(request.source_context_shrink):
+            body['sourceContext'] = request.source_context_shrink
+        if not DaraCore.is_null(request.source_type):
+            body['sourceType'] = request.source_type
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTodoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_todo_with_options_async(
+        self,
+        tmp_req: main_models.CreateTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTodoResponse:
+        tmp_req.validate()
+        request = main_models.CreateTodoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.assignee_user_ids):
+            request.assignee_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.assignee_user_ids, 'assigneeUserIds', 'json')
+        if not DaraCore.is_null(tmp_req.questions):
+            request.questions_shrink = Utils.array_to_string_with_specified_style(tmp_req.questions, 'questions', 'json')
+        if not DaraCore.is_null(tmp_req.source_context):
+            request.source_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_context, 'sourceContext', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.assignee_user_ids_shrink):
+            body['assigneeUserIds'] = request.assignee_user_ids_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.questions_shrink):
+            body['questions'] = request.questions_shrink
+        if not DaraCore.is_null(request.source_context_shrink):
+            body['sourceContext'] = request.source_context_shrink
+        if not DaraCore.is_null(request.source_type):
+            body['sourceType'] = request.source_type
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTodoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_todo(
+        self,
+        request: main_models.CreateTodoRequest,
+    ) -> main_models.CreateTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_todo_with_options(request, headers, runtime)
+
+    async def create_todo_async(
+        self,
+        request: main_models.CreateTodoRequest,
+    ) -> main_models.CreateTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_todo_with_options_async(request, headers, runtime)
+
     def create_user_with_options(
         self,
         tmp_req: main_models.CreateUserRequest,
@@ -4954,6 +5834,458 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_user_with_groups_with_options_async(request, headers, runtime)
 
+    def create_work_item_with_options(
+        self,
+        tmp_req: main_models.CreateWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkItemResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkItemShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attachments):
+            request.attachments_shrink = Utils.array_to_string_with_specified_style(tmp_req.attachments, 'attachments', 'json')
+        if not DaraCore.is_null(tmp_req.collaborator_user_ids):
+            request.collaborator_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.collaborator_user_ids, 'collaboratorUserIds', 'json')
+        if not DaraCore.is_null(tmp_req.workflow_template_ids):
+            request.workflow_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_template_ids, 'workflowTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.acceptance_criteria):
+            body['acceptanceCriteria'] = request.acceptance_criteria
+        if not DaraCore.is_null(request.attachments_shrink):
+            body['attachments'] = request.attachments_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.collaborator_user_ids_shrink):
+            body['collaboratorUserIds'] = request.collaborator_user_ids_shrink
+        if not DaraCore.is_null(request.conversation_id):
+            body['conversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.item_type):
+            body['itemType'] = request.item_type
+        if not DaraCore.is_null(request.owner_user_id):
+            body['ownerUserId'] = request.owner_user_id
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        if not DaraCore.is_null(request.workflow_template_ids_shrink):
+            body['workflowTemplateIds'] = request.workflow_template_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_work_item_with_options_async(
+        self,
+        tmp_req: main_models.CreateWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkItemResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkItemShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attachments):
+            request.attachments_shrink = Utils.array_to_string_with_specified_style(tmp_req.attachments, 'attachments', 'json')
+        if not DaraCore.is_null(tmp_req.collaborator_user_ids):
+            request.collaborator_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.collaborator_user_ids, 'collaboratorUserIds', 'json')
+        if not DaraCore.is_null(tmp_req.workflow_template_ids):
+            request.workflow_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_template_ids, 'workflowTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.acceptance_criteria):
+            body['acceptanceCriteria'] = request.acceptance_criteria
+        if not DaraCore.is_null(request.attachments_shrink):
+            body['attachments'] = request.attachments_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.collaborator_user_ids_shrink):
+            body['collaboratorUserIds'] = request.collaborator_user_ids_shrink
+        if not DaraCore.is_null(request.conversation_id):
+            body['conversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.item_type):
+            body['itemType'] = request.item_type
+        if not DaraCore.is_null(request.owner_user_id):
+            body['ownerUserId'] = request.owner_user_id
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        if not DaraCore.is_null(request.workflow_template_ids_shrink):
+            body['workflowTemplateIds'] = request.workflow_template_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_work_item(
+        self,
+        request: main_models.CreateWorkItemRequest,
+    ) -> main_models.CreateWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_work_item_with_options(request, headers, runtime)
+
+    async def create_work_item_async(
+        self,
+        request: main_models.CreateWorkItemRequest,
+    ) -> main_models.CreateWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_work_item_with_options_async(request, headers, runtime)
+
+    def create_workflow_instance_with_options(
+        self,
+        tmp_req: main_models.CreateWorkflowInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowInstanceResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkflowInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.variables):
+            request.variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.variables, 'variables', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.acceptance_criteria):
+            body['acceptanceCriteria'] = request.acceptance_criteria
+        if not DaraCore.is_null(request.business_id):
+            body['businessId'] = request.business_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.initiator):
+            body['initiator'] = request.initiator
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        if not DaraCore.is_null(request.variables_shrink):
+            body['variables'] = request.variables_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflowInstance',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createWorkflowInstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkflowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workflow_instance_with_options_async(
+        self,
+        tmp_req: main_models.CreateWorkflowInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowInstanceResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkflowInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.variables):
+            request.variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.variables, 'variables', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.acceptance_criteria):
+            body['acceptanceCriteria'] = request.acceptance_criteria
+        if not DaraCore.is_null(request.business_id):
+            body['businessId'] = request.business_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.initiator):
+            body['initiator'] = request.initiator
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        if not DaraCore.is_null(request.variables_shrink):
+            body['variables'] = request.variables_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflowInstance',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createWorkflowInstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkflowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workflow_instance(
+        self,
+        request: main_models.CreateWorkflowInstanceRequest,
+    ) -> main_models.CreateWorkflowInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_workflow_instance_with_options(request, headers, runtime)
+
+    async def create_workflow_instance_async(
+        self,
+        request: main_models.CreateWorkflowInstanceRequest,
+    ) -> main_models.CreateWorkflowInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_workflow_instance_with_options_async(request, headers, runtime)
+
+    def create_workflow_template_with_options(
+        self,
+        tmp_req: main_models.CreateWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowTemplateResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkflowTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.definition):
+            request.definition_shrink = Utils.array_to_string_with_specified_style(tmp_req.definition, 'definition', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.definition_shrink):
+            body['definition'] = request.definition_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkflowTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workflow_template_with_options_async(
+        self,
+        tmp_req: main_models.CreateWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowTemplateResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkflowTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.definition):
+            request.definition_shrink = Utils.array_to_string_with_specified_style(tmp_req.definition, 'definition', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.definition_shrink):
+            body['definition'] = request.definition_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkflowTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workflow_template(
+        self,
+        request: main_models.CreateWorkflowTemplateRequest,
+    ) -> main_models.CreateWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_workflow_template_with_options(request, headers, runtime)
+
+    async def create_workflow_template_async(
+        self,
+        request: main_models.CreateWorkflowTemplateRequest,
+    ) -> main_models.CreateWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_workflow_template_with_options_async(request, headers, runtime)
+
+    def delete_app_resource_permissions_with_options(
+        self,
+        tmp_req: main_models.DeleteAppResourcePermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppResourcePermissionsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAppResourcePermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.items):
+            request.items_shrink = Utils.array_to_string_with_specified_style(tmp_req.items, 'items', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.items_shrink):
+            body['items'] = request.items_shrink
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppResourcePermissions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/deleteAppResourcePermissions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppResourcePermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_resource_permissions_with_options_async(
+        self,
+        tmp_req: main_models.DeleteAppResourcePermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAppResourcePermissionsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAppResourcePermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.items):
+            request.items_shrink = Utils.array_to_string_with_specified_style(tmp_req.items, 'items', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.items_shrink):
+            body['items'] = request.items_shrink
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAppResourcePermissions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/deleteAppResourcePermissions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAppResourcePermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_resource_permissions(
+        self,
+        request: main_models.DeleteAppResourcePermissionsRequest,
+    ) -> main_models.DeleteAppResourcePermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_app_resource_permissions_with_options(request, headers, runtime)
+
+    async def delete_app_resource_permissions_async(
+        self,
+        request: main_models.DeleteAppResourcePermissionsRequest,
+    ) -> main_models.DeleteAppResourcePermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_app_resource_permissions_with_options_async(request, headers, runtime)
+
     def delete_chat_session_with_options(
         self,
         request: main_models.DeleteChatSessionRequest,
@@ -5206,6 +6538,182 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_tenant_directory_with_options_async(request, headers, runtime)
 
+    def delete_work_item_with_options(
+        self,
+        request: main_models.DeleteWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/deleteWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_work_item_with_options_async(
+        self,
+        request: main_models.DeleteWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/deleteWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_work_item(
+        self,
+        request: main_models.DeleteWorkItemRequest,
+    ) -> main_models.DeleteWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_work_item_with_options(request, headers, runtime)
+
+    async def delete_work_item_async(
+        self,
+        request: main_models.DeleteWorkItemRequest,
+    ) -> main_models.DeleteWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_work_item_with_options_async(request, headers, runtime)
+
+    def delete_workflow_template_with_options(
+        self,
+        request: main_models.DeleteWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/deleteWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workflow_template_with_options_async(
+        self,
+        request: main_models.DeleteWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/deleteWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workflow_template(
+        self,
+        request: main_models.DeleteWorkflowTemplateRequest,
+    ) -> main_models.DeleteWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_workflow_template_with_options(request, headers, runtime)
+
+    async def delete_workflow_template_async(
+        self,
+        request: main_models.DeleteWorkflowTemplateRequest,
+    ) -> main_models.DeleteWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_workflow_template_with_options_async(request, headers, runtime)
+
     def disable_token_with_options(
         self,
         request: main_models.DisableTokenRequest,
@@ -5373,6 +6881,290 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.enable_token_with_options_async(request, headers, runtime)
+
+    def export_workflow_template_with_options(
+        self,
+        request: main_models.ExportWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportWorkflowTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/exportWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportWorkflowTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_workflow_template_with_options_async(
+        self,
+        request: main_models.ExportWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportWorkflowTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/exportWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportWorkflowTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_workflow_template(
+        self,
+        request: main_models.ExportWorkflowTemplateRequest,
+    ) -> main_models.ExportWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.export_workflow_template_with_options(request, headers, runtime)
+
+    async def export_workflow_template_async(
+        self,
+        request: main_models.ExportWorkflowTemplateRequest,
+    ) -> main_models.ExportWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.export_workflow_template_with_options_async(request, headers, runtime)
+
+    def generate_workflow_template_draft_with_options(
+        self,
+        tmp_req: main_models.GenerateWorkflowTemplateDraftRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateWorkflowTemplateDraftResponse:
+        tmp_req.validate()
+        request = main_models.GenerateWorkflowTemplateDraftShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.previous_draft):
+            request.previous_draft_shrink = Utils.array_to_string_with_specified_style(tmp_req.previous_draft, 'previousDraft', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.previous_draft_shrink):
+            body['previousDraft'] = request.previous_draft_shrink
+        if not DaraCore.is_null(request.requirement):
+            body['requirement'] = request.requirement
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateWorkflowTemplateDraft',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/generateWorkflowTemplateDraft',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateWorkflowTemplateDraftResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_workflow_template_draft_with_options_async(
+        self,
+        tmp_req: main_models.GenerateWorkflowTemplateDraftRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateWorkflowTemplateDraftResponse:
+        tmp_req.validate()
+        request = main_models.GenerateWorkflowTemplateDraftShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.previous_draft):
+            request.previous_draft_shrink = Utils.array_to_string_with_specified_style(tmp_req.previous_draft, 'previousDraft', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.previous_draft_shrink):
+            body['previousDraft'] = request.previous_draft_shrink
+        if not DaraCore.is_null(request.requirement):
+            body['requirement'] = request.requirement
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateWorkflowTemplateDraft',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/generateWorkflowTemplateDraft',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateWorkflowTemplateDraftResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_workflow_template_draft(
+        self,
+        request: main_models.GenerateWorkflowTemplateDraftRequest,
+    ) -> main_models.GenerateWorkflowTemplateDraftResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.generate_workflow_template_draft_with_options(request, headers, runtime)
+
+    async def generate_workflow_template_draft_async(
+        self,
+        request: main_models.GenerateWorkflowTemplateDraftRequest,
+    ) -> main_models.GenerateWorkflowTemplateDraftResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.generate_workflow_template_draft_with_options_async(request, headers, runtime)
+
+    def get_agent_work_log_with_options(
+        self,
+        request: main_models.GetAgentWorkLogRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentWorkLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.node_id):
+            body['nodeId'] = request.node_id
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentWorkLog',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getAgentWorkLog',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentWorkLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_work_log_with_options_async(
+        self,
+        request: main_models.GetAgentWorkLogRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentWorkLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.node_id):
+            body['nodeId'] = request.node_id
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentWorkLog',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getAgentWorkLog',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentWorkLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_work_log(
+        self,
+        request: main_models.GetAgentWorkLogRequest,
+    ) -> main_models.GetAgentWorkLogResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_agent_work_log_with_options(request, headers, runtime)
+
+    async def get_agent_work_log_async(
+        self,
+        request: main_models.GetAgentWorkLogRequest,
+    ) -> main_models.GetAgentWorkLogResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_agent_work_log_with_options_async(request, headers, runtime)
 
     def get_ali_ding_minutes_content_with_options(
         self,
@@ -6041,6 +7833,274 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_knowledge_base_source_with_options_async(request, headers, runtime)
+
+    def get_memory_auto_extraction_switch_with_options(
+        self,
+        request: main_models.GetMemoryAutoExtractionSwitchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryAutoExtractionSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryAutoExtractionSwitch',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getMemoryAutoExtractionSwitch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryAutoExtractionSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_auto_extraction_switch_with_options_async(
+        self,
+        request: main_models.GetMemoryAutoExtractionSwitchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryAutoExtractionSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryAutoExtractionSwitch',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getMemoryAutoExtractionSwitch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryAutoExtractionSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory_auto_extraction_switch(
+        self,
+        request: main_models.GetMemoryAutoExtractionSwitchRequest,
+    ) -> main_models.GetMemoryAutoExtractionSwitchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memory_auto_extraction_switch_with_options(request, headers, runtime)
+
+    async def get_memory_auto_extraction_switch_async(
+        self,
+        request: main_models.GetMemoryAutoExtractionSwitchRequest,
+    ) -> main_models.GetMemoryAutoExtractionSwitchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memory_auto_extraction_switch_with_options_async(request, headers, runtime)
+
+    def get_memory_detail_with_options(
+        self,
+        request: main_models.GetMemoryDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryDetail',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getMemoryDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_detail_with_options_async(
+        self,
+        request: main_models.GetMemoryDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryDetail',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getMemoryDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory_detail(
+        self,
+        request: main_models.GetMemoryDetailRequest,
+    ) -> main_models.GetMemoryDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memory_detail_with_options(request, headers, runtime)
+
+    async def get_memory_detail_async(
+        self,
+        request: main_models.GetMemoryDetailRequest,
+    ) -> main_models.GetMemoryDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memory_detail_with_options_async(request, headers, runtime)
+
+    def get_node_detail_with_options(
+        self,
+        request: main_models.GetNodeDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNodeDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_id):
+            body['nodeId'] = request.node_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNodeDetail',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getNodeDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNodeDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_node_detail_with_options_async(
+        self,
+        request: main_models.GetNodeDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNodeDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_id):
+            body['nodeId'] = request.node_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNodeDetail',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getNodeDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNodeDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_node_detail(
+        self,
+        request: main_models.GetNodeDetailRequest,
+    ) -> main_models.GetNodeDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_node_detail_with_options(request, headers, runtime)
+
+    async def get_node_detail_async(
+        self,
+        request: main_models.GetNodeDetailRequest,
+    ) -> main_models.GetNodeDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_node_detail_with_options_async(request, headers, runtime)
 
     def get_scheduled_task_execution_detail_with_options(
         self,
@@ -6790,6 +8850,182 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_source_upload_signature_with_options_async(request, headers, runtime)
 
+    def get_todo_with_options(
+        self,
+        request: main_models.GetTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTodoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.message_id):
+            body['messageId'] = request.message_id
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTodoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_todo_with_options_async(
+        self,
+        request: main_models.GetTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTodoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.message_id):
+            body['messageId'] = request.message_id
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTodoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_todo(
+        self,
+        request: main_models.GetTodoRequest,
+    ) -> main_models.GetTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_todo_with_options(request, headers, runtime)
+
+    async def get_todo_async(
+        self,
+        request: main_models.GetTodoRequest,
+    ) -> main_models.GetTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_todo_with_options_async(request, headers, runtime)
+
+    def get_todo_detail_with_options(
+        self,
+        request: main_models.GetTodoDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTodoDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTodoDetail',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getTodoDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTodoDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_todo_detail_with_options_async(
+        self,
+        request: main_models.GetTodoDetailRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTodoDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTodoDetail',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getTodoDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTodoDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_todo_detail(
+        self,
+        request: main_models.GetTodoDetailRequest,
+    ) -> main_models.GetTodoDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_todo_detail_with_options(request, headers, runtime)
+
+    async def get_todo_detail_async(
+        self,
+        request: main_models.GetTodoDetailRequest,
+    ) -> main_models.GetTodoDetailResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_todo_detail_with_options_async(request, headers, runtime)
+
     def get_token_ensure_enable_with_options(
         self,
         request: main_models.GetTokenEnsureEnableRequest,
@@ -7278,6 +9514,442 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_user_info_with_options_async(request, headers, runtime)
 
+    def get_work_item_with_options(
+        self,
+        request: main_models.GetWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_work_item_with_options_async(
+        self,
+        request: main_models.GetWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_work_item(
+        self,
+        request: main_models.GetWorkItemRequest,
+    ) -> main_models.GetWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_work_item_with_options(request, headers, runtime)
+
+    async def get_work_item_async(
+        self,
+        request: main_models.GetWorkItemRequest,
+    ) -> main_models.GetWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_work_item_with_options_async(request, headers, runtime)
+
+    def get_work_item_artifact_access_with_options(
+        self,
+        request: main_models.GetWorkItemArtifactAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkItemArtifactAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_id):
+            query['artifactId'] = request.artifact_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            query['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.work_item_id):
+            query['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkItemArtifactAccess',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkItemArtifactAccess',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkItemArtifactAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_work_item_artifact_access_with_options_async(
+        self,
+        request: main_models.GetWorkItemArtifactAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkItemArtifactAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.artifact_id):
+            query['artifactId'] = request.artifact_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            query['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.work_item_id):
+            query['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkItemArtifactAccess',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkItemArtifactAccess',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkItemArtifactAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_work_item_artifact_access(
+        self,
+        request: main_models.GetWorkItemArtifactAccessRequest,
+    ) -> main_models.GetWorkItemArtifactAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_work_item_artifact_access_with_options(request, headers, runtime)
+
+    async def get_work_item_artifact_access_async(
+        self,
+        request: main_models.GetWorkItemArtifactAccessRequest,
+    ) -> main_models.GetWorkItemArtifactAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_work_item_artifact_access_with_options_async(request, headers, runtime)
+
+    def get_work_item_attachment_access_with_options(
+        self,
+        request: main_models.GetWorkItemAttachmentAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkItemAttachmentAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attachment_id):
+            query['attachmentId'] = request.attachment_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            query['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.work_item_id):
+            query['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkItemAttachmentAccess',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkItemAttachmentAccess',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkItemAttachmentAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_work_item_attachment_access_with_options_async(
+        self,
+        request: main_models.GetWorkItemAttachmentAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkItemAttachmentAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attachment_id):
+            query['attachmentId'] = request.attachment_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            query['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.work_item_id):
+            query['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkItemAttachmentAccess',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkItemAttachmentAccess',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkItemAttachmentAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_work_item_attachment_access(
+        self,
+        request: main_models.GetWorkItemAttachmentAccessRequest,
+    ) -> main_models.GetWorkItemAttachmentAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_work_item_attachment_access_with_options(request, headers, runtime)
+
+    async def get_work_item_attachment_access_async(
+        self,
+        request: main_models.GetWorkItemAttachmentAccessRequest,
+    ) -> main_models.GetWorkItemAttachmentAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_work_item_attachment_access_with_options_async(request, headers, runtime)
+
+    def get_workflow_instance_with_options(
+        self,
+        request: main_models.GetWorkflowInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowInstance',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkflowInstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workflow_instance_with_options_async(
+        self,
+        request: main_models.GetWorkflowInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowInstance',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkflowInstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workflow_instance(
+        self,
+        request: main_models.GetWorkflowInstanceRequest,
+    ) -> main_models.GetWorkflowInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_workflow_instance_with_options(request, headers, runtime)
+
+    async def get_workflow_instance_async(
+        self,
+        request: main_models.GetWorkflowInstanceRequest,
+    ) -> main_models.GetWorkflowInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_workflow_instance_with_options_async(request, headers, runtime)
+
+    def get_workflow_template_with_options(
+        self,
+        request: main_models.GetWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workflow_template_with_options_async(
+        self,
+        request: main_models.GetWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workflow_template(
+        self,
+        request: main_models.GetWorkflowTemplateRequest,
+    ) -> main_models.GetWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_workflow_template_with_options(request, headers, runtime)
+
+    async def get_workflow_template_async(
+        self,
+        request: main_models.GetWorkflowTemplateRequest,
+    ) -> main_models.GetWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_workflow_template_with_options_async(request, headers, runtime)
+
     def grant_agent_users_with_options(
         self,
         tmp_req: main_models.GrantAgentUsersRequest,
@@ -7393,6 +10065,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.grant_agent_users_with_options_async(request, headers, runtime)
+
+    def import_workflow_template_with_options(
+        self,
+        tmp_req: main_models.ImportWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportWorkflowTemplateResponse:
+        tmp_req.validate()
+        request = main_models.ImportWorkflowTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.template):
+            request.template_shrink = Utils.array_to_string_with_specified_style(tmp_req.template, 'template', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_shrink):
+            body['template'] = request.template_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/importWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportWorkflowTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_workflow_template_with_options_async(
+        self,
+        tmp_req: main_models.ImportWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportWorkflowTemplateResponse:
+        tmp_req.validate()
+        request = main_models.ImportWorkflowTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.template):
+            request.template_shrink = Utils.array_to_string_with_specified_style(tmp_req.template, 'template', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_shrink):
+            body['template'] = request.template_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/importWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportWorkflowTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_workflow_template(
+        self,
+        request: main_models.ImportWorkflowTemplateRequest,
+    ) -> main_models.ImportWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.import_workflow_template_with_options(request, headers, runtime)
+
+    async def import_workflow_template_async(
+        self,
+        request: main_models.ImportWorkflowTemplateRequest,
+    ) -> main_models.ImportWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.import_workflow_template_with_options_async(request, headers, runtime)
 
     def list_active_announcements_with_options(
         self,
@@ -7865,6 +10633,250 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_ali_ding_minutes_with_options_async(request, headers, runtime)
+
+    def list_app_resource_permission_records_with_options(
+        self,
+        tmp_req: main_models.ListAppResourcePermissionRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppResourcePermissionRecordsResponse:
+        tmp_req.validate()
+        request = main_models.ListAppResourcePermissionRecordsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.permissions):
+            request.permissions_shrink = Utils.array_to_string_with_specified_style(tmp_req.permissions, 'permissions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.grantee_id):
+            body['granteeId'] = request.grantee_id
+        if not DaraCore.is_null(request.grantee_tenant_id):
+            body['granteeTenantId'] = request.grantee_tenant_id
+        if not DaraCore.is_null(request.grantee_type):
+            body['granteeType'] = request.grantee_type
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.permissions_shrink):
+            body['permissions'] = request.permissions_shrink
+        if not DaraCore.is_null(request.resource_key_prefix):
+            body['resourceKeyPrefix'] = request.resource_key_prefix
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppResourcePermissionRecords',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listAppResourcePermissionRecords',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppResourcePermissionRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_resource_permission_records_with_options_async(
+        self,
+        tmp_req: main_models.ListAppResourcePermissionRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppResourcePermissionRecordsResponse:
+        tmp_req.validate()
+        request = main_models.ListAppResourcePermissionRecordsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.permissions):
+            request.permissions_shrink = Utils.array_to_string_with_specified_style(tmp_req.permissions, 'permissions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.grantee_id):
+            body['granteeId'] = request.grantee_id
+        if not DaraCore.is_null(request.grantee_tenant_id):
+            body['granteeTenantId'] = request.grantee_tenant_id
+        if not DaraCore.is_null(request.grantee_type):
+            body['granteeType'] = request.grantee_type
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.permissions_shrink):
+            body['permissions'] = request.permissions_shrink
+        if not DaraCore.is_null(request.resource_key_prefix):
+            body['resourceKeyPrefix'] = request.resource_key_prefix
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppResourcePermissionRecords',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listAppResourcePermissionRecords',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppResourcePermissionRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_resource_permission_records(
+        self,
+        request: main_models.ListAppResourcePermissionRecordsRequest,
+    ) -> main_models.ListAppResourcePermissionRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_app_resource_permission_records_with_options(request, headers, runtime)
+
+    async def list_app_resource_permission_records_async(
+        self,
+        request: main_models.ListAppResourcePermissionRecordsRequest,
+    ) -> main_models.ListAppResourcePermissionRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_app_resource_permission_records_with_options_async(request, headers, runtime)
+
+    def list_app_resource_user_permissions_with_options(
+        self,
+        tmp_req: main_models.ListAppResourceUserPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppResourceUserPermissionsResponse:
+        tmp_req.validate()
+        request = main_models.ListAppResourceUserPermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.permissions):
+            request.permissions_shrink = Utils.array_to_string_with_specified_style(tmp_req.permissions, 'permissions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.permissions_shrink):
+            body['permissions'] = request.permissions_shrink
+        if not DaraCore.is_null(request.resource_key_prefix):
+            body['resourceKeyPrefix'] = request.resource_key_prefix
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.target_user_id):
+            body['targetUserId'] = request.target_user_id
+        if not DaraCore.is_null(request.target_user_tenant_id):
+            body['targetUserTenantId'] = request.target_user_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppResourceUserPermissions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listAppResourceUserPermissions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppResourceUserPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_resource_user_permissions_with_options_async(
+        self,
+        tmp_req: main_models.ListAppResourceUserPermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppResourceUserPermissionsResponse:
+        tmp_req.validate()
+        request = main_models.ListAppResourceUserPermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.permissions):
+            request.permissions_shrink = Utils.array_to_string_with_specified_style(tmp_req.permissions, 'permissions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.permissions_shrink):
+            body['permissions'] = request.permissions_shrink
+        if not DaraCore.is_null(request.resource_key_prefix):
+            body['resourceKeyPrefix'] = request.resource_key_prefix
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.target_user_id):
+            body['targetUserId'] = request.target_user_id
+        if not DaraCore.is_null(request.target_user_tenant_id):
+            body['targetUserTenantId'] = request.target_user_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAppResourceUserPermissions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listAppResourceUserPermissions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppResourceUserPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_resource_user_permissions(
+        self,
+        request: main_models.ListAppResourceUserPermissionsRequest,
+    ) -> main_models.ListAppResourceUserPermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_app_resource_user_permissions_with_options(request, headers, runtime)
+
+    async def list_app_resource_user_permissions_async(
+        self,
+        request: main_models.ListAppResourceUserPermissionsRequest,
+    ) -> main_models.ListAppResourceUserPermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_app_resource_user_permissions_with_options_async(request, headers, runtime)
 
     def list_authorized_agents_with_options(
         self,
@@ -8810,6 +11822,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_group_directory_with_options_async(request, headers, runtime)
 
+    def list_instance_nodes_with_options(
+        self,
+        request: main_models.ListInstanceNodesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceNodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceNodes',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listInstanceNodes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_nodes_with_options_async(
+        self,
+        request: main_models.ListInstanceNodesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceNodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceNodes',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listInstanceNodes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_nodes(
+        self,
+        request: main_models.ListInstanceNodesRequest,
+    ) -> main_models.ListInstanceNodesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_instance_nodes_with_options(request, headers, runtime)
+
+    async def list_instance_nodes_async(
+        self,
+        request: main_models.ListInstanceNodesRequest,
+    ) -> main_models.ListInstanceNodesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_instance_nodes_with_options_async(request, headers, runtime)
+
     def list_knowledge_base_directories_with_options(
         self,
         request: main_models.ListKnowledgeBaseDirectoriesRequest,
@@ -9004,15 +12104,23 @@ class Client(OpenApiClient):
 
     def list_output_files_with_options(
         self,
-        request: main_models.ListOutputFilesRequest,
+        tmp_req: main_models.ListOutputFilesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListOutputFilesResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListOutputFilesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['bizId'] = request.biz_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.item_type):
             body['itemType'] = request.item_type
         if not DaraCore.is_null(request.keyword):
@@ -9023,8 +12131,12 @@ class Client(OpenApiClient):
             body['page'] = request.page
         if not DaraCore.is_null(request.page_size):
             body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
         if not DaraCore.is_null(request.shared_only):
             body['sharedOnly'] = request.shared_only
+        if not DaraCore.is_null(request.tags_shrink):
+            body['tags'] = request.tags_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -9048,15 +12160,23 @@ class Client(OpenApiClient):
 
     async def list_output_files_with_options_async(
         self,
-        request: main_models.ListOutputFilesRequest,
+        tmp_req: main_models.ListOutputFilesRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.ListOutputFilesResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListOutputFilesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['bizId'] = request.biz_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.item_type):
             body['itemType'] = request.item_type
         if not DaraCore.is_null(request.keyword):
@@ -9067,8 +12187,12 @@ class Client(OpenApiClient):
             body['page'] = request.page
         if not DaraCore.is_null(request.page_size):
             body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
         if not DaraCore.is_null(request.shared_only):
             body['sharedOnly'] = request.shared_only
+        if not DaraCore.is_null(request.tags_shrink):
+            body['tags'] = request.tags_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -9633,6 +12757,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_tenant_directory_with_options_async(request, headers, runtime)
+
+    def list_todos_with_options(
+        self,
+        tmp_req: main_models.ListTodosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTodosResponse:
+        tmp_req.validate()
+        request = main_models.ListTodosShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.priorities):
+            request.priorities_shrink = Utils.array_to_string_with_specified_style(tmp_req.priorities, 'priorities', 'json')
+        if not DaraCore.is_null(tmp_req.read_status):
+            request.read_status_shrink = Utils.array_to_string_with_specified_style(tmp_req.read_status, 'readStatus', 'json')
+        if not DaraCore.is_null(tmp_req.source_types):
+            request.source_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_types, 'sourceTypes', 'json')
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'statuses', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            body['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.priorities_shrink):
+            body['priorities'] = request.priorities_shrink
+        if not DaraCore.is_null(request.read_status_shrink):
+            body['readStatus'] = request.read_status_shrink
+        if not DaraCore.is_null(request.sort_by):
+            body['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.source_types_shrink):
+            body['sourceTypes'] = request.source_types_shrink
+        if not DaraCore.is_null(request.statuses_shrink):
+            body['statuses'] = request.statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTodos',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listTodos',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTodosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_todos_with_options_async(
+        self,
+        tmp_req: main_models.ListTodosRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTodosResponse:
+        tmp_req.validate()
+        request = main_models.ListTodosShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.priorities):
+            request.priorities_shrink = Utils.array_to_string_with_specified_style(tmp_req.priorities, 'priorities', 'json')
+        if not DaraCore.is_null(tmp_req.read_status):
+            request.read_status_shrink = Utils.array_to_string_with_specified_style(tmp_req.read_status, 'readStatus', 'json')
+        if not DaraCore.is_null(tmp_req.source_types):
+            request.source_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_types, 'sourceTypes', 'json')
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'statuses', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            body['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.priorities_shrink):
+            body['priorities'] = request.priorities_shrink
+        if not DaraCore.is_null(request.read_status_shrink):
+            body['readStatus'] = request.read_status_shrink
+        if not DaraCore.is_null(request.sort_by):
+            body['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.source_types_shrink):
+            body['sourceTypes'] = request.source_types_shrink
+        if not DaraCore.is_null(request.statuses_shrink):
+            body['statuses'] = request.statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTodos',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listTodos',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTodosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_todos(
+        self,
+        request: main_models.ListTodosRequest,
+    ) -> main_models.ListTodosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_todos_with_options(request, headers, runtime)
+
+    async def list_todos_async(
+        self,
+        request: main_models.ListTodosRequest,
+    ) -> main_models.ListTodosResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_todos_with_options_async(request, headers, runtime)
 
     def list_user_groups_with_options(
         self,
@@ -10228,6 +13496,546 @@ class Client(OpenApiClient):
         headers = main_models.ListVisibleKnowledgeBasesHeaders()
         return await self.list_visible_knowledge_bases_with_options_async(request, headers, runtime)
 
+    def list_work_item_artifacts_with_options(
+        self,
+        request: main_models.ListWorkItemArtifactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkItemArtifactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkItemArtifacts',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkItemArtifacts',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkItemArtifactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_work_item_artifacts_with_options_async(
+        self,
+        request: main_models.ListWorkItemArtifactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkItemArtifactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkItemArtifacts',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkItemArtifacts',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkItemArtifactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_work_item_artifacts(
+        self,
+        request: main_models.ListWorkItemArtifactsRequest,
+    ) -> main_models.ListWorkItemArtifactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_work_item_artifacts_with_options(request, headers, runtime)
+
+    async def list_work_item_artifacts_async(
+        self,
+        request: main_models.ListWorkItemArtifactsRequest,
+    ) -> main_models.ListWorkItemArtifactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_work_item_artifacts_with_options_async(request, headers, runtime)
+
+    def list_work_items_with_options(
+        self,
+        tmp_req: main_models.ListWorkItemsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkItemsResponse:
+        tmp_req.validate()
+        request = main_models.ListWorkItemsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.business_statuses):
+            request.business_statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_statuses, 'businessStatuses', 'json')
+        if not DaraCore.is_null(tmp_req.item_types):
+            request.item_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.item_types, 'itemTypes', 'json')
+        if not DaraCore.is_null(tmp_req.priorities):
+            request.priorities_shrink = Utils.array_to_string_with_specified_style(tmp_req.priorities, 'priorities', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_statuses_shrink):
+            body['businessStatuses'] = request.business_statuses_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.item_types_shrink):
+            body['itemTypes'] = request.item_types_shrink
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            body['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.priorities_shrink):
+            body['priorities'] = request.priorities_shrink
+        if not DaraCore.is_null(request.scope):
+            body['scope'] = request.scope
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkItems',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkItems',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_work_items_with_options_async(
+        self,
+        tmp_req: main_models.ListWorkItemsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkItemsResponse:
+        tmp_req.validate()
+        request = main_models.ListWorkItemsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.business_statuses):
+            request.business_statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_statuses, 'businessStatuses', 'json')
+        if not DaraCore.is_null(tmp_req.item_types):
+            request.item_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.item_types, 'itemTypes', 'json')
+        if not DaraCore.is_null(tmp_req.priorities):
+            request.priorities_shrink = Utils.array_to_string_with_specified_style(tmp_req.priorities, 'priorities', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_statuses_shrink):
+            body['businessStatuses'] = request.business_statuses_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.item_types_shrink):
+            body['itemTypes'] = request.item_types_shrink
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            body['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.priorities_shrink):
+            body['priorities'] = request.priorities_shrink
+        if not DaraCore.is_null(request.scope):
+            body['scope'] = request.scope
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkItems',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkItems',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_work_items(
+        self,
+        request: main_models.ListWorkItemsRequest,
+    ) -> main_models.ListWorkItemsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_work_items_with_options(request, headers, runtime)
+
+    async def list_work_items_async(
+        self,
+        request: main_models.ListWorkItemsRequest,
+    ) -> main_models.ListWorkItemsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_work_items_with_options_async(request, headers, runtime)
+
+    def list_workflow_instances_with_options(
+        self,
+        request: main_models.ListWorkflowInstancesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_id):
+            body['businessId'] = request.business_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.initiator):
+            body['initiator'] = request.initiator
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            body['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            body['sortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowInstances',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkflowInstances',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workflow_instances_with_options_async(
+        self,
+        request: main_models.ListWorkflowInstancesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_id):
+            body['businessId'] = request.business_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.initiator):
+            body['initiator'] = request.initiator
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            body['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            body['sortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowInstances',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkflowInstances',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workflow_instances(
+        self,
+        request: main_models.ListWorkflowInstancesRequest,
+    ) -> main_models.ListWorkflowInstancesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_workflow_instances_with_options(request, headers, runtime)
+
+    async def list_workflow_instances_async(
+        self,
+        request: main_models.ListWorkflowInstancesRequest,
+    ) -> main_models.ListWorkflowInstancesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_workflow_instances_with_options_async(request, headers, runtime)
+
+    def list_workflow_templates_with_options(
+        self,
+        request: main_models.ListWorkflowTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            body['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowTemplates',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkflowTemplates',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workflow_templates_with_options_async(
+        self,
+        request: main_models.ListWorkflowTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            body['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowTemplates',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkflowTemplates',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workflow_templates(
+        self,
+        request: main_models.ListWorkflowTemplatesRequest,
+    ) -> main_models.ListWorkflowTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_workflow_templates_with_options(request, headers, runtime)
+
+    async def list_workflow_templates_async(
+        self,
+        request: main_models.ListWorkflowTemplatesRequest,
+    ) -> main_models.ListWorkflowTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_workflow_templates_with_options_async(request, headers, runtime)
+
+    def mark_todos_read_with_options(
+        self,
+        tmp_req: main_models.MarkTodosReadRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MarkTodosReadResponse:
+        tmp_req.validate()
+        request = main_models.MarkTodosReadShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.todo_ids):
+            request.todo_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.todo_ids, 'todoIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.mark_all_read):
+            body['markAllRead'] = request.mark_all_read
+        if not DaraCore.is_null(request.todo_ids_shrink):
+            body['todoIds'] = request.todo_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MarkTodosRead',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/markTodosRead',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MarkTodosReadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mark_todos_read_with_options_async(
+        self,
+        tmp_req: main_models.MarkTodosReadRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MarkTodosReadResponse:
+        tmp_req.validate()
+        request = main_models.MarkTodosReadShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.todo_ids):
+            request.todo_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.todo_ids, 'todoIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.mark_all_read):
+            body['markAllRead'] = request.mark_all_read
+        if not DaraCore.is_null(request.todo_ids_shrink):
+            body['todoIds'] = request.todo_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MarkTodosRead',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/markTodosRead',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MarkTodosReadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mark_todos_read(
+        self,
+        request: main_models.MarkTodosReadRequest,
+    ) -> main_models.MarkTodosReadResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.mark_todos_read_with_options(request, headers, runtime)
+
+    async def mark_todos_read_async(
+        self,
+        request: main_models.MarkTodosReadRequest,
+    ) -> main_models.MarkTodosReadResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.mark_todos_read_with_options_async(request, headers, runtime)
+
     def move_group_resource_with_options(
         self,
         request: main_models.MoveGroupResourceRequest,
@@ -10595,6 +14403,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.offline_announcement_with_options_async(request, headers, runtime)
+
+    def pause_work_item_with_options(
+        self,
+        request: main_models.PauseWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/pauseWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseWorkItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_work_item_with_options_async(
+        self,
+        request: main_models.PauseWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/pauseWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseWorkItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_work_item(
+        self,
+        request: main_models.PauseWorkItemRequest,
+    ) -> main_models.PauseWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.pause_work_item_with_options(request, headers, runtime)
+
+    async def pause_work_item_async(
+        self,
+        request: main_models.PauseWorkItemRequest,
+    ) -> main_models.PauseWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.pause_work_item_with_options_async(request, headers, runtime)
 
     def preview_group_source_with_options(
         self,
@@ -11138,6 +15034,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.query_sync_result_with_options_async(request, headers, runtime)
 
+    def query_work_item_feed_with_options(
+        self,
+        tmp_req: main_models.QueryWorkItemFeedRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryWorkItemFeedResponse:
+        tmp_req.validate()
+        request = main_models.QueryWorkItemFeedShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.business_statuses):
+            request.business_statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_statuses, 'businessStatuses', 'json')
+        if not DaraCore.is_null(tmp_req.item_types):
+            request.item_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.item_types, 'itemTypes', 'json')
+        if not DaraCore.is_null(tmp_req.priorities):
+            request.priorities_shrink = Utils.array_to_string_with_specified_style(tmp_req.priorities, 'priorities', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_statuses_shrink):
+            body['businessStatuses'] = request.business_statuses_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.cursor):
+            body['cursor'] = request.cursor
+        if not DaraCore.is_null(request.item_types_shrink):
+            body['itemTypes'] = request.item_types_shrink
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.priorities_shrink):
+            body['priorities'] = request.priorities_shrink
+        if not DaraCore.is_null(request.scope):
+            body['scope'] = request.scope
+        if not DaraCore.is_null(request.source_task_id):
+            body['sourceTaskId'] = request.source_task_id
+        if not DaraCore.is_null(request.view):
+            body['view'] = request.view
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryWorkItemFeed',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/queryWorkItemFeed',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryWorkItemFeedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_work_item_feed_with_options_async(
+        self,
+        tmp_req: main_models.QueryWorkItemFeedRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryWorkItemFeedResponse:
+        tmp_req.validate()
+        request = main_models.QueryWorkItemFeedShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.business_statuses):
+            request.business_statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.business_statuses, 'businessStatuses', 'json')
+        if not DaraCore.is_null(tmp_req.item_types):
+            request.item_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.item_types, 'itemTypes', 'json')
+        if not DaraCore.is_null(tmp_req.priorities):
+            request.priorities_shrink = Utils.array_to_string_with_specified_style(tmp_req.priorities, 'priorities', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.business_statuses_shrink):
+            body['businessStatuses'] = request.business_statuses_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.cursor):
+            body['cursor'] = request.cursor
+        if not DaraCore.is_null(request.item_types_shrink):
+            body['itemTypes'] = request.item_types_shrink
+        if not DaraCore.is_null(request.keyword):
+            body['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.priorities_shrink):
+            body['priorities'] = request.priorities_shrink
+        if not DaraCore.is_null(request.scope):
+            body['scope'] = request.scope
+        if not DaraCore.is_null(request.source_task_id):
+            body['sourceTaskId'] = request.source_task_id
+        if not DaraCore.is_null(request.view):
+            body['view'] = request.view
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryWorkItemFeed',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/queryWorkItemFeed',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryWorkItemFeedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_work_item_feed(
+        self,
+        request: main_models.QueryWorkItemFeedRequest,
+    ) -> main_models.QueryWorkItemFeedResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_work_item_feed_with_options(request, headers, runtime)
+
+    async def query_work_item_feed_async(
+        self,
+        request: main_models.QueryWorkItemFeedRequest,
+    ) -> main_models.QueryWorkItemFeedResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_work_item_feed_with_options_async(request, headers, runtime)
+
     def recommend_next_actions_with_options(
         self,
         request: main_models.RecommendNextActionsRequest,
@@ -11233,6 +15265,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.recommend_next_actions_with_options_async(request, headers, runtime)
+
+    def register_app_resource_permissions_with_options(
+        self,
+        tmp_req: main_models.RegisterAppResourcePermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterAppResourcePermissionsResponse:
+        tmp_req.validate()
+        request = main_models.RegisterAppResourcePermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.items):
+            request.items_shrink = Utils.array_to_string_with_specified_style(tmp_req.items, 'items', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.items_shrink):
+            body['items'] = request.items_shrink
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterAppResourcePermissions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/registerAppResourcePermissions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterAppResourcePermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def register_app_resource_permissions_with_options_async(
+        self,
+        tmp_req: main_models.RegisterAppResourcePermissionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterAppResourcePermissionsResponse:
+        tmp_req.validate()
+        request = main_models.RegisterAppResourcePermissionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.items):
+            request.items_shrink = Utils.array_to_string_with_specified_style(tmp_req.items, 'items', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.items_shrink):
+            body['items'] = request.items_shrink
+        if not DaraCore.is_null(request.resource_tenant_id):
+            body['resourceTenantId'] = request.resource_tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RegisterAppResourcePermissions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/registerAppResourcePermissions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RegisterAppResourcePermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def register_app_resource_permissions(
+        self,
+        request: main_models.RegisterAppResourcePermissionsRequest,
+    ) -> main_models.RegisterAppResourcePermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.register_app_resource_permissions_with_options(request, headers, runtime)
+
+    async def register_app_resource_permissions_async(
+        self,
+        request: main_models.RegisterAppResourcePermissionsRequest,
+    ) -> main_models.RegisterAppResourcePermissionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.register_app_resource_permissions_with_options_async(request, headers, runtime)
 
     def remove_user_with_options(
         self,
@@ -11978,6 +16106,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.replace_knowledge_base_source_file_with_options_async(request, headers, runtime)
 
+    def replace_manual_memory_with_options(
+        self,
+        request: main_models.ReplaceManualMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ReplaceManualMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReplaceManualMemory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/replaceManualMemory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReplaceManualMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def replace_manual_memory_with_options_async(
+        self,
+        request: main_models.ReplaceManualMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ReplaceManualMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReplaceManualMemory',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/replaceManualMemory',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReplaceManualMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def replace_manual_memory(
+        self,
+        request: main_models.ReplaceManualMemoryRequest,
+    ) -> main_models.ReplaceManualMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.replace_manual_memory_with_options(request, headers, runtime)
+
+    async def replace_manual_memory_async(
+        self,
+        request: main_models.ReplaceManualMemoryRequest,
+    ) -> main_models.ReplaceManualMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.replace_manual_memory_with_options_async(request, headers, runtime)
+
     def replace_object_bindings_with_options(
         self,
         tmp_req: main_models.ReplaceObjectBindingsRequest,
@@ -12178,6 +16398,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.replace_source_file_with_options_async(request, headers, runtime)
 
+    def rerun_node_aiwith_options(
+        self,
+        request: main_models.RerunNodeAIRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RerunNodeAIResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_id):
+            body['nodeId'] = request.node_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RerunNodeAI',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/rerunNodeAI',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RerunNodeAIResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rerun_node_aiwith_options_async(
+        self,
+        request: main_models.RerunNodeAIRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RerunNodeAIResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.node_id):
+            body['nodeId'] = request.node_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RerunNodeAI',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/rerunNodeAI',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RerunNodeAIResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rerun_node_ai(
+        self,
+        request: main_models.RerunNodeAIRequest,
+    ) -> main_models.RerunNodeAIResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.rerun_node_aiwith_options(request, headers, runtime)
+
+    async def rerun_node_ai_async(
+        self,
+        request: main_models.RerunNodeAIRequest,
+    ) -> main_models.RerunNodeAIResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.rerun_node_aiwith_options_async(request, headers, runtime)
+
     def reset_password_with_options(
         self,
         request: main_models.ResetPasswordRequest,
@@ -12349,6 +16661,278 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.reset_token_with_options_async(request, headers, runtime)
+
+    def resolve_work_item_artifact_access_with_options(
+        self,
+        request: main_models.ResolveWorkItemArtifactAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResolveWorkItemArtifactAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.artifact_id):
+            body['artifactId'] = request.artifact_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResolveWorkItemArtifactAccess',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/resolveWorkItemArtifactAccess',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResolveWorkItemArtifactAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resolve_work_item_artifact_access_with_options_async(
+        self,
+        request: main_models.ResolveWorkItemArtifactAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResolveWorkItemArtifactAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.artifact_id):
+            body['artifactId'] = request.artifact_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResolveWorkItemArtifactAccess',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/resolveWorkItemArtifactAccess',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResolveWorkItemArtifactAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resolve_work_item_artifact_access(
+        self,
+        request: main_models.ResolveWorkItemArtifactAccessRequest,
+    ) -> main_models.ResolveWorkItemArtifactAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.resolve_work_item_artifact_access_with_options(request, headers, runtime)
+
+    async def resolve_work_item_artifact_access_async(
+        self,
+        request: main_models.ResolveWorkItemArtifactAccessRequest,
+    ) -> main_models.ResolveWorkItemArtifactAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.resolve_work_item_artifact_access_with_options_async(request, headers, runtime)
+
+    def resolve_work_item_attachment_access_with_options(
+        self,
+        request: main_models.ResolveWorkItemAttachmentAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResolveWorkItemAttachmentAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.attachment_id):
+            body['attachmentId'] = request.attachment_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResolveWorkItemAttachmentAccess',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/resolveWorkItemAttachmentAccess',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResolveWorkItemAttachmentAccessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resolve_work_item_attachment_access_with_options_async(
+        self,
+        request: main_models.ResolveWorkItemAttachmentAccessRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResolveWorkItemAttachmentAccessResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.attachment_id):
+            body['attachmentId'] = request.attachment_id
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResolveWorkItemAttachmentAccess',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/resolveWorkItemAttachmentAccess',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResolveWorkItemAttachmentAccessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resolve_work_item_attachment_access(
+        self,
+        request: main_models.ResolveWorkItemAttachmentAccessRequest,
+    ) -> main_models.ResolveWorkItemAttachmentAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.resolve_work_item_attachment_access_with_options(request, headers, runtime)
+
+    async def resolve_work_item_attachment_access_async(
+        self,
+        request: main_models.ResolveWorkItemAttachmentAccessRequest,
+    ) -> main_models.ResolveWorkItemAttachmentAccessResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.resolve_work_item_attachment_access_with_options_async(request, headers, runtime)
+
+    def resume_work_item_with_options(
+        self,
+        request: main_models.ResumeWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/resumeWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeWorkItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_work_item_with_options_async(
+        self,
+        request: main_models.ResumeWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/resumeWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeWorkItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_work_item(
+        self,
+        request: main_models.ResumeWorkItemRequest,
+    ) -> main_models.ResumeWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.resume_work_item_with_options(request, headers, runtime)
+
+    async def resume_work_item_async(
+        self,
+        request: main_models.ResumeWorkItemRequest,
+    ) -> main_models.ResumeWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.resume_work_item_with_options_async(request, headers, runtime)
 
     def retry_directory_failed_sources_with_options(
         self,
@@ -13334,6 +17918,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.save_output_file_to_resource_with_options_async(request, headers, runtime)
 
+    def schedule_work_item_with_options(
+        self,
+        request: main_models.ScheduleWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ScheduleWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScheduleWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/scheduleWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScheduleWorkItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def schedule_work_item_with_options_async(
+        self,
+        request: main_models.ScheduleWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ScheduleWorkItemResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.idempotency_key):
+            body['idempotencyKey'] = request.idempotency_key
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScheduleWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/scheduleWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScheduleWorkItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def schedule_work_item(
+        self,
+        request: main_models.ScheduleWorkItemRequest,
+    ) -> main_models.ScheduleWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.schedule_work_item_with_options(request, headers, runtime)
+
+    async def schedule_work_item_async(
+        self,
+        request: main_models.ScheduleWorkItemRequest,
+    ) -> main_models.ScheduleWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.schedule_work_item_with_options_async(request, headers, runtime)
+
     def search_ali_ding_group_chats_with_options(
         self,
         request: main_models.SearchAliDingGroupChatsRequest,
@@ -13864,6 +18540,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.send_chat_message_with_options_async(request, headers, runtime)
 
+    def set_work_item_pinned_with_options(
+        self,
+        request: main_models.SetWorkItemPinnedRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWorkItemPinnedResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.pinned):
+            body['pinned'] = request.pinned
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetWorkItemPinned',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/setWorkItemPinned',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetWorkItemPinnedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_work_item_pinned_with_options_async(
+        self,
+        request: main_models.SetWorkItemPinnedRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWorkItemPinnedResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.pinned):
+            body['pinned'] = request.pinned
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetWorkItemPinned',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/setWorkItemPinned',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetWorkItemPinnedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_work_item_pinned(
+        self,
+        request: main_models.SetWorkItemPinnedRequest,
+    ) -> main_models.SetWorkItemPinnedResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.set_work_item_pinned_with_options(request, headers, runtime)
+
+    async def set_work_item_pinned_async(
+        self,
+        request: main_models.SetWorkItemPinnedRequest,
+    ) -> main_models.SetWorkItemPinnedResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.set_work_item_pinned_with_options_async(request, headers, runtime)
+
     def stop_chat_message_with_options(
         self,
         request: main_models.StopChatMessageRequest,
@@ -14112,6 +18880,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.stream_chat_message_with_options_async(message_id, request, headers, runtime)
 
+    def submit_todo_with_options(
+        self,
+        tmp_req: main_models.SubmitTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitTodoResponse:
+        tmp_req.validate()
+        request = main_models.SubmitTodoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.answers):
+            request.answers_shrink = Utils.array_to_string_with_specified_style(tmp_req.answers, 'answers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.answers_shrink):
+            body['answers'] = request.answers_shrink
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/submitTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitTodoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_todo_with_options_async(
+        self,
+        tmp_req: main_models.SubmitTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitTodoResponse:
+        tmp_req.validate()
+        request = main_models.SubmitTodoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.answers):
+            request.answers_shrink = Utils.array_to_string_with_specified_style(tmp_req.answers, 'answers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.answers_shrink):
+            body['answers'] = request.answers_shrink
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/submitTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitTodoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_todo(
+        self,
+        request: main_models.SubmitTodoRequest,
+    ) -> main_models.SubmitTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.submit_todo_with_options(request, headers, runtime)
+
+    async def submit_todo_async(
+        self,
+        request: main_models.SubmitTodoRequest,
+    ) -> main_models.SubmitTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.submit_todo_with_options_async(request, headers, runtime)
+
     def sync_org_structure_with_options(
         self,
         tmp_req: main_models.SyncOrgStructureRequest,
@@ -14227,6 +19091,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.sync_org_structure_with_options_async(request, headers, runtime)
+
+    def terminate_instance_with_options(
+        self,
+        request: main_models.TerminateInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TerminateInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reason):
+            body['reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TerminateInstance',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/terminateInstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TerminateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def terminate_instance_with_options_async(
+        self,
+        request: main_models.TerminateInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TerminateInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.instance_id):
+            body['instanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reason):
+            body['reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TerminateInstance',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/terminateInstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TerminateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def terminate_instance(
+        self,
+        request: main_models.TerminateInstanceRequest,
+    ) -> main_models.TerminateInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.terminate_instance_with_options(request, headers, runtime)
+
+    async def terminate_instance_async(
+        self,
+        request: main_models.TerminateInstanceRequest,
+    ) -> main_models.TerminateInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.terminate_instance_with_options_async(request, headers, runtime)
 
     def toggle_primary_object_favorite_with_options(
         self,
@@ -14587,6 +19543,106 @@ class Client(OpenApiClient):
             transcribe_chat_voice_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         transcribe_chat_voice_resp = await self.transcribe_chat_voice_with_options_async(transcribe_chat_voice_req, headers, runtime)
         return transcribe_chat_voice_resp
+
+    def transfer_todo_with_options(
+        self,
+        tmp_req: main_models.TransferTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferTodoResponse:
+        tmp_req.validate()
+        request = main_models.TransferTodoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_user_ids):
+            request.target_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_user_ids, 'targetUserIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.comment):
+            body['comment'] = request.comment
+        if not DaraCore.is_null(request.target_user_ids_shrink):
+            body['targetUserIds'] = request.target_user_ids_shrink
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TransferTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/transferTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TransferTodoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_todo_with_options_async(
+        self,
+        tmp_req: main_models.TransferTodoRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferTodoResponse:
+        tmp_req.validate()
+        request = main_models.TransferTodoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_user_ids):
+            request.target_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_user_ids, 'targetUserIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.comment):
+            body['comment'] = request.comment
+        if not DaraCore.is_null(request.target_user_ids_shrink):
+            body['targetUserIds'] = request.target_user_ids_shrink
+        if not DaraCore.is_null(request.todo_id):
+            body['todoId'] = request.todo_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TransferTodo',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/transferTodo',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TransferTodoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_todo(
+        self,
+        request: main_models.TransferTodoRequest,
+    ) -> main_models.TransferTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.transfer_todo_with_options(request, headers, runtime)
+
+    async def transfer_todo_async(
+        self,
+        request: main_models.TransferTodoRequest,
+    ) -> main_models.TransferTodoResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.transfer_todo_with_options_async(request, headers, runtime)
 
     def update_agent_auth_mode_with_options(
         self,
@@ -15428,6 +20484,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_knowledge_base_source_tags_with_options_async(request, headers, runtime)
 
+    def update_memory_auto_extraction_switch_with_options(
+        self,
+        request: main_models.UpdateMemoryAutoExtractionSwitchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryAutoExtractionSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.clear_existing):
+            body['clearExisting'] = request.clear_existing
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemoryAutoExtractionSwitch',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateMemoryAutoExtractionSwitch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryAutoExtractionSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_memory_auto_extraction_switch_with_options_async(
+        self,
+        request: main_models.UpdateMemoryAutoExtractionSwitchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryAutoExtractionSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.clear_existing):
+            body['clearExisting'] = request.clear_existing
+        if not DaraCore.is_null(request.enabled):
+            body['enabled'] = request.enabled
+        if not DaraCore.is_null(request.group_id):
+            body['groupId'] = request.group_id
+        if not DaraCore.is_null(request.owner_type):
+            body['ownerType'] = request.owner_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemoryAutoExtractionSwitch',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateMemoryAutoExtractionSwitch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryAutoExtractionSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_memory_auto_extraction_switch(
+        self,
+        request: main_models.UpdateMemoryAutoExtractionSwitchRequest,
+    ) -> main_models.UpdateMemoryAutoExtractionSwitchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_memory_auto_extraction_switch_with_options(request, headers, runtime)
+
+    async def update_memory_auto_extraction_switch_async(
+        self,
+        request: main_models.UpdateMemoryAutoExtractionSwitchRequest,
+    ) -> main_models.UpdateMemoryAutoExtractionSwitchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_memory_auto_extraction_switch_with_options_async(request, headers, runtime)
+
     def update_scheduled_task_with_options(
         self,
         tmp_req: main_models.UpdateScheduledTaskRequest,
@@ -16087,6 +21239,250 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_user_info_with_options_async(request, headers, runtime)
+
+    def update_work_item_with_options(
+        self,
+        tmp_req: main_models.UpdateWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkItemResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWorkItemShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attachments):
+            request.attachments_shrink = Utils.array_to_string_with_specified_style(tmp_req.attachments, 'attachments', 'json')
+        if not DaraCore.is_null(tmp_req.collaborator_user_ids):
+            request.collaborator_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.collaborator_user_ids, 'collaboratorUserIds', 'json')
+        if not DaraCore.is_null(tmp_req.workflow_template_ids):
+            request.workflow_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_template_ids, 'workflowTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.acceptance_criteria):
+            body['acceptanceCriteria'] = request.acceptance_criteria
+        if not DaraCore.is_null(request.attachments_shrink):
+            body['attachments'] = request.attachments_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.collaborator_user_ids_shrink):
+            body['collaboratorUserIds'] = request.collaborator_user_ids_shrink
+        if not DaraCore.is_null(request.conversation_id):
+            body['conversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.expected_version):
+            body['expectedVersion'] = request.expected_version
+        if not DaraCore.is_null(request.owner_user_id):
+            body['ownerUserId'] = request.owner_user_id
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        if not DaraCore.is_null(request.workflow_template_ids_shrink):
+            body['workflowTemplateIds'] = request.workflow_template_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_work_item_with_options_async(
+        self,
+        tmp_req: main_models.UpdateWorkItemRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkItemResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWorkItemShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.attachments):
+            request.attachments_shrink = Utils.array_to_string_with_specified_style(tmp_req.attachments, 'attachments', 'json')
+        if not DaraCore.is_null(tmp_req.collaborator_user_ids):
+            request.collaborator_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.collaborator_user_ids, 'collaboratorUserIds', 'json')
+        if not DaraCore.is_null(tmp_req.workflow_template_ids):
+            request.workflow_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_template_ids, 'workflowTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.acceptance_criteria):
+            body['acceptanceCriteria'] = request.acceptance_criteria
+        if not DaraCore.is_null(request.attachments_shrink):
+            body['attachments'] = request.attachments_shrink
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.collaborator_user_ids_shrink):
+            body['collaboratorUserIds'] = request.collaborator_user_ids_shrink
+        if not DaraCore.is_null(request.conversation_id):
+            body['conversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.expected_version):
+            body['expectedVersion'] = request.expected_version
+        if not DaraCore.is_null(request.owner_user_id):
+            body['ownerUserId'] = request.owner_user_id
+        if not DaraCore.is_null(request.priority):
+            body['priority'] = request.priority
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        if not DaraCore.is_null(request.work_item_id):
+            body['workItemId'] = request.work_item_id
+        if not DaraCore.is_null(request.workflow_template_ids_shrink):
+            body['workflowTemplateIds'] = request.workflow_template_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkItem',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateWorkItem',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_work_item(
+        self,
+        request: main_models.UpdateWorkItemRequest,
+    ) -> main_models.UpdateWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_work_item_with_options(request, headers, runtime)
+
+    async def update_work_item_async(
+        self,
+        request: main_models.UpdateWorkItemRequest,
+    ) -> main_models.UpdateWorkItemResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_work_item_with_options_async(request, headers, runtime)
+
+    def update_workflow_template_with_options(
+        self,
+        tmp_req: main_models.UpdateWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowTemplateResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWorkflowTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.definition):
+            request.definition_shrink = Utils.array_to_string_with_specified_style(tmp_req.definition, 'definition', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.definition_shrink):
+            body['definition'] = request.definition_shrink
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workflow_template_with_options_async(
+        self,
+        tmp_req: main_models.UpdateWorkflowTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkflowTemplateResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWorkflowTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.definition):
+            request.definition_shrink = Utils.array_to_string_with_specified_style(tmp_req.definition, 'definition', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.definition_shrink):
+            body['definition'] = request.definition_shrink
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkflowTemplate',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateWorkflowTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkflowTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workflow_template(
+        self,
+        request: main_models.UpdateWorkflowTemplateRequest,
+    ) -> main_models.UpdateWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_workflow_template_with_options(request, headers, runtime)
+
+    async def update_workflow_template_async(
+        self,
+        request: main_models.UpdateWorkflowTemplateRequest,
+    ) -> main_models.UpdateWorkflowTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_workflow_template_with_options_async(request, headers, runtime)
 
     def upload_chat_file_with_options(
         self,

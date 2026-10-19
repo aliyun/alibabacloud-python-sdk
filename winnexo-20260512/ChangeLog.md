@@ -1,3 +1,64 @@
+2026-10-19 Version: 1.6.0
+- Support API BatchCancelTodos.
+- Support API BatchOperateWorkItems.
+- Support API CancelTodo.
+- Support API CheckAppResourcePermission.
+- Support API CheckAppResourcePermissionsBatch.
+- Support API ClearAutoMemory.
+- Support API CloseWorkflowTodos.
+- Support API CountTodos.
+- Support API CreateTodo.
+- Support API CreateWorkItem.
+- Support API CreateWorkflowInstance.
+- Support API CreateWorkflowTemplate.
+- Support API DeleteAppResourcePermissions.
+- Support API DeleteWorkItem.
+- Support API DeleteWorkflowTemplate.
+- Support API ExportWorkflowTemplate.
+- Support API GenerateWorkflowTemplateDraft.
+- Support API GetAgentWorkLog.
+- Support API GetMemoryAutoExtractionSwitch.
+- Support API GetMemoryDetail.
+- Support API GetNodeDetail.
+- Support API GetTodo.
+- Support API GetTodoDetail.
+- Support API GetWorkItem.
+- Support API GetWorkItemArtifactAccess.
+- Support API GetWorkItemAttachmentAccess.
+- Support API GetWorkflowInstance.
+- Support API GetWorkflowTemplate.
+- Support API ImportWorkflowTemplate.
+- Support API ListAppResourcePermissionRecords.
+- Support API ListAppResourceUserPermissions.
+- Support API ListInstanceNodes.
+- Support API ListTodos.
+- Support API ListWorkItemArtifacts.
+- Support API ListWorkItems.
+- Support API ListWorkflowInstances.
+- Support API ListWorkflowTemplates.
+- Support API MarkTodosRead.
+- Support API PauseWorkItem.
+- Support API QueryWorkItemFeed.
+- Support API RegisterAppResourcePermissions.
+- Support API ReplaceManualMemory.
+- Support API RerunNodeAI.
+- Support API ResolveWorkItemArtifactAccess.
+- Support API ResolveWorkItemAttachmentAccess.
+- Support API ResumeWorkItem.
+- Support API ScheduleWorkItem.
+- Support API SetWorkItemPinned.
+- Support API SubmitTodo.
+- Support API TerminateInstance.
+- Support API TransferTodo.
+- Support API UpdateMemoryAutoExtractionSwitch.
+- Support API UpdateWorkItem.
+- Support API UpdateWorkflowTemplate.
+- Update API ListOutputFiles: add request parameters bizId.
+- Update API ListOutputFiles: add request parameters collaborationGroupId.
+- Update API ListOutputFiles: add request parameters sessionId.
+- Update API ListOutputFiles: add request parameters tags.
+
+
 2026-10-10 Version: 1.5.1
 - Generated python 2026-05-12 for WinNexo.
 

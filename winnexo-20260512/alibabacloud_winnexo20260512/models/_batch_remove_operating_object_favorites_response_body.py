@@ -124,8 +124,6 @@ class BatchRemoveOperatingObjectFavoritesResponseBody(DaraModel):
 
         return self
 
-
-
 class BatchRemoveOperatingObjectFavoritesResponseBodyResults(DaraModel):
     def __init__(
         self,

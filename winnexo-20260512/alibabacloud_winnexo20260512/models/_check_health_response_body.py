@@ -22,9 +22,9 @@ class CheckHealthResponseBody(DaraModel):
         self.caller_type = caller_type
         # The response status code.
         self.code = code
-        # The name of the currently effective digital employee. This value is empty if not configured.
+        # The name of the currently effective digital employee. This field is empty if not configured.
         self.digital_employee_name = digital_employee_name
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The request ID.
         self.request_id = request_id

@@ -1,0 +1,67 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class GetWorkItemArtifactAccessRequest(DaraModel):
+    def __init__(
+        self,
+        artifact_id: str = None,
+        collaboration_group_id: str = None,
+        tenant_id: str = None,
+        work_item_id: str = None,
+    ):
+        # 产物 ID
+        # 
+        # This parameter is required.
+        self.artifact_id = artifact_id
+        # 协作空间 ID
+        # 
+        # This parameter is required.
+        self.collaboration_group_id = collaboration_group_id
+        # 租户ID，公共参数；缺省时使用调用方默认租户
+        self.tenant_id = tenant_id
+        # 工作项 ID
+        # 
+        # This parameter is required.
+        self.work_item_id = work_item_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.artifact_id is not None:
+            result['artifactId'] = self.artifact_id
+
+        if self.collaboration_group_id is not None:
+            result['collaborationGroupId'] = self.collaboration_group_id
+
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+
+        if self.work_item_id is not None:
+            result['workItemId'] = self.work_item_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('artifactId') is not None:
+            self.artifact_id = m.get('artifactId')
+
+        if m.get('collaborationGroupId') is not None:
+            self.collaboration_group_id = m.get('collaborationGroupId')
+
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+
+        if m.get('workItemId') is not None:
+            self.work_item_id = m.get('workItemId')
+
+        return self
+

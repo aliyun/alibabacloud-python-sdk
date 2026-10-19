@@ -24,39 +24,33 @@ class SendAsyncChatMessageRequest(DaraModel):
         tenant_id: str = None,
         work_mode: str = None,
     ):
-        # The message body from the user.
+        # The body of the user message.
         # 
         # This parameter is required.
         self.content = content
         # The message type. Valid values: Text and Markdown.
         self.content_type = content_type
-        # The list of digital employee names. A single string is also accepted for backward compatibility with the legacy format.
+        # The list of digital employee names. For compatibility with the legacy format, a single string can also be passed.
         self.digital_employee_name = digital_employee_name
-        # Specifies whether to enable direct connection mode. If set to true, the regular scenario routing is skipped and the direct conversation scenario is entered.
+        # Specifies whether to enable direct connection mode. If set to true, regular scenario routing is skipped and the direct conversation scenario is used.
         self.direct_chat = direct_chat
-        # Specifies whether to enable web search. Default value: False. In task execution scenarios where taskExecution is specified, the task configuration takes precedence.
+        # Specifies whether to enable web search. Default value: false. In the task execution scenario where taskExecution is passed, the task configuration prevails.
         self.enable_web_search = enable_web_search
-        # The list of file references. Each item is an object in which fileId is required and is returned by uploadChatFile.
+        # The list of file references. Each item is an object, and the fileId parameter is required. The fileId is returned by the uploadChatFile operation.
         self.files = files
-        # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain their current tier.
+        # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, standard is used for new sessions, and the current tier is retained for existing sessions.
         self.model = model
-        # Specifies whether to reuse the most recent session of the digital employee when sessionId is not specified. This is designed for CLI scenarios. Default value: false, which creates a new session.
+        # Specifies whether to reuse the most recent session under the digital employee when sessionId is not specified. This is typically used in CLI scenarios. Default value: false, which means a new session is created.
         self.reuse_last_session = reuse_last_session
         # The session ID. If not specified, a new session is created.
         self.session_id = session_id
         # Specifies whether to use streaming generation. This operation always generates backend content in streaming mode and writes it to the message stream. The value of this parameter does not change the response structure.
         self.stream = stream
-        # The task execution metadata returned by executeScheduledTask. If specified, the request is processed through the task execution pipeline.
+        # The task execution metadata returned by the executeScheduledTask operation. If passed, the request is processed through the task execution pipeline.
         self.task_execution = task_execution
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # The session work mode. Valid values:
-        # 
-        # - ask: Quick Q&A. Tools, skills, and connectors are trimmed, and a single-turn direct answer is returned.
-        # - work: Deep work. This is the default value.
-        # - direct: Direct connection mode at the request level. No sandbox is started and no context pollution occurs. This is equivalent to setting directChat to true.
-        # 
-        # The ask and work modes are session-level settings. The mode is fixed when a session is created. By default, follow-up messages in the same session inherit the session mode. If an explicit value conflicts with the session mode, a parameter error is returned. To switch modes, create a new session or fork the existing one. In multi-digital-employee or task execution scenarios, specifying ask causes the work mode to take effect. If directChat is set to true, this parameter is ignored.
+        # The session work mode. Valid values: ask (quick Q&A, which trims tools, skills, and connectors for single-turn direct answers), work (deep work, default), and direct (direct connection mode at the request level, which does not start a sandbox and prevents context pollution, equivalent to directChat=true). The ask and work modes are session-level. The mode is fixed when a new session is created and inherited by default in subsequent chats. If the explicitly passed value is inconsistent with the session mode, a parameter error is returned. To switch modes, create a new session or fork the current one. If ask is passed in multi-digital-employee or task execution scenarios, it takes effect as work. This parameter is ignored when directChat is set to true.
         self.work_mode = work_mode
 
     def validate(self):
@@ -184,7 +178,7 @@ class SendAsyncChatMessageRequestTaskExecution(DaraModel):
         # 
         # This parameter is required.
         self.execution_id = execution_id
-        # The digital employee name.
+        # The name of the digital employee.
         self.operating_object_name = operating_object_name
         # The list of associated skill codes.
         self.skill_codes = skill_codes
@@ -196,9 +190,9 @@ class SendAsyncChatMessageRequestTaskExecution(DaraModel):
         self.task_name = task_name
         # The task understanding content.
         self.task_understand = task_understand
-        # The tenant ID to which the task belongs.
+        # The ID of the tenant to which the task belongs.
         self.tenant_id = tenant_id
-        # The user ID to which the task belongs.
+        # The ID of the user to which the task belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -281,7 +275,7 @@ class SendAsyncChatMessageRequestFiles(DaraModel):
         file_id: str = None,
         type: str = None,
     ):
-        # The file ID returned by uploadChatFile.
+        # The file ID, which is returned by the uploadChatFile operation.
         # 
         # This parameter is required.
         self.file_id = file_id

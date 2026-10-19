@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class MarkTodosReadRequest(DaraModel):
+    def __init__(
+        self,
+        mark_all_read: bool = None,
+        tenant_id: str = None,
+        todo_ids: List[str] = None,
+    ):
+        # 全部标记已读（优先于 todoIds）
+        self.mark_all_read = mark_all_read
+        # 租户ID，公共参数；缺省时使用调用方默认租户
+        self.tenant_id = tenant_id
+        # 待办ID列表（≤100；markAllRead=true 时忽略）
+        self.todo_ids = todo_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.mark_all_read is not None:
+            result['markAllRead'] = self.mark_all_read
+
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+
+        if self.todo_ids is not None:
+            result['todoIds'] = self.todo_ids
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('markAllRead') is not None:
+            self.mark_all_read = m.get('markAllRead')
+
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+
+        if m.get('todoIds') is not None:
+            self.todo_ids = m.get('todoIds')
+
+        return self
+
