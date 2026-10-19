@@ -24,27 +24,27 @@ class DescribeKnowledgeBaseAnswerResponseBody(DaraModel):
     ):
         # Agent ID
         self.agent_id = agent_id
-        # The answer content.
+        # The content of the answer.
         self.answer = answer
-        # The cumulative number of tokens generated for completion.
+        # The cumulative number of completion tokens generated.
         self.completion_tokens = completion_tokens
         # The error message.
         self.error_message = error_message
         # The error type.
         self.error_type = error_type
-        # The large language model ID.
+        # The ID of the large language model.
         self.llmmodel_id = llmmodel_id
-        # The cumulative number of tokens consumed by the prompt.
+        # The cumulative number of prompt tokens consumed.
         self.prompt_tokens = prompt_tokens
-        # The unique ID of the Q&A task.
+        # The unique identifier of the Q&A task.
         self.query_id = query_id
         # Id of the request
         self.request_id = request_id
         # The list of reference sources for the answer.
         self.sources = sources
         # The status of the Q&A task. Valid values:
-        # - RUNNING: In progress.
-        # - COMPLETED: Completed.
+        # - RUNNING: The task is in progress.
+        # - COMPLETED: The task is completed.
         self.status = status
 
     def validate(self):
@@ -150,23 +150,23 @@ class DescribeKnowledgeBaseAnswerResponseBodySources(DaraModel):
         similarity_score: float = None,
         source_id: int = None,
     ):
-        # The chunk metadata.
+        # The shard metadata.
         self.chunk_metadata = chunk_metadata
         # The file ID.
         self.file_id = file_id
         # The file name.
         self.file_name = file_name
-        # The list of image resources associated with the referenced chunk in the Q&A.
+        # The list of image resources associated with the shard referenced in the Q&A.
         self.image_resources = image_resources
-        # The unique ID of the knowledge base.
+        # The unique identifier of the knowledge base.
         self.knowledge_base_id = knowledge_base_id
         # The document metadata.
         self.metadata = metadata
-        # The list of page numbers to which the chunk belongs.
+        # The list of page numbers to which the shard belongs.
         self.page_numbers = page_numbers
-        # The chunk content.
+        # The shard content.
         self.shard_content = shard_content
-        # The chunk ID.
+        # The shard ID.
         self.shard_index = shard_index
         # The similarity score.
         self.similarity_score = similarity_score
@@ -272,11 +272,11 @@ class DescribeKnowledgeBaseAnswerResponseBodySourcesImageResources(DaraModel):
     ):
         # The index of the source document to which the image belongs, starting from 0.
         self.document_index = document_index
-        # The unique ID of the image resource.
+        # The unique identifier of the image resource.
         self.id = id
         # The element reference of the image in the Docling source document structure.
         self.item_ref = item_ref
-        # The media type of the image resource.
+        # The MIME type of the image resource.
         self.mime_type = mime_type
         # The OSS URI of the image resource.
         self.uri = uri

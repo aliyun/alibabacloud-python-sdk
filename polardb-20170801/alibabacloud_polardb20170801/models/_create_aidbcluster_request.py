@@ -13,6 +13,7 @@ class CreateAIDBClusterRequest(DaraModel):
         ack_admin: str = None,
         auto_renew: str = None,
         auto_use_coupon: bool = None,
+        capacity: int = None,
         client_token: str = None,
         create_public_endpoint: str = None,
         dbcluster_description: str = None,
@@ -50,23 +51,25 @@ class CreateAIDBClusterRequest(DaraModel):
         self.ack_admin = ack_admin
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - **true**: Auto-renewal is enabled.
-        # - **false**: Auto-renewal is not enabled.
+        # - **true**: enables auto-renewal.
+        # - **false**: disables auto-renewal.
         # 
         # Default value: **false**.
         # 
-        # > This parameter takes effect only when **PayType** is set to **Prepaid**.
+        # > This parameter takes effect only when the **PayType** parameter is set to **Prepaid**.
         self.auto_renew = auto_renew
         # Specifies whether to automatically use coupons. Valid values:
-        # * true (default): Use coupons.
-        # * false: Do not use coupons.
+        # * true (default): uses coupons.
+        # * false: does not use coupons.
         self.auto_use_coupon = auto_use_coupon
+        # The initial model capacity of the instance. The value must be a positive integer. A capacity unit of 1000 is equivalent to one L20N equivalent card.
+        self.capacity = capacity
         self.client_token = client_token
         # Specifies whether to create a public endpoint.
         self.create_public_endpoint = create_public_endpoint
-        # The cluster description. Fuzzy match is supported.
+        # The description of the cluster. Fuzzy match is supported.
         self.dbcluster_description = dbcluster_description
-        # The instance ID of the PolarDB instance on which the application depends.
+        # The PolarDB instance ID on which the application depends.
         self.dbcluster_id = dbcluster_id
         # The node specifications.
         self.dbnode_class = dbnode_class
@@ -74,11 +77,11 @@ class CreateAIDBClusterRequest(DaraModel):
         self.extension = extension
         # The inference engine.
         self.inference_engine = inference_engine
-        # The ACK cluster ID.
+        # The ID of the ACK cluster.
         self.kube_cluster_id = kube_cluster_id
         # The Kubernetes configuration.
         self.kube_config = kube_config
-        # The Kubernetes cluster management mode.
+        # The management mode of the Kubernetes cluster.
         self.kube_management = kube_management
         # aideploy
         self.kube_type = kube_type
@@ -86,7 +89,7 @@ class CreateAIDBClusterRequest(DaraModel):
         self.kubernetes_config = kubernetes_config
         # The management mode.
         self.management_mode = management_mode
-        # The model name.
+        # The name of the model.
         self.model_name = model_name
         # The model operator space.
         self.model_space = model_space
@@ -101,12 +104,12 @@ class CreateAIDBClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # This parameter is required to pass parameter when **PayType** is set to **Prepaid**. Specifies the unit of the upfront payment duration for the subscription cluster. 
+        # If the billing method is **Prepaid**, you must pass parameter. Specifies the upfront cluster as yearly or monthly. Valid values: 
         # 
-        # - **Year**: The subscription duration is measured in years.
-        # - **Month**: The subscription duration is measured in months.
+        # - **Year**: yearly. The unit is year.
+        # - **Month**: monthly. The unit is month.
         self.period = period
-        # The coupon code. If this parameter is not specified, the default coupon is used.
+        # The coupon code. If you do not specify this parameter, the default coupon is used.
         self.promotion_code = promotion_code
         # The region ID.
         # 
@@ -114,23 +117,23 @@ class CreateAIDBClusterRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
         # The storage space.
         self.storage_space = storage_space
         # The storage type.
         self.storage_type = storage_type
-        # The pay-as-you-go time intervals.
+        # The pay-as-you-go time ranges.
         self.time_slices = time_slices
-        # This parameter is required when **PayType** is set to **Prepaid**.
-        # - If **Period** is set to **Month**, the valid values of **UsedTime** are integers in the range of `[1-9]`.
-        # - If **Period** is set to **Year**, the valid values of **UsedTime** are integers in the range of `[1-3]`.
+        # The subscription duration. This parameter is required when the billing method is set to **Prepaid**.
+        # - If **Period** is set to **Month**, the value of **UsedTime** is an integer ranging from `1` to `9`.
+        # - If **Period** is set to **Year**, the value of **UsedTime** is an integer ranging from `1` to `3`.
         self.used_time = used_time
-        # The VPC ID.
+        # The ID of the virtual private cloud (VPC).
         # 
         # This parameter is required.
         self.vpcid = vpcid
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
@@ -156,6 +159,9 @@ class CreateAIDBClusterRequest(DaraModel):
 
         if self.auto_use_coupon is not None:
             result['AutoUseCoupon'] = self.auto_use_coupon
+
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
 
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
@@ -268,6 +274,9 @@ class CreateAIDBClusterRequest(DaraModel):
         if m.get('AutoUseCoupon') is not None:
             self.auto_use_coupon = m.get('AutoUseCoupon')
 
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 
@@ -375,9 +384,9 @@ class CreateAIDBClusterRequestTimeSlices(DaraModel):
         begin_time: int = None,
         end_time: int = None,
     ):
-        # The start time of the task. The time is in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+        # The start time of the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
         self.begin_time = begin_time
-        # The end time of the query. The end time must be later than the start time. The time is in the `YYYY-MM-DDThh:mmZ` format (UTC).
+        # The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
         self.end_time = end_time
 
     def validate(self):

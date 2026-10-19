@@ -7,15 +7,10 @@ from darabonba.model import DaraModel
 class DeleteAIDBClusterCustomModelRequest(DaraModel):
     def __init__(
         self,
-        dbcluster_id: str = None,
         model_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the PolarDB AI 3.0 logical instance.
-        # 
-        # This parameter is required.
-        self.dbcluster_id = dbcluster_id
-        # The key of the custom model registration to delete.
+        # The custom model registration key to delete.
         # 
         # This parameter is required.
         self.model_name = model_name
@@ -32,9 +27,6 @@ class DeleteAIDBClusterCustomModelRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.dbcluster_id is not None:
-            result['DBClusterId'] = self.dbcluster_id
-
         if self.model_name is not None:
             result['ModelName'] = self.model_name
 
@@ -45,9 +37,6 @@ class DeleteAIDBClusterCustomModelRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DBClusterId') is not None:
-            self.dbcluster_id = m.get('DBClusterId')
-
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
 

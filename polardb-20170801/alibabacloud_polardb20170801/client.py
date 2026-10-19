@@ -2756,6 +2756,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.capacity):
+            query['Capacity'] = request.capacity
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.create_public_endpoint):
@@ -2852,6 +2854,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.capacity):
+            query['Capacity'] = request.capacity
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.create_public_endpoint):
@@ -9342,8 +9346,6 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAIDBClusterCustomModelResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.region_id):
@@ -9374,8 +9376,6 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAIDBClusterCustomModelResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
         if not DaraCore.is_null(request.region_id):
@@ -40781,23 +40781,43 @@ class Client(OpenApiClient):
 
     def register_aidbcluster_custom_model_with_options(
         self,
-        request: main_models.RegisterAIDBClusterCustomModelRequest,
+        tmp_req: main_models.RegisterAIDBClusterCustomModelRequest,
         runtime: RuntimeOptions,
     ) -> main_models.RegisterAIDBClusterCustomModelResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RegisterAIDBClusterCustomModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.container_env):
+            request.container_env_shrink = Utils.array_to_string_with_specified_style(tmp_req.container_env, 'ContainerEnv', 'json')
+        if not DaraCore.is_null(tmp_req.model_params):
+            request.model_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.model_params, 'ModelParams', 'json')
         query = {}
+        if not DaraCore.is_null(request.container_env_shrink):
+            query['ContainerEnv'] = request.container_env_shrink
         if not DaraCore.is_null(request.custom_oss_bucket_name):
             query['CustomOssBucketName'] = request.custom_oss_bucket_name
         if not DaraCore.is_null(request.custom_oss_bucket_path):
             query['CustomOssBucketPath'] = request.custom_oss_bucket_path
-        if not DaraCore.is_null(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.direct_command):
+            query['DirectCommand'] = request.direct_command
         if not DaraCore.is_null(request.display_model_name):
             query['DisplayModelName'] = request.display_model_name
+        if not DaraCore.is_null(request.image_name):
+            query['ImageName'] = request.image_name
+        if not DaraCore.is_null(request.inference_engine):
+            query['InferenceEngine'] = request.inference_engine
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_params_shrink):
+            query['ModelParams'] = request.model_params_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.registry_password):
+            query['RegistryPassword'] = request.registry_password
+        if not DaraCore.is_null(request.registry_username):
+            query['RegistryUsername'] = request.registry_username
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -40819,23 +40839,43 @@ class Client(OpenApiClient):
 
     async def register_aidbcluster_custom_model_with_options_async(
         self,
-        request: main_models.RegisterAIDBClusterCustomModelRequest,
+        tmp_req: main_models.RegisterAIDBClusterCustomModelRequest,
         runtime: RuntimeOptions,
     ) -> main_models.RegisterAIDBClusterCustomModelResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RegisterAIDBClusterCustomModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.container_env):
+            request.container_env_shrink = Utils.array_to_string_with_specified_style(tmp_req.container_env, 'ContainerEnv', 'json')
+        if not DaraCore.is_null(tmp_req.model_params):
+            request.model_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.model_params, 'ModelParams', 'json')
         query = {}
+        if not DaraCore.is_null(request.container_env_shrink):
+            query['ContainerEnv'] = request.container_env_shrink
         if not DaraCore.is_null(request.custom_oss_bucket_name):
             query['CustomOssBucketName'] = request.custom_oss_bucket_name
         if not DaraCore.is_null(request.custom_oss_bucket_path):
             query['CustomOssBucketPath'] = request.custom_oss_bucket_path
-        if not DaraCore.is_null(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.direct_command):
+            query['DirectCommand'] = request.direct_command
         if not DaraCore.is_null(request.display_model_name):
             query['DisplayModelName'] = request.display_model_name
+        if not DaraCore.is_null(request.image_name):
+            query['ImageName'] = request.image_name
+        if not DaraCore.is_null(request.inference_engine):
+            query['InferenceEngine'] = request.inference_engine
         if not DaraCore.is_null(request.model_name):
             query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_params_shrink):
+            query['ModelParams'] = request.model_params_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.registry_password):
+            query['RegistryPassword'] = request.registry_password
+        if not DaraCore.is_null(request.registry_username):
+            query['RegistryUsername'] = request.registry_username
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -41900,6 +41940,88 @@ class Client(OpenApiClient):
     ) -> main_models.ResetGlobalDatabaseNetworkResponse:
         runtime = RuntimeOptions()
         return await self.reset_global_database_network_with_options_async(request, runtime)
+
+    def resize_aidbcluster_model_with_options(
+        self,
+        request: main_models.ResizeAIDBClusterModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResizeAIDBClusterModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_capacity):
+            query['TargetCapacity'] = request.target_capacity
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResizeAIDBClusterModel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResizeAIDBClusterModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resize_aidbcluster_model_with_options_async(
+        self,
+        request: main_models.ResizeAIDBClusterModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResizeAIDBClusterModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_capacity):
+            query['TargetCapacity'] = request.target_capacity
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResizeAIDBClusterModel',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResizeAIDBClusterModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resize_aidbcluster_model(
+        self,
+        request: main_models.ResizeAIDBClusterModelRequest,
+    ) -> main_models.ResizeAIDBClusterModelResponse:
+        runtime = RuntimeOptions()
+        return self.resize_aidbcluster_model_with_options(request, runtime)
+
+    async def resize_aidbcluster_model_async(
+        self,
+        request: main_models.ResizeAIDBClusterModelRequest,
+    ) -> main_models.ResizeAIDBClusterModelResponse:
+        runtime = RuntimeOptions()
+        return await self.resize_aidbcluster_model_with_options_async(request, runtime)
 
     def restart_aidbcluster_with_options(
         self,

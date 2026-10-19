@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_polardb20170801 import models as main_models
 from darabonba.model import DaraModel
@@ -19,7 +19,7 @@ class DescribeAvailableModelsResponseBody(DaraModel):
     ):
         # The database engine.
         self.engine = engine
-        # The database engine version.
+        # The DPI engine version.
         self.engine_version = engine_version
         # The list of models.
         self.items = items
@@ -91,33 +91,57 @@ class DescribeAvailableModelsResponseBody(DaraModel):
 class DescribeAvailableModelsResponseBodyItems(DaraModel):
     def __init__(
         self,
+        container_env: Dict[str, str] = None,
+        custom_image_source: str = None,
         custom_model_name: str = None,
+        dbinstance_class: str = None,
+        direct_command: str = None,
         display_model_name: str = None,
         gmt_modified: str = None,
         gpu_required: List[main_models.DescribeAvailableModelsResponseBodyItemsGpuRequired] = None,
+        image_import_status: str = None,
+        image_name: str = None,
+        inference_engine: str = None,
         minimum_cpu: int = None,
         minimum_memory: int = None,
         model_name: str = None,
+        model_params: Dict[str, str] = None,
         model_series: str = None,
         model_type: str = None,
         oss_path: str = None,
         supported_gpu_models: List[str] = None,
         tune_arch: str = None,
     ):
-        # The custom model registration key.
+        # The container startup environment variables registered for the custom model.
+        self.container_env = container_env
+        # The source image address registered by the customer.
+        self.custom_image_source = custom_image_source
+        # The registration key of the custom model.
         self.custom_model_name = custom_model_name
+        # The deployment specifications registered for the custom model.
+        self.dbinstance_class = dbinstance_class
+        # The direct startup command registered for the custom model.
+        self.direct_command = direct_command
         # The display name of the model.
         self.display_model_name = display_model_name
-        # The last modified time of the registration.
+        # The time when the registration was last modified.
         self.gmt_modified = gmt_modified
-        # The supported GPU types.
+        # The supported GPU models.
         self.gpu_required = gpu_required
-        # The minimum number of CPUs.
+        # The image import status. Valid values: Importing, Available, and Failed.
+        self.image_import_status = image_import_status
+        # The model service image address registered by the customer.
+        self.image_name = image_name
+        # The inference engine registered for the custom model.
+        self.inference_engine = inference_engine
+        # The minimum CPU requirement.
         self.minimum_cpu = minimum_cpu
-        # The minimum memory size.
+        # The minimum memory requirement.
         self.minimum_memory = minimum_memory
         # The model name.
         self.model_name = model_name
+        # The startup parameters registered for the custom model.
+        self.model_params = model_params
         # The model series.
         self.model_series = model_series
         # The model type.
@@ -126,6 +150,7 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
         self.oss_path = oss_path
         # The supported GPU models.
         self.supported_gpu_models = supported_gpu_models
+        # The model fine-tuning architecture.
         self.tune_arch = tune_arch
 
     def validate(self):
@@ -139,8 +164,20 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.container_env is not None:
+            result['ContainerEnv'] = self.container_env
+
+        if self.custom_image_source is not None:
+            result['CustomImageSource'] = self.custom_image_source
+
         if self.custom_model_name is not None:
             result['CustomModelName'] = self.custom_model_name
+
+        if self.dbinstance_class is not None:
+            result['DBInstanceClass'] = self.dbinstance_class
+
+        if self.direct_command is not None:
+            result['DirectCommand'] = self.direct_command
 
         if self.display_model_name is not None:
             result['DisplayModelName'] = self.display_model_name
@@ -153,6 +190,15 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
             for k1 in self.gpu_required:
                 result['GpuRequired'].append(k1.to_map() if k1 else None)
 
+        if self.image_import_status is not None:
+            result['ImageImportStatus'] = self.image_import_status
+
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+
+        if self.inference_engine is not None:
+            result['InferenceEngine'] = self.inference_engine
+
         if self.minimum_cpu is not None:
             result['MinimumCpu'] = self.minimum_cpu
 
@@ -161,6 +207,9 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
 
         if self.model_name is not None:
             result['ModelName'] = self.model_name
+
+        if self.model_params is not None:
+            result['ModelParams'] = self.model_params
 
         if self.model_series is not None:
             result['ModelSeries'] = self.model_series
@@ -181,8 +230,20 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContainerEnv') is not None:
+            self.container_env = m.get('ContainerEnv')
+
+        if m.get('CustomImageSource') is not None:
+            self.custom_image_source = m.get('CustomImageSource')
+
         if m.get('CustomModelName') is not None:
             self.custom_model_name = m.get('CustomModelName')
+
+        if m.get('DBInstanceClass') is not None:
+            self.dbinstance_class = m.get('DBInstanceClass')
+
+        if m.get('DirectCommand') is not None:
+            self.direct_command = m.get('DirectCommand')
 
         if m.get('DisplayModelName') is not None:
             self.display_model_name = m.get('DisplayModelName')
@@ -196,6 +257,15 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
                 temp_model = main_models.DescribeAvailableModelsResponseBodyItemsGpuRequired()
                 self.gpu_required.append(temp_model.from_map(k1))
 
+        if m.get('ImageImportStatus') is not None:
+            self.image_import_status = m.get('ImageImportStatus')
+
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+
+        if m.get('InferenceEngine') is not None:
+            self.inference_engine = m.get('InferenceEngine')
+
         if m.get('MinimumCpu') is not None:
             self.minimum_cpu = m.get('MinimumCpu')
 
@@ -204,6 +274,9 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
 
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
+
+        if m.get('ModelParams') is not None:
+            self.model_params = m.get('ModelParams')
 
         if m.get('ModelSeries') is not None:
             self.model_series = m.get('ModelSeries')

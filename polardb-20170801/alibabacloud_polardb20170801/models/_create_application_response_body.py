@@ -22,13 +22,13 @@ class CreateApplicationResponseBody(DaraModel):
         self.application_id = application_id
         # The list of subcomponents.
         self.components = components
-        # The application description.
+        # The application remarks.
         self.description = description
-        # The generated order ID.
+        # The ID of the generated order.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the resources are sufficient. This parameter is returned only when DryRun is set to true.
+        # Indicates whether the required resources are available. This parameter is returned only when DryRun is set to true.
         self.resource_available = resource_available
         # The ID of the resource group.
         self.resource_group_id = resource_group_id

@@ -85,15 +85,15 @@ class RetrievalKnowledgeBaseResponseBodyResults(DaraModel):
         shard_index: int = None,
         similarity_score: float = None,
     ):
-        # The list of figure or table captions associated with the chunk.
+        # The list of captions for figures or tables associated with the chunk.
         self.captions = captions
-        # The list of Docling source document structured element references associated with the chunk. You can use these references to precisely locate elements in the original document.
+        # The list of references to structured elements in the Docling source document associated with the chunk. You can use these references to precisely locate the original elements.
         self.doc_items = doc_items
         # The unique identifier of the file.
         self.file_id = file_id
         # The name of the file.
         self.file_name = file_name
-        # The chain of section headings to which the chunk belongs.
+        # The heading hierarchy of the section to which the chunk belongs.
         self.headings = headings
         # The list of image resources referenced by the chunk.
         self.image_resources = image_resources
@@ -209,9 +209,9 @@ class RetrievalKnowledgeBaseResponseBodyResultsImageResources(DaraModel):
         self.document_index = document_index
         # The unique identifier of the image resource.
         self.id = id
-        # The element reference of the image in the Docling source document structure.
+        # The reference to the image element in the structure of the Docling source document.
         self.item_ref = item_ref
-        # The media type of the image resource.
+        # The MIME type of the image resource.
         self.mime_type = mime_type
         # The OSS URI of the image resource.
         self.uri = uri

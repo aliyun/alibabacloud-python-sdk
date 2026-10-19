@@ -1,3 +1,43 @@
+2026-10-19 Version: 9.0.0
+- Support API ResizeAIDBClusterModel.
+- Update API CreateAIDBCluster: add request parameters Capacity.
+- Update API CreateApplication: add request parameters MemApplicationSpec.MemoryType.
+- Update API CreateApplication: add request parameters MemApplicationSpec.VisualEmbedderModel.
+- Update API CreateApplication: add request parameters MemApplicationSpec.VisualEmbedderModelDimension.
+- Update API CreateApplication: add request parameters MemApplicationSpec.VisualLlmModalities.
+- Update API CreateApplication: add request parameters MemApplicationSpec.VisualLlmModel.
+- Update API DeleteAIDBClusterCustomModel: delete request parameters DBClusterId.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.Command.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.CurrentCapacity.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.DBNodes.$.Command.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.DBNodes.$.LogIndex.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.DBNodes.$.ModelSpaceName.
+- Update API DescribeApplicationAttribute: add response parameters Body.MemApplicationAttribute.MemoryType.
+- Update API DescribeApplicationAttribute: add response parameters Body.MemApplicationAttribute.MultimodalEnabled.
+- Update API DescribeApplicationAttribute: add response parameters Body.MemApplicationAttribute.VisualEmbedderDimensions.
+- Update API DescribeApplicationAttribute: add response parameters Body.MemApplicationAttribute.VisualEmbedderModelName.
+- Update API DescribeApplicationAttribute: add response parameters Body.MemApplicationAttribute.VisualLlmModalities.
+- Update API DescribeApplicationAttribute: add response parameters Body.MemApplicationAttribute.VisualLlmModelName.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.ContainerEnv.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.CustomImageSource.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.DBInstanceClass.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.DirectCommand.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.ImageImportStatus.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.ImageName.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.InferenceEngine.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.ModelParams.
+- Update API RegisterAIDBClusterCustomModel: add request parameters ContainerEnv.
+- Update API RegisterAIDBClusterCustomModel: add request parameters DBInstanceClass.
+- Update API RegisterAIDBClusterCustomModel: add request parameters DirectCommand.
+- Update API RegisterAIDBClusterCustomModel: add request parameters ImageName.
+- Update API RegisterAIDBClusterCustomModel: add request parameters InferenceEngine.
+- Update API RegisterAIDBClusterCustomModel: add request parameters ModelParams.
+- Update API RegisterAIDBClusterCustomModel: add request parameters RegistryPassword.
+- Update API RegisterAIDBClusterCustomModel: add request parameters RegistryUsername.
+- Update API RegisterAIDBClusterCustomModel: add response parameters Body.ImageImportStatus.
+- Update API RegisterAIDBClusterCustomModel: delete request parameters DBClusterId.
+
+
 2026-10-14 Version: 8.5.0
 - Support API DescribeKBSyncLinkAttribute.
 - Update API CreateCostRule: add request parameters CacheCreationCostPointsPerMillion.

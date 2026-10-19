@@ -19,15 +19,15 @@ class DescribeKnowledgeBaseFileShardsResponseBody(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The number of entries per page in a paged query.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
         # The shard information.
         self.shards = shards
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -101,9 +101,9 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
     ):
         # The list of figure or table captions associated with the shard.
         self.captions = captions
-        # The list of Docling source document structured element references associated with the shard. You can use these references to precisely locate original document elements.
+        # The list of structured element references in the Docling source document associated with the shard, which can be used to precisely locate the original elements.
         self.doc_items = doc_items
-        # The chain of section headings to which the shard belongs.
+        # The section heading chain to which the shard belongs.
         self.headings = headings
         # The list of image resources referenced by the shard.
         self.image_resources = image_resources
@@ -189,11 +189,11 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources(DaraModel)
     ):
         # The index of the source document to which the image belongs, starting from 0.
         self.document_index = document_index
-        # The unique ID of the image resource.
+        # The unique identifier of the image resource.
         self.id = id
         # The element reference of the image in the Docling source document structure.
         self.item_ref = item_ref
-        # The media type of the image resource.
+        # The MIME type of the image resource.
         self.mime_type = mime_type
         # The OSS URI of the image resource.
         self.uri = uri

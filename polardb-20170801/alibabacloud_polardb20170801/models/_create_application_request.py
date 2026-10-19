@@ -74,21 +74,21 @@ class CreateApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.architecture = architecture
-        # The authentication provider.
+        # The authentication service provider.
         self.auth_provider = auth_provider
         # The authentication provider configuration.
         self.auth_provider_config = auth_provider_config
-        # Specifies if automatic creation is enabled and the instance will attach and associate with an EIP.
+        # Specifies whether automatic creation is enabled and the instance will attach and associate with an EIP.
         self.auto_allocate_public_eip = auto_allocate_public_eip
-        # Specifies whether to automatically create a Polarlakebase cold storage instance. Valid values:
-        # * false: Does not automatically create the instance. This is the default value.
-        # * true: Automatically creates the instance.
+        # Specifies whether to automatically create a Polarlakebase cold storage edition instance. Valid values:
+        # * false (default): Do not automatically create the instance.
+        # * true: Automatically create the instance.
         self.auto_create_polar_fs = auto_create_polar_fs
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
         # Specifies whether to automatically use coupons. Valid values:
-        # - true: Uses coupons. This is the default value.
-        # - false: Does not use coupons.
+        # * true (default): Use coupons.
+        # * false: Do not use coupons.
         self.auto_use_coupon = auto_use_coupon
         # The list of custom application subcomponents.
         self.components = components
@@ -96,11 +96,11 @@ class CreateApplicationRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The description or remark of the application.
         self.description = description
-        # The expected list of DNAT entries for NAT mapping. This parameter must be specified together with VpcNatGatewayId. It can be left empty, which indicates that no DNAT entries are created.
+        # The expected list of DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. Leave this parameter empty if you do not want to create DNAT entries.
         self.dnat_entries = dnat_entries
-        # The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the NAT gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is associated with the vSwitch where the application resides.
+        # The dedicated NAT IP address allocated for DNAT mapping, which is separate from the SNAT IP address. The IP address must belong to the gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is bound to the vSwitch where the application resides.
         self.dnat_ip_address = dnat_ip_address
-        # Specifies whether to perform a dry run. Default value: `false`. If you set this parameter to `true`, the system only checks the parameters and resources without actually creating the resources.
+        # Specifies whether to perform a dry run. Default value: false. If you set this parameter to true, only parameter and resource validations are performed, and no resources are actually created.
         self.dry_run = dry_run
         # The list of custom service endpoints. By default, a VPC endpoint is created.
         self.endpoints = endpoints
@@ -108,18 +108,18 @@ class CreateApplicationRequest(DaraModel):
         self.knowledge_application_spec = knowledge_application_spec
         # Required for mem0 applications.
         self.mem_application_spec = mem_application_spec
-        # The model API. This parameter takes effect only when ApplicationType is set to polarclaw.
+        # The API of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_api = model_api
         # The API key of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_api_key = model_api_key
-        # The base URL of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
+        # The endpoint of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_base_url = model_base_url
         # The model source. Valid values:
         # * bailian: Model Studio models.
         # * custom: Custom models.
         # * maas: PolarDB model operators.
         self.model_from = model_from
-        # The model name. This parameter takes effect only when ApplicationType is set to polarclaw.
+        # The name of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
         self.model_name = model_name
         # The list of parameters.
         self.parameters = parameters
@@ -127,7 +127,9 @@ class CreateApplicationRequest(DaraModel):
         self.pay_type = pay_type
         # The subscription period unit.
         self.period = period
-        # The ID of the Polarlakebase cold storage or high-performance instance. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application. This parameter is supported only for the following applications:
+        # The instance ID of the Polarlakebase cold storage or high-performance edition. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application.
+        # 
+        # Currently, only the following applications are supported:
         # - supabase
         # - raycluster
         self.polar_fsinstance_id = polar_fsinstance_id
@@ -139,15 +141,15 @@ class CreateApplicationRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The ID of the security group.
         self.security_group_id = security_group_id
-        # The name of the IP address whitelist group. Default value: `default`.
+        # The name of the IP address whitelist group. Default value: default.
         self.security_iparray_name = security_iparray_name
-        # The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+        # The IP address whitelist. If you do not specify this parameter, the default value 127.0.0.1 is used.
         self.security_iplist = security_iplist
         # The type of the IP address.
         self.security_iptype = security_iptype
-        # The skill template ID.
+        # The ID of the skill template.
         self.skill_template_id = skill_template_id
-        # The list of storage resources for the application.
+        # The list of application storages.
         self.storages = storages
         # The tags.
         self.tag = tag
@@ -159,7 +161,7 @@ class CreateApplicationRequest(DaraModel):
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # NAT mapping: the user-created VPC NAT gateway ID. If you specify this parameter, NAT mapping is enabled when the instance is created. The NAT gateway must reside in the same VPC as the application, be of the private network (intranet) type, and be in the active state.
+        # The NAT gateway ID of the self-managed VPC NAT gateway for NAT mapping. If you specify this parameter, NAT mapping is enabled when the instance is created. The gateway must be in the same VPC as the application, use the private network (intranet) type, and be active.
         self.vpc_nat_gateway_id = vpc_nat_gateway_id
         # The zone ID. Default value: the primary zone of the instance.
         self.zone_id = zone_id
@@ -685,9 +687,14 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         embedder_model_dimension: int = None,
         graph_llm_model: str = None,
         llm_model: str = None,
+        memory_type: str = None,
         project_name: str = None,
         reranker_model: str = None,
         shard: int = None,
+        visual_embedder_model: str = None,
+        visual_embedder_model_dimension: int = None,
+        visual_llm_modalities: List[str] = None,
+        visual_llm_model: str = None,
     ):
         # The database name.
         self.db_name = db_name
@@ -703,12 +710,22 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         self.graph_llm_model = graph_llm_model
         # Required for mem0 applications. The name of the LLM model, such as qwen3-max.
         self.llm_model = llm_model
-        # The project name, which corresponds to the database schema that stores project data.
+        # The memory type, such as multimodal.
+        self.memory_type = memory_type
+        # The project name, which corresponds to the schema in the database where project data is stored.
         self.project_name = project_name
         # Required for mem0 applications. The name of the reranker model, such as qwen3-rerank.
         self.reranker_model = reranker_model
         # The number of shards.
         self.shard = shard
+        # The name of the visual embedder model.
+        self.visual_embedder_model = visual_embedder_model
+        # The vector dimensions of the visual embedder.
+        self.visual_embedder_model_dimension = visual_embedder_model_dimension
+        # The list of modalities for the visual LLM, such as image.
+        self.visual_llm_modalities = visual_llm_modalities
+        # The name of the visual LLM model.
+        self.visual_llm_model = visual_llm_model
 
     def validate(self):
         pass
@@ -739,6 +756,9 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         if self.llm_model is not None:
             result['LlmModel'] = self.llm_model
 
+        if self.memory_type is not None:
+            result['MemoryType'] = self.memory_type
+
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
 
@@ -747,6 +767,18 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
 
         if self.shard is not None:
             result['Shard'] = self.shard
+
+        if self.visual_embedder_model is not None:
+            result['VisualEmbedderModel'] = self.visual_embedder_model
+
+        if self.visual_embedder_model_dimension is not None:
+            result['VisualEmbedderModelDimension'] = self.visual_embedder_model_dimension
+
+        if self.visual_llm_modalities is not None:
+            result['VisualLlmModalities'] = self.visual_llm_modalities
+
+        if self.visual_llm_model is not None:
+            result['VisualLlmModel'] = self.visual_llm_model
 
         return result
 
@@ -773,6 +805,9 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         if m.get('LlmModel') is not None:
             self.llm_model = m.get('LlmModel')
 
+        if m.get('MemoryType') is not None:
+            self.memory_type = m.get('MemoryType')
+
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
 
@@ -781,6 +816,18 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
 
         if m.get('Shard') is not None:
             self.shard = m.get('Shard')
+
+        if m.get('VisualEmbedderModel') is not None:
+            self.visual_embedder_model = m.get('VisualEmbedderModel')
+
+        if m.get('VisualEmbedderModelDimension') is not None:
+            self.visual_embedder_model_dimension = m.get('VisualEmbedderModelDimension')
+
+        if m.get('VisualLlmModalities') is not None:
+            self.visual_llm_modalities = m.get('VisualLlmModalities')
+
+        if m.get('VisualLlmModel') is not None:
+            self.visual_llm_model = m.get('VisualLlmModel')
 
         return self
 
@@ -836,7 +883,7 @@ class CreateApplicationRequestEndpoints(DaraModel):
         description: str = None,
         endpoint_type: str = None,
     ):
-        # The description of the service endpoint.
+        # The remark of the service endpoint.
         self.description = description
         # The type of the service endpoint. Set the value to Primary.
         self.endpoint_type = endpoint_type
@@ -873,7 +920,7 @@ class CreateApplicationRequestDnatEntries(DaraModel):
         front_port: int = None,
         port_name: str = None,
     ):
-        # The frontend port. This parameter is optional. By default, the control system automatically allocates a port, avoiding ports already occupied by the gateway. You can query the allocation result by calling the DescribeApplicationAttribute operation.
+        # The frontend port. This parameter is optional. By default, the system automatically assigns a port that is not occupied by the gateway. You can call the DescribeApplicationAttribute operation to query the assigned port.
         self.front_port = front_port
         # The port name. Valid values: webui, hermesagent, dashboard, and ssh.
         self.port_name = port_name
@@ -925,10 +972,11 @@ class CreateApplicationRequestComponents(DaraModel):
         self.component_max_replica = component_max_replica
         # The number of replicas for the application subcomponent. Default value: 1.
         self.component_replica = component_replica
-        # The type of the application subcomponent. Valid values for supabase:
+        # The type of the application subcomponent.
+        # For supabase, valid values:
         # - gateway
         # - backend
-        # Valid values for raycluster:
+        # For raycluster, valid values:
         # - head
         # - worker
         # - gpuworker

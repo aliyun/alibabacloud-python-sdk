@@ -1291,6 +1291,7 @@ from ._refresh_dbcluster_storage_usage_request import RefreshDBClusterStorageUsa
 from ._refresh_dbcluster_storage_usage_response_body import RefreshDBClusterStorageUsageResponseBody
 from ._refresh_dbcluster_storage_usage_response import RefreshDBClusterStorageUsageResponse
 from ._register_aidbcluster_custom_model_request import RegisterAIDBClusterCustomModelRequest
+from ._register_aidbcluster_custom_model_shrink_request import RegisterAIDBClusterCustomModelShrinkRequest
 from ._register_aidbcluster_custom_model_response_body import RegisterAIDBClusterCustomModelResponseBody
 from ._register_aidbcluster_custom_model_response import RegisterAIDBClusterCustomModelResponse
 from ._register_knowledge_base_file_request import RegisterKnowledgeBaseFileRequest
@@ -1330,6 +1331,9 @@ from ._reset_consumer_api_key_response import ResetConsumerApiKeyResponse
 from ._reset_global_database_network_request import ResetGlobalDatabaseNetworkRequest
 from ._reset_global_database_network_response_body import ResetGlobalDatabaseNetworkResponseBody
 from ._reset_global_database_network_response import ResetGlobalDatabaseNetworkResponse
+from ._resize_aidbcluster_model_request import ResizeAIDBClusterModelRequest
+from ._resize_aidbcluster_model_response_body import ResizeAIDBClusterModelResponseBody
+from ._resize_aidbcluster_model_response import ResizeAIDBClusterModelResponse
 from ._restart_aidbcluster_request import RestartAIDBClusterRequest
 from ._restart_aidbcluster_response_body import RestartAIDBClusterResponseBody
 from ._restart_aidbcluster_response import RestartAIDBClusterResponse
@@ -3210,6 +3214,7 @@ __all__ = [
     RefreshDBClusterStorageUsageResponseBody,
     RefreshDBClusterStorageUsageResponse,
     RegisterAIDBClusterCustomModelRequest,
+    RegisterAIDBClusterCustomModelShrinkRequest,
     RegisterAIDBClusterCustomModelResponseBody,
     RegisterAIDBClusterCustomModelResponse,
     RegisterKnowledgeBaseFileRequest,
@@ -3249,6 +3254,9 @@ __all__ = [
     ResetGlobalDatabaseNetworkRequest,
     ResetGlobalDatabaseNetworkResponseBody,
     ResetGlobalDatabaseNetworkResponse,
+    ResizeAIDBClusterModelRequest,
+    ResizeAIDBClusterModelResponseBody,
+    ResizeAIDBClusterModelResponse,
     RestartAIDBClusterRequest,
     RestartAIDBClusterResponseBody,
     RestartAIDBClusterResponse,

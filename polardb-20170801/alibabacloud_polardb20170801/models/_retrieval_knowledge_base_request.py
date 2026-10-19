@@ -14,7 +14,7 @@ class RetrievalKnowledgeBaseRequest(DaraModel):
         score_threshold: float = None,
         top_k: int = None,
     ):
-        # The unique identifier of the knowledge base. You can specify multiple knowledge bases separated by commas. A maximum of 50 knowledge bases can be specified.
+        # The unique identifiers of the knowledge bases. You can specify up to 50 knowledge base IDs, separated by commas.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id

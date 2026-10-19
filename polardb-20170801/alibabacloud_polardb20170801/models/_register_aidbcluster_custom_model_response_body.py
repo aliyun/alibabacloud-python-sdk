@@ -9,16 +9,19 @@ class RegisterAIDBClusterCustomModelResponseBody(DaraModel):
         self,
         created: bool = None,
         display_model_name: str = None,
+        image_import_status: str = None,
         model_id: int = None,
         model_name: str = None,
         model_type: str = None,
         oss_path: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the registration is newly created. A value of false indicates that an existing registration was updated.
+        # Indicates whether a new registration is created. A value of false indicates that an existing registration is updated.
         self.created = created
-        # The display name and initial client-facing invocation name.
+        # The display name and the initial invocation name for clients.
         self.display_model_name = display_model_name
+        # The image import status. The initial value is Importing after an image is registered.
+        self.image_import_status = image_import_status
         # The model registration ID.
         self.model_id = model_id
         # The custom model registration key.
@@ -44,6 +47,9 @@ class RegisterAIDBClusterCustomModelResponseBody(DaraModel):
         if self.display_model_name is not None:
             result['DisplayModelName'] = self.display_model_name
 
+        if self.image_import_status is not None:
+            result['ImageImportStatus'] = self.image_import_status
+
         if self.model_id is not None:
             result['ModelId'] = self.model_id
 
@@ -68,6 +74,9 @@ class RegisterAIDBClusterCustomModelResponseBody(DaraModel):
 
         if m.get('DisplayModelName') is not None:
             self.display_model_name = m.get('DisplayModelName')
+
+        if m.get('ImageImportStatus') is not None:
+            self.image_import_status = m.get('ImageImportStatus')
 
         if m.get('ModelId') is not None:
             self.model_id = m.get('ModelId')

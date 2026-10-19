@@ -13,7 +13,7 @@ class DescribeAvailableModelsRequest(DaraModel):
     ):
         # aideploy
         self.kube_type = kube_type
-        # The model type. Valid values: custom or public. If this parameter is not specified, all models are returned.
+        # The model type. Valid values: custom and public. If you do not specify this parameter, all models are returned.
         self.model_type = model_type
         # The region ID.
         self.region_id = region_id

@@ -67,9 +67,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.creation_time = creation_time
         # The PolarDB instance ID on which the application depends.
         self.dbcluster_id = dbcluster_id
-        # The application description.
+        # The description of the application.
         self.description = description
-        # The NAT mapping: the list of DNAT mapping entries.
+        # The list of DNAT mapping entries for NAT mapping.
         self.dnat_mappings = dnat_mappings
         # The list of endpoints for the application.
         self.endpoints = endpoints
@@ -87,8 +87,8 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.latest_version = latest_version
         # The lock mode. Valid values:
         # 
-        # - Unlock: Unlocked.
-        # - Lock: Locked.
+        # - Unlock: The application is not locked.
+        # - Lock: The application is locked.
         self.lock_mode = lock_mode
         # The end time of the maintenance window.
         # 
@@ -104,13 +104,13 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.minor_version = minor_version
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This parameter refers to customer-managed SNAT entries that are discovered and returned in real time by the control plane, and is independent of the Internet NAT gateway SNAT.
+        # The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This refers to customer-managed SNAT entries that are discovered and returned in real time by the control plane, and is independent of the Internet NAT gateway SNAT.
         self.nat_mapping_snat_ip_address = nat_mapping_snat_ip_address
         # The billing method.
         self.pay_type = pay_type
-        # The attributes of the PolarClaw application.
+        # The PolarClaw application attributes.
         self.polar_claw_application_attribute = polar_claw_application_attribute
-        # The attributes of the PolarClaw SaaS application.
+        # The PolarClaw SaaS application attributes.
         self.polar_claw_saa_sapplication_attribute = polar_claw_saa_sapplication_attribute
         # The instance ID of the PolarFS Cold Storage Edition or High-performance Edition.
         self.polar_fsinstance_id = polar_fsinstance_id
@@ -135,9 +135,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         # - ClassChanging: The application specifications are being changed.
         # - Transing: The application is being migrated.
         # - MinorVersionUpgrading: The minor version of the application is being upgraded.
-        # - NetCreating: The endpoint is being created.
-        # - NetDeleting: The endpoint is being deleted.
-        # - NetModifying: The endpoint is being modified.
+        # - NetCreating: The endpoint of the application is being created.
+        # - NetDeleting: The endpoint of the application is being deleted.
+        # - NetModifying: The endpoint of the application is being modified.
         # - Restarting: The application is being restarted.
         # - Locking: The application is being locked.
         # - Locked: The application is locked.
@@ -146,7 +146,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.status = status
         # The storage resources.
         self.storages = storages
-        # Indicates whether an upgrade is available.
+        # Specifies whether an upgrade is available.
         self.upgrade_available = upgrade_available
         # VPC ID
         self.vpcid = vpcid
@@ -597,13 +597,14 @@ class DescribeApplicationAttributeResponseBodySecurityGroups(DaraModel):
         security_group_name: str = None,
     ):
         # The network type. Valid values: 
+        # 
         # - vpc
         self.net_type = net_type
         # The region ID.
         self.region_id = region_id
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The security group name.
+        # The name of the security group.
         self.security_group_name = security_group_name
 
     def validate(self):
@@ -799,27 +800,45 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel)
         embedder_model_name: str = None,
         graph_llm_model_name: str = None,
         llm_model_name: str = None,
+        memory_type: str = None,
+        multimodal_enabled: bool = None,
         project_name: str = None,
         reranker_model_name: str = None,
         session_store: main_models.DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore = None,
         user_name: str = None,
+        visual_embedder_dimensions: int = None,
+        visual_embedder_model_name: str = None,
+        visual_llm_modalities: List[str] = None,
+        visual_llm_model_name: str = None,
     ):
-        # The database name.
+        # The name of the database.
         self.db_name = db_name
-        # The embedder model name.
+        # The name of the embedder model.
         self.embedder_model_name = embedder_model_name
         # The graph LLM model support.
         self.graph_llm_model_name = graph_llm_model_name
-        # The LLM model name.
+        # The name of the LLM model.
         self.llm_model_name = llm_model_name
-        # The project name, which corresponds to the schema where project data is stored in the database.
+        # The active memory type.
+        self.memory_type = memory_type
+        # Indicates whether the multimodal feature is enabled.
+        self.multimodal_enabled = multimodal_enabled
+        # The name of the project, which corresponds to the schema in the database where project data is stored.
         self.project_name = project_name
-        # The reranker model name.
+        # The name of the reranker model.
         self.reranker_model_name = reranker_model_name
         # The Mem0 full session information storage configuration.
         self.session_store = session_store
         # The username.
         self.user_name = user_name
+        # The current dimensions of the VisualEmbedder.
+        self.visual_embedder_dimensions = visual_embedder_dimensions
+        # The current VisualEmbedder model.
+        self.visual_embedder_model_name = visual_embedder_model_name
+        # The currently enabled understanding modalities.
+        self.visual_llm_modalities = visual_llm_modalities
+        # The current VisualLLM model.
+        self.visual_llm_model_name = visual_llm_model_name
 
     def validate(self):
         if self.session_store:
@@ -842,6 +861,12 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel)
         if self.llm_model_name is not None:
             result['LlmModelName'] = self.llm_model_name
 
+        if self.memory_type is not None:
+            result['MemoryType'] = self.memory_type
+
+        if self.multimodal_enabled is not None:
+            result['MultimodalEnabled'] = self.multimodal_enabled
+
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
 
@@ -853,6 +878,18 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel)
 
         if self.user_name is not None:
             result['UserName'] = self.user_name
+
+        if self.visual_embedder_dimensions is not None:
+            result['VisualEmbedderDimensions'] = self.visual_embedder_dimensions
+
+        if self.visual_embedder_model_name is not None:
+            result['VisualEmbedderModelName'] = self.visual_embedder_model_name
+
+        if self.visual_llm_modalities is not None:
+            result['VisualLlmModalities'] = self.visual_llm_modalities
+
+        if self.visual_llm_model_name is not None:
+            result['VisualLlmModelName'] = self.visual_llm_model_name
 
         return result
 
@@ -870,6 +907,12 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel)
         if m.get('LlmModelName') is not None:
             self.llm_model_name = m.get('LlmModelName')
 
+        if m.get('MemoryType') is not None:
+            self.memory_type = m.get('MemoryType')
+
+        if m.get('MultimodalEnabled') is not None:
+            self.multimodal_enabled = m.get('MultimodalEnabled')
+
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
 
@@ -882,6 +925,18 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel)
 
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
+
+        if m.get('VisualEmbedderDimensions') is not None:
+            self.visual_embedder_dimensions = m.get('VisualEmbedderDimensions')
+
+        if m.get('VisualEmbedderModelName') is not None:
+            self.visual_embedder_model_name = m.get('VisualEmbedderModelName')
+
+        if m.get('VisualLlmModalities') is not None:
+            self.visual_llm_modalities = m.get('VisualLlmModalities')
+
+        if m.get('VisualLlmModelName') is not None:
+            self.visual_llm_model_name = m.get('VisualLlmModelName')
 
         return self
 
@@ -954,17 +1009,17 @@ class DescribeApplicationAttributeResponseBodyEndpoints(DaraModel):
         # The description of the endpoint.
         self.description = description
         self.domain = domain
-        # The endpoint ID.
+        # The ID of the endpoint.
         self.endpoint_id = endpoint_id
         # The IP address.
         self.ip = ip
-        # The endpoint type. Valid values:
+        # The type of the endpoint. Valid values:
         # - Private: VPC address.
-        # - Public: Internet address.
+        # - Public: public network address.
         self.net_type = net_type
         # The port.
         self.port = port
-        # The port description.
+        # The description of the port.
         self.port_description = port_description
 
     def validate(self):
@@ -1033,17 +1088,17 @@ class DescribeApplicationAttributeResponseBodyDnatMappings(DaraModel):
         port_name: str = None,
         status: str = None,
     ):
-        # The access address in the NatIp:FrontPort format. It can be directly used on the office network.
+        # The access address in the NatIp:FrontPort format, which can be directly used on the office network.
         self.access_address = access_address
         # The backend service port.
         self.backend_port = backend_port
-        # The DNAT entry ID.
+        # The ID of the DNAT entry.
         self.entry_id = entry_id
         # The frontend port.
         self.front_port = front_port
-        # The port name. Valid values: webui, hermesagent, dashboard, and ssh.
+        # The name of the port. Valid values: webui, hermesagent, dashboard, and ssh.
         self.port_name = port_name
-        # The entry status.
+        # The status of the entry.
         self.status = status
 
     def validate(self):
@@ -1113,15 +1168,15 @@ class DescribeApplicationAttributeResponseBodyComponents(DaraModel):
     ):
         # The specifications of the application subcomponent.
         self.component_class = component_class
-        # The description of the application subcomponent specifications.
+        # The description of the specifications for the application subcomponent.
         self.component_class_description = component_class_description
-        # The subcomponent ID.
+        # The ID of the subcomponent.
         self.component_id = component_id
         # The maximum number of replicas for the application subcomponent.
         self.component_max_replica = component_max_replica
         # The number of replicas for the application subcomponent.
         self.component_replica = component_replica
-        # The replica group name of the application subcomponent.
+        # The name of the replica group for the application subcomponent.
         self.component_replica_group_name = component_replica_group_name
         # The type of the application subcomponent.
         self.component_type = component_type
@@ -1133,7 +1188,7 @@ class DescribeApplicationAttributeResponseBodyComponents(DaraModel):
         # 
         # If the whitelist at the subcomponent level is the same as that at the application level, this return value is omitted.
         self.security_iparrays = security_iparrays
-        # The component status. The valid values are the same as the application status.
+        # The status of the component. The valid values are the same as those of the application status.
         self.status = status
         # The topology information of the application subcomponent.
         self.topology = topology
@@ -1245,11 +1300,11 @@ class DescribeApplicationAttributeResponseBodyComponentsTopology(DaraModel):
         layer: str = None,
         parents: List[str] = None,
     ):
-        # The list of topology child node IDs or child node subcomponent types for the current application subcomponent.
+        # The list of topology child node IDs for the current application subcomponent, or the list of subcomponent types of the child nodes.
         self.children = children
         # The topology layer of the topology information for the current application subcomponent.
         self.layer = layer
-        # The list of topology parent node IDs or parent node subcomponent types for the current application subcomponent.
+        # The list of topology parent node IDs for the current application subcomponent, or the list of subcomponent types of the parent nodes.
         self.parents = parents
 
     def validate(self):
@@ -1357,13 +1412,14 @@ class DescribeApplicationAttributeResponseBodyComponentsSecurityGroups(DaraModel
         security_group_name: str = None,
     ):
         # The network type. Valid values: 
+        # 
         # - vpc
         self.net_type = net_type
         # The region ID.
         self.region_id = region_id
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The security group name.
+        # The name of the security group.
         self.security_group_name = security_group_name
 
     def validate(self):
