@@ -13,9 +13,9 @@ class ListRegionsResponseBody(DaraModel):
         region_list: List[main_models.ListRegionsResponseBodyRegionList] = None,
         request_id: str = None,
     ):
-        # The list of regions where assets reside.
+        # The list of regions where the assets are located.
         self.region_list = region_list
-        # The request ID, which can be used to locate this API call.
+        # The request ID. You can use this ID to locate the API call.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListRegionsResponseBodyRegionList(DaraModel):
         region_id: str = None,
         region_name: str = None,
     ):
-        # The region ID where the assets reside.
+        # The ID of the region where the assets are located.
         self.region_id = region_id
-        # The name of the region where the assets reside.
+        # The name of the region where the assets are located.
         self.region_name = region_name
 
     def validate(self):

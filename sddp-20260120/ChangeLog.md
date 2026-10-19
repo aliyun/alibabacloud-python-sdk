@@ -1,3 +1,7 @@
+2026-10-19 Version: 1.0.2
+- Update API ListRegions: add request parameters LoadAll.
+
+
 2026-10-14 Version: 1.0.1
 - Update API ListDataSources: add request parameters EngineType.
 - Update API ListDataSources: add request parameters Port.

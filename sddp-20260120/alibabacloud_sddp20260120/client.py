@@ -1542,6 +1542,8 @@ class Client(OpenApiClient):
             query['Identified'] = request.identified
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.load_all):
+            query['LoadAll'] = request.load_all
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1574,6 +1576,8 @@ class Client(OpenApiClient):
             query['Identified'] = request.identified
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.load_all):
+            query['LoadAll'] = request.load_all
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

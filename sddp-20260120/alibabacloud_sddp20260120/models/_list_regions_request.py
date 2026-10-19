@@ -10,16 +10,16 @@ class ListRegionsRequest(DaraModel):
         audited: bool = None,
         identified: bool = None,
         lang: str = None,
+        load_all: bool = None,
     ):
-        # Specifies whether to filter regions by assets that have audit enabled. A value of true indicates that audit is enabled. A value of false indicates that audit is not enabled. If you do not specify this parameter, this filter condition is not applied.
+        # Specifies whether to filter regions by assets with auditing enabled. Valid values: true: Enabled. false: Disabled. If you do not specify this parameter, this filter condition is not applied.
         self.audited = audited
-        # Specifies whether to filter regions by assets that have detection enabled. A value of true indicates that detection is enabled. A value of false indicates that detection is not enabled. If you do not specify this parameter, this filter condition is not applied.
+        # Specifies whether to filter regions by assets with detection enabled. Valid values: true: Enabled. false: Disabled. If you do not specify this parameter, this filter condition is not applied.
         self.identified = identified
-        # The language of the response description. Valid values:
-        # 
-        # - zh: Chinese.
-        # - en: English.
+        # The language of the response. Valid values: zh: Chinese. en: English.
         self.lang = lang
+        # Specifies whether to retrieve all regions.
+        self.load_all = load_all
 
     def validate(self):
         pass
@@ -38,6 +38,9 @@ class ListRegionsRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.load_all is not None:
+            result['LoadAll'] = self.load_all
+
         return result
 
     def from_map(self, m: dict = None):
@@ -50,6 +53,9 @@ class ListRegionsRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('LoadAll') is not None:
+            self.load_all = m.get('LoadAll')
 
         return self
 
