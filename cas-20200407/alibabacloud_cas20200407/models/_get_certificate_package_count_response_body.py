@@ -16,13 +16,13 @@ class GetCertificatePackageCountResponseBody(DaraModel):
     ):
         # The message notification quota.
         self.notice_count_detail = notice_count_detail
-        # The details of certificate brand products.
+        # The product details of certificate brands.
         self.product_count_list = product_count_list
-        # The acceleration gateway forwarding quota.
+        # The forwarding quota of the acceleration gateway.
         self.proxy_count_detail = proxy_count_detail
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of domain names bound to certificates.
+        # The total number of domain names bound to the certificates.
         self.total_count_detail = total_count_detail
         # The usage of the hosting quota.
         self.trustee_count_detail = trustee_count_detail

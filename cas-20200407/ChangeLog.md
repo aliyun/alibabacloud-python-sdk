@@ -1,3 +1,9 @@
+2026-10-19 Version: 3.9.4
+- Update API ListDeploymentJob: add request parameters CertId.
+- Update API ListDeploymentJob: add request parameters InstanceId.
+- Update API ListDeploymentJob: add response parameters Body.Data.$.Certificates.
+
+
 2026-10-08 Version: 3.9.3
 - Update API GetInstanceDetail: add response parameters Body.OrderProgress.
 - Update API ListInstances: add request parameters VersionType.

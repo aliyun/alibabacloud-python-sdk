@@ -4544,8 +4544,12 @@ class Client(OpenApiClient):
     ) -> main_models.ListDeploymentJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.job_type):
             query['JobType'] = request.job_type
         if not DaraCore.is_null(request.show_size):
@@ -4578,8 +4582,12 @@ class Client(OpenApiClient):
     ) -> main_models.ListDeploymentJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.job_type):
             query['JobType'] = request.job_type
         if not DaraCore.is_null(request.show_size):
