@@ -11,11 +11,11 @@ class FindBestMatchSecurityStrategyRequest(DaraModel):
         control_sub_module: str = None,
         workspace_id: int = None,
     ):
-        # Control module, used to match the security policy type.
+        # The control module used to match the security policy type.
         self.control_module = control_module
-        # Control sub-module, used to match the security policy type.
+        # The control submodule used to match the security policy type.
         self.control_sub_module = control_sub_module
-        # **Workspace ID**, used to precisely match workspace-level policies.
+        # The **workspace ID** used for exact match of the workspace-level policy.
         self.workspace_id = workspace_id
 
     def validate(self):

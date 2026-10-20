@@ -13,9 +13,9 @@ class FindBestMatchSecurityStrategyResponseBody(DaraModel):
         data: main_models.FindBestMatchSecurityStrategyResponseBodyData = None,
         request_id: str = None,
     ):
-        # Data object.
+        # The data object.
         self.data = data
-        # **API request ID**
+        # The **API request ID**.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class FindBestMatchSecurityStrategyResponseBodyData(DaraModel):
         edition_display_name: str = None,
         security_strategy: main_models.FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy = None,
     ):
-        # Purchased DataWorks edition.
+        # The purchased DataWorks edition.
         self.edition = edition
-        # Purchased DataWorks edition name.
+        # The name of the purchased DataWorks edition.
         self.edition_display_name = edition_display_name
-        # Security policy.
+        # The security policy.
         self.security_strategy = security_strategy
 
     def validate(self):
@@ -113,35 +113,35 @@ class FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy(DaraModel):
         updater: str = None,
         workspaces: List[int] = None,
     ):
-        # **Policy content**. Refer to the StrategyContent definition.
+        # The **policy content**. For more information, see the StrategyContent definition.
         self.content = content
-        # **Control scope** (Workspace/Tenant).
+        # The **control scope** (Workspace/Tenant).
         self.control_dw_scope = control_dw_scope
-        # **Control module**
+        # The **control module**.
         self.control_module = control_module
-        # **Control sub-module**
+        # The **control submodule**.
         self.control_sub_module = control_sub_module
-        # Creation time.
+        # The creation time in the YYYY-MM-DDTHH:mm:ss format. The time zone is not specified in the current document.
         self.create_time = create_time
-        # Creator user ID.
+        # The user ID of the creator.
         self.creator = creator
-        # **Policy description**
+        # The **policy description**.
         self.description = description
-        # **Whether enabled**
+        # Indicates whether the policy is **enabled**.
         self.enabled = enabled
-        # **Policy ID**
+        # The **policy ID**.
         self.id = id
-        # **Policy name**
+        # The **policy name**.
         self.name = name
-        # System default policy source ID.
+        # The source ID of the system default policy.
         self.origin_policy_id = origin_policy_id
-        # **Schema template name**
+        # The **schema template name**.
         self.schema_name = schema_name
-        # Update time.
+        # The update time in the YYYY-MM-DDTHH:mm:ss format. The time zone is not specified in the current document.
         self.update_time = update_time
-        # Last updater user ID.
+        # The user ID of the last updater.
         self.updater = updater
-        # **Associated workspace ID list**
+        # The **list of associated workspace IDs**.
         self.workspaces = workspaces
 
     def validate(self):
@@ -263,25 +263,25 @@ class FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContent(DaraM
         system_policy_display_name: str = None,
         system_policy_name: str = None,
     ):
-        # **Control scope**
+        # The **control scope**.
         self.control_dw_scope = control_dw_scope
-        # **Control module**
+        # The **control module**.
         self.control_module = control_module
-        # **Control sub-module**
+        # The **control submodule**.
         self.control_sub_module = control_sub_module
-        # Controller list.
+        # The list of control items.
         # 
-        # Note: Valid controllers depend on the selected Schema. Refer to the Controller definition and the controller list of each Schema.
+        # Note: Valid control items depend on the selected schema. For more information, see the Controller definition and the control item list for each schema.
         self.controllers = controllers
-        # **Display name**
+        # The **display name**.
         self.display_name = display_name
-        # **English display name**
+        # The **English display name**.
         self.display_name_en = display_name_en
-        # **Schema name**
+        # The **schema name**.
         self.name = name
-        # System policy display name.
+        # The display name of the system policy.
         self.system_policy_display_name = system_policy_display_name
-        # System policy name (when not empty, the system automatically creates a default policy).
+        # The system policy name. If this parameter is not empty, automatic creation of a default policy is triggered.
         self.system_policy_name = system_policy_name
 
     def validate(self):
@@ -378,33 +378,33 @@ class FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategyContentContro
         standard_edition_interval_value: List[int] = None,
         user_config_value: Any = None,
     ):
-        # **Basic Edition default value**
+        # The **default value for Basic Edition**.
         self.basic_edition_default_value = basic_edition_default_value
-        # Basic Edition valid value range [min, max].
+        # The valid value range [min, max] for Basic Edition.
         self.basic_edition_interval_value = basic_edition_interval_value
-        # Controller identifier. For values, see the controller list of each Schema.
+        # The identifier of the control item. For valid values, see the control item list for each schema.
         self.controller = controller
-        # **Value type (Boolean/Integer/Long/String)**
+        # The **value type (Boolean/Integer/Long/String)**.
         self.controller_value_type = controller_value_type
-        # Display name.
+        # The display name.
         self.display_name = display_name
-        # **English display name**
+        # The **English display name**.
         self.display_name_en = display_name_en
-        # **Whether this controller is enabled**
+        # Indicates whether the control item is **enabled**.
         self.enable = enable
-        # Enterprise Edition default value.
+        # The default value for Enterprise Edition.
         self.enterprise_edition_default_value = enterprise_edition_default_value
-        # Enterprise Edition valid value range [min, max].
+        # The valid value range [min, max] for Enterprise Edition.
         self.enterprise_edition_interval_value = enterprise_edition_interval_value
-        # Professional Edition default value.
+        # The default value for Professional Edition.
         self.professional_edition_default_value = professional_edition_default_value
-        # Professional Edition valid value range [min, max].
+        # The valid value range [min, max] for Professional Edition.
         self.professional_edition_interval_value = professional_edition_interval_value
-        # **Standard Edition default value**
+        # The **default value for Standard Edition**.
         self.standard_edition_default_value = standard_edition_default_value
-        # Standard Edition valid value range [min, max].
+        # The valid value range [min, max] for Standard Edition.
         self.standard_edition_interval_value = standard_edition_interval_value
-        # **User-configured value. The type depends on ControllerValueType.**
+        # The **user-configured value. The data type depends on the ControllerValueType**.
         self.user_config_value = user_config_value
 
     def validate(self):

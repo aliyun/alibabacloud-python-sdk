@@ -1870,6 +1870,132 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_business_with_options_async(request, runtime)
 
+    def create_calendar_with_options(
+        self,
+        tmp_req: main_models.CreateCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCalendarResponse:
+        tmp_req.validate()
+        request = main_models.CreateCalendarShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.project_ids):
+            request.project_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.project_ids, 'ProjectIds', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_policy):
+            request.schedule_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_policy, 'SchedulePolicy', 'json')
+        body = {}
+        if not DaraCore.is_null(request.all_projects):
+            body['AllProjects'] = request.all_projects
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.expiration_reminder):
+            body['ExpirationReminder'] = request.expiration_reminder
+        if not DaraCore.is_null(request.fallback_policy):
+            body['FallbackPolicy'] = request.fallback_policy
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.overdue_policy):
+            body['OverduePolicy'] = request.overdue_policy
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.project_ids_shrink):
+            body['ProjectIds'] = request.project_ids_shrink
+        if not DaraCore.is_null(request.schedule_policy_shrink):
+            body['SchedulePolicy'] = request.schedule_policy_shrink
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCalendar',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_calendar_with_options_async(
+        self,
+        tmp_req: main_models.CreateCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCalendarResponse:
+        tmp_req.validate()
+        request = main_models.CreateCalendarShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.project_ids):
+            request.project_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.project_ids, 'ProjectIds', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_policy):
+            request.schedule_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_policy, 'SchedulePolicy', 'json')
+        body = {}
+        if not DaraCore.is_null(request.all_projects):
+            body['AllProjects'] = request.all_projects
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.expiration_reminder):
+            body['ExpirationReminder'] = request.expiration_reminder
+        if not DaraCore.is_null(request.fallback_policy):
+            body['FallbackPolicy'] = request.fallback_policy
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.overdue_policy):
+            body['OverduePolicy'] = request.overdue_policy
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.project_ids_shrink):
+            body['ProjectIds'] = request.project_ids_shrink
+        if not DaraCore.is_null(request.schedule_policy_shrink):
+            body['SchedulePolicy'] = request.schedule_policy_shrink
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCalendar',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_calendar(
+        self,
+        request: main_models.CreateCalendarRequest,
+    ) -> main_models.CreateCalendarResponse:
+        runtime = RuntimeOptions()
+        return self.create_calendar_with_options(request, runtime)
+
+    async def create_calendar_async(
+        self,
+        request: main_models.CreateCalendarRequest,
+    ) -> main_models.CreateCalendarResponse:
+        runtime = RuntimeOptions()
+        return await self.create_calendar_with_options_async(request, runtime)
+
     def create_component_with_options(
         self,
         request: main_models.CreateComponentRequest,
@@ -7332,6 +7458,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_business_with_options_async(request, runtime)
 
+    def delete_calendar_with_options(
+        self,
+        request: main_models.DeleteCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCalendar',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_calendar_with_options_async(
+        self,
+        request: main_models.DeleteCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCalendar',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_calendar(
+        self,
+        request: main_models.DeleteCalendarRequest,
+    ) -> main_models.DeleteCalendarResponse:
+        runtime = RuntimeOptions()
+        return self.delete_calendar_with_options(request, runtime)
+
+    async def delete_calendar_async(
+        self,
+        request: main_models.DeleteCalendarRequest,
+    ) -> main_models.DeleteCalendarResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_calendar_with_options_async(request, runtime)
+
     def delete_certificate_with_options(
         self,
         request: main_models.DeleteCertificateRequest,
@@ -12055,6 +12251,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetBusinessResponse:
         runtime = RuntimeOptions()
         return await self.get_business_with_options_async(request, runtime)
+
+    def get_calendar_with_options(
+        self,
+        request: main_models.GetCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCalendar',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_calendar_with_options_async(
+        self,
+        request: main_models.GetCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCalendarResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCalendar',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_calendar(
+        self,
+        request: main_models.GetCalendarRequest,
+    ) -> main_models.GetCalendarResponse:
+        runtime = RuntimeOptions()
+        return self.get_calendar_with_options(request, runtime)
+
+    async def get_calendar_async(
+        self,
+        request: main_models.GetCalendarRequest,
+    ) -> main_models.GetCalendarResponse:
+        runtime = RuntimeOptions()
+        return await self.get_calendar_with_options_async(request, runtime)
 
     def get_catalog_with_options(
         self,
@@ -17775,6 +18041,174 @@ class Client(OpenApiClient):
     ) -> main_models.ListBusinessResponse:
         runtime = RuntimeOptions()
         return await self.list_business_with_options_async(request, runtime)
+
+    def list_calendar_versions_with_options(
+        self,
+        request: main_models.ListCalendarVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCalendarVersionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCalendarVersions',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCalendarVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_calendar_versions_with_options_async(
+        self,
+        request: main_models.ListCalendarVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCalendarVersionsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCalendarVersions',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCalendarVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_calendar_versions(
+        self,
+        request: main_models.ListCalendarVersionsRequest,
+    ) -> main_models.ListCalendarVersionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_calendar_versions_with_options(request, runtime)
+
+    async def list_calendar_versions_async(
+        self,
+        request: main_models.ListCalendarVersionsRequest,
+    ) -> main_models.ListCalendarVersionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_calendar_versions_with_options_async(request, runtime)
+
+    def list_calendars_with_options(
+        self,
+        request: main_models.ListCalendarsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCalendarsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCalendars',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCalendarsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_calendars_with_options_async(
+        self,
+        request: main_models.ListCalendarsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCalendarsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.sort_by):
+            body['SortBy'] = request.sort_by
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCalendars',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCalendarsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_calendars(
+        self,
+        request: main_models.ListCalendarsRequest,
+    ) -> main_models.ListCalendarsResponse:
+        runtime = RuntimeOptions()
+        return self.list_calendars_with_options(request, runtime)
+
+    async def list_calendars_async(
+        self,
+        request: main_models.ListCalendarsRequest,
+    ) -> main_models.ListCalendarsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_calendars_with_options_async(request, runtime)
 
     def list_catalogs_with_options(
         self,
@@ -29359,6 +29793,132 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateBusinessResponse:
         runtime = RuntimeOptions()
         return await self.update_business_with_options_async(request, runtime)
+
+    def update_calendar_with_options(
+        self,
+        tmp_req: main_models.UpdateCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCalendarResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCalendarShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.project_ids):
+            request.project_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.project_ids, 'ProjectIds', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_policy):
+            request.schedule_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_policy, 'SchedulePolicy', 'json')
+        body = {}
+        if not DaraCore.is_null(request.all_projects):
+            body['AllProjects'] = request.all_projects
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.expiration_reminder):
+            body['ExpirationReminder'] = request.expiration_reminder
+        if not DaraCore.is_null(request.fallback_policy):
+            body['FallbackPolicy'] = request.fallback_policy
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.overdue_policy):
+            body['OverduePolicy'] = request.overdue_policy
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.project_ids_shrink):
+            body['ProjectIds'] = request.project_ids_shrink
+        if not DaraCore.is_null(request.schedule_policy_shrink):
+            body['SchedulePolicy'] = request.schedule_policy_shrink
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCalendar',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_calendar_with_options_async(
+        self,
+        tmp_req: main_models.UpdateCalendarRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCalendarResponse:
+        tmp_req.validate()
+        request = main_models.UpdateCalendarShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.project_ids):
+            request.project_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.project_ids, 'ProjectIds', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_policy):
+            request.schedule_policy_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_policy, 'SchedulePolicy', 'json')
+        body = {}
+        if not DaraCore.is_null(request.all_projects):
+            body['AllProjects'] = request.all_projects
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.end_date):
+            body['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.expiration_reminder):
+            body['ExpirationReminder'] = request.expiration_reminder
+        if not DaraCore.is_null(request.fallback_policy):
+            body['FallbackPolicy'] = request.fallback_policy
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.overdue_policy):
+            body['OverduePolicy'] = request.overdue_policy
+        if not DaraCore.is_null(request.owner):
+            body['Owner'] = request.owner
+        if not DaraCore.is_null(request.project_ids_shrink):
+            body['ProjectIds'] = request.project_ids_shrink
+        if not DaraCore.is_null(request.schedule_policy_shrink):
+            body['SchedulePolicy'] = request.schedule_policy_shrink
+        if not DaraCore.is_null(request.start_date):
+            body['StartDate'] = request.start_date
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCalendar',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_calendar(
+        self,
+        request: main_models.UpdateCalendarRequest,
+    ) -> main_models.UpdateCalendarResponse:
+        runtime = RuntimeOptions()
+        return self.update_calendar_with_options(request, runtime)
+
+    async def update_calendar_async(
+        self,
+        request: main_models.UpdateCalendarRequest,
+    ) -> main_models.UpdateCalendarResponse:
+        runtime = RuntimeOptions()
+        return await self.update_calendar_with_options_async(request, runtime)
 
     def update_column_business_metadata_with_options(
         self,

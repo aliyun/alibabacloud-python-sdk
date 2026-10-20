@@ -16,9 +16,9 @@ class ListSecurityStrategiesRequest(DaraModel):
         self.control_module = control_module
         # **The control submodule.**
         self.control_sub_module = control_sub_module
-        # The page number. Starts from 1. Default: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

@@ -15,7 +15,7 @@ class ListProjectRolesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID. Used to locate logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListProjectRolesResponseBodyPagingInfo(DaraModel):
         project_roles: List[main_models.ListProjectRolesResponseBodyPagingInfoProjectRoles] = None,
         total_count: str = None,
     ):
-        # The requested page number. Used for pagination.
+        # The page number of the requested data.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The list of workspace roles.
         self.project_roles = project_roles
-        # The total number of entries that meet the filter conditions.
+        # The total number of entries that meet the specified conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -118,16 +118,17 @@ class ListProjectRolesResponseBodyPagingInfoProjectRoles(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
-        # The role code of the workspace.
+        # The code of the workspace role.
         self.code = code
+        # The list of DataWorks product module permissions granted to the role.
         self.module_permissions = module_permissions
-        # The role name of the workspace.
+        # The name of the workspace role.
         self.name = name
         # The ID of the DataWorks workspace.
         # 
-        # Note: For system default workspace roles, ProjectId returns a fixed value of -1.
+        # Note: For default system workspace roles, the value of ProjectId is fixed to -1.
         self.project_id = project_id
-        # The role type of the workspace.
+        # The type of the workspace role.
         self.type = type
 
     def validate(self):
@@ -189,8 +190,11 @@ class ListProjectRolesResponseBodyPagingInfoProjectRolesModulePermissions(DaraMo
         module_name: str = None,
         permission_type: str = None,
     ):
+        # The ID of the DataWorks module.
         self.module_id = module_id
+        # The name of the DataWorks module.
         self.module_name = module_name
+        # The type of the permission.
         self.permission_type = permission_type
 
     def validate(self):

@@ -21,7 +21,7 @@ class ListTablesRequest(DaraModel):
     ):
         # The comment. Fuzzy match is supported.
         self.comment = comment
-        # Specifies whether to return extended properties. Set this parameter to `true` to return extended properties or `false` to not return them.
+        # Specifies whether to return extended properties. If this parameter is set to `true`, extended properties are returned. If this parameter is set to `false`, extended properties are not returned.
         self.include_extended_properties = include_extended_properties
         # The name. Fuzzy match is supported.
         self.name = name
@@ -31,23 +31,23 @@ class ListTablesRequest(DaraModel):
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The ID of the parent-level metadata entity. You can obtain this value from the response of the ListDatabases or ListSchemas operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID of the parent metadata entity. You can refer to the response of the ListDatabases or ListSchemas operation, or see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # - The value can be the database to which the table belongs. The format of `ParentMetaEntityId` is `${EntityType}:${InstanceID or encoded URL}:${DataCatalogIdentifier}:${DatabaseName}`. Use an empty string as a placeholder for levels that do not exist.
+        # - The parent entity can be the database to which the table belongs. The `ParentMetaEntityId` format is `${EntityType}:${Instance ID or URL-encoded JDBC URL}:${Data catalog identifier}:${Database name}`. Use an empty string as a placeholder for non-existent levels.
         # 
-        # - The value can also be the database schema to which the table belongs. The format of `ParentMetaEntityId` is `${EntityType}:${InstanceID or encoded URL}:${DataCatalogIdentifier}:${DatabaseName}:${SchemaName}`. Use an empty string as a placeholder for levels that do not exist.
+        # - The parent entity can also be the database schema to which the table belongs. The `ParentMetaEntityId` format is `${EntityType}:${Instance ID or URL-encoded JDBC URL}:${Data catalog identifier}:${Database name}:${Schema name}`. Use an empty string as a placeholder for non-existent levels.
         # 
-        # > - You can set `ParentMetaEntityId` to a database schema only when the database type supports schemas (`maxcompute/holo/postgresql/sqlserver/hybriddb_for_postgresql/oracle`, where the three-layer model must be enabled for the maxcompute type). Otherwise, you can set it only to a database.
-        # > - For the maxcompute and dlf types, use an empty string as a placeholder for the instance ID. For the maxcompute type, the database name is the MaxCompute project name.
-        # > - For the starrocks type, the data catalog identifier is the catalog name. For the dlf type, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and you can use an empty string as a placeholder.
+        # > - The database schema can be used for `ParentMetaEntityId` only when the database type supports schemas (`maxcompute`, `holo`, `postgresql`, `sqlserver`, `hybriddb_for_postgresql`, or `oracle`). For MaxCompute, the three-level model must be enabled. Otherwise, only the database can be used.
+        # > - For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name.
+        # > - For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level, so use an empty string as a placeholder.
         # 
-        # The following examples show the format of ParentMetaEntityId for common types:
+        # Examples of `ParentMetaEntityId` formats for common types:
         # 
         # - `maxcompute-project:::project_name`
         # 
-        # - `maxcompute-schema:::project_name:schema_name` (only when the three-layer model is enabled for the project)
+        # - `maxcompute-schema:::project_name:schema_name` (only when the three-level model is enabled for the project)
         # 
         # - `dlf-database::catalog_id:database_name`
         # 
@@ -58,22 +58,22 @@ class ListTablesRequest(DaraModel):
         # - `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
         # 
         # > Where:  
-        # > - `instance_id`: The instance ID. This value is required when the data source is registered in instance mode.
-        # > - `encoded_jdbc_url`: The URL-encoded JDBC connection string. This value is required when the data source is registered by using a connection string.
-        # > - `catalog_id`: The DLF catalog ID.
-        # > - `project_name`: The MaxCompute project name.
-        # > - `database_name`: The database name.
-        # > - `schema_name`: The schema name.
+        # > - `instance_id`: the instance ID, which is required when the data source is registered in instance mode.
+        # > - `encoded_jdbc_url`: the URL-encoded JDBC connection string, which is required when the data source is registered by using a connection string.
+        # > - `catalog_id`: the DLF catalog ID.
+        # > - `project_name`: the MaxCompute project name.
+        # > - `database_name`: the database name.
+        # > - `schema_name`: the schema name.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
-        # The field by which to sort the results. Default value: CreateTime. Valid values:
+        # The field used for sorting. Default value: CreateTime. Valid values:
         # - CreateTime: creation time
         # - ModifyTime: modification time
         # - Name: name
         # - TableType: table type
         self.sort_by = sort_by
-        # The list of table types to query. If this parameter is left empty, all types are queried.
+        # The list of table types to query. If this parameter is left empty, all table types are queried.
         self.table_types = table_types
 
     def validate(self):
