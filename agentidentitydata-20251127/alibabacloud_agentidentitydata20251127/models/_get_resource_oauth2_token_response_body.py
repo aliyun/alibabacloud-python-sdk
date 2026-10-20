@@ -9,12 +9,14 @@ class GetResourceOAuth2TokenResponseBody(DaraModel):
         self,
         access_token: str = None,
         authorization_url: str = None,
+        expires_in: int = None,
         request_id: str = None,
         session_status: str = None,
         session_uri: str = None,
     ):
         self.access_token = access_token
         self.authorization_url = authorization_url
+        self.expires_in = expires_in
         self.request_id = request_id
         self.session_status = session_status
         self.session_uri = session_uri
@@ -32,6 +34,9 @@ class GetResourceOAuth2TokenResponseBody(DaraModel):
 
         if self.authorization_url is not None:
             result['AuthorizationURL'] = self.authorization_url
+
+        if self.expires_in is not None:
+            result['ExpiresIn'] = self.expires_in
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -51,6 +56,9 @@ class GetResourceOAuth2TokenResponseBody(DaraModel):
 
         if m.get('AuthorizationURL') is not None:
             self.authorization_url = m.get('AuthorizationURL')
+
+        if m.get('ExpiresIn') is not None:
+            self.expires_in = m.get('ExpiresIn')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

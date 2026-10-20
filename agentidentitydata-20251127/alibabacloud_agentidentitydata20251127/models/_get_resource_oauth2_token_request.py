@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class GetResourceOAuth2TokenRequest(DaraModel):
     def __init__(
         self,
+        audience: str = None,
         custom_parameters: Dict[str, Any] = None,
         custom_state: str = None,
         force_authentication: bool = None,
@@ -17,8 +18,10 @@ class GetResourceOAuth2TokenRequest(DaraModel):
         resource_oauth2_return_url: str = None,
         scopes: List[str] = None,
         session_uri: str = None,
+        token_vault_name: str = None,
         workload_access_token: str = None,
     ):
+        self.audience = audience
         self.custom_parameters = custom_parameters
         self.custom_state = custom_state
         self.force_authentication = force_authentication
@@ -27,6 +30,7 @@ class GetResourceOAuth2TokenRequest(DaraModel):
         self.resource_oauth2_return_url = resource_oauth2_return_url
         self.scopes = scopes
         self.session_uri = session_uri
+        self.token_vault_name = token_vault_name
         self.workload_access_token = workload_access_token
 
     def validate(self):
@@ -37,6 +41,9 @@ class GetResourceOAuth2TokenRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.audience is not None:
+            result['Audience'] = self.audience
+
         if self.custom_parameters is not None:
             result['CustomParameters'] = self.custom_parameters
 
@@ -61,6 +68,9 @@ class GetResourceOAuth2TokenRequest(DaraModel):
         if self.session_uri is not None:
             result['SessionURI'] = self.session_uri
 
+        if self.token_vault_name is not None:
+            result['TokenVaultName'] = self.token_vault_name
+
         if self.workload_access_token is not None:
             result['WorkloadAccessToken'] = self.workload_access_token
 
@@ -68,6 +78,9 @@ class GetResourceOAuth2TokenRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Audience') is not None:
+            self.audience = m.get('Audience')
+
         if m.get('CustomParameters') is not None:
             self.custom_parameters = m.get('CustomParameters')
 
@@ -91,6 +104,9 @@ class GetResourceOAuth2TokenRequest(DaraModel):
 
         if m.get('SessionURI') is not None:
             self.session_uri = m.get('SessionURI')
+
+        if m.get('TokenVaultName') is not None:
+            self.token_vault_name = m.get('TokenVaultName')
 
         if m.get('WorkloadAccessToken') is not None:
             self.workload_access_token = m.get('WorkloadAccessToken')

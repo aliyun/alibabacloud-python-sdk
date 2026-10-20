@@ -8,9 +8,11 @@ class GetResourceAPIKeyRequest(DaraModel):
     def __init__(
         self,
         resource_credential_provider_name: str = None,
+        token_vault_name: str = None,
         workload_access_token: str = None,
     ):
         self.resource_credential_provider_name = resource_credential_provider_name
+        self.token_vault_name = token_vault_name
         self.workload_access_token = workload_access_token
 
     def validate(self):
@@ -24,6 +26,9 @@ class GetResourceAPIKeyRequest(DaraModel):
         if self.resource_credential_provider_name is not None:
             result['ResourceCredentialProviderName'] = self.resource_credential_provider_name
 
+        if self.token_vault_name is not None:
+            result['TokenVaultName'] = self.token_vault_name
+
         if self.workload_access_token is not None:
             result['WorkloadAccessToken'] = self.workload_access_token
 
@@ -33,6 +38,9 @@ class GetResourceAPIKeyRequest(DaraModel):
         m = m or dict()
         if m.get('ResourceCredentialProviderName') is not None:
             self.resource_credential_provider_name = m.get('ResourceCredentialProviderName')
+
+        if m.get('TokenVaultName') is not None:
+            self.token_vault_name = m.get('TokenVaultName')
 
         if m.get('WorkloadAccessToken') is not None:
             self.workload_access_token = m.get('WorkloadAccessToken')

@@ -143,10 +143,12 @@ class AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwt
         self,
         audiences: str = None,
         issuer: str = None,
+        jti: str = None,
         subject: str = None,
     ):
         self.audiences = audiences
         self.issuer = issuer
+        self.jti = jti
         self.subject = subject
 
     def validate(self):
@@ -163,6 +165,9 @@ class AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwt
         if self.issuer is not None:
             result['Issuer'] = self.issuer
 
+        if self.jti is not None:
+            result['JTI'] = self.jti
+
         if self.subject is not None:
             result['Subject'] = self.subject
 
@@ -175,6 +180,9 @@ class AssumeRoleForWorkloadIdentityResponseBodyWorkloadContextInfoUserContextJwt
 
         if m.get('Issuer') is not None:
             self.issuer = m.get('Issuer')
+
+        if m.get('JTI') is not None:
+            self.jti = m.get('JTI')
 
         if m.get('Subject') is not None:
             self.subject = m.get('Subject')

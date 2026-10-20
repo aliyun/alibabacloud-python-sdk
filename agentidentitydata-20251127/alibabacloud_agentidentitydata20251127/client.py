@@ -213,6 +213,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.resource_credential_provider_name):
             body['ResourceCredentialProviderName'] = request.resource_credential_provider_name
+        if not DaraCore.is_null(request.token_vault_name):
+            body['TokenVaultName'] = request.token_vault_name
         if not DaraCore.is_null(request.workload_access_token):
             body['WorkloadAccessToken'] = request.workload_access_token
         req = open_api_util_models.OpenApiRequest(
@@ -243,6 +245,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.resource_credential_provider_name):
             body['ResourceCredentialProviderName'] = request.resource_credential_provider_name
+        if not DaraCore.is_null(request.token_vault_name):
+            body['TokenVaultName'] = request.token_vault_name
         if not DaraCore.is_null(request.workload_access_token):
             body['WorkloadAccessToken'] = request.workload_access_token
         req = open_api_util_models.OpenApiRequest(
@@ -291,6 +295,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.scopes):
             request.scopes_shrink = Utils.array_to_string_with_specified_style(tmp_req.scopes, 'Scopes', 'json')
         body = {}
+        if not DaraCore.is_null(request.audience):
+            body['Audience'] = request.audience
         if not DaraCore.is_null(request.custom_parameters_shrink):
             body['CustomParameters'] = request.custom_parameters_shrink
         if not DaraCore.is_null(request.custom_state):
@@ -307,6 +313,8 @@ class Client(OpenApiClient):
             body['Scopes'] = request.scopes_shrink
         if not DaraCore.is_null(request.session_uri):
             body['SessionURI'] = request.session_uri
+        if not DaraCore.is_null(request.token_vault_name):
+            body['TokenVaultName'] = request.token_vault_name
         if not DaraCore.is_null(request.workload_access_token):
             body['WorkloadAccessToken'] = request.workload_access_token
         req = open_api_util_models.OpenApiRequest(
@@ -341,6 +349,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.scopes):
             request.scopes_shrink = Utils.array_to_string_with_specified_style(tmp_req.scopes, 'Scopes', 'json')
         body = {}
+        if not DaraCore.is_null(request.audience):
+            body['Audience'] = request.audience
         if not DaraCore.is_null(request.custom_parameters_shrink):
             body['CustomParameters'] = request.custom_parameters_shrink
         if not DaraCore.is_null(request.custom_state):
@@ -357,6 +367,8 @@ class Client(OpenApiClient):
             body['Scopes'] = request.scopes_shrink
         if not DaraCore.is_null(request.session_uri):
             body['SessionURI'] = request.session_uri
+        if not DaraCore.is_null(request.token_vault_name):
+            body['TokenVaultName'] = request.token_vault_name
         if not DaraCore.is_null(request.workload_access_token):
             body['WorkloadAccessToken'] = request.workload_access_token
         req = open_api_util_models.OpenApiRequest(

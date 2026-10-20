@@ -9,9 +9,11 @@ class GetWorkloadAccessTokenResponseBody(DaraModel):
         self,
         request_id: str = None,
         workload_access_token: str = None,
+        workload_identity_arn: str = None,
     ):
         self.request_id = request_id
         self.workload_access_token = workload_access_token
+        self.workload_identity_arn = workload_identity_arn
 
     def validate(self):
         pass
@@ -27,6 +29,9 @@ class GetWorkloadAccessTokenResponseBody(DaraModel):
         if self.workload_access_token is not None:
             result['WorkloadAccessToken'] = self.workload_access_token
 
+        if self.workload_identity_arn is not None:
+            result['WorkloadIdentityArn'] = self.workload_identity_arn
+
         return result
 
     def from_map(self, m: dict = None):
@@ -36,6 +41,9 @@ class GetWorkloadAccessTokenResponseBody(DaraModel):
 
         if m.get('WorkloadAccessToken') is not None:
             self.workload_access_token = m.get('WorkloadAccessToken')
+
+        if m.get('WorkloadIdentityArn') is not None:
+            self.workload_identity_arn = m.get('WorkloadIdentityArn')
 
         return self
 
