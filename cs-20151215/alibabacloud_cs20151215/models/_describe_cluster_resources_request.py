@@ -11,9 +11,9 @@ class DescribeClusterResourcesRequest(DaraModel):
     ):
         # Specifies whether to also query resources created by cluster components.
         # 
-        # - true: queries the resources.
+        # - true: Queries the resources.
         # 
-        # - false: does not query the resources.
+        # - false: Does not query the resources.
         self.with_addon_resources = with_addon_resources
 
     def validate(self):

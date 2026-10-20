@@ -13,7 +13,8 @@ class StopAlertResponseBody(DaraModel):
         # The message returned when the execution fails.
         self.msg = msg
         # The execution result status. Valid values:
-        # - True: The execution is successful.
+        # 
+        # - True: The execution succeeded.
         # - False: The execution failed.
         self.status = status
 

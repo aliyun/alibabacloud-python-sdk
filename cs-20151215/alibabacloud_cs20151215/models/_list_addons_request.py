@@ -15,7 +15,7 @@ class ListAddonsRequest(DaraModel):
         region_id: str = None,
     ):
         # The cluster ID.
-        # If you specify a cluster ID, the system queries the list of available components for the specified cluster, and all other parameters are ignored.
+        # If you specify a cluster ID, the available add-on components for the cluster are returned, and all other parameters are ignored.
         self.cluster_id = cluster_id
         # The cluster specification.
         # If cluster_id is specified, this parameter is ignored.
@@ -33,7 +33,7 @@ class ListAddonsRequest(DaraModel):
         # If cluster_id is specified, this parameter is ignored.
         # The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.profile = profile
-        # The region.
+        # The region ID.
         # If cluster_id is specified, this parameter is ignored.
         # The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.region_id = region_id

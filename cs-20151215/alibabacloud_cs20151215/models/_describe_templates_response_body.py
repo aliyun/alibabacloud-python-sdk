@@ -69,19 +69,19 @@ class DescribeTemplatesResponseBodyTemplates(DaraModel):
         template_with_hist_id: str = None,
         updated: str = None,
     ):
-        # The access permissions for the deployment template. Valid values:
+        # The access permissions of the deployment template. Valid values:
         # 
-        # - `private`: private.
-        # - `public`: public.
-        # - `shared`: shared.
+        # - `private`: Private.
+        # - `public`: Public.
+        # - `shared`: Shared.
         self.acl = acl
         # The time when the orchestration template was created.
         self.created = created
         # The description of the orchestration template.
         self.description = description
-        # The ID of the orchestration template.
+        # The orchestration template ID.
         self.id = id
-        # The name of the orchestration template.
+        # The orchestration template name.
         self.name = name
         # The tag of the orchestration template. If not explicitly specified, the tag defaults to the template name.
         self.tags = tags
@@ -89,11 +89,11 @@ class DescribeTemplatesResponseBodyTemplates(DaraModel):
         self.template = template
         # The templatetype.
         # 
-        # - If the value is set to kubernetes, the template is displayed on the Orchestration Templates page in the console.
+        # - If the value is kubernetes, the template is displayed on the Orchestration Templates page in the console.
         # 
         # - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
         self.template_type = template_type
-        # The ID of the parent template associated with the template. This parameter is used to implement template versioning. Different versions of the same template share the same `template_with_hist_id` value.
+        # The ID of the parent template associated with the template. This parameter is used to implement the multi-version feature for templates. Different versions of the same template share the same `template_with_hist_id` value.
         self.template_with_hist_id = template_with_hist_id
         # The time when the orchestration template was last updated.
         self.updated = updated
@@ -183,7 +183,7 @@ class DescribeTemplatesResponseBodyPageInfo(DaraModel):
         self.page_number = page_number
         # The maximum number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):

@@ -55,7 +55,7 @@ class ListClusterChecksResponseBodyChecks(DaraModel):
     ):
         # The check ID.
         self.check_id = check_id
-        # The creation time.
+        # The creation time in ISO 8601 format, including time zone information.
         self.created_at = created_at
         # The completion time.
         self.finished_at = finished_at

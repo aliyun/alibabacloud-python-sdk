@@ -15,10 +15,15 @@ class ListNodePoolComponentInstanceNodesRequest(DaraModel):
         node_names: List[str] = None,
         version: str = None,
     ):
+        # Filters nodes by the specified configuration version number of the node component.
         self.config_revision = config_revision
+        # The maximum number of records to return in a single response for pagination. Default value: 20.
         self.max_results = max_results
+        # The pagination cursor. Do not specify this parameter for the first request. For subsequent requests, specify the token returned in the previous response.
         self.next_token = next_token
+        # Specifies the list of node names to query.
         self.node_names = node_names
+        # Filters nodes by the specified node component version.
         self.version = version
 
     def validate(self):

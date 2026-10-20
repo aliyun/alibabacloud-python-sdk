@@ -10,7 +10,7 @@ class OpenAckServiceResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The order ID of the service activation.
+        # The order ID for activating the service.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

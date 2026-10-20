@@ -54,9 +54,9 @@ class ListClusterAddonInstancesResponseBodyAddons(DaraModel):
         self.name = name
         # The component status. Valid values:
         # - active: installed
-        # - updating: being modified
+        # - updating: being updated
         # - upgrading: being upgraded
-        # - deleting: being uninstalled.
+        # - deleting: being uninstalled
         self.state = state
         # The component version.
         self.version = version

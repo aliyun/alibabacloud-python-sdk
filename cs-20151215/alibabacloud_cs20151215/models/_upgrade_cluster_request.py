@@ -14,17 +14,18 @@ class UpgradeClusterRequest(DaraModel):
         rolling_policy: main_models.UpgradeClusterRequestRollingPolicy = None,
         version: str = None,
     ):
-        # [This parameter is deprecated] No value is required.
+        # **[Deprecated]** You do not need to specify this parameter.
         self.component_name = component_name
-        # Specifies whether to upgrade only the control plane. Valid values:
-        # - true: upgrades only the control plane.
-        # - false: upgrades both the control plane and worker nodes.
+        # Specifies whether to upgrade only the control plane.
+        # 
+        # - true: Upgrades only the control plane.
+        # - false: Upgrades both the control plane and worker nodes.
         self.master_only = master_only
-        # The target version to which the cluster is upgraded.
+        # The target version for the cluster upgrade.
         self.next_version = next_version
         # The rolling upgrade configuration.
         self.rolling_policy = rolling_policy
-        # [This parameter is deprecated] Use the `next_version` parameter instead.
+        # **[Deprecated]** Use the `next_version` parameter instead.
         self.version = version
 
     def validate(self):

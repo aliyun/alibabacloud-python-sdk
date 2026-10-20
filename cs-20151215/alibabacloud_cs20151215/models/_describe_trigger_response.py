@@ -69,29 +69,29 @@ class DescribeTriggerResponseBody(DaraModel):
         action: str = None,
         token: str = None,
     ):
-        # 触发器ID。
+        # The trigger ID.
         self.id = id
-        # 触发器名称。
+        # The trigger name.
         self.name = name
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 触发器项目名称。
+        # The trigger project name.
         # 
-        # 由应用所在命名空间及应用名称组成，格式为`${namespace}/${name}`，取值示例：default/test-app。
+        # The value consists of the namespace and application name in the format `${namespace}/${name}`. Example: default/test-app.
         self.project_id = project_id
-        # 触发器类型。
+        # The trigger type.
         # 
-        # 取值：
+        # Valid values:
         # 
-        # - `deployment`：针对无状态应用的触发器。 
+        # - `deployment`: a trigger for stateless applications. 
         # 
-        # - `application`：针对应用中心应用的触发器。
+        # - `application`: a trigger for App Hub applications.
         self.type = type
-        # 触发器行为，取值：
+        # The trigger action. Valid values:
         # 
-        # `redeploy`: 重新部署应用。
+        # `redeploy`: redeploys the application.
         self.action = action
-        # Token信息。
+        # The token information.
         self.token = token
 
     def validate(self):

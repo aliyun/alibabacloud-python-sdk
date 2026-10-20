@@ -12,13 +12,13 @@ class DescribeResourcesDeleteProtectionRequest(DaraModel):
     ):
         # The namespace of the resource to query.
         # 
-        # This parameter is required when resource_type is set to services. If this parameter is not specified, the namespace defaults to default.
+        # This parameter is required when resource_type is set to services. If this parameter is not specified, the default namespace is used.
         self.namespace = namespace
-        # The name of the resource to query. Separate multiple resources with commas (,).
+        # The names of the resources to query. Separate multiple resource names with commas (,).
         # 
-        # - If resource_type is set to namespaces, set this parameter to namespace names. If this parameter is not specified, the deletion protection status of all namespaces in the cluster is queried.
+        # - If resource_type is set to namespaces, specify namespace names. If this parameter is not specified, the deletion protection status of all namespaces in the cluster is queried.
         # 
-        # - If resource_type is set to services, this parameter is required. Set this parameter to service names.
+        # - If resource_type is set to services, this parameter is required. Specify service names.
         self.resources = resources
 
     def validate(self):

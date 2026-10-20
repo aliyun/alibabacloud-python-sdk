@@ -67,15 +67,15 @@ class DescribeClusterLogsResponseBody(DaraModel):
         created: str = None,
         updated: str = None,
     ):
-        # 日志ID。
+        # The log ID.
         self.id = id
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 日志内容。
+        # The log content.
         self.cluster_log = cluster_log
-        # 日志产生时间。
+        # The time when the log was created.
         self.created = created
-        # 日志更新时间。
+        # The time when the log was updated.
         self.updated = updated
 
     def validate(self):

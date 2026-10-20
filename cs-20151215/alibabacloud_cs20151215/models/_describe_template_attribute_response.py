@@ -72,33 +72,33 @@ class DescribeTemplateAttributeResponseBody(DaraModel):
         created: str = None,
         updated: str = None,
     ):
-        # 编排模板ID，每次变更都会有一个模板ID。
+        # The orchestration template ID. A new ID is generated each time the template is modified.
         self.id = id
-        # 编排模板的访问权限，取值：
+        # The access permissions of the orchestration template. Valid values:
         # 
-        # - `private`：私有。
-        # - `public`：公共。
-        # - `shared`：可共享。
+        # - `private`: private.
+        # - `public`: public.
+        # - `shared`: shared.
         self.acl = acl
-        # 编排模板名称。
+        # The name of the orchestration template.
         self.name = name
-        # 编排模板YAML内容。
+        # The YAML content of the orchestration template.
         self.template = template
-        # 模板类型。
+        # The templatetype.
         # 
-        # - 当取值为kubernetes时将在控制台的编排模板页面展示该模板。
+        # - If the value is kubernetes, the template is displayed on the Orchestration Templates page in the console.
         # 
-        # - 该参数不填写或者取值为其他值时，控制台的编排模板页面将不会展示该模板。
+        # - If this parameter is not set or is set to other values, the template is not displayed on the Orchestration Templates page in the console.
         self.template_type = template_type
-        # 编排模板描述信息。
+        # The description of the orchestration template.
         self.description = description
-        # 部署模板的标签。
+        # The tags of the deployment template.
         self.tags = tags
-        # 编排模板唯一ID，不随模板更新而改变。
+        # The unique ID of the orchestration template. This ID does not change when the template is updated.
         self.template_with_hist_id = template_with_hist_id
-        # 编排模板创建时间。
+        # The time when the orchestration template was created.
         self.created = created
-        # 编排模板更新时间。
+        # The time when the orchestration template was last updated.
         self.updated = updated
 
     def validate(self):

@@ -11,7 +11,7 @@ class DescribeRegionsRequest(DaraModel):
         cluster_type: str = None,
         profile: str = None,
     ):
-        # Filters the results by language (Chinese or English).
+        # Filters the returned results by language (Chinese or English).
         self.accept_language = accept_language
         # The cluster type.
         self.cluster_type = cluster_type

@@ -33,9 +33,9 @@ class UpgradeClusterNodepoolRequest(DaraModel):
         self.runtime_type = runtime_type
         # The runtime version of the node. You can call [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) to obtain the runtime version information from the runtime field.
         self.runtime_version = runtime_version
-        # Specifies whether to use disk replacement for the upgrade. Valid values:
-        # - true: Uses disk replacement to upgrade the node pool. ACK reinitializes the nodes based on the current node pool configurations, such as logon method, labels, taints, operating system image, and runtime version.
-        # - false: Does not use disk replacement.
+        # Specifies whether to use system cloud disk replacement for the upgrade. Valid values:
+        # - true: Uses system cloud disk replacement to upgrade the node pool. ACK reinitializes the nodes based on the current node pool configurations, such as the logon method, labels, taints, operating system image, and runtime version.
+        # - false: Does not use system cloud disk replacement.
         # 
         # Default value: false.
         self.use_replace = use_replace
@@ -120,13 +120,13 @@ class UpgradeClusterNodepoolRequestRollingPolicy(DaraModel):
         self.batch_interval = batch_interval
         # The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
         self.max_failed_nodes = max_failed_nodes
-        # The maximum number of nodes that can be updated in parallel per batch. Node pool updates are performed in batches.
+        # Nodes in the node pool are updated in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
         # 
         # Valid values: [1,10].
         # 
         # Default value: 10.
         self.max_parallelism = max_parallelism
-        # The automatic pause policy during node upgrades. Valid values:
+        # The automatic pause policy during the node upgrade. Valid values:
         # - FirstBatch: Pauses after the first batch is complete.
         # - EveryBatch: Pauses after each batch is complete.
         # - NotPause: Does not pause.

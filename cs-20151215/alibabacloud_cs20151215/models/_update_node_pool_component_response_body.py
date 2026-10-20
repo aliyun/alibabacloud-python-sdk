@@ -15,7 +15,7 @@ class UpdateNodePoolComponentResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # Id of the request
         self.request_id = request_id
-        # The asynchronous task ID.
+        # The ID of the asynchronous task.
         self.task_id = task_id
 
     def validate(self):

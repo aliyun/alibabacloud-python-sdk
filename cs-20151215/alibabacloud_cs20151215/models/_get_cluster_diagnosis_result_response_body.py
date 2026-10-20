@@ -18,8 +18,8 @@ class GetClusterDiagnosisResultResponseBody(DaraModel):
         type: str = None,
     ):
         # The diagnosis result code. Valid values:
-        # - 0: diagnosis completed.
-        # - 1: diagnosis failed.
+        # - 0: Diagnosis completed.
+        # - 1: Diagnosis failed.
         self.code = code
         # The time when the diagnosis was initiated.
         self.created = created
@@ -27,14 +27,14 @@ class GetClusterDiagnosisResultResponseBody(DaraModel):
         self.diagnosis_id = diagnosis_id
         # The time when the diagnosis was completed.
         self.finished = finished
-        # The diagnosis status message.
+        # The diagnosis status information.
         self.message = message
         # The diagnosis result.
         self.result = result
         # The diagnosis status. Valid values:
-        # - 0: diagnosis created.
-        # - 1: diagnosis running.
-        # - 2: diagnosis completed.
+        # - 0: Diagnosis created.
+        # - 1: Diagnosis running.
+        # - 2: Diagnosis completed.
         self.status = status
         # The diagnosis target.
         self.target = target

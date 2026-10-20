@@ -392,6 +392,7 @@ from ._upgrade_cluster_nodepool_response_body import UpgradeClusterNodepoolRespo
 from ._upgrade_cluster_nodepool_response import UpgradeClusterNodepoolResponse
 from ._kubelet_config import KubeletConfigReservedMemory
 from ._kubelet_config import KubeletConfigTracing
+from ._maintenance_window import MaintenanceWindowExclusions
 from ._nodepool import NodepoolAutoScaling
 from ._nodepool import NodepoolInterconnectConfig
 from ._nodepool import NodepoolKubernetesConfig
@@ -1063,6 +1064,7 @@ __all__ = [
     UpgradeClusterNodepoolResponse,
     KubeletConfigReservedMemory,
     KubeletConfigTracing,
+    MaintenanceWindowExclusions,
     NodepoolAutoScaling,
     NodepoolInterconnectConfig,
     NodepoolKubernetesConfig,

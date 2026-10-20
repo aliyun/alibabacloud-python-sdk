@@ -20,7 +20,7 @@ class CheckControlPlaneLogEnableResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.components = components
-        # The name of the Simple Log Service (SLS) project that stores the control plane component logs.
+        # The name of the SLS project that stores the control plane component logs.
         # 
         # Default value: k8s-log-$Cluster ID.
         self.log_project = log_project

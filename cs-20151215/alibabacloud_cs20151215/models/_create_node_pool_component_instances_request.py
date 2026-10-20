@@ -14,9 +14,13 @@ class CreateNodePoolComponentInstancesRequest(DaraModel):
         node_names: List[str] = None,
         rolling_policy: main_models.CreateNodePoolComponentInstancesRequestRollingPolicy = None,
     ):
+        # The list of node components.
+        # 
         # This parameter is required.
         self.components = components
+        # The list of nodes for the rolling update. Default value: all nodes.
         self.node_names = node_names
+        # The rolling update configuration.
         self.rolling_policy = rolling_policy
 
     def validate(self):
@@ -70,9 +74,13 @@ class CreateNodePoolComponentInstancesRequestRollingPolicy(DaraModel):
         max_parallelism: int = None,
         pause_policy: str = None,
     ):
+        # The interval between batches in seconds. Default value: 0.
         self.batch_interval = batch_interval
+        # The maximum number of nodes that can fail during the rolling update. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
         self.max_failed_nodes = max_failed_nodes
+        # The maximum number of parallel updates per batch. Default value: 1.
         self.max_parallelism = max_parallelism
+        # The auto-pause policy during the node upgrade. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
         self.pause_policy = pause_policy
 
     def validate(self):
@@ -120,9 +128,14 @@ class CreateNodePoolComponentInstancesRequestComponents(DaraModel):
         name: str = None,
         version: str = None,
     ):
+        # The configuration of the component.
         self.config = config
+        # The name of the component.
+        # 
         # This parameter is required.
         self.name = name
+        # The version of the component.
+        # 
         # This parameter is required.
         self.version = version
 
@@ -166,7 +179,9 @@ class CreateNodePoolComponentInstancesRequestComponentsConfig(DaraModel):
         custom_config: Dict[str, Any] = None,
         envs: List[main_models.CreateNodePoolComponentInstancesRequestComponentsConfigEnvs] = None,
     ):
+        # The custom configuration of the component.
         self.custom_config = custom_config
+        # The environment variables of the node component.
         self.envs = envs
 
     def validate(self):
@@ -209,7 +224,9 @@ class CreateNodePoolComponentInstancesRequestComponentsConfigEnvs(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the environment variable.
         self.name = name
+        # The value of the environment variable.
         self.value = value
 
     def validate(self):

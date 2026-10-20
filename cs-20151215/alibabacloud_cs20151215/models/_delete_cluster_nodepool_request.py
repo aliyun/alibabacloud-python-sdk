@@ -11,9 +11,9 @@ class DeleteClusterNodepoolRequest(DaraModel):
     ):
         # Specifies whether to force delete the node pool.
         # 
-        # - true: Force deletes the node pool. If the node pool contains existing instances, the existing nodes are forcibly deleted.
+        # - true: Force deletes the node pool. If the node pool contains existing instances, the existing nodes are forcefully deleted.
         # 
-        # - false: Does not force delete the node pool. If the node pool contains existing instances, the node pool cannot be deleted, and an error is returned.
+        # - false: Does not force delete the node pool. If the node pool contains existing instances, the node pool cannot be deleted, and the API call returns an error.
         self.force = force
 
     def validate(self):

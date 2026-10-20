@@ -56,15 +56,15 @@ class UpgradeClusterAddonsRequestBody(DaraModel):
         # 
         # This parameter is required.
         self.component_name = component_name
-        # The custom parameters of the component, encoded as a JSON string.
+        # The custom component parameters, encoded as a JSON string.
         self.config = config
-        # The target version to which you want to upgrade. You can call the `DescribeAddon` operation to query the versions to which the component can be upgraded.
+        # The target version to upgrade to. You can call the `DescribeAddon` operation to query the upgradable versions of a component.
         # 
         # This parameter is required.
         self.next_version = next_version
         # The component upgrade policy. Valid values:
-        # - overwrite: overwrites the existing version.
-        # - canary: performs a canary upgrade.
+        # - overwrite: overwrite upgrade.
+        # - canary: canary upgrade.
         self.policy = policy
         # The current component version.
         self.version = version

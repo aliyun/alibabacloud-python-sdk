@@ -12,7 +12,7 @@ class ListAddonsResponseBody(DaraModel):
         self,
         addons: List[main_models.ListAddonsResponseBodyAddons] = None,
     ):
-        # The list of available components.
+        # The list of available add-on components.
         self.addons = addons
 
     def validate(self):
@@ -66,7 +66,7 @@ class ListAddonsResponseBodyAddons(DaraModel):
         # - monitor: logging and monitoring component.
         # - application: application component.
         # 
-        # An empty value indicates that the component belongs to another category.
+        # An empty value indicates that the component belongs to another categorization.
         self.category = category
         # The schema of custom parameters for the component.
         self.config_schema = config_schema

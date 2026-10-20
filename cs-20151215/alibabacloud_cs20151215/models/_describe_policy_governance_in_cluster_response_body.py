@@ -16,9 +16,9 @@ class DescribePolicyGovernanceInClusterResponseBody(DaraModel):
     ):
         # The policy violation information aggregated by severity level.
         self.violation = violation
-        # The policy governance audit logs of the current cluster.
+        # The policy governance audit logs of the cluster.
         self.admit_log = admit_log
-        # The count of enabled policies at different severity levels in the current cluster.
+        # The counts of enabled policies at different severity levels in the current cluster.
         self.on_state = on_state
 
     def validate(self):
@@ -76,9 +76,9 @@ class DescribePolicyGovernanceInClusterResponseBodyOnState(DaraModel):
     ):
         # The number of enabled policy types.
         self.enabled_count = enabled_count
-        # The policy governance severity level.
+        # The severity level of the policy governance.
         self.severity = severity
-        # The total number of policy types at this severity level.
+        # The total number of policy types at the severity level.
         self.total = total
 
     def validate(self):
@@ -122,17 +122,17 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLog(DaraModel):
         logs: List[main_models.DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs] = None,
         progress: str = None,
     ):
-        # The total number of logs returned by the current query.
+        # The total number of logs queried.
         self.count = count
-        # The log project that stores policy action information.
+        # The Log Service project that stores the policy action information.
         self.log_project = log_project
-        # The Logstore that stores policy action information.
+        # The Log Service Logstore that stores the policy action information.
         self.log_store = log_store
         # The log entries for policy violations.
         self.logs = logs
         # The status of the query result. Valid values:
-        # * `Complete`: The query is complete and the returned result is the complete result.
-        # * `Incomplete`: The query is complete but the returned result is incomplete. Repeat the request to obtain the complete result.
+        # * `Complete`: The query is complete and the returned result is complete.
+        # * `Incomplete`: The query is complete but the returned result is incomplete. You must repeat the request to obtain the complete result.
         self.progress = progress
 
     def validate(self):
@@ -206,37 +206,37 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs(DaraModel):
         resource_name: str = None,
         time: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
-        # The action taken by the policy, including alert (warn) and block (deny). Valid values:
-        # - warn: Only alerts on behaviors that violate the policy without actually blocking the request.
-        # - deny: Blocks requests that violate the policy.
+        # The action taken by the policy. Valid values:
+        # - warn: Alerts on policy violations but does not intercept the requests.
+        # - deny: Intercepts requests that violate the policy.
         self.constraint_action = constraint_action
         # The API version of the policy.
         self.constraint_api_version = constraint_api_version
-        # The policy type.
+        # The type of the policy.
         self.constraint_category = constraint_category
         # The API group of the policy.
         self.constraint_group = constraint_group
-        # The policy name in policy management.
+        # The policy kind that corresponds to the policy name in policy management.
         self.constraint_kind = constraint_kind
-        # The policy instance name.
+        # The name of the policy instance.
         self.constraint_name = constraint_name
         # The detailed information about the policy action.
         self.event_msg = event_msg
-        # The type of event triggered by the policy, such as violation.
+        # The type of the event triggered by the policy, such as violation.
         self.event_type = event_type
-        # The request ID.
+        # The ID of the request.
         self.request_uid = request_uid
-        # The information about the user whose request violated the policy.
+        # The user information of the request that violated the policy.
         self.request_userinfo = request_userinfo
-        # The name of the user whose request violated the policy.
+        # The username of the request that violated the policy.
         self.request_username = request_username
-        # The type of resource that violated the policy. For example, if a request to operate on a Namespace is rejected, this field is set to Namespace.
+        # The type of the resource that violated the policy. For example, if a request to operate on a namespace is rejected, the value is Namespace.
         self.resource_kind = resource_kind
         # The name of the resource that violated the policy.
         self.resource_name = resource_name
-        # The time when the policy violation occurred.
+        # The time when the policy violation occurred. The time is in ISO 8601 format and includes time zone information.
         self.time = time
 
     def validate(self):
@@ -349,7 +349,7 @@ class DescribePolicyGovernanceInClusterResponseBodyViolation(DaraModel):
         total_violations: main_models.DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations = None,
         violations: main_models.DescribePolicyGovernanceInClusterResponseBodyViolationViolations = None,
     ):
-        # The summary information.
+        # The aggregated information.
         self.total_violations = total_violations
         # The violation records aggregated by policy name.
         self.violations = violations
@@ -391,9 +391,9 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationViolations(DaraModel
         deny: List[main_models.DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny] = None,
         warn: List[main_models.DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn] = None,
     ):
-        # The summary of block records.
+        # The aggregated interception records.
         self.deny = deny
-        # The summary of alert information.
+        # The aggregated alert information.
         self.warn = warn
 
     def validate(self):
@@ -447,7 +447,7 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn(DaraM
         severity: str = None,
         violations: int = None,
     ):
-        # The policy description.
+        # The description of the policy.
         self.policy_description = policy_description
         # The policy name.
         self.policy_name = policy_name
@@ -502,7 +502,7 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny(DaraM
         severity: str = None,
         violations: int = None,
     ):
-        # The policy description.
+        # The description of the policy.
         self.policy_description = policy_description
         # The policy name.
         self.policy_name = policy_name
@@ -555,9 +555,9 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolations(Dara
         deny: List[main_models.DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsDeny] = None,
         warn: List[main_models.DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn] = None,
     ):
-        # The summary of block records.
+        # The aggregated interception records.
         self.deny = deny
-        # The summary of alert records.
+        # The aggregated alert records.
         self.warn = warn
 
     def validate(self):
@@ -609,9 +609,9 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationTotalViolationsWarn(
         severity: str = None,
         violations: int = None,
     ):
-        # The summary of severity levels.
+        # The severity level.
         self.severity = severity
-        # The total number of violations.
+        # The number of violations.
         self.violations = violations
 
     def validate(self):

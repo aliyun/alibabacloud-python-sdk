@@ -71,7 +71,7 @@ class DescribeKubernetesVersionMetadataResponseBody(DaraModel):
         creatable: bool = None,
         upgradable_versions: List[str] = None,
     ):
-        # The feature capabilities of the Kubernetes version.
+        # The features of the Kubernetes version.
         self.capabilities = capabilities
         # The list of system images.
         self.images = images
@@ -79,13 +79,13 @@ class DescribeKubernetesVersionMetadataResponseBody(DaraModel):
         self.meta_data = meta_data
         # The container runtime configurations.
         self.runtimes = runtimes
-        # The Kubernetes version released by ACK. For more information about versions, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
+        # The Kubernetes version released by ACK. For more information about versions, see [Overview of Kubernetes version releases](https://help.aliyun.com/document_detail/185269.html).
         self.version = version
-        # The release date of the Kubernetes version.
+        # The release time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
         self.release_date = release_date
-        # The expiration date of the Kubernetes version.
+        # The expiration time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
         self.expiration_date = expiration_date
-        # Indicates whether the Kubernetes version can be used to create clusters.
+        # Indicates whether the Kubernetes version can be created.
         self.creatable = creatable
         # The list of upgradable versions.
         self.upgradable_versions = upgradable_versions
@@ -199,7 +199,7 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
         self.platform = platform
         # The image version.
         self.os_version = os_version
-        # The type of the operating system distribution. We recommend that you use this field to specify the node operating system. Valid values:
+        # The operating system distribution type. Use this field to specify the operating system for nodes. Valid values:
         # 
         # - `CentOS`
         # - `AliyunLinux`
@@ -216,12 +216,12 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
         # - `Windows`
         # - `Linux`
         self.os_type = os_type
-        # The image category. Partial valid values:
+        # The image category. Some valid values:
         # 
-        # - `system`: public image.
-        # - `self`: custom image.
-        # - `others`: shared image from other users.
-        # - `marketplace`: Alibaba Cloud Marketplace image.
+        # - `system`: public images.
+        # - `self`: your custom images.
+        # - `others`: public images from other users.
+        # - `marketplace`: Alibaba Cloud Marketplace images.
         self.image_category = image_category
         # The image architecture.
         self.architecture = architecture

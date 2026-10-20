@@ -25,7 +25,7 @@ class DescribeTemplatesRequest(DaraModel):
         # 
         # - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
         # 
-        # Set this parameter to `kubernetes`.
+        # Set this parameter to `kubernetes` in Settings.
         self.template_type = template_type
 
     def validate(self):

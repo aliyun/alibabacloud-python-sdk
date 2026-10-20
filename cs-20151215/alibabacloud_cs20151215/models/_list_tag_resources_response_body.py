@@ -14,7 +14,7 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.ListTagResourcesResponseBodyTagResources = None,
     ):
-        # The token that determines the start point of the next query.
+        # The token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

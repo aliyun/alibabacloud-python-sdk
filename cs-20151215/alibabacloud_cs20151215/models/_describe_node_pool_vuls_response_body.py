@@ -15,7 +15,7 @@ class DescribeNodePoolVulsResponseBody(DaraModel):
     ):
         # The list of node pool vulnerabilities.
         self.vul_records = vul_records
-        # Indicates whether the Security Center CVE fix service has been purchased.
+        # Indicates whether the China Cloud Security CVE fix service has been purchased.
         # 
         # - true: Purchased.
         # 

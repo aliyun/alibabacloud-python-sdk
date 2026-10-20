@@ -74,9 +74,9 @@ class DescribeResourcesDeleteProtectionResponseBody(DaraModel):
         self.namespace = namespace
         # The type of the queried resource.
         self.resource = resource
-        # Indicates whether deletion protection is enabled.
-        # - true: enabled.
-        # - false: disabled.
+        # Indicates whether deletion protection is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.protection = protection
 
     def validate(self):

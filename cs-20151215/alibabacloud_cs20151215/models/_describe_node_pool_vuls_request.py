@@ -9,11 +9,11 @@ class DescribeNodePoolVulsRequest(DaraModel):
         self,
         necessity: str = None,
     ):
-        # The vulnerability fix urgency levels to query. Separate multiple levels with commas (,). Valid values:
+        # The severity levels of vulnerabilities to query. Separate multiple levels with commas (,). Valid values:
         # 
         # - `asap`: high
         # - `later`: medium
-        # - `nntf`: low.
+        # - `nntf`: low
         self.necessity = necessity
 
     def validate(self):

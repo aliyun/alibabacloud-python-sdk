@@ -1,3 +1,7 @@
+2026-10-20 Version: 7.2.1
+- Update API CreateCluster: add request parameters body.client_token.
+
+
 2026-08-28 Version: 7.2.0
 - Support API ListNodePoolComponentInstanceNodes.
 

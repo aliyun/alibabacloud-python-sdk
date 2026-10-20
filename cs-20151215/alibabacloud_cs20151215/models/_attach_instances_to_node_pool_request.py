@@ -25,9 +25,9 @@ class AttachInstancesToNodePoolRequest(DaraModel):
         # 
         # Data cloud disk mounting rules:
         # 
-        # - If the ECS instance has data cloud disks attached and the file system of the last data cloud disk is not initialized, the system automatically formats the data cloud disk as EXT4 to store /var/lib/docker and /var/lib/kubelet.
-        # - If the ECS instance has no data cloud disks attached, no new data cloud disk is mounted.
-        # > If you choose to store data on a data cloud disk and the ECS instance already has data cloud disks attached, existing data on the data cloud disk is lost. Back up your data in advance.
+        # - If the ECS instance has data cloud disks mounted and the file system of the last data cloud disk is not initialized, the system automatically formats the data cloud disk to EXT4 to store the content of /var/lib/docker and /var/lib/kubelet.
+        # - If the ECS instance has no data cloud disks mounted, no new data cloud disk is mounted.
+        # >If you choose to store data on a data cloud disk and the ECS instance already has data cloud disks mounted, the existing data on the data cloud disk is lost. Back up your data in advance.
         self.format_disk = format_disk
         # The list of ECS instances to be added.
         self.instances = instances

@@ -16,7 +16,7 @@ class ListUserKubeConfigStatesRequest(DaraModel):
         # 
         # - Default value: 1.
         self.page_number = page_number
-        # The number of results returned per page.
+        # The number of results per page.
         # 
         # - Valid values: 1 to 100.
         # 

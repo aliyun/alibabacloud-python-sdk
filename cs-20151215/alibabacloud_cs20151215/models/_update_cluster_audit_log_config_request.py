@@ -11,9 +11,9 @@ class UpdateClusterAuditLogConfigRequest(DaraModel):
         sls_project_name: str = None,
     ):
         # Specifies whether to disable the cluster audit log feature. Valid values:
-        # - false: enables the audit log feature or updates the audit log configuration.
+        # - false: Enables the audit log feature or updates the audit log configuration.
         # 
-        # - true: disables the audit log feature.
+        # - true: Disables the audit log feature.
         self.disable = disable
         # The [SLS Project](https://help.aliyun.com/document_detail/48873.html) that contains the [Logstore](https://help.aliyun.com/document_detail/48874.html) for cluster audit logs.
         # 

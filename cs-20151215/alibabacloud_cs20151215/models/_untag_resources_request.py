@@ -17,8 +17,8 @@ class UntagResourcesRequest(DaraModel):
     ):
         # Specifies whether to delete all custom tags. This parameter takes effect only when `tag_keys` is empty. Valid values:
         # 
-        # - `true`: Delete all tags.
-        # - `false`: Do not delete all tags.
+        # - `true`: Deletes all tags.
+        # - `false`: Does not delete all tags.
         self.all = all
         # The region ID of the resource.
         # 

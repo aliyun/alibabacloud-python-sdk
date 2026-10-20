@@ -13,13 +13,15 @@ class DescribeClusterEventsRequest(DaraModel):
         page_size: int = None,
         task_id: str = None,
     ):
+        # The maximum number of results to return for a single request.
         self.max_results = max_results
+        # The pagination token. The value is the next_token parameter returned by the previous API call.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
         # The maximum number of results to return per page.
         # 
-        # Valid values: [1,100].
+        # Valid values: 1 to 100.
         # 
         # Default value: 50.
         self.page_size = page_size

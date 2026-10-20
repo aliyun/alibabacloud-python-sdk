@@ -16,6 +16,7 @@ class DescribeEventsForRegionResponseBody(DaraModel):
     ):
         # The list of events.
         self.events = events
+        # The pagination token.
         self.next_token = next_token
         # The pagination information.
         self.page_info = page_info
@@ -72,7 +73,7 @@ class DescribeEventsForRegionResponseBodyPageInfo(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The maximum number of results displayed on each page.
+        # The maximum number of results to return per page.
         self.page_size = page_size
         # The total number of results.
         self.total_count = total_count
@@ -130,7 +131,7 @@ class DescribeEventsForRegionResponseBodyEvents(DaraModel):
         self.source = source
         # The object associated with the event.
         self.subject = subject
-        # The time when the event occurred.
+        # The time when the event was generated. The time follows the ISO 8601 standard and includes time zone information.
         self.time = time
         # The event type.
         self.type = type

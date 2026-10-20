@@ -52,47 +52,7 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'cs.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'cs.aliyuncs.com',
             'eu-west-1-oxs': 'cs.aliyuncs.com',
-            'rus-west-1-pop': 'cs.aliyuncs.com',
-            'cn-beijing': 'cs.cn-beijing.aliyuncs.com',
-            'cn-zhengzhou-jva': 'cs.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-heyuan': 'cs.cn-heyuan.aliyuncs.com',
-            'cn-zhangjiakou': 'cs.cn-zhangjiakou.aliyuncs.com',
-            'ap-northeast-2': 'cs.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'cs.ap-northeast-1.aliyuncs.com',
-            'ap-southeast-1': 'cs.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'cs.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-5': 'cs.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-7': 'cs.ap-southeast-7.aliyuncs.com',
-            'cn-wulanchabu': 'cs.cn-wulanchabu.aliyuncs.com',
-            'cn-qingdao': 'cs.cn-qingdao.aliyuncs.com',
-            'cn-wuhan-lr': 'cs.cn-wuhan-lr.aliyuncs.com',
-            'cn-shanghai': 'cs.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'cs.cn-hongkong.aliyuncs.com',
-            'cn-shenzhen': 'cs.cn-shenzhen.aliyuncs.com',
-            'cn-nanjing': 'cs.cn-nanjing.aliyuncs.com',
-            'cn-fuzhou': 'cs.cn-fuzhou.aliyuncs.com',
-            'cn-chengdu': 'cs.cn-chengdu.aliyuncs.com',
-            'cn-guangzhou': 'cs.cn-guangzhou.aliyuncs.com',
-            'cn-huhehaote': 'cs.cn-huhehaote.aliyuncs.com',
-            'cn-hangzhou': 'cs.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-8': 'cs.ap-southeast-8.aliyuncs.com',
-            'cn-zhongwei': 'cs.cn-zhongwei.aliyuncs.com',
-            'eu-west-2': 'cs.eu-west-2.aliyuncs.com',
-            'na-south-1': 'cs.na-south-1.aliyuncs.com',
-            'us-west-1': 'cs.us-west-1.aliyuncs.com',
-            'us-east-1': 'cs.us-east-1.aliyuncs.com',
-            'eu-central-1': 'cs.eu-central-1.aliyuncs.com',
-            'eu-west-1': 'cs.eu-west-1.aliyuncs.com',
-            'us-southeast-1': 'cs.us-southeast-1.aliyuncs.com',
-            'me-central-1': 'cs.me-central-1.aliyuncs.com',
-            'me-east-1': 'cs.me-east-1.aliyuncs.com',
-            'cn-north-2-gov-1': 'cs.cn-north-2-gov-1.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'cs.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'cs.cn-wulanchabu-gic-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'cs.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-beijing-finance-1': 'cs.cn-beijing-finance-1.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'cs.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-hangzhou-finance': 'cs.cn-hangzhou-finance.aliyuncs.com'
+            'rus-west-1-pop': 'cs.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1181,6 +1141,8 @@ class Client(OpenApiClient):
             body['charge_type'] = request.charge_type
         if not DaraCore.is_null(request.cis_enabled):
             body['cis_enabled'] = request.cis_enabled
+        if not DaraCore.is_null(request.client_token):
+            body['client_token'] = request.client_token
         if not DaraCore.is_null(request.cloud_monitor_flags):
             body['cloud_monitor_flags'] = request.cloud_monitor_flags
         if not DaraCore.is_null(request.cluster_domain):
@@ -1415,6 +1377,8 @@ class Client(OpenApiClient):
             body['charge_type'] = request.charge_type
         if not DaraCore.is_null(request.cis_enabled):
             body['cis_enabled'] = request.cis_enabled
+        if not DaraCore.is_null(request.client_token):
+            body['client_token'] = request.client_token
         if not DaraCore.is_null(request.cloud_monitor_flags):
             body['cloud_monitor_flags'] = request.cloud_monitor_flags
         if not DaraCore.is_null(request.cluster_domain):

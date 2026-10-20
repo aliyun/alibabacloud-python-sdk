@@ -68,37 +68,37 @@ class DescribeUserPermissionResponseBody(DaraModel):
         is_owner: int = None,
         is_ram_role: int = None,
     ):
-        # 集群访问配置，格式为：
+        # The cluster access configuration. The format varies based on the authorization scope:
         # 
-        # - 当是集群维度授权时，格式为：`{cluster_id}`。
-        # - 当是命名空间维度授权时，格式为：`{cluster_id}/{namespace}`。
-        # - 当是所有集群授权时，值固定为：`all-clusters`。
+        # - Cluster-level authorization: `{cluster_id}`.
+        # - Namespace-level authorization: `{cluster_id}/{namespace}`.
+        # - All-cluster authorization: `all-clusters`.
         self.resource_id = resource_id
-        # 授权类型，取值：
+        # The authorization type. Valid values:
         # 
-        # - `cluster`：集群维度。
-        # - `namespace`：命名空间维度。
-        # - `console`：所有集群维度的授权。
+        # - `cluster`: cluster-level.
+        # - `namespace`: namespace-level.
+        # - `console`: all-cluster-level authorization.
         self.resource_type = resource_type
-        # 自定义角色名称，当授权自定义角色时，该字段为指定的自定义集群管理角色名称。
+        # The custom role name. When a custom role is authorized, this field specifies the name of the custom cluster management role.
         self.role_name = role_name
-        # 预置的角色类型，取值：
+        # The preset role type. Valid values:
         # 
-        # - `admin`：管理员。
-        # - `ops`：运维人员。
-        # - `dev`：开发人员。
-        # - `restricted`：受限用户。
-        # - `custom`：使用自定义的集群管理角色。
+        # - `admin`: Administrator.
+        # - `ops`: O&M engineer.
+        # - `dev`: Developer.
+        # - `restricted`: Restricted user.
+        # - `custom`: Custom cluster management role.
         self.role_type = role_type
-        # 是否为集群创建者的授权，取值：
+        # Indicates whether the authorization belongs to the cluster creator. Valid values:
         # 
-        # - `0`：代表不是集群创建者的授权记录。
-        # - `1`：代表该授权记录为集群创建者的管理员权限。
+        # - `0`: The authorization record does not belong to the cluster creator.
+        # - `1`: The authorization record represents the administrator permissions of the cluster creator.
         self.is_owner = is_owner
-        # 是否为RAM角色授权，取值：
+        # Indicates whether the authorization is for a RAM role. Valid values:
         # 
-        # - `0`：代表当前记录不是RAM角色授权。
-        # - `1`：代表当前记录是RAM角色授权。
+        # - `0`: The record is not a RAM role authorization.
+        # - `1`: The record is a RAM role authorization.
         self.is_ram_role = is_ram_role
 
     def validate(self):

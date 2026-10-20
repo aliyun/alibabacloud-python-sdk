@@ -21,7 +21,7 @@ class GetClusterCheckResponseBody(DaraModel):
         self.check_id = check_id
         # The check items.
         self.check_items = check_items
-        # The creation time.
+        # The creation time in ISO 8601 format with time zone information.
         self.created_at = created_at
         # The completion time.
         self.finished_at = finished_at

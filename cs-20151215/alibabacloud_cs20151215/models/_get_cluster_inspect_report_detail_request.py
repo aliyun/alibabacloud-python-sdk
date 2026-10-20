@@ -20,25 +20,25 @@ class GetClusterInspectReportDetailRequest(DaraModel):
         # - performance: performance and efficiency 
         # - stability: business stability
         # - limitation: service limits 
-        # - cost: cost optimization.
+        # - cost: cost optimization
         self.category = category
-        # Specifies whether to filter check items. If set to true, only abnormal check items with result=true are returned.
+        # Specifies whether to filter inspection items. If set to true, only abnormal inspection items with a result of true are returned.
         self.enable_filter = enable_filter
         # The query language. Valid values:
         # - zh_CN
-        # - en_US.
+        # - en_US
         self.language = language
         # The level of the inspection item. Valid values:
-        # - advice: suggestion
-        # - warning: low-risk
-        # - error: medium-risk
-        # - critical: high-risk.
+        # - advice: advice
+        # - warning: low risk
+        # - error: medium risk
+        # - critical: high risk
         self.level = level
         # The maximum number of entries per page. Maximum value: 50.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The object type of the inspection target. Only check items that match the specified targetType are returned.
+        # The object type. Only check items that match the object type are returned.
         self.target_type = target_type
 
     def validate(self):

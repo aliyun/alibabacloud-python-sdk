@@ -64,7 +64,7 @@ class DescribeClustersV1ResponseBodyPageInfo(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of results.
         self.total_count = total_count
@@ -146,95 +146,95 @@ class DescribeClustersV1ResponseBodyClusters(DaraModel):
         self.cluster_domain = cluster_domain
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The cluster specification.
+        # The cluster specifications.
         self.cluster_spec = cluster_spec
         # The cluster type.
         self.cluster_type = cluster_type
-        # The pod CIDR block, which is the Flannel network configuration.
+        # The Pod network CIDR block for Flannel network configuration.
         self.container_cidr = container_cidr
         # The time when the cluster was created.
         self.created = created
         # The current version of the cluster.
         self.current_version = current_version
-        # Indicates whether deletion protection is enabled for the cluster. This prevents accidental deletion of the cluster through the console or API. Valid values:
+        # Specifies whether deletion protection is enabled for the cluster to prevent accidental deletion through the console or API. Valid values:
         # 
-        # - `true`: Deletion protection is enabled. The cluster cannot be deleted through the console or API.
-        # - `false`: Deletion protection is not enabled. The cluster can be deleted through the console or API.
+        # - true: Deletion protection is enabled. The cluster cannot be deleted through the console or API.
+        # - false: Deletion protection is disabled. The cluster can be deleted through the console or API.
         self.deletion_protection = deletion_protection
-        # The Docker version of the cluster.
+        # The Docker version used by the cluster.
         self.docker_version = docker_version
-        # The ID of the Server Load Balancer (SLB) instance for the Ingress of the cluster.
+        # The ID of the Server Load Balancer (SLB) instance for the Ingress in the cluster.
         # 
         # Default instance type: guaranteed-performance instance (slb.s1.small).
         self.external_loadbalancer_id = external_loadbalancer_id
-        # The cluster version. For Kubernetes versions supported by ACK, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
+        # The initial version of the cluster. For the Kubernetes versions supported by ACK, refer to [Overview of Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.init_version = init_version
         # The IP protocol stack of the cluster. Valid values:
-        # - ipv4: creates a cluster that supports only the IPv4 protocol stack.
-        # - dual: creates a cluster that supports the IPv4/IPv6 dual stack.
+        # - ipv4: Creates a cluster that supports only the IPv4 protocol stack.
+        # - dual: Creates a cluster that supports both IPv4 and IPv6 protocol stacks.
         self.ip_stack = ip_stack
-        # The maintenance window of the cluster. This feature takes effect only for ACK managed clusters and ACK Serverless clusters.
+        # The maintenance window of the cluster. This feature takes effect only in ACK managed clusters and ACK Serverless clusters.
         self.maintenance_window = maintenance_window
-        # The access addresses of the cluster API server, including the internal network access address and the public network access address.
+        # The access endpoints of the cluster API server, including the internal network access address and the public network access address.
         self.master_url = master_url
         # The metadata of the cluster.
         self.meta_data = meta_data
-        # The cluster name.
+        # The cluster name. Fuzzy match is supported.
         self.name = name
         # The network mode of the cluster. Valid values:
         # 
-        # - `classic`: classic network.
-        # - `vpc`: virtual private cloud (VPC).
-        # - `overlay`: overlay network.
-        # - `calico`: Calico network.
+        # - classic: classic network
+        # - vpc: VPC
+        # - overlay: overlay network
+        # - calico: Calico network
         self.network_mode = network_mode
         # The version to which the cluster can be upgraded.
         self.next_version = next_version
-        # The automatic O&M policy of the cluster.
+        # The automated O&M policy of the cluster.
         self.operation_policy = operation_policy
         # The Private Zone configuration of the cluster. Valid values:
         # 
-        # - `true`: Private Zone is enabled.
-        # - `false`: Private Zone is not enabled.
+        # - true: Private Zone is enabled.
+        # - false: Private Zone is disabled.
         self.private_zone = private_zone
-        # The cluster subtype.
+        # The subtype of the cluster.
         self.profile = profile
         # The kube-proxy mode. Valid values:
         # 
-        # - `iptables`: a mature and stable kube-proxy mode. Uses iptables rules for service discovery and load balancing of Kubernetes Services. Performance is moderate and affected by scale. Suitable for clusters with a small number of Services.
-        # - `ipvs`: a high-performance kube-proxy mode. Uses the Linux IPVS module for service discovery and load balancing of Kubernetes Services. Suitable for clusters with a large number of Services that require high-performance load balancing.
+        # - iptables: The mature and stable kube-proxy mode. Service discovery and load balancing for Kubernetes services are configured by using iptables rules. This mode provides average performance and is affected by the cluster scale. It is suitable for clusters with a small number of services.
+        # - ipvs: The high-performance kube-proxy mode. Service discovery and load balancing for Kubernetes services are configured by using the Linux IPVS module. This mode is suitable for clusters with a large number of services and scenarios that require high-performance load balancing.
         self.proxy_mode = proxy_mode
-        # The region ID of the cluster.
+        # The ID of the region where the cluster is deployed.
         self.region_id = region_id
-        # The resource group ID of the cluster.
+        # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
-        # The security group ID of the cluster.
+        # The ID of the security group to which the cluster belongs.
         self.security_group_id = security_group_id
-        # The service CIDR block.
+        # The CIDR block of the service network.
         # 
         # This parameter is required.
         self.service_cidr = service_cidr
-        # The current number of nodes in the cluster, including master nodes and worker nodes.
+        # The current number of nodes in the cluster, including the master node and worker nodes.
         self.size = size
-        # The running state of the cluster. Valid values:
+        # The running status of the cluster. Valid values:
         # 
-        # - `initial`: The cluster is being created.
-        # - `failed`: The cluster failed to be created.
-        # - `running`: The cluster is running.
-        # - `updating`: The cluster is being updated.
-        # - `upgrading`: The cluster is being upgraded.
-        # - `removing`: Nodes are being removed.
-        # - `draining`: Nodes are being drained.
-        # - `scaling`: The cluster is being scaled.
-        # - `inactive`: The cluster is inactive.
-        # - `unavailable`: The cluster is unavailable.
-        # - `deleting`: The cluster is being deleted.
-        # - `deleted`: The cluster has been deleted.
-        # - `delete_failed`: The cluster failed to be deleted.
-        # - `waiting`: The cluster is in the accessed state, waiting to be connected.
-        # - `disconnected`: The cluster is disconnected.
+        # - initial: The cluster is being created.
+        # - failed: The cluster failed to be created.
+        # - running: The cluster is running.
+        # - updating: The cluster is being updated.
+        # - upgrading: The cluster is being upgraded.
+        # - removing: Nodes are being removed.
+        # - draining: Nodes are being drained.
+        # - scaling: The cluster is being scaled.
+        # - inactive: The cluster is inactive.
+        # - unavailable: The cluster is unavailable.
+        # - deleting: The cluster is being deleted.
+        # - deleted: The cluster is deleted.
+        # - delete_failed: The cluster failed to be deleted.
+        # - waiting: The cluster is waiting for the accessed state.
+        # - disconnected: The cluster is disconnected.
         self.state = state
-        # [This field is deprecated] Use container_cidr to obtain the pod CIDR block.
+        # **[Deprecated]** Use container_cidr to obtain the Pod network CIDR block.
         self.subnet_cidr = subnet_cidr
         # The resource tags of the cluster.
         self.tags = tags
@@ -242,15 +242,15 @@ class DescribeClustersV1ResponseBodyClusters(DaraModel):
         self.timezone = timezone
         # The time when the cluster was last updated.
         self.updated = updated
-        # The VPC ID of the cluster.
+        # The ID of the virtual private cloud (VPC) where the cluster is deployed.
         self.vpc_id = vpc_id
-        # The vSwitch ID of the cluster.
+        # The ID of the vSwitch used by the cluster.
         self.vswitch_id = vswitch_id
         # The vSwitches of the cluster control plane.
         self.vswitch_ids = vswitch_ids
-        # The name of the worker RAM role that authorizes ECS instances to serve as cluster worker nodes.
+        # The name of the worker RAM role, which authorizes ECS instances to serve as worker nodes in the cluster.
         self.worker_ram_role_name = worker_ram_role_name
-        # The zone ID of the cluster.
+        # The ID of the zone to which the cluster belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -508,7 +508,7 @@ class DescribeClustersV1ResponseBodyClustersOperationPolicy(DaraModel):
         self,
         cluster_auto_upgrade: main_models.DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade = None,
     ):
-        # The automatic cluster upgrade configuration.
+        # The auto-upgrade settings for the cluster.
         self.cluster_auto_upgrade = cluster_auto_upgrade
 
     def validate(self):
@@ -539,14 +539,12 @@ class DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade(Da
         channel: str = None,
         enabled: bool = None,
     ):
-        # The frequency of automatic cluster upgrades. For more information, see [Upgrade frequency](https://help.aliyun.com/document_detail/2712866.html).
-        # 
-        # Valid values:
-        # - patch: the latest patch version.
-        # - stable: the second latest minor version.
-        # - rapid: the latest minor version.
+        # The auto-upgrade channel for the cluster. For more information, refer to [Upgrade channels](https://help.aliyun.com/document_detail/2712866.html). Valid values:
+        # - patch: The latest patch version.
+        # - stable: The second latest minor version.
+        # - rapid: The latest minor version.
         self.channel = channel
-        # Indicates whether automatic cluster upgrade is enabled.
+        # Specifies whether auto-upgrade is enabled for the cluster.
         self.enabled = enabled
 
     def validate(self):

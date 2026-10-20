@@ -77,43 +77,43 @@ class DescribePolicyInstancesResponseBody(DaraModel):
         total_violations: int = None,
         is_deleted: int = None,
     ):
-        # 策略实例实施者UID。
+        # The UID of the policy instance implementer.
         self.ali_uid = ali_uid
-        # 目标集群ID。
+        # The ID of the target cluster.
         self.cluster_id = cluster_id
-        # 规则实例名称。
+        # The name of the rule instance.
         self.instance_name = instance_name
-        # 策略治理规则名称。
+        # The name of the policy governance rule.
         self.policy_name = policy_name
-        # 策略类型名称。
+        # The name of the policy type.
         self.policy_category = policy_category
-        # 规则模板描述。
+        # The description of the rule template.
         self.policy_description = policy_description
-        # 当前规则实例的配置参数。
+        # The configuration parameters of the current rule instance.
         self.policy_parameters = policy_parameters
-        # 规则实例治理等级。
+        # The governance level of the rule instance.
         self.policy_severity = policy_severity
-        # 策略实例实施范围：
+        # The scope of the policy instance.
         # 
-        # 默认"*"代表集群所有命名空间。
+        # By default, an asterisk (*) indicates all namespaces in the cluster.
         # 
-        # 否则返回作用Namespaces名称，多个Namespaces以逗号（,）分隔。
+        # Otherwise, the names of the namespaces to which the policy applies are returned. Multiple namespaces are separated by commas (,).
         self.policy_scope = policy_scope
-        # 规则治理动作，取值：
+        # The governance action of the rule. Valid values:
         # 
-        # - `deny`：拦截违规部署。
+        # - `deny`: Blocks non-compliant deployments.
         # 
-        # - `warn`：告警。
+        # - `warn`: Generates an alert.
         self.policy_action = policy_action
-        # 创建时间（已废弃，请勿使用）。
+        # The creation time. This parameter is deprecated. Do not use it.
         self.created = created
-        # 更新时间（已废弃，请勿使用）。
+        # The update time. This parameter is deprecated. Do not use it.
         self.updated = updated
-        # 资源ID（已废弃，请勿使用）。
+        # The resource ID. This parameter is deprecated. Do not use it.
         self.resource_id = resource_id
-        # 集群中处理违规计数（已废弃，请勿使用）。
+        # The number of violations processed in the cluster. This parameter is deprecated. Do not use it.
         self.total_violations = total_violations
-        # 删除状态（已废弃，请勿使用）。
+        # The deletion status. This parameter is deprecated. Do not use it.
         self.is_deleted = is_deleted
 
     def validate(self):

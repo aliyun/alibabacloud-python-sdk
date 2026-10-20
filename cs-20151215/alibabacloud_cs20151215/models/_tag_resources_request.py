@@ -31,7 +31,7 @@ class TagResourcesRequest(DaraModel):
         self.resource_type = resource_type
         # The tag key-value pairs of the resource. You can specify up to 20 tag key-value pairs. Note:
         # 
-        # - If you specify this parameter, the value cannot be an empty string and can contain up to 128 characters.
+        # - Once a value is specified, it cannot be an empty string. The value can be up to 128 characters in length.
         # - The value cannot start with `aliyun` or `acs:`.
         # - The value cannot contain `http://` or `https://`.
         # 

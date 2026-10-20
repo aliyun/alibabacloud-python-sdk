@@ -17,12 +17,19 @@ class ListNodePoolComponentsRequest(DaraModel):
         nodepool_id: str = None,
         nodepool_type: str = None,
     ):
+        # The image ID of the node pool. Either this parameter or image_type is required if nodepool_id is not specified.
         self.image_id = image_id
+        # The image type of the node pool. Either this parameter or image_id is required if nodepool_id is not specified.
         self.image_type = image_type
+        # The instance types of the node pool. This parameter is required if nodepool_id is not specified.
         self.instance_types = instance_types
+        # The maximum number of results to return. Default value: 200.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The node pool ID. If you specify a node pool ID, the system queries the list of components available for the node pool and ignores other parameters.
         self.nodepool_id = nodepool_id
+        # The node pool type. This parameter is required if nodepool_id is not specified.
         self.nodepool_type = nodepool_type
 
     def validate(self):

@@ -50,9 +50,9 @@ class CheckServiceRoleResponseBodyRoles(DaraModel):
         message: str = None,
         name: str = None,
     ):
-        # Indicates whether the service role has been granted.
+        # Indicates whether the role has been authorized.
         self.granted = granted
-        # The prompt message returned when the service role is not granted.
+        # The message returned when the role is not authorized.
         self.message = message
         # The service role name.
         self.name = name

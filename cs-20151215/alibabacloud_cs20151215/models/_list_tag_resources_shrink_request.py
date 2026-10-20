@@ -13,7 +13,7 @@ class ListTagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tags_shrink: str = None,
     ):
-        # The token that determines the start point of the next query.
+        # The token for the next query.
         self.next_token = next_token
         # The region ID.
         # 

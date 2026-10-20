@@ -13,10 +13,20 @@ class DeleteNodePoolComponentInstanceShrinkRequest(DaraModel):
         node_names_shrink: str = None,
         pause_policy: str = None,
     ):
+        # The interval between batches, in seconds. Default value: 0.
         self.batch_interval = batch_interval
+        # The maximum number of nodes that can fail during the rolling process. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
         self.max_failed_nodes = max_failed_nodes
+        # The maximum number of parallel operations per batch. Default value: 1.
         self.max_parallelism = max_parallelism
+        # The list of nodes to rotate. Default value: all nodes.
         self.node_names_shrink = node_names_shrink
+        # The auto-pause policy during a node upgrade. Valid values:
+        # - NotPause
+        # - FirstBatch
+        # - EveryBatch
+        # 
+        # Default value: NotPause.
         self.pause_policy = pause_policy
 
     def validate(self):

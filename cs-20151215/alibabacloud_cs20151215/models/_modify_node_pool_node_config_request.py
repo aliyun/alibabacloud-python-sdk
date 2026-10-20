@@ -90,7 +90,7 @@ class ModifyNodePoolNodeConfigRequestRollingPolicy(DaraModel):
     ):
         # The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
         self.max_failed_nodes = max_failed_nodes
-        # The node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
+        # Node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
         # 
         # Valid values: [1,10].
         # 

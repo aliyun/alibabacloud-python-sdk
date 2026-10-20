@@ -22,7 +22,7 @@ class UpdateControlPlaneLogRequest(DaraModel):
         # 
         # Default value: k8s-log-$Cluster ID.
         self.log_project = log_project
-        # The retention period of logs in the SLS Logstore. Valid values: 1 to 3000. Unit: days.
+        # The log retention period in the SLS Logstore. Valid values: 1 to 3000. Unit: days.
         # 
         # Default value: 30 days.
         self.log_ttl = log_ttl

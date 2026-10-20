@@ -12,8 +12,11 @@ class RunNodeOperationRequest(DaraModel):
         operation_action: str = None,
         operation_args: List[str] = None,
     ):
+        # The name of the O&M action to execute.
+        # 
         # This parameter is required.
         self.operation_action = operation_action
+        # The list of parameters accepted by the O&M action.
         self.operation_args = operation_args
 
     def validate(self):

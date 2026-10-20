@@ -14,8 +14,11 @@ class ListNodePoolComponentInstancesResponseBody(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The list of node component instances.
         self.component_instances = component_instances
+        # The maximum number of results to return. Default value: 200.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
 
     def validate(self):
@@ -67,10 +70,15 @@ class ListNodePoolComponentInstancesResponseBodyComponentInstances(DaraModel):
         state: str = None,
         version: str = None,
     ):
+        # The configuration of the component.
         self.config = config
+        # The version number of the component configuration.
         self.config_revision = config_revision
+        # The name of the component.
         self.name = name
+        # The state of the component.
         self.state = state
+        # The version of the component.
         self.version = version
 
     def validate(self):
@@ -125,7 +133,9 @@ class ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig(DaraMod
         custom_config: Dict[str, Any] = None,
         envs: List[main_models.ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs] = None,
     ):
+        # The custom configuration of the component.
         self.custom_config = custom_config
+        # The environment variables of the node component.
         self.envs = envs
 
     def validate(self):
@@ -168,7 +178,9 @@ class ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs(Dar
         name: str = None,
         value: str = None,
     ):
+        # The name of the environment variable.
         self.name = name
+        # The value of the environment variable.
         self.value = value
 
     def validate(self):

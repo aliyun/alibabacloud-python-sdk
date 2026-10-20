@@ -16,14 +16,14 @@ class ModifyPolicyInstanceRequest(DaraModel):
     ):
         # The governance action of the rule. Valid values:
         # 
-        # - `deny`: Blocks non-compliant deployments.
-        # - `warn`: Generates an alert.
+        # - `deny`: blocks non-compliant deployments.
+        # - `warn`: generates alerts.
         self.action = action
-        # The instance ID of the policy rule.
+        # The instance ID of the policy rule instance.
         self.instance_name = instance_name
-        # The namespaces to which the policy applies. If this parameter is empty, the policy applies to all namespaces.
+        # The namespaces to which the policy applies. An empty value indicates all namespaces.
         self.namespaces = namespaces
-        # The configuration parameters of the current rule instance. For more information about parameter settings rules, see [Container security policy rules](https://help.aliyun.com/document_detail/359819.html).
+        # The configuration parameters of the current rule instance. For more information about parameter settings rules, see [Container Security Policy Rule Library](https://help.aliyun.com/document_detail/359819.html).
         self.parameters = parameters
 
     def validate(self):

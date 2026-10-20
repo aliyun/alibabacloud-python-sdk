@@ -16,10 +16,13 @@ class DescribeClusterNodesRequest(DaraModel):
         page_size: str = None,
         state: str = None,
     ):
-        # The instance IDs of nodes. Separate multiple IDs with commas (,).
+        # The list of node instance IDs. Separate multiple values with commas (,).
         self.instance_ids = instance_ids
+        # The list of node IP addresses used for filtering. Separate multiple values with commas (,).
         self.node_ips = node_ips
+        # The node labels used for filtering. Specify the labels as key=value pairs separated by commas (,). Multiple labels are evaluated with the AND operator. Only nodes that match all specified labels are returned.
         self.node_labels = node_labels
+        # The list of node names used for filtering. Separate multiple values with commas (,).
         self.node_names = node_names
         # The node pool ID.
         self.nodepool_id = nodepool_id
@@ -27,17 +30,17 @@ class DescribeClusterNodesRequest(DaraModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The maximum number of records that can be displayed on each page. Valid values: [1, 100].
+        # The maximum number of records to return per page. Valid values: 1 to 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The status of cluster nodes. Used to filter by node running status. Valid values:
+        # The running states of the cluster nodes used for filtering. Valid values:
         # 
-        # - `all`: does not filter by running status. All nodes are returned.
-        # - `running`: running nodes.
-        # - `removing`: nodes that are being removed.
-        # - `initial`: nodes that are being initialized.
-        # - `failed`: nodes that failed to be created.
+        # - `all`: does not filter nodes by running state and queries nodes in all states.
+        # - `running`: the cluster nodes that are running.
+        # - `removing`: the cluster nodes that are being removed.
+        # - `initial`: the cluster nodes that are being initialized.
+        # - `failed`: the cluster nodes that failed to be created.
         # 
         # Default value: `all`.
         self.state = state

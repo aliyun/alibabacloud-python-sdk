@@ -18,13 +18,13 @@ class DescribeClusterAddonInstanceResponseBody(DaraModel):
         self.name = name
         # The component status. Valid values:
         # 
-        # - initial: installing
-        # - active: installed
-        # - unhealthy: abnormal
-        # - upgrading: upgrading
-        # - updating: updating
-        # - deleting: uninstalling
-        # - deleted: deleted.
+        # - initial: Installing.
+        # - active: Installed.
+        # - unhealthy: Unhealthy.
+        # - upgrading: Upgrading.
+        # - updating: Updating.
+        # - deleting: Uninstalling.
+        # - deleted: Deleted.
         self.state = state
         # The component version.
         self.version = version

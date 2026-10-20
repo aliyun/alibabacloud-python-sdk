@@ -17,17 +17,17 @@ class DescribeAutoRepairPolicyResponseBody(DaraModel):
         resource_type: str = None,
         rules: List[main_models.DescribeAutoRepairPolicyResponseBodyRules] = None,
     ):
-        # The auto-repair rule ID.
+        # The self-healing rule ID.
         self.id = id
-        # The name of the auto-repair rule.
+        # The name of the self-healing rule.
         self.name = name
-        # The list of resources associated with the auto-repair rule.
+        # The list of resources bound to the self-healing rule.
         self.resource_ids = resource_ids
-        # The sub-type of resource associated with the auto-repair rule.
+        # The subtype of the resource bound to the self-healing rule.
         self.resource_sub_type = resource_sub_type
-        # The type of resource associated with the auto-repair rule.
+        # The type of resource bound to the self-healing rule.
         self.resource_type = resource_type
-        # The list of auto-repair sub-rules.
+        # The list of self-healing sub-rules.
         self.rules = rules
 
     def validate(self):
@@ -94,7 +94,7 @@ class DescribeAutoRepairPolicyResponseBodyRules(DaraModel):
         incidents: List[main_models.DescribeAutoRepairPolicyResponseBodyRulesIncidents] = None,
         repair_procedure: List[main_models.DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure] = None,
     ):
-        # The list of identified faults.
+        # The list of identified incidents.
         self.incidents = incidents
         # The repair procedure.
         self.repair_procedure = repair_procedure
@@ -151,7 +151,7 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedure(DaraModel):
     ):
         # The configuration parameters of the procedure.
         self.config = config
-        # The configuration for manual intervention in the procedure.
+        # The configuration of the manual intervention procedure.
         self.intervention = intervention
         # The name of the procedure.
         self.name = name
@@ -198,11 +198,11 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureIntervention(DaraM
         inquiring_label: main_models.DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
-        # The label configuration for authorization approval. When you add the following label to the node, you authorize ACK to perform the action of this stage. After completing the action, ACK automatically removes the authorization inquiry and approval labels for this stage. If you do not add the following label for authorization in a timely manner, ACK will not perform the action of this stage or subsequent actions, and the node may remain in a damaged state.
+        # The label configuration for authorization confirmation. Adding the following labels to the node indicates that you authorize ACK to execute the operations in this stage. After completing the operations in this stage, ACK automatically removes the authorization inquiry and confirmation labels for this stage. If you do not add the following labels promptly, ACK will not execute the actions in this stage and subsequent stages, and the node may remain in a damaged state.
         self.approved_label = approved_label
-        # Specifies whether to enable manual approval.
+        # Indicates whether manual approval is enabled.
         self.enable = enable
-        # The label configuration for authorization inquiry. When this stage is reached, ACK adds the following label to your node and waits for your authorization to perform the action of this stage.
+        # The label configuration for authorization inquiry. When this stage is reached, ACK adds the following labels to your node and waits for your authorization to execute the actions in this stage.
         self.inquiring_label = inquiring_label
         # The type of manual approval.
         self.type = type
@@ -293,7 +293,7 @@ class DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprov
         key: str = None,
         value: str = None,
     ):
-        # The key of the label.
+        # The `key` of the label.
         self.key = key
         # The value of the label.
         self.value = value
@@ -330,9 +330,9 @@ class DescribeAutoRepairPolicyResponseBodyRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The fault name.
+        # The name of the incident.
         self.name = name
-        # The fault type.
+        # The type of the incident.
         self.type = type
 
     def validate(self):

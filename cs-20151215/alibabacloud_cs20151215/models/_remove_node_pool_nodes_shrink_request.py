@@ -27,11 +27,11 @@ class RemoveNodePoolNodesShrinkRequest(DaraModel):
         self.drain_node = drain_node
         # The list of instances to remove.
         self.instance_ids_shrink = instance_ids_shrink
-        # [This parameter is deprecated]
+        # **[Deprecated]**
         # 
         # The list of nodes to remove.
         # 
-        # >Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>.
+        # >Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>
         self.nodes_shrink = nodes_shrink
         # Specifies whether to release the nodes. Valid values:
         # - true: Release the nodes.

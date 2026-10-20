@@ -73,13 +73,13 @@ class ListUserKubeConfigStatesResponseBodyStates(DaraModel):
         # - Unissued: The certificate has not been issued.
         # - Unknown: The status is unknown.
         # 
-        # - Removed: The certificate has been revoked. An issuance record exists for the certificate.
+        # - Removed: The certificate has been removed (an issuance record exists for the certificate).
         self.cert_state = cert_state
         # The cluster ID.
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # The cluster status. Valid values:
+        # The running status of the cluster. Valid values:
         # 
         # - `initial`: The cluster is being created.
         # - `failed`: The cluster failed to be created.
@@ -146,7 +146,7 @@ class ListUserKubeConfigStatesResponseBodyPage(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The number of records returned per page.
+        # The number of records per page.
         self.page_size = page_size
         # The total number of results.
         self.total_count = total_count

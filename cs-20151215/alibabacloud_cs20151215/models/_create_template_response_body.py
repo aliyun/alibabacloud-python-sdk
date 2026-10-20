@@ -9,7 +9,7 @@ class CreateTemplateResponseBody(DaraModel):
         self,
         template_id: str = None,
     ):
-        # The ID of the orchestration template.
+        # The orchestration template ID.
         self.template_id = template_id
 
     def validate(self):

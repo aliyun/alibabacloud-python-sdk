@@ -23,7 +23,7 @@ class UpdateResourcesDeleteProtectionResponseBody(DaraModel):
         self.request_id = request_id
         # The resource type.
         self.resource_type = resource_type
-        # The list of resources for which the deletion protection status is updated.
+        # The list of resources whose deletion protection status is updated.
         self.resources = resources
 
     def validate(self):

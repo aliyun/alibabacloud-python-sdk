@@ -15,9 +15,13 @@ class ListNodePoolComponentInstanceNodesResponseBody(DaraModel):
         node_list: List[main_models.ListNodePoolComponentInstanceNodesResponseBodyNodeList] = None,
         total_count: int = None,
     ):
+        # The maximum number of records returned in a single response for pagination.
         self.max_results = max_results
+        # The pagination cursor. Do not specify this parameter for the first request. For subsequent requests, specify the token returned in the previous response.
         self.next_token = next_token
+        # The list of nodes.
         self.node_list = node_list
+        # The total number of nodes.
         self.total_count = total_count
 
     def validate(self):
@@ -73,8 +77,11 @@ class ListNodePoolComponentInstanceNodesResponseBodyNodeList(DaraModel):
         instance_id: str = None,
         node_name: str = None,
     ):
+        # The details of the component on the node.
         self.component = component
+        # The instance ID.
         self.instance_id = instance_id
+        # The node name.
         self.node_name = node_name
 
     def validate(self):
@@ -119,9 +126,13 @@ class ListNodePoolComponentInstanceNodesResponseBodyNodeListComponent(DaraModel)
         name: str = None,
         version: str = None,
     ):
+        # The configuration of the node component.
         self.config = config
+        # The custom configuration version number of the component on the node.
         self.config_revision = config_revision
+        # The name of the component on the node.
         self.name = name
+        # The version of the component on the node.
         self.version = version
 
     def validate(self):
@@ -169,6 +180,7 @@ class ListNodePoolComponentInstanceNodesResponseBodyNodeListComponentConfig(Dara
         self,
         custom_config: Dict[str, Any] = None,
     ):
+        # The custom configuration of the node component.
         self.custom_config = custom_config
 
     def validate(self):
