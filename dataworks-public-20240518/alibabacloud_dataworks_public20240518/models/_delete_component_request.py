@@ -10,13 +10,13 @@ class DeleteComponentRequest(DaraModel):
         component_id: str = None,
         project_id: int = None,
     ):
-        # The component ID. This parameter can be used as a request parameter for querying the list of production studio components or modifying a production studio component.
+        # The ID of the component. You can use this ID as a request parameter to query the component list or modify a component.
         # 
         # This parameter is required.
         self.component_id = component_id
         # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
         # 
-        # This parameter specifies the DataWorks workspace for this API call operation.
+        # This parameter specifies the DataWorks workspace used to invoke this API operation.
         # 
         # This parameter is required.
         self.project_id = project_id

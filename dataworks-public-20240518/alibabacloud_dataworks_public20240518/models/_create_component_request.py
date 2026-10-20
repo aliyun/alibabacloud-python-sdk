@@ -11,13 +11,13 @@ class CreateComponentRequest(DaraModel):
         project_id: int = None,
         spec: str = None,
     ):
-        # A reserved field.
+        # The reserved field.
         self.client_token = client_token
         # The ID of the DataWorks workspace where the data source resides. You can call the [ListProjects](https://help.aliyun.com/document_detail/2780068.html) operation to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The FlowSpec information that describes the workflow. For more information about the specification, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
+        # The FlowSpec information that describes the workflow. For more information about the specifications, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow/).
         # 
         # This parameter is required.
         self.spec = spec

@@ -11,27 +11,21 @@ class MoveResourceRequest(DaraModel):
         path: str = None,
         project_id: int = None,
     ):
-        # The unique identifier of the Data Studio file resource.
+        # The unique identifier of the data development file resource.
         # 
-        # > This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >Notice: Before SDK version 8.0.0, this field is of the Long type. In SDK version 8.0.0 and later, this field is of the String type. **This change does not affect the normal use of the SDK. The parameter is still returned based on the type defined in the SDK**. The type change may cause project compilation failures only when you upgrade the SDK across version 8.0.0. In this case, you must manually correct the data type.
         # 
         # This parameter is required.
         self.id = id
-        # The destination path, without the file resource name.
+        # The destination path for the move operation. Do not include the file resource name in the path.
         # 
-        # 
-        # 
-        # 
-        # For example, to move `math.py` to `root/demo/math.py`, set this parameter to `root/demo`.
+        # For example, to change the path of the math.py file to root/demo/math.py, set this parameter to root/demo.
         # 
         # This parameter is required.
         self.path = path
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
         # 
-        # 
-        # 
-        # 
-        # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
+        # This parameter specifies the DataWorks workspace for this API operation.
         # 
         # This parameter is required.
         self.project_id = project_id

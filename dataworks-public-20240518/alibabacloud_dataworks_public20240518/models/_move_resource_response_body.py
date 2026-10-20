@@ -10,13 +10,13 @@ class MoveResourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The ID of the request. You can use the ID to troubleshoot errors.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call is successful.
         # 
-        # - true
+        # - true: The call is successful.
         # 
-        # - false
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
