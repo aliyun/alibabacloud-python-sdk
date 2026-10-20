@@ -3893,6 +3893,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_template_with_options_async(workspace_biz_id, request, headers, runtime)
 
+    def get_workspace_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspace',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspace',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceRequest,
+    ) -> main_models.GetWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_workspace_with_options(workspace_id, request, headers, runtime)
+
+    async def get_workspace_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetWorkspaceRequest,
+    ) -> main_models.GetWorkspaceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_workspace_with_options_async(workspace_id, request, headers, runtime)
+
     def grant_role_to_users_with_options(
         self,
         request: main_models.GrantRoleToUsersRequest,

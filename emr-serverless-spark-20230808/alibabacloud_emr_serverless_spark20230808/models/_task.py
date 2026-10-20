@@ -74,75 +74,41 @@ class Task(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The --archives parameter.
         self.archives = archives
-        # The temporary URL for accessing the resource file.
         self.artifact_url = artifact_url
-        # The business ID.
-        # 
         # This parameter is required.
         self.biz_id = biz_id
-        # The category business ID.
         self.category_biz_id = category_biz_id
-        # The Spark job content.
         self.content = content
-        # The creator UID.
-        # 
         # This parameter is required.
         self.creator = creator
-        # The direct upload information for OSS.
         self.credential = credential
-        # The default catalog ID.
         self.default_catalog_id = default_catalog_id
-        # The default database.
         self.default_database = default_database
-        # The ID of the default task queue.
         self.default_resource_queue_id = default_resource_queue_id
-        # The default SQL session ID.
         self.default_sql_compute_id = default_sql_compute_id
-        # The deployment ID of the streaming task.
         self.deployment_id = deployment_id
-        # The environment ID.
         self.environment_id = environment_id
-        # The IDs of additional Spark resources.
         self.extra_artifact_ids = extra_artifact_ids
-        # The custom Spark submit parameters.
         self.extra_spark_submit_params = extra_spark_submit_params
-        # The --files parameter.
         self.files = files
-        # The Fusion status.
         self.fusion = fusion
-        # The creation time.
-        # 
         # This parameter is required.
         self.gmt_created = gmt_created
-        # The last modified time.
-        # 
         # This parameter is required.
         self.gmt_modified = gmt_modified
-        # The change status after the last commit.
         self.has_changed = has_changed
-        # The commit status.
-        # 
         # This parameter is required.
         self.has_commited = has_commited
-        # The streaming task status.
         self.is_streaming = is_streaming
-        # The --jars parameter.
         self.jars = jars
         self.kernel_id = kernel_id
-        # The ID of the resource queue for the last run.
         self.last_run_resource_queue_id = last_run_resource_queue_id
-        # The UID of the last updater.
-        # 
         # This parameter is required.
         self.modifier = modifier
-        # The task name.
-        # 
         # This parameter is required.
         self.name = name
         self.params = params
-        # The PyFiles for PySpark dependencies.
         self.py_files = py_files
         self.ray_active_deadline_seconds = ray_active_deadline_seconds
         self.ray_backoff_limit = ray_backoff_limit
@@ -152,7 +118,6 @@ class Task(DaraModel):
         self.ray_entrypoint_num_gpus = ray_entrypoint_num_gpus
         self.ray_entrypoint_resources = ray_entrypoint_resources
         self.ray_extra_param = ray_extra_param
-        # The Ray cluster head node parameters.
         self.ray_head_spec = ray_head_spec
         self.ray_metadata_json = ray_metadata_json
         self.ray_network_service_name = ray_network_service_name
@@ -160,56 +125,31 @@ class Task(DaraModel):
         self.ray_shutdown_after_job_finishes = ray_shutdown_after_job_finishes
         self.ray_submission_mode = ray_submission_mode
         self.ray_ttl_seconds_after_finished = ray_ttl_seconds_after_finished
-        # The database engine version of the Ray DPI engine.
         self.ray_version = ray_version
         self.ray_volume_ids = ray_volume_ids
-        # The list of worker node parameters for the Ray cluster. A maximum of 50 groups are supported.
         self.ray_worker_spec = ray_worker_spec
         self.ray_working_dir = ray_working_dir
-        # The interactive job session ID.
         self.session_cluster_id = session_cluster_id
-        # The Spark parameters.
         self.spark_args = spark_args
-        # The Spark configuration list.
         self.spark_conf = spark_conf
-        # The number of Spark driver cores.
-        # 
         # This parameter is required.
         self.spark_driver_cores = spark_driver_cores
-        # The Spark driver memory.
-        # 
         # This parameter is required.
         self.spark_driver_memory = spark_driver_memory
-        # The Spark entry point.
         self.spark_entrypoint = spark_entrypoint
-        # The number of Spark executor cores.
-        # 
         # This parameter is required.
         self.spark_executor_cores = spark_executor_cores
-        # The Spark executor memory.
-        # 
         # This parameter is required.
         self.spark_executor_memory = spark_executor_memory
-        # The Spark log level.
-        # 
         # This parameter is required.
         self.spark_log_level = spark_log_level
-        # The Spark log path.
-        # 
         # This parameter is required.
         self.spark_log_path = spark_log_path
-        # The Spark submit statement.
         self.spark_submit_clause = spark_submit_clause
-        # The Spark version.
-        # 
         # This parameter is required.
         self.spark_version = spark_version
-        # The task tags.
         self.tags = tags
-        # The task timeout.
         self.timeout = timeout
-        # The task type.
-        # 
         # This parameter is required.
         self.type = type
 
@@ -643,27 +583,16 @@ class TaskRayWorkerSpec(DaraModel):
         ray_version: str = None,
         replica: int = None,
     ):
-        # The number of CPU cores.
         self.cpu = cpu
-        # The environment variables for Ray.
         self.env = env
-        # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The worker group name.
         self.group_name = group_name
-        # The maximum number of worker nodes after auto scaling is enabled.
         self.max_replica = max_replica
-        # The memory size, in GiB.
         self.memory = memory
-        # The minimum number of worker nodes after auto scaling is enabled.
         self.min_replica = min_replica
-        # The queue name.
         self.queue_name = queue_name
-        # The Ray startup parameters.
         self.ray_start_params = ray_start_params
-        # The database engine version of the Ray DPI engine.
         self.ray_version = ray_version
-        # The number of worker nodes.
         self.replica = replica
 
     def validate(self):
@@ -760,25 +689,15 @@ class TaskRayHeadSpec(DaraModel):
         ray_version: str = None,
         replica: int = None,
     ):
-        # The number of CPU cores.
         self.cpu = cpu
-        # Specifies whether to enable auto scaling for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
-        # The environment variables for Ray nodes.
         self.env = env
-        # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The idle timeout period for worker nodes after auto scaling is enabled, in seconds.
         self.idle_timeout_seconds = idle_timeout_seconds
-        # The memory size, in GiB.
         self.memory = memory
-        # The queue name.
         self.queue_name = queue_name
-        # The Ray startup parameters.
         self.ray_start_params = ray_start_params
-        # The database engine version of the Ray DPI engine.
         self.ray_version = ray_version
-        # The number of head nodes.
         self.replica = replica
 
     def validate(self):
@@ -867,21 +786,13 @@ class TaskCredential(DaraModel):
         security_token: str = None,
         signature: str = None,
     ):
-        # access id
         self.access_id = access_id
-        # The access URL.
         self.access_url = access_url
-        # The expiration time.
         self.expire = expire
-        # The domain name.
         self.host = host
-        # The path.
         self.path = path
-        # policy
         self.policy = policy
-        # security token
         self.security_token = security_token
-        # The signature.
         self.signature = signature
 
     def validate(self):

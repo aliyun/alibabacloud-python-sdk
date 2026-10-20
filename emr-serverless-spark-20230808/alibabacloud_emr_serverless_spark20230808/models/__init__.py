@@ -141,6 +141,9 @@ from ._get_sql_statement_response import GetSqlStatementResponse
 from ._get_template_request import GetTemplateRequest
 from ._get_template_response_body import GetTemplateResponseBody
 from ._get_template_response import GetTemplateResponse
+from ._get_workspace_request import GetWorkspaceRequest
+from ._get_workspace_response_body import GetWorkspaceResponseBody
+from ._get_workspace_response import GetWorkspaceResponse
 from ._grant_role_to_users_request import GrantRoleToUsersRequest
 from ._grant_role_to_users_response_body import GrantRoleToUsersResponseBody
 from ._grant_role_to_users_response import GrantRoleToUsersResponse
@@ -356,6 +359,11 @@ from ._get_session_cluster_response_body import GetSessionClusterResponseBodySes
 from ._get_session_cluster_response_body import GetSessionClusterResponseBodySessionCluster
 from ._get_sql_statement_response_body import GetSqlStatementResponseBodyDataSqlOutputs
 from ._get_sql_statement_response_body import GetSqlStatementResponseBodyData
+from ._get_workspace_response_body import GetWorkspaceResponseBodyWorkspacePrePaidQuota
+from ._get_workspace_response_body import GetWorkspaceResponseBodyWorkspacePrePaidQuotaGpu
+from ._get_workspace_response_body import GetWorkspaceResponseBodyWorkspaceStateChangeReason
+from ._get_workspace_response_body import GetWorkspaceResponseBodyWorkspaceTags
+from ._get_workspace_response_body import GetWorkspaceResponseBodyWorkspace
 from ._list_catalogs_response_body import ListCatalogsResponseBodyCatalogs
 from ._list_executor_logs_response_body import ListExecutorLogsResponseBodyLogs
 from ._list_job_executors_response_body import ListJobExecutorsResponseBodyExexutors
@@ -577,6 +585,9 @@ __all__ = [
     GetTemplateRequest,
     GetTemplateResponseBody,
     GetTemplateResponse,
+    GetWorkspaceRequest,
+    GetWorkspaceResponseBody,
+    GetWorkspaceResponse,
     GrantRoleToUsersRequest,
     GrantRoleToUsersResponseBody,
     GrantRoleToUsersResponse,
@@ -792,6 +803,11 @@ __all__ = [
     GetSessionClusterResponseBodySessionCluster,
     GetSqlStatementResponseBodyDataSqlOutputs,
     GetSqlStatementResponseBodyData,
+    GetWorkspaceResponseBodyWorkspacePrePaidQuota,
+    GetWorkspaceResponseBodyWorkspacePrePaidQuotaGpu,
+    GetWorkspaceResponseBodyWorkspaceStateChangeReason,
+    GetWorkspaceResponseBodyWorkspaceTags,
+    GetWorkspaceResponseBodyWorkspace,
     ListCatalogsResponseBodyCatalogs,
     ListExecutorLogsResponseBodyLogs,
     ListJobExecutorsResponseBodyExexutors,
