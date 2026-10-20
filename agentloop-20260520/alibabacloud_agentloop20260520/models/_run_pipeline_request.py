@@ -12,11 +12,11 @@ class RunPipelineRequest(DaraModel):
         output: main_models.RunPipelineRequestOutput = None,
         to_time: int = None,
     ):
-        # The start of the data processing window, in UNIX seconds. This parameter is required for SQL Pipeline and time window-based WorkItem Source. This parameter is optional for checkpoint-based WorkItem Source types such as Dataset and Logstore Pull.
+        # The start time of the data processing window in UNIX seconds. This parameter is required for SQL pipelines and time window-based WorkItem sources. It can be omitted for checkpoint-based WorkItem sources such as Dataset and Logstore Pull.
         self.from_time = from_time
-        # The output control settings. SQL Pipeline supports overriding. WorkItem Pipeline uses the saved Sink configuration and must keep the default value.
+        # The output control settings. SQL pipelines support overriding these settings. WorkItem pipelines use the saved sink configurations and must keep the default values.
         self.output = output
-        # The end of the data processing window, in UNIX seconds. This parameter must be provided together with fromTime and must be greater than fromTime. This parameter is optional for checkpoint-based WorkItem Source types.
+        # The end time of the data processing window in UNIX seconds. It must be provided together with fromTime and must be greater than fromTime. This parameter can be omitted for checkpoint-based WorkItem sources.
         self.to_time = to_time
 
     def validate(self):
@@ -59,7 +59,7 @@ class RunPipelineRequestOutput(DaraModel):
         dataset: bool = None,
         inline: bool = None,
     ):
-        # Specifies whether to write to the target Dataset. Default value: true.
+        # Specifies whether to write data to the target dataset. Default value: true.
         self.dataset = dataset
         # Specifies whether to return inline results in the response. Default value: false.
         self.inline = inline

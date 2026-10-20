@@ -9,6 +9,7 @@ class TerminatePipelineRequest(DaraModel):
         self,
         reason: str = None,
     ):
+        # The reason for termination.
         self.reason = reason
 
     def validate(self):

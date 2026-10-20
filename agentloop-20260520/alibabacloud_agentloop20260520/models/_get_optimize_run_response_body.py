@@ -29,24 +29,43 @@ class GetOptimizeRunResponseBody(DaraModel):
         window_end_time: int = None,
         window_start_time: int = None,
     ):
+        # The number of executed attempts.
         self.attempt_count = attempt_count
+        # The creation time.
         self.create_time = create_time
+        # The current execution stage.
         self.current_stage = current_stage
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The type-related information and immutable result references. For efficiency analysis, frozen outputBindings and tokenPublication release receipts are returned.
         self.extra = extra
+        # The completion time.
         self.finish_time = finish_time
+        # The maximum number of attempts.
         self.max_attempts = max_attempts
+        # The ID of the execution instance.
         self.optimize_run_id = optimize_run_id
+        # The name of the optimization task.
         self.optimize_task_name = optimize_task_name
+        # The current execution progress. The fields are defined by the task type.
         self.progress = progress
+        # The request ID.
         self.request_id = request_id
+        # The initial start time.
         self.start_time = start_time
+        # The execution status.
         self.status = status
+        # The number of analysis trajectories.
         self.trajectory_count = trajectory_count
+        # The trigger type.
         self.trigger_type = trigger_type
+        # The task type snapshot.
         self.type = type
+        # The end time of the analysis window, in UNIX seconds.
         self.window_end_time = window_end_time
+        # The start time of the analysis window, in UNIX seconds.
         self.window_start_time = window_start_time
 
     def validate(self):

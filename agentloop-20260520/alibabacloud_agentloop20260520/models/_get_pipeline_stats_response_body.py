@@ -18,14 +18,19 @@ class GetPipelineStatsResponseBody(DaraModel):
         summary: main_models.GetPipelineStatsResponseBodySummary = None,
         time_series: List[main_models.GetPipelineStatsResponseBodyTimeSeries] = None,
     ):
+        # The end time of the statistical window in UNIX seconds.
         self.end_time = end_time
+        # The statistical granularity.
         self.granularity = granularity
         # The name of the pipeline.
         self.pipeline_name = pipeline_name
-        # The request ID, which is used to locate the request during troubleshooting.
+        # The request ID used to locate the request during troubleshooting.
         self.request_id = request_id
+        # The start time of the statistical window in UNIX seconds.
         self.start_time = start_time
+        # The aggregation summary.
         self.summary = summary
+        # The time series data.
         self.time_series = time_series
 
     def validate(self):
@@ -107,13 +112,21 @@ class GetPipelineStatsResponseBodyTimeSeries(DaraModel):
         succeeded_runs: int = None,
         timestamp: int = None,
     ):
+        # The average execution duration in milliseconds.
         self.avg_elapsed_ms = avg_elapsed_ms
+        # The number of output bytes.
         self.output_bytes = output_bytes
+        # The number of output rows.
         self.output_rows = output_rows
+        # The number of processed bytes.
         self.processed_bytes = processed_bytes
+        # The number of processed rows.
         self.processed_rows = processed_rows
+        # The number of runs.
         self.runs = runs
+        # The number of succeeded runs.
         self.succeeded_runs = succeeded_runs
+        # The start timestamp of the time bucket in UNIX seconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -194,17 +207,29 @@ class GetPipelineStatsResponseBodySummary(DaraModel):
         total_processed_rows: int = None,
         total_runs: int = None,
     ):
+        # The average execution duration in milliseconds.
         self.avg_elapsed_ms = avg_elapsed_ms
+        # The number of cancelled runs.
         self.cancelled_runs = cancelled_runs
+        # The committed watermark in UNIX seconds.
         self.committed_watermark = committed_watermark
+        # The number of failed runs.
         self.failed_runs = failed_runs
+        # The schedule lag in seconds, calculated as the current time minus the watermark.
         self.schedule_lag_seconds = schedule_lag_seconds
+        # The number of succeeded runs.
         self.succeeded_runs = succeeded_runs
+        # The success rate, ranging from 0 to 1.
         self.success_rate = success_rate
+        # The total number of output bytes.
         self.total_output_bytes = total_output_bytes
+        # The total number of output rows.
         self.total_output_rows = total_output_rows
+        # The total number of processed bytes.
         self.total_processed_bytes = total_processed_bytes
+        # The total number of processed rows.
         self.total_processed_rows = total_processed_rows
+        # The total number of runs in the window.
         self.total_runs = total_runs
 
     def validate(self):

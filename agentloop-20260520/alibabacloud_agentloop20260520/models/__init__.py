@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._analysis_task import AnalysisTask
 from ._audit_task_state import AuditTaskState
 from ._backfill_strategy import BackfillStrategy
 from ._batch_group import BatchGroup
@@ -258,6 +259,7 @@ from ._create_context_store_request import CreateContextStoreRequestConfigSource
 from ._create_context_store_request import CreateContextStoreRequestConfigSourceTrajectoryFilter
 from ._create_context_store_request import CreateContextStoreRequestConfigSourceTrajectoryScopeMapping
 from ._create_context_store_request import CreateContextStoreRequestConfigSourceTrajectory
+from ._create_context_store_request import CreateContextStoreRequestConfigSourceVersionPolicy
 from ._create_context_store_request import CreateContextStoreRequestConfigSource
 from ._create_context_store_request import CreateContextStoreRequestConfigStoragePolicy
 from ._create_context_store_request import CreateContextStoreRequestConfig
@@ -302,6 +304,7 @@ from ._get_context_store_response_body import GetContextStoreResponseBodyConfigS
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigSourceTrajectoryFilter
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigSourceTrajectoryScopeMapping
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigSourceTrajectory
+from ._get_context_store_response_body import GetContextStoreResponseBodyConfigSourceVersionPolicy
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigSource
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigSourceStatus
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigStoragePolicy
@@ -413,6 +416,7 @@ from ._update_pipeline_request import UpdatePipelineRequestSourceTrajectory
 from ._update_pipeline_request import UpdatePipelineRequestSource
 
 __all__ = [
+    AnalysisTask,
     AuditTaskState,
     BackfillStrategy,
     BatchGroup,
@@ -669,6 +673,7 @@ __all__ = [
     CreateContextStoreRequestConfigSourceTrajectoryFilter,
     CreateContextStoreRequestConfigSourceTrajectoryScopeMapping,
     CreateContextStoreRequestConfigSourceTrajectory,
+    CreateContextStoreRequestConfigSourceVersionPolicy,
     CreateContextStoreRequestConfigSource,
     CreateContextStoreRequestConfigStoragePolicy,
     CreateContextStoreRequestConfig,
@@ -713,6 +718,7 @@ __all__ = [
     GetContextStoreResponseBodyConfigSourceTrajectoryFilter,
     GetContextStoreResponseBodyConfigSourceTrajectoryScopeMapping,
     GetContextStoreResponseBodyConfigSourceTrajectory,
+    GetContextStoreResponseBodyConfigSourceVersionPolicy,
     GetContextStoreResponseBodyConfigSource,
     GetContextStoreResponseBodyConfigSourceStatus,
     GetContextStoreResponseBodyConfigStoragePolicy,

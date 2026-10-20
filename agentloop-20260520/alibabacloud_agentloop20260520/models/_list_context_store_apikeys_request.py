@@ -10,9 +10,9 @@ class ListContextStoreAPIKeysRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The maximum number of API keys to return. Default value: 20. Maximum value: 100.
+        # The maximum number of API keys to return in the current request. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the nextToken value returned in the previous response to retrieve the next page. Do not specify this parameter for the first request.
+        # The pagination token. Pass the nextToken value from the previous response to retrieve the next page. Do not specify this parameter for the first request.
         self.next_token = next_token
 
     def validate(self):

@@ -1,3 +1,19 @@
+2026-10-20 Version: 2.4.1
+- Update API CreateContextStore: add request parameters body.config.source.binding.
+- Update API CreateContextStore: add request parameters body.config.source.datasetName.
+- Update API CreateContextStore: add request parameters body.config.source.format.
+- Update API CreateContextStore: add request parameters body.config.source.maxRecords.
+- Update API CreateContextStore: add request parameters body.config.source.versionPolicy.
+- Update API GetContextStore: add response parameters Body.config.miningTaskName.
+- Update API GetContextStore: add response parameters Body.config.source.binding.
+- Update API GetContextStore: add response parameters Body.config.source.datasetName.
+- Update API GetContextStore: add response parameters Body.config.source.format.
+- Update API GetContextStore: add response parameters Body.config.source.maxRecords.
+- Update API GetContextStore: add response parameters Body.config.source.versionPolicy.
+- Update API GetContextStore: add response parameters Body.config.sourceStatus.currentWindow.
+- Update API GetContextStore: add response parameters Body.config.sourceStatus.lastRunId.
+
+
 2026-10-14 Version: 2.4.0
 - Support API CreateOptimizeRun.
 - Support API CreateOptimizeTask.

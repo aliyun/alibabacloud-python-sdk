@@ -20,15 +20,25 @@ class GetOptimizeTaskResponseBody(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The scheduling checkpoint, which stores states such as the general scheduling watermark.
         self.checkpoint = checkpoint
+        # The type-specific configuration. Optional prompts for ExperienceMining or SkillOptimize support only inline Markdown. The body is saved to inputs.prompt.content, which must be a non-empty UTF-8 string of up to 16 KiB.
         self.config = config
+        # The creation time.
         self.create_time = create_time
+        # The next scheduling trigger time.
         self.next_trigger_time = next_trigger_time
+        # The optimization task name.
         self.optimize_task_name = optimize_task_name
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The task status. Valid values: Enabled, Disabled.
         self.status = status
+        # The optimization task type.
         self.type = type
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

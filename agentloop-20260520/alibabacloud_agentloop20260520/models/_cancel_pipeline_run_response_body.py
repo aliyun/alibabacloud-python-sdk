@@ -12,11 +12,11 @@ class CancelPipelineRunResponseBody(DaraModel):
         run_id: str = None,
         status: str = None,
     ):
-        # The time when the cancellation was completed, in ISO 8601 UTC format.
+        # The time when the cancellation is completed, in the ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.finish_time = finish_time
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The request ID, which is used to locate the request during troubleshooting.
         self.request_id = request_id
         # The ID of the canceled run.
         self.run_id = run_id

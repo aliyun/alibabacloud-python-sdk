@@ -14,7 +14,7 @@ class ResumePipelineResponseBody(DaraModel):
         request_id: str = None,
         schedule_status: str = None,
     ):
-        # The name of the AgentSpace where the pipeline is located.
+        # The name of the AgentSpace.
         self.agent_space_name = agent_space_name
         # The committed watermark, in UNIX seconds.
         self.committed_watermark = committed_watermark
@@ -22,9 +22,9 @@ class ResumePipelineResponseBody(DaraModel):
         self.next_trigger_time = next_trigger_time
         # The name of the pipeline.
         self.pipeline_name = pipeline_name
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The request ID used to locate the request during troubleshooting.
         self.request_id = request_id
-        # The scheduling status. The value is fixed to Active.
+        # The scheduling status, which is fixed to Active.
         self.schedule_status = schedule_status
 
     def validate(self):

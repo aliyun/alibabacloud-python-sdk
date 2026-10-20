@@ -12,12 +12,13 @@ class ListDatasetsShrinkRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The dataset name.
+        # The name of the dataset.
         self.dataset_name = dataset_name
+        # Filters datasets by labels.
         self.labels_shrink = labels_shrink
         # The maximum number of results to return.
         self.max_results = max_results
-        # The pagination token. You do not need to set this parameter for the first request. For subsequent requests, set this parameter to the nextToken value returned in the previous response.
+        # The next token. You do not need to set this parameter for the first request. For subsequent requests, pass the nextToken value returned in the previous response.
         self.next_token = next_token
 
     def validate(self):

@@ -14,12 +14,19 @@ class TerminatePipelineResponseBody(DaraModel):
         terminate_time: str = None,
         terminated_reason: str = None,
     ):
+        # The name of the AgentSpace where the pipeline is located.
         self.agent_space_name = agent_space_name
+        # The name of the pipeline.
         self.pipeline_name = pipeline_name
+        # The request ID, which is used to locate the request during troubleshooting.
         self.request_id = request_id
+        # The scheduling status. The value is fixed to Terminated, which is an irreversible desired state.
         self.schedule_status = schedule_status
+        # The termination time in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.terminate_time = terminate_time
+        # The reason for termination.
         self.terminated_reason = terminated_reason
 
     def validate(self):

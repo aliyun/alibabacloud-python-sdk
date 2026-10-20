@@ -21,17 +21,19 @@ class GetDatasetResponseBody(DaraModel):
         schema: Dict[str, main_models.IndexKey] = None,
         update_time: str = None,
     ):
-        # The agent space name.
+        # The name of the agent space.
         self.agent_space = agent_space
         # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The dataset name.
+        # The name of the dataset.
         self.dataset_name = dataset_name
-        # The dataset description.
+        # The description of the dataset.
         self.description = description
+        # Indicates whether the dataset is added to favorites.
         self.is_favorite = is_favorite
+        # The labels of the dataset.
         self.labels = labels
         # The region ID.
         self.region_id = region_id

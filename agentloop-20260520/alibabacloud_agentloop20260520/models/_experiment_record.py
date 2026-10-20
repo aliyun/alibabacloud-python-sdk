@@ -33,7 +33,7 @@ class ExperimentRecord(DaraModel):
         status: str = None,
         total_tasks: int = None,
     ):
-        # The completion time in milliseconds.
+        # The completion timestamp in milliseconds.
         self.completed_at = completed_at
         # The number of completed tasks.
         self.completed_tasks = completed_tasks
@@ -41,7 +41,7 @@ class ExperimentRecord(DaraModel):
         self.data_source_type = data_source_type
         # The dataset ID.
         self.dataset_id = dataset_id
-        # The SLS project where the dataset is located.
+        # The Simple Log Service (SLS) project where the dataset is located.
         self.dataset_project = dataset_project
         # The error message.
         self.error_message = error_message
@@ -49,7 +49,7 @@ class ExperimentRecord(DaraModel):
         self.evaluation_task_id = evaluation_task_id
         # The list of evaluators.
         self.evaluators = evaluators
-        # The execution time in milliseconds.
+        # The execution timestamp in milliseconds.
         self.executed_at = executed_at
         # The list of experiment configurations.
         self.experiment_config = experiment_config

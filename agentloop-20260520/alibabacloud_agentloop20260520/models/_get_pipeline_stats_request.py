@@ -11,8 +11,11 @@ class GetPipelineStatsRequest(DaraModel):
         granularity: str = None,
         start_time: int = None,
     ):
+        # The end time of the statistical window in UNIX seconds. Default value: now.
         self.end_time = end_time
+        # The statistical granularity. Valid values: Hour, Day, Week, and Month. Default value: automatically inferred.
         self.granularity = granularity
+        # The start time of the statistical window in UNIX seconds. Default value: now - 86400.
         self.start_time = start_time
 
     def validate(self):

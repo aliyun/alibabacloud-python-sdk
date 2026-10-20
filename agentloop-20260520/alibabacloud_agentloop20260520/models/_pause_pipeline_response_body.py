@@ -16,7 +16,7 @@ class PausePipelineResponseBody(DaraModel):
     ):
         # The name of the AgentSpace where the pipeline is located.
         self.agent_space_name = agent_space_name
-        # The time when the pipeline was paused, in ISO 8601 UTC format.
+        # The pause time in ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.pause_time = pause_time
@@ -24,9 +24,9 @@ class PausePipelineResponseBody(DaraModel):
         self.paused_reason = paused_reason
         # The name of the pipeline.
         self.pipeline_name = pipeline_name
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The request ID, which is used to locate the request during troubleshooting.
         self.request_id = request_id
-        # The scheduling status. The value is fixed as Paused.
+        # The scheduling status, which is fixed to Paused.
         self.schedule_status = schedule_status
 
     def validate(self):

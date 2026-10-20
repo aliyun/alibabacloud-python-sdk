@@ -15,13 +15,13 @@ class RunPipelineResponseBody(DaraModel):
     ):
         # The name of the AgentSpace.
         self.agent_space_name = agent_space_name
-        # The pipeline name.
+        # The name of the pipeline.
         self.pipeline_name = pipeline_name
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The request ID, which is used to locate the request during troubleshooting.
         self.request_id = request_id
-        # The run ID created by this trigger.
+        # The ID of the run created by this trigger.
         self.run_id = run_id
-        # The current status of the run. The status is typically Pending after the run is queued.
+        # The current status of the run. The status is typically Pending after the run is enqueued.
         self.status = status
 
     def validate(self):

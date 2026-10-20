@@ -18,11 +18,11 @@ class ListDatasetsResponseBody(DaraModel):
     ):
         # The result set.
         self.datasets = datasets
-        # The maximum number of results specified in this request.
+        # The maximum number of entries returned for this request.
         self.max_results = max_results
-        # The token for the next page of results.
+        # The token for the next page of query results.
         # 
-        # If the total number of results exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+        # If the total number of returned results exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -93,17 +93,19 @@ class ListDatasetsResponseBodyDatasets(DaraModel):
         region_id: str = None,
         update_time: str = None,
     ):
-        # The agent space name.
+        # The name of the agent workspace.
         self.agent_space = agent_space
         # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The dataset name.
+        # The name of the dataset.
         self.dataset_name = dataset_name
-        # The dataset description.
+        # The description of the dataset.
         self.description = description
+        # Indicates whether the dataset is added to favorites.
         self.is_favorite = is_favorite
+        # The labels of the dataset.
         self.labels = labels
         # The region ID.
         self.region_id = region_id

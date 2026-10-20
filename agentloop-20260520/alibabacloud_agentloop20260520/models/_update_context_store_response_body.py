@@ -12,7 +12,7 @@ class UpdateContextStoreResponseBody(DaraModel):
     ):
         # The request ID, which is used to locate the request during troubleshooting.
         self.request_id = request_id
-        # The effective strategy version number after the update for the memory type. If the strategy remains unchanged, the version number is the same as before the update.
+        # The strategy version number that takes effect after the update for the memory type. If the strategy remains unchanged, the version number is the same as that before the update.
         self.strategy_version = strategy_version
 
     def validate(self):

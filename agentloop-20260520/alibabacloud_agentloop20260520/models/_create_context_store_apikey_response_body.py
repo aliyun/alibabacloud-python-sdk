@@ -11,7 +11,7 @@ class CreateContextStoreAPIKeyResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
-        # The complete API key value.
+        # The full value of the API key.
         self.api_key = api_key
         # The name of the API key.
         self.name = name

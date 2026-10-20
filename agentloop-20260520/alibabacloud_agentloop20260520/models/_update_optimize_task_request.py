@@ -13,8 +13,11 @@ class UpdateOptimizeTaskRequest(DaraModel):
         status: str = None,
         client_token: str = None,
     ):
+        # The type-related configurations. Optional prompts for ExperienceMining or SkillOptimize support only inline Markdown, and the body is saved to inputs.prompt.content (non-empty UTF-8, up to 16 KiB).
         self.config = config
+        # The status of the task. Valid values: Enabled and Disabled.
         self.status = status
+        # The idempotency token.
         self.client_token = client_token
 
     def validate(self):

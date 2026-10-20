@@ -19,7 +19,7 @@ class ExperimentPlanData(DaraModel):
         status: str = None,
         updated_at: int = None,
     ):
-        # The creation time in milliseconds.
+        # The creation time, in milliseconds.
         self.created_at = created_at
         # The ID of the associated dataset.
         self.dataset_id = dataset_id
@@ -27,9 +27,9 @@ class ExperimentPlanData(DaraModel):
         self.description = description
         # The number of experiment executions under this plan.
         self.experiment_count = experiment_count
-        # The experiment type. Valid values: offline (offline experiment) and online (online experiment).
+        # The experiment type: offline (offline experiment) or online (online experiment).
         self.experiment_type = experiment_type
-        # The name of the associated data processing pipeline. This field is empty if no pipeline is associated. After association, when an experiment under this plan completes and writes results to a Logstore, the system filters by the trace ID of the experiment trace and calls PreviewPipeline to write the pipeline-processed results.
+        # The name of the associated data processing pipeline. This field is empty if no pipeline is associated. After a pipeline is associated, when an experiment under this plan completes and writes experiment results to the Logstore, the system filters by the traceId of the current experiment trace and calls PreviewPipeline to write the results processed by the pipeline.
         self.pipeline_name = pipeline_name
         # The experiment plan ID.
         self.plan_id = plan_id
@@ -37,9 +37,9 @@ class ExperimentPlanData(DaraModel):
         self.plan_name = plan_name
         # The custom query SQL clause in dataset-partial mode.
         self.query_sql = query_sql
-        # The status. Valid values: pending, running, and stopped.
+        # The status: pending, running, or stopped.
         self.status = status
-        # The update time in milliseconds.
+        # The update time, in milliseconds.
         self.updated_at = updated_at
 
     def validate(self):
