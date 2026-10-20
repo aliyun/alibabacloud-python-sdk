@@ -16,15 +16,31 @@ class TextTranslateAsyncShrinkRequest(DaraModel):
         target_language: str = None,
         translate_scene: str = None,
     ):
+        # The business ID of the caller. The maximum length is 128 characters. This ID is passed through in the translation results.
         self.biz_id = biz_id
+        # The business name of the caller. This field represents your identity and facilitates subsequent communication. If you are an internal Alibaba organization, specify this parameter based on the actual scenario, such as BU name-product or BU name-chat. If you are an external partner, specify the full name of your company. The company name must be the same as the one used when registering your Alibaba Cloud account.
         self.biz_name = biz_name
+        # The format type of the source text. Valid values: text and html.
         self.format_type = format_type
+        # The ID of the intervention glossary. You must create the glossary in the console and provide its ID in the request parameters. If the intervention glossary ID is empty, the translation results are not modified.
         self.glossary = glossary
+        # The source language code. For more information, see the supported language list below. If this parameter is not specified, the language is automatically detected.
         self.source_language = source_language
+        # The list of texts to be translated.
+        # 
         # This parameter is required.
         self.source_text_list_shrink = source_text_list_shrink
+        # The target language code. For more information, see the supported language pair list below.
+        # 
         # This parameter is required.
         self.target_language = target_language
+        # The business scenario identifier. You can specify only one of the following values. After you specify a value, the translation engine uses the terminology library and style policy of the corresponding industry to output industry-specific translations. If this parameter is not specified or an invalid value is specified, the general translation policy is used. Valid values:
+        # - e-commerce-title: Translates cross-border e-commerce product titles.
+        # - e-commerce-description: Translates cross-border e-commerce product descriptions.
+        # - e-commerce-chat: Translates cross-border e-commerce conversations.
+        # - e-commerce-cpv: Translates cross-border e-commerce product CPV attributes.
+        # - novel: Translates novels.
+        # - game: Translates games.
         self.translate_scene = translate_scene
 
     def validate(self):

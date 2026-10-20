@@ -1,3 +1,10 @@
+2026-10-20 Version: 5.11.0
+- Support API AddDisplayKnowledge.
+- Support API DeleteDisplayKnowledge.
+- Support API QueryDisplayKnowledge.
+- Support API UpdateDisplayKnowledge.
+
+
 2026-10-16 Version: 5.10.1
 - Update API VideoTranslation: add request parameters EraseOnly.
 - Update API VideoTranslation: add request parameters RemoveLogo.

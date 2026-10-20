@@ -14,15 +14,17 @@ class AiTryOnResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned when the call is successful.
         self.code = code
-        # The result struct.
+        # The returned result struct.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The error message. This parameter is not returned when the call is successful.
         self.message = message
-        # The request ID. Used to uniquely identify a request.
+        # The request ID, which is used to identify a unique request.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true and false.
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -79,11 +81,11 @@ class AiTryOnResponseBodyData(DaraModel):
         image_width: str = None,
         usage_map: main_models.AiTryOnResponseBodyDataUsageMap = None,
     ):
-        # The height of the result image, in pixels.
+        # The height of the result image in pixels.
         self.image_height = image_height
         # The URL of the virtual try-on result image.
         self.image_url = image_url
-        # The width of the result image, in pixels.
+        # The width of the result image in pixels.
         self.image_width = image_width
         # The usage details.
         self.usage_map = usage_map
@@ -128,8 +130,6 @@ class AiTryOnResponseBodyData(DaraModel):
 
         return self
 
-
-
 class AiTryOnResponseBodyDataUsageMap(DaraModel):
     def __init__(
         self,
@@ -138,7 +138,7 @@ class AiTryOnResponseBodyDataUsageMap(DaraModel):
     ):
         # The number of processed images.
         self.processed_image_count = processed_image_count
-        # The resolution of the processed image.
+        # The resolution of the processed images.
         self.resolution = resolution
 
     def validate(self):

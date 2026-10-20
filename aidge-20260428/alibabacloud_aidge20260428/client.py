@@ -40,6 +40,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_display_knowledge_with_options(
+        self,
+        tmp_req: main_models.AddDisplayKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddDisplayKnowledgeResponse:
+        tmp_req.validate()
+        request = main_models.AddDisplayKnowledgeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.records):
+            request.records_shrink = Utils.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.records_shrink):
+            query['Records'] = request.records_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddDisplayKnowledge',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddDisplayKnowledgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_display_knowledge_with_options_async(
+        self,
+        tmp_req: main_models.AddDisplayKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddDisplayKnowledgeResponse:
+        tmp_req.validate()
+        request = main_models.AddDisplayKnowledgeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.records):
+            request.records_shrink = Utils.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.records_shrink):
+            query['Records'] = request.records_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddDisplayKnowledge',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddDisplayKnowledgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_display_knowledge(
+        self,
+        request: main_models.AddDisplayKnowledgeRequest,
+    ) -> main_models.AddDisplayKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return self.add_display_knowledge_with_options(request, runtime)
+
+    async def add_display_knowledge_async(
+        self,
+        request: main_models.AddDisplayKnowledgeRequest,
+    ) -> main_models.AddDisplayKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return await self.add_display_knowledge_with_options_async(request, runtime)
+
     def ai_try_on_with_options(
         self,
         request: main_models.AiTryOnRequest,
@@ -545,6 +627,88 @@ class Client(OpenApiClient):
     ) -> main_models.CategoryMatchResponse:
         runtime = RuntimeOptions()
         return await self.category_match_with_options_async(request, runtime)
+
+    def delete_display_knowledge_with_options(
+        self,
+        tmp_req: main_models.DeleteDisplayKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDisplayKnowledgeResponse:
+        tmp_req.validate()
+        request = main_models.DeleteDisplayKnowledgeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.record_ids):
+            request.record_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.record_ids_shrink):
+            query['RecordIds'] = request.record_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDisplayKnowledge',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDisplayKnowledgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_display_knowledge_with_options_async(
+        self,
+        tmp_req: main_models.DeleteDisplayKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDisplayKnowledgeResponse:
+        tmp_req.validate()
+        request = main_models.DeleteDisplayKnowledgeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.record_ids):
+            request.record_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.record_ids_shrink):
+            query['RecordIds'] = request.record_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDisplayKnowledge',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDisplayKnowledgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_display_knowledge(
+        self,
+        request: main_models.DeleteDisplayKnowledgeRequest,
+    ) -> main_models.DeleteDisplayKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return self.delete_display_knowledge_with_options(request, runtime)
+
+    async def delete_display_knowledge_async(
+        self,
+        request: main_models.DeleteDisplayKnowledgeRequest,
+    ) -> main_models.DeleteDisplayKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_display_knowledge_with_options_async(request, runtime)
 
     def didui_area_deduction_with_options(
         self,
@@ -3450,6 +3614,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_async_task_result_with_options_async(request, runtime)
 
+    def query_display_knowledge_with_options(
+        self,
+        tmp_req: main_models.QueryDisplayKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryDisplayKnowledgeResponse:
+        tmp_req.validate()
+        request = main_models.QueryDisplayKnowledgeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        query = {}
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.sku_id):
+            query['SkuId'] = request.sku_id
+        if not DaraCore.is_null(request.sku_name):
+            query['SkuName'] = request.sku_name
+        if not DaraCore.is_null(request.statuses_shrink):
+            query['Statuses'] = request.statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryDisplayKnowledge',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryDisplayKnowledgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_display_knowledge_with_options_async(
+        self,
+        tmp_req: main_models.QueryDisplayKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryDisplayKnowledgeResponse:
+        tmp_req.validate()
+        request = main_models.QueryDisplayKnowledgeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.statuses):
+            request.statuses_shrink = Utils.array_to_string_with_specified_style(tmp_req.statuses, 'Statuses', 'json')
+        query = {}
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.sku_id):
+            query['SkuId'] = request.sku_id
+        if not DaraCore.is_null(request.sku_name):
+            query['SkuName'] = request.sku_name
+        if not DaraCore.is_null(request.statuses_shrink):
+            query['Statuses'] = request.statuses_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryDisplayKnowledge',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryDisplayKnowledgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_display_knowledge(
+        self,
+        request: main_models.QueryDisplayKnowledgeRequest,
+    ) -> main_models.QueryDisplayKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return self.query_display_knowledge_with_options(request, runtime)
+
+    async def query_display_knowledge_async(
+        self,
+        request: main_models.QueryDisplayKnowledgeRequest,
+    ) -> main_models.QueryDisplayKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return await self.query_display_knowledge_with_options_async(request, runtime)
+
     def size_chart_detect_with_options(
         self,
         request: main_models.SizeChartDetectRequest,
@@ -4141,6 +4403,88 @@ class Client(OpenApiClient):
     ) -> main_models.TextTranslateAsyncResponse:
         runtime = RuntimeOptions()
         return await self.text_translate_async_with_options_async(request, runtime)
+
+    def update_display_knowledge_with_options(
+        self,
+        tmp_req: main_models.UpdateDisplayKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDisplayKnowledgeResponse:
+        tmp_req.validate()
+        request = main_models.UpdateDisplayKnowledgeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.records):
+            request.records_shrink = Utils.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.records_shrink):
+            query['Records'] = request.records_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDisplayKnowledge',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDisplayKnowledgeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_display_knowledge_with_options_async(
+        self,
+        tmp_req: main_models.UpdateDisplayKnowledgeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDisplayKnowledgeResponse:
+        tmp_req.validate()
+        request = main_models.UpdateDisplayKnowledgeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.records):
+            request.records_shrink = Utils.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rag_id):
+            query['RagId'] = request.rag_id
+        if not DaraCore.is_null(request.records_shrink):
+            query['Records'] = request.records_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDisplayKnowledge',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDisplayKnowledgeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_display_knowledge(
+        self,
+        request: main_models.UpdateDisplayKnowledgeRequest,
+    ) -> main_models.UpdateDisplayKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return self.update_display_knowledge_with_options(request, runtime)
+
+    async def update_display_knowledge_async(
+        self,
+        request: main_models.UpdateDisplayKnowledgeRequest,
+    ) -> main_models.UpdateDisplayKnowledgeResponse:
+        runtime = RuntimeOptions()
+        return await self.update_display_knowledge_with_options_async(request, runtime)
 
     def video_generation_with_options(
         self,

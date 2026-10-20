@@ -2,6 +2,10 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._add_display_knowledge_request import AddDisplayKnowledgeRequest
+from ._add_display_knowledge_shrink_request import AddDisplayKnowledgeShrinkRequest
+from ._add_display_knowledge_response_body import AddDisplayKnowledgeResponseBody
+from ._add_display_knowledge_response import AddDisplayKnowledgeResponse
 from ._ai_try_on_request import AiTryOnRequest
 from ._ai_try_on_response_body import AiTryOnResponseBody
 from ._ai_try_on_response import AiTryOnResponse
@@ -19,6 +23,10 @@ from ._category_attribute_match_response import CategoryAttributeMatchResponse
 from ._category_match_request import CategoryMatchRequest
 from ._category_match_response_body import CategoryMatchResponseBody
 from ._category_match_response import CategoryMatchResponse
+from ._delete_display_knowledge_request import DeleteDisplayKnowledgeRequest
+from ._delete_display_knowledge_shrink_request import DeleteDisplayKnowledgeShrinkRequest
+from ._delete_display_knowledge_response_body import DeleteDisplayKnowledgeResponseBody
+from ._delete_display_knowledge_response import DeleteDisplayKnowledgeResponse
 from ._didui_area_deduction_request import DiduiAreaDeductionRequest
 from ._didui_area_deduction_shrink_request import DiduiAreaDeductionShrinkRequest
 from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBody
@@ -130,6 +138,10 @@ from ._product_hotspot_detection_response import ProductHotspotDetectionResponse
 from ._query_async_task_result_request import QueryAsyncTaskResultRequest
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBody
 from ._query_async_task_result_response import QueryAsyncTaskResultResponse
+from ._query_display_knowledge_request import QueryDisplayKnowledgeRequest
+from ._query_display_knowledge_shrink_request import QueryDisplayKnowledgeShrinkRequest
+from ._query_display_knowledge_response_body import QueryDisplayKnowledgeResponseBody
+from ._query_display_knowledge_response import QueryDisplayKnowledgeResponse
 from ._size_chart_detect_request import SizeChartDetectRequest
 from ._size_chart_detect_response_body import SizeChartDetectResponseBody
 from ._size_chart_detect_response import SizeChartDetectResponse
@@ -158,6 +170,10 @@ from ._text_translate_async_request import TextTranslateAsyncRequest
 from ._text_translate_async_shrink_request import TextTranslateAsyncShrinkRequest
 from ._text_translate_async_response_body import TextTranslateAsyncResponseBody
 from ._text_translate_async_response import TextTranslateAsyncResponse
+from ._update_display_knowledge_request import UpdateDisplayKnowledgeRequest
+from ._update_display_knowledge_shrink_request import UpdateDisplayKnowledgeShrinkRequest
+from ._update_display_knowledge_response_body import UpdateDisplayKnowledgeResponseBody
+from ._update_display_knowledge_response import UpdateDisplayKnowledgeResponse
 from ._video_generation_request import VideoGenerationRequest
 from ._video_generation_shrink_request import VideoGenerationShrinkRequest
 from ._video_generation_response_body import VideoGenerationResponseBody
@@ -173,6 +189,9 @@ from ._vision_flow_request import VisionFlowRequest
 from ._vision_flow_shrink_request import VisionFlowShrinkRequest
 from ._vision_flow_response_body import VisionFlowResponseBody
 from ._vision_flow_response import VisionFlowResponse
+from ._add_display_knowledge_request import AddDisplayKnowledgeRequestRecords
+from ._add_display_knowledge_response_body import AddDisplayKnowledgeResponseBodyDataResults
+from ._add_display_knowledge_response_body import AddDisplayKnowledgeResponseBodyData
 from ._ai_try_on_response_body import AiTryOnResponseBodyDataUsageMap
 from ._ai_try_on_response_body import AiTryOnResponseBodyData
 from ._asset_optimize_lite_response_body import AssetOptimizeLiteResponseBodyData
@@ -181,6 +200,8 @@ from ._category_attribute_match_response_body import CategoryAttributeMatchRespo
 from ._category_attribute_match_response_body import CategoryAttributeMatchResponseBodyDataUsageMap
 from ._category_attribute_match_response_body import CategoryAttributeMatchResponseBodyData
 from ._category_match_response_body import CategoryMatchResponseBodyData
+from ._delete_display_knowledge_response_body import DeleteDisplayKnowledgeResponseBodyDataResults
+from ._delete_display_knowledge_response_body import DeleteDisplayKnowledgeResponseBodyData
 from ._didui_area_deduction_request import DiduiAreaDeductionRequestProductsBoxes
 from ._didui_area_deduction_request import DiduiAreaDeductionRequestProducts
 from ._didui_area_deduction_response_body import DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel
@@ -270,6 +291,8 @@ from ._product_hotspot_detection_response_body import ProductHotspotDetectionRes
 from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBodyDataProducts
 from ._product_hotspot_detection_response_body import ProductHotspotDetectionResponseBodyData
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBodyData
+from ._query_display_knowledge_response_body import QueryDisplayKnowledgeResponseBodyDataRecords
+from ._query_display_knowledge_response_body import QueryDisplayKnowledgeResponseBodyData
 from ._size_chart_detect_response_body import SizeChartDetectResponseBodyData
 from ._size_chart_extract_response_body import SizeChartExtractResponseBodyData
 from ._size_chart_extract_async_response_body import SizeChartExtractAsyncResponseBodyData
@@ -283,6 +306,9 @@ from ._text_correct_response_body import TextCorrectResponseBodyData
 from ._text_translate_response_body import TextTranslateResponseBodyDataTranslations
 from ._text_translate_response_body import TextTranslateResponseBodyData
 from ._text_translate_async_response_body import TextTranslateAsyncResponseBodyData
+from ._update_display_knowledge_request import UpdateDisplayKnowledgeRequestRecords
+from ._update_display_knowledge_response_body import UpdateDisplayKnowledgeResponseBodyDataResults
+from ._update_display_knowledge_response_body import UpdateDisplayKnowledgeResponseBodyData
 from ._video_generation_request import VideoGenerationRequestInputAssetBindings
 from ._video_generation_request import VideoGenerationRequestInput
 from ._video_generation_request import VideoGenerationRequestIntent
@@ -293,6 +319,10 @@ from ._virtual_try_on_response_body import VirtualTryOnResponseBodyData
 from ._vision_flow_response_body import VisionFlowResponseBodyData
 
 __all__ = [
+    AddDisplayKnowledgeRequest,
+    AddDisplayKnowledgeShrinkRequest,
+    AddDisplayKnowledgeResponseBody,
+    AddDisplayKnowledgeResponse,
     AiTryOnRequest,
     AiTryOnResponseBody,
     AiTryOnResponse,
@@ -310,6 +340,10 @@ __all__ = [
     CategoryMatchRequest,
     CategoryMatchResponseBody,
     CategoryMatchResponse,
+    DeleteDisplayKnowledgeRequest,
+    DeleteDisplayKnowledgeShrinkRequest,
+    DeleteDisplayKnowledgeResponseBody,
+    DeleteDisplayKnowledgeResponse,
     DiduiAreaDeductionRequest,
     DiduiAreaDeductionShrinkRequest,
     DiduiAreaDeductionResponseBody,
@@ -421,6 +455,10 @@ __all__ = [
     QueryAsyncTaskResultRequest,
     QueryAsyncTaskResultResponseBody,
     QueryAsyncTaskResultResponse,
+    QueryDisplayKnowledgeRequest,
+    QueryDisplayKnowledgeShrinkRequest,
+    QueryDisplayKnowledgeResponseBody,
+    QueryDisplayKnowledgeResponse,
     SizeChartDetectRequest,
     SizeChartDetectResponseBody,
     SizeChartDetectResponse,
@@ -449,6 +487,10 @@ __all__ = [
     TextTranslateAsyncShrinkRequest,
     TextTranslateAsyncResponseBody,
     TextTranslateAsyncResponse,
+    UpdateDisplayKnowledgeRequest,
+    UpdateDisplayKnowledgeShrinkRequest,
+    UpdateDisplayKnowledgeResponseBody,
+    UpdateDisplayKnowledgeResponse,
     VideoGenerationRequest,
     VideoGenerationShrinkRequest,
     VideoGenerationResponseBody,
@@ -464,6 +506,9 @@ __all__ = [
     VisionFlowShrinkRequest,
     VisionFlowResponseBody,
     VisionFlowResponse,
+    AddDisplayKnowledgeRequestRecords,
+    AddDisplayKnowledgeResponseBodyDataResults,
+    AddDisplayKnowledgeResponseBodyData,
     AiTryOnResponseBodyDataUsageMap,
     AiTryOnResponseBodyData,
     AssetOptimizeLiteResponseBodyData,
@@ -472,6 +517,8 @@ __all__ = [
     CategoryAttributeMatchResponseBodyDataUsageMap,
     CategoryAttributeMatchResponseBodyData,
     CategoryMatchResponseBodyData,
+    DeleteDisplayKnowledgeResponseBodyDataResults,
+    DeleteDisplayKnowledgeResponseBodyData,
     DiduiAreaDeductionRequestProductsBoxes,
     DiduiAreaDeductionRequestProducts,
     DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel,
@@ -561,6 +608,8 @@ __all__ = [
     ProductHotspotDetectionResponseBodyDataProducts,
     ProductHotspotDetectionResponseBodyData,
     QueryAsyncTaskResultResponseBodyData,
+    QueryDisplayKnowledgeResponseBodyDataRecords,
+    QueryDisplayKnowledgeResponseBodyData,
     SizeChartDetectResponseBodyData,
     SizeChartExtractResponseBodyData,
     SizeChartExtractAsyncResponseBodyData,
@@ -574,6 +623,9 @@ __all__ = [
     TextTranslateResponseBodyDataTranslations,
     TextTranslateResponseBodyData,
     TextTranslateAsyncResponseBodyData,
+    UpdateDisplayKnowledgeRequestRecords,
+    UpdateDisplayKnowledgeResponseBodyDataResults,
+    UpdateDisplayKnowledgeResponseBodyData,
     VideoGenerationRequestInputAssetBindings,
     VideoGenerationRequestInput,
     VideoGenerationRequestIntent,
