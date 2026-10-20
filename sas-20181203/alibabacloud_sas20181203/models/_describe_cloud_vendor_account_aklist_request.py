@@ -16,29 +16,42 @@ class DescribeCloudVendorAccountAKListRequest(DaraModel):
         vendor: str = None,
         vendor_auth_alias: str = None,
     ):
-        # The unique ID of the AccessKey pair.
+        # The unique ID of the AK.
         self.auth_ids = auth_ids
-        # The page number. Default value: 1.
+        # The page number of the current page during paging. Default value: 1.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page. Default value: 20.
+        # The maximum number of entries to return on each page during paging. Default value: 20.
         self.page_size = page_size
-        # The status of the AccessKey pair. Valid values:
+        # The status of the AK. Valid values:
         # 
-        # *   **0**: enabled
-        # *   **1**: disabled
+        # - **0**: Enabled.
+        # - **1**: Disabled.
         self.status = status
-        # The username of the sub-account of the cloud service provider to which the AccessKey pair belongs.
+        # The username of the sub-account of the cloud service provider to which the AK belongs.
         self.sub_account_name = sub_account_name
-        # Cloud asset vendor. Values:
-        #  - **Tencent**: Tencent Cloud 
-        # - **AWS**: Amazon Web Services
+        # The cloud service provider. Valid values:
+        # - **Tencent**: Tencent Cloud.
+        # - **HUAWEICLOUD**: Huawei Cloud.
+        # - **Azure**: Azure.
+        # - **AWS**: AWS.
+        # - **VOLCENGINE**: Volcengine.
+        # - **google**: Google Cloud.
+        # - **CHAITIN**: Chaitin Tech.
+        # - **FORTINET**: Fortinet.
+        # - **THREATBOOK**: ThreatBook.
+        # - **KingsoftCloud**: Kingsoft Cloud.
+        # - **UCloud**: UCloud.
+        # - **BaiduCloud**: Baidu AI Cloud.
+        # - **WIZ**: Wiz.
+        # - **OracleCloud**: Oracle Cloud.
+        # - **StateCloud**: CTYun.
         self.vendor = vendor
-        # The name of the AccessKey pair.
+        # The name of the AK account.
         self.vendor_auth_alias = vendor_auth_alias
 
     def validate(self):

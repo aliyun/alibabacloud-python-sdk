@@ -10,13 +10,13 @@ class GetContainerDefenseRuleDetailRequest(DaraModel):
         lang: str = None,
         rule_id: int = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # Specifies the language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The rule ID.
-        # > You can call the [ListContainerDefenseRule](https://help.aliyun.com/document_detail/2590599.html) operation to obtain this parameter.
+        # > You can call the [ListContainerDefenseRule](https://help.aliyun.com/document_detail/2590599.html) API operation to obtain this parameter.
         self.rule_id = rule_id
 
     def validate(self):

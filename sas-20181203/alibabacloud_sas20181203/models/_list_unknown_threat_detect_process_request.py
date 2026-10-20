@@ -25,15 +25,15 @@ class ListUnknownThreatDetectProcessRequest(DaraModel):
         # - **black**: abnormal process
         # - **white**: normal process
         self.analyze_result = analyze_result
-        # The page number of the current page when using paged query. This is used for paging.
+        # The page number of the current page returned during paging for a paged query.
         self.current_page = current_page
-        # The end of the time range during which the process was first detected. The value is a timestamp in milliseconds.
+        # The end time of the time range during which the process was first detected. The value is a timestamp in milliseconds.
         self.first_time_end = first_time_end
-        # The start of the time range during which the process was first detected. The value is a timestamp in milliseconds.
+        # The start time of the time range during which the process was first detected. The value is a timestamp in milliseconds.
         self.first_time_start = first_time_start
         # The MD5 hash of the file.
         self.md_5 = md_5
-        # The maximum number of entries per page when using paged query. This is used for paging.
+        # The maximum number of entries to return on each page during paging for a paged query.
         self.page_size = page_size
         # The file path.
         self.path = path
@@ -43,7 +43,7 @@ class ListUnknownThreatDetectProcessRequest(DaraModel):
         self.remark = remark
         # The SHA-256 hash of the file.
         self.sha_256 = sha_256
-        # The label.
+        # The tag.
         self.tag = tag
         # The UUID of the server to query.
         self.uuid = uuid

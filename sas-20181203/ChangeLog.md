@@ -1,3 +1,7 @@
+2026-10-20 Version: 10.3.2
+- Update API DescribeFieldStatistics: add response parameters Body.GroupedFields.OracleInstanceCount.
+
+
 2026-10-15 Version: 10.3.1
 - Update API DescribeVersionConfig: add response parameters Body.PostPaidFirstTrialTime.
 - Update API DescribeVersionConfig: add response parameters Body.PostPaidLastTrialTime.

@@ -72,11 +72,11 @@ class ListUnknownThreatDetectProcessResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries on the current page.
+        # The number of entries returned on the current page.
         self.count = count
-        # The page number of the current page in a paged query. This is used for paging.
+        # The page number of the current page returned during paging for a paged query.
         self.current_page = current_page
-        # The maximum number of entries per page in a paged query. This is used for paging.
+        # The maximum number of entries returned on each page during paging for a paged query.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -135,13 +135,15 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
     ):
         # The analysis result. Valid values:
         # 
-        # - **black**: Malicious process.
-        # - **white**: Normal process.
-        # - **abnormal**: Abnormal process.
+        # - **black**: malicious process
+        # - **white**: normal process
+        # - **abnormal**: abnormal process
         self.analyze_result = analyze_result
+        # The English description of the process behavior.
         self.explanation_en = explanation_en
+        # The Chinese description of the process behavior.
         self.explanation_zh = explanation_zh
-        # The timestamp when the process was first detected.
+        # The timestamp of the first occurrence.
         self.first_time = first_time
         # The MD5 hash of the file.
         self.md_5 = md_5
@@ -149,11 +151,11 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
         self.process_id = process_id
         # The process path.
         self.process_path = process_path
-        # The remarks.
+        # The remark.
         self.remark = remark
         # The SHA-256 hash of the file.
         self.sha_256 = sha_256
-        # The process labels.
+        # The process tags.
         self.tags = tags
 
     def validate(self):
@@ -244,9 +246,9 @@ class ListUnknownThreatDetectProcessResponseBodyDataTags(DaraModel):
         tag_en: str = None,
         tag_zh: str = None,
     ):
-        # The English label of the process.
+        # The English tag of the process.
         self.tag_en = tag_en
-        # The Chinese label of the process.
+        # The Chinese tag of the process.
         self.tag_zh = tag_zh
 
     def validate(self):

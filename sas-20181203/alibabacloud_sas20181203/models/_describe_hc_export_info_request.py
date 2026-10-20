@@ -9,7 +9,7 @@ class DescribeHcExportInfoRequest(DaraModel):
         self,
         export_id: int = None,
     ):
-        # The ID of the export task. Call the [ExportWarning](https://help.aliyun.com/document_detail/425092.html) operation to obtain the task ID (**Id**).
+        # The ID of the export task. You must call the [ExportWarning](https://help.aliyun.com/document_detail/425092.html) operation to obtain the task ID (**Id**).
         self.export_id = export_id
 
     def validate(self):
