@@ -2450,6 +2450,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_copilot_history_with_options_async(request, headers, runtime)
 
+    def get_cve_hotfix_with_options(
+        self,
+        request: main_models.GetCveHotfixRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCveHotfixResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cve_ids):
+            body['cveIds'] = request.cve_ids
+        if not DaraCore.is_null(request.kernel_versions):
+            body['kernelVersions'] = request.kernel_versions
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCveHotfix',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfixManager/hotfixes/cve',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCveHotfixResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cve_hotfix_with_options_async(
+        self,
+        request: main_models.GetCveHotfixRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCveHotfixResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cve_ids):
+            body['cveIds'] = request.cve_ids
+        if not DaraCore.is_null(request.kernel_versions):
+            body['kernelVersions'] = request.kernel_versions
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCveHotfix',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/hotfixManager/hotfixes/cve',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCveHotfixResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cve_hotfix(
+        self,
+        request: main_models.GetCveHotfixRequest,
+    ) -> main_models.GetCveHotfixResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_cve_hotfix_with_options(request, headers, runtime)
+
+    async def get_cve_hotfix_async(
+        self,
+        request: main_models.GetCveHotfixRequest,
+    ) -> main_models.GetCveHotfixResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_cve_hotfix_with_options_async(request, headers, runtime)
+
     def get_diagnosis_result_with_options(
         self,
         request: main_models.GetDiagnosisResultRequest,

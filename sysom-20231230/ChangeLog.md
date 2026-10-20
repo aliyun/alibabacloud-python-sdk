@@ -1,3 +1,7 @@
+2026-10-20 Version: 3.1.0
+- Support API GetCveHotfix.
+
+
 2026-10-15 Version: 3.0.1
 - Generated python 2023-12-30 for SysOM.
 

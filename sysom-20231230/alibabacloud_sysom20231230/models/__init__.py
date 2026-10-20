@@ -83,6 +83,9 @@ from ._get_config_by_name_response import GetConfigByNameResponse
 from ._get_copilot_history_request import GetCopilotHistoryRequest
 from ._get_copilot_history_response_body import GetCopilotHistoryResponseBody
 from ._get_copilot_history_response import GetCopilotHistoryResponse
+from ._get_cve_hotfix_request import GetCveHotfixRequest
+from ._get_cve_hotfix_response_body import GetCveHotfixResponseBody
+from ._get_cve_hotfix_response import GetCveHotfixResponse
 from ._get_diagnosis_result_request import GetDiagnosisResultRequest
 from ._get_diagnosis_result_response_body import GetDiagnosisResultResponseBody
 from ._get_diagnosis_result_response import GetDiagnosisResultResponse
@@ -316,6 +319,9 @@ from ._get_alert_destination_response_body import GetAlertDestinationResponseBod
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyDataStrategy
 from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyData
 from ._get_copilot_history_response_body import GetCopilotHistoryResponseBodyData
+from ._get_cve_hotfix_response_body import GetCveHotfixResponseBodyDataHotfixPackages
+from ._get_cve_hotfix_response_body import GetCveHotfixResponseBodyDataHotfix
+from ._get_cve_hotfix_response_body import GetCveHotfixResponseBodyData
 from ._get_diagnosis_result_response_body import GetDiagnosisResultResponseBodyData
 from ._get_gpu_cluster_list_alarm_record_response_body import GetGpuClusterListAlarmRecordResponseBodyData
 from ._get_gpu_cluster_topology_response_body import GetGpuClusterTopologyResponseBodyDataData
@@ -492,6 +498,9 @@ __all__ = [
     GetCopilotHistoryRequest,
     GetCopilotHistoryResponseBody,
     GetCopilotHistoryResponse,
+    GetCveHotfixRequest,
+    GetCveHotfixResponseBody,
+    GetCveHotfixResponse,
     GetDiagnosisResultRequest,
     GetDiagnosisResultResponseBody,
     GetDiagnosisResultResponse,
@@ -725,6 +734,9 @@ __all__ = [
     GetAlertStrategyResponseBodyDataStrategy,
     GetAlertStrategyResponseBodyData,
     GetCopilotHistoryResponseBodyData,
+    GetCveHotfixResponseBodyDataHotfixPackages,
+    GetCveHotfixResponseBodyDataHotfix,
+    GetCveHotfixResponseBodyData,
     GetDiagnosisResultResponseBodyData,
     GetGpuClusterListAlarmRecordResponseBodyData,
     GetGpuClusterTopologyResponseBodyDataData,
