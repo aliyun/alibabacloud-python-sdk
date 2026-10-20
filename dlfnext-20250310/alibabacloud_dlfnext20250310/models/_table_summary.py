@@ -14,6 +14,7 @@ class TableSummary(DaraModel):
         generated_date: str = None,
         last_access_time: int = None,
         last_requester: str = None,
+        latest_snapshot_data_size_in_bytes: int = None,
         obj_type_archive_size: int = None,
         obj_type_cold_archive_size: int = None,
         obj_type_ia_size: int = None,
@@ -36,52 +37,57 @@ class TableSummary(DaraModel):
         unaccessed_std_partition_count_30d: int = None,
         updated_at: int = None,
     ):
-        # The timestamp, in milliseconds, indicating when the table was created.
+        # The table creation time.
         self.created_at = created_at
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
-        # The generation date of the storage summary.
+        # The update date of the storage overview data.
         self.generated_date = generated_date
-        # The timestamp, in milliseconds, indicating when the table data was last accessed.
+        # The last data access time of the table.
         self.last_access_time = last_access_time
+        # The last requester.
         self.last_requester = last_requester
-        # The total size of data files in the Archive storage class, in bytes.
+        # The storage size of the latest snapshot, in bytes.
+        self.latest_snapshot_data_size_in_bytes = latest_snapshot_data_size_in_bytes
+        # The storage size of archive data files.
         self.obj_type_archive_size = obj_type_archive_size
-        # The total size of data files in the Cold Archive storage class, in bytes.
+        # The storage size of cold archive data files.
         self.obj_type_cold_archive_size = obj_type_cold_archive_size
-        # The total size of data files in the Infrequent Access storage class, in bytes.
+        # The storage size of infrequent access data files.
         self.obj_type_ia_size = obj_type_ia_size
-        # The total size of data files in the Standard storage class, in bytes.
+        # The storage size of standard data files.
         self.obj_type_standard_size = obj_type_standard_size
-        # The total number of partitions in the table.
+        # The total number of partitions.
         self.partition_count = partition_count
-        # The storage location of the table.
+        # The storage location.
         self.path = path
         # The storage action parameters.
         self.storage_action_params = storage_action_params
+        # The storage class transition time.
         self.storage_action_timestamp = storage_action_timestamp
         # The storage class.
         self.storage_class = storage_class
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
+        # The top requester of the day.
         self.top_requester = top_requester
-        # Total file access count.
+        # The total number of file accesses.
         self.total_file_access_num = total_file_access_num
-        # Total file access count over the last 30 days.
+        # The total number of file accesses in the last 7 days.
         self.total_file_access_num_30d = total_file_access_num_30d
-        # Total file access count over the last 7 days.
+        # The total number of file accesses in the last 30 days.
         self.total_file_access_num_7d = total_file_access_num_7d
-        # The total number of files in the table.
+        # The total number of table files.
         self.total_file_count = total_file_count
-        # The total storage capacity of the table, in bytes.
+        # The table storage capacity, in bytes.
         self.total_file_size_in_bytes = total_file_size_in_bytes
-        # The total number of metadata files.
+        # The number of metadata files.
         self.total_meta_file_count = total_meta_file_count
-        # The total size of metadata files, in bytes.
+        # The storage size of metadata files.
         self.total_meta_size_in_bytes = total_meta_size_in_bytes
-        # The number of Standard or Infrequent Access partitions unaccessed in the last 180 days.
+        # The number of standard or infrequent access partitions that have not been accessed in the last 180 days.
         self.unaccessed_std_ia_partition_count_180d = unaccessed_std_ia_partition_count_180d
-        # The number of Standard partitions unaccessed in the last 30 days.
+        # The number of standard storage partitions that have not been accessed in the last 30 days.
         self.unaccessed_std_partition_count_30d = unaccessed_std_partition_count_30d
         # The update time.
         self.updated_at = updated_at
@@ -108,6 +114,9 @@ class TableSummary(DaraModel):
 
         if self.last_requester is not None:
             result['lastRequester'] = self.last_requester
+
+        if self.latest_snapshot_data_size_in_bytes is not None:
+            result['latestSnapshotDataSizeInBytes'] = self.latest_snapshot_data_size_in_bytes
 
         if self.obj_type_archive_size is not None:
             result['objTypeArchiveSize'] = self.obj_type_archive_size
@@ -190,6 +199,9 @@ class TableSummary(DaraModel):
 
         if m.get('lastRequester') is not None:
             self.last_requester = m.get('lastRequester')
+
+        if m.get('latestSnapshotDataSizeInBytes') is not None:
+            self.latest_snapshot_data_size_in_bytes = m.get('latestSnapshotDataSizeInBytes')
 
         if m.get('objTypeArchiveSize') is not None:
             self.obj_type_archive_size = m.get('objTypeArchiveSize')

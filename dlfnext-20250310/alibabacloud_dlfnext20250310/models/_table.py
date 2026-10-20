@@ -26,33 +26,39 @@ class Table(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
-        # The time when the table was created.
+        # The creation time.
         self.created_at = created_at
-        # The creator of the table.
+        # The creator.
         self.created_by = created_by
+        # The Iceberg table metadata.
         self.iceberg_table_metadata = iceberg_table_metadata
-        # The UUID of the table.
+        # The table UUID.
         self.id = id
-        # Indicates whether the table is an external table.
+        # Specifies whether the table is an external table.
         self.is_external = is_external
-        # The name of the table.
+        # The table name.
         self.name = name
-        # The owner of the table.
+        # The table owner.
         self.owner = owner
-        # The path of the table.
+        # The table path.
         self.path = path
         # The table schema information.
         self.schema = schema
-        # The ID of the table schema.
+        # The table schema ID.
         self.schema_id = schema_id
+        # The table status. A value of active indicates that the table is normal. A value of retained indicates that the table is soft-deleted but still retained in the recycle bin. A value of releasing indicates that the table is about to be permanently purged.
         self.status = status
+        # The storage class transition status.
         self.storage_action = storage_action
+        # The storage class transition time.
         self.storage_action_timestamp = storage_action_timestamp
+        # The storage class.
         self.storage_class = storage_class
+        # The type.
         self.type = type
-        # The time when the table was last updated.
+        # The update time.
         self.updated_at = updated_at
-        # The user who last updated the table.
+        # The updater.
         self.updated_by = updated_by
 
     def validate(self):

@@ -9,7 +9,7 @@ class GetCatalogSummaryRequest(DaraModel):
         self,
         date: str = None,
     ):
-        # The date of the storage overview.
+        # The date of the storage overview, in the YYYY-MM-DD format.
         self.date = date
 
     def validate(self):

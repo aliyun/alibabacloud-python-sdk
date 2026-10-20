@@ -15,6 +15,7 @@ class FunctionChange(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The change type.
         self.action = action
         # required in UpdateFunctionComment
         self.comment = comment

@@ -11,9 +11,9 @@ class ListPartitionSummariesRequest(DaraModel):
         page_token: str = None,
         partition_name_pattern: str = None,
     ):
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The token for the next page of results. If the response does not include this token, pass an empty string ("").
+        # The pagination token used to retrieve the next page of data. If it is not provided in the response, pass an empty string ("") or an empty character (\\"\\").
         self.page_token = page_token
         # The partition name pattern.
         self.partition_name_pattern = partition_name_pattern

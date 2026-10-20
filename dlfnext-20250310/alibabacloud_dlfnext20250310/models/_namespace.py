@@ -19,14 +19,23 @@ class Namespace(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
+        # The creation time, represented as a UNIX timestamp in milliseconds.
         self.created_at = created_at
+        # The user who created the namespace.
         self.created_by = created_by
+        # The namespace ID.
         self.id = id
+        # The storage path of the namespace.
         self.location = location
+        # The name of the namespace.
         self.name = name
+        # The extension options for the namespace.
         self.options = options
+        # The namespace owner.
         self.owner = owner
+        # The update time, represented as a UNIX timestamp in milliseconds.
         self.updated_at = updated_at
+        # The user who updated the namespace.
         self.updated_by = updated_by
 
     def validate(self):

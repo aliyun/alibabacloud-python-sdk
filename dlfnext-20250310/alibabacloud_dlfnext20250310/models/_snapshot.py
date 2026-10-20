@@ -31,26 +31,47 @@ class Snapshot(DaraModel):
         version: int = None,
         watermark: int = None,
     ):
+        # The file name of the base manifest list.
         self.base_manifest_list = base_manifest_list
+        # The file name of the manifest list that records all changelogs generated for the snapshot.
         self.changelog_manifest_list = changelog_manifest_list
+        # The number of changelog records generated for the snapshot.
         self.changelog_record_count = changelog_record_count
+        # The transaction ID of the streaming write.
         self.commit_identifier = commit_identifier
+        # The streaming write type. Valid values: APPEND, COMPACT, OVERWRITE, and ANALYZE.
         self.commit_kind = commit_kind
+        # The commit user, which is typically a UUID used to resume streaming writes.
         self.commit_user = commit_user
+        # The file name of the manifest list that records all new changes in the snapshot.
         self.delta_manifest_list = delta_manifest_list
+        # The number of new change records in the snapshot.
         self.delta_record_count = delta_record_count
+        # The snapshot ID.
         self.id = id
+        # The string representation of the snapshot ID.
         self.id_string = id_string
+        # The file name of the manifest that records all index files of the table.
         self.index_manifest = index_manifest
+        # The log offsets at the time of the commit.
         self.log_offsets = log_offsets
+        # The string representation of the parent snapshot ID.
         self.parent_id_string = parent_id_string
+        # The schema ID of the table when the snapshot was generated.
         self.schema_id = schema_id
+        # The snapshot sequence number.
         self.sequence_number = sequence_number
+        # The file name of the table statistics information.
         self.statistics = statistics
+        # The summary.
         self.summary = summary
+        # The commit time, which is a UNIX timestamp in milliseconds.
         self.time_millis = time_millis
+        # The total number of records for all changes in the snapshot.
         self.total_record_count = total_record_count
+        # The file format version of the snapshot. The current version is 3.
         self.version = version
+        # The watermark value.
         self.watermark = watermark
 
     def validate(self):

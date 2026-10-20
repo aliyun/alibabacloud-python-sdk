@@ -11,8 +11,11 @@ class FullInstant(DaraModel):
         tag_name: str = None,
         type: str = None,
     ):
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
+        # The tag name.
         self.tag_name = tag_name
+        # The location method type.
         self.type = type
 
     def validate(self):

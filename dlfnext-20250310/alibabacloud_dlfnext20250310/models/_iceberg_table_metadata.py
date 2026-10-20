@@ -16,12 +16,13 @@ class IcebergTableMetadata(DaraModel):
         partition_fields: List[main_models.IcebergPartitionField] = None,
         properties: Dict[str, str] = None,
     ):
-        # The latest snapshot of the Iceberg table.
+        # The latest Iceberg snapshot.
         self.current_snapshot = current_snapshot
-        # The fields.
+        # The column fields.
         self.fields = fields
+        # The list of field IDs for the Iceberg identifier fields. The array elements are the integer IDs of the identifier fields in the Iceberg schema.
         self.identifier_field_ids = identifier_field_ids
-        # The partition fields.
+        # The list of partition fields.
         self.partition_fields = partition_fields
         # The properties.
         self.properties = properties

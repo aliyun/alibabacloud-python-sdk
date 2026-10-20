@@ -15,7 +15,7 @@ class ListDatabaseDetailsResponseBody(DaraModel):
     ):
         # The list of databases.
         self.database_details = database_details
-        # The pagination token used to retrieve the next page of results. A value of null indicates that the current page is the last page.
+        # The pagination token used to retrieve the next page of results. A null value indicates that the current query returns the last page of results.
         self.next_page_token = next_page_token
 
     def validate(self):

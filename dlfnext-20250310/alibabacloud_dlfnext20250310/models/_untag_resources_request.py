@@ -14,17 +14,17 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the resources. This parameter and TagKey are mutually exclusive.
+        # Specifies whether to delete all tags from the resources. This parameter and the TagKey parameter are mutually exclusive.
         self.all = all
-        # The list of data catalog IDs from which to remove tags. The value is a JSON array. Maximum: 50.
+        # The list of resource IDs. You can specify up to 50 resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type. Valid value: CATALOGRESOURCE.
+        # The resource type. Valid value: catalog.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tag keys to remove. The value is a JSON array. This parameter and All are mutually exclusive.
+        # The list of tag keys. This parameter and the All parameter are mutually exclusive.
         self.tag_key = tag_key
 
     def validate(self):

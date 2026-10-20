@@ -12,7 +12,9 @@ class TransformInput(DaraModel):
         input: Any = None,
         type: str = None,
     ):
+        # The input content.
         self.input = input
+        # The input type.
         self.type = type
 
     def validate(self):

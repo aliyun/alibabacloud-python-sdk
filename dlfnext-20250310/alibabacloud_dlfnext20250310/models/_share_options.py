@@ -12,9 +12,13 @@ class ShareOptions(DaraModel):
         share_resource_size_limit: int = None,
         share_size_limit: int = None,
     ):
+        # The maximum number of catalogs.
         self.catalog_size_limit = catalog_size_limit
+        # The maximum number of recipients.
         self.receiver_size_limit = receiver_size_limit
+        # The maximum shared resource count.
         self.share_resource_size_limit = share_resource_size_limit
+        # The maximum number of shares.
         self.share_size_limit = share_size_limit
 
     def validate(self):

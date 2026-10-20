@@ -12,7 +12,7 @@ class TagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The resource ID, which is the data catalog ID.
+        # The resource ID, which is the catalog ID.
         self.resource_id = resource_id
         # The resource type, which is fixed to CATALOGRESOURCE.
         self.resource_type = resource_type

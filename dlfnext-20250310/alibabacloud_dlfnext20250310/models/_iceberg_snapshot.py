@@ -20,15 +20,17 @@ class IcebergSnapshot(DaraModel):
         summary: Dict[str, str] = None,
         timestamp_millis: int = None,
     ):
-        # Number of added rows.
+        # The number of added rows.
         self.added_rows = added_rows
-        # The snapshot ID.
+        # id
         self.id = id
+        # The string representation of the snapshot ID.
         self.id_string = id_string
         # The operation.
         self.operation = operation
-        # Parent ID.
+        # The parent ID.
         self.parent_id = parent_id
+        # The string representation of the parent snapshot ID.
         self.parent_id_string = parent_id_string
         # The schema ID.
         self.schema_id = schema_id

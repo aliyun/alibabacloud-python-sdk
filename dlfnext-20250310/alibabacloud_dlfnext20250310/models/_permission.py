@@ -24,19 +24,25 @@ class Permission(DaraModel):
     ):
         # The access type.
         self.access = access
+        # The column masking transformation rules mapped by column name. The key is the column name, and the value is the corresponding masking transformation configuration.
         self.column_masking = column_masking
+        # The custom columns.
         self.columns = columns
         # The database name.
         self.database = database
+        # The expiration time.
         self.expire_time = expire_time
+        # The function name.
         self.function = function
         # The user resource descriptor.
         self.principal = principal
         # The permission resource type.
         self.resource_type = resource_type
+        # The row filter.
         self.row_filter = row_filter
         # The table name.
         self.table = table
+        # The view name.
         self.view = view
 
     def validate(self):
@@ -139,7 +145,9 @@ class PermissionColumns(DaraModel):
         column_names: List[str] = None,
         excluded_column_names: List[str] = None,
     ):
+        # The list of included column names.
         self.column_names = column_names
+        # The list of excluded column names.
         self.excluded_column_names = excluded_column_names
 
     def validate(self):

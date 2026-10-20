@@ -15,9 +15,13 @@ class Transform(DaraModel):
         inputs: List[main_models.TransformInput] = None,
         name: str = None,
     ):
+        # The target data type.
         self.cast_type = cast_type
+        # The field reference object.
         self.field_ref = field_ref
+        # The input parameters.
         self.inputs = inputs
+        # The name of the transformation function.
         self.name = name
 
     def validate(self):

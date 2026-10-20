@@ -20,17 +20,17 @@ class GetQueryResponseBody(DaraModel):
     ):
         # The completion time of the task.
         self.completed_at = completed_at
-        # The creation time of the task.
+        # The creation time of the task, which is a UNIX timestamp in milliseconds.
         self.created_at = created_at
-        # The query ID, used for subsequent polling of results.
+        # The query ID used to poll for subsequent results.
         self.query_id = query_id
-        # The result list.
+        # The list of results.
         self.results = results
-        # The SQL text. Multiple statements separated by semicolons are supported and executed sequentially within the same session.
+        # The SQL text, which supports multiple statements separated by semicolons that are executed sequentially within the same session.
         self.sql = sql
-        # The task running status.
+        # The running status of the task.
         self.status = status
-        # The execution specifications. Default value: standard.
+        # The execution tier. Default value: standard.
         self.tier = tier
 
     def validate(self):

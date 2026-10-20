@@ -10,7 +10,9 @@ class RowFilter(DaraModel):
         expression: str = None,
         predicate: str = None,
     ):
+        # The expression.
         self.expression = expression
+        # The predicate.
         self.predicate = predicate
 
     def validate(self):

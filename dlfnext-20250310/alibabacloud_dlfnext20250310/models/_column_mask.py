@@ -10,7 +10,9 @@ class ColumnMask(DaraModel):
         expression: str = None,
         transform: str = None,
     ):
+        # The column masking expression.
         self.expression = expression
+        # The column masking transform method.
         self.transform = transform
 
     def validate(self):

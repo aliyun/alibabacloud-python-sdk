@@ -24,18 +24,31 @@ class Function(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
+        # The comment information.
         self.comment = comment
+        # The creation time.
         self.created_at = created_at
+        # The creator.
         self.created_by = created_by
+        # The function metadata definitions.
         self.definitions = definitions
+        # Specifies whether the same input always returns the same output.
         self.deterministic = deterministic
+        # ID
         self.id = id
+        # The field input parameters.
         self.input_params = input_params
+        # The function name.
         self.name = name
+        # The extension options.
         self.options = options
+        # The owner.
         self.owner = owner
+        # The return fields of the function.
         self.return_params = return_params
+        # The update time.
         self.updated_at = updated_at
+        # The updater.
         self.updated_by = updated_by
 
     def validate(self):

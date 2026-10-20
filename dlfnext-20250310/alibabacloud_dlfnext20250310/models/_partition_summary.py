@@ -26,37 +26,37 @@ class PartitionSummary(DaraModel):
         total_file_size_in_bytes: int = None,
         updated_at: int = None,
     ):
-        # The creation timestamp for the partition.
+        # The partition creation time.
         self.created_at = created_at
-        # The name of the database.
+        # The database name.
         self.database_name = database_name
-        # The last access timestamp for the partition\\"s data.
+        # The last data access time.
         self.last_access_time = last_access_time
         # The last requester.
         self.last_requester = last_requester
-        # The name of the partition.
+        # The partition name.
         self.partition_name = partition_name
         # The storage action parameters.
         self.storage_action_params = storage_action_params
-        # The storage action timestamp.
+        # The storage class transition time.
         self.storage_action_timestamp = storage_action_timestamp
         # The storage class.
         self.storage_class = storage_class
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
-        # The top requester.
+        # The top requester of the day.
         self.top_requester = top_requester
-        # Total file access count.
+        # The total number of file accesses.
         self.total_file_access_num = total_file_access_num
-        # Total file access count over the last 30 days.
+        # The total number of file accesses in the last 30 days.
         self.total_file_access_num_30d = total_file_access_num_30d
-        # Total file access count over the last 7 days.
+        # The total number of file accesses in the last 7 days.
         self.total_file_access_num_7d = total_file_access_num_7d
-        # The total number of files in the partition.
+        # The total number of files.
         self.total_file_count = total_file_count
-        # The total size, in bytes, of all files in the partition.
+        # The storage capacity in bytes.
         self.total_file_size_in_bytes = total_file_size_in_bytes
-        # The last update timestamp for the partition.
+        # The last update time.
         self.updated_at = updated_at
 
     def validate(self):

@@ -19,25 +19,25 @@ class TableCompactionHistory(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
-        # The number of files after compaction.
+        # The total number of files after the merge.
         self.after_files_count = after_files_count
-        # The total size of files after compaction.
+        # The total size of the files after the merge.
         self.after_files_size = after_files_size
-        # The number of files before compaction.
+        # The total number of files before the merge.
         self.before_files_count = before_files_count
-        # The creation time of the last file before compaction.
+        # The latest creation time of the files before the merge.
         self.before_files_last_creation_time = before_files_last_creation_time
-        # The total size of files before compaction.
+        # The total size of the files before the merge.
         self.before_files_size = before_files_size
-        # The catalog ID.
+        # The ID of the data catalog.
         self.catalog_id = catalog_id
-        # The compaction commit time.
+        # The commit time.
         self.commit_time = commit_time
-        # The snapshot ID.
+        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The table ID.
+        # The ID of the table.
         self.table_id = table_id
-        # The time when the record was last updated.
+        # The time when the record was updated.
         self.updated_at = updated_at
         # The user who updated the record.
         self.updated_by = updated_by

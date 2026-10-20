@@ -18,24 +18,25 @@ class Share(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
-        # The comment for the share.
+        # The comment information of the share.
         self.comment = comment
-        # The time when the share was created.
+        # The creation time of the share.
         self.created_at = created_at
-        # The user who created the share.
+        # The creator.
         self.created_by = created_by
+        # Specifies whether write operations are allowed on shared resources.
         self.enable_write = enable_write
-        # The resource descriptor of the share owner.
+        # The owner of the share.
         self.owner = owner
-        # The provider\\"s account ID.
+        # The account ID of the provider.
         self.provider_tenant_id = provider_tenant_id
         # The share ID.
         self.share_id = share_id
         # The share name.
         self.share_name = share_name
-        # The time when the share was last updated.
+        # The update time.
         self.updated_at = updated_at
-        # The user who last updated the share.
+        # The updater.
         self.updated_by = updated_by
 
     def validate(self):

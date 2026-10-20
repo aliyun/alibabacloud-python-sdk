@@ -12,9 +12,13 @@ class ErrorResponse(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The name of the resource involved in the error.
         self.resource_name = resource_name
+        # The type of the resource involved in the error.
         self.resource_type = resource_type
 
     def validate(self):

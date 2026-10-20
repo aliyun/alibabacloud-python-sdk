@@ -16,10 +16,15 @@ class Predicate(DaraModel):
         literals: List[Any] = None,
         transform: main_models.Transform = None,
     ):
+        # The list of child nodes.
         self.children = children
+        # The assertion function.
         self.function = function
+        # The assertion type.
         self.kind = kind
+        # The list of literal values.
         self.literals = literals
+        # The transform rule.
         self.transform = transform
 
     def validate(self):

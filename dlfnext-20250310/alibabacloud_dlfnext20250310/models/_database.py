@@ -35,7 +35,9 @@ class Database(DaraModel):
         self.options = options
         # The owner of the database.
         self.owner = owner
+        # The status of the database.
         self.status = status
+        # The number of tables in the database.
         self.table_count = table_count
         # The update time.
         self.updated_at = updated_at

@@ -14,16 +14,17 @@ class ViewChange(DaraModel):
         query: str = None,
         value: str = None,
     ):
+        # The type of the view change operation.
         self.action = action
-        # required in UpdateComment
+        # The view comment. Required when you perform the updateComment operation.
         self.comment = comment
-        # required in AddDialect/UpdateDialect/DropDialect
+        # The dialect used in the view query statement. Required when you perform the addDialect, updateDialect, or dropDialect operation.
         self.dialect = dialect
-        # required in SetOption/RemoveOption
+        # The key of the view property. Required when you perform the setOption or removeOption operation.
         self.key = key
-        # required in AddDialect/UpdateDialect
+        # The view query statement. Required when you perform the addDialect or updateDialect operation.
         self.query = query
-        # required in SetOption
+        # The value of the view property. Required when you perform the setOption operation.
         self.value = value
 
     def validate(self):

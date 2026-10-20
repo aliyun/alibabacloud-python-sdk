@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from ._cache_cluster import CacheCluster
+from ._cache_load_task_info import CacheLoadTaskInfo
 from ._catalog import Catalog
 from ._catalog_summary import CatalogSummary
 from ._catalog_summary_trend import CatalogSummaryTrend
@@ -50,6 +51,7 @@ from ._statement_result import StatementResult
 from ._table import Table
 from ._table_compaction import TableCompaction
 from ._table_compaction_history import TableCompactionHistory
+from ._table_consumer import TableConsumer
 from ._table_snapshot import TableSnapshot
 from ._table_summary import TableSummary
 from ._tag_resource import TagResource
@@ -249,6 +251,7 @@ from ._update_vpc_config_request import UpdateVpcConfigRequestUpdates
 
 __all__ = [
     CacheCluster,
+    CacheLoadTaskInfo,
     Catalog,
     CatalogSummary,
     CatalogSummaryTrend,
@@ -296,6 +299,7 @@ __all__ = [
     Table,
     TableCompaction,
     TableCompactionHistory,
+    TableConsumer,
     TableSnapshot,
     TableSummary,
     TagResource,
