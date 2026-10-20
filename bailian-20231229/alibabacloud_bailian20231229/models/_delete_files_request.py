@@ -11,7 +11,7 @@ class DeleteFilesRequest(DaraModel):
         self,
         file_ids: List[str] = None,
     ):
-        # The list of IDs of the files to be deleted. A maximum of 20 files can be deleted in a single request.
+        # The list of file IDs to delete. A maximum of 20 files can be deleted at a time.
         # 
         # This parameter is required.
         self.file_ids = file_ids

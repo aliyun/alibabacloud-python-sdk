@@ -12,7 +12,7 @@ class CreateMemoryResponseBody(DaraModel):
     ):
         # The long-term memory ID.
         # > Store this value properly. It is required for all subsequent API operations related to this long-term memory.
-        # >.
+        # >
         self.memory_id = memory_id
         # The request ID.
         self.request_id = request_id

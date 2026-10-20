@@ -17,20 +17,20 @@ class ApplyFileUploadLeaseResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error status code.
         self.code = code
-        # The data returned.
+        # The business data field of the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status code returned.
+        # The status code returned by the operation.
         self.status = status
-        # Indicates whether the API call is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - true: The call is successful.
-        # - false: The call failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -92,11 +92,11 @@ class ApplyFileUploadLeaseResponseBodyData(DaraModel):
         param: main_models.ApplyFileUploadLeaseResponseBodyDataParam = None,
         type: str = None,
     ):
-        # The unique ID of the lease. You need to use this parameter when you call the **AddFile** API.
+        # The unique ID of the lease. This parameter is required when calling the **AddFile** operation.
         self.file_upload_lease_id = file_upload_lease_id
         # The HTTP request parameters for uploading the file.
         self.param = param
-        # The upload method of the file. Valid values:
+        # The upload method for the file. Valid values:
         # - OSS.PreSignedURL
         # - HTTP
         self.type = type
@@ -142,17 +142,17 @@ class ApplyFileUploadLeaseResponseBodyDataParam(DaraModel):
         method: str = None,
         url: str = None,
     ):
-        # Key-value pairs that need to be included in the header. Both keys and values are strings.
+        # The key-value pairs to include in the request header. Both keys and values are strings.
         # 
-        # > The returned Content-Type may be empty. You can upload the file with the empty value.
+        # > The returned Content-Type may be empty. Use the empty value as-is when uploading.
         self.headers = headers
         # The HTTP method. Valid values:
         # - PUT
         # - POST
         self.method = method
-        # The upload URL of the file.
+        # The upload URL for the file.
         # 
-        # > This URL is a pre-signed URL. FormData upload is not supported. You must upload the file in binary mode.
+        # > This URL is a pre-signed URL. It does not support FormData uploads. Use binary upload instead.
         self.url = url
 
     def validate(self):

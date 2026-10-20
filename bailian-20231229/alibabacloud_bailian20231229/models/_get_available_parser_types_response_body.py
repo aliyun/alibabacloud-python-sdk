@@ -19,18 +19,17 @@ class GetAvailableParserTypesResponseBody(DaraModel):
     ):
         # The error code returned.
         self.code = code
-        # The data returned.
+        # The business data returned upon a successful request.
         self.data = data
-        # The error message that is returned if the request failed.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code returned.
+        # The status code returned by the operation.
         self.status = status
-        # Indicates whether the call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -91,9 +90,9 @@ class GetAvailableParserTypesResponseBodyData(DaraModel):
         file_type: str = None,
         parser_list: List[main_models.GetAvailableParserTypesResponseBodyDataParserList] = None,
     ):
-        # The file type, which is the same as the FileType in the input parameter.
+        # The file type, which is the same as the FileType input parameter.
         self.file_type = file_type
-        # The list of supported parsers
+        # The list of parsers supported for the specified file type.
         self.parser_list = parser_list
 
     def validate(self):
@@ -139,11 +138,10 @@ class GetAvailableParserTypesResponseBodyDataParserList(DaraModel):
         # The display name of the parsing method.
         self.display_name = display_name
         # The parser code. Valid values:
-        # 
-        # *   DOCMIND (Intelligent parsing)
-        # *   DOCMIND_DIGITAL (Digital parsing)
-        # *   DOCMIND_LLM_VERSION (LLM parsing)
-        # *   DASH_QWEN_VL_PARSER (Qwen VL parsing)
+        # - DOCMIND: Intelligent Document Parsing.
+        # - DOCMIND_DIGITAL: Electronic Document Parsing.
+        # - DOCMIND_LLM_VERSION: LLM-based Document Parsing.
+        # - DASH_QWEN_VL_PARSER: Qwen-VL Parsing.
         self.parser = parser
 
     def validate(self):

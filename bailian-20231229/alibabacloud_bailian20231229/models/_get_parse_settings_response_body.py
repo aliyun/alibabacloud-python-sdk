@@ -17,20 +17,19 @@ class GetParseSettingsResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The error code.
         self.code = code
-        # The returned data fields.
+        # The business data returned when the request is successful.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code returned.
+        # The status code returned by the operation.
         self.status = status
-        # Indicates whether the call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -99,16 +98,15 @@ class GetParseSettingsResponseBodyData(DaraModel):
         parser_config: main_models.GetParseSettingsResponseBodyDataParserConfig = None,
         parser_display_name: str = None,
     ):
-        # The file type. Valid values are: pdf, docx, doc, etc. All supported file types in the category are listed here.
+        # The file type, specified as a file extension. Valid values include pdf, docx, and doc. All file types supported in the current category are listed.
         self.file_type = file_type
-        # The parser used for files of the current type. Valid values:
-        # 
-        # *   DOCMIND (Intelligent parsing)
-        # *   DOCMIND_DIGITAL (Digital parsing)
-        # *   DOCMIND_LLM_VERSION (LLM parsing)
-        # *   DASH_QWEN_VL_PARSER (Qwen VL parsing)
+        # The parser used to parse files of the current type under this category. Valid values:
+        # - DOCMIND: Intelligent Document Parsing.
+        # - DOCMIND_DIGITAL: Electronic Document Parsing.
+        # - DOCMIND_LLM_VERSION: LLM-based Document Parsing.
+        # - DASH_QWEN_VL_PARSER: Qwen VL Parsing.
         self.parser = parser
-        # The parser configuration. Currently, this is available only for Qwen VL parsing.
+        # The parser configuration. This parameter is returned only when the type is set to Qwen VL parsing.
         self.parser_config = parser_config
         # The display name of the parsing method.
         self.parser_display_name = parser_display_name
@@ -161,7 +159,7 @@ class GetParseSettingsResponseBodyDataParserConfig(DaraModel):
     ):
         # The model name.
         self.model_name = model_name
-        # The prompt used for parsing.
+        # The prompt used when calling Qwen VL parsing.
         self.model_prompt = model_prompt
 
     def validate(self):

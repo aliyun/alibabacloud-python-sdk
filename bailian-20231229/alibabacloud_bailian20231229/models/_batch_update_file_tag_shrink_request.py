@@ -10,11 +10,11 @@ class BatchUpdateFileTagShrinkRequest(DaraModel):
         file_infos_shrink: str = None,
         update_mode: str = None,
     ):
-        # A list of files to update.
+        # The list of documents to update.
         # 
         # This parameter is required.
         self.file_infos_shrink = file_infos_shrink
-        # The update mode. Valid values are APPEND and OVERWRITE.
+        # The update mode. Valid values: APPEND (append) and OVERWRITE (overwrite).
         self.update_mode = update_mode
 
     def validate(self):

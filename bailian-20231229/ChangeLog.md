@@ -1,3 +1,7 @@
+2026-10-20 Version: 2.14.5
+- Update API DescribeFile: add response parameters Body.Data.OriginFileDownloadUrl.
+
+
 2026-08-04 Version: 2.14.3
 - Update API ListIndices: add response parameters Body.Data.Indices.$.StructuredIndexConfig.
 

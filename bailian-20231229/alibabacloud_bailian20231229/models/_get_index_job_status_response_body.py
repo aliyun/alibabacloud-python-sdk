@@ -17,9 +17,9 @@ class GetIndexJobStatusResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error status code.
+        # The error code.
         self.code = code
-        # The data field returned by the operation.
+        # The business data field of the operation.
         self.data = data
         # The error message.
         self.message = message
@@ -27,9 +27,9 @@ class GetIndexJobStatusResponseBody(DaraModel):
         self.request_id = request_id
         # The status code returned by the operation.
         self.status = status
-        # Indicates whether the operation was successful. Valid values:
-        # - true: Successful.
-        # - false: Failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -91,15 +91,15 @@ class GetIndexJobStatusResponseBodyData(DaraModel):
         job_id: str = None,
         status: str = None,
     ):
-        # The list of files imported in this job.
+        # The list of files imported in this task.
         self.documents = documents
-        # The job ID.
+        # The job task ID.
         self.job_id = job_id
-        # The current status of the knowledge base job. Valid values:
-        # - COMPLETED: Execution succeeded.
-        # - FAILED: Execution failed.
-        # - RUNNING: Execution in progress.
-        # - PENDING: Waiting for execution.
+        # The current status of the knowledge base job task. Valid values:
+        # - COMPLETED: The task is executed successfully.
+        # - FAILED: The task failed to be executed.
+        # - RUNNING: The task is being executed.
+        # - PENDING: The task is pending execution.
         self.status = status
 
     def validate(self):
@@ -152,22 +152,23 @@ class GetIndexJobStatusResponseBodyDataDocuments(DaraModel):
         message: str = None,
         status: str = None,
     ):
-        # The error status code.
+        # The error code.
         self.code = code
         # The file ID.
         self.doc_id = doc_id
         # The file name.
         self.doc_name = doc_name
+        # The time when the file was last modified. The value is a UNIX timestamp in milliseconds.
         self.gmt_modified = gmt_modified
         # The error message.
         self.message = message
         # The file import status. Valid values:
-        # - INSERT_ERROR: Failed to import into the index.
-        # - RUNNING: Index building in progress.
-        # - DELETED: Deleted.
-        # - FINISH: Index building succeeded.
-        # - PARSE_FAILED: Parsing failed.
-        # - DOC_PARSING: Parsing in progress.
+        # - INSERT_ERROR: The index import failed.
+        # - RUNNING: The index is being built.
+        # - DELETED: The file is deleted.
+        # - FINISH: The index is built successfully.
+        # - PARSE_FAILED: The parsing failed.
+        # - DOC_PARSING: The file is being parsed.
         self.status = status
 
     def validate(self):

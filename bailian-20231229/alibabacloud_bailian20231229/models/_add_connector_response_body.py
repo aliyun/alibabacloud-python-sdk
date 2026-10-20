@@ -15,21 +15,19 @@ class AddConnectorResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error code. A value of `Success` indicates that the request succeeded.
+        # The error code.
         self.code = code
-        # The data returned by the operation.
+        # The business data field returned by the operation.
         self.data = data
         # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The HTTP status code.
+        # The status code returned by the operation.
         self.status = status
-        # Indicates whether the request succeeded. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -89,7 +87,7 @@ class AddConnectorResponseBodyData(DaraModel):
         self,
         connector_id: str = None,
     ):
-        # The ID of the connector.
+        # The connector ID.
         self.connector_id = connector_id
 
     def validate(self):

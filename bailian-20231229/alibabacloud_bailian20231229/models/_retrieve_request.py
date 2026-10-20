@@ -26,64 +26,59 @@ class RetrieveRequest(DaraModel):
         search_filters: List[Dict[str, str]] = None,
         sparse_similarity_top_k: int = None,
     ):
-        # The number of top-K similar text chunks to retrieve using vector retrieval. This is achieved by generating a vector representation of the query and searching the knowledge base for the K text chunks with the most similar vectors. The value must be an integer from 0 to 100. The sum of `DenseSimilarityTopK` and `SparseSimilarityTopK` must not exceed 200.
+        # The top K value for AISearch. The system generates a vector for the input text and retrieves the top K text chunks in the knowledge base that are most similar to the vector representation. Valid values: 0 to 100.
+        # The sum of DenseSimilarityTopK and SparseSimilarityTopK must be less than or equal to 200.
         # 
         # Default value: 100.
         self.dense_similarity_top_k = dense_similarity_top_k
         # Specifies whether to enable reranking. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html). Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         # 
-        # - `true`: Enables reranking.
-        # 
-        # - `false`: Disables reranking.
-        # 
-        # Default value: `true`.
+        # Default value: true.
         self.enable_reranking = enable_reranking
-        # Specifies whether to enable <props="china">[conversational query rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[conversational query rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji).
+        # Specifies whether to enable <props="china">[multi-turn conversation rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[multi-turn conversation rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji).
         # Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         # 
-        # - `true`: Enables conversational query rewriting.
-        # 
-        # - `false`: Disables conversational query rewriting.
-        # 
-        # Default value: `false`.
+        # Default value: false.
         self.enable_rewrite = enable_rewrite
         self.extra = extra
-        # The URLs of images to include in the query.
+        # The URLs of the images passed in the query.
         self.images = images
-        # The ID of the knowledge base. This is the `Data.Id` value returned by the `CreateIndex` operation.
+        # The ID of the knowledge base, which is the Data.Id returned by the CreateIndex operation.
         # 
-        # > - Ensure the specified knowledge base exists and has not been deleted.
+        # > - Make sure that the corresponding knowledge base is created and not deleted.
         # 
         # This parameter is required.
         self.index_id = index_id
-        # The query, which is the original user prompt. There are no limits on the length of the query.
+        # The input text, which is the original input prompt. The length and characters of Query are not limited.
         self.query = query
-        # The conversation history, used for <props="china">[conversational query rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[conversational query rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji). This parameter is effective only when `EnableRewrite` is set to `true`.
+        # <props="china">[Multi-turn conversation rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[Multi-turn conversation rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji) allows you to pass in your own managed conversation history. This parameter takes effect only when EnableRewrite is set to **true**. Otherwise, it does not take effect even if you specify it.
         self.query_history = query_history
-        # The reranking configurations.
+        # The reranking configuration.
         self.rerank = rerank
-        # The similarity threshold for reranking. Only text chunks with a similarity score greater than this value are returned. The value must be between 0.01 and 1.00, inclusive. This parameter overrides the similarity threshold setting of the knowledge base.
+        # The similarity threshold. This threshold specifies the minimum similarity score allowed for recalled text chunks and is used to filter the text chunks returned by the ranking model. Only text chunks with a score greater than this value are recalled. Valid values: 0.01 to 1.00. This parameter has a higher priority than the similarity threshold configured for the knowledge base.
         # 
-        # If not specified, the threshold configured for the knowledge base is used.
+        # If no specific value is specified, the similarity threshold configured for the knowledge base is used by default.
         self.rerank_min_score = rerank_min_score
-        # The number of top-ranked text chunks to return after reranking. The value must be an integer from 1 to 20. Default value: 5.
+        # The top N text chunks to return after reranking. Valid values: 1 to 20. Default value: 5.
         self.rerank_top_n = rerank_top_n
-        # Configuration for conversational query rewriting.
+        # The multi-turn conversation rewriting configuration.
         self.rewrite = rewrite
-        # Specifies whether to save the retrieval history for testing purposes. Valid values:
+        # Specifies whether to save the historical text chunk recall test data. Valid values:
+        # - true: Save.
+        # - false: Do not save.
         # 
-        # - `true`: Saves the retrieval history.
-        # 
-        # - `false`: Does not save the retrieval history.
-        # 
-        # Default value: `false`.
+        # Default value: false.
         self.save_retriever_history = save_retriever_history
-        # Specifies custom retrieval conditions, such as tags, to filter semantic retrieval results and exclude irrelevant information.
-        # The filtering logic is applied only when the `is_displayed_chunk_content` parameter is set to `true`. For more information, see [SearchFilters for a knowledge base](https://help.aliyun.com/document_detail/2869641.html).
+        # The personalized retrieval conditions, such as tags, configured by using SearchFilter to filter semantic retrieval results and exclude information irrelevant to the query.
+        # The filtering logic takes effect when the is_displayed_chunk_content parameter is set to true. For more information, see [Knowledge base SearchFilters](https://help.aliyun.com/document_detail/2869641.html).
         self.search_filters = search_filters
-        # The number of top-K text chunks to retrieve using keyword retrieval. This feature finds text chunks in the knowledge base that exactly match the keywords in the query. It helps filter out irrelevant text chunks and provide more accurate results.
-        # The value must be an integer from 0 to 100.
-        # The sum of `DenseSimilarityTopK` and `SparseSimilarityTopK` must not exceed 200.
+        # The top K value for keyword retrieval. The system retrieves chunks from the knowledge base that are an exact match for the keywords in the input text. This helps you filter out irrelevant text chunks and provides more accurate results.
+        # Valid values: 0 to 100.
+        # The sum of DenseSimilarityTopK and SparseSimilarityTopK must be less than or equal to 200.
         # 
         # Default value: 100.
         self.sparse_similarity_top_k = sparse_similarity_top_k
@@ -226,11 +221,10 @@ class RetrieveRequestRewrite(DaraModel):
         self,
         model_name: str = None,
     ):
-        # Specifies the model for conversational query rewriting, which automatically rewrites the original query based on the conversation context to improve retrieval results. Valid value:
+        # The name of the multi-turn conversation rewriting model. The model automatically adjusts the original input prompt (user question) based on the conversation context to improve retrieval performance. Valid values:
+        # - conv-rewrite-qwen-1.8b: The conv-rewrite-qwen-1.8b model. Currently, only this model is supported.
         # 
-        # - `conv-rewrite-qwen-1.8b`: The only model currently supported for this feature.
-        # 
-        # If this parameter is not specified, `conv-rewrite-qwen-1.8b` is used by default.
+        # Default value: null. The conv-rewrite-qwen-1.8b model is used.
         self.model_name = model_name
 
     def validate(self):
@@ -260,77 +254,74 @@ class RetrieveRequestRerank(DaraModel):
         rerank_instruct: str = None,
         rerank_mode: str = None,
     ):
-        # The reranking model to use. Specifying a model here overrides the default model selected when the knowledge base was created. Valid values:
+        # The specified reranking model. The value specified here overrides the reranking model selected when the knowledge base was created. Valid values:
         # 
         # <props="china">
         # 
-        # - `qwen3-rerank-hybrid`: Performs reranking by using the qwen3-rerank (hybrid) model.
-        # 
-        # - `qwen3-rerank`: Performs reranking by using the qwen3-rerank model.
-        # 
-        # - `gte-rerank-hybrid`: Performs reranking by using the gte-rerank (hybrid) model.
-        # 
-        # - `gte-rerank`: Performs reranking by using the gte-rerank model.
+        # - qwen3-rerank-hybrid: qwen3-rerank (hybrid) reranking.
+        # - qwen3-rerank: qwen3-rerank reranking.
+        # - gte-rerank-hybrid: gte-rerank (hybrid) reranking.
+        # - gte-rerank: gte-rerank reranking.
         # 
         # 
         # 
         # <props="intl">
         # 
-        # - `gte-rerank-hybrid`: Performs reranking by using the gte-rerank (hybrid) model.
-        # 
-        # - `gte-rerank`: Performs reranking by using the gte-rerank model.
-        # 
+        # - gte-rerank-hybrid: Official reranking.
+        # - gte-rerank: gte-rerank reranking.
         # 
         # 
-        # If you do not specify this parameter, the model configured for the knowledge base is used.
+        # 
+        # 
+        # 
+        # 
+        # Default value: null. The reranking model selected when the knowledge base was created is used.
+        # 
         # 
         # <props="china">
         # 
-        # > Use `qwen3-rerank` for semantic ranking only. We recommend `qwen3-rerank-hybrid` if you require both semantic ranking and text matching features for higher relevance.
+        # > If you only need semantic reranking, use qwen3-rerank. If you need both semantic reranking and text matching features to ensure relevance, use qwen3-rerank-hybrid.
+        # >
+        # 
+        # 
+        # 
         # 
         # 
         # 
         # <props="intl">
         # 
-        # > Use `gte-rerank` for semantic ranking only. We recommend `gte-rerank-hybrid` if you require both semantic ranking and text matching features for higher relevance.
+        # > If you only need semantic reranking, use gte-rerank. If you need both semantic reranking and text matching features to ensure relevance, use gte-rerank-hybrid.
+        # >
+        # 
+        # 
+        # 
         # 
         # 
         # 
         # <props="china">
         # 
-        # > The `gte-rerank-hybrid` and `gte-rerank` models are no longer updated and are not recommended for use.
+        # > gte-rerank-hybrid and gte-rerank will no longer be updated and are not recommended.
+        # >
         self.model_name = model_name
-        # <props="intl">
+        # <props="intl">This parameter is not available. Do not specify this parameter.
         # 
-        # This parameter is not yet available. Do not specify a value for it.
-        # 
-        # 
-        # 
-        # <props="china">
-        # 
-        # A natural language instruction to fine-tune the behavior of the reranking model.
-        # 
-        # >Notice: 
-        # 
-        # This parameter takes effect only when `RerankMode` is set to `custom`.
+        # <props="china">A natural language instruction used to fine-tune the behavior of the reranking model.
+        # <notice>This parameter takes effect only when rerank_mode is set to custom.</notice>
         self.rerank_instruct = rerank_instruct
         # <props="china">
-        # 
-        # Specifies the instruction intervention mode for the reranking model. This mode determines the model\\"s scoring preference.
+        # The instruction intervention mode of the reranking model, which determines its scoring preference.
         # 
         # **Valid values:**
         # 
-        # - `qa`: (Default) Q\\&A mode. The model assigns higher scores to candidates that directly answer the query. Recommended for Q\\&A scenarios.
+        # - **qa**: (Default) Q&A mode. The model tends to assign higher scores to candidates that can directly answer the query. Recommended for Q&A scenarios.
         # 
-        # - `similar`: Similarity mode. The model assigns higher scores to candidates with high content similarity to the query. Recommended for match-based retrieval scenarios.
+        # - **similar**: Similarity mode. The model tends to assign higher scores to candidates that are highly consistent with the query content. Recommended for matching and retrieval scenarios.
         # 
-        # - `custom`: Custom mode. The model\\"s ranking behavior is determined by the instructions in the `RerankInstruct` parameter.
+        # - **custom**: Custom mode. The reranking behavior of the model is determined by the instruction in the rerank_instruct parameter.
         # 
         # 
         # 
-        # <props="intl">
-        # 
-        # This parameter is not yet available. Do not specify a value for it.
+        # <props="intl">This parameter is not available. Do not specify this parameter.
         self.rerank_mode = rerank_mode
 
     def validate(self):
@@ -371,15 +362,14 @@ class RetrieveRequestQueryHistory(DaraModel):
         content: str = None,
         role: str = None,
     ):
-        # The content of the message for the specified `role`.
+        # The question or answer content of the corresponding role.
         self.content = content
-        # The role of the entity that sent the message.
+        # The role.
         # 
         # Valid values:
         # 
-        # - `user`: Indicates that the `content` is from the end user.
-        # 
-        # - `assistant`: Indicates that the `content` is a response from the Model Studio application.
+        # - user: If this role is passed, content indicates the text that you input to the Alibaba Cloud Model Studio application.
+        # - assistant: If this role is passed, content indicates the reply from the Alibaba Cloud Model Studio application.
         self.role = role
 
     def validate(self):

@@ -15,7 +15,7 @@ class ChangeParseSettingResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error status code.
+        # The error code.
         self.code = code
         # The business data returned when the request is successful.
         self.data = data
@@ -87,7 +87,7 @@ class ChangeParseSettingResponseBodyData(DaraModel):
         self,
         change_result: bool = None,
     ):
-        # Indicates whether the configuration was changed. Valid values:
+        # Indicates whether the configuration was changed.
         # - true: The configuration was updated.
         # - false: The configuration was not changed. The modification failed.
         self.change_result = change_result

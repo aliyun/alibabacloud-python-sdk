@@ -17,21 +17,19 @@ class ListCategoryResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error status code.
         self.code = code
-        # The response payload.
+        # The business data field of the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status code for the request.
+        # The status code returned by the operation.
         self.status = status
-        # Indicates whether the request succeeded. Valid values:
-        # 
-        # - `true`: The request succeeded.
-        # 
-        # - `false`: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -95,19 +93,18 @@ class ListCategoryResponseBodyData(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # The list of categories.
+        # The category list.
         self.category_list = category_list
-        # Indicates whether more results are available for retrieval. Valid values:
+        # Indicates whether a next page of category data that matches the query conditions exists. Valid values:
         # 
-        # - `true`: More results are available.
-        # 
-        # - `false`: This is the last page of results.
+        # - true: Yes.
+        # - false: No.
         self.has_next = has_next
-        # The maximum number of results to return per page.
+        # The number of categories per page in a paged query.
         self.max_results = max_results
-        # The token used to retrieve the next page of results. This parameter is omitted when no more results are available.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The total number of matching categories.
+        # The total number of categories in the returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -175,19 +172,16 @@ class ListCategoryResponseBodyDataCategoryList(DaraModel):
         self.category_id = category_id
         # The category name.
         self.category_name = category_name
-        # The category type. The only valid value is:
-        # 
-        # - `UNSTRUCTURED`: A standard category.
+        # The category type. Valid values:
+        # - UNSTRUCTURED: category.
         self.category_type = category_type
-        # Indicates whether the category is the default. Valid values:
+        # Indicates whether the category is a default category. Valid values:
+        # - true: Yes.
+        # - false: No.
         # 
-        # - `true`: The category is the default.
-        # 
-        # - `false`: The category is not the default.
-        # 
-        # You cannot delete the default category.
+        # Default categories cannot be deleted.
         self.is_default = is_default
-        # The parent category ID.
+        # The category ID of the parent category.
         self.parent_category_id = parent_category_id
 
     def validate(self):

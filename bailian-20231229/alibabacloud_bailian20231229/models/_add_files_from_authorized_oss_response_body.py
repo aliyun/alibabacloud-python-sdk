@@ -19,7 +19,7 @@ class AddFilesFromAuthorizedOssResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The data field returned by the operation.
+        # The business data field of the operation.
         self.data = data
         # The error message.
         self.message = message
@@ -27,9 +27,9 @@ class AddFilesFromAuthorizedOssResponseBody(DaraModel):
         self.request_id = request_id
         # The status code returned by the operation.
         self.status = status
-        # Indicates whether the call was successful. Valid values:
-        # - true: Successful.
-        # - false: Failed.
+        # Indicates whether the operation is successful. Valid values:
+        # - true: The operation is successful.
+        # - false: The operation fails.
         self.success = success
 
     def validate(self):
@@ -128,18 +128,18 @@ class AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList(DaraModel):
         oss_key: str = None,
         status: str = None,
     ):
-        # The file ID. Keep this value safe because it is required for all subsequent API operations related to this file.
+        # The file ID. Keep this value secure because it is used for all subsequent API operations related to this file.
         self.file_id = file_id
-        # The error message returned when the file import fails.
+        # The error message returned when the file fails to be imported.
         self.msg = msg
         # The key of the imported file in the OSS bucket.
         self.oss_key = oss_key
         # The file import status. Valid values:
         # 
-        # - SUCCESS: The import to application data is complete.
-        # - FAILED: The import to application data failed.
+        # - SUCCESS: The application data is imported.
+        # - FAILED: The application data fails to be imported.
         # 
-        # > Only files with a SUCCESS status can be used to create or update a knowledge base.
+        # > Only files whose status is SUCCESS can be used to create or update knowledge bases.
         # >
         self.status = status
 

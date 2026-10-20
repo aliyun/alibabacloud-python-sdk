@@ -17,7 +17,7 @@ class DeleteCategoryResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The data field returned by the operation.
+        # The business data field of the operation.
         self.data = data
         # The error message.
         self.message = message

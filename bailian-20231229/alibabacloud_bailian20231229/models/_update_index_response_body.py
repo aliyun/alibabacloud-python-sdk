@@ -17,19 +17,19 @@ class UpdateIndexResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The data field returned by the operation.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status code returned by the API.
+        # The status code returned by the operation.
         self.status = status
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # true: The request was successful.
+        # true: The call was successful.
         # 
-        # false: The request failed.
+        # false: The call failed.
         self.success = success
 
     def validate(self):

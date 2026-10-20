@@ -36,15 +36,15 @@ class ChangeParseSettingShrinkRequest(DaraModel):
         # This parameter is required.
         self.file_type = file_type
         # The parser identifier code. Different parsers are applicable to different scenarios. For more information, see "Knowledge Base". Valid values:
-        # - DOCMIND (Intelligent Document Parsing)
-        # - DOCMIND_DIGITAL (Electronic Document Parsing)
-        # - DOCMIND_LLM_VERSION (Large Model Document Parsing)
-        # - DASH_QWEN_VL_PARSER (Qwen VL Parsing)
-        # - DOCMIND_LLM_VERSION_MEDIA (Audio/Video Parsing)
+        # - DOCMIND (intelligent document parsing)
+        # - DOCMIND_DIGITAL (electronic document parsing)
+        # - DOCMIND_LLM_VERSION (large model document parsing)
+        # - DASH_QWEN_VL_PARSER (Qwen VL parsing)
+        # - DOCMIND_LLM_VERSION_MEDIA (audio and video parsing)
         # 
         # This parameter is required.
         self.parser = parser
-        # The parser configuration. This parameter is required only when the parser is set to Qwen VL Parsing.
+        # The parser configuration. This parameter is required only when the parser is set to Qwen VL parsing.
         self.parser_config_shrink = parser_config_shrink
 
     def validate(self):

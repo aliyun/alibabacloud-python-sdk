@@ -23,64 +23,59 @@ class RetrieveShrinkRequest(DaraModel):
         search_filters_shrink: str = None,
         sparse_similarity_top_k: int = None,
     ):
-        # The number of top-K similar text chunks to retrieve using vector retrieval. This is achieved by generating a vector representation of the query and searching the knowledge base for the K text chunks with the most similar vectors. The value must be an integer from 0 to 100. The sum of `DenseSimilarityTopK` and `SparseSimilarityTopK` must not exceed 200.
+        # The top K value for AISearch. The system generates a vector for the input text and retrieves the top K text chunks in the knowledge base that are most similar to the vector representation. Valid values: 0 to 100.
+        # The sum of DenseSimilarityTopK and SparseSimilarityTopK must be less than or equal to 200.
         # 
         # Default value: 100.
         self.dense_similarity_top_k = dense_similarity_top_k
         # Specifies whether to enable reranking. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html). Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         # 
-        # - `true`: Enables reranking.
-        # 
-        # - `false`: Disables reranking.
-        # 
-        # Default value: `true`.
+        # Default value: true.
         self.enable_reranking = enable_reranking
-        # Specifies whether to enable <props="china">[conversational query rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[conversational query rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji).
+        # Specifies whether to enable <props="china">[multi-turn conversation rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[multi-turn conversation rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji).
         # Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         # 
-        # - `true`: Enables conversational query rewriting.
-        # 
-        # - `false`: Disables conversational query rewriting.
-        # 
-        # Default value: `false`.
+        # Default value: false.
         self.enable_rewrite = enable_rewrite
         self.extra_shrink = extra_shrink
-        # The URLs of images to include in the query.
+        # The URLs of the images passed in the query.
         self.images_shrink = images_shrink
-        # The ID of the knowledge base. This is the `Data.Id` value returned by the `CreateIndex` operation.
+        # The ID of the knowledge base, which is the Data.Id returned by the CreateIndex operation.
         # 
-        # > - Ensure the specified knowledge base exists and has not been deleted.
+        # > - Make sure that the corresponding knowledge base is created and not deleted.
         # 
         # This parameter is required.
         self.index_id = index_id
-        # The query, which is the original user prompt. There are no limits on the length of the query.
+        # The input text, which is the original input prompt. The length and characters of Query are not limited.
         self.query = query
-        # The conversation history, used for <props="china">[conversational query rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[conversational query rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji). This parameter is effective only when `EnableRewrite` is set to `true`.
+        # <props="china">[Multi-turn conversation rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[Multi-turn conversation rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji) allows you to pass in your own managed conversation history. This parameter takes effect only when EnableRewrite is set to **true**. Otherwise, it does not take effect even if you specify it.
         self.query_history_shrink = query_history_shrink
-        # The reranking configurations.
+        # The reranking configuration.
         self.rerank_shrink = rerank_shrink
-        # The similarity threshold for reranking. Only text chunks with a similarity score greater than this value are returned. The value must be between 0.01 and 1.00, inclusive. This parameter overrides the similarity threshold setting of the knowledge base.
+        # The similarity threshold. This threshold specifies the minimum similarity score allowed for recalled text chunks and is used to filter the text chunks returned by the ranking model. Only text chunks with a score greater than this value are recalled. Valid values: 0.01 to 1.00. This parameter has a higher priority than the similarity threshold configured for the knowledge base.
         # 
-        # If not specified, the threshold configured for the knowledge base is used.
+        # If no specific value is specified, the similarity threshold configured for the knowledge base is used by default.
         self.rerank_min_score = rerank_min_score
-        # The number of top-ranked text chunks to return after reranking. The value must be an integer from 1 to 20. Default value: 5.
+        # The top N text chunks to return after reranking. Valid values: 1 to 20. Default value: 5.
         self.rerank_top_n = rerank_top_n
-        # Configuration for conversational query rewriting.
+        # The multi-turn conversation rewriting configuration.
         self.rewrite_shrink = rewrite_shrink
-        # Specifies whether to save the retrieval history for testing purposes. Valid values:
+        # Specifies whether to save the historical text chunk recall test data. Valid values:
+        # - true: Save.
+        # - false: Do not save.
         # 
-        # - `true`: Saves the retrieval history.
-        # 
-        # - `false`: Does not save the retrieval history.
-        # 
-        # Default value: `false`.
+        # Default value: false.
         self.save_retriever_history = save_retriever_history
-        # Specifies custom retrieval conditions, such as tags, to filter semantic retrieval results and exclude irrelevant information.
-        # The filtering logic is applied only when the `is_displayed_chunk_content` parameter is set to `true`. For more information, see [SearchFilters for a knowledge base](https://help.aliyun.com/document_detail/2869641.html).
+        # The personalized retrieval conditions, such as tags, configured by using SearchFilter to filter semantic retrieval results and exclude information irrelevant to the query.
+        # The filtering logic takes effect when the is_displayed_chunk_content parameter is set to true. For more information, see [Knowledge base SearchFilters](https://help.aliyun.com/document_detail/2869641.html).
         self.search_filters_shrink = search_filters_shrink
-        # The number of top-K text chunks to retrieve using keyword retrieval. This feature finds text chunks in the knowledge base that exactly match the keywords in the query. It helps filter out irrelevant text chunks and provide more accurate results.
-        # The value must be an integer from 0 to 100.
-        # The sum of `DenseSimilarityTopK` and `SparseSimilarityTopK` must not exceed 200.
+        # The top K value for keyword retrieval. The system retrieves chunks from the knowledge base that are an exact match for the keywords in the input text. This helps you filter out irrelevant text chunks and provides more accurate results.
+        # Valid values: 0 to 100.
+        # The sum of DenseSimilarityTopK and SparseSimilarityTopK must be less than or equal to 200.
         # 
         # Default value: 100.
         self.sparse_similarity_top_k = sparse_similarity_top_k

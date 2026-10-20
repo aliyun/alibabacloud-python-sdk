@@ -19,7 +19,7 @@ class ListMemoriesResponseBody(DaraModel):
     ):
         # The number of long-term memory entities per page in a paged query.
         self.max_results = max_results
-        # The long-term memory entity list.
+        # The list of long-term memory entities.
         self.memories = memories
         # The pagination token returned in this call.
         self.next_token = next_token
@@ -27,7 +27,7 @@ class ListMemoriesResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The ID of the workspace to which the long-term memory entity list belongs.
+        # The workspace ID to which the long-term memory list belongs.
         self.workspace_id = workspace_id
 
     def validate(self):

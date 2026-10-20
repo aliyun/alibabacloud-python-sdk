@@ -17,7 +17,7 @@ class ListFileResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error status code.
         self.code = code
         # The data field returned by the operation.
         self.data = data
@@ -95,15 +95,15 @@ class ListFileResponseBodyData(DaraModel):
     ):
         # The list of files in the category.
         self.file_list = file_list
-        # Indicates whether there is a next page of category data that matches the query conditions. Valid values:
-        # - true: Yes.
-        # - false: No.
+        # Indicates whether a next page exists for the category data that matches the query conditions. Valid values:
+        # - true: A next page exists.
+        # - false: No next page exists.
         self.has_next = has_next
-        # The number of entries per page for paging.
+        # The number of entries per page for a paged query.
         self.max_results = max_results
         # The pagination token returned by this call.
         self.next_token = next_token
-        # The total number of entries in the returned results.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -182,17 +182,17 @@ class ListFileResponseBodyDataFileList(DaraModel):
         self.file_name = file_name
         # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, xlsx, xls, html, png, jpg, jpeg, bmp, and gif.
         self.file_type = file_type
-        # The reason for parsing failure.
+        # The reason for the parsing failure.
         self.parse_error_message = parse_error_message
         # The document parser. Valid values:
         # - DASHSCOPE_DOCMIND: Alibaba Cloud intelligent document parsing.
         self.parser = parser
-        # The file size in bytes.
+        # The file size, in bytes.
         self.size_in_bytes = size_in_bytes
         # The file parsing status. Valid values:
-        # - INIT: Initialization state. Waiting to be scheduled.
+        # - INIT: Initialization. The file is waiting to be scheduled.
         # - PARSING: Parsing in progress.
-        # - PARSE_SUCCESS: Parsing completed.
+        # - PARSE_SUCCESS: Parsing succeeded.
         # - PARSE_FAILED: Parsing failed.
         self.status = status
         # The list of tags associated with the file. A document can be associated with multiple tags.

@@ -16,7 +16,7 @@ class UpdateChunkResponseBody(DaraModel):
     ):
         # The error status code.
         self.code = code
-        # The business data returned upon a successful request.
+        # The business data returned when the request succeeds.
         self.data = data
         # The error message.
         self.message = message
@@ -26,7 +26,7 @@ class UpdateChunkResponseBody(DaraModel):
         self.status = status
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: Succeeded.
+        # - true: Successful.
         # - false: Failed.
         self.success = success
 

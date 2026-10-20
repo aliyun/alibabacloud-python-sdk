@@ -14,21 +14,21 @@ class ListIndexDocumentsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Filters the returned file list by file name (without the file extension). Default value: empty, which means no filtering by file name.
+        # Filters the returned file list by file name (excluding the file extension). Default value: empty, which means no filtering by file name.
         self.document_name = document_name
         # Filters the returned file list by file import status. Valid values:
-        # - INSERT_ERROR: failed to import to the index.
-        # - RUNNING: index building in progress.
-        # - DELETED: deleted.
-        # - FINISH: index building succeeded.
-        # - PARSE_FAILED: parsing failed.
-        # - DOC_PARSING: parsing in progress.
+        # - INSERT_ERROR: Failed to import to the index.
+        # - RUNNING: Index building in progress.
+        # - DELETED: Deleted.
+        # - FINISH: Index building succeeded.
+        # - PARSE_FAILED: Parsing failed.
+        # - DOC_PARSING: Parsing in progress.
         # 
         # Default value: empty, which means no filtering by file import status.
         self.document_status = document_status
         # Specifies whether to enable fuzzy matching for file names. This parameter is used together with the `DocumentName` parameter. Valid values:
         # - true: Performs fuzzy matching on the returned file list based on the file name.
-        # - false: Performs exact matching on the returned file list based on the file name.
+        # - false: Performs exact matching based on the file name.
         # 
         # Default value: false.
         self.enable_name_like = enable_name_like
@@ -36,7 +36,7 @@ class ListIndexDocumentsRequest(DaraModel):
         # 
         # This parameter is required.
         self.index_id = index_id
-        # The page number. Minimum value: 1. Default value: 1.
+        # The page number to query. Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The number of files to display per page in a paged query. No maximum limit.
         # Default value: 10.

@@ -12,19 +12,18 @@ class AddCategoryRequest(DaraModel):
         connector_id: str = None,
         parent_category_id: str = None,
     ):
-        # The name of the category. The name must be 1 to 20 characters long. It can contain Unicode letters, such as English letters and Chinese characters, along with digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The category name. The name must be 1 to 20 characters in length and can contain characters in the Unicode letter category, including letters, Chinese characters, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
         # 
         # This parameter is required.
         self.category_name = category_name
-        # The type of the category. Valid value:
-        # 
-        # - UNSTRUCTURED: A category.
+        # The category type. Valid values:
+        # - UNSTRUCTURED: category.
         # 
         # This parameter is required.
         self.category_type = category_type
-        # The ID of the connector instance. You can obtain the ID from the Alibaba Cloud Model Studio console.
+        # The instance ID of the data connector (Connector). Obtain this value from the Model Studio console.
         self.connector_id = connector_id
-        # The ID of the parent category under which the new category is created. If you leave this parameter empty, a top-level category is created.
+        # The ID of the parent category. The new category is created under this parent category. If this parameter is left empty, a first-level category is created.
         self.parent_category_id = parent_category_id
 
     def validate(self):

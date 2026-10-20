@@ -27,7 +27,7 @@ class ListIndicesResponseBody(DaraModel):
         self.request_id = request_id
         # The status code returned by the operation.
         self.status = status
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # - true: Successful.
         # - false: Failed.
         self.success = success
@@ -94,9 +94,9 @@ class ListIndicesResponseBodyData(DaraModel):
     ):
         # The list of knowledge bases.
         self.indices = indices
-        # The specified page number.
+        # The page number returned.
         self.page_number = page_number
-        # The specified number of entries per page.
+        # The number of entries per page returned.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -159,6 +159,9 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         id: str = None,
         name: str = None,
         overlap_size: int = None,
+        pipeline_commercial_cu: int = None,
+        pipeline_commercial_type: str = None,
+        pipeline_storage_usage: float = None,
         rerank_min_score: str = None,
         rerank_model_name: str = None,
         separator: str = None,
@@ -169,17 +172,17 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         structure_type: str = None,
         structured_index_config: List[main_models.ListIndicesResponseBodyDataIndicesStructuredIndexConfig] = None,
     ):
-        # The estimated chunk size. Valid values: 1 to 2048.
+        # The estimated chunk size. Valid value range: [1-2048].
         self.chunk_size = chunk_size
         # The configuration mode used by this knowledge base. Valid values:
         # - recommend: recommended configuration.
         # - user-defined: custom configuration.
         self.confg_model = confg_model
-        # The knowledge base description.
+        # The description of the knowledge base.
         self.description = description
         # The list of file IDs.
         self.document_ids = document_ids
-        # The embedding model name. Valid values:
+        # The name of the embedding model. Valid values:
         # 
         # <props="china">
         # 
@@ -199,13 +202,19 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         self.enable_rewrite = enable_rewrite
         # The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex** operation.
         self.id = id
-        # The knowledge base name.
+        # The name of the knowledge base.
         self.name = name
-        # The chunk overlap size. Valid values: 0 to 1024.
+        # The chunk overlap size. Valid value range: [0-1024].
         self.overlap_size = overlap_size
-        # The similarity threshold. Valid values: 0.01 to 1.00.
+        # The compute unit (CU) specification of the commercial knowledge base. This parameter is valid only for Enterprise Edition.
+        self.pipeline_commercial_cu = pipeline_commercial_cu
+        # The commercial knowledge base edition.
+        self.pipeline_commercial_type = pipeline_commercial_type
+        # The storage usage of the knowledge base. Unit: GB.
+        self.pipeline_storage_usage = pipeline_storage_usage
+        # The similarity threshold. Valid value range: [0.01-1.00].
         self.rerank_min_score = rerank_min_score
-        # The rerank model name. Valid values:
+        # The name of the rerank model. Valid values:
         # 
         # <props="china">
         # 
@@ -254,10 +263,11 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         # For data query/image Q&A knowledge bases, valid values:
         # - DATA_CENTER_STRUCTURED_TABLE: data table type.
         self.source_type = source_type
-        # The knowledge base type. Valid values:
+        # The type of the knowledge base. Valid values:
         # 
         # - UNSTRUCTURED: document search.
         self.structure_type = structure_type
+        # The index configuration for data query or image Q&A knowledge bases.
         self.structured_index_config = structured_index_config
 
     def validate(self):
@@ -297,6 +307,15 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
 
         if self.overlap_size is not None:
             result['OverlapSize'] = self.overlap_size
+
+        if self.pipeline_commercial_cu is not None:
+            result['PipelineCommercialCu'] = self.pipeline_commercial_cu
+
+        if self.pipeline_commercial_type is not None:
+            result['PipelineCommercialType'] = self.pipeline_commercial_type
+
+        if self.pipeline_storage_usage is not None:
+            result['PipelineStorageUsage'] = self.pipeline_storage_usage
 
         if self.rerank_min_score is not None:
             result['RerankMinScore'] = self.rerank_min_score
@@ -358,6 +377,15 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         if m.get('OverlapSize') is not None:
             self.overlap_size = m.get('OverlapSize')
 
+        if m.get('PipelineCommercialCu') is not None:
+            self.pipeline_commercial_cu = m.get('PipelineCommercialCu')
+
+        if m.get('PipelineCommercialType') is not None:
+            self.pipeline_commercial_type = m.get('PipelineCommercialType')
+
+        if m.get('PipelineStorageUsage') is not None:
+            self.pipeline_storage_usage = m.get('PipelineStorageUsage')
+
         if m.get('RerankMinScore') is not None:
             self.rerank_min_score = m.get('RerankMinScore')
 
@@ -398,9 +426,13 @@ class ListIndicesResponseBodyDataIndicesStructuredIndexConfig(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # Specifies whether this field participates in model responses. A value of **true** indicates that the retrieval results of this column are used as input for the large language model to generate answers.
         self.is_recall = is_recall
+        # Specifies whether this field participates in knowledge base retrieval. A value of **true** indicates that the knowledge base can search within the data of this column.
         self.is_search = is_search
+        # The name of the index field.
         self.name = name
+        # The type of the index field.
         self.type = type
 
     def validate(self):

@@ -16,7 +16,7 @@ class DeleteChunkResponseBody(DaraModel):
     ):
         # The error status code.
         self.code = code
-        # The business data returned upon a successful request.
+        # The business data returned when the request succeeds.
         self.data = data
         # The error message.
         self.message = message
@@ -24,10 +24,10 @@ class DeleteChunkResponseBody(DaraModel):
         self.request_id = request_id
         # The status code returned by the operation.
         self.status = status
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The call was successful.
-        # - false: The call failed.
+        # - true: The operation was successful.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

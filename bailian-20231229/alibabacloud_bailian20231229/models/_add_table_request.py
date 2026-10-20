@@ -89,7 +89,13 @@ class AddTableRequestTableColumns(DaraModel):
         # 
         # This parameter is required.
         self.column_name = column_name
-        # The data type.
+        # The data type. Valid values:
+        # 
+        # - datetime: datetime
+        # - string: string
+        # - double: double-precision floating point
+        # - image_url: image URL
+        # - long: long integer
         # 
         # This parameter is required.
         self.data_type = data_type

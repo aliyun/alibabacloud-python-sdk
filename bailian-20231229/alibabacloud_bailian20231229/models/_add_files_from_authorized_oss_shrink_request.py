@@ -15,36 +15,36 @@ class AddFilesFromAuthorizedOssShrinkRequest(DaraModel):
         over_write_file_by_oss_key: bool = None,
         tags_shrink: str = None,
     ):
-        # The ID of the category to which the files are imported. This is the `CategoryId` returned by the AddCategory operation. You can also obtain the category ID by clicking the ID icon next to the category name on the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) - Files tab<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) - Files tab. You can pass in `default` to use the system-created default category.
+        # The ID of the destination category for the imported files. This is the CategoryId returned by the AddCategory operation. You can also obtain the category ID by clicking the ID icon next to the category name on the <props="china">[Application Data](https://bailian.console.aliyun.com/?tab=app#/data-center) > Files tab<props="intl">[Application Data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center) > Files tab. You can set this parameter to default to use the default category created by the system.
         # 
         # This parameter is required.
         self.category_id = category_id
-        # The category type. Optional. Default value: UNSTRUCTURED. Valid values:
-        # - UNSTRUCTURED: category for building knowledge base scenarios.
+        # The category type. This parameter is optional. Default value: UNSTRUCTURED. Valid values:
+        # - UNSTRUCTURED: category, used for building knowledge bases.
         # 
         # <props="china">
         # 
-        # > This operation does not support importing SESSION_FILE for agent application [conversation interaction](https://www.alibabacloud.com/help/en/model-studio/user-guide/file-interaction). Use the **AddFile** operation to upload SESSION_FILE from a local source.
+        # > This operation does not support importing SESSION_FILE for [session interaction](https://www.alibabacloud.com/help/en/model-studio/user-guide/file-interaction) in agent applications. Use the **AddFile** operation to upload SESSION_FILE from your local machine.
         # 
         # This parameter is required.
         self.category_type = category_type
-        # The list of files to import. A maximum of 10 files can be uploaded at a time.
-        # > A maximum of 10 files can be uploaded at a time.
+        # The list of files to import. You can upload up to 10 files at a time.
+        # > You can upload up to 10 files at a time.
         # >
         # 
         # This parameter is required.
         self.file_details_shrink = file_details_shrink
-        # The name of the OSS bucket. For more information, see [Buckets](https://help.aliyun.com/document_detail/177682.html).
+        # The name of the OSS bucket. For more information, see [Buckets](https://help.aliyun.com/document_detail/177682.html). Before you import data from OSS for the first time, you must complete the authorization as prompted in the Model Studio console and add a tag with the key bailian-datahub-access and the value read to the destination bucket. You must also authorize the OSS service-linked role as prompted in the Model Studio console (service name: datahub.sfm.aliyuncs.com).
         # 
         # This parameter is required.
         self.oss_bucket_name = oss_bucket_name
-        # The region ID of the OSS bucket. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+        # The region ID of the OSS bucket. For more information about how to obtain the ID, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
         # 
         # This parameter is required.
         self.oss_region_id = oss_region_id
-        # Specifies whether to overwrite files with the same OssKey in the category. Default value: false, which means files are not overwritten.
+        # Specifies whether to overwrite identical files in the category based on the OssKey. Default value: false, which means identical files are not overwritten.
         self.over_write_file_by_oss_key = over_write_file_by_oss_key
-        # The list of tags associated with the file. Default value: empty, which means the file is not associated with any tags. A maximum of 10 tags can be specified.
+        # The list of tags associated with the file. Default value: empty, which means the file is not associated with any tags. You can specify up to 10 tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):

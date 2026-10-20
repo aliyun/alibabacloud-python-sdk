@@ -19,7 +19,7 @@ class ListIndexDocumentsResponseBody(DaraModel):
     ):
         # The error status code.
         self.code = code
-        # The data field returned by the operation.
+        # The business data field of the operation.
         self.data = data
         # The error message.
         self.message = message
@@ -171,7 +171,7 @@ class ListIndexDocumentsResponseBodyDataDocuments(DaraModel):
     ):
         # The error status code for file import.
         self.code = code
-        # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
+        # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, EXCEL.
         self.document_type = document_type
         # The time when the file was imported to the knowledge base, in UNIX timestamp format.
         self.gmt_modified = gmt_modified

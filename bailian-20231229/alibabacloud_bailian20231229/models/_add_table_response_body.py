@@ -21,14 +21,14 @@ class AddTableResponseBody(DaraModel):
         self.data = data
         # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The status code returned by the interface.
+        # The status code returned by the operation.
         self.status = status
-        # Indicates whether the API call was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - true: The call was successful.
-        # - false: The call failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
