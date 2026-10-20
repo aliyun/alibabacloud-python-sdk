@@ -29,73 +29,73 @@ class UpdateWaitingRoomRequest(DaraModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
-        # The custom cookie name.
+        # The name of the custom cookie.
         self.cookie_name = cookie_name
-        # The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must be in Base64 encoding.
+        # The custom content of the waiting room page. This parameter is required when the waiting room type is custom. The content requires Base64 encoding.
         self.custom_page_html = custom_page_html
         # The description of the waiting room.
         self.description = description
         # Specifies whether to disable session renewal. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: Disables session renewal.
+        # - **off**: Enables session renewal.
         self.disable_session_renewal_enable = disable_session_renewal_enable
         # The status of the waiting room. Valid values:
         # 
-        #  - **on**: Enabled.
-        #  - **off**: Disabled.
+        #  - **on**: Enables the waiting room.
+        #  - **off**: Disables the waiting room.
         self.enable = enable
-        # The hostname and path configurations.
+        # The hostnames and paths.
         self.host_name_and_path = host_name_and_path
-        # Specifies whether to enable JSON response. If enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
+        # Specifies whether to enable JSON responses. If this feature is enabled and the Accept request header contains "application/json", JSON data is returned. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: Enables the feature.
+        # - **off**: Disables the feature.
         self.json_response_enable = json_response_enable
-        # The language of the waiting room page. This parameter is required when the waiting room type is set to default. Valid values:
+        # The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
         # 
-        # - **enus**: English.
-        # - **zhcn**: Simplified Chinese.
-        # - **zhhk**: Traditional Chinese.
+        # - **enus**: English
+        # - **zhcn**: Simplified Chinese
+        # - **zhhk**: Traditional Chinese
         self.language = language
         # The name of the waiting room.
         self.name = name
         # The number of new users per minute.
         self.new_users_per_minute = new_users_per_minute
-        # Specifies whether to queue all visitors. Valid values:
+        # Specifies whether to queue all users. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: Enables the feature.
+        # - **off**: Disables the feature.
         self.queue_all_enable = queue_all_enable
         # The queuing method. Valid values:
         # 
-        # - **random**: random.
-        # - **fifo**: first-in, first-out.
-        # - **passthrough**: passthrough.
-        # - **reject-all**: reject all.
+        # - **random**: random
+        # - **fifo**: first in, first out (FIFO)
+        # - **passthrough**: passthrough
+        # - **reject-all**: reject all
         self.queuing_method = queuing_method
-        # The status code returned by the waiting room. Valid values:
+        # The HTTP status code of the waiting room. Valid values:
         # 
         # - **200**
         # - **202**
         # - **429**
         self.queuing_status_code = queuing_status_code
-        # The session duration in minutes.
+        # The duration of a user session, in minutes.
         self.session_duration = session_duration
-        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
         # The total number of active users.
         self.total_active_users = total_active_users
-        # The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # The ID of the waiting room. You can call the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation to query the waiting room ID.
         # 
         # This parameter is required.
         self.waiting_room_id = waiting_room_id
         # The type of the waiting room. Valid values:
         # 
-        # - **default**: default type.
-        # - **custom**: custom type.
+        # - **default**: default type
+        # - **custom**: custom type
         self.waiting_room_type = waiting_room_type
 
     def validate(self):

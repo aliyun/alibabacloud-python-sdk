@@ -14,7 +14,7 @@ class ApplyCertificateRequest(DaraModel):
     ):
         # The algorithm type.
         self.alg_type = alg_type
-        # The list of domain names, separated by commas.
+        # The list of domain names. Separate multiple domain names with commas.
         # 
         # This parameter is required.
         self.domains = domains
@@ -23,9 +23,9 @@ class ApplyCertificateRequest(DaraModel):
         # This parameter is required.
         self.site_id = site_id
         # The certificate type. Valid values:
-        # - lets_encrypt: Let\\"s Encrypt certificate.
-        # - digicert_single: DigiCert single-domain certificate.
-        # - digicert_wildcard: DigiCert wildcard domain certificate.
+        # - lets_encrypt: Let\\"s Encrypt certificate
+        # - digicert_single: DigiCert single-domain certificate
+        # - digicert_wildcard: DigiCert wildcard certificate
         self.type = type
 
     def validate(self):

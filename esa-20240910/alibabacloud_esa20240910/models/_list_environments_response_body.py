@@ -65,11 +65,11 @@ class ListEnvironmentsResponseBodyEnvironmentList(DaraModel):
         site_version: int = None,
         update_time: str = None,
     ):
-        # The creation time.
+        # The time when the environment was created. The time follows the ISO 8601 standard and is in UTC. Example: 2024-08-15T08:15:30Z.
         self.create_time = create_time
-        # The environment name.
+        # The name of the environment.
         self.environment_name = environment_name
-        # Indicates whether this is the default environment.
+        # Indicates whether the environment is the default environment.
         self.is_default = is_default
         # The previous version number.
         self.pre_site_version = pre_site_version
@@ -79,9 +79,9 @@ class ListEnvironmentsResponseBodyEnvironmentList(DaraModel):
         self.read_only = read_only
         # The environment rule.
         self.rule = rule
-        # The site version number.
+        # The version number of the site.
         self.site_version = site_version
-        # The update time.
+        # The time when the environment was updated. The time follows the ISO 8601 standard and is in UTC. Example: 2023-09-15T08:16:04Z.
         self.update_time = update_time
 
     def validate(self):

@@ -12,15 +12,15 @@ class GetUserMaxPlanQuotaResponseBody(DaraModel):
         quota_value: str = None,
         request_id: str = None,
     ):
-        # The plan instance ID. You can obtain this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The plan instance ID. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.instance_id = instance_id
         # The plan name.
         # 
         # <props="china">
         # - Free Edition: entranceplan
-        # - Basic: basic
-        # - Standard: medium
-        # - Premium Edition: high
+        # - Basic Edition: basic
+        # - Standard Edition: medium
+        # - Advanced Edition: high
         # 
         # 
         # <props="intl">

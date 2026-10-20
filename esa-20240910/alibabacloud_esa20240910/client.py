@@ -6425,6 +6425,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_site_delivery_task_with_options_async(request, runtime)
 
+    def create_slider_captcha_page_with_options(
+        self,
+        tmp_req: main_models.CreateSliderCaptchaPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSliderCaptchaPageResponse:
+        tmp_req.validate()
+        request = main_models.CreateSliderCaptchaPageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.configs):
+            request.configs_shrink = Utils.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not DaraCore.is_null(tmp_req.site_ids):
+            request.site_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.site_ids, 'SiteIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not DaraCore.is_null(request.custom_content):
+            body['CustomContent'] = request.custom_content
+        if not DaraCore.is_null(request.force_language):
+            body['ForceLanguage'] = request.force_language
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.site_ids_shrink):
+            body['SiteIds'] = request.site_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSliderCaptchaPage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSliderCaptchaPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_slider_captcha_page_with_options_async(
+        self,
+        tmp_req: main_models.CreateSliderCaptchaPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSliderCaptchaPageResponse:
+        tmp_req.validate()
+        request = main_models.CreateSliderCaptchaPageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.configs):
+            request.configs_shrink = Utils.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not DaraCore.is_null(tmp_req.site_ids):
+            request.site_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.site_ids, 'SiteIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not DaraCore.is_null(request.custom_content):
+            body['CustomContent'] = request.custom_content
+        if not DaraCore.is_null(request.force_language):
+            body['ForceLanguage'] = request.force_language
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.site_ids_shrink):
+            body['SiteIds'] = request.site_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSliderCaptchaPage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSliderCaptchaPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_slider_captcha_page(
+        self,
+        request: main_models.CreateSliderCaptchaPageRequest,
+    ) -> main_models.CreateSliderCaptchaPageResponse:
+        runtime = RuntimeOptions()
+        return self.create_slider_captcha_page_with_options(request, runtime)
+
+    async def create_slider_captcha_page_async(
+        self,
+        request: main_models.CreateSliderCaptchaPageRequest,
+    ) -> main_models.CreateSliderCaptchaPageResponse:
+        runtime = RuntimeOptions()
+        return await self.create_slider_captcha_page_with_options_async(request, runtime)
+
     def create_slr_role_for_realtime_log_with_options(
         self,
         runtime: RuntimeOptions,
@@ -11066,6 +11164,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteSiteOriginClientCertificateResponse:
         runtime = RuntimeOptions()
         return await self.delete_site_origin_client_certificate_with_options_async(request, runtime)
+
+    def delete_slider_captcha_page_with_options(
+        self,
+        request: main_models.DeleteSliderCaptchaPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSliderCaptchaPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSliderCaptchaPage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSliderCaptchaPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_slider_captcha_page_with_options_async(
+        self,
+        request: main_models.DeleteSliderCaptchaPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSliderCaptchaPageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSliderCaptchaPage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSliderCaptchaPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_slider_captcha_page(
+        self,
+        request: main_models.DeleteSliderCaptchaPageRequest,
+    ) -> main_models.DeleteSliderCaptchaPageResponse:
+        runtime = RuntimeOptions()
+        return self.delete_slider_captcha_page_with_options(request, runtime)
+
+    async def delete_slider_captcha_page_async(
+        self,
+        request: main_models.DeleteSliderCaptchaPageRequest,
+    ) -> main_models.DeleteSliderCaptchaPageResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_slider_captcha_page_with_options_async(request, runtime)
 
     def delete_transport_layer_application_with_options(
         self,
@@ -21037,6 +21205,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_site_waf_settings_with_options_async(request, runtime)
 
+    def get_slider_captcha_page_with_options(
+        self,
+        request: main_models.GetSliderCaptchaPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSliderCaptchaPageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSliderCaptchaPage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSliderCaptchaPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_slider_captcha_page_with_options_async(
+        self,
+        request: main_models.GetSliderCaptchaPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSliderCaptchaPageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSliderCaptchaPage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSliderCaptchaPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_slider_captcha_page(
+        self,
+        request: main_models.GetSliderCaptchaPageRequest,
+    ) -> main_models.GetSliderCaptchaPageResponse:
+        runtime = RuntimeOptions()
+        return self.get_slider_captcha_page_with_options(request, runtime)
+
+    async def get_slider_captcha_page_async(
+        self,
+        request: main_models.GetSliderCaptchaPageRequest,
+    ) -> main_models.GetSliderCaptchaPageResponse:
+        runtime = RuntimeOptions()
+        return await self.get_slider_captcha_page_with_options_async(request, runtime)
+
     def get_tiered_cache_with_options(
         self,
         request: main_models.GetTieredCacheRequest,
@@ -26776,6 +27014,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListSitesResponse:
         runtime = RuntimeOptions()
         return await self.list_sites_with_options_async(request, runtime)
+
+    def list_slider_captcha_pages_with_options(
+        self,
+        tmp_req: main_models.ListSliderCaptchaPagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSliderCaptchaPagesResponse:
+        tmp_req.validate()
+        request = main_models.ListSliderCaptchaPagesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.query_args):
+            request.query_args_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSliderCaptchaPages',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSliderCaptchaPagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_slider_captcha_pages_with_options_async(
+        self,
+        tmp_req: main_models.ListSliderCaptchaPagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSliderCaptchaPagesResponse:
+        tmp_req.validate()
+        request = main_models.ListSliderCaptchaPagesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.query_args):
+            request.query_args_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_args, 'QueryArgs', 'json')
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_args_shrink):
+            query['QueryArgs'] = request.query_args_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSliderCaptchaPages',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSliderCaptchaPagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_slider_captcha_pages(
+        self,
+        request: main_models.ListSliderCaptchaPagesRequest,
+    ) -> main_models.ListSliderCaptchaPagesResponse:
+        runtime = RuntimeOptions()
+        return self.list_slider_captcha_pages_with_options(request, runtime)
+
+    async def list_slider_captcha_pages_async(
+        self,
+        request: main_models.ListSliderCaptchaPagesRequest,
+    ) -> main_models.ListSliderCaptchaPagesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_slider_captcha_pages_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -37110,6 +37434,108 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateSiteVanityNSResponse:
         runtime = RuntimeOptions()
         return await self.update_site_vanity_nswith_options_async(request, runtime)
+
+    def update_slider_captcha_page_with_options(
+        self,
+        tmp_req: main_models.UpdateSliderCaptchaPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSliderCaptchaPageResponse:
+        tmp_req.validate()
+        request = main_models.UpdateSliderCaptchaPageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.configs):
+            request.configs_shrink = Utils.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not DaraCore.is_null(tmp_req.site_ids):
+            request.site_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.site_ids, 'SiteIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not DaraCore.is_null(request.custom_content):
+            body['CustomContent'] = request.custom_content
+        if not DaraCore.is_null(request.force_language):
+            body['ForceLanguage'] = request.force_language
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.site_ids_shrink):
+            body['SiteIds'] = request.site_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSliderCaptchaPage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSliderCaptchaPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_slider_captcha_page_with_options_async(
+        self,
+        tmp_req: main_models.UpdateSliderCaptchaPageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSliderCaptchaPageResponse:
+        tmp_req.validate()
+        request = main_models.UpdateSliderCaptchaPageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.configs):
+            request.configs_shrink = Utils.array_to_string_with_specified_style(tmp_req.configs, 'Configs', 'json')
+        if not DaraCore.is_null(tmp_req.site_ids):
+            request.site_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.site_ids, 'SiteIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.configs_shrink):
+            body['Configs'] = request.configs_shrink
+        if not DaraCore.is_null(request.custom_content):
+            body['CustomContent'] = request.custom_content
+        if not DaraCore.is_null(request.force_language):
+            body['ForceLanguage'] = request.force_language
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.site_ids_shrink):
+            body['SiteIds'] = request.site_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSliderCaptchaPage',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSliderCaptchaPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_slider_captcha_page(
+        self,
+        request: main_models.UpdateSliderCaptchaPageRequest,
+    ) -> main_models.UpdateSliderCaptchaPageResponse:
+        runtime = RuntimeOptions()
+        return self.update_slider_captcha_page_with_options(request, runtime)
+
+    async def update_slider_captcha_page_async(
+        self,
+        request: main_models.UpdateSliderCaptchaPageRequest,
+    ) -> main_models.UpdateSliderCaptchaPageResponse:
+        runtime = RuntimeOptions()
+        return await self.update_slider_captcha_page_with_options_async(request, runtime)
 
     def update_tiered_cache_with_options(
         self,

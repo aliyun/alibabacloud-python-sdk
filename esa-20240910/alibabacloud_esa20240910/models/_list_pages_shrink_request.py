@@ -13,9 +13,9 @@ class ListPagesShrinkRequest(DaraModel):
     ):
         # The page number. Valid values: **1 to 100000**. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20.
+        # The page size. Default value: 20.
         self.page_size = page_size
-        # The query parameters passed in JSON format, which contain various filter conditions.
+        # The query parameters passed in JSON format, which include various filter conditions.
         self.query_args_shrink = query_args_shrink
 
     def validate(self):

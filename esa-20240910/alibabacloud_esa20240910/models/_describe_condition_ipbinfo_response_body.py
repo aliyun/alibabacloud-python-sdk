@@ -57,7 +57,7 @@ class DescribeConditionIPBInfoResponseBodyDatas(DaraModel):
         self,
         value: str = None,
     ):
-        # The returned data details, including the name of the country, ISP, or region and the corresponding identifier code.
+        # The returned data details, including the name of the country, ISP, or region, and its corresponding identifier.
         self.value = value
 
     def validate(self):

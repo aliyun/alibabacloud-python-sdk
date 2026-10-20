@@ -18,27 +18,27 @@ class CreateHttpResponseHeaderModificationRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The response header modifications. Three operation types are supported: add, delete, and modify.
+        # The response header modifications. Add, delete, and modify operations are supported.
         # 
         # This parameter is required.
         self.response_header_modification = response_header_modification
-        # The rule content, which uses conditional expressions to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+        # The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
         # - Match all incoming requests: Set the value to true.
-        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+        # - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
         self.rule = rule
-        # The rule switch. This parameter is not required when you add a global configuration. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
         # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
-        # The rule execution order. A smaller value indicates a higher priority.
+        # The execution sequence of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
         # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):
@@ -113,23 +113,23 @@ class CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
         type: str = None,
         value: str = None,
     ):
-        # The response header name.
+        # The name of the response header.
         # 
         # This parameter is required.
         self.name = name
         # The operation type. Valid values:
         # 
-        # - add: adds a response header.
-        # - del: deletes a response header.
-        # - modify: modifies a response header.
+        # - add: Add.
+        # - del: Delete.
+        # - modify: Modify.
         # 
         # This parameter is required.
         self.operation = operation
         # The value type. Valid values:
-        # - static: static pattern.
-        # - dynamic: dynamic schema.
+        # - static: Static pattern.
+        # - dynamic: Dynamic pattern.
         self.type = type
-        # The response header value.
+        # The value of the response header.
         self.value = value
 
     def validate(self):

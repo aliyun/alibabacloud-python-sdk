@@ -14,11 +14,11 @@ class ListScheduledPreloadJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of prefetch task information.
+        # The list of prefetch tasks.
         self.jobs = jobs
         # The request ID.
         self.request_id = request_id
-        # The total number of records after filtering.
+        # The total number of filtered records.
         self.total_count = total_count
 
     def validate(self):
@@ -82,34 +82,29 @@ class ListScheduledPreloadJobsResponseBodyJobs(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The task creation time in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
+        # The time when the task was created. The time follows the ISO 8601 standard, such as 2024-01-01T00:00:00Z.
         self.created_at = created_at
-        # The list of domain names for prefetch.
+        # The list of domain names to prefetch.
         self.domains = domains
-        # The fault error message.
+        # The error message.
         self.error_info = error_info
-        # The number of prefetch schedules.
+        # The number of prefetch plans.
         self.execution_count = execution_count
         # The OSS URL of the failed file.
         self.failed_file_oss = failed_file_oss
-        # The URL list file ID, which is used for download.
+        # The ID of the URL list file, which is used for downloading.
         self.file_id = file_id
         # The task ID.
         self.id = id
-        # The URL insertion method. Valid values:
-        # - oss: URLs are imported in bulk from an OSS file.
-        # - testBox: URLs are entered one by one in a text box.
+        # The method used to insert URLs.
         self.insert_way = insert_way
         # The task name.
         self.name = name
         # The site ID.
         self.site_id = site_id
-        # The number of URLs that have been submitted to the system for prefetch.
+        # The number of URLs submitted to the system for prefetch tasks.
         self.task_submitted = task_submitted
-        # The task type (refresh or prefetch). Valid values:
-        # - path: Directory refresh.
-        # - refresh: URL refresh.
-        # - preload: URL prefetch.
+        # The task type, such as refresh or prefetch.
         self.task_type = task_type
         # The total number of URLs.
         self.url_count = url_count

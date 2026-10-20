@@ -18,23 +18,19 @@ class DescribeDDoSL7QpsListResponseBody(DaraModel):
         site_id: int = None,
         start_time: str = None,
     ):
-        # The time granularity of the queried data, in seconds.
+        # The time granularity of the queried data. Unit: seconds.
         self.data_interval = data_interval
-        # Application layer time trend data list.
+        # The list of application-layer time-series data.
         self.data_module = data_module
-        # The end time of the query.
-        # 
-        # The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The end time of the query. The time is displayed in UTC and formatted based on ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
         self.end_time = end_time
-        # Record ID.
+        # The record ID.
         self.record_id = record_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Site ID.
+        # The site ID.
         self.site_id = site_id
-        # The start time of the query.
-        # 
-        # The date format follows ISO8601 notation and uses UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -109,13 +105,13 @@ class DescribeDDoSL7QpsListResponseBodyDataModule(DaraModel):
         time_stamp: str = None,
         total: int = None,
     ):
-        # Attack QPS.
+        # The attack QPS.
         self.attack = attack
-        # Normal QPS.
+        # The normal QPS.
         self.normal = normal
-        # Data time, following ISO8601 notation and using UTC+0, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The data timestamp. The time is displayed in UTC and formatted based on ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
         self.time_stamp = time_stamp
-        # Total QPS.
+        # The total QPS.
         self.total = total
 
     def validate(self):

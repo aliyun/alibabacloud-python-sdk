@@ -14,9 +14,9 @@ class CreateCustomScenePolicyRequest(DaraModel):
         start_time: str = None,
         template: str = None,
     ):
-        # The policy end time.
+        # The end time of the policy.
         # 
-        # The time must be in UTC and in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -24,21 +24,20 @@ class CreateCustomScenePolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
+        # The IDs of the websites to be associated. Separate multiple IDs with commas (,).
         # 
-        # > This parameter is deprecated. Use `SiteIds` instead. If `SiteIds` is specified, the value of this parameter is ignored. To prevent ambiguity, specify a value for either `SiteIds` or `Objects`.
+        # > **[Deprecated]** This parameter is deprecated. Use the SiteIds parameter instead. If the SiteIds parameter is specified, the value of the SiteIds parameter takes precedence and the value of the Objects parameter does not take effect. To avoid ambiguity in update operations, you must specify at least one of the SiteIds and Objects parameters.
         self.objects = objects
-        # The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
+        # The IDs of the websites to be associated. Separate multiple IDs with commas (,).
         self.site_ids = site_ids
-        # The policy start time.
+        # The start time of the policy.
         # 
-        # The time must be in UTC and in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The template name. Valid value:
-        # 
-        # - **promotion**: a policy for major events.
+        # The name of the template. Valid values:
+        # - **promotion**: Important Activity.
         # 
         # This parameter is required.
         self.template = template

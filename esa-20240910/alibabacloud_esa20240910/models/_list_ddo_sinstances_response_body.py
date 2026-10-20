@@ -25,7 +25,7 @@ class ListDDoSInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
         # The total number of pages.
         self.total_page = total_page
@@ -99,7 +99,7 @@ class ListDDoSInstancesResponseBodyInstanceInfo(DaraModel):
         site_instance_id: str = None,
         status: str = None,
     ):
-        # The purchase time of the instance. The time is in ISO 8601 format and displayed in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+        # The creation time of the instance. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
         # The specifications of the DDoS instance in the Chinese mainland.
         self.ddo_sburstable_domestic_protection = ddo_sburstable_domestic_protection
@@ -107,15 +107,15 @@ class ListDDoSInstancesResponseBodyInstanceInfo(DaraModel):
         self.ddo_sburstable_overseas_protection = ddo_sburstable_overseas_protection
         # The instance ID.
         self.instance_id = instance_id
-        # The scheduled release time. The time is in ISO 8601 format and displayed in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+        # The scheduled release time. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.reserve_release_time = reserve_release_time
-        # The ID of the associated site plan instance.
+        # The ID of the associated website plan instance.
         self.site_instance_id = site_instance_id
         # The instance status. Valid values:
-        # - **online**: The instance is running normally.
-        # - **offline**: The instance has expired but is not overdue, and is unavailable.
-        # - **disable**: The instance has been released.
-        # - **overdue**: The instance is suspended due to overdue payment.
+        # - **online**: the instance is in normal service status.
+        # - **offline**: the instance has expired but is not overdue, and is in an unavailable state.
+        # - **disable**: the instance is released.
+        # - **overdue**: the instance is stopped due to an overdue payment.
         self.status = status
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribeCustomScenePoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The configurations of custom scene policies.
+        # The list of configurations for scenario-specific policies.
         self.data_module = data_module
         # The page number.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The maximum number of policies that you can create.
+        # The configuration quota.
         self.quota = quota
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -100,37 +100,32 @@ class DescribeCustomScenePoliciesResponseBodyDataModule(DaraModel):
         status: str = None,
         template: str = None,
     ):
-        # The end time of the policy.
+        # The end time of the policy validity period.
         # 
-        # The time is in UTC and follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.end_time = end_time
-        # The name of the custom scene policy.
+        # The name of the scenario-specific policy.
         self.name = name
-        # A list of associated site IDs.
+        # The list of associated site IDs.
         # 
-        # > This field is deprecated. We recommend that you use the `SiteIds` field instead.
+        # > **[Deprecated]** Read the SiteIds field instead.
         self.objects = objects
         # The policy ID.
         self.policy_id = policy_id
-        # A comma-separated list of site IDs associated with the policy.
+        # The associated site IDs. Multiple site IDs are separated by commas (,).
         self.site_ids = site_ids
-        # The start time of the policy.
+        # The start time of the policy validity period.
         # 
-        # The time is in UTC and follows the ISO 8601 standard. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.start_time = start_time
         # The effective status of the policy. Valid values:
-        # 
-        # - **disabled**: The policy is disabled.
-        # 
-        # - **pending**: The policy is waiting to take effect.
-        # 
-        # - **running**: The policy is in effect.
-        # 
-        # - **expired**: The policy has expired.
+        # - **Disabled**: Disabled.
+        # - **Pending**: Pending.
+        # - **Running**: Running.
+        # - **Expired**: Expired.
         self.status = status
-        # The template name. Valid value:
-        # 
-        # - **promotion**: A major event.
+        # The template name. Valid values:
+        # - **promotion**: Important Activity.
         self.template = template
 
     def validate(self):

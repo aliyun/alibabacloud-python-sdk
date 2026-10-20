@@ -11,17 +11,17 @@ class SetRoutineEnvironmentVariablesShrinkRequest(DaraModel):
         environment_variables_shrink: str = None,
         name: str = None,
     ):
-        # The environment name. Valid values:
-        # - `staging`: staging environment.
-        # - `production`: production environment.
+        # The name of the environment. Valid values:
+        # - `staging`: staging environment
+        # - `production`: production environment
         # 
         # This parameter is required.
         self.env = env
-        # The dictionary of environment variables. The key is the environment variable name, and the value is the environment variable value.
+        # The environment variable dictionary. The key is the environment variable name, and the value is the environment variable value.
         # 
         # This parameter is required.
         self.environment_variables_shrink = environment_variables_shrink
-        # The function name.
+        # The name of the function.
         # 
         # This parameter is required.
         self.name = name

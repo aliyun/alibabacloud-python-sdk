@@ -12,29 +12,23 @@ class SetAutomaticFrequencyControlConfigResponseBody(DaraModel):
         level: str = None,
         request_id: str = None,
     ):
-        # The action taken on requests that trigger the control. Valid values:
-        # 
-        # - **observe**: Requests are monitored.
-        # 
-        # - **deny**: Requests are blocked.
-        # 
-        # - **js**: JS challenges are issued.
+        # The action to perform. Valid values:
+        # - **observe**: Monitor.
+        # - **deny**: Block.
+        # - **js**: JavaScript Challenge.
         self.action_type = action_type
-        # Indicates whether automatic frequency control is enabled. Valid values:
+        # Specifies whether to enable the feature. Valid values:
         # 
-        # - **on**: Enabled.
+        #  - **on**: Enabled.
         # 
-        # - **off**: Disabled.
+        #  - **off**: Disabled.
         self.enable = enable
         # The protection level. Valid values:
-        # 
-        # - **loose**: Loose protection.
-        # 
-        # - **normal**: Normal protection.
-        # 
-        # - **strict**: Strict protection.
+        # - **loose**: Loose.
+        # - **normal**: Medium.
+        # - **strict**: Strict.
         self.level = level
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

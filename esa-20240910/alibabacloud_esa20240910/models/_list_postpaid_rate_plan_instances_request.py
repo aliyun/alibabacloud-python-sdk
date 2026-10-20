@@ -17,22 +17,22 @@ class ListPostpaidRatePlanInstancesRequest(DaraModel):
         status: str = None,
         unrelated_type: str = None,
     ):
-        # Specifies whether to check for remaining site quota. Valid values:
+        # Specifies whether to check for remaining site quotas. Valid values:
         # 
-        # - true: Queries instances that have remaining site quota.
+        # - true: Queries instances that have remaining site quotas.
         # 
         # - false: Does not filter by this condition.
         self.check_remaining_site_quota = check_remaining_site_quota
-        # The instance ID. Use this parameter to query a specific instance.
+        # The instance ID, which is used to query a specific instance.
         self.instance_id = instance_id
-        # The page number for paging queries. The value must be greater than or equal to 1.
+        # The page number Settings for paging in a paged query. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page for paging queries. Valid values: 1 to 500.
+        # The number of entries per page for paging in a paged query. Valid values: 1 to 500.
         self.page_size = page_size
         self.resource_owner = resource_owner
-        # The field by which to sort results. Valid values:
+        # Specifies the field by which to sort the results. Valid values:
         # 
-        # - CreateTime: sorted by creation time
+        # - CreateTime: sorts by creation time
         self.sort_by = sort_by
         # The sort order. Valid values:
         # 
@@ -42,13 +42,13 @@ class ListPostpaidRatePlanInstancesRequest(DaraModel):
         self.sort_order = sort_order
         # The instance status. Valid values:
         # 
-        #  * online: Normal.
+        #  * online: normal status
         # 
-        #  * overdue: Overdue payment.
+        #  * overdue: overdue payment
         # 
-        #  * disable: Released.
+        #  * disable: released
         self.status = status
-        # Specifies whether the instance has purchased additional bot or DDoS protection.
+        # Specifies whether bot or DDoS protection is added to the instance.
         self.unrelated_type = unrelated_type
 
     def validate(self):

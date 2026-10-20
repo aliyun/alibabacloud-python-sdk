@@ -10,14 +10,14 @@ class UpdateSiteNameExclusiveRequest(DaraModel):
         enable: str = None,
         site_id: int = None,
     ):
-        # The feature switch. Valid values:
+        # Specifies whether to enable the feature. Valid values:
         # 
-        # - on: enabled.
-        # - off: disabled.
+        # - on: Enabled.
+        # - off: Disabled.
         # 
         # This parameter is required.
         self.enable = enable
-        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

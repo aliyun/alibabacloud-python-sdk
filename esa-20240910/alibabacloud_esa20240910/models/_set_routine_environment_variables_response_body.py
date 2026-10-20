@@ -14,7 +14,7 @@ class SetRoutineEnvironmentVariablesResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The list of environment variable keys that were set successfully.
+        # The list of keys for the successfully set environment variables.
         self.set_keys = set_keys
 
     def validate(self):

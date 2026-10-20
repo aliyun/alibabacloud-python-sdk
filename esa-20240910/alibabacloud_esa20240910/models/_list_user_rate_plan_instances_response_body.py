@@ -17,9 +17,9 @@ class ListUserRatePlanInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The plan instances that match the specified conditions under the user.
+        # The plan instances that meet the query conditions under the user.
         self.instance_info = instance_info
-        # The current page number, same as the PageNumber request parameter.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -127,84 +127,84 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfo(DaraModel):
         # - **PREPAY**: Subscription.
         # - **POSTPAY**: Pay-as-you-go.
         self.billing_mode = billing_mode
-        # If empty, the plan does not include a bot protection instance. If a value is returned, the plan includes a bot protection instance. Valid values:
+        # If this parameter is empty, no bot protection instance is purchased for the plan. If a value is returned, a bot protection instance is purchased for the plan. Valid values:
         # 
         # - enterprise_bot: Web edition.
         # 
         # - enterprise_bot_with_app: App edition.
         self.bot_instance_level = bot_instance_level
-        # The prepaid bot protection requests included in the plan (in units of 10,000).
+        # The prepaid number of bot requests in the plan. Unit: 10,000 requests.
         self.bot_request = bot_request
-        # The acceleration coverage areas for sites that can be bound to this plan instance. Multiple values are separated by commas (,). Valid values:
+        # The acceleration regions where the site can be bound. Multiple regions are separated by commas (,). Valid values:
         # 
-        # - **domestic**: China or the Chinese mainland.
-        # - **overseas**: Global (excluding China or the Chinese mainland).
-        # - **global**: Global (including China or the Chinese mainland).
+        # - **domestic**: Chinese mainland.
+        # - **overseas**: Global (excluding the Chinese mainland).
+        # - **global**: Global (including the Chinese mainland).
         self.coverages = coverages
-        # The purchase time of the plan instance. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The creation time of the plan instance. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with ISO 8601.
         self.create_time = create_time
-        # The prepaid China network acceleration traffic (GB) included in the plan.
+        # The prepaid China network acceleration traffic in the plan. Unit: GB.
         self.crossborder_traffic = crossborder_traffic
-        # The Anti-DDoS instance specification for the Chinese mainland included in the plan.
+        # The specifications of the Anti-DDoS instance in the plan for the Chinese mainland.
         self.ddos_burstable_domestic_protection = ddos_burstable_domestic_protection
-        # The Anti-DDoS instance specification outside the Chinese mainland included in the plan.
+        # The specifications of the Anti-DDoS instance in the plan for regions outside the Chinese mainland.
         self.ddos_burstable_overseas_protection = ddos_burstable_overseas_protection
-        # If empty, the plan does not include an Anti-DDoS instance. If a value is returned, the plan includes an Anti-DDoS instance. The value is `esa_ddos_instance`.
+        # If this parameter is empty, no Anti-DDoS instance is purchased for the plan. If a value is returned, an Anti-DDoS instance is purchased for the plan, and the value is `esa_ddos_instance`.
         self.ddos_instance_level = ddos_instance_level
         # The subscription duration of the plan instance. Unit: months.
         self.duration = duration
-        # The prepaid Edge Routine (ER) requests included in the plan (in units of 10,000).
+        # The prepaid number of Edge Routine (ER) requests in the plan. Unit: 10,000 requests.
         self.edge_routine_rquest = edge_routine_rquest
-        # The prepaid WAF requests included in the plan (in units of 10,000).
+        # The prepaid number of Web Application Firewall (WAF) requests in the plan. Unit: 10,000 requests.
         self.edge_waf_request = edge_waf_request
-        # The expiration time of the plan instance. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The expiration time of the plan instance. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with ISO 8601.
         self.expire_time = expire_time
-        # The plan instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # The prepaid Layer 4 proxy traffic (GB) included in the plan - Chinese mainland.
+        # The prepaid Layer 4 proxy traffic in the plan for the Chinese mainland. Unit: GB.
         self.layer_4traffic = layer_4traffic
-        # The prepaid Layer 4 proxy traffic (GB) included in the plan - outside the Chinese mainland.
+        # The prepaid Layer 4 proxy traffic in the plan for regions outside the Chinese mainland. Unit: GB.
         self.layer_4traffic_intl = layer_4traffic_intl
         self.owner_id = owner_id
-        # The plan name associated with the plan instance.
+        # The name of the plan corresponding to the plan instance.
         self.plan_name = plan_name
-        # The prepaid Layer 7 acceleration traffic (GB) included in the plan.
+        # The prepaid Layer 7 acceleration traffic in the plan. Unit: GB.
         self.plan_traffic = plan_traffic
-        # The plan type associated with the plan instance. Valid values:
-        # - **normal**: Fixed edition plan.
-        # - **enterprise**: Enterprise edition plan.
+        # The type of the plan corresponding to the plan instance. Valid values:
+        # - **normal**: Fixed plan.
+        # - **enterprise**: Enterprise plan.
         self.plan_type = plan_type
         # The auto-renewal cycle. Unit: months.
         self.renewal_duration = renewal_duration
         # The auto-renewal status. Valid values:
         # 
         # - nomal: Normal.
-        # - auto_renewal: Auto-renewal enabled.
-        # - not_renewal: Auto-renewal disabled.
+        # - auto_renewal: Auto-renewal.
+        # - not_renewal: Non-renewal.
         self.renewal_status = renewal_status
         self.resource_owner = resource_owner
         self.share_type = share_type
-        # The site quota for the plan instance.
+        # The quota for the number of sites under the plan instance.
         self.site_quota = site_quota
         # The list of sites bound to the current plan instance.
         self.sites = sites
-        # The prepaid smart routing requests included in the plan (in units of 10,000).
+        # The prepaid number of smart routing requests in the plan. Unit: 10,000 requests.
         self.smart_routing_request = smart_routing_request
-        # The prepaid HTTP requests included in the plan (in units of 10,000).
+        # The prepaid number of HTTP requests in the plan. Unit: 10,000 requests.
         self.static_request = static_request
         # The instance status. Valid values:
-        # - **online**: Normal service status.
-        # - **offline**: Expired but not overdue, in an inactive state.
-        # - **disable**: Released.
+        # - **online**: The instance is in normal service status.
+        # - **offline**: The instance has expired but is not overdue, and is in an inactive state.
+        # - **disable**: The instance is released.
         self.status = status
-        # The plan subscription type. Valid values:
+        # The subscription type of the plan. Valid values:
         # 
-        # - Free Edition (Chinese mainland): entranceplan
-        # - Free Edition (International): entranceplan_intl
-        # - Basic Edition: basicplan
-        # - Standard Edition: standardplan
-        # - Premium Edition: advancedplan
-        # - Enterprise Edition: enterpriseplan
+        # - entranceplan: Free Edition (Chinese mainland).
+        # - entranceplan_intl: Free Edition (International).
+        # - basicplan: Basic Edition.
+        # - standardplan: Standard Edition.
+        # - advancedplan: Advanced Edition.
+        # - enterpriseplan: Enterprise Edition.
         self.subscribe_type = subscribe_type
 
     def validate(self):
@@ -416,16 +416,16 @@ class ListUserRatePlanInstancesResponseBodyInstanceInfoSites(DaraModel):
         site_name: str = None,
         site_status: str = None,
     ):
-        # The site ID.
+        # The ID of the site.
         self.site_id = site_id
-        # The site name.
+        # The name of the site.
         self.site_name = site_name
-        # The site status. Valid values:
+        # The status of the site. Valid values:
         # 
         # - **pending**: The site is pending configuration.
         # - **active**: The site is activated.
         # - **offline**: The site is offline.
-        # - **moved**: The site has been superseded.
+        # - **moved**: The site is replaced.
         self.site_status = site_status
 
     def validate(self):

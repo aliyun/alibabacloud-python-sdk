@@ -20,9 +20,9 @@ class DescribeHttpDDoSIntelligentRateLimitRulesResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The list of rules.
+        # The list of rule information.
         self.rule_infos = rule_infos
         # The total number of rules.
         self.total_count = total_count
@@ -92,15 +92,15 @@ class DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos(DaraModel):
         rule_name: str = None,
         statistics: str = None,
     ):
-        # The action to perform.
+        # The action to be performed.
         self.action = action
-        # The conditions that trigger the rule.
+        # The trigger condition of the rule.
         self.condition = condition
-        # The ID of the protection rule for log records.
+        # The ID of the protection rule (used for log records).
         self.log_rule_id = log_rule_id
-        # The duration of the penalty in seconds.
+        # The block duration. Unit: seconds.
         self.punish_time = punish_time
-        # The frequency information.
+        # The rate limit information.
         self.rate_limit = rate_limit
         # The name of the record.
         self.record_name = record_name
@@ -108,7 +108,7 @@ class DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos(DaraModel):
         self.rule_id = rule_id
         # The name of the rule.
         self.rule_name = rule_name
-        # The statistics.
+        # The statistics information.
         self.statistics = statistics
 
     def validate(self):

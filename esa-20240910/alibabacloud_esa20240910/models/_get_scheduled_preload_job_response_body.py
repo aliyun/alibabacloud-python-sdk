@@ -25,21 +25,19 @@ class GetScheduledPreloadJobResponseBody(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The time when the task was created, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
+        # The task creation time in ISO 8601 format, such as 2024-01-01T00:00:00+Z.
         self.created_at = created_at
-        # The list of domain names for prefetch.
+        # The list of prefetched domain names.
         self.domains = domains
-        # The error message returned if a fault occurs.
+        # The error message.
         self.error_info = error_info
-        # The OSS address of the failed file.
+        # The OSS URL of the failed file.
         self.failed_file_oss = failed_file_oss
-        # The ID of the URL list file, used for downloading.
+        # The file ID of the URL list, which is used for download.
         self.file_id = file_id
         # The task ID.
         self.id = id
-        # The URL insertion method. Valid values:
-        # - oss: Import URLs in bulk from an OSS file.
-        # - testBox: Enter URLs one by one in a text box.
+        # The URL insertion method.
         self.insert_way = insert_way
         # The task name.
         self.name = name
@@ -47,12 +45,9 @@ class GetScheduledPreloadJobResponseBody(DaraModel):
         self.request_id = request_id
         # The site ID.
         self.site_id = site_id
-        # The number of URLs that have been submitted to the system for prefetch.
+        # The number of URLs submitted to the system for prefetch tasks.
         self.task_submitted = task_submitted
-        # The task type (refresh or prefetch). Valid values:
-        # - path: Directory refresh.
-        # - refresh: URL refresh.
-        # - preload: URL prefetch.
+        # The task type (refresh or prefetch).
         self.task_type = task_type
         # The total number of URLs.
         self.url_count = url_count

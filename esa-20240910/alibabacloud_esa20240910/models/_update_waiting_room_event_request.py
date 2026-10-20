@@ -28,32 +28,36 @@ class UpdateWaitingRoomEventRequest(DaraModel):
         waiting_room_event_id: int = None,
         waiting_room_type: str = None,
     ):
-        # The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
+        # The custom content of the waiting room page. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
         self.custom_page_html = custom_page_html
         # The description of the waiting room.
         self.description = description
         # Specifies whether to disable session renewal. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: yes.
+        # 
+        # - **off**: no.
         self.disable_session_renewal_enable = disable_session_renewal_enable
         # The enabling status. Valid values:
         # 
-        #  - **on**: Enables the waiting room event.
+        # - **on**: enables the waiting room event.
         # 
-        #  - **off**: Disables the waiting room event.
+        # - **off**: disables the waiting room event.
         self.enable = enable
         # The timestamp of the event end time.
         self.end_time = end_time
-        # Specifies whether to enable JSON response. Valid values:
+        # Specifies whether to enable JSON responses. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: yes.
+        # 
+        # - **off**: no.
         self.json_response_enable = json_response_enable
         # The default language setting. Valid values:
         # 
-        #  - **enus**: English.
+        # - **enus**: English.
+        # 
         # - **zhcn**: Simplified Chinese.
+        # 
         # - **zhhk**: Traditional Chinese.
         self.language = language
         # The name of the waiting room event.
@@ -62,32 +66,39 @@ class UpdateWaitingRoomEventRequest(DaraModel):
         self.new_users_per_minute = new_users_per_minute
         # Specifies whether to enable pre-queuing. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: yes.
+        # 
+        # - **off**: no.
         self.pre_queue_enable = pre_queue_enable
         # The timestamp of the pre-queuing start time.
         self.pre_queue_start_time = pre_queue_start_time
         # The queuing method. Valid values:
         # 
         # - **random**: random.
-        # - **fifo**: first-in-first-out.
+        # 
+        # - **fifo**: first in, first out (FIFO).
+        # 
         # - **passthrough**: passthrough.
+        # 
         # - **reject-all**: reject all.
         self.queuing_method = queuing_method
         # The waiting room status code. Valid values:
         # 
         # - **200**
+        # 
         # - **202**
+        # 
         # - **429**
         self.queuing_status_code = queuing_status_code
         # Specifies whether to enable random pre-queuing. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: yes.
+        # 
+        # - **off**: no.
         self.random_pre_queue_enable = random_pre_queue_enable
-        # The user session duration, in minutes.
+        # The duration of a user session, in minutes.
         self.session_duration = session_duration
-        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -95,14 +106,15 @@ class UpdateWaitingRoomEventRequest(DaraModel):
         self.start_time = start_time
         # The total number of active users.
         self.total_active_users = total_active_users
-        # The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # The ID of the waiting room event. You can call the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.waiting_room_event_id = waiting_room_event_id
         # The type of the waiting room. Valid values:
         # 
-        # - **default**: default type.
-        # - **custom**: custom type.
+        # - **default**: the default type.
+        # 
+        # - **custom**: the custom type.
         self.waiting_room_type = waiting_room_type
 
     def validate(self):

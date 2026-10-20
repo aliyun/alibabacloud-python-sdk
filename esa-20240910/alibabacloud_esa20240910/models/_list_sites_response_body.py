@@ -22,7 +22,7 @@ class ListSitesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The list of queried site information.
+        # The list of queried sites.
         self.sites = sites
         # The total number of sites.
         self.total_count = total_count
@@ -102,30 +102,30 @@ class ListSitesResponseBodySites(DaraModel):
     ):
         # The site access type. Valid values:
         # 
-        # - **NS**: NS-based access.
-        # - **CNAME**: CNAME-based access.
+        # - **NS**: NS access
+        # - **CNAME**: CNAME access
         self.access_type = access_type
-        # The CNAME suffix of the site. For sites that use CNAME-based access, this is the CNAME suffix that needs to be configured for records.
+        # The CNAME suffix of the site. For sites accessed through CNAME, this records the CNAME suffix that needs to be configured.
         self.cname_zone = cname_zone
-        # The acceleration region of the site. Valid values:
+        # The site acceleration region. Valid values:
         # 
-        # - **domestic**: the Chinese mainland only.
-        # - **global**: global.
-        # - **overseas**: global (excluding the Chinese mainland).
+        # - **domestic**: the Chinese mainland
+        # - **global**: global
+        # - **overseas**: global (excluding the Chinese mainland)
         self.coverage = coverage
-        # The creation time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The creation time of the site. The time is displayed in UTC and formatted in accordance with ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
-        # The instance ID of the plan attached to the site.
+        # The instance ID of the plan that you attach to the site.
         self.instance_id = instance_id
-        # The list of name servers assigned to the site. Multiple values are separated by commas (,).
+        # The list of name servers assigned to the site. Multiple name servers are separated by commas (,).
         self.name_server_list = name_server_list
         # The reason why the site is disabled. Valid values:
         # 
-        # - **expiration_ arrears**: The subscription plan has expired or the account has an overdue payment.
+        # - **expiration_ arrears**: The plan you subscribe to has expired or the account has an overdue payment.
         # - **internally_disabled**: The site is disabled by the system.
-        # - **missing_icp**: The domain name does not have an ICP filing.
-        # - **content_violation**: Content violation.
-        # - **proactively_disabled**: You proactively disabled the site or the site is disabled because the usage cap you configured is reached.
+        # - **missing_icp**: The domain name lacks an ICP filing.
+        # - **content_violation**: The site is disabled due to a content violation.
+        # - **proactively_disabled**: You proactively disabled the site or the site is disabled because it reached the usage cap Settings.
         self.offline_reason = offline_reason
         # The plan name.
         self.plan_name = plan_name
@@ -138,18 +138,18 @@ class ListSitesResponseBodySites(DaraModel):
         # The site name.
         self.site_name = site_name
         # The site status. Valid values:
-        # - **pending**: the site is pending configuration.
-        # - **active**: the site is activated.
-        # - **offline**: the site is offline.
-        # - **moved**: the site has been superseded.
+        # - **pending**: The site is pending configuration.
+        # - **active**: The site is activated.
+        # - **offline**: The site is offline.
+        # - **moved**: The site has been replaced.
         self.status = status
         # The site tags.
         self.tags = tags
-        # The update time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The update time of the site. The time is displayed in UTC and formatted in accordance with ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
         self.update_time = update_time
-        # The site ownership verification code. When a site uses CNAME-based access, this TXT verification code must be configured.
+        # The site ownership verification code. When a site is accessed through CNAME, this is the TXT verification code that needs to be configured.
         self.verify_code = verify_code
-        # The access time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # The access time of the site. The time is displayed in UTC and formatted in accordance with ISO 8601 in the yyyy-MM-ddTHH:mm:ssZ format.
         self.visit_time = visit_time
 
     def validate(self):

@@ -15,7 +15,7 @@ class ListVersionsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The version list of the site.
+        # The list of versions for the site.
         self.site_version_list = site_version_list
 
     def validate(self):
@@ -64,27 +64,27 @@ class ListVersionsResponseBodySiteVersionList(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The creation time.
+        # The creation time. The time follows the ISO 8601 standard and includes a time zone offset. Example: 2024-06-15T17:41:27+08:00.
         self.create_time = create_time
         # The description.
         self.description = description
-        # The environment list of the site version. The version may have no environment or one or more environments configured, such as the default environment or environment 2.
+        # The list of environments for the site version. No environment is configured, or one or more environments are configured, such as the default environment and Environment 2.
         self.environment_name_list = environment_name_list
         # The parent version of the site version.
         self.parent_site_version = parent_site_version
-        # Indicates whether the version is read-only. Default value: false.
+        # Specifies whether the version is read-only. Default value: false.
         self.read_only = read_only
         # The site version.
         self.site_version = site_version
         # The status. Valid values:
         # 
-        # - **online**: active.
+        # - **online**: Available.
         # 
-        # - **configuring**: being configured.
+        # - **configuring**: Configuring.
         # 
-        # - **configure_faild**: configuration failed.
+        # - **configure_faild**: Configuration failed.
         self.status = status
-        # The update time.
+        # The update time. The time follows the ISO 8601 standard and includes a time zone offset. Example: 2024-06-15T17:41:27+08:00.
         self.update_time = update_time
 
     def validate(self):

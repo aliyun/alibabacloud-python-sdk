@@ -13,9 +13,9 @@ class UpdateWaitingRoomRuleRequest(DaraModel):
         site_id: int = None,
         waiting_room_rule_id: int = None,
     ):
-        # The rule content. A conditional expression is used to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
-        # - Match all incoming requests: set the value to true.
-        # - Match specified requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
+        # The rule content. A conditional expression is used to match user requests. You do not need to specify this parameter when adding global Settings. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specific requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         # 
         # For the complete syntax of rule expressions, refer to
         # <props="china">https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/work-with-rules-engine/
@@ -23,21 +23,21 @@ class UpdateWaitingRoomRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule = rule
-        # Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # Specifies whether to enable the rule. You do not need to specify this parameter when adding a global configuration. Valid values:
+        # - on: enables the rule.
+        # - off: disables the rule.
         # 
         # This parameter is required.
         self.rule_enable = rule_enable
-        # The rule name. This parameter is not required when you add a global configuration.
+        # The rule name. You do not need to specify this parameter when adding a global configuration.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The ID of the waiting room bypass rule to update. You can obtain this ID after creating a rule by calling CreateWaitingRoomRule, or by calling the [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) operation.
+        # The ID of the waiting room bypass rule to be updated. You can obtain the rule ID after creating a rule by using CreateWaitingRoomRule or by calling the [ListWaitingRoomRules](https://help.aliyun.com/document_detail/2850279.html) operation.
         # 
         # This parameter is required.
         self.waiting_room_rule_id = waiting_room_rule_id

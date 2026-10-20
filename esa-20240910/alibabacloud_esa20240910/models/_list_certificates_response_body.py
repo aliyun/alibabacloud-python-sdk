@@ -18,9 +18,9 @@ class ListCertificatesResponseBody(DaraModel):
         site_name: str = None,
         total_count: int = None,
     ):
-        # The page number of the data to return.
+        # The page number of the returned data.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -30,7 +30,7 @@ class ListCertificatesResponseBody(DaraModel):
         self.site_id = site_id
         # The site name.
         self.site_name = site_name
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -131,9 +131,9 @@ class ListCertificatesResponseBodyResult(DaraModel):
         self.cas_id = cas_id
         # The common name of the certificate.
         self.common_name = common_name
-        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+        # The creation time. The time is in the YYYY-MM-DD HH:MM:SS format and in the UTC/GMT time zone.
         self.create_time = create_time
-        # The Domain Control Validation (DCV) information.
+        # The domain control validation (DCV) information.
         self.dcv = dcv
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
@@ -143,19 +143,19 @@ class ListCertificatesResponseBodyResult(DaraModel):
         self.issuer = issuer
         # The common name of the certificate issuer.
         self.issuer_cn = issuer_cn
-        # The Keyless server ID. This parameter is valid only when Type is set to keyless.
+        # The Keyless server ID. This parameter is valid only when the Type parameter is set to keyless.
         self.key_server_id = key_server_id
         # The certificate name.
         self.name = name
-        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+        # The end time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format and in the UTC/GMT time zone.
         self.not_after = not_after
-        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+        # The start time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format and in the UTC/GMT time zone.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pub_alg = pub_alg
         # The region information.
         self.region = region
-        # The Subject Alternative Name (SAN) of the certificate.
+        # The subject alternative name (SAN) of the certificate.
         self.san = san
         # The certificate serial number.
         self.serial_number = serial_number
@@ -165,18 +165,18 @@ class ListCertificatesResponseBodyResult(DaraModel):
         # - OK: Normal.
         # - Expired: The certificate has expired.
         # - Expiring: The certificate is about to expire (within 30 days).
-        # - Issued: Free certificate - Issued.
-        # - Applying: Free certificate - Applying.
-        # - ApplyFailed: Free certificate - Application failed.
-        # - Canceled: Free certificate - Canceled.
+        # - Issued: The free certificate is issued.
+        # - Applying: The free certificate is being applied for.
+        # - ApplyFailed: The application for the free certificate failed.
+        # - Canceled: The free certificate is canceled.
         self.status = status
         # The certificate type. Valid values:
-        # - cas: Alibaba Cloud SSL certificate.
+        # - cas: SSL Certificates Service certificate.
         # - upload: Custom uploaded certificate.
         # - free: Free certificate.
         # - keyless: Keyless certificate.
         self.type = type
-        # The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+        # The update time. The time is in the YYYY-MM-DD HH:MM:SS format and in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):
@@ -342,13 +342,13 @@ class ListCertificatesResponseBodyResultDCV(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # DCV ID。
+        # The DCV ID.
         self.id = id
         # The DCV name. For the DNS type, this is the TXT record name. For the HTTP type, this is the URL.
         self.key = key
         # The validation status.
         self.status = status
-        # The DCV type. Valid values: DNS, HTTP.
+        # The DCV type. Valid values: DNS and HTTP.
         self.type = type
         # The DCV content.
         self.value = value

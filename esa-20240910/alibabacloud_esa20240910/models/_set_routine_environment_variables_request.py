@@ -14,17 +14,17 @@ class SetRoutineEnvironmentVariablesRequest(DaraModel):
         environment_variables: Dict[str, main_models.EnvironmentVariablesValue] = None,
         name: str = None,
     ):
-        # The environment name. Valid values:
-        # - `staging`: staging environment.
-        # - `production`: production environment.
+        # The name of the environment. Valid values:
+        # - `staging`: staging environment
+        # - `production`: production environment
         # 
         # This parameter is required.
         self.env = env
-        # The dictionary of environment variables. The key is the environment variable name, and the value is the environment variable value.
+        # The environment variable dictionary. The key is the environment variable name, and the value is the environment variable value.
         # 
         # This parameter is required.
         self.environment_variables = environment_variables
-        # The function name.
+        # The name of the function.
         # 
         # This parameter is required.
         self.name = name

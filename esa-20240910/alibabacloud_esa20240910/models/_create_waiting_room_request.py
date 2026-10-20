@@ -32,7 +32,7 @@ class CreateWaitingRoomRequest(DaraModel):
         # 
         # This parameter is required.
         self.cookie_name = cookie_name
-        # The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
+        # The custom HTML content of the waiting room page. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
         self.custom_page_html = custom_page_html
         # The description of the waiting room.
         self.description = description
@@ -48,11 +48,11 @@ class CreateWaitingRoomRequest(DaraModel):
         # 
         # This parameter is required.
         self.enable = enable
-        # The hostname and path configurations.
+        # The hostnames and paths.
         # 
         # This parameter is required.
         self.host_name_and_path = host_name_and_path
-        # Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
+        # Specifies whether to enable JSON responses. If enabled, JSON data is returned when the Accept request header contains "application/json". Valid values:
         # 
         # - **on**: Enabled.
         # - **off**: Disabled.
@@ -70,7 +70,7 @@ class CreateWaitingRoomRequest(DaraModel):
         # 
         # This parameter is required.
         self.new_users_per_minute = new_users_per_minute
-        # Specifies whether to queue all visitors. Valid values:
+        # Specifies whether to queue all requests. Valid values:
         # 
         # - **on**: Enabled.
         # - **off**: Disabled.
@@ -78,25 +78,25 @@ class CreateWaitingRoomRequest(DaraModel):
         # The queuing method. Valid values:
         # 
         # - **random**: Random.
-        # - **fifo**: First in, first out.
+        # - **fifo**: First-in, first-out (FIFO).
         # - **passthrough**: Passthrough.
         # - **reject-all**: Reject all.
         # 
         # This parameter is required.
         self.queuing_method = queuing_method
-        # The waiting room status code. Valid values:
+        # The HTTP status code of the waiting room. Valid values:
         # 
         # - **200**
         # - **202**
-        # - **429**.
+        # - **429**
         # 
         # This parameter is required.
         self.queuing_status_code = queuing_status_code
-        # The session duration, in minutes.
+        # The session duration in minutes.
         # 
         # This parameter is required.
         self.session_duration = session_duration
-        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -106,8 +106,8 @@ class CreateWaitingRoomRequest(DaraModel):
         self.total_active_users = total_active_users
         # The type of the waiting room. Valid values:
         # 
-        # - **default**: Default type.
-        # - **custom**: Custom type.
+        # - **default**: Default.
+        # - **custom**: Custom.
         # 
         # This parameter is required.
         self.waiting_room_type = waiting_room_type

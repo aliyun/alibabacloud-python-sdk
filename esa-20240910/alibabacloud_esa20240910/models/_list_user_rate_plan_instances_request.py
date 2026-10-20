@@ -21,52 +21,52 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         status: str = None,
         subscribe_type: str = None,
     ):
-        # Specifies whether to filter plan instances that have remaining site quota. Valid values:
+        # Specifies whether to filter plan instances that have remaining site quotas. Valid values:
         # 
-        # - **true**: Filters plan instances that have remaining site quota.
+        # - **true**: Filters plan instances that have remaining site quotas.
         # - **false**: Queries all plan instances under the user.
         self.check_remaining_site_quota = check_remaining_site_quota
-        # The plan instance ID. You can obtain this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Instance ID of the plan instance. You can obtain instance ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.instance_id = instance_id
         self.is_shared = is_shared
-        # The page number settings for paging. Default value: **1**. Valid values: **1 to 100000**.
+        # The page number Settings for a paging query. Default value: **1**. Valid values: **1** to **100000**.
         self.page_number = page_number
-        # The number of entries per page for paging. Valid values: 1 to 500.
+        # The number of entries per page for a paging query. Valid values: 1 to 500.
         self.page_size = page_size
-        # The plan name (English).
+        # The name of the plan in English.
         self.plan_name_en = plan_name_en
-        # The plan type. Valid values:
+        # The type of the plan. Valid values:
         # 
-        # - normal: fixed edition plan
-        # - enterprise: enterprise edition plan
+        # - normal: Fixed plan.
+        # - enterprise: Enterprise plan.
         self.plan_type = plan_type
-        # Queries plan instances whose remaining validity period is within the specified number of days. The value must be a positive integer. Unit: days.
+        # Queries plan instances whose remaining validity period is less than or equal to the specified number of days. The value must be a positive integer. Unit: days.
         self.remaining_expire_days = remaining_expire_days
         self.resource_owner = resource_owner
-        # The sort field. By default, results are sorted by purchase time. Valid values:
+        # The field by which to sort the results. By default, the results are sorted by creation time. Valid values:
         # 
-        # - **CreateTime**: Purchase time.
-        # - **ExpireTime**: Expiration time.
+        # - **CreateTime**: Sorts by creation time.
+        # - **ExpireTime**: Sorts by expiration time.
         self.sort_by = sort_by
-        # The sort order. Default value: desc. Valid values:
+        # The sort order. By default, the results are sorted in descending order. Valid values:
         # 
         # - **asc**: Ascending order.
         # - **desc**: Descending order.
         self.sort_order = sort_order
         # The instance status. Valid values:
-        # - **online**: Normal service status.
-        # - **offline**: Expired but not overdue, in an inactive state.
-        # - **disable**: Released.
-        # - **overdue**: Overdue payment.
+        # - **online**: The instance is in normal service status.
+        # - **offline**: The instance has expired but is not overdue, and is in an inactive state.
+        # - **disable**: The instance is released.
+        # - **overdue**: The instance has an overdue payment.
         self.status = status
-        # The plan subscription type. Valid values:
+        # The subscription type of the plan. Valid values:
         # 
-        # - Free Edition (Chinese mainland): entranceplan
-        # - Free Edition (International): entranceplan_intl
-        # - Basic Edition: basicplan
-        # - Standard Edition: standardplan
-        # - Premium Edition: advancedplan
-        # - Enterprise Edition: enterpriseplan
+        # - entranceplan: Free Edition (Chinese mainland)
+        # - entranceplan_intl: Free Edition (International)
+        # - basicplan: Basic Edition
+        # - standardplan: Standard Edition
+        # - advancedplan: Advanced Edition
+        # - enterpriseplan: Enterprise Edition
         self.subscribe_type = subscribe_type
 
     def validate(self):

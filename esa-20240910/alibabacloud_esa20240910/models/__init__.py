@@ -227,6 +227,10 @@ from ._create_site_delivery_task_request import CreateSiteDeliveryTaskRequest
 from ._create_site_delivery_task_shrink_request import CreateSiteDeliveryTaskShrinkRequest
 from ._create_site_delivery_task_response_body import CreateSiteDeliveryTaskResponseBody
 from ._create_site_delivery_task_response import CreateSiteDeliveryTaskResponse
+from ._create_slider_captcha_page_request import CreateSliderCaptchaPageRequest
+from ._create_slider_captcha_page_shrink_request import CreateSliderCaptchaPageShrinkRequest
+from ._create_slider_captcha_page_response_body import CreateSliderCaptchaPageResponseBody
+from ._create_slider_captcha_page_response import CreateSliderCaptchaPageResponse
 from ._create_slr_role_for_realtime_log_response_body import CreateSlrRoleForRealtimeLogResponseBody
 from ._create_slr_role_for_realtime_log_response import CreateSlrRoleForRealtimeLogResponse
 from ._create_transport_layer_application_request import CreateTransportLayerApplicationRequest
@@ -409,6 +413,9 @@ from ._delete_site_delivery_task_response import DeleteSiteDeliveryTaskResponse
 from ._delete_site_origin_client_certificate_request import DeleteSiteOriginClientCertificateRequest
 from ._delete_site_origin_client_certificate_response_body import DeleteSiteOriginClientCertificateResponseBody
 from ._delete_site_origin_client_certificate_response import DeleteSiteOriginClientCertificateResponse
+from ._delete_slider_captcha_page_request import DeleteSliderCaptchaPageRequest
+from ._delete_slider_captcha_page_response_body import DeleteSliderCaptchaPageResponseBody
+from ._delete_slider_captcha_page_response import DeleteSliderCaptchaPageResponse
 from ._delete_transport_layer_application_request import DeleteTransportLayerApplicationRequest
 from ._delete_transport_layer_application_response_body import DeleteTransportLayerApplicationResponseBody
 from ._delete_transport_layer_application_response import DeleteTransportLayerApplicationResponse
@@ -832,6 +839,9 @@ from ._get_site_traffic_sequence_response import GetSiteTrafficSequenceResponse
 from ._get_site_waf_settings_request import GetSiteWafSettingsRequest
 from ._get_site_waf_settings_response_body import GetSiteWafSettingsResponseBody
 from ._get_site_waf_settings_response import GetSiteWafSettingsResponse
+from ._get_slider_captcha_page_request import GetSliderCaptchaPageRequest
+from ._get_slider_captcha_page_response_body import GetSliderCaptchaPageResponseBody
+from ._get_slider_captcha_page_response import GetSliderCaptchaPageResponse
 from ._get_tiered_cache_request import GetTieredCacheRequest
 from ._get_tiered_cache_response_body import GetTieredCacheResponseBody
 from ._get_tiered_cache_response import GetTieredCacheResponse
@@ -1075,6 +1085,10 @@ from ._list_sites_request import ListSitesRequest
 from ._list_sites_shrink_request import ListSitesShrinkRequest
 from ._list_sites_response_body import ListSitesResponseBody
 from ._list_sites_response import ListSitesResponse
+from ._list_slider_captcha_pages_request import ListSliderCaptchaPagesRequest
+from ._list_slider_captcha_pages_shrink_request import ListSliderCaptchaPagesShrinkRequest
+from ._list_slider_captcha_pages_response_body import ListSliderCaptchaPagesResponseBody
+from ._list_slider_captcha_pages_response import ListSliderCaptchaPagesResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
@@ -1450,6 +1464,10 @@ from ._update_site_pause_response import UpdateSitePauseResponse
 from ._update_site_vanity_nsrequest import UpdateSiteVanityNSRequest
 from ._update_site_vanity_nsresponse_body import UpdateSiteVanityNSResponseBody
 from ._update_site_vanity_nsresponse import UpdateSiteVanityNSResponse
+from ._update_slider_captcha_page_request import UpdateSliderCaptchaPageRequest
+from ._update_slider_captcha_page_shrink_request import UpdateSliderCaptchaPageShrinkRequest
+from ._update_slider_captcha_page_response_body import UpdateSliderCaptchaPageResponseBody
+from ._update_slider_captcha_page_response import UpdateSliderCaptchaPageResponse
 from ._update_tiered_cache_request import UpdateTieredCacheRequest
 from ._update_tiered_cache_response_body import UpdateTieredCacheResponseBody
 from ._update_tiered_cache_response import UpdateTieredCacheResponse
@@ -1598,6 +1616,9 @@ from ._create_site_delivery_task_request import CreateSiteDeliveryTaskRequestKaf
 from ._create_site_delivery_task_request import CreateSiteDeliveryTaskRequestOssDelivery
 from ._create_site_delivery_task_request import CreateSiteDeliveryTaskRequestS3Delivery
 from ._create_site_delivery_task_request import CreateSiteDeliveryTaskRequestSlsDelivery
+from ._create_slider_captcha_page_request import CreateSliderCaptchaPageRequestConfigsEn
+from ._create_slider_captcha_page_request import CreateSliderCaptchaPageRequestConfigsZh
+from ._create_slider_captcha_page_request import CreateSliderCaptchaPageRequestConfigs
 from ._create_transport_layer_application_request import CreateTransportLayerApplicationRequestRules
 from ._create_user_delivery_task_request import CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam
 from ._create_user_delivery_task_request import CreateUserDeliveryTaskRequestHttpDelivery
@@ -1734,6 +1755,9 @@ from ._get_site_origin_client_certificate_response_body import GetSiteOriginClie
 from ._get_site_traffic_sequence_response_body import GetSiteTrafficSequenceResponseBodyTrafficSequencesFunctionListConfigs
 from ._get_site_traffic_sequence_response_body import GetSiteTrafficSequenceResponseBodyTrafficSequencesFunctionList
 from ._get_site_traffic_sequence_response_body import GetSiteTrafficSequenceResponseBodyTrafficSequences
+from ._get_slider_captcha_page_response_body import GetSliderCaptchaPageResponseBodyConfigsEn
+from ._get_slider_captcha_page_response_body import GetSliderCaptchaPageResponseBodyConfigsZh
+from ._get_slider_captcha_page_response_body import GetSliderCaptchaPageResponseBodyConfigs
 from ._get_transport_layer_application_response_body import GetTransportLayerApplicationResponseBodyRules
 from ._get_transport_layer_application_response_body import GetTransportLayerApplicationResponseBodyStaticIpV4List
 from ._get_user_waf_ruleset_response_body import GetUserWafRulesetResponseBodyRulesetRules
@@ -1884,6 +1908,8 @@ from ._list_site_origin_client_certificates_response_body import ListSiteOriginC
 from ._list_site_routes_response_body import ListSiteRoutesResponseBodyConfigs
 from ._list_sites_request import ListSitesRequestTagFilter
 from ._list_sites_response_body import ListSitesResponseBodySites
+from ._list_slider_captcha_pages_request import ListSliderCaptchaPagesRequestQueryArgs
+from ._list_slider_captcha_pages_response_body import ListSliderCaptchaPagesResponseBodyPages
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_trace_tasks_response_body import ListTraceTasksResponseBodyList
@@ -1943,6 +1969,9 @@ from ._update_origin_pool_request import UpdateOriginPoolRequestOriginsAuthConf
 from ._update_origin_pool_request import UpdateOriginPoolRequestOrigins
 from ._update_record_request import UpdateRecordRequestAuthConf
 from ._update_record_request import UpdateRecordRequestData
+from ._update_slider_captcha_page_request import UpdateSliderCaptchaPageRequestConfigsEn
+from ._update_slider_captcha_page_request import UpdateSliderCaptchaPageRequestConfigsZh
+from ._update_slider_captcha_page_request import UpdateSliderCaptchaPageRequestConfigs
 from ._update_transport_layer_application_request import UpdateTransportLayerApplicationRequestRules
 from ._update_waiting_room_request import UpdateWaitingRoomRequestHostNameAndPath
 
@@ -2172,6 +2201,10 @@ __all__ = [
     CreateSiteDeliveryTaskShrinkRequest,
     CreateSiteDeliveryTaskResponseBody,
     CreateSiteDeliveryTaskResponse,
+    CreateSliderCaptchaPageRequest,
+    CreateSliderCaptchaPageShrinkRequest,
+    CreateSliderCaptchaPageResponseBody,
+    CreateSliderCaptchaPageResponse,
     CreateSlrRoleForRealtimeLogResponseBody,
     CreateSlrRoleForRealtimeLogResponse,
     CreateTransportLayerApplicationRequest,
@@ -2354,6 +2387,9 @@ __all__ = [
     DeleteSiteOriginClientCertificateRequest,
     DeleteSiteOriginClientCertificateResponseBody,
     DeleteSiteOriginClientCertificateResponse,
+    DeleteSliderCaptchaPageRequest,
+    DeleteSliderCaptchaPageResponseBody,
+    DeleteSliderCaptchaPageResponse,
     DeleteTransportLayerApplicationRequest,
     DeleteTransportLayerApplicationResponseBody,
     DeleteTransportLayerApplicationResponse,
@@ -2777,6 +2813,9 @@ __all__ = [
     GetSiteWafSettingsRequest,
     GetSiteWafSettingsResponseBody,
     GetSiteWafSettingsResponse,
+    GetSliderCaptchaPageRequest,
+    GetSliderCaptchaPageResponseBody,
+    GetSliderCaptchaPageResponse,
     GetTieredCacheRequest,
     GetTieredCacheResponseBody,
     GetTieredCacheResponse,
@@ -3020,6 +3059,10 @@ __all__ = [
     ListSitesShrinkRequest,
     ListSitesResponseBody,
     ListSitesResponse,
+    ListSliderCaptchaPagesRequest,
+    ListSliderCaptchaPagesShrinkRequest,
+    ListSliderCaptchaPagesResponseBody,
+    ListSliderCaptchaPagesResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
@@ -3395,6 +3438,10 @@ __all__ = [
     UpdateSiteVanityNSRequest,
     UpdateSiteVanityNSResponseBody,
     UpdateSiteVanityNSResponse,
+    UpdateSliderCaptchaPageRequest,
+    UpdateSliderCaptchaPageShrinkRequest,
+    UpdateSliderCaptchaPageResponseBody,
+    UpdateSliderCaptchaPageResponse,
     UpdateTieredCacheRequest,
     UpdateTieredCacheResponseBody,
     UpdateTieredCacheResponse,
@@ -3543,6 +3590,9 @@ __all__ = [
     CreateSiteDeliveryTaskRequestOssDelivery,
     CreateSiteDeliveryTaskRequestS3Delivery,
     CreateSiteDeliveryTaskRequestSlsDelivery,
+    CreateSliderCaptchaPageRequestConfigsEn,
+    CreateSliderCaptchaPageRequestConfigsZh,
+    CreateSliderCaptchaPageRequestConfigs,
     CreateTransportLayerApplicationRequestRules,
     CreateUserDeliveryTaskRequestHttpDeliveryStandardAuthParam,
     CreateUserDeliveryTaskRequestHttpDelivery,
@@ -3679,6 +3729,9 @@ __all__ = [
     GetSiteTrafficSequenceResponseBodyTrafficSequencesFunctionListConfigs,
     GetSiteTrafficSequenceResponseBodyTrafficSequencesFunctionList,
     GetSiteTrafficSequenceResponseBodyTrafficSequences,
+    GetSliderCaptchaPageResponseBodyConfigsEn,
+    GetSliderCaptchaPageResponseBodyConfigsZh,
+    GetSliderCaptchaPageResponseBodyConfigs,
     GetTransportLayerApplicationResponseBodyRules,
     GetTransportLayerApplicationResponseBodyStaticIpV4List,
     GetUserWafRulesetResponseBodyRulesetRules,
@@ -3829,6 +3882,8 @@ __all__ = [
     ListSiteRoutesResponseBodyConfigs,
     ListSitesRequestTagFilter,
     ListSitesResponseBodySites,
+    ListSliderCaptchaPagesRequestQueryArgs,
+    ListSliderCaptchaPagesResponseBodyPages,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
     ListTraceTasksResponseBodyList,
@@ -3888,6 +3943,9 @@ __all__ = [
     UpdateOriginPoolRequestOrigins,
     UpdateRecordRequestAuthConf,
     UpdateRecordRequestData,
+    UpdateSliderCaptchaPageRequestConfigsEn,
+    UpdateSliderCaptchaPageRequestConfigsZh,
+    UpdateSliderCaptchaPageRequestConfigs,
     UpdateTransportLayerApplicationRequestRules,
     UpdateWaitingRoomRequestHostNameAndPath
 ]

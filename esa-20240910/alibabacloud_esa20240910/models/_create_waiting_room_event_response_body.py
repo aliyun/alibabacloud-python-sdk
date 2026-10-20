@@ -10,9 +10,9 @@ class CreateWaitingRoomEventResponseBody(DaraModel):
         request_id: str = None,
         waiting_room_event_id: int = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The waiting room event ID. You can call the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation to obtain the waiting room event ID.
+        # The ID of the waiting room event. You can obtain the waiting room event ID by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
         self.waiting_room_event_id = waiting_room_event_id
 
     def validate(self):

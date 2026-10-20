@@ -19,13 +19,13 @@ class ListPagesResponseBody(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The array of custom response pages. Each object in the array contains the details of a page.
+        # The array of custom response pages. Each object in the array contains the specific information of a page.
         self.pages = pages
         # The request ID.
         self.request_id = request_id
-        # The number of custom response pages after filtering.
+        # The total number of custom response pages after filtering.
         self.total_count = total_count
         # The number of custom response pages created by the user.
         self.usage = usage
@@ -110,17 +110,17 @@ class ListPagesResponseBodyPages(DaraModel):
         self.content_type = content_type
         # The description of the custom response page.
         self.description = description
-        # The ID of the custom response page. You can obtain the ID by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+        # The ID of the custom response page. You can obtain it by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
         self.id = id
         # The type of the custom response page.
         self.kind = kind
-        # The content moderation result.
+        # The content security moderation result.
         self.moderation = moderation
         # The name of the custom response page.
         self.name = name
         # The last modification time of the custom response page.
         # 
-        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # Format: RFC 3339/ISO 8601, UTC standard time zone (ending with Z).
         # 
         # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time

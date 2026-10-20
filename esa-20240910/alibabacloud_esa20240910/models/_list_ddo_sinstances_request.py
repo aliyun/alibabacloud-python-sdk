@@ -17,15 +17,15 @@ class ListDDoSInstancesRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The page number for a paged query. The value must be greater than or equal to 1. Default value: **1**.
+        # The page number for paging. The value must be greater than or equal to 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for a paged query. Default value: 20. Maximum value: 500. Valid values: any integer from 1 to 500.
+        # The number of entries per page for paging. Default value: 20. Maximum value: 500. Valid values: any integer from 1 to 500.
         self.page_size = page_size
         # The instance ID of the associated site plan.
         self.site_instance_id = site_instance_id
-        # The sort field. By default, results are sorted by purchase time. Valid values:
+        # The sort field. By default, instances are sorted by creation time. Valid values:
         # 
-        # - **CreateTime**: purchase time.
+        # - **CreateTime**: the creation time.
         self.sort_by = sort_by
         # The sort order. Valid values:
         # 

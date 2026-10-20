@@ -12,24 +12,22 @@ class CreateRoutineCodeDeploymentShrinkRequest(DaraModel):
         name: str = None,
         strategy: str = None,
     ):
-        # The list of percentage-based canary release version configurations. A maximum of two versions are supported, and the total percentage must equal 100.
+        # The list of code version configurations for the percentage-based canary release. You can specify up to two code versions, and the sum of the percentages must be equal to 100.
         # 
         # This parameter is required.
         self.code_versions_shrink = code_versions_shrink
-        # The environment name.  
-        # Valid values:
-        # - `staging`: staging environment 
-        # - `production`: production environment
+        # The environment name. Valid values:
+        # - `staging`: the staging environment.
+        # - `production`: the production environment.
         # 
         # This parameter is required.
         self.env = env
-        # The name of the Edge Function Routine.
+        # The name of the Edge Routine.
         # 
         # This parameter is required.
         self.name = name
-        # The deployment strategy.  
-        # Valid values:
-        # - `percentage`: percentage mode
+        # The deployment strategy. Valid values:
+        # - `percentage`: percentage mode.
         # 
         # This parameter is required.
         self.strategy = strategy

@@ -22,7 +22,7 @@ class DescribeHttpDDoSIntelligentAclRulesResponseBody(DaraModel):
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The list of rules.
+        # The list of rule information.
         self.rule_infos = rule_infos
         # The total number of rules.
         self.total_count = total_count
@@ -90,19 +90,19 @@ class DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos(DaraModel):
         rule_id: int = None,
         rule_name: str = None,
     ):
-        # The protection action.
+        # The mitigation action.
         self.action = action
-        # The rule trigger condition.
+        # The trigger condition of the rule.
         self.condition = condition
-        # The ID of the protection rule for log records.
+        # The ID of the mitigation rule used for log records.
         self.log_rule_id = log_rule_id
-        # The action duration. Unit: seconds.
+        # The punishment duration. Unit: seconds.
         self.punish_time = punish_time
-        # The record name.
+        # The name of the record.
         self.record_name = record_name
-        # The rule ID.
+        # The ID of the rule.
         self.rule_id = rule_id
-        # The rule name.
+        # The name of the rule.
         self.rule_name = rule_name
 
     def validate(self):

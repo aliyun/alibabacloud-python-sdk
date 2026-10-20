@@ -116,7 +116,7 @@ class ListRoutineBuildsResponseBodyData(DaraModel):
         update_time: str = None,
         user_id: int = None,
     ):
-        # The static assets directory.
+        # The directory of static resources.
         self.assets_directory = assets_directory
         # The branch used for the build.
         self.branch = branch
@@ -126,53 +126,53 @@ class ListRoutineBuildsResponseBodyData(DaraModel):
         self.commit_id = commit_id
         # The commit message.
         self.commit_message = commit_message
-        # The creation time, in the ISO 8601 format in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+        # The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         # The environment variables.
         self.environment_variables = environment_variables
-        # The Git account ID.
+        # The ID of the Git account.
         self.git_account_id = git_account_id
-        # The Git account name.
+        # The name of the Git account.
         self.git_account_name = git_account_name
-        # The install command.
+        # The installation command.
         self.install_command = install_command
-        # Indicates whether the repository is private. Valid values:
+        # Specifies whether the repository is private. Valid values:
         # 
-        # - true: The repository is private.
-        # - false: The repository is not private.
+        # - true: Yes.
+        # - false: No.
         self.is_private = is_private
-        # The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, `12.x`.
+        # The Node.js version. Valid values: `22.x`, `20.x`, `18.x`, `16.x`, `14.x`, and `12.x`.
         self.node_version = node_version
-        # The Yunxiao pipeline ID.
+        # The ID of the Yunxiao pipeline.
         self.pipeline_id = pipeline_id
-        # The Yunxiao build task ID.
+        # The ID of the Yunxiao build task.
         self.pipeline_run_id = pipeline_run_id
-        # The production branch name.
+        # The name of the production branch.
         self.production_branch = production_branch
-        # The repository name.
+        # The name of the repository.
         self.repository = repository
         # The root directory.
         self.root_directory = root_directory
-        # The ER build task ID.
+        # The ID of the ER build task.
         self.routine_build_id = routine_build_id
-        # The ER entry file path.
+        # The path to the ER entry file.
         self.routine_entry = routine_entry
-        # The ER name.
+        # The name of the ER.
         self.routine_name = routine_name
         # The status of the build task. Valid values:
         # 
-        # - int: initialization
-        # - pending: preparing
-        # - building: building
-        # - succeed: build succeeded
-        # - failed: build failed
-        # - canceled: canceled
+        # - int: Initialized.
+        # - pending: Preparing.
+        # - building: Building.
+        # - succeed: Succeeded.
+        # - failed: Failed.
+        # - canceled: Canceled.
         self.status = status
-        # The template name.
+        # The name of the template.
         self.template_name = template_name
-        # The modification time, in the ISO 8601 format in UTC. The format is yyyy-MM-ddTHH:mm:ssZ.
+        # The update time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

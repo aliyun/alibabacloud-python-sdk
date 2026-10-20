@@ -14,35 +14,26 @@ class DescribeDDoSAllEventListRequest(DaraModel):
         site_id: int = None,
         start_time: str = None,
     ):
-        # The end time of the query.
-        # 
-        # The time must be in ISO 8601 format and in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`. The time range between `StartTime` and `EndTime` cannot exceed 31 days.
-        # 
-        # If this parameter is not specified, it defaults to the current time.
+        # The end time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The time span between the start time and the end time cannot exceed 31 days. If you do not specify this parameter, the current time is used as the end time.
         self.end_time = end_time
-        # The type of DDoS attack events to query. Valid values:
+        # The type of the DDoS attack event to query. Valid values:
+        # - **web-cc**: web resource exhaustion attacks.
+        # - **cc**: connection flood attacks.
+        # - **traffic**: volumetric traffic attacks.
         # 
-        # - **web-cc**: A web resource exhaustion attack.
-        # 
-        # - **cc**: A connection-based attack.
-        # 
-        # - **traffic**: A traffic-based attack.
-        # 
-        # If you do not specify this parameter, the operation queries `web-cc` events by default.
+        # If the Settings for this parameter are not specified, web resource exhaustion attack events are queried.
         self.event_type = event_type
-        # The page number to return. Valid range: **1** to **100000**.
+        # The page number. Valid values: **1** to **100000**.
         # 
         # This parameter is required.
         self.page_number = page_number
         # The number of entries per page. Default value: **10**. Valid values: **5**, **10**, and **20**.
         self.page_size = page_size
-        # The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The start time of the query.
-        # 
-        # The time must be in ISO 8601 format and in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The start time of the query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

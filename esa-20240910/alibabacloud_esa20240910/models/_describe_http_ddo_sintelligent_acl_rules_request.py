@@ -20,7 +20,7 @@ class DescribeHttpDDoSIntelligentAclRulesRequest(DaraModel):
         self.page_size = page_size
         # The rule type.
         self.rule_type = rule_type
-        # The site ID. To obtain the site ID, call the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

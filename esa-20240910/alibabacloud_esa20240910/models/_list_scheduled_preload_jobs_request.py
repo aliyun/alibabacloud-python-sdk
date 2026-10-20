@@ -13,17 +13,17 @@ class ListScheduledPreloadJobsRequest(DaraModel):
         site_id: int = None,
         start_time: int = None,
     ):
-        # The end of the time range to query based on task creation time. The value is a millisecond-level timestamp.
+        # The end time of the time range to query task creation time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The page number to return.
+        # The number of the page to return.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return per page.
         self.page_size = page_size
         # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The start of the time range to query based on task creation time. The value is a millisecond-level timestamp.
+        # The start time of the time range to query task creation time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

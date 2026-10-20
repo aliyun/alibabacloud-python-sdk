@@ -17,7 +17,7 @@ class ListBotInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The instances that match the specified conditions under the current account.
+        # The instances that meet the query conditions for the user.
         self.instance_info = instance_info
         # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
@@ -98,25 +98,25 @@ class ListBotInstancesResponseBodyInstanceInfo(DaraModel):
         site_instance_id: str = None,
         status: str = None,
     ):
-        # The Bot protection instance level. If this parameter is empty, the plan does not include a Bot protection instance. If a value is returned, the plan includes a Bot protection instance. Valid values:
+        # The bot protection edition. If this parameter is empty, no bot protection instance is purchased in the plan. If a value is returned, a bot protection instance is purchased in the plan. Valid values:
         # 
-        # - enterprise_bot: web edition.
+        # - enterprise_bot: Web edition.
         # 
-        # - enterprise_bot_with_app: app edition.
+        # - enterprise_bot_with_app: App edition.
         self.bot_instance_level = bot_instance_level
-        # The time when the instance was purchased. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The creation time of the instance. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The scheduled release time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The scheduled release time. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.reserve_release_time = reserve_release_time
         # The ID of the associated site plan instance.
         self.site_instance_id = site_instance_id
         # The instance status. Valid values:
-        # - **online**: The instance is running normally.
-        # - **offline**: The instance has expired but has not exceeded the retention period and is unavailable.
-        # - **disable**: The instance has been released.
-        # - **overdue**: The instance has been stopped due to an overdue payment.
+        # - **online**: normal.
+        # - **offline**: expired but not overdue, and unavailable.
+        # - **disable**: released.
+        # - **overdue**: suspended due to overdue payment.
         self.status = status
 
     def validate(self):

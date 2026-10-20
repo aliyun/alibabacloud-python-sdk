@@ -16,14 +16,15 @@ class ListCertificatesRequest(DaraModel):
     ):
         # The search keyword.
         self.keyword = keyword
-        # The page number of the data to return.
+        # The page number of the returned data.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
+        # The certificate type.
         self.type = type
         # Specifies whether to return only valid certificates.
         self.valid_only = valid_only

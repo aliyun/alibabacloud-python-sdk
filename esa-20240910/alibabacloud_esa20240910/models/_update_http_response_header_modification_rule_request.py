@@ -18,25 +18,25 @@ class UpdateHttpResponseHeaderModificationRuleRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
-        # The configuration ID. You can call the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) operation to obtain the configuration ID.
+        # The configuration ID. You can obtain the ID by calling the [ListHttpResponseHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) operation.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The response header modifications. Three operation types are supported: add, delete, and modify.
+        # The response header modifications. You can add, delete, or modify response headers.
         self.response_header_modification = response_header_modification
-        # The rule content, which uses a conditional expression to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
-        # - Match all incoming requests: set the value to true.
-        # - Match specified requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
+        # The rule content, which uses a conditional expression to match user requests. You do not need to specify this parameter when you add a global configuration. This parameter applies to the following two scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
         self.rule = rule
-        # The rule switch. This parameter is not required when you add a global configuration. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # The rule switch. You do not need to specify this parameter when you add a global configuration. Valid values:
+        # - on: enabled
+        # - off: disabled
         self.rule_enable = rule_enable
-        # The rule name. This parameter is not required when you add a global configuration.
+        # The name of the rule. You do not need to specify this parameter when you add a global configuration.
         self.rule_name = rule_name
-        # The rule execution order. A smaller value indicates a higher priority.
+        # The execution sequence of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+        # The ID of the site. You can obtain the ID by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -113,23 +113,23 @@ class UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification(
         type: str = None,
         value: str = None,
     ):
-        # The response header name.
+        # The name of the response header.
         # 
         # This parameter is required.
         self.name = name
         # The operation type. Valid values:
         # 
-        # - add: adds a response header.
-        # - del: deletes a response header.
-        # - modify: modifies a response header.
+        # - add: Adds a response header.
+        # - del: Deletes a response header.
+        # - modify: Modifies a response header.
         # 
         # This parameter is required.
         self.operation = operation
         # The value type. Valid values:
-        # - static: static pattern.
-        # - dynamic: dynamic schema.
+        # - static: static pattern
+        # - dynamic: dynamic pattern
         self.type = type
-        # The response header value.
+        # The value of the response header.
         self.value = value
 
     def validate(self):

@@ -11,13 +11,13 @@ class DescribeHttpDDoSAttackRulesRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
-        # The current page number. Default value: 1. Valid values: **1** to **65535**.
+        # The current page number. Default value: **1**. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

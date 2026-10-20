@@ -15,24 +15,25 @@ class DescribePreloadTasksRequest(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The query content. Exact match is used.
+        # The query content for exact matching.
         self.content = content
-        # The end time. The date is in ISO 8601 format and uses UTC+0 time in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # > The end time must be later than the start time.
         self.end_time = end_time
-        # The page number. Valid values: **1** to **100000**. Default value: **1**.
+        # The page number. Valid values: **1** to **100000**.
+        # Default value: **1**.
         self.page_number = page_number
-        # The page size. Default value: **20**. Maximum value: **50**. Valid values: any integer from **1** to **50**.
+        # The number of entries per page. Default value: **20**. Maximum value: **50**. Valid values: any integer from **1** to **50**.
         self.page_size = page_size
-        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
-        # The start time. The date is in ISO 8601 format and uses UTC+0 time in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
         # The task execution status. Valid values:
         # 
-        # - **Complte**: Complete.
-        # - **Refreshing**: Prefetching.
-        # - **Failed**: Prefetch failed.
+        # - **Complte**: Completed.
+        # - **Refreshing**: Refreshing.
+        # - **Failed**: Failed.
         self.status = status
 
     def validate(self):

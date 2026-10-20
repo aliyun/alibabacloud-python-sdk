@@ -18,7 +18,7 @@ class DescribePreloadTasksResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -91,20 +91,20 @@ class DescribePreloadTasksResponseBodyTasks(DaraModel):
     ):
         # The prefetch object.
         self.content = content
-        # The creation time.
+        # The creation time in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The error description returned when the prefetch fails. Valid values:
+        # The error description returned when a prefetch task fails. Valid values:
         # 
         # - **Internal Error**: An internal error occurred.
         # - **Origin Timeout**: The origin server response timed out.
-        # - **Origin Return StatusCode 5XX**: The origin server returned a 5xx error code.
+        # - **Origin Return StatusCode 5XX**: The origin server returned a 5xx status code.
         self.description = description
-        # The task completion progress percentage.
+        # The task completion progress in percentage.
         self.process = process
         # The task status. Valid values:
-        # - **Complete**: Complete.
-        # - **Refreshing**: Prefetching.
-        # - **Failed**: Prefetch failed.
+        # - **Complete**: Completed.
+        # - **Refreshing**: Refreshing.
+        # - **Failed**: Failed.
         self.status = status
         # The task ID.
         self.task_id = task_id

@@ -18,42 +18,40 @@ class CreateRedirectRuleRequest(DaraModel):
         target_url: str = None,
         type: str = None,
     ):
-        # Specifies whether to preserve the query string. Valid values:
-        # 
+        # Specifies whether to retain the query string. Valid values:
         # - on: Enabled.
         # - off: Disabled.
         # 
         # This parameter is required.
         self.reserve_query_string = reserve_query_string
-        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. This parameter applies to the following scenarios:
         # - Match all incoming requests: Set the value to true.
-        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+        # - Match specific requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # Specifies whether to enable the rule. You do not need to set this parameter when adding a global configuration. Valid values:
         # - on: Enabled.
         # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name. You do not need to set this parameter when adding a global configuration.
+        # The name of the rule. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The rule execution order. A smaller value indicates a higher priority.
+        # The execution sequence of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is version 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
-        # The response status code used by the node when responding to the client with the redirect address. Valid values:
-        # 
+        # The HTTP status code used by the node to respond to the client with the redirect URL. Valid values:
         # - 301
         # - 302
         # - 303
         # - 307
-        # - 308.
+        # - 308
         # 
         # This parameter is required.
         self.status_code = status_code
-        # The target URL after redirection.
+        # The destination URL after the redirect.
         # 
         # This parameter is required.
         self.target_url = target_url

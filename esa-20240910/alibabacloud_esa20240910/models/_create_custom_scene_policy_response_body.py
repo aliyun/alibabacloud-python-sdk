@@ -18,27 +18,27 @@ class CreateCustomScenePolicyResponseBody(DaraModel):
         start_time: str = None,
         template: str = None,
     ):
-        # The policy end time.
+        # The end time of the policy.
         # 
-        # The time must be in UTC and in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
         # The policy name.
         self.name = name
-        # A list of associated site IDs.
+        # The list of IDs of the associated websites.
         # 
-        # > This field is deprecated. Read the value from the `SiteIds` field instead.
+        # > **[Deprecated]** This parameter is deprecated. Use the SiteIds parameter instead.
         self.objects = objects
-        # The policy ID.
+        # The ID of the policy.
         self.policy_id = policy_id
         # The request ID.
         self.request_id = request_id
-        # The associated site IDs, separated by commas.
+        # The IDs of the associated websites. Separate multiple IDs with commas (,).
         self.site_ids = site_ids
-        # The policy start time.
+        # The start time of the policy.
         # 
-        # The time must be in UTC and in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # The template name.
+        # The name of the template.
         self.template = template
 
     def validate(self):

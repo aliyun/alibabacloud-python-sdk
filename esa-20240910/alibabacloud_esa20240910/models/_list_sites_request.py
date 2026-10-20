@@ -25,41 +25,41 @@ class ListSitesRequest(DaraModel):
     ):
         # The access type. Valid values:
         # 
-        # - **NS**: NS-based access.
+        # - **NS**: NS hosting access
         # 
-        # - **CNAME**: CNAME-based access.
+        # - **CNAME**: CNAME access
         self.access_type = access_type
         # The acceleration region. Valid values:
-        # - **domestic**: the Chinese mainland only.
-        # - **global**: global.
-        # - **overseas**: global (excluding the Chinese mainland).
+        # - **domestic**: the Chinese mainland
+        # - **global**: global
+        # - **overseas**: global (excluding the Chinese mainland)
         self.coverage = coverage
-        # Specifies whether to query only Enterprise Edition sites. Set this parameter to **true** to query only Enterprise Edition sites.
+        # Specifies whether to query only Enterprise Edition sites. If you set this parameter to **true**, only Enterprise Edition sites are queried.
         self.only_enterprise = only_enterprise
-        # The sort field. By default, results are sorted by creation time. Valid values:
-        # - gmtCreate: site creation time.
-        # - visitTime: site access time.
+        # The sort field. By default, sites are sorted by creation time. Valid values:
+        # - gmtCreate: site creation time
+        # - visitTime: site access time
         self.order_by = order_by
-        # The page number for paging. The value must be greater than or equal to 1.
+        # The page number Settings for paging in a paged query. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page for paging. Valid values: 1 to 500.
+        # The number of entries per page for paging in a paged query. Valid values: 1 to 500.
         self.page_size = page_size
-        # The plan subscription type. Valid values:
-        # - **basicplan**: Basic Edition.
-        # - **standardplan**: Standard Edition.
-        # - **advancedplan**: Premium Edition.
-        # - **enterpriseplan**: Enterprise Edition.
+        # The subscription plan type. Valid values:
+        # - **basicplan**: basic edition
+        # - **standardplan**: standard edition
+        # - **advancedplan**: advanced edition
+        # - **enterpriseplan**: enterprise edition
         self.plan_subscribe_type = plan_subscribe_type
         # The resource group ID. Used as a filter condition for the query.
         self.resource_group_id = resource_group_id
         # The site name. Used as a filter condition for the query.
         self.site_name = site_name
-        # The search matching mode for the site name. Default is exact match. Valid values:
+        # The search match mode for the site name. Default value: exact. Valid values:
         # 
-        # - **prefix**: prefix match.
-        # - **suffix**: suffix match.
-        # - **exact**: exact match.
-        # - **fuzzy**: fuzzy match.
+        # - **prefix**: prefix match
+        # - **suffix**: suffix match
+        # - **exact**: exact match
+        # - **fuzzy**: fuzzy match
         self.site_search_type = site_search_type
         # The site status. Used as a filter condition for the query.
         self.status = status

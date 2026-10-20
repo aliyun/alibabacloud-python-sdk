@@ -17,11 +17,11 @@ class ApplyCertificateResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list of free certificate application details.
+        # The list of details for the free certificate applications.
         self.result = result
         # The site name.
         self.site_name = site_name
-        # The number of certificates applied for, which is the same as the number of input domain names.
+        # The number of certificates applied for, which is the same as the number of specified domain names.
         self.total_count = total_count
 
     def validate(self):
@@ -77,7 +77,7 @@ class ApplyCertificateResponseBodyResult(DaraModel):
         id: str = None,
         status: str = None,
     ):
-        # The certificate domain name.
+        # The domain name of the certificate.
         self.domain = domain
         # The certificate ID.
         self.id = id

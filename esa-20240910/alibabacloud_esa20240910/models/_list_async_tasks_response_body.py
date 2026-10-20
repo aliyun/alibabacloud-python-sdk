@@ -17,7 +17,7 @@ class ListAsyncTasksResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The task list.
+        # The list of tasks.
         self.async_tasks = async_tasks
         # The page number of the returned data.
         self.page_number = page_number
@@ -105,7 +105,7 @@ class ListAsyncTasksResponseBodyAsyncTasks(DaraModel):
     ):
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The last update time.
         self.gmt_modified = gmt_modified
         # The task ID.
         self.id = id
@@ -117,13 +117,13 @@ class ListAsyncTasksResponseBodyAsyncTasks(DaraModel):
         self.resource_type = resource_type
         # The task description.
         self.task_description = task_description
-        # The custom identifier that is set to associate with this task.
+        # The custom identifier set to associate with the task.
         self.task_key = task_key
         # The current status of the task. Valid values:
         # 
-        # - in_progress: in progress.
-        # - success: completed.
-        # - fail: failed.
+        # - in_progress: The task is in progress.
+        # - success: The task is completed.
+        # - fail: The task failed.
         self.task_status = task_status
         # The task type.
         self.task_type = task_type

@@ -20,7 +20,7 @@ class DescribeHttpDDoSIntelligentRateLimitRulesRequest(DaraModel):
         self.page_size = page_size
         # The rule type.
         self.rule_type = rule_type
-        # The site ID. Obtain this by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

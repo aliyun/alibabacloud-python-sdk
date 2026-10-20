@@ -15,13 +15,13 @@ class CreateRoutineCodeDeploymentResponseBody(DaraModel):
         request_id: str = None,
         strategy: str = None,
     ):
-        # The list of percentage-based canary release code version configurations.
+        # The list of code version configurations for the percentage-based canary release.
         self.code_versions = code_versions
-        # The deployment record ID.
+        # The ID of the deployment record.
         self.deployment_id = deployment_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The canary release strategy. Fixed value: percentage.
+        # The canary release strategy. The value is fixed as `percentage`.
         self.strategy = strategy
 
     def validate(self):
@@ -78,7 +78,7 @@ class CreateRoutineCodeDeploymentResponseBodyCodeVersions(DaraModel):
     ):
         # The code version number.
         self.code_version = code_version
-        # The canary release percentage for the code version.
+        # The traffic percentage for the canary release of the code version.
         self.percentage = percentage
 
     def validate(self):

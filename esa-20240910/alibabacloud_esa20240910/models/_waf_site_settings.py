@@ -19,9 +19,9 @@ class WafSiteSettings(DaraModel):
         request_body_inspection: main_models.WafSiteSettingsRequestBodyInspection = None,
         security_level: main_models.WafSiteSettingsSecurityLevel = None,
     ):
-        # The bot protection headers.
+        # The configuration for adding bot protection headers.
         self.add_bot_protection_headers = add_bot_protection_headers
-        # The security headers.
+        # The configuration for adding security headers.
         self.add_security_headers = add_security_headers
         # The bandwidth abuse protection.
         self.bandwidth_abuse_protection = bandwidth_abuse_protection
@@ -29,14 +29,12 @@ class WafSiteSettings(DaraModel):
         self.bot_management = bot_management
         # The client IP identification.
         self.client_ip_identifier = client_ip_identifier
-        # The disable security module configuration.
+        # The configuration for disabling the security module.
         self.disable_security_module = disable_security_module
-        # The request body inspection configuration. Controls the deep packet inspection behavior of WAF for HTTP request bodies. After this feature is enabled, content-based matching rules such as SQL injection and XSS detection take effect on request bodies.
-        # 
-        # This configuration can contain the following fields:
-        # - `Id`: The unique identifier of the built-in inspection rule.
-        # - `SizeLimit`: The maximum size of the request body to inspect.
-        # - `Action`: The action to take when the request body exceeds the size limit.
+        # The request body inspection configuration. This configuration controls the deep packet inspection behavior of WAF for HTTP request bodies. For example, matching based on request body content, such as SQL injection and XSS, takes effect only after this feature is enabled. This configuration can include the following fields:
+        # - Id: The unique identifier of the built-in inspection rule.
+        # - SizeLimit: The maximum size of the request body to be inspected.
+        # - Action: The action to take when the size limit is exceeded.
         self.request_body_inspection = request_body_inspection
         # The security level.
         self.security_level = security_level
@@ -132,6 +130,7 @@ class WafSiteSettingsSecurityLevel(DaraModel):
         id: int = None,
         value: str = None,
     ):
+        # The security level rule ID.
         self.id = id
         # The security level value.
         self.value = value
@@ -169,21 +168,17 @@ class WafSiteSettingsRequestBodyInspection(DaraModel):
         id: int = None,
         size_limit: str = None,
     ):
-        # The action to take when the request body size exceeds `SizeLimit`.
-        # 
-        # Common values (the complete enumeration is subject to the server-side configuration):
-        # - `allow`: Allow directly without performing deep packet inspection on the excess portion.
-        # 
-        # > The complete enum is subject to the WAF server-side configuration.
+        # The action to take when the request body size exceeds the SizeLimit.
+        # Common valid values (the complete enumeration is subject to the server configuration):
+        # - allow: Allows the request directly without performing deep packet inspection on the exceeded part.
+        # > The complete enumeration is subject to the WAF server configuration.
         self.action = action
-        # The request body inspection rule ID (unique identifier of the built-in rule). When request body inspection is enabled, the server uses this ID to associate the matching logic of the built-in inspection rule. The ID value is subject to the WAF built-in rule list.
+        # The ID of the request body inspection rule, which is the unique identifier of the built-in rule. When request body inspection is enabled, the server uses this ID to associate the matching logic of the built-in inspection rule. The valid values of the ID are subject to the WAF built-in rule list.
         self.id = id
-        # The maximum size of the request body to inspect, in bytes.
-        # 
-        # - When the request body is less than or equal to this value, the entire content is subject to WAF matching.
-        # - When the request body exceeds this value, the action specified in the `Action` field is taken (for example, inspect only the first N bytes, reject, or allow directly).
-        # 
-        # > The specific value range and default value are subject to the WAF server-side configuration.
+        # The maximum size of the request body to be inspected, in bytes.
+        # - If the request body is less than or equal to this value, the complete content is used for WAF matching.
+        # - If the request body exceeds this value, the action specified by the Action field is performed, such as inspecting only the first N bytes, blocking, or allowing.
+        # > The specific valid values and default value are subject to the WAF server configuration.
         self.size_limit = size_limit
 
     def validate(self):
@@ -223,7 +218,7 @@ class WafSiteSettingsDisableSecurityModule(DaraModel):
         self,
         status: str = None,
     ):
-        # The status switch for disabling the security module.
+        # The enable status for disabling the security module.
         self.status = status
 
     def validate(self):
@@ -440,7 +435,7 @@ class WafSiteSettingsBotManagementJSDetection(DaraModel):
         self,
         enable: bool = None,
     ):
-        # The switch.
+        # The enable status.
         self.enable = enable
 
     def validate(self):
@@ -468,7 +463,7 @@ class WafSiteSettingsBotManagementEffectOnStatic(DaraModel):
         self,
         enable: bool = None,
     ):
-        # The switch.
+        # The enable status.
         self.enable = enable
 
     def validate(self):
@@ -535,11 +530,11 @@ class WafSiteSettingsBandwidthAbuseProtection(DaraModel):
         id: int = None,
         status: str = None,
     ):
-        # The action of the bandwidth abuse protection rule.
+        # The action performed by the bandwidth abuse protection rule.
         self.action = action
         # The ID of the bandwidth abuse protection rule.
         self.id = id
-        # The switch status of the bandwidth abuse protection rule.
+        # The enable status of the bandwidth abuse protection rule.
         self.status = status
 
     def validate(self):
@@ -579,7 +574,7 @@ class WafSiteSettingsAddSecurityHeaders(DaraModel):
         self,
         enable: bool = None,
     ):
-        # The switch.
+        # The enable status.
         self.enable = enable
 
     def validate(self):
@@ -607,7 +602,7 @@ class WafSiteSettingsAddBotProtectionHeaders(DaraModel):
         self,
         enable: bool = None,
     ):
-        # The switch.
+        # The enable status.
         self.enable = enable
 
     def validate(self):

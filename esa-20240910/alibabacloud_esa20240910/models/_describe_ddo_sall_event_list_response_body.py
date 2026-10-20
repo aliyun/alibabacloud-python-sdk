@@ -17,11 +17,11 @@ class DescribeDDoSAllEventListResponseBody(DaraModel):
         site_id: int = None,
         total_count: int = None,
     ):
-        # A list of DDoS attack event details.
+        # The list of DDoS attack events.
         self.data_list = data_list
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -104,51 +104,40 @@ class DescribeDDoSAllEventListResponseBodyDataList(DaraModel):
         target: str = None,
         target_id: str = None,
     ):
-        # The peak bits per second (Bps) of a volumetric attack.
+        # The peak BPS of volumetric traffic attacks.
         self.bps = bps
         # The attack region. Valid values:
         # 
-        # - **domestic**: Chinese mainland.
-        # 
-        # - **global**: Global.
-        # 
-        # - **overseas**: global (excluding Chinese mainland).
+        # - **domestic**: the Chinese mainland only.
+        # - **global**: global.
+        # - **overseas**: global (excluding the Chinese mainland).
         self.coverage = coverage
-        # The peak connections per second (Cps) of a connection-based attack.
+        # The peak CPS of the connection flood attack.
         self.cps = cps
-        # The end time of the DDoS attack event.
-        # 
-        # The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is in UTC.
+        # The end time of the DDoS attack event. The time is displayed in UTC and must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.end_time = end_time
         # The event ID.
         self.event_id = event_id
         # The event result. Valid values:
         # 
-        # - **clean**: The attack was successfully cleaned.
-        # 
-        # - **ratelimit**: Rate limiting was applied.
-        # 
-        # - **blackhole**: Blackhole filtering was triggered.
+        # - **clean**: traffic scrubbed.
+        # - **ratelimit**: rate limited.
+        # - **blackhole**: blackhole filtering.
         self.event_result = event_result
         # The type of the DDoS attack event. Valid values:
-        # 
-        # - **web-cc**: A web resource exhaustion attack.
-        # 
-        # - **cc**: A connection-based attack.
-        # 
-        # - **traffic**: A volumetric attack.
+        # - **web-cc**: web resource exhaustion attacks.
+        # - **cc**: connection flood attacks.
+        # - **traffic**: volumetric traffic attacks.
         self.event_type = event_type
-        # The peak packets per second (Pps) of a volumetric attack.
+        # The peak PPS of volumetric traffic attacks.
         self.pps = pps
-        # The peak queries per second (Qps) of a web resource exhaustion attack.
+        # The peak QPS of the web resource exhaustion attack.
         self.qps = qps
-        # The start time of the DDoS attack event.
-        # 
-        # The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is in UTC.
+        # The start time of the DDoS attack event. The time is displayed in UTC and must be in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.start_time = start_time
         # The attack target.
         self.target = target
-        # The ID of the attack target.
+        # The ID of the attack target for web resource exhaustion.
         self.target_id = target_id
 
     def validate(self):
