@@ -1,3 +1,29 @@
+2026-10-21 Version: 2.4.0
+- Support API CreateImageCache.
+- Support API DeleteImageCache.
+- Support API GetImageCache.
+- Support API ListImageCaches.
+- Support API RetryImageCache.
+- Update API CreateCustomAgent: add request parameters body.observability.
+- Update API CreateCustomAgent: add request parameters body.useImageCache.
+- Update API CreateCustomAgent: add response parameters Body.data.effectiveSpecVersion.
+- Update API CreateCustomAgent: add response parameters Body.data.imageCacheId.
+- Update API CreateCustomAgent: add response parameters Body.data.imageCachePreparation.
+- Update API CreateCustomAgent: add response parameters Body.data.observability.
+- Update API CreateCustomAgent: add response parameters Body.data.useImageCache.
+- Update API GetCustomAgent: add response parameters Body.data.effectiveSpecVersion.
+- Update API GetCustomAgent: add response parameters Body.data.imageCacheId.
+- Update API GetCustomAgent: add response parameters Body.data.observability.
+- Update API GetCustomAgent: add response parameters Body.data.useImageCache.
+- Update API UpdateCustomAgent: add request parameters body.observability.
+- Update API UpdateCustomAgent: add request parameters body.useImageCache.
+- Update API UpdateCustomAgent: add response parameters Body.data.effectiveSpecVersion.
+- Update API UpdateCustomAgent: add response parameters Body.data.imageCacheId.
+- Update API UpdateCustomAgent: add response parameters Body.data.imageCachePreparation.
+- Update API UpdateCustomAgent: add response parameters Body.data.observability.
+- Update API UpdateCustomAgent: add response parameters Body.data.useImageCache.
+
+
 2026-10-16 Version: 2.3.1
 - Update API CreateWorkspace: add request parameters body.networkConfiguration.publicEgressEnabled.
 - Update API CreateWorkspace: add request parameters body.networkConfiguration.publicIngressEnabled.

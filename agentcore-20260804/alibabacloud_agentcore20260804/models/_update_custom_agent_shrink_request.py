@@ -10,9 +10,9 @@ class UpdateCustomAgentShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The update configuration for the custom agent. Provide at least one top-level field. Omitted top-level fields retain their original values. When providing a configuration object, you must specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole.
+        # The update configuration for the custom agent. Specify at least one top-level field. Omitted top-level fields retain their original values. When providing a configuration object, specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole.
         self.body_shrink = body_shrink
-        # Idempotency is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
+        # Idempotence is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
         self.client_token = client_token
 
     def validate(self):

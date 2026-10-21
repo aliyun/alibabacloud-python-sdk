@@ -17,17 +17,29 @@ class UpdateCustomAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request result code. The value is SUCCESS when the request is successful.
+        # The request result code. The value is SUCCESS when the request succeeds.
+        # 
+        # This parameter is required.
         self.code = code
-        # The latest submitted configuration and status of the custom agent. A successful response indicates that the request is accepted, but the configuration may not have taken effect yet.
+        # The latest submitted configuration and status of the custom agent. A successful response indicates that the request is accepted, but the configuration may not have taken effect.
+        # 
+        # This parameter is required.
         self.data = data
-        # The HTTP status code of the request. A value of 200 indicates success.
+        # The HTTP status code of the request. The value is 200 if the request is successful.
+        # 
+        # This parameter is required.
         self.http_status_code = http_status_code
-        # The processing result message of the request. The value is success if the request succeeds.
+        # The result message of the request. The value is success if the request is successful.
+        # 
+        # This parameter is required.
         self.message = message
-        # The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
+        # The unique identifier of the request, used to locate and troubleshoot issues.
+        # 
+        # This parameter is required.
         self.request_id = request_id
-        # Indicates whether the request is successful. A value of true indicates that the request is successful. Note that a successful creation, update, or deletion does not mean that the background operation is complete.
+        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. A successful creation, update, or deletion does not mean that the background operation is complete.
+        # 
+        # This parameter is required.
         self.success = success
 
     def validate(self):
@@ -92,14 +104,18 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         created_at: str = None,
         deploy_type: str = None,
         description: str = None,
+        effective_spec_version: int = None,
         environment: main_models.UpdateCustomAgentResponseBodyDataEnvironment = None,
         health_check: main_models.UpdateCustomAgentResponseBodyDataHealthCheck = None,
+        image_cache_id: str = None,
+        image_cache_preparation: main_models.UpdateCustomAgentResponseBodyDataImageCachePreparation = None,
         latest_execution_error: main_models.UpdateCustomAgentResponseBodyDataLatestExecutionError = None,
         latest_spec_version: int = None,
         latest_version_status: str = None,
         logging: main_models.UpdateCustomAgentResponseBodyDataLogging = None,
         name: str = None,
         network: main_models.UpdateCustomAgentResponseBodyDataNetwork = None,
+        observability: main_models.UpdateCustomAgentResponseBodyDataObservability = None,
         oss_mounts: List[main_models.UpdateCustomAgentResponseBodyDataOssMounts] = None,
         protocol: List[main_models.UpdateCustomAgentResponseBodyDataProtocol] = None,
         region_id: str = None,
@@ -108,44 +124,63 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         sandbox_phase_counts: Dict[str, int] = None,
         status: str = None,
         updated_at: str = None,
+        use_image_cache: bool = None,
         workspace_id: str = None,
     ):
         # The unique identifier of the custom agent. You can obtain this ID from the response of the CreateCustomAgent or ListCustomAgents operation.
+        # 
+        # This parameter is required.
         self.agent_id = agent_id
         # The latest submitted list of additional AgenticFS mounts.
         self.agentic_fs_mounts = agentic_fs_mounts
-        # The latest submitted deployment artifact configuration, including the service listening port and the ACR container image. To check whether the configuration has taken effect, refer to latestVersionStatus.
+        # The latest submitted deployment artifact configuration, including the service listening port and the ACR container image. Check the latestVersionStatus field to determine whether the configuration has taken effect.
         self.artifact = artifact
-        # The creation method of the agent. The value is CUSTOM for custom agents.
+        # The creation method of the agent. A value of CUSTOM is returned for custom agents.
         self.create_mode = create_mode
         # The creation time of the agent. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
         self.created_at = created_at
-        # The deployment method of the agent. Custom agents are deployed and managed by the platform, and the value is MANAGED.
+        # The deployment method of the agent. Custom agents are deployed and managed by the platform, and a value of MANAGED is returned.
         self.deploy_type = deploy_type
-        # The description of the agent.
+        # The purpose description of the agent.
         self.description = description
-        # The environment variable configuration for the agent process.
+        # The value is null if no effective version exists. Do not use latestSpecVersion as a substitute. You cannot use this field to release the occupation protection of old cache instances.
+        # 
+        # This parameter is required.
+        self.effective_spec_version = effective_spec_version
+        # The environment variable configuration of the agent process.
         self.environment = environment
-        # The HTTP health check configuration of the agent. This field is empty if no health check is configured.
+        # The HTTP health check configuration of the agent. The value is empty if not configured.
         self.health_check = health_check
-        # The waiting or execution error of the latest configuration version. This field is returned only when the version is waiting for a retry or fails to execute.
+        # This field is always returned. If useImageCache is set to true, the value is the non-empty logical ID of the current workspace. If useImageCache is set to false, the value is null. The occupation of old instances after the feature is disabled is independently protected by the backend and is not backfilled as the current configuration association.
+        # 
+        # This parameter is required.
+        self.image_cache_id = image_cache_id
+        # This field is always returned when caching is enabled in the final configuration for a create or update operation, including the reuse of existing registrations. This field is omitted when the final switch is disabled or during a get operation. Old summaries are not returned.
+        self.image_cache_preparation = image_cache_preparation
+        # The wait or execution error of the latest configuration version. This field is returned only when the version is waiting for a retry or fails to execute.
         self.latest_execution_error = latest_execution_error
         # The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
+        # 
+        # This parameter is required.
         self.latest_spec_version = latest_spec_version
         # The execution status corresponding to latestSpecVersion. Valid values:
-        # - pending: Waiting for execution.
+        # - pending: Pending execution.
         # - processing: Executing.
-        # - waiting_retry: Waiting for a retry.
-        # - succeeded: Executed successfully.
+        # - waiting_retry: Waiting for retry.
+        # - succeeded: Execution succeeded.
         # - failed: Execution failed.
         # - superseded: Superseded by a subsequent version.
         self.latest_version_status = latest_version_status
         # The latest submitted log delivery configuration.
         self.logging = logging
         # The name of the custom agent.
+        # 
+        # This parameter is required.
         self.name = name
-        # The network access configuration of the agent. The actual access scope is also limited by the network configuration of the workspace.
+        # The network access configuration of the agent. The actual access scope is also restricted by the network configuration of the workspace.
         self.network = network
+        # The observability configuration for high-code agents.
+        self.observability = observability
         # The latest submitted list of OSS directory mounts.
         self.oss_mounts = oss_mounts
         # The list of invocation protocol configurations for the agent.
@@ -154,22 +189,30 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         self.region_id = region_id
         # The ARN of the RAM role used by the agent to access user cloud resources.
         self.role_arn = role_arn
-        # The latest committed runtime configurations, including compute specifications, session policy, and elastic policy.
+        # The latest committed runtime configuration, including compute specifications, session policy, and elastic policy.
         self.runtime = runtime
         # The instance counts grouped by running instance phase. Keys include PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed). Only phases that actually occur are returned. Missing keys are treated as 0.
         self.sandbox_phase_counts = sandbox_phase_counts
         # The overall status of the agent. Valid values:
-        # - Creating: The agent is being created.
-        # - Running: The agent is running.
-        # - Failed: The agent failed.
-        # - Updating: The agent is being updated.
-        # - Deleting: The agent is being deleted.
-        # - Deleted: The agent is deleted.
-        # To query the execution progress of the latest configuration, check latestVersionStatus.
+        # - Creating: Creating.
+        # - Running: Running.
+        # - Failed: Failed.
+        # - Updating: Updating.
+        # - Deleting: Deleting.
+        # - Deleted: Deleted.
+        # To check the execution progress of the latest configuration, query latestVersionStatus.
+        # 
+        # This parameter is required.
         self.status = status
-        # The time when the agent was last updated. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
+        # The time when the agent was last updated, in ISO 8601 format. The trailing Z indicates the UTC time zone, and fractional seconds may be included.
         self.updated_at = updated_at
+        # Required. Reflects the final accepted configuration. If this field is missing in historical data, false is returned. Do not infer the value based on the cache status.
+        # 
+        # This parameter is required.
+        self.use_image_cache = use_image_cache
         # The ID of the workspace to which the custom agent belongs.
+        # 
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -183,12 +226,16 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
             self.environment.validate()
         if self.health_check:
             self.health_check.validate()
+        if self.image_cache_preparation:
+            self.image_cache_preparation.validate()
         if self.latest_execution_error:
             self.latest_execution_error.validate()
         if self.logging:
             self.logging.validate()
         if self.network:
             self.network.validate()
+        if self.observability:
+            self.observability.validate()
         if self.oss_mounts:
             for v1 in self.oss_mounts:
                  if v1:
@@ -228,11 +275,20 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.effective_spec_version is not None:
+            result['effectiveSpecVersion'] = self.effective_spec_version
+
         if self.environment is not None:
             result['environment'] = self.environment.to_map()
 
         if self.health_check is not None:
             result['healthCheck'] = self.health_check.to_map()
+
+        if self.image_cache_id is not None:
+            result['imageCacheId'] = self.image_cache_id
+
+        if self.image_cache_preparation is not None:
+            result['imageCachePreparation'] = self.image_cache_preparation.to_map()
 
         if self.latest_execution_error is not None:
             result['latestExecutionError'] = self.latest_execution_error.to_map()
@@ -251,6 +307,9 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
 
         if self.network is not None:
             result['network'] = self.network.to_map()
+
+        if self.observability is not None:
+            result['observability'] = self.observability.to_map()
 
         result['ossMounts'] = []
         if self.oss_mounts is not None:
@@ -279,6 +338,9 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
 
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
+
+        if self.use_image_cache is not None:
+            result['useImageCache'] = self.use_image_cache
 
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
@@ -312,6 +374,9 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('effectiveSpecVersion') is not None:
+            self.effective_spec_version = m.get('effectiveSpecVersion')
+
         if m.get('environment') is not None:
             temp_model = main_models.UpdateCustomAgentResponseBodyDataEnvironment()
             self.environment = temp_model.from_map(m.get('environment'))
@@ -319,6 +384,13 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         if m.get('healthCheck') is not None:
             temp_model = main_models.UpdateCustomAgentResponseBodyDataHealthCheck()
             self.health_check = temp_model.from_map(m.get('healthCheck'))
+
+        if m.get('imageCacheId') is not None:
+            self.image_cache_id = m.get('imageCacheId')
+
+        if m.get('imageCachePreparation') is not None:
+            temp_model = main_models.UpdateCustomAgentResponseBodyDataImageCachePreparation()
+            self.image_cache_preparation = temp_model.from_map(m.get('imageCachePreparation'))
 
         if m.get('latestExecutionError') is not None:
             temp_model = main_models.UpdateCustomAgentResponseBodyDataLatestExecutionError()
@@ -340,6 +412,10 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         if m.get('network') is not None:
             temp_model = main_models.UpdateCustomAgentResponseBodyDataNetwork()
             self.network = temp_model.from_map(m.get('network'))
+
+        if m.get('observability') is not None:
+            temp_model = main_models.UpdateCustomAgentResponseBodyDataObservability()
+            self.observability = temp_model.from_map(m.get('observability'))
 
         self.oss_mounts = []
         if m.get('ossMounts') is not None:
@@ -372,6 +448,9 @@ class UpdateCustomAgentResponseBodyData(DaraModel):
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
 
+        if m.get('useImageCache') is not None:
+            self.use_image_cache = m.get('useImageCache')
+
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
 
@@ -388,9 +467,9 @@ class UpdateCustomAgentResponseBodyDataRuntime(DaraModel):
         # 
         # This parameter is required.
         self.compute = compute
-        # The elastic policy configurations for the agent.
+        # The elastic policy configuration of the agent.
         self.hpa = hpa
-        # The session policy configurations for the agent.
+        # The session policy configuration of the agent.
         # 
         # This parameter is required.
         self.session_policy = session_policy
@@ -441,13 +520,12 @@ class UpdateCustomAgentResponseBodyDataRuntimeSessionPolicy(DaraModel):
         header_name: str = None,
         type: str = None,
     ):
-        # The name of the HTTP request header used by the session policy. This parameter applies to ISOLATED_HEADER_FIELD.
+        # The name of the HTTP request header used by the session policy. This applies to ISOLATED_HEADER_FIELD.
         self.header_name = header_name
         # The type of the session policy. Valid values:
         # - AFFINITY: Session affinity.
         # - ISOLATED_HEADER_FIELD: Uses the request header specified by headerName to associate sessions.
-        # - ISOLATED_COOKIE: Not recommended.
-        # Note: The compatible value DISABLED in a request is returned as AFFINITY.
+        # ISOLATED_COOKIE is not recommended. The compatible value DISABLED in a request is returned as AFFINITY.
         # 
         # This parameter is required.
         self.type = type
@@ -487,7 +565,7 @@ class UpdateCustomAgentResponseBodyDataRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether elastic scaling is enabled. Valid values:
+        # Specifies whether to enable elastic scaling. Valid values:
         # - true: Enabled.
         # - false: Disabled.
         # 
@@ -586,9 +664,9 @@ class UpdateCustomAgentResponseBodyDataProtocol(DaraModel):
         paths: List[main_models.UpdateCustomAgentResponseBodyDataProtocolPaths] = None,
         type: str = None,
     ):
-        # The request header configurations for the current protocol. The key is the header name and the value is a string.
+        # The request header configuration for the current protocol. The key is the header name and the value is a string.
         self.headers = headers
-        # The list of API paths corresponding to the current protocol.
+        # The list of API paths for the current protocol.
         self.paths = paths
         # The invocation protocol type. Valid values:
         # - agui: AG-UI protocol.
@@ -644,7 +722,7 @@ class UpdateCustomAgentResponseBodyDataProtocolPaths(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The description of the current API path.
+        # The usage description of the current API path.
         self.description = description
         # The API path corresponding to the current protocol.
         # 
@@ -732,15 +810,43 @@ class UpdateCustomAgentResponseBodyDataOssMounts(DaraModel):
 
         return self
 
+class UpdateCustomAgentResponseBodyDataObservability(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+    ):
+        # Specifies whether to enable agent observability. Default value: true. If set to false, the platform Python probe is not loaded at runtime, and you must collect observability data yourself.
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        return self
+
 class UpdateCustomAgentResponseBodyDataNetwork(DaraModel):
     def __init__(
         self,
         access_internet: main_models.UpdateCustomAgentResponseBodyDataNetworkAccessInternet = None,
         access_vpc: main_models.UpdateCustomAgentResponseBodyDataNetworkAccessVpc = None,
     ):
-        # The Internet access configuration of the agent. If this field is not configured, Internet access is allowed on the agent side, but it is still limited by the workspace.
+        # The Internet access configuration of the agent. If this parameter is not configured, Internet access is allowed on the agent side but remains restricted by the workspace.
         self.access_internet = access_internet
-        # The user VPC access configuration of the agent. If this field is not configured, user VPC access is allowed on the agent side, but it is still limited by the workspace.
+        # The user VPC access configuration of the agent. If this parameter is not configured, user VPC access is allowed on the agent side but remains restricted by the workspace.
         self.access_vpc = access_vpc
 
     def validate(self):
@@ -779,7 +885,7 @@ class UpdateCustomAgentResponseBodyDataNetworkAccessVpc(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether access to the user VPC configured for the workspace is allowed on the agent side. The actual access is still limited by the workspace.
+        # Specifies whether access to the user VPC configured for the workspace is allowed on the agent side. The actual access remains restricted by the workspace.
         self.enabled = enabled
 
     def validate(self):
@@ -807,7 +913,7 @@ class UpdateCustomAgentResponseBodyDataNetworkAccessInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether Internet access is allowed on the agent side. The actual access is still limited by the workspace.
+        # Specifies whether Internet access is allowed on the agent side. The actual access remains restricted by the workspace.
         self.enabled = enabled
 
     def validate(self):
@@ -904,11 +1010,17 @@ class UpdateCustomAgentResponseBodyDataLatestExecutionError(DaraModel):
         message: str = None,
         retryable: bool = None,
     ):
-        # The reason code for the waiting or execution failure of the latest configuration. This code is used to determine the subsequent handling method.
+        # The cause code for the wait or execution failure of the latest configuration. You can use this code to determine the subsequent processing method.
+        # 
+        # This parameter is required.
         self.code = code
-        # The description of the reason why the latest configuration is waiting or failed to execute. Refer to code and retryable to determine what to do next.
+        # The description of the cause for the wait or when the latest configuration failed to execute. Check the code and retryable fields to determine What to do next.
+        # 
+        # This parameter is required.
         self.message = message
-        # Specifies whether automatic retry is performed. If the value is true, you can query again later. If the value is false, check and fix the configuration based on the reason, and then resubmit the request.
+        # Specifies whether automatic retry is performed. If the value is true, you can query again later. If the value is false, check and fix the configuration based on the cause and then resubmit the agent.
+        # 
+        # This parameter is required.
         self.retryable = retryable
 
     def validate(self):
@@ -943,6 +1055,58 @@ class UpdateCustomAgentResponseBodyDataLatestExecutionError(DaraModel):
 
         return self
 
+class UpdateCustomAgentResponseBodyDataImageCachePreparation(DaraModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        status_at_acceptance: str = None,
+        submission_status: str = None,
+    ):
+        # The value is equal to the imageCacheId in the same response and belongs to the current workspace.
+        # 
+        # This parameter is required.
+        self.image_id = image_id
+        # The acceptance snapshot of the current request, which can be PENDING, READY, or FAILED. This value does not represent the real-time status. You can query the real-time status by calling GetImageCache.
+        # 
+        # This parameter is required.
+        self.status_at_acceptance = status_at_acceptance
+        # The value is fixed as ACCEPTED, indicating that the logical association and preparation intent are confirmed.
+        # 
+        # This parameter is required.
+        self.submission_status = submission_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.image_id is not None:
+            result['imageId'] = self.image_id
+
+        if self.status_at_acceptance is not None:
+            result['statusAtAcceptance'] = self.status_at_acceptance
+
+        if self.submission_status is not None:
+            result['submissionStatus'] = self.submission_status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('imageId') is not None:
+            self.image_id = m.get('imageId')
+
+        if m.get('statusAtAcceptance') is not None:
+            self.status_at_acceptance = m.get('statusAtAcceptance')
+
+        if m.get('submissionStatus') is not None:
+            self.submission_status = m.get('submissionStatus')
+
+        return self
+
 class UpdateCustomAgentResponseBodyDataHealthCheck(DaraModel):
     def __init__(
         self,
@@ -955,15 +1119,15 @@ class UpdateCustomAgentResponseBodyDataHealthCheck(DaraModel):
     ):
         # This parameter does not take effect.
         self.healthy_threshold = healthy_threshold
-        # The interval between two consecutive health checks, in seconds.
+        # The interval between two health checks, in seconds.
         self.interval_seconds = interval_seconds
-        # The Health Check Path for HTTP health checks.
+        # The HTTP health check path.
         self.path = path
-        # The port accessed for the HTTP health check.
+        # The port accessed for HTTP health checks.
         self.port = port
         # The timeout period for a single health check, in seconds.
         self.timeout_seconds = timeout_seconds
-        # The number of consecutive health check failures required to mark the agent as unhealthy.
+        # The number of consecutive health check failures after which the agent is considered unhealthy.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -1104,7 +1268,7 @@ class UpdateCustomAgentResponseBodyDataArtifact(DaraModel):
         self.code = code
         # The latest submitted ACR container image configuration.
         self.container = container
-        # The TCP port listened to by the agent service.
+        # The TCP port on which the agent service listens.
         # 
         # This parameter is required.
         self.port = port
@@ -1174,7 +1338,7 @@ class UpdateCustomAgentResponseBodyDataArtifactContainer(DaraModel):
         # 
         # This parameter is required.
         self.tag = tag
-        # The image source type. A value of acr indicates Alibaba Cloud Container Registry.
+        # The image source type. A value of acr indicates Alibaba Cloud Container Registry (ACR).
         # 
         # This parameter is required.
         self.type = type
@@ -1291,7 +1455,7 @@ class UpdateCustomAgentResponseBodyDataAgenticFsMounts(DaraModel):
     ):
         # The AgenticFS mount directory in the container, located under /mnt/agenticfs/.
         self.mount_path = mount_path
-        # The relative directory in the mounted access point.
+        # The relative directory within the mounted access point.
         self.path = path
         # Specifies whether the mount is read-only. A value of true indicates a read-only mount, and a value of false indicates a read-write mount.
         self.read_only = read_only

@@ -16,16 +16,28 @@ class VerifyWorkspaceAcrRamAuthorizationResponseBody(DaraModel):
         success: bool = None,
     ):
         # The business status code.
+        # 
+        # This parameter is required.
         self.code = code
         # The response data.
+        # 
+        # This parameter is required.
         self.data = data
         # The HTTP status code.
+        # 
+        # This parameter is required.
         self.http_status_code = http_status_code
         # The response message.
+        # 
+        # This parameter is required.
         self.message = message
         # The request ID.
+        # 
+        # This parameter is required.
         self.request_id = request_id
         # Indicates whether the request is successful.
+        # 
+        # This parameter is required.
         self.success = success
 
     def validate(self):
@@ -93,20 +105,32 @@ class VerifyWorkspaceAcrRamAuthorizationResponseBodyData(DaraModel):
         workspace_id: str = None,
     ):
         # The ID of the ACR Enterprise instance.
+        # 
+        # This parameter is required.
         self.acr_instance_id = acr_instance_id
         # The current attachment status of the policy for the target repository.
+        # 
+        # This parameter is required.
         self.authorization_status = authorization_status
-        # The access prerequisite status. This does not indicate that the secret is ready.
+        # The access prerequisite status, which does not indicate Secret Ready.
+        # 
+        # This parameter is required.
         self.eligibility_status = eligibility_status
-        # The stable reason code for unauthorized or unmet conditions. This field is omitted when no reason exists.
+        # The stable reason code for unauthorized or unmet conditions. This field is omitted if no reason exists.
         self.reason_code = reason_code
-        # The user-readable reason message. This field is omitted when no reason exists.
+        # The user-readable reason. This field is omitted if no reason exists.
         self.reason_message = reason_message
         # The name of the shared role selected by the backend. This field is not editable on the frontend.
+        # 
+        # This parameter is required.
         self.role_name = role_name
         # The source of the shared role. This does not indicate that authorization is complete.
+        # 
+        # This parameter is required.
         self.role_source = role_source
         # The workspace ID.
+        # 
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):

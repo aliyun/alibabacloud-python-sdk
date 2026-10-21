@@ -15,7 +15,7 @@ class CreateCustomAgentRequest(DaraModel):
     ):
         # The JSON configuration of the custom agent. You must specify name, artifact, roleArn, and runtime.
         self.body = body
-        # Idempotency is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
+        # Idempotence is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
         self.client_token = client_token
 
     def validate(self):
@@ -57,14 +57,16 @@ class CreateCustomAgentRequestBody(DaraModel):
         logging: main_models.CreateCustomAgentRequestBodyLogging = None,
         name: str = None,
         network: main_models.CreateCustomAgentRequestBodyNetwork = None,
+        observability: main_models.CreateCustomAgentRequestBodyObservability = None,
         oss_mounts: List[main_models.CreateCustomAgentRequestBodyOssMounts] = None,
         protocol: List[main_models.CreateCustomAgentRequestBodyProtocol] = None,
         role_arn: str = None,
         runtime: main_models.CreateCustomAgentRequestBodyRuntime = None,
+        use_image_cache: bool = None,
     ):
-        # The list of additional AgenticFS mounts. The total number of AgenticFS and OSS mounts cannot exceed 10. If you omit this parameter or pass an empty array [] during creation, no additional mounts are configured. If you omit this parameter during an update, the original value is retained. If you pass an empty array [], the mounts are cleared. You cannot pass null.
+        # The list of additional AgenticFS mounts. The total number of AgenticFS mounts and ossMounts cannot exceed 10. If you omit this parameter or pass an empty array [] during creation, no additional mounts are configured. If you omit this parameter during an update, the original value is retained. If you pass an empty array [], the mounts are cleared. You cannot pass null.
         self.agentic_fs_mounts = agentic_fs_mounts
-        # The deployment artifact configuration. Currently, only ACR container images are supported. Specify container and the service listening port port. Omit code.
+        # The deployment artifact configuration. Currently, only ACR container images are supported. Specify container and the service listening port in port, and omit code.
         # 
         # This parameter is required.
         self.artifact = artifact
@@ -72,28 +74,32 @@ class CreateCustomAgentRequestBody(DaraModel):
         self.description = description
         # The environment variable configuration passed to the agent runtime process.
         self.environment = environment
-        # The optional HTTP health check configuration. If this object is provided, port is required, and unspecified items use default values. If omitted during creation, no health check is configured. If this top-level field is omitted during an update, the original configuration is retained. If null is passed, the health check is removed.
+        # The optional HTTP health check configuration. If this object is provided, you must specify port. Unspecified items use default values. If omitted during creation, no health check is configured. If this top-level field is omitted during an update, the original configuration is retained. If null is passed, the health check is removed.
         self.health_check = health_check
-        # The agent log delivery configuration. You can specify the Simple Log Service project and Logstore. After a successful creation or update, verify that logs are delivered properly.
+        # The agent log delivery configuration. You can specify the Simple Log Service project and Logstore. After a successful creation or update, verify whether logs are delivered properly.
         self.logging = logging
         # The name of the custom agent. The length must be 1 to 128 characters after leading and trailing whitespace is removed. The name must be unique within the same workspace.
         # 
         # This parameter is required.
         self.name = name
-        # The network access configuration of the agent. If this object is provided, omitted access items are treated as allowed. The actual accessible range is still limited by the workspace network configuration. To retain the original restrictions during an update, specify both accessInternet and accessVpc.
+        # The network access configuration of the agent. If this object is provided, omitted access items are treated as allowed. The actual accessible scope is still limited by the workspace network configuration. To retain the original restrictions during an update, specify both accessInternet and accessVpc.
         self.network = network
-        # The list of OSS mounts. The total number of OSS and AgenticFS mounts cannot exceed 10. For each item, you must specify bucketName, path, and mountPath. Mount targets must not be duplicated or overlap. The entire list is replaced during an update. Pass an empty array [] to clear the list.
+        # The high-code agent observability configuration.
+        self.observability = observability
+        # The list of OSS mounts. A maximum of 10 items are allowed in total with agenticFsMounts. Each item must specify bucketName, path, and mountPath. Mount targets must not be duplicated or overlap with each other. When you update the agent, the entire list is replaced. Pass an empty array [] to clear the list.
         self.oss_mounts = oss_mounts
-        # The list of invocation protocols supported by the agent. Each item includes the protocol type and optional paths and request headers. When updating, replace the entire list.
+        # The list of invocation protocols supported by the agent. Each item includes the protocol type and optional paths and request headers. When you update the agent, the entire list is replaced.
         self.protocol = protocol
         # The ARN of the RAM role used when the agent accesses user cloud resources. The role must have permissions to access the cloud resources.
         # 
         # This parameter is required.
         self.role_arn = role_arn
-        # The runtime configuration, including compute specifications, session policies, and an optional elastic policy. compute and sessionPolicy must be specified together.
+        # The runtime configuration, including compute specifications, session policies, and optional elastic policy. Both compute and sessionPolicy must be specified at the same time.
         # 
         # This parameter is required.
         self.runtime = runtime
+        # Specifies whether to use the image cache. If omitted during creation, the default value is false. You can explicitly set it to true or false. The new contract rejects null and invalid types. Existing compatibility endpoints are processed according to migration agreements.
+        self.use_image_cache = use_image_cache
 
     def validate(self):
         if self.agentic_fs_mounts:
@@ -110,6 +116,8 @@ class CreateCustomAgentRequestBody(DaraModel):
             self.logging.validate()
         if self.network:
             self.network.validate()
+        if self.observability:
+            self.observability.validate()
         if self.oss_mounts:
             for v1 in self.oss_mounts:
                  if v1:
@@ -152,6 +160,9 @@ class CreateCustomAgentRequestBody(DaraModel):
         if self.network is not None:
             result['network'] = self.network.to_map()
 
+        if self.observability is not None:
+            result['observability'] = self.observability.to_map()
+
         result['ossMounts'] = []
         if self.oss_mounts is not None:
             for k1 in self.oss_mounts:
@@ -167,6 +178,9 @@ class CreateCustomAgentRequestBody(DaraModel):
 
         if self.runtime is not None:
             result['runtime'] = self.runtime.to_map()
+
+        if self.use_image_cache is not None:
+            result['useImageCache'] = self.use_image_cache
 
         return result
 
@@ -204,6 +218,10 @@ class CreateCustomAgentRequestBody(DaraModel):
             temp_model = main_models.CreateCustomAgentRequestBodyNetwork()
             self.network = temp_model.from_map(m.get('network'))
 
+        if m.get('observability') is not None:
+            temp_model = main_models.CreateCustomAgentRequestBodyObservability()
+            self.observability = temp_model.from_map(m.get('observability'))
+
         self.oss_mounts = []
         if m.get('ossMounts') is not None:
             for k1 in m.get('ossMounts'):
@@ -222,6 +240,9 @@ class CreateCustomAgentRequestBody(DaraModel):
         if m.get('runtime') is not None:
             temp_model = main_models.CreateCustomAgentRequestBodyRuntime()
             self.runtime = temp_model.from_map(m.get('runtime'))
+
+        if m.get('useImageCache') is not None:
+            self.use_image_cache = m.get('useImageCache')
 
         return self
 
@@ -291,7 +312,7 @@ class CreateCustomAgentRequestBodyRuntimeSessionPolicy(DaraModel):
     ):
         # The name of the HTTP request header used by the session policy. This parameter is required when type is set to ISOLATED_HEADER_FIELD and must be a valid HTTP request header name. Omit this parameter for other policies.
         self.header_name = header_name
-        # The session policy type. Valid values: AFFINITY: session affinity; ISOLATED_HEADER_FIELD: associates sessions by using the request header specified by headerName. ISOLATED_COOKIE is not recommended. DISABLED is a compatibility option, and the response returns AFFINITY.
+        # The session policy type. Valid values: AFFINITY: session affinity. ISOLATED_HEADER_FIELD: uses the request header specified by headerName to associate sessions. ISOLATED_COOKIE: not recommended for now. DISABLED: compatibility option, and the response returns AFFINITY.
         # 
         # This parameter is required.
         self.type = type
@@ -331,17 +352,17 @@ class CreateCustomAgentRequestBodyRuntimeHpa(DaraModel):
         min_sandbox_count: int = None,
         session_ttl_seconds: int = None,
     ):
-        # Specifies whether to enable elastic scaling. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. When runtime is provided, if this field is omitted, the default value is false.
+        # Specifies whether to enable elastic scaling. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. When runtime is provided, if this field is omitted, the default value false is used.
         # 
         # This parameter is required.
         self.enabled = enabled
-        # The maximum number of concurrent sessions for a single runtime instance. Valid values: 1 to 100. When runtime is provided, if this field is omitted, the default value is 100.
+        # The maximum number of concurrent sessions for a single runtime instance. Valid values: 1 to 100. When runtime is provided, if this field is omitted, the default value 100 is used.
         self.max_concurrent_sessions_per_sandbox = max_concurrent_sessions_per_sandbox
-        # The maximum number of runtime instances. Valid values: 1 to 100. The value cannot be less than minSandboxCount. When runtime is provided, if this field is omitted, the default value is 10.
+        # The maximum number of runtime instances. Valid values: 1 to 100. The value cannot be less than minSandboxCount. When runtime is provided, if this field is omitted, the default value 10 is used.
         self.max_sandbox_count = max_sandbox_count
-        # The minimum number of runtime instances. Valid values: 1 to 100. The value cannot be greater than maxSandboxCount. When runtime is provided, if this field is omitted, the default value is 1.
+        # The minimum number of runtime instances. Valid values: 1 to 100. The value cannot be greater than maxSandboxCount. When runtime is provided, if this field is omitted, the default value 1 is used.
         self.min_sandbox_count = min_sandbox_count
-        # The session idle timeout in seconds. Valid values: 60 to 86400. When runtime is provided, if this field is omitted, the default value is 600.
+        # The session idle timeout in seconds. Valid values: 60 to 86400. When runtime is provided, if this field is omitted, the default value 600 is used.
         self.session_ttl_seconds = session_ttl_seconds
 
     def validate(self):
@@ -480,7 +501,7 @@ class CreateCustomAgentRequestBodyProtocolPaths(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The usage description of the current API path.
+        # The purpose description of the current API path.
         self.description = description
         # The non-empty API path corresponding to the current protocol.
         # 
@@ -523,11 +544,11 @@ class CreateCustomAgentRequestBodyOssMounts(DaraModel):
     ):
         # The name of the OSS bucket. This parameter is required for each mount item. The name must be 3 to 63 characters in length and can contain only lowercase letters, digits, and hyphens. It cannot start or end with a hyphen.
         self.bucket_name = bucket_name
-        # The subdirectory under /mnt/oss/ in the container. This parameter is required for each mount item. Mount targets must not be duplicated or overlap in a parent-child relationship.
+        # The subdirectory under /mnt/oss/ in the container. This parameter is required for each mount item. Mount targets must not be duplicated or form parent-child overlaps.
         self.mount_path = mount_path
-        # The non-empty object directory prefix in the bucket, such as datasets/train. Leading and trailing forward slashes (/) are removed. Root directories are not supported. Do not use parent directory references.
+        # The non-empty object directory prefix in the bucket, such as datasets/train. Leading and trailing slashes (/) are removed. The root directory is not supported. Do not use parent directory traversal.
         self.path = path
-        # Specifies whether the mount is read-only. A value of true indicates read-only, and false indicates read and write. If omitted, the default value is false.
+        # Specifies whether the mount is read-only. A value of true indicates read-only, and a value of false indicates read and write. If this parameter is omitted, the default value is false.
         self.read_only = read_only
 
     def validate(self):
@@ -565,6 +586,34 @@ class CreateCustomAgentRequestBodyOssMounts(DaraModel):
 
         if m.get('readOnly') is not None:
             self.read_only = m.get('readOnly')
+
+        return self
+
+class CreateCustomAgentRequestBodyObservability(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+    ):
+        # Default value: true. If set to false, the platform Python probe is not loaded at runtime, and you must collect observability data yourself.
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
 
         return self
 
@@ -615,7 +664,7 @@ class CreateCustomAgentRequestBodyNetworkAccessVpc(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow the agent to access the user VPC configured for the workspace. A Boolean value is required when configuring accessVpc. For this to take effect, the workspace must also allow VPC access.
+        # Specifies whether to allow the agent to access the user VPC configured for the workspace. A Boolean value must be provided when configuring accessVpc. For this to take effect, the workspace must also allow VPC access.
         self.enabled = enabled
 
     def validate(self):
@@ -643,7 +692,7 @@ class CreateCustomAgentRequestBodyNetworkAccessInternet(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to allow the agent to access the Internet. A Boolean value is required when configuring accessInternet. For this to take effect, the workspace must also allow Internet access.
+        # Specifies whether to allow the agent to access the Internet. A Boolean value must be provided when configuring accessInternet. For this to take effect, the workspace must also allow Internet access.
         self.enabled = enabled
 
     def validate(self):
@@ -702,9 +751,9 @@ class CreateCustomAgentRequestBodyLoggingSls(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
-        # The name of the Simple Log Service Logstore that receives the agent logs.
+        # The name of the Simple Log Service Logstore that receives agent logs.
         self.logstore = logstore
-        # The name of the Simple Log Service project that receives the agent logs.
+        # The name of the Simple Log Service project that receives agent logs.
         self.project = project
 
     def validate(self):
@@ -745,15 +794,15 @@ class CreateCustomAgentRequestBodyHealthCheck(DaraModel):
     ):
         # This parameter does not currently take effect. Omit this parameter.
         self.healthy_threshold = healthy_threshold
-        # The interval between two health checks, in seconds. It must be a positive integer. If omitted, the default value is 10.
+        # The interval between two health checks, in seconds. It must be a positive integer. If this parameter is omitted, the default value is 10.
         self.interval_seconds = interval_seconds
-        # The HTTP health check path. It must start with a forward slash (/). If omitted, the default value is /healthz.
+        # The HTTP health check path. It must start with a forward slash (/). If this parameter is omitted, the default value is /healthz.
         self.path = path
         # The port accessed for health checks. This parameter is required when configuring a health check. Valid values: 1 to 65535.
         self.port = port
-        # The timeout period for a single health check, in seconds. It must be a positive integer and less than intervalSeconds. If omitted, the default value is 2.
+        # The timeout period for a single health check, in seconds. It must be a positive integer and less than intervalSeconds. If this parameter is omitted, the default value is 2.
         self.timeout_seconds = timeout_seconds
-        # The number of consecutive health check failures required to mark the instance as unhealthy. It must be a positive integer. If omitted, the default value is 3.
+        # The number of consecutive health check failures required to mark the agent as unhealthy. It must be a positive integer. If this parameter is omitted, the default value is 3.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -1026,11 +1075,11 @@ class CreateCustomAgentRequestBodyArtifactCode(DaraModel):
         language_runtime: str = None,
         source_uri: str = None,
     ):
-        # The startup entry point of the code package. Code package deployment is not currently supported. Omit this parameter.
+        # The startup entry point for the code package. Code package deployment is not currently supported. Omit this parameter.
         # 
         # This parameter is required.
         self.entrypoint = entrypoint
-        # The language runtime identifier of the code package. Code package deployment is not currently supported. Omit this parameter.
+        # The language runtime identifier for the code package. Code package deployment is not currently supported. Omit this parameter.
         # 
         # This parameter is required.
         self.language_runtime = language_runtime
@@ -1079,13 +1128,13 @@ class CreateCustomAgentRequestBodyAgenticFsMounts(DaraModel):
         read_only: bool = None,
         server: str = None,
     ):
-        # The subdirectory under /mnt/agenticfs/ in the container. This parameter is required for each mount item. Mount targets must not be duplicated or overlap in a parent-child relationship.
+        # The subdirectory under /mnt/agenticfs/ in the container. This parameter is required for each mount item. Mount targets must not be duplicated or overlap in parent-child relationships.
         self.mount_path = mount_path
         # The existing non-empty relative directory under the access point. This parameter is required for each mount item. Root directories, absolute paths, and parent directory references are not allowed.
         self.path = path
-        # Specifies whether the mount is read-only. A value of true indicates read-only, and false indicates read and write. If omitted, the default value is false.
+        # Specifies whether the mount is read-only. A value of true indicates read-only, and a value of false indicates read and write. If this parameter is omitted, the default value is false.
         self.read_only = read_only
-        # The access point domain name. This parameter is required for each mount item. Use the DomainName from the NAS ListAccessPoints response. Do not include the protocol, port, or path.
+        # The domain name of the access point. This parameter is required for each mount item. Use the DomainName from the NAS ListAccessPoints response. Do not include the protocol, port, or path.
         self.server = server
 
     def validate(self):

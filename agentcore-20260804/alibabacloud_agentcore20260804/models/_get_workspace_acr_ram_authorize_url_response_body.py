@@ -16,16 +16,28 @@ class GetWorkspaceAcrRamAuthorizeUrlResponseBody(DaraModel):
         success: bool = None,
     ):
         # The business status code.
+        # 
+        # This parameter is required.
         self.code = code
         # The response data.
+        # 
+        # This parameter is required.
         self.data = data
         # The HTTP status code.
+        # 
+        # This parameter is required.
         self.http_status_code = http_status_code
         # The response message.
+        # 
+        # This parameter is required.
         self.message = message
         # The request ID.
+        # 
+        # This parameter is required.
         self.request_id = request_id
         # Indicates whether the request is successful.
+        # 
+        # This parameter is required.
         self.success = success
 
     def validate(self):
@@ -90,14 +102,24 @@ class GetWorkspaceAcrRamAuthorizeUrlResponseBodyData(DaraModel):
         workspace_id: str = None,
     ):
         # The ID of the ACR Enterprise instance.
+        # 
+        # This parameter is required.
         self.acr_instance_id = acr_instance_id
         # The RAM authorization URL used to create or append target ACR permissions for the shared role.
+        # 
+        # This parameter is required.
         self.authorize_url = authorize_url
-        # The shared role name selected by the backend. This field is not editable on the frontend.
+        # The name of the shared role selected by the backend. This field is not editable on the frontend.
+        # 
+        # This parameter is required.
         self.role_name = role_name
         # The source of the shared role. This does not indicate that authorization is complete.
+        # 
+        # This parameter is required.
         self.role_source = role_source
         # The workspace ID.
+        # 
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):

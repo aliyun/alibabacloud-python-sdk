@@ -12,7 +12,7 @@ class CreateCustomAgentShrinkRequest(DaraModel):
     ):
         # The JSON configuration of the custom agent. You must specify name, artifact, roleArn, and runtime.
         self.body_shrink = body_shrink
-        # Idempotency is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
+        # Idempotence is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
         self.client_token = client_token
 
     def validate(self):

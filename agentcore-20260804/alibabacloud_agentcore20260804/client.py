@@ -1141,6 +1141,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_identity_provider_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_image_cache_with_options(
+        self,
+        tmp_req: main_models.CreateImageCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateImageCacheResponse:
+        tmp_req.validate()
+        request = main_models.CreateImageCacheShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateImageCache',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateImageCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_image_cache_with_options_async(
+        self,
+        tmp_req: main_models.CreateImageCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateImageCacheResponse:
+        tmp_req.validate()
+        request = main_models.CreateImageCacheShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateImageCache',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateImageCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_image_cache(
+        self,
+        request: main_models.CreateImageCacheRequest,
+    ) -> main_models.CreateImageCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_image_cache_with_options(request, headers, runtime)
+
+    async def create_image_cache_async(
+        self,
+        request: main_models.CreateImageCacheRequest,
+    ) -> main_models.CreateImageCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_image_cache_with_options_async(request, headers, runtime)
+
     def create_managed_agent_with_options(
         self,
         workspace_id: str,
@@ -2644,6 +2744,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_identity_provider_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
+
+    def delete_image_cache_with_options(
+        self,
+        image_id: str,
+        request: main_models.DeleteImageCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteImageCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteImageCache',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches/{DaraURL.percent_encode(image_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteImageCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_image_cache_with_options_async(
+        self,
+        image_id: str,
+        request: main_models.DeleteImageCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteImageCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteImageCache',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches/{DaraURL.percent_encode(image_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteImageCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_image_cache(
+        self,
+        image_id: str,
+        request: main_models.DeleteImageCacheRequest,
+    ) -> main_models.DeleteImageCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_image_cache_with_options(image_id, request, headers, runtime)
+
+    async def delete_image_cache_async(
+        self,
+        image_id: str,
+        request: main_models.DeleteImageCacheRequest,
+    ) -> main_models.DeleteImageCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_image_cache_with_options_async(image_id, request, headers, runtime)
 
     def delete_managed_agent_with_options(
         self,
@@ -4712,6 +4896,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_identity_provider_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
+
+    def get_image_cache_with_options(
+        self,
+        image_id: str,
+        request: main_models.GetImageCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetImageCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetImageCache',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches/{DaraURL.percent_encode(image_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetImageCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_image_cache_with_options_async(
+        self,
+        image_id: str,
+        request: main_models.GetImageCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetImageCacheResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetImageCache',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches/{DaraURL.percent_encode(image_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetImageCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_image_cache(
+        self,
+        image_id: str,
+        request: main_models.GetImageCacheRequest,
+    ) -> main_models.GetImageCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_image_cache_with_options(image_id, request, headers, runtime)
+
+    async def get_image_cache_async(
+        self,
+        image_id: str,
+        request: main_models.GetImageCacheRequest,
+    ) -> main_models.GetImageCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_image_cache_with_options_async(image_id, request, headers, runtime)
 
     def get_managed_agent_with_options(
         self,
@@ -7217,6 +7485,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_identity_providers_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_image_caches_with_options(
+        self,
+        request: main_models.ListImageCachesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListImageCachesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.acr_instance_id):
+            query['acrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.digest):
+            query['digest'] = request.digest
+        if not DaraCore.is_null(request.image_ref_contains):
+            query['imageRefContains'] = request.image_ref_contains
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.registry):
+            query['registry'] = request.registry
+        if not DaraCore.is_null(request.repository):
+            query['repository'] = request.repository
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.tag):
+            query['tag'] = request.tag
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListImageCaches',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListImageCachesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_image_caches_with_options_async(
+        self,
+        request: main_models.ListImageCachesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListImageCachesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.acr_instance_id):
+            query['acrInstanceId'] = request.acr_instance_id
+        if not DaraCore.is_null(request.digest):
+            query['digest'] = request.digest
+        if not DaraCore.is_null(request.image_ref_contains):
+            query['imageRefContains'] = request.image_ref_contains
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.namespace):
+            query['namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.registry):
+            query['registry'] = request.registry
+        if not DaraCore.is_null(request.repository):
+            query['repository'] = request.repository
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.tag):
+            query['tag'] = request.tag
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListImageCaches',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListImageCachesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_image_caches(
+        self,
+        request: main_models.ListImageCachesRequest,
+    ) -> main_models.ListImageCachesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_image_caches_with_options(request, headers, runtime)
+
+    async def list_image_caches_async(
+        self,
+        request: main_models.ListImageCachesRequest,
+    ) -> main_models.ListImageCachesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_image_caches_with_options_async(request, headers, runtime)
+
     def list_managed_agents_with_options(
         self,
         workspace_id: str,
@@ -9628,6 +10016,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.reset_user_password_with_options_async(workspace_id, request, headers, runtime)
+
+    def retry_image_cache_with_options(
+        self,
+        image_id: str,
+        tmp_req: main_models.RetryImageCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryImageCacheResponse:
+        tmp_req.validate()
+        request = main_models.RetryImageCacheShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryImageCache',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches/{DaraURL.percent_encode(image_id)}/retry',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryImageCacheResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_image_cache_with_options_async(
+        self,
+        image_id: str,
+        tmp_req: main_models.RetryImageCacheRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryImageCacheResponse:
+        tmp_req.validate()
+        request = main_models.RetryImageCacheShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryImageCache',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/image-caches/{DaraURL.percent_encode(image_id)}/retry',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryImageCacheResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_image_cache(
+        self,
+        image_id: str,
+        request: main_models.RetryImageCacheRequest,
+    ) -> main_models.RetryImageCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.retry_image_cache_with_options(image_id, request, headers, runtime)
+
+    async def retry_image_cache_async(
+        self,
+        image_id: str,
+        request: main_models.RetryImageCacheRequest,
+    ) -> main_models.RetryImageCacheResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.retry_image_cache_with_options_async(image_id, request, headers, runtime)
 
     def search_memories_with_options(
         self,

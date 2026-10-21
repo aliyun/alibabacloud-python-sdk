@@ -51,6 +51,10 @@ from ._create_identity_provider_request import CreateIdentityProviderRequest
 from ._create_identity_provider_shrink_request import CreateIdentityProviderShrinkRequest
 from ._create_identity_provider_response_body import CreateIdentityProviderResponseBody
 from ._create_identity_provider_response import CreateIdentityProviderResponse
+from ._create_image_cache_request import CreateImageCacheRequest
+from ._create_image_cache_shrink_request import CreateImageCacheShrinkRequest
+from ._create_image_cache_response_body import CreateImageCacheResponseBody
+from ._create_image_cache_response import CreateImageCacheResponse
 from ._create_managed_agent_request import CreateManagedAgentRequest
 from ._create_managed_agent_shrink_request import CreateManagedAgentShrinkRequest
 from ._create_managed_agent_response_body import CreateManagedAgentResponseBody
@@ -112,6 +116,9 @@ from ._delete_external_agent_response import DeleteExternalAgentResponse
 from ._delete_identity_provider_request import DeleteIdentityProviderRequest
 from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBody
 from ._delete_identity_provider_response import DeleteIdentityProviderResponse
+from ._delete_image_cache_request import DeleteImageCacheRequest
+from ._delete_image_cache_response_body import DeleteImageCacheResponseBody
+from ._delete_image_cache_response import DeleteImageCacheResponse
 from ._delete_managed_agent_request import DeleteManagedAgentRequest
 from ._delete_managed_agent_response_body import DeleteManagedAgentResponseBody
 from ._delete_managed_agent_response import DeleteManagedAgentResponse
@@ -192,6 +199,9 @@ from ._get_external_agent_bootstrap_options_response import GetExternalAgentBoot
 from ._get_identity_provider_request import GetIdentityProviderRequest
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBody
 from ._get_identity_provider_response import GetIdentityProviderResponse
+from ._get_image_cache_request import GetImageCacheRequest
+from ._get_image_cache_response_body import GetImageCacheResponseBody
+from ._get_image_cache_response import GetImageCacheResponse
 from ._get_managed_agent_request import GetManagedAgentRequest
 from ._get_managed_agent_response_body import GetManagedAgentResponseBody
 from ._get_managed_agent_response import GetManagedAgentResponse
@@ -285,6 +295,9 @@ from ._list_external_agents_response import ListExternalAgentsResponse
 from ._list_identity_providers_request import ListIdentityProvidersRequest
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBody
 from ._list_identity_providers_response import ListIdentityProvidersResponse
+from ._list_image_caches_request import ListImageCachesRequest
+from ._list_image_caches_response_body import ListImageCachesResponseBody
+from ._list_image_caches_response import ListImageCachesResponse
 from ._list_managed_agents_request import ListManagedAgentsRequest
 from ._list_managed_agents_response_body import ListManagedAgentsResponseBody
 from ._list_managed_agents_response import ListManagedAgentsResponse
@@ -369,6 +382,10 @@ from ._reset_user_password_request import ResetUserPasswordRequest
 from ._reset_user_password_shrink_request import ResetUserPasswordShrinkRequest
 from ._reset_user_password_response_body import ResetUserPasswordResponseBody
 from ._reset_user_password_response import ResetUserPasswordResponse
+from ._retry_image_cache_request import RetryImageCacheRequest
+from ._retry_image_cache_shrink_request import RetryImageCacheShrinkRequest
+from ._retry_image_cache_response_body import RetryImageCacheResponseBody
+from ._retry_image_cache_response import RetryImageCacheResponse
 from ._search_memories_request import SearchMemoriesRequest
 from ._search_memories_shrink_request import SearchMemoriesShrinkRequest
 from ._search_memories_response_body import SearchMemoriesResponseBody
@@ -539,6 +556,7 @@ from ._create_custom_agent_request import CreateCustomAgentRequestBodyLogging
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyNetworkAccessInternet
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyNetworkAccessVpc
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyNetwork
+from ._create_custom_agent_request import CreateCustomAgentRequestBodyObservability
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyOssMounts
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyProtocolPaths
 from ._create_custom_agent_request import CreateCustomAgentRequestBodyProtocol
@@ -554,12 +572,14 @@ from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDat
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataEnvironmentVariables
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataEnvironment
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataHealthCheck
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataImageCachePreparation
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataLatestExecutionError
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataLoggingSls
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataLogging
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataNetworkAccessInternet
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataNetworkAccessVpc
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataNetwork
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataObservability
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataOssMounts
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataProtocolPaths
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataProtocol
@@ -592,6 +612,9 @@ from ._create_external_agent_bootstrap_token_response_body import CreateExternal
 from ._create_identity_provider_request import CreateIdentityProviderRequestBodyMetadata
 from ._create_identity_provider_request import CreateIdentityProviderRequestBody
 from ._create_identity_provider_response_body import CreateIdentityProviderResponseBodyData
+from ._create_image_cache_request import CreateImageCacheRequestBody
+from ._create_image_cache_response_body import CreateImageCacheResponseBodyDataError
+from ._create_image_cache_response_body import CreateImageCacheResponseBodyData
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyAgenticFsMounts
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironmentCredentialReferences
 from ._create_managed_agent_request import CreateManagedAgentRequestBodyEnvironmentVariables
@@ -718,6 +741,7 @@ from ._delete_credential_response_body import DeleteCredentialResponseBodyData
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyData
 from ._delete_external_agent_response_body import DeleteExternalAgentResponseBodyData
 from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBodyData
+from ._delete_image_cache_response_body import DeleteImageCacheResponseBodyData
 from ._delete_managed_agent_response_body import DeleteManagedAgentResponseBodyData
 from ._delete_memory_store_response_body import DeleteMemoryStoreResponseBodyData
 from ._delete_model_response_body import DeleteModelResponseBodyData
@@ -756,6 +780,7 @@ from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataLoggi
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataNetworkAccessInternet
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataNetworkAccessVpc
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataNetwork
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataObservability
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataOssMounts
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataProtocolPaths
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataProtocol
@@ -779,6 +804,8 @@ from ._get_external_agent_bootstrap_options_response_body import GetExternalAgen
 from ._get_external_agent_bootstrap_options_response_body import GetExternalAgentBootstrapOptionsResponseBodyData
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyDataMetadata
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyData
+from ._get_image_cache_response_body import GetImageCacheResponseBodyDataError
+from ._get_image_cache_response_body import GetImageCacheResponseBodyData
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataAgenticFsMounts
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataConfiguredSkillsVersionSelector
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataConfiguredSkills
@@ -931,6 +958,8 @@ from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItems
 from ._list_external_agents_response_body import ListExternalAgentsResponseBodyItems
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItemsMetadata
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItems
+from ._list_image_caches_response_body import ListImageCachesResponseBodyItemsError
+from ._list_image_caches_response_body import ListImageCachesResponseBodyItems
 from ._list_managed_agents_response_body import ListManagedAgentsResponseBodyItemsHarnessConfiguration
 from ._list_managed_agents_response_body import ListManagedAgentsResponseBodyItemsHarness
 from ._list_managed_agents_response_body import ListManagedAgentsResponseBodyItems
@@ -997,6 +1026,9 @@ from ._publish_skill_version_request import PublishSkillVersionRequestBody
 from ._redraft_skill_version_request import RedraftSkillVersionRequestBody
 from ._reset_user_password_request import ResetUserPasswordRequestBody
 from ._reset_user_password_response_body import ResetUserPasswordResponseBodyData
+from ._retry_image_cache_request import RetryImageCacheRequestBody
+from ._retry_image_cache_response_body import RetryImageCacheResponseBodyDataError
+from ._retry_image_cache_response_body import RetryImageCacheResponseBodyData
 from ._search_memories_request import SearchMemoriesRequestBodyScope
 from ._search_memories_request import SearchMemoriesRequestBody
 from ._search_memories_response_body import SearchMemoriesResponseBodyDataMemoriesMemoryContent
@@ -1032,6 +1064,7 @@ from ._update_custom_agent_request import UpdateCustomAgentRequestBodyLogging
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyNetworkAccessInternet
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyNetworkAccessVpc
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyNetwork
+from ._update_custom_agent_request import UpdateCustomAgentRequestBodyObservability
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyOssMounts
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyProtocolPaths
 from ._update_custom_agent_request import UpdateCustomAgentRequestBodyProtocol
@@ -1047,12 +1080,14 @@ from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDat
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataEnvironmentVariables
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataEnvironment
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataHealthCheck
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataImageCachePreparation
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataLatestExecutionError
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataLoggingSls
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataLogging
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataNetworkAccessInternet
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataNetworkAccessVpc
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataNetwork
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataObservability
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataOssMounts
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataProtocolPaths
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataProtocol
@@ -1283,6 +1318,10 @@ __all__ = [
     CreateIdentityProviderShrinkRequest,
     CreateIdentityProviderResponseBody,
     CreateIdentityProviderResponse,
+    CreateImageCacheRequest,
+    CreateImageCacheShrinkRequest,
+    CreateImageCacheResponseBody,
+    CreateImageCacheResponse,
     CreateManagedAgentRequest,
     CreateManagedAgentShrinkRequest,
     CreateManagedAgentResponseBody,
@@ -1344,6 +1383,9 @@ __all__ = [
     DeleteIdentityProviderRequest,
     DeleteIdentityProviderResponseBody,
     DeleteIdentityProviderResponse,
+    DeleteImageCacheRequest,
+    DeleteImageCacheResponseBody,
+    DeleteImageCacheResponse,
     DeleteManagedAgentRequest,
     DeleteManagedAgentResponseBody,
     DeleteManagedAgentResponse,
@@ -1424,6 +1466,9 @@ __all__ = [
     GetIdentityProviderRequest,
     GetIdentityProviderResponseBody,
     GetIdentityProviderResponse,
+    GetImageCacheRequest,
+    GetImageCacheResponseBody,
+    GetImageCacheResponse,
     GetManagedAgentRequest,
     GetManagedAgentResponseBody,
     GetManagedAgentResponse,
@@ -1517,6 +1562,9 @@ __all__ = [
     ListIdentityProvidersRequest,
     ListIdentityProvidersResponseBody,
     ListIdentityProvidersResponse,
+    ListImageCachesRequest,
+    ListImageCachesResponseBody,
+    ListImageCachesResponse,
     ListManagedAgentsRequest,
     ListManagedAgentsResponseBody,
     ListManagedAgentsResponse,
@@ -1601,6 +1649,10 @@ __all__ = [
     ResetUserPasswordShrinkRequest,
     ResetUserPasswordResponseBody,
     ResetUserPasswordResponse,
+    RetryImageCacheRequest,
+    RetryImageCacheShrinkRequest,
+    RetryImageCacheResponseBody,
+    RetryImageCacheResponse,
     SearchMemoriesRequest,
     SearchMemoriesShrinkRequest,
     SearchMemoriesResponseBody,
@@ -1771,6 +1823,7 @@ __all__ = [
     CreateCustomAgentRequestBodyNetworkAccessInternet,
     CreateCustomAgentRequestBodyNetworkAccessVpc,
     CreateCustomAgentRequestBodyNetwork,
+    CreateCustomAgentRequestBodyObservability,
     CreateCustomAgentRequestBodyOssMounts,
     CreateCustomAgentRequestBodyProtocolPaths,
     CreateCustomAgentRequestBodyProtocol,
@@ -1786,12 +1839,14 @@ __all__ = [
     CreateCustomAgentResponseBodyDataEnvironmentVariables,
     CreateCustomAgentResponseBodyDataEnvironment,
     CreateCustomAgentResponseBodyDataHealthCheck,
+    CreateCustomAgentResponseBodyDataImageCachePreparation,
     CreateCustomAgentResponseBodyDataLatestExecutionError,
     CreateCustomAgentResponseBodyDataLoggingSls,
     CreateCustomAgentResponseBodyDataLogging,
     CreateCustomAgentResponseBodyDataNetworkAccessInternet,
     CreateCustomAgentResponseBodyDataNetworkAccessVpc,
     CreateCustomAgentResponseBodyDataNetwork,
+    CreateCustomAgentResponseBodyDataObservability,
     CreateCustomAgentResponseBodyDataOssMounts,
     CreateCustomAgentResponseBodyDataProtocolPaths,
     CreateCustomAgentResponseBodyDataProtocol,
@@ -1824,6 +1879,9 @@ __all__ = [
     CreateIdentityProviderRequestBodyMetadata,
     CreateIdentityProviderRequestBody,
     CreateIdentityProviderResponseBodyData,
+    CreateImageCacheRequestBody,
+    CreateImageCacheResponseBodyDataError,
+    CreateImageCacheResponseBodyData,
     CreateManagedAgentRequestBodyAgenticFsMounts,
     CreateManagedAgentRequestBodyEnvironmentCredentialReferences,
     CreateManagedAgentRequestBodyEnvironmentVariables,
@@ -1950,6 +2008,7 @@ __all__ = [
     DeleteCustomAgentResponseBodyData,
     DeleteExternalAgentResponseBodyData,
     DeleteIdentityProviderResponseBodyData,
+    DeleteImageCacheResponseBodyData,
     DeleteManagedAgentResponseBodyData,
     DeleteMemoryStoreResponseBodyData,
     DeleteModelResponseBodyData,
@@ -1988,6 +2047,7 @@ __all__ = [
     GetCustomAgentResponseBodyDataNetworkAccessInternet,
     GetCustomAgentResponseBodyDataNetworkAccessVpc,
     GetCustomAgentResponseBodyDataNetwork,
+    GetCustomAgentResponseBodyDataObservability,
     GetCustomAgentResponseBodyDataOssMounts,
     GetCustomAgentResponseBodyDataProtocolPaths,
     GetCustomAgentResponseBodyDataProtocol,
@@ -2011,6 +2071,8 @@ __all__ = [
     GetExternalAgentBootstrapOptionsResponseBodyData,
     GetIdentityProviderResponseBodyDataMetadata,
     GetIdentityProviderResponseBodyData,
+    GetImageCacheResponseBodyDataError,
+    GetImageCacheResponseBodyData,
     GetManagedAgentResponseBodyDataAgenticFsMounts,
     GetManagedAgentResponseBodyDataConfiguredSkillsVersionSelector,
     GetManagedAgentResponseBodyDataConfiguredSkills,
@@ -2163,6 +2225,8 @@ __all__ = [
     ListExternalAgentsResponseBodyItems,
     ListIdentityProvidersResponseBodyItemsMetadata,
     ListIdentityProvidersResponseBodyItems,
+    ListImageCachesResponseBodyItemsError,
+    ListImageCachesResponseBodyItems,
     ListManagedAgentsResponseBodyItemsHarnessConfiguration,
     ListManagedAgentsResponseBodyItemsHarness,
     ListManagedAgentsResponseBodyItems,
@@ -2229,6 +2293,9 @@ __all__ = [
     RedraftSkillVersionRequestBody,
     ResetUserPasswordRequestBody,
     ResetUserPasswordResponseBodyData,
+    RetryImageCacheRequestBody,
+    RetryImageCacheResponseBodyDataError,
+    RetryImageCacheResponseBodyData,
     SearchMemoriesRequestBodyScope,
     SearchMemoriesRequestBody,
     SearchMemoriesResponseBodyDataMemoriesMemoryContent,
@@ -2264,6 +2331,7 @@ __all__ = [
     UpdateCustomAgentRequestBodyNetworkAccessInternet,
     UpdateCustomAgentRequestBodyNetworkAccessVpc,
     UpdateCustomAgentRequestBodyNetwork,
+    UpdateCustomAgentRequestBodyObservability,
     UpdateCustomAgentRequestBodyOssMounts,
     UpdateCustomAgentRequestBodyProtocolPaths,
     UpdateCustomAgentRequestBodyProtocol,
@@ -2279,12 +2347,14 @@ __all__ = [
     UpdateCustomAgentResponseBodyDataEnvironmentVariables,
     UpdateCustomAgentResponseBodyDataEnvironment,
     UpdateCustomAgentResponseBodyDataHealthCheck,
+    UpdateCustomAgentResponseBodyDataImageCachePreparation,
     UpdateCustomAgentResponseBodyDataLatestExecutionError,
     UpdateCustomAgentResponseBodyDataLoggingSls,
     UpdateCustomAgentResponseBodyDataLogging,
     UpdateCustomAgentResponseBodyDataNetworkAccessInternet,
     UpdateCustomAgentResponseBodyDataNetworkAccessVpc,
     UpdateCustomAgentResponseBodyDataNetwork,
+    UpdateCustomAgentResponseBodyDataObservability,
     UpdateCustomAgentResponseBodyDataOssMounts,
     UpdateCustomAgentResponseBodyDataProtocolPaths,
     UpdateCustomAgentResponseBodyDataProtocol,
