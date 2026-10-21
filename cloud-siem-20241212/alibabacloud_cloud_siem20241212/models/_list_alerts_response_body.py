@@ -20,7 +20,7 @@ class ListAlertsResponseBody(DaraModel):
     ):
         # The alert details.
         self.alerts = alerts
-        # The maximum number of entries to return in this request.
+        # The maximum number of entries to return.
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
@@ -103,9 +103,9 @@ class ListAlertsResponseBodyAlerts(DaraModel):
         alert_record: str = None,
         alert_uuid: str = None,
     ):
-        # The alert details.
+        # The detailed content of the alert.
         self.alert_record = alert_record
-        # The alert UUID.
+        # The UUID of the alert.
         self.alert_uuid = alert_uuid
 
     def validate(self):

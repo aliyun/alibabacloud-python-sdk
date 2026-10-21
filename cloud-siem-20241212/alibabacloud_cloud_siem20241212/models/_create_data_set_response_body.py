@@ -11,7 +11,7 @@ class CreateDataSetResponseBody(DaraModel):
         data_set_record_statistic: main_models.CreateDataSetResponseBodyDataSetRecordStatistic = None,
         request_id: str = None,
     ):
-        # The result returned after the dataset is created.
+        # The result of the dataset creation.
         self.data_set_record_statistic = data_set_record_statistic
         # The request ID.
         self.request_id = request_id
@@ -52,7 +52,7 @@ class CreateDataSetResponseBodyDataSetRecordStatistic(DaraModel):
     ):
         # The dataset ID.
         self.data_set_id = data_set_id
-        # The number of new records in the dataset.
+        # The number of new dataset records.
         self.new_data_set_record_count = new_data_set_record_count
 
     def validate(self):

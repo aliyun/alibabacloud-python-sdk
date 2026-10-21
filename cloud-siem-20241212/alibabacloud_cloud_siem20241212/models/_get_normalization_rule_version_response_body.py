@@ -64,13 +64,13 @@ class GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion(DaraModel)
         update_time: int = None,
         vendor_id: str = None,
     ):
-        # The time when the rule version was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The ID of the normalization rule category.
+        # The category ID of the normalization rule.
         self.normalization_category_id = normalization_category_id
         # The description of the normalization rule.
         self.normalization_rule_description = normalization_rule_description
-        # The expression for the normalization rule.
+        # The expression of the normalization rule.
         self.normalization_rule_expression = normalization_rule_expression
         # The format of the normalization rule.
         self.normalization_rule_format = normalization_rule_format
@@ -81,28 +81,24 @@ class GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion(DaraModel)
         # The status of the normalization rule.
         self.normalization_rule_status = normalization_rule_status
         # The type of the normalization rule. Valid values:
-        # 
-        # - predefined: a predefined rule.
-        # 
-        # - custom: a custom rule.
+        # - predefined: predefined normalization rule.
+        # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
         # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
-        # The name of the normalization rule version.
+        # The version name of the normalization rule.
         self.normalization_rule_version_name = normalization_rule_version_name
         # The ID of the normalization schema.
         self.normalization_schema_id = normalization_schema_id
-        # The product ID.
+        # The ID of the product.
         self.product_id = product_id
-        # The region where the Data Management center for Threat Analysis is located. Select a region for the management center based on the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Your assets are in a region outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The time when the rule version was last updated.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The ID of the vendor for the normalization rule.
+        # The ID of the vendor that corresponds to the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):

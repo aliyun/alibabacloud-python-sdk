@@ -16,16 +16,18 @@ class ListNormalizationSecurityDomainsRequest(DaraModel):
         # The language of the response. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # 
+        # Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass a language code.
         self.lang = lang
         # The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The region where the threat detection and response data management center is located. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: the asset is in the Chinese mainland.
-        # - ap-southeast-1: the asset is outside China.
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside China.
         self.region_id = region_id
-        # The user ID of the member to which the administrator switches the view.
+        # The user ID that the administrator uses to switch to the view of another member.
         self.role_for = role_for
 
     def validate(self):

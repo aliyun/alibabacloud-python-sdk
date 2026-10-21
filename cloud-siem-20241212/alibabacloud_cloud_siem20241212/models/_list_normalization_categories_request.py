@@ -15,28 +15,23 @@ class ListNormalizationCategoriesRequest(DaraModel):
         role_for: int = None,
     ):
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # This parameter is effectively required. If you do not specify this parameter, the server returns a 400 error (The specified Lang can not be empty.) instead of using the default value zh.
         self.lang = lang
-        # The maximum number of entries to return on each page.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. Set this parameter to the NextToken value returned in the previous API call to retrieve the next page of results. You do not need to specify this parameter for the first query.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The type of the normalization rule category. Valid values:
-        # 
         # - log
-        # 
         # - entity
         self.normalization_category_type = normalization_category_type
-        # The region of the Data Management center for threat analysis. Select the region for the Data Management center based on the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: Assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Assets are in a region outside China.
+        # The region where the threat analysis data management center resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The user ID of the member. An administrator can use this parameter to switch to the perspective of this member.
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
 
     def validate(self):

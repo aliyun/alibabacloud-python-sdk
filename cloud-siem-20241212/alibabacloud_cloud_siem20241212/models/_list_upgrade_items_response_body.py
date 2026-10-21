@@ -16,13 +16,13 @@ class ListUpgradeItemsResponseBody(DaraModel):
         total_count: int = None,
         upgrade_items: List[main_models.ListUpgradeItemsResponseBodyUpgradeItems] = None,
     ):
-        # The maximum number of entries returned on the current page.
+        # The maximum number of entries to return in a single call.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. If the value is not empty, more results are available.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if there are no more results to return. If a next page exists, set this parameter to the value of NextToken returned by the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
         # The list of upgrade items.
         self.upgrade_items = upgrade_items
@@ -84,7 +84,7 @@ class ListUpgradeItemsResponseBodyUpgradeItems(DaraModel):
         self,
         upgrade_item_id: str = None,
     ):
-        # The ID of the upgrade item.
+        # The upgrade item ID.
         self.upgrade_item_id = upgrade_item_id
 
     def validate(self):

@@ -19,19 +19,19 @@ class ListNormalizationRuleCapacitiesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The token for the next query. If the response is truncated, use this token in your next request to retrieve the next page of results. If this parameter is empty, all results have been returned.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The list of security capabilities that are associated with the normalization rules.
+        # The list of security capabilities associated with normalization rules.
         self.normalization_rule_capacities = normalization_rule_capacities
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
         # The total number of pages.
         self.total_page = total_page
@@ -116,16 +116,12 @@ class ListNormalizationRuleCapacitiesResponseBodyNormalizationRuleCapacities(Dar
         # The list of security capabilities.
         self.capacities = capacities
         # The type of the security capability. Valid values:
-        # 
         # - detection_preset_rule: predefined analysis rule.
-        # 
         # - detection_custom_rule: custom analysis rule.
-        # 
-        # - incident_investigation: security event handling.
-        # 
+        # - incident_investigation: security incident handling.
         # - soar_playbooks: predefined playbook.
         self.capacity_type = capacity_type
-        # The ID of the normalization rule.
+        # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
 
     def validate(self):

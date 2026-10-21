@@ -15,7 +15,7 @@ class GetNormalizationRuleResponseBody(DaraModel):
     ):
         # The normalization rule.
         self.normalization_rule = normalization_rule
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -71,19 +71,19 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
         update_time: int = None,
         vendor_id: str = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Specifies whether to pack non-standard fields into the extend_content field. Valid values:
+        # Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.extend_content_packed = extend_content_packed
-        # The storage mode for extended fields. Valid values:
-        # - flat: ingested as-is.
-        # - reject: not ingested.
-        # - pack: packed into the extend_content field.
+        # The storage mode for extended fields. Valid values: flat (ingest as-is), reject (do not ingest), and pack (pack into the extend_content field).
         self.extend_field_store_mode = extend_field_store_mode
         # The category ID of the normalization rule.
         self.normalization_category_id = normalization_category_id
+        # The field source:
+        # - "native": raw logs
+        # - "normalized": normalized logs
         self.normalization_field_source = normalization_field_source
         # The description of the normalization rule.
         self.normalization_rule_description = normalization_rule_description
@@ -91,37 +91,38 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
         self.normalization_rule_expression = normalization_rule_expression
         # The format of the normalization rule.
         self.normalization_rule_format = normalization_rule_format
-        # The normalization rule ID.
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
-        # The list of normalization rule IDs.
+        # The IDs of the normalization rules.
         self.normalization_rule_ids = normalization_rule_ids
         # The mode of the normalization rule. Valid values:
         # - both
         # - scan
-        # - realtime.
+        # - realtime
         self.normalization_rule_mode = normalization_rule_mode
         # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
         # The status of the normalization rule.
         self.normalization_rule_status = normalization_rule_status
         # The type of the normalization rule. Valid values:
-        # - predefined: predefined normalization rule.
-        # - custom: custom normalization rule.
+        # - predefined: predefined normalization rule
+        # - custom: custom normalization rule
         self.normalization_rule_type = normalization_rule_type
         # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
-        # The normalization schema ID.
+        # The ID of the normalization schema.
         self.normalization_schema_id = normalization_schema_id
+        # The ID of the normalization security domain.
         self.normalization_security_domain_id = normalization_security_domain_id
         # The field used to sort the rule list. Valid values:
-        # - GmtModified: sorted by modification time.
-        # - Id: sorted by rule ID (default).
+        # - GmtModified: sort by modification time
+        # - Id: sort by rule ID (default)
         self.order_field = order_field
         # The product ID.
         self.product_id = product_id
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The vendor ID associated with the normalization rule.
+        # The ID of the vendor corresponding to the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):

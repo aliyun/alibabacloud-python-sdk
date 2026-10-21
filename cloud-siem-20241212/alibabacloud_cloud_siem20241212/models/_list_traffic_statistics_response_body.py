@@ -60,7 +60,7 @@ class ListTrafficStatisticsResponseBodyTrafficStatistics(DaraModel):
     ):
         # The statistics information.
         self.traffic_statistic_data = traffic_statistic_data
-        # The statistic target.
+        # The statistical target.
         self.traffic_statistic_target = traffic_statistic_target
 
     def validate(self):
@@ -103,9 +103,9 @@ class ListTrafficStatisticsResponseBodyTrafficStatisticsTrafficStatisticData(Dar
         traffic_statistic_time: int = None,
         traffic_statistic_value: float = None,
     ):
-        # The statistic time.
+        # The statistical time. The value is a date number in the YYYYMMDD format. For example, 20250815 indicates August 15, 2025.
         self.traffic_statistic_time = traffic_statistic_time
-        # The statistic value.
+        # The statistical value.
         self.traffic_statistic_value = traffic_statistic_value
 
     def validate(self):

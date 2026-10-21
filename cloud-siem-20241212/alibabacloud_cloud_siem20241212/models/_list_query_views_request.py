@@ -17,20 +17,19 @@ class ListQueryViewsRequest(DaraModel):
         role_type: int = None,
     ):
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # Note: This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty." You must explicitly pass zh or en.
         self.lang = lang
         # The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned in the previous API call.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The scene to which the query view belongs.
         self.query_view_scene = query_view_scene
         # The view type. If this parameter is left empty, all views are returned.
         self.query_view_type = query_view_type
-        # The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
-        # 
+        # The region where the Cloud Threat Detection and Response (CTDR) data management center resides. Specify this parameter based on the region of your assets. Valid values:
         # - cn-hangzhou: Your assets belong to the Chinese mainland or Hong Kong (China).
         # - ap-southeast-1: Your assets belong to regions outside China.
         self.region_id = region_id

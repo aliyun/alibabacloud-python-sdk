@@ -14,22 +14,19 @@ class CreateProductRequest(DaraModel):
         vendor_name: str = None,
     ):
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # Note: This parameter is required in practice. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty."
         self.lang = lang
-        # The name of the product.
+        # The product name.
         self.product_name = product_name
-        # The region of the Data Management center. Select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Assets are outside China.
+        # The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The user ID of a member. This parameter is used when an administrator operates as another member.
+        # The user ID that the administrator uses to switch to the view of another member.
         self.role_for = role_for
-        # The name of the vendor.
+        # The vendor name.
         self.vendor_name = vendor_name
 
     def validate(self):

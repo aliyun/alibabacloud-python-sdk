@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_cloud_siem20241212 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -22,10 +22,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'cloud-siem.cn-shanghai.aliyuncs.com',
-            'ap-southeast-1': 'cloud-siem.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloud-siem', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -44,6 +40,92 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def cancel_copilot_turn_with_options(
+        self,
+        request: main_models.CancelCopilotTurnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelCopilotTurnResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not DaraCore.is_null(request.turn_id):
+            body['TurnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelCopilotTurn',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelCopilotTurnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_copilot_turn_with_options_async(
+        self,
+        request: main_models.CancelCopilotTurnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelCopilotTurnResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not DaraCore.is_null(request.turn_id):
+            body['TurnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelCopilotTurn',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelCopilotTurnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_copilot_turn(
+        self,
+        request: main_models.CancelCopilotTurnRequest,
+    ) -> main_models.CancelCopilotTurnResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_copilot_turn_with_options(request, runtime)
+
+    async def cancel_copilot_turn_async(
+        self,
+        request: main_models.CancelCopilotTurnRequest,
+    ) -> main_models.CancelCopilotTurnResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_copilot_turn_with_options_async(request, runtime)
 
     def check_upgrade_item_with_options(
         self,
@@ -204,6 +286,392 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAutoDisposeConfigResponse:
         runtime = RuntimeOptions()
         return await self.create_auto_dispose_config_with_options_async(request, runtime)
+
+    def create_copilot_chat_with_sse(
+        self,
+        tmp_req: main_models.CreateCopilotChatRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.CreateCopilotChatResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.CreateCopilotChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_conversation):
+            request.create_conversation_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_conversation, 'CreateConversation', 'json')
+        if not DaraCore.is_null(tmp_req.messages):
+            request.messages_shrink = Utils.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_conversation_id):
+            body['ClientConversationId'] = request.client_conversation_id
+        if not DaraCore.is_null(request.client_message_id):
+            body['ClientMessageId'] = request.client_message_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.create_conversation_shrink):
+            body['CreateConversation'] = request.create_conversation_shrink
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.plan_mode):
+            body['PlanMode'] = request.plan_mode
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.replace_turn_id):
+            body['ReplaceTurnId'] = request.replace_turn_id
+        if not DaraCore.is_null(request.route_target):
+            body['RouteTarget'] = request.route_target
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        if not DaraCore.is_null(request.thinking_mode):
+            body['ThinkingMode'] = request.thinking_mode
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCopilotChat',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = resp.event.data
+                yield  DaraCore.from_map(
+                    main_models.CreateCopilotChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def create_copilot_chat_with_sse_async(
+        self,
+        tmp_req: main_models.CreateCopilotChatRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.CreateCopilotChatResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.CreateCopilotChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_conversation):
+            request.create_conversation_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_conversation, 'CreateConversation', 'json')
+        if not DaraCore.is_null(tmp_req.messages):
+            request.messages_shrink = Utils.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_conversation_id):
+            body['ClientConversationId'] = request.client_conversation_id
+        if not DaraCore.is_null(request.client_message_id):
+            body['ClientMessageId'] = request.client_message_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.create_conversation_shrink):
+            body['CreateConversation'] = request.create_conversation_shrink
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.plan_mode):
+            body['PlanMode'] = request.plan_mode
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.replace_turn_id):
+            body['ReplaceTurnId'] = request.replace_turn_id
+        if not DaraCore.is_null(request.route_target):
+            body['RouteTarget'] = request.route_target
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        if not DaraCore.is_null(request.thinking_mode):
+            body['ThinkingMode'] = request.thinking_mode
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCopilotChat',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = resp.event.data
+                yield  DaraCore.from_map(
+                    main_models.CreateCopilotChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def create_copilot_chat_with_options(
+        self,
+        tmp_req: main_models.CreateCopilotChatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCopilotChatResponse:
+        tmp_req.validate()
+        request = main_models.CreateCopilotChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_conversation):
+            request.create_conversation_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_conversation, 'CreateConversation', 'json')
+        if not DaraCore.is_null(tmp_req.messages):
+            request.messages_shrink = Utils.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_conversation_id):
+            body['ClientConversationId'] = request.client_conversation_id
+        if not DaraCore.is_null(request.client_message_id):
+            body['ClientMessageId'] = request.client_message_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.create_conversation_shrink):
+            body['CreateConversation'] = request.create_conversation_shrink
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.plan_mode):
+            body['PlanMode'] = request.plan_mode
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.replace_turn_id):
+            body['ReplaceTurnId'] = request.replace_turn_id
+        if not DaraCore.is_null(request.route_target):
+            body['RouteTarget'] = request.route_target
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        if not DaraCore.is_null(request.thinking_mode):
+            body['ThinkingMode'] = request.thinking_mode
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCopilotChat',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCopilotChatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_copilot_chat_with_options_async(
+        self,
+        tmp_req: main_models.CreateCopilotChatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCopilotChatResponse:
+        tmp_req.validate()
+        request = main_models.CreateCopilotChatShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.create_conversation):
+            request.create_conversation_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_conversation, 'CreateConversation', 'json')
+        if not DaraCore.is_null(tmp_req.messages):
+            request.messages_shrink = Utils.array_to_string_with_specified_style(tmp_req.messages, 'Messages', 'json')
+        body = {}
+        if not DaraCore.is_null(request.client_conversation_id):
+            body['ClientConversationId'] = request.client_conversation_id
+        if not DaraCore.is_null(request.client_message_id):
+            body['ClientMessageId'] = request.client_message_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.create_conversation_shrink):
+            body['CreateConversation'] = request.create_conversation_shrink
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.messages_shrink):
+            body['Messages'] = request.messages_shrink
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.plan_mode):
+            body['PlanMode'] = request.plan_mode
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.replace_turn_id):
+            body['ReplaceTurnId'] = request.replace_turn_id
+        if not DaraCore.is_null(request.route_target):
+            body['RouteTarget'] = request.route_target
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        if not DaraCore.is_null(request.thinking_mode):
+            body['ThinkingMode'] = request.thinking_mode
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCopilotChat',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCopilotChatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_copilot_chat(
+        self,
+        request: main_models.CreateCopilotChatRequest,
+    ) -> main_models.CreateCopilotChatResponse:
+        runtime = RuntimeOptions()
+        return self.create_copilot_chat_with_options(request, runtime)
+
+    async def create_copilot_chat_async(
+        self,
+        request: main_models.CreateCopilotChatRequest,
+    ) -> main_models.CreateCopilotChatResponse:
+        runtime = RuntimeOptions()
+        return await self.create_copilot_chat_with_options_async(request, runtime)
+
+    def create_copilot_conversation_with_options(
+        self,
+        request: main_models.CreateCopilotConversationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCopilotConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.plan_mode):
+            body['PlanMode'] = request.plan_mode
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.thinking_mode):
+            body['ThinkingMode'] = request.thinking_mode
+        if not DaraCore.is_null(request.title):
+            body['Title'] = request.title
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCopilotConversation',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCopilotConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_copilot_conversation_with_options_async(
+        self,
+        request: main_models.CreateCopilotConversationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCopilotConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.model):
+            body['Model'] = request.model
+        if not DaraCore.is_null(request.plan_mode):
+            body['PlanMode'] = request.plan_mode
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.thinking_mode):
+            body['ThinkingMode'] = request.thinking_mode
+        if not DaraCore.is_null(request.title):
+            body['Title'] = request.title
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCopilotConversation',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCopilotConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_copilot_conversation(
+        self,
+        request: main_models.CreateCopilotConversationRequest,
+    ) -> main_models.CreateCopilotConversationResponse:
+        runtime = RuntimeOptions()
+        return self.create_copilot_conversation_with_options(request, runtime)
+
+    async def create_copilot_conversation_async(
+        self,
+        request: main_models.CreateCopilotConversationRequest,
+    ) -> main_models.CreateCopilotConversationResponse:
+        runtime = RuntimeOptions()
+        return await self.create_copilot_conversation_with_options_async(request, runtime)
 
     def create_data_ingestion_with_options(
         self,
@@ -1372,6 +1840,8 @@ class Client(OpenApiClient):
             body['ResponseRuleName'] = request.response_rule_name
         if not DaraCore.is_null(request.response_rule_priority):
             body['ResponseRulePriority'] = request.response_rule_priority
+        if not DaraCore.is_null(request.response_rule_remark):
+            body['ResponseRuleRemark'] = request.response_rule_remark
         if not DaraCore.is_null(request.response_trigger_type):
             body['ResponseTriggerType'] = request.response_trigger_type
         if not DaraCore.is_null(request.role_for):
@@ -1422,6 +1892,8 @@ class Client(OpenApiClient):
             body['ResponseRuleName'] = request.response_rule_name
         if not DaraCore.is_null(request.response_rule_priority):
             body['ResponseRulePriority'] = request.response_rule_priority
+        if not DaraCore.is_null(request.response_rule_remark):
+            body['ResponseRuleRemark'] = request.response_rule_remark
         if not DaraCore.is_null(request.response_trigger_type):
             body['ResponseTriggerType'] = request.response_trigger_type
         if not DaraCore.is_null(request.role_for):
@@ -3165,6 +3637,260 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_auto_dispose_config_with_options_async(request, runtime)
 
+    def get_copilot_conversation_with_options(
+        self,
+        request: main_models.GetCopilotConversationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCopilotConversation',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCopilotConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_copilot_conversation_with_options_async(
+        self,
+        request: main_models.GetCopilotConversationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCopilotConversation',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCopilotConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_copilot_conversation(
+        self,
+        request: main_models.GetCopilotConversationRequest,
+    ) -> main_models.GetCopilotConversationResponse:
+        runtime = RuntimeOptions()
+        return self.get_copilot_conversation_with_options(request, runtime)
+
+    async def get_copilot_conversation_async(
+        self,
+        request: main_models.GetCopilotConversationRequest,
+    ) -> main_models.GetCopilotConversationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_copilot_conversation_with_options_async(request, runtime)
+
+    def get_copilot_turn_with_options(
+        self,
+        request: main_models.GetCopilotTurnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotTurnResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not DaraCore.is_null(request.turn_id):
+            body['TurnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCopilotTurn',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCopilotTurnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_copilot_turn_with_options_async(
+        self,
+        request: main_models.GetCopilotTurnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotTurnResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not DaraCore.is_null(request.turn_id):
+            body['TurnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCopilotTurn',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCopilotTurnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_copilot_turn(
+        self,
+        request: main_models.GetCopilotTurnRequest,
+    ) -> main_models.GetCopilotTurnResponse:
+        runtime = RuntimeOptions()
+        return self.get_copilot_turn_with_options(request, runtime)
+
+    async def get_copilot_turn_async(
+        self,
+        request: main_models.GetCopilotTurnRequest,
+    ) -> main_models.GetCopilotTurnResponse:
+        runtime = RuntimeOptions()
+        return await self.get_copilot_turn_with_options_async(request, runtime)
+
+    def get_copilot_turn_by_client_message_id_with_options(
+        self,
+        request: main_models.GetCopilotTurnByClientMessageIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotTurnByClientMessageIdResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_message_id):
+            body['ClientMessageId'] = request.client_message_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCopilotTurnByClientMessageId',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCopilotTurnByClientMessageIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_copilot_turn_by_client_message_id_with_options_async(
+        self,
+        request: main_models.GetCopilotTurnByClientMessageIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotTurnByClientMessageIdResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_message_id):
+            body['ClientMessageId'] = request.client_message_id
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCopilotTurnByClientMessageId',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCopilotTurnByClientMessageIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_copilot_turn_by_client_message_id(
+        self,
+        request: main_models.GetCopilotTurnByClientMessageIdRequest,
+    ) -> main_models.GetCopilotTurnByClientMessageIdResponse:
+        runtime = RuntimeOptions()
+        return self.get_copilot_turn_by_client_message_id_with_options(request, runtime)
+
+    async def get_copilot_turn_by_client_message_id_async(
+        self,
+        request: main_models.GetCopilotTurnByClientMessageIdRequest,
+    ) -> main_models.GetCopilotTurnByClientMessageIdResponse:
+        runtime = RuntimeOptions()
+        return await self.get_copilot_turn_by_client_message_id_with_options_async(request, runtime)
+
     def get_data_batch_ingestion_with_options(
         self,
         request: main_models.GetDataBatchIngestionRequest,
@@ -3562,6 +4288,96 @@ class Client(OpenApiClient):
     ) -> main_models.GetIncidentResponse:
         runtime = RuntimeOptions()
         return await self.get_incident_with_options_async(request, runtime)
+
+    def get_incident_investigation_with_options(
+        self,
+        request: main_models.GetIncidentInvestigationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIncidentInvestigationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.incident_investigation_display_id):
+            body['IncidentInvestigationDisplayId'] = request.incident_investigation_display_id
+        if not DaraCore.is_null(request.incident_investigation_id):
+            body['IncidentInvestigationId'] = request.incident_investigation_id
+        if not DaraCore.is_null(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIncidentInvestigation',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIncidentInvestigationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_incident_investigation_with_options_async(
+        self,
+        request: main_models.GetIncidentInvestigationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIncidentInvestigationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.incident_investigation_display_id):
+            body['IncidentInvestigationDisplayId'] = request.incident_investigation_display_id
+        if not DaraCore.is_null(request.incident_investigation_id):
+            body['IncidentInvestigationId'] = request.incident_investigation_id
+        if not DaraCore.is_null(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIncidentInvestigation',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIncidentInvestigationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_incident_investigation(
+        self,
+        request: main_models.GetIncidentInvestigationRequest,
+    ) -> main_models.GetIncidentInvestigationResponse:
+        runtime = RuntimeOptions()
+        return self.get_incident_investigation_with_options(request, runtime)
+
+    async def get_incident_investigation_async(
+        self,
+        request: main_models.GetIncidentInvestigationRequest,
+    ) -> main_models.GetIncidentInvestigationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_incident_investigation_with_options_async(request, runtime)
 
     def get_log_ticket_with_options(
         self,
@@ -4063,6 +4879,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_user_config_with_options_async(request, runtime)
 
+    def list_alert_aggregations_with_options(
+        self,
+        request: main_models.ListAlertAggregationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertAggregationsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.aggregation_type):
+            body['AggregationType'] = request.aggregation_type
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_condition):
+            body['QueryCondition'] = request.query_condition
+        if not DaraCore.is_null(request.query_view_id):
+            body['QueryViewId'] = request.query_view_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertAggregations',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertAggregationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alert_aggregations_with_options_async(
+        self,
+        request: main_models.ListAlertAggregationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertAggregationsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.aggregation_type):
+            body['AggregationType'] = request.aggregation_type
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_condition):
+            body['QueryCondition'] = request.query_condition
+        if not DaraCore.is_null(request.query_view_id):
+            body['QueryViewId'] = request.query_view_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertAggregations',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertAggregationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alert_aggregations(
+        self,
+        request: main_models.ListAlertAggregationsRequest,
+    ) -> main_models.ListAlertAggregationsResponse:
+        runtime = RuntimeOptions()
+        return self.list_alert_aggregations_with_options(request, runtime)
+
+    async def list_alert_aggregations_async(
+        self,
+        request: main_models.ListAlertAggregationsRequest,
+    ) -> main_models.ListAlertAggregationsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_alert_aggregations_with_options_async(request, runtime)
+
     def list_alerts_with_options(
         self,
         request: main_models.ListAlertsRequest,
@@ -4298,6 +5232,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListAutoDisposeEntitiesResponse:
         runtime = RuntimeOptions()
         return await self.list_auto_dispose_entities_with_options_async(request, runtime)
+
+    def list_copilot_messages_with_options(
+        self,
+        request: main_models.ListCopilotMessagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCopilotMessagesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.ascending):
+            body['Ascending'] = request.ascending
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCopilotMessages',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCopilotMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_copilot_messages_with_options_async(
+        self,
+        request: main_models.ListCopilotMessagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCopilotMessagesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.ascending):
+            body['Ascending'] = request.ascending
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCopilotMessages',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCopilotMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_copilot_messages(
+        self,
+        request: main_models.ListCopilotMessagesRequest,
+    ) -> main_models.ListCopilotMessagesResponse:
+        runtime = RuntimeOptions()
+        return self.list_copilot_messages_with_options(request, runtime)
+
+    async def list_copilot_messages_async(
+        self,
+        request: main_models.ListCopilotMessagesRequest,
+    ) -> main_models.ListCopilotMessagesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_copilot_messages_with_options_async(request, runtime)
 
     def list_data_connectors_with_options(
         self,
@@ -7445,6 +8473,206 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.reset_data_storage_with_options_async(request, runtime)
 
+    def resume_copilot_turn_stream_with_sse(
+        self,
+        tmp_req: main_models.ResumeCopilotTurnStreamRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.ResumeCopilotTurnStreamResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.ResumeCopilotTurnStreamShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cursor_by_run):
+            request.cursor_by_run_shrink = Utils.array_to_string_with_specified_style(tmp_req.cursor_by_run, 'CursorByRun', 'json')
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.cursor_by_run_shrink):
+            body['CursorByRun'] = request.cursor_by_run_shrink
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not DaraCore.is_null(request.turn_id):
+            body['TurnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeCopilotTurnStream',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = resp.event.data
+                yield  DaraCore.from_map(
+                    main_models.ResumeCopilotTurnStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def resume_copilot_turn_stream_with_sse_async(
+        self,
+        tmp_req: main_models.ResumeCopilotTurnStreamRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.ResumeCopilotTurnStreamResponse, None, None]:
+        tmp_req.validate()
+        request = main_models.ResumeCopilotTurnStreamShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cursor_by_run):
+            request.cursor_by_run_shrink = Utils.array_to_string_with_specified_style(tmp_req.cursor_by_run, 'CursorByRun', 'json')
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.cursor_by_run_shrink):
+            body['CursorByRun'] = request.cursor_by_run_shrink
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not DaraCore.is_null(request.turn_id):
+            body['TurnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeCopilotTurnStream',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = resp.event.data
+                yield  DaraCore.from_map(
+                    main_models.ResumeCopilotTurnStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def resume_copilot_turn_stream_with_options(
+        self,
+        tmp_req: main_models.ResumeCopilotTurnStreamRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeCopilotTurnStreamResponse:
+        tmp_req.validate()
+        request = main_models.ResumeCopilotTurnStreamShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cursor_by_run):
+            request.cursor_by_run_shrink = Utils.array_to_string_with_specified_style(tmp_req.cursor_by_run, 'CursorByRun', 'json')
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.cursor_by_run_shrink):
+            body['CursorByRun'] = request.cursor_by_run_shrink
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not DaraCore.is_null(request.turn_id):
+            body['TurnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeCopilotTurnStream',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeCopilotTurnStreamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_copilot_turn_stream_with_options_async(
+        self,
+        tmp_req: main_models.ResumeCopilotTurnStreamRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeCopilotTurnStreamResponse:
+        tmp_req.validate()
+        request = main_models.ResumeCopilotTurnStreamShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cursor_by_run):
+            request.cursor_by_run_shrink = Utils.array_to_string_with_specified_style(tmp_req.cursor_by_run, 'CursorByRun', 'json')
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.cursor_by_run_shrink):
+            body['CursorByRun'] = request.cursor_by_run_shrink
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.trace_id):
+            body['TraceId'] = request.trace_id
+        if not DaraCore.is_null(request.turn_id):
+            body['TurnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeCopilotTurnStream',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeCopilotTurnStreamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_copilot_turn_stream(
+        self,
+        request: main_models.ResumeCopilotTurnStreamRequest,
+    ) -> main_models.ResumeCopilotTurnStreamResponse:
+        runtime = RuntimeOptions()
+        return self.resume_copilot_turn_stream_with_options(request, runtime)
+
+    async def resume_copilot_turn_stream_async(
+        self,
+        request: main_models.ResumeCopilotTurnStreamRequest,
+    ) -> main_models.ResumeCopilotTurnStreamResponse:
+        runtime = RuntimeOptions()
+        return await self.resume_copilot_turn_stream_with_options_async(request, runtime)
+
     def set_default_normalization_rule_version_with_options(
         self,
         request: main_models.SetDefaultNormalizationRuleVersionRequest,
@@ -8632,16 +9860,22 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDataStorageResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.configuration_version):
+            body['ConfigurationVersion'] = request.configuration_version
         if not DaraCore.is_null(request.data_storage_region_id):
             body['DataStorageRegionId'] = request.data_storage_region_id
         if not DaraCore.is_null(request.delivery_status):
             body['DeliveryStatus'] = request.delivery_status
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
+        if not DaraCore.is_null(request.multi_account_delivery_enabled):
+            body['MultiAccountDeliveryEnabled'] = request.multi_account_delivery_enabled
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.target_project):
+            body['TargetProject'] = request.target_project
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -8668,16 +9902,22 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDataStorageResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.configuration_version):
+            body['ConfigurationVersion'] = request.configuration_version
         if not DaraCore.is_null(request.data_storage_region_id):
             body['DataStorageRegionId'] = request.data_storage_region_id
         if not DaraCore.is_null(request.delivery_status):
             body['DeliveryStatus'] = request.delivery_status
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
+        if not DaraCore.is_null(request.multi_account_delivery_enabled):
+            body['MultiAccountDeliveryEnabled'] = request.multi_account_delivery_enabled
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.target_project):
+            body['TargetProject'] = request.target_project
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -8713,11 +9953,19 @@ class Client(OpenApiClient):
 
     def update_data_storage_delivery_with_options(
         self,
-        request: main_models.UpdateDataStorageDeliveryRequest,
+        tmp_req: main_models.UpdateDataStorageDeliveryRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateDataStorageDeliveryResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateDataStorageDeliveryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.selected_account_ids):
+            request.selected_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_account_ids, 'SelectedAccountIds', 'simple')
         body = {}
+        if not DaraCore.is_null(request.auto_include_new_accounts):
+            body['AutoIncludeNewAccounts'] = request.auto_include_new_accounts
+        if not DaraCore.is_null(request.configuration_version):
+            body['ConfigurationVersion'] = request.configuration_version
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
         if not DaraCore.is_null(request.log_code):
@@ -8728,6 +9976,12 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.selected_account_ids_shrink):
+            body['SelectedAccountIds'] = request.selected_account_ids_shrink
+        if not DaraCore.is_null(request.sub_user_id):
+            body['SubUserId'] = request.sub_user_id
+        if not DaraCore.is_null(request.target_project):
+            body['TargetProject'] = request.target_project
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -8749,11 +10003,19 @@ class Client(OpenApiClient):
 
     async def update_data_storage_delivery_with_options_async(
         self,
-        request: main_models.UpdateDataStorageDeliveryRequest,
+        tmp_req: main_models.UpdateDataStorageDeliveryRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateDataStorageDeliveryResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateDataStorageDeliveryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.selected_account_ids):
+            request.selected_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_account_ids, 'SelectedAccountIds', 'simple')
         body = {}
+        if not DaraCore.is_null(request.auto_include_new_accounts):
+            body['AutoIncludeNewAccounts'] = request.auto_include_new_accounts
+        if not DaraCore.is_null(request.configuration_version):
+            body['ConfigurationVersion'] = request.configuration_version
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
         if not DaraCore.is_null(request.log_code):
@@ -8764,6 +10026,12 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.selected_account_ids_shrink):
+            body['SelectedAccountIds'] = request.selected_account_ids_shrink
+        if not DaraCore.is_null(request.sub_user_id):
+            body['SubUserId'] = request.sub_user_id
+        if not DaraCore.is_null(request.target_project):
+            body['TargetProject'] = request.target_project
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -9462,6 +10730,8 @@ class Client(OpenApiClient):
             body['ResponseRuleName'] = request.response_rule_name
         if not DaraCore.is_null(request.response_rule_priority):
             body['ResponseRulePriority'] = request.response_rule_priority
+        if not DaraCore.is_null(request.response_rule_remark):
+            body['ResponseRuleRemark'] = request.response_rule_remark
         if not DaraCore.is_null(request.response_rule_status):
             body['ResponseRuleStatus'] = request.response_rule_status
         if not DaraCore.is_null(request.response_trigger_type):
@@ -9512,6 +10782,8 @@ class Client(OpenApiClient):
             body['ResponseRuleName'] = request.response_rule_name
         if not DaraCore.is_null(request.response_rule_priority):
             body['ResponseRulePriority'] = request.response_rule_priority
+        if not DaraCore.is_null(request.response_rule_remark):
+            body['ResponseRuleRemark'] = request.response_rule_remark
         if not DaraCore.is_null(request.response_rule_status):
             body['ResponseRuleStatus'] = request.response_rule_status
         if not DaraCore.is_null(request.response_trigger_type):

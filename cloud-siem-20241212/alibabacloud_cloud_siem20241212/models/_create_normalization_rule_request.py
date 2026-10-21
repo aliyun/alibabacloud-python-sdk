@@ -29,13 +29,13 @@ class CreateNormalizationRuleRequest(DaraModel):
         role_for: int = None,
         vendor_id: str = None,
     ):
-        # Specifies whether to pack non-standard fields into the extension field extend_content. Valid values:
+        # Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.extend_content_packed = extend_content_packed
-        # The storage mode for extension fields. Valid values: flat, pack, and reject.
+        # The storage mode for extended fields. Valid values: flat, pack, reject.
         self.extend_field_store_mode = extend_field_store_mode
-        # The language of the response. Valid values:
+        # The language of the response messages. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
@@ -52,7 +52,7 @@ class CreateNormalizationRuleRequest(DaraModel):
         # The mode of the normalization rule. Valid values:
         # - both
         # - scan
-        # - realtime.
+        # - realtime
         self.normalization_rule_mode = normalization_rule_mode
         # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
@@ -62,20 +62,21 @@ class CreateNormalizationRuleRequest(DaraModel):
         self.normalization_rule_type = normalization_rule_type
         # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
-        # The normalization schema ID.
+        # The ID of the normalization schema.
         self.normalization_schema_id = normalization_schema_id
+        # The ID of the normalization security domain.
         self.normalization_security_domain_id = normalization_security_domain_id
         # The field used to sort the rule list. Valid values:
-        # - GmtModified: sorted by modification time.
-        # - Id: sorted by rule ID (default).
+        # - GmtModified: sorts by modification time.
+        # - Id: sorts by rule ID (default).
         self.order_field = order_field
         # The product ID.
         self.product_id = product_id
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Your assets reside outside China.
+        # The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The ID of the member accounts in the resource directory.
+        # The ID of the member accounts in the resource folder.
         self.role_for = role_for
         # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id

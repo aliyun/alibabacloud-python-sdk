@@ -11,9 +11,9 @@ class GetDetectionStatisticResponseBody(DaraModel):
         detection_statistic: main_models.GetDetectionStatisticResponseBodyDetectionStatistic = None,
         request_id: str = None,
     ):
-        # The detection rule count result.
+        # The count results of detection rules.
         self.detection_statistic = detection_statistic
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -55,6 +55,7 @@ class GetDetectionStatisticResponseBodyDetectionStatistic(DaraModel):
         passthrough_rule_count: int = None,
         window_rule_count: int = None,
     ):
+        # The number of AI-powered aggregation rules.
         self.ai_powered_aggregation_rule_count = ai_powered_aggregation_rule_count
         # The number of online rules.
         self.detection_rule_online_count = detection_rule_online_count
@@ -66,7 +67,7 @@ class GetDetectionStatisticResponseBodyDetectionStatistic(DaraModel):
         self.graph_compute_rule_count = graph_compute_rule_count
         # The number of alert pass-through rules.
         self.passthrough_rule_count = passthrough_rule_count
-        # The number of similar aggregation rules.
+        # The number of same-type aggregation rules.
         self.window_rule_count = window_rule_count
 
     def validate(self):

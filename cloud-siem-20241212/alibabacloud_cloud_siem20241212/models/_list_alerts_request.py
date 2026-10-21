@@ -27,35 +27,33 @@ class ListAlertsRequest(DaraModel):
         start_time: int = None,
     ):
         # The threat level of the alert. Valid values:
-        # 
-        # - 5: critical.
-        # - 4: high-risk.
-        # - 3: medium-risk.
-        # - 2: low-risk.
-        # - 1: informational.
+        # - 5: Critical.
+        # - 4: High.
+        # - 3: Medium.
+        # - 2: Low.
+        # - 1: Informational.
         self.alert_level = alert_level
-        # The alert ID associated with the event.
+        # The ID of the alert that is associated with the event.
         self.alert_uuid = alert_uuid
-        # The end time of the alert.
+        # The end time of the alert. This value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # 
+        # Note: This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
         self.lang = lang
-        # The maximum number of entries to return in this request.
+        # The maximum number of entries to return.
         self.max_results = max_results
         # The pagination token. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The sort order. Valid values:
-        # 
         # - **asc** (default): ascending order.
         # - **desc**: descending order.
         self.order_direction = order_direction
         # The field used for sorting. Valid values:
-        # 
         # - GmtCreate: creation time.
-        # - GmtModified: update time.
+        # - GmtModified: last modified time.
         self.order_field_name = order_field_name
         # The page number.
         # 
@@ -67,29 +65,28 @@ class ListAlertsRequest(DaraModel):
         self.page_size = page_size
         # The query filter condition in JSON format. Valid values:
         # 
-        # - `{"Type":"maxCost", "Value":"100"}`: the top 100 queries with the longest execution duration.
-        # - `{"Type":"status","Value":"finished"}`: completed queries.
-        # - `{"Type":"status","Value":"running"}`: running queries.
-        # - `{"Type":"cost","Min":"30","Max":"50"}`: queries with a custom execution duration range. You can specify the minimum and maximum execution duration. **Min** specifies the minimum execution duration. **Max** specifies the maximum execution duration. Unit: milliseconds (ms).
+        # - `{"Type":"maxCost", "Value":"100"}`: The 100 queries with the longest execution duration.
+        # - `{"Type":"status","Value":"finished"}`: Completed queries.
+        # - `{"Type":"status","Value":"running"}`: Running queries.
+        # - `{"Type":"cost","Min":"30","Max":"50"}`: Custom execution duration queries. You can specify the minimum and maximum execution duration. **Min** specifies the minimum execution duration. **Max** specifies the maximum execution duration. Unit: milliseconds (ms).
         #     - If only **Min** is specified, queries with an execution duration greater than this value are returned.
         #     - If only **Max** is specified, queries with an execution duration less than this value are returned.
         #     - If both **Min** and **Max** are specified, queries with an execution duration greater than or equal to **Min** and less than or equal to **Max** are returned.
         self.query_condition = query_condition
         # The unique identifier of the query view.
         self.query_view_id = query_view_id
-        # The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are located in the Chinese mainland or Hong Kong (China).
-        # - ap-southeast-1: Your assets are located outside China.
+        # The region where the threat detection and response data management center resides. Specify the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland or Hong Kong (China).
+        # - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the member accounts in the resource folder.
+        # The ID of the member accounts in the resource directory.
         self.role_for = role_for
         # The view type. Valid values:
         # 
         # - 0: the view of the current Alibaba Cloud account.
         # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
-        # The time when the alert first occurred.
+        # The time when the alert first occurred. This value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

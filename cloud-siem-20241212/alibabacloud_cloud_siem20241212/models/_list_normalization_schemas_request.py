@@ -17,16 +17,18 @@ class ListNormalizationSchemasRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the request and response. Valid values:
+        # The language type for the request and response messages. Valid values:
         # 
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # 
+        # Note: This parameter is required in actual calls. If this parameter is not specified, the service returns a 400 error "The specified Lang can not be empty." Explicitly pass in the language code.
         self.lang = lang
         # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The ID of the normalization rule category.
+        # The normalization rule category ID.
         self.normalization_category_id = normalization_category_id
         # The field source filter. Valid values: normalized / native.
         self.normalization_field_source = normalization_field_source
@@ -37,10 +39,10 @@ class ListNormalizationSchemasRequest(DaraModel):
         # The security domain ID.
         self.normalization_security_domain_id = normalization_security_domain_id
         # The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: the asset is in the Chinese mainland.
-        # - ap-southeast-1: the asset is outside the Chinese mainland.
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside China.
         self.region_id = region_id
-        # The user ID that the administrator switches to when viewing as another member.
+        # The user ID used when an administrator switches to the perspective of another member.
         self.role_for = role_for
 
     def validate(self):

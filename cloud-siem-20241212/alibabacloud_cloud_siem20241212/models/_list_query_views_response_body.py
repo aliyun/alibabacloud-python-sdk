@@ -18,12 +18,15 @@ class ListQueryViewsResponseBody(DaraModel):
         query_views: List[main_models.ListQueryViewsResponseBodyQueryViews] = None,
         request_id: str = None,
     ):
+        # The Simple Log Service project name.
         self.log_project_name = log_project_name
+        # The log storage region ID.
         self.log_region_id = log_region_id
+        # The Simple Log Service Logstore name.
         self.log_store_name = log_store_name
         # The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned in the previous API call.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no more results exist. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The list of query views.
         self.query_views = query_views

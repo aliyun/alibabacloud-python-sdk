@@ -10,9 +10,9 @@ class GetLogTicketResponseBody(DaraModel):
         log_ticket: str = None,
         request_id: str = None,
     ):
-        # The ticket for Simple Log Service.
+        # The Simple Log Service ticket.
         self.log_ticket = log_ticket
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

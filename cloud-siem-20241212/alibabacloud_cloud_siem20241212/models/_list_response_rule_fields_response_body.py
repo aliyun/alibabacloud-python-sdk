@@ -19,7 +19,7 @@ class ListResponseRuleFieldsResponseBody(DaraModel):
         self.list_response_rule_fields = list_response_rule_fields
         # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The pagination token for the next query. Valid values: leave this parameter empty for the first query or if no more results exist. If a next query exists, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If a next query exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -86,9 +86,9 @@ class ListResponseRuleFieldsResponseBodyListResponseRuleFields(DaraModel):
         self.field = field
         # The name of the rule field.
         self.field_name = field_name
-        # The normalization object type to which the field belongs.
+        # The normalized object type to which the field belongs.
         self.field_normalization = field_normalization
-        # The list of optional enumeration values for the field. This parameter is not returned if no enumeration values are available.
+        # The list of optional enumeration values for the field. This parameter is not returned if no enumeration values exist.
         self.right_value = right_value
         # The English descriptions of the operators.
         self.support_operators = support_operators
@@ -177,12 +177,12 @@ class ListResponseRuleFieldsResponseBodyListResponseRuleFieldsSupportOperators(D
         self.index = index
         # The aggregation method for the dispatch rule condition. Valid values:
         # 
-        # - `=`: equal to
-        # - `<>`: not equal to
-        # - `in`: contains
-        # - `not in`: does not contain
-        # - `REGEXP`: matches the regular expression
-        # - `NOT REGEXP`: does not match the regular expression
+        # - `=`: Equal to.
+        # - `<>`: Not equal to.
+        # - `in`: Contains.
+        # - `not in`: Does not contain.
+        # - `REGEXP`: Matches the regular expression.
+        # - `NOT REGEXP`: Does not match the regular expression.
         self.operator = operator
         # The display name of the operator.
         self.operator_name = operator_name

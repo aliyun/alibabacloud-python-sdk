@@ -16,9 +16,9 @@ class ListNormalizationFieldsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries to return in this request.
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # Specifies whether a next query token exists. You do not need to specify this parameter for the first query or if no next query exists. If a next query exists, set this parameter to the NextToken value returned by the previous API call.
+        # Specifies whether a next query token exists. Leave this parameter empty for the first query or when no more results are available. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The list of normalization fields.
         self.normalization_fields = normalization_fields
@@ -99,39 +99,40 @@ class ListNormalizationFieldsResponseBodyNormalizationFields(DaraModel):
         normalization_security_domain_id: str = None,
         update_time: int = None,
     ):
-        # The creation time.
+        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The ID of the normalization category.
+        # The normalization category ID.
         self.normalization_category_id = normalization_category_id
         # The description of the normalization field.
         self.normalization_field_description = normalization_field_description
         # The example value of the normalization field.
         self.normalization_field_example = normalization_field_example
-        # The source of the normalization field key of the JSON type.
+        # The source of the JSON-type standard field key.
         self.normalization_field_from = normalization_field_from
-        # Indicates whether indexes are created for all keys of the JSON-type normalization field.
+        # Indicates whether indexes are created for all keys of the JSON-type standard field.
         self.normalization_field_json_index_all = normalization_field_json_index_all
-        # The list of keys for the JSON-type normalization field.
+        # The list of keys for the JSON-type standard field.
         self.normalization_field_json_keys = normalization_field_json_keys
         # The name of the normalization field.
         self.normalization_field_name = normalization_field_name
-        # Indicates whether the normalization field key is required.
+        # Indicates whether the standard field key is required.
         self.normalization_field_required = normalization_field_required
         # Indicates whether the normalization field is required.
         self.normalization_field_requirement = normalization_field_requirement
         # Indicates whether the normalization field is reserved.
         self.normalization_field_reserved = normalization_field_reserved
-        # Indicates whether the normalization field is tokenized.
+        # Indicates whether the standard field is tokenized.
         self.normalization_field_tokenize = normalization_field_tokenize
         # The type of the normalization field. Valid values:
         # - varchar
         # - bigint
-        # - double.
+        # - double
         self.normalization_field_type = normalization_field_type
-        # The ID of the normalization schema.
+        # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        # The security domain ID.
         self.normalization_security_domain_id = normalization_security_domain_id
-        # The update time.
+        # The update time. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -266,25 +267,25 @@ class ListNormalizationFieldsResponseBodyNormalizationFieldsNormalizationFieldJs
         normalization_field_type: str = None,
         update_time: int = None,
     ):
-        # The creation time.
+        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The description of the JSON-type normalization field key.
+        # The description of the JSON-type standard field key.
         self.normalization_field_description = normalization_field_description
-        # The example value of the JSON-type normalization field key.
+        # The example value of the JSON-type standard field key.
         self.normalization_field_example = normalization_field_example
-        # The source of the normalization field key of the JSON type.
+        # The source of the JSON-type standard field key.
         self.normalization_field_from = normalization_field_from
-        # The name of the JSON-type normalization field key.
+        # The name of the JSON-type standard field key.
         self.normalization_field_name = normalization_field_name
-        # Indicates whether the JSON-type normalization field key is required.
+        # Indicates whether the JSON-type standard field key is required.
         self.normalization_field_required = normalization_field_required
-        # Indicates whether the normalization field key is a built-in system field key.
+        # Indicates whether the standard field key is a system built-in key.
         self.normalization_field_reserved = normalization_field_reserved
-        # Indicates whether the JSON-type normalization field key is tokenized.
+        # Indicates whether the JSON-type standard field key is tokenized.
         self.normalization_field_tokenize = normalization_field_tokenize
-        # The type of the JSON-type normalization field key.
+        # The type of the JSON-type standard field key.
         self.normalization_field_type = normalization_field_type
-        # The update time.
+        # The update time. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

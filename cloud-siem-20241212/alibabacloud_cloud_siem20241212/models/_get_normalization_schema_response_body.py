@@ -67,39 +67,44 @@ class GetNormalizationSchemaResponseBodyNormalizationSchema(DaraModel):
         update_time: int = None,
         vendor_id: str = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The ID of the normalization rule category.
+        # The ID of the normalized rule category.
         self.normalization_category_id = normalization_category_id
+        # The source of the field. Valid values: normalized: normalized field, native: native field.
         self.normalization_field_source = normalization_field_source
         # The list of normalization fields.
         self.normalization_fields = normalization_fields
-        # The normalization schema description.
+        # The description of the normalization schema.
         self.normalization_schema_description = normalization_schema_description
         # The source of the normalization schema. Valid values:
         # - preset: predefined.
         # - custom: custom.
         self.normalization_schema_from = normalization_schema_from
-        # The normalization schema ID.
+        # The ID of the normalization schema.
         self.normalization_schema_id = normalization_schema_id
-        # The normalization schema name.
+        # The name of the normalization schema.
         self.normalization_schema_name = normalization_schema_name
         # The list of normalization schema references.
         self.normalization_schema_references = normalization_schema_references
-        # The normalization schema type. Valid values:
+        # The type of the normalization schema. Valid values:
         # - log
         # - entity
         # - incident
         self.normalization_schema_type = normalization_schema_type
+        # The security domain ID.
         self.normalization_security_domain_id = normalization_security_domain_id
+        # The product ID.
         self.product_id = product_id
+        # The list of recommended entities.
         self.recommend_entities = recommend_entities
-        # The Simple Log Service LogStore.
+        # The Simple Log Service Logstore.
         self.target_log_store = target_log_store
         # The Simple Log Service StoreView.
         self.target_store_view = target_store_view
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
+        # The vendor ID.
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -240,7 +245,7 @@ class GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationSchemaRe
         self,
         normalization_rule_id: str = None,
     ):
-        # The normalization rule ID.
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
 
     def validate(self):
@@ -280,36 +285,36 @@ class GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFields(D
         normalization_field_type: str = None,
         update_time: int = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The normalization field description.
+        # The description of the normalization field.
         self.normalization_field_description = normalization_field_description
-        # The normalization field example.
+        # The example of the normalization field.
         self.normalization_field_example = normalization_field_example
-        # The source of the standard field. Valid values:
+        # The source of the normalization field. Valid values:
         # - preset: built-in.
         # - custom: custom.
         self.normalization_field_from = normalization_field_from
-        # Indicates whether indexes are created for all keys of the JSON-type standard field.
+        # Specifies whether indexes are created for all keys of a JSON normalization field.
         self.normalization_field_json_index_all = normalization_field_json_index_all
-        # The key list of the JSON-type standard field.
+        # The list of keys for a JSON normalization field.
         self.normalization_field_json_keys = normalization_field_json_keys
-        # The normalization field name.
+        # The name of the normalization field.
         self.normalization_field_name = normalization_field_name
-        # Indicates whether the field is required.
+        # Specifies whether the field is required.
         self.normalization_field_required = normalization_field_required
-        # Indicates whether the normalization field is required.
+        # Specifies whether the normalization field is required.
         self.normalization_field_requirement = normalization_field_requirement
-        # Indicates whether the normalization field is reserved.
+        # Specifies whether the normalization field is reserved.
         self.normalization_field_reserved = normalization_field_reserved
-        # Indicates whether the standard field is tokenized.
+        # Specifies whether the normalization field is tokenized.
         self.normalization_field_tokenize = normalization_field_tokenize
-        # The normalization field type. Valid values:
+        # The type of the normalization field. Valid values:
         # - varchar
         # - bigint
         # - double
         self.normalization_field_type = normalization_field_type
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -426,25 +431,25 @@ class GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFieldsNo
         normalization_field_type: str = None,
         update_time: int = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The key description of the JSON-type standard field.
+        # The description of the key for a JSON normalization field.
         self.normalization_field_description = normalization_field_description
-        # The key example of the JSON-type standard field.
+        # The example of the key for a JSON normalization field.
         self.normalization_field_example = normalization_field_example
-        # The key source of the JSON-type standard field.
+        # The source of the key for a JSON normalization field.
         self.normalization_field_from = normalization_field_from
-        # The key name of the JSON-type standard field.
+        # The name of the key for a JSON normalization field.
         self.normalization_field_name = normalization_field_name
-        # Indicates whether the key of the JSON-type standard field is required.
+        # Specifies whether the key of a JSON normalization field is required.
         self.normalization_field_required = normalization_field_required
-        # Indicates whether the field is a system built-in standard field name.
+        # Specifies whether the normalization field name is a system built-in name.
         self.normalization_field_reserved = normalization_field_reserved
-        # Indicates whether the key of the JSON-type standard field is tokenized.
+        # Specifies whether the key of a JSON normalization field is tokenized.
         self.normalization_field_tokenize = normalization_field_tokenize
-        # The key type of the JSON-type standard field.
+        # The type of the key for a JSON normalization field.
         self.normalization_field_type = normalization_field_type
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

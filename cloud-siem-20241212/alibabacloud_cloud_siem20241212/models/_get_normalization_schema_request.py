@@ -13,21 +13,23 @@ class GetNormalizationSchemaRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # 
+        # Note: This parameter is required in actual API calls. If you do not specify this parameter, the service returns a 400 error with the message "The specified Lang can not be empty." Explicitly specify the language code.
         self.lang = lang
-        # The ID of the normalization rule category.
+        # The ID of the normalized rule category.
         self.normalization_schema_id = normalization_schema_id
-        # The normalization schema type. Valid values:
-        # - log: log.
-        # - entity: entity.
+        # The type of the normalized schema. Valid values:
+        # - log: Log.
+        # - entity: Entity. This parameter is required in actual API calls. If you do not specify this parameter, the service returns a 400 error.
         self.normalization_schema_type = normalization_schema_type
-        # The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Your assets reside outside the Chinese mainland.
+        # The region of the data management center for Threat Analysis. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID that the administrator switches to when viewing as another member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

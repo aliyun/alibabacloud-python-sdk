@@ -63,7 +63,7 @@ class SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion(Dar
         update_time: int = None,
         vendor_id: str = None,
     ):
-        # The creation time.
+        # The time when the normalization rule version was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The normalization rule category ID.
         self.normalization_category_id = normalization_category_id
@@ -87,10 +87,11 @@ class SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion(Dar
         self.normalization_rule_version = normalization_rule_version
         # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        # The normalization security domain ID.
         self.normalization_security_domain_id = normalization_security_domain_id
         # The product ID.
         self.product_id = product_id
-        # The update time.
+        # The time when the normalization rule version was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id

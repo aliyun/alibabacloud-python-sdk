@@ -44,8 +44,6 @@ class CheckUpgradeItemResponseBody(DaraModel):
 
         return self
 
-
-
 class CheckUpgradeItemResponseBodyUpgradeItem(DaraModel):
     def __init__(
         self,
@@ -53,11 +51,11 @@ class CheckUpgradeItemResponseBodyUpgradeItem(DaraModel):
         check_status: str = None,
         upgrade_item_id: str = None,
     ):
-        # The name of the module.
+        # The check result of the check item. Example values: OK and FAIL.
         self.check_result = check_result
-        # The check status.
+        # The checkpoint status.
         self.check_status = check_status
-        # The ID of the upgrade item.
+        # The upgrade item ID.
         self.upgrade_item_id = upgrade_item_id
 
     def validate(self):

@@ -43,42 +43,40 @@ class UpdateDetectionRuleRequest(DaraModel):
         schedule_type: str = None,
         schedule_window: str = None,
     ):
-        # The ATT\\&CK tactic of the alert.
+        # The ATT&CK technique of the alert.
         self.alert_att_ck = alert_att_ck
+        # The MITRE ATT&CK technique mapping.
         self.alert_att_ck_mapping = alert_att_ck_mapping
-        # The description of the alert. You can use $$ to reference fields from the query output.
+        # The alert description. You can use $$ to reference query output fields.
         self.alert_description = alert_description
         # The threat level of the alert. Valid values:
-        # 
-        # - 5: Critical.
-        # 
-        # - 4: Important.
-        # 
-        # - 3: Medium.
-        # 
-        # - 2: Low.
-        # 
-        # - 1: Informational.
+        # - 5: critical.
+        # - 4: high.
+        # - 3: medium.
+        # - 2: low.
+        # - 1: informational.
         self.alert_level = alert_level
+        # The alert level mapping.
         self.alert_level_mapping = alert_level_mapping
-        # The name of the alert. You can use $$ to reference fields from the query output.
+        # The alert name. You can use $$ to reference query output fields.
         self.alert_name = alert_name
         # The ID of the alert template for the detection rule.
         self.alert_schema_id = alert_schema_id
-        # The ATT\\&CK tactic ID of the alert.
+        # The ATT&CK tactic phase of the alert.
         self.alert_tactic_id = alert_tactic_id
-        # The number of alerts for the alert threshold.
+        # The alert threshold count.
         self.alert_threshold_count = alert_threshold_count
-        # The fields for the alert threshold. Separate multiple fields with commas.
+        # The list of alert threshold fields, separated by commas.
         self.alert_threshold_group = alert_threshold_group
-        # The period for the alert threshold.
+        # The length of the alert threshold period.
         self.alert_threshold_period = alert_threshold_period
-        # The type of the alert.
+        # The Alarm Metric for alerting.
         self.alert_type = alert_type
+        # The Alarm Metric mapping for alerting.
         self.alert_type_mapping = alert_type_mapping
-        # The content of the detection expression.
+        # The expression content of the detection rule.
         self.detection_expression_content = detection_expression_content
-        # The type of the detection expression.
+        # The expression content of the detection rule.
         self.detection_expression_type = detection_expression_type
         # The description of the detection rule.
         self.detection_rule_description = detection_rule_description
@@ -91,63 +89,49 @@ class UpdateDetectionRuleRequest(DaraModel):
         # The status of the detection rule.
         self.detection_rule_status = detection_rule_status
         # The type of the detection rule. Valid values:
-        # 
-        # - preset: a preset detection rule.
-        # 
-        # - custom: a custom detection rule.
-        # 
-        # - custom_template: a rule template.
+        # - preset: preset detection rule.
+        # - custom: custom detection rule.
+        # - custom_template: rule template.
         # 
         # This parameter is required.
         self.detection_rule_type = detection_rule_type
         # The entity mapping configuration.
         self.entity_mappings = entity_mappings
-        # The configuration of the event aggregation period.
+        # The event aggregation period configuration.
         self.incident_aggregation_expression = incident_aggregation_expression
-        # The type of event aggregation. Valid values:
-        # 
-        # - none: Events are not generated.
-        # 
+        # The event aggregation type. Valid values:
+        # - none: no event is generated.
         # - graph_compute: graph computing (supported by predefined rules).
-        # 
         # - expert: expert rule.
-        # 
-        # - passthrough: pass-through (one-to-one mapping with alerts).
-        # 
-        # - window: window-based aggregation of similar events.
+        # - passthrough: alert pass-through (one-to-one).
+        # - window: same-type aggregation (window).
         self.incident_aggregation_type = incident_aggregation_type
-        # The language of the response. Valid values:
-        # 
+        # The language of the response messages. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
         # The ID of the log normalization category.
         self.log_category_id = log_category_id
         # The ID of the log normalization schema.
         self.log_schema_id = log_schema_id
-        # The custom parameters for the playbook.
+        # The user-defined parameters of the playbook.
         self.playbook_parameters = playbook_parameters
-        # The unique ID of the playbook.
+        # The unique identifier of the playbook.
         self.playbook_uuid = playbook_uuid
-        # The region of the Data Management center for Threat Analysis. Select the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: The Chinese mainland.
-        # 
-        # - ap-southeast-1: Regions outside the Chinese mainland.
+        # The region where the data management center of Cloud Threat Detection and Response is located. Select the management center region based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The start time for scheduling. This is a 13-digit UNIX timestamp.
+        # The scheduling start time, expressed as a 13-digit timestamp.
         self.schedule_begin_time = schedule_begin_time
-        # The cron expression for scheduling. This parameter is required when you set ScheduleType to cron.
+        # The cron expression for scheduling. Required when ScheduleType is set to cron.
         self.schedule_expression = schedule_expression
-        # The maximum number of retries after a timeout. The value must be between 1 and 100.
+        # The maximum number of retries on timeout. Valid values: 1 to 100.
         self.schedule_max_retries = schedule_max_retries
-        # The maximum timeout period. Unit: seconds. The value must be between 60 and 1800.
+        # The maximum timeout duration, in seconds. Valid values: 60 to 1800.
         self.schedule_max_timeout = schedule_max_timeout
         # The scheduling type. Valid values:
-        # 
         # - fixed_rate: fixed interval.
-        # 
         # - cron: cron expression.
         self.schedule_type = schedule_type
         # The length of the scheduling window.

@@ -15,18 +15,16 @@ class GetExportTaskRequest(DaraModel):
         # The ID of the export task.
         self.export_id = export_id
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # 
+        # Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error.
         self.lang = lang
-        # The region where the threat analysis data management center is deployed. Select a region based on your asset location. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Your assets are outside the Chinese mainland.
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The user ID of a member account. An administrator can use this parameter to operate as the specified member account.
+        # The ID of the user to which the administrator switches the view.
         self.role_for = role_for
 
     def validate(self):

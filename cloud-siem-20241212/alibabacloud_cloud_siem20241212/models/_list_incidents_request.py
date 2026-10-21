@@ -35,8 +35,9 @@ class ListIncidentsRequest(DaraModel):
     ):
         # The alert ID.
         self.alert_uuid = alert_uuid
+        # The list of detection rule IDs.
         self.detection_rule_ids = detection_rule_ids
-        # The end time as a UNIX timestamp in milliseconds (ms).
+        # The end time timestamp, in milliseconds (ms).
         self.end_time = end_time
         # The event name.
         self.incident_name = incident_name
@@ -46,52 +47,55 @@ class ListIncidentsRequest(DaraModel):
         # - 5: Handling failed.
         # - 10: Handled.
         self.incident_status = incident_status
+        # The list of event statuses.
         self.incident_status_list = incident_status_list
         # The event tags.
         self.incident_tags = incident_tags
-        # The list of event UUIDs, separated by commas (,).
+        # The list of event UUIDs, separated by commas (half-width).
         self.incident_uuids = incident_uuids
-        # The language type of the response messages. Valid values:
+        # The language of the response messages. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # 
+        # Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error: "The specified Lang can not be empty." Pass the language code explicitly.
         self.lang = lang
-        # The maximum number of entries to return.
+        # The maximum number of entries to read in this request.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token used to retrieve the next page of results. Leave this parameter empty for the first request or when there are no more pages. If more pages exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The sort direction. Valid values:
         # - **desc** (default): Descending order.
         # - **asc**: Ascending order.
         self.order_direction = order_direction
-        # The name of the field used to sort the list.
-        # - GmtModified: Event update time (default).
-        # - ThreatScore: Threat score.
+        # The field used to sort the list. Valid values:
+        # - GmtModified: The event update time (default).
+        # - ThreatScore: The threat score.
         self.order_field_name = order_field_name
         # The UID of the account responsible for the event.
         self.owners = owners
-        # The page number.
+        # The current page number for pagination.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to display per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region where the threat analysis data management center is located. Select the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: Your assets are located in the Chinese mainland.
-        # - ap-southeast-1: Your assets are located outside China.
+        # The location of the data management center for Cloud Threat Detection and Response (CTDR). Select the management center location based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
         # The ID of the asset associated with the event.
         self.relate_asset_id = relate_asset_id
         # The ID of the entity associated with the event.
         self.relate_entity_id = relate_entity_id
-        # The user ID of the member to which the administrator switches the view.
+        # The user ID that the administrator uses to switch to another member\\"s view.
         self.role_for = role_for
         # The view type. Valid values:
-        # - 0: The view of the current Alibaba Cloud account.
+        # - 0: The current Alibaba Cloud account view.
         # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
-        # The start time as a UNIX timestamp in milliseconds (ms).
+        # The start time timestamp, in milliseconds (ms).
         self.start_time = start_time
         # The threat level. Valid values:
         # - 5: Critical.

@@ -15,9 +15,9 @@ class ListTagsResponseBody(DaraModel):
         request_id: str = None,
         tags: List[main_models.ListTagsResponseBodyTags] = None,
     ):
-        # The maximum number of results to return when using NextToken-based pagination. Valid values: 1 to 100. Default value: 50.
+        # The maximum number of entries to return when you use NextToken for pagination. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next query is available, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for NextToken. In the next query, set NextToken to this value.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -78,7 +78,7 @@ class ListTagsResponseBodyTags(DaraModel):
         count: int = None,
         tag: str = None,
     ):
-        # The number of quick queries returned on the current page.
+        # The number of custom queries returned on the current page.
         self.count = count
         # The key of the tag to query. You can specify multiple keys. N is a positive integer.
         self.tag = tag

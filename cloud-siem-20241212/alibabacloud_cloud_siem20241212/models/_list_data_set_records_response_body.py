@@ -18,19 +18,19 @@ class ListDataSetRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of dataset records.
+        # The list of dataset records.
         self.data_set_records = data_set_records
-        # The maximum number of results to return per page for token-based pagination. Valid values: 1 to 100. Default: 50.
+        # The maximum number of results to return per query when you use the NextToken parameter. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The token used to start the next query.
         self.next_token = next_token
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries that match the query.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -107,17 +107,17 @@ class ListDataSetRecordsResponseBodyDataSetRecords(DaraModel):
         data_set_record_values: str = None,
         update_time: int = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The dataset ID.
+        # The ID of the dataset.
         self.data_set_id = data_set_id
-        # The dataset name.
+        # The name of the dataset.
         self.data_set_name = data_set_name
-        # The dataset record ID.
+        # The ID of the dataset record.
         self.data_set_record_id = data_set_record_id
-        # The dataset record value.
+        # The values of the dataset record.
         self.data_set_record_values = data_set_record_values
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

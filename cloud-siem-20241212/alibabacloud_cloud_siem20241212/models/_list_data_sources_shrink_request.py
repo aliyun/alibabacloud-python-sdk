@@ -28,75 +28,62 @@ class ListDataSourcesShrinkRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The source of the data. Valid values:
-        # 
+        # The data source origin. Valid values:
         # - center
-        # 
         # - custom
         self.data_source_from = data_source_from
-        # The IDs of the data sources.
+        # The list of data source IDs.
         self.data_source_ids_shrink = data_source_ids_shrink
-        # The name of the data source.
+        # The data source name.
         self.data_source_name = data_source_name
-        # The status of the data source. Valid values:
-        # 
+        # The data source status. Valid values:
         # - unconfigured
-        # 
         # - normal
-        # 
         # - abnormal
         self.data_source_status = data_source_status
-        # The status of the Logstore. Valid values:
-        # 
+        # The Logstore status. Valid values:
         # - normal
-        # 
         # - abnormal
         self.data_source_store_status = data_source_store_status
-        # The IDs of the data source templates.
+        # The list of data source template IDs.
         self.data_source_template_ids_shrink = data_source_template_ids_shrink
-        # The type of the data source. Valid values:
-        # 
-        # - preset
-        # 
-        # - custom
+        # The data source type. Valid values:
+        #  - preset
+        #  - custom
         self.data_source_type = data_source_type
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # 
+        # Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass a language code.
         self.lang = lang
-        # The name of the Simple Log Service project.
+        # The Simple Log Service project name.
         self.log_project_name = log_project_name
-        # The ID of the log storage region.
+        # The log storage region ID.
         self.log_region_id = log_region_id
-        # The name of the Simple Log Service Logstore.
+        # The Simple Log Service Logstore name.
         self.log_store_name = log_store_name
-        # The IDs of the users who can access the data.
+        # The list of data ingestion user IDs.
         self.log_user_ids_shrink = log_user_ids_shrink
-        # The maximum number of entries to return for a single request.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. Set this parameter to the value of NextToken that is returned in the response to the previous query. Leave this parameter empty for the first query.
+        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The sorting order. Valid values:
-        # 
+        # The sort order. Valid values:
         # - desc
-        # 
         # - asc
         self.order = order
-        # The sorting field.
+        # The field used for sorting.
         self.order_field = order_field
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The region where the Data Management Center of your threat analysis feature is located. Select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Your assets are in a region outside China.
+        # The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside China.
         self.region_id = region_id
-        # The user ID of the member. You can use this parameter to switch the perspective to a member.
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
 
     def validate(self):

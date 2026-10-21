@@ -24,47 +24,39 @@ class UpdateDataSourceRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The source of the data. Valid values:
-        # 
+        # The data source. Valid values:
         # - center
-        # 
         # - custom
         self.data_source_from = data_source_from
-        # The ID of the data source.
+        # The data source ID. This parameter is required and specifies the ID of the data source to update. If it is not provided, the API returns a 400 error.
         self.data_source_id = data_source_id
-        # The name of the data source.
+        # The data source name.
         self.data_source_name = data_source_name
         # Specifies whether to automatically discover new Logstores.
         self.data_source_recognize_enabled = data_source_recognize_enabled
         # The list of Simple Log Service Logstores.
         self.data_source_stores = data_source_stores
         # The language of the response messages. Valid values:
-        # 
         # - **zh** (default): Chinese.
-        # 
-        # - **en**: English.
+        # - **en**: English. This parameter is required. If it is not provided, the service returns a 400 error.
         self.lang = lang
-        # The name of the Simple Log Service project.
+        # The Simple Log Service project name.
         self.log_project_name = log_project_name
         # The ID of the log storage region.
         self.log_region_id = log_region_id
-        # The name of the Simple Log Service Logstore.
+        # The Simple Log Service Logstore name.
         self.log_store_name = log_store_name
-        # The user ID for data access.
+        # The user ID for data ingestion.
         self.log_user_id = log_user_id
-        # The field to use for sorting the rule list. Valid values:
-        # 
-        # - GmtModified: Sorts the list by modification time.
-        # 
-        # - Id: Sorts the list by rule ID. This is the default value.
+        # The field used to sort the rule list. Valid values:
+        # - GmtModified: Sort by modification time.
+        # - Id: Sort by rule ID (default).
         self.order_field = order_field
-        # The region of the Data Management center for threat analysis. Select a region based on the location of the assets. Valid values:
-        # 
-        # - cn-hangzhou: Assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Assets are outside China.
+        # The region where the data management center of the threat analysis service is located. Select the management center region based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The user ID of the member whose perspective the administrator switches to.
+        # The user ID of the member account that the administrator switches to.
         self.role_for = role_for
 
     def validate(self):
@@ -176,19 +168,17 @@ class UpdateDataSourceRequestDataSourceStores(DaraModel):
         log_region_id: str = None,
         log_store_name: str = None,
     ):
-        # The source of the data. Valid values:
-        # 
+        # The data source. Valid values:
         # - center
-        # 
         # - custom
         self.data_source_store_from = data_source_store_from
-        # The ID of the log storage.
+        # The log storage ID.
         self.data_source_store_id = data_source_store_id
-        # The name of the Simple Log Service project.
+        # The Simple Log Service project name.
         self.log_project_name = log_project_name
         # The ID of the log storage region.
         self.log_region_id = log_region_id
-        # The name of the Simple Log Service Logstore.
+        # The Simple Log Service Logstore name.
         self.log_store_name = log_store_name
 
     def validate(self):

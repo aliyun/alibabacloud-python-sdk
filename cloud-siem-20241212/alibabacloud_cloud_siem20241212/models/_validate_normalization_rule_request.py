@@ -20,37 +20,35 @@ class ValidateNormalizationRuleRequest(DaraModel):
         role_for: int = None,
         vendor_id: str = None,
     ):
-        # The rule ID.
+        # The ID of the rule.
         self.data = data
-        # The storage mode for extended fields. Valid values: \\`flat\\`, \\`pack\\`, and \\`reject\\`.
+        # The storage mode of extended fields. Valid values: flat, pack, and reject.
         self.extend_field_store_mode = extend_field_store_mode
-        # The language of the response messages. Valid values:
-        # 
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # 
+        # Note: This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error with the message \\"The specified Lang can not be empty.\\" Explicitly specify the language code.
         self.lang = lang
-        # The sample log. The value must be in the JSON format.
+        # The log sample in JSON format.
         self.log_sample = log_sample
-        # The normalization category of the rule.
+        # The normalization category to which the rule belongs.
         self.normalization_category_id = normalization_category_id
-        # The expression for the normalization rule.
+        # The expression of the normalization rule.
         self.normalization_rule_expression = normalization_rule_expression
-        # The mode of the normalization rule. Valid values: \\`both\\` and \\`realtime\\`.
+        # The mode of the normalization rule. Valid values: both and realtime.
         self.normalization_rule_mode = normalization_rule_mode
-        # The ID of the normalization pattern for the rule.
+        # The ID of the normalization schema to which the rule belongs. This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error.
         self.normalization_schema_id = normalization_schema_id
-        # The product ID.
+        # The ID of the product.
         self.product_id = product_id
-        # The region where the Data Management center for threat analysis is deployed. Select the region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Your assets are in regions outside the Chinese mainland.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID of the member. An administrator uses this parameter to switch to the perspective of the member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The vendor ID.
+        # The ID of the vendor.
         self.vendor_id = vendor_id
 
     def validate(self):

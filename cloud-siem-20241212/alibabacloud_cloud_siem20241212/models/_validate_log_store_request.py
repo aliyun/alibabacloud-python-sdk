@@ -15,27 +15,24 @@ class ValidateLogStoreRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the response. Valid values:
-        # 
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # This parameter is actually required. If it is not provided, the service returns a 400 error: "The specified Lang can not be empty." This parameter is actually required. If it is not provided, the service returns a 400 error.
         self.lang = lang
-        # The name of the Simple Log Service project.
+        # The name of the Simple Log Service project. You can call GetDataStorage to obtain a valid project name.
         self.log_project_name = log_project_name
         # The ID of the log storage region.
         self.log_region_id = log_region_id
-        # The name of the Simple Log Service Logstore.
+        # The name of the Simple Log Service Logstore. This parameter is actually required. You can call GetDataStorage to obtain a valid Logstore name.
         self.log_store_name = log_store_name
-        # The user ID for data access.
+        # The ID of the data ingestion user.
         self.log_user_id = log_user_id
-        # The region of the Data Management Center for threat analysis. Select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: The Chinese mainland.
-        # 
-        # - ap-southeast-1: Regions outside China.
+        # The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID of a member. This lets an administrator switch to the member\\"s perspective.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

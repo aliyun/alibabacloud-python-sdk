@@ -52,21 +52,17 @@ class GetUserConfigResponseBodyUser(DaraModel):
         upgrade_ctdr_version: str = None,
         upgrade_status: str = None,
     ):
-        # The current CTDR version.
+        # The current Cloud Threat Detection and Response (CTDR) version.
         self.ctdr_version = ctdr_version
         # The upgrade status. Valid values:
-        # 
-        # - pending: The upgrade is pending.
-        # 
-        # - upgrading: The upgrade is in progress.
-        # 
-        # - success: The upgrade is successful.
-        # 
-        # - failed: The upgrade failed.
+        # - pending: Pending upgrade.
+        # - upgrading: Upgrading.
+        # - success: Upgrade succeeded.
+        # - failed: Upgrade failed.
         self.data_storage_version = data_storage_version
-        # The version of Log Management.
+        # The log management version.
         self.upgrade_ctdr_version = upgrade_ctdr_version
-        # The target CTDR version for the upgrade.
+        # The CTDR version to upgrade to.
         self.upgrade_status = upgrade_status
 
     def validate(self):

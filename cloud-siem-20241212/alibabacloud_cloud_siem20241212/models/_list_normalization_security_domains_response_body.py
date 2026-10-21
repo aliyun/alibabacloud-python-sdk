@@ -16,9 +16,9 @@ class ListNormalizationSecurityDomainsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned in this query.
+        # The maximum number of entries returned for this request.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The list of security domains.
         self.normalization_security_domains = normalization_security_domains

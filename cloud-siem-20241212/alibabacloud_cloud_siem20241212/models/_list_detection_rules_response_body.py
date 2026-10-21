@@ -20,13 +20,13 @@ class ListDetectionRulesResponseBody(DaraModel):
     ):
         # The list of detection rules.
         self.detection_rules = detection_rules
-        # The maximum number of data entries to read.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The token that is used to start the next query.
+        # The token for the next query.
         self.next_token = next_token
-        # The pagination parameter. This specifies the current page number.
+        # The page number of the current page.
         self.page_number = page_number
-        # The pagination parameter. This specifies the number of entries per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -137,52 +137,46 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         schedule_window: str = None,
         update_time: int = None,
     ):
-        # The ATT\\&CK technique of the alert.
+        # The alert ATT&CK technique.
         self.alert_att_ck = alert_att_ck
+        # The ATT&CK technique mapping.
         self.alert_att_ck_mapping = alert_att_ck_mapping
-        # The alert description. You can use $$ to reference the output fields of the query.
+        # The alert description. You can use $$ to reference query output fields.
         self.alert_description = alert_description
         # The threat level of the alert. Valid values:
-        # 
-        # - 5: critical.
-        # 
-        # - 4: important.
-        # 
-        # - 3: medium.
-        # 
-        # - 2: low.
-        # 
-        # - 1: informational.
+        # - 5: Critical.
+        # - 4: High.
+        # - 3: Medium.
+        # - 2: Low.
+        # - 1: Informational.
         self.alert_level = alert_level
+        # The alert level mapping.
         self.alert_level_mapping = alert_level_mapping
-        # The alert name. You can use $$ to reference the output fields of the query.
+        # The alert name. You can use $$ to reference query output fields.
         self.alert_name = alert_name
-        # The ID of the alert template for the detection rule. Valid values:
-        # 
+        # The alert template ID of the detection rule. Valid values:
         # - ALERT_ACTIVITY: other alerts.
-        # 
-        # - EDR_ALERT_ACTIVITY: Endpoint Detection and Response (EDR) alerts.
-        # 
+        # - EDR_ALERT_ACTIVITY: endpoint detection and response alerts.
         # - FIREWALL_ALERT_ACTIVITY: firewall alerts.
-        # 
-        # - WAF_ALERT_ACTIVITY: Web Application Firewall (WAF) alerts.
+        # - WAF_ALERT_ACTIVITY: web application firewall alerts.
         self.alert_schema_id = alert_schema_id
         # The alert tactic phase.
         self.alert_tactic_id = alert_tactic_id
-        # The number of alert thresholds.
+        # The alert threshold count.
         self.alert_threshold_count = alert_threshold_count
         # The list of alert threshold fields, separated by commas.
         self.alert_threshold_group = alert_threshold_group
-        # The length of the alert threshold period.
+        # The alert threshold period length.
         self.alert_threshold_period = alert_threshold_period
-        # The alert type.
+        # The alerting type.
         self.alert_type = alert_type
+        # The alerting type mapping.
         self.alert_type_mapping = alert_type_mapping
-        # The creation time.
+        # The creation time. Format: YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The content of the detection rule expression.
+        # The expression content of the detection rule.
         self.detection_expression_content = detection_expression_content
-        # The type of the detection rule expression.
+        # The expression content of the detection rule.
         self.detection_expression_type = detection_expression_type
         # The description of the detection rule.
         self.detection_rule_description = detection_rule_description
@@ -191,64 +185,52 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         # The name of the detection rule.
         self.detection_rule_name = detection_rule_name
         # The status of the detection rule. Valid values:
-        # 
-        # - enabled: The rule is enabled.
-        # 
-        # - disabled: The rule is disabled.
-        # 
-        # - testing: The rule is being tested.
+        # - enabled: Enabled.
+        # - disabled: Disabled.
+        # - testing: Testing.
         self.detection_rule_status = detection_rule_status
         # The type of the detection rule. Valid values:
-        # 
-        # - preset: a built-in detection rule.
-        # 
-        # - custom: a custom detection rule.
-        # 
-        # - custom_template: a rule template.
+        # - preset: preset detection rule.
+        # - custom: custom detection rule.
+        # - custom_template: rule template.
         self.detection_rule_type = detection_rule_type
         # The entity mapping configuration.
         self.entity_mappings = entity_mappings
-        # The configuration of the event aggregation period.
+        # The event aggregation period configuration.
         self.incident_aggregation_expression = incident_aggregation_expression
         # The event aggregation type. Valid values:
-        # 
-        # - none: No events are generated.
-        # 
-        # - graph_compute: graph computing (supported by predefined rules).
-        # 
-        # - expert: expert rule.
-        # 
-        # - passthrough: alert passthrough (one-to-one).
-        # 
-        # - window: aggregation of similar alerts (by window).
+        # - none: No event is generated.
+        # - graph_compute: Graph computing (supported by predefined rules).
+        # - expert: Expert rule.
+        # - passthrough: Alerting pass-through (one-to-one).
+        # - window: Same-type aggregation (window).
         self.incident_aggregation_type = incident_aggregation_type
         # The ID of the log normalization category.
         self.log_category_id = log_category_id
         # The ID of the log normalization schema.
         self.log_schema_id = log_schema_id
-        # The configuration of the playbook.
+        # The XML configuration of the playbook.
         self.playbook = playbook
-        # The custom parameters of the playbook.
+        # The user-defined parameters of the playbook.
         self.playbook_parameters = playbook_parameters
-        # The UUID of the playbook.
+        # The playbook UUID.
         self.playbook_uuid = playbook_uuid
-        # The start time of the scheduling. This is a 13-digit timestamp.
+        # The scheduling start time (13-digit timestamp).
         self.schedule_begin_time = schedule_begin_time
-        # The cron expression for scheduling. This parameter is required when ScheduleType is set to cron.
+        # The scheduling cron expression. This parameter is required when ScheduleType is set to cron.
         self.schedule_expression = schedule_expression
-        # The maximum number of retries after a timeout. The value can be from 1 to 100.
+        # The maximum number of retries upon timeout. Valid values: 1 to 100.
         self.schedule_max_retries = schedule_max_retries
-        # The maximum timeout period, in seconds. The value can be from 60 to 1800.
+        # The maximum timeout period, in seconds. Valid values: 60 to 1800.
         self.schedule_max_timeout = schedule_max_timeout
         # The scheduling type. Valid values:
         # 
-        # - fixed_rate: fixed interval
-        # 
-        # - cron: cron expression
+        # - fixed_rate: fixed interval.
+        # - cron: cron expression.
         self.schedule_type = schedule_type
-        # The length of the scheduling window.
+        # The scheduling window length.
         self.schedule_window = schedule_window
-        # The update time.
+        # The update time. Format: YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
 
     def validate(self):
@@ -498,7 +480,7 @@ class ListDetectionRulesResponseBodyDetectionRulesPlaybook(DaraModel):
         config: str = None,
         flow: str = None,
     ):
-        # The configuration of the input parameters for invoking the playbook.
+        # The input parameter configuration for invoking the playbook.
         self.config = config
         # The flow configuration of the playbook.
         self.flow = flow
@@ -581,11 +563,11 @@ class ListDetectionRulesResponseBodyDetectionRulesEntityMappingsNormalizationFie
         normalization_field_name: str = None,
         normalization_field_type: str = None,
     ):
-        # The mapped field.
+        # The mapping field.
         self.mapping_field_name = mapping_field_name
-        # The standard entity field.
+        # The normalized entity field.
         self.normalization_field_name = normalization_field_name
-        # The data type of the standard entity field.
+        # The data type of the normalized entity field.
         self.normalization_field_type = normalization_field_type
 
     def validate(self):

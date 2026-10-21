@@ -27,68 +27,56 @@ class UpdateNormalizationRuleShrinkRequest(DaraModel):
         role_for: int = None,
         vendor_id: str = None,
     ):
-        # Specifies whether to package non-standard fields into the extend_content extension field. Valid values:
-        # 
-        # - enabled: The feature is enabled.
-        # 
-        # - disabled: The feature is disabled.
+        # Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.extend_content_packed = extend_content_packed
-        # The storage mode for extension fields. Valid values: flat, pack, and reject.
+        # The extended field storage mode. Valid values: flat, pack, reject.
         self.extend_field_store_mode = extend_field_store_mode
-        # The language of the content within the request and response. Valid values:
-        # 
+        # The language of the response messages. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
-        # The normalization category.
+        # The normalization category to which the rule belongs.
         self.normalization_category_id = normalization_category_id
-        # The description of the normalization rule.
+        # The normalization rule description.
         self.normalization_rule_description = normalization_rule_description
-        # The expression for the normalization rule.
+        # The normalization rule expression.
         self.normalization_rule_expression = normalization_rule_expression
-        # The format of the normalization rule.
+        # The normalization rule format.
         self.normalization_rule_format = normalization_rule_format
-        # The ID of the normalization rule.
+        # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
         # The list of normalization rule IDs.
         self.normalization_rule_ids_shrink = normalization_rule_ids_shrink
-        # The mode of the normalization rule. Valid values:
-        # 
+        # The normalization rule mode. Valid values:
         # - both
-        # 
         # - scan
-        # 
         # - realtime
         self.normalization_rule_mode = normalization_rule_mode
-        # The name of the normalization rule.
+        # The normalization rule name.
         self.normalization_rule_name = normalization_rule_name
-        # The type of the normalization rule. Valid values:
-        # 
+        # The normalization rule type. Valid values:
         # - predefined: predefined normalization rule.
-        # 
         # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
-        # The ID of the normalization structure.
+        # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        # The normalization security domain ID.
         self.normalization_security_domain_id = normalization_security_domain_id
-        # The field to use for sorting the rule list. Valid values:
-        # 
-        # - GmtModified: Sorts by modification time.
-        # 
-        # - Id: Sorts by rule ID (default).
+        # The field used to sort the rule list. Valid values:
+        # - GmtModified: Sort by modification time.
+        # - Id: Sort by rule ID (default).
         self.order_field = order_field
         # The product ID.
         self.product_id = product_id
-        # The region where the Data Management center of threat analysis is located. Select a region based on the region where your assets are located. Valid values:
-        # 
-        # - cn-hangzhou: an asset in the Chinese mainland.
-        # 
-        # - ap-southeast-1: an asset outside the Chinese mainland.
+        # The region where the data management center of the threat detection service is located. Select the management center region based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets are located in the Chinese mainland.
+        # - ap-southeast-1: Your assets are located outside China.
         self.region_id = region_id
-        # The user ID of a member. This parameter is used when an administrator switches to the perspective of the member.
+        # The user ID of the member account that the administrator switches to.
         self.role_for = role_for
-        # The vendor ID that corresponds to the normalization rule.
+        # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):

@@ -20,7 +20,7 @@ class ListDataConnectorsResponseBody(DaraModel):
     ):
         # The list of collectors.
         self.data_connector = data_connector
-        # The maximum number of records returned in this request.
+        # The maximum number of records returned in this query.
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
@@ -120,9 +120,9 @@ class ListDataConnectorsResponseBodyDataConnector(DaraModel):
     ):
         # The configuration item ID of the collector access object in the multi-cloud configuration.
         self.auth_config_id = auth_config_id
-        # The cloud product of the authentication configuration.
+        # The cloud product to which the authentication configuration belongs.
         self.auth_config_product = auth_config_product
-        # The cloud vendor of the authentication configuration.
+        # The cloud vendor to which the authentication configuration belongs.
         self.auth_config_vendor = auth_config_vendor
         # The creation time.
         self.creation_time = creation_time
@@ -144,9 +144,9 @@ class ListDataConnectorsResponseBodyDataConnector(DaraModel):
         self.log_region_id = log_region_id
         # The Simple Log Service Logstore name.
         self.log_store_name = log_store_name
-        # The name of the SLS data import job associated with the collector.
+        # The name of the SLS data import job for the collector.
         self.sls_ingestion_job_name = sls_ingestion_job_name
-        # The status of the SLS data import job associated with the collector.
+        # The status of the SLS data import job for the collector.
         self.sls_ingestion_job_state = sls_ingestion_job_state
         # The source data type.
         self.src_data_type = src_data_type

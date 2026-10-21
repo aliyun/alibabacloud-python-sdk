@@ -18,19 +18,19 @@ class ListAutoDisposeEntitiesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of AI-powered automated analysis entities.
+        # The list of AI automatic decision-making entity information.
         self.auto_decision_entities = auto_decision_entities
         # The current page number. The value must be greater than or equal to 1.
         self.current_page = current_page
-        # The maximum number of entries returned in this request.
+        # The maximum number of entries returned in this call.
         self.max_results = max_results
-        # The token used to retrieve the next page of results. An empty value indicates that all results have been returned.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If a next query exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The total count of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -112,32 +112,25 @@ class ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities(DaraModel):
         # The alert rule ID.
         self.alert_id = alert_id
         # The disposal method. Valid values:
-        # 
-        # - `ignore`: Ignore.
-        # 
-        # - `dispose`: Playbook-based disposal.
+        # - ignore: Ignored.
+        # - dispose: Playbook-based disposal.
         self.disposal_method = disposal_method
         # The disposal ID.
         self.dispose_record_id = dispose_record_id
         # The entity name.
         self.entity_name = entity_name
         # The entity type. Valid values:
-        # 
-        # - `ip`: An IP address.
-        # 
-        # - `domain`: A domain.
-        # 
-        # - `process`: A process.
-        # 
-        # - `file`: A file.
-        # 
-        # - `host`: A host.
+        # - ip: IP address.
+        # - domain: domain name.
+        # - process: process.
+        # - file: file.
+        # - host: host.
         self.entity_type = entity_type
         # The entity UUID.
         self.entity_uuid = entity_uuid
         # The playbook UUID.
         self.playbook_uuid = playbook_uuid
-        # The unique identifier (UUID) of the entry.
+        # The UUID of the playbook. This is the unique identifier of the playbook.
         self.uuid = uuid
 
     def validate(self):

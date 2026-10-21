@@ -75,61 +75,52 @@ class ListDataIngestionsResponseBodyDataIngestions(DaraModel):
         stream_job_id: str = None,
         update_time: int = None,
     ):
-        # The time when the data ingestion was enabled.
+        # The activation time. This value is a UNIX timestamp in milliseconds.
         self.active_time = active_time
         # The number of associated security capabilities.
         self.capacity_count = capacity_count
-        # The time when the data ingestion was created.
+        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The ID of the data ingestion.
+        # The data ingestion ID.
         self.data_ingestion_id = data_ingestion_id
-        # The mode of the data ingestion. Valid values:
-        # 
+        # The data ingestion mode. Valid values:
         # - realtime
-        # 
         # - scan
         self.data_ingestion_mode = data_ingestion_mode
         # Indicates whether the data ingestion mode is editable.
         self.data_ingestion_mode_editable = data_ingestion_mode_editable
-        # The state of the data ingestion. Valid values:
-        # 
+        # The data ingestion state. Valid values:
         # - ingested
-        # 
         # - uningested
-        # 
         # - abnormal
         self.data_ingestion_state = data_ingestion_state
-        # The error code for the data ingestion anomaly.
+        # The error code for the data ingestion exception state.
         self.data_ingestion_state_code = data_ingestion_state_code
-        # The status of the data ingestion. Valid values:
-        # 
-        # - enabled: The data ingestion is enabled.
-        # 
-        # - disabled: The data ingestion is disabled.
+        # The accessed state of data ingestion. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.data_ingestion_status = data_ingestion_status
-        # The ID of the data ingestion template.
+        # The data ingestion template ID.
         self.data_ingestion_template_id = data_ingestion_template_id
-        # The type of the data ingestion. Valid values:
-        # 
+        # The data ingestion type. Valid values:
         # - preset
-        # 
         # - custom
         self.data_ingestion_type = data_ingestion_type
         # Indicates whether the data source is editable.
         self.data_source_editable = data_source_editable
-        # The ID of the data source.
+        # The data source ID.
         self.data_source_id = data_source_id
         # Indicates whether the normalization rule is editable.
         self.normalization_rule_editable = normalization_rule_editable
-        # The ID of the normalization rule.
+        # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
-        # The ID of the data source for real-time ingestion.
+        # The data source ID in real-time mode.
         self.realtime_data_source_id = realtime_data_source_id
-        # The ID of the data source for scan-based ingestion.
+        # The data source ID in scan mode.
         self.scan_data_source_id = scan_data_source_id
-        # The job ID of the stream processing task.
+        # The stream job ID.
         self.stream_job_id = stream_job_id
-        # The time when the data ingestion was last updated.
+        # The update time. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

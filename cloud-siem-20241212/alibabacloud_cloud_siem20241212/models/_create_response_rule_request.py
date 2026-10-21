@@ -16,63 +16,51 @@ class CreateResponseRuleRequest(DaraModel):
         response_execution_condition: str = None,
         response_rule_name: str = None,
         response_rule_priority: str = None,
+        response_rule_remark: str = None,
         response_trigger_type: str = None,
         role_for: int = None,
         role_type: int = None,
     ):
-        # The language of the response. Valid values:
-        # 
-        # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # The language of the response messages. Valid values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The maximum number of results to return.
+        # The maximum number of data records to read in this request.
         self.max_results = max_results
-        # The token that specifies the position from which to start the query. If you do not specify this parameter, the query starts from the beginning.
+        # The token that marks the start position of the current read. Leave this parameter empty to start from the beginning.
         self.next_token = next_token
-        # The deployment region of the data management center for threat analysis. You must select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland or Hong Kong (China).
-        # 
-        # - ap-southeast-1: Your assets are in regions outside the Chinese mainland.
+        # The region where the data management center for Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland or Hong Kong (China).
+        # - ap-southeast-1: Assets are located in regions outside China.
         self.region_id = region_id
-        # The action configuration, specified as a JSON string.
+        # The action configuration of the automatic response rule.
         self.response_action_config = response_action_config
-        # The action type for the automatic response rule. Valid values:
-        # 
-        # - doPlaybook: Runs a playbook.
-        # 
-        # - changeEventStatus: Changes the status of an event.
-        # 
-        # - changeThreatLevel: Changes the threat level of an event.
-        # 
-        # - addEventTag: Adds a tag to an event.
-        # 
-        # - deleteEventTag: Deletes a tag from an event.
-        # 
-        # - alertWhitelist: Adds an alert to the allowlist.
+        # The action type of the automatic response rule. Valid values:
+        # - doPlaybook: runs a playbook.
+        # - changeEventStatus: updates the event status.
+        # - changeThreatLevel: updates the threat level of an event.
+        # - addEventTag: adds a tag to an event.
+        # - deleteEventTag: deletes a tag from an event.
+        # - alertWhitelist: adds an alert to the whitelist.
         self.response_action_type = response_action_type
-        # The trigger conditions for the rule, specified as a JSON string.
+        # The trigger condition configuration of the rule.
         self.response_execution_condition = response_execution_condition
         # The name of the automatic response rule.
         self.response_rule_name = response_rule_name
         # The execution priority of the automatic response rule.
         self.response_rule_priority = response_rule_priority
-        # The trigger type for the automatic response rule. Valid values:
-        # 
-        # - event: An event is generated.
-        # 
-        # - event_update: An event is updated.
-        # 
-        # - alert: An alert is generated.
+        # The remarks for the response rule.
+        self.response_rule_remark = response_rule_remark
+        # The trigger type of the automatic response rule. Valid values:
+        # - event: an event occurs.
+        # - event_update: an event is updated.
+        # - alert: an alert occurs.
         self.response_trigger_type = response_trigger_type
-        # The ID of the member account. An administrator uses this parameter to operate on behalf of the specified member.
+        # The user ID that the administrator uses to switch to the view of another member account.
         self.role_for = role_for
-        # The operational scope. Valid values:
-        # 
-        # - 0: Sets the scope to the current Alibaba Cloud account.
-        # 
-        # - 1: Sets the scope to all accounts in the enterprise.
+        # The view type. Valid values:
+        # - 0: the view of the current Alibaba Cloud account.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):
@@ -109,6 +97,9 @@ class CreateResponseRuleRequest(DaraModel):
 
         if self.response_rule_priority is not None:
             result['ResponseRulePriority'] = self.response_rule_priority
+
+        if self.response_rule_remark is not None:
+            result['ResponseRuleRemark'] = self.response_rule_remark
 
         if self.response_trigger_type is not None:
             result['ResponseTriggerType'] = self.response_trigger_type
@@ -149,6 +140,9 @@ class CreateResponseRuleRequest(DaraModel):
 
         if m.get('ResponseRulePriority') is not None:
             self.response_rule_priority = m.get('ResponseRulePriority')
+
+        if m.get('ResponseRuleRemark') is not None:
+            self.response_rule_remark = m.get('ResponseRuleRemark')
 
         if m.get('ResponseTriggerType') is not None:
             self.response_trigger_type = m.get('ResponseTriggerType')

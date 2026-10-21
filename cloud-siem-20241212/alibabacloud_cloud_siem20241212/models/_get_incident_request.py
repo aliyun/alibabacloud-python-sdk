@@ -14,15 +14,15 @@ class GetIncidentRequest(DaraModel):
     ):
         # The UUID of the event.
         self.incident_uuid = incident_uuid
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
-        # The region where the data management center of the threat analysis feature is located. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Your assets reside outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the member to which the administrator switches the view.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

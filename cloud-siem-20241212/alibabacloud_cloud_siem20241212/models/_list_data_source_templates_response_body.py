@@ -86,37 +86,33 @@ class ListDataSourceTemplatesResponseBodyDataSourceTemplates(DaraModel):
         log_user_ids: List[str] = None,
         update_time: int = None,
     ):
-        # Indicates whether to automatically discover new users. Valid values:
-        # 
-        # - enabled: enabled.
-        # 
-        # - disabled: disabled.
+        # Indicates whether automatic discovery of new users is enabled. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.auto_scan_new = auto_scan_new
-        # The time when the template was created.
+        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The source of the data. Valid values:
-        # 
+        # The data source origin. Valid values:
         # - center
-        # 
         # - custom
         self.data_source_from = data_source_from
-        # Indicates whether to automatically discover new data sources.
+        # Indicates whether automatic discovery of new data sources is enabled.
         self.data_source_recognize_enabled = data_source_recognize_enabled
         # The data source recognizer.
         self.data_source_recognizer = data_source_recognizer
-        # The ID of the data source template.
+        # The data source template ID.
         self.data_source_template_id = data_source_template_id
-        # The name of the data source template.
+        # The data source template name.
         self.data_source_template_name = data_source_template_name
-        # The rule for matching the name of the Simple Log Service project.
+        # The matching rule for the Simple Log Service project name.
         self.log_project_pattern = log_project_pattern
         # The list of log storage region IDs.
         self.log_region_ids = log_region_ids
-        # The rule for matching the name of the Simple Log Service Logstore.
+        # The matching rule for the Simple Log Service Logstore name.
         self.log_store_pattern = log_store_pattern
         # The list of user IDs for batch data ingestion.
         self.log_user_ids = log_user_ids
-        # The time when the template was updated.
+        # The update time. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

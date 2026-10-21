@@ -1,3 +1,18 @@
+2026-10-21 Version: 2.8.0
+- Support API GetIncidentInvestigation.
+- Update API GetDataStorage: add response parameters Body.Data.DeliverySettings.
+- Update API GetDataStorage: add response parameters Body.Data.DeliverySettingsError.
+- Update API GetDataStorage: add response parameters Body.Data.SasLogStores.$.AccountDeliveries.
+- Update API UpdateDataStorage: add request parameters ConfigurationVersion.
+- Update API UpdateDataStorage: add request parameters MultiAccountDeliveryEnabled.
+- Update API UpdateDataStorage: add request parameters TargetProject.
+- Update API UpdateDataStorageDelivery: add request parameters AutoIncludeNewAccounts.
+- Update API UpdateDataStorageDelivery: add request parameters ConfigurationVersion.
+- Update API UpdateDataStorageDelivery: add request parameters SelectedAccountIds.
+- Update API UpdateDataStorageDelivery: add request parameters SubUserId.
+- Update API UpdateDataStorageDelivery: add request parameters TargetProject.
+
+
 2026-08-03 Version: 2.5.2
 - Update API ListIncidents: add request parameters DetectionRuleIds.
 - Update API ListIncidents: add response parameters Body.Incidents.$.DetectionRuleName.

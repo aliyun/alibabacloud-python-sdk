@@ -18,15 +18,15 @@ class ListIncidentsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of events.
+        # The list of incidents.
         self.incidents = incidents
-        # The maximum number of entries to return.
+        # The maximum number of entries to read in this request.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token used to retrieve the next page of results. Leave this parameter empty for the first request or when there are no more pages. If more pages exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The page number.
+        # The current page number for pagination.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to display per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -101,6 +101,7 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
     def __init__(
         self,
         alert_infos: str = None,
+        alert_sources: List[str] = None,
         attck_tactics: str = None,
         create_time: int = None,
         detection_rule_id: str = None,
@@ -113,24 +114,33 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         incident_tags: str = None,
         incident_uuid: str = None,
         owner: str = None,
+        owner_name: str = None,
         relate_alert_count: int = None,
         relate_asset_count: int = None,
         response_time: int = None,
+        response_types: List[str] = None,
         threat_level: str = None,
         update_time: int = None,
     ):
+        # The list of associated alert information.
         self.alert_infos = alert_infos
+        # The list of alert source codes or modules.
+        self.alert_sources = alert_sources
+        # The list of MITRE ATT&CK tactics.
         self.attck_tactics = attck_tactics
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The detection rule ID.
+        # The ID of the detection rule.
         self.detection_rule_id = detection_rule_id
+        # The name of the detection rule.
         self.detection_rule_name = detection_rule_name
+        # The list of associated entity information.
         self.entity_infos = entity_infos
+        # The description of the incident.
         self.incident_description = incident_description
         # The event name.
         self.incident_name = incident_name
-        # The event remark.
+        # The remark for the incident.
         self.incident_remark = incident_remark
         # The event status. Valid values:
         # - 0: Unhandled.
@@ -140,16 +150,20 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         self.incident_status = incident_status
         # The event tags.
         self.incident_tags = incident_tags
-        # The event UUID.
+        # The UUID of the incident.
         self.incident_uuid = incident_uuid
         # The UID of the account responsible for the event.
         self.owner = owner
-        # The number of alerts associated with the event.
+        # The display name of the incident owner.
+        self.owner_name = owner_name
+        # The number of alerts associated with the incident.
         self.relate_alert_count = relate_alert_count
-        # The number of assets associated with the event.
+        # The number of assets associated with the incident.
         self.relate_asset_count = relate_asset_count
         # The response time, in milliseconds (ms).
         self.response_time = response_time
+        # The list of response types. Valid values: auto, manual, ai.
+        self.response_types = response_types
         # The threat level. Valid values:
         # - 5: Critical.
         # - 4: High.
@@ -157,7 +171,7 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         # - 2: Low.
         # - 1: Informational.
         self.threat_level = threat_level
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -170,6 +184,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
             result = _map
         if self.alert_infos is not None:
             result['AlertInfos'] = self.alert_infos
+
+        if self.alert_sources is not None:
+            result['AlertSources'] = self.alert_sources
 
         if self.attck_tactics is not None:
             result['AttckTactics'] = self.attck_tactics
@@ -207,6 +224,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         if self.owner is not None:
             result['Owner'] = self.owner
 
+        if self.owner_name is not None:
+            result['OwnerName'] = self.owner_name
+
         if self.relate_alert_count is not None:
             result['RelateAlertCount'] = self.relate_alert_count
 
@@ -215,6 +235,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
 
         if self.response_time is not None:
             result['ResponseTime'] = self.response_time
+
+        if self.response_types is not None:
+            result['ResponseTypes'] = self.response_types
 
         if self.threat_level is not None:
             result['ThreatLevel'] = self.threat_level
@@ -228,6 +251,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         m = m or dict()
         if m.get('AlertInfos') is not None:
             self.alert_infos = m.get('AlertInfos')
+
+        if m.get('AlertSources') is not None:
+            self.alert_sources = m.get('AlertSources')
 
         if m.get('AttckTactics') is not None:
             self.attck_tactics = m.get('AttckTactics')
@@ -265,6 +291,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
 
+        if m.get('OwnerName') is not None:
+            self.owner_name = m.get('OwnerName')
+
         if m.get('RelateAlertCount') is not None:
             self.relate_alert_count = m.get('RelateAlertCount')
 
@@ -273,6 +302,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
 
         if m.get('ResponseTime') is not None:
             self.response_time = m.get('ResponseTime')
+
+        if m.get('ResponseTypes') is not None:
+            self.response_types = m.get('ResponseTypes')
 
         if m.get('ThreatLevel') is not None:
             self.threat_level = m.get('ThreatLevel')

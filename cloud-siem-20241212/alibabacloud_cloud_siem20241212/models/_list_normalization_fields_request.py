@@ -19,20 +19,23 @@ class ListNormalizationFieldsRequest(DaraModel):
         # The language of the response. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # This parameter is required and cannot be omitted.
         self.lang = lang
-        # The maximum number of entries to return in this request.
+        # The maximum number of entries to return.
         self.max_results = max_results
         # The field name.
         self.name = name
-        # Specifies whether a next query token exists. You do not need to specify this parameter for the first query or if no next query exists. If a next query exists, set this parameter to the NextToken value returned by the previous API call.
+        # Specifies whether a next query token exists. Leave this parameter empty for the first query or when no more results are available. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
+        # The field source.
         self.normalization_field_source = normalization_field_source
+        # The schema type.
         self.normalization_schema_type = normalization_schema_type
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Your assets reside in the Chinese mainland.
-        # - ap-southeast-1: Your assets reside outside China.
+        # The region where the threat analysis data management center resides. Specify the management center region based on the region of your assets. Valid values:
+        # - cn-hangzhou: The assets reside in the Chinese mainland.
+        # - ap-southeast-1: The assets reside outside China.
         self.region_id = region_id
-        # The ID of the member to which the administrator switches the view.
+        # The user ID that the administrator switches to when viewing as another member.
         self.role_for = role_for
 
     def validate(self):

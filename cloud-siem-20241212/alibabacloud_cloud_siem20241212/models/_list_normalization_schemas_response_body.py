@@ -18,7 +18,7 @@ class ListNormalizationSchemasResponseBody(DaraModel):
     ):
         # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The list of normalization schemas.
         self.normalization_schemas = normalization_schemas
@@ -101,19 +101,21 @@ class ListNormalizationSchemasResponseBodyNormalizationSchemas(DaraModel):
     ):
         # The creation time.
         self.create_time = create_time
-        # The ID of the normalization rule category.
+        # The normalization rule category ID.
         self.normalization_category_id = normalization_category_id
         # The field source. Valid values:
-        # normalized: normalized field.
-        # native: native field.
+        # - normalized: normalized field.
+        # - native: native field.
         self.normalization_field_source = normalization_field_source
-        # The description of the normalization schema.
+        # The normalization schema description.
         self.normalization_schema_description = normalization_schema_description
-        # The source of the normalization schema. Valid values: preset (predefined) and custom (user-defined).
+        # The normalization schema source. Valid values:
+        # - preset: predefined.
+        # - custom: custom.
         self.normalization_schema_from = normalization_schema_from
-        # The ID of the normalization schema.
+        # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
-        # The name of the normalization schema.
+        # The normalization schema name.
         self.normalization_schema_name = normalization_schema_name
         # The LogStore to which the normalization output is written.
         self.normalization_schema_target_log_store = normalization_schema_target_log_store

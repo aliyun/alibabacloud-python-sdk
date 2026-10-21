@@ -13,23 +13,20 @@ class ListUpgradeItemsRequest(DaraModel):
         region_id: str = None,
         role_for: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
+        # The language of the response messages. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # Note: This parameter is required. If it is not specified, the service returns a 400 error (The specified Lang can not be empty.).
         self.lang = lang
-        # The maximum number of entries to return.
+        # The maximum number of entries to return in a single call.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. Leave this parameter empty for the first request. To retrieve the next page, set this parameter to the NextToken value from the previous response.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if there are no more results to return. If a next page exists, set this parameter to the value of NextToken returned by the previous API call.
         self.next_token = next_token
-        # The region where the Data Management center is located. Select a region based on where your assets are. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Your assets are outside China.
+        # The region where the data management center of Cloud Threat Detection and Response (CTDR) resides. Select the region based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The user ID of the member. An administrator can use this parameter to switch to the member\\"s view.
+        # The user ID of the member account that the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

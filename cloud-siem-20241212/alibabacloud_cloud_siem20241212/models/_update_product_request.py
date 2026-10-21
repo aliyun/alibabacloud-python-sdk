@@ -14,23 +14,19 @@ class UpdateProductRequest(DaraModel):
         role_for: int = None,
         vendor_name: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
+        # The language of the response messages. Valid values:
         # - **zh** (default): Chinese.
-        # 
-        # - **en**: English.
+        # - **en**: English. This parameter is required. If not provided, the service returns a 400 error.
         self.lang = lang
-        # The product ID.
+        # The product ID. Only products with ProductType set to custom support updates. System preset products (ProductType set to preset) cannot be modified. Calling this operation on a preset product returns a 403 error. To create a custom product, use the CreateProduct API first. This parameter is the resource identifier for the Update operation and is required. Only custom products can be updated. System preset products cannot be updated.
         self.product_id = product_id
         # The product name.
         self.product_name = product_name
-        # The region of the Data Management center for threat analysis. Select the region for the Data Management center based on the region of your assets. Valid values:
-        # 
-        # - cn-hangzhou: The Chinese mainland.
-        # 
-        # - ap-southeast-1: Regions outside the Chinese mainland.
+        # The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside China.
         self.region_id = region_id
-        # The user ID of a member. An administrator can specify this parameter to switch to the perspective of the member.
+        # The user ID that the administrator uses to switch to another member\\"s view.
         self.role_for = role_for
         # The vendor name.
         self.vendor_name = vendor_name

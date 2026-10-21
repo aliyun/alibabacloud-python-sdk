@@ -15,16 +15,20 @@ class GetResponseRuleStatisticRequest(DaraModel):
         # The language of the response. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # 
+        # Note: This parameter is required. If this parameter is not specified, the API returns a 400 error.
         self.lang = lang
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: the Chinese mainland and Hong Kong (China)
-        # - ap-southeast-1: regions outside China
+        # - cn-hangzhou: the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: regions outside China.
         self.region_id = region_id
-        # The Alibaba Cloud account ID of the member to which the administrator switches the view.
+        # The Alibaba Cloud account ID that the administrator switches to for viewing as another member.
+        # 
+        # Note: This parameter requires administrator permissions or multi-account settings. If you do not have sufficient permissions, the API returns a Forbidden.NoPermission error.
         self.role_for = role_for
         # The view type. Valid values:
         # 
-        # - 0: the current Alibaba Cloud account view.
+        # - 0: the view of the current Alibaba Cloud account.
         # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 

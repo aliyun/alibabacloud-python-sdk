@@ -16,25 +16,22 @@ class GetExportTaskResponseBody(DaraModel):
         progress: int = None,
         request_id: str = None,
     ):
-        # The status of the task. Valid values:
-        # 
-        # - success: The task is successful.
-        # 
-        # - exporting: The task is in progress.
+        # The task status. Valid values:
+        # - success: The export is successful.
+        # - exporting: The export is in progress.
         self.export_status = export_status
-        # The type of the export task. Valid value:
-        # 
-        # - incident_list: event list.
+        # The export type. Valid values:
+        # - incident_list: incident list.
         self.export_type = export_type
-        # The name of the file.
+        # The file name.
         self.file_name = file_name
-        # The time when the task was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The ID of the export task.
+        # The export task ID.
         self.id = id
-        # The download link for the exported Excel file.
+        # The download URL of the exported Excel file.
         self.link = link
-        # The progress of the export task.
+        # The export progress.
         self.progress = progress
         # The request ID.
         self.request_id = request_id

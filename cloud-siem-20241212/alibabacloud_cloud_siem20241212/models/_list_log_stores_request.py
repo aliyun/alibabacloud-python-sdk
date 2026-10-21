@@ -16,29 +16,26 @@ class ListLogStoresRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the response message. Valid values:
-        # 
+        # The language of the response. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # Note: This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error (The specified Lang can not be empty.).
         self.lang = lang
-        # The name of the Simple Log Service project.
+        # The name of the Simple Log Service project. The project name follows the naming convention aliyun-cloudsiem-data-{userId}-{regionId}. You can call the GetDataStorage operation and obtain a valid project name from the Data.LogProject field in the response.
         self.log_project_name = log_project_name
-        # The ID of the log storage region.
+        # The log storage region ID.
         self.log_region_id = log_region_id
-        # The ID of the user who ingests the data.
+        # The user ID for data ingestion.
         self.log_user_id = log_user_id
-        # The maximum number of entries to return on this call.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The token that is used to start the next query. You do not need to specify this parameter for the first query. If a subsequent query is required, set the value to the NextToken value that is returned from the previous API call.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The region of the Data Management center. Select the region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Your assets are in a region outside China.
+        # The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets are located in the Chinese mainland.
+        # - ap-southeast-1: Your assets are located outside China.
         self.region_id = region_id
-        # The user ID of the member whose permissions are assumed by the administrator.
+        # The user ID that the administrator wants to switch to for viewing from another member\\"s perspective.
         self.role_for = role_for
 
     def validate(self):

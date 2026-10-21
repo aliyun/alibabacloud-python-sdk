@@ -17,9 +17,9 @@ class ListLogStoresResponseBody(DaraModel):
     ):
         # The list of Simple Log Service Logstores.
         self.log_stores = log_stores
-        # The maximum number of entries returned on this call.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The token that is used to start the next query. If this parameter is empty, no subsequent query is required.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

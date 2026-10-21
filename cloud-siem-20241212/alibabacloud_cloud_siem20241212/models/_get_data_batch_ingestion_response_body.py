@@ -13,9 +13,9 @@ class GetDataBatchIngestionResponseBody(DaraModel):
         data_batch_ingestion: main_models.GetDataBatchIngestionResponseBodyDataBatchIngestion = None,
         request_id: str = None,
     ):
-        # The details of the batch data ingestion task.
+        # The data batch ingestion configuration.
         self.data_batch_ingestion = data_batch_ingestion
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,37 +60,31 @@ class GetDataBatchIngestionResponseBodyDataBatchIngestion(DaraModel):
         log_user_ids: List[str] = None,
         recommend_data_ingestion_ids: List[str] = None,
     ):
-        # The list of data ingestion IDs for Alibaba Cloud services.
+        # The list of cloud native mode ingestion IDs.
         self.apsara_data_ingestion_ids = apsara_data_ingestion_ids
-        # Specifies whether to automatically discover new users. Valid values:
-        # 
-        # - enabled: New users are automatically discovered.
-        # 
-        # - disabled: New users are not automatically discovered.
+        # Indicates whether new users are automatically discovered. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.auto_scan_new = auto_scan_new
-        # The time when the configuration of the batch data ingestion task took effect.
+        # The effective period of the data batch ingestion. This value is a UNIX timestamp in milliseconds.
         self.data_batch_ingestion_effect_time = data_batch_ingestion_effect_time
-        # The mode of the batch data ingestion task.
+        # The batch data ingestion mode.
         self.data_batch_ingestion_mode = data_batch_ingestion_mode
-        # The time when the batch data ingestion task was configured.
+        # The time when the data batch ingestion was configured. This value is a UNIX timestamp in milliseconds.
         self.data_batch_ingestion_set_time = data_batch_ingestion_set_time
-        # The status of the batch data ingestion task. Valid values:
-        # 
-        # - pending: The configuration is pending to take effect.
-        # 
-        # - running: The configuration is taking effect.
-        # 
-        # - success: The configuration has taken effect.
-        # 
-        # - failed: The configuration failed to take effect.
+        # The accessed state of the data batch ingestion. Valid values:
+        # - pending: Pending.
+        # - running: In effect.
+        # - success: Succeeded.
+        # - failed: Failed.
         self.data_batch_ingestion_status = data_batch_ingestion_status
-        # The list of data ingestion tasks.
+        # The list of data ingestions.
         self.data_ingestions = data_ingestions
-        # Specifies whether to automatically discover new Logstores.
+        # Indicates whether automatic discovery of new Logstores is enabled.
         self.data_source_recognize_enabled = data_source_recognize_enabled
-        # The list of user IDs for batch data ingestion.
+        # The list of user IDs for data batch ingestion.
         self.log_user_ids = log_user_ids
-        # The list of recommended data ingestion IDs.
+        # The list of recommended ingestion IDs.
         self.recommend_data_ingestion_ids = recommend_data_ingestion_ids
 
     def validate(self):
@@ -184,19 +178,17 @@ class GetDataBatchIngestionResponseBodyDataBatchIngestionDataIngestions(DaraMode
         product_id: str = None,
         vendor_id: str = None,
     ):
-        # The ID of the data ingestion task.
+        # The data ingestion ID.
         self.data_ingestion_id = data_ingestion_id
-        # The status of the data ingestion task. Valid values:
-        # 
-        # - enabled: enabled
-        # 
-        # - disabled: disabled
+        # The accessed state of the data ingestion. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.data_ingestion_status = data_ingestion_status
-        # The ID of the data source.
+        # The data source ID.
         self.data_source_id = data_source_id
-        # The ID of the product.
+        # The product ID.
         self.product_id = product_id
-        # The ID of the vendor.
+        # The vendor ID.
         self.vendor_id = vendor_id
 
     def validate(self):

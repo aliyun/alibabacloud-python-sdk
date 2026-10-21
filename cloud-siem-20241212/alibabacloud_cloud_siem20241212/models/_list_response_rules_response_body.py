@@ -18,9 +18,9 @@ class ListResponseRulesResponseBody(DaraModel):
         response_rules: List[main_models.ListResponseRulesResponseBodyResponseRules] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned for the current request.
+        # The maximum number of records returned in this request.
         self.max_results = max_results
-        # The position where the current query ends. If this parameter is empty, all data is returned.
+        # The position from which the current call starts reading. An empty value indicates that all data has been read.
         # 
         # This parameter is required.
         self.next_token = next_token
@@ -28,11 +28,11 @@ class ListResponseRulesResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The list of automated response rules.
+        # The list of automatic response rules.
         self.response_rules = response_rules
-        # The total number of entries that match the query conditions. This parameter is optional and may not always be returned.
+        # The total number of records that match the request conditions. This parameter is optional and is not returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -109,6 +109,7 @@ class ListResponseRulesResponseBodyResponseRules(DaraModel):
         response_rule_id: str = None,
         response_rule_name: str = None,
         response_rule_priority: int = None,
+        response_rule_remark: str = None,
         response_rule_status: int = None,
         response_rule_type: str = None,
         response_trigger_type: str = None,
@@ -116,51 +117,43 @@ class ListResponseRulesResponseBodyResponseRules(DaraModel):
     ):
         # The time when the rule was created.
         self.create_time = create_time
-        # The configuration of the action that is performed if the automated response rule is triggered.
+        # The action configuration of the automatic response rule.
         self.response_action_config = response_action_config
-        # The type of the action. Valid values:
+        # The action type of the automatic response rule. Valid values:
         # 
-        # - `doPlaybook`: executes a playbook.
-        # 
-        # - `changeEventStatus`: changes the status of an event.
-        # 
-        # - `changeThreatLevel`: changes the threat level of an event.
-        # 
-        # - `addEventTag`: adds a tag to an event.
-        # 
-        # - `deleteEventTag`: removes a tag from an event.
-        # 
-        # - `alertWhitelist`: adds an alert to the whitelist.
+        # - doPlaybook: execute a playbook
+        # - changeEventStatus: update event status
+        # - changeThreatLevel: update event threat level
+        # - addEventTag: add an event label
+        # - deleteEventTag: delete an event label
+        # - alertWhitelist: add alert to whitelist
         self.response_action_type = response_action_type
-        # The trigger condition of the rule.
+        # The trigger condition configuration of the rule.
         self.response_execution_condition = response_execution_condition
-        # The ID of the automated response rule.
+        # The ID of the automatic response rule.
         self.response_rule_id = response_rule_id
-        # The name of the automated response rule.
+        # The name of the automatic response rule.
         self.response_rule_name = response_rule_name
-        # The priority of the automated response rule.
+        # The execution priority of the automatic response rule.
         self.response_rule_priority = response_rule_priority
-        # The status of the automated response rule. Valid values:
+        self.response_rule_remark = response_rule_remark
+        # The status of the automatic response rule. Valid values:
         # 
-        # - `0`: disabled.
-        # 
-        # - `100`: enabled.
+        # - 0: disabled
+        # - 100: enabled
         self.response_rule_status = response_rule_status
         # The type of the response rule. Valid values:
         # 
-        # - `preset`: a predefined rule.
-        # 
-        # - `custom`: a custom rule.
+        # - preset: predefined
+        # - custom: custom
         self.response_rule_type = response_rule_type
-        # The trigger type of the automated response rule. Valid values:
+        # The trigger type of the automatic response rule. Valid values:
         # 
-        # - `event`: triggered when an event occurs.
-        # 
-        # - `event_update`: triggered when an event is updated.
-        # 
-        # - `alert`: triggered when an alert is generated.
+        # - event: event occurred
+        # - event_update: event updated
+        # - alert: alert occurred
         self.response_trigger_type = response_trigger_type
-        # The time when the rule was updated.
+        # The time when the rule was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -191,6 +184,9 @@ class ListResponseRulesResponseBodyResponseRules(DaraModel):
 
         if self.response_rule_priority is not None:
             result['ResponseRulePriority'] = self.response_rule_priority
+
+        if self.response_rule_remark is not None:
+            result['ResponseRuleRemark'] = self.response_rule_remark
 
         if self.response_rule_status is not None:
             result['ResponseRuleStatus'] = self.response_rule_status
@@ -228,6 +224,9 @@ class ListResponseRulesResponseBodyResponseRules(DaraModel):
 
         if m.get('ResponseRulePriority') is not None:
             self.response_rule_priority = m.get('ResponseRulePriority')
+
+        if m.get('ResponseRuleRemark') is not None:
+            self.response_rule_remark = m.get('ResponseRuleRemark')
 
         if m.get('ResponseRuleStatus') is not None:
             self.response_rule_status = m.get('ResponseRuleStatus')

@@ -18,33 +18,27 @@ class ListDataIngestionsRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # An array of data ingestion policy IDs.
+        # The list of data ingestion policy IDs.
         self.data_ingestion_ids = data_ingestion_ids
-        # The data ingestion status. Valid values:
-        # 
-        # - `enabled`: Enabled.
-        # 
-        # - `disabled`: Disabled.
+        # The accessed state of data ingestion. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.data_ingestion_status = data_ingestion_status
-        # An array of data ingestion template IDs.
+        # The list of data ingestion template IDs.
         self.data_ingestion_template_ids = data_ingestion_template_ids
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
-        # An array of normalization schema IDs.
+        # The list of normalization schema IDs.
         self.normalization_schema_ids = normalization_schema_ids
         # The product ID.
         self.product_id = product_id
-        # The region where the threat analysis feature is deployed. Select the region that corresponds to the location of your asset. Valid values:
-        # 
-        # - `cn-hangzhou`: Your asset is in the Chinese mainland.
-        # 
-        # - `ap-southeast-1`: Your asset is in a region outside the Chinese mainland.
+        # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The user ID of a member. An administrator can use this parameter to query data as the specified member.
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
 
     def validate(self):

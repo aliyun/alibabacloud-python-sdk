@@ -21,7 +21,7 @@ class ListNormalizationRulesResponseBody(DaraModel):
     ):
         # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If a next query is required, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The list of normalization rules.
         self.normalization_rules = normalization_rules
@@ -130,37 +130,41 @@ class ListNormalizationRulesResponseBodyNormalizationRules(DaraModel):
         update_time: int = None,
         vendor_id: str = None,
     ):
-        # The creation time.
+        # The creation time. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # Specifies whether non-standard fields are packed into the extend_content field. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.extend_content_packed = extend_content_packed
-        # The storage mode for extended fields. Valid values: flat (ingest as-is), reject (do not ingest), and pack (pack into the extend_content field).
+        # The extended field storage mode. Valid values:
+        # - flat: ingested as-is.
+        # - reject: not ingested.
+        # - pack: packed into the extend_content field.
         self.extend_field_store_mode = extend_field_store_mode
-        # The category ID of the normalization rule.
+        # The normalization rule category ID.
         self.normalization_category_id = normalization_category_id
+        # The field source.
         self.normalization_field_source = normalization_field_source
-        # The description of the normalization rule.
+        # The normalization rule description.
         self.normalization_rule_description = normalization_rule_description
-        # The expression of the normalization rule.
+        # The normalization rule expression.
         self.normalization_rule_expression = normalization_rule_expression
-        # The format of the normalization rule.
+        # The normalization rule format.
         self.normalization_rule_format = normalization_rule_format
         # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
-        # The mode of the normalization rule. Valid values:
+        # The normalization rule mode. Valid values:
         # - both
         # - scan
-        # - realtime.
+        # - realtime
         self.normalization_rule_mode = normalization_rule_mode
-        # The name of the normalization rule.
+        # The normalization rule name.
         self.normalization_rule_name = normalization_rule_name
-        # The list of associated ingestion policies.
+        # The list of associated collection policies.
         self.normalization_rule_references = normalization_rule_references
-        # The status of the normalization rule.
+        # The normalization rule status.
         self.normalization_rule_status = normalization_rule_status
-        # The type of the normalization rule. Valid values:
+        # The normalization rule type. Valid values:
         # - predefined: predefined normalization rule.
         # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
@@ -168,10 +172,11 @@ class ListNormalizationRulesResponseBodyNormalizationRules(DaraModel):
         self.normalization_rule_version = normalization_rule_version
         # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        # The security domain ID.
         self.normalization_security_domain_id = normalization_security_domain_id
         # The product ID.
         self.product_id = product_id
-        # The update time.
+        # The update time. This value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id

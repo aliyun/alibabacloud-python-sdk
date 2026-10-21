@@ -31,8 +31,8 @@ class ListDataConnectorsRequest(DaraModel):
         # The collector name.
         self.data_connector_name = data_connector_name
         # The collector status. Valid values:
-        # - "enabled": enabled.
-        # - "disabled" (default): disabled.
+        # - enabled: Enabled.
+        # - disabled (default): Disabled.
         self.data_connector_status = data_connector_status
         # The collector type. Valid values:
         # - oss
@@ -44,16 +44,18 @@ class ListDataConnectorsRequest(DaraModel):
         # The language of the response. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # 
+        # Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass a language code.
         self.lang = lang
         # The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
-        # The pagination token. You do not need to set this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If a next page exists, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The sort field. Currently, only sorting by updateTime is supported. If OrderField is left empty, the default order returned by the database is used.
+        # The sort field. Currently, only sorting by updateTime is supported. If OrderField is empty, the default order returned by the database is used.
         self.order_field = order_field
         # The sort order. Valid values:
-        # - "asc": ascending order.
-        # - "desc" (default): descending order.
+        # - asc: ascending order.
+        # - desc (default): descending order.
         self.order_type = order_type
         # The current page number. Default value: 1.
         self.page_number = page_number
@@ -63,7 +65,7 @@ class ListDataConnectorsRequest(DaraModel):
         # - cn-hangzhou: The assets reside in the Chinese mainland.
         # - ap-southeast-1: The assets reside outside China.
         self.region_id = region_id
-        # The user ID that the administrator switches to when viewing as another member.
+        # The ID of the member to which the administrator switches the view.
         self.role_for = role_for
         # The name of the Simple Log Service (SLS) data import job for the collector.
         self.sls_ingestion_job_name = sls_ingestion_job_name

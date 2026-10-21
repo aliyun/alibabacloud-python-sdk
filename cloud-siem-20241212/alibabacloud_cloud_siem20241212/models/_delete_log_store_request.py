@@ -16,26 +16,24 @@ class DeleteLogStoreRequest(DaraModel):
         role_for: int = None,
     ):
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # > Note: This parameter is required in practice. If this parameter is not specified, the API returns a 400 error: "The specified Lang can not be empty."
         self.lang = lang
-        # The name of the Simple Log Service project.
+        # The Simple Log Service project name.
+        # > Note: This parameter is required in practice. If this parameter is not specified, the API returns a 400 error: "SLS log project name is empty."
         self.log_project_name = log_project_name
-        # The ID of the log storage region.
+        # The log storage region ID.
         self.log_region_id = log_region_id
-        # The name of the Simple Log Service Logstore.
+        # The Simple Log Service LogStore name.
         self.log_store_name = log_store_name
-        # The user ID for data ingestion.
+        # The user ID for data access.
         self.log_user_id = log_user_id
-        # The region of the Management Hub. Select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: if your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: if your assets are outside China.
+        # The region where the Cloud Threat Detection and Response (CTDR) data management center is located. Specify the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets belong to the Chinese mainland.
+        # - ap-southeast-1: Your assets belong to regions outside China.
         self.region_id = region_id
-        # The user ID of the member whose perspective the administrator wants to switch to.
+        # The user ID that the administrator switches to when viewing from the perspective of another member.
         self.role_for = role_for
 
     def validate(self):

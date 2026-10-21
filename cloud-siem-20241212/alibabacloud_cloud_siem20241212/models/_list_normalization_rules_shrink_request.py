@@ -28,29 +28,31 @@ class ListNormalizationRulesShrinkRequest(DaraModel):
         # The language of the response. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
+        # This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error (The specified Lang can not be empty.).
         self.lang = lang
         # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If a next query is required, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The category ID of the normalization rule.
+        # The normalization rule category ID.
         self.normalization_category_id = normalization_category_id
         # The list of normalization rule IDs.
         self.normalization_rule_ids_shrink = normalization_rule_ids_shrink
-        # The name of the normalization rule.
+        # The normalization rule name.
         self.normalization_rule_name = normalization_rule_name
-        # The type of the normalization rule. Valid values:
+        # The normalization rule type. Valid values:
         # - predefined: predefined normalization rule.
         # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
         # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        # The security domain ID.
         self.normalization_security_domain_id = normalization_security_domain_id
         # The field used for sorting.
         self.order_field = order_field
         # The sort order. Valid values:
         # - desc
-        # - asc.
+        # - asc
         self.order_type = order_type
         # The page number of the current page.
         self.page_number = page_number
@@ -58,11 +60,11 @@ class ListNormalizationRulesShrinkRequest(DaraModel):
         self.page_size = page_size
         # The product ID.
         self.product_id = product_id
-        # The region where the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: the Chinese mainland.
-        # - ap-southeast-1: outside China.
+        # The data management center of threat analysis. Specify the management center based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The user ID of the member to which the administrator switches the view.
+        # The ID of the member to which the administrator switches the view.
         self.role_for = role_for
         # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id

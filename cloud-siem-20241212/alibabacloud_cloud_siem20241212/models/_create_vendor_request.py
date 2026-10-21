@@ -12,21 +12,21 @@ class CreateVendorRequest(DaraModel):
         role_for: int = None,
         vendor_name: str = None,
     ):
-        # The language of the response messages. Valid values:
+        # The language of the response. Valid values:
         # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # 
+        # > Note: This parameter is required in practice. If you omit it, the API returns a 400 error: "The specified Lang can not be empty."
         self.lang = lang
-        # The region of the Data Management center. Select a region based on the location of your assets. Valid values:
+        # The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
         # 
-        # - cn-hangzhou: The assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: The assets are in a region outside China.
+        # - cn-hangzhou: Your assets belong to the Chinese mainland.
+        # - ap-southeast-1: Your assets belong to regions outside China.
         self.region_id = region_id
-        # The user ID of a member. An administrator can use this parameter to switch to the member\\"s view.
+        # The ID of the member account that the administrator switches to.
         self.role_for = role_for
-        # The name of the vendor.
+        # The vendor name.
         self.vendor_name = vendor_name
 
     def validate(self):

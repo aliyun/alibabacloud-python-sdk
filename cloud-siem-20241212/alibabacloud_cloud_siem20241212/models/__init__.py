@@ -2,12 +2,21 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._cancel_copilot_turn_request import CancelCopilotTurnRequest
+from ._cancel_copilot_turn_response_body import CancelCopilotTurnResponseBody
+from ._cancel_copilot_turn_response import CancelCopilotTurnResponse
 from ._check_upgrade_item_request import CheckUpgradeItemRequest
 from ._check_upgrade_item_response_body import CheckUpgradeItemResponseBody
 from ._check_upgrade_item_response import CheckUpgradeItemResponse
 from ._create_auto_dispose_config_request import CreateAutoDisposeConfigRequest
 from ._create_auto_dispose_config_response_body import CreateAutoDisposeConfigResponseBody
 from ._create_auto_dispose_config_response import CreateAutoDisposeConfigResponse
+from ._create_copilot_chat_request import CreateCopilotChatRequest
+from ._create_copilot_chat_shrink_request import CreateCopilotChatShrinkRequest
+from ._create_copilot_chat_response import CreateCopilotChatResponse
+from ._create_copilot_conversation_request import CreateCopilotConversationRequest
+from ._create_copilot_conversation_response_body import CreateCopilotConversationResponseBody
+from ._create_copilot_conversation_response import CreateCopilotConversationResponse
 from ._create_data_ingestion_request import CreateDataIngestionRequest
 from ._create_data_ingestion_response_body import CreateDataIngestionResponseBody
 from ._create_data_ingestion_response import CreateDataIngestionResponse
@@ -100,6 +109,15 @@ from ._get_alert_response import GetAlertResponse
 from ._get_auto_dispose_config_request import GetAutoDisposeConfigRequest
 from ._get_auto_dispose_config_response_body import GetAutoDisposeConfigResponseBody
 from ._get_auto_dispose_config_response import GetAutoDisposeConfigResponse
+from ._get_copilot_conversation_request import GetCopilotConversationRequest
+from ._get_copilot_conversation_response_body import GetCopilotConversationResponseBody
+from ._get_copilot_conversation_response import GetCopilotConversationResponse
+from ._get_copilot_turn_request import GetCopilotTurnRequest
+from ._get_copilot_turn_response_body import GetCopilotTurnResponseBody
+from ._get_copilot_turn_response import GetCopilotTurnResponse
+from ._get_copilot_turn_by_client_message_id_request import GetCopilotTurnByClientMessageIdRequest
+from ._get_copilot_turn_by_client_message_id_response_body import GetCopilotTurnByClientMessageIdResponseBody
+from ._get_copilot_turn_by_client_message_id_response import GetCopilotTurnByClientMessageIdResponse
 from ._get_data_batch_ingestion_request import GetDataBatchIngestionRequest
 from ._get_data_batch_ingestion_response_body import GetDataBatchIngestionResponseBody
 from ._get_data_batch_ingestion_response import GetDataBatchIngestionResponse
@@ -115,6 +133,9 @@ from ._get_export_task_response import GetExportTaskResponse
 from ._get_incident_request import GetIncidentRequest
 from ._get_incident_response_body import GetIncidentResponseBody
 from ._get_incident_response import GetIncidentResponse
+from ._get_incident_investigation_request import GetIncidentInvestigationRequest
+from ._get_incident_investigation_response_body import GetIncidentInvestigationResponseBody
+from ._get_incident_investigation_response import GetIncidentInvestigationResponse
 from ._get_log_ticket_request import GetLogTicketRequest
 from ._get_log_ticket_response_body import GetLogTicketResponseBody
 from ._get_log_ticket_response import GetLogTicketResponse
@@ -133,6 +154,9 @@ from ._get_response_rule_statistic_response import GetResponseRuleStatisticRespo
 from ._get_user_config_request import GetUserConfigRequest
 from ._get_user_config_response_body import GetUserConfigResponseBody
 from ._get_user_config_response import GetUserConfigResponse
+from ._list_alert_aggregations_request import ListAlertAggregationsRequest
+from ._list_alert_aggregations_response_body import ListAlertAggregationsResponseBody
+from ._list_alert_aggregations_response import ListAlertAggregationsResponse
 from ._list_alerts_request import ListAlertsRequest
 from ._list_alerts_response_body import ListAlertsResponseBody
 from ._list_alerts_response import ListAlertsResponse
@@ -140,6 +164,9 @@ from ._list_auto_dispose_entities_request import ListAutoDisposeEntitiesRequest
 from ._list_auto_dispose_entities_shrink_request import ListAutoDisposeEntitiesShrinkRequest
 from ._list_auto_dispose_entities_response_body import ListAutoDisposeEntitiesResponseBody
 from ._list_auto_dispose_entities_response import ListAutoDisposeEntitiesResponse
+from ._list_copilot_messages_request import ListCopilotMessagesRequest
+from ._list_copilot_messages_response_body import ListCopilotMessagesResponseBody
+from ._list_copilot_messages_response import ListCopilotMessagesResponse
 from ._list_data_connectors_request import ListDataConnectorsRequest
 from ._list_data_connectors_shrink_request import ListDataConnectorsShrinkRequest
 from ._list_data_connectors_response_body import ListDataConnectorsResponseBody
@@ -239,6 +266,9 @@ from ._refresh_data_source_response import RefreshDataSourceResponse
 from ._reset_data_storage_request import ResetDataStorageRequest
 from ._reset_data_storage_response_body import ResetDataStorageResponseBody
 from ._reset_data_storage_response import ResetDataStorageResponse
+from ._resume_copilot_turn_stream_request import ResumeCopilotTurnStreamRequest
+from ._resume_copilot_turn_stream_shrink_request import ResumeCopilotTurnStreamShrinkRequest
+from ._resume_copilot_turn_stream_response import ResumeCopilotTurnStreamResponse
 from ._set_default_normalization_rule_version_request import SetDefaultNormalizationRuleVersionRequest
 from ._set_default_normalization_rule_version_response_body import SetDefaultNormalizationRuleVersionResponseBody
 from ._set_default_normalization_rule_version_response import SetDefaultNormalizationRuleVersionResponse
@@ -281,6 +311,7 @@ from ._update_data_storage_request import UpdateDataStorageRequest
 from ._update_data_storage_response_body import UpdateDataStorageResponseBody
 from ._update_data_storage_response import UpdateDataStorageResponse
 from ._update_data_storage_delivery_request import UpdateDataStorageDeliveryRequest
+from ._update_data_storage_delivery_shrink_request import UpdateDataStorageDeliveryShrinkRequest
 from ._update_data_storage_delivery_response_body import UpdateDataStorageDeliveryResponseBody
 from ._update_data_storage_delivery_response import UpdateDataStorageDeliveryResponse
 from ._update_data_storage_ttl_request import UpdateDataStorageTtlRequest
@@ -311,7 +342,11 @@ from ._validate_log_store_response import ValidateLogStoreResponse
 from ._validate_normalization_rule_request import ValidateNormalizationRuleRequest
 from ._validate_normalization_rule_response_body import ValidateNormalizationRuleResponseBody
 from ._validate_normalization_rule_response import ValidateNormalizationRuleResponse
+from ._cancel_copilot_turn_response_body import CancelCopilotTurnResponseBodyTurn
 from ._check_upgrade_item_response_body import CheckUpgradeItemResponseBodyUpgradeItem
+from ._create_copilot_chat_request import CreateCopilotChatRequestCreateConversation
+from ._create_copilot_chat_request import CreateCopilotChatRequestMessages
+from ._create_copilot_conversation_response_body import CreateCopilotConversationResponseBodyConversation
 from ._create_data_set_request import CreateDataSetRequestIpWhitelistRecognizers
 from ._create_data_set_response_body import CreateDataSetResponseBodyDataSetRecordStatistic
 from ._create_data_source_request import CreateDataSourceRequestDataSourceStores
@@ -322,16 +357,25 @@ from ._execute_auto_dispose_records_request import ExecuteAutoDisposeRecordsRequ
 from ._execute_auto_dispose_records_request import ExecuteAutoDisposeRecordsRequestUnSelectedEntityList
 from ._get_alert_response_body import GetAlertResponseBodyAlert
 from ._get_auto_dispose_config_response_body import GetAutoDisposeConfigResponseBodyAutoDisposeConfig
+from ._get_copilot_conversation_response_body import GetCopilotConversationResponseBodyConversation
+from ._get_copilot_turn_response_body import GetCopilotTurnResponseBodyTurn
+from ._get_copilot_turn_by_client_message_id_response_body import GetCopilotTurnByClientMessageIdResponseBodyTurn
 from ._get_data_batch_ingestion_response_body import GetDataBatchIngestionResponseBodyDataBatchIngestionDataIngestions
 from ._get_data_batch_ingestion_response_body import GetDataBatchIngestionResponseBodyDataBatchIngestion
+from ._get_data_storage_response_body import GetDataStorageResponseBodyDataDeliverySettingsAccounts
+from ._get_data_storage_response_body import GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions
+from ._get_data_storage_response_body import GetDataStorageResponseBodyDataDeliverySettingsTypes
+from ._get_data_storage_response_body import GetDataStorageResponseBodyDataDeliverySettings
 from ._get_data_storage_response_body import GetDataStorageResponseBodyDataNormalizationLogStores
 from ._get_data_storage_response_body import GetDataStorageResponseBodyDataNormalizationLogViews
 from ._get_data_storage_response_body import GetDataStorageResponseBodyDataRecordLogStores
+from ._get_data_storage_response_body import GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries
 from ._get_data_storage_response_body import GetDataStorageResponseBodyDataSasLogStores
 from ._get_data_storage_response_body import GetDataStorageResponseBodyDataUnusedLogStores
 from ._get_data_storage_response_body import GetDataStorageResponseBodyData
 from ._get_detection_statistic_response_body import GetDetectionStatisticResponseBodyDetectionStatistic
 from ._get_incident_response_body import GetIncidentResponseBodyIncident
+from ._get_incident_investigation_response_body import GetIncidentInvestigationResponseBodyIncidentInvestigation
 from ._get_normalization_rule_response_body import GetNormalizationRuleResponseBodyNormalizationRule
 from ._get_normalization_rule_version_response_body import GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion
 from ._get_normalization_schema_response_body import GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFieldsNormalizationFieldJsonKeys
@@ -340,8 +384,12 @@ from ._get_normalization_schema_response_body import GetNormalizationSchemaRespo
 from ._get_normalization_schema_response_body import GetNormalizationSchemaResponseBodyNormalizationSchema
 from ._get_response_rule_statistic_response_body import GetResponseRuleStatisticResponseBodyResponseStatistic
 from ._get_user_config_response_body import GetUserConfigResponseBodyUser
+from ._list_alert_aggregations_response_body import ListAlertAggregationsResponseBodyAlertAggregationsDefenseActionCounts
+from ._list_alert_aggregations_response_body import ListAlertAggregationsResponseBodyAlertAggregationsStatusCounts
+from ._list_alert_aggregations_response_body import ListAlertAggregationsResponseBodyAlertAggregations
 from ._list_alerts_response_body import ListAlertsResponseBodyAlerts
 from ._list_auto_dispose_entities_response_body import ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities
+from ._list_copilot_messages_response_body import ListCopilotMessagesResponseBodyItems
 from ._list_data_connectors_response_body import ListDataConnectorsResponseBodyDataConnector
 from ._list_data_ingestion_templates_response_body import ListDataIngestionTemplatesResponseBodyDataIngestionTemplates
 from ._list_data_ingestions_response_body import ListDataIngestionsResponseBodyDataIngestions
@@ -387,12 +435,21 @@ from ._update_normalization_schema_request import UpdateNormalizationSchemaReque
 from ._validate_normalization_rule_response_body import ValidateNormalizationRuleResponseBodyValidateResult
 
 __all__ = [
+    CancelCopilotTurnRequest,
+    CancelCopilotTurnResponseBody,
+    CancelCopilotTurnResponse,
     CheckUpgradeItemRequest,
     CheckUpgradeItemResponseBody,
     CheckUpgradeItemResponse,
     CreateAutoDisposeConfigRequest,
     CreateAutoDisposeConfigResponseBody,
     CreateAutoDisposeConfigResponse,
+    CreateCopilotChatRequest,
+    CreateCopilotChatShrinkRequest,
+    CreateCopilotChatResponse,
+    CreateCopilotConversationRequest,
+    CreateCopilotConversationResponseBody,
+    CreateCopilotConversationResponse,
     CreateDataIngestionRequest,
     CreateDataIngestionResponseBody,
     CreateDataIngestionResponse,
@@ -485,6 +542,15 @@ __all__ = [
     GetAutoDisposeConfigRequest,
     GetAutoDisposeConfigResponseBody,
     GetAutoDisposeConfigResponse,
+    GetCopilotConversationRequest,
+    GetCopilotConversationResponseBody,
+    GetCopilotConversationResponse,
+    GetCopilotTurnRequest,
+    GetCopilotTurnResponseBody,
+    GetCopilotTurnResponse,
+    GetCopilotTurnByClientMessageIdRequest,
+    GetCopilotTurnByClientMessageIdResponseBody,
+    GetCopilotTurnByClientMessageIdResponse,
     GetDataBatchIngestionRequest,
     GetDataBatchIngestionResponseBody,
     GetDataBatchIngestionResponse,
@@ -500,6 +566,9 @@ __all__ = [
     GetIncidentRequest,
     GetIncidentResponseBody,
     GetIncidentResponse,
+    GetIncidentInvestigationRequest,
+    GetIncidentInvestigationResponseBody,
+    GetIncidentInvestigationResponse,
     GetLogTicketRequest,
     GetLogTicketResponseBody,
     GetLogTicketResponse,
@@ -518,6 +587,9 @@ __all__ = [
     GetUserConfigRequest,
     GetUserConfigResponseBody,
     GetUserConfigResponse,
+    ListAlertAggregationsRequest,
+    ListAlertAggregationsResponseBody,
+    ListAlertAggregationsResponse,
     ListAlertsRequest,
     ListAlertsResponseBody,
     ListAlertsResponse,
@@ -525,6 +597,9 @@ __all__ = [
     ListAutoDisposeEntitiesShrinkRequest,
     ListAutoDisposeEntitiesResponseBody,
     ListAutoDisposeEntitiesResponse,
+    ListCopilotMessagesRequest,
+    ListCopilotMessagesResponseBody,
+    ListCopilotMessagesResponse,
     ListDataConnectorsRequest,
     ListDataConnectorsShrinkRequest,
     ListDataConnectorsResponseBody,
@@ -624,6 +699,9 @@ __all__ = [
     ResetDataStorageRequest,
     ResetDataStorageResponseBody,
     ResetDataStorageResponse,
+    ResumeCopilotTurnStreamRequest,
+    ResumeCopilotTurnStreamShrinkRequest,
+    ResumeCopilotTurnStreamResponse,
     SetDefaultNormalizationRuleVersionRequest,
     SetDefaultNormalizationRuleVersionResponseBody,
     SetDefaultNormalizationRuleVersionResponse,
@@ -666,6 +744,7 @@ __all__ = [
     UpdateDataStorageResponseBody,
     UpdateDataStorageResponse,
     UpdateDataStorageDeliveryRequest,
+    UpdateDataStorageDeliveryShrinkRequest,
     UpdateDataStorageDeliveryResponseBody,
     UpdateDataStorageDeliveryResponse,
     UpdateDataStorageTtlRequest,
@@ -696,7 +775,11 @@ __all__ = [
     ValidateNormalizationRuleRequest,
     ValidateNormalizationRuleResponseBody,
     ValidateNormalizationRuleResponse,
+    CancelCopilotTurnResponseBodyTurn,
     CheckUpgradeItemResponseBodyUpgradeItem,
+    CreateCopilotChatRequestCreateConversation,
+    CreateCopilotChatRequestMessages,
+    CreateCopilotConversationResponseBodyConversation,
     CreateDataSetRequestIpWhitelistRecognizers,
     CreateDataSetResponseBodyDataSetRecordStatistic,
     CreateDataSourceRequestDataSourceStores,
@@ -707,16 +790,25 @@ __all__ = [
     ExecuteAutoDisposeRecordsRequestUnSelectedEntityList,
     GetAlertResponseBodyAlert,
     GetAutoDisposeConfigResponseBodyAutoDisposeConfig,
+    GetCopilotConversationResponseBodyConversation,
+    GetCopilotTurnResponseBodyTurn,
+    GetCopilotTurnByClientMessageIdResponseBodyTurn,
     GetDataBatchIngestionResponseBodyDataBatchIngestionDataIngestions,
     GetDataBatchIngestionResponseBodyDataBatchIngestion,
+    GetDataStorageResponseBodyDataDeliverySettingsAccounts,
+    GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions,
+    GetDataStorageResponseBodyDataDeliverySettingsTypes,
+    GetDataStorageResponseBodyDataDeliverySettings,
     GetDataStorageResponseBodyDataNormalizationLogStores,
     GetDataStorageResponseBodyDataNormalizationLogViews,
     GetDataStorageResponseBodyDataRecordLogStores,
+    GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries,
     GetDataStorageResponseBodyDataSasLogStores,
     GetDataStorageResponseBodyDataUnusedLogStores,
     GetDataStorageResponseBodyData,
     GetDetectionStatisticResponseBodyDetectionStatistic,
     GetIncidentResponseBodyIncident,
+    GetIncidentInvestigationResponseBodyIncidentInvestigation,
     GetNormalizationRuleResponseBodyNormalizationRule,
     GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion,
     GetNormalizationSchemaResponseBodyNormalizationSchemaNormalizationFieldsNormalizationFieldJsonKeys,
@@ -725,8 +817,12 @@ __all__ = [
     GetNormalizationSchemaResponseBodyNormalizationSchema,
     GetResponseRuleStatisticResponseBodyResponseStatistic,
     GetUserConfigResponseBodyUser,
+    ListAlertAggregationsResponseBodyAlertAggregationsDefenseActionCounts,
+    ListAlertAggregationsResponseBodyAlertAggregationsStatusCounts,
+    ListAlertAggregationsResponseBodyAlertAggregations,
     ListAlertsResponseBodyAlerts,
     ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities,
+    ListCopilotMessagesResponseBodyItems,
     ListDataConnectorsResponseBodyDataConnector,
     ListDataIngestionTemplatesResponseBodyDataIngestionTemplates,
     ListDataIngestionsResponseBodyDataIngestions,

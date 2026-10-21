@@ -16,31 +16,31 @@ class ListAutoDisposeEntitiesShrinkRequest(DaraModel):
         page_size: str = None,
         uuid: str = None,
     ):
-        # The IDs of automated disposal records.
+        # The list of decision-making disposal IDs.
         self.auto_dispose_record_ids_shrink = auto_dispose_record_ids_shrink
-        # The page number. The value must be 1 or greater.
+        # The current page number. The value must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The type of the data source.
+        # The data source type.
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
         # The language of the response. Valid values:
-        # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # 
+        # Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass a language code.
         self.lang = lang
-        # The maximum number of entries to return.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. You can obtain this token from the response to a previous call.
+        # The pagination token that indicates the position from which the current call starts reading. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The unique identifier of the playbook.
+        # The UUID of the playbook. This is the unique identifier of the playbook.
         self.uuid = uuid
 
     def validate(self):

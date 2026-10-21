@@ -13,7 +13,7 @@ class CreateExportTaskResponseBody(DaraModel):
     ):
         # The name of the exported file.
         self.file_name = file_name
-        # The ID of the export task.
+        # The export task ID.
         self.id = id
         # The request ID.
         self.request_id = request_id

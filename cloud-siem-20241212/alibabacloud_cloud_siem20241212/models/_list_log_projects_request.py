@@ -15,27 +15,24 @@ class ListLogProjectsRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the response messages. Valid values:
-        # 
+        # The language of the response. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # Note: Although this parameter is marked as optional in the schema, the API returns a 400 error if it is not provided. Therefore, this parameter is required in practice. Set the value to zh (Chinese) or en (English).
         self.lang = lang
-        # The ID of the log storage region.
+        # The log storage region ID.
         self.log_region_id = log_region_id
-        # The user ID for data access.
+        # The ID of the data access user.
         self.log_user_id = log_user_id
-        # The maximum number of entries to return on this call.
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first call. To retrieve the next page of results, set this parameter to the NextToken value that was returned from the previous call.
+        # The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The region where the Data Management hub for threat analysis is located. Select the region of the Data Management hub based on the region of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Your assets are in a region outside China.
+        # The region where the threat detection and response data management center resides. Specify the management center region based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
-        # The ID of the member account in the resource directory.
+        # The ID of the member accounts in the resource folder.
         self.role_for = role_for
 
     def validate(self):

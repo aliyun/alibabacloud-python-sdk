@@ -12,21 +12,22 @@ class DeleteDataSourceRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The ID of the data source.
+        # The data source ID.
+        # 
+        # Note: This parameter identifies the target of the delete operation and is required. Only data sources with a DataSourceType of custom can be deleted. Data sources of the preset type cannot be deleted.
         self.data_source_id = data_source_id
-        # The language of the response. Valid values:
-        # 
+        # The language of the response messages. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
+        # 
+        # Note: This parameter is required. If it is not provided, the API returns a parameter validation error: "The specified Lang can not be empty."
         self.lang = lang
-        # The region where the Data Management center for threat analysis is located. Select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: Your assets are in the Chinese mainland.
-        # 
-        # - ap-southeast-1: Your assets are in a region outside China.
+        # The region where the data management center for Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside China.
+        # - cn-shanghai: The actual data storage region.
         self.region_id = region_id
-        # The user ID of the member whose permissions you want to use. This parameter is available only to administrators.
+        # The user ID that the administrator uses to switch to the view of another member.
         self.role_for = role_for
 
     def validate(self):
