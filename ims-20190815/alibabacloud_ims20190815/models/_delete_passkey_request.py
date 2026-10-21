@@ -11,6 +11,8 @@ class DeletePasskeyRequest(DaraModel):
         user_principal_name: str = None,
     ):
         # The ID of the passkey.
+        # 
+        # This parameter is actually required. If you do not specify this parameter, the call fails and the error code `MissingPasskeyId` is returned.
         self.passkey_id = passkey_id
         # The logon name of the Resource Access Management (RAM) user.
         self.user_principal_name = user_principal_name

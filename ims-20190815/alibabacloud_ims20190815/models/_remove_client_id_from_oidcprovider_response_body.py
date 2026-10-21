@@ -11,7 +11,7 @@ class RemoveClientIdFromOIDCProviderResponseBody(DaraModel):
         oidcprovider: main_models.RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider = None,
         request_id: str = None,
     ):
-        # The information about the OIDC IdP.
+        # The OIDC IdP information.
         self.oidcprovider = oidcprovider
         # The request ID.
         self.request_id = request_id
@@ -59,28 +59,28 @@ class RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider(DaraModel):
         oidcprovider_name: str = None,
         update_date: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+        # The ARN of the OIDC IdP.
         self.arn = arn
         # The client IDs. Multiple client IDs are separated by commas (,).
         self.client_ids = client_ids
-        # The time when the OIDC IdP was created. The time is displayed in UTC.
+        # The creation time in UTC.
         self.create_date = create_date
         # The description of the OIDC IdP.
         self.description = description
-        # The fingerprints of the HTTPS CA certificate. Multiple fingerprints are separated by commas (,).
+        # The verification fingerprints of the HTTPS CA certificate. Multiple fingerprints are separated by commas (,).
         self.fingerprints = fingerprints
-        # The time when the OIDC IdP was created. The value is a UNIX timestamp.
+        # The creation time as a UNIX timestamp.
         self.gmt_create = gmt_create
-        # The time when the OIDC IdP was last modified. The value is a UNIX timestamp.
+        # The update time as a UNIX timestamp.
         self.gmt_modified = gmt_modified
-        # The earliest time when an external IdP is allowed to issue an ID token. If the iat field in the ID token indicates a time earlier than the current time by more than this value, the request is rejected.
+        # The earliest issuance time allowed for the external IdP to issue an ID token. If the time difference between the `iat` field in the ID token and the current time is greater than this value, the request is rejected.
         # Unit: hours. Valid values: 1 to 168.
         self.issuance_limit_time = issuance_limit_time
         # The issuer URL.
         self.issuer_url = issuer_url
         # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name
-        # The time when the OIDC IdP was last modified. The time is displayed in UTC.
+        # The update time in UTC.
         self.update_date = update_date
 
     def validate(self):

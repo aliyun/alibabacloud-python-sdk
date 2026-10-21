@@ -1,3 +1,8 @@
+2026-10-21 Version: 3.5.0
+- Support API GetAccessKeyPolicyForAccount.
+- Support API SetAccessKeyPolicyForAccount.
+
+
 2026-09-23 Version: 3.4.2
 - Update API GetApplicationProvisionInfo: add response parameters Body.ApplicationProvisionInfo.AppCategory.
 - Update API GetApplicationProvisionInfo: add response parameters Body.ApplicationProvisionInfo.AssignmentType.

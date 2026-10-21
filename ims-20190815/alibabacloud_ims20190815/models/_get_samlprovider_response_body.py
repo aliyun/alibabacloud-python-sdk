@@ -13,7 +13,7 @@ class GetSAMLProviderResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the IdP.
+        # The identity provider information.
         self.samlprovider = samlprovider
 
     def validate(self):
@@ -55,23 +55,22 @@ class GetSAMLProviderResponseBodySAMLProvider(DaraModel):
         samlprovider_name: str = None,
         update_date: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the IdP.
+        # The ARN of the identity provider.
         self.arn = arn
-        # The supported signature algorithm. Valid values:
+        # The signature algorithm supported by the Alibaba Cloud service provider (SP). Valid values:
         # 
         # - rsa-sha256
-        # 
         # - rsa-sha1
         self.authn_sign_algo = authn_sign_algo
-        # The time when the information was created. It is displayed in UTC.
+        # The creation time. Format: RFC 3339 (UTC). Example: 2020-10-22T02:37:05Z.
         self.create_date = create_date
-        # The IdP description.
+        # The description.
         self.description = description
-        # The metadata file, which is Base64-encoded.
+        # The metadata document. The document is Base64-encoded.
         self.encoded_samlmetadata_document = encoded_samlmetadata_document
-        # The IdP name.
+        # The name of the identity provider.
         self.samlprovider_name = samlprovider_name
-        # The time when the information was last updated. It is displayed in UTC.
+        # The update time. Format: RFC 3339 (UTC). Example: 2020-10-22T02:51:20Z.
         self.update_date = update_date
 
     def validate(self):

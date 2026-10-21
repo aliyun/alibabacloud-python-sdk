@@ -2708,6 +2708,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_access_key_policy_with_options_async(request, runtime)
 
+    def get_access_key_policy_for_account_with_options(
+        self,
+        request: main_models.GetAccessKeyPolicyForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccessKeyPolicyForAccountResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAccessKeyPolicyForAccount',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAccessKeyPolicyForAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_access_key_policy_for_account_with_options_async(
+        self,
+        request: main_models.GetAccessKeyPolicyForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccessKeyPolicyForAccountResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAccessKeyPolicyForAccount',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAccessKeyPolicyForAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_access_key_policy_for_account(
+        self,
+        request: main_models.GetAccessKeyPolicyForAccountRequest,
+    ) -> main_models.GetAccessKeyPolicyForAccountResponse:
+        runtime = RuntimeOptions()
+        return self.get_access_key_policy_for_account_with_options(request, runtime)
+
+    async def get_access_key_policy_for_account_async(
+        self,
+        request: main_models.GetAccessKeyPolicyForAccountRequest,
+    ) -> main_models.GetAccessKeyPolicyForAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.get_access_key_policy_for_account_with_options_async(request, runtime)
+
     def get_account_mfainfo_with_options(
         self,
         runtime: RuntimeOptions,
@@ -6213,6 +6273,76 @@ class Client(OpenApiClient):
     ) -> main_models.SetAccessKeyPolicyResponse:
         runtime = RuntimeOptions()
         return await self.set_access_key_policy_with_options_async(request, runtime)
+
+    def set_access_key_policy_for_account_with_options(
+        self,
+        request: main_models.SetAccessKeyPolicyForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAccessKeyPolicyForAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_key_policy):
+            query['AccessKeyPolicy'] = request.access_key_policy
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAccessKeyPolicyForAccount',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAccessKeyPolicyForAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_access_key_policy_for_account_with_options_async(
+        self,
+        request: main_models.SetAccessKeyPolicyForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAccessKeyPolicyForAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_key_policy):
+            query['AccessKeyPolicy'] = request.access_key_policy
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAccessKeyPolicyForAccount',
+            version = '2019-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAccessKeyPolicyForAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_access_key_policy_for_account(
+        self,
+        request: main_models.SetAccessKeyPolicyForAccountRequest,
+    ) -> main_models.SetAccessKeyPolicyForAccountResponse:
+        runtime = RuntimeOptions()
+        return self.set_access_key_policy_for_account_with_options(request, runtime)
+
+    async def set_access_key_policy_for_account_async(
+        self,
+        request: main_models.SetAccessKeyPolicyForAccountRequest,
+    ) -> main_models.SetAccessKeyPolicyForAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.set_access_key_policy_for_account_with_options_async(request, runtime)
 
     def set_default_domain_with_options(
         self,

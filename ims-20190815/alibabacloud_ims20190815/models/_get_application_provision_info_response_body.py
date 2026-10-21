@@ -13,7 +13,7 @@ class GetApplicationProvisionInfoResponseBody(DaraModel):
         application_provision_info: main_models.GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo = None,
         request_id: str = None,
     ):
-        # The installation information about the application.
+        # The application installation information.
         self.application_provision_info = application_provision_info
         # The request ID.
         self.request_id = request_id
@@ -60,22 +60,29 @@ class GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo(DaraModel)
         need_principal_consent: bool = None,
         update_date: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.account_id = account_id
+        # The application category. Valid values:
+        # - Official: official applications
+        # - ThirdParty: regular third-party applications
         self.app_category = app_category
         # The ID of the application.
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
+        # The application assignment type. Valid values:
+        # - AllowAll: No assignment is required. All RAM users and roles can access the application.
+        # - OnDemand: Assignment is required on demand. RAM users and roles can access the application only after it is assigned to them.
         self.assignment_type = assignment_type
-        # The time when the application was installed. The value is a timestamp.
+        # The installation timestamp.
         self.create_date = create_date
-        # The information about the scopes of permissions that are granted to the application.
+        # The application permission scope information.
         self.delegated_scope = delegated_scope
         # The display name of the application.
         self.display_name = display_name
+        # Indicates whether user authorization is required.
         self.need_principal_consent = need_principal_consent
-        # The update time. The value is a timestamp.
+        # The update timestamp.
         self.update_date = update_date
 
     def validate(self):

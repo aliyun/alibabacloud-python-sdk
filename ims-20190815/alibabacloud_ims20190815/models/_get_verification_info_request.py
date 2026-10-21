@@ -9,7 +9,7 @@ class GetVerificationInfoRequest(DaraModel):
         self,
         user_principal_name: str = None,
     ):
-        # The logon name of the RAM user.
+        # The logon name of the Resource Access Management (RAM) user.
         self.user_principal_name = user_principal_name
 
     def validate(self):

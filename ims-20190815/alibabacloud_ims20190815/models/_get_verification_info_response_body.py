@@ -14,9 +14,9 @@ class GetVerificationInfoResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the email.
+        # The security email address information.
         self.security_email_device = security_email_device
-        # The information about the mobile phone.
+        # The secure phone information.
         self.security_phone_device = security_phone_device
 
     def validate(self):
@@ -63,15 +63,13 @@ class GetVerificationInfoResponseBodySecurityPhoneDevice(DaraModel):
         phone_number: str = None,
         status: str = None,
     ):
-        # The international dialing code.
+        # The area code.
         self.area_code = area_code
-        # The mobile phone number.
+        # The phone number.
         self.phone_number = phone_number
-        # The status of the mobile phone. Valid values:
-        # 
-        # - active: The mobile phone is activated.
-        # 
-        # - pending: The mobile phone is pending for activation.
+        # The status of the secure phone. Valid values:
+        # - active: Activated.
+        # - pending: Pending activation.
         self.status = status
 
     def validate(self):
@@ -112,13 +110,11 @@ class GetVerificationInfoResponseBodySecurityEmailDevice(DaraModel):
         email: str = None,
         status: str = None,
     ):
-        # The email address.
+        # The security email address.
         self.email = email
-        # The status of the email. Valid values:
-        # 
-        # - active: The email is activated.
-        # 
-        # - pending: The email is pending for activation.
+        # The status of the security email address. Valid values:
+        # - active: Activated.
+        # - pending: Pending activation.
         self.status = status
 
     def validate(self):

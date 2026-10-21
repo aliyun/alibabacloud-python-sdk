@@ -108,6 +108,9 @@ from ._get_access_key_last_used_response import GetAccessKeyLastUsedResponse
 from ._get_access_key_policy_request import GetAccessKeyPolicyRequest
 from ._get_access_key_policy_response_body import GetAccessKeyPolicyResponseBody
 from ._get_access_key_policy_response import GetAccessKeyPolicyResponse
+from ._get_access_key_policy_for_account_request import GetAccessKeyPolicyForAccountRequest
+from ._get_access_key_policy_for_account_response_body import GetAccessKeyPolicyForAccountResponseBody
+from ._get_access_key_policy_for_account_response import GetAccessKeyPolicyForAccountResponse
 from ._get_account_mfainfo_response_body import GetAccountMFAInfoResponseBody
 from ._get_account_mfainfo_response import GetAccountMFAInfoResponse
 from ._get_account_security_practice_report_response_body import GetAccountSecurityPracticeReportResponseBody
@@ -250,6 +253,9 @@ from ._restore_user_from_recycle_bin_response import RestoreUserFromRecycleBinRe
 from ._set_access_key_policy_request import SetAccessKeyPolicyRequest
 from ._set_access_key_policy_response_body import SetAccessKeyPolicyResponseBody
 from ._set_access_key_policy_response import SetAccessKeyPolicyResponse
+from ._set_access_key_policy_for_account_request import SetAccessKeyPolicyForAccountRequest
+from ._set_access_key_policy_for_account_response_body import SetAccessKeyPolicyForAccountResponseBody
+from ._set_access_key_policy_for_account_response import SetAccessKeyPolicyForAccountResponse
 from ._set_default_domain_request import SetDefaultDomainRequest
 from ._set_default_domain_response_body import SetDefaultDomainResponseBody
 from ._set_default_domain_response import SetDefaultDomainResponse
@@ -563,6 +569,9 @@ __all__ = [
     GetAccessKeyPolicyRequest,
     GetAccessKeyPolicyResponseBody,
     GetAccessKeyPolicyResponse,
+    GetAccessKeyPolicyForAccountRequest,
+    GetAccessKeyPolicyForAccountResponseBody,
+    GetAccessKeyPolicyForAccountResponse,
     GetAccountMFAInfoResponseBody,
     GetAccountMFAInfoResponse,
     GetAccountSecurityPracticeReportResponseBody,
@@ -705,6 +714,9 @@ __all__ = [
     SetAccessKeyPolicyRequest,
     SetAccessKeyPolicyResponseBody,
     SetAccessKeyPolicyResponse,
+    SetAccessKeyPolicyForAccountRequest,
+    SetAccessKeyPolicyForAccountResponseBody,
+    SetAccessKeyPolicyForAccountResponse,
     SetDefaultDomainRequest,
     SetDefaultDomainResponseBody,
     SetDefaultDomainResponse,

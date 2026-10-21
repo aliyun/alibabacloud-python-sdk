@@ -9,7 +9,7 @@ class GetApplicationProvisionInfoRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The ID of the application.
+        # The ID of the application. You can call ListApplicationProvisionInfos to obtain the AppId of an installed application.
         # 
         # This parameter is required.
         self.app_id = app_id
