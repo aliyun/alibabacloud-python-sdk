@@ -42,6 +42,164 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_agentic_data_source_with_options(
+        self,
+        request: main_models.AddAgenticDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAgenticDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias):
+            query['Alias'] = request.alias
+        if not DaraCore.is_null(request.auth_account):
+            query['AuthAccount'] = request.auth_account
+        if not DaraCore.is_null(request.auth_password):
+            query['AuthPassword'] = request.auth_password
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.create_mode):
+            query['CreateMode'] = request.create_mode
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.env_type):
+            query['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.instance_resource_id):
+            query['InstanceResourceId'] = request.instance_resource_id
+        if not DaraCore.is_null(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not DaraCore.is_null(request.kms_secret):
+            query['KmsSecret'] = request.kms_secret
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.snowflake_role):
+            query['SnowflakeRole'] = request.snowflake_role
+        if not DaraCore.is_null(request.snowflake_warehouse):
+            query['SnowflakeWarehouse'] = request.snowflake_warehouse
+        if not DaraCore.is_null(request.sync_alias):
+            query['SyncAlias'] = request.sync_alias
+        if not DaraCore.is_null(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAgenticDataSource',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAgenticDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_agentic_data_source_with_options_async(
+        self,
+        request: main_models.AddAgenticDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddAgenticDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias):
+            query['Alias'] = request.alias
+        if not DaraCore.is_null(request.auth_account):
+            query['AuthAccount'] = request.auth_account
+        if not DaraCore.is_null(request.auth_password):
+            query['AuthPassword'] = request.auth_password
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.create_mode):
+            query['CreateMode'] = request.create_mode
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.env_type):
+            query['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.instance_resource_id):
+            query['InstanceResourceId'] = request.instance_resource_id
+        if not DaraCore.is_null(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not DaraCore.is_null(request.kms_secret):
+            query['KmsSecret'] = request.kms_secret
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.snowflake_role):
+            query['SnowflakeRole'] = request.snowflake_role
+        if not DaraCore.is_null(request.snowflake_warehouse):
+            query['SnowflakeWarehouse'] = request.snowflake_warehouse
+        if not DaraCore.is_null(request.sync_alias):
+            query['SyncAlias'] = request.sync_alias
+        if not DaraCore.is_null(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddAgenticDataSource',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddAgenticDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_agentic_data_source(
+        self,
+        request: main_models.AddAgenticDataSourceRequest,
+    ) -> main_models.AddAgenticDataSourceResponse:
+        runtime = RuntimeOptions()
+        return self.add_agentic_data_source_with_options(request, runtime)
+
+    async def add_agentic_data_source_async(
+        self,
+        request: main_models.AddAgenticDataSourceRequest,
+    ) -> main_models.AddAgenticDataSourceResponse:
+        runtime = RuntimeOptions()
+        return await self.add_agentic_data_source_with_options_async(request, runtime)
+
     def add_data_agent_memory_with_options(
         self,
         request: main_models.AddDataAgentMemoryRequest,
@@ -530,6 +688,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_agent_with_options_async(request, runtime)
 
+    def create_agentic_sql_execute_credential_with_options(
+        self,
+        request: main_models.CreateAgenticSqlExecuteCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgenticSqlExecuteCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgenticSqlExecuteCredential',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgenticSqlExecuteCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agentic_sql_execute_credential_with_options_async(
+        self,
+        request: main_models.CreateAgenticSqlExecuteCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgenticSqlExecuteCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.qualified_name):
+            query['QualifiedName'] = request.qualified_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgenticSqlExecuteCredential',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgenticSqlExecuteCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agentic_sql_execute_credential(
+        self,
+        request: main_models.CreateAgenticSqlExecuteCredentialRequest,
+    ) -> main_models.CreateAgenticSqlExecuteCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.create_agentic_sql_execute_credential_with_options(request, runtime)
+
+    async def create_agentic_sql_execute_credential_async(
+        self,
+        request: main_models.CreateAgenticSqlExecuteCredentialRequest,
+    ) -> main_models.CreateAgenticSqlExecuteCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.create_agentic_sql_execute_credential_with_options_async(request, runtime)
+
     def create_airflow_with_options(
         self,
         tmp_req: main_models.CreateAirflowRequest,
@@ -770,11 +1010,15 @@ class Client(OpenApiClient):
             request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_semantic_config_list):
             request.knowledge_semantic_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_semantic_config_list, 'KnowledgeSemanticConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.recommend_question_list):
+            request.recommend_question_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.recommend_question_list, 'RecommendQuestionList', 'json')
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         if not DaraCore.is_null(tmp_req.user_specified_skill_list):
             request.user_specified_skill_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_specified_skill_list, 'UserSpecifiedSkillList', 'json')
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.callback_config_shrink):
             query['CallbackConfig'] = request.callback_config_shrink
         if not DaraCore.is_null(request.dmsunit):
@@ -795,6 +1039,8 @@ class Client(OpenApiClient):
             query['KnowledgeSemanticConfigList'] = request.knowledge_semantic_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.recommend_question_list_shrink):
+            query['RecommendQuestionList'] = request.recommend_question_list_shrink
         if not DaraCore.is_null(request.related_session_id):
             query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
@@ -844,11 +1090,15 @@ class Client(OpenApiClient):
             request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_semantic_config_list):
             request.knowledge_semantic_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_semantic_config_list, 'KnowledgeSemanticConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.recommend_question_list):
+            request.recommend_question_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.recommend_question_list, 'RecommendQuestionList', 'json')
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         if not DaraCore.is_null(tmp_req.user_specified_skill_list):
             request.user_specified_skill_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_specified_skill_list, 'UserSpecifiedSkillList', 'json')
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.callback_config_shrink):
             query['CallbackConfig'] = request.callback_config_shrink
         if not DaraCore.is_null(request.dmsunit):
@@ -869,6 +1119,8 @@ class Client(OpenApiClient):
             query['KnowledgeSemanticConfigList'] = request.knowledge_semantic_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.recommend_question_list_shrink):
+            query['RecommendQuestionList'] = request.recommend_question_list_shrink
         if not DaraCore.is_null(request.related_session_id):
             query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
@@ -1671,6 +1923,76 @@ class Client(OpenApiClient):
     ) -> main_models.CreateOneMetaSqlTemplateResponse:
         runtime = RuntimeOptions()
         return await self.create_one_meta_sql_template_with_options_async(request, runtime)
+
+    def delete_agentic_data_source_with_options(
+        self,
+        request: main_models.DeleteAgenticDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgenticDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_source_uuid):
+            query['DataSourceUuid'] = request.data_source_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgenticDataSource',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgenticDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agentic_data_source_with_options_async(
+        self,
+        request: main_models.DeleteAgenticDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgenticDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_source_uuid):
+            query['DataSourceUuid'] = request.data_source_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgenticDataSource',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgenticDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agentic_data_source(
+        self,
+        request: main_models.DeleteAgenticDataSourceRequest,
+    ) -> main_models.DeleteAgenticDataSourceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_agentic_data_source_with_options(request, runtime)
+
+    async def delete_agentic_data_source_async(
+        self,
+        request: main_models.DeleteAgenticDataSourceRequest,
+    ) -> main_models.DeleteAgenticDataSourceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_agentic_data_source_with_options_async(request, runtime)
 
     def delete_airflow_with_options(
         self,
@@ -3738,6 +4060,364 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_agentic_agent_by_install_token_with_options_async(request, runtime)
 
+    def get_agentic_catalog_with_options(
+        self,
+        request: main_models.GetAgenticCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticCatalogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticCatalog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agentic_catalog_with_options_async(
+        self,
+        request: main_models.GetAgenticCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticCatalogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticCatalog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agentic_catalog(
+        self,
+        request: main_models.GetAgenticCatalogRequest,
+    ) -> main_models.GetAgenticCatalogResponse:
+        runtime = RuntimeOptions()
+        return self.get_agentic_catalog_with_options(request, runtime)
+
+    async def get_agentic_catalog_async(
+        self,
+        request: main_models.GetAgenticCatalogRequest,
+    ) -> main_models.GetAgenticCatalogResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agentic_catalog_with_options_async(request, runtime)
+
+    def get_agentic_data_source_with_options(
+        self,
+        request: main_models.GetAgenticDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_source_uuid):
+            query['DataSourceUuid'] = request.data_source_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticDataSource',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agentic_data_source_with_options_async(
+        self,
+        request: main_models.GetAgenticDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.data_source_uuid):
+            query['DataSourceUuid'] = request.data_source_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticDataSource',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agentic_data_source(
+        self,
+        request: main_models.GetAgenticDataSourceRequest,
+    ) -> main_models.GetAgenticDataSourceResponse:
+        runtime = RuntimeOptions()
+        return self.get_agentic_data_source_with_options(request, runtime)
+
+    async def get_agentic_data_source_async(
+        self,
+        request: main_models.GetAgenticDataSourceRequest,
+    ) -> main_models.GetAgenticDataSourceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agentic_data_source_with_options_async(request, runtime)
+
+    def get_agentic_database_with_options(
+        self,
+        request: main_models.GetAgenticDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticDatabase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agentic_database_with_options_async(
+        self,
+        request: main_models.GetAgenticDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticDatabase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agentic_database(
+        self,
+        request: main_models.GetAgenticDatabaseRequest,
+    ) -> main_models.GetAgenticDatabaseResponse:
+        runtime = RuntimeOptions()
+        return self.get_agentic_database_with_options(request, runtime)
+
+    async def get_agentic_database_async(
+        self,
+        request: main_models.GetAgenticDatabaseRequest,
+    ) -> main_models.GetAgenticDatabaseResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agentic_database_with_options_async(request, runtime)
+
+    def get_agentic_table_column_with_options(
+        self,
+        request: main_models.GetAgenticTableColumnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticTableColumnResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.table_qualified_name):
+            query['TableQualifiedName'] = request.table_qualified_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticTableColumn',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticTableColumnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agentic_table_column_with_options_async(
+        self,
+        request: main_models.GetAgenticTableColumnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticTableColumnResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.table_qualified_name):
+            query['TableQualifiedName'] = request.table_qualified_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticTableColumn',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticTableColumnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agentic_table_column(
+        self,
+        request: main_models.GetAgenticTableColumnRequest,
+    ) -> main_models.GetAgenticTableColumnResponse:
+        runtime = RuntimeOptions()
+        return self.get_agentic_table_column_with_options(request, runtime)
+
+    async def get_agentic_table_column_async(
+        self,
+        request: main_models.GetAgenticTableColumnRequest,
+    ) -> main_models.GetAgenticTableColumnResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agentic_table_column_with_options_async(request, runtime)
+
+    def get_agentic_table_index_with_options(
+        self,
+        request: main_models.GetAgenticTableIndexRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticTableIndexResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.table_qualified_name):
+            query['TableQualifiedName'] = request.table_qualified_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticTableIndex',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticTableIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agentic_table_index_with_options_async(
+        self,
+        request: main_models.GetAgenticTableIndexRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticTableIndexResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.table_qualified_name):
+            query['TableQualifiedName'] = request.table_qualified_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticTableIndex',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticTableIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agentic_table_index(
+        self,
+        request: main_models.GetAgenticTableIndexRequest,
+    ) -> main_models.GetAgenticTableIndexResponse:
+        runtime = RuntimeOptions()
+        return self.get_agentic_table_index_with_options(request, runtime)
+
+    async def get_agentic_table_index_async(
+        self,
+        request: main_models.GetAgenticTableIndexRequest,
+    ) -> main_models.GetAgenticTableIndexResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agentic_table_index_with_options_async(request, runtime)
+
     def get_airflow_with_options(
         self,
         request: main_models.GetAirflowRequest,
@@ -5382,6 +6062,602 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.install_data_agent_mcp_with_options_async(request, runtime)
 
+    def list_agentic_catalog_with_options(
+        self,
+        request: main_models.ListAgenticCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticCatalogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_type):
+            query['CatalogType'] = request.catalog_type
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticCatalog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentic_catalog_with_options_async(
+        self,
+        request: main_models.ListAgenticCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticCatalogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_type):
+            query['CatalogType'] = request.catalog_type
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticCatalog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentic_catalog(
+        self,
+        request: main_models.ListAgenticCatalogRequest,
+    ) -> main_models.ListAgenticCatalogResponse:
+        runtime = RuntimeOptions()
+        return self.list_agentic_catalog_with_options(request, runtime)
+
+    async def list_agentic_catalog_async(
+        self,
+        request: main_models.ListAgenticCatalogRequest,
+    ) -> main_models.ListAgenticCatalogResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agentic_catalog_with_options_async(request, runtime)
+
+    def list_agentic_data_sources_with_options(
+        self,
+        request: main_models.ListAgenticDataSourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticDataSourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticDataSources',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentic_data_sources_with_options_async(
+        self,
+        request: main_models.ListAgenticDataSourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticDataSourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticDataSources',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentic_data_sources(
+        self,
+        request: main_models.ListAgenticDataSourcesRequest,
+    ) -> main_models.ListAgenticDataSourcesResponse:
+        runtime = RuntimeOptions()
+        return self.list_agentic_data_sources_with_options(request, runtime)
+
+    async def list_agentic_data_sources_async(
+        self,
+        request: main_models.ListAgenticDataSourcesRequest,
+    ) -> main_models.ListAgenticDataSourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agentic_data_sources_with_options_async(request, runtime)
+
+    def list_agentic_database_with_options(
+        self,
+        request: main_models.ListAgenticDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.sort_field_name):
+            query['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticDatabase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentic_database_with_options_async(
+        self,
+        request: main_models.ListAgenticDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.sort_field_name):
+            query['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticDatabase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentic_database(
+        self,
+        request: main_models.ListAgenticDatabaseRequest,
+    ) -> main_models.ListAgenticDatabaseResponse:
+        runtime = RuntimeOptions()
+        return self.list_agentic_database_with_options(request, runtime)
+
+    async def list_agentic_database_async(
+        self,
+        request: main_models.ListAgenticDatabaseRequest,
+    ) -> main_models.ListAgenticDatabaseResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agentic_database_with_options_async(request, runtime)
+
+    def list_agentic_global_sql_execution_histories_with_options(
+        self,
+        request: main_models.ListAgenticGlobalSqlExecutionHistoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticGlobalSqlExecutionHistoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.actor_id):
+            query['ActorId'] = request.actor_id
+        if not DaraCore.is_null(request.actor_name):
+            query['ActorName'] = request.actor_name
+        if not DaraCore.is_null(request.actor_type):
+            query['ActorType'] = request.actor_type
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.scenario):
+            query['Scenario'] = request.scenario
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sql_keyword):
+            query['SqlKeyword'] = request.sql_keyword
+        if not DaraCore.is_null(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticGlobalSqlExecutionHistories',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticGlobalSqlExecutionHistoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentic_global_sql_execution_histories_with_options_async(
+        self,
+        request: main_models.ListAgenticGlobalSqlExecutionHistoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticGlobalSqlExecutionHistoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.actor_id):
+            query['ActorId'] = request.actor_id
+        if not DaraCore.is_null(request.actor_name):
+            query['ActorName'] = request.actor_name
+        if not DaraCore.is_null(request.actor_type):
+            query['ActorType'] = request.actor_type
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.scenario):
+            query['Scenario'] = request.scenario
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sql_keyword):
+            query['SqlKeyword'] = request.sql_keyword
+        if not DaraCore.is_null(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticGlobalSqlExecutionHistories',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticGlobalSqlExecutionHistoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentic_global_sql_execution_histories(
+        self,
+        request: main_models.ListAgenticGlobalSqlExecutionHistoriesRequest,
+    ) -> main_models.ListAgenticGlobalSqlExecutionHistoriesResponse:
+        runtime = RuntimeOptions()
+        return self.list_agentic_global_sql_execution_histories_with_options(request, runtime)
+
+    async def list_agentic_global_sql_execution_histories_async(
+        self,
+        request: main_models.ListAgenticGlobalSqlExecutionHistoriesRequest,
+    ) -> main_models.ListAgenticGlobalSqlExecutionHistoriesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agentic_global_sql_execution_histories_with_options_async(request, runtime)
+
+    def list_agentic_sql_execution_histories_with_options(
+        self,
+        request: main_models.ListAgenticSqlExecutionHistoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticSqlExecutionHistoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.actor_id):
+            query['ActorId'] = request.actor_id
+        if not DaraCore.is_null(request.actor_name):
+            query['ActorName'] = request.actor_name
+        if not DaraCore.is_null(request.actor_type):
+            query['ActorType'] = request.actor_type
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.scenario):
+            query['Scenario'] = request.scenario
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sql_keyword):
+            query['SqlKeyword'] = request.sql_keyword
+        if not DaraCore.is_null(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticSqlExecutionHistories',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticSqlExecutionHistoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentic_sql_execution_histories_with_options_async(
+        self,
+        request: main_models.ListAgenticSqlExecutionHistoriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticSqlExecutionHistoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.actor_id):
+            query['ActorId'] = request.actor_id
+        if not DaraCore.is_null(request.actor_name):
+            query['ActorName'] = request.actor_name
+        if not DaraCore.is_null(request.actor_type):
+            query['ActorType'] = request.actor_type
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.scenario):
+            query['Scenario'] = request.scenario
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sql_keyword):
+            query['SqlKeyword'] = request.sql_keyword
+        if not DaraCore.is_null(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticSqlExecutionHistories',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticSqlExecutionHistoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentic_sql_execution_histories(
+        self,
+        request: main_models.ListAgenticSqlExecutionHistoriesRequest,
+    ) -> main_models.ListAgenticSqlExecutionHistoriesResponse:
+        runtime = RuntimeOptions()
+        return self.list_agentic_sql_execution_histories_with_options(request, runtime)
+
+    async def list_agentic_sql_execution_histories_async(
+        self,
+        request: main_models.ListAgenticSqlExecutionHistoriesRequest,
+    ) -> main_models.ListAgenticSqlExecutionHistoriesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agentic_sql_execution_histories_with_options_async(request, runtime)
+
+    def list_agentic_table_base_info_with_options(
+        self,
+        request: main_models.ListAgenticTableBaseInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticTableBaseInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.sort_field_name):
+            query['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.table_type):
+            query['TableType'] = request.table_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticTableBaseInfo',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticTableBaseInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agentic_table_base_info_with_options_async(
+        self,
+        request: main_models.ListAgenticTableBaseInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgenticTableBaseInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_uuid):
+            query['DatabaseUuid'] = request.database_uuid
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.sort_field_name):
+            query['SortFieldName'] = request.sort_field_name
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.table_type):
+            query['TableType'] = request.table_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgenticTableBaseInfo',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgenticTableBaseInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agentic_table_base_info(
+        self,
+        request: main_models.ListAgenticTableBaseInfoRequest,
+    ) -> main_models.ListAgenticTableBaseInfoResponse:
+        runtime = RuntimeOptions()
+        return self.list_agentic_table_base_info_with_options(request, runtime)
+
+    async def list_agentic_table_base_info_async(
+        self,
+        request: main_models.ListAgenticTableBaseInfoRequest,
+    ) -> main_models.ListAgenticTableBaseInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agentic_table_base_info_with_options_async(request, runtime)
+
     def list_airflow_versions_with_options(
         self,
         request: main_models.ListAirflowVersionsRequest,
@@ -5545,6 +6821,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListCustomAgentResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -5583,6 +6861,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListCustomAgentResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -7588,6 +8868,8 @@ class Client(OpenApiClient):
             request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_semantic_config_list):
             request.knowledge_semantic_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_semantic_config_list, 'KnowledgeSemanticConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.recommend_question_list):
+            request.recommend_question_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.recommend_question_list, 'RecommendQuestionList', 'json')
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         if not DaraCore.is_null(tmp_req.user_specified_skill_list):
@@ -7615,6 +8897,8 @@ class Client(OpenApiClient):
             query['KnowledgeSemanticConfigList'] = request.knowledge_semantic_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.recommend_question_list_shrink):
+            query['RecommendQuestionList'] = request.recommend_question_list_shrink
         if not DaraCore.is_null(request.related_session_id):
             query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
@@ -7664,6 +8948,8 @@ class Client(OpenApiClient):
             request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
         if not DaraCore.is_null(tmp_req.knowledge_semantic_config_list):
             request.knowledge_semantic_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_semantic_config_list, 'KnowledgeSemanticConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.recommend_question_list):
+            request.recommend_question_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.recommend_question_list, 'RecommendQuestionList', 'json')
         if not DaraCore.is_null(tmp_req.schedule_task_config):
             request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
         if not DaraCore.is_null(tmp_req.user_specified_skill_list):
@@ -7691,6 +8977,8 @@ class Client(OpenApiClient):
             query['KnowledgeSemanticConfigList'] = request.knowledge_semantic_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.recommend_question_list_shrink):
+            query['RecommendQuestionList'] = request.recommend_question_list_shrink
         if not DaraCore.is_null(request.related_session_id):
             query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
@@ -8438,6 +9726,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.save_workspace_code_with_options_async(request, runtime)
 
+    def search_agentic_catalog_with_options(
+        self,
+        request: main_models.SearchAgenticCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchAgenticCatalogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_type):
+            query['CatalogType'] = request.catalog_type
+        if not DaraCore.is_null(request.catalog_uuids):
+            query['CatalogUuids'] = request.catalog_uuids
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchAgenticCatalog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchAgenticCatalogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_agentic_catalog_with_options_async(
+        self,
+        request: main_models.SearchAgenticCatalogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchAgenticCatalogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_type):
+            query['CatalogType'] = request.catalog_type
+        if not DaraCore.is_null(request.catalog_uuids):
+            query['CatalogUuids'] = request.catalog_uuids
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchAgenticCatalog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchAgenticCatalogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_agentic_catalog(
+        self,
+        request: main_models.SearchAgenticCatalogRequest,
+    ) -> main_models.SearchAgenticCatalogResponse:
+        runtime = RuntimeOptions()
+        return self.search_agentic_catalog_with_options(request, runtime)
+
+    async def search_agentic_catalog_async(
+        self,
+        request: main_models.SearchAgenticCatalogRequest,
+    ) -> main_models.SearchAgenticCatalogResponse:
+        runtime = RuntimeOptions()
+        return await self.search_agentic_catalog_with_options_async(request, runtime)
+
+    def search_agentic_database_with_options(
+        self,
+        request: main_models.SearchAgenticDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchAgenticDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.env_type):
+            query['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchAgenticDatabase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchAgenticDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_agentic_database_with_options_async(
+        self,
+        request: main_models.SearchAgenticDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchAgenticDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.catalog_uuid):
+            query['CatalogUuid'] = request.catalog_uuid
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.env_type):
+            query['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchAgenticDatabase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchAgenticDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_agentic_database(
+        self,
+        request: main_models.SearchAgenticDatabaseRequest,
+    ) -> main_models.SearchAgenticDatabaseResponse:
+        runtime = RuntimeOptions()
+        return self.search_agentic_database_with_options(request, runtime)
+
+    async def search_agentic_database_async(
+        self,
+        request: main_models.SearchAgenticDatabaseRequest,
+    ) -> main_models.SearchAgenticDatabaseResponse:
+        runtime = RuntimeOptions()
+        return await self.search_agentic_database_with_options_async(request, runtime)
+
     def send_chat_message_with_options(
         self,
         tmp_req: main_models.SendChatMessageRequest,
@@ -8989,6 +10457,306 @@ class Client(OpenApiClient):
     ) -> main_models.StopDataAgentAccuracyTestTaskResponse:
         runtime = RuntimeOptions()
         return await self.stop_data_agent_accuracy_test_task_with_options_async(request, runtime)
+
+    def test_agentic_data_source_connection_with_options(
+        self,
+        request: main_models.TestAgenticDataSourceConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TestAgenticDataSourceConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias):
+            query['Alias'] = request.alias
+        if not DaraCore.is_null(request.auth_account):
+            query['AuthAccount'] = request.auth_account
+        if not DaraCore.is_null(request.auth_password):
+            query['AuthPassword'] = request.auth_password
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.data_source_uuid):
+            query['DataSourceUuid'] = request.data_source_uuid
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.env_type):
+            query['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.instance_resource_id):
+            query['InstanceResourceId'] = request.instance_resource_id
+        if not DaraCore.is_null(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not DaraCore.is_null(request.kms_secret):
+            query['KmsSecret'] = request.kms_secret
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.snowflake_role):
+            query['SnowflakeRole'] = request.snowflake_role
+        if not DaraCore.is_null(request.snowflake_warehouse):
+            query['SnowflakeWarehouse'] = request.snowflake_warehouse
+        if not DaraCore.is_null(request.sync_alias):
+            query['SyncAlias'] = request.sync_alias
+        if not DaraCore.is_null(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TestAgenticDataSourceConnection',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TestAgenticDataSourceConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_agentic_data_source_connection_with_options_async(
+        self,
+        request: main_models.TestAgenticDataSourceConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TestAgenticDataSourceConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias):
+            query['Alias'] = request.alias
+        if not DaraCore.is_null(request.auth_account):
+            query['AuthAccount'] = request.auth_account
+        if not DaraCore.is_null(request.auth_password):
+            query['AuthPassword'] = request.auth_password
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.data_source_uuid):
+            query['DataSourceUuid'] = request.data_source_uuid
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.env_type):
+            query['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.instance_resource_id):
+            query['InstanceResourceId'] = request.instance_resource_id
+        if not DaraCore.is_null(request.instance_source):
+            query['InstanceSource'] = request.instance_source
+        if not DaraCore.is_null(request.kms_secret):
+            query['KmsSecret'] = request.kms_secret
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.snowflake_role):
+            query['SnowflakeRole'] = request.snowflake_role
+        if not DaraCore.is_null(request.snowflake_warehouse):
+            query['SnowflakeWarehouse'] = request.snowflake_warehouse
+        if not DaraCore.is_null(request.sync_alias):
+            query['SyncAlias'] = request.sync_alias
+        if not DaraCore.is_null(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TestAgenticDataSourceConnection',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TestAgenticDataSourceConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_agentic_data_source_connection(
+        self,
+        request: main_models.TestAgenticDataSourceConnectionRequest,
+    ) -> main_models.TestAgenticDataSourceConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.test_agentic_data_source_connection_with_options(request, runtime)
+
+    async def test_agentic_data_source_connection_async(
+        self,
+        request: main_models.TestAgenticDataSourceConnectionRequest,
+    ) -> main_models.TestAgenticDataSourceConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.test_agentic_data_source_connection_with_options_async(request, runtime)
+
+    def update_agentic_data_source_with_options(
+        self,
+        request: main_models.UpdateAgenticDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgenticDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias):
+            query['Alias'] = request.alias
+        if not DaraCore.is_null(request.auth_account):
+            query['AuthAccount'] = request.auth_account
+        if not DaraCore.is_null(request.auth_password):
+            query['AuthPassword'] = request.auth_password
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.create_mode):
+            query['CreateMode'] = request.create_mode
+        if not DaraCore.is_null(request.data_source_uuid):
+            query['DataSourceUuid'] = request.data_source_uuid
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.env_type):
+            query['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.instance_resource_id):
+            query['InstanceResourceId'] = request.instance_resource_id
+        if not DaraCore.is_null(request.kms_secret):
+            query['KmsSecret'] = request.kms_secret
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.snowflake_role):
+            query['SnowflakeRole'] = request.snowflake_role
+        if not DaraCore.is_null(request.snowflake_warehouse):
+            query['SnowflakeWarehouse'] = request.snowflake_warehouse
+        if not DaraCore.is_null(request.sync_alias):
+            query['SyncAlias'] = request.sync_alias
+        if not DaraCore.is_null(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgenticDataSource',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgenticDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agentic_data_source_with_options_async(
+        self,
+        request: main_models.UpdateAgenticDataSourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgenticDataSourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias):
+            query['Alias'] = request.alias
+        if not DaraCore.is_null(request.auth_account):
+            query['AuthAccount'] = request.auth_account
+        if not DaraCore.is_null(request.auth_password):
+            query['AuthPassword'] = request.auth_password
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.catalog_name):
+            query['CatalogName'] = request.catalog_name
+        if not DaraCore.is_null(request.create_mode):
+            query['CreateMode'] = request.create_mode
+        if not DaraCore.is_null(request.data_source_uuid):
+            query['DataSourceUuid'] = request.data_source_uuid
+        if not DaraCore.is_null(request.db_type):
+            query['DbType'] = request.db_type
+        if not DaraCore.is_null(request.env_type):
+            query['EnvType'] = request.env_type
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.instance_resource_id):
+            query['InstanceResourceId'] = request.instance_resource_id
+        if not DaraCore.is_null(request.kms_secret):
+            query['KmsSecret'] = request.kms_secret
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.snowflake_role):
+            query['SnowflakeRole'] = request.snowflake_role
+        if not DaraCore.is_null(request.snowflake_warehouse):
+            query['SnowflakeWarehouse'] = request.snowflake_warehouse
+        if not DaraCore.is_null(request.sync_alias):
+            query['SyncAlias'] = request.sync_alias
+        if not DaraCore.is_null(request.use_ssl):
+            query['UseSsl'] = request.use_ssl
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgenticDataSource',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgenticDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agentic_data_source(
+        self,
+        request: main_models.UpdateAgenticDataSourceRequest,
+    ) -> main_models.UpdateAgenticDataSourceResponse:
+        runtime = RuntimeOptions()
+        return self.update_agentic_data_source_with_options(request, runtime)
+
+    async def update_agentic_data_source_async(
+        self,
+        request: main_models.UpdateAgenticDataSourceRequest,
+    ) -> main_models.UpdateAgenticDataSourceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_agentic_data_source_with_options_async(request, runtime)
 
     def update_airflow_with_options(
         self,

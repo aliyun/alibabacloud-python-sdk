@@ -17,21 +17,24 @@ class FileUploadCallbackRequest(DaraModel):
     ):
         # Used only by the frontend.
         self.call_from = call_from
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dms_unit = dms_unit
-        # The file size, in bytes.
+        # The size of the file, in bytes.
         self.file_size = file_size
-        # The file name.
+        # The name of the file.
         # 
         # This parameter is required.
         self.filename = filename
+        # The name of the user\\"s OSS bucket.
+        # - Specify this parameter to use a file in the user\\"s OSS bucket and register the file as a data center file through the callback.
         self.oss_bucket = oss_bucket
         # The full path of the uploaded file.
-        # - Format: The UploadDir field returned by the DescribeFileUploadSignature operation concatenated with the file name.
+        # - Format: Concatenate the UploadDir field returned by the DescribeFileUploadSignature operation with the file name.
         # - Example: ${UploadDir}/${Filename}
         # 
         # This parameter is required.
         self.upload_location = upload_location
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

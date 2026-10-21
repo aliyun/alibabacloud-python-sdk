@@ -20,7 +20,7 @@ class ListCustomAgentResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned when the call fails.
+        # The error message returned if the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
@@ -151,6 +151,7 @@ class ListCustomAgentResponseBodyData(DaraModel):
 class ListCustomAgentResponseBodyDataContent(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         aliyun_parent_id: str = None,
         aliyun_uid: str = None,
         callback_config: main_models.ListCustomAgentResponseBodyDataContentCallbackConfig = None,
@@ -174,6 +175,7 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         name: str = None,
         next_runtime: int = None,
         offline_time: str = None,
+        recommend_question_list: List[str] = None,
         region: str = None,
         related_session_id: str = None,
         release_time: str = None,
@@ -185,15 +187,19 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
-        # The Alibaba Cloud parent account ID.
+        # The custom agent type. Valid values:
+        # - Default: The system built-in custom agent.
+        # - Common: The common custom agent.
+        self.agent_type = agent_type
+        # The ID of the Alibaba Cloud main account.
         self.aliyun_parent_id = aliyun_parent_id
-        # The Alibaba Cloud account ID.
+        # The ID of the Alibaba Cloud account.
         self.aliyun_uid = aliyun_uid
-        # The callback configuration.
+        # The callback feature configuration.
         self.callback_config = callback_config
         # The name of the creator.
         self.creator_user_name = creator_user_name
-        # The ID of the custom agent.
+        # The custom agent ID.
         self.custom_agent_id = custom_agent_id
         # The current DMS unit.
         self.dmsunit = dmsunit
@@ -201,7 +207,7 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         self.data_json = data_json
         # Specifies whether the agent is displayed by default.
         self.default_agent = default_agent
-        # The description of the custom agent.
+        # The custom agent description.
         self.description = description
         # The current DMS unit.
         self.dms_unit = dms_unit
@@ -219,30 +225,34 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         self.knowledge = knowledge
         # The external knowledge bases.
         self.knowledge_config_list = knowledge_config_list
+        # The knowledge semantic configuration list.
         self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The modifier.
         self.modifier = modifier
         # The name of the modifier.
         self.modifier_user_name = modifier_user_name
-        # The name of the custom agent.
+        # The custom agent name.
         self.name = name
         # The next run time of the scheduled task.
         self.next_runtime = next_runtime
         # The offline time.
         self.offline_time = offline_time
+        # The recommended question list.
+        # - You can configure up to 10 recommended questions.
+        self.recommend_question_list = recommend_question_list
         # The region.
         self.region = region
-        # The ID of the referenced historical session.
+        # The reference historical session ID.
         self.related_session_id = related_session_id
         # The release time.
         self.release_time = release_time
         # The scheduled task configuration.
         self.schedule_task_config = schedule_task_config
-        # The status of the custom agent.
+        # The custom agent status.
         self.status = status
         # The text report format.
         self.text_report_config = text_report_config
-        # The list of user-specified skills.
+        # The user-specified skill list.
         self.user_specified_skill_list = user_specified_skill_list
         # The web report format.
         self.web_report_config = web_report_config
@@ -277,6 +287,9 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.aliyun_parent_id is not None:
             result['AliyunParentId'] = self.aliyun_parent_id
 
@@ -350,6 +363,9 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         if self.offline_time is not None:
             result['OfflineTime'] = self.offline_time
 
+        if self.recommend_question_list is not None:
+            result['RecommendQuestionList'] = self.recommend_question_list
+
         if self.region is not None:
             result['Region'] = self.region
 
@@ -384,6 +400,9 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('AliyunParentId') is not None:
             self.aliyun_parent_id = m.get('AliyunParentId')
 
@@ -461,6 +480,9 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         if m.get('OfflineTime') is not None:
             self.offline_time = m.get('OfflineTime')
 
+        if m.get('RecommendQuestionList') is not None:
+            self.recommend_question_list = m.get('RecommendQuestionList')
+
         if m.get('Region') is not None:
             self.region = m.get('Region')
 
@@ -503,9 +525,9 @@ class ListCustomAgentResponseBodyDataContentScheduleTaskConfig(DaraModel):
     ):
         # The cron expression for time-based scheduling.
         self.cron_expression = cron_expression
-        # The query for the scheduled task.
+        # The question for the scheduled task.
         self.query = query
-        # The ID of the referenced historical session.
+        # The reference historical session ID.
         self.related_session_id = related_session_id
 
     def validate(self):
@@ -548,9 +570,15 @@ class ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList(DaraMode
         knowledge_uuid: str = None,
         type: str = None,
     ):
+        # The DMS database ID.
         self.db_id = db_id
+        # The DMS instance ID.
         self.instance_id = instance_id
+        # The knowledge UUID.
         self.knowledge_uuid = knowledge_uuid
+        # The knowledge semantic type. Valid values:
+        # - sql_template: SQL template.
+        # - ossie_model: Ossie semantic view.
         self.type = type
 
     def validate(self):
@@ -604,7 +632,7 @@ class ListCustomAgentResponseBodyDataContentKnowledgeConfigList(DaraModel):
         self.access_type = access_type
         # The knowledge base ID.
         self.kb_uuid = kb_uuid
-        # The ID of the MCP server.
+        # The MCP server ID.
         self.mcp_server_id = mcp_server_id
 
     def validate(self):
@@ -648,7 +676,7 @@ class ListCustomAgentResponseBodyDataContentExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
-        # Specifies whether to prohibit appending data sources during the session.
+        # Specifies whether to prohibit appending data sources in the session.
         self.forbidden_append_data_source = forbidden_append_data_source
         # Specifies whether to prohibit user inquiries during the process.
         self.skip_ask_human = skip_ask_human
@@ -656,7 +684,7 @@ class ListCustomAgentResponseBodyDataContentExecutionConfig(DaraModel):
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the web report generation confirmation.
+        # Specifies whether to skip the web report rendering confirmation.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -712,11 +740,11 @@ class ListCustomAgentResponseBodyDataContentCallbackConfig(DaraModel):
         tool_id: str = None,
         type: str = None,
     ):
-        # The parameters to invoke the callback during tool calling.
+        # The callback tool invocation parameters.
         self.callback_args = callback_args
-        # The prompt for generating parameters to invoke the callback during tool calling.
+        # The prompt for generating callback tool invocation parameters.
         self.callback_prompt = callback_prompt
-        # The time to invoke the callback during tool calling.
+        # The timing for callback tool invocation.
         self.callback_time = callback_time
         # The callback tool identifier.
         self.tool_id = tool_id

@@ -16,16 +16,16 @@ class UpdateDataAgentAccuracyTestResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code returned when an exception occurs.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message returned when the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.                                 
-        # - **false**: The request failed.
+        # - **true**: The request is successful.                                 
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -94,18 +94,23 @@ class UpdateDataAgentAccuracyTestResponseBodyData(DaraModel):
         self.accuracy_test = accuracy_test
         # Agent Id
         self.agent_id = agent_id
-        # The data source. We recommend that you configure this parameter in a custom agent.
+        # The evaluation dataset.
         self.dataset = dataset
+        # The data source information.
         self.datasource = datasource
+        # The description of the evaluation item.
         self.desc = desc
         # The accuracy evaluation criteria. An empty value indicates the default criteria.
         self.evaluation_prompt = evaluation_prompt
         # The file ID.
         self.file_id = file_id
+        # The maximum concurrency limit for the evaluation task.
         self.max_concurrent = max_concurrent
         # The analysis mode.
         self.mode = mode
+        # The name of the evaluation item.
         self.name = name
+        # Reserved.
         self.need_delete = need_delete
         # The workspace ID.
         self.workspace_id = workspace_id

@@ -10,6 +10,7 @@ class AgenticDmsInstanceSyncTask(DaraModel):
         actor_id: str = None,
         actor_name: str = None,
         actor_type: str = None,
+        authorize_add_vpc_nat_white_list: bool = None,
         error_code: str = None,
         error_summary: str = None,
         failed_count: int = None,
@@ -27,6 +28,7 @@ class AgenticDmsInstanceSyncTask(DaraModel):
         self.actor_id = actor_id
         self.actor_name = actor_name
         self.actor_type = actor_type
+        self.authorize_add_vpc_nat_white_list = authorize_add_vpc_nat_white_list
         self.error_code = error_code
         self.error_summary = error_summary
         self.failed_count = failed_count
@@ -57,6 +59,9 @@ class AgenticDmsInstanceSyncTask(DaraModel):
 
         if self.actor_type is not None:
             result['ActorType'] = self.actor_type
+
+        if self.authorize_add_vpc_nat_white_list is not None:
+            result['AuthorizeAddVpcNatWhiteList'] = self.authorize_add_vpc_nat_white_list
 
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
@@ -109,6 +114,9 @@ class AgenticDmsInstanceSyncTask(DaraModel):
 
         if m.get('ActorType') is not None:
             self.actor_type = m.get('ActorType')
+
+        if m.get('AuthorizeAddVpcNatWhiteList') is not None:
+            self.authorize_add_vpc_nat_white_list = m.get('AuthorizeAddVpcNatWhiteList')
 
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')

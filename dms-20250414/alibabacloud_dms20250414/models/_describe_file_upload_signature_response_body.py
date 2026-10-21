@@ -18,7 +18,7 @@ class DescribeFileUploadSignatureResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned if the call fails.
+        # The error message returned when the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
@@ -88,15 +88,15 @@ class DescribeFileUploadSignatureResponseBodyData(DaraModel):
     ):
         # The parameter set that specifies the derived key.
         self.oss_credential = oss_credential
-        # The time of the request. The format follows the ISO 8601 date and time standard.
+        # The time of the request, which follows the ISO 8601 date and time standard.
         self.oss_date = oss_date
-        # The STS token used to upload files to OSS. The token is valid for 1 hour.
+        # The STS token used to upload files to OSS, valid for one hour.
         self.oss_security_token = oss_security_token
-        # The description information used for signature authentication.
+        # The description used for signature authentication.
         self.oss_signature = oss_signature
         # The version and algorithm of the signature.
         self.oss_signature_version = oss_signature_version
-        # The permission restrictions and constraints for file uploads.
+        # The permission limits and constraints for file uploads.
         self.policy = policy
         # The path for file uploads.
         self.upload_dir = upload_dir

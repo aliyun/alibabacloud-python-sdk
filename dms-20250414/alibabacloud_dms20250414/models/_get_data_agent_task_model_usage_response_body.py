@@ -16,16 +16,16 @@ class GetDataAgentTaskModelUsageResponseBody(DaraModel):
     ):
         # The summary data of model usage for DataAgent analysis tasks.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code returned when a request exception occurs.
         self.error_code = error_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.error_message = error_message
-        # The request ID, which is used to locate logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -86,11 +86,15 @@ class GetDataAgentTaskModelUsageResponseBodyData(DaraModel):
         total_token_consumed: int = None,
         used_models: int = None,
     ):
+        # The acceleration ratio, which indicates the speed improvement brought by subtask parallelism.
         self.acceleration_ratio = acceleration_ratio
+        # The number of throttled sessions.
         self.rate_limited_session_count = rate_limited_session_count
+        # The total throttling duration of all sessions.
         self.total_llm_wait_duration = total_llm_wait_duration
+        # The total number of sessions.
         self.total_session_count = total_session_count
-        # The peak TPM (tokens per minute) within the query time range, which is the maximum number of tokens consumed per minute.
+        # The peak TPM within the query time range, which is the maximum number of tokens consumed per minute.
         self.peak_tpm = peak_tpm
         # The total number of model calls within the query time range.
         self.total_call_count = total_call_count

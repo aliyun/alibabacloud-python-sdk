@@ -11,10 +11,11 @@ class DescribeFileUploadSignatureRequest(DaraModel):
         dms_unit: str = None,
         workspace_id: str = None,
     ):
-        # The parameter used only by the frontend.
+        # For frontend use only.
         self.call_from = call_from
         # The current DMS unit.
         self.dms_unit = dms_unit
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

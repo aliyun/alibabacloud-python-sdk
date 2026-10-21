@@ -18,14 +18,14 @@ class CreateDataAgentSkillMetaResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned when a system-level request failure occurs.
+        # The error message returned when a system-level request fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.                                 
-        # - **false**: The request failed.
+        # - **true**: The request is successful.                                 
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -92,22 +92,24 @@ class CreateDataAgentSkillMetaResponseBodyData(DaraModel):
         skill_status: str = None,
         workspace_id: str = None,
     ):
-        # The Alibaba Cloud account ID of the parent account.
-        self.aliyun_parent_uid = aliyun_parent_uid
         # The Alibaba Cloud account ID.
+        self.aliyun_parent_uid = aliyun_parent_uid
+        # The Alibaba Cloud user ID.
         self.aliyun_uid = aliyun_uid
-        # The creator name.
+        # The name of the creator.
         self.creator_user_name = creator_user_name
         # The skill description.
         self.description = description
-        # Indicates whether the skill is available. Valid values: true and false.
+        # Indicates whether the skill is available. Valid values:
+        # - true: The skill is available.
+        # - false: The skill is not available.
         self.enabled = enabled
         # The creation time.
         self.gmt_created = gmt_created
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The skill parsing error message.
-        # - When the skill status is INVALID, the parsing error message is returned.
+        # - This message is returned when the skill status is INVALID.
         self.parse_error = parse_error
         # The region.
         self.region = region
@@ -118,9 +120,9 @@ class CreateDataAgentSkillMetaResponseBodyData(DaraModel):
         # The skill name.
         self.skill_name = skill_name
         # The skill status. Valid values:
-        # - INIT: Not ready.
-        # - ACTIVE: Active.
-        # - INVALID: Invalid.
+        # - INIT: The skill is not ready.
+        # - ACTIVE: The skill is active.
+        # - INVALID: The skill is invalid.
         self.skill_status = skill_status
         # The workspace ID.
         self.workspace_id = workspace_id

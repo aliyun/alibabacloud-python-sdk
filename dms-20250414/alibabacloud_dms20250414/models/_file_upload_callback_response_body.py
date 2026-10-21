@@ -18,13 +18,13 @@ class FileUploadCallbackResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.                                 
+        # - **true**: The request is successful.                                 
         # - **false**: The request failed.
         self.success = success
 
@@ -79,7 +79,7 @@ class FileUploadCallbackResponseBodyData(DaraModel):
         self,
         file_id: str = None,
     ):
-        # The file ID.
+        # The ID of the file.
         self.file_id = file_id
 
     def validate(self):

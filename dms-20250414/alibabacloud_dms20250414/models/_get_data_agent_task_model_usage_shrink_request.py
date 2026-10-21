@@ -14,13 +14,15 @@ class GetDataAgentTaskModelUsageShrinkRequest(DaraModel):
         pay_level: str = None,
         region_id: str = None,
     ):
-        # The start time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
+        # The start time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no more than one month.
         self.begin_time = begin_time
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dmsunit = dmsunit
-        # The end time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
+        # The end time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no more than one month.
         self.end_time = end_time
+        # The list of billing instance IDs to be queried.
         self.instance_ids_shrink = instance_ids_shrink
+        # The billing level.
         self.pay_level = pay_level
         # The region ID.
         self.region_id = region_id

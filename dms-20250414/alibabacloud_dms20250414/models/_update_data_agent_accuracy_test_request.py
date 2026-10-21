@@ -28,10 +28,11 @@ class UpdateDataAgentAccuracyTestRequest(DaraModel):
         self.customer_agent_id = customer_agent_id
         # The data source.
         self.dataset = dataset
+        # The data source information.
         self.datasource = datasource
         # The description.
         self.desc = desc
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dms_unit = dms_unit
         # The accuracy evaluation criteria. An empty value indicates the default criteria.
         self.evaluation_prompt = evaluation_prompt
@@ -43,7 +44,7 @@ class UpdateDataAgentAccuracyTestRequest(DaraModel):
         self.mode = mode
         # The name of the test item.
         self.name = name
-        # Specifies whether sessions are displayed after analysis. This parameter is not supported.
+        # Specifies whether to display sessions after analysis. This parameter is currently not supported.
         self.need_delete = need_delete
         # The region ID.
         self.region_id = region_id

@@ -13,13 +13,13 @@ class CreateDataAgentSkillMetaRequest(DaraModel):
         workspace_id: str = None,
     ):
         # The skill description.
-        # - By default, this parameter is optional. The backend parses the ZIP package specified by UploadLocation to obtain the skill description.
+        # - Optional. If not specified, the system parses the ZIP package specified by UploadLocation to obtain the skill description.
         self.description = description
         # The skill name.
-        # - By default, this parameter is optional. The backend parses the ZIP package specified by UploadLocation to obtain the skill name.
+        # - Optional. If not specified, the system parses the ZIP package specified by UploadLocation to obtain the skill name.
         self.skill_name = skill_name
-        # The full path for uploading the skill ZIP file.
-        # - Format: The UploadDir field returned by the DescribeSkillFileUploadSignature operation concatenated with the file name.
+        # The full path to the uploaded skill ZIP file.
+        # - Format: Concatenate the file name to the UploadDir value returned by the DescribeSkillFileUploadSignature operation.
         # - Example: ${UploadDir}/${Filename}
         self.upload_location = upload_location
         # The workspace ID.

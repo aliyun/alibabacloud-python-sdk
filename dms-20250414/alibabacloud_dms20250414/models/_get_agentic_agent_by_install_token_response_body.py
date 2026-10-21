@@ -16,10 +16,15 @@ class GetAgenticAgentByInstallTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The agent information associated with the install token after redemption. This parameter is empty if the token has not been redeemed, or if the associated credential or agent does not exist.
         self.data = data
+        # The error code returned when the request fails. Programs use this code to determine the failure type. This parameter is empty when the request succeeds.
         self.error_code = error_code
+        # The error message returned when the request fails. This message helps with manual troubleshooting. This parameter is empty when the request succeeds.
         self.error_message = error_message
+        # The unique identifier of the request, used for troubleshooting and log correlation.
         self.request_id = request_id
+        # Indicates whether the request is successful. A value of true indicates that the query succeeded. A value of false indicates that the query failed. In this case, you can use ErrorCode and ErrorMessage to identify the cause.
         self.success = success
 
     def validate(self):
@@ -81,14 +86,23 @@ class GetAgenticAgentByInstallTokenResponseBodyData(DaraModel):
         owner_id: str = None,
         status: str = None,
     ):
+        # The prefix list of visible access tokens that are neither revoked nor expired under the agent. This parameter is empty if no access tokens are returned or no access tokens meet the conditional criteria. The prefix is used only to identify the credential and does not contain the complete secret.
         self.active_api_key_prefixes = active_api_key_prefixes
+        # The unique identifier of the agent.
         self.agent_id = agent_id
+        # The name of the agent.
         self.agent_name = agent_name
+        # The permission type of the agent. Valid values: HUMAN_BOUND (inherits user permissions), PERMISSION_NARROW (narrowed down from user permissions), and STANDALONE (independent permissions). The agent generated through the install token redemption process is of the HUMAN_BOUND type.
         self.agent_type = agent_type
+        # The creation time of the agent, in the yyyy-MM-dd HH:mm:ss format.
         self.created_at = created_at
+        # The creation method of the agent. A value of auto indicates automatic creation by the system, and a value of manual indicates manual creation by a user. The agent generated through the install token redemption process is auto.
         self.creation_type = creation_type
+        # The description of the agent. This parameter is empty if it is not set.
         self.description = description
+        # The ID of the user to whom the agent belongs.
         self.owner_id = owner_id
+        # The status of the agent. A value of active indicates that the agent is enabled, and a value of disabled indicates that the agent is disabled.
         self.status = status
 
     def validate(self):

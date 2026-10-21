@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class CreateCustomAgentRequest(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         callback_config: main_models.CreateCustomAgentRequestCallbackConfig = None,
         dmsunit: str = None,
         data_json: str = None,
@@ -20,6 +21,7 @@ class CreateCustomAgentRequest(DaraModel):
         knowledge_config_list: List[main_models.CreateCustomAgentRequestKnowledgeConfigList] = None,
         knowledge_semantic_config_list: List[main_models.CreateCustomAgentRequestKnowledgeSemanticConfigList] = None,
         name: str = None,
+        recommend_question_list: List[str] = None,
         related_session_id: str = None,
         schedule_task_config: main_models.CreateCustomAgentRequestScheduleTaskConfig = None,
         text_report_config: str = None,
@@ -28,22 +30,27 @@ class CreateCustomAgentRequest(DaraModel):
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
+        # The type of the custom agent. Valid values:
+        # - Default: the system-built-in custom agent. Each workspace can have at most one Default agent, and it cannot be deleted.
+        # - Common: a regular custom agent.
+        self.agent_type = agent_type
+        # The callback feature configuration.
         self.callback_config = callback_config
         # The current DMS unit.
         self.dmsunit = dmsunit
         # The specified data scope, in **JSON character string format**.
-        # - Common parameter description
+        # - General parameter descriptions
         #   - tableFlag: true specifies the data scope.
         #   - scope: personal is a fixed value.
         #   - personal: the parameters for file and database types.
         # 
-        # **File type**: Pass parameters in the following format:
+        # **File type**: pass parameters in the following format:
         # - DataSourceType: remote_data_center is a fixed value.
-        # - FileId: The file ID.
-        # - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
-        # - Tables: The table names returned by the ListDataCenterTable operation.
-        # - TableIds: The table IDs returned by the ListDataCenterTable operation.
-        # - RegionId: The current region.
+        # - FileId: the file ID.
+        # - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name.
+        # - Tables: the table names returned by the ListDataCenterTable operation.
+        # - TableIds: the table IDs returned by the ListDataCenterTable operation.
+        # - RegionId: the current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -63,17 +70,17 @@ class CreateCustomAgentRequest(DaraModel):
         # }
         # ```
         # 
-        # **Database type**: Pass parameters as follows:
+        # **Database type**: pass parameters in the following format:
         # - DataSourceType: database is a fixed value.
-        # - DmsInstanceId: The DMS instance ID returned by the Data Center API.
-        # - DmsDatabaseId: The DMS database ID returned by the Data Center API.
-        # - FileId: The instance name. **[Deprecated]**
-        # - DbName: The database name returned by the Data Center API.
-        # - Database: The database name returned by the Data Center API.
-        # - Tables: The table names returned by the Data Center API.
-        # - TableIds: The table IDs returned by the Data Center API.
-        # - Engine: The engine type, such as mysql or postgresql.
-        # - RegionId: The current region.
+        # - DmsInstanceId: the DMS instance ID returned by the data center API.
+        # - DmsDatabaseId: the DMS database ID returned by the data center API.
+        # - FileId: the instance name (**[Deprecated]**).
+        # - DbName: the database name returned by the data center API.
+        # - Database: the database name returned by the data center API.
+        # - Tables: the table names returned by the data center API.
+        # - TableIds: the table IDs returned by the data center API.
+        # - Engine: the database engine type, such as mysql or postgresql.
+        # - RegionId: the current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -102,16 +109,20 @@ class CreateCustomAgentRequest(DaraModel):
         # The execution configuration.
         self.execution_config = execution_config
         # The instructions.
-        # - Input limit: A maximum of 10,000 characters.
+        # - Input limit: up to 10,000 characters.
         self.instruction = instruction
         # The knowledge.
-        # - Input limit: A maximum of 10,000 characters.
+        # - Input limit: up to 10,000 characters.
         self.knowledge = knowledge
         # The external knowledge bases.
         self.knowledge_config_list = knowledge_config_list
+        # The knowledge semantic configuration list.
         self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The name of the custom agent.
         self.name = name
+        # The list of recommended questions.
+        # - You can configure up to 10 recommended questions.
+        self.recommend_question_list = recommend_question_list
         # The ID of the referenced historical session.
         self.related_session_id = related_session_id
         # The scheduled task configuration.
@@ -148,6 +159,9 @@ class CreateCustomAgentRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.callback_config is not None:
             result['CallbackConfig'] = self.callback_config.to_map()
 
@@ -182,6 +196,9 @@ class CreateCustomAgentRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.recommend_question_list is not None:
+            result['RecommendQuestionList'] = self.recommend_question_list
+
         if self.related_session_id is not None:
             result['RelatedSessionId'] = self.related_session_id
 
@@ -207,6 +224,9 @@ class CreateCustomAgentRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('CallbackConfig') is not None:
             temp_model = main_models.CreateCustomAgentRequestCallbackConfig()
             self.callback_config = temp_model.from_map(m.get('CallbackConfig'))
@@ -245,6 +265,9 @@ class CreateCustomAgentRequest(DaraModel):
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
+        if m.get('RecommendQuestionList') is not None:
+            self.recommend_question_list = m.get('RecommendQuestionList')
+
         if m.get('RelatedSessionId') is not None:
             self.related_session_id = m.get('RelatedSessionId')
 
@@ -276,9 +299,9 @@ class CreateCustomAgentRequestScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
-        # The cron expression for periodic scheduling.
+        # The cron expression for time-based scheduling.
         self.cron_expression = cron_expression
-        # The query for the periodic task.
+        # The query for the scheduled task.
         self.query = query
         # The ID of the referenced historical session.
         self.related_session_id = related_session_id
@@ -323,9 +346,15 @@ class CreateCustomAgentRequestKnowledgeSemanticConfigList(DaraModel):
         knowledge_uuid: str = None,
         type: str = None,
     ):
+        # The DMS database ID.
         self.db_id = db_id
+        # The DMS instance ID.
         self.instance_id = instance_id
+        # The knowledge UUID.
         self.knowledge_uuid = knowledge_uuid
+        # The knowledge semantic type. Valid values:
+        # - sql_template: SQL template.
+        # - ossie_model: Ossie semantic view.
         self.type = type
 
     def validate(self):
@@ -374,12 +403,12 @@ class CreateCustomAgentRequestKnowledgeConfigList(DaraModel):
         mcp_server_id: str = None,
     ):
         # The access type. If you do not specify this parameter, the default value is mcp. Valid values:
-        # - mcp: Access through MCP. The McpServerId parameter is required.
-        # - dms_kb: Access through a DMS knowledge base. The KbUuid parameter is required.
+        # - mcp: access through MCP. You must pass the McpServerId parameter.
+        # - dms_kb: access through DMS knowledge base. You must pass the KbUuid parameter.
         self.access_type = access_type
         # The knowledge base ID.
         self.kb_uuid = kb_uuid
-        # The ID of the MCP server.
+        # The MCP server ID.
         self.mcp_server_id = mcp_server_id
 
     def validate(self):
@@ -423,15 +452,15 @@ class CreateCustomAgentRequestExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
-        # Specifies whether to prohibit appending data sources during a session.
+        # Specifies whether to prohibit appending data sources in a session.
         self.forbidden_append_data_source = forbidden_append_data_source
-        # Specifies whether to disable user inquiries during the process.
+        # Specifies whether to prohibit user inquiries during the process.
         self.skip_ask_human = skip_ask_human
         # Specifies whether to skip the plan confirmation step.
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the web report generation confirmation.
+        # Specifies whether to skip the confirmation for generating a web report.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -487,10 +516,15 @@ class CreateCustomAgentRequestCallbackConfig(DaraModel):
         tool_id: str = None,
         type: str = None,
     ):
+        # The parameters to invoke the callback tool.
         self.callback_args = callback_args
+        # The prompt for generating the parameters to invoke the callback tool.
         self.callback_prompt = callback_prompt
+        # The timing to invoke the callback tool.
         self.callback_time = callback_time
+        # The callback tool identifier.
         self.tool_id = tool_id
+        # The callback tool type.
         self.type = type
 
     def validate(self):

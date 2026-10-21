@@ -18,7 +18,7 @@ class UpdateAirflowResponseBody(DaraModel):
         root: main_models.UpdateAirflowResponseBodyRoot = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The error code.
         self.error_code = error_code
@@ -28,13 +28,12 @@ class UpdateAirflowResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Details of the updated Airflow instance.
+        # The updated details.
         self.root = root
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: The request is successful.                                 
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -128,43 +127,43 @@ class UpdateAirflowResponseBodyRoot(DaraModel):
     ):
         # The name of the Airflow instance.
         self.airflow_name = airflow_name
-        # The version of Airflow.
+        # The Airflow version.
         self.airflow_version = airflow_version
-        # The instance specification.
+        # SMALL.
         self.app_spec = app_spec
         # The instance type.
         self.app_type = app_type
-        # A list of custom configuration items.
+        # The list of custom configuration items.
         self.custom_airflow_cfg = custom_airflow_cfg
-        # The directory where DAGs are scanned.
+        # The directory scanned for DAGs.
         self.dags_dir = dags_dir
-        # A data mount item.
+        # The list of data mount information.
         self.data_mount_info_list = data_mount_info_list
-        # The error message returned upon deployment failure.
+        # The deployment error message.
         self.deploy_error_msg = deploy_error_msg
         # The description of the Airflow instance.
         self.description = description
-        # Indicates whether serverless mode is enabled.
+        # Specifies whether to enable serverless workers.
         self.enable_serverless = enable_serverless
-        # The environment variables.
+        # The environment configurations.
         self.environments = environments
-        # The time when the instance was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The graceful shutdown timeout, in seconds.
+        # The timeout period for a worker to exit.
         self.graceful_shutdown_timeout = graceful_shutdown_timeout
         # The name of the Object Storage Service (OSS) bucket.
         self.oss_bucket_name = oss_bucket_name
-        # The path in OSS where logs are stored.
+        # The OSS path for storing logs.
         self.oss_path = oss_path
-        # The directory where Airflow plugins are scanned.
+        # The directory scanned for Airflow plugins.
         self.plugins_dir = plugins_dir
-        # The path to the Python requirements file.
+        # The path of the installation package.
         self.requirement_file = requirement_file
-        # The Python package requirements.
+        # The configurations of the installation package.
         self.requirements = requirements
         # The ID of the security group.
         self.security_group_id = security_group_id
-        # The startup script for the Airflow container.
+        # The startup script of the Airflow container.
         self.startup_file = startup_file
         # The instance status.
         self.status = status
@@ -174,7 +173,7 @@ class UpdateAirflowResponseBodyRoot(DaraModel):
         self.v_switch_id = v_switch_id
         # The VPC ID.
         self.vpc_id = vpc_id
-        # The number of worker node replicas.
+        # The number of scaled worker nodes.
         self.worker_serverless_replicas = worker_serverless_replicas
         # The workspace ID.
         self.workspace_id = workspace_id

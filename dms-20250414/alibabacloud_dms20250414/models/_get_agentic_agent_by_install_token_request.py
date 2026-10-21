@@ -9,6 +9,8 @@ class GetAgenticAgentByInstallTokenRequest(DaraModel):
         self,
         install_token: str = None,
     ):
+        # The one-time install token issued by IssueAgenticInstallToken. The token starts with dit_ followed by 40 URL-safe Base64 characters, making a total length of 44 characters.
+        # 
         # This parameter is required.
         self.install_token = install_token
 

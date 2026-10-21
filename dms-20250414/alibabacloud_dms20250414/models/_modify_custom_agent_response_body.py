@@ -79,6 +79,7 @@ class ModifyCustomAgentResponseBody(DaraModel):
 class ModifyCustomAgentResponseBodyData(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         aliyun_parent_uid: str = None,
         aliyun_uid: str = None,
         callback_config: main_models.ModifyCustomAgentResponseBodyDataCallbackConfig = None,
@@ -101,6 +102,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         name: str = None,
         next_runtime: int = None,
         offline_time: str = None,
+        recommend_question_list: List[str] = None,
         region: str = None,
         related_session_id: str = None,
         release_time: str = None,
@@ -112,10 +114,15 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
-        # The primary Alibaba Cloud account ID.
+        # The custom agent type. Valid values:
+        # - Default: The system-built-in custom agent. Each workspace can have at most one Default type, and it cannot be deleted.
+        # - Common: A common custom agent.
+        self.agent_type = agent_type
+        # The ID of the Alibaba Cloud main account.
         self.aliyun_parent_uid = aliyun_parent_uid
         # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
+        # The callback feature configuration.
         self.callback_config = callback_config
         # The name of the creator.
         self.creator_user_name = creator_user_name
@@ -143,6 +150,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         self.knowledge = knowledge
         # The external knowledge bases.
         self.knowledge_config_list = knowledge_config_list
+        # The knowledge semantic configuration list.
         self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The modifier.
         self.modifier = modifier
@@ -150,10 +158,14 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         self.modifier_user_name = modifier_user_name
         # The name of the custom agent.
         self.name = name
-        # The next execution time of the scheduled task in timestamp format.
+        # The next run time of the scheduled task.
+        # - Timestamp format.
         self.next_runtime = next_runtime
         # The offline time.
         self.offline_time = offline_time
+        # The list of recommended questions.
+        # - You can configure up to 10 recommended questions.
+        self.recommend_question_list = recommend_question_list
         # The region.
         self.region = region
         # The ID of the referenced historical session.
@@ -171,11 +183,11 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         # The web report format.
         self.web_report_config = web_report_config
         # The web report theme. Valid values:
-        # - default: default.
-        # - journal: journal.
-        # - legacy: classic.
-        # - neobrutalism: stylized.
-        # - infographic: infographic.
+        # - default: Default.
+        # - journal: Journal.
+        # - legacy: Legacy.
+        # - neobrutalism: Neobrutalism.
+        # - infographic: Infographic.
         self.web_report_theme = web_report_theme
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -201,6 +213,9 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.aliyun_parent_uid is not None:
             result['AliyunParentUid'] = self.aliyun_parent_uid
 
@@ -271,6 +286,9 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         if self.offline_time is not None:
             result['OfflineTime'] = self.offline_time
 
+        if self.recommend_question_list is not None:
+            result['RecommendQuestionList'] = self.recommend_question_list
+
         if self.region is not None:
             result['Region'] = self.region
 
@@ -305,6 +323,9 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('AliyunParentUid') is not None:
             self.aliyun_parent_uid = m.get('AliyunParentUid')
 
@@ -379,6 +400,9 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         if m.get('OfflineTime') is not None:
             self.offline_time = m.get('OfflineTime')
 
+        if m.get('RecommendQuestionList') is not None:
+            self.recommend_question_list = m.get('RecommendQuestionList')
+
         if m.get('Region') is not None:
             self.region = m.get('Region')
 
@@ -419,7 +443,7 @@ class ModifyCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
-        # The cron expression for periodic scheduling.
+        # The cron expression for time-based scheduling.
         self.cron_expression = cron_expression
         # The query for the scheduled task.
         self.query = query
@@ -466,9 +490,15 @@ class ModifyCustomAgentResponseBodyDataKnowledgeSemanticConfigList(DaraModel):
         knowledge_uuid: str = None,
         type: str = None,
     ):
+        # The DMS database ID.
         self.db_id = db_id
+        # The DMS instance ID.
         self.instance_id = instance_id
+        # The knowledge UUID.
         self.knowledge_uuid = knowledge_uuid
+        # The knowledge semantic type. Valid values:
+        # - sql_template: SQL template.
+        # - ossie_model: Ossie semantic view.
         self.type = type
 
     def validate(self):
@@ -566,7 +596,7 @@ class ModifyCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
-        # Specifies whether to prohibit appending data sources during the session.
+        # Specifies whether to prohibit appending data sources in a session.
         self.forbidden_append_data_source = forbidden_append_data_source
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
@@ -574,7 +604,7 @@ class ModifyCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the web report generation confirmation.
+        # Specifies whether to skip the confirmation for generating a web report.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -630,10 +660,15 @@ class ModifyCustomAgentResponseBodyDataCallbackConfig(DaraModel):
         tool_id: str = None,
         type: str = None,
     ):
+        # The parameters to invoke callback tool calling.
         self.callback_args = callback_args
+        # The prompt for generating parameters to invoke callback tool calling.
         self.callback_prompt = callback_prompt
+        # The timing to invoke callback tool calling.
         self.callback_time = callback_time
+        # The callback tool identifier.
         self.tool_id = tool_id
+        # The callback tool type.
         self.type = type
 
     def validate(self):

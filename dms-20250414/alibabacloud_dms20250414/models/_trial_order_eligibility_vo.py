@@ -10,9 +10,7 @@ class TrialOrderEligibilityVO(DaraModel):
         message: str = None,
         valid: bool = None,
     ):
-        # Contains details about the eligibility status, such as the reason for ineligibility.
         self.message = message
-        # Indicates whether the user is eligible for the trial.
         self.valid = valid
 
     def validate(self):

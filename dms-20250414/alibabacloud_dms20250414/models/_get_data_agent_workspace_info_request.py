@@ -12,7 +12,7 @@ class GetDataAgentWorkspaceInfoRequest(DaraModel):
     ):
         # The current DMS unit.
         self.dmsunit = dmsunit
-        # The ID of the collaborative workspace.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

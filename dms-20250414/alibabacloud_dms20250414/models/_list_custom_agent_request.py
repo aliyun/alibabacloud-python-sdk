@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListCustomAgentRequest(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         page_number: int = None,
         page_size: int = None,
         query_all_released: bool = None,
@@ -14,15 +15,19 @@ class ListCustomAgentRequest(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
+        # The custom agent type. Valid values:
+        # - Default: system built-in custom agent
+        # - Common: regular custom agent
+        self.agent_type = agent_type
         # The page number. Pages start from 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
         # Specifies whether to query all published custom agents. Default value: false.
         self.query_all_released = query_all_released
-        # The search keyword. Fuzzy search is supported for custom agent names and descriptions.
+        # The search keyword. Supports fuzzy search for custom agent names and descriptions.
         self.search_key = search_key
-        # The status of the custom agent.
+        # The custom agent status.
         self.status = status
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -35,6 +40,9 @@ class ListCustomAgentRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -57,6 +65,9 @@ class ListCustomAgentRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 

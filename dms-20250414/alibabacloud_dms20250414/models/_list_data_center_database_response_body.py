@@ -18,16 +18,15 @@ class ListDataCenterDatabaseResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code returned when an exception occurs in the request.
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.                                 
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        #   - **true**: The request is successful.
+        #   - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -105,25 +104,27 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         # The database description.
         self.database_desc = database_desc
         # The database name.
-        # - When ImportType is FILE, this parameter indicates the file name.
+        #   - When ImportType is FILE, this parameter indicates the file name.
         self.database_name = database_name
         # The database ID.
         self.db_id = db_id
         # - When ImportType is FILE:
         #   - File type: dbType indicates the file format, such as csv, xlsx, or xls.
         self.db_type = db_type
-        # The time when the database description was last updated.
+        # The update time of the database description.
         self.desc_update_time = desc_update_time
-        # The ID of the Data Management database that hosts the instance.
+        # The ID of the DMS database where the instance is hosted.
         #   - This parameter is not returned when ImportType is FILE.
         self.dms_db_id = dms_db_id
-        # The ID of the Data Management instance that hosts the instance.
+        # The ID of the DMS instance where the instance is hosted.
         #   - This parameter is not returned when ImportType is FILE.
         self.dms_instance_id = dms_instance_id
+        # The public network download link.
+        #   - **[Deprecated]**
         self.download_link = download_link
-        # The time when the file was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The import type.
+        # The import type. Valid values:
         #   - FILE
         #   - RDS
         #   - ADB
@@ -132,16 +133,20 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         #   - DMS
         self.import_type = import_type
         # The instance name.
-        # - When ImportType is FILE, this parameter indicates the file ID in the data center.
+        #   - When ImportType is FILE, this parameter indicates the file ID in the data center.
         self.instance_name = instance_name
+        # The internal network download link.
+        #   - **[Deprecated]**
         self.intranet_download_link = intranet_download_link
         # Indicates whether the dataset is built-in. Valid values:
-        # - Y: The dataset is built-in.
-        # - N: The dataset is not built-in.
+        #   - Y: The dataset is built-in.
+        #   - N: The dataset is not built-in.
         self.is_internal = is_internal
+        # The name of the user\\"s OSS bucket.
         self.oss_bucket = oss_bucket
         # The file size, in bytes.
         self.size = size
+        # Indicates whether the user\\"s OSS bucket is used.
         self.use_user_oss_bucket = use_user_oss_bucket
 
     def validate(self):

@@ -18,15 +18,15 @@ class ListDataAgentAccuracyTestResultsRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
-        # The instance ID of the accuracy test.
+        # The instance ID of the accuracy test to which the task belongs.
         self.accuracy_test_ins_id = accuracy_test_ins_id
-        # The result ID used to retrieve a single record.
+        # The ID of the result used to exactly match a single record.
         self.accuracy_test_result_id = accuracy_test_result_id
-        # The subtask ID used to filter results.
+        # The ID of the subtask used to filter results.
         self.accuracy_test_subtask_id = accuracy_test_subtask_id
         # The ID of the accuracy test task.
         self.accuracy_test_task_id = accuracy_test_task_id
-        # The maximum number of entries per page.
+        # The maximum number of results per page.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
@@ -36,7 +36,7 @@ class ListDataAgentAccuracyTestResultsRequest(DaraModel):
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

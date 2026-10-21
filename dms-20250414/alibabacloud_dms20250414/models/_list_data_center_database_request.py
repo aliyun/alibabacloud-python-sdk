@@ -16,15 +16,16 @@ class ListDataCenterDatabaseRequest(DaraModel):
     ):
         # Used only by the frontend.
         self.call_from = call_from
-        # The current Data Management unit.
+        # The current DMS unit.
         self.dms_unit = dms_unit
-        # The import type.
+        # The import type. Valid values:
         #   - FILE
         self.import_type = import_type
         # Used only by the frontend.
         self.language = language
-        # The keyword for fuzzy match of databases.
+        # The keyword used for fuzzy search of databases.
         self.search_key = search_key
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -1,3 +1,36 @@
+2026-10-21 Version: 4.2.0
+- Support API AddAgenticDataSource.
+- Support API CreateAgenticSqlExecuteCredential.
+- Support API DeleteAgenticDataSource.
+- Support API GetAgenticCatalog.
+- Support API GetAgenticDataSource.
+- Support API GetAgenticDatabase.
+- Support API GetAgenticTableColumn.
+- Support API GetAgenticTableIndex.
+- Support API ListAgenticCatalog.
+- Support API ListAgenticDataSources.
+- Support API ListAgenticDatabase.
+- Support API ListAgenticGlobalSqlExecutionHistories.
+- Support API ListAgenticSqlExecutionHistories.
+- Support API ListAgenticTableBaseInfo.
+- Support API SearchAgenticCatalog.
+- Support API SearchAgenticDatabase.
+- Support API TestAgenticDataSourceConnection.
+- Support API UpdateAgenticDataSource.
+- Update API CreateCustomAgent: add request parameters AgentType.
+- Update API CreateCustomAgent: add request parameters RecommendQuestionList.
+- Update API CreateCustomAgent: add response parameters Body.Data.AgentType.
+- Update API CreateCustomAgent: add response parameters Body.Data.RecommendQuestionList.
+- Update API DescribeCustomAgent: add response parameters Body.Data.AgentType.
+- Update API DescribeCustomAgent: add response parameters Body.Data.RecommendQuestionList.
+- Update API ListCustomAgent: add request parameters AgentType.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.AgentType.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.RecommendQuestionList.
+- Update API ModifyCustomAgent: add request parameters RecommendQuestionList.
+- Update API ModifyCustomAgent: add response parameters Body.Data.AgentType.
+- Update API ModifyCustomAgent: add response parameters Body.Data.RecommendQuestionList.
+
+
 2026-10-13 Version: 4.1.1
 - Update API ListDataAgentAccuracyTestInstances: add response parameters Body.Data.$.DatasetId.
 - Update API ListDataAgentAccuracyTestInstances: add response parameters Body.Data.$.Description.

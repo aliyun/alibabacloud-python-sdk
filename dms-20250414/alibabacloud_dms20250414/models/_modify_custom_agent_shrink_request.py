@@ -18,6 +18,7 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         knowledge_config_list_shrink: str = None,
         knowledge_semantic_config_list_shrink: str = None,
         name: str = None,
+        recommend_question_list_shrink: str = None,
         related_session_id: str = None,
         schedule_task_config_shrink: str = None,
         text_report_config: str = None,
@@ -26,6 +27,7 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
+        # The callback feature configuration.
         self.callback_config_shrink = callback_config_shrink
         # The ID of the custom agent.
         # 
@@ -34,18 +36,18 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # The current DMS unit.
         self.dmsunit = dmsunit
         # The specified data scope in **JSON character string format**.
-        # - General parameter description
-        #   - tableFlag: true specifies the data scope.
-        #   - scope: personal is a fixed value.
-        #   - personal: parameters for file and database types.
+        # - General metric descriptions:
+        #   - tableFlag: true indicates that a data scope is specified.
+        #   - scope: The fixed value personal.
+        #   - personal: The parameters for file and database types.
         # 
-        # **File type**: pass parameters in the following format:
-        # - DataSourceType: remote_data_center is a fixed value.
-        # - FileId: the file ID.
-        # - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name.
-        # - Tables: the table names returned by the ListDataCenterTable operation.
-        # - TableIds: the table IDs returned by the ListDataCenterTable operation.
-        # - RegionId: the current region.
+        # **File type**: Pass parameters in the following format:
+        # - DataSourceType: The fixed value remote_data_center.
+        # - FileId: The file ID.
+        # - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
+        # - Tables: The table names returned by the ListDataCenterTable operation.
+        # - TableIds: The table IDs returned by the ListDataCenterTable operation.
+        # - RegionId: The current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -65,17 +67,17 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # }
         # ```
         # 
-        # **Database type**: pass parameters as follows:
-        # - DataSourceType: database is a fixed value.
-        # - DmsInstanceId: the DMS instance ID returned by the Data Center operation.
-        # - DmsDatabaseId: the DMS database ID returned by the Data Center operation.
-        # - FileId: the instance name. **[Deprecated]**
-        # - DbName: the database name returned by the Data Center operation.
-        # - Database: the database name returned by the Data Center operation.
-        # - Tables: the table names returned by the Data Center operation.
-        # - TableIds: the table IDs returned by the Data Center operation.
-        # - Engine: the engine type, such as mysql or postgresql.
-        # - RegionId: the current region.
+        # **Database type**: Pass parameters in the following format:
+        # - DataSourceType: The fixed value database.
+        # - DmsInstanceId: The DMS instance ID returned by the data center operation.
+        # - DmsDatabaseId: The DMS database ID returned by the data center operation.
+        # - FileId: The instance name. **[Deprecated]**
+        # - DbName: The database name returned by the data center operation.
+        # - Database: The database name returned by the data center operation.
+        # - Tables: The table names returned by the data center operation.
+        # - TableIds: The table IDs returned by the data center operation.
+        # - Engine: The DPI engine type (mysql or postgresql).
+        # - RegionId: The current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -104,34 +106,38 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # The execution configuration.
         self.execution_config_shrink = execution_config_shrink
         # The instructions.
-        # - Input limit: up to 10,000 characters.
+        # - Input limit: Maximum of 10,000 characters.
         self.instruction = instruction
         # The knowledge.
-        # - Input limit: up to 10,000 characters.
+        # - Input limit: Maximum of 10,000 characters.
         self.knowledge = knowledge
         # The external knowledge bases.
         self.knowledge_config_list_shrink = knowledge_config_list_shrink
+        # The knowledge semantic configuration list.
         self.knowledge_semantic_config_list_shrink = knowledge_semantic_config_list_shrink
         # The name of the custom agent.
         self.name = name
+        # The list of recommended questions.
+        # - You can configure up to 10 recommended questions.
+        self.recommend_question_list_shrink = recommend_question_list_shrink
         # The ID of the referenced historical session.
         self.related_session_id = related_session_id
         # The scheduled task configuration.
         self.schedule_task_config_shrink = schedule_task_config_shrink
         # The text report format.
-        # - Input limit: up to 10,000 characters.
+        #  - Input limit: Maximum of 10,000 characters.
         self.text_report_config = text_report_config
         # The list of user-specified skills.
         self.user_specified_skill_list_shrink = user_specified_skill_list_shrink
         # The web report format.
-        # - Input limit: up to 50,000 characters.
+        # - Input limit: Maximum of 50,000 characters.
         self.web_report_config = web_report_config
         # The web report theme. Valid values:
-        # - default: default.
-        # - journal: journal.
-        # - legacy: classic.
-        # - neobrutalism: stylized.
-        # - infographic: infographic.
+        # - default: Default.
+        # - journal: Journal.
+        # - legacy: Legacy.
+        # - neobrutalism: Neobrutalism.
+        # - infographic: Infographic.
         self.web_report_theme = web_report_theme
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -176,6 +182,9 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.recommend_question_list_shrink is not None:
+            result['RecommendQuestionList'] = self.recommend_question_list_shrink
 
         if self.related_session_id is not None:
             result['RelatedSessionId'] = self.related_session_id
@@ -234,6 +243,9 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('RecommendQuestionList') is not None:
+            self.recommend_question_list_shrink = m.get('RecommendQuestionList')
 
         if m.get('RelatedSessionId') is not None:
             self.related_session_id = m.get('RelatedSessionId')

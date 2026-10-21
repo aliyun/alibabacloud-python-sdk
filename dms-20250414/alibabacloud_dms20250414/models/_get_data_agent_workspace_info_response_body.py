@@ -20,7 +20,7 @@ class GetDataAgentWorkspaceInfoResponseBody(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -86,21 +86,23 @@ class GetDataAgentWorkspaceInfoResponseBodyData(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # The creation time of the session. Unit: seconds. The value is a UNIX timestamp.
+        # The creation time of the workspace. The value is a UNIX timestamp in seconds.
         self.create_time = create_time
         # The UID of the workspace creator.
         self.creator = creator
+        # Indicates whether sessions are shared within the workspace.
         self.is_session_share_enabled = is_session_share_enabled
-        # The most recent modification time of the workspace. Unit: seconds. The value is a UNIX timestamp.
+        # The last modification time of the workspace. The value is a UNIX timestamp in seconds.
         self.modify_time = modify_time
         # The role name of the user in the workspace.
         self.role_name = role_name
         # The number of members in the workspace.
         self.total_member = total_member
+        # The type of the workspace.
         self.type = type
-        # The description of the collaborative workspace.
+        # The description of the workspace.
         self.workspace_desc = workspace_desc
-        # The ID of the collaborative workspace.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
         # The name of the workspace.
         self.workspace_name = workspace_name

@@ -59,6 +59,9 @@ from ._open_claw_instance_vo import OpenClawInstanceVO
 from ._ossie_model_view import OssieModelView
 from ._partition_error import PartitionError
 from ._trial_order_eligibility_vo import TrialOrderEligibilityVO
+from ._add_agentic_data_source_request import AddAgenticDataSourceRequest
+from ._add_agentic_data_source_response_body import AddAgenticDataSourceResponseBody
+from ._add_agentic_data_source_response import AddAgenticDataSourceResponse
 from ._add_data_agent_memory_request import AddDataAgentMemoryRequest
 from ._add_data_agent_memory_response_body import AddDataAgentMemoryResponseBody
 from ._add_data_agent_memory_response import AddDataAgentMemoryResponse
@@ -78,6 +81,9 @@ from ._config_data_agent_memory_response import ConfigDataAgentMemoryResponse
 from ._create_agent_request import CreateAgentRequest
 from ._create_agent_response_body import CreateAgentResponseBody
 from ._create_agent_response import CreateAgentResponse
+from ._create_agentic_sql_execute_credential_request import CreateAgenticSqlExecuteCredentialRequest
+from ._create_agentic_sql_execute_credential_response_body import CreateAgenticSqlExecuteCredentialResponseBody
+from ._create_agentic_sql_execute_credential_response import CreateAgenticSqlExecuteCredentialResponse
 from ._create_airflow_request import CreateAirflowRequest
 from ._create_airflow_shrink_request import CreateAirflowShrinkRequest
 from ._create_airflow_response_body import CreateAirflowResponseBody
@@ -114,6 +120,9 @@ from ._create_data_agent_workspace_response import CreateDataAgentWorkspaceRespo
 from ._create_one_meta_sql_template_request import CreateOneMetaSqlTemplateRequest
 from ._create_one_meta_sql_template_response_body import CreateOneMetaSqlTemplateResponseBody
 from ._create_one_meta_sql_template_response import CreateOneMetaSqlTemplateResponse
+from ._delete_agentic_data_source_request import DeleteAgenticDataSourceRequest
+from ._delete_agentic_data_source_response_body import DeleteAgenticDataSourceResponseBody
+from ._delete_agentic_data_source_response import DeleteAgenticDataSourceResponse
 from ._delete_airflow_request import DeleteAirflowRequest
 from ._delete_airflow_response_body import DeleteAirflowResponseBody
 from ._delete_airflow_response import DeleteAirflowResponse
@@ -197,6 +206,21 @@ from ._file_upload_callback_response import FileUploadCallbackResponse
 from ._get_agentic_agent_by_install_token_request import GetAgenticAgentByInstallTokenRequest
 from ._get_agentic_agent_by_install_token_response_body import GetAgenticAgentByInstallTokenResponseBody
 from ._get_agentic_agent_by_install_token_response import GetAgenticAgentByInstallTokenResponse
+from ._get_agentic_catalog_request import GetAgenticCatalogRequest
+from ._get_agentic_catalog_response_body import GetAgenticCatalogResponseBody
+from ._get_agentic_catalog_response import GetAgenticCatalogResponse
+from ._get_agentic_data_source_request import GetAgenticDataSourceRequest
+from ._get_agentic_data_source_response_body import GetAgenticDataSourceResponseBody
+from ._get_agentic_data_source_response import GetAgenticDataSourceResponse
+from ._get_agentic_database_request import GetAgenticDatabaseRequest
+from ._get_agentic_database_response_body import GetAgenticDatabaseResponseBody
+from ._get_agentic_database_response import GetAgenticDatabaseResponse
+from ._get_agentic_table_column_request import GetAgenticTableColumnRequest
+from ._get_agentic_table_column_response_body import GetAgenticTableColumnResponseBody
+from ._get_agentic_table_column_response import GetAgenticTableColumnResponse
+from ._get_agentic_table_index_request import GetAgenticTableIndexRequest
+from ._get_agentic_table_index_response_body import GetAgenticTableIndexResponseBody
+from ._get_agentic_table_index_response import GetAgenticTableIndexResponse
 from ._get_airflow_request import GetAirflowRequest
 from ._get_airflow_response_body import GetAirflowResponseBody
 from ._get_airflow_response import GetAirflowResponse
@@ -256,6 +280,24 @@ from ._init_workspace_system_mcp_server_response import InitWorkspaceSystemMcpSe
 from ._install_data_agent_mcp_request import InstallDataAgentMcpRequest
 from ._install_data_agent_mcp_response_body import InstallDataAgentMcpResponseBody
 from ._install_data_agent_mcp_response import InstallDataAgentMcpResponse
+from ._list_agentic_catalog_request import ListAgenticCatalogRequest
+from ._list_agentic_catalog_response_body import ListAgenticCatalogResponseBody
+from ._list_agentic_catalog_response import ListAgenticCatalogResponse
+from ._list_agentic_data_sources_request import ListAgenticDataSourcesRequest
+from ._list_agentic_data_sources_response_body import ListAgenticDataSourcesResponseBody
+from ._list_agentic_data_sources_response import ListAgenticDataSourcesResponse
+from ._list_agentic_database_request import ListAgenticDatabaseRequest
+from ._list_agentic_database_response_body import ListAgenticDatabaseResponseBody
+from ._list_agentic_database_response import ListAgenticDatabaseResponse
+from ._list_agentic_global_sql_execution_histories_request import ListAgenticGlobalSqlExecutionHistoriesRequest
+from ._list_agentic_global_sql_execution_histories_response_body import ListAgenticGlobalSqlExecutionHistoriesResponseBody
+from ._list_agentic_global_sql_execution_histories_response import ListAgenticGlobalSqlExecutionHistoriesResponse
+from ._list_agentic_sql_execution_histories_request import ListAgenticSqlExecutionHistoriesRequest
+from ._list_agentic_sql_execution_histories_response_body import ListAgenticSqlExecutionHistoriesResponseBody
+from ._list_agentic_sql_execution_histories_response import ListAgenticSqlExecutionHistoriesResponse
+from ._list_agentic_table_base_info_request import ListAgenticTableBaseInfoRequest
+from ._list_agentic_table_base_info_response_body import ListAgenticTableBaseInfoResponseBody
+from ._list_agentic_table_base_info_response import ListAgenticTableBaseInfoResponse
 from ._list_airflow_versions_request import ListAirflowVersionsRequest
 from ._list_airflow_versions_response_body import ListAirflowVersionsResponseBody
 from ._list_airflow_versions_response import ListAirflowVersionsResponse
@@ -353,6 +395,12 @@ from ._retrieve_knowledge_base_response import RetrieveKnowledgeBaseResponse
 from ._save_workspace_code_request import SaveWorkspaceCodeRequest
 from ._save_workspace_code_response_body import SaveWorkspaceCodeResponseBody
 from ._save_workspace_code_response import SaveWorkspaceCodeResponse
+from ._search_agentic_catalog_request import SearchAgenticCatalogRequest
+from ._search_agentic_catalog_response_body import SearchAgenticCatalogResponseBody
+from ._search_agentic_catalog_response import SearchAgenticCatalogResponse
+from ._search_agentic_database_request import SearchAgenticDatabaseRequest
+from ._search_agentic_database_response_body import SearchAgenticDatabaseResponseBody
+from ._search_agentic_database_response import SearchAgenticDatabaseResponse
 from ._send_chat_message_request import SendChatMessageRequest
 from ._send_chat_message_shrink_request import SendChatMessageShrinkRequest
 from ._send_chat_message_response_body import SendChatMessageResponseBody
@@ -372,6 +420,12 @@ from ._start_list_mcp_server_tools_response import StartListMcpServerToolsRespon
 from ._stop_data_agent_accuracy_test_task_request import StopDataAgentAccuracyTestTaskRequest
 from ._stop_data_agent_accuracy_test_task_response_body import StopDataAgentAccuracyTestTaskResponseBody
 from ._stop_data_agent_accuracy_test_task_response import StopDataAgentAccuracyTestTaskResponse
+from ._test_agentic_data_source_connection_request import TestAgenticDataSourceConnectionRequest
+from ._test_agentic_data_source_connection_response_body import TestAgenticDataSourceConnectionResponseBody
+from ._test_agentic_data_source_connection_response import TestAgenticDataSourceConnectionResponse
+from ._update_agentic_data_source_request import UpdateAgenticDataSourceRequest
+from ._update_agentic_data_source_response_body import UpdateAgenticDataSourceResponseBody
+from ._update_agentic_data_source_response import UpdateAgenticDataSourceResponse
 from ._update_airflow_request import UpdateAirflowRequest
 from ._update_airflow_shrink_request import UpdateAirflowShrinkRequest
 from ._update_airflow_response_body import UpdateAirflowResponseBody
@@ -418,6 +472,7 @@ from ._workspace_code_publish_response_body import WorkspaceCodePublishResponseB
 from ._workspace_code_publish_response import WorkspaceCodePublishResponse
 from ._agentic_dms_instance_sync_task_instance import AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary
 from ._open_claw_instance_vo import OpenClawInstanceVOImageInfo
+from ._add_agentic_data_source_response_body import AddAgenticDataSourceResponseBodyData
 from ._add_data_agent_memory_response_body import AddDataAgentMemoryResponseBodyData
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBodyData
 from ._check_data_agent_memory_config_response_body import CheckDataAgentMemoryConfigResponseBodyData
@@ -425,6 +480,7 @@ from ._config_airflow_response_body import ConfigAirflowResponseBodyRoot
 from ._config_data_agent_memory_response_body import ConfigDataAgentMemoryResponseBodyData
 from ._create_agent_response_body import CreateAgentResponseBodyDataApiKey
 from ._create_agent_response_body import CreateAgentResponseBodyData
+from ._create_agentic_sql_execute_credential_response_body import CreateAgenticSqlExecuteCredentialResponseBodyData
 from ._create_airflow_response_body import CreateAirflowResponseBodyRoot
 from ._create_airflow_login_token_response_body import CreateAirflowLoginTokenResponseBodyData
 from ._create_custom_agent_request import CreateCustomAgentRequestCallbackConfig
@@ -483,6 +539,7 @@ from ._describe_knowledge_base_upload_signature_response_body import DescribeKno
 from ._describe_skill_file_upload_signature_response_body import DescribeSkillFileUploadSignatureResponseBodyData
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBodyData
 from ._get_agentic_agent_by_install_token_response_body import GetAgenticAgentByInstallTokenResponseBodyData
+from ._get_agentic_data_source_response_body import GetAgenticDataSourceResponseBodyData
 from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
 from ._get_data_agent_task_model_usage_response_body import GetDataAgentTaskModelUsageResponseBodyData
@@ -496,6 +553,9 @@ from ._get_sql_console_operation_log_response_body import GetSqlConsoleOperation
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyDataRepos
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyData
 from ._get_workspace_quota_response_body import GetWorkspaceQuotaResponseBodyData
+from ._list_agentic_data_sources_response_body import ListAgenticDataSourcesResponseBodyData
+from ._list_agentic_global_sql_execution_histories_response_body import ListAgenticGlobalSqlExecutionHistoriesResponseBodyData
+from ._list_agentic_sql_execution_histories_response_body import ListAgenticSqlExecutionHistoriesResponseBodyData
 from ._list_airflows_response_body import ListAirflowsResponseBodyRootList
 from ._list_airflows_response_body import ListAirflowsResponseBodyRoot
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentCallbackConfig
@@ -559,6 +619,8 @@ from ._send_chat_message_response_body import SendChatMessageResponseBodyData
 from ._set_workspace_quota_response_body import SetWorkspaceQuotaResponseBodyData
 from ._start_data_agent_accuracy_test_task_response_body import StartDataAgentAccuracyTestTaskResponseBodyData
 from ._start_list_mcp_server_tools_response_body import StartListMcpServerToolsResponseBodyData
+from ._test_agentic_data_source_connection_response_body import TestAgenticDataSourceConnectionResponseBodyData
+from ._update_agentic_data_source_response_body import UpdateAgenticDataSourceResponseBodyData
 from ._update_airflow_response_body import UpdateAirflowResponseBodyRoot
 from ._update_data_agent_accuracy_test_response_body import UpdateDataAgentAccuracyTestResponseBodyData
 from ._update_data_agent_memory_response_body import UpdateDataAgentMemoryResponseBodyData
@@ -625,6 +687,9 @@ __all__ = [
     OssieModelView,
     PartitionError,
     TrialOrderEligibilityVO,
+    AddAgenticDataSourceRequest,
+    AddAgenticDataSourceResponseBody,
+    AddAgenticDataSourceResponse,
     AddDataAgentMemoryRequest,
     AddDataAgentMemoryResponseBody,
     AddDataAgentMemoryResponse,
@@ -644,6 +709,9 @@ __all__ = [
     CreateAgentRequest,
     CreateAgentResponseBody,
     CreateAgentResponse,
+    CreateAgenticSqlExecuteCredentialRequest,
+    CreateAgenticSqlExecuteCredentialResponseBody,
+    CreateAgenticSqlExecuteCredentialResponse,
     CreateAirflowRequest,
     CreateAirflowShrinkRequest,
     CreateAirflowResponseBody,
@@ -680,6 +748,9 @@ __all__ = [
     CreateOneMetaSqlTemplateRequest,
     CreateOneMetaSqlTemplateResponseBody,
     CreateOneMetaSqlTemplateResponse,
+    DeleteAgenticDataSourceRequest,
+    DeleteAgenticDataSourceResponseBody,
+    DeleteAgenticDataSourceResponse,
     DeleteAirflowRequest,
     DeleteAirflowResponseBody,
     DeleteAirflowResponse,
@@ -763,6 +834,21 @@ __all__ = [
     GetAgenticAgentByInstallTokenRequest,
     GetAgenticAgentByInstallTokenResponseBody,
     GetAgenticAgentByInstallTokenResponse,
+    GetAgenticCatalogRequest,
+    GetAgenticCatalogResponseBody,
+    GetAgenticCatalogResponse,
+    GetAgenticDataSourceRequest,
+    GetAgenticDataSourceResponseBody,
+    GetAgenticDataSourceResponse,
+    GetAgenticDatabaseRequest,
+    GetAgenticDatabaseResponseBody,
+    GetAgenticDatabaseResponse,
+    GetAgenticTableColumnRequest,
+    GetAgenticTableColumnResponseBody,
+    GetAgenticTableColumnResponse,
+    GetAgenticTableIndexRequest,
+    GetAgenticTableIndexResponseBody,
+    GetAgenticTableIndexResponse,
     GetAirflowRequest,
     GetAirflowResponseBody,
     GetAirflowResponse,
@@ -822,6 +908,24 @@ __all__ = [
     InstallDataAgentMcpRequest,
     InstallDataAgentMcpResponseBody,
     InstallDataAgentMcpResponse,
+    ListAgenticCatalogRequest,
+    ListAgenticCatalogResponseBody,
+    ListAgenticCatalogResponse,
+    ListAgenticDataSourcesRequest,
+    ListAgenticDataSourcesResponseBody,
+    ListAgenticDataSourcesResponse,
+    ListAgenticDatabaseRequest,
+    ListAgenticDatabaseResponseBody,
+    ListAgenticDatabaseResponse,
+    ListAgenticGlobalSqlExecutionHistoriesRequest,
+    ListAgenticGlobalSqlExecutionHistoriesResponseBody,
+    ListAgenticGlobalSqlExecutionHistoriesResponse,
+    ListAgenticSqlExecutionHistoriesRequest,
+    ListAgenticSqlExecutionHistoriesResponseBody,
+    ListAgenticSqlExecutionHistoriesResponse,
+    ListAgenticTableBaseInfoRequest,
+    ListAgenticTableBaseInfoResponseBody,
+    ListAgenticTableBaseInfoResponse,
     ListAirflowVersionsRequest,
     ListAirflowVersionsResponseBody,
     ListAirflowVersionsResponse,
@@ -919,6 +1023,12 @@ __all__ = [
     SaveWorkspaceCodeRequest,
     SaveWorkspaceCodeResponseBody,
     SaveWorkspaceCodeResponse,
+    SearchAgenticCatalogRequest,
+    SearchAgenticCatalogResponseBody,
+    SearchAgenticCatalogResponse,
+    SearchAgenticDatabaseRequest,
+    SearchAgenticDatabaseResponseBody,
+    SearchAgenticDatabaseResponse,
     SendChatMessageRequest,
     SendChatMessageShrinkRequest,
     SendChatMessageResponseBody,
@@ -938,6 +1048,12 @@ __all__ = [
     StopDataAgentAccuracyTestTaskRequest,
     StopDataAgentAccuracyTestTaskResponseBody,
     StopDataAgentAccuracyTestTaskResponse,
+    TestAgenticDataSourceConnectionRequest,
+    TestAgenticDataSourceConnectionResponseBody,
+    TestAgenticDataSourceConnectionResponse,
+    UpdateAgenticDataSourceRequest,
+    UpdateAgenticDataSourceResponseBody,
+    UpdateAgenticDataSourceResponse,
     UpdateAirflowRequest,
     UpdateAirflowShrinkRequest,
     UpdateAirflowResponseBody,
@@ -984,6 +1100,7 @@ __all__ = [
     WorkspaceCodePublishResponse,
     AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary,
     OpenClawInstanceVOImageInfo,
+    AddAgenticDataSourceResponseBodyData,
     AddDataAgentMemoryResponseBodyData,
     AddUserToDataAgentWorkspaceResponseBodyData,
     CheckDataAgentMemoryConfigResponseBodyData,
@@ -991,6 +1108,7 @@ __all__ = [
     ConfigDataAgentMemoryResponseBodyData,
     CreateAgentResponseBodyDataApiKey,
     CreateAgentResponseBodyData,
+    CreateAgenticSqlExecuteCredentialResponseBodyData,
     CreateAirflowResponseBodyRoot,
     CreateAirflowLoginTokenResponseBodyData,
     CreateCustomAgentRequestCallbackConfig,
@@ -1049,6 +1167,7 @@ __all__ = [
     DescribeSkillFileUploadSignatureResponseBodyData,
     FileUploadCallbackResponseBodyData,
     GetAgenticAgentByInstallTokenResponseBodyData,
+    GetAgenticDataSourceResponseBodyData,
     GetAirflowResponseBodyRoot,
     GetDataAgentSubAccountInfoResponseBodyData,
     GetDataAgentTaskModelUsageResponseBodyData,
@@ -1062,6 +1181,9 @@ __all__ = [
     GetWorkspaceCodePublishSettingResponseBodyDataRepos,
     GetWorkspaceCodePublishSettingResponseBodyData,
     GetWorkspaceQuotaResponseBodyData,
+    ListAgenticDataSourcesResponseBodyData,
+    ListAgenticGlobalSqlExecutionHistoriesResponseBodyData,
+    ListAgenticSqlExecutionHistoriesResponseBodyData,
     ListAirflowsResponseBodyRootList,
     ListAirflowsResponseBodyRoot,
     ListCustomAgentResponseBodyDataContentCallbackConfig,
@@ -1125,6 +1247,8 @@ __all__ = [
     SetWorkspaceQuotaResponseBodyData,
     StartDataAgentAccuracyTestTaskResponseBodyData,
     StartListMcpServerToolsResponseBodyData,
+    TestAgenticDataSourceConnectionResponseBodyData,
+    UpdateAgenticDataSourceResponseBodyData,
     UpdateAirflowResponseBodyRoot,
     UpdateDataAgentAccuracyTestResponseBodyData,
     UpdateDataAgentMemoryResponseBodyData,
