@@ -20,11 +20,11 @@ class ResizeAIDBClusterModelResponseBody(DaraModel):
         self.current_capacity = current_capacity
         # The ID of the PolarDB AI 3.0 logical instance.
         self.dbcluster_id = dbcluster_id
-        # Indicates whether the current request performed only a capacity dry run.
+        # Indicates whether the current request performs a capacity dry run only.
         self.dry_run = dry_run
-        # The capacity that can be directly borrowed from the global pool without reshaping. This parameter is returned only when DryRun is set to true.
+        # The capacity that can be directly borrowed from the large pool without reshaping. This parameter is returned only when DryRun is set to true.
         self.pool_hit_capacity = pool_hit_capacity
-        # The direct hit ratio of the global pool. Valid values: 0 to 1. This parameter is returned only when DryRun is set to true.
+        # The direct hit ratio of the large pool. Valid values: 0 to 1. This parameter is returned only when DryRun is set to true.
         self.pool_hit_ratio = pool_hit_ratio
         # Id of the request
         self.request_id = request_id

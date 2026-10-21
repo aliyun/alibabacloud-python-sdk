@@ -1,3 +1,10 @@
+2026-10-21 Version: 9.0.2
+- Update API CreateApplication: add request parameters MemApplicationSpec.PolarAIEmbedderInstanceId.
+- Update API CreateApplication: add request parameters MemApplicationSpec.PolarAIGraphLlmInstanceId.
+- Update API CreateApplication: add request parameters MemApplicationSpec.PolarAILlmInstanceId.
+- Update API CreateApplication: add request parameters MemApplicationSpec.PolarAIRerankerInstanceId.
+
+
 2026-10-19 Version: 9.0.1
 - Update API DescribeKnowledgeBaseAnswer: add response parameters Body.Sources.$.SourceUri.
 - Update API DescribeKnowledgeBaseFileShards: add response parameters Body.Shards.$.SourceUri.

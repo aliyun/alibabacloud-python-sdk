@@ -16,13 +16,13 @@ class ResizeAIDBClusterModelRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to perform only a read-only capacity dry run.
+        # Specifies whether to perform a read-only capacity dry run.
         self.dry_run = dry_run
-        # The region ID. Requests are routed to the region where the instance resides.
+        # The region ID. Requests are routed based on the region to which the instance belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The target total capacity. An abstract capacity unit of 1000 is equivalent to one L20N card. The value must be a positive integer.
+        # The target total capacity. The abstract capacity unit is 1000, which equals one L20N equivalent card. The value must be a positive integer.
         # 
         # This parameter is required.
         self.target_capacity = target_capacity

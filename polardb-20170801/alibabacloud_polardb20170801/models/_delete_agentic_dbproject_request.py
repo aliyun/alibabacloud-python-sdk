@@ -16,7 +16,7 @@ class DeleteAgenticDBProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The target project ID.
+        # The ID of the target project.
         # 
         # This parameter is required.
         self.project_id = project_id

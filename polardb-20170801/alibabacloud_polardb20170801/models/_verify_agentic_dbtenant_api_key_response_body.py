@@ -17,19 +17,15 @@ class VerifyAgenticDBTenantApiKeyResponseBody(DaraModel):
         tenant_name: str = None,
         valid: bool = None,
     ):
-        # The key ID. This parameter is empty if the API key is invalid.
+        # The ID of the API key. This parameter is empty if the API key is invalid.
         self.api_key_id = api_key_id
         # The ID of the associated AgenticDB cluster.
         self.dbcluster_id = dbcluster_id
         # The expiration time. This parameter is empty if the API key is permanently valid.
         # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time is in ISO 8601 format and uses the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
-        # The reason for the validation failure. This parameter is empty if the API key is valid. Valid values:
-        # 
-        # - NotFound: The API key is not found.
-        # - Expired: The API key has expired.
-        # - Revoked: The API key has been revoked.
+        # The reason for validation failure. Valid values: NotFound, Expired, and Revoked. This parameter is empty if the API key is valid.
         self.reason = reason
         # The region ID.
         self.region_id = region_id
