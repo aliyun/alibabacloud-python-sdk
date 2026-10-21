@@ -22,11 +22,11 @@ class DescribeFilesystemsVscAttachInfoResponseBody(DaraModel):
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The query token. Set this parameter to the NextToken value returned in the previous API call.
+        # The query token. The value is the NextToken parameter value returned by the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of association entries.
+        # The total number of association records.
         self.total_count = total_count
         self.vsc_attach_info = vsc_attach_info
 

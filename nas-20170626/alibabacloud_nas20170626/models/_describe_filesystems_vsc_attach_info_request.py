@@ -15,14 +15,14 @@ class DescribeFilesystemsVscAttachInfoRequest(DaraModel):
         resource_ids: List[main_models.DescribeFilesystemsVscAttachInfoRequestResourceIds] = None,
         role_chain: List[main_models.DescribeFilesystemsVscAttachInfoRequestRoleChain] = None,
     ):
-        # The number of results returned per query.
+        # The number of entries to return per query.
         # 
         # Valid values: 10 to 100.
         # Default value: 10.
         self.max_results = max_results
-        # The query token. Set this parameter to the NextToken value returned in the previous API call.
+        # The query token. The value is the NextToken parameter value returned by the previous API call.
         self.next_token = next_token
-        # The ID information of file systems and virtual storage channels. A maximum of 10 entries can be specified per batch.
+        # The ID information of the file systems and virtual storage channels. A maximum of 10 items are supported per batch.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
@@ -92,7 +92,7 @@ class DescribeFilesystemsVscAttachInfoRequestRoleChain(DaraModel):
         role_arn: str = None,
         role_type: str = None,
     ):
-        # The UID of the Alibaba Cloud account (primary account), which specifies the account on whose behalf the service assumes the role.
+        # The UID of the Alibaba Cloud account (the primary account UID). This parameter specifies the Alibaba Cloud account for which the service assumes the role.
         self.assume_role_for = assume_role_for
         # The resource descriptor of the specified role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
@@ -137,9 +137,9 @@ class DescribeFilesystemsVscAttachInfoRequestResourceIds(DaraModel):
         file_system_id: str = None,
         vsc_id: str = None,
     ):
-        # The file system ID.
+        # The ID of the file system. This parameter is required in each ResourceIds entry and must be provided together with VscId.
         self.file_system_id = file_system_id
-        # The virtual storage channel ID.
+        # The ID of the virtual storage channel. This parameter is required in each ResourceIds entry and must be provided together with FileSystemId. The ID starts with vsc-. You can call the ListVscs operation of Lingjun AI Computing Service eflo-controller/2022-12-15 to query the ID. If the virtual storage channel is not created, call CreateVsc to create one.
         self.vsc_id = vsc_id
 
     def validate(self):

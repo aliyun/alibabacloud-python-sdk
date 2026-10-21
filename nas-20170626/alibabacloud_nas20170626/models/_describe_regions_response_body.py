@@ -18,12 +18,12 @@ class DescribeRegionsResponseBody(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The number of regions on each page.
+        # The number of regions returned per page.
         self.page_size = page_size
         self.regions = regions
         # The request ID.
         self.request_id = request_id
-        # The number of regions returned.
+        # The total number of regions returned.
         self.total_count = total_count
 
     def validate(self):

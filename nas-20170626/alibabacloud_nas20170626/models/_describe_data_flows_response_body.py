@@ -15,7 +15,7 @@ class DescribeDataFlowsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.data_flow_info = data_flow_info
-        # The token that determines the start point of the next query. If the returned results are truncated, you can use NextToken to initiate another request to retrieve the results after the truncation point.
+        # When the returned results of a request are truncated, you can use NextToken to initiate another request and obtain the remaining results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

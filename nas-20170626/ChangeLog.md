@@ -1,3 +1,7 @@
+2026-10-21 Version: 3.7.5
+- Update API CreateFileSystem: add request parameters HpnZone.
+
+
 2026-10-13 Version: 3.7.4
 - Update API ModifyLifecyclePolicy: add request parameters Description.
 

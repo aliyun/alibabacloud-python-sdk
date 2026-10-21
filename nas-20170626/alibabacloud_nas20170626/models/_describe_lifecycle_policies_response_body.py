@@ -16,13 +16,13 @@ class DescribeLifecyclePoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The collection of lifecycle management policy information.
+        # The lifecycle management policies.
         self.lifecycle_policies = lifecycle_policies
         # The page number of the list.
         self.page_number = page_number
-        # The number of lifecycle management policies on each page.
+        # The number of lifecycle management policies returned on each page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of lifecycle management policies.
         self.total_count = total_count
@@ -96,15 +96,13 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(DaraModel):
         storage_type: str = None,
         transit_rules: List[main_models.DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules] = None,
     ):
-        # The time when the lifecycle management policy was created.
-        # 
-        # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The time when the lifecycle management policy was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
-        # The file data expiration and deletion rules. A maximum of one rule can be configured.
+        # The expiration and deletion rules for file data. You can configure up to one rule.
         self.delete_rules = delete_rules
-        # The description of the policy.
+        # The description.
         self.description = description
-        # The file system ID.
+        # The ID of the file system.
         self.file_system_id = file_system_id
         # The ID of the lifecycle policy.
         self.lifecycle_policy_id = lifecycle_policy_id
@@ -112,25 +110,23 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(DaraModel):
         self.lifecycle_policy_name = lifecycle_policy_name
         # The policy type.
         self.lifecycle_policy_type = lifecycle_policy_type
-        # The management rule associated with the lifecycle management policy.
-        # 
-        # Valid values:
-        # - DEFAULT_ATIME_14: Files not accessed in the last 14 days.
-        # - DEFAULT_ATIME_30: Files not accessed in the last 30 days.
-        # - DEFAULT_ATIME_60: Files not accessed in the last 60 days.
-        # - DEFAULT_ATIME_90: Files not accessed in the last 90 days.
+        # The management rule associated with the lifecycle management policy. Valid values:
+        # - DEFAULT_ATIME_14: Files that have not been accessed for 14 days.
+        # - DEFAULT_ATIME_30: Files that have not been accessed for 30 days.
+        # - DEFAULT_ATIME_60: Files that have not been accessed for 60 days.
+        # - DEFAULT_ATIME_90: Files that have not been accessed for 90 days.
         self.lifecycle_rule_name = lifecycle_rule_name
-        # The absolute path of the single directory configured in the lifecycle management policy.
+        # The absolute path of the single directory configured for the lifecycle management policy.
         self.path = path
-        # The list of absolute paths of multiple directories configured in the lifecycle management policy.
+        # The list of absolute paths of the multiple directories configured for the lifecycle management policy.
         self.paths = paths
         # The file data retrieval rules.
         self.retrieve_rules = retrieve_rules
-        # The storage tiering type. Valid values:
+        # The tiered storage type. Valid values:
         # - InfrequentAccess: IA storage class.
         # - Archive: Archive storage class.
         self.storage_type = storage_type
-        # The file data transit rules.
+        # The file data transition rules.
         self.transit_rules = transit_rules
 
     def validate(self):
@@ -257,9 +253,9 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules(DaraMod
         attribute: str = None,
         threshold: str = None,
     ):
-        # The attribute of the transit rule.
+        # The attribute of the transition rule.
         self.attribute = attribute
-        # The threshold of the transit rule.
+        # The threshold of the transition rule.
         self.threshold = threshold
 
     def validate(self):
@@ -331,15 +327,11 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesDeleteRules(DaraMode
         attribute: str = None,
         threshold: str = None,
     ):
-        # The attribute of the rule.
-        # 
-        # Valid values:
+        # The attribute of the rule. Valid values:
         # - Atime: The access time of the file.
         self.attribute = attribute
-        # The threshold of the rule.
-        # 
-        # Valid values:
-        # - If Attribute is set to Atime, this value indicates the number of days since the file was last accessed. Valid values: 1 to 365.
+        # The threshold of the rule. Valid values:
+        # - If Attribute is set to Atime, the value indicates the number of days that a file has not been accessed. Valid values: 1 to 365.
         self.threshold = threshold
 
     def validate(self):

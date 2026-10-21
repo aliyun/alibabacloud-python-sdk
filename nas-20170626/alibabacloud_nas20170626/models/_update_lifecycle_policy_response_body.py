@@ -16,8 +16,8 @@ class UpdateLifecyclePolicyResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

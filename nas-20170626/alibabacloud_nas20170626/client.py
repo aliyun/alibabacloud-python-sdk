@@ -2223,6 +2223,8 @@ class Client(OpenApiClient):
             query['EncryptType'] = request.encrypt_type
         if not DaraCore.is_null(request.file_system_type):
             query['FileSystemType'] = request.file_system_type
+        if not DaraCore.is_null(request.hpn_zone):
+            query['HpnZone'] = request.hpn_zone
         if not DaraCore.is_null(request.kms_key_id):
             query['KmsKeyId'] = request.kms_key_id
         if not DaraCore.is_null(request.protocol_type):
@@ -2289,6 +2291,8 @@ class Client(OpenApiClient):
             query['EncryptType'] = request.encrypt_type
         if not DaraCore.is_null(request.file_system_type):
             query['FileSystemType'] = request.file_system_type
+        if not DaraCore.is_null(request.hpn_zone):
+            query['HpnZone'] = request.hpn_zone
         if not DaraCore.is_null(request.kms_key_id):
             query['KmsKeyId'] = request.kms_key_id
         if not DaraCore.is_null(request.protocol_type):
