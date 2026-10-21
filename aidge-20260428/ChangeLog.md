@@ -1,3 +1,15 @@
+2026-10-21 Version: 5.11.1
+- Update API ImageMattingAsync: add request parameters BizId.
+- Update API ImageRecognitionAsync: add request parameters BizId.
+- Update API ImageRemovalProAsync: add request parameters BizId.
+- Update API ImageRemoveAsync: add request parameters BizId.
+- Update API ImageTranslationPlusAsync: add request parameters BizId.
+- Update API ImageTranslationProAsync: add request parameters BizId.
+- Update API ImageTranslationStandardAsync: add request parameters BizId.
+- Update API QueryAsyncTaskResult: add response parameters Body.Data.BizId.
+- Update API SizeChartExtractAsync: add request parameters BizId.
+
+
 2026-10-20 Version: 5.11.0
 - Support API AddDisplayKnowledge.
 - Support API DeleteDisplayKnowledge.

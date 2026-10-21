@@ -9,13 +9,16 @@ from darabonba.model import DaraModel
 class SizeChartExtractAsyncRequest(DaraModel):
     def __init__(
         self,
+        biz_id: str = None,
         column_name_list: List[str] = None,
         image_url: str = None,
         language_model: str = None,
     ):
+        # The business order number of the caller. It is recorded when the request is accepted and returned as is when you query the asynchronous task result.
+        self.biz_id = biz_id
         # The list of column names to extract, such as Size, Bust, and Length.
         self.column_name_list = column_name_list
-        # The image URL. The image must be in the JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 pixels and 3000 × 3000 pixels. The file size cannot exceed 10 MB.
+        # The image URL. The image must be in the JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 pixels and 3000 × 3000 pixels, and the file size cannot exceed 10 MB.
         # 
         # This parameter is required.
         self.image_url = image_url
@@ -30,6 +33,9 @@ class SizeChartExtractAsyncRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+
         if self.column_name_list is not None:
             result['ColumnNameList'] = self.column_name_list
 
@@ -43,6 +49,9 @@ class SizeChartExtractAsyncRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+
         if m.get('ColumnNameList') is not None:
             self.column_name_list = m.get('ColumnNameList')
 

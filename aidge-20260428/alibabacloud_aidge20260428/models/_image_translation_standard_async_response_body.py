@@ -14,11 +14,11 @@ class ImageTranslationStandardAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned for successful calls.
+        # The error code. This parameter is not returned for normal calls.
         self.code = code
-        # The submission result of the asynchronous task for Image Translation Standard Edition.
+        # The asynchronous task submission result of Image Translation Standard Edition.
         self.data = data
-        # The error message. This parameter is not returned for successful calls.
+        # The error message. This parameter is not returned for normal calls.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -76,7 +76,7 @@ class ImageTranslationStandardAsyncResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the task used to query the asynchronous task result.
+        # The task ID used to query the asynchronous task result.
         self.task_id = task_id
 
     def validate(self):

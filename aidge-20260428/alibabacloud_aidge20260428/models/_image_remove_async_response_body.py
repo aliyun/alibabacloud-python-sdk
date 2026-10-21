@@ -16,13 +16,15 @@ class ImageRemoveAsyncResponseBody(DaraModel):
     ):
         # The status code, such as "success".
         self.code = code
-        # The returned result struct.
+        # The returned result struct information.
         self.data = data
-        # The error message, such as "The parameters contain sensitive information. Please try another input."
+        # The error message, such as "The parameters contain sensitive information. Try another input."
         self.message = message
-        # The ID of the request, which is used to identify a unique request.
+        # The request ID, which is used to identify a unique request.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values: true (success) and false (failure).
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):

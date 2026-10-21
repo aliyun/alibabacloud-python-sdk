@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ImageTranslationStandardAsyncRequest(DaraModel):
     def __init__(
         self,
+        biz_id: str = None,
         glossary: str = None,
         image_url: str = None,
         including_product_area: bool = None,
@@ -15,13 +16,15 @@ class ImageTranslationStandardAsyncRequest(DaraModel):
         translating_brand_in_the_product: bool = None,
         use_image_editor: bool = None,
     ):
+        # The business order ID of the caller. It is recorded upon acceptance and returned as-is when querying the asynchronous task result.
+        self.biz_id = biz_id
         # The intervention glossary.
         self.glossary = glossary
         # The URL of the image to be translated.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Specifies whether to include the product area in the translation.
+        # Specifies whether to include the translation of the product area.
         self.including_product_area = including_product_area
         # The source language.
         # 
@@ -31,7 +34,7 @@ class ImageTranslationStandardAsyncRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_language = target_language
-        # Specifies whether to translate brand text in the product area.
+        # Specifies whether to translate the brand text in the product area.
         self.translating_brand_in_the_product = translating_brand_in_the_product
         # Specifies whether to use the image editor protocol.
         self.use_image_editor = use_image_editor
@@ -44,6 +47,9 @@ class ImageTranslationStandardAsyncRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+
         if self.glossary is not None:
             result['Glossary'] = self.glossary
 
@@ -69,6 +75,9 @@ class ImageTranslationStandardAsyncRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+
         if m.get('Glossary') is not None:
             self.glossary = m.get('Glossary')
 

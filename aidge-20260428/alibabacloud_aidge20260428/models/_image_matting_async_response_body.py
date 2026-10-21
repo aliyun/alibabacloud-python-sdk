@@ -14,13 +14,13 @@ class ImageMattingAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code, such as success.
+        # The status code, such as "success". This parameter is not returned for normal calls.
         self.code = code
-        # The commit result of the intelligent image matting asynchronous task node.
+        # The submission result of the asynchronous task for intelligent image matting.
         self.data = data
-        # The error message. This parameter is not returned when the call is successful.
+        # The error message. This parameter is not returned for normal calls.
         self.message = message
-        # The ID of the request, which is used to identify a unique request.
+        # The ID of the request. It is used to identify a unique request.
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
         # - true: The call is successful.
@@ -78,7 +78,7 @@ class ImageMattingAsyncResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the task that is used to query the asynchronous task result.
+        # The task ID used to query the result of the asynchronous task.
         self.task_id = task_id
 
     def validate(self):

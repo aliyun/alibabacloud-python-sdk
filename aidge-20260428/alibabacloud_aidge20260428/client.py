@@ -1287,6 +1287,8 @@ class Client(OpenApiClient):
             query['BackGroundType'] = request.back_ground_type
         if not DaraCore.is_null(request.bg_color):
             query['BgColor'] = request.bg_color
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
         if not DaraCore.is_null(request.target_height):
@@ -1323,6 +1325,8 @@ class Client(OpenApiClient):
             query['BackGroundType'] = request.back_ground_type
         if not DaraCore.is_null(request.bg_color):
             query['BgColor'] = request.bg_color
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
         if not DaraCore.is_null(request.target_height):
@@ -1485,6 +1489,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.object_detect_elements):
             request.object_detect_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_detect_elements, 'ObjectDetectElements', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
         if not DaraCore.is_null(request.non_object_detect_elements_shrink):
@@ -1533,6 +1539,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.object_detect_elements):
             request.object_detect_elements_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_detect_elements, 'ObjectDetectElements', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
         if not DaraCore.is_null(request.non_object_detect_elements_shrink):
@@ -1663,6 +1671,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImageRemovalProAsyncResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
         req = open_api_util_models.OpenApiRequest(
@@ -1691,6 +1701,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImageRemovalProAsyncResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
         req = open_api_util_models.OpenApiRequest(
@@ -1857,6 +1869,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.user_text):
             request.user_text_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_text, 'UserText', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
         if not DaraCore.is_null(request.mask):
@@ -1907,6 +1921,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.user_text):
             request.user_text_shrink = Utils.array_to_string_with_specified_style(tmp_req.user_text, 'UserText', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
         if not DaraCore.is_null(request.mask):
@@ -2055,6 +2071,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationPlusAsyncResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.glossary):
             query['Glossary'] = request.glossary
         if not DaraCore.is_null(request.image_url):
@@ -2095,6 +2113,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationPlusAsyncResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.glossary):
             query['Glossary'] = request.glossary
         if not DaraCore.is_null(request.image_url):
@@ -2247,6 +2267,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationProAsyncResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.glossary):
             query['Glossary'] = request.glossary
         if not DaraCore.is_null(request.image_url):
@@ -2287,6 +2309,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationProAsyncResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.glossary):
             query['Glossary'] = request.glossary
         if not DaraCore.is_null(request.image_url):
@@ -2435,6 +2459,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationStandardAsyncResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.glossary):
             query['Glossary'] = request.glossary
         if not DaraCore.is_null(request.image_url):
@@ -2475,6 +2501,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationStandardAsyncResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.glossary):
             query['Glossary'] = request.glossary
         if not DaraCore.is_null(request.image_url):
@@ -3883,6 +3911,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.column_name_list):
             request.column_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.column_name_list, 'ColumnNameList', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.column_name_list_shrink):
             query['ColumnNameList'] = request.column_name_list_shrink
         if not DaraCore.is_null(request.image_url):
@@ -3919,6 +3949,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.column_name_list):
             request.column_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.column_name_list, 'ColumnNameList', 'json')
         query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.column_name_list_shrink):
             query['ColumnNameList'] = request.column_name_list_shrink
         if not DaraCore.is_null(request.image_url):

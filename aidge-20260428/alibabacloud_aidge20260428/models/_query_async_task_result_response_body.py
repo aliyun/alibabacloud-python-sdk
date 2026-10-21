@@ -16,17 +16,15 @@ class QueryAsyncTaskResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned when the call is successful.
         self.code = code
-        # The asynchronous task result.
+        # The result of the asynchronous task.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The error message. This parameter is not returned when the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # - true: The call is successful.
-        # - false: The call failed.
+        # Indicates whether the call is successful. Valid values: true: The call is successful. false: The call fails.
         self.success = success
 
     def validate(self):
@@ -78,16 +76,19 @@ class QueryAsyncTaskResultResponseBody(DaraModel):
 class QueryAsyncTaskResultResponseBodyData(DaraModel):
     def __init__(
         self,
+        biz_id: str = None,
         result: str = None,
         status: str = None,
         task_id: str = None,
         usage_map: Dict[str, Any] = None,
     ):
+        # The business ID.
+        self.biz_id = biz_id
         # The task result.
         self.result = result
         # The task status.
         self.status = status
-        # The downstream task ID.
+        # The ID of the downstream task.
         self.task_id = task_id
         # The usage information.
         self.usage_map = usage_map
@@ -100,6 +101,9 @@ class QueryAsyncTaskResultResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+
         if self.result is not None:
             result['Result'] = self.result
 
@@ -116,6 +120,9 @@ class QueryAsyncTaskResultResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+
         if m.get('Result') is not None:
             self.result = m.get('Result')
 
