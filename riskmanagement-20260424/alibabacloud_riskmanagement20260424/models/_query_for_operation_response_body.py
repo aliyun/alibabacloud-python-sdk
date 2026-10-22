@@ -16,10 +16,18 @@ class QueryForOperationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The query results.
         self.data = data
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -74,7 +82,9 @@ class QueryForOperationResponseBodyData(DaraModel):
         list: List[main_models.QueryForOperationResponseBodyDataList] = None,
         page_info: main_models.QueryForOperationResponseBodyDataPageInfo = None,
     ):
+        # The event data.
         self.list = list
+        # The pagination information.
         self.page_info = page_info
 
     def validate(self):
@@ -121,8 +131,13 @@ class QueryForOperationResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The page number from which the query results are displayed.
+        # 
+        # > Default value: 1, which indicates that the query results are displayed from the first page.
         self.current_page = current_page
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The total number of events.
         self.total = total
 
     def validate(self):
@@ -174,18 +189,44 @@ class QueryForOperationResponseBodyDataList(DaraModel):
         status: str = None,
         use_desc: str = None,
     ):
+        # The application time.
         self.apply_time = apply_time
+        # The asset type. Valid values:
+        # 
+        # - **EIP**: VPC public IP address.
+        # - **SLB**: load balancing.
+        # - **ECS**: Public IP address in the classic network.
         self.asset_type = asset_type
+        # The review remarks.
         self.audit_memo = audit_memo
+        # The review time.
         self.audit_time = audit_time
+        # The reviewer.
         self.auditor = auditor
+        # The customer UID.
         self.customer_uid = customer_uid
+        # The type of the sent email.
         self.email_type = email_type
+        # Specifies whether the email contains an unsubscribe option. Valid values:
+        # 
+        # - **true**: Yes.
+        # - **false**: No.
         self.has_unsubscribe = has_unsubscribe
+        # The unique ID.
         self.id = id
+        # The IP address of the asset.
         self.ip = ip
+        # The description of the number of sent emails.
         self.send_count = send_count
+        # The task status. Valid values:
+        # 
+        # - **auditing**: Under review.
+        # - **approved**: Approved.
+        # - **rejected**: Rejected.
+        # - **effective**: Effective.
+        # - **ineffective**: Ineffective.
         self.status = status
+        # The description.
         self.use_desc = use_desc
 
     def validate(self):

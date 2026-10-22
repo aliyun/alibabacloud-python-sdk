@@ -13,10 +13,24 @@ class SubmitAutoAuditUnblockResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # - **200**: Success.
+        # - **Other values (such as 400 and 500)**: Failure.
         self.code = code
+        # The submission result.
+        # 
+        # - **true**: The submission succeeded.
+        # - **false**: The submission failed.
         self.data = data
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
+        # 
+        # - **true**
+        # - **false**
         self.success = success
 
     def validate(self):

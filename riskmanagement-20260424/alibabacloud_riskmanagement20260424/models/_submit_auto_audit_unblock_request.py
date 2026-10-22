@@ -15,12 +15,26 @@ class SubmitAutoAuditUnblockRequest(DaraModel):
         send_count: str = None,
         use_desc: str = None,
     ):
+        # The list of assets.
+        # 
+        # > The array supports up to 50 IP addresses.
         self.asset_list = asset_list
+        # The auditor.
+        # 
+        # > You do not need to specify this parameter. It does not take effect.
         self.auditor = auditor
+        # The customer UID.
         self.customer_uid = customer_uid
+        # The type of the email to send.
         self.email_type = email_type
+        # Specifies whether the email includes an unsubscribe option.
+        # 
+        # - **true**: Included.
+        # - **false**: Not included.
         self.has_unsubscribe = has_unsubscribe
+        # The description of the number of emails to send.
         self.send_count = send_count
+        # The description.
         self.use_desc = use_desc
 
     def validate(self):

@@ -18,15 +18,37 @@ class QueryForOperationRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
+        # The end time of the application.
         self.apply_time_end = apply_time_end
+        # The start time of the application.
         self.apply_time_start = apply_time_start
+        # The asset type. Valid values:
+        # 
+        # - **EIP**: VPC public IP address.
+        # - **SLB**: load balancing.
+        # - **ECS**: Public IP address in the classic network.
         self.asset_type = asset_type
+        # The end time of the review.
         self.audit_time_end = audit_time_end
+        # The start time of the review.
         self.audit_time_start = audit_time_start
+        # The current page number.
+        # 
+        # > Default value: 1.
         self.current_page = current_page
+        # The customer UID.
         self.customer_uid = customer_uid
+        # IP
         self.ip = ip
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The task status. Valid values:
+        # 
+        # - **auditing**: Under review.
+        # - **approved**: Approved.
+        # - **rejected**: Rejected.
+        # - **effective**: Effective.
+        # - **ineffective**: Ineffective.
         self.status = status
 
     def validate(self):

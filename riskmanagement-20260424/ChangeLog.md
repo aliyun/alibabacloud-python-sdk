@@ -1,3 +1,6 @@
+2026-10-22 Version: 1.4.1
+- Generated python 2026-04-24 for RiskManagement.
+
 2026-10-22 Version: 1.4.0
 - Support API QueryForOperation.
 - Support API SubmitAutoAuditUnblock.
