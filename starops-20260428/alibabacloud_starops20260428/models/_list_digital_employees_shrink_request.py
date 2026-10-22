@@ -16,13 +16,13 @@ class ListDigitalEmployeesShrinkRequest(DaraModel):
         resource_group_id: str = None,
         tags_shrink: str = None,
     ):
-        # Filters digital employees by channel type. If this parameter is not specified, the default channel is used.
+        # The channel type.
         self.channel = channel
         # The display name of the digital employee.
         self.display_name = display_name
         # The type of the digital employee.
         self.employee_type = employee_type
-        # The page size. Default value: 20. Maximum value: 100.
+        # The number of entries to return per page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
         # The name of the digital employee.
         self.name = name

@@ -11,9 +11,9 @@ class UpdateThreadResponseBody(DaraModel):
         thread_id: str = None,
         version: int = None,
     ):
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The ID of the thread.
+        # The session ID.
         self.thread_id = thread_id
         # The version number.
         self.version = version

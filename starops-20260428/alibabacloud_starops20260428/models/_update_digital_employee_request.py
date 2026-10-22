@@ -33,7 +33,7 @@ class UpdateDigitalEmployeeRequest(DaraModel):
         self.role_arn = role_arn
         # The list of CIDRs or IP addresses that are allowed to be accessed.
         self.sandbox_network_policy = sandbox_network_policy
-        # The tool calling security policy configuration of the digital employee.
+        # The security policy configuration for tool calling of the digital employee.
         self.tool_policy = tool_policy
 
     def validate(self):
@@ -111,7 +111,7 @@ class UpdateDigitalEmployeeRequestToolPolicy(DaraModel):
         self,
         aliyun: main_models.UpdateDigitalEmployeeRequestToolPolicyAliyun = None,
     ):
-        # The Aliyun CLI tool calling security policy configuration.
+        # The security policy configuration for Aliyun CLI tool calling.
         self.aliyun = aliyun
 
     def validate(self):
@@ -144,9 +144,9 @@ class UpdateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
         enable: bool = None,
         statements: List[main_models.UpdateDigitalEmployeeRequestToolPolicyAliyunStatements] = None,
     ):
-        # The automatic pass-through policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically allowed without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically allowed. Unmatched actions require human-in-the-loop (HIL) confirmation.
+        # The list of auto-approved RAM actions in the format of *, product:ApiName, or product:Prefix*.
         self.auto_pass_policy = auto_pass_policy
-        # The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no operations are actively denied. STAROps directly denies matched actions. Pop performs secondary enforcement.
+        # The list of denied RAM actions in the format of *, product:ApiName, or product:Prefix*.
         self.deny_policy = deny_policy
         # Specifies whether to enable the policy.
         self.enable = enable
@@ -211,9 +211,12 @@ class UpdateDigitalEmployeeRequestToolPolicyAliyunStatements(DaraModel):
         self.actions = actions
         # **[Deprecated]** The API version.
         self.api_version = api_version
-        # The execution policy.
+        # The execution policy. Valid values:
+        # - allow: Allowed.
+        # - deny: Denied.
+        # - user_ack: Requires user confirmation before execution.
         self.decision = decision
-        # The cloud product code.
+        # The cloud service code.
         self.product = product
 
     def validate(self):

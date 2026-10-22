@@ -24,6 +24,7 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         resource_group_id: str = None,
         role_arn: str = None,
         sandbox_network_policy: main_models.GetDigitalEmployeeResponseBodySandboxNetworkPolicy = None,
+        status: int = None,
         tags: List[main_models.Tag] = None,
         tool_policy: main_models.GetDigitalEmployeeResponseBodyToolPolicy = None,
         update_time: str = None,
@@ -32,11 +33,11 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         self.attributes = attributes
         # The channel type.
         self.channel = channel
-        # The creation time.
+        # The creation time in UTC, which follows the RFC 3339 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The default rule of the digital employee.
+        # The default rules of the digital employee.
         self.default_rule = default_rule
         # The description of the digital employee.
         self.description = description
@@ -44,7 +45,7 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         self.display_name = display_name
         # The type of the digital employee.
         self.employee_type = employee_type
-        # The knowledge base list.
+        # The list of knowledge bases.
         self.knowledges = knowledges
         # The name of the digital employee.
         self.name = name
@@ -54,15 +55,17 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        # The ARN of the RAM role.
         self.role_arn = role_arn
         # The sandbox network ACL policy configuration of the digital employee.
         self.sandbox_network_policy = sandbox_network_policy
+        # The status of the digital employee. Valid values: 0 (normal) and 1 (disabled).
+        self.status = status
         # The tags.
         self.tags = tags
         # The tool policy.
         self.tool_policy = tool_policy
-        # The modification time.
+        # The update time in UTC, which follows the RFC 3339 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -126,6 +129,9 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         if self.sandbox_network_policy is not None:
             result['sandboxNetworkPolicy'] = self.sandbox_network_policy.to_map()
 
+        if self.status is not None:
+            result['status'] = self.status
+
         result['tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
@@ -185,6 +191,9 @@ class GetDigitalEmployeeResponseBody(DaraModel):
             temp_model = main_models.GetDigitalEmployeeResponseBodySandboxNetworkPolicy()
             self.sandbox_network_policy = temp_model.from_map(m.get('sandboxNetworkPolicy'))
 
+        if m.get('status') is not None:
+            self.status = m.get('status')
+
         self.tags = []
         if m.get('tags') is not None:
             for k1 in m.get('tags'):
@@ -205,7 +214,7 @@ class GetDigitalEmployeeResponseBodyToolPolicy(DaraModel):
         self,
         aliyun: main_models.GetDigitalEmployeeResponseBodyToolPolicyAliyun = None,
     ):
-        # The security policy configuration for Alibaba Cloud CLI tool calling invokes.
+        # The security policy configuration to invoke Aliyun CLI tools.
         self.aliyun = aliyun
 
     def validate(self):
@@ -238,13 +247,13 @@ class GetDigitalEmployeeResponseBodyToolPolicyAliyun(DaraModel):
         enable: bool = None,
         statements: List[main_models.GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements] = None,
     ):
-        # The auto-pass policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically approved without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically approved. Unmatched actions require human-in-the-loop (HIL) confirmation.
+        # The automatic allow policy. Each entry is a RAM action string in the format of product:ApiName, product:Prefix*, or product:*. If an action matches an entry, the action is automatically allowed without manual confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, and Describe*) are automatically allowed. Unmatched actions require human-in-the-loop (HIL) confirmation.
         self.auto_pass_policy = auto_pass_policy
-        # The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no actions are actively denied. STAROps directly denies matched actions. The Pop side performs secondary fallback enforcement.
+        # The explicit deny policy, which has the highest priority. Each entry is a RAM action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no operations are actively denied. If an action matches a STAROps entry, the action is directly denied. The POP layer provides a secondary fallback check.
         self.deny_policy = deny_policy
-        # Indicates whether the policy is enabled.
+        # Specifies whether the policy is enabled.
         self.enable = enable
-        # The list of Alibaba Cloud CLI tool policy statements.
+        # The list of Aliyun CLI tool policy statements.
         self.statements = statements
 
     def validate(self):
@@ -307,7 +316,7 @@ class GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements(DaraModel):
         self.api_version = api_version
         # The execution policy.
         self.decision = decision
-        # The cloud product code.
+        # The code of the cloud service.
         # 
         # This parameter is required.
         self.product = product
@@ -357,11 +366,11 @@ class GetDigitalEmployeeResponseBodySandboxNetworkPolicy(DaraModel):
         allow_fqdns: List[str] = None,
         enable_acl: bool = None,
     ):
-        # The list of allowed CIDRs or IP addresses.
+        # The list of allowed CIDR blocks or IP addresses.
         self.allow_cidrs = allow_cidrs
         # The list of allowed FQDNs.
         self.allow_fqdns = allow_fqdns
-        # Indicates whether the sandbox network ACL is enabled.
+        # Specifies whether to enable the sandbox network ACL.
         self.enable_acl = enable_acl
 
     def validate(self):
@@ -402,9 +411,9 @@ class GetDigitalEmployeeResponseBodyKnowledges(DaraModel):
         bailian: List[main_models.GetDigitalEmployeeResponseBodyKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
-        # The Bailian knowledge base list.
+        # The list of Model Studio knowledge bases.
         self.bailian = bailian
-        # The SOP knowledge base list.
+        # The list of SOP knowledge bases.
         self.sop = sop
 
     def validate(self):
@@ -449,13 +458,13 @@ class GetDigitalEmployeeResponseBodyKnowledgesBailian(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # The knowledge base attributes.
+        # The attributes of the knowledge base.
         self.attributes = attributes
-        # The Bailian index ID.
+        # The ID of the Model Studio index.
         self.index_id = index_id
         # The region of the knowledge base.
         self.region = region
-        # The Bailian workspace ID.
+        # The ID of the Model Studio workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

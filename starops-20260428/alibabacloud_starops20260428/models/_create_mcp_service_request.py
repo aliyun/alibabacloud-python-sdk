@@ -353,9 +353,9 @@ class CreateMcpServiceRequestConnection(DaraModel):
         # 
         # This parameter is required.
         self.endpoint = endpoint
-        # The custom headers.
+        # The custom HTTP request headers appended when calling the MCP service.
         self.headers = headers
-        # The platform type of the MCP service. Valid values: AIGateway and Custom.
+        # The MCP service platform type. Valid values: AIGateway and Custom.
         # 
         # This parameter is required.
         self.platform = platform
@@ -426,7 +426,7 @@ class CreateMcpServiceRequestConnectionAuth(DaraModel):
     ):
         # The request body parameters.
         self.key_info = key_info
-        # The authentication type. Currently, only bearer is supported.
+        # The authentication type. Currently, bearer is supported.
         self.type = type
 
     def validate(self):

@@ -93,14 +93,15 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         name: str = None,
         resource_group_id: str = None,
         role_arn: str = None,
+        status: int = None,
         tags: List[main_models.Tag] = None,
         update_time: str = None,
     ):
-        # The attributes.
+        # The attributes of the digital employee.
         self.attributes = attributes
-        # The channel type of the digital employee.
+        # The channel type.
         self.channel = channel
-        # The creation time.
+        # The creation time in RFC 3339 format. The time zone is UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
@@ -120,9 +121,11 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         self.resource_group_id = resource_group_id
         # The ARN of the RAM role.
         self.role_arn = role_arn
+        # The status of the digital employee. Valid values: 0: Normal. 1: Disabled.
+        self.status = status
         # The tags.
         self.tags = tags
-        # The update time.
+        # The update time in RFC 3339 format. The time zone is UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -173,6 +176,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         if self.role_arn is not None:
             result['roleArn'] = self.role_arn
 
+        if self.status is not None:
+            result['status'] = self.status
+
         result['tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
@@ -219,6 +225,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         if m.get('roleArn') is not None:
             self.role_arn = m.get('roleArn')
 
+        if m.get('status') is not None:
+            self.status = m.get('status')
+
         self.tags = []
         if m.get('tags') is not None:
             for k1 in m.get('tags'):
@@ -236,7 +245,7 @@ class ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges(DaraModel):
         bailian: List[main_models.ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
-        # The list of Bailian knowledge bases.
+        # The list of Model Studio knowledge bases.
         self.bailian = bailian
         # The list of SOP knowledge bases.
         self.sop = sop
@@ -283,13 +292,13 @@ class ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian(DaraMode
         region: str = None,
         workspace_id: str = None,
     ):
-        # The knowledge base attributes.
+        # The attributes of the knowledge base.
         self.attributes = attributes
-        # The Bailian index ID.
+        # The Model Studio index ID.
         self.index_id = index_id
         # The region of the knowledge base.
         self.region = region
-        # The Bailian workspace ID.
+        # The Model Studio workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

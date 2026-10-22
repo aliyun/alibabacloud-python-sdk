@@ -168,7 +168,7 @@ class GetMcpServiceResponseBodyMcpServiceTools(DaraModel):
     ):
         # The annotation information of the MCP tool.
         self.annotations = annotations
-        # Indicates whether user confirmation is required before the MCP tool is called.
+        # Indicates whether user confirmation is required before calling the MCP tool.
         self.confirm = confirm
         # The description of the MCP tool.
         self.description = description
@@ -184,7 +184,7 @@ class GetMcpServiceResponseBodyMcpServiceTools(DaraModel):
         self.input_schema = input_schema
         # The name of the MCP tool.
         self.name = name
-        # The JSON Schema of the MCP tool output.
+        # The JSON Schema of the MCP tool output results.
         self.output_schema = output_schema
         # The title of the MCP tool.
         self.title = title
@@ -296,7 +296,7 @@ class GetMcpServiceResponseBodyMcpServiceNetwork(DaraModel):
         self.region = region
         # The security group ID.
         self.security_group_id = security_group_id
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
         self.vsw_id = vsw_id
@@ -383,6 +383,7 @@ class GetMcpServiceResponseBodyMcpServiceConnection(DaraModel):
         self.auth = auth
         # The access endpoint of the MCP service.
         self.endpoint = endpoint
+        # The custom HTTP request headers appended when calling the MCP service.
         self.headers = headers
         # The MCP service platform type. Valid values: AIGateway and Custom.
         self.platform = platform
@@ -451,7 +452,7 @@ class GetMcpServiceResponseBodyMcpServiceConnectionAuth(DaraModel):
     ):
         # The key-value information required for authentication.
         self.key_info = key_info
-        # The authentication type. Currently, bearer is supported.
+        # The authentication type. Currently, only bearer is supported.
         self.type = type
 
     def validate(self):

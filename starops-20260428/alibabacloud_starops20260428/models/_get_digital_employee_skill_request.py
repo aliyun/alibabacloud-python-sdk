@@ -9,7 +9,7 @@ class GetDigitalEmployeeSkillRequest(DaraModel):
         self,
         version: str = None,
     ):
-        # The version of the skill to retrieve. If this parameter is not specified, the latest version is returned.
+        # The historical version number.
         self.version = version
 
     def validate(self):

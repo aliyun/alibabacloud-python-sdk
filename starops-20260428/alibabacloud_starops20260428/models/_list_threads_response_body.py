@@ -17,17 +17,17 @@ class ListThreadsResponseBody(DaraModel):
         threads: List[main_models.ListThreadsResponseBodyThreads] = None,
         total: int = None,
     ):
-        # The maximum number of results to return. The maximum value is 200.
+        # The maximum number of results to return. Maximum value: 200.
         self.max_results = max_results
-        # A token to retrieve the next page of results. If this parameter is absent, no more results are available.
+        # The pagination token.
         self.next_token = next_token
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The thread ID.
+        # The session ID.
         self.thread_id = thread_id
-        # A list of threads.
+        # The sessions.
         self.threads = threads
-        # The total number of threads.
+        # The total number of sessions.
         self.total = total
 
     def validate(self):
@@ -101,23 +101,23 @@ class ListThreadsResponseBodyThreads(DaraModel):
         variables: main_models.ListThreadsResponseBodyThreadsVariables = None,
         version: int = None,
     ):
-        # A map of key-value pairs that you can attach to the thread.
+        # The properties.
         self.attributes = attributes
-        # The creation time of the thread, in ISO 8601 format.
+        # The creation time in RFC 3339 format, including the time zone offset.
         self.create_time = create_time
-        # The digital employee name.
+        # The name of the digital employee.
         self.digital_employee_name = digital_employee_name
-        # The thread status.
+        # The session status.
         self.status = status
-        # The thread ID.
+        # The session ID.
         self.thread_id = thread_id
-        # The thread title.
+        # The session title.
         self.title = title
-        # The last update time of the thread, in ISO 8601 format.
+        # The update time in RFC 3339 format, including the time zone offset.
         self.update_time = update_time
-        # The thread variables.
+        # The session properties.
         self.variables = variables
-        # The thread version.
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -196,7 +196,7 @@ class ListThreadsResponseBodyThreadsVariables(DaraModel):
         project: str = None,
         workspace: str = None,
     ):
-        # The project in SLS.
+        # SLS project。
         self.project = project
         # The workspace.
         self.workspace = workspace

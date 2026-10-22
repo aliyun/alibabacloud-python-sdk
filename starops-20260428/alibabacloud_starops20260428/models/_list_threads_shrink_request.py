@@ -14,17 +14,17 @@ class ListThreadsShrinkRequest(DaraModel):
         status: str = None,
         thread_id: str = None,
     ):
-        # Filters the results. If this parameter is omitted, the operation returns all threads in the instance.
+        # The filter conditions for the query. If this parameter is not specified, all topics under the instance are queried.
         self.filter_shrink = filter_shrink
-        # Specifies whether to include threads created by missions.
+        # Specifies whether to include threads created by mission.
         self.include_mission = include_mission
         # The maximum number of results to return. Maximum value: 200.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The status of the thread.
+        # The session status.
         self.status = status
-        # The thread ID.
+        # The session ID.
         self.thread_id = thread_id
 
     def validate(self):

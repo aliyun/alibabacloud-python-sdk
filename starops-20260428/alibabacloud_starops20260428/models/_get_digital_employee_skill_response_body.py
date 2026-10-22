@@ -21,7 +21,7 @@ class GetDigitalEmployeeSkillResponseBody(DaraModel):
         update_time: str = None,
         version: str = None,
     ):
-        # The time when the skill was created.
+        # The creation time in RFC 3339 format with the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
@@ -31,19 +31,19 @@ class GetDigitalEmployeeSkillResponseBody(DaraModel):
         self.display_name = display_name
         # Indicates whether the skill is enabled.
         self.enable = enable
-        # The file list of the skill.
+        # The list of skill files.
         self.files = files
-        # A user-provided remark about the skill.
+        # The remarks.
         self.remark = remark
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The name of the skill.
+        # The skill name.
         self.skill_name = skill_name
-        # The time when the skill was last updated.
+        # The update time in RFC 3339 format with the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
-        # The version of the skill.
+        # The version number.
         self.version = version
 
     def validate(self):

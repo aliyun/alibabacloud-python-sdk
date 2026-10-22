@@ -23,7 +23,7 @@ class ConnectorCreateInput(DaraModel):
         runtime: main_models.ConnectorRuntime = None,
         target: Dict[str, Any] = None,
     ):
-        # The authentication configuration used to access the target service.
+        # The authentication configuration for accessing the target service.
         # 
         # This parameter is required.
         self.authentication = authentication
@@ -49,9 +49,9 @@ class ConnectorCreateInput(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # Specifies whether the connector is enabled after creation.
+        # Specifies whether to enable the connector after creation.
         self.enabled = enabled
-        # The execution policy of the connector.
+        # The execution policy for the connector.
         # 
         # This parameter is required.
         self.policy = policy
@@ -59,7 +59,7 @@ class ConnectorCreateInput(DaraModel):
         # 
         # This parameter is required.
         self.provider = provider
-        # The runtime configuration of the connector.
+        # The runtime configuration for the connector.
         # 
         # This parameter is required.
         self.runtime = runtime

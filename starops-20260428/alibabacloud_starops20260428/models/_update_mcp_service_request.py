@@ -237,15 +237,17 @@ class UpdateMcpServiceRequestNetwork(DaraModel):
         vpc_id: str = None,
         vsw_id: str = None,
     ):
-        # The IP address used to access the MCP service over the VPC network.
+        # The IP address used to access the MCP service within the VPC network.
         self.access_ip = access_ip
-        # The port used to access the MCP service over the VPC network. Valid values: 1 to 65535.
+        # The port used to access the MCP service within the VPC network. Valid values: 1 to 65535.
         self.access_port = access_port
         # The gateway ID.
         self.gateway_id = gateway_id
         # The MCP Server instance ID.
         self.mcp_server_id = mcp_server_id
-        # The network access mode of the MCP service. Valid values: public and vpc.
+        # The network access mode of the MCP service. Valid values:
+        # - public
+        # - vpc
         # 
         # This parameter is required.
         self.mode = mode
@@ -342,14 +344,19 @@ class UpdateMcpServiceRequestConnection(DaraModel):
         # 
         # This parameter is required.
         self.endpoint = endpoint
+        # The custom HTTP request headers appended when calling the MCP service.
         self.headers = headers
-        # The platform type of the MCP service. Valid values: AIGateway and Custom.
+        # The MCP service platform type. Valid values:
+        # - AIGateway
+        # - Custom
         # 
         # This parameter is required.
         self.platform = platform
         # The timeout period for requests to the MCP service. Unit: milliseconds.
         self.timeout = timeout
-        # The transport protocol of the MCP service. Valid values: http and sse.
+        # The transport protocol of the MCP service. Valid values:
+        # - http
+        # - sse
         # 
         # This parameter is required.
         self.transport = transport
@@ -414,7 +421,7 @@ class UpdateMcpServiceRequestConnectionAuth(DaraModel):
     ):
         # The request body parameters.
         self.key_info = key_info
-        # The authentication type. Currently, only bearer is supported.
+        # The authentication type. Currently, bearer is supported.
         self.type = type
 
     def validate(self):

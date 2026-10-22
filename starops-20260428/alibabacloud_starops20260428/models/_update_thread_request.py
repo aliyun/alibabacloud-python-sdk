@@ -13,11 +13,11 @@ class UpdateThreadRequest(DaraModel):
         status: str = None,
         title: str = None,
     ):
-        # The attributes of the thread.
+        # The properties.
         self.attributes = attributes
-        # The status of the thread.
+        # The session status.
         self.status = status
-        # The title of the thread.
+        # The session title.
         self.title = title
 
     def validate(self):

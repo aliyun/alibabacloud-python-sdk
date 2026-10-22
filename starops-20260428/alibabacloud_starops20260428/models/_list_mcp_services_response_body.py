@@ -222,7 +222,7 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListTools(DaraModel):
     ):
         # The annotation information of the MCP tool.
         self.annotations = annotations
-        # Indicates whether user confirmation is required before calling the MCP tool.
+        # Specifies whether user confirmation is required before calling the MCP tool.
         self.confirm = confirm
         # The description of the MCP tool.
         self.description = description
@@ -344,7 +344,9 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListNetwork(DaraModel):
         self.gateway_id = gateway_id
         # The MCP Server instance ID.
         self.mcp_server_id = mcp_server_id
-        # The network access mode of the MCP service. Valid values: public and vpc.
+        # The network access mode of the MCP service. Valid values:
+        # - public: direct public network access mode.
+        # - vpc: Virtual Private Cloud (VPC) mode.
         self.mode = mode
         # The region where the VPC network is located.
         self.region = region
@@ -437,12 +439,17 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListConnection(DaraModel):
         self.auth = auth
         # The access endpoint of the MCP service.
         self.endpoint = endpoint
+        # The custom HTTP request headers appended when calling the MCP service.
         self.headers = headers
-        # The platform type of the MCP service. Valid values: AIGateway and Custom.
+        # The platform type of the MCP service. Valid values:
+        # - AIGateway: AI gateway.
+        # - Custom: custom MCP service.
         self.platform = platform
-        # The timeout period for requests to the MCP service. Unit: milliseconds.
+        # The timeout period for requests to the MCP service, in milliseconds.
         self.timeout = timeout
-        # The transport protocol of the MCP service. Valid values: http and sse.
+        # The transport protocol of the MCP service. Valid values:
+        # - sse: Server-Sent Events (SSE) transport protocol.
+        # - http: HTTP transport protocol.
         self.transport = transport
 
     def validate(self):
@@ -505,7 +512,8 @@ class ListMcpServicesResponseBodyMcpServicesMcpServiceListConnectionAuth(DaraMod
     ):
         # The key-value information required for authentication.
         self.key_info = key_info
-        # The authentication type. Currently, bearer is supported.
+        # The authentication type. Currently, only bearer is supported. Valid values:
+        # - bearer: Bearer token authentication.
         self.type = type
 
     def validate(self):

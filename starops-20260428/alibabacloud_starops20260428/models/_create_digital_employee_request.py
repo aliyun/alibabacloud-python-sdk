@@ -23,9 +23,9 @@ class CreateDigitalEmployeeRequest(DaraModel):
         tags: List[main_models.Tag] = None,
         tool_policy: main_models.CreateDigitalEmployeeRequestToolPolicy = None,
     ):
-        # The attributes.
+        # The digital employee properties.
         self.attributes = attributes
-        # 数字员工渠道类型。不填时使用默认渠道。
+        # The channel type.
         self.channel = channel
         # The default rule of the digital employee.
         self.default_rule = default_rule
@@ -33,7 +33,7 @@ class CreateDigitalEmployeeRequest(DaraModel):
         self.description = description
         # The display name of the digital employee.
         self.display_name = display_name
-        # The knowledge base list.
+        # The list of knowledge bases.
         self.knowledges = knowledges
         # The name of the digital employee.
         # 
@@ -41,7 +41,7 @@ class CreateDigitalEmployeeRequest(DaraModel):
         self.name = name
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ARN of the RAM role.
+        # The RAM role ARN.
         # 
         # This parameter is required.
         self.role_arn = role_arn
@@ -49,7 +49,7 @@ class CreateDigitalEmployeeRequest(DaraModel):
         self.sandbox_network_policy = sandbox_network_policy
         # The tags.
         self.tags = tags
-        # The tool calling security policy configuration of the digital employee.
+        # The tool policy.
         self.tool_policy = tool_policy
 
     def validate(self):
@@ -160,7 +160,7 @@ class CreateDigitalEmployeeRequestToolPolicy(DaraModel):
         self,
         aliyun: main_models.CreateDigitalEmployeeRequestToolPolicyAliyun = None,
     ):
-        # The Aliyun MCP tool calling security policy configuration.
+        # The security policy configuration for Aliyun CLI tool invocation.
         self.aliyun = aliyun
 
     def validate(self):
@@ -193,13 +193,13 @@ class CreateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
         enable: bool = None,
         statements: List[main_models.CreateDigitalEmployeeRequestToolPolicyAliyunStatements] = None,
     ):
-        # The auto-pass policy. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. Matched actions are automatically approved without human confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, Describe*) are automatically approved. Unmatched actions require human-in-the-loop (HIL) confirmation.
+        # The RAM actions that are automatically allowed. The format is *, product:ApiName, or product:Prefix*.
         self.auto_pass_policy = auto_pass_policy
-        # The explicit deny policy with the highest priority. Each entry is a RAM Action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no actions are actively denied. STAROps directly denies matched actions. The Pop side performs secondary fallback enforcement.
+        # The RAM actions that are denied. The format is *, product:ApiName, or product:Prefix*.
         self.deny_policy = deny_policy
-        # Specifies whether to enable the Aliyun MCP tool policy. The policy is enabled by default and is disabled only when this parameter is explicitly set to false.
+        # Specifies whether to enable the policy.
         self.enable = enable
-        # **[Deprecated]** Use denyPolicy and autoPassPolicy instead. This parameter is still returned during the transition period. Original description: The list of Aliyun OpenAPI tool policy statements.
+        # **[Deprecated]** Use denyPolicy and autoPassPolicy instead. This field is still returned during the transition period. Original description: The list of Aliyun OpenAPI tool policy statements.
         self.statements = statements
 
     def validate(self):
@@ -256,11 +256,11 @@ class CreateDigitalEmployeeRequestToolPolicyAliyunStatements(DaraModel):
         decision: str = None,
         product: str = None,
     ):
-        # The list of Aliyun OpenAPI actions in the format of product:ApiName, product:Prefix*, or product:*.
+        # The list of Aliyun OpenAPI actions. The format is product:ApiName, product:Prefix*, or product:*.
         self.actions = actions
         # The Aliyun OpenAPI version that this statement applies to.
         self.api_version = api_version
-        # The execution policy when this API is matched.
+        # The execution policy when the API is matched.
         self.decision = decision
         # The Aliyun OpenAPI product name that this statement applies to.
         self.product = product
@@ -310,9 +310,9 @@ class CreateDigitalEmployeeRequestSandboxNetworkPolicy(DaraModel):
         allow_fqdns: List[str] = None,
         enable_acl: bool = None,
     ):
-        # The list of allowed CIDRs or IP addresses. A maximum of 50 entries are supported.
+        # The list of allowed CIDRs or IP addresses.
         self.allow_cidrs = allow_cidrs
-        # The list of allowed FQDNs. A maximum of 50 entries are supported.
+        # The list of allowed FQDNs.
         self.allow_fqdns = allow_fqdns
         # Specifies whether to enable the sandbox network ACL.
         self.enable_acl = enable_acl
@@ -355,9 +355,9 @@ class CreateDigitalEmployeeRequestKnowledges(DaraModel):
         bailian: List[main_models.CreateDigitalEmployeeRequestKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
-        # The Bailian knowledge base list.
+        # The list of Bailian knowledge bases.
         self.bailian = bailian
-        # The SOP knowledge base list.
+        # The list of SOP knowledge bases.
         self.sop = sop
 
     def validate(self):
@@ -402,7 +402,7 @@ class CreateDigitalEmployeeRequestKnowledgesBailian(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # The knowledge base attributes.
+        # The knowledge base properties.
         self.attributes = attributes
         # The Bailian index ID.
         self.index_id = index_id
