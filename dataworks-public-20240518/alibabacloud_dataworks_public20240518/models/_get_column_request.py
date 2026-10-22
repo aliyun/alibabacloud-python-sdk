@@ -9,15 +9,15 @@ class GetColumnRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The ID. You can obtain this value from the response of the ListColumns operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID. You can refer to the response of the ListColumns operation and [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # The format is `${EntityType}:${InstanceID or encoded URL}:${DataCatalogIdentifier}:${DatabaseName}:${SchemaName}:${TableName}:${ColumnName}`. Use an empty string as a placeholder for levels that do not exist.
+        # The format is `${EntityType}:${Instance ID or URL-encoded JDBC URL}:${Data catalog identifier}:${Database name}:${Schema name}:${Table name}:${Column name}`. Use an empty string as a placeholder for non-existent levels.
         # 
-        # > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name. Projects with the three-layer model enabled must include the schema name. For projects without the three-layer model, use an empty string as a placeholder for the schema name.
+        # > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name. If the three-level model is enabled for the project, you must provide the schema name. Otherwise, use an empty string as a placeholder for the schema name.
         # 
-        # > For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level. Use an empty string as a placeholder.
+        # > For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level, so you can use an empty string as a placeholder.
         # 
-        # The following are ID format examples for common types:
+        # The following are the ID formats for common types:
         # 
         # `maxcompute-column:::project_name:[schema_name]:table_name:column_name`
         # 
@@ -29,13 +29,13 @@ class GetColumnRequest(DaraModel):
         # 
         # `mysql-column:(instance_id|encoded_jdbc_url)::database_name::table_name:column_name`
         # 
-        # > Other parameters:  
-        # `instance_id`: The instance ID. This parameter is required when the data source is registered in instance mode.   
-        # `encoded_jdbc_url`: The URL-encoded JDBC connection string. This parameter is required when the data source is registered by using a connection string.   
+        # > Others  
+        # `instance_id`: The instance ID. This is required when the data source is registered in instance mode.   
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string. This is required when the data source is registered by using a connection string.   
         # `catalog_id`: The DLF catalog ID.   
         # `project_name`: The MaxCompute project name.   
         # `database_name`: The database name.   
-        # `schema_name`: The schema name. For MaxCompute, this parameter is required only when the three-layer model is enabled for the project. If the three-layer model is not enabled, use an empty string as a placeholder.    
+        # `schema_name`: The schema name. For MaxCompute, this is required only if the three-level model is enabled for the project. Otherwise, use an empty string as a placeholder.    
         # `table_name`: The table name.    
         # `column_name`: The column name.
         # 

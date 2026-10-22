@@ -16,25 +16,25 @@ class ListColumnsRequest(DaraModel):
         sort_by: str = None,
         table_id: str = None,
     ):
-        # The comment. Fuzzy match is supported.
+        # The comment on the column. Fuzzy match is supported.
         self.comment = comment
-        # Specifies whether to return extended properties. Set this parameter to `true` to return extended properties or `false` to not return them.
+        # Specifies whether to return extended properties. If you set this parameter to `true`, extended properties are returned. If you set this parameter to `false`, extended properties are not returned.
         self.include_extended_properties = include_extended_properties
-        # The name. Fuzzy match is supported.
+        # The name of the column. Fuzzy match is supported.
         self.name = name
-        # The sort direction. Default value: Asc. Valid values:
-        # - Asc: ascending order.
-        # - Desc: descending order.
+        # The sort order. Default value: Asc. Valid values:
+        # - Asc: Ascending order.
+        # - Desc: Descending order.
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size. Default value: 10. Maximum value: 100.
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The sort field. Default value: Position. Valid values:
-        # - Name: name.
-        # - Position: position.
+        # The field used for sorting. Default value: Position. Valid values:
+        # - Name: Name.
+        # - Position: Position.
         self.sort_by = sort_by
-        # The table ID. You can obtain the ID from the response of the ListTables operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+        # The table ID. You can obtain the ID from the response of the ListTables operation. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # This parameter is required.
         self.table_id = table_id

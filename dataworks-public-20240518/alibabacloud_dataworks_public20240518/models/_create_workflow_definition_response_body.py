@@ -10,7 +10,7 @@ class CreateWorkflowDefinitionResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The unique identifier of the DataStudio workflow.
+        # The unique identifier of the Data Studio workflow.
         # 
         # >Notice: This field is of the Long type before SDK 8.0.0 and of the String type in SDK 8.0.0 and later. **This change does not affect the normal use of the SDK, and the parameter is still returned based on the type defined in the SDK**. The type change may cause project compilation failures only when you upgrade the SDK across version 8.0.0. In this case, you must manually correct the data type.</notice>
         self.id = id

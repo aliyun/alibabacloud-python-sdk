@@ -17,7 +17,7 @@ class CreateWorkflowDefinitionRequest(DaraModel):
         # The FlowSpec information that describes the workflow. For more information about the specifications, see [FlowSpec](https://github.com/aliyun/alibabacloud-dataworks-tool-dflow).
         # 
         # > How do I quickly obtain a FlowSpec template?
-        # > - Open a workflow in DataStudio and click Show Spec in the upper-right corner to obtain the FlowSpec description for the current workflow. You can quickly build a compliant template based on this FlowSpec description.
+        # > - Open a workflow in Data Studio and click Show Spec in the upper-right corner to obtain the FlowSpec description for the current workflow. You can quickly build a compliant template based on this FlowSpec description.
         # 
         # >Notice: This operation only supports creating workflows. Internal nodes described in the FlowSpec are not created.</notice>
         # 

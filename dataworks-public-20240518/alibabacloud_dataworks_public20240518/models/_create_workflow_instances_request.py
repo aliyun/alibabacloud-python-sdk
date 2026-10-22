@@ -50,22 +50,22 @@ class CreateWorkflowInstancesRequest(DaraModel):
         self.tag_creation_policy = tag_creation_policy
         # The list of task tags.
         self.tags = tags
-        # The node parameters, which are used to set parameters for specific nodes. The value is in JSON format. The key is the node ID, and the value format refers to the node script parameters (Task.Script.Parameter in the response of the GetTask operation).
+        # The task parameters, which are used to set parameters for specific tasks. The value is in JSON format. The key is the task ID, and the value format refers to the task script parameters (Task.Script.Parameter in the response of the GetTask operation).
         self.task_parameters = task_parameters
         # The type of the workflow instance. Valid values:
         # - SupplementData: data backfill. The methods for specifying RootTaskIds and IncludeTaskIds vary based on the data backfill mode. For more information, see the parameter description of DefaultRunProperties.Mode.
         # - ManualWorkflow: manually triggered workflow. You must set WorkflowId to the ID of the manually triggered workflow. RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manually triggered workflow is used.
-        # - Manual: manually triggered node. You only need to specify RootTaskIds, which is the list of manually triggered nodes to be run.
-        # - SmokeTest: smoke test. You only need to specify RootTaskIds, which is the list of test nodes to be run.
+        # - Manual: manually triggered task. You only need to specify RootTaskIds, which is the list of manually triggered tasks to be run.
+        # - SmokeTest: smoke test. You only need to specify RootTaskIds, which is the list of test tasks to be run.
         # - TriggerWorkflow: event-triggered workflow. You must set WorkflowId to the ID of the event-triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow is run.
         # 
         # This parameter is required.
         self.type = type
-        # The ID of the workflow to which the node belongs. The WorkflowId of a periodic node is always 1.
+        # The ID of the workflow. The WorkflowId of a scheduled task is always 1.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
-        # The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or an event-triggered workflow, the format is key=value, and the priority is lower than that of node parameters. For a manually triggered workflow, the format is JSON, and the priority is higher than that of node parameters.
+        # The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or an event-triggered workflow, the format is key=value, and the priority is lower than that of task parameters. For a manually triggered workflow, the format is JSON, and the priority is higher than that of task parameters.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -335,27 +335,27 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(DaraModel):
         self.alert = alert
         # The analysis configurations. This parameter is required when Type is set to SupplementData.
         self.analysis = analysis
-        # The data source name mappings for data backfill runs. The key of the map is DataSource.Name in the node definition, and the value is DataSource.Name used during data backfill runs. This parameter takes effect only when Type is set to SupplementData. If this parameter is not configured, an empty map is passed, or the key is not matched, the node continues to use the original data source. Currently, only EMR Spark SQL, EMR Shell, and EMR Spark nodes are supported.
+        # The data source name mappings for data backfill runs. The key of the map is DataSource.Name in the task definition, and the value is DataSource.Name used during data backfill runs. This parameter takes effect only when Type is set to SupplementData. If this parameter is not configured, an empty map is passed, or the key is not matched, the task continues to use the original data source. Currently, only EMR Spark SQL, EMR Shell, and EMR Spark tasks are supported.
         self.data_source_name_mappings = data_source_name_mappings
         # The list of project IDs to exclude from the run.
         self.exclude_project_ids = exclude_project_ids
-        # The list of node IDs to exclude from the run.
+        # The list of task IDs to exclude from the run.
         self.exclude_task_ids = exclude_task_ids
         # The list of project IDs to include in the run.
         self.include_project_ids = include_project_ids
-        # The list of node IDs to include in the run.
+        # The list of task IDs to include in the run.
         self.include_task_ids = include_task_ids
         # The data backfill mode. Default value: ManualSelection. This parameter is required when Type is set to SupplementData. Valid values:
         # - General: general mode. You can specify only one value for RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the value of RootTaskIds is included by default.
         # - ManualSelection: manual selection mode. You can specify multiple values for RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the values of RootTaskIds are included by default.
-        # - Chain: chain mode. RootTaskIds must be left empty. You must specify two IDs for IncludeTaskIds, which are the start and end nodes.
+        # - Chain: chain mode. RootTaskIds must be left empty. You must specify two IDs for IncludeTaskIds, which are the start and end tasks.
         # - AllDownstream: all downstream mode. You can specify only one value for RootTaskIds.
         self.mode = mode
         # The run order. Default value: Asc. Valid values:
         # - Asc: ascending order by business date
         # - Desc: descending order by business date
         self.order = order
-        # The number of parallel nodes. A value of 2 to 10 indicates the parallelism, and a value of 1 indicates serial execution. This parameter is required when Type is set to SupplementData.
+        # The number of parallel tasks. A value of 2 to 10 indicates the parallelism, and a value of 1 indicates serial execution. This parameter is required when Type is set to SupplementData.
         self.parallelism = parallelism
         # The run priority. Valid values: 1 to 11. A larger value indicates a higher priority. These parameter settings are supported only for manually triggered workflows and event-triggered workflows.
         self.priority = priority
@@ -363,16 +363,16 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(DaraModel):
         # - Disable: disabled. This is the default value.
         # - Upstream: calculates the sum of weights of upstream nodes for the current node. A deeper hierarchy indicates a higher weight.
         self.priority_weight_strategy = priority_weight_strategy
-        # The list of root node IDs.
+        # The list of root task IDs.
         # 
         # - When Type is set to SupplementData, RootTaskIds is required except when Mode is set to Chain.
         # - When Type is set to ManualWorkflow, RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manually triggered workflow is used.
-        # - When Type is set to Manual, RootTaskIds is required and specifies the list of manually triggered nodes to be run.
-        # - When Type is set to SmokeTest, RootTaskIds is required and specifies the list of test nodes to be run.
+        # - When Type is set to Manual, RootTaskIds is required and specifies the list of manual tasks to be run.
+        # - When Type is set to SmokeTest, RootTaskIds is required and specifies the list of test tasks to be run.
         self.root_task_ids = root_task_ids
-        # The run policy. If this field is left empty, the node configuration is used.
+        # The run policy. If this field is left empty, the task configuration is used.
         self.run_policy = run_policy
-        # The identifier of the custom scheduling resource group. If this field is left empty, the node configuration is used.
+        # The identifier of the custom scheduling resource group. If this field is left empty, the task configuration is used.
         self.runtime_resource = runtime_resource
 
     def validate(self):

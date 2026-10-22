@@ -1358,6 +1358,7 @@ from ._upload_semantic_file_request import UploadSemanticFileRequest
 from ._upload_semantic_file_response_body import UploadSemanticFileResponseBody
 from ._upload_semantic_file_response import UploadSemanticFileResponse
 from ._column import ColumnBusinessMetadata
+from ._column import ColumnTechnicalMetadata
 from ._crawler_type import CrawlerTypeSupportedEntityTypes
 from ._data_quality_evaluation_task import DataQualityEvaluationTaskHooks
 from ._data_quality_evaluation_task import DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels
@@ -3712,6 +3713,7 @@ __all__ = [
     UploadSemanticFileResponseBody,
     UploadSemanticFileResponse,
     ColumnBusinessMetadata,
+    ColumnTechnicalMetadata,
     CrawlerTypeSupportedEntityTypes,
     DataQualityEvaluationTaskHooks,
     DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels,
