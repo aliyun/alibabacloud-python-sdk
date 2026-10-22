@@ -11,16 +11,16 @@ class GetResourceControlEventShrinkRequest(DaraModel):
         event_id: str = None,
         event_id_list_shrink: str = None,
     ):
-        # The language. Valid values:
+        # The language environment.
         # 
-        # - **zh** (default): Chinese
-        # - **en**: English
+        # - Chinese (default): **zh**
+        # - English: **en**
         self.aliyun_lang = aliyun_lang
-        # The alert event ID.
+        # The ID of the alert event.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The list of specified event IDs.
+        # The list of event IDs.
         self.event_id_list_shrink = event_id_list_shrink
 
     def validate(self):

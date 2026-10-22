@@ -2483,6 +2483,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_account_safety_incident_with_options_async(request, runtime)
 
+    def query_for_operation_with_options(
+        self,
+        request: main_models.QueryForOperationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryForOperationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.apply_time_end):
+            query['ApplyTimeEnd'] = request.apply_time_end
+        if not DaraCore.is_null(request.apply_time_start):
+            query['ApplyTimeStart'] = request.apply_time_start
+        if not DaraCore.is_null(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not DaraCore.is_null(request.audit_time_end):
+            query['AuditTimeEnd'] = request.audit_time_end
+        if not DaraCore.is_null(request.audit_time_start):
+            query['AuditTimeStart'] = request.audit_time_start
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.ip):
+            query['Ip'] = request.ip
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryForOperation',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryForOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_for_operation_with_options_async(
+        self,
+        request: main_models.QueryForOperationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryForOperationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.apply_time_end):
+            query['ApplyTimeEnd'] = request.apply_time_end
+        if not DaraCore.is_null(request.apply_time_start):
+            query['ApplyTimeStart'] = request.apply_time_start
+        if not DaraCore.is_null(request.asset_type):
+            query['AssetType'] = request.asset_type
+        if not DaraCore.is_null(request.audit_time_end):
+            query['AuditTimeEnd'] = request.audit_time_end
+        if not DaraCore.is_null(request.audit_time_start):
+            query['AuditTimeStart'] = request.audit_time_start
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.ip):
+            query['Ip'] = request.ip
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryForOperation',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryForOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_for_operation(
+        self,
+        request: main_models.QueryForOperationRequest,
+    ) -> main_models.QueryForOperationResponse:
+        runtime = RuntimeOptions()
+        return self.query_for_operation_with_options(request, runtime)
+
+    async def query_for_operation_async(
+        self,
+        request: main_models.QueryForOperationRequest,
+    ) -> main_models.QueryForOperationResponse:
+        runtime = RuntimeOptions()
+        return await self.query_for_operation_with_options_async(request, runtime)
+
     def query_guide_sub_status_with_options(
         self,
         request: main_models.QueryGuideSubStatusRequest,
@@ -3192,6 +3298,100 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitApplyRecordResponse:
         runtime = RuntimeOptions()
         return await self.submit_apply_record_with_options_async(request, runtime)
+
+    def submit_auto_audit_unblock_with_options(
+        self,
+        request: main_models.SubmitAutoAuditUnblockRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAutoAuditUnblockResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.asset_list):
+            query['AssetList'] = request.asset_list
+        if not DaraCore.is_null(request.auditor):
+            query['Auditor'] = request.auditor
+        if not DaraCore.is_null(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.email_type):
+            query['EmailType'] = request.email_type
+        if not DaraCore.is_null(request.has_unsubscribe):
+            query['HasUnsubscribe'] = request.has_unsubscribe
+        if not DaraCore.is_null(request.send_count):
+            query['SendCount'] = request.send_count
+        if not DaraCore.is_null(request.use_desc):
+            query['UseDesc'] = request.use_desc
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAutoAuditUnblock',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAutoAuditUnblockResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_auto_audit_unblock_with_options_async(
+        self,
+        request: main_models.SubmitAutoAuditUnblockRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAutoAuditUnblockResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.asset_list):
+            query['AssetList'] = request.asset_list
+        if not DaraCore.is_null(request.auditor):
+            query['Auditor'] = request.auditor
+        if not DaraCore.is_null(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.email_type):
+            query['EmailType'] = request.email_type
+        if not DaraCore.is_null(request.has_unsubscribe):
+            query['HasUnsubscribe'] = request.has_unsubscribe
+        if not DaraCore.is_null(request.send_count):
+            query['SendCount'] = request.send_count
+        if not DaraCore.is_null(request.use_desc):
+            query['UseDesc'] = request.use_desc
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAutoAuditUnblock',
+            version = '2026-04-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAutoAuditUnblockResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_auto_audit_unblock(
+        self,
+        request: main_models.SubmitAutoAuditUnblockRequest,
+    ) -> main_models.SubmitAutoAuditUnblockResponse:
+        runtime = RuntimeOptions()
+        return self.submit_auto_audit_unblock_with_options(request, runtime)
+
+    async def submit_auto_audit_unblock_async(
+        self,
+        request: main_models.SubmitAutoAuditUnblockRequest,
+    ) -> main_models.SubmitAutoAuditUnblockResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_auto_audit_unblock_with_options_async(request, runtime)
 
     def submit_penetration_test_with_options(
         self,

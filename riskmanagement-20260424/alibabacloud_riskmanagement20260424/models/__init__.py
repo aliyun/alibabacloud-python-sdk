@@ -105,6 +105,9 @@ from ._query_account_safety_incident_request import QueryAccountSafetyIncidentRe
 from ._query_account_safety_incident_shrink_request import QueryAccountSafetyIncidentShrinkRequest
 from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBody
 from ._query_account_safety_incident_response import QueryAccountSafetyIncidentResponse
+from ._query_for_operation_request import QueryForOperationRequest
+from ._query_for_operation_response_body import QueryForOperationResponseBody
+from ._query_for_operation_response import QueryForOperationResponse
 from ._query_guide_sub_status_request import QueryGuideSubStatusRequest
 from ._query_guide_sub_status_response_body import QueryGuideSubStatusResponseBody
 from ._query_guide_sub_status_response import QueryGuideSubStatusResponse
@@ -131,6 +134,9 @@ from ._submit_apply_record_request import SubmitApplyRecordRequest
 from ._submit_apply_record_shrink_request import SubmitApplyRecordShrinkRequest
 from ._submit_apply_record_response_body import SubmitApplyRecordResponseBody
 from ._submit_apply_record_response import SubmitApplyRecordResponse
+from ._submit_auto_audit_unblock_request import SubmitAutoAuditUnblockRequest
+from ._submit_auto_audit_unblock_response_body import SubmitAutoAuditUnblockResponseBody
+from ._submit_auto_audit_unblock_response import SubmitAutoAuditUnblockResponse
 from ._submit_penetration_test_request import SubmitPenetrationTestRequest
 from ._submit_penetration_test_response_body import SubmitPenetrationTestResponseBody
 from ._submit_penetration_test_response import SubmitPenetrationTestResponse
@@ -192,6 +198,7 @@ from ._get_notification_click_record_response_body import GetNotificationClickRe
 from ._get_notification_contacts_response_body import GetNotificationContactsResponseBodyDataChannelConfigs
 from ._get_notification_contacts_response_body import GetNotificationContactsResponseBodyDataContactInfoList
 from ._get_notification_contacts_response_body import GetNotificationContactsResponseBodyData
+from ._get_resource_control_event_response_body import GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours
 from ._get_resource_control_event_response_body import GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord
 from ._get_resource_control_event_response_body import GetResourceControlEventResponseBodyDataApplyRecordList
 from ._get_resource_control_event_response_body import GetResourceControlEventResponseBodyData
@@ -222,6 +229,9 @@ from ._query_account_safety_incident_response_body import QueryAccountSafetyInci
 from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyDataList
 from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyDataPageInfo
 from ._query_account_safety_incident_response_body import QueryAccountSafetyIncidentResponseBodyData
+from ._query_for_operation_response_body import QueryForOperationResponseBodyDataList
+from ._query_for_operation_response_body import QueryForOperationResponseBodyDataPageInfo
+from ._query_for_operation_response_body import QueryForOperationResponseBodyData
 from ._query_penetration_test_detail_response_body import QueryPenetrationTestDetailResponseBodyData
 from ._query_penetration_test_list_response_body import QueryPenetrationTestListResponseBodyDataList
 from ._query_penetration_test_list_response_body import QueryPenetrationTestListResponseBodyDataPageInfo
@@ -341,6 +351,9 @@ __all__ = [
     QueryAccountSafetyIncidentShrinkRequest,
     QueryAccountSafetyIncidentResponseBody,
     QueryAccountSafetyIncidentResponse,
+    QueryForOperationRequest,
+    QueryForOperationResponseBody,
+    QueryForOperationResponse,
     QueryGuideSubStatusRequest,
     QueryGuideSubStatusResponseBody,
     QueryGuideSubStatusResponse,
@@ -367,6 +380,9 @@ __all__ = [
     SubmitApplyRecordShrinkRequest,
     SubmitApplyRecordResponseBody,
     SubmitApplyRecordResponse,
+    SubmitAutoAuditUnblockRequest,
+    SubmitAutoAuditUnblockResponseBody,
+    SubmitAutoAuditUnblockResponse,
     SubmitPenetrationTestRequest,
     SubmitPenetrationTestResponseBody,
     SubmitPenetrationTestResponse,
@@ -428,6 +444,7 @@ __all__ = [
     GetNotificationContactsResponseBodyDataChannelConfigs,
     GetNotificationContactsResponseBodyDataContactInfoList,
     GetNotificationContactsResponseBodyData,
+    GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours,
     GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord,
     GetResourceControlEventResponseBodyDataApplyRecordList,
     GetResourceControlEventResponseBodyData,
@@ -458,6 +475,9 @@ __all__ = [
     QueryAccountSafetyIncidentResponseBodyDataList,
     QueryAccountSafetyIncidentResponseBodyDataPageInfo,
     QueryAccountSafetyIncidentResponseBodyData,
+    QueryForOperationResponseBodyDataList,
+    QueryForOperationResponseBodyDataPageInfo,
+    QueryForOperationResponseBodyData,
     QueryPenetrationTestDetailResponseBodyData,
     QueryPenetrationTestListResponseBodyDataList,
     QueryPenetrationTestListResponseBodyDataPageInfo,

@@ -16,10 +16,21 @@ class QueryPenetrationTestListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # - **200**: Successful.
+        # - **Other values (such as 400 and 500)**: Failed.
         self.code = code
+        # The query results.
         self.data = data
+        # The message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.                               
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -74,7 +85,9 @@ class QueryPenetrationTestListResponseBodyData(DaraModel):
         list: List[main_models.QueryPenetrationTestListResponseBodyDataList] = None,
         page_info: main_models.QueryPenetrationTestListResponseBodyDataPageInfo = None,
     ):
+        # The event data.
         self.list = list
+        # The pagination information.
         self.page_info = page_info
 
     def validate(self):
@@ -121,8 +134,13 @@ class QueryPenetrationTestListResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The page number of the returned page.
+        # 
+        # > Default value: 1, which indicates the first page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of events.
         self.total = total
 
     def validate(self):
@@ -168,12 +186,31 @@ class QueryPenetrationTestListResponseBodyDataList(DaraModel):
         test_end_date: int = None,
         test_start_date: int = None,
     ):
+        # The application time.
         self.apply_time = apply_time
+        # The type of the asset. Valid values:
+        # 
+        # - **EIP**: Public IP address of a VPC.
+        # - **SLB**: Server Load Balancer (SLB) instance for load balancing.
+        # - **ECS**: Public IP address of an ECS instance in the classic network.
         self.asset_type = asset_type
+        # The unique identity ID of the alerting event record.
+        # 
+        # > The data type of this field is Long. Precision loss may occur during the procedure to serialize or deserialize the numeric sequence. Make sure that the value does not exceed 9007199254740991.
         self.id = id
+        # The IP address of the asset.
         self.ip = ip
+        # The task status. Valid values:
+        # 
+        # - **early_end**: The user applied for early termination.
+        # - **expired**: The authorization expired.
+        # - **auditing**: Under review.
+        # - **approved**: Approved.
+        # - **rejected**: Rejected.
         self.status = status
+        # The end time of the test.
         self.test_end_date = test_end_date
+        # The start date of the test.
         self.test_start_date = test_start_date
 
     def validate(self):

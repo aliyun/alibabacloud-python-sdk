@@ -9,9 +9,9 @@ class EndPenetrationTestRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The unique sequence ID of the application record.
+        # The unique identity sequence of the application record.
         # 
-        # > This field is of the Long type. Precision loss may occur during serialization or deserialization. Ensure that the value does not exceed 9007199254740991.
+        # > The field type is Long. Precision loss may occur during the procedure to serialize or deserialize. Make sure that the value does not exceed 9007199254740991.
         self.id = id
 
     def validate(self):

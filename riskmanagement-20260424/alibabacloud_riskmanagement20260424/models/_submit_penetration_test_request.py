@@ -18,11 +18,11 @@ class SubmitPenetrationTestRequest(DaraModel):
         thirdparty_mobile: str = None,
         thirdparty_tester: str = None,
     ):
-        # The list of assets.
+        # The asset list.
         # 
         # > The array supports a maximum of 50 IP addresses.
         self.asset_list = asset_list
-        # Specifies whether a third-party testing service provider is used. Valid values:
+        # Specifies whether the test is performed by a third-party testing service provider. Valid values:
         # 
         # - true: Yes.
         # 
@@ -36,13 +36,13 @@ class SubmitPenetrationTestRequest(DaraModel):
         self.test_end_date = test_end_date
         # The source IP addresses used for the test.
         # 
-        # > A maximum of 50 IP addresses are supported. Separate multiple IP addresses with line breaks or commas (,). 0.0.0.0 indicates that all IP addresses are allowed. CIDR blocks are not supported, such as 140.168.0.0/16.
+        # > A maximum of 50 IP addresses are supported. Separate multiple IP addresses with line breaks or commas (,). 0.0.0.0 indicates that all IP addresses are allowed. CIDR blocks such as 140.168.0.0/16 are not supported.
         self.test_source_ips = test_source_ips
         # The start date of the test.
         self.test_start_date = test_start_date
         # The test steps.
         # 
-        # > The content must not exceed 500 characters. Provide detailed information to facilitate the approval process.
+        # > The steps must not exceed 500 characters. Provide detailed information to facilitate the approval process.
         self.test_steps = test_steps
         # The email address of the third-party tester.
         self.thirdparty_email = thirdparty_email

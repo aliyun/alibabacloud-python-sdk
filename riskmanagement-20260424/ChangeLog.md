@@ -1,3 +1,9 @@
+2026-10-22 Version: 1.4.0
+- Support API QueryForOperation.
+- Support API SubmitAutoAuditUnblock.
+- Update API GetResourceControlEvent: add response parameters Body.Data.ApplyRecordList.$.AnomalyHours.
+
+
 2026-10-13 Version: 1.3.1
 - Generated python 2026-04-24 for RiskManagement.
 

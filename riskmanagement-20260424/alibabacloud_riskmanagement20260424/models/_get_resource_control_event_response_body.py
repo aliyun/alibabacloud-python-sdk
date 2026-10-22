@@ -18,16 +18,16 @@ class GetResourceControlEventResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The returned data list.
+        # The list of returned data.
         self.data = data
-        # The prompt message.
+        # The message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the call is successful.
         # 
-        # - **true**: The call was successful.
-        # - **false**: The call failed.
+        # - **true**: The call is successful.
+        # - **false**: The call fails.
         self.success = success
 
     def validate(self):
@@ -95,15 +95,15 @@ class GetResourceControlEventResponseBodyData(DaraModel):
         src_port: str = None,
         tip: str = None,
     ):
-        # The list of application records.
+        # The list of application record information.
         self.apply_record_list = apply_record_list
-        # The recommended action from the assistant.
+        # The handling suggestions from the assistant.
         self.assistant_tip = assistant_tip
         # The blocked IP address.
         self.block_ip = block_ip
         # The traffic direction. Valid values:
-        # - **in**: inbound to the cloud. 
-        # - **out**: outbound from the cloud.
+        #  - **in**: Inbound to the cloud. 
+        # - **out**: Outbound from the cloud.
         self.direction = direction
         # The destination IP address.
         self.dst_ip = dst_ip
@@ -121,11 +121,11 @@ class GetResourceControlEventResponseBodyData(DaraModel):
         self.punish_reason = punish_reason
         # The download URL of the penalty snapshot.
         self.snapshot_url = snapshot_url
-        # The attack source IP address.
+        # The source IP address of the attack.
         self.src_ip = src_ip
         # The source port number.
         self.src_port = src_port
-        # The recommended action.
+        # The handling suggestions.
         self.tip = tip
 
     def validate(self):
@@ -243,30 +243,37 @@ class GetResourceControlEventResponseBodyData(DaraModel):
 class GetResourceControlEventResponseBodyDataApplyRecordList(DaraModel):
     def __init__(
         self,
+        anomaly_hours: List[main_models.GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours] = None,
         approval_reason: str = None,
         event_time_record: main_models.GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord = None,
         reject_reason: str = None,
         remark: str = None,
         status: str = None,
     ):
+        # The details of abnormal hours for CDN traffic exceptions.
+        self.anomaly_hours = anomaly_hours
         # The reason for approval.
         self.approval_reason = approval_reason
         # The time records related to the application.
         self.event_time_record = event_time_record
         # The reason for rejection.
         self.reject_reason = reject_reason
-        # The remarks.
+        # The remark.
         self.remark = remark
-        # The task status. Valid values:
+        # The task status.
         # 
-        # - **Executing**: executing
-        # - **Removed**: removed
-        # - **Alerting**: alerting
-        # - **Ended**: ended
-        # - **Processed**: processed by the user and under platform review
+        # - **Executing**: In progress.
+        # - **Removed**: Removed.
+        # - **Alerting**: Alerting.
+        # - **Ended**: Ended.
+        # - **Processed**: Processed by the user and under platform review.
         self.status = status
 
     def validate(self):
+        if self.anomaly_hours:
+            for v1 in self.anomaly_hours:
+                 if v1:
+                    v1.validate()
         if self.event_time_record:
             self.event_time_record.validate()
 
@@ -275,6 +282,11 @@ class GetResourceControlEventResponseBodyDataApplyRecordList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['AnomalyHours'] = []
+        if self.anomaly_hours is not None:
+            for k1 in self.anomaly_hours:
+                result['AnomalyHours'].append(k1.to_map() if k1 else None)
+
         if self.approval_reason is not None:
             result['ApprovalReason'] = self.approval_reason
 
@@ -294,6 +306,12 @@ class GetResourceControlEventResponseBodyDataApplyRecordList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.anomaly_hours = []
+        if m.get('AnomalyHours') is not None:
+            for k1 in m.get('AnomalyHours'):
+                temp_model = main_models.GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours()
+                self.anomaly_hours.append(temp_model.from_map(k1))
+
         if m.get('ApprovalReason') is not None:
             self.approval_reason = m.get('ApprovalReason')
 
@@ -332,31 +350,31 @@ class GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord(Dara
         remove_time: str = None,
         risk_check_success_time: str = None,
     ):
-        # The time when the alert ended.
+        # The end time of the alert.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.alert_end_time = alert_end_time
-        # The time when the first alert was triggered.
+        # The time of the first alert.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.alert_start_time = alert_start_time
-        # The time when the control action was lifted.
+        # The time when the restriction is lifted.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.anti_punish_time = anti_punish_time
         # The application time.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.apply_time = apply_time
-        # The time when the alert was ignored.
+        # The time when the alert is ignored.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.ignore_alert_time = ignore_alert_time
-        # The time when the instance was shut down.
+        # The time when the instance is shut down.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.instance_close_time = instance_close_time
-        # The time when the instance was scanned.
+        # The time when the instance is scanned.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.instance_scan_time = instance_scan_time
-        # The time of the latest detection.
+        # The time of the latest check.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.last_check_time = last_check_time
-        # The time when the mining alert was processed.
+        # The processing time of the mining alert.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.mining_alert_process_time = mining_alert_process_time
         # The estimated shutdown time.
@@ -366,19 +384,19 @@ class GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord(Dara
         # 
         # > Format: yyyy-MM-dd HH:mm:ss
         self.process_time = process_time
-        # The time when the control action ended.
+        # The end time of the restriction.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.punish_end_time = punish_end_time
-        # The time when the control action started.
+        # The start time of the restriction.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.punish_start_time = punish_start_time
         # The rejection time.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.reject_time = reject_time
-        # The removal time.
+        # The time when the restriction is removed.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.remove_time = remove_time
-        # The time when the risk check succeeded.
+        # The time when the risk check succeeds.
         # > Format: yyyy-MM-dd HH:mm:ss
         self.risk_check_success_time = risk_check_success_time
 
@@ -489,6 +507,70 @@ class GetResourceControlEventResponseBodyDataApplyRecordListEventTimeRecord(Dara
 
         if m.get('RiskCheckSuccessTime') is not None:
             self.risk_check_success_time = m.get('RiskCheckSuccessTime')
+
+        return self
+
+class GetResourceControlEventResponseBodyDataApplyRecordListAnomalyHours(DaraModel):
+    def __init__(
+        self,
+        abnormal_bytes: int = None,
+        anomaly_desc: str = None,
+        baseline_bytes: int = None,
+        hour: str = None,
+        traf_ratio: float = None,
+    ):
+        # The traffic exceptions in bytes.
+        self.abnormal_bytes = abnormal_bytes
+        # The anomaly description.
+        self.anomaly_desc = anomaly_desc
+        # The baseline traffic in bytes.
+        self.baseline_bytes = baseline_bytes
+        # The anomaly hour.
+        self.hour = hour
+        # The traffic multiplier.
+        self.traf_ratio = traf_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.abnormal_bytes is not None:
+            result['AbnormalBytes'] = self.abnormal_bytes
+
+        if self.anomaly_desc is not None:
+            result['AnomalyDesc'] = self.anomaly_desc
+
+        if self.baseline_bytes is not None:
+            result['BaselineBytes'] = self.baseline_bytes
+
+        if self.hour is not None:
+            result['Hour'] = self.hour
+
+        if self.traf_ratio is not None:
+            result['TrafRatio'] = self.traf_ratio
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AbnormalBytes') is not None:
+            self.abnormal_bytes = m.get('AbnormalBytes')
+
+        if m.get('AnomalyDesc') is not None:
+            self.anomaly_desc = m.get('AnomalyDesc')
+
+        if m.get('BaselineBytes') is not None:
+            self.baseline_bytes = m.get('BaselineBytes')
+
+        if m.get('Hour') is not None:
+            self.hour = m.get('Hour')
+
+        if m.get('TrafRatio') is not None:
+            self.traf_ratio = m.get('TrafRatio')
 
         return self
 
