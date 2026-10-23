@@ -17,17 +17,35 @@ class Catalog(DaraModel):
     ):
         # The comment.
         self.comment = comment
-        # The creation time.
+        # The creation time. The value is a millisecond-level timestamp.
         self.create_time = create_time
-        # ID
+        # The ID of the data catalog entity. Currently, the DLF and StarRocks types are supported. For more information, see [Concepts of metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # 
+        # - For the DLF type, the format is `dlf-catalog::catalog_id`.
+        # 
+        # - For the StarRocks type, the format is `starrocks-catalog:(instance_id|encoded_jdbc_url):catalog_name`.
+        # 
+        # > Where:  
+        # `catalog_id`: The DLF catalog ID.  
+        # `instance_id`: The instance ID, which is required when the data source is registered in instance mode.  
+        # `encoded_jdbc_url`: the URL-encoded JDBC connection string, which is required when the data source is registered by using a connection string.  
+        # `catalog_name`: the name of the StarRocks catalog.
         self.id = id
-        # The modification time.
+        # The modification time. The value is a millisecond-level timestamp.
         self.modify_time = modify_time
         # The name.
         self.name = name
         # The ID of the parent entity.
+        # 
+        # - For the DLF type, the format of `ParentMetaEntityId` is `dlf`.
+        # 
+        # - For the StarRocks type, the format of `ParentMetaEntityId` is `starrocks:(instance_id|encoded_jdbc_url)`.
+        # 
+        # > Where:  
+        # `instance_id`: The instance ID, which is required when the data source is registered in instance mode.  
+        # `encoded_jdbc_url`: the URL-encoded JDBC connection string, which is required when the data source is registered by using a connection string.
         self.parent_meta_entity_id = parent_meta_entity_id
-        # The type.
+        # The catalog type. The valid values depend on the metadata collector type.
         self.type = type
 
     def validate(self):

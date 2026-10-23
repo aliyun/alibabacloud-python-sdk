@@ -22,19 +22,19 @@ class Table(DaraModel):
         table_type: str = None,
         technical_metadata: main_models.TableTechnicalMetadata = None,
     ):
-        # The business metadata related to DataWorks, including the instructions, tags, categories, upstream output tasks, and extension information.
+        # The business metadata related to DataWorks, including usage instructions, tags, categories, upstream output tasks, and extended information.
         self.business_metadata = business_metadata
         # The comment.
         self.comment = comment
-        # The creation time. The value is a timestamp in milliseconds.
+        # The creation time. The value is a millisecond timestamp.
         self.create_time = create_time
-        # The ID. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # The format is `${EntityType}:${Instance ID or URL-encoded URL}:${Data catalog identifier}:${Database name}:${Schema name}:${Table name}`. Use an empty string as a placeholder for non-existent levels.
+        # The format is `${EntityType}:${Instance ID or escaped URL}:${Data catalog identifier}:${Database name}:${Schema name}:${Table name}`. Empty strings are used as placeholders for non-existent levels.
         # 
-        # > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For the MaxCompute type, the database name is the MaxCompute project name. Projects with the three-level model enabled must provide the schema name. For projects without the three-level model enabled, use an empty string as a placeholder for the schema name.
+        # > For MaxCompute and DLF types, an empty string is used as a placeholder for the instance ID. For the MaxCompute type, the database name is the MaxCompute project name. Projects with the three-tier model enabled must provide the schema name. For projects without the three-tier model enabled, an empty string is used as a placeholder for the schema name.
         # 
-        # > For the StarRocks type, the data catalog identifier is the catalog name. For the DLF type, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and you can use an empty string as a placeholder. 
+        # > For the StarRocks type, the data catalog identifier is the catalog name. For the DLF type, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and an empty string can be used as a placeholder. 
         # 
         # The ID formats for several common types are as follows: 
         # 
@@ -48,33 +48,33 @@ class Table(DaraModel):
         # 
         # `mysql-table:(instance_id|encoded_jdbc_url)::database_name::table_name`
         # > Where:  
-        # `instance_id`: The instance ID, which is required when the data source is registered in instance mode.  
-        # `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered in connection string mode.  
+        # `instance_id`: The instance ID. Required when the data source is registered in instance mode.  
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string. Required when the data source is registered by using a connection string.  
         # `catalog_id`: The DLF catalog ID.  
         # `project_name`: The MaxCompute project name.   
         # `database_name`: The database name.   
-        # `schema_name`: The schema name. For the MaxCompute type, this is required only when the three-level model is enabled for the project. If it is not enabled, use an empty string as a placeholder.   
+        # `schema_name`: The schema name. For the MaxCompute type, this is required only when the three-tier model is enabled for the project. If the three-tier model is not enabled, an empty string is used as a placeholder.   
         # `table_name`: The table name.
         self.id = id
-        # The modification time. The value is a timestamp in milliseconds.
+        # The modification time. The value is a millisecond timestamp.
         self.modify_time = modify_time
         # The name.
         self.name = name
-        # The ID of the parent metadata entity. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID of the parent metadata entity. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # - For types that support schemas (`maxcompute/holo/postgresql/sqlserver/hybriddb_for_postgresql/oracle`, where the MaxCompute type requires the three-level model to be enabled for the project), `ParentMetaEntityId` is the database schema to which the table belongs. The format is `${EntityType}:${Instance ID or URL-encoded URL}:${Data catalog identifier}:${Database name}:${Schema name}`. Use an empty string as a placeholder for non-existent levels.
+        # - For types that support schemas (`maxcompute/holo/postgresql/sqlserver/hybriddb_for_postgresql/oracle`. For the MaxCompute type, the three-tier model must be enabled for the project), `ParentMetaEntityId` is the database schema to which the table belongs. The format is `${EntityType}:${Instance ID or escaped URL}:${Data catalog identifier}:${Database name}:${Schema name}`. Empty strings are used as placeholders for non-existent levels.
         # 
-        # - For other types, `ParentMetaEntityId` is the database to which the table belongs. The format is `${EntityType}:${Instance ID or URL-encoded URL}:${Data catalog identifier}:${Database name}`. Use an empty string as a placeholder for non-existent levels.
+        # - For other types, `ParentMetaEntityId` is the database to which the table belongs. The format is `${EntityType}:${Instance ID or escaped URL}:${Data catalog identifier}:${Database name}`. Empty strings are used as placeholders for non-existent levels.
         # 
-        # > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For the MaxCompute type, the database name is the MaxCompute project name.
+        # > For MaxCompute and DLF types, an empty string is used as a placeholder for the instance ID. For the MaxCompute type, the database name is the MaxCompute project name.
         # 
-        # > For the StarRocks type, the data catalog identifier is the catalog name. For the DLF type, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and you can use an empty string as a placeholder.
+        # > For the StarRocks type, the data catalog identifier is the catalog name. For the DLF type, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and an empty string can be used as a placeholder.
         # 
         # The `ParentMetaEntityId` formats for several common types are as follows:
         # 	
         # `maxcompute-project:::project_name`
         # 
-        # `maxcompute-schema:::project_name:schema_name` (Only when the three-level model is enabled for the project)
+        # `maxcompute-schema:::project_name:schema_name` (Only when the three-tier model is enabled for the project)
         # 
         # `dlf-database::catalog_id:database_name`
         # 
@@ -85,15 +85,16 @@ class Table(DaraModel):
         # `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
         # 
         # > Where:  
-        # `instance_id`: The instance ID, which is required when the data source is registered in instance mode.   
-        # `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered in connection string mode.   
+        # `instance_id`: The instance ID. Required when the data source is registered in instance mode.   
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string. Required when the data source is registered by using a connection string.   
         # `catalog_id`: The DLF catalog ID.   
         # `project_name`: The MaxCompute project name.   
         # `database_name`: The database name.   
         # `schema_name`: The schema name.
         self.parent_meta_entity_id = parent_meta_entity_id
-        # The list of partition keys. This parameter is empty for non-partitioned tables.
+        # The list of partition keys. This list is empty for non-partitioned tables.
         self.partition_keys = partition_keys
+        # The statistical metrics of the table. The key is the metric name, and the value is the statistical value in string format. Current metrics include the number of production runs in the last 30 days (prodRunCount30d), the number of ad hoc queries in the last 30 days (adhocQueryCount30d), the number of downstream dependent tasks (downstreamTaskCount30d), and the number of downstream dependent tables (downstreamTableCount30d). Metrics without statistical values are not returned.
         self.statistics_infos = statistics_infos
         # The table type. The valid values depend on the metadata collector type.
         self.table_type = table_type
@@ -208,7 +209,7 @@ class TableTechnicalMetadata(DaraModel):
         self.owner = owner
         # The parameter information.
         self.parameters = parameters
-        # The class used for SerDe.
+        # The class used by SerDe.
         self.serialization_library = serialization_library
 
     def validate(self):
@@ -279,9 +280,9 @@ class TableBusinessMetadata(DaraModel):
     ):
         # The list of categories.
         self.categories = categories
-        # The custom attribute values, where the key is the custom attribute identifier and the value is the list of attribute values.
+        # The custom attribute values. The key is the custom attribute identifier, and the value is the list of attribute values.
         self.custom_attributes = custom_attributes
-        # The extension information. This parameter is currently supported only for the MaxCompute type.
+        # The extension information. Currently, only the MaxCompute type is supported.
         self.extension = extension
         # The instructions.
         self.readme = readme
@@ -460,10 +461,11 @@ class TableBusinessMetadataExtension(DaraModel):
         view_count: int = None,
     ):
         # The environment type. Valid values:
+        # 
         # - Prod: Production environment.
         # - Dev: Development environment.
         self.env_type = env_type
-        # The number of times added to favorites.
+        # The number of favorites.
         self.favor_count = favor_count
         # The workspace ID.
         self.project_id = project_id

@@ -27,17 +27,17 @@ class Column(DaraModel):
         self.business_metadata = business_metadata
         # The comment.
         self.comment = comment
-        # Specifies whether the column is a foreign key. Currently, only the MaxCompute type is supported.
+        # Indicates whether the column is a foreign key. This is supported only by the MaxCompute type.
         self.foreign_key = foreign_key
         # The ID. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # The format is `${EntityType}:${Instance ID or URL-encoded URL}:${Catalog ID}:${Database name}:${Schema name}:${Table name}:${Column name}`. Use an empty string as a placeholder for non-existent levels.
+        # The format is `${EntityType}:${Instance ID or URL-encoded URL}:${Data catalog identifier}:${Database name}:${Schema name}:${Table name}:${Column name}`. Use an empty string as a placeholder for non-existent levels.
         # 
-        # > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For the MaxCompute type, the database name is the MaxCompute project name. Projects with the three-tier model enabled require the schema name. For projects without the three-tier model enabled, use an empty string as a placeholder for the schema name.
+        # > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For the MaxCompute type, the database name is the MaxCompute project name. Projects with the three-tier model enabled must provide the schema name. For projects without the three-tier model enabled, use an empty string as a placeholder for the schema name.
         # 
-        # > For the StarRocks type, the catalog ID is the catalog name. For the DLF type, the catalog ID is the catalog ID. Other types do not support the catalog level, and an empty string can be used as a placeholder.
+        # > For the StarRocks type, the data catalog identifier is the catalog name. For the DLF type, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and an empty string can be used as a placeholder.
         # 
-        # The following are the ID formats for several common types:
+        # The ID formats for several common types are as follows:
         # 
         # `maxcompute-column:::project_name:[schema_name]:table_name:column_name`
         # 
@@ -55,20 +55,21 @@ class Column(DaraModel):
         # `catalog_id`: The DLF catalog ID.   
         # `project_name`: The MaxCompute project name.   
         # `database_name`: The database name.   
-        # `schema_name`: The schema name. For the MaxCompute type, this is required only if the three-tier model is enabled for the project. If it is not enabled, use an empty string as a placeholder.    
+        # `schema_name`: The schema name. For the MaxCompute type, this is required only if the three-tier model is enabled for the project. Otherwise, use an empty string as a placeholder.    
         # `table_name`: The table name.   
         # `column_name`: The column name.
         self.id = id
         # The name.
         self.name = name
-        # Specifies whether the column is a partition key.
+        # Indicates whether the column is a partition key.
         self.partition_key = partition_key
         # The position.
         self.position = position
-        # Specifies whether the column is a primary key. Currently, only the MaxCompute type is supported.
+        # Indicates whether the column is a primary key. This is supported only by the MaxCompute type.
         self.primary_key = primary_key
+        # The statistical metrics of the column, where the key is the metric name and the value is the statistical value in string format. Current metrics include the number of production runs in the last 30 days (prodRunCount30d) and the number of downstream dependent tasks (downstreamTaskCount30d). Metrics without statistical values are not returned.
         self.statistics_infos = statistics_infos
-        # The ID of the table. Refer to the Table object.
+        # The table ID. For more information, see the `Table` object.
         self.table_id = table_id
         # The technical metadata.
         self.technical_metadata = technical_metadata
@@ -204,7 +205,7 @@ class ColumnBusinessMetadata(DaraModel):
     ):
         # The custom attribute values, where the key is the custom attribute identifier and the value is a list of attribute values.
         self.custom_attributes = custom_attributes
-        # The business description of the column. Currently, only MaxCompute, HMS (EMR cluster), and DLF types are supported.
+        # The business description of the column. This is supported only by MaxCompute, HMS (EMR cluster), and DLF types.
         self.description = description
 
     def validate(self):

@@ -18,26 +18,27 @@ class ListLineagesRequest(DaraModel):
         src_entity_id: str = None,
         src_entity_name: str = None,
     ):
-        # The ID of the destination entity. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
+        # The destination entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
         self.dst_entity_id = dst_entity_id
-        # The name of the destination entity. Fuzzy matching is supported.
+        # The destination entity name. Fuzzy matching is supported.
         self.dst_entity_name = dst_entity_name
         # Specifies whether to return lineage relationship information. Default value: false.
         self.need_attach_relationship = need_attach_relationship
         # The sort order. Default value: Asc. Valid values:
-        # - Asc: ascending order
-        # - Desc: descending order
+        # - Asc: Ascending order.
+        # - Desc: Descending order.
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # Queries the lineage relationships that take effect within the specified number of recent calendar days. Valid values: 1 to 30. For example, 1 indicates starting from midnight of the current day, and 7 indicates starting from midnight 6 days ago. If this parameter is not specified, the system filters the data based on the configured lineage validity period.
         self.recent_days = recent_days
-        # The field used for sorting. Default value: Name. The entities are sorted by lineage entity name.
+        # The sort field. Default value: Name. The entities are sorted by lineage entity name.
         self.sort_by = sort_by
-        # The ID of the source entity. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
+        # The source entity ID. You can refer to the table or column ID returned by the ListTables or ListColumns operation, or use a custom entity ID.
         self.src_entity_id = src_entity_id
-        # The name of the source entity. Fuzzy matching is supported.
+        # The source entity name. Fuzzy matching is supported.
         self.src_entity_name = src_entity_name
 
     def validate(self):

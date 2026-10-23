@@ -14,7 +14,7 @@ class ListLineagesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The pagination result.
+        # The pagination information.
         self.paging_info = paging_info
         # The request ID.
         self.request_id = request_id
@@ -63,9 +63,9 @@ class ListLineagesResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of lineage information.
+        # The lineage information list.
         self.lineages = lineages
-        # The page number of the returned data, which is used for pagination.
+        # The requested page number, which is used for pagination.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
