@@ -22,16 +22,15 @@ class DescribeVaultsRequest(DaraModel):
         vault_region_id: str = None,
         vault_type: str = None,
     ):
-        # The page number. Pages start from 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
         self.page_size = page_size
         # Specifies whether to query replication target vaults.
         self.replication = replication
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The status of the backup vault. Valid values:
-        # 
         # - **UNKNOWN**: unknown
         # - **INITIALIZING**: initializing
         # - **CREATED**: created
@@ -39,15 +38,17 @@ class DescribeVaultsRequest(DaraModel):
         self.status = status
         # The tag information. A maximum of 20 tags are supported.
         self.tag = tag
-        # The backup vault ID.
+        # The ID of the backup vault.
         self.vault_id = vault_id
         # The name of the backup vault. The name must be 1 to 64 characters in length.
         self.vault_name = vault_name
         # The ID of the account to which the backup vault belongs.
         self.vault_owner_id = vault_owner_id
-        # The region ID of the backup vault.
+        # The ID of the region to which the backup vault belongs.
         self.vault_region_id = vault_region_id
-        # The type of the backup vault. Valid values.
+        # The type of the backup vault. Valid values:
+        # - **STANDARD**: A standard vault. It can be used for ECS File Backup Standard Edition, OSS backup, and NAS backup.
+        # - **OTS_BACKUP**: A Tablestore vault. It can only be used for Tablestore backup. Tablestore requires this type of vault.
         self.vault_type = vault_type
 
     def validate(self):

@@ -1,3 +1,7 @@
+2026-10-23 Version: 2.7.1
+- Update API DescribeVaults: add response parameters Body.Vaults.$.BackupPlanStatistics.Cpfs.
+
+
 2026-08-25 Version: 2.6.3
 - Update API CreatePolicyV2: add request parameters Rules.$.DataSourceFilters.$.AccountScope.
 - Update API CreatePolicyV2: add request parameters Rules.$.DataSourceFilters.$.Accounts.

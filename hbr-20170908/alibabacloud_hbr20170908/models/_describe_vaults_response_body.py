@@ -19,17 +19,19 @@ class DescribeVaultsResponseBody(DaraModel):
         total_count: int = None,
         vaults: main_models.DescribeVaultsResponseBodyVaults = None,
     ):
-        # The return code. A value of 200 indicates success.
+        # The return code. 200 indicates success.
         self.code = code
-        # The returned message. The value "successful" is returned for a successful request. An error message is returned for a failed request.
+        # The returned message. "successful" is returned for a successful request, and the corresponding error message is returned if an error occurs.
         self.message = message
-        # The page number. Pages start from 1. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
         # The total number of backup vaults returned.
         self.total_count = total_count
@@ -762,6 +764,7 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(DaraModel):
         archive: int = None,
         common_file_system: int = None,
         common_nas: int = None,
+        cpfs: int = None,
         csg: int = None,
         ecs_file: int = None,
         ecs_hana: int = None,
@@ -778,6 +781,7 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(DaraModel):
         self.archive = archive
         self.common_file_system = common_file_system
         self.common_nas = common_nas
+        self.cpfs = cpfs
         self.csg = csg
         self.ecs_file = ecs_file
         self.ecs_hana = ecs_hana
@@ -807,6 +811,9 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(DaraModel):
 
         if self.common_nas is not None:
             result['CommonNas'] = self.common_nas
+
+        if self.cpfs is not None:
+            result['Cpfs'] = self.cpfs
 
         if self.csg is not None:
             result['Csg'] = self.csg
@@ -856,6 +863,9 @@ class DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics(DaraModel):
 
         if m.get('CommonNas') is not None:
             self.common_nas = m.get('CommonNas')
+
+        if m.get('Cpfs') is not None:
+            self.cpfs = m.get('Cpfs')
 
         if m.get('Csg') is not None:
             self.csg = m.get('Csg')

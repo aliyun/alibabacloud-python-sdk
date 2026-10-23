@@ -19,13 +19,13 @@ class SearchHistoricalSnapshotsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The return code. A value of 200 indicates that the request was successful.
+        # The response code. A value of 200 indicates success.
         self.code = code
         # The number of historical snapshots displayed on the current page.
         self.limit = limit
-        # The returned message. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
+        # The returned message. The value "successful" is returned for successful requests. An error message is returned for failed requests.
         self.message = message
-        # The token that is required to obtain the next page of snapshots.
+        # The token required to retrieve the next page of snapshots.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -33,10 +33,9 @@ class SearchHistoricalSnapshotsResponseBody(DaraModel):
         # Indicates whether the request was successful.
         # 
         # - true: The request was successful.
-        # 
         # - false: The request failed.
         self.success = success
-        # The total number of snapshots that meet the specified criteria.
+        # The total number of snapshots that meet the specified conditions.
         self.total_count = total_count
 
     def validate(self):

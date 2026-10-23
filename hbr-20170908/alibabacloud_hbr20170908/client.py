@@ -53,40 +53,7 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'hbr.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'hbr.aliyuncs.com',
             'eu-west-1-oxs': 'hbr.aliyuncs.com',
-            'rus-west-1-pop': 'hbr.aliyuncs.com',
-            'cn-wulanchabu': 'hbr.cn-wulanchabu.aliyuncs.com',
-            'cn-beijing': 'hbr.cn-beijing.aliyuncs.com',
-            'cn-qingdao': 'hbr.cn-qingdao.aliyuncs.com',
-            'cn-shanghai': 'hbr.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'hbr.cn-hongkong.aliyuncs.com',
-            'cn-heyuan': 'hbr.cn-heyuan.aliyuncs.com',
-            'cn-zhangjiakou': 'hbr.cn-zhangjiakou.aliyuncs.com',
-            'cn-shenzhen': 'hbr.cn-shenzhen.aliyuncs.com',
-            'ap-northeast-2': 'hbr.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'hbr.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'hbr.cn-chengdu.aliyuncs.com',
-            'cn-guangzhou': 'hbr.cn-guangzhou.aliyuncs.com',
-            'ap-southeast-1': 'hbr.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-3': 'hbr.ap-southeast-3.aliyuncs.com',
-            'cn-huhehaote': 'hbr.cn-huhehaote.aliyuncs.com',
-            'ap-southeast-5': 'hbr.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-6': 'hbr.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-7': 'hbr.ap-southeast-7.aliyuncs.com',
-            'cn-hangzhou': 'hbr.cn-hangzhou.aliyuncs.com',
-            'ap-southeast-8': 'hbr.ap-southeast-8.aliyuncs.com',
-            'cn-zhongwei': 'hbr.cn-zhongwei.aliyuncs.com',
-            'us-southeast-1': 'hbr.us-southeast-1.aliyuncs.com',
-            'na-south-1': 'hbr.na-south-1.aliyuncs.com',
-            'eu-central-1': 'hbr.eu-central-1.aliyuncs.com',
-            'us-west-1': 'hbr.us-west-1.aliyuncs.com',
-            'eu-west-1': 'hbr.eu-west-1.aliyuncs.com',
-            'us-east-1': 'hbr.us-east-1.aliyuncs.com',
-            'me-central-1': 'hbr.me-central-1.aliyuncs.com',
-            'me-east-1': 'hbr.me-east-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'hbr.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-beijing-finance-1': 'hbr.cn-beijing-finance-1.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'hbr.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-hangzhou-finance': 'hbr.cn-hangzhou-finance.aliyuncs.com'
+            'rus-west-1-pop': 'hbr.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('hbr', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -4365,6 +4332,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_data_sources_with_options_async(request, runtime)
 
+    def describe_feature_trial_info_with_options(
+        self,
+        request: main_models.DescribeFeatureTrialInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFeatureTrialInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.feature_type):
+            query['FeatureType'] = request.feature_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFeatureTrialInfo',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFeatureTrialInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_feature_trial_info_with_options_async(
+        self,
+        request: main_models.DescribeFeatureTrialInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFeatureTrialInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.feature_type):
+            query['FeatureType'] = request.feature_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFeatureTrialInfo',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFeatureTrialInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_feature_trial_info(
+        self,
+        request: main_models.DescribeFeatureTrialInfoRequest,
+    ) -> main_models.DescribeFeatureTrialInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_feature_trial_info_with_options(request, runtime)
+
+    async def describe_feature_trial_info_async(
+        self,
+        request: main_models.DescribeFeatureTrialInfoRequest,
+    ) -> main_models.DescribeFeatureTrialInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_feature_trial_info_with_options_async(request, runtime)
+
     def describe_hana_backup_plans_with_options(
         self,
         request: main_models.DescribeHanaBackupPlansRequest,
@@ -6735,6 +6772,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_temp_file_download_link_with_options_async(request, runtime)
 
+    def get_trial_info_with_options(
+        self,
+        request: main_models.GetTrialInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTrialInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket):
+            query['Bucket'] = request.bucket
+        if not DaraCore.is_null(request.create_time):
+            query['CreateTime'] = request.create_time
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTrialInfo',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTrialInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_trial_info_with_options_async(
+        self,
+        request: main_models.GetTrialInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTrialInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket):
+            query['Bucket'] = request.bucket
+        if not DaraCore.is_null(request.create_time):
+            query['CreateTime'] = request.create_time
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTrialInfo',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTrialInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_trial_info(
+        self,
+        request: main_models.GetTrialInfoRequest,
+    ) -> main_models.GetTrialInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_trial_info_with_options(request, runtime)
+
+    async def get_trial_info_async(
+        self,
+        request: main_models.GetTrialInfoRequest,
+    ) -> main_models.GetTrialInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_trial_info_with_options_async(request, runtime)
+
     def install_backup_clients_with_options(
         self,
         tmp_req: main_models.InstallBackupClientsRequest,
@@ -6918,6 +7037,108 @@ class Client(OpenApiClient):
     ) -> main_models.ListProtectedResourcesResponse:
         runtime = RuntimeOptions()
         return await self.list_protected_resources_with_options_async(request, runtime)
+
+    def list_snapshots_with_options(
+        self,
+        request: main_models.ListSnapshotsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.complete_time_end):
+            query['CompleteTimeEnd'] = request.complete_time_end
+        if not DaraCore.is_null(request.complete_time_start):
+            query['CompleteTimeStart'] = request.complete_time_start
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.plan_id):
+            query['PlanId'] = request.plan_id
+        if not DaraCore.is_null(request.protected_resource_id):
+            query['ProtectedResourceId'] = request.protected_resource_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.vault_id):
+            query['VaultId'] = request.vault_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSnapshots',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_snapshots_with_options_async(
+        self,
+        request: main_models.ListSnapshotsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.complete_time_end):
+            query['CompleteTimeEnd'] = request.complete_time_end
+        if not DaraCore.is_null(request.complete_time_start):
+            query['CompleteTimeStart'] = request.complete_time_start
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.plan_id):
+            query['PlanId'] = request.plan_id
+        if not DaraCore.is_null(request.protected_resource_id):
+            query['ProtectedResourceId'] = request.protected_resource_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        if not DaraCore.is_null(request.source_type):
+            query['SourceType'] = request.source_type
+        if not DaraCore.is_null(request.vault_id):
+            query['VaultId'] = request.vault_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSnapshots',
+            version = '2017-09-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_snapshots(
+        self,
+        request: main_models.ListSnapshotsRequest,
+    ) -> main_models.ListSnapshotsResponse:
+        runtime = RuntimeOptions()
+        return self.list_snapshots_with_options(request, runtime)
+
+    async def list_snapshots_async(
+        self,
+        request: main_models.ListSnapshotsRequest,
+    ) -> main_models.ListSnapshotsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_snapshots_with_options_async(request, runtime)
 
     def open_hbr_service_with_options(
         self,

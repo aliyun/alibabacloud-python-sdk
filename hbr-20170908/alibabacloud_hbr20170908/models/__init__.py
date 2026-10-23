@@ -151,6 +151,9 @@ from ._describe_cross_accounts_response import DescribeCrossAccountsResponse
 from ._describe_data_sources_request import DescribeDataSourcesRequest
 from ._describe_data_sources_response_body import DescribeDataSourcesResponseBody
 from ._describe_data_sources_response import DescribeDataSourcesResponse
+from ._describe_feature_trial_info_request import DescribeFeatureTrialInfoRequest
+from ._describe_feature_trial_info_response_body import DescribeFeatureTrialInfoResponseBody
+from ._describe_feature_trial_info_response import DescribeFeatureTrialInfoResponse
 from ._describe_hana_backup_plans_request import DescribeHanaBackupPlansRequest
 from ._describe_hana_backup_plans_response_body import DescribeHanaBackupPlansResponseBody
 from ._describe_hana_backup_plans_response import DescribeHanaBackupPlansResponse
@@ -234,6 +237,9 @@ from ._get_basic_statistics_response import GetBasicStatisticsResponse
 from ._get_temp_file_download_link_request import GetTempFileDownloadLinkRequest
 from ._get_temp_file_download_link_response_body import GetTempFileDownloadLinkResponseBody
 from ._get_temp_file_download_link_response import GetTempFileDownloadLinkResponse
+from ._get_trial_info_request import GetTrialInfoRequest
+from ._get_trial_info_response_body import GetTrialInfoResponseBody
+from ._get_trial_info_response import GetTrialInfoResponse
 from ._install_backup_clients_request import InstallBackupClientsRequest
 from ._install_backup_clients_shrink_request import InstallBackupClientsShrinkRequest
 from ._install_backup_clients_response_body import InstallBackupClientsResponseBody
@@ -241,6 +247,9 @@ from ._install_backup_clients_response import InstallBackupClientsResponse
 from ._list_protected_resources_request import ListProtectedResourcesRequest
 from ._list_protected_resources_response_body import ListProtectedResourcesResponseBody
 from ._list_protected_resources_response import ListProtectedResourcesResponse
+from ._list_snapshots_request import ListSnapshotsRequest
+from ._list_snapshots_response_body import ListSnapshotsResponseBody
+from ._list_snapshots_response import ListSnapshotsResponse
 from ._open_hbr_service_response_body import OpenHbrServiceResponseBody
 from ._open_hbr_service_response import OpenHbrServiceResponse
 from ._remove_data_source_request import RemoveDataSourceRequest
@@ -414,8 +423,10 @@ from ._describe_vaults_response_body import DescribeVaultsResponseBodyVaultsVaul
 from ._describe_vaults_response_body import DescribeVaultsResponseBodyVaults
 from ._get_basic_statistics_response_body import GetBasicStatisticsResponseBodyGlobalStatistics
 from ._get_basic_statistics_response_body import GetBasicStatisticsResponseBodyRegionStatistics
+from ._get_trial_info_response_body import GetTrialInfoResponseBodyTrialInfo
 from ._install_backup_clients_response_body import InstallBackupClientsResponseBodyInstanceStatuses
 from ._list_protected_resources_response_body import ListProtectedResourcesResponseBodyProtectedResources
+from ._list_snapshots_response_body import ListSnapshotsResponseBodySnapshots
 from ._search_historical_snapshots_response_body import SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths
 from ._search_historical_snapshots_response_body import SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot
 from ._search_historical_snapshots_response_body import SearchHistoricalSnapshotsResponseBodySnapshots
@@ -583,6 +594,9 @@ __all__ = [
     DescribeDataSourcesRequest,
     DescribeDataSourcesResponseBody,
     DescribeDataSourcesResponse,
+    DescribeFeatureTrialInfoRequest,
+    DescribeFeatureTrialInfoResponseBody,
+    DescribeFeatureTrialInfoResponse,
     DescribeHanaBackupPlansRequest,
     DescribeHanaBackupPlansResponseBody,
     DescribeHanaBackupPlansResponse,
@@ -666,6 +680,9 @@ __all__ = [
     GetTempFileDownloadLinkRequest,
     GetTempFileDownloadLinkResponseBody,
     GetTempFileDownloadLinkResponse,
+    GetTrialInfoRequest,
+    GetTrialInfoResponseBody,
+    GetTrialInfoResponse,
     InstallBackupClientsRequest,
     InstallBackupClientsShrinkRequest,
     InstallBackupClientsResponseBody,
@@ -673,6 +690,9 @@ __all__ = [
     ListProtectedResourcesRequest,
     ListProtectedResourcesResponseBody,
     ListProtectedResourcesResponse,
+    ListSnapshotsRequest,
+    ListSnapshotsResponseBody,
+    ListSnapshotsResponse,
     OpenHbrServiceResponseBody,
     OpenHbrServiceResponse,
     RemoveDataSourceRequest,
@@ -846,8 +866,10 @@ __all__ = [
     DescribeVaultsResponseBodyVaults,
     GetBasicStatisticsResponseBodyGlobalStatistics,
     GetBasicStatisticsResponseBodyRegionStatistics,
+    GetTrialInfoResponseBodyTrialInfo,
     InstallBackupClientsResponseBodyInstanceStatuses,
     ListProtectedResourcesResponseBodyProtectedResources,
+    ListSnapshotsResponseBodySnapshots,
     SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths,
     SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot,
     SearchHistoricalSnapshotsResponseBodySnapshots,
