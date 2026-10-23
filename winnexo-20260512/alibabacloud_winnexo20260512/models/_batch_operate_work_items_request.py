@@ -15,21 +15,21 @@ class BatchOperateWorkItemsRequest(DaraModel):
         tenant_id: str = None,
         work_item_ids: List[str] = None,
     ):
-        # 批量动作
+        # The batch action.
         # 
         # This parameter is required.
         self.action = action
-        # 协作空间 ID
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 幂等键
+        # The idempotency key.
         # 
         # This parameter is required.
         self.idempotency_key = idempotency_key
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 目标工作项 ID 列表（1~100 个）
+        # The IDs of the target work items. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.work_item_ids = work_item_ids

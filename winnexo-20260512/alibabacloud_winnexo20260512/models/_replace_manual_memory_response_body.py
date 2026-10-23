@@ -12,13 +12,13 @@ class ReplaceManualMemoryResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码；成功为 200，失败时为对应错误码
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 保存后的手动记忆完整内容；清空成功时为空字符串
+        # The complete content of the manual memory after it is saved. If the memory is successfully cleared, an empty string is returned.
         self.content = content
-        # 错误描述；成功时为空字符串，失败时返回具体原因
+        # The error description.
         self.message = message
-        # 请求追踪 ID，用于定位本次调用
+        # The request tracking ID.
         self.request_id = request_id
 
     def validate(self):

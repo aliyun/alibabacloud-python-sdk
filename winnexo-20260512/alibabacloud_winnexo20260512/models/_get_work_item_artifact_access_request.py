@@ -12,17 +12,17 @@ class GetWorkItemArtifactAccessRequest(DaraModel):
         tenant_id: str = None,
         work_item_id: str = None,
     ):
-        # 产物 ID
+        # The ID of the artifact.
         # 
         # This parameter is required.
         self.artifact_id = artifact_id
-        # 协作空间 ID
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 工作项 ID
+        # The ID of the work item.
         # 
         # This parameter is required.
         self.work_item_id = work_item_id

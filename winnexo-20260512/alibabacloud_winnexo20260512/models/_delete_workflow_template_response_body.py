@@ -11,11 +11,11 @@ class DeleteWorkflowTemplateResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 错误描述
+        # The error description.
         self.message = message
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
 
     def validate(self):

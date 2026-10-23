@@ -11,13 +11,13 @@ class ResumeWorkItemRequest(DaraModel):
         tenant_id: str = None,
         work_item_id: str = None,
     ):
-        # 协作空间 ID
+        # The collaboration space ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the caller\\"s default tenant is used.
         self.tenant_id = tenant_id
-        # 工作项 ID
+        # The work item ID.
         # 
         # This parameter is required.
         self.work_item_id = work_item_id

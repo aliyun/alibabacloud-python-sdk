@@ -11,15 +11,15 @@ class CloseWorkflowTodosRequest(DaraModel):
         source_workflow_id: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间 ID（命中范围限定该空间内）
+        # The ID of the collaborative workspace. The match scope is limited to this workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 工作流 ID（run 粒度）
+        # The workflow ID at the run level.
         # 
         # This parameter is required.
         self.source_workflow_id = source_workflow_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_winnexo20260512 import models as main_models
 from darabonba.model import DaraModel
@@ -15,13 +15,13 @@ class GenerateWorkflowTemplateDraftResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 生成的非持久化模板草稿
+        # The generated non-persistent template draft.
         self.draft = draft
-        # 错误描述
+        # The error description.
         self.message = message
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class GenerateWorkflowTemplateDraftResponseBodyDraft(DaraModel):
         name: str = None,
         steps: List[main_models.GenerateWorkflowTemplateDraftResponseBodyDraftSteps] = None,
     ):
-        # 模板描述
+        # The description of the template.
         self.description = description
-        # 模板名称
+        # The name of the template.
         self.name = name
-        # 有序步骤
+        # The ordered steps.
         self.steps = steps
 
     def validate(self):
@@ -129,25 +129,28 @@ class GenerateWorkflowTemplateDraftResponseBodyDraftSteps(DaraModel):
         reviewer_user_ids: List[int] = None,
         sort_order: int = None,
         specification: str = None,
+        specification_json: List[Dict[str, Any]] = None,
         step_id: str = None,
     ):
-        # 模型档位
+        # The model tier.
         self.model_mode = model_mode
-        # 步骤名称
+        # The name of the step.
         self.name = name
-        # 智能体负责人名称
+        # The name of the responsible agent.
         self.owner_agent_name = owner_agent_name
-        # 负责人类型：MEMBER 人工 / AGENT 智能体
+        # The type of the owner. Valid values: MEMBER: Human. AGENT: Agent.
         self.owner_type = owner_type
-        # 人工负责人用户ID
+        # The user ID of the human owner.
         self.owner_user_id = owner_user_id
-        # 审核人用户ID列表
+        # The list of user IDs of the reviewers.
         self.reviewer_user_ids = reviewer_user_ids
-        # 步骤顺序
+        # The order of the step.
         self.sort_order = sort_order
-        # 步骤处理说明
+        # The processing instructions for the step.
         self.specification = specification
-        # 步骤ID
+        # The array of structured segments for the step instructions. Supported types include text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are retained as returned by the backend.
+        self.specification_json = specification_json
+        # The ID of the step.
         self.step_id = step_id
 
     def validate(self):
@@ -182,6 +185,9 @@ class GenerateWorkflowTemplateDraftResponseBodyDraftSteps(DaraModel):
         if self.specification is not None:
             result['specification'] = self.specification
 
+        if self.specification_json is not None:
+            result['specificationJson'] = self.specification_json
+
         if self.step_id is not None:
             result['stepId'] = self.step_id
 
@@ -212,6 +218,9 @@ class GenerateWorkflowTemplateDraftResponseBodyDraftSteps(DaraModel):
 
         if m.get('specification') is not None:
             self.specification = m.get('specification')
+
+        if m.get('specificationJson') is not None:
+            self.specification_json = m.get('specificationJson')
 
         if m.get('stepId') is not None:
             self.step_id = m.get('stepId')

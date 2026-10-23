@@ -11,15 +11,15 @@ class ListInstanceNodesRequest(DaraModel):
         instance_id: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间ID
+        # The collaboration workspace ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 物理工作流实例ID（planId）
+        # The physical workflow instance ID (planId).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 租户ID，缺省使用调用方默认租户
+        # The tenant ID. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

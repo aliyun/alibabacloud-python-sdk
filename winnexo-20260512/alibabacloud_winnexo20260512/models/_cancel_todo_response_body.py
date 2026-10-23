@@ -14,17 +14,17 @@ class CancelTodoResponseBody(DaraModel):
         status: str = None,
         todo_id: str = None,
     ):
-        # 作废条数
+        # The number of canceled to-do items.
         self.cancelled_count = cancelled_count
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 错误描述
+        # The error message.
         self.message = message
-        # 请求追踪ID
+        # The request ID.
         self.request_id = request_id
-        # 作废后状态
+        # The status after cancellation.
         self.status = status
-        # 作废的待办ID（按 workItemId 定位时为空）
+        # The ID of the canceled to-do item. This parameter is empty if the to-do item is located by workItemId.
         self.todo_id = todo_id
 
     def validate(self):

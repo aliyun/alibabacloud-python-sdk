@@ -11,11 +11,11 @@ class CancelTodoRequest(DaraModel):
         todo_id: str = None,
         work_item_id: str = None,
     ):
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 待办ID（与 workItemId 二选一）
+        # The ID of the to-do item. You must specify either this parameter or workItemId.
         self.todo_id = todo_id
-        # 工作项ID（按来源批量作废；与 todoId 二选一）
+        # The ID of the work item. You can use this parameter to cancel to-do items in batches by source. You must specify either this parameter or todoId.
         self.work_item_id = work_item_id
 
     def validate(self):

@@ -21,25 +21,25 @@ class ListWorkflowTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 是否还有更多数据
+        # Indicates whether more data is available.
         self.has_more = has_more
-        # 当前页模板摘要列表
+        # The list of template summaries on the current page.
         self.items = items
-        # 本次生效的单页最大返回数量
+        # The maximum number of entries returned per page in the current request.
         self.max_results = max_results
-        # 错误描述
+        # The error message.
         self.message = message
-        # 下一页翻页令牌；无更多数据时为空字符串
+        # The pagination token for the next page. An empty string indicates that no more data is available.
         self.next_token = next_token
-        # 当前页码
+        # The current page number.
         self.page = page
-        # 生效单页条数
+        # The number of entries per page in the current request.
         self.page_size = page_size
-        # 请求追踪ID
+        # The request ID.
         self.request_id = request_id
-        # 筛选条件下可见总数
+        # The total number of visible entries that match the filter conditions.
         self.total = total
 
     def validate(self):
@@ -128,26 +128,37 @@ class ListWorkflowTemplatesResponseBodyItems(DaraModel):
     def __init__(
         self,
         description: str = None,
+        effective_version: str = None,
         gmt_modified: str = None,
+        latest_version: str = None,
+        latest_version_status: str = None,
         name: str = None,
         owner_count: int = None,
         review_step_count: int = None,
         step_count: int = None,
         template_id: str = None,
     ):
-        # 模板描述
+        # The description of the template.
         self.description = description
-        # 最近修改时间(ISO8601)
+        # The current effective version number. An empty value indicates that only a draft exists and the template cannot be used for work items.
+        self.effective_version = effective_version
+        # The time when the template was last modified. The time is in the ISO 8601 standard.
         self.gmt_modified = gmt_modified
-        # 模板名称
+        # The latest version number.
+        self.latest_version = latest_version
+        # The status of the latest version. Valid values:
+        # - DRAFT: Draft. The version contains uncommitted edits.
+        # - SUBMITTED: Submitted.
+        self.latest_version_status = latest_version_status
+        # The name of the template.
         self.name = name
-        # 去重后的负责人数量
+        # The number of unique owners.
         self.owner_count = owner_count
-        # 配置了审核人的步骤数
+        # The number of steps configured with reviewers.
         self.review_step_count = review_step_count
-        # 步骤数
+        # The number of steps.
         self.step_count = step_count
-        # 模板ID
+        # The ID of the template.
         self.template_id = template_id
 
     def validate(self):
@@ -161,8 +172,17 @@ class ListWorkflowTemplatesResponseBodyItems(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.effective_version is not None:
+            result['effectiveVersion'] = self.effective_version
+
         if self.gmt_modified is not None:
             result['gmtModified'] = self.gmt_modified
+
+        if self.latest_version is not None:
+            result['latestVersion'] = self.latest_version
+
+        if self.latest_version_status is not None:
+            result['latestVersionStatus'] = self.latest_version_status
 
         if self.name is not None:
             result['name'] = self.name
@@ -186,8 +206,17 @@ class ListWorkflowTemplatesResponseBodyItems(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('effectiveVersion') is not None:
+            self.effective_version = m.get('effectiveVersion')
+
         if m.get('gmtModified') is not None:
             self.gmt_modified = m.get('gmtModified')
+
+        if m.get('latestVersion') is not None:
+            self.latest_version = m.get('latestVersion')
+
+        if m.get('latestVersionStatus') is not None:
+            self.latest_version_status = m.get('latestVersionStatus')
 
         if m.get('name') is not None:
             self.name = m.get('name')

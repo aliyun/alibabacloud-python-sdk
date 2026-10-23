@@ -35,53 +35,53 @@ class CreateWorkflowInstanceResponseBody(DaraModel):
         title: str = None,
         work_item_id: str = None,
     ):
-        # 空间内唯一外部需求编号
+        # The unique external requirement ID in the workspace.
         self.business_id = business_id
-        # 业务状态码，来自统一 POP 响应包装
+        # The business status code from the unified POP response wrapper.
         self.code = code
-        # 协作空间 ID
+        # The collaboration workspace ID.
         self.collaboration_group_id = collaboration_group_id
-        # 逻辑实例创建时间，ISO8601
+        # The creation time of the logical instance in ISO 8601 format.
         self.created_at = created_at
-        # 首个活动节点，终态为 null
+        # The first active node. This value is null in the desired state.
         self.current_node = current_node
-        # 全部活动节点，支持并行 DAG
+        # All active nodes. Parallel DAGs are supported.
         self.current_nodes = current_nodes
-        # 当前计划终态时间，未结束为 null
+        # The time when the current plan reached the desired state. This value is null if the plan has not ended.
         self.ended_at = ended_at
-        # 外部发起人标签，不参与鉴权
+        # The external initiator label. This label is not used for authentication.
         self.initiator = initiator
-        # 稳定逻辑实例 ID，工作项重启不改变
+        # The stable logical instance ID. This ID does not change when the work item is restarted.
         self.instance_id = instance_id
-        # 用户可见错误描述，来自统一 POP 响应包装
+        # The user-visible error description from the unified POP response wrapper.
         self.message = message
-        # 原始计划暂停范围
+        # The raw plan pause scope.
         self.pause_scope = pause_scope
-        # 当前物理计划修订 ID
+        # The current physical plan revision ID.
         self.plan_id = plan_id
-        # 可见图进度
+        # The visible graph progress.
         self.progress = progress
-        # 请求追踪 ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 原始计划审核状态
+        # The raw plan review status.
         self.review_status = review_status
-        # 当前物理计划修订号
+        # The current physical plan revision number.
         self.revision = revision
-        # 当前运行 ID，重启后会改变
+        # The current run ID. This ID changes after a restart.
         self.run_id = run_id
-        # 原始 BUILDING/RUNNING/SUCCEEDED/FAILED/CANCELLED
+        # The raw runtime status. Valid values: BUILDING, RUNNING, SUCCEEDED, FAILED, and CANCELLED.
         self.runtime_status = runtime_status
-        # 当前计划节点首次开始时间，未执行为 null
+        # The time when the current plan node started for the first time. This value is null if the node has not been executed.
         self.started_at = started_at
-        # 运行状态版本
+        # The runtime status version.
         self.state_version = state_version
         # Running/Completed/Failed/Terminated
         self.status = status
-        # 创建时绑定的工作流模板 ID
+        # The workflow template ID bound during creation.
         self.template_id = template_id
-        # 当前需求标题
+        # The current requirement title.
         self.title = title
-        # 关联工作项 ID
+        # The associated work item ID.
         self.work_item_id = work_item_id
 
     def validate(self):
@@ -262,9 +262,9 @@ class CreateWorkflowInstanceResponseBodyProgress(DaraModel):
         completed_count: int = None,
         total_count: int = None,
     ):
-        # 已成功或跳过的可见节点数
+        # The number of visible nodes that have succeeded or been skipped.
         self.completed_count = completed_count
-        # 当前图可见节点总数，非固定六节点
+        # The total number of visible nodes in the current graph. This is not fixed to six nodes.
         self.total_count = total_count
 
     def validate(self):
@@ -303,17 +303,17 @@ class CreateWorkflowInstanceResponseBodyCurrentNodes(DaraModel):
         node_type: str = None,
         status: str = None,
     ):
-        # 当前处理人展示名
+        # The display name of the current handler.
         self.handler = handler
-        # 处理人或数字员工标识
+        # The identifier of the handler or digital worker.
         self.handler_id = handler_id
-        # 真实运行节点 nodeKey
+        # The nodeKey of the actual running node.
         self.node_id = node_id
-        # 节点展示名
+        # The display name of the node.
         self.node_name = node_name
-        # 真实节点类型 AGENT/HUMAN/CONDITION
+        # The actual node type. Valid values: AGENT, HUMAN, and CONDITION.
         self.node_type = node_type
-        # 节点运行状态
+        # The running status of the node.
         self.status = status
 
     def validate(self):
@@ -376,17 +376,17 @@ class CreateWorkflowInstanceResponseBodyCurrentNode(DaraModel):
         node_type: str = None,
         status: str = None,
     ):
-        # 当前处理人展示名
+        # The display name of the current handler.
         self.handler = handler
-        # 处理人或数字员工标识
+        # The identifier of the handler or digital worker.
         self.handler_id = handler_id
-        # 真实运行节点 nodeKey
+        # The nodeKey of the actual running node.
         self.node_id = node_id
-        # 节点展示名
+        # The display name of the node.
         self.node_name = node_name
-        # 真实节点类型 AGENT/HUMAN/CONDITION
+        # The actual node type. Valid values: AGENT, HUMAN, and CONDITION.
         self.node_type = node_type
-        # 节点运行状态
+        # The running status of the node.
         self.status = status
 
     def validate(self):

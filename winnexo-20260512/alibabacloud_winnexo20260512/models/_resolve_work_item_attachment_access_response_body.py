@@ -13,15 +13,15 @@ class ResolveWorkItemAttachmentAccessResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 附件短期预览地址，过期前可直接 GET
+        # The short-term preview URL of the attachment. You can send a GET request to this URL before it expires.
         self.access_url = access_url
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 地址过期时间(ISO8601)
+        # The expiration time of the URL in ISO 8601 format.
         self.expires_at = expires_at
-        # 错误描述
+        # The error message.
         self.message = message
-        # 请求追踪ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

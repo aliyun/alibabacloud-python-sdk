@@ -18,19 +18,19 @@ class CreateTodoResponseBody(DaraModel):
         status: str = None,
         todo_id: str = None,
     ):
-        # 处理人列表
+        # The list of assignees.
         self.assignees = assignees
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 创建时间（ISO8601 带时区；与列表/详情的北京时间格式串不同）
+        # The creation time in ISO 8601 format with a time zone. This format differs from the UTC+8 format string used in the list and details.
         self.gmt_create = gmt_create
-        # 错误描述
+        # The error description.
         self.message = message
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 待办状态
+        # The status of the to-do item.
         self.status = status
-        # 新建待办ID
+        # The ID of the created to-do item.
         self.todo_id = todo_id
 
     def validate(self):
@@ -103,9 +103,9 @@ class CreateTodoResponseBodyAssignees(DaraModel):
         assignee_user_id: str = None,
         status: str = None,
     ):
-        # 处理人用户ID
+        # The user ID of the assignee.
         self.assignee_user_id = assignee_user_id
-        # 处理人行状态
+        # The processing status of the assignee.
         self.status = status
 
     def validate(self):

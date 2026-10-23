@@ -10,11 +10,11 @@ class GetWorkflowInstanceRequest(DaraModel):
         instance_id: str = None,
         tenant_id: str = None,
     ):
-        # 稳定逻辑实例 ID
+        # The stable logical instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. If you use winnexo-cli, pass this parameter explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

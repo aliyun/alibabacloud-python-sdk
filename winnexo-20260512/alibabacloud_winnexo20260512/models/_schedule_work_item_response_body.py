@@ -17,23 +17,23 @@ class ScheduleWorkItemResponseBody(DaraModel):
         run_seq: int = None,
         work_item_id: str = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 本次是否新创建 Plan
+        # Indicates whether a new plan is created in this request.
         self.created = created
-        # 错误描述
+        # The error description.
         self.message = message
-        # 物理计划ID
+        # The ID of the physical plan.
         self.plan_id = plan_id
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 修订号
+        # The revision number.
         self.revision = revision
-        # 运行ID
+        # The run ID.
         self.run_id = run_id
-        # 运行序号
+        # The run sequence number.
         self.run_seq = run_seq
-        # 工作项ID
+        # The ID of the work item.
         self.work_item_id = work_item_id
 
     def validate(self):

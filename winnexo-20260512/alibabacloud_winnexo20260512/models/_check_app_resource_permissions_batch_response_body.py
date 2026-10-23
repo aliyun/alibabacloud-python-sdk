@@ -15,13 +15,13 @@ class CheckAppResourcePermissionsBatchResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.CheckAppResourcePermissionsBatchResponseBodyResults] = None,
     ):
-        # 业务状态码；成功为 200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 错误描述；成功时为空
+        # The error message. This field is empty if the request is successful.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 与请求顺序一致的结果
+        # The results, returned in the same order as the requested items.
         self.results = results
 
     def validate(self):
@@ -78,13 +78,13 @@ class CheckAppResourcePermissionsBatchResponseBodyResults(DaraModel):
         resource_key: str = None,
         resource_type: str = None,
     ):
-        # 是否有权限
+        # Indicates whether the user has the permission.
         self.allowed = allowed
-        # 目标权限点
+        # The target permission.
         self.permission = permission
-        # 首段为 APP 应用键的点分资源键
+        # The dot-separated resource key whose first segment is the APP application key.
         self.resource_key = resource_key
-        # 固定为 APP_RESOURCE
+        # The resource type. Set the value to APP_RESOURCE.
         self.resource_type = resource_type
 
     def validate(self):

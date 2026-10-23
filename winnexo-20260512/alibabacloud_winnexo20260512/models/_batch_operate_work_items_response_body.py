@@ -17,17 +17,17 @@ class BatchOperateWorkItemsResponseBody(DaraModel):
         skipped: int = None,
         succeeded: int = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 逐项结果，顺序与请求一致
+        # The results for each item. The order of the results matches the order of the items in the request.
         self.items = items
-        # 错误描述
+        # The error message.
         self.message = message
-        # 请求追踪ID
+        # The request ID.
         self.request_id = request_id
-        # 跳过或失败数量
+        # The number of skipped or failed operations.
         self.skipped = skipped
-        # 成功数量
+        # The number of successful operations.
         self.succeeded = succeeded
 
     def validate(self):
@@ -97,11 +97,11 @@ class BatchOperateWorkItemsResponseBodyItems(DaraModel):
         success: bool = None,
         work_item_id: str = None,
     ):
-        # 跳过或失败原因
+        # The reason for skipping or failure.
         self.reason = reason
-        # 是否执行成功
+        # Indicates whether the execution was successful.
         self.success = success
-        # 工作项ID
+        # The ID of the work item.
         self.work_item_id = work_item_id
 
     def validate(self):

@@ -12,13 +12,13 @@ class DeleteAppResourcePermissionsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码；成功为 200
+        # The business status code. The value 200 indicates success.
         self.code = code
-        # 删除的权限记录数
+        # The number of deleted permission records.
         self.deleted_count = deleted_count
-        # 错误描述；成功时为空
+        # The error message. This field is empty if the request is successful.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

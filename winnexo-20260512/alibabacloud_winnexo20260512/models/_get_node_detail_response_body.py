@@ -31,45 +31,45 @@ class GetNodeDetailResponseBody(DaraModel):
         turn_seq: int = None,
         wait_type: str = None,
     ):
-        # 按思考、技能、工具、回复和产物分组的实际工作过程
+        # The actual work process grouped by thoughts, skills, tools, replies, and artifacts.
         self.agent_work_process = agent_work_process
-        # 已保存的节点产物摘要与稳定引用，不包含inline正文；无产物时为空列表
+        # The artifacts: saved node work records and artifacts.
         self.artifacts = artifacts
-        # 节点执行尝试序号
+        # The sequence number of the node execution attempt.
         self.attempt_seq = attempt_seq
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 节点会话ID，未创建时为空
+        # The node conversation ID. This parameter is empty if no conversation is created.
         self.conversation_id = conversation_id
-        # 当前节点会话是否可以继续输入
+        # Indicates whether the current node conversation can continue to receive input.
         self.conversation_writable = conversation_writable
-        # 节点负责人展示名称，未知时为空
+        # The display name of the node owner. This parameter is empty if the owner is unknown.
         self.handler = handler
-        # 错误描述
+        # The error description.
         self.message = message
-        # 节点 key（nodeKey）
+        # The node key.
         self.node_id = node_id
-        # 节点展示名称，与节点列表同源
+        # The display name of the node, which shares the same source as the node list.
         self.node_name = node_name
-        # 节点类型，返回实际枚举
+        # The node type. The actual enum value is returned.
         self.node_type = node_type
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 节点结果摘要，不含inline正文
+        # The node result summary, excluding inline content.
         self.result = result
-        # 是否有待派发续轮
+        # Indicates whether there are pending follow-up turns to be dispatched.
         self.resume_pending = resume_pending
-        # 节点AI工作记录时间线，与GetAgentWorkLog同源，duration单位毫秒；无记录时为空列表
+        # The run log: saved node work records and artifacts.
         self.run_log = run_log
         # stateVersion
         self.state_version = state_version
-        # 节点运行状态，返回实际枚举
+        # The node running status. The actual enum value is returned.
         self.status = status
-        # 当前节点关联的待办ID列表，元素为待办ID字符串
+        # The list of to-do IDs associated with the current node.
         self.todo_ids = todo_ids
-        # 当前尝试的对话轮序号
+        # The sequence number of the conversation turn in the current attempt.
         self.turn_seq = turn_seq
-        # 节点等待原因，未等待时为空
+        # The reason why the node is waiting. This parameter is empty if the node is not waiting.
         self.wait_type = wait_type
 
     def validate(self):
@@ -235,15 +235,15 @@ class GetNodeDetailResponseBodyRunLog(DaraModel):
         node_id: str = None,
         timestamp: str = None,
     ):
-        # 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+        # The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
         self.action = action
-        # 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+        # The saved original record content. Tool invocation and artifact metadata are JSON strings.
         self.detail = detail
-        # 该条工作记录耗时，单位毫秒；产物记录为0
+        # The time taken for this work record, in milliseconds. The value is 0 for artifact records.
         self.duration = duration
-        # 所属节点key（nodeKey），不是会话ID
+        # The key of the parent node, not the conversation ID.
         self.node_id = node_id
-        # 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+        # The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
         self.timestamp = timestamp
 
     def validate(self):
@@ -300,17 +300,17 @@ class GetNodeDetailResponseBodyArtifacts(DaraModel):
         title: str = None,
         type: str = None,
     ):
-        # 登记产物ID；仅来自结果摘要的产物可能为空
+        # The registered artifact ID. This parameter may be empty for artifacts derived only from the result summary.
         self.artifact_id = artifact_id
-        # 产物在节点结果中的唯一key
+        # The unique key of the artifact in the node result.
         self.artifact_key = artifact_key
-        # 产物稳定引用，包含kind、id、url；登记产物URL为重新鉴权入口，可为空
+        # The stable reference of the artifact, including kind, id, and url. The URL of a registered artifact is a re-authentication entry point and can be empty.
         self.ref = ref
-        # 产物摘要，不含inline正文
+        # The artifact summary, excluding inline content.
         self.summary = summary
-        # 产物展示标题
+        # The display title of the artifact.
         self.title = title
-        # 产物类型
+        # The artifact type.
         self.type = type
 
     def validate(self):
@@ -372,15 +372,15 @@ class GetNodeDetailResponseBodyAgentWorkProcess(DaraModel):
         thoughts: List[main_models.GetNodeDetailResponseBodyAgentWorkProcessThoughts] = None,
         tool_calls: List[main_models.GetNodeDetailResponseBodyAgentWorkProcessToolCalls] = None,
     ):
-        # 节点产物摘要与稳定引用，与顶层artifacts一致；无产物时为空列表
+        # The artifacts: saved node work records and artifacts.
         self.artifacts = artifacts
-        # 已保存的回复记录，action为REPLY；无记录时为空列表
+        # The replies: saved node work records and artifacts.
         self.replies = replies
-        # 已保存的技能调用记录，action为SKILL_CALL；无记录时为空列表
+        # The skill calls: saved node work records and artifacts.
         self.skill_calls = skill_calls
-        # 已保存的思考记录，action为THINK；无记录时为空列表
+        # The thoughts: saved node work records and artifacts.
         self.thoughts = thoughts
-        # 已保存的工具调用记录，action为TOOL_CALL；无记录时为空列表
+        # The tool calls: saved node work records and artifacts.
         self.tool_calls = tool_calls
 
     def validate(self):
@@ -480,15 +480,15 @@ class GetNodeDetailResponseBodyAgentWorkProcessToolCalls(DaraModel):
         node_id: str = None,
         timestamp: str = None,
     ):
-        # 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+        # The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
         self.action = action
-        # 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+        # The saved original record content. Tool invocation and artifact metadata are JSON strings.
         self.detail = detail
-        # 该条工作记录耗时，单位毫秒；产物记录为0
+        # The time taken for this work record, in milliseconds. The value is 0 for artifact records.
         self.duration = duration
-        # 所属节点key（nodeKey），不是会话ID
+        # The key of the parent node, not the conversation ID.
         self.node_id = node_id
-        # 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+        # The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
         self.timestamp = timestamp
 
     def validate(self):
@@ -544,15 +544,15 @@ class GetNodeDetailResponseBodyAgentWorkProcessThoughts(DaraModel):
         node_id: str = None,
         timestamp: str = None,
     ):
-        # 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+        # The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
         self.action = action
-        # 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+        # The saved original record content. Tool invocation and artifact metadata are JSON strings.
         self.detail = detail
-        # 该条工作记录耗时，单位毫秒；产物记录为0
+        # The time taken for this work record, in milliseconds. The value is 0 for artifact records.
         self.duration = duration
-        # 所属节点key（nodeKey），不是会话ID
+        # The key of the parent node, not the conversation ID.
         self.node_id = node_id
-        # 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+        # The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
         self.timestamp = timestamp
 
     def validate(self):
@@ -608,15 +608,15 @@ class GetNodeDetailResponseBodyAgentWorkProcessSkillCalls(DaraModel):
         node_id: str = None,
         timestamp: str = None,
     ):
-        # 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+        # The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
         self.action = action
-        # 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+        # The saved original record content. Tool invocation and artifact metadata are JSON strings.
         self.detail = detail
-        # 该条工作记录耗时，单位毫秒；产物记录为0
+        # The time taken for this work record, in milliseconds. The value is 0 for artifact records.
         self.duration = duration
-        # 所属节点key（nodeKey），不是会话ID
+        # The key of the parent node, not the conversation ID.
         self.node_id = node_id
-        # 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+        # The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
         self.timestamp = timestamp
 
     def validate(self):
@@ -672,15 +672,15 @@ class GetNodeDetailResponseBodyAgentWorkProcessReplies(DaraModel):
         node_id: str = None,
         timestamp: str = None,
     ):
-        # 记录类型：THINK、REPLY、TOOL_CALL、SKILL_CALL或ARTIFACT
+        # The record type. Valid values: THINK, REPLY, TOOL_CALL, SKILL_CALL, or ARTIFACT.
         self.action = action
-        # 已保存的原始记录内容；工具调用与产物元数据为JSON字符串
+        # The saved original record content. Tool invocation and artifact metadata are JSON strings.
         self.detail = detail
-        # 该条工作记录耗时，单位毫秒；产物记录为0
+        # The time taken for this work record, in milliseconds. The value is 0 for artifact records.
         self.duration = duration
-        # 所属节点key（nodeKey），不是会话ID
+        # The key of the parent node, not the conversation ID.
         self.node_id = node_id
-        # 记录事件时间，ISO-8601格式；源记录无时间时为空字符串
+        # The time when the event is recorded, in ISO-8601 format. This is an empty string if the source record has no time.
         self.timestamp = timestamp
 
     def validate(self):
@@ -737,17 +737,17 @@ class GetNodeDetailResponseBodyAgentWorkProcessArtifacts(DaraModel):
         title: str = None,
         type: str = None,
     ):
-        # 登记产物ID；仅来自结果摘要的产物可能为空
+        # The registered artifact ID. This parameter may be empty for artifacts derived only from the result summary.
         self.artifact_id = artifact_id
-        # 产物在节点结果中的唯一key
+        # The unique key of the artifact in the node result.
         self.artifact_key = artifact_key
-        # 产物稳定引用，包含kind、id、url；登记产物URL为重新鉴权入口，可为空
+        # The stable reference of the artifact, including kind, id, and url. The URL of a registered artifact is a re-authentication entry point and can be empty.
         self.ref = ref
-        # 产物摘要，不含inline正文
+        # The artifact summary, excluding inline content.
         self.summary = summary
-        # 产物展示标题
+        # The display title of the artifact.
         self.title = title
-        # 产物类型
+        # The artifact type.
         self.type = type
 
     def validate(self):

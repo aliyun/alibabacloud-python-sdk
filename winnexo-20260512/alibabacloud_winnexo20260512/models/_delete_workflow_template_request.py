@@ -11,15 +11,15 @@ class DeleteWorkflowTemplateRequest(DaraModel):
         template_id: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间 ID
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 模板 ID
+        # The ID of the template.
         # 
         # This parameter is required.
         self.template_id = template_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

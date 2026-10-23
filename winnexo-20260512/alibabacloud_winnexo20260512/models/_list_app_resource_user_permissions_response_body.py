@@ -18,19 +18,19 @@ class ListAppResourceUserPermissionsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码；成功为 200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 当前页资源与权限
+        # The resources and permissions on the current page.
         self.items = items
-        # 错误描述；成功时为空
+        # The error description. This parameter is empty if the request is successful.
         self.message = message
-        # 页码
+        # The page number.
         self.page = page
-        # 每页条数
+        # The number of entries per page.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 总资源数
+        # The total number of resources.
         self.total = total
 
     def validate(self):
@@ -104,11 +104,11 @@ class ListAppResourceUserPermissionsResponseBodyItems(DaraModel):
         resource_key: str = None,
         resource_type: str = None,
     ):
-        # 实际存储且有效的权限点
+        # The stored and valid permission points.
         self.permissions = permissions
-        # 资源键
+        # The resource key.
         self.resource_key = resource_key
-        # 资源类型
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

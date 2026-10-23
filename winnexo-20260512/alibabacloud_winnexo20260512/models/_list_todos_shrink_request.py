@@ -20,29 +20,29 @@ class ListTodosShrinkRequest(DaraModel):
         statuses_shrink: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间 ID（可选过滤；不传 = 全部空间）
+        # The collaboration workspace ID. This is an optional filter. If not specified, items from all workspaces are returned.
         self.collaboration_group_id = collaboration_group_id
-        # 标题/摘要模糊搜索关键词
+        # The keyword for fuzzy search in the title or summary.
         self.keyword = keyword
-        # 单页最大返回数量（1~100）；传入时优先于 pageSize
+        # The maximum number of entries to return per page. Valid values: 1 to 100. This parameter takes precedence over pageSize if both are specified.
         self.max_results = max_results
-        # 翻页令牌，取上次响应返回的 nextToken；传入时优先于 page
+        # The pagination token. Use the nextToken value returned in the previous response. This parameter takes precedence over page if both are specified.
         self.next_token = next_token
-        # 页码；传入 nextToken 时忽略
+        # The page number. This parameter is ignored if nextToken is specified.
         self.page = page
-        # 每页条数（1~100）
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # 优先级筛选（HIGH/MEDIUM/LOW）
+        # The priority filter. Valid values: HIGH, MEDIUM, and LOW.
         self.priorities_shrink = priorities_shrink
-        # 读取状态筛选（UNREAD/READ，按处理人 readAt 判定）
+        # The read status filter. Valid values: UNREAD and READ. The status is determined by the readAt field of the assignee.
         self.read_status_shrink = read_status_shrink
-        # 排序方式
+        # The sorting method.
         self.sort_by = sort_by
-        # 待办类型筛选（WORKFLOW/OPEN_API）
+        # The to-do type filter. Valid values: WORKFLOW and OPEN_API.
         self.source_types_shrink = source_types_shrink
-        # 待办状态筛选（PENDING/COMPLETED/CANCELLED）
+        # The to-do status filter. Valid values: PENDING, COMPLETED, and CANCELLED.
         self.statuses_shrink = statuses_shrink
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

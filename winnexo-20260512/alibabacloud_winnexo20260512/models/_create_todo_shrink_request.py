@@ -16,29 +16,29 @@ class CreateTodoShrinkRequest(DaraModel):
         tenant_id: str = None,
         title: str = None,
     ):
-        # 处理人平台用户ID列表（1~100，去重后生效）
+        # The list of platform user IDs of the assignees. You can specify 1 to 100 IDs. Duplicate IDs are automatically removed.
         # 
         # This parameter is required.
         self.assignee_user_ids_shrink = assignee_user_ids_shrink
-        # 协作空间 ID（可选）
+        # The ID of the collaboration workspace. This parameter is optional.
         self.collaboration_group_id = collaboration_group_id
-        # 优先级
+        # The priority.
         self.priority = priority
-        # 问题清单（1~N）
+        # The list of questions.
         # 
         # This parameter is required.
         self.questions_shrink = questions_shrink
-        # 来源上下文（原样透传落库，不校验）
+        # The source context. The value is passed through and stored in the database as-is without validation.
         # 
         # This parameter is required.
         self.source_context_shrink = source_context_shrink
-        # 待办来源（仅 OPEN_API）
+        # The source of the to-do item. Only OPEN_API is supported.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 待办标题（≤200 字）
+        # The title of the to-do item. The maximum length is 200 characters.
         # 
         # This parameter is required.
         self.title = title

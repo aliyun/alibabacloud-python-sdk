@@ -18,19 +18,19 @@ class ListAppResourcePermissionRecordsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 业务状态码；成功为 200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 当前页授权记录
+        # The authorization records on the current page.
         self.items = items
-        # 错误描述；成功时为空
+        # The error message. This parameter is empty if the request is successful.
         self.message = message
-        # 页码
+        # The page number.
         self.page = page
-        # 每页条数
+        # The number of entries per page.
         self.page_size = page_size
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # 记录总数
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -113,29 +113,29 @@ class ListAppResourcePermissionRecordsResponseBodyItems(DaraModel):
         resource_type: str = None,
         updated_at: str = None,
     ):
-        # 创建时间
+        # The creation time.
         self.created_at = created_at
-        # 到期时间
+        # The expiration time.
         self.expire_at = expire_at
-        # 授权人平台用户 ID
+        # The platform user ID of the grantor.
         self.granted_by = granted_by
-        # 主体 ID
+        # The grantee ID.
         self.grantee_id = grantee_id
-        # 主体名称
+        # The grantee name.
         self.grantee_name = grantee_name
-        # 跨租户 USER 所属租户
+        # The ID of the tenant to which the cross-tenant user belongs.
         self.grantee_tenant_id = grantee_tenant_id
-        # 主体类型
+        # The grantee type.
         self.grantee_type = grantee_type
-        # 权限点
+        # The permission.
         self.permission = permission
-        # 权限记录 ID
+        # The ID of the permission record.
         self.permission_id = permission_id
-        # 资源键
+        # The resource key.
         self.resource_key = resource_key
-        # 资源类型
+        # The resource type.
         self.resource_type = resource_type
-        # 更新时间
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):

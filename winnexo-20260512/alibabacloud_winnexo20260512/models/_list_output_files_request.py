@@ -21,27 +21,27 @@ class ListOutputFilesRequest(DaraModel):
         tags: List[str] = None,
         tenant_id: str = None,
     ):
-        # 精确业务编号，来自文件登记或工作流实例关联
+        # The business ID used for exact filtering. The length is 1 to 128 characters. This value is derived from the businessId of the file registration or associated workflow instance.
         self.biz_id = biz_id
-        # 可选协作空间 ID；未传保持当前用户个人产出范围
+        # The ID of the collaboration workspace. The length is 1 to 64 characters. This parameter is optional. If not specified, the personal outputs of the current user are queried. If specified, the real-time permissions of the workspace members and source resources are verified.
         self.collaboration_group_id = collaboration_group_id
-        # The type of the output item. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
+        # The output item type. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
         self.item_type = item_type
-        # The keyword for searching. Matches the output title or item name.
+        # The keyword used to match the output title or detail name.
         self.keyword = keyword
-        # The name of the digital employee (operating object). Used to filter results by name.
+        # The name of the digital employee (operating object). Filters outputs by name.
         self.operating_object_name = operating_object_name
-        # The page number, starting from 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page = page
-        # The number of items per page. Valid values: 1 to 100.
+        # The number of items per page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
-        # 精确会话 ID，覆盖普通会话、技能会话与任务 executionId
+        # The session ID used for exact filtering. The length is 1 to 128 characters. This parameter applies to regular sessions, skill sessions, and the executionId of task executions.
         self.session_id = session_id
-        # Specifies whether to display only outputs and output items with sharing enabled.
+        # Specifies whether to display only shared outputs and output details.
         self.shared_only = shared_only
-        # 全部匹配的标签列表，来自文件登记或实例 variables.tags
+        # The tags used for exact filtering. All specified tags must be matched simultaneously. You can specify up to 20 tags. Each tag must be a non-empty string of 1 to 128 characters. Tags are derived from file registrations or the variables.tags of associated instances.
         self.tags = tags
-        # The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly by using --tenant-id.
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used. The identity and tenant permissions are determined by the gateway and backend authentication.
         self.tenant_id = tenant_id
 
     def validate(self):

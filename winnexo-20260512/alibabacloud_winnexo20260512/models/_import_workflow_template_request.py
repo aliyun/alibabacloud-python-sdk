@@ -13,15 +13,15 @@ class ImportWorkflowTemplateRequest(DaraModel):
         template: Dict[str, Any] = None,
         tenant_id: str = None,
     ):
-        # 协作空间 ID
+        # The collaboration workspace ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 可移植模板 JSON（stepId/sortOrder 可省略）
+        # The portable template JSON. The stepId and sortOrder fields can be omitted.
         # 
         # This parameter is required.
         self.template = template
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If omitted, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

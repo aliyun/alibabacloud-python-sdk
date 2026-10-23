@@ -13,15 +13,15 @@ class CountTodosResponseBody(DaraModel):
         request_id: str = None,
         unread_count: int = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 错误描述
+        # The error description.
         self.message = message
-        # 待处理数量（PENDING 主状态）
+        # The number of pending items with the primary status of PENDING.
         self.pending_count = pending_count
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 未读数量（处理人 readAt 为空）
+        # The number of unread items where the readAt field of the handler is empty.
         self.unread_count = unread_count
 
     def validate(self):

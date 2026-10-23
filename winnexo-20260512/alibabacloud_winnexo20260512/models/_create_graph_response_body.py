@@ -15,19 +15,22 @@ class CreateGraphResponseBody(DaraModel):
         schema_version: str = None,
         sync_status: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The status code.
         self.code = code
-        # 创建时绑定的数据源 ID
+        # The data source ID.
         self.data_source_id = data_source_id
-        # 图谱名称
+        # The graph name.
         self.graph_name = graph_name
-        # 错误描述，成功时为空
+        # The status code description.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
-        # Schema 版本；快建路径固定 0.0.0，正式版本经控制台发布产生
+        # The version.
         self.schema_version = schema_version
-        # 同步状态，快建成功为 SUCCESS
+        # The OSS synchronization and extraction status. Valid values:
+        # - -1: Not set (default).
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.sync_status = sync_status
 
     def validate(self):

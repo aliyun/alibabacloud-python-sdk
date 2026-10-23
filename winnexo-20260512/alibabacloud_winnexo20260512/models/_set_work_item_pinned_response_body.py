@@ -59,101 +59,101 @@ class SetWorkItemPinnedResponseBody(DaraModel):
         workflow_status: str = None,
         workflow_template_ids: List[str] = None,
     ):
-        # 验收标准
+        # The acceptance criteria.
         self.acceptance_criteria = acceptance_criteria
-        # 已应用的状态版本
+        # The applied status version.
         self.applied_status_version = applied_status_version
-        # 输入附件列表
+        # The list of attachments.
         self.attachments = attachments
-        # 业务状态（七态）
+        # The business status (seven states).
         self.business_status = business_status
-        # 调用者是否可删除
+        # Specifies whether the caller can delete the work item.
         self.can_delete = can_delete
-        # 调用者是否可管理
+        # Specifies whether the caller can manage the work item.
         self.can_manage = can_manage
-        # 是否可独立调整可见范围
+        # Specifies whether the visibility scope can be adjusted independently.
         self.can_manage_visibility = can_manage_visibility
-        # 调用者是否可重命名
+        # Specifies whether the caller can rename the work item.
         self.can_rename = can_rename
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 协作空间ID
+        # The ID of the collaboration workspace.
         self.collaboration_group_id = collaboration_group_id
-        # 协作人用户ID列表
+        # The list of user IDs of the collaborators.
         self.collaborator_user_ids = collaborator_user_ids
-        # 关联会话ID
+        # The ID of the associated conversation.
         self.conversation_id = conversation_id
-        # 创建时间(ISO8601)
+        # The creation time (ISO 8601 format).
         self.created_at = created_at
-        # 创建人用户ID
+        # The user ID of the creator.
         self.created_by_user_id = created_by_user_id
-        # 创建来源：DEFAULT/TASK
+        # The creation source. Valid values: DEFAULT and TASK.
         self.creation_type = creation_type
-        # 当前物理计划ID
+        # The ID of the current physical plan.
         self.current_plan_id = current_plan_id
-        # 当前修订号
+        # The current revision number.
         self.current_revision = current_revision
-        # 当前运行ID
+        # The ID of the current run.
         self.current_run_id = current_run_id
-        # 当前运行序号
+        # The sequence number of the current run.
         self.current_run_seq = current_run_seq
-        # 当前步骤名称
+        # The name of the current step.
         self.current_step_name = current_step_name
-        # 描述
+        # The description.
         self.description = description
-        # 输入快照版本
+        # The input snapshot version.
         self.input_version = input_version
-        # 工作项类型
+        # The type of the work item.
         self.item_type = item_type
-        # 最近进入处理中的时间(ISO8601)
+        # The time when the work item last entered the processing state (ISO 8601 format).
         self.last_processing_at = last_processing_at
-        # 是否为兼容期自由探索话题
+        # Specifies whether the topic is a free exploration topic during the compatibility period.
         self.legacy_topic = legacy_topic
-        # 可见成员用户ID列表
+        # The list of user IDs of the visible members.
         self.member_user_ids = member_user_ids
-        # 错误描述
+        # The error message.
         self.message = message
-        # 修改时间(ISO8601)
+        # The modification time (ISO 8601 format).
         self.modified_at = modified_at
-        # 负责人用户ID
+        # The user ID of the owner.
         self.owner_user_id = owner_user_id
-        # 调用者个人置顶状态
+        # The personal pin status of the caller.
         self.pinned = pinned
-        # 优先级
+        # The priority.
         self.priority = priority
-        # 已完成进度
+        # The completed progress.
         self.progress_completed = progress_completed
-        # 总进度
+        # The total progress.
         self.progress_total = progress_total
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 任务执行ID
+        # The execution ID of the task.
         self.source_execution_id = source_execution_id
-        # 任务来源ID
+        # The source ID of the task.
         self.source_task_id = source_task_id
-        # 任务来源名称
+        # The source name of the task.
         self.source_task_name = source_task_name
-        # 任务触发键
+        # The trigger key of the task.
         self.source_trigger_key = source_trigger_key
-        # 任务来源类型
+        # The source type of the task.
         self.source_type = source_type
-        # 标题
+        # The title.
         self.title = title
-        # 任务触发时区
+        # The time zone when the task is triggered.
         self.trigger_timezone = trigger_timezone
-        # 任务触发时间(ISO8601)
+        # The trigger time of the task (ISO 8601 format).
         self.triggered_at = triggered_at
-        # 乐观版本号
+        # The optimistic version number.
         self.version = version
-        # 可见范围
+        # The visibility scope.
         self.visibility = visibility
-        # 可见范围来源：SELF/TASK/TEMPLATE
+        # The source of the visibility scope. Valid values: SELF, TASK, and TEMPLATE.
         self.visibility_source = visibility_source
-        # 工作项ID
+        # The ID of the work item.
         self.work_item_id = work_item_id
-        # Workflow四态投影
+        # The four-state projection of the workflow status.
         self.workflow_status = workflow_status
-        # 绑定的工作流模板ID列表
+        # The list of IDs of the bound workflow templates.
         self.workflow_template_ids = workflow_template_ids
 
     def validate(self):
@@ -477,19 +477,19 @@ class SetWorkItemPinnedResponseBodyAttachments(DaraModel):
         size_bytes: int = None,
         title: str = None,
     ):
-        # 附件ID
+        # The ID of the attachment.
         self.attachment_id = attachment_id
-        # 内容类型
+        # The content type.
         self.content_type = content_type
-        # 附件访问入口（OpenAPI 302 前置）
+        # The access URL of the attachment (OpenAPI 302 redirect).
         self.ref_url = ref_url
-        # 附件资源ID
+        # The resource ID of the attachment.
         self.resource_id = resource_id
-        # 附件资源类型
+        # The resource type of the attachment.
         self.resource_kind = resource_kind
-        # 附件大小(字节)
+        # The size of the attachment in bytes.
         self.size_bytes = size_bytes
-        # 附件标题
+        # The title of the attachment.
         self.title = title
 
     def validate(self):

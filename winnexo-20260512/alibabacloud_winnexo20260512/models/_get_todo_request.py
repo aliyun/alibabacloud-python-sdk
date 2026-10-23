@@ -12,13 +12,13 @@ class GetTodoRequest(DaraModel):
         todo_id: str = None,
         work_item_id: str = None,
     ):
-        # assistant 消息ID（按消息反查多条）
+        # The ID of the assistant message. This parameter is used to query multiple to-do items by message.
         self.message_id = message_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 待办ID（单条查询）
+        # The ID of the to-do item (get).
         self.todo_id = todo_id
-        # 工作项ID（按来源反查多条）
+        # The ID of the work item. This parameter is used to query multiple to-do items by source.
         self.work_item_id = work_item_id
 
     def validate(self):

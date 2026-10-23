@@ -17,33 +17,33 @@ class CreateWorkflowInstanceShrinkRequest(DaraModel):
         title: str = None,
         variables_shrink: str = None,
     ):
-        # Workflow 必填验收标准
+        # The required acceptance criteria for the workflow.
         # 
         # This parameter is required.
         self.acceptance_criteria = acceptance_criteria
-        # 空间内唯一需求编号，重复请求幂等
+        # The unique requirement ID in the workspace. Repeated requests are idempotent.
         # 
         # This parameter is required.
         self.business_id = business_id
-        # 协作空间 ID
+        # The collaboration workspace ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 外部发起人展示标签
+        # The display label of the external initiator.
         self.initiator = initiator
-        # 工作项优先级
+        # The work item priority.
         self.priority = priority
-        # 工作流模板 ID，最多 64 字符
+        # The workflow template ID. Maximum length: 64 characters.
         # 
         # This parameter is required.
         self.template_id = template_id
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter explicitly passed by using --tenant-id in winnexo-cli.
         self.tenant_id = tenant_id
-        # 需求标题
+        # The requirement title.
         # 
         # This parameter is required.
         self.title = title
-        # 业务变量对象，tags 可为字符串标签列表
+        # The business variable object. The tags field can be a list of string tags.
         self.variables_shrink = variables_shrink
 
     def validate(self):

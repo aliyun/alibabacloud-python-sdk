@@ -22,15 +22,15 @@ class ListOutputFilesResponseBody(DaraModel):
         self.code = code
         # The output list.
         self.items = items
-        # The prompt message.
+        # The message.
         self.message = message
         # The current page number.
         self.page = page
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The request trace ID.
+        # The request ID.
         self.request_id = request_id
-        # The total number of outputs that meet the specified conditions.
+        # The total number of matching outputs.
         self.total = total
 
     def validate(self):
@@ -112,27 +112,27 @@ class ListOutputFilesResponseBodyItems(DaraModel):
         skill_output_id: str = None,
         task_id: str = None,
     ):
-        # The session ID.
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # The creation time in ISO 8601 format.
+        # The creation time of the output or detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
         self.gmt_create = gmt_create
-        # The update time in ISO 8601 format.
+        # The update time of the output or detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
         self.gmt_modified = gmt_modified
         # The output name.
         self.name = name
-        # The name of the digital employee (operating object).
+        # The name of the digital worker (operating object).
         self.operating_object_name = operating_object_name
         # The output ID.
         self.output_id = output_id
         # The output detail list.
         self.output_items = output_items
-        # The output type. Valid values: `conversation/skill/task`.
+        # The output type: `conversation/skill/task`.
         self.output_type = output_type
-        # The internationalized display name of the output type.
+        # The localized display name of the output type.
         self.output_type_display_name = output_type_display_name
         # The skill output ID.
         self.skill_output_id = skill_output_id
-        # The node ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -242,19 +242,19 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
         slides_info: main_models.ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo = None,
         task_execution_id: str = None,
     ):
-        # The creation time in ISO 8601 format.
+        # The creation time of the output detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
         self.create_time = create_time
-        # The email information. This field is present only when the output type is email.
+        # The email information, present when the type is email.
         self.email_info = email_info
-        # The file information. This field is present only when the output type is file.
+        # The file information, present when the type is file.
         self.file_info = file_info
-        # The database creation time in ISO 8601 format.
+        # The creation time of the output or detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
         self.gmt_create = gmt_create
-        # The database update time in ISO 8601 format.
+        # The update time of the output or detail, serialized from a backend datetime value into an ISO 8601 string, with time zone information returned along with the original value.
         self.gmt_modified = gmt_modified
         # The output name.
         self.item_name = item_name
-        # The type of the output item. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
+        # The output item type. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
         self.item_type = item_type
         # The internationalized display name of the output detail type.
         self.item_type_display_name = item_type_display_name
@@ -264,11 +264,11 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
         self.output_item_id = output_item_id
         # Indicates whether sharing is enabled.
         self.share_enabled = share_enabled
-        # The share token. This field is present only when sharing is enabled. You can use this token to access the public share preview endpoint.
+        # The share token, present when sharing is enabled. You can use this token to access the public share preview API.
         self.share_token = share_token
         # The skill output ID.
         self.skill_output_id = skill_output_id
-        # The slides information. This field is present only when the output type is slides.
+        # The slide deck information, present when the type is slide deck.
         self.slides_info = slides_info
         # The task execution ID.
         self.task_execution_id = task_execution_id
@@ -452,7 +452,7 @@ class ListOutputFilesResponseBodyItemsOutputItemsFileInfo(DaraModel):
         self.description = description
         # The file name.
         self.name = name
-        # The file path (OSS object key).
+        # The file location. It is compatible with file URLs and legacy OSS object keys. The specific value is derived from the output registration information.
         self.path = path
         # The file type, such as .pdf or .md.
         self.type = type
@@ -503,7 +503,7 @@ class ListOutputFilesResponseBodyItemsOutputItemsEmailInfo(DaraModel):
         recipients: List[str] = None,
         subject: str = None,
     ):
-        # The email body.
+        # The email content.
         self.body = body
         # The content type, such as MARKDOWN, JSONML, or HTML.
         self.content_type = content_type

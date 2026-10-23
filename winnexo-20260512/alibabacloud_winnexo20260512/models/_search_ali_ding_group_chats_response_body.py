@@ -17,16 +17,17 @@ class SearchAliDingGroupChatsResponseBody(DaraModel):
         next_cursor: str = None,
         request_id: str = None,
     ):
-        # 业务状态码
+        # The status code.
         self.code = code
-        # 是否还有下一页
+        # Indicates whether more pages are available.
         self.has_more = has_more
+        # The user group tree node information.
         self.items = items
-        # 错误描述，成功时为空
+        # The description of the status code.
         self.message = message
-        # 下一页分页游标，末页为空
+        # The starting cursor for the next page.
         self.next_cursor = next_cursor
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -95,13 +96,17 @@ class SearchAliDingGroupChatsResponseBodyItems(DaraModel):
         muted: bool = None,
         title: str = None,
     ):
-        # 阿里钉群聊 ID
+        # The conversation ID. This ID is typically used for JSSDK.
         self.chat_id = chat_id
-        # 会话类型
+        # The conversation type. Valid values:
+        # - **0**: one-on-one chat.
+        # - **1**: group chat.
+        # 
+        # > For a one-on-one chat, you do not need to specify **openConversationId**. Specify the employee ID in **receiverUserIdList**. For a one-on-one chat between two users, specify the employee ID of either user. For a one-on-one chat between a user and a bot, specify the employee ID of the user.
         self.conversation_type = conversation_type
-        # 当前用户是否开启免打扰
+        # Indicates whether the current user has enabled the Do Not Disturb mode.
         self.muted = muted
-        # 群聊标题
+        # The title of the scheduled meeting.
         self.title = title
 
     def validate(self):

@@ -15,19 +15,19 @@ class SubmitTodoResponseBody(DaraModel):
         status: str = None,
         todo_id: str = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 完成时间（ISO8601 UTC；与其他北京时间格式化字段格式不同）
+        # The completion time in ISO 8601 UTC format. Note that this format differs from other time fields formatted in UTC+8.
         self.completed_at = completed_at
-        # 完成人用户ID
+        # The user ID of the user who completed the item.
         self.completed_by_user_id = completed_by_user_id
-        # 错误描述
+        # The error description.
         self.message = message
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 提交后状态（恒为 COMPLETED）
+        # The status after submission. This value is always COMPLETED.
         self.status = status
-        # 待办ID
+        # The ID of the to-do item.
         self.todo_id = todo_id
 
     def validate(self):

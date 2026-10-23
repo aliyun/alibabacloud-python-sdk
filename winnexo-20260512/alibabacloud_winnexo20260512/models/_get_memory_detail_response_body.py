@@ -16,15 +16,15 @@ class GetMemoryDetailResponseBody(DaraModel):
         profile: main_models.GetMemoryDetailResponseBodyProfile = None,
         request_id: str = None,
     ):
-        # 业务状态码；成功为 200，失败时为对应错误码
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 自动拾取记忆的分组列表；无自动记忆时为空数组
+        # The list of groups for automatically collected memories. If no automatic memories exist, an empty array is returned.
         self.groups = groups
-        # 错误描述；成功时为空字符串，失败时返回具体原因
+        # The error description.
         self.message = message
-        # 手动添加的记忆，来自 profile.md；包含完整内容、存在状态和修改时间
+        # The manually added memory from profile.md. It includes the full content, existence status, and modification time.
         self.profile = profile
-        # 请求追踪 ID，用于定位本次调用
+        # The request tracking ID.
         self.request_id = request_id
 
     def validate(self):
@@ -89,11 +89,11 @@ class GetMemoryDetailResponseBodyProfile(DaraModel):
         exists: bool = None,
         gmt_modified: int = None,
     ):
-        # 手动记忆的完整正文；未保存过时为空字符串
+        # The full body of the manual memory. If the memory has never been saved, an empty string is returned.
         self.content = content
-        # profile.md 是否存在；未保存过时为 false
+        # Indicates whether profile.md exists. If the memory has never been saved, false is returned.
         self.exists = exists
-        # profile.md 最近修改时间，Unix 秒级时间戳；文件不存在或无法取得元数据时为 null
+        # The last modification time of profile.md. The value is a UNIX timestamp in seconds. If the file does not exist or its metadata cannot be obtained, null is returned.
         self.gmt_modified = gmt_modified
 
     def validate(self):
@@ -135,11 +135,11 @@ class GetMemoryDetailResponseBodyGroups(DaraModel):
         items: List[main_models.GetMemoryDetailResponseBodyGroupsItems] = None,
         type: str = None,
     ):
-        # 该分组最近修改时间，Unix 秒级时间戳；无文件时为 null
+        # The last modification time of the group. The value is a UNIX timestamp in seconds. If no files exist, null is returned.
         self.gmt_modified = gmt_modified
-        # 该类型下的自动记忆条目列表；没有条目时为空数组
+        # The list of automatic memory entries under this type. If no entries exist, an empty array is returned.
         self.items = items
-        # 自动记忆类型：user、feedback、reference 或 project
+        # The type of the automatic memory. Valid values: user, feedback, reference, and project.
         self.type = type
 
     def validate(self):
@@ -190,13 +190,13 @@ class GetMemoryDetailResponseBodyGroupsItems(DaraModel):
         id: str = None,
         title: str = None,
     ):
-        # 自动记忆正文，不包含 YAML frontmatter
+        # The body of the automatic memory, excluding the YAML frontmatter.
         self.content = content
-        # 自动记忆的附加描述；没有时为空字符串
+        # The additional description of the automatic memory. If no description is available, an empty string is returned.
         self.description = description
-        # 自动记忆条目的唯一标识，为相对 OSS 路径
+        # The unique identifier of the automatic memory entry, which is a relative OSS path.
         self.id = id
-        # 自动记忆标题，来自文件元数据或文件名
+        # The title of the automatic memory, which is derived from the file metadata or file name.
         self.title = title
 
     def validate(self):

@@ -12,13 +12,13 @@ class BatchCancelTodosResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 实际作废条数（幂等重复调用为 0）
+        # The actual number of canceled items. The value is 0 for idempotent repeated calls.
         self.cancelled_count = cancelled_count
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 错误描述
+        # The error description.
         self.message = message
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
 
     def validate(self):

@@ -6109,6 +6109,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
         if not DaraCore.is_null(request.collaboration_group_id):
             body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.definition_shrink):
@@ -6149,6 +6151,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
         if not DaraCore.is_null(request.collaboration_group_id):
             body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.definition_shrink):
@@ -6189,6 +6193,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_workflow_template_with_options_async(request, headers, runtime)
+
+    def create_workflow_template_draft_version_with_options(
+        self,
+        request: main_models.CreateWorkflowTemplateDraftVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowTemplateDraftVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflowTemplateDraftVersion',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createWorkflowTemplateDraftVersion',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkflowTemplateDraftVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workflow_template_draft_version_with_options_async(
+        self,
+        request: main_models.CreateWorkflowTemplateDraftVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkflowTemplateDraftVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkflowTemplateDraftVersion',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/createWorkflowTemplateDraftVersion',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkflowTemplateDraftVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workflow_template_draft_version(
+        self,
+        request: main_models.CreateWorkflowTemplateDraftVersionRequest,
+    ) -> main_models.CreateWorkflowTemplateDraftVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_workflow_template_draft_version_with_options(request, headers, runtime)
+
+    async def create_workflow_template_draft_version_async(
+        self,
+        request: main_models.CreateWorkflowTemplateDraftVersionRequest,
+    ) -> main_models.CreateWorkflowTemplateDraftVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_workflow_template_draft_version_with_options_async(request, headers, runtime)
 
     def delete_app_resource_permissions_with_options(
         self,
@@ -6714,6 +6810,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_workflow_template_with_options_async(request, headers, runtime)
 
+    def delete_workflow_template_version_with_options(
+        self,
+        request: main_models.DeleteWorkflowTemplateVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowTemplateVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflowTemplateVersion',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/deleteWorkflowTemplateVersion',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowTemplateVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workflow_template_version_with_options_async(
+        self,
+        request: main_models.DeleteWorkflowTemplateVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkflowTemplateVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkflowTemplateVersion',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/deleteWorkflowTemplateVersion',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkflowTemplateVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workflow_template_version(
+        self,
+        request: main_models.DeleteWorkflowTemplateVersionRequest,
+    ) -> main_models.DeleteWorkflowTemplateVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_workflow_template_version_with_options(request, headers, runtime)
+
+    async def delete_workflow_template_version_async(
+        self,
+        request: main_models.DeleteWorkflowTemplateVersionRequest,
+    ) -> main_models.DeleteWorkflowTemplateVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_workflow_template_version_with_options_async(request, headers, runtime)
+
     def disable_token_with_options(
         self,
         request: main_models.DisableTokenRequest,
@@ -6897,6 +7085,8 @@ class Client(OpenApiClient):
             body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.template_id):
             body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -6933,6 +7123,8 @@ class Client(OpenApiClient):
             body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.template_id):
             body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -9877,6 +10069,8 @@ class Client(OpenApiClient):
             body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.template_id):
             body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -9913,6 +10107,8 @@ class Client(OpenApiClient):
             body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.template_id):
             body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -13835,6 +14031,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_workflow_instances_with_options_async(request, headers, runtime)
+
+    def list_workflow_template_versions_with_options(
+        self,
+        request: main_models.ListWorkflowTemplateVersionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowTemplateVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowTemplateVersions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkflowTemplateVersions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowTemplateVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workflow_template_versions_with_options_async(
+        self,
+        request: main_models.ListWorkflowTemplateVersionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkflowTemplateVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkflowTemplateVersions',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listWorkflowTemplateVersions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkflowTemplateVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workflow_template_versions(
+        self,
+        request: main_models.ListWorkflowTemplateVersionsRequest,
+    ) -> main_models.ListWorkflowTemplateVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_workflow_template_versions_with_options(request, headers, runtime)
+
+    async def list_workflow_template_versions_async(
+        self,
+        request: main_models.ListWorkflowTemplateVersionsRequest,
+    ) -> main_models.ListWorkflowTemplateVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_workflow_template_versions_with_options_async(request, headers, runtime)
 
     def list_workflow_templates_with_options(
         self,
@@ -18632,6 +18916,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.set_work_item_pinned_with_options_async(request, headers, runtime)
 
+    def set_workflow_template_effective_version_with_options(
+        self,
+        request: main_models.SetWorkflowTemplateEffectiveVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWorkflowTemplateEffectiveVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetWorkflowTemplateEffectiveVersion',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/setWorkflowTemplateEffectiveVersion',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetWorkflowTemplateEffectiveVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_workflow_template_effective_version_with_options_async(
+        self,
+        request: main_models.SetWorkflowTemplateEffectiveVersionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SetWorkflowTemplateEffectiveVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.template_id):
+            body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetWorkflowTemplateEffectiveVersion',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/setWorkflowTemplateEffectiveVersion',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetWorkflowTemplateEffectiveVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_workflow_template_effective_version(
+        self,
+        request: main_models.SetWorkflowTemplateEffectiveVersionRequest,
+    ) -> main_models.SetWorkflowTemplateEffectiveVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.set_workflow_template_effective_version_with_options(request, headers, runtime)
+
+    async def set_workflow_template_effective_version_async(
+        self,
+        request: main_models.SetWorkflowTemplateEffectiveVersionRequest,
+    ) -> main_models.SetWorkflowTemplateEffectiveVersionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.set_workflow_template_effective_version_with_options_async(request, headers, runtime)
+
     def stop_chat_message_with_options(
         self,
         request: main_models.StopChatMessageRequest,
@@ -21399,12 +21775,20 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
         if not DaraCore.is_null(request.collaboration_group_id):
             body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.definition_shrink):
             body['definition'] = request.definition_shrink
+        if not DaraCore.is_null(request.source_version):
+            body['sourceVersion'] = request.source_version
         if not DaraCore.is_null(request.template_id):
             body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        if not DaraCore.is_null(request.version_description):
+            body['versionDescription'] = request.version_description
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -21441,12 +21825,20 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.tenant_id):
             query['tenantId'] = request.tenant_id
         body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
         if not DaraCore.is_null(request.collaboration_group_id):
             body['collaborationGroupId'] = request.collaboration_group_id
         if not DaraCore.is_null(request.definition_shrink):
             body['definition'] = request.definition_shrink
+        if not DaraCore.is_null(request.source_version):
+            body['sourceVersion'] = request.source_version
         if not DaraCore.is_null(request.template_id):
             body['templateId'] = request.template_id
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        if not DaraCore.is_null(request.version_description):
+            body['versionDescription'] = request.version_description
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),

@@ -20,29 +20,29 @@ class ListAppResourcePermissionRecordsRequest(DaraModel):
         resource_type: str = None,
         tenant_id: str = None,
     ):
-        # 主体 ID 筛选
+        # The grantee ID filter.
         self.grantee_id = grantee_id
-        # 跨租户 USER 所属租户筛选
+        # The tenant ID filter for cross-tenant users.
         self.grantee_tenant_id = grantee_tenant_id
-        # 主体类型筛选
+        # The grantee type filter.
         self.grantee_type = grantee_type
-        # 页码
+        # The page number.
         self.page = page
-        # 每页条数
+        # The number of entries per page.
         self.page_size = page_size
-        # 权限点筛选
+        # The permission filter.
         self.permissions = permissions
-        # 应用键或其子路径
+        # The application key or its subpath.
         # 
         # This parameter is required.
         self.resource_key_prefix = resource_key_prefix
-        # 资源所属租户 ID；省略为调用人当前租户
+        # The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
         self.resource_tenant_id = resource_tenant_id
-        # 固定为 APP_RESOURCE
+        # The resource type. Set this parameter to APP_RESOURCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

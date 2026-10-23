@@ -16,17 +16,17 @@ class CheckAppResourcePermissionsBatchRequest(DaraModel):
         target_user_tenant_id: str = None,
         tenant_id: str = None,
     ):
-        # 检查项
+        # The check items.
         # 
         # This parameter is required.
         self.checks = checks
-        # 资源所属租户 ID；省略为调用人当前租户
+        # The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
         self.resource_tenant_id = resource_tenant_id
-        # 目标平台用户 ID
+        # The ID of the target platform user.
         self.target_user_id = target_user_id
-        # 目标用户所属租户；跨租户目标必填
+        # The tenant to which the target user belongs. This parameter is required for cross-tenant targets.
         self.target_user_tenant_id = target_user_tenant_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -88,15 +88,15 @@ class CheckAppResourcePermissionsBatchRequestChecks(DaraModel):
         resource_key: str = None,
         resource_type: str = None,
     ):
-        # 目标权限点
+        # The target permission.
         # 
         # This parameter is required.
         self.permission = permission
-        # 首段为 APP 应用键的点分资源键
+        # The dot-separated resource key whose first segment is the APP application key.
         # 
         # This parameter is required.
         self.resource_key = resource_key
-        # 固定为 APP_RESOURCE
+        # The resource type. Set the value to APP_RESOURCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type

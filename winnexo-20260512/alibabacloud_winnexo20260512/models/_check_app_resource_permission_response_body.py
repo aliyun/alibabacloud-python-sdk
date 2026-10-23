@@ -15,19 +15,19 @@ class CheckAppResourcePermissionResponseBody(DaraModel):
         resource_key: str = None,
         resource_type: str = None,
     ):
-        # 目标用户是否拥有该资源权限
+        # Indicates whether the target user has the permission on the resource.
         self.allowed = allowed
-        # 业务状态码；成功为 200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 错误描述；成功时为空
+        # The error description. This field is empty if the request is successful.
         self.message = message
-        # 目标权限点
+        # The target permission.
         self.permission = permission
-        # 请求追踪 ID
+        # The request trace ID.
         self.request_id = request_id
-        # 首段为 APP 应用键的点分资源键
+        # The dot-separated resource key. The first segment is the APP application key.
         self.resource_key = resource_key
-        # 固定为 APP_RESOURCE
+        # The resource type. Set the value to APP_RESOURCE.
         self.resource_type = resource_type
 
     def validate(self):

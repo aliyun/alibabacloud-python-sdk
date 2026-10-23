@@ -15,19 +15,19 @@ class RerunNodeAIResponseBody(DaraModel):
         rerun_accepted: bool = None,
         state_version: int = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 物理实例ID
+        # The physical instance ID.
         self.instance_id = instance_id
-        # 错误描述
+        # The error message.
         self.message = message
-        # 已安排重跑的节点 key
+        # The key of the node scheduled for rerun.
         self.node_id = node_id
-        # 请求追踪ID
+        # The request trace ID.
         self.request_id = request_id
-        # 重跑事实接受为 true，不表示 AI 已完成；失败通过 Code 和 Message 返回
+        # Indicates whether the rerun request is accepted. A value of true indicates that the rerun is accepted, but does not mean that the AI has completed the task. Failures are returned through the Code and Message fields.
         self.rerun_accepted = rerun_accepted
-        # 状态版本
+        # The state version.
         self.state_version = state_version
 
     def validate(self):

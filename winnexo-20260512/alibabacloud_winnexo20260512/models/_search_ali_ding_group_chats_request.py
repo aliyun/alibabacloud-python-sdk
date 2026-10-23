@@ -13,17 +13,17 @@ class SearchAliDingGroupChatsRequest(DaraModel):
         page_size: int = None,
         tenant_id: str = None,
     ):
-        # 分页游标，首页传 0
+        # The cursor for the paged query. Set this parameter to 0 for the first request. For subsequent paging requests, set this parameter to the value of **nextCursor** returned in the previous response.
         self.cursor = cursor
-        # 是否排除免打扰群聊
+        # Specifies whether to exclude muted group chats.
         self.exclude_muted = exclude_muted
-        # 群聊搜索关键词
+        # The keyword for search. The keyword always matches the name field. If the description field is defined in the schema, the keyword also matches the description field.
         # 
         # This parameter is required.
         self.keyword = keyword
-        # 每页条数，范围 1-100
+        # The page size.
         self.page_size = page_size
-        # 租户 ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

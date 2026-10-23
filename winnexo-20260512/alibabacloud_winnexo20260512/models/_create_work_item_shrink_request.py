@@ -20,35 +20,35 @@ class CreateWorkItemShrinkRequest(DaraModel):
         title: str = None,
         workflow_template_ids_shrink: str = None,
     ):
-        # 验收标准
+        # The acceptance criteria.
         self.acceptance_criteria = acceptance_criteria
-        # 输入附件稳定引用
+        # The stable references of the input attachments.
         self.attachments_shrink = attachments_shrink
-        # 协作空间 ID
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 协作人用户ID列表
+        # The list of user IDs of the collaborators.
         self.collaborator_user_ids_shrink = collaborator_user_ids_shrink
-        # 关联会话ID
+        # The ID of the associated conversation.
         self.conversation_id = conversation_id
-        # 工作项描述
+        # The description of the work item.
         self.description = description
-        # 工作项类型；仅接受 WORKFLOW
+        # The type of the work item. Only WORKFLOW is supported.
         # 
         # This parameter is required.
         self.item_type = item_type
-        # 负责人用户ID；缺省为调用者本人
+        # The user ID of the owner. If this parameter is not specified, the ID of the caller is used.
         self.owner_user_id = owner_user_id
-        # 排产优先级
+        # The scheduling priority.
         self.priority = priority
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 工作项标题
+        # The title of the work item.
         # 
         # This parameter is required.
         self.title = title
-        # 绑定的工作流模板ID列表
+        # The list of IDs of the bound workflow templates.
         self.workflow_template_ids_shrink = workflow_template_ids_shrink
 
     def validate(self):

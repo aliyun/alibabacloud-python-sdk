@@ -17,17 +17,17 @@ class ListInstanceNodesResponseBody(DaraModel):
         request_id: str = None,
         state_version: int = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 物理实例ID
+        # The physical instance ID.
         self.instance_id = instance_id
-        # 错误描述
+        # The error description.
         self.message = message
-        # 按拓扑顺序排列的可见节点，数量由实际动态图决定
+        # The visible nodes arranged in topological order. The number of nodes is determined by the actual dynamic graph.
         self.nodes = nodes
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 状态版本
+        # The state version.
         self.state_version = state_version
 
     def validate(self):
@@ -105,31 +105,31 @@ class ListInstanceNodesResponseBodyNodes(DaraModel):
         status: str = None,
         wait_type: str = None,
     ):
-        # 节点结果结论，无结论时为空
+        # The conclusion of the node result. This field is empty if there is no conclusion.
         self.conclusion = conclusion
-        # 从首次运行到终态的整秒数，缺时间时为空
+        # The total number of seconds from the first run to the desired state. This field is empty if the time is missing.
         self.duration = duration
-        # 节点首次运行时间，历史或未运行节点为空
+        # The time when the node was first run. This field is empty for historical or unrun nodes.
         self.entered_at = entered_at
-        # 节点实际进入终态的时间，未结束时为空
+        # The time when the node actually entered the desired state. This field is empty if the node has not finished.
         self.finished_at = finished_at
-        # 节点负责人展示名称，未知时为空
+        # The display name of the node assignee. This field is empty if the assignee is unknown.
         self.handler = handler
-        # 节点在工作流图中的泳道位置
+        # The lane position of the node in the workflow graph.
         self.lane = lane
-        # 所属节点key（nodeKey），不是会话ID
+        # The key of the node (nodeKey). This is not the session ID.
         self.node_id = node_id
-        # 节点展示名称
+        # The display name of the node.
         self.node_name = node_name
-        # 节点在返回拓扑列表中的展示序号，从1开始
+        # The display sequence number of the node in the returned topology list, starting from 1.
         self.node_order = node_order
-        # 实际节点类型，例如AGENT或HUMAN
+        # The actual node type, such as AGENT or HUMAN.
         self.node_type = node_type
-        # 节点在工作流图中的层级，从0开始
+        # The level of the node in the workflow graph, starting from 0.
         self.rank = rank
-        # 原始节点运行状态，例如READY、RUNNING、WAITING、SUCCEEDED或FAILED
+        # The original running status of the node, such as READY, RUNNING, WAITING, SUCCEEDED, or FAILED.
         self.status = status
-        # 等待原因：HUMAN_INPUT、HUMAN_STEP、REVIEW、MANUAL_PAUSE或UNBLOCK；未等待时为空
+        # The reason for waiting, such as HUMAN_INPUT, HUMAN_STEP, REVIEW, MANUAL_PAUSE, or UNBLOCK. This field is empty if the node is not waiting.
         self.wait_type = wait_type
 
     def validate(self):

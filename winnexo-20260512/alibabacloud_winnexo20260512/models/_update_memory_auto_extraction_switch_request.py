@@ -13,17 +13,17 @@ class UpdateMemoryAutoExtractionSwitchRequest(DaraModel):
         owner_type: str = None,
         tenant_id: str = None,
     ):
-        # 是否同时清空当前记忆范围内的全部自动记忆；开启或关闭时均可使用，不影响手动记忆；不传时为 false
+        # Specifies whether to synchronously clear the automatically collected memories. This parameter can be used regardless of whether the feature is enabled or disabled.
         self.clear_existing = clear_existing
-        # 目标开关状态；true 为开启自动记忆拾取，false 为关闭
+        # Specifies whether to enable automatic memory collection.
         # 
         # This parameter is required.
         self.enabled = enabled
-        # 写作协作空间 ID；ownerType 为 group 时必填，且当前鉴权用户须为该空间的活跃成员；ownerType 为 user 时不传
+        # The collaborative workspace ID. This parameter is required when ownerType is set to group.
         self.group_id = group_id
-        # 记忆归属范围；user 为当前鉴权用户的个人记忆，group 为指定写作协作空间的记忆；不传时默认为 user
+        # The owner type. A value of user indicates personal memories of the authenticated user. A value of group indicates memories of a specified collaborative workspace.
         self.owner_type = owner_type
-        # 租户 ID，查询参数；不传时使用调用方的默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

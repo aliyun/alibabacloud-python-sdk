@@ -13,15 +13,15 @@ class MarkTodosReadResponseBody(DaraModel):
         unread_count: int = None,
         updated_count: int = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 错误描述
+        # The error message.
         self.message = message
-        # 请求追踪ID
+        # The request ID.
         self.request_id = request_id
-        # 标记后剩余未读数
+        # The number of unread to-do items remaining after the operation.
         self.unread_count = unread_count
-        # 本次标记条数
+        # The number of to-do items marked as read in this request.
         self.updated_count = updated_count
 
     def validate(self):

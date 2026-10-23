@@ -21,39 +21,39 @@ class UpdateWorkItemShrinkRequest(DaraModel):
         work_item_id: str = None,
         workflow_template_ids_shrink: str = None,
     ):
-        # 验收标准
+        # The acceptance criteria.
         self.acceptance_criteria = acceptance_criteria
-        # 输入附件稳定引用
+        # The stable references for the attachments.
         self.attachments_shrink = attachments_shrink
-        # 协作空间 ID
+        # The ID of the collaboration space.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 协作人用户ID列表
+        # The list of user IDs of the collaborators.
         self.collaborator_user_ids_shrink = collaborator_user_ids_shrink
-        # 关联会话ID
+        # The ID of the associated conversation.
         self.conversation_id = conversation_id
-        # 工作项描述
+        # The description of the work item.
         self.description = description
-        # 乐观版本号，取上次响应的 version
+        # The optimistic version number. Obtain this value from the version field in the previous response.
         # 
         # This parameter is required.
         self.expected_version = expected_version
-        # 负责人用户ID；缺省为调用者本人
+        # The user ID of the owner. If not specified, the user ID of the caller is used.
         self.owner_user_id = owner_user_id
-        # 排产优先级
+        # The scheduling priority.
         self.priority = priority
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 工作项标题
+        # The title of the work item.
         # 
         # This parameter is required.
         self.title = title
-        # 工作项 ID
+        # The ID of the work item.
         # 
         # This parameter is required.
         self.work_item_id = work_item_id
-        # 绑定的工作流模板ID列表；未传保持既有绑定，空数组清空
+        # The list of bound workflow template IDs. If not specified, the existing bindings are retained. If an empty array is provided, the bindings are cleared.
         self.workflow_template_ids_shrink = workflow_template_ids_shrink
 
     def validate(self):

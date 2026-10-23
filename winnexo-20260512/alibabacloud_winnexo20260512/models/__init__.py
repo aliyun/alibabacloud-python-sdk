@@ -192,6 +192,9 @@ from ._create_workflow_template_request import CreateWorkflowTemplateRequest
 from ._create_workflow_template_shrink_request import CreateWorkflowTemplateShrinkRequest
 from ._create_workflow_template_response_body import CreateWorkflowTemplateResponseBody
 from ._create_workflow_template_response import CreateWorkflowTemplateResponse
+from ._create_workflow_template_draft_version_request import CreateWorkflowTemplateDraftVersionRequest
+from ._create_workflow_template_draft_version_response_body import CreateWorkflowTemplateDraftVersionResponseBody
+from ._create_workflow_template_draft_version_response import CreateWorkflowTemplateDraftVersionResponse
 from ._delete_app_resource_permissions_request import DeleteAppResourcePermissionsRequest
 from ._delete_app_resource_permissions_shrink_request import DeleteAppResourcePermissionsShrinkRequest
 from ._delete_app_resource_permissions_response_body import DeleteAppResourcePermissionsResponseBody
@@ -211,6 +214,9 @@ from ._delete_work_item_response import DeleteWorkItemResponse
 from ._delete_workflow_template_request import DeleteWorkflowTemplateRequest
 from ._delete_workflow_template_response_body import DeleteWorkflowTemplateResponseBody
 from ._delete_workflow_template_response import DeleteWorkflowTemplateResponse
+from ._delete_workflow_template_version_request import DeleteWorkflowTemplateVersionRequest
+from ._delete_workflow_template_version_response_body import DeleteWorkflowTemplateVersionResponseBody
+from ._delete_workflow_template_version_response import DeleteWorkflowTemplateVersionResponse
 from ._disable_token_request import DisableTokenRequest
 from ._disable_token_response_body import DisableTokenResponseBody
 from ._disable_token_response import DisableTokenResponse
@@ -454,6 +460,9 @@ from ._list_work_items_response import ListWorkItemsResponse
 from ._list_workflow_instances_request import ListWorkflowInstancesRequest
 from ._list_workflow_instances_response_body import ListWorkflowInstancesResponseBody
 from ._list_workflow_instances_response import ListWorkflowInstancesResponse
+from ._list_workflow_template_versions_request import ListWorkflowTemplateVersionsRequest
+from ._list_workflow_template_versions_response_body import ListWorkflowTemplateVersionsResponseBody
+from ._list_workflow_template_versions_response import ListWorkflowTemplateVersionsResponse
 from ._list_workflow_templates_request import ListWorkflowTemplatesRequest
 from ._list_workflow_templates_response_body import ListWorkflowTemplatesResponseBody
 from ._list_workflow_templates_response import ListWorkflowTemplatesResponse
@@ -612,6 +621,9 @@ from ._send_chat_message_response import SendChatMessageResponse
 from ._set_work_item_pinned_request import SetWorkItemPinnedRequest
 from ._set_work_item_pinned_response_body import SetWorkItemPinnedResponseBody
 from ._set_work_item_pinned_response import SetWorkItemPinnedResponse
+from ._set_workflow_template_effective_version_request import SetWorkflowTemplateEffectiveVersionRequest
+from ._set_workflow_template_effective_version_response_body import SetWorkflowTemplateEffectiveVersionResponseBody
+from ._set_workflow_template_effective_version_response import SetWorkflowTemplateEffectiveVersionResponse
 from ._stop_chat_message_request import StopChatMessageRequest
 from ._stop_chat_message_response_body import StopChatMessageResponseBody
 from ._stop_chat_message_response import StopChatMessageResponse
@@ -738,7 +750,9 @@ from ._create_workflow_instance_response_body import CreateWorkflowInstanceRespo
 from ._create_workflow_instance_response_body import CreateWorkflowInstanceResponseBodyCurrentNodes
 from ._create_workflow_instance_response_body import CreateWorkflowInstanceResponseBodyProgress
 from ._create_workflow_template_response_body import CreateWorkflowTemplateResponseBodySteps
+from ._create_workflow_template_draft_version_response_body import CreateWorkflowTemplateDraftVersionResponseBodySteps
 from ._delete_app_resource_permissions_request import DeleteAppResourcePermissionsRequestItems
+from ._delete_workflow_template_version_response_body import DeleteWorkflowTemplateVersionResponseBodyItems
 from ._export_workflow_template_response_body import ExportWorkflowTemplateResponseBodyTemplateSteps
 from ._export_workflow_template_response_body import ExportWorkflowTemplateResponseBodyTemplate
 from ._generate_workflow_template_draft_response_body import GenerateWorkflowTemplateDraftResponseBodyDraftSteps
@@ -832,6 +846,7 @@ from ._list_workflow_instances_response_body import ListWorkflowInstancesRespons
 from ._list_workflow_instances_response_body import ListWorkflowInstancesResponseBodyItemsCurrentNodes
 from ._list_workflow_instances_response_body import ListWorkflowInstancesResponseBodyItemsProgress
 from ._list_workflow_instances_response_body import ListWorkflowInstancesResponseBodyItems
+from ._list_workflow_template_versions_response_body import ListWorkflowTemplateVersionsResponseBodyItems
 from ._list_workflow_templates_response_body import ListWorkflowTemplatesResponseBodyItems
 from ._pause_work_item_response_body import PauseWorkItemResponseBodyAttachments
 from ._query_sync_result_response_body import QuerySyncResultResponseBodyDeptStats
@@ -860,6 +875,7 @@ from ._send_async_chat_message_request import SendAsyncChatMessageRequestTaskExe
 from ._send_chat_message_request import SendChatMessageRequestFiles
 from ._send_chat_message_request import SendChatMessageRequestTaskExecution
 from ._set_work_item_pinned_response_body import SetWorkItemPinnedResponseBodyAttachments
+from ._set_workflow_template_effective_version_response_body import SetWorkflowTemplateEffectiveVersionResponseBodySteps
 from ._submit_todo_request import SubmitTodoRequestAnswers
 from ._sync_org_structure_request import SyncOrgStructureRequestDepartments
 from ._sync_org_structure_request import SyncOrgStructureRequestMembers
@@ -1071,6 +1087,9 @@ __all__ = [
     CreateWorkflowTemplateShrinkRequest,
     CreateWorkflowTemplateResponseBody,
     CreateWorkflowTemplateResponse,
+    CreateWorkflowTemplateDraftVersionRequest,
+    CreateWorkflowTemplateDraftVersionResponseBody,
+    CreateWorkflowTemplateDraftVersionResponse,
     DeleteAppResourcePermissionsRequest,
     DeleteAppResourcePermissionsShrinkRequest,
     DeleteAppResourcePermissionsResponseBody,
@@ -1090,6 +1109,9 @@ __all__ = [
     DeleteWorkflowTemplateRequest,
     DeleteWorkflowTemplateResponseBody,
     DeleteWorkflowTemplateResponse,
+    DeleteWorkflowTemplateVersionRequest,
+    DeleteWorkflowTemplateVersionResponseBody,
+    DeleteWorkflowTemplateVersionResponse,
     DisableTokenRequest,
     DisableTokenResponseBody,
     DisableTokenResponse,
@@ -1333,6 +1355,9 @@ __all__ = [
     ListWorkflowInstancesRequest,
     ListWorkflowInstancesResponseBody,
     ListWorkflowInstancesResponse,
+    ListWorkflowTemplateVersionsRequest,
+    ListWorkflowTemplateVersionsResponseBody,
+    ListWorkflowTemplateVersionsResponse,
     ListWorkflowTemplatesRequest,
     ListWorkflowTemplatesResponseBody,
     ListWorkflowTemplatesResponse,
@@ -1491,6 +1516,9 @@ __all__ = [
     SetWorkItemPinnedRequest,
     SetWorkItemPinnedResponseBody,
     SetWorkItemPinnedResponse,
+    SetWorkflowTemplateEffectiveVersionRequest,
+    SetWorkflowTemplateEffectiveVersionResponseBody,
+    SetWorkflowTemplateEffectiveVersionResponse,
     StopChatMessageRequest,
     StopChatMessageResponseBody,
     StopChatMessageResponse,
@@ -1617,7 +1645,9 @@ __all__ = [
     CreateWorkflowInstanceResponseBodyCurrentNodes,
     CreateWorkflowInstanceResponseBodyProgress,
     CreateWorkflowTemplateResponseBodySteps,
+    CreateWorkflowTemplateDraftVersionResponseBodySteps,
     DeleteAppResourcePermissionsRequestItems,
+    DeleteWorkflowTemplateVersionResponseBodyItems,
     ExportWorkflowTemplateResponseBodyTemplateSteps,
     ExportWorkflowTemplateResponseBodyTemplate,
     GenerateWorkflowTemplateDraftResponseBodyDraftSteps,
@@ -1711,6 +1741,7 @@ __all__ = [
     ListWorkflowInstancesResponseBodyItemsCurrentNodes,
     ListWorkflowInstancesResponseBodyItemsProgress,
     ListWorkflowInstancesResponseBodyItems,
+    ListWorkflowTemplateVersionsResponseBodyItems,
     ListWorkflowTemplatesResponseBodyItems,
     PauseWorkItemResponseBodyAttachments,
     QuerySyncResultResponseBodyDeptStats,
@@ -1739,6 +1770,7 @@ __all__ = [
     SendChatMessageRequestFiles,
     SendChatMessageRequestTaskExecution,
     SetWorkItemPinnedResponseBodyAttachments,
+    SetWorkflowTemplateEffectiveVersionResponseBodySteps,
     SubmitTodoRequestAnswers,
     SyncOrgStructureRequestDepartments,
     SyncOrgStructureRequestMembers,

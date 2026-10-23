@@ -12,13 +12,13 @@ class GetMemoryAutoExtractionSwitchResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码；成功为 200，失败时为对应错误码
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 当前记忆范围的自动记忆拾取开关状态；true 表示已开启，false 表示已关闭
+        # The status of the automatic memory collection switch for the current memory scope. A value of true indicates that the switch is enabled, and a value of false indicates that the switch is disabled.
         self.enabled = enabled
-        # 错误描述；成功时为空字符串，失败时返回具体原因
+        # The error description.
         self.message = message
-        # 请求追踪 ID，用于定位本次调用
+        # The request tracking ID.
         self.request_id = request_id
 
     def validate(self):

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_winnexo20260512 import models as main_models
 from darabonba.model import DaraModel
@@ -13,6 +13,7 @@ class UpdateWorkflowTemplateResponseBody(DaraModel):
         code: str = None,
         created_by_user_id: int = None,
         description: str = None,
+        effective_version: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         message: str = None,
@@ -20,27 +21,40 @@ class UpdateWorkflowTemplateResponseBody(DaraModel):
         request_id: str = None,
         steps: List[main_models.UpdateWorkflowTemplateResponseBodySteps] = None,
         template_id: str = None,
+        version: str = None,
+        version_description: str = None,
+        version_status: str = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 创建人用户ID
+        # The user ID of the creator.
         self.created_by_user_id = created_by_user_id
-        # 模板描述
+        # The template description.
         self.description = description
-        # 创建时间(ISO8601)
+        # The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
+        self.effective_version = effective_version
+        # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # 修改时间(ISO8601)
+        # The modification time in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # 错误描述
+        # The error description.
         self.message = message
-        # 模板名称
+        # The template name.
         self.name = name
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 有序步骤
+        # The ordered steps.
         self.steps = steps
-        # 模板ID
+        # The template ID.
         self.template_id = template_id
+        # The version number to which the returned content belongs.
+        self.version = version
+        # The change description of the version. An empty value indicates that no description is provided.
+        self.version_description = version_description
+        # The version status. Valid values:
+        # - DRAFT: Draft.
+        # - SUBMITTED: Submitted.
+        self.version_status = version_status
 
     def validate(self):
         if self.steps:
@@ -61,6 +75,9 @@ class UpdateWorkflowTemplateResponseBody(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.effective_version is not None:
+            result['effectiveVersion'] = self.effective_version
 
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
@@ -85,6 +102,15 @@ class UpdateWorkflowTemplateResponseBody(DaraModel):
         if self.template_id is not None:
             result['templateId'] = self.template_id
 
+        if self.version is not None:
+            result['version'] = self.version
+
+        if self.version_description is not None:
+            result['versionDescription'] = self.version_description
+
+        if self.version_status is not None:
+            result['versionStatus'] = self.version_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -97,6 +123,9 @@ class UpdateWorkflowTemplateResponseBody(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('effectiveVersion') is not None:
+            self.effective_version = m.get('effectiveVersion')
 
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
@@ -122,6 +151,15 @@ class UpdateWorkflowTemplateResponseBody(DaraModel):
         if m.get('templateId') is not None:
             self.template_id = m.get('templateId')
 
+        if m.get('version') is not None:
+            self.version = m.get('version')
+
+        if m.get('versionDescription') is not None:
+            self.version_description = m.get('versionDescription')
+
+        if m.get('versionStatus') is not None:
+            self.version_status = m.get('versionStatus')
+
         return self
 
 class UpdateWorkflowTemplateResponseBodySteps(DaraModel):
@@ -135,25 +173,30 @@ class UpdateWorkflowTemplateResponseBodySteps(DaraModel):
         reviewer_user_ids: List[int] = None,
         sort_order: int = None,
         specification: str = None,
+        specification_json: List[Dict[str, Any]] = None,
         step_id: str = None,
     ):
-        # 模型档位
+        # The model tier.
         self.model_mode = model_mode
-        # 步骤名称
+        # The step name.
         self.name = name
-        # 智能体负责人名称
+        # The name of the responsible agent.
         self.owner_agent_name = owner_agent_name
-        # 负责人类型：MEMBER 人工 / AGENT 智能体
+        # The owner type. Valid values:
+        # - MEMBER: Human.
+        # - AGENT: Agent.
         self.owner_type = owner_type
-        # 人工负责人用户ID
+        # The user ID of the human owner.
         self.owner_user_id = owner_user_id
-        # 审核人用户ID列表
+        # The list of user IDs of the reviewers.
         self.reviewer_user_ids = reviewer_user_ids
-        # 步骤顺序
+        # The step order.
         self.sort_order = sort_order
-        # 步骤处理说明
+        # The step processing instructions.
         self.specification = specification
-        # 步骤ID
+        # The array of structured segments for the step instructions. Supports text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are retained as returned by the backend.
+        self.specification_json = specification_json
+        # The step ID.
         self.step_id = step_id
 
     def validate(self):
@@ -188,6 +231,9 @@ class UpdateWorkflowTemplateResponseBodySteps(DaraModel):
         if self.specification is not None:
             result['specification'] = self.specification
 
+        if self.specification_json is not None:
+            result['specificationJson'] = self.specification_json
+
         if self.step_id is not None:
             result['stepId'] = self.step_id
 
@@ -218,6 +264,9 @@ class UpdateWorkflowTemplateResponseBodySteps(DaraModel):
 
         if m.get('specification') is not None:
             self.specification = m.get('specification')
+
+        if m.get('specificationJson') is not None:
+            self.specification_json = m.get('specificationJson')
 
         if m.get('stepId') is not None:
             self.step_id = m.get('stepId')

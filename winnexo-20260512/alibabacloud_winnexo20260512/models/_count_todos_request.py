@@ -10,9 +10,9 @@ class CountTodosRequest(DaraModel):
         collaboration_group_id: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间 ID（可选过滤；不传 = 全部空间）
+        # The collaboration workspace ID. This parameter is optional and used for filtering. If this parameter is not specified, all workspaces are included.
         self.collaboration_group_id = collaboration_group_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

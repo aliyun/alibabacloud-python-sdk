@@ -1,3 +1,41 @@
+2026-10-23 Version: 1.7.0
+- Support API CreateWorkflowTemplateDraftVersion.
+- Support API DeleteWorkflowTemplateVersion.
+- Support API ListWorkflowTemplateVersions.
+- Support API SetWorkflowTemplateEffectiveVersion.
+- Update API CreateWorkflowTemplate: add request parameters action.
+- Update API CreateWorkflowTemplate: add response parameters Body.effectiveVersion.
+- Update API CreateWorkflowTemplate: add response parameters Body.version.
+- Update API CreateWorkflowTemplate: add response parameters Body.versionDescription.
+- Update API CreateWorkflowTemplate: add response parameters Body.versionStatus.
+- Update API CreateWorkflowTemplate: add response parameters Body.steps.$.specificationJson.
+- Update API ExportWorkflowTemplate: add request parameters version.
+- Update API ExportWorkflowTemplate: add response parameters Body.template.steps.$.specificationJson.
+- Update API GenerateWorkflowTemplateDraft: add response parameters Body.draft.steps.$.specificationJson.
+- Update API GetWorkflowTemplate: add request parameters version.
+- Update API GetWorkflowTemplate: add response parameters Body.effectiveVersion.
+- Update API GetWorkflowTemplate: add response parameters Body.version.
+- Update API GetWorkflowTemplate: add response parameters Body.versionDescription.
+- Update API GetWorkflowTemplate: add response parameters Body.versionStatus.
+- Update API GetWorkflowTemplate: add response parameters Body.steps.$.specificationJson.
+- Update API ImportWorkflowTemplate: add response parameters Body.effectiveVersion.
+- Update API ImportWorkflowTemplate: add response parameters Body.version.
+- Update API ImportWorkflowTemplate: add response parameters Body.versionStatus.
+- Update API ImportWorkflowTemplate: add response parameters Body.steps.$.specificationJson.
+- Update API ListWorkflowTemplates: add response parameters Body.items.$.effectiveVersion.
+- Update API ListWorkflowTemplates: add response parameters Body.items.$.latestVersion.
+- Update API ListWorkflowTemplates: add response parameters Body.items.$.latestVersionStatus.
+- Update API UpdateWorkflowTemplate: add request parameters action.
+- Update API UpdateWorkflowTemplate: add request parameters sourceVersion.
+- Update API UpdateWorkflowTemplate: add request parameters version.
+- Update API UpdateWorkflowTemplate: add request parameters versionDescription.
+- Update API UpdateWorkflowTemplate: add response parameters Body.effectiveVersion.
+- Update API UpdateWorkflowTemplate: add response parameters Body.version.
+- Update API UpdateWorkflowTemplate: add response parameters Body.versionDescription.
+- Update API UpdateWorkflowTemplate: add response parameters Body.versionStatus.
+- Update API UpdateWorkflowTemplate: add response parameters Body.steps.$.specificationJson.
+
+
 2026-10-19 Version: 1.6.0
 - Support API BatchCancelTodos.
 - Support API BatchOperateWorkItems.

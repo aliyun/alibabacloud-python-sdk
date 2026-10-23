@@ -14,13 +14,13 @@ class RegisterAppResourcePermissionsRequest(DaraModel):
         resource_tenant_id: str = None,
         tenant_id: str = None,
     ):
-        # 批量授权项
+        # The batch authorization items.
         # 
         # This parameter is required.
         self.items = items
-        # 资源所属租户 ID；省略为调用人当前租户
+        # The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
         self.resource_tenant_id = resource_tenant_id
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -72,21 +72,21 @@ class RegisterAppResourcePermissionsRequestItems(DaraModel):
         resource_key: str = None,
         resource_type: str = None,
     ):
-        # 带时区的到期时间；省略表示永久
+        # The expiration time with the time zone. If not specified, the permissions never expire.
         self.expire_at = expire_at
-        # 被授权主体
+        # The authorized principals.
         # 
         # This parameter is required.
         self.grantees = grantees
-        # 授权权限点
+        # The granted permissions.
         # 
         # This parameter is required.
         self.permissions = permissions
-        # 首段为 APP 应用键的点分资源键
+        # The dot-separated resource key, where the first segment is the APP application key.
         # 
         # This parameter is required.
         self.resource_key = resource_key
-        # 固定为 APP_RESOURCE
+        # The resource type. Set the value to APP_RESOURCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -150,11 +150,11 @@ class RegisterAppResourcePermissionsRequestItemsGrantees(DaraModel):
         grantee_tenant_id: str = None,
         grantee_type: str = None,
     ):
-        # 主体 ID；ALL_USERS 省略
+        # The principal ID. Omit this parameter for ALL_USERS.
         self.grantee_id = grantee_id
-        # 跨租户 USER 所属租户
+        # The tenant to which the cross-tenant USER belongs.
         self.grantee_tenant_id = grantee_tenant_id
-        # 主体类型
+        # The principal type.
         # 
         # This parameter is required.
         self.grantee_type = grantee_type

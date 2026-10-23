@@ -23,35 +23,35 @@ class CreateWorkItemRequest(DaraModel):
         title: str = None,
         workflow_template_ids: List[str] = None,
     ):
-        # 验收标准
+        # The acceptance criteria.
         self.acceptance_criteria = acceptance_criteria
-        # 输入附件稳定引用
+        # The stable references of the input attachments.
         self.attachments = attachments
-        # 协作空间 ID
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 协作人用户ID列表
+        # The list of user IDs of the collaborators.
         self.collaborator_user_ids = collaborator_user_ids
-        # 关联会话ID
+        # The ID of the associated conversation.
         self.conversation_id = conversation_id
-        # 工作项描述
+        # The description of the work item.
         self.description = description
-        # 工作项类型；仅接受 WORKFLOW
+        # The type of the work item. Only WORKFLOW is supported.
         # 
         # This parameter is required.
         self.item_type = item_type
-        # 负责人用户ID；缺省为调用者本人
+        # The user ID of the owner. If this parameter is not specified, the ID of the caller is used.
         self.owner_user_id = owner_user_id
-        # 排产优先级
+        # The scheduling priority.
         self.priority = priority
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 工作项标题
+        # The title of the work item.
         # 
         # This parameter is required.
         self.title = title
-        # 绑定的工作流模板ID列表
+        # The list of IDs of the bound workflow templates.
         self.workflow_template_ids = workflow_template_ids
 
     def validate(self):
@@ -158,21 +158,21 @@ class CreateWorkItemRequestAttachments(DaraModel):
         size_bytes: int = None,
         title: str = None,
     ):
-        # 内容类型
+        # The content type.
         self.content_type = content_type
-        # 附件引用地址
+        # The reference URL of the attachment.
         self.ref_url = ref_url
-        # 附件资源ID
+        # The resource ID of the attachment.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # 附件资源类型
+        # The resource type of the attachment.
         # 
         # This parameter is required.
         self.resource_kind = resource_kind
-        # 附件大小(字节)，上限 20MB
+        # The size of the attachment in bytes. The maximum size is 20 MB.
         self.size_bytes = size_bytes
-        # 附件标题
+        # The title of the attachment.
         self.title = title
 
     def validate(self):

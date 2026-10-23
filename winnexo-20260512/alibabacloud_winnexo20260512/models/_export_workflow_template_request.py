@@ -10,17 +10,20 @@ class ExportWorkflowTemplateRequest(DaraModel):
         collaboration_group_id: str = None,
         template_id: str = None,
         tenant_id: str = None,
+        version: str = None,
     ):
-        # 协作空间 ID
+        # The collaboration workspace ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 模板 ID
+        # The template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
+        # The version number of the template to export. The format is a lowercase v followed by a positive integer, such as v1. If not specified, the effective version is used. If no effective version exists, the latest version is used.
+        self.version = version
 
     def validate(self):
         pass
@@ -39,6 +42,9 @@ class ExportWorkflowTemplateRequest(DaraModel):
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
+        if self.version is not None:
+            result['version'] = self.version
+
         return result
 
     def from_map(self, m: dict = None):
@@ -51,6 +57,9 @@ class ExportWorkflowTemplateRequest(DaraModel):
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
 
         return self
 

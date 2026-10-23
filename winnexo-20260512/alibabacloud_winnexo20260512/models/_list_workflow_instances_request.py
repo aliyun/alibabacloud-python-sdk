@@ -18,27 +18,27 @@ class ListWorkflowInstancesRequest(DaraModel):
         status: str = None,
         tenant_id: str = None,
     ):
-        # 精确需求编号
+        # The exact requirement ID.
         self.business_id = business_id
-        # 协作空间 ID
+        # The collaboration space ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 精确外部发起人标签
+        # The exact external initiator tag.
         self.initiator = initiator
-        # 标题或需求编号关键词
+        # The keyword for the title or requirement ID.
         self.keyword = keyword
-        # 页码，从 1 开始
+        # The page number. Pages start from 1.
         self.page = page
-        # 每页数量 1-100
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # 排序字段
+        # The sort field.
         self.sort_by = sort_by
-        # 排序方向
+        # The sort order.
         self.sort_order = sort_order
-        # Running/Completed/Failed/Terminated 筛选
+        # Filters the instances by status. Valid values: Running, Completed, Failed, and Terminated.
         self.status = status
-        # 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+        # The tenant ID. This is a common parameter. If you use winnexo-cli, pass this parameter explicitly by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):

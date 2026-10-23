@@ -13,19 +13,19 @@ class CreateGraphRequest(DaraModel):
         graph_name: str = None,
         tenant_id: str = None,
     ):
-        # 业务说明（可选）
+        # The business description of the graph. If not configured, it is an empty string.
         self.business_profile = business_profile
-        # 绑定的数据源 ID（控制台已创建的 RDB 类数据源）
+        # The data source ID.
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # 图谱展示名（可选，租户内大小写不敏感唯一，最多200字）
+        # The cluster name.
         self.display_name = display_name
-        # 图谱名称，字母开头+字母/数字/下划线，长度不超过64，租户内唯一
+        # The graph name.
         # 
         # This parameter is required.
         self.graph_name = graph_name
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

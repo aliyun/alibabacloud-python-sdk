@@ -13,15 +13,15 @@ class CloseWorkflowTodosResponseBody(DaraModel):
         request_id: str = None,
         source_workflow_id: str = None,
     ):
-        # 关闭条数（幂等重复调用为 0）
+        # The number of closed to-do items. The value is 0 for idempotent repeated calls.
         self.cancelled_count = cancelled_count
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 错误描述
+        # The error description.
         self.message = message
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 工作流 ID（原样回显）
+        # The workflow ID, returned as provided.
         self.source_workflow_id = source_workflow_id
 
     def validate(self):

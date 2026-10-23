@@ -16,15 +16,15 @@ class ListWorkItemArtifactsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 历史产物列表
+        # The list of historical artifacts.
         self.items = items
-        # 错误描述
+        # The error message.
         self.message = message
-        # 请求追踪ID
+        # The request trace ID.
         self.request_id = request_id
-        # 返回产物数量
+        # The total number of returned artifacts.
         self.total_count = total_count
 
     def validate(self):
@@ -99,37 +99,37 @@ class ListWorkItemArtifactsResponseBodyItems(DaraModel):
         type: str = None,
         work_item_id: str = None,
     ):
-        # 产物ID
+        # The artifact ID.
         self.artifact_id = artifact_id
-        # 产物键
+        # The artifact key.
         self.artifact_key = artifact_key
-        # 节点尝试序号
+        # The node attempt sequence number.
         self.attempt_seq = attempt_seq
-        # 内容类型
+        # The content type.
         self.content_type = content_type
-        # 创建时间(ISO8601)
+        # The creation time in ISO 8601 format.
         self.created_at = created_at
-        # 节点键
+        # The node key.
         self.node_key = node_key
-        # 计划ID
+        # The plan ID.
         self.plan_id = plan_id
-        # 引用信息
+        # The reference information.
         self.ref = ref
-        # 运行ID
+        # The run ID.
         self.run_id = run_id
-        # 内容SHA-256
+        # The SHA-256 hash of the content.
         self.sha_256 = sha_256
-        # 产物大小(字节)
+        # The artifact size in bytes.
         self.size_bytes = size_bytes
-        # 产物摘要
+        # The artifact summary.
         self.summary = summary
-        # 产物标题
+        # The artifact title.
         self.title = title
-        # 会话轮次序号
+        # The session turn sequence number.
         self.turn_seq = turn_seq
-        # 产物类型
+        # The artifact type.
         self.type = type
-        # 工作项ID
+        # The work item ID.
         self.work_item_id = work_item_id
 
     def validate(self):
@@ -251,11 +251,11 @@ class ListWorkItemArtifactsResponseBodyItemsRef(DaraModel):
         kind: str = None,
         url: str = None,
     ):
-        # 产物ID
+        # The artifact ID.
         self.id = id
-        # 引用类型
+        # The reference data type.
         self.kind = kind
-        # OpenAPI 产物访问入口
+        # The OpenAPI artifact access endpoint.
         self.url = url
 
     def validate(self):

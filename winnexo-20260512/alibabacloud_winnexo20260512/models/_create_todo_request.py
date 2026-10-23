@@ -19,29 +19,29 @@ class CreateTodoRequest(DaraModel):
         tenant_id: str = None,
         title: str = None,
     ):
-        # 处理人平台用户ID列表（1~100，去重后生效）
+        # The list of platform user IDs of the assignees. You can specify 1 to 100 IDs. Duplicate IDs are automatically removed.
         # 
         # This parameter is required.
         self.assignee_user_ids = assignee_user_ids
-        # 协作空间 ID（可选）
+        # The ID of the collaboration workspace. This parameter is optional.
         self.collaboration_group_id = collaboration_group_id
-        # 优先级
+        # The priority.
         self.priority = priority
-        # 问题清单（1~N）
+        # The list of questions.
         # 
         # This parameter is required.
         self.questions = questions
-        # 来源上下文（原样透传落库，不校验）
+        # The source context. The value is passed through and stored in the database as-is without validation.
         # 
         # This parameter is required.
         self.source_context = source_context
-        # 待办来源（仅 OPEN_API）
+        # The source of the to-do item. Only OPEN_API is supported.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 待办标题（≤200 字）
+        # The title of the to-do item. The maximum length is 200 characters.
         # 
         # This parameter is required.
         self.title = title
@@ -130,29 +130,29 @@ class CreateTodoRequestQuestions(DaraModel):
         question: str = None,
         required: bool = None,
     ):
-        # 是否允许自定义输入
+        # Specifies whether custom input is allowed.
         self.allow_custom = allow_custom
-        # 自定义输入项文案
+        # The text for the custom input item.
         self.custom_label = custom_label
-        # 自定义输入长度上限
+        # The maximum length of the custom input.
         self.custom_max_length = custom_max_length
-        # 自定义输入占位符
+        # The placeholder for the custom input.
         self.custom_placeholder = custom_placeholder
-        # TEXT 题长度上限
+        # The maximum length for text questions.
         self.max_length = max_length
-        # 作答形态：SINGLE_CHOICE/MULTI_CHOICE/TEXT
+        # The response mode. Valid values: SINGLE_CHOICE, MULTI_CHOICE, and TEXT.
         # 
         # This parameter is required.
         self.mode = mode
-        # 问题的选项列表；选择题必填，每项含选项文案（label）、补充说明（description）与是否推荐（recommended）
+        # The list of options for the question. This parameter is required for choice questions. Each option includes the option text (label), supplementary description (description), and whether it is recommended (recommended).
         self.options = options
-        # TEXT 题占位符
+        # The placeholder for text questions.
         self.placeholder = placeholder
-        # 问题正文（引用键，清单内唯一）
+        # The question text. This is a reference key and must be unique within the list.
         # 
         # This parameter is required.
         self.question = question
-        # 是否必答
+        # Specifies whether the question is required.
         self.required = required
 
     def validate(self):
@@ -244,13 +244,13 @@ class CreateTodoRequestQuestionsOptions(DaraModel):
         label: str = None,
         recommended: bool = None,
     ):
-        # 选项补充说明
+        # The supplementary description of the option.
         self.description = description
-        # 选项文案（引用键）
+        # The option text. This is a reference key.
         # 
         # This parameter is required.
         self.label = label
-        # 是否推荐
+        # Specifies whether the option is recommended.
         self.recommended = recommended
 
     def validate(self):

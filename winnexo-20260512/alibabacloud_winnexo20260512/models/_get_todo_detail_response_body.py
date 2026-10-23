@@ -37,57 +37,57 @@ class GetTodoDetailResponseBody(DaraModel):
         title: str = None,
         todo_id: str = None,
     ):
-        # 处理人数量
+        # The number of assignees.
         self.assignee_count = assignee_count
-        # 全部处理人
+        # All assignees.
         self.assignees = assignees
-        # 附件策略（当前版本附件不落库）
+        # The attachment policy. Attachments are not stored in the database in the current version.
         self.attachment_policy = attachment_policy
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 完成时间（北京时间 YYYY-MM-DD HH:mm:ss）
+        # The completion time in UTC+8 (YYYY-MM-DD HH:mm:ss).
         self.completed_at = completed_at
-        # 完成人用户ID；未完成为空
+        # The user ID of the user who completed the item. This field is empty if the item is not completed.
         self.completed_by_user_id = completed_by_user_id
-        # 完成人姓名；未完成为空
+        # The name of the user who completed the item. This field is empty if the item is not completed.
         self.completed_by_user_name = completed_by_user_name
-        # 创建时间（北京时间 YYYY-MM-DD HH:mm:ss）
+        # The creation time in UTC+8 (YYYY-MM-DD HH:mm:ss).
         self.gmt_create = gmt_create
-        # 最后修改时间（北京时间 YYYY-MM-DD HH:mm:ss）
+        # The last modification time in UTC+8 (YYYY-MM-DD HH:mm:ss).
         self.gmt_modified = gmt_modified
-        # 调用者是否已读
+        # Indicates whether the caller has read the item.
         self.is_read = is_read
-        # 错误描述
+        # The error description.
         self.message = message
-        # 发出该待办的 assistant 消息ID；无会话来源为空
+        # The ID of the assistant message that generated the to-do item. This field is empty if there is no conversation source.
         self.message_id = message_id
-        # 调用者的处理人行状态
+        # The action status of the caller as the assignee.
         self.my_assignee_status = my_assignee_status
-        # 调用者的列表展示状态
+        # The list display status for the caller.
         self.my_display_state = my_display_state
-        # 调用者权限（canSubmit/canTransfer）
+        # The permissions of the caller, such as canSubmit and canTransfer.
         self.my_permissions = my_permissions
-        # 优先级
+        # The priority.
         self.priority = priority
-        # 问题清单（结构化投影）
+        # The list of questions (structured projection).
         self.questions = questions
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 作答内容（JSONB 原样；未提交为空对象缺省）
+        # The response content in JSONB format as-is. Defaults to an empty object if not submitted.
         self.result_payload = result_payload
-        # 来源上下文（创建时原样透传）
+        # The source context. This context is passed through as-is during creation.
         self.source_context = source_context
-        # 待办来源类型
+        # The source type of the to-do item.
         self.source_type = source_type
-        # 工作流ID（sourceType=WORKFLOW 时必有）
+        # The workflow ID. This field is required when sourceType is set to WORKFLOW.
         self.source_workflow_id = source_workflow_id
-        # 待办主状态
+        # The primary status of the to-do item.
         self.status = status
-        # 待办摘要
+        # The summary of the to-do item.
         self.summary = summary
-        # 待办标题
+        # The title of the to-do item.
         self.title = title
-        # 待办ID
+        # The ID of the to-do item.
         self.todo_id = todo_id
 
     def validate(self):
@@ -291,25 +291,25 @@ class GetTodoDetailResponseBodyQuestions(DaraModel):
         question: str = None,
         required: bool = None,
     ):
-        # 是否允许自定义输入
+        # Indicates whether custom input is allowed.
         self.allow_custom = allow_custom
-        # 自定义输入项文案
+        # The text for the custom input field.
         self.custom_label = custom_label
-        # 自定义输入长度上限
+        # The maximum length for custom input.
         self.custom_max_length = custom_max_length
-        # 自定义输入占位符
+        # The placeholder for custom input.
         self.custom_placeholder = custom_placeholder
-        # TEXT 题长度上限
+        # The maximum length for text questions.
         self.max_length = max_length
-        # 作答形态：SINGLE_CHOICE/MULTI_CHOICE/TEXT
+        # The response mode. Valid values: SINGLE_CHOICE, MULTI_CHOICE, and TEXT.
         self.mode = mode
-        # 选项（选择类必有）
+        # The options. This field is required for choice questions.
         self.options = options
-        # TEXT 题占位符
+        # The placeholder for text questions.
         self.placeholder = placeholder
-        # 问题正文（引用键）
+        # The question text (reference key).
         self.question = question
-        # 是否必答
+        # Indicates whether the question is required.
         self.required = required
 
     def validate(self):
@@ -401,11 +401,11 @@ class GetTodoDetailResponseBodyQuestionsOptions(DaraModel):
         label: str = None,
         recommended: bool = None,
     ):
-        # 选项补充说明
+        # The supplementary description of the option.
         self.description = description
-        # 选项文案（引用键）
+        # The option text (reference key).
         self.label = label
-        # 是否推荐
+        # Indicates whether the option is recommended.
         self.recommended = recommended
 
     def validate(self):
@@ -450,17 +450,17 @@ class GetTodoDetailResponseBodyAssignees(DaraModel):
         status: str = None,
         transferred_from_user_id: str = None,
     ):
-        # 处理时间（北京时间）；未处理为空
+        # The action time in UTC+8. This field is empty if the item is not processed.
         self.acted_at = acted_at
-        # 处理人来源：ORIGINAL/TRANSFERRED
+        # The source of the assignee. Valid values: ORIGINAL and TRANSFERRED.
         self.assignee_source = assignee_source
-        # 处理人用户ID
+        # The user ID of the assignee.
         self.assignee_user_id = assignee_user_id
-        # 已读时间（北京时间）；未读为空
+        # The read time in UTC+8. This field is empty if the item is unread.
         self.read_at = read_at
-        # 处理人行状态
+        # The action status of the assignee.
         self.status = status
-        # 转出人用户ID；仅转办产生
+        # The user ID of the user who transferred the task. This field is populated only when the task is transferred.
         self.transferred_from_user_id = transferred_from_user_id
 
     def validate(self):

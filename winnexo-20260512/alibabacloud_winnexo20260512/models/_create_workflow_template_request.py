@@ -9,19 +9,22 @@ from darabonba.model import DaraModel
 class CreateWorkflowTemplateRequest(DaraModel):
     def __init__(
         self,
+        action: str = None,
         collaboration_group_id: str = None,
         definition: Dict[str, Any] = None,
         tenant_id: str = None,
     ):
-        # 协作空间 ID
+        # The write action. Valid values: SAVE: Saves the template as a draft without taking effect. SUBMIT: Saves and submits the template and sets it as the only effective version. Default value: SUBMIT.
+        self.action = action
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 完整模板定义 JSON（name/description/steps）
+        # The complete JSON definition of the template, including name, description, and steps.
         # 
         # This parameter is required.
         self.definition = definition
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -32,6 +35,9 @@ class CreateWorkflowTemplateRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.action is not None:
+            result['action'] = self.action
+
         if self.collaboration_group_id is not None:
             result['collaborationGroupId'] = self.collaboration_group_id
 
@@ -45,6 +51,9 @@ class CreateWorkflowTemplateRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+
         if m.get('collaborationGroupId') is not None:
             self.collaboration_group_id = m.get('collaborationGroupId')
 

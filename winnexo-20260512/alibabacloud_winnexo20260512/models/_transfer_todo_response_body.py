@@ -16,15 +16,15 @@ class TransferTodoResponseBody(DaraModel):
         targets: List[main_models.TransferTodoResponseBodyTargets] = None,
         todo_id: str = None,
     ):
-        # 业务状态码；成功为200
+        # The business status code. A value of 200 indicates success.
         self.code = code
-        # 错误描述
+        # The error description.
         self.message = message
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 逐目标处理结果
+        # The processing results for each target.
         self.targets = targets
-        # 待办ID
+        # The ID of the to-do task.
         self.todo_id = todo_id
 
     def validate(self):
@@ -85,9 +85,9 @@ class TransferTodoResponseBodyTargets(DaraModel):
         result: str = None,
         user_id: str = None,
     ):
-        # 处理结果：CREATED/REVIVED/ALREADY_PENDING
+        # The processing result. Valid values: CREATED, REVIVED, and ALREADY_PENDING.
         self.result = result
-        # 目标用户ID
+        # The ID of the target user.
         self.user_id = user_id
 
     def validate(self):

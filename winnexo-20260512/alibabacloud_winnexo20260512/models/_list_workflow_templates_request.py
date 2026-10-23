@@ -15,21 +15,21 @@ class ListWorkflowTemplatesRequest(DaraModel):
         page_size: int = None,
         tenant_id: str = None,
     ):
-        # 协作空间 ID
+        # The ID of the collaboration space.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 模板名称/描述模糊搜索关键词
+        # The keyword for fuzzy search in the template name or description.
         self.keyword = keyword
-        # 单页最大返回数量（1~100）；传入时优先于 pageSize
+        # The maximum number of entries to return per page. Valid values: 1 to 100. This parameter takes precedence over pageSize if both are specified.
         self.max_results = max_results
-        # 翻页令牌，取上次响应返回的 nextToken；传入时优先于 page
+        # The pagination token. Obtain the token from the nextToken parameter in the previous response. This parameter takes precedence over page if both are specified.
         self.next_token = next_token
-        # 页码；传入 nextToken 时忽略
+        # The page number. This parameter is ignored if nextToken is specified.
         self.page = page
-        # 每页条数（1~100）
+        # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # 租户ID，公共参数；缺省时使用调用方默认租户
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):
