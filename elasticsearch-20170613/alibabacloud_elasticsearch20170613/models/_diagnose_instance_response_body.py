@@ -58,9 +58,11 @@ class DiagnoseInstanceResponseBodyResult(DaraModel):
     ):
         # The timestamp when the diagnostic report was generated.
         self.create_time = create_time
+        # The diagnostic mode. Valid values: RULE and AGENT.
         self.diagnosis_mode = diagnosis_mode
         # The instance ID of the diagnosed instance.
         self.instance_id = instance_id
+        # The list of diagnostic item details. This parameter may be empty if details are not required.
         self.items = items
         # The report ID.
         self.report_id = report_id
@@ -135,11 +137,17 @@ class DiagnoseInstanceResponseBodyResultItems(DaraModel):
         state: str = None,
         suggest: str = None,
     ):
+        # The description of the diagnostic conclusion.
         self.desc = desc
+        # The diagnostic details. This parameter is empty if details are not required.
         self.detail = detail
+        # The code of the diagnostic item.
         self.item = item
+        # The name of the diagnostic item.
         self.name = name
+        # The health status of the diagnostic item. Valid values: GREEN, YELLOW, and RED.
         self.state = state
+        # The handling suggestion.
         self.suggest = suggest
 
     def validate(self):

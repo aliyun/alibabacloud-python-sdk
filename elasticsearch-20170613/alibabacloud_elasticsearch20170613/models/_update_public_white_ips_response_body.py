@@ -51,6 +51,7 @@ class UpdatePublicWhiteIpsResponseBodyResult(DaraModel):
         self,
         public_ip_whitelist: List[str] = None,
     ):
+        # The public IP address access whitelist.
         self.public_ip_whitelist = public_ip_whitelist
 
     def validate(self):

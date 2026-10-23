@@ -13,7 +13,9 @@ class UpdateBlackIpsResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateBlackIpsResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The updated access blacklist information.
         self.result = result
 
     def validate(self):
@@ -49,6 +51,7 @@ class UpdateBlackIpsResponseBodyResult(DaraModel):
         self,
         es_ipblacklist: List[str] = None,
     ):
+        # The list of IP addresses in the access blacklist of the Elasticsearch instance.
         self.es_ipblacklist = es_ipblacklist
 
     def validate(self):

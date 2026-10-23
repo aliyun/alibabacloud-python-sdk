@@ -17,28 +17,29 @@ class UpgradeEngineVersionRequest(DaraModel):
         dry_run: bool = None,
         update_strategy: str = None,
     ):
+        # The list of plug-in configurations to install or uninstall during the version upgrade.
         self.plugins = plugins
         # The upgrade type. Valid values:
         # 
-        # - engineVersion (default): major engine version upgrade.
-        # - aliVersion: kernel version upgrade.
+        # - engineVersion: Major engine version upgrade. This is the default value.
+        # - aliVersion: Kernel version upgrade.
         self.type = type
         # The version after the upgrade. If type is set to engineVersion, the value is the instance version, such as 6.7. If type is set to aliVersion, the value is the kernel version, such as ali1.2.0.
         self.version = version
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can generate the token on the client side. The token must be unique across different requests and can be up to 64 ASCII characters in length.
         self.client_token = client_token
         # Specifies whether to perform a pre-upgrade check. Valid values:
         # 
-        # - true: performs a check.
-        # - false (default): does not perform a check.
+        # - true: Performs the check.
+        # - false: Does not perform the check. This is the default value.
         # 
-        # >Warning:  The version upgrade check involves checks on cluster YML, plug-in configurations, cluster status, indexes, and resources. Perform a pre-upgrade check before upgrading. Otherwise, upgrade issues may occur.
+        # >Warning:  The version upgrade check includes checks on the cluster YML file, plug-in configurations, cluster status, indexes, and resources. Perform a pre-upgrade check before the upgrade to prevent upgrade issues.
         self.dry_run = dry_run
         # The update strategy. Valid values:
         # 
-        # - blue_green: blue-green deployment.
-        # - normal: in-place update.
-        # - intelligent: intelligent update.
+        # - blue_green: Blue-green deployment.
+        # - normal: In-place update.
+        # - intelligent: Intelligent update.
         self.update_strategy = update_strategy
 
     def validate(self):
@@ -107,13 +108,16 @@ class UpgradeEngineVersionRequestPlugins(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # Specifies whether to install or uninstall the plug-in. A value of true indicates install, and a value of false indicates uninstall.
+        # Specifies whether to install or uninstall the plug-in. Valid values:
+        # 
+        # - true: Installs the plug-in.
+        # - false: Uninstalls the plug-in.
         self.enable = enable
-        # The fileVersion of the plug-in. Refer to the response of ListUserPlugin.
+        # The file version of the plug-in. For more information, see the response of ListUserPlugin.
         self.file_version = file_version
-        # The plug-in name.
+        # The name of the plug-in.
         self.name = name
-        # The Elasticsearch version for the plug-in, such as 7.16.2.
+        # The Elasticsearch version corresponding to the plug-in, such as 7.16.2.
         self.version = version
 
     def validate(self):

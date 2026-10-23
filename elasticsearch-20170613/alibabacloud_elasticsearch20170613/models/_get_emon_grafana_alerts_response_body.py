@@ -18,7 +18,7 @@ class GetEmonGrafanaAlertsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the Grafana alert list is retrieved. Valid values:
+        # Indicates whether the list of Grafana alerts is successfully retrieved. Valid values:
         # 
         # - true: Succeeded.
         # - false: Failed.

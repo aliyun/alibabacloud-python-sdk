@@ -81,19 +81,20 @@ class ListCollectorsResponseBodyResult(DaraModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # The list of Filebeat collection paths.
         self.collector_paths = collector_paths
         # The configuration file information of the collector.
         self.configs = configs
-        # Indicates whether the collector is validated and created. Valid values:
+        # Specifies whether to verify and create the collector. Valid values:
         # 
-        # - true: Only validated, not created.
-        # - false: Validated and created.
+        # - true: only verifies the collector without creating it
+        # - false: verifies and creates the collector
         self.dry_run = dry_run
-        # The extended configuration information.
+        # The extended parameter information.
         self.extend_configs = extend_configs
         # The time when the collector was created.
         self.gmt_created_time = gmt_created_time
-        # The time when the collector was last updated.
+        # The time when the collector was updated.
         self.gmt_update_time = gmt_update_time
         # The collector name.
         self.name = name
@@ -101,15 +102,15 @@ class ListCollectorsResponseBodyResult(DaraModel):
         self.owner_id = owner_id
         # The collector instance ID.
         self.res_id = res_id
-        # The collector type. Supported values: fileBeat, metricBeat, heartBeat, and auditBeat.
+        # The collector type. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
         self.res_type = res_type
         # The collector version.
         self.res_version = res_version
         # The collector status. Valid values:
         # 
-        # - activing: Taking effect.
+        # - activing: taking effect
         # 
-        # - active: Active.
+        # - active: effective
         self.status = status
         # The ID of the VPC where the collector resides.
         self.vpc_id = vpc_id
@@ -243,42 +244,43 @@ class ListCollectorsResponseBodyResultExtendConfigs(DaraModel):
     ):
         # The configuration type. Valid values:
         # 
-        # - collectorTargetInstance: the collector Output
-        # - collectorDeployMachine: the deployment machine of the collector
-        # - collectorElasticsearchForKibana: the Elasticsearch instance that supports Kibana dashboards
+        # - collectorTargetInstance: the collector output
+        # - collectorDeployMachine: the machine on which the collector is deployed
+        # - collectorElasticsearchForKibana: the information about the Elasticsearch instance that supports Kibana dashboards
         self.config_type = config_type
-        # Indicates whether Monitoring is enabled. This parameter is displayed when **configType** is **collectorTargetInstance** and **instanceType** is **elasticsearch**. Valid values:
+        # Specifies whether to enable Monitoring. This parameter is displayed when **configType** is set to **collectorTargetInstance** and **instanceType** is set to **elasticsearch**. Valid values:
         # 
-        # - true: Enabled.
+        # - true: enabled
         # 
-        # - false: Not enabled.
+        # - false: disabled
         self.enable_monitoring = enable_monitoring
-        # The machine group ID. This parameter is displayed when **configType** is **collectorDeployMachine**.
+        # The machine group ID. This parameter is displayed when **configType** is set to **collectorDeployMachine**.
         self.group_id = group_id
-        # The internal-facing access address of Kibana over the private network after Kibana Dashboard is enabled. This parameter is displayed when **configType** is **collectorElasticsearchForKibana**.
+        # The private network access address of Kibana after Kibana Dashboard is enabled. This parameter is displayed when **configType** is set to **collectorElasticsearchForKibana**.
         self.host = host
+        # The list of host addresses of the target instance for the collector.
         self.hosts = hosts
-        # The ID of the instance associated with the collector. When **configType** is **collectorTargetInstance**, this is the instance ID of the collector Output. When **configType** is **collectorDeployMachines** and **type** is **ACKCluster**, this is the ACK (Container Kubernetes) cluster ID.
+        # Instance ID of the instance associated with the collector. When **configType** is set to **collectorTargetInstance**, this parameter indicates instance ID of the instance in the collector output. When **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**, this parameter indicates the ACK cluster ID.
         self.instance_id = instance_id
-        # The type of instance specified in the collector Output. Supported values: elasticsearch, logstash. This parameter is displayed when **configType** is **collectorTargetInstance**.
+        # The type of the instance specified in the collector output. Valid values: elasticsearch and logstash. This parameter is displayed when **configType** is set to **collectorTargetInstance**.
         self.instance_type = instance_type
-        # The public network access address of Kibana after Kibana Dashboard is enabled. This parameter is displayed when **configType** is **collectorElasticsearchForKibana**.
+        # The public network access address of Kibana after Kibana Dashboard is enabled. This parameter is displayed when **configType** is set to **collectorElasticsearchForKibana**.
         self.kibana_host = kibana_host
-        # The list of ECS machines on which the collector is deployed. This parameter is displayed when **configType** is **collectorDeployMachines** and **type** is **ECSInstanceId**.
+        # The list of ECS instances on which the collector is deployed. This parameter is displayed when **configType** is set to **collectorDeployMachines** and **type** is set to **ECSInstanceId**.
         self.machines = machines
-        # The transmission protocol, which must be consistent with the access protocol of the instance specified in the collector Output. Supported values: HTTP, HTTPS. This parameter is displayed when **configType** is **collectorTargetInstance**.
+        # The transmission protocol, which must be consistent with the access protocol of the instance specified in the collector output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType** is set to **collectorTargetInstance**.
         self.protocol = protocol
-        # The number of Pod nodes successfully collected in the ACK cluster. This parameter is displayed when **configType** is **collectorDeployMachines** and **type** is **ACKCluster**.
+        # The number of pods successfully collected in the ACK cluster. This parameter is displayed when **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**.
         self.success_pods_count = success_pods_count
-        # The total number of Pod nodes collected in the ACK cluster. This parameter is displayed when **configType** is **collectorDeployMachines** and **type** is **ACKCluster**.
+        # The total number of pods collected in the ACK cluster. This parameter is displayed when **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**.
         self.total_pods_count = total_pods_count
-        # The type of machine on which the collector is deployed. This parameter is displayed when **configType** is **collectorDeployMachine**. Valid values:
+        # The type of machine on which the collector is deployed. This parameter is displayed when **configType** is set to **collectorDeployMachine**. Valid values:
         # 
         # - ECSInstanceId: ECS
         # 
-        # - ACKCluster: Container Kubernetes
+        # - ACKCluster: ACK cluster
         self.type = type
-        # The username used to access the instance specified in the collector Output. Default value: elastic. This parameter is displayed when **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
+        # The username used to access the instance specified in the collector output. Default value: elastic. This parameter is displayed when **configType** is set to **collectorTargetInstance** or **collectorElasticsearchForKibana**.
         self.user_name = user_name
 
     def validate(self):
@@ -393,14 +395,14 @@ class ListCollectorsResponseBodyResultExtendConfigsMachines(DaraModel):
         agent_status: str = None,
         instance_id: str = None,
     ):
-        # The status of the collector on the ECS instance. Valid values:
+        # The status of each collector on the ECS instance. Valid values:
         # 
-        # - heartOk: Normal heartbeat.
-        # - heartLost: Abnormal heartbeat.
-        # - uninstalled: Not installed.
-        # - failed: Installation failed.
+        # - heartOk: The heartbeat is normal.
+        # - heartLost: The heartbeat is abnormal.
+        # - uninstalled: The collector is not installed.
+        # - failed: The installation failed.
         self.agent_status = agent_status
-        # The ECS machine ID.
+        # The list of ECS instance IDs.
         self.instance_id = instance_id
 
     def validate(self):
@@ -471,7 +473,7 @@ class ListCollectorsResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of returned records.
+        # The number of returned records.
         self.x_total_count = x_total_count
 
     def validate(self):

@@ -12,8 +12,9 @@ class UninstallPluginResponseBody(DaraModel):
         request_id: str = None,
         result: List[str] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
+        # The names of the Elasticsearch plug-ins uninstalled by this request.
         self.result = result
 
     def validate(self):

@@ -16,11 +16,11 @@ class InitModelRequest(DaraModel):
         models: List[main_models.InitModelRequestModels] = None,
         workspace: str = None,
     ):
-        # The API key for the AISearch open platform.
+        # The API key for the AI Search Open Platform.
         # 
         # This parameter is required.
         self.api_key = api_key
-        # The service registration address of the AISearch open platform.
+        # The service registration address for the AI Search Open Platform.
         # 
         # This parameter is required.
         self.host = host
@@ -28,7 +28,7 @@ class InitModelRequest(DaraModel):
         # 
         # This parameter is required.
         self.http_schema = http_schema
-        # The models to initialize. If this parameter is left empty, all built-in models are initialized.
+        # Specifies the models to initialize. If this parameter is left empty, all built-in models are initialized.
         self.models = models
         # The workspace.
         # 
@@ -94,16 +94,15 @@ class InitModelRequestModels(DaraModel):
         service_id: str = None,
     ):
         # The model type. Valid values:
-        # 
-        # - text_embedding: text embedding
-        # - rerank: reranking
-        # - doc_split: document splitting
-        # - completion: large language model service
-        # - query_analyze: query analysis
-        # - doc_analyze: document content parsing
-        # - img_analyze: image content parsing
+        # - text_embedding: Text embedding.
+        # - rerank: Reranking.
+        # - doc_split: Document splitting.
+        # - completion: Large language model service.
+        # - query_analyze: Query analysis. 
+        # - doc_analyze: Document content parsing.
+        # - img_analyze: Image content parsing.
         self.model_type = model_type
-        # The service ID of the AISearch open platform.
+        # The service ID for the Search Open Platform.
         self.service_id = service_id
 
     def validate(self):

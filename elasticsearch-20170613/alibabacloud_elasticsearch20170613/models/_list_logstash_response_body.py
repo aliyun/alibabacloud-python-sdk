@@ -14,9 +14,9 @@ class ListLogstashResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListLogstashResponseBodyResult] = None,
     ):
-        # The request header information.
+        # The request headers.
         self.headers = headers
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The list of instances returned by the current request.
         self.result = result
@@ -85,25 +85,33 @@ class ListLogstashResponseBodyResult(DaraModel):
         self.tags = tags
         # The time when the instance was created.
         self.created_at = created_at
-        # The instance name.
+        # The name of the instance.
         self.description = description
+        # The expiration time of the subscription instance.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
-        # The network configuration.
+        # The network configurations.
         self.network_config = network_config
         # The number of nodes in the instance.
         self.node_amount = node_amount
-        # The configuration information of data nodes.
+        # The configurations of the data node.
         self.node_spec = node_spec
-        # The billing method of the instance. Valid values: prepaid (subscription) and postpaid (pay-as-you-go).
+        # The billing method of the instance. Valid values:
+        # - prepaid: subscription.
+        # - postpaid: pay-as-you-go.
         self.payment_type = payment_type
+        # The ID of the resource group to which the Logstash instance belongs.
         self.resource_group_id = resource_group_id
-        # The instance status. Valid values: active (Normal), activating (taking effect), inactive (frozen), and invalid (expired).
+        # The status of the instance. Valid values:
+        # - active: normal.
+        # - activating: activating.
+        # - inactive: frozen.
+        # - invalid: invalid.
         self.status = status
         # The time when the instance was last updated.
         self.updated_at = updated_at
-        # The instance version. Currently, only 6.7.0_with_X-Pack and 7.4.0_with_X-Pack are supported.
+        # The version of the instance. Only 6.7.0_with_X-Pack and 7.4.0_with_X-Pack are supported.
         self.version = version
 
     def validate(self):
@@ -222,14 +230,13 @@ class ListLogstashResponseBodyResultNodeSpec(DaraModel):
     ):
         # The disk size of the node.
         self.disk = disk
-        # Indicates whether disk encryption is enabled. Valid values:
-        # 
-        # - true: Enabled.
-        # - false: Disabled.
+        # Specifies whether disk encryption is enabled. Valid values:
+        # - true: enabled.
+        # - false: disabled.
         self.disk_encryption = disk_encryption
         # The disk type.
         self.disk_type = disk_type
-        # The instance specification.
+        # The instance type.
         self.spec = spec
 
     def validate(self):
@@ -278,13 +285,13 @@ class ListLogstashResponseBodyResultNetworkConfig(DaraModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
-        # The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+        # The network type. Only VPC is supported.
         self.type = type
-        # The VPC ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The zone where the instance resides.
+        # The zone where the instance is deployed.
         self.vs_area = vs_area
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
 
     def validate(self):

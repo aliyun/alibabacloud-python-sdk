@@ -9,6 +9,7 @@ class GetClusterDataInformationRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # The cluster type, access endpoint, and index to be queried.
         self.body = body
 
     def validate(self):

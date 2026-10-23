@@ -85,19 +85,19 @@ class UpgradeInfoResponseBodyResultUpgradeInfo(DaraModel):
         upgrade_apack_version: str = None,
         upgrade_es_version: str = None,
     ):
-        # The current repo version.
+        # The current repository version.
         self.cur_repo_version = cur_repo_version
-        # The repo version available for upgrade.
+        # The upgradable repository version.
         self.update_repo_version = update_repo_version
-        # Indicates whether an upgradeable version is available.
+        # Indicates whether an upgradable version is available.
         self.upgrade = upgrade
         # The current kernel version.
         self.cur_apack_version = cur_apack_version
         # The current Elasticsearch version.
         self.cur_es_version = cur_es_version
-        # The kernel version available for upgrade.
+        # The upgradable kernel version.
         self.upgrade_apack_version = upgrade_apack_version
-        # The Elasticsearch version available for upgrade.
+        # The upgradable Elasticsearch version.
         self.upgrade_es_version = upgrade_es_version
 
     def validate(self):

@@ -9,6 +9,7 @@ class GetEmonMonitorDataRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # The Grafana metric monitoring query conditions, including the query start time, metric expression, and metric query list.
         self.body = body
 
     def validate(self):

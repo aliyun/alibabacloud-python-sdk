@@ -51,6 +51,7 @@ class UpdatePrivateNetworkWhiteIpsResponseBodyResult(DaraModel):
         self,
         private_network_ip_white_list: List[str] = None,
     ):
+        # The VPC private network access whitelist.
         self.private_network_ip_white_list = private_network_ip_white_list
 
     def validate(self):

@@ -12,9 +12,9 @@ class UpdateDiagnosisSettingsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # Indicates whether the update was successful. Valid values:
         # 
-        # - true: The update was successful.
+        # - true: The update succeeded.
         # - false: The update failed.
         self.result = result
 

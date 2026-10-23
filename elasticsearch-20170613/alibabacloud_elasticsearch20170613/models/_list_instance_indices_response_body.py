@@ -18,7 +18,7 @@ class ListInstanceIndicesResponseBody(DaraModel):
         self.headers = headers
         # The request ID.
         self.request_id = request_id
-        # The index list details.
+        # The details of the index list.
         self.result = result
 
     def validate(self):
@@ -76,41 +76,41 @@ class ListInstanceIndicesResponseBodyResult(DaraModel):
         phase: str = None,
         size: int = None,
     ):
-        # The time when the index list was queried.
+        # The creation time of the index, in ISO 8601 format and UTC time.
         self.create_time = create_time
         # The health status of the index. Valid values:
         # 
-        # - green: Healthy.
+        # - green: healthy.
         # 
-        # - yellow: Warning.
+        # - yellow: warning.
         # 
-        # - red: Abnormal.
+        # - red: unhealthy.
         self.health = health
         # The full lifecycle status of the index.
         self.ilm_explain = ilm_explain
-        # This parameter is deprecated and can be ignored.
+        # **[Deprecated]** This parameter is deprecated and can be ignored.
         self.is_managed = is_managed
-        # The index management status. Valid values:
+        # The management status of the index. Valid values:
         # 
-        # - following: Managed.
+        # - following: managed.
         # 
-        # - closing: Being unmanaged.
+        # - closing: unmanaging.
         # 
-        # - closed: Not managed.
+        # - closed: unmanaged.
         self.managed_status = managed_status
         # The index name.
         self.name = name
         # The current storage lifecycle phase. Valid values:
         # 
-        # - warm: Warm phase.
+        # - warm: the warm phase.
         # 
-        # - cold: Cold phase.
+        # - cold: the cold phase.
         # 
-        # - hot: Hot phase.
+        # - hot: the hot phase.
         # 
-        # - delete: Delete phase.
+        # - delete: the delete phase.
         # 
-        # > If this value is empty, the index is not managed by a lifecycle policy.
+        # An empty value indicates that the index is not managed by a lifecycle policy.
         self.phase = phase
         # The total storage space occupied by the index. Unit: bytes.
         self.size = size
@@ -185,13 +185,13 @@ class ListInstanceIndicesResponseBodyHeaders(DaraModel):
         x_osscount: int = None,
         x_ossstorage_size: int = None,
     ):
-        # The total number of managed indexes in the cloud.
+        # The total number of indices in cloud-managed storage.
         self.x_managed_count = x_managed_count
-        # The total size of managed indexes in the cloud. Unit: bytes.
+        # The total size of indices in cloud-managed storage. Unit: bytes.
         self.x_managed_storage_size = x_managed_storage_size
-        # The total number of OpenStore cold-phase indexes.
+        # The total number of OpenStore cold-phase indices.
         self.x_osscount = x_osscount
-        # The total size of OpenStore cold-phase indexes for the instance. Unit: bytes.
+        # The total size of OpenStore cold-phase indices for the instance. Unit: bytes.
         self.x_ossstorage_size = x_ossstorage_size
 
     def validate(self):

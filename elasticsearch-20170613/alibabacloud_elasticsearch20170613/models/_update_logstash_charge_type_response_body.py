@@ -12,7 +12,7 @@ class UpdateLogstashChargeTypeResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result:
+        # The return result. Valid values:
         # 
         # - true: The conversion succeeded.
         # - false: The conversion failed.

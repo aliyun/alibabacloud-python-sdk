@@ -12,10 +12,10 @@ class InitializeOperationRoleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # The result. Valid values:
         # 
-        # - true: Created.
-        # - false: Failed to create.
+        # - true: The creation succeeded.
+        # - false: The creation failed.
         self.result = result
 
     def validate(self):

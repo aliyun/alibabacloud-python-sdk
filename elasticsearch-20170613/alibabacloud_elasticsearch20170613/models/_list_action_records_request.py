@@ -16,13 +16,21 @@ class ListActionRecordsRequest(DaraModel):
         start_time: int = None,
         user_id: str = None,
     ):
+        # Filters records by the name of the change operation. Separate multiple names with commas.
         self.action_names = action_names
+        # The upper bound of the query range for the change start time. The value is a UNIX timestamp in milliseconds. If you do not specify this parameter, the current time is used.
         self.end_time = end_time
+        # The display type of change records. Default value: ACTION_RECORD.
         self.filter = filter
+        # The page number of the returned results.
         self.page = page
+        # Filters records by the ID of the request that triggered the change.
         self.request_id = request_id
+        # The number of records returned per page.
         self.size = size
+        # The lower bound of the query range for the change start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # Filters records by the ID of the user that triggered the change.
         self.user_id = user_id
 
     def validate(self):

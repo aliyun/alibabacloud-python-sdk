@@ -15,6 +15,7 @@ class CreateInstanceRequest(DaraModel):
         elastic_data_node_configuration: main_models.ElasticDataNodeConfiguration = None,
         es_admin_password: str = None,
         es_version: str = None,
+        index_node_configuration: main_models.IndexNodeConfiguration = None,
         instance_category: str = None,
         kibana_configuration: main_models.KibanaNodeConfiguration = None,
         master_configuration: main_models.MasterNodeConfiguration = None,
@@ -24,6 +25,7 @@ class CreateInstanceRequest(DaraModel):
         payment_info: main_models.PaymentInfo = None,
         payment_type: str = None,
         resource_group_id: str = None,
+        search_node_configuration: main_models.SearchNodeConfiguration = None,
         tags: List[main_models.CreateInstanceRequestTags] = None,
         warm_node_configuration: main_models.WarmNodeConfiguration = None,
         zone_count: int = None,
@@ -35,7 +37,7 @@ class CreateInstanceRequest(DaraModel):
         self.description = description
         # The elastic node configuration.
         self.elastic_data_node_configuration = elastic_data_node_configuration
-        # The access password of the instance. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$%^&*()_+-=). The password must be 8 to 32 characters in length.
+        # The access password of the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !@#$%^&*()_+-=.
         # 
         # This parameter is required.
         self.es_admin_password = es_admin_password
@@ -49,24 +51,26 @@ class CreateInstanceRequest(DaraModel):
         # - 5.6_with_X-Pack
         # - 5.5.3_with_X-Pack
         # 
-        # > The versions listed above may not include all versions supported by Elasticsearch instances. Call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation to view the actual supported versions.
+        # > The preceding versions may not include all versions supported by Elasticsearch instances. To view the actual supported versions, call the [GetRegionConfiguration](https://help.aliyun.com/document_detail/254099.html) operation.
         # 
         # This parameter is required.
         self.es_version = es_version
+        # The index node configuration. Only instances with the AI engine type support index node configuration.
+        self.index_node_configuration = index_node_configuration
         # The edition type. Valid values:
-        # - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
-        # - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
+        # - x-pack: Creates a Commercial Edition instance, or an Advanced Edition instance with Indexing Service and OpenStore disabled.
+        # - IS: Creates an Advanced Edition instance with Indexing Service or OpenStore enabled.
         self.instance_category = instance_category
         # The Kibana node configuration.
         # 
-        # > We strongly recommend that you enable Kibana nodes.
+        # > Enable the Kibana node.
         self.kibana_configuration = kibana_configuration
         # The dedicated master node configuration.
-        # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call createInstance to create an instance with next-generation cloud disk-based dedicated master nodes, specify the instance family followed by the `.new` suffix. For example, elasticsearch.sn1ne.large.new.
+        # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call the createInstance operation to create an instance with a new-generation cloud disk-based dedicated master node, you must specify the instance family with the `.new` suffix, such as elasticsearch.sn1ne.large.new.
         self.master_configuration = master_configuration
         # The network configuration.
         # 
-        # > You cannot specify an IP whitelist when creating an instance.
+        # > You cannot specify an IP address whitelist when you create an instance.
         # 
         # This parameter is required.
         self.network_config = network_config
@@ -76,9 +80,9 @@ class CreateInstanceRequest(DaraModel):
         self.node_amount = node_amount
         # The data node configuration.
         # 
-        # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call createInstance to create an instance with next-generation cloud disk-based data nodes, specify the instance family followed by the `.new` suffix. For example, elasticsearch.sn1ne.large.new.
+        # > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call the createInstance operation to create an instance with a new-generation cloud disk-based data node, you must specify the instance family with the `.new` suffix, such as elasticsearch.sn1ne.large.new.
         self.node_spec = node_spec
-        # The billing details of the subscription instance. This parameter is required when you create a subscription instance.
+        # The payment details of the subscription instance. This parameter is required when you create a subscription instance.
         self.payment_info = payment_info
         # The billing method. Valid values:
         # 
@@ -87,13 +91,15 @@ class CreateInstanceRequest(DaraModel):
         self.payment_type = payment_type
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The instance tags.
+        # The query node configuration. Only instances with the AI engine type support query node configuration.
+        self.search_node_configuration = search_node_configuration
+        # The instance label group.
         self.tags = tags
-        # The cold data node configuration.
+        # The warm data node configuration.
         self.warm_node_configuration = warm_node_configuration
         # The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
         self.zone_count = zone_count
-        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -101,6 +107,8 @@ class CreateInstanceRequest(DaraModel):
             self.client_node_configuration.validate()
         if self.elastic_data_node_configuration:
             self.elastic_data_node_configuration.validate()
+        if self.index_node_configuration:
+            self.index_node_configuration.validate()
         if self.kibana_configuration:
             self.kibana_configuration.validate()
         if self.master_configuration:
@@ -111,6 +119,8 @@ class CreateInstanceRequest(DaraModel):
             self.node_spec.validate()
         if self.payment_info:
             self.payment_info.validate()
+        if self.search_node_configuration:
+            self.search_node_configuration.validate()
         if self.tags:
             for v1 in self.tags:
                  if v1:
@@ -138,6 +148,9 @@ class CreateInstanceRequest(DaraModel):
         if self.es_version is not None:
             result['esVersion'] = self.es_version
 
+        if self.index_node_configuration is not None:
+            result['indexNodeConfiguration'] = self.index_node_configuration.to_map()
+
         if self.instance_category is not None:
             result['instanceCategory'] = self.instance_category
 
@@ -164,6 +177,9 @@ class CreateInstanceRequest(DaraModel):
 
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+
+        if self.search_node_configuration is not None:
+            result['searchNodeConfiguration'] = self.search_node_configuration.to_map()
 
         result['tags'] = []
         if self.tags is not None:
@@ -200,6 +216,10 @@ class CreateInstanceRequest(DaraModel):
         if m.get('esVersion') is not None:
             self.es_version = m.get('esVersion')
 
+        if m.get('indexNodeConfiguration') is not None:
+            temp_model = main_models.IndexNodeConfiguration()
+            self.index_node_configuration = temp_model.from_map(m.get('indexNodeConfiguration'))
+
         if m.get('instanceCategory') is not None:
             self.instance_category = m.get('instanceCategory')
 
@@ -232,6 +252,10 @@ class CreateInstanceRequest(DaraModel):
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
 
+        if m.get('searchNodeConfiguration') is not None:
+            temp_model = main_models.SearchNodeConfiguration()
+            self.search_node_configuration = temp_model.from_map(m.get('searchNodeConfiguration'))
+
         self.tags = []
         if m.get('tags') is not None:
             for k1 in m.get('tags'):
@@ -256,9 +280,9 @@ class CreateInstanceRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the instance.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value of the instance.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

@@ -61,15 +61,15 @@ class PluginAnalysisResponseBodyResult(DaraModel):
         security_policy: str = None,
         version: str = None,
     ):
-        # The plug-in description.
+        # The plugin description.
         self.description = description
-        # The plug-in version.
+        # The plugin version.
         self.elasticsearch_version = elasticsearch_version
-        # The plug-in name.
+        # The plugin name.
         self.name = name
-        # The security policy of the plug-in.
+        # The security policy of the plugin.
         self.security_policy = security_policy
-        # The plug-in version.
+        # The plugin version.
         self.version = version
 
     def validate(self):

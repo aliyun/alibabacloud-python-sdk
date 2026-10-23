@@ -11,14 +11,13 @@ class RestartInstanceRequest(DaraModel):
         client_token: str = None,
         force: bool = None,
     ):
-        # The restart parameter information.
+        # The restart parameters.
         self.body = body
-        # A unique token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can generate the value of this parameter on the client side. Ensure that the value is unique across different requests and contains a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # Specifies whether to ignore the cluster status and forcibly restart the cluster.
-        # 
-        # - true: ignores the cluster status
-        # - false (default): does not ignore the cluster status
+        # Specifies whether to ignore the cluster state and force a restart. Valid values:
+        # - true: Ignores the cluster state.
+        # - false: Does not ignore the cluster state. This is the default value.
         self.force = force
 
     def validate(self):

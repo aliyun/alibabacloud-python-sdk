@@ -9,6 +9,7 @@ class UpdateBlackIpsRequest(DaraModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. Use different values for different requests.
         self.client_token = client_token
 
     def validate(self):

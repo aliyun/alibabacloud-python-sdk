@@ -13,7 +13,9 @@ class ListActionRecordsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListActionRecordsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of instance change records.
         self.result = result
 
     def validate(self):
@@ -72,23 +74,38 @@ class ListActionRecordsResponseBodyResult(DaraModel):
         user_info: str = None,
         user_type: str = None,
     ):
+        # The name of the operation that triggered the change.
         self.action_name = action_name
+        # The parameters used for the change.
         self.action_params = action_params
         self.action_result_access_list = action_result_access_list
+        # The end time of the change. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # The ID of the Elasticsearch instance that was changed.
         self.instance_id = instance_id
+        # The instance information after the change, represented as a JSON string.
         self.meta_now = meta_now
+        # The instance information before the change, represented as a JSON string.
         self.meta_old = meta_old
+        # The ID of the Alibaba Cloud account to which the account that triggered the change belongs.
         self.owner_id = owner_id
+        # The progress of the change, represented as a percentage string.
         self.process = process
+        # The field differences before and after the change.
         self.record_diff = record_diff
         self.record_ids = record_ids
+        # The ID of the request that triggered the change.
         self.request_id = request_id
+        # The start time of the change. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The current state of the change.
         self.state_type = state_type
+        # The list of status details for each phase of the change.
         self.status_info = status_info
+        # The ID of the user that triggered the change.
         self.user_id = user_id
         self.user_info = user_info
+        # The type of the account that triggered the change.
         self.user_type = user_type
 
     def validate(self):
@@ -235,15 +252,25 @@ class ListActionRecordsResponseBodyResultStatusInfo(DaraModel):
         sub_state: str = None,
         sub_status_info: List[main_models.ListActionRecordsResponseBodyResultStatusInfoSubStatusInfo] = None,
     ):
+        # The number of completed nodes in the phase.
         self.complete_node_count = complete_node_count
+        # The end time of the phase. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # The exception information for the phase.
         self.exception = exception
+        # The time elapsed for the phase, in milliseconds.
         self.latency_mills = latency_mills
+        # The total number of nodes involved in the phase.
         self.node_count = node_count
+        # The completion progress of the phase, represented as a percentage string.
         self.process = process
+        # The start time of the phase. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The current state of the phase.
         self.state_type = state_type
+        # The name of the phase.
         self.sub_state = sub_state
+        # The list of status details for the sub-phases included in the current phase.
         self.sub_status_info = sub_status_info
 
     def validate(self):
@@ -341,14 +368,23 @@ class ListActionRecordsResponseBodyResultStatusInfoSubStatusInfo(DaraModel):
         state_type: str = None,
         sub_state: str = None,
     ):
+        # The number of completed nodes in the sub-phase.
         self.complete_node_count = complete_node_count
+        # The end time of the sub-phase. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # The exception information for the sub-phase.
         self.exception = exception
+        # The time elapsed for the sub-phase, in milliseconds.
         self.latency_mills = latency_mills
+        # The total number of nodes involved in the sub-phase.
         self.node_count = node_count
+        # The completion progress of the sub-phase, represented as a percentage string.
         self.process = process
+        # The start time of the sub-phase. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The current state of the sub-phase.
         self.state_type = state_type
+        # The name of the sub-phase.
         self.sub_state = sub_state
 
     def validate(self):

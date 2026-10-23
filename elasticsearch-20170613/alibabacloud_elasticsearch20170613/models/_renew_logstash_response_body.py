@@ -10,11 +10,11 @@ class RenewLogstashResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The returned result. Valid values:
+        # The result of the operation. Valid values:
         # 
-        # - true: The renewal was successful.
+        # - true: The renewal succeeded.
         # - false: The renewal failed.
         self.result = result
 

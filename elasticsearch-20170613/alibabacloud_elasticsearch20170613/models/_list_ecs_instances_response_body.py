@@ -16,7 +16,7 @@ class ListEcsInstancesResponseBody(DaraModel):
     ):
         # The response headers.
         self.headers = headers
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The returned results.
         self.result = result
@@ -76,30 +76,30 @@ class ListEcsInstancesResponseBodyResult(DaraModel):
         status: str = None,
         tags: str = None,
     ):
-        # The Cloud Assistant installation status. Valid values:
+        # The installation status of Cloud Assistant. Valid values:
         # 
-        # - true: Installed.
-        # - false: Not installed.
+        # - true: installed
+        # - false: not installed
         self.cloud_assistant_status = cloud_assistant_status
-        # The list of collectors deployed on the ECS instance.
+        # The list of collectors on the ECS instance.
         self.collectors = collectors
         # The ECS instance ID.
         self.ecs_instance_id = ecs_instance_id
-        # The ECS instance name.
+        # The name of the ECS instance.
         self.ecs_instance_name = ecs_instance_name
         # The IP address information of the ECS instance.
         self.ip_address = ip_address
         # The operating system type of the ECS instance. Valid values:
         # 
-        # - windows: Windows operating system.
-        # - linux: Linux operating system.
+        # - windows: Windows operating system
+        # - linux: Linux operating system
         self.os_type = os_type
         # The status of the ECS instance. Valid values:
         # 
-        # - running: running.
-        # - starting: starting.
-        # - stopping: stopping.
-        # - stopped: stopped.
+        # - running: running
+        # - starting: starting
+        # - stopping: stopping
+        # - stopped: stopped
         self.status = status
         # The tag information of the ECS instance.
         self.tags = tags
@@ -191,10 +191,10 @@ class ListEcsInstancesResponseBodyResultIpAddress(DaraModel):
     ):
         # The IP address.
         self.host = host
-        # The IP address type. Valid values:
+        # The type of the IP address. Valid values:
         # 
-        # - public: public IP address.
-        # - private: private network address.
+        # - public: public IP address
+        # - private: private network IP address
         self.ip_type = ip_type
 
     def validate(self):
@@ -240,36 +240,37 @@ class ListEcsInstancesResponseBodyResultCollectors(DaraModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # The list of Filebeat collection paths.
         self.collector_paths = collector_paths
         # The configuration file information of the collector.
         self.configs = configs
-        # Indicates whether to only validate without creating the collector. Valid values:
+        # Specifies whether to verify and create the collector. Valid values:
         # 
-        # - true: Only validates without creating.
-        # - false: Validates and creates.
+        # - true: Verifies the collector but does not create it.
+        # - false: Verifies and creates the collector.
         self.dry_run = dry_run
-        # The extended configuration information.
+        # The extended parameter information.
         self.extend_configs = extend_configs
         # The time when the collector was created.
         self.gmt_created_time = gmt_created_time
-        # The time when the collector was last updated.
+        # The time when the collector was updated.
         self.gmt_update_time = gmt_update_time
-        # The collector name.
+        # The name of the collector.
         self.name = name
-        # The account ID.
+        # The ID of the account.
         self.owner_id = owner_id
         # The collector instance ID.
         self.res_id = res_id
-        # The collector type. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+        # The type of the collector. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
         self.res_type = res_type
-        # The collector version. When the deployment machine type is ECS, only **6.8.5_with_community** is supported.
+        # The version of the collector. When the machine type is ECS, only **6.8.5_with_community** is supported.
         self.res_version = res_version
-        # The collector status. Valid values:
+        # The status of the collector. Valid values:
         # 
-        # - activing: taking effect.
-        # - active: active.
+        # - activing: taking effect
+        # - active: effective
         self.status = status
-        # The VPC ID of the collector.
+        # The ID of the VPC where the collector resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -397,32 +398,33 @@ class ListEcsInstancesResponseBodyResultCollectorsExtendConfigs(DaraModel):
     ):
         # The configuration type. Valid values:
         # 
-        # - collectorTargetInstance: the collector Output.
-        # - collectorDeployMachine: the deployment machine of the collector.
-        # - collectorElasticsearchForKibana: the Elasticsearch instance information that supports Kibana dashboards.
+        # - collectorTargetInstance: the collector output
+        # - collectorDeployMachine: the machine on which the collector is deployed
+        # - collectorElasticsearchForKibana: the information about the Elasticsearch instance that supports Kibana dashboards
         self.config_type = config_type
-        # Indicates whether Monitoring is enabled. This parameter is displayed when configType is set to collectorTargetInstance and instanceType is set to elasticsearch. Valid values:
+        # Specifies whether to enable monitoring. This parameter is displayed when **configType** is set to **collectorTargetInstance** and **instanceType** is set to **elasticsearch**. Valid values:
         # 
-        # - true: Enabled.
-        # - false: Not enabled.
+        # - true: Enables monitoring.
+        # - false: Disables monitoring.
         self.enable_monitoring = enable_monitoring
-        # The machine group ID. This parameter is displayed when configType is set to collectorDeployMachine.
+        # The ID of the machine group. This parameter is displayed when **configType** is set to **collectorDeployMachine**.
         self.group_id = group_id
+        # The list of host addresses of the collector target instance.
         self.hosts = hosts
-        # The ID of the instance associated with the collector. When configType is set to collectorTargetInstance, this is the instance ID of the collector Output. When configType is set to collectorDeployMachines and type is set to ACKCluster, this is the ACK (Container Kubernetes) cluster ID.
+        # Instance ID of the instance associated with the collector. When **configType** is set to **collectorTargetInstance**, this parameter indicates instance ID of the collector output instance. When **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**, this parameter indicates instance ID of the ACK cluster.
         self.instance_id = instance_id
-        # The instance type specified in the collector Output. Valid values: elasticsearch and logstash. This parameter is displayed when configType is set to collectorTargetInstance.
+        # The type of the instance specified by the collector output. Valid values: elasticsearch and logstash. This parameter is displayed when **configType** is set to **collectorTargetInstance**.
         self.instance_type = instance_type
-        # The list of ECS machines on which the collector is deployed. This parameter is displayed when configType is set to collectorDeployMachines and type is set to ECSInstanceId.
+        # The list of ECS instances on which the collector is deployed. This parameter is displayed when **configType** is set to **collectorDeployMachines** and **type** is set to **ECSInstanceId**.
         self.machines = machines
-        # The transport protocol, which must be consistent with the access protocol of the instance specified in the collector Output. Valid values: HTTP and HTTPS. This parameter is displayed when configType is set to collectorTargetInstance.
+        # The transmission protocol, which must be consistent with the access protocol of the instance specified by the collector output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType** is set to **collectorTargetInstance**.
         self.protocol = protocol
-        # The type of machine on which the collector is deployed. This parameter is displayed when configType is set to collectorDeployMachine. Valid values:
+        # The type of the machine on which the collector is deployed. This parameter is displayed when **configType** is set to **collectorDeployMachine**. Valid values:
         # 
-        # - ECSInstanceId: ECS.
-        # - ACKCluster: Container Kubernetes.
+        # - ECSInstanceId: ECS instance
+        # - ACKCluster: ACK cluster
         self.type = type
-        # The username used to access the instance specified in the collector Output. Default value: elastic. This parameter is displayed when configType is set to collectorTargetInstance or collectorElasticsearchForKibana.
+        # The username used to access the instance specified by the collector output. Default value: elastic. This parameter is displayed when **configType** is set to **collectorTargetInstance** or **collectorElasticsearchForKibana**.
         self.user_name = user_name
 
     def validate(self):
@@ -515,12 +517,12 @@ class ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines(DaraMode
     ):
         # The status of each collector on the ECS instance. Valid values:
         # 
-        # - heartOk: normal heartbeat.
-        # - heartLost: abnormal heartbeat.
-        # - uninstalled: not installed.
-        # - failed: installation failed.
+        # - heartOk: normal heartbeat
+        # - heartLost: abnormal heartbeat
+        # - uninstalled: not installed
+        # - failed: installation failed
         self.agent_status = agent_status
-        # The list of ECS machine IDs.
+        # The list of ECS instance IDs.
         self.instance_id = instance_id
 
     def validate(self):
@@ -555,9 +557,9 @@ class ListEcsInstancesResponseBodyResultCollectorsConfigs(DaraModel):
         content: str = None,
         file_name: str = None,
     ):
-        # The file content.
+        # The content of the file.
         self.content = content
-        # The file name.
+        # The name of the file.
         self.file_name = file_name
 
     def validate(self):
@@ -591,7 +593,7 @@ class ListEcsInstancesResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of returned records.
+        # The number of returned records.
         self.x_total_count = x_total_count
 
     def validate(self):

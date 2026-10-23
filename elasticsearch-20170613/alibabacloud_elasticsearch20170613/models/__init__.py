@@ -9,6 +9,7 @@ from ._collector_target_instance import CollectorTargetInstance
 from ._dict_info import DictInfo
 from ._elastic_data_node_configuration import ElasticDataNodeConfiguration
 from ._elasticsearch import Elasticsearch
+from ._index_node_configuration import IndexNodeConfiguration
 from ._kibana_node_configuration import KibanaNodeConfiguration
 from ._logstash import Logstash
 from ._master_node_configuration import MasterNodeConfiguration
@@ -18,6 +19,7 @@ from ._node_info import NodeInfo
 from ._node_spec import NodeSpec
 from ._payment_info import PaymentInfo
 from ._read_write_policy import ReadWritePolicy
+from ._search_node_configuration import SearchNodeConfiguration
 from ._tag import Tag
 from ._warm_node_configuration import WarmNodeConfiguration
 from ._white_ip_group import WhiteIpGroup
@@ -888,9 +890,11 @@ from ._update_description_response_body import UpdateDescriptionResponseBodyResu
 from ._update_dict_response_body import UpdateDictResponseBodyResult
 from ._update_extendfiles_response_body import UpdateExtendfilesResponseBodyResult
 from ._update_hot_ik_dicts_response_body import UpdateHotIkDictsResponseBodyResult
+from ._update_instance_response_body import UpdateInstanceResponseBodyResultIndexNodeConfiguration
 from ._update_instance_response_body import UpdateInstanceResponseBodyResultKibanaConfiguration
 from ._update_instance_response_body import UpdateInstanceResponseBodyResultMasterConfiguration
 from ._update_instance_response_body import UpdateInstanceResponseBodyResultNodeSpec
+from ._update_instance_response_body import UpdateInstanceResponseBodyResultSearchNodeConfiguration
 from ._update_instance_response_body import UpdateInstanceResponseBodyResult
 from ._update_instance_charge_type_request import UpdateInstanceChargeTypeRequestPaymentInfo
 from ._update_kibana_white_ips_request import UpdateKibanaWhiteIpsRequestWhiteIpGroup
@@ -925,6 +929,7 @@ __all__ = [
     DictInfo,
     ElasticDataNodeConfiguration,
     Elasticsearch,
+    IndexNodeConfiguration,
     KibanaNodeConfiguration,
     Logstash,
     MasterNodeConfiguration,
@@ -934,6 +939,7 @@ __all__ = [
     NodeSpec,
     PaymentInfo,
     ReadWritePolicy,
+    SearchNodeConfiguration,
     Tag,
     WarmNodeConfiguration,
     WhiteIpGroup,
@@ -1804,9 +1810,11 @@ __all__ = [
     UpdateDictResponseBodyResult,
     UpdateExtendfilesResponseBodyResult,
     UpdateHotIkDictsResponseBodyResult,
+    UpdateInstanceResponseBodyResultIndexNodeConfiguration,
     UpdateInstanceResponseBodyResultKibanaConfiguration,
     UpdateInstanceResponseBodyResultMasterConfiguration,
     UpdateInstanceResponseBodyResultNodeSpec,
+    UpdateInstanceResponseBodyResultSearchNodeConfiguration,
     UpdateInstanceResponseBodyResult,
     UpdateInstanceChargeTypeRequestPaymentInfo,
     UpdateKibanaWhiteIpsRequestWhiteIpGroup,

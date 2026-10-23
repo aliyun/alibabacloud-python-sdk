@@ -69,22 +69,26 @@ class UpdateInstanceResponseBodyResult(DaraModel):
         description: str = None,
         domain: str = None,
         es_version: str = None,
+        index_node_configuration: main_models.UpdateInstanceResponseBodyResultIndexNodeConfiguration = None,
         instance_id: str = None,
         kibana_configuration: main_models.UpdateInstanceResponseBodyResultKibanaConfiguration = None,
         master_configuration: main_models.UpdateInstanceResponseBodyResultMasterConfiguration = None,
         node_amount: int = None,
         node_spec: main_models.UpdateInstanceResponseBodyResultNodeSpec = None,
         payment_type: str = None,
+        search_node_configuration: main_models.UpdateInstanceResponseBodyResultSearchNodeConfiguration = None,
         status: str = None,
     ):
-        # The time when the instance was created.
+        # The time when the instance was created. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard.
         self.created_at = created_at
         # The instance name.
         self.description = description
-        # The internal-facing access domain name of the instance for private network access.
+        # The internal-facing access domain name of the instance on the private network.
         self.domain = domain
         # The instance version.
         self.es_version = es_version
+        # The index node configuration. This parameter is supported only by AI engine instances.
+        self.index_node_configuration = index_node_configuration
         # The instance ID.
         self.instance_id = instance_id
         # The Kibana node configuration.
@@ -97,24 +101,30 @@ class UpdateInstanceResponseBodyResult(DaraModel):
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
         # 
-        # - prepaid: Subscription.
-        # - postpaid: Pay-as-you-go.
+        # - prepaid: subscription.
+        # - postpaid: pay-as-you-go.
         self.payment_type = payment_type
+        # The search node configuration. This parameter is supported only by AI engine instances.
+        self.search_node_configuration = search_node_configuration
         # The status of the instance. Valid values:
         # 
         # - active: Normal.
-        # - activating: Taking effect.
-        # - inactive: Frozen.
+        # - activating: Activating.
+        # - inactive: Inactive.
         # - invalid: Invalid.
         self.status = status
 
     def validate(self):
+        if self.index_node_configuration:
+            self.index_node_configuration.validate()
         if self.kibana_configuration:
             self.kibana_configuration.validate()
         if self.master_configuration:
             self.master_configuration.validate()
         if self.node_spec:
             self.node_spec.validate()
+        if self.search_node_configuration:
+            self.search_node_configuration.validate()
 
     def to_map(self):
         result = dict()
@@ -132,6 +142,9 @@ class UpdateInstanceResponseBodyResult(DaraModel):
 
         if self.es_version is not None:
             result['esVersion'] = self.es_version
+
+        if self.index_node_configuration is not None:
+            result['indexNodeConfiguration'] = self.index_node_configuration.to_map()
 
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
@@ -151,6 +164,9 @@ class UpdateInstanceResponseBodyResult(DaraModel):
         if self.payment_type is not None:
             result['paymentType'] = self.payment_type
 
+        if self.search_node_configuration is not None:
+            result['searchNodeConfiguration'] = self.search_node_configuration.to_map()
+
         if self.status is not None:
             result['status'] = self.status
 
@@ -169,6 +185,10 @@ class UpdateInstanceResponseBodyResult(DaraModel):
 
         if m.get('esVersion') is not None:
             self.es_version = m.get('esVersion')
+
+        if m.get('indexNodeConfiguration') is not None:
+            temp_model = main_models.UpdateInstanceResponseBodyResultIndexNodeConfiguration()
+            self.index_node_configuration = temp_model.from_map(m.get('indexNodeConfiguration'))
 
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
@@ -191,8 +211,76 @@ class UpdateInstanceResponseBodyResult(DaraModel):
         if m.get('paymentType') is not None:
             self.payment_type = m.get('paymentType')
 
+        if m.get('searchNodeConfiguration') is not None:
+            temp_model = main_models.UpdateInstanceResponseBodyResultSearchNodeConfiguration()
+            self.search_node_configuration = temp_model.from_map(m.get('searchNodeConfiguration'))
+
         if m.get('status') is not None:
             self.status = m.get('status')
+
+        return self
+
+class UpdateInstanceResponseBodyResultSearchNodeConfiguration(DaraModel):
+    def __init__(
+        self,
+        amount: int = None,
+        disk: int = None,
+        disk_type: str = None,
+        performance_level: str = None,
+        spec: str = None,
+    ):
+        # The number of nodes.
+        self.amount = amount
+        # The disk size.
+        self.disk = disk
+        # The disk type, such as cloud_essd.
+        self.disk_type = disk_type
+        # The disk performance level (PL), such as PL0.
+        self.performance_level = performance_level
+        # The node specifications.
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.amount is not None:
+            result['amount'] = self.amount
+
+        if self.disk is not None:
+            result['disk'] = self.disk
+
+        if self.disk_type is not None:
+            result['diskType'] = self.disk_type
+
+        if self.performance_level is not None:
+            result['performanceLevel'] = self.performance_level
+
+        if self.spec is not None:
+            result['spec'] = self.spec
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amount') is not None:
+            self.amount = m.get('amount')
+
+        if m.get('disk') is not None:
+            self.disk = m.get('disk')
+
+        if m.get('diskType') is not None:
+            self.disk_type = m.get('diskType')
+
+        if m.get('performanceLevel') is not None:
+            self.performance_level = m.get('performanceLevel')
+
+        if m.get('spec') is not None:
+            self.spec = m.get('spec')
 
         return self
 
@@ -203,7 +291,7 @@ class UpdateInstanceResponseBodyResultNodeSpec(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The storage size of the node. Unit: GB.
+        # The storage space size of the node. Unit: GB.
         self.disk = disk
         # The storage type of the node. Valid values:
         # 
@@ -255,7 +343,7 @@ class UpdateInstanceResponseBodyResultMasterConfiguration(DaraModel):
     ):
         # The number of nodes.
         self.amount = amount
-        # The storage size of the node. Unit: GB.
+        # The storage space size of the node. Unit: GB.
         self.disk = disk
         # The storage type of the node. Only cloud_ssd (standard SSD) is supported.
         self.disk_type = disk_type
@@ -310,7 +398,7 @@ class UpdateInstanceResponseBodyResultKibanaConfiguration(DaraModel):
     ):
         # The number of nodes.
         self.amount = amount
-        # The storage size of the node.
+        # The storage space size of the node.
         self.disk = disk
         # The storage type of the node. You can ignore this parameter.
         self.disk_type = disk_type
@@ -349,6 +437,70 @@ class UpdateInstanceResponseBodyResultKibanaConfiguration(DaraModel):
 
         if m.get('diskType') is not None:
             self.disk_type = m.get('diskType')
+
+        if m.get('spec') is not None:
+            self.spec = m.get('spec')
+
+        return self
+
+class UpdateInstanceResponseBodyResultIndexNodeConfiguration(DaraModel):
+    def __init__(
+        self,
+        amount: int = None,
+        disk: int = None,
+        disk_type: str = None,
+        performance_level: str = None,
+        spec: str = None,
+    ):
+        # The number of nodes.
+        self.amount = amount
+        # The disk size.
+        self.disk = disk
+        # The disk type, such as cloud_essd.
+        self.disk_type = disk_type
+        # The disk performance level (PL), such as PL0.
+        self.performance_level = performance_level
+        # The node specifications.
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.amount is not None:
+            result['amount'] = self.amount
+
+        if self.disk is not None:
+            result['disk'] = self.disk
+
+        if self.disk_type is not None:
+            result['diskType'] = self.disk_type
+
+        if self.performance_level is not None:
+            result['performanceLevel'] = self.performance_level
+
+        if self.spec is not None:
+            result['spec'] = self.spec
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('amount') is not None:
+            self.amount = m.get('amount')
+
+        if m.get('disk') is not None:
+            self.disk = m.get('disk')
+
+        if m.get('diskType') is not None:
+            self.disk_type = m.get('diskType')
+
+        if m.get('performanceLevel') is not None:
+            self.performance_level = m.get('performanceLevel')
 
         if m.get('spec') is not None:
             self.spec = m.get('spec')

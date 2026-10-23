@@ -13,9 +13,11 @@ class UninstallLogstashPluginResponseBody(DaraModel):
         request_id: str = None,
         result: List[str] = None,
     ):
+        # The response headers of this call.
         self.headers = headers
         # The request ID.
         self.request_id = request_id
+        # The names of the Logstash plugins uninstalled by this request.
         self.result = result
 
     def validate(self):

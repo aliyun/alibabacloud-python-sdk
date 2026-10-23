@@ -66,13 +66,13 @@ class UpdateDictResponseBodyResult(DaraModel):
         self.name = name
         # The source type of the dictionary file. Valid values:
         # 
-        # - OSS: OSS open storage.
-        # - ORIGIN: retains the previously uploaded dictionary.
+        # - OSS: Object Storage Service (OSS).
+        # - ORIGIN: The previously uploaded dictionary is retained.
         self.source_type = source_type
-        # The dictionary type. Valid values:
+        # The type of the dictionary. Valid values:
         # 
-        # - MAIN: IK main tokenizer dictionary.
-        # - STOP: IK stopword dictionary.
+        # - MAIN: The IK main dictionary.
+        # - STOP: The IK stopword dictionary.
         self.type = type
 
     def validate(self):

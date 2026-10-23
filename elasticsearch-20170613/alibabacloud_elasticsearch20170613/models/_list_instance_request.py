@@ -20,28 +20,39 @@ class ListInstanceRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The instance name. Fuzzy match is supported. For example, if you search for **abc**, all instances whose names contain **abc** may be returned, such as **abc**, **abcde**, **xyabc**, and **xabcy**.
+        # The instance name. Fuzzy search is supported. For example, if you search for **abc**, instances such as **abc**, **abcde**, **xyabc**, and **xabcy** may be returned.
         self.description = description
-        # The instance version.
+        # The Elasticsearch version of the instance.
         self.es_version = es_version
         # The edition of the instance. Valid values:
+        # 
+        # - x-pack: Commercial Edition
+        # 
+        # - advanced/IS: Advanced Edition
+        # 
+        # - community: Basic Edition
         self.instance_category = instance_category
         # The instance ID.
         self.instance_id = instance_id
-        # The page number of the instance list.
+        # The page number of the instance list. Minimum value: **1**. Default value: **1**.
         self.page = page
         # The billing method of the instance. Valid values:
+        # 
+        # - postpaid: pay-as-you-go
+        # 
+        # - prepaid: subscription
         self.payment_type = payment_type
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The number of entries per page in a paged query. Settings the number of entries per page for paging. Maximum value: **100**. Default value: **10**.
+        # The paging Settings for the number of entries per page in a paged query. Maximum value: **100**. Default value: **10**.
         self.size = size
+        # The instance status used for filtering. Valid values: active, activating, inactive, invalid, and unknown.
         self.status = status
         # The instance tags.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) in which the instance resides.
+        # The ID of the virtual private cloud (VPC) to which the instance belongs.
         self.vpc_id = vpc_id
-        # The zone ID of the instance.
+        # The ID of the zone to which the instance belongs.
         self.zone_id = zone_id
 
     def validate(self):

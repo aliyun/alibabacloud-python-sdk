@@ -12,10 +12,15 @@ class UpdateDynamicSettingsRequest(DaraModel):
         body: str = None,
         mode: str = None,
     ):
-        # The idempotence parameter.
+        # The client token that is used to ensure idempotence.
         self.client_token = client_token
+        # The region ID of the Elasticsearch instance.
         self.region_id = region_id
+        # The dynamic configurations of the cluster to be updated. Specify a JSON object where the keys are configuration item names and the values are configuration values.
         self.body = body
+        # The effective mode for dynamic configurations. Valid values:
+        # - persistent: persistent configurations.
+        # - transient: temporary configurations, which become invalid after the cluster is restarted.
         self.mode = mode
 
     def validate(self):

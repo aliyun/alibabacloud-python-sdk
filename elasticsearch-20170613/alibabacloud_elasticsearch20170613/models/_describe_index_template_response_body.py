@@ -15,7 +15,7 @@ class DescribeIndexTemplateResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The index template details.
+        # The details of the index template.
         self.result = result
 
     def validate(self):
@@ -64,10 +64,11 @@ class DescribeIndexTemplateResponseBodyResult(DaraModel):
         # 
         # Default value: false.
         self.data_stream = data_stream
-        # The lifecycle policy name.
+        # The life epoch Policy Name.
         self.ilm_policy = ilm_policy
+        # The list of index name patterns that match this index template.
         self.index_patterns = index_patterns
-        # The index template name.
+        # The name of the index template.
         self.index_template = index_template
         # The priority.
         self.priority = priority
@@ -133,11 +134,11 @@ class DescribeIndexTemplateResponseBodyResultTemplate(DaraModel):
         mappings: str = None,
         settings: str = None,
     ):
-        # The aliases configuration.
+        # The aliases.
         self.aliases = aliases
-        # The mappings configuration.
+        # The mappings.
         self.mappings = mappings
-        # The settings configuration.
+        # The settings.
         self.settings = settings
 
     def validate(self):

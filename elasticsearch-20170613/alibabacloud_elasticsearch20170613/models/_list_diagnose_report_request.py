@@ -17,7 +17,7 @@ class ListDiagnoseReportRequest(DaraModel):
     ):
         # Specifies whether to display the details of diagnostic items.
         self.detail = detail
-        # The end timestamp of the query. Unit: milliseconds.
+        # The end timestamp for the query. Unit: milliseconds.
         # - Minimum value: 1000000000000
         # - Maximum value: 2000000000000
         # 
@@ -35,14 +35,14 @@ class ListDiagnoseReportRequest(DaraModel):
         self.page = page
         # The number of reports per page. Default value: 10. Minimum value: 1. Maximum value: 500.
         self.size = size
-        # The start timestamp of the query. Unit: milliseconds.
+        # The start timestamp for the query. Unit: milliseconds.
         # 
         # - Minimum value: 1000000000000
         # - Maximum value: 2000000000000
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The trigger method of the health diagnostics. Valid values:
+        # The trigger method for health diagnostics. Valid values:
         # 
         # - SYSTEM (default): automatically triggered by the system
         # - INNER: internally triggered

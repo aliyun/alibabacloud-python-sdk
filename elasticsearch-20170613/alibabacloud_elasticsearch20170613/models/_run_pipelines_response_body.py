@@ -10,11 +10,11 @@ class RunPipelinesResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The returned result:
+        # The result. Valid values:
         # 
-        # - true: The deployment was successful.
+        # - true: The deployment succeeded.
         # - false: The deployment failed.
         self.result = result
 

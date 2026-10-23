@@ -10,6 +10,7 @@ class EstimatedLogstashRestartTimeRequest(DaraModel):
         body: str = None,
         force: bool = None,
     ):
+        # The restart parameters, including the restart type, target nodes, blue-green deployment options, and concurrency settings.
         self.body = body
         # Specifies whether to forcibly restart the instance. Default value: false.
         self.force = force

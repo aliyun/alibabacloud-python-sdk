@@ -19,19 +19,21 @@ class NetworkConfig(DaraModel):
         vswitch_id: str = None,
         white_ip_group_list: List[main_models.WhiteIpGroup] = None,
     ):
+        # The number of load balancing instances in a single zone. This parameter is supported only for the HP_ALILB type.
         self.lb_replica = lb_replica
+        # The list of vSwitch and load balancing configurations for each zone in the Network Load Balancer (NLB) architecture.
         self.load_balance_config = load_balance_config
         # The load balancing type. Default value: DEFAULT.
         self.load_balance_type = load_balance_type
-        # The network type. Only Virtual Private Cloud (VPC) is supported.
+        # The network type. Only VPC is supported.
         self.type = type
         # The VPC ID.
         self.vpc_id = vpc_id
-        # The zone ID of the network.
+        # The ID of the zone to which the network belongs.
         self.vs_area = vs_area
         # The vSwitch ID.
         self.vswitch_id = vswitch_id
-        # The IP whitelist group configuration. You do not need to set this parameter when you call the createInstance operation to create an instance because the setting does not take effect during instance creation. Use a separate API operation to configure whitelists for different roles.
+        # The IP whitelist group configuration. You do not need to specify this parameter when creating an instance, and it does not take effect during instance creation. You must use a separate API operation to configure whitelists for different roles.
         self.white_ip_group_list = white_ip_group_list
 
     def validate(self):
@@ -119,7 +121,7 @@ class NetworkConfigLoadBalanceConfig(DaraModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
-        # 可用区信息，如: cn-hangzhou-i
+        # The zone information, such as cn-hangzhou-i.
         self.vs_area = vs_area
         # vswitchId
         self.vswitch_id = vswitch_id

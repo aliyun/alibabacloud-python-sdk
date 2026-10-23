@@ -14,29 +14,29 @@ class ListInstanceIndicesRequest(DaraModel):
         page: int = None,
         size: int = None,
     ):
-        # Specifies whether to retrieve all indexes. Valid values:
+        # Specifies whether to retrieve all indices. Valid values:
         # 
-        # - true: Returns the index list including system indexes.
+        # - true: returns a list of indices including system indices.
         # 
-        # - false (default): Returns the index list excluding system indexes.
+        # - false: returns a list of indices excluding system indices. Default value: false.
         self.all = all
-        # Specifies whether to display only managed indexes. Valid values:
+        # Specifies whether to view only managed indices. Valid values:
         # 
-        # - true: Displays only managed indexes.
+        # - true: views only managed indices.
         # 
-        # - false (default): Displays all indexes.
+        # - false: views all indices. Default value: false.
         self.is_managed = is_managed
-        # Specifies whether to display only OpenStore cold-phase indexes. Valid values:
+        # Specifies whether to view only OpenStore cold-phase indices. Valid values:
         # 
-        # - true: Displays only OpenStore cold-phase indexes.
+        # - true: views only OpenStore cold-phase indices.
         # 
-        # - false (default): Displays all indexes.
+        # - false: views all indices. Default value: false.
         self.is_openstore = is_openstore
         # The index name. Fuzzy match is supported.
         self.name = name
-        # The page number of the instance list. Minimum value: 1. Default value: 1.
+        # The page number. Minimum value: 1. Default value: 1.
         self.page = page
-        # The number of entries per page for paging. Maximum value: 100. Default value: 20.
+        # The paging Settings for the number of entries per page in a paged query. Maximum value: 100. Default value: 20.
         self.size = size
 
     def validate(self):

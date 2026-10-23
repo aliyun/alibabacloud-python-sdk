@@ -63,7 +63,7 @@ class UpdateExtendfilesResponseBodyResult(DaraModel):
         self.file_size = file_size
         # The name of the extension file.
         self.name = name
-        # The source of the extension file. Only ORIGIN (retained original extension file) is supported.
+        # The source of the extension file. Only ORIGIN is supported, which indicates the original extension file to be retained.
         self.source_type = source_type
 
     def validate(self):

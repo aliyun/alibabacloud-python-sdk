@@ -18,7 +18,7 @@ class ListDiagnoseReportResponseBody(DaraModel):
         self.headers = headers
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -79,19 +79,21 @@ class ListDiagnoseReportResponseBodyResult(DaraModel):
     ):
         # The timestamp when the report was created.
         self.create_time = create_time
-        # The list of diagnostic items in the report.
+        # The list of diagnostic item information in the report.
         self.diagnose_items = diagnose_items
+        # The diagnostic mode. Valid values: RULE and AGENT.
         self.diagnosis_mode = diagnosis_mode
         # The overall health status of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
         self.health = health
-        # The instance ID of the diagnosed instance.
+        # The instance ID.
         self.instance_id = instance_id
+        # The list of diagnostic item details. This list may be empty if details are not requested.
         self.items = items
         # The report ID.
         self.report_id = report_id
         # The diagnostic status. Valid values: SUCCESS, FAILED, and RUNNING.
         self.state = state
-        # The trigger method of the health diagnostics. Valid values:
+        # The trigger method for health diagnostics. Valid values:
         # 
         # - SYSTEM: automatically triggered by the system
         # - INNER: internally triggered
@@ -193,11 +195,17 @@ class ListDiagnoseReportResponseBodyResultItems(DaraModel):
         state: str = None,
         suggest: str = None,
     ):
+        # The description of the diagnostic conclusion.
         self.desc = desc
+        # The diagnostic details. This field is empty if details are not requested.
         self.detail = detail
+        # The code of the diagnostic item.
         self.item = item
+        # The name of the diagnostic item.
         self.name = name
+        # The health status of the diagnostic item. Valid values: GREEN, YELLOW, and RED.
         self.state = state
+        # The handling suggestion.
         self.suggest = suggest
 
     def validate(self):
@@ -318,8 +326,8 @@ class ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail(DaraModel):
         # The type of the diagnostic result. Valid values:
         # 
         # - TEXT: text description
-        # - CONSOLE_API: console-triggered
-        # - ES_API: API-triggered
+        # - CONSOLE_API: triggered by the console
+        # - ES_API: triggered by the API
         self.type = type
 
     def validate(self):
@@ -371,7 +379,7 @@ class ListDiagnoseReportResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of records returned.
+        # The total number of returned records.
         self.x_total_count = x_total_count
 
     def validate(self):

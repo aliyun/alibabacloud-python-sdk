@@ -9,6 +9,7 @@ class GetEmonGrafanaDashboardsRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # This GET operation does not require a request body.
         self.body = body
 
     def validate(self):

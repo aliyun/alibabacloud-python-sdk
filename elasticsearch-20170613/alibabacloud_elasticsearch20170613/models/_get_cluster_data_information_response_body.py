@@ -94,12 +94,15 @@ class GetClusterDataInformationResponseBodyResultMetaInfo(DaraModel):
         settings: str = None,
         type_name: List[str] = None,
     ):
+        # The fields corresponding to the index mapping.
         self.fields = fields
+        # The list of indexes in the cluster.
         self.indices = indices
         # The mapping configuration of the cluster.
         self.mapping = mapping
         # The settings configuration of the cluster.
         self.settings = settings
+        # The type of the specified index.
         self.type_name = type_name
 
     def validate(self):

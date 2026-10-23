@@ -14,6 +14,7 @@ class UninstallKibanaPluginResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The names of the Kibana plug-ins uninstalled in the current request.
         self.result = result
 
     def validate(self):

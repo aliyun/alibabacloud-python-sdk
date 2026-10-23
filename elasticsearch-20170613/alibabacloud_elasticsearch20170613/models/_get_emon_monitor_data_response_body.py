@@ -16,7 +16,7 @@ class GetEmonMonitorDataResponseBody(DaraModel):
         result: List[main_models.GetEmonMonitorDataResponseBodyResult] = None,
         success: bool = None,
     ):
-        # The request status code.
+        # The status code of the request.
         self.code = code
         # The request result.
         self.message = message
@@ -24,9 +24,9 @@ class GetEmonMonitorDataResponseBody(DaraModel):
         self.request_id = request_id
         # The returned result.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Specifies whether the request is successful. Valid values:
+        # - true: Successful.
+        # - false: Unsuccessful.
         self.success = success
 
     def validate(self):
@@ -91,15 +91,15 @@ class GetEmonMonitorDataResponseBodyResult(DaraModel):
         summary: float = None,
         tags: Dict[str, Any] = None,
     ):
-        # The real-time metric monitoring data. Format: `{timestamp:data}`.
+        # The real-time metric monitoring data. The format is `{timestamp:data}`.
         self.dps = dps
-        # The completeness of time series data points in the metric query result. A value of 1.0 indicates 100% completeness.
+        # The completeness of the time series curve data points in the result returned by the metric query. A value of 1.0 indicates 100% completeness.
         self.integrity = integrity
-        # The timestamp when the request reaches the server. This is used for troubleshooting.
+        # The timestamp when the request reaches the server. This parameter is used for troubleshooting.
         self.message_watermark = message_watermark
         # The metric name.
         self.metric = metric
-        # If the queries contain wildcards, the result includes multiple matching time series data sequences. The summary is the aggregation of the values across these time series at each time point, based on the aggregator type specified in the query. Currently, only avg is supported as the aggregation method.
+        # If the queries contain wildcards, the result includes multiple matched time series data records. The summary is the aggregation of the value sets of these time series at each time point based on the aggregator type provided in the query. Currently, only the avg aggregation method is supported.
         self.summary = summary
         # The query tags.
         self.tags = tags

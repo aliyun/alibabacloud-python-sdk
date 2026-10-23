@@ -14,6 +14,7 @@ class InstallSystemPluginResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The names of the Elasticsearch plugins installed in this request.
         self.result = result
 
     def validate(self):

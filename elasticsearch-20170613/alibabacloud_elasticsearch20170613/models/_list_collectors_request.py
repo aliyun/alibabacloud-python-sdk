@@ -24,11 +24,11 @@ class ListCollectorsRequest(DaraModel):
         self.res_id = res_id
         # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 500.
         self.size = size
-        # The type of machine on which the collector is deployed. If this parameter is not specified, all types are returned. Valid values:
+        # Specifies the type of machine on which the collector is deployed. If you do not specify this parameter, all types are returned. Valid values:
         # 
         # - ECS: ECS instance
         # 
-        # - ACK: Container Kubernetes cluster
+        # - ACK: ACK cluster
         self.source_type = source_type
 
     def validate(self):

@@ -59,21 +59,23 @@ class DescribeDiagnoseReportResponseBodyResult(DaraModel):
         state: str = None,
         trigger: str = None,
     ):
-        # The timestamp when the report was created. Unit: ms.
+        # The timestamp when the report was created. Unit: milliseconds.
         self.create_time = create_time
         # The list of diagnostic items in the report.
         self.diagnose_items = diagnose_items
+        # The diagnosis mode. Valid values: RULE and AGENT.
         self.diagnosis_mode = diagnosis_mode
-        # The overall health of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
+        # The overall health status of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
         self.health = health
-        # The instance ID of the diagnosed instance.
+        # The instance ID.
         self.instance_id = instance_id
+        # The list of diagnostic item details. This parameter may be empty if details are not required.
         self.items = items
         # The report ID.
         self.report_id = report_id
-        # The diagnostic status. Valid values: SUCCESS, FAILED, and RUNNING.
+        # The diagnosis status. Valid values: SUCCESS, FAILED, and RUNNING.
         self.state = state
-        # The method used to trigger the health diagnostics. Valid values: SYSTEM (automatically triggered by the system), INNER (internally triggered), and USER (manually triggered by the user).
+        # The trigger method of the health diagnosis. Valid values: SYSTEM (automatically triggered by the system), INNER (internally triggered), and USER (manually triggered by the user).
         self.trigger = trigger
 
     def validate(self):
@@ -171,11 +173,17 @@ class DescribeDiagnoseReportResponseBodyResultItems(DaraModel):
         state: str = None,
         suggest: str = None,
     ):
+        # The description of the diagnostic conclusion.
         self.desc = desc
+        # The diagnostic details. This parameter is empty if details are not required.
         self.detail = detail
+        # The code of the diagnostic item.
         self.item = item
+        # The name of the diagnostic item.
         self.name = name
+        # The health status of the diagnostic item. Valid values: GREEN, YELLOW, and RED.
         self.state = state
+        # The handling suggestion.
         self.suggest = suggest
 
     def validate(self):
@@ -293,7 +301,7 @@ class DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail(DaraModel):
         self.result = result
         # The diagnostic suggestion.
         self.suggest = suggest
-        # The type of the diagnostic result. Valid values: TEXT (text description), CONSOLE_API (console-triggered), and ES_API (API-triggered).
+        # The type of the diagnostic result. Valid values: TEXT (text description), CONSOLE_API (triggered by the console), and ES_API (triggered by the API).
         self.type = type
 
     def validate(self):

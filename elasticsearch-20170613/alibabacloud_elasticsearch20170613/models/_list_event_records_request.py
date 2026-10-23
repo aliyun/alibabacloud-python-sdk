@@ -14,17 +14,17 @@ class ListEventRecordsRequest(DaraModel):
         term_content: str = None,
         term_type: str = None,
     ):
-        # The start time of the event query.
+        # The start time for the event query. Specify a UNIX timestamp in milliseconds.
         self.begin_time = begin_time
-        # The end time of the event query.
+        # The end time for the event query. Specify a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The page number for a paged query.
+        # The page number in the paging Settings.
         self.page = page
-        # The number of entries per page for a paged query.
+        # The number of entries per page in the paging Settings.
         self.size = size
-        # The filter object content. If this parameter is left empty, event records of all instances are returned. The value varies based on the filter type.
+        # The content of the object to filter. If this parameter is empty, event records for all instances are returned. Note: Specify the corresponding value based on the filter type.
         self.term_content = term_content
-        # The filter object type. If this parameter is left empty, event records of all types are returned.
+        # The object type to filter. If this parameter is empty, event records of all types are returned.
         self.term_type = term_type
 
     def validate(self):

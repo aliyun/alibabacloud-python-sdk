@@ -59,19 +59,19 @@ class UpgradeEngineVersionResponseBodyResult(DaraModel):
         validate_result: List[main_models.UpgradeEngineVersionResponseBodyResultValidateResult] = None,
         validate_type: str = None,
     ):
-        # Indicates whether the check is passed. Valid values:
+        # Specifies whether the check is passed. Valid values:
         # 
-        # - success: passed.
-        # - failed: not passed.
+        # - success: Passed.
+        # - failed: Failed.
         self.status = status
         # The check information.
         self.validate_result = validate_result
         # The check type. Valid values:
         # 
-        # - checkClusterHealth: cluster health status.
-        # - checkConfigCompatible: configuration compatibility status.
-        # - checkClusterResource: resource space status.
-        # - checkClusterSnapshot: whether a snapshot exists.
+        # - checkClusterHealth: Cluster health status.
+        # - checkConfigCompatible: Configuration compatibility status.
+        # - checkClusterResource: Resource space status.
+        # - checkClusterSnapshot: Snapshot existence.
         self.validate_type = validate_type
 
     def validate(self):
@@ -127,11 +127,11 @@ class UpgradeEngineVersionResponseBodyResultValidateResult(DaraModel):
         self.error_msg = error_msg
         # The error type. Valid values:
         # 
-        # - clusterStatus: cluster health status.
-        # - clusterConfigYml: cluster YML file.
-        # - clusterConfigPlugins: cluster configuration file.
-        # - clusterResource: cluster resources.
-        # - clusterSnapshot: cluster snapshot.
+        # - clusterStatus: Cluster health status.
+        # - clusterConfigYml: Cluster YML file.
+        # - clusterConfigPlugins: Cluster configuration file.
+        # - clusterResource: Cluster resources.
+        # - clusterSnapshot: Cluster snapshot.
         self.error_type = error_type
 
     def validate(self):

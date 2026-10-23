@@ -1,3 +1,16 @@
+2026-10-23 Version: 5.4.1
+- Update API DescribeInstance: add response parameters Body.Result.indexNodeConfiguration.
+- Update API DescribeInstance: add response parameters Body.Result.searchNodeConfiguration.
+- Update API ListInstance: add response parameters Body.Result.$.indexNodeConfiguration.
+- Update API ListInstance: add response parameters Body.Result.$.searchNodeConfiguration.
+- Update API UpdateInstance: add request parameters body.indexNodeConfiguration.
+- Update API UpdateInstance: add request parameters body.searchNodeConfiguration.
+- Update API UpdateInstance: add response parameters Body.Result.indexNodeConfiguration.
+- Update API UpdateInstance: add response parameters Body.Result.searchNodeConfiguration.
+- Update API createInstance: add request parameters body.indexNodeConfiguration.
+- Update API createInstance: add request parameters body.searchNodeConfiguration.
+
+
 2026-09-24 Version: 5.4.0
 - Support API InvokeEsAgent.
 - Support API InvokeEsRequest.

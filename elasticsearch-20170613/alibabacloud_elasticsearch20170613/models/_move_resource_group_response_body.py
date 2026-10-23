@@ -15,7 +15,7 @@ class MoveResourceGroupResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The result.
         self.result = result
 
     def validate(self):
@@ -69,51 +69,51 @@ class MoveResourceGroupResponseBodyResult(DaraModel):
         synonyms_dicts: List[main_models.MoveResourceGroupResponseBodyResultSynonymsDicts] = None,
         updated_at: str = None,
     ):
-        # The time when the instance was created.
+        # The time when the instance was created. The time follows the YYYY-MM-DDTHH:mm:ss.SSSZ format, where Z indicates UTC.
         self.created_at = created_at
-        # The instance name.
+        # The name of the instance.
         self.description = description
-        # The IK dictionary configuration.
+        # The IK dictionary configurations.
         self.dict_list = dict_list
-        # The internal network access address of the instance.
+        # The internal endpoint of the instance.
         self.domain = domain
-        # The instance version.
+        # The version of the instance.
         self.es_version = es_version
         # The instance ID.
         self.instance_id = instance_id
-        # The Kibana node configuration.
+        # The Kibana node configurations.
         self.kibana_configuration = kibana_configuration
         # The Kibana public network access address.
         self.kibana_domain = kibana_domain
-        # The Kibana public network port.
+        # The public port of Kibana.
         self.kibana_port = kibana_port
-        # The master node configuration.
+        # The master node configurations.
         self.master_configuration = master_configuration
-        # The network configuration.
+        # The network configurations.
         self.network_config = network_config
         # The number of data nodes in the instance.
         self.node_amount = node_amount
-        # The data node configuration.
+        # The data node configurations.
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
         # 
-        # - prepaid: subscription.
-        # - postpaid: pay-as-you-go.
+        # - prepaid: Subscription.
+        # - postpaid: Pay-as-you-go.
         self.payment_type = payment_type
         # The public network access address.
         self.public_domain = public_domain
-        # The public network port.
+        # The public port.
         self.public_port = public_port
         # The status of the instance. Valid values:
         # 
         # - active: Normal.
-        # - activating: Taking effect.
+        # - activating: Activating.
         # - inactive: Frozen.
         # - invalid: Invalid.
         self.status = status
-        # The synonym dictionary configuration.
+        # The synonym dictionary configurations.
         self.synonyms_dicts = synonyms_dicts
-        # The time when the instance was last updated.
+        # The time when the instance was last updated. The time follows the YYYY-MM-DDTHH:mm:ss.SSSZ format, where Z indicates UTC.
         self.updated_at = updated_at
 
     def validate(self):
@@ -287,15 +287,15 @@ class MoveResourceGroupResponseBodyResultSynonymsDicts(DaraModel):
         self.name = name
         # The source type. Valid values:
         # 
-        # - OSS: OSS open storage (the OSS bucket must be publicly readable).
-        # - ORIGIN: retains the previously uploaded dictionary.
+        # - OSS: Object Storage Service (OSS). Make sure that the OSS bucket is publicly readable.
+        # - ORIGIN: The previously uploaded dictionary is retained.
         self.source_type = source_type
         # The dictionary type. Valid values:
         # 
-        # - STOP: stopword.
-        # - MAIN: main dictionary.
-        # - SYNONYMS: synonym dictionary.
-        # - ALI_WS: Alibaba dictionary.
+        # - STOP: Stopword dictionary.
+        # - MAIN: Main dictionary.
+        # - SYNONYMS: Synonym dictionary.
+        # - ALI_WS: Alibaba Cloud dictionary.
         self.type = type
 
     def validate(self):
@@ -343,7 +343,7 @@ class MoveResourceGroupResponseBodyResultNodeSpec(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The storage space size of the node. Unit: GB.
+        # The storage space of the node. Unit: GB.
         self.disk = disk
         # The storage type of the node.
         self.disk_type = disk_type
@@ -447,7 +447,7 @@ class MoveResourceGroupResponseBodyResultMasterConfiguration(DaraModel):
     ):
         # The number of nodes.
         self.amount = amount
-        # The storage space size of the node. Unit: GB.
+        # The storage space of the node. Unit: GB.
         self.disk = disk
         # The storage type of the node.
         self.disk_type = disk_type
@@ -502,7 +502,7 @@ class MoveResourceGroupResponseBodyResultKibanaConfiguration(DaraModel):
     ):
         # The number of nodes.
         self.amount = amount
-        # The storage space size of the node. Unit: GB.
+        # The storage space of the node. Unit: GB.
         self.disk = disk
         # The storage type of the node.
         self.disk_type = disk_type
@@ -561,15 +561,15 @@ class MoveResourceGroupResponseBodyResultDictList(DaraModel):
         self.name = name
         # The source type. Valid values:
         # 
-        # - OSS: OSS open storage (the OSS bucket must be publicly readable).
-        # - ORIGIN: retains the previously uploaded dictionary.
+        # - OSS: Object Storage Service (OSS). Make sure that the OSS bucket is publicly readable.
+        # - ORIGIN: The previously uploaded dictionary is retained.
         self.source_type = source_type
         # The dictionary type. Valid values:
         # 
-        # - STOP: stopword.
-        # - MAIN: main dictionary.
-        # - SYNONYMS: synonym dictionary.
-        # - ALI_WS: Alibaba dictionary.
+        # - STOP: Stopword dictionary.
+        # - MAIN: Main dictionary.
+        # - SYNONYMS: Synonym dictionary.
+        # - ALI_WS: Alibaba Cloud dictionary.
         self.type = type
 
     def validate(self):

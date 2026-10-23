@@ -57,14 +57,19 @@ class DescribeDiagnosisSettingsResponseBodyResult(DaraModel):
         selected_items: List[str] = None,
         update_time: int = None,
     ):
+        # Indicates whether intelligent diagnostics is authorized to access the Elasticsearch API.
         self.authorization_status = authorization_status
+        # The maximum number of diagnostic executions allowed per day.
         self.daily_limit = daily_limit
+        # Indicates whether daily scheduled diagnostics are enabled.
         self.daily_schedule_enabled = daily_schedule_enabled
+        # The running mode of intelligent diagnostics, such as AGENT.
         self.diagnosis_mode = diagnosis_mode
-        # The common scenarios of intelligent diagnosis and optimization.
+        # The common scenarios for intelligent O&M.
         self.scene = scene
+        # The list of identifiers for the selected intelligent diagnostics items.
         self.selected_items = selected_items
-        # The UNIX timestamp when the intelligent diagnosis and optimization common scenarios were last updated.
+        # The UNIX timestamp when the common scenarios for intelligent O&M were last updated.
         self.update_time = update_time
 
     def validate(self):

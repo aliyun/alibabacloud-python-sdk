@@ -49,7 +49,7 @@ class CreateDataStreamResponseBodyResult(DaraModel):
         self,
         name: str = None,
     ):
-        # The data stream name.
+        # The name of the data stream.
         self.name = name
 
     def validate(self):

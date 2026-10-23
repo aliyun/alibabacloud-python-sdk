@@ -12,10 +12,10 @@ class ModifyDeployMachineResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the update is successful. Valid values:
+        # Indicates whether the update was successful. Valid values:
         # 
-        # - true: Successful.
-        # - false: Failed.
+        # - true: The update was successful.
+        # - false: The update failed.
         self.result = result
 
     def validate(self):

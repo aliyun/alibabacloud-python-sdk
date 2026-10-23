@@ -10,8 +10,9 @@ class InstallUserPluginsRequest(DaraModel):
         body: str = None,
         force: bool = None,
     ):
-        # The list of custom plugins to install.
+        # The list of custom plugins.
         self.body = body
+        # Specifies whether to forcibly install custom user plugins. Default value: false. Instances with the legacy architecture do not support forced installation.
         self.force = force
 
     def validate(self):

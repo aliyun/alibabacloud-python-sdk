@@ -15,7 +15,7 @@ class DescribeInstanceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The result.
         self.result = result
 
     def validate(self):
@@ -73,6 +73,7 @@ class DescribeInstanceResponseBodyResult(DaraModel):
         have_client_node: bool = None,
         have_kibana: bool = None,
         ik_hot_dicts: List[main_models.DescribeInstanceResponseBodyResultIkHotDicts] = None,
+        index_node_configuration: main_models.IndexNodeConfiguration = None,
         inited: bool = None,
         instance_category: str = None,
         instance_id: str = None,
@@ -97,6 +98,7 @@ class DescribeInstanceResponseBodyResult(DaraModel):
         public_ip_whitelist: List[str] = None,
         public_port: int = None,
         resource_group_id: str = None,
+        search_node_configuration: main_models.SearchNodeConfiguration = None,
         service_vpc: bool = None,
         status: str = None,
         synonyms_dicts: List[main_models.DescribeInstanceResponseBodyResultSynonymsDicts] = None,
@@ -108,34 +110,45 @@ class DescribeInstanceResponseBodyResult(DaraModel):
         zone_count: int = None,
         zone_infos: List[main_models.DescribeInstanceResponseBodyResultZoneInfos] = None,
     ):
-        # Indicates whether the instance contains dedicated master nodes. Valid values:
+        # Indicates whether dedicated master nodes are included. Valid values:
+        # - true: Included.
+        # - false: Not included.
         self.advanced_dedicate_master = advanced_dedicate_master
         # The advanced settings.
         self.advanced_setting = advanced_setting
-        # The Alibaba Cloud tokenizer dictionary configuration.
+        # The AliWS dictionary configurations.
         self.aliws_dicts = aliws_dicts
-        # The deployment mode. Architecture type:
+        # The deployment mode and architecture type. Valid values:
+        # - exclusive: Basic management and control.
+        # - public: Cloud-native management and control.
         self.arch_type = arch_type
-        # The configuration information of the client node.
+        # The client node configuration.
         self.client_node_configuration = client_node_configuration
         # The time when the instance was created.
         self.created_at = created_at
         # **[Deprecated]** The dedicated master node.
         self.dedicate_master = dedicate_master
-        # The instance name.
+        # The name of the instance.
         self.description = description
-        # The IK dictionary configuration.
+        # The IK dictionary configurations.
         self.dict_list = dict_list
         # The internal endpoint of the instance.
         self.domain = domain
-        # The configuration of the elastic data node.
+        # The elastic data node configuration.
         self.elastic_data_node_configuration = elastic_data_node_configuration
         # Indicates whether private network access to Kibana is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable_kibana_private_network = enable_kibana_private_network
         # Indicates whether public network access to Kibana is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable_kibana_public_network = enable_kibana_public_network
         # Indicates whether the public endpoint of the instance is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable_public = enable_public
+        # The time when the instance expires. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The private domain names for each zone of an HP_ALILB multi-zone instance.
         self.endpoints = endpoints
@@ -145,78 +158,102 @@ class DescribeInstanceResponseBodyResult(DaraModel):
         self.es_ipblacklist = es_ipblacklist
         # **[Deprecated]** The private network access whitelist.
         self.es_ipwhitelist = es_ipwhitelist
-        # The instance version.
+        # The version of the instance.
         self.es_version = es_version
-        # The extended configuration array of the instance.
+        # The array of extended configurations for the instance.
         self.extend_configs = extend_configs
-        # Indicates whether the instance contains client nodes. Valid values:
+        # Indicates whether client nodes are included. Valid values:
+        # - true: Included.
+        # - false: Not included.
         self.have_client_node = have_client_node
-        # Indicates whether the instance contains Kibana nodes. Valid values:
+        # Indicates whether Kibana nodes are included. Valid values:
+        # - true: Included.
+        # - false: Not included.
         self.have_kibana = have_kibana
-        # The IK dictionary hot update configuration.
+        # The IK dictionary hot update configurations.
         self.ik_hot_dicts = ik_hot_dicts
+        # The index node information. This parameter is supported only by AI engine instances.
+        self.index_node_configuration = index_node_configuration
+        # Indicates whether the initialization is complete.
         self.inited = inited
         # The edition type of the instance. Valid values:
+        # - x-pack: Commercial Edition.
+        # - advanced/IS: Advanced Edition.
+        # - community: Basic Edition.
         self.instance_category = instance_category
         # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the instance uses the new deployment architecture.
+        # Indicates whether the new deployment architecture is used.
         self.is_new_deployment = is_new_deployment
-        # The configuration information of the Kibana node.
+        # The Kibana node configuration.
         self.kibana_configuration = kibana_configuration
         # The Kibana endpoint.
         self.kibana_domain = kibana_domain
-        # The Kibana public endpoint access whitelist.
+        # The public network access whitelist for Kibana.
         self.kibana_ipwhitelist = kibana_ipwhitelist
-        # The access port of Kibana.
+        # The access port for Kibana.
         self.kibana_port = kibana_port
-        # The private endpoint of Kibana for private network access.
+        # The private endpoint for Kibana.
         self.kibana_private_domain = kibana_private_domain
-        # The Kibana private endpoint access whitelist.
+        # The private network access whitelist for Kibana.
         self.kibana_private_ipwhitelist = kibana_private_ipwhitelist
-        # The private port of Kibana.
+        # The private network port for Kibana.
         self.kibana_private_port = kibana_private_port
-        # The configuration of the dedicated master node.
+        # The master node configuration.
         self.master_configuration = master_configuration
         # The network configuration.
         self.network_config = network_config
         # The number of data nodes in the instance.
         self.node_amount = node_amount
-        # The configuration of data nodes.
+        # The configuration of the data nodes.
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
+        # - prepaid: Subscription.
+        # - postpaid: Pay-as-you-go.
         self.payment_type = payment_type
         # The access port of the instance.
         self.port = port
-        # The status of the pay-as-you-go service that is overlaid on the subscription instance. Valid values:
+        # The status of the pay-as-you-go service added to a subscription instance. Valid values:
+        # - active: Normal.
+        # - closed: Disabled.
+        # - indebt: Frozen due to an overdue payment.
         self.postpaid_service_status = postpaid_service_status
-        # The private endpoint access whitelist of the instance.
+        # The private network IP address whitelist of the instance.
         self.private_network_ip_white_list = private_network_ip_white_list
         # The access protocol. Valid values: HTTP and HTTPS.
         self.protocol = protocol
         # The public endpoint of the instance.
         self.public_domain = public_domain
-        # The public endpoint access whitelist of the instance.
+        # The public network IP address whitelist of the instance.
         self.public_ip_whitelist = public_ip_whitelist
         # The public network access port of the instance.
         self.public_port = public_port
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # Indicates whether the instance is a service VPC instance.
+        # The search node configuration. This feature is only supported by instances with the AI engine.
+        self.search_node_configuration = search_node_configuration
+        # Specifies whether the VPC is a service VPC.
         self.service_vpc = service_vpc
         # The status of the instance. Valid values:
+        # - active: Normal.
+        # - activating: Activating.
+        # - inactive: Frozen.
+        # - invalid: Invalid. The cluster does not exist or is inaccessible. In this case, some fields such as domain and kibanaDomain may be missing in the response.
+        # - unknown: Unknown. The cluster does not exist or is inaccessible. In this case, some fields such as domain and kibanaDomain may be missing in the response.
         self.status = status
         # The synonym dictionary configuration.
         self.synonyms_dicts = synonyms_dicts
-        # The instance tags.
+        # The instance labels.
         self.tags = tags
         # The time when the instance was last updated.
         self.updated_at = updated_at
         # The VPC ID.
         self.vpc_instance_id = vpc_instance_id
-        # Indicates whether warm data nodes is enabled. Valid values:
+        # Specifies whether warm data nodes are enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.warm_node = warm_node
-        # The configuration information of the warm data node.
+        # The configuration of the warm data nodes.
         self.warm_node_configuration = warm_node_configuration
         # The number of zones for the instance.
         self.zone_count = zone_count
@@ -246,6 +283,8 @@ class DescribeInstanceResponseBodyResult(DaraModel):
             for v1 in self.ik_hot_dicts:
                  if v1:
                     v1.validate()
+        if self.index_node_configuration:
+            self.index_node_configuration.validate()
         if self.kibana_configuration:
             self.kibana_configuration.validate()
         if self.master_configuration:
@@ -254,6 +293,8 @@ class DescribeInstanceResponseBodyResult(DaraModel):
             self.network_config.validate()
         if self.node_spec:
             self.node_spec.validate()
+        if self.search_node_configuration:
+            self.search_node_configuration.validate()
         if self.synonyms_dicts:
             for v1 in self.synonyms_dicts:
                  if v1:
@@ -354,6 +395,9 @@ class DescribeInstanceResponseBodyResult(DaraModel):
             for k1 in self.ik_hot_dicts:
                 result['ikHotDicts'].append(k1.to_map() if k1 else None)
 
+        if self.index_node_configuration is not None:
+            result['indexNodeConfiguration'] = self.index_node_configuration.to_map()
+
         if self.inited is not None:
             result['inited'] = self.inited
 
@@ -425,6 +469,9 @@ class DescribeInstanceResponseBodyResult(DaraModel):
 
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+
+        if self.search_node_configuration is not None:
+            result['searchNodeConfiguration'] = self.search_node_configuration.to_map()
 
         if self.service_vpc is not None:
             result['serviceVpc'] = self.service_vpc
@@ -553,6 +600,10 @@ class DescribeInstanceResponseBodyResult(DaraModel):
                 temp_model = main_models.DescribeInstanceResponseBodyResultIkHotDicts()
                 self.ik_hot_dicts.append(temp_model.from_map(k1))
 
+        if m.get('indexNodeConfiguration') is not None:
+            temp_model = main_models.IndexNodeConfiguration()
+            self.index_node_configuration = temp_model.from_map(m.get('indexNodeConfiguration'))
+
         if m.get('inited') is not None:
             self.inited = m.get('inited')
 
@@ -629,6 +680,10 @@ class DescribeInstanceResponseBodyResult(DaraModel):
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
 
+        if m.get('searchNodeConfiguration') is not None:
+            temp_model = main_models.SearchNodeConfiguration()
+            self.search_node_configuration = temp_model.from_map(m.get('searchNodeConfiguration'))
+
         if m.get('serviceVpc') is not None:
             self.service_vpc = m.get('serviceVpc')
 
@@ -677,7 +732,9 @@ class DescribeInstanceResponseBodyResultZoneInfos(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
-        # The zone status. Valid values:
+        # The status of the zone. Valid values:
+        # - ISOLATION: Offline.
+        # - NORMAL: Normal.
         self.status = status
         # The zone ID.
         self.zone_id = zone_id
@@ -722,11 +779,13 @@ class DescribeInstanceResponseBodyResultWarmNodeConfiguration(DaraModel):
         self.amount = amount
         # The storage space of the node. Unit: GB.
         self.disk = disk
-        # Indicates whether cloud disk encryption is enabled. Valid values:
+        # Specifies whether cloud disk encryption is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.disk_encryption = disk_encryption
         # The storage type of the node. Only cloud_efficiency (ultra disk) is supported.
         self.disk_type = disk_type
-        # The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
         # The description of the node specifications.
         self.spec_info = spec_info
@@ -833,6 +892,10 @@ class DescribeInstanceResponseBodyResultSynonymsDicts(DaraModel):
         # The source type.
         self.source_type = source_type
         # The dictionary type. Valid values:
+        # - STOP: Stopword dictionary.
+        # - MAIN: Main dictionary.
+        # - SYNONYMS: Synonym dictionary.
+        # - ALI_WS: Alibaba Cloud dictionary.
         self.type = type
 
     def validate(self):
@@ -886,16 +949,23 @@ class DescribeInstanceResponseBodyResultNodeSpec(DaraModel):
     ):
         # The storage space of the node. Unit: GB.
         self.disk = disk
-        # Indicates whether cloud disk encryption is enabled. Valid values:
+        # Specifies whether cloud disk encryption is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.disk_encryption = disk_encryption
+        # The storage preference. Default value: high_availability. Valid values:
+        # - high_availability: High availability.
+        # - high_cost_performance: High cost-effectiveness.
         self.disk_preference = disk_preference
         # The disk type of the node. Valid values:
+        # - cloud_ssd: Standard SSD.
+        # - cloud_efficiency: Ultra disk.
         self.disk_type = disk_type
         # The performance level (PL) of the ESSD. This parameter is required when diskType is set to cloud_essd. Valid values: PL1, PL2, and PL3.
         self.performance_level = performance_level
-        # The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
-        # The node specifications description.
+        # The description of the node specifications.
         self.spec_info = spec_info
 
     def validate(self):
@@ -963,7 +1033,7 @@ class DescribeInstanceResponseBodyResultNetworkConfig(DaraModel):
         vswitch_id: str = None,
         white_ip_group_list: List[main_models.DescribeInstanceResponseBodyResultNetworkConfigWhiteIpGroupList] = None,
     ):
-        # The network type. Only Virtual Private Cloud (VPC) is supported.
+        # The network type. Only VPC (Virtual Private Cloud) is supported.
         self.type = type
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -971,7 +1041,7 @@ class DescribeInstanceResponseBodyResultNetworkConfig(DaraModel):
         self.vs_area = vs_area
         # The vSwitch ID.
         self.vswitch_id = vswitch_id
-        # The whitelist group list.
+        # The list of whitelist groups.
         self.white_ip_group_list = white_ip_group_list
 
     def validate(self):
@@ -1033,11 +1103,15 @@ class DescribeInstanceResponseBodyResultNetworkConfigWhiteIpGroupList(DaraModel)
         ips: List[str] = None,
         white_ip_type: str = None,
     ):
-        # The name of the whitelist group. The default group is included by default.
+        # The name of the whitelist group. By default, the default group is included.
         self.group_name = group_name
         # The list of IP addresses in the whitelist group.
         self.ips = ips
         # The whitelist type. Valid values:
+        # - PRIVATE_ES: Private network of Elasticsearch.
+        # - PUBLIC_ES: Public network of Elasticsearch.
+        # - PRIVATE_KIBANA: Private network of Kibana.
+        # - PUBLIC_KIBANA: Public network of Kibana.
         self.white_ip_type = white_ip_type
 
     def validate(self):
@@ -1085,9 +1159,9 @@ class DescribeInstanceResponseBodyResultMasterConfiguration(DaraModel):
         self.amount = amount
         # The storage space of the node. Unit: GB.
         self.disk = disk
-        # The storage type of the node. Only cloud_ssd (standard SSD) is supported.
+        # The storage type of the dedicated master node. Only cloud_ssd (standard SSD) is supported.
         self.disk_type = disk_type
-        # The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
         # The description of the node specifications.
         self.spec_info = spec_info
@@ -1146,9 +1220,9 @@ class DescribeInstanceResponseBodyResultKibanaConfiguration(DaraModel):
     ):
         # The number of nodes.
         self.amount = amount
-        # The storage size of a single node. Unit: GB.
+        # The storage space of a single node. Unit: GB.
         self.disk = disk
-        # The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
         # The description of the node specifications.
         self.spec_info = spec_info
@@ -1204,8 +1278,12 @@ class DescribeInstanceResponseBodyResultIkHotDicts(DaraModel):
         # The name of the dictionary file.
         self.name = name
         # The source type of the dictionary file. Valid values:
+        # - OSS: OSS.
+        # - ORIGIN: Previously uploaded dictionary.
         self.source_type = source_type
-        # The type of the dictionary to update. Valid values:
+        # The type of the dictionary to be updated. Valid values:
+        # - MAIN: IK main dictionary.
+        # - STOP: IK stopword dictionary.
         self.type = type
 
     def validate(self):
@@ -1307,10 +1385,15 @@ class DescribeInstanceResponseBodyResultElasticDataNodeConfiguration(DaraModel):
         # The storage space of the node. Unit: GB.
         self.disk = disk
         # Indicates whether cloud disk encryption is enabled for the node. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.disk_encryption = disk_encryption
         # The storage type of the node. Valid values:
+        # - cloud_ssd: Standard SSD.
+        # - cloud_essd: ESSD.
+        # - cloud_efficiency: Ultra disk.
         self.disk_type = disk_type
-        # The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
         # The description of the node specifications.
         self.spec_info = spec_info
@@ -1378,8 +1461,15 @@ class DescribeInstanceResponseBodyResultDictList(DaraModel):
         # The name of the dictionary file.
         self.name = name
         # The source type of the dictionary file. Valid values:
+        # - OSS: Object Storage Service (OSS). Make sure that the OSS bucket is publicly readable.
+        # - ORIGIN: Open-source Elasticsearch.
+        # - UPLOAD: Uploaded file.
         self.source_type = source_type
         # The type of the dictionary file. Valid values:
+        # - STOP: Stopword dictionary.
+        # - MAIN: Main dictionary.
+        # - SYNONYMS: Synonym dictionary.
+        # - ALI_WS: AliWS dictionary.
         self.type = type
 
     def validate(self):
@@ -1433,9 +1523,9 @@ class DescribeInstanceResponseBodyResultClientNodeConfiguration(DaraModel):
         self.amount = amount
         # The storage space of the node. Unit: GB.
         self.disk = disk
-        # The storage type of the node. Only cloud_efficiency (ultra disk) is supported.
+        # The storage type of the node. Only ultra disks (cloud_efficiency) are supported.
         self.disk_type = disk_type
-        # The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # The node specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/271718.html).
         self.spec = spec
         # The description of the node specifications.
         self.spec_info = spec_info
@@ -1497,8 +1587,15 @@ class DescribeInstanceResponseBodyResultAliwsDicts(DaraModel):
         # The name of the dictionary file.
         self.name = name
         # The source type of the dictionary file. Valid values:
+        # - OSS: Object Storage Service (OSS). Make sure that the OSS bucket is publicly readable.
+        # - ORIGIN: Open-source Elasticsearch.
+        # - UPLOAD: Uploaded file.
         self.source_type = source_type
         # The type of the dictionary file. Valid values:
+        # - STOP: Stopword dictionary.
+        # - MAIN: Main dictionary.
+        # - SYNONYMS: Synonym dictionary.
+        # - ALI_WS: AliWS dictionary.
         self.type = type
 
     def validate(self):

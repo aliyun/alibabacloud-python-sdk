@@ -9,7 +9,7 @@ class ModifyElastictaskRequest(DaraModel):
         self,
         body: str = None,
     ):
-        # The scaling information.
+        # Specifies the scaling information.
         self.body = body
 
     def validate(self):

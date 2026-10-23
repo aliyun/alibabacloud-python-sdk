@@ -12,10 +12,10 @@ class UpdateAdvancedSettingResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result:
+        # The returned result. Valid values:
         # 
-        # - true: The garbage collector configuration was changed successfully.
-        # - false: The garbage collector configuration failed to be changed.
+        # - true: The garbage collector configuration was updated.
+        # - false: The garbage collector configuration failed to be updated.
         self.result = result
 
     def validate(self):

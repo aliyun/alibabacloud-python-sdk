@@ -14987,6 +14987,8 @@ class Client(OpenApiClient):
             body['clientNodeConfiguration'] = request.client_node_configuration
         if not DaraCore.is_null(request.elastic_data_node_configuration):
             body['elasticDataNodeConfiguration'] = request.elastic_data_node_configuration
+        if not DaraCore.is_null(request.index_node_configuration):
+            body['indexNodeConfiguration'] = request.index_node_configuration
         if not DaraCore.is_null(request.instance_category):
             body['instanceCategory'] = request.instance_category
         if not DaraCore.is_null(request.kibana_configuration):
@@ -14997,6 +14999,8 @@ class Client(OpenApiClient):
             body['nodeAmount'] = request.node_amount
         if not DaraCore.is_null(request.node_spec):
             body['nodeSpec'] = request.node_spec
+        if not DaraCore.is_null(request.search_node_configuration):
+            body['searchNodeConfiguration'] = request.search_node_configuration
         if not DaraCore.is_null(request.update_type):
             body['updateType'] = request.update_type
         if not DaraCore.is_null(request.warm_node_configuration):
@@ -15042,6 +15046,8 @@ class Client(OpenApiClient):
             body['clientNodeConfiguration'] = request.client_node_configuration
         if not DaraCore.is_null(request.elastic_data_node_configuration):
             body['elasticDataNodeConfiguration'] = request.elastic_data_node_configuration
+        if not DaraCore.is_null(request.index_node_configuration):
+            body['indexNodeConfiguration'] = request.index_node_configuration
         if not DaraCore.is_null(request.instance_category):
             body['instanceCategory'] = request.instance_category
         if not DaraCore.is_null(request.kibana_configuration):
@@ -15052,6 +15058,8 @@ class Client(OpenApiClient):
             body['nodeAmount'] = request.node_amount
         if not DaraCore.is_null(request.node_spec):
             body['nodeSpec'] = request.node_spec
+        if not DaraCore.is_null(request.search_node_configuration):
+            body['searchNodeConfiguration'] = request.search_node_configuration
         if not DaraCore.is_null(request.update_type):
             body['updateType'] = request.update_type
         if not DaraCore.is_null(request.warm_node_configuration):
@@ -17570,6 +17578,8 @@ class Client(OpenApiClient):
             body['esAdminPassword'] = request.es_admin_password
         if not DaraCore.is_null(request.es_version):
             body['esVersion'] = request.es_version
+        if not DaraCore.is_null(request.index_node_configuration):
+            body['indexNodeConfiguration'] = request.index_node_configuration
         if not DaraCore.is_null(request.instance_category):
             body['instanceCategory'] = request.instance_category
         if not DaraCore.is_null(request.kibana_configuration):
@@ -17588,6 +17598,8 @@ class Client(OpenApiClient):
             body['paymentType'] = request.payment_type
         if not DaraCore.is_null(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.search_node_configuration):
+            body['searchNodeConfiguration'] = request.search_node_configuration
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
         if not DaraCore.is_null(request.warm_node_configuration):
@@ -17636,6 +17648,8 @@ class Client(OpenApiClient):
             body['esAdminPassword'] = request.es_admin_password
         if not DaraCore.is_null(request.es_version):
             body['esVersion'] = request.es_version
+        if not DaraCore.is_null(request.index_node_configuration):
+            body['indexNodeConfiguration'] = request.index_node_configuration
         if not DaraCore.is_null(request.instance_category):
             body['instanceCategory'] = request.instance_category
         if not DaraCore.is_null(request.kibana_configuration):
@@ -17654,6 +17668,8 @@ class Client(OpenApiClient):
             body['paymentType'] = request.payment_type
         if not DaraCore.is_null(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.search_node_configuration):
+            body['searchNodeConfiguration'] = request.search_node_configuration
         if not DaraCore.is_null(request.tags):
             body['tags'] = request.tags
         if not DaraCore.is_null(request.warm_node_configuration):

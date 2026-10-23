@@ -68,25 +68,27 @@ class DescribeLogstashResponseBodyResult(DaraModel):
         version: str = None,
         vpc_instance_id: str = None,
     ):
+        # The extended configurations of the Logstash instance.
         self.extend_configs = extend_configs
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The instance tags.
+        # The instance labels.
         self.tags = tags
         # The zone information.
         self.zone_infos = zone_infos
-        # The instance configuration information.
+        # The configuration information of the instance.
         self.config = config
         # The time when the instance was created.
         self.created_at = created_at
-        # The instance name.
+        # The name of the instance.
         self.description = description
+        # The time when the instance expires. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The access information of the nodes.
         self.endpoint_list = endpoint_list
         # The instance ID.
         self.instance_id = instance_id
-        # The network configuration.
+        # The network configurations.
         self.network_config = network_config
         # The number of nodes in the instance.
         self.node_amount = node_amount
@@ -94,19 +96,19 @@ class DescribeLogstashResponseBodyResult(DaraModel):
         self.node_spec = node_spec
         # The billing method of the instance. Valid values:
         # 
-        # - prepaid: subscription
-        # - postpaid: pay-as-you-go
+        # - prepaid: Subscription.
+        # - postpaid: Pay-as-you-go.
         self.payment_type = payment_type
         # The status of the instance. Valid values:
         # 
         # - active: Normal.
-        # - activating: Taking effect.
+        # - activating: Activating.
         # - inactive: Frozen.
-        # - invalid: Expired.
+        # - invalid: Invalid.
         self.status = status
         # The time when the instance was last updated.
         self.updated_at = updated_at
-        # The instance version.
+        # The version of the instance.
         self.version = version
         # The ID of the VPC to which the instance belongs.
         self.vpc_instance_id = vpc_instance_id
@@ -275,14 +277,14 @@ class DescribeLogstashResponseBodyResultNodeSpec(DaraModel):
     ):
         # The disk size of the node.
         self.disk = disk
-        # Indicates whether cloud disk encryption is enabled. Valid values:
+        # Specifies whether cloud disk encryption is used. Valid values:
         # 
-        # - true: Enabled.
-        # - false: Disabled.
+        # - true: Yes.
+        # - false: No.
         self.disk_encryption = disk_encryption
         # The disk type of the node.
         self.disk_type = disk_type
-        # The node specification.
+        # The specifications of the node.
         self.spec = spec
 
     def validate(self):
@@ -331,11 +333,11 @@ class DescribeLogstashResponseBodyResultNetworkConfig(DaraModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
-        # The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+        # The network type. Only VPC is supported.
         self.type = type
         # The VPC ID.
         self.vpc_id = vpc_id
-        # The zone in which the instance resides.
+        # The zone where the instance is deployed.
         self.vs_area = vs_area
         # The vSwitch ID.
         self.vswitch_id = vswitch_id
@@ -430,9 +432,9 @@ class DescribeLogstashResponseBodyResultZoneInfos(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
-        # The zone status. Valid values:
+        # The status of the zone. Valid values:
         # 
-        # - ISOLATION: offline.
+        # - ISOLATION: Offline.
         # - NORMAL: Normal.
         self.status = status
         # The zone ID.

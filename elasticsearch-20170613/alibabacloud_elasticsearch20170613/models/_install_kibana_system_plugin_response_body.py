@@ -14,6 +14,7 @@ class InstallKibanaSystemPluginResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The names of the Kibana plugins installed by this request.
         self.result = result
 
     def validate(self):

@@ -13,7 +13,7 @@ class EstimatedLogstashRestartTimeResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):

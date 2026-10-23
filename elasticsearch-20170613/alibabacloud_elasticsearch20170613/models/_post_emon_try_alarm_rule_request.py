@@ -9,6 +9,7 @@ class PostEmonTryAlarmRuleRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # The information about the test alert rule, notification method, and message recipients.
         self.body = body
 
     def validate(self):

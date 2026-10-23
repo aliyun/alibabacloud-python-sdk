@@ -12,7 +12,7 @@ class UpdateILMPolicyResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The result.
         self.result = result
 
     def validate(self):

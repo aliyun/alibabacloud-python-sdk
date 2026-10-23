@@ -15,7 +15,7 @@ class ListEventRecordsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The result.
         self.result = result
 
     def validate(self):
@@ -52,7 +52,7 @@ class ListEventRecordsResponseBodyResult(DaraModel):
         result: List[main_models.ListEventRecordsResponseBodyResultResult] = None,
         total: str = None,
     ):
-        # The returned content.
+        # The response content.
         self.result = result
         # The total number of records.
         self.total = total
@@ -107,7 +107,7 @@ class ListEventRecordsResponseBodyResultResult(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # Indicates whether automatic alerting is enabled.
+        # Indicates whether automatic alerting is triggered.
         self.auto_alarm = auto_alarm
         # The display name of the event.
         self.display_name = display_name
@@ -119,9 +119,9 @@ class ListEventRecordsResponseBodyResultResult(DaraModel):
         self.must_ops = must_ops
         # The product type of the event.
         self.product = product
-        # The scheduled execution time.
+        # The scheduled execution time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.schedule_execute_time = schedule_execute_time
-        # The scheduled end time.
+        # The scheduled end time of the execution. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.schedule_finish_time = schedule_finish_time
         # The event content.
         self.show_content = show_content
@@ -232,19 +232,19 @@ class ListEventRecordsResponseBodyResultResultShowContent(DaraModel):
         instance_id: str = None,
         ops_change_id: str = None,
     ):
-        # The suggested action.
+        # The recommended actions.
         self.action_suggest = action_suggest
         # The event description.
         self.desc = desc
         # The event status.
         self.event_status = event_status
-        # The time when the event occurred.
+        # The time when the event occurred. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.event_time = event_time
-        # The end time of the O&M execution for the event.
+        # The end time of the O&M execution for the event. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.execute_finish_time = execute_finish_time
-        # The start time of the O&M execution for the event.
+        # The start time of the O&M execution for the event. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.execute_start_time = execute_start_time
-        # The instance ID of the instance on which the event occurred.
+        # The instance ID where the event occurred.
         self.instance_id = instance_id
         # The execution ID of the cluster change.
         self.ops_change_id = ops_change_id
@@ -320,11 +320,11 @@ class ListEventRecordsResponseBodyResultResultShowContentActionSuggest(DaraModel
         suggest_text: str = None,
         suggest_type: str = None,
     ):
-        # The suggested action.
+        # The recommended actions.
         self.suggest_actions = suggest_actions
-        # The text of the suggested action.
+        # The text of the recommended action.
         self.suggest_text = suggest_text
-        # The type of the suggested action.
+        # The type of the recommended action.
         self.suggest_type = suggest_type
 
     def validate(self):

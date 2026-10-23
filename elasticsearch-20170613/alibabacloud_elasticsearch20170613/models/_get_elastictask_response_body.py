@@ -97,14 +97,15 @@ class GetElastictaskResponseBodyResultElasticShrinkTask(DaraModel):
         target_indices: List[str] = None,
         trigger_type: str = None,
     ):
-        # The trigger cycle, specified as a Quartz Cron expression.
+        # The trigger cycle, which uses a Quartz Cron expression.
         self.cron_expression = cron_expression
-        # The number of elastic data nodes during off-peak hours.
+        # The target number of elastic data nodes during off-peak hours.
         self.elastic_node_count = elastic_node_count
         # The number of replicas for the target index.
         self.replica_count = replica_count
+        # The list of target index names for the elastic scaling task. Wildcards are supported.
         self.target_indices = target_indices
-        # The cause. Currently, only crontab is supported, which indicates scheduled triggering.
+        # The Cause. Currently, only crontab is supported, which indicates scheduled triggering.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -160,14 +161,15 @@ class GetElastictaskResponseBodyResultElasticExpansionTask(DaraModel):
         target_indices: List[str] = None,
         trigger_type: str = None,
     ):
-        # The trigger cycle, specified as a Quartz Cron expression.
+        # The trigger cycle, which uses a Quartz Cron expression.
         self.cron_expression = cron_expression
-        # The number of elastic data nodes during peak hours.
+        # The target number of elastic data nodes during peak hours.
         self.elastic_node_count = elastic_node_count
         # The number of replicas for the target index.
         self.replica_count = replica_count
+        # The list of target index names for the elastic scaling task. Wildcards are supported.
         self.target_indices = target_indices
-        # The cause. Currently, only **crontab** is supported, which indicates scheduled triggering.
+        # The Cause. Currently, only **crontab** is supported, which indicates scheduled triggering.
         self.trigger_type = trigger_type
 
     def validate(self):

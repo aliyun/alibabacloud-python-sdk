@@ -18,9 +18,9 @@ class GetEmonGrafanaDashboardsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the Grafana dashboard list is retrieved. Valid values:
+        # Indicates whether the list of Grafana dashboards is successfully retrieved. Valid values:
         # 
-        # - true: The list is retrieved.
+        # - true: The retrieval succeeded.
         # - false: The retrieval failed.
         self.success = success
 

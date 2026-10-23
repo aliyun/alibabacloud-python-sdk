@@ -10,6 +10,7 @@ class DescribeDynamicSettingsResponseBody(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
         # Id of the request
         self.result = result

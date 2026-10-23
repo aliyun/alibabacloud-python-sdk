@@ -12,7 +12,7 @@ class CreateILMPolicyResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The name of the lifecycle policy created by the request.
+        # The name of the created lifecycle policy returned in the response.
         self.result = result
 
     def validate(self):

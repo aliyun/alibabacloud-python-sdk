@@ -13,11 +13,13 @@ class ListStatsEventRecordsRequest(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
+        # The end time of the statistical window. The value is a UNIX timestamp in seconds. This parameter must be specified together with startTime and must be later than the start time.
         self.end_time = end_time
         # The event type.
         self.event_type = event_type
         # The event level.
         self.level = level
+        # The start time of the statistical window. The value is a UNIX timestamp in seconds. This parameter must be specified together with endTime.
         self.start_time = start_time
         # The event status.
         self.status = status

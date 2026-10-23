@@ -10,8 +10,9 @@ class EstimatedRestartTimeRequest(DaraModel):
         body: str = None,
         force: bool = None,
     ):
+        # The restart parameters, such as the restart method, target nodes, and blue-green deployment, represented as a JSON string.
         self.body = body
-        # Specifies whether to forcibly restart the instance. Default value: false.
+        # Specifies whether to force a restart. Default value: false.
         self.force = force
 
     def validate(self):

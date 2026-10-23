@@ -15,7 +15,7 @@ class ListVpcEndpointsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The endpoint details.
+        # The endpoint information.
         self.result = result
 
     def validate(self):
@@ -65,9 +65,9 @@ class ListVpcEndpointsResponseBodyResult(DaraModel):
         service_id: str = None,
         service_name: str = None,
     ):
-        # The endpoint connection status. Valid values:
+        # The connection status of the endpoint. Valid values:
         # 
-        # - Pending: Being modified.
+        # - Pending: Modifying.
         # 
         # - Connecting: Connecting.
         # 
@@ -75,35 +75,35 @@ class ListVpcEndpointsResponseBodyResult(DaraModel):
         # 
         # - Disconnecting: Disconnecting.
         # 
-        # - Disconnected: Not connected.
+        # - Disconnected: Disconnected.
         # 
-        # - Deleting: Being deleted.
+        # - Deleting: Deleting.
         # 
-        # - ServiceDeleted: The service associated with the endpoint has been deleted.
+        # - ServiceDeleted: The service corresponding to the endpoint is deleted.
         self.connection_status = connection_status
-        # The time when the endpoint was created.
+        # The time when the endpoint was created. The time is in UTC and follows the ISO 8601 standard.
         self.create_time = create_time
         # The business status of the endpoint. Valid values:
         # 
         # - Normal: Normal.
         # 
-        # - FinancialLocked: Financial lock.
+        # - FinancialLocked: Locked due to overdue payment.
         self.endpoint_business_status = endpoint_business_status
-        # The endpoint domain name, which is used for connection configuration.
+        # The domain name of the endpoint, which is used for connection configuration.
         self.endpoint_domain = endpoint_domain
-        # The endpoint ID.
+        # The ID of the endpoint.
         self.endpoint_id = endpoint_id
-        # The endpoint name.
+        # The name of the endpoint.
         self.endpoint_name = endpoint_name
-        # The endpoint status. Valid values:
+        # The status of the endpoint. Valid values:
         # 
-        # - Creating: Being created.
+        # - Creating: The endpoint is being created.
         # 
-        # - Active: Active.
+        # - Active: The endpoint is available.
         # 
-        # - Pending: Being modified.
+        # - Pending: The endpoint is being modified.
         # 
-        # - Deleting: Being deleted.
+        # - Deleting: The endpoint is being deleted.
         self.endpoint_status = endpoint_status
         # The ID of the endpoint service associated with the endpoint.
         self.service_id = service_id

@@ -16,7 +16,7 @@ class ListInstanceHistoryEventsResponseBody(DaraModel):
     ):
         # The response headers.
         self.headers = headers
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The returned results.
         self.result = result
@@ -80,16 +80,16 @@ class ListInstanceHistoryEventsResponseBodyResult(DaraModel):
     ):
         # The ECS instance ID.
         self.ecs_id = ecs_id
-        # The event creation time.
+        # The creation time of the event. The time is displayed in UTC and follows the ISO 8601 standard.
         self.event_create_time = event_create_time
         # The event status. Valid values:
         # - FAILED: failed
         # - EXECUTED: executed
         # - EXECUTING: executing
         self.event_cycle_status = event_cycle_status
-        # The event execution time.
+        # The execution time of the event. The time is displayed in UTC and follows the ISO 8601 standard.
         self.event_execute_time = event_execute_time
-        # The event completion time.
+        # The completion time of the event. The time is displayed in UTC and follows the ISO 8601 standard.
         self.event_finash_time = event_finash_time
         # The event level. Valid values:
         # - INFO: information
@@ -97,18 +97,18 @@ class ListInstanceHistoryEventsResponseBodyResult(DaraModel):
         # - CRITICAL: critical
         self.event_level = event_level
         # The event type. Valid values:
-        # - ECS:AUTO_RESTART: ECS node automatic restart.
-        # - Instance:InstanceFailure.Reboot:Executed: ECS instance restart completed (ECS instance error).
-        # - Instance:InstanceFailure.Reboot:Executing: ECS instance restart started (instance error).
-        # - Instance:SystemFailure.Reboot:Executed: ECS instance restart completed (system error).
-        # - Instance:SystemFailure.Reboot:Executing: ECS instance restart started (system error).
-        # - Instance:SystemFailure.Reboot:Failed: ECS instance restart failed (system error).
+        # - ECS:AUTO_RESTART: The ECS node is automatically restarted.
+        # - Instance:InstanceFailure.Reboot:Executed: The restart of the ECS instance is complete due to an instance error.
+        # - Instance:InstanceFailure.Reboot:Executing: The restart of the ECS instance starts due to an instance error.
+        # - Instance:SystemFailure.Reboot:Executed: The restart of the ECS instance is complete due to a system error.
+        # - Instance:SystemFailure.Reboot:Executing: The restart of the ECS instance starts due to a system error.
+        # - Instance:SystemFailure.Reboot:Failed: The restart of the ECS instance fails due to a system error.
         self.event_type = event_type
         # The instance ID.
         self.instance_id = instance_id
         # The IP address of the node that generated the event.
         self.node_ip = node_ip
-        # The region ID where the event occurred.
+        # The ID of the region where the event occurred.
         self.region_id = region_id
 
     def validate(self):

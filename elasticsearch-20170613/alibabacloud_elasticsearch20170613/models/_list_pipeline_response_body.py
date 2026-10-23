@@ -16,9 +16,9 @@ class ListPipelineResponseBody(DaraModel):
     ):
         # The response headers.
         self.headers = headers
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The returned results.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -72,17 +72,16 @@ class ListPipelineResponseBodyResult(DaraModel):
         pipeline_id: str = None,
         pipeline_status: str = None,
     ):
-        # The time when the pipeline was created.
+        # The time when the pipeline was created. The format is YYYY-MM-DDTHH:mm:ss.SSSZ, where the trailing Z indicates UTC.
         self.gmt_created_time = gmt_created_time
-        # The time when the pipeline was last updated.
+        # The time when the pipeline was updated. The format is YYYY-MM-DDTHH:mm:ss.SSSZ, where the trailing Z indicates UTC.
         self.gmt_update_time = gmt_update_time
-        # The pipeline ID.
+        # The ID of the pipeline.
         self.pipeline_id = pipeline_id
-        # The pipeline status. Valid values:
-        # 
-        # - NOT_DEPLOYED: not deployed.
-        # - RUNNING: running.
-        # - DELETED: deleted. This status is not displayed in the console.
+        # The status of the pipeline. Valid values:
+        # - NOT_DEPLOYED: not deployed
+        # - RUNNING: running
+        # - DELETED: deleted (this status is not displayed in the console)
         self.pipeline_status = pipeline_status
 
     def validate(self):

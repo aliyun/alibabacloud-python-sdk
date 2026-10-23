@@ -11,7 +11,7 @@ class UpdateLogstashDescriptionResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateLogstashDescriptionResponseBodyResult = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -49,7 +49,7 @@ class UpdateLogstashDescriptionResponseBodyResult(DaraModel):
         self,
         description: str = None,
     ):
-        # The instance name.
+        # The name of the instance.
         self.description = description
 
     def validate(self):

@@ -65,10 +65,10 @@ class UpdateAliwsDictResponseBodyResult(DaraModel):
         # The name of the uploaded file.
         self.name = name
         # The source type of the dictionary file. Valid values:
-        # - OSS: uses OSS open storage.
+        # - OSS: uses OSS public storage.
         # - ORIGIN: retains the previously uploaded dictionary.
         self.source_type = source_type
-        # The dictionary type. Valid values: ALI_WS (AliNLP tokenizer).
+        # The dictionary type. Valid value: ALI_WS (AliNLP word segmentation).
         self.type = type
 
     def validate(self):

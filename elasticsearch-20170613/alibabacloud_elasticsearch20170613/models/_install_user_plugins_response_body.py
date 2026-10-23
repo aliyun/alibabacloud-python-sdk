@@ -14,6 +14,7 @@ class InstallUserPluginsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The list of custom user plugins submitted for installation.
         self.result = result
 
     def validate(self):

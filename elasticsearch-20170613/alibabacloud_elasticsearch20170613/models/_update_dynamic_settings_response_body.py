@@ -10,7 +10,9 @@ class UpdateDynamicSettingsResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result of updating the dynamic configurations of the cluster. A value of true indicates that the update was successful, and a value of false indicates that the update failed.
         self.result = result
 
     def validate(self):

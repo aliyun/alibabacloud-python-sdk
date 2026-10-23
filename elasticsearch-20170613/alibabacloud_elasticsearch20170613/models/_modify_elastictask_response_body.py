@@ -52,9 +52,9 @@ class ModifyElastictaskResponseBodyResult(DaraModel):
         elastic_expansion_task: main_models.ModifyElastictaskResponseBodyResultElasticExpansionTask = None,
         elastic_shrink_task: main_models.ModifyElastictaskResponseBodyResultElasticShrinkTask = None,
     ):
-        # The elastic node scale-out rule.
+        # The scale-out rules for elastic nodes.
         self.elastic_expansion_task = elastic_expansion_task
-        # The elastic node scale-in rule.
+        # The scale-in rules for elastic nodes.
         self.elastic_shrink_task = elastic_shrink_task
 
     def validate(self):
@@ -97,14 +97,15 @@ class ModifyElastictaskResponseBodyResultElasticShrinkTask(DaraModel):
         target_indices: List[str] = None,
         trigger_type: str = None,
     ):
-        # The trigger cycle, specified as a Quartz Cron expression.
+        # The trigger cycle, specified by a Quartz cron expression.
         self.cron_expression = cron_expression
-        # The number of elastic data nodes during off-peak hours.
+        # The target number of elastic data nodes during off-peak hours.
         self.elastic_node_count = elastic_node_count
         # The number of replicas for the target index.
         self.replica_count = replica_count
+        # The list of target index names for the elastic scaling task. Wildcards are supported.
         self.target_indices = target_indices
-        # The cause. Valid values: crontab, which indicates scheduled triggering.
+        # The Cause. Valid value: crontab, which indicates scheduled triggering.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -160,14 +161,15 @@ class ModifyElastictaskResponseBodyResultElasticExpansionTask(DaraModel):
         target_indices: List[str] = None,
         trigger_type: str = None,
     ):
-        # The trigger cycle, specified as a Quartz Cron expression.
+        # The trigger cycle, specified by a Quartz cron expression.
         self.cron_expression = cron_expression
-        # The number of elastic data nodes during peak hours.
+        # The target number of elastic data nodes during peak hours.
         self.elastic_node_count = elastic_node_count
         # The number of replicas for the target index.
         self.replica_count = replica_count
+        # The list of target index names for the elastic scaling task. Wildcards are supported.
         self.target_indices = target_indices
-        # The cause. The value is fixed as crontab, which indicates scheduled triggering.
+        # The Cause. The value is fixed to crontab, which indicates scheduled triggering.
         self.trigger_type = trigger_type
 
     def validate(self):

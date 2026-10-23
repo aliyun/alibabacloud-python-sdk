@@ -65,21 +65,21 @@ class ListKibanaPvlNetworkResponseBodyResult(DaraModel):
         v_switch_ids_zone: List[main_models.ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone] = None,
         vpc_id: str = None,
     ):
-        # The time when the Kibana private network connection was created.
+        # The time when the Kibana private network connection was created. The time follows the ISO 8601 standard and is displayed in UTC.
         self.create_time = create_time
         # The endpoint ID.
         self.endpoint_id = endpoint_id
         # The endpoint name.
         self.endpoint_name = endpoint_name
         # The endpoint status. Valid values:
-        # 
-        # - Disconnected: disconnected
-        # - Connected: connected
+        # - Disconnected: Not connected.
+        # - Connected: Connected.
         self.endpoint_status = endpoint_status
+        # Indicates whether the security group is a managed security group.
         self.managed_security_group = managed_security_group
-        # The Kibana private network connection ID.
+        # The ID of the Kibana private network connection.
         self.pvl_id = pvl_id
-        # The list of security groups.
+        # The security groups.
         self.security_groups = security_groups
         # The vSwitch and zone information.
         self.v_switch_ids_zone = v_switch_ids_zone

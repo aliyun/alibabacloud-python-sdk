@@ -15,19 +15,19 @@ class ListLogstashRequest(DaraModel):
         tags: str = None,
         version: str = None,
     ):
-        # The instance name. Fuzzy match is supported. For example, if you search for an instance named abc, instances named abc, abcde, xyabc, and xabcy may all be returned.
+        # The name of the instance. Fuzzy match is supported. For example, if you search for instances named abc, the system may return all instances whose names are abc, abcde, xyabc, or xabcy.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
         # The page number of the instance list. Default value: 1.
         self.page = page
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The number of entries per page in Settings for paging. Default value: 20.
+        # The number of entries per page in a paging query. Default value: 20.
         self.size = size
         # The instance tags.
         self.tags = tags
-        # The instance version.
+        # The version of the instance.
         self.version = version
 
     def validate(self):
