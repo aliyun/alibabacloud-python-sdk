@@ -28,23 +28,27 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
         self.bandwidth_package_id = bandwidth_package_id
         # The region ID.
         self.biz_region_id = biz_region_id
-        # The billing method. Only subscription is supported.
+        # The billing method. Only the subscription billing method is supported.
         self.charge_type = charge_type
-        # The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
+        # The maximum number of entries to return per page in a paging query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next query. If the results of a query are not completely returned, the returned NextToken is not empty. You can include the returned NextToken in the next request to continue the query.
+        # The pagination token for the next query. If a query does not return all results, the returned NextToken is not empty. You can use the returned NextToken in a subsequent query to obtain more results.
         self.next_token = next_token
-        # The list of cloud phone matrix IDs.
+        # The IDs of the cloud phone matrices.
         self.node_ids = node_ids
         # The name of the cloud phone matrix.
         self.node_name = node_name
+        # The list of names used to filter cloud phone matrices.
         self.node_name_list = node_name_list
         # The specifications of the cloud phone matrix.
         self.server_type = server_type
+        # The field used for sorting. A value of CreationTime indicates the creation time, and a value of ExpiredTime indicates the expiration time.
         self.sort_key = sort_key
+        # The sort order. A value of ASC indicates ascending order, and a value of DESC indicates descending order.
         self.sort_type = sort_type
         # The status of the cloud phone matrix.
         self.status = status
+        # The tags of the node.
         self.tags = tags
 
     def validate(self):
@@ -153,7 +157,9 @@ class DescribeCloudPhoneNodesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

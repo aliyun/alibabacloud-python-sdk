@@ -21,13 +21,13 @@ class ExpandDataVolumeRequest(DaraModel):
         self.auto_pay = auto_pay
         # The region ID.
         self.biz_region_id = biz_region_id
-        # The list of cloud phone matrix IDs.
+        # The IDs of the cloud phone matrices.
         self.node_ids = node_ids
         # The redirect URL for the payment success page.
         self.paid_call_back_url = paid_call_back_url
         # The size of the device storage for the instance. Unit: GiB.
         self.phone_data_volume = phone_data_volume
-        # The promotion ID.
+        # The ID of the promotion.
         self.promotion_id = promotion_id
         # The size of the shared storage for the matrix. Unit: GiB.
         self.share_data_volume = share_data_volume

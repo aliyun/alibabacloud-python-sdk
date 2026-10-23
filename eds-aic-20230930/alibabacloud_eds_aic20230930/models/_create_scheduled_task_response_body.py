@@ -16,9 +16,9 @@ class CreateScheduledTaskResponseBody(DaraModel):
         tasks: List[main_models.CreateScheduledTaskResponseBodyTasks] = None,
         total_count: int = None,
     ):
-        # The API status code.
+        # The status code of the API operation.
         self.code = code
-        # The response message.
+        # The message returned by the API operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -86,11 +86,11 @@ class CreateScheduledTaskResponseBodyTasks(DaraModel):
         scheduled_id: str = None,
         task_config_id: str = None,
     ):
-        # The list of batch delivery results for instance scheduled tasks.
+        # The list of batch delivery results for the scheduled tasks of instances.
         self.instance_results = instance_results
-        # The scheduled task ID.
+        # The ID of the scheduled task.
         self.scheduled_id = scheduled_id
-        # The task configuration ID.
+        # The ID of the task configuration.
         self.task_config_id = task_config_id
 
     def validate(self):

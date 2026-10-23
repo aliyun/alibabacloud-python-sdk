@@ -15,6 +15,7 @@ class RebootAndroidInstancesInGroupResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The task information.
         self.tasks = tasks
 
     def validate(self):
@@ -51,7 +52,9 @@ class RebootAndroidInstancesInGroupResponseBodyTasks(DaraModel):
         child_tasks: List[main_models.RebootAndroidInstancesInGroupResponseBodyTasksChildTasks] = None,
         parent_task_id: str = None,
     ):
+        # The child tasks.
         self.child_tasks = child_tasks
+        # The parent task ID.
         self.parent_task_id = parent_task_id
 
     def validate(self):
@@ -94,7 +97,9 @@ class RebootAndroidInstancesInGroupResponseBodyTasksChildTasks(DaraModel):
         instance_id: str = None,
         task_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The child task ID.
         self.task_id = task_id
 
     def validate(self):

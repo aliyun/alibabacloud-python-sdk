@@ -15,7 +15,7 @@ class DescribeSpecResponseBody(DaraModel):
         spec_info_model: List[main_models.DescribeSpecResponseBodySpecInfoModel] = None,
         total_count: int = None,
     ):
-        # The token that indicates the position up to which the data is retrieved. An empty value indicates that all data has been retrieved.
+        # The token that specifies the position to which the current call has read. An empty value indicates that all data has been read.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -102,7 +102,7 @@ class DescribeSpecResponseBodySpecInfoModel(DaraModel):
         self.spec_status = spec_status
         # The specification type.
         self.spec_type = spec_type
-        # The system cloud disk size. Unit: GB.
+        # The size of the system cloud disk. Unit: GB.
         self.system_disk_size = system_disk_size
 
     def validate(self):

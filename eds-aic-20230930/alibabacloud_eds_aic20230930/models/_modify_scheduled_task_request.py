@@ -25,13 +25,13 @@ class ModifyScheduledTaskRequest(DaraModel):
         self.instance_ids = instance_ids
         # The run configuration.
         self.run_config = run_config
-        # The scheduled task ID.
+        # The ID of the scheduled task.
         # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
-        # Switches the status. Valid values: ACTIVE and DISABLED.
+        # The status toggle. Valid values: ACTIVE and DISABLED.
         self.status = status
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
         # The CAS version number.
         # 
@@ -112,13 +112,13 @@ class ModifyScheduledTaskRequestRunConfig(DaraModel):
         skills: List[str] = None,
         timeout_seconds: int = None,
     ):
-        # The extended parameter JSON string.
+        # The JSON string of extended parameters.
         self.extra_params = extra_params
         # The maximum number of execution steps.
         self.max_steps = max_steps
-        # The list of skill IDs. A maximum of 1 skill ID is supported. The value overwrites aim_task_config.run_config after modification.
+        # The list of skill IDs. You can specify up to one skill ID. The value overwrites aim_task_config.run_config after the modification.
         self.skills = skills
-        # The timeout period, in seconds.
+        # The timeout period in seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

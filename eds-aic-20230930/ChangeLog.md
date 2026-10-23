@@ -1,3 +1,18 @@
+2026-10-23 Version: 4.38.0
+- Support API DescribeBandwidthPackagePrice.
+- Support API DescribeCloudPhoneNodePrice.
+- Support API DescribeCloudPhoneNodeRenewPrice.
+- Support API DescribeCreditPackagePrice.
+- Support API DescribeInstanceGroupPrice.
+- Support API DescribeInstanceGroupPriceForRenew.
+- Support API DescribeMobileAgentPackagePrice.
+- Support API DescribeMobileAgentPackagePriceForRenew.
+- Support API RebootCloudPhoneNodes.
+- Update API CreateMobileAgentPackage: add request parameters BandwidthPackageId.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.SingleInstanceMode.
+- Update API DescribeCreditDetail: add request parameters TaskIds.
+
+
 2026-10-12 Version: 4.37.0
 - Support API CreateMobileAgentTask.
 - Support API ModifyMobileAgentPackage.

@@ -16,13 +16,13 @@ class DescribeBackupFilesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of returned result objects.
+        # The list of returned results.
         self.data = data
-        # The maximum number of entries returned in this query.
+        # The maximum number of entries returned in the current call.
         self.max_results = max_results
-        # The token that specifies the position from which the next query starts. An empty value indicates that all data has been read.
+        # The token that indicates the position to which the current call has read. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The unique ID of the request. If you encounter any issues, provide this request ID to the technical support team for troubleshooting.
+        # The unique ID of the request. If you encounter any issues, provide this request ID for troubleshooting.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -108,15 +108,15 @@ class DescribeBackupFilesResponseBodyData(DaraModel):
         self.android_instance_id = android_instance_id
         # The name of the instance.
         self.android_instance_name = android_instance_name
-        # Specifies whether the backup is a full-device backup.
+        # Specifies whether the backup is a full device backup.
         self.backup_all = backup_all
         # The ID of the backup file.
         self.backup_file_id = backup_file_id
         # The name of the backup file.
         self.backup_file_name = backup_file_name
-        # The directory where the backup file is saved.
+        # The directory where the backup file is stored.
         self.backup_file_path = backup_file_path
-        # The order source. A value of CLOUDPHONE indicates AI cloud phone.
+        # The order source. CLOUDPHONE indicates AI cloud phone.
         self.channel = channel
         # The description of the backup file.
         self.description = description
@@ -134,7 +134,7 @@ class DescribeBackupFilesResponseBodyData(DaraModel):
         self.region_id = region_id
         # The list of package names of the backed-up applications.
         self.source_app_info_list = source_app_info_list
-        # The list of directories of the source backup files.
+        # The list of directories for the source backup files.
         self.source_file_path_list = source_file_path_list
         # The status of the backup file.
         self.status = status

@@ -20,6 +20,7 @@ class CreateAndroidInstanceGroupResponseBody(DaraModel):
         self.instance_group_ids = instance_group_ids
         # The instance group information.
         self.instance_group_infos = instance_group_infos
+        # The bandwidth plan order information.
         self.network_package_order_model = network_package_order_model
         # The order ID.
         self.order_id = order_id
@@ -87,7 +88,9 @@ class CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel(DaraModel):
         bandwidth_package_id: str = None,
         bandwidth_package_order_id: str = None,
     ):
+        # The ID of the Internet Shared Bandwidth.
         self.bandwidth_package_id = bandwidth_package_id
+        # The bandwidth plan order ID.
         self.bandwidth_package_order_id = bandwidth_package_order_id
 
     def validate(self):

@@ -18,25 +18,28 @@ class DescribeCreditDetailRequest(DaraModel):
         page_num: str = None,
         page_size: str = None,
         start_time: int = None,
+        task_ids: List[str] = None,
     ):
-        # The agent types. This parameter is used to filter credit change details by agent type.
+        # The list of agent types. This parameter is used to filter credit change details by agent type.
         self.agent_types = agent_types
-        # The end time. The value is a UNIX timestamp in milliseconds.
+        # The end time. The time is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The instance IDs.
+        # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The maximum number of entries to return for this query.
+        # The maximum number of entries to return for this request.
         self.max_results = max_results
         # The token for the next query. If a query does not return all results, the returned NextToken is not empty. You can pass the returned NextToken in the next query to continue the query.
         self.next_token = next_token
-        # The package IDs.
+        # The list of package IDs.
         self.package_ids = package_ids
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The start time. The value is a UNIX timestamp in milliseconds.
+        # The start time. The time is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The list of task IDs. This parameter is used to filter credit details by task.
+        self.task_ids = task_ids
 
     def validate(self):
         pass
@@ -73,6 +76,9 @@ class DescribeCreditDetailRequest(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -103,6 +109,9 @@ class DescribeCreditDetailRequest(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
 
         return self
 

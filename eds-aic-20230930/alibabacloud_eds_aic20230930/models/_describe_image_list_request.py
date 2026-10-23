@@ -27,7 +27,7 @@ class DescribeImageListRequest(DaraModel):
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # > This parameter is not yet available for public use.
+        # > This parameter is not publicly available.
         self.image_package_type = image_package_type
         # The image type.
         # 
@@ -35,9 +35,9 @@ class DescribeImageListRequest(DaraModel):
         self.image_type = image_type
         # The instance type.
         self.instance_type = instance_type
-        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 20.
+        # The maximum number of entries to return per page during paging in a paged query. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The position from which the read operation starts. An empty value indicates that the read operation starts from the beginning.
+        # The token that specifies the starting position for the query. If this parameter is empty, the query starts from the beginning.
         self.next_token = next_token
         # The status of the image.
         self.status = status

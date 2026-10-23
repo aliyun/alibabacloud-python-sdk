@@ -14,7 +14,7 @@ class InstallAppResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The child task objects.
+        # The child task information.
         self.child_task_info = child_task_info
         # The request ID.
         self.request_id = request_id

@@ -24,13 +24,13 @@ class ModifyScheduledTaskShrinkRequest(DaraModel):
         self.instance_ids = instance_ids
         # The run configuration.
         self.run_config_shrink = run_config_shrink
-        # The scheduled task ID.
+        # The ID of the scheduled task.
         # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
-        # Switches the status. Valid values: ACTIVE and DISABLED.
+        # The status toggle. Valid values: ACTIVE and DISABLED.
         self.status = status
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
         # The CAS version number.
         # 

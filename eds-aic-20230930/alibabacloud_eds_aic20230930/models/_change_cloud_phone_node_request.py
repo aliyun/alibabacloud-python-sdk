@@ -21,21 +21,23 @@ class ChangeCloudPhoneNodeRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Default value: false.
         self.auto_pay = auto_pay
+        # The display settings.
         self.display_config = display_config
         # The downstream bandwidth throttling. Unit: Mbit/s.
         self.down_bandwidth_limit = down_bandwidth_limit
         # The instance type.
         self.instance_type = instance_type
-        # The cloud phone matrix ID.
+        # The ID of the cloud phone matrix.
         self.node_id = node_id
-        # The number of cloud phone instances. You can call [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) to query the maximum and minimum instance count limits.
+        # The number of cloud phone instances. You can call the [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) operation to query the maximum and minimum limits on the number of instances.
         self.phone_count = phone_count
-        # The device storage size. Valid range: 10 GiB to 4000 GiB. If this parameter is left empty, the original size is retained.
+        # The local storage size. Valid values: 10 to 4000. Unit: GiB. If this parameter is left empty, the original size is retained.
         self.phone_data_volume = phone_data_volume
-        # The promotional activity ID.
+        # The ID of the promotion.
         self.promotion_id = promotion_id
-        # The shared storage size. Unit: GiB.
+        # The size of the shared storage. Unit: GiB.
         self.share_data_volume = share_data_volume
+        # The size of the swap space.
         self.swap_size = swap_size
         # The upstream bandwidth throttling. Unit: Mbit/s.
         self.up_bandwidth_limit = up_bandwidth_limit

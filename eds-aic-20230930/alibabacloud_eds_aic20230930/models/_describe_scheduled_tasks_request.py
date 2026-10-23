@@ -22,15 +22,15 @@ class DescribeScheduledTasksRequest(DaraModel):
         self.instance_ids = instance_ids
         # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The pagination token that indicates the position from which to start reading. Leave this parameter empty to read from the beginning.
+        # The token that specifies the starting position for the current read operation. An empty value indicates that the read operation starts from the beginning.
         self.next_token = next_token
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # Filters by scheduled task IDs.
+        # The filter for scheduled task IDs.
         self.scheduled_ids = scheduled_ids
-        # Filters by status: ACTIVE/DISABLED.
+        # The status filter. Valid values: ACTIVE, DISABLED.
         self.status = status
         # The task name.
         self.task_name = task_name

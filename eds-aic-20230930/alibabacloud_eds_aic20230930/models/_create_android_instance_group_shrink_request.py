@@ -47,67 +47,77 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Default value: false.
         self.auto_renew = auto_renew
+        # The bandwidth plan ID.
         self.bandwidth_package_id = bandwidth_package_id
+        # The bandwidth type.
         self.bandwidth_package_type = bandwidth_package_type
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions where cloud phone instances can be purchased.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where cloud phones are available.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The channel cookie, which is passed through to the sales system when an order is placed.
         self.channel_cookie = channel_cookie
-        # The billing type.
+        # The billing method.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request and prevent repeated submissions. The value cannot exceed 100 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate requests. The token can be up to 100 characters in length.
         self.client_token = client_token
-        # > This parameter is not publicly available.
+        # > This parameter is not available to the public.
         self.enable_ipv_6 = enable_ipv_6
         # Specifies whether to enable GPU acceleration.
         self.gpu_acceleration = gpu_acceleration
-        # The image ID. You can call [DescribeImageList](~~DescribeImageList~~) to query the list of cloud phone images.
+        # The image ID. You can call the [DescribeImageList](~~DescribeImageList~~) operation to query the image list for cloud phones.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The instance group name.
+        # The name of the instance group.
         # 
-        # > The instance group name cannot exceed 30 characters in length. It must start with an uppercase letter, lowercase letter, or Chinese character. It cannot start with `http://` or `https://`. It can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # > The name can be up to 30 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. It can contain only Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.instance_group_name = instance_group_name
-        # The instance group specification. You can call [DescribeSpec](~~DescribeSpec~~) to query the specifications available for cloud phone instances.
+        # The specifications of the instance group. You can call the [DescribeSpec](~~DescribeSpec~~) operation to query the available specifications for cloud phones.
         # 
         # This parameter is required.
         self.instance_group_spec = instance_group_spec
+        # The instance version. A value of basic indicates a Wuying cloud phone instance, and a value of EnterpriseAi indicates a JVS Mobile instance.
         self.instance_version = instance_version
-        # > This parameter is not publicly available.
+        # > This parameter is not available to the public.
         self.ipv_6bandwidth = ipv_6bandwidth
-        # The key pair ID. If you specify a valid key pair ID when creating an instance group, the key pair is bound to all instances that are successfully created, without the need to call the bindng operation again.
+        # The key pair ID. When creating an instance group, if you specify a valid key pair ID, the key pair is bound to all successfully created instances, and you do not need to call the binding API operation again.
         # 
-        # > Binding a key pair during scale-out is not supported.
+        # > Binding key pairs during scale-out is not supported.
         self.key_pair_id = key_pair_id
+        # The network and bandwidth plan configurations of the instance group.
         self.network_info_shrink = network_info_shrink
+        # The network type of the instance.
         self.network_type = network_type
         # The number of instances in the instance group. Maximum value: 100.
         self.number_of_instances = number_of_instances
         # The network ID.
         # 
-        # - To create a shared network instance: the network ID is optional. Specify the network ID of the **Shared Network** type on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no shared network exists in the console, you can leave this parameter empty. A shared network is automatically created when the instance group is created.
+        # - To create a shared network instance: The network ID is optional. Enter the network ID of the **Shared Network** type on the [Cloud Phone Console > Network](https://wya.wuying.aliyun.com/network) page. If no shared network is available in the console, you can leave this parameter empty, and automatic creation of a shared network is triggered when the instance group is created.
         # 
-        # - To create a VPC network instance: the network ID is required. Specify the network ID of the **VPC Network** type on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no VPC network exists in the console, create a network first.
+        # - To create a VPC network instance: The network ID is required. Enter the network ID of the **VPC Network** type on the [Cloud Phone Console > Network](https://wya.wuying.aliyun.com/network) page. If no VPC network is available in the console, you must create a network first.
         self.office_site_id = office_site_id
+        # The redirect URL for the payment success page.
         self.paid_call_back_url = paid_call_back_url
         # The subscription duration of the resource. The unit is specified by PeriodUnit.
         self.period = period
         # The unit of the subscription duration.
         self.period_unit = period_unit
-        # The policy ID. You can call [ListPolicyGroups](~~ListPolicyGroups~~) to query the list of policies.
+        # The policy ID. You can call the [ListPolicyGroups](~~ListPolicyGroups~~) operation to query the policy list.
         self.policy_group_id = policy_group_id
+        # The promotion activity ID.
         self.promotion_id = promotion_id
+        # The sales mode.
         self.sale_mode = sale_mode
+        # The streaming mode of the instances in the instance group. If this parameter is not specified, the default mode is preemptive mode.
         self.stream_mode = stream_mode
         # The tags of the resource.
         self.tag = tag
-        # The vSwitch ID. You can call [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) to query the list of vSwitches.
+        # The vSwitch ID. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query the vSwitch list.
         # 
-        # - To create a shared network instance: leave this parameter empty.
+        # - To create a shared network instance: Leave this parameter empty.
         # 
-        # - To create a VPC network instance: the vSwitch ID is required. The specified vSwitch is used to create the instance.
+        # - To create a VPC network instance: The vSwitch ID is required. This vSwitch is used to create the instance.
         self.v_switch_id = v_switch_id
 
     def validate(self):

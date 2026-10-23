@@ -17,11 +17,11 @@ class DescribeCreditPackageResponseBody(DaraModel):
         total_count: int = None,
         total_exhausted_credit: str = None,
     ):
-        # The information about the credit boost packages.
+        # The credit package information.
         self.credits_package_infos = credits_package_infos
         # Indicates whether this is the first purchase.
         self.is_first_purchase = is_first_purchase
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of available credits.
         self.total_available_credits = total_available_credits
@@ -100,20 +100,21 @@ class DescribeCreditPackageResponseBodyCreditsPackageInfos(DaraModel):
         expired_time: str = None,
         total_credits: str = None,
     ):
-        # The number of available credits in the current credit boost package.
+        # The number of available credits in the current credit package.
         self.available_credits = available_credits
+        # The creation time. The time is in UTC and follows the ISO 8601 format.
         self.create_time = create_time
-        # The ID of the credit boost package.
+        # The ID of the credit package.
         self.credit_package_id = credit_package_id
-        # The status of the credit boost package.
+        # The status of the credit package.
         self.credit_package_status = credit_package_status
-        # The effective period of the credit boost package. The time format is YYYY-MM-DD HH:mm:ss.
+        # The effective period of the credit package. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.effective_time = effective_time
-        # The number of consumed credits in the current credit boost package.
+        # The number of consumed credits in the current credit package.
         self.exhausted_credits = exhausted_credits
-        # The expiration time of the credit boost package. The time format is YYYY-MM-DD HH:mm:ss.
+        # The expiration time of the credit package. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.expired_time = expired_time
-        # The total number of credits in the current credit boost package.
+        # The total number of credits in the current credit package.
         self.total_credits = total_credits
 
     def validate(self):

@@ -28,21 +28,20 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
         # The region ID.
         self.biz_region_id = biz_region_id
         # The billing method.
-        # [_single.params.ChargeType.enum. PrePaid]Subscription.
         self.charge_type = charge_type
-        # The IDs of the instance groups.
+        # The list of instance group IDs.
         self.instance_group_ids = instance_group_ids
-        # The name of the instance group. Fuzzy match is supported.
+        # The instance group name. Fuzzy match is supported.
         self.instance_group_name = instance_group_name
         # The instance version. A value of basic indicates a Wuying Cloud Phone instance, and a value of EnterpriseAi indicates a JVS Mobile instance.
         self.instance_version = instance_version
         # The ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The maximum number of entries to return on each page in a paging query. Valid values: 1 to 100. Default value: 100.
+        # The maximum number of entries to return per page in a paging query. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The token that indicates the starting position for the query. If this parameter is left empty, the query starts from the beginning.
+        # The pagination token that specifies the starting position of the query. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
-        # The ID of the policy.
+        # The policy ID.
         self.policy_group_id = policy_group_id
         # The purchase mode of the cloud phone.
         self.sale_mode = sale_mode
@@ -168,10 +167,10 @@ class DescribeAndroidInstanceGroupsRequestTags(DaraModel):
         value: str = None,
     ):
         # The tag key. You can specify 1 to 20 tag keys.
-        # >Notice: A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+        # >Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
         # The tag value.
-        # >Notice: A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # >Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

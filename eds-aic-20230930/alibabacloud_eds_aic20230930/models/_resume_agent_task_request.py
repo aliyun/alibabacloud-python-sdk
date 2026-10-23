@@ -15,13 +15,15 @@ class ResumeAgentTaskRequest(DaraModel):
         task_ids: List[str] = None,
         tool_call_id: str = None,
     ):
-        # The additional prompt to append. This parameter takes effect only when the task is passively paused, such as when the task is paused and waiting for user confirmation.
+        # The additional prompt. This parameter takes effect only when the task is passively paused, such as pausing to wait for user confirmation.
         self.additional_prompt = additional_prompt
+        # The list of clarification answers submitted when resuming the task.
         self.clarification_answers = clarification_answers
         # The list of task IDs.
         # 
         # This parameter is required.
         self.task_ids = task_ids
+        # The ID of the tool invoke to resume.
         self.tool_call_id = tool_call_id
 
     def validate(self):
@@ -77,8 +79,11 @@ class ResumeAgentTaskRequestClarificationAnswers(DaraModel):
         id: str = None,
         selected_ids: List[str] = None,
     ):
+        # The custom input content in the clarification answer.
         self.custom_value = custom_value
+        # The ID of the clarification item.
         self.id = id
+        # The list of selected option IDs in the clarification answer.
         self.selected_ids = selected_ids
 
     def validate(self):

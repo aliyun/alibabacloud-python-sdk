@@ -14,12 +14,13 @@ class UpdateInstanceImageRequest(DaraModel):
         instance_id_list: List[str] = None,
         reset: bool = None,
     ):
+        # Specifies whether to skip parameter validation. A value of true indicates that validation is skipped. A value of false or an empty value indicates that validation is performed.
         self.ignore_param_validation = ignore_param_validation
-        # The ID of the image. Call [](t2730769.xdita#)to query the list of images for cloud phones.
+        # The image ID. You can call the [DescribeImageList](https://help.aliyun.com/document_detail/2807324.html) operation to query the image list of cloud phones.
         self.image_id = image_id
         # The list of instances.
         self.instance_id_list = instance_id_list
-        # Specifies whether to reset the instance. If you reset the instance, all user data on the instance is cleared.
+        # Specifies whether to reset the instance. A reset clears all user data on the instance.
         self.reset = reset
 
     def validate(self):

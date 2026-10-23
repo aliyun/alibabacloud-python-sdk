@@ -21,31 +21,29 @@ class RenewMobileAgentPackageRequest(DaraModel):
         # Specifies whether to enable automatic payment. Valid values:
         # 
         # - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
-        # - **false** (default): Only an order is generated. No payment is made.
+        # - **false** (default): Only an order is generated and no payment is deducted.
         # 
         # 
         # 
         # 
-        # > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the Elastic Cloud Phone console to complete the payment.
+        # > If the balance of your payment method is insufficient, set this parameter to false to generate an unpaid order. You can log on to the Wuying Cloud Phone console to complete the payment.
         # >
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Default value: false.
         self.auto_renew = auto_renew
-        # The idempotence key.
+        # The idempotency key.
         self.client_token = client_token
         # The list of resource plan IDs.
         self.mobile_agent_package_ids = mobile_agent_package_ids
-        # The redirect URL after a successful payment.
+        # The redirect URL for the payment success page.
         self.paid_callback_url = paid_callback_url
-        # The duration for which you want to purchase the resource. The unit is specified by `PeriodUnit`.
+        # The subscription duration of the resource. The unit is specified by PeriodUnit.
         self.period = period
-        # The unit of the duration for which you want to purchase the resource.
-        # 
-        # Valid values:
-        # - **Month**: month.
-        # - **Year**: year.
+        # The unit of the subscription duration of the resource. Valid values:
+        # - **Month**: Month.
+        # - **Year**: Year.
         self.period_unit = period_unit
-        # The ID of the promotional campaign.
+        # The ID of the promotion.
         self.promotion_id = promotion_id
 
     def validate(self):

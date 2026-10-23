@@ -56,8 +56,9 @@ class CreateCloudPhoneNodeShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
+        # The channel cookie that is passed through to the sales system when an order is placed.
         self.channel_cookie = channel_cookie
-        # The billing method. Only subscription is supported.
+        # The billing method. Only the subscription billing method is supported.
         self.charge_type = charge_type
         # The Quantity of the cloud phone matrix.
         self.count = count
@@ -67,54 +68,57 @@ class CreateCloudPhoneNodeShrinkRequest(DaraModel):
         self.down_bandwidth_limit = down_bandwidth_limit
         # The image ID.
         self.image_id = image_id
-        # The instance type. > To purchase more instance types, you can [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
+        # The instance type.
+        # > To purchase additional specifications, [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
         self.instance_type = instance_type
+        # Specifies whether to use a single image disk. Default value: false. A value of false indicates that the system disk and the shared internal storage image disk are used.
         self.is_single_img_disk = is_single_img_disk
-        # The office network ID.
+        # The ID of the office network.
         self.network_id = network_id
-        # The network mapping information of the instance.
+        # The network mapping information for the instance.
         self.network_info_shrink = network_info_shrink
         # The network type of the instance.
         self.network_type = network_type
         # The name of the cloud phone matrix.
         self.node_name = node_name
-        # The redirect URL for the payment success page.
+        # The redirect URL of the payment success page.
         self.paid_call_back_url = paid_call_back_url
-        # The subscription period of the resource. The unit is specified by `PeriodUnit`.
+        # The subscription period. The unit is specified by PeriodUnit.
         # 
-        # - If `PeriodUnit` is set to **year**, the only valid value is 1.
-        # - If `PeriodUnit` is set to **month**, valid values are 1, 2, 3, and 6.
+        # - If PeriodUnit is set to **year**, the only valid value is 1.
+        # - If PeriodUnit is set to **month**, valid values are 1, 2, 3, and 6.
         self.period = period
         # The unit of the subscription period.
         self.period_unit = period_unit
         # The number of cloud phone instances to create in a single matrix.
         self.phone_count = phone_count
-        # The size of the independent device storage. Unit: GiB.
+        # The size of the independent internal storage. Unit: GiB.
         self.phone_data_volume = phone_data_volume
-        # The ID of the promotion.
+        # The promotion ID.
         self.promotion_id = promotion_id
-        # The height of the resolution. Unit: pixels.
+        # The resolution height. Unit: pixels.
         self.resolution_height = resolution_height
-        # The width of the resolution. Unit: pixels.
+        # The resolution width. Unit: pixels.
         self.resolution_width = resolution_width
-        # The size of the shared device storage. Unit: GiB.
+        # The size of the shared internal storage. Unit: GiB.
         # 
-        # > The minimum size of the shared device storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
+        # > The minimum size of the shared internal storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
         self.server_share_data_volume = server_share_data_volume
         # The specification of the cloud phone matrix.
         # 
         # This parameter is required.
         self.server_type = server_type
-        # The streaming mode for instances in the cloud phone matrix. If this parameter is not specified, the default value is preemptive mode.
+        # The streaming mode for instances in the cloud phone matrix. If this parameter is not specified, the preemptive mode is used by default.
         self.stream_mode = stream_mode
+        # The size of the swap space.
         self.swap_size = swap_size
-        # The tags of the resource.
+        # The resource tags.
         self.tag = tag
         # The upstream bandwidth throttling. Unit: Mbit/s.
         self.up_bandwidth_limit = up_bandwidth_limit
-        # Specifies whether to use a template during creation. If you want to use a random template from the template list, set the value to `Random`. If you specify a template ID, the specified template is used.
+        # Specifies whether to use a template during creation. To use a random template from the template list, set the value to Random. To use a specific template, specify the template ID.
         self.use_template = use_template
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

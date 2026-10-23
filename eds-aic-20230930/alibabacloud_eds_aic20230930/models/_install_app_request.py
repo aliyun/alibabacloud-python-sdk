@@ -13,11 +13,11 @@ class InstallAppRequest(DaraModel):
         instance_group_id_list: List[str] = None,
         instance_id_list: List[str] = None,
     ):
-        # The application IDs.
+        # The list of application IDs.
         self.app_id_list = app_id_list
-        # The instance group IDs.
+        # The list of instance groups.
         self.instance_group_id_list = instance_group_id_list
-        # The instance IDs.
+        # The list of instances.
         self.instance_id_list = instance_id_list
 
     def validate(self):

@@ -17,7 +17,7 @@ class DescribeAndroidInstanceGroupsResponseBody(DaraModel):
     ):
         # The details of the instance group.
         self.instance_group_model = instance_group_model
-        # The token that indicates the read position returned by the current call. An empty value indicates that all data has been read.
+        # The token that indicates the position of the current read. An empty value indicates that all data has been read.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -109,34 +109,36 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         resolution_height: int = None,
         resolution_width: int = None,
         sale_mode: str = None,
+        single_instance_mode: bool = None,
         system_version: str = None,
         tags: List[main_models.DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags] = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The delivery group ID.
+        # The ID of the delivery group.
         self.app_instance_group_id = app_instance_group_id
         # The architecture type.
         self.architecture_type = architecture_type
         # The number of available instances.
+        # 
         # > Available indicates that the instance status is neither Deleting nor Deleted.
         self.available_instance_amount = available_instance_amount
         # The ID of the bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
         # The status of the bandwidth plan.
         # Valid values:
-        # - Creating: creating
-        # - Releasing: releasing
-        # - InUse: in use
-        # - Failed: failed
-        # - Expired: expired
-        # - Available: available and unbound, billing in progress
+        # - Creating: The bandwidth plan is being created.
+        # - Releasing: The bandwidth plan is being released.
+        # - InUse: The bandwidth plan is in use.
+        # - Failed: The operation failed.
+        # - Expired: The bandwidth plan has expired.
+        # - Available: The bandwidth plan is unbound and being billed.
         self.bandwidth_package_status = bandwidth_package_status
         # The type of the bandwidth plan.
         self.bandwidth_package_type = bandwidth_package_type
-        # The Internet bandwidth throttling rules for the instance group.
+        # The information about the Internet bandwidth throttling rules bound to the instance group.
         self.bind_qos_rules = bind_qos_rules
-        # The order source. CLOUDPHONE indicates AI Cloud Phone.
+        # The order source. A value of CLOUDPHONE indicates AI Cloud Phone.
         self.channel = channel
         # The billing method.
         self.charge_type = charge_type
@@ -144,7 +146,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.cpu = cpu
         # The disk information.
         self.disks = disks
-        # > This parameter is not available for public use.
+        # > This parameter is not publicly available.
         self.enable_ipv_6 = enable_ipv_6
         # The cause of the creation failure.
         self.error_code = error_code
@@ -154,36 +156,37 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.gmt_expired = gmt_expired
         # The update time.
         self.gmt_modified = gmt_modified
-        # The image ID.
+        # The ID of the image.
         self.image_id = image_id
         # The image version.
         self.image_version = image_version
         # The list of installed applications.
         self.installed_app_list = installed_app_list
-        # The ID of the instance group.
+        # The instance group ID.
         self.instance_group_id = instance_group_id
         # The name of the instance group.
         self.instance_group_name = instance_group_name
-        # The instance group specifications.
+        # The specifications of the instance group.
         self.instance_group_spec = instance_group_spec
         # The description of the instance group specifications.
         self.instance_group_spec_describe = instance_group_spec_describe
         # The status of the instance group.
         self.instance_group_status = instance_group_status
-        # > This parameter is not available for public use.
+        # > This parameter is not publicly available.
         self.ipv_6bandwidth = ipv_6bandwidth
         # The memory size.
         self.memory = memory
         # The network type of the instance.
-        # > Currently, this field is returned only for instance groups in the standard network.
+        # 
+        # > This field is returned only for instance groups in the standard network.
         self.network_type = network_type
         # The number of instances in the instance group.
         self.number_of_instances = number_of_instances
         # The network ID.
         self.office_site_id = office_site_id
-        # The ID of the plan package for the AI Cloud Phone.
+        # The ID of the plan for the AI Cloud Phone.
         self.package_id = package_id
-        # The ID of the policy.
+        # The policy ID.
         self.policy_group_id = policy_group_id
         # The region ID.
         self.region_id = region_id
@@ -195,11 +198,13 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.resolution_width = resolution_width
         # The sales mode.
         self.sale_mode = sale_mode
+        # Indicates whether the single-instance mode is enabled.
+        self.single_instance_mode = single_instance_mode
         # The system version.
         self.system_version = system_version
         # The tag information.
         self.tags = tags
-        # The vSwitch ID in the VPC.
+        # The ID of the vSwitch in the VPC.
         self.v_switch_id = v_switch_id
         # The zone ID.
         self.zone_id = zone_id
@@ -331,6 +336,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         if self.sale_mode is not None:
             result['SaleMode'] = self.sale_mode
 
+        if self.single_instance_mode is not None:
+            result['SingleInstanceMode'] = self.single_instance_mode
+
         if self.system_version is not None:
             result['SystemVersion'] = self.system_version
 
@@ -461,6 +469,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         if m.get('SaleMode') is not None:
             self.sale_mode = m.get('SaleMode')
 
+        if m.get('SingleInstanceMode') is not None:
+            self.single_instance_mode = m.get('SingleInstanceMode')
+
         if m.get('SystemVersion') is not None:
             self.system_version = m.get('SystemVersion')
 
@@ -558,9 +569,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules(Da
         instance_qos_rule: List[main_models.DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule] = None,
         total_count: int = None,
     ):
-        # The Internet bandwidth throttling rules bound to the instances.
+        # The information about the Internet bandwidth throttling rules bound to the instance.
         self.instance_qos_rule = instance_qos_rule
-        # The total number of Internet bandwidth throttling rules for the instance group.
+        # The total number of Internet bandwidth throttling rules bound to the instance group.
         self.total_count = total_count
 
     def validate(self):
@@ -605,7 +616,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesIns
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The ID of the Internet bandwidth throttling rule (applies only to premium bandwidth).
+        # The ID of the Internet bandwidth throttling rule. This rule applies only to premium bandwidth.
         self.qos_rule_id = qos_rule_id
 
     def validate(self):

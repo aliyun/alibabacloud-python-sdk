@@ -15,11 +15,13 @@ class RunCommandResponseBody(DaraModel):
         run_command_infos: List[main_models.RunCommandResponseBodyRunCommandInfos] = None,
         task_id: str = None,
     ):
-        # The command execution ID. Use this ID to query the execution result.
+        # The command execution ID. You can use this ID to query the command execution result.
         self.invoke_id = invoke_id
         # The request ID.
         self.request_id = request_id
+        # The list of command execution information for each cloud phone instance.
         self.run_command_infos = run_command_infos
+        # The batch task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -75,8 +77,11 @@ class RunCommandResponseBodyRunCommandInfos(DaraModel):
         instance_id: str = None,
         invoke_id: str = None,
     ):
+        # The instance-level child task ID.
         self.child_task_id = child_task_id
+        # The cloud phone instance ID.
         self.instance_id = instance_id
+        # The command execution ID.
         self.invoke_id = invoke_id
 
     def validate(self):

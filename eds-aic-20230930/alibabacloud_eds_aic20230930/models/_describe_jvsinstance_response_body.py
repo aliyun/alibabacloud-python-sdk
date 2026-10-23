@@ -21,8 +21,9 @@ class DescribeJVSInstanceResponseBody(DaraModel):
         self.data = data
         # The maximum number of results returned in this request.
         self.max_results = max_results
-        # The token that specifies the starting position for the next query. An empty value indicates that the query starts from the beginning.
+        # The token that indicates the starting position of the current query. If this parameter is empty, the query starts from the beginning.
         self.next_token = next_token
+        # The number of pending upgrades.
         self.pending_upgrade_count = pending_upgrade_count
         # The request ID.
         self.request_id = request_id
@@ -101,13 +102,15 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
         status: str = None,
         used_credit: List[main_models.DescribeJVSInstanceResponseBodyDataUsedCredit] = None,
     ):
+        # The AI Engine version and upgrade status.
         self.agent_version = agent_version
         # The creation time. The time is in UTC and follows the ISO 8601 standard.
         self.create_time = create_time
-        # The credit limit configuration. Subsequent quota configurations overwrite previous configurations.
+        # The credit limit configuration. If multiple configurations are delivered, the subsequent configurations overwrite the previous ones.
         self.credit_config = credit_config
         # The expiration time. The time is in UTC and follows the ISO 8601 standard.
         self.expire_time = expire_time
+        # The list of skills installed on the instance.
         self.installed_skills = installed_skills
         # The instance ID.
         self.instance_id = instance_id
@@ -117,7 +120,7 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
         self.modify_time = modify_time
         # The instance status.
         self.status = status
-        # The used credit.
+        # The used credits.
         self.used_credit = used_credit
 
     def validate(self):
@@ -270,11 +273,17 @@ class DescribeJVSInstanceResponseBodyDataInstalledSkills(DaraModel):
         skill_name: str = None,
         skill_type: str = None,
     ):
+        # The skill description.
         self.description = description
+        # The skill icon URL.
         self.icon_url = icon_url
+        # The skill installation time.
         self.installed_at = installed_at
+        # The skill ID.
         self.skill_id = skill_id
+        # The skill name.
         self.skill_name = skill_name
+        # The skill type.
         self.skill_type = skill_type
 
     def validate(self):
@@ -333,7 +342,7 @@ class DescribeJVSInstanceResponseBodyDataCreditConfig(DaraModel):
         credit_limit: int = None,
         limit_period: str = None,
     ):
-        # The limit value.
+        # The credit limit.
         self.credit_limit = credit_limit
         # The limit period.
         self.limit_period = limit_period
@@ -370,7 +379,9 @@ class DescribeJVSInstanceResponseBodyDataAgentVersion(DaraModel):
         upgrade_status: str = None,
         version: str = None,
     ):
+        # The AI Engine version upgrade status.
         self.upgrade_status = upgrade_status
+        # The AI Engine version number.
         self.version = version
 
     def validate(self):

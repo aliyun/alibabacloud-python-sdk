@@ -29,7 +29,7 @@ class CreateScheduledTaskRequest(DaraModel):
         self.max_executions = max_executions
         # The run configuration.
         self.run_config = run_config
-        # The task name.
+        # The name of the task.
         # 
         # This parameter is required.
         self.task_name = task_name
@@ -98,13 +98,13 @@ class CreateScheduledTaskRequestRunConfig(DaraModel):
         skills: List[str] = None,
         timeout_seconds: int = None,
     ):
-        # The extended parameters as a JSON string.
+        # The JSON string of extended parameters.
         self.extra_params = extra_params
         # The maximum number of execution steps.
         self.max_steps = max_steps
-        # The list of skill IDs, up to 1. Written to aim_task_config.run_config when the scheduled task is created and read when the callback is delivered.
+        # The list of skill IDs. You can specify up to 1 skill ID. The value is written to aim_task_config.run_config when the scheduled task is created and read when the callback is delivered.
         self.skills = skills
-        # The timeout in seconds.
+        # The timeout period in seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

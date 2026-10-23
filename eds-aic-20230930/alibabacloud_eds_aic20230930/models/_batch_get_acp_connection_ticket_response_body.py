@@ -13,9 +13,9 @@ class BatchGetAcpConnectionTicketResponseBody(DaraModel):
         instance_connection_models: List[main_models.BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels] = None,
         request_id: str = None,
     ):
-        # The results of the instance connection tasks.
+        # The instance connection task results.
         self.instance_connection_models = instance_connection_models
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,20 +65,23 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(DaraModel)
         task_status: str = None,
         ticket: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
+        # The physical instance ID.
         self.app_instance_id = app_instance_id
+        # The error cause.
         self.error_code = error_code
-        # The ID of the cloud phone instance.
+        # The instance ID.
         self.instance_id = instance_id
+        # The persistent session ID.
         self.persistent_app_instance_id = persistent_app_instance_id
-        # The port used for establishing a connection.
+        # The connection port.
         self.port = port
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The state of the task. If FINISHED is returned, it indicates that a value can be retrieved from the Ticket field. If the returned value is not FINISHED, you still need to use this operation to query the Ticket generation result by using TaskId.
+        # The task status. A value of FINISHED indicates that you can obtain the ticket from the Ticket field. Otherwise, you must use the TaskId to call this operation and query the ticket generation result.
         self.task_status = task_status
-        # The ticket used to connect to the cloud phone instance.
+        # The ticket used to connect to the user instance.
         self.ticket = ticket
 
     def validate(self):

@@ -15,17 +15,17 @@ class RunCommandRequest(DaraModel):
         instance_ids: List[str] = None,
         timeout: int = None,
     ):
-        # The channel type for running the command.
+        # The channel type used to execute the command.
         self.agent_type = agent_type
-        # The content of the command.
+        # The command content.
         self.command_content = command_content
-        # The encoding method for the command content (`CommandContent`). This value is not case-sensitive.
+        # The encoding method of the command content (`CommandContent`). This parameter is case-insensitive.
         # 
-        # > An invalid value defaults to `PlainText`.
+        # > If the specified value is not within the valid values, it is processed as `PlainText`.
         self.content_encoding = content_encoding
-        # A list of instance IDs. You can specify up to 50 instances per request.
+        # The list of instance IDs. A single request supports up to 50 instances.
         self.instance_ids = instance_ids
-        # The execution timeout in seconds. The command times out if it does not complete within this period. Defaults to 60 seconds.
+        # The timeout period. Unit: seconds. If the command is not completed within this period, the command execution status is set to timeout. If this parameter is not specified, the default value is 60 seconds.
         self.timeout = timeout
 
     def validate(self):

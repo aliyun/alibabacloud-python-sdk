@@ -27,9 +27,9 @@ class DescribeSpecRequest(DaraModel):
         self.matrix_spec = matrix_spec
         # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The token that specifies the position from which the query starts. If you leave this parameter empty, the query starts from the beginning.
+        # The token that specifies the position from which to start reading. An empty value indicates that the reading starts from the beginning.
         self.next_token = next_token
-        # The purchase mode for cloud phones.
+        # The purchasing mode of the cloud phone.
         self.sale_mode = sale_mode
         # The list of specification IDs.
         self.spec_ids = spec_ids

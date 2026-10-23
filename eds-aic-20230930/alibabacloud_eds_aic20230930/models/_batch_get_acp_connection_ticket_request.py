@@ -19,14 +19,23 @@ class BatchGetAcpConnectionTicketRequest(DaraModel):
     ):
         # The connection mode.
         self.connection_mode = connection_mode
-        # The ID of the user to whom the cloud phone instance is assigned.
+        # The ID of the assigned user. If you do not specify this parameter, the system user assigned in the background is used to obtain the ticket.
+        # 
+        # <props="china">
+        # The usage of this parameter varies based on the Cloud Phone edition and the instance streaming mode:
+        # 
+        # - Cloud Phone Instance Edition or Cloud Phone Matrix Edition (preemptive mode): You can obtain a `Ticket` only by using the same `EnduserId`.
+        # - Cloud Phone Matrix Edition (collaborative mode): You can pass different `EnduserId` values to obtain `Ticket` values and stream for different users (up to 5) at the same time. You can pass only one `EnduserId` at a time.
+        # 
+        # > You can define the instance streaming mode by using the `StreamMode` parameter of the `ModifyCloudPhoneNode` operation.
         self.end_user_id = end_user_id
-        # The ID of the instance group.
+        # The instance group ID.
         self.instance_group_id = instance_group_id
-        # The IDs of the cloud phone instances. You can specify 1 to 100 IDs of cloud phone instances.
+        # The list of Cloud Phone instance IDs. You can specify 1 to 100 IDs.
         self.instance_ids = instance_ids
-        # The instance connection task, which is used to query whether the ticket retrieval task is completed.
+        # The instance connection tasks. This parameter is used to query whether the ticket retrieval task is completed.
         self.instance_tasks = instance_tasks
+        # The list of custom connection ports.
         self.ports = ports
 
     def validate(self):
@@ -93,9 +102,9 @@ class BatchGetAcpConnectionTicketRequestInstanceTasks(DaraModel):
         instance_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the cloud phone instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

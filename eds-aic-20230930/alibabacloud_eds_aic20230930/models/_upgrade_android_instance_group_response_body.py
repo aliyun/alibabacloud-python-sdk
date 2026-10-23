@@ -11,7 +11,7 @@ class UpgradeAndroidInstanceGroupResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The instance IDs created by the scale-out.
+        # The instance IDs created during the scale-out.
         self.instance_ids = instance_ids
         # The ID of the order.
         self.order_id = order_id

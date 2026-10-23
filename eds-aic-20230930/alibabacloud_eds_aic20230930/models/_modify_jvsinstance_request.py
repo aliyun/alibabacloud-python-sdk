@@ -21,7 +21,7 @@ class ModifyJVSInstanceRequest(DaraModel):
         self.agent_version = agent_version
         # Specifies whether to apply the configuration to all instances.
         self.apply_to_all = apply_to_all
-        # The credit limit configuration. Subsequent quota configurations overwrite previous ones.
+        # The credit limit configuration. Subsequent configurations overwrite previous ones.
         self.credit_config = credit_config
         # The image ID.
         self.image_id = image_id
@@ -94,9 +94,9 @@ class ModifyJVSInstanceRequestCreditConfig(DaraModel):
         credit_limit: int = None,
         limit_period: str = None,
     ):
-        # The quota limit.
+        # The credit limit.
         self.credit_limit = credit_limit
-        # The period of the current credit.
+        # The time dimension for the current credit.
         self.limit_period = limit_period
 
     def validate(self):

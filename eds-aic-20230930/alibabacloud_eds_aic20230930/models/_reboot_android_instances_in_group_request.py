@@ -14,12 +14,13 @@ class RebootAndroidInstancesInGroupRequest(DaraModel):
         ignore_param_validation: bool = None,
         sale_mode: str = None,
     ):
-        # A list of instance IDs.
+        # The list of instance IDs.
         self.android_instance_ids = android_instance_ids
-        # Specifies whether to forcefully reboot the instances. If a Cloud Phone instance cannot be shut down because of system or network errors, you can force a reboot. This operation may cause data loss.
+        # Specifies whether to force a restart. You can force a restart if a cloud phone cannot be shut down due to system or network exceptions. Unsaved data may be lost.
         self.force_stop = force_stop
+        # Specifies whether to skip parameter validation. A value of true indicates that validation is skipped. If the value is false or not specified, validation is performed.
         self.ignore_param_validation = ignore_param_validation
-        # The sales mode. This parameter is deprecated.
+        # **[Deprecated]** The sales mode.
         self.sale_mode = sale_mode
 
     def validate(self):

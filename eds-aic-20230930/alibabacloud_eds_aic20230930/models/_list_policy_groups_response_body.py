@@ -15,7 +15,7 @@ class ListPolicyGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
+        # The token that indicates the read position returned by the current call. An empty value indicates that all data has been read.
         self.next_token = next_token
         # The policy information.
         self.policy_group_model = policy_group_model
@@ -88,20 +88,21 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(DaraModel):
         session_resolution_width: int = None,
         watermark: main_models.ListPolicyGroupsResponseBodyPolicyGroupModelWatermark = None,
     ):
+        # The list of access policy rules.
         self.access_policies = access_policies
         # Indicates whether local camera redirection is enabled.
         self.camera_redirect = camera_redirect
-        # The clipboard permission.
+        # The clipboard permissions.
         self.clipboard = clipboard
         # The creation time.
         self.gmt_create = gmt_create
-        # The file transfer policy for the HTML5 client.
+        # The HTML5 client file transfer policy.
         self.html_5file_transfer = html_5file_transfer
-        # The local disk mapping permission.
+        # The local disk mapping permissions.
         self.local_drive = local_drive
         # The locked resolution.
         self.lock_resolution = lock_resolution
-        # The network redirection settings.
+        # The network redirection.
         self.net_redirect_policy = net_redirect_policy
         # The policy ID.
         self.policy_group_id = policy_group_id
@@ -109,11 +110,11 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(DaraModel):
         self.policy_group_name = policy_group_name
         # The resources associated with the policy.
         self.policy_related_resources = policy_related_resources
-        # The height of the resolution.
+        # The resolution height.
         self.session_resolution_height = session_resolution_height
-        # The width of the resolution.
+        # The resolution width.
         self.session_resolution_width = session_resolution_width
-        # The screen watermark settings.
+        # The screen watermark.
         self.watermark = watermark
 
     def validate(self):
@@ -243,7 +244,7 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelWatermark(DaraModel):
     ):
         # The watermark font color. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
-        # The custom watermark content. The value can be up to 10 characters in length and does not support emoji characters.
+        # The custom watermark content. The length cannot exceed 10 characters, and emoji characters are not supported.
         self.watermark_custom_text = watermark_custom_text
         # The watermark font size. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
@@ -355,19 +356,19 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(DaraModel):
     ):
         # Indicates whether a transparent proxy is manually configured.
         self.custom_proxy = custom_proxy
-        # The proxy IP address of the transparent proxy. The value must be in IPv4 format.
+        # The transparent proxy IP address. The format is an IPv4 address.
         self.host_addr = host_addr
-        # Indicates whether network redirection is enabled. After this feature is enabled, traffic is redirected to the client-side network by default.
+        # Indicates whether network redirection is enabled. If enabled, traffic is redirected to the client-side network by default.
         self.net_redirect = net_redirect
-        # The port of the transparent proxy. Valid values: 1 to 65535.
+        # The transparent proxy port. Valid values: 1 to 65535.
         self.port = port
-        # The proxy password. The value must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
+        # The proxy password. The length ranges from 1 to 256 characters. Chinese characters and whitespace characters are not allowed.
         self.proxy_password = proxy_password
         # The proxy protocol type.
         self.proxy_type = proxy_type
-        # The proxy username. The value must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
+        # The proxy username. The length ranges from 1 to 256 characters. Chinese characters and whitespace characters are not allowed.
         self.proxy_user_name = proxy_user_name
-        # The list of proxy rules.
+        # The proxy rule list.
         self.rules = rules
 
     def validate(self):
@@ -486,10 +487,15 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies(DaraModel):
         policy: str = None,
         priority: int = None,
     ):
+        # The access policy rule ID.
         self.access_policy_rule_id = access_policy_rule_id
+        # The CIDR IP address block to which the rule applies.
         self.cidr_ip = cidr_ip
+        # The description of the access policy rule.
         self.description = description
+        # The access policy action. ALLOW indicates that access is allowed, and DENY indicates that access is denied.
         self.policy = policy
+        # The priority of the access policy rule.
         self.priority = priority
 
     def validate(self):

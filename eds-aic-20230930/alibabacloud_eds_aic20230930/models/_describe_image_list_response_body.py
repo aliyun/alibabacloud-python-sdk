@@ -17,7 +17,7 @@ class DescribeImageListResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The position from which the current call returns the read data. An empty value indicates that all data has been read.
+        # The token that indicates the position to which the current call has read. An empty value indicates that all data has been read.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -104,7 +104,7 @@ class DescribeImageListResponseBodyData(DaraModel):
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The image distribution region information. The key is the region and the value is the distribution information.
+        # The image distribution information by region. The key is the region, and the value is the distribution information.
         self.image_region_distribute_map = image_region_distribute_map
         # The list of available regions.
         self.image_region_list = image_region_list

@@ -17,23 +17,22 @@ class CreateCreditPackageRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
-        # - **false** (default): Generates an order without deducting payment.
+        # - **true**: enables automatic payment. Make sure that your account balance is sufficient.
+        # - **false** (default): generates an unpaid order without deducting fees.
         # 
-        # 
-        # 
-        # 
-        # > If the balance of your payment method is insufficient, set this parameter to false. An unpaid order is generated. You can log on to the WUYING Cloud Phone console to complete the payment.
+        # > If the balance of your payment method is insufficient, you can change the Settings of this parameter to false to generate an unpaid order. Then, you can log on to the WUYING Cloud Phone console to complete the payment.
         self.auto_pay = auto_pay
+        # The channel cookie. This parameter is passed through to the sales system when you place an order.
         self.channel_cookie = channel_cookie
         # The number of credits.
         self.credit_amount = credit_amount
+        # The number of credit packages to purchase.
         self.package_amount = package_amount
-        # The subscription duration of the purchased resource. The unit is specified by PeriodUnit.
+        # The subscription period of the resource. The unit is specified by PeriodUnit.
         self.period = period
-        # The unit of the subscription duration for the purchased resource. Valid values:
-        # - **Month**: Month.
-        # - **Year**: Year.
+        # The unit of the subscription period. Valid values:
+        # - **Month**: months.
+        # - **Year**: years.
         self.period_unit = period_unit
         # The ID of the promotion.
         self.promotion_id = promotion_id

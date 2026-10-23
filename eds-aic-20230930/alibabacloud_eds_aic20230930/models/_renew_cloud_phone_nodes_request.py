@@ -23,16 +23,16 @@ class RenewCloudPhoneNodesRequest(DaraModel):
         self.auto_renew = auto_renew
         # The list of cloud phone matrix IDs.
         self.node_ids = node_ids
-        # The redirect URL for the payment success page.
+        # The redirect URL after a successful payment.
         self.paid_call_back_url = paid_call_back_url
-        # The subscription period. The unit is specified by PeriodUnit.
+        # The subscription period of the resource. The unit is specified by PeriodUnit.
         # 
         # - If PeriodUnit is set to **year**, the only valid value is 1.
         # - If PeriodUnit is set to **month**, valid values are 1, 2, 3, and 6.
         self.period = period
         # The unit of the subscription period.
         self.period_unit = period_unit
-        # The ID of the promotion.
+        # The promotion ID.
         self.promotion_id = promotion_id
 
     def validate(self):

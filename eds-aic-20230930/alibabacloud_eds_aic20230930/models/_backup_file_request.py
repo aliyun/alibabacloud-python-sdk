@@ -20,7 +20,7 @@ class BackupFileRequest(DaraModel):
         upload_endpoint: str = None,
         upload_type: str = None,
     ):
-        # A list of instance IDs.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
@@ -28,22 +28,22 @@ class BackupFileRequest(DaraModel):
         self.backup_all = backup_all
         # The name of the backup file.
         self.backup_file_name = backup_file_name
-        # The upload URL for the backup file.
-        # 
-        # > If you upload the file to an OSS bucket, call the DescribeBuckets operation to get the bucketName. Then, select a key from ossObjectList. The key represents the folder path in the OSS bucket. Combine these values into the format `oss://${bucketName}/${key}`.
+        # The upload path of the backup file.
+        # > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucketName, and select ossObjectList to obtain the key. The key is the folder path in the OSS bucket. Concatenate them into `oss://${bucketName}/${key}`.
         # 
         # This parameter is required.
         self.backup_file_path = backup_file_path
         # The description of the backup file.
         self.description = description
+        # The list of file paths in the Android container to exclude from the backup.
         self.exclude_source_file_path_list = exclude_source_file_path_list
-        # A list of application package names to back up.
+        # The list of application package names to back up.
         self.source_app_list = source_app_list
-        # A list of file paths to back up.
+        # The list of file paths to back up.
         self.source_file_path_list = source_file_path_list
-        # The domain name of the upload URL.
+        # The domain name of the backup endpoint.
         # 
-        # > If you upload the file to an OSS bucket, call the DescribeBuckets operation to obtain the bucket information. If the cloud phone and the bucket are in the same region, use the value of the intranetEndpoint field. If they are in different regions, use the value of the extranetEndpoint field.
+        # > If you upload the backup file to an OSS bucket, call the describeBuckets operation to obtain the bucket. If the cloud phone and the bucket are in the same region, obtain the intranetEndpoint field. If they are in different regions, obtain the extranetEndpoint field.
         self.upload_endpoint = upload_endpoint
         # The backup type.
         self.upload_type = upload_type

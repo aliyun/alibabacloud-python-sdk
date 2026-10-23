@@ -13,6 +13,7 @@ class CreateMobileAgentPackageRequest(DaraModel):
         amount: str = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        bandwidth_package_id: str = None,
         biz_region_id: str = None,
         channel_cookie: str = None,
         credit_amount: str = None,
@@ -31,13 +32,13 @@ class CreateMobileAgentPackageRequest(DaraModel):
         self.amount = amount
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
-        # - **false** (default): Only an order is generated and no payment is deducted.
+        # - **true**: Automatic payment. You must ensure that your account balance is sufficient.
+        # - **false** (default): Generates an order without deducting fees.
         # 
         # 
         # 
         # 
-        # > If the balance of your payment method is insufficient, you can set this parameter to false. In this case, an unpaid order is generated, and you can log on to the WUYING Cloud Phone console to complete the payment.
+        # > If your payment method has an insufficient balance, you can set this parameter to false. An unpaid order will be generated, and you can log on to the WUYING Cloud Phone console to pay the order.
         # >
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal for the instance. Valid values:
@@ -45,6 +46,8 @@ class CreateMobileAgentPackageRequest(DaraModel):
         # * **true**: Yes.
         # * **false** (default): No.
         self.auto_renew = auto_renew
+        # The bandwidth package ID, which is used to associate an existing bandwidth package when creating an instance. The value must be prefixed with np- and followed by lowercase letters and digits. The bandwidth package must be an AI premium bandwidth package (CBWP_ECD) that belongs to the current account. If this parameter is left empty, the default bandwidth package allocation logic applies.
+        self.bandwidth_package_id = bandwidth_package_id
         # The region where the instance resides. Only cn-hangzhou is supported.
         self.biz_region_id = biz_region_id
         self.channel_cookie = channel_cookie
@@ -63,9 +66,9 @@ class CreateMobileAgentPackageRequest(DaraModel):
         self.paid_callback_url = paid_callback_url
         # The subscription duration of the resource. The unit is specified by PeriodUnit.
         self.period = period
-        # The unit of the subscription duration of the resource. Valid values:
-        # - **Month**: Month.
-        # - **Year**: Year.
+        # The unit of the subscription duration. Valid values:
+        # - **Month**: Months.
+        # - **Year**: Years.
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
@@ -91,6 +94,9 @@ class CreateMobileAgentPackageRequest(DaraModel):
 
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
 
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
@@ -145,6 +151,9 @@ class CreateMobileAgentPackageRequest(DaraModel):
 
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
 
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')

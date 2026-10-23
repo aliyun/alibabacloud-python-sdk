@@ -18,13 +18,13 @@ class DescribeScheduledTasksResponseBody(DaraModel):
         tasks: List[main_models.DescribeScheduledTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
-        # The status code of the operation.
+        # The API status code.
         self.code = code
         # The maximum number of entries to return in this request.
         self.max_results = max_results
-        # The response message.
+        # The message returned by the API.
         self.message = message
-        # The pagination token that indicates the position from which to start reading. Leave this parameter empty to read from the beginning.
+        # The token that specifies the starting position for the current read operation. An empty value indicates that the read operation starts from the beginning.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -120,7 +120,7 @@ class DescribeScheduledTasksResponseBodyTasks(DaraModel):
         self.cron_expression = cron_expression
         # The creation time.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The list of bound instance IDs.
         self.instance_ids = instance_ids
@@ -261,7 +261,7 @@ class DescribeScheduledTasksResponseBodyTasksRunConfig(DaraModel):
         skills: List[str] = None,
         timeout_seconds: int = None,
     ):
-        # The extra parameters.
+        # The extended parameters.
         self.extra_params = extra_params
         # The maximum number of steps.
         self.max_steps = max_steps

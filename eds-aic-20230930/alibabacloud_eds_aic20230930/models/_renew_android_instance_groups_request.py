@@ -18,13 +18,15 @@ class RenewAndroidInstanceGroupsRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # The instance group IDs.
+        # The list of instance group IDs.
         self.instance_group_ids = instance_group_ids
+        # The redirect URL to the payment success page.
         self.paid_call_back_url = paid_call_back_url
-        # The renewal duration.
+        # Specifies the renewal duration. The unit is specified by the PeriodUnit parameter.
         self.period = period
-        # The unit of the renewal duration specified by `Period`. Default value: Month.
+        # The unit of the renewal duration, which is the unit of the Period parameter. Default value: Month.
         self.period_unit = period_unit
+        # The promotion ID.
         self.promotion_id = promotion_id
 
     def validate(self):

@@ -14,7 +14,7 @@ class UninstallAppResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # A list of subtasks.
+        # The child task information.
         self.child_task_info = child_task_info
         # The request ID.
         self.request_id = request_id
@@ -70,7 +70,7 @@ class UninstallAppResponseBodyChildTaskInfo(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The subtask ID.
+        # The child task ID.
         self.child_task_id = child_task_id
         # The instance ID.
         self.instance_id = instance_id

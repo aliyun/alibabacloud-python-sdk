@@ -16,7 +16,7 @@ class RunAgentTaskResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.RunAgentTaskResponseBodyTasks] = None,
     ):
-        # The status code of the API operation.
+        # The status code.
         self.code = code
         # The number of tasks.
         self.count = count
@@ -95,7 +95,7 @@ class RunAgentTaskResponseBodyTasks(DaraModel):
         # - COMPLETED: The task is completed.
         # - FAILED: The task failed.
         # - TIMEOUT: The task execution timed out.
-        # - CALL_FOR_USER: The task is waiting for user operations.
+        # - CALL_FOR_USER: The task is waiting for user action.
         # - PAUSING: The task is being paused.
         # - PAUSED: The task is paused.
         # - CANCELLING: The task is being canceled.
@@ -103,15 +103,15 @@ class RunAgentTaskResponseBodyTasks(DaraModel):
         # - STOPPED: The task is stopped.
         # - TIMEOUT: The task timed out.
         self.current_status = current_status
-        # The ID of the Mobile node.
+        # The Mobile node ID.
         self.instance_id = instance_id
-        # The time when the task was created. The time is in the ISO 8601 format.
+        # The time when the task was created, in ISO 8601 format.
         self.running_at = running_at
         # The session ID. Tasks with the same session ID share the context.
         self.session_id = session_id
-        # The globally unique ID of the task.
+        # The globally unique task ID.
         self.task_id = task_id
-        # The user prompt in natural language. The agent performs operations based on this prompt.
+        # The user prompt in natural language based on which the agent performs operations.
         self.user_prompt = user_prompt
 
     def validate(self):

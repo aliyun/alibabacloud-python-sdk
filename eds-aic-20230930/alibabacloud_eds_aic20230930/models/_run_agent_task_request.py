@@ -21,25 +21,25 @@ class RunAgentTaskRequest(DaraModel):
         timeout_seconds: int = None,
         user_prompt: str = None,
     ):
-        # The ID of the region where the Mobile node resides.
+        # The region ID of the Mobile node.
         self.biz_region_id = biz_region_id
         # The list of Mobile node IDs. A single request supports up to 100 nodes.
         self.instance_ids = instance_ids
         # The maximum number of execution steps for the task to prevent infinite loops. Valid values: 50 to 1000. Default value: 50.
         self.max_steps = max_steps
-        # The runtime configuration that contains the runtime parameters such as skills for the current task.
+        # The runtime configuration that carries the runtime parameters such as skills for the current task.
         self.run_config = run_config
-        # Specifies whether to save the task artifacts to your OSS.
+        # Specifies whether to write the task artifacts to the user\\"s OSS.
         self.save_artifacts = save_artifacts
-        # The ID of the scheduling plan. When specified, the execute record is associated with the corresponding scheduled node, which facilitates aggregate query by scheduling aggregation dimension.
+        # The scheduling plan ID. If specified, the execute record is associated with the corresponding scheduled node to facilitate aggregate query by scheduling dimension aggregation.
         self.schedule_id = schedule_id
-        # The list of targets. Each element is an object that contains an InstanceId and a SessionId.
+        # The Targets array. Each element is an object that contains InstanceId and SessionId.
         self.targets = targets
-        # The ID of the task configuration. This parameter is used to trigger a task with the specified configuration.
+        # The task configuration ID used to trigger a task with the specified configuration.
         self.task_config_id = task_config_id
-        # The timeout period of the task in seconds. Valid values: 300 to 3600. Default value: 3600.
+        # The timeout period for the task in seconds. Valid values: 300 to 3600. Default value: 3600.
         self.timeout_seconds = timeout_seconds
-        # The user prompt in natural language. The agent performs operations based on this prompt.
+        # The user prompt in natural language based on which the agent performs operations.
         self.user_prompt = user_prompt
 
     def validate(self):
@@ -133,7 +133,7 @@ class RunAgentTaskRequestTargets(DaraModel):
         instance_id: str = None,
         session_id: str = None,
     ):
-        # The ID of the Mobile node, such as acp-xxx.
+        # The Mobile node ID, such as acp-xxx.
         self.instance_id = instance_id
         # The session ID. Tasks with the same session ID share the context, such as ses-260702-21b****.
         self.session_id = session_id
@@ -169,7 +169,7 @@ class RunAgentTaskRequestRunConfig(DaraModel):
         self,
         skills: List[str] = None,
     ):
-        # The list of skill IDs. You can specify up to 10 skill IDs. Only the first skill ID is passed through when the command is delivered. All skill IDs are stored in the task_skill_relation table for reverse lookup.
+        # The list of skill IDs. A maximum of 10 skills are supported. Only the first skill ID is passed through when the command is delivered. All skill IDs are stored in the task_skill_relation table for reverse lookup.
         self.skills = skills
 
     def validate(self):

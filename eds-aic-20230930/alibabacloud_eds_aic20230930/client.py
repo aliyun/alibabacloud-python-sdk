@@ -1995,6 +1995,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.channel_cookie):
@@ -2053,6 +2055,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.channel_cookie):
@@ -3946,6 +3950,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_backup_files_with_options_async(request, runtime)
 
+    def describe_bandwidth_package_price_with_options(
+        self,
+        request: main_models.DescribeBandwidthPackagePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBandwidthPackagePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.purchase_channel_type):
+            query['PurchaseChannelType'] = request.purchase_channel_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBandwidthPackagePrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBandwidthPackagePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_bandwidth_package_price_with_options_async(
+        self,
+        request: main_models.DescribeBandwidthPackagePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBandwidthPackagePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.purchase_channel_type):
+            query['PurchaseChannelType'] = request.purchase_channel_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBandwidthPackagePrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBandwidthPackagePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_bandwidth_package_price(
+        self,
+        request: main_models.DescribeBandwidthPackagePriceRequest,
+    ) -> main_models.DescribeBandwidthPackagePriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_bandwidth_package_price_with_options(request, runtime)
+
+    async def describe_bandwidth_package_price_async(
+        self,
+        request: main_models.DescribeBandwidthPackagePriceRequest,
+    ) -> main_models.DescribeBandwidthPackagePriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_bandwidth_package_price_with_options_async(request, runtime)
+
     def describe_buckets_with_options(
         self,
         request: main_models.DescribeBucketsRequest,
@@ -4015,6 +4113,202 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeBucketsResponse:
         runtime = RuntimeOptions()
         return await self.describe_buckets_with_options_async(request, runtime)
+
+    def describe_cloud_phone_node_price_with_options(
+        self,
+        request: main_models.DescribeCloudPhoneNodePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCloudPhoneNodePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.count):
+            query['Count'] = request.count
+        if not DaraCore.is_null(request.is_single_img_disk):
+            query['IsSingleImgDisk'] = request.is_single_img_disk
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.phone_count):
+            query['PhoneCount'] = request.phone_count
+        if not DaraCore.is_null(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.server_share_data_volume):
+            query['ServerShareDataVolume'] = request.server_share_data_volume
+        if not DaraCore.is_null(request.server_type):
+            query['ServerType'] = request.server_type
+        if not DaraCore.is_null(request.swap_size):
+            query['SwapSize'] = request.swap_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCloudPhoneNodePrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCloudPhoneNodePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_phone_node_price_with_options_async(
+        self,
+        request: main_models.DescribeCloudPhoneNodePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCloudPhoneNodePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.count):
+            query['Count'] = request.count
+        if not DaraCore.is_null(request.is_single_img_disk):
+            query['IsSingleImgDisk'] = request.is_single_img_disk
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.phone_count):
+            query['PhoneCount'] = request.phone_count
+        if not DaraCore.is_null(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.server_share_data_volume):
+            query['ServerShareDataVolume'] = request.server_share_data_volume
+        if not DaraCore.is_null(request.server_type):
+            query['ServerType'] = request.server_type
+        if not DaraCore.is_null(request.swap_size):
+            query['SwapSize'] = request.swap_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCloudPhoneNodePrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCloudPhoneNodePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_phone_node_price(
+        self,
+        request: main_models.DescribeCloudPhoneNodePriceRequest,
+    ) -> main_models.DescribeCloudPhoneNodePriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cloud_phone_node_price_with_options(request, runtime)
+
+    async def describe_cloud_phone_node_price_async(
+        self,
+        request: main_models.DescribeCloudPhoneNodePriceRequest,
+    ) -> main_models.DescribeCloudPhoneNodePriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cloud_phone_node_price_with_options_async(request, runtime)
+
+    def describe_cloud_phone_node_renew_price_with_options(
+        self,
+        request: main_models.DescribeCloudPhoneNodeRenewPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCloudPhoneNodeRenewPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCloudPhoneNodeRenewPrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCloudPhoneNodeRenewPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_phone_node_renew_price_with_options_async(
+        self,
+        request: main_models.DescribeCloudPhoneNodeRenewPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCloudPhoneNodeRenewPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.node_ids):
+            query['NodeIds'] = request.node_ids
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCloudPhoneNodeRenewPrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCloudPhoneNodeRenewPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_phone_node_renew_price(
+        self,
+        request: main_models.DescribeCloudPhoneNodeRenewPriceRequest,
+    ) -> main_models.DescribeCloudPhoneNodeRenewPriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cloud_phone_node_renew_price_with_options(request, runtime)
+
+    async def describe_cloud_phone_node_renew_price_async(
+        self,
+        request: main_models.DescribeCloudPhoneNodeRenewPriceRequest,
+    ) -> main_models.DescribeCloudPhoneNodeRenewPriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cloud_phone_node_renew_price_with_options_async(request, runtime)
 
     def describe_cloud_phone_nodes_with_options(
         self,
@@ -4159,6 +4453,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4203,6 +4499,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_ids):
+            query['TaskIds'] = request.task_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4309,6 +4607,92 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeCreditPackageResponse:
         runtime = RuntimeOptions()
         return await self.describe_credit_package_with_options_async(request, runtime)
+
+    def describe_credit_package_price_with_options(
+        self,
+        request: main_models.DescribeCreditPackagePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCreditPackagePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credit_amount):
+            query['CreditAmount'] = request.credit_amount
+        if not DaraCore.is_null(request.package_amount):
+            query['PackageAmount'] = request.package_amount
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCreditPackagePrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCreditPackagePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_credit_package_price_with_options_async(
+        self,
+        request: main_models.DescribeCreditPackagePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCreditPackagePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credit_amount):
+            query['CreditAmount'] = request.credit_amount
+        if not DaraCore.is_null(request.package_amount):
+            query['PackageAmount'] = request.package_amount
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCreditPackagePrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCreditPackagePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_credit_package_price(
+        self,
+        request: main_models.DescribeCreditPackagePriceRequest,
+    ) -> main_models.DescribeCreditPackagePriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_credit_package_price_with_options(request, runtime)
+
+    async def describe_credit_package_price_async(
+        self,
+        request: main_models.DescribeCreditPackagePriceRequest,
+    ) -> main_models.DescribeCreditPackagePriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_credit_package_price_with_options_async(request, runtime)
 
     def describe_display_config_with_options(
         self,
@@ -4579,6 +4963,202 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeImageListResponse:
         runtime = RuntimeOptions()
         return await self.describe_image_list_with_options_async(request, runtime)
+
+    def describe_instance_group_price_with_options(
+        self,
+        request: main_models.DescribeInstanceGroupPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceGroupPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_group_spec):
+            query['InstanceGroupSpec'] = request.instance_group_spec
+        if not DaraCore.is_null(request.instance_version):
+            query['InstanceVersion'] = request.instance_version
+        if not DaraCore.is_null(request.number_of_instances):
+            query['NumberOfInstances'] = request.number_of_instances
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.sale_mode):
+            query['SaleMode'] = request.sale_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceGroupPrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceGroupPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_group_price_with_options_async(
+        self,
+        request: main_models.DescribeInstanceGroupPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceGroupPriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.bandwidth):
+            query['Bandwidth'] = request.bandwidth
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.image_id):
+            query['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.instance_group_spec):
+            query['InstanceGroupSpec'] = request.instance_group_spec
+        if not DaraCore.is_null(request.instance_version):
+            query['InstanceVersion'] = request.instance_version
+        if not DaraCore.is_null(request.number_of_instances):
+            query['NumberOfInstances'] = request.number_of_instances
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.sale_mode):
+            query['SaleMode'] = request.sale_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceGroupPrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceGroupPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_group_price(
+        self,
+        request: main_models.DescribeInstanceGroupPriceRequest,
+    ) -> main_models.DescribeInstanceGroupPriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_instance_group_price_with_options(request, runtime)
+
+    async def describe_instance_group_price_async(
+        self,
+        request: main_models.DescribeInstanceGroupPriceRequest,
+    ) -> main_models.DescribeInstanceGroupPriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_instance_group_price_with_options_async(request, runtime)
+
+    def describe_instance_group_price_for_renew_with_options(
+        self,
+        request: main_models.DescribeInstanceGroupPriceForRenewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceGroupPriceForRenewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_group_ids):
+            query['InstanceGroupIds'] = request.instance_group_ids
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceGroupPriceForRenew',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceGroupPriceForRenewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_group_price_for_renew_with_options_async(
+        self,
+        request: main_models.DescribeInstanceGroupPriceForRenewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceGroupPriceForRenewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_group_ids):
+            query['InstanceGroupIds'] = request.instance_group_ids
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceGroupPriceForRenew',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceGroupPriceForRenewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_group_price_for_renew(
+        self,
+        request: main_models.DescribeInstanceGroupPriceForRenewRequest,
+    ) -> main_models.DescribeInstanceGroupPriceForRenewResponse:
+        runtime = RuntimeOptions()
+        return self.describe_instance_group_price_for_renew_with_options(request, runtime)
+
+    async def describe_instance_group_price_for_renew_async(
+        self,
+        request: main_models.DescribeInstanceGroupPriceForRenewRequest,
+    ) -> main_models.DescribeInstanceGroupPriceForRenewResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_instance_group_price_for_renew_with_options_async(request, runtime)
 
     def describe_invocations_with_options(
         self,
@@ -5205,6 +5785,182 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeMobileAgentPackageResponse:
         runtime = RuntimeOptions()
         return await self.describe_mobile_agent_package_with_options_async(request, runtime)
+
+    def describe_mobile_agent_package_price_with_options(
+        self,
+        request: main_models.DescribeMobileAgentPackagePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMobileAgentPackagePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.credit_amount):
+            query['CreditAmount'] = request.credit_amount
+        if not DaraCore.is_null(request.mobile_agent_package_spec):
+            query['MobileAgentPackageSpec'] = request.mobile_agent_package_spec
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMobileAgentPackagePrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMobileAgentPackagePriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mobile_agent_package_price_with_options_async(
+        self,
+        request: main_models.DescribeMobileAgentPackagePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMobileAgentPackagePriceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.credit_amount):
+            query['CreditAmount'] = request.credit_amount
+        if not DaraCore.is_null(request.mobile_agent_package_spec):
+            query['MobileAgentPackageSpec'] = request.mobile_agent_package_spec
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMobileAgentPackagePrice',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMobileAgentPackagePriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mobile_agent_package_price(
+        self,
+        request: main_models.DescribeMobileAgentPackagePriceRequest,
+    ) -> main_models.DescribeMobileAgentPackagePriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_mobile_agent_package_price_with_options(request, runtime)
+
+    async def describe_mobile_agent_package_price_async(
+        self,
+        request: main_models.DescribeMobileAgentPackagePriceRequest,
+    ) -> main_models.DescribeMobileAgentPackagePriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_mobile_agent_package_price_with_options_async(request, runtime)
+
+    def describe_mobile_agent_package_price_for_renew_with_options(
+        self,
+        request: main_models.DescribeMobileAgentPackagePriceForRenewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMobileAgentPackagePriceForRenewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.mobile_agent_package_ids):
+            query['MobileAgentPackageIds'] = request.mobile_agent_package_ids
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMobileAgentPackagePriceForRenew',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMobileAgentPackagePriceForRenewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_mobile_agent_package_price_for_renew_with_options_async(
+        self,
+        request: main_models.DescribeMobileAgentPackagePriceForRenewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMobileAgentPackagePriceForRenewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.mobile_agent_package_ids):
+            query['MobileAgentPackageIds'] = request.mobile_agent_package_ids
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeMobileAgentPackagePriceForRenew',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeMobileAgentPackagePriceForRenewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_mobile_agent_package_price_for_renew(
+        self,
+        request: main_models.DescribeMobileAgentPackagePriceForRenewRequest,
+    ) -> main_models.DescribeMobileAgentPackagePriceForRenewResponse:
+        runtime = RuntimeOptions()
+        return self.describe_mobile_agent_package_price_for_renew_with_options(request, runtime)
+
+    async def describe_mobile_agent_package_price_for_renew_async(
+        self,
+        request: main_models.DescribeMobileAgentPackagePriceForRenewRequest,
+    ) -> main_models.DescribeMobileAgentPackagePriceForRenewResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_mobile_agent_package_price_for_renew_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
@@ -8843,6 +9599,80 @@ class Client(OpenApiClient):
     ) -> main_models.RebootAndroidInstancesInGroupResponse:
         runtime = RuntimeOptions()
         return await self.reboot_android_instances_in_group_with_options_async(request, runtime)
+
+    def reboot_cloud_phone_nodes_with_options(
+        self,
+        request: main_models.RebootCloudPhoneNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RebootCloudPhoneNodesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        if not DaraCore.is_null(request.node_ids):
+            body['NodeIds'] = request.node_ids
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RebootCloudPhoneNodes',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RebootCloudPhoneNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reboot_cloud_phone_nodes_with_options_async(
+        self,
+        request: main_models.RebootCloudPhoneNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RebootCloudPhoneNodesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        if not DaraCore.is_null(request.node_ids):
+            body['NodeIds'] = request.node_ids
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RebootCloudPhoneNodes',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RebootCloudPhoneNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reboot_cloud_phone_nodes(
+        self,
+        request: main_models.RebootCloudPhoneNodesRequest,
+    ) -> main_models.RebootCloudPhoneNodesResponse:
+        runtime = RuntimeOptions()
+        return self.reboot_cloud_phone_nodes_with_options(request, runtime)
+
+    async def reboot_cloud_phone_nodes_async(
+        self,
+        request: main_models.RebootCloudPhoneNodesRequest,
+    ) -> main_models.RebootCloudPhoneNodesResponse:
+        runtime = RuntimeOptions()
+        return await self.reboot_cloud_phone_nodes_with_options_async(request, runtime)
 
     def recover_android_instance_with_options(
         self,

@@ -28,7 +28,7 @@ class DescribeBackupFilesRequest(DaraModel):
         self.android_instance_id = android_instance_id
         # The name of the instance. Fuzzy match is supported.
         self.android_instance_name = android_instance_name
-        # Specifies whether the backup is a full-device backup.
+        # Specifies whether the backup is a full device backup.
         self.backup_all = backup_all
         # The ID of the backup file.
         self.backup_file_id = backup_file_id
@@ -42,11 +42,11 @@ class DescribeBackupFilesRequest(DaraModel):
         self.end_user_id = end_user_id
         # The ID of the instance group.
         self.instance_group_id = instance_group_id
-        # The maximum number of entries per page for a paging query. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries to return per page in a paging query. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The token that specifies the position from which the query starts. If this parameter is left empty, the query starts from the beginning.
+        # The token that specifies the starting position of the query. An empty value indicates that the query starts from the beginning.
         self.next_token = next_token
-        # The sales mode. Valid values: Instance (cloud phone instance mode) and Node (cloud phone matrix mode).
+        # The sales mode. Instance indicates the cloud phone instance mode, and Node indicates the cloud phone matrix mode.
         self.sale_mode = sale_mode
         # The start time to query backup files. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time

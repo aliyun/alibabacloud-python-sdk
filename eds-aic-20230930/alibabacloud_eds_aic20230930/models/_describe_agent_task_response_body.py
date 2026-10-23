@@ -107,27 +107,25 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
         # - FAILED: The task failed.
         # - TIMEOUT: The task execution timed out.
         self.current_status = current_status
-        # The source of the digest. Valid values:
-        # - PROMPT_AUTO: Automatically generated.
-        # - RESULT_AUTO: Refined from the result.
-        # - USER: Edited by the user.
+        # The source of the digest. Valid values: PROMPT_AUTO (automatically generated), RESULT_AUTO (refined from the result), and USER (edited by the user).
         self.digest_source = digest_source
         # The ID of the mobile node.
         self.instance_id = instance_id
+        # The reason for the task status.
         self.reason = reason
         # The time when the task was created, in ISO 8601 format.
         self.running_at = running_at
         # The number of executed steps.
         self.steps = steps
-        # The task digest text, with a maximum of 25 characters.
+        # The task digest text, up to 25 characters in length.
         self.task_digest = task_digest
-        # The time consumed by the task. This field is returned only when CurrentStatus is FAILED or COMPLETED.
+        # The duration of the task. This field is returned only when CurrentStatus is FAILED or COMPLETED.
         self.task_duration = task_duration
         # The globally unique task ID.
         self.task_id = task_id
-        # The node task result (desired state). This field is returned only when CurrentStatus is COMPLETED or FAILED.
+        # The task result (desired state) of the node. This field is returned only when CurrentStatus is COMPLETED or FAILED.
         self.task_result = task_result
-        # The user instruction in natural language based on which the agent performs operations.
+        # The user prompt in natural language that instructs the agent to perform operations.
         self.user_prompt = user_prompt
 
     def validate(self):

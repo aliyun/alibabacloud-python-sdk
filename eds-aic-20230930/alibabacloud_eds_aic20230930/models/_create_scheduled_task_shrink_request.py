@@ -28,7 +28,7 @@ class CreateScheduledTaskShrinkRequest(DaraModel):
         self.max_executions = max_executions
         # The run configuration.
         self.run_config_shrink = run_config_shrink
-        # The task name.
+        # The name of the task.
         # 
         # This parameter is required.
         self.task_name = task_name

@@ -18,11 +18,11 @@ class ModifyScheduledTaskResponseBody(DaraModel):
     ):
         # The API status code.
         self.code = code
-        # The response message.
+        # The message returned by the API.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The list of modification results.
+        # The list of update results.
         self.tasks = tasks
         # The total number of records.
         self.total_count = total_count
@@ -86,11 +86,11 @@ class ModifyScheduledTaskResponseBodyTasks(DaraModel):
         new_version: int = None,
         scheduled_id: str = None,
     ):
-        # The list of batch delivery results for instance scheduled tasks.
+        # The list of results for batch delivery of scheduled tasks to instances.
         self.instance_results = instance_results
         # The updated CAS version number.
         self.new_version = new_version
-        # The scheduled task ID.
+        # The ID of the scheduled task.
         self.scheduled_id = scheduled_id
 
     def validate(self):

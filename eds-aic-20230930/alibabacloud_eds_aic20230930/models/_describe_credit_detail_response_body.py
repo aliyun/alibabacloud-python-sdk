@@ -13,7 +13,7 @@ class DescribeCreditDetailResponseBody(DaraModel):
         data: main_models.DescribeCreditDetailResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data object.
+        # The response object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -64,9 +64,9 @@ class DescribeCreditDetailResponseBodyData(DaraModel):
         self.page_num = page_num
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of detail records.
         self.total_count = total_count
-        # The total credit change.
+        # The total amount of credit change.
         self.total_credit_change = total_credit_change
 
     def validate(self):
@@ -150,13 +150,13 @@ class DescribeCreditDetailResponseBodyDataDetails(DaraModel):
     ):
         # The agent type. This field is populated only when you query by a single agent type.
         self.agent_type = agent_type
-        # The API key name.
+        # The name of the API key.
         self.api_key_name = api_key_name
         # The number of cached tokens.
         self.cached_tokens = cached_tokens
         # The time when the change occurred. The time is in UTC and follows the ISO 8601 standard.
         self.change_time = change_time
-        # The credit change amount.
+        # The amount of credit change.
         self.credit_change = credit_change
         # The task description.
         self.description = description
