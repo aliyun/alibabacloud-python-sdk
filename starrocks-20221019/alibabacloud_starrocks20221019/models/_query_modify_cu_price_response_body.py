@@ -18,7 +18,7 @@ class QueryModifyCuPriceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
@@ -28,9 +28,9 @@ class QueryModifyCuPriceResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -105,23 +105,23 @@ class QueryModifyCuPriceResponseBodyData(DaraModel):
         stand_price: float = None,
         trade_amount: float = None,
     ):
-        # The prices of the components.
+        # The component prices.
         self.component_prices = component_prices
         # The currency.
         self.currency = currency
-        # The depreciation rate.
+        # The price reduction ratio.
         self.depreciate_info = depreciate_info
-        # The discount amount. Discount amount = Original amount - Billable amount. The billable amount includes coupon deductions.
+        # The discount amount, which is calculated by subtracting the payable amount on the bill (including the coupon deduction amount) from the original amount.
         self.discount_amount = discount_amount
         # The coupon information.
         self.optional_promotions = optional_promotions
-        # The original price. Original price = List price × Billing usage.
+        # The original price, which is calculated by multiplying the list price by the billable usage.
         self.original_amount = original_amount
-        # The data structure returned in the response.
+        # The returned data structure.
         self.rules = rules
-        # The price after the standard discount is applied.
+        # The discount price based on the official website discount.
         self.stand_discount_price = stand_discount_price
-        # The discounted price on the official website.
+        # The official website discount price.
         self.stand_price = stand_price
         # The transaction amount.
         self.trade_amount = trade_amount
@@ -236,13 +236,13 @@ class QueryModifyCuPriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: str = None,
     ):
-        # The number of instances to purchase in a batch. You can use this parameter to query the price of purchasing multiple Elastic Compute Service (ECS) instances with a specific configuration. Valid values: 1 to 1000.
+        # Queries the price for bulk purchasing Elastic Computing Service servers with a specific configuration. Valid values: 1 to 1000.
         # 
         # Default value: 1.
         self.amount = amount
-        # The name of the rule.
+        # The rule name.
         self.name = name
-        # The ID of the rule.
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -284,11 +284,11 @@ class QueryModifyCuPriceResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
-        # The description of the coupon.
+        # The coupon description.
         self.promotion_desc = promotion_desc
-        # The name of the coupon.
+        # The coupon name.
         self.promotion_name = promotion_name
-        # The ID of the coupon.
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -333,11 +333,11 @@ class QueryModifyCuPriceResponseBodyDataDepreciateInfo(DaraModel):
     ):
         # The price reduction ratio.
         self.cheap_rate = cheap_rate
-        # The total list price after the price reduction.
+        # The total official website price after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
-        # Indicates whether to show the price reduction information.
+        # Indicates whether the price reduction margin is displayed.
         self.is_show = is_show
-        # The original total list price.
+        # The original total official website price.
         self.original_stand_amount = original_stand_amount
 
     def validate(self):
@@ -386,7 +386,7 @@ class QueryModifyCuPriceResponseBodyDataComponentPrices(DaraModel):
         original_amount: float = None,
         trade_amount: float = None,
     ):
-        # The name of the component.
+        # The component name.
         self.component_name = component_name
         # The discount amount.
         self.discount_amount = discount_amount

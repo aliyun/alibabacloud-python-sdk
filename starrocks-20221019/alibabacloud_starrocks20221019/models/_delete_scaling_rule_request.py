@@ -7,19 +7,22 @@ from darabonba.model import DaraModel
 class DeleteScalingRuleRequest(DaraModel):
     def __init__(
         self,
+        instance_id: str = None,
         node_group_id: str = None,
         scaling_rule_id: str = None,
         trigger_type: str = None,
     ):
-        # Compute group ID.
+        # The instance ID.
+        self.instance_id = instance_id
+        # The node group ID.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
-        # ID of the scaling rule to delete.
+        # The ID of the scaling rule to be deleted.
         # 
         # This parameter is required.
         self.scaling_rule_id = scaling_rule_id
-        # Trigger type.
+        # The trigger type.
         # 
         # This parameter is required.
         self.trigger_type = trigger_type
@@ -32,6 +35,9 @@ class DeleteScalingRuleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
 
@@ -45,6 +51,9 @@ class DeleteScalingRuleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
 

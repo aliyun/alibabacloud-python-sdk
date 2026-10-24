@@ -15,20 +15,11 @@ class ModifyCuPreCheckRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The warehouse ID.
+        # The compute group ID.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
-        # The number of CUs to which you want to change.
-        # 
-        # Valid values:
-        # 
-        # *   2
-        # *   4
-        # *   8
-        # *   16
-        # *   32
-        # *   64
+        # The target number of CUs.
         # 
         # This parameter is required.
         self.target = target

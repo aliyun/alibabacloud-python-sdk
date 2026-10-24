@@ -16,19 +16,19 @@ class UpdatePublicNetworkStatusResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # Access denied details.
+        # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
-        # Data returned by the operation.
+        # The returned data.
         self.data = data
         # The error code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
-        # The HTTP status code of the request.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of instances.
         self.total = total

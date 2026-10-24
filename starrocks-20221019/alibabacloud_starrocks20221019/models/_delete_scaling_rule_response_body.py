@@ -15,19 +15,19 @@ class DeleteScalingRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Access denied details.
+        # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
-        # Version number that you can upgrade to.
+        # The upgradable version number.
         self.data = data
-        # Error code.
+        # The error code.
         self.err_code = err_code
-        # Error message.
+        # The error message.
         self.err_message = err_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

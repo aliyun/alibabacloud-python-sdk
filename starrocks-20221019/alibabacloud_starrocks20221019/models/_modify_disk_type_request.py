@@ -7,27 +7,32 @@ from darabonba.model import DaraModel
 class ModifyDiskTypeRequest(DaraModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         instance_id: str = None,
         node_group_id: str = None,
         promotion_option_no: str = None,
         target_disk_type: str = None,
         target_performance_level: str = None,
     ):
-        # The ID of the instance.
+        # Specifies whether to automatically pay for all products specified in the Products parameter. Valid values:
+        # - true: Automatic payment.
+        # - false: Manual payment.
+        self.auto_pay = auto_pay
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the compute group.
+        # The compute group ID.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
-        # The ID of the coupon.
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
         # The target disk type.
         # 
         # This parameter is required.
         self.target_disk_type = target_disk_type
-        # The target disk performance level.
+        # The target disk performance.
         # 
         # This parameter is required.
         self.target_performance_level = target_performance_level
@@ -40,6 +45,9 @@ class ModifyDiskTypeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -59,6 +67,9 @@ class ModifyDiskTypeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 

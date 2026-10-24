@@ -22,9 +22,9 @@ class DescribeNodeGroupsRequest(DaraModel):
     ):
         # The instance ID.
         self.cluster_id = cluster_id
-        # The page number for paging. Default value: 1.
+        # The page number for a paged query. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for paging. Default value: 10.
+        # The number of entries per page for a paged query. Default value: 10.
         self.page_size = page_size
         # The compute group type. Valid values:
         # 
@@ -34,7 +34,7 @@ class DescribeNodeGroupsRequest(DaraModel):
         # - OBSERVER
         # - AGENT
         self.component_type = component_type
-        # **[Deprecated]** The instance ID. This parameter is deprecated.
+        # **[Deprecated]** The instance ID.
         self.instance_id = instance_id
         # The list of compute group IDs to query.
         self.node_group_ids = node_group_ids
@@ -45,25 +45,26 @@ class DescribeNodeGroupsRequest(DaraModel):
         # - UNPAID: Unpaid.
         # - PAID: Paid.
         # - CREATING_FAILED: Creation failed.
-        # - CREATING: Being created.
+        # - CREATING: Creating.
         # - RUNNING: Running.
-        # - MODIFYING_CONFIG: Configuration being modified.
-        # - MODIFYING_TIMEZONE: Time zone being modified.
-        # - ELASTIC_SCALING_OUT: Elastic scale-out in progress.
-        # - ELASTIC_SCALING_IN: Elastic scale-in in progress.
-        # - SCALING_OUT: Scale-out in progress.
+        # - MODIFYING_CONFIG: Modifying configurations.
+        # - MODIFYING_TIMEZONE: Modifying the time zone.
+        # - ELASTIC_SCALING_OUT: Elastically scaling out.
+        # - ELASTIC_SCALING_IN: Elastically scaling in.
+        # - SCALING_OUT: Scaling out.
         # - RESTARTING: Restarting.
-        # - SCALING_IN: Scale-in in progress.
-        # - SCALING_UP: Upgrading specifications.
-        # - SCALING_DOWN: Downgrading specifications.
+        # - SCALING_IN: Scaling in.
+        # - SCALING_UP: Scaling up.
+        # - SCALING_DOWN: Scaling down.
         # - UPGRADING: Upgrading.
         # - ENABLE_PUBLIC_NETWORK: Enabling public network access.
         # - DISABLE_PUBLIC_NETWORK: Disabling public network access.
-        # - SWITCH_AZ: Switching zone.
+        # - SWITCH_AZ: Switching the zone.
         # - DISABLE: Disabled.
-        # - DELETING: Being deleted.
+        # - DELETING: Deleting.
         # - DELETED: Deleted.
         self.status = status
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -148,7 +149,9 @@ class DescribeNodeGroupsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

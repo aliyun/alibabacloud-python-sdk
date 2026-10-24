@@ -12,9 +12,13 @@ class InstanceConfigDto(DaraModel):
         config_value: str = None,
         node_group_id: str = None,
     ):
+        # The configuration item name.
         self.config_key = config_key
+        # The configuration type.
         self.config_type = config_type
+        # The configuration item value.
         self.config_value = config_value
+        # The compute group ID, which is required only when the parameter is exclusive to the compute group. In other scenarios, leave it empty or set it to the cluster ID.
         self.node_group_id = node_group_id
 
     def validate(self):

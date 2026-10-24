@@ -12,17 +12,17 @@ class QueryModifyCuPriceRequest(DaraModel):
         promotion_option_no: str = None,
         target: int = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the compute group.
+        # The compute group ID.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
-        # The ID of the coupon.
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
-        # The target number of CUs.
+        # The target CU count.
         # 
         # This parameter is required.
         self.target = target

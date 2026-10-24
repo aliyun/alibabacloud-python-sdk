@@ -19,9 +19,9 @@ class DescribeBackupPoliciesResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # Details about the access denial.
+        # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
-        # Information about the instance.
+        # The instance information.
         self.data = data
         # The error code.
         self.err_code = err_code
@@ -31,7 +31,7 @@ class DescribeBackupPoliciesResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of instances.
         self.total = total
@@ -125,11 +125,11 @@ class DescribeBackupPoliciesResponseBodyData(DaraModel):
         self.instance_id = instance_id
         # The minute.
         self.minute = minute
-        # The backup policy ID.
+        # The tag policy ID.
         self.policy_id = policy_id
-        # The numeric values for the policy execution cycle.
+        # The values for the policy execution cycle.
         self.recurrence_values = recurrence_values
-        # The timeout period for the backup job.
+        # The timeout period of the backup task, in seconds.
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

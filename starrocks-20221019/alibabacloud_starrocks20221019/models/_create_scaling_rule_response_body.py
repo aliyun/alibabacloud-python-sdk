@@ -23,11 +23,11 @@ class CreateScalingRuleResponseBody(DaraModel):
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
-        # The HTTP request status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

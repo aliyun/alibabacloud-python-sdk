@@ -21,21 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'ap-southeast-1': 'starrocks.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-5': 'starrocks.ap-southeast-5.aliyuncs.com',
-            'cn-beijing': 'starrocks.cn-beijing.aliyuncs.com',
-            'cn-hangzhou': 'starrocks.cn-hangzhou.aliyuncs.com',
-            'cn-hongkong': 'starrocks.cn-hongkong.aliyuncs.com',
-            'cn-qingdao': 'starrocks.cn-qingdao.aliyuncs.com',
-            'cn-shanghai': 'starrocks.cn-shanghai.aliyuncs.com',
-            'cn-shenzhen': 'starrocks.cn-shenzhen.aliyuncs.com',
-            'cn-wulanchabu': 'starrocks.cn-wulanchabu.aliyuncs.com',
-            'cn-zhangjiakou': 'starrocks.cn-zhangjiakou.aliyuncs.com',
-            'us-west-1': 'starrocks.us-west-1.aliyuncs.com',
-            'us-east-1': 'starrocks.us-east-1.aliyuncs.com',
-            'eu-central-1': 'starrocks.eu-central-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('starrocks', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -723,6 +708,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateScalingRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
             query['NodeGroupId'] = request.node_group_id
         if not DaraCore.is_null(request.rule):
@@ -757,6 +744,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateScalingRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
             query['NodeGroupId'] = request.node_group_id
         if not DaraCore.is_null(request.rule):
@@ -1189,6 +1178,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteScalingRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
             query['NodeGroupId'] = request.node_group_id
         if not DaraCore.is_null(request.scaling_rule_id):
@@ -1223,6 +1214,8 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteScalingRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
             query['NodeGroupId'] = request.node_group_id
         if not DaraCore.is_null(request.scaling_rule_id):
@@ -3587,6 +3580,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyCuResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.fast_mode):
             query['FastMode'] = request.fast_mode
         if not DaraCore.is_null(request.instance_id):
@@ -3625,6 +3620,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyCuResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.fast_mode):
             query['FastMode'] = request.fast_mode
         if not DaraCore.is_null(request.instance_id):
@@ -3763,6 +3760,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDiskNumberResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.fast_mode):
             query['FastMode'] = request.fast_mode
         if not DaraCore.is_null(request.instance_id):
@@ -3801,6 +3800,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDiskNumberResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.fast_mode):
             query['FastMode'] = request.fast_mode
         if not DaraCore.is_null(request.instance_id):
@@ -3855,6 +3856,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDiskPerformanceLevelResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
@@ -3891,6 +3894,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDiskPerformanceLevelResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
@@ -3943,6 +3948,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDiskSizeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.fast_mode):
             query['FastMode'] = request.fast_mode
         if not DaraCore.is_null(request.instance_id):
@@ -3981,6 +3988,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDiskSizeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.fast_mode):
             query['FastMode'] = request.fast_mode
         if not DaraCore.is_null(request.instance_id):
@@ -4035,6 +4044,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDiskTypeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
@@ -4073,6 +4084,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDiskTypeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
@@ -4499,6 +4512,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyNodeNumberResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
@@ -4539,6 +4554,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyNodeNumberResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_group_id):
@@ -4679,6 +4696,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyScalingRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.new_trigger_type):
             query['NewTriggerType'] = request.new_trigger_type
         if not DaraCore.is_null(request.node_group_id):
@@ -4717,6 +4736,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyScalingRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.new_trigger_type):
             query['NewTriggerType'] = request.new_trigger_type
         if not DaraCore.is_null(request.node_group_id):
@@ -4771,6 +4792,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySpecTypeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.fast_mode):
             query['FastMode'] = request.fast_mode
         if not DaraCore.is_null(request.instance_id):
@@ -4809,6 +4832,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySpecTypeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.fast_mode):
             query['FastMode'] = request.fast_mode
         if not DaraCore.is_null(request.instance_id):

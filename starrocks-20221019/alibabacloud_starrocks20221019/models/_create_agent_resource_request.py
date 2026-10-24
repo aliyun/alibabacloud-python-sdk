@@ -16,37 +16,27 @@ class CreateAgentResourceRequest(DaraModel):
         promotion_option_no: str = None,
         spec_type: str = None,
     ):
-        # Enable auto-renewal. This parameter is valid only when payType is set to PrePaid. Auto-renewal is disabled by default.
+        # Specifies whether to enable auto-renewal. This parameter is valid only when PayType is set to prePaid. Default value: false.
         self.auto_renew = auto_renew
-        # Number of CUs. A CU (Compute Unit) is the basic unit of service measurement. 1 CU = 1 CPU core + 4 GiB memory. For memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
+        # The number of compute units (CUs). A CU is the basic metering unit of the service. One CU equals one vCPU and 4 GiB of memory. If SpecType is set to the memory-enhanced instance family, one CU equals one vCPU and 8 GiB of memory.
         # 
         # This parameter is required.
         self.cu = cu
-        # Duration. This parameter is valid only when payType is set to PrePaid.
+        # The subscription duration. This parameter is valid only when PayType is set to prePaid.
         self.duration = duration
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Payment type:
-        # 
-        # 1. Subscription (prePaid).
-        # 
-        # 2. Pay-as-you-go (postPaid).
+        # The billing method. Valid values:<ol><li>prePaid: subscription.</li><li>postPaid: pay-as-you-go.</li></ol>
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # Unit of subscription duration:
-        # 
-        # - Month
-        # 
-        # - Year
-        # 
-        # This parameter is valid only when payType is set to PrePaid.
+        # The unit of the subscription duration. Valid values:<ul><li>Month</li><li>Year</li></ul>This parameter is valid only when PayType is set to prePaid.
         self.pricing_cycle = pricing_cycle
-        # Coupon ID.
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
-        # Compute group specification type.
+        # The specification type of the compute group.
         self.spec_type = spec_type
 
     def validate(self):

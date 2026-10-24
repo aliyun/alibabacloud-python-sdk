@@ -28,7 +28,7 @@ class DescribeInstancesResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of instances.
         self.total = total
@@ -101,6 +101,8 @@ class DescribeInstancesResponseBodyData(DaraModel):
     def __init__(
         self,
         acl_id: str = None,
+        ai_function_cluster_id: str = None,
+        ai_function_endpoint: str = None,
         ai_function_instance_id: str = None,
         architecture: str = None,
         begin_time: int = None,
@@ -133,30 +135,35 @@ class DescribeInstancesResponseBodyData(DaraModel):
         version: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the network access control list (ACL).
+        # The network access control list (ACL) ID.
         self.acl_id = acl_id
+        # The AI dedicated cluster ID. The ID is prefixed with af-. This parameter is returned if an unreleased dedicated cluster exists, including those being created. If no dedicated cluster is created, this parameter is empty.
+        self.ai_function_cluster_id = ai_function_cluster_id
+        # The internal network connection endpoint of the AI dedicated cluster. The format is fe-{AiFunctionClusterId}-internal.starrocks.aliyuncs.com. This parameter is returned only after the dedicated cluster is created. If no dedicated cluster is created, this parameter is empty.
+        self.ai_function_endpoint = ai_function_endpoint
+        # The AI function billing instance ID.
         self.ai_function_instance_id = ai_function_instance_id
         # The instance architecture. Valid values:
         # 
-        # - onEci: deployed on ECI.
-        # 
-        # - onECS: deployed on ECS.
-        # 
-        # - onBareMetal: deployed on a bare metal resource pool.
+        # - onEci: Deployed based on Elastic Container Instance (ECI).
+        # - onECS: Deployed based on Elastic Compute Service (ECS).
+        # - onBareMetal: Deployed based on bare metal resource pools.
         self.architecture = architecture
         # The time when the cluster was created.
         self.begin_time = begin_time
+        # Specifies whether the AI center is enabled. Default value: false.
         self.enable_ai_function = enable_ai_function
-        # Indicates whether automatic minor version upgrades are enabled.
+        # Specifies whether automatic minor version upgrades are allowed.
         self.enable_auto_minor_version_upgrade = enable_auto_minor_version_upgrade
+        # Specifies whether disaster recovery is enabled.
         self.enable_multi_az = enable_multi_az
-        # Indicates whether SSL is enabled.
+        # Specifies whether SSL is enabled.
         self.enable_ssl = enable_ssl
-        # Indicates whether the audit plugin is enabled.
+        # Specifies whether the audit plug-in is enabled.
         self.enabled_audit_loader = enabled_audit_loader
-        # Indicates whether encryption is enabled.
+        # Specifies whether encryption is enabled.
         self.encrypted = encrypted
-        # The time when the cluster expires.
+        # The expiration time of the cluster.
         self.expire_time = expire_time
         # The instance ID.
         self.instance_id = instance_id
@@ -164,147 +171,93 @@ class DescribeInstancesResponseBodyData(DaraModel):
         self.instance_name = instance_name
         # The instance status. Valid values:
         # 
-        # - not_init: The instance is not initialized.
-        # 
-        # - unpaid: The instance is pending payment.
-        # 
-        # - paid: The payment is made.
-        # 
-        # - creating: The instance is being created.
-        # 
-        # - creating_failed: The instance failed to be created.
-        # 
-        # - created: The instance is created.
-        # 
-        # - running: The instance is running.
-        # 
-        # - updating: The instance is being upgraded.
-        # 
-        # - agent_creating: The agent is being created.
-        # 
-        # - agent_scaling_up: The agent is being upgraded.
-        # 
-        # - modifying_config: The configurations are being updated.
-        # 
-        # - scaling_out: The instance is being scaled out.
-        # 
-        # - restarting: The instance is restarting.
-        # 
-        # - scaling_in: The instance is being scaled in.
-        # 
-        # - scaling_up: The instance is being upgraded.
-        # 
-        # - scaling_down: The instance is being downgraded.
-        # 
-        # - upgrading: The instance is being upgraded.
-        # 
-        # - enable_public_network: The public endpoint is being enabled.
-        # 
-        # - disable_public_network: The public endpoint is being disabled.
-        # 
-        # - convert_from_trial_to_official: The instance edition is being changed.
-        # 
-        # - migration_cluster_to_serverless: The cluster is being migrated.
-        # 
-        # - modifying_timezone: The time zone is being modified.
-        # 
-        # - switch_az: The primary and secondary zones are being switched.
-        # 
-        # - enabling: The instance is being resumed.
-        # 
-        # - disable: The instance is unavailable.
-        # 
-        # - actively_disabled: The instance is unavailable.
-        # 
-        # - deleting: The instance is being deleted.
-        # 
-        # - deleting_failed: The instance failed to be deleted.
-        # 
-        # - deleted_with_error: The instance is deleted due to a creation failure.
-        # 
-        # - deleted: The instance is deleted.
+        # - not_init: Not initialized.
+        # - unpaid: Pending payment.
+        # - paid: Paid.
+        # - creating: Creating.
+        # - creating_failed: Creation failed.
+        # - created: Created.
+        # - running: Running.
+        # - updating: Updating.
+        # - agent_creating: Creating the agent.
+        # - agent_scaling_up: Scaling up the agent.
+        # - modifying_config: Updating configurations.
+        # - scaling_out: Scaling out.
+        # - restarting: Restarting.
+        # - scaling_in: Scaling in.
+        # - scaling_up: Scaling up.
+        # - scaling_down: Scaling down.
+        # - upgrading: Upgrading.
+        # - enable_public_network: Enabling public network access.
+        # - disable_public_network: Disabling public network access.
+        # - convert_from_trial_to_official: Converting the edition.
+        # - migration_cluster_to_serverless: Migrating the cluster.
+        # - modifying_timezone: Modifying the time zone.
+        # - switch_az: Switching the primary and secondary zones.
+        # - enabling: Resuming.
+        # - disable: Unavailable.
+        # - actively_disabled: Unavailable.
+        # - deleting: Deleting.
+        # - deleting_failed: Deletion failed.
+        # - deleted_with_error: Ended due to creation failure.
+        # - deleted: Deleted.
         self.instance_status = instance_status
-        # Indicates whether read/write splitting is enabled. If this parameter is set to true, the leader FE node processes write requests, and the other FE nodes process read requests.
+        # Specifies whether read/write splitting is enabled. If enabled, the leader FE node processes write requests and other nodes process read requests.
         self.isolate_leader = isolate_leader
-        # The ID of the KMS key.
+        # The KMS key ID.
         self.kms_key_id = kms_key_id
         # The maintenance window of the instance. Valid values:
         # 
         # - 00:00-06:00
-        # 
         # - 06:00-07:00
-        # 
         # - 07:00-08:00
-        # 
         # - 08:00-09:00
-        # 
         # - 09:00-10:00
-        # 
         # - 10:00-11:00
-        # 
         # - 11:00-12:00
-        # 
         # - 12:00-13:00
-        # 
         # - 13:00-14:00
-        # 
         # - 14:00-15:00
-        # 
         # - 15:00-16:00
-        # 
         # - 16:00-17:00
-        # 
         # - 17:00-18:00
-        # 
         # - 18:00-19:00
-        # 
         # - 19:00-20:00
-        # 
         # - 20:00-21:00
-        # 
         # - 21:00-22:00
-        # 
         # - 22:00-23:00
-        # 
         # - 23:00-24:00
         self.maintainable_period = maintainable_period
         # The minor version number.
         self.minor_version = minor_version
-        # The type of the monitoring service.
+        # The monitoring service type.
         self.monitor_type = monitor_type
-        # The OSS URL.
+        # The OSS address.
         self.oss_location = oss_location
         # The instance edition. Valid values:
-        # 
         # - trial: Trial Edition.
-        # 
         # - official: Standard Edition.
         self.package_type = package_type
-        # The billing method:
-        # 
-        # - prePaid: subscription.
-        # 
-        # - postPaid: pay-as-you-go.
+        # The billing method. Valid values:
+        # - prePaid: Subscription.
+        # - postPaid: Pay-as-you-go.
         self.pay_type = pay_type
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The running mode of the cluster:
-        # 
-        # - shared_nothing: all-in-one.
-        # 
-        # - shared_data: storage-compute separation.
-        # 
-        # - lakehouse: data lake analytics.
+        # The running mode of the cluster. Valid values:
+        # - shared_nothing: Shared-nothing architecture.
+        # - shared_data: Shared-data architecture.
+        # - lakehouse: Lakehouse.
         self.run_mode = run_mode
-        # The duration for which the cluster has been running. Unit: seconds.
+        # The running time of the cluster. Unit: seconds.
         self.running_time = running_time
-        # Indicates whether the security group is a managed security group.
+        # Specifies whether the security group is a managed security group.
         self.security_group_managed = security_group_managed
         # The security group ID.
         self.sg_id = sg_id
-        # The tags attached to the instance.
+        # The tags bound to the instance.
         self.tags = tags
         # The list of vSwitches.
         self.v_switches = v_switches
@@ -330,6 +283,12 @@ class DescribeInstancesResponseBodyData(DaraModel):
             result = _map
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+
+        if self.ai_function_cluster_id is not None:
+            result['AiFunctionClusterId'] = self.ai_function_cluster_id
+
+        if self.ai_function_endpoint is not None:
+            result['AiFunctionEndpoint'] = self.ai_function_endpoint
 
         if self.ai_function_instance_id is not None:
             result['AiFunctionInstanceId'] = self.ai_function_instance_id
@@ -434,6 +393,12 @@ class DescribeInstancesResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+
+        if m.get('AiFunctionClusterId') is not None:
+            self.ai_function_cluster_id = m.get('AiFunctionClusterId')
+
+        if m.get('AiFunctionEndpoint') is not None:
+            self.ai_function_endpoint = m.get('AiFunctionEndpoint')
 
         if m.get('AiFunctionInstanceId') is not None:
             self.ai_function_instance_id = m.get('AiFunctionInstanceId')
@@ -543,7 +508,7 @@ class DescribeInstancesResponseBodyDataVSwitches(DaraModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
-        # Indicates whether the vSwitch is the primary vSwitch.
+        # Specifies whether the vSwitch is the primary vSwitch.
         self.primary = primary
         # The vSwitch ID.
         self.vsw_id = vsw_id

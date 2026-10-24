@@ -17,17 +17,17 @@ class ModifySpecTypeResponseBody(DaraModel):
     ):
         # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
-        # Order ID.
+        # The order ID.
         self.data = data
-        # Error code.
+        # The error code.
         self.err_code = err_code
-        # Error message.
+        # The error message.
         self.err_message = err_message
-        # HTTP request status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

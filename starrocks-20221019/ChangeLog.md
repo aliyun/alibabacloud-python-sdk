@@ -1,3 +1,10 @@
+2026-10-24 Version: 1.6.4
+- Update API CreateScalingRule: add request parameters InstanceId.
+- Update API DeleteScalingRule: add request parameters InstanceId.
+- Update API GetInstanceFeatureGate: add response parameters Body.Data.supportLoadBasedAutoScaling.
+- Update API ModifyScalingRule: add request parameters InstanceId.
+
+
 2026-08-12 Version: 1.6.2
 - Update API CreateInstanceV1: add request parameters body.EnableAiFunction.
 

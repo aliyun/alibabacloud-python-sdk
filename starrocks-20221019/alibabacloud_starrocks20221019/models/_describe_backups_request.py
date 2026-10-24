@@ -20,17 +20,17 @@ class DescribeBackupsRequest(DaraModel):
         self.backup_task_id = backup_task_id
         # The instance ID.
         self.instance_id = instance_id
-        # The query page number.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page for paged query.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
         # The region ID of the instance.
         self.region_id = region_id
         # The list of statuses.
         self.statuses = statuses
-        # The end time for querying backup jobs.
+        # The end time of the backup task query. The time is a UNIX timestamp in seconds.
         self.time_period_end_time = time_period_end_time
-        # The start time for querying backup jobs.
+        # The start time of the backup task query. The time is a UNIX timestamp in seconds.
         self.time_period_start_time = time_period_start_time
 
     def validate(self):

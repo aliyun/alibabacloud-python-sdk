@@ -7,29 +7,32 @@ from darabonba.model import DaraModel
 class ModifyScalingRuleRequest(DaraModel):
     def __init__(
         self,
+        instance_id: str = None,
         new_trigger_type: str = None,
         node_group_id: str = None,
         old_trigger_type: str = None,
         rule: str = None,
         scaling_rule_id: str = None,
     ):
-        # New trigger type.
+        # The instance ID.
+        self.instance_id = instance_id
+        # The new trigger type.
         # 
         # This parameter is required.
         self.new_trigger_type = new_trigger_type
-        # Compute group ID.
+        # The ID of the compute group.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
-        # Old trigger type.
+        # The original trigger type.
         # 
         # This parameter is required.
         self.old_trigger_type = old_trigger_type
-        # Rule content.
+        # The content of the rule.
         # 
         # This parameter is required.
         self.rule = rule
-        # ID of the scaling rule to modify.
+        # The ID of the scaling rule to be modified.
         # 
         # This parameter is required.
         self.scaling_rule_id = scaling_rule_id
@@ -42,6 +45,9 @@ class ModifyScalingRuleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
         if self.new_trigger_type is not None:
             result['NewTriggerType'] = self.new_trigger_type
 
@@ -61,6 +67,9 @@ class ModifyScalingRuleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
         if m.get('NewTriggerType') is not None:
             self.new_trigger_type = m.get('NewTriggerType')
 

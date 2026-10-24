@@ -16,9 +16,9 @@ class ModifyCuPreCheckResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The detailed information about the failed permission verification.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The returned data.
+        # The response data.
         self.data = data
         # The error code.
         self.err_code = err_code

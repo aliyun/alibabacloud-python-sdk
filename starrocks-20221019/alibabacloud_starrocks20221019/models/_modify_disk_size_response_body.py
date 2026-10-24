@@ -15,9 +15,9 @@ class ModifyDiskSizeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the access denial.
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # The ID of the order.
+        # The order ID.
         self.data = data
         # The error code.
         self.err_code = err_code
@@ -25,7 +25,7 @@ class ModifyDiskSizeResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

@@ -24,11 +24,11 @@ class DescribeBackupsResponseBody(DaraModel):
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
-        # The HTTP request status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of query results.
         self.total = total
@@ -113,21 +113,20 @@ class DescribeBackupsResponseBodyData(DaraModel):
         status: str = None,
         sub_tasks: List[main_models.DescribeBackupsResponseBodyDataSubTasks] = None,
     ):
-        # The end time of this backup.
+        # The end time of the current backup. The time is a UNIX timestamp in milliseconds.
         self.backup_finished_time = backup_finished_time
-        # The start time of this backup.
+        # The start time of the current backup. The time is a UNIX timestamp in milliseconds.
         self.backup_start_time = backup_start_time
         # The backup task ID.
         self.backup_task_id = backup_task_id
-        # The backup type:
+        # The backup type. Valid values:
         # 
-        # - **0**: Fast backup.
-        # 
-        # - **1**: Consistent backup.
+        # - **0**: quick backup
+        # - **1**: consistent backup
         self.backup_type = backup_type
         # The task description.
         self.description = description
-        # The expiration time of the backup data.
+        # The expiration time of the backup data. The time is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
         # The instance ID.
         self.instance_id = instance_id
@@ -135,9 +134,9 @@ class DescribeBackupsResponseBodyData(DaraModel):
         self.instance_snapshot = instance_snapshot
         # The region ID.
         self.region_id = region_id
-        # The cloud disk size in GiB.
+        # The cloud disk size. Unit: GiB.
         self.size = size
-        # The backup job status.
+        # The backup task status.
         self.status = status
         # The list of backup subtasks.
         self.sub_tasks = sub_tasks
@@ -255,17 +254,17 @@ class DescribeBackupsResponseBodyDataSubTasks(DaraModel):
         self.data_base = data_base
         # The snapshot ID.
         self.detail = detail
-        # The task end time.
+        # The task end time. The time is a UNIX timestamp in seconds.
         self.finished_time = finished_time
-        # The data size in GiB.
+        # The data size. Unit: GiB.
         self.size = size
         # The snapshot name.
         self.snapshot_name = snapshot_name
-        # The task start date.
+        # The task start time. The time is a UNIX timestamp in seconds.
         self.start_time = start_time
-        # The backup job status.
+        # The backup task status.
         self.status = status
-        # The data table name.
+        # The table name.
         self.table = table
 
     def validate(self):
@@ -354,23 +353,17 @@ class DescribeBackupsResponseBodyDataInstanceSnapshot(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The cluster\\"s running mode:
-        # 
-        # - Shared-nothing.
-        # 
-        # - Shared-data.
+        # The running mode of the cluster. Valid values:
+        # - shared_nothing: integrated storage and computing
+        # - shared_data: disaggregated storage and computing
         self.run_mode = run_mode
-        # The compute group specification type. Includes the following types:
+        # The specification type of the compute group. Valid values:
         # 
-        # - standard: Standard Edition.
-        # 
-        # - localSSD: Local SSD.
-        # 
-        # - bigData: Large-capacity storage.
-        # 
-        # - ramEnhanced: Memory-enhanced instance family.
-        # 
-        # - networkEnhanced: Network-enhanced.
+        # - standard: standard edition
+        # - localSSD: local SSD
+        # - bigData: large-capacity storage
+        # - ramEnhanced: memory-enhanced instance family
+        # - networkEnhanced: network-enhanced
         self.spec_type = spec_type
         # The tag information.
         self.tags = tags
@@ -519,49 +512,38 @@ class DescribeBackupsResponseBodyDataInstanceSnapshotNodeGroups(DaraModel):
         storage_performance_level: str = None,
         storage_size: int = None,
     ):
-        # The compute group type. Includes the following values:
+        # The compute group type. Valid values:
         # 
         # - FE
-        # 
         # - BE
-        # 
         # - CN
-        # 
         # - OBSERVER
-        # 
         # - AGENT
         self.component_type = component_type
-        # The number of CUs. A CU (Compute Unit) is the basic unit of measurement for the service. 1 CU equals 1 CPU core + 4 GiB memory. If SpecType is memory-enhanced instance family, 1 CU equals 1 CPU core + 8 GiB memory.
+        # The number of CUs. A CU (compute unit) is the basic billing unit of the service. 1 CU = 1 vCPU + 4 GiB of memory. Only when SpecType is set to the memory-enhanced instance family, 1 CU = 1 vCPU + 8 GiB of memory.
         self.cu = cu
         # The number of disks.
         self.disk_number = disk_number
-        # The node group\\"s local SSD instance type. This value is only meaningful for ECS instances where SpecType is local SSD or large-capacity storage.
+        # The local SSD instance specification of the node group. This value is valid only when the instance is based on ECS and SpecType is set to local SSD or large-capacity storage.
         self.local_storage_instance_type = local_storage_instance_type
         # The number of nodes.
         self.resident_node_number = resident_node_number
-        # The compute group specification type. Includes the following types:
+        # The specification type of the compute group. Valid values:
         # 
-        # - standard: Standard Edition.
-        # 
-        # - localSSD: Local SSD.
-        # 
-        # - bigData: Large-capacity storage.
-        # 
-        # - ramEnhanced: Memory-enhanced instance family.
-        # 
-        # - networkEnhanced: Network-enhanced.
+        # - standard: standard edition
+        # - localSSD: local SSD
+        # - bigData: large-capacity storage
+        # - ramEnhanced: memory-enhanced instance family
+        # - networkEnhanced: network-enhanced
         self.spec_type = spec_type
-        # The performance level (PL) of the cloud disk. Includes the following values:
+        # The performance level (PL) of the cloud disk. Valid values:
         # 
-        # - pl0: Maximum random read/write IOPS of 10,000 per disk.
-        # 
-        # - pl1: Maximum random read/write IOPS of 50,000 per disk.
-        # 
-        # - pl2: Maximum random read/write IOPS of 100,000 per disk.
-        # 
-        # - pl3: Maximum random read/write IOPS of 1,000,000 per disk.
+        # - pl0: A single disk delivers up to 10,000 random read/write IOPS.
+        # - pl1: A single disk delivers up to 50,000 random read/write IOPS.
+        # - pl2: A single disk delivers up to 100,000 random read/write IOPS.
+        # - pl3: A single disk delivers up to 1,000,000 random read/write IOPS.
         self.storage_performance_level = storage_performance_level
-        # The storage size in GiB.
+        # The storage size. Unit: GiB.
         self.storage_size = storage_size
 
     def validate(self):

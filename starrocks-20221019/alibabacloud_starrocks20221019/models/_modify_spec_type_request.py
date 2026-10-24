@@ -7,29 +7,33 @@ from darabonba.model import DaraModel
 class ModifySpecTypeRequest(DaraModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         fast_mode: bool = None,
         instance_id: str = None,
         node_group_id: str = None,
         promotion_option_no: str = None,
         target_spec_type: str = None,
     ):
-        # Restart in fast restart mode. Default is false.
+        # Specifies whether to automatically pay for all products specified in the Products parameter.
+        # - true: Automatic payment.
+        # - false: No automatic payment.
+        self.auto_pay = auto_pay
+        # Specifies whether to restart in fast restart mode. Default value: false.
         # 
-        # - true: Restarts compute nodes in fast restart mode. Nodes restart in parallel within a batch, and batches execute sequentially.
-        # 
+        # - true: Restarts compute nodes in fast restart mode. Compute nodes are restarted in multiple batches. Nodes within a batch are restarted in parallel, and batches execute serially.
         # - false: Restarts compute nodes in rolling restart mode.
         self.fast_mode = fast_mode
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Compute group ID.
+        # The compute group ID.
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
-        # Coupon ID.
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
-        # Target specifications type.
+        # The target specification type.
         # 
         # This parameter is required.
         self.target_spec_type = target_spec_type
@@ -42,6 +46,9 @@ class ModifySpecTypeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+
         if self.fast_mode is not None:
             result['FastMode'] = self.fast_mode
 
@@ -61,6 +68,9 @@ class ModifySpecTypeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+
         if m.get('FastMode') is not None:
             self.fast_mode = m.get('FastMode')
 

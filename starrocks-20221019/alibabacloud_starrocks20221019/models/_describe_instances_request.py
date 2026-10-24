@@ -23,55 +23,35 @@ class DescribeInstancesRequest(DaraModel):
         self.instance_id = instance_id
         # The instance name.
         self.instance_name = instance_name
-        # The instance status to filter by. You can specify multiple statuses, separated by commas. Valid values:
-        # 
-        # - unpaid
-        # 
-        # - paid
-        # 
-        # - creating
-        # 
-        # - running
-        # 
-        # - updating
-        # 
-        # - disable
-        # 
-        # - deleting
-        # 
-        # - scaling_out
-        # 
-        # - scaling_in
-        # 
-        # - scaling_up
-        # 
-        # - scaling_down
-        # 
-        # - upgrading
-        # 
-        # - modifying_config
-        # 
-        # - enable_public_network
-        # 
-        # - disable_public_network
-        # 
-        # - convert_from_trial_to_official
-        # 
-        # - restarting
-        # 
-        # - migration_cluster_to_serverless
-        # 
-        # - actively_disabled
-        # 
-        # - enabling
-        # 
-        # - agent_creating
-        # 
-        # - agent_scaling_up
+        # The instance status. You can specify multiple statuses separated by commas. Valid values:
+        # <ul>
+        # <li>unpaid: Pending payment.</li>
+        # <li>paid: Paid.</li>
+        # <li>creating: Starting.</li>
+        # <li>running: Running.</li>
+        # <li>updating: Updating.</li>
+        # <li>disable: Unavailable.</li>
+        # <li>deleting: Releasing.</li>
+        # <li>scaling_out: Scaling out.</li>
+        # <li>scaling_in: Scaling in.</li>
+        # <li>scaling_up: Scaling up.</li>
+        # <li>scaling_down: Scaling down.</li>
+        # <li>upgrading: Upgrading.</li>
+        # <li>modifying_config: Updating configurations.</li>
+        # <li>enable_public_network: Enabling public network access.</li>
+        # <li>disable_public_network: Disabling public network access.</li>
+        # <li>convert_from_trial_to_official: Upgrading the instance edition.</li>
+        # <li>restarting: Restarting the cluster.</li>
+        # <li>migration_cluster_to_serverless: Migrating the cluster.</li>
+        # <li>actively_disabled: Stopped.</li>
+        # <li>enabling: Resuming.</li>
+        # <li>agent_creating: Creating the agent.</li>
+        # <li>agent_scaling_up: Scaling up the agent.</li>
+        # </ul>
         self.instance_status = instance_status
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
         # The region ID of the instance.
         self.region_id = region_id

@@ -19,7 +19,7 @@ class DescribeNodeGroupsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
@@ -31,9 +31,9 @@ class DescribeNodeGroupsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The total number of query results.
+        # The total number of returned entries.
         self.total = total
 
     def validate(self):
@@ -150,13 +150,13 @@ class DescribeNodeGroupsResponseBodyData(DaraModel):
         self.account_status = account_status
         # The compute group architecture. Valid values:
         # 
-        # - onEci: Deployed on Elastic Container Instance (ECI).
-        # - onECS: Deployed on Elastic Compute Service (ECS).
+        # - onEci: Deployed on ECI.
+        # - onECS: Deployed on ECS.
         # - onBareMetal: Deployed on a bare metal resource pool.
         self.architecture = architecture
-        # The creation time of the compute group.
+        # The creation time of the compute group. The value is a UNIX timestamp in milliseconds.
         self.begin_time = begin_time
-        # The instance ID associated with the bill. For default compute groups (FE compute group and default BE compute group), this value is the instance ID. Otherwise, it is the compute group ID.
+        # The instance ID corresponding to the bill. For the default compute groups (the FE compute group and the default BE compute group), the value of this field is the instance ID. Otherwise, the value is the compute group ID.
         self.billing_instance_id = billing_instance_id
         # The commodity code.
         self.commodity_code = commodity_code
@@ -168,9 +168,9 @@ class DescribeNodeGroupsResponseBodyData(DaraModel):
         # - OBSERVER
         # - AGENT
         self.component_type = component_type
-        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory. When SpecType is memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
+        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory. If SpecType is set to the memory-enhanced instance family, 1 CU equals 1 vCPU and 8 GiB of memory.
         self.cu = cu
-        # Indicates whether this is the default compute group.
+        # Indicates whether the compute group is the default compute group.
         self.default_group = default_group
         # The compute group description.
         self.description = description
@@ -182,41 +182,41 @@ class DescribeNodeGroupsResponseBodyData(DaraModel):
         self.enable_public_network = enable_public_network
         # The compute group endpoint.
         self.endpoint = endpoint
-        # The expiration time of the compute group.
+        # The expiration time of the compute group. The value is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
         # The HTTP port of the compute group.
         self.http_port = http_port
         # The instance ID.
         self.instance_id = instance_id
-        # The local SSD instance type of the node group. This value is meaningful only when the deployment is based on ECS instances and SpecType is local SSD or large-scale storage.
+        # The local SSD instance specification of the node group. This value is valid only when the instance is based on ECS and SpecType is localSSD or bigData.
         self.local_storage_instance_type = local_storage_instance_type
-        # The ratio of memory size to the number of CUs. The value is 8 when SpecType is memory-enhanced instance family, and 4 for other specification types.
+        # The ratio of memory size to the number of CUs. The value is 8 when SpecType is the memory-enhanced instance family, and 4 for other specification types.
         self.memory_cpu_ratio = memory_cpu_ratio
         # The compute group ID.
         self.node_group_id = node_group_id
         # The compute group name.
         self.node_group_name = node_group_name
-        # The information about nodes in the compute group.
+        # The information about the nodes contained in the compute group.
         self.node_info = node_info
-        # The billing type:
+        # The billing method. Valid values:
         # <ol>
         # <li>Subscription (prePaid).</li>
         # <li>Pay-as-you-go (postPaid).</li>
         # </ol>
         self.pay_type = pay_type
-        # The public network address. This field has a value only when EnablePublicNetwork is set to true.
+        # The public IP address. This parameter has a value only when EnablePublicNetwork is set to true.
         self.public_address = public_address
         # The region ID.
         self.region_id = region_id
         # The number of nodes.
         self.resident_node_number = resident_node_number
-        # The duration that the compute group has been running. Unit: seconds.
+        # The running time of the compute group. Unit: seconds.
         self.running_time = running_time
         # The compute group specification type. Valid values:
         # 
-        # - standard: Standard.
+        # - standard: Standard Edition.
         # - localSSD: Local SSD.
-        # - bigData: Large-scale storage.
+        # - bigData: Large-capacity storage.
         # - ramEnhanced: Memory-enhanced instance family.
         # - networkEnhanced: Network-enhanced.
         self.spec_type = spec_type
@@ -225,34 +225,35 @@ class DescribeNodeGroupsResponseBodyData(DaraModel):
         # - UNPAID: Unpaid.
         # - PAID: Paid.
         # - CREATING_FAILED: Creation failed.
-        # - CREATING: Being created.
+        # - CREATING: Creating.
         # - RUNNING: Running.
-        # - MODIFYING_CONFIG: Configuration being modified.
-        # - MODIFYING_TIMEZONE: Time zone being modified.
-        # - ELASTIC_SCALING_OUT: Elastic scale-out in progress.
-        # - ELASTIC_SCALING_IN: Elastic scale-in in progress.
-        # - SCALING_OUT: Scale-out in progress.
+        # - MODIFYING_CONFIG: Modifying configurations.
+        # - MODIFYING_TIMEZONE: Modifying the time zone.
+        # - ELASTIC_SCALING_OUT: Elastically scaling out.
+        # - ELASTIC_SCALING_IN: Elastically scaling in.
+        # - SCALING_OUT: Scaling out.
         # - RESTARTING: Restarting.
-        # - SCALING_IN: Scale-in in progress.
-        # - SCALING_UP: Upgrading specifications.
-        # - SCALING_DOWN: Downgrading specifications.
+        # - SCALING_IN: Scaling in.
+        # - SCALING_UP: Scaling up.
+        # - SCALING_DOWN: Scaling down.
         # - UPGRADING: Upgrading.
         # - ENABLE_PUBLIC_NETWORK: Enabling public network access.
         # - DISABLE_PUBLIC_NETWORK: Disabling public network access.
-        # - SWITCH_AZ: Switching zone.
+        # - SWITCH_AZ: Switching the zone.
         # - DISABLE: Disabled.
-        # - DELETING: Being deleted.
+        # - DELETING: Deleting.
         # - DELETED: Deleted.
         self.status = status
         # The performance level (PL) of the cloud disk. Valid values:
         # 
-        # - pl0: Maximum random read/write IOPS of 10,000 per disk.
-        # - pl1: Maximum random read/write IOPS of 50,000 per disk.
-        # - pl2: Maximum random read/write IOPS of 100,000 per disk.
-        # - pl3: Maximum random read/write IOPS of 1,000,000 per disk.
+        # - pl0: Up to 10,000 random read/write IOPS per disk.
+        # - pl1: Up to 50,000 random read/write IOPS per disk.
+        # - pl2: Up to 100,000 random read/write IOPS per disk.
+        # - pl3: Up to 1,000,000 random read/write IOPS per disk.
         self.storage_performance_level = storage_performance_level
         # The storage size. Unit: GiB.
         self.storage_size = storage_size
+        # The list of tags.
         self.tags = tags
         # The target number of elastic nodes.
         self.target_elastic_node_number = target_elastic_node_number
@@ -494,7 +495,9 @@ class DescribeNodeGroupsResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

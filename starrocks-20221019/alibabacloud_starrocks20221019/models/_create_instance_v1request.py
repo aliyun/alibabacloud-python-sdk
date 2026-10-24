@@ -44,31 +44,37 @@ class CreateInstanceV1Request(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The administrator password of the instance.
+        # The password of the instance administrator.
         # 
         # This parameter is required.
         self.admin_password = admin_password
+        # The agent compute group.
         self.agent_node_group = agent_node_group
+        # Specifies whether automatic payment is enabled for all products specified in the Products parameter. Valid values:
+        # - true: Enables automatic payment.
+        # - false: Disables automatic payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. This parameter takes effect only when payType is set to PrePaid. Auto-renewal is disabled by default.
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when PayType is set to PrePaid. Default value: false.
         self.auto_renew = auto_renew
-        # The BE or CN node group information.
+        # The information about the BE or CN compute groups.
         self.backend_node_groups = backend_node_groups
-        # Ensures the idempotence of the request. Generate a unique parameter value from your client. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The name of the DLF Catalog.
+        # The name of the DLF catalog.
         self.dlf_catalog_name = dlf_catalog_name
-        # The type of the DLF Catalog. Valid values: paimon and iceberg.
+        # The type of the DLF catalog, such as paimon or iceberg.
         self.dlf_catalog_type = dlf_catalog_type
-        # The subscription duration. This parameter takes effect only when payType is set to PrePaid.
+        # The subscription duration. This parameter takes effect only when PayType is set to PrePaid.
         self.duration = duration
+        # Specifies whether to enable the AI center. Default value: false.
         self.enable_ai_function = enable_ai_function
         # Specifies whether to enable disaster recovery.
         self.enable_multi_az = enable_multi_az
         # Specifies whether to enable encryption.
         self.encrypted = encrypted
-        # The FE node group information.
+        # The information about the FE node groups.
         self.frontend_node_groups = frontend_node_groups
+        # The gateway type. Generally, the value is Slb or Privatezone.
         self.gateway_type = gateway_type
         # The instance name.
         # 
@@ -76,11 +82,11 @@ class CreateInstanceV1Request(DaraModel):
         self.instance_name = instance_name
         # The KMS key ID.
         self.kms_key_id = kms_key_id
-        # The username of the associated Resource Access Management (RAM) user or the name of the associated RAM role.
+        # The username of the associated Resource Access Management (RAM) user or the name of the RAM role.
         self.linked_ram_user_name = linked_ram_user_name
-        # The Observer node group information. Specify this parameter only when you need to enable cross-zone disaster recovery. The Observer node group specifications must be the same as those of the FE node group.
+        # The information about the Observer compute group. Specify this parameter only when you need to enable multi-zone disaster recovery. The configuration of the Observer compute group must be consistent with the specifications of the FE node group.
         self.observer_node_groups = observer_node_groups
-        # The name of the role used for password-free access to Object Storage Service (OSS).
+        # The name of the role used for password-free access to OSS.
         self.oss_accessing_role_name = oss_accessing_role_name
         # The instance edition. Valid values:
         # <ul>
@@ -90,7 +96,7 @@ class CreateInstanceV1Request(DaraModel):
         # 
         # This parameter is required.
         self.package_type = package_type
-        # The billing method. Valid values:
+        # The billing method of the instance. Valid values:
         # <ol>
         # <li>prePaid: subscription.</li>
         # <li>postPaid: pay-as-you-go.</li>
@@ -98,16 +104,14 @@ class CreateInstanceV1Request(DaraModel):
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The unit of the subscription duration. Valid values:
+        # The unit of the billing cycle. Valid values:
         # <ul>
         # <li>Month</li>
         # <li>Year</li>
         # </ul>
-        # This parameter takes effect only when payType is set to PrePaid.
+        # This parameter takes effect only when PayType is set to PrePaid.
         self.pricing_cycle = pricing_cycle
-        # The RAM authentication type. Valid values:
-        # - RS: Resource Access Management (RAM) user.
-        # - RR: RAM role.
+        # The RAM authentication type. A value of RS indicates a Resource Access Management (RAM) user, and a value of RR indicates a RAM role.
         self.principal_type = principal_type
         # The coupon ID.
         self.promotion_option_no = promotion_option_no
@@ -119,14 +123,15 @@ class CreateInstanceV1Request(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The running mode of the cluster. Valid values:
-        # 
-        # - shared_nothing: compute-storage coupled.
-        # - shared_data: storage-compute disaggregation.
+        # The run mode of the cluster. Valid values:
+        # <ul>
+        # <li>shared_nothing: shared-nothing architecture.</li>
+        # <li>shared_data: shared-data architecture.</li>
+        # </ul>
         # 
         # This parameter is required.
         self.run_mode = run_mode
-        # The instance tags.
+        # The tags of the instance.
         self.tags = tags
         # The vSwitch and zone information.
         self.v_switches = v_switches
@@ -134,7 +139,7 @@ class CreateInstanceV1Request(DaraModel):
         # 
         # This parameter is required.
         self.version = version
-        # VPC ID。
+        # The VPC ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -490,17 +495,17 @@ class CreateInstanceV1RequestObserverNodeGroups(DaraModel):
         storage_size: int = None,
         zone_id: str = None,
     ):
-        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
+        # The number of compute units (CUs). A CU is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory.
         self.cu = cu
         # The number of disks.
         self.disk_number = disk_number
-        # The local SSD instance type. This parameter does not need to be set for the Observer node group.
+        # The instance specification for local SSDs. You do not need to specify this parameter for the Observer compute group.
         self.local_storage_instance_type = local_storage_instance_type
         # The number of nodes.
         self.resident_node_number = resident_node_number
-        # The specification type of the node group. Only standard is supported.
+        # The specification type of the compute group. Only standard is supported.
         self.spec_type = spec_type
-        # The performance level (PL) of the cloud disk. Only pl1 is supported, which provides up to 50,000 random read/write IOPS per disk.
+        # The performance level (PL) of the cloud disk. Only PL1 is supported, which delivers up to 50,000 random read/write IOPS per disk.
         self.storage_performance_level = storage_performance_level
         # The storage size. Unit: GiB.
         self.storage_size = storage_size
@@ -581,17 +586,17 @@ class CreateInstanceV1RequestFrontendNodeGroups(DaraModel):
         storage_size: int = None,
         zone_id: str = None,
     ):
-        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory.
+        # The number of compute units (CUs). A CU is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory.
         self.cu = cu
         # The number of disks.
         self.disk_number = disk_number
-        # The local SSD instance type. This parameter does not need to be set for the FE node group.
+        # The local SSD instance type. You do not need to set this parameter for FE compute groups.
         self.local_storage_instance_type = local_storage_instance_type
         # The number of nodes.
         self.resident_node_number = resident_node_number
-        # The specification type of the node group. Only standard is supported.
+        # The specification type of the compute group. Only standard is supported.
         self.spec_type = spec_type
-        # The performance level (PL) of the cloud disk. Only pl1 is supported, which provides up to 50,000 random read/write IOPS per disk.
+        # The performance level (PL) of the cloud disk. Only pl1 is supported, where a single disk delivers up to 50,000 random read/write IOPS.
         self.storage_performance_level = storage_performance_level
         # The storage size. Unit: GiB.
         self.storage_size = storage_size
@@ -672,17 +677,23 @@ class CreateInstanceV1RequestBackendNodeGroups(DaraModel):
         storage_size: int = None,
         zone_id: str = None,
     ):
-        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU = 1 CPU core + 4 GiB memory. When SpecType is set to memory-enhanced instance family, 1 CU = 1 CPU core + 8 GiB memory.
+        # The number of CUs. A CU (Compute Unit) is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory. If SpecType is set to the memory-enhanced instance family, 1 CU equals 1 vCPU and 8 GiB of memory.
         self.cu = cu
         # The number of disks.
         self.disk_number = disk_number
-        # The local SSD instance type of the node group. This parameter takes effect only when the instance is ECS-based and SpecType is set to local SSD or large-scale storage.
+        # The local SSD instance type of the node group. This parameter is valid only when the instance is based on ECS and SpecType is set to localSSD or bigData.
         self.local_storage_instance_type = local_storage_instance_type
         # The number of nodes.
         self.resident_node_number = resident_node_number
-        # The specification type of the node group. Valid values:
+        # The instance family category of the compute group. Valid values:
+        # 
+        # - standard: Standard.
+        # - localSSD: Local SSD.
+        # - bigData: Large storage.
+        # - ramEnhanced: Memory-enhanced instance family.
+        # - networkEnhanced: Network-enhanced.
         self.spec_type = spec_type
-        # The performance level of the cloud disk. Valid values:
+        # The performance level (PL) of the cloud disk. Valid values:
         # 
         # - pl0: A single disk delivers up to 10,000 random read/write IOPS.
         # - pl1: A single disk delivers up to 50,000 random read/write IOPS.
@@ -761,6 +772,7 @@ class CreateInstanceV1RequestAgentNodeGroup(DaraModel):
         self,
         cu: int = None,
     ):
+        # The number of compute units (CUs). A CU is the basic metering unit of the service. 1 CU equals 1 vCPU and 4 GiB of memory.
         self.cu = cu
 
     def validate(self):

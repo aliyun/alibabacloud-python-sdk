@@ -16,169 +16,96 @@ class ListOperationHistoryRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
-        # End time of the operation.
+        # The end time of the operation. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Operation ID.
+        # The operation ID.
         self.operation_id = operation_id
-        # Operation status:
-        # 
-        # - COMPLETED: completed
-        # 
-        # - TERMINATED: terminated
-        # 
-        # - HUMAN_PROCESSING: pending manual processing
+        # The operation status. Valid values:
+        # - COMPLETED: Completed.
+        # - TERMINATED: Terminated.
+        # - HUMAN_PROCESSING: Pending manual processing.
         self.operation_status = operation_status
-        # Operation type. Valid values:
-        # 
-        # - trial_to_official: upgrade from Trial Edition to Standard Edition
-        # 
-        # - upgrade_version: upgrade version
-        # 
-        # - update_configuration: update configuration
-        # 
-        # - update_public_network_status: update public network status
-        # 
-        # - create_cluster: create cluster
-        # 
-        # - delete_cluster: delete cluster
-        # 
-        # - disable_cluster: stop cluster
-        # 
-        # - enable_cluster: resume cluster
-        # 
-        # - restart_cluster: restart cluster
-        # 
-        # - migrate_cluster: migrate cluster
-        # 
-        # - renew_cluster: renew cluster
-        # 
-        # - modify_charge_type: change billing method
-        # 
-        # - UPGRADE: upgrade cluster
-        # 
-        # - DOWNGRADE: downgrade cluster
-        # 
-        # - create_node_group: create node group
-        # 
-        # - delete_node_group: delete node group
-        # 
-        # - disable_node_group: stop node group
-        # 
-        # - enable_node_group: resume node group
-        # 
-        # - sre_operation: O\\&M cluster
-        # 
-        # - resource_change: resource change
-        # 
-        # - disable_postpaid_resource: disable pay-as-you-go resources
-        # 
-        # - enable_postpaid_resource: enable pay-as-you-go resources
-        # 
-        # - restart_node_group: restart compute group
-        # 
-        # - enable_ha_cluster: enable high availability (HA) for cluster
-        # 
-        # - restart_node: restart node
-        # 
-        # - backup: data backup
-        # 
-        # - delete_backup: delete data backup
-        # 
-        # - cancel_backup_task: cancel data backup
-        # 
-        # - modify_timezone: modify system time zone
-        # 
-        # - restore: data restoration
-        # 
-        # - switch_az: switch primary and secondary zones
-        # 
-        # - rollback_upgrade_version: roll back version upgrade
-        # 
-        # - scale_out_fe: scale out FE
-        # 
-        # - scale_in_fe: scale in FE
-        # 
-        # - upgrade_fe_cu: upgrade FE CU specification
-        # 
-        # - downgrade_fe_cu: downgrade FE CU specification
-        # 
-        # - increase_fe_disk_size: increase FE disk size
-        # 
-        # - decrease_fe_disk_size: decrease FE disk size
-        # 
-        # - increase_fe_disk_number: increase FE disk count
-        # 
-        # - decrease_fe_disk_number: decrease FE disk count
-        # 
-        # - upgrade_fe_disk_performance_level: upgrade FE disk performance level
-        # 
-        # - downgrade_fe_disk_performance_level: downgrade FE disk performance level
-        # 
-        # - create_agent: create Agent
-        # 
-        # - upgrade_agent_cu: upgrade Agent CU specification
-        # 
-        # - scale_out_be: scale out BE
-        # 
-        # - scale_in_be: scale in BE
-        # 
-        # - upgrade_be_cu: upgrade BE CU specification
-        # 
-        # - downgrade_be_cu: downgrade BE CU specification
-        # 
-        # - increase_be_disk_size: increase BE disk size
-        # 
-        # - decrease_be_disk_size: decrease BE disk size
-        # 
-        # - increase_be_disk_number: increase BE disk count
-        # 
-        # - decrease_be_disk_number: decrease BE disk count
-        # 
-        # - upgrade_be_disk_performance_level: upgrade BE disk performance level
-        # 
-        # - downgrade_be_disk_performance_level: downgrade BE disk performance level
-        # 
-        # - upgrade_be_spec_type: upgrade BE specification type
-        # 
-        # - downgrade_be_spec_type: downgrade BE specification type
-        # 
-        # - scale_out_cn: scale out CN
-        # 
-        # - scale_in_cn: scale in CN
-        # 
-        # - upgrade_cn_cu: upgrade CN CU specification
-        # 
-        # - downgrade_cn_cu: downgrade CN CU specification
-        # 
-        # - increase_cn_disk_size: increase CN disk size
-        # 
-        # - decrease_cn_disk_size: decrease CN disk size
-        # 
-        # - increase_cn_disk_number: increase CN disk count
-        # 
-        # - decrease_cn_disk_number: decrease CN disk count
-        # 
-        # - upgrade_cn_disk_performance: upgrade CN disk performance level
-        # 
-        # - downgrade_cn_disk_performance: downgrade CN disk performance level
-        # 
-        # - upgrade_cn_spec_type: upgrade CN specification type
-        # 
-        # - downgrade_cn_spec_type: downgrade CN specification type
-        # 
-        # - elastic_scale_out_cn: elastically scale out CN
-        # 
-        # - elastic_scale_in_cn: elastically scale in CN
+        # The operation type. Valid values:
+        # - trial_to_official: Upgrades the trial edition to the standard edition.
+        # - upgrade_version: Upgrades the version.
+        # - update_configuration: Updates the configuration.
+        # - update_public_network_status: Updates the public network status.
+        # - create_cluster: Creates a cluster.
+        # - delete_cluster: Deletes a cluster.
+        # - disable_cluster: Stops a cluster.
+        # - enable_cluster: Recovers a cluster.
+        # - restart_cluster: Restarts a cluster.
+        # - migrate_cluster: Migrates a cluster.
+        # - renew_cluster: Renews a cluster.
+        # - modify_charge_type: Changes the billing method.
+        # - UPGRADE: Upgrades a cluster.
+        # - DOWNGRADE: Downgrades a cluster.
+        # - create_node_group: Creates a node group.
+        # - delete_node_group: Deletes a node group.
+        # - disable_node_group: Stops a node group.
+        # - enable_node_group: Recovers a node group.
+        # - sre_operation: Performs O&M on a cluster.
+        # - resource_change: Changes resources.
+        # - disable_postpaid_resource: Disables pay-as-you-go resources.
+        # - enable_postpaid_resource: Recovers pay-as-you-go resources.
+        # - restart_node_group: Restarts a compute group.
+        # - enable_ha_cluster: Enables high availability (HA) to keep the cluster active.
+        # - restart_node: Restarts a node.
+        # - backup: Backs up data.
+        # - delete_backup: Deletes a data backup.
+        # - cancel_backup_task: Cancels a data backup task.
+        # - modify_timezone: Modifies the system time zone.
+        # - restore: Recovers data.
+        # - switch_az: Switches the primary and secondary zones.
+        # - rollback_upgrade_version: Rolls back a version upgrade.
+        # - scale_out_fe: Scales out FE nodes.
+        # - scale_in_fe: Scales in FE nodes.
+        # - upgrade_fe_cu: Upgrades the FE CU specifications.
+        # - downgrade_fe_cu: Decrease the quota of FE CU specifications.
+        # - increase_fe_disk_size: Increases the FE disk size.
+        # - decrease_fe_disk_size: Decreases the FE disk size.
+        # - increase_fe_disk_number: Increases the number of FE disks.
+        # - decrease_fe_disk_number: Decreases the number of FE disks.
+        # - upgrade_fe_disk_performance_level: Upgrades the FE disk performance level (PL).
+        # - downgrade_fe_disk_performance_level: Decrease the quota of the FE disk performance level (PL).
+        # - create_agent: Creates an agent.
+        # - upgrade_agent_cu: Upgrades the agent CU specifications.
+        # - scale_out_be: Scales out BE nodes.
+        # - scale_in_be: Scales in BE nodes.
+        # - upgrade_be_cu: Upgrades the BE CU specifications.
+        # - downgrade_be_cu: Decrease the quota of BE CU specifications.
+        # - increase_be_disk_size: Increases the BE disk size.
+        # - decrease_be_disk_size: Decreases the BE disk size.
+        # - increase_be_disk_number: Increases the number of BE disks.
+        # - decrease_be_disk_number: Decreases the number of BE disks.
+        # - upgrade_be_disk_performance_level: Upgrades the BE disk performance level (PL).
+        # - downgrade_be_disk_performance_level: Decrease the quota of the BE disk performance level (PL).
+        # - upgrade_be_spec_type: Upgrades the BE specification type.
+        # - downgrade_be_spec_type: Decrease the quota of the BE specification type.
+        # - scale_out_cn: Scales out CN nodes.
+        # - scale_in_cn: Scales in CN nodes.
+        # - upgrade_cn_cu: Upgrades the CN CU specifications.
+        # - downgrade_cn_cu: Decrease the quota of CN CU specifications.
+        # - increase_cn_disk_size: Increases the CN disk size.
+        # - decrease_cn_disk_size: Decreases the CN disk size.
+        # - increase_cn_disk_number: Increases the number of CN disks.
+        # - decrease_cn_disk_number: Decreases the number of CN disks.
+        # - upgrade_cn_disk_performance: Upgrades the CN disk performance level (PL).
+        # - downgrade_cn_disk_performance: Decrease the quota of the CN disk performance level (PL).
+        # - upgrade_cn_spec_type: Upgrades the CN specification type.
+        # - downgrade_cn_spec_type: Decrease the quota of the CN specification type.
+        # - elastic_scale_out_cn: Elastically scales out CN nodes.
+        # - elastic_scale_in_cn: Elastically scales in CN nodes.
         self.operation_type = operation_type
-        # Page number of the current page. Default value: 1.
+        # The page number of the current page. Default value: 1.
         self.page_number = page_number
-        # Number of entries per page for paged queries. Default value: 10.
+        # The number of entries per page for paging in a paged query. Default value: 10.
         self.page_size = page_size
-        # Start time of the operation.
+        # The start time of the operation. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

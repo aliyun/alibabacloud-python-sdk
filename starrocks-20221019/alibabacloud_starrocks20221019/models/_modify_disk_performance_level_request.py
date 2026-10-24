@@ -7,11 +7,16 @@ from darabonba.model import DaraModel
 class ModifyDiskPerformanceLevelRequest(DaraModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         instance_id: str = None,
         node_group_id: str = None,
         promotion_option_no: str = None,
         target: str = None,
     ):
+        # Specifies whether automatic payment is enabled for all products specified in the Products parameter. Valid values:
+        # - true: automatic payment.
+        # - false: no automatic payment.
+        self.auto_pay = auto_pay
         # The instance ID.
         # 
         # This parameter is required.
@@ -20,8 +25,9 @@ class ModifyDiskPerformanceLevelRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
-        # The target disk performance level.
+        # The target disk performance level (PL).
         # 
         # This parameter is required.
         self.target = target
@@ -34,6 +40,9 @@ class ModifyDiskPerformanceLevelRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -50,6 +59,9 @@ class ModifyDiskPerformanceLevelRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 

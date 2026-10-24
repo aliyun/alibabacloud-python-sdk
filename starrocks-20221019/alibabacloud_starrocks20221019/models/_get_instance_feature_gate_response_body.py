@@ -19,7 +19,7 @@ class GetInstanceFeatureGateResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The details of the access denial.
+        # AccessDeniedDetail
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
@@ -31,7 +31,7 @@ class GetInstanceFeatureGateResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of instances.
         self.total = total
@@ -124,52 +124,55 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         use_compute_node: bool = None,
         support_compaction_service: bool = None,
         support_compaction_service_white_list: bool = None,
+        support_load_based_auto_scaling: bool = None,
     ):
-        # Whether the restart process can be controlled from the console.
+        # Indicates whether the restart process can be controlled from the console.
         self.console_control_restart = console_control_restart
-        # Whether materialized views can be managed.
+        # Indicates whether materialized view management is supported.
         self.enable_manage_mv = enable_manage_mv
-        # Whether managed security groups are supported.
+        # Indicates whether fully managed security groups are supported.
         self.full_managed_security_group = full_managed_security_group
-        # Whether DLF meta tokens can be mounted.
+        # Indicates whether mounting DLF meta tokens is supported.
         self.mount_dlf_meta_token = mount_dlf_meta_token
-        # A list of new configuration types.
+        # The list of added configuration types.
         self.support_add_config_types = support_add_config_types
-        # Whether data backup is supported.
+        # Specifies whether data backup is supported. Valid values:
         # 
-        # - **1**: Supports data backup.
-        # 
-        # - **2**: Does not support data backup.
+        # - **1**: Data backup is supported.
+        # - **2**: Data backup is not supported.
         self.support_backup = support_backup
-        # Whether agents can be created.
+        # Indicates whether agent creation is supported.
         self.support_create_agent = support_create_agent
-        # Whether compute groups with specifications other than `standard` can be created.
+        # Indicates whether compute groups of non-standard specifications can be created.
         self.support_create_non_standard_node_group = support_create_non_standard_node_group
-        # Whether elastic ephemeral disks are supported.
+        # Indicates whether elastic ephemeral disks are supported.
         self.support_eed = support_eed
-        # Whether the AI function is supported.
+        # Indicates whether AI functions are supported.
         self.support_enable_ai = support_enable_ai
-        # Whether SSL can be enabled.
+        # Indicates whether SSL can be enabled.
         self.support_enable_ssl = support_enable_ssl
-        # Whether fast restart is supported for configuration changes.
+        # Indicates whether fast restart is supported during configuration changes.
         self.support_fast_mode_modify_config = support_fast_mode_modify_config
-        # Whether resources can be modified by using fast restart.
+        # Indicates whether resources can be modified by using fast restart.
         self.support_fast_mode_modify_resource = support_fast_mode_modify_resource
-        # Whether fast restart is supported.
+        # Indicates whether fast restart is supported.
         self.support_fast_restart = support_fast_restart
-        # Whether the FE gateway is supported.
+        # Indicates whether FE gateways are supported.
         self.support_fe_gateway = support_fe_gateway
-        # Whether custom domain names are supported.
+        # Indicates whether custom domain names are supported.
         self.support_host_alias = support_host_alias
-        # Whether the time zone can be modified.
+        # Indicates whether the time zone can be modified.
         self.support_modify_timezone = support_modify_timezone
-        # Whether observers can be deployed across multiple availability zones (AZs).
+        # Indicates whether multi-zone deployment of Observers is supported.
         self.support_multi_az = support_multi_az
-        # Whether the instance uses compute nodes (CNs).
+        # Indicates whether compute nodes are used.
         self.use_compute_node = use_compute_node
+        # Specifies whether the compaction service is supported.
         self.support_compaction_service = support_compaction_service
-        # Whether the Compaction Service allowlist feature is supported.
+        # Specifies whether the compaction service whitelist feature is supported.
         self.support_compaction_service_white_list = support_compaction_service_white_list
+        # Specifies whether load-based auto scaling rules can be created. This is determined based on the featureEnabled field, the canary release status of the resource owner UID, and the mode, version, architecture, and plan. It does not indicate whether existing rules continue to be executed.
+        self.support_load_based_auto_scaling = support_load_based_auto_scaling
 
     def validate(self):
         pass
@@ -242,6 +245,9 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         if self.support_compaction_service_white_list is not None:
             result['supportCompactionServiceWhiteList'] = self.support_compaction_service_white_list
 
+        if self.support_load_based_auto_scaling is not None:
+            result['supportLoadBasedAutoScaling'] = self.support_load_based_auto_scaling
+
         return result
 
     def from_map(self, m: dict = None):
@@ -308,6 +314,9 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
 
         if m.get('supportCompactionServiceWhiteList') is not None:
             self.support_compaction_service_white_list = m.get('supportCompactionServiceWhiteList')
+
+        if m.get('supportLoadBasedAutoScaling') is not None:
+            self.support_load_based_auto_scaling = m.get('supportLoadBasedAutoScaling')
 
         return self
 

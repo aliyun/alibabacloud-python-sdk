@@ -19,7 +19,7 @@ class ListOperationActivityResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
@@ -31,7 +31,7 @@ class ListOperationActivityResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of query results.
         self.total = total

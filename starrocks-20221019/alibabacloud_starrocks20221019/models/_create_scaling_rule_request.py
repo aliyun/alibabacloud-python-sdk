@@ -7,10 +7,13 @@ from darabonba.model import DaraModel
 class CreateScalingRuleRequest(DaraModel):
     def __init__(
         self,
+        instance_id: str = None,
         node_group_id: str = None,
         rule: str = None,
         trigger_type: str = None,
     ):
+        # The instance ID.
+        self.instance_id = instance_id
         # The compute group ID.
         # 
         # This parameter is required.
@@ -32,6 +35,9 @@ class CreateScalingRuleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
 
@@ -45,6 +51,9 @@ class CreateScalingRuleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
 

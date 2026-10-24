@@ -11,27 +11,19 @@ class DescribeResourceConstraintsRequest(DaraModel):
         package_type: str = None,
         run_mode: str = None,
     ):
-        # Specifies the instance architecture. Valid values:
-        # 
-        # - onEci: The instance is deployed on ECI.
-        # 
-        # - onEcs: The instance is deployed on ECS.
-        # 
-        # - onBareMetal: The instance is deployed on a bare metal resource pool.
+        # The instance architecture. Valid values:
+        # - onEci: Deployed on ECI.
+        # - onEcs: Deployed on ECS.
+        # - onBareMetal: Deployed on a bare metal resource pool.
         self.architecture = architecture
-        # Specifies the instance edition. Valid values:
-        # 
-        # - trial: The entry-level edition.
-        # 
-        # - official: The Standard Edition.
+        # The instance edition. Valid values:
+        # - trial: Trial edition.
+        # - official: Standard edition.
         self.package_type = package_type
-        # Specifies the run mode of the cluster. Valid values:
-        # 
-        # - shared_nothing: The shared-nothing mode.
-        # 
-        # - shared_data: The shared-data mode.
-        # 
-        # - lakehouse: The data lake analytics mode.
+        # The running mode of the cluster. Valid values:
+        # - shared_nothing: Integrated storage and compute.
+        # - shared_data: Separated storage and compute.
+        # - lakehouse: Data lakehouse analysis.
         self.run_mode = run_mode
 
     def validate(self):

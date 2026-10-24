@@ -7,17 +7,21 @@ from darabonba.model import DaraModel
 class ModifyDiskNumberRequest(DaraModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         fast_mode: bool = None,
         instance_id: str = None,
         node_group_id: str = None,
         promotion_option_no: str = None,
         target: int = None,
     ):
-        # Specifies whether to restart the compute nodes in fast mode. Default value: false.
+        # Specifies whether to automatically purchase (pay for) all products specified in the Products parameter.
+        # - true: Automatic payment.
+        # - false: No automatic payment.
+        self.auto_pay = auto_pay
+        # Specifies whether to use the fast restart mode. Default value: false.
         # 
-        # - true: Restarts the compute nodes in fast mode. The nodes are restarted in batches. Nodes within a batch are restarted in parallel, and the batches are processed sequentially.
-        # 
-        # - false: Restarts the compute nodes in rolling restart mode.
+        # - true: Restarts compute nodes in fast restart mode. Compute nodes are restarted in multiple batches. Nodes within a batch are restarted in parallel, and batches execute sequentially.
+        # - false: Restarts compute nodes in rolling restart mode.
         self.fast_mode = fast_mode
         # The instance ID.
         # 
@@ -27,6 +31,7 @@ class ModifyDiskNumberRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
         # The target number of disks.
         # 
@@ -41,6 +46,9 @@ class ModifyDiskNumberRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+
         if self.fast_mode is not None:
             result['FastMode'] = self.fast_mode
 
@@ -60,6 +68,9 @@ class ModifyDiskNumberRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+
         if m.get('FastMode') is not None:
             self.fast_mode = m.get('FastMode')
 

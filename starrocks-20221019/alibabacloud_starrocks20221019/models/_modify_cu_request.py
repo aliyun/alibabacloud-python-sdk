@@ -7,16 +7,21 @@ from darabonba.model import DaraModel
 class ModifyCuRequest(DaraModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         fast_mode: bool = None,
         instance_id: str = None,
         node_group_id: str = None,
         promotion_option_no: str = None,
         target: int = None,
     ):
-        # Specifies whether to restart the instance in fast restart mode. The default value is false.
+        # Specifies whether to automatically pay for all products specified in the Products parameter. Valid values:
+        # - true: Enables automatic payment.
+        # - false: Disables automatic payment.
+        self.auto_pay = auto_pay
+        # Specifies whether to restart in fast restart mode. Default value: false.
         # 
-        # - true: Restarts the compute nodes in fast restart mode. The compute nodes are restarted in batches. Nodes within a batch are restarted in parallel, and batches are processed sequentially.
-        # 
+        # Valid values:
+        # - true: Restarts the compute nodes in fast restart mode. The compute nodes are restarted in multiple batches. Nodes within the same batch are restarted in parallel, and batches execute sequentially.
         # - false: Restarts the compute nodes in rolling restart mode.
         self.fast_mode = fast_mode
         # The instance ID.
@@ -27,6 +32,7 @@ class ModifyCuRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
+        # The coupon ID.
         self.promotion_option_no = promotion_option_no
         # The target number of CUs.
         # 
@@ -41,6 +47,9 @@ class ModifyCuRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+
         if self.fast_mode is not None:
             result['FastMode'] = self.fast_mode
 
@@ -60,6 +69,9 @@ class ModifyCuRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+
         if m.get('FastMode') is not None:
             self.fast_mode = m.get('FastMode')
 

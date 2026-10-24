@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyNodeNumberRequest(DaraModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         instance_id: str = None,
         node_group_id: str = None,
         parallelism: int = None,
@@ -14,6 +15,10 @@ class ModifyNodeNumberRequest(DaraModel):
         target: int = None,
         termination_grace_period_seconds: int = None,
     ):
+        # Specifies whether to automatically purchase (pay for) all products specified in the Products parameter. Valid values:
+        # - true: Automatic payment.
+        # - false: No automatic payment.
+        self.auto_pay = auto_pay
         # The instance ID.
         # 
         # This parameter is required.
@@ -22,7 +27,7 @@ class ModifyNodeNumberRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_group_id = node_group_id
-        # The decommission concurrency for BE scale-in scenarios in compute-storage decoupled architecture. Default value: 1.
+        # The decommission concurrency for BE scale-in scenarios in compute-storage coupled mode. Default value: 1.
         self.parallelism = parallelism
         # The coupon ID.
         self.promotion_option_no = promotion_option_no
@@ -30,7 +35,7 @@ class ModifyNodeNumberRequest(DaraModel):
         # 
         # This parameter is required.
         self.target = target
-        # The duration to wait for running tasks to complete before dropping nodes during CN scale-in scenarios in storage-compute disaggregation architecture.
+        # The wait time for running tasks to complete before dropping nodes during CN scale-in scenarios in compute-storage decoupled mode.
         self.termination_grace_period_seconds = termination_grace_period_seconds
 
     def validate(self):
@@ -41,6 +46,9 @@ class ModifyNodeNumberRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -63,6 +71,9 @@ class ModifyNodeNumberRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
