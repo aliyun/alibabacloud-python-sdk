@@ -17,11 +17,17 @@ class ListTemplatesResponseBody(DaraModel):
         request_id: str = None,
         templates: List[main_models.PublicTemplate] = None,
     ):
+        # The error code. The value 200 indicates success.
         self.code = code
+        # The maximum number of entries per page returned in the current response.
         self.max_results = max_results
+        # The response message.
         self.message = message
+        # The pagination token for the next page. This parameter is empty if no more results are available.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
+        # The list of template objects.
         self.templates = templates
 
     def validate(self):
@@ -50,8 +56,8 @@ class ListTemplatesResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
-        result['templates'] = []
         if self.templates is not None:
+            result['templates'] = []
             for k1 in self.templates:
                 result['templates'].append(k1.to_map() if k1 else None)
 
@@ -74,8 +80,8 @@ class ListTemplatesResponseBody(DaraModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
-        self.templates = []
         if m.get('templates') is not None:
+            self.templates = []
             for k1 in m.get('templates'):
                 temp_model = main_models.PublicTemplate()
                 self.templates.append(temp_model.from_map(k1))

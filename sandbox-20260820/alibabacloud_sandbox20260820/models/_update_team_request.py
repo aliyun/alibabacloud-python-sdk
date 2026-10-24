@@ -10,6 +10,7 @@ class UpdateTeamRequest(DaraModel):
         self,
         body: main_models.UpdateTeamInput = None,
     ):
+        # The request parameters for updating a team.
         self.body = body
 
     def validate(self):

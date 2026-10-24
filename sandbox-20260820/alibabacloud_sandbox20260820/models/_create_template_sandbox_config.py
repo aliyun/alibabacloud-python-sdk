@@ -28,15 +28,15 @@ class CreateTemplateSandboxConfig(DaraModel):
         self.image = image
         # The operating system type of the second-generation sandbox. Valid values: linux-amd64, android-36-osworld, and windows-osworld.
         self.os_type = os_type
-        # The sandbox readiness probe command. A successful execution indicates that the sandbox is ready to accept requests. This parameter is supported only for first-generation sandboxes.
+        # The readiness probe command for the sandbox. A successful execution indicates that the sandbox is ready to receive requests. This parameter is supported only by first-generation sandboxes.
         self.ready_command = ready_command
-        # The credential, TLS, and network configuration required to access the source image repository.
+        # The credentials, TLS, and network configurations required to access the source image repository.
         self.registry_config = registry_config
-        # The image repository type. Valid values: oci (standard OCI repository), acr (Container Registry Personal Edition), and acree (Container Registry Enterprise Edition). If not specified, the type is inferred from the image address.
+        # The type of the image repository. Valid values: oci (standard OCI repository), acr (Container Registry Personal Edition), and acree (Container Registry Enterprise Edition). The default value is inferred from the image address.
         self.registry_type = registry_type
-        # The startup command for the sandbox container. This parameter is supported only for first-generation sandboxes.
+        # The startup command for the sandbox container. This parameter is supported only by first-generation sandboxes.
         self.start_command = start_command
-        # The list of custom build instructions. This is not supported in the current version. Passing a non-empty list returns an error.
+        # The list of custom build steps.
         self.steps = steps
 
     def validate(self):
@@ -76,8 +76,8 @@ class CreateTemplateSandboxConfig(DaraModel):
         if self.start_command is not None:
             result['startCommand'] = self.start_command
 
-        result['steps'] = []
         if self.steps is not None:
+            result['steps'] = []
             for k1 in self.steps:
                 result['steps'].append(k1.to_map() if k1 else None)
 
@@ -110,8 +110,8 @@ class CreateTemplateSandboxConfig(DaraModel):
         if m.get('startCommand') is not None:
             self.start_command = m.get('startCommand')
 
-        self.steps = []
         if m.get('steps') is not None:
+            self.steps = []
             for k1 in m.get('steps'):
                 temp_model = main_models.CreateTemplateStep()
                 self.steps.append(temp_model.from_map(k1))

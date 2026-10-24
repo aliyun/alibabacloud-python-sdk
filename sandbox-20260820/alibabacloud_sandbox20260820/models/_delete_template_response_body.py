@@ -11,8 +11,11 @@ class DeleteTemplateResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code. The value is 200 if the request is successful.
         self.code = code
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

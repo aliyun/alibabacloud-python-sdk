@@ -69,8 +69,10 @@ from ._public_update_template_registry_config import PublicUpdateTemplateRegistr
 from ._public_update_template_registry_network_config import PublicUpdateTemplateRegistryNetworkConfig
 from ._public_update_template_runtime_config import PublicUpdateTemplateRuntimeConfig
 from ._public_update_template_sandbox_config import PublicUpdateTemplateSandboxConfig
+from ._public_update_template_step import PublicUpdateTemplateStep
 from ._public_update_template_vpcconfig import PublicUpdateTemplateVPCConfig
 from ._quota import Quota
+from ._sandbox_lifecycle_event import SandboxLifecycleEvent
 from ._tlsconfig import TLSConfig
 from ._update_api_key_input import UpdateApiKeyInput
 from ._update_custom_domain_input import UpdateCustomDomainInput
@@ -182,10 +184,12 @@ from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountNamedMountPoints
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountNamed
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountOssMountPoints
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountOss
+from ._public_template import PublicTemplateResourceTags
 from ._update_volume_input import UpdateVolumeInputAgenticFSVolumeConfig
 from ._update_volume_input import UpdateVolumeInputMountConfigVpcConfig
 from ._update_volume_input import UpdateVolumeInputMountConfig
 from ._volume_mount_config import VolumeMountConfigVpcConfig
+from ._get_template_response_body import GetTemplateResponseBodyResourceTags
 
 __all__ = [
     AgenticBucketVolumeConfig,
@@ -255,8 +259,10 @@ __all__ = [
     PublicUpdateTemplateRegistryNetworkConfig,
     PublicUpdateTemplateRuntimeConfig,
     PublicUpdateTemplateSandboxConfig,
+    PublicUpdateTemplateStep,
     PublicUpdateTemplateVPCConfig,
     Quota,
+    SandboxLifecycleEvent,
     TLSConfig,
     UpdateApiKeyInput,
     UpdateCustomDomainInput,
@@ -368,8 +374,10 @@ __all__ = [
     InnerSandboxVolumeMountNamed,
     InnerSandboxVolumeMountOssMountPoints,
     InnerSandboxVolumeMountOss,
+    PublicTemplateResourceTags,
     UpdateVolumeInputAgenticFSVolumeConfig,
     UpdateVolumeInputMountConfigVpcConfig,
     UpdateVolumeInputMountConfig,
-    VolumeMountConfigVpcConfig
+    VolumeMountConfigVpcConfig,
+    GetTemplateResponseBodyResourceTags
 ]

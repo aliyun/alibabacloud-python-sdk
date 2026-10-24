@@ -17,11 +17,17 @@ class ListQuotaResponseBody(DaraModel):
         quotas: List[main_models.Quota] = None,
         request_id: str = None,
     ):
+        # The response code. The value is 200 for a successful request.
         self.code = code
+        # The value of maxResults specified in the request. This field is returned only if a positive integer is specified for maxResults in the request.
         self.max_results = max_results
+        # The response message. The value is success for a successful request.
         self.message = message
+        # The pagination token for the next page, which can be used for subsequent queries.
         self.next_token = next_token
+        # The list of quota configurations.
         self.quotas = quotas
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -47,8 +53,8 @@ class ListQuotaResponseBody(DaraModel):
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
-        result['quotas'] = []
         if self.quotas is not None:
+            result['quotas'] = []
             for k1 in self.quotas:
                 result['quotas'].append(k1.to_map() if k1 else None)
 
@@ -71,8 +77,8 @@ class ListQuotaResponseBody(DaraModel):
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
 
-        self.quotas = []
         if m.get('quotas') is not None:
+            self.quotas = []
             for k1 in m.get('quotas'):
                 temp_model = main_models.Quota()
                 self.quotas.append(temp_model.from_map(k1))

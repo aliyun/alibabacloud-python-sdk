@@ -19,9 +19,9 @@ class AgenticBucketVolumeConfig(DaraModel):
         self.bucket_name = bucket_name
         # The path of the mounted OSS bucket.
         self.bucket_path = bucket_path
-        # The OSS endpoint address.
+        # The OSS endpoint.
         self.endpoint = endpoint
-        # Specifies whether the mount directory has read-only access permissions after the OSS bucket is mounted. Valid values:
+        # Specifies whether the access permissions of the mounted directory are read-only after the OSS bucket is mounted. Valid values:
         # - true: Read-only.
         # - false: Read and write.
         self.read_only = read_only

@@ -17,11 +17,17 @@ class ListVolumesResponseBody(DaraModel):
         request_id: str = None,
         volumes: List[main_models.E2BVolume] = None,
     ):
+        # The response code. A value of 200 indicates success.
         self.code = code
+        # The maximum number of entries per page used in this query.
         self.max_results = max_results
+        # The response message. A value of success indicates a successful request.
         self.message = message
+        # The pagination token for the next page, which is used for subsequent queries.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The list of storage volumes.
         self.volumes = volumes
 
     def validate(self):
@@ -50,8 +56,8 @@ class ListVolumesResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
-        result['volumes'] = []
         if self.volumes is not None:
+            result['volumes'] = []
             for k1 in self.volumes:
                 result['volumes'].append(k1.to_map() if k1 else None)
 
@@ -74,8 +80,8 @@ class ListVolumesResponseBody(DaraModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
-        self.volumes = []
         if m.get('volumes') is not None:
+            self.volumes = []
             for k1 in m.get('volumes'):
                 temp_model = main_models.E2BVolume()
                 self.volumes.append(temp_model.from_map(k1))

@@ -10,6 +10,7 @@ class CreateTeamRequest(DaraModel):
         self,
         body: main_models.CreateTeamInput = None,
     ):
+        # The request parameters for creating a team.
         self.body = body
 
     def validate(self):

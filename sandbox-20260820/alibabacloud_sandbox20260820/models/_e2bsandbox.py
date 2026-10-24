@@ -40,7 +40,7 @@ class E2BSandbox(DaraModel):
     ):
         # The access endpoint.
         self.access_endpoint = access_endpoint
-        # Specifies whether the sandbox is allowed to access external networks.
+        # Specifies whether the sandbox is allowed to access the external network.
         self.allow_internet_access = allow_internet_access
         # The vCPU specifications.
         self.cpu_count = cpu_count
@@ -52,13 +52,13 @@ class E2BSandbox(DaraModel):
         self.end_at = end_at
         # The environment variables.
         self.env_vars = env_vars
-        # The authentication credential for accessing the envd daemon process inside the sandbox, in UUID format. Automatically generated only when secure is set to true.
+        # The authentication token for accessing the envd daemon process in the sandbox, in UUID format. This token is automatically generated only when secure is set to true.
         self.envd_access_token = envd_access_token
         # The Function Compute function name.
         self.fc_function_name = fc_function_name
         # The Function Compute instance ID.
         self.fc_instance_id = fc_instance_id
-        # The Function Compute session ID corresponding to the sandbox, in UUID format. Used to locate the underlying session when pausing, resuming, or deleting the sandbox.
+        # The Function Compute session ID corresponding to the sandbox, in UUID format. This ID is used to locate the underlying session when pausing, resuming, or deleting the sandbox.
         self.fc_session_id = fc_session_id
         # The sandbox version.
         self.generation = generation
@@ -76,16 +76,16 @@ class E2BSandbox(DaraModel):
         self.sandbox_id = sandbox_id
         # The start time.
         self.started_at = started_at
-        # The sandbox status. Valid values:
-        # - running: Running.
-        # - pausing: Pausing.
-        # - paused: Paused.
-        # - resuming: Resuming.
-        # - pause_fail: Pause failed.
-        # - resume_fail: Resume failed.
-        # - snapshotting: Creating a snapshot.
+        # The sandbox state. Valid values:
+        # - running: The sandbox is running.
+        # - pausing: The sandbox is pausing.
+        # - paused: The sandbox is paused.
+        # - resuming: The sandbox is resuming.
+        # - pause_fail: The pause operation failed.
+        # - resume_fail: The resume operation failed.
+        # - snapshotting: A snapshot is being created.
         # - snapshot_failed: Snapshot creation failed.
-        # - terminated: Terminated.
+        # - terminated: The sandbox is terminated.
         self.state = state
         # The unique identifier of the team.
         self.team_id = team_id

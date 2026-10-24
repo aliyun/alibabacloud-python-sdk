@@ -13,10 +13,15 @@ class ListTeamsRequest(DaraModel):
         resource_group_id: str = None,
         team_name: str = None,
     ):
+        # The page number. Default value: 1. Valid values: 1 to 10000.
         self.page_number = page_number
+        # The number of teams to return on each page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
+        # Filters teams by plan specifications. Valid values: eco (Economy), std (Standard), pro (Professional), and ent (Enterprise).
         self.plan = plan
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The team name.
         self.team_name = team_name
 
     def validate(self):

@@ -9,6 +9,7 @@ class GetVolumeRequest(DaraModel):
         self,
         team_id: str = None,
     ):
+        # The ID of the team to which the storage volume belongs.
         self.team_id = team_id
 
     def validate(self):

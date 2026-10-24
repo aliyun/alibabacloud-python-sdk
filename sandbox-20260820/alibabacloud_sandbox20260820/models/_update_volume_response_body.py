@@ -13,9 +13,13 @@ class UpdateVolumeResponseBody(DaraModel):
         request_id: str = None,
         volume: main_models.E2BVolume = None,
     ):
+        # The response code. A value of 200 indicates success.
         self.code = code
+        # The response message. A value of success indicates a successful request.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The storage volume information.
         self.volume = volume
 
     def validate(self):

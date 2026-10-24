@@ -11,8 +11,11 @@ class DeleteApiKeyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. A value of 200 indicates success.
         self.code = code
+        # The response message. A value of success indicates success.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

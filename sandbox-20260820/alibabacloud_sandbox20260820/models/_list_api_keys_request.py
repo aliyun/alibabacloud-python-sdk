@@ -15,12 +15,21 @@ class ListApiKeysRequest(DaraModel):
         team_id: str = None,
         user_id: str = None,
     ):
+        # The name of the API key.
         self.api_key_name = api_key_name
+        # The page number. Default value: 1. Valid values: 1 to 10000.
         self.page_number = page_number
+        # The number of API keys to return on each page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # Filters API keys by status. Valid values:
+        # - active: Enabled.
+        # - inactive: Disabled.
         self.status = status
+        # The ID of the team.
         self.team_id = team_id
+        # The user ID of the creator.
         self.user_id = user_id
 
     def validate(self):

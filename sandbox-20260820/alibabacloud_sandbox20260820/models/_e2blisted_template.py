@@ -130,8 +130,8 @@ class E2BListedTemplate(DaraModel):
         if self.status_reason is not None:
             result['statusReason'] = self.status_reason
 
-        result['tags'] = []
         if self.tags is not None:
+            result['tags'] = []
             for k1 in self.tags:
                 result['tags'].append(k1.to_map() if k1 else None)
 
@@ -195,8 +195,8 @@ class E2BListedTemplate(DaraModel):
         if m.get('statusReason') is not None:
             self.status_reason = m.get('statusReason')
 
-        self.tags = []
         if m.get('tags') is not None:
+            self.tags = []
             for k1 in m.get('tags'):
                 temp_model = main_models.E2BTemplateTag()
                 self.tags.append(temp_model.from_map(k1))

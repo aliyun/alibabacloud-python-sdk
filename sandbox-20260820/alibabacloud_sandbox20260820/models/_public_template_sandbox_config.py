@@ -70,8 +70,8 @@ class PublicTemplateSandboxConfig(DaraModel):
         if self.start_command is not None:
             result['startCommand'] = self.start_command
 
-        result['steps'] = []
         if self.steps is not None:
+            result['steps'] = []
             for k1 in self.steps:
                 result['steps'].append(k1.to_map() if k1 else None)
 
@@ -101,8 +101,8 @@ class PublicTemplateSandboxConfig(DaraModel):
         if m.get('startCommand') is not None:
             self.start_command = m.get('startCommand')
 
-        self.steps = []
         if m.get('steps') is not None:
+            self.steps = []
             for k1 in m.get('steps'):
                 temp_model = main_models.PublicTemplateStep()
                 self.steps.append(temp_model.from_map(k1))

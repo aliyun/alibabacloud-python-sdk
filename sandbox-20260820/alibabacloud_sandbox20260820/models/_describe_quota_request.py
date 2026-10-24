@@ -9,6 +9,7 @@ class DescribeQuotaRequest(DaraModel):
         self,
         tag_value: str = None,
     ):
+        # The ID of the team to which the quota belongs.
         self.tag_value = tag_value
 
     def validate(self):

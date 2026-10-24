@@ -13,10 +13,15 @@ class ListTemplateCacheRequest(DaraModel):
         team_id: str = None,
         template_id: str = None,
     ):
+        # The maximum number of entries to return per page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
+        # The pagination token returned from the previous response.
         self.next_token = next_token
+        # Filters by cache status. Valid values: InProgress, Success, Failed, Deleting, and Evicted.
         self.status = status
+        # The team ID.
         self.team_id = team_id
+        # The unique identifier of the template.
         self.template_id = template_id
 
     def validate(self):

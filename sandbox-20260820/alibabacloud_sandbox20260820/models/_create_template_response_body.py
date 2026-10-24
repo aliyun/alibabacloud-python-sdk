@@ -12,9 +12,13 @@ class CreateTemplateResponseBody(DaraModel):
         request_id: str = None,
         template_id: str = None,
     ):
+        # The error code. The value is 200 if the request succeeds.
         self.code = code
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # The unique identifier of the created template.
         self.template_id = template_id
 
     def validate(self):

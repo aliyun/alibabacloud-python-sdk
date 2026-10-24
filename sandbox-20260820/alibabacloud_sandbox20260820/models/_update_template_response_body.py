@@ -12,9 +12,13 @@ class UpdateTemplateResponseBody(DaraModel):
         request_id: str = None,
         template_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):

@@ -10,6 +10,7 @@ class CreateTemplateRequest(DaraModel):
         self,
         body: main_models.CreateTemplateInput = None,
     ):
+        # The request struct for creating a template.
         self.body = body
 
     def validate(self):

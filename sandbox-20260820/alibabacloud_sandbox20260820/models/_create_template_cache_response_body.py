@@ -13,9 +13,13 @@ class CreateTemplateCacheResponseBody(DaraModel):
         request_id: str = None,
         template_cache: main_models.PublicTemplateCache = None,
     ):
+        # The error code. The value is 200 if the request is successful.
         self.code = code
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # The template cache object.
         self.template_cache = template_cache
 
     def validate(self):

@@ -80,8 +80,8 @@ class InnerCreateSandboxVolumeMountsOss(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['mountPoints'] = []
         if self.mount_points is not None:
+            result['mountPoints'] = []
             for k1 in self.mount_points:
                 result['mountPoints'].append(k1.to_map() if k1 else None)
 
@@ -89,8 +89,8 @@ class InnerCreateSandboxVolumeMountsOss(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.mount_points = []
         if m.get('mountPoints') is not None:
+            self.mount_points = []
             for k1 in m.get('mountPoints'):
                 temp_model = main_models.InnerCreateSandboxVolumeMountsOssMountPoints()
                 self.mount_points.append(temp_model.from_map(k1))
@@ -182,8 +182,8 @@ class InnerCreateSandboxVolumeMountsNamed(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['mountPoints'] = []
         if self.mount_points is not None:
+            result['mountPoints'] = []
             for k1 in self.mount_points:
                 result['mountPoints'].append(k1.to_map() if k1 else None)
 
@@ -191,8 +191,8 @@ class InnerCreateSandboxVolumeMountsNamed(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.mount_points = []
         if m.get('mountPoints') is not None:
+            self.mount_points = []
             for k1 in m.get('mountPoints'):
                 temp_model = main_models.InnerCreateSandboxVolumeMountsNamedMountPoints()
                 self.mount_points.append(temp_model.from_map(k1))
@@ -264,8 +264,8 @@ class InnerCreateSandboxVolumeMountsAgenticFs(DaraModel):
         if self.group_id is not None:
             result['groupID'] = self.group_id
 
-        result['mountPoints'] = []
         if self.mount_points is not None:
+            result['mountPoints'] = []
             for k1 in self.mount_points:
                 result['mountPoints'].append(k1.to_map() if k1 else None)
 
@@ -279,8 +279,8 @@ class InnerCreateSandboxVolumeMountsAgenticFs(DaraModel):
         if m.get('groupID') is not None:
             self.group_id = m.get('groupID')
 
-        self.mount_points = []
         if m.get('mountPoints') is not None:
+            self.mount_points = []
             for k1 in m.get('mountPoints'):
                 temp_model = main_models.InnerCreateSandboxVolumeMountsAgenticFsMountPoints()
                 self.mount_points.append(temp_model.from_map(k1))

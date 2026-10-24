@@ -17,11 +17,17 @@ class ResetApiKeyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The API key information.
         self.api_key = api_key
+        # The response code. A value of 200 indicates success.
         self.code = code
+        # The list of IP blacklist rules.
         self.ip_blacklist = ip_blacklist
+        # The list of IP address whitelist rules.
         self.ip_whitelist = ip_whitelist
+        # The response message. The value is success if the request is successful.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,13 +53,13 @@ class ResetApiKeyResponseBody(DaraModel):
         if self.code is not None:
             result['code'] = self.code
 
-        result['ipBlacklist'] = []
         if self.ip_blacklist is not None:
+            result['ipBlacklist'] = []
             for k1 in self.ip_blacklist:
                 result['ipBlacklist'].append(k1.to_map() if k1 else None)
 
-        result['ipWhitelist'] = []
         if self.ip_whitelist is not None:
+            result['ipWhitelist'] = []
             for k1 in self.ip_whitelist:
                 result['ipWhitelist'].append(k1.to_map() if k1 else None)
 
@@ -74,14 +80,14 @@ class ResetApiKeyResponseBody(DaraModel):
         if m.get('code') is not None:
             self.code = m.get('code')
 
-        self.ip_blacklist = []
         if m.get('ipBlacklist') is not None:
+            self.ip_blacklist = []
             for k1 in m.get('ipBlacklist'):
                 temp_model = main_models.IPConfig()
                 self.ip_blacklist.append(temp_model.from_map(k1))
 
-        self.ip_whitelist = []
         if m.get('ipWhitelist') is not None:
+            self.ip_whitelist = []
             for k1 in m.get('ipWhitelist'):
                 temp_model = main_models.IPConfig()
                 self.ip_whitelist.append(temp_model.from_map(k1))

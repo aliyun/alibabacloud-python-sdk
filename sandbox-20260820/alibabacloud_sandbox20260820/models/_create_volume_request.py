@@ -10,6 +10,7 @@ class CreateVolumeRequest(DaraModel):
         self,
         body: main_models.CreateVolumeInput = None,
     ):
+        # The request parameters for creating a storage volume.
         self.body = body
 
     def validate(self):

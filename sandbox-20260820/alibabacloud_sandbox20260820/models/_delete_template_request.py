@@ -9,6 +9,7 @@ class DeleteTemplateRequest(DaraModel):
         self,
         team_id: str = None,
     ):
+        # The team ID.
         self.team_id = team_id
 
     def validate(self):

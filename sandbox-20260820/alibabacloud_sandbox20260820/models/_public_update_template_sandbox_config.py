@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_sandbox20260820 import models as main_models
 from darabonba.model import DaraModel
 
@@ -16,27 +18,34 @@ class PublicUpdateTemplateSandboxConfig(DaraModel):
         registry_config: main_models.PublicUpdateTemplateRegistryConfig = None,
         registry_type: str = None,
         start_command: str = None,
+        steps: List[main_models.PublicUpdateTemplateStep] = None,
     ):
-        # The ID of the Container Registry Enterprise instance.
+        # The ID of the ACR Enterprise instance.
         self.acr_instance_id = acr_instance_id
-        # The sandbox generation. A value of 1 indicates rund, and a value of 2 indicates micro.
+        # The sandbox generation. Valid values: 1: rund. 2: micro.
         self.generation = generation
         # The image address.
         self.image = image
         # The operating system type.
         self.os_type = os_type
-        # The readiness probe command for the micro sandbox. Only the second generation supports this parameter.
+        # The readiness probe command for the micro sandbox. This command is supported only by the second generation.
         self.ready_command = ready_command
         # The image repository configuration.
         self.registry_config = registry_config
         # The image repository type.
         self.registry_type = registry_type
-        # The startup command for the micro sandbox. Only the second generation supports this parameter.
+        # The startup command for the micro sandbox. This command is supported only by the second generation.
         self.start_command = start_command
+        # The list of custom build steps. If you do not specify this parameter, the original steps are retained. If you pass an empty array, the steps are cleared.
+        self.steps = steps
 
     def validate(self):
         if self.registry_config:
             self.registry_config.validate()
+        if self.steps:
+            for v1 in self.steps:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -67,6 +76,11 @@ class PublicUpdateTemplateSandboxConfig(DaraModel):
         if self.start_command is not None:
             result['startCommand'] = self.start_command
 
+        if self.steps is not None:
+            result['steps'] = []
+            for k1 in self.steps:
+                result['steps'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -95,6 +109,12 @@ class PublicUpdateTemplateSandboxConfig(DaraModel):
 
         if m.get('startCommand') is not None:
             self.start_command = m.get('startCommand')
+
+        if m.get('steps') is not None:
+            self.steps = []
+            for k1 in m.get('steps'):
+                temp_model = main_models.PublicUpdateTemplateStep()
+                self.steps.append(temp_model.from_map(k1))
 
         return self
 

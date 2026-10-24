@@ -13,9 +13,13 @@ class GetTeamResponseBody(DaraModel):
         request_id: str = None,
         team: main_models.E2BTeam = None,
     ):
+        # The response code. A value of 200 indicates success.
         self.code = code
+        # The response message. A value of success indicates a successful request.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The team information.
         self.team = team
 
     def validate(self):

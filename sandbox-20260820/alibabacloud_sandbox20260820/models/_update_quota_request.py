@@ -10,6 +10,7 @@ class UpdateQuotaRequest(DaraModel):
         self,
         body: main_models.Quota = None,
     ):
+        # The request parameters for updating the quota configuration.
         self.body = body
 
     def validate(self):

@@ -11,7 +11,9 @@ class UpdateVolumeRequest(DaraModel):
         body: main_models.UpdateVolumeInput = None,
         team_id: str = None,
     ):
+        # The request parameters for updating the storage volume.
         self.body = body
+        # The ID of the team to which the storage volume belongs.
         self.team_id = team_id
 
     def validate(self):

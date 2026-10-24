@@ -10,6 +10,7 @@ class CreateApiKeyRequest(DaraModel):
         self,
         body: main_models.CreateApiKeyInput = None,
     ):
+        # The request parameters for creating an API key.
         self.body = body
 
     def validate(self):

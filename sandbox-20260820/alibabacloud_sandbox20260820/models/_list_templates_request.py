@@ -11,8 +11,11 @@ class ListTemplatesRequest(DaraModel):
         next_token: str = None,
         team_id: str = None,
     ):
+        # The maximum number of entries to return per page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
+        # The pagination token. Set this parameter to the nextToken value returned in the previous response.
         self.next_token = next_token
+        # The team ID.
         self.team_id = team_id
 
     def validate(self):

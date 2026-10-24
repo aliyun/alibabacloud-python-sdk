@@ -17,11 +17,17 @@ class ListTemplateCacheResponseBody(DaraModel):
         request_id: str = None,
         template_caches: List[main_models.PublicTemplateCache] = None,
     ):
+        # The error code. The value is 200 if the request succeeds.
         self.code = code
+        # The maximum number of entries returned per page in this response.
         self.max_results = max_results
+        # The response message.
         self.message = message
+        # The pagination token for the next page. It is empty if no more results are available.
         self.next_token = next_token
+        # Id of the request
         self.request_id = request_id
+        # The list of template cache objects.
         self.template_caches = template_caches
 
     def validate(self):
@@ -50,8 +56,8 @@ class ListTemplateCacheResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
-        result['templateCaches'] = []
         if self.template_caches is not None:
+            result['templateCaches'] = []
             for k1 in self.template_caches:
                 result['templateCaches'].append(k1.to_map() if k1 else None)
 
@@ -74,8 +80,8 @@ class ListTemplateCacheResponseBody(DaraModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
-        self.template_caches = []
         if m.get('templateCaches') is not None:
+            self.template_caches = []
             for k1 in m.get('templateCaches'):
                 temp_model = main_models.PublicTemplateCache()
                 self.template_caches.append(temp_model.from_map(k1))

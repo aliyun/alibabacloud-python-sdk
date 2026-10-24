@@ -13,9 +13,13 @@ class DescribeQuotaResponseBody(DaraModel):
         quota: main_models.Quota = None,
         request_id: str = None,
     ):
+        # The response code. A value of 200 indicates success.
         self.code = code
+        # The response message. The value is success if the request succeeds.
         self.message = message
+        # The quota configuration information.
         self.quota = quota
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

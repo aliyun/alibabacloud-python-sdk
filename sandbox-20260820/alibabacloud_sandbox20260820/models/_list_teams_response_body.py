@@ -18,12 +18,19 @@ class ListTeamsResponseBody(DaraModel):
         teams: List[main_models.E2BTeam] = None,
         total: int = None,
     ):
+        # The response code. A value of 200 indicates success.
         self.code = code
+        # The response message. The value is success if the request is successful.
         self.message = message
+        # The page number of the current query.
         self.page_number = page_number
+        # The number of entries per page for the current query.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The list of teams.
         self.teams = teams
+        # The total number of teams that meet the query conditions.
         self.total = total
 
     def validate(self):
@@ -52,8 +59,8 @@ class ListTeamsResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
-        result['teams'] = []
         if self.teams is not None:
+            result['teams'] = []
             for k1 in self.teams:
                 result['teams'].append(k1.to_map() if k1 else None)
 
@@ -79,8 +86,8 @@ class ListTeamsResponseBody(DaraModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
-        self.teams = []
         if m.get('teams') is not None:
+            self.teams = []
             for k1 in m.get('teams'):
                 temp_model = main_models.E2BTeam()
                 self.teams.append(temp_model.from_map(k1))

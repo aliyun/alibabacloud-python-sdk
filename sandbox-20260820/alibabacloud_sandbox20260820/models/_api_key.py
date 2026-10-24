@@ -104,13 +104,13 @@ class ApiKey(DaraModel):
         if self.expire_time is not None:
             result['expireTime'] = self.expire_time
 
-        result['ipBlacklist'] = []
         if self.ip_blacklist is not None:
+            result['ipBlacklist'] = []
             for k1 in self.ip_blacklist:
                 result['ipBlacklist'].append(k1.to_map() if k1 else None)
 
-        result['ipWhitelist'] = []
         if self.ip_whitelist is not None:
+            result['ipWhitelist'] = []
             for k1 in self.ip_whitelist:
                 result['ipWhitelist'].append(k1.to_map() if k1 else None)
 
@@ -163,14 +163,14 @@ class ApiKey(DaraModel):
         if m.get('expireTime') is not None:
             self.expire_time = m.get('expireTime')
 
-        self.ip_blacklist = []
         if m.get('ipBlacklist') is not None:
+            self.ip_blacklist = []
             for k1 in m.get('ipBlacklist'):
                 temp_model = main_models.IPConfig()
                 self.ip_blacklist.append(temp_model.from_map(k1))
 
-        self.ip_whitelist = []
         if m.get('ipWhitelist') is not None:
+            self.ip_whitelist = []
             for k1 in m.get('ipWhitelist'):
                 temp_model = main_models.IPConfig()
                 self.ip_whitelist.append(temp_model.from_map(k1))

@@ -18,12 +18,19 @@ class ListApiKeysResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The list of API keys.
         self.api_keys = api_keys
+        # The response code. A value of 200 indicates success.
         self.code = code
+        # The response message. A value of success indicates a successful request.
         self.message = message
+        # The page number of the current query.
         self.page_number = page_number
+        # The number of entries per page used in the current query.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of API keys that meet the query conditions.
         self.total = total
 
     def validate(self):
@@ -37,8 +44,8 @@ class ListApiKeysResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['apiKeys'] = []
         if self.api_keys is not None:
+            result['apiKeys'] = []
             for k1 in self.api_keys:
                 result['apiKeys'].append(k1.to_map() if k1 else None)
 
@@ -64,8 +71,8 @@ class ListApiKeysResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.api_keys = []
         if m.get('apiKeys') is not None:
+            self.api_keys = []
             for k1 in m.get('apiKeys'):
                 temp_model = main_models.ApiKey()
                 self.api_keys.append(temp_model.from_map(k1))
