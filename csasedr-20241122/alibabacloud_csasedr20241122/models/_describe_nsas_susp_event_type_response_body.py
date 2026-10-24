@@ -52,8 +52,6 @@ class DescribeNsasSuspEventTypeResponseBody(DaraModel):
 
         return self
 
-
-
 class DescribeNsasSuspEventTypeResponseBodyEventTypes(DaraModel):
     def __init__(
         self,
