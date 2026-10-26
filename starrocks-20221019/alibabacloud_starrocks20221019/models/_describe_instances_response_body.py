@@ -112,6 +112,7 @@ class DescribeInstancesResponseBodyData(DaraModel):
         enable_ssl: bool = None,
         enabled_audit_loader: bool = None,
         encrypted: bool = None,
+        eos_date: str = None,
         expire_time: int = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -133,6 +134,7 @@ class DescribeInstancesResponseBodyData(DaraModel):
         tags: List[main_models.DescribeInstancesResponseBodyDataTags] = None,
         v_switches: List[main_models.DescribeInstancesResponseBodyDataVSwitches] = None,
         version: str = None,
+        version_lifecycle_status: str = None,
         vpc_id: str = None,
     ):
         # The network access control list (ACL) ID.
@@ -163,6 +165,7 @@ class DescribeInstancesResponseBodyData(DaraModel):
         self.enabled_audit_loader = enabled_audit_loader
         # Specifies whether encryption is enabled.
         self.encrypted = encrypted
+        self.eos_date = eos_date
         # The expiration time of the cluster.
         self.expire_time = expire_time
         # The instance ID.
@@ -263,6 +266,7 @@ class DescribeInstancesResponseBodyData(DaraModel):
         self.v_switches = v_switches
         # The cluster version.
         self.version = version
+        self.version_lifecycle_status = version_lifecycle_status
         # The VPC ID.
         self.vpc_id = vpc_id
 
@@ -316,6 +320,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
 
         if self.encrypted is not None:
             result['Encrypted'] = self.encrypted
+
+        if self.eos_date is not None:
+            result['EosDate'] = self.eos_date
 
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
@@ -384,6 +391,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
         if self.version is not None:
             result['Version'] = self.version
 
+        if self.version_lifecycle_status is not None:
+            result['VersionLifecycleStatus'] = self.version_lifecycle_status
+
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
 
@@ -426,6 +436,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
 
         if m.get('Encrypted') is not None:
             self.encrypted = m.get('Encrypted')
+
+        if m.get('EosDate') is not None:
+            self.eos_date = m.get('EosDate')
 
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
@@ -495,6 +508,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
 
         if m.get('Version') is not None:
             self.version = m.get('Version')
+
+        if m.get('VersionLifecycleStatus') is not None:
+            self.version_lifecycle_status = m.get('VersionLifecycleStatus')
 
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')

@@ -1,3 +1,8 @@
+2026-10-26 Version: 1.6.5
+- Update API DescribeInstances: add response parameters Body.Data.$.EosDate.
+- Update API DescribeInstances: add response parameters Body.Data.$.VersionLifecycleStatus.
+
+
 2026-10-24 Version: 1.6.4
 - Update API CreateScalingRule: add request parameters InstanceId.
 - Update API DeleteScalingRule: add request parameters InstanceId.
