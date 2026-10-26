@@ -18,13 +18,13 @@ class ListTemplatesResponseBody(DaraModel):
     ):
         # The page number of the returned data.
         self.current_page = current_page
-        # The list of records returned by the current query.
+        # The list of records returned for the current query.
         self.items = items
         # The number of records per page for the current query.
         self.page_size = page_size
-        # The request ID, which can be used to locate this API call.
+        # The request ID, which can be used to trace the current API call.
         self.request_id = request_id
-        # The total number of records that match the current query scope.
+        # The total number of records that match the current query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -98,37 +98,23 @@ class ListTemplatesResponseBodyItems(DaraModel):
         self.current_risk_level = current_risk_level
         # The description of the classification and grading template.
         self.description = description
-        # The time when the template was created. This value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+        # The creation time of the template. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
         self.gmt_create = gmt_create
-        # The time when the template was last modified. This value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+        # The last modification time of the template. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
         self.gmt_modified = gmt_modified
-        # The ID of the classification and grading template.
+        # The identifier of the classification and grading template.
         self.id = id
-        # The maximum category level supported by the template.
+        # The maximum classification level supported by the template.
         self.max_category_level = max_category_level
-        # The maximum sensitivity level supported by the template.
+        # The highest sensitivity level supported by the template.
         self.max_risk_level = max_risk_level
         # The name of the classification and grading template.
         self.name = name
-        # The status of the template. Valid values:
-        # - 0: disabled.
-        # - 1: enabled as the primary template.
-        # - 2: active template.
-        # - 3: general-purpose detection model.
+        # The status of the template. Valid values: 0: Disabled. 1: Enabled primary template. 2: Active template. 3: General detection model.
         self.status = status
-        # Indicates whether the template can be edited. Valid values:
-        # - 0: not supported.
-        # - 1: supported.
+        # Specifies whether the template can be edited. Valid values: 0: Not supported. 1: Supported.
         self.support_edit = support_edit
-        # The category of the template. Valid values:
-        # - 1: Alibaba template.
-        # - 2: finance template.
-        # - 3: energy template.
-        # - 4: personal information security template.
-        # - 5: travel template.
-        # - 65: general-purpose template.
-        # - 66: custom template.
-        # - 67: template from another cloud service.
+        # The category of the template. Valid values: 1: Alibaba Cloud template. 2: Finance template. 3: Energy template. 4: Personal information security template. 5: Travel template. 65: General template. 66: Custom template. 67: Template from other cloud services.
         self.type = type
 
     def validate(self):

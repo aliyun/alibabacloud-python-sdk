@@ -15,15 +15,13 @@ class ListTemplatesRequest(DaraModel):
     ):
         # The current page number, starting from 1.
         self.current_page = current_page
-        # A reserved feature type parameter. This parameter is not used to filter results in the current query and is not required for column encryption calls.
+        # The reserved feature type parameter. This parameter is not used to filter results in the current query and is not required for column encryption calls.
         self.feature_type = feature_type
-        # The language of the response description. Valid values:
-        # - zh: Chinese.
-        # - en: English.
+        # The language of the response description. Valid values: zh: Chinese. en: English.
         self.lang = lang
-        # The number of records per page. Keep other filter conditions consistent when querying the next page.
+        # The number of records returned per page. Keep other filter conditions consistent when querying the next page.
         self.page_size = page_size
-        # The scenario identifier for compatible template queries. This parameter is not required for column encryption queries. The available templates are determined by the returned list. Do not rely on this parameter to determine whether general-purpose templates are included.
+        # The identifier of the compatible template query scenario. This parameter is not required for column encryption queries. The available templates are subject to the returned list. Do not rely on this parameter to determine whether general templates are included.
         self.usage_scenario = usage_scenario
 
     def validate(self):

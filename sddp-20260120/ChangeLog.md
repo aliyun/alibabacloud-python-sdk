@@ -1,3 +1,9 @@
+2026-10-26 Version: 1.0.5
+- Update API CreateDataMaskingRule: add request parameters UserList.$.AuthDb.
+- Update API ListDataAssetAccounts: add request parameters AuthDb.
+- Update API ListDataAssetAccounts: add response parameters Body.Items.$.AuthDb.
+
+
 2026-10-19 Version: 1.0.2
 - Update API ListRegions: add request parameters LoadAll.
 

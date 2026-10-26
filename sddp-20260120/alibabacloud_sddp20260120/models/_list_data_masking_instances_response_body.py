@@ -20,11 +20,11 @@ class ListDataMaskingInstancesResponseBody(DaraModel):
         self.current_page = current_page
         # The list of records returned by the current query.
         self.items = items
-        # The number of records per page for the current query.
+        # The number of entries returned per page in the current query.
         self.page_size = page_size
-        # The request ID. You can use this ID to locate the API call.
+        # The request ID, which can be used to locate the current API call.
         self.request_id = request_id
-        # The total number of records that match the current statistics or query scope.
+        # The total number of entries that meet the current statistics or query scope.
         self.total_count = total_count
 
     def validate(self):
@@ -92,23 +92,23 @@ class ListDataMaskingInstancesResponseBodyItems(DaraModel):
         region_id: str = None,
         region_name: str = None,
     ):
-        # The column encryption algorithm used by the instance.
+        # The current column encryption algorithm of the instance.
         self.encryption_algorithm = encryption_algorithm
-        # The ID of the KMS key used by the instance. This field may not be returned for local key scenarios.
+        # The ID of the KMS key used by the instance. This parameter may not be returned in local key scenarios.
         self.encryption_key_id = encryption_key_id
-        # The database engine type.
+        # The type of the database engine.
         self.engine_type = engine_type
-        # The number of database accounts that have fullAccess plaintext access permissions.
+        # The number of database accounts that have the fullAccess plaintext access permissions.
         self.full_access_account_count = full_access_account_count
-        # The instance identity of the database instance.
+        # The database instance identity.
         self.instance_id = instance_id
-        # The code of the cloud product.
+        # The code of the cloud service.
         self.product_code = product_code
-        # The ID of the cloud product type. Valid values: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
+        # The ID of the cloud service type. Valid values: 5: RDS. 8: POLARDB. 27: PolarDBX2.
         self.product_id = product_id
-        # The region ID of the asset.
+        # The ID of the region where the asset is located.
         self.region_id = region_id
-        # The region name of the asset.
+        # The name of the region where the asset is located.
         self.region_name = region_name
 
     def validate(self):

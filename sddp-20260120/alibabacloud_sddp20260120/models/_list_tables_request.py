@@ -20,38 +20,29 @@ class ListTablesRequest(DaraModel):
         rule_id: int = None,
         template_id: int = None,
     ):
-        # The current page number, starting from 1.
+        # The page number of the current page. Pages start from page 1.
         self.current_page = current_page
-        # The cloud database instance identity. Set this to the InstanceId value from the instance list.
+        # The instance identity of the cloud database instance. Set the value to the InstanceId value in the instance list.
         self.data_asset_source_id = data_asset_source_id
-        # The database name. Set this to the DbName value returned by ListDataSources.
+        # The name of the database. Set the value to the DbName value returned by the ListDataSources operation.
         self.data_source_name = data_source_name
-        # The language of the response description. Valid values:
-        # 
-        # - zh: Chinese.
-        # - en: English.
+        # The language of the response. Valid values: zh: Chinese. en: English.
         self.lang = lang
-        # The start position for cursor-based pagination. Use the NextMarker value returned from the previous request. Keep the original filter conditions consistent.
+        # The start position of the cursor-based pagination. Use the NextMarker value returned in the previous request for subsequent requests. Keep the value consistent with the original filter conditions.
         self.marker = marker
-        # The name filter condition.
+        # The name filter.
         self.name = name
-        # The number of records per page. Keep other filter conditions consistent when querying the next page.
+        # The number of entries to return on each page. Keep other filter conditions consistent when you query the next page.
         self.page_size = page_size
-        # The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
+        # The code of the cloud service. Column encryption supports ApsaraDB RDS, PolarDB, and PolarDB-X 2.0. If you specify this parameter and ProductId at the same time, the values must match.
         self.product_code = product_code
-        # The cloud product type ID. Valid values:
-        # 
-        # - 5: ApsaraDB RDS.
-        # - 8: PolarDB.
-        # - 27: PolarDB-X 2.0.
-        # 
-        # If you specify both ProductId and ProductCode, the values must correspond to each other.
+        # The ID of the cloud service type. Valid values: 5: ApsaraDB RDS. 8: PolarDB. 27: PolarDB-X 2.0. If you specify this parameter and ProductCode at the same time, the values must match.
         self.product_id = product_id
-        # The sensitivity level ID. You can obtain this value from the list returned by ListRiskLevels.
+        # The ID of the sensitivity level. You can obtain the ID from the response of the ListRiskLevels operation.
         self.risk_level_id = risk_level_id
-        # The detection rule or model ID. Set this to the Id of the corresponding detection rule within the target template.
+        # The ID of the detection rule or model. Set the value to the ID of the corresponding detection rule in the target template.
         self.rule_id = rule_id
-        # The classification and grading template ID. You can obtain this value from Items[].Id returned by ListTemplates. Keep this value consistent with the selected sensitivity level and detection model.
+        # The ID of the data classification template. You can obtain the ID from the Items[].Id parameter in the response of the ListTemplates operation. The value must be consistent with the selected sensitivity level and detection model.
         self.template_id = template_id
 
     def validate(self):

@@ -714,6 +714,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.auth_db):
+            query['AuthDb'] = request.auth_db
         if not DaraCore.is_null(request.auth_role):
             query['AuthRole'] = request.auth_role
         if not DaraCore.is_null(request.biz_type):
@@ -758,6 +760,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.auth_db):
+            query['AuthDb'] = request.auth_db
         if not DaraCore.is_null(request.auth_role):
             query['AuthRole'] = request.auth_role
         if not DaraCore.is_null(request.biz_type):

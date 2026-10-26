@@ -24,17 +24,17 @@ class GetInstanceAttributeResponseBody(DaraModel):
         self.engine = engine
         # The major version of the database engine.
         self.engine_version = engine_version
-        # The business error code for the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
+        # The business error code for the record or operation. This parameter can be empty when no error occurs. You should evaluate this parameter together with ErrorMessage.
         self.error_code = error_code
         # The business error message for the record or operation.
         self.error_message = error_message
-        # Indicates whether the instance supports column encryption by using KMS keys.
+        # Indicates whether the instance supports using KMS keys for column encryption.
         self.kms_encryption_supported = kms_encryption_supported
-        # The end time of the O&M window. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. The UTC time of the O&M window is combined with the date of the query day and returned.
+        # The end time of the maintenance window. The value is a UNIX timestamp in milliseconds that have elapsed since 1970-01-01 00:00:00 UTC. The returned value combines the UTC time of the maintenance window with the date of the query day.
         self.maintain_end_time = maintain_end_time
-        # The start time of the O&M window. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. The UTC time of the O&M window is combined with the date of the query day and returned.
+        # The start time of the maintenance window. The value is a UNIX timestamp in milliseconds that have elapsed since 1970-01-01 00:00:00 UTC. The returned value combines the UTC time of the maintenance window with the date of the query day.
         self.maintain_start_time = maintain_start_time
-        # The request ID. You can use this ID to locate the API call.
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
         # The current running status of the instance.
         self.status = status

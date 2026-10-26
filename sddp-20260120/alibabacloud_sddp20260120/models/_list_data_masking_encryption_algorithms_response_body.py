@@ -59,11 +59,11 @@ class ListDataMaskingEncryptionAlgorithmsResponseBodyAlgorithms(DaraModel):
         error_message: str = None,
         name: str = None,
     ):
-        # The business error code for the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
+        # The business error code for the record or operation. This parameter can be empty when no error occurs. Evaluate this parameter together with ErrorMessage.
         self.error_code = error_code
-        # The business error description for the record or operation.
+        # The business error message for the record or operation.
         self.error_message = error_message
-        # The algorithm name.
+        # The name of the algorithm.
         self.name = name
 
     def validate(self):

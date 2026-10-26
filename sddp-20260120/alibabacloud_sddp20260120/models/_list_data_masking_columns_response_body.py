@@ -22,9 +22,9 @@ class ListDataMaskingColumnsResponseBody(DaraModel):
         self.items = items
         # The number of records per page for the current query.
         self.page_size = page_size
-        # The request ID, which can be used to locate this API call.
+        # The ID of the request. It can be used to locate the current API call.
         self.request_id = request_id
-        # The total number of records that match the current query scope.
+        # The total number of records that meet the current statistics or query scope.
         self.total_count = total_count
 
     def validate(self):
@@ -103,38 +103,29 @@ class ListDataMaskingColumnsResponseBodyItems(DaraModel):
     ):
         # The data type of the database column.
         self.data_type = data_type
-        # The database name.
+        # The name of the database.
         self.db_name = db_name
-        # The database engine type.
+        # The type of the database engine.
         self.engine_type = engine_type
-        # The business error code of the record or operation. This value can be empty if no error occurs. Evaluate this value together with ErrorMessage.
+        # The business error code of the record or operation. It can be empty if no error occurs. Evaluate it together with ErrorMessage.
         self.error_code = error_code
-        # The business error description of the record or operation.
+        # The business error message of the record or operation.
         self.error_message = error_message
         # The ID of the column record.
         self.id = id
-        # The instance identity of the database.
+        # The database instance identity.
         self.instance_id = instance_id
-        # The column encryption status. Valid values:
-        # - NotEncrypted: Not encrypted.
-        # - Processing: Being processed.
-        # - Success: Encryption succeeded.
-        # - Failed: Encryption failed.
-        # - Deleting: Being disabled.
-        # - DeleteFailed: Disabling failed.
+        # The column encryption status. Valid values: NotEncrypted: not encrypted; Processing: processing; Success: encrypted successfully; Failed: encryption failed; Deleting: disabling; DeleteFailed: disabling failed.
         self.masking_status = masking_status
         # The list of matched model tags.
         self.model_tags = model_tags
         # The name of the data column.
         self.name = name
-        # The cloud product code.
+        # The code of the cloud service.
         self.product_code = product_code
-        # The cloud product type ID. Valid values:
-        # - 5: RDS.
-        # - 8: POLARDB.
-        # - 27: PolarDBX2.
+        # The ID of the cloud service type. Valid values: 5: RDS; 8: POLARDB; 27: PolarDBX2.
         self.product_id = product_id
-        # The region ID of the asset.
+        # The ID of the region where the asset is located.
         self.region_id = region_id
         # The ID of the sensitivity level.
         self.risk_level_id = risk_level_id
@@ -144,7 +135,7 @@ class ListDataMaskingColumnsResponseBodyItems(DaraModel):
         self.rule_id = rule_id
         # The name of the matched detection rule.
         self.rule_name = rule_name
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

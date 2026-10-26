@@ -13,9 +13,9 @@ class ListIdentifyModelsResponseBody(DaraModel):
         request_id: str = None,
         rule_list: List[main_models.ListIdentifyModelsResponseBodyRuleList] = None,
     ):
-        # The request ID, which can be used to locate this API call.
+        # The request ID, which is active for locating this API invoke.
         self.request_id = request_id
-        # The list of detection models or rules.
+        # The list of recognition models or rules.
         self.rule_list = rule_list
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListIdentifyModelsResponseBodyRuleList(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The ID of the detection model.
+        # The ID of the recognition model.
         self.id = id
-        # The name of the detection model or rule.
+        # The name of the recognition model or rule.
         self.name = name
 
     def validate(self):

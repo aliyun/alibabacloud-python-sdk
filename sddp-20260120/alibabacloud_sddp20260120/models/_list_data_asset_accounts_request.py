@@ -8,6 +8,7 @@ class ListDataAssetAccountsRequest(DaraModel):
     def __init__(
         self,
         account_name: str = None,
+        auth_db: str = None,
         auth_role: str = None,
         biz_type: str = None,
         current_page: int = None,
@@ -17,30 +18,30 @@ class ListDataAssetAccountsRequest(DaraModel):
         product_code: str = None,
         product_ids: str = None,
     ):
-        # The database account name. Filters by exact account name.
+        # The database account name. The system filters accounts by the exact account name.
         self.account_name = account_name
+        # The authentication database of the MongoDB account. This parameter is used to distinguish accounts with the same name in different authentication databases.
+        self.auth_db = auth_db
         # The column encryption access permissions. Valid values:
-        # 
-        # - fullAccess: plaintext access.
-        # - restrictedAccess: restricted access.
-        # - noneAccess: decryption prohibited. noneAccess applies only to ApsaraDB RDS for MySQL instances whose current effective key pattern is client_key.
+        # - fullAccess: plaintext access
+        # - restrictedAccess: restricted access
+        # - noneAccess: decryption prohibited. This value applies only to ApsaraDB RDS for MySQL instances whose current effective key mode is client_key.
         self.auth_role = auth_role
-        # The query business scenario. Use DataMasking for the column encryption scenario. This value is case-sensitive.
+        # The business scenario for the query. Set this parameter to DataMasking for the column encryption scenario. Note that the value is case-sensitive.
         self.biz_type = biz_type
-        # The page number of the current query. Pages start from 1.
+        # The page number of the current page. Pages start from 1.
         self.current_page = current_page
-        # The database instance identity. You can obtain this value from Items[].InstanceId returned by ListDataMaskingInstances.
+        # The database instance ID. You can obtain this value from the Items[].InstanceId parameter in the response of the ListDataMaskingInstances operation.
         self.instance_id = instance_id
-        # The language of the response description. Valid values:
-        # 
-        # - zh: Chinese.
-        # - en: English.
+        # The language of the response message. Valid values:
+        # - zh: Chinese
+        # - en: English
         self.lang = lang
-        # The number of records per page. Keep other filter conditions consistent when querying the next page.
+        # The number of entries to return on each page. Keep other filter conditions consistent when querying the next page.
         self.page_size = page_size
-        # The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two values must correspond to each other.
+        # The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
         self.product_code = product_code
-        # The list of cloud product type identifiers. Separate multiple values with commas (,). Valid values for the column encryption scenario: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
+        # The list of cloud service type IDs. Separate multiple values with commas (,). For the column encryption scenario, the valid values are 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
         self.product_ids = product_ids
 
     def validate(self):
@@ -53,6 +54,9 @@ class ListDataAssetAccountsRequest(DaraModel):
             result = _map
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+
+        if self.auth_db is not None:
+            result['AuthDb'] = self.auth_db
 
         if self.auth_role is not None:
             result['AuthRole'] = self.auth_role
@@ -84,6 +88,9 @@ class ListDataAssetAccountsRequest(DaraModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+
+        if m.get('AuthDb') is not None:
+            self.auth_db = m.get('AuthDb')
 
         if m.get('AuthRole') is not None:
             self.auth_role = m.get('AuthRole')

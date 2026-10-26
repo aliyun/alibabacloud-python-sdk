@@ -18,13 +18,13 @@ class ListDataAssetAccountsResponseBody(DaraModel):
     ):
         # The page number of the returned data.
         self.current_page = current_page
-        # The list of records returned by the current query.
+        # The list of records returned in the current query.
         self.items = items
-        # The number of records per page for the current query.
+        # The number of entries returned per page in the current query.
         self.page_size = page_size
-        # The request ID. You can use this ID to locate the API call.
+        # The request ID, which can be used to trace the current API call.
         self.request_id = request_id
-        # The total number of records that match the current query or statistical scope.
+        # The total number of entries that meet the current statistics or query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -84,6 +84,7 @@ class ListDataAssetAccountsResponseBodyItems(DaraModel):
         self,
         account_name: str = None,
         ali_uid: int = None,
+        auth_db: str = None,
         auth_role: str = None,
         encryption_key_mode: str = None,
         engine_type: str = None,
@@ -97,36 +98,31 @@ class ListDataAssetAccountsResponseBodyItems(DaraModel):
     ):
         # The database account name.
         self.account_name = account_name
-        # The Alibaba Cloud account ID to which the asset belongs.
+        # The ID of the Alibaba Cloud account to which the asset belongs.
         self.ali_uid = ali_uid
+        # The authentication database of the MongoDB account. This parameter must be passed together with AccountName when modifying permissions.
+        self.auth_db = auth_db
         # The column encryption access permissions. Valid values:
-        # 
-        # - fullAccess: plaintext access.
-        # - restrictedAccess: restricted access.
-        # - noneAccess: decryption prohibited. noneAccess applies only to ApsaraDB RDS for MySQL instances whose current effective key pattern is client_key.
+        # - fullAccess: plaintext access
+        # - restrictedAccess: restricted access
+        # - noneAccess: decryption prohibited. This value applies only to ApsaraDB RDS for MySQL instances whose current effective key mode is client_key.
         self.auth_role = auth_role
         # The current effective column encryption key mode. Valid values:
-        # 
-        # - client_key: local master key.
-        # - kms_key: KMS key.
-        # 
-        # This field is not returned if no column encryption configuration is in effect.
+        # - client_key: local key
+        # - kms_key: KMS key
+        # This parameter is not returned if no effective configuration exists.
         self.encryption_key_mode = encryption_key_mode
         # The database engine type.
         self.engine_type = engine_type
-        # The expiration time of the plaintext access permissions. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. This field is not returned if no expiration time is set.
+        # The expiration time of the plaintext access permissions. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. This parameter is not returned if no validity period is set.
         self.expire_time = expire_time
-        # The database account identifier. This value is used as AccountId when configuring permissions.
+        # The database account ID. This ID is used as AccountId when configuring permissions.
         self.id = id
-        # The database instance identity.
+        # The database instance ID.
         self.instance_id = instance_id
-        # The cloud product code.
+        # The cloud service code.
         self.product_code = product_code
-        # The cloud product type identifier. Valid values:
-        # 
-        # - 5: RDS.
-        # - 8: POLARDB.
-        # - 27: PolarDBX2.
+        # The cloud service type ID. Valid values: 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
         self.product_id = product_id
         # The region ID of the asset.
         self.region_id = region_id
@@ -146,6 +142,9 @@ class ListDataAssetAccountsResponseBodyItems(DaraModel):
 
         if self.ali_uid is not None:
             result['AliUid'] = self.ali_uid
+
+        if self.auth_db is not None:
+            result['AuthDb'] = self.auth_db
 
         if self.auth_role is not None:
             result['AuthRole'] = self.auth_role
@@ -186,6 +185,9 @@ class ListDataAssetAccountsResponseBodyItems(DaraModel):
 
         if m.get('AliUid') is not None:
             self.ali_uid = m.get('AliUid')
+
+        if m.get('AuthDb') is not None:
+            self.auth_db = m.get('AuthDb')
 
         if m.get('AuthRole') is not None:
             self.auth_role = m.get('AuthRole')

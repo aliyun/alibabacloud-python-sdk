@@ -18,40 +18,19 @@ class UpdateDataMaskingUsersRequest(DaraModel):
         product_id: int = None,
         user_list: List[main_models.UpdateDataMaskingUsersRequestUserList] = None,
     ):
-        # The column encryption access permissions. Valid values:
-        # 
-        # - fullAccess: plaintext access.
-        # - restrictedAccess: restricted access.
-        # - noneAccess: decryption denied.
-        # 
-        # noneAccess applies only to ApsaraDB RDS for MySQL instances whose active key pattern is client_key.
+        # The column encryption access permissions. Valid values: fullAccess: plaintext access. restrictedAccess: restricted access. noneAccess: prohibits decryption. noneAccess applies only to RDS MySQL instances whose current effective key pattern is client_key.
         self.auth_role = auth_role
-        # The expiration time of the plaintext access permissions. Specify a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC. This parameter is required only when ExpireTimeOperation is set to SET. The value must be later than the current time and no later than 2145953410000. The server stores the value with second-level precision. Do not specify this parameter when ExpireTimeOperation is set to PRESERVE or CLEAR.
+        # The expiration time of the plaintext access permissions. The value is a UNIX timestamp in milliseconds since 00:00:00 UTC on January 1, 1970. Specify this parameter only when ExpireTimeOperation is set to SET. The value must be later than the current time and no greater than 2145953410000. The server saves the value with second-level precision. Do not specify this parameter when ExpireTimeOperation is set to PRESERVE or CLEAR.
         self.expire_time = expire_time
-        # The action to take on the permission expiration time. Valid values:
-        # 
-        # - PRESERVE: Retains the existing expiration time.
-        # - CLEAR: Clears the expiration time.
-        # - SET: Sets the expiration time to the value specified by ExpireTime.
-        # 
-        # Default value: PRESERVE. Only fullAccess supports configuring a validity period.
+        # The processing method for the permission expiration time. Valid values: PRESERVE: retains the original expiration time. CLEAR: clears the expiration time. SET: sets the expiration time to the value of ExpireTime. Default value: PRESERVE. Only fullAccess supports setting an expiration time.
         self.expire_time_operation = expire_time_operation
-        # The language of the response description. Valid values:
-        # 
-        # - zh: Chinese.
-        # - en: English.
+        # The language of the response description. Valid values: zh: Chinese. en: English.
         self.lang = lang
-        # The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must correspond to each other.
+        # The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also provided, the two parameters must match.
         self.product_code = product_code
-        # The cloud product type identifier. Valid values:
-        # 
-        # - 5: RDS.
-        # - 8: POLARDB.
-        # - 27: PolarDBX2.
-        # 
-        # If both ProductId and ProductCode are specified, they must correspond to each other.
+        # The cloud product type identifier. Valid values: 5: RDS. 8: POLARDB. 27: PolarDBX2. If specified together with ProductCode, the values must match.
         self.product_id = product_id
-        # The list of database accounts for which to set permissions.
+        # The list of database accounts for which you want to set permissions.
         self.user_list = user_list
 
     def validate(self):
@@ -122,11 +101,14 @@ class UpdateDataMaskingUsersRequestUserList(DaraModel):
     def __init__(
         self,
         account_id: str = None,
+        auth_db: str = None,
         instance_id: str = None,
     ):
-        # The database account identifier. Obtain this value from Items[].Id in the response of ListDataAssetAccounts and pass it as a string.
+        # The name of the database account. Obtain the value from Items[].AccountName in the records returned by ListDataAssetAccounts and pass it as a string exactly as it is. Do not pass Items[].Id. Each AccountId must correspond to the InstanceId in the same item. Accounts with the same name in different instances are considered different targets.
         self.account_id = account_id
-        # The database instance identity. Obtain this value from Items[].InstanceId in the response of ListDataMaskingInstances.
+        # The authentication database of MongoDB.
+        self.auth_db = auth_db
+        # The database instance identity. You can obtain the value from Items[].InstanceId returned by ListDataMaskingInstances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -140,6 +122,9 @@ class UpdateDataMaskingUsersRequestUserList(DaraModel):
         if self.account_id is not None:
             result['AccountId'] = self.account_id
 
+        if self.auth_db is not None:
+            result['AuthDb'] = self.auth_db
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -149,6 +134,9 @@ class UpdateDataMaskingUsersRequestUserList(DaraModel):
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
+
+        if m.get('AuthDb') is not None:
+            self.auth_db = m.get('AuthDb')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
