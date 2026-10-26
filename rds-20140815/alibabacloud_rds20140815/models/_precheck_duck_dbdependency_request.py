@@ -13,13 +13,14 @@ class PrecheckDuckDBDependencyRequest(DaraModel):
         resource_owner_id: int = None,
         target_mode: str = None,
     ):
-        # The instance ID of the primary instance.
+        # The primary instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The target node mode for the precheck. primary indicates the primary node. readOnly indicates a read-only node. If you do not specify this parameter, the default value is readOnly.
         self.target_mode = target_mode
 
     def validate(self):

@@ -13,7 +13,7 @@ class DescribeDBInstanceSecurityGroupRuleRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) to obtain the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

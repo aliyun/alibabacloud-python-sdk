@@ -18,7 +18,7 @@ class DescribeMarketingActivityResponseBody(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # - Chinese site: 26842
+        # - China site: 26842
         # - International site: 26888
         self.bid = bid
         # The campaign parameters.
@@ -114,22 +114,22 @@ class DescribeMarketingActivityResponseBodyItems(DaraModel):
         upgrade_storage_type: str = None,
     ):
         # The instance edition. Valid values:
-        # * **Basic**: Basic Edition.
-        # * **HighAvailability**: High-availability Edition.
-        # * **AlwaysOn**: Cluster Edition.
-        # * **Finance**: RDS Enterprise Edition.
+        # * **Basic**: Basic Edition
+        # * **HighAvailability**: High-availability Edition
+        # * **AlwaysOn**: Cluster Edition
+        # * **Finance**: Enterprise Edition
         self.category = category
         # The billing method. Valid values:
-        # - POSTPAY: pay-as-you-go.
-        # - PREPAY: subscription.
+        # - POSTPAY: pay-as-you-go
+        # - PREPAY: subscription
         self.charge_type = charge_type
-        # The instance type. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only instance types](https://help.aliyun.com/document_detail/145759.html).
+        # The instance type code. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only instance types](https://help.aliyun.com/document_detail/145759.html).
         self.class_code = class_code
         # The instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/57184.html).
         self.class_group = class_group
-        # The number of CPU cores for the instance type. Unit: cores.
+        # The number of CPU cores for the instance type.
         self.cpu = cpu
-        # The disk storage size per node. Unit: GB.
+        # The storage capacity per node. Unit: GB.
         self.disk_size = disk_size
         # The database engine. Valid values:
         # - MySQL
@@ -146,34 +146,34 @@ class DescribeMarketingActivityResponseBodyItems(DaraModel):
         self.instance_name = instance_name
         # The maximum number of concurrent connections.
         self.max_connections = max_connections
-        # The maximum I/O bandwidth. Unit: Mbit/s.
+        # The maximum I/O throughput.
         self.max_iombps = max_iombps
         # The maximum IOPS.
         self.max_iops = max_iops
         # The memory size.
         self.memory = memory
         # The instance storage type. Valid values:
-        # * **local_ssd**: local SSD.
-        # * **cloud_ssd**: standard SSD cloud disk.
-        # * **cloud_essd**: PL1 ESSD cloud disk.
-        # * **cloud_essd2**: PL2 ESSD cloud disk.
-        # * **cloud_essd3**: PL3 ESSD cloud disk.
+        # * **local_ssd**: local SSD
+        # * **cloud_ssd**: standard SSD cloud disk
+        # * **cloud_essd**: PL1 ESSD cloud disk
+        # * **cloud_essd2**: PL2 ESSD cloud disk
+        # * **cloud_essd3**: PL3 ESSD cloud disk
         self.storage_type = storage_type
-        # The upgrade instance edition.
+        # The instance edition after the upgrade.
         self.upgrade_category = upgrade_category
-        # The upgrade instance type.
+        # The instance type code after the upgrade.
         self.upgrade_class_code = upgrade_class_code
-        # The upgrade instance family.
+        # The instance family after the upgrade.
         self.upgrade_class_group = upgrade_class_group
         # The number of CPU cores after the upgrade.
         self.upgrade_cpu = upgrade_cpu
         # The upgrade description.
         self.upgrade_desc_content = upgrade_desc_content
-        # The disk size after the upgrade.
+        # The storage capacity after the upgrade.
         self.upgrade_disk_size = upgrade_disk_size
         # The maximum number of concurrent connections after the upgrade.
         self.upgrade_max_connections = upgrade_max_connections
-        # The maximum I/O bandwidth after the upgrade. Unit: Mbit/s.
+        # The maximum I/O throughput after the upgrade.
         self.upgrade_max_iombps = upgrade_max_iombps
         # The maximum IOPS after the upgrade.
         self.upgrade_max_iops = upgrade_max_iops

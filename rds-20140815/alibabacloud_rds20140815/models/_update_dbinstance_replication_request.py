@@ -23,15 +23,15 @@ class UpdateDBInstanceReplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # The host address of the primary database. IP addresses and domain names are supported.
+        # The host address of the primary database, which supports an IP address or a domain name.
         self.master_host = master_host
         # The password of the primary database, which is used to authenticate the replication user. The password must be Base64-encoded in advance.
         self.master_password = master_password
-        # The port number of the primary database. The default port is 3306 for MySQL.
+        # The port number of the primary database, which is typically 3306 for MySQL.
         self.master_port = master_port
         # The username of the primary database, which is used to establish a replication connection. Specify this parameter only when an update is required.
         self.master_user = master_user
-        # The operation type. Specifies the operation to perform on the replication channel.
+        # The operation type, which specifies the operation to be performed on the replication channel.
         # 
         # This parameter is required.
         self.operation = operation

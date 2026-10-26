@@ -11,9 +11,9 @@ class ModifyDBInstanceEndpointResponseBody(DaraModel):
         data: main_models.ModifyDBInstanceEndpointResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned fields.
+        # The list of returned fields.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +50,7 @@ class ModifyDBInstanceEndpointResponseBodyData(DaraModel):
         dbinstance_endpoint_id: str = None,
         dbinstance_name: str = None,
     ):
-        # The endpoint ID of the instance.
+        # The ID of the endpoint.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
         # The instance ID.
         self.dbinstance_name = dbinstance_name

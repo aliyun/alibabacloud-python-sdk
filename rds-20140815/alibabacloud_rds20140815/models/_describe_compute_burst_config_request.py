@@ -15,9 +15,9 @@ class DescribeComputeBurstConfigRequest(DaraModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
         self.client_token = client_token
-        # The instance ID.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -25,7 +25,7 @@ class DescribeComputeBurstConfigRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the instance.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
 

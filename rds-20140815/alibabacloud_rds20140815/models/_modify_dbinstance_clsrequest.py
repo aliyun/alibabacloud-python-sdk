@@ -39,18 +39,19 @@ class ModifyDBInstanceCLSRequest(DaraModel):
         # - SM4_128_CTR
         # - SM4_128_ECB
         self.encryption_algorithm = encryption_algorithm
-        # The encryption key ID. This parameter is required when you use a KMS key.
+        # The ID of the encryption key. This parameter is required when you use a KMS key.
         self.encryption_key = encryption_key
         # The column encryption key mode. Valid values:
         # 
-        # - client_key: configures a user-generated random key on the client side.
-        # - kms_key: configures a custom key by using Alibaba Cloud Key Management Service (KMS).
+        # - client_key: A user-generated random key configured on the client side.
+        # - kms_key: A custom key configured by using Alibaba Cloud KMS.
         # 
-        # >  After an instance is configured to use KMS for key management, you can no longer switch to the client-side random key mode.
+        # Note
+        # After an instance is configured to use a KMS key, you can no longer use a random key configured on the client side.
         self.encryption_key_mode = encryption_key_mode
         # The column encryption status. Valid values:
-        # -  1: Encryption is enabled.
-        # -  0: Encryption is disabled.
+        # - 1: Encryption is enabled.
+        # - 0: Encryption is disabled.
         # 
         # This parameter is required.
         self.encryption_status = encryption_status
@@ -60,9 +61,9 @@ class ModifyDBInstanceCLSRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The global resource descriptor of the RAM role, used to specify the role to assume. For details, see RAM role overview.
-        # 
-        # >  This parameter takes effect only when the column encryption key pattern is set to kms_key. If you do not specify this parameter, the internal default value is used.
+        # The global resource descriptor of the role, used to specify the specific role. For details, see RAM role overview.
+        # Note
+        # This parameter takes effect only when the column encryption key pattern is set to kms_key. If you do not specify this parameter, the internal default value is used.
         self.role_arn = role_arn
         # Specifies whether to enable the whitelist mode. A value of true indicates that only columns in the whitelist are encrypted. A value of false indicates that all columns are encrypted.
         self.white_list_mode = white_list_mode

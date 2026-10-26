@@ -21,10 +21,10 @@ class DescribeMetaListRequest(DaraModel):
         restore_time: str = None,
         restore_type: str = None,
     ):
-        # The ID of the backup set that is used to query data when the restore method is based on a backup set. You can call the DescribeBackups operation to query the ID.
+        # The ID of the backup set that is used for the query when the restoration method is based on a backup set. You can call the DescribeBackups operation to query the ID.
         # > This parameter is required when **RestoreType** is set to **BackupSetID**.
         self.backup_set_id = backup_set_id
-        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The value can be up to 64 ASCII characters in length and cannot contain non-ASCII characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
@@ -34,25 +34,25 @@ class DescribeMetaListRequest(DaraModel):
         # > If this parameter is left empty, a list of all databases is returned.
         self.get_db_name = get_db_name
         self.owner_id = owner_id
-        # The page number. Valid values: any integer greater than **0** and less than or equal to the maximum value of the Integer data type. Default value: **1**.
-        # > This parameter takes effect only when it is used together with **PageSize**.
+        # The page number. Valid values: any integer greater than **0** and less than or equal to the maximum value of the Integer type. Default value: **1**.
+        # > This parameter takes effect only when it is specified together with **PageSize**.
         self.page_index = page_index
         # The number of entries per page. Default value: **1**.
-        # > This parameter takes effect only when it is used together with **PageIndex**.
+        # > This parameter takes effect only when it is specified together with **PageIndex**.
         self.page_size = page_size
         # The name of the database to query. Fuzzy match is used. Only the matched database names are returned, and table names are not returned.
-        # > For example, if you specify `test`, `testdb1` and `testdb2` are matched. After you determine the name of the target database, you can specify the exact database name in the **GetDbName** parameter to view the information about all tables in the target database.
+        # > For example, if you specify `test`, `testdb1` and `testdb2` are matched. After you determine the target database name, you can specify the exact database name in the **GetDbName** parameter to view the information about all tables in the target database.
         self.pattern = pattern
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time to which you want to restore data. The time must be earlier than the current time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC. You can call the DescribeBackups operation to query the time.
+        # The point in time to which you want to restore data. The specified point in time must be earlier than the current time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC. You can call the DescribeBackups operation to query the time.
         # > This parameter is required when **RestoreType** is set to **RestoreTime**.
         self.restore_time = restore_time
-        # The restore method. Valid values:
+        # The restoration method. Valid values:
         # 
-        # * **BackupSetID**: restores data from a backup set. If you set this parameter to BackupSetID, you must also specify the **BackupSetID** parameter.
+        # * **BackupSetID**: restores data based on a backup set. If you set this parameter to BackupSetID, you must also specify the **BackupSetID** parameter.
         # * **RestoreTime**: restores data to a specific point in time. If you set this parameter to RestoreTime, you must also specify the **RestoreTime** parameter.
         # 
         # Default value: **BackupSetID**.

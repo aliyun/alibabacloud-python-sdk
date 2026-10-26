@@ -18,25 +18,25 @@ class DescribeCrossBackupMetaListRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cross-region backup set ID. You can call the DescribeCrossRegionBackups operation to query the ID.
+        # The ID of the cross-region backup set. You can call the DescribeCrossRegionBackups operation to query the ID.
         # 
         # This parameter is required.
         self.backup_set_id = backup_set_id
-        # The name of the database to query. Exact match is used. The specific database name and the table names within the database are returned.
+        # The name of the database to query. Exact match is used. The specific database name and the names of tables in the database are returned.
         self.get_db_name = get_db_name
         self.owner_id = owner_id
-        # The page number. Valid values: greater than 0 and up to the maximum value of Integer.
-        # >This parameter takes effect only when it is specified together with **PageSize**.
+        # The page number. Valid values: any integer greater than 0 and less than or equal to the maximum value of the Integer type.
+        # > This parameter must be used together with **PageSize** to take effect.
         self.page_index = page_index
         # The number of entries per page. Default value: **1**.
-        # >This parameter takes effect only when it is specified together with **PageIndex**.
+        # > This parameter must be used together with **PageIndex** to take effect.
         self.page_size = page_size
         # The name of the database to query. Fuzzy match is used. Only the matched database names are returned, and table names are not returned.
-        # >You can use fuzzy match first. For example, pass in test to match testdb1 and testdb2. After you determine the target database name, use exact match by passing in **GetDbName** to view the specific database name and table names.
+        # > You can use fuzzy match first. For example, enter test to match testdb1 and testdb2. After you determine the target database name, use exact match by specifying **GetDbName** to view the specific database name and table names.
         self.pattern = pattern
-        # The region in which the instance resides.
+        # The region where the instance resides.
         self.region = region
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

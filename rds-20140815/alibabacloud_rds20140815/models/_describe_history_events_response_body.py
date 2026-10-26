@@ -16,13 +16,13 @@ class DescribeHistoryEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The event list.
+        # The list of events.
         self.items = items
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -93,17 +93,17 @@ class DescribeHistoryEventsResponseBodyItems(DaraModel):
     ):
         # The data overview.
         self.data = data
-        # The task ID.
+        # The ID of the task.
         self.id = id
         # The region.
         self.region = region
-        # The event source.
+        # The source of the event.
         self.source = source
         # The database version.
         self.specversion = specversion
         # The name of the pending event.
         self.subject = subject
-        # The elapsed time of the query task. Unit: seconds.
+        # The running duration of the query task. Unit: seconds.
         self.time = time
         # The event type.
         self.type = type
@@ -203,62 +203,62 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         start_time: str = None,
         uid: str = None,
     ):
-        # The cloud service type of the application group. Valid values:
-        # - **web**: web application.
-        # - **native**: on-premises application.
+        # The type of the cloud service for the application group. Valid values:
+        # - **web**: web application
+        # - **native**: native application
         self.cms_product = cms_product
-        # The database type.
+        # The type of the database.
         self.db_type = db_type
         # The pagination parameter.
         self.detail_impact = detail_impact
-        # The instance operation details.
+        # The details of the instance operation.
         self.detail_reason = detail_reason
-        # The alert end time.
+        # The end time of the alert.
         self.end_time = end_time
         # The system event categorization. Valid values:
-        # - **Exception**: abnormal event.
-        # - **Optimize**: optimization events.
-        # - **Notification**: notification event.
-        # - **Maintenance**: scheduled maintenance event.
+        # - **Exception**: abnormal event
+        # - **Optimize**: optimization events
+        # - **Notification**: notification event
+        # - **Maintenance**: scheduled maintenance event
         self.event_category = event_category
         # The event code.
         self.event_code = event_code
         # The event details.
         self.event_detail = event_detail
-        # The event ID.
+        # The ID of the event.
         self.event_id = event_id
-        # The event impact overview.
+        # The impact overview of the event.
         self.event_impact = event_impact
         # The event level. Valid values:
-        # - **INFO**: notification.
-        # - **WARN**: warning.
-        # - **CRITICAL**: critical.
+        # - **INFO**: information
+        # - **WARN**: warning
+        # - **CRITICAL**: critical
         self.event_level = event_level
         # The source of the event operation.
         self.event_reason = event_reason
-        # The event status. Valid values:
-        # - **Inquiring**: inquiring.
-        # - **Scheduled**: scheduled.
-        # - **Running**: running.
-        # - **Succeed**: completed.
-        # - **Failed**: failed.
-        # - **Canceled**: canceled.
+        # The status of the event. Valid values:
+        # - **Inquiring**: inquiring
+        # - **Scheduled**: scheduled
+        # - **Running**: running
+        # - **Succeed**: succeeded
+        # - **Failed**: failed
+        # - **Canceled**: canceled
         self.event_status = event_status
         # The system event type. Valid values: 
         # - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
-        # - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
-        # - **SystemFailure.Reboot**: The instance is restarted due to a system error.
-        # - **SystemFailure.Redeploy**: The instance is redeployed due to a system error.
-        # - **SystemFailure.Delete**: The instance is released due to an instance creation failure.
-        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance error.
-        # - **InstanceExpiration.Stop**: The instance is stopped due to subscription expiration.
-        # - **InstanceExpiration.Delete**: The instance is released due to subscription expiration.
+        # - **SystemMaintenance.Redeploy**: The instance undergoes redeployment due to system maintenance.
+        # - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
+        # - **SystemFailure.Redeploy**: The instance undergoes redeployment due to a system fault.
+        # - **SystemFailure.Delete**: The instance is released because instance creation failed.
+        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
+        # - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
+        # - **InstanceExpiration.Delete**: The subscription instance is released due to expiration.
         # - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
         # - **AccountUnbalanced.Delete**: The pay-as-you-go instance is released due to an overdue payment.
         self.event_type = event_type
-        # The time when the event was created.
+        # The creation time of the event.
         self.gmt_created = gmt_created
-        # The time when the event was last updated.
+        # The update time of the event.
         self.gmt_modified = gmt_modified
         # The handling status.
         self.handle_status = handle_status
@@ -266,26 +266,26 @@ class DescribeHistoryEventsResponseBodyItemsData(DaraModel):
         self.has_life_cycle = has_life_cycle
         # The instance ID.
         self.instance_id = instance_id
-        # The instance name.
+        # The name of the instance.
         self.instance_name = instance_name
-        # Indicates whether the event is closed. Valid values:
-        # - **0**: closed.
-        # - **1**: open.
+        # Indicates whether the event is successfully closed. Valid values:
+        # - **0**: closed
+        # - **1**: open
         self.is_closed = is_closed
-        # The product name.
+        # The name of the product.
         self.product = product
         # The region ID.
         self.region_id = region_id
-        # The resource type. Valid values:
-        # - **Instance**: instance resource.
-        # - **Host**: host resource.
-        # - **User**: user resource.
+        # The type of the resource. Valid values:
+        # - **Instance**: instance
+        # - **Host**: host
+        # - **User**: user
         self.resource_type = resource_type
         # The type of the source data.
         self.source_type = source_type
         # The start time.
         self.start_time = start_time
-        # The ID of the user who owns the resource.
+        # The ID of the user to which the resource belongs.
         self.uid = uid
 
     def validate(self):

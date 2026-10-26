@@ -17,7 +17,7 @@ class CheckBackupEncryptionAuthorizedResponseBody(DaraModel):
         self.authorization_state = authorization_state
         # The request ID.
         self.request_id = request_id
-        # The Alibaba Resource Name (ARN) of the service-linked role associated with Cloud Hardware Security Module (CloudHSM) for backup encryption.
+        # The ARN of the backup encryption service-linked role.
         self.role_arn = role_arn
 
     def validate(self):

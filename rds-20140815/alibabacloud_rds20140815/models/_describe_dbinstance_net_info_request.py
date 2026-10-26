@@ -17,21 +17,21 @@ class DescribeDBInstanceNetInfoRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
         self.client_token = client_token
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The type of the endpoint. Valid values:
+        # The endpoint type. Valid values:
         # * **Normal**: regular endpoint.
         # * **ReadWriteSplitting**: read/write splitting endpoint.
         # 
         # > By default, endpoints of all types are returned.
         self.dbinstance_net_rwsplit_type = dbinstance_net_rwsplit_type
-        # A reserved parameter. You do not need to specify this parameter.
+        # The reserved parameter. You do not need to configure this parameter.
         self.flag = flag
-        # The name of the group to which the general-purpose ApsaraDB RDS for MySQL instance in a dedicated cluster belongs.
+        # The name of the group to which the general-purpose ApsaraDB RDS for MySQL instance in the dedicated cluster belongs.
         self.general_group_name = general_group_name
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -17,7 +17,7 @@ class DescribePostgresExtensionsResponseBody(DaraModel):
     ):
         # The list of installed extensions in the specified database.
         self.installed_extensions = installed_extensions
-        # The overview information about extensions.
+        # The overview information about the extensions.
         self.overview = overview
         # The request ID.
         self.request_id = request_id
@@ -92,7 +92,7 @@ class DescribePostgresExtensionsResponseBodyUninstalledExtensions(DaraModel):
         requires: str = None,
         uid: str = None,
     ):
-        # The extension category.
+        # The category of the extension.
         self.category = category
         # The purpose of the extension.
         self.comment = comment
@@ -100,17 +100,17 @@ class DescribePostgresExtensionsResponseBodyUninstalledExtensions(DaraModel):
         self.default_version = default_version
         # The currently installed version of the extension.
         self.installed_version = installed_version
-        # The extension name.
+        # The name of the extension.
         self.name = name
-        # The user to which the extension belongs.
+        # The owner of the extension.
         self.owner = owner
-        # The extension priority.
+        # The priority of the extension.
         self.priority = priority
-        # The extensions on which this extension depends during installation.
+        # The extensions on which this extension depends when it is installed.
         self.requires = requires
         # The Alibaba Cloud account ID.
         # 
-        # > This parameter is returned only for exclusive extensions (extensions written by the user). Each Alibaba Cloud account can view only its own exclusive extensions.
+        # > This parameter is returned only for exclusive extensions (extensions written by users). Each Alibaba Cloud account displays only its own exclusive extensions.
         self.uid = uid
 
     def validate(self):
@@ -194,19 +194,19 @@ class DescribePostgresExtensionsResponseBodyInstalledExtensions(DaraModel):
         requires: str = None,
         uid: str = None,
     ):
-        # The extension category. Valid values:
+        # The category of the extension. Valid values:
         # 
-        # - **external_access**: external access.
-        # - **index_support**: index support.
-        # - **information_stat**: information statistics.
-        # - **geography_space**: geospatial.
-        # - **vector_engine**: vector engine.
-        # - **timing_engine**: time series engine.
-        # - **data_type**: data type.
-        # - **encrypt_secure**: encryption and security.
-        # - **text_process**: text processing.
-        # - **operation_maintenance**: application O&M.
-        # - **self_develop**: self-developed.
+        # - **external_access**: external access
+        # - **index_support**: index support
+        # - **information_sta**t: information statistics
+        # - **geography_space**: geospatial
+        # - **vector_engine**: vector engine
+        # - **timing_engine**: time series engine
+        # - **data_type**: data type
+        # - **encrypt_secure**: encryption and security
+        # - **text_process**: text processing
+        # - **operation_maintenance**: application O&M
+        # - **self_develop**: self-developed
         self.category = category
         # The purpose of the extension.
         self.comment = comment
@@ -214,20 +214,20 @@ class DescribePostgresExtensionsResponseBodyInstalledExtensions(DaraModel):
         self.default_version = default_version
         # The currently installed version of the extension.
         self.installed_version = installed_version
-        # The extension name.
+        # The name of the extension.
         self.name = name
-        # The user to which the extension belongs.
+        # The owner of the extension.
         self.owner = owner
-        # The extension priority. Valid values:
+        # The priority of the extension. Valid values:
         # 
-        # - **0**: displayed by default.
-        # - **1**: displayed with priority.
+        # - **0**: displayed by default
+        # - **1**: displayed with priority
         self.priority = priority
-        # The extensions on which this extension depends during installation.
+        # The extensions on which this extension depends when it is installed.
         self.requires = requires
         # The Alibaba Cloud account ID.
         # 
-        # > This parameter is returned only for exclusive extensions (extensions written by the user). Each Alibaba Cloud account can view only its own exclusive extensions.
+        # > This parameter is returned only for exclusive extensions (extensions written by users). Each Alibaba Cloud account displays only its own exclusive extensions.
         self.uid = uid
 
     def validate(self):

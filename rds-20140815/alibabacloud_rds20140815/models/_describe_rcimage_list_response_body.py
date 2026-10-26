@@ -110,14 +110,14 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
     ):
         # The system architecture of the image. Valid values:
         # 
-        # - x86_64.
-        # - arm64.
+        # - x86_64
+        # - arm64
         self.architecture = architecture
-        # The time when the image was created.
+        # The creation time of the image.
         self.creation_time = creation_time
         # The description of the image.
         self.description = description
-        # The mapping between cloud disks and snapshots in the image.
+        # The mappings between cloud disks and snapshots included in the image.
         self.disk_device_mappings = disk_device_mappings
         # The image ID.
         self.image_id = image_id
@@ -125,24 +125,24 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
         self.image_name = image_name
         # The image version.
         self.image_version = image_version
-        # Indicates whether the image is a public image. Public images include Alibaba Cloud-provided public images and custom images that you have published as community images.
+        # Indicates whether the image is public. Public images include public images provided by Alibaba Cloud and custom images that you have published as community images. Valid values:
         # 
-        # - **true**: The image is a public image.
-        # - **false**: The image is not a public image.
+        # - **true**: The image is public.
+        # - **false**: The image is not public.
         self.is_public = is_public
         # Indicates whether the image supports RDS Custom instances. Valid values:
         # 
-        # - **true**: Supported.
-        # - **false**: Not supported.
+        # - **true**: Yes.
+        # - **false**: No.
         self.is_support_rds_custom = is_support_rds_custom
         # The Chinese display name of the operating system.
         self.osname = osname
         # The English display name of the operating system.
         self.osname_en = osname_en
-        # The type of the operating system. Valid values:
+        # The operating system type. Valid values:
         # 
-        # - **windows**.
-        # - **linux**.
+        # - **windows**
+        # - **linux**
         self.ostype = ostype
         # The operating system platform.
         self.platform = platform
@@ -150,15 +150,15 @@ class DescribeRCImageListResponseBodyImages(DaraModel):
         self.size = size
         # The status of the image. Valid values:
         # 
-        # - **UnAvailable**: Unavailable.
-        # - **Available**: Available.
-        # - **Creating**: Being created.
-        # - **CreateFailed**: Creation failed.
+        # - **UnAvailable**: The image is unavailable.
+        # - **Available**: The image is available.
+        # - **Creating**: The image is being created.
+        # - **CreateFailed**: The image failed to be created.
         self.status = status
         # Indicates whether the image is used by RDS Custom instances. Valid values:
         # 
-        # - **instance**: One or more RDS Custom instances have been created.
-        # - **none**: No RDS Custom instances have been created.
+        # - **instance**: One or more RDS Custom instances are created.
+        # - **none**: No RDS Custom instances are created.
         self.usage = usage
 
     def validate(self):
@@ -290,7 +290,7 @@ class DescribeRCImageListResponseBodyImagesDiskDeviceMappings(DaraModel):
         self.device = device
         # The size of the cloud disk. Unit: GiB.
         self.size = size
-        # The type of the cloud disk.
+        # The attribute of the cloud disk. Valid values:
         # 
         # - **system**: System cloud disk.
         # - **data**: Data cloud disk.

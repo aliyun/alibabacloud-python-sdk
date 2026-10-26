@@ -21,42 +21,42 @@ class RestoreDdrTableRequest(DaraModel):
         source_region: str = None,
         table_meta: str = None,
     ):
-        # The cross-region backup set ID. You can call the DescribeCrossRegionBackups operation to query the backup set ID.
+        # The ID of the cross-region backup set. You can call the DescribeCrossRegionBackups operation to query the ID.
         # >This parameter is required when **RestoreType** is set to **0**.
         self.backup_id = backup_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
         self.client_token = client_token
-        # The instance ID of the existing instance to which you want to recover data.
+        # The instance ID of the existing instance to be recovered.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The ID of the destination region. You can call the DescribeRegions operation to query region IDs.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time to which you want to restore data. The point in time must be earlier than the current time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The point in time to which you want to restore data. The specified point in time must be earlier than the current time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         # 
         # >This parameter is required when **RestoreType** is set to **1**.
         self.restore_time = restore_time
         # The restoration method. Valid values:
-        # * **0**: restores data from a backup set. You must also specify the **BackupId** parameter.
-        # * **1**: restores data to a point in time. You must also specify the **RestoreTime**, **SourceRegion**, and **SourceDBInstanceName** parameters.
+        # * **0**: restores data based on a backup set. If you set this parameter to 0, you must also specify the **BackupId** parameter.
+        # * **1**: restores data to a point in time. If you set this parameter to 1, you must also specify the **RestoreTime**, **SourceRegion**, and **SourceDBInstanceName** parameters.
         # 
         # Default value: **0**.
         # 
         # This parameter is required.
         self.restore_type = restore_type
-        # The instance ID of the source instance from which you want to recover data to a point in time.
+        # The instance ID of the source instance to recover data to a point in time.
         # >This parameter is required when **RestoreType** is set to **1**.
         self.source_dbinstance_name = source_dbinstance_name
-        # The region ID of the source instance for point-in-time restoration.
+        # The ID of the source region for point-in-time restoration.
         # >This parameter is required when **RestoreType** is set to **1**.
         self.source_region = source_region
         # The databases and tables that you want to restore. Format:
-        # ```[{"type":"db","name":"<Database 1 name>","newname":"<New database 1 name>","tables":[{"type":"table","name":"<Table 1 name in database 1>","newname":"<New table 1 name>"},{"type":"table","name":"<Table 2 name in database 1>","newname":"<New table 2 name>"}]},{"type":"db","name":"<Database 2 name>","newname":"<New database 2 name>","tables":[{"type":"table","name":"<Table 3 name in database 2>","newname":"<New table 3 name>"},{"type":"table","name":"<Table 4 name in database 2>","newname":"<New table 4 name>"}]}]```
+        # ```[{"type":"db","name":"<Name of database 1>","newname":"<New name of database 1>","tables":[{"type":"table","name":"<Name of table 1 in database 1>","newname":"<New name of table 1>"},{"type":"table","name":"<Name of table 2 in database 1>","newname":"<New name of table 2>"}]},{"type":"db","name":"<Name of database 2>","newname":"<New name of database 2>","tables":[{"type":"table","name":"<Name of table 3 in database 2>","newname":"<New name of table 3>"},{"type":"table","name":"<Name of table 4 in database 2>","newname":"<New name of table 4>"}]}]```
         # 
         # This parameter is required.
         self.table_meta = table_meta

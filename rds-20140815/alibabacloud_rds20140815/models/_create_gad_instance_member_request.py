@@ -18,26 +18,26 @@ class CreateGadInstanceMemberRequest(DaraModel):
         gad_instance_id: str = None,
         unit_node: List[main_models.CreateGadInstanceMemberRequestUnitNode] = None,
     ):
-        # The ID of the central node. You can call DescribeGadInstances to query the central node ID.
+        # The ID of the central node. You can call the DescribeGadInstances operation to query the ID.
         # 
         # This parameter is required.
         self.central_dbinstance_id = central_dbinstance_id
-        # The privileged account of the central node. You can call DescribeAccounts to query the account.
+        # The privileged account of the central node. You can call the DescribeAccounts operation to query the account.
         # 
         # This parameter is required.
         self.central_rds_dts_admin_account = central_rds_dts_admin_account
-        # The password of the privileged account for the central node.
+        # The password of the privileged account of the central node.
         # 
         # This parameter is required.
         self.central_rds_dts_admin_password = central_rds_dts_admin_password
-        # The region ID of the central node (primary node). You can call DescribeRegions to query the region ID.
+        # The region ID of the central node (primary node). You can call the DescribeRegions operation to query the region ID.
         # 
         # This parameter is required.
         self.central_region_id = central_region_id
-        # A JSON array of database information from the central node. All databases in the array are synchronized to the current unit node. Metric description:
-        # * **name**: the database name.
-        # * **all**: specifies whether to synchronize all data in the current database or table. Valid values: **true** | **false**.
-        # * **Table**: the table name. If the **all** parameter is set to **false**, you must also specify the table names to be synchronized in the JSON array.
+        # The JSON array of database information in the central node. All database information in the array is synchronized to the current unit node. Parameter description:
+        # * **name**: the name of the database.
+        # * **all**: specifies whether to synchronize all data in the current database or table. Valid values: **true** and **false**.
+        # * **Table**: the name of the table. If the **all** parameter is set to **false**, you must also include the names of the tables to be synchronized in the JSON array.
         # 
         # Example: `{
         #    "testdb": {
@@ -55,11 +55,11 @@ class CreateGadInstanceMemberRequest(DaraModel):
         #     }
         #   }
         # }`
-        # > For more information, see [Objects for migration, synchronization, or subscribe](https://help.aliyun.com/document_detail/209545.html).
+        # > For more information, see [Objects for migration, synchronization, or subscription](https://help.aliyun.com/document_detail/209545.html).
         # 
         # This parameter is required.
         self.dblist = dblist
-        # The ID of the ApsaraDB RDS global active database cluster. You can call DescribeGadInstances to query the cluster ID.
+        # The ID of the ApsaraDB RDS global active database cluster. You can call the DescribeGadInstances operation to query the ID.
         # 
         # This parameter is required.
         self.gad_instance_id = gad_instance_id
@@ -151,27 +151,27 @@ class CreateGadInstanceMemberRequestUnitNode(DaraModel):
         zone_idslave_1: str = None,
         zone_idslave_2: str = None,
     ):
-        # The name of the new unit node. The name must meet the following requirements:
-        # - The name must be **2 to 255** characters in length.
-        # - The name must start with a Chinese character or a letter. It can contain digits, Chinese characters, letters, underscores (_), and hyphens (-).
+        # The name of the new unit node. The naming rules are as follows:
+        # - The name must be **2** to **255** characters in length.
+        # - The name must start with a letter or a Chinese character and can contain letters, digits, Chinese characters, underscores (_), and hyphens (-).
         # - The name cannot start with `http://` or `https://`.
         self.dbinstance_description = dbinstance_description
-        # The storage capacity of the new unit node. Unit: GB. The value is incremented in steps of 5 GB. For the value range, see [Instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available storage capacity range for the target instance type.
+        # The storage capacity of the new unit node. Unit: GB. The storage capacity increases in increments of 5 GB. For more information about the valid values, see [Instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available storage capacity range for the target instance type.
         self.dbinstance_storage = dbinstance_storage
         # The instance storage type. Valid values:
         # 
         # * **local_ssd**: local SSD
-        # * **cloud_ssd**: standard SSD cloud disk
-        # * **cloud_essd**: PL1 ESSD cloud disk
-        # * **cloud_essd2**: PL2 ESSD cloud disk
-        # * **cloud_essd3**: PL3 ESSD cloud disk
+        # * **cloud_ssd**: standard SSD
+        # * **cloud_essd**: PL1 ESSD
+        # * **cloud_essd2**: PL2 ESSD
+        # * **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The instance type of the new unit node. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available instance types in the target region.
+        # The instance type of the new unit node. For more information about the valid values, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the available instance types in the target region.
         self.db_instance_class = db_instance_class
-        # The conflict resolution policy used when a primary key conflict occurs during data synchronization for the new unit node. Valid values:
-        # * **overwrite**: Overwrites the conflicting primary key on the destination node.
-        # * **interrupt**: Stops the synchronization task and reports an error.
-        # * **ignore**: Overwrites the conflicting primary key on the current node.
+        # The resolution policy for primary key conflicts that occur during synchronization on the new unit node. Valid values:
+        # * **overwrite**: Overwrites the conflicting primary keys in the destination node.
+        # * **interrupt**: Interrupts the synchronization task, reports an error, and exits.
+        # * **ignore**: Overwrites the conflicting primary keys in the current node.
         # 
         # This parameter is required.
         self.dts_conflict = dts_conflict
@@ -193,31 +193,31 @@ class CreateGadInstanceMemberRequestUnitNode(DaraModel):
         # * **5.6**
         # * **5.5**
         self.engine_version = engine_version
-        # The region ID of the new unit node (secondary node). You can call DescribeRegions to query the region ID.
+        # The region ID of the new unit node (secondary node). You can call the DescribeRegions operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The [IP whitelist](https://help.aliyun.com/document_detail/43185.html) of the new unit node. Separate multiple entries with commas (,). Entries cannot be duplicated. A maximum of 1,000 entries are allowed. The following two formats are supported:
+        # The [IP address whitelist](https://help.aliyun.com/document_detail/43185.html) of the new unit node. Separate multiple entries with commas (,). Duplicate entries are not allowed. A maximum of 1,000 entries can be added. The following two formats are supported:
         # * IP address format, such as `10.10.XX.XX`.
-        # * CIDR format, such as `10.10.XX.XX/24` (Classless Inter-Domain Routing, where **24** indicates the prefix length, ranging from **1 to 32**).
+        # * CIDR format, such as `10.10.XX.XX/24`. **24** indicates the length of the prefix in the IP address, and the valid values are **1** to **32**.
         self.security_iplist = security_iplist
         # The vSwitch ID of the new unit node.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID of the new unit node.
+        # The VPC ID of the new unit node.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The zone ID of the new unit node. You can call DescribeRegions to query the zone ID.
+        # The zone ID of the new unit node. You can call the DescribeRegions operation to query the zone ID.
         self.zone_id = zone_id
-        # The zone ID of the secondary node for the new unit node. You can call DescribeRegions to query the zone ID.
-        # * If this value is the same as the **ZoneId** of the current unit node, the single-zone deployment is used.
-        # * If this value is different from the **ZoneId** of the current unit node, the multi-zone deployment is used.
+        # The zone ID of the secondary node for the new unit node. You can call the DescribeRegions operation to query the zone ID where the node is active.
+        # * If the value is the same as the **ZoneId** of the current unit node, it is a single-zone deployment.
+        # * If the value is different from the **ZoneId** of the current unit node, it is a multi-zone deployment.
         self.zone_idslave_1 = zone_idslave_1
-        # The zone ID of the logger node for the new unit node. You can call DescribeRegions to query the zone ID.
-        # * If this value is the same as the **ZoneId** of the current unit node, the single-zone deployment is used.
-        # * If this value is different from the **ZoneId** of the current unit node, the multi-zone deployment is used.
+        # The zone ID of the logger node for the new unit node. You can call the DescribeRegions operation to query the zone ID where the node is active.
+        # * If the value is the same as the **ZoneId** of the current unit node, it is a single-zone deployment.
+        # * If the value is different from the **ZoneId** of the current unit node, it is a multi-zone deployment.
         self.zone_idslave_2 = zone_idslave_2
 
     def validate(self):

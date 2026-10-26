@@ -10,9 +10,9 @@ class DeleteSlotResponseBody(DaraModel):
         request_id: str = None,
         slot_name: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The replication slot name.
+        # The name of the replication slot.
         self.slot_name = slot_name
 
     def validate(self):

@@ -15,18 +15,18 @@ class DescribeMaskingRulesRequest(DaraModel):
         resource_owner_id: int = None,
         rule_name: str = None,
     ):
-        # The instance name.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
         self.owner_id = owner_id
         # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The rule names, separated by commas.
+        # The names of the rules, separated by commas.
         self.rule_name = rule_name
 
     def validate(self):

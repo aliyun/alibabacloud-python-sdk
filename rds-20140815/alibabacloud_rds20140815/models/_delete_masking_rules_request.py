@@ -19,7 +19,7 @@ class DeleteMaskingRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
         self.owner_id = owner_id
         # The region ID.

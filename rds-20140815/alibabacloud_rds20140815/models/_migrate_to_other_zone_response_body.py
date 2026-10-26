@@ -13,7 +13,7 @@ class MigrateToOtherZoneResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The order ID. This parameter is applicable only to ApsaraDB RDS for MySQL instances.
+        # The order ID. This parameter is only applicable to ApsaraDB RDS for MySQL instances.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

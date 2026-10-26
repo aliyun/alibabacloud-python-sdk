@@ -17,11 +17,11 @@ class DescribeDBInstanceMetricsResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The list of enhanced monitoring metrics that are enabled for the instance.
+        # The list of enhanced metrics that are enabled for the instance.
         self.items = items
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of enhanced monitoring metrics that are enabled for the instance.
+        # The total number of enhanced metrics that are enabled for the instance.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -83,28 +83,28 @@ class DescribeDBInstanceMetricsResponseBodyItems(DaraModel):
         sort_rule: int = None,
         unit: str = None,
     ):
-        # The description of the enhanced monitoring metric.
+        # The description of the enhanced metric.
         self.description = description
-        # The category of the enhanced monitoring metric. Valid values:
-        # - **os**: operating system metric.
-        # - **db**: database metric.
+        # The category of the enhanced metric. Valid values:
+        # - **os**: operating system metrics.
+        # - **db**: database metrics.
         self.dimension = dimension
-        # The key of the group to which the enhanced monitoring metric belongs.
+        # The key of the group to which the enhanced metric belongs.
         self.group_key = group_key
-        # The name of the group to which the enhanced monitoring metric belongs.
+        # The name of the group to which the enhanced metric belongs.
         self.group_key_type = group_key_type
-        # The statistical method of the enhanced monitoring metric. Valid values:
+        # The statistical method for the enhanced metric. Valid values:
         # - **avg**: average value.
         # - **min**: minimum value.
         # - **max**: maximum value.
         self.method = method
-        # The key of the enhanced monitoring metric.
+        # The key of the enhanced metric.
         self.metrics_key = metrics_key
-        # The alias of the enhanced monitoring metric.
+        # The alias of the enhanced metric.
         self.metrics_key_alias = metrics_key_alias
-        # The sequence number of the enhanced monitoring metric.
+        # The sequence number of the enhanced metric.
         self.sort_rule = sort_rule
-        # The unit of the enhanced monitoring metric.
+        # The unit of the enhanced metric.
         self.unit = unit
 
     def validate(self):

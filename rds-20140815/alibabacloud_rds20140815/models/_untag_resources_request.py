@@ -18,7 +18,7 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to unbind all tags from the instance. Valid values:
+        # Specifies whether to remove all tags from the instance. Valid values:
         # * **true**
         # * **false**
         # 
@@ -30,7 +30,7 @@ class UntagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of instance IDs. You can unbind tags from up to N instances at a time. Valid values of N: **1** to **50**.
+        # The list of instance IDs. You can remove labels from N instances at a time. Valid values of N: **1** to **50**.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -38,15 +38,15 @@ class UntagResourcesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The resource type. Valid values:
         # 
-        # - **INSTANCE**: regular ApsaraDB RDS instance.
-        # - **CUSTOM**: RDS Custom instance.
-        # - **CUSTOMDEPLOYMENTSET**: RDS Custom deployment set.
-        # - **CUSTOMDISK**: RDS Custom cloud disk.
-        # - **CUSTOMSNAPSHOT**: RDS Custom snapshot.
+        # - **INSTANCE**: Regular ApsaraDB RDS instance.
+        # - **CUSTOM**: ApsaraDB RDS Custom instance.
+        # - **CUSTOMDEPLOYMENTSET**: ApsaraDB RDS Custom deployment set.
+        # - **CUSTOMDISK**: ApsaraDB RDS Custom cloud disk.
+        # - **CUSTOMSNAPSHOT**: ApsaraDB RDS Custom snapshot.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tag keys. You can remove up to N tag keys at a time. Valid values of N: **1** to **20**. Empty strings are not allowed.
+        # The tag keys. You can remove N tag keys at a time. Valid values of N: **1** to **20**. Empty strings are not allowed.
         self.tag_key = tag_key
 
     def validate(self):

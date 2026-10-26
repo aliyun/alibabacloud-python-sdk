@@ -20,25 +20,25 @@ class DescribeDedicatedHostsRequest(DaraModel):
         zone_id: str = None,
     ):
         # Specifies whether the host allows instance allocation. Valid values:
-        # * **0**: Instance allocation is not allowed.
-        # * **1**: Instance allocation is allowed.
+        # * **0**: Not allowed.
+        # * **1**: Allowed.
         self.allocation_status = allocation_status
-        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
+        # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to obtain the dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The host ID in the dedicated cluster.
+        # The host ID of the dedicated cluster.
         self.dedicated_host_id = dedicated_host_id
         # The host status. Valid values:
-        #  * **0**: being created
-        #  * **1**: running
-        #  * **2**: down
-        #  * **3**: offline (host being replaced)
-        #  * **4**: offline
-        #  * **5**: deleted
-        #  * **6**: restarting
+        #  * **0**: Creating.
+        #  * **1**: Running.
+        #  * **2**: Down.
+        #  * **3**: Down and offline (host replacement in progress).
+        #  * **4**: Offline.
+        #  * **5**: Deleted.
+        #  * **6**: Restarting.
         self.host_status = host_status
         # The storage type of the host. Valid values:
         # * **dhg_cloud_ssd**: ESSD cloud disk.
-        # * **dhg_local_ssd**: local standard SSD.
+        # * **dhg_local_ssd**: local SSD.
         self.host_type = host_type
         # The order ID.
         self.order_id = order_id

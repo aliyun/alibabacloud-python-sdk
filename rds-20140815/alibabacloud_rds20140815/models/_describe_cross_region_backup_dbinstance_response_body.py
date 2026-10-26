@@ -19,9 +19,9 @@ class DescribeCrossRegionBackupDBInstanceResponseBody(DaraModel):
         total_records: int = None,
     ):
         self.items = items
-        # The number of items in the cross-region backup settings list.
+        # The number of entries in the cross-region backup settings list.
         self.items_numbers = items_numbers
-        # The page number. Valid values: any integer greater than 0 that does not exceed the maximum value of the Integer data type.
+        # The page number. Valid values: any integer greater than 0 and less than or equal to the maximum value of the Integer type.
         # 
         # Default value: **1**.
         self.page_number = page_number
@@ -31,7 +31,7 @@ class DescribeCrossRegionBackupDBInstanceResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_records = total_records
 
     def validate(self):

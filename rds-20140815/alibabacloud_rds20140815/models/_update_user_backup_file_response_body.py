@@ -10,9 +10,9 @@ class UpdateUserBackupFileResponseBody(DaraModel):
         backup_id: str = None,
         request_id: str = None,
     ):
-        # The user backup ID.
+        # The ID of the user backup.
         self.backup_id = backup_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

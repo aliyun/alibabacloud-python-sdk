@@ -14,11 +14,11 @@ class CreateDBNodesResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The IDs of the created nodes. The value is of the String type. Multiple node IDs are separated by commas (,).
+        # The IDs of the created nodes. The value is a string. Multiple node IDs are separated by commas (`,`).
         self.node_ids = node_ids
-        # The order ID.
+        # The ID of the order.
         self.order_id = order_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

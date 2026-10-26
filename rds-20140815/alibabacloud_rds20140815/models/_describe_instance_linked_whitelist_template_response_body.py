@@ -19,25 +19,25 @@ class DescribeInstanceLinkedWhitelistTemplateResponseBody(DaraModel):
     ):
         # The response code. Valid values:
         # - **200**: Normal.
-        # - **400**: Client fault.
+        # - **400**: Client error.
         # - **401**: Authentication failed.
-        # - **404**: Request page not found.
-        # - **500**: Server fault.
+        # - **404**: The requested page is not found.
+        # - **500**: Server error.
         self.code = code
-        # The returned data list.
+        # The list of returned data.
         self.data = data
         # The HTTP status code. Valid values:
-        # - **200**: Success.
+        # - **200**: Normal.
         # - **400**: Client error.
         # - **500**: Server error.
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.
+        # - **true**: The request is successful.
         # - **false**: The request failed.
         self.success = success
 
@@ -99,9 +99,9 @@ class DescribeInstanceLinkedWhitelistTemplateResponseBodyData(DaraModel):
         ins_name: str = None,
         templates: List[main_models.DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates] = None,
     ):
-        # The instance name.
+        # The name of the instance.
         self.ins_name = ins_name
-        # The whitelist template information returned in a paged manner.
+        # The paginated whitelist template information.
         self.templates = templates
 
     def validate(self):
@@ -149,13 +149,13 @@ class DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates(DaraModel
     ):
         # The primary key of the data table.
         self.id = id
-        # The IP address list.
+        # The list of IP addresses.
         self.ips = ips
-        # The whitelist template ID.
+        # The ID of the whitelist template.
         self.template_id = template_id
-        # The whitelist template name.
+        # The name of the whitelist template.
         self.template_name = template_name
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

@@ -71,9 +71,9 @@ class DescribeCurrentModifyOrderResponseBodyModifyOrder(DaraModel):
         self.cpu = cpu
         # The instance ID.
         self.db_instance_id = db_instance_id
-        # The effective period. Valid values:
-        # * **Immediate** (default): The changes take effect immediately.
-        # * **MaintainTime**: The changes take effect within the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
+        # The effective time. Valid values:
+        # * **Immediate** (default): takes effect immediately.
+        # * **MaintainTime**: takes effect within the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
         self.effective_time = effective_time
         # The mark.
         self.mark = mark
@@ -81,7 +81,7 @@ class DescribeCurrentModifyOrderResponseBodyModifyOrder(DaraModel):
         self.memory_class = memory_class
         # The task status.
         self.status = status
-        # The storage information.
+        # The storage description.
         self.storage = storage
         # The target instance specifications for the specification change.
         self.target_dbinstance_class = target_dbinstance_class

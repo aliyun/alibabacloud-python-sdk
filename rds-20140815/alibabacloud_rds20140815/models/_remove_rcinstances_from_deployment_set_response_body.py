@@ -13,9 +13,9 @@ class RemoveRCInstancesFromDeploymentSetResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.RemoveRCInstancesFromDeploymentSetResponseBodyResults] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The call results of the operation.
+        # The results of the API call.
         self.results = results
 
     def validate(self):
@@ -61,8 +61,8 @@ class RemoveRCInstancesFromDeploymentSetResponseBodyResults(DaraModel):
         # The instance ID.
         self.rcinstance_id = rcinstance_id
         # The node status. Valid values:
-        # * **Success**: Succeeded.
-        # * **Failed**: Failed.
+        # * **Success**: successful
+        # *  **Failed**: failed
         self.status = status
 
     def validate(self):

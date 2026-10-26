@@ -14,7 +14,7 @@ class ModifyTaskInfoResponseBody(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # The ID of the failed task. The first failed task ID is returned.
+        # The ID of the failed task. The ID is returned when a failure occurs.
         self.error_task_id = error_task_id
         # The request ID.
         self.request_id = request_id

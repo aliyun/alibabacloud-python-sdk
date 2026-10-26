@@ -13,7 +13,7 @@ class MigrateConnectionToOtherZoneResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The error details.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id

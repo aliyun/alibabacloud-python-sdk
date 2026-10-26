@@ -14,11 +14,11 @@ class CreateRCImageRequest(DaraModel):
     ):
         # The name of the custom image.
         self.image_name = image_name
-        # The instance ID of the RDS Custom instance.
+        # The RDS Custom instance ID.
         self.instance_id = instance_id
-        # The region ID. You can call DescribeRegions to query the available regions.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
-        # The snapshot ID used to create the custom image. You can call DescribeRCSnapshots to query snapshot IDs.
+        # The ID of the snapshot used to create the custom image. You can call the DescribeRCSnapshots operation to query the snapshot ID.
         self.snapshot_id = snapshot_id
 
     def validate(self):

@@ -114,24 +114,24 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
     ):
         # The time when the disk was attached.
         self.attached_time = attached_time
-        # Indicates whether burst (performance bursting) is enabled. Valid values:
+        # Indicates whether burstable performance is enabled. Valid values:
         # 
-        # true: Enabled.
-        # false: Disabled.
+        # - true: Yes.
+        # - false: No.
         # This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see ESSD AutoPL cloud disks.
         self.bursting_enabled = bursting_enabled
         # The disk category. Valid values:
         # 
-        # - **cloud_efficiency**: ultra cloud disk.
-        # - **cloud_ssd**: standard SSD.
+        # - **cloud_efficiency**: Ultra cloud disk.
+        # - **cloud_ssd**: Standard SSD cloud disk.
         # - **cloud_essd**: ESSD cloud disk.
-        # - **cloud_auto**: premium performance disk.
+        # - **cloud_auto**: Premium performance disk.
         self.category = category
-        # The creation time.
+        # The time when the cloud disk was created. The time follows the ISO 8601 standard and is displayed in UTC.
         self.creation_time = creation_time
-        # Indicates whether automatic snapshots are deleted when the cloud disk is deleted. Valid values:
-        # - true: Automatic snapshots are deleted when the cloud disk is deleted.
-        # - false: Automatic snapshots are retained when the cloud disk is deleted.
+        # Indicates whether automatic snapshots are deleted along with the cloud disk. Valid values:
+        # - true: Deletes the snapshots on the cloud disk.
+        # - false: Retains the snapshots on the cloud disk.
         self.delete_auto_snapshot = delete_auto_snapshot
         # Indicates whether the disk is released when the instance is released. Valid values:
         # 
@@ -142,36 +142,36 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
         self.description = description
         # The mount point of the disk.
         self.device = device
-        # Billable methods of the disk.
+        # The billing method of the disk.
         # 
-        # Only **PostPaid** is supported, which indicates the pay-as-you-go billing method.
+        # Only **PostPaid** (pay-as-you-go) is supported.
         self.disk_charge_type = disk_charge_type
         # The disk ID.
         self.disk_id = disk_id
         # The disk name.
         self.disk_name = disk_name
-        # Indicates whether only encrypted cloud disks are filtered. Valid values:
-        # - true: Only encrypted cloud disks are returned.
-        # - false (default): All cloud disks are returned.
+        # Indicates whether the cloud disk is encrypted. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.encrypted = encrypted
-        # A reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter.
         self.expired_time = expired_time
-        # The provisioned read/write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline performance}. Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
+        # The provisioned read and write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50,000, 1,000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50,000}.
         # 
-        # This parameter is supported only when `Category` is set to `cloud_auto`.
+        # This parameter is supported only when Category is set to cloud_auto.
         self.iops = iops
-        # The image ID used to create the RDS Custom instance. This parameter has a value only for cloud disks created from an image. Otherwise, the value is empty. This value remains unchanged throughout the lifecycle of the cloud disk.
+        # The ID of the image used to create the RDS Custom instance. This parameter has a value only if the cloud disk was created from an image. Otherwise, the value is empty. The value remains unchanged throughout the lifecycle of the cloud disk.
         self.image_id = image_id
         # The instance ID.
         self.instance_id = instance_id
-        # The performance level (PL) of the ESSD cloud disk. Valid values:
+        # The performance level of the ESSD cloud disk (not standard SSD). Valid values:
         # 
-        # - PL0: A single standard SSD can deliver up to 10,000 random read/write IOPS.
-        # - PL1: A single standard SSD can deliver up to 50,000 random read/write IOPS.
-        # - PL2: A single standard SSD can deliver up to 100,000 random read/write IOPS.
-        # - PL3: A single standard SSD can deliver up to 1,000,000 random read/write IOPS.
+        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
+        # - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
+        # - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
-        # Indicates whether the disk is detachable.
+        # Indicates whether the disk is removable.
         self.portable = portable
         # The region ID.
         self.region_id = region_id
@@ -181,27 +181,27 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
         self.serial_number = serial_number
         # The disk size. Unit: GiB.
         self.size = size
-        # The snapshot ID used to create the cloud disk.
+        # The ID of the snapshot used to create the cloud disk.
         # 
-        # If no snapshot was specified when the cloud disk was created, this parameter is empty. This value remains unchanged throughout the lifecycle of the cloud disk.
+        # If no snapshot was specified when the cloud disk was created, the value is empty. The value remains unchanged throughout the lifecycle of the cloud disk.
         self.source_snapshot_id = source_snapshot_id
         # The disk status. Valid values:
-        # - In_use: in use.
-        # - Available: to be attached.
-        # - Attaching: being attached.
-        # - Detaching: being detached.
-        # - Creating: being created.
-        # - ReIniting: being initialized.
+        # - In_use: In use.
+        # - Available: Available.
+        # - Attaching: Attaching.
+        # - Detaching: Detaching.
+        # - Creating: Creating.
+        # - ReIniting: Initializing.
         self.status = status
-        # The ID of the dedicated block storage cluster to which the cloud disk belongs. If the cloud disk is in a public cloud block storage cluster, this parameter is empty.
+        # The ID of the dedicated block storage cluster to which the cloud disk belongs. If the cloud disk is in a public cloud block storage cluster, the value is empty.
         self.storage_cluster_id = storage_cluster_id
         # The storage set ID.
         self.storage_set_id = storage_set_id
         # The tags.
         self.tag = tag
         # The disk type. Valid values:
-        # - system: system cloud disk.
-        # - data: data cloud disk.
+        # - system: System cloud disk.
+        # - data: Data cloud disk.
         self.type = type
         # The zone ID.
         self.zone_id = zone_id

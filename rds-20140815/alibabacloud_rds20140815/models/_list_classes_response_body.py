@@ -83,22 +83,22 @@ class ListClassesResponseBodyItems(DaraModel):
         self.class_group = class_group
         # The number of CPU cores for the instance type. Unit: cores.
         self.cpu = cpu
-        # The encrypted memory size for the security-enhanced instance family. Unit: GB.
+        # The encrypted memory size of the security-enhanced instance family. Unit: GB.
         self.encrypted_memory = encrypted_memory
         # The architecture type of the instance type. Valid values:
         # 
-        # - If the instance uses the **x86** architecture, this parameter is empty by default.
+        # - If the instance uses the **x86** architecture, this parameter is left empty by default.
         # - If the instance uses the **arm** architecture, **arm** is returned.
         self.instruction_set_arch = instruction_set_arch
         # The maximum number of connections for the instance type.
         self.max_connections = max_connections
-        # The maximum I/O bandwidth for the instance type. Unit: Mbit/s.
+        # The maximum I/O bandwidth for the instance type. Unit: Mbps.
         self.max_iombps = max_iombps
-        # The maximum IOPS for the instance type.
+        # The maximum IOPS for the instance type. Unit: operations per second.
         self.max_iops = max_iops
-        # The memory size for the instance type. Unit: GB.
+        # The memory capacity for the instance type. Unit: GB.
         self.memory_class = memory_class
-        # The price for the instance type.
+        # The price of the instance type.
         # 
         # <props="china">
         # * Unit: cents (CNY).
@@ -107,20 +107,20 @@ class ListClassesResponseBodyItems(DaraModel):
         # * Unit: cents (USD).
         # 
         # 
-        # > * If you set the **CommodityCode** parameter to a pay-as-you-go commodity code, this parameter indicates the hourly price.
-        # > * If you set the **CommodityCode** parameter to a subscription commodity code, this parameter indicates the monthly price.
+        # > * If you specify a pay-as-you-go commodity code for the **CommodityCode** parameter, this parameter displays the hourly price.
+        # > * If you specify a subscription commodity code for the **CommodityCode** parameter, this parameter displays the monthly price.
         self.reference_price = reference_price
         # The instance edition. Valid values:
         # * Regular instances
         #     * **Basic**: Basic Edition.
-        #     * **HighAvailability**: High availability series.
-        #     * **cluster**: MySQL or PostgreSQL Cluster Edition.
-        #     * **AlwaysOn**: SQL Server Cluster Edition.
+        #     * **HighAvailability**: High-availability Edition.
+        #     * **cluster**: Cluster Edition for MySQL or PostgreSQL.
+        #     * **AlwaysOn**: Cluster Edition for SQL Server.
         #     * **Finance**: RDS Enterprise Edition.
         # * Serverless instances
         #     * **serverless_basic**: Serverless Basic Edition. (Applicable only to MySQL and PostgreSQL)
-        #     * **serverless_standard**: Serverless high availability series. (Applicable only to MySQL and PostgreSQL)
-        #     * **serverless_ha**: SQL Server Serverless high availability series.
+        #     * **serverless_standard**: Serverless High-availability Edition. (Applicable only to MySQL and PostgreSQL)
+        #     * **serverless_ha**: Serverless High-availability Edition for SQL Server.
         self.category = category
         # The instance storage type.
         self.storage_type = storage_type

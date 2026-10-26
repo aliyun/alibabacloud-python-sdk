@@ -18,13 +18,13 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
     ):
         # The list of O&M tasks.
         self.items = items
-        # The page number. The value must be greater than 0. Default value: 1.
+        # The page number, which must be greater than 0. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 25. Maximum value: 100.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of task records returned.
+        # The total number of returned task records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -113,69 +113,69 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
     ):
         # Indicates whether the task can be canceled. A value of 1 indicates that the task can be canceled. A value of 0 indicates that the task cannot be canceled.
         self.allow_cancel = allow_cancel
-        # Indicates whether the task time can be modified. A value of 1 indicates that the time can be modified. A value of 0 indicates that the time cannot be modified.
+        # Indicates whether the execution time can be modified. A value of 1 indicates that the execution time can be modified. A value of 0 indicates that the execution time cannot be modified.
         self.allow_change = allow_change
-        # The event level code. S1 indicates system O&M. S0 indicates risk recovery.
+        # The event level code. Valid values: S1 (system O&M) and S0 (exception recovery).
         self.change_level = change_level
         # The event level in English.
         self.change_level_en = change_level_en
         # The event level in Chinese.
         self.change_level_zh = change_level_zh
-        # The creation time. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+        # The time when the task was created. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
         # The current zone.
         self.current_avz = current_avz
-        # The database type, such as mysql, pgsql, or mssql.
+        # The database engine, such as mysql, pgsql, or mssql.
         self.db_type = db_type
-        # The Milvus version number.
+        # The kernel version.
         self.db_version = db_version
-        # The latest deadline by which the task execution time can be adjusted. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+        # The latest time to which the task execution time can be adjusted. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.deadline = deadline
         # The task ID.
         self.id = id
-        # The event impact.
+        # The impact of the event.
         self.impact = impact
-        # The event impact in English.
+        # The impact of the event in English.
         self.impact_en = impact_en
-        # The event impact in Chinese.
+        # The impact of the event in Chinese.
         self.impact_zh = impact_zh
-        # The instance alias or instance description.
+        # The instance alias or description.
         self.ins_comment = ins_comment
         # The instance name.
         self.ins_name = ins_name
-        # The modification time. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+        # The time when the task was modified. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.modified_time = modified_time
-        # The preparation time required between the start time and the switchover time. The format is HH:mm:ss.
+        # The preparation time required between the start time and the switchover time. The time is in the HH:mm:ss format.
         self.prepare_interval = prepare_interval
         # The region ID of the pending event.
         self.region = region
         # The execution result information.
         self.result_info = result_info
-        # The time when the backend executes the task. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+        # The time when the backend executes the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
         # The task status. Valid values:
-        # * **3**: pending.
-        # * **4**: in progress.
-        # * **5**: succeeded.
-        # * **6**: failed.
-        # * **7**: canceled.
+        # * **3**: pending tasks.
+        # * **4**: tasks in progress.
+        # * **5**: successfully completed tasks.
+        # * **6**: failed tasks.
+        # * **7**: canceled tasks.
         self.status = status
         # The instance shards.
         self.sub_ins_names = sub_ins_names
-        # The time when the backend initiates the switchover. The time is in UTC and follows the format of YYYY-MM-DDTHH:mm:ssZ.
+        # The time when the backend initiates the switchover. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.switch_time = switch_time
         # The task parameters.
         self.task_params = task_params
         # The task type. Valid values:
         # 
-        # * **rds_apsaradb_ha**: primary/secondary node switch.
+        # * **rds_apsaradb_ha**: primary and secondary node switch.
         # * **rds_apsaradb_transfer**: instance migration.
         # * **rds_apsaradb_upgrade**: minor engine version update.
         # * **rds_apsaradb_maxscale**: proxy minor version upgrade.
         self.task_type = task_type
-        # The task reason in English.
+        # The task cause in English.
         self.task_type_en = task_type_en
-        # The task reason in Chinese.
+        # The task cause in Chinese.
         self.task_type_zh = task_type_zh
 
     def validate(self):

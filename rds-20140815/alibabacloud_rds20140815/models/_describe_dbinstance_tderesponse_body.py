@@ -17,11 +17,11 @@ class DescribeDBInstanceTDEResponseBody(DaraModel):
         tdestatus: str = None,
     ):
         self.databases = databases
-        # The ID of the key used for TDE encryption.
+        # The ID of the key used for TDE.
         self.encryption_key = encryption_key
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The key mode of instance-level TDE encryption. Valid values:
+        # The key management method for instance-level TDE. Valid values:
         # - **Aliyun_Generate_Key**
         # - **Customer_Provided_Key**
         # - **Unknown**

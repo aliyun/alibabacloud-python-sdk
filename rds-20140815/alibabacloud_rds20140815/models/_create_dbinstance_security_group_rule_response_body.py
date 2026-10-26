@@ -13,9 +13,9 @@ class CreateDBInstanceSecurityGroupRuleResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The response code message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -68,13 +68,13 @@ class AttachRCInstancesResponseBodyResponses(DaraModel):
         instance_id: str = None,
         message: str = None,
     ):
-        # The status code returned.
+        # The returned status code.
         self.code = code
-        # The RDS Custom instance ID.
+        # The instance ID of the RDS Custom instance.
         self.instance_id = instance_id
-        # The message returned for the request.
+        # The returned message of the request.
         # 
-        # > If the request is successful, **Successful** is returned. If the request fails, exception information such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
 
     def validate(self):

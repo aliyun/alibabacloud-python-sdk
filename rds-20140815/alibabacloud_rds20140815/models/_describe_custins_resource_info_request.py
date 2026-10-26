@@ -13,12 +13,12 @@ class DescribeCustinsResourceInfoRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) to query the instance ID.
+        # The instance IDs. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_ids = dbinstance_ids
         self.owner_id = owner_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

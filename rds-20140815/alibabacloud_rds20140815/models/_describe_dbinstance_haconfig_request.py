@@ -13,7 +13,7 @@ class DescribeDBInstanceHAConfigRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to obtain instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

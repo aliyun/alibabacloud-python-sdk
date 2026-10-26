@@ -18,7 +18,7 @@ class UpgradeDBInstanceMajorVersionResponseBody(DaraModel):
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # Reserved parameter.
+        # A reserved parameter.
         self.task_id = task_id
 
     def validate(self):

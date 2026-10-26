@@ -29,48 +29,43 @@ class CreateRCDiskRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true** (default): enables automatic payment. Make sure that your account balance is sufficient.
-        # - **false**: generates an order without charging.
+        # - **true** (default): Automatic payment is enabled. Make sure that your account balance is sufficient.
+        # - **false**: Only an order is generated and no payment is made.
         # 
-        # 
-        # 
-        # 
-        # > If your payment method has insufficient balance, set this parameter to false. An unpaid order is generated, and you can log on to the ApsaraDB RDS console to complete the payment.
-        # >
+        # > If your payment method has insufficient balance, you can set this parameter to false. In this case, an unpaid order is generated, and you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. This parameter is valid only when you create a subscription data cloud disk. Valid values:
-        # - **true**: enables auto-renewal.
-        # - **false**: disables auto-renewal.
+        # - **true**: yes.
+        # - **false**: no.
         # 
-        #  > If you purchase the cloud disk on a monthly basis, the auto-renewal epoch is one month.
-        #  If you purchase the cloud disk on a yearly basis, the auto-renewal epoch is one year.
+        #  > If you purchase the cloud disk on a monthly basis, the auto-renewal epoch is one month. If you purchase the cloud disk on a yearly basis, the auto-renewal epoch is one year.
         self.auto_renew = auto_renew
         # The description of the cloud disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The category of the data cloud disk. Valid values:
         # 
-        # - **cloud_efficiency**: ultra cloud disk.
+        # - **cloud_efficiency**: ultra disk.
         # - **cloud_ssd**: standard SSD.
         # - **cloud_essd**: ESSD.
         # - **cloud_auto** (default): premium performance disk.
         self.disk_category = disk_category
-        # The name of the cloud disk. The name must be 2 to 128 characters in length and can contain characters that are categorized as letter in Unicode, including Chinese characters, English letters, and digits. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the cloud disk. The name must be 2 to 128 characters in length and can contain letters and digits in the Unicode Letter category. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
         self.disk_name = disk_name
         # The billing method. Valid values:
         # 
-        # - **Postpaid**: pay-as-you-go. Cloud disks with this billing method do not need to be mounted to an instance. You can also mount them to an instance of any billing method during creation as needed.
-        # - **Prepaid**: subscription. Cloud disks with this billing method must be mounted to a subscription instance. You must specify the **InstanceId** (instance ID) of a subscription instance.
+        # - **Postpaid**: pay-as-you-go. Cloud disks of this billing method do not need to be mounted to instances. You can also mount a pay-as-you-go cloud disk to an instance of any billing method when you create it as needed.
+        # - **Prepaid**: subscription. Cloud disks of this billing method must be mounted to subscription instances. You must specify the **InstanceId** parameter, which is the instance ID of a subscription instance.
         self.instance_charge_type = instance_charge_type
-        # Instance ID of the instance to which the cloud disk is attached. If **InstanceChargeType** is set to **Prepaid** (subscription), you must specify instance ID of a subscription instance.
+        # Instance ID of the instance to which the cloud disk is attached. If **InstanceChargeType** is set to **Prepaid**, you must specify instance ID of a subscription instance.
         self.instance_id = instance_id
-        # The performance level (PL) of the ESSD cloud disk. Valid values:
+        # The performance level of the ESSD cloud disk. Valid values:
         # 
-        # - **PL0**: A single cloud disk can deliver up to 10,000 random read/write IOPS.
-        # - **PL1** (default): A single cloud disk can deliver up to 50,000 random read/write IOPS.
-        # - **PL2**: A single cloud disk can deliver up to 100,000 random read/write IOPS.
-        # - **PL3**: A single cloud disk can deliver up to 1,000,000 random read/write IOPS.
+        # - **PL0**: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # - **PL1** (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # - **PL2**: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        # - **PL3**: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         # 
-        # For more information about how to select an ESSD performance level, see [ESSD cloud disk](https://help.aliyun.com/document_detail/2859916.html).
+        # For more information about how to select the performance level of an ESSD, see [ESSDs](https://help.aliyun.com/document_detail/2859916.html).
         self.performance_level = performance_level
         # A reserved parameter. You do not need to specify this parameter.
         self.period = period
@@ -80,33 +75,33 @@ class CreateRCDiskRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The capacity size. Unit: GiB. You must specify a value for this parameter. Valid values:
+        # The size of the cloud disk. Unit: GiB. You must specify this parameter. Valid values:
         # 
         # - **cloud_efficiency**: 20 to 32,768.
         # - **cloud_ssd**: 20 to 32,768.
         # - **cloud_auto**: 1 to 65,536.
-        # - **cloud_essd**: The valid value range depends on the value of **PerformanceLevel**.
+        # - **cloud_essd**: The valid values vary based on the value of **PerformanceLevel**.
         #   - PL0: 1 to 65,536.
         #   - PL1: 20 to 65,536.
         #   - PL2: 461 to 65,536.
         #   - PL3: 1,261 to 65,536.
         # 
-        # If **SnapshotId** is specified and the capacity of the corresponding snapshot is greater than the value of **Size**, snapshot size of the created cloud disk is the same as the snapshot capacity. If the snapshot capacity is less than the value of **Size**, snapshot size of the created cloud disk is the value of **Size**.
+        # If you specify the **SnapshotId** parameter and the size of the snapshot is greater than the value of **Size**, the created cloud disk is the same size as the snapshot. If the snapshot size is smaller than the value of **Size**, the created cloud disk is the size specified by **Size**.
         self.size = size
-        # The snapshot that is used to create the cloud disk.
+        # The ID of the snapshot used to create the cloud disk.
         # 
-        # - RDS Custom snapshots and ECS snapshots (non-shared type) are supported.
-        # - If the capacity of the snapshot specified by **SnapshotId** is greater than the value of **Size**, snapshot size of the created cloud disk is the same as the snapshot capacity. If the snapshot capacity is less than the value of **Size**, snapshot size of the created cloud disk is the value of **Size**.
-        # - Creating elastic ephemeral disks from snapshots is not supported.
+        # - You can use RDS Custom snapshots and ECS snapshots (excluding shared snapshots).
+        # - If the size of the snapshot specified by **SnapshotId** is greater than the value of **Size**, the created cloud disk is the same size as the snapshot. If the snapshot size is smaller than the value of **Size**, the created cloud disk is the size specified by **Size**.
+        # - You cannot use snapshots to create ephemeral disks.
         # - Snapshots created on or before July 15, 2013 cannot be used to create cloud disks.
         self.snapshot_id = snapshot_id
-        # The tags.
+        # The list of tags.
         self.tag = tag
         # The zone ID.
         # 
-        # This parameter is required if the **InstanceId** parameter (the instance ID of the instance to which the cloud disk is mounted) is not specified.
+        # This parameter is required when you do not specify the **InstanceId** parameter, which is the instance ID of the instance to which the cloud disk is mounted.
         self.zone_id = zone_id
 
     def validate(self):
@@ -233,7 +228,7 @@ class CreateRCDiskRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify up to N tag keys at a time. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
+        # The tag key. You can create up to N tag keys at a time. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
         self.key = key
         # The tag value that corresponds to the tag key. You can specify up to N tag values at a time. Valid values of N: **1** to **20**. The tag value can be an empty string.
         self.value = value

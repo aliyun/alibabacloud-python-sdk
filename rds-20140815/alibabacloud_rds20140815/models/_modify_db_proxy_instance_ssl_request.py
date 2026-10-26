@@ -14,30 +14,30 @@ class ModifyDbProxyInstanceSslRequest(DaraModel):
         db_proxy_ssl_enabled: str = None,
         region_id: str = None,
     ):
-        # A reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter. No configuration is required.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # The endpoint for which you want to enable SSL encryption.
+        # The endpoint for which you want to enable Secure Sockets Layer (SSL) encryption.
         # 
         # This parameter is required.
         self.db_proxy_connect_string = db_proxy_connect_string
-        # The ID of the database proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
+        # The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID.
         # 
         # This parameter is required.
         self.db_proxy_endpoint_id = db_proxy_endpoint_id
-        # The operation that you want to perform on SSL encryption. Valid values:
-        # * 0: Disables SSL encryption.
-        # * 1: Enables SSL encryption or changes the endpoint for which SSL encryption is enabled.
-        # * 2: Updates the validity period of the SSL certificate.
+        # The operation to perform on Secure Sockets Layer (SSL) encryption. Valid values:
+        # * 0: Disables Secure Sockets Layer (SSL) encryption.
+        # * 1: Enables Secure Sockets Layer (SSL) encryption or modifies the Secure Sockets Layer (SSL) encryption endpoint.
+        # * 2: Updates the certificate validity period.
         # 
-        # >The preceding operations restart the instance. Proceed with caution.
+        # > Performing the preceding operations restarts the instance. Proceed with caution.
         # 
         # This parameter is required.
         self.db_proxy_ssl_enabled = db_proxy_ssl_enabled
-        # The region ID. You can call DescribeRegions to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -23,44 +23,44 @@ class ModifyRCInstanceChargeTypeRequest(DaraModel):
         region_id: str = None,
         used_time: int = None,
     ):
-        # Reserved parameter. Not supported.
+        # The reserved parameter. This parameter is not supported.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # * **true**: Enabled (default).
-        # * **false**: Disabled.
+        # * **true**: enables auto-renewal (default)
+        # * **false**: disables auto-renewal
         # 
-        # > * This parameter takes effect only when you switch from pay-as-you-go to subscription.
-        # > * All non-**true** strings are treated as **false**.
+        # > * This parameter takes effect only when you change the billing method from pay-as-you-go to subscription.
+        # > * Any string other than **true** is processed as **false**.
         self.auto_renew = auto_renew
-        # Specifies whether to use coupons. Valid values:
-        # * **true** (default): Coupons are used.
-        # * **false**: Coupons are not used.
+        # Specifies whether to use vouchers. Valid values:
+        # * **true** (default): uses vouchers.
+        # * **false**: does not use vouchers.
         self.auto_use_coupon = auto_use_coupon
-        # The business extension parameter.
+        # The business extension parameters.
         self.business_info = business_info
-        # The custom token that is used to ensure the idempotence of the request. 
+        # The client token that is used to ensure the idempotence of the request. 
         # > The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Reserved parameter. Not supported.
+        # The reserved parameter. This parameter is not supported.
         self.dry_run = dry_run
-        # Reserved parameter. Not supported.
+        # The reserved parameter. This parameter is not supported.
         self.include_data_disks = include_data_disks
-        # Reserved parameter. Not supported.
+        # The reserved parameter. This parameter is not supported.
         self.instance_charge_type = instance_charge_type
         # The instance ID or cloud disk ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Reserved parameter. Not supported.
+        # The reserved parameter. This parameter is not supported.
         self.instance_ids = instance_ids
         # The billing method of the instance after the change. Valid values:
-        # * **Prepaid**: subscription.
-        # * **Postpaid**: pay-as-you-go.
+        # * **Prepaid**: subscription
+        # * **Postpaid**: pay-as-you-go
         self.pay_type = pay_type
-        # The unit of the subscription duration. Valid values:
-        # * **Year**: yearly subscription.
-        # * **Month**: monthly subscription.
+        # Specifies the subscription period unit. Valid values:
+        # * **Year**: year
+        # * **Month**: month
         # 
         # > This parameter is required if **PayType** is set to **Prepaid**.
         self.period = period
@@ -70,11 +70,11 @@ class ModifyRCInstanceChargeTypeRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The subscription duration. Valid values:
-        # * If **Period** is set to **Year**, the valid values of UsedTime are **1 to 5**.
-        # * If **Period** is set to **Month**, the valid values of UsedTime are **1 to 11**.
+        # Specifies the subscription duration. Valid values:
+        # * If the **Period** parameter is set to **Year**, the value of UsedTime ranges from **1** to **5**.
+        # * If the **Period** parameter is set to **Month**, the value of UsedTime ranges from **1** to **11**.
         # 
-        # > This parameter is required if PayType is set to **Prepaid**.
+        # > This parameter is required if the billing method is set to **Prepaid**.
         self.used_time = used_time
 
     def validate(self):

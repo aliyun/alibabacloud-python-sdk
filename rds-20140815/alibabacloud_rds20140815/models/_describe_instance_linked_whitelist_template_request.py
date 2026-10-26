@@ -13,13 +13,13 @@ class DescribeInstanceLinkedWhitelistTemplateRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance name.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.ins_name = ins_name
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query available regions.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the region ID.
         self.region_id = region_id
-        # The resource group ID. This parameter can be left empty.
+        # The ID of the resource group. This parameter can be left empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

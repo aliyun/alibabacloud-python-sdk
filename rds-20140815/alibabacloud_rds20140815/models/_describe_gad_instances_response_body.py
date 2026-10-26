@@ -13,7 +13,7 @@ class DescribeGadInstancesResponseBody(DaraModel):
         gad_instances: List[main_models.DescribeGadInstancesResponseBodyGadInstances] = None,
         request_id: str = None,
     ):
-        # The list of active geo-redundancy database clusters.
+        # The list of GAD clusters.
         self.gad_instances = gad_instances
         # The request ID.
         self.request_id = request_id
@@ -65,21 +65,21 @@ class DescribeGadInstancesResponseBodyGadInstances(DaraModel):
     ):
         # The time when the cluster was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The cluster name.
+        # The name of the cluster.
         self.description = description
         # The list of nodes in the cluster.
         self.gad_instance_members = gad_instance_members
-        # The ID of the active geo-redundancy database cluster.
+        # The ID of the GAD cluster.
         self.gad_instance_name = gad_instance_name
         # The time when the cluster was last modified. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.modification_time = modification_time
-        # The engine of the active geo-redundancy database cluster.
-        # >Only **mysql** is supported.
+        # The database engine of the GAD cluster.
+        # > Only **mysql** is supported.
         self.service = service
-        # The cluster status. Valid values:
-        # * **activation**: running.
-        # * **creating**: being created.
-        # * **replica_adding**: a node is being added.
+        # The status of the cluster. Valid values:
+        # * **activation**: running
+        # * **creating**: being created
+        # * **replica_adding**: adding nodes
         self.status = status
 
     def validate(self):
@@ -160,11 +160,11 @@ class DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers(DaraModel):
     ):
         # The ID of the node in the cluster.
         self.dbinstance_id = dbinstance_id
-        # A JSON array that contains DTS synchronization information.
-        # >Each unit node (secondary node) synchronizes data with the central node (primary node) through DTS. This parameter contains the synchronization task ID and request ID of DTS.
+        # The JSON array that contains the Data Transmission Service (DTS) synchronization information.
+        # > Each unit node (secondary node) synchronizes data with the central node (primary node) through DTS. This parameter contains the DTS synchronization link ID and request ID.
         self.dts_instance = dts_instance
         # The database engine of the node in the cluster.
-        # >Only **mysql** is supported.
+        # > Only **mysql** is supported.
         self.engine = engine
         # The database engine version of the node in the cluster.
         self.engine_version = engine_version
@@ -172,13 +172,13 @@ class DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The node type in the active geo-redundancy database cluster. Valid values:
-        # * **CENTRAL**: central node. The only primary node in the cluster. All unit nodes synchronize data from this node.
-        # * **UNIT**: unit node. A cluster can contain up to 10 unit nodes. All unit nodes synchronize data from the central node.
+        # The role of the node in the GAD cluster. Valid values:
+        # * **CENTRAL**: the central node, which is the only primary node in the cluster. All unit nodes synchronize data from this node.
+        # * **UNIT**: the unit node. A cluster can have up to 10 unit nodes, and all unit nodes synchronize data from the central node.
         self.role = role
-        # The node status. Valid values:
-        # * **activation**: running.
-        # * **creating**: being created.
+        # The status of the node. Valid values:
+        # * **activation**: running
+        # * **creating**: being created
         self.status = status
 
     def validate(self):

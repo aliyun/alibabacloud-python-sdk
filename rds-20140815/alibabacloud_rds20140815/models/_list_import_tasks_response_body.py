@@ -20,7 +20,7 @@ class ListImportTasksResponseBody(DaraModel):
         # The number of entries per page. Valid values: **1 to 100**.
         # 
         # Default value: **30**.
-        # >If you specify this parameter, the **PageSize** and **PageNumber** parameters are not available.
+        # > If you specify this parameter, the **PageSize** and **PageNumber** parameters are unavailable.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
@@ -84,13 +84,13 @@ class ListImportTasksResponseBodyItems(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The creation time in UTC. The time follows the format of YYYY-MM-DDTHH:mm:ssZ.
+        # The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
         # The kernel version number.
         self.db_version = db_version
         # The task status.
         self.status = status
-        # The instance ID of the target instance.
+        # The ID of the target instance.
         self.target_instance_name = target_instance_name
         # The task ID.
         self.task_id = task_id

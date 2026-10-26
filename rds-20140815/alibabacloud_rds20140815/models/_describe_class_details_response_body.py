@@ -20,9 +20,9 @@ class DescribeClassDetailsResponseBody(DaraModel):
         reference_price: str = None,
         request_id: str = None,
     ):
-        # The edition. Valid values:
+        # The instance edition. Valid values:
         # * **Basic**: Basic Edition
-        # * **HighAvailability**: High-availability Edition
+        # * **HighAvailability**: high availability series
         # * **AlwaysOn**: Cluster Edition
         # * **Finance**: RDS Enterprise Edition
         self.category = category
@@ -30,7 +30,7 @@ class DescribeClassDetailsResponseBody(DaraModel):
         self.class_code = class_code
         # The instance family.
         self.class_group = class_group
-        # The number of CPU cores for the instance type. Unit: cores.
+        # The number of CPU cores of the instance type. Unit: cores.
         self.cpu = cpu
         # The storage type. Valid values:
         # * **local_ssd**: local SSD
@@ -39,23 +39,23 @@ class DescribeClassDetailsResponseBody(DaraModel):
         # * **cloud_essd2**: PL2 ESSD
         # * **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The architecture.
+        # The instruction set architecture.
         self.instruction_set_arch = instruction_set_arch
         # The maximum number of connections.
         self.max_connections = max_connections
-        # The maximum I/O bandwidth for the instance type. Unit: Mbit/s.
+        # The maximum I/O bandwidth of the instance type. Unit: Mbit/s.
         self.max_iombps = max_iombps
-        # The maximum IOPS for the instance type. Unit: operations per second.
+        # The maximum IOPS of the instance type. Unit: operations per second.
         self.max_iops = max_iops
         # The memory capacity. Unit: GB.
         self.memory_class = memory_class
-        # The price.
+        # The reference price.
         # 
         # <props="china">Unit: cents (CNY).
         # <props="intl">Unit: cents (USD).
         # 
-        # > * If you set the CommodityCode parameter to a pay-as-you-go commodity code, the hourly price is returned.
-        # > * If you set the CommodityCode parameter to a subscription commodity code, the monthly price is returned.
+        # >* If you specify a pay-as-you-go commodity code in the CommodityCode parameter, the hourly price is displayed.
+        # >* If you specify a subscription commodity code in the CommodityCode parameter, the monthly price is displayed.
         self.reference_price = reference_price
         # The request ID.
         self.request_id = request_id

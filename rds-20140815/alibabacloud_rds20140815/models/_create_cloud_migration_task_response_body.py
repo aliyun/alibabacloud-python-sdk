@@ -12,7 +12,7 @@ class CreateCloudMigrationTaskResponseBody(DaraModel):
         task_id: int = None,
         task_name: str = None,
     ):
-        # The name of the target instance.
+        # The name of the destination instance.
         self.dbinstance_name = dbinstance_name
         # The request ID.
         self.request_id = request_id

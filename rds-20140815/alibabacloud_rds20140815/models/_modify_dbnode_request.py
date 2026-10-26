@@ -24,16 +24,17 @@ class ModifyDBNodeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to automatically complete automatic payment. Valid values:
+        # Specifies whether to automatically pay for the order.
+        # Valid values:
         # 
-        # 1. **true**: Automatic payment is automatically completed. Make sure that your account balance is sufficient.
+        # 1. **true**: Automatic payment is enabled. Make sure that your account balance is sufficient.
         # 
-        # 1. **false**: An order is generated but no payment is made.
-        # 
-        # 
+        # 1. **false**: Only an order is generated and no payment is made.
         # 
         # 
-        # > Default value: true. If your payment method has insufficient balance, set AutoPay to false. In this case, an unpaid order is generated. You can log on to the ApsaraDB RDS console to complete automatic payment.
+        # 
+        # 
+        # > Default value: true. If your payment method has an insufficient balance, you can set this parameter to false. In this case, an unpaid order is generated, and you can log on to the ApsaraDB RDS console to complete the payment.
         # >
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request.
@@ -45,28 +46,28 @@ class ModifyDBNodeRequest(DaraModel):
         # The new instance storage capacity. Unit: GB. For details, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
-        # * **cloud_essd**: PL1 ESSD
-        # * **cloud_essd2**: PL2 ESSD
-        # * **cloud_essd3**: PL3 ESSD
+        # * **cloud_essd**: PL1 ESSD.
+        # * **cloud_essd2**: PL2 ESSD.
+        # * **cloud_essd3**: PL3 ESSD.
         self.dbinstance_storage_type = dbinstance_storage_type
         # The node information.
-        # > This parameter is used for MySQL Cluster Edition instances.
+        # > This parameter applies to ApsaraDB RDS for MySQL Cluster Edition instances.
         self.dbnode = dbnode
-        # Specifies whether to perform a dry run for this node modification. Valid values:
-        # * **true**: A dry run is performed without executing the modification. The system checks items such as request parameters, request format, business limits, and inventory.
-        # * **false**: A request is sent. After the request passes the check, the modification is directly executed. This is the default value.
+        # Specifies whether to perform a precheck before the node modifications. Valid values:
+        # * **true**: A precheck is performed, but the modifications are not applied. The precheck includes checks on request parameters, request format, service limits, and inventory.
+        # * **false**: A normal request is sent, and the modifications are directly applied after the precheck is passed (default).
         self.dry_run = dry_run
         # The effective period. Valid values:
-        # * **Immediate** (default): The modification takes effect immediately.
-        # * **MaintainTime**: The modification takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # * **Immediate** (default): The modifications immediately take effect.
+        # * **MaintainTime**: The modifications take effect within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         self.effective_time = effective_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to asynchronously execute the provisioning. Valid values:
-        # * **true**: The request only submits an order, and the modification is asynchronously executed. This is the default value.
-        # * **false**: After the request passes the check, the modification is directly executed.
+        # Specifies whether to asynchronously apply the modifications. Valid values:
+        # * **true**: Only an order is generated, and the modifications are asynchronously applied (default).
+        # * **false**: The modifications are synchronously applied after the precheck is passed.
         # 
-        # > Default value: true. The modification is asynchronously executed. If you set this parameter to false, the modification is synchronously executed, and the response time is relatively longer.
+        # > Default value: true. The modifications are asynchronously applied. If you set this parameter to false, the modifications are synchronously applied, and the API response time is relatively long.
         self.produce_async = produce_async
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

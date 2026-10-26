@@ -18,20 +18,19 @@ class DescribeRCMetricListRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # Queries the monitoring data of specified resources in batches for Custom for SQL Server.
-        # Format: a collection of `key:value` pairs.
+        # The dimensions used to query the monitoring data of specified resources in batches for Custom for SQL Server. Format: a collection of `key:value` pairs.
         self.dimensions = dimensions
-        # The end of the time range to query. Specify the time in the `2024-08-06 10:15:00` format. The end time must be later than the start time.
+        # The end time of the query. Format: `2024-08-06 10:15:00`. The end time must be later than the start time.
         self.end_time = end_time
-        # A reserved parameter.
+        # The reserved parameter.
         self.express = express
         # The instance ID. This parameter is required.
         self.instance_id = instance_id
-        # The number of records per page for paging query.
+        # The number of records to return on each page for paging in a paged query.
         # 
         # Default value: 1000.
         self.length = length
-        # The [monitoring metric](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        # The [monitored metrics](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         # 
         # This parameter is required.
         self.metric_name = metric_name
@@ -40,11 +39,11 @@ class DescribeRCMetricListRequest(DaraModel):
         # The statistical period of the monitoring data. Unit: seconds. Valid values:
         # 
         # - 60 (default)
-        # - An integer multiple of 60
+        # - Any integer multiple of 60
         self.period = period
         # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the `2024-08-06 10:05:00` format.
+        # The start time of the query. Format: `2024-08-06 10:05:00`.
         self.start_time = start_time
 
     def validate(self):

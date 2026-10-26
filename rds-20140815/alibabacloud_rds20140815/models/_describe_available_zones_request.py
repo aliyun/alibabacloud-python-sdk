@@ -18,71 +18,70 @@ class DescribeAvailableZonesRequest(DaraModel):
         zone_id: str = None,
     ):
         # The instance edition. Valid values:
-        # * Regular instances
-        #     * **Basic**: Basic Edition
-        #     * **HighAvailability**: High-availability Edition
-        #     * **cluster**: MySQL Cluster Edition
-        #     * **AlwaysOn**: SQL Server Cluster Edition
-        #     * **Finance**: RDS Enterprise Edition
-        # * Serverless instances
-        #     * **serverless_basic**: Serverless Basic Edition (applicable only to MySQL and PostgreSQL)
-        #     * **serverless_standard**: MySQL Serverless High-availability Edition
-        #     * **serverless_ha**: SQL Server Serverless High-availability Edition
+        # - Regular instances
+        #     - **Basic**: Basic Edition
+        #     - **HighAvailability**: high-availability (active) series
+        #     - **cluster**: Cluster Edition for MySQL
+        #     - **AlwaysOn**: Cluster Edition for SQL Server
+        #     - **Finance**: RDS Enterprise Edition
+        # - Serverless instances
+        #     - **serverless_basic**: Serverless Basic Edition (only applicable to MySQL and PostgreSQL)
+        #     - **serverless_standard**: MySQL Serverless high-availability (active) series
+        #     - **serverless_ha**: SQL Server Serverless high-availability (active) series
         self.category = category
-        # The commodity code of the instance. The operation queries available resources for sale based on the specified commodity code. Valid values:
-        # 
-        # * **bards**: pay-as-you-go primary instance (China site)
-        # * **rds**: subscription primary instance (China site)
-        # * **rords**: pay-as-you-go read-only instance (China site)
-        # * **rds_rordspre_public_cn**: subscription read-only instance (China site)
-        # * **bards_intl**: pay-as-you-go primary instance (international site)
-        # * **rds_intl**: subscription primary instance (international site)
-        # * **rords_intl**: pay-as-you-go read-only instance (international site)
-        # * **rds_rordspre_public_intl**: subscription read-only instance (international site)
-        # * **rds_serverless_public_cn**: serverless (China site)
-        # * **rds_serverless_public_intl**: serverless (international site)
+        # The commodity code of the instance. The available resources are queried based on the specified commodity code. Valid values:
+        # - **bards**: pay-as-you-go primary instances on the China site
+        # - **rds**: subscription primary instances on the China site
+        # - **rords**: pay-as-you-go read-only instances on the China site
+        # - **rds_rordspre_public_cn**: subscription read-only instances on the China site
+        # - **bards_intl**: pay-as-you-go primary instances on the international site
+        # - **rds_intl**: subscription primary instances on the international site
+        # - **rords_intl**: pay-as-you-go read-only instances on the international site
+        # - **rds_rordspre_public_intl**: subscription read-only instances on the international site
+        # - **rds_serverless_public_cn**: Serverless instances on the China site
+        # - **rds_serverless_public_intl**: Serverless instances on the international site
         self.commodity_code = commodity_code
-        # The instance ID of the primary instance. This parameter is used to query available read-only instance resources for the specified primary instance.
+        # The instance ID of the primary instance. This parameter is used to query the available read-only instance resources under the primary instance.
         # 
-        # This parameter is required when **CommodityCode** is set to one of the following values:
-        # * **rords_intl**
-        # * **rds_rordspre_public_intl**
-        # * **rords**
-        # * **rds_rordspre_public_cn**
+        # This parameter is required when the **CommodityCode** parameter is set to one of the following values:
+        # - **rords_intl**
+        # - **rds_rordspre_public_intl**
+        # - **rords**
+        # - **rds_rordspre_public_cn**
         self.dbinstance_name = dbinstance_name
         # Specifies whether to return the list of zones that support single-zone deployment. Valid values:
-        # * **1** (default): Returns the list.
-        # * **0**: Does not return the list.
+        # - **1** (default): Returns the list.
+        # - **0**: Does not return the list.
         # 
         # > The single-zone deployment feature allows you to deploy RDS Enterprise Edition instances in a single zone.
         self.dispense_mode = dispense_mode
         # The database engine. Valid values:
-        # * **MySQL**
-        # * **SQLServer**
-        # * **PostgreSQL**
-        # * **MariaDB**
+        # - **MySQL**
+        # - **SQLServer**
+        # - **PostgreSQL**
+        # - **MariaDB**
         # 
         # This parameter is required.
         self.engine = engine
         # The database engine version. Valid values:
         # - Regular instances
-        #     - MySQL: **5.5**, **5.6**, **5.7**, **8.0**
-        #     - SQL Server: **2008r2**, **08r2_ent_ha**, **2012**, **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_std_ha**, **2017_ent**, **2019_std_ha**, **2019_ent**
-        #     - PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**
+        #     - MySQL: **5.5**, **5.6**, **5.7**, and **8.0**
+        #     - SQL Server: **2008r2**, **08r2_ent_ha**, **2012**, **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_std_ha**, **2017_ent**, **2019_std_ha**, and **2019_ent**
+        #     - PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**
         #     - MariaDB: **10.3**
         # - Serverless instances
-        #     - MySQL: **5.7**, **8.0**
-        #     - SQL Server: **2016_std_sl**, **2017_std_sl**, **2019_std_sl**
+        #     - MySQL: **5.7** and **8.0**
+        #     - SQL Server: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**
         #     - PostgreSQL: **14.0**
         # 
-        #     > MariaDB does not support serverless instances.
+        #     > ApsaraDB RDS for MariaDB does not support Serverless instances.
         self.engine_version = engine_version
-        # The region ID. You can call DescribeRegions to query the region ID.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
-        # The zone ID. The format of multi-zone IDs differs from that of single-zone IDs and contains `MAZ`, such as `cn-hangzhou-MAZ6(b,f)` and `cn-hangzhou-MAZ5(b,e,f)`. You can call DescribeRegions to query zone IDs.
+        # The zone ID. The format of a multi-zone ID is different from that of a single-zone ID and contains `MAZ`, such as `cn-hangzhou-MAZ6(b,f)` and `cn-hangzhou-MAZ5(b,e,f)`. You can call the DescribeRegions operation to query the zone ID.
         self.zone_id = zone_id
 
     def validate(self):

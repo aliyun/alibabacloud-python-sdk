@@ -12,7 +12,7 @@ class DeleteUserBackupFileResponseBody(DaraModel):
     ):
         # The ID of the deleted user backup.
         self.backup_id = backup_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

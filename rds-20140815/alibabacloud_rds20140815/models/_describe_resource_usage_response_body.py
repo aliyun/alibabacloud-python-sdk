@@ -24,41 +24,41 @@ class DescribeResourceUsageResponseBody(DaraModel):
         request_id: str = None,
         sqlsize: int = None,
     ):
-        # The storage consumed by archived backups. Unit: bytes.
+        # The storage space occupied by archive backups. Unit: bytes.
         self.archive_backup_size = archive_backup_size
-        # The total storage consumed by data backups, excluding archived backups. Unit: bytes.
+        # The total storage space occupied by data backups, excluding archive backups. Unit: bytes.
         # 
-        # > For **SQL Server** instances, this value indicates the total size of physical backups and snapshot backups.
+        # > For **SQL Server** instances, this parameter indicates the total size of physical backups and snapshot backups.
         self.backup_data_size = backup_data_size
-        # The storage consumed by snapshot backups for **SQL Server instances**. Unit: bytes. A value of 0 indicates no data.
+        # The storage space occupied by snapshot backups of **SQL Server** instances. Unit: bytes. A value of 0 indicates that no data is available.
         self.backup_ecs_snapshot_size = backup_ecs_snapshot_size
-        # The total storage consumed by log backups, excluding archived backups. Unit: bytes.
+        # The total storage space occupied by log backups, excluding archive backups. Unit: bytes.
         self.backup_log_size = backup_log_size
-        # The size of data files in backup sets stored in OSS. Unit: bytes. A value of 0 indicates no data.
+        # The size of data files in backup sets stored in OSS. Unit: bytes. A value of 0 indicates that no data is available.
         # 
-        # > For **SQL Server** instances, this value indicates the storage consumed by physical backups.
+        # > For **SQL Server** instances, this parameter indicates the storage space occupied by physical backups.
         self.backup_oss_data_size = backup_oss_data_size
-        # The size of log files in backup sets stored in OSS. Unit: bytes. A value of 0 indicates no data.
+        # The size of log files in backup sets stored in OSS. Unit: bytes. A value of 0 indicates that no data is available.
         self.backup_oss_log_size = backup_oss_log_size
-        # The storage consumed by backups (data backups + log backups). Unit: bytes. A value of -1 indicates no data.
+        # The storage space occupied by backups, including data backups and log backups. Unit: bytes. A value of -1 indicates that no data is available.
         self.backup_size = backup_size
-        # The storage consumed by cold backups. Unit: bytes. A value of -1 indicates no data.
+        # The storage space occupied by cold backups. Unit: bytes. A value of -1 indicates that no data is available.
         self.cold_backup_size = cold_backup_size
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The storage consumed by data files. Unit: bytes. A value of -1 indicates no data.
+        # The storage space occupied by data files. Unit: bytes. A value of -1 indicates that no data is available.
         self.data_size = data_size
-        # The used storage (DataSize + LogSize). Unit: bytes. A value of -1 indicates no data.
+        # The used storage space, which is the sum of DataSize and LogSize. Unit: bytes. A value of -1 indicates that no data is available.
         self.disk_used = disk_used
-        # The database engine type.
+        # The database engine.
         self.engine = engine
-        # The storage consumed by log files. Unit: bytes. A value of -1 indicates no data.
+        # The storage space occupied by logs. Unit: bytes. A value of -1 indicates that no data is available.
         self.log_size = log_size
-        # The billable storage consumed by backups after the free quota is deducted. Unit: bytes.
+        # The storage space occupied by backups that you are billed for after the free quota is deducted. Unit: bytes.
         self.paid_backup_size = paid_backup_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The storage consumed by SQL data. Unit: bytes. A value of -1 indicates no data.
+        # The storage space occupied by SQL data. Unit: bytes. A value of -1 indicates that no data is available.
         self.sqlsize = sqlsize
 
     def validate(self):

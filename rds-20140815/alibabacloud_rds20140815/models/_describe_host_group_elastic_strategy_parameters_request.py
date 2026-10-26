@@ -16,11 +16,11 @@ class DescribeHostGroupElasticStrategyParametersRequest(DaraModel):
         # 
         # This parameter is required.
         self.dedicated_host_group_name = dedicated_host_group_name
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the region ID.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 

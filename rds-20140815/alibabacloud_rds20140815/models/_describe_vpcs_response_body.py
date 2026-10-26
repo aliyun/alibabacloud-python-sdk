@@ -108,7 +108,7 @@ class DescribeVpcsResponseBodyVpcs(DaraModel):
         self.is_default = is_default
         # The region ID.
         self.region_no = region_no
-        # The VPC status.
+        # The status of the VPC.
         self.status = status
         # The vSwitch information.
         self.v_switchs = v_switchs
@@ -227,7 +227,7 @@ class DescribeVpcsResponseBodyVpcsVSwitchs(DaraModel):
         self.is_default = is_default
         # The zone ID.
         self.iz_no = iz_no
-        # The vSwitch status.
+        # The status of the vSwitch.
         self.status = status
         # The vSwitch ID.
         self.v_switch_id = v_switch_id

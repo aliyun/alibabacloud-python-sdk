@@ -14,11 +14,11 @@ class DeleteReplicationLinkResponseBody(DaraModel):
     ):
         # The instance ID of the disaster recovery instance.
         self.dbinstance_id = dbinstance_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):

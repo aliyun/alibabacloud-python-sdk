@@ -17,10 +17,10 @@ class DescribeDBInstancePromoteActivityResponseBody(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # - Chinese site: 26842
+        # - China site: 26842
         # - International site: 26888
         self.bid = bid
-        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID.
         self.dbinstance_id = dbinstance_id
         # The instance name.
         self.dbinstance_name = dbinstance_name
@@ -29,7 +29,7 @@ class DescribeDBInstancePromoteActivityResponseBody(DaraModel):
         # * **PostgreSQL**
         # * **Oracle**
         self.dbtype = dbtype
-        # The dynamic property of the instance. For more information, see [Instance dynamics](https://help.aliyun.com/document_detail/2391834.html).
+        # The dynamic attributes of the instance. For more information, see [Instance dynamics](https://help.aliyun.com/document_detail/2391834.html).
         self.is_activity = is_activity
         # The request ID.
         self.request_id = request_id

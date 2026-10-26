@@ -16,18 +16,18 @@ class DescribeDBProxyEndpointRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to query the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The proxy endpoint. You can call the [DescribeDBProxy](https://help.aliyun.com/document_detail/610507.html) operation to query the proxy endpoint.
+        # The proxy endpoint. You can call the DescribeDBProxy operation to query the endpoint.
         self.dbproxy_connect_string = dbproxy_connect_string
-        # The proxy endpoint name. You can call the [DescribeDBProxy](https://help.aliyun.com/document_detail/610507.html) operation to query the proxy endpoint name.
+        # The name of the proxy endpoint. You can call the DescribeDBProxy operation to query the name.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # A reserved parameter. You do not need to configure this parameter.
+        # A reserved parameter. No configuration is required.
         self.dbproxy_engine_type = dbproxy_engine_type
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query the region ID.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

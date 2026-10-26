@@ -13,7 +13,7 @@ class DescribeAvailableClassesResponseBody(DaraModel):
         dbinstance_classes: List[main_models.DescribeAvailableClassesResponseBodyDBInstanceClasses] = None,
         request_id: str = None,
     ):
-        # The available instance types for the instance.
+        # The list of available instance specifications.
         self.dbinstance_classes = dbinstance_classes
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class DescribeAvailableClassesResponseBodyDBInstanceClasses(DaraModel):
         dbinstance_class: str = None,
         dbinstance_storage_range: main_models.DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRange = None,
     ):
-        # The instance type.
+        # The instance specification.
         self.dbinstance_class = dbinstance_class
-        # The instance storage capacity range.
+        # The instance storage range.
         self.dbinstance_storage_range = dbinstance_storage_range
 
     def validate(self):
@@ -98,11 +98,11 @@ class DescribeAvailableClassesResponseBodyDBInstanceClassesDBInstanceStorageRang
         min_value: int = None,
         step: int = None,
     ):
-        # The maximum storage capacity. Unit: GB.
+        # The maximum storage space. Unit: GB.
         self.max_value = max_value
-        # The minimum storage capacity. Unit: GB.
+        # The minimum storage space. Unit: GB.
         self.min_value = min_value
-        # The minimum granularity for storage capacity adjustment. The value is fixed at 5 GB increments.
+        # The minimum step size for adjusting the storage space. The storage space increases in fixed increments of 5 GB.
         self.step = step
 
     def validate(self):

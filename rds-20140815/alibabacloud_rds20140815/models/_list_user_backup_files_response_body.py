@@ -75,23 +75,23 @@ class ListUserBackupFilesResponseBodyRecords(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
-        # The user backup ID.
+        # The ID of the user backup.
         self.backup_id = backup_id
-        # The binary log file information in the backup file. This parameter is returned if incremental data exists during the backup process.
+        # The information about the binlog files in the backup file. This parameter is returned if incremental data is generated during the backup process.
         self.binlog_info = binlog_info
         # The comment of the user backup.
         self.comment = comment
-        # The time when the user backup import started. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the import of the user backup started. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.creation_time = creation_time
         # The database engine.
         self.engine = engine
         # The database engine version.
         self.engine_version = engine_version
-        # The time when the user backup was successfully imported. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the user backup was successfully imported. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.finish_time = finish_time
-        # The time when the user backup import was completed. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the import of the user backup was completed. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.modification_time = modification_time
-        # The name of the OSS bucket in which the user backup file is stored.
+        # The name of the OSS bucket where the user backup file is stored.
         self.oss_bucket = oss_bucket
         # The metadata of the user backup file. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
         self.oss_file_meta_data = oss_file_meta_data

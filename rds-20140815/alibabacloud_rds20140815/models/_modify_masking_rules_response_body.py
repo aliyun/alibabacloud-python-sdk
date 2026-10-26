@@ -20,7 +20,7 @@ class ModifyMaskingRulesResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

@@ -23,47 +23,51 @@ class DescribeRCInstancesRequest(DaraModel):
         tag: str = None,
         vpc_id: str = None,
     ):
+        # The RDS Custom container cluster ID used to filter instances.
         self.cluster_id = cluster_id
+        # The description used to filter instances.
         self.description = description
+        # The keyword used to perform a fuzzy match on the instance description.
         self.description_for_fuzzy = description_for_fuzzy
-        # Queries instances by host IP address.
+        # The host IP address used to filter instances.
         self.host_ip = host_ip
+        # The image ID used to filter instances.
         self.image_id = image_id
         # The instance ID. This parameter is used to query a single instance.
         # 
-        # > If no instance ID is specified (neither **InstanceId** nor **InstanceIds** is passed), the operation returns detailed information about all RDS Custom instances in the specified region.
+        # > If no instance ID is specified (neither **InstanceId** nor **InstanceIds** is specified), the details of all RDS Custom instances in the specified region are returned.
         self.instance_id = instance_id
         # The instance IDs.
         # 
-        # This parameter is used to query multiple instances at a time. Separate multiple instance IDs with commas (,). A maximum of 100 IDs are supported. Input format: `["InstanceID1","InstanceID2"]`.
+        # This parameter is used to query multiple instances at a time. Separate multiple instance IDs with commas (,). You can specify up to 100 instance IDs. Input format: `["InstanceId1","InstanceId2"]`.
         # 
-        # > If both **InstanceIds** and **InstanceId** are specified, the value of **InstanceIds** takes precedence.
+        # > If both **InstanceIds** and **InstanceId** are specified, the value of **InstanceIds** prevails.
         self.instance_ids = instance_ids
         # The instance name.
         self.instance_name = instance_name
         # The page number of the instance status list.
         # 
-        # Minimum value: 1. Default value: 1.
+        # Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for a paged query.
+        # The number of entries per page in a paging query.
         # 
         # Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # Queries instances by public IP address.
+        # The public IP address used to filter instances.
         self.public_ip = public_ip
         # The region ID. This parameter is required.
         self.region_id = region_id
         # The instance status. Valid values:
         # 
-        # - **Pending**: Being created.
-        # - **Running**: Running.
-        # - **Starting**: Being started.
-        # - **Stopping**: Being stopped.
-        # - **Stopped**: Stopped.
+        # - **Pending**: The instance is being created.
+        # - **Running**: The instance is running.
+        # - **Starting**: The instance is starting.
+        # - **Stopping**: The instance is being stopped.
+        # - **Stopped**: The instance is stopped.
         self.status = status
-        # Queries instances by the specified tag. Input format: `{"TagKey":"TagValue"}`.
+        # The tags used to filter instances. Input format: `{"TagKey":"TagValue"}`.
         self.tag = tag
-        # The ID of the virtual private cloud (VPC).
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

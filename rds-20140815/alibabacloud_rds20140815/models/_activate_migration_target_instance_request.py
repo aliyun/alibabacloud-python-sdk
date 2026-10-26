@@ -17,14 +17,14 @@ class ActivateMigrationTargetInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # Set this parameter to 1, which specifies a forced switchover.
+        # Set the value to 1, which specifies a forced switchover.
         self.force_switch = force_switch
         self.resource_owner_id = resource_owner_id
-        # A reserved parameter. This parameter does not take effect.
+        # The reserved parameter. This parameter does not take effect.
         self.switch_time = switch_time
         # The switchover time mode for cloud migration.
         # 
-        # Set this parameter to 0, which specifies an immediate switchover.
+        # Set the value to 0, which specifies an immediate switchover.
         self.switch_time_mode = switch_time_mode
 
     def validate(self):

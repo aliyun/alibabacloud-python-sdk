@@ -13,7 +13,7 @@ class DescribeRCInstanceVncUrlResponseBody(DaraModel):
         # The VNC logon URL.
         # 
         # 
-        # >Notice: The VNC logon URL is time-sensitive and valid for 15 seconds. If you do not use the URL within 15 seconds after the call succeeds, the URL automatically expires. In this case, call the operation again to obtain a new URL.
+        # >Notice: The VNC logon URL is time-sensitive and valid for 15 seconds. If the URL is not used within 15 seconds after a successful API call, it automatically expires. You must call the API operation again to obtain a new URL.
         self.login_url = login_url
         # The request ID.
         self.request_id = request_id

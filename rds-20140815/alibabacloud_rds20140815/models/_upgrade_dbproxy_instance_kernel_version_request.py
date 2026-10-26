@@ -16,22 +16,23 @@ class UpgradeDBProxyInstanceKernelVersionRequest(DaraModel):
         target_minor_version: str = None,
         upgrade_time: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # A reserved parameter. You do not need to configure this parameter.
+        # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The specified time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
-        # >This parameter is required if **UpgradeTime** is set to **SpecifyTime**.
+        # The specified time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
+        # >If you set **UpgradeTime** to **SpecifyTime**, you must specify this parameter.
         self.switch_time = switch_time
+        # The target minor engine version.
         self.target_minor_version = target_minor_version
-        # The upgrade time. Valid values:
+        # The time when you want to perform the upgrade. Valid values:
         # 
-        # * **MaintainTime** (default): The upgrade is performed during the [maintenance window](https://help.aliyun.com/document_detail/610402.html).
+        # * **MaintainTime** (default): The upgrade is performed within the [maintenance window](https://help.aliyun.com/document_detail/610402.html).
         # * **Immediate**: The upgrade is performed immediately.
         # * **SpecifyTime**: The upgrade is performed at a specified time.
         self.upgrade_time = upgrade_time

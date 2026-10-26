@@ -14,12 +14,13 @@ class ReleaseReadWriteSplittingConnectionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the primary instance. You can call DescribeDBInstances to query the instance ID.
+        # Instance ID of the primary instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The type of the read/write splitting endpoint to be released. Valid values: ReadOnlyAddress (unified read-only endpoint) and BackupAddress (read-only endpoint of the secondary instance).
         self.rwaddress_type = rwaddress_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -19,10 +19,10 @@ class ModifyWhitelistTemplateResponseBody(DaraModel):
         # - **200**: Normal.
         # - **400**: Client error.
         # - **401**: Authentication failed.
-        # - **404**: Request page not found.
+        # - **404**: The requested page is not found.
         # - **500**: Server error.
         self.code = code
-        # The returned data list.
+        # The list of returned data.
         self.data = data
         # The HTTP status code. Valid values:
         # - **200**: Normal.
@@ -31,12 +31,12 @@ class ModifyWhitelistTemplateResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The returned message.
         self.message = message
-        # The request ID. Each request has a unique ID, which facilitates troubleshooting.
+        # The request ID. The ID is unique for each request and can be used for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: Successful.
-        # - **false**: Failed.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -96,9 +96,9 @@ class ModifyWhitelistTemplateResponseBodyData(DaraModel):
         self,
         status: str = None,
     ):
-        # The return status. Valid values:
-        # - **ok**: Normal return.
-        # - **error**: Error return.
+        # The returned status. Valid values:
+        # - **ok**: Normal response.
+        # - **error**: Error response.
         self.status = status
 
     def validate(self):

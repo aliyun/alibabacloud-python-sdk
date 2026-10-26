@@ -14,7 +14,7 @@ class DetachRCDiskRequest(DaraModel):
     ):
         # A reserved parameter. This parameter is not supported.
         self.delete_with_instance = delete_with_instance
-        # The ID of the cloud disk to be detached.
+        # The ID of the cloud disk to detach.
         # 
         # This parameter is required.
         self.disk_id = disk_id
@@ -22,7 +22,7 @@ class DetachRCDiskRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID. You can call the DescribeRegions operation to query available region IDs.
+        # The region ID. You can call the DescribeRegions operation to view available region IDs.
         self.region_id = region_id
 
     def validate(self):

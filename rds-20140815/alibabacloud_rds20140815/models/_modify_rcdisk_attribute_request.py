@@ -14,33 +14,33 @@ class ModifyRCDiskAttributeRequest(DaraModel):
         disk_name: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to enable the performance burst feature for cloud disks that support burst. Valid values:
+        # Specifies whether to enable the performance burst feature for disks that support this feature. Valid values:
         # 
-        # true: Enabled.
-        # false: Disabled.
+        # true: enables the feature.
+        # false: disables the feature.
         # Note
-        # An error is returned if you pass any value for cloud disks that do not support the burst feature.
+        # An error is returned if you specify any value for a disk that does not support the performance burst feature.
         self.bursting_enabled = bursting_enabled
-        # Specifies whether to release the cloud disk when the associated instance is released. Default value: null, which indicates that the current value is not changed.
+        # Specifies whether to release the disk when the instance is released. Default value: null. A value of null indicates that the current value remains unchanged.
         # 
-        # Cloud disks that have the multi-attach feature enabled do not support this parameter.
+        # You cannot configure this parameter for cloud disks that have the multi-attach feature enabled.
         # 
-        # An error is returned if you set DeleteWithInstance to false in the following cases:
+        # An error is returned if you set the DeleteWithInstance parameter to false in the following scenarios:
         # 
-        # The category of the cloud disk is local disk (ephemeral).
-        # The category of the cloud disk is basic cloud disk (cloud) and the cloud disk is not detachable (Portable=false).
+        # The disk category is local disk (ephemeral).
+        # The disk category is basic cloud disk (cloud) and the disk is not detachable (Portable=false).
         # Warning
-        # If you set DeleteWithInstance to false and the ECS instance to which the cloud disk is attached is security-locked with "LockReason" : "security" in OperationLocks, the DeleteWithInstance attribute of the cloud disk is ignored and the cloud disk is released together with the instance.
+        # If you set this parameter to false and the ECS instance to which the disk is attached is locked for security reasons (the OperationLocks parameter indicates "LockReason" : "security"), the disk is released along with the instance regardless of the DeleteWithInstance setting when the instance is released.
         self.delete_with_instance = delete_with_instance
-        # The description of the cloud disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        # The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # The ID of the cloud disk whose attributes you want to modify.
+        # The ID of the disk whose attributes you want to modify.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # The name of the cloud disk. The name must be 2 to 128 characters in length and can contain Unicode characters under the letter category (including letters from various languages, Chinese characters, and digits). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
+        # The cloud disk name. The name must be 2 to 128 characters in length and can contain characters in the Letter category of Unicode, such as English letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
         self.disk_name = disk_name
-        # The region ID. You can call DescribeRegions to obtain the region ID.
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

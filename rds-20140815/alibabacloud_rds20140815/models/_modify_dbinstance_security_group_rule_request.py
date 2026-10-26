@@ -18,7 +18,7 @@ class ModifyDBInstanceSecurityGroupRuleRequest(DaraModel):
         security_group_rule_id: str = None,
         source_cidr_ip: str = None,
     ):
-        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) to obtain the instance ID.
+        # Instance ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -35,19 +35,19 @@ class ModifyDBInstanceSecurityGroupRuleRequest(DaraModel):
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The range of destination ports for the transport layer protocol (TCP/UDP) that the security group opens.
+        # The range of destination ports for the transport layer protocol (TCP or UDP) that is supported by the security group.
         # 
-        # Valid values: 1 to 65535. Separate the start port and end port with a forward slash (/). Example: 1/200.
+        # Valid values: 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
         # 
         # This parameter is required.
         self.port_range = port_range
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The security group rule ID. You can call [DescribeDBInstanceSecurityGroupRule](https://help.aliyun.com/document_detail/2834044.html) to obtain the security group rule ID.
+        # The ID of the security group rule. You can call the [DescribeDBInstanceSecurityGroupRule](https://help.aliyun.com/document_detail/2834044.html) operation to query the ID.
         # 
         # This parameter is required.
         self.security_group_rule_id = security_group_rule_id
-        # The source IP address range. CIDR format and IPv4 format are supported.
+        # The source IP address range. IP address ranges in CIDR format and IPv4 format are supported.
         # 
         # This parameter is required.
         self.source_cidr_ip = source_cidr_ip

@@ -38,9 +38,9 @@ class DescribeDBInstanceReplicationResponseBody(DaraModel):
         self.replication_ip = replication_ip
         # The port of the replication endpoint.
         self.replication_port = replication_port
-        # The replication source of native replication.
+        # The replication source for native replication.
         self.replication_source = replication_source
-        # The current replication status. Valid values:
+        # The current replication state. Valid values:
         # 
         # - **Running**: Running.
         # - **Connecting**: Connecting.
@@ -49,6 +49,7 @@ class DescribeDBInstanceReplicationResponseBody(DaraModel):
         self.replication_state = replication_state
         # The request ID.
         self.request_id = request_id
+        # The replication status information returned by the SHOW SLAVE STATUS statement for the instance.
         self.slave_status_list = slave_status_list
 
     def validate(self):
@@ -164,33 +165,47 @@ class DescribeDBInstanceReplicationResponseBodySlaveStatusList(DaraModel):
         slave_sql_running: str = None,
         slave_sql_running_state: str = None,
     ):
+        # The name of the replication channel.
         self.channel_name = channel_name
+        # The executed GTID set.
         self.executed_gtid_set = executed_gtid_set
-        # A value of 0 indicates no error. Other values indicate specific error codes.
+        # The last error code.
         self.last_errno = last_errno
-        # A value of 0 indicates no error. Other values indicate error codes of the I/O thread.
+        # The last error code of the I/O thread.
         self.last_io_errno = last_io_errno
-        # The error message description of the I/O thread.
+        # The last error message of the I/O thread.
         self.last_io_error = last_io_error
-        # A value of 0 indicates no error. Other values indicate error codes of the SQL thread.
+        # The last error code of the SQL thread.
         self.last_sql_errno = last_sql_errno
-        # The error message description of the SQL thread.
+        # The last error message of the SQL thread.
         self.last_sql_error = last_sql_error
+        # The address of the primary database.
         self.master_host = master_host
+        # The account of the primary database.
         self.master_user = master_user
+        # The UUID of the primary database.
         self.master_uuid = master_uuid
+        # The databases included in replication.
         self.replicate_do_db = replicate_do_db
+        # The tables included in replication.
         self.replicate_do_table = replicate_do_table
+        # The databases ignored in replication.
         self.replicate_ignore_db = replicate_ignore_db
+        # The tables ignored in replication.
         self.replicate_ignore_table = replicate_ignore_table
+        # The tables included in replication. Wildcards are supported.
         self.replicate_wild_do_table = replicate_wild_do_table
+        # The tables ignored in replication. Wildcards are supported.
         self.replicate_wild_ignore_table = replicate_wild_ignore_table
+        # The data delay, in seconds.
         self.seconds_behind_master = seconds_behind_master
-        # Valid values: Yes (running) and No (stopped).
+        # The running status of the replication I/O thread.
         self.slave_io_running = slave_io_running
+        # The state of the replication I/O thread.
         self.slave_io_state = slave_io_state
-        # Valid values: Yes (running) and No (stopped).
+        # The running status of the replication SQL thread.
         self.slave_sql_running = slave_sql_running
+        # The running status of the replication SQL thread.
         self.slave_sql_running_state = slave_sql_running_state
 
     def validate(self):

@@ -15,7 +15,7 @@ class DescribeCustinsResourceInfoResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -81,11 +81,11 @@ class DescribeCustinsResourceInfoResponseBodyData(DaraModel):
     ):
         # The deadline for CPU adjustment.
         self.cpu_adjust_deadline = cpu_adjust_deadline
-        # The maximum adjustable CPU ratio.
+        # The maximum adjustable ratio for the CPU.
         self.cpu_adjustable_max_ratio = cpu_adjustable_max_ratio
         # The maximum CPU usage.
         self.cpu_adjustable_max_value = cpu_adjustable_max_value
-        # The CPU usage.
+        # The CPU increase ratio.
         self.cpu_increase_ratio = cpu_increase_ratio
         # The CPU usage. Unit: %.
         self.cpu_increase_ratio_value = cpu_increase_ratio_value
@@ -107,7 +107,7 @@ class DescribeCustinsResourceInfoResponseBodyData(DaraModel):
         self.max_iops_increase_ratio = max_iops_increase_ratio
         # The maximum number of I/O requests per second.
         self.max_iops_increase_ratio_value = max_iops_increase_ratio_value
-        # The maximum adjustable memory ratio.
+        # The maximum adjustable ratio for the memory.
         self.mem_adjustable_max_ratio = mem_adjustable_max_ratio
         # The maximum value of the resource to be evaluated.
         self.mem_adjustable_max_value = mem_adjustable_max_value
@@ -117,13 +117,13 @@ class DescribeCustinsResourceInfoResponseBodyData(DaraModel):
         self.memory_increase_ratio = memory_increase_ratio
         # The memory usage. Unit: MB.
         self.memory_increase_ratio_value = memory_increase_ratio_value
-        # The number of CPU cores of the instance.
+        # The number of CPUs of the instance.
         self.origin_cpu = origin_cpu
         # The maximum number of concurrent connections.
         self.origin_max_conn = origin_max_conn
         # The maximum number of I/O requests per second.
         self.origin_max_iops = origin_max_iops
-        # The actual memory usage. Unit: MB.
+        # The actual memory used. Unit: MB.
         self.origin_memory = origin_memory
 
     def validate(self):

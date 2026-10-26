@@ -16,13 +16,13 @@ class ModifyTaskInfoRequest(DaraModel):
         task_action: str = None,
         task_id: str = None,
     ):
-        # The action-related parameters, which can be extended as needed. When taskAction is set to modifySwitchTime, set ActionParams to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
+        # The parameters related to the action. You can add extensions based on your business requirements. When TaskAction is set to modifySwitchTime, set ActionParams to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
         # 
         # recoverMode specifies the task recovery pattern. Valid values:
-        # - **timePoint**: Execute at a specified point in time.
-        # - **immediate**: Execute immediately.
+        # - **timePoint**: executes the task at a specified point in time.
+        # - **immediate**: executes the task immediately.
         # 
-        # recoverTime specifies the recovery time in UTC+0. Format: yyyy-MM-ddTHH:mm:ssZ. This parameter is required when recoverMode is set to timePoint.
+        # recoverTime specifies the recovery time in UTC. The format is yyyy-MM-ddTHH:mm:ssZ. When recoverMode is set to timePoint, recoverTime is required.
         self.action_params = action_params
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query available region IDs.
         # 

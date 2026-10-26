@@ -13,13 +13,13 @@ class DeleteRCInstancesShrinkRequest(DaraModel):
         region_id: str = None,
         terminate_subscription: bool = None,
     ):
-        # Specifies whether to perform a dry run for this release operation. Valid values:
-        # * **true**: Performs a dry run without releasing the instance.
-        # * **false** (default): Sends a normal request and directly releases the instance after the request passes the check.
+        # Specifies whether to perform a precheck before releasing the instances. Valid values:
+        # * **true**: Performs a precheck and does not release the instances.
+        # * **false** (default): Sends a normal request and directly releases the instances after the check passes.
         self.dry_run = dry_run
-        # Specifies whether to forcefully release running instances. Valid values:
-        # * **Yes**: Forcefully releases the instances.
-        # * **No** (default): Does not forcefully release the instances.
+        # Specifies whether to forcibly release running instances. Valid values:
+        # * **Yes**: Forcibly releases the instances.
+        # * **No** (default): Does not forcibly release the instances.
         self.force = force
         # The instance details.
         # 
@@ -27,7 +27,7 @@ class DeleteRCInstancesShrinkRequest(DaraModel):
         self.instance_id_shrink = instance_id_shrink
         # The region ID of the instance.
         self.region_id = region_id
-        # A reserved parameter.
+        # The reserved parameter.
         self.terminate_subscription = terminate_subscription
 
     def validate(self):

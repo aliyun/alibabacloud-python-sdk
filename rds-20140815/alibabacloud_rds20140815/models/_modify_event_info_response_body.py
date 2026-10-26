@@ -21,7 +21,7 @@ class ModifyEventInfoResponseBody(DaraModel):
         self.request_id = request_id
         # The number of successful records.
         self.success_count = success_count
-        # The successful event ID.
+        # The success event ID.
         self.success_event_id = success_event_id
 
     def validate(self):

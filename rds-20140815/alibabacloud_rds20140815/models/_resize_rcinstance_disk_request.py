@@ -17,19 +17,19 @@ class ResizeRCInstanceDiskRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # - **true** (default): Automatic payment is enabled. Make sure that your account balance is sufficient.
-        # - **false**: Only an order is generated. No payment is made.
-        # > If your payment method has an insufficient balance, set AutoPay to false. An unpaid order is generated. You can log on to the ApsaraDB RDS console to complete the payment.
+        # - **false**: Only an order is generated and no payment is deducted.
+        # > If your payment method has an insufficient balance, you can set AutoPay to false. An unpaid order is generated, and you can log on to the ApsaraDB RDS console to complete the payment.
         # >
         self.auto_pay = auto_pay
         # The cloud disk ID.
         self.disk_id = disk_id
-        # Specifies whether to perform a dry run. Valid values:
-        # * **true**: performs a dry run without creating the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
-        # * **false** (default): sends the request. If the request passes the check, the instance is created.
+        # Specifies whether to perform a precheck on the operation. Valid values:
+        # * **true**: A precheck is performed, and the operation is not executed. Check items include request parameters, request format, business limits, and inventory.
+        # * **false** (default): A normal request is sent, and the operation is executed immediately after the precheck is passed.
         self.dry_run = dry_run
         # The instance ID.
         self.instance_id = instance_id
-        # The size of the disk after expansion. Unit: GiB.
+        # The new size of the disk after expansion. Unit: GiB.
         self.new_size = new_size
         # The region ID of the instance.
         self.region_id = region_id

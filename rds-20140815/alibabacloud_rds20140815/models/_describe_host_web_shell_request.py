@@ -16,7 +16,7 @@ class DescribeHostWebShellRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The name of the account that is used to log on to the host of the RDS instance.
+        # The name of the account used to log on to the host of the ApsaraDB RDS instance.
         # 
         # This parameter is required.
         self.account_name = account_name

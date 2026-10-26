@@ -11,11 +11,11 @@ class UpgradeDBProxyInstanceKernelVersionResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The proxy ID.
+        # The ID of the database proxy.
         self.dbinstance_name = dbinstance_name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

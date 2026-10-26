@@ -18,13 +18,13 @@ class DescribeDBInstanceNetInfoResponseBody(DaraModel):
         self.dbinstance_net_infos = dbinstance_net_infos
         # The network type. Valid values:
         # * **Classic**: classic network.
-        # * **VPC**: virtual private cloud (VPC).
+        # * **VPC**: VPC.
         self.instance_network_type = instance_network_type
         # The request ID.
         self.request_id = request_id
         # The whitelist mode. Valid values:
-        # * **normal**: standard whitelist mode.
-        # * **safety**: enhanced whitelist.
+        # * **normal**: general mode.
+        # * **safety**: enhanced whitelist mode.
         self.security_ipmode = security_ipmode
 
     def validate(self):

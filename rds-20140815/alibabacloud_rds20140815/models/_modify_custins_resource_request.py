@@ -17,7 +17,7 @@ class ModifyCustinsResourceRequest(DaraModel):
     ):
         # The adjustment time.
         self.adjust_deadline = adjust_deadline
-        # The instance ID. You can call [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) to obtain the instance ID.
+        # Instance ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -26,9 +26,9 @@ class ModifyCustinsResourceRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The resource type.
         self.resource_type = resource_type
-        # The original value. This parameter is required when **ResourceType** is set to **instance**.
+        # The original value. This parameter is required when **resourcetype** is set to **instance**.
         self.restore_original_specification = restore_original_specification
-        # The target value. This parameter is applicable to target tracking rules and predictive rules. The value of TargetValue can contain up to three decimal places and must be greater than 0.
+        # The target value, which applies to target tracking rules and predictive rules. The TargetValue parameter supports up to three decimal places and must be greater than 0.
         self.target_value = target_value
 
     def validate(self):

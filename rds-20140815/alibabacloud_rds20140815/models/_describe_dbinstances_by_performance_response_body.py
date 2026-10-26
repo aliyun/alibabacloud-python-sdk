@@ -21,9 +21,9 @@ class DescribeDBInstancesByPerformanceResponseBody(DaraModel):
         self.page_number = page_number
         # The number of instances on the current page.
         self.page_record_count = page_record_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of instances returned by the query.
+        # The total number of queried instances.
         self.total_record_count = total_record_count
 
     def validate(self):

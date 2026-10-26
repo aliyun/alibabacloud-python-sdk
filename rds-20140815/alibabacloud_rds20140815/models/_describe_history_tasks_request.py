@@ -25,23 +25,23 @@ class DescribeHistoryTasksRequest(DaraModel):
         to_exec_time: int = None,
         to_start_time: str = None,
     ):
-        # The minimum execution duration used to filter tasks. Only tasks whose execution duration is greater than this value are returned. Unit: seconds. Default value: 0, which indicates no restriction.
+        # The minimum execution duration of the task. This parameter is used to filter tasks whose execution duration is greater than the specified value. Unit: seconds. Default value: 0, which indicates no limit.
         self.from_exec_time = from_exec_time
-        # The beginning of the time range to query based on task start time. Only tasks that started after this time are returned. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0. The earliest supported time is 30 days before the current time. If a time earlier than 30 days is specified, it is automatically converted to 30 days before the current time.
+        # The start time of the time range to query the task start time. This parameter specifies that the start time of the task is later than the specified time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The earliest supported time is 30 days ago. If the specified time is more than 30 days ago, it is automatically converted to 30 days ago.
         # 
         # This parameter is required.
         self.from_start_time = from_start_time
-        # The instance ID. Separate multiple instance IDs with commas (,). A maximum of 30 instance IDs are supported. Default value: empty, which indicates no restriction.
+        # The instance ID, which is used to query the tasks of the corresponding instance. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs. If this parameter is left empty, no limit is applied.
         self.instance_id = instance_id
-        # Currently, only Instance is supported.
+        # The instance type. Only Instance is supported.
         self.instance_type = instance_type
         self.owner_id = owner_id
-        # The page number. Valid values: positive integers.
+        # The page number of the query result. Valid values: positive integers.
         # Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values: **10 to 100**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the pending event. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID of the pending event. You can call the DescribeRegions operation to obtain the region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -49,23 +49,23 @@ class DescribeHistoryTasksRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The task status. Valid values:
-        # - **Scheduled**: Waiting to be executed.
+        # - **Scheduled**: Pending execution.
         # - **Running**: Running.
         # - **Succeed**: Succeeded.
         # - **Failed**: Failed.
-        # - **Cancelling**: Being terminated.
-        # - **Canceled**: Terminated.
+        # - **Cancelling**: Cancelling.
+        # - **Canceled**: Canceled.
         # - **Waiting**: Waiting for the scheduled time.
         # 
-        # To query multiple statuses, separate them with commas (,). Default value: empty, which indicates all statuses.
+        # Separate multiple values with commas (,). If this parameter is left empty, all statuses are queried.
         self.status = status
-        # The task ID. You can call the DescribeTasks operation to obtain the task ID. Separate multiple task IDs with commas (,). A maximum of 30 task IDs are supported. Default value: empty, which indicates no restriction.
+        # The task ID. You can call the DescribeTasks operation to query the task ID. Separate multiple task IDs with commas (,). You can specify up to 30 task IDs. If this parameter is left empty, no limit is applied.
         self.task_id = task_id
-        # The task type. Separate multiple task types with commas (,). A maximum of 30 task types are supported. Default value: empty, which indicates no restriction.
+        # The task type, which is used to query tasks of a specific type. Separate multiple task types with commas (,). You can specify up to 30 task types. If this parameter is left empty, no limit is applied.
         self.task_type = task_type
-        # The maximum execution duration used to filter tasks. Only tasks whose execution duration is not less than this value are returned. Unit: seconds. Default value: 0, which indicates no restriction.
+        # The maximum execution duration of the task. This parameter is used to filter tasks whose execution duration is greater than or equal to the specified value. Unit: seconds. Default value: 0, which indicates no limit.
         self.to_exec_time = to_exec_time
-        # The end of the time range to query based on task start time. Only tasks that started before this time are returned. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+        # The end time of the time range to query the task start time. This parameter specifies that the start time of the task is earlier than the specified time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.to_start_time = to_start_time

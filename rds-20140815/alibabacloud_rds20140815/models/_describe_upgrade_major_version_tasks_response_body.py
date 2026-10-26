@@ -20,7 +20,7 @@ class DescribeUpgradeMajorVersionTasksResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
@@ -101,36 +101,36 @@ class DescribeUpgradeMajorVersionTasksResponseBodyItems(DaraModel):
         zero_down_time_connection_string: str = None,
         zero_down_time_port: int = None,
     ):
-        # The statistics information collection pattern.
+        # The statistics collection mode.
         # 
         # Valid values:
         # - **After**: Upgrade after the cutover.
         # - **Before**: Upgrade before the cutover.
         self.collect_stat_mode = collect_stat_mode
-        # The detailed information about the task.
+        # The detailed information of the task.
         self.detail = detail
         # The end time of the major engine version upgrade.
         # 
         # The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # The final result of the task. Valid values:
-        # * **Success**: The task is successful.
-        # * **Failed**: The task failed.
-        # * **Running**: The migration is in progress.
+        # The final result of the task.
+        # * **Success**: Successful.
+        # * **Failed**: Failed.
+        # * **Running**: In progress.
         self.result = result
         # The ID of the original instance before the upgrade.
         self.source_ins_name = source_ins_name
-        # The version of the original instance before the upgrade.
+        # The major engine version of the original instance before the upgrade.
         self.source_major_version = source_major_version
         # The start time of the major engine version upgrade.
         # 
         # The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
-        # The end time of the instance switchover from the original instance to the new instance.
+        # The end time of the switchover from the original instance to the new instance.
         # 
         # The value is a UNIX timestamp. Unit: milliseconds.
         self.switch_end_time = switch_end_time
-        # The time of the instance switchover from the original instance to the new instance.
+        # The time when the service is switched over from the original instance to the new instance.
         # 
         # The value is a UNIX timestamp. Unit: milliseconds.
         self.switch_time = switch_time
@@ -149,26 +149,26 @@ class DescribeUpgradeMajorVersionTasksResponseBodyItems(DaraModel):
         # The upgrade mode.
         # 
         # Valid values:
-        # - **clone**: no cutover
-        # - **switch**: cutover
+        # - **clone**: No cutover.
+        # - **switch**: Cutover.
         self.upgrade_mode = upgrade_mode
         # Indicates whether a cutover is performed.
         # 
-        # - **true**: A cutover is performed.
-        # - **false**: No cutover is performed.
+        # - **true**: Yes.
+        # - **false**: No.
         self.cut_over = cut_over
-        # The estimated synchronization time for the logical replication lag. Unit: seconds.
-        # > This parameter is used only for **zero-downtime** major engine version upgrades.
+        # The estimated synchronization time for the logical replication latency. Unit: seconds.
+        # > This parameter is only applicable to **zero-downtime** major engine version upgrades.
         self.total_logic_rep_delay_time = total_logic_rep_delay_time
-        # The size of the logical replication lag. Unit: MB.
+        # The logical replication latency. Unit: MB.
         # 
-        # > This parameter is used only for **zero-downtime** major engine version upgrades.
+        # > This parameter is only applicable to **zero-downtime** major engine version upgrades.
         self.total_logic_rep_latency_mb = total_logic_rep_latency_mb
-        # The temporary internal endpoint of the higher-version instance for the zero-downtime major engine version upgrade. The format is `****.pg.rds.aliyuncs.com`.
-        # > This parameter is used only for **zero-downtime** major engine version upgrades.
+        # The temporary **internal endpoint** of the higher-version instance for zero-downtime major engine version upgrades. The format is `****.pg.rds.aliyuncs.com`.
+        # > This parameter is only applicable to **zero-downtime** major engine version upgrades.
         self.zero_down_time_connection_string = zero_down_time_connection_string
         # The port of the higher-version instance, which is the same as the port of the source instance.
-        # > This parameter is used only for **zero-downtime** major engine version upgrades.
+        # > This parameter is only applicable to **zero-downtime** major engine version upgrades.
         self.zero_down_time_port = zero_down_time_port
 
     def validate(self):

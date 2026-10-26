@@ -13,24 +13,24 @@ class ModifyEventInfoRequest(DaraModel):
         region_id: str = None,
         security_token: str = None,
     ):
-        # The action-related parameters, which can be an extension based on business requirements. When taskAction is set to modifySwitchTime, set ActionParams to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
+        # The parameters related to the action. You can add extensions based on your business requirements. When the taskAction parameter is set to modifySwitchTime, set the ActionParams parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
         # 
-        # recoverMode specifies the task recovery pattern. Valid values:
-        # - **timePoint**: Executes at a specified point in time.
-        # - **immediate**: Executes immediately.
+        # The recoverMode parameter specifies the task recovery pattern. Valid values:
+        # - **timePoint**: Executes the task at a specified point in time.
+        # - **immediate**: Executes the task immediately.
         # 
-        # recoverTime specifies the recovery time in UTC+0. Format: yyyy-MM-ddTHH:mm:ssZ. This parameter is required when recoverMode is set to timePoint.
+        # The recoverTime parameter specifies the recovery time. The time must be in UTC+0 and in the yyyy-MM-ddTHH:mm:ssZ format. When the recoverMode parameter is set to timePoint, the recoverTime parameter is required.
         self.action_params = action_params
-        # The event action. Valid values:
+        # The action to process the event. Valid values:
         # - **archive**: Archives the event.
         # - **undo**: Does not process the event.
         # > This parameter is required.
         self.event_action = event_action
-        # The event ID. You can call the DescribeEvents operation to query event IDs. To query multiple events, separate the event IDs with commas (,). A maximum of 20 event IDs are supported.
+        # The event IDs. You can call the DescribeEvents operation to query the event IDs. Separate multiple event IDs with commas (,). You can specify up to 20 event IDs.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

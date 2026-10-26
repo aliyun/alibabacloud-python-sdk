@@ -18,14 +18,14 @@ class DescribeWhitelistTemplateResponseBody(DaraModel):
         # The response code. Valid values:
         # - **200**: Normal.
         # - **400**: Client fault.
-        # - **401**: Authentication failed.
-        # - **404**: Request page not found.
+        # - **401**: Failed to authenticate during identity verification.
+        # - **404**: The requested page is not found.
         # - **500**: Server fault.
         self.code = code
-        # The returned data.
+        # The list of returned data.
         self.data = data
         # The HTTP status code. Valid values:
-        # - **200**: Success.
+        # - **200**: Normal.
         # - **400**: Client error.
         # - **500**: Server error.
         self.http_status_code = http_status_code
@@ -132,13 +132,13 @@ class DescribeWhitelistTemplateResponseBodyDataTemplate(DaraModel):
     ):
         # The primary key of the data table.
         self.id = id
-        # The IP address list.
+        # The list of IP addresses.
         self.ips = ips
-        # The whitelist template ID.
+        # The ID of the whitelist template.
         self.template_id = template_id
-        # The whitelist template name.
+        # The name of the whitelist template.
         self.template_name = template_name
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

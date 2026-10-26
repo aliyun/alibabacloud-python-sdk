@@ -15,15 +15,15 @@ class DescribeSQLCollectorPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate request submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
         self.client_token = client_token
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
+        # The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to query the ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

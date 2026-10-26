@@ -20,31 +20,34 @@ class ModifyBackupPolicyResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The backup compression method. Valid values:
-        # * **0**: not compressed.
+        # * **0**: no compression.
         # * **1**: zlib compression.
         # * **2**: parallel zlib compression.
-        # * **4**: quicklz compression with database and table restoration enabled.
-        # * **8**: MySQL 8.0 quicklz compression without database and table restoration support.
+        # * **4**: quicklz compression. Database and table restoration is enabled.
+        # * **8**: quicklz compression for MySQL 8.0. Database and table restoration is not supported.
         self.compress_type = compress_type
         # The instance ID.
         self.dbinstance_id = dbinstance_id
         # Indicates whether instance log backup is enabled. Valid values:
         # * **1**: enabled.
-        # * **0**: disabled.
+        # * **0**: shutdown.
         # 
         # 
-        # > Instance log backup for SQL Server instances is enabled by default and cannot be disabled.
+        # > Instance log backup is enabled by default and cannot be shut down for ApsaraDB RDS for SQL Server instances.
         self.enable_backup_log = enable_backup_log
+        # Indicates whether incremental backup is enabled.
         self.enable_increment_data_backup = enable_increment_data_backup
+        # Indicates whether point-in-time recovery (PITR) is enabled for the ApsaraDB RDS for MySQL instance.
         self.enable_pitr_protection = enable_pitr_protection
-        # Indicates whether binary logs are unconditionally cleaned up when the storage usage of a **MySQL** instance exceeds 80% or the remaining storage is less than 5 GB.
+        # Indicates whether binary log files are unconditionally deleted when the storage usage of the **ApsaraDB RDS for MySQL** instance exceeds 80% or the remaining storage space is less than 5 GB.
         self.high_space_usage_protection = high_space_usage_protection
+        # The high-frequency incremental backup interval. Unit: minutes. Valid values: 60, 120, 240, 360, and 720.
         self.inc_backup_interval = inc_backup_interval
-        # The number of hours for which instance log backups are retained on the local storage of a **MySQL** instance.
+        # The number of hours for which instance log backups are retained locally on the **MySQL** instance.
         self.local_log_retention_hours = local_log_retention_hours
-        # The maximum loop space usage of binary logs for a **MySQL** instance.
+        # The maximum loop space usage of the local binary log on the **MySQL** instance.
         self.local_log_retention_space = local_log_retention_space
-        # The number of binary logs retained locally for a **MySQL** instance.
+        # The number of binary log files retained locally on the **ApsaraDB RDS for MySQL** instance.
         self.log_backup_local_retention_number = log_backup_local_retention_number
         # The request ID.
         self.request_id = request_id

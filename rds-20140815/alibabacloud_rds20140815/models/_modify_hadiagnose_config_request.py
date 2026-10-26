@@ -14,20 +14,20 @@ class ModifyHADiagnoseConfigRequest(DaraModel):
         resource_owner_id: int = None,
         tcp_connection_type: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The region ID. You can call DescribeRegions to obtain the region ID.
+        # The region ID. You can call the DescribeRegions operation to query the ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The availability detection method of the instance. Valid values:
-        # - **SHORT**: short-lived connection
-        # - **LONG**: persistent connection
+        # The availability check method of the instance. Valid values:
+        # - **SHORT**: Short connection.
+        # - **LONG**: Long connection.
         self.tcp_connection_type = tcp_connection_type
 
     def validate(self):

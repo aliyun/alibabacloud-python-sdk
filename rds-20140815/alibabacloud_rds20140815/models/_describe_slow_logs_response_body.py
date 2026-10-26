@@ -24,7 +24,7 @@ class DescribeSlowLogsResponseBody(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The end date of the query.
         self.end_time = end_time
-        # The database engine type.
+        # The database engine.
         self.engine = engine
         self.items = items
         # The page number.

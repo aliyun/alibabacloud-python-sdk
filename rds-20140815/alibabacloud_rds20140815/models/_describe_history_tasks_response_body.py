@@ -18,13 +18,13 @@ class DescribeHistoryTasksResponseBody(DaraModel):
     ):
         # The task list.
         self.items = items
-        # The page number of the returned page.
+        # The page number of the query result.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID. If you encounter an issue, provide this request ID for troubleshooting.
+        # The unique request ID. If you encounter any issues, provide this request ID for troubleshooting.
         self.request_id = request_id
-        # The total number of tasks that meet the filter conditions, regardless of pagination.
+        # The total number of tasks that meet the specified conditions, regardless of pagination.
         self.total_count = total_count
 
     def validate(self):
@@ -103,22 +103,22 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         task_type: str = None,
         uid: str = None,
     ):
-        # The allowed operation information. When used, the system matches the Action based on currentStepName and status in this information. If no Action is matched, the task does not support operations in its current state. Example:
+        # The allowed operation information. In actual use, the operation action is matched in this information based on currentStepName and status. If no action is matched, the current status of the task does not support the operation. Example:
         # ```
         #   "steps": [
         #     {
-        #       "step_name": "exec_task", // Step name, matched with currentStepName
-        #       "action_info": {    // Operations supported by the step
-        #         "Waiting": [      // Status, matched with status
-        #           "modifySwitchTime" // Action. Multiple actions may be available.
+        #       "step_name": "exec_task", // The step name, which matches currentStepName.
+        #       "action_info": {    // The operations supported by the step.
+        #         "Waiting": [      // The status, which matches status.
+        #           "modifySwitchTime" // The operation action. Multiple actions indicate that multiple operations are supported.
         #         ]
         #       }
         #     },
         #     {
-        #       "step_name": "init_task", // Step name
-        #       "action_info": {    // Operations supported by the step
-        #         "Running": [      // Status
-        #           "cancel",       // Action
+        #       "step_name": "init_task", // The step name.
+        #       "action_info": {    // The operations supported by the step.
+        #         "Running": [      // The status.
+        #           "cancel",       // The operation.
         #           "pause"
         #         ]
         #       }
@@ -127,22 +127,22 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         # }
         # ```
         # 
-        # Supported operations:
+        # Operations supported by the system:
         # - **retry**: Retry.
         # - **cancel**: Cancel.
         # - **modifySwitchTime**: Modify the switchover time or recovery time.
         self.action_info = action_info
-        # The request user ID. If callerSource is User, this value indicates the user UID.
+        # The ID of the requesting user. If callerSource is User, this parameter represents the user UID.
         self.caller_source = caller_source
         # The request source. Valid values:
         # - **System**: System.
         # - **User**: User.
         self.caller_uid = caller_uid
-        # The name of the current step being executed. An empty value indicates that the task has not started.
+        # The name of the current step. If this parameter is empty, the task has not started.
         self.current_step_name = current_step_name
         # The database type.
         self.db_type = db_type
-        # The task end time.
+        # The end time of the task.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
@@ -154,21 +154,21 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         self.product = product
         # The current progress.
         self.progress = progress
-        # The reason why the current task was initiated.
+        # The cause of the current task.
         self.reason_code = reason_code
         # The region ID.
         self.region_id = region_id
         # The estimated remaining execution time. Unit: seconds.
         self.remain_time = remain_time
-        # The task start time.
+        # The start time of the task.
         self.start_time = start_time
         # The task status. Valid values:
-        # - Scheduled: Waiting to be executed.
+        # - Scheduled: Pending execution.
         # - Running: Running.
         # - Succeed: Succeeded.
         # - Failed: Failed.
-        # - Cancelling: Being terminated.
-        # - Canceled: Terminated.
+        # - Cancelling: Cancelling.
+        # - Canceled: Canceled.
         # - Waiting: Waiting for the scheduled time.
         self.status = status
         # The task details.
@@ -177,7 +177,7 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         self.task_id = task_id
         # The task type.
         self.task_type = task_type
-        # The user ID of the resource owner.
+        # The ID of the user to which the resource belongs.
         self.uid = uid
 
     def validate(self):

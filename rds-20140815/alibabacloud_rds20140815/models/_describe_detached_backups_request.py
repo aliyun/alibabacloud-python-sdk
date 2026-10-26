@@ -19,24 +19,24 @@ class DescribeDetachedBackupsRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The backup set ID.
+        # The ID of the backup set.
         self.backup_id = backup_id
         # The backup mode. Valid values:
         # 
-        # - **Automated**: automatic backup.
-        # - **Manual**: manual backup.
+        # - **Automated**: automatic backup
+        # - **Manual**: manual backup
         self.backup_mode = backup_mode
-        # The backup set status. Valid values:
-        # - **Success**: The backup is complete.
+        # The status of the backup set. Valid values:
+        # - **Success**: The backup is completed.
         # - **Failed**: The backup failed.
         self.backup_status = backup_status
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         self.dbinstance_id = dbinstance_id
         # The end time of the query. The end time must be later than the start time.
         # 
-        # Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+        # Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC time).
         self.end_time = end_time
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+        # The page number. Valid values: any integer greater than 0 and less than or equal to the maximum integer value.
         # 
         # > Default value: 1.
         self.page_number = page_number
@@ -47,16 +47,16 @@ class DescribeDetachedBackupsRequest(DaraModel):
         # 
         # > Default value: **30**.
         self.page_size = page_size
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region = region
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The start time of the query.
         # 
-        # Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+        # Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC time).
         self.start_time = start_time
 
     def validate(self):

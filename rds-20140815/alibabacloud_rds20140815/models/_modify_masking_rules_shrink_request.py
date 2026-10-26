@@ -29,7 +29,7 @@ class ModifyMaskingRulesShrinkRequest(DaraModel):
         self.default_algo = default_algo
         # Specifies whether the rule is enabled. Valid values: true and false.
         self.enabled = enabled
-        # The rule algorithms. You can specify multiple algorithms. Masking algorithms can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, encryption length}}.
+        # The rule algorithms. You can specify multiple algorithms and add extra parameters for masking algorithms. Format: {name: Algorithm 1}, {name: Algorithm 2, params: {encryption position, number of encrypted digits}}.
         self.masking_algo = masking_algo
         self.owner_id = owner_id
         # The region ID.
@@ -38,7 +38,7 @@ class ModifyMaskingRulesShrinkRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The rule configuration in JSON string format.
         self.rule_config_shrink = rule_config_shrink
-        # The name of the rule to modify.
+        # The name of the rule to be modified.
         # 
         # This parameter is required.
         self.rule_name = rule_name

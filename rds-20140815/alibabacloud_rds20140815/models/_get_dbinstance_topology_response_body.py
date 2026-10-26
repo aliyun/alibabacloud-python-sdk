@@ -71,11 +71,11 @@ class GetDBInstanceTopologyResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         nodes: List[main_models.GetDBInstanceTopologyResponseBodyDataNodes] = None,
     ):
-        # The network connectivity information of the instance.
+        # The list of network connection information for the instance.
         self.connections = connections
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The node list.
+        # The nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -139,16 +139,16 @@ class GetDBInstanceTopologyResponseBodyDataNodes(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The dedicated cluster ID.
-        # >This parameter is empty for non-dedicated cluster instances.
+        # The ID of the dedicated cluster.
+        # > An empty value is returned for instances that are not deployed in a dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The host ID in the dedicated cluster.
-        # >This parameter is empty for non-dedicated cluster instances.
+        # The ID of the host in the dedicated cluster.
+        # > An empty value is returned for instances that are not deployed in a dedicated cluster.
         self.dedicated_host_id = dedicated_host_id
         # The unique identifier of the instance.
-        # >This parameter returns **-1** for non-dedicated cluster instances.
+        # > **-1** is returned for instances that are not deployed in a dedicated cluster.
         self.node_id = node_id
-        # The node type. Valid values:
+        # The role of the node. Valid values:
         # * **Master**: primary node.
         # * **Slave**: secondary node.
         self.role = role

@@ -13,7 +13,7 @@ class CheckCloudResourceAuthorizedResponseBody(DaraModel):
     ):
         # The authorization status. Valid values:
         # - **1**: Authorized.
-        # - **0**: Not authorized.
+        # - **0**: Unauthorized.
         self.authorization_state = authorization_state
         # The request ID.
         self.request_id = request_id

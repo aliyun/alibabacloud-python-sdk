@@ -15,7 +15,7 @@ class PreCheckCreateOrderForDeleteDBNodesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.failures = failures
-        # The precheck result.
+        # The pre-check result.
         self.pre_check_result = pre_check_result
         # The request ID.
         self.request_id = request_id

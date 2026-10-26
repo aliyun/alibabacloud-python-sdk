@@ -24,70 +24,70 @@ class DescribeHistoryEventsRequest(DaraModel):
         task_id: str = None,
         to_start_time: str = None,
     ):
-        # The event status. Valid values:
-        # - **Archived**: archived.
-        # - **UnArchived**: not archived.
-        # - **All**: all.
+        # The archive status of the event. Valid values:
+        # - **Archived**: archived
+        # - **UnArchived**: unarchived
+        # - **All**: all
         self.archive_status = archive_status
         # The system event categorization. Valid values:
-        # - **Exception**: abnormal event.
-        # - **Optimize**: optimization events.
-        # - **Notification**: notification event.
-        # - **Maintenance**: scheduled maintenance event.
+        # - **Exception**: abnormal event
+        # - **Optimize**: optimization events
+        # - **Notification**: notification event
+        # - **Maintenance**: scheduled maintenance event
         self.event_category = event_category
-        # The event ID.
+        # The ID of the event.
         self.event_id = event_id
         # The event level. Valid values:
-        # - **INFO**: notification.
-        # - **WARN**: warning.
-        # - **CRITICAL**: critical.
+        # - **INFO**: information
+        # - **WARN**: warning
+        # - **CRITICAL**: critical
         self.event_level = event_level
-        # The event status. Valid values:
-        # - **Inquiring**: inquiring.
-        # - **Scheduled**: scheduled.
-        # - **Running**: running.
-        # - **Succeed**: completed.
-        # - **Failed**: failed.
-        # - **Canceled**: canceled.
-        # > To query multiple statuses, separate them with commas (,).
+        # The status of the event. Valid values:
+        # - **Inquiring**: inquiring
+        # - **Scheduled**: scheduled
+        # - **Running**: running
+        # - **Succeed**: succeeded
+        # - **Failed**: failed
+        # - **Canceled**: canceled
+        # > To query events in multiple statuses, separate the statuses with commas (,).
         self.event_status = event_status
-        # The system event type. This parameter takes effect only when InstanceEventType.N is not specified. Valid values: 
+        # The system event type. This parameter is valid only when InstanceEventType.N is not specified. Valid values: 
         # - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
-        # - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
-        # - **SystemFailure.Reboot**: The instance is restarted due to a system error.
-        # - **SystemFailure.Redeploy**: The instance is redeployed due to a system error.
-        # - **SystemFailure.Delete**: The instance is released due to an instance creation failure.
-        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance error.
-        # - **InstanceExpiration.Stop**: The instance is stopped due to subscription expiration.
-        # - **InstanceExpiration.Delete**: The instance is released due to subscription expiration.
+        # - **SystemMaintenance.Redeploy**: The instance undergoes redeployment due to system maintenance.
+        # - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
+        # - **SystemFailure.Redeploy**: The instance undergoes redeployment due to a system fault.
+        # - **SystemFailure.Delete**: The instance is released because instance creation failed.
+        # - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
+        # - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
+        # - **InstanceExpiration.Delete**: The subscription instance is released due to expiration.
         # - **AccountUnbalanced.Stop**: The pay-as-you-go instance is stopped due to an overdue payment.
         # - **AccountUnbalanced.Delete**: The pay-as-you-go instance is released due to an overdue payment.
-        # > The value of this parameter can only be an instance system event, not a cloud disk system event.
+        # > You can specify only instance system events for this parameter. Disk system events are not supported.
         self.event_type = event_type
-        # The beginning of the time range for the task start time. Tasks whose start time is later than this time are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC +0`. The earliest supported time is 30 days before the current time. If the specified time is more than 30 days before the current time, it is automatically converted to 30 days before the current time.
+        # The start time of the time range to query the task start time. This parameter specifies that the start time of the task must be later than the specified time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC +0`. The earliest supported time is 30 days ago. If the specified time is more than 30 days before the current time, it is automatically converted to 30 days ago.
         # 
         # This parameter is required.
         self.from_start_time = from_start_time
-        # The ApsaraDB RDS instance ID.
+        # The RDS instance ID.
         self.instance_id = instance_id
-        # The page number. The value must be greater than 0 and cannot exceed the maximum value of the integer type. Default value: **1**.
+        # The page number. The value must be greater than 0 and cannot exceed the maximum value of an integer. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Default value: **30**.
         self.page_size = page_size
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the region ID.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The resource type. Valid values:
-        # - **Instance**: instance resource.
-        # - **Host**: host resource.
-        # - **User**: user resource.
-        # > If this parameter is not specified, all resource types are queried.
+        # The type of the resource. Valid values:
+        # - **Instance**: instance
+        # - **Host**: host
+        # - **User**: user
+        # > If you do not specify this parameter, all resource types are queried.
         self.resource_type = resource_type
         self.security_token = security_token
-        # The task ID. Specify this parameter to retrieve data for a specific task.
+        # The ID of the task. Specify this parameter to obtain the data of a specific task.
         self.task_id = task_id
-        # The end of the time range for the task start time. Tasks whose start time is earlier than this time are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC +0`.
+        # The end time of the time range to query the task start time. This parameter specifies that the start time of the task must be earlier than the specified time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in `UTC +0`.
         # 
         # This parameter is required.
         self.to_start_time = to_start_time

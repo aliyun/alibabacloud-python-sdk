@@ -27,15 +27,15 @@ class ModifyComputeBurstConfigRequest(DaraModel):
         switch_time_mode: str = None,
         task_id: str = None,
     ):
-        # Set this parameter to **disabled** to disable the committed serverless feature.
+        # To disable the provisioned Serverless feature, set this parameter to **disabled**.
         self.burst_status = burst_status
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can contain a maximum of 64 ASCII characters. The value cannot contain non-ASCII characters.
         self.client_token = client_token
         # The CPU utilization threshold for elastic **scale-out**. Valid values: 60 to 90. Unit: %.
         self.cpu_enlarge_threshold = cpu_enlarge_threshold
         # The CPU utilization threshold for elastic **scale-in**. Valid values: 30 to 55. Unit: %.
         self.cpu_shrink_threshold = cpu_shrink_threshold
-        # A reserved parameter. This parameter is not supported.
+        # The reserved parameter. This parameter is not supported.
         self.crontab_job_id = crontab_job_id
         # The instance ID.
         # 
@@ -50,21 +50,23 @@ class ModifyComputeBurstConfigRequest(DaraModel):
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
-        # The maximum number of CPUs for elastic scale-out. The value can be up to twice the initial CPU configuration of the instance.
+        # The upper limit of CPUs for elastic scale-out. The value can be up to twice the initial CPU configuration of the instance.
         self.scale_max_cpus = scale_max_cpus
-        # The maximum memory for elastic scale-out. The value can be up to twice the initial memory configuration of the instance. Unit: GB. The value is adjusted in increments of 2 GB.
+        # The upper limit of memory for elastic scale-out. The value can be up to twice the initial memory configuration of the instance. Unit: GB. The adjustment increment is 2 GB.
         self.scale_max_memory = scale_max_memory
+        # The upper limit of RCU scaling for ApsaraDB RDS for MySQL provisioned Serverless.
         self.scale_max_rcu = scale_max_rcu
+        # The lower limit of RCU scaling for ApsaraDB RDS for MySQL provisioned Serverless.
         self.scale_min_rcu = scale_min_rcu
-        # The specified time at which the modification takes effect. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC).
-        # > This parameter is required when **SwitchTimeMode** is set to **2**.
+        # The specified time when the modification takes effect. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # >This parameter is required when **SwitchTimeMode** is set to **2**.
         self.switch_time = switch_time
         # The effective policy. Valid values:
-        # - **0**: The modification takes effect immediately.
-        # - **1**: The modification takes effect during the maintenance window. You can call the **ModifyDBInstanceMaintainTime** operation to modify the maintenance window.
-        # - **2**: The modification takes effect at a specified point in time.
+        # - **0**: Takes effect immediately.
+        # - **1**: Takes effect within the maintenance window. You can call the **ModifyDBInstanceMaintainTime** operation to modify the maintenance window.
+        # - **2**: Takes effect at a specified point in time.
         self.switch_time_mode = switch_time_mode
-        # A reserved parameter. This parameter is not supported.
+        # The reserved parameter. This parameter is not supported.
         self.task_id = task_id
 
     def validate(self):

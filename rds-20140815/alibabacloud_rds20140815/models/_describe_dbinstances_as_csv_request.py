@@ -16,14 +16,14 @@ class DescribeDBInstancesAsCsvRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # A deprecated parameter. You do not need to configure this parameter.
+        # **[Deprecated]** This parameter is deprecated. You do not need to configure it.
         self.cached_async = cached_async
-        # The instance ID. You can call DescribeDBInstances to query instance IDs.
+        # The instance ID. You can call the DescribeDBInstances operation to obtain the instance ID.
         self.dbinstance_id = dbinstance_id
-        # A deprecated parameter. You do not need to configure this parameter.
+        # **[Deprecated]** This parameter is deprecated. You do not need to configure it.
         self.export_key = export_key
         self.owner_id = owner_id
-        # The region ID. You can call DescribeRegions to query available region IDs.
+        # The region ID. You can call the DescribeRegions operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

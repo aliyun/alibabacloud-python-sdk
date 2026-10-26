@@ -15,15 +15,15 @@ class ModifyDBDescriptionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The database description.
+        # The description of the database.
         # 
         # This parameter is required.
         self.dbdescription = dbdescription
-        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The database name.
+        # The name of the database.
         # 
         # This parameter is required.
         self.dbname = dbname

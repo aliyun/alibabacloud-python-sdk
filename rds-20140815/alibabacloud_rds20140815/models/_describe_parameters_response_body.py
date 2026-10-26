@@ -22,9 +22,9 @@ class DescribeParametersResponseBody(DaraModel):
         self.engine = engine
         # The database engine version.
         self.engine_version = engine_version
-        # The parameter template information.
+        # The information about the parameter template.
         self.param_group_info = param_group_info
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         self.running_parameters = running_parameters
 
@@ -188,13 +188,13 @@ class DescribeParametersResponseBodyParamGroupInfo(DaraModel):
         parameter_group_name: str = None,
         parameter_group_type: str = None,
     ):
-        # The parameter template ID.
+        # The ID of the parameter template.
         self.param_group_id = param_group_id
-        # The parameter template description.
+        # The description of the parameter template.
         self.parameter_group_desc = parameter_group_desc
-        # The parameter template name.
+        # The name of the parameter template.
         self.parameter_group_name = parameter_group_name
-        # The parameter templatetype.
+        # The templatetype of the parameter template.
         self.parameter_group_type = parameter_group_type
 
     def validate(self):

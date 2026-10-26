@@ -15,34 +15,34 @@ class CreateBackupRequest(DaraModel):
         dbname: str = None,
         resource_owner_id: int = None,
     ):
-        # The backup type. Valid values:
-        # * **Logical**: logical backup. Only MySQL instances with local disks support this type.
-        # * **Physical**: physical backup. MySQL instances with local disks, SQL Server instances, and PostgreSQL instances support this type.
-        # * **Snapshot**: snapshot backup. MySQL instances with cloud disks, SQL Server instances, PostgreSQL instances, and MariaDB instances support this type.
+        # The backup method. Valid values:
+        # * **Logical**: logical backup (supported only for ApsaraDB RDS for MySQL instances with local SSDs)
+        # * **Physical**: physical backup (supported for ApsaraDB RDS for MySQL instances with local SSDs, ApsaraDB RDS for SQL Server, and ApsaraDB RDS for PostgreSQL)
+        # * **Snapshot**: snapshot backup (supported for ApsaraDB RDS for MySQL instances with cloud disks, ApsaraDB RDS for SQL Server, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for MariaDB)
         # 
         # Default value: **Physical**.
         # 
-        # > * When you use logical backup, the database must contain data (the data cannot be empty).
-        # > * MariaDB instances support only snapshot backup. However, set this parameter to **Physical**.
+        # > * When you use logical backup, the database must contain data.
+        # > * ApsaraDB RDS for MariaDB instances support only snapshot backup, but you must set this parameter to **Physical**.
         self.backup_method = backup_method
-        # - **SQL Server**: When the BackupStrategy parameter is set to db, the BackupMethod parameter is set to Physical, and the BackupType parameter is set to FullBackup, you can specify the retention period of the backup set. Valid values: 7 to 730 days, or -1 (long-term retention (LTR)).
-        # - **MySQL**: You can specify the retention period of the backup set. Valid values: 7 to 730 days, or -1 (long-term retention (LTR)).
+        # - **SQL Server**: When the BackupStrategy parameter is set to db, the BackupMethod parameter is set to Physical, and the BackupType parameter is set to FullBackup, you can specify the retention period of the backup set. Valid values: 7 to 730 days, and -1 (long-term retention (LTR)).
+        # - **MySQL**: You can specify the retention period of the backup set. Valid values: 7 to 730 days, and -1 (long-term retention (LTR)).
         self.backup_retention_period = backup_retention_period
         # The backup strategy. Valid values:
-        # * **db**: single-database backup
-        # * **instance**: instance backup
+        # * **db**: database-level backup
+        # * **instance**: instance-level backup
         # 
         # > This parameter takes effect only when the following conditions are met:
-        # > - MySQL: The **BackupMethod** parameter is set to **Logical**.
-        # > - SQL Server: The **BackupType** parameter is set to **FullBackup**.
+        # > - For ApsaraDB RDS for MySQL: The **BackupMethod** parameter is set to **Logical**.
+        # > - For ApsaraDB RDS for SQL Server: The **BackupType** parameter is set to **FullBackup**.
         self.backup_strategy = backup_strategy
-        # The backup method for SQL Server instances. Valid values:
-        # * **Auto** (default): automatically selects full backup or incremental backup.
-        # * **FullBackup**: full backup.
+        # The backup type for ApsaraDB RDS for SQL Server instances. Valid values:
+        # * **Auto** (default): automatically selects full backup or incremental backup
+        # * **FullBackup**: full backup
         # 
         # > This parameter takes effect only when the **BackupMethod** parameter is set to **Physical**.
         self.backup_type = backup_type
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

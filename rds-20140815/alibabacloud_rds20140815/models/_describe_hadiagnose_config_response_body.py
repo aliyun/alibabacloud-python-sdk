@@ -10,9 +10,9 @@ class DescribeHADiagnoseConfigResponseBody(DaraModel):
         request_id: str = None,
         tcp_connection_type: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The availability check method that Alibaba Cloud uses for the ApsaraDB RDS instance. Valid values:
+        # The availability detection method used by Alibaba Cloud for the ApsaraDB RDS instance. Valid values:
         # - **LONG**: persistent connection.
         # - **SHORT**: short-lived connection.
         self.tcp_connection_type = tcp_connection_type

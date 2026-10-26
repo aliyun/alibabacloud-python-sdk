@@ -21,7 +21,7 @@ class DescribeErrorLogsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of error log entries on the current page.
         self.page_record_count = page_record_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries.
         self.total_record_count = total_record_count

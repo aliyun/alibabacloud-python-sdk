@@ -15,7 +15,7 @@ class CreateDBInstanceForRebuildResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The response message.
+        # The returned message.
         self.message = message
         # The order ID.
         self.order_id = order_id

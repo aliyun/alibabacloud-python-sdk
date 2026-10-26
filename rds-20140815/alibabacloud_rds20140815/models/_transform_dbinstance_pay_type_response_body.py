@@ -14,17 +14,17 @@ class TransformDBInstancePayTypeResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The billing method. Valid values:
-        # - POSTPAY: pay-as-you-go
-        # - PREPAY: subscription
+        # - POSTPAY: Pay-as-you-go.
+        # - PREPAY: Subscription.
         self.charge_type = charge_type
         # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The expiration time.
         # > This parameter is not returned if the billing method is changed to pay-as-you-go.
         self.expired_time = expired_time
-        # The order ID.
+        # The ID of the order.
         self.order_id = order_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

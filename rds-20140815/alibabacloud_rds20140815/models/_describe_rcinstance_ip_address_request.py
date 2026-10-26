@@ -18,26 +18,26 @@ class DescribeRCInstanceIpAddressRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # The page number of the page to return. Default value: 1, which indicates that the first page is returned.
+        # The number of the page to return. Default value: 1.
         self.current_page = current_page
         # The region ID of the assets that are assigned public IP addresses to query.
         self.ddos_region_id = ddos_region_id
         # The DDoS mitigation status of the assets that are assigned public IP addresses to query. Valid values:
         # 
-        # - **defense**: Cleaning. Assets that are assigned public IP addresses for which Anti-DDoS Origin scrubs traffic are queried.
-        # - **blackhole**: Black Hole Activated. Assets that are assigned public IP addresses that are in the blackhole filtering status are queried.
+        # - **defense**: Cleaning. Queries assets that are assigned public IP addresses and for which the system scrubs traffic.
+        # - **blackhole**: Black Hole Activated. Queries assets that are assigned public IP addresses and are under the blackhole filtering status.
         self.ddos_status = ddos_status
-        # The instance ID of the Custom instance to which the assets that are assigned public IP addresses belong.
+        # The instance ID of the RDS Custom instance to which the assets that are assigned public IP addresses belong.
         self.instance_id = instance_id
         # The IP address of the assets that are assigned public IP addresses to query.
         self.instance_ip = instance_ip
-        # The name of the Custom instance to which the assets that are assigned public IP addresses belong.
+        # The name of the RDS Custom instance to which the assets that are assigned public IP addresses belong.
         self.instance_name = instance_name
         # The instance type of the assets that are assigned public IP addresses to query. Set the value to **ecs**.
         self.instance_type = instance_type
-        # Settings for paged query. The number of instances to return on each page for paging.
+        # The number of instances per page in a paged query.
         self.page_size = page_size
-        # The region ID of the Custom instance.
+        # The region ID of the RDS Custom instance.
         self.region_id = region_id
         # The resource type. Set the value to **ecs**.
         self.resource_type = resource_type

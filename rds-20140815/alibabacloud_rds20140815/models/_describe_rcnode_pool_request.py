@@ -13,7 +13,7 @@ class DescribeRCNodePoolRequest(DaraModel):
     ):
         # The ID of the RDS Custom container cluster.
         self.cluster_id = cluster_id
-        # The node pool ID.
+        # The ID of the node pool.
         self.node_pool_id = node_pool_id
         # The region ID.
         self.region_id = region_id

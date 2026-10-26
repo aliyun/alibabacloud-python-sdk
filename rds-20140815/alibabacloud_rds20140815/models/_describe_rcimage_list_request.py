@@ -18,14 +18,14 @@ class DescribeRCImageListRequest(DaraModel):
     ):
         # The system architecture of the image. Valid values:
         # 
-        # - x86_64.
-        # - arm64.
+        # - x86_64
+        # - arm64
         self.architecture = architecture
         # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # Queries available images for the specified instance type.
+        # The instance type for which to query available images.
         self.instance_type = instance_type
         # The page number.
         self.page_number = page_number

@@ -12,15 +12,15 @@ class DeleteDBInstanceReplicationRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The name of the replication channel, which identifies the replication task.
+        # The name of the replication channel, which is used to identify the replication task.
         self.channel_name = channel_name
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
         # 阿里云账号ID，用于指定资源的所有者
         self.owner_id = owner_id
-        # The region ID. You can call DescribeRegions to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -21,10 +21,10 @@ class DescribeCrossRegionBackupsRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The user backup ID.
+        # The ID of the user backup.
         self.backup_id = backup_id
-        # The cross-region backup file ID.
-        # >You must specify either **CrossBackupId** or the time range parameters (**StartTime** and **EndTime**).
+        # The ID of the cross-region backup file.
+        # >You must specify either **CrossBackupId** or the start and end time parameters (**StartTime** and **EndTime**).
         self.cross_backup_id = cross_backup_id
         # The ID of the destination region for cross-region backup.
         self.cross_backup_region = cross_backup_region
@@ -32,12 +32,12 @@ class DescribeCrossRegionBackupsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format (UTC).
+        # The end time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # > For non-UTC+0 time zones, subtract 8 hours from the actual time before passing the value.
+        # > If the time zone is not UTC+0, you must subtract 8 hours from the actual time.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+        # The page number. Valid values: any integer greater than 0 and less than or equal to the maximum value of the Integer type.
         # 
         # Default value: **1**.
         self.page_number = page_number
@@ -53,13 +53,13 @@ class DescribeCrossRegionBackupsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format (UTC).
+        # The start time of the query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # > For non-UTC+0 time zones, subtract 8 hours from the actual time before passing the value.
+        # > If the time zone is not UTC+0, you must subtract 8 hours from the actual time.
         self.start_time = start_time
 
     def validate(self):

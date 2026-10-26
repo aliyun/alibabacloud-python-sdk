@@ -19,15 +19,15 @@ class DescribeADInfoResponseBody(DaraModel):
         # The IP address of the AD domain server.
         self.adserver_ip_address = adserver_ip_address
         # The status of the AD domain. Valid values:
-        # * **-1**: The instance is being joined to the AD domain.
-        # * **0**: Failed to join the AD domain.
-        # * **1**: Joined the AD domain.
+        # * **-1**: The instance is joining the AD domain.
+        # * **0**: The instance failed to join the AD domain.
+        # * **1**: The instance joined the AD domain.
         self.adstatus = adstatus
-        # The reason for the exception.
+        # The cause of the exception.
         self.abnormal_reason = abnormal_reason
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The username of the AD domain.
+        # The username for the AD domain.
         self.user_name = user_name
 
     def validate(self):

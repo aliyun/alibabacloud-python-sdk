@@ -20,43 +20,43 @@ class ValidateImportTaskRequest(DaraModel):
         user: str = None,
         xtrabackup_path: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to obtain this parameter.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # The estimated instance size. Unit: GB.
+        # The estimated size of the instance. Unit: GB.
         self.estimated_size = estimated_size
-        # The address of the source MySQL instance.
+        # The address of the source MySQL database.
         # 
         # This parameter is required.
         self.host = host
         self.owner_id = owner_id
-        # The password of the source MySQL user, encoded in Base64.
+        # The Base64-encoded password of the source MySQL database user.
         # 
         # This parameter is required.
         self.password = password
-        # The port number of the source MySQL instance.
+        # The port number of the source MySQL database.
         # 
         # This parameter is required.
         self.port = port
-        # The region ID. You can call DescribeRegions to obtain this parameter.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the source cloud instance.
         self.source_instance_id = source_instance_id
-        # The type of the source instance. Valid values:
+        # The type of the source platform. Valid values:
         # - ECS
         self.source_platform = source_platform
         # The port number for backup transmission.
         # 
         # This parameter is required.
         self.stream_port = stream_port
-        # The username of the source MySQL instance.
+        # The username of the source MySQL database.
         # 
         # This parameter is required.
         self.user = user
-        # The path of the Xtrabackup tool on the source instance.
+        # The path to the XtraBackup tool on the source instance.
         self.xtrabackup_path = xtrabackup_path
 
     def validate(self):

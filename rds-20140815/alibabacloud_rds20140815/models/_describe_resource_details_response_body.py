@@ -31,15 +31,15 @@ class DescribeResourceDetailsResponseBody(DaraModel):
         self.backup_log_size = backup_log_size
         # The backup size. Unit: MB.
         self.backup_size = backup_size
-        # The disk capacity.
+        # The storage capacity.
         self.db_instance_storage = db_instance_storage
-        # The name of the database proxy instance.
+        # The name of the proxy instance.
         self.db_proxy_instance_name = db_proxy_instance_name
-        # The used storage space, which consists of the space occupied by data files and log files. Unit: bytes. A value of -1 indicates that no data is available.
+        # The used storage space, which consists of the space occupied by data files and logs. Unit: bytes. A value of -1 indicates that no data is available.
         self.disk_used = disk_used
         # The instance storage type.
         self.instance_storage_type = instance_storage_type
-        # The RDS whitelist group specifications.
+        # The whitelist group specifications.
         self.rds_ecs_security_group_rel = rds_ecs_security_group_rel
         # The region ID.
         self.region = region
@@ -47,17 +47,17 @@ class DescribeResourceDetailsResponseBody(DaraModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The [IP whitelist](https://help.aliyun.com/document_detail/43185.html) of the instance. Separate multiple entries with commas (,). Each entry must be unique. A maximum of 1,000 entries are supported. The following two formats are supported:
+        # The [IP address whitelist](https://help.aliyun.com/document_detail/43185.html) of the instance. Separate multiple entries with commas (,). Duplicate entries are not allowed. You can add up to 1,000 entries. The following two formats are supported:
         # * IP address format, such as 10.10.XX.XX.
-        # * CIDR format, such as 10.10.XX.XX/24, where 24 indicates the length of the prefix in the IP address. The prefix length ranges from 1 to 32.
+        # * CIDR format, such as 10.10.XX.XX/24. In this format, 24 indicates the length of the prefix in the IP address, and the value ranges from 1 to 32.
         # 
-        # If this parameter is not specified, the whitelist information of the default group of the original instance is used.
+        # If this parameter is not specified, the default whitelist of the original instance is used.
         self.security_iplist = security_iplist
         # The vSwitch ID.
         # 
-        # > The vSwitch must belong to the same zone as the ApsaraDB RDS instance.
+        # > The vSwitch must reside in the same zone as the ApsaraDB RDS instance.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

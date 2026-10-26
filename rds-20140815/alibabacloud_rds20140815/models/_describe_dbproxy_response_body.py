@@ -31,7 +31,7 @@ class DescribeDBProxyResponseBody(DaraModel):
     ):
         self.dbproxy_avzones = dbproxy_avzones
         self.dbproxy_connect_string_items = dbproxy_connect_string_items
-        # An internal parameter. You can ignore this parameter.
+        # This is an internal parameter and can be ignored.
         self.dbproxy_engine_type = dbproxy_engine_type
         # The current minor version of the proxy instance.
         self.dbproxy_instance_current_minor_version = dbproxy_instance_current_minor_version
@@ -42,41 +42,41 @@ class DescribeDBProxyResponseBody(DaraModel):
         self.dbproxy_instance_name = dbproxy_instance_name
         # The number of enabled proxy instances.
         self.dbproxy_instance_num = dbproxy_instance_num
-        # This parameter is supported only for ApsaraDB RDS for PostgreSQL. The actual specification size of the proxy instance.
+        # This parameter is supported only by ApsaraDB RDS for PostgreSQL. It indicates the actual specifications of the proxy instance.
         # 
         # Format: `CPU/Memory`.
         # 
         # Example: 4/8 indicates 4 CPU cores and 8 GB of memory.
         self.dbproxy_instance_size = dbproxy_instance_size
         # The running status of the proxy instance. Valid values:
-        # - DBInstanceClassChanging: The specification is being changed.
+        # - DBInstanceClassChanging: The specifications are being changed.
         # - Creating: The instance is being created.
         # - Running: The instance is running.
         # - Deleting: The instance is being deleted.
         self.dbproxy_instance_status = dbproxy_instance_status
         # The type of the proxy service. Valid values:
-        # - 1: shared database proxy
-        # - 2: dedicated database proxy
+        # - 1: shared proxy
+        # - 2: dedicated proxy
         # - 3: general-purpose database proxy
         # 
-        # > ApsaraDB RDS for PostgreSQL does not support shared database proxies.
+        # > ApsaraDB RDS for PostgreSQL does not support shared proxies.
         self.dbproxy_instance_type = dbproxy_instance_type
-        # An internal parameter. You can ignore this parameter.
+        # This is an internal parameter and can be ignored.
         self.dbproxy_kind_code = dbproxy_kind_code
         self.dbproxy_nodes = dbproxy_nodes
-        # The persistent connection status. Valid values:
-        # - **Enabled**: Persistent connections are enabled.
-        # - **Disabled**: Persistent connections are disabled.
-        # - **Unsupported**: The instance does not support persistent connections.
+        # The status of connection persistence. Valid values:
+        # - **Enabled**: enabled
+        # - **Disabled**: disabled
+        # - **Unsupported**: The instance does not support connection persistence.
         self.dbproxy_persistent_connection_status = dbproxy_persistent_connection_status
         # The status of the database proxy feature. Valid values:
         # - Shutdown: disabled
         # - Startup: enabled
         self.dbproxy_service_status = dbproxy_service_status
         self.db_proxy_endpoint_items = db_proxy_endpoint_items
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

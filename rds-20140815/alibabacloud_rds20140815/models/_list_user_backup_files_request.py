@@ -18,30 +18,30 @@ class ListUserBackupFilesRequest(DaraModel):
         status: str = None,
         tags: str = None,
     ):
-        # The user backup ID.
+        # Queries target user backups by user backup ID.
         self.backup_id = backup_id
-        # The comment of the user backup to query.
-        # >You can enter part of the comment for fuzzy matching.
+        # Queries target user backups by comment.
+        # > You can enter a partial comment of the target user backup for fuzzy match.
         self.comment = comment
-        # The OSS download URL of the user backup file. For information about how to obtain the OSS download URL of a user backup file, see [How do I obtain the URL of an uploaded object?](https://help.aliyun.com/document_detail/39607.html).
+        # Queries target user backups by the OSS download URL of the user backup file. For more information about how to obtain the OSS download URL of a user backup file, see [Obtain the URL of an uploaded object](https://help.aliyun.com/document_detail/39607.html).
         self.oss_url = oss_url
         self.owner_id = owner_id
-        # The region ID. You can call DescribeRegions to query the available regions.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can call DescribeDBInstanceAttribute to query the resource group ID.
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the user backup file. Valid values:
+        # Queries target user backups by the status of the user backup file. Valid values:
         # * **Importing**: The backup is being imported.
         # * **Failed**: The import failed.
         # * **CheckSuccess**: The verification passed.
         # * **BackupSuccess**: The import succeeded.
         # * **Deleted**: The backup is deleted.
         self.status = status
-        # The tag information used to query the user backup.
+        # Queries target user backups by tag.
         self.tags = tags
 
     def validate(self):

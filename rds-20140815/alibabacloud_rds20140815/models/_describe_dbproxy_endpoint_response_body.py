@@ -31,7 +31,7 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
         read_only_instance_weight: str = None,
         request_id: str = None,
     ):
-        # The timeout period for consistency reads. Unit: milliseconds. Default value: **10**. Valid values: **0 to 60000**.
+        # The timeout period for consistent reads. Unit: milliseconds. Default value: **10**. Valid values: **0** to **60000**.
         self.causal_consist_read_timeout = causal_consist_read_timeout
         # The proxy endpoint.
         self.dbproxy_connect_string = dbproxy_connect_string
@@ -42,6 +42,7 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
         # The port of the proxy endpoint.
         self.dbproxy_connect_string_port = dbproxy_connect_string_port
+        # The execution cost threshold for SQL statements in automatic request distribution among row store and column store nodes for HTAP.
         self.dbproxy_endpoint_cost_threshold_for_duckdb = dbproxy_endpoint_cost_threshold_for_duckdb
         # The ID of the proxy endpoint.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
@@ -49,22 +50,22 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
         self.dbproxy_endpoint_min_slave_count = dbproxy_endpoint_min_slave_count
         # An internal parameter. You can ignore this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The settings of the proxy endpoint in JSON format. The following parameters are included:
-        # * **TransactionReadSqlRouteOptimizeStatus**: the transaction splitting setting. The value is **0** (disabled) or **1** (enabled).
-        # * **ConnectionPersist**: the connection pool setting. The value is **0** (disabled), **1** (session-level connection pool), or **2** (transaction-level connection pooling).
-        # * **ReadWriteSpliting**: the read/write splitting setting. The value is **0** (disabled) or **1** (enabled).
-        # * **AZProximityAccess**: the nearest access feature. The value is **0** (disabled) or **1** (enabled).
-        # * **CausalConsistRead**: the read consistency setting. The value is **0** (eventual consistency), **1** (session consistency), or **2** (global consistency).
-        # * **HtapFilter**: the automatic request distribution among row store and column store nodes setting. The value is **0** (disabled) or **1** (enabled).
-        # * **PinPreparedStmt**: visible only for ApsaraDB RDS for PostgreSQL. This is an internal parameter.
+        # The settings of the proxy endpoint. The value is in JSON format and includes the following parameters:
+        # * **TransactionReadSqlRouteOptimizeStatus**: the transaction splitting setting. Valid values: **0** (disabled) and **1** (enabled).
+        # * **ConnectionPersist**: the connection pool setting. Valid values: **0** (disabled), **1** (session-level connection pool), and **2** (transaction-level connection pooling).
+        # * **ReadWriteSpliting**: the read/write splitting setting. Valid values: **0** (disabled) and **1** (enabled).
+        # * **AZProximityAccess**: the nearest access setting. Valid values: **0** (disabled) and **1** (enabled).
+        # * **CausalConsistRead**: the read consistency setting. Valid values: **0** (eventual consistency), **1** (session consistency), and **2** (global consistency).
+        # * **HtapFilter**: the automatic request distribution among row store and column store nodes for HTAP setting. Valid values: **0** (disabled) and **1** (enabled).
+        # * **PinPreparedStmt**: an internal parameter visible only in ApsaraDB RDS for PostgreSQL.
         # 
-        # > ApsaraDB RDS for PostgreSQL supports modification of only **ReadWriteSpliting**. **TransactionReadSqlRouteOptimizeStatus** and **PinPreparedStmt** are set to 1 by default.
+        # > For ApsaraDB RDS for PostgreSQL, only **ReadWriteSpliting** can be modified. **TransactionReadSqlRouteOptimizeStatus** and **PinPreparedStmt** are set to 1 by default.
         self.dbproxy_features = dbproxy_features
         self.dbproxy_nodes = dbproxy_nodes
         # The description of the proxy endpoint.
         self.db_proxy_endpoint_aliases = db_proxy_endpoint_aliases
-        # The read/write type of the proxy endpoint. Valid values:
-        # * **ReadWrite**: read/write splitting mode.
+        # The read/write mode of the proxy endpoint. Valid values:
+        # * **ReadWrite**: read/write mode.
         # * **ReadOnly**: read-only mode.
         self.db_proxy_endpoint_read_write_mode = db_proxy_endpoint_read_write_mode
         # The VPC ID of the proxy endpoint.
@@ -76,19 +77,19 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
         self.endpoint_connect_items = endpoint_connect_items
         # The read weight distribution mode. For more information, see [Read weight distribution](https://help.aliyun.com/document_detail/96076.html). Valid values:
         # 
-        # * **Standard**: automatically distributes weights based on instance specifications.
-        # * **Custom**: uses custom weight distribution.
+        # * **Standard**: automatic allocation based on instance specifications
+        # * **Custom**: custom weight allocation
         self.read_only_instance_distribution_type = read_only_instance_distribution_type
-        # The latency threshold for read/write splitting. When the latency of a read-only instance exceeds this threshold, read traffic is not routed to the instance. Unit: seconds.
+        # The latency threshold for read/write splitting. If the latency of a read-only instance exceeds this threshold, read traffic is not routed to the instance. Unit: seconds.
         self.read_only_instance_max_delay_time = read_only_instance_max_delay_time
-        # The read weight distribution information, which specifies the read request weights of the primary instance and read-only instances. The value is in JSON format and includes the following parameters:
-        # * **DBInstanceId**: the instance ID.
-        # * **DBInstanceType**: the instance type. The value is **Master** (primary instance) or **ReadOnly** (read-only instance).
-        # * **NodeID**: the node ID of the primary node or secondary node of the primary instance in the Cluster Edition.
-        # * **NodeType**: the node type in the Cluster Edition. The value is **Primary** (primary node of the primary instance) or **Secondary** (secondary node of the primary instance).
-        # * **Weight**: the read request weight. The value increases in increments of **100**. Maximum value: **10000**.
+        # The read weight distribution information, which specifies the read request weights of the primary and read-only instances. The value is in JSON format and includes the following parameters:
+        # * **DBInstanceId**: instance ID of the instance.
+        # * **DBInstanceType**: the type of the instance. Valid values: **Master** (primary instance) and **ReadOnly** (read-only instance).
+        # * **NodeID**: instance IDs of the primary and secondary nodes of the primary instance in the Cluster Edition.
+        # * **NodeType**: the type of the node in the Cluster Edition. Valid values: **Primary** (primary node of the primary instance) and **Secondary** (secondary node of the primary instance).
+        # * **Weight**: the read request weight. The weight increases in increments of **100**, and the maximum value is **10000**.
         self.read_only_instance_weight = read_only_instance_weight
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

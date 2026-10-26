@@ -23,7 +23,7 @@ class DescribeDBInstanceEncryptionKeyResponseBody(DaraModel):
     ):
         # The creator of the key.
         self.creator = creator
-        # The scheduled time when the key is to be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The estimated time when the key is deleted. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.delete_date = delete_date
         # The description of the key.
         self.description = description
@@ -32,12 +32,12 @@ class DescribeDBInstanceEncryptionKeyResponseBody(DaraModel):
         # The list of keys.
         self.encryption_key_list = encryption_key_list
         # The status of the key. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # - **Enabled**: The key is enabled.
+        # - **Disabled**: The key is disabled.
         self.encryption_key_status = encryption_key_status
-        # The purpose of the key.
+        # The usage of the key.
         self.key_usage = key_usage
-        # The expiration time of the key material. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The expiration time of the key material. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.material_expire_time = material_expire_time
         # The source of the key.
         self.origin = origin
@@ -145,27 +145,27 @@ class DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList(DaraModel):
         self.alias_name = alias_name
         # The creator of the key.
         self.creator = creator
-        # The scheduled time when the key is to be deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The estimated time when the key is deleted. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.delete_date = delete_date
         # The description of the key.
         self.description = description
         # The key ID.
         self.encryption_key = encryption_key
         # The status of the key. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # - **Enabled**: The key is enabled.
+        # - **Disabled**: The key is disabled.
         self.encryption_key_status = encryption_key_status
         # The type of the key. Valid values:
-        # - CMK: customer master key (CMK).
-        # - ServiceKey: service key.
+        # - CMK: customer master key
+        # - ServiceKey: service key
         self.key_type = key_type
-        # The purpose of the key.
+        # The usage of the key.
         self.key_usage = key_usage
-        # The expiration time of the key material. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The expiration time of the key material. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.material_expire_time = material_expire_time
         # The source of the key.
         self.origin = origin
-        # The usage of the key. Valid values:
+        # The usage of the key:
         # 
         # - **TDE**: transparent data encryption.
         # - **DiskEncryption**: cloud disk encryption.

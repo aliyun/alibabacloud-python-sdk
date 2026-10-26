@@ -24,7 +24,7 @@ class DescribeCloudMigrationPrecheckResultResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of queried entries.
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):

@@ -17,26 +17,26 @@ class DescribeMigrateTasksRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # The ID of the instance. You can call the DescribeDBInstances operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+        # The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC time).
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The page number. Valid values: any integer greater than 0 that does not exceed the maximum value of Integer.
+        # The page number. Valid values: any positive integer up to the maximum value of the Integer type.
         # 
         # Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values: **30** to **100**. Default value: **30**.
         self.page_size = page_size
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+        # The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC time).
         # 
         # This parameter is required.
         self.start_time = start_time

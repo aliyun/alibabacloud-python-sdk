@@ -28,26 +28,26 @@ class MigrateDBInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The migration time. Valid values:
-        # * **Immediately**: migrates the instance immediately. This is the default value.
-        # * **MaintainTime**: migrates the instance during the maintenance window.
-        # * **Specified**: migrates the instance at a specified time.
+        # The time when the migration takes effect. Valid values:
+        # * **Immediately**: The migration takes effect immediately. This is the default value.
+        # * **MaintainTime**: The migration takes effect within the maintenance window.
+        # * **Specified**: The migration takes effect at a specified time.
         self.effective_time = effective_time
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The specified switchover time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
-        # >This parameter is required when **EffectiveTime** is set to **Specified**.
+        # The specified time for the migration. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # > This parameter is required when **EffectiveTime** is set to **Specified**.
         self.specified_time = specified_time
-        # The ID of the destination host to which the primary instance is migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
+        # The ID of the destination host to which the primary instance is to be migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
         self.target_dedicated_host_id_for_master = target_dedicated_host_id_for_master
-        # The ID of the destination host to which the secondary instance is migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
+        # The ID of the destination host to which the secondary instance is to be migrated. You can call the DescribeDedicatedHosts operation to query the host ID.
         self.target_dedicated_host_id_for_slave = target_dedicated_host_id_for_slave
         # The zone ID of the secondary node.
         self.zone_id_for_follower = zone_id_for_follower
-        # The zone ID of the log node.
+        # The zone ID of the logger node.
         self.zone_id_for_log = zone_id_for_log
 
     def validate(self):

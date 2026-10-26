@@ -18,7 +18,7 @@ class DescribeCrossRegionBackupDBInstanceRequest(DaraModel):
         # The instance ID. You can specify up to 30 instance IDs at a time. Separate multiple instance IDs with commas (,).
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The page number. Valid values: any integer greater than 0 that does not exceed the maximum value of the Integer data type.
+        # The page number. Valid values: any integer greater than 0 and less than or equal to the maximum value of the Integer type.
         # 
         # Default value: **1**.
         self.page_number = page_number

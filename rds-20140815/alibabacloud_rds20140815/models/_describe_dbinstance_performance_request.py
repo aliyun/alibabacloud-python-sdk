@@ -14,25 +14,25 @@ class DescribeDBInstancePerformanceRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
-        # > The interval between the start time and end time must be greater than the monitoring frequency of your instance. Otherwise, an empty list may be returned.
+        # The end time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
+        # >The interval between the start time and the end time must be greater than the monitoring frequency of the instance. Otherwise, an empty list may be returned.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The performance metrics that you want to query. Separate multiple values with commas (,). You can specify up to 30 metrics. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/26316.html).
-        # > If **Key** is set to **MySQL_SpaceUsage** or **SQLServer_SpaceUsage**, only monitoring data within the last day can be queried.
+        # The performance metrics that you want to query. Separate multiple values with commas (,). You can specify up to 30 metrics. For more information, see [Performance metrics](https://help.aliyun.com/document_detail/26316.html).
+        # >If **Key** is set to **MySQL_SpaceUsage** or **SQLServer_SpaceUsage**, you can query only the monitoring data collected within the last 24 hours.
         # 
         # This parameter is required.
         self.key = key
         # The unique identifier of the instance.
         self.node_id = node_id
         self.resource_owner_id = resource_owner_id
-        # The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
-        # > The interval between the start time and end time must be greater than the monitoring frequency of your instance. Otherwise, an empty list may be returned.
+        # The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
+        # >The interval between the start time and the end time must be greater than the monitoring frequency of the instance. Otherwise, an empty list may be returned.
         # 
         # This parameter is required.
         self.start_time = start_time

@@ -15,7 +15,7 @@ class DescribeSecretsResponseBody(DaraModel):
         request_id: str = None,
         secrets: List[main_models.DescribeSecretsResponseBodySecrets] = None,
     ):
-        # The page number.
+        # The page number of the query result.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -82,13 +82,13 @@ class DescribeSecretsResponseBodySecrets(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.account_id = account_id
-        # The description of the credential.
+        # The description of the credential provided by the user.
         self.description = description
         # The region ID.
         self.region_id = region_id
-        # The user credential of the Data API account.
+        # The user credential of the created Data API account.
         self.secret_arn = secret_arn
-        # The credential name.
+        # The name of the user credential.
         self.secret_name = secret_name
         # The database username.
         self.username = username

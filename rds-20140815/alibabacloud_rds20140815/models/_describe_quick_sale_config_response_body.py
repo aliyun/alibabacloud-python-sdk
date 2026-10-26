@@ -16,9 +16,10 @@ class DescribeQuickSaleConfigResponseBody(DaraModel):
         # The commodity code. Valid values:
         # 
         # - rds: subscription
+        # 
         # - bards: pay-as-you-go
         self.commodity = commodity
-        # The commodity configuration details.
+        # The product configuration details.
         self.items = items
         # Id of the request
         self.request_id = request_id

@@ -18,10 +18,10 @@ class DescribeKmsAssociateResourcesResponseBody(DaraModel):
         self.associate_dbinstances = associate_dbinstances
         # Indicates whether associated ApsaraDB RDS instances exist.
         # 
-        # - **true**: Associated instances exist.
-        # - **false**: No associated instances exist.
+        # - **true**: Yes.
+        # - **false**: No.
         self.associate_status = associate_status
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -75,13 +75,14 @@ class DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances(DaraModel):
         # The instance ID.
         self.dbinstance_name = dbinstance_name
         # The database engine. Valid values:
+        # 
         # - **MySQL**
         # - **SQLServer**
         # - **PostgreSQL**
         self.engine = engine
-        # The purpose of the key. Valid values:
+        # The usage of the key. Valid values:
         # 
-        # - **DiskEncryption**: cloud disk data encryption.
+        # - **DiskEncryption**: cloud disk encryption.
         # - **TDE**: transparent data encryption.
         self.key_used_by = key_used_by
         # The instance status. Valid values:
@@ -90,10 +91,10 @@ class DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances(DaraModel):
         # - **ACTIVATION**: The instance is running.
         # - **DELETING**: The instance is being deleted.
         # - **RESTARTING**: The instance is being restarted.
-        # - **CLASS_CHANGING**: The instance specifications are being changed.
-        # - **INS_MAINTAINING**: The instance is being maintained.
-        # - **BACKUP_RECOVERING**: A backup is being restored.
-        # - **NET_MODIFYING**: The network is being changed.
+        # - **CLASS_CHANGING**: The instance is undergoing a specification change.
+        # - **INS_MAINTAINING**: The instance is undergoing maintenance.
+        # - **BACKUP_RECOVERING**: The instance is being restored from a backup.
+        # - **NET_MODIFYING**: The network configuration of the instance is being changed.
         self.status = status
 
     def validate(self):

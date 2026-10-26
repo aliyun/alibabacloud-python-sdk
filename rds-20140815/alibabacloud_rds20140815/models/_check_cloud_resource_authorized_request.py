@@ -17,18 +17,18 @@ class CheckCloudResourceAuthorizedRequest(DaraModel):
         security_token: str = None,
         target_region_id: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call DescribeRegions to query the available regions.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The ID of the target region. You can call DescribeRegions to query the available regions.
+        # The ID of the destination region. You can call the DescribeRegions operation to query the region ID.
         self.target_region_id = target_region_id
 
     def validate(self):

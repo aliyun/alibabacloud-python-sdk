@@ -11,13 +11,13 @@ class AssociateEipAddressWithRCInstanceRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the EIP.
+        # The ID of the elastic IP address (EIP).
         # 
         # > If you do not have an EIP, [create an EIP](https://help.aliyun.com/document_detail/292841.html) first.
         self.allocation_id = allocation_id
-        # The instance ID of the RDS Custom instance.
+        # The RDS Custom instance ID.
         self.instance_id = instance_id
-        # The region ID. You can call DescribeRegions to query the available regions.
+        # The region ID. You can call the DescribeRegions operation to query available regions.
         self.region_id = region_id
 
     def validate(self):

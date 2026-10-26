@@ -118,16 +118,18 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether auto-renewal is enabled for the instance.
         self.auto_renew = auto_renew
+        # The ID of the RDS Custom container cluster to which the instance belongs.
         self.cluster_id = cluster_id
-        # The cluster name.
+        # The name of the cluster.
         self.cluster_name = cluster_name
         # The number of vCPUs.
         self.cpu = cpu
-        # Indicates whether the instance can be added to an ACK cluster. If the parameter settings for this field is **1**, the created instance can be added to an ACK cluster by calling the **AttachRCInstances** API operation, which enables efficient management of container applications.
+        # Specifies whether the instance is allowed to join an ACK cluster. If the parameter settings are **1**, the created instance can be added to an ACK cluster by calling the **AttachRCInstances** API operation to efficiently manage containerized applications. Valid values:
         # 
-        # - **1**: Yes.
-        # - **0** (default): No.
+        # - **1**: yes
+        # - **0** (default): no
         self.create_mode = create_mode
         # The database type.
         self.db_type = db_type
@@ -135,22 +137,23 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         self.deployment_set_id = deployment_set_id
         # The description.
         self.description = description
+        # The hostname of the instance.
         self.ecs_host_name = ecs_host_name
-        # The time when the instance expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC+0.
+        # The time when the instance expires. The time follows the ISO 8601 standard and uses the UTC+0 time zone in the `yyyy-MM-ddTHH:mm:ssZ` format.
         # 
-        # > The expiration time displayed on the console is UTC+8.
+        # > The expiration time displayed in the console is 8 hours ahead of this time.
         self.expired_time = expired_time
-        # The task creation time (GMT).
+        # The time when the task was created in GMT.
         self.gmt_created = gmt_created
-        # The host IP address.
+        # The IP address of the host.
         self.host_ip = host_ip
-        # The host name.
+        # The hostname of the host.
         self.host_name = host_name
         # The image ID.
         self.image_id = image_id
         # The billing method. Valid values:
-        # * **PrePaid**: subscription.
-        # * **PostPaid**: pay-as-you-go.
+        # * **PrePaid**: subscription
+        # * **PostPaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
         # The instance ID.
         self.instance_id = instance_id
@@ -158,17 +161,22 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         self.instance_name = instance_name
         # The instance type.
         # 
-        # For more information, see [RDS Custom instance type list](https://help.aliyun.com/document_detail/2844823.html).
+        # For more information, see [RDS Custom instance types](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type = instance_type
         # The instance family.
         # 
-        # For more information, see [RDS Custom instance type list](https://help.aliyun.com/document_detail/2844823.html).
+        # For more information, see [RDS Custom instance types](https://help.aliyun.com/document_detail/2844823.html).
         self.instance_type_family = instance_type_family
         # The memory size. Unit: MiB.
         self.memory = memory
-        # The node type. If the value **rds_vnode** is returned, the node is a container node.
+        # The node type. A value of **rds_vnode** indicates that the node is a container node.
         self.node_type = node_type
+        # The name of the operating system.
         self.osname = osname
+        # The type of the operating system. The operating system can be Windows Server or Linux. Valid values:
+        # 
+        # - windows
+        # - linux
         self.ostype = ostype
         # The public IP address of the instance.
         self.public_ip = public_ip
@@ -176,30 +184,32 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         self.region_id = region_id
         # The security group ID.
         self.security_group_id = security_group_id
-        # The bidding strategy for pay-as-you-go instances. Valid values:
+        # The bidding strategy for the pay-as-you-go instance. Valid values:
         # 
-        # - **NoSpot**: A regular pay-as-you-go instance.
-        # - **SpotAsPriceGo**: The system automatically bids, following the current market price.
+        # - **NoSpot**: The instance is a regular pay-as-you-go instance.
+        # - **SpotAsPriceGo**: The system automatically places bids based on the current market price.
         self.spot_strategy = spot_strategy
+        # The last start time of the instance. The time is displayed in UTC and follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format.
         self.start_time = start_time
         # The instance status. Valid values:
         # 
-        # - **Pending**: Being created.
-        # - **Running**: Running.
-        # - **Starting**: Being started.
-        # - **Stopping**: Being stopped.
-        # - **Stopped**: Stopped.
+        # - **Pending**: The instance is being created.
+        # - **Running**: The instance is running.
+        # - **Starting**: The instance is starting.
+        # - **Stopping**: The instance is being stopped.
+        # - **Stopped**: The instance is stopped.
         # 
-        # > The instance status returned by this operation may be delayed. If the value differs from the value returned by the **DescribeRCInstanceAttribute** operation, the value returned by **DescribeRCInstanceAttribute** prevails.
+        # > The instance status returned by this operation may be delayed. If the status differs from the value returned by the **DescribeRCInstanceAttribute** operation, the value returned by the **DescribeRCInstanceAttribute** operation prevails.
         self.status = status
+        # The stop mode of the instance. KeepCharging indicates the standard mode. StopCharging indicates the economical mode. Not-applicable indicates that the instance does not support the economical mode.
         self.stopped_mode = stopped_mode
-        # The details of the instances and tags.
+        # The queried instance and tag details.
         self.tag_resources = tag_resources
         # The tag details.
         self.tags = tags
         # The VPC attributes.
         self.vpc_attributes = vpc_attributes
-        # The ID of the virtual private cloud (VPC).
+        # The ID of the VPC.
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id
@@ -513,10 +523,10 @@ class DescribeRCInstancesResponseBodyRCInstancesTags(DaraModel):
     ):
         # The resource ID.
         self.resource_id = resource_id
-        # The resource type.
+        # The resource type. Valid values:
         # 
-        # - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance.
-        # - `ALIYUN::RDS::CUSTOM`: RDS Custom instance.
+        # - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance
+        # - `ALIYUN::RDS::CUSTOM`: RDS Custom instance
         self.resource_type = resource_type
         # The tag key.
         self.tag_key = tag_key
@@ -571,10 +581,10 @@ class DescribeRCInstancesResponseBodyRCInstancesTagResources(DaraModel):
     ):
         # The resource ID.
         self.resource_id = resource_id
-        # The resource type.
+        # The resource type. Valid values:
         # 
-        # - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance.
-        # - `ALIYUN::RDS::CUSTOM`: RDS Custom instance.
+        # - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance
+        # - `ALIYUN::RDS::CUSTOM`: RDS Custom instance
         self.resource_type = resource_type
         # The tag key.
         self.tag_key = tag_key

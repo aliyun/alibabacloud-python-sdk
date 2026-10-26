@@ -17,9 +17,9 @@ class ModifyBackupSetExpireTimeResponseBody(DaraModel):
         self.code = code
         # The returned fields.
         self.data = data
-        # The response code message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 

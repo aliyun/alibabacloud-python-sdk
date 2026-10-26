@@ -19,17 +19,17 @@ class DescribeDBProxyPerformanceRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # A reserved parameter. You do not need to configure this parameter.
+        # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
         # The type of the database proxy instance. Valid values:
         # - common: general-purpose database proxy
         # - exclusive: dedicated database proxy
         self.dbproxy_instance_type = dbproxy_instance_type
-        # The aggregation dimension. Valid values. The service and server values cannot be specified at the same time.
+        # The aggregation dimension. You cannot specify both service and server at the same time. Valid values:
         # 
         # - service: aggregates monitoring metrics by proxy endpoint.
         # 
@@ -37,36 +37,36 @@ class DescribeDBProxyPerformanceRequest(DaraModel):
         # 
         # - server: aggregates monitoring metrics by database node.
         self.dimension = dimension
-        # The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The performance metrics.
+        # The performance metric.
         # 
-        # RDS MySQL supports only **Maxscale_CpuUsage**: CPU utilization.
+        # ApsaraDB RDS for MySQL supports only **Maxscale_CpuUsage**: CPU utilization.
         # 
-        # RDS PostgreSQL supports the following performance metrics:
+        # ApsaraDB RDS for PostgreSQL supports the following performance metrics:
         # 
         # - **Maxscale_TotalConns**: connection rate
-        # - **Maxscale_CurrentConns**: current connections
+        # - **Maxscale_CurrentConns**: current number of connections
         # - **Maxscale_DownFlows**: outbound traffic
         # - **Maxscale_UpFlows**: inbound traffic
         # - **Maxscale_QPS**: request rate (QPS)
         # - **Maxscale_MemUsage**: memory utilization
         # - **Maxscale_CpuUsage**: CPU utilization
         # 
-        # To query multiple performance metrics, separate them with commas (,). You can query up to six performance metrics at a time.
+        # To query multiple performance metrics, separate the metrics with commas (,). You can query up to six performance metrics at a time.
         # 
         # This parameter is required.
         self.metrics_name = metrics_name
         self.owner_id = owner_id
-        # The region ID. You can call DescribeRegions to obtain the region ID.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

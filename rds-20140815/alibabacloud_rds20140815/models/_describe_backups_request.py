@@ -18,29 +18,29 @@ class DescribeBackupsRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The backup set ID.
+        # The ID of the backup set.
         self.backup_id = backup_id
         # The backup mode. Valid values:
         # * **Automated**: automatic backup
         # * **Manual**: manual backup
         self.backup_mode = backup_mode
         # The status of the backup set. Valid values:
-        # * **Success**: The backup is complete.
+        # * **Success**: The backup is completed.
         # * **Failed**: The backup failed.
         self.backup_status = backup_status
         # The backup type. Valid values:
         # * **FullBackup**: full backup
         # * **IncrementalBackup**: incremental backup
         self.backup_type = backup_type
-        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+        # The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         # 
-        # > Narrow down the time range when you use this operation to query backup sets. A large time range may cause a timeout.
+        # > When you call this operation to query backup sets, keep the time range short. A long time range may cause a timeout.
         self.end_time = end_time
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+        # The page number. Valid values: an integer greater than 0 and less than or equal to the maximum integer value.
         # 
         # Default value: **1**.
         self.page_number = page_number
@@ -52,7 +52,7 @@ class DescribeBackupsRequest(DaraModel):
         # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
-        # The start time of the query. Format: <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z (UTC).
+        # The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):

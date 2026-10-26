@@ -3142,6 +3142,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.auto_upgrade_minor_version):
+            query['AutoUpgradeMinorVersion'] = request.auto_upgrade_minor_version
         if not DaraCore.is_null(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
         if not DaraCore.is_null(request.babelfish_config):
@@ -3296,6 +3298,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.auto_upgrade_minor_version):
+            query['AutoUpgradeMinorVersion'] = request.auto_upgrade_minor_version
         if not DaraCore.is_null(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
         if not DaraCore.is_null(request.babelfish_config):

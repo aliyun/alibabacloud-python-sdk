@@ -16,18 +16,18 @@ class UpdateUserBackupFileRequest(DaraModel):
         resource_owner_id: int = None,
         retention: int = None,
     ):
-        # The user backup ID. You can call ListUserBackupFiles to obtain the ID.
+        # The ID of the user backup. You can call the ListUserBackupFiles operation to query the ID.
         # 
         # This parameter is required.
         self.backup_id = backup_id
-        # The new description to set for the user backup.
+        # The new description of the user backup.
         self.comment = comment
         self.owner_id = owner_id
-        # The region ID. You can call DescribeRegions to obtain the ID.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID.
+        # The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to query the ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

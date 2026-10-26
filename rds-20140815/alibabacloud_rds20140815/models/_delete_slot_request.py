@@ -19,25 +19,25 @@ class DeleteSlotRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate the value from your client and make sure that the value is unique across different requests. The client token supports only ASCII characters.
         self.client_token = client_token
-        # Target instance ID. You can call the DescribeDBInstances operation to query target instance ID.
+        # Instance ID of the target instance. You can call the DescribeDBInstances operation to query instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The resource group ID. This parameter can be left empty.
+        # The ID of the resource group. This parameter can be left empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The replication slot name. You can call the DescribeSlots operation to query the replication slot name.
+        # The name of the replication slot. You can call the DescribeSlots operation to query the name.
         # 
         # This parameter is required.
         self.slot_name = slot_name
-        # The replication slot status. You can call the DescribeSlots operation to query the replication slot status. Valid values:
-        # - **ACTIVE**: active.
-        # - **INACTIVE**: inactive.
+        # The status of the replication slot. You can call the DescribeSlots operation to query the status. Valid values:
+        # - **ACTIVE**: The replication slot is active.
+        # - **INACTIVE**: The replication slot is inactive.
         # 
         # This parameter is required.
         self.slot_status = slot_status

@@ -15,10 +15,10 @@ class QueryRecommendByCodeResponseBody(DaraModel):
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Specifies whether the request is successful. Valid values:
         # 
         # - **true**: The request is successful.
-        # - **false**: The request failed.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

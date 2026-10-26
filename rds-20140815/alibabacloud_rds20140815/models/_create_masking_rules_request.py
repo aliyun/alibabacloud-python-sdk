@@ -25,20 +25,20 @@ class CreateMaskingRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
         # The name of the default encryption or masking algorithm.
         self.default_algo = default_algo
-        # The rule algorithms. You can specify multiple algorithms. Masking algorithms can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, encryption length}}.
+        # The rule algorithm. You can specify multiple algorithms. Additional parameters can be added for masking algorithms. Format: {name: Algorithm 1}, {name: Algorithm 2, params: {encryption position, number of encrypted digits}}.
         self.masking_algo = masking_algo
         self.owner_id = owner_id
         # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The rule configuration in JSON string format, which contains matching rules for databases, tables, and columns.
+        # The rule configuration. The value is a JSON string that contains the matching rules for databases, tables, and columns.
         self.rule_config = rule_config
-        # The rule name. Only one rule name can be specified at a time.
+        # The name of the rule. Only one rule name can be specified at a time.
         # 
         # This parameter is required.
         self.rule_name = rule_name

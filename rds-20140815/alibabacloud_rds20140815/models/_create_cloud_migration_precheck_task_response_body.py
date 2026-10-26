@@ -16,9 +16,9 @@ class CreateCloudMigrationPrecheckTaskResponseBody(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The request ID.
         self.request_id = request_id
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):

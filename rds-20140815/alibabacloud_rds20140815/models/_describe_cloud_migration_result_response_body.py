@@ -24,7 +24,7 @@ class DescribeCloudMigrationResultResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of queried entries.
         self.total_size = total_size
 
     def validate(self):
@@ -103,33 +103,33 @@ class DescribeCloudMigrationResultResponseBodyItems(DaraModel):
         self.detail = detail
         # The time when the task was created.
         self.gmt_created = gmt_created
-        # The time when the task was last modified.
+        # The time when the task was modified.
         self.gmt_modified = gmt_modified
         # The migration stage. Valid values:
         # 
-        # - **precheck**: Precheck.
-        # - **basebackup**: Full backup.
-        # - **startup**: Link setup.
-        # - **increment**: Incremental synchronization.
-        # - **switch**: Cloud switchover.
-        # - **success**: Migration completed.
+        # - **precheck**: precheck
+        # - **basebackup**: full backup
+        # - **startup**: link setup
+        # - **increment**: incremental synchronization
+        # - **switch**: cloud cutover
+        # - **success**: cloud migration completed
         self.migrate_stage = migrate_stage
         # The replication task information.
         self.replication_info = replication_info
-        # The replication status. Valid values:
+        # The replication state. Valid values:
         # 
-        # - **unstarted**: Not started.
-        # - **catchup**: Catching up.
-        # - **streaming**: Streaming.
-        # - **disconnect**: Disconnected.
-        # - **finish**: Completed.
+        # - **unstarted**: not started
+        # - **catchup**: catching up
+        # - **streaming**: streaming
+        # - **disconnect**: disconnected
+        # - **finish**: completed
         self.replication_state = replication_state
         # The username.
         self.source_account = source_account
         # The type of the self-managed PostgreSQL database. Valid values:
         # 
-        # - **idcOnVpc**: A self-managed PostgreSQL database in an IDC that is connected to a VPC.
-        # - **ecsOnVpc**: A self-managed PostgreSQL database on an Alibaba Cloud ECS instance.
+        # - **idcOnVpc**: self-managed PostgreSQL database in an on-premises data center that is connected to a VPC
+        # - **ecsOnVpc**: self-managed PostgreSQL database on an Alibaba Cloud ECS instance
         self.source_category = source_category
         # The internal IP address of the self-managed PostgreSQL database.
         self.source_ip_address = source_ip_address
@@ -137,15 +137,15 @@ class DescribeCloudMigrationResultResponseBodyItems(DaraModel):
         self.source_password = source_password
         # The port of the self-managed PostgreSQL database.
         self.source_port = source_port
-        # The switchover time.
+        # The cutover time.
         self.switch_time = switch_time
-        # A reserved parameter. The query result is empty.
+        # A reserved parameter. The value is empty.
         self.target_eip = target_eip
         # The instance ID of the target instance.
         self.target_instance_name = target_instance_name
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):

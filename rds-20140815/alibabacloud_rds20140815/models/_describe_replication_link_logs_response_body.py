@@ -92,17 +92,17 @@ class DescribeReplicationLinkLogsResponseBodyItems(DaraModel):
     ):
         # The task details.
         self.detail = detail
-        # The creation time in UTC.
+        # The creation time (UTC).
         self.gmt_created = gmt_created
-        # The modification time in UTC.
+        # The modification time (UTC).
         self.gmt_modified = gmt_modified
         # The synchronization information. This is a reserved field.
         self.replication_info = replication_info
-        # The synchronization status. Valid values:
+        # The synchronization state. Valid values:
         # 
-        # - **steaming**: Synchronizing.
-        # - **finish**: Completed.
-        # - **disconnect**: Disconnected.
+        # - **steaming**: Synchronization is in progress.
+        # - **finish**: Synchronization is completed.
+        # - **disconnect**: Synchronization is disconnected.
         self.replication_state = replication_state
         # The database account used for data synchronization.
         self.replicator_account = replicator_account
@@ -112,8 +112,8 @@ class DescribeReplicationLinkLogsResponseBodyItems(DaraModel):
         self.source_address = source_address
         # The category of the source instance. Valid values:
         # 
-        # - other: Other.
-        # - aliyunRDS: ApsaraDB RDS instance.
+        # - other: The source instance is of another type.
+        # - aliyunRDS: The source instance is an ApsaraDB RDS instance.
         self.source_category = source_category
         # The port of the source instance.
         self.source_port = source_port
@@ -123,22 +123,22 @@ class DescribeReplicationLinkLogsResponseBodyItems(DaraModel):
         self.task_id = task_id
         # The task name.
         self.task_name = task_name
-        # The task stage. Valid values:
+        # The node stage. Valid values:
         # 
-        # - **precheck**: Dry run.
-        # - **basebackup**: Basic backup.
-        # - **startup**: Startup.
-        # - **increment**: Incremental synchronization.
+        # - **precheck**: The node is in the dry run stage.
+        # - **basebackup**: The node is in the basic backup stage.
+        # - **startup**: The node is in the startup stage.
+        # - **increment**: The node is in the incremental synchronization stage.
         self.task_stage = task_stage
         # The task status. Valid values:
         # 
-        # - **success**: Succeeded.
-        # - **failure**: Failed.
-        # - **running**: Running.
+        # - **success**: The task is successful.
+        # - **failure**: The task failed.
+        # - **running**: The task is running.
         self.task_status = task_status
         # The task type. Valid values:
-        # - **create**: Create a replication link.
-        # - **create-dryrun**: Dry run for creating a replication link.
+        # - **create**: Creates a synchronization link.
+        # - **create-dryrun**: Performs a precheck for creating a synchronization link.
         self.task_type = task_type
 
     def validate(self):

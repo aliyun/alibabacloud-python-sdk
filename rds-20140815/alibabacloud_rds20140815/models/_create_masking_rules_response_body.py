@@ -20,10 +20,10 @@ class CreateMaskingRulesResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

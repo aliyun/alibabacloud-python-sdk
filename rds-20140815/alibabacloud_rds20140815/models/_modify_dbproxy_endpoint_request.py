@@ -30,9 +30,9 @@ class ModifyDBProxyEndpointRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The timeout period for read consistency. Unit: milliseconds. Default value: **10**. Valid values: **0 to 60000**.
+        # The timeout period for read consistency. Unit: milliseconds. Default value: **10**. Valid values: **0** to **60000**.
         self.causal_consist_read_timeout = causal_consist_read_timeout
-        # The proxy features that you want to enable for the proxy endpoint. Separate multiple features with semicolons (;). Format: `Feature 1:Status;Feature 2:Status;...`. Do not add a semicolon (;) at the end.
+        # Specifies the proxy features to be enabled for the proxy endpoint. Separate multiple features with semicolons (;). Format: `Feature 1:Status;Feature 2:Status;...`. Do not add a semicolon (;) at the end.
         # 
         # Valid values for features:
         # * **ReadWriteSpliting**: Read/write splitting.
@@ -40,86 +40,87 @@ class ModifyDBProxyEndpointRequest(DaraModel):
         # * **TransactionReadSqlRouteOptimizeStatus**: Transaction splitting.
         # * **AZProximityAccess**: Nearest access.
         # * **CausalConsistRead**: Read consistency.
-        # * **HtapFilter**: HTAP automatic request distribution among row store and column store nodes.
+        # * **HtapFilter**: Automatic request distribution among row store and column store nodes for HTAP.
         # 
-        # Valid values for status:
-        # * **1**: Enabled.
-        # * **0**: Disabled.
+        # Valid values for the status:
+        # * **1**: The feature is enabled.
+        # * **0**: The feature is disabled.
         # 
         # > - ApsaraDB RDS for PostgreSQL supports only **ReadWriteSpliting**.
-        # > - The nearest access feature is supported only by the dedicated database proxy for MySQL.
+        # > - The nearest access feature is supported only by dedicated database proxies for MySQL.
         self.config_dbproxy_features = config_dbproxy_features
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of the proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
+        # The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID.
         # 
         # > - MySQL: This parameter is required when **DbEndpointOperator** is set to **Delete** or **Modify**.
         # > - PostgreSQL: This parameter is required when **DbEndpointOperator** is set to **Delete**, **Modify**, or **Create**.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # A deprecated parameter. You do not need to specify this parameter.
+        # **[Deprecated]** This parameter is deprecated and does not need to be configured.
         self.dbproxy_engine_type = dbproxy_engine_type
         # The description of the proxy endpoint.
         self.db_endpoint_aliases = db_endpoint_aliases
+        # The execution cost threshold for SQL statements in automatic request distribution among row store and column store nodes for HTAP.
         self.db_endpoint_cost_threshold_for_duckdb = db_endpoint_cost_threshold_for_duckdb
         # The minimum number of reserved instances.
         self.db_endpoint_min_slave_count = db_endpoint_min_slave_count
-        # The type of operation. Valid values:
-        # * **Modify**: The default value. Modifies the proxy endpoint.
+        # The operation type. Valid values:
+        # * **Modify**: Modifies the proxy endpoint. This is the default value.
         # * **Create**: Creates a proxy endpoint.
         # * **Delete**: Deletes a proxy endpoint.
         self.db_endpoint_operator = db_endpoint_operator
         # The read/write mode. Valid values:
         # * **ReadWrite**: Connects to the primary instance and can accept write requests.
-        # * **ReadOnly**: The default value. Does not connect to the primary instance and cannot accept write requests.
+        # * **ReadOnly**: Does not connect to the primary instance and cannot accept write requests. This is the default value.
         # 
         # > * This parameter is required when **DbEndpointOperator** is set to **Create**.
-        # > * For ApsaraDB RDS for MySQL instances, if you change this parameter from **ReadWrite** to **ReadOnly**, the transaction splitting feature is disabled.
+        # > * For an ApsaraDB RDS for MySQL instance, if you change the value of this parameter from **ReadWrite** to **ReadOnly**, the transaction splitting feature is disabled.
         self.db_endpoint_read_write_mode = db_endpoint_read_write_mode
-        # The type of the proxy endpoint. This is a reserved parameter. You do not need to specify this parameter.
+        # The type of the proxy endpoint. This parameter is reserved and does not need to be specified.
         self.db_endpoint_type = db_endpoint_type
-        # The specified time at which the change takes effect. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The specific time when the modification takes effect. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         # > This parameter is required when **EffectiveTime** is set to **SpecificTime**.
         self.effective_specific_time = effective_specific_time
         # The effective period. Valid values:
         # 
-        # * **Immediate**: The change takes effect immediately.
-        # * **MaintainTime**: The change takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # * **SpecificTime**: The change takes effect at a specified time.
+        # * **Immediate**: The modification immediately takes effect.
+        # * **MaintainTime**: The modification takes effect within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # * **SpecificTime**: The modification takes effect at a specified time.
         # 
         # Default value: **MaintainTime**.
         self.effective_time = effective_time
         self.owner_id = owner_id
-        # The mode used to allocate read weights. Valid values:
+        # The read weight allocation pattern. Valid values:
         # 
-        # * **Standard**: The default value. Read weights are automatically allocated based on instance specifications.
-        # * **Custom**: Custom read weights.
+        # * **Standard**: Automatically allocates read weights based on instance specifications. This is the default value.
+        # * **Custom**: Custom allocated weights.
         # 
-        # > This parameter is required only when read/write splitting is enabled. For more information about read weight allocation, see [Read weight allocation](https://help.aliyun.com/document_detail/96076.html) for MySQL and [Enable and configure the database proxy service](https://help.aliyun.com/document_detail/418272.html) for PostgreSQL.
+        # > This parameter is required only when read/write splitting is enabled. For more information about the read weight allocation pattern, see [Read weight distribution](https://help.aliyun.com/document_detail/96076.html) for MySQL and [Enable and configure the database proxy service](https://help.aliyun.com/document_detail/418272.html) for PostgreSQL.
         self.read_only_instance_distribution_type = read_only_instance_distribution_type
-        # The maximum latency threshold for read-only instances in read/write splitting. If the latency of a read-only instance exceeds this value, read traffic is not routed to the instance. Unit: seconds. If you do not specify this parameter, the current value is retained. Valid values: **0** to **3600**.
+        # The maximum latency threshold for read-only instances in read/write splitting. If the latency of a read-only instance exceeds this threshold, read traffic is not routed to the instance. Unit: seconds. If you do not specify this parameter, the original value is retained. Valid values: **0** to **3600**.
         # 
-        # >- This parameter is required only when read/write splitting is enabled.
-        # >- Default value: **30** seconds when the read/write mode is set to read/write (read/write splitting), and **-1** (disabled) when the read/write mode is set to read-only.
+        # > - This parameter is required only when read/write splitting is enabled.
+        # > - Default value: **30** when the read/write attribute is set to Read/Write (read/write splitting), and **-1** (disabled) when the read/write attribute is set to Read-only.
         self.read_only_instance_max_delay_time = read_only_instance_max_delay_time
-        # The custom read weights to allocate to the primary instance and read-only instances. The value must be in increments of 100. Maximum value: 10000. Format:
+        # The custom read weights of the primary and read-only instances. The weight must be a multiple of 100 and cannot exceed 10000. Format:
         # 
-        # - Regular instance: `{"PrimaryInstanceID":"Weight","ReadOnlyInstanceID":"Weight"...}`
+        # - Standard instance: `{"Primary instance ID":"Weight","Read-only instance ID":"Weight"...}`
         # 
         #     Example: `{"rm-uf6wjk5****":"500","rr-tfhfgk5xxx":"200"...}`
-        # - ApsaraDB RDS for MySQL cluster instance: `{"ReadOnlyInstanceID":"Weight","DBClusterNode":{"PrimaryNodeID":"Weight","SecondaryNodeID":"Weight","SecondaryNodeID":"Weight"...}}`
+        # - ApsaraDB RDS for MySQL Cluster Edition instance: `{"Read-only instance ID":"Weight","DBClusterNode":{"Primary node ID":"Weight","Secondary node ID":"Weight","Secondary node ID":"Weight"...}}`
         # 
         #     Example: `{"rr-tfhfgk5****":"200","DBClusterNode":{"rn-2z****":"0","rn-2z****":"400","rn-2z****":"400"...}}`
-        #     > **DBClusterNode** is a request parameter specific to cluster instances. It contains the **NodeID** and **Weight** of the primary and secondary nodes.
+        #     > **DBClusterNode** is a request parameter specific to Cluster Edition instances. It contains the **NodeID** and **Weight** of the primary and secondary nodes.
         self.read_only_instance_weight = read_only_instance_weight
-        # The region ID. You can call DescribeRegions to query the region ID.
+        # The region ID. You can call the DescribeRegions operation to query the ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The vSwitch ID that corresponds to the zone of the proxy endpoint. Default value: the vSwitch ID of the default endpoint of the proxy instance. You can call DescribeVSwitches to query available vSwitches.
+        # The ID of the vSwitch in the zone of the database proxy endpoint. Default value: the ID of the vSwitch that corresponds to the default endpoint of the proxy instance. You can call the DescribeVSwitches operation to query created vSwitches.
         self.v_switch_id = v_switch_id
-        # The VPC ID that corresponds to the zone of the proxy endpoint. Default value: the VPC ID of the default endpoint of the proxy instance. You can call DescribeDBInstanceAttribute to query the default VPC of the instance.
+        # The ID of the VPC in the zone of the database proxy endpoint. Default value: the ID of the VPC that corresponds to the default endpoint of the proxy instance. You can call the DescribeDBInstanceAttribute operation to query the default VPC of the instance.
         self.vpc_id = vpc_id
 
     def validate(self):

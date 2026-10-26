@@ -13,7 +13,7 @@ class QueryNotifyResponseBody(DaraModel):
         data: main_models.QueryNotifyResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The returned fields.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,7 +60,7 @@ class QueryNotifyResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -127,13 +127,13 @@ class QueryNotifyResponseBodyDataNotifyItemList(DaraModel):
     ):
         # The ID of the current Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # Indicates whether the notification has been confirmed, that is, whether the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation has been called to mark the notification as confirmed. Valid values:
-        # * **true**: The notification has been confirmed.
-        # * **false**: The notification has not been confirmed.
+        # Indicates whether the notification has been received. This indicates whether the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation was called to mark the notification as confirmed. Valid values:
+        # * **true**: Yes.
+        # * **false**: No.
         self.confirm_flag = confirm_flag
-        # The UID of the notification recipient under the current Alibaba Cloud account who called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed.
+        # The UID of the user who received the notification under the current Alibaba Cloud account. This user called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed.
         # 
-        # A return value of **0** indicates that the notification was automatically confirmed by the system.
+        # A value of **0** indicates that the notification was automatically received by the system.
         self.confirmor = confirmor
         # The time when the notification was created.
         self.gmt_created = gmt_created
@@ -143,32 +143,32 @@ class QueryNotifyResponseBodyDataNotifyItemList(DaraModel):
         self.id = id
         # The number of times that duplicate notifications were blocked.
         self.idempotent_count = idempotent_count
-        # The idempotency identifier used to prevent duplicate notifications from being sent.
+        # The ID used to ensure the idempotence of the notification and prevent duplicate notifications.
         self.idempotent_id = idempotent_id
         # The level of the notification. Valid values:
-        # * **help**: help
-        # * **success**: execution succeeded
-        # * **warning**: warning
-        # * **error**: execution failed
-        # * **loading**: task in progress
-        # * **notice**: general
+        # * **help**: Help level.
+        # * **success**: Success level.
+        # * **warning**: Warning level.
+        # * **error**: Error level.
+        # * **loading**: In progress.
+        # * **notice**: Notice level.
         self.level = level
-        # The elements in the notification template, which are represented as a JSON string. The parameters in the JSON string vary based on the value of **TemplateName**.
-        # * If **TemplateName** is set to **RenewalRecommend**:
+        # The elements in the notification template, which consist of a JSON string. The parameters contained in the JSON string vary based on the **TemplateName**.
+        # * If **TemplateName** is **RenewalRecommend**:
         #     * **instanceName**: the ID of the instance that is about to expire.
         #     * **reservedTime**: the number of remaining days.
-        # * If **TemplateName** is set to **InstanceCreateFailed**:
-        #     * **orderId**: the order ID for the instance purchase.
+        # * If **TemplateName** is **InstanceCreateFailed**:
+        #     * **orderId**: the order ID for purchasing the instance.
         #     * **reason**: the reason why the instance failed to be created.
         self.notify_element = notify_element
         # The notification template. Valid values:
-        # * **RenewalRecommend**: renewal recommendation
-        # * **InstanceCreateFailed**: instance creation failed with refund
+        # * **RenewalRecommend**: Renewal recommendation.
+        # * **InstanceCreateFailed**: Instance creation failure and refund.
         self.template_name = template_name
         # The notification type. Valid values:
-        # * **Sell**: sale-related notification
-        # * **Operation**: O&M notification
-        # * **Promotion**: promotional notification
+        # * **Sell**: Sales notification.
+        # * **Operation**: O&M notification.
+        # * **Promotion**: Promotional notification.
         self.type = type
 
     def validate(self):

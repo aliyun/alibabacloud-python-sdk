@@ -18,42 +18,42 @@ class CreateDBProxyEndpointAddressRequest(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The prefix of the new database proxy endpoint. Specify a custom value.
+        # The prefix of the new database proxy endpoint. You can customize the prefix.
         # 
         # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type of the new database proxy endpoint. Valid values:
         # * **Public**: Internet
-        # * **VPC** (default): virtual private cloud (VPC)
+        # * **VPC** (default): VPC
         # 
         # This parameter is required.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
-        # The ID of the database proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
+        # The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the database proxy endpoint ID.
         # 
         # This parameter is required.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # A reserved parameter. You do not need to specify this parameter.
+        # The reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The port of the new database proxy endpoint. Default value:
+        # The port of the new database proxy endpoint. Default values:
         # 
         # - MySQL: **3306**
         # - PostgreSQL: **5432**
         self.dbproxy_new_connect_string_port = dbproxy_new_connect_string_port
-        # The region ID. You can call DescribeRegions to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The VPC ID of the new database proxy endpoint. You can call DescribeDBInstanceAttribute to query the VPC ID.
+        # The VPC ID of the new database proxy endpoint. You can call the DescribeDBInstanceAttribute operation to query the VPC ID.
         # 
-        # >This parameter is required when **DBProxyConnectStringNetType** is set to **VPC**.
+        # > This parameter is required when **DBProxyConnectStringNetType** is set to **VPC**.
         self.vpcid = vpcid
-        # The vSwitch ID of the new database proxy endpoint. You can call DescribeDBInstanceAttribute to query the vSwitch ID.
+        # The vSwitch ID of the new database proxy endpoint. You can call the DescribeDBInstanceAttribute operation to query the vSwitch ID.
         # 
-        # >This parameter is required when **DBProxyConnectStringNetType** is set to **VPC**.
+        # > This parameter is required when **DBProxyConnectStringNetType** is set to **VPC**.
         self.v_switch_id = v_switch_id
 
     def validate(self):

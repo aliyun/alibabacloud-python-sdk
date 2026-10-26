@@ -19,7 +19,7 @@ class TagResourcesRequest(DaraModel):
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -31,11 +31,11 @@ class TagResourcesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The resource type. Valid values:
         # 
-        # - **INSTANCE**: regular ApsaraDB RDS instance.
-        # - **CUSTOM**: RDS Custom instance.
-        # - **CUSTOMDEPLOYMENTSET**: RDS Custom deployment set.
-        # - **CUSTOMDISK**: RDS Custom cloud disk.
-        # - **CUSTOMSNAPSHOT**: RDS Custom snapshot.
+        # - **INSTANCE**: regular ApsaraDB RDS instances.
+        # - **CUSTOM**: ApsaraDB RDS Custom instances.
+        # - **CUSTOMDEPLOYMENTSET**: ApsaraDB RDS Custom deployment sets.
+        # - **CUSTOMDISK**: ApsaraDB RDS Custom cloud disks.
+        # - **CUSTOMSNAPSHOT**: ApsaraDB RDS Custom snapshots.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -112,13 +112,13 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. Empty values and duplicate values are **not allowed**.
+        # The tag key. The tag key **cannot** be empty or duplicate.
         # 
-        # > An existing tag key is overwritten by a new tag key with the same name.
+        # > Duplicate tag keys are overwritten.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value. Empty values are **allowed**.
+        # The tag value. The tag value **can** be empty.
         self.value = value
 
     def validate(self):

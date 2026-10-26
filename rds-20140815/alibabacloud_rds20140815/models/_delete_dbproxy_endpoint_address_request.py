@@ -13,29 +13,29 @@ class DeleteDBProxyEndpointAddressRequest(DaraModel):
         dbproxy_engine_type: str = None,
         region_id: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The network type of the database proxy endpoint to delete. Valid values:
-        # * **Public**: Internet
+        # The network type of the database proxy endpoint that you want to delete. Valid values:
+        # * **Public**: public network
         # * **VPC**: internal network (VPC)
         # * **Classic**: internal network (classic network)
         # 
         # Default value: **Classic**.
         # 
-        # > - You cannot delete the internal endpoint that is created by default.
+        # > - You cannot delete the default internal network endpoint.
         # > - ApsaraDB RDS for PostgreSQL supports only **Public** and **VPC**.
         # 
         # This parameter is required.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
-        # The ID of the database proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
+        # The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID.
         # 
         # This parameter is required.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # A deprecated parameter. You do not need to configure this parameter.
+        # **[Deprecated]** This parameter is deprecated. You do not need to configure it.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The region ID. You can call DescribeRegions to query the available regions.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
 
     def validate(self):

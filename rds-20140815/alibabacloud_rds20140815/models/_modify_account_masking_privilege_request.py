@@ -21,12 +21,12 @@ class ModifyAccountMaskingPrivilegeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
-        # The permission expiration time in UTC format. This parameter is required only for the fullAccess privilege.
+        # The expiration time of the permission in UTC format. This parameter is required only for the fullAccess permission.
         self.expire_time = expire_time
         self.owner_id = owner_id
-        # The privilege type. Valid values: noneAccess, restrictedAccess, and fullAccess.
+        # The permission type. Valid values: noneAccess, restrictedAccess, and fullAccess.
         # 
         # This parameter is required.
         self.privilege = privilege
@@ -34,7 +34,7 @@ class ModifyAccountMaskingPrivilegeRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The account name. You can specify multiple accounts separated by commas.
+        # The name of the account. You can specify multiple account names separated by commas.
         # 
         # This parameter is required.
         self.user_name = user_name

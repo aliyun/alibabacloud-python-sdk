@@ -22,11 +22,11 @@ class DescribeBackupsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of backup sets on the current page.
         self.page_record_count = page_record_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The size of the snapshot chain of the instance. Unit: bytes.
+        # The size of the snapshot chain for the instance. Unit: bytes.
         self.total_ecs_snapshot_size = total_ecs_snapshot_size
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

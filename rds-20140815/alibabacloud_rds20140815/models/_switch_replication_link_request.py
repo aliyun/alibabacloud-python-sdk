@@ -12,16 +12,16 @@ class SwitchReplicationLinkRequest(DaraModel):
         target_instance_name: str = None,
         target_instance_region_id: str = None,
     ):
-        # The ID of the source instance, which is the primary instance ID.
+        # The source instance ID, which is the primary instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The name of the target disaster recovery instance to which you want to switch.
+        # The name of the target disaster recovery instance.
         # 
         # This parameter is required.
         self.target_instance_name = target_instance_name
-        # The region of the target disaster recovery instance to which you want to switch.
+        # The region ID of the target disaster recovery instance.
         # 
         # This parameter is required.
         self.target_instance_region_id = target_instance_region_id

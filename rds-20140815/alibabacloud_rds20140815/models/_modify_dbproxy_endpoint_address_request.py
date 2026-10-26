@@ -17,27 +17,27 @@ class ModifyDBProxyEndpointAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to query the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The network type of the database proxy endpoint to be modified. Valid values:
+        # The network type of the database proxy endpoint that you want to modify. Valid values:
         # * **Public**: Internet
-        # * **VPC** (default): virtual private cloud (VPC)
+        # * **VPC** (default): VPC
         # 
         # 
         # > This parameter is required when the database engine is RDS MySQL.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
-        # The ID of the database proxy endpoint. You can call DescribeDBProxyEndpoint to query the ID.
+        # The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID.
         # 
         # This parameter is required.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # A deprecated parameter. You do not need to configure this parameter.
+        # **[Deprecated]** You do not need to configure this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The prefix of the new database proxy endpoint. You can customize this value.
+        # The prefix of the new database proxy endpoint. You can customize the prefix.
         # >You must specify at least one of the **DBProxyNewConnectString** and **DBProxyNewConnectStringPort** parameters.
         self.dbproxy_new_connect_string = dbproxy_new_connect_string
-        # The port number of the new database proxy endpoint. You can customize this value.
+        # The port of the new database proxy endpoint. You can customize the port.
         # >You must specify at least one of the **DBProxyNewConnectString** and **DBProxyNewConnectStringPort** parameters.
         self.dbproxy_new_connect_string_port = dbproxy_new_connect_string_port
         self.owner_id = owner_id

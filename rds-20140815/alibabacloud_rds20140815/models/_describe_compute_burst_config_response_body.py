@@ -13,14 +13,13 @@ class DescribeComputeBurstConfigResponseBody(DaraModel):
         compute_burst_enabled: bool = None,
         request_id: str = None,
     ):
-        # The configuration details of the committed serverless feature.
+        # The configuration details of the committed Serverless feature.
         self.compute_burst_config = compute_burst_config
-        # Indicates whether the committed serverless feature is enabled.
-        # 
+        # Indicates whether the committed Serverless feature is enabled. Valid values:
         # - **true**: Enabled.
         # - **false**: Disabled.
         self.compute_burst_enabled = compute_burst_enabled
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

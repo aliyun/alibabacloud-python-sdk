@@ -11,9 +11,9 @@ class DescribeRCInstanceDdosCountRequest(DaraModel):
         instance_type: str = None,
         region_id: str = None,
     ):
-        # The region ID of the assets that are assigned public IP addresses to query.
+        # The region ID of the public IP address asset to query.
         self.ddos_region_id = ddos_region_id
-        # The instance type of the assets that are assigned public IP addresses to query. Set the value to **ecs**.
+        # The instance type of the public IP address asset to query. Set the value to **ecs**.
         self.instance_type = instance_type
         # The region ID of the RDS Custom instance.
         self.region_id = region_id

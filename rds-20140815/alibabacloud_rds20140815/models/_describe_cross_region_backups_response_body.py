@@ -22,7 +22,7 @@ class DescribeCrossRegionBackupsResponseBody(DaraModel):
         # The end time of the query.
         self.end_time = end_time
         self.items = items
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+        # The page number. Valid values: any integer greater than 0 and less than or equal to the maximum value of the Integer type.
         # 
         # Default value: **1**.
         self.page_number = page_number
@@ -34,7 +34,7 @@ class DescribeCrossRegionBackupsResponseBody(DaraModel):
         self.request_id = request_id
         # The start time of the query.
         self.start_time = start_time
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

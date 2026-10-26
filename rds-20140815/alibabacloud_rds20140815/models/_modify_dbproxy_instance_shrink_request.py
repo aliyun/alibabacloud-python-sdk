@@ -21,14 +21,14 @@ class ModifyDBProxyInstanceShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         v_switch_ids: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # A deprecated parameter. You do not need to configure this parameter.
+        # **[Deprecated]** This parameter is deprecated and does not need to be configured.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The number of proxy instances. If this parameter is set to 0, the proxy service of this type is disabled for the instance. Valid values: **1** to **16**.
-        # > More proxy instances can handle more requests. You can check the load of proxy instances based on monitoring data and then specify an appropriate number of proxy instances.
+        # The number of proxy instances. A value of 0 indicates that the proxy service of this type is disabled for the instance. Valid values: **1** to **16**.
+        # > More proxy instances can process more requests. You can check the load of the proxy instances based on monitoring data and specify an appropriate number of proxy instances.
         # 
         # This parameter is required.
         self.dbproxy_instance_num = dbproxy_instance_num
@@ -39,28 +39,28 @@ class ModifyDBProxyInstanceShrinkRequest(DaraModel):
         # This parameter is required.
         self.dbproxy_instance_type = dbproxy_instance_type
         # The list of proxy nodes.
-        # > This parameter is required when the current proxy instance uses multi-active zone deployment.
+        # > This parameter is required when the current proxy instance is active in a multi-zone deployment.
         self.dbproxy_nodes_shrink = dbproxy_nodes_shrink
-        # The specified time for the modification to take effect. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The specified time when the modifications take effect. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         # > This parameter is required when **EffectiveTime** is set to **SpecificTime**.
         self.effective_specific_time = effective_specific_time
-        # The effective period. Valid values:
+        # The time when the modifications take effect. Valid values:
         # 
-        # * **Immediate**: The modification takes effect immediately.
-        # * **MaintainTime**: The modification takes effect during the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # * **SpecificTime**: The modification takes effect at a specified time.
+        # * **Immediate**: The modifications take effect immediately.
+        # * **MaintainTime**: The modifications take effect within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # * **SpecificTime**: The modifications take effect at a specified time.
         # 
         # Default value: **MaintainTime**.
         self.effective_time = effective_time
-        # The list of active zones for proxy migration.
-        # > Currently, only ApsaraDB RDS for MySQL proxy instances with cloud disks support active zone migration.
+        # The list of zones to which the proxy is migrated.
+        # > Currently, only ApsaraDB RDS for MySQL instances with cloud disks support proxy instance migration across zones.
         self.migrate_azshrink = migrate_azshrink
         self.owner_id = owner_id
-        # The region ID. You can call DescribeRegions to obtain the region ID.
+        # The region ID. You can call the DescribeRegions operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # A deprecated parameter. You do not need to configure this parameter.
+        # **[Deprecated]** This parameter is deprecated and does not need to be configured.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

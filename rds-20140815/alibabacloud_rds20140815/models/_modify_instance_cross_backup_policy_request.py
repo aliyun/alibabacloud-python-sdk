@@ -19,36 +19,36 @@ class ModifyInstanceCrossBackupPolicyRequest(DaraModel):
         retent_type: int = None,
         retention: int = None,
     ):
-        # Specifies whether to enable the cross-region backup feature, which includes data backup and log backup. Valid values:
-        # * **0**: Disabled.
-        # * **1**: Enabled.
+        # Specifies whether to enable the overall cross-region backup feature, which includes data backup and log backup. Valid values:
+        # * **0**: disabled
+        # * **1**: enabled
         # 
-        # >When you enable the cross-region backup feature, you must specify the destination region ID.
+        # > When you enable cross-region backup, you must specify the destination region ID.
         self.backup_enabled = backup_enabled
         # The ID of the destination region for cross-region backup.
         self.cross_backup_region = cross_backup_region
-        # The type of cross-region backup retention. The only valid value is **1**, which indicates that all backups are retained.
+        # The retention type of cross-region backups. Only **1** is supported, which indicates that all backups are retained.
         self.cross_backup_type = cross_backup_type
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to enable cross-region log backup. Valid values:
-        # * **0**: Disabled.
-        # * **1**: Enabled.
+        # * **0**: disabled
+        # * **1**: enabled
         # 
-        # >You can enable cross-region log backup only when the cross-region backup feature is enabled.
+        # > You can configure this parameter only when the overall cross-region backup feature is enabled.
         self.log_backup_enabled = log_backup_enabled
         self.owner_id = owner_id
-        # The region ID of the source instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # The region ID of the source instance. You can call the DescribeRegions operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The cross-region backup retention method. The only valid value is **1**, which indicates retention by duration.
+        # The retention method for cross-region backups. Only **1** is supported, which indicates that backups are retained based on a specified retention period.
         self.retent_type = retent_type
-        # The number of days for which cross-region backups are retained. Valid values: **7 to 1825**.
+        # The retention period of cross-region backups. Valid values: **7 to 1825**. Unit: days.
         self.retention = retention
 
     def validate(self):
