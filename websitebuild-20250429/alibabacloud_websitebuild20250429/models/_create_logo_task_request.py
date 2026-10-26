@@ -12,6 +12,7 @@ class CreateLogoTaskRequest(DaraModel):
         parameters: str = None,
         prompt: str = None,
     ):
+        # The logo generation version number. Different versions use different parameter parsing methods.
         self.logo_version = logo_version
         # The negative prompt.
         self.negative_prompt = negative_prompt

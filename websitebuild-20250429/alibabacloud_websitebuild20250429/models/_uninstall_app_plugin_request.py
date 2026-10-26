@@ -9,7 +9,7 @@ class UninstallAppPluginRequest(DaraModel):
         self,
         plugin_id: str = None,
     ):
-        # The gateway plugin ID.
+        # The ID of the gateway plug-in.
         self.plugin_id = plugin_id
 
     def validate(self):

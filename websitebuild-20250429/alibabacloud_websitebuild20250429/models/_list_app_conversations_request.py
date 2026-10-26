@@ -20,11 +20,9 @@ class ListAppConversationsRequest(DaraModel):
         self.bot_id = bot_id
         # The end modification time in ISO 8601 format.
         self.end_modify_time = end_modify_time
-        # The number of entries per query.
-        # 
-        # Valid values: 10 to 100. Default value: 20.
+        # The maximum number of results to return for a single query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token that is used to start the next query. If no next query is available, this parameter is empty.
         self.next_token = next_token
         # The page number.
         self.page_num = page_num

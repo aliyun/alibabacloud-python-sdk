@@ -27,39 +27,39 @@ class QueryMaterialFileListResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Specifies whether a retry is allowed. Valid values:
+        # - false: A retry is not allowed.
+        # - true: A retry is allowed.
         self.allow_retry = allow_retry
-        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name cannot exceed 36 characters in length.
+        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and can be up to 36 characters in length.
         self.app_name = app_name
-        # The dynamic code. This parameter is not in use. Ignore this parameter.
+        # The dynamic code. This parameter is currently unused and can be ignored.
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
-        # The error code. The ErrorCode parameter is not returned if the request is successful. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes in this topic.
+        # The error code. If the request is successful, this parameter is not returned. If the request fails, this parameter is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
-        # The maximum number of entries to return per query.
+        # The maximum number of entries to return for a single request.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response data.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token that is used to start the next query. If no next query is available, this parameter is left empty.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
         # The root error code.
         self.root_error_code = root_error_code
-        # The root error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The reserved parameter.
         self.synchro = synchro
@@ -190,15 +190,15 @@ class QueryMaterialFileListResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The query results.
+        # The request result.
         self.data = data
         # Indicates whether a next page exists.
         self.next_page = next_page
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Apart from pagination limits, the server processes up to 1,000 recent records per query. If the results exceed 1,000 records, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is set to **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is set to **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num

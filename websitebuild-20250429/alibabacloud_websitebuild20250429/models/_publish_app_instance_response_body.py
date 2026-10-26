@@ -22,17 +22,17 @@ class PublishAppInstanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied details.
+        # The access denial information.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is currently unused and can be ignored.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -40,7 +40,7 @@ class PublishAppInstanceResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro

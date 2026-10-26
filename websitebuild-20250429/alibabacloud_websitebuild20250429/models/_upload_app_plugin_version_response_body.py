@@ -22,19 +22,19 @@ class UploadAppPluginVersionResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reasons for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Specifies whether a retry is allowed. Valid values:
+        # - false: A retry is not allowed.
+        # - true: A retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
-        # The dynamic code. This parameter is not in use. Ignore this parameter.
+        # The dynamic code. This parameter is not used and can be ignored.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not used and can be ignored.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The application module.
         self.module = module
@@ -42,9 +42,9 @@ class UploadAppPluginVersionResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is processed synchronously.
+        # Specifies whether synchronous processing is used.
         self.synchro = synchro
 
     def validate(self):
@@ -139,7 +139,7 @@ class UploadAppPluginVersionResponseBodyModule(DaraModel):
     ):
         # The commit ID.
         self.commit_sha = commit_sha
-        # The bound API gateway plug-in ID.
+        # The ID of the bound API gateway plugin.
         self.plugin_id = plugin_id
         # trial,draft,live,refunded,expired,released
         self.status = status

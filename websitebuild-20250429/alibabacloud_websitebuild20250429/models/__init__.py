@@ -600,6 +600,7 @@ from ._upload_material_file_response import UploadMaterialFileResponse
 from ._upload_material_file_for_admin_request import UploadMaterialFileForAdminRequest
 from ._upload_material_file_for_admin_response_body import UploadMaterialFileForAdminResponseBody
 from ._upload_material_file_for_admin_response import UploadMaterialFileForAdminResponse
+from ._app_instance_aggregate import AppInstanceAggregateConversationInfo
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetailBindData
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetail
 from ._app_instance_aggregate import AppInstanceAggregateTags
@@ -1443,6 +1444,7 @@ __all__ = [
     UploadMaterialFileForAdminRequest,
     UploadMaterialFileForAdminResponseBody,
     UploadMaterialFileForAdminResponse,
+    AppInstanceAggregateConversationInfo,
     AppInstanceAggregatePartnerDetailBindData,
     AppInstanceAggregatePartnerDetail,
     AppInstanceAggregateTags,

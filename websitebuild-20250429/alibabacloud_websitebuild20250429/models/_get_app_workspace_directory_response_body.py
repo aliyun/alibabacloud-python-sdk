@@ -22,7 +22,7 @@ class GetAppWorkspaceDirectoryResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
         # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
@@ -30,11 +30,11 @@ class GetAppWorkspaceDirectoryResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not used and can be ignored.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
-        # The response object.
+        # The returned object.
         self.module = module
         # Id of the request
         self.request_id = request_id

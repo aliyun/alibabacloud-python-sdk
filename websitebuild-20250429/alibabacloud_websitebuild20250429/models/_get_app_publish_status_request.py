@@ -13,7 +13,7 @@ class GetAppPublishStatusRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
-        # The deployment order ID.
+        # The deployment ticket ID.
         self.deploy_order_id = deploy_order_id
         # The website domain name.
         self.website_domain = website_domain

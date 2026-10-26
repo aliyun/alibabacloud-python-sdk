@@ -22,17 +22,17 @@ class QuerySupabaseAuthConfigsForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not in use and can be ignored.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The task object.
         self.module = module
@@ -40,9 +40,9 @@ class QuerySupabaseAuthConfigsForAdminResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -133,19 +133,12 @@ class QuerySupabaseAuthConfigsForAdminResponseBodyModule(DaraModel):
         configs: Dict[str, Any] = None,
     ):
         # The configuration value. Valid values:
-        # 
-        # - cc_rule: HTTP flood protection rule.
-        # 
+        # - cc_rule: CC rules.
         # - ddos_dispatch: DDoS interaction scheduling.
-        # 
-        # - edge_safe: edge application security.
-        # 
+        # - edge_safe: Edge application security.
         # - blocked_regions: Location Blacklist.
-        # 
         # - http_acl_policy: Accurate Access Control.
-        # 
-        # - bot_manager: bot traffic management.
-        # 
+        # - bot_manager: Bot traffic management.
         # - ip_reputation: IP reputation library.
         self.configs = configs
 

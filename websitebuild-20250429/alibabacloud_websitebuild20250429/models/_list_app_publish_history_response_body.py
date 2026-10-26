@@ -26,7 +26,7 @@ class ListAppPublishHistoryResponseBody(DaraModel):
     ):
         # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retries are allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
         # The name of the frontend application.
         self.app_name = app_name
@@ -43,7 +43,7 @@ class ListAppPublishHistoryResponseBody(DaraModel):
         # - ExperimentTool: experiment tool table
         # - DataDiagnosis: data diagnostics
         self.module = module
-        # The token used to start the next query. This parameter is empty if no next query is available.
+        # The token that is used to start the next query. If no next query exists, this parameter is empty.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -160,8 +160,8 @@ class ListAppPublishHistoryResponseBodyModule(DaraModel):
         # The ID of the current release order.
         self.current_publish_order_id = current_publish_order_id
         # Specifies whether to display the history of applying alert templates to application groups. Valid values:
-        # - true: displayed.
-        # - false: not displayed. Default value.
+        # - true: Displayed.
+        # - false: Not displayed. Default value: false.
         self.history = history
         # The page number. Default value: 1.
         self.page_num = page_num
@@ -246,7 +246,7 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         steps: List[str] = None,
         subchannel: str = None,
     ):
-        # Indicates whether quick rollback is supported.
+        # Specifies whether quick rollback is supported.
         self.can_quick_revert = can_quick_revert
         # The commit hash of the code.
         self.commit_hash = commit_hash
@@ -265,8 +265,8 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         # Indicates whether the operation is completed.
         self.is_finish = is_finish
         # Indicates whether the resource allocation for the financial unit is successful. Valid values:
-        # - true: successful
-        # - false: failed
+        # - true: The allocation is successful.
+        # - false: The allocation fails.
         self.is_success = is_success
         # The error message.
         self.msg = msg
@@ -280,7 +280,7 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         self.publish_number = publish_number
         # The release order ID.
         self.publish_order_id = publish_order_id
-        # The release time, in the UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
+        # The release time in the UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.publish_time = publish_time
@@ -288,7 +288,7 @@ class ListAppPublishHistoryResponseBodyModuleHistory(DaraModel):
         self.step_codes = step_codes
         # The specific configurations of the component.
         self.steps = steps
-        # The release subchannel.
+        # The release sub-channel.
         self.subchannel = subchannel
 
     def validate(self):

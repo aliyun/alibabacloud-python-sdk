@@ -22,18 +22,18 @@ class GetAppPluginResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
+        # The dynamic error message, which is used to replace `%s` in the error message returned by the **ErrMessage** parameter.
         # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The application module.
         self.module = module
@@ -43,7 +43,7 @@ class GetAppPluginResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -163,12 +163,11 @@ class GetAppPluginResponseBodyModule(DaraModel):
         self.description = description
         # The image display mode. Valid values:
         # 
-        # - **0** (None): Not displayed.
-        # - **1** (Always): Always displayed.
+        # - **0** (None): The image is not displayed.
+        # - **1** (Always): The image is always displayed.
         self.display = display
-        # Specifies whether scheduled delivery of resource snapshots is enabled.
+        # Indicates whether scheduled delivery of resource snapshots is enabled. Valid values:
         # 
-        # Valid values:
         # - true: Enabled.
         # - false: Disabled.
         self.enabled = enabled
@@ -182,15 +181,15 @@ class GetAppPluginResponseBodyModule(DaraModel):
         self.gmt_modified = gmt_modified
         # The hook definitions.
         self.hooks = hooks
-        # The popularity count.
+        # The popularity.
         self.hot_count = hot_count
-        # The plug-in description.
+        # The plugin description.
         self.icon = icon
-        # The bound API Gateway plug-in ID.
+        # The ID of the associated API gateway plugin.
         self.plugin_id = plugin_id
-        # The plug-in name. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
+        # The name of the plugin. The name must be 4 to 50 characters in length and can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). It cannot start with an underscore.
         self.plugin_name = plugin_name
-        # The image repository URL.
+        # The URL of the image repository.
         self.repository_url = repository_url
         # The skill header information for model selection.
         self.skill_header = skill_header
@@ -198,7 +197,7 @@ class GetAppPluginResponseBodyModule(DaraModel):
         self.status = status
         # The category tags.
         self.tags = tags
-        # The application instance version.
+        # The version of the application instance.
         self.version = version
         # **The visibility level.**
         self.visibility = visibility

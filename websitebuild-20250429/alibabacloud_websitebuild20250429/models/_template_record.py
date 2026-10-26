@@ -17,13 +17,13 @@ class TemplateRecord(DaraModel):
     ):
         # The business ID of the application instance.
         self.biz_id = biz_id
-        # The replication status.
+        # The copy status.
         self.copy_status = copy_status
         # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create = gmt_create
-        # The modification time.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified = gmt_modified

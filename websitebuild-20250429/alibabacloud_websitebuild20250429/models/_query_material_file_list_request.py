@@ -28,13 +28,13 @@ class QueryMaterialFileListRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # The folder ID.
+        # The directory ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id
         # The maximum file size.
         self.max_file_size = max_file_size
-        # The maximum number of entries to return per query.
+        # The maximum number of entries to return for a single request.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
@@ -42,9 +42,9 @@ class QueryMaterialFileListRequest(DaraModel):
         self.min_file_size = min_file_size
         # The website name.
         self.name = name
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token that is used to start the next query. If no next query is available, this parameter is left empty.
         self.next_token = next_token
-        # The field by which to sort the results.
+        # The sort field.
         self.order_column = order_column
         # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
@@ -54,7 +54,7 @@ class QueryMaterialFileListRequest(DaraModel):
         self.page_size = page_size
         # The list of statuses.
         self.status_list = status_list
-        # The list of file suffixes.
+        # The list of file extensions.
         self.suffix_list = suffix_list
         # The list of file types.
         self.type_list = type_list

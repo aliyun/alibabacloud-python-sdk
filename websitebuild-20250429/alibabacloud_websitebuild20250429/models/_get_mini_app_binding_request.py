@@ -17,7 +17,7 @@ class GetMiniAppBindingRequest(DaraModel):
         self.biz_id = biz_id
         # The channel.
         self.channel = channel
-        # The list of extension information keys.
+        # The list of extended information keys.
         self.setting_keys = setting_keys
 
     def validate(self):

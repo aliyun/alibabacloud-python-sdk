@@ -22,7 +22,7 @@ class GrantPromotionOfferForPartnerRequest(DaraModel):
         self.belong_id = belong_id
         # The channel.
         self.channel = channel
-        # The employee code.
+        # The employee ID.
         self.employee_code = employee_code
         # The operation remark (audit information).
         self.remark = remark

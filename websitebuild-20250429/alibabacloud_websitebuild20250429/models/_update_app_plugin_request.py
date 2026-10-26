@@ -24,23 +24,23 @@ class UpdateAppPluginRequest(DaraModel):
         self.category = category
         # The configuration form in React JSON Schema format.
         self.config_items = config_items
-        # The application description.
+        # The description of the application.
         self.description = description
-        # Other extension information in JSON format for future parameter expansion.
+        # The additional extension information in JSON format for subsequent parameter extensions.
         self.extend = extend
         # The hook definitions.
         self.hooks = hooks
-        # The plug-in description.
+        # The description of the plugin.
         self.icon = icon
-        # The gateway plug-in ID.
+        # The ID of the gateway plugin.
         self.plugin_id = plugin_id
-        # The plug-in name.
+        # The name of the plugin.
         self.plugin_name = plugin_name
-        # The plug-in version.
+        # The plugin version.
         self.plugin_version = plugin_version
         # The skill header information for model selection.
         self.skill_header = skill_header
-        # The labels.
+        # The tags.
         self.tags = tags
         # The visibility.
         self.visibility = visibility

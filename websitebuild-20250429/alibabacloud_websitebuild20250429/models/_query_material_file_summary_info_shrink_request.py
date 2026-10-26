@@ -25,19 +25,19 @@ class QueryMaterialFileSummaryInfoShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # The file name.
+        # The name of the file.
         self.name = name
-        # The field by which to sort the results.
+        # The field used for sorting.
         self.order_column = order_column
-        # The sort order. Valid values: ASC and DESC.
+        # The sort order. Valid values: ASC, DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The file status.
+        # The file statuses.
         self.status_list_shrink = status_list_shrink
-        # The file type.
+        # The file types.
         self.type_list_shrink = type_list_shrink
 
     def validate(self):

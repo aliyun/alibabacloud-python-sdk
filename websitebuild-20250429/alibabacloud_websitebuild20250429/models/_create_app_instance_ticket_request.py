@@ -13,8 +13,9 @@ class CreateAppInstanceTicketRequest(DaraModel):
     ):
         # The customer business ID.
         self.biz_id = biz_id
-        # The Client ID of the device for which you want to revoke the access credential.
+        # The client ID of the device whose access credentials need to be revoked.
         self.client_id = client_id
+        # The user role that the ticket will assume.
         self.role = role
 
     def validate(self):

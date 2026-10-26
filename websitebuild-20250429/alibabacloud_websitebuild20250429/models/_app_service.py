@@ -29,15 +29,15 @@ class AppService(DaraModel):
     ):
         # The business ID of the application instance.
         self.biz_id = biz_id
-        # The creation time in ISO 8601 format in the UTC time zone (Z).
+        # The creation time in ISO 8601 format, in the UTC time zone (Z).
         self.create_time = create_time
         # The deletion flag.
         self.deleted = deleted
-        # The end time in ISO 8601 format in the UTC time zone (Z).
+        # The end time in ISO 8601 format, in the UTC time zone (Z).
         self.end_time = end_time
         # esp bizId
         self.esp_biz_id = esp_biz_id
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The associated business ID.
         self.instance_biz_id = instance_biz_id
@@ -53,7 +53,7 @@ class AppService(DaraModel):
         self.service_type_text = service_type_text
         # The application identifier.
         self.slug = slug
-        # The start time as a UNIX timestamp in milliseconds.
+        # The start time, specified as a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The status.
         self.status = status

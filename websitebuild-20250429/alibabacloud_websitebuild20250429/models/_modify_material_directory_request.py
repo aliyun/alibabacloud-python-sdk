@@ -15,11 +15,11 @@ class ModifyMaterialDirectoryRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # The folder ID.
+        # The ID of the folder.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # The new name of the folder.
+        # The updated name of the folder.
         # 
         # This parameter is required.
         self.name = name

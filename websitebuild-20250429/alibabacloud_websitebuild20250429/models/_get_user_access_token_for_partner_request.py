@@ -10,9 +10,10 @@ class GetUserAccessTokenForPartnerRequest(DaraModel):
         site_host: str = None,
         ticket: str = None,
     ):
+        # The website domain name.
         self.site_host = site_host
-        # The credential for connecting to the cloud application.
-        # > This parameter is displayed for non-initial calls.
+        # The credential used to connect to the cloud application.
+        # > This parameter is displayed for subsequent calls.
         # 
         # This parameter is required.
         self.ticket = ticket

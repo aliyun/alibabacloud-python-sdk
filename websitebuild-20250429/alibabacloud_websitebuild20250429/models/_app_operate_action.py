@@ -18,7 +18,7 @@ class AppOperateAction(DaraModel):
         self.action_text = action_text
         # Indicates whether the action is available.
         self.enable = enable
-        # The URL to navigate to when the action is clicked.
+        # The URL to redirect to when the action is clicked.
         self.href = href
 
     def validate(self):

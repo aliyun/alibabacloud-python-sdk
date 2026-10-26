@@ -22,17 +22,17 @@ class ListAppPluginVersionsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The name of the application to query.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. Currently not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not used and can be ignored.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -142,7 +142,7 @@ class ListAppPluginVersionsResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The query results.
+        # The request results.
         self.data = data
         # The decision weight.
         self.next = next
@@ -152,7 +152,7 @@ class ListAppPluginVersionsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Apart from pagination limits, the server processes a maximum of 1000 recent records for the current query. If the results exceed 1000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -259,7 +259,7 @@ class ListAppPluginVersionsResponseBodyModuleNext(DaraModel):
         self.file_count = file_count
         # The creation time.
         self.gmt_create = gmt_create
-        # Valid values: unknown, init, testing, online.
+        # The status. Valid values: unknown, init, testing, and online.
         self.status = status
         # The application instance version.
         self.version = version

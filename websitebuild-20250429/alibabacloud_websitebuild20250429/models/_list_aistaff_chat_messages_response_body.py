@@ -22,17 +22,17 @@ class ListAIStaffChatMessagesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied details.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the app.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore it.
+        # The dynamic message. This parameter is not in use and can be ignored.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -132,9 +132,7 @@ class ListAIStaffChatMessagesResponseBodyModule(DaraModel):
         self,
         messages: List[main_models.ListAIStaffChatMessagesResponseBodyModuleMessages] = None,
     ):
-        # The sender type.
-        # 
-        # Valid values:
+        # The sender type. Valid values:
         # - **ADMIN**: System.
         # - **CUSTOMER**: Visitor.
         # - **AGENT**: Agent.
@@ -192,7 +190,7 @@ class ListAIStaffChatMessagesResponseBodyModuleMessages(DaraModel):
         self.chat_id = chat_id
         # The current conversation status.
         self.chat_status = chat_status
-        # The ID of the data API operation that is called.
+        # The ID of the invoked data API.
         self.content = content
         # The content type.
         self.content_type = content_type
@@ -200,11 +198,11 @@ class ListAIStaffChatMessagesResponseBodyModuleMessages(DaraModel):
         self.conversation_id = conversation_id
         # The creation time.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The message ID.
         self.message_id = message_id
-        # The business extension metadata in Map format. The value must be a JSON string.
+        # The business extension metadata. The value must be a JSON string in map format.
         self.meta_data = meta_data
         # The role of the conversation participant. Valid values:
         # 
@@ -213,9 +211,10 @@ class ListAIStaffChatMessagesResponseBodyModuleMessages(DaraModel):
         # - assistant: Assistant.
         # 
         # - system: System.
+        # 
         # - function: Function.
         # 
-        # - plugin: Plugin.
+        # - plugin: Plug-in.
         # 
         # - tool: Tool.
         self.role = role

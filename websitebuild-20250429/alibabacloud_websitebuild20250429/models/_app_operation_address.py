@@ -21,7 +21,7 @@ class AppOperationAddress(DaraModel):
         server_delivery_url: str = None,
         upgrade_buy_url: str = None,
     ):
-        # The operation button list.
+        # The action button list.
         self.actions = actions
         # The customer service design URL.
         self.ai_customer_config_url = ai_customer_config_url
@@ -29,7 +29,7 @@ class AppOperationAddress(DaraModel):
         self.ai_design_url = ai_design_url
         # The application publishing URL.
         self.app_publish_url = app_publish_url
-        # The overview page operation button list.
+        # The overview page action button list.
         self.dashboard_actions = dashboard_actions
         # The professional design URL.
         self.design_url = design_url

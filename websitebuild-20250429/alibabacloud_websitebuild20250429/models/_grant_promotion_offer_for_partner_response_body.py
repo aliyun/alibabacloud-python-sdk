@@ -22,17 +22,17 @@ class GrantPromotionOfferForPartnerResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name cannot exceed 36 characters in length.
+        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
         self.app_name = app_name
-        # The dynamic code. This parameter is not in use. Ignore it.
+        # The dynamic code. This field is currently unused and can be ignored.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -141,7 +141,7 @@ class GrantPromotionOfferForPartnerResponseBodyModule(DaraModel):
         self.offer_summary = offer_summary
         # The distribution record ID.
         self.record_id = record_id
-        # Indicates whether the operation is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

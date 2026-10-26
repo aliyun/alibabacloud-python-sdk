@@ -24,16 +24,16 @@ class QuerySupabaseInstanceInfoForAdminResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the specified **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -165,23 +165,21 @@ class QuerySupabaseInstanceInfoForAdminResponseBodyModule(DaraModel):
         self.db_instance_id = db_instance_id
         # The public URL of the database.
         self.db_public_url = db_public_url
-        # The database type (rds/polardb).
+        # The database type. Valid values: rds, polardb.
         self.db_type = db_type
-        # The extra information.
+        # The additional information.
         self.extra = extra
-        # The time when the instance creation was completed.
+        # The completion time of the instance creation.
         self.instance_create_finished_time = instance_create_finished_time
-        # The instance creation status.
+        # The creation status of the instance.
         self.instance_create_status = instance_create_status
         # The deletion flag.
         self.is_deleted = is_deleted
-        # The access password of the RDS database.
+        # The access password for the RDS database.
         self.rds_database_password = rds_database_password
         # The service key.
         self.service_key = service_key
-        # The status. Valid values:
-        # - 0: Paused.
-        # - 1: Running.
+        # The status. Valid values: 0: Paused. 1: Running.
         self.status = status
         # The password for the Supabase Dashboard.
         self.supabase_dashboard_password = supabase_dashboard_password
@@ -195,7 +193,7 @@ class QuerySupabaseInstanceInfoForAdminResponseBodyModule(DaraModel):
         self.supabase_kong_url = supabase_kong_url
         # The private endpoint of the Supabase instance.
         self.supabase_private_ip = supabase_private_ip
-        # The public endpoint of the Supabase instance.
+        # The public network connection endpoint of the Supabase instance.
         self.supabase_public_ip = supabase_public_ip
         # The public URL of the Supabase instance.
         self.supabase_public_url = supabase_public_url

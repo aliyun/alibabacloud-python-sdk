@@ -16,9 +16,9 @@ class SetAppDomainCertificateRequest(DaraModel):
     ):
         # The business ID of the application instance.
         self.biz_id = biz_id
-        # The SSL certificate name.
+        # The name of the SSL certificate.
         self.certificate_name = certificate_name
-        # The certificate type: default free certificate or customer-owned certificate.
+        # The certificate type. Valid values: default free certificate and customer-owned certificate.
         self.certificate_type = certificate_type
         # The domain name.
         self.domain_name = domain_name

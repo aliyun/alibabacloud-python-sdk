@@ -24,29 +24,29 @@ class MoveMaterialDirectoryResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retries are allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
-        # The error code. The ErrorCode field is not returned if the request is successful. The ErrorCode field is returned if the request fails. For more information, see the error codes in this topic.
+        # The error code. If the request succeeds, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
-        # Indicates whether the folder was moved successfully.
+        # Indicates whether the move operation succeeded.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # The root error code.
+        # The error code.
         self.root_error_code = root_error_code
-        # The root error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # Indicates whether the request was successful.
         self.success = success

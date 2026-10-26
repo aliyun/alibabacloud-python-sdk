@@ -22,30 +22,30 @@ class CheckUserResourceMeasureResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed. Valid values:
-        # - false: A retry is not allowed.
-        # - true: A retry is allowed.
+        # Specifies whether retries are allowed. Valid values:
+        # - false: Retries are not allowed.
+        # - true: Retries are allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response element.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error arguments.
         self.error_args = error_args
-        # The response object.
+        # The returned object.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # The error code.
+        # The root error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The backup parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -133,19 +133,28 @@ class CheckUserResourceMeasureResponseBody(DaraModel):
 class CheckUserResourceMeasureResponseBodyModule(DaraModel):
     def __init__(
         self,
+        desired_total: int = None,
         error_code: str = None,
         error_message: str = None,
+        limit: int = None,
         passed: bool = None,
         resource_code: str = None,
+        upgrade_available: bool = None,
     ):
-        # The error code when the check fails. This value is null when the check passes.
+        # Returned only for APP_WORKSPACE: the target total for this check, which is the used quota in the saved configuration plus ResourceValue. If the compatible DesiredTotal is provided, this total is used directly. The used quota for questions is the sum of common and word-of-mouth questions in the saved configuration. The used quota for competitors is the number of competitors. This field is empty for APP and USER checks.
+        self.desired_total = desired_total
+        # The error code when the check fails. This field is null when the check passes.
         self.error_code = error_code
-        # The error message when the check fails. This value is null when the check passes.
+        # The error message when the check fails. This field is null when the check passes.
         self.error_message = error_message
+        # Returned only for APP_WORKSPACE quantity dry runs: the maximum number of questions or competitors allowed by the current commodity edition, not the remaining quota. This field is empty for APP and USER checks or when the edition benefits cannot be determined.
+        self.limit = limit
         # Indicates whether the check is passed.
         self.passed = passed
-        # The resource identifier.
+        # The resource code.
         self.resource_code = resource_code
+        # Indicates whether a purchasable higher edition exists that can accommodate the DesiredTotal. This field is true only when the current edition capacity is insufficient and a higher edition meets the requirements. Otherwise, it is false. This field may be empty for APP and USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
+        self.upgrade_available = upgrade_available
 
     def validate(self):
         pass
@@ -155,11 +164,17 @@ class CheckUserResourceMeasureResponseBodyModule(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.desired_total is not None:
+            result['DesiredTotal'] = self.desired_total
+
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
 
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
+
+        if self.limit is not None:
+            result['Limit'] = self.limit
 
         if self.passed is not None:
             result['Passed'] = self.passed
@@ -167,21 +182,33 @@ class CheckUserResourceMeasureResponseBodyModule(DaraModel):
         if self.resource_code is not None:
             result['ResourceCode'] = self.resource_code
 
+        if self.upgrade_available is not None:
+            result['UpgradeAvailable'] = self.upgrade_available
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DesiredTotal') is not None:
+            self.desired_total = m.get('DesiredTotal')
+
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
 
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
 
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+
         if m.get('Passed') is not None:
             self.passed = m.get('Passed')
 
         if m.get('ResourceCode') is not None:
             self.resource_code = m.get('ResourceCode')
+
+        if m.get('UpgradeAvailable') is not None:
+            self.upgrade_available = m.get('UpgradeAvailable')
 
         return self
 

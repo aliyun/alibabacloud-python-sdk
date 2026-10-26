@@ -24,19 +24,19 @@ class DeleteMaterialDirectoryResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
-        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
+        # The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
         # The error message.
         self.error_msg = error_msg
@@ -44,13 +44,13 @@ class DeleteMaterialDirectoryResponseBody(DaraModel):
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # The error code.
+        # The root error code.
         self.root_error_code = root_error_code
-        # The root error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # Indicates whether the request was processed synchronously.
+        # Indicates whether the operation is processed synchronously.
         self.synchro = synchro
 
     def validate(self):

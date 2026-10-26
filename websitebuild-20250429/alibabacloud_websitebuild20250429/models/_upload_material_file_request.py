@@ -25,7 +25,7 @@ class UploadMaterialFileRequest(DaraModel):
         self.file_url = file_url
         # The file name.
         self.name = name
-        # The OSS object key.
+        # The key of the OSS object.
         self.oss_key = oss_key
 
     def validate(self):

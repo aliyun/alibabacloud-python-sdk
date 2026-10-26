@@ -69,7 +69,7 @@ class GetMiniAppBindingResponseBodyData(DaraModel):
         self.preview_qr_code_url = preview_qr_code_url
         # The production QR code URL.
         self.production_qr_code_url = production_qr_code_url
-        # The extension information.
+        # The extended information.
         self.setting_values = setting_values
 
     def validate(self):

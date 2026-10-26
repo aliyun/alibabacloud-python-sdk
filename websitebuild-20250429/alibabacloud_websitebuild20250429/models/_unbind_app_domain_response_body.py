@@ -22,27 +22,27 @@ class UnbindAppDomainResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
+        # The dynamic error message used to replace the %s placeholder in the ErrMessage response parameter.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # The error code.
+        # The root error code.
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -132,7 +132,7 @@ class UnbindAppDomainResponseBodyModule(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the operation is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

@@ -22,16 +22,16 @@ class GetAppConversationResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the access denial.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
-        # Specifies whether retries are allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
         # The app name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The returned error parameters.
         self.error_args = error_args
@@ -43,7 +43,7 @@ class GetAppConversationResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Specifies whether the request is processed synchronously.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -155,7 +155,7 @@ class GetAppConversationResponseBodyModule(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The update time in ISO 8601 format in the UTC time zone.
+        # The update time. The time is in the ISO 8601 format and the UTC time zone (Z).
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
@@ -163,7 +163,7 @@ class GetAppConversationResponseBodyModule(DaraModel):
         self.meta_data = meta_data
         # The section ID of the check item.
         self.section_id = section_id
-        # The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         self.site_id = site_id
         # The current viewpoint, which is equivalent to the news title.
         self.title = title

@@ -15,19 +15,19 @@ class UploadAppPluginVersionRequest(DaraModel):
         plugin_id: str = None,
         plugin_version: str = None,
     ):
-        # The changelog description.
+        # The changelog.
         self.changelog = changelog
-        # The description. This parameter is optional. If a non-empty value is specified, the description field in the main table is also updated.
+        # The description. This parameter is optional. If this parameter is not empty, the description field in the primary table is updated accordingly.
         self.description = description
-        # The downloadable ZIP URL. This parameter is mutually exclusive with OssKey.
+        # The downloadable URL of the ZIP file. This parameter and OssKey are mutually exclusive.
         self.download_url = download_url
-        # The extended JSON. This parameter is optional and uses the same format as the sandbox-synced extend field. If a non-empty value is specified, the extend field in the main table is also updated.
+        # The extended JSON string. This parameter is optional and must be in the same format as the extend parameter synchronized from the sandbox. If this parameter is not empty, the extend field in the primary table is updated accordingly.
         self.extend = extend
-        # The OSS key obtained after frontend direct upload. This parameter is mutually exclusive with DownloadUrl.
+        # The Object Storage Service (OSS) key after the file is directly uploaded from the frontend. This parameter and DownloadUrl are mutually exclusive.
         self.oss_key = oss_key
-        # The gateway plug-in ID.
+        # The ID of the gateway plugin.
         self.plugin_id = plugin_id
-        # The new version number in semver format. The version must be greater than the current version.
+        # The new version number. The version number must follow the Semantic Versioning (SemVer) specification and be greater than the current version.
         self.plugin_version = plugin_version
 
     def validate(self):

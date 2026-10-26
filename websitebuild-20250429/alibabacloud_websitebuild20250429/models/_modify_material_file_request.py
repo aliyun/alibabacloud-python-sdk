@@ -19,7 +19,7 @@ class ModifyMaterialFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The new name of the file after modification.
+        # The updated file name.
         # 
         # This parameter is required.
         self.name = name

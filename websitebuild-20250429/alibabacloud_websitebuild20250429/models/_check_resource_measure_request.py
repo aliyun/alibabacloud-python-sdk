@@ -16,13 +16,13 @@ class CheckResourceMeasureRequest(DaraModel):
         resource_code: str = None,
         resource_value: int = None,
     ):
-        # The owner ID, which can be a website ID or an Alibaba Cloud user ID.
+        # The ID of the owner, such as the website ID or Alibaba Cloud user ID.
         self.belong_id = belong_id
-        # The owner ID type. Valid values: siteId and uid.
+        # The type of the owner ID. Valid values: siteId and uid.
         self.belong_id_type = belong_id_type
         # The ESP business type.
         self.biz_type = biz_type
-        # This parameter is used only for APP_WORKSPACE. It specifies the final total amount of issues or competitors after editing. For legacy APP or USER, it retains the incremental semantics of ResourceValue.
+        # The desired total for APP_WORKSPACE. Valid values: 0 to 100000. If this parameter is specified, it takes precedence over ResourceValue and is not added to the existing usage. For new calls, you only need to specify ResourceValue. This parameter is not used for APP or USER.
         self.desired_total = desired_total
         # The ESP business ID.
         self.esp_biz_id = esp_biz_id
@@ -30,9 +30,7 @@ class CheckResourceMeasureRequest(DaraModel):
         self.order_component_params = order_component_params
         # The resource identifier.
         self.resource_code = resource_code
-        # The resource value. This parameter is required only for feature resources and is empty by default. Valid values:
-        # - 0: Not supported.
-        # - 1: Supported.
+        # The resource value. This parameter is empty by default and is required only for feature resources. Valid values: 0: Not supported. 1: Supported.
         self.resource_value = resource_value
 
     def validate(self):

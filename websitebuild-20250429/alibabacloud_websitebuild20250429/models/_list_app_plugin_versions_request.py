@@ -11,11 +11,11 @@ class ListAppPluginVersionsRequest(DaraModel):
         page_size: int = None,
         plugin_id: str = None,
     ):
-        # The current page number. The value must be an integer greater than 0. Default value: 1.
+        # The page number. Valid values: integers greater than 0. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The gateway plug-in ID.
+        # The ID of the gateway plug-in.
         self.plugin_id = plugin_id
 
     def validate(self):

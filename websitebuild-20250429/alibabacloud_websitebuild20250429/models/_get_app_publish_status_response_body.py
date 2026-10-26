@@ -22,7 +22,7 @@ class GetAppPublishStatusResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
@@ -168,18 +168,16 @@ class GetAppPublishStatusResponseBodyModule(DaraModel):
         # Indicates whether the task is completed.
         self.is_finish = is_finish
         # Indicates whether the call is successful. Valid values:
-        # 
         # - `true`: The call is successful.
-        # 
-        # - `false`: The call fails.
+        # - `false`: The call failed.
         self.is_success = is_success
-        # The additional information.
+        # The additional description.
         self.msg = msg
-        # The sort order.
+        # The sorting type, such as ASC or DESC.
         self.order_type = order_type
         # The code of the publish order type.
         self.order_type_code = order_type_code
-        # The task completion percentage.
+        # The completion percentage of the task.
         self.percent = percent
         # The publish number.
         self.publish_number = publish_number

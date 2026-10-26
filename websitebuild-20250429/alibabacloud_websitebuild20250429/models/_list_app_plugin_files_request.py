@@ -10,9 +10,9 @@ class ListAppPluginFilesRequest(DaraModel):
         plugin_id: str = None,
         plugin_version: str = None,
     ):
-        # The gateway plug-in ID.
+        # The ID of the gateway plugin.
         self.plugin_id = plugin_id
-        # The version number. If not specified, the currently active version is used.
+        # The version number. If you do not specify this parameter, the currently active version is used.
         self.plugin_version = plugin_version
 
     def validate(self):

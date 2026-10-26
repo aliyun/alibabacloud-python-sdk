@@ -656,6 +656,8 @@ class Client(OpenApiClient):
             query['BelongIdType'] = request.belong_id_type
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.desired_total):
+            query['DesiredTotal'] = request.desired_total
         if not DaraCore.is_null(request.esp_biz_id):
             query['EspBizId'] = request.esp_biz_id
         if not DaraCore.is_null(request.order_component_params):
@@ -696,6 +698,8 @@ class Client(OpenApiClient):
             query['BelongIdType'] = request.belong_id_type
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.desired_total):
+            query['DesiredTotal'] = request.desired_total
         if not DaraCore.is_null(request.esp_biz_id):
             query['EspBizId'] = request.esp_biz_id
         if not DaraCore.is_null(request.order_component_params):

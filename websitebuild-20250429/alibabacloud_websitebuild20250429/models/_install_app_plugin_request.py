@@ -10,9 +10,9 @@ class InstallAppPluginRequest(DaraModel):
         plugin_id: str = None,
         plugin_version: str = None,
     ):
-        # The gateway plug-in ID.
+        # The ID of the gateway plugin.
         self.plugin_id = plugin_id
-        # The locked version. Leave empty to follow the latest version.
+        # The locked version. If left empty, the latest version is used.
         self.plugin_version = plugin_version
 
     def validate(self):

@@ -24,31 +24,31 @@ class ListAppDomainRedirectRecordsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The detailed reasons for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The frontend application name.
+        # The name of the frontend application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. Currently not used. Ignore this parameter.
+        # The dynamic message. This parameter is not in use and can be ignored.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
-        # The number of entries per query.
+        # The maximum number of results to return per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The returned object.
+        # The response object.
         self.module = module
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. This parameter is empty if no next query is available.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The error message.
         self.root_error_msg = root_error_msg
         # Indicates whether the request is processed synchronously.
         self.synchro = synchro
@@ -172,7 +172,7 @@ class ListAppDomainRedirectRecordsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Apart from pagination limits, the server processes up to 1000 recent records per query. If the results exceed 1000 records, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is set to **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is set to **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -265,11 +265,11 @@ class ListAppDomainRedirectRecordsResponseBodyModuleNext(DaraModel):
         source_domain: str = None,
         target_domain: str = None,
     ):
-        # The redirect record ID.
+        # The ID of the redirect record.
         self.record_id = record_id
         # The source domain name.
         self.source_domain = source_domain
-        # The destination domain name.
+        # The target domain name.
         self.target_domain = target_domain
 
     def validate(self):
@@ -311,11 +311,11 @@ class ListAppDomainRedirectRecordsResponseBodyModuleData(DaraModel):
         source_domain: str = None,
         target_domain: str = None,
     ):
-        # The redirect record ID.
+        # The ID of the redirect record.
         self.record_id = record_id
         # The source domain name.
         self.source_domain = source_domain
-        # The destination domain name.
+        # The target domain name.
         self.target_domain = target_domain
 
     def validate(self):

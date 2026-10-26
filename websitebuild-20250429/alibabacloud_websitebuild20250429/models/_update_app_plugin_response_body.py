@@ -22,19 +22,19 @@ class UpdateAppPluginResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
+        # The name of the application. It must start with a letter and can contain digits, letters, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
         self.app_name = app_name
-        # The dynamic code. This parameter is not in use. Ignore it.
+        # The dynamic code. This parameter is not used and can be ignored.
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
-        # Indicates whether the move is successful.
+        # Indicates whether the move was successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
@@ -42,7 +42,7 @@ class UpdateAppPluginResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -135,7 +135,7 @@ class UpdateAppPluginResponseBodyModule(DaraModel):
     ):
         # trial,draft,live,refunded,expired,released
         self.status = status
-        # Indicates whether the operation is successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

@@ -24,17 +24,17 @@ class SetAppDomainCertificateResponseBody(DaraModel):
     ):
         # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:
-        # - false: Retry is not allowed.
-        # - true: Retry is allowed.
+        # Specifies whether to allow retries. Valid values:
+        # - false: Retries are not allowed.
+        # - true: Retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -42,9 +42,9 @@ class SetAppDomainCertificateResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Specifies whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):

@@ -21,9 +21,9 @@ class AllocateSupabaseForAdminRequest(DaraModel):
         self.biz_id = biz_id
         # The environment identifier.
         self.env = env
-        # The field by which to sort the results.
+        # The sort column.
         self.order_column = order_column
-        # The sort order. Valid values: ASC and DESC.
+        # The sort order. Valid values: ASC, DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num

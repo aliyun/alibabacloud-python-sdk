@@ -22,15 +22,15 @@ class ListMarketplaceAppPluginsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason for access denial.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
         # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The returned error parameters.
@@ -143,7 +143,7 @@ class ListMarketplaceAppPluginsResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The request result.
+        # The request results.
         self.data = data
         # The next feature ID.
         self.next = next
@@ -153,7 +153,7 @@ class ListMarketplaceAppPluginsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Indicates whether the query result is limited. In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -275,10 +275,7 @@ class ListMarketplaceAppPluginsResponseBodyModuleNext(DaraModel):
         self.status = status
         # The API version number.
         self.version = version
-        # Specifies whether the bucket to which the uploaded file belongs is publicly accessible. Valid values:
-        # 
-        # - **public**: The file is uploaded to a public bucket.
-        # - **private**: The file is uploaded to a private bucket, and authorization is required for access.
+        # Indicates whether the bucket to which the uploaded file belongs is publicly accessible. Valid values: **public** and **private**. A value of public indicates that the file is uploaded to a public bucket. A value of private indicates that the file is uploaded to a private bucket and requires authorization for access.
         self.visibility = visibility
 
     def validate(self):
@@ -376,7 +373,7 @@ class ListMarketplaceAppPluginsResponseBodyModuleData(DaraModel):
         # - cloud_efficiency: ultra disk.
         # - cloud_ssd: standard SSD.
         # - cloud_essd: ESSD.
-        # - cloud: basic cloud disk.
+        # - cloud: basic disk.
         self.category = category
         # The scenario description.
         self.description = description

@@ -49,7 +49,7 @@ class UpdateMiniAppBindingResponseBodyData(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the operation is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

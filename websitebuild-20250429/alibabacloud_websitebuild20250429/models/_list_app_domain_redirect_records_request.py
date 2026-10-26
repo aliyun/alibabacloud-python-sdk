@@ -13,11 +13,11 @@ class ListAppDomainRedirectRecordsRequest(DaraModel):
     ):
         # The business ID of the application instance.
         self.biz_id = biz_id
-        # The number of entries per query.
+        # The maximum number of results to return per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token used to start the next query. This parameter is empty if no next query is available.
         self.next_token = next_token
 
     def validate(self):

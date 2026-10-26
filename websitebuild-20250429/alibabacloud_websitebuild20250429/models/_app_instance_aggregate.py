@@ -17,6 +17,7 @@ class AppInstanceAggregate(DaraModel):
         app_type: str = None,
         biz_id: str = None,
         build_type: str = None,
+        conversation_info: main_models.AppInstanceAggregateConversationInfo = None,
         create_time: str = None,
         deleted: int = None,
         description: str = None,
@@ -45,9 +46,11 @@ class AppInstanceAggregate(DaraModel):
         user_id: str = None,
         version: str = None,
     ):
+        # The list of AI agents associated with the application.
         self.ai_staff_list = ai_staff_list
-        # The application operation address.
+        # The operation address of the application.
         self.app_operation_address = app_operation_address
+        # The list of service instances associated with the application.
         self.app_service_list = app_service_list
         # The application subtype.
         self.app_sub_type = app_sub_type
@@ -57,6 +60,8 @@ class AppInstanceAggregate(DaraModel):
         self.biz_id = biz_id
         # The build type.
         self.build_type = build_type
+        # 没有关联会话时为 null。
+        self.conversation_info = conversation_info
         # The creation time.
         self.create_time = create_time
         # Indicates whether the instance is deleted.
@@ -75,17 +80,19 @@ class AppInstanceAggregate(DaraModel):
         self.esp_biz_id = esp_biz_id
         # The deletion time.
         self.gmt_delete = gmt_delete
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # The publish time.
+        # The publication time.
         self.gmt_publish = gmt_publish
-        # The application icon.
+        # The URL of the application icon.
         self.icon_url = icon_url
         # The application name.
         self.name = name
-        # The details.
+        # The partner details.
         self.partner_detail = partner_detail
+        # The configuration and runtime information of the application instance.
         self.profile = profile
+        # The ID of the enterprise resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The website domain name.
         self.site_host = site_host
@@ -99,9 +106,11 @@ class AppInstanceAggregate(DaraModel):
         self.status = status
         # The status text.
         self.status_text = status_text
+        # The tags.
         self.tags = tags
+        # The application template record information.
         self.template_record = template_record
-        # The application thumbnail.
+        # The URL of the application thumbnail.
         self.thumbnail_url = thumbnail_url
         # The user ID.
         self.user_id = user_id
@@ -119,6 +128,8 @@ class AppInstanceAggregate(DaraModel):
             for v1 in self.app_service_list:
                  if v1:
                     v1.validate()
+        if self.conversation_info:
+            self.conversation_info.validate()
         if self.partner_detail:
             self.partner_detail.validate()
         if self.profile:
@@ -159,6 +170,9 @@ class AppInstanceAggregate(DaraModel):
 
         if self.build_type is not None:
             result['BuildType'] = self.build_type
+
+        if self.conversation_info is not None:
+            result['ConversationInfo'] = self.conversation_info.to_map()
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -275,6 +289,10 @@ class AppInstanceAggregate(DaraModel):
         if m.get('BuildType') is not None:
             self.build_type = m.get('BuildType')
 
+        if m.get('ConversationInfo') is not None:
+            temp_model = main_models.AppInstanceAggregateConversationInfo()
+            self.conversation_info = temp_model.from_map(m.get('ConversationInfo'))
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
@@ -370,11 +388,11 @@ class AppInstanceAggregateTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the instance. Valid values of N: **1** to **20**. If this parameter is specified, it cannot be an empty string.
+        # The tag key of the instance. Valid values of N: **1** to **20**. If you specify this parameter, it cannot be an empty string.
         # 
         # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_key = tag_key
-        # The tag value of the instance. Valid values of N: **1** to **20**. If this parameter is specified, it can be an empty string.
+        # The tag value of the instance. Valid values of N: **1** to **20**. If you specify this parameter, it can be an empty string.
         # 
         # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_value = tag_value
@@ -416,6 +434,7 @@ class AppInstanceAggregatePartnerDetail(DaraModel):
         self.bind_data = bind_data
         # The partner ID.
         self.partner_id = partner_id
+        # The partner binding status. Valid values: BOUND (bound) and UNBOUND (unbound).
         self.status = status
 
     def validate(self):
@@ -452,8 +471,6 @@ class AppInstanceAggregatePartnerDetail(DaraModel):
 
         return self
 
-
-
 class AppInstanceAggregatePartnerDetailBindData(DaraModel):
     def __init__(
         self,
@@ -466,10 +483,11 @@ class AppInstanceAggregatePartnerDetailBindData(DaraModel):
         partner_id: str = None,
         user_id: str = None,
     ):
+        # The external business ID.
         self.biz_id = biz_id
         # The creation time.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The record ID.
         self.id = id
@@ -479,6 +497,7 @@ class AppInstanceAggregatePartnerDetailBindData(DaraModel):
         self.parent_pk = parent_pk
         # The partner ID.
         self.partner_id = partner_id
+        # The Alibaba Cloud account ID of the bound user.
         self.user_id = user_id
 
     def validate(self):
@@ -540,6 +559,36 @@ class AppInstanceAggregatePartnerDetailBindData(DaraModel):
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+
+        return self
+
+
+
+class AppInstanceAggregateConversationInfo(DaraModel):
+    def __init__(
+        self,
+        chat_num: int = None,
+    ):
+        # 0 表示存在空会话。
+        self.chat_num = chat_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.chat_num is not None:
+            result['ChatNum'] = self.chat_num
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChatNum') is not None:
+            self.chat_num = m.get('ChatNum')
 
         return self
 

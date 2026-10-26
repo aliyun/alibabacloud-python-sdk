@@ -22,17 +22,17 @@ class AllocateSupabaseForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details of the permission verification failure.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the app.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -40,9 +40,9 @@ class AllocateSupabaseForAdminResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The root error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Specifies whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -164,21 +164,21 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         self.db_instance_id = db_instance_id
         # The public URL of the database.
         self.db_public_url = db_public_url
-        # The database type.
+        # The type of the database.
         self.db_type = db_type
-        # The extra information.
+        # The additional information.
         self.extra = extra
         # The time when the instance creation was completed.
         self.instance_create_finished_time = instance_create_finished_time
-        # The instance creation status.
+        # The creation status of the instance.
         self.instance_create_status = instance_create_status
         # The deletion flag.
         self.is_deleted = is_deleted
-        # The password used to access the ApsaraDB RDS database.
+        # The access password of the RDS database.
         self.rds_database_password = rds_database_password
         # The service key.
         self.service_key = service_key
-        # The instance status. Valid values:
+        # The status of the instance. Valid values:
         # - 0: Paused.
         # - 1: Running.
         self.status = status
@@ -198,7 +198,7 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         self.supabase_public_ip = supabase_public_ip
         # The public URL of the Supabase instance.
         self.supabase_public_url = supabase_public_url
-        # The tenant ID.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
         # The user ID.
         self.user_id = user_id

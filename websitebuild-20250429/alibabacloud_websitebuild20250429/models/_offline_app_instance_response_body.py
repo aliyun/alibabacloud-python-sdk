@@ -21,9 +21,9 @@ class OfflineAppInstanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The deprecated parameter. You can ignore this parameter.
+        # **[Deprecated]** This parameter is deprecated and can be ignored.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -31,15 +31,15 @@ class OfflineAppInstanceResponseBody(DaraModel):
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
-        # Indicates whether the shift was successful.
+        # Indicates whether the move succeeded.
         self.module = module
         # Id of the request
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro

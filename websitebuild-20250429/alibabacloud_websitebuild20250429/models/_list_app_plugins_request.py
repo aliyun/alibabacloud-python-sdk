@@ -15,9 +15,11 @@ class ListAppPluginsRequest(DaraModel):
     ):
         # The business ID of the application instance.
         self.biz_id = biz_id
-        # The maximum number of results to return per query. Valid values: 10 to 100. Default value: 20.
+        # The maximum number of results to return per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token used to start the next query. If there is no next query, this value is empty.
+        # The token used to start the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
         # The status of the dataset acceleration instance. Valid values:
         # - Created: Initialized.

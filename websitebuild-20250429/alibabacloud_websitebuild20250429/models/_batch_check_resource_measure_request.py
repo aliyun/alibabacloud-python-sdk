@@ -22,7 +22,7 @@ class BatchCheckResourceMeasureRequest(DaraModel):
         self.biz_type = biz_type
         # The ESP business ID.
         self.esp_biz_id = esp_biz_id
-        # The order module information. This parameter is automatically populated when it is empty.
+        # The order component information. This parameter is automatically populated if left empty.
         self.order_component_params = order_component_params
         # The list of resource check items in JSON array format.
         self.resource_check_items = resource_check_items

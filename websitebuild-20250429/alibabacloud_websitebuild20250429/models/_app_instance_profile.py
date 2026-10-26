@@ -33,6 +33,7 @@ class AppInstanceProfile(DaraModel):
         source: str = None,
         template_etag: str = None,
         template_id: str = None,
+        upgrade_status: str = None,
     ):
         # The application type code. For example, PC_WebSite indicates a PC website.
         self.application_type = application_type
@@ -84,6 +85,7 @@ class AppInstanceProfile(DaraModel):
         self.template_etag = template_etag
         # The template ID used by the current application.
         self.template_id = template_id
+        self.upgrade_status = upgrade_status
 
     def validate(self):
         if self.independent_deployment:
@@ -169,6 +171,9 @@ class AppInstanceProfile(DaraModel):
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
 
+        if self.upgrade_status is not None:
+            result['UpgradeStatus'] = self.upgrade_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -248,6 +253,9 @@ class AppInstanceProfile(DaraModel):
 
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+
+        if m.get('UpgradeStatus') is not None:
+            self.upgrade_status = m.get('UpgradeStatus')
 
         return self
 

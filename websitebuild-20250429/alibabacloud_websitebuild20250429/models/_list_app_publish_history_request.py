@@ -28,7 +28,7 @@ class ListAppPublishHistoryRequest(DaraModel):
         self.keyword = keyword
         # The maximum number of entries to return for a single query. Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token used to start the next query. This parameter is empty if no next query is available.
+        # The token that is used to start the next query. If no next query exists, this parameter is empty.
         self.next_token = next_token
         # The page number.
         self.page_num = page_num
@@ -40,7 +40,7 @@ class ListAppPublishHistoryRequest(DaraModel):
         self.sort = sort
         # The release status.
         self.status = status
-        # The release subchannel.
+        # The release sub-channel.
         self.subchannel = subchannel
         # The website domain name.
         self.website_domain = website_domain

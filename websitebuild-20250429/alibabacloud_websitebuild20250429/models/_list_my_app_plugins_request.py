@@ -13,15 +13,15 @@ class ListMyAppPluginsRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
-        # Filters by category.
+        # The category used to filter results.
         self.category = category
-        # The search keyword that matches name/description.
+        # The search keyword. The keyword matches the name or description.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # Filters by status.
+        # The status used to filter results.
         self.status = status
 
     def validate(self):

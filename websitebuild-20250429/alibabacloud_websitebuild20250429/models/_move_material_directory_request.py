@@ -20,11 +20,11 @@ class MoveMaterialDirectoryRequest(DaraModel):
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # The parent folder ID after the move.
+        # The ID of the target parent folder.
         # 
         # This parameter is required.
         self.parent_directory_id = parent_directory_id
-        # The sort number.
+        # The sort order.
         # 
         # This parameter is required.
         self.sort_num = sort_num

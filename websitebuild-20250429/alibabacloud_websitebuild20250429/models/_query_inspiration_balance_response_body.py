@@ -26,11 +26,12 @@ class QueryInspirationBalanceResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The name of the application to query.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message used to replace `%s` in the error message of the **ErrMessage** response parameter. If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
@@ -42,7 +43,7 @@ class QueryInspirationBalanceResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Specifies whether the request is processed synchronously.
+        # Specifies whether the processing is synchronous.
         self.synchro = synchro
 
     def validate(self):
@@ -137,17 +138,17 @@ class QueryInspirationBalanceResponseBodyModule(DaraModel):
         total_used: int = None,
         total_used_str: str = None,
     ):
-        # The remaining quota, which is calculated by subtracting totalUsed from totalQuota.
+        # The remaining quota (totalQuota - totalUsed).
         self.remaining = remaining
-        # The string representation of the remaining quota.
+        # The string format of the remaining quota.
         self.remaining_str = remaining_str
-        # The total quota, which is the sum of the initQuota values of all valid accounts.
+        # The total quota (the sum of initQuota of all valid accounts).
         self.total_quota = total_quota
-        # The string representation of the total quota.
+        # The string format of the total quota.
         self.total_quota_str = total_quota_str
-        # The used quota, which is the sum of the used values of all valid accounts.
+        # The consumed quota (the sum of used of all valid accounts).
         self.total_used = total_used
-        # The string representation of the used quota.
+        # The string format of the consumed quota.
         self.total_used_str = total_used_str
 
     def validate(self):

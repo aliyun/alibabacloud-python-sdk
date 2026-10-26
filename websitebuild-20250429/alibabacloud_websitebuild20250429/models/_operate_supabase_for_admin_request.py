@@ -32,13 +32,13 @@ class OperateSupabaseForAdminRequest(DaraModel):
         self.operate_type = operate_type
         # The ORDER BY clause.
         self.order_by_clause = order_by_clause
-        # The column used for sorting.
+        # The sort field.
         self.order_column = order_column
         # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The table name.
         self.table_name = table_name

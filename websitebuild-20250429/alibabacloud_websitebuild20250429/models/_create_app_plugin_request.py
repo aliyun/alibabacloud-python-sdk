@@ -19,27 +19,27 @@ class CreateAppPluginRequest(DaraModel):
         tags: str = None,
         visibility: str = None,
     ):
-        # The category of the plug-in.
+        # The category of the skill.
         self.category = category
-        # The description of the plug-in. The value must be 10 to 512 characters in length.
+        # The description of the skill. The description must be 10 to 512 characters in length.
         self.description = description
-        # The downloadable ZIP URL. This parameter is mutually exclusive with OssKey.
+        # The URL of the downloadable ZIP file. Specify either this parameter or OssKey.
         self.download_url = download_url
-        # The extended JSON. This parameter is optional and uses the same format as the extend field in sandbox synchronization. If this parameter is not empty, the value is written to the database.
+        # The extended JSON data. The format is the same as the extend parameter synchronized with the sandbox. If this parameter is not empty, it is saved to the database. This parameter is optional.
         self.extend = extend
         # The URL of the icon.
         self.icon = icon
-        # The OSS key after frontend direct upload. This parameter is mutually exclusive with DownloadUrl.
+        # The Object Storage Service (OSS) key generated after a direct upload from the frontend. Specify either this parameter or DownloadUrl.
         self.oss_key = oss_key
-        # The unique identifier of the plug-in. The value can contain lowercase letters, digits, and hyphens (-), and must be 3 to 64 characters in length.
+        # The unique identifier of the skill. The identifier must be 3 to 64 characters in length and can contain only lowercase letters, digits, and hyphens (-).
         self.plugin_id = plugin_id
-        # The name of the plug-in. The value must be 2 to 64 characters in length.
+        # The name of the skill. The name must be 2 to 64 characters in length.
         self.plugin_name = plugin_name
-        # The version number in semver format. Default value: 0.1.0.
+        # The version number of the plug-in. The version number must be in the Semantic Versioning (SemVer) format. Default value: 0.1.0.
         self.plugin_version = plugin_version
-        # The tags, separated by commas (,).
+        # The tags of the skill. Separate multiple tags with commas (,).
         self.tags = tags
-        # The visibility of the plug-in. Default value: private.
+        # The visibility of the skill. Default value: private.
         self.visibility = visibility
 
     def validate(self):

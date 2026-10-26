@@ -16,7 +16,7 @@ class ReconnectAppChatRequest(DaraModel):
         self.chat_id = chat_id
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The last event ID.
+        # The ID of the last event.
         self.last_event_id = last_event_id
         # The creation time of the latest message.
         self.latest_message_create_time = latest_message_create_time

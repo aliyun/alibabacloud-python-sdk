@@ -22,19 +22,19 @@ class QueryInspirationConsumeRecordsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed cause of the access denial.
         self.access_denied_detail = access_denied_detail
-        # Specifies whether retries are allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
         # The name of the application to query.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not used. Ignore this parameter.
+        # The dynamic message. This field is not in use and can be ignored.
         self.dynamic_message = dynamic_message
         # The returned error parameters.
         self.error_args = error_args
-        # Specifies whether the deletion is successful.
+        # Indicates whether the deletion is successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
@@ -142,17 +142,17 @@ class QueryInspirationConsumeRecordsResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The request results.
+        # The request result.
         self.data = data
         # The ID of the next feature.
         self.next = next
-        # Specifies whether a next page exists.
+        # Indicates whether a next page exists.
         self.next_page = next_page
         # The number of entries per page.
         self.page_size = page_size
-        # Specifies whether a previous page exists.
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -258,7 +258,7 @@ class QueryInspirationConsumeRecordsResponseBodyModuleNext(DaraModel):
         self.consume_type = consume_type
         # The extended information in JSON string format.
         self.meta_data = meta_data
-        # The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, or AI content creation.
+        # The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, and AI content creation.
         self.scene_name = scene_name
 
     def validate(self):
@@ -334,7 +334,7 @@ class QueryInspirationConsumeRecordsResponseBodyModuleData(DaraModel):
         self.meta_data = meta_data
         # The unique identifier of the consumption record.
         self.record_key = record_key
-        # The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, or AI content creation.
+        # The name of the consumption scenario, such as AI application development, AI creative image generation, AI video creation, and AI content creation.
         self.scene_name = scene_name
 
     def validate(self):

@@ -15,7 +15,7 @@ class QueryInspirationAccountDetailsRequest(DaraModel):
         source_type: str = None,
         start_time: str = None,
     ):
-        # The end time of the query. The time is in ISO 8601 format and in the UTC (Z) time zone.
+        # The end time of the query. The time is in the ISO 8601 standard and the UTC (Z) time zone.
         self.end_time = end_time
         # The field by which to sort the results.
         self.order_column = order_column
@@ -25,9 +25,9 @@ class QueryInspirationAccountDetailsRequest(DaraModel):
         self.page_num = page_num
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The filter for the source type. Examples: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
+        # The source type filter, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
         self.source_type = source_type
-        # The start time of the query. The time is in ISO 8601 format and in the UTC (Z) time zone.
+        # The start time of the query. The time is in the ISO 8601 standard and the UTC (Z) time zone.
         self.start_time = start_time
 
     def validate(self):

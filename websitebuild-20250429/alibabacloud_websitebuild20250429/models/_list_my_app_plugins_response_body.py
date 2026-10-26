@@ -22,18 +22,18 @@ class ListMyAppPluginsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name. The name must start with a letter and can contain digits, letters, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
+        # The application name. The name must start with a letter and can contain digits, letters, underscores (_), and hyphens (-). It can be up to 36 characters in length.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** return parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The returned error parameters.
         self.error_args = error_args
         # The task object.
         self.module = module
@@ -43,7 +43,7 @@ class ListMyAppPluginsResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -153,7 +153,7 @@ class ListMyAppPluginsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to pagination limits, the server processes a maximum of 1000 recent records for the current query. If the results exceed 1000 entries, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # The result limit. In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -253,7 +253,7 @@ class ListMyAppPluginsResponseBodyModuleNext(DaraModel):
         version: str = None,
         visibility: str = None,
     ):
-        # Converts controlType based on the associated public category.
+        # The controlType converted based on the associated public category.
         self.category = category
         # The scenario description.
         self.description = description
@@ -261,20 +261,20 @@ class ListMyAppPluginsResponseBodyModuleNext(DaraModel):
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The plug-in icon.
+        # The plugin description.
         self.icon = icon
-        # The plug-in ID.
+        # The plugin ID.
         self.plugin_id = plugin_id
-        # The plug-in name.
+        # The plugin name.
         self.plugin_name = plugin_name
-        # The status. Valid values: unknown, init, testing, online.
+        # The status. Valid values: unknown, init, testing, and online.
         self.status = status
         # The API version number.
         self.version = version
         # The visibility. Valid values:
         # 
-        # - **PUBLIC**: public.
-        # - **PRIVATE**: private.
+        # - **PUBLIC**: Public.
+        # - **PRIVATE**: Private.
         self.visibility = visibility
 
     def validate(self):
@@ -366,7 +366,7 @@ class ListMyAppPluginsResponseBodyModuleData(DaraModel):
         version: str = None,
         visibility: str = None,
     ):
-        # The plug-in category.
+        # The disk specifications.
         self.category = category
         # The scenario description.
         self.description = description
@@ -374,13 +374,13 @@ class ListMyAppPluginsResponseBodyModuleData(DaraModel):
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The popularity count.
+        # The popularity.
         self.hot_count = hot_count
-        # The plug-in icon.
+        # The plugin description.
         self.icon = icon
-        # The plug-in ID.
+        # The plugin ID.
         self.plugin_id = plugin_id
-        # The plug-in name.
+        # The plugin name.
         self.plugin_name = plugin_name
         # The file status.
         self.status = status
@@ -388,8 +388,8 @@ class ListMyAppPluginsResponseBodyModuleData(DaraModel):
         self.version = version
         # The visibility. Valid values:
         # 
-        # - **PUBLIC**: public.
-        # - **PRIVATE**: private.
+        # - **PUBLIC**: Public.
+        # - **PRIVATE**: Private.
         self.visibility = visibility
 
     def validate(self):

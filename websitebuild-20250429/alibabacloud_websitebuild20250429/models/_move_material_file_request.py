@@ -17,7 +17,7 @@ class MoveMaterialFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # The folder ID.
+        # The directory ID.
         # 
         # This parameter is required.
         self.directory_id = directory_id

@@ -24,14 +24,14 @@ class RollbackAppPluginVersionResponseBody(DaraModel):
     ):
         # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
@@ -39,11 +39,11 @@ class RollbackAppPluginVersionResponseBody(DaraModel):
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # The error code.
+        # The root error code.
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):

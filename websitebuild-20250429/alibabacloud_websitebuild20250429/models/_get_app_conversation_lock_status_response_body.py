@@ -21,18 +21,18 @@ class GetAppConversationLockStatusResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied detail.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
-        # The dynamic code. This parameter is not in use. Ignore this parameter.
+        # The dynamic code. This parameter is not in use and can be ignored.
         self.dynamic_code = dynamic_code
-        # The dynamic error message that is used to replace the `%s` variable in the **ErrMessage** parameter.
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the specified request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error arguments.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -40,9 +40,9 @@ class GetAppConversationLockStatusResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The root error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):

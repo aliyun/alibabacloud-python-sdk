@@ -24,16 +24,16 @@ class RollbackAppCodeSnapshotResponseBody(DaraModel):
     ):
         # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # The app name.
         self.app_name = app_name
         # The error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** return parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** that you specify is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -43,7 +43,7 @@ class RollbackAppCodeSnapshotResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the processing is synchronous.
         self.synchro = synchro
 
     def validate(self):
@@ -139,7 +139,7 @@ class RollbackAppCodeSnapshotResponseBodyModule(DaraModel):
         self.change_log = change_log
         # The creation time.
         self.gmt_create = gmt_create
-        # The logical number.
+        # The logical value.
         self.logical_number = logical_number
 
     def validate(self):

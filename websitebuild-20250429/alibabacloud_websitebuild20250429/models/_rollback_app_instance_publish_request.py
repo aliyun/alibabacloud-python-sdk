@@ -16,7 +16,7 @@ class RollbackAppInstancePublishRequest(DaraModel):
         self.biz_id = biz_id
         # The deployment channel.
         self.deploy_channel = deploy_channel
-        # The publish number.
+        # The release number.
         self.publish_number = publish_number
         # Specifies whether to perform a quick rollback.
         self.quick_rollback = quick_rollback

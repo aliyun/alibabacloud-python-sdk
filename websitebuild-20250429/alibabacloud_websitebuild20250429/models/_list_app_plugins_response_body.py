@@ -26,22 +26,24 @@ class ListAppPluginsResponseBody(DaraModel):
     ):
         # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retries are allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
         # The name of the application to query.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the value of the **DtsJobId** request parameter is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The returned error parameters.
         self.error_args = error_args
-        # The maximum number of results to return per query. Valid values: 10 to 100. Default value: 20.
+        # The maximum number of results to return per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response object.
         self.module = module
-        # The token used to start the next query. If there is no next query, this value is empty.
+        # The token used to start the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -177,11 +179,14 @@ class ListAppPluginsResponseBodyModule(DaraModel):
         self.config_items = config_items
         # The description of the plugin.
         self.desc = desc
-        # The image display setting. Valid values:
+        # Specifies whether to display the image. Valid values:
+        # 
         # - **0** (None): Not displayed.
         # - **1** (Always): Always displayed.
         self.display = display
-        # Specifies whether to enable scheduled delivery of resource snapshots. Valid values:
+        # Specifies whether to enable scheduled delivery of resource snapshots.
+        # 
+        # Valid values:
         # - true: Enabled.
         # - false: Disabled.
         self.enabled = enabled
@@ -191,7 +196,7 @@ class ListAppPluginsResponseBodyModule(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # The modification time. The value is in the ISO 8601 format and the UTC time zone.
+        # The update time in ISO 8601 format in the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
@@ -201,9 +206,7 @@ class ListAppPluginsResponseBodyModule(DaraModel):
         self.icon = icon
         # The primary key.
         self.id = id
-        # Indicates whether the plugin is deleted. Valid values:
-        # - 0: No.
-        # - 1: Yes.
+        # Indicates whether the item is deleted. Valid values: 0 (no) and 1 (yes).
         self.is_deleted = is_deleted
         # The name of the plugin.
         self.name = name

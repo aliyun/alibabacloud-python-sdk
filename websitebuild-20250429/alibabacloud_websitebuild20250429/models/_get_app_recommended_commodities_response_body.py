@@ -24,24 +24,23 @@ class GetAppRecommendedCommoditiesResponseBody(DaraModel):
     ):
         # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retries are allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace `%s` in the error message returned by **ErrMessage**.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter. If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The returned error parameters.
         self.error_args = error_args
-        # The data table module.
+        # The data table module. Valid values:
         # 
-        # - ABTest: experiment data table
+        # - ABTest: Experiment data table.
         # 
-        # - ExperimentTool: experiment tool table
+        # - ExperimentTool: Experiment tool table.
         # 
-        # - DataDiagnosis: data diagnosis
+        # - DataDiagnosis: Data diagnosis.
         self.module = module
         # Id of the request
         self.request_id = request_id
@@ -185,7 +184,7 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         status: str = None,
         title: str = None,
     ):
-        # The click action type. Valid values: CONSULT (add WeCom), BUY (purchase), and AUTO (automatic issuance).
+        # The click action type. Valid values: CONSULT, BUY, and AUTO.
         self.action_type = action_type
         # The commodity code. This parameter applies to both resource plans and marketing commodities.
         self.commodity_code = commodity_code
@@ -193,13 +192,13 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         self.description = description
         # The extended fields, such as unsupportedReason.
         self.extend = extend
-        # The order type. Valid values: BUY (purchase) and UPGRADE (upgrade).
+        # The order type. Valid values: BUY and UPGRADE.
         self.order_type = order_type
         # The sort priority. A smaller value indicates a higher priority.
         self.priority = priority
         # The ID of the marketing commodity. This parameter is returned only for new purchases.
         self.promotion_commodity_id = promotion_commodity_id
-        # The recommendation type. Valid values: COMMODITY (commodity recommendation) and ACTIVITY (promotion activity recommendation).
+        # The recommendation type. Valid values: COMMODITY and ACTIVITY.
         self.recommend_type = recommend_type
         # The redirect URL. This parameter is returned when a redirect is required in scenarios such as upgrades.
         self.redirect_url = redirect_url

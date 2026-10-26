@@ -18,7 +18,7 @@ class NotifyAppNotificationForAdminRequest(DaraModel):
         self.env = env
         # The notification content.
         self.payload = payload
-        # The scene ID.
+        # The scenario ID.
         self.scene_id = scene_id
 
     def validate(self):

@@ -24,19 +24,19 @@ class CreateMaterialDirectoryResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # The application name. The application with this name is queried.
+        # The application name, used to query applications with this name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The returned error parameters.
         self.error_args = error_args
-        # The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
+        # The error code. Value description: If the request succeeds, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
         self.error_code = error_code
         # The returned object.
         self.module = module
@@ -46,9 +46,9 @@ class CreateMaterialDirectoryResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):

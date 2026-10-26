@@ -33,7 +33,7 @@ class AppServiceAggregate(DaraModel):
         self.biz_id = biz_id
         # The deletion flag.
         self.deleted = deleted
-        # The end time. It is in ISO 8601 format and uses the UTC (Z) time zone.
+        # The end time. It is in ISO 8601 format and uses the UTC time zone (Z).
         self.end_time = end_time
         # esp bizId
         self.esp_biz_id = esp_biz_id
@@ -49,7 +49,7 @@ class AppServiceAggregate(DaraModel):
         self.name = name
         # The list of flow nodes.
         self.node_list = node_list
-        # The unique identifier for an operation.
+        # Uniquely identifies an operation.
         self.operation_address = operation_address
         # The configuration information of the application service.
         self.profile = profile

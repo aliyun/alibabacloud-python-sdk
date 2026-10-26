@@ -22,16 +22,16 @@ class CreateAppAssistantAgentSsoLoginResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access is denied.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Specifies whether retries are allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** that you specify is invalid.
+        # The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
@@ -43,7 +43,7 @@ class CreateAppAssistantAgentSsoLoginResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -138,7 +138,7 @@ class CreateAppAssistantAgentSsoLoginResponseBodyModule(DaraModel):
     ):
         # The expiration timestamp.
         self.expire_time = expire_time
-        # The platform-specific extension field.
+        # The platform-specific extension fields.
         self.extra = extra
         # The platform type identifier.
         self.platform_type = platform_type
