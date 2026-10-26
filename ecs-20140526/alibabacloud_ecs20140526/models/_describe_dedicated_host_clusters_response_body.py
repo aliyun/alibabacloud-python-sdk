@@ -19,7 +19,7 @@ class DescribeDedicatedHostClustersResponseBody(DaraModel):
         self.dedicated_host_clusters = dedicated_host_clusters
         # The page number of the dedicated host cluster list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

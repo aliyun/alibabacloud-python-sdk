@@ -16,13 +16,13 @@ class DescribePrefixListAssociationsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The number of entries per page for paging.
+        # The number of entries per page in a paged query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of `NextToken` returned in the previous call. You do not need to set this parameter for the first request.
+        # The query token. Set the value to the `NextToken` value returned from the previous call to this operation. You do not need to specify this parameter for the first call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30,7 +30,7 @@ class DescribePrefixListAssociationsRequest(DaraModel):
         # 
         # This parameter is required.
         self.prefix_list_id = prefix_list_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest Alibaba Cloud region list.
         # 
         # This parameter is required.
         self.region_id = region_id

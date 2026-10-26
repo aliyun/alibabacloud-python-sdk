@@ -17,16 +17,16 @@ class DescribeDiagnosticReportsRequest(DaraModel):
         severity: str = None,
         status: str = None,
     ):
-        # The number of entries per page for a paged query. Maximum value: 100.
+        # The number of entries per page for a paging query. Maximum value: 100.
         # 
         # Default value:
         # 
-        # - If this parameter is not specified, the default value is 10.
-        # - If the specified value is greater than 100, the default value is 100.
+        # - If no Settings are specified, the default value is 10.
+        # - If the Settings value is greater than 100, the default value is 100.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
+        # The query token. Set the value to the `NextToken` value returned from the previous call. You do not need to specify this parameter for the first call.
         self.next_token = next_token
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -36,17 +36,17 @@ class DescribeDiagnosticReportsRequest(DaraModel):
         self.resource_ids = resource_ids
         # The severity level. Valid values:
         # 
-        # - Unknown: The initial state, which indicates that the diagnostic has not started or the diagnostic process exited abnormally. No diagnostic conclusion is available.
-        # - Normal: The diagnostic is normal. No issues are found.
-        # - Info: Related information is available and may be associated with an exception.
-        # - Warn: Related information is available and may cause an exception.
+        # - Unknown: The initial state, which indicates that the diagnosis has not started or the diagnostic program exited abnormally, and no diagnostic conclusion is available.
+        # - Normal: The diagnosis is normal and no issues are found.
+        # - Info: Associated information is available, which may be related to an exception.
+        # - Warn: Associated information is available, which may cause an exception.
         # - Critical: A critical exception exists.
         self.severity = severity
         # The report status. Valid values:
         # 
-        # - InProgress: The diagnostic is in progress.
-        # - Failed: The diagnostic failed.
-        # - Finished: The diagnostic is complete.
+        # - InProgress: The diagnosis is in progress.
+        # - Failed: The diagnosis failed.
+        # - Finished: The diagnosis is finished.
         self.status = status
 
     def validate(self):

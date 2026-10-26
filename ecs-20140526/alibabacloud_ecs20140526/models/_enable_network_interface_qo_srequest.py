@@ -16,15 +16,15 @@ class EnableNetworkInterfaceQoSRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the network interface controller (NIC).
+        # The ID of the Elastic Network Interface (ENI).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The QoS rate limiting settings.
+        # The QoS bandwidth throttling settings.
         self.qo_s = qo_s
-        # The region ID. You can call DescribeRegions to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -100,23 +100,23 @@ class EnableNetworkInterfaceQoSRequestQoS(DaraModel):
     ):
         # The maximum inbound internal bandwidth limit.
         # 
-        # Unit: kbit/s. Increment: 1000 (1 Mbit/s). Value range: [50000, +∞).
+        # Unit: Kbit/s. Step size: 1000 (1 Mbit/s). Valid values: [50000, +∞).
         self.bandwidth_rx = bandwidth_rx
         # The maximum outbound internal bandwidth limit.
         # 
-        # Unit: kbit/s. Increment: 1000 (1 Mbit/s). Value range: [50000, +∞).
+        # Unit: Kbit/s. Step size: 1000 (1 Mbit/s). Valid values: [50000, +∞).
         self.bandwidth_tx = bandwidth_tx
         # The maximum number of sessions.
         # 
-        # Increment: 10000. Value range: [10000, +∞).
+        # Step size: 10000. Valid values: [10000, +∞).
         self.concurrent_connections = concurrent_connections
         # The inbound internal packet forwarding rate.
         # 
-        # Unit: pps. Increment: 10000. Value range: [10000, +∞).
+        # Unit: PPS. Step size: 10000. Valid values: [10000, +∞).
         self.pps_rx = pps_rx
         # The outbound internal packet forwarding rate.
         # 
-        # Unit: pps. Increment: 10000. Value range: [10000, +∞).
+        # Unit: PPS. Step size: 10000. Valid values: [10000, +∞).
         self.pps_tx = pps_tx
 
     def validate(self):

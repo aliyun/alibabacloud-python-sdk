@@ -10,9 +10,7 @@ class ReleasePublicIpAddressResponseBody(DaraModel):
         remain_times: str = None,
         request_id: str = None,
     ):
-        # > This parameter is not yet available.
         self.remain_times = remain_times
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

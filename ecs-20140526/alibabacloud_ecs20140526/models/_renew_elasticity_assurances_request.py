@@ -25,58 +25,52 @@ class RenewElasticityAssurancesRequest(DaraModel):
     ):
         self.private_pool_options = private_pool_options
         # Specifies whether to enable automatic payment. Valid values:
-        # - true: Automatic payment is enabled.
-        # - false: Automatic payment is not enabled.
+        # - true: yes.
+        # - false: no.
         # 
         # Default value: true.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - true: Auto-renewal is enabled.
+        # - true: enables auto-renewal.
         # 
-        # - false: Auto-renewal is not enabled.
+        # - false: disables auto-renewal.
         # 
         # Default value: false.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. Unit: months. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+        # The auto-renewal duration in months. Valid values: 1, 2, 3, 6, 12, 24, and 36.
         # 
-        # - When `PeriodUnit=Month`, the default value is 1.
+        # - If PeriodUnit is set to Month, the default value is 1.
         # 
-        # - When `PeriodUnit=Year`, the default value is 12.
+        # - If PeriodUnit is set to Year, the default value is 12.
         # 
-        # 
-        # >This parameter is required when `AutoRenew` is set to `true`.
+        # > This parameter is required when AutoRenew is set to true.
         self.auto_renew_period = auto_renew_period
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests.
-        # 
-        # `ClientToken` supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # Ensures the idempotence of the request. You can generate a value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and can be up to 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The renewal duration. The unit of the duration is determined by the `PeriodUnit` parameter. Valid values:
+        # The renewal duration. The unit is specified by the PeriodUnit parameter. Valid values:
         # 
-        # - When `PeriodUnit` is set to `Weekly`: 1, 2, and 3.
+        # - If PeriodUnit is set to Weekly, valid values are 1, 2, and 3.
         # 
+        # - If PeriodUnit is set to Month, valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         # 
-        # - When `PeriodUnit` is set to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-        # 
-        # - When `PeriodUnit` is set to `Year`: 1, 2, 3, 4, and 5.
+        # - If PeriodUnit is set to Year, valid values are 1, 2, 3, 4, and 5.
         # 
         # Default value: 1.
         self.period = period
         # The unit of the renewal duration. Valid values:
         # 
-        # - Weekly: week
+        # - Weekly: week.
         # 
-        # - Month: month
+        # - Month: month.
         # 
-        # - Year: year
+        # - Year: year.
         # 
         # Default value: Year.
         self.period_unit = period_unit
-        # The ID of the region in which the elasticity assurance service resides.
-        # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/2680071.html) to query the most recent region list.
+        # The region ID of the elasticity assurance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2680071.html) to query the latest Alibaba Cloud region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -174,11 +168,11 @@ class RenewElasticityAssurancesRequestPrivatePoolOptions(DaraModel):
         self,
         id: List[str] = None,
     ):
-        # The list of elasticity assurance service IDs.
+        # The list of elasticity assurance IDs. This parameter is required. If this parameter is not specified, the API returns MissingParameter.PrivatePoolOptions.Id.
         # 
-        # **Limit**: You can renew up to 20 elasticity assurance services at a time.
+        # **Limits**: You can renew up to 20 elasticity assurances at a time.
         # 
-        # You can call [DescribeElasticityAssurances](https://help.aliyun.com/document_detail/2679748.html) to query purchased elasticity assurance services.
+        # You can call [DescribeElasticityAssurances](https://help.aliyun.com/document_detail/2679748.html) to query the purchased elasticity assurances.
         self.id = id
 
     def validate(self):

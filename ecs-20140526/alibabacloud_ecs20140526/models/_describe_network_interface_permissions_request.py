@@ -19,25 +19,25 @@ class DescribeNetworkInterfacePermissionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the network interface controller (NIC). You must specify `NetworkInterfaceId` or `NetworkInterfacePermissionId.N` to determine the query scope.
+        # The ID of the network interface controller (NIC). You must specify NetworkInterfaceId or NetworkInterfacePermissionId.N to determine the query scope.
         self.network_interface_id = network_interface_id
-        # The list of network interface controller (NIC) permission IDs. Number of elements in the list: 1 to 100.
+        # The list of network interface controller (NIC) permission IDs. Number of elements: 1 to 100.
         self.network_interface_permission_id = network_interface_permission_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number of the network interface controller (NIC) permission list.
         # 
-        # Minimum value: 1
+        # Starting value: 1
         # 
         # Default value: 1
         self.page_number = page_number
-        # The number of entries per page for the paged query.
+        # The number of entries per page in a paged query.
         # 
         # Maximum value: 100
         # 
         # Default value: 10
         self.page_size = page_size
-        # The region of the network interface controller (NIC) permissions. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the network interface controller (NIC) permission. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

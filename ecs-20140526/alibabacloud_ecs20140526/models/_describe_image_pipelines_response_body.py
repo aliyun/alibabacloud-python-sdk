@@ -17,9 +17,9 @@ class DescribeImagePipelinesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.image_pipeline = image_pipeline
-        # The maximum number of entries per page in a paging query.
+        # The number of entries returned per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned in this call. For more information about how to use this token, see the operation description.
+        # The pagination token returned by this call. For more information, see the operation description.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -122,6 +122,7 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
         image_name: str = None,
         image_options: main_models.DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageOptions = None,
         image_pipeline_id: str = None,
+        image_security_options: main_models.DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions = None,
         import_image_options: main_models.DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions = None,
         instance_type: str = None,
         internet_max_bandwidth_out: int = None,
@@ -148,6 +149,7 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
         self.image_name = image_name
         self.image_options = image_options
         self.image_pipeline_id = image_pipeline_id
+        self.image_security_options = image_security_options
         self.import_image_options = import_image_options
         self.instance_type = instance_type
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
@@ -169,6 +171,8 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
             self.advanced_options.validate()
         if self.image_options:
             self.image_options.validate()
+        if self.image_security_options:
+            self.image_security_options.validate()
         if self.import_image_options:
             self.import_image_options.validate()
         if self.repair_items:
@@ -218,6 +222,9 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
 
         if self.image_pipeline_id is not None:
             result['ImagePipelineId'] = self.image_pipeline_id
+
+        if self.image_security_options is not None:
+            result['ImageSecurityOptions'] = self.image_security_options.to_map()
 
         if self.import_image_options is not None:
             result['ImportImageOptions'] = self.import_image_options.to_map()
@@ -300,6 +307,10 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSet(DaraModel)
 
         if m.get('ImagePipelineId') is not None:
             self.image_pipeline_id = m.get('ImagePipelineId')
+
+        if m.get('ImageSecurityOptions') is not None:
+            temp_model = main_models.DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions()
+            self.image_security_options = temp_model.from_map(m.get('ImageSecurityOptions'))
 
         if m.get('ImportImageOptions') is not None:
             temp_model = main_models.DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImageOptions()
@@ -789,6 +800,33 @@ class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImportImage
 
         if m.get('OSSObject') is not None:
             self.ossobject = m.get('OSSObject')
+
+        return self
+
+class DescribeImagePipelinesResponseBodyImagePipelineImagePipelineSetImageSecurityOptions(DaraModel):
+    def __init__(
+        self,
+        security_scan_mode: str = None,
+    ):
+        self.security_scan_mode = security_scan_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.security_scan_mode is not None:
+            result['SecurityScanMode'] = self.security_scan_mode
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityScanMode') is not None:
+            self.security_scan_mode = m.get('SecurityScanMode')
 
         return self
 

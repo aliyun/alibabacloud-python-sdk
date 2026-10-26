@@ -16,14 +16,10 @@ class DescribeTagsResponseBody(DaraModel):
         tags: main_models.DescribeTagsResponseBodyTags = None,
         total_count: int = None,
     ):
-        # The page number of the tag list.
         self.page_number = page_number
-        # The number of entries per page settings for the paged query. This is the paging size.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
         self.tags = tags
-        # The total number of tags.
         self.total_count = total_count
 
     def validate(self):

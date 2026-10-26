@@ -17,7 +17,7 @@ class ModifyDiskDefaultKMSKeyIdRequest(DaraModel):
         # This parameter is required.
         self.kmskey_id = kmskey_id
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

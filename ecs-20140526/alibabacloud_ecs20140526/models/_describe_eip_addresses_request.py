@@ -28,21 +28,33 @@ class DescribeEipAddressesRequest(DaraModel):
         status: str = None,
     ):
         self.filter = filter
+        # The ID of the EIP to query. You can enter up to 50 IDs. Separate multiple IDs with commas.
         self.allocation_id = allocation_id
+        # The ID of the associated cloud service instance.
         self.associated_instance_id = associated_instance_id
+        # The type of the associated cloud service instance. Valid values: EcsInstance, SlbInstance, Nat, HaVip, NetworkInterface, and IpAddress.
         self.associated_instance_type = associated_instance_type
+        # The billing method of the EIP. Valid values: PostPaid (pay-as-you-go) and PrePaid (subscription).
         self.charge_type = charge_type
+        # The EIP address to query. You can enter up to 50 addresses. Separate multiple addresses with commas.
         self.eip_address = eip_address
+        # The line type. Valid values include BGP and BGP_PRO.
         self.isp = isp
+        # The lock type. Valid values: financial (locked due to overdue payment) and security (locked due to security reasons).
         self.lock_reason = lock_reason
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: 100. Default value: 10.
         self.page_size = page_size
+        # The ID of the region where the EIP resides. You can call the DescribeRegions operation to query region IDs.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The status of the EIP. Valid values: Associating, Unassociating, InUse, Available, and Releasing.
         self.status = status
 
     def validate(self):
@@ -169,7 +181,9 @@ class DescribeEipAddressesRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The first filter key. Set the value to CreationStartTime, which specifies the start time of resource creation.
         self.key = key
+        # The first filter value. Specify the time in UTC in the YYYY-MM-DDThh:mmZ format.
         self.value = value
 
     def validate(self):

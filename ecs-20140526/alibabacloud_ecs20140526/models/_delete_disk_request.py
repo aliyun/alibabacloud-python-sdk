@@ -13,7 +13,7 @@ class DeleteDiskRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the disk that you want to release.
+        # The ID of the disk to be released.
         # 
         # This parameter is required.
         self.disk_id = disk_id

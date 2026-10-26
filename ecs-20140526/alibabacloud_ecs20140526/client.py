@@ -5430,6 +5430,8 @@ class Client(OpenApiClient):
             query['ImageName'] = request.image_name
         if not DaraCore.is_null(request.image_options):
             query['ImageOptions'] = request.image_options
+        if not DaraCore.is_null(request.image_security_options):
+            query['ImageSecurityOptions'] = request.image_security_options
         if not DaraCore.is_null(request.import_image_options):
             query['ImportImageOptions'] = request.import_image_options
         if not DaraCore.is_null(request.instance_type):
@@ -5518,6 +5520,8 @@ class Client(OpenApiClient):
             query['ImageName'] = request.image_name
         if not DaraCore.is_null(request.image_options):
             query['ImageOptions'] = request.image_options
+        if not DaraCore.is_null(request.image_security_options):
+            query['ImageSecurityOptions'] = request.image_security_options
         if not DaraCore.is_null(request.import_image_options):
             query['ImportImageOptions'] = request.import_image_options
         if not DaraCore.is_null(request.instance_type):
@@ -15902,6 +15906,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
         if not DaraCore.is_null(request.portable):
             query['Portable'] = request.portable
         if not DaraCore.is_null(request.region_id):
@@ -15996,6 +16002,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.performance_level):
+            query['PerformanceLevel'] = request.performance_level
         if not DaraCore.is_null(request.portable):
             query['Portable'] = request.portable
         if not DaraCore.is_null(request.region_id):

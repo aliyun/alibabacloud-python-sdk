@@ -14,7 +14,7 @@ class DescribePrefixListAssociationsResponseBody(DaraModel):
         prefix_list_associations: main_models.DescribePrefixListAssociationsResponseBodyPrefixListAssociations = None,
         request_id: str = None,
     ):
-        # The pagination token returned in this call. If the return value is empty, no more data is available.
+        # The query token returned by the current call. If this value is empty, it indicates that no more data is available.
         self.next_token = next_token
         self.prefix_list_associations = prefix_list_associations
         # The request ID.

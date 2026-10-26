@@ -34,73 +34,74 @@ class DescribeDedicatedHostsRequest(DaraModel):
     ):
         # The ID of the dedicated host cluster.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        # The list of dedicated host IDs. You can specify up to 100 IDs, separated by commas (,).
+        # The IDs of the dedicated hosts. You can specify up to 100 IDs. Separate multiple IDs with commas (,).
         self.dedicated_host_ids = dedicated_host_ids
         # The name of the dedicated host.
         self.dedicated_host_name = dedicated_host_name
-        # The type of the dedicated host. You can call [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) to query the most recent list of dedicated host types.
+        # The type of the dedicated host. You can call the [DescribeDedicatedHostTypes](https://help.aliyun.com/document_detail/134240.html) operation to query the most recent dedicated host type list.
         self.dedicated_host_type = dedicated_host_type
         # The reason why the dedicated host is locked. Valid values:
         # - financial: The dedicated host is locked due to overdue payments.
-        # - security: The dedicated host is locked for security reasons.
+        # - security: The dedicated host is locked due to security reasons.
         self.lock_reason = lock_reason
-        # The maximum number of entries per page for a paged query. If you set this parameter, it indicates that the paging method using the MaxResults and NextToken parameters is used.
+        # The maximum number of entries per page for a paged query. If you specify this parameter, the query uses the combination of MaxResults and NextToken for pagination.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The detailed information of the dedicated host.
+        # Specifies whether to return the details of the dedicated host.
         self.need_host_detail = need_host_detail
-        # The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
+        # The query token. Set the value to the NextToken value returned in the previous call to this operation. You do not need to specify this parameter when you call this operation for the first time.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter will be offline soon. Use NextToken and MaxResults to perform paged query operations for paging.
+        # > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults for pagination.
         self.page_number = page_number
-        # > This parameter will be offline soon. Use NextToken and MaxResults to perform paged query operations for paging.
+        # > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults for pagination.
         self.page_size = page_size
+        # Specifies whether to query the inventory information of the dedicated host.
         self.query_inventory = query_inventory
-        # The region ID of the dedicated host. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the dedicated host. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the dedicated host belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # The ID of the resource group to which the dedicated host belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
         # 
         # > Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to display socket-level capacity information. You can use socket-level capacity information to view remaining resources (vCPUs, memory usage, remaining capacity, and total capacity) to determine whether an ECS instance of a specific instance type can be created. Valid values:
+        # Specifies whether to display socket-level capacity information. You can view the remaining resource information (vCPU and memory usage, remaining capacity, and total capacity) at the socket level to determine whether ECS instances of the corresponding type can be created. Valid values:
         # 
-        # - true: Display socket-level capacity information. Only specific dedicated host types support displaying socket-level resource information. For more information, see [View and export DDH information](https://help.aliyun.com/document_detail/68989.html).
-        # - false: Do not display socket-level capacity information.
+        # - true: Display the information. Only dedicated hosts of specific types support displaying socket-level resource information. For more information, see [View and export dedicated host information](https://help.aliyun.com/document_detail/68989.html).
+        # - false: Do not display the information.
         # 
         # >Notice: 
         # 
-        # Each dedicated host typically has two CPUs, numbered Socket 0 and Socket 1. On a dedicated host, ECS instances are not created across sockets to ensure maximum performance. An ECS instance is created based on a single socket only.
+        # Generally, each dedicated host has two CPUs, and the ID of each CPU is Socket 0 or Socket 1. On an exclusive dedicated host, to ensure that the ECS instances on the dedicated host deliver maximum performance, ECS instances are not created across sockets. This means that an ECS instance is created based on only one socket.
         # 
-        # - If the remaining computing resources of one socket are greater than or equal to the ECS instance type to be created, the ECS instance is created.
-        # - If the remaining computing resources of each socket are less than the ECS instance type to be created, the ECS instance fails to be created, even if the combined remaining resources of both sockets exceed the ECS instance type requirements.
+        # - If the remaining computing resources of one socket are greater than or equal to the resources required by the ECS instance type to be created, the ECS instance is created.
+        # - If the remaining computing resources of each socket are less than the resources required by the ECS instance type to be created, the ECS instance fails to be created. Even if the total remaining resources of the two sockets on the dedicated host are greater than the resources required by the ECS instance type, the ECS instance still cannot be created.
         # </notice>
         self.socket_details = socket_details
-        # The usage status of the dedicated host. Valid values:
+        # The status of the dedicated host. Valid values:
         # 
-        # - Available: The dedicated host is running as expected.
+        # - Available: The dedicated host is running. This is the normal status of a dedicated host.
         # 
-        # - UnderAssessment: The physical machine has potential risks. The physical machine is available but may cause issues for ECS instances on the dedicated host.
+        # - UnderAssessment: The physical machine has risks. The physical machine is available during the fault incubation period, but issues may occur on the ECS instances on the dedicated host.
         # 
-        # - PermanentFailure: The dedicated host has a permanent failure and is unavailable.
+        # - PermanentFailure: A permanent failure occurred. The dedicated host is unavailable.
         # 
         # - TempUnavailable: The dedicated host is temporarily unavailable.
         # 
-        # - Redeploying: The dedicated host is being restored.
+        # - Redeploying: The dedicated host is being recovered.
         # 
         # Default value: Available.
         self.status = status
-        # The tags. Valid values of N: 0 to 20.
+        # The list of tags. You can specify 0 to 20 tags.
         self.tag = tag
-        # The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the most recent zone list.
+        # The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -257,9 +258,9 @@ class DescribeDedicatedHostsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the dedicated host. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key of the dedicated host. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the dedicated host. If you specify this parameter, the value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value of the dedicated host. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

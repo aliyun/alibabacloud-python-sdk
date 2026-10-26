@@ -32,92 +32,92 @@ class DescribeInvocationsRequest(DaraModel):
         tag: List[main_models.DescribeInvocationsRequestTag] = None,
         timed: bool = None,
     ):
-        # The command ID. You can call [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) to query all available command IDs.
+        # The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
         self.command_id = command_id
-        # The command name. This parameter does not take effect if the `InstanceId` parameter is also specified.
+        # The command name. This parameter does not take effect if the InstanceId parameter is also specified.
         self.command_name = command_name
         # The command type. Valid values:
         # 
-        # - RunBatScript: Bat script that runs on Windows instances.
-        # - RunPowerShellScript: PowerShell script that runs on Windows instances.
-        # - RunShellScript: Shell script that runs on Linux instances.
+        # - RunBatScript: The command is a batch script that runs on a Windows instance.
+        # - RunPowerShellScript: The command is a PowerShell script that runs on a Windows instance.
+        # - RunShellScript: The command is a shell script that runs on a Linux instance.
         self.command_type = command_type
-        # The encoding mode of the `CommandContent` and `Output` fields in the response. Valid values:
+        # The encoding method of the CommandContent and Output fields in the response. Valid values:
         # 
-        # - PlainText: Returns the original command content and output.
-        # - Base64: Returns the Base64-encoded command content and output.
+        # - PlainText: returns the original command content and output.
+        # - Base64: returns the Base64-encoded command content and output.
         # 
         # Default value: Base64.
         self.content_encoding = content_encoding
-        # Specifies whether to return the command output in the results.
+        # Specifies whether to return the output of the command execution in the response. Valid values:
         # 
-        # - true: Returns the output. You must specify at least the `InvokeId` or `InstanceId` parameter.
-        # - false: Does not return the output.
+        # - true: The output is returned. In this case, you must specify at least the InvokeId or InstanceId parameter.
+        # - false: The output is not returned.
         # 
         # Default value: false.
         self.include_output = include_output
-        # The instance ID. If you specify this parameter, all command execution records for the instance are queried.
+        # The instance ID. If you specify this parameter, the system queries all command execution records of the instance.
         self.instance_id = instance_id
-        # The command execution ID.
+        # The execution ID of the command.
         self.invoke_id = invoke_id
-        # The overall execution status of the command. The overall execution status depends on the common execution status of one or more instances in the execution. Valid values: 
+        # The overall execution status of the command. The overall execution status depends on the combined execution status of one or more instances involved in the execution. Valid values: 
         #          
         # - Running:
-        #     - Scheduled execution: The execution status remains Running until you manually stop the scheduled command.
-        #     - One-time execution: The overall execution status is Running as long as any command process is running.
+        #     - Scheduled execution: The execution status remains Running until the scheduled command is manually stopped.
+        #     - One-time execution: The overall execution status is Running as long as a command process is running.
         # - Finished:
-        #     - Scheduled execution: The command process never reaches the Finished state.
-        #     - One-time execution: All instances have completed execution, or you manually stopped the command process on some instances while the remaining instances completed execution.
-        # - Success: The command execution status on each instance is Stopped or Success, and the command execution status on at least one instance is Success. The overall execution status is then Success.
-        #     - Immediate task: The command execution is complete and the exit code is 0.
-        #     - Scheduled task: The most recent execution succeeded with an exit code of 0, and all specified execution times have elapsed.
+        #     - Scheduled execution: The command process cannot be finished.
+        #     - One-time execution: All instances have completed the execution. Alternatively, the command processes on some instances are manually stopped, and the execution on the remaining instances is completed.
+        # - Success: The command execution status on each instance is Stopped or Success, and the command execution status on at least one instance is Success.
+        #     - Immediately run tasks: The command execution is completed, and the exit code is 0.
+        #     - Scheduled tasks: The most recent execution is successful, the exit code is 0, and the specified schedule has ended.
         # - Failed:
-        #     - Scheduled execution: The command process never reaches the Failed state.
-        #     - One-time execution: All instances failed to execute the command.
+        #     - Scheduled execution: The command process cannot fail.
+        #     - One-time execution: The execution fails on all instances.
         # - Stopped: The command is stopped.
         # - Stopping: The command is being stopped.
-        # - PartialFailed: Partial failure. This value does not take effect if the `InstanceId` parameter is also specified.
-        # - Pending: The system is validating or sending the command. The overall execution status is Pending if the command execution status on at least one instance is Pending.
-        # - Scheduled: The scheduled command has been sent and is waiting to run. The overall execution status is Scheduled if the command execution status on at least one instance is Scheduled.
+        # - PartialFailed: The execution partially fails. This value does not take effect if the InstanceId parameter is also specified.
+        # - Pending: The system is verifying or sending the command. The overall execution status is Pending if the command execution status on at least one instance is Pending.
+        # - Scheduled: The scheduled command has been sent and is waiting to be run. The overall execution status is Scheduled if the command execution status on at least one instance is Scheduled.
         self.invoke_status = invoke_status
-        # The maximum number of entries per page for a paging query.
+        # The maximum number of entries per page for paging.
         # 
         # Maximum value: 50.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+        # The pagination token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging query operations.
+        # > This parameter will soon be taken offline. We recommend that you use NextToken and MaxResults for paging and paged query operations.
         self.page_number = page_number
-        # > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging query operations.
+        # > This parameter will soon be taken offline. We recommend that you use NextToken and MaxResults for paging and paged query operations.
         self.page_size = page_size
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The execution mode of the command. This parameter does not take effect if the `InstanceId` parameter is also specified. Valid values:
+        # The execution mode of the command. This parameter does not take effect if the InstanceId parameter is also specified. Valid values:
         # 
-        # - Once: Runs the command immediately.
-        # - Period: Runs the command on a schedule.
-        # - NextRebootOnly: Runs the command automatically the next time the instance starts.
-        # - EveryReboot: Runs the command automatically every time the instance starts.
+        # - Once: runs the command immediately.
+        # - Period: runs the command on a schedule.
+        # - NextRebootOnly: automatically runs the command the next time the instance starts.
+        # - EveryReboot: automatically runs the command every time the instance starts.
         # 
-        # Default value: empty, which indicates that all execution modes are queried.
+        # Default value: empty. An empty value indicates that all execution modes are queried.
         self.repeat_mode = repeat_mode
-        # The resource group ID for command execution. After you specify this parameter, you must also specify ResourceGroupId when running the command. This parameter filters the corresponding command execution results.
+        # The ID of the resource group to which the command execution belongs. If you specify this parameter, you must also specify ResourceGroupId when you run the command. This allows you to filter the corresponding command execution results.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tags.
         self.tag = tag
-        # Specifies whether the queried command is scheduled to run automatically in the future. Valid values:
+        # Specifies whether the queried command will be automatically run in the future. Valid values:
         # 
-        # - true: Queries commands for which the `RepeatMode` parameter is set to `Period`, `NextRebootOnly`, or `EveryReboot` when `RunCommand` or `InvokeCommand` is called.
-        # - false: Queries commands in the following two states:
-        #     - Commands for which the `RepeatMode` parameter is set to `Once` when `RunCommand` or `InvokeCommand` is called.
+        # - true: Queries commands for which the RepeatMode parameter is set to Period, NextRebootOnly, or EveryReboot when you call RunCommand or InvokeCommand to run the commands.
+        # - false: Queries commands in the following states:
+        #     - Commands for which the RepeatMode parameter is set to Once when you call RunCommand or InvokeCommand to run the commands.
         #     - Commands that have been canceled, stopped, or completed.
         # 
         # Default value: false.
@@ -277,14 +277,14 @@ class DescribeInvocationsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the command execution. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # The tag key of the command to execute. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the number of resources with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources with all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to execute the query.
+        # If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all the specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
-        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
         # The tag value of the command execution. Valid values of N: 1 to 20. The tag value can be an empty string.
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

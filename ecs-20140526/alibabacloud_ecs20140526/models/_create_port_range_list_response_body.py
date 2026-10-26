@@ -10,7 +10,7 @@ class CreatePortRangeListResponseBody(DaraModel):
         port_range_list_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the port list that was created.
+        # The ID of the created port list.
         self.port_range_list_id = port_range_list_id
         # The request ID.
         self.request_id = request_id

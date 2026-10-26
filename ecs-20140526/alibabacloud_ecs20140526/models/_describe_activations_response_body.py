@@ -19,15 +19,16 @@ class DescribeActivationsResponseBody(DaraModel):
     ):
         # The activation codes and their usage information.
         self.activation_list = activation_list
-        # The pagination token returned in this response.
+        # The query token returned in the current response.
         self.next_token = next_token
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The Settings for the number of entries returned per page during paging in a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records that meet the conditional query criteria.
+        # > When you perform paging in a paged query by using the MaxResults and NextToken parameters, the returned TotalCount value is meaningless.
         self.total_count = total_count
 
     def validate(self):
@@ -106,7 +107,7 @@ class DescribeActivationsResponseBodyActivationList(DaraModel):
     ):
         # The activation code ID.
         self.activation_id = activation_id
-        # The creation time.
+        # The creation time. The time follows the ISO 8601 standard and is displayed in UTC.
         self.creation_time = creation_time
         # The number of deregistered instances.
         self.deregistered_count = deregistered_count
@@ -114,17 +115,17 @@ class DescribeActivationsResponseBodyActivationList(DaraModel):
         self.description = description
         # Indicates whether the activation code is disabled.
         self.disabled = disabled
-        # The maximum number of times that the activation code can be used to register managed instances.
+        # The maximum number of times the activation code can be used to register managed instances.
         self.instance_count = instance_count
         # The default instance name prefix.
         self.instance_name = instance_name
-        # The IP addresses of hosts that are allowed to use the activation code.
+        # The IP addresses of the hosts that are allowed to use the activation code.
         self.ip_address_range = ip_address_range
         # The number of registered instances.
         self.registered_count = registered_count
         # The ID of the resource group to which the activation code belongs.
         self.resource_group_id = resource_group_id
-        # The tags of the managed instance activation code.
+        # The tag information of the managed instance activation code.
         self.tags = tags
         # The validity period of the activation code. Unit: hours.
         self.time_to_live_in_hours = time_to_live_in_hours

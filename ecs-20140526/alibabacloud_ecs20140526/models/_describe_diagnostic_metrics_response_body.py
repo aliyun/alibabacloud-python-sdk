@@ -74,7 +74,7 @@ class DescribeDiagnosticMetricsResponseBodyMetrics(DaraModel):
     ):
         # The description of the diagnostic metric.
         self.description = description
-        # Indicates whether a script needs to be executed in the guest OS.
+        # Specifies whether a script needs to be executed in the guest OS.
         self.guest_metric = guest_metric
         # The category of the diagnostic metric.
         self.metric_category = metric_category
@@ -82,13 +82,13 @@ class DescribeDiagnosticMetricsResponseBodyMetrics(DaraModel):
         self.metric_id = metric_id
         # The name of the diagnostic metric.
         self.metric_name = metric_name
-        # The resource type supported by the diagnostic metric.
+        # The resource supported by the diagnostic metric.
         self.resource_type = resource_type
-        # The supported operating system. Valid values:
+        # The supported operating systems. Valid values:
         # 
         # - Windows: Windows operating systems are supported.
         # - Linux: Linux operating systems are supported.
-        # - All: both Windows and Linux operating systems are supported.
+        # - All: Both Windows and Linux operating systems are supported.
         self.supported_operating_system = supported_operating_system
 
     def validate(self):

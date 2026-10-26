@@ -25,48 +25,48 @@ class CreateDeploymentSetRequest(DaraModel):
     ):
         # The affinity level of the deployment set. Instances in the deployment set are distributed based on this affinity level. Valid values: 1 to 10. Default value: 1.
         self.affinity = affinity
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that it is unique among different requests.
         # 
-        # ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The **ClientToken** parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The name of the deployment set. The name must be 2 to 128 characters in length and must start with a letter. It cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the deployment set. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.deployment_set_name = deployment_set_name
         # The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # > This parameter is deprecated.
+        # > **[Deprecated]** This parameter is deprecated.
         self.domain = domain
-        # > This parameter is deprecated.
+        # > **[Deprecated]** This parameter is deprecated.
         self.granularity = granularity
-        # The number of groups for the high availability group strategy. Valid values: 1 to 7.
+        # The number of groups for the high availability strategy of deployment set groups. Valid values: 1 to 7.
         # 
         # Default value: 3.
         # 
-        # > This parameter takes effect only when `Strategy=AvailabilityGroup`.
+        # > This parameter takes effect only when `Strategy` is set to `AvailabilityGroup`.
         self.group_count = group_count
-        # The emergency solution to use when an instance in the deployment set cannot be evenly distributed to available inventory after a failover. Valid values: 
+        # The emergency plan used when an instance in the deployment set is migrated due to a host failure and there is insufficient instance inventory for dispersion. Valid values: 
         #          
-        # - CancelMembershipAndStart: Removes the instance from the deployment set and starts the instance immediately after the failover.
-        # - KeepStopped: Keeps the deployment set attributes of the instance and leaves the instance in the Stopped state.
+        # - CancelMembershipAndStart: Removes the instance from the deployment set and starts the instance immediately after the migration.
+        # - KeepStopped: Retains the deployment set attributes of the instance and keeps the instance in the stopped state.
         # 
         # Default value: CancelMembershipAndStart.
         self.on_unable_to_redeploy_failed_instance = on_unable_to_redeploy_failed_instance
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the deployment set. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the deployment set. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The deployment strategy. Valid values:
-        # - Availability: High availability strategy.
-        # - AvailabilityGroup: High availability group strategy.
-        # - LowLatency: Low network latency strategy.
+        # - Availability: high availability strategy
+        # - AvailabilityGroup: high availability strategy for deployment set groups
+        # - LowLatency: low network latency strategy
         # 
         # Default value: Availability.
         self.strategy = strategy
         # The deployment type. Valid values:
-        # - host: physical server
+        # - host: physical machine
         # - sw: vSwitch
         # - rack: rack
         # 

@@ -22,37 +22,37 @@ class DescribeSpotPriceHistoryRequest(DaraModel):
         start_time: str = None,
         zone_id: str = None,
     ):
-        # The end of the time range to query the historical prices of spot instances. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The end time to query the historical prices of spot instances. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         # 
-        # Default value: null, which indicates the current time.
+        # Default value: empty. An empty value indicates the current time.
         self.end_time = end_time
         # The instance type.
         # 
         # This parameter is required.
         self.instance_type = instance_type
-        # Specifies whether the spot instance is I/O optimized. Valid values:
+        # Specifies whether the spot instance is an I/O optimized instance. Valid values:
         # 
-        # - optimized: The spot instance is an I/O optimization instance.
+        # - optimized: The spot instance is an I/O optimized instance.
         # 
-        # - none: The spot instance is not an I/O optimization instance.
+        # - none: The spot instance is a non-I/O optimized instance.
         # 
-        # Default value for Generation I instance families: none.
+        # Default value for Generation I instances: none.
         # 
-        # Default value for other instance families: optimized.
+        # Default value for other instance family types: optimized.
         self.io_optimized = io_optimized
         # The network type of the spot instance. Valid values:
         # 
-        # - vpc: virtual private cloud (VPC).
-        # - classic: classic network. This feature has been retired. For more information, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
+        # - vpc: VPC.
+        # - classic: classic network. This feature is retired. For more information, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
         # 
         # This parameter is required.
         self.network_type = network_type
-        # The type of the operating system platform. Valid values:
+        # The operating system platform of the instance. Valid values:
         # 
-        # - linux.
-        # - windows.
+        # - linux
+        # - windows
         self.ostype = ostype
-        # The row number to start the query from.
+        # The starting row for the query.
         # 
         # Default value: 0.
         self.offset = offset
@@ -65,16 +65,16 @@ class DescribeSpotPriceHistoryRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
-        # - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released for 1 hour. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
-        # - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
+        # - 1: Alibaba Cloud guarantees that the instance is not automatically released within 1 hour after it is created. After 1 hour, the system automatically compares your bid with the market price and checks resource inventory to determine whether to retain or revoke the instance.
+        # - 0: Alibaba Cloud does not guarantee that the instance runs for 1 hour after it is created. The system automatically compares your bid with the market price and checks resource inventory to determine whether to retain or revoke the instance.
         # 
-        # Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Specify a protection period based on the expected task execution duration.
+        # Alibaba Cloud sends you a notification through an ECS system event 5 minutes before the instance is revoked. Spot instances are billed by the second. Select an appropriate protection period based on the execution duration of specific tasks.
         # 
         # > This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
         self.spot_duration = spot_duration
-        # The beginning of the time range to query the historical prices of spot instances. The maximum time range between the start time and end time is 30 days. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The start time to query the historical prices of spot instances. The time span between the start time and the specified end time cannot exceed 30 days. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         # 
-        # Default value: null, which indicates 3 hours before the end time.
+        # Default value: empty. An empty value indicates 3 hours before the end time.
         self.start_time = start_time
         # The zone ID.
         self.zone_id = zone_id

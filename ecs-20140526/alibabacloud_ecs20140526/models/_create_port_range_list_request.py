@@ -23,25 +23,25 @@ class CreatePortRangeListRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.CreatePortRangeListRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # Ensures the idempotence of the request. You can generate the value from your client and make sure that the value is unique across different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the port list. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        # The description of the port list. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
         # The array of port list entries.
         self.entry = entry
-        # The maximum number of entries that the port list supports. This value cannot be changed after the port list is created. Valid values: 1 to 2000.
+        # The maximum number of entries supported by the port list. This parameter cannot be modified after the port list is created. Valid values: 1 to 2000.
         # 
-        # >Notice: When calculating rule quotas for resources associated with the port list (such as security groups), the maximum number of entries is used instead of the actual number of entries. Set this value appropriately.
+        # >Notice: When a port list is associated with a resource such as a security group, the rule quota is calculated based on the maximum number of entries rather than the actual number of entries. Set this parameter properly.
         # 
         # This parameter is required.
         self.max_entries = max_entries
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The name of the port list. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with http://, https://, com.aliyun, or com.alibabacloud. The name can contain letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the port list. The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It cannot start with http://, https://, com.aliyun, or com.alibabacloud. It can contain Chinese characters, English letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.port_range_list_name = port_range_list_name
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -49,7 +49,7 @@ class CreatePortRangeListRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The array of tags bound to the port list. Array length: 0 to 20.
+        # The array of tags bound to the port list. The array length ranges from 0 to 20.
         self.tag = tag
 
     def validate(self):
@@ -163,11 +163,11 @@ class CreatePortRangeListRequestTag(DaraModel):
     ):
         # The tag key of the port list.
         # 
-        # This parameter cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # When you use this parameter, it cannot be left empty or set to an empty string. It can be up to 128 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.key = key
         # The tag value of the port list.
         # 
-        # This parameter cannot be null but can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+        # When you use this parameter, it cannot be left empty, but it can be set to an empty string. It can be up to 128 characters in length, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -202,13 +202,13 @@ class CreatePortRangeListRequestEntry(DaraModel):
         description: str = None,
         port_range: str = None,
     ):
-        # The description of the port range. The description must be 2 to 32 characters in length and cannot start with http:// or https://. Valid values of N: 0 to 200.
+        # The description of the port range. The description must be 2 to 32 characters in length, and cannot start with http:// or https://. Valid values of N: 0 to 200.
         self.description = description
         # The port range. Valid values of N: 0 to 200.
         # 
         # - The number of entries cannot exceed the maximum number of entries (MaxEntries).
         # 
-        # - The PortRange values in multiple entries cannot be duplicated.
+        # - The PortRange values in multiple entries must be unique.
         self.port_range = port_range
 
     def validate(self):

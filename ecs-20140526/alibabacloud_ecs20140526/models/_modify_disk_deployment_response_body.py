@@ -12,7 +12,7 @@ class ModifyDiskDeploymentResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The task ID of the disk migration.
+        # The ID of the disk migration task.
         self.task_id = task_id
 
     def validate(self):

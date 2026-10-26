@@ -20,36 +20,13 @@ class DescribeResourceByTagsRequest(DaraModel):
         tag: List[main_models.DescribeResourceByTagsRequestTag] = None,
     ):
         self.owner_id = owner_id
-        # The page number of the results. Minimum value: 1.
-        # 
-        # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 100.
-        # 
-        # Default value: 50.
         self.page_size = page_size
-        # The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource type. Valid values:
-        # 
-        # - instance: ECS instance.
-        # - disk: cloud disk.
-        # - snapshot: snapshot.
-        # - image: image.
-        # - securitygroup: security group.
-        # - volume: storage volume.
-        # - eni: Elastic Network Interface (ENI).
-        # - ddh: dedicated host.
-        # - keypair: SSH key pair.
-        # - launchtemplate: launch template.
-        # 
-        # All valid values are in lowercase.
         self.resource_type = resource_type
-        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -128,9 +105,7 @@ class DescribeResourceByTagsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length.
         self.key = key
-        # The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length.
         self.value = value
 
     def validate(self):

@@ -18,22 +18,22 @@ class JoinSecurityGroupRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # > If this parameter is specified, NetworkInterfaceId must be left empty.
+        # > If you specify this parameter, NetworkInterfaceId must be empty.
         self.instance_id = instance_id
-        # The Elastic Network Interface (ENI) ID.
+        # The ID of the Elastic Network Interface (ENI).
         # 
-        # > If this parameter is specified, InstanceId must be left empty.
+        # > If you specify this parameter, InstanceId must be empty.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
-        # - The region ID is optional when adding an instance to a security group.
-        # - The region ID is required when adding an Elastic Network Interface (ENI) to a security group. Specify the region where the network interface controller (NIC) resides.
+        # - The region ID is optional when you add an instance to a security group.
+        # - The region ID is required when you add a network interface controller (NIC) to a security group. Specify the ID of the region where the network interface controller (NIC) resides.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The security group ID. You can call [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) to query available security groups.
+        # The ID of the security group. You can call [DescribeSecurityGroups](https://help.aliyun.com/document_detail/25556.html) to query available security groups.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id

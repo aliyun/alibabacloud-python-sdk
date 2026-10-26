@@ -17,18 +17,18 @@ class DescribeSnapshotsResponseBody(DaraModel):
         snapshots: main_models.DescribeSnapshotsResponseBodySnapshots = None,
         total_count: int = None,
     ):
-        # The pagination token for the next query.
+        # The token for the next query.
         self.next_token = next_token
-        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+        # > This parameter will soon be deprecated. Use NextToken and MaxResults for pagination.
         self.page_number = page_number
-        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+        # > This parameter will soon be deprecated. Use NextToken and MaxResults for pagination.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.snapshots = snapshots
         # The total number of snapshots.
         # 
-        # > When you use `MaxResults` and `NextToken` parameters for paging query, the returned `TotalCount` parameter value is invalid.
+        # > When you use the MaxResults and NextToken parameters for pagination, the returned value of the TotalCount parameter is invalid.
         self.total_count = total_count
 
     def validate(self):

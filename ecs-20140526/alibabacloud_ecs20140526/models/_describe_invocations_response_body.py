@@ -18,15 +18,16 @@ class DescribeInvocationsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.invocations = invocations
-        # The pagination token returned in this call.
+        # The pagination token returned by the current call.
         self.next_token = next_token
-        # The page number of the query results.
+        # The page number of the query result.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of commands.
+        # > The TotalCount parameter is meaningless when you use the MaxResults and NextToken parameters for paging.
         self.total_count = total_count
 
     def validate(self):

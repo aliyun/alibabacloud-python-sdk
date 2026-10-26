@@ -11,7 +11,7 @@ class CreateNetworkInterfacePermissionResponseBody(DaraModel):
         network_interface_permission: main_models.CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission = None,
         request_id: str = None,
     ):
-        # The information about the network interface controller (NIC) permissions.
+        # The collection of information composed of the Elastic network interface controller (NIC) permission list.
         self.network_interface_permission = network_interface_permission
         # The request ID.
         self.request_id = request_id
@@ -54,20 +54,20 @@ class CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission(Dar
         permission_state: str = None,
         service_name: str = None,
     ):
-        # The ID of the Alibaba Cloud partner (certified ISV) account.
+        # The account ID of the Alibaba Cloud partner (certified ISV).
         self.account_id = account_id
-        # The ID of the network interface controller (NIC).
+        # The ID of the Elastic network interface controller (NIC).
         self.network_interface_id = network_interface_id
-        # The ID of the network interface controller (NIC) permission.
+        # The ID of the Elastic network interface controller (NIC) permission.
         self.network_interface_permission_id = network_interface_permission_id
-        # The network interface controller (NIC) permission.
+        # The Elastic network interface controller (NIC) permission.
         self.permission = permission
-        # The status of the network interface controller (NIC) permission. Valid values:
+        # The state of the Elastic network interface controller (NIC) permission. Valid values:
         # 
-        # - Pending: Authorization in progress.
-        # - Granted: Authorization granted.
-        # - Revoking: Authorization being revoked.
-        # - Revoked: Authorization revoked.
+        # - Pending: The authorization is in progress.
+        # - Granted: The authorization is granted.
+        # - Revoking: The authorization is being revoked.
+        # - Revoked: The authorization is revoked.
         self.permission_state = permission_state
         # The Alibaba Cloud service name.
         self.service_name = service_name

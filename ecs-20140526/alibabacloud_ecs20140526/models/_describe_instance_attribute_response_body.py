@@ -48,38 +48,38 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         zone_id: str = None,
     ):
         # The ID of the cluster to which the instance belongs.
-        # > This parameter will be deprecated soon. To ensure future compatibility, use other parameters.
+        # > **[Deprecated]** This parameter is about to be deprecated. To ensure compatibility, use other parameters instead.
         self.cluster_id = cluster_id
         # The number of vCPU cores.
         self.cpu = cpu
-        # The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.creation_time = creation_time
         # The running mode of the burstable instance. Valid values:
         # 
-        # - Standard: standard mode. For more information about instance performance, see [Performance mode](~~59977#section-svb-w9d-dju~~). 
-        # - Unlimited: unlimited mode. For more information about instance performance, see [Performance mode](~~59977#section-svb-w9d-dju~~).
+        # - Standard: standard mode. For more information about instance performance, see [Performance modes](~~59977#section-svb-w9d-dju~~). 
+        # - Unlimited: unlimited mode. For more information about instance performance, see [Performance modes](~~59977#section-svb-w9d-dju~~).
         self.credit_specification = credit_specification
-        # The dedicated host attributes, which consist of the dedicated host cluster ID (DedicatedHostClusterId), dedicated host ID (DedicatedHostId), and dedicated host name (DedicatedHostName).
+        # The dedicated host attributes, which include the dedicated host cluster ID (DedicatedHostClusterId), dedicated host ID (DedicatedHostId), and dedicated host name (DedicatedHostName).
         self.dedicated_host_attribute = dedicated_host_attribute
         # The description of the instance.
         self.description = description
-        # The Elastic IP Address (EIP) binding information.
+        # The binding information of the elastic IP address (EIP).
         self.eip_address = eip_address
-        # Indicates whether the Jumbo frame feature is enabled for the ECS instance. Valid values:
+        # Specifies whether the jumbo frame feature is enabled for the ECS instance. Valid values:
         # 
-        # - true: enabled.
+        # - true: The feature is enabled.
         # 
-        # - false: not enabled.
+        # - false: The feature is disabled.
         # 
         # For more information, see [ECS instance MTU](https://help.aliyun.com/document_detail/200512.html).
         self.enable_jumbo_frame = enable_jumbo_frame
-        # Indicates whether VPC network traffic encryption is enabled for the instance. Valid values:
+        # Specifies whether VPC network traffic encryption is enabled for the instance. Valid values:
         # 
-        # - true: enabled.
-        # - false: not enabled.
+        # - true: Enabled.
+        # - false: Disabled.
         # > This parameter is in invitational preview and is not publicly available.
         self.enable_network_encryption = enable_network_encryption
-        # The expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The expiration time. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.expired_time = expired_time
         # The hostname of the instance.
         self.host_name = host_name
@@ -96,29 +96,29 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         self.instance_name = instance_name
         # The network type of the instance. Valid values: 
         #          
-        # - vpc: Virtual Private Cloud (VPC).
-        # - classic: classic network. The classic network is deprecated. For more information, see [Deprecation notice](https://help.aliyun.com/document_detail/2833134.html).
+        # - vpc: VPC.
+        # - classic: classic network. The classic network is retired. For more information, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
         self.instance_network_type = instance_network_type
-        # The instance type of the instance.
+        # The instance type.
         self.instance_type = instance_type
         # The billing method for public bandwidth. Valid values:
         # 
         # - PayByBandwidth: pay-by-bandwidth.
         # - PayByTraffic: pay-by-traffic.
         # 
-        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance metrics. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth** mode.
+        # > In the **pay-by-traffic** mode, the peak inbound and outbound bandwidth values are the maximum bandwidth values and are not guaranteed. When resource contention occurs, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth** mode.
         self.internet_charge_type = internet_charge_type
         # The maximum inbound public bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The maximum outbound public bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # Indicates whether the instance is I/O optimized. Valid values:
+        # Specifies whether the instance is I/O optimized. Valid values:
         # 
-        # - optimized: I/O optimized.
+        # - optimized: The instance is I/O optimized.
         # 
-        # - none: not I/O optimized.
+        # - none: The instance is not I/O optimized.
         self.io_optimized = io_optimized
-        # The memory size. Unit: MiB.
+        # The memory size of the instance. Unit: MiB.
         self.memory = memory
         # The network-related attributes.
         # > This parameter is in invitational preview and is not publicly available.
@@ -135,24 +135,24 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
         self.serial_number = serial_number
         # The instance status. Valid values:
         # 
-        # - Pending: being created.
-        # - Running: running.
-        # - Starting: being started.
-        # - Stopping: being stopped.
-        # - Stopped: stopped.
+        # - Pending: The instance is being created.
+        # - Running: The instance is running.
+        # - Starting: The instance is starting.
+        # - Stopping: The instance is stopping.
+        # - Stopped: The instance is stopped.
         self.status = status
-        # Indicates whether the instance continues to be billed after it is stopped. Valid values:
+        # Specifies whether the instance continues to be billed after it is stopped. Valid values:
         # 
-        # - KeepCharging: The instance continues to be billed after it is stopped. Resources such as vCPUs, memory, and public IP addresses are retained.
-        # - StopCharging: The instance is not billed after it is stopped. Resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on resource availability in the current region.
+        # - KeepCharging: The instance continues to be billed after it is stopped, and inventory resources are reserved.
+        # - StopCharging: The instance is not billed after it is stopped. After the instance is stopped, resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on the resource inventory in the current region.
         # - Not-applicable: The instance does not support the economical mode.
         self.stopped_mode = stopped_mode
         # The VLAN ID of the instance.
-        # > This parameter will be deprecated soon. To ensure future compatibility, use other parameters.
+        # > **[Deprecated]** This parameter is about to be deprecated. To ensure compatibility, use other parameters instead.
         self.vlan_id = vlan_id
         # The VPC attributes.
         self.vpc_attributes = vpc_attributes
-        # The zone ID of the instance.
+        # The zone of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -419,7 +419,7 @@ class DescribeInstanceAttributeResponseBodyVpcAttributes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The IP address of the cloud service, which is used for network communication between VPC-connected cloud services.
+        # The IP address of the cloud service, which is used for network connectivity between cloud services in the VPC.
         self.nat_ip_address = nat_ip_address
         self.private_ip_address = private_ip_address
         # The vSwitch ID.
@@ -499,6 +499,7 @@ class DescribeInstanceAttributeResponseBodySecurityOptions(DaraModel):
         self,
         enable_secure_boot: bool = None,
     ):
+        # Specifies whether UEFI Secure Boot is enabled.
         self.enable_secure_boot = enable_secure_boot
 
     def validate(self):
@@ -646,21 +647,21 @@ class DescribeInstanceAttributeResponseBodyNetworkOptions(DaraModel):
     ):
         # The bandwidth weight.
         # 
-        # Different instance types support different values. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the bandwidth weight values supported by the current instance type.
+        # The supported values vary based on the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the bandwidth weight values supported by the current instance type.
         self.bandwidth_weighting = bandwidth_weighting
-        # Indicates whether the Jumbo frame feature is enabled for the instance. Valid values:
+        # Specifies whether the jumbo frame feature is enabled for the instance. Valid values:
         # 
-        # - true: enabled.
+        # - true: The feature is enabled.
         # 
-        # - false: not enabled.
+        # - false: The feature is disabled.
         # 
         # For more information, see [ECS instance MTU](https://help.aliyun.com/document_detail/200512.html).
         # > This parameter is in invitational preview and is not publicly available.
         self.enable_jumbo_frame = enable_jumbo_frame
-        # Indicates whether VPC network traffic encryption is enabled for the instance. Valid values:
+        # Specifies whether VPC network traffic encryption is enabled for the instance. Valid values:
         # 
-        # - true: enabled.
-        # - false: not enabled.
+        # - true: Enabled.
+        # - false: Disabled.
         # > This parameter is in invitational preview and is not publicly available.
         self.enable_network_encryption = enable_network_encryption
 
@@ -740,9 +741,9 @@ class DescribeInstanceAttributeResponseBodyEipAddress(DaraModel):
         # - PayByBandwidth: pay-by-bandwidth.
         # - PayByTraffic: pay-by-traffic.
         # 
-        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are used as the upper limits of bandwidths instead of guaranteed performance metrics. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth, use the **pay-by-bandwidth** mode.
+        # > In the **pay-by-traffic** mode, the peak inbound and outbound bandwidth values are the maximum bandwidth values and are not guaranteed. When resource contention occurs, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth** mode.
         self.internet_charge_type = internet_charge_type
-        # The EIP address.
+        # The EIP.
         self.ip_address = ip_address
 
     def validate(self):

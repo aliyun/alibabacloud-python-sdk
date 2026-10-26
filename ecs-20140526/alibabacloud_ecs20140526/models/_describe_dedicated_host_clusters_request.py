@@ -25,41 +25,41 @@ class DescribeDedicatedHostClustersRequest(DaraModel):
         tag: List[main_models.DescribeDedicatedHostClustersRequestTag] = None,
         zone_id: str = None,
     ):
-        # The IDs of dedicated host clusters. The value is a JSON array of dedicated host cluster IDs in the format of `["dc-xxxxxxxxx", "dc-yyyyyyyyy", … ,"dc-zzzzzzzzz"]`. A maximum of 100 IDs are supported. Separate multiple IDs with commas (,).
+        # The list of dedicated host cluster IDs. The value can be a JSON array that consists of multiple dedicated host cluster IDs in the following format: ["dc-xxxxxxxxx", "dc-yyyyyyyyy", ..., "dc-zzzzzzzzz"]. You can specify up to 100 IDs. Separate multiple IDs with commas (,).
         self.dedicated_host_cluster_ids = dedicated_host_cluster_ids
         # The name of the dedicated host cluster.
         self.dedicated_host_cluster_name = dedicated_host_cluster_name
-        # >This parameter is not yet available.
+        # > This parameter is not available and is not supported.
         self.lock_reason = lock_reason
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number of the dedicated host cluster list.
         # 
-        # Minimum value: 1.
+        # Starting value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for the paged query. Settings for paging:
+        # The paging Settings for the number of entries per page in a paged query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the dedicated host cluster. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the dedicated host cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the dedicated host cluster belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
         # 
-        # >Filtering by the default resource group is not supported.
+        # > Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # >This parameter is not yet available.
+        # > This parameter is not available and is not supported.
         self.status = status
-        # The tags.
+        # The list of tags.
         self.tag = tag
-        # The zone ID of the dedicated host cluster. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the available zones.
+        # The zone ID of the dedicated host cluster. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the zones in a region.
         self.zone_id = zone_id
 
     def validate(self):
@@ -174,11 +174,11 @@ class DescribeDedicatedHostClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the dedicated host cluster. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key of the dedicated host cluster. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
         # 
-        # If you use a single tag to filter resources, the resource count with the tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # When you use a single tag to filter resources, the resource count returned cannot exceed 1,000. When you use multiple tags to filter resources, the resource count of resources attached to all the specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         self.key = key
-        # The tag value of the dedicated host cluster. Valid values of N: 1 to 20. The tag value cannot be an empty string. The tag value can be up to 64 characters in length and cannot contain `http://` or `https://`.
+        # The tag value of the dedicated host cluster. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. The tag value can be up to 64 characters in length, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

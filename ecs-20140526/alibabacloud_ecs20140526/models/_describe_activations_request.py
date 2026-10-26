@@ -28,31 +28,27 @@ class DescribeActivationsRequest(DaraModel):
         self.activation_id = activation_id
         # The default instance name prefix.
         self.instance_name = instance_name
-        # The maximum number of entries per page in a paged query.
+        # The maximum number of entries to return on each page during paging in a paged query.
         # 
         # Maximum value: 50.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Set this parameter to the NextToken value returned in the previous response.
+        # The query token. Set the value to the NextToken value that is returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
-        # 
-        # Minimum value: 1.
-        # 
-        # Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in a paged query.
+        # The Settings for the number of entries to return on each page during paging in a paged query.
         # 
         # Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID. The following regions are supported: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
+        # The region ID. Supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the region IDs and other information.
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query information such as the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -60,7 +56,7 @@ class DescribeActivationsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -169,15 +165,15 @@ class DescribeActivationsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the managed instance dynamic code. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # The tag key of the managed instance activation code (dynamic code). Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all specified tags attached cannot exceed 1,000. To query more than 1,000 resources, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # If you use a single tag to filter resources, the resource count under the tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources attached to multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, you must invoke the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
-        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length, and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
         self.key = key
         # The tag value of the managed instance activation code. Valid values of N: 1 to 20. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

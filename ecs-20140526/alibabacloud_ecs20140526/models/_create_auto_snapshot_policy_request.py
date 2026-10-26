@@ -28,19 +28,16 @@ class CreateAutoSnapshotPolicyRequest(DaraModel):
         retention_days: int = None,
         time_points: str = None,
     ):
-        # The association type between the automatic snapshot policy and target resources. Valid values:
-        # - AssociatedWithDisk: associate with a disk.
-        # - AssociatedWithInstanceTag: associate with an instance tag.
+        # The association type between the automatic snapshot policy and the target resources. Valid values:
+        # - AssociatedWithDisk: Associated with cloud disks.
+        # - AssociatedWithInstanceTag: Associated with instance tags.
         # 
         # Default value: AssociatedWithDisk.
-        # 
-        # 
-        # > Currently, only the following regions support association with instance tags: Malaysia (Kuala Lumpur), Malaysia (Johor), Philippines (Manila), UK (London), France (Paris), Saudi Arabia (Riyadh) - Partner, UAE (Dubai), China North 5 (Hohhot), China Northwest 2 (Zhongwei), China Southwest 1 (Chengdu), Brazil (São Paulo), Thailand (Bangkok), China South 3 (Guangzhou), China South 2 (Heyuan), Hong Kong (China), Germany (Frankfurt), Mexico, US (Virginia), China East 1 (Hangzhou), China North 1 (Qingdao), China North 2 (Beijing), China East 2 (Shanghai), Singapore, Japan (Tokyo), South Korea (Seoul), China South 1 (Shenzhen), China North 6 (Ulanqab), and China North 3 (Zhangjiakou).
         self.association_type = association_type
-        # The retention period of cross-region snapshot replicas. Unit: days. Valid values:
+        # The retention period of cross-region replicated snapshots. Unit: days. Valid values:
         # 
-        # - -1: Snapshot replicas are permanently retained.
-        # - 1 to 65535: Snapshot replicas are retained for the specified number of days.
+        # - -1: The snapshots are retained permanently.
+        # - 1 to 65535: The snapshots are retained for the specified number of days.
         # 
         # Default value: -1.
         self.copied_snapshots_retention_days = copied_snapshots_retention_days
@@ -52,20 +49,19 @@ class CreateAutoSnapshotPolicyRequest(DaraModel):
         # - false: Not allowed.
         self.enable_cross_region_copy = enable_cross_region_copy
         self.owner_id = owner_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # > This parameter is not publicly available.
+        # > This parameter is not available.
         self.storage_location_arn = storage_location_arn
-        # The tags of the automatic snapshot policy.
+        # The list of tags for the automatic snapshot policy.
         self.tag = tag
-        # The destination region to which snapshots are replicated across regions. You can set only one destination region.
+        # The destination region for cross-region snapshot replication. You can specify only one destination region.
         self.target_copy_regions = target_copy_regions
-        # The list of target resource tags. The automatic snapshot policy matches target resources based on tags.
-        # This parameter is required when `AssociationType=AssociatedWithInstanceTag`.
+        # The list of target resource tags. The automatic snapshot policy matches target resources based on tags. This parameter is required when AssociationType is set to AssociatedWithInstanceTag.
         self.target_tags = target_tags
-        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), and hyphens (-).
         # 
         # Default value: null.
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
@@ -73,28 +69,28 @@ class CreateAutoSnapshotPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The days of the week on which automatic snapshots are created. Unit: days. The cycle is weekly. Valid values: 1 to 7. For example, 1 indicates Monday. Format description:
+        # The days of the week when automatic snapshots are created. Valid values: 1 to 7, which represent Monday to Sunday. For example, 1 indicates Monday. Format description:
         # 
-        # - The parameter value must be a JSON array. For example, ["1"\\] indicates that automatic snapshots are created every Monday.
-        # - To create multiple automatic snapshots within a week, specify multiple days separated by commas (,). You can specify up to 7 days. For example, ["1","3","5"\\] indicates that automatic snapshots are created every Monday, Wednesday, and Friday.
+        # - The parameter must be a JSON array. For example, ["1"] indicates that automatic snapshots are created every Monday.
+        # - If you want to create automatic snapshots multiple times a week, you can specify multiple days separated by commas (,). You can specify up to 7 days. For example, ["1","3","5"] indicates that automatic snapshots are created every Monday, Wednesday, and Friday.
         # 
         # This parameter is required.
         self.repeat_weekdays = repeat_weekdays
         # The retention period of automatic snapshots. Unit: days. Valid values:
         # 
-        # - -1: Automatic snapshots are permanently retained.
-        # - 1 to 65535: Automatic snapshots are retained for the specified number of days.
+        # - -1: The snapshots are retained permanently.
+        # - 1 to 65535: The snapshots are retained for the specified number of days.
         # 
         # Default value: -1.
         # 
         # This parameter is required.
         self.retention_days = retention_days
-        # The points in time at which automatic snapshots are created. The time is displayed in UTC+8. Unit: hours. Valid values: 0 to 23, which represent 00:00 to 23:00 (a total of 24 points in time). For example, 1 indicates 01:00. Format description:
+        # The points in time when automatic snapshots are created. The time is in UTC+8 and measured in hours. Valid values: 0 to 23, which represent the 24 points in time from 00:00 to 23:00. For example, 1 indicates 01:00. Format description:
         # 
-        # - The parameter value must be a JSON array. For example, ["1"\\] indicates that automatic snapshots are created at 01:00.
-        # - To create multiple automatic snapshots within a day, specify multiple points in time separated by commas (,). You can specify up to 24 points in time. For example, ["1","3","5"\\] indicates that automatic snapshots are created at 01:00, 03:00, and 05:00.
+        # - The parameter must be a JSON array. For example, ["1"] indicates that automatic snapshots are created at 01:00.
+        # - If you want to create multiple automatic snapshots in a day, you can specify multiple points in time separated by commas (,). You can specify up to 24 points in time. For example, ["1","3","5"] indicates that automatic snapshots are created at 01:00, 03:00, and 05:00.
         # 
-        # > If a disk contains a large amount of data and the time required to create a single automatic snapshot exceeds the interval between two consecutive points in time, the next point in time is automatically skipped. For example, you set 09:00, 10:00, 11:00, and 12:00 as the points in time for automatic snapshot creation. Because the disk contains a large amount of data, the snapshot creation starts at 09:00 and is completed at 10:20, which takes 80 minutes. The system skips the 10:00 point in time and creates the next automatic snapshot at 11:00.
+        # > If the cloud disk contains a large amount of data and the duration of creating a single automatic snapshot exceeds the interval between two points in time, the system skips the next point in time. For example, if you set the points in time to 09:00, 10:00, 11:00, and 12:00, and the snapshot creation starts at 09:00 and finishes at 10:20, taking 80 minutes, the system skips the 10:00 point in time and creates the next automatic snapshot at 11:00.
         # 
         # This parameter is required.
         self.time_points = time_points
@@ -245,15 +241,15 @@ class CreateAutoSnapshotPolicyRequestTargetTags(DaraModel):
         # 
         # Valid values of N: 1 to 5.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+        # If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with aliyun or acs: or contain http:// or https://.
         self.key = key
         # The tag value.
         # 
         # Valid values of N: 1 to 5.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length, and cannot contain http:// or https://.
         # 
-        # > If you pass in an empty value or an empty string, it indicates any value.
+        # > If you leave this parameter empty or specify an empty string, it indicates any value.
         self.value = value
 
     def validate(self):
@@ -288,9 +284,9 @@ class CreateAutoSnapshotPolicyRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the automatic snapshot policy. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+        # The tag key of the automatic snapshot policy. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with aliyun or acs: or contain http:// or https://.
         self.key = key
-        # The tag value of the automatic snapshot policy. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with acs:. The tag value cannot contain http:// or https://.
+        # The tag value of the automatic snapshot policy. Valid values of N: 1 to 20. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length, and cannot start with acs: or contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -326,16 +322,16 @@ class CreateAutoSnapshotPolicyRequestCopyEncryptionConfiguration(DaraModel):
         encrypted: bool = None,
         kmskey_id: str = None,
     ):
-        # > This parameter is not publicly available.
+        # > This parameter is not available.
         self.arn = arn
-        # Specifies whether to enable encryption for cross-region snapshot backup. Valid values:
+        # Specifies whether to enable encryption for cross-region snapshot backups. Valid values:
         # 
-        # - true: Enabled.
-        # - false: Disabled.
+        # - true: Yes.
+        # - false: No.
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The KMS key ID used for encrypted cross-region snapshot backup.
+        # The KMS key ID used for snapshot geo-redundancy backup encryption.
         self.kmskey_id = kmskey_id
 
     def validate(self):
@@ -385,11 +381,11 @@ class CreateAutoSnapshotPolicyRequestCopyEncryptionConfigurationArn(DaraModel):
         role_type: str = None,
         rolearn: str = None,
     ):
-        # > This parameter is not publicly available.
+        # > This parameter is not available.
         self.assume_role_for = assume_role_for
-        # > This parameter is not publicly available.
+        # > This parameter is not available.
         self.role_type = role_type
-        # > This parameter is not publicly available.
+        # > This parameter is not available.
         self.rolearn = rolearn
 
     def validate(self):

@@ -19,30 +19,25 @@ class ModifySnapshotAttributeRequest(DaraModel):
     ):
         # The description of the snapshot. The description can be empty and can be up to 256 characters in length. It cannot start with http:// or https://.
         self.description = description
-        # Specifies whether to disable the snapshot instant access feature. Valid values:
-        # 
-        # - true: Disables the snapshot instant access feature.
-        # - false: Does not disable the snapshot instant access feature.
-        # 
+        # Specifies whether to shutdown the instant access feature for the snapshot. Valid values:
+        # - true: shutdown the instant access feature.
+        # - false: do not shutdown the instant access feature.
         # Default value: false.
         # 
-        # >This parameter is deprecated. Standard snapshots of enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required.
+        # > **[Deprecated]** This parameter is deprecated. Standard snapshots of ESSD cloud disks have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to perform additional configurations, and no additional fees are incurred.
         self.disable_instant_access = disable_instant_access
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The number of days for which the snapshot is retained. The retention period is calculated from the snapshot **creation time** (represented in the ISO 8601 standard and in UTC+0 time in the yyyy-MM-ddTHH:mm:ssZ format). Valid values: 1 to 65536.
-        # 
-        # >The snapshot retention period can only be extended. Shortening the existing retention period of a snapshot is not supported.
+        # The retention period of the snapshot in days. When you specify this parameter, the retention period is calculated from the **creation time** of the snapshot. The creation time is represented in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC. Valid values: 1 to 65536.
+        # > You can only extend the retention period of a snapshot. You cannot shorten the existing retention period.
         self.retention_days = retention_days
         # The snapshot ID.
         # 
         # This parameter is required.
         self.snapshot_id = snapshot_id
-        # The display name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. The name can contain digits, colons (:), underscores (_), or hyphens (-).
-        # 
-        # The name cannot start with auto to avoid conflicts with automatic snapshot names.
+        # The display name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), and hyphens (-). To prevent name conflicts with automatic snapshots, the name cannot start with auto.
         self.snapshot_name = snapshot_name
 
     def validate(self):

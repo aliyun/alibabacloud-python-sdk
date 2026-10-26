@@ -18,31 +18,31 @@ class JoinResourceGroupRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the destination resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the resource. For example, when ResourceType is set to instance, ResourceId is the instance ID.
+        # The ID of the resource. For example, if ResourceType is set to instance, ResourceId specifies the instance ID.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the ECS resource. Valid values:
         # 
-        # - instance: instance.
-        # - disk: block storage.
-        # - snapshot: snapshot.
-        # - image: image.
-        # - securitygroup: security group.
-        # - ddh: dedicated host.
-        # - ddhcluster: dedicated host cluster.
-        # - eni: network interface controller (NIC).
-        # - keypair: key pair.
-        # - launchtemplate: launch template.
-        # - command: Cloud Assistant command.
-        # - activation: Cloud Assistant managed instance activation code.
-        # - managedinstance: Cloud Assistant managed instance.
+        # - instance: instance
+        # - disk: block storage
+        # - snapshot: snapshot
+        # - image: image
+        # - securitygroup: security group
+        # - ddh: dedicated host
+        # - ddhcluster: dedicated host cluster
+        # - eni: Elastic Network Interface (ENI)
+        # - keypair: key pair
+        # - launchtemplate: launch template
+        # - command: Cloud Assistant command
+        # - activation: activation code for managed instances
+        # - managedinstance: managed instance
         # 
-        # The preceding parameter values are case-sensitive.
+        # The values are case-sensitive.
         self.resource_type = resource_type
 
     def validate(self):

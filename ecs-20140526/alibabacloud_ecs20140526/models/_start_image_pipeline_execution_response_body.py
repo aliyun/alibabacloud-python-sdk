@@ -10,7 +10,7 @@ class StartImagePipelineExecutionResponseBody(DaraModel):
         execution_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the building task.
+        # The ID of the build task.
         self.execution_id = execution_id
         # The request ID.
         self.request_id = request_id

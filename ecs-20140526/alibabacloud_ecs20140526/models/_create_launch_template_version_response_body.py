@@ -13,9 +13,9 @@ class CreateLaunchTemplateVersionResponseBody(DaraModel):
     ):
         # The launch template ID. For more information, see [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html).
         # 
-        # When you use a launch template to create an instance, you must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
+        # When you use a launch template to create an instance, you must specify `LaunchTemplateId` or `LaunchTemplateName` to identify the launch template.
         self.launch_template_id = launch_template_id
-        # The version number of the launch template that is created.
+        # The version number of the created launch template.
         self.launch_template_version_number = launch_template_version_number
         # The request ID.
         self.request_id = request_id

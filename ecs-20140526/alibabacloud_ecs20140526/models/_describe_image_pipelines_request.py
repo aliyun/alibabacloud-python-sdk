@@ -22,25 +22,25 @@ class DescribeImagePipelinesRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeImagePipelinesRequestTag] = None,
     ):
-        # The image template ID. Valid values of N: 1 to 20.
+        # The ID of the image template. Valid values of N: 1 to 20.
         self.image_pipeline_id = image_pipeline_id
-        # The maximum number of entries per page in a paging query. Valid values: 1 to 500.
+        # The maximum number of entries to return per page in a paging query. Valid values: 1 to 500.
         # 
         # Default value: 50.
         self.max_results = max_results
-        # The template name.
+        # The name of the template.
         self.name = name
-        # The pagination token. Set the value to the `NextToken` value returned in the previous call to this operation. You do not need to set this parameter for the first request.
+        # The query token. Set the value to the NextToken value returned from the previous call. You do not need to specify this parameter for the first call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the enterprise resource group. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
+        # The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
         # 
-        # >Filtering by the default resource group is not supported.
+        # > Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

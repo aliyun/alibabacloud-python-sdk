@@ -14,7 +14,7 @@ class DescribeVscsResponseBody(DaraModel):
         request_id: str = None,
         vscs: List[main_models.DescribeVscsResponseBodyVscs] = None,
     ):
-        # The query token. The value is the NextToken parameter value returned by the previous API call.
+        # The query token. The value is the NextToken value returned by the previous API call.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -77,25 +77,25 @@ class DescribeVscsResponseBodyVscs(DaraModel):
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
         # 
-        # >Filtering by the default resource group is not supported.
+        # > Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         # The status of the VSC. Valid values:
         # 
-        # - In_use: in use.
-        # - Attaching: being attached.
-        # - Detaching: being detached.
-        # - AttachFailed: failed to attach.
-        # - DetachFailed: failed to detach.
+        # - In_use: In use.
+        # - Attaching: Attaching.
+        # - Detaching: Detaching.
+        # - AttachFailed: Attachment failed.
+        # - DetachFailed: Detachment failed.
         self.status = status
-        # The tag keys of snapshots in the snapshot-consistent group. The default values of Key and Value provide the snapshot source information.
+        # The tag keys of the snapshots in the snapshot consistency group. The default values of Key and Value provide the snapshot source information.
         self.tags = tags
-        # VSC ID。
+        # The VSC ID.
         self.vsc_id = vsc_id
         # The custom name of the VSC.
         self.vsc_name = vsc_name
-        # The type of the VSC. Valid values: Primary or Secondary.
+        # The type of the VSC. Valid values: Primary and Secondary.
         self.vsc_type = vsc_type
 
     def validate(self):

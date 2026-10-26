@@ -18,19 +18,19 @@ class CreatePlanMaintenanceWindowRequest(DaraModel):
         target_resource: main_models.CreatePlanMaintenanceWindowRequestTargetResource = None,
         time_period: main_models.CreatePlanMaintenanceWindowRequestTimePeriod = None,
     ):
-        # Specifies whether to enable or disable the O&M window.
-        # 
+        # Specifies whether to enable the window. Valid values:
         # - **true**: Enabled.
         # - **false**: Disabled.
         # 
         # This parameter is required.
         self.enable = enable
+        # The minimum interval between two scheduled O&M events for the same instance. Valid values: 1 to 48. Unit: hours.
         self.min_maintenance_interval = min_maintenance_interval
-        # The name of the O&M window. You can specify a custom name. The name can be up to 200 characters in length.
+        # The name of the O&M window. You can customize the name. The name can be up to 200 characters in length.
         # 
         # This parameter is required.
         self.plan_window_name = plan_window_name
-        # The region ID. You can call DescribeRegions to query the most recent region list.
+        # The region ID. This parameter is required for Alibaba Cloud SDK routing. However, specifying any region ID for this operation yields the same result. The O&M window applies to all ECS instances across the network that meet the resource filtering conditions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -38,11 +38,11 @@ class CreatePlanMaintenanceWindowRequest(DaraModel):
         # 
         # This parameter is required.
         self.support_maintenance_action = support_maintenance_action
-        # The resources on which the O&M window takes effect.
+        # The resources to which the O&M window applies.
         # 
         # This parameter is required.
         self.target_resource = target_resource
-        # The recurring cycle of the O&M window.
+        # The recurrence cycle of the window.
         # 
         # This parameter is required.
         self.time_period = time_period
@@ -114,11 +114,11 @@ class CreatePlanMaintenanceWindowRequestTimePeriod(DaraModel):
         period_unit: str = None,
         range_list: List[main_models.CreatePlanMaintenanceWindowRequestTimePeriodRangeList] = None,
     ):
-        # The cycle type. Valid values: Daily and Weekly.
+        # The type of the recurrence cycle. Valid values: Daily and Weekly.
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The time ranges of the recurring cycle of the O&M window (in UTC).
+        # The time ranges of the O&M window recurrence cycle in the UTC time zone.
         # 
         # This parameter is required.
         self.range_list = range_list
@@ -164,15 +164,14 @@ class CreatePlanMaintenanceWindowRequestTimePeriodRangeList(DaraModel):
         start_time: str = None,
     ):
         # The end time of the O&M window.
-        # 
-        # - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
+        # - If PeriodUnit is set to Weekly, the format is Monday,22:00. You can replace Monday with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
         # - If PeriodUnit is set to Daily, the format is 22:00.
-        # - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute, which currently supports only 00.
+        # - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute. Currently, only 00 is supported.
         self.end_time = end_time
         # The start time of the O&M window.
-        # - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
+        # - If PeriodUnit is set to Weekly, the format is Monday,22:00. You can replace Monday with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
         # - If PeriodUnit is set to Daily, the format is 22:00.
-        # - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute, which currently supports only 00.
+        # - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute. Currently, only 00 is supported.
         self.start_time = start_time
 
     def validate(self):
@@ -210,11 +209,11 @@ class CreatePlanMaintenanceWindowRequestTargetResource(DaraModel):
     ):
         # The ID of the resource group. This parameter is required when Scope is set to ResourceGroup.
         self.resource_group_id = resource_group_id
-        # The type of resources for which the O&M window is configured.
+        # The type of resources configured for the O&M window.
         # 
         # This parameter is required.
         self.scope = scope
-        # The tags on which the O&M window takes effect. This parameter is required when Scope is set to Tag.
+        # The tags to which the O&M window applies. This parameter is required when Scope is set to Tag.
         self.tags = tags
 
     def validate(self):
@@ -263,9 +262,9 @@ class CreatePlanMaintenanceWindowRequestTargetResourceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag on which the O&M window takes effect.
+        # The key of the tag to which the window applies.
         self.key = key
-        # The value of the tag on which the O&M window takes effect.
+        # The value of the tag to which the window applies.
         self.value = value
 
     def validate(self):

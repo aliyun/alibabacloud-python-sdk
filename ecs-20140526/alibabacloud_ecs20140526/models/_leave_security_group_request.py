@@ -18,22 +18,22 @@ class LeaveSecurityGroupRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # > If you specify this parameter, leave NetworkInterfaceId empty.
+        # > If you specify this parameter, you must leave NetworkInterfaceId empty.
         self.instance_id = instance_id
-        # The Elastic Network Interface (ENI) ID.
+        # The ID of the network interface controller (NIC).
         # 
-        # > If you specify this parameter, leave InstanceId empty.
+        # > If you specify this parameter, you must leave InstanceId empty.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
-        # - You do not need to specify the region ID when removing an instance from a security group.
-        # - You must specify the region ID of the Elastic Network Interface (ENI) when removing an ENI from a security group.
+        # - You do not need to specify the region ID when you remove an instance from a security group.
+        # - You must specify the region ID of the network interface controller (NIC) when you remove a network interface controller (NIC) from a security group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The security group ID.
+        # The ID of the security group.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id

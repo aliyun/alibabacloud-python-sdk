@@ -27,9 +27,9 @@ class CopySnapshotRequest(DaraModel):
         snapshot_id: str = None,
         tag: List[main_models.CopySnapshotRequestTag] = None,
     ):
-        # > This parameter is in invitational preview and is not publicly available.
+        # >This parameter is in invitational preview and is not supported.
         self.arn = arn
-        # Ensures the idempotence of the request. The value is generated from your client and must be unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the destination region for the new snapshot.
         # 
@@ -37,39 +37,39 @@ class CopySnapshotRequest(DaraModel):
         self.destination_region_id = destination_region_id
         # The description of the new snapshot. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         # 
-        # Default value: null.
+        # Default value: empty.
         # 
         # This parameter is required.
         self.destination_snapshot_description = destination_snapshot_description
-        # The name of the new snapshot. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with http:// or https://. The name can contain characters that are classified as letter in Unicode, including Chinese characters, digits, and others. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+        # The name of the new snapshot. The name must be 2 to 128 characters in length, must start with a letter or a Chinese character, and cannot start with http:// or https://. It supports characters in the Letter category of Unicode, including English letters, Chinese characters, and digits. It can contain colons (:), underscores (_), periods (.), and hyphens (-).
         # 
-        # Default value: null.
+        # Default value: empty.
         # 
         # This parameter is required.
         self.destination_snapshot_name = destination_snapshot_name
-        # > This parameter is not publicly available.
+        # >This parameter is not available.
         self.destination_storage_location_arn = destination_storage_location_arn
         # Specifies whether to encrypt the cloud disk. Valid values:
         # 
-        # - true: encrypts the cloud disk.
-        # - false: does not encrypt the cloud disk.
+        # - true: yes.
+        # - false: no.
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The customer master key (CMK) in the destination region.
+        # The KMS customer master key (CMK) in the destination region.
         self.kmskey_id = kmskey_id
         self.owner_id = owner_id
-        # The region ID of the source snapshot. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region where the source snapshot resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # This parameter is not publicly available.
+        # This parameter is not available.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The retention period of the new snapshot, in days. The snapshot undergoes automatic release when the retention period expires. Valid values: 1 to 65536.
+        # The retention period of the new snapshot. Unit: days. The snapshot is subject to automatic release when the retention period expires. Valid values: 1 to 65536.
         # 
-        # Default value: null, which indicates that the snapshot is not subject to automatic release.
+        # Default value: empty, which indicates that the snapshot is not subject to automatic release.
         self.retention_days = retention_days
         # The ID of the source snapshot.
         # 
@@ -211,9 +211,9 @@ class CopySnapshotRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the new snapshot. Once specified, the tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # The tag key of the new snapshot. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
-        # The tag value of the new snapshot. Once specified, the tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # The tag value of the new snapshot. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length, cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -249,11 +249,11 @@ class CopySnapshotRequestArn(DaraModel):
         role_type: str = None,
         rolearn: str = None,
     ):
-        # > This parameter is not publicly available.
+        # >This parameter is not available.
         self.assume_role_for = assume_role_for
-        # > This parameter is not publicly available.
+        # >This parameter is not available.
         self.role_type = role_type
-        # > This parameter is not publicly available.
+        # >This parameter is not available.
         self.rolearn = rolearn
 
     def validate(self):

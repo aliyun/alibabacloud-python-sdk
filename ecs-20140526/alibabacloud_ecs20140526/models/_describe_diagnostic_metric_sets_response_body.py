@@ -16,7 +16,7 @@ class DescribeDiagnosticMetricSetsResponseBody(DaraModel):
     ):
         # The diagnostic metric sets.
         self.metric_sets = metric_sets
-        # The pagination token returned in this call.
+        # The pagination token returned by the current call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -83,8 +83,8 @@ class DescribeDiagnosticMetricSetsResponseBodyMetricSets(DaraModel):
         self.resource_type = resource_type
         # The type of the diagnostic metric set. Valid values:
         # 
-        # - User: user.
-        # - Common: common.
+        # - User: user-created.
+        # - Common: public.
         self.type = type
 
     def validate(self):

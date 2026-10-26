@@ -25,11 +25,11 @@ class DescribeSnapshotGroupsRequest(DaraModel):
         status: List[str] = None,
         tag: List[main_models.DescribeSnapshotGroupsRequestTag] = None,
     ):
-        # This parameter is not publicly available.
+        # This parameter is not available.
         self.additional_attributes = additional_attributes
         # The instance ID.
         self.instance_id = instance_id
-        # The maximum number of entries per page in a paging query.
+        # The number of entries per page for a paged query.
         # 
         # Maximum value: 100.
         # 
@@ -37,11 +37,11 @@ class DescribeSnapshotGroupsRequest(DaraModel):
         self.max_results = max_results
         # The name of the snapshot-consistent group.
         self.name = name
-        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+        # The query token. Set the value to the NextToken value returned in the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -49,7 +49,7 @@ class DescribeSnapshotGroupsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the snapshot-consistent group. Valid values of N: 1 to 10.
+        # The IDs of the snapshot-consistent groups. Valid values of N: 1 to 10.
         self.snapshot_group_id = snapshot_group_id
         # The status of the snapshot-consistent group. Valid values of N: 1 to 3. Valid values:
         # 
@@ -57,9 +57,9 @@ class DescribeSnapshotGroupsRequest(DaraModel):
         # 
         # - accomplished: The snapshot-consistent group is created.
         # 
-        # - failed: The snapshot-consistent group failed to be created.
+        # - failed: The snapshot-consistent group fails to be created.
         self.status = status
-        # The tag key-value pairs of the snapshot-consistent group.
+        # The tags of the snapshot-consistent group.
         self.tag = tag
 
     def validate(self):

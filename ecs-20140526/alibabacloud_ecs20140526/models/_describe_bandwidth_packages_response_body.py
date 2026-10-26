@@ -17,9 +17,13 @@ class DescribeBandwidthPackagesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.bandwidth_packages = bandwidth_packages
+        # The current page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):

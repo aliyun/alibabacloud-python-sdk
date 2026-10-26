@@ -16,23 +16,23 @@ class CreateNetworkInterfacePermissionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the Alibaba Cloud partner (certified ISV) account or individual user account.
+        # The account ID of the Alibaba Cloud partner (certified ISV) or the individual user.
         # 
         # This parameter is required.
         self.account_id = account_id
-        # The ID of the network interface controller (NIC).
+        # The ID of the Elastic network interface controller (NIC).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The network interface controller (NIC) permission action. Only InstanceAttach is supported.
+        # The Elastic network interface controller (NIC) permission action. Only InstanceAttach is supported.
         # 
-        # InstanceAttach: allows the authorized user to attach your NIC to their ECS instance. The ECS instance must be in the same zone as the NIC.
+        # InstanceAttach: allows the authorized user to attach your Elastic network interface controller (NIC) to their ECS instance. The ECS instance and the Elastic network interface controller (NIC) must reside in the same active zone.
         # 
         # This parameter is required.
         self.permission = permission
-        # The region of the network interface controller (NIC) permission. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region of the Elastic network interface controller (NIC) permission. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id

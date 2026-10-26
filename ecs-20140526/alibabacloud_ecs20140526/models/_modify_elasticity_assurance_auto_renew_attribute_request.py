@@ -23,38 +23,33 @@ class ModifyElasticityAssuranceAutoRenewAttributeRequest(DaraModel):
         self.private_pool_options = private_pool_options
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The auto-renewal period of the instance.
+        # Specifies the auto-renewal duration for the instance.
         # 
+        # - If `PeriodUnit` is set to `Year`, valid values are 1, 3, and 5.
         # 
-        # 
-        # - If `PeriodUnit` is set to `Year`, valid values: 1, 3, and 5.
-        # 
-        # - If `PeriodUnit` is set to `Month`, valid values: 1.
-        # 
-        # 
-        # 
+        # - If `PeriodUnit` is set to `Month`, the valid value is 1.
         # 
         # Default value: 1.
         self.period = period
-        # The unit of the renewal period. Valid values:
+        # The unit of the renewal duration. Valid values:
         # 
-        # - Month: month
+        # - Month
         # 
-        # - Year: year
+        # - Year
         # 
         # Default value: Month.
         self.period_unit = period_unit
-        # The region ID of the elasticity assurance service. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The auto-renewal status of the instance. Valid values:
         # 
-        # - AutoRenewal: Auto-renewal is enabled.
+        # - AutoRenewal: enables auto-renewal.
         # 
-        # - Normal: Auto-renewal is disabled.
+        # - Normal: disables auto-renewal.
         # 
-        # - NotRenewal: The instance will not be renewed. After this value is specified, the system no longer sends expiration reminders and sends only a non-renewal reminder three days before the expiration date. You can change the value for an elasticity assurance service from NotRenewal to Normal and then manually renew the service or enable auto-renewal.
+        # - NotRenewal: does not renew the instance. If you set this parameter to NotRenewal, the system no longer sends expiration reminders and sends a non-renewal reminder only three days before expiration. You can change the status of an elasticity assurance that is set to NotRenewal to Normal, and then manually renew it or enable auto-renewal.
         self.renewal_status = renewal_status
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -134,9 +129,9 @@ class ModifyElasticityAssuranceAutoRenewAttributeRequestPrivatePoolOptions(DaraM
         self,
         id: List[str] = None,
     ):
-        # The list of elasticity assurance service IDs to modify.
+        # The IDs of the elasticity assurances to be modified. This parameter is required. If this parameter is not specified, the MissingParameter.PrivatePoolOptionsId error is returned.
         # 
-        # > You can modify up to 50 elasticity assurance services at a time.
+        # > You can modify up to 50 elasticity assurances at a time.
         self.id = id
 
     def validate(self):

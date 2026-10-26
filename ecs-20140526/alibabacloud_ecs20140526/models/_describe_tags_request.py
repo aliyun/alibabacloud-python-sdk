@@ -21,47 +21,16 @@ class DescribeTagsRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.DescribeTagsRequestTag] = None,
     ):
-        # > This parameter is about to be deprecated. To ensure compatibility, use other parameters instead.
         self.category = category
         self.owner_id = owner_id
-        # The page number of the tag list.
-        # 
-        # Minimum value: 1.
-        # 
-        # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for a paged query.
-        # 
-        # Maximum value: 100.
-        # 
-        # Default value: 50.
         self.page_size = page_size
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource to which the tag is attached. For example, if ResourceType is set to instance, ResourceId indicates the instance ID.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource type. Valid values:
-        # 
-        # - instance: ECS instance.
-        # - disk: cloud disk.
-        # - snapshot: snapshot.
-        # - image: image.
-        # - securitygroup: security group.
-        # - volume: storage volume.
-        # - eni: Elastic Network Interface (ENI).
-        # - ddh: dedicated host.
-        # - keypair: SSH key pair.
-        # - launchtemplate: launch template.
-        # - reservedinstance: reserved instance.
-        # - snapshotpolicy: automatic snapshot policy.
-        # 
-        # All valid values are in lowercase.
         self.resource_type = resource_type
-        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -152,9 +121,7 @@ class DescribeTagsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
         self.key = key
-        # The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. The tag value cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

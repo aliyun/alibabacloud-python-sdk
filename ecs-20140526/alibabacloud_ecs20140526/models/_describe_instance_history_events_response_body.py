@@ -18,24 +18,24 @@ class DescribeInstanceHistoryEventsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instance_system_event_set = instance_system_event_set
-        # The query token returned in this invocation.
-        # > When you use MaxResults and NextToken parameters for paging queries and no NextToken is returned, no more data is available.
+        # The query token returned by this call.
+        # > If the NextToken value is not returned when you use the MaxResults and NextToken parameters for paging, no more data is to be returned.
         self.next_token = next_token
         # The page number of the instance event list.
         # 
-        # > * When you use MaxResults and NextToken for paging queries, the returned PageNumber parameter value is meaningless.
-        # > * This parameter will be deprecated. Use NextToken and MaxResults for paging queries instead.
+        # > * If you use the MaxResults and NextToken parameters for paging, the returned PageNumber value is meaningless.
+        # > * This parameter will be deprecated soon. Use the NextToken and MaxResults parameters for paging.
         self.page_number = page_number
-        # The number of entries per page as settings in the request.
+        # The number of entries per page specified in the request.
         # 
-        # > * When you use MaxResults and NextToken for paging queries, the returned PageSize parameter value is meaningless.
-        # > * This parameter will be deprecated. Use NextToken and MaxResults for paging queries instead.
+        # > * If you use the MaxResults and NextToken parameters for paging, the returned PageSize value is meaningless.
+        # > * This parameter will be deprecated soon. Use the NextToken and MaxResults parameters for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of instance events.
         # 
-        # > When you use MaxResults and NextToken parameters for paging queries, the returned TotalCount parameter value is meaningless.
+        # > If you use the MaxResults and NextToken parameters for paging, the returned TotalCount value is meaningless.
         self.total_count = total_count
 
     def validate(self):

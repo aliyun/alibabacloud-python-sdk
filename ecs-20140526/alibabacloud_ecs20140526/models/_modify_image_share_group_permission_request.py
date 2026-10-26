@@ -20,10 +20,14 @@ class ModifyImageShareGroupPermissionRequest(DaraModel):
     ):
         self.add_group = add_group
         self.remove_group = remove_group
+        # The image ID.
+        # 
         # This parameter is required.
         self.image_id = image_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID. You can call DescribeRegions to query available regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

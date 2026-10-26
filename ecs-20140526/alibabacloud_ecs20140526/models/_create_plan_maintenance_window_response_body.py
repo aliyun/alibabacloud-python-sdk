@@ -12,7 +12,7 @@ class CreatePlanMaintenanceWindowResponseBody(DaraModel):
     ):
         # The ID of the created O&M window.
         self.plan_window_id = plan_window_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -22,62 +22,62 @@ class AttachDiskRequest(DaraModel):
     ):
         # Specifies whether to attach the disk as a system disk. Valid values:
         # 
-        # - true: The disk is attached as a system disk.
+        # - true: Yes.
         # 
-        # - false: The disk is not attached as a system disk.
+        # - false: No.
         # 
         # Default value: false.
         # 
-        # > If you set `Bootable=true`, the destination ECS instance must have no system disk attached.
+        # > If you set this parameter to `Bootable=true`, the destination ECS instance must not have a system disk attached.
         self.bootable = bootable
         # Specifies whether to release the disk when the instance is released. Valid values:
         # 
-        # - true: The disk is released together with the instance.
-        # - false: The disk is not released together with the instance. The disk is retained as a pay-as-you-go data disk.
+        # - true: The disk is released.
+        # - false: The disk is not released. The disk is retained and converted to a pay-as-you-go data disk.
         # 
         # Default value: false.
         # 
-        # Take note of the following items when you configure this parameter:
+        # When you configure this parameter, take note of the following items:
         # 
-        # - If you set `DeleteWithInstance` to `false` and the ECS instance is locked for security reasons, which means `OperationLocks` contains `"LockReason" : "security"`, this parameter is ignored when the ECS instance is released, and the disk is released together with the instance.
+        # - If you set `DeleteWithInstance` to `false` and the ECS instance is locked for security reasons (that is, `"LockReason" : "security"` is marked in `OperationLocks`), this property of the disk is ignored and the disk is released when the ECS instance is released.
         # 
-        # - If the disk that you want to attach is an `elastic ephemeral disk`, you must set `DeleteWithInstance` to `true`.
+        # - If the destination disk that you want to attach is an `elastic ephemeral disk`, you must set the `DeleteWithInstance` parameter to `true`.
         # 
-        # - Disks with the multi-attach feature enabled do not support this parameter.
+        # - This parameter cannot be configured for disks with the multi-attach feature enabled.
         self.delete_with_instance = delete_with_instance
         # The device name of the disk.
         # 
-        # > This parameter will be deprecated soon. To improve compatibility, use other parameters to identify the disk.
+        # > This parameter is being deprecated. To improve compatibility, we recommend that you use other parameters to identify the disk.
         self.device = device
-        # The ID of the disk to be attached. The disk (`DiskId`) and the instance (`InstanceId`) must be in the same zone.
+        # The ID of the disk that you want to attach. The disk (`DiskId`) and the instance (`InstanceId`) must be in the same zone.
         # 
-        # > Both data disks and system disks can be attached. For related constraints, see the operation description section above.
+        # > You can attach data disks and system disks. For the related constraints, see the operation description section above.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # Specifies whether to forcefully attach the disk. Valid values:
+        # Specifies whether to forcibly attach the disk. Valid values:
         # 
-        # - true: Forcefully attaches the disk.
-        # - false: Does not forcefully attach the disk.
+        # - true: Yes.
+        # - false: No.
         # 
         # Default value: false.
         # 
         # 
-        # > Currently, only regional ESSDs (cloud_regional_disk_auto) support setting this parameter to true.
+        # > Currently, only regional Enterprise SSDs (ESSDs) (`cloud_regional_disk_auto`) support setting this parameter to true.
         self.force = force
         # The ID of the ECS instance to which you want to attach the disk.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the SSH key pair that is bound to the Linux ECS instance when you attach a system disk.
+        # The name of the SSH key pair to bind to a Linux ECS instance when you attach a system disk.
         # 
-        # - Windows Server instances: SSH key pairs are not supported. Even if this parameter is specified, only the `Password` configuration takes effect.
+        # - Windows Server: SSH key pairs are not supported. Even if you specify this parameter, only the `Password` configuration is applied.
         # 
-        # - Linux instances: The password-based logon method is disabled by default.
+        # - Linux: Password-based logon is disabled by default.
         self.key_pair_name = key_pair_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password that is set for the instance when you attach a system disk. The password is applicable only to the administrator and root usernames and does not apply to other usernames. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
+        # The logon password of the instance, which is configured when you attach a system disk. This parameter takes effect only for the administrator and root usernames and does not take effect for other usernames. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The special characters can be:
         # 
         # ```
         # ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
