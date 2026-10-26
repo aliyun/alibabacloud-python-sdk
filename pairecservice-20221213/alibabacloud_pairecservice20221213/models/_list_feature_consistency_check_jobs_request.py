@@ -14,37 +14,28 @@ class ListFeatureConsistencyCheckJobsRequest(DaraModel):
         sort_by: str = None,
         status: str = None,
     ):
-        # The instance ID. To obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # The ID of the instance. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The sort order. Valid values:
-        # 
-        # - `ASC`: Ascending order.
-        # 
-        # - `DESC`: Descending order.
+        # - ASC: ascending order
+        # - DESC: descending order
         self.order = order
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The field to sort the results by. Valid values:
-        # 
-        # - `GmtCreateTime`: Sorts by creation time.
-        # 
-        # - `GmtModifiedTime`: Sorts by modification time.
+        # The sort field. Valid values:
+        # - GmtCreateTime: sort by creation time
+        # - GmtModifiedTime: sort by update time
         self.sort_by = sort_by
-        # The status of the job. Valid values:
-        # 
-        # - `ToRun`: Waiting to run.
-        # 
-        # - `Running`: In progress.
-        # 
-        # - `Success`: Successful.
-        # 
-        # - `Failure`: Failed.
-        # 
-        # - `Stopped`: Stopped or canceled.
+        # The job status. Valid values:
+        # - ToRun: pending
+        # - Running: running
+        # - Success: successful
+        # - Failure: failed
+        # - Stopped: stopped or canceled
         self.status = status
 
     def validate(self):

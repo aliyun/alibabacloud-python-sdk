@@ -13,15 +13,17 @@ class GetSubCrowdResponseBody(DaraModel):
         source: str = None,
         users: str = None,
     ):
-        # The time when the sub-crowd was created.
+        # The time when the crowd was created. The time is in ISO 8601 format and includes the time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The number of users in the sub-crowd.
+        # The number of users in the crowd.
         self.quantity = quantity
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The source of the sub-crowd. Valid values:
+        # The source of the crowd. Valid values:
+        # - ManualInput: manual input
+        # - UploadFile: file upload
         self.source = source
-        # The users in the sub-crowd.
+        # The users in the crowd.
         self.users = users
 
     def validate(self):

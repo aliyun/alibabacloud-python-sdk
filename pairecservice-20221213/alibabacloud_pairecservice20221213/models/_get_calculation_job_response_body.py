@@ -19,35 +19,29 @@ class GetCalculationJobResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The ID of the AB metric.
+        # The AB metric ID.
         self.abmetric_id = abmetric_id
-        # The name of the AB metric.
+        # The AB metric name.
         self.abmetric_name = abmetric_name
-        # The business date.
+        # The business date. The value is in YYYY-MM-DD format.
         self.biz_date = biz_date
-        # The job configuration.
+        # The task configuration.
         self.config = config
-        # The runtime of the job.
+        # The time when the task ran. The value is in ISO 8601 format and includes a time zone offset.
         self.gmt_ran_time = gmt_ran_time
-        # The job messages.
+        # The task information.
         self.job_message = job_message
-        # The job source. Valid values:
-        # 
-        # - CronOffline: An offline cron job.
-        # 
-        # - DataRerun: A data rerun task.
+        # The task source. Valid values:
+        # - CronOffline: a scheduled offline task.
+        # - DataRerun: a data rerun task.
         self.job_source = job_source
         # The request ID.
         self.request_id = request_id
-        # The status of the calculation job. Valid values:
-        # 
-        # - Success: The job completed successfully.
-        # 
-        # - Failure: The job failed.
-        # 
-        # - Initializing: The job is initializing.
-        # 
-        # - Running: The job is running.
+        # The status of the compute task. Valid values:
+        # - Success: The task succeeded.
+        # - Failure: The task failed.
+        # - Initializing: The task is being initialized.
+        # - Running: The task is running.
         self.status = status
 
     def validate(self):

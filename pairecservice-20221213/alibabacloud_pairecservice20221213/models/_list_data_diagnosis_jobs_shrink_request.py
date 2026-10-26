@@ -21,17 +21,17 @@ class ListDataDiagnosisJobsShrinkRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The task status. Valid values:
+        # The task status. Valid values: 
         # 
-        # - Initializing: The job is being initialized.
+        # - Initializing: The task is being initialized.
         # 
-        # - Running: The job is in progress.
+        # - Running: The task is running.
         # 
-        # - Success: The job succeeded.
+        # - Success: The task succeeded.
         # 
-        # - Failure: The job failed to complete.
+        # - Failure: The task failed.
         self.status = status
-        # A list of data diagnosis types.
+        # The list of data diagnostic types.
         self.types_shrink = types_shrink
 
     def validate(self):

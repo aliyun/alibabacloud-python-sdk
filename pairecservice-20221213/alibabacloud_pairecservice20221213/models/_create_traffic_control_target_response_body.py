@@ -12,7 +12,7 @@ class CreateTrafficControlTargetResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The traffic control target ID.
+        # The ID of the traffic control target.
         self.traffic_control_target_id = traffic_control_target_id
 
     def validate(self):

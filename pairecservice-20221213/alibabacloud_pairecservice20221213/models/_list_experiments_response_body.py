@@ -14,11 +14,11 @@ class ListExperimentsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of experiments.
+        # The experiment list.
         self.experiments = experiments
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The total number of experiments returned.
+        # The total number of elements in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -82,47 +82,45 @@ class ListExperimentsResponseBodyExperiments(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The alias for the experiment ID.
+        # The alias of the experiment ID.
         self.alias_experiment_id = alias_experiment_id
-        # The allocated bucket numbers.
+        # The allocated bucket number.
         self.buckets = buckets
-        # The configuration of the experiment.
+        # The experiment configuration.
         self.config = config
-        # The ID of the debug crowd.
+        # The debug crowd ID.
         self.debug_crowd_id = debug_crowd_id
-        # A comma-separated list of user IDs for debugging.
+        # The debug users.
         self.debug_users = debug_users
-        # The description of the experiment.
+        # The experiment description.
         self.description = description
-        # The ID of the experiment group.
+        # The experiment group ID.
         self.experiment_group_id = experiment_group_id
-        # The ID of the experiment.
+        # The experiment ID.
         self.experiment_id = experiment_id
-        # The percentage of flow allocated to the experiment.
+        # The traffic allocation percentage.
         self.flow_percent = flow_percent
-        # The timestamp indicating when the experiment was created.
+        # The creation time. The value is in ISO 8601 format and includes the time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The timestamp indicating when the experiment was last modified.
+        # The update time. The value is in ISO 8601 format and includes the time zone offset.
         self.gmt_modified_time = gmt_modified_time
-        # The ID of the laboratory.
+        # The laboratory ID.
         self.laboratory_id = laboratory_id
-        # The ID of the layer.
+        # The layer ID.
         self.layer_id = layer_id
-        # The name of the experiment.
+        # The experiment name.
         self.name = name
-        # The ID of the scene.
+        # The scene ID.
         self.scene_id = scene_id
-        # The status of the experiment. Valid values:
+        # The status filter. Valid values:
         # 
-        # - `Offline`: The experiment is inactive and does not receive flow.
-        # 
-        # - `Online`: The experiment is active and can receive flow.
+        # - Offline: Not online.
+        # - Online: Online.
         self.status = status
-        # The type of the experiment. Valid values:
+        # The experiment type. Valid values:
         # 
-        # - `Baseline`: The control experiment.
-        # 
-        # - `Normal`: A variant experiment.
+        # - Baseline: Baseline experiment.
+        # - Normal: Common experiment.
         self.type = type
 
     def validate(self):

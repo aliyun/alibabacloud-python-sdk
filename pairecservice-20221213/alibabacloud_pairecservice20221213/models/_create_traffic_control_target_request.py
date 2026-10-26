@@ -22,33 +22,33 @@ class CreateTrafficControlTargetRequest(DaraModel):
         traffic_control_task_id: str = None,
         value: float = None,
     ):
-        # The end time of the traffic control target.
+        # The end time of the control target. The format is YYYY-MM-DD.
         self.end_time = end_time
-        # The event for the traffic control target.
+        # The control target event.
         self.event = event
-        # The item condition in array format.
+        # The item conditions in array format.
         self.item_condition_array = item_condition_array
-        # The item condition in expression format.
+        # The item conditions in expression format.
         self.item_condition_express = item_condition_express
-        # The item condition type.
+        # The condition type for item control.
         self.item_condition_type = item_condition_type
         # The name of the traffic control target.
         self.name = name
-        # Specifies whether to enable new product regulation.
+        # Specifies whether the control applies to new products.
         self.new_product_regulation = new_product_regulation
-        # The recall strategy name.
+        # The recall policy name.
         self.recall_name = recall_name
-        # The start time of the traffic control target.
+        # The start time of the control target. The format is YYYY-MM-DD.
         self.start_time = start_time
         # The statistical period.
         self.statis_period = statis_period
-        # The status of the traffic control target.
+        # The status of the control target.
         self.status = status
-        # The tolerance value for the traffic control target.
+        # The tolerance range of the control target.
         self.tolerance_value = tolerance_value
-        # The traffic control task ID.
+        # The ID of the traffic control task.
         self.traffic_control_task_id = traffic_control_task_id
-        # The value of the traffic control target.
+        # The target value.
         self.value = value
 
     def validate(self):

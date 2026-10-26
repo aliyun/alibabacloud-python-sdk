@@ -18,88 +18,57 @@ class GetInstanceResourceResponseBody(DaraModel):
         uri: str = None,
     ):
         # The resource category. Valid values:
-        # 
         # - DataManagement
-        # 
         # - Engine
-        # 
         # - Monitor
         self.category = category
-        # The resource configuration.
+        # The configuration information of the resource.
         self.config = config
-        # The creation time.
+        # The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.gmt_create_time = gmt_create_time
-        # The last modification time.
+        # The update time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.gmt_modified_time = gmt_modified_time
         # The resource group.
         # 
-        # If `Category` is `DataManagement`, the valid values are:
-        # 
+        # If the resource category is DataManagement, valid values are:
         # - storage
-        # 
         # - modelpipeline
-        # 
         # - datastorage
-        # 
         # - modeltrain
         # 
-        # If `Category` is `Engine`, the valid values are:
-        # 
+        # If the resource category is Engine, valid values are:
         # - feature
-        # 
         # - predict
-        # 
         # - recall
-        # 
         # - recengine
         # 
-        # If `Category` is `Monitor`, the valid values are:
-        # 
+        # If the resource category is Monitor, valid values are:
         # - logs
-        # 
         # - logsback
-        # 
         # - coldstart
-        # 
         # - deploy
         self.group = group
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The resource ID.
+        # The ID of the resource.
         self.resource_id = resource_id
         # The resource type. Valid values:
-        # 
         # - Hologres
-        # 
         # - EAS
-        # 
         # - BE
-        # 
         # - Rec
-        # 
         # - Platform
-        # 
         # - SLS
-        # 
         # - DataHub
-        # 
-        # - ApsaraMQ for Kafka
-        # 
-        # - Realtime Compute for Apache Flink
-        # 
+        # - Kafka
+        # - Flinkvvp
         # - ACR
-        # 
         # - OSS
-        # 
         # - DataWorks
-        # 
         # - PAI
-        # 
         # - MaxCompute
-        # 
-        # - Graph Compute Service
-        # 
-        # - ApsaraDB for Redis
+        # - GraphCompute
+        # - Redis
         self.type = type
         # The resource URI.
         self.uri = uri

@@ -14,11 +14,11 @@ class ListDataDiagnosisJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned data diagnosis jobs.
+        # The list of data diagnostic tasks.
         self.data_diagnosis_jobs = data_diagnosis_jobs
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -76,33 +76,33 @@ class ListDataDiagnosisJobsResponseBodyDataDiagnosisJobs(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The business date.
+        # The business date. The format is YYYY-MM-DD.
         self.biz_date = biz_date
-        # The job configuration.
+        # The task configuration.
         self.config = config
-        # The data diagnosis configuration ID.
+        # The ID of the data diagnostic configuration.
         self.data_diagnosis_config_id = data_diagnosis_config_id
-        # The data diagnosis configuration name.
+        # The name of the data diagnostic configuration.
         self.data_diagnosis_config_name = data_diagnosis_config_name
-        # The data diagnosis job ID.
+        # The ID of the data diagnostic task.
         self.data_diagnosis_job_id = data_diagnosis_job_id
-        # The time when the job was created.
+        # The creation time. The format is ISO 8601 and includes the time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The time when the job started.
+        # The execution time. The format is ISO 8601 and includes the time zone offset.
         self.gmt_start_time = gmt_start_time
-        # The job source. Valid values:
+        # The task source. Valid values:
         # 
-        # - Rerun: A manual rerun.
+        # - Rerun: Manual rerun.
         # 
-        # - Cycle: A periodic run.
+        # - Cycle: Periodic generation.
         # 
-        # - ByInitializing: Generated during initialization.
+        # - ByInitializing: Initialization generation.
         self.job_source = job_source
-        # The log messages.
+        # The list of log information.
         self.logs = logs
         # The task status.
         self.status = status
-        # The data diagnosis type.
+        # The data diagnostic type.
         self.type = type
 
     def validate(self):

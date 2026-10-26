@@ -14,11 +14,11 @@ class ListCrowdsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of Crowds.
+        # The list of crowds.
         self.crowds = crowds
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The total number of Crowds.
+        # The total number of elements in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -73,25 +73,24 @@ class ListCrowdsResponseBodyCrowds(DaraModel):
         source: str = None,
         users: str = None,
     ):
-        # The Crowd ID.
+        # The ID of the crowd.
         self.crowd_id = crowd_id
-        # The Crowd description.
+        # The description of the crowd.
         self.description = description
-        # The time when the Crowd was created.
+        # The time when the crowd was created. The time is in ISO 8601 format and includes the time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The label of the Crowd.
+        # The label of the crowd.
         self.label = label
-        # The Crowd name.
+        # The name of the crowd.
         self.name = name
-        # The number of users in the Crowd.
+        # The quantity.
         self.quantity = quantity
-        # The source of the Crowd. Valid values:
+        # The source of the crowd.
         # 
-        # - `ManualInput`: The Crowd is created from a manual entry of users.
-        # 
-        # - `UploadFile`: The Crowd is created from an uploaded file.
+        # - ManualInput: Manual input
+        # - UploadFile: File upload
         self.source = source
-        # The user IDs in the Crowd, separated by commas.
+        # The users included in the crowd. Multiple users are separated by commas.
         self.users = users
 
     def validate(self):

@@ -17,14 +17,11 @@ class ListParamsRequest(DaraModel):
     ):
         self.encrypted = encrypted
         # The environment to which the parameter belongs. Valid values:
-        # 
-        # - Daily: A test environment for daily use.
-        # 
-        # - Prepub: A staging environment that mirrors the production environment.
-        # 
-        # - Product: The production environment.
+        # - Daily: daily environment
+        # - Pre: pre-release environment
+        # - Prod: production environment
         self.environment = environment
-        # The instance ID. You can call the ListInstances operation to obtain it.
+        # The instance ID. You can call the ListInstances operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -32,9 +29,9 @@ class ListParamsRequest(DaraModel):
         self.name = name
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The scene ID. You can call the ListScenes operation to obtain it.
+        # The scene ID. You can call the ListScenes operation to obtain the scene ID.
         # 
         # This parameter is required.
         self.scene_id = scene_id

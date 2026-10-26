@@ -9,7 +9,7 @@ class GetEngineConfigRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The instance ID. You can obtain the instance ID by calling [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain the ID.
         self.instance_id = instance_id
 
     def validate(self):

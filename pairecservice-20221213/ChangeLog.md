@@ -1,3 +1,7 @@
+2026-10-26 Version: 7.1.5
+- Update API PublishRecallManagementTable: add request parameters body.StartTimestampMs.
+
+
 2026-09-21 Version: 7.1.4
 - Update API CloneEngineConfig: add request parameters body.SceneId.
 - Update API CreateEngineConfig: add request parameters body.SceneId.

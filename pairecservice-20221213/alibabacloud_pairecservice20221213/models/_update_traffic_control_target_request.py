@@ -22,33 +22,33 @@ class UpdateTrafficControlTargetRequest(DaraModel):
         value: float = None,
         new_param_3: str = None,
     ):
-        # The end time of the traffic control target.
+        # The end time of the control target. The value is in YYYY-MM-DD format.
         self.end_time = end_time
-        # The event for the traffic control target.
+        # The event of the control target.
         self.event = event
         # The item condition in array format.
         self.item_condition_array = item_condition_array
         # The item condition in expression format.
         self.item_condition_express = item_condition_express
-        # The item condition type.
+        # The condition type for item control.
         self.item_condition_type = item_condition_type
-        # The traffic control target name.
+        # The name of the traffic control target.
         self.name = name
-        # Specifies whether the control rule applies to a new product.
+        # Specifies whether the control rule applies to new products.
         self.new_product_regulation = new_product_regulation
-        # The recall strategy name.
+        # The Policy Name of the recall.
         self.recall_name = recall_name
-        # The start time of the traffic control target.
+        # The start time of the control target. The value is in YYYY-MM-DD format.
         self.start_time = start_time
-        # The statistics period.
+        # The statistical period.
         self.statis_period = statis_period
-        # The traffic control target status.
+        # The status of the control target.
         self.status = status
-        # The tolerance range for the traffic control target.
+        # The tolerance range of the control target.
         self.tolerance_value = tolerance_value
-        # The traffic control target value.
+        # The value of the control target.
         self.value = value
-        # This parameter is invalid.
+        # The invalid parameter.
         self.new_param_3 = new_param_3
 
     def validate(self):

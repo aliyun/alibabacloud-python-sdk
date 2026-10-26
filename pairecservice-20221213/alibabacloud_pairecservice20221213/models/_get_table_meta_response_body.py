@@ -28,47 +28,49 @@ class GetTableMetaResponseBody(DaraModel):
         type: str = None,
         url: str = None,
     ):
-        # Indicates whether the table can be deleted. The value is `false` if other resources reference the table.
+        # Indicates whether the data table can be deleted. If the table is referenced elsewhere, false is returned.
         self.can_delete = can_delete
-        # Additional configurations for the table, provided as a JSON string.
+        # The additional configurations of the data table.
         self.config = config
-        # The table description.
+        # The description of the data table.
         self.description = description
-        # The fields in the table.
+        # The list of fields in the table.
         self.fields = fields
         # The creation time.
         self.gmt_create_time = gmt_create_time
-        # The import time.
+        # The time when the field was imported. The time is in ISO 8601 format and includes the time zone offset.
         self.gmt_imported_time = gmt_imported_time
-        # The modification time.
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
-        # The table module. Valid values:
+        # The module of the data table. Valid values:
         # 
-        # - `ABTest`: An A/B testing data table.
+        # - ABTest: experiment data table.
         # 
-        # - `ExperimentTool`: An experiment tool table.
+        # - ExperimentTool: experiment tool table.
         # 
-        # - `DataDiagnosis`: A table for data diagnosis.
+        # - DataDiagnosis: data diagnostics.
         self.module = module
-        # The table name.
+        # The name of the data table.
         self.name = name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The resource ID.
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The URI of the resource.
         self.resource_uri = resource_uri
-        # The table ID.
+        # The ID of the data table.
         self.table_meta_id = table_meta_id
         # The name of the table in the database.
         self.table_name = table_name
-        # The table type. Valid values:
+        # The type of the data table. Valid values:
         # 
-        # - `MaxCompute`
+        # - MaxCompute
         # 
-        # - `Hologres`
+        # - Hologres
         self.type = type
-        # The URL of the table in Data Map. This parameter is returned only for MaxCompute tables.
+        # The URL of the table in Data Map if the table is a MaxCompute table. Otherwise, this field is empty.
         self.url = url
 
     def validate(self):
@@ -203,13 +205,13 @@ class GetTableMetaResponseBodyFields(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # Whether the field is a dimension field.
+        # Indicates whether the field is a dimension field.
         self.is_dimension_field = is_dimension_field
-        # The field meaning.
+        # The meaning of the field.
         self.meaning = meaning
-        # The field name.
+        # The name of the field.
         self.name = name
-        # The field type.
+        # The type of the field.
         self.type = type
 
     def validate(self):

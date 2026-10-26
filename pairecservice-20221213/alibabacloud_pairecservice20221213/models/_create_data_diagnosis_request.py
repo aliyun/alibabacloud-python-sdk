@@ -20,21 +20,21 @@ class CreateDataDiagnosisRequest(DaraModel):
         top_nquantity: int = None,
         type: str = None,
     ):
-        # The configuration for the data diagnosis task, specified as a JSON string. The required fields in this object depend on the value of the `Type` parameter.
+        # The configuration content of the data modeling diagnostic task.
         # 
-        # - If `Type` is set to `ChangeRate`, specify the following fields: `AnalysisField` and `PartitionFieldFormat`.
+        # - If Type is set to ChangeRate, the configuration must include: analysis field (AnalysisField) and partition field format (PartitionFieldFormat).
         # 
-        # - If `Type` is set to `PreferenceStatisticsCycle`, specify the following fields: `UserIdField`, `RemainDays`, `EverAppearedDays`, `RemainRatePeriods`, and `PartitionFieldFormat`.
+        # - If Type is set to PreferenceStatisticsCycle, the configuration must include: user ID field (UserIdField), single-day retention rate statistical period (RemainDays), ever-appeared rate statistical period (EverAppearedDays), periodic retention rate statistical period (RemainRatePeriods), and partition field format (PartitionFieldFormat).
         # 
-        # - If `Type` is set to `JoinTables`, specify the following fields: `LeftTableAnalysisField`, `RightTableAnalysisField`, `LeftJoinField`, `RightJoinField`, `SampleQuantity`, `LeftTablePartitionFieldFormat`, and `RightTablePartitionFieldFormat`.
+        # - If Type is set to JoinTables, the configuration must include: left table analysis field (LeftTableAnalysisField), right table analysis field (RightTableAnalysisField), left table JOIN field (LeftJoinField), right table JOIN field (RightJoinField), display sample quantity (SampleQuantity), left table partition field format (LeftTablePartitionFieldFormat), and right table partition field format (RightTablePartitionFieldFormat).
         # 
-        # - If `Type` is set to `BaseStatistics`, specify the following fields: `TagField`, `TagFieldSeparator`, `KVField`, `KVFieldSeparator`, `KVPairSeparator`, `TextField`, `Quantiles`, `DefaultValueOfString`, `NullStringField`, and `PartitionFieldFormat`.
+        # - If Type is set to BaseStatistics, the configuration must include: tag field (TagField), tag field separator (TagFieldSeparator), KV field (KVField), KV field separator (KVFieldSeparator), KV pair separator (KVPairSeparator), text field (TextField), data percentile distribution (Quantiles), default value for string type (DefaultValueOfString), null string field for string type (NullStringField), and partition field format (PartitionFieldFormat).
         # 
-        # - If `Type` is set to `AbnormalBehavior`, specify the following fields: `UserId`, `ItemId`, `EventField`, `UpStreamBehavior`, `DownstreamBehavior`, `NumericHistogramBins`, and `PartitionFieldFormat`.
+        # - If Type is set to AbnormalBehavior, the configuration must include: user ID field (UserId), item ID field (ItemId), behavior field (EventField), upstream behavior value (UpStreamBehavior), downstream behavior value (DownstreamBehavior), number of histogram bins (NumericHistogramBins), and partition field format (PartitionFieldFormat).
         # 
         # This parameter is required.
         self.config = config
-        # The scheduled time to run the task. If this parameter is omitted, the task runs only once.
+        # The periodic run time. If this field is empty, the task does not run periodically. The format is HH:mm.
         self.cycle_time = cycle_time
         # The instance ID.
         # 
@@ -42,9 +42,9 @@ class CreateDataDiagnosisRequest(DaraModel):
         self.instance_id = instance_id
         # The ID of the left data table.
         self.left_table_meta_id = left_table_meta_id
-        # The partition field for the left data table.
+        # The partition field of the left table.
         self.left_table_partition_field = left_table_partition_field
-        # The name of the data diagnosis task.
+        # The name of the data modeling diagnostic task configuration.
         # 
         # This parameter is required.
         self.name = name
@@ -52,23 +52,23 @@ class CreateDataDiagnosisRequest(DaraModel):
         self.partition_field = partition_field
         # The ID of the right data table.
         self.right_table_meta_id = right_table_meta_id
-        # The partition field for the right data table.
+        # The partition field of the right table.
         self.right_table_partition_field = right_table_partition_field
         # The ID of the data table.
         self.table_meta_id = table_meta_id
-        # The number of top results to return.
+        # The number of top N results.
         self.top_nquantity = top_nquantity
-        # The type of the data diagnosis task. Valid values:
+        # The type of the data diagnostic task. Valid values:
         # 
-        # - ChangeRate: Item or user change rate analysis.
-        # 
-        # - PreferenceStatisticsCycle: User preference statistics cycle analysis.
-        # 
-        # - JoinTables: Two-table join analysis.
-        # 
-        # - BaseStatistics: Basic statistical analysis.
-        # 
-        # - AbnormalBehavior: Abnormal behavior analysis.
+        # - ChangeRate: item/user change rate analysis.
+        #   
+        # - PreferenceStatisticsCycle: user preference statistical period analysis.
+        #   
+        # - JoinTables: join table analysis.
+        #   
+        # - BaseStatistics: basic statistics analysis.
+        #   
+        # - AbnormalBehavior: abnormal behavior analysis.
         # 
         # This parameter is required.
         self.type = type

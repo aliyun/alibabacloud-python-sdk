@@ -16,21 +16,21 @@ class ListTrafficControlTargetTrafficHistoryRequest(DaraModel):
         start_time: str = None,
         threshold: str = None,
     ):
-        # The end of the time range.
+        # The end time. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # The target environment. Valid values: Daily, Pre, and Prod.
+        # The environment to which the parameter belongs. Valid values: Daily: daily environment. Pre: staging environment. Prod: production environment.
         self.environment = environment
         # The ID of the experiment group.
         self.experiment_group_id = experiment_group_id
         # The ID of the experiment.
         self.experiment_id = experiment_id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The ID of the item.
         self.item_id = item_id
-        # The start of the time range.
+        # The start time. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The threshold value.
+        # The threshold.
         self.threshold = threshold
 
     def validate(self):

@@ -13,9 +13,9 @@ class QueryTrafficControlTargetItemReportDetailResponseBody(DaraModel):
         request_id: str = None,
         traffic_control_target_item_report_detail: main_models.QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail = None,
     ):
-        # The unique identifier for the request.
+        # The request ID.
         self.request_id = request_id
-        # Traffic control details for an item.
+        # The item traffic control details.
         self.traffic_control_target_item_report_detail = traffic_control_target_item_report_detail
 
     def validate(self):
@@ -52,9 +52,9 @@ class QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetI
         item_control_tail_report_details: List[main_models.QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails] = None,
         item_control_top_report_details: List[main_models.QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails] = None,
     ):
-        # Report details for the tail 100 controlled items.
+        # The list of details for the bottom 100 items after traffic control.
         self.item_control_tail_report_details = item_control_tail_report_details
-        # Report details for the top 100 controlled items.
+        # The list of details for the top 100 items before traffic control.
         self.item_control_top_report_details = item_control_top_report_details
 
     def validate(self):
@@ -108,13 +108,13 @@ class QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetI
         target_progress: str = None,
         target_traffic: int = None,
     ):
-        # Key-value pairs for the traffic control target.
+        # The key-value pairs restricted in the traffic control target.
         self.features = features
         # The item ID.
         self.item_id = item_id
-        # The progress toward the target.
+        # The completion progress.
         self.target_progress = target_progress
-        # The target traffic.
+        # The actual traffic.
         self.target_traffic = target_traffic
 
     def validate(self):
@@ -163,13 +163,13 @@ class QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetI
         target_progress: str = None,
         target_traffic: int = None,
     ):
-        # Key-value pairs for the traffic control target.
+        # The key-value pairs restricted in the traffic control target.
         self.features = features
         # The item ID.
         self.item_id = item_id
-        # The progress toward the target.
+        # The completion progress.
         self.target_progress = target_progress
-        # The target traffic.
+        # The actual traffic.
         self.target_traffic = target_traffic
 
     def validate(self):

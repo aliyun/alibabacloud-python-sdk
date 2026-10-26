@@ -17,15 +17,15 @@ class GetLayerResponseBody(DaraModel):
     ):
         # The description of the layer.
         self.description = description
-        # The time when the experiment layer was created.
+        # The time when the experiment layer was created. The time follows the ISO 8601 standard and includes a time zone offset.
         self.gmt_create_time = gmt_create_time
         # The ID of the laboratory.
         self.laboratory_id = laboratory_id
         # The name of the layer.
         self.name = name
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The residual traffic in the experiment layer.
+        # The remaining traffic on the experiment layer.
         self.residual_flow = residual_flow
         # The ID of the scene.
         self.scene_id = scene_id

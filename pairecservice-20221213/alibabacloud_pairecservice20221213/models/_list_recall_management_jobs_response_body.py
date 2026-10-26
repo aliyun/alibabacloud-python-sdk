@@ -16,15 +16,15 @@ class ListRecallManagementJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # Reserved.
+        # This parameter does not take effect.
         self.max_results = max_results
-        # Reserved.
+        # This parameter does not take effect.
         self.next_token = next_token
-        # A list of synchronization jobs.
+        # The list of synchronization tasks.
         self.recall_management_jobs = recall_management_jobs
         # The request ID.
         self.request_id = request_id
-        # The total count of synchronization jobs.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,17 +89,17 @@ class ListRecallManagementJobsResponseBodyRecallManagementJobs(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The end time of the synchronization job.
+        # The end time of the task. The time follows the ISO 8601 standard and is displayed in UTC.
         self.end_time = end_time
-        # The synchronization job ID.
+        # The ID of the synchronization task.
         self.recall_management_job_id = recall_management_job_id
-        # Information about the recall management table.
+        # The task information of the recall management table.
         self.recall_management_table_info = recall_management_table_info
-        # This parameter is deprecated.
+        # **[Deprecated]**
         self.recall_manager_table_info = recall_manager_table_info
-        # The start time of the synchronization job.
+        # The start time of the task. The time follows the ISO 8601 standard and is displayed in UTC.
         self.start_time = start_time
-        # The status of the synchronization job. Valid values: `Init` (initializing), `Running` (running), `Success` (succeeded), and `Failed` (failed).
+        # The status. Valid values: `Init` (initializing), `Running` (running), `Success` (successful), and `Failed` (failed).
         self.status = status
 
     def validate(self):
@@ -165,13 +165,13 @@ class ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagerTable
         source_table_data_size: str = None,
         source_table_row_count: str = None,
     ):
-        # This parameter is deprecated.
+        # **[Deprecated]**
         self.data_version = data_version
-        # This parameter is deprecated.
+        # **[Deprecated]**
         self.recall_management_table_version_id = recall_management_table_version_id
-        # This parameter is deprecated.
+        # **[Deprecated]**
         self.source_table_data_size = source_table_data_size
-        # This parameter is deprecated.
+        # **[Deprecated]**
         self.source_table_row_count = source_table_row_count
 
     def validate(self):
@@ -220,13 +220,13 @@ class ListRecallManagementJobsResponseBodyRecallManagementJobsRecallManagementTa
         source_table_data_size: str = None,
         source_table_row_count: str = None,
     ):
-        # The data version.
+        # The data version number.
         self.data_version = data_version
-        # The table version ID.
+        # The ID of the table version.
         self.recall_management_table_version_id = recall_management_table_version_id
-        # The source table data size.
+        # The data size of the source table.
         self.source_table_data_size = source_table_data_size
-        # The source table row count.
+        # The number of data rows in the source table.
         self.source_table_row_count = source_table_row_count
 
     def validate(self):

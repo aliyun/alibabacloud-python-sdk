@@ -15,13 +15,16 @@ class UpdateTrafficControlTaskTrafficRequest(DaraModel):
         traffics: List[main_models.UpdateTrafficControlTaskTrafficRequestTraffics] = None,
         new_param_3: str = None,
     ):
-        # The environment. Valid values: `Daily` (daily environment), `Pre` (pre-release environment), and `Prod` (production environment).
+        # The environment to which the task belongs. Valid values:
+        # - Daily: daily environment
+        # - Pre: pre-release environment
+        # - Prod: production environment
         self.environment = environment
         # The instance ID.
         self.instance_id = instance_id
-        # A list of traffic objects to report.
+        # The list of reported traffic information.
         self.traffics = traffics
-        # This parameter is invalid and should be ignored.
+        # Invalid parameter. Ignore this parameter.
         self.new_param_3 = new_param_3
 
     def validate(self):
@@ -80,17 +83,17 @@ class UpdateTrafficControlTaskTrafficRequestTraffics(DaraModel):
         traffic_control_target_traffic: int = None,
         traffic_control_task_traffic: int = None,
     ):
-        # The identifier for the traffic object. This can be an item ID, such as `item1`, an experiment ID, a global identifier (`ER_ALL`), or a value in `L1_EG1_E1` format.
+        # The traffic object, which can be an item or an experiment item. Valid values: item1, ER_ALL (global), or a value in the L1_EG1_E1 format.
         self.item_or_experiment_id = item_or_experiment_id
-        # The timestamp from the behavior log. This indicates that the log data is current as of this timestamp.
+        # The timestamp from the behavior log, indicating the log cutoff time. The value is in ISO 8601 format, using Z to indicate the UTC time zone.
         self.record_time = record_time
-        # The configured target traffic for the traffic control target.
+        # The target traffic of the traffic control target.
         self.traffic_control_target_aim_traffic = traffic_control_target_aim_traffic
-        # The traffic control target ID.
+        # The ID of the traffic control target.
         self.traffic_control_target_id = traffic_control_target_id
-        # The actual traffic volume observed for the traffic control target.
+        # The actual traffic of the traffic control target.
         self.traffic_control_target_traffic = traffic_control_target_traffic
-        # The total traffic for the traffic control task.
+        # The overall traffic under the traffic control plan.
         self.traffic_control_task_traffic = traffic_control_task_traffic
 
     def validate(self):

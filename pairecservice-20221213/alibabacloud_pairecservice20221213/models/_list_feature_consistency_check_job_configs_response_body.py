@@ -14,11 +14,11 @@ class ListFeatureConsistencyCheckJobConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of feature consistency check configurations.
+        # The feature consistency check configurations.
         self.feature_consistency_check_configs = feature_consistency_check_configs
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -121,51 +121,57 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         workflow_name: str = None,
         workspace_id: str = None,
     ):
-        # Indicates whether feature comparison is enabled.
+        # Specifies whether feature comparison is enabled.
         self.compare_feature = compare_feature
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The mount path of the dataset.
         self.dataset_mount_path = dataset_mount_path
+        # The dataset name.
         self.dataset_name = dataset_name
+        # The dataset type.
         self.dataset_type = dataset_type
+        # The URI of the dataset.
         self.dataset_uri = dataset_uri
+        # The default gateway. Eth0 indicates the public gateway, and Eth1 indicates the dedicated gateway.
         self.default_route = default_route
-        # The service name of EAS.
+        # The EAS service name.
         self.eas_service_name = eas_service_name
-        # The path of the EasyRec package.
+        # The EasyRec package path.
         self.easy_rec_package_path = easy_rec_package_path
-        # The version of EasyRec.
+        # The EasyRec version.
         self.easy_rec_version = easy_rec_version
         # The ID of the feature consistency check configuration.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
-        # The features to exclude from display. Separate multiple features with commas (,).
+        # The features excluded from display. Separate multiple features with commas (,).
         self.feature_display_exclude = feature_display_exclude
-        # The ID of the data landing resource.
+        # The ID of the data source for data backflow.
         self.feature_landing_resource_id = feature_landing_resource_id
-        # The URI of the data landing resource.
+        # The URI of the data source for data backflow.
         self.feature_landing_resource_uri = feature_landing_resource_uri
-        # The feature priority. Separate multiple features with commas (,). This parameter specifies which features are preferentially read from the user table. If the user table is empty, the features are queried from the behavior table.
+        # The priority of features. Separate multiple features with commas (,). This parameter specifies which features are preferentially read from the user table. If the user table is empty, the features are queried from the behavior table.
         self.feature_priority = feature_priority
-        # The primary key on the item side in Feature Store.
+        # The primary key on the item side of the feature store.
         self.feature_store_item_id = feature_store_item_id
-        # feature store model ID。
+        # The feature store model ID.
         self.feature_store_model_id = feature_store_model_id
-        # The Feature Store project ID.
+        # The ID of the feature store project.
         self.feature_store_project_id = feature_store_project_id
-        # The Feature Store project name.
+        # The name of the feature store project.
         self.feature_store_project_name = feature_store_project_name
-        # The name of the feature view that contains the item features in the sequence feature.
+        # The name of the feature view to which the item features in the sequence features belong.
         self.feature_store_seq_feature_view = feature_store_seq_feature_view
-        # The primary key on the user side in Feature Store.
+        # The primary key on the user side of the feature store.
         self.feature_store_user_id = feature_store_user_id
-        # The version of fg_jar.
+        # The fg_jar version.
         self.fg_jar_version = fg_jar_version
         # The name of the fg_json file.
         self.fg_json_file_name = fg_json_file_name
-        # Indicates whether a zip package needs to be generated.
+        # Specifies whether to generate a ZIP package.
         self.generate_zip = generate_zip
-        # The time when the configuration was created.
+        # The creation time. The time is formatted in ISO 8601 and includes a time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The time when the configuration was last updated.
+        # The update time. The time is formatted in ISO 8601 and includes a time zone offset.
         self.gmt_modified_time = gmt_modified_time
         # The name of the item_id field.
         self.item_id_field = item_id_field
@@ -173,15 +179,15 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         self.item_table = item_table
         # The partition field of the item table.
         self.item_table_partition_field = item_table_partition_field
-        # The format of the item table partition field. Valid values:
+        # The format of the partition field in the item table. Valid values:
         # - yyyymmdd
         # - yyyy-mm-dd
         self.item_table_partition_field_format = item_table_partition_field_format
-        # The end time of the most recently created job.
+        # The end time of the latest job. The time is formatted in ISO 8601 and includes a time zone offset.
         self.latest_job_gmt_sampling_end_time = latest_job_gmt_sampling_end_time
-        # The start time of the most recently created job.
+        # The start time of the latest job. The time is formatted in ISO 8601 and includes a time zone offset.
         self.latest_job_gmt_sampling_start_time = latest_job_gmt_sampling_start_time
-        # The ID of the most recently created job based on this configuration.
+        # The ID of the latest job created based on this configuration.
         self.latest_job_id = latest_job_id
         # The name of the feature consistency check configuration.
         self.name = name
@@ -189,9 +195,13 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         self.oss_bucket = oss_bucket
         # The ID of the OSS data source.
         self.oss_resource_id = oss_resource_id
+        # The number of workers used to execute the prediction script.
         self.predict_worker_count = predict_worker_count
+        # The CPU resources allocated to each worker when executing the prediction script.
         self.predict_worker_cpu = predict_worker_cpu
+        # The memory resources allocated to each worker when executing the prediction script.
         self.predict_worker_memory = predict_worker_memory
+        # The resource configuration.
         self.resource_config = resource_config
         # The sampling rate. Valid values: 0 to 1.
         self.sample_rate = sample_rate
@@ -199,20 +209,21 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         self.scene_id = scene_id
         # The name of the scene.
         self.scene_name = scene_name
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The ID of the service.
+        # The service ID.
         self.service_id = service_id
         # The service name.
         self.service_name = service_name
         # The status. Valid values:
-        # - Editable: Editable.
-        # - Uneditable: Not editable.
+        # - Editable: The configuration is editable.
+        # - Uneditable: The configuration is not editable.
         self.status = status
+        # The vSwitch ID.
         self.switch_id = switch_id
-        # Indicates whether Feature Store is used. Valid values:
-        # 
-        # - true: Feature Store is used. In this case, FeatureStoreProjectId, FeatureStoreProjectName, FeatureStoreModelId, FeatureStoreUserId, and FeatureStoreItemId are returned.
-        # - false: Feature Store is not used. In this case, UserTable, UserIdField, UserTablePartitionField, UserTablePartitionFieldFormat, ItemTable, ItemIdField, ItemTablePartitionField, and ItemTablePartitionFieldFormat are returned.
+        # Specifies whether to use the feature store. Valid values:
+        # - true: Uses the feature store. In this case, FeatureStoreProjectId, FeatureStoreProjectName, FeatureStoreModelId, FeatureStoreUserId, and FeatureStoreItemId are returned.
+        # - false: Does not use the feature store. In this case, UserTable, UserIdField, UserTablePartitionField, UserTablePartitionFieldFormat, ItemTable, ItemIdField, ItemTablePartitionField, and ItemTablePartitionFieldFormat are returned.
         self.use_feature_store = use_feature_store
         # The name of the user_id field.
         self.user_id_field = user_id_field
@@ -220,13 +231,15 @@ class ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckCo
         self.user_table = user_table
         # The partition field of the user table.
         self.user_table_partition_field = user_table_partition_field
-        # The format of the user table partition field. Valid values:
+        # The format of the partition field in the user table. Valid values:
         # - yyyymmdd
         # - yyyy-mm-dd
         self.user_table_partition_field_format = user_table_partition_field_format
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The name of the workflow.
         self.workflow_name = workflow_name
+        # The ID of the PAI workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

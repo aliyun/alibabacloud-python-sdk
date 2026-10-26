@@ -14,11 +14,11 @@ class ListSubCrowdsResponseBody(DaraModel):
         sub_crowds: List[main_models.ListSubCrowdsResponseBodySubCrowds] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The list of subcrowds.
+        # The list of sub-crowds.
         self.sub_crowds = sub_crowds
-        # The total number of subcrowds.
+        # The total number of elements in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -70,15 +70,17 @@ class ListSubCrowdsResponseBodySubCrowds(DaraModel):
         sub_crowd_id: str = None,
         users: str = None,
     ):
-        # The time when the subcrowd was created.
+        # The creation time. The value is in ISO 8601 format and includes a time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The number of users in the subcrowd.
+        # The number of users in the crowd group.
         self.quantity = quantity
-        # The source of the subcrowd.<br>● ManualInput: Users were added manually.<br>● UploadFile: Users were added by uploading a file.<br><br>
+        # The crowd source. Valid values:
+        # ● ManualInput: Manual data entry.
+        # ● UploadFile: File upload.
         self.source = source
-        # The subcrowd ID.
+        # The sub-crowd ID.
         self.sub_crowd_id = sub_crowd_id
-        # The users in the subcrowd.
+        # The users in the crowd group.
         self.users = users
 
     def validate(self):

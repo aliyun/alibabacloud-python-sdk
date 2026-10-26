@@ -16,9 +16,9 @@ class ListExperimentGroupsResponseBody(DaraModel):
     ):
         # The list of experiment groups.
         self.experiment_groups = experiment_groups
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of elements in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -85,35 +85,34 @@ class ListExperimentGroupsResponseBodyExperimentGroups(DaraModel):
         scene_id: str = None,
         status: str = None,
     ):
-        # The configuration for the experiment group, in JSON format.
+        # The experiment group configuration.
         self.config = config
         # The crowd ID.
         self.crowd_id = crowd_id
-        # The traffic targeting method for the experiment group. Valid values:
+        # The traffic targeting type of the experiment group. Valid values:
         # 
-        # - `All`: All traffic.
-        # 
-        # - `Filter`: Traffic that matches the filter.
-        # 
-        # - `CrowdId`: Traffic from a specified crowd.
-        # 
-        # - `Random`: A random percentage of traffic.
+        # * All: All traffic.
+        # * Filter: Traffic that matches the filter condition.
+        # * CrowdId: Traffic targeted by a specified crowd ID.
+        # * Random: Traffic randomly selected by percentage.
         self.crowd_target_type = crowd_target_type
         # The debug crowd ID.
         self.debug_crowd_id = debug_crowd_id
-        # The IDs of debug users, separated by commas.
+        # The debug users.
         self.debug_users = debug_users
         # The experiment group description.
         self.description = description
-        # The distribution duration. This parameter is required only when `DistributionType` is `TimeDuration`.
+        # The distribution time period.
         self.distribution_time_duration = distribution_time_duration
-        # The traffic distribution method.<br>● `UserId`: by user ID<br>● `TimeDuration`: by time duration<br><br>
+        # The traffic distribution method. Valid values:
+        # ● UserId: User ID.
+        # ● TimeDuration: Time period.
         self.distribution_type = distribution_type
         # The experiment group ID.
         self.experiment_group_id = experiment_group_id
         # The filter condition.
         self.filter = filter
-        # If `CrowdTargetType` is set to `Random`, this parameter returns the comma-separated IDs of buckets allocated based on the `RandomFlow` value.
+        # When the traffic targeting type of the experiment group is Random, this field returns the specific bucket numbers assigned based on the RandomFlow value.
         self.holding_buckets = holding_buckets
         # The laboratory ID.
         self.laboratory_id = laboratory_id
@@ -121,17 +120,20 @@ class ListExperimentGroupsResponseBodyExperimentGroups(DaraModel):
         self.layer_id = layer_id
         # The experiment group name.
         self.name = name
-        # Specifies whether to enable A/B testing for the experiment group.
+        # Specifies whether an AB experiment group is required.
         self.need_aa = need_aa
         # The owner of the experiment group.
         self.owner = owner
-        # If `CrowdTargetType` is set to `Random`, this parameter specifies the percentage of traffic (an integer from 0 to 100) randomly allocated to the experiment group.
+        # When the traffic targeting type of the experiment group is Random, this field specifies the percentage of random traffic matched to the experiment group. Valid values: 0 to 100.
         self.random_flow = random_flow
-        # The IDs of reserved buckets, separated by commas.
+        # The reserved bucket numbers.
         self.reserved_buckets = reserved_buckets
         # The scene ID.
         self.scene_id = scene_id
-        # The status of the experiment group. Valid values:<br>● `Offline`: The experiment group is inactive.<br>● `Online`: The experiment group is active.<br>● `Pushed`: The experiment group is fully rolled out.<br><br><br>
+        # The experiment group status. Valid values:
+        # ● Offline: Not online.
+        # ● Online: Online.
+        # ● Pushed: Fully pushed.
         self.status = status
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListRecallManagementTablesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # This parameter is reserved for future use.
+        # This parameter is not in effect.
         self.max_results = max_results
-        # This parameter is reserved for future use.
+        # This parameter is not in effect.
         self.next_token = next_token
-        # A list of recall management tables.
+        # The list of recall management tables.
         self.recall_management_tables = recall_management_tables
         # The request ID.
         self.request_id = request_id
-        # The total number of recall management tables.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -102,31 +102,31 @@ class ListRecallManagementTablesResponseBodyRecallManagementTables(DaraModel):
         self.can_delete = can_delete
         # The data source.
         self.data_source = data_source
-        # The description of the recall management table.
+        # The table description.
         self.description = description
-        # The time when the table was created. The time is in the ISO 8601 format.
+        # The creation time. The value is in ISO 8601 format and includes a time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The time when the table was last modified. The time is in the ISO 8601 format.
+        # The update time. The value is in ISO 8601 format and includes a time zone offset.
         self.gmt_modified_time = gmt_modified_time
-        # The time when the index takes effect. The time is in the ISO 8601 format.
+        # The effective period of the index. The value is in ISO 8601 format and includes a time zone offset.
         self.index_effective_time = index_effective_time
-        # The ID of the index version.
+        # The index version ID.
         self.index_version_id = index_version_id
-        # The name of the MaxCompute project.
+        # The MaxCompute project name.
         self.maxcompute_project_name = maxcompute_project_name
-        # The schema of the MaxCompute table.
+        # maxcompute schema。
         self.maxcompute_schema = maxcompute_schema
-        # The name of the table in MaxCompute.
+        # The table name in MaxCompute.
         self.maxcompute_table_name = maxcompute_table_name
-        # The name of the recall management table.
+        # The table name.
         self.name = name
         # The partition fields of the table.
         self.partition_fields = partition_fields
-        # The ID of the recall management table.
+        # The table ID.
         self.recall_management_table_id = recall_management_table_id
         # The recall type of the table.
         self.recall_type = recall_type
-        # The type of the table.
+        # The table type.
         self.type = type
 
     def validate(self):

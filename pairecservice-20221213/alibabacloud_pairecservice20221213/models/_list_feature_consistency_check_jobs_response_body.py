@@ -18,7 +18,7 @@ class ListFeatureConsistencyCheckJobsResponseBody(DaraModel):
         self.feature_consistency_check_jobs = feature_consistency_check_jobs
         # The request ID.
         self.request_id = request_id
-        # The total number of jobs.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -73,7 +73,7 @@ class ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs(Dar
         logs: List[str] = None,
         status: str = None,
     ):
-        # The configuration of the job.
+        # The configuration information.
         self.config = config
         # The ID of the feature consistency check configuration.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
@@ -81,23 +81,18 @@ class ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs(Dar
         self.feature_consistency_check_job_config_name = feature_consistency_check_job_config_name
         # The ID of the feature consistency check job.
         self.feature_consistency_check_job_id = feature_consistency_check_job_id
-        # The end time of the job.
+        # The end time. The time follows the ISO 8601 standard and includes a time zone offset.
         self.gmt_end_time = gmt_end_time
-        # The start time of the job.
+        # The start time. The time follows the ISO 8601 standard and includes a time zone offset.
         self.gmt_start_time = gmt_start_time
-        # A list of log entries.
+        # The log information.
         self.logs = logs
-        # The status of the job. Valid values:
-        # 
-        # - `ToRun`: Waiting to run.
-        # 
-        # - `Running`: In progress.
-        # 
-        # - `Success`: Successful.
-        # 
-        # - `Failure`: Failed.
-        # 
-        # - `Stopped`: Stopped or canceled.
+        # The job status. Valid values:
+        # - ToRun: pending
+        # - Running: running
+        # - Success: successful
+        # - Failure: failed
+        # - Stopped: stopped or canceled
         self.status = status
 
     def validate(self):

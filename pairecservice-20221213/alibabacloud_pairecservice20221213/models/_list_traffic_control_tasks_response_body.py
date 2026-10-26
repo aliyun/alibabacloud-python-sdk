@@ -16,7 +16,7 @@ class ListTrafficControlTasksResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The total number of traffic control tasks.
+        # The total number of elements in the list.
         self.total_count = total_count
         # The list of traffic control tasks.
         self.traffic_control_tasks = traffic_control_tasks
@@ -105,7 +105,7 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(DaraModel):
         user_condition_type: str = None,
         user_table_meta_id: str = None,
     ):
-        # The behavior table ID.
+        # The ID of the behavior table.
         self.behavior_table_meta_id = behavior_table_meta_id
         # The control granularity.
         self.control_granularity = control_granularity
@@ -113,53 +113,51 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(DaraModel):
         self.control_logic = control_logic
         # The control type.
         self.control_type = control_type
-        # The description of the traffic control task.
+        # The description of the traffic control.
         self.description = description
         # The list of effective scene IDs.
         self.effective_scene_ids = effective_scene_ids
-        # The list of effective scene names.
+        # The list of effective scenes.
         self.effective_scene_name_list = effective_scene_name_list
         # The list of effective scene names.
         self.effective_scene_names = effective_scene_names
-        # The end time.
+        # The end time. The time is in the YYYY-MM-DD format.
         self.end_time = end_time
-        # Indicates whether the task has ever been published.
+        # Specifies whether the task has been published.
         self.ever_published = ever_published
-        # The execution schedule for the task. Valid values:
-        # 
-        # - `Permanent`: The task runs indefinitely.
-        # 
-        # - `TimeRange`: The task runs within a specified time range. If you set this parameter to this value, you must also specify the `StartTime` and `EndTime` parameters.
+        # The execution time. Valid values:
+        # - Permanent: Executes permanently.
+        # - TimeRange: Executes within a specified time range. If you select this value, you must specify the StartTime and EndTime parameters.
         self.execution_time = execution_time
         # The Flink resource ID.
         self.flink_resource_id = flink_resource_id
-        # The name of the Flink resource.
+        # The Flink resource name.
         self.flink_resource_name = flink_resource_name
-        # The creation time of the task.
+        # The creation time. The time is in the ISO 8601 format and uses Z to indicate the UTC time zone.
         self.gmt_create_time = gmt_create_time
-        # The last update time of the task.
+        # The update time. The time is in the ISO 8601 format and uses Z to indicate the UTC time zone.
         self.gmt_modified_time = gmt_modified_time
-        # The item condition, in an array format.
+        # The array-formatted conditions for items.
         self.item_condition_array = item_condition_array
-        # The item condition, in an expression format.
+        # The expression-formatted conditions for items.
         self.item_condition_express = item_condition_express
-        # The item condition type.
+        # The condition type for items.
         self.item_condition_type = item_condition_type
-        # The item table ID.
+        # The ID of the item table.
         self.item_table_meta_id = item_table_meta_id
-        # The name of the traffic control task.
+        # The name of the traffic control.
         self.name = name
-        # A comma-separated list of staging experiment IDs.
+        # The list of pre-release experiment IDs.
         self.pre_experiment_ids = pre_experiment_ids
-        # The staging environment status.
+        # The status in the pre-release environment.
         self.prepub_status = prepub_status
-        # A comma-separated list of production experiment IDs.
+        # The list of production experiments.
         self.prod_experiment_ids = prod_experiment_ids
-        # The production environment status.
+        # The status in the production environment.
         self.product_status = product_status
-        # The scene ID. You can obtain this ID by calling the `ListScenes` operation.
+        # The scene ID. You can obtain this ID by calling the ListScenes operation.
         self.scene_id = scene_id
-        # The name of the scene.
+        # The scene name.
         self.scene_name = scene_name
         # The service ID.
         self.service_id = service_id
@@ -167,27 +165,27 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(DaraModel):
         self.service_id_list = service_id_list
         # The list of bound engine service IDs.
         self.service_ids = service_ids
-        # The start time.
+        # The start time. The time is in the YYYY-MM-DD format.
         self.start_time = start_time
-        # The behavior statistics expression.
+        # The expression-formatted conditions for behavior statistics.
         self.statis_bahavior_condition_express = statis_bahavior_condition_express
-        # The behavior statistics condition, in an array format.
+        # The array-formatted conditions for behavior statistics.
         self.statis_behavior_condition_array = statis_behavior_condition_array
-        # The behavior statistics expression.
+        # The behavior expression.
         self.statis_behavior_condition_express = statis_behavior_condition_express
         # The condition type for behavior statistics.
         self.statis_behavior_condition_type = statis_behavior_condition_type
         # The list of traffic control targets.
         self.traffic_control_targets = traffic_control_targets
-        # The traffic control task ID.
+        # The ID of the traffic control task.
         self.traffic_control_task_id = traffic_control_task_id
-        # The condition for the target user group, in an array format.
+        # The array-formatted conditions for the target user group.
         self.user_condition_array = user_condition_array
-        # The condition for the target user group, in an expression format.
+        # The expression-formatted conditions for the target user group.
         self.user_condition_express = user_condition_express
         # The condition type for the target user group.
         self.user_condition_type = user_condition_type
-        # The user table ID.
+        # The ID of the user table.
         self.user_table_meta_id = user_table_meta_id
 
     def validate(self):
@@ -474,41 +472,41 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTarget
         traffic_control_task_id: str = None,
         value: float = None,
     ):
-        # The end time.
+        # The end time. The time is in the YYYY-MM-DD format.
         self.end_time = end_time
         # The event for the traffic control target.
         self.event = event
-        # The creation time of the target.
+        # The creation time. The time is in the ISO 8601 format and includes the time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The last update time of the target.
+        # The update time. The time is in the ISO 8601 format and includes the time zone offset.
         self.gmt_modified_time = gmt_modified_time
-        # The item condition, in an array format.
+        # The array-formatted conditions for items.
         self.item_condition_array = item_condition_array
-        # The item condition, in an expression format.
+        # The expression-formatted conditions for items.
         self.item_condition_express = item_condition_express
-        # The item condition type.
+        # The condition type for items.
         self.item_condition_type = item_condition_type
-        # The name of the traffic control target.
+        # The traffic control target.
         self.name = name
-        # Indicates whether the traffic control target is for a new product recall.
+        # Specifies whether the recall applies to new items.
         self.new_product_regulation = new_product_regulation
-        # The name of the recall strategy.
+        # The recall policy name.
         self.recall_name = recall_name
         # The details of the split points.
         self.split_parts = split_parts
-        # The start time.
+        # The start time. The time is in the YYYY-MM-DD format.
         self.start_time = start_time
-        # The statistics period.
+        # The statistical period.
         self.statis_period = statis_period
-        # The status of the traffic control target.
+        # The status.
         self.status = status
-        # The tolerance value for the traffic control target.
+        # The tolerance range of the traffic control target.
         self.tolerance_value = tolerance_value
-        # The traffic control target ID.
+        # The ID of the traffic control target.
         self.traffic_control_target_id = traffic_control_target_id
-        # The traffic control task ID.
+        # The ID of the traffic control task.
         self.traffic_control_task_id = traffic_control_task_id
-        # The value of the traffic control target.
+        # The target value for traffic control.
         self.value = value
 
     def validate(self):
@@ -641,9 +639,9 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTarget
         set_values: List[int] = None,
         time_points: List[int] = None,
     ):
-        # The list of value-based split points for the target.
+        # The list of target value split points.
         self.set_values = set_values
-        # The list of time-based split points.
+        # The list of time split points.
         self.time_points = time_points
 
     def validate(self):

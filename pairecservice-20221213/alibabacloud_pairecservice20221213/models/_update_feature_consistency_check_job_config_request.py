@@ -63,47 +63,45 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(DaraModel):
         self.dataset_id = dataset_id
         # The mount path of the dataset.
         self.dataset_mount_path = dataset_mount_path
-        # The dataset name.
+        # The name of the dataset.
         self.dataset_name = dataset_name
         # The dataset type.
         self.dataset_type = dataset_type
         # The URI of the dataset.
         self.dataset_uri = dataset_uri
-        # The default gateway. Valid values:
-        # - Eth0: public gateway.
-        # - Eth1: dedicated gateway.
+        # The default gateway. Valid values: Eth0: public gateway. Eth1: dedicated gateway.
         self.default_route = default_route
         # The PAI-EAS service name.
         # 
         # This parameter is required.
         self.eas_service_name = eas_service_name
-        # The EasyRec package path.
+        # The path of the EasyRec package.
         self.easy_rec_package_path = easy_rec_package_path
         # The EasyRec version.
         self.easy_rec_version = easy_rec_version
-        # The features to exclude from display. Separate multiple features with commas (,).
+        # The feature display filter. Separate multiple features with commas (,).
         self.feature_display_exclude = feature_display_exclude
-        # The data fallback data source ID.
+        # The data landing data source ID.
         # 
         # This parameter is required.
         self.feature_landing_resource_id = feature_landing_resource_id
         # The feature priority. Separate multiple features with commas (,). This parameter specifies which features are preferentially read from the user table. If the user table is empty, the features are queried from the behavior table.
         self.feature_priority = feature_priority
-        # The Feature Store item-side primary key.
+        # The item-side primary key in Feature Store.
         self.feature_store_item_id = feature_store_item_id
         # feature store model id
         self.feature_store_model_id = feature_store_model_id
-        # The Feature Store project ID.
+        # The ID of the Feature Store project.
         self.feature_store_project_id = feature_store_project_id
-        # The Feature Store project name.
+        # The name of the Feature Store project.
         self.feature_store_project_name = feature_store_project_name
-        # The name of the feature view that contains the item features in the sequence feature.
+        # The name of the feature view where the item features in the sequence features are located.
         self.feature_store_seq_feature_view = feature_store_seq_feature_view
-        # The Feature Store user-side primary key.
+        # The user-side primary key in Feature Store.
         self.feature_store_user_id = feature_store_user_id
         # The fg_jar version.
         self.fg_jar_version = fg_jar_version
-        # The fg_json file name.
+        # The name of the fg_json file.
         # 
         # This parameter is required.
         self.fg_json_file_name = fg_json_file_name
@@ -117,19 +115,19 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(DaraModel):
         self.instance_id = instance_id
         # Specifies whether to use Feature Store.
         self.is_use_feature_store = is_use_feature_store
-        # The item_id field name.
+        # The name of the item_id field.
         # 
         # This parameter is required.
         self.item_id_field = item_id_field
-        # The item table name.
+        # The name of the item table.
         # 
         # This parameter is required.
         self.item_table = item_table
-        # The item table partition field.
+        # The partition field of the item table.
         # 
         # This parameter is required.
         self.item_table_partition_field = item_table_partition_field
-        # The item table partition field format. Valid values:
+        # The partition field format of the item table. Valid values:
         # - yyyymmdd
         # - yyyy-mm-dd
         # 
@@ -137,21 +135,21 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(DaraModel):
         self.item_table_partition_field_format = item_table_partition_field_format
         # maxcompute schema
         self.maxcompute_schema = maxcompute_schema
-        # The feature consistency check name.
+        # The name of the feature consistency check job.
         # 
         # This parameter is required.
         self.name = name
         # The OSS data source ID.
         self.oss_resource_id = oss_resource_id
-        # The number of workers for running the prediction script.
+        # The number of workers used to execute the prediction script.
         self.predict_worker_count = predict_worker_count
-        # The CPU specification of workers for running the prediction script.
+        # The CPU resources allocated to each worker for executing the prediction script.
         self.predict_worker_cpu = predict_worker_cpu
-        # The memory specification of workers for running the prediction script.
+        # The memory allocated to each worker for executing the prediction script.
         self.predict_worker_memory = predict_worker_memory
         # The resource configuration.
         self.resource_config = resource_config
-        # The sampling ratio (0-1).
+        # The sampling ratio, which ranges from 0 to 1.
         # 
         # This parameter is required.
         self.sample_rate = sample_rate
@@ -165,29 +163,29 @@ class UpdateFeatureConsistencyCheckJobConfigRequest(DaraModel):
         self.service_id = service_id
         # The vSwitch ID.
         self.switch_id = switch_id
-        # The user_id field name.
+        # The name of the user_id field.
         # 
         # This parameter is required.
         self.user_id_field = user_id_field
-        # The user table name.
+        # The name of the user table.
         # 
         # This parameter is required.
         self.user_table = user_table
-        # The user table partition field.
+        # The partition field of the user table.
         # 
         # This parameter is required.
         self.user_table_partition_field = user_table_partition_field
-        # The user table partition field format. Valid values:
+        # The partition field format of the user table. Valid values:
         # - yyyymmdd
         # - yyyy-mm-dd
         # 
         # This parameter is required.
         self.user_table_partition_field_format = user_table_partition_field_format
-        # VpcID。
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # The workflow name.
+        # The name of the workflow.
         self.workflow_name = workflow_name
-        # The PAI workspace ID.
+        # The ID of the PAI workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

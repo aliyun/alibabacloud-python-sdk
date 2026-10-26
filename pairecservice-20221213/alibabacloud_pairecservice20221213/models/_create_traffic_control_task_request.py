@@ -40,89 +40,79 @@ class CreateTrafficControlTaskRequest(DaraModel):
         user_condition_type: str = None,
         user_table_meta_id: str = None,
     ):
-        # The behavior table ID.
+        # The ID of the behavior table.
         self.behavior_table_meta_id = behavior_table_meta_id
-        # The control granularity. Valid values: Global (applies globally) and Single (applies to a specific item).
+        # The control granularity. Valid values:
+        # - Global: global
+        # - Single: single item
         self.control_granularity = control_granularity
-        # The control logic.
-        # 
-        # - Guaranteed: The system strictly enforces the control target.
-        # 
-        # - Approach: The system attempts to meet the control target, but enforcement is not strict.
+        # The control logic. Valid values:
+        # - Guaranteed: guaranteed traffic control
+        # - Approach: approximate traffic control
         self.control_logic = control_logic
-        # The control type.
-        # 
-        # - Percent: Controls traffic by percentage.
-        # 
-        # - Quantity: Controls traffic by quantity.
+        # The control type. Valid values:
+        # - Percent: percentage-based control
+        # - Quantity: quantity-based control
         self.control_type = control_type
         # The description of the traffic control task.
         self.description = description
-        # A list of effective scene IDs.
+        # The list of effective scene IDs.
         self.effective_scene_ids = effective_scene_ids
-        # The end time.
+        # The end time. Specify the time in the YYYY-MM-DD format.
         self.end_time = end_time
-        # The execution time.
-        # 
-        # - Permanent: The task runs permanently.
-        # 
-        # - TimeRange: The task runs within a specified time range. This option requires you to also specify the StartTime and EndTime parameters.
+        # The execution time. Valid values:
+        # - Permanent: The task is executed permanently.
+        # - TimeRange: The task is executed within a specified time range. If you select this value, you must specify StartTime and EndTime.
         self.execution_time = execution_time
-        # The Flink data source ID.
+        # The ID of the Flink data source.
         self.flink_resource_id = flink_resource_id
-        # The instance ID. You can get this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # The instance ID. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain the instance ID.
         self.instance_id = instance_id
-        # The item condition in array format.
+        # The conditions for items in array format.
         self.item_condition_array = item_condition_array
-        # The item condition in expression format.
+        # The conditions for items in expression format.
         self.item_condition_express = item_condition_express
-        # The item condition type.
-        # 
-        # - Array: Specifies the array format.
-        # 
-        # - Expression: Specifies the expression format.
+        # The condition type for items. Valid values:
+        # - Array: array format
+        # - Expression: expression format
         self.item_condition_type = item_condition_type
-        # The item table ID.
+        # The ID of the item table.
         self.item_table_meta_id = item_table_meta_id
         # The name of the traffic control task.
         self.name = name
-        # The experiment IDs for the staging environment. Separate multiple IDs with a comma (,).
+        # The IDs of the experiments in the pre-release environment. Separate multiple IDs with commas (,).
         self.pre_experiment_ids = pre_experiment_ids
-        # The experiment IDs for the production environment. Separate multiple IDs with a comma (,).
+        # The IDs of the experiments in the production environment. Separate multiple IDs with commas (,).
         self.prod_experiment_ids = prod_experiment_ids
-        # The scene ID. You can get this ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
+        # The scene ID. You can call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain the scene ID.
         self.scene_id = scene_id
         # The service ID.
         # 
         # This parameter is required.
         self.service_id = service_id
-        # A list of bound engine service IDs.
+        # The list of bound engine service IDs.
         self.service_ids = service_ids
-        # The start time.
+        # The start time. Specify the time in the YYYY-MM-DD format.
         self.start_time = start_time
-        # The statistical behavior condition in array format.
+        # The conditions for statistical behaviors in array format.
         self.statis_behavior_condition_array = statis_behavior_condition_array
-        # The statistical behavior condition in expression format.
+        # The conditions for statistical behaviors in expression format.
         self.statis_behavior_condition_express = statis_behavior_condition_express
-        # The condition type for the statistical behavior.
-        # 
-        # - Array: Specifies the array format.
-        # 
-        # - Expression: Specifies the expression format.
+        # The condition type for statistical behaviors. Valid values:
+        # - Array: array format
+        # - Expression: expression format
         self.statis_behavior_condition_type = statis_behavior_condition_type
-        # A list of traffic control targets.
+        # The list of traffic control targets.
         self.traffic_control_targets = traffic_control_targets
-        # The intervention user group condition in array format.
+        # The conditions for the target users in array format.
         self.user_condition_array = user_condition_array
-        # The intervention user group condition in expression format.
+        # The conditions for the target users in expression format.
         self.user_condition_express = user_condition_express
-        # The condition type for the intervention user group.
-        # 
-        # - Array: Specifies the array format.
-        # 
-        # - Expression: Specifies the expression format.
+        # The condition type for the target users. Valid values:
+        # - Array: array format
+        # - Expression: expression format
         self.user_condition_type = user_condition_type
-        # The user table ID.
+        # The ID of the user table.
         self.user_table_meta_id = user_table_meta_id
 
     def validate(self):
@@ -338,43 +328,37 @@ class CreateTrafficControlTaskRequestTrafficControlTargets(DaraModel):
         tolerance_value: int = None,
         value: float = None,
     ):
-        # The end time of the traffic control target.
+        # The end time of the control target. Specify the time in the YYYY-MM-DD format.
         self.end_time = end_time
-        # The event for the traffic control target.
+        # The event of the control target.
         self.event = event
-        # The item condition in array format.
+        # The conditions for items in array format.
         self.item_condition_array = item_condition_array
-        # The item condition in expression format.
+        # The conditions for items in expression format.
         self.item_condition_express = item_condition_express
-        # The condition type for item control.
-        # 
-        # - Array: Specifies the array format.
-        # 
-        # - Expression: Specifies the expression format.
+        # The condition type for item control. Valid values:
+        # - Array: array format
+        # - Expression: expression format
         self.item_condition_type = item_condition_type
         # The name of the traffic control target.
         self.name = name
-        # Specifies whether to enable new product regulation.
+        # Specifies whether the target is for new product regulation.
         self.new_product_regulation = new_product_regulation
-        # The name of the recall strategy.
+        # The recall policy name.
         self.recall_name = recall_name
-        # The start time of the traffic control target.
+        # The start time of the control target. Specify the time in the YYYY-MM-DD format.
         self.start_time = start_time
-        # The statistics period.
-        # 
-        # - Daily: Statistics are aggregated daily.
-        # 
-        # - Hour: Statistics are aggregated hourly.
+        # The statistical period. Valid values:
+        # - Daily: daily
+        # - Hour: hourly
         self.statis_period = statis_period
-        # The status of the traffic control target.
-        # 
-        # - Opened: The traffic control target is enabled.
-        # 
-        # - Closed: The traffic control target is disabled.
+        # The status of the control target. Valid values:
+        # - Opened: enabled
+        # - Closed: disabled
         self.status = status
-        # The tolerance value for the traffic control target.
+        # The tolerance range of the control target.
         self.tolerance_value = tolerance_value
-        # The value of the traffic control target.
+        # The target value for control.
         self.value = value
 
     def validate(self):

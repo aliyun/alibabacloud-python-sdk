@@ -9,7 +9,7 @@ class GetFeatureConsistencyCheckJobConfigRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the instance. See [ListInstances](https://help.aliyun.com/document_detail/2411819.html) for details on how to obtain it.
+        # The ID of the instance. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         # 
         # This parameter is required.
         self.instance_id = instance_id

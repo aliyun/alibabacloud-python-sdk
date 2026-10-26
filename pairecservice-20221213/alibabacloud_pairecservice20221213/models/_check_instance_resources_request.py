@@ -11,39 +11,24 @@ class CheckInstanceResourcesRequest(DaraModel):
         type: str = None,
         uri: str = None,
     ):
+        # The data source ID.
         self.resource_id = resource_id
         # The resource type. Valid values:
-        # 
         # - Hologres
-        # 
         # - EAS
-        # 
         # - BE
-        # 
         # - Rec
-        # 
         # - Platform
-        # 
         # - SLS
-        # 
         # - DataHub
-        # 
         # - Kafka
-        # 
         # - Flinkvvp
-        # 
         # - ACR
-        # 
         # - OSS
-        # 
         # - DataWorks
-        # 
         # - PAI
-        # 
         # - MaxCompute
-        # 
         # - GraphCompute
-        # 
         # - Redis
         # 
         # This parameter is required.

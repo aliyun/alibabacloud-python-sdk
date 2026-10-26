@@ -29,41 +29,41 @@ class GetTrafficControlTargetResponseBody(DaraModel):
         traffic_control_task_id: str = None,
         value: float = None,
     ):
-        # The end time.
+        # The end time. Format: YYYY-MM-DD.
         self.end_time = end_time
-        # The event of the control target.
+        # The traffic control target event.
         self.event = event
-        # The time when the traffic control target was created.
+        # The creation time. Format: ISO 8601, where Z indicates the UTC time zone.
         self.gmt_create_time = gmt_create_time
-        # The item condition, specified in an array format.
+        # The item conditions in array format.
         self.item_condition_array = item_condition_array
-        # The item condition, specified in an expression format.
+        # The item conditions in expression format.
         self.item_condition_express = item_condition_express
         # The item condition type.
         self.item_condition_type = item_condition_type
-        # The name of the traffic control target.
+        # The traffic control target.
         self.name = name
-        # Indicates whether new product regulation is enabled.
+        # Indicates whether the regulation applies to new products.
         self.new_product_regulation = new_product_regulation
-        # The name of the recall strategy.
+        # The recall policy name.
         self.recall_name = recall_name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The piecewise control settings.
+        # The target setting values.
         self.split_parts = split_parts
-        # The start time.
+        # The start time. Format: YYYY-MM-DD.
         self.start_time = start_time
-        # The statistics period.
+        # The statistical period.
         self.statis_period = statis_period
-        # The status of the traffic control target.
+        # The status.
         self.status = status
-        # The tolerance value.
+        # The tolerance range of the traffic control target.
         self.tolerance_value = tolerance_value
         # The ID of the traffic control target.
         self.traffic_control_target_id = traffic_control_target_id
         # The ID of the traffic control task.
         self.traffic_control_task_id = traffic_control_task_id
-        # The value of the control target.
+        # The traffic control target value.
         self.value = value
 
     def validate(self):
@@ -197,11 +197,11 @@ class GetTrafficControlTargetResponseBodySplitParts(DaraModel):
         set_values: List[int] = None,
         time_points: List[int] = None,
     ):
-        # The set points.
+        # The target value split points.
         self.set_points = set_points
-        # The set values.
+        # The target setting values.
         self.set_values = set_values
-        # The time points.
+        # The time split points.
         self.time_points = time_points
 
     def validate(self):

@@ -14,11 +14,11 @@ class ListCalculationJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of calculation jobs.
+        # The calculation tasks.
         self.calculation_jobs = calculation_jobs
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -75,31 +75,25 @@ class ListCalculationJobsResponseBodyCalculationJobs(DaraModel):
     ):
         # The name of the A/B metric.
         self.abmetric_name = abmetric_name
-        # The business date.
+        # The business date. The date is in the YYYY-MM-DD format.
         self.biz_date = biz_date
-        # The calculation job ID.
+        # The ID of the calculation task.
         self.calculation_job_id = calculation_job_id
-        # The job configuration.
+        # The task configuration.
         self.config = config
-        # The time when the job was run.
+        # The execution time. The time is in the ISO 8601 format and includes the time zone offset.
         self.gmt_ran_time = gmt_ran_time
-        # The job messages.
+        # The task message.
         self.job_message = job_message
-        # The source of the job. Valid values:
-        # 
-        # - CronOffline: The job is an offline scheduled task.
-        # 
-        # - DataRerun: The job is a data rerun task.
+        # The task source. Valid values:
+        # - CronOffline: Offline scheduled task.
+        # - DataRerun: Data rerun task.
         self.job_source = job_source
-        # The status of the job. Valid values:
-        # 
-        # - Success
-        # 
-        # - Failure
-        # 
-        # - Initializing
-        # 
-        # - Running
+        # The task status. Valid values:
+        # - Success: Succeeded.
+        # - Failure: Failed.
+        # - Initializing: Initializing.
+        # - Running: Running.
         self.status = status
 
     def validate(self):

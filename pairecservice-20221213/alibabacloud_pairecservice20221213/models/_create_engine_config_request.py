@@ -27,12 +27,13 @@ class CreateEngineConfigRequest(DaraModel):
         # 
         # - Prod: production environment.
         self.environment = environment
-        # The instance ID. You can obtain the ID from the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # The instance ID. You can obtain the instance ID from the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
         self.instance_id = instance_id
         # The name of the engine configuration.
         self.name = name
+        # The scene ID.
         self.scene_id = scene_id
-        # The type of the engine configuration.
+        # The engine configuration type.
         self.type = type
 
     def validate(self):

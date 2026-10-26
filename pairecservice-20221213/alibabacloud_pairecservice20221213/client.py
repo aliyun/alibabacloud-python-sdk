@@ -13020,6 +13020,8 @@ class Client(OpenApiClient):
             body['Partitions'] = request.partitions
         if not DaraCore.is_null(request.skip_threshold_check):
             body['SkipThresholdCheck'] = request.skip_threshold_check
+        if not DaraCore.is_null(request.start_timestamp_ms):
+            body['StartTimestampMs'] = request.start_timestamp_ms
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -13059,6 +13061,8 @@ class Client(OpenApiClient):
             body['Partitions'] = request.partitions
         if not DaraCore.is_null(request.skip_threshold_check):
             body['SkipThresholdCheck'] = request.skip_threshold_check
+        if not DaraCore.is_null(request.start_timestamp_ms):
+            body['StartTimestampMs'] = request.start_timestamp_ms
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

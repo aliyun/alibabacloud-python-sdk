@@ -14,11 +14,11 @@ class ListRecallManagementTableVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of RecallManagementTable versions.
+        # The list of recall management table versions.
         self.recall_management_table_versions = recall_management_table_versions
         # The request ID.
         self.request_id = request_id
-        # The total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -75,23 +75,21 @@ class ListRecallManagementTableVersionsResponseBodyRecallManagementTableVersions
     ):
         # The data version.
         self.data_version = data_version
-        # The effective time.
+        # The effective period. Format: YYYY-MM-DDTHH:mm:ss.SSS.
         self.effective_time = effective_time
-        # The sync end time.
+        # The synchronization end time. Format: YYYY-MM-DDTHH:mm:ss.SSS.
         self.publish_end_time = publish_end_time
-        # The sync start time.
+        # The synchronization start time. Format: YYYY-MM-DDTHH:mm:ss.SSS.
         self.publish_start_time = publish_start_time
-        # The ID of the RecallManagementTable version.
+        # The version ID.
         self.recall_management_table_version_id = recall_management_table_version_id
-        # The source table data size.
+        # The data size of the source data table.
         self.source_table_data_size = source_table_data_size
-        # The source table row count.
+        # The number of rows in the source data table.
         self.source_table_row_count = source_table_row_count
-        # The status of the version. Valid values:
-        # 
-        # - Online: The version is online.
-        # 
-        # - Offline: The version is offline.
+        # The status. Valid values:
+        # - Online: online
+        # - Offline: offline
         self.status = status
 
     def validate(self):

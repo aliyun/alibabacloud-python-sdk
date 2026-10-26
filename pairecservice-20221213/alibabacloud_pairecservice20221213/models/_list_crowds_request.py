@@ -9,7 +9,7 @@ class ListCrowdsRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the instance. Call the `ListInstances` operation to obtain this ID.
+        # The ID of the instance. You can call the ListInstances operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

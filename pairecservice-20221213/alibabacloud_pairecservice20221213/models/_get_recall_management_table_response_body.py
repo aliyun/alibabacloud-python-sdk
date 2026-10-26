@@ -35,49 +35,49 @@ class GetRecallManagementTableResponseBody(DaraModel):
         request_id: str = None,
         type: str = None,
     ):
-        # Specifies whether the table can be deleted.
+        # Indicates whether the table can be deleted.
         self.can_delete = can_delete
-        # Additional configurations for the table.
+        # The additional configurations of the table.
         self.config = config
         # The data source.
         self.data_source = data_source
-        # The data table description.
+        # The table description.
         self.description = description
-        # Specifies whether to enable the fluctuation threshold for the data size.
+        # Indicates whether the fluctuation threshold for the size of the table is enabled.
         self.enable_data_size_fluctuation_threshold = enable_data_size_fluctuation_threshold
-        # Specifies whether to enable the fluctuation threshold for the row count.
+        # Indicates whether the fluctuation threshold for the row count of the table is enabled.
         self.enable_row_count_fluctuation_threshold = enable_row_count_fluctuation_threshold
-        # A list of fields.
+        # The list of fields.
         self.fields = fields
-        # The creation time.
+        # The creation time. The time is displayed in ISO 8601 format and includes the time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The modification time.
+        # The update time. The time is displayed in ISO 8601 format and includes the time zone offset.
         self.gmt_modified_time = gmt_modified_time
-        # The index effective time.
+        # The effective period of the index. The time is displayed in ISO 8601 format and includes the time zone offset.
         self.index_effective_time = index_effective_time
         # The index version ID.
         self.index_version_id = index_version_id
-        # The maximum data size fluctuation threshold.
+        # The maximum fluctuation threshold for the size of the table.
         self.max_data_size_fluctuation_threshold = max_data_size_fluctuation_threshold
-        # The maximum row count fluctuation threshold.
+        # The maximum fluctuation threshold for the row count of the table.
         self.max_row_count_fluctuation_threshold = max_row_count_fluctuation_threshold
-        # The MaxCompute project name.
+        # The name of the MaxCompute project.
         self.maxcompute_project_name = maxcompute_project_name
         # The MaxCompute schema.
         self.maxcompute_schema = maxcompute_schema
-        # The MaxCompute table name.
+        # The name of the table in MaxCompute.
         self.maxcompute_table_name = maxcompute_table_name
-        # The minimum data size fluctuation threshold.
+        # The minimum fluctuation threshold for the size of the table.
         self.min_data_size_fluctuation_threshold = min_data_size_fluctuation_threshold
-        # The minimum row count fluctuation threshold.
+        # The minimum fluctuation threshold for the row count of the table.
         self.min_row_count_fluctuation_threshold = min_row_count_fluctuation_threshold
-        # The data table name.
+        # The table name.
         self.name = name
-        # The partition fields.
+        # The partition fields of the table.
         self.partition_fields = partition_fields
-        # The data table ID.
+        # The table ID.
         self.recall_management_table_id = recall_management_table_id
-        # The recall type.
+        # The recall type of the table.
         self.recall_type = recall_type
         # The request ID.
         self.request_id = request_id
@@ -259,13 +259,13 @@ class GetRecallManagementTableResponseBodyFields(DaraModel):
         vector_dimension: int = None,
         vector_metric_type: str = None,
     ):
-        # A list of field attributes.
+        # The list of attributes for the field.
         self.attributes = attributes
         # The field name.
         self.name = name
         # The field type.
         self.type = type
-        # The vector dimension.
+        # The vector dimensions.
         self.vector_dimension = vector_dimension
         # The vector metric type.
         self.vector_metric_type = vector_metric_type

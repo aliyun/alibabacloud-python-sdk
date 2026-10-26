@@ -28,61 +28,53 @@ class GetABMetricResponseBody(DaraModel):
         table_meta_id: str = None,
         type: str = None,
     ):
-        # Specifies whether to aggregate metrics by user.
+        # Indicates whether to calculate significance by user dimension. Two aggregation logics are available: by user and by sample.
         self.aggregation_by_user = aggregation_by_user
-        # The metric definition.
+        # The definition of the metric.
         self.definition = definition
-        # The denominator of the derived metric formula.
+        # The denominator used for significance calculation.
         self.denominator = denominator
-        # The metric description.
+        # The description of the metric.
         self.description = description
-        # Specifies whether the metric follows a binomial distribution. This affects how significance is calculated.
+        # Indicates whether the metric follows a binomial distribution when the metric type is derived. If yes, the mean and variance of the metric are calculated based on the binomial distribution.
         self.is_binomial_distribution = is_binomial_distribution
-        # The ID of the left operand metric for a derived metric.
+        # The ID of the left metric for the derived metric.
         self.left_metric_id = left_metric_id
-        # The metric name.
+        # The name of the metric.
         self.name = name
-        # Specifies whether significance testing is required for this metric.
+        # Indicates whether to calculate significance.
         self.need_significance = need_significance
-        # The numerator of the derived metric formula.
+        # The numerator used for significance calculation.
         self.numerator = numerator
-        # The operator for the derived metric. Valid values:
-        # 
-        # - `Plus`: addition
-        # 
-        # - `Minus`: subtraction
-        # 
-        # - `Multiplication`: multiplication
-        # 
-        # - `Division`: division
+        # The operator used to calculate the derived metric. Valid values:
+        # - Plus: addition
+        # - Minus: subtraction
+        # - Multiplication: multiplication
+        # - Division: division
         self.operator = operator
-        # Specifies whether the metric is real-time. Valid values:
-        # 
-        # - `true`: The metric is real-time.
-        # 
-        # - `false`: The metric is not real-time.
+        # Indicates whether the metric is a real-time metric. Valid values:
+        # - true: yes
+        # - false: no
         self.realtime = realtime
         # The request ID.
         self.request_id = request_id
-        # The ID of the data source for the results table.
+        # The ID of the data source for the write-back data table.
         self.result_resource_id = result_resource_id
-        # The ID of the results table.
+        # The ID of the data table to which data is written back.
         self.result_table_meta_id = result_table_meta_id
-        # The ID of the right operand metric for a derived metric.
+        # The ID of the right metric for the derived metric.
         self.right_metric_id = right_metric_id
-        # The scene ID.
+        # The scenario ID.
         self.scene_id = scene_id
-        # The scene name.
+        # The name of the scenario.
         self.scene_name = scene_name
-        # The statistics cycle.
+        # The statistical period.
         self.statistics_cycle = statistics_cycle
-        # The ID of the source table.
+        # The ID of the source data table.
         self.table_meta_id = table_meta_id
-        # The type of the metric. Valid values:
-        # 
-        # - `Single`: a single metric.
-        # 
-        # - `Derived`: a derived metric.
+        # The metric type. Valid values:
+        # - Single: single metric
+        # - Derived: derived metric
         self.type = type
 
     def validate(self):

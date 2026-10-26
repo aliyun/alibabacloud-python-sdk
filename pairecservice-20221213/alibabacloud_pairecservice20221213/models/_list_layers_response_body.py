@@ -14,11 +14,11 @@ class ListLayersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array of layers.
+        # The list of layers.
         self.layers = layers
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The total count of layers.
+        # The total number of elements in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -74,7 +74,7 @@ class ListLayersResponseBodyLayers(DaraModel):
     ):
         # The layer description.
         self.description = description
-        # The time when the layer was created.
+        # The creation time in ISO 8601 format, using Z to indicate the UTC time zone.
         self.gmt_create_time = gmt_create_time
         # The laboratory ID.
         self.laboratory_id = laboratory_id
@@ -82,7 +82,7 @@ class ListLayersResponseBodyLayers(DaraModel):
         self.layer_id = layer_id
         # The layer name.
         self.name = name
-        # The remaining traffic for the layer.
+        # The remaining traffic for the current experimental layer.
         self.residual_flow = residual_flow
         # The scene ID.
         self.scene_id = scene_id

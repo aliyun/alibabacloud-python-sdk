@@ -14,7 +14,7 @@ class ListFeatureConsistencyCheckJobConfigsRequest(DaraModel):
         scene_id: str = None,
         sort_by: str = None,
     ):
-        # The instance ID. For information about how to obtain an instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # The ID of the instance. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -22,13 +22,13 @@ class ListFeatureConsistencyCheckJobConfigsRequest(DaraModel):
         # - ASC: ascending order.
         # - DESC: descending order.
         self.order = order
-        # The page number. Minimum value: 1. Default value: 1.
+        # The page number. Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The scene ID.
         self.scene_id = scene_id
-        # The field used to sort the results. Valid values:
+        # The sort field. Valid values:
         # - GmtCreateTime: sorts by creation time.
         # - GmtModifiedTime: sorts by update time.
         self.sort_by = sort_by

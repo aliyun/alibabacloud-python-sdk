@@ -14,27 +14,27 @@ class ListTableMetasRequest(DaraModel):
         page_size: int = None,
         type: str = None,
     ):
-        # The instance ID. You can get this ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # The instance ID. You can obtain the instance ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The module of the data table. Valid values:
+        # The module of the data table.
         # 
-        # - ABTest: A/B testing data tables
+        # - ABTest: Experiment data tables
         # 
-        # - ExperimentTool: experiment tool tables
+        # - ExperimentTool: Experiment tool tables
         # 
-        # - DataDiagnosis: data diagnosis tables
+        # - DataDiagnosis: Data diagnosis
         # 
         # This parameter is required.
         self.module = module
-        # The table name to filter on.
+        # The table name filter.
         self.name = name
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The page size.
         self.page_size = page_size
-        # The type of the data table. Valid values:
+        # The type of the data table.
         # 
         # - MaxCompute
         # 

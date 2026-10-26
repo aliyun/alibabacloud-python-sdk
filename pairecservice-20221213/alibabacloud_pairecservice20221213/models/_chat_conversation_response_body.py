@@ -33,7 +33,7 @@ class ChatConversationResponseBody(DaraModel):
         self.event = event
         # The function name.
         self.func = func
-        # The creation time.
+        # The creation time. The format is ISO 8601, including the time zone offset.
         self.gmt_create_time = gmt_create_time
         # The message ID.
         self.message_id = message_id

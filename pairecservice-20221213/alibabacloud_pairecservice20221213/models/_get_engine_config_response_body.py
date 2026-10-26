@@ -24,31 +24,27 @@ class GetEngineConfigResponseBody(DaraModel):
         # The description.
         self.description = description
         # The runtime environment. Valid values:
-        # 
-        # - Daily: daily environment.
-        # 
-        # - Pre: staging environment.
-        # 
-        # - Prod: production environment.
+        # - Daily: daily environment
+        # - Pre: staging environment
+        # - Prod: production environment
         self.environment = environment
-        # The creation time.
+        # The creation time. The time is in ISO 8601 format, where Z indicates the UTC time zone.
         self.gmt_create_time = gmt_create_time
-        # The update time.
+        # The update time. The time is in ISO 8601 format, where Z indicates the UTC time zone.
         self.gmt_modified_time = gmt_modified_time
-        # The publish time.
+        # The release time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.gmt_released_time = gmt_released_time
-        # The engine configuration name.
+        # The name of the engine configuration.
         self.name = name
         # The request ID.
         self.request_id = request_id
+        # The scenario.
         self.scene_id = scene_id
         # The status. Valid values:
-        # 
-        # - Released: published.
-        # 
-        # - UnReleased: not published.
+        # - Released: released
+        # - UnReleased: unreleased
         self.status = status
-        # The engine configuration type.
+        # The type of the engine configuration.
         self.type = type
 
     def validate(self):

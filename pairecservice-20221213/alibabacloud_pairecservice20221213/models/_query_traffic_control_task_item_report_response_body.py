@@ -15,7 +15,7 @@ class QueryTrafficControlTaskItemReportResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # An array of item control reports.
+        # The list of item-level traffic control reports.
         self.traffic_control_task_item_reports = traffic_control_task_item_reports
 
     def validate(self):
@@ -66,21 +66,21 @@ class QueryTrafficControlTaskItemReportResponseBodyTrafficControlTaskItemReports
         traffic_control_target_id: str = None,
         traffic_control_target_name: str = None,
     ):
-        # The actual number of controlled items.
+        # The actual number of items that were traffic-controlled.
         self.actual_item_control_num = actual_item_control_num
-        # The actual traffic of controlled items.
+        # The actual traffic volume for items that were traffic-controlled.
         self.actual_item_control_traffic = actual_item_control_traffic
-        # The number of items that reached the control target.
+        # The number of items that have reached the traffic control target.
         self.done_item_control_num = done_item_control_num
-        # The number of items that reached the control target, as a percentage of the expected number of controlled items.
+        # The percentage of items that have reached the traffic control target.
         self.done_item_control_percentage = done_item_control_percentage
-        # The actual number of controlled items as a percentage of the expected number.
+        # The percentage of traffic-controlled items by count.
         self.item_control_num_percentage = item_control_num_percentage
-        # The actual traffic from controlled items as a percentage of the expected traffic.
+        # The percentage of traffic-controlled items by traffic volume.
         self.item_control_traffic_percentage = item_control_traffic_percentage
-        # The expected number of controlled items.
+        # The expected number of items to be traffic-controlled.
         self.ought_item_control_num = ought_item_control_num
-        # The expected traffic of controlled items.
+        # The expected traffic volume for items to be traffic-controlled.
         self.ought_item_control_traffic = ought_item_control_traffic
         # The ID of the traffic control target.
         self.traffic_control_target_id = traffic_control_target_id

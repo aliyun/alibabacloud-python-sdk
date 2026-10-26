@@ -16,23 +16,25 @@ class ListRecallManagementServicesRequest(DaraModel):
         page_size: int = None,
         sort_by: str = None,
     ):
-        # The instance ID.
+        # **The instance ID.**
         self.instance_id = instance_id
-        # This parameter is not currently in effect.
+        # This parameter does not take effect.
         self.max_results = max_results
-        # Filters results by name.
+        # Filters the results by name.
         self.name = name
-        # This parameter is not currently in effect.
+        # This parameter does not take effect.
         self.next_token = next_token
-        # The sort order. Valid values:  
+        # **The sort order.**  
+        # Valid values:
         # - ASC: ascending order.
         # - DESC: descending order.
         self.order = order
-        # The page number.
+        # **The page number.**
         self.page_number = page_number
-        # The page size.
+        # **The page size.**
         self.page_size = page_size
-        # The sorting field. Valid values:  
+        # **The sort field.**  
+        # Valid values:
         # - GmtCreateTime: creation time.
         # - GmtModifiedTime: update time.
         self.sort_by = sort_by

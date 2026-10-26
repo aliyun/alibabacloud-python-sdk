@@ -12,11 +12,14 @@ class QueryTrafficControlTaskItemReportRequest(DaraModel):
         instance_id: str = None,
         start_time: str = None,
     ):
-        # The end time.
+        # The end time. The format is YYYY-MM-DD HH:mm:ss.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The execution environment for the task. Valid values: Daily (development environment), Pre (staging environment), Prod (production environment).
+        # The environment to which the task belongs. Valid values:
+        # - Daily: daily environment
+        # - Pre: pre-release environment
+        # - Prod: production environment
         # 
         # This parameter is required.
         self.environment = environment
@@ -24,7 +27,7 @@ class QueryTrafficControlTaskItemReportRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The start time.
+        # The start time. The format is YYYY-MM-DD HH:mm:ss.
         # 
         # This parameter is required.
         self.start_time = start_time

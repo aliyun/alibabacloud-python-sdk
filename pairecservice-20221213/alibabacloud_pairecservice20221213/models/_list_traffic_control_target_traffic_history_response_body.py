@@ -16,9 +16,9 @@ class ListTrafficControlTargetTrafficHistoryResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The total count of historical records.
+        # The total number of entries.
         self.total_count = total_count
-        # A list of the traffic control history records.
+        # The traffic control history records.
         self.traffic_control_task_traffic_histories = traffic_control_task_traffic_histories
 
     def validate(self):
@@ -75,9 +75,9 @@ class ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTraffi
         self.experiment_id = experiment_id
         # The ID of the item.
         self.item_id = item_id
-        # The timestamp of the record.
+        # The time in the behavior table, up to the current time. The format is YYYY-MM-DD HH:mm:ss.
         self.record_time = record_time
-        # The intended traffic for the traffic control target.
+        # The target traffic of the traffic control target.
         self.traffic_control_target_aim_traffic = traffic_control_target_aim_traffic
         # The actual traffic of the traffic control target.
         self.traffic_control_target_traffic = traffic_control_target_traffic

@@ -25,41 +25,40 @@ class GetInstanceResponseBody(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The billing type of the instance. Currently, only Subscription (prepayment) is supported.
+        # The billing method of the instance. Only subscription is supported.
         self.charge_type = charge_type
         # The commodity code of the instance.
         self.commodity_code = commodity_code
-        # The instance configuration.
+        # The configuration of the instance.
         self.config = config
-        # The time when the instance expires.
+        # The time when the instance expires. The time is displayed in UTC and follows the ISO 8601 standard.
         self.expired_time = expired_time
+        # The Feature Store information.
         self.feature_store_info = feature_store_info
-        # The time when the instance was created.
+        # The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
-        # The time when the instance was last updated.
+        # The time when the instance was updated. The time is displayed in UTC and follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The configuration of the operations tool.
+        # The configurations of the operations tool.
         self.operating_tool = operating_tool
+        # The recommendation customization configurations.
         self.recommend_customization = recommend_customization
         # The region ID. Valid values:
-        # 
-        # - cn-shenzhen: China (Shenzhen).
-        # - cn-hangzhou: China (Hangzhou).
-        # - cn-beijing: China (Beijing).
-        # - cn-shanghai: China (Shanghai).
+        # - cn-shenzhen: Shenzhen.
+        # - cn-hangzhou: Hangzhou.
+        # - cn-beijing: Beijing.
+        # - cn-shanghai: Shanghai.
         self.region_id = region_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The instance status. Valid values:
-        # 
-        # - Initializing: The instance is being initialized.
-        # - Stopped: The instance is stopped.
-        # - Running: The instance is running.
+        # - Initializing: Initializing.
+        # - Stopped: Stopped.
+        # - Running: Running.
         self.status = status
         # The instance type. Valid values:
-        # 
         # - basic: Basic Edition.
         # - highleve: Upgraded Edition.
         # - advance: Advanced Edition.
@@ -180,6 +179,7 @@ class GetInstanceResponseBodyRecommendCustomization(DaraModel):
         self,
         is_enable: bool = None,
     ):
+        # Specifies whether recommendation customization is enabled.
         self.is_enable = is_enable
 
     def validate(self):
@@ -207,10 +207,9 @@ class GetInstanceResponseBodyOperatingTool(DaraModel):
         self,
         is_enable: bool = None,
     ):
-        # Indicates whether the operations tool is enabled for the instance. Valid values:
-        # 
+        # Specifies whether the operations tool is enabled for the instance. Valid values:
         # - True: Enabled.
-        # - False: Not enabled.
+        # - False: Disabled.
         self.is_enable = is_enable
 
     def validate(self):
@@ -239,7 +238,9 @@ class GetInstanceResponseBodyFeatureStoreInfo(DaraModel):
         feature_dbstatus: str = None,
         instance_id: str = None,
     ):
+        # The status of FeatureDB.
         self.feature_dbstatus = feature_dbstatus
+        # The ID of the Feature Store instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -275,11 +276,11 @@ class GetInstanceResponseBodyConfig(DaraModel):
         engines: List[main_models.GetInstanceResponseBodyConfigEngines] = None,
         monitors: List[main_models.GetInstanceResponseBodyConfigMonitors] = None,
     ):
-        # The list of modeling environments.
+        # The modeling environments.
         self.data_managements = data_managements
-        # The list of service engines.
+        # The service engines.
         self.engines = engines
-        # The list of supporting features.
+        # The supporting features.
         self.monitors = monitors
 
     def validate(self):
@@ -347,11 +348,11 @@ class GetInstanceResponseBodyConfigMonitors(DaraModel):
         meta: Dict[str, Any] = None,
         type: str = None,
     ):
-        # The component code.
+        # The code of the component.
         self.component_code = component_code
         # The metadata.
         self.meta = meta
-        # The component type.
+        # The type of the component.
         self.type = type
 
     def validate(self):
@@ -393,11 +394,11 @@ class GetInstanceResponseBodyConfigEngines(DaraModel):
         meta: Dict[str, Any] = None,
         type: str = None,
     ):
-        # The component code.
+        # The code of the component.
         self.component_code = component_code
         # The metadata.
         self.meta = meta
-        # The component type.
+        # The type of the component.
         self.type = type
 
     def validate(self):
@@ -439,11 +440,11 @@ class GetInstanceResponseBodyConfigDataManagements(DaraModel):
         meta: Dict[str, Any] = None,
         type: str = None,
     ):
-        # The component code.
+        # The code of the component.
         self.component_code = component_code
         # The metadata.
         self.meta = meta
-        # The component type.
+        # The type of the component.
         self.type = type
 
     def validate(self):

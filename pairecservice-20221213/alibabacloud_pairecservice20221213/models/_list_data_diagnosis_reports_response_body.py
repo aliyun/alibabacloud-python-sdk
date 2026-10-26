@@ -19,31 +19,31 @@ class ListDataDiagnosisReportsResponseBody(DaraModel):
         request_id: str = None,
         type: str = None,
     ):
-        # The exception report list.
+        # The list of exception reports.
         self.exception_rate = exception_rate
-        # Reports for the abnormal behavior analysis task.
+        # The list of diagnostic reports for abnormal behavior analysis diagnosis nodes.
         self.reports_of_abnormal_behavior = reports_of_abnormal_behavior
-        # Reports for the basic statistical analysis task.
+        # The list of diagnostic reports for basic statistics analysis diagnosis nodes.
         self.reports_of_base_statistics = reports_of_base_statistics
-        # Reports for the item/user change rate analysis task.
+        # The list of diagnostic reports for item/user change rate analysis diagnosis nodes.
         self.reports_of_change_rate_data = reports_of_change_rate_data
-        # Reports for the table join analysis task.
+        # The list of diagnostic reports for join table associate analysis diagnosis nodes.
         self.reports_of_join_tables = reports_of_join_tables
-        # Reports for the user preference statistics cycle analysis task.
+        # The list of diagnostic reports for user preference statistical period analysis diagnosis nodes.
         self.reports_of_preference_statistics_cycle = reports_of_preference_statistics_cycle
         # The request ID.
         self.request_id = request_id
-        # The data diagnosis task type. Valid values:
+        # The data diagnosis node type.
         # 
-        # - `ChangeRate`: item/user change rate analysis.
+        # - ChangeRate: item/user change rate analysis.
         # 
-        # - `PreferenceStatisticsCycle`: user preference statistics cycle analysis.
+        # - PreferenceStatisticsCycle: user preference statistical period analysis.
         # 
-        # - `JoinTables`: table join analysis.
+        # - JoinTables: join table associate analysis.
         # 
-        # - `BaseStatistics`: basic statistical analysis.
+        # - BaseStatistics: basic statistics analysis.
         # 
-        # - `AbnormalBehavior`: abnormal behavior analysis.
+        # - AbnormalBehavior: abnormal behavior analysis.
         self.type = type
 
     def validate(self):
@@ -209,9 +209,9 @@ class ListDataDiagnosisReportsResponseBodyReportsOfPreferenceStatisticsCycle(Dar
         period_remain_count: int = None,
         period_internal: int = None,
     ):
-        # The periodic user retention rate.
+        # The cycle retention rate of users.
         self.cycle_remain_rate = cycle_remain_rate
-        # The daily user retention rate.
+        # The single-day retention rate of users.
         self.single_remain_rate = single_remain_rate
         # The date.
         self.ds = ds
@@ -219,13 +219,13 @@ class ListDataDiagnosisReportsResponseBodyReportsOfPreferenceStatisticsCycle(Dar
         self.days = days
         # The k-day ever-appeared rate.
         self.ever_appeared_rate = ever_appeared_rate
-        # The statistical period.
+        # The statistical period for the cycle retention rate.
         self.period = period
-        # The periodic retention rate.
+        # The cycle retention rate.
         self.period_remain_rate = period_remain_rate
-        # The periodic retention count.
+        # The number of users retained within the cycle.
         self.period_remain_count = period_remain_count
-        # The number of period intervals.
+        # The number of cycle intervals.
         self.period_internal = period_internal
 
     def validate(self):
@@ -316,17 +316,17 @@ class ListDataDiagnosisReportsResponseBodyReportsOfJoinTables(DaraModel):
         self.ds = ds
         # The join field.
         self.join_field = join_field
-        # The left table join exception rate.
+        # The join exception rate of the left table.
         self.left_except_rate = left_except_rate
-        # The right table join exception rate.
+        # The join exception rate of the right table.
         self.right_except_rate = right_except_rate
-        # A flag that indicates the type of change.
+        # The report flag.
         self.flag = flag
         # The feature name.
         self.feature_name = feature_name
         # The feature value.
         self.feature_value = feature_value
-        # The feature percentage.
+        # The percentage of the feature.
         self.percent = percent
         # The quantile.
         self.quantile = quantile
@@ -433,11 +433,11 @@ class ListDataDiagnosisReportsResponseBodyReportsOfChangeRateData(DaraModel):
     ):
         # The date.
         self.ds = ds
-        # A flag that indicates the type of change.
+        # The report flag.
         self.flag = flag
-        # The item/user change count.
+        # The number of changed items or users.
         self.change_count = change_count
-        # The item/user change rate.
+        # The change rate of items or users.
         self.change_rate = change_rate
 
     def validate(self):
@@ -520,9 +520,9 @@ class ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics(DaraModel):
         frequency_percent: str = None,
         frequency_quantile: str = None,
     ):
-        # The equivalent null count. This refers to the count of specific characters, such as `\\N`, that are treated as null values.
+        # The equivalent null value count.
         self.default_null_count = default_null_count
-        # The equivalent null rate.
+        # The equivalent null value rate.
         self.default_null_rate = default_null_rate
         # The date.
         self.ds = ds
@@ -530,55 +530,55 @@ class ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics(DaraModel):
         self.feature_name = feature_name
         # The feature type.
         self.feature_type = feature_type
-        # The null count.
+        # The null value count.
         self.null_count = null_count
-        # The null rate.
+        # The null value rate.
         self.null_rate = null_rate
-        # The total number of entries.
+        # The total number of data records.
         self.total_count = total_count
         # The number of unique values.
         self.unique_count = unique_count
-        # The maximum value.
+        # The maximum value of the field.
         self.value_max = value_max
-        # The median value.
+        # The median value of the field.
         self.value_median = value_median
-        # The minimum value.
+        # The minimum value of the field.
         self.value_min = value_min
-        # The 1st percentile value.
+        # The 1st percentile of the field values.
         self.value_quantile_1 = value_quantile_1
-        # The 5th percentile value.
+        # The 5th percentile of the field values.
         self.value_quantile_5 = value_quantile_5
-        # The 25th percentile value.
+        # The 25th percentile of the field values.
         self.value_quantile_25 = value_quantile_25
-        # The 75th percentile value.
+        # The 75th percentile of the field values.
         self.value_quantile_75 = value_quantile_75
-        # The 95th percentile value.
+        # The 95th percentile of the field values.
         self.value_quantile_95 = value_quantile_95
-        # The 99th percentile value.
+        # The 99th percentile of the field values.
         self.value_quantile_99 = value_quantile_99
-        # The rank.
+        # The rank position.
         self.rn = rn
-        # The maximum frequency.
+        # The maximum frequency of the field values.
         self.frequency_max = frequency_max
-        # The median frequency.
+        # The median frequency of the field values.
         self.frequency_median = frequency_median
-        # The minimum frequency.
+        # The minimum frequency of the field values.
         self.frequency_min = frequency_min
-        # The 1st frequency percentile.
+        # The 1st percentile of the field value frequencies.
         self.frequency_quantile_1 = frequency_quantile_1
-        # The 5th frequency percentile.
+        # The 5th percentile of the field value frequencies.
         self.frequency_quantile_5 = frequency_quantile_5
-        # The 25th frequency percentile.
+        # The 25th percentile of the field value frequencies.
         self.frequency_quantile_25 = frequency_quantile_25
-        # The 75th frequency percentile.
+        # The 75th percentile of the field value frequencies.
         self.frequency_quantile_75 = frequency_quantile_75
-        # The 95th frequency percentile.
+        # The 95th percentile of the field value frequencies.
         self.frequency_quantile_95 = frequency_quantile_95
-        # The 99th frequency percentile.
+        # The 99th percentile of the field value frequencies.
         self.frequency_quantile_99 = frequency_quantile_99
         # The feature distribution.
         self.distribution = distribution
-        # The rank of the statistical indicator.
+        # The rank of the statistical metric.
         self.rank_id = rank_id
         # The feature value.
         self.feature_value = feature_value
@@ -588,13 +588,13 @@ class ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics(DaraModel):
         self.value_percent = value_percent
         # The value quantile.
         self.value_quantile = value_quantile
-        # The frequency of the feature value.
+        # The frequency of feature values.
         self.feature_frequency = feature_frequency
-        # The number of feature values with this frequency.
+        # The count of feature value frequencies.
         self.frequency_count = frequency_count
-        # The percentage of feature values with this frequency.
+        # The percentage of feature value frequencies.
         self.frequency_percent = frequency_percent
-        # The percentile of the frequency of field values.
+        # The quantile of the field value frequencies.
         self.frequency_quantile = frequency_quantile
 
     def validate(self):
@@ -857,25 +857,25 @@ class ListDataDiagnosisReportsResponseBodyReportsOfAbnormalBehavior(DaraModel):
     ):
         # The date.
         self.ds = ds
-        # The rank.
+        # The rank of the statistical metric.
         self.rank_id = rank_id
         # The conversion rate from upstream behavior to downstream behavior.
         self.conversion_rate = conversion_rate
-        # The ID corresponding to the statistical granularity.
+        # The ID corresponding to the statistical granularity of the conversion rate.
         self.conversion_rate_ids = conversion_rate_ids
-        # The count of downstream behaviors.
+        # The downstream behavior count.
         self.down_stream_count = down_stream_count
-        # The ID corresponding to the granularity of the downstream behavior.
+        # The ID corresponding to the statistical granularity of the downstream behavior.
         self.down_stream_count_ids = down_stream_count_ids
         # The statistical granularity.
         self.granularity = granularity
-        # The count of upstream behaviors.
+        # The upstream behavior count.
         self.up_stream_count = up_stream_count
-        # The ID corresponding to the granularity of the upstream behavior.
+        # The ID corresponding to the statistical granularity of the upstream behavior.
         self.up_stream_count_ids = up_stream_count_ids
         # The feature distribution.
         self.distribution = distribution
-        # The indicator name.
+        # The name of the statistical metric.
         self.indicator_name = indicator_name
         # The exception rate.
         self.exception_rate = exception_rate
@@ -977,7 +977,7 @@ class ListDataDiagnosisReportsResponseBodyExceptionRate(DaraModel):
         self.group = group
         # The exception message.
         self.message = message
-        # The type or level of the exception.
+        # The exception type or severity level.
         self.type = type
 
     def validate(self):

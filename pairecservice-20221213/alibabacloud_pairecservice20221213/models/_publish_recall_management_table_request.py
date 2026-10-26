@@ -14,21 +14,23 @@ class PublishRecallManagementTableRequest(DaraModel):
         partition: Dict[str, str] = None,
         partitions: Dict[str, str] = None,
         skip_threshold_check: bool = None,
+        start_timestamp_ms: int = None,
     ):
         # **The instance ID.**
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # **The synchronization mode.** Valid values:
-        # 
-        # - `Merge`: Adds new data and updates existing data.
+        # **The enumeration value for the table synchronization mode**:
+        # - `Merge`: Merge.
         self.mode = mode
-        # The table partitions to publish.
+        # The partition of the table to be published.
         self.partition = partition
-        # The table partitions to publish.
+        # The partition of the table to be published.
         self.partitions = partitions
-        # **Specifies whether to skip the threshold check during table synchronization.**
+        # **Specifies whether to skip the threshold check when synchronizing the table.**
         self.skip_threshold_check = skip_threshold_check
+        # The start time of incremental data playback (UNIX milliseconds).
+        self.start_timestamp_ms = start_timestamp_ms
 
     def validate(self):
         pass
@@ -53,6 +55,9 @@ class PublishRecallManagementTableRequest(DaraModel):
         if self.skip_threshold_check is not None:
             result['SkipThresholdCheck'] = self.skip_threshold_check
 
+        if self.start_timestamp_ms is not None:
+            result['StartTimestampMs'] = self.start_timestamp_ms
+
         return result
 
     def from_map(self, m: dict = None):
@@ -71,6 +76,9 @@ class PublishRecallManagementTableRequest(DaraModel):
 
         if m.get('SkipThresholdCheck') is not None:
             self.skip_threshold_check = m.get('SkipThresholdCheck')
+
+        if m.get('StartTimestampMs') is not None:
+            self.start_timestamp_ms = m.get('StartTimestampMs')
 
         return self
 

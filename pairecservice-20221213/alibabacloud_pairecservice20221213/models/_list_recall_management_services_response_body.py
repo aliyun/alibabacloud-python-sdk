@@ -16,11 +16,11 @@ class ListRecallManagementServicesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # This parameter is not currently in effect.
+        # This parameter does not take effect.
         self.max_results = max_results
-        # This parameter is not currently in effect.
+        # This parameter does not take effect.
         self.next_token = next_token
-        # The list of recall management services.
+        # The recall management services.
         self.recall_management_services = recall_management_services
         # The request ID.
         self.request_id = request_id
@@ -91,17 +91,17 @@ class ListRecallManagementServicesResponseBodyRecallManagementServices(DaraModel
         recall_management_service_id: str = None,
         status: str = None,
     ):
-        # The ID of the currently active recall management service version.
+        # The ID of the active recall management service version.
         self.current_recall_management_service_version_id = current_recall_management_service_version_id
-        # The name of the currently active recall management service version.
+        # The name of the active recall management service version.
         self.current_recall_management_service_version_name = current_recall_management_service_version_name
         # The description of the recall management service.
         self.description = description
-        # The creation time.
+        # The creation time in ISO 8601 format, including the time zone offset.
         self.gmt_create_time = gmt_create_time
-        # The update time.
+        # The update time in ISO 8601 format, including the time zone offset.
         self.gmt_modified_time = gmt_modified_time
-        # The service name of the recall management service.
+        # The name of the recall management service.
         self.name = name
         # The ID of the recall management service.
         self.recall_management_service_id = recall_management_service_id

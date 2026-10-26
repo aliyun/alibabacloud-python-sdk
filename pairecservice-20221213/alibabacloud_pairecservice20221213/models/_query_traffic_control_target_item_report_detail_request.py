@@ -11,9 +11,12 @@ class QueryTrafficControlTargetItemReportDetailRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
-        # The report date.
+        # The date of the report. Format: YYYY-MM-DD.
         self.date = date
-        # The deployment environment. Valid values are Daily (daily environment), Pre (staging environment), and Prod (production environment).
+        # The environment. Valid values:
+        # - Daily: daily environment
+        # - Pre: staging environment
+        # - Prod: production environment
         # 
         # This parameter is required.
         self.environment = environment

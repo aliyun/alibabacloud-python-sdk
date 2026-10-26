@@ -16,27 +16,27 @@ class ListABMetricsRequest(DaraModel):
         table_meta_id: str = None,
         type: str = None,
     ):
-        # The instance ID. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain the ID.
+        # The instance ID. You can obtain the ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name to use for filtering metrics.
+        # The name filter.
         self.name = name
         # The page number.
         self.page_number = page_number
-        # The number of entries to return per page.
+        # The page size.
         self.page_size = page_size
-        # Specifies whether to filter for real-time metrics.
+        # Specifies whether to filter metrics by real-time type.
         self.realtime = realtime
-        # The scene ID. Call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain the ID.
+        # The scene ID. You can obtain the ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
         self.scene_id = scene_id
-        # The data table ID. Call the ListTableMetas operation to obtain the ID.
+        # The ID of the data table. You can obtain the ID by calling ListTableMetas.
         self.table_meta_id = table_meta_id
-        # The metric type. You can use this parameter to filter the results. Valid values:
+        # The metric type filter. Valid values:
         # 
-        # - `Single`: A single metric.
+        # - Single: Single metric.
         # 
-        # - `Derived`: A derived metric.
+        # - Derived: Derived metric.
         self.type = type
 
     def validate(self):

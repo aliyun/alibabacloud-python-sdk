@@ -10,11 +10,11 @@ class ListLayersRequest(DaraModel):
         instance_id: str = None,
         laboratory_id: str = None,
     ):
-        # The instance ID. You can obtain this ID by calling the ListInstances API.
+        # The instance ID. You can obtain this ID by calling the ListInstances operation.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The laboratory ID. You can obtain this ID by calling the ListLaboratories API.
+        # The laboratory ID. You can obtain this ID by calling the ListLaboratories operation.
         # 
         # This parameter is required.
         self.laboratory_id = laboratory_id

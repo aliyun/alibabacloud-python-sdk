@@ -14,11 +14,11 @@ class ListInstanceResourceTablesResponseBody(DaraModel):
         tables: List[main_models.ListInstanceResourceTablesResponseBodyTables] = None,
         total_count: str = None,
     ):
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # A list of data tables.
+        # The list of tables.
         self.tables = tables
-        # The total count of data tables.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

@@ -14,25 +14,21 @@ class ListInstancesRequest(DaraModel):
         sort_by: str = None,
         type: str = None,
     ):
-        # The ID of the instance. You can use this parameter to perform a fuzzy search for instances.
+        # The instance ID for fuzzy matching.
         self.instance_id = instance_id
-        # The sort order. Valid values: `Asc` (ascending) and `Desc` (descending).
+        # The sort order.
         self.order = order
-        # The number of entries per page.
+        # The page size.
         self.page_number = page_number
         # The page number.
         self.page_size = page_size
-        # The field by which to sort the results.
+        # The sort criterion.
         self.sort_by = sort_by
         # The instance type. Valid values:
-        # 
-        # - `basic`: Basic edition
-        # 
-        # - `high-level`: High-level edition
-        # 
-        # - `advanced`: Advanced edition
-        # 
-        # - `standard`: Standard edition
+        # - basic: Basic Edition.
+        # - highleve: Upgraded Edition.
+        # - advance: Advanced Edition.
+        # - standard: Standard Edition.
         self.type = type
 
     def validate(self):
