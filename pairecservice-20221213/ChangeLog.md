@@ -1,3 +1,6 @@
+2026-10-26 Version: 7.2.5
+- Generated python 2022-12-13 for PaiRecService.
+
 2026-10-26 Version: 7.1.5
 - Update API PublishRecallManagementTable: add request parameters body.StartTimestampMs.
 
