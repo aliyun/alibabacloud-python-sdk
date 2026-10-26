@@ -102,15 +102,27 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The name of the add-on.
+        # The addon name.
         self.addon_name = addon_name
         # The number of alert rules.
         self.alert_rule_count = alert_rule_count
         # The version number.
         self.api_version = api_version
         # The summary of installation phase conditions.
+        # 
+        # Type includes four values: Loaded (loads configurations), Installed (executes installation), Ready (performs a readiness check after installation), and UnInstalled (executes uninstallation). These four conditions theoretically occur in sequence.
+        # 
+        # Status. Valid values:
+        # - Unknown: The current phase is being executed.
+        # - True: The execution is ready.
+        # - False: The execution failed.
+        # 
+        # Complete status determination rules:
+        # If the Status of Loaded, Installed, or Ready is False, the installation fails. If the Status of Ready is True, the installation succeeds. In other cases, the installation is in progress.
+        # 
+        # If UnInstalled exists, an uninstallation is in progress. If Status is True, the uninstallation succeeds. If Status is Unknown, the uninstallation is in progress. If Status is False, the uninstallation fails.
         self.conditions = conditions
-        # The configuration information of the component.
+        # The component configuration information.
         self.config = config
         # The onboarding time.
         self.create_time = create_time
@@ -118,7 +130,7 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         self.dashboard_count = dashboard_count
         # The entity details.
         self.entity_rules = entity_rules
-        # The type of the environment.
+        # The environment type.
         self.env_type = env_type
         # The environment ID.
         self.environment_id = environment_id
@@ -142,19 +154,19 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         self.region_id = region_id
         # The release ID.
         self.release_id = release_id
-        # The name of the release.
+        # The release name.
         self.release_name = release_name
-        # The scenario of the component.
+        # The component scenario.
         self.scene = scene
         # The status.
         self.status = status
-        # The statistics information of sub-add-on releases.
+        # The statistics information of sub-addon releases.
         self.sub_addon_release = sub_addon_release
         # The update time.
         self.update_time = update_time
-        # The ID of the owning user.
+        # The ID of the owner user.
         self.user_id = user_id
-        # The version of the component.
+        # The component version.
         self.version = version
         # The workspace.
         self.workspace = workspace
@@ -401,15 +413,15 @@ class ListAddonReleasesResponseBodyReleasesConditions(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The time of the first transition.
+        # The first transition time.
         self.first_transition_time = first_transition_time
-        # The time of the last transition.
+        # The last transition time.
         self.last_transition_time = last_transition_time
-        # The detailed information.
+        # The details.
         self.message = message
-        # The status of the phase.
+        # The phase status.
         self.status = status
-        # The type of the phase.
+        # The phase type.
         self.type = type
 
     def validate(self):

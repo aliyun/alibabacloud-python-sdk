@@ -277,6 +277,9 @@ from ._create_service_record_response import CreateServiceRecordResponse
 from ._create_service_task_request import CreateServiceTaskRequest
 from ._create_service_task_response_body import CreateServiceTaskResponseBody
 from ._create_service_task_response import CreateServiceTaskResponse
+from ._create_subscription_request import CreateSubscriptionRequest
+from ._create_subscription_response_body import CreateSubscriptionResponseBody
+from ._create_subscription_response import CreateSubscriptionResponse
 from ._create_ticket_request import CreateTicketRequest
 from ._create_ticket_response_body import CreateTicketResponseBody
 from ._create_ticket_response import CreateTicketResponse
@@ -365,6 +368,9 @@ from ._delete_service_record_response import DeleteServiceRecordResponse
 from ._delete_service_task_request import DeleteServiceTaskRequest
 from ._delete_service_task_response_body import DeleteServiceTaskResponseBody
 from ._delete_service_task_response import DeleteServiceTaskResponse
+from ._delete_subscription_request import DeleteSubscriptionRequest
+from ._delete_subscription_response_body import DeleteSubscriptionResponseBody
+from ._delete_subscription_response import DeleteSubscriptionResponse
 from ._delete_umodel_request import DeleteUmodelRequest
 from ._delete_umodel_response_body import DeleteUmodelResponseBody
 from ._delete_umodel_response import DeleteUmodelResponse
@@ -390,12 +396,18 @@ from ._disable_maintain_window_response import DisableMaintainWindowResponse
 from ._disable_notify_policy_request import DisableNotifyPolicyRequest
 from ._disable_notify_policy_response_body import DisableNotifyPolicyResponseBody
 from ._disable_notify_policy_response import DisableNotifyPolicyResponse
+from ._disable_subscription_request import DisableSubscriptionRequest
+from ._disable_subscription_response_body import DisableSubscriptionResponseBody
+from ._disable_subscription_response import DisableSubscriptionResponse
 from ._enable_maintain_window_request import EnableMaintainWindowRequest
 from ._enable_maintain_window_response_body import EnableMaintainWindowResponseBody
 from ._enable_maintain_window_response import EnableMaintainWindowResponse
 from ._enable_notify_policy_request import EnableNotifyPolicyRequest
 from ._enable_notify_policy_response_body import EnableNotifyPolicyResponseBody
 from ._enable_notify_policy_response import EnableNotifyPolicyResponse
+from ._enable_subscription_request import EnableSubscriptionRequest
+from ._enable_subscription_response_body import EnableSubscriptionResponseBody
+from ._enable_subscription_response import EnableSubscriptionResponse
 from ._execute_query_request import ExecuteQueryRequest
 from ._execute_query_response_body import ExecuteQueryResponseBody
 from ._execute_query_response import ExecuteQueryResponse
@@ -494,6 +506,9 @@ from ._get_service_record_response import GetServiceRecordResponse
 from ._get_service_task_request import GetServiceTaskRequest
 from ._get_service_task_response_body import GetServiceTaskResponseBody
 from ._get_service_task_response import GetServiceTaskResponse
+from ._get_subscription_request import GetSubscriptionRequest
+from ._get_subscription_response_body import GetSubscriptionResponseBody
+from ._get_subscription_response import GetSubscriptionResponse
 from ._get_umodel_request import GetUmodelRequest
 from ._get_umodel_response_body import GetUmodelResponseBody
 from ._get_umodel_response import GetUmodelResponse
@@ -616,10 +631,16 @@ from ._list_services_request import ListServicesRequest
 from ._list_services_shrink_request import ListServicesShrinkRequest
 from ._list_services_response_body import ListServicesResponseBody
 from ._list_services_response import ListServicesResponse
+from ._list_subscriptions_request import ListSubscriptionsRequest
+from ._list_subscriptions_response_body import ListSubscriptionsResponseBody
+from ._list_subscriptions_response import ListSubscriptionsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_shrink_request import ListTagResourcesShrinkRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_user_notify_histories_request import ListUserNotifyHistoriesRequest
+from ._list_user_notify_histories_response_body import ListUserNotifyHistoriesResponseBody
+from ._list_user_notify_histories_response import ListUserNotifyHistoriesResponse
 from ._list_workspaces_request import ListWorkspacesRequest
 from ._list_workspaces_shrink_request import ListWorkspacesShrinkRequest
 from ._list_workspaces_response_body import ListWorkspacesResponseBody
@@ -1141,6 +1162,7 @@ from ._list_service_records_response_body import ListServiceRecordsResponseBodyR
 from ._list_services_request import ListServicesRequestTags
 from ._list_services_response_body import ListServicesResponseBodyServices
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_user_notify_histories_response_body import ListUserNotifyHistoriesResponseBodyHistoryList
 from ._list_workspaces_request import ListWorkspacesRequestTags
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesTags
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
@@ -1530,6 +1552,9 @@ __all__ = [
     CreateServiceTaskRequest,
     CreateServiceTaskResponseBody,
     CreateServiceTaskResponse,
+    CreateSubscriptionRequest,
+    CreateSubscriptionResponseBody,
+    CreateSubscriptionResponse,
     CreateTicketRequest,
     CreateTicketResponseBody,
     CreateTicketResponse,
@@ -1618,6 +1643,9 @@ __all__ = [
     DeleteServiceTaskRequest,
     DeleteServiceTaskResponseBody,
     DeleteServiceTaskResponse,
+    DeleteSubscriptionRequest,
+    DeleteSubscriptionResponseBody,
+    DeleteSubscriptionResponse,
     DeleteUmodelRequest,
     DeleteUmodelResponseBody,
     DeleteUmodelResponse,
@@ -1643,12 +1671,18 @@ __all__ = [
     DisableNotifyPolicyRequest,
     DisableNotifyPolicyResponseBody,
     DisableNotifyPolicyResponse,
+    DisableSubscriptionRequest,
+    DisableSubscriptionResponseBody,
+    DisableSubscriptionResponse,
     EnableMaintainWindowRequest,
     EnableMaintainWindowResponseBody,
     EnableMaintainWindowResponse,
     EnableNotifyPolicyRequest,
     EnableNotifyPolicyResponseBody,
     EnableNotifyPolicyResponse,
+    EnableSubscriptionRequest,
+    EnableSubscriptionResponseBody,
+    EnableSubscriptionResponse,
     ExecuteQueryRequest,
     ExecuteQueryResponseBody,
     ExecuteQueryResponse,
@@ -1747,6 +1781,9 @@ __all__ = [
     GetServiceTaskRequest,
     GetServiceTaskResponseBody,
     GetServiceTaskResponse,
+    GetSubscriptionRequest,
+    GetSubscriptionResponseBody,
+    GetSubscriptionResponse,
     GetUmodelRequest,
     GetUmodelResponseBody,
     GetUmodelResponse,
@@ -1869,10 +1906,16 @@ __all__ = [
     ListServicesShrinkRequest,
     ListServicesResponseBody,
     ListServicesResponse,
+    ListSubscriptionsRequest,
+    ListSubscriptionsResponseBody,
+    ListSubscriptionsResponse,
     ListTagResourcesRequest,
     ListTagResourcesShrinkRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ListUserNotifyHistoriesRequest,
+    ListUserNotifyHistoriesResponseBody,
+    ListUserNotifyHistoriesResponse,
     ListWorkspacesRequest,
     ListWorkspacesShrinkRequest,
     ListWorkspacesResponseBody,
@@ -2394,6 +2437,7 @@ __all__ = [
     ListServicesRequestTags,
     ListServicesResponseBodyServices,
     ListTagResourcesResponseBodyTagResources,
+    ListUserNotifyHistoriesResponseBodyHistoryList,
     ListWorkspacesRequestTags,
     ListWorkspacesResponseBodyWorkspacesTags,
     ListWorkspacesResponseBodyWorkspaces,

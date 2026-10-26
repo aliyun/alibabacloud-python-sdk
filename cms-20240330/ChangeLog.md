@@ -1,3 +1,13 @@
+2026-10-26 Version: 10.6.0
+- Support API CreateSubscription.
+- Support API DeleteSubscription.
+- Support API DisableSubscription.
+- Support API EnableSubscription.
+- Support API GetSubscription.
+- Support API ListSubscriptions.
+- Support API ListUserNotifyHistories.
+
+
 2026-10-26 Version: 10.5.6
 - Update API CreateAddonRelease: add request parameters body.apiVersion.
 - Update API CreateIntegrationPolicy: add request parameters body.apiVersion.

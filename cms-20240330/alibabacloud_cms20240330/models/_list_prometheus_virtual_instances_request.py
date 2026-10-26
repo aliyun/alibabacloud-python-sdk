@@ -16,7 +16,7 @@ class ListPrometheusVirtualInstancesRequest(DaraModel):
         self.max_results = max_results
         # The optional cloud services.
         self.namespace = namespace
-        # The next paging token for the paged query.
+        # The next token for the paging query.
         self.next_token = next_token
         # The tenant ID.
         self.tenant_id = tenant_id

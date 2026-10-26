@@ -2703,6 +2703,84 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_service_task_with_options_async(workspace, service_id, request, headers, runtime)
 
+    def create_subscription_with_options(
+        self,
+        request: main_models.CreateSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_subscription_with_options_async(
+        self,
+        request: main_models.CreateSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_subscription(
+        self,
+        request: main_models.CreateSubscriptionRequest,
+    ) -> main_models.CreateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_subscription_with_options(request, headers, runtime)
+
+    async def create_subscription_async(
+        self,
+        request: main_models.CreateSubscriptionRequest,
+    ) -> main_models.CreateSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_subscription_with_options_async(request, headers, runtime)
+
     def create_ticket_with_options(
         self,
         request: main_models.CreateTicketRequest,
@@ -4981,6 +5059,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_service_task_with_options_async(workspace, service_id, task_id, request, headers, runtime)
 
+    def delete_subscription_with_options(
+        self,
+        subscription_id: str,
+        request: main_models.DeleteSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions/{DaraURL.percent_encode(subscription_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_subscription_with_options_async(
+        self,
+        subscription_id: str,
+        request: main_models.DeleteSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions/{DaraURL.percent_encode(subscription_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_subscription(
+        self,
+        subscription_id: str,
+        request: main_models.DeleteSubscriptionRequest,
+    ) -> main_models.DeleteSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_subscription_with_options(subscription_id, request, headers, runtime)
+
+    async def delete_subscription_async(
+        self,
+        subscription_id: str,
+        request: main_models.DeleteSubscriptionRequest,
+    ) -> main_models.DeleteSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_subscription_with_options_async(subscription_id, request, headers, runtime)
+
     def delete_umodel_with_options(
         self,
         workspace: str,
@@ -5645,6 +5803,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.disable_notify_policy_with_options_async(uuid, request, headers, runtime)
 
+    def disable_subscription_with_options(
+        self,
+        subscription_id: str,
+        request: main_models.DisableSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions/{DaraURL.percent_encode(subscription_id)}/disable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_subscription_with_options_async(
+        self,
+        subscription_id: str,
+        request: main_models.DisableSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions/{DaraURL.percent_encode(subscription_id)}/disable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_subscription(
+        self,
+        subscription_id: str,
+        request: main_models.DisableSubscriptionRequest,
+    ) -> main_models.DisableSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.disable_subscription_with_options(subscription_id, request, headers, runtime)
+
+    async def disable_subscription_async(
+        self,
+        subscription_id: str,
+        request: main_models.DisableSubscriptionRequest,
+    ) -> main_models.DisableSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.disable_subscription_with_options_async(subscription_id, request, headers, runtime)
+
     def enable_maintain_window_with_options(
         self,
         maintain_window_id: str,
@@ -5804,6 +6042,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.enable_notify_policy_with_options_async(uuid, request, headers, runtime)
+
+    def enable_subscription_with_options(
+        self,
+        subscription_id: str,
+        request: main_models.EnableSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions/{DaraURL.percent_encode(subscription_id)}/enable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_subscription_with_options_async(
+        self,
+        subscription_id: str,
+        request: main_models.EnableSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions/{DaraURL.percent_encode(subscription_id)}/enable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_subscription(
+        self,
+        subscription_id: str,
+        request: main_models.EnableSubscriptionRequest,
+    ) -> main_models.EnableSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_subscription_with_options(subscription_id, request, headers, runtime)
+
+    async def enable_subscription_async(
+        self,
+        subscription_id: str,
+        request: main_models.EnableSubscriptionRequest,
+    ) -> main_models.EnableSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_subscription_with_options_async(subscription_id, request, headers, runtime)
 
     def execute_query_with_options(
         self,
@@ -8460,6 +8778,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_service_task_with_options_async(workspace, service_id, task_id, request, headers, runtime)
+
+    def get_subscription_with_options(
+        self,
+        subscription_id: str,
+        request: main_models.GetSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions/{DaraURL.percent_encode(subscription_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_subscription_with_options_async(
+        self,
+        subscription_id: str,
+        request: main_models.GetSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSubscriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSubscription',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions/{DaraURL.percent_encode(subscription_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_subscription(
+        self,
+        subscription_id: str,
+        request: main_models.GetSubscriptionRequest,
+    ) -> main_models.GetSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_subscription_with_options(subscription_id, request, headers, runtime)
+
+    async def get_subscription_async(
+        self,
+        subscription_id: str,
+        request: main_models.GetSubscriptionRequest,
+    ) -> main_models.GetSubscriptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_subscription_with_options_async(subscription_id, request, headers, runtime)
 
     def get_umodel_with_options(
         self,
@@ -11957,6 +12355,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_services_with_options_async(workspace, request, headers, runtime)
 
+    def list_subscriptions_with_options(
+        self,
+        request: main_models.ListSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSubscriptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_uuid):
+            query['agentUuid'] = request.agent_uuid
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.enable):
+            query['enable'] = request.enable
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.notify_strategy_uuid):
+            query['notifyStrategyUuid'] = request.notify_strategy_uuid
+        if not DaraCore.is_null(request.order_by):
+            query['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.subscription_id):
+            query['subscriptionId'] = request.subscription_id
+        if not DaraCore.is_null(request.subscription_name):
+            query['subscriptionName'] = request.subscription_name
+        if not DaraCore.is_null(request.subscription_type):
+            query['subscriptionType'] = request.subscription_type
+        if not DaraCore.is_null(request.unbound):
+            query['unbound'] = request.unbound
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSubscriptions',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSubscriptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_subscriptions_with_options_async(
+        self,
+        request: main_models.ListSubscriptionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSubscriptionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_uuid):
+            query['agentUuid'] = request.agent_uuid
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.enable):
+            query['enable'] = request.enable
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.notify_strategy_uuid):
+            query['notifyStrategyUuid'] = request.notify_strategy_uuid
+        if not DaraCore.is_null(request.order_by):
+            query['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.subscription_id):
+            query['subscriptionId'] = request.subscription_id
+        if not DaraCore.is_null(request.subscription_name):
+            query['subscriptionName'] = request.subscription_name
+        if not DaraCore.is_null(request.subscription_type):
+            query['subscriptionType'] = request.subscription_type
+        if not DaraCore.is_null(request.unbound):
+            query['unbound'] = request.unbound
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSubscriptions',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/subscriptions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSubscriptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_subscriptions(
+        self,
+        request: main_models.ListSubscriptionsRequest,
+    ) -> main_models.ListSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_subscriptions_with_options(request, headers, runtime)
+
+    async def list_subscriptions_async(
+        self,
+        request: main_models.ListSubscriptionsRequest,
+    ) -> main_models.ListSubscriptionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_subscriptions_with_options_async(request, headers, runtime)
+
     def list_tag_resources_with_options(
         self,
         tmp_req: main_models.ListTagResourcesRequest,
@@ -12060,6 +12578,174 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
+
+    def list_user_notify_histories_with_options(
+        self,
+        request: main_models.ListUserNotifyHistoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserNotifyHistoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.batch_id):
+            query['batchId'] = request.batch_id
+        if not DaraCore.is_null(request.biz_source):
+            query['bizSource'] = request.biz_source
+        if not DaraCore.is_null(request.channel):
+            query['channel'] = request.channel
+        if not DaraCore.is_null(request.channel_category):
+            query['channelCategory'] = request.channel_category
+        if not DaraCore.is_null(request.from_):
+            query['from'] = request.from_
+        if not DaraCore.is_null(request.group):
+            query['group'] = request.group
+        if not DaraCore.is_null(request.incident_id):
+            query['incidentId'] = request.incident_id
+        if not DaraCore.is_null(request.include_no_channel):
+            query['includeNoChannel'] = request.include_no_channel
+        if not DaraCore.is_null(request.is_desc):
+            query['isDesc'] = request.is_desc
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.notify_strategy_id):
+            query['notifyStrategyId'] = request.notify_strategy_id
+        if not DaraCore.is_null(request.notify_strategy_name):
+            query['notifyStrategyName'] = request.notify_strategy_name
+        if not DaraCore.is_null(request.partition_key):
+            query['partitionKey'] = request.partition_key
+        if not DaraCore.is_null(request.receiver):
+            query['receiver'] = request.receiver
+        if not DaraCore.is_null(request.rule_id):
+            query['ruleId'] = request.rule_id
+        if not DaraCore.is_null(request.rule_name):
+            query['ruleName'] = request.rule_name
+        if not DaraCore.is_null(request.send_type):
+            query['sendType'] = request.send_type
+        if not DaraCore.is_null(request.severity):
+            query['severity'] = request.severity
+        if not DaraCore.is_null(request.subscription_id):
+            query['subscriptionId'] = request.subscription_id
+        if not DaraCore.is_null(request.subscription_name):
+            query['subscriptionName'] = request.subscription_name
+        if not DaraCore.is_null(request.success):
+            query['success'] = request.success
+        if not DaraCore.is_null(request.to):
+            query['to'] = request.to
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserNotifyHistories',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/userHistories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserNotifyHistoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_notify_histories_with_options_async(
+        self,
+        request: main_models.ListUserNotifyHistoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserNotifyHistoriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.batch_id):
+            query['batchId'] = request.batch_id
+        if not DaraCore.is_null(request.biz_source):
+            query['bizSource'] = request.biz_source
+        if not DaraCore.is_null(request.channel):
+            query['channel'] = request.channel
+        if not DaraCore.is_null(request.channel_category):
+            query['channelCategory'] = request.channel_category
+        if not DaraCore.is_null(request.from_):
+            query['from'] = request.from_
+        if not DaraCore.is_null(request.group):
+            query['group'] = request.group
+        if not DaraCore.is_null(request.incident_id):
+            query['incidentId'] = request.incident_id
+        if not DaraCore.is_null(request.include_no_channel):
+            query['includeNoChannel'] = request.include_no_channel
+        if not DaraCore.is_null(request.is_desc):
+            query['isDesc'] = request.is_desc
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.notify_strategy_id):
+            query['notifyStrategyId'] = request.notify_strategy_id
+        if not DaraCore.is_null(request.notify_strategy_name):
+            query['notifyStrategyName'] = request.notify_strategy_name
+        if not DaraCore.is_null(request.partition_key):
+            query['partitionKey'] = request.partition_key
+        if not DaraCore.is_null(request.receiver):
+            query['receiver'] = request.receiver
+        if not DaraCore.is_null(request.rule_id):
+            query['ruleId'] = request.rule_id
+        if not DaraCore.is_null(request.rule_name):
+            query['ruleName'] = request.rule_name
+        if not DaraCore.is_null(request.send_type):
+            query['sendType'] = request.send_type
+        if not DaraCore.is_null(request.severity):
+            query['severity'] = request.severity
+        if not DaraCore.is_null(request.subscription_id):
+            query['subscriptionId'] = request.subscription_id
+        if not DaraCore.is_null(request.subscription_name):
+            query['subscriptionName'] = request.subscription_name
+        if not DaraCore.is_null(request.success):
+            query['success'] = request.success
+        if not DaraCore.is_null(request.to):
+            query['to'] = request.to
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserNotifyHistories',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/userHistories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserNotifyHistoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_notify_histories(
+        self,
+        request: main_models.ListUserNotifyHistoriesRequest,
+    ) -> main_models.ListUserNotifyHistoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_user_notify_histories_with_options(request, headers, runtime)
+
+    async def list_user_notify_histories_async(
+        self,
+        request: main_models.ListUserNotifyHistoriesRequest,
+    ) -> main_models.ListUserNotifyHistoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_user_notify_histories_with_options_async(request, headers, runtime)
 
     def list_workspaces_with_options(
         self,

@@ -20,11 +20,11 @@ class ListPrometheusVirtualInstancesResponseBody(DaraModel):
         self.instances = instances
         # The maximum number of instances to return per page.
         self.max_results = max_results
-        # The next token for the next page. It is empty when all results are returned.
+        # The next token for the next page. This parameter is empty when all results are returned.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # The total number of instances returned.
+        # The total number of returned instances.
         self.total_count = total_count
 
     def validate(self):
@@ -91,7 +91,7 @@ class ListPrometheusVirtualInstancesResponseBodyInstances(DaraModel):
     ):
         # The creation time.
         self.created_at = created_at
-        # The HTTP API URL.
+        # The HTTP API endpoint.
         self.http_api_url = http_api_url
         # The applicable data source type: PROMETHEUS_DS.
         # 
