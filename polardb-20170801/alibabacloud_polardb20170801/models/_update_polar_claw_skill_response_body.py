@@ -20,17 +20,17 @@ class UpdatePolarClawSkillResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The response status code.
+        # The returned status code.
         self.code = code
-        # The updated Skill configuration. Sensitive values are masked.
+        # The updated skill configuration. Sensitive values are masked.
         self.config = config
-        # The response message.
+        # The returned message.
         self.message = message
         # Indicates whether the operation is successful.
         self.ok = ok
         # Id of the request
         self.request_id = request_id
-        # The Skill identifier key.
+        # The skill identifier key.
         self.skill_key = skill_key
 
     def validate(self):
@@ -97,7 +97,7 @@ class UpdatePolarClawSkillResponseBodyConfig(DaraModel):
         enabled: bool = None,
         env: Dict[str, str] = None,
     ):
-        # Specifies whether to enable the Skill.
+        # Specifies whether the skill is enabled.
         self.enabled = enabled
         # The environment variable configuration.
         self.env = env

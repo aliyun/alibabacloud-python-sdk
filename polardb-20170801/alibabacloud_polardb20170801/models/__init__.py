@@ -34,6 +34,9 @@ from ._apply_application_prompts_request import ApplyApplicationPromptsRequest
 from ._apply_application_prompts_shrink_request import ApplyApplicationPromptsShrinkRequest
 from ._apply_application_prompts_response_body import ApplyApplicationPromptsResponseBody
 from ._apply_application_prompts_response import ApplyApplicationPromptsResponse
+from ._apply_lakebase_mount_parameter_group_request import ApplyLakebaseMountParameterGroupRequest
+from ._apply_lakebase_mount_parameter_group_response_body import ApplyLakebaseMountParameterGroupResponseBody
+from ._apply_lakebase_mount_parameter_group_response import ApplyLakebaseMountParameterGroupResponse
 from ._approve_polar_claw_device_pair_request import ApprovePolarClawDevicePairRequest
 from ._approve_polar_claw_device_pair_response_body import ApprovePolarClawDevicePairResponseBody
 from ._approve_polar_claw_device_pair_response import ApprovePolarClawDevicePairResponse
@@ -124,6 +127,9 @@ from ._create_agentic_dbbranch_response import CreateAgenticDBBranchResponse
 from ._create_agentic_dbproject_request import CreateAgenticDBProjectRequest
 from ._create_agentic_dbproject_response_body import CreateAgenticDBProjectResponseBody
 from ._create_agentic_dbproject_response import CreateAgenticDBProjectResponse
+from ._create_agentic_dbtenant_request import CreateAgenticDBTenantRequest
+from ._create_agentic_dbtenant_response_body import CreateAgenticDBTenantResponseBody
+from ._create_agentic_dbtenant_response import CreateAgenticDBTenantResponse
 from ._create_agentic_dbtenant_api_key_request import CreateAgenticDBTenantApiKeyRequest
 from ._create_agentic_dbtenant_api_key_response_body import CreateAgenticDBTenantApiKeyResponseBody
 from ._create_agentic_dbtenant_api_key_response import CreateAgenticDBTenantApiKeyResponse
@@ -299,6 +305,9 @@ from ._delete_agentic_dbcompute_cluster_response import DeleteAgenticDBComputeCl
 from ._delete_agentic_dbproject_request import DeleteAgenticDBProjectRequest
 from ._delete_agentic_dbproject_response_body import DeleteAgenticDBProjectResponseBody
 from ._delete_agentic_dbproject_response import DeleteAgenticDBProjectResponse
+from ._delete_agentic_dbtenant_request import DeleteAgenticDBTenantRequest
+from ._delete_agentic_dbtenant_response_body import DeleteAgenticDBTenantResponseBody
+from ._delete_agentic_dbtenant_response import DeleteAgenticDBTenantResponse
 from ._delete_agentic_dbtenant_api_key_request import DeleteAgenticDBTenantApiKeyRequest
 from ._delete_agentic_dbtenant_api_key_response_body import DeleteAgenticDBTenantApiKeyResponseBody
 from ._delete_agentic_dbtenant_api_key_response import DeleteAgenticDBTenantApiKeyResponse
@@ -489,6 +498,9 @@ from ._describe_agentic_dbbranch_endpoints_response import DescribeAgenticDBBran
 from ._describe_agentic_dbbranch_lineage_request import DescribeAgenticDBBranchLineageRequest
 from ._describe_agentic_dbbranch_lineage_response_body import DescribeAgenticDBBranchLineageResponseBody
 from ._describe_agentic_dbbranch_lineage_response import DescribeAgenticDBBranchLineageResponse
+from ._describe_agentic_dbbranch_restore_window_request import DescribeAgenticDBBranchRestoreWindowRequest
+from ._describe_agentic_dbbranch_restore_window_response_body import DescribeAgenticDBBranchRestoreWindowResponseBody
+from ._describe_agentic_dbbranch_restore_window_response import DescribeAgenticDBBranchRestoreWindowResponse
 from ._describe_agentic_dbbranches_request import DescribeAgenticDBBranchesRequest
 from ._describe_agentic_dbbranches_response_body import DescribeAgenticDBBranchesResponseBody
 from ._describe_agentic_dbbranches_response import DescribeAgenticDBBranchesResponse
@@ -501,6 +513,9 @@ from ._describe_agentic_dbcompute_clusters_response import DescribeAgenticDBComp
 from ._describe_agentic_dbproject_request import DescribeAgenticDBProjectRequest
 from ._describe_agentic_dbproject_response_body import DescribeAgenticDBProjectResponseBody
 from ._describe_agentic_dbproject_response import DescribeAgenticDBProjectResponse
+from ._describe_agentic_dbproject_history_retention_request import DescribeAgenticDBProjectHistoryRetentionRequest
+from ._describe_agentic_dbproject_history_retention_response_body import DescribeAgenticDBProjectHistoryRetentionResponseBody
+from ._describe_agentic_dbproject_history_retention_response import DescribeAgenticDBProjectHistoryRetentionResponse
 from ._describe_agentic_dbprojects_request import DescribeAgenticDBProjectsRequest
 from ._describe_agentic_dbprojects_response_body import DescribeAgenticDBProjectsResponseBody
 from ._describe_agentic_dbprojects_response import DescribeAgenticDBProjectsResponse
@@ -551,6 +566,9 @@ from ._describe_available_cross_regions_response import DescribeAvailableCrossRe
 from ._describe_available_models_request import DescribeAvailableModelsRequest
 from ._describe_available_models_response_body import DescribeAvailableModelsResponseBody
 from ._describe_available_models_response import DescribeAvailableModelsResponse
+from ._describe_backup_log_download_links_request import DescribeBackupLogDownloadLinksRequest
+from ._describe_backup_log_download_links_response_body import DescribeBackupLogDownloadLinksResponseBody
+from ._describe_backup_log_download_links_response import DescribeBackupLogDownloadLinksResponse
 from ._describe_backup_logs_request import DescribeBackupLogsRequest
 from ._describe_backup_logs_response_body import DescribeBackupLogsResponseBody
 from ._describe_backup_logs_response import DescribeBackupLogsResponse
@@ -1075,6 +1093,9 @@ from ._modify_active_operation_maintain_conf_response import ModifyActiveOperati
 from ._modify_active_operation_tasks_request import ModifyActiveOperationTasksRequest
 from ._modify_active_operation_tasks_response_body import ModifyActiveOperationTasksResponseBody
 from ._modify_active_operation_tasks_response import ModifyActiveOperationTasksResponse
+from ._modify_agentic_dbproject_history_retention_request import ModifyAgenticDBProjectHistoryRetentionRequest
+from ._modify_agentic_dbproject_history_retention_response_body import ModifyAgenticDBProjectHistoryRetentionResponseBody
+from ._modify_agentic_dbproject_history_retention_response import ModifyAgenticDBProjectHistoryRetentionResponse
 from ._modify_application_description_request import ModifyApplicationDescriptionRequest
 from ._modify_application_description_response_body import ModifyApplicationDescriptionResponseBody
 from ._modify_application_description_response import ModifyApplicationDescriptionResponse
@@ -1602,6 +1623,7 @@ from ._describe_auto_renew_attribute_response_body import DescribeAutoRenewAttri
 from ._describe_auto_renew_attribute_response_body import DescribeAutoRenewAttributeResponseBodyItems
 from ._describe_available_models_response_body import DescribeAvailableModelsResponseBodyItemsGpuRequired
 from ._describe_available_models_response_body import DescribeAvailableModelsResponseBodyItems
+from ._describe_backup_log_download_links_response_body import DescribeBackupLogDownloadLinksResponseBodyBackupLogDownloadLinkItem
 from ._describe_backup_logs_response_body import DescribeBackupLogsResponseBodyItemsBackupLog
 from ._describe_backup_logs_response_body import DescribeBackupLogsResponseBodyItems
 from ._describe_backup_policy_response_body import DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy
@@ -1957,6 +1979,9 @@ __all__ = [
     ApplyApplicationPromptsShrinkRequest,
     ApplyApplicationPromptsResponseBody,
     ApplyApplicationPromptsResponse,
+    ApplyLakebaseMountParameterGroupRequest,
+    ApplyLakebaseMountParameterGroupResponseBody,
+    ApplyLakebaseMountParameterGroupResponse,
     ApprovePolarClawDevicePairRequest,
     ApprovePolarClawDevicePairResponseBody,
     ApprovePolarClawDevicePairResponse,
@@ -2047,6 +2072,9 @@ __all__ = [
     CreateAgenticDBProjectRequest,
     CreateAgenticDBProjectResponseBody,
     CreateAgenticDBProjectResponse,
+    CreateAgenticDBTenantRequest,
+    CreateAgenticDBTenantResponseBody,
+    CreateAgenticDBTenantResponse,
     CreateAgenticDBTenantApiKeyRequest,
     CreateAgenticDBTenantApiKeyResponseBody,
     CreateAgenticDBTenantApiKeyResponse,
@@ -2222,6 +2250,9 @@ __all__ = [
     DeleteAgenticDBProjectRequest,
     DeleteAgenticDBProjectResponseBody,
     DeleteAgenticDBProjectResponse,
+    DeleteAgenticDBTenantRequest,
+    DeleteAgenticDBTenantResponseBody,
+    DeleteAgenticDBTenantResponse,
     DeleteAgenticDBTenantApiKeyRequest,
     DeleteAgenticDBTenantApiKeyResponseBody,
     DeleteAgenticDBTenantApiKeyResponse,
@@ -2412,6 +2443,9 @@ __all__ = [
     DescribeAgenticDBBranchLineageRequest,
     DescribeAgenticDBBranchLineageResponseBody,
     DescribeAgenticDBBranchLineageResponse,
+    DescribeAgenticDBBranchRestoreWindowRequest,
+    DescribeAgenticDBBranchRestoreWindowResponseBody,
+    DescribeAgenticDBBranchRestoreWindowResponse,
     DescribeAgenticDBBranchesRequest,
     DescribeAgenticDBBranchesResponseBody,
     DescribeAgenticDBBranchesResponse,
@@ -2424,6 +2458,9 @@ __all__ = [
     DescribeAgenticDBProjectRequest,
     DescribeAgenticDBProjectResponseBody,
     DescribeAgenticDBProjectResponse,
+    DescribeAgenticDBProjectHistoryRetentionRequest,
+    DescribeAgenticDBProjectHistoryRetentionResponseBody,
+    DescribeAgenticDBProjectHistoryRetentionResponse,
     DescribeAgenticDBProjectsRequest,
     DescribeAgenticDBProjectsResponseBody,
     DescribeAgenticDBProjectsResponse,
@@ -2474,6 +2511,9 @@ __all__ = [
     DescribeAvailableModelsRequest,
     DescribeAvailableModelsResponseBody,
     DescribeAvailableModelsResponse,
+    DescribeBackupLogDownloadLinksRequest,
+    DescribeBackupLogDownloadLinksResponseBody,
+    DescribeBackupLogDownloadLinksResponse,
     DescribeBackupLogsRequest,
     DescribeBackupLogsResponseBody,
     DescribeBackupLogsResponse,
@@ -2998,6 +3038,9 @@ __all__ = [
     ModifyActiveOperationTasksRequest,
     ModifyActiveOperationTasksResponseBody,
     ModifyActiveOperationTasksResponse,
+    ModifyAgenticDBProjectHistoryRetentionRequest,
+    ModifyAgenticDBProjectHistoryRetentionResponseBody,
+    ModifyAgenticDBProjectHistoryRetentionResponse,
     ModifyApplicationDescriptionRequest,
     ModifyApplicationDescriptionResponseBody,
     ModifyApplicationDescriptionResponse,
@@ -3525,6 +3568,7 @@ __all__ = [
     DescribeAutoRenewAttributeResponseBodyItems,
     DescribeAvailableModelsResponseBodyItemsGpuRequired,
     DescribeAvailableModelsResponseBodyItems,
+    DescribeBackupLogDownloadLinksResponseBodyBackupLogDownloadLinkItem,
     DescribeBackupLogsResponseBodyItemsBackupLog,
     DescribeBackupLogsResponseBodyItems,
     DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy,

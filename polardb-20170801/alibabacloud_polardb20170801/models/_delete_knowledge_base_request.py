@@ -10,7 +10,7 @@ class DeleteKnowledgeBaseRequest(DaraModel):
         knowledge_base_id: str = None,
         region_id: str = None,
     ):
-        # The unique ID of the knowledge base.
+        # The ID of the knowledge base to delete. You can obtain the ID from the response of the CreateKnowledgeBase operation.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id

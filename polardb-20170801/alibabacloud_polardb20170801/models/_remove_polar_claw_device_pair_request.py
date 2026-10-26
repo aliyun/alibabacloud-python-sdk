@@ -14,7 +14,7 @@ class RemovePolarClawDevicePairRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The device ID.
+        # The ID of the paired device to remove. You can call ListPolarClawDevicePairs and obtain the DeviceId from the returned Paired list.
         # 
         # This parameter is required.
         self.device_id = device_id

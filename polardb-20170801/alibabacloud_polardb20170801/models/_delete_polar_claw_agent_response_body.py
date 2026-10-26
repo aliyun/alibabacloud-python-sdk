@@ -18,7 +18,7 @@ class DeletePolarClawAgentResponseBody(DaraModel):
         self.agent_id = agent_id
         # The application ID.
         self.application_id = application_id
-        # The status code.
+        # The response status code.
         self.code = code
         # The response message.
         self.message = message

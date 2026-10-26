@@ -24,11 +24,11 @@ class ModifyDBNodeClassRequest(DaraModel):
         resource_owner_id: int = None,
         sub_category: str = None,
     ):
-        # Specifies whether to automatically use coupons. Valid values:
-        # * true (default): Uses coupons.
-        # * false: Does not use coupons.
+        # Specifies whether to automatically use a coupon. Valid values:
+        # * true (default): Uses the coupon.
+        # * false: Does not use the coupon.
         self.auto_use_coupon = auto_use_coupon
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and can contain a maximum of 64 ASCII characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and is case-sensitive. The value can be up to 64 ASCII characters in length.
         self.client_token = client_token
         # The cloud service provider of the instance.
         self.cloud_provider = cloud_provider
@@ -40,38 +40,40 @@ class ModifyDBNodeClassRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbnode_target_class = dbnode_target_class
-        # The node type. Set this parameter to DLNode only when you change the node specifications of an AI node.
+        # The node type. Set the value to DLNode only when you modify the node specifications of an AI node.
         self.dbnode_type = dbnode_type
-        # The type of the specification change. Valid values: 
-        # * **Upgrade**: upgrades the specifications.
-        # * **Downgrade**: downgrades the specifications.
+        # The modification type. Valid values: 
+        # * **Upgrade**: Upgrades the specifications.
+        # * **Downgrade**: Downgrades the specifications.
         # 
         # This parameter is required.
         self.modify_type = modify_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The latest start time of the scheduled specification change task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+        # The latest time to start the scheduled task. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         # > * The latest time must be at least 30 minutes later than the start time.
-        # > * If `PlannedStartTime` is set but this parameter is not specified, the latest time defaults to `start time + 30 minutes`. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task starts no later than `2021-01-14T09:30:00Z`.
+        # > * If `PlannedStartTime` is specified but this parameter is left empty, the latest time to start the task defaults to 30 minutes after the start time. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task starts at `2021-01-14T09:30:00Z` at the latest.
         self.planned_end_time = planned_end_time
         # The planned transient disconnection time.
+        # 
+        # The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mm:ssZ` format. The time is displayed in UTC.
         self.planned_flashing_off_time = planned_flashing_off_time
-        # The earliest start time of the scheduled specification change task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
-        # > * This parameter takes effect when `ModifyType` is set to `Upgrade` or `Downgrade`.
-        # > * The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the valid range for the start time is from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-        # > * If this parameter is left empty, the specification change task is immediately executed.
+        # The earliest time to start the scheduled upgrade or downgrade task within the specified time window. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+        # > * This parameter takes effect only when `ModifyType` is set to `Upgrade` or `Downgrade`.
+        # >* The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the allowed start time ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # >* If this parameter is left empty, the upgrade task is executed immediately by default.
         self.planned_start_time = planned_start_time
-        # The coupon code. If this parameter is not specified, the default coupon is used.
+        # The coupon code. If this parameter is left empty, the default coupon is used.
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The cluster sub-series. Valid values:
+        # The sub-edition of the cluster. Valid values:
         # 
-        # - **normal_exclusive**: Dedicated
+        # - **normal_exclusive**: Dedicated.
         # 
-        # - **normal_general**: General-purpose
+        # - **normal_general**: General-purpose.
         # 
-        # This parameter is required when you change specifications between Dedicated and General-purpose.
+        # This parameter is required when you change the specifications between Dedicated and General-purpose.
         self.sub_category = sub_category
 
     def validate(self):

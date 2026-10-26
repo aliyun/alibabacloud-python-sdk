@@ -12,19 +12,19 @@ class BindPolarClawAgentRequest(DaraModel):
         channel: str = None,
         channel_account_id: str = None,
     ):
-        # The agent ID.
+        # The ID of the agent to associate.
         # 
         # This parameter is required.
         self.agent_id = agent_id
-        # The application ID.
+        # The application ID. You can call the DescribeApplications operation to obtain the application ID from the returned Items list.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The channel ID.
+        # The channel plugin ID.
         # 
         # This parameter is required.
         self.channel = channel
-        # The account ID for the channel. If omitted, the default value is \\"default\\".
+        # The channel account ID. If you do not specify this parameter, the default value is default.
         self.channel_account_id = channel_account_id
 
     def validate(self):

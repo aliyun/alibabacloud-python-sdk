@@ -125,35 +125,35 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # Indicates whether the key is active.
+        # Indicates whether the consumer is active.
         self.active = active
-        # The complete API key. Returned only in this response.
+        # The complete API key. This value is returned only in the current response.
         self.api_key = api_key
         # The MD5 hash of the API key.
         self.api_key_md_5 = api_key_md_5
         # The status of the API key. Default value: Active.
         self.api_key_status = api_key_status
-        # The API key status. Default value: Active.
+        # The status of the API key. Default value: Active.
         self.api_status = api_status
-        # The budget limit, which equals the number of credits per package.
+        # The budget limit, which is equal to the points of a single package.
         self.budget_limit = budget_limit
-        # The budget policy ID. Each key has an independent budget policy.
+        # The ID of the budget policy. Each key has an independent budget policy.
         self.budget_policy_id = budget_policy_id
         # The used quota.
         self.budget_used = budget_used
-        # The user group ID.
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
         # The user ID.
         self.consumer_id = consumer_id
         # The consumer tag.
         self.consumer_tag = consumer_tag
-        # The application description or remarks.
+        # The application description or remark.
         self.description = description
         # The expiration time.
         # 
-        # The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.expire_time = expire_time
-        # Indicates whether the key has expired.
+        # Indicates whether the consumer has expired.
         self.expired = expired
         # The creation time.
         self.gmt_created = gmt_created
@@ -163,7 +163,7 @@ class CreateBatchConsumerResponseBodyItems(DaraModel):
         self.gw_cluster_id = gw_cluster_id
         # The name.
         self.name = name
-        # The consumer status. Default value: Enabled.
+        # The status of the consumer. Default value: Enabled.
         self.status = status
 
     def validate(self):

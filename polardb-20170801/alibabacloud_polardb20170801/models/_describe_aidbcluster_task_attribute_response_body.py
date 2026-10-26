@@ -33,58 +33,61 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The access information of the model in the test deployment scenario.
+        # The access information of the model in test deployment scenarios.
         self.access_info = access_info
         # The network type of the cluster.
         self.cluster_network_type = cluster_network_type
         # The creation time.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
+        # The custom OSS bucket information.
         self.custom_bucket_info = custom_bucket_info
         # The task name.
         self.dbcluster_description = dbcluster_description
         # The task ID.
         self.dbcluster_id = dbcluster_id
         # The training status. Valid values:
-        # 
-        # * **ACTIVATION**: Training in progress.
-        # * **COMPLETED**: Training succeeded.
-        # * **FAILED**: Training failed.
+        # * **ACTIVATION**: training in progress
+        # * **COMPLETED**: training succeeded
+        # * **FAILED**: training failed
         self.dbcluster_status = dbcluster_status
         # The training status. Valid values:
-        # 
-        # * **ACTIVATION**: Training in progress.
-        # * **COMPLETED**: Training succeeded.
-        # * **FAILED**: Training failed.
+        # * **ACTIVATION**: training in progress
+        # * **COMPLETED**: training succeeded
+        # * **FAILED**: training failed
         self.dbcluster_status_desc = dbcluster_status_desc
         # The engine type.
         self.dbtype = dbtype
         # The version. Valid values:
-        # 
-        # * **3.1**: model operator tuning.
+        # * **3.1**: model operator tuning
         self.dbversion = dbversion
         # The datasets.
         self.data_sets = data_sets
-        # The additional information, including runtime parameters.
+        # The extra information, including runtime parameters.
         self.extra_info = extra_info
-        # The type of the instance. Valid values:
-        # 
-        # - **18**.
+        # The instance type. Valid values:
+        # - **18**
         self.kind_code = kind_code
         # The lock mode. Valid values:
-        # 
-        # * **0**: locked.
-        # * **1**: unlocked.
+        # * **0**: locked
+        # * **1**: unlocked
         self.lock_mode = lock_mode
-        # The maintenance end time.
+        # The end time of the maintenance window.
+        # 
+        # The time is displayed in UTC in the HH:mmZ format.
         self.maintain_end_time = maintain_end_time
-        # The maintenance start time.
+        # The start time of the maintenance window.
+        # 
+        # The time is displayed in UTC. Example: 8:00Z.
         self.maintain_start_time = maintain_start_time
-        # The list of model paths output in the model fine-tuning scenario.
+        # The list of output model paths in model fine-tuning scenarios.
         self.model_path = model_path
         # Id of the request
         self.request_id = request_id
         # The task information.
         self.task_info = task_info
+        # The model fine-tuning architecture.
         self.tune_arch = tune_arch
         # The VPC ID.
         self.vpcid = vpcid
@@ -269,30 +272,31 @@ class DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo(DaraModel):
         train_mode: str = None,
         train_type: str = None,
     ):
-        # The task completion time.
+        # The completion time of the task.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.completed_time = completed_time
         # The foundation model.
         self.model_name = model_name
         # The path of the custom model.
         self.model_path = model_path
         # The model source. Valid values:
-        # 
-        # * **public**: pre-trained model.
-        # * **custom**: custom model.
+        # * **public**: preset model
+        # * **custom**: custom model
         self.model_source = model_source
         # The runtime parameters.
         self.running_times = running_times
-        # The task start time.
+        # The start time of the task.
+        # 
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
         # The task type. Valid values:
-        # 
-        # * **sft**: SFT efficient training.
-        # * **grpo**: GRPO reinforcement learning.
+        # * **sft**: SFT - efficient training
+        # * **grpo**: GRPO - reinforcement learning
         self.train_mode = train_mode
         # The training method. Valid values:
-        # 
         # * **lora**
-        # * **full**: full-parameter fine-tuning.
+        # * **full**: full-parameter training
         self.train_type = train_type
 
     def validate(self):
@@ -365,16 +369,15 @@ class DescribeAIDBClusterTaskAttributeResponseBodyDataSets(DaraModel):
         split_dataset_ratio: str = None,
         type: str = None,
     ):
-        # The dataset name.
+        # The name of the dataset.
         self.dataset_name = dataset_name
-        # The dataset path.
+        # The path of the dataset.
         self.path = path
-        # The ratio split from the training set.
+        # The split ratio from the training set.
         self.split_dataset_ratio = split_dataset_ratio
         # The type. Valid values:
-        # 
-        # * **train**: training set.
-        # * **eval**: validation set.
+        # * **train**: training set
+        # * **eval**: validation set
         self.type = type
 
     def validate(self):
@@ -420,6 +423,7 @@ class DescribeAIDBClusterTaskAttributeResponseBodyCustomBucketInfo(DaraModel):
         self,
         custom_oss_bucket_name: str = None,
     ):
+        # The name of the custom OSS bucket.
         self.custom_oss_bucket_name = custom_oss_bucket_name
 
     def validate(self):

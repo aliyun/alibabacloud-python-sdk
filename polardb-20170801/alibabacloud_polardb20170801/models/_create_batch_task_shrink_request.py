@@ -14,20 +14,20 @@ class CreateBatchTaskShrinkRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # The target application type of the batch task.
         self.application_type = application_type
         # The instance IDs.
         # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
-        # The task parameters.
+        # The archive parameters.
         self.param = param
         # The region ID.
-        # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions of all clusters in your account.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the region information of all clusters under the target account.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the batch task.
+        # The description of the model service.
         # 
         # This parameter is required.
         self.task_name = task_name

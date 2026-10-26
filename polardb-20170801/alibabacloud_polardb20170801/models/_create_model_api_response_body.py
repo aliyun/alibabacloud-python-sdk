@@ -12,13 +12,13 @@ class CreateModelApiResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The request endpoint.
+        # The invocation endpoint.
         self.invoke_endpoint = invoke_endpoint
         # The model API ID.
         self.model_api_id = model_api_id
         # Id of the request
         self.request_id = request_id
-        # The model API status.
+        # The status of the model API.
         self.status = status
 
     def validate(self):

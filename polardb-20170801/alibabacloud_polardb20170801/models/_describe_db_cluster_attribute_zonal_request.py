@@ -18,7 +18,7 @@ class DescribeDbClusterAttributeZonalRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to obtain information about AI-related nodes.
+        # Specifies whether to retrieve AI-related node information.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id

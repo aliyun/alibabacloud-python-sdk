@@ -987,6 +987,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.apply_application_prompts_with_options_async(request, runtime)
 
+    def apply_lakebase_mount_parameter_group_with_options(
+        self,
+        request: main_models.ApplyLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyLakebaseMountParameterGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_lakebase_mount_parameter_group_with_options_async(
+        self,
+        request: main_models.ApplyLakebaseMountParameterGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyLakebaseMountParameterGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.parameter_group_id):
+            query['ParameterGroupId'] = request.parameter_group_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyLakebaseMountParameterGroup',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyLakebaseMountParameterGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_lakebase_mount_parameter_group(
+        self,
+        request: main_models.ApplyLakebaseMountParameterGroupRequest,
+    ) -> main_models.ApplyLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return self.apply_lakebase_mount_parameter_group_with_options(request, runtime)
+
+    async def apply_lakebase_mount_parameter_group_async(
+        self,
+        request: main_models.ApplyLakebaseMountParameterGroupRequest,
+    ) -> main_models.ApplyLakebaseMountParameterGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.apply_lakebase_mount_parameter_group_with_options_async(request, runtime)
+
     def approve_polar_claw_device_pair_with_options(
         self,
         request: main_models.ApprovePolarClawDevicePairRequest,
@@ -3726,6 +3804,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.parent_branch_id):
             query['ParentBranchId'] = request.parent_branch_id
+        if not DaraCore.is_null(request.parent_timestamp):
+            query['ParentTimestamp'] = request.parent_timestamp
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
@@ -3766,6 +3846,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not DaraCore.is_null(request.parent_branch_id):
             query['ParentBranchId'] = request.parent_branch_id
+        if not DaraCore.is_null(request.parent_timestamp):
+            query['ParentTimestamp'] = request.parent_timestamp
         if not DaraCore.is_null(request.project_id):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
@@ -3818,6 +3900,8 @@ class Client(OpenApiClient):
             query['DefaultBranchName'] = request.default_branch_name
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.history_retention_seconds):
+            query['HistoryRetentionSeconds'] = request.history_retention_seconds
         if not DaraCore.is_null(request.project_name):
             query['ProjectName'] = request.project_name
         if not DaraCore.is_null(request.region_id):
@@ -3856,6 +3940,8 @@ class Client(OpenApiClient):
             query['DefaultBranchName'] = request.default_branch_name
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.history_retention_seconds):
+            query['HistoryRetentionSeconds'] = request.history_retention_seconds
         if not DaraCore.is_null(request.project_name):
             query['ProjectName'] = request.project_name
         if not DaraCore.is_null(request.region_id):
@@ -3894,6 +3980,88 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAgenticDBProjectResponse:
         runtime = RuntimeOptions()
         return await self.create_agentic_dbproject_with_options_async(request, runtime)
+
+    def create_agentic_dbtenant_with_options(
+        self,
+        request: main_models.CreateAgenticDBTenantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgenticDBTenantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_name):
+            query['TenantName'] = request.tenant_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgenticDBTenant',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgenticDBTenantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agentic_dbtenant_with_options_async(
+        self,
+        request: main_models.CreateAgenticDBTenantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgenticDBTenantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_name):
+            query['TenantName'] = request.tenant_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgenticDBTenant',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgenticDBTenantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agentic_dbtenant(
+        self,
+        request: main_models.CreateAgenticDBTenantRequest,
+    ) -> main_models.CreateAgenticDBTenantResponse:
+        runtime = RuntimeOptions()
+        return self.create_agentic_dbtenant_with_options(request, runtime)
+
+    async def create_agentic_dbtenant_async(
+        self,
+        request: main_models.CreateAgenticDBTenantRequest,
+    ) -> main_models.CreateAgenticDBTenantResponse:
+        runtime = RuntimeOptions()
+        return await self.create_agentic_dbtenant_with_options_async(request, runtime)
 
     def create_agentic_dbtenant_api_key_with_options(
         self,
@@ -10113,6 +10281,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_agentic_dbproject_with_options_async(request, runtime)
 
+    def delete_agentic_dbtenant_with_options(
+        self,
+        request: main_models.DeleteAgenticDBTenantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgenticDBTenantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgenticDBTenant',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgenticDBTenantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agentic_dbtenant_with_options_async(
+        self,
+        request: main_models.DeleteAgenticDBTenantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgenticDBTenantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgenticDBTenant',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgenticDBTenantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agentic_dbtenant(
+        self,
+        request: main_models.DeleteAgenticDBTenantRequest,
+    ) -> main_models.DeleteAgenticDBTenantResponse:
+        runtime = RuntimeOptions()
+        return self.delete_agentic_dbtenant_with_options(request, runtime)
+
+    async def delete_agentic_dbtenant_async(
+        self,
+        request: main_models.DeleteAgenticDBTenantRequest,
+    ) -> main_models.DeleteAgenticDBTenantResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_agentic_dbtenant_with_options_async(request, runtime)
+
     def delete_agentic_dbtenant_api_key_with_options(
         self,
         request: main_models.DeleteAgenticDBTenantApiKeyRequest,
@@ -15647,6 +15893,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_agentic_dbbranch_lineage_with_options_async(request, runtime)
 
+    def describe_agentic_dbbranch_restore_window_with_options(
+        self,
+        request: main_models.DescribeAgenticDBBranchRestoreWindowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgenticDBBranchRestoreWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgenticDBBranchRestoreWindow',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgenticDBBranchRestoreWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_agentic_dbbranch_restore_window_with_options_async(
+        self,
+        request: main_models.DescribeAgenticDBBranchRestoreWindowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgenticDBBranchRestoreWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgenticDBBranchRestoreWindow',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgenticDBBranchRestoreWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_agentic_dbbranch_restore_window(
+        self,
+        request: main_models.DescribeAgenticDBBranchRestoreWindowRequest,
+    ) -> main_models.DescribeAgenticDBBranchRestoreWindowResponse:
+        runtime = RuntimeOptions()
+        return self.describe_agentic_dbbranch_restore_window_with_options(request, runtime)
+
+    async def describe_agentic_dbbranch_restore_window_async(
+        self,
+        request: main_models.DescribeAgenticDBBranchRestoreWindowRequest,
+    ) -> main_models.DescribeAgenticDBBranchRestoreWindowResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_agentic_dbbranch_restore_window_with_options_async(request, runtime)
+
     def describe_agentic_dbbranches_with_options(
         self,
         request: main_models.DescribeAgenticDBBranchesRequest,
@@ -16026,6 +16358,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAgenticDBProjectResponse:
         runtime = RuntimeOptions()
         return await self.describe_agentic_dbproject_with_options_async(request, runtime)
+
+    def describe_agentic_dbproject_history_retention_with_options(
+        self,
+        request: main_models.DescribeAgenticDBProjectHistoryRetentionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgenticDBProjectHistoryRetentionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgenticDBProjectHistoryRetention',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgenticDBProjectHistoryRetentionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_agentic_dbproject_history_retention_with_options_async(
+        self,
+        request: main_models.DescribeAgenticDBProjectHistoryRetentionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgenticDBProjectHistoryRetentionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgenticDBProjectHistoryRetention',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgenticDBProjectHistoryRetentionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_agentic_dbproject_history_retention(
+        self,
+        request: main_models.DescribeAgenticDBProjectHistoryRetentionRequest,
+    ) -> main_models.DescribeAgenticDBProjectHistoryRetentionResponse:
+        runtime = RuntimeOptions()
+        return self.describe_agentic_dbproject_history_retention_with_options(request, runtime)
+
+    async def describe_agentic_dbproject_history_retention_async(
+        self,
+        request: main_models.DescribeAgenticDBProjectHistoryRetentionRequest,
+    ) -> main_models.DescribeAgenticDBProjectHistoryRetentionResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_agentic_dbproject_history_retention_with_options_async(request, runtime)
 
     def describe_agentic_dbprojects_with_options(
         self,
@@ -17446,6 +17860,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAvailableModelsResponse:
         runtime = RuntimeOptions()
         return await self.describe_available_models_with_options_async(request, runtime)
+
+    def describe_backup_log_download_links_with_options(
+        self,
+        request: main_models.DescribeBackupLogDownloadLinksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupLogDownloadLinksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_log_ids):
+            query['BackupLogIds'] = request.backup_log_ids
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.expire_hours):
+            query['ExpireHours'] = request.expire_hours
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBackupLogDownloadLinks',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBackupLogDownloadLinksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_log_download_links_with_options_async(
+        self,
+        request: main_models.DescribeBackupLogDownloadLinksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeBackupLogDownloadLinksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.backup_log_ids):
+            query['BackupLogIds'] = request.backup_log_ids
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.expire_hours):
+            query['ExpireHours'] = request.expire_hours
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeBackupLogDownloadLinks',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeBackupLogDownloadLinksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_log_download_links(
+        self,
+        request: main_models.DescribeBackupLogDownloadLinksRequest,
+    ) -> main_models.DescribeBackupLogDownloadLinksResponse:
+        runtime = RuntimeOptions()
+        return self.describe_backup_log_download_links_with_options(request, runtime)
+
+    async def describe_backup_log_download_links_async(
+        self,
+        request: main_models.DescribeBackupLogDownloadLinksRequest,
+    ) -> main_models.DescribeBackupLogDownloadLinksResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_backup_log_download_links_with_options_async(request, runtime)
 
     def describe_backup_logs_with_options(
         self,
@@ -33718,6 +34210,92 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyActiveOperationTasksResponse:
         runtime = RuntimeOptions()
         return await self.modify_active_operation_tasks_with_options_async(request, runtime)
+
+    def modify_agentic_dbproject_history_retention_with_options(
+        self,
+        request: main_models.ModifyAgenticDBProjectHistoryRetentionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAgenticDBProjectHistoryRetentionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.history_retention_seconds):
+            query['HistoryRetentionSeconds'] = request.history_retention_seconds
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAgenticDBProjectHistoryRetention',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAgenticDBProjectHistoryRetentionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_agentic_dbproject_history_retention_with_options_async(
+        self,
+        request: main_models.ModifyAgenticDBProjectHistoryRetentionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAgenticDBProjectHistoryRetentionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.history_retention_seconds):
+            query['HistoryRetentionSeconds'] = request.history_retention_seconds
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAgenticDBProjectHistoryRetention',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAgenticDBProjectHistoryRetentionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_agentic_dbproject_history_retention(
+        self,
+        request: main_models.ModifyAgenticDBProjectHistoryRetentionRequest,
+    ) -> main_models.ModifyAgenticDBProjectHistoryRetentionResponse:
+        runtime = RuntimeOptions()
+        return self.modify_agentic_dbproject_history_retention_with_options(request, runtime)
+
+    async def modify_agentic_dbproject_history_retention_async(
+        self,
+        request: main_models.ModifyAgenticDBProjectHistoryRetentionRequest,
+    ) -> main_models.ModifyAgenticDBProjectHistoryRetentionResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_agentic_dbproject_history_retention_with_options_async(request, runtime)
 
     def modify_application_description_with_options(
         self,

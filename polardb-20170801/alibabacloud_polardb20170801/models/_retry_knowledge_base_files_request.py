@@ -11,11 +11,11 @@ class RetryKnowledgeBaseFilesRequest(DaraModel):
         knowledge_base_id: str = None,
         region_id: str = None,
     ):
-        # The IDs of the files to retry. Separate multiple IDs with commas (,). A maximum of 30 IDs can be specified.
+        # The IDs of the files to retry. Separate multiple IDs with commas (,). You can specify up to 30 IDs.
         # 
         # This parameter is required.
         self.file_ids = file_ids
-        # The unique ID of the knowledge base.
+        # The unique identifier of the knowledge base.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id

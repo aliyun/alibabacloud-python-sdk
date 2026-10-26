@@ -11,11 +11,11 @@ class DeleteConsumerGroupRequest(DaraModel):
         gw_cluster_id: str = None,
         region_id: str = None,
     ):
-        # The name of the consumer group.
+        # The ID of the consumer group to delete. You can obtain the ID from the ConsumerGroupId parameter returned by the CreateConsumerGroup operation.
         # 
         # This parameter is required.
         self.consumer_group_name = consumer_group_name
-        # The gateway instance ID.
+        # The ID of the gateway instance. You can obtain the ID from the GwClusterId parameter returned by the CreateGateway operation.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id

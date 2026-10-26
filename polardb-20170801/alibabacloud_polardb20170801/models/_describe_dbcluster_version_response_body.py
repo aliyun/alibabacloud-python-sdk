@@ -29,22 +29,22 @@ class DescribeDBClusterVersionResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The latest stable version of PolarDB for PostgreSQL.
+        # The latest stable version of the PolarDB for PostgreSQL database.
         self.dblatest_stable_version = dblatest_stable_version
         # The latest version of the database kernel engine.
         self.dblatest_version = dblatest_version
         # The minor version number of the database engine.
-        # * If `DBVersion` is **8.0**, valid values:
+        # * When `DBVersion` is **8.0**, valid values:
         #     * **8.0.2**
         #     * **8.0.1**
-        # * If `DBVersion` is **5.7**, the value is **5.7.28**.
+        # * When `DBVersion` is **5.7**, the value is **5.7.28**.
         # 
-        # * If `DBVersion` is **5.6**, the value is **5.6.16**.
+        # * When `DBVersion` is **5.6**, the value is **5.6.16**.
         self.dbminor_version = dbminor_version
         # The Milvus version number of the database engine.
-        # > For PolarDB for MySQL 5.6 clusters, only the `Milvus version` information with a release date later than August 31, 2020 is returned. Otherwise, this parameter is empty. For more information about the minor engine versions of PolarDB for MySQL clusters, see [Release notes](https://help.aliyun.com/document_detail/423884.html).
+        # > For PolarDB for MySQL 5.6 clusters, only the `Milvus version` information with a release date after August 31, 2020 is returned. Otherwise, this parameter is empty. For more information about the kernel versions of PolarDB for MySQL clusters, see [Kernel release notes](https://help.aliyun.com/document_detail/423884.html).
         self.dbrevision_version = dbrevision_version
-        # The list of available upgrade version information.
+        # The list of upgradable versions.
         self.dbrevision_version_list = dbrevision_version_list
         # The major version number of the database engine. Valid values:
         # * **8.0**
@@ -54,38 +54,38 @@ class DescribeDBClusterVersionResponseBody(DaraModel):
         # The status of the current database minor version. Valid values:
         # * **Stable**: The current version is stable.
         # * **Old**: The current version is outdated. Upgrade to the latest version.
-        # * **HighRisk**: The current version has critical bugs. Upgrade to the latest version immediately.
-        # * **Beta**: The current version is a beta version.
+        # * **HighRisk**: The current version has critical defects. Upgrade to the latest version immediately.
+        # * **Beta**: The current version is a beta release.
         # >For more information about how to upgrade the database minor version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
         self.dbversion_status = dbversion_status
-        # Indicates whether the current version is the latest stable version of PolarDB for PostgreSQL.
+        # Indicates whether the version is the latest stable version of PolarDB for PostgreSQL.
         self.is_latest_stable_version = is_latest_stable_version
-        # Indicates whether the current database kernel DPI engine version is the latest database engine version. Valid values:
+        # Indicates whether the current database kernel engine version is the latest version. Valid values:
         # 
-        # -  **true**
-        # -  **false**
+        # - **true**
+        # - **false**
         self.is_latest_version = is_latest_version
-        # Indicates whether the current PolarProxy version is the latest version. Valid values:
+        # Indicates whether the current database proxy version is the latest version. Valid values:
         # * **true**
         # * **false**
         self.is_proxy_latest_version = is_proxy_latest_version
-        # The latest version of PolarProxy.
+        # The latest version of the database proxy.
         self.proxy_latest_version = proxy_latest_version
-        # The version of PolarProxy.
+        # The database proxy version.
         self.proxy_revision_version = proxy_revision_version
-        # The release status of the PolarProxy version. Valid values:
+        # The release status of the database proxy version. Valid values:
         # 
         # - **Stable**: The current version is stable.
-        # - **Old**: The current version is outdated. Upgrading to this version is not recommended.
-        # - **HighRisk**: The current version has critical bugs. Upgrading to this version is not recommended.
-        # - **Beta**: The current version is a beta version.
+        # - **Old**: The current version is outdated. Do not upgrade to this version.
+        # - **HighRisk**: The current version has critical defects. Do not upgrade to this version.
+        # - **Beta**: The current version is a beta release.
         self.proxy_revision_version_list = proxy_revision_version_list
-        # The version status of PolarProxy. Valid values:
+        # The version status of the database proxy. Valid values:
         # * **Stable**: The current version is stable.
         # * **Old**: The current version is outdated. Upgrade to the latest version.
-        # * **HighRisk**: The current version has critical bugs. Upgrade to the latest version immediately.
-        # * **Beta**: The current version is a beta version.
-        # >For more information about how to upgrade the PolarProxy version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
+        # * **HighRisk**: The current version has critical defects. Upgrade to the latest version immediately.
+        # * **Beta**: The current version is a beta release.
+        # >For more information about how to upgrade the database proxy version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
         self.proxy_version_status = proxy_version_status
         # The request ID.
         self.request_id = request_id
@@ -225,15 +225,15 @@ class DescribeDBClusterVersionResponseBodyProxyRevisionVersionList(DaraModel):
         revision_version_code: str = None,
         revision_version_name: str = None,
     ):
-        # The release notes for the version.
+        # The version release notes.
         self.release_note = release_note
         # The release type. Valid values:
         # * **LTS**: Long-term support version.
         # * **BETA**: Preview version.
         self.release_type = release_type
-        # The revision version code of the PolarProxy engine, which is used to specify the target version for the upgrade.
+        # The revision version code of the database proxy engine, which is used to specify the target version for the upgrade.
         self.revision_version_code = revision_version_code
-        # The revision version number of the PolarProxy engine.
+        # The revision version number of the database proxy engine.
         self.revision_version_name = revision_version_name
 
     def validate(self):
@@ -282,13 +282,13 @@ class DescribeDBClusterVersionResponseBodyDBRevisionVersionList(DaraModel):
         revision_version_code: str = None,
         revision_version_name: str = None,
     ):
-        # The release notes for the version.
+        # The version release notes.
         self.release_note = release_note
         # The release status of the database version. Valid values:
         # * **Stable**: The current version is stable.
-        # * **Old**: The current version is outdated. Upgrading to this version is not recommended.
-        # * **HighRisk**: The current version has critical bugs. Upgrading to this version is not recommended.
-        # * **Beta**: The current version is a beta version.
+        # * **Old**: The current version is outdated. Do not upgrade to this version.
+        # * **HighRisk**: The current version has critical defects. Do not upgrade to this version.
+        # * **Beta**: The current version is a beta release.
         self.release_type = release_type
         # The revision version code of the database engine, which is used to specify the target version for the upgrade.
         self.revision_version_code = revision_version_code

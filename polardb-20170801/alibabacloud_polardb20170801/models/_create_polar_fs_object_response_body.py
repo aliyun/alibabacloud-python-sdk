@@ -11,11 +11,11 @@ class CreatePolarFsObjectResponseBody(DaraModel):
         polar_fs_instance_id: str = None,
         request_id: str = None,
     ):
-        # The absolute path of the created directory.
+        # The destination path.
         self.path = path
-        # The PolarFS instance id.
+        # The PolarFS instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
-        # The request id.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

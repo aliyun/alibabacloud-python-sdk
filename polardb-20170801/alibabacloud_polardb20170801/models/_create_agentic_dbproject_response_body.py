@@ -11,28 +11,29 @@ class CreateAgenticDBProjectResponseBody(DaraModel):
         create_time: str = None,
         default_branch_id: str = None,
         default_branch_name: str = None,
+        history_retention_seconds: int = None,
         project_id: str = None,
         project_name: str = None,
         request_id: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the compute instance associated with the default branch.
+        # The ID of the compute instance bound to the default branch.
         self.branch_compute_cluster_id = branch_compute_cluster_id
-        # The time when the project was created.
-        # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time when the project was created. The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
-        # The default branch ID.
+        # The ID of the default branch.
         self.default_branch_id = default_branch_id
-        # The default branch name.
+        # The name of the default branch.
         self.default_branch_name = default_branch_name
+        # The retention period for recent records of the project. This parameter may be empty for older projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+        self.history_retention_seconds = history_retention_seconds
         # The ID of the new project.
         self.project_id = project_id
-        # The project name.
+        # The name of the project.
         self.project_name = project_name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The tenant ID.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -54,6 +55,9 @@ class CreateAgenticDBProjectResponseBody(DaraModel):
 
         if self.default_branch_name is not None:
             result['DefaultBranchName'] = self.default_branch_name
+
+        if self.history_retention_seconds is not None:
+            result['HistoryRetentionSeconds'] = self.history_retention_seconds
 
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
@@ -82,6 +86,9 @@ class CreateAgenticDBProjectResponseBody(DaraModel):
 
         if m.get('DefaultBranchName') is not None:
             self.default_branch_name = m.get('DefaultBranchName')
+
+        if m.get('HistoryRetentionSeconds') is not None:
+            self.history_retention_seconds = m.get('HistoryRetentionSeconds')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

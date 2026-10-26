@@ -20,19 +20,19 @@ class CreatePolarClawChannelShrinkRequest(DaraModel):
         self.application_id = application_id
         # The channel configuration.
         self.channel_config_shrink = channel_config_shrink
-        # The channel\\"s unique identifier.
+        # The unique identifier of the channel.
         # 
         # This parameter is required.
         self.channel_id = channel_id
-        # The name and version of the npm package for the channel plugin.
+        # The npm package name of the channel plugin, including the version number.
         # 
         # This parameter is required.
         self.npm_package = npm_package
-        # The channel plugin\\"s name.
+        # The channel plugin name.
         # 
         # This parameter is required.
         self.plugin_id = plugin_id
-        # Indicates whether to restart the gateway after the channel is created. Default: `true`.
+        # Specifies whether to restart the gateway after creation. Default value: true.
         self.restart = restart
 
     def validate(self):

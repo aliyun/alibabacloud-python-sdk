@@ -60,7 +60,7 @@ class DescribeApikeyAttributeResponseBodyItems(DaraModel):
     ):
         # The consumer information.
         self.consumer = consumer
-        # The usage statistics for the consumer.
+        # The usage statistics records for the consumer.
         self.usage_statistics = usage_statistics
 
     def validate(self):
@@ -117,15 +117,15 @@ class DescribeApikeyAttributeResponseBodyItemsUsageStatistics(DaraModel):
         total_output_token: str = None,
         total_token: str = None,
     ):
-        # The dimension reference ID, which is the ConsumerId.
+        # The dimension reference ID, which is the consumer ID.
         self.dimension_ref_id = dimension_ref_id
-        # The statistics dimension. The value is typically Consumer.
+        # The statistical dimension. The value is typically Consumer.
         self.dimension_type = dimension_type
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The number of cache tokens for the current month.
+        # The number of cached tokens for the current month.
         self.monthly_cache_token = monthly_cache_token
-        # The cost points consumed for the current month.
+        # The number of consumed points for the current month.
         self.monthly_cost_points = monthly_cost_points
         # The number of input tokens for the current month.
         self.monthly_input_token = monthly_input_token
@@ -133,15 +133,15 @@ class DescribeApikeyAttributeResponseBodyItemsUsageStatistics(DaraModel):
         self.monthly_output_token = monthly_output_token
         # The number of tokens for the current month.
         self.monthly_token = monthly_token
-        # The cumulative number of cache tokens.
+        # The total number of cached tokens.
         self.total_cache_token = total_cache_token
-        # The cumulative cost points consumed.
+        # The total number of consumed points.
         self.total_cost_points = total_cost_points
-        # The cumulative number of input tokens.
+        # The total number of input tokens.
         self.total_input_token = total_input_token
-        # The cumulative number of output tokens.
+        # The total number of output tokens.
         self.total_output_token = total_output_token
-        # The cumulative number of tokens.
+        # The total number of tokens.
         self.total_token = total_token
 
     def validate(self):
@@ -257,11 +257,11 @@ class DescribeApikeyAttributeResponseBodyItemsConsumer(DaraModel):
         self.consumer_id = consumer_id
         # The consumer tag.
         self.consumer_tag = consumer_tag
-        # The creation time.
+        # The creation time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
         self.create_time = create_time
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The last modification time.
+        # The last modification time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
         self.modify_time = modify_time
         # The consumer name.
         self.name = name

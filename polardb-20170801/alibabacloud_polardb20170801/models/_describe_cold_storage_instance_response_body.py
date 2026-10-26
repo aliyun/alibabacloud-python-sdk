@@ -23,33 +23,32 @@ class DescribeColdStorageInstanceResponseBody(DaraModel):
         tables: List[main_models.DescribeColdStorageInstanceResponseBodyTables] = None,
         total_record: int = None,
     ):
-        # The maximum number of entries returned. Default value: 10.
+        # The maximum number of data entries to read in this request. Default value: 10.
         self.max_results = max_results
-        # The token to retrieve the next page of results. If this parameter is not returned, all results have been returned.
+        # The query token. Set the value to the NextToken value returned from the previous API call. If there are no more queries, do not specify this parameter.
         self.next_token = next_token
         # The object type.
         self.object_type = object_type
-        # Indicates whether the OSS bucket is enabled.
+        # Specifies whether OSS storage space is enabled. Valid values:
         # 
         # - **true**: enabled
-        # 
         # - **false**: disabled
         self.oss_cluster_enabled = oss_cluster_enabled
-        # The list of OSS addresses for the cold storage instances.
+        # The list of OSS addresses for the cold storage instance.
         self.oss_cluster_info_list = oss_cluster_info_list
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The number of records on the current page.
         self.page_record_count = page_record_count
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the cluster supports cold storage. If the cluster does not support cold storage, the switch is not displayed on the console.
+        # Specifies whether the current cluster supports enabling cold storage. For clusters that do not support this feature, the switch is not displayed on the page.
         self.support_oss_cluster = support_oss_cluster
         # The list of cold storage instances.
         self.tables = tables
-        # The total number of entries.
+        # The total number of records.
         self.total_record = total_record
 
     def validate(self):
@@ -171,23 +170,23 @@ class DescribeColdStorageInstanceResponseBodyTables(DaraModel):
     ):
         # The list of child objects.
         self.child_objects = child_objects
-        # The database name.
+        # The name of the database.
         self.db = db
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
-        # The name of the large object (LOB) field.
+        # The name of the LOB field.
         self.field_name = field_name
-        # The ID of the OSS-based cluster.
+        # The OSS cluster ID.
         self.oss_cluster_id = oss_cluster_id
         # The partition of the cold storage instance.
         self.partion = partion
         # The disk size of the cold storage instance. Unit: GiB.
         self.size = size
-        # The status of the task.
+        # The task status.
         self.status = status
-        # The table name.
+        # The name of the table.
         self.table = table
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -286,21 +285,15 @@ class DescribeColdStorageInstanceResponseBodyTablesChildObjects(DaraModel):
         self.object_type = object_type
         # The disk size. Unit: GiB.
         self.size = size
-        # The status of the task. Valid values:
+        # The task status. Valid values:
+        # * **Scheduled**: waiting for execution
+        # * **Running**: running
+        # * **Succeed**: succeeded
+        # * **Cancelling**: cancelling
+        # * **Canceled**: canceled
+        # * **Waiting**: waiting for the preset time
         # 
-        # - **Scheduled**: The task is waiting to be executed.
-        # 
-        # - **Running**: The task is in progress.
-        # 
-        # - **Succeed**: The task is successful.
-        # 
-        # - **Cancelling**: The task is being stopped.
-        # 
-        # - **Canceled**: The task is stopped.
-        # 
-        # - **Waiting**: The task is waiting for a preset time.
-        # 
-        # To query multiple statuses, separate them with commas (,). If you do not specify this parameter, all statuses are queried.
+        # To query multiple statuses, separate them with commas (,). The default value is empty, which indicates that all statuses are selected.
         self.status = status
 
     def validate(self):
@@ -349,11 +342,11 @@ class DescribeColdStorageInstanceResponseBodyOssClusterInfoList(DaraModel):
         region: str = None,
         size: str = None,
     ):
-        # The time when the cluster was created.
+        # The creation time of the cluster. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.created_time = created_time
-        # The ID of the cold storage instance.
+        # The cold storage instance ID.
         self.oss_cluster_id = oss_cluster_id
-        # The ID of the region where the task is located.
+        # The region ID of the region where the task resides.
         self.region = region
         # The size of the cold storage table. Unit: GB.
         self.size = size

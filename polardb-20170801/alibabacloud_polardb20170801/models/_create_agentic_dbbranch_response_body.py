@@ -13,12 +13,13 @@ class CreateAgenticDBBranchResponseBody(DaraModel):
         dbcluster_id: str = None,
         parent_branch_id: str = None,
         parent_branch_name: str = None,
+        parent_timestamp: str = None,
         project_id: str = None,
         project_name: str = None,
         request_id: str = None,
         status: str = None,
     ):
-        # The ID of the compute cluster associated with the branch.
+        # The branch compute cluster ID.
         self.branch_compute_cluster_id = branch_compute_cluster_id
         # The branch ID.
         self.branch_id = branch_id
@@ -26,17 +27,19 @@ class CreateAgenticDBBranchResponseBody(DaraModel):
         self.branch_name = branch_name
         # The AgenticDB cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the parent branch.
+        # The parent branch ID.
         self.parent_branch_id = parent_branch_id
         # The name of the parent branch.
         self.parent_branch_name = parent_branch_name
-        # The ID of the project to which the branch belongs.
+        # The historical timestamp of the parent branch specified when the branch was created. The value is in UTC RFC 3339 format. This field may be empty if no historical timestamp was specified or for legacy records.
+        self.parent_timestamp = parent_timestamp
+        # The project ID.
         self.project_id = project_id
-        # The name of the project to which the branch belongs.
+        # The project name.
         self.project_name = project_name
         # The request ID.
         self.request_id = request_id
-        # The status of the branch.
+        # The status.
         self.status = status
 
     def validate(self):
@@ -64,6 +67,9 @@ class CreateAgenticDBBranchResponseBody(DaraModel):
 
         if self.parent_branch_name is not None:
             result['ParentBranchName'] = self.parent_branch_name
+
+        if self.parent_timestamp is not None:
+            result['ParentTimestamp'] = self.parent_timestamp
 
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
@@ -98,6 +104,9 @@ class CreateAgenticDBBranchResponseBody(DaraModel):
 
         if m.get('ParentBranchName') is not None:
             self.parent_branch_name = m.get('ParentBranchName')
+
+        if m.get('ParentTimestamp') is not None:
+            self.parent_timestamp = m.get('ParentTimestamp')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

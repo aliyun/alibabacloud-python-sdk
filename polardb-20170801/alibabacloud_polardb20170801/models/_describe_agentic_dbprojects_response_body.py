@@ -87,34 +87,34 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
         default_branch_id: str = None,
         default_branch_name: str = None,
         description: str = None,
+        history_retention_seconds: int = None,
         project_id: str = None,
         project_name: str = None,
         status: str = None,
         tenant_id: str = None,
     ):
-        # The time when the project was created.
-        # 
-        # The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time. The time is in ISO 8601 format and the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The ID of the associated AgenticDB cluster.
         self.dbcluster_id = dbcluster_id
-        # The default branch ID.
+        # The ID of the default branch.
         self.default_branch_id = default_branch_id
-        # The default branch name.
+        # The name of the default branch.
         self.default_branch_name = default_branch_name
-        # The description of the project.
+        # The description.
         self.description = description
+        # The retention period for recent records of the project. This field may be empty for older projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+        self.history_retention_seconds = history_retention_seconds
         # Project ID
         self.project_id = project_id
-        # The project name.
+        # The name of the project.
         self.project_name = project_name
         # The project status. Valid values:
-        # 
         # - Active: Normal.
         # - Destroying: Being destroyed.
         # - Destroyed: Destroyed.
         self.status = status
-        # The ID of the tenant to which the project belongs.
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -139,6 +139,9 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.history_retention_seconds is not None:
+            result['HistoryRetentionSeconds'] = self.history_retention_seconds
 
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
@@ -170,6 +173,9 @@ class DescribeAgenticDBProjectsResponseBodyItems(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('HistoryRetentionSeconds') is not None:
+            self.history_retention_seconds = m.get('HistoryRetentionSeconds')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

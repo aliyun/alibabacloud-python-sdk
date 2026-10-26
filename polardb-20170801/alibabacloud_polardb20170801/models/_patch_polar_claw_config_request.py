@@ -17,9 +17,9 @@ class PatchPolarClawConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # A JSON merge-patch object.
+        # The JSON merge patch object.
         self.config_patch = config_patch
-        # Specifies whether to restart the gateway after applying the patch. The default is `true`.
+        # Specifies whether to restart the gateway after the patch is applied. Default value: true.
         self.restart = restart
 
     def validate(self):

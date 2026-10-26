@@ -21,7 +21,9 @@ class DescribeApplicationSessionIdsRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The end of the time range to query.
+        # The end time of the query.
+        # 
+        # The time follows the ISO 8601 standard and is in the UTC time zone (format: YYYY-MM-DDTHH:mmZ).
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -36,7 +38,7 @@ class DescribeApplicationSessionIdsRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The beginning of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
+        # The start time of the query. The time is in the `YYYY-MM-DDThh:mmZ` format (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

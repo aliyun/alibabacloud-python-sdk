@@ -55,56 +55,69 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         zone_ids: str = None,
     ):
         # The node type. Valid values:
-        # - vnode: ACK-managed.
-        # - container: Logon-enabled container.
-        # - maas: Model service.
+        # - vnode: ACK-managed node.
+        # - container: container that supports logon.
+        # - maas: model service.
         self.ai_node_type = ai_node_type
         # The API key.
         self.api_key = api_key
         # The startup command currently used by the model service.
         self.command = command
         # The time when the cluster was created.
-        # The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
+        # 
+        # The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
         # The current measured model capacity of the instance. The abstract capacity unit is 1000, which is equivalent to one L20N card.
         self.current_capacity = current_capacity
-        # The custom OSS path of the model currently used by the instance.
+        # The custom Object Storage Service (OSS) path of the model currently used by the instance.
         self.custom_oss_path = custom_oss_path
         # The description of the cluster. Fuzzy match is supported.
         self.dbcluster_description = dbcluster_description
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The status of the cluster. Valid values:
+        # 
         # - **Creating**: The cluster is being created.
         # - **Running**: The cluster is running.
         # - **Deleting**: The cluster is being released.
         # - **DBNodeCreating**: Nodes are being added.
         # - **DBNodeDeleting**: Nodes are being deleted.
-        # - **ClassChanging**: The node specifications are being changed.
+        # - **ClassChanging**: The node specifications are being changed. 
         # - **Deleted**: The cluster is released.
         self.dbcluster_status = dbcluster_status
+        # The database instance status description. A value of ACTIVATION indicates that the database instance is running.
         self.dbinstance_status_desc = dbinstance_status_desc
-        # The details of the nodes.
+        # The details of the node information.
         self.dbnodes = dbnodes
         # The cluster version. Valid values:
+        # 
         # **1.0**
+        # 
         # **2.0**
+        # 
         # **3.0**
         self.dbversion = dbversion
+        # Specifies whether the dedicated host mode is used.
         self.dedicated_host_model = dedicated_host_model
         # The security group ID.
         self.ecs_security_group_id = ecs_security_group_id
-        # The list of network endpoints for the instance.
+        # The list of network endpoint addresses of the instance.
         self.endpoint_list = endpoint_list
         # The expiration time of the cluster.
+        # 
         # > A specific value is returned only for clusters whose billing method is **Prepaid** (subscription). For clusters whose billing method is **Postpaid** (pay-as-you-go), an empty value is returned.
-        # The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
+        # 
+        # The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
-        # - **true**: The cluster has expired.
-        # - **false**: The cluster has not expired.
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.expired = expired
+        # The ID of the AI gateway instance.
         self.gateway_id = gateway_id
+        # The model inference engine.
         self.inference_engine = inference_engine
         # The internal IP address.
         self.internal_ip = internal_ip
@@ -112,21 +125,24 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         self.kvcache_instance_id = kvcache_instance_id
         # The ACK cluster ID.
         self.kube_cluster_id = kube_cluster_id
-        # The lock mode of the instance. Valid value: **lock**. This value indicates that the instance is automatically locked due to expiration or overdue payments.
+        # The lock mode of the instance. A value of **lock** indicates that the instance has expired or has an overdue payment.
         self.lock_mode = lock_mode
         # The maximum number of requests per minute.
         self.max_qpm = max_qpm
+        # The maximum number of tokens allowed per minute.
         self.max_tpm = max_tpm
         # The model name.
         self.model_name = model_name
+        # The name of the workspace to which the model belongs.
         self.model_space_name = model_space_name
         # The model type.
         self.model_type = model_type
         # The billing method. Valid values:
-        # - **Postpaid**: Pay-as-you-go.
-        # - **Prepaid**: Subscription.
+        # 
+        # - **Postpaid**: pay-as-you-go
+        # - **Prepaid**: subscription
         self.pay_type = pay_type
-        # The custom OSS path of the model before the last change.
+        # The custom model OSS path before the last change.
         self.previous_custom_oss_path = previous_custom_oss_path
         # The public IP address.
         self.public_ip = public_ip
@@ -135,8 +151,8 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         # Id of the request
         self.request_id = request_id
         # The architecture type. Valid values:
-        # - container: AI container.
-        # - ainode: AI node.
+        # - container: AI container
+        # - ainode: AI node
         self.run_type = run_type
         # The storage type. Valid values for Enterprise Edition:
         # - **PSL5**
@@ -149,14 +165,17 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         # - **ESSDPL3**
         # - **ESSDAUTOPL**
         self.storage_type = storage_type
+        # The time slice configuration for pay-as-you-go billing.
         self.time_slices_info = time_slices_info
+        # The cycle type of the time slice configuration.
         self.time_slices_type = time_slices_type
-        # The ID of the VPC specified for zone switchover.
+        # The VPC ID specified for zone switching.
         self.vpcid = vpcid
         # The vSwitch ID.
         # 
         # > If VPCId is specified, VSwitchId is required.
         self.v_switch_id = v_switch_id
+        # The Kubernetes configuration of the virtual node.
         self.vnode_kubernetes_config = vnode_kubernetes_config
         # The list of data cloud disks.
         self.volumes = volumes
@@ -539,7 +558,9 @@ class DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig(DaraModel):
         labels: List[main_models.DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels] = None,
         taints: List[main_models.DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints] = None,
     ):
+        # The list of Kubernetes node labels.
         self.labels = labels
+        # The list of Kubernetes node taints.
         self.taints = taints
 
     def validate(self):
@@ -592,8 +613,11 @@ class DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints(DaraMo
         key: str = None,
         value: str = None,
     ):
+        # The scheduling effect of the node taint.
         self.effect = effect
+        # The key of the node taint.
         self.key = key
+        # The value of the node taint.
         self.value = value
 
     def validate(self):
@@ -634,7 +658,9 @@ class DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels(DaraMo
         key: str = None,
         value: str = None,
     ):
+        # The key of the node label.
         self.key = key
+        # The value of the node label.
         self.value = value
 
     def validate(self):
@@ -668,6 +694,7 @@ class DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo(DaraModel):
         self,
         time_slices: List[main_models.DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices] = None,
     ):
+        # The list of time slices for pay-as-you-go billing.
         self.time_slices = time_slices
 
     def validate(self):
@@ -704,7 +731,9 @@ class DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices(DaraModel
         begin_time: str = None,
         end_time: str = None,
     ):
+        # The start time of the time slice, in the HH:mm format.
         self.begin_time = begin_time
+        # The end time of the time slice, in the HH:mm format.
         self.end_time = end_time
 
     def validate(self):
@@ -738,7 +767,7 @@ class DescribeAIDBClusterAttributeResponseBodyEndpointList(DaraModel):
         self,
         net_info_items: List[main_models.DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems] = None,
     ):
-        # The list of network information for the instance.
+        # The list of network information of the instance.
         self.net_info_items = net_info_items
 
     def validate(self):
@@ -776,12 +805,12 @@ class DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems(DaraModel
         net_type: str = None,
         port: str = None,
     ):
-        # The database endpoint.
+        # The database connection address.
         self.connection_string = connection_string
-        # The network type of the endpoint. Valid values:
-        # * **Public**: Public network endpoint.
-        # * **Private**: Private network endpoint.
-        # * **Inner**: Private network endpoint (classic network).
+        # The network type of the connection string. Valid values:
+        # * **Public**: Public network address.
+        # * **Private**: Private network address.
+        # * **Inner**: Private network address (classic network).
         self.net_type = net_type
         # The port number.
         self.port = port
@@ -849,9 +878,10 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         # The number of CPU cores of the node.
         self.cpu_cores = cpu_cores
         # The time when the node was created.
-        # The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
+        # 
+        # The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
-        # The node specifications.
+        # The cluster specifications.
         self.dbnode_class = dbnode_class
         # The description of the node.
         self.dbnode_description = dbnode_description
@@ -861,12 +891,12 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         # * **Creating**: The node is being created. 
         # * **Running**: The node is running. 
         # * **Deleting**: The node is being deleted.  
-        # * **Rebooting**: The node is restarting.  
+        # * **Rebooting**: The node is being restarted.  
         # * **DBNodeCreating**: Nodes are being added.  
         # * **DBNodeDeleting**: Nodes are being deleted. 
         # * **ClassChanging**: The node specifications are being changed.  
         # * **MinorVersionUpgrading**: The minor version is being upgraded.
-        # * **Maintaining**: The instance is under maintenance.  
+        # * **Maintaining**: The instance is being maintained.  
         # * **Switching**: A switchover is in progress.
         self.dbnode_status = dbnode_status
         # The number of GPUs.
@@ -877,6 +907,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         self.log_index = log_index
         # The memory size of the node. Unit: MB.
         self.memory_size = memory_size
+        # The model name.
         self.model_name = model_name
         # The name of the workspace to which the model belongs.
         self.model_space_name = model_space_name
@@ -890,7 +921,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The zone ID.
+        # The zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1054,6 +1085,7 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis(DaraModel):
     ):
         # The name of the API supported by the database node.
         self.api_name = api_name
+        # The generation mode of the API.
         self.generation_mode = generation_mode
         # The path of the supported API.
         self.path = path

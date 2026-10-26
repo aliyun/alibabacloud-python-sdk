@@ -17,11 +17,11 @@ class DescribeAgenticDBBranchRequest(DaraModel):
         # 
         # This parameter is required.
         self.branch_id = branch_id
-        # The AgenticDB cluster ID.
+        # The ID of the AgenticDB cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the project to which the branch belongs.
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -29,7 +29,7 @@ class DescribeAgenticDBBranchRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the tenant to which the branch belongs.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

@@ -23,15 +23,15 @@ class DescribeAgenticDBProjectsRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 30. Maximum value: 100.
         self.page_size = page_size
-        # The project ID for exact match.
+        # The project ID used for exact matching.
         self.project_id = project_id
-        # The project name for fuzzy match.
+        # The project name used for fuzzy matching.
         self.project_name = project_name
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the tenant to which the project belongs.
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

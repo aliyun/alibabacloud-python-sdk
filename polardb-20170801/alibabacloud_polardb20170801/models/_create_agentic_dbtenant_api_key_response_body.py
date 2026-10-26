@@ -15,17 +15,13 @@ class CreateAgenticDBTenantApiKeyResponseBody(DaraModel):
         tenant_id: str = None,
         tenant_name: str = None,
     ):
-        # The API key in plaintext. This value is returned only in this response.
+        # The plaintext of the API key. This value is returned only in the current response.
         self.api_key = api_key
         # The resource ID of the API key.
         self.api_key_id = api_key_id
-        # The time when the API key was created.
-        # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time. The time is in ISO 8601 format and follows the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
-        # The expiration time of the API key. This value is empty if the API key never expires.
-        # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The expiration time. This parameter is empty if the API key never expires. The time is in ISO 8601 format and follows the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
         # The request ID.
         self.request_id = request_id

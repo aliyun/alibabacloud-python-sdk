@@ -24,7 +24,7 @@ class DescribeAgenticDBComputeClustersResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -102,23 +102,22 @@ class DescribeAgenticDBComputeClustersResponseBodyItems(DaraModel):
         tenant_id: str = None,
         tenant_name: str = None,
     ):
-        # The ID of the associated branch.
+        # The associated branch ID.
         self.branch_id = branch_id
-        # The name of the associated branch.
+        # The associated branch name.
         self.branch_name = branch_name
         # The compute instance ID.
         self.compute_cluster_id = compute_cluster_id
-        # The number of compute nodes. The value is fixed to 1 in the first phase.
+        # The number of compute nodes (fixed to 1 in the first phase).
         self.compute_node_count = compute_node_count
-        # The time when the compute instance was created.
-        # 
-        # The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time. The time is in ISO 8601 format and uses the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
-        # The description of the compute instance.
+        # The description.
         self.description = description
-        # Indicates whether the compute instance is the default branch.
+        # Indicates whether it is the default branch.
         self.is_default_branch = is_default_branch
-        # The time when the compute instance was last activated.
+        # The last activation time.
+        # The time is in ISO 8601 format and uses the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
         self.last_activated_at = last_activated_at
         # The maximum compute unit.
         self.max_cu = max_cu
@@ -126,21 +125,21 @@ class DescribeAgenticDBComputeClustersResponseBodyItems(DaraModel):
         self.min_cu = min_cu
         # The operator type.
         self.operator_type = operator_type
-        # The ID of the parent branch. This value is an empty string for the root branch.
+        # The parent branch ID. An empty string indicates the root branch.
         self.parent_branch_id = parent_branch_id
-        # The name of the parent branch. This value is an empty string for the root branch.
+        # The parent branch name. An empty string indicates the root branch.
         self.parent_branch_name = parent_branch_name
-        # The ID of the associated project.
+        # The associated project ID.
         self.project_id = project_id
-        # The name of the associated project.
+        # The associated project name.
         self.project_name = project_name
-        # The status of the compute instance.
+        # The status.
         self.status = status
-        # The amount of data used, in bytes.
+        # The used data volume (in bytes).
         self.storage_size = storage_size
-        # The ID of the associated tenant.
+        # The associated tenant ID.
         self.tenant_id = tenant_id
-        # The name of the associated tenant.
+        # The associated tenant name.
         self.tenant_name = tenant_name
 
     def validate(self):

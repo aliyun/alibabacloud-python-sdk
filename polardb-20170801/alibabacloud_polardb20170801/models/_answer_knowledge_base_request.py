@@ -19,11 +19,11 @@ class AnswerKnowledgeBaseRequest(DaraModel):
         top_k: int = None,
         user_instructions: str = None,
     ):
-        # The unique ID of the knowledge base.
+        # The unique identifier of the knowledge base. To obtain the ID, first call CreateKnowledgeSpace to create a knowledge space, use the returned KnowledgeSpaceId to call CreateKnowledgeBase, and then use the KnowledgeBaseId returned by CreateKnowledgeBase. Separate multiple knowledge base IDs with commas.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
-        # The maximum number of context characters. Valid values: 1000 to 32000.
+        # The maximum number of characters in the context. Valid values: 1000 to 32000.
         self.max_context_chars = max_context_chars
         # The user question.
         # 
@@ -33,9 +33,9 @@ class AnswerKnowledgeBaseRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to enable reranking. Disabled by default.
+        # Specifies whether to enable reranking. Default value: false.
         self.rerank_enabled = rerank_enabled
-        # Specifies whether to return citation sources. Enabled by default.
+        # Specifies whether to return reference sources. Default value: true.
         self.return_sources = return_sources
         # The similarity score threshold.
         self.score_threshold = score_threshold
@@ -43,9 +43,9 @@ class AnswerKnowledgeBaseRequest(DaraModel):
         self.search_mode = search_mode
         # The system prompt.
         self.system_prompt = system_prompt
-        # The number of recall results to retrieve.
+        # The number of results to recall.
         self.top_k = top_k
-        # The user supplementary instructions.
+        # The additional user instructions.
         self.user_instructions = user_instructions
 
     def validate(self):

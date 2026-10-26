@@ -10,19 +10,22 @@ class CreateAgenticDBProjectRequest(DaraModel):
         dbcluster_id: str = None,
         default_branch_name: str = None,
         description: str = None,
+        history_retention_seconds: int = None,
         project_name: str = None,
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The AgenticDB cluster ID.
+        # The ID of the AgenticDB cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The default branch name. Default value: main.
+        # The name of the default branch. Default value: main.
         self.default_branch_name = default_branch_name
         # The description of the project.
         self.description = description
-        # The project name. The name must be unique within the same tenant.
+        # The retention period for historical data to support creating branches at specific points in time. Default value: 604800 seconds (7 days). Valid values: 3600 to 2592000 seconds (1 hour to 30 days), inclusive. The actual range is subject to the service configuration.
+        self.history_retention_seconds = history_retention_seconds
+        # The name of the project. The name must be unique within the tenant.
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -30,7 +33,7 @@ class CreateAgenticDBProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the tenant to which the project belongs.
+        # The ID of the tenant.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id
@@ -51,6 +54,9 @@ class CreateAgenticDBProjectRequest(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.history_retention_seconds is not None:
+            result['HistoryRetentionSeconds'] = self.history_retention_seconds
 
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
@@ -73,6 +79,9 @@ class CreateAgenticDBProjectRequest(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('HistoryRetentionSeconds') is not None:
+            self.history_retention_seconds = m.get('HistoryRetentionSeconds')
 
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')

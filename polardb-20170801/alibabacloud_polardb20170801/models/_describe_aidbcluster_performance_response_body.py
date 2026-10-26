@@ -20,28 +20,29 @@ class DescribeAIDBClusterPerformanceResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The API key for the model service.
+        # An API key for the model service.
         self.api_key = api_key
         # The ID of the database cluster.
         self.dbcluster_id = dbcluster_id
         # The type of the database engine. Only **polardb_ai** is supported.
         self.dbtype = dbtype
-        # The version number of the database AI engine.
+        # The version number of the database AI DPI engine.
         # 
-        # Example: 3.0
+        # 
+        #   -3.0
         self.dbversion = dbversion
-        # The end of the time range that was queried. The time is in the `YYYY-MM-DDThh:mmZ` format and is in UTC.
+        # The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
         self.end_time = end_time
-        # The time granularity of the performance data. Valid values:
+        # The data granularity of performance. Valid values:
         # 
         # - 60
         # - 3600
         self.interval = interval
-        # The details of the instance performance parameters.
+        # The details of the instance performance metrics.
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range that was queried. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is in UTC.
+        # The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -128,11 +129,11 @@ class DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys(DaraModel):
         metric_name: str = None,
         points: List[main_models.DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints] = None,
     ):
-        # The ID of the cluster node.
+        # The ID of the database cluster node.
         self.dbnode_id = dbnode_id
-        # The performance metric.
+        # The performance metrics.
         self.measurement = measurement
-        # The name of the specific performance metric.
+        # The specific measurement name of the performance metrics.
         self.metric_name = metric_name
         # The array of performance data.
         self.points = points
@@ -189,9 +190,9 @@ class DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints(DaraModel)
         timestamp: int = None,
         value: str = None,
     ):
-        # The UNIX timestamp that indicates when the metric was collected. Unit: milliseconds.
+        # The specific time point of the monitoring metric. The format is a UNIX timestamp, and the unit is milliseconds.
         self.timestamp = timestamp
-        # The value of the metric.
+        # The value of the monitoring metric.
         self.value = value
 
     def validate(self):

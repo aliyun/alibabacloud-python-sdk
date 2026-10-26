@@ -22,9 +22,9 @@ class DescribeAgenticDBBranchesResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -94,22 +94,21 @@ class DescribeAgenticDBBranchesResponseBodyItems(DaraModel):
         min_cu: str = None,
         parent_branch_id: str = None,
         parent_branch_name: str = None,
+        parent_timestamp: str = None,
         project_id: str = None,
         project_name: str = None,
         status: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the compute cluster associated with the branch.
+        # The ID of the compute cluster for the branch.
         self.branch_compute_cluster_id = branch_compute_cluster_id
         # The number of compute nodes. The value is fixed to 1 in the first phase.
         self.branch_compute_node_count = branch_compute_node_count
-        # The branch ID.
+        # The ID of the branch.
         self.branch_id = branch_id
-        # The branch name.
+        # The name of the branch.
         self.branch_name = branch_name
-        # The time when the branch was created.
-        # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time when the branch was created. The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The description of the branch.
         self.description = description
@@ -117,25 +116,23 @@ class DescribeAgenticDBBranchesResponseBodyItems(DaraModel):
         self.is_default_branch = is_default_branch
         # The time when the branch was last activated.
         self.last_activated_at = last_activated_at
-        # The maximum compute unit.
+        # The maximum number of compute units (CUs).
         self.max_cu = max_cu
-        # The minimum compute unit.
+        # The minimum number of compute units (CUs).
         self.min_cu = min_cu
         # The ID of the parent branch.
         self.parent_branch_id = parent_branch_id
         # The name of the parent branch.
         self.parent_branch_name = parent_branch_name
-        # The ID of the project to which the branch belongs.
+        # The historical time of the parent branch specified when the branch was created. The time is displayed in RFC 3339 format in UTC. This parameter may be empty if no historical time is specified or for legacy records.
+        self.parent_timestamp = parent_timestamp
+        # The project ID.
         self.project_id = project_id
         # The name of the project to which the branch belongs.
         self.project_name = project_name
-        # The status of the branch. Valid values:
-        # 
-        # - Running
-        # - Pending
-        # - Paused
+        # The status of the branch. Valid values: Running, Pending, and Paused.
         self.status = status
-        # The ID of the tenant to which the branch belongs.
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -181,6 +178,9 @@ class DescribeAgenticDBBranchesResponseBodyItems(DaraModel):
 
         if self.parent_branch_name is not None:
             result['ParentBranchName'] = self.parent_branch_name
+
+        if self.parent_timestamp is not None:
+            result['ParentTimestamp'] = self.parent_timestamp
 
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
@@ -233,6 +233,9 @@ class DescribeAgenticDBBranchesResponseBodyItems(DaraModel):
 
         if m.get('ParentBranchName') is not None:
             self.parent_branch_name = m.get('ParentBranchName')
+
+        if m.get('ParentTimestamp') is not None:
+            self.parent_timestamp = m.get('ParentTimestamp')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

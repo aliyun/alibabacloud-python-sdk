@@ -17,7 +17,7 @@ class CreateActivationCodeRequest(DaraModel):
         resource_owner_id: int = None,
         system_identifier: str = None,
     ):
-        # The Alibaba Cloud order ID. This includes virtual orders.
+        # The Alibaba Cloud order ID, including virtual order IDs. If you use a virtual order, you can call CreateOrGetVirtualLicenseOrder and specify the Engine parameter to obtain the returned AliyunOrderId.
         # 
         # This parameter is required.
         self.aliyun_order_id = aliyun_order_id
@@ -27,7 +27,7 @@ class CreateActivationCodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.mac_address = mac_address
-        # The name of the activation code. It can contain only letters, digits, underscores (_), and hyphens (-). This name is used as the filename when you download the activation code from the console.
+        # The name of the activation code. The name can contain only letters, digits, underscores (_), and hyphens (-). This name is used to generate the activation code file name when you download the code from the console.
         # 
         # This parameter is required.
         self.name = name
@@ -35,7 +35,7 @@ class CreateActivationCodeRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The unique identifier of the database. This parameter is required if \\`AllowEmptySystemIdentifier\\` for the order is set to \\`false\\`.
+        # The unique identifier of the database. This field is required if the AllowEmptySystemIdentifier parameter of the order is set to false.
         self.system_identifier = system_identifier
 
     def validate(self):

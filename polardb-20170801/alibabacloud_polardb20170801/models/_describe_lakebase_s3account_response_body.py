@@ -18,7 +18,7 @@ class DescribeLakebaseS3AccountResponseBody(DaraModel):
         self.user_acc_ak = user_acc_ak
         # The policy document of the S3 account.
         self.user_acc_policy = user_acc_policy
-        # The Secret Key of the S3 account (masked).
+        # The masked Secret Key of the S3 account.
         self.user_acc_sk = user_acc_sk
 
     def validate(self):

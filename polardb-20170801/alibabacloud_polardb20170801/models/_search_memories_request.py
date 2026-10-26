@@ -17,7 +17,7 @@ class SearchMemoriesRequest(DaraModel):
         query: str = None,
         top_k: str = None,
     ):
-        # The application ID. Example: pa-**************.
+        # The ID of the application. Example value: pa-**************.
         # 
         # This parameter is required.
         self.application_id = application_id
@@ -25,15 +25,15 @@ class SearchMemoriesRequest(DaraModel):
         self.create_time_begin = create_time_begin
         # The end time for memory creation.
         self.create_time_end = create_time_end
-        # The memory agent ID.
+        # The ID of the memory agent.
         self.memory_agent_id = memory_agent_id
-        # The memory user ID.
+        # The ID of the memory user.
         # 
         # This parameter is required.
         self.memory_user_id = memory_user_id
         # The page number.
         self.page = page
-        # The number of records per page.
+        # The number of records to display on each page.
         self.page_size = page_size
         # The search query.
         self.query = query

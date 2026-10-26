@@ -23,7 +23,7 @@ class CreateModelApiRequest(DaraModel):
         self.config = config
         # The forced model.
         self.force_model = force_model
-        # The gateway instance ID.
+        # The gateway instance ID. You can obtain the ID from the GwClusterId returned by CreateGateway.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
@@ -34,7 +34,7 @@ class CreateModelApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.model_category = model_category
-        # The model API name.
+        # The name of the model API.
         # 
         # This parameter is required.
         self.name = name
@@ -51,13 +51,13 @@ class CreateModelApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The number of input points.
+        # The number of input tokens.
         self.record_input = record_input
-        # The number of output points.
+        # The number of output tokens.
         self.record_output = record_output
         # The region ID.
         self.region_id = region_id
-        # The list of routing rules (JSON array string).
+        # The list of routing rules, which is a JSON array string.
         # 
         # This parameter is required.
         self.route_rules = route_rules

@@ -31,7 +31,7 @@ class UpdateKnowledgeSpaceShrinkRequest(DaraModel):
         self.region_id = region_id
         # The name of the reranking model.
         self.rerank_model = rerank_model
-        # The default chunking strategy configuration for the knowledge space. Both simple strategies and composite strategies that match by content type are supported.
+        # The default chunking strategy configuration for the knowledge space. Simple strategies and composite strategies matched by content type are supported.
         self.sharding_strategy_config_shrink = sharding_strategy_config_shrink
 
     def validate(self):

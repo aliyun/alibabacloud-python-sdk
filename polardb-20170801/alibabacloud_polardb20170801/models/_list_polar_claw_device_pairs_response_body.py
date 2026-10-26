@@ -19,15 +19,15 @@ class ListPolarClawDevicePairsResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The status code of the response.
+        # The response status code.
         self.code = code
         # The response message.
         self.message = message
-        # A list of paired devices.
+        # The list of paired devices.
         self.paired = paired
-        # A list of pending pairing requests.
+        # The list of pending pairing requests.
         self.pending = pending
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -116,25 +116,25 @@ class ListPolarClawDevicePairsResponseBodyPending(DaraModel):
         silent: bool = None,
         ts: int = None,
     ):
-        # The client ID.
+        # The client identifier.
         self.client_id = client_id
         # The client mode.
         self.client_mode = client_mode
-        # The device family.
+        # The hardware category.
         self.device_family = device_family
-        # The unique device ID.
+        # The unique identifier of the device.
         self.device_id = device_id
         # The display name of the device.
         self.display_name = display_name
-        # Whether the request is to repair an existing pairing.
+        # Specifies whether the request is for re-pairing.
         self.is_repair = is_repair
         # The pairing request ID.
         self.pair_request_id = pair_request_id
-        # The operating system.
+        # The operating system platform.
         self.platform = platform
         # The Ed25519 public key.
         self.public_key = public_key
-        # The requester\\"s remote IP address.
+        # The IP address of the requester.
         self.remote_ip = remote_ip
         # The device role.
         self.role = role
@@ -142,9 +142,9 @@ class ListPolarClawDevicePairsResponseBodyPending(DaraModel):
         self.roles = roles
         # The list of permission scopes.
         self.scopes = scopes
-        # Whether this is a silent pairing.
+        # Specifies whether silent pairing is enabled.
         self.silent = silent
-        # The timestamp of the pairing request, in Unix milliseconds.
+        # The timestamp of the pairing request in Unix milliseconds.
         self.ts = ts
 
     def validate(self):
@@ -265,21 +265,21 @@ class ListPolarClawDevicePairsResponseBodyPaired(DaraModel):
         role: str = None,
         scopes: List[str] = None,
     ):
-        # The client ID.
+        # The client identifier.
         self.client_id = client_id
         # The client mode.
         self.client_mode = client_mode
-        # The time when the device pairing was created, in Unix milliseconds.
+        # The creation time of the device pairing in Unix milliseconds.
         self.created_at_ms = created_at_ms
-        # The device family.
+        # The hardware category.
         self.device_family = device_family
-        # The unique device ID.
+        # The unique identifier of the device.
         self.device_id = device_id
         # The display name of the device.
         self.display_name = display_name
-        # The time when the device was last active, in Unix milliseconds.
+        # The last active time of the device in Unix milliseconds.
         self.last_seen_at_ms = last_seen_at_ms
-        # The operating system.
+        # The operating system platform.
         self.platform = platform
         # The device role.
         self.role = role

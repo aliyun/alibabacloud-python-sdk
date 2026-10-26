@@ -1,0 +1,80 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class ModifyAgenticDBProjectHistoryRetentionRequest(DaraModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        history_retention_seconds: int = None,
+        project_id: str = None,
+        region_id: str = None,
+        tenant_id: str = None,
+    ):
+        # The AgenticDB cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The default valid range is 3,600 to 2,592,000 seconds (1 hour to 30 days), inclusive, subject to service configurations. Shortening the duration may clear historical data. Extending the duration does not restore cleared data.
+        # 
+        # This parameter is required.
+        self.history_retention_seconds = history_retention_seconds
+        # The ID of the target project.
+        # 
+        # This parameter is required.
+        self.project_id = project_id
+        # The region ID.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        # The tenant ID.
+        # 
+        # This parameter is required.
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+
+        if self.history_retention_seconds is not None:
+            result['HistoryRetentionSeconds'] = self.history_retention_seconds
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('HistoryRetentionSeconds') is not None:
+            self.history_retention_seconds = m.get('HistoryRetentionSeconds')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+
+        return self
+

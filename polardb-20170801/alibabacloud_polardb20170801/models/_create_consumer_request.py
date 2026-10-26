@@ -14,19 +14,19 @@ class CreateConsumerRequest(DaraModel):
         nick_name: str = None,
         region_id: str = None,
     ):
-        # The consumer group name.
+        # The consumer group ID. You can obtain the ID from the ConsumerGroupId parameter returned by the CreateConsumerGroup operation.
         self.consumer_group_name = consumer_group_name
-        # The gateway instance ID.
+        # The gateway instance ID. You can obtain the ID from the GwClusterId parameter returned by the CreateGateway operation.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The key type. The only supported value is ApiKey.
+        # The key type. Default value: ApiKey. Valid values: ApiKey.
         self.key_type = key_type
-        # The user name.
+        # The username.
         # 
         # This parameter is required.
         self.name = name
-        # The user nickname.
+        # The nickname.
         self.nick_name = nick_name
         # The region ID.
         self.region_id = region_id

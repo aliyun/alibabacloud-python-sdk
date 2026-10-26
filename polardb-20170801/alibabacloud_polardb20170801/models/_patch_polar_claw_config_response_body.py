@@ -19,17 +19,17 @@ class PatchPolarClawConfigResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The status code.
+        # The response status code.
         self.code = code
-        # The message.
+        # The response message.
         self.message = message
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.ok = ok
-        # A list of the top-level configuration keys that were modified.
+        # The list of modified top-level configuration keys.
         self.patched_keys = patched_keys
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the gateway was restarted.
+        # Indicates whether the gateway is restarted.
         self.restarted = restarted
 
     def validate(self):

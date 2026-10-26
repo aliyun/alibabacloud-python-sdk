@@ -21,7 +21,7 @@ class DescribeCostRulesResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
         # The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
@@ -114,13 +114,13 @@ class DescribeCostRulesResponseBodyItems(DaraModel):
     ):
         # The cache read cost points per million tokens. Default value: 0.
         self.cache_cost_points_per_million = cache_cost_points_per_million
-        # The cache creation or write cost points per million tokens.
+        # The cache creation cost points per million tokens.
         self.cache_creation_cost_points_per_million = cache_creation_cost_points_per_million
         # The ID of the cost rule.
         self.cost_rule_id = cost_rule_id
-        # The end time of the effective period.
+        # The end time of the effective period. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.effective_end_time = effective_end_time
-        # The start time of the effective period.
+        # The start time of the effective period. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.effective_start_time = effective_start_time
         # The type of the effective target.
         self.effective_target_type = effective_target_type
@@ -140,7 +140,7 @@ class DescribeCostRulesResponseBodyItems(DaraModel):
         self.input_cost_points_per_million = input_cost_points_per_million
         # The input token tier. An empty value indicates a legacy or default rule.
         self.input_token_tier = input_token_tier
-        # The non-cumulative tiered pricing for input tokens. Each element includes the tier and the input cost points per million tokens.
+        # The non-cumulative tiered pricing for input tokens. Each element contains Tier and InputCostPointsPerMillion.
         self.input_token_tiers = input_token_tiers
         # The name of the model.
         self.model = model

@@ -40,7 +40,6 @@ class ModifyModelApiRequest(DaraModel):
         # This parameter is required.
         self.path_prefix = path_prefix
         # The protocol. Valid values:
-        # 
         # * **openai**
         # * **anthropic**
         # * **bailian**
@@ -48,13 +47,13 @@ class ModifyModelApiRequest(DaraModel):
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The number of input points.
+        # The number of input tokens.
         self.record_input = record_input
-        # The number of output points.
+        # The number of output tokens.
         self.record_output = record_output
         # The region ID.
         self.region_id = region_id
-        # The list of routing rules (JSON array string).
+        # The list of routing rules. The value is a JSON array string.
         # 
         # This parameter is required.
         self.route_rules = route_rules

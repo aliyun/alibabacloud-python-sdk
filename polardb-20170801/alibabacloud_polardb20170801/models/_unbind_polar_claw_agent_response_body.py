@@ -15,19 +15,19 @@ class UnbindPolarClawAgentResponseBody(DaraModel):
         request_id: str = None,
         total_bindings: int = None,
     ):
-        # The agent ID.
+        # Agent ID
         self.agent_id = agent_id
         # The application ID.
         self.application_id = application_id
-        # The status code of the response.
+        # The response status code.
         self.code = code
         # The response message.
         self.message = message
-        # The number of removed bindings.
+        # The actual number of bindings removed.
         self.removed_count = removed_count
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The total number of bindings after the operation.
+        # The total number of global bindings after the operation.
         self.total_bindings = total_bindings
 
     def validate(self):

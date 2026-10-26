@@ -23,23 +23,23 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
     ):
         # The cluster engine.
         self.engine = engine
-        # The DPI engine version.
+        # The database engine version.
         self.engine_version = engine_version
         # The cluster endpoint details.
         self.items = items
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The total number of records on the page.
+        # The total number of entries on the current page.
         self.page_record_count = page_record_count
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the PolarDB cluster.
+        # The ID of the associated PolarDB cluster.
         self.relative_dbcluster_id = relative_dbcluster_id
         # Id of the request
         self.request_id = request_id
         # The task type.
         self.task_type = task_type
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -147,17 +147,17 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
     ):
         # The task completion time.
         # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.completed_time = completed_time
         # The creation time.
         # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.creation_time = creation_time
         # The node description.
         self.dbnode_description = dbnode_description
-        # The model operator instance ID.
+        # The instance ID of the model operator.
         self.dbnode_id = dbnode_id
-        # The instance status. This parameter may not be returned.
+        # The instance status. This field may not be returned.
         self.dbnode_status = dbnode_status
         # The instance status.
         self.dbnode_status_desc = dbnode_status_desc
@@ -165,7 +165,7 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         self.data_zone_id = data_zone_id
         # The cluster engine.
         self.engine = engine
-        # The DPI engine version.
+        # The database engine version.
         self.engine_version = engine_version
         # The model name.
         self.model_name = model_name
@@ -177,13 +177,13 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         self.running_times = running_times
         # The task start time.
         # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
         self.start_time = start_time
         # The mode.
         self.train_mode = train_mode
         # The type.
         self.train_type = train_type
-        # The fine-tuning framework.
+        # The tuning framework.
         self.tune_arch = tune_arch
 
     def validate(self):

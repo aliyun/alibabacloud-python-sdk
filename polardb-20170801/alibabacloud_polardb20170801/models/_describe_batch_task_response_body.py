@@ -22,26 +22,27 @@ class DescribeBatchTaskResponseBody(DaraModel):
         task_type: str = None,
         total_count: int = None,
     ):
+        # The target application type of the batch task.
         self.application_type = application_type
-        # The ID of the batch task.
+        # The batch ID of the scheduled task execution.
         self.batch_id = batch_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The task status.
+        # The status of the task.
         self.status = status
-        # A list of subtasks.
+        # The list of subtasks.
         self.sub_tasks = sub_tasks
-        # The number of successful subtasks.
+        # The total number of domain names or DNS records that are successfully processed.
         self.success_count = success_count
-        # The time when the task started.
+        # The start time of the task.
         self.task_begin = task_begin
-        # The time when the task ended.
+        # The end time of the task.
         self.task_end = task_end
-        # The name of the task.
+        # The description of the model service.
         self.task_name = task_name
         # The type of the task.
         self.task_type = task_type
-        # The total number of subtasks.
+        # The number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -144,13 +145,13 @@ class DescribeBatchTaskResponseBodySubTasks(DaraModel):
     ):
         # The error message.
         self.error_msg = error_msg
-        # The instance ID.
+        # The ID of the application.
         self.instance_id = instance_id
         # The status of the subtask.
         self.status = status
-        # The time when the subtask started.
+        # The start time of the task.
         self.task_begin = task_begin
-        # The time when the subtask ended.
+        # The end time of the task.
         self.task_end = task_end
         # The ID of the subtask.
         self.task_id = task_id

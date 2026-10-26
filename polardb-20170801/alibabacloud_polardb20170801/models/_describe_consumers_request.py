@@ -16,11 +16,13 @@ class DescribeConsumersRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The user group ID.
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # The user ID.
+        # The ID of the consumer.
         self.consumer_id = consumer_id
+        # The name used to filter consumers.
         self.consumer_name = consumer_name
+        # The list of names used to filter consumers.
         self.consumer_name_list = consumer_name_list
         # The gateway instance ID.
         # 

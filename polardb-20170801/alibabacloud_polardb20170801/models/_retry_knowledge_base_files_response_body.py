@@ -16,13 +16,13 @@ class RetryKnowledgeBaseFilesResponseBody(DaraModel):
         succeeded_count: int = None,
         total_count: int = None,
     ):
-        # The number of failed retries.
+        # The number of failed records.
         self.failed_count = failed_count
         # The list of retry results.
         self.items = items
         # Id of the request
         self.request_id = request_id
-        # The number of successful retries.
+        # The number of successful records.
         self.succeeded_count = succeeded_count
         # The total number of records.
         self.total_count = total_count
@@ -89,13 +89,13 @@ class RetryKnowledgeBaseFilesResponseBodyItems(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # The failure reason.
+        # The cause of the failure.
         self.error_message = error_message
         # The file ID.
         self.file_id = file_id
         # The request result. Valid values:
         # 
-        # - **true**: The request was successful.
+        # - **true**: The request is successful.
         # - **false**: The request failed.
         self.success = success
 

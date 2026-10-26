@@ -15,13 +15,13 @@ class DescribeExtensionsResponseBody(DaraModel):
         request_id: str = None,
         uninstalled_extensions: List[main_models.DescribeExtensionsResponseBodyUninstalledExtensions] = None,
     ):
-        # The extensions that are installed in the specified database.
+        # The information about installed plugins in the specified database.
         self.installed_extensions = installed_extensions
-        # The overview of the extension.
+        # The plugin overview information.
         self.overview = overview
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The extensions that are not installed in the specified database.
+        # The information about uninstalled plugins in the specified database.
         self.uninstalled_extensions = uninstalled_extensions
 
     def validate(self):
@@ -92,23 +92,23 @@ class DescribeExtensionsResponseBodyUninstalledExtensions(DaraModel):
         requires: str = None,
         restart: str = None,
     ):
-        # The extension type.
+        # The plugin category.
         self.category = category
-        # The purpose of the extension.
+        # The purpose of the plugin.
         self.comment = comment
-        # The default version of the extension.
+        # The default version of the plugin.
         self.default_version = default_version
-        # The currently installed version of the extension.
+        # The currently installed version of the plugin.
         self.installed_version = installed_version
-        # The extension name.
+        # The plugin name.
         self.name = name
-        # The owner of the extension.
+        # The owner of the plugin.
         self.owner = owner
-        # The priority of the extension.
+        # The priority of the plugin.
         self.priority = priority
-        # The extensions on which this extension depends.
+        # The plugins that this plugin depends on during installation.
         self.requires = requires
-        # Specifies whether to restart the application. \\`true\\`: The application is restarted. \\`false\\`: The application is not restarted.
+        # Specifies whether to restart the application. Valid values: true: Restart. false: Do not restart.
         self.restart = restart
 
     def validate(self):
@@ -192,23 +192,23 @@ class DescribeExtensionsResponseBodyInstalledExtensions(DaraModel):
         requires: str = None,
         restart: str = None,
     ):
-        # The extension type.
+        # The plugin category.
         self.category = category
-        # The description of the extension.
+        # The plugin description.
         self.comment = comment
-        # The default version of the extension.
+        # The default version of the plugin.
         self.default_version = default_version
-        # The currently installed version of the extension.
+        # The currently installed version of the plugin.
         self.installed_version = installed_version
-        # The extension name.
+        # The plugin name.
         self.name = name
-        # The owner of the extension.
+        # The owner of the plugin.
         self.owner = owner
-        # The priority of the extension.
+        # The priority of the plugin.
         self.priority = priority
-        # The extensions on which this extension depends.
+        # The plugins that this plugin depends on during installation.
         self.requires = requires
-        # Specifies whether to restart the application. \\`true\\`: The application is restarted. \\`false\\`: The application is not restarted.
+        # Specifies whether to restart the application. Valid values: true: Restart. false: Do not restart.
         self.restart = restart
 
     def validate(self):

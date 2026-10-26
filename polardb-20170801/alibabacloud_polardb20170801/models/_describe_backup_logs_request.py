@@ -24,27 +24,24 @@ class DescribeBackupLogsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. The end time must be later than the start time. The time is in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
+        # The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. The default value is **1**.
+        # The page number. Valid values: an integer greater than 0 and up to the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
+        # * **30** 
+        # * **50**
+        # * **100**
         # 
-        # - **30**
-        # 
-        # - **50**
-        # 
-        # - **100**
-        # 
-        # The default value is **30**.
+        # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. The time is in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
+        # The start time of the query. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

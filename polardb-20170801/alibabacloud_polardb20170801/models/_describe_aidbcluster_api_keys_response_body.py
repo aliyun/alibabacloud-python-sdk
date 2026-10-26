@@ -15,9 +15,11 @@ class DescribeAIDBClusterApiKeysResponseBody(DaraModel):
         page_size: str = None,
         request_id: str = None,
     ):
-        # API Keys。
+        # The API keys.
         self.api_keys = api_keys
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
@@ -81,7 +83,7 @@ class DescribeAIDBClusterApiKeysResponseBodyApiKeys(DaraModel):
         self.api_key = api_key
         # The creation time.
         # 
-        # The time is displayed in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The description of the API key.
         self.description = description

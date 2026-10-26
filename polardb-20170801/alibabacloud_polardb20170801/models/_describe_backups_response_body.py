@@ -20,16 +20,16 @@ class DescribeBackupsResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
         # The total size of level-2 backups in the specified region. Unit: bytes.
         # > - Only PSL4 and PSL5 storage types are supported.
-        # > - Only clusters with the level-2 backup feature enabled are supported.
-        # > - If this parameter is not returned, the level-2 backup size is 0.
+        # > - Only clusters that have the level-2 backup feature enabled are supported.
+        # > - If this parameter is not returned, the size of level-2 backups is 0.
         self.total_level_2backup_size = total_level_2backup_size
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

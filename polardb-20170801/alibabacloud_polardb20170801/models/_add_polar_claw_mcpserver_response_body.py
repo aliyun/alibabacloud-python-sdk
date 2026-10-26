@@ -16,15 +16,15 @@ class AddPolarClawMCPServerResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The returned status code.
+        # The response status code.
         self.code = code
-        # The returned message.
+        # The response message.
         self.message = message
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.ok = ok
         # The request ID.
         self.request_id = request_id
-        # The name of the added or updated MCP server.
+        # The ID of the added or updated MCP server.
         self.server_name = server_name
 
     def validate(self):

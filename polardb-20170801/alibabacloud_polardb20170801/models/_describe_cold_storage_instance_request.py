@@ -23,31 +23,27 @@ class DescribeColdStorageInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         table_name: str = None,
     ):
-        # The ID of the PolarDB cluster.
+        # The PolarDB cluster ID.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
         self.dbname = dbname
-        # The type of the supported engine. The return value is the sum of the values of the supported engine types.
+        # The supported engine types. The return value is the sum of the following engine type values:
         # 
-        # - 1: Search engine
+        # - 1: search engine
+        # - 2: time series engine
+        # - 4: wide table engine
+        # - 8: file engine
         # 
-        # - 2: LindormTSDB
-        # 
-        # - 4: LindormTable
-        # 
-        # - 8: File engine
-        # 
-        # > For example, if \\`EngineType\\` is 15 (8 + 4 + 2 + 1), the instance supports the search engine, LindormTSDB, LindormTable, and file engine. If \\`EngineType\\` is 6 (4 + 2), the instance supports LindormTSDB and LindormTable.
+        # > For example, if the EngineType value is 15, 15 = 8 + 4 + 2 + 1, which indicates that the instance supports the search engine, time series engine, wide table engine, and file engine. If the EngineType value is 6, 6 = 4 + 2, which indicates that the instance supports the time series engine and wide table engine.
         self.engine_type = engine_type
-        # The expiration time of the cluster. Note: This parameter is returned only for subscription clusters. An empty value is returned for pay-as-you-go clusters.
+        # The expiration time of the cluster. Note: A specific value is returned only for clusters whose billing method is Prepaid (subscription). For Postpaid (pay-as-you-go) clusters, a null value is returned.
         self.expire_time = expire_time
-        # - If you do not specify the **MaxResults** parameter, the query is not paged. The value of the **MaxResults** parameter in the response indicates the total number of entries.
-        # 
-        # - If you specify the **MaxResults** parameter, the query is paged. **MaxResults** specifies the number of entries to return on each page. Valid values: **1** to **100**. The value of the **MaxResults** parameter in the response indicates the number of entries on the current page. The recommended value is **20**.
+        # - If you do not specify the **MaxResults** parameter, batch query is not required. The value of the **MaxResults** parameter returned after the API call indicates the total number of list entries.
+        # - If you specify the **MaxResults** parameter, batch query is required. The value of **MaxResults** indicates the number of entries displayed per batch. Valid values: **1** to **100**. The value of the **MaxResults** parameter returned after the API call indicates the number of list entries in the current query batch. Set the **MaxResults** parameter to **20**.
         self.max_results = max_results
-        # A token to retrieve the next page of results. Set this parameter to the \\`NextToken\\` value from a previous call. You do not need to specify this parameter for the first call.
+        # The query token. Set the value to the NextToken value returned from the previous API call. If there are no more queries, do not specify this parameter.
         self.next_token = next_token
-        # The object type. Valid values: \\`TABLE\\`, \\`PARTITION_TABLE\\`, and \\`LOB\\`.
+        # The object type. Valid values: TABLE, PARTITION_TABLE, and LOB.
         self.object_type = object_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -56,10 +52,8 @@ class DescribeColdStorageInstanceRequest(DaraModel):
         # The number of entries per page.
         self.page_size = page_size
         # The region ID.
-        # 
-        # > - For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
-        # 
-        # - If you do not specify this parameter, the operation queries scheduled tasks in all regions within your account.
+        # > * You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information of all clusters under the target account.
+        # * If this parameter is left empty, scheduled tasks in all regions under the current account are queried by default.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

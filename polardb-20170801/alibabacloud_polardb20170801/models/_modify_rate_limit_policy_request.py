@@ -13,17 +13,17 @@ class ModifyRateLimitPolicyRequest(DaraModel):
         rate_limit_tpm: str = None,
         region_id: str = None,
     ):
-        # The gateway instance ID.
+        # The ID of the gateway instance. You can obtain the ID from the GwClusterId parameter returned by CreateGateway.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The rate limit policy ID.
+        # The ID of the throttling policy to be modified. You can obtain the ID from the PolicyId parameter returned by CreateRateLimitPolicy.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The maximum number of requests per minute.
+        # The limit on the number of requests per minute.
         self.rate_limit_rpm = rate_limit_rpm
-        # The maximum number of tokens per minute.
+        # The limit on the number of tokens per minute.
         self.rate_limit_tpm = rate_limit_tpm
         # The region ID.
         self.region_id = region_id

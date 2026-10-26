@@ -21,13 +21,13 @@ class DescribeAIDBClusterTasksRequest(DaraModel):
         self.kube_type = kube_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # The PolarDB instance ID.
+        # The instance ID of the associated PolarDB instance.
         self.relative_dbcluster_id = relative_dbcluster_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

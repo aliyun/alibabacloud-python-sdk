@@ -17,14 +17,14 @@ class DescribeBudgetPoliciesRequest(DaraModel):
         scope_ref_name: str = None,
         status: str = None,
     ):
-        # The dimension object ID. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
+        # The ID of the dimension object. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
         self.budget_dimension_ref_id = budget_dimension_ref_id
-        # The policy type. Valid values:
+        # The type of the policy. Valid values:
         # 
-        # - **ConsumerGroup**: total budget for a user group
-        # - **Consumer**: total budget for a user
+        # - **ConsumerGroup**: Total budget for consumer groups.
+        # - **Consumer**: Total budget for consumers.
         self.budget_dimension_type = budget_dimension_type
-        # The budget policy ID.
+        # The ID of the budget policy.
         self.budget_policy_id = budget_policy_id
         # The gateway instance ID.
         # 
@@ -41,11 +41,12 @@ class DescribeBudgetPoliciesRequest(DaraModel):
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
+        # The name of the object associated with the scope of the budget policy.
         self.scope_ref_name = scope_ref_name
-        # The policy status. Valid values:
+        # The status of the policy. Valid values:
         # 
-        # - **Enabled**: enabled
-        # - **Disenabled**: disabled
+        # - **Enabled**: Enabled.
+        # - **Disenabled**: Disabled.
         self.status = status
 
     def validate(self):

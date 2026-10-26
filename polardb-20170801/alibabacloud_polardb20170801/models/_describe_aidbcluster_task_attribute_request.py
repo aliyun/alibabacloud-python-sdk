@@ -18,8 +18,7 @@ class DescribeAIDBClusterTaskAttributeRequest(DaraModel):
         # The task ID.
         self.dbcluster_id = dbcluster_id
         # The query mode. Valid values:
-        # 
-        # * **RelatedAITask**: queries task details.
+        # * **RelatedAITask**: queries task details
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id

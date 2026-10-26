@@ -102,7 +102,7 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShards(DaraModel):
     ):
         # The list of figure or table captions associated with the shard.
         self.captions = captions
-        # The list of structured element references in the Docling source document associated with the shard, which can be used to precisely locate the original elements.
+        # The list of structured element references of the source document associated with the shard, which can be used to precisely locate the original elements.
         self.doc_items = doc_items
         # The section heading chain to which the shard belongs.
         self.headings = headings
@@ -200,7 +200,7 @@ class DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources(DaraModel)
         self.document_index = document_index
         # The unique identifier of the image resource.
         self.id = id
-        # The element reference of the image in the Docling source document structure.
+        # The element reference of the image in the source document structure.
         self.item_ref = item_ref
         # The MIME type of the image resource.
         self.mime_type = mime_type

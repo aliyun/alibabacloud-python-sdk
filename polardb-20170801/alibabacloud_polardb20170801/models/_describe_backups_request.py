@@ -24,28 +24,28 @@ class DescribeBackupsRequest(DaraModel):
         # The backup ID.
         self.backup_id = backup_id
         # The backup mode. Valid values: 
-        # * **Automated**: automatic backup.
-        # * **Manual**: manual backup.
+        # * **Automated**: automatic backup
+        # * **Manual**: manual backup
         self.backup_mode = backup_mode
         # The destination region for cross-region backups.
         # 
-        # > Currently, only PolarDB for MySQL supports this parameter.
+        # > This parameter is supported only by PolarDB for MySQL.
         self.backup_region = backup_region
         # The backup status. Valid values:
-        # * **Success**: The backup is complete.
+        # * **Success**: The backup is completed.
         # * **Failed**: The backup failed.
         self.backup_status = backup_status
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
+        # The end time of the query. The end time must be later than the start time. The time is in the `YYYY-MM-DDThh:mmZ` format (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Set the value to an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values: 
         # * **30**
@@ -56,7 +56,7 @@ class DescribeBackupsRequest(DaraModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
+        # The start time of the query. The time is in the `YYYY-MM-DDThh:mmZ` format (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

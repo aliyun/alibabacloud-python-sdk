@@ -49,7 +49,7 @@ class DescribeDBClustersRequest(DaraModel):
         self.dbtype = dbtype
         # The database version.
         self.dbversion = dbversion
-        # The query mode for the list. A value of Simple indicates the brief mode, in which only the basic metadata of the clusters is returned.
+        # The query mode for the list. A value of Simple indicates the simplified mode, in which only the basic metadata of the clusters is returned.
         # > If this parameter is not specified, the detailed mode is used by default, and the detailed information of the clusters is returned.
         self.describe_type = describe_type
         # Specifies whether the cluster has expired. Valid values:
@@ -68,8 +68,8 @@ class DescribeDBClustersRequest(DaraModel):
         self.page_size = page_size
         # The billing method. Valid values: 
         # 
-        # - **Postpaid**: pay-as-you-go
-        # - **Prepaid**: subscription
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
         # Filters the clusters created in the last N days. Valid values: 0 to 15.
         self.recent_creation_interval = recent_creation_interval

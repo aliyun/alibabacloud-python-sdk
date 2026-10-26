@@ -10,11 +10,11 @@ class DescribeGatewayAttributeRequest(DaraModel):
         gw_cluster_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the gateway instance.
+        # The ID of the gateway instance. Example: pg-xxxxxxx.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

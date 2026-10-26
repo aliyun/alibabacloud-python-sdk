@@ -13,17 +13,17 @@ class UpdatePolarClawSkillShrinkRequest(DaraModel):
         env_shrink: str = None,
         skill_key: str = None,
     ):
-        # The Skill API key. An empty string indicates that the key is deleted.
+        # The skill API key. An empty string indicates that the key is deleted.
         self.api_key = api_key
         # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Specifies whether to enable the Skill.
+        # Specifies whether the skill is enabled.
         self.enabled = enabled
-        # The environment variables as a key-value map. A null value indicates that the variable is deleted.
+        # The environment variables as a key-value map. An empty value indicates that the variable is deleted.
         self.env_shrink = env_shrink
-        # The Skill identifier key.
+        # The skill identifier key.
         # 
         # This parameter is required.
         self.skill_key = skill_key

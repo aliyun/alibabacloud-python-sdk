@@ -19,51 +19,48 @@ class DescribeAgenticDBBranchResponseBody(DaraModel):
         min_cu: str = None,
         parent_branch_id: str = None,
         parent_branch_name: str = None,
+        parent_timestamp: str = None,
         project_id: str = None,
         project_name: str = None,
         request_id: str = None,
         status: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the compute cluster associated with the branch.
+        # The ID of the compute cluster for the branch.
         self.branch_compute_cluster_id = branch_compute_cluster_id
-        # The number of compute nodes. The value is fixed to 1 in the initial phase.
+        # The number of compute nodes. The value is fixed to 1 in the first phase.
         self.branch_compute_node_count = branch_compute_node_count
         # The branch ID.
         self.branch_id = branch_id
-        # The branch name.
+        # The name of the branch.
         self.branch_name = branch_name
-        # The time when the branch was created.
-        # 
-        # The time is in the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time. The time follows the ISO 8601 standard in the UTC time zone. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.create_time = create_time
-        # The description of the branch.
+        # The description.
         self.description = description
         # Indicates whether the branch is the default branch.
         self.is_default_branch = is_default_branch
         # The time when the branch was last activated.
         self.last_activated_at = last_activated_at
-        # The maximum compute unit.
+        # The maximum number of compute units (CUs).
         self.max_cu = max_cu
-        # The minimum compute unit.
+        # The minimum number of compute units (CUs).
         self.min_cu = min_cu
         # The ID of the parent branch.
         self.parent_branch_id = parent_branch_id
         # The name of the parent branch.
         self.parent_branch_name = parent_branch_name
-        # The ID of the project to which the branch belongs.
+        # The historical time of the parent branch specified when the branch is created. The time follows the RFC 3339 standard in the UTC time zone. If no historical time is specified or for old records, this value may be empty.
+        self.parent_timestamp = parent_timestamp
+        # The project ID.
         self.project_id = project_id
         # The name of the project to which the branch belongs.
         self.project_name = project_name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The status of the branch. Valid values:
-        # 
-        # - Running
-        # - Pending
-        # - Paused
+        # The status of the branch. Valid values: Running, Pending, and Paused.
         self.status = status
-        # The ID of the tenant to which the branch belongs.
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -109,6 +106,9 @@ class DescribeAgenticDBBranchResponseBody(DaraModel):
 
         if self.parent_branch_name is not None:
             result['ParentBranchName'] = self.parent_branch_name
+
+        if self.parent_timestamp is not None:
+            result['ParentTimestamp'] = self.parent_timestamp
 
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
@@ -164,6 +164,9 @@ class DescribeAgenticDBBranchResponseBody(DaraModel):
 
         if m.get('ParentBranchName') is not None:
             self.parent_branch_name = m.get('ParentBranchName')
+
+        if m.get('ParentTimestamp') is not None:
+            self.parent_timestamp = m.get('ParentTimestamp')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')

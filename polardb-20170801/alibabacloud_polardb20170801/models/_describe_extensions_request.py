@@ -23,6 +23,7 @@ class DescribeExtensionsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbname = dbname
+        # The name of the database plugin to query.
         self.extension_name = extension_name
         self.owner_account = owner_account
         self.owner_id = owner_id

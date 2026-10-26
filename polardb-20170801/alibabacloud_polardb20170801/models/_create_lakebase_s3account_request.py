@@ -13,7 +13,7 @@ class CreateLakebaseS3AccountRequest(DaraModel):
         user_acc_policy: str = None,
         user_acc_sk: str = None,
     ):
-        # The PolarFS instance ID.
+        # The PolarFS instance ID. You can obtain the ID from the PolarFsInstanceId parameter returned by the CreatePolarFs operation.
         # 
         # This parameter is required.
         self.pfs_instance_id = pfs_instance_id
@@ -21,17 +21,17 @@ class CreateLakebaseS3AccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The Access Key of the S3 account.
+        # The access key of the S3 account.
         # 
-        # > The account name can contain only uppercase letters, lowercase letters, and digits, and cannot exceed 32 characters in length.
+        # > The account name supports only uppercase and lowercase letters and digits, and can be up to 32 characters in length.
         # 
         # This parameter is required.
         self.user_acc_ak = user_acc_ak
-        # A policy document in JSON format that defines the permissions of the S3 account. If this parameter is not specified, the default policy is used.
+        # The policy document in JSON format that defines the permissions of the S3 account. If this parameter is not specified, the default policy is used.
         self.user_acc_policy = user_acc_policy
-        # The Secret Key of the S3 account (@sensitive, encryption in transit).
+        # The secret key of the S3 account (@sensitive, encryption in transit).
         # 
-        # > The key must contain uppercase letters, lowercase letters, and digits, and must be greater than 18 and no more than 32 characters in length.
+        # > The value must contain both uppercase and lowercase letters and digits, and must be 19 to 32 characters in length.
         # 
         # This parameter is required.
         self.user_acc_sk = user_acc_sk

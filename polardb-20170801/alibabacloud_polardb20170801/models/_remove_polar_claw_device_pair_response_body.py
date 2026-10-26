@@ -15,13 +15,13 @@ class RemovePolarClawDevicePairResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The response status code.
+        # The returned status code.
         self.code = code
-        # The device ID.
+        # The unique identifier of the device.
         self.device_id = device_id
-        # The response message.
+        # The returned message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

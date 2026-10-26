@@ -18,7 +18,7 @@ class DescribeApplicationsRequest(DaraModel):
         region_id: str = None,
         tag: List[main_models.DescribeApplicationsRequestTag] = None,
     ):
-        # The list of application IDs. If specified, only the information of these applications is returned.
+        # The list of application IDs. If specified, only the information about these applications is returned.
         self.application_ids = application_ids
         # The application engine filter.
         self.application_types = application_types

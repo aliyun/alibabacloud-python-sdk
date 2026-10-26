@@ -19,7 +19,7 @@ class RegisterKnowledgeBaseFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
-        # The ID of the region where the knowledge base resides.
+        # The region ID of the knowledge base.
         # 
         # This parameter is required.
         self.region_id = region_id

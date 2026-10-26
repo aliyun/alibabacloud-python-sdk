@@ -13,7 +13,7 @@ class ModifyDBClusterStoragePerformanceResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The order ID.
+        # The ID of the generated order.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

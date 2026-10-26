@@ -11,11 +11,11 @@ class DeleteKBSyncLinkRequest(DaraModel):
         link_id: str = None,
         region_id: str = None,
     ):
-        # The unique ID of the knowledge base.
+        # The unique identifier of the knowledge base. You can obtain the ID from the response of the CreateKnowledgeBase operation.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
-        # The synchronization link ID.
+        # The ID of the synchronization link to delete. You can obtain the ID from the response of the CreateKBSyncLink operation.
         # 
         # This parameter is required.
         self.link_id = link_id

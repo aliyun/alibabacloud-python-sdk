@@ -108,41 +108,41 @@ class DescribeBudgetPoliciesResponseBodyItems(DaraModel):
         status: str = None,
         used_points: int = None,
     ):
-        # The alert threshold percentage. Valid values: 0 to 100.
+        # The alert threshold percentage (0 to 100).
         self.alert_threshold_pct = alert_threshold_pct
-        # Indicates whether the alert threshold has been triggered.
+        # Indicates whether the alert threshold is triggered.
         self.alert_triggered = alert_triggered
-        # The dimension object ID. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
+        # The ID of the dimension object. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
         self.budget_dimension_ref_id = budget_dimension_ref_id
-        # The policy type. Valid values:
+        # The type of the policy. Valid values:
         # 
-        # - **ConsumerGroup**: total budget for a user group
-        # - **Consumer**: total budget for a user
+        # - **ConsumerGroup**: Total budget for consumer groups.
+        # - **Consumer**: Total budget for consumers.
         self.budget_dimension_type = budget_dimension_type
         # The budget points.
         self.budget_points = budget_points
-        # The budget policy ID.
+        # The ID of the budget policy.
         self.budget_policy_id = budget_policy_id
         # The budget type. Valid values:
         # 
-        # - **GlobalTotal**: global total budget
-        # - **ConsumerTotal**: total budget for a user
-        # - **ConsumerGroupTotal**: total budget for a user group
+        # - **GlobalTotal**: Global total budget.
+        # - **ConsumerTotal**: Total budget for consumers.
+        # - **ConsumerGroupTotal**: Total budget for consumer groups.
         self.budget_type = budget_type
-        # Indicates whether the quota has been exceeded.
+        # Indicates whether the quota is exceeded.
         self.exceeded = exceeded
-        # The time when the policy was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The time when the policy was last modified.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The day of the month on which the budget resets. Valid values: 1 to 28.
+        # The day of the month when the budget is reset (1 to 28).
         self.reset_day_of_month = reset_day_of_month
-        # The policy status. Valid values:
+        # The status of the policy. Valid values:
         # 
-        # - **Enabled**: enabled
-        # - **Disenabled**: disabled
+        # - **Enabled**: Enabled.
+        # - **Disenabled**: Disabled.
         self.status = status
         # The number of used points.
         self.used_points = used_points

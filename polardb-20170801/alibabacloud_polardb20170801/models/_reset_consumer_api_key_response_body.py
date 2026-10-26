@@ -11,11 +11,11 @@ class ResetConsumerApiKeyResponseBody(DaraModel):
         consumer_id: str = None,
         request_id: str = None,
     ):
-        # The complete api key, which is returned only in this response.
+        # The complete API key, which is returned only in this response.
         self.api_key = api_key
         # The user ID.
         self.consumer_id = consumer_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

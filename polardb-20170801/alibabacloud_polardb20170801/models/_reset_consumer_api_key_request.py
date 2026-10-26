@@ -15,7 +15,7 @@ class ResetConsumerApiKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
-        # The ID of the gateway instance.
+        # The gateway instance ID.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id

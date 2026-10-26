@@ -11,6 +11,7 @@ class CreateAgenticDBBranchRequest(DaraModel):
         dbcluster_id: str = None,
         description: str = None,
         parent_branch_id: str = None,
+        parent_timestamp: str = None,
         project_id: str = None,
         region_id: str = None,
         tenant_id: str = None,
@@ -23,11 +24,13 @@ class CreateAgenticDBBranchRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The description of the branch.
+        # The description.
         self.description = description
-        # The ID of the parent branch. If this parameter is not specified, the branch is derived from the main branch by default.
+        # The ID of the parent branch. By default, the branch is derived from the main branch.
         self.parent_branch_id = parent_branch_id
-        # The ID of the project to which the branch belongs.
+        # Creates the branch based on the data of the parent branch at the specified point in time. If you do not specify this parameter, the latest data is used. The value must be in RFC 3339 format with a time zone and support up to nine fractional digits for seconds. Empty strings and future times are not supported.
+        self.parent_timestamp = parent_timestamp
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -35,7 +38,7 @@ class CreateAgenticDBBranchRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the tenant to which the branch belongs.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id
@@ -59,6 +62,9 @@ class CreateAgenticDBBranchRequest(DaraModel):
 
         if self.parent_branch_id is not None:
             result['ParentBranchId'] = self.parent_branch_id
+
+        if self.parent_timestamp is not None:
+            result['ParentTimestamp'] = self.parent_timestamp
 
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
@@ -84,6 +90,9 @@ class CreateAgenticDBBranchRequest(DaraModel):
 
         if m.get('ParentBranchId') is not None:
             self.parent_branch_id = m.get('ParentBranchId')
+
+        if m.get('ParentTimestamp') is not None:
+            self.parent_timestamp = m.get('ParentTimestamp')
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
