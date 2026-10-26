@@ -10,7 +10,7 @@ class DeleteAlertRobotsShrinkRequest(DaraModel):
         robot_ids_shrink: str = None,
         type: str = None,
     ):
-        # The chatbot ID.
+        # The chatbot IDs.
         # 
         # This parameter is required.
         self.robot_ids_shrink = robot_ids_shrink

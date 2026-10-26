@@ -31,50 +31,45 @@ class ObserveGroup(DaraModel):
         tags: List[main_models.ObserveGroupTags] = None,
         workspace_id: str = None,
     ):
-        # The UID of the Alibaba Cloud account to which the group belongs.
+        # 分组归属的阿里云主账号 UID。
         self.ali_uid = ali_uid
-        # The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
+        # 创建时间，UTC 格式 yyyy-MM-ddTHH:mm:ssZ。
         self.create_time = create_time
-        # The description of the observability group, which explains its business purpose.
+        # 观测分组描述（业务用途说明）。
         self.description = description
-        # The list of entity discovery rules that define which entities the group automatically matches.
+        # 实体发现规则列表，定义分组自动匹配哪些实体。
         self.discover_rules = discover_rules
-        # The number of entities in each category. The key is the category domain (acs for cloud services, apm, or rum, which is extensible). The value is the number of entities in that category that belong to this group. Returned only when withEntityCount is set to true.
+        # 各分类实体数量。key=分类 domain（acs=云产品 / apm / rum，可扩展），value=该分类下属于本分组的实体数。仅 withEntityCount=true 时返回。
         self.entity_counts = entity_counts
-        # The extended information as a JSON string, which carries alert templates, alert contact groups, and suspension policies.
+        # 扩展信息（JSON 字符串，承载告警模板/联系人组/暂停策略等）。
         self.extra_info = extra_info
-        # Indicates whether the current user has followed this group. This value is used as the filter criterion for the My Favorites feature.
+        # 当前用户是否已关注该分组（「我的关注」筛选依据）。
         self.favorited = favorited
-        # The globally unique ID of the observability group. Format: og-<16-character hash>. Used uniformly across metrics, alerts, and consoles.
+        # 观测分组全局唯一 ID，格式 og-<16位hash>，指标/告警/控制台统一使用。
         self.group_id = group_id
-        # The name of the observability group. Must be unique within the same workspace.
+        # 观测分组名称（同 workspace 下唯一）。
         self.group_name = group_name
-        # The type of the observability group.
+        # 观测分组类型。
         self.group_type = group_type
-        # The health status of the group. Valid values:
-        # - -1: unknown (placeholder).
-        # - 1: healthy.
-        # - 0: unhealthy.
+        # 分组健康状态：-1 未知（占位）/ 1 健康 / 0 不健康。
         self.health = health
-        # The last modification time in UTC format: yyyy-MM-ddTHH:mm:ssZ. Automatically updated when any resource attribute changes.
+        # 最后修改时间，UTC 格式 yyyy-MM-ddTHH:mm:ssZ。资源任意属性变更时自动更新。
         self.modify_time = modify_time
-        # Specifies whether og_entity_info metric output is enabled. When enabled, the data plane writes the group membership information to the target Prometheus instance.
+        # 是否开启 og_entity_info 指标输出。开启后数据面会把本分组归属写入目标 Prometheus 实例。
         self.og_entity_info_enabled = og_entity_info_enabled
-        # The set of Prometheus instances to which og_entity_info is written. Includes two source types: system (automatically identified by the system) and custom (user-defined).
+        # 写入 og_entity_info 的 Prometheus 实例集合，包含系统自动识别(system)和用户自定义(custom)两类来源。
         self.og_entity_info_prom_instances = og_entity_info_prom_instances
-        # The product_group.id of the version 1.0 application group. This parameter is valid only when sourceOrigin is set to synced_from_1_0.
+        # 仅 synced_from_1_0 时填值，存 1.0 应用分组的 product_group.id。
         self.origin_group_id = origin_group_id
-        # The region ID to which the group belongs.
+        # 分组所属地域 ID。
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # 阿里云资源组 ID。
         self.resource_group_id = resource_group_id
-        # The data source. Valid values:
-        # - native_2_0: created natively in version 2.0.
-        # - synced_from_1_0: synchronized from a version 1.0 application group.
+        # 数据来源：native_2_0（2.0 原生）/ synced_from_1_0（从 1.0 应用分组同步）。
         self.source_origin = source_origin
-        # The resource tags (Alibaba Cloud standard tags) as an array of key-value pairs.
+        # 资源标签（阿里云标准标签），键值对数组。
         self.tags = tags
-        # The workspace ID to which the group belongs. This value is set at the workspace level and cannot be changed after creation.
+        # 分组归属的 workspace ID（workspace 级归属，创建后不可变）。
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -243,9 +238,9 @@ class ObserveGroupTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # 标签键。
         self.tag_key = tag_key
-        # The tag value.
+        # 标签值。
         self.tag_value = tag_value
 
     def validate(self):

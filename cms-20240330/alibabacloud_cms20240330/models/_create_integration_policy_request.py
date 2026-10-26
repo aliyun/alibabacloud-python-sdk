@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class CreateIntegrationPolicyRequest(DaraModel):
     def __init__(
         self,
+        api_version: str = None,
         entity_group: main_models.CreateIntegrationPolicyRequestEntityGroup = None,
         policy_name: str = None,
         policy_type: str = None,
@@ -17,7 +18,8 @@ class CreateIntegrationPolicyRequest(DaraModel):
         tags: List[main_models.CreateIntegrationPolicyRequestTags] = None,
         workspace: str = None,
     ):
-        # The entity group used to create the policy. You can quickly create a policy using an entity group. The clusterId and vpcId parameters are independent of each other.
+        self.api_version = api_version
+        # The entity group used to create the policy. You can quickly create the policy by using the entity group. The clusterId and vpcId parameters are independent of each other.
         self.entity_group = entity_group
         # The policy name.
         self.policy_name = policy_name
@@ -45,6 +47,9 @@ class CreateIntegrationPolicyRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_version is not None:
+            result['apiVersion'] = self.api_version
+
         if self.entity_group is not None:
             result['entityGroup'] = self.entity_group.to_map()
 
@@ -69,6 +74,9 @@ class CreateIntegrationPolicyRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apiVersion') is not None:
+            self.api_version = m.get('apiVersion')
+
         if m.get('entityGroup') is not None:
             temp_model = main_models.CreateIntegrationPolicyRequestEntityGroup()
             self.entity_group = temp_model.from_map(m.get('entityGroup'))
@@ -99,9 +107,9 @@ class CreateIntegrationPolicyRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -141,18 +149,18 @@ class CreateIntegrationPolicyRequestEntityGroup(DaraModel):
         entity_user_id: str = None,
         vpc_id: str = None,
     ):
-        # The cluster entity type. Examples: acs.ack.cluster, acs.one.cluster, and acs.asi.cluster.
+        # The cluster entity type, such as acs.ack.cluster, acs.one.cluster, acs.asi.cluster, or others.
         self.cluster_entity_type = cluster_entity_type
         # The cluster ID.
         self.cluster_id = cluster_id
         self.cluster_namespace = cluster_namespace
-        # Specifies whether to disable unique policy binding. If this parameter is set to true, you can create multiple policies for a container cluster.
+        # Specifies whether to disable the unique binding of the policy. If this parameter is set to true, you can create multiple policies for a container cluster.
         self.disable_policy_share = disable_policy_share
         # The entity group ID.
         self.entity_group_id = entity_group_id
-        # The ID of the user who owns the cluster.
+        # The ID of the user to which the cluster belongs.
         self.entity_user_id = entity_user_id
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

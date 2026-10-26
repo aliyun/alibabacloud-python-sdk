@@ -16,13 +16,13 @@ class ListDeliveryTasksRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.ListDeliveryTasksRequestTag] = None,
     ):
-        # Fuzzy search by task name or task ID (like semantics).
+        # Specifies the keywords used to perform a fuzzy search by task name or task ID.
         self.key_words = key_words
-        # The number of entries per page. Default value: 20. Maximum value: 100.
+        # The maximum number of entries to return per page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The pagination token. Leave this parameter empty for the first request. For subsequent requests, pass in the nextToken value returned in the previous response.
+        # The pagination token. Leave this parameter empty for the first request. For subsequent requests, pass the nextToken value returned in the previous response.
         self.next_token = next_token
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The list of tags.
         self.tag = tag

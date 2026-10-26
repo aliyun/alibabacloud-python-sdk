@@ -394,6 +394,8 @@ class Client(OpenApiClient):
             body['addonName'] = request.addon_name
         if not DaraCore.is_null(request.aliyun_lang):
             body['aliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.api_version):
+            body['apiVersion'] = request.api_version
         if not DaraCore.is_null(request.dry_run):
             body['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.entity_rules):
@@ -443,6 +445,8 @@ class Client(OpenApiClient):
             body['addonName'] = request.addon_name
         if not DaraCore.is_null(request.aliyun_lang):
             body['aliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.api_version):
+            body['apiVersion'] = request.api_version
         if not DaraCore.is_null(request.dry_run):
             body['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.entity_rules):
@@ -1563,6 +1567,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateIntegrationPolicyResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.api_version):
+            body['apiVersion'] = request.api_version
         if not DaraCore.is_null(request.entity_group):
             body['entityGroup'] = request.entity_group
         if not DaraCore.is_null(request.policy_name):
@@ -1603,6 +1609,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateIntegrationPolicyResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.api_version):
+            body['apiVersion'] = request.api_version
         if not DaraCore.is_null(request.entity_group):
             body['entityGroup'] = request.entity_group
         if not DaraCore.is_null(request.policy_name):
@@ -6144,6 +6152,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.aliyun_lang):
             query['aliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.api_version):
+            query['apiVersion'] = request.api_version
         if not DaraCore.is_null(request.environment_type):
             query['environmentType'] = request.environment_type
         if not DaraCore.is_null(request.version):
@@ -6179,6 +6189,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.aliyun_lang):
             query['aliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.api_version):
+            query['apiVersion'] = request.api_version
         if not DaraCore.is_null(request.environment_type):
             query['environmentType'] = request.environment_type
         if not DaraCore.is_null(request.version):
@@ -8855,6 +8867,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.aliyun_lang):
             query['aliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.api_version):
+            query['apiVersion'] = request.api_version
         if not DaraCore.is_null(request.category):
             query['category'] = request.category
         if not DaraCore.is_null(request.regexp):
@@ -8891,6 +8905,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.aliyun_lang):
             query['aliyunLang'] = request.aliyun_lang
+        if not DaraCore.is_null(request.api_version):
+            query['apiVersion'] = request.api_version
         if not DaraCore.is_null(request.category):
             query['category'] = request.category
         if not DaraCore.is_null(request.regexp):

@@ -13,9 +13,9 @@ class GetAddonResponseBody(DaraModel):
         data: main_models.GetAddonResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The list of data corresponding to the request header.
         self.data = data
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -64,15 +64,15 @@ class GetAddonResponseBodyData(DaraModel):
         version: str = None,
         weight: str = None,
     ):
-        # The alias of the component.
+        # The alias of the integrated component.
         self.alias = alias
-        # The list of component categories.
+        # The list of categories for the integrated component.
         self.categories = categories
         # The list of dashboards.
         self.dashboards = dashboards
         # The description of the add-on.
         self.description = description
-        # The environment information.
+        # The environment context.
         self.environments = environments
         # The URL of the icon.
         self.icon = icon
@@ -80,7 +80,7 @@ class GetAddonResponseBodyData(DaraModel):
         self.keywords = keywords
         # The language.
         self.language = language
-        # The time when the latest version was created.
+        # The latest creation time.
         self.latest_release_create_time = latest_release_create_time
         # The name of the add-on.
         self.name = name
@@ -90,7 +90,7 @@ class GetAddonResponseBodyData(DaraModel):
         self.scene = scene
         # The version of the component.
         self.version = version
-        # The weight.
+        # The weight value.
         self.weight = weight
 
     def validate(self):
@@ -222,17 +222,17 @@ class GetAddonResponseBodyDataEnvironments(DaraModel):
     ):
         # The list of associated common schemas.
         self.common_schema_refs = common_schema_refs
-        # The dependencies.
+        # The additional dependencies.
         self.dependencies = dependencies
         # The description.
         self.description = description
-        # Indicates whether the feature is enabled.
+        # Indicates whether the environment is enabled.
         self.enable = enable
         # The display name of the environment.
         self.label = label
         # The name of the add-on.
         self.name = name
-        # The ID of the resource group.
+        # The resource group ID.
         self.policies = policies
         # The type of the integration policy.
         self.policy_type = policy_type
@@ -324,19 +324,19 @@ class GetAddonResponseBodyDataEnvironmentsPolicies(DaraModel):
         protocols: List[main_models.GetAddonResponseBodyDataEnvironmentsPoliciesProtocols] = None,
         target_addon_name: str = None,
     ):
-        # The status of the default policy for alert rules.
+        # The enabled status of the default alert rule policy.
         self.alert_default_status = alert_default_status
         # Indicates whether the add-on is installed by default.
         self.default_install = default_install
-        # Indicates whether a service account is assigned for communication with the console API.
+        # Indicates whether a service account is assigned to communicate with the Console API.
         self.enable_service_account = enable_service_account
         # The metric check rule.
         self.metric_check_rule = metric_check_rule
-        # Indicates whether to guide the user to restart pods after the add-on is installed.
+        # Indicates whether a pod restart is triggered immediately after the add-on is installed during integration.
         self.need_restart_after_integration = need_restart_after_integration
-        # The protocol.
+        # The protocols.
         self.protocols = protocols
-        # The name of the target add-on to which the system redirects.
+        # The name of the target add-on for redirection.
         self.target_addon_name = target_addon_name
 
     def validate(self):
@@ -466,7 +466,7 @@ class GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule(DaraModel):
         self,
         prom_ql: List[str] = None,
     ):
-        # The data check rule that is used after installation.
+        # The data check rule after installation.
         self.prom_ql = prom_ql
 
     def validate(self):

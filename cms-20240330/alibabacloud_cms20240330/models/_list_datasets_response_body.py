@@ -16,15 +16,15 @@ class ListDatasetsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # A list of dataset objects.
+        # The result set.
         self.datasets = datasets
-        # The maximum number of results returned per page.
+        # The maximum number of results to return.
         self.max_results = max_results
-        # A token to retrieve the next page of results. This element is returned only when the result set is truncated.
+        # The pagination token.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of datasets that match the query.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -89,21 +89,21 @@ class ListDatasetsResponseBodyDatasets(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
-        # The time the dataset was created, as a UNIX timestamp.
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The name of the dataset.
+        # The dataset name.
         self.dataset_name = dataset_name
-        # The description of the dataset.
+        # The description.
         self.description = description
-        # The ID of the region where the dataset resides.
+        # The region ID.
         self.region_id = region_id
-        # The time the dataset was last updated, as a UNIX timestamp.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
-        # The ID of the workspace that contains the dataset.
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):

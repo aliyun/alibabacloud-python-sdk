@@ -9,7 +9,7 @@ class GetContextRequest(DaraModel):
         self,
         formatted: bool = None,
     ):
-        # Whether to return the context in a formatted structure. Valid values: `true` and `false`. Default value: `false`.
+        # Specifies whether to format the context.
         self.formatted = formatted
 
     def validate(self):

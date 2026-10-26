@@ -19,6 +19,9 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         content_template: str = None,
         datasource_config: main_models.DatasourceConfigUnified = None,
         display_name: str = None,
+        drill_eval_time: int = None,
+        drill_mode: str = None,
+        drill_time_range: main_models.ManageAlertRulesUnifiedActionInputDrillTimeRange = None,
         enabled: bool = None,
         labels: Dict[str, str] = None,
         notify_config: main_models.NotifyConfigUnified = None,
@@ -53,6 +56,9 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         self.datasource_config = datasource_config
         # The display name.
         self.display_name = display_name
+        self.drill_eval_time = drill_eval_time
+        self.drill_mode = drill_mode
+        self.drill_time_range = drill_time_range
         # Specifies whether the rule is enabled.
         self.enabled = enabled
         # The labels.
@@ -89,6 +95,8 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
             self.condition_config.validate()
         if self.datasource_config:
             self.datasource_config.validate()
+        if self.drill_time_range:
+            self.drill_time_range.validate()
         if self.notify_config:
             self.notify_config.validate()
         if self.observe_resource_config:
@@ -131,6 +139,15 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
 
         if self.display_name is not None:
             result['displayName'] = self.display_name
+
+        if self.drill_eval_time is not None:
+            result['drillEvalTime'] = self.drill_eval_time
+
+        if self.drill_mode is not None:
+            result['drillMode'] = self.drill_mode
+
+        if self.drill_time_range is not None:
+            result['drillTimeRange'] = self.drill_time_range.to_map()
 
         if self.enabled is not None:
             result['enabled'] = self.enabled
@@ -206,6 +223,16 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
 
+        if m.get('drillEvalTime') is not None:
+            self.drill_eval_time = m.get('drillEvalTime')
+
+        if m.get('drillMode') is not None:
+            self.drill_mode = m.get('drillMode')
+
+        if m.get('drillTimeRange') is not None:
+            temp_model = main_models.ManageAlertRulesUnifiedActionInputDrillTimeRange()
+            self.drill_time_range = temp_model.from_map(m.get('drillTimeRange'))
+
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
 
@@ -249,6 +276,41 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
 
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')
+
+        return self
+
+class ManageAlertRulesUnifiedActionInputDrillTimeRange(DaraModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        start_time: int = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
 
         return self
 

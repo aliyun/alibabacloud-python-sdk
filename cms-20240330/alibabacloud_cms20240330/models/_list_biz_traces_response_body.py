@@ -16,11 +16,11 @@ class ListBizTracesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of business traces.
+        # The list of business links.
         self.items = items
-        # The maximum number of results returned. The maximum value is 100.
+        # The maximum number of results to return. Maximum value: 100.
         self.max_results = max_results
-        # The token to use to retrieve the next page of results.
+        # The token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

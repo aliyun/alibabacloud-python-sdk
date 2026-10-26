@@ -13,7 +13,7 @@ class CreateMaintainWindowRequest(DaraModel):
     ):
         # The request body. This parameter is required by the backend. Pass in a complete MaintainWindowForModify configuration object.
         self.body = body
-        # The workspace name. This parameter is required by the backend and is used to isolate silence policy resources across different business spaces.
+        # The name of the workspace. This parameter is required by the backend and is used to isolate silence policy resources across different business workspaces.
         self.workspace = workspace
 
     def validate(self):

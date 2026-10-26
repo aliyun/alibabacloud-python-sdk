@@ -17,19 +17,19 @@ class NotificationChannelsFilter(DaraModel):
         contains_slack_webhooks: List[str] = None,
         contains_wx_webhooks: List[str] = None,
     ):
-        # The alert contact list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.contacts.
+        # The list of notification contacts in the rule contains any value in the array. This uses OR logic and corresponds to notification.contacts in V1.
         self.contains_contacts = contains_contacts
-        # The custom webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.customWebhooks.
+        # The list of custom webhooks in the rule contains any value in the array. This uses OR logic and corresponds to notification.customWebhooks in V1.
         self.contains_custom_webhooks = contains_custom_webhooks
-        # The DingTalk webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.dingWebhooks.
+        # The list of DingTalk webhooks in the rule contains any value in the array. This uses OR logic and corresponds to notification.dingWebhooks in V1.
         self.contains_ding_webhooks = contains_ding_webhooks
-        # The Lark webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.fsWebhooks.
+        # The list of Lark webhooks in the rule contains any value in the array. This uses OR logic and corresponds to notification.fsWebhooks in V1.
         self.contains_fs_webhooks = contains_fs_webhooks
-        # The alert contact group list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.groups.
+        # The list of contact groups in the rule contains any value in the array. This uses OR logic and corresponds to notification.groups in V1.
         self.contains_groups = contains_groups
-        # The Slack webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.slackWebhooks.
+        # The list of Slack webhooks in the rule contains any value in the array. This uses OR logic and corresponds to notification.slackWebhooks in V1.
         self.contains_slack_webhooks = contains_slack_webhooks
-        # The WeCom webhook list of the rule contains any value in the array (OR semantics), corresponding to V1 notification.wxWebhooks.
+        # The list of WeCom webhooks in the rule contains any value in the array. This uses OR logic and corresponds to notification.wxWebhooks in V1.
         self.contains_wx_webhooks = contains_wx_webhooks
 
     def validate(self):

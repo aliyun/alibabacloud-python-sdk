@@ -15,7 +15,7 @@ class GetEntityStoreDataResponseBody(DaraModel):
         request_id: str = None,
         response_status: main_models.GetEntityStoreDataResponseBodyResponseStatus = None,
     ):
-        # The list of returned data.
+        # The total count of the returned data list.
         self.data = data
         # The list of request headers.
         self.header = header
@@ -73,7 +73,7 @@ class GetEntityStoreDataResponseBodyResponseStatus(DaraModel):
         retry_policy: str = None,
         status_item: List[main_models.GetEntityStoreDataResponseBodyResponseStatusStatusItem] = None,
     ):
-        # Information about the execution procedure.
+        # The information during the execution process.
         self.execution_states = execution_states
         # The status level.
         self.level = level
@@ -81,7 +81,7 @@ class GetEntityStoreDataResponseBodyResponseStatus(DaraModel):
         self.result = result
         # The retry policy.
         self.retry_policy = retry_policy
-        # A list of detailed status information.
+        # The list of detailed status information.
         self.status_item = status_item
 
     def validate(self):
@@ -148,9 +148,9 @@ class GetEntityStoreDataResponseBodyResponseStatusStatusItem(DaraModel):
         self.code = code
         # The status level.
         self.level = level
-        # The execution information.
+        # The computation execution information.
         self.message = message
-        # The suggestion provided when an execution fault occurs.
+        # The suggestions provided when an execution error occurs.
         self.suggestion = suggestion
 
     def validate(self):

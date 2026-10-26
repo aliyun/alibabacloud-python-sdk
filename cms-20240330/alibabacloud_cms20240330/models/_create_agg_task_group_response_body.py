@@ -14,17 +14,17 @@ class CreateAggTaskGroupResponseBody(DaraModel):
         source_prometheus_id: str = None,
         status: str = None,
     ):
-        # Digest of the aggregation task group configuration.
+        # The hash of the aggregation task group configuration.
         self.agg_task_group_config_hash = agg_task_group_config_hash
-        # Aggregation task group ID.
+        # The ID of the aggregation task group.
         self.agg_task_group_id = agg_task_group_id
-        # Aggregation task group name.
+        # The name of the aggregation task group.
         self.agg_task_group_name = agg_task_group_name
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Source Prometheus instance ID of the aggregation task group.
+        # The source Prometheus instance ID of the aggregation node group.
         self.source_prometheus_id = source_prometheus_id
-        # Current status of the aggregation task group.
+        # The current status of the aggregation task group.
         self.status = status
 
     def validate(self):

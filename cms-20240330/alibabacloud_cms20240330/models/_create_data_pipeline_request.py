@@ -18,9 +18,9 @@ class CreateDataPipelineRequest(DaraModel):
         sinks: List[main_models.CreateDataPipelineRequestSinks] = None,
         source: main_models.CreateDataPipelineRequestSource = None,
     ):
-        # The pipeline description.
+        # The description of the pipeline.
         self.description = description
-        # The pipeline type.
+        # The type of the pipeline.
         self.kind = kind
         # The named outputs.
         self.outputs = outputs
@@ -28,7 +28,7 @@ class CreateDataPipelineRequest(DaraModel):
         self.pipeline_name = pipeline_name
         # The common processors.
         self.processors = processors
-        # The output destinations.
+        # The sinks.
         self.sinks = sinks
         # The data source.
         self.source = source
@@ -126,7 +126,7 @@ class CreateDataPipelineRequestSource(DaraModel):
     ):
         # The datasource config.
         self.config = config
-        # The type of the data source.
+        # The data source type.
         self.type = type
 
     def validate(self):
@@ -166,7 +166,7 @@ class CreateDataPipelineRequestSourceConfig(DaraModel):
     ):
         # The run mode.
         self.run_mode = run_mode
-        # The read start point.
+        # The start position.
         self.start_from = start_from
         # The backfill time range.
         self.time_range = time_range
@@ -251,15 +251,15 @@ class CreateDataPipelineRequestSinks(DaraModel):
         project: str = None,
         type: str = None,
     ):
-        # The list of datasets.
+        # The dataset list.
         self.datasets = datasets
         # SLS Logstore
         self.logstore = logstore
-        # The name of the output destination.
+        # The sink name.
         self.name = name
         # SLS Project
         self.project = project
-        # The type of the output destination.
+        # The sink type.
         self.type = type
 
     def validate(self):
@@ -377,13 +377,13 @@ class CreateDataPipelineRequestProcessorsConfig(DaraModel):
         self.expression = expression
         # The list of fields.
         self.fields = fields
-        # The extended parameters.
+        # The additional parameters.
         self.parameters = parameters
         # The list of field projections.
         self.projections = projections
-        # The list of masking rules.
+        # The list of data masking rules.
         self.rules = rules
-        # The pipeline processing scope in which the processor takes effect.
+        # The effective scope of pipeline processing.
         self.scope = scope
         # The SPL script.
         self.script = script
@@ -540,7 +540,7 @@ class CreateDataPipelineRequestProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The list of service names.
+        # The service name list.
         self.service_names = service_names
 
     def validate(self):
@@ -629,7 +629,7 @@ class CreateDataPipelineRequestProcessorsConfigScopeServiceName(DaraModel):
         match_type: str = None,
         values: List[str] = None,
     ):
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The match values.
         self.values = values
@@ -666,7 +666,7 @@ class CreateDataPipelineRequestProcessorsConfigScopeMetricName(DaraModel):
         match_type: str = None,
         values: List[str] = None,
     ):
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The metric names.
         self.values = values
@@ -706,7 +706,7 @@ class CreateDataPipelineRequestProcessorsConfigScopeConditions(DaraModel):
     ):
         # The field reference.
         self.field = field
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The match values.
         self.values = values
@@ -757,7 +757,7 @@ class CreateDataPipelineRequestProcessorsConfigScopeConditionsField(DaraModel):
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The field or dimension name.
+        # The name of the field or dimension.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -810,15 +810,15 @@ class CreateDataPipelineRequestProcessorsConfigRules(DaraModel):
         mode: str = None,
         types: List[str] = None,
     ):
-        # The length of the prefix to retain.
+        # The length of the retained prefix.
         self.keep_prefix = keep_prefix
-        # The length of the suffix to retain.
+        # The length of the retained suffix.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
         # The mask character.
         self.mask_char = mask_char
-        # The masking mode.
+        # The data masking mode.
         self.mode = mode
         # The built-in sensitive types.
         self.types = types
@@ -953,7 +953,7 @@ class CreateDataPipelineRequestOutputs(DaraModel):
         name: str = None,
         processors: List[main_models.CreateDataPipelineRequestOutputsProcessors] = None,
     ):
-        # The output name.
+        # The name of the output.
         self.name = name
         # The branch processors.
         self.processors = processors
@@ -1063,13 +1063,13 @@ class CreateDataPipelineRequestOutputsProcessorsConfig(DaraModel):
         self.expression = expression
         # The list of fields.
         self.fields = fields
-        # The extended parameters.
+        # The additional parameters.
         self.parameters = parameters
         # The list of field projections.
         self.projections = projections
-        # The list of masking rules.
+        # The list of data masking rules.
         self.rules = rules
-        # The pipeline processing scope.
+        # The effective scope of pipeline processing.
         self.scope = scope
         # The SPL script.
         self.script = script
@@ -1226,7 +1226,7 @@ class CreateDataPipelineRequestOutputsProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The list of service names.
+        # The service name list.
         self.service_names = service_names
 
     def validate(self):
@@ -1315,7 +1315,7 @@ class CreateDataPipelineRequestOutputsProcessorsConfigScopeServiceName(DaraModel
         match_type: str = None,
         values: List[str] = None,
     ):
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The match values.
         self.values = values
@@ -1352,7 +1352,7 @@ class CreateDataPipelineRequestOutputsProcessorsConfigScopeMetricName(DaraModel)
         match_type: str = None,
         values: List[str] = None,
     ):
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The metric names.
         self.values = values
@@ -1392,7 +1392,7 @@ class CreateDataPipelineRequestOutputsProcessorsConfigScopeConditions(DaraModel)
     ):
         # The field reference.
         self.field = field
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The match values.
         self.values = values
@@ -1443,7 +1443,7 @@ class CreateDataPipelineRequestOutputsProcessorsConfigScopeConditionsField(DaraM
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The field or dimension name.
+        # The name of the field or dimension.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -1496,15 +1496,15 @@ class CreateDataPipelineRequestOutputsProcessorsConfigRules(DaraModel):
         mode: str = None,
         types: List[str] = None,
     ):
-        # The length of the prefix to retain.
+        # The length of the retained prefix.
         self.keep_prefix = keep_prefix
-        # The length of the suffix to retain.
+        # The length of the retained suffix.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
         # The mask character.
         self.mask_char = mask_char
-        # The masking mode.
+        # The data masking mode.
         self.mode = mode
         # The built-in sensitive types.
         self.types = types

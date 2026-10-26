@@ -11,9 +11,9 @@ class CreateNotifyPolicyRequest(DaraModel):
         body: main_models.NotifyPolicyConfig = None,
         workspace: str = None,
     ):
-        # The request body, which is the complete notification policy configuration object NotifyPolicyConfig.
+        # The request body, which contains the complete NotifyPolicyConfig configuration object for the notification policy.
         self.body = body
-        # The workspace ID. This parameter is used to isolate notification policy resources across different business spaces.
+        # The workspace ID, which isolates notification policy resources across different business workspaces.
         # 
         # This parameter is required.
         self.workspace = workspace

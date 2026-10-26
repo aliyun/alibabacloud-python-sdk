@@ -16,11 +16,17 @@ class Evaluator(DaraModel):
         result_type: str = None,
         variable_mapping: Dict[str, str] = None,
     ):
+        # The evaluator configuration parameters.
         self.config = config
+        # The evaluation filter conditions.
         self.filters = filters
+        # The evaluator name.
         self.name = name
+        # The evaluation result name.
         self.result_name = result_name
+        # The evaluation result type.
         self.result_type = result_type
+        # The evaluation variable mapping.
         self.variable_mapping = variable_mapping
 
     def validate(self):

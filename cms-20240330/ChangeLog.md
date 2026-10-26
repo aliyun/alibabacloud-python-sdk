@@ -1,3 +1,12 @@
+2026-10-26 Version: 10.5.6
+- Update API CreateAddonRelease: add request parameters body.apiVersion.
+- Update API CreateIntegrationPolicy: add request parameters body.apiVersion.
+- Update API GetAddonSchema: add request parameters apiVersion.
+- Update API GetIntegrationPolicy: add response parameters Body.policy.apiVersion.
+- Update API ListAddons: add request parameters apiVersion.
+- Update API ListIntegrationPolicies: add response parameters Body.policies.$.apiVersion.
+
+
 2026-10-15 Version: 10.5.4
 - Update API GetIntegrationPolicy: add response parameters Body.policy.bindResource.entityUserId.
 - Update API ListIntegrationPolicies: add response parameters Body.policies.$.bindResource.entityUserId.

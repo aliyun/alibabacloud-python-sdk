@@ -11,9 +11,9 @@ class GetCloudResourceDataRequest(DaraModel):
         query: str = None,
         to: int = None,
     ):
-        # The start of the query time range.
+        # The start time of the query.
         # 
-        # The value is a UNIX timestamp in seconds, which represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The UNIX timestamp format, which represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         # 
         # This parameter is required.
         self.from_ = from_
@@ -21,9 +21,9 @@ class GetCloudResourceDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.query = query
-        # The end of the query time range.
+        # The end time of the query.
         # 
-        # The value is a UNIX timestamp in seconds, which represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The UNIX timestamp format, which represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         # 
         # This parameter is required.
         self.to = to

@@ -8,17 +8,19 @@ class ListAddonsRequest(DaraModel):
     def __init__(
         self,
         aliyun_lang: str = None,
+        api_version: str = None,
         category: str = None,
         regexp: bool = None,
         search: str = None,
     ):
-        # The language. Valid values: zh and en. The default value is zh.
+        # The locale. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
-        # Tag filtering.
+        self.api_version = api_version
+        # The tag filter.
         self.category = category
-        # Specifies whether to use regular expressions for the search. The default value is false.
+        # Specifies whether to use regular expression matching for the query field. Default value: false.
         self.regexp = regexp
-        # The search keyword. You can search for add-ons by name, description, or keyword.
+        # The search query. Supports searching by add-on name, description, or keyword.
         self.search = search
 
     def validate(self):
@@ -31,6 +33,9 @@ class ListAddonsRequest(DaraModel):
             result = _map
         if self.aliyun_lang is not None:
             result['aliyunLang'] = self.aliyun_lang
+
+        if self.api_version is not None:
+            result['apiVersion'] = self.api_version
 
         if self.category is not None:
             result['category'] = self.category
@@ -47,6 +52,9 @@ class ListAddonsRequest(DaraModel):
         m = m or dict()
         if m.get('aliyunLang') is not None:
             self.aliyun_lang = m.get('aliyunLang')
+
+        if m.get('apiVersion') is not None:
+            self.api_version = m.get('apiVersion')
 
         if m.get('category') is not None:
             self.category = m.get('category')

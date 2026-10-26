@@ -32,7 +32,7 @@ class CreateAlertRobotRequest(DaraModel):
         self.type = type
         # The webhook URL of the robot.
         self.url = url
-        # The workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

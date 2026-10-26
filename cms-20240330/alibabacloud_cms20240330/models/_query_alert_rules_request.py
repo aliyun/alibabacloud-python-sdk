@@ -16,7 +16,7 @@ class QueryAlertRulesRequest(DaraModel):
     ):
         # The request body for querying alert rules.
         self.body = body
-        # The client token that is used to ensure idempotence.
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The maximum number of data records to return in the current read operation.
         self.max_results = max_results

@@ -18,7 +18,7 @@ class ListContextStoresRequest(DaraModel):
         self.context_type = context_type
         # The maximum number of results to return.
         self.max_results = max_results
-        # The token for the next page of results.
+        # The pagination token.
         self.next_token = next_token
 
     def validate(self):

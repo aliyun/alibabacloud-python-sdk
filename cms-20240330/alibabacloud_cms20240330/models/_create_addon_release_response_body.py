@@ -13,7 +13,7 @@ class CreateAddonReleaseResponseBody(DaraModel):
         release: main_models.CreateAddonReleaseResponseBodyRelease = None,
         request_id: str = None,
     ):
-        # The component integration information.
+        # The integrated component information.
         self.release = release
         # The request ID.
         self.request_id = request_id
@@ -75,15 +75,15 @@ class CreateAddonReleaseResponseBodyRelease(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The addon name of the component integrated with monitoring.
+        # The name of the add-on integrated for monitoring.
         self.addon_name = addon_name
-        # The number of alert rule groups.
+        # The number of alert groups.
         self.alert_rule_count = alert_rule_count
-        # The component installation phase information.
+        # The installation phase information of the component.
         self.conditions = conditions
-        # The component configuration.
+        # The configuration of the component.
         self.config = config
-        # The time when the component was integrated.
+        # The integration time.
         self.create_time = create_time
         # The number of dashboards.
         self.dashboard_count = dashboard_count
@@ -93,7 +93,7 @@ class CreateAddonReleaseResponseBodyRelease(DaraModel):
         self.env_type = env_type
         # The environment ID.
         self.environment_id = environment_id
-        # The number of exporters.
+        # The number of plugins.
         self.exporter_count = exporter_count
         # Indicates whether the component has a configuration.
         self.have_config = have_config
@@ -103,7 +103,7 @@ class CreateAddonReleaseResponseBodyRelease(DaraModel):
         self.language = language
         # Indicates whether the component is a managed component.
         self.managed = managed
-        # The parent AddonReleaseId.
+        # The parent add-on release ID.
         self.parent_addon_release_id = parent_addon_release_id
         # The policy environment ID.
         self.policy_id = policy_id
@@ -113,15 +113,15 @@ class CreateAddonReleaseResponseBodyRelease(DaraModel):
         self.release_id = release_id
         # The name of the release.
         self.release_name = release_name
-        # The component scenario.
+        # The scenario of the component.
         self.scene = scene
-        # The component status.
+        # The status of the component.
         self.status = status
         # The update time.
         self.update_time = update_time
-        # The ID of the user to whom the component belongs.
+        # The ID of the user who owns the component.
         self.user_id = user_id
-        # The component version.
+        # The version of the component.
         self.version = version
         # The workspace.
         self.workspace = workspace
@@ -310,15 +310,15 @@ class CreateAddonReleaseResponseBodyReleaseConditions(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The first transition time.
+        # The time of the first transition.
         self.first_transition_time = first_transition_time
-        # The last transition time.
+        # The time of the last transition.
         self.last_transition_time = last_transition_time
         # The detailed information.
         self.message = message
-        # The phase status.
+        # The status of the phase.
         self.status = status
-        # The phase type.
+        # The type of the phase.
         self.type = type
 
     def validate(self):

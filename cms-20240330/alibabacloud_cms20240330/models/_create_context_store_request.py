@@ -16,19 +16,19 @@ class CreateContextStoreRequest(DaraModel):
         dataset: main_models.CreateContextStoreRequestDataset = None,
         description: str = None,
     ):
-        # The configuration.
+        # The configuration information.
         self.config = config
         # The name of the context store.
         # 
         # This parameter is required.
         self.context_store_name = context_store_name
-        # The type of the context store.
+        # The context type.
         # 
         # This parameter is required.
         self.context_type = context_type
-        # The properties of the dataset.
+        # The dataset.
         self.dataset = dataset
-        # The description of the context store.
+        # The description.
         self.description = description
 
     def validate(self):
@@ -114,7 +114,7 @@ class CreateContextStoreRequestConfig(DaraModel):
         metadata_field: Dict[str, str] = None,
         source: main_models.CreateContextStoreRequestConfigSource = None,
     ):
-        # The metadata fields.
+        # The metadata field.
         self.metadata_field = metadata_field
         # The configuration source.
         self.source = source
@@ -154,9 +154,9 @@ class CreateContextStoreRequestConfigSource(DaraModel):
         project: str = None,
         start_time: str = None,
     ):
-        # The name of the Log Service Logstore.
+        # The name of the Simple Log Service Logstore.
         self.logstore = logstore
-        # The name of the Log Service project.
+        # The name of the Simple Log Service project.
         self.project = project
         # The effective start time.
         # 

@@ -14,7 +14,7 @@ class UpdateAggTaskGroupResponseBody(DaraModel):
         source_prometheus_id: str = None,
         status: str = None,
     ):
-        # The summary of the aggregation task group configuration.
+        # The hash of the aggregation task group configuration.
         self.agg_task_group_config_hash = agg_task_group_config_hash
         # The ID of the aggregation task group.
         self.agg_task_group_id = agg_task_group_id

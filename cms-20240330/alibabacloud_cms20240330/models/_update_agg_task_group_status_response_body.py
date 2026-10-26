@@ -20,9 +20,9 @@ class UpdateAggTaskGroupStatusResponseBody(DaraModel):
         self.agg_task_group_id = agg_task_group_id
         # The name of the aggregation task group.
         self.agg_task_group_name = agg_task_group_name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the source Prometheus instance for the aggregation task group.
+        # The source Prometheus instance ID of the aggregation node group.
         self.source_prometheus_id = source_prometheus_id
         # The current status of the aggregation task group.
         self.status = status

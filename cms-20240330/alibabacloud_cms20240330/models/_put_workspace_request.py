@@ -16,17 +16,17 @@ class PutWorkspaceRequest(DaraModel):
         sls_project: str = None,
         tags: List[main_models.PutWorkspaceRequestTags] = None,
     ):
-        # The description of the workspace.
+        # The workspace description.
         self.description = description
         # The display name of the workspace.
         self.display_name = display_name
-        # The ID of the resource group specified when the workspace is created.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The name of the Simple Log Service project.
+        # The Simple Log Service project name.
         # 
         # This parameter is required.
         self.sls_project = sls_project
-        # The tags bound to the workspace when it is created.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -87,9 +87,9 @@ class PutWorkspaceRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

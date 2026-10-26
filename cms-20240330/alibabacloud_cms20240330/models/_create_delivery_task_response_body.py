@@ -10,7 +10,7 @@ class CreateDeliveryTaskResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The unique ID for the request.
+        # Id of the request
         self.request_id = request_id
         # The ID of the delivery task.
         self.task_id = task_id

@@ -25,9 +25,9 @@ class EntityGroupBase(DaraModel):
         self.entity_group_id = entity_group_id
         # The entity name.
         self.entity_group_name = entity_group_name
-        # A collection of entity query rules.
+        # The entity query rule set.
         self.entity_queries = entity_queries
-        # The rule for entity discovery.
+        # The rules used for entity discovery.
         self.entity_rules = entity_rules
         # The region ID.
         self.region_id = region_id
@@ -117,7 +117,7 @@ class EntityGroupBaseEntityQueries(DaraModel):
     ):
         # The entity type.
         self.entity_type = entity_type
-        # The Structured Process Language (SPL) search statement.
+        # The SPL query statement.
         self.spl = spl
 
     def validate(self):

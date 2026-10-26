@@ -8,11 +8,13 @@ class GetAddonSchemaRequest(DaraModel):
     def __init__(
         self,
         aliyun_lang: str = None,
+        api_version: str = None,
         environment_type: str = None,
         version: str = None,
     ):
         # The language of the response. Valid values: \\`zh\\` and \\`en\\`. The default value is \\`zh\\`.
         self.aliyun_lang = aliyun_lang
+        self.api_version = api_version
         # The environment type. Valid values: \\`CS\\` (container) and \\`ECS\\`.
         self.environment_type = environment_type
         # The version of the component.
@@ -29,6 +31,9 @@ class GetAddonSchemaRequest(DaraModel):
         if self.aliyun_lang is not None:
             result['aliyunLang'] = self.aliyun_lang
 
+        if self.api_version is not None:
+            result['apiVersion'] = self.api_version
+
         if self.environment_type is not None:
             result['environmentType'] = self.environment_type
 
@@ -41,6 +46,9 @@ class GetAddonSchemaRequest(DaraModel):
         m = m or dict()
         if m.get('aliyunLang') is not None:
             self.aliyun_lang = m.get('aliyunLang')
+
+        if m.get('apiVersion') is not None:
+            self.api_version = m.get('apiVersion')
 
         if m.get('environmentType') is not None:
             self.environment_type = m.get('environmentType')

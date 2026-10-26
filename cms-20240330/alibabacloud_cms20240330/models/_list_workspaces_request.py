@@ -18,7 +18,7 @@ class ListWorkspacesRequest(DaraModel):
         workspace_name: str = None,
         workspace_name_list: List[str] = None,
     ):
-        # The number of entries per page.
+        # The maximum number of entries per page.
         # Default value:
         # 	50
         # Maximum value:
@@ -28,13 +28,13 @@ class ListWorkspacesRequest(DaraModel):
         self.next_token = next_token
         # The region.
         self.region = region
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The tags.
         self.tags = tags
-        # The workspace name. Fuzzy match is used.
+        # The workspace name. Fuzzy match is supported.
         self.workspace_name = workspace_name
-        # The workspace name. Exact match is used.
+        # The names of the workspaces. Exact match is supported.
         self.workspace_name_list = workspace_name_list
 
     def validate(self):

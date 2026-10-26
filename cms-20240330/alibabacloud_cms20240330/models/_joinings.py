@@ -13,7 +13,7 @@ class Joinings(DaraModel):
         conditions: List[main_models.JoinConditions] = None,
         type: str = None,
     ):
-        # The list of join conditions for result sets. The conditions define the matching rules between multiple result sets and are used to merge query results from different data sources based on specified conditions.
+        # The list of join conditions for query result sets, which defines the matching rules between multiple query result sets to merge query results from different data sources based on specified conditions.
         self.conditions = conditions
         # The set operation type: InnerJoin / LeftJoin / RightJoin / FullJoin / LeftExclude / RightExclude / CrossJoin / NoJoin / Concat.
         self.type = type

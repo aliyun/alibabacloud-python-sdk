@@ -13,18 +13,20 @@ class ManageAlertRulesResult(DaraModel):
         alert_rule: main_models.AlertRuleV2 = None,
         deleted_count: int = None,
         deleted_uuid_list: List[str] = None,
+        drill_uuid: str = None,
         updated_count: int = None,
         updated_uuid_list: List[str] = None,
     ):
-        # The alert rule V2.
+        # The V2 alert rule.
         self.alert_rule = alert_rule
-        # The number of rules that were successfully deleted.
+        # The number of successfully deleted rules.
         self.deleted_count = deleted_count
-        # The list of UUIDs of rules that were successfully deleted.
+        # The list of UUIDs of successfully deleted rules.
         self.deleted_uuid_list = deleted_uuid_list
-        # The number of rules that were successfully enabled or disabled.
+        self.drill_uuid = drill_uuid
+        # The number of successfully enabled or disabled rules.
         self.updated_count = updated_count
-        # The list of UUIDs of rules that were successfully enabled or disabled.
+        # The list of UUIDs of successfully enabled or disabled rules.
         self.updated_uuid_list = updated_uuid_list
 
     def validate(self):
@@ -45,6 +47,9 @@ class ManageAlertRulesResult(DaraModel):
         if self.deleted_uuid_list is not None:
             result['deletedUuidList'] = self.deleted_uuid_list
 
+        if self.drill_uuid is not None:
+            result['drillUuid'] = self.drill_uuid
+
         if self.updated_count is not None:
             result['updatedCount'] = self.updated_count
 
@@ -64,6 +69,9 @@ class ManageAlertRulesResult(DaraModel):
 
         if m.get('deletedUuidList') is not None:
             self.deleted_uuid_list = m.get('deletedUuidList')
+
+        if m.get('drillUuid') is not None:
+            self.drill_uuid = m.get('drillUuid')
 
         if m.get('updatedCount') is not None:
             self.updated_count = m.get('updatedCount')

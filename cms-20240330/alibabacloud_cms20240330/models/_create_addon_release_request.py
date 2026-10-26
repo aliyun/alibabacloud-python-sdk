@@ -10,6 +10,7 @@ class CreateAddonReleaseRequest(DaraModel):
         self,
         addon_name: str = None,
         aliyun_lang: str = None,
+        api_version: str = None,
         dry_run: bool = None,
         entity_rules: main_models.EntityDiscoverRule = None,
         env_type: str = None,
@@ -19,25 +20,26 @@ class CreateAddonReleaseRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The name of the addon component to be connected to monitoring.
+        # The name of the add-on component to be integrated for monitoring.
         # 
         # This parameter is required.
         self.addon_name = addon_name
         # The language type of the component.
         self.aliyun_lang = aliyun_lang
+        self.api_version = api_version
         # Specifies whether to perform a dry run. Default value: false.
         self.dry_run = dry_run
         # The field rules.
         self.entity_rules = entity_rules
-        # The environment type. If the policy type is CS or ECS, the corresponding value is used. For other types, the value is Cloud.
+        # The environment type. If the policy type is CS or ECS, the corresponding environment type is used. For other policy types, the value is uniformly set to Cloud.
         self.env_type = env_type
-        # The parent AddonReleaseId.
+        # The parent add-on release ID.
         self.parent_addon_release_id = parent_addon_release_id
-        # The name of the plugin after access. If this parameter is not specified, a default rule name is generated.
+        # The name of the plug-in after integration. If you do not specify this parameter, a default rule name is generated.
         self.release_name = release_name
         # The input metadata.
         self.values = values
-        # The version of the addon component to be connected to monitoring.
+        # The version of the add-on component to be integrated for monitoring.
         # 
         # This parameter is required.
         self.version = version
@@ -58,6 +60,9 @@ class CreateAddonReleaseRequest(DaraModel):
 
         if self.aliyun_lang is not None:
             result['aliyunLang'] = self.aliyun_lang
+
+        if self.api_version is not None:
+            result['apiVersion'] = self.api_version
 
         if self.dry_run is not None:
             result['dryRun'] = self.dry_run
@@ -92,6 +97,9 @@ class CreateAddonReleaseRequest(DaraModel):
 
         if m.get('aliyunLang') is not None:
             self.aliyun_lang = m.get('aliyunLang')
+
+        if m.get('apiVersion') is not None:
+            self.api_version = m.get('apiVersion')
 
         if m.get('dryRun') is not None:
             self.dry_run = m.get('dryRun')

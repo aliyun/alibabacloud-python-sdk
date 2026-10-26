@@ -21,19 +21,19 @@ class AlertRuleAlertMetricFilterDef(DaraModel):
     ):
         # The dimension in APM metrics.
         self.dim = dim
-        # If set to \\`true\\`, the filter item does not appear in the \\`group by\\` clause of a PromQL query.
+        # Specifies whether to disable the dimension. If set to true, the filter item does not appear in the group by clause of PromQL.
         self.dim_disabled = dim_disabled
-        # The display name in Chinese.
+        # The Chinese display name.
         self.display_name_cn = display_name_cn
-        # The display name in English.
+        # The English display name.
         self.display_name_en = display_name_en
-        # Specifies whether to hide the filter. If hidden, the filter does not appear in the frontend UI. However, its value can be uploaded when rendering a PromQL query. For example, in an Application Performance Management (APM) scenario, the pid filter is typically hidden from the configuration UI. The frontend displays it as a separate application search list.
+        # Specifies whether to hide the filter. If hidden, the filter is not displayed in frontend interactions, but its value can be passed when rendering PromQL. A typical example is the pid filter in APM scenarios, which is typically not displayed through configuration but shown as a separate application search list in the frontend.
         self.hidden = hidden
-        # If set to \\`true\\`, the filter item does not appear in the label filter of a PromQL query.
+        # Specifies whether to disable the label. If set to true, the filter item does not appear in the label filter of PromQL.
         self.label_disabled = label_disabled
-        # The operator for the filter condition.
+        # The filter condition operator.
         self.opt = opt
-        # A list of supported options.
+        # The list of supported options.
         self.supported_opts = supported_opts
 
     def validate(self):
@@ -113,11 +113,11 @@ class AlertRuleAlertMetricFilterDefSupportedOpts(DaraModel):
         display_name_en: str = None,
         value: str = None,
     ):
-        # The display name in Chinese.
+        # The Chinese display name.
         self.display_name_cn = display_name_cn
-        # The display name in English.
+        # The English display name.
         self.display_name_en = display_name_en
-        # The matching value.
+        # The match value.
         self.value = value
 
     def validate(self):

@@ -13,9 +13,9 @@ class SlsQueryJoin(DaraModel):
         conditions: List[main_models.SlsJoinCondition] = None,
         type: str = None,
     ):
-        # The list of join conditions for SLS query result sets. The conditions define the matching rules between multiple SLS query results for cross-Logstore data correlation analysis.
+        # The list of join conditions for SLS query result sets, which defines the matching rules between multiple SLS query results for cross-logstore data association analysis.
         self.conditions = conditions
-        # The set operation type. Valid values: InnerJoin, LeftJoin, RightJoin, FullJoin, LeftExclude, RightExclude, CrossJoin, NoJoin, and Concat.
+        # The set operation type: InnerJoin / LeftJoin / RightJoin / FullJoin / LeftExclude / RightExclude / CrossJoin / NoJoin / Concat.
         self.type = type
 
     def validate(self):

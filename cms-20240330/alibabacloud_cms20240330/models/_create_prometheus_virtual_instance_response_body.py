@@ -11,7 +11,7 @@ class CreatePrometheusVirtualInstanceResponseBody(DaraModel):
         instance: main_models.CreatePrometheusVirtualInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # The instance.
+        # The instance ID.
         self.instance = instance
         # Id of the request
         self.request_id = request_id
@@ -54,15 +54,15 @@ class CreatePrometheusVirtualInstanceResponseBodyInstance(DaraModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The time when the instance was created.
+        # The creation time.
         self.created_at = created_at
         # The HTTP API query URL.
         self.http_api_url = http_api_url
-        # The instance ID.
+        # The region ID.
         self.instance_id = instance_id
-        # The cloud product.
+        # The cloud service.
         self.namespace = namespace
-        # Region ID
+        # The user ID.
         self.region_id = region_id
         # The user ID.
         self.user_id = user_id

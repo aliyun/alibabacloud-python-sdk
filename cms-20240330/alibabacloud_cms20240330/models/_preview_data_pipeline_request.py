@@ -20,11 +20,11 @@ class PreviewDataPipelineRequest(DaraModel):
         source: main_models.PreviewDataPipelineRequestSource = None,
         to_time: int = None,
     ):
-        # The pipeline description.
+        # The description of the pipeline.
         self.description = description
-        # The start time of the preview.
+        # The start time of the preview. The value is a UNIX timestamp in seconds.
         self.from_time = from_time
-        # The pipeline type.
+        # The type of the pipeline.
         self.kind = kind
         # The named outputs.
         self.outputs = outputs
@@ -36,7 +36,7 @@ class PreviewDataPipelineRequest(DaraModel):
         self.sinks = sinks
         # The data source.
         self.source = source
-        # The end time for the preview.
+        # The end time for the preview. The value is a UNIX timestamp in seconds.
         self.to_time = to_time
 
     def validate(self):
@@ -184,7 +184,7 @@ class PreviewDataPipelineRequestSourceConfig(DaraModel):
     ):
         # The run mode.
         self.run_mode = run_mode
-        # The read start point.
+        # The read start position.
         self.start_from = start_from
         # The backfill time range.
         self.time_range = time_range
@@ -399,9 +399,9 @@ class PreviewDataPipelineRequestProcessorsConfig(DaraModel):
         self.parameters = parameters
         # The list of field projections.
         self.projections = projections
-        # The list of masking rules.
+        # The list of data masking rules.
         self.rules = rules
-        # The scope in which pipeline processing takes effect.
+        # The effective scope of pipeline processing.
         self.scope = scope
         # The SPL script.
         self.script = script
@@ -558,7 +558,7 @@ class PreviewDataPipelineRequestProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The list of service names.
+        # The service name list.
         self.service_names = service_names
 
     def validate(self):
@@ -647,7 +647,7 @@ class PreviewDataPipelineRequestProcessorsConfigScopeServiceName(DaraModel):
         match_type: str = None,
         values: List[str] = None,
     ):
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The match values.
         self.values = values
@@ -684,7 +684,7 @@ class PreviewDataPipelineRequestProcessorsConfigScopeMetricName(DaraModel):
         match_type: str = None,
         values: List[str] = None,
     ):
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The metric names.
         self.values = values
@@ -724,7 +724,7 @@ class PreviewDataPipelineRequestProcessorsConfigScopeConditions(DaraModel):
     ):
         # The field reference.
         self.field = field
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The match values.
         self.values = values
@@ -775,7 +775,7 @@ class PreviewDataPipelineRequestProcessorsConfigScopeConditionsField(DaraModel):
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The field or dimension name.
+        # The name of the field or dimension.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -828,17 +828,17 @@ class PreviewDataPipelineRequestProcessorsConfigRules(DaraModel):
         mode: str = None,
         types: List[str] = None,
     ):
-        # The length of the prefix to retain.
+        # The length of the retained prefix.
         self.keep_prefix = keep_prefix
-        # The length of the suffix to retain.
+        # The length of the retained suffix.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
         # The mask character.
         self.mask_char = mask_char
-        # The masking mode.
+        # The data masking mode.
         self.mode = mode
-        # The built-in sensitive types.
+        # The built-in sensitive data types.
         self.types = types
 
     def validate(self):
@@ -971,7 +971,7 @@ class PreviewDataPipelineRequestOutputs(DaraModel):
         name: str = None,
         processors: List[main_models.PreviewDataPipelineRequestOutputsProcessors] = None,
     ):
-        # The output name.
+        # The name of the output.
         self.name = name
         # The branch processors.
         self.processors = processors
@@ -1085,9 +1085,9 @@ class PreviewDataPipelineRequestOutputsProcessorsConfig(DaraModel):
         self.parameters = parameters
         # The list of field projections.
         self.projections = projections
-        # The list of masking rules.
+        # The list of data masking rules.
         self.rules = rules
-        # The pipeline processing scope.
+        # The effective scope of pipeline processing.
         self.scope = scope
         # The SPL script.
         self.script = script
@@ -1244,7 +1244,7 @@ class PreviewDataPipelineRequestOutputsProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The list of service names.
+        # The service name list.
         self.service_names = service_names
 
     def validate(self):
@@ -1333,7 +1333,7 @@ class PreviewDataPipelineRequestOutputsProcessorsConfigScopeServiceName(DaraMode
         match_type: str = None,
         values: List[str] = None,
     ):
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The match values.
         self.values = values
@@ -1370,7 +1370,7 @@ class PreviewDataPipelineRequestOutputsProcessorsConfigScopeMetricName(DaraModel
         match_type: str = None,
         values: List[str] = None,
     ):
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The metric names.
         self.values = values
@@ -1410,7 +1410,7 @@ class PreviewDataPipelineRequestOutputsProcessorsConfigScopeConditions(DaraModel
     ):
         # The field reference.
         self.field = field
-        # The matching method.
+        # The match type.
         self.match_type = match_type
         # The match values.
         self.values = values
@@ -1461,7 +1461,7 @@ class PreviewDataPipelineRequestOutputsProcessorsConfigScopeConditionsField(Dara
         self.container = container
         # The reference data type.
         self.kind = kind
-        # The field or dimension name.
+        # The name of the field or dimension.
         self.name = name
         # The JSON literal key path.
         self.path = path
@@ -1514,17 +1514,17 @@ class PreviewDataPipelineRequestOutputsProcessorsConfigRules(DaraModel):
         mode: str = None,
         types: List[str] = None,
     ):
-        # The length of the prefix to retain.
+        # The length of the retained prefix.
         self.keep_prefix = keep_prefix
-        # The length of the suffix to retain.
+        # The length of the retained suffix.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
         # The mask character.
         self.mask_char = mask_char
-        # The masking mode.
+        # The data masking mode.
         self.mode = mode
-        # The built-in sensitive types.
+        # The built-in sensitive data types.
         self.types = types
 
     def validate(self):

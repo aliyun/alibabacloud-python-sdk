@@ -11,7 +11,7 @@ class SeverityLevelsFilter(DaraModel):
         self,
         contains: List[str] = None,
     ):
-        # The hit condition: the set of severity levels covered by the rule contains at least one level in the array (OR semantics).
+        # The match condition where the set of severity levels covered by the rule contains at least one severity level in the array (OR semantics).
         self.contains = contains
 
     def validate(self):

@@ -18,23 +18,23 @@ class CreateMemoryStoreRequest(DaraModel):
         source_type: str = None,
         trace_source_config: main_models.CreateMemoryStoreRequestTraceSourceConfig = None,
     ):
-        # A list of custom extraction strategies.
+        # The custom extraction strategies.
         self.custom_extraction_strategies = custom_extraction_strategies
-        # The description of the MemoryStore.
+        # The description.
         self.description = description
-        # The extraction strategies to use. Valid values include `Episodic`, `Summary`, and `Fact`.
+        # The extraction strategies. Valid values: Episodic, Summary, and Fact.
         self.extraction_strategies = extraction_strategies
-        # The name of the MemoryStore. The name must be unique within the workspace.
+        # The name of the memory store.
         # 
         # This parameter is required.
         self.memory_store_name = memory_store_name
-        # The short-term TTL, which is the number of conversation rounds to retain.
+        # The retention period for short-term memory.
         # 
         # This parameter is required.
         self.short_term_ttl = short_term_ttl
-        # The source type of the memory. Valid values are `None` and `Trace`.
+        # The source of the memory.
         self.source_type = source_type
-        # Configuration for the trace source. Required if `sourceType` is `Trace`.
+        # The configuration when the sourceType is Trace.
         self.trace_source_config = trace_source_config
 
     def validate(self):
@@ -111,11 +111,11 @@ class CreateMemoryStoreRequestTraceSourceConfig(DaraModel):
         query: str = None,
         workspace: str = None,
     ):
-        # Specifies whether to include the output in the trace.
+        # Specifies whether to include the large language model (LLM) output in memory extraction.
         self.include_output = include_output
-        # The query to filter traces.
+        # The Simple Log Service (SLS) query statement used to filter traces.
         self.query = query
-        # The name of the workspace that contains the trace source.
+        # The workspace where the trace is located.
         self.workspace = workspace
 
     def validate(self):

@@ -22,29 +22,33 @@ class GetMemoryResponseBody(DaraModel):
         updated_at: str = None,
         user_id: str = None,
     ):
+        # The agent ID of the application.
         self.agent_id = agent_id
+        # The application ID.
         self.app_id = app_id
-        # The time when the memory was created.
+        # The creation time.
         self.created_at = created_at
         # The expiration time.
         self.expiration_date = expiration_date
         # The memory ID.
         self.id = id
-        # This property is mutable.
+        # The immutable properties.
         self.immutable = immutable
-        # The memory content.
+        # The memory.
         self.memory = memory
         # The metadata.
         self.metadata = metadata
         # The organization.
         self.organization = organization
-        # The owner of the memory.
+        # The memory owner.
         self.owner = owner
         # The request ID.
         self.request_id = request_id
+        # The run ID.
         self.run_id = run_id
-        # The time when the memory was last updated.
+        # The update time.
         self.updated_at = updated_at
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

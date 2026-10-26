@@ -14,7 +14,7 @@ class AlertRuleLabelFilter(DaraModel):
     ):
         # The label filter.
         self.labels = labels
-        # The relationship operator between multiple labels.
+        # The relational operator between multiple labels.
         self.opt = opt
 
     def validate(self):

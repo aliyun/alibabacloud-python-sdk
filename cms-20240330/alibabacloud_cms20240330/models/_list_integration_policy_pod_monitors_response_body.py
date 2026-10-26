@@ -17,7 +17,7 @@ class ListIntegrationPolicyPodMonitorsResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The list of PodMonitors.
+        # The PodMonitor list.
         self.pod_monitors = pod_monitors
         # The policy ID.
         self.policy_id = policy_id
@@ -90,7 +90,7 @@ class ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors(DaraModel):
         self.addon_release_name = addon_release_name
         # The addon version.
         self.addon_version = addon_version
-        # The configuration YAML.
+        # The YAML configuration.
         self.config_yaml = config_yaml
         # The enabling status.
         self.enable_status = enable_status

@@ -12,7 +12,7 @@ class DeleteAlertRobotsRequest(DaraModel):
         robot_ids: List[str] = None,
         type: str = None,
     ):
-        # The chatbot ID.
+        # The chatbot IDs.
         # 
         # This parameter is required.
         self.robot_ids = robot_ids

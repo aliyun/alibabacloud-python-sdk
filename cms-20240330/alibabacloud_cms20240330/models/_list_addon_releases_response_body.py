@@ -15,13 +15,13 @@ class ListAddonReleasesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # A pagination token to retrieve the next page of results. If this field is empty, no more results are available.
+        # The next page token.
         self.next_token = next_token
-        # The list of add-on releases.
+        # The collection of onboarded component information.
         self.releases = releases
         # The request ID.
         self.request_id = request_id
-        # The total number of add-on releases that match the query.
+        # The number of components.
         self.total = total
 
     def validate(self):
@@ -106,35 +106,35 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         self.addon_name = addon_name
         # The number of alert rules.
         self.alert_rule_count = alert_rule_count
-        # The API version.
+        # The version number.
         self.api_version = api_version
-        # The conditions of the release.
+        # The summary of installation phase conditions.
         self.conditions = conditions
-        # The configuration of the add-on.
+        # The configuration information of the component.
         self.config = config
-        # The installation time of the add-on.
+        # The onboarding time.
         self.create_time = create_time
         # The number of dashboards.
         self.dashboard_count = dashboard_count
-        # Details of the entity rules.
+        # The entity details.
         self.entity_rules = entity_rules
-        # The environment type.
+        # The type of the environment.
         self.env_type = env_type
         # The environment ID.
         self.environment_id = environment_id
         # The number of exporters.
         self.exporter_count = exporter_count
-        # Indicates whether a configuration exists.
+        # Indicates whether a configuration is available.
         self.have_config = have_config
-        # The ID of the user who installed the add-on.
+        # The ID of the onboarding user.
         self.install_user_id = install_user_id
         # The language.
         self.language = language
-        # Indicates whether the add-on is managed.
+        # Indicates whether the component is managed.
         self.managed = managed
-        # The next available version of the add-on.
+        # The starting version number for the remaining list.
         self.next_version = next_version
-        # The ID of the parent release.
+        # The parent add-on release ID.
         self.parent_addon_release_id = parent_addon_release_id
         # The policy ID.
         self.policy_id = policy_id
@@ -142,21 +142,21 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         self.region_id = region_id
         # The release ID.
         self.release_id = release_id
-        # The release name.
+        # The name of the release.
         self.release_name = release_name
-        # The usage scenario of the add-on.
+        # The scenario of the component.
         self.scene = scene
-        # The status of the release.
+        # The status.
         self.status = status
-        # Statistics about sub-releases.
+        # The statistics information of sub-add-on releases.
         self.sub_addon_release = sub_addon_release
-        # The last update time.
+        # The update time.
         self.update_time = update_time
-        # The ID of the owner.
+        # The ID of the owning user.
         self.user_id = user_id
-        # The version of the add-on.
+        # The version of the component.
         self.version = version
-        # The name of the workspace.
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -363,7 +363,7 @@ class ListAddonReleasesResponseBodyReleasesSubAddonRelease(DaraModel):
     ):
         # The number of ready sub-releases.
         self.ready = ready
-        # The total number of sub-releases.
+        # The number of sub-releases.
         self.total = total
 
     def validate(self):
@@ -401,15 +401,15 @@ class ListAddonReleasesResponseBodyReleasesConditions(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The timestamp of the first status transition.
+        # The time of the first transition.
         self.first_transition_time = first_transition_time
-        # The timestamp of the last status transition.
+        # The time of the last transition.
         self.last_transition_time = last_transition_time
-        # A detailed message about the status.
+        # The detailed information.
         self.message = message
-        # The status of the condition.
+        # The status of the phase.
         self.status = status
-        # The type of the condition.
+        # The type of the phase.
         self.type = type
 
     def validate(self):

@@ -21,27 +21,27 @@ class ObserveGroupInstance(DaraModel):
         tags: Dict[str, str] = None,
         user_id: str = None,
     ):
-        # The entity category (adapted by entityType).
+        # 实体分类（由 entityType 适配）。
         self.category = category
-        # The key-value pairs of monitoring dimensions.
+        # 监控维度键值对。
         self.dimension = dimension
-        # The entity domain (such as acs).
+        # 实体域（如 acs）。
         self.entity_domain = entity_domain
-        # The entity type (such as acs.ecs.instance).
+        # 实体类型（如 acs.ecs.instance）。
         self.entity_type = entity_type
-        # The ID of the observation group to which the entity belongs.
+        # 所属观测分组 ID。
         self.group_id = group_id
-        # The instance ID.
+        # 实例 ID。
         self.instance_id = instance_id
-        # The instance name.
+        # 实例名称。
         self.instance_name = instance_name
-        # The region ID of the instance.
+        # 实例所属地域 ID。
         self.region_id = region_id
-        # The resource group ID of the instance.
+        # 实例所属资源组 ID。
         self.resource_group_id = resource_group_id
-        # The key-value pairs of instance tags.
+        # 实例标签键值对。
         self.tags = tags
-        # The UID of the user to which the instance belongs.
+        # 实例归属的用户 UID。
         self.user_id = user_id
 
     def validate(self):

@@ -13,13 +13,13 @@ class MeasureList(DaraModel):
         measure_code: str = None,
         window_secs: int = None,
     ):
-        # The list of grouping dimensions for metric data. Specifies the dimension keys by which metric results are computed through grouping and aggregation.
+        # The list of grouping dimensions for measure data, specifying the dimension keys used for grouping and aggregation of measure results.
         self.group_by = group_by
         # The metric code.
         # 
         # This parameter is required.
         self.measure_code = measure_code
-        # The query time window, in seconds.
+        # The query time window in seconds.
         # 
         # This parameter is required.
         self.window_secs = window_secs

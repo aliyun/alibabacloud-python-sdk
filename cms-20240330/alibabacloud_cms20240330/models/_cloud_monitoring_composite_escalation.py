@@ -15,13 +15,13 @@ class CloudMonitoringCompositeEscalation(DaraModel):
         severity: str = None,
         times: int = None,
     ):
-        # The multi-condition configuration list for the cloud service monitoring composite trigger. The list contains multiple sub-causes that are combined by using logical operators (AND/OR) to determine whether to trigger an alert.
+        # The multi-condition configuration list for cloud service monitoring composite triggers, which includes multiple sub-trigger conditions combined by logical operators (AND/OR) to determine whether to trigger an alert.
         self.escalations = escalations
         # The logical relationship between conditions (AND/OR).
         self.relation = relation
         # The severity level.
         self.severity = severity
-        # The number of consecutive times the condition is met before the alert is triggered.
+        # The consecutive trigger count.
         self.times = times
 
     def validate(self):

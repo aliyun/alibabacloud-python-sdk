@@ -21,11 +21,11 @@ class TransformerForModify(DaraModel):
         self.actions = actions
         # The description.
         self.description = description
-        # The filter criteria.
+        # The filter conditions.
         self.filter_setting = filter_setting
-        # Specifies whether to exit after a match is processed.
+        # Specifies whether to exit after match processing.
         self.quit_after_match = quit_after_match
-        # The sort number.
+        # The sort order.
         self.sort_id = sort_id
         # The name.
         # 

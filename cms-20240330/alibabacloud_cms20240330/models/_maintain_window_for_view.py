@@ -24,33 +24,33 @@ class MaintainWindowForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # The time when the policy was created.
+        # The creation time.
         self.create_time = create_time
         # The description.
         self.description = description
-        # The effective time range.
+        # The effective period range.
         self.effect_time_range = effect_time_range
         # The crontab expression.
         self.effective = effective
-        # Indicates whether the policy is enabled.
+        # Indicates whether the mute policy is enabled.
         self.enable = enable
-        # The end time of the effective period.
+        # The effective end time.
         self.end_time = end_time
         # The filter conditions.
         self.filter_setting = filter_setting
-        # The UUID.
+        # UUID
         self.maintain_window_id = maintain_window_id
         # The name.
         # 
         # This parameter is required.
         self.maintain_window_name = maintain_window_name
-        # The start time of the effective period.
+        # The effective start time.
         self.start_time = start_time
-        # The last time the resource was updated.
+        # The update time.
         self.update_time = update_time
         # The user ID.
         self.user_id = user_id
-        # The workspace.
+        # workspace
         self.workspace = workspace
 
     def validate(self):
@@ -158,7 +158,7 @@ class MaintainWindowForViewEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # The days of the week when the policy is effective.
+        # The effective days of the week (Monday to Sunday).
         self.day_in_week = day_in_week
         # The end time in minutes.
         self.end_time_in_minute = end_time_in_minute

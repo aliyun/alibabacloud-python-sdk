@@ -109,33 +109,33 @@ class ListAggTaskGroupsResponseBodyAggTaskGroups(DaraModel):
         self.agg_task_group_name = agg_task_group_name
         # The cron expression of the aggregation task group when the scheduling mode is set to Cron.
         self.cron_expr = cron_expr
-        # The fixed scheduling delay, in seconds.
+        # The fixed delay time for scheduling, in seconds.
         self.delay = delay
         # The description of the aggregation task group.
         self.description = description
-        # The UNIX timestamp that indicates the scheduling start time, in seconds.
+        # The UNIX timestamp of the start time for scheduling, in seconds.
         self.from_time = from_time
         # The scheduling interval.
         self.interval = interval
         # The maximum number of retries for executing the aggregation task.
         self.max_retries = max_retries
-        # The maximum retry time for executing the aggregation task, in seconds.
+        # The maximum retry time to execute the aggregation node, in seconds.
         self.max_run_time_in_seconds = max_run_time_in_seconds
         # The region ID.
         self.region_id = region_id
         # The scheduling mode.
         self.schedule_mode = schedule_mode
-        # The schedule time expression.
+        # The scheduling time expression.
         self.schedule_time_expr = schedule_time_expr
-        # The instance ID of the source Managed Service for Prometheus instance for the aggregation node group.
+        # The instance ID of the source Prometheus instance for the aggregation node group.
         self.source_prometheus_id = source_prometheus_id
         # The status of the aggregation task group.
         self.status = status
-        # The instance ID of the target Managed Service for Prometheus instance for the aggregation node group.
+        # The instance ID of the target Prometheus instance for the aggregation node group.
         self.target_prometheus_id = target_prometheus_id
-        # The UNIX timestamp that indicates the scheduling end time, in seconds.
+        # The UNIX timestamp of the end time for scheduling, in seconds.
         self.to_time = to_time
-        # The time when the aggregation task group was last updated, in UNIX timestamp format.
+        # The update time of the aggregation task group. The value is a UNIX timestamp.
         self.update_time = update_time
 
     def validate(self):

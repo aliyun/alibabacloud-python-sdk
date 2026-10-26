@@ -17,13 +17,13 @@ class MergeContactGroup(DaraModel):
         name: str = None,
         source: str = None,
     ):
-        # A list of unique identifiers for the members in the group.
+        # The list of unique identifiers for members in the group.
         self.contacts = contacts
-        # An extension field that stores additional information.
+        # The extension field used to store additional information.
         self.extend = extend
-        # The time when the contact group was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the contact group was last modified.
+        # The last modification time.
         self.gmt_modified = gmt_modified
         # The unique identifier of the contact group.
         self.identifier = identifier

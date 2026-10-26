@@ -18,7 +18,7 @@ class AddContextsRequest(DaraModel):
         # 
         # This parameter is required.
         self.context_type = context_type
-        # An array of context items.
+        # The context information.
         # 
         # This parameter is required.
         self.items = items
@@ -85,37 +85,37 @@ class AddContextsRequestItems(DaraModel):
         trigger_condition: str = None,
         user_id: str = None,
     ):
-        # The unique agent ID.
+        # The agent ID of the application.
         self.agent_id = agent_id
         # The application ID.
         self.app_id = app_id
-        # A list of categories to apply to the context item.
+        # The categories.
         self.categories = categories
-        # The content of the context item.
+        # The content.
         self.content = content
-        # The custom instructions for processing the context.
+        # The custom instructions.
         self.custom_instructions = custom_instructions
-        # An object containing experience information for the context.
+        # The experience.
         self.experience = experience
-        # The expiration timestamp for the context item.
+        # The expiration date.
         self.expiration_date = expiration_date
-        # Specifies whether the context item is immutable. If set to `true`, the item cannot be changed after it is created. The default value is `false`.
+        # The mutability.
         self.immutable = immutable
-        # Specifies whether to perform inference based on the context. The default value is `false`.
+        # The inference.
         self.infer = infer
-        # A map of key-value pairs to apply as labels.
+        # The labels.
         self.labels = labels
-        # An array of message objects.
+        # The messages.
         self.messages = messages
-        # Key-value pairs to store as metadata.
+        # The metadata.
         self.metadata = metadata
         # The run ID.
         self.run_id = run_id
-        # The timestamp of the context item.
+        # The timestamp.
         self.timestamp = timestamp
-        # The condition that triggers the context.
+        # The trigger condition.
         self.trigger_condition = trigger_condition
-        # The unique user ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

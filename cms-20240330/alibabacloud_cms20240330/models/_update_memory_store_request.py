@@ -15,13 +15,13 @@ class UpdateMemoryStoreRequest(DaraModel):
         extraction_strategies: List[str] = None,
         short_term_ttl: int = None,
     ):
-        # Custom extraction strategies.
+        # The custom extraction strategies.
         self.custom_extraction_strategies = custom_extraction_strategies
-        # Description.
+        # The description.
         self.description = description
-        # Extraction strategies. Supports "Episodic", "Summary", and "Fact".
+        # The extraction strategies. Valid values: Episodic, Summary, and Fact.
         self.extraction_strategies = extraction_strategies
-        # Short-term memory retention time.
+        # The retention period for short-term memory.
         self.short_term_ttl = short_term_ttl
 
     def validate(self):

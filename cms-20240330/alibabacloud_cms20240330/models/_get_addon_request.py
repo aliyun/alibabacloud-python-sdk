@@ -10,9 +10,9 @@ class GetAddonRequest(DaraModel):
         aliyun_lang: str = None,
         version: str = None,
     ):
-        # The language of the response. Valid values: zh and en. Default value: zh.
+        # The locale. Default value: zh. Valid values: zh, en.
         self.aliyun_lang = aliyun_lang
-        # The version number of the add-on.
+        # The version of the add-on.
         self.version = version
 
     def validate(self):

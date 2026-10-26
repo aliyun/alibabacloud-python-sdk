@@ -20,25 +20,25 @@ class CreateDeliveryTaskRequest(DaraModel):
         task_description: str = None,
         task_name: str = None,
     ):
-        # The ID of the Prometheus instance that serves as the data source.
+        # The ID of the data source, which is the ID of the Prometheus instance.
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # A map of key-value pairs to attach as additional labels to all delivered metrics.
+        # The additional labels attached to all delivered metrics. The key is the label name, and the value is the label value.
         self.external_labels = external_labels
-        # The label conditions for filtering metrics. The key is the label name and the value is the value to match. The filtering behavior is controlled by `labelFiltersType`.
+        # The metric filtering conditions. This parameter is used together with labelFiltersType. The key is the metric label name, and the value is the match value.
         self.label_filters = label_filters
-        # The mode for applying the label filters.
+        # The metric filtering mode.
         self.label_filters_type = label_filters_type
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # An array of delivery destination objects.
+        # The list of delivery destinations.
         # 
         # This parameter is required.
         self.sink_list = sink_list
-        # An array of resource tags.
+        # The tags of the resource.
         self.tags = tags
-        # The task description.
+        # The description of the task.
         self.task_description = task_description
         # The name of the task. The name can contain Chinese characters, English letters, underscores (_), and hyphens (-).
         # 
@@ -173,9 +173,9 @@ class CreateDeliveryTaskRequestSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
-        # The configuration for the sink, specified as key-value pairs. The valid keys and values depend on the value of `sinkType`.
+        # The detailed configuration of the delivery destination. The meanings of the key and value vary based on the sinkType. For more information, see the following descriptions.
         self.sink_configs = sink_configs
-        # The type of the delivery destination (sink).
+        # The type of the delivery destination.
         # 
         # This parameter is required.
         self.sink_type = sink_type

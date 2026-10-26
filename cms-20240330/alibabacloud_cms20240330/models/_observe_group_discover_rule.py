@@ -25,33 +25,33 @@ class ObserveGroupDiscoverRule(DaraModel):
         tag_rules: main_models.ObserveGroupDiscoverRuleTagRules = None,
         user_id: str = None,
     ):
-        # Indicates whether the rule is enabled. If set to false, the data plane skips this rule and does not perform matching, tagging, or delivery.
+        # 规则是否启用；false 时数据面跳过该规则（不匹配 / 不打标 / 不下发）。
         self.enabled = enabled
-        # The entity type (legacy). Retained for backward compatibility. Use entityTypes instead.
+        # （旧）单实体类型，向后兼容，优先用 entityTypes。
         self.entity_type = entity_type
-        # The list of entity types. A single rule can match multiple types, such as acs.ecs.instance, acs.rds.instance, and acs.arms.service.
+        # 实体类型列表，支持一条规则跨多类型匹配（如 acs.ecs.instance/acs.rds.instance/acs.arms.service）。
         self.entity_types = entity_types
-        # The time when the rule was created, in UNIX millisecond timestamp format. This value is used for display in the console.
+        # 规则创建时间（Unix 毫秒时间戳），控制台展示用。
         self.gmt_create = gmt_create
-        # The list of manually specified instance IDs in enumeration mode, including instances synchronized manually in version 1.0.
+        # 手动指定的实例 ID 列表（枚举型，含 1.0 手动实例同步）。
         self.instance_ids = instance_ids
-        # The name matching rules.
+        # 名称匹配规则。
         self.name_rules = name_rules
-        # The list of region IDs used for filtering by region.
+        # 按地域过滤的 region ID 列表。
         self.region_ids = region_ids
-        # The resource group ID used for filtering.
+        # 按资源组过滤。
         self.resource_group_id = resource_group_id
-        # The stable rule ID used as an anchor for editing, deleting, and enabling or disabling operations. Format: dr-<16-character hash>.
+        # 规则稳定 ID（编辑/删除/启停锚点），格式 dr-<16位hash>。
         self.rule_id = rule_id
-        # The matching method. Valid values: byTag, byResourceGroup, byInstanceName, byManual, and bySpl.
+        # 匹配方式：byTag / byResourceGroup / byInstanceName / byManual / bySpl。
         self.rule_type = rule_type
-        # The applicable scope. Valid values: all (all entity types, exclusive) and entity (specified entity types).
+        # 适用范围：all（全部实体类型，独占）/ entity（指定实体类型）。
         self.scope = scope
-        # The full SPL expression for advanced configuration. If this parameter is not empty, it takes precedence over other filter fields.
+        # 完整 SPL 表达式（高级配置）；非空时优先生效，覆盖其它过滤字段。
         self.spl = spl
-        # The tag matching rules.
+        # 标签匹配规则。
         self.tag_rules = tag_rules
-        # The UID of the user to whom the rule belongs.
+        # 规则所属用户 UID。
         self.user_id = user_id
 
     def validate(self):
@@ -163,9 +163,9 @@ class ObserveGroupDiscoverRuleTagRules(DaraModel):
         op: str = None,
         tags: List[main_models.ObserveGroupDiscoverRuleTagRulesTags] = None,
     ):
-        # The tag matching logic.
+        # 标签匹配逻辑。
         self.op = op
-        # The tag condition list.
+        # 标签条件列表。
         self.tags = tags
 
     def validate(self):
@@ -209,11 +209,11 @@ class ObserveGroupDiscoverRuleTagRulesTags(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The matching operation.
+        # 匹配操作。
         self.op = op
-        # The tag key.
+        # 标签键。
         self.tag_key = tag_key
-        # The tag value list.
+        # 标签值列表。
         self.tag_values = tag_values
 
     def validate(self):
@@ -254,9 +254,9 @@ class ObserveGroupDiscoverRuleNameRules(DaraModel):
         op: str = None,
         tags: List[main_models.ObserveGroupDiscoverRuleNameRulesTags] = None,
     ):
-        # The name matching logic.
+        # 名称匹配逻辑。
         self.op = op
-        # The name condition list.
+        # 名称条件列表。
         self.tags = tags
 
     def validate(self):
@@ -299,9 +299,9 @@ class ObserveGroupDiscoverRuleNameRulesTags(DaraModel):
         op: str = None,
         tag_values: List[str] = None,
     ):
-        # The matching operation.
+        # 匹配操作。
         self.op = op
-        # The matching value list.
+        # 匹配值列表。
         self.tag_values = tag_values
 
     def validate(self):

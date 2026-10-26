@@ -13,7 +13,7 @@ class ListAddonsResponseBody(DaraModel):
         addons: List[main_models.ListAddonsResponseBodyAddons] = None,
         request_id: str = None,
     ):
-        # A list of available add-ons.
+        # The list of available integration components.
         self.addons = addons
         # Id of the request
         self.request_id = request_id
@@ -70,33 +70,33 @@ class ListAddonsResponseBodyAddons(DaraModel):
         version: str = None,
         weight: str = None,
     ):
-        # The alias of the add-on.
+        # The alias of the integration component.
         self.alias = alias
-        # A list of tags for the add-on.
+        # The list of tags for the integration component.
         self.categories = categories
-        # A list of dashboards.
+        # The list of dashboards.
         self.dashboards = dashboards
-        # Description
+        # The description.
         self.description = description
-        # A list of supported integration policy types.
+        # The list of supported integration policy types.
         self.environments = environments
-        # The URL of the icon.
+        # The icon URL.
         self.icon = icon
-        # A list of keywords.
+        # The list of keywords.
         self.keywords = keywords
-        # Language.
+        # The language.
         self.language = language
-        # The time when the latest version was created.
+        # The latest release creation time.
         self.latest_release_create_time = latest_release_create_time
-        # The name of the add-on.
+        # The name of the integration component.
         self.name = name
-        # Indicates whether the add-on can be installed only once.
+        # Specifies whether the component can be installed only once.
         self.once = once
-        # The scenario of the component.
+        # The component scenario.
         self.scene = scene
-        # The version of the component.
+        # The component version.
         self.version = version
-        # The display weight of the add-on.
+        # The display weight of the integration component.
         self.weight = weight
 
     def validate(self):
@@ -226,21 +226,21 @@ class ListAddonsResponseBodyAddonsEnvironments(DaraModel):
         policies: main_models.ListAddonsResponseBodyAddonsEnvironmentsPolicies = None,
         policy_type: str = None,
     ):
-        # A list of associated Common Schemas.
+        # The list of associated common schemas.
         self.common_schema_refs = common_schema_refs
-        # A list of dependencies for the add-on.
+        # The list of dependencies for the integration component.
         self.dependencies = dependencies
         # The description of the integration policy type.
         self.description = description
-        # Indicates whether the add-on is enabled.
+        # Specifies whether the integration policy type is enabled.
         self.enable = enable
         # The label of the integration policy type.
         self.label = label
         # The name of the integration policy type.
         self.name = name
-        # Integration policy configuration.
+        # The integration policy configurations.
         self.policies = policies
-        # Integration Center policy type.
+        # The integration center policy type.
         self.policy_type = policy_type
 
     def validate(self):
@@ -330,17 +330,17 @@ class ListAddonsResponseBodyAddonsEnvironmentsPolicies(DaraModel):
         protocols: List[main_models.ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols] = None,
         target_addon_name: str = None,
     ):
-        # The default status of the alert rule policy.
+        # The enabling status of the default policy for alert rules.
         self.alert_default_status = alert_default_status
-        # Indicates whether the add-on is installed by default.
+        # Specifies whether to install the component by default.
         self.default_install = default_install
-        # Indicates whether to assign a Service Account to communicate with the Console API.
+        # Specifies whether to assign a service account for communication with the console API.
         self.enable_service_account = enable_service_account
-        # Metric check rule.
+        # The metric check rule.
         self.metric_check_rule = metric_check_rule
-        # Indicates whether to guide the user to restart pods after the add-on is installed.
+        # Specifies whether to trigger a pod restart guide immediately after the plug-in installation is completed during integration.
         self.need_restart_after_integration = need_restart_after_integration
-        # The supported protocol types.
+        # The supported protocol types in the configuration.
         self.protocols = protocols
         # The name of the target add-on.
         self.target_addon_name = target_addon_name
@@ -420,13 +420,13 @@ class ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # Protocol description.
+        # The protocol description.
         self.description = description
-        # Icon URL.
+        # The icon URL.
         self.icon = icon
-        # Protocol display name.
+        # The display name of the protocol.
         self.label = label
-        # Protocol name.
+        # The protocol name.
         self.name = name
 
     def validate(self):
@@ -472,7 +472,7 @@ class ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule(DaraModel)
         self,
         prom_ql: List[str] = None,
     ):
-        # A list of Prometheus Query Language (PromQL) statements.
+        # The list of PromQL query statements.
         self.prom_ql = prom_ql
 
     def validate(self):
@@ -502,11 +502,11 @@ class ListAddonsResponseBodyAddonsEnvironmentsDependencies(DaraModel):
         features: Dict[str, bool] = None,
         services: List[str] = None,
     ):
-        # Supported cluster types.
+        # The supported cluster types.
         self.cluster_types = cluster_types
-        # The probes on which the integration depends.
+        # The probes required for integration dependencies.
         self.features = features
-        # A list of dependent services.
+        # The list of dependent services.
         self.services = services
 
     def validate(self):
@@ -547,9 +547,9 @@ class ListAddonsResponseBodyAddonsEnvironmentsCommonSchemaRefs(DaraModel):
         group: str = None,
         version: str = None,
     ):
-        # The group name of the Common Schema.
+        # The group name of the common schema.
         self.group = group
-        # The version of the Common Schema.
+        # The version of the common schema.
         self.version = version
 
     def validate(self):
@@ -585,11 +585,11 @@ class ListAddonsResponseBodyAddonsDashboards(DaraModel):
         name: str = None,
         url: str = None,
     ):
-        # Dashboard description.
+        # The dashboard description.
         self.description = description
-        # Dashboard name.
+        # The dashboard name.
         self.name = name
-        # The URL of the dashboard\\"s preview image.
+        # The URL of the dashboard preview image.
         self.url = url
 
     def validate(self):

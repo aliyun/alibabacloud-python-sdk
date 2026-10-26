@@ -15,9 +15,9 @@ class GetCloudResourceDataResponseBody(DaraModel):
         request_id: str = None,
         response_status: main_models.GetCloudResourceDataResponseBodyResponseStatus = None,
     ):
-        # The total list of returned data.
+        # The total number of returned data records.
         self.data = data
-        # The list of headers.
+        # The list of request headers.
         self.header = header
         # The request ID.
         self.request_id = request_id
@@ -73,7 +73,7 @@ class GetCloudResourceDataResponseBodyResponseStatus(DaraModel):
         retry_policy: str = None,
         status_item: List[main_models.GetCloudResourceDataResponseBodyResponseStatusStatusItem] = None,
     ):
-        # The information during execution.
+        # The information during the execution process.
         self.execution_states = execution_states
         # The status level.
         self.level = level
@@ -150,7 +150,7 @@ class GetCloudResourceDataResponseBodyResponseStatusStatusItem(DaraModel):
         self.level = level
         # The message content.
         self.message = message
-        # The suggestion when an execution error occurs.
+        # The suggestions provided when an execution error occurs.
         self.suggestion = suggestion
 
     def validate(self):

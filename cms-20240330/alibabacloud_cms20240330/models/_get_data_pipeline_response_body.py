@@ -63,7 +63,7 @@ class GetDataPipelineResponseBodyPipeline(DaraModel):
         update_time: str = None,
         version: int = None,
     ):
-        # The creation time.
+        # The creation time in ISO 8601 format in UTC, such as 2026-08-10T05:00:00Z.
         # 
         # This parameter is required.
         # 
@@ -79,7 +79,7 @@ class GetDataPipelineResponseBodyPipeline(DaraModel):
         # 
         # This parameter is required.
         self.outputs = outputs
-        # The pipeline name.
+        # The name of the pipeline.
         # 
         # This parameter is required.
         self.pipeline_name = pipeline_name
@@ -91,7 +91,7 @@ class GetDataPipelineResponseBodyPipeline(DaraModel):
         # 
         # This parameter is required.
         self.signal_type = signal_type
-        # The output destinations.
+        # The data sinks.
         # 
         # This parameter is required.
         self.sinks = sinks
@@ -105,7 +105,7 @@ class GetDataPipelineResponseBodyPipeline(DaraModel):
         self.status = status
         # The status message.
         self.status_message = status_message
-        # The update time.
+        # The update time in ISO 8601 format in UTC, such as 2026-08-10T05:10:00Z.
         # 
         # This parameter is required.
         # 
@@ -285,7 +285,7 @@ class GetDataPipelineResponseBodyPipelineSourceConfig(DaraModel):
     ):
         # The run mode.
         self.run_mode = run_mode
-        # The read start point.
+        # The starting point for reading.
         self.start_from = start_from
         # The backfill time range.
         self.time_range = time_range
@@ -374,11 +374,11 @@ class GetDataPipelineResponseBodyPipelineSinks(DaraModel):
         self.datasets = datasets
         # SLS Logstore
         self.logstore = logstore
-        # The name of the output destination.
+        # The name of the data sink.
         self.name = name
         # SLS Project
         self.project = project
-        # The type of the output destination.
+        # The type of the data sink.
         self.type = type
 
     def validate(self):
@@ -500,9 +500,9 @@ class GetDataPipelineResponseBodyPipelineProcessorsConfig(DaraModel):
         self.parameters = parameters
         # The field projection list.
         self.projections = projections
-        # The masking rule list.
+        # The data masking rule list.
         self.rules = rules
-        # The scope in which the pipeline processing processor takes effect.
+        # The effective scope of pipeline processing.
         self.scope = scope
         # The SPL script.
         self.script = script
@@ -659,7 +659,7 @@ class GetDataPipelineResponseBodyPipelineProcessorsConfigSelector(DaraModel):
         self,
         service_names: List[str] = None,
     ):
-        # The list of service names.
+        # The service name list.
         self.service_names = service_names
 
     def validate(self):
@@ -787,7 +787,7 @@ class GetDataPipelineResponseBodyPipelineProcessorsConfigScopeMetricName(DaraMod
     ):
         # The match type.
         self.match_type = match_type
-        # The metric name.
+        # The metric names.
         self.values = values
 
     def validate(self):
@@ -929,15 +929,15 @@ class GetDataPipelineResponseBodyPipelineProcessorsConfigRules(DaraModel):
         mode: str = None,
         types: List[str] = None,
     ):
-        # The retained prefix length.
+        # The prefix retention length.
         self.keep_prefix = keep_prefix
-        # The retained suffix length.
+        # The suffix retention length.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
         # The mask character.
         self.mask_char = mask_char
-        # The masking mode.
+        # The data masking mode.
         self.mode = mode
         # The built-in sensitive types.
         self.types = types
@@ -1186,9 +1186,9 @@ class GetDataPipelineResponseBodyPipelineOutputsProcessorsConfig(DaraModel):
         self.parameters = parameters
         # The field projection list.
         self.projections = projections
-        # The masking rule list.
+        # The data masking rule list.
         self.rules = rules
-        # The scope in which the pipeline processing processor takes effect.
+        # The pipeline processing scope.
         self.scope = scope
         # The SPL script.
         self.script = script
@@ -1345,7 +1345,7 @@ class GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigSelector(DaraMod
         self,
         service_names: List[str] = None,
     ):
-        # The list of service names.
+        # The service name list.
         self.service_names = service_names
 
     def validate(self):
@@ -1473,7 +1473,7 @@ class GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigScopeMetricName(
     ):
         # The match type.
         self.match_type = match_type
-        # The metric name.
+        # The metric names.
         self.values = values
 
     def validate(self):
@@ -1615,15 +1615,15 @@ class GetDataPipelineResponseBodyPipelineOutputsProcessorsConfigRules(DaraModel)
         mode: str = None,
         types: List[str] = None,
     ):
-        # The retained prefix length.
+        # The prefix retention length.
         self.keep_prefix = keep_prefix
-        # The retained suffix length.
+        # The suffix retention length.
         self.keep_suffix = keep_suffix
         # The sensitive keywords.
         self.keys = keys
         # The mask character.
         self.mask_char = mask_char
-        # The masking mode.
+        # The data masking mode.
         self.mode = mode
         # The built-in sensitive types.
         self.types = types

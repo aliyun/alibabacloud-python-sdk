@@ -12,7 +12,7 @@ class CreateMaintainWindowResponseBody(DaraModel):
     ):
         # The ID of the created silence policy.
         self.maintain_window_id = maintain_window_id
-        # The unique ID of the request. You can use this ID for troubleshooting and ticket tracking.
+        # The unique ID of the request, which is used for troubleshooting and ticket tracking.
         self.request_id = request_id
 
     def validate(self):

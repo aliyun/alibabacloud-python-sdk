@@ -18,11 +18,11 @@ class ListDeliveryTasksResponseBody(DaraModel):
     ):
         # The list of delivery tasks.
         self.delivery_tasks = delivery_tasks
-        # The maximum number of entries returned. Maximum value: 100.
+        # The maximum number of results returned. Maximum value: 100.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of tasks.
         self.total_count = total_count
@@ -97,39 +97,35 @@ class ListDeliveryTasksResponseBodyDeliveryTasks(DaraModel):
         task_name: str = None,
         update_time: str = None,
     ):
-        # The creation time.
-        # 
-        # The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
+        # The creation time. The time is displayed in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The data source ID (Prometheus instance ID).
+        # The ID of the data source, which is the ID of the Prometheus instance.
         self.data_source_id = data_source_id
-        # The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
+        # The additional labels attached to all delivered metrics. The key is the label name, and the value is the label value.
         self.external_labels = external_labels
         # The extended information.
         self.extra_info = extra_info
-        # The metric filter conditions. Used together with labelFiltersType. The key is the metric label name and the value is the match value.
+        # The metric filtering conditions, used in conjunction with labelFiltersType. The key is the metric label name, and the value is the matching value.
         self.label_filters = label_filters
         # The metric filtering mode.
         self.label_filters_type = label_filters_type
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The list of delivery targets. Multiple sinks can be configured.
+        # The list of delivery sinks. You can configure multiple sinks.
         self.sink_list = sink_list
         # The current status of the task.
         self.status = status
         # The tags.
         self.tags = tags
-        # The task description.
+        # The description of the task.
         self.task_description = task_description
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
-        # The update time.
-        # 
-        # The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
+        # The update time. The time is displayed in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -295,9 +291,9 @@ class ListDeliveryTasksResponseBodyDeliveryTasksSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
-        # The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType.
+        # The detailed configuration of the delivery sink. The meanings of the key and value vary based on the sinkType.
         self.sink_configs = sink_configs
-        # The delivery target type.
+        # The type of the delivery sink.
         self.sink_type = sink_type
 
     def validate(self):

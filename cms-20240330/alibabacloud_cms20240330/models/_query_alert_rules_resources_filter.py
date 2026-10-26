@@ -14,7 +14,7 @@ class QueryAlertRulesResourcesFilter(DaraModel):
     ):
         # Matches any item in the list (OR semantics).
         self.contains = contains
-        # Filters out alert rules by resource instance ID blacklist. Alert rules whose associated resources contains any instance ID in the array are excluded.
+        # The resource instance ID blacklist filter that excludes alert rules whose associated resources contain any instance ID in the array.
         self.not_contains = not_contains
 
     def validate(self):

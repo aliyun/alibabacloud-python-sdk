@@ -17,9 +17,9 @@ class PreviewDataPipelineResponseBody(DaraModel):
     ):
         # The dataset preview results.
         self.datasets = datasets
-        # The aggregated diagnostics.
+        # The aggregation diagnostics.
         self.diagnostics = diagnostics
-        # The effective SPL script.
+        # The effective SPL.
         self.effective_script = effective_script
         # The request ID.
         self.request_id = request_id
@@ -82,7 +82,7 @@ class PreviewDataPipelineResponseBodyDatasets(DaraModel):
         self.data = data
         # The field metadata.
         self.meta = meta
-        # The dataset name.
+        # The name of the dataset.
         self.name = name
         # The number of samples.
         self.sample_count = sample_count
@@ -139,9 +139,9 @@ class PreviewDataPipelineResponseBodyDatasetsMeta(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The field name.
+        # The name of the field.
         self.name = name
-        # The field type.
+        # The type of the field.
         self.type = type
 
     def validate(self):

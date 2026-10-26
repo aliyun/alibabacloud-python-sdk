@@ -10,11 +10,11 @@ class ExecuteQueryRequest(DaraModel):
         query: str = None,
         type: str = None,
     ):
-        # The query statement to execute.
+        # The query content.
         # 
         # This parameter is required.
         self.query = query
-        # The query type. Valid values: SQL and SPL.
+        # The type.
         # 
         # This parameter is required.
         self.type = type

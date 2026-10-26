@@ -16,11 +16,11 @@ class GetUmodelResponseBody(DaraModel):
         request_id: str = None,
         workspace: str = None,
     ):
-        # This parameter is reserved.
+        # This field does not need to be populated.
         self.common_schema_ref = common_schema_ref
         # The Umodel description.
         self.description = description
-        # The region of the resource.
+        # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
@@ -85,7 +85,7 @@ class GetUmodelResponseBodyCommonSchemaRef(DaraModel):
         group: str = None,
         version: str = None,
     ):
-        # The public Umodel schema group.
+        # The common Umodel schema group.
         self.group = group
         # The version.
         self.version = version

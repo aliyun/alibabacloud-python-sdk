@@ -26,11 +26,11 @@ class GetPipelineResponseBody(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The description of the pipeline.
+        # The description.
         self.description = description
         # The execution policy.
         self.execute_policy = execute_policy
-        # The pipeline configuration.
+        # The pipeline information.
         self.pipeline = pipeline
         # The pipeline name.
         self.pipeline_name = pipeline_name
@@ -38,9 +38,9 @@ class GetPipelineResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The pipeline\\"s data sink.
+        # The output destination.
         self.sink = sink
-        # The pipeline\\"s data source.
+        # The data source.
         self.source = source
         # The update time.
         # 
@@ -146,9 +146,9 @@ class GetPipelineResponseBodySource(DaraModel):
         logstore: main_models.GetPipelineResponseBodySourceLogstore = None,
         type: str = None,
     ):
-        # The configuration of the Log Service Logstore.
+        # The Simple Log Service Logstore information.
         self.logstore = logstore
-        # The type of the data source.
+        # The data source type.
         self.type = type
 
     def validate(self):
@@ -186,10 +186,11 @@ class GetPipelineResponseBodySourceLogstore(DaraModel):
         project: str = None,
         query: str = None,
     ):
-        # The name of the Log Service Logstore.
+        # The Simple Log Service Logstore name.
         self.logstore = logstore
-        # The name of the Log Service project.
+        # The Simple Log Service project name.
         self.project = project
+        # The filter statement for the Simple Log Service Logstore.
         self.query = query
 
     def validate(self):
@@ -230,9 +231,9 @@ class GetPipelineResponseBodySink(DaraModel):
         dataset: main_models.GetPipelineResponseBodySinkDataset = None,
         type: str = None,
     ):
-        # The dataset configuration.
+        # The dataset information.
         self.dataset = dataset
-        # The sink type.
+        # The output destination type.
         self.type = type
 
     def validate(self):
@@ -269,7 +270,7 @@ class GetPipelineResponseBodySinkDataset(DaraModel):
         dataset: str = None,
         workspace: str = None,
     ):
-        # The dataset name.
+        # The dataset.
         self.dataset = dataset
         # The workspace ID.
         self.workspace = workspace
@@ -305,7 +306,7 @@ class GetPipelineResponseBodyPipeline(DaraModel):
         self,
         nodes: List[main_models.GetPipelineResponseBodyPipelineNodes] = None,
     ):
-        # The nodes in the pipeline.
+        # The nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -345,7 +346,7 @@ class GetPipelineResponseBodyPipelineNodes(DaraModel):
     ):
         # The node ID.
         self.id = id
-        # The parameters for the node.
+        # The parameters.
         self.parameters = parameters
         # The node type.
         self.type = type
@@ -391,9 +392,9 @@ class GetPipelineResponseBodyExecutePolicy(DaraModel):
     ):
         # The execution mode.
         self.mode = mode
-        # The configuration for a one-time execution.
+        # The configuration for one-time execution.
         self.run_once = run_once
-        # The configuration for a scheduled execution.
+        # The configuration for scheduled execution.
         self.scheduled = scheduled
 
     def validate(self):
@@ -439,9 +440,9 @@ class GetPipelineResponseBodyExecutePolicyScheduled(DaraModel):
         from_time: int = None,
         interval: str = None,
     ):
-        # The start time of the execution, as a Unix timestamp.
+        # The start timestamp.
         self.from_time = from_time
-        # The execution interval in seconds.
+        # The time interval.
         self.interval = interval
 
     def validate(self):
@@ -476,9 +477,9 @@ class GetPipelineResponseBodyExecutePolicyRunOnce(DaraModel):
         from_time: int = None,
         to_time: int = None,
     ):
-        # The start time of the execution, as a Unix timestamp.
+        # The start timestamp.
         self.from_time = from_time
-        # The end time of the execution, as a Unix timestamp.
+        # The end timestamp.
         self.to_time = to_time
 
     def validate(self):

@@ -11,15 +11,15 @@ class AlertRuleAlertMetricInputFilterValue(DaraModel):
         opt: str = None,
         value: str = None,
     ):
-        # The dimension of the filter condition.
+        # The filter condition dimension.
         # 
         # This parameter is required.
         self.dim = dim
-        # The operator for the filter condition.
+        # The filter condition operator.
         # 
         # This parameter is required.
         self.opt = opt
-        # The value of the filter condition.
+        # The filter condition value.
         self.value = value
 
     def validate(self):

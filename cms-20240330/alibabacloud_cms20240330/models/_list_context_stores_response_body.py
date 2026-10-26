@@ -16,15 +16,15 @@ class ListContextStoresResponseBody(DaraModel):
         results: List[main_models.ListContextStoresResponseBodyResults] = None,
         total: int = None,
     ):
-        # The maximum number of results returned per page.
+        # The maximum number of returned results.
         self.max_results = max_results
-        # The token to retrieve the next page of results. If this field is empty, all results have been returned.
+        # The pagination token.
         self.next_token = next_token
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # A list of context stores.
+        # The returned results.
         self.results = results
-        # The total number of context stores.
+        # The total count.
         self.total = total
 
     def validate(self):
@@ -95,21 +95,21 @@ class ListContextStoresResponseBodyResults(DaraModel):
         self.context_store_name = context_store_name
         # The context type.
         self.context_type = context_type
-        # The creation time of the context store. The value is a Unix timestamp in milliseconds.
+        # The creation time in UTC format based on the ISO 8601 standard. Example: 2026-08-10T05:00:00Z.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The description of the context store.
+        # The description.
         self.description = description
         # The region ID.
         self.region_id = region_id
-        # The status of the context store.
+        # The status.
         self.status = status
-        # The last update time of the context store. The value is a Unix timestamp in milliseconds.
+        # The update time in UTC format based on the ISO 8601 standard. Example: 2026-08-10T05:10:00Z.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):

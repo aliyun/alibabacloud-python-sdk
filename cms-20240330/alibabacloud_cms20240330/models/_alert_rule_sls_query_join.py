@@ -15,27 +15,18 @@ class AlertRuleSlsQueryJoin(DaraModel):
     ):
         # The list of join conditions.
         self.conditions = conditions
-        # The type of the collection operation.
+        # The set operation type. Valid values:
+        # - CrossJoin: Cartesian product
+        # - FullJoin: full join
+        # - InnerJoin: inner join
+        # - LeftExclude: left exclude
+        # - RightExclude: right exclude
+        # - LeftJoin: left join
+        # - RightJoin: right join
+        # - NoJoin: no join
+        # - Concat: concatenation
         # 
-        # - CrossJoin: The Cartesian product.
-        # 
-        # - FullJoin: The full join.
-        # 
-        # - InnerJoin: The inner join.
-        # 
-        # - LeftExclude: The left exclusion.
-        # 
-        # - RightExclude: The right exclusion.
-        # 
-        # - LeftJoin: The left join.
-        # 
-        # - RightJoin: The right join.
-        # 
-        # - NoJoin: No merge operation is performed.
-        # 
-        # - Concat: Concatenation.
-        # 
-        # For more information, see https\\://www\\.alibabacloud.com/help/en/sls/user-guide/set-operations.
+        # For more information, see https://www.alibabacloud.com/help/en/sls/user-guide/set-query-statistics-statement.
         # 
         # This parameter is required.
         self.type = type
@@ -81,11 +72,11 @@ class AlertRuleSlsQueryJoinConditions(DaraModel):
         oper: str = None,
         second_field: str = None,
     ):
-        # The left operand of the condition. The format is $\\<query_idx>.\\<field_name_in_result_set>.
+        # The left operand of the condition, in the format of $<query_idx>.<result set field name>.
         self.first_field = first_field
-        # The comparison operator. Valid values are <, >, ==, !=, <=, and >=.
+        # The comparison operator. Valid values: <, >, ==, !=, <=, and >=.
         self.oper = oper
-        # The right operand of the condition. The format is $\\<query_idx>.\\<field_name_in_result_set>.
+        # The right operand of the condition, in the format of $<query_idx>.<result set field name>.
         self.second_field = second_field
 
     def validate(self):

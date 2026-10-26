@@ -12,11 +12,13 @@ class ListAddonReleasesRequest(DaraModel):
         next_token: str = None,
         parent_addon_release_id: str = None,
     ):
-        # The name of the add-on.
+        # The add-on name.
         self.addon_name = addon_name
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The next token for pagination.
         self.next_token = next_token
-        # The parent AddonRelease ID.
+        # The parent add-on release ID.
         self.parent_addon_release_id = parent_addon_release_id
 
     def validate(self):

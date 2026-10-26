@@ -50,6 +50,7 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
     def __init__(
         self,
         addon_names: List[str] = None,
+        api_version: str = None,
         bind_resource: main_models.GetIntegrationPolicyResponseBodyPolicyBindResource = None,
         cs_umodel_status: bool = None,
         entity_group: main_models.GetIntegrationPolicyResponseBodyPolicyEntityGroup = None,
@@ -65,6 +66,7 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
     ):
         # The names of all components installed in the policy.
         self.addon_names = addon_names
+        self.api_version = api_version
         # The information about the bound resource.
         self.bind_resource = bind_resource
         # The installation status of umodel in the container environment.
@@ -110,6 +112,9 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         if self.addon_names is not None:
             result['addonNames'] = self.addon_names
 
+        if self.api_version is not None:
+            result['apiVersion'] = self.api_version
+
         if self.bind_resource is not None:
             result['bindResource'] = self.bind_resource.to_map()
 
@@ -154,6 +159,9 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         m = m or dict()
         if m.get('addonNames') is not None:
             self.addon_names = m.get('addonNames')
+
+        if m.get('apiVersion') is not None:
+            self.api_version = m.get('apiVersion')
 
         if m.get('bindResource') is not None:
             temp_model = main_models.GetIntegrationPolicyResponseBodyPolicyBindResource()

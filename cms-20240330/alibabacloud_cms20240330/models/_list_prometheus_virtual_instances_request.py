@@ -12,9 +12,11 @@ class ListPrometheusVirtualInstancesRequest(DaraModel):
         next_token: str = None,
         tenant_id: str = None,
     ):
+        # The maximum number of instances to return per page.
         self.max_results = max_results
-        # The namespace of the cloud product. This parameter is optional.
+        # The optional cloud services.
         self.namespace = namespace
+        # The next paging token for the paged query.
         self.next_token = next_token
         # The tenant ID.
         self.tenant_id = tenant_id

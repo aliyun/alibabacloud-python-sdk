@@ -12,15 +12,15 @@ class ObserveGroupPromInstance(DaraModel):
         region: str = None,
         time: str = None,
     ):
-        # The ID of the Managed Service for Prometheus instance, such as rw-xxxxxxxxxx.
+        # The ID of the Prometheus instance, such as rw-xxxxxxxxxx.
         self.id = id
         # The source of the instance. Valid values:
         # - system: The system automatically identifies the instance based on the workspace or UModel.
         # - custom: The user manually selects the instance in the console.
         self.kind = kind
-        # The region where the Managed Service for Prometheus instance resides. If this parameter is left empty, the backend automatically populates the region based on the workspace to which the observation group belongs.
+        # The region where the Prometheus instance resides. If left empty, the backend automatically populates it with the region of the workspace to which the observation group belongs.
         self.region = region
-        # The time when the record was written or selected. Format: yyyy-MM-dd HH:mm:ss.
+        # The time when the record is written or selected, in the yyyy-MM-dd HH:mm:ss format.
         self.time = time
 
     def validate(self):

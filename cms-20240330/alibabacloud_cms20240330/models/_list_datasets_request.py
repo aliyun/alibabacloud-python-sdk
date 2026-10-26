@@ -11,11 +11,11 @@ class ListDatasetsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The name of the dataset.
+        # The dataset name.
         self.dataset_name = dataset_name
-        # The maximum number of results to return per page.
+        # The maximum number of results to return.
         self.max_results = max_results
-        # The pagination token for retrieving the next page of results. A `nextToken` is included in the response when the result set is truncated. To continue pagination, provide the `nextToken` from the previous response.
+        # The pagination token.
         self.next_token = next_token
 
     def validate(self):

@@ -19,26 +19,21 @@ class ListAggTaskGroupsRequest(DaraModel):
         tags: List[main_models.ListAggTaskGroupsRequestTags] = None,
         target_prometheus_id: str = None,
     ):
-        # The list of aggregation task group IDs. The value must be a JSON-parsable string.
+        # The list of IDs of the aggregation task groups. The value must be in JSON format.
         self.filter_agg_task_group_ids = filter_agg_task_group_ids
-        # The list of aggregation task group names. The value must be a JSON-parsable string.
+        # The list of names of the aggregation task groups. The value must be in JSON format.
         self.filter_agg_task_group_names = filter_agg_task_group_names
         # The maximum number of records to return.
         self.max_results = max_results
         # The query token.
         self.next_token = next_token
-        # The name to search for. Fuzzy match is supported.
+        # The search keyword for names. Fuzzy match is supported.
         self.query = query
-        # The status of the aggregation task group. Valid values:
-        # 
-        # - Running
-        # - Stopped
-        # 
-        # Default value: Running.
+        # The status of the aggregation task group. Valid values: Running and Stopped. Default value: Running.
         self.status = status
-        # The resource group tags.
+        # The tags of the resource group.
         self.tags = tags
-        # The instance ID of the target Managed Service for Prometheus instance for the aggregation node group.
+        # The instance ID of the target Prometheus instance for the aggregation node group.
         self.target_prometheus_id = target_prometheus_id
 
     def validate(self):
