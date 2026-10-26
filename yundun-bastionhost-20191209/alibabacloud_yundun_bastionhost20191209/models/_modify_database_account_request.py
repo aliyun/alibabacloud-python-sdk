@@ -12,28 +12,28 @@ class ModifyDatabaseAccountRequest(DaraModel):
         database_schema: str = None,
         instance_id: str = None,
         password: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the database account to modify.
-        # 
-        # > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # The ID of the database account to be modified.
+        # > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.database_account_id = database_account_id
-        # The new username of the database account. The username can be up to 128 characters in length.
+        # The new name of the database account. The name can be up to 128 characters in length.
         self.database_account_name = database_account_name
-        # The new name of the database. This parameter is required if the database engine is PostgreSQL or Oracle.
+        # The new database schema name. This parameter is required when the database specified by DatabaseId is a PostgreSQL or Oracle database.
         self.database_schema = database_schema
-        # The ID of the bastion host that manages the database account to modify.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The instance ID of the Bastionhost instance where the database account to be modified resides.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The new password of the database account.
         self.password = password
-        # The region ID of the bastion host that manages the database account to modify.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance where the database account to be modified resides.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
@@ -60,6 +60,9 @@ class ModifyDatabaseAccountRequest(DaraModel):
         if self.password is not None:
             result['Password'] = self.password
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -81,6 +84,9 @@ class ModifyDatabaseAccountRequest(DaraModel):
 
         if m.get('Password') is not None:
             self.password = m.get('Password')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

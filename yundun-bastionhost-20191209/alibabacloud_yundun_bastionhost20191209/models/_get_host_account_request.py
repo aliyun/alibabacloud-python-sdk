@@ -9,23 +9,23 @@ class GetHostAccountRequest(DaraModel):
         self,
         host_account_id: str = None,
         instance_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the host account that you want to query.
-        # 
+        # The ID of the host account to query.
         # > You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.host_account_id = host_account_id
-        # The ID of the Bastionhost instance where the host account that you want to query resides.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The instance ID of the bastion host to which the host account to query belongs.
+        # >You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where the host account that you want to query resides.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the bastion host instance to which the host account to query belongs.
+        # >For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -42,6 +42,9 @@ class GetHostAccountRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -54,6 +57,9 @@ class GetHostAccountRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

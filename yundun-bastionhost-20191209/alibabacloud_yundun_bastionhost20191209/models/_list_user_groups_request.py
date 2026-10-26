@@ -10,24 +10,26 @@ class ListUserGroupsRequest(DaraModel):
         instance_id: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
         user_group_name: str = None,
     ):
-        # The ID of the bastion host on which you want to query user groups.
-        # 
-        # > You can call the [DescribeInstances ](https://help.aliyun.com/document_detail/462953.html)operation to query the ID of the bastion host.
+        # The ID of the Bastionhost instance whose user groups you want to query.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: 1.
+        # The page number for paging. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # The maximum number of entries to return on each page for paging. Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned by default.
+        # > Specify a value for this parameter.
         self.page_size = page_size
-        # The region ID of the bastion host on which you want to query user groups.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/462924.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance.
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The name of the user group that you want to query. Only exact match is supported.
+        # The name of the user group to query. Only exact match is supported.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -47,6 +49,9 @@ class ListUserGroupsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -65,6 +70,9 @@ class ListUserGroupsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -11,7 +11,7 @@ class GenerateAssetOperationTokenResponseBody(DaraModel):
         asset_operation_token: main_models.GenerateAssetOperationTokenResponseBodyAssetOperationToken = None,
         request_id: str = None,
     ):
-        # The asset operation token.
+        # The response data.
         self.asset_operation_token = asset_operation_token
         # The ID of the request.
         self.request_id = request_id
@@ -56,21 +56,21 @@ class GenerateAssetOperationTokenResponseBodyAssetOperationToken(DaraModel):
         token: str = None,
         token_id: str = None,
     ):
-        # The number of remaining uses for the token.
+        # The remaining number of times the O&M token can be used.
         self.count_left = count_left
-        # The expiration time of the token. This value is a UNIX timestamp.
+        # The expiration time of the O&M token. The value is a UNIX timestamp.
         self.expire_time = expire_time
-        # Indicates whether the token has a use limit.
+        # Indicates whether the number of uses is limited.
         self.has_count_limit = has_count_limit
         # The maximum number of times the token can be renewed. A value of 0 indicates that the token cannot be renewed.
         self.max_renew_count = max_renew_count
         # The number of times the token has been renewed.
         self.renew_count = renew_count
-        # The single sign-on (SSO) URL.
+        # The single sign-on URL.
         self.sso_url = sso_url
-        # The O\\&M token that is requested.
+        # The requested O&M token.
         self.token = token
-        # The ID of the O\\&M token.
+        # The ID of the O&M token.
         self.token_id = token_id
 
     def validate(self):

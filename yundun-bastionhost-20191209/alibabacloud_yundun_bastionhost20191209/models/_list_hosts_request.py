@@ -14,55 +14,47 @@ class ListHostsRequest(DaraModel):
         ostype: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: str = None,
         region_id: str = None,
         source: str = None,
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
-        # The address of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+        # The address of the host. You can use a domain name or an IP address. Fuzzy match is not supported. Only exact match is supported.
         self.host_address = host_address
-        # The ID of the host group to which the host to be queried belongs.
-        # 
-        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
+        # The ID of the host group to which the host belongs.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to obtain the host group ID.
         self.host_group_id = host_group_id
-        # The name of the host that you want to query. Only exact match is supported.
+        # The name of the host. Fuzzy match is not supported. Only exact match is supported.
         self.host_name = host_name
-        # The ID of the bastion host on which you want to query hosts.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The instance ID of the Bastionhost instance whose hosts you want to query.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The operating system of the host that you want to query. Valid values:
-        # 
+        # The operating system of the host. Valid values:
         # - **Linux**
-        # 
         # - **Windows**
         self.ostype = ostype
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # Specifies the number of hosts to return per page in a paged query. Default value: **10**, which indicates that 10 hosts are returned per page.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The region ID of the bastion host on which you want to query hosts.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The source of the host that you want to query. Valid values:
-        # 
-        # - **Local**: a host in a data center
-        # 
-        # - **Ecs**: an Elastic Compute Service (ECS) instance
-        # 
-        # - **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+        # The source of the host. Valid values:
+        # - **Local**: local host
+        # - **Ecs**: ECS instance
+        # - **Rds**: RDS dedicated cluster host
         self.source = source
-        # The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster that you want to query. Only exact match is supported.
+        # The ECS instance ID or the dedicated cluster host ID to which the host corresponds. Fuzzy match is not supported. Only exact match is supported.
         self.source_instance_id = source_instance_id
-        # The status of the host that you want to query. Valid values:
-        # 
+        # The status of the host. Valid values:
         # - **Normal**: normal
-        # 
         # - **Release**: released
         self.source_instance_state = source_instance_state
 
@@ -94,6 +86,9 @@ class ListHostsRequest(DaraModel):
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -131,6 +126,9 @@ class ListHostsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

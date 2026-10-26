@@ -15,46 +15,42 @@ class SetPolicyAssetScopeRequest(DaraModel):
         hosts: List[main_models.SetPolicyAssetScopeRequestHosts] = None,
         instance_id: str = None,
         policy_id: str = None,
+        project_id: int = None,
         region_id: str = None,
         scope_type: str = None,
     ):
-        # The databases to which the control policy applies.
+        # The scope of database assets to which the control policy applies.
         # 
-        # > This parameter is required if ScopeType is set to Database. You can specify up to 500 databases.
+        # > Required when ScopeType is set to Database. You can specify up to 500 databases.
         self.databases = databases
-        # The asset groups to which the control policy applies.
+        # The scope of asset groups to which the control policy applies.
         # 
-        # > This parameter is required if ScopeType is set to HostGroup. You can specify up to 100 asset groups.
+        # > Required when ScopeType is set to HostGroup. You can specify up to 100 asset groups.
         self.host_groups = host_groups
-        # The hosts to which the control policy applies.
+        # The scope of hosts to which the control policy applies.
         # 
-        # > This parameter is required if ScopeType is set to Host. You can specify up to 500 hosts.
+        # > Required when ScopeType is set to Host. You can specify up to 500 hosts.
         self.hosts = hosts
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The Bastionhost instance ID.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the control policy that you want to modify.
-        # 
-        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # The ID of the control policy to modify.
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The region ID of the bastion host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The scope of assets to which the control policy applies. Valid values:
-        # 
-        # - **All**: The control policy applies to all assets.
-        # 
-        # - **Host**: The control policy applies to specified hosts.
-        # 
-        # - **Database**: The control policy applies to specified databases.
-        # 
-        # - **HostGroup**: The control policy applies to specified asset groups.
+        # - **All**: all assets
+        # - **Host**: selected hosts
+        # - **Database**: selected databases
+        # - **HostGroup**: selected asset groups
         # 
         # This parameter is required.
         self.scope_type = scope_type
@@ -99,6 +95,9 @@ class SetPolicyAssetScopeRequest(DaraModel):
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -133,6 +132,9 @@ class SetPolicyAssetScopeRequest(DaraModel):
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
 
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
@@ -150,15 +152,14 @@ class SetPolicyAssetScopeRequestHosts(DaraModel):
     ):
         # The scope of host accounts to which the control policy applies. Valid values:
         # 
-        # - **All**: The control policy applies to all accounts of the host.
-        # 
-        # - **AccountId**: The control policy applies specified accounts of the host.
+        # - **All**: all accounts on the host
+        # - **AccountId**: specified accounts on the host
         self.account_scope_type = account_scope_type
-        # The host accounts to which the control policy applies.
+        # The scope of host accounts to which the control policy applies.
         # 
-        # > This parameter is required if AccountScopeType is set to AccountId.
+        # > Required when AccountScopeType is set to AccountId.
         self.host_account_ids = host_account_ids
-        # The host ID.
+        # The ID of the host.
         self.host_id = host_id
 
     def validate(self):
@@ -200,17 +201,16 @@ class SetPolicyAssetScopeRequestHostGroups(DaraModel):
         account_scope_type: str = None,
         host_group_id: str = None,
     ):
-        # The asset accounts to which the control policy applies.
+        # The scope of asset accounts to which the control policy applies.
         # 
-        # > This parameter is required if AccountScopeType is set to AccountName.
+        # > Required when AccountScopeType is set to AccountNames.
         self.account_names = account_names
         # The scope of asset accounts to which the control policy applies. Valid values:
         # 
-        # - **All**: The control policy applies to all accounts in the asset group.
-        # 
-        # - **AccountName**: The control policy applies to specified accounts in the asset group.
+        # - **All**: all accounts in the asset group
+        # - **AccountName**: specified accounts in the asset group
         self.account_scope_type = account_scope_type
-        # The asset group ID.
+        # The ID of the asset group.
         self.host_group_id = host_group_id
 
     def validate(self):
@@ -254,15 +254,14 @@ class SetPolicyAssetScopeRequestDatabases(DaraModel):
     ):
         # The scope of database accounts to which the control policy applies. Valid values:
         # 
-        # - **All**: The control policy applies to all database accounts of the database.
-        # 
-        # - **AccountId**: The control policy applies to specified database accounts of the database.
+        # - **All**: all accounts in the database
+        # - **AccountId**: specified accounts in the database
         self.account_scope_type = account_scope_type
-        # The database accounts to which the control policy applies.
+        # The scope of database accounts to which the control policy applies.
         # 
-        # > This parameter is required if AccountScopeType is set to AccountId.
+        # > Required when AccountScopeType is set to AccountId.
         self.database_account_ids = database_account_ids
-        # The database ID.
+        # The database instance ID.
         self.database_id = database_id
 
     def validate(self):

@@ -14,9 +14,9 @@ class ListDatabasesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The databases returned.
+        # The list of databases.
         self.databases = databases
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of databases returned.
         self.total_count = total_count
@@ -79,54 +79,44 @@ class ListDatabasesResponseBodyDatabases(DaraModel):
         source_instance_state: str = None,
     ):
         # The address type of the database. Valid values:
-        # 
-        # - **Public**
-        # 
-        # - **Private**
+        # - **Public**: public address
+        # - **Private**: private endpoint on the private network
         self.active_address_type = active_address_type
-        # The remarks of the database.
+        # The description of the database.
         self.comment = comment
-        # The database ID.
+        # The instance ID of the database.
         self.database_id = database_id
         # The name of the database.
         self.database_name = database_name
-        # The port of the database.
+        # The port number of the database.
         self.database_port = database_port
-        # The internal address of the database. The value is a domain name or an IP address.
+        # The private endpoint of the database on the private network, which can be a domain name or an IP address.
         self.database_private_address = database_private_address
-        # The public address of the database. The value is a domain name or an IP address.
+        # The public address of the database, which can be a domain name or an IP address.
         self.database_public_address = database_public_address
-        # The database engine. Valid values:
-        # 
-        # - **MySQL**
-        # 
-        # - **Oracle**
-        # 
-        # - **PostgreSQL**
-        # 
-        # - **SQLServer**
-        self.database_type = database_type
-        # The ID of the network domain where the database resides.
-        self.network_domain_id = network_domain_id
         # The type of the database. Valid values:
         # 
-        # - **Local**: on-premises database.
+        # - **MySQL**
+        # - **Oracle**
+        # - **PostgreSQL**
+        # - **SQLServer**
+        self.database_type = database_type
+        # The ID of the network domain to which the database belongs.
+        self.network_domain_id = network_domain_id
+        # The source of the database. Valid values:
         # 
-        # - **Rds**: ApsaraDB for RDS instance.
-        # 
-        # - **PolarDB**: PolarDB cluster
+        # - **Local**: local database instance
+        # - **Rds**: ApsaraDB RDS instance
+        # - **PolarDB**: PolarDB instance
         self.source = source
-        # The ID of the ApsaraDB for RDS instance or PolarDB cluster.
-        # 
-        # > No value is returned for this parameter if **Source** is set to **Local**.
+        # The instance ID of the ApsaraDB RDS instance or PolarDB instance that corresponds to the database.
+        # > If **Source** is set to **Local**, this parameter is empty.
         self.source_instance_id = source_instance_id
-        # The region ID of the ApsaraDB for RDS instance or PolarDB cluster.
+        # The region ID of the ApsaraDB RDS instance or PolarDB instance that corresponds to the database.
         self.source_instance_region_id = source_instance_region_id
-        # The status of the database. Valid values:
-        # 
-        # - **Normal**
-        # 
-        # - **Release**
+        # The instance status of the database. Valid values:
+        # - **Normal**: Normal
+        # - **Release**: released
         self.source_instance_state = source_instance_state
 
     def validate(self):

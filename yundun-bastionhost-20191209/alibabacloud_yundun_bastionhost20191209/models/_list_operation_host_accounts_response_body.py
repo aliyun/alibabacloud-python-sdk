@@ -14,11 +14,11 @@ class ListOperationHostAccountsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The host accounts returned.
+        # The host accounts.
         self.host_accounts = host_accounts
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of host accounts returned.
+        # The total number of host accounts.
         self.total_count = total_count
 
     def validate(self):
@@ -73,29 +73,26 @@ class ListOperationHostAccountsResponseBodyHostAccounts(DaraModel):
         protocol_name: str = None,
         sshconfig: main_models.ListOperationHostAccountsResponseBodyHostAccountsSSHConfig = None,
     ):
-        # Indicates whether a password is configured for the host account.
+        # Indicates whether a password is set for the host account.
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: A password is set.
+        # - **false**: No password is set.
         self.has_password = has_password
-        # The host account ID.
+        # The ID of the host account.
         self.host_account_id = host_account_id
-        # The host account name.
+        # The name of the host account.
         self.host_account_name = host_account_name
-        # The host ID.
+        # The ID of the host.
         self.host_id = host_id
-        # The ID of the shared key that is associated with the host.
+        # The ID of the host shared key.
         self.host_share_key_id = host_share_key_id
         # The fingerprint of the private key for the host account.
         self.private_key_fingerprint = private_key_fingerprint
-        # The protocol that is used by the host account.
-        # 
+        # The protocol name of the host account.
         # - **SSH**
-        # 
         # - **RDP**
         self.protocol_name = protocol_name
-        # Indicates whether the Secure File Transfer Protocol (SFTP) channels or the SSH channels are enabled for the host account that uses the SSH protocol.
+        # The O&M permissions of the SSH account.
         self.sshconfig = sshconfig
 
     def validate(self):
@@ -168,9 +165,9 @@ class ListOperationHostAccountsResponseBodyHostAccountsSSHConfig(DaraModel):
         enable_sftpchannel: bool = None,
         enable_sshchannel: bool = None,
     ):
-        # Indicates whether SFTP channels are enabled for the account.
+        # Indicates whether the SFTP channel is enabled for the account.
         self.enable_sftpchannel = enable_sftpchannel
-        # Indicates whether SSH channels are enabled for the account.
+        # Indicates whether the SSH channel is enabled for the account.
         self.enable_sshchannel = enable_sshchannel
 
     def validate(self):

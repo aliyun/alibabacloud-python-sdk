@@ -13,9 +13,9 @@ class MoveHostsToNetworkDomainResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.MoveHostsToNetworkDomainResponseBodyResults] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The result of the call.
+        # The results of the operation.
         self.results = results
 
     def validate(self):
@@ -59,13 +59,13 @@ class MoveHostsToNetworkDomainResponseBodyResults(DaraModel):
         host_id: str = None,
         message: str = None,
     ):
-        # The return code that indicates whether the host is added to the network domain.
+        # The result of the operation.
         # 
-        # > The code LICENSE_OUT_OF_LIMIT indicates that the network domain feature is not supported by the current Bastionhost edition.
+        # > LICENSE_OUT_OF_LIMIT indicates that the network domain feature is not enabled for the current edition.
         self.code = code
-        # The host ID.
+        # The ID of the host.
         self.host_id = host_id
-        # The error message that is returned.
+        # The error message.
         self.message = message
 
     def validate(self):

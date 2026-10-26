@@ -14,27 +14,25 @@ class ListImportableKMSSecretsForHostRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The ID of the host.
+        # The ID of the host to query.
         # 
-        # > Call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to get this ID.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.host_id = host_id
-        # The ID of the bastion host instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to get this ID.
+        # The instance ID of the Bastionhost instance.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         self.instance_id = instance_id
-        # The name of the secret to search for. Fuzzy matching is supported.
+        # The name of the credential to query. Fuzzy match is supported.
         self.keyword = keyword
-        # The number of entries to return on each page. Default value: 20.
+        # The number of entries to return. If you do not specify this parameter, the default value is 20.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
-        # 
-        # > You do not need to specify this parameter for the first request. For subsequent requests, use the `NextToken` value from the previous response.
+        # The token required for the next cursor-based query.
+        # > Leave this parameter empty for the initial query. For subsequent requests, specify the value of the NextToken field returned in the previous response.
         self.next_token = next_token
-        # The region ID of the bastion host.
+        # The region ID of the Bastionhost instance.
         # 
-        # > For details about the mapping between region IDs and region names, see [Regions and availability zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

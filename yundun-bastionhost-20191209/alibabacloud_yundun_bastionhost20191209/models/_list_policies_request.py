@@ -11,25 +11,25 @@ class ListPoliciesRequest(DaraModel):
         page_number: str = None,
         page_size: str = None,
         policy_name: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The instance ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: **1**.
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.<br>
-        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page in a paged query.  
+        # The maximum value of the PageSize parameter is 100. The default number of entries returned per page during paging is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+        # > Specify a value for this parameter.
         self.page_size = page_size
-        # The name of the control policy to query. Only exact match is supported.
+        # The Policy Name of the control policy to query. Only exact match is supported.
         self.policy_name = policy_name
-        # The region ID of the bastion host.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
@@ -53,6 +53,9 @@ class ListPoliciesRequest(DaraModel):
         if self.policy_name is not None:
             result['PolicyName'] = self.policy_name
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -71,6 +74,9 @@ class ListPoliciesRequest(DaraModel):
 
         if m.get('PolicyName') is not None:
             self.policy_name = m.get('PolicyName')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

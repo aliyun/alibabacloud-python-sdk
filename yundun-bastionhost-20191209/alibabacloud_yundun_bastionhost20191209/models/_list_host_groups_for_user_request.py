@@ -12,36 +12,34 @@ class ListHostGroupsForUserRequest(DaraModel):
         mode: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
         user_id: str = None,
     ):
         # The name of the host group to query. The name can be up to 128 characters in length. Only exact match is supported.
         self.host_group_name = host_group_name
-        # The ID of the bastion host whose user you want to query.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The instance ID of the Bastionhost instance to which the user belongs.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the parameter value.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The category of the host groups to query. Valid values:
-        # 
-        # - **Authorized** (default): queries the host groups that the user is authorized to manage.
-        # 
-        # - **Unauthorized**: queries the host groups that the user is not authorized to manage.
+        # The mode of the host group list to query. Valid values:
+        # - **Authorized**: Authorized host groups. This is the default value.
+        # - **Unauthorized**: Unauthorized host groups.
         self.mode = mode
-        # The page number. Default value: **1**.
+        # The page number for paging. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.<br> Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return per page for paging.  
+        # The maximum value of the PageSize parameter is 100. Default value: 20. If you leave this parameter empty, 20 entries are returned by default.
+        # > Specify a value for the PageSize parameter.
         self.page_size = page_size
-        # The region ID of the bastion host whose user you want to query.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance to which the user belongs.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The user ID.
-        # 
-        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+        # The ID of the user to query.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to obtain the parameter value.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -69,6 +67,9 @@ class ListHostGroupsForUserRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -93,6 +94,9 @@ class ListHostGroupsForUserRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -17,40 +17,41 @@ class CreateRuleRequest(DaraModel):
         host_groups: List[main_models.CreateRuleRequestHostGroups] = None,
         hosts: List[main_models.CreateRuleRequestHosts] = None,
         instance_id: str = None,
+        project_id: int = None,
         region_id: str = None,
         rule_name: str = None,
         user_group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The remarks of the authorization rule. The remarks can be up to 500 characters in length.
+        # The description of the authorization rule. Maximum length: 500 characters.
         self.comment = comment
-        # The information about the database that runs on your server.
+        # The database information.
         self.databases = databases
-        # The end time of the validity period of the authorization rule. Specify a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end time of the validity period for the authorization rule, in seconds (timestamp format).
         self.effective_end_time = effective_end_time
-        # The start time of the validity period of the authorization rule. Specify a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the validity period for the authorization rule, in seconds (timestamp format).
         self.effective_start_time = effective_start_time
-        # The information about the asset group that you want to authorize to manage.
+        # The asset group information to authorize.
         self.host_groups = host_groups
         # The host information.
         self.hosts = hosts
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The instance ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The project ID.
+        self.project_id = project_id
         # The region ID of the bastion host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The name of the authorization rule. The name can be up to 128 characters in length.
+        # The name of the authorization rule. Maximum length: 128 characters.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # An array that consists of user group IDs.
+        # The array of user group IDs.
         self.user_group_ids = user_group_ids
-        # An array that consists of user IDs.
+        # The array of user IDs.
         self.user_ids = user_ids
 
     def validate(self):
@@ -99,6 +100,9 @@ class CreateRuleRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -145,6 +149,9 @@ class CreateRuleRequest(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
@@ -165,7 +172,7 @@ class CreateRuleRequestHosts(DaraModel):
         host_account_ids: List[str] = None,
         host_id: str = None,
     ):
-        # An array that consists of host account IDs.
+        # The array of host account IDs.
         self.host_account_ids = host_account_ids
         # The host ID.
         self.host_id = host_id
@@ -202,7 +209,7 @@ class CreateRuleRequestHostGroups(DaraModel):
         host_account_names: List[str] = None,
         host_group_id: str = None,
     ):
-        # An array that consists of asset account names.
+        # The array of asset account names.
         self.host_account_names = host_account_names
         # The asset group ID.
         self.host_group_id = host_group_id
@@ -239,9 +246,9 @@ class CreateRuleRequestDatabases(DaraModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
-        # An array that consists of database account IDs.
+        # The array of database account IDs.
         self.database_account_ids = database_account_ids
-        # The database ID.
+        # The database instance ID.
         self.database_id = database_id
 
     def validate(self):

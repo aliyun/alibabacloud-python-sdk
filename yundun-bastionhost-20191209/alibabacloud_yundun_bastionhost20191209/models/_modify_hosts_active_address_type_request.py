@@ -10,31 +10,32 @@ class ModifyHostsActiveAddressTypeRequest(DaraModel):
         active_address_type: str = None,
         host_ids: str = None,
         instance_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The new portal type of the host. Valid values:
+        # The new endpoint type of the host. Valid values:
         # 
-        # - **Public**: public portal
-        # 
-        # - **Private**: internal portal
+        # - **Public**: Internet
+        # - **Private**: private network
         # 
         # This parameter is required.
         self.active_address_type = active_address_type
-        # The ID of the host for which you want to change the portal type. The value is a JSON string. You can add up to 100 host IDs.
-        # 
-        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # The IDs of the hosts whose endpoint types you want to modify. The value is a character string in JSON format. You can specify up to 100 host IDs.
+        # You can invoke the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain the value of this parameter.
         # 
         # This parameter is required.
         self.host_ids = host_ids
-        # The ID of the bastion host for which you want to change the portal type of the host.
+        # The instance ID of the Bastionhost instance to which the host whose endpoint type you want to modify belongs.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the value of this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to change the portal type of the host.
+        # The project ID.
+        self.project_id = project_id
+        # The area ID of the Bastionhost instance to which the host whose endpoint type you want to modify belongs.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between area IDs and area names, see [Regions and active zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -54,6 +55,9 @@ class ModifyHostsActiveAddressTypeRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -69,6 +73,9 @@ class ModifyHostsActiveAddressTypeRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

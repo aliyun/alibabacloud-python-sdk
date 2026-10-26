@@ -14,11 +14,11 @@ class ListOperationDatabaseAccountsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The database accounts returned.
+        # The list of database accounts.
         self.database_accounts = database_accounts
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of queried manageable database accounts.
         self.total_count = total_count
 
     def validate(self):
@@ -74,21 +74,20 @@ class ListOperationDatabaseAccountsResponseBodyDatabaseAccounts(DaraModel):
     ):
         # The name of the PostgreSQL or Oracle database.
         self.dbname = dbname
-        # The database account ID.
+        # The ID of the database account.
         self.database_account_id = database_account_id
         # The name of the database account.
         self.database_account_name = database_account_name
-        # The database ID.
+        # The database instance ID.
         self.database_id = database_id
-        # Indicates whether a password is configured for the database host account.
+        # Indicates whether a password is set for the database host account.
         self.has_password = has_password
-        # The logon attribute. One of the following values is returned if the database engine is Oracle:
+        # The logon attribute. This parameter has a return value only for Oracle databases. Valid values:
         # 
         # - **SERVICENAME**
-        # 
         # - **SID**
         self.login_attribute = login_attribute
-        # The protocol that is used by the database account.
+        # The protocol name of the database account.
         self.protocol_name = protocol_name
 
     def validate(self):

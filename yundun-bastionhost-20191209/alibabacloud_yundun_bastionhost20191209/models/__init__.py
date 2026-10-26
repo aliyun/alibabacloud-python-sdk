@@ -44,6 +44,21 @@ from ._attach_host_group_accounts_to_user_response import AttachHostGroupAccount
 from ._attach_host_group_accounts_to_user_group_request import AttachHostGroupAccountsToUserGroupRequest
 from ._attach_host_group_accounts_to_user_group_response_body import AttachHostGroupAccountsToUserGroupResponseBody
 from ._attach_host_group_accounts_to_user_group_response import AttachHostGroupAccountsToUserGroupResponse
+from ._attach_members_to_project_request import AttachMembersToProjectRequest
+from ._attach_members_to_project_response_body import AttachMembersToProjectResponseBody
+from ._attach_members_to_project_response import AttachMembersToProjectResponse
+from ._attach_project_managers_to_project_authorization_request import AttachProjectManagersToProjectAuthorizationRequest
+from ._attach_project_managers_to_project_authorization_response_body import AttachProjectManagersToProjectAuthorizationResponseBody
+from ._attach_project_managers_to_project_authorization_response import AttachProjectManagersToProjectAuthorizationResponse
+from ._attach_projects_to_project_authorization_request import AttachProjectsToProjectAuthorizationRequest
+from ._attach_projects_to_project_authorization_response_body import AttachProjectsToProjectAuthorizationResponseBody
+from ._attach_projects_to_project_authorization_response import AttachProjectsToProjectAuthorizationResponse
+from ._attach_projects_to_review_rule_request import AttachProjectsToReviewRuleRequest
+from ._attach_projects_to_review_rule_response_body import AttachProjectsToReviewRuleResponseBody
+from ._attach_projects_to_review_rule_response import AttachProjectsToReviewRuleResponse
+from ._attach_reviewers_to_review_rule_request import AttachReviewersToReviewRuleRequest
+from ._attach_reviewers_to_review_rule_response_body import AttachReviewersToReviewRuleResponseBody
+from ._attach_reviewers_to_review_rule_response import AttachReviewersToReviewRuleResponse
 from ._config_instance_security_groups_request import ConfigInstanceSecurityGroupsRequest
 from ._config_instance_security_groups_response_body import ConfigInstanceSecurityGroupsResponseBody
 from ._config_instance_security_groups_response import ConfigInstanceSecurityGroupsResponse
@@ -80,6 +95,18 @@ from ._create_operation_ticket_response import CreateOperationTicketResponse
 from ._create_policy_request import CreatePolicyRequest
 from ._create_policy_response_body import CreatePolicyResponseBody
 from ._create_policy_response import CreatePolicyResponse
+from ._create_project_request import CreateProjectRequest
+from ._create_project_response_body import CreateProjectResponseBody
+from ._create_project_response import CreateProjectResponse
+from ._create_project_authorization_request import CreateProjectAuthorizationRequest
+from ._create_project_authorization_response_body import CreateProjectAuthorizationResponseBody
+from ._create_project_authorization_response import CreateProjectAuthorizationResponse
+from ._create_project_notify_receiver_request import CreateProjectNotifyReceiverRequest
+from ._create_project_notify_receiver_response_body import CreateProjectNotifyReceiverResponseBody
+from ._create_project_notify_receiver_response import CreateProjectNotifyReceiverResponse
+from ._create_review_rule_request import CreateReviewRuleRequest
+from ._create_review_rule_response_body import CreateReviewRuleResponseBody
+from ._create_review_rule_response import CreateReviewRuleResponse
 from ._create_rule_request import CreateRuleRequest
 from ._create_rule_response_body import CreateRuleResponseBody
 from ._create_rule_response import CreateRuleResponse
@@ -116,6 +143,18 @@ from ._delete_network_domain_response import DeleteNetworkDomainResponse
 from ._delete_policy_request import DeletePolicyRequest
 from ._delete_policy_response_body import DeletePolicyResponseBody
 from ._delete_policy_response import DeletePolicyResponse
+from ._delete_project_authorizations_request import DeleteProjectAuthorizationsRequest
+from ._delete_project_authorizations_response_body import DeleteProjectAuthorizationsResponseBody
+from ._delete_project_authorizations_response import DeleteProjectAuthorizationsResponse
+from ._delete_project_notify_receivers_request import DeleteProjectNotifyReceiversRequest
+from ._delete_project_notify_receivers_response_body import DeleteProjectNotifyReceiversResponseBody
+from ._delete_project_notify_receivers_response import DeleteProjectNotifyReceiversResponse
+from ._delete_projects_request import DeleteProjectsRequest
+from ._delete_projects_response_body import DeleteProjectsResponseBody
+from ._delete_projects_response import DeleteProjectsResponse
+from ._delete_review_rules_request import DeleteReviewRulesRequest
+from ._delete_review_rules_response_body import DeleteReviewRulesResponseBody
+from ._delete_review_rules_response import DeleteReviewRulesResponse
 from ._delete_rule_request import DeleteRuleRequest
 from ._delete_rule_response_body import DeleteRuleResponseBody
 from ._delete_rule_response import DeleteRuleResponse
@@ -158,6 +197,21 @@ from ._detach_host_group_accounts_from_user_response import DetachHostGroupAccou
 from ._detach_host_group_accounts_from_user_group_request import DetachHostGroupAccountsFromUserGroupRequest
 from ._detach_host_group_accounts_from_user_group_response_body import DetachHostGroupAccountsFromUserGroupResponseBody
 from ._detach_host_group_accounts_from_user_group_response import DetachHostGroupAccountsFromUserGroupResponse
+from ._detach_members_from_project_request import DetachMembersFromProjectRequest
+from ._detach_members_from_project_response_body import DetachMembersFromProjectResponseBody
+from ._detach_members_from_project_response import DetachMembersFromProjectResponse
+from ._detach_project_managers_from_project_authorization_request import DetachProjectManagersFromProjectAuthorizationRequest
+from ._detach_project_managers_from_project_authorization_response_body import DetachProjectManagersFromProjectAuthorizationResponseBody
+from ._detach_project_managers_from_project_authorization_response import DetachProjectManagersFromProjectAuthorizationResponse
+from ._detach_projects_from_project_authorization_request import DetachProjectsFromProjectAuthorizationRequest
+from ._detach_projects_from_project_authorization_response_body import DetachProjectsFromProjectAuthorizationResponseBody
+from ._detach_projects_from_project_authorization_response import DetachProjectsFromProjectAuthorizationResponse
+from ._detach_projects_from_review_rule_request import DetachProjectsFromReviewRuleRequest
+from ._detach_projects_from_review_rule_response_body import DetachProjectsFromReviewRuleResponseBody
+from ._detach_projects_from_review_rule_response import DetachProjectsFromReviewRuleResponse
+from ._detach_reviewers_from_review_rule_request import DetachReviewersFromReviewRuleRequest
+from ._detach_reviewers_from_review_rule_response_body import DetachReviewersFromReviewRuleResponseBody
+from ._detach_reviewers_from_review_rule_response import DetachReviewersFromReviewRuleResponse
 from ._disable_instance_public_access_request import DisableInstancePublicAccessRequest
 from ._disable_instance_public_access_response_body import DisableInstancePublicAccessResponseBody
 from ._disable_instance_public_access_response import DisableInstancePublicAccessResponse
@@ -221,6 +275,15 @@ from ._get_policy_asset_scope_response import GetPolicyAssetScopeResponse
 from ._get_policy_user_scope_request import GetPolicyUserScopeRequest
 from ._get_policy_user_scope_response_body import GetPolicyUserScopeResponseBody
 from ._get_policy_user_scope_response import GetPolicyUserScopeResponse
+from ._get_project_request import GetProjectRequest
+from ._get_project_response_body import GetProjectResponseBody
+from ._get_project_response import GetProjectResponse
+from ._get_project_authorization_request import GetProjectAuthorizationRequest
+from ._get_project_authorization_response_body import GetProjectAuthorizationResponseBody
+from ._get_project_authorization_response import GetProjectAuthorizationResponse
+from ._get_review_rule_request import GetReviewRuleRequest
+from ._get_review_rule_response_body import GetReviewRuleResponseBody
+from ._get_review_rule_response import GetReviewRuleResponse
 from ._get_rule_request import GetRuleRequest
 from ._get_rule_response_body import GetRuleResponseBody
 from ._get_rule_response import GetRuleResponse
@@ -300,6 +363,9 @@ from ._list_importable_kmssecrets_for_host_response import ListImportableKMSSecr
 from ._list_instance_rd_members_request import ListInstanceRdMembersRequest
 from ._list_instance_rd_members_response_body import ListInstanceRdMembersResponseBody
 from ._list_instance_rd_members_response import ListInstanceRdMembersResponse
+from ._list_members_not_for_project_request import ListMembersNotForProjectRequest
+from ._list_members_not_for_project_response_body import ListMembersNotForProjectResponseBody
+from ._list_members_not_for_project_response import ListMembersNotForProjectResponse
 from ._list_network_domains_request import ListNetworkDomainsRequest
 from ._list_network_domains_response_body import ListNetworkDomainsResponseBody
 from ._list_network_domains_response import ListNetworkDomainsResponse
@@ -321,6 +387,27 @@ from ._list_operation_tickets_response import ListOperationTicketsResponse
 from ._list_policies_request import ListPoliciesRequest
 from ._list_policies_response_body import ListPoliciesResponseBody
 from ._list_policies_response import ListPoliciesResponse
+from ._list_project_authorizations_request import ListProjectAuthorizationsRequest
+from ._list_project_authorizations_response_body import ListProjectAuthorizationsResponseBody
+from ._list_project_authorizations_response import ListProjectAuthorizationsResponse
+from ._list_project_notify_receivers_request import ListProjectNotifyReceiversRequest
+from ._list_project_notify_receivers_response_body import ListProjectNotifyReceiversResponseBody
+from ._list_project_notify_receivers_response import ListProjectNotifyReceiversResponse
+from ._list_projects_request import ListProjectsRequest
+from ._list_projects_response_body import ListProjectsResponseBody
+from ._list_projects_response import ListProjectsResponse
+from ._list_projects_for_project_authorization_principal_request import ListProjectsForProjectAuthorizationPrincipalRequest
+from ._list_projects_for_project_authorization_principal_response_body import ListProjectsForProjectAuthorizationPrincipalResponseBody
+from ._list_projects_for_project_authorization_principal_response import ListProjectsForProjectAuthorizationPrincipalResponse
+from ._list_projects_not_for_project_authorization_request import ListProjectsNotForProjectAuthorizationRequest
+from ._list_projects_not_for_project_authorization_response_body import ListProjectsNotForProjectAuthorizationResponseBody
+from ._list_projects_not_for_project_authorization_response import ListProjectsNotForProjectAuthorizationResponse
+from ._list_projects_not_for_review_rule_request import ListProjectsNotForReviewRuleRequest
+from ._list_projects_not_for_review_rule_response_body import ListProjectsNotForReviewRuleResponseBody
+from ._list_projects_not_for_review_rule_response import ListProjectsNotForReviewRuleResponse
+from ._list_review_rules_request import ListReviewRulesRequest
+from ._list_review_rules_response_body import ListReviewRulesResponseBody
+from ._list_review_rules_response import ListReviewRulesResponse
 from ._list_rules_request import ListRulesRequest
 from ._list_rules_response_body import ListRulesResponseBody
 from ._list_rules_response import ListRulesResponse
@@ -336,6 +423,9 @@ from ._list_todo_ops_task_approvals_response import ListTodoOpsTaskApprovalsResp
 from ._list_user_groups_request import ListUserGroupsRequest
 from ._list_user_groups_response_body import ListUserGroupsResponseBody
 from ._list_user_groups_response import ListUserGroupsResponse
+from ._list_user_groups_for_user_request import ListUserGroupsForUserRequest
+from ._list_user_groups_for_user_response_body import ListUserGroupsForUserResponseBody
+from ._list_user_groups_for_user_response import ListUserGroupsForUserResponse
 from ._list_user_public_keys_request import ListUserPublicKeysRequest
 from ._list_user_public_keys_response_body import ListUserPublicKeysResponseBody
 from ._list_user_public_keys_response import ListUserPublicKeysResponse
@@ -351,6 +441,9 @@ from ._modify_database_response import ModifyDatabaseResponse
 from ._modify_database_account_request import ModifyDatabaseAccountRequest
 from ._modify_database_account_response_body import ModifyDatabaseAccountResponseBody
 from ._modify_database_account_response import ModifyDatabaseAccountResponse
+from ._modify_databases_project_request import ModifyDatabasesProjectRequest
+from ._modify_databases_project_response_body import ModifyDatabasesProjectResponseBody
+from ._modify_databases_project_response import ModifyDatabasesProjectResponse
 from ._modify_host_request import ModifyHostRequest
 from ._modify_host_response_body import ModifyHostResponseBody
 from ._modify_host_response import ModifyHostResponse
@@ -369,6 +462,9 @@ from ._modify_hosts_active_address_type_response import ModifyHostsActiveAddress
 from ._modify_hosts_port_request import ModifyHostsPortRequest
 from ._modify_hosts_port_response_body import ModifyHostsPortResponseBody
 from ._modify_hosts_port_response import ModifyHostsPortResponse
+from ._modify_hosts_project_request import ModifyHostsProjectRequest
+from ._modify_hosts_project_response_body import ModifyHostsProjectResponseBody
+from ._modify_hosts_project_response import ModifyHostsProjectResponse
 from ._modify_instance_adauth_server_request import ModifyInstanceADAuthServerRequest
 from ._modify_instance_adauth_server_response_body import ModifyInstanceADAuthServerResponseBody
 from ._modify_instance_adauth_server_response import ModifyInstanceADAuthServerResponse
@@ -387,6 +483,18 @@ from ._modify_network_domain_response import ModifyNetworkDomainResponse
 from ._modify_policy_request import ModifyPolicyRequest
 from ._modify_policy_response_body import ModifyPolicyResponseBody
 from ._modify_policy_response import ModifyPolicyResponse
+from ._modify_project_request import ModifyProjectRequest
+from ._modify_project_response_body import ModifyProjectResponseBody
+from ._modify_project_response import ModifyProjectResponse
+from ._modify_project_authorization_request import ModifyProjectAuthorizationRequest
+from ._modify_project_authorization_response_body import ModifyProjectAuthorizationResponseBody
+from ._modify_project_authorization_response import ModifyProjectAuthorizationResponse
+from ._modify_project_notify_receiver_request import ModifyProjectNotifyReceiverRequest
+from ._modify_project_notify_receiver_response_body import ModifyProjectNotifyReceiverResponseBody
+from ._modify_project_notify_receiver_response import ModifyProjectNotifyReceiverResponse
+from ._modify_review_rule_request import ModifyReviewRuleRequest
+from ._modify_review_rule_response_body import ModifyReviewRuleResponseBody
+from ._modify_review_rule_response import ModifyReviewRuleResponse
 from ._modify_rule_request import ModifyRuleRequest
 from ._modify_rule_response_body import ModifyRuleResponseBody
 from ._modify_rule_response import ModifyRuleResponse
@@ -498,11 +606,15 @@ from ._attach_host_group_accounts_to_user_response_body import AttachHostGroupAc
 from ._attach_host_group_accounts_to_user_response_body import AttachHostGroupAccountsToUserResponseBodyResults
 from ._attach_host_group_accounts_to_user_group_response_body import AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames
 from ._attach_host_group_accounts_to_user_group_response_body import AttachHostGroupAccountsToUserGroupResponseBodyResults
+from ._attach_project_managers_to_project_authorization_request import AttachProjectManagersToProjectAuthorizationRequestPrincipals
+from ._attach_reviewers_to_review_rule_request import AttachReviewersToReviewRuleRequestPrincipals
 from ._config_instance_white_list_request import ConfigInstanceWhiteListRequestWhiteListPolicies
 from ._create_network_domain_request import CreateNetworkDomainRequestProxies
 from ._create_rule_request import CreateRuleRequestDatabases
 from ._create_rule_request import CreateRuleRequestHostGroups
 from ._create_rule_request import CreateRuleRequestHosts
+from ._delete_project_notify_receivers_response_body import DeleteProjectNotifyReceiversResponseBodyResults
+from ._delete_projects_response_body import DeleteProjectsResponseBodyResults
 from ._describe_instance_attribute_response_body import DescribeInstanceAttributeResponseBodyInstanceAttributePorts
 from ._describe_instance_attribute_response_body import DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies
 from ._describe_instance_attribute_response_body import DescribeInstanceAttributeResponseBodyInstanceAttribute
@@ -524,6 +636,7 @@ from ._detach_host_group_accounts_from_user_response_body import DetachHostGroup
 from ._detach_host_group_accounts_from_user_response_body import DetachHostGroupAccountsFromUserResponseBodyResults
 from ._detach_host_group_accounts_from_user_group_response_body import DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames
 from ._detach_host_group_accounts_from_user_group_response_body import DetachHostGroupAccountsFromUserGroupResponseBodyResults
+from ._detach_members_from_project_response_body import DetachMembersFromProjectResponseBodyResults
 from ._generate_asset_operation_token_response_body import GenerateAssetOperationTokenResponseBodyAssetOperationToken
 from ._get_auto_ops_task_response_body import GetAutoOpsTaskResponseBodyTask
 from ._get_database_response_body import GetDatabaseResponseBodyDatabase
@@ -554,6 +667,14 @@ from ._get_policy_asset_scope_response_body import GetPolicyAssetScopeResponseBo
 from ._get_policy_asset_scope_response_body import GetPolicyAssetScopeResponseBodyAssetScopeHosts
 from ._get_policy_asset_scope_response_body import GetPolicyAssetScopeResponseBodyAssetScope
 from ._get_policy_user_scope_response_body import GetPolicyUserScopeResponseBodyUserScope
+from ._get_project_response_body import GetProjectResponseBodyProjectNotifyReceivers
+from ._get_project_response_body import GetProjectResponseBodyProject
+from ._get_project_authorization_response_body import GetProjectAuthorizationResponseBodyProjectAuthorizationPrincipals
+from ._get_project_authorization_response_body import GetProjectAuthorizationResponseBodyProjectAuthorizationProjects
+from ._get_project_authorization_response_body import GetProjectAuthorizationResponseBodyProjectAuthorization
+from ._get_review_rule_response_body import GetReviewRuleResponseBodyReviewRulePrincipals
+from ._get_review_rule_response_body import GetReviewRuleResponseBodyReviewRuleProjects
+from ._get_review_rule_response_body import GetReviewRuleResponseBodyReviewRule
 from ._get_rule_response_body import GetRuleResponseBodyRuleDatabasesDatabaseAccounts
 from ._get_rule_response_body import GetRuleResponseBodyRuleDatabases
 from ._get_rule_response_body import GetRuleResponseBodyRuleHostGroups
@@ -586,6 +707,7 @@ from ._list_hosts_for_user_response_body import ListHostsForUserResponseBodyHost
 from ._list_hosts_for_user_group_response_body import ListHostsForUserGroupResponseBodyHosts
 from ._list_importable_kmssecrets_for_host_response_body import ListImportableKMSSecretsForHostResponseBodySecrets
 from ._list_instance_rd_members_response_body import ListInstanceRdMembersResponseBodyMembers
+from ._list_members_not_for_project_response_body import ListMembersNotForProjectResponseBodyMembers
 from ._list_network_domains_response_body import ListNetworkDomainsResponseBodyNetworkDomainsProxiesState
 from ._list_network_domains_response_body import ListNetworkDomainsResponseBodyNetworkDomains
 from ._list_operation_database_accounts_response_body import ListOperationDatabaseAccountsResponseBodyDatabaseAccounts
@@ -595,17 +717,27 @@ from ._list_operation_host_accounts_response_body import ListOperationHostAccoun
 from ._list_operation_hosts_response_body import ListOperationHostsResponseBodyHosts
 from ._list_operation_tickets_response_body import ListOperationTicketsResponseBodyOperationTickets
 from ._list_policies_response_body import ListPoliciesResponseBodyPolicies
+from ._list_project_authorizations_response_body import ListProjectAuthorizationsResponseBodyProjectAuthorizations
+from ._list_project_notify_receivers_response_body import ListProjectNotifyReceiversResponseBodyItems
+from ._list_projects_response_body import ListProjectsResponseBodyProjects
+from ._list_projects_for_project_authorization_principal_response_body import ListProjectsForProjectAuthorizationPrincipalResponseBodyProjects
+from ._list_projects_not_for_project_authorization_response_body import ListProjectsNotForProjectAuthorizationResponseBodyProjects
+from ._list_projects_not_for_review_rule_response_body import ListProjectsNotForReviewRuleResponseBodyProjects
+from ._list_review_rules_response_body import ListReviewRulesResponseBodyReviewRules
 from ._list_rules_response_body import ListRulesResponseBodyRules
 from ._list_tag_keys_response_body import ListTagKeysResponseBodyTagKeys
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_todo_ops_task_approvals_response_body import ListTodoOpsTaskApprovalsResponseBodyApproves
 from ._list_user_groups_response_body import ListUserGroupsResponseBodyUserGroups
+from ._list_user_groups_for_user_response_body import ListUserGroupsForUserResponseBodyUserGroups
 from ._list_user_public_keys_response_body import ListUserPublicKeysResponseBodyPublicKeys
 from ._list_users_response_body import ListUsersResponseBodyUsers
 from ._lock_users_response_body import LockUsersResponseBodyResults
+from ._modify_databases_project_response_body import ModifyDatabasesProjectResponseBodyResults
 from ._modify_hosts_active_address_type_response_body import ModifyHostsActiveAddressTypeResponseBodyResults
 from ._modify_hosts_port_response_body import ModifyHostsPortResponseBodyResults
+from ._modify_hosts_project_response_body import ModifyHostsProjectResponseBodyResults
 from ._modify_network_domain_request import ModifyNetworkDomainRequestProxies
 from ._modify_rule_request import ModifyRuleRequestDatabases
 from ._modify_rule_request import ModifyRuleRequestHostGroups
@@ -675,6 +807,21 @@ __all__ = [
     AttachHostGroupAccountsToUserGroupRequest,
     AttachHostGroupAccountsToUserGroupResponseBody,
     AttachHostGroupAccountsToUserGroupResponse,
+    AttachMembersToProjectRequest,
+    AttachMembersToProjectResponseBody,
+    AttachMembersToProjectResponse,
+    AttachProjectManagersToProjectAuthorizationRequest,
+    AttachProjectManagersToProjectAuthorizationResponseBody,
+    AttachProjectManagersToProjectAuthorizationResponse,
+    AttachProjectsToProjectAuthorizationRequest,
+    AttachProjectsToProjectAuthorizationResponseBody,
+    AttachProjectsToProjectAuthorizationResponse,
+    AttachProjectsToReviewRuleRequest,
+    AttachProjectsToReviewRuleResponseBody,
+    AttachProjectsToReviewRuleResponse,
+    AttachReviewersToReviewRuleRequest,
+    AttachReviewersToReviewRuleResponseBody,
+    AttachReviewersToReviewRuleResponse,
     ConfigInstanceSecurityGroupsRequest,
     ConfigInstanceSecurityGroupsResponseBody,
     ConfigInstanceSecurityGroupsResponse,
@@ -711,6 +858,18 @@ __all__ = [
     CreatePolicyRequest,
     CreatePolicyResponseBody,
     CreatePolicyResponse,
+    CreateProjectRequest,
+    CreateProjectResponseBody,
+    CreateProjectResponse,
+    CreateProjectAuthorizationRequest,
+    CreateProjectAuthorizationResponseBody,
+    CreateProjectAuthorizationResponse,
+    CreateProjectNotifyReceiverRequest,
+    CreateProjectNotifyReceiverResponseBody,
+    CreateProjectNotifyReceiverResponse,
+    CreateReviewRuleRequest,
+    CreateReviewRuleResponseBody,
+    CreateReviewRuleResponse,
     CreateRuleRequest,
     CreateRuleResponseBody,
     CreateRuleResponse,
@@ -747,6 +906,18 @@ __all__ = [
     DeletePolicyRequest,
     DeletePolicyResponseBody,
     DeletePolicyResponse,
+    DeleteProjectAuthorizationsRequest,
+    DeleteProjectAuthorizationsResponseBody,
+    DeleteProjectAuthorizationsResponse,
+    DeleteProjectNotifyReceiversRequest,
+    DeleteProjectNotifyReceiversResponseBody,
+    DeleteProjectNotifyReceiversResponse,
+    DeleteProjectsRequest,
+    DeleteProjectsResponseBody,
+    DeleteProjectsResponse,
+    DeleteReviewRulesRequest,
+    DeleteReviewRulesResponseBody,
+    DeleteReviewRulesResponse,
     DeleteRuleRequest,
     DeleteRuleResponseBody,
     DeleteRuleResponse,
@@ -789,6 +960,21 @@ __all__ = [
     DetachHostGroupAccountsFromUserGroupRequest,
     DetachHostGroupAccountsFromUserGroupResponseBody,
     DetachHostGroupAccountsFromUserGroupResponse,
+    DetachMembersFromProjectRequest,
+    DetachMembersFromProjectResponseBody,
+    DetachMembersFromProjectResponse,
+    DetachProjectManagersFromProjectAuthorizationRequest,
+    DetachProjectManagersFromProjectAuthorizationResponseBody,
+    DetachProjectManagersFromProjectAuthorizationResponse,
+    DetachProjectsFromProjectAuthorizationRequest,
+    DetachProjectsFromProjectAuthorizationResponseBody,
+    DetachProjectsFromProjectAuthorizationResponse,
+    DetachProjectsFromReviewRuleRequest,
+    DetachProjectsFromReviewRuleResponseBody,
+    DetachProjectsFromReviewRuleResponse,
+    DetachReviewersFromReviewRuleRequest,
+    DetachReviewersFromReviewRuleResponseBody,
+    DetachReviewersFromReviewRuleResponse,
     DisableInstancePublicAccessRequest,
     DisableInstancePublicAccessResponseBody,
     DisableInstancePublicAccessResponse,
@@ -852,6 +1038,15 @@ __all__ = [
     GetPolicyUserScopeRequest,
     GetPolicyUserScopeResponseBody,
     GetPolicyUserScopeResponse,
+    GetProjectRequest,
+    GetProjectResponseBody,
+    GetProjectResponse,
+    GetProjectAuthorizationRequest,
+    GetProjectAuthorizationResponseBody,
+    GetProjectAuthorizationResponse,
+    GetReviewRuleRequest,
+    GetReviewRuleResponseBody,
+    GetReviewRuleResponse,
     GetRuleRequest,
     GetRuleResponseBody,
     GetRuleResponse,
@@ -931,6 +1126,9 @@ __all__ = [
     ListInstanceRdMembersRequest,
     ListInstanceRdMembersResponseBody,
     ListInstanceRdMembersResponse,
+    ListMembersNotForProjectRequest,
+    ListMembersNotForProjectResponseBody,
+    ListMembersNotForProjectResponse,
     ListNetworkDomainsRequest,
     ListNetworkDomainsResponseBody,
     ListNetworkDomainsResponse,
@@ -952,6 +1150,27 @@ __all__ = [
     ListPoliciesRequest,
     ListPoliciesResponseBody,
     ListPoliciesResponse,
+    ListProjectAuthorizationsRequest,
+    ListProjectAuthorizationsResponseBody,
+    ListProjectAuthorizationsResponse,
+    ListProjectNotifyReceiversRequest,
+    ListProjectNotifyReceiversResponseBody,
+    ListProjectNotifyReceiversResponse,
+    ListProjectsRequest,
+    ListProjectsResponseBody,
+    ListProjectsResponse,
+    ListProjectsForProjectAuthorizationPrincipalRequest,
+    ListProjectsForProjectAuthorizationPrincipalResponseBody,
+    ListProjectsForProjectAuthorizationPrincipalResponse,
+    ListProjectsNotForProjectAuthorizationRequest,
+    ListProjectsNotForProjectAuthorizationResponseBody,
+    ListProjectsNotForProjectAuthorizationResponse,
+    ListProjectsNotForReviewRuleRequest,
+    ListProjectsNotForReviewRuleResponseBody,
+    ListProjectsNotForReviewRuleResponse,
+    ListReviewRulesRequest,
+    ListReviewRulesResponseBody,
+    ListReviewRulesResponse,
     ListRulesRequest,
     ListRulesResponseBody,
     ListRulesResponse,
@@ -967,6 +1186,9 @@ __all__ = [
     ListUserGroupsRequest,
     ListUserGroupsResponseBody,
     ListUserGroupsResponse,
+    ListUserGroupsForUserRequest,
+    ListUserGroupsForUserResponseBody,
+    ListUserGroupsForUserResponse,
     ListUserPublicKeysRequest,
     ListUserPublicKeysResponseBody,
     ListUserPublicKeysResponse,
@@ -982,6 +1204,9 @@ __all__ = [
     ModifyDatabaseAccountRequest,
     ModifyDatabaseAccountResponseBody,
     ModifyDatabaseAccountResponse,
+    ModifyDatabasesProjectRequest,
+    ModifyDatabasesProjectResponseBody,
+    ModifyDatabasesProjectResponse,
     ModifyHostRequest,
     ModifyHostResponseBody,
     ModifyHostResponse,
@@ -1000,6 +1225,9 @@ __all__ = [
     ModifyHostsPortRequest,
     ModifyHostsPortResponseBody,
     ModifyHostsPortResponse,
+    ModifyHostsProjectRequest,
+    ModifyHostsProjectResponseBody,
+    ModifyHostsProjectResponse,
     ModifyInstanceADAuthServerRequest,
     ModifyInstanceADAuthServerResponseBody,
     ModifyInstanceADAuthServerResponse,
@@ -1018,6 +1246,18 @@ __all__ = [
     ModifyPolicyRequest,
     ModifyPolicyResponseBody,
     ModifyPolicyResponse,
+    ModifyProjectRequest,
+    ModifyProjectResponseBody,
+    ModifyProjectResponse,
+    ModifyProjectAuthorizationRequest,
+    ModifyProjectAuthorizationResponseBody,
+    ModifyProjectAuthorizationResponse,
+    ModifyProjectNotifyReceiverRequest,
+    ModifyProjectNotifyReceiverResponseBody,
+    ModifyProjectNotifyReceiverResponse,
+    ModifyReviewRuleRequest,
+    ModifyReviewRuleResponseBody,
+    ModifyReviewRuleResponse,
     ModifyRuleRequest,
     ModifyRuleResponseBody,
     ModifyRuleResponse,
@@ -1129,11 +1369,15 @@ __all__ = [
     AttachHostGroupAccountsToUserResponseBodyResults,
     AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames,
     AttachHostGroupAccountsToUserGroupResponseBodyResults,
+    AttachProjectManagersToProjectAuthorizationRequestPrincipals,
+    AttachReviewersToReviewRuleRequestPrincipals,
     ConfigInstanceWhiteListRequestWhiteListPolicies,
     CreateNetworkDomainRequestProxies,
     CreateRuleRequestDatabases,
     CreateRuleRequestHostGroups,
     CreateRuleRequestHosts,
+    DeleteProjectNotifyReceiversResponseBodyResults,
+    DeleteProjectsResponseBodyResults,
     DescribeInstanceAttributeResponseBodyInstanceAttributePorts,
     DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies,
     DescribeInstanceAttributeResponseBodyInstanceAttribute,
@@ -1155,6 +1399,7 @@ __all__ = [
     DetachHostGroupAccountsFromUserResponseBodyResults,
     DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames,
     DetachHostGroupAccountsFromUserGroupResponseBodyResults,
+    DetachMembersFromProjectResponseBodyResults,
     GenerateAssetOperationTokenResponseBodyAssetOperationToken,
     GetAutoOpsTaskResponseBodyTask,
     GetDatabaseResponseBodyDatabase,
@@ -1185,6 +1430,14 @@ __all__ = [
     GetPolicyAssetScopeResponseBodyAssetScopeHosts,
     GetPolicyAssetScopeResponseBodyAssetScope,
     GetPolicyUserScopeResponseBodyUserScope,
+    GetProjectResponseBodyProjectNotifyReceivers,
+    GetProjectResponseBodyProject,
+    GetProjectAuthorizationResponseBodyProjectAuthorizationPrincipals,
+    GetProjectAuthorizationResponseBodyProjectAuthorizationProjects,
+    GetProjectAuthorizationResponseBodyProjectAuthorization,
+    GetReviewRuleResponseBodyReviewRulePrincipals,
+    GetReviewRuleResponseBodyReviewRuleProjects,
+    GetReviewRuleResponseBodyReviewRule,
     GetRuleResponseBodyRuleDatabasesDatabaseAccounts,
     GetRuleResponseBodyRuleDatabases,
     GetRuleResponseBodyRuleHostGroups,
@@ -1217,6 +1470,7 @@ __all__ = [
     ListHostsForUserGroupResponseBodyHosts,
     ListImportableKMSSecretsForHostResponseBodySecrets,
     ListInstanceRdMembersResponseBodyMembers,
+    ListMembersNotForProjectResponseBodyMembers,
     ListNetworkDomainsResponseBodyNetworkDomainsProxiesState,
     ListNetworkDomainsResponseBodyNetworkDomains,
     ListOperationDatabaseAccountsResponseBodyDatabaseAccounts,
@@ -1226,17 +1480,27 @@ __all__ = [
     ListOperationHostsResponseBodyHosts,
     ListOperationTicketsResponseBodyOperationTickets,
     ListPoliciesResponseBodyPolicies,
+    ListProjectAuthorizationsResponseBodyProjectAuthorizations,
+    ListProjectNotifyReceiversResponseBodyItems,
+    ListProjectsResponseBodyProjects,
+    ListProjectsForProjectAuthorizationPrincipalResponseBodyProjects,
+    ListProjectsNotForProjectAuthorizationResponseBodyProjects,
+    ListProjectsNotForReviewRuleResponseBodyProjects,
+    ListReviewRulesResponseBodyReviewRules,
     ListRulesResponseBodyRules,
     ListTagKeysResponseBodyTagKeys,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
     ListTodoOpsTaskApprovalsResponseBodyApproves,
     ListUserGroupsResponseBodyUserGroups,
+    ListUserGroupsForUserResponseBodyUserGroups,
     ListUserPublicKeysResponseBodyPublicKeys,
     ListUsersResponseBodyUsers,
     LockUsersResponseBodyResults,
+    ModifyDatabasesProjectResponseBodyResults,
     ModifyHostsActiveAddressTypeResponseBodyResults,
     ModifyHostsPortResponseBodyResults,
+    ModifyHostsProjectResponseBodyResults,
     ModifyNetworkDomainRequestProxies,
     ModifyRuleRequestDatabases,
     ModifyRuleRequestHostGroups,

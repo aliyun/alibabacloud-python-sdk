@@ -10,7 +10,7 @@ class CreatePolicyResponseBody(DaraModel):
         policy_id: str = None,
         request_id: str = None,
     ):
-        # The control policy ID.
+        # The ID of the control policy.
         self.policy_id = policy_id
         # The request ID.
         self.request_id = request_id

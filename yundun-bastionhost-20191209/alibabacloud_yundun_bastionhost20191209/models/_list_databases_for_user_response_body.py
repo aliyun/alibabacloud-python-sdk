@@ -14,11 +14,11 @@ class ListDatabasesForUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The databases returned.
+        # The list of databases.
         self.databases = databases
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of databases returned.
+        # The total number of databases.
         self.total_count = total_count
 
     def validate(self):
@@ -73,50 +73,48 @@ class ListDatabasesForUserResponseBodyDatabases(DaraModel):
         database_public_address: str = None,
         database_type: str = None,
         network_domain_id: str = None,
+        project_id: str = None,
+        project_name: str = None,
         source: str = None,
         source_instance_id: str = None,
     ):
         # The address type of the database. Valid values:
-        # 
-        # - **Public**
-        # 
-        # - **Private**
+        # - **Public**: public endpoint
+        # - **Private**: private endpoint in the private network
         self.active_address_type = active_address_type
-        # The remarks of the database.
+        # The description of the database instance.
         self.comment = comment
-        # The database ID.
+        # The instance ID of the database.
         self.database_id = database_id
-        # The database name.
+        # The name of the database instance.
         self.database_name = database_name
-        # The database port.
+        # The port of the database.
         self.database_port = database_port
-        # The internal endpoint of the database. The value is a domain name or an IP address.
+        # The private endpoint of the database in the private network, which can be a domain name or an IP address.
         self.database_private_address = database_private_address
-        # The public endpoint of the database. The value is a domain name or an IP address.
+        # The public address of the database, which can be a domain name or an IP address.
         self.database_public_address = database_public_address
-        # The database engine. Valid values:
+        # The type of the database. Valid values:
         # 
         # - **MySQL**
-        # 
         # - **Oracle**
-        # 
         # - **PostgreSQL**
-        # 
         # - **SQLServer**
         self.database_type = database_type
-        # The ID of the network domain where the database resides.
+        # The ID of the network domain to which the database belongs.
         self.network_domain_id = network_domain_id
-        # The database type. Valid values:
+        # The ID of the project to which the database belongs.
+        self.project_id = project_id
+        # The name of the project.
+        self.project_name = project_name
+        # The source of the database. Valid values:
         # 
-        # - **Local**: on-premises database.
-        # 
-        # - **Rds**: ApsaraDB RDS instance.
-        # 
-        # - **PolarDB**: PolarDB cluster.
+        # - **Local**: local database instance
+        # - **Rds**: ApsaraDB RDS instance
+        # - **PolarDB**: PolarDB instance
         self.source = source
-        # The ID of the ApsaraDB RDS instance or PolarDB cluster.
-        # 
-        # > No value is returned for this parameter if **Source** is set to **Local**.
+        # The instance ID of the ApsaraDB RDS or PolarDB instance that corresponds to the database.
+        # > If **Source** is set to **Local**, this parameter is empty.
         self.source_instance_id = source_instance_id
 
     def validate(self):
@@ -154,6 +152,12 @@ class ListDatabasesForUserResponseBodyDatabases(DaraModel):
         if self.network_domain_id is not None:
             result['NetworkDomainId'] = self.network_domain_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+
         if self.source is not None:
             result['Source'] = self.source
 
@@ -190,6 +194,12 @@ class ListDatabasesForUserResponseBodyDatabases(DaraModel):
 
         if m.get('NetworkDomainId') is not None:
             self.network_domain_id = m.get('NetworkDomainId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
 
         if m.get('Source') is not None:
             self.source = m.get('Source')

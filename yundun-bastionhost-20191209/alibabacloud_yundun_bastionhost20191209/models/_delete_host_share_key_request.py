@@ -11,19 +11,16 @@ class DeleteHostShareKeyRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The shared key ID.
-        # 
-        # > You must specify this parameter. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
+        # The ID of the host shared key.
+        # > This parameter is required. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to retrieve this parameter.
         self.host_share_key_id = host_share_key_id
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The instance ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to retrieve this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the Bastionhost instance.
+        # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

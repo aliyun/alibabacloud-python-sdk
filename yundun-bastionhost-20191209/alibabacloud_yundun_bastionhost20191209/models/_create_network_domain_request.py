@@ -14,34 +14,33 @@ class CreateNetworkDomainRequest(DaraModel):
         instance_id: str = None,
         network_domain_name: str = None,
         network_domain_type: str = None,
+        project_id: int = None,
         proxies: List[main_models.CreateNetworkDomainRequestProxies] = None,
         region_id: str = None,
     ):
-        # The remarks of the network domain. The remarks can be up to 500 characters in length.
+        # The description of the network domain. The description can be up to 500 characters in length.
         self.comment = comment
-        # The ID of the bastion host for which you want to create a network domain.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The ID of the Bastionhost instance for which you want to create a network domain.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the network domain that you want to create. The name can be up to 128 characters in length.
+        # The name of the network domain to create. The name can be up to 128 characters in length.
         # 
         # This parameter is required.
         self.network_domain_name = network_domain_name
-        # The connection mode of the network domain to be created. Valid values:
-        # 
-        # - Direct
-        # 
-        # - Proxy
+        # The type of the network domain to create. Valid values:
+        # - Direct: The bastion host directly connects to the asset network without going through an intermediate proxy server.
+        # - Proxy: When the asset network cannot communicate with the bastion host network, a proxy server forwards network requests to enable O&M on assets in different network environments.
         # 
         # This parameter is required.
         self.network_domain_type = network_domain_type
-        # The information about the proxy servers.
+        # The project ID.
+        self.project_id = project_id
+        # The proxy server information.
         self.proxies = proxies
-        # The region ID of the bastion host for which you want to create a network domain.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the Bastionhost instance for which you want to create a network domain.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -67,6 +66,9 @@ class CreateNetworkDomainRequest(DaraModel):
         if self.network_domain_type is not None:
             result['NetworkDomainType'] = self.network_domain_type
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         result['Proxies'] = []
         if self.proxies is not None:
             for k1 in self.proxies:
@@ -91,6 +93,9 @@ class CreateNetworkDomainRequest(DaraModel):
         if m.get('NetworkDomainType') is not None:
             self.network_domain_type = m.get('NetworkDomainType')
 
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
         self.proxies = []
         if m.get('Proxies') is not None:
             for k1 in m.get('Proxies'):
@@ -112,27 +117,23 @@ class CreateNetworkDomainRequestProxies(DaraModel):
         proxy_type: str = None,
         user: str = None,
     ):
-        # The IP address of the proxy server.
+        # The address of the proxy server.
         self.address = address
         # The node type of the proxy server. Valid values:
         # 
-        # - **Master**: primary proxy server.
-        # 
-        # - **Slave**: secondary proxy server.
+        # - Master: primary proxy server.
+        # - Slave: secondary proxy server.
         self.node_type = node_type
-        # The Base64-encoded password of the proxy server.
+        # The Base64-encoded password of the proxy server account.
         self.password = password
-        # The port of the proxy server.
+        # The Server Port of the proxy server.
         self.port = port
         # The proxy type. Valid values:
-        # 
-        # - **SSHProxy**
-        # 
-        # - **HTTPProxy**
-        # 
-        # - **Socks5Proxy**
+        # - SSHProxy: SSH proxy.
+        # - HTTPProxy: HTTP proxy.
+        # - Socks5Proxy: SOCKS proxy.
         self.proxy_type = proxy_type
-        # The username of the proxy server.
+        # The account of the proxy server.
         self.user = user
 
     def validate(self):

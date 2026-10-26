@@ -10,29 +10,30 @@ class GetNetworkDomainRequest(DaraModel):
         check_proxy_state: str = None,
         instance_id: str = None,
         network_domain_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # Indicates whether to immediately recheck the status of the proxy server. Valid values:
+        # Specifies whether to immediately re-check the proxy server status. Valid values:
         # 
-        # - **true**: Immediately rechecks the status of the proxy server and returns the latest ProxyState and ProxyStateErrorCode.
+        # - **true**: Immediately re-checks the proxy server status and returns the latest ProxyState/ProxyStateErrorCode.
         # 
-        # - **false**: (Default) Returns the currently recorded status without rechecking the proxy server.
+        # - **false**: Default value. Does not re-check the proxy server status and directly returns the currently recorded status.
         self.check_proxy_state = check_proxy_state
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to get this parameter.
+        # The instance ID of the bastion host.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The ID of the network domain to query.
-        # 
-        # > Call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to get this parameter.
+        # > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.network_domain_id = network_domain_id
-        # The region ID of the Bastionhost instance.
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the bastion host.
         # 
-        # > For more information about region IDs, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -52,6 +53,9 @@ class GetNetworkDomainRequest(DaraModel):
         if self.network_domain_id is not None:
             result['NetworkDomainId'] = self.network_domain_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -67,6 +71,9 @@ class GetNetworkDomainRequest(DaraModel):
 
         if m.get('NetworkDomainId') is not None:
             self.network_domain_id = m.get('NetworkDomainId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

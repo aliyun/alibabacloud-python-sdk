@@ -11,29 +11,32 @@ class ListTodoOpsTaskApprovalsRequest(DaraModel):
         keyword: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
         schedule_type: str = None,
     ):
-        # The instance ID of the bastion host.
-        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The instance ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The task name or task remarks to query. Fuzzy match is supported.
+        # The name or comment of the task to query. Fuzzy match is supported.
         self.keyword = keyword
         # The page number of the current page in a paging query. Default value: **1**.
         self.page_number = page_number
-        # The maximum number of entries per page in a paging query.  
-        # The maximum value of the PageSize parameter is 100. The default number of entries per page is 20. If PageSize is left empty, 20 entries are returned by default.
-        # > Do not leave PageSize empty.
+        # The maximum number of entries to return on each page in a paging query.  
+        # The maximum value of the PageSize parameter is 100. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+        # > Specify a value for the PageSize parameter.
         self.page_size = page_size
-        # The region ID of the bastion host.
-        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance.
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The task scheduling type used to filter results. Valid values:
-        # - **FixTime**: scheduled execution.
-        # - **CycleInterval**: periodic execution.
-        # - **Manual**: manually triggered by the user.
+        # The scheduling type of the task. Valid values:
+        # - **FixTime**: Scheduled execution.
+        # - **CycleInterval**: Periodic execution.
+        # - **Manual**: Manually triggered execution.
         self.schedule_type = schedule_type
 
     def validate(self):
@@ -56,6 +59,9 @@ class ListTodoOpsTaskApprovalsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -77,6 +83,9 @@ class ListTodoOpsTaskApprovalsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

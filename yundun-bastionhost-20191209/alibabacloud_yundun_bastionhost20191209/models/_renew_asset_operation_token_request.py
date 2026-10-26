@@ -9,21 +9,22 @@ class RenewAssetOperationTokenRequest(DaraModel):
         self,
         instance_id: str = None,
         region_id: str = None,
+        token: str = None,
         token_id: str = None,
     ):
-        # The bastion host ID.
+        # The ID of the Bastionhost instance.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the Bastionhost instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the Bastionhost instance.
+        # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the O\\&M token that you want to renew.
-        # 
-        # > You can call the [GenerateAssetOperationToken](https://help.aliyun.com/document_detail/2758861.html) operation to query the O\\&M token ID.
+        # The O&M token to be renewed.
+        self.token = token
+        # The ID of the O&M token to be renewed.
+        # > You can call the [GenerateAssetOperationToken](https://help.aliyun.com/document_detail/2758861.html) operation to obtain this parameter.
         self.token_id = token_id
 
     def validate(self):
@@ -40,6 +41,9 @@ class RenewAssetOperationTokenRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.token is not None:
+            result['Token'] = self.token
+
         if self.token_id is not None:
             result['TokenId'] = self.token_id
 
@@ -52,6 +56,9 @@ class RenewAssetOperationTokenRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
 
         if m.get('TokenId') is not None:
             self.token_id = m.get('TokenId')

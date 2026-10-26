@@ -13,20 +13,28 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         email_mapping: str = None,
         filter: str = None,
         instance_id: str = None,
+        is_default: str = None,
         is_ssl: str = None,
+        is_sync_email_attr: str = None,
+        is_sync_mobile_attr: str = None,
+        is_sync_name_attr: str = None,
+        is_sync_ou_as_user_group: str = None,
         mobile_mapping: str = None,
         name_mapping: str = None,
         password: str = None,
         port: str = None,
         region_id: str = None,
         server: str = None,
+        server_name: str = None,
         standby_server: str = None,
+        sync_interval: str = None,
+        user_source_id: str = None,
     ):
-        # The username of the account that is used for the AD server.
+        # The server account.
         # 
         # This parameter is required.
         self.account = account
-        # The Base distinguished name (DN).
+        # The base distinguished name (Base DN).
         # 
         # This parameter is required.
         self.base_dn = base_dn
@@ -34,44 +42,54 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain = domain
-        # The field that is used to indicate the email address of a user on the AD server.
+        # The server attribute name that maps to the user email address.
         self.email_mapping = email_mapping
-        # The condition that is used to filter users.
+        # The filter condition for users.
         self.filter = filter
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The instance ID of the Bastionhost instance.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether the AD authentication server is the default server. A value of true indicates that the server is the default AD authentication server. A value of false indicates that the server is not the default AD authentication server.
+        self.is_default = is_default
         # Specifies whether SSL is supported. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
-        # 
-        # This parameter is required.
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.is_ssl = is_ssl
-        # The field that is used to indicate the mobile phone number of a user on the AD server.
+        # Specifies whether to synchronize the email address. A value of true indicates that the email address is synchronized. A value of false indicates that the email address is not synchronized.
+        self.is_sync_email_attr = is_sync_email_attr
+        # Specifies whether to synchronize the mobile phone number. A value of true indicates that the mobile phone number is synchronized. A value of false indicates that the mobile phone number is not synchronized.
+        self.is_sync_mobile_attr = is_sync_mobile_attr
+        # Specifies whether to synchronize the display name. A value of true indicates that the display name is synchronized. A value of false indicates that the display name is not synchronized.
+        self.is_sync_name_attr = is_sync_name_attr
+        # Specifies whether to synchronize the organization to which the user belongs as a user group. A value of true indicates that the organization is synchronized as a user group. A value of false indicates that the organization is not synchronized as a user group.
+        self.is_sync_ou_as_user_group = is_sync_ou_as_user_group
+        # The server attribute name that maps to the user mobile phone number.
         self.mobile_mapping = mobile_mapping
-        # The field that is used to indicate the name of a user on the AD server.
+        # The server attribute name that maps to the username.
         self.name_mapping = name_mapping
-        # The password of the account that is used for the AD server.
+        # The password of the server account.
         self.password = password
-        # The port that is used to access the server.
+        # The port used to access the server.
         # 
         # This parameter is required.
         self.port = port
-        # The region ID of the bastion host.
-        # 
+        # The region ID of the Bastionhost instance.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The address of the AD server.
+        # The address of the server.
         # 
         # This parameter is required.
         self.server = server
-        # The address of the secondary AD server.
+        # The name of the AD authentication server.
+        self.server_name = server_name
+        # The address of the standby server.
         self.standby_server = standby_server
+        # The interval at which user snapshots are automatically synchronized, in hours. Valid values: 0, and 4 to 168. A value of 0 indicates that automatic synchronization is disabled.
+        self.sync_interval = sync_interval
+        self.user_source_id = user_source_id
 
     def validate(self):
         pass
@@ -99,8 +117,23 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+
         if self.is_ssl is not None:
             result['IsSSL'] = self.is_ssl
+
+        if self.is_sync_email_attr is not None:
+            result['IsSyncEmailAttr'] = self.is_sync_email_attr
+
+        if self.is_sync_mobile_attr is not None:
+            result['IsSyncMobileAttr'] = self.is_sync_mobile_attr
+
+        if self.is_sync_name_attr is not None:
+            result['IsSyncNameAttr'] = self.is_sync_name_attr
+
+        if self.is_sync_ou_as_user_group is not None:
+            result['IsSyncOuAsUserGroup'] = self.is_sync_ou_as_user_group
 
         if self.mobile_mapping is not None:
             result['MobileMapping'] = self.mobile_mapping
@@ -120,8 +153,17 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         if self.server is not None:
             result['Server'] = self.server
 
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+
         if self.standby_server is not None:
             result['StandbyServer'] = self.standby_server
+
+        if self.sync_interval is not None:
+            result['SyncInterval'] = self.sync_interval
+
+        if self.user_source_id is not None:
+            result['UserSourceId'] = self.user_source_id
 
         return result
 
@@ -145,8 +187,23 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+
         if m.get('IsSSL') is not None:
             self.is_ssl = m.get('IsSSL')
+
+        if m.get('IsSyncEmailAttr') is not None:
+            self.is_sync_email_attr = m.get('IsSyncEmailAttr')
+
+        if m.get('IsSyncMobileAttr') is not None:
+            self.is_sync_mobile_attr = m.get('IsSyncMobileAttr')
+
+        if m.get('IsSyncNameAttr') is not None:
+            self.is_sync_name_attr = m.get('IsSyncNameAttr')
+
+        if m.get('IsSyncOuAsUserGroup') is not None:
+            self.is_sync_ou_as_user_group = m.get('IsSyncOuAsUserGroup')
 
         if m.get('MobileMapping') is not None:
             self.mobile_mapping = m.get('MobileMapping')
@@ -166,8 +223,17 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         if m.get('Server') is not None:
             self.server = m.get('Server')
 
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+
         if m.get('StandbyServer') is not None:
             self.standby_server = m.get('StandbyServer')
+
+        if m.get('SyncInterval') is not None:
+            self.sync_interval = m.get('SyncInterval')
+
+        if m.get('UserSourceId') is not None:
+            self.user_source_id = m.get('UserSourceId')
 
         return self
 

@@ -11,44 +11,42 @@ class SetPolicyUserScopeRequest(DaraModel):
         self,
         instance_id: str = None,
         policy_id: str = None,
+        project_id: int = None,
         region_id: str = None,
         scope_type: str = None,
         user_group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The ID of the bastion host instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the control policy that you want to modify.
-        # 
-        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # The ID of the control policy to modify.
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The project ID.
+        self.project_id = project_id
         # The region ID of the bastion host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The scope of users to whom the control policy applies. Valid values:
+        # The user scope for the control policy. Valid values:
         # 
-        # - **All**: The control policy applies to all users.
-        # 
-        # - **User**: The control policy applies to specified users.
-        # 
-        # - **UserGroup**: The control policy applies to specified user groups.
+        # - **All**: The policy applies to all users.
+        # - **User**: The policy applies to selected users.
+        # - **UserGroup**: The policy applies to selected user groups.
         # 
         # This parameter is required.
         self.scope_type = scope_type
-        # The user groups to which the control policy applies.
+        # The user group scope for the control policy.
         # 
-        # > This parameter is required if ScopeType is set to UserGroup. You can specify up to 100 user group IDs.
+        # > This parameter is required when ScopeType is set to UserGroup. A maximum of 100 user groups can be specified.
         self.user_group_ids = user_group_ids
-        # The users to whom the control policy applies.
+        # The user scope for the control policy.
         # 
-        # > This parameter is required if ScopeType is set to User. You can specify up to 500 user IDs.
+        # > This parameter is required when ScopeType is set to User. A maximum of 500 users can be specified.
         self.user_ids = user_ids
 
     def validate(self):
@@ -64,6 +62,9 @@ class SetPolicyUserScopeRequest(DaraModel):
 
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -86,6 +87,9 @@ class SetPolicyUserScopeRequest(DaraModel):
 
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

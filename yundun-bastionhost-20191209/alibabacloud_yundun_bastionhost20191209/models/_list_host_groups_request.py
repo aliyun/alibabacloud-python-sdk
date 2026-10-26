@@ -11,24 +11,24 @@ class ListHostGroupsRequest(DaraModel):
         instance_id: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The name of the host group that you want to query. Only exact match is supported.
+        # The name of the asset group. Only exact match is supported.
         self.host_group_name = host_group_name
-        # The ID of the bastion host to query.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/462953.html) operation to query the bastion host ID.
+        # The instance ID of the bastion host.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/462953.html) operation to obtain the value of this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: **1**.
+        # The page number of the current page for paging in a paged query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page for paging in a paged query. Maximum value: 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
+        # > Specify a value for this parameter.
         self.page_size = page_size
-        # The region ID of the bastion host in which you want to query the host group.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the bastion host.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
@@ -52,6 +52,9 @@ class ListHostGroupsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -70,6 +73,9 @@ class ListHostGroupsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

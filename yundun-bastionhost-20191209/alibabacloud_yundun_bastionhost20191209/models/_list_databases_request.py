@@ -13,49 +13,43 @@ class ListDatabasesRequest(DaraModel):
         network_domain_id: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
         source: str = None,
     ):
-        # The engine of the database to query. Valid values:
+        # The type of the database. Valid values:
         # 
         # - **MySQL**
-        # 
         # - **Oracle**
-        # 
         # - **PostgreSQL**
-        # 
         # - **SQLServer**
         self.database_type = database_type
-        # The ID of the asset group to query. This operation returns the databases in the asset group.
-        # 
-        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the asset group.
+        # The ID of the host group.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the value of this parameter.
         self.host_group_id = host_group_id
-        # The ID of the bastion host to query.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The instance ID of the Bastionhost instance.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the network domain where the database to query resides.
+        # The ID of the network domain to which the database belongs.
         self.network_domain_id = network_domain_id
-        # The number of the page to return. Default value: 1.
+        # The page number of the current page for paging in a paged query. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
-        # Valid values: 1 to100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page for paging in a paged query.  
+        # The maximum value of the PageSize parameter is 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
+        # > Do not leave the PageSize parameter empty.
         self.page_size = page_size
-        # The region ID of the bastion host to query.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The type of the database to query. Valid values:
+        # The source of the database. Valid values:
         # 
-        # - **Local**: on-premises database.
-        # 
-        # - **Rds**: ApsaraDB for RDS instance.
-        # 
-        # - **PolarDB**: PolarDB cluster
+        # - **Local**: local database instance
+        # - **Rds**: ApsaraDB RDS instance
+        # - **PolarDB**: PolarDB instance
         self.source = source
 
     def validate(self):
@@ -84,6 +78,9 @@ class ListDatabasesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -111,6 +108,9 @@ class ListDatabasesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

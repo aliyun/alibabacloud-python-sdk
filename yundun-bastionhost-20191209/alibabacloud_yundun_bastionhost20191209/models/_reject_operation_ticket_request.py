@@ -10,24 +10,24 @@ class RejectOperationTicketRequest(DaraModel):
         comment: str = None,
         instance_id: str = None,
         operation_ticket_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The review remarks.
+        # The approval comment.
         self.comment = comment
-        # The ID of the bastion host.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The instance ID of the Bastionhost instance.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the parameter value.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the O\\&M application that you want to reject.
-        # 
-        # > You can call the [ListOperationTickets](https://help.aliyun.com/document_detail/2584313.html) operation to query the IDs of all O\\&M applications that require review.
+        # The ID of the O&M application to be rejected.
+        # > You can call the [ListOperationTickets](https://help.aliyun.com/document_detail/2584313.html) operation to query the IDs of all O&M applications that require approval.
         # 
         # This parameter is required.
         self.operation_ticket_id = operation_ticket_id
-        # The region ID of the bastion host.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
@@ -48,6 +48,9 @@ class RejectOperationTicketRequest(DaraModel):
         if self.operation_ticket_id is not None:
             result['OperationTicketId'] = self.operation_ticket_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -63,6 +66,9 @@ class RejectOperationTicketRequest(DaraModel):
 
         if m.get('OperationTicketId') is not None:
             self.operation_ticket_id = m.get('OperationTicketId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

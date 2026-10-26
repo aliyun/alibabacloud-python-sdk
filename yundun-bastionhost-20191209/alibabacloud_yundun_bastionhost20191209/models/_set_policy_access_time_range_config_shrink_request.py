@@ -10,27 +10,28 @@ class SetPolicyAccessTimeRangeConfigShrinkRequest(DaraModel):
         access_time_range_config_shrink: str = None,
         instance_id: str = None,
         policy_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The logon period limits.
+        # The logon time limit configuration.
         # 
         # This parameter is required.
         self.access_time_range_config_shrink = access_time_range_config_shrink
-        # The bastion host ID.
+        # The instance ID of the Bastionhost instance.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to retrieve this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The control policy ID.
-        # 
-        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # The ID of the control policy.
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to retrieve this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The region ID of the bastion host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance.
+        # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -50,6 +51,9 @@ class SetPolicyAccessTimeRangeConfigShrinkRequest(DaraModel):
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -65,6 +69,9 @@ class SetPolicyAccessTimeRangeConfigShrinkRequest(DaraModel):
 
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -13,37 +13,35 @@ class CreateDatabaseAccountRequest(DaraModel):
         instance_id: str = None,
         login_attribute: str = None,
         password: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The username of the database account to be created. The username can be up to 128 characters in length.
+        # The name of the database account to create. The name can be up to 128 characters in length.
         # 
         # This parameter is required.
         self.database_account_name = database_account_name
-        # The ID of the database for which you want to create a database account.
-        # 
-        # > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # The instance ID of the database for which you want to create an account.
+        # > You can invoke the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query this parameter.
         # 
         # This parameter is required.
         self.database_id = database_id
-        # The name of the database. This parameter is required for PostgreSQL and Oracle databases.
+        # The database name. This parameter is required when the database that corresponds to DatabaseId is PostgreSQL or Oracle.
         self.database_schema = database_schema
-        # The ID of the bastion host for which you want to create a database account.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The ID of the bastion host instance for which you want to create a database account.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The logon attribute. This parameter is required for Oracle databases. Valid values:
-        # 
+        # The logon property. This parameter is required for Oracle databases. Valid values:
         # - SERVICENAME
-        # 
         # - SID
         self.login_attribute = login_attribute
-        # The password of the database account to be created.
+        # The password of the database account to create.
         self.password = password
+        # The project ID.
+        self.project_id = project_id
         # The region ID of the bastion host for which you want to create a database account.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -72,6 +70,9 @@ class CreateDatabaseAccountRequest(DaraModel):
         if self.password is not None:
             result['Password'] = self.password
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -96,6 +97,9 @@ class CreateDatabaseAccountRequest(DaraModel):
 
         if m.get('Password') is not None:
             self.password = m.get('Password')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

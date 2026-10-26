@@ -15,7 +15,7 @@ class DescribeInstanceAttributeResponseBody(DaraModel):
     ):
         # The instance attribute information.
         self.instance_attribute = instance_attribute
-        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,6 +50,9 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(DaraModel):
     def __init__(
         self,
         ai_credit_status: str = None,
+        ai_credits_total: int = None,
+        ai_credits_us: int = None,
+        ai_ops_audit_status: str = None,
         ai_ops_module: str = None,
         app_operation_module: str = None,
         authorized_security_groups: List[str] = None,
@@ -90,103 +93,108 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(DaraModel):
         web_terminal_module: str = None,
         white_list_policies: List[main_models.DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies] = None,
     ):
+        # The AI credit status (Available/Exhausted).
         self.ai_credit_status = ai_credit_status
+        # The total number of AI credits in the package.
+        self.ai_credits_total = ai_credits_total
+        # The number of used AI credits in the package.
+        self.ai_credits_us = ai_credits_us
+        # The AI O&M audit status.
+        self.ai_ops_audit_status = ai_ops_audit_status
+        # The switch status of the intelligent O&M module (Enable/Disable).
         self.ai_ops_module = ai_ops_module
-        # The application O&M module. Valid values: Enable (enabled) and Disable (disabled).
+        # The application O&M module. Valid values: Enable and Disable.
         self.app_operation_module = app_operation_module
         # The list of authorized security group IDs.
         self.authorized_security_groups = authorized_security_groups
-        # The total bandwidth of the bastion host instance.
+        # The total bandwidth of the Bastionhost instance.
         self.bandwidth = bandwidth
-        # The extended bandwidth package of the bastion host.
+        # The extended bandwidth plan of the Bastionhost instance.
         self.bandwidth_package = bandwidth_package
-        # The status of the database O&M feature.
+        # The database O&M status. Valid values:
         # - **Enable**: Database O&M is supported.
         # - **Disable**: Database O&M is not supported.
         self.db_operation_module = db_operation_module
-        # The description of the instance.
+        # The description.
         self.description = description
-        # The ID of the elastic network interface (ENI). An ENI is a virtual network interface controller (NIC) that can be attached to the bastion host instance.
+        # The ID of the elastic network interface controller (NIC).
         self.eni_instance_id = eni_instance_id
-        # The timestamp when the bastion host instance expires. Unit: milliseconds.
+        # The expiration timestamp of the Bastionhost instance. Unit: milliseconds.
         self.expire_time = expire_time
-        # The status of the HSM hardware encryption module. Indicates whether the bastion host is integrated with HSM.
+        # The status of the HSM hardware encryption module. Indicates whether the Bastionhost instance is integrated with an HSM.
         self.hsmmodule = hsmmodule
-        # The IDaaS integration module. Valid values: Enable (enabled) and Disable (disabled).
+        # The IDaaS integration module. Valid values: Enable and Disable.
         self.idaa_smodule = idaa_smodule
         # The instance ID.
         self.instance_id = instance_id
         # The instance status. Valid values:
-        # 
-        # - **PENDING**: Not initialized.
-        # - **CREATING**: Being created. 
-        # - **RUNNING**: Running. 
-        # - **EXPIRED**: Expired. 
+        # - **PENDING**: Uninitialized.
+        # - **CREATING**: Creating.
+        # - **RUNNING**: Running.
+        # - **EXPIRED**: Expired.
         # - **CREATE_FAILED**: Creation failed.
-        # - **UPGRADING**: Being upgraded.
-        # - **UPGRADE_FAILED**: Upgrade failed.
+        # - **UPGRADING**: Upgrading or downgrading.
+        # - **UPGRADE_FAILED**: Upgrade or downgrade failed.
         self.instance_status = instance_status
         # The public domain name.
         self.internet_endpoint = internet_endpoint
         # The internal domain name.
         self.intranet_endpoint = intranet_endpoint
-        # The KMS Secrets Manager integration module. Valid values: Enable (enabled) and Disable (disabled).
+        # The KMS Secrets Manager integration module. Valid values: Enable and Disable.
         self.kms_secret_module = kms_secret_module
         # The license code.
         self.license_code = license_code
-        # The status of the password change task feature.
-        # 
+        # The status of the password change task feature. Valid values:
         # - **Enable**: Enabled.
         # - **Disable**: Disabled.
         self.modify_password_module = modify_password_module
-        # The status of the network domain proxy feature.
+        # The network domain proxy status. Valid values:
         # - **Enable**: The network domain proxy mode is supported.
         # - **Disable**: The network domain proxy mode is not supported.
         self.network_proxy_module = network_proxy_module
-        # The O&M ports of the bastion host.
+        # The O&M ports of the Bastionhost instance.
         self.ports = ports
-        # The list of internal egress IP addresses of the bastion host.
+        # The list of internal outbound IP addresses of the Bastionhost instance.
         self.private_export_ips = private_export_ips
-        # The list of IP addresses in the internal whitelist.
+        # The list of IP addresses in the internal network whitelist.
         self.private_white_list = private_white_list
-        # The list of public egress IP addresses of the bastion host.
+        # The list of public outbound IP addresses of the Bastionhost instance.
         self.public_export_ips = public_export_ips
-        # The list of public IP addresses of the bastion host.
+        # The list of public IP addresses of the Bastionhost instance.
         self.public_ips = public_ips
-        # Indicates whether the bastion host instance is accessible over the Internet. Valid values:
-        # 
-        # - **true**: The bastion host is accessible over the Internet.
-        # - **false**: The bastion host is not accessible over the Internet.
+        # Indicates whether the Bastionhost instance can be accessed over the Internet. Valid values:
+        # - **true**: The Bastionhost instance can be accessed over the Internet.
+        # - **false**: The Bastionhost instance cannot be accessed over the Internet.
         self.public_network_access = public_network_access
-        # The public whitelist of the bastion host.
+        # The list of IP addresses in the public network whitelist of the Bastionhost instance.
         self.public_white_list = public_white_list
-        # The multi-account module. Valid values: Enable (enabled) and Disable (disabled).
+        # The multi-account module. Valid values: Enable and Disable.
         self.rdmodule = rdmodule
         # The region ID of the instance.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The list of rules for the bastion host instance.
+        # The list of rules for the Bastionhost instance.
         self.router_rules = router_rules
-        # The script O&M module. Valid values: Enable (enabled) and Disable (disabled).
+        # The script O&M module. Valid values: Enable and Disable.
         self.script_deliver_module = script_deliver_module
         # The list of security group IDs to which the instance belongs.
         self.security_group_ids = security_group_ids
-        # The ID of the secondary vSwitch associated with the bastion host instance.
+        # The ID of the secondary vSwitch bound to the Bastionhost instance.
         self.slave_vswitch_id = slave_vswitch_id
-        # The timestamp when the bastion host instance was purchased or renewed. Unit: milliseconds.
+        # The timestamp when the Bastionhost instance was purchased or renewed. Unit: milliseconds.
         self.start_time = start_time
-        # The total storage capacity of the purchased bastion host. Unit: bytes.
+        # The total purchased storage capacity of the Bastionhost instance. Unit: bytes.
         self.storage = storage
-        # The VPC ID associated with the instance.
+        # The ID of the VPC to which the instance is connected.
         self.vpc_id = vpc_id
-        # The vSwitch ID associated with the instance.
+        # The ID of the vSwitch to which the instance is connected.
         self.vswitch_id = vswitch_id
-        # The status of the Web Terminal feature.
+        # The Web Terminal status. Valid values:
         # - **Enable**: Web remote connection is supported.
         # - **Disable**: Web remote connection is not supported.
         self.web_terminal_module = web_terminal_module
-        # The IP address whitelist to configure.
+        # The IP address whitelist to be configured.
         self.white_list_policies = white_list_policies
 
     def validate(self):
@@ -206,6 +214,15 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(DaraModel):
             result = _map
         if self.ai_credit_status is not None:
             result['AiCreditStatus'] = self.ai_credit_status
+
+        if self.ai_credits_total is not None:
+            result['AiCreditsTotal'] = self.ai_credits_total
+
+        if self.ai_credits_us is not None:
+            result['AiCreditsUs'] = self.ai_credits_us
+
+        if self.ai_ops_audit_status is not None:
+            result['AiOpsAuditStatus'] = self.ai_ops_audit_status
 
         if self.ai_ops_module is not None:
             result['AiOpsModule'] = self.ai_ops_module
@@ -334,6 +351,15 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(DaraModel):
         m = m or dict()
         if m.get('AiCreditStatus') is not None:
             self.ai_credit_status = m.get('AiCreditStatus')
+
+        if m.get('AiCreditsTotal') is not None:
+            self.ai_credits_total = m.get('AiCreditsTotal')
+
+        if m.get('AiCreditsUs') is not None:
+            self.ai_credits_us = m.get('AiCreditsUs')
+
+        if m.get('AiOpsAuditStatus') is not None:
+            self.ai_ops_audit_status = m.get('AiOpsAuditStatus')
 
         if m.get('AiOpsModule') is not None:
             self.ai_ops_module = m.get('AiOpsModule')
@@ -468,7 +494,7 @@ class DescribeInstanceAttributeResponseBodyInstanceAttributeWhiteListPolicies(Da
     ):
         # The description of the whitelist rule.
         self.description = description
-        # The IP address whitelist to configure. A maximum of 50 IP addresses are supported. Separate multiple IP addresses with commas (,).
+        # The IP address whitelist to be configured. You can configure up to 50 IP addresses. Separate multiple IP addresses with commas (,).
         self.entry = entry
 
     def validate(self):
@@ -503,13 +529,11 @@ class DescribeInstanceAttributeResponseBodyInstanceAttributePorts(DaraModel):
         custom_port: int = None,
         standard_port: int = None,
     ):
-        # The custom port defined by the user.
-        # 
-        # > Only SSH and RDP ports can be modified. If no custom O&M port is configured for the bastion host, the value is the same as the standard port.
+        # The custom port.
+        # > Only SSH and RDP ports can be modified. If no custom O&M port is specified for the Bastionhost instance, the standard port is returned.
         self.custom_port = custom_port
-        # The standard port of the bastion host. Valid values:
-        # 
-        # - **SSH**: 60022 
+        # The standard port of the Bastionhost instance. Valid values:
+        # - **SSH**: 60022
         # - **RDP**: 63389
         # - **HTTPS**: 443
         self.standard_port = standard_port

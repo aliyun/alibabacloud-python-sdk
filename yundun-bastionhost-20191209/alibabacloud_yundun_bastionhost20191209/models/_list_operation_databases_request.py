@@ -13,56 +13,50 @@ class ListOperationDatabasesRequest(DaraModel):
         instance_id: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
         source: str = None,
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
-        # The address of the database.
+        # The address of the database instance.
         self.database_address = database_address
-        # The name of the database. This parameter supports only exact matches.
+        # The name of the database instance. Exact match is used.
         self.database_name = database_name
         # The database type. Valid values:
         # 
         # - **MySQL**
-        # 
         # - **SQLServer**
-        # 
         # - **Oracle**
-        # 
         # - **PostgreSQL**
         self.database_type = database_type
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The instance ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the value of this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. The default value is **1**.
+        # The page number of the current page for a paged query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.<br>The maximum value is 100. The default value is 20. If you do not specify this parameter, 20 entries are returned.<br>
-        # 
-        # > Specify a value for this parameter.
+        # The maximum number of entries to return on each page for a paged query.  
+        # The maximum value of the PageSize parameter is 100. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+        # > Do not leave the PageSize parameter empty.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance.
-        # 
-        # > For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the bastion host.
+        # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The source of the database. Valid values:
-        # 
-        # - **Local**: a local database
-        # 
-        # - **Rds**: an ApsaraDB RDS database
-        # 
-        # - **PolarDB**: a PolarDB database
+        # The source of the database instance. Valid values:
+        # - **Local**: on-premises database
+        # - **Rds**: ApsaraDB RDS database
+        # - **PolarDB**: PolarDB database
         self.source = source
-        # The ID of the source instance. This parameter supports only exact matches.
+        # The instance ID of the ApsaraDB RDS instance. Exact match.
         self.source_instance_id = source_instance_id
-        # The status of the source instance. You can use this parameter to filter the results.
+        # Filters database instances by instance status. Valid values:
         # 
-        # - **Normal**: The instance is running.
-        # 
-        # - **RemoteRelease**: The instance is released.
+        # - **Normal**: normal
+        # - **RemoteRelease**: released
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -90,6 +84,9 @@ class ListOperationDatabasesRequest(DaraModel):
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -124,6 +121,9 @@ class ListOperationDatabasesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

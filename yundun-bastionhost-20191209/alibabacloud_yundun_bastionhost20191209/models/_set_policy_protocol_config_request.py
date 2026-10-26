@@ -10,28 +10,29 @@ class SetPolicyProtocolConfigRequest(DaraModel):
         self,
         instance_id: str = None,
         policy_id: str = None,
+        project_id: int = None,
         protocol_config: main_models.SetPolicyProtocolConfigRequestProtocolConfig = None,
         region_id: str = None,
     ):
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+        # The instance ID of the bastion host.
+        # > You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the control policy that you want to modify.
+        # The ID of the control policy to modify.
         # 
-        # > Call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain the policy ID.
+        # > You can call [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) to obtain this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The project ID.
+        self.project_id = project_id
         # The protocol control configuration.
         # 
         # This parameter is required.
         self.protocol_config = protocol_config
-        # The ID of the region where the Bastionhost instance resides.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the bastion host.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -49,6 +50,9 @@ class SetPolicyProtocolConfigRequest(DaraModel):
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.protocol_config is not None:
             result['ProtocolConfig'] = self.protocol_config.to_map()
 
@@ -65,6 +69,9 @@ class SetPolicyProtocolConfigRequest(DaraModel):
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
 
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
         if m.get('ProtocolConfig') is not None:
             temp_model = main_models.SetPolicyProtocolConfigRequestProtocolConfig()
             self.protocol_config = temp_model.from_map(m.get('ProtocolConfig'))
@@ -80,9 +87,9 @@ class SetPolicyProtocolConfigRequestProtocolConfig(DaraModel):
         rdp: main_models.SetPolicyProtocolConfigRequestProtocolConfigRDP = None,
         ssh: main_models.SetPolicyProtocolConfigRequestProtocolConfigSSH = None,
     ):
-        # The RDP options.
+        # The RDP option configuration details.
         self.rdp = rdp
-        # The SSH and SFTP options.
+        # The SSH and SFTP option configuration details.
         self.ssh = ssh
 
     def validate(self):
@@ -133,96 +140,77 @@ class SetPolicyProtocolConfigRequestProtocolConfigSSH(DaraModel):
         tcp_forwarding: str = None,
         x_11forwarding: str = None,
     ):
+        # Specifies whether to allow direct TCP connection.
         self.allow_direct_tcp = allow_direct_tcp
+        # Specifies whether to allow TCP forwarding.
         self.allow_tcp_forwarding = allow_tcp_forwarding
-        # Specifies whether to allow remote command execution. Valid values:
+        # The remote command execution configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.exec_command = exec_command
-        # Specifies whether to enable the SFTP channel. Valid values:
+        # The SFTP channel configuration. Valid values:
         # 
-        # - Enable
+        # - Enable: Enabled.
+        # - Disable: Disabled.
         # 
-        # - Disable
-        # 
-        # > * The default value is Disable.
-        # >
-        # > * At least one of the SSH channel and the SFTP channel must be enabled.
-        # >
-        # > * If you grant only SFTP permissions to a host account, do not disable the SSH and SFTP channels for that account in the control policy. Otherwise, you cannot use the host account to access the target server through Bastionhost.
+        # > - If this parameter is not specified, the default value is Disable.
+        # > - At least one of the SSH channel and SFTP channel must be set to Enable.
+        # > - If you enable the SFTP-only permission for a host account, do not disable both the SSH channel and SFTP channel for that account in the control policy. Otherwise, you cannot use the host account to access the target server through the bastion host.
         self.sftpchannel = sftpchannel
-        # Specifies whether to allow file downloads over SFTP. Valid values:
+        # The SFTP file download configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.sftpdownload_file = sftpdownload_file
-        # Specifies whether to allow folder creation over SFTP. Valid values:
+        # The SFTP folder creation configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.sftpmkdir = sftpmkdir
-        # Specifies whether to allow file deletions over SFTP. Valid values:
+        # The SFTP file deletion configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.sftpremove_file = sftpremove_file
-        # Specifies whether to allow file renames over SFTP. Valid values:
+        # The SFTP file rename configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.sftprename_file = sftprename_file
-        # Specifies whether to allow folder deletion over SFTP. Valid values:
+        # The SFTP folder deletion configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.sftprmdir = sftprmdir
-        # Specifies whether to allow file uploads over SFTP. Valid values:
+        # The SFTP file upload configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.sftpupload_file = sftpupload_file
-        # Specifies whether to enable the SSH channel. Valid values:
+        # The SSH channel configuration. Valid values:
         # 
-        # - Enable
+        # - Enable: Enabled.
+        # - Disable: Disabled.
         # 
-        # - Disable
-        # 
-        # > * The default value is Disable.
-        # >
-        # > * At least one of the SSH channel and the SFTP channel must be enabled. If you disable the SSH channel, you cannot use SSH permissions to log on to the asset account. Configure this parameter with caution.
-        # >
-        # > * If you grant only SFTP permissions to a host account, do not disable the SSH and SFTP channels for that account in the control policy. Otherwise, you cannot use the host account to access the target server through Bastionhost.
+        # > - If this parameter is not specified, the default value is Disable.
+        # > - At least one of the SSH channel and SFTP channel must be set to Enable. If the SSH channel is set to Disable, you cannot log on to asset accounts by using SSH permissions. Proceed with caution.
+        # > - If you enable the SFTP-only permission for a host account, do not disable both the SSH channel and SFTP channel for that account in the control policy. Otherwise, you cannot use the host account to access the target server through the bastion host.
         self.sshchannel = sshchannel
+        # Specifies whether to allow TCP forwarding.
         self.tcp_forwarding = tcp_forwarding
-        # Specifies whether to enable X11 forwarding. Valid values:
+        # The X11 forwarding configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.x_11forwarding = x_11forwarding
 
     def validate(self):
@@ -327,39 +315,34 @@ class SetPolicyProtocolConfigRequestProtocolConfigRDP(DaraModel):
         disk_redirection_upload: str = None,
         record_keyboard: str = None,
     ):
-        # Specifies whether to allow clipboard content to be downloaded. Valid values:
+        # The clipboard download configuration. Valid values:
         # 
-        # - Enable
+        # - Enable: Enabled.
+        # - Disable: Disabled.
         # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # > If this parameter is not specified, the default value is Disable.
         self.clipboard_download = clipboard_download
-        # Specifies whether to allow clipboard content to be uploaded. Valid values:
+        # The clipboard upload configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.clipboard_upload = clipboard_upload
-        # Specifies whether to enable drive and printer mapping. Valid values:
+        # The drive/printer mapping configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.disk_redirection = disk_redirection
+        # Specifies whether to allow disk download.
         self.disk_redirection_download = disk_redirection_download
+        # Specifies whether to allow disk upload.
         self.disk_redirection_upload = disk_redirection_upload
-        # Specifies whether to record keyboard input. Valid values:
+        # The keyboard recording configuration. Valid values:
         # 
-        # - Enable
-        # 
-        # - Disable
-        # 
-        # > The default value is Disable.
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        # > If this parameter is not specified, the default value is Disable.
         self.record_keyboard = record_keyboard
 
     def validate(self):

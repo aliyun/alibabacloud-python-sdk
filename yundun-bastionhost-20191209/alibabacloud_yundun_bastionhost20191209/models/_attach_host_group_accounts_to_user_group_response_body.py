@@ -15,7 +15,7 @@ class AttachHostGroupAccountsToUserGroupResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result of the call.
+        # The results of the call.
         self.results = results
 
     def validate(self):
@@ -61,23 +61,18 @@ class AttachHostGroupAccountsToUserGroupResponseBodyResults(DaraModel):
         message: str = None,
         user_group_id: str = None,
     ):
-        # The return code that indicates whether the call was successful. Valid values:
-        # 
-        # - **OK**: The call was successful.
-        # 
+        # The result code of the call. Valid values:
+        # - **OK**: The call is successful.
         # - **UNEXPECTED**: An unknown error occurred.
-        # 
         # - **INVALID_ARGUMENT**: A request parameter is invalid.
-        # 
-        # - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # 
-        # - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # - **OBJECT_NOT_FOUND**: The object on which you want to perform the operation does not exist.
+        # - **OBJECT_AlREADY_EXISTS**: The object on which you want to perform the operation already exists.
         self.code = code
-        # The result of authorizing the user group to manage the specified host accounts.
+        # The results returned for granting the user group access to the host accounts.
         self.host_account_names = host_account_names
         # The ID of the host group.
         self.host_group_id = host_group_id
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated and can be ignored.
         self.message = message
         # The ID of the user group.
         self.user_group_id = user_group_id
@@ -141,21 +136,16 @@ class AttachHostGroupAccountsToUserGroupResponseBodyResultsHostAccountNames(Dara
         host_account_name: str = None,
         message: str = None,
     ):
-        # The return code that indicates whether the user group was authorized to manage the specified host account. Valid values:
-        # 
-        # - **OK**: The call was successful.
-        # 
+        # The result code returned for granting the user group access to the host accounts. Valid values:
+        # - **OK**: The call is successful.
         # - **UNEXPECTED**: An unknown error occurred.
-        # 
         # - **INVALID_ARGUMENT**: A request parameter is invalid.
-        # 
-        # - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # 
-        # - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # - **OBJECT_NOT_FOUND**: The object on which you want to perform the operation does not exist.
+        # - **OBJECT_AlREADY_EXISTS**: The object on which you want to perform the operation already exists.
         self.code = code
         # The name of the host account.
         self.host_account_name = host_account_name
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated and can be ignored.
         self.message = message
 
     def validate(self):

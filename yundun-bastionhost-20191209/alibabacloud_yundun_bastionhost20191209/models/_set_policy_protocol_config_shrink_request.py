@@ -9,28 +9,29 @@ class SetPolicyProtocolConfigShrinkRequest(DaraModel):
         self,
         instance_id: str = None,
         policy_id: str = None,
+        project_id: int = None,
         protocol_config_shrink: str = None,
         region_id: str = None,
     ):
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+        # The instance ID of the bastion host.
+        # > You can invoke [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the control policy that you want to modify.
+        # The ID of the control policy to modify.
         # 
-        # > Call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain the policy ID.
+        # > You can call [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) to obtain this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The project ID.
+        self.project_id = project_id
         # The protocol control configuration.
         # 
         # This parameter is required.
         self.protocol_config_shrink = protocol_config_shrink
-        # The ID of the region where the Bastionhost instance resides.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the bastion host.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -47,6 +48,9 @@ class SetPolicyProtocolConfigShrinkRequest(DaraModel):
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.protocol_config_shrink is not None:
             result['ProtocolConfig'] = self.protocol_config_shrink
 
@@ -62,6 +66,9 @@ class SetPolicyProtocolConfigShrinkRequest(DaraModel):
 
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('ProtocolConfig') is not None:
             self.protocol_config_shrink = m.get('ProtocolConfig')

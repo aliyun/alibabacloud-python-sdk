@@ -16,9 +16,9 @@ class ListPoliciesResponseBody(DaraModel):
     ):
         # The control policies.
         self.policies = policies
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of control policies that are returned.
+        # The total number of control policies returned.
         self.total_count = total_count
 
     def validate(self):
@@ -69,11 +69,11 @@ class ListPoliciesResponseBodyPolicies(DaraModel):
         policy_name: str = None,
         priority: int = None,
     ):
-        # The remarks of the control policy.
+        # The comment of the control policy.
         self.comment = comment
-        # The control policy ID.
+        # The ID of the control policy.
         self.policy_id = policy_id
-        # The name of the control policy.
+        # The Policy Name of the control policy.
         self.policy_name = policy_name
         # The priority of the control policy. A smaller value indicates a higher priority.
         self.priority = priority

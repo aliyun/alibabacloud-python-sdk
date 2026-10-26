@@ -11,9 +11,9 @@ class GetUserGroupResponseBody(DaraModel):
         request_id: str = None,
         user_group: main_models.GetUserGroupResponseBodyUserGroup = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The details of the user group returned.
+        # The details of the user group.
         self.user_group = user_group
 
     def validate(self):
@@ -53,7 +53,7 @@ class GetUserGroupResponseBodyUserGroup(DaraModel):
     ):
         # The description of the user group.
         self.comment = comment
-        # The ID of the group.
+        # The ID of the user group.
         self.user_group_id = user_group_id
         # The name of the user group.
         self.user_group_name = user_group_name

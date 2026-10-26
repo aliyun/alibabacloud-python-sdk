@@ -15,11 +15,11 @@ class ListInstanceRdMembersResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The value of MaxResults in the request. If you did not specify MaxResults, the default value is returned.
+        # The maximum number of entries returned per request. If a valid MaxResults value is specified in the request parameter, the specified value is returned. Otherwise, the default value is returned.
         self.max_results = max_results
-        # A list of member accounts.
+        # The list of member accounts.
         self.members = members
-        # The token for the next page of results. If the response is truncated, this parameter is returned. Use this token in your next request to retrieve the next page. If this parameter is empty, all results have been returned.
+        # The token for the next request, which is used for paging. Specify this value in the NextToken request parameter for the next paged query. If this field is empty in the response, no more data is available.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
@@ -75,7 +75,7 @@ class ListInstanceRdMembersResponseBodyMembers(DaraModel):
         self,
         member_id: str = None,
     ):
-        # The UID of the member account.
+        # The UID of the member accounts.
         self.member_id = member_id
 
     def validate(self):

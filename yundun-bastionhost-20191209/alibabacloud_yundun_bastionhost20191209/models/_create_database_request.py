@@ -18,6 +18,7 @@ class CreateDatabaseRequest(DaraModel):
         instance_member_id: int = None,
         network_domain_id: str = None,
         polar_dbendpoint_type: str = None,
+        project_id: int = None,
         region_id: str = None,
         source: str = None,
         source_instance_id: str = None,
@@ -25,76 +26,62 @@ class CreateDatabaseRequest(DaraModel):
     ):
         # The address type of the new database. Valid values:
         # 
-        # - Public: a public endpoint
-        # 
-        # - Private: a private endpoint
+        # - Public: public endpoint.
+        # - Private: private endpoint.
         # 
         # This parameter is required.
         self.active_address_type = active_address_type
-        # The comments on the new database. The comments can be up to 500 characters in length.
+        # The description of the new database. The value can be up to 500 characters in length.
         self.comment = comment
-        # The name of the new database instance. This parameter is required if you set Source to **Local**.
+        # The name of the new database instance. This parameter is required if Source is set to **Local**.
         self.database_name = database_name
-        # The port used to connect to the database. This parameter is required if you set Source to **Local**.
+        # The port of the database. This parameter is required if Source is set to **Local**.
         self.database_port = database_port
-        # The private endpoint of the database. You can use an IPv4 address or a domain name.
-        # 
-        # > This parameter is required if you set ActiveAddressType to Private.
+        # The private endpoint. IPv4 addresses and domain names are supported.
+        # > This parameter is required if ActiveAddressType is set to Private.
         self.database_private_address = database_private_address
-        # The public endpoint of the database. You can use an IPv4 address or a domain name.
-        # 
-        # > This parameter is required if you set ActiveAddressType to Public.
+        # The public endpoint. IPv4 addresses and domain names are supported.
+        # > This parameter is required if ActiveAddressType is set to Public.
         self.database_public_address = database_public_address
         # The type of the database. Valid values:
         # 
         # - **MySQL**
-        # 
         # - **Oracle**
-        # 
         # - **PostgreSQL**
-        # 
         # - **SQLServer**
         # 
         # This parameter is required.
         self.database_type = database_type
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The ID of the bastion host instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the Alibaba Cloud account to which the new RDS or PolarDB database instance belongs.
+        # The ID of the Alibaba Cloud account to which the new ApsaraDB RDS or PolarDB database instance belongs.
         self.instance_member_id = instance_member_id
-        # The ID of the network domain for the new database.
-        # 
-        # > Call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to obtain this parameter.
+        # The ID of the network domain to which the new database belongs.
+        # > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to obtain this parameter.
         self.network_domain_id = network_domain_id
-        # This parameter is required if you set Source to PolarDB. This parameter specifies the endpoint type of the PolarDB database. Valid values:
-        # 
-        # - Cluster: a cluster endpoint
-        # 
-        # - Primary: a primary endpoint
+        # The endpoint type of the PolarDB cluster. This parameter is required if Source is set to PolarDB. Valid values:
+        # - Cluster: cluster endpoint.
+        # - Primary: primary endpoint.
         self.polar_dbendpoint_type = polar_dbendpoint_type
-        # The region ID of the Bastionhost instance.
-        # 
-        # > For a list of region IDs and their corresponding region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the bastion host.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The source of the new database. Valid values:
-        # 
-        # - Local: a local database instance
-        # 
-        # - Rds: an RDS database instance
-        # 
-        # - PolarDB: a PolarDB database instance
+        # - Local: self-managed database instance.
+        # - Rds: ApsaraDB RDS instance.
+        # - PolarDB: PolarDB cluster.
         # 
         # This parameter is required.
         self.source = source
-        # The ID of the database instance.
-        # 
-        # > This parameter is required if you set **Source** to **Rds** or **PolarDB**.
+        # The instance ID of the new database.  
+        # > This parameter is required if **Source** is set to **Rds** or **PolarDB**.
         self.source_instance_id = source_instance_id
-        # The region ID of the database instance.
-        # 
+        # The region ID of the new database instance.
         # > This parameter is required if **Source** is set to **Rds** or **PolarDB**.
         self.source_instance_region_id = source_instance_region_id
 
@@ -138,6 +125,9 @@ class CreateDatabaseRequest(DaraModel):
 
         if self.polar_dbendpoint_type is not None:
             result['PolarDBEndpointType'] = self.polar_dbendpoint_type
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -187,6 +177,9 @@ class CreateDatabaseRequest(DaraModel):
 
         if m.get('PolarDBEndpointType') is not None:
             self.polar_dbendpoint_type = m.get('PolarDBEndpointType')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -14,60 +14,51 @@ class CreateOperationTicketRequest(DaraModel):
         effect_start_time: int = None,
         instance_id: str = None,
         is_one_time_effect: bool = None,
+        project_id: int = None,
         protocol_name: str = None,
         region_id: str = None,
     ):
-        # The comments on the ticket.
+        # The remarks of the request.
         # 
         # This parameter is required.
         self.approve_comment = approve_comment
-        # The logon name of the asset account for the O\\&M request.
+        # The logon name of the asset account for which you want to request O&M access.
         # 
         # This parameter is required.
         self.asset_account_name = asset_account_name
-        # The ID of the asset for which to request O\\&M.
-        # 
-        # > Call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) and [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operations to obtain this parameter.
+        # The ID of the asset for which you want to request O&M access.
+        # > You can call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) or [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.asset_id = asset_id
-        # The end time of the validity period for the logon request. This value is a UNIX timestamp. Unit: seconds.
-        # 
-        # > The end time must be later than the start time.
+        # The end time of the validity period for the logon request. Unit: seconds. The value is a UNIX timestamp.
+        # > The end time of the validity period must be later than the start time.
         self.effect_end_time = effect_end_time
-        # The start time of the validity period for the logon request. This value is a UNIX timestamp. Unit: seconds.
+        # The start time of the validity period for the logon request. Unit: seconds. The value is a UNIX timestamp.
         self.effect_start_time = effect_start_time
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The instance ID of the bastion host.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether the ticket is valid for a single logon. Valid values:
-        # 
-        # - **true**: The ticket is valid for a single logon.
-        # 
-        # - **false**: The ticket is valid for multiple logons within the validity period.
+        # The number of logon times allowed. Valid values:
+        # - **true**: Only one logon is allowed within the validity period.
+        # - **false**: Unlimited logons are allowed within the validity period.
         self.is_one_time_effect = is_one_time_effect
-        # The name of the protocol for the O\\&M request. Valid values:
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The name of the protocol for which you want to request O&M access. Valid values:
         # - SSH
-        # 
         # - RDP
-        # 
         # - MySQL
-        # 
         # - PostgreSQL
-        # 
         # - Oracle
-        # 
         # - SQLServer
         # 
         # This parameter is required.
         self.protocol_name = protocol_name
-        # The region ID of the Bastionhost instance.
-        # 
-        # > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the bastion host.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -99,6 +90,9 @@ class CreateOperationTicketRequest(DaraModel):
         if self.is_one_time_effect is not None:
             result['IsOneTimeEffect'] = self.is_one_time_effect
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.protocol_name is not None:
             result['ProtocolName'] = self.protocol_name
 
@@ -129,6 +123,9 @@ class CreateOperationTicketRequest(DaraModel):
 
         if m.get('IsOneTimeEffect') is not None:
             self.is_one_time_effect = m.get('IsOneTimeEffect')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('ProtocolName') is not None:
             self.protocol_name = m.get('ProtocolName')

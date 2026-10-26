@@ -14,9 +14,9 @@ class ListHostGroupsForUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The host groups returned.
+        # The list of host groups returned.
         self.host_groups = host_groups
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of host groups returned.
         self.total_count = total_count
@@ -68,9 +68,9 @@ class ListHostGroupsForUserResponseBodyHostGroups(DaraModel):
         host_group_id: str = None,
         host_group_name: str = None,
     ):
-        # The remarks of the host group.
+        # The description of the host group.
         self.comment = comment
-        # The host group ID.
+        # The ID of the host group.
         self.host_group_id = host_group_id
         # The name of the host group.
         self.host_group_name = host_group_name

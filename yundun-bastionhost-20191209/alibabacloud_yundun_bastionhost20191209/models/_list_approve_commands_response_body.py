@@ -14,11 +14,11 @@ class ListApproveCommandsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The commands to be reviewed.
+        # The list of commands.
         self.approve_commands = approve_commands
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The total number of commands to be reviewed.
+        # The total number of commands pending approval.
         self.total_count = total_count
 
     def validate(self):
@@ -76,27 +76,28 @@ class ListApproveCommandsResponseBodyApproveCommands(DaraModel):
         session_id: str = None,
         state: str = None,
     ):
-        # The ID of the command to be reviewed.
+        # The ID of the command pending approval.
         self.approve_command_id = approve_command_id
-        # The username of the asset account that is used for O\\&M.
+        # The name of the asset account.
         self.asset_account_name = asset_account_name
-        # The IP address of the asset for O\\&M.
+        # The IP address of the O&M asset.
         self.asset_ip = asset_ip
-        # The name of the asset.
+        # The name of the O&M asset.
         self.asset_name = asset_name
         # The source IP address from which the application is submitted.
         self.client_ip = client_ip
-        # The Bastionhost user who submitted the O\\&M application.
+        # The Bastionhost user who submitted the application.
         self.client_user = client_user
-        # The command to be reviewed.
+        # The command pending approval.
         self.command = command
-        # The time when the O\\&M application was submitted. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the application was submitted. Unit: seconds. The value is a UNIX timestamp.
         self.create_time = create_time
-        # The O\\&M protocol.
+        # The name of the O&M protocol.
         self.protocol_name = protocol_name
-        # The ID of the O\\&M session that triggered the review.
+        # The ID of the O&M session that triggered the approval.
         self.session_id = session_id
-        # The status of the review. Valid values: **Wait**: The command is pending review.
+        # The approval status.
+        # **Wait**: Pending approval.
         self.state = state
 
     def validate(self):

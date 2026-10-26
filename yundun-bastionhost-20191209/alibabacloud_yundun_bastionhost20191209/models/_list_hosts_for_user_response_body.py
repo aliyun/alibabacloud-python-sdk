@@ -14,9 +14,9 @@ class ListHostsForUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The hosts returned.
+        # The list of hosts returned.
         self.hosts = hosts
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of hosts returned.
         self.total_count = total_count
@@ -71,12 +71,12 @@ class ListHostsForUserResponseBodyHosts(DaraModel):
         host_private_address: str = None,
         host_public_address: str = None,
         ostype: str = None,
+        project_id: str = None,
+        project_name: str = None,
     ):
-        # The endpoint type of the host. Valid values:
-        # 
-        # - **Public**: public endpoint
-        # 
-        # - **Private**: internal endpoint
+        # The address type of the host. Valid values:
+        # - **Public**: Public network address.
+        # - **Private**: Private network address.
         self.active_address_type = active_address_type
         # The description of the host.
         self.comment = comment
@@ -84,16 +84,18 @@ class ListHostsForUserResponseBodyHosts(DaraModel):
         self.host_id = host_id
         # The name of the host.
         self.host_name = host_name
-        # The internal endpoint of the host. The value is a domain name or an IP address.
+        # The private network address of the host, which can be a domain name or an IP address.
         self.host_private_address = host_private_address
-        # The public endpoint of the host. The value is a domain name or an IP address.
+        # The public network address of the host, which can be a domain name or an IP address.
         self.host_public_address = host_public_address
-        # The operating system of the host. Valid values:
-        # 
+        # The operating system type of the host. Valid values:
         # - **Linux**
-        # 
         # - **Windows**
         self.ostype = ostype
+        # The project ID.
+        self.project_id = project_id
+        # The name of the project.
+        self.project_name = project_name
 
     def validate(self):
         pass
@@ -124,6 +126,12 @@ class ListHostsForUserResponseBodyHosts(DaraModel):
         if self.ostype is not None:
             result['OSType'] = self.ostype
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -148,6 +156,12 @@ class ListHostsForUserResponseBodyHosts(DaraModel):
 
         if m.get('OSType') is not None:
             self.ostype = m.get('OSType')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
 
         return self
 

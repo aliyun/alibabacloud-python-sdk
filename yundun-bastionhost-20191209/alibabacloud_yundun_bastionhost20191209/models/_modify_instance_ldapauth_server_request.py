@@ -22,51 +22,48 @@ class ModifyInstanceLDAPAuthServerRequest(DaraModel):
         server: str = None,
         standby_server: str = None,
     ):
-        # The username of the account that is used for the LDAP server.
+        # The account of the server.
         # 
         # This parameter is required.
         self.account = account
-        # The Base distinguished name (DN).
+        # The base distinguished name (Base DN).
         # 
         # This parameter is required.
         self.base_dn = base_dn
-        # The field that is used to indicate the email address of a user on the LDAP server.
+        # The server attribute name that corresponds to the user email address.
         self.email_mapping = email_mapping
-        # The condition that is used to filter users.
+        # The filter condition for users.
         self.filter = filter
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The instance ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the parameter value.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to support SSL. Valid values:
+        # Specifies whether SSL is supported. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.is_ssl = is_ssl
-        # The field that is used to indicate the logon name of a user on the LDAP server.
+        # The server attribute name that corresponds to the user logon name.
         self.login_name_mapping = login_name_mapping
-        # The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        # The server attribute name that corresponds to the user mobile phone number.
         self.mobile_mapping = mobile_mapping
-        # The field that is used to indicate the name of a user on the LDAP server.
+        # The server attribute name that corresponds to the username.
         self.name_mapping = name_mapping
-        # The password of the account that is used for the LDAP server. You must configure a password when you configure LDAP authentication. If you leave this parameter empty when you modify the settings of LDAP authentication, the current password is used.
+        # The password of the server account. This parameter is required when you add an LDAP authentication server. When you modify the information of an LDAP authentication server, if you do not specify this parameter, the current password is retained.
         self.password = password
-        # The port that is used to access the LDAP server.
+        # The port used to access the server.
         # 
         # This parameter is required.
         self.port = port
-        # The region ID of the bastion host.
-        # 
+        # The region ID of the Bastionhost instance.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The address of the LDAP server.
+        # The address of the server.
         # 
         # This parameter is required.
         self.server = server
-        # The address of the secondary LDAP server.
+        # The address of the standby server.
         self.standby_server = standby_server
 
     def validate(self):

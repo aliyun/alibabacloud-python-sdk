@@ -14,11 +14,11 @@ class ListHostShareKeysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the shared keys.
+        # The host shared keys.
         self.host_share_keys = host_share_keys
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of the shared keys.
+        # The total number of host shared keys returned.
         self.total_count = total_count
 
     def validate(self):
@@ -70,13 +70,13 @@ class ListHostShareKeysResponseBodyHostShareKeys(DaraModel):
         last_modify_key_at: int = None,
         private_key_finger_print: str = None,
     ):
-        # The number of the associated host accounts.
+        # The number of associated host accounts.
         self.host_account_count = host_account_count
-        # The shared key ID.
+        # The ID of the host shared key.
         self.host_share_key_id = host_share_key_id
-        # The name of the shared key.
+        # The name of the host shared key.
         self.host_share_key_name = host_share_key_name
-        # The time when the shared key was last modified. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the key was last modified. The value is a UNIX timestamp in seconds.
         self.last_modify_key_at = last_modify_key_at
         # The fingerprint of the private key.
         self.private_key_finger_print = private_key_finger_print

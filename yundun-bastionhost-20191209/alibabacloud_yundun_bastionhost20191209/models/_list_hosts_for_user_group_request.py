@@ -14,44 +14,40 @@ class ListHostsForUserGroupRequest(DaraModel):
         ostype: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # The address of the host. You can set this parameter to a domain name or an IP address. Exact match is supported.
+        # The address of the host to query. You can use a domain name or an IP address. Only exact match is supported.
         self.host_address = host_address
-        # The name of the host. Exact match is supported.
+        # The name of the host to query. Only exact match is supported.
         self.host_name = host_name
-        # The ID of the bastion host instance that contains the user group.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+        # The ID of the Bastionhost instance to which the user group belongs.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to query for authorized or unauthorized hosts. Valid values:
-        # 
-        # - **Authorized** (default)
-        # 
-        # - **Unauthorized**
+        # The mode of the host list to query. Valid values:
+        # - **Authorized**: authorized (default)
+        # - **Unauthorized**: unauthorized
         self.mode = mode
-        # The operating system of the host. Valid values:
-        # 
+        # The operating system type of the host to query. Valid values:
         # - **Linux**
-        # 
         # - **Windows**
         self.ostype = ostype
-        # The page number of the page to return. Default value: 1.
+        # The page number of the current page in paging. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.<br>Maximum value: 100. Default value: 20.<br>
-        # 
-        # > We recommend that you specify this parameter.
+        # The maximum number of entries to return on each page in paging.  
+        # Maximum value: 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
+        # > Specify a value for this parameter.
         self.page_size = page_size
-        # The ID of the region where the bastion host instance is located.
-        # 
-        # > For more information about regions and their corresponding IDs, see [regions and availability zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance to which the user group belongs.
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the user group whose hosts you want to list.
-        # 
-        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain the user group ID.
+        # The ID of the user group whose authorized hosts you want to query.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.user_group_id = user_group_id
@@ -85,6 +81,9 @@ class ListHostsForUserGroupRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -115,6 +114,9 @@ class ListHostsForUserGroupRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -14,28 +14,26 @@ class ListOperationHostAccountsRequest(DaraModel):
         page_size: str = None,
         region_id: str = None,
     ):
-        # The name of the host account to query. Only exact match is supported.
+        # The name of the host account that you want to query. Only exact match is supported.
         self.host_account_name = host_account_name
-        # The ID of the host whose accounts you want to query.
-        # 
-        # > You can call the [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operation to query the host ID.
+        # The ID of the host for which you want to query host accounts.
+        # > You can call the [ListOperationHosts](https://help.aliyun.com/document_detail/2758857.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.host_id = host_id
-        # The bastion host ID.
+        # The instance ID of the Bastionhost instance.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: **1**.
+        # The page number of the current page when paging in a paged query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.<br> Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page when paging in a paged query.  
+        # The maximum value of the PageSize parameter is 100. Default value: 20. If you leave this parameter empty, 20 entries are returned by default.
+        # > Specify a value for the PageSize parameter.
         self.page_size = page_size
-        # The region ID of the bastion host.
-        # 
+        # The region ID of the Bastionhost instance.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 

@@ -9,17 +9,17 @@ class GetInstanceADAuthServerRequest(DaraModel):
         self,
         instance_id: str = None,
         region_id: str = None,
+        user_source_id: str = None,
     ):
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
-        # 
+        # The region ID of the Bastionhost instance.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        self.user_source_id = user_source_id
 
     def validate(self):
         pass
@@ -35,6 +35,9 @@ class GetInstanceADAuthServerRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.user_source_id is not None:
+            result['UserSourceId'] = self.user_source_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -44,6 +47,9 @@ class GetInstanceADAuthServerRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('UserSourceId') is not None:
+            self.user_source_id = m.get('UserSourceId')
 
         return self
 

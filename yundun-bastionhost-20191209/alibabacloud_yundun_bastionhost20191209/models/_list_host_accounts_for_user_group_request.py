@@ -12,36 +12,35 @@ class ListHostAccountsForUserGroupRequest(DaraModel):
         instance_id: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # The name of the host account that you want to query. Exact match is supported.
+        # The name of the host account to query. Exact match is supported.
         self.host_account_name = host_account_name
-        # The ID of the host to query.
-        # 
-        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # The ID of the host for which you want to query the host accounts.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain the parameter value.
         # 
         # This parameter is required.
         self.host_id = host_id
-        # The ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The instance ID of the Bastionhost instance to which the user group belongs. You can query the list of host accounts with authorization for this user group.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the parameter value.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The page number for paging in a paged query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.<br> Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page for paging in a paged query.  
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned.
+        # > Do not leave this parameter empty.
         self.page_size = page_size
-        # The region ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance that contains the user group for which you want to query the list of authorized host accounts.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the user group for which you want to query authorized host accounts.
-        # 
-        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # The ID of the user group whose authorized host accounts you want to query.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain the parameter value.
         # 
         # This parameter is required.
         self.user_group_id = user_group_id
@@ -69,6 +68,9 @@ class ListHostAccountsForUserGroupRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -93,6 +95,9 @@ class ListHostAccountsForUserGroupRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

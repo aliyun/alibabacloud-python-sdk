@@ -8,29 +8,28 @@ class RemoveUsersFromGroupRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        project_id: int = None,
         region_id: str = None,
         user_group_id: str = None,
         user_ids: str = None,
     ):
-        # The ID of the bastion host for which you want to remove users from the user group.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The ID of the Bastionhost instance to which the user group from which you want to remove users belongs.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the value of this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to remove users from the user group.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance to which the user group from which you want to remove users belongs.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user group from which you want to remove users.
-        # 
-        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the value of this parameter.
         # 
         # This parameter is required.
         self.user_group_id = user_group_id
-        # The ID of the user who you want to remove. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
-        # 
-        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the IDs of users.
+        # The IDs of the users that you want to remove. The value of this parameter is a JSON string. You can specify up to 100 user IDs. Separate multiple IDs with commas (,).
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query user IDs.
         # 
         # This parameter is required.
         self.user_ids = user_ids
@@ -45,6 +44,9 @@ class RemoveUsersFromGroupRequest(DaraModel):
             result = _map
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -61,6 +63,9 @@ class RemoveUsersFromGroupRequest(DaraModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

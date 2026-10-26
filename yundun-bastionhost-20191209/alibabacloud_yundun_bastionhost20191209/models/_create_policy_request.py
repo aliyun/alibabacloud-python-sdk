@@ -11,29 +11,29 @@ class CreatePolicyRequest(DaraModel):
         instance_id: str = None,
         policy_name: str = None,
         priority: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The remarks of the control policy. The remarks can be up to 500 characters in length.
+        # The description of the control policy. Maximum length: 500 characters.
         self.comment = comment
-        # The ID of the bastion host for which you want to create a control policy.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The ID of the bastion host instance for which you want to create a control policy.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the control policy. The name can be up to 128 characters in length.
+        # The name of the control policy. Maximum length: 128 characters.
         # 
         # This parameter is required.
         self.policy_name = policy_name
         # The priority of the control policy.
         # 
-        # - Valid values: 1 to 100. The default value is 1, which indicates the highest priority.
-        # 
-        # - You can configure the same priority for different control policies. If multiple control policies have the same priority, the control policy that is created at the latest point in time has the highest priority. If a command control policy and a command approval policy contain the same commands, the commands are prioritized in descending order: reject, allow, and approve. In access control policies, a blacklist has a higher priority than a whitelist.
+        # - Valid values: 1 to 100. Default value: 1, which indicates the policy priority.
+        # - Different control policies can have the same priority. If multiple control policies have the same priority, the most recently created policy has the policy priority. Within a single policy, if the same command is configured in both command control and command approval, the priority from highest to lowest is: reject, allow, and approval.
         self.priority = priority
+        # The project ID.
+        self.project_id = project_id
         # The region ID of the bastion host for which you want to create a control policy.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -56,6 +56,9 @@ class CreatePolicyRequest(DaraModel):
         if self.priority is not None:
             result['Priority'] = self.priority
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -74,6 +77,9 @@ class CreatePolicyRequest(DaraModel):
 
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -16,9 +16,9 @@ class ListRulesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The authorization rules that are returned.
+        # The authorization rules returned.
         self.rules = rules
-        # The total number of authorization rules that are returned.
+        # The total number of authorization rules returned.
         self.total_count = total_count
 
     def validate(self):
@@ -71,21 +71,19 @@ class ListRulesResponseBodyRules(DaraModel):
         rule_name: str = None,
         rule_state: str = None,
     ):
-        # The remarks of the authorization rule.
+        # The description of the authorization rule.
         self.comment = comment
-        # The end time of the validity period of the authorization rule. The value is a timestamp. Unit: seconds.
+        # The end time of the validity period for the authorization rule. The value is a UNIX timestamp in seconds.
         self.effective_end_time = effective_end_time
-        # The start time of the validity period of the authorization rule. The value is a timestamp. Unit: seconds.
+        # The start time of the validity period for the authorization rule. The value is a UNIX timestamp in seconds.
         self.effective_start_time = effective_start_time
-        # The authorization rule ID.
+        # The ID of the authorization rule.
         self.rule_id = rule_id
         # The name of the authorization rule.
         self.rule_name = rule_name
-        # The state of the authorization rule.
-        # 
-        # - **Enabled**
-        # 
-        # - **Disabled**
+        # The state of the authorization rule. Valid values:
+        # - **Enabled**: Normal.
+        # - **Disabled**: Disabled.
         self.rule_state = rule_state
 
     def validate(self):

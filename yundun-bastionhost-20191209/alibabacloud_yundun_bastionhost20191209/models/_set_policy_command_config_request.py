@@ -13,6 +13,7 @@ class SetPolicyCommandConfigRequest(DaraModel):
         command_config: main_models.SetPolicyCommandConfigRequestCommandConfig = None,
         instance_id: str = None,
         policy_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
         # The command control settings.
@@ -21,20 +22,20 @@ class SetPolicyCommandConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.command_config = command_config
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The instance ID of the Bastionhost instance.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the value of this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The ID of the control policy that you want to modify.
         # 
-        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the value of this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The region ID of the bastion host.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
@@ -56,6 +57,9 @@ class SetPolicyCommandConfigRequest(DaraModel):
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -73,6 +77,9 @@ class SetPolicyCommandConfigRequest(DaraModel):
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
 
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
@@ -86,7 +93,7 @@ class SetPolicyCommandConfigRequestCommandConfig(DaraModel):
     ):
         # The command approval settings.
         # 
-        # > A command approval policy is used to approve the commands that are excluded from a whitelist or blacklist specified in a command control policy. The command control policy takes precedence over the command approval policy in validation.
+        # > Command approval applies to commands that are not subject to command control (whitelist or blacklist). Command control policies take precedence over command approval.
         self.approval = approval
         # The command control settings.
         # 
@@ -130,17 +137,16 @@ class SetPolicyCommandConfigRequestCommandConfigDeny(DaraModel):
         acl_type: str = None,
         commands: List[str] = None,
     ):
-        # The type of command control. Valid values:
+        # The command control type. Valid values:
         # 
-        # - **black**: blacklist mode.
-        # 
-        # - **white**: whitelist mode.
+        # - **black**: blacklist mode
+        # - **white**: whitelist mode
         # 
         # This parameter is required.
         self.acl_type = acl_type
-        # The commands to be controlled.
+        # The list of commands.
         # 
-        # > This parameter is required if AclType is set to white.
+        # > If AclType is set to white, Commands is required.
         self.commands = commands
 
     def validate(self):
@@ -174,7 +180,7 @@ class SetPolicyCommandConfigRequestCommandConfigApproval(DaraModel):
         self,
         commands: List[str] = None,
     ):
-        # The commands that can be run only after approval.
+        # The list of commands that require approval.
         self.commands = commands
 
     def validate(self):

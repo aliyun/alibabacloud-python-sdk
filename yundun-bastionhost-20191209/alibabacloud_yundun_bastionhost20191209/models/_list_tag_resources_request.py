@@ -17,22 +17,23 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token to start the next query.
+        # The token for the next query.
         self.next_token = next_token
         # The region ID of the Bastionhost instance.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The resource ID.
         self.resource_id = resource_id
-        # The type of resource.
+        # The resource type definition.
         # 
         # The only valid value is INSTANCE, which indicates a Bastionhost instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tags.
+        # The tags.
         self.tag = tag
 
     def validate(self):

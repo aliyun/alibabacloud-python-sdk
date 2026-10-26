@@ -14,45 +14,40 @@ class ListHostsForUserRequest(DaraModel):
         ostype: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
         user_id: str = None,
     ):
-        # The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+        # The address of the host to query. You can use a domain name or an IP address. Only exact match is supported.
         self.host_address = host_address
-        # The name of the host that you want to query. Only exact match is supported.
+        # The name of the host to query. Only exact match is supported.
         self.host_name = host_name
-        # The ID of the bastion host on which you want to query the hosts that the user is authorized or not authorized to manage.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The ID of the Bastionhost instance to which the user belongs.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies the category of the hosts that you want to query. Valid values:
-        # 
-        # - **Authorized**: queries the hosts that the user is authorized to manage. This is the default value.
-        # 
-        # - **Unauthorized**: queries the hosts that the user is not authorized to manage.
+        # The mode of the host list to query. Valid values:
+        # - **Authorized**: Authorized hosts. This is the default value.
+        # - **Unauthorized**: Unauthorized hosts.
         self.mode = mode
-        # The operating system of the host that you want to query. Valid values:
-        # 
+        # The operating system type of the host to query. Valid values:
         # - **Linux**
-        # 
         # - **Windows**
         self.ostype = ostype
-        # The number of the page. Default value: 1.
+        # The page number of the current page in a paging query. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.<br>
-        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page for a paging query.  
+        # The maximum value of the PageSize parameter is 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
+        # > Specify a value for the PageSize parameter.
         self.page_size = page_size
-        # The region ID of the bastion host on which you want to query the hosts that the user is authorized or not authorized to manage.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance to which the user belongs.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the user.
-        # 
-        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the ID of the user.
+        # The ID of the user to query.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -86,6 +81,9 @@ class ListHostsForUserRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -116,6 +114,9 @@ class ListHostsForUserRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

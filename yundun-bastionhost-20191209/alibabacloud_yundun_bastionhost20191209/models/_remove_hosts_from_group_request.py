@@ -10,28 +10,27 @@ class RemoveHostsFromGroupRequest(DaraModel):
         host_group_id: str = None,
         host_ids: str = None,
         instance_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the asset group from which you want to remove hosts.
-        # 
-        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
+        # The ID of the host group from which you want to remove hosts.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the host group ID.
         # 
         # This parameter is required.
         self.host_group_id = host_group_id
-        # The IDs of the hosts that you want to remove from the host group. Specify a JSON string. You can specify up to 100 host IDs.
-        # 
+        # The IDs of the hosts that you want to remove. The value is a JSON string. You can specify up to 100 host IDs.
         # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs.
         # 
         # This parameter is required.
         self.host_ids = host_ids
-        # The ID of the bastion host whose asset group you want to manage.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The ID of the Bastionhost instance to which the host group from which you want to remove hosts belongs.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host whose asset group you want to manage.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance to which the host group from which you want to remove hosts belongs.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
@@ -52,6 +51,9 @@ class RemoveHostsFromGroupRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -67,6 +69,9 @@ class RemoveHostsFromGroupRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

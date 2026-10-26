@@ -14,11 +14,11 @@ class ListHostAccountsForUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the queried host accounts.
+        # The host accounts returned.
         self.host_accounts = host_accounts
         # The ID of the request.
         self.request_id = request_id
-        # The total number of host accounts that were queried.
+        # The total number of host accounts returned.
         self.total_count = total_count
 
     def validate(self):
@@ -66,6 +66,7 @@ class ListHostAccountsForUserResponseBodyHostAccounts(DaraModel):
         self,
         host_account_id: str = None,
         host_account_name: str = None,
+        host_account_type: str = None,
         host_id: str = None,
         is_authorized: bool = None,
         protocol_name: str = None,
@@ -74,18 +75,16 @@ class ListHostAccountsForUserResponseBodyHostAccounts(DaraModel):
         self.host_account_id = host_account_id
         # The name of the host account.
         self.host_account_name = host_account_name
-        # The ID of the host for which the host accounts were queried.
+        # The type of the host account.
+        self.host_account_type = host_account_type
+        # The ID of the host to which the host account belongs.
         self.host_id = host_id
-        # Indicates whether the user is authorized to manage the host account. Valid values:
-        # 
-        # - **true**: yes
-        # 
-        # - **false**: no
+        # Indicates whether the host account is authorized for the current user. Valid values:
+        # - **true**: authorized
+        # - **false**: unauthorized
         self.is_authorized = is_authorized
-        # The protocol that is used by the host. Valid values:
-        # 
+        # The protocol of the host account. Valid values:
         # - **SSH**
-        # 
         # - **RDP**
         self.protocol_name = protocol_name
 
@@ -102,6 +101,9 @@ class ListHostAccountsForUserResponseBodyHostAccounts(DaraModel):
 
         if self.host_account_name is not None:
             result['HostAccountName'] = self.host_account_name
+
+        if self.host_account_type is not None:
+            result['HostAccountType'] = self.host_account_type
 
         if self.host_id is not None:
             result['HostId'] = self.host_id
@@ -121,6 +123,9 @@ class ListHostAccountsForUserResponseBodyHostAccounts(DaraModel):
 
         if m.get('HostAccountName') is not None:
             self.host_account_name = m.get('HostAccountName')
+
+        if m.get('HostAccountType') is not None:
+            self.host_account_type = m.get('HostAccountType')
 
         if m.get('HostId') is not None:
             self.host_id = m.get('HostId')

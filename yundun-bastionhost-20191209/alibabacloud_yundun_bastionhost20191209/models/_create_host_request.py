@@ -17,73 +17,62 @@ class CreateHostRequest(DaraModel):
         instance_region_id: str = None,
         network_domain_id: str = None,
         ostype: str = None,
+        project_id: int = None,
         region_id: str = None,
         source: str = None,
         source_instance_id: str = None,
     ):
-        # The address type of the host. Valid values:
-        # 
-        # - **Public**: a public address
-        # 
-        # - **Private**: a private address
+        # The address type of the host to create. Valid values:
+        # - **Public**: public address.
+        # - **Private**: private network address.
         # 
         # This parameter is required.
         self.active_address_type = active_address_type
-        # The comment for the host. The comment can be up to 500 characters in length.
+        # The description of the host. The description can be up to 500 characters in length.
         self.comment = comment
-        # The name of the host. The name can be up to 128 characters in length.
+        # The name of the host to create. The name can be up to 128 characters in length.
         # 
         # This parameter is required.
         self.host_name = host_name
-        # The private address of the host. You can use a domain name or an IP address.
-        # 
-        # > This parameter is required when **ActiveAddressType** is set to **Private**.
+        # The private network address of the host to create. You can set this parameter to a domain name or an IP address.
+        # > This parameter is required if **ActiveAddressType** is set to **Private**.
         self.host_private_address = host_private_address
-        # The public address of the host. You can use a domain name or an IP address.
-        # 
-        # > This parameter is required when **ActiveAddressType** is set to **Public**.
+        # The public address of the host to create. You can set this parameter to a domain name or an IP address.
+        # > This parameter is required if **ActiveAddressType** is set to **Public**.
         self.host_public_address = host_public_address
         # The ID of the Bastionhost instance where you want to create the host.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # > You can call [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The ID of the Alibaba Cloud account to which the ECS instance belongs.
         self.instance_member_id = instance_member_id
-        # The region ID of the ECS instance or the host in the dedicated cluster.
-        # 
-        # > This parameter is required when **Source** is set to **Ecs** or **Rds**.
+        # The region ID of the ECS instance or the host in the dedicated cluster.  
+        # > This parameter is required if **Source** is set to **Ecs** or **Rds**.
         self.instance_region_id = instance_region_id
-        # The ID of the network domain to which the host belongs.
-        # 
-        # > Call the [ListNetworkDomains ](https://help.aliyun.com/document_detail/2758827.html)operation to obtain this parameter.
+        # The ID of the network domain to which the host to create belongs.
+        # > You can call [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) to query the network domain ID.
         self.network_domain_id = network_domain_id
-        # The operating system of the host. Valid values:
-        # 
+        # The operating system of the host to create. Valid values:
         # - **Linux**
-        # 
         # - **Windows**
         # 
         # This parameter is required.
         self.ostype = ostype
+        # The project ID.
+        self.project_id = project_id
         # The region ID of the Bastionhost instance where you want to create the host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The source of the host. Valid values:
-        # 
-        # - **Local**: a local host
-        # 
-        # - **Ecs**: an ECS instance
-        # 
-        # - **Rds**: a host in an ApsaraDB RDS dedicated cluster
+        # The source of the host to create. Valid values:
+        # - **Local**: on-premises host.
+        # - **Ecs**: ECS instance.
+        # - **Rds**: host in an ApsaraDB RDS dedicated cluster.
         # 
         # This parameter is required.
         self.source = source
-        # The ID of the ECS instance or the host in the dedicated cluster.
-        # 
-        # > This parameter is required when **Source** is set to **Ecs** or **Rds**.
+        # The instance ID of the ECS instance or the host in the dedicated cluster.  
+        # > This parameter is required if **Source** is set to **Ecs** or **Rds**.
         self.source_instance_id = source_instance_id
 
     def validate(self):
@@ -123,6 +112,9 @@ class CreateHostRequest(DaraModel):
 
         if self.ostype is not None:
             result['OSType'] = self.ostype
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -166,6 +158,9 @@ class CreateHostRequest(DaraModel):
 
         if m.get('OSType') is not None:
             self.ostype = m.get('OSType')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

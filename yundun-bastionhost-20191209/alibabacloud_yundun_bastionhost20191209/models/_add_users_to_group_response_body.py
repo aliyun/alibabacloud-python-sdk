@@ -13,9 +13,9 @@ class AddUsersToGroupResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.AddUsersToGroupResponseBodyResults] = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The result of the call.
+        # The result information of the operation.
         self.results = results
 
     def validate(self):
@@ -60,27 +60,24 @@ class AddUsersToGroupResponseBodyResults(DaraModel):
         user_group_id: str = None,
         user_id: str = None,
     ):
-        # The return code that indicates whether the call was successful. Valid values:
-        # 
-        # - **OK**: The call was successful.
-        # 
+        # The result of the operation. Valid values:
+        # - **OK**: The operation was successful.
         # - **UNEXPECTED**: An unknown error occurred.
+        # - **INVALID_ARGUMENT**: The request parameters are invalid.
         # 
-        # - **INVALID_ARGUMENT**: A request parameter is invalid.
+        #     > Check the request parameters and call the operation again.
         # 
-        # > Make sure that the request parameters are valid and call the operation again.
+        # - **OBJECT_NOT_FOUND**: The specified object does not exist.
         # 
-        # - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+        #     > Check whether the bastion host instance ID exists, whether the host exists, and whether the host ID is correct, and then call the operation again.
         # 
-        # > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
-        # 
-        # - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # - **OBJECT_AlREADY_EXISTS**: The specified object already exists.
         self.code = code
-        # This parameter is deprecated.
+        # This parameter is deprecated and can be ignored.
         self.message = message
-        # The ID of the group.
+        # The user group ID.
         self.user_group_id = user_group_id
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

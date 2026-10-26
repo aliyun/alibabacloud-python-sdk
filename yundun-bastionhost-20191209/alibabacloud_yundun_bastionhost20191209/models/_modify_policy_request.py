@@ -12,27 +12,26 @@ class ModifyPolicyRequest(DaraModel):
         policy_id: str = None,
         policy_name: str = None,
         priority: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The new remarks of the control policy.
+        # The new description of the control policy.
         self.comment = comment
-        # The ID of the bastion host to which the control policy to modify belongs.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The ID of the Bastionhost instance to which the control policy belongs. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the control policy that you want to modify.
+        # The ID of the control policy.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The new name of the control policy.
+        # The new Policy Name of the control policy.
         self.policy_name = policy_name
-        # The priority of the modified control policy. Valid values: 1 to 100. The smaller the value, the higher the priority. Default value: 1.
+        # The new priority of the control policy. Valid values: 1 to 100. A smaller value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The region ID of the bastion host to which the control policy to modify belongs.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance to which the control policy belongs. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -58,6 +57,9 @@ class ModifyPolicyRequest(DaraModel):
         if self.priority is not None:
             result['Priority'] = self.priority
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -79,6 +81,9 @@ class ModifyPolicyRequest(DaraModel):
 
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

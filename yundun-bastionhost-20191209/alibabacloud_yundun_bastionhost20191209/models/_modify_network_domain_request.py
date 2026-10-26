@@ -15,33 +15,34 @@ class ModifyNetworkDomainRequest(DaraModel):
         network_domain_id: str = None,
         network_domain_name: str = None,
         network_domain_type: str = None,
+        project_id: int = None,
         proxies: List[main_models.ModifyNetworkDomainRequestProxies] = None,
         region_id: str = None,
     ):
-        # The new remarks of the network domain.
+        # The new description of the network domain.
         self.comment = comment
-        # The ID of the bastion host to which the network domain to modify belongs.
+        # The instance ID of the Bastionhost instance to which the network domain to be modified belongs.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the parameter value.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the network domain to modify.
+        # The ID of the network domain to be modified.
         # 
         # This parameter is required.
         self.network_domain_id = network_domain_id
         # The new name of the network domain.
         self.network_domain_name = network_domain_name
-        # The new connection mode of the network domain. Valid values:
+        # The new type of the network domain. Valid values:
         # 
-        # - **Direct**
-        # 
-        # - **Proxy**
+        # - **Direct**: Direct connection.
+        # - **Proxy**: Proxy.
         self.network_domain_type = network_domain_type
+        # The project ID.
+        self.project_id = project_id
         # The information about the proxy servers in the network domain.
         self.proxies = proxies
-        # The region ID of the bastion host to which the network domain to modify belongs.
-        # 
+        # The region ID of the Bastionhost instance to which the network domain to be modified belongs.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
@@ -71,6 +72,9 @@ class ModifyNetworkDomainRequest(DaraModel):
         if self.network_domain_type is not None:
             result['NetworkDomainType'] = self.network_domain_type
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         result['Proxies'] = []
         if self.proxies is not None:
             for k1 in self.proxies:
@@ -98,6 +102,9 @@ class ModifyNetworkDomainRequest(DaraModel):
         if m.get('NetworkDomainType') is not None:
             self.network_domain_type = m.get('NetworkDomainType')
 
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
         self.proxies = []
         if m.get('Proxies') is not None:
             for k1 in m.get('Proxies'):
@@ -119,27 +126,24 @@ class ModifyNetworkDomainRequestProxies(DaraModel):
         proxy_type: str = None,
         user: str = None,
     ):
-        # The new IP address of the proxy server.
+        # The new address of the proxy server.
         self.address = address
-        # The node type of the proxy server to modify. Valid values:
+        # The type of the proxy server node to be modified. Valid values:
         # 
-        # - **Master**: primary proxy server.
-        # 
-        # - **Slave**: secondary proxy server.
+        # - **Master**: Primary proxy server.
+        # - **Slave**: Secondary proxy server.
         self.node_type = node_type
         # The new password of the proxy server account.
         self.password = password
-        # The new port of the proxy server.
+        # The new Server Port of the proxy server.
         self.port = port
-        # The new proxy mode. Valid values:
+        # The new proxy type. Valid values:
         # 
-        # - **SSHProxy**
-        # 
-        # - **HTTPProxy**
-        # 
-        # - **Socks5Proxy**
+        # - **SSHProxy**: SSH proxy.
+        # - **HTTPProxy**: HTTP proxy.
+        # - **Socks5Proxy**: SOCKS5 proxy.
         self.proxy_type = proxy_type
-        # The new username of the proxy server account.
+        # The new username of the proxy server.
         self.user = user
 
     def validate(self):

@@ -15,65 +15,60 @@ class CreateHostAccountRequest(DaraModel):
         password: str = None,
         private_key: str = None,
         privilege_type: str = None,
+        project_id: int = None,
         protocol_name: str = None,
         region_id: str = None,
         rotation_mode: str = None,
     ):
-        # The name of the new host account. The name can be up to 128 characters long.
+        # The name of the host account to create. The name can be up to 128 characters in length.
         # 
         # This parameter is required.
         self.host_account_name = host_account_name
         # The ID of the host for which you want to create a host account.
         # 
-        # > Call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain the host ID.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query this parameter.
         # 
         # This parameter is required.
         self.host_id = host_id
         # The ID of the shared key for the host.
         self.host_share_key_id = host_share_key_id
-        # The ID of the Bastionhost instance where you want to create the host account.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+        # The ID of the Bastionhost instance where the host for which you want to create a host account resides.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the Bastionhost instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The passphrase for the private key of the new host account.
+        # The passphrase of the private key for the host account to create.
         # 
-        # > You can set this parameter only when ProtocolName is set to SSH. You do not need to set this parameter if ProtocolName is set to RDP.
+        # > You can configure this parameter when ProtocolName is set to SSH. You do not need to configure this parameter when ProtocolName is set to RDP.
         self.pass_phrase = pass_phrase
-        # The password of the new host account.
+        # The password of the host account to create.
         self.password = password
-        # The private key of the new host account. The value is a Base64-encoded string.
+        # The private key of the host account to create. The value is a Base64-encoded string.
         # 
-        # > This parameter is used only when ProtocolName is set to SSH. You do not need to set this parameter if ProtocolName is set to RDP. You can set both a password and a private key for the host account. When connecting to the asset, Bastionhost prioritizes the private key for the connection.
+        # > This parameter takes effect only when ProtocolName is set to SSH. You do not need to configure this parameter when ProtocolName is set to RDP. You can configure both a password and a private key for the host account. When connecting to an asset, Bastionhost preferentially uses the private key.
         self.private_key = private_key
-        # The permission type of the account. If you do not set this parameter, the default value is Normal.
-        # 
-        # - **Privileged**: privileged account
-        # 
-        # - **Normal**: normal account
-        # 
-        # > This parameter is supported only in Bastionhost V3.2.47 and later.
+        # The privilege type of the account. Default value: Normal.
+        # - **Privileged**: privileged account.
+        # - **Normal**: standard account.
+        # >Only supported in V3.2.47 and later.
         self.privilege_type = privilege_type
-        # The protocol of the new host account. <br>Valid values:<br>
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The protocol name of the host account to create.
+        # <br>Valid values:
         # - SSH
-        # 
         # - RDP
         # 
         # This parameter is required.
         self.protocol_name = protocol_name
-        # The region ID of the Bastionhost instance where you want to create the host account.
+        # The region ID of the Bastionhost instance where the host for which you want to create a host account resides.
         # 
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The password change mode for the account. If you do not set this parameter, the default value is Self.
-        # 
-        # - **Privileged**: Use a privileged account to change the password.
-        # 
-        # - **Self**: Do not use a privileged account to change the password.
-        # 
-        # > This parameter is supported only in Bastionhost V3.2.47 and later.
+        # The password change mode of the account. Default value: Self.
+        # - **Privileged**: uses a privileged account to change the password.
+        # - **Self**: does not use a privileged account to change the password.
+        # >Only supported in V3.2.47 and later.
         self.rotation_mode = rotation_mode
 
     def validate(self):
@@ -107,6 +102,9 @@ class CreateHostAccountRequest(DaraModel):
 
         if self.privilege_type is not None:
             result['PrivilegeType'] = self.privilege_type
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
 
         if self.protocol_name is not None:
             result['ProtocolName'] = self.protocol_name
@@ -144,6 +142,9 @@ class CreateHostAccountRequest(DaraModel):
 
         if m.get('PrivilegeType') is not None:
             self.privilege_type = m.get('PrivilegeType')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('ProtocolName') is not None:
             self.protocol_name = m.get('ProtocolName')

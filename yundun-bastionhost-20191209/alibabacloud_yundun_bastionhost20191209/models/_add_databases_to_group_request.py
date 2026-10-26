@@ -14,25 +14,19 @@ class AddDatabasesToGroupRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # An array that consists of the database IDs.
+        # The array of database IDs.
         # 
         # This parameter is required.
         self.database_ids = database_ids
-        # The ID of the asset group to which you want to add the databases.
-        # 
-        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the asset group.
+        # The ID of the asset group to which you want to add the databases. You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the asset group ID.
         # 
         # This parameter is required.
         self.host_group_id = host_group_id
-        # The bastion host ID.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the Bastionhost instance. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

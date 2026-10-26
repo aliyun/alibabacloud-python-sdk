@@ -11,9 +11,9 @@ class GetHostShareKeyResponseBody(DaraModel):
         host_share_key: main_models.GetHostShareKeyResponseBodyHostShareKey = None,
         request_id: str = None,
     ):
-        # The returned information about the shared key.
+        # The details of the shared key.
         self.host_share_key = host_share_key
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -52,11 +52,11 @@ class GetHostShareKeyResponseBodyHostShareKey(DaraModel):
         last_modify_key_at: int = None,
         private_key_finger_print: str = None,
     ):
-        # The ID of the shared key.
+        # The ID of the host shared key.
         self.host_share_key_id = host_share_key_id
-        # The name of the shared key.
+        # The name of the host shared key.
         self.host_share_key_name = host_share_key_name
-        # The time when the information about the shared key was last modified. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the host shared key was last modified, in seconds (UNIX timestamp format).
         self.last_modify_key_at = last_modify_key_at
         # The fingerprint of the private key.
         self.private_key_finger_print = private_key_finger_print

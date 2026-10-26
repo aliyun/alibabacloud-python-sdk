@@ -81,11 +81,11 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'yundun-bastionhost.aliyuncs.com',
             'eu-west-1-oxs': 'yundun-bastionhost.aliyuncs.com',
             'rus-west-1-pop': 'yundun-bastionhost.aliyuncs.com',
-            'na-south-1': 'bastionhost.na-south-1.aliyuncs.com',
             'cn-zhengzhou-jva': 'yundun-bastionhost.aliyuncs.com',
-            'ap-southeast-7': 'bastionhost.ap-southeast-7.aliyuncs.com',
+            'ap-northeast-2': 'bastionhost.ap-northeast-2.aliyuncs.com',
             'ap-southeast-6': 'bastionhost.ap-southeast-6.aliyuncs.com',
-            'ap-northeast-2': 'bastionhost.ap-northeast-2.aliyuncs.com'
+            'ap-southeast-7': 'bastionhost.ap-southeast-7.aliyuncs.com',
+            'na-south-1': 'bastionhost.na-south-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('yundun-bastionhost', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -117,6 +117,8 @@ class Client(OpenApiClient):
             query['CommandId'] = request.command_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -149,6 +151,8 @@ class Client(OpenApiClient):
             query['CommandId'] = request.command_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -203,6 +207,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.operation_ticket_id):
             query['OperationTicketId'] = request.operation_ticket_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -243,6 +249,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.operation_ticket_id):
             query['OperationTicketId'] = request.operation_ticket_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -373,6 +381,8 @@ class Client(OpenApiClient):
             query['HostIds'] = request.host_ids
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -407,6 +417,8 @@ class Client(OpenApiClient):
             query['HostIds'] = request.host_ids
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -529,6 +541,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -563,6 +577,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -613,6 +629,8 @@ class Client(OpenApiClient):
             query['ApproveId'] = request.approve_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -645,6 +663,8 @@ class Client(OpenApiClient):
             query['ApproveId'] = request.approve_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -773,6 +793,8 @@ class Client(OpenApiClient):
             query['Databases'] = request.databases
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -807,6 +829,8 @@ class Client(OpenApiClient):
             query['Databases'] = request.databases
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -857,6 +881,8 @@ class Client(OpenApiClient):
             query['HostShareKeyId'] = request.host_share_key_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -891,6 +917,8 @@ class Client(OpenApiClient):
             query['HostShareKeyId'] = request.host_share_key_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -1019,6 +1047,8 @@ class Client(OpenApiClient):
             query['Hosts'] = request.hosts
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -1053,6 +1083,8 @@ class Client(OpenApiClient):
             query['Hosts'] = request.hosts
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -1254,6 +1286,416 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.attach_host_group_accounts_to_user_group_with_options_async(request, runtime)
 
+    def attach_members_to_project_with_options(
+        self,
+        request: main_models.AttachMembersToProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachMembersToProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachMembersToProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachMembersToProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_members_to_project_with_options_async(
+        self,
+        request: main_models.AttachMembersToProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachMembersToProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachMembersToProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachMembersToProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_members_to_project(
+        self,
+        request: main_models.AttachMembersToProjectRequest,
+    ) -> main_models.AttachMembersToProjectResponse:
+        runtime = RuntimeOptions()
+        return self.attach_members_to_project_with_options(request, runtime)
+
+    async def attach_members_to_project_async(
+        self,
+        request: main_models.AttachMembersToProjectRequest,
+    ) -> main_models.AttachMembersToProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.attach_members_to_project_with_options_async(request, runtime)
+
+    def attach_project_managers_to_project_authorization_with_options(
+        self,
+        request: main_models.AttachProjectManagersToProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachProjectManagersToProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.principals):
+            query['Principals'] = request.principals
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachProjectManagersToProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachProjectManagersToProjectAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_project_managers_to_project_authorization_with_options_async(
+        self,
+        request: main_models.AttachProjectManagersToProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachProjectManagersToProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.principals):
+            query['Principals'] = request.principals
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachProjectManagersToProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachProjectManagersToProjectAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_project_managers_to_project_authorization(
+        self,
+        request: main_models.AttachProjectManagersToProjectAuthorizationRequest,
+    ) -> main_models.AttachProjectManagersToProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return self.attach_project_managers_to_project_authorization_with_options(request, runtime)
+
+    async def attach_project_managers_to_project_authorization_async(
+        self,
+        request: main_models.AttachProjectManagersToProjectAuthorizationRequest,
+    ) -> main_models.AttachProjectManagersToProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return await self.attach_project_managers_to_project_authorization_with_options_async(request, runtime)
+
+    def attach_projects_to_project_authorization_with_options(
+        self,
+        request: main_models.AttachProjectsToProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachProjectsToProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachProjectsToProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachProjectsToProjectAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_projects_to_project_authorization_with_options_async(
+        self,
+        request: main_models.AttachProjectsToProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachProjectsToProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachProjectsToProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachProjectsToProjectAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_projects_to_project_authorization(
+        self,
+        request: main_models.AttachProjectsToProjectAuthorizationRequest,
+    ) -> main_models.AttachProjectsToProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return self.attach_projects_to_project_authorization_with_options(request, runtime)
+
+    async def attach_projects_to_project_authorization_async(
+        self,
+        request: main_models.AttachProjectsToProjectAuthorizationRequest,
+    ) -> main_models.AttachProjectsToProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return await self.attach_projects_to_project_authorization_with_options_async(request, runtime)
+
+    def attach_projects_to_review_rule_with_options(
+        self,
+        request: main_models.AttachProjectsToReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachProjectsToReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachProjectsToReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachProjectsToReviewRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_projects_to_review_rule_with_options_async(
+        self,
+        request: main_models.AttachProjectsToReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachProjectsToReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachProjectsToReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachProjectsToReviewRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_projects_to_review_rule(
+        self,
+        request: main_models.AttachProjectsToReviewRuleRequest,
+    ) -> main_models.AttachProjectsToReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return self.attach_projects_to_review_rule_with_options(request, runtime)
+
+    async def attach_projects_to_review_rule_async(
+        self,
+        request: main_models.AttachProjectsToReviewRuleRequest,
+    ) -> main_models.AttachProjectsToReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.attach_projects_to_review_rule_with_options_async(request, runtime)
+
+    def attach_reviewers_to_review_rule_with_options(
+        self,
+        request: main_models.AttachReviewersToReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachReviewersToReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.principals):
+            query['Principals'] = request.principals
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachReviewersToReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachReviewersToReviewRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_reviewers_to_review_rule_with_options_async(
+        self,
+        request: main_models.AttachReviewersToReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachReviewersToReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.principals):
+            query['Principals'] = request.principals
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachReviewersToReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachReviewersToReviewRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_reviewers_to_review_rule(
+        self,
+        request: main_models.AttachReviewersToReviewRuleRequest,
+    ) -> main_models.AttachReviewersToReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return self.attach_reviewers_to_review_rule_with_options(request, runtime)
+
+    async def attach_reviewers_to_review_rule_async(
+        self,
+        request: main_models.AttachReviewersToReviewRuleRequest,
+    ) -> main_models.AttachReviewersToReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.attach_reviewers_to_review_rule_with_options_async(request, runtime)
+
     def config_instance_security_groups_with_options(
         self,
         request: main_models.ConfigInstanceSecurityGroupsRequest,
@@ -1447,6 +1889,8 @@ class Client(OpenApiClient):
             query['NetworkDomainId'] = request.network_domain_id
         if not DaraCore.is_null(request.polar_dbendpoint_type):
             query['PolarDBEndpointType'] = request.polar_dbendpoint_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -1503,6 +1947,8 @@ class Client(OpenApiClient):
             query['NetworkDomainId'] = request.network_domain_id
         if not DaraCore.is_null(request.polar_dbendpoint_type):
             query['PolarDBEndpointType'] = request.polar_dbendpoint_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -1563,6 +2009,8 @@ class Client(OpenApiClient):
             query['LoginAttribute'] = request.login_attribute
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -1603,6 +2051,8 @@ class Client(OpenApiClient):
             query['LoginAttribute'] = request.login_attribute
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -1739,6 +2189,8 @@ class Client(OpenApiClient):
             query['NetworkDomainId'] = request.network_domain_id
         if not DaraCore.is_null(request.ostype):
             query['OSType'] = request.ostype
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -1791,6 +2243,8 @@ class Client(OpenApiClient):
             query['NetworkDomainId'] = request.network_domain_id
         if not DaraCore.is_null(request.ostype):
             query['OSType'] = request.ostype
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -1853,6 +2307,8 @@ class Client(OpenApiClient):
             query['PrivateKey'] = request.private_key
         if not DaraCore.is_null(request.privilege_type):
             query['PrivilegeType'] = request.privilege_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not DaraCore.is_null(request.region_id):
@@ -1901,6 +2357,8 @@ class Client(OpenApiClient):
             query['PrivateKey'] = request.private_key
         if not DaraCore.is_null(request.privilege_type):
             query['PrivilegeType'] = request.privilege_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not DaraCore.is_null(request.region_id):
@@ -1953,6 +2411,8 @@ class Client(OpenApiClient):
             query['HostGroupName'] = request.host_group_name
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -1987,6 +2447,8 @@ class Client(OpenApiClient):
             query['HostGroupName'] = request.host_group_name
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2037,6 +2499,8 @@ class Client(OpenApiClient):
             query['PassPhrase'] = request.pass_phrase
         if not DaraCore.is_null(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2073,6 +2537,8 @@ class Client(OpenApiClient):
             query['PassPhrase'] = request.pass_phrase
         if not DaraCore.is_null(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2123,6 +2589,8 @@ class Client(OpenApiClient):
             query['NetworkDomainName'] = request.network_domain_name
         if not DaraCore.is_null(request.network_domain_type):
             query['NetworkDomainType'] = request.network_domain_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.proxies):
             query['Proxies'] = request.proxies
         if not DaraCore.is_null(request.region_id):
@@ -2161,6 +2629,8 @@ class Client(OpenApiClient):
             query['NetworkDomainName'] = request.network_domain_name
         if not DaraCore.is_null(request.network_domain_type):
             query['NetworkDomainType'] = request.network_domain_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.proxies):
             query['Proxies'] = request.proxies
         if not DaraCore.is_null(request.region_id):
@@ -2219,6 +2689,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.is_one_time_effect):
             query['IsOneTimeEffect'] = request.is_one_time_effect
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not DaraCore.is_null(request.region_id):
@@ -2263,6 +2735,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.is_one_time_effect):
             query['IsOneTimeEffect'] = request.is_one_time_effect
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not DaraCore.is_null(request.region_id):
@@ -2315,6 +2789,8 @@ class Client(OpenApiClient):
             query['PolicyName'] = request.policy_name
         if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2351,6 +2827,8 @@ class Client(OpenApiClient):
             query['PolicyName'] = request.policy_name
         if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2386,6 +2864,354 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_policy_with_options_async(request, runtime)
 
+    def create_project_with_options(
+        self,
+        request: main_models.CreateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_with_options_async(
+        self,
+        request: main_models.CreateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project(
+        self,
+        request: main_models.CreateProjectRequest,
+    ) -> main_models.CreateProjectResponse:
+        runtime = RuntimeOptions()
+        return self.create_project_with_options(request, runtime)
+
+    async def create_project_async(
+        self,
+        request: main_models.CreateProjectRequest,
+    ) -> main_models.CreateProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.create_project_with_options_async(request, runtime)
+
+    def create_project_authorization_with_options(
+        self,
+        request: main_models.CreateProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_authorization_with_options_async(
+        self,
+        request: main_models.CreateProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project_authorization(
+        self,
+        request: main_models.CreateProjectAuthorizationRequest,
+    ) -> main_models.CreateProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return self.create_project_authorization_with_options(request, runtime)
+
+    async def create_project_authorization_async(
+        self,
+        request: main_models.CreateProjectAuthorizationRequest,
+    ) -> main_models.CreateProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return await self.create_project_authorization_with_options_async(request, runtime)
+
+    def create_project_notify_receiver_with_options(
+        self,
+        request: main_models.CreateProjectNotifyReceiverRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectNotifyReceiverResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            query['Phone'] = request.phone
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProjectNotifyReceiver',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectNotifyReceiverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_notify_receiver_with_options_async(
+        self,
+        request: main_models.CreateProjectNotifyReceiverRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectNotifyReceiverResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            query['Phone'] = request.phone
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProjectNotifyReceiver',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectNotifyReceiverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project_notify_receiver(
+        self,
+        request: main_models.CreateProjectNotifyReceiverRequest,
+    ) -> main_models.CreateProjectNotifyReceiverResponse:
+        runtime = RuntimeOptions()
+        return self.create_project_notify_receiver_with_options(request, runtime)
+
+    async def create_project_notify_receiver_async(
+        self,
+        request: main_models.CreateProjectNotifyReceiverRequest,
+    ) -> main_models.CreateProjectNotifyReceiverResponse:
+        runtime = RuntimeOptions()
+        return await self.create_project_notify_receiver_with_options_async(request, runtime)
+
+    def create_review_rule_with_options(
+        self,
+        request: main_models.CreateReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateReviewRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_review_rule_with_options_async(
+        self,
+        request: main_models.CreateReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateReviewRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_review_rule(
+        self,
+        request: main_models.CreateReviewRuleRequest,
+    ) -> main_models.CreateReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return self.create_review_rule_with_options(request, runtime)
+
+    async def create_review_rule_async(
+        self,
+        request: main_models.CreateReviewRuleRequest,
+    ) -> main_models.CreateReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_review_rule_with_options_async(request, runtime)
+
     def create_rule_with_options(
         self,
         request: main_models.CreateRuleRequest,
@@ -2407,6 +3233,8 @@ class Client(OpenApiClient):
             query['Hosts'] = request.hosts
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_name):
@@ -2455,6 +3283,8 @@ class Client(OpenApiClient):
             query['Hosts'] = request.hosts
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_name):
@@ -2645,6 +3475,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_name):
@@ -2679,6 +3511,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_name):
@@ -2817,6 +3651,8 @@ class Client(OpenApiClient):
             query['DatabaseId'] = request.database_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2849,6 +3685,8 @@ class Client(OpenApiClient):
             query['DatabaseId'] = request.database_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2895,6 +3733,8 @@ class Client(OpenApiClient):
             query['DatabaseAccountId'] = request.database_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2927,6 +3767,8 @@ class Client(OpenApiClient):
             query['DatabaseAccountId'] = request.database_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -2973,6 +3815,8 @@ class Client(OpenApiClient):
             query['HostId'] = request.host_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3005,6 +3849,8 @@ class Client(OpenApiClient):
             query['HostId'] = request.host_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3051,6 +3897,8 @@ class Client(OpenApiClient):
             query['HostAccountId'] = request.host_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3083,6 +3931,8 @@ class Client(OpenApiClient):
             query['HostAccountId'] = request.host_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3129,6 +3979,8 @@ class Client(OpenApiClient):
             query['HostGroupId'] = request.host_group_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3161,6 +4013,8 @@ class Client(OpenApiClient):
             query['HostGroupId'] = request.host_group_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3285,6 +4139,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3317,6 +4173,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3363,6 +4221,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3395,6 +4255,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -3430,6 +4292,318 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_policy_with_options_async(request, runtime)
 
+    def delete_project_authorizations_with_options(
+        self,
+        request: main_models.DeleteProjectAuthorizationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectAuthorizationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_ids):
+            query['AuthorizationIds'] = request.authorization_ids
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProjectAuthorizations',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectAuthorizationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_authorizations_with_options_async(
+        self,
+        request: main_models.DeleteProjectAuthorizationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectAuthorizationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_ids):
+            query['AuthorizationIds'] = request.authorization_ids
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProjectAuthorizations',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectAuthorizationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project_authorizations(
+        self,
+        request: main_models.DeleteProjectAuthorizationsRequest,
+    ) -> main_models.DeleteProjectAuthorizationsResponse:
+        runtime = RuntimeOptions()
+        return self.delete_project_authorizations_with_options(request, runtime)
+
+    async def delete_project_authorizations_async(
+        self,
+        request: main_models.DeleteProjectAuthorizationsRequest,
+    ) -> main_models.DeleteProjectAuthorizationsResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_project_authorizations_with_options_async(request, runtime)
+
+    def delete_project_notify_receivers_with_options(
+        self,
+        request: main_models.DeleteProjectNotifyReceiversRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectNotifyReceiversResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.receiver_ids):
+            query['ReceiverIds'] = request.receiver_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProjectNotifyReceivers',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectNotifyReceiversResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_notify_receivers_with_options_async(
+        self,
+        request: main_models.DeleteProjectNotifyReceiversRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectNotifyReceiversResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.receiver_ids):
+            query['ReceiverIds'] = request.receiver_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProjectNotifyReceivers',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectNotifyReceiversResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project_notify_receivers(
+        self,
+        request: main_models.DeleteProjectNotifyReceiversRequest,
+    ) -> main_models.DeleteProjectNotifyReceiversResponse:
+        runtime = RuntimeOptions()
+        return self.delete_project_notify_receivers_with_options(request, runtime)
+
+    async def delete_project_notify_receivers_async(
+        self,
+        request: main_models.DeleteProjectNotifyReceiversRequest,
+    ) -> main_models.DeleteProjectNotifyReceiversResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_project_notify_receivers_with_options_async(request, runtime)
+
+    def delete_projects_with_options(
+        self,
+        request: main_models.DeleteProjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProjects',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_projects_with_options_async(
+        self,
+        request: main_models.DeleteProjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProjects',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_projects(
+        self,
+        request: main_models.DeleteProjectsRequest,
+    ) -> main_models.DeleteProjectsResponse:
+        runtime = RuntimeOptions()
+        return self.delete_projects_with_options(request, runtime)
+
+    async def delete_projects_async(
+        self,
+        request: main_models.DeleteProjectsRequest,
+    ) -> main_models.DeleteProjectsResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_projects_with_options_async(request, runtime)
+
+    def delete_review_rules_with_options(
+        self,
+        request: main_models.DeleteReviewRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteReviewRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_ids):
+            query['ReviewRuleIds'] = request.review_rule_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteReviewRules',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteReviewRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_review_rules_with_options_async(
+        self,
+        request: main_models.DeleteReviewRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteReviewRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_ids):
+            query['ReviewRuleIds'] = request.review_rule_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteReviewRules',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteReviewRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_review_rules(
+        self,
+        request: main_models.DeleteReviewRulesRequest,
+    ) -> main_models.DeleteReviewRulesResponse:
+        runtime = RuntimeOptions()
+        return self.delete_review_rules_with_options(request, runtime)
+
+    async def delete_review_rules_async(
+        self,
+        request: main_models.DeleteReviewRulesRequest,
+    ) -> main_models.DeleteReviewRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_review_rules_with_options_async(request, runtime)
+
     def delete_rule_with_options(
         self,
         request: main_models.DeleteRuleRequest,
@@ -3439,6 +4613,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -3471,6 +4647,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -3595,6 +4773,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -3627,6 +4807,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -4081,6 +5263,8 @@ class Client(OpenApiClient):
             query['Databases'] = request.databases
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -4115,6 +5299,8 @@ class Client(OpenApiClient):
             query['Databases'] = request.databases
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -4165,6 +5351,8 @@ class Client(OpenApiClient):
             query['HostShareKeyId'] = request.host_share_key_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -4199,6 +5387,8 @@ class Client(OpenApiClient):
             query['HostShareKeyId'] = request.host_share_key_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -4327,6 +5517,8 @@ class Client(OpenApiClient):
             query['Hosts'] = request.hosts
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -4361,6 +5553,8 @@ class Client(OpenApiClient):
             query['Hosts'] = request.hosts
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -4562,6 +5756,416 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.detach_host_group_accounts_from_user_group_with_options_async(request, runtime)
 
+    def detach_members_from_project_with_options(
+        self,
+        request: main_models.DetachMembersFromProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachMembersFromProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachMembersFromProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachMembersFromProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_members_from_project_with_options_async(
+        self,
+        request: main_models.DetachMembersFromProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachMembersFromProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachMembersFromProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachMembersFromProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_members_from_project(
+        self,
+        request: main_models.DetachMembersFromProjectRequest,
+    ) -> main_models.DetachMembersFromProjectResponse:
+        runtime = RuntimeOptions()
+        return self.detach_members_from_project_with_options(request, runtime)
+
+    async def detach_members_from_project_async(
+        self,
+        request: main_models.DetachMembersFromProjectRequest,
+    ) -> main_models.DetachMembersFromProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.detach_members_from_project_with_options_async(request, runtime)
+
+    def detach_project_managers_from_project_authorization_with_options(
+        self,
+        request: main_models.DetachProjectManagersFromProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachProjectManagersFromProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.principal_ids):
+            query['PrincipalIds'] = request.principal_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachProjectManagersFromProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachProjectManagersFromProjectAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_project_managers_from_project_authorization_with_options_async(
+        self,
+        request: main_models.DetachProjectManagersFromProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachProjectManagersFromProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.principal_ids):
+            query['PrincipalIds'] = request.principal_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachProjectManagersFromProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachProjectManagersFromProjectAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_project_managers_from_project_authorization(
+        self,
+        request: main_models.DetachProjectManagersFromProjectAuthorizationRequest,
+    ) -> main_models.DetachProjectManagersFromProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return self.detach_project_managers_from_project_authorization_with_options(request, runtime)
+
+    async def detach_project_managers_from_project_authorization_async(
+        self,
+        request: main_models.DetachProjectManagersFromProjectAuthorizationRequest,
+    ) -> main_models.DetachProjectManagersFromProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return await self.detach_project_managers_from_project_authorization_with_options_async(request, runtime)
+
+    def detach_projects_from_project_authorization_with_options(
+        self,
+        request: main_models.DetachProjectsFromProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachProjectsFromProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachProjectsFromProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachProjectsFromProjectAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_projects_from_project_authorization_with_options_async(
+        self,
+        request: main_models.DetachProjectsFromProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachProjectsFromProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachProjectsFromProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachProjectsFromProjectAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_projects_from_project_authorization(
+        self,
+        request: main_models.DetachProjectsFromProjectAuthorizationRequest,
+    ) -> main_models.DetachProjectsFromProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return self.detach_projects_from_project_authorization_with_options(request, runtime)
+
+    async def detach_projects_from_project_authorization_async(
+        self,
+        request: main_models.DetachProjectsFromProjectAuthorizationRequest,
+    ) -> main_models.DetachProjectsFromProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return await self.detach_projects_from_project_authorization_with_options_async(request, runtime)
+
+    def detach_projects_from_review_rule_with_options(
+        self,
+        request: main_models.DetachProjectsFromReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachProjectsFromReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachProjectsFromReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachProjectsFromReviewRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_projects_from_review_rule_with_options_async(
+        self,
+        request: main_models.DetachProjectsFromReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachProjectsFromReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_ids):
+            query['ProjectIds'] = request.project_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachProjectsFromReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachProjectsFromReviewRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_projects_from_review_rule(
+        self,
+        request: main_models.DetachProjectsFromReviewRuleRequest,
+    ) -> main_models.DetachProjectsFromReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return self.detach_projects_from_review_rule_with_options(request, runtime)
+
+    async def detach_projects_from_review_rule_async(
+        self,
+        request: main_models.DetachProjectsFromReviewRuleRequest,
+    ) -> main_models.DetachProjectsFromReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.detach_projects_from_review_rule_with_options_async(request, runtime)
+
+    def detach_reviewers_from_review_rule_with_options(
+        self,
+        request: main_models.DetachReviewersFromReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachReviewersFromReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.principal_ids):
+            query['PrincipalIds'] = request.principal_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachReviewersFromReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachReviewersFromReviewRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_reviewers_from_review_rule_with_options_async(
+        self,
+        request: main_models.DetachReviewersFromReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachReviewersFromReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.principal_ids):
+            query['PrincipalIds'] = request.principal_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachReviewersFromReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachReviewersFromReviewRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_reviewers_from_review_rule(
+        self,
+        request: main_models.DetachReviewersFromReviewRuleRequest,
+    ) -> main_models.DetachReviewersFromReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return self.detach_reviewers_from_review_rule_with_options(request, runtime)
+
+    async def detach_reviewers_from_review_rule_async(
+        self,
+        request: main_models.DetachReviewersFromReviewRuleRequest,
+    ) -> main_models.DetachReviewersFromReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.detach_reviewers_from_review_rule_with_options_async(request, runtime)
+
     def disable_instance_public_access_with_options(
         self,
         request: main_models.DisableInstancePublicAccessRequest,
@@ -4645,6 +6249,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -4677,6 +6283,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -4797,6 +6405,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -4829,6 +6439,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -4993,6 +6605,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
@@ -5027,6 +6641,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
@@ -5077,6 +6693,8 @@ class Client(OpenApiClient):
             query['DatabaseId'] = request.database_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5109,6 +6727,8 @@ class Client(OpenApiClient):
             query['DatabaseId'] = request.database_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5155,6 +6775,8 @@ class Client(OpenApiClient):
             query['DatabaseAccountId'] = request.database_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5187,6 +6809,8 @@ class Client(OpenApiClient):
             query['DatabaseAccountId'] = request.database_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5311,6 +6935,8 @@ class Client(OpenApiClient):
             query['HostId'] = request.host_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5343,6 +6969,8 @@ class Client(OpenApiClient):
             query['HostId'] = request.host_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5389,6 +7017,8 @@ class Client(OpenApiClient):
             query['HostAccountId'] = request.host_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5421,6 +7051,8 @@ class Client(OpenApiClient):
             query['HostAccountId'] = request.host_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5467,6 +7099,8 @@ class Client(OpenApiClient):
             query['HostGroupId'] = request.host_group_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5499,6 +7133,8 @@ class Client(OpenApiClient):
             query['HostGroupId'] = request.host_group_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5545,6 +7181,8 @@ class Client(OpenApiClient):
             query['HostShareKeyId'] = request.host_share_key_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5577,6 +7215,8 @@ class Client(OpenApiClient):
             query['HostShareKeyId'] = request.host_share_key_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5623,6 +7263,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_source_id):
+            query['UserSourceId'] = request.user_source_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5653,6 +7295,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_source_id):
+            query['UserSourceId'] = request.user_source_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5921,6 +7565,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5955,6 +7601,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6001,6 +7649,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6033,6 +7683,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6079,6 +7731,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6111,6 +7765,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6157,6 +7813,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6189,6 +7847,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6224,6 +7884,240 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_policy_user_scope_with_options_async(request, runtime)
 
+    def get_project_with_options(
+        self,
+        request: main_models.GetProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_with_options_async(
+        self,
+        request: main_models.GetProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project(
+        self,
+        request: main_models.GetProjectRequest,
+    ) -> main_models.GetProjectResponse:
+        runtime = RuntimeOptions()
+        return self.get_project_with_options(request, runtime)
+
+    async def get_project_async(
+        self,
+        request: main_models.GetProjectRequest,
+    ) -> main_models.GetProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.get_project_with_options_async(request, runtime)
+
+    def get_project_authorization_with_options(
+        self,
+        request: main_models.GetProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProjectAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_authorization_with_options_async(
+        self,
+        request: main_models.GetProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProjectAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project_authorization(
+        self,
+        request: main_models.GetProjectAuthorizationRequest,
+    ) -> main_models.GetProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return self.get_project_authorization_with_options(request, runtime)
+
+    async def get_project_authorization_async(
+        self,
+        request: main_models.GetProjectAuthorizationRequest,
+    ) -> main_models.GetProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_project_authorization_with_options_async(request, runtime)
+
+    def get_review_rule_with_options(
+        self,
+        request: main_models.GetReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReviewRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_review_rule_with_options_async(
+        self,
+        request: main_models.GetReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReviewRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_review_rule(
+        self,
+        request: main_models.GetReviewRuleRequest,
+    ) -> main_models.GetReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return self.get_review_rule_with_options(request, runtime)
+
+    async def get_review_rule_async(
+        self,
+        request: main_models.GetReviewRuleRequest,
+    ) -> main_models.GetReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.get_review_rule_with_options_async(request, runtime)
+
     def get_rule_with_options(
         self,
         request: main_models.GetRuleRequest,
@@ -6233,6 +8127,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -6265,6 +8161,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -6389,6 +8287,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -6421,6 +8321,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -6561,6 +8463,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6595,6 +8499,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6647,6 +8553,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6685,6 +8593,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -6831,6 +8741,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -6871,6 +8783,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -6927,6 +8841,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -6969,6 +8885,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -7027,6 +8945,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -7071,6 +8991,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -7129,6 +9051,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -7173,6 +9097,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -7229,6 +9155,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not DaraCore.is_null(request.region_id):
@@ -7271,6 +9199,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not DaraCore.is_null(request.region_id):
@@ -7323,6 +9253,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -7359,6 +9291,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -7411,6 +9345,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -7451,6 +9387,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -7505,6 +9443,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -7545,6 +9485,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -7593,6 +9535,8 @@ class Client(OpenApiClient):
             query['HostGroupId'] = request.host_group_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -7627,6 +9571,8 @@ class Client(OpenApiClient):
             query['HostGroupId'] = request.host_group_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -7675,6 +9621,8 @@ class Client(OpenApiClient):
             query['HostGroupId'] = request.host_group_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -7709,6 +9657,8 @@ class Client(OpenApiClient):
             query['HostGroupId'] = request.host_group_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -7761,6 +9711,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -7797,6 +9749,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -7849,6 +9803,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -7889,6 +9845,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -7943,6 +9901,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -7983,6 +9943,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -8033,6 +9995,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -8067,6 +10031,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -8123,6 +10089,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -8171,6 +10139,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -8233,6 +10203,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -8277,6 +10249,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_id):
@@ -8335,6 +10309,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -8379,6 +10355,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -8588,6 +10566,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_instance_rd_members_with_options_async(request, runtime)
 
+    def list_members_not_for_project_with_options(
+        self,
+        request: main_models.ListMembersNotForProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMembersNotForProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMembersNotForProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMembersNotForProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_members_not_for_project_with_options_async(
+        self,
+        request: main_models.ListMembersNotForProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMembersNotForProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMembersNotForProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMembersNotForProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_members_not_for_project(
+        self,
+        request: main_models.ListMembersNotForProjectRequest,
+    ) -> main_models.ListMembersNotForProjectResponse:
+        runtime = RuntimeOptions()
+        return self.list_members_not_for_project_with_options(request, runtime)
+
+    async def list_members_not_for_project_async(
+        self,
+        request: main_models.ListMembersNotForProjectRequest,
+    ) -> main_models.ListMembersNotForProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.list_members_not_for_project_with_options_async(request, runtime)
+
     def list_network_domains_with_options(
         self,
         request: main_models.ListNetworkDomainsRequest,
@@ -8605,6 +10677,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -8643,6 +10717,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -8691,6 +10767,8 @@ class Client(OpenApiClient):
             query['DatabaseId'] = request.database_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_project_id):
+            query['OperationProjectId'] = request.operation_project_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -8729,6 +10807,8 @@ class Client(OpenApiClient):
             query['DatabaseId'] = request.database_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_project_id):
+            query['OperationProjectId'] = request.operation_project_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -8787,6 +10867,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -8833,6 +10915,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source):
@@ -8979,6 +11063,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.ostype):
             query['OSType'] = request.ostype
+        if not DaraCore.is_null(request.operation_project_id):
+            query['OperationProjectId'] = request.operation_project_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -9025,6 +11111,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.ostype):
             query['OSType'] = request.ostype
+        if not DaraCore.is_null(request.operation_project_id):
+            query['OperationProjectId'] = request.operation_project_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -9085,6 +11173,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -9121,6 +11211,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -9171,6 +11263,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -9207,6 +11301,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -9242,6 +11338,648 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_policies_with_options_async(request, runtime)
 
+    def list_project_authorizations_with_options(
+        self,
+        request: main_models.ListProjectAuthorizationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectAuthorizationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectAuthorizations',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectAuthorizationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_project_authorizations_with_options_async(
+        self,
+        request: main_models.ListProjectAuthorizationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectAuthorizationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectAuthorizations',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectAuthorizationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_project_authorizations(
+        self,
+        request: main_models.ListProjectAuthorizationsRequest,
+    ) -> main_models.ListProjectAuthorizationsResponse:
+        runtime = RuntimeOptions()
+        return self.list_project_authorizations_with_options(request, runtime)
+
+    async def list_project_authorizations_async(
+        self,
+        request: main_models.ListProjectAuthorizationsRequest,
+    ) -> main_models.ListProjectAuthorizationsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_project_authorizations_with_options_async(request, runtime)
+
+    def list_project_notify_receivers_with_options(
+        self,
+        request: main_models.ListProjectNotifyReceiversRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectNotifyReceiversResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectNotifyReceivers',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectNotifyReceiversResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_project_notify_receivers_with_options_async(
+        self,
+        request: main_models.ListProjectNotifyReceiversRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectNotifyReceiversResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectNotifyReceivers',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectNotifyReceiversResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_project_notify_receivers(
+        self,
+        request: main_models.ListProjectNotifyReceiversRequest,
+    ) -> main_models.ListProjectNotifyReceiversResponse:
+        runtime = RuntimeOptions()
+        return self.list_project_notify_receivers_with_options(request, runtime)
+
+    async def list_project_notify_receivers_async(
+        self,
+        request: main_models.ListProjectNotifyReceiversRequest,
+    ) -> main_models.ListProjectNotifyReceiversResponse:
+        runtime = RuntimeOptions()
+        return await self.list_project_notify_receivers_with_options_async(request, runtime)
+
+    def list_projects_with_options(
+        self,
+        request: main_models.ListProjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjects',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_projects_with_options_async(
+        self,
+        request: main_models.ListProjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjects',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_projects(
+        self,
+        request: main_models.ListProjectsRequest,
+    ) -> main_models.ListProjectsResponse:
+        runtime = RuntimeOptions()
+        return self.list_projects_with_options(request, runtime)
+
+    async def list_projects_async(
+        self,
+        request: main_models.ListProjectsRequest,
+    ) -> main_models.ListProjectsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_projects_with_options_async(request, runtime)
+
+    def list_projects_for_project_authorization_principal_with_options(
+        self,
+        request: main_models.ListProjectsForProjectAuthorizationPrincipalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsForProjectAuthorizationPrincipalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectsForProjectAuthorizationPrincipal',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsForProjectAuthorizationPrincipalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_projects_for_project_authorization_principal_with_options_async(
+        self,
+        request: main_models.ListProjectsForProjectAuthorizationPrincipalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsForProjectAuthorizationPrincipalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectsForProjectAuthorizationPrincipal',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsForProjectAuthorizationPrincipalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_projects_for_project_authorization_principal(
+        self,
+        request: main_models.ListProjectsForProjectAuthorizationPrincipalRequest,
+    ) -> main_models.ListProjectsForProjectAuthorizationPrincipalResponse:
+        runtime = RuntimeOptions()
+        return self.list_projects_for_project_authorization_principal_with_options(request, runtime)
+
+    async def list_projects_for_project_authorization_principal_async(
+        self,
+        request: main_models.ListProjectsForProjectAuthorizationPrincipalRequest,
+    ) -> main_models.ListProjectsForProjectAuthorizationPrincipalResponse:
+        runtime = RuntimeOptions()
+        return await self.list_projects_for_project_authorization_principal_with_options_async(request, runtime)
+
+    def list_projects_not_for_project_authorization_with_options(
+        self,
+        request: main_models.ListProjectsNotForProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsNotForProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectsNotForProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsNotForProjectAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_projects_not_for_project_authorization_with_options_async(
+        self,
+        request: main_models.ListProjectsNotForProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsNotForProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectsNotForProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsNotForProjectAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_projects_not_for_project_authorization(
+        self,
+        request: main_models.ListProjectsNotForProjectAuthorizationRequest,
+    ) -> main_models.ListProjectsNotForProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return self.list_projects_not_for_project_authorization_with_options(request, runtime)
+
+    async def list_projects_not_for_project_authorization_async(
+        self,
+        request: main_models.ListProjectsNotForProjectAuthorizationRequest,
+    ) -> main_models.ListProjectsNotForProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return await self.list_projects_not_for_project_authorization_with_options_async(request, runtime)
+
+    def list_projects_not_for_review_rule_with_options(
+        self,
+        request: main_models.ListProjectsNotForReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsNotForReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectsNotForReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsNotForReviewRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_projects_not_for_review_rule_with_options_async(
+        self,
+        request: main_models.ListProjectsNotForReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsNotForReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjectsNotForReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsNotForReviewRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_projects_not_for_review_rule(
+        self,
+        request: main_models.ListProjectsNotForReviewRuleRequest,
+    ) -> main_models.ListProjectsNotForReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return self.list_projects_not_for_review_rule_with_options(request, runtime)
+
+    async def list_projects_not_for_review_rule_async(
+        self,
+        request: main_models.ListProjectsNotForReviewRuleRequest,
+    ) -> main_models.ListProjectsNotForReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.list_projects_not_for_review_rule_with_options_async(request, runtime)
+
+    def list_review_rules_with_options(
+        self,
+        request: main_models.ListReviewRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListReviewRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListReviewRules',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListReviewRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_review_rules_with_options_async(
+        self,
+        request: main_models.ListReviewRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListReviewRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.skip):
+            query['Skip'] = request.skip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListReviewRules',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListReviewRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_review_rules(
+        self,
+        request: main_models.ListReviewRulesRequest,
+    ) -> main_models.ListReviewRulesResponse:
+        runtime = RuntimeOptions()
+        return self.list_review_rules_with_options(request, runtime)
+
+    async def list_review_rules_async(
+        self,
+        request: main_models.ListReviewRulesRequest,
+    ) -> main_models.ListReviewRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_review_rules_with_options_async(request, runtime)
+
     def list_rules_with_options(
         self,
         request: main_models.ListRulesRequest,
@@ -9255,6 +11993,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_name):
@@ -9293,6 +12033,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_name):
@@ -9523,6 +12265,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.schedule_type):
@@ -9561,6 +12305,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.schedule_type):
@@ -9611,6 +12357,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_name):
@@ -9647,6 +12395,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_name):
@@ -9683,6 +12433,104 @@ class Client(OpenApiClient):
     ) -> main_models.ListUserGroupsResponse:
         runtime = RuntimeOptions()
         return await self.list_user_groups_with_options_async(request, runtime)
+
+    def list_user_groups_for_user_with_options(
+        self,
+        request: main_models.ListUserGroupsForUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserGroupsForUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.paging_off):
+            query['PagingOff'] = request.paging_off
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserGroupsForUser',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserGroupsForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_groups_for_user_with_options_async(
+        self,
+        request: main_models.ListUserGroupsForUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserGroupsForUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.paging_off):
+            query['PagingOff'] = request.paging_off
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserGroupsForUser',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserGroupsForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_groups_for_user(
+        self,
+        request: main_models.ListUserGroupsForUserRequest,
+    ) -> main_models.ListUserGroupsForUserResponse:
+        runtime = RuntimeOptions()
+        return self.list_user_groups_for_user_with_options(request, runtime)
+
+    async def list_user_groups_for_user_async(
+        self,
+        request: main_models.ListUserGroupsForUserRequest,
+    ) -> main_models.ListUserGroupsForUserResponse:
+        runtime = RuntimeOptions()
+        return await self.list_user_groups_for_user_with_options_async(request, runtime)
 
     def list_user_public_keys_with_options(
         self,
@@ -9983,6 +12831,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source_instance_id):
@@ -10031,6 +12881,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.source_instance_id):
@@ -10085,6 +12937,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10123,6 +12977,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10158,6 +13014,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_database_account_with_options_async(request, runtime)
 
+    def modify_databases_project_with_options(
+        self,
+        request: main_models.ModifyDatabasesProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDatabasesProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_ids):
+            query['DatabaseIds'] = request.database_ids
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_project_id):
+            query['TargetProjectId'] = request.target_project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDatabasesProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDatabasesProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_databases_project_with_options_async(
+        self,
+        request: main_models.ModifyDatabasesProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDatabasesProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.database_ids):
+            query['DatabaseIds'] = request.database_ids
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_project_id):
+            query['TargetProjectId'] = request.target_project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDatabasesProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDatabasesProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_databases_project(
+        self,
+        request: main_models.ModifyDatabasesProjectRequest,
+    ) -> main_models.ModifyDatabasesProjectResponse:
+        runtime = RuntimeOptions()
+        return self.modify_databases_project_with_options(request, runtime)
+
+    async def modify_databases_project_async(
+        self,
+        request: main_models.ModifyDatabasesProjectRequest,
+    ) -> main_models.ModifyDatabasesProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_databases_project_with_options_async(request, runtime)
+
     def modify_host_with_options(
         self,
         request: main_models.ModifyHostRequest,
@@ -10183,6 +13125,8 @@ class Client(OpenApiClient):
             query['OSType'] = request.ostype
         if not DaraCore.is_null(request.pref_kex):
             query['PrefKex'] = request.pref_kex
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10229,6 +13173,8 @@ class Client(OpenApiClient):
             query['OSType'] = request.ostype
         if not DaraCore.is_null(request.pref_kex):
             query['PrefKex'] = request.pref_kex
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10287,6 +13233,8 @@ class Client(OpenApiClient):
             query['PrivateKey'] = request.private_key
         if not DaraCore.is_null(request.privilege_type):
             query['PrivilegeType'] = request.privilege_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rotation_mode):
@@ -10333,6 +13281,8 @@ class Client(OpenApiClient):
             query['PrivateKey'] = request.private_key
         if not DaraCore.is_null(request.privilege_type):
             query['PrivilegeType'] = request.privilege_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rotation_mode):
@@ -10385,6 +13335,8 @@ class Client(OpenApiClient):
             query['HostGroupName'] = request.host_group_name
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10421,6 +13373,8 @@ class Client(OpenApiClient):
             query['HostGroupName'] = request.host_group_name
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10473,6 +13427,8 @@ class Client(OpenApiClient):
             query['PassPhrase'] = request.pass_phrase
         if not DaraCore.is_null(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10511,6 +13467,8 @@ class Client(OpenApiClient):
             query['PassPhrase'] = request.pass_phrase
         if not DaraCore.is_null(request.private_key):
             query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10559,6 +13517,8 @@ class Client(OpenApiClient):
             query['HostIds'] = request.host_ids
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10593,6 +13553,8 @@ class Client(OpenApiClient):
             query['HostIds'] = request.host_ids
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -10641,6 +13603,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.port):
             query['Port'] = request.port
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not DaraCore.is_null(request.region_id):
@@ -10677,6 +13641,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.port):
             query['Port'] = request.port
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_name):
             query['ProtocolName'] = request.protocol_name
         if not DaraCore.is_null(request.region_id):
@@ -10714,6 +13680,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_hosts_port_with_options_async(request, runtime)
 
+    def modify_hosts_project_with_options(
+        self,
+        request: main_models.ModifyHostsProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyHostsProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.host_ids):
+            query['HostIds'] = request.host_ids
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_project_id):
+            query['TargetProjectId'] = request.target_project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyHostsProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyHostsProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_hosts_project_with_options_async(
+        self,
+        request: main_models.ModifyHostsProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyHostsProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.host_ids):
+            query['HostIds'] = request.host_ids
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_project_id):
+            query['TargetProjectId'] = request.target_project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyHostsProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyHostsProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_hosts_project(
+        self,
+        request: main_models.ModifyHostsProjectRequest,
+    ) -> main_models.ModifyHostsProjectResponse:
+        runtime = RuntimeOptions()
+        return self.modify_hosts_project_with_options(request, runtime)
+
+    async def modify_hosts_project_async(
+        self,
+        request: main_models.ModifyHostsProjectRequest,
+    ) -> main_models.ModifyHostsProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_hosts_project_with_options_async(request, runtime)
+
     def modify_instance_adauth_server_with_options(
         self,
         request: main_models.ModifyInstanceADAuthServerRequest,
@@ -10733,8 +13785,18 @@ class Client(OpenApiClient):
             query['Filter'] = request.filter
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
         if not DaraCore.is_null(request.is_ssl):
             query['IsSSL'] = request.is_ssl
+        if not DaraCore.is_null(request.is_sync_email_attr):
+            query['IsSyncEmailAttr'] = request.is_sync_email_attr
+        if not DaraCore.is_null(request.is_sync_mobile_attr):
+            query['IsSyncMobileAttr'] = request.is_sync_mobile_attr
+        if not DaraCore.is_null(request.is_sync_name_attr):
+            query['IsSyncNameAttr'] = request.is_sync_name_attr
+        if not DaraCore.is_null(request.is_sync_ou_as_user_group):
+            query['IsSyncOuAsUserGroup'] = request.is_sync_ou_as_user_group
         if not DaraCore.is_null(request.mobile_mapping):
             query['MobileMapping'] = request.mobile_mapping
         if not DaraCore.is_null(request.name_mapping):
@@ -10747,8 +13809,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.server):
             query['Server'] = request.server
+        if not DaraCore.is_null(request.server_name):
+            query['ServerName'] = request.server_name
         if not DaraCore.is_null(request.standby_server):
             query['StandbyServer'] = request.standby_server
+        if not DaraCore.is_null(request.sync_interval):
+            query['SyncInterval'] = request.sync_interval
+        if not DaraCore.is_null(request.user_source_id):
+            query['UserSourceId'] = request.user_source_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10787,8 +13855,18 @@ class Client(OpenApiClient):
             query['Filter'] = request.filter
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
         if not DaraCore.is_null(request.is_ssl):
             query['IsSSL'] = request.is_ssl
+        if not DaraCore.is_null(request.is_sync_email_attr):
+            query['IsSyncEmailAttr'] = request.is_sync_email_attr
+        if not DaraCore.is_null(request.is_sync_mobile_attr):
+            query['IsSyncMobileAttr'] = request.is_sync_mobile_attr
+        if not DaraCore.is_null(request.is_sync_name_attr):
+            query['IsSyncNameAttr'] = request.is_sync_name_attr
+        if not DaraCore.is_null(request.is_sync_ou_as_user_group):
+            query['IsSyncOuAsUserGroup'] = request.is_sync_ou_as_user_group
         if not DaraCore.is_null(request.mobile_mapping):
             query['MobileMapping'] = request.mobile_mapping
         if not DaraCore.is_null(request.name_mapping):
@@ -10801,8 +13879,14 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.server):
             query['Server'] = request.server
+        if not DaraCore.is_null(request.server_name):
+            query['ServerName'] = request.server_name
         if not DaraCore.is_null(request.standby_server):
             query['StandbyServer'] = request.standby_server
+        if not DaraCore.is_null(request.sync_interval):
+            query['SyncInterval'] = request.sync_interval
+        if not DaraCore.is_null(request.user_source_id):
+            query['UserSourceId'] = request.user_source_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11139,6 +14223,8 @@ class Client(OpenApiClient):
             query['NetworkDomainName'] = request.network_domain_name
         if not DaraCore.is_null(request.network_domain_type):
             query['NetworkDomainType'] = request.network_domain_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.proxies):
             query['Proxies'] = request.proxies
         if not DaraCore.is_null(request.region_id):
@@ -11179,6 +14265,8 @@ class Client(OpenApiClient):
             query['NetworkDomainName'] = request.network_domain_name
         if not DaraCore.is_null(request.network_domain_type):
             query['NetworkDomainType'] = request.network_domain_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.proxies):
             query['Proxies'] = request.proxies
         if not DaraCore.is_null(request.region_id):
@@ -11233,6 +14321,8 @@ class Client(OpenApiClient):
             query['PolicyName'] = request.policy_name
         if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -11271,6 +14361,8 @@ class Client(OpenApiClient):
             query['PolicyName'] = request.policy_name
         if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -11306,6 +14398,366 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_policy_with_options_async(request, runtime)
 
+    def modify_project_with_options(
+        self,
+        request: main_models.ModifyProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_project_with_options_async(
+        self,
+        request: main_models.ModifyProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.member_ids):
+            query['MemberIds'] = request.member_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyProject',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_project(
+        self,
+        request: main_models.ModifyProjectRequest,
+    ) -> main_models.ModifyProjectResponse:
+        runtime = RuntimeOptions()
+        return self.modify_project_with_options(request, runtime)
+
+    async def modify_project_async(
+        self,
+        request: main_models.ModifyProjectRequest,
+    ) -> main_models.ModifyProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_project_with_options_async(request, runtime)
+
+    def modify_project_authorization_with_options(
+        self,
+        request: main_models.ModifyProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyProjectAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_project_authorization_with_options_async(
+        self,
+        request: main_models.ModifyProjectAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyProjectAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_id):
+            query['AuthorizationId'] = request.authorization_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyProjectAuthorization',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyProjectAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_project_authorization(
+        self,
+        request: main_models.ModifyProjectAuthorizationRequest,
+    ) -> main_models.ModifyProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return self.modify_project_authorization_with_options(request, runtime)
+
+    async def modify_project_authorization_async(
+        self,
+        request: main_models.ModifyProjectAuthorizationRequest,
+    ) -> main_models.ModifyProjectAuthorizationResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_project_authorization_with_options_async(request, runtime)
+
+    def modify_project_notify_receiver_with_options(
+        self,
+        request: main_models.ModifyProjectNotifyReceiverRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyProjectNotifyReceiverResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            query['Phone'] = request.phone
+        if not DaraCore.is_null(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyProjectNotifyReceiver',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyProjectNotifyReceiverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_project_notify_receiver_with_options_async(
+        self,
+        request: main_models.ModifyProjectNotifyReceiverRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyProjectNotifyReceiverResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            query['Phone'] = request.phone
+        if not DaraCore.is_null(request.receiver_id):
+            query['ReceiverId'] = request.receiver_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyProjectNotifyReceiver',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyProjectNotifyReceiverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_project_notify_receiver(
+        self,
+        request: main_models.ModifyProjectNotifyReceiverRequest,
+    ) -> main_models.ModifyProjectNotifyReceiverResponse:
+        runtime = RuntimeOptions()
+        return self.modify_project_notify_receiver_with_options(request, runtime)
+
+    async def modify_project_notify_receiver_async(
+        self,
+        request: main_models.ModifyProjectNotifyReceiverRequest,
+    ) -> main_models.ModifyProjectNotifyReceiverResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_project_notify_receiver_with_options_async(request, runtime)
+
+    def modify_review_rule_with_options(
+        self,
+        request: main_models.ModifyReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyReviewRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_review_rule_with_options_async(
+        self,
+        request: main_models.ModifyReviewRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyReviewRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.review_rule_id):
+            query['ReviewRuleId'] = request.review_rule_id
+        if not DaraCore.is_null(request.scope_type):
+            query['ScopeType'] = request.scope_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyReviewRule',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyReviewRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_review_rule(
+        self,
+        request: main_models.ModifyReviewRuleRequest,
+    ) -> main_models.ModifyReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return self.modify_review_rule_with_options(request, runtime)
+
+    async def modify_review_rule_async(
+        self,
+        request: main_models.ModifyReviewRuleRequest,
+    ) -> main_models.ModifyReviewRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_review_rule_with_options_async(request, runtime)
+
     def modify_rule_with_options(
         self,
         request: main_models.ModifyRuleRequest,
@@ -11327,6 +14779,8 @@ class Client(OpenApiClient):
             query['Hosts'] = request.hosts
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -11377,6 +14831,8 @@ class Client(OpenApiClient):
             query['Hosts'] = request.hosts
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.rule_id):
@@ -11561,6 +15017,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -11597,6 +15055,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -11739,6 +15199,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -11773,6 +15235,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -11821,6 +15285,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -11855,6 +15321,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.network_domain_id):
             query['NetworkDomainId'] = request.network_domain_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -11983,6 +15451,8 @@ class Client(OpenApiClient):
             query['CommandId'] = request.command_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12015,6 +15485,8 @@ class Client(OpenApiClient):
             query['CommandId'] = request.command_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12061,6 +15533,8 @@ class Client(OpenApiClient):
             query['ApproveId'] = request.approve_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12093,6 +15567,8 @@ class Client(OpenApiClient):
             query['ApproveId'] = request.approve_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12141,6 +15617,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.operation_ticket_id):
             query['OperationTicketId'] = request.operation_ticket_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12175,6 +15653,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.operation_ticket_id):
             query['OperationTicketId'] = request.operation_ticket_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12305,6 +15785,8 @@ class Client(OpenApiClient):
             query['HostIds'] = request.host_ids
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12339,6 +15821,8 @@ class Client(OpenApiClient):
             query['HostIds'] = request.host_ids
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12461,6 +15945,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -12495,6 +15981,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.user_group_id):
@@ -12545,6 +16033,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
         if not DaraCore.is_null(request.token_id):
             query['TokenId'] = request.token_id
         req = open_api_util_models.OpenApiRequest(
@@ -12577,6 +16067,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
         if not DaraCore.is_null(request.token_id):
             query['TokenId'] = request.token_id
         req = open_api_util_models.OpenApiRequest(
@@ -12625,6 +16117,8 @@ class Client(OpenApiClient):
             query['HostAccountId'] = request.host_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12659,6 +16153,8 @@ class Client(OpenApiClient):
             query['HostAccountId'] = request.host_account_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12711,6 +16207,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12749,6 +16247,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12801,6 +16301,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12839,6 +16341,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -12891,6 +16395,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.scope_type):
@@ -12931,6 +16437,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.scope_type):
@@ -12985,6 +16493,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -13023,6 +16533,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -13075,6 +16587,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -13113,6 +16627,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -13163,6 +16679,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_config_shrink):
             query['ProtocolConfig'] = request.protocol_config_shrink
         if not DaraCore.is_null(request.region_id):
@@ -13201,6 +16719,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.protocol_config_shrink):
             query['ProtocolConfig'] = request.protocol_config_shrink
         if not DaraCore.is_null(request.region_id):
@@ -13249,6 +16769,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.scope_type):
@@ -13287,6 +16809,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.scope_type):

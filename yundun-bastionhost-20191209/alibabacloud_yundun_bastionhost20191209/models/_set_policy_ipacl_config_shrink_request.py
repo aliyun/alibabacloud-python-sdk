@@ -10,27 +10,30 @@ class SetPolicyIPAclConfigShrinkRequest(DaraModel):
         ipacl_config_shrink: str = None,
         instance_id: str = None,
         policy_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The access control settings for source IP addresses.
+        # The source IP address restriction configuration.
         # 
         # This parameter is required.
         self.ipacl_config_shrink = ipacl_config_shrink
-        # The bastion host ID.
+        # The ID of the bastion host instance.
         # 
-        # > You can call the DescribeInstances operation to query the bastion host ID.[](~~153281~~)
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the bastion host instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The ID of the control policy that you want to modify.
         # 
-        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The project ID.
+        self.project_id = project_id
         # The region ID of the bastion host.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -50,6 +53,9 @@ class SetPolicyIPAclConfigShrinkRequest(DaraModel):
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -65,6 +71,9 @@ class SetPolicyIPAclConfigShrinkRequest(DaraModel):
 
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

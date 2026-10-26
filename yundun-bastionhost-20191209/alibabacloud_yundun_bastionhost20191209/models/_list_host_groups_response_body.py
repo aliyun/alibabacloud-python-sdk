@@ -69,9 +69,9 @@ class ListHostGroupsResponseBodyHostGroups(DaraModel):
         host_group_name: str = None,
         member_count: int = None,
     ):
-        # The remarks of the asset group.
+        # The description of the asset group.
         self.comment = comment
-        # The asset group ID.
+        # The ID of the asset group.
         self.host_group_id = host_group_id
         # The name of the asset group.
         self.host_group_name = host_group_name

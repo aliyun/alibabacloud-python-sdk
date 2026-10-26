@@ -11,6 +11,7 @@ class ListOperationHostsRequest(DaraModel):
         host_name: str = None,
         instance_id: str = None,
         ostype: str = None,
+        operation_project_id: str = None,
         page_number: str = None,
         page_size: str = None,
         region_id: str = None,
@@ -18,45 +19,39 @@ class ListOperationHostsRequest(DaraModel):
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
-        # The address of the host. You can specify a domain name or an IP address. Only exact matches are supported.
+        # The address of the host to query. You can use a domain name or an IP address. Fuzzy match is not supported. Only exact match is supported.
         self.host_address = host_address
-        # The name of the host. Only exact matches are supported.
+        # The name of the host to query. Fuzzy match is not supported. Only exact match is supported.
         self.host_name = host_name
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The instance ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The operating system of the host. Valid values:
-        # 
+        # The operating system of the host to query. Valid values:
         # - **Linux**
-        # 
         # - **Windows**
         self.ostype = ostype
-        # The number of the page to return. The default value is 1.
+        # The project ID.
+        self.operation_project_id = operation_project_id
+        # The page number of the current page for a paged query. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.<br> The maximum value is 100. The default value is 20. If you do not specify this parameter, the default value is used.<br>
-        # 
-        # > Specify a value for this parameter.
+        # The maximum number of entries to return on each page for a paged query.  
+        # Maximum value of PageSize: 100. Default value: 20. If you leave PageSize empty, 20 entries are returned by default.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The ID of the region where the Bastionhost instance resides.
-        # 
-        # > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the Bastionhost instance.
+        # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The source of the host. Valid values:
-        # 
-        # - **Local**: a local host
-        # 
-        # - **Ecs**: an ECS instance
+        # The source of the host to query. Valid values:
+        # - **Local**: local host
+        # - **Ecs**: ECS instance
         self.source = source
-        # The ID of the ECS instance. Only exact matches are supported.
+        # The ECS instance ID. Exact search.
         self.source_instance_id = source_instance_id
-        # The state of the host. Valid values:
-        # 
-        # - **Normal**: The host is running.
-        # 
-        # - **Release**: The host is released.
+        # The status of the host to query. Valid values:
+        # - **Normal**: Normal
+        # - **Release**: Released
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -78,6 +73,9 @@ class ListOperationHostsRequest(DaraModel):
 
         if self.ostype is not None:
             result['OSType'] = self.ostype
+
+        if self.operation_project_id is not None:
+            result['OperationProjectId'] = self.operation_project_id
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -112,6 +110,9 @@ class ListOperationHostsRequest(DaraModel):
 
         if m.get('OSType') is not None:
             self.ostype = m.get('OSType')
+
+        if m.get('OperationProjectId') is not None:
+            self.operation_project_id = m.get('OperationProjectId')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

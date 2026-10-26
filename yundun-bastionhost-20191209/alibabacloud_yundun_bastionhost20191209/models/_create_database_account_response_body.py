@@ -10,7 +10,7 @@ class CreateDatabaseAccountResponseBody(DaraModel):
         database_account_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the database account.
+        # The database account ID.
         self.database_account_id = database_account_id
         # The request ID.
         self.request_id = request_id

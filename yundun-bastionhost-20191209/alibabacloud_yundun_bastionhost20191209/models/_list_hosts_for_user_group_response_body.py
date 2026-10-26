@@ -14,11 +14,11 @@ class ListHostsForUserGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of hosts.
+        # The list of hosts returned.
         self.hosts = hosts
         # The ID of the request.
         self.request_id = request_id
-        # The total number of hosts.
+        # The total number of hosts returned.
         self.total_count = total_count
 
     def validate(self):
@@ -73,25 +73,21 @@ class ListHostsForUserGroupResponseBodyHosts(DaraModel):
         ostype: str = None,
     ):
         # The address type of the host. Valid values:
-        # 
-        # - **Public**: a public IP address
-        # 
-        # - **Private**: a private IP address
+        # - **Public**: public address
+        # - **Private**: private network address
         self.active_address_type = active_address_type
-        # The remarks of the host.
+        # The description of the host.
         self.comment = comment
         # The ID of the host.
         self.host_id = host_id
         # The name of the host.
         self.host_name = host_name
-        # The private IP address of the host. This can be a domain name or an IP address.
+        # The private network address of the host, which can be a domain name or an IP address.
         self.host_private_address = host_private_address
-        # The public IP address of the host. This can be a domain name or an IP address.
+        # The public address of the host, which can be a domain name or an IP address.
         self.host_public_address = host_public_address
-        # The OS type of the host. Valid values:
-        # 
+        # The operating system type of the host. Valid values:
         # - **Linux**
-        # 
         # - **Windows**
         self.ostype = ostype
 

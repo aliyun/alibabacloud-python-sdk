@@ -15,56 +15,52 @@ class ModifyHostAccountRequest(DaraModel):
         password: str = None,
         private_key: str = None,
         privilege_type: str = None,
+        project_id: int = None,
         region_id: str = None,
         rotation_mode: str = None,
     ):
-        # Specifies the ID of the host account to be modified.
+        # The ID of the host account to modify.
         # 
         # > You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.host_account_id = host_account_id
-        # Specifies the modified host account name, which can contain up to 128 characters.
+        # The new name of the host account. The name can be up to 128 characters in length.
         self.host_account_name = host_account_name
-        # The host shared key ID.
-        # 
-        # > You can obtain this ID by calling the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation.
+        # The ID of the shared key for the host.
+        # > You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to obtain this ID.
         self.host_share_key_id = host_share_key_id
-        # Specifies the ID of the Bastionhost instance where the host account to be modified resides.
+        # The ID of the bastion host instance where the host account to modify resides.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the Bastionhost instance ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the bastion host instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies the modified security token of the host account\\"s private key.
+        # The new passphrase of the private key for the host account.
         # 
-        # > This parameter takes effect when the host account protocol is SSH. This parameter is not required when the host account protocol is RDP.
+        # > This parameter takes effect only when the protocol of the host account is SSH. If the protocol is RDP, you do not need to configure this parameter.
         self.pass_phrase = pass_phrase
-        # Specifies the modified password of the host account.
+        # The new password of the host account.
         self.password = password
-        # Specifies the modified private key of the host account, which is a Base64-encoded string.
+        # The new private key of the host account. The private key is a Base64-encoded string.
         # 
-        # > This parameter takes effect when the host account protocol is SSH. This parameter is not required when the host account protocol is RDP. You can call the [GetHostAccount](https://help.aliyun.com/document_detail/204391.html) operation to query the protocol used by the host account. You can configure both a password and a private key for a host account. When connecting to an asset, Bastionhost preferentially uses the private key for connection.
+        # > This parameter takes effect only when the protocol of the host account is SSH. If the protocol is RDP, you do not need to configure this parameter. You can call the [GetHostAccount](https://help.aliyun.com/document_detail/204391.html) operation to query the protocol used by the host account. You can configure both a password and a private key for the host account. When connecting to an asset, the bastion host preferentially uses the private key.
         self.private_key = private_key
-        # Account permission type. Valid values:
-        # 
-        # - **Privileged**: privileged account
-        # 
-        # - **Normal**: regular account
-        # 
-        # > This parameter is supported only in V3.2.47 and later versions.
+        # The privilege type of the account. Valid values:
+        # - **Privileged**: privileged account.
+        # - **Normal**: standard account.
+        # >Only supported in V3.2.47 and later.
         self.privilege_type = privilege_type
-        # Specifies the region ID of the Bastionhost instance where the host account to be queried resides.
+        # The ID of the project to which the host of the host account belongs.
+        self.project_id = project_id
+        # The region ID of the bastion host instance where the host account to query resides.
         # 
         # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # Account password rotation mode. Valid values:
-        # 
-        # - **Privileged**: Use a privileged account to change the password
-        # 
-        # - **Self**: Do not use a privileged account to change the password
-        # 
-        # > This parameter is supported only in V3.2.47 and later versions.
+        # The password rotation mode of the account. Valid values:
+        # - **Privileged**: uses a privileged account to rotate the password.
+        # - **Self**: does not use a privileged account to rotate the password.
+        # >Only supported in V3.2.47 and later.
         self.rotation_mode = rotation_mode
 
     def validate(self):
@@ -99,6 +95,9 @@ class ModifyHostAccountRequest(DaraModel):
         if self.privilege_type is not None:
             result['PrivilegeType'] = self.privilege_type
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -132,6 +131,9 @@ class ModifyHostAccountRequest(DaraModel):
 
         if m.get('PrivilegeType') is not None:
             self.privilege_type = m.get('PrivilegeType')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

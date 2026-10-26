@@ -13,9 +13,9 @@ class AttachHostGroupAccountsToUserResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.AttachHostGroupAccountsToUserResponseBodyResults] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The result of the call.
+        # The results of the API call.
         self.results = results
 
     def validate(self):
@@ -61,23 +61,18 @@ class AttachHostGroupAccountsToUserResponseBodyResults(DaraModel):
         message: str = None,
         user_id: str = None,
     ):
-        # The return code that indicates whether the call was successful. Valid values:
-        # 
-        # - **OK**: The call was successful.
-        # 
+        # The result code of the API call. Valid values:
+        # - **OK**: The operation succeeded.
         # - **UNEXPECTED**: An unknown error occurred.
-        # 
-        # - **INVALID_ARGUMENT**: A request parameter is invalid.
-        # 
-        # - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # 
-        # - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # - **INVALID_ARGUMENT**: The specified request parameter is invalid.
+        # - **OBJECT_NOT_FOUND**: The specified object does not exist.
+        # - **OBJECT_AlREADY_EXISTS** : The specified object already exists.
         self.code = code
-        # The result of authorizing the user to manage the host accounts.
+        # The results of the operation to grant the user access to the host accounts.
         self.host_account_names = host_account_names
         # The ID of the host group.
         self.host_group_id = host_group_id
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated. You can ignore this parameter.
         self.message = message
         # The ID of the user.
         self.user_id = user_id
@@ -141,21 +136,16 @@ class AttachHostGroupAccountsToUserResponseBodyResultsHostAccountNames(DaraModel
         host_account_name: str = None,
         message: str = None,
     ):
-        # The return code that indicates whether the user was authorized to manage the host account. Valid values:
-        # 
-        # - **OK**: The call was successful.
-        # 
+        # The result code of the operation to grant the user access to the host account. Valid values:
+        # - **OK**: The operation succeeded.
         # - **UNEXPECTED**: An unknown error occurred.
-        # 
-        # - **INVALID_ARGUMENT**: A request parameter is invalid.
-        # 
-        # - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # 
-        # - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # - **INVALID_ARGUMENT**: The specified request parameter is invalid.
+        # - **OBJECT_NOT_FOUND**: The specified object does not exist.
+        # - **OBJECT_AlREADY_EXISTS** : The specified object already exists.
         self.code = code
         # The name of the host account.
         self.host_account_name = host_account_name
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated. You can ignore this parameter.
         self.message = message
 
     def validate(self):

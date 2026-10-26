@@ -16,45 +16,42 @@ class ModifyDatabaseRequest(DaraModel):
         database_public_address: str = None,
         instance_id: str = None,
         network_domain_id: str = None,
+        project_id: int = None,
         region_id: str = None,
         source_instance_id: str = None,
     ):
-        # The new address type of the database. Valid values:
-        # 
-        # - **Public**
-        # 
-        # - **Private**
+        # The address type of the database after the modification. Valid values:
+        # - **Public**: public network address
+        # - **Private**: private network address
         self.active_address_type = active_address_type
-        # The new remarks of the database.
+        # The description of the database after the modification.
         self.comment = comment
-        # The ID of the database to modify.
+        # The ID of the database to be modified.
         # 
         # This parameter is required.
         self.database_id = database_id
-        # The new name of the database.
+        # The name of the database instance after the modification.
         self.database_name = database_name
-        # The new port of the database.
+        # The port of the database after the modification.
         self.database_port = database_port
-        # The new internal address of the database. Specify an IPv4 address or a domain name.
+        # The private network address of the database after the modification. IPv4 addresses and domain name formats are supported.
         self.database_private_address = database_private_address
-        # The new public address of the database. Specify an IPv4 address or a domain name.
+        # The public address of the database after the modification. Both IPv4 addresses and domain names are supported.
         self.database_public_address = database_public_address
-        # The ID of the bastion host that manages the database to modify.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The ID of the Bastionhost instance to which the database to be modified belongs.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the new network domain for the database.
-        # 
-        # > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
+        # The ID of the network domain to which the database belongs after the modification.
+        # > You can call the [ListNetworkDomains ](https://help.aliyun.com/document_detail/2758827.html) operation to obtain this parameter.
         self.network_domain_id = network_domain_id
-        # The region ID of the bastion host that manages the database to modify.
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance to which the database to be modified belongs.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the ApsaraDB for RDS instance or PolarDB cluster to modify.
-        # 
+        # The instance ID of the database to be modified.  
         # > This parameter is required if **Source** is set to **Rds** or **PolarDB**.
         self.source_instance_id = source_instance_id
 
@@ -93,6 +90,9 @@ class ModifyDatabaseRequest(DaraModel):
         if self.network_domain_id is not None:
             result['NetworkDomainId'] = self.network_domain_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -129,6 +129,9 @@ class ModifyDatabaseRequest(DaraModel):
 
         if m.get('NetworkDomainId') is not None:
             self.network_domain_id = m.get('NetworkDomainId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -17,43 +17,42 @@ class ModifyRuleRequest(DaraModel):
         host_groups: List[main_models.ModifyRuleRequestHostGroups] = None,
         hosts: List[main_models.ModifyRuleRequestHosts] = None,
         instance_id: str = None,
+        project_id: int = None,
         region_id: str = None,
         rule_id: str = None,
         rule_name: str = None,
         user_group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The new remarks of the authorization rule. It can be up to 500 characters in length.
+        # The new remarks for the authorization rule. The remarks can be up to 500 characters in length.
         self.comment = comment
-        # The databases and database accounts that a user associated with the modified rule can manage.
+        # The new list of database instances and database accounts associated with the authorization rule.
         self.databases = databases
-        # The end time of the new validity period of the authorization rule. The value is a UNIX timestamp. Unit: seconds.
+        # The new end time of the validity period for the authorization rule. The value is a UNIX timestamp in seconds.
         self.effective_end_time = effective_end_time
-        # The start time of the new validity period of the authorization rule. The value is a UNIX timestamp. Unit: seconds.
+        # The new start time of the validity period for the authorization rule. The value is a UNIX timestamp in seconds.
         self.effective_start_time = effective_start_time
-        # The asset groups and asset accounts that a user associated with the modified rule can manage.
+        # The new list of asset groups and accounts associated with the authorization rule.
         self.host_groups = host_groups
-        # An array that consists of the host IDs and host account IDs with which the modified authorization rule is associated.
+        # The new array of host IDs and host account IDs associated with the authorization rule.
         self.hosts = hosts
-        # The ID of the bastion host whose authorization rule you want to modify.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # The ID of the Bastionhost instance to which the authorization rule to be updated belongs. > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the value of this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host to which the authorization rule to modify belongs.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the Bastionhost instance to which the authorization rule to be updated belongs. > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the authorization rule to modify.
+        # The ID of the authorization rule to be updated.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The new name of the authorization rule. The name must be 1 to 128 characters in length and can contain periods (.), underscores (_), hyphens (-), single quotation marks (\\"), and spaces. It cannot start with a special character.
+        # The new name of the authorization rule. The name must be 1 to 128 characters in length and cannot start with a special character. It can contain only periods (.), underscores (_), hyphens (-), single quotation marks (\\"), and spaces.
         self.rule_name = rule_name
-        # The IDs of the user groups with which the modified authorization rule is associated.
+        # The new list of user group IDs associated with the authorization rule.
         self.user_group_ids = user_group_ids
-        # The IDs of the users with whom the modified authorization rule is associated.
+        # The new list of user IDs associated with the authorization rule.
         self.user_ids = user_ids
 
     def validate(self):
@@ -101,6 +100,9 @@ class ModifyRuleRequest(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -151,6 +153,9 @@ class ModifyRuleRequest(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
@@ -174,7 +179,7 @@ class ModifyRuleRequestHosts(DaraModel):
         host_account_ids: List[str] = None,
         host_id: str = None,
     ):
-        # The host account IDs.
+        # The list of host account IDs.
         self.host_account_ids = host_account_ids
         # The host ID.
         self.host_id = host_id
@@ -211,7 +216,7 @@ class ModifyRuleRequestHostGroups(DaraModel):
         host_account_names: List[str] = None,
         host_group_id: str = None,
     ):
-        # The names of the asset accounts.
+        # The list of asset account names.
         self.host_account_names = host_account_names
         # The asset group ID.
         self.host_group_id = host_group_id
@@ -248,9 +253,9 @@ class ModifyRuleRequestDatabases(DaraModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
-        # The database account IDs.
+        # The list of database account IDs.
         self.database_account_ids = database_account_ids
-        # The database ID.
+        # The database instance ID.
         self.database_id = database_id
 
     def validate(self):

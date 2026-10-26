@@ -13,37 +13,37 @@ class AcceptOperationTicketRequest(DaraModel):
         effect_start_time: str = None,
         instance_id: str = None,
         operation_ticket_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The review description.
+        # The approval remarks.
         self.comment = comment
-        # The maximum number of logons allowed. Valid values:
+        # The limit on the number of logons allowed. Valid values:
         # 
-        # - **0**: The number of logons is unlimited. The O\\&M engineer can log on to the specified asset for unlimited times during the validity period.
+        # - **0**: No limit on the number of logons. The O&M engineer can log on an unlimited number of times during the validity period.
         # 
-        # - **1**: The O\\&M engineer can log on to the specified asset only once during the validity period.
-        # 
-        # > * You can set this parameter only to 0 if you review an O\\&M application on a database.
-        # >
-        # > * If you do not specify this parameter, the default value 0 is used.
+        # - **1**: The O&M engineer can log on only once during the validity period.
+        # > - The logon limit for database asset O&M approval can only be set to no limit on the number of logons in Settings.
+        # > - If an empty character string is passed, the default value is no limit on the number of logons.
         self.effect_count = effect_count
-        # The end time of the validity period. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the validity period for logon (in seconds, UNIX timestamp format).
         self.effect_end_time = effect_end_time
-        # The start time of the validity period. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the validity period for logon (in seconds, UNIX timestamp format).
         self.effect_start_time = effect_start_time
-        # The ID of the bastion host.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The ID of the bastion host instance.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the O\\&M application that you want to approve. You can call the ListOperationTickets operation to query the IDs of all O\\&M applications that require review.
+        # The ID of the O&M request to approve.
+        # > You can call the [ListOperationTickets](https://help.aliyun.com/document_detail/2584313.html) operation to query all OperationTicketId values that require approval.
         # 
         # This parameter is required.
         self.operation_ticket_id = operation_ticket_id
+        # The project ID.
+        self.project_id = project_id
         # The region ID of the bastion host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -72,6 +72,9 @@ class AcceptOperationTicketRequest(DaraModel):
         if self.operation_ticket_id is not None:
             result['OperationTicketId'] = self.operation_ticket_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -96,6 +99,9 @@ class AcceptOperationTicketRequest(DaraModel):
 
         if m.get('OperationTicketId') is not None:
             self.operation_ticket_id = m.get('OperationTicketId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

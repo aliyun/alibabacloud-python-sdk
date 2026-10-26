@@ -12,7 +12,7 @@ class ListHostGroupAccountNamesForUserResponseBody(DaraModel):
         host_account_names: List[str] = None,
         request_id: str = None,
     ):
-        # An array that consists of the names of host accounts.
+        # The list of host account names.
         self.host_account_names = host_account_names
         # The ID of the request.
         self.request_id = request_id

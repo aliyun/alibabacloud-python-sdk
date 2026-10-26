@@ -10,21 +10,22 @@ class AttachHostAccountsToHostShareKeyRequest(DaraModel):
         host_account_ids: str = None,
         host_share_key_id: str = None,
         instance_id: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The host account IDs.
-        # 
-        # > You must specify this parameter. You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/462937.html) operation to query the host account IDs.
+        # The list of host account IDs.
+        # > This parameter is required. You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/462937.html) operation to obtain this parameter.
         self.host_account_ids = host_account_ids
-        # The shared key ID.
-        # 
-        # > You must specify this parameter. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
+        # The ID of the host shared key.
+        # > This parameter is required. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to obtain this parameter.
         self.host_share_key_id = host_share_key_id
-        # The ID of the bastion host. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The instance ID of the bastion host. You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the bastion host. For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -44,6 +45,9 @@ class AttachHostAccountsToHostShareKeyRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -59,6 +63,9 @@ class AttachHostAccountsToHostShareKeyRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

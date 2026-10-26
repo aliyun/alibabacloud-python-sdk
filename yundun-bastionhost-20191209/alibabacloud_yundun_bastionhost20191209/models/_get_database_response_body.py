@@ -11,7 +11,7 @@ class GetDatabaseResponseBody(DaraModel):
         database: main_models.GetDatabaseResponseBodyDatabase = None,
         request_id: str = None,
     ):
-        # The returned detailed information about the database.
+        # The details of the database instance.
         self.database = database
         # The request ID.
         self.request_id = request_id
@@ -61,55 +61,45 @@ class GetDatabaseResponseBodyDatabase(DaraModel):
         source_instance_region_id: str = None,
         source_instance_state: str = None,
     ):
-        # The address type of the database. Valid values:
+        # The address type of the database instance. Valid values:
         # 
-        # - Public
-        # 
-        # - Private
+        # - Public: public address.
+        # - Private: private endpoint. The database is accessed over a private network.
         self.active_address_type = active_address_type
-        # The remarks of the database.
+        # The description of the database instance.
         self.comment = comment
-        # The database ID.
+        # The instance ID of the database.
         self.database_id = database_id
-        # The name of the database.
+        # The name of the database instance.
         self.database_name = database_name
         # The port of the database.
         self.database_port = database_port
-        # The internal endpoint of the database.
+        # The private endpoint of the database instance. The database is accessed over a private network.
         self.database_private_address = database_private_address
-        # The public endpoint of the database.
+        # The public address of the database instance.
         self.database_public_address = database_public_address
-        # The database engine. Valid values:
-        # 
+        # The type of the database. Valid values:
         # - **mysql**
-        # 
         # - **sqlserver**
-        # 
         # - **postgresql**
-        # 
         # - **oracle**
         self.database_type = database_type
         # The ID of the network domain to which the database belongs.
         self.network_domain_id = network_domain_id
-        # The database type. Valid values:
+        # The source of the database instance. Valid values:
         # 
-        # - **Local**: on-premises database.
-        # 
-        # - **Rds**: ApsaraDB RDS instance.
-        # 
-        # - **PolarDB**: PolarDB cluster.
+        # - **Local**: a local database instance.
+        # - **Rds**: an ApsaraDB RDS database instance.
+        # - **PolarDB**: a PolarDB database instance.
         self.source = source
-        # The ID of the ApsaraDB RDS instance or PolarDB cluster.
-        # 
-        # > If **Source** is set to **Local**, this parameter is empty.
+        # The instance ID of the ApsaraDB RDS or PolarDB instance that corresponds to the database.
+        # > If **Source** is set to **Local**, this parameter returns an empty value.
         self.source_instance_id = source_instance_id
-        # The region ID of the ApsaraDB RDS instance or PolarDB cluster.
+        # The region ID of the ApsaraDB RDS instance or PolarDB instance that corresponds to the database.
         self.source_instance_region_id = source_instance_region_id
-        # The status of the database. Valid values:
-        # 
-        # - **Normal**
-        # 
-        # - **Release**
+        # The instance status of the database. Valid values:
+        # - **Normal**: normal.
+        # - **Release**: released.
         self.source_instance_state = source_instance_state
 
     def validate(self):

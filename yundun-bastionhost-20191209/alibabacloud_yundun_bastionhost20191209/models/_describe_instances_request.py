@@ -18,33 +18,33 @@ class DescribeInstancesRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.DescribeInstancesRequestTag] = None,
     ):
-        # The IDs of the bastion host instances.
+        # The ID of the Bastionhost instance.
         self.instance_id = instance_id
-        # The status of the bastion host instance. Valid values:
+        # The status of the Bastionhost instance. Valid values:
         # 
-        # - **PENDING**: The instance is not initialized.
+        # - **PENDING**: Uninitialized
         # 
-        # - **CREATING**: The instance is being created.
+        # - **CREATING**: Creating 
         # 
-        # - **RUNNING**: The instance is running.
+        # - **RUNNING**: Running 
         # 
-        # - **EXPIRED**: The instance is expired.
+        # - **EXPIRED**: Expired 
         # 
-        # - **CREATE_FAILED**: The instance creation failed.
+        # - **CREATE_FAILED**: Creation failed
         # 
-        # - **UPGRADING**: The instance is being upgraded.
+        # - **UPGRADING**: Upgrading
         # 
-        # - **UPGRADE_FAILED**: The instance upgrade failed.
+        # - **UPGRADE_FAILED**: Upgrade failed
         self.instance_status = instance_status
-        # The page number to return. Default value: **1**.
+        # Specifies the page number of the returned results. Default value: **1**.
         self.page_number = page_number
-        # The number of bastion host instances to return on each page. Default value: **10**.
+        # Settings for a paged query. Specifies the number of Bastionhost instances to display on each page during paging. Default value: **10**, which indicates that 10 Bastionhost instances are displayed on each page.
         self.page_size = page_size
-        # The ID of the region in which the bastion host instances reside.
+        # The region ID of the instance.
         self.region_id = region_id
-        # The ID of the resource group to which the bastion host instance belongs.
+        # The ID of the resource group to which the Bastionhost instance belongs.
         self.resource_group_id = resource_group_id
-        # The tags attached to the bastion host instances.
+        # The tags of the Bastionhost instance.
         self.tag = tag
 
     def validate(self):
@@ -117,9 +117,9 @@ class DescribeInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key of the instance.
         self.key = key
-        # The value of the tag.
+        # The tag value of the instance.
         self.value = value
 
     def validate(self):

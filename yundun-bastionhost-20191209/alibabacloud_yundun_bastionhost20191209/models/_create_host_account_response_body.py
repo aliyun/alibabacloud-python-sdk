@@ -12,7 +12,7 @@ class CreateHostAccountResponseBody(DaraModel):
     ):
         # The ID of the host account.
         self.host_account_id = host_account_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

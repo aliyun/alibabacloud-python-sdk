@@ -21,83 +21,63 @@ class GenerateAssetOperationTokenRequest(DaraModel):
         region_id: str = None,
         sso_client: str = None,
     ):
-        # The ID of the asset account.
-        # 
-        # > You must specify at least one of `AssetAccountId` and `AssetAccountName`. If you specify both parameters, `AssetAccountId` is used.
+        # The ID of the asset account for which you want to apply for an O&M token.
+        # > You must specify at least one of AssetAccountId and AssetAccountName. If both are specified, AssetAccountId takes precedence.
         self.asset_account_id = asset_account_id
-        # The name of the asset account. If this parameter specifies a custom account, you must enter the actual account name.
+        # The name of the host account. If the account is a custom account, specify the actual account name.
         # 
-        # > If you specify both `AssetAccountId` and `AssetAccountName`, `AssetAccountId` is used.
+        # > If both AssetAccountId and AssetAccountName are specified, AssetAccountId takes precedence.
         self.asset_account_name = asset_account_name
-        # The password that is encoded in Base64. This parameter is required if you want to generate an O\\&M token for a custom account.
+        # The Base64-encoded password. This parameter is required when you apply for an O&M token for a custom account.
         self.asset_account_password = asset_account_password
-        # The protocol that is used to connect to the asset. Valid values:
+        # The name of the protocol. Valid values:
         # 
         # - **SSH**
-        # 
         # - **RDP**
-        # 
         # - **Oracle**
-        # 
         # - **PostgreSQL**
-        # 
         # - **MySQL**
-        # 
         # - **SQLServer**
         # 
-        # > This parameter is required if you want to generate an O\\&M token for a custom account.
+        # > This parameter is required when you apply for an O&M token for a custom account.
         self.asset_account_protocol_name = asset_account_protocol_name
-        # The ID of the asset.
+        # The ID of the asset for which you want to apply for an O&M token.
         # 
         # This parameter is required.
         self.asset_id = asset_id
-        # The type of the asset for which you want to generate an O\\&M token. Valid values:
-        # 
-        # - **Host**
-        # 
-        # - **Database**
+        # The Asset Type for which you want to apply for a token. Valid values:
+        # - **Host**: host
+        # - **Database**: database
         # 
         # This parameter is required.
         self.asset_type = asset_type
-        # The name of the database. This parameter is required for a custom account if you set OperationMode to Sso and AssetAccountProtocolName to PostgreSQL or Oracle.
-        # 
-        # > This parameter is supported only by bastion hosts of V3.2.44 or later.
+        # The name of the database. This parameter is required when OperationMode is set to Sso, AssetAccountProtocolName is set to PostgreSQL or Oracle, and the account is a custom account.
+        # > This parameter is supported only in Bastionhost V3.2.44 and later.
         self.database_schema = database_schema
-        # The ID of the bastion host instance.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID.
+        # The instance ID of the Bastionhost instance for which you want to apply for an O&M token.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the value of this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The logon attribute. This parameter is required if you set OperationMode to Sso and use a custom Oracle account. Valid values:
-        # 
+        # The logon attribute. This parameter is required when OperationMode is set to Sso and the account is a custom Oracle account. Valid values:
         # - **SERVICENAME**
-        # 
         # - **SID**
-        # 
-        # > This parameter is supported only by bastion hosts of V3.2.44 or later.
+        # > This parameter is supported only in Bastionhost V3.2.44 and later.
         self.login_attribute = login_attribute
-        # The O\\&M mode. Valid values:
-        # 
-        # - **WebToken**: generates an O\\&M token.
-        # 
-        # - **Sso**: logs on to the client.
-        # 
-        # > This parameter is supported only by bastion hosts of V3.2.44 or later. If you do not specify this parameter, WebToken is used.
+        # The O&M logon method. Valid values:
+        # - **WebToken**: obtain an O&M token
+        # - **Sso**: log on by using a local client
+        # > This parameter is supported only in Bastionhost V3.2.44 and later. If this parameter is left empty, the default value WebToken is used.
         self.operation_mode = operation_mode
-        # The remarks for the logon. This parameter is required if your administrator enables logon remarks in the control policy.
+        # The logon note. This parameter is required when the administrator enables the logon note feature in the control policy.
         self.operation_note = operation_note
-        # The region ID of the bastion host instance.
-        # 
-        # > For more information about region IDs, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the Bastionhost instance.
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The type of the client that you want to use for O\\&M on a Linux asset. This parameter is required if you set OperationMode to Sso and the asset protocol to SSH. Valid values:
-        # 
-        # - **ssh**: opens a client that supports the SSH protocol to perform O\\&M with SSH permissions.
-        # 
-        # - **sftp**: opens a client that supports the SFTP protocol to perform O\\&M with SFTP permissions.
-        # 
-        # > This parameter is supported only by bastion hosts of V3.2.44 or later.
+        # The type of the local client to be opened for O&M operations on Linux assets. This parameter is required when OperationMode is set to Sso and the asset protocol is SSH. Valid values:
+        # - **ssh**: open an SSH client to perform O&M operations with SSH permissions
+        # - **sftp**: open an SFTP client to perform O&M operations with SFTP permissions
+        # > This parameter is supported only in Bastionhost V3.2.44 and later.
         self.sso_client = sso_client
 
     def validate(self):

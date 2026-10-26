@@ -10,35 +10,33 @@ class ModifyHostsPortRequest(DaraModel):
         host_ids: str = None,
         instance_id: str = None,
         port: str = None,
+        project_id: int = None,
         protocol_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the host for which you want to change the port. The value is a JSON string. You can add up to 100 host IDs. If you specify multiple IDs, separate the IDs with commas (,).
-        # 
-        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the IDs of hosts.
+        # The IDs of the hosts whose O&M protocols and ports you want to modify. The value is a JSON string. You can enter up to 100 host IDs. Separate multiple host IDs with commas (,).
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the host IDs.
         # 
         # This parameter is required.
         self.host_ids = host_ids
-        # The ID of the bastion host for which you want to change the port of the host.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The ID of the Bastionhost instance where the hosts whose protocol ports you want to modify reside.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The new port of the host. The port number must be an integer. Valid values: 22 to 65535.
+        # The new port number. The port number must be an integer. Valid values: 22 to 65535.
         # 
         # This parameter is required.
         self.port = port
-        # The protocol that is used to connect to the host. Valid values:
-        # 
+        # The project ID.
+        self.project_id = project_id
+        # The name of the protocol whose port you want to modify. Valid values:
         # - **SSH**
-        # 
         # - **RDP**
         # 
         # This parameter is required.
         self.protocol_name = protocol_name
-        # The region ID of the bastion host for which you want to change the port of the host.
-        # 
+        # The region ID of the Bastionhost instance where the hosts whose ports you want to modify reside.
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
@@ -59,6 +57,9 @@ class ModifyHostsPortRequest(DaraModel):
         if self.port is not None:
             result['Port'] = self.port
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.protocol_name is not None:
             result['ProtocolName'] = self.protocol_name
 
@@ -77,6 +78,9 @@ class ModifyHostsPortRequest(DaraModel):
 
         if m.get('Port') is not None:
             self.port = m.get('Port')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('ProtocolName') is not None:
             self.protocol_name = m.get('ProtocolName')

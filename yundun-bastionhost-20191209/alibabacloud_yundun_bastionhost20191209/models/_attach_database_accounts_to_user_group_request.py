@@ -12,24 +12,24 @@ class AttachDatabaseAccountsToUserGroupRequest(DaraModel):
         self,
         databases: List[main_models.AttachDatabaseAccountsToUserGroupRequestDatabases] = None,
         instance_id: str = None,
+        project_id: int = None,
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # An array of database objects.
-        # 
-        # > You can specify up to 10 databases and 10 database accounts. If you do not specify any database accounts, permissions are granted on the entire database.
+        # The array of database objects.
+        # > A maximum of 10 databases and 10 database accounts are supported. You can leave the database accounts unspecified. If no database accounts are specified, permissions are granted at the database level.
         self.databases = databases
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+        # The instance ID of the bastion host.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The project ID.
+        self.project_id = project_id
+        # The region ID of the bastion host.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the user group to which to grant the permissions.
+        # The ID of the user group to which you want to grant permissions.
         # 
         # This parameter is required.
         self.user_group_id = user_group_id
@@ -53,6 +53,9 @@ class AttachDatabaseAccountsToUserGroupRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -72,6 +75,9 @@ class AttachDatabaseAccountsToUserGroupRequest(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
@@ -86,9 +92,9 @@ class AttachDatabaseAccountsToUserGroupRequestDatabases(DaraModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
-        # An array of database account IDs.
+        # The array of database account IDs.
         self.database_account_ids = database_account_ids
-        # The ID of the database instance on which you want to grant permissions.
+        # The ID of the database instance to which you want to grant permissions.
         self.database_id = database_id
 
     def validate(self):

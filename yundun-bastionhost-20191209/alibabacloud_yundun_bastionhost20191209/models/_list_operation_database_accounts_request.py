@@ -10,32 +10,32 @@ class ListOperationDatabaseAccountsRequest(DaraModel):
         database_account_name: str = None,
         database_id: str = None,
         instance_id: str = None,
+        operation_project_id: str = None,
         page_number: str = None,
         page_size: str = None,
         region_id: str = None,
     ):
-        # The name of the database account. Exact match is supported.
+        # The name of the database account. Exact match.
         self.database_account_name = database_account_name
-        # The database ID.
-        # 
-        # > You can call the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) operation to query the database ID.
+        # The database instance ID.
+        # > You can invoke the [ListOperationDatabases](https://help.aliyun.com/document_detail/2758856.html) operation to obtain this parameter.
         self.database_id = database_id
-        # The ID of the bastion host.
-        # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # The ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: **1**.
+        # The project ID.
+        self.operation_project_id = operation_project_id
+        # The page number of the current page for a paged query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.<br>
-        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # The maximum number of entries to return on each page for a paged query.
+        # <br>The maximum value of the PageSize parameter is 100. The default number of entries returned per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
         # 
-        # > We recommend that you do not leave this parameter empty.
+        # > Do not leave the PageSize parameter empty.
         self.page_size = page_size
-        # The region ID of the bastion host.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the Bastionhost instance.
+        # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -54,6 +54,9 @@ class ListOperationDatabaseAccountsRequest(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.operation_project_id is not None:
+            result['OperationProjectId'] = self.operation_project_id
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -76,6 +79,9 @@ class ListOperationDatabaseAccountsRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('OperationProjectId') is not None:
+            self.operation_project_id = m.get('OperationProjectId')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

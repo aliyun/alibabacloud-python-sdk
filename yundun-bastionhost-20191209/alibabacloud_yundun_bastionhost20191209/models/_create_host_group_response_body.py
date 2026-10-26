@@ -10,9 +10,9 @@ class CreateHostGroupResponseBody(DaraModel):
         host_group_id: str = None,
         request_id: str = None,
     ):
-        # The asset group ID.
+        # The ID of the asset group.
         self.host_group_id = host_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -12,11 +12,11 @@ class ListNetworkDomainsRequest(DaraModel):
         network_domain_type: str = None,
         page_number: str = None,
         page_size: str = None,
+        project_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the Bastionhost instance.
-        # 
-        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
+        # The instance ID of the Bastionhost instance.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -25,18 +25,18 @@ class ListNetworkDomainsRequest(DaraModel):
         # The type of the network domain. Valid values:
         # 
         # - **Direct**: direct connection
-        # 
-        # - **Proxy**: proxy connection
+        # - **Proxy**: proxy
         self.network_domain_type = network_domain_type
-        # The number of the page to return. Default value: **1**.
+        # The page number of the current page for paging in a paged query. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.<br> The maximum value is 100. The default value is 20. If you do not specify this parameter, 20 entries are returned on each page.<br>
-        # 
-        # > Do not leave the PageSize value empty.
+        # The maximum number of entries to return on each page for paging in a paged query.  
+        # Maximum value: 100. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
+        # > Do not leave this parameter empty.
         self.page_size = page_size
+        # The project ID.
+        self.project_id = project_id
         # The region ID of the Bastionhost instance.
-        # 
-        # > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -62,6 +62,9 @@ class ListNetworkDomainsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -83,6 +86,9 @@ class ListNetworkDomainsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

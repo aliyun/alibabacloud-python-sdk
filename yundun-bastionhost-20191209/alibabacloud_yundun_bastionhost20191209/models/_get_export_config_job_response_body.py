@@ -14,17 +14,17 @@ class GetExportConfigJobResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The download link of the configuration backup file.
+        # The download URL of the configuration backup file.
         self.download_url = download_url
-        # The expiration time of the configuration backup download link. (In seconds, UNIX timestamp format)
+        # The expiration time of the configuration backup download URL. Unit: seconds. The value is a UNIX timestamp.
         self.expire_time = expire_time
-        # The ID of the configuration backup export job.
+        # The ID of the configuration backup export task.
         self.job_id = job_id
         # The error message.
         self.message = message
-        # The unique identifier that Alibaba Cloud generates for this request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the configuration backup export job.
+        # The status of the configuration backup export task.
         self.status = status
 
     def validate(self):

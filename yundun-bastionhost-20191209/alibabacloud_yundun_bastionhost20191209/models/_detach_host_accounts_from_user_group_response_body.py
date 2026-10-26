@@ -13,9 +13,9 @@ class DetachHostAccountsFromUserGroupResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.DetachHostAccountsFromUserGroupResponseBodyResults] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The result of the call.
+        # The call results of the operation.
         self.results = results
 
     def validate(self):
@@ -61,25 +61,20 @@ class DetachHostAccountsFromUserGroupResponseBodyResults(DaraModel):
         message: str = None,
         user_group_id: str = None,
     ):
-        # The return code that indicates whether the call was successful. Valid values:
-        # 
-        # - **OK**: The call was successful.
-        # 
+        # The result code of the operation. Valid values:
+        # - **OK**: The operation was successful.
         # - **UNEXPECTED**: An unknown error occurred.
-        # 
-        # - **INVALID_ARGUMENT**: A request parameter is invalid.
-        # 
-        # - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # 
-        # - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # - **INVALID_ARGUMENT**: The request parameters are invalid.
+        # - **OBJECT_NOT_FOUND**: The specified object does not exist.
+        # - **OBJECT_AlREADY_EXISTS**: The specified object already exists.
         self.code = code
-        # The result of revoking permissions on the specified host accounts from the user group.
+        # The results of removing authorized host accounts from the user group.
         self.host_accounts = host_accounts
-        # The ID of the host.
+        # The host ID.
         self.host_id = host_id
-        # This parameter is deprecated.
+        # This parameter is deprecated and can be ignored.
         self.message = message
-        # The ID of the group.
+        # The user group ID.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -141,21 +136,16 @@ class DetachHostAccountsFromUserGroupResponseBodyResultsHostAccounts(DaraModel):
         host_account_id: str = None,
         message: str = None,
     ):
-        # The return code that indicates whether permissions on the specified host account were revoked from the user group. Valid values:
-        # 
-        # - **OK**: The call was successful.
-        # 
+        # The result code of removing the authorized host account from the user group. Valid values:
+        # - **OK**: The operation was successful.
         # - **UNEXPECTED**: An unknown error occurred.
-        # 
-        # - **INVALID_ARGUMENT**: A request parameter is invalid.
-        # 
-        # - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # 
-        # - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # - **INVALID_ARGUMENT**: The request parameters are invalid.
+        # - **OBJECT_NOT_FOUND**: The specified object does not exist.
+        # - **OBJECT_AlREADY_EXISTS**: The specified object already exists.
         self.code = code
-        # The ID of the host account.
+        # The host account ID.
         self.host_account_id = host_account_id
-        # This parameter is deprecated.
+        # This parameter is deprecated and can be ignored.
         self.message = message
 
     def validate(self):
