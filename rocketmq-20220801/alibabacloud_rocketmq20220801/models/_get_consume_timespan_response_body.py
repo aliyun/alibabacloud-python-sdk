@@ -17,13 +17,21 @@ class GetConsumeTimespanResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -100,11 +108,17 @@ class GetConsumeTimespanResponseBodyData(DaraModel):
         min_timestamp: int = None,
         topic_name: str = None,
     ):
+        # The last time the consumer group consumed a message from this topic.
         self.consume_timestamp = consume_timestamp
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The production time of the latest message in the topic.
         self.max_timestamp = max_timestamp
+        # The production time of the earliest message in the topic.
         self.min_timestamp = min_timestamp
+        # The topic to which the consumer group subscribes.
         self.topic_name = topic_name
 
     def validate(self):

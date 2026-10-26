@@ -19,7 +19,7 @@ class ListConsumerConnectionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned error code.
+        # The error code.
         self.code = code
         # The returned data.
         self.data = data
@@ -31,9 +31,9 @@ class ListConsumerConnectionsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -108,13 +108,13 @@ class ListConsumerConnectionsResponseBodyData(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The client connection list
+        # The list of client connections.
         self.connections = connections
         # The consumer group ID.
         self.consumer_group_id = consumer_group_id
         # The instance ID.
         self.instance_id = instance_id
-        # The ID of the region in which the instance resides.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -173,19 +173,23 @@ class ListConsumerConnectionsResponseBodyDataConnections(DaraModel):
         message_model: str = None,
         version: str = None,
     ):
-        # The ID of the client.
+        # The client ID.
         self.client_id = client_id
-        # Host IP/Public IP
+        # The host IP address or Internet egress IP address.
         self.egress_ip = egress_ip
-        # The `hostname` of the cloud-native box.
+        # The client hostname.
         self.hostname = hostname
-        # The language of the client.
+        # The client language.
         self.language = language
-        # Consumption Mode
-        # - BROADCASTING
+        # The consumption mode of the consumer:
+        # 
         # - CLUSTERING
+        # 
+        # - LITE_SELECTIVE
+        # 
+        # - BROADCASTING
         self.message_model = message_model
-        # The version of the client.
+        # The client version.
         self.version = version
 
     def validate(self):

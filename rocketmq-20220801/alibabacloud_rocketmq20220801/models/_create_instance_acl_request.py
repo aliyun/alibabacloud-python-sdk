@@ -15,42 +15,25 @@ class CreateInstanceAclRequest(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
-        # The type of operations that can be performed on the resource.
+        # The type of the authorized operation.
         # 
-        # The following types of operations are supported based on the resource type:
-        # 
-        # *   Topic: Pub, Sub, and Pub|Sub
-        # *   Group: Sub
-        # 
-        # Valid values:
-        # 
-        # *   Sub: subscribe
-        # *   Pub|Sub: publish and subscribe
-        # *   Pub: publish
+        # Valid operations vary by resource type:
+        # - Topic: Pub, Sub, and Pub|Sub
+        # - Consumer group: Sub
         # 
         # This parameter is required.
         self.actions = actions
-        # The decision result of the authorization.
-        # 
-        # Valid values:
-        # 
-        # *   Deny
-        # *   Allow
+        # The authorization decision.
         # 
         # This parameter is required.
         self.decision = decision
-        # The IP addresses in the whitelist.
+        # The IP address whitelist.
         self.ip_whitelists = ip_whitelists
-        # The name of the resource on which you want to grant permissions.
+        # The name of the authorized resource.
         # 
         # This parameter is required.
         self.resource_name = resource_name
-        # The type of the resource on which you want to grant permissions.
-        # 
-        # Valid values:
-        # 
-        # *   Group
-        # *   Topic
+        # The type of the authorized resource.
         # 
         # This parameter is required.
         self.resource_type = resource_type

@@ -18,7 +18,7 @@ class VerifySendMessageResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The returned data.
+        # The data returned by the operation. If the verification succeeds, this field contains the message ID.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -30,7 +30,7 @@ class VerifySendMessageResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates if the request was successful.
         self.success = success
 
     def validate(self):

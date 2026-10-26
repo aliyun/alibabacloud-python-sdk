@@ -19,17 +19,17 @@ class GetConsumerGroupLagResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code
+        # The error code.
         self.code = code
         # The returned data.
         self.data = data
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -111,17 +111,19 @@ class GetConsumerGroupLagResponseBodyData(DaraModel):
         topic_name: str = None,
         total_lag: main_models.GetConsumerGroupLagResponseBodyDataTotalLag = None,
     ):
-        # Consumer Group ID
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
+        # The message accumulation for lite topics.
         self.lite_topic_lag_map = lite_topic_lag_map
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # Backlog for each topic
+        # The message accumulation for each topic.
         self.topic_lag_map = topic_lag_map
+        # The name of the subscribed topic.
         self.topic_name = topic_name
-        # Total lag count
+        # The total message accumulation.
         self.total_lag = total_lag
 
     def validate(self):
@@ -208,13 +210,13 @@ class GetConsumerGroupLagResponseBodyDataTotalLag(DaraModel):
         last_consume_timestamp: int = None,
         ready_count: int = None,
     ):
-        # Delivery delay time, in seconds
+        # The delivery latency. Unit: seconds.
         self.delivery_duration = delivery_duration
-        # The number of messages being consumed.
+        # The number of inflight messages.
         self.inflight_count = inflight_count
-        # Last consumption time
+        # The timestamp of the last consumption.
         self.last_consume_timestamp = last_consume_timestamp
-        # Ready message count
+        # The number of ready messages.
         self.ready_count = ready_count
 
     def validate(self):

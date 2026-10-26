@@ -17,11 +17,11 @@ class CreateInstanceAccountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # No permission details
+        # The access denial details. This field is returned only when access is denied due to insufficient RAM permissions.
         self.access_denied_detail = access_denied_detail
-        # The error code returned if the call failed.
+        # The error code.
         self.code = code
-        # The returned result.
+        # The response data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -31,9 +31,9 @@ class CreateInstanceAccountResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

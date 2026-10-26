@@ -11,13 +11,13 @@ class ListConsumerGroupsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The filter condition for the query. If not provided, all consumer groups under the specified instance will be queried.
+        # The filter condition for the query. If you do not specify this parameter, all consumer groups under the specified instance are queried.
         self.filter = filter
-        # Page number, indicating which page of results to return.
+        # The paging page number. Specifies which page of results to return.
         self.page_number = page_number
-        # Page size, the maximum number of results to display per page.
+        # The paging size. The maximum number of results to return per page.
         # 
-        # Value range: [10, 100].
+        # Valid values: [10,100].
         self.page_size = page_size
 
     def validate(self):

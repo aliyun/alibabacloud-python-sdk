@@ -17,21 +17,21 @@ class GetTopicResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message.
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID, each request\\"s ID is unique and can be used for troubleshooting and problem localization.
+        # The request ID. Each request has a unique ID that you can use to troubleshoot and locate issues.
         self.request_id = request_id
-        # Indicates whether the execution was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -106,49 +106,41 @@ class GetTopicResponseBodyData(DaraModel):
         lite_topic_expiration: int = None,
         max_send_tps: int = None,
         message_type: str = None,
+        priority: int = None,
         region_id: str = None,
         remark: str = None,
         status: str = None,
         topic_name: str = None,
         update_time: str = None,
     ):
-        # Creation time of the topic.
+        # The time when the topic was created, in YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The ID of the instance to which the topic belongs.
         self.instance_id = instance_id
+        # The expiration time of the lite topic, in minutes.
         self.lite_topic_expiration = lite_topic_expiration
-        # The maximum TPS for message sending.
+        # The maximum TPS for sending messages.
         self.max_send_tps = max_send_tps
-        # The type of messages in the topic.
-        # 
-        # Valid values:
-        # 
-        # *   TRANSACTION: transactional messages
-        # *   FIFO: ordered messages
-        # *   DELAY: scheduled or delayed messages
-        # *   NORMAL: normal messages
-        # 
-        # Valid values:
-        # 
-        # *   TRANSACTION: transactional messages
-        # *   FIFO: ordered messages
-        # *   DELAY: scheduled or delayed messages
-        # *   NORMAL: normal messages
+        # The message type of the topic. Valid values:
+        # - TRANSACTION: transactional message
+        # - FIFO: ordered message
+        # - DELAY: scheduled message or delayed message
+        # - LITE: lightweight topic message
+        # - NORMAL: normal message
         self.message_type = message_type
-        # The region ID to which the instance belongs.
+        # The maximum message priority allowed for the topic. Valid values: 0 to 9. A higher value indicates a higher priority.
+        self.priority = priority
+        # The ID of the region to which the instance belongs.
         self.region_id = region_id
-        # Remark information of the topic.
+        # The remarks for the topic.
         self.remark = remark
-        # The topic status.
-        # 
-        # Valid values:
-        # 
-        # *   RUNNING
-        # *   CREATING
+        # The status of the topic. Valid values:
+        # - RUNNING: running
+        # - CREATING: creating
         self.status = status
-        # Topic name.
+        # The topic name.
         self.topic_name = topic_name
-        # Last modification time of the topic.
+        # The last time the topic was modified, in YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
 
     def validate(self):
@@ -173,6 +165,9 @@ class GetTopicResponseBodyData(DaraModel):
 
         if self.message_type is not None:
             result['messageType'] = self.message_type
+
+        if self.priority is not None:
+            result['priority'] = self.priority
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
@@ -207,6 +202,9 @@ class GetTopicResponseBodyData(DaraModel):
 
         if m.get('messageType') is not None:
             self.message_type = m.get('messageType')
+
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')

@@ -19,21 +19,21 @@ class GetInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call failed.
+        # The error code.
         self.code = code
-        # The data returned.
+        # The response result.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        # The request ID. Each request has a unique ID, which you can use to troubleshoot and locate issues.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -136,85 +136,63 @@ class GetInstanceResponseBodyData(DaraModel):
     ):
         # The account information.
         self.account_info = account_info
-        # The information about access control.
+        # The access control information.
         self.acl_info = acl_info
+        # Indicates whether auto-renewal is enabled.
         self.auto_renew = auto_renew
+        # Indicates whether auto-renewal is enabled.
         self.auto_renew_period = auto_renew_period
-        # The business ID (BID) of the commodity.
+        # The BID of the sales channel for the commodity.
         self.bid = bid
-        # The commodity code of the instance. The commodity code of a ApsaraMQ for RocketMQ 5.0 instance has a similar format as ons_rmqsub_public_cn.
+        # The commodity code of an MSMQ for RocketMQ 5.x series instance, such as ons_rmqsub_public_cn.
         self.commodity_code = commodity_code
-        # The time when the instance was created.
+        # The time when the instance was created. The value is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The time when the instance expires.
+        # The time when the instance expires. The format is YYYY-MM-DD HH:mm:ss.
         self.expire_time = expire_time
-        # The extended configurations. We recommend you configure productInfo, internetInfo, or aclInfo instead of this parameter.
+        # **[Deprecated]** The extended configuration. This field is no longer recommended. Use the productInfo, internetInfo, and aclInfo fields instead.
         self.ext_config = ext_config
-        # The number of groups.
+        # The number of consumer groups.
         self.group_count = group_count
-        # The ID of the instance
+        # The instance ID.
         self.instance_id = instance_id
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
-        # The instance quotas.
+        # The capacity information.
         self.instance_quotas = instance_quotas
         # The network information.
         self.network_info = network_info
-        # The billing method of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   PayAsYouGo
-        # *   Subscription
+        # The payment type of the instance.
         self.payment_type = payment_type
-        # The extended configurations of the instance.
+        # The extended configuration of the instance.
         self.product_info = product_info
-        # The ID of the region in which the instance resides.
+        # The ID of the region where the instance resides.
         self.region_id = region_id
-        # The time when the instance was released.
+        # The time when the instance was released. The format is YYYY-MM-DD HH:mm:ss.
         self.release_time = release_time
-        # The description of the instance.
+        # The remarks for the instance.
         self.remark = remark
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The primary edition of the instance. For information about the differences between primary edition instances, see [Instance selection](https://help.aliyun.com/document_detail/444722.html).
-        # 
-        # Valid values:
-        # 
-        # *   standard: Standard Edition
-        # *   ultimate: Enterprise Platinum Edition
-        # *   professional: Professional Edition
+        # The primary series code of the instance. For differences between primary series, see [Product selection](https://help.aliyun.com/document_detail/444722.html).
         self.series_code = series_code
-        # The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
+        # The service code of the instance. The service code for MSMQ for RocketMQ is rmq.
         self.service_code = service_code
         # The instance software information.
         self.software = software
-        # The time when the instance was started.
+        # The time when the instance was started. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The status of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   RELEASED
-        # *   RUNNING
-        # *   STOPPED
-        # *   CHANGING
-        # *   CREATING
+        # The instance status.
         self.status = status
-        # The sub-category edition of the instance. For information about the differences between sub-category edition instances, see [Instance selection](https://help.aliyun.com/document_detail/444722.html).
-        # 
-        # Valid values:
-        # 
-        # *   cluster_ha: Cluster High-availability Edition
-        # *   single_node: Standalone Edition
+        # The sub-series code of the instance. For differences between sub-series, see [Product selection](https://help.aliyun.com/document_detail/444722.html).
         self.sub_series_code = sub_series_code
         # The resource tags.
         self.tags = tags
         # The number of topics.
         self.topic_count = topic_count
-        # The time when the instance was last modified.
+        # The time when the instance was last modified. The value is in the YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
-        # The ID of the user who owns the instance.
+        # The ID of the user to whom the instance belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -452,9 +430,9 @@ class GetInstanceResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource.
+        # The key of the resource tag.
         self.key = key
-        # The tag value of the resource.
+        # The value of the resource tag.
         self.value = value
 
     def validate(self):
@@ -490,17 +468,11 @@ class GetInstanceResponseBodyDataSoftware(DaraModel):
         software_version: str = None,
         upgrade_method: str = None,
     ):
-        # The period of upgrade time.
+        # The upgrade time window, in the format of HH:mm-HH:mm.
         self.maintain_time = maintain_time
-        # The version of software.
+        # The software version.
         self.software_version = software_version
         # The upgrade method.
-        # 
-        # Valid values:
-        # 
-        # - Auto: automatic upgrade
-        # 
-        # - Manual: manual upgrade
         self.upgrade_method = upgrade_method
 
     def validate(self):
@@ -538,9 +510,11 @@ class GetInstanceResponseBodyDataSoftware(DaraModel):
 class GetInstanceResponseBodyDataProductInfo(DaraModel):
     def __init__(
         self,
+        adaptive_elasticity: bool = None,
         auto_scaling: bool = None,
         capacity_type: str = None,
         dr_replication_mode: str = None,
+        max_delay_time: int = None,
         message_retention_time: int = None,
         msg_process_spec: str = None,
         provisioned_capacity: int = None,
@@ -550,49 +524,50 @@ class GetInstanceResponseBodyDataProductInfo(DaraModel):
         support_auto_scaling: bool = None,
         trace_on: bool = None,
     ):
-        # Specifies whether to enable the elastic TPS feature for the instance.
+        # The adaptive elasticity.
+        self.adaptive_elasticity = adaptive_elasticity
+        # Indicates whether burstable elastic capacity beyond the base specification is enabled for seamless scaling.
         # 
-        # Valid values:
-        # 
-        # *   true: enable
-        # *   false: disable
-        # 
-        # This parameter is valid only when the supportAutoScaling parameter is set to enable.
+        # This parameter takes effect only when the value of supportAutoScaling is enable, which means the instance supports enabling elastic capacity.
         self.auto_scaling = auto_scaling
+        # The capacity mode.
         self.capacity_type = capacity_type
+        # The cross-region replication mode.
         self.dr_replication_mode = dr_replication_mode
-        # The retention period of messages. Unit: hours.
+        # The maximum interval for scheduled messages. Unit: seconds.
+        self.max_delay_time = max_delay_time
+        # The message retention period. Unit: hours.
         # 
-        # For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](https://help.aliyun.com/document_detail/440347.html).
+        # For the value range, see [Limits](https://help.aliyun.com/document_detail/440347.html) > Resource Quotas > Message retention period.
         # 
-        # The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](https://help.aliyun.com/document_detail/427238.html).
+        # The message storage of ApsaraMQ for RocketMQ is fully serverless and elastic. You are charged based on the actual storage space used. You can control the storage capacity by adjusting the message retention period. For more information, see [Storage fees](https://help.aliyun.com/document_detail/427238.html).
         self.message_retention_time = message_retention_time
-        # The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
+        # The message processing specification. For the TPS upper limit of message sending and receiving, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.msg_process_spec = msg_process_spec
+        # The provisioned capacity.
         self.provisioned_capacity = provisioned_capacity
-        # The ratio between sent messages and received messages in the instance.
+        # The ratio of message sending to message receiving.
         self.send_receive_ratio = send_receive_ratio
         # Indicates whether storage encryption is enabled.
         self.storage_encryption = storage_encryption
         # The storage encryption key.
         self.storage_secret_key = storage_secret_key
-        # Specifies whether to enable the elastic TPS feature for the instance.
+        # Indicates whether the burstable elastic capability beyond the base specification is enabled.
         # 
-        # Valid values:
         # 
-        # *   true: enable
-        # *   false: disable
+        # After the burstable elastic capability is enabled, ApsaraMQ for RocketMQ allows the instance to exceed the TPS limit of the base specification within a certain range. Additional elastic specification fees are charged for the portion that exceeds the base specification. For more information about billing, see [Computing capability fees](https://help.aliyun.com/document_detail/427237.html).
         # 
-        # After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](https://help.aliyun.com/document_detail/427237.html).
         # 
-        # > The elastic TPS feature is supported by only specific instance editions. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
+        # > Only instances of specific specifications support the burstable elastic capability. For more information about supported instances, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.support_auto_scaling = support_auto_scaling
-        # Indicates whether the message trace feature is enabled. Valid values:
+        # Indicates whether the message trace feature is enabled.
+        # - true: The message trace feature is enabled.
+        # - false: The message trace feature is disabled.
         # 
-        # *   true
-        # *   false
+        # <props="intl">This parameter does not take effect. Instances support the message trace feature by default regardless of whether this parameter is enabled.
+        # <props="china">This parameter takes effect only for Serverless instances. If the message trace feature is enabled, message trace fees are incurred. For more information about billing, see [Serverless billing](https://help.aliyun.com/document_detail/2586280.html).
         # 
-        # This parameter is not in use. By default, the message trace feature is enabled for ApsaraMQ for RocketMQ instances, regardless of whether this parameter is configured.
+        # <props="china">For pay-as-you-go and subscription instances, this parameter does not take effect. The message trace feature is supported by default regardless of whether this parameter is enabled.
         self.trace_on = trace_on
 
     def validate(self):
@@ -603,6 +578,9 @@ class GetInstanceResponseBodyDataProductInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.adaptive_elasticity is not None:
+            result['adaptiveElasticity'] = self.adaptive_elasticity
+
         if self.auto_scaling is not None:
             result['autoScaling'] = self.auto_scaling
 
@@ -611,6 +589,9 @@ class GetInstanceResponseBodyDataProductInfo(DaraModel):
 
         if self.dr_replication_mode is not None:
             result['drReplicationMode'] = self.dr_replication_mode
+
+        if self.max_delay_time is not None:
+            result['maxDelayTime'] = self.max_delay_time
 
         if self.message_retention_time is not None:
             result['messageRetentionTime'] = self.message_retention_time
@@ -640,6 +621,9 @@ class GetInstanceResponseBodyDataProductInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('adaptiveElasticity') is not None:
+            self.adaptive_elasticity = m.get('adaptiveElasticity')
+
         if m.get('autoScaling') is not None:
             self.auto_scaling = m.get('autoScaling')
 
@@ -648,6 +632,9 @@ class GetInstanceResponseBodyDataProductInfo(DaraModel):
 
         if m.get('drReplicationMode') is not None:
             self.dr_replication_mode = m.get('drReplicationMode')
+
+        if m.get('maxDelayTime') is not None:
+            self.max_delay_time = m.get('maxDelayTime')
 
         if m.get('messageRetentionTime') is not None:
             self.message_retention_time = m.get('messageRetentionTime')
@@ -682,11 +669,11 @@ class GetInstanceResponseBodyDataNetworkInfo(DaraModel):
         internet_info: main_models.GetInstanceResponseBodyDataNetworkInfoInternetInfo = None,
         vpc_info: main_models.GetInstanceResponseBodyDataNetworkInfoVpcInfo = None,
     ):
-        # The endpoints.
+        # The endpoint information.
         self.endpoints = endpoints
-        # The information about the Internet.
+        # The public network information of the instance.
         self.internet_info = internet_info
-        # The virtual private cloud (VPC) information.
+        # The VPC information.
         self.vpc_info = vpc_info
 
     def validate(self):
@@ -745,11 +732,13 @@ class GetInstanceResponseBodyDataNetworkInfoVpcInfo(DaraModel):
     ):
         # The security group ID.
         self.security_group_ids = security_group_ids
-        # The ID of the vSwitch with which the instance is associated.
+        # The ID of the vSwitch associated with the instance.
+        # 
+        # <notice>This field is not recommended. Use the vSwitches field instead. For compatibility, this field currently returns only one vSwitch.</notice>
         self.v_switch_id = v_switch_id
-        # The vSwitches.
+        # The list of vSwitches.
         self.v_switches = v_switches
-        # The ID of the VPC with which the instance is associated.
+        # The ID of the VPC associated with the instance.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -843,28 +832,18 @@ class GetInstanceResponseBodyDataNetworkInfoInternetInfo(DaraModel):
         internet_spec: str = None,
         ip_whitelist: List[str] = None,
     ):
-        # The Internet bandwidth. Unit: MB/s.
+        # The Internet bandwidth specification. Unit: Mbit/s.
         self.flow_out_bandwidth = flow_out_bandwidth
-        # The metering method for Internet usage.
-        # 
-        # Valid values:
-        # 
-        # *   PayByBandwidth: pay-by-bandwidth. If the Internet access feature is enabled, specify this value for the parameter.
-        # *   uninvolved: N/A. If the Internet access feature is not enabled, specify this value for the parameter.
+        # The billing type for public network usage.
         self.flow_out_type = flow_out_type
-        # Specifies whether to enable the Internet access feature.
+        # Indicates whether public network access is enabled.
         # 
-        # Valid values:
-        # 
-        # *   enable
-        # *   disable
-        # 
-        # By default, ApsaraMQ for RocketMQ instances are accessed in virtual private clouds (VPCs). If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fee](https://help.aliyun.com/document_detail/427240.html).
+        # The instance supports VPC access by default. If public network access is enabled, ApsaraMQ for RocketMQ charges fees for public downstream bandwidth. For more information about billing, see [Public network access fees](https://help.aliyun.com/document_detail/427240.html).
         self.internet_spec = internet_spec
-        # The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker.
+        # The IP whitelist for public network access.
         # 
-        # *   If this parameter is not configured, all IP addresses are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
-        # *   If this parameter is configured, only the IP addresses that are included in the whitelist can access the ApsaraMQ for RocketMQ broker over the Internet.
+        # - If the IP whitelist is not configured, all IP address ranges are allowed to access the ApsaraMQ for RocketMQ broker over the public network by default.
+        # - If the IP whitelist is configured, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the public network.
         self.ip_whitelist = ip_whitelist
 
     def validate(self):
@@ -913,22 +892,18 @@ class GetInstanceResponseBodyDataNetworkInfoEndpoints(DaraModel):
         endpoint_url: str = None,
         ip_whitelist: List[str] = None,
     ):
+        # The associated PrivateLink endpoint instance.
         self.endpoint_id = endpoint_id
-        # The type of the endpoint that is used to access the instance.
-        # 
-        # Valid values:
-        # 
-        # *   TCP_VPC: VPC endpoint
-        # *   TCP_INTERNET: public endpoint
+        # The endpoint type of the instance.
         self.endpoint_type = endpoint_type
-        # The endpoint that is used to access the instance.
+        # The endpoint of the instance.
         self.endpoint_url = endpoint_url
-        # The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use the public endpoint to access the instance.
+        # The IP whitelist for public network access. IP whitelists are supported only for Internet endpoints and are not supported for VPC endpoints.
         # 
-        # *   If you do not configure an IP address whitelist, all CIDR blocks are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
-        # *   If you configure an IP address whitelist, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+        # - If no IP whitelist is configured, all IP address ranges are allowed to access the MSMQ for RocketMQ queue broker over the Internet by default.
+        # - If an IP whitelist is configured, only IP addresses in the whitelist are allowed to access the MSMQ for RocketMQ queue broker over the Internet.
         # 
-        # We recommend that you configure internetInfo.ipWhitelist instead of this parameter.
+        # This field is no longer recommended. Use the internetInfo.ipWhitelist field instead.
         self.ip_whitelist = ip_whitelist
 
     def validate(self):
@@ -977,17 +952,13 @@ class GetInstanceResponseBodyDataInstanceQuotas(DaraModel):
         total_count: float = None,
         used_count: float = None,
     ):
-        # The number of topics that are free of charge on the instance.
+        # The free quota. Unit: count.
         self.free_count = free_count
-        # The quota name.
-        # 
-        # Valid value:
-        # 
-        # *   TOPIC_COUNT: the number of topics that can be created on the instance
+        # The quota name of the instance.
         self.quota_name = quota_name
-        # The total number of topics on the instance.
+        # The total quota. Unit: count.
         self.total_count = total_count
-        # The number of used topics on the instance.
+        # The used quota. Unit: count.
         self.used_count = used_count
 
     def validate(self):
@@ -1042,59 +1013,34 @@ class GetInstanceResponseBodyDataExtConfig(DaraModel):
         support_auto_scaling: bool = None,
     ):
         # The authentication type of the instance.
-        # 
-        # Valid value:
-        # 
-        # *   default: intelligent authentication
         self.acl_type = acl_type
-        # Specifies whether to enable the elastic TPS feature for the instance.
+        # Indicates whether burstable elastic capacity beyond the base specification is enabled.
         # 
-        # Valid values:
-        # 
-        # *   true: enable
-        # *   false: disable
-        # 
-        # This parameter is valid only when the supportAutoScaling parameter is set to enable.
+        # This parameter takes effect only when the value of supportAutoScaling is enable, which means the instance supports enabling elastic capacity.
         self.auto_scaling = auto_scaling
-        # The Internet bandwidth. Unit: MB/s.
+        # The Internet bandwidth specification. Unit: Mbit/s.
         self.flow_out_bandwidth = flow_out_bandwidth
-        # The metering method of Internet usage.
-        # 
-        # Valid values:
-        # 
-        # *   PayByTraffic: pay-by-traffic
-        # *   paybybandwidth: pay-by-bandwidth
-        # *   uninvolved: N/A
+        # The billing type for public network usage.
         self.flow_out_type = flow_out_type
-        # Indicates whether Internet access is enabled.
+        # Indicates whether public network access is enabled.
         # 
-        # Valid values:
-        # 
-        # *   enable
-        # *   disable
-        # 
-        # By default, you can access ApsaraMQ for RocketMQ instances in virtual private clouds (VPCs). If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fees](https://help.aliyun.com/document_detail/427240.html).
+        # The instance supports VPC access by default. If public network access is enabled, ApsaraMQ for RocketMQ charges fees for public downstream bandwidth. For more information about billing, see [Public network access fees](https://help.aliyun.com/document_detail/427240.html).
         self.internet_spec = internet_spec
-        # The retention period of messages. Unit: hours.
+        # The message retention period. Unit: hours.
         # 
-        # For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](https://help.aliyun.com/document_detail/440347.html).
+        # For the value range, see [Limits](https://help.aliyun.com/document_detail/440347.html) > Resource Quotas > Message retention period.
         # 
-        # The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](https://help.aliyun.com/document_detail/427238.html).
+        # The message storage of ApsaraMQ for RocketMQ is fully serverless and elastic. You are charged based on the actual storage space used. You can control the storage capacity by adjusting the message retention period. For more information, see [Storage fees](https://help.aliyun.com/document_detail/427238.html).
         self.message_retention_time = message_retention_time
-        # The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
+        # The message processing specification. For the TPS upper limit of message sending and receiving, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.msg_process_spec = msg_process_spec
-        # The ratio between sent messages and received messages in the instance.
+        # The ratio of message sending to message receiving.
         self.send_receive_ratio = send_receive_ratio
-        # Specifies whether the elastic TPS feature is supported by the instance.
+        # Indicates whether the instance supports enabling burstable elastic capacity beyond the base specification.
         # 
-        # Valid values:
+        # After burstable elastic capacity is enabled, ApsaraMQ for RocketMQ allows the instance to exceed the TPS limit of the base specification within a certain range. Additional elastic specification fees are charged for the portion that exceeds the base specification. For more information about billing, see [Computing fees](https://help.aliyun.com/document_detail/427237.html).
         # 
-        # *   true: enable
-        # *   false: disable
-        # 
-        # After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](https://help.aliyun.com/document_detail/427237.html).
-        # 
-        # > The elastic TPS feature is supported only by specific instance editions. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
+        # > Only instances of specific specifications support burstable elastic capacity. For more information about supported instances, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.support_auto_scaling = support_auto_scaling
 
     def validate(self):
@@ -1172,35 +1118,11 @@ class GetInstanceResponseBodyDataAclInfo(DaraModel):
         acl_types: List[str] = None,
         default_vpc_auth_free: bool = None,
     ):
-        # The authentication type of the instance. This parameter is no longer in use. We recommend that you configure aclTypes.
-        # 
-        # Valid values:
-        # 
-        # - default: intelligent identity authentication
-        # 
-        # - apache_acl:access control list (ACL) identity authentication**
+        # The authentication type of the instance. This parameter is deprecated. Use the aclTypes parameter instead.
         self.acl_type = acl_type
         # The authentication types of the instance.
         self.acl_types = acl_types
-        # Indicates whether the authentication-free in VPCs feature is enabled.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Indicates whether the authentication-free in VPC feature is enabled.
         self.default_vpc_auth_free = default_vpc_auth_free
 
     def validate(self):
@@ -1240,7 +1162,7 @@ class GetInstanceResponseBodyDataAccountInfo(DaraModel):
         self,
         username: str = None,
     ):
-        # The username of the instance. If you access a ApsaraMQ for RocketMQ instance over the Internet, you must configure the username and password of the instance in the SDK code for authentication.
+        # The username of the instance. When you use public network access, you must configure the username and password of the instance in the SDK code for identity verification.
         self.username = username
 
     def validate(self):

@@ -20,7 +20,7 @@ class ListInstanceAccountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+        # The details of the access denial. This parameter is returned only if the request is denied due to insufficient RAM permissions.
         self.access_denied_detail = access_denied_detail
         # The error code.
         self.code = code
@@ -34,9 +34,9 @@ class ListInstanceAccountResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -117,13 +117,13 @@ class ListInstanceAccountResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The pagination information.
+        # A list of entries on the current page.
         self.list = list
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # Number of items per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total count of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -182,21 +182,17 @@ class ListInstanceAccountResponseBodyDataList(DaraModel):
         remark: str = None,
         username: str = None,
     ):
-        # The status of the account.
-        # Valid values:
-        #   - DISABLE
-        #   - ENABLE
+        # The account status.
         self.account_status = account_status
         # The account type.
-        #   - CUSTOMER
-        #   - DEFAULT
         self.account_type = account_type
         # The instance ID.
         self.instance_id = instance_id
         # The region ID.
         self.region_id = region_id
+        # The remark.
         self.remark = remark
-        # The username of the account.
+        # The username.
         self.username = username
 
     def validate(self):

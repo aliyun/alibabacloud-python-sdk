@@ -9,9 +9,9 @@ class GetInstanceAccountRequest(DaraModel):
         self,
         username: str = None,
     ):
-        # The username of the account.
+        # The username.
         # 
-        # If you do not configure this parameter, the default username of the instance is used.
+        # If you do not specify this parameter, the system returns details of the default account.
         self.username = username
 
     def validate(self):

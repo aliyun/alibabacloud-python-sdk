@@ -18,7 +18,7 @@ class DeleteConsumerGroupResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The result data that is returned.
+        # The returned result.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -28,9 +28,9 @@ class DeleteConsumerGroupResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # The request ID. Each request ID is unique and can be used to troubleshoot and locate issues.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the execution is successful.
         self.success = success
 
     def validate(self):

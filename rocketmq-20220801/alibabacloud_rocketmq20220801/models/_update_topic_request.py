@@ -11,10 +11,11 @@ class UpdateTopicRequest(DaraModel):
         max_send_tps: int = None,
         remark: str = None,
     ):
+        # The expiration time of a lite topic, in minutes. Valid values: 15 to 720. The default value is -1, which indicates that the topic never expires.
         self.lite_topic_expiration = lite_topic_expiration
-        # Maximum send message tps
+        # The maximum number of transactions per second (TPS) for sending messages.
         self.max_send_tps = max_send_tps
-        # Updated remarks for the topic.
+        # The updated remarks for the topic.
         self.remark = remark
 
     def validate(self):

@@ -28,103 +28,78 @@ class CreateInstanceRequest(DaraModel):
         tags: List[main_models.CreateInstanceRequestTags] = None,
         client_token: str = None,
     ):
+        # The access control information.
         self.acl_info = acl_info
-        # Specifies whether to enable auto-renewal for the instance. This parameter takes effect only if you set paymentType to Subscription. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when the billing method of the instance is set to Subscription.
         self.auto_renew = auto_renew
-        # The auto-renewal cycle of the instance. This parameter takes effect only if you set autoRenew to true. Unit: months.
+        # The Unified Auto Renewal Cycle. This parameter takes effect only when auto-renewal is enabled. Unit: months.
         # 
         # Valid values:
         # 
-        # *   Monthly renewal: 1, 2, 3, 6, and 12
+        # - Monthly renewal: 1, 2, 3, 6, 12
         self.auto_renew_period = auto_renew_period
-        # The commodity code. Valid values:
+        # The commodity code.
         # 
-        # *   ons_rmqpost_public_intl: pay-as-you-go
-        # *   ons_rmqsub_public_intl: subscription
-        # *   ons_rmqsrvlesspost_public_intl: serverless instance
-        # serverless instance requires this parameter
+        # <props="china">- ons_rmqsub_public_cn: subscription instance.
+        # 
+        # <props="china">- ons_rmqpost_public_cn: pay-as-you-go instance.
+        # 
+        # <props="china">- ons_rmqsrvlesspost_public_cn: serverless instance.
+        # 
+        # <props="intl">- ons_rmqpost_public_intl: pay-as-you-go.
+        # 
+        # <props="intl">- ons_rmqsub_public_intl: subscription.
+        # <props="intl">- ons_rmqsrvlesspost_public_intl: serverless instance.
+        # This parameter is required for serverless instances.
         self.commodity_code = commodity_code
-        # The name of the instance that you want to create.
+        # The name of the instance to be created.
         # 
-        # If you leave this parameter empty, the instance ID is used as the instance name.
+        # If you do not specify this parameter, the instance ID is used as the instance name.
         self.instance_name = instance_name
-        # The information about the network.
+        # The network configuration information.
         # 
         # This parameter is required.
         self.network_info = network_info
-        # The billing method of the instance. ApsaraMQ for RocketMQ supports the subscription and pay-as-you-go billing methods.
+        # The billing method of the instance. ApsaraMQ for RocketMQ supports subscription and pay-as-you-go billing methods.
         # 
-        # Valid values:
-        # 
-        # *   PayAsYouGo: This billing method allows you to use resources before you pay for the resources.
-        # *   Subscription: This billing method allows you to use resources after you pay for the resources.
-        # 
-        # For more information, see [Billing methods](https://help.aliyun.com/document_detail/427234.html).
+        # For more information, see [Billable methods](https://help.aliyun.com/document_detail/427234.html).
         # 
         # This parameter is required.
         self.payment_type = payment_type
-        # The subscription duration of the instance. This parameter takes effect only if you set paymentType to Subscription.
+        # The subscription duration. This parameter takes effect only when the billing method of the instance is set to Subscription.
         # 
         # Valid values:
         # 
-        # *   Monthly subscription: 1, 2, 3, 4, 5, and 6
-        # *   Yearly subscription: 1, 2, and 3
+        # - Monthly subscription: 1, 2, 3, 4, 5, 6
+        # 
+        # - Yearly subscription: 1, 2, 3
         self.period = period
-        # The unit of the subscription duration.
-        # 
-        # Valid values:
-        # 
-        # *   Month
-        # *   Year
+        # The minimum epoch unit of the subscription duration.
         self.period_unit = period_unit
-        # The information about instance specifications.
+        # The instance specification information.
         self.product_info = product_info
-        # The instance description.
+        # The remarks of the instance.
         self.remark = remark
-        # The ID of the resource group to which the instance belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The primary edition of the instance. For information about the differences among primary edition instances, see [Instance selection](https://help.aliyun.com/document_detail/444722.html).
-        # 
-        # Valid values:
-        # 
-        # *   standard: Standard Edition
-        # *   ultimate: Enterprise Platinum Edition
-        # *   professional: Professional Edition
-        # 
-        # >  After you create an instance, you can only upgrade the primary edition of the instance. The following editions are sorted in ascending order: Standard Edition, Professional Edition, Enterprise Platinum Edition. For example, you can upgrade an instance from Standard Edition to Professional Edition, but you cannot downgrade an instance from Professional Edition to Standard Edition.
+        # The primary series encoding of the instance. For more information about the differences between primary series, see [Product selection](https://help.aliyun.com/document_detail/444722.html).
         # 
         # This parameter is required.
         self.series_code = series_code
-        # The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
+        # The service encoding of the instance. The service encoding for MSMQ for RocketMQ is rmq.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # The sub-category edition of the instance. For information about the differences among sub-category edition instances, see [Instance selection](https://help.aliyun.com/document_detail/444722.html).
+        # The sub-series encoding of the instance. For more information about the differences between sub-series, see [Product selection](https://help.aliyun.com/document_detail/444722.html).
         # 
-        # Valid values:
-        # 
-        # *   cluster_ha: Cluster High-availability Edition
-        # *   single_node: Standalone Edition
-        # *   serverless: serverless
-        # 
-        # If you set seriesCode to ultimate, you can set this parameter only to cluster_ha.
-        # 
-        # >  After you create an instance, you cannot change the sub-category edition of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   serverless: serverless
-        # *   cluster_ha: Cluster High-availability Edition
-        # *   single_node: Standalone Edition
+        # If the primary series is set to ultimate (Platinum Edition), the sub-series can only be set to cluster_ha (Cluster High Availability Edition).
+        # >Notice: After the instance is created, the sub-series cannot be changed.
         # 
         # This parameter is required.
         self.sub_series_code = sub_series_code
-        # The tags that you want to add to the instance.
+        # The list of resource tags.
         self.tags = tags
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value of this parameter, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. The client generates the value of this parameter, which must be unique among different requests. The token can be up to 64 ASCII characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -266,9 +241,9 @@ class CreateInstanceRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The `key` of the tag.
+        # The key of the resource tag.
         self.key = key
-        # The `value` of the tag.
+        # The value of the resource tag.
         self.value = value
 
     def validate(self):
@@ -300,6 +275,7 @@ class CreateInstanceRequestTags(DaraModel):
 class CreateInstanceRequestProductInfo(DaraModel):
     def __init__(
         self,
+        adaptive_elasticity: bool = None,
         auto_scaling: bool = None,
         capacity_type: str = None,
         dr_replication_mode: str = None,
@@ -311,38 +287,44 @@ class CreateInstanceRequestProductInfo(DaraModel):
         storage_secret_key: str = None,
         trace_on: bool = None,
     ):
-        # Specifies whether to enable the elastic TPS feature for the instance.
+        # Specifies whether to enable adaptive elasticity. A value of true indicates that adaptive elasticity is enabled. A value of false indicates that adaptive elasticity is shutdown.
+        self.adaptive_elasticity = adaptive_elasticity
+        # Specifies whether to enable burstable elastic capacity beyond the specification.
         # 
-        # Valid values:
+        # After burstable elastic capacity is enabled, MSMQ for RocketMQ allows the instance to exceed the TPS limit of the base specification within a certain range. The portion that exceeds the base specification incurs additional elastic specification fees. For more information about billing, see [Computing fees](https://help.aliyun.com/document_detail/427237.html).
         # 
-        # *   true
-        # *   false
         # 
-        # After you enable the elastic TPS feature for an ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fees](https://help.aliyun.com/document_detail/427237.html).
-        # 
-        # >  The elastic TPS feature is supported only by instances of specific editions. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
+        # > Only instances of certain specifications support burstable elastic capacity. For more information about supported instances, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.auto_scaling = auto_scaling
+        # The capacity pattern.
         self.capacity_type = capacity_type
+        # The cross-region replication pattern.
         self.dr_replication_mode = dr_replication_mode
-        # The retention period of messages. Unit: hours.
+        # The message retention period. Unit: hours.
         # 
-        # For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](https://help.aliyun.com/document_detail/440347.html) topic.
+        # For the valid value range, see [Limits](https://help.aliyun.com/document_detail/440347.html) > Resource Quotas > Message Retention Period.
         # 
-        # ApsaraMQ for RocketMQ supports serverless scaling of message storage. You are charged storage fees based on your actual storage usage. You can change the retention period of messages to manage storage capacity. For more information, see [Storage fees](https://help.aliyun.com/document_detail/427238.html).
+        # The log broker in MSMQ for RocketMQ is fully serverless and elastic. Fees are charged based on the actual storage space used. You can control the storage capacity by adjusting the message retention period. For more information, see [Storage fees](https://help.aliyun.com/document_detail/427238.html).
         self.message_retention_time = message_retention_time
-        # The computing specification that specifies the messaging transactions per second (TPS) of the instance. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
+        # The message sending and receiving computing specification. For more information about the TPS upper limit for message sending and receiving, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.msg_process_spec = msg_process_spec
+        # The provisioned capacity.
         self.provisioned_capacity = provisioned_capacity
-        # The ratio of the message sending TPS to the messaging TPS of the instance.
+        # The ratio of message sending TPS to the total message sending and accepting TPS of the instance.
         # 
-        # For example, if the maximum messaging TPS of an instance is 1,000 and the ratio of the message sending TPS to the messaging TPS of the instance is 0.8, the maximum message sending TPS of the instance is 800 and the maximum message receiving TPS is 200.
+        # For example, if the TPS upper limit for message sending and accepting of the instance is 1000 per second and the message sending ratio is 0.8, the TPS upper limit for message sending is 800 per second and the TPS upper limit for message accepting is 200 per second.
         # 
-        # Valid values: 0 to 1. Default value: 0.5.
+        # Valid values: [0.05, 0.95]. Default value: 0.5.
         self.send_receive_ratio = send_receive_ratio
-        # Specifies whether to enable the encryption at rest feature.
+        # Indicates whether storage encryption is enabled.
         self.storage_encryption = storage_encryption
-        # The key for encryption at rest.
+        # The key for storage encryption.
         self.storage_secret_key = storage_secret_key
+        # Specifies whether to enable the message trace feature.
+        # 
+        # true: Enable the message trace feature.
+        # false: Shutdown the message trace feature.
+        # This parameter takes effect only for Serverless instances. If the message trace feature is enabled, message trace fees are incurred. For more information about billing, see the Serverless billing description. For pay-as-you-go and subscription instances, this parameter does not take effect. The message trace feature is supported by default regardless of whether this parameter is enabled.
         self.trace_on = trace_on
 
     def validate(self):
@@ -353,6 +335,9 @@ class CreateInstanceRequestProductInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.adaptive_elasticity is not None:
+            result['adaptiveElasticity'] = self.adaptive_elasticity
+
         if self.auto_scaling is not None:
             result['autoScaling'] = self.auto_scaling
 
@@ -387,6 +372,9 @@ class CreateInstanceRequestProductInfo(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('adaptiveElasticity') is not None:
+            self.adaptive_elasticity = m.get('adaptiveElasticity')
+
         if m.get('autoScaling') is not None:
             self.auto_scaling = m.get('autoScaling')
 
@@ -425,11 +413,11 @@ class CreateInstanceRequestNetworkInfo(DaraModel):
         internet_info: main_models.CreateInstanceRequestNetworkInfoInternetInfo = None,
         vpc_info: main_models.CreateInstanceRequestNetworkInfoVpcInfo = None,
     ):
-        # The Internet-related configurations.
+        # The Internet configuration information.
         # 
         # This parameter is required.
         self.internet_info = internet_info
-        # The virtual private cloud (VPC)-related configurations.
+        # The VPC configuration information.
         # 
         # This parameter is required.
         self.vpc_info = vpc_info
@@ -473,23 +461,23 @@ class CreateInstanceRequestNetworkInfoVpcInfo(DaraModel):
         v_switches: List[main_models.CreateInstanceRequestNetworkInfoVpcInfoVSwitches] = None,
         vpc_id: str = None,
     ):
-        # The ID of the security group to which the instance belongs.
+        # The security group ID.
         self.security_group_ids = security_group_ids
-        # The ID of the vSwitch with which the instance is associated. If you want to specify multiple vSwitches, separate the vSwitches with vertical bars (|).
+        # The ID of the vSwitch associated with the instance. If multiple vSwitches exist, separate them with vertical bars (|).
         # 
-        # >  After you create an ApsaraMQ for RocketMQ instance, you cannot change the vSwitch with which the instance is associated. If you want to change the vSwitch with which the instance is associated, you must release the instance and purchase a new instance.
+        # > After an ApsaraMQ for RocketMQ instance is created, the selected vSwitch cannot be changed. To modify the associated vSwitch, release the existing ApsaraMQ for RocketMQ instance and purchase a new one.
         # 
-        # >  We recommend that you configure vSwitches instead of this parameter.
+        # <notice>This field is not recommended. Use the vSwitches field instead.</notice>
         self.v_switch_id = v_switch_id
-        # The vSwitches.
+        # The list of vSwitches.
         # 
-        # >  After you create an ApsaraMQ for RocketMQ instance, you cannot change the vSwitch with which the instance is associated. If you want to change the vSwitch with which the instance is associated, you must release the instance and purchase a new instance.
+        # > After an ApsaraMQ for RocketMQ instance is created, the selected vSwitch cannot be changed. To modify the associated vSwitch, release the existing ApsaraMQ for RocketMQ instance and purchase a new one.
         # 
-        # >  This parameter is required. We recommend that you configure this parameter instead of vSwitchId.
+        # <notice>This is a required field. Because the vSwitchId field is no longer recommended, use this field to configure vSwitches.</notice>
         self.v_switches = v_switches
-        # The ID of the VPC with which the instance to be created is associated.
+        # The ID of the VPC to associate with the instance.
         # 
-        # >  After you create an ApsaraMQ for RocketMQ instance, you cannot change the VPC with which the instance is associated. If you want to change the VPC with which the instance is associated, you must release the instance and create a new instance.
+        # > After an ApsaraMQ for RocketMQ instance is created, the selected VPC cannot be changed. To modify the associated VPC, release the existing ApsaraMQ for RocketMQ instance and purchase a new one.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -545,7 +533,7 @@ class CreateInstanceRequestNetworkInfoVpcInfoVSwitches(DaraModel):
         self,
         v_switch_id: str = None,
     ):
-        # The ID of the vSwitch with which the instance is associated.
+        # The ID of the vSwitch associated with the instance.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -576,37 +564,26 @@ class CreateInstanceRequestNetworkInfoInternetInfo(DaraModel):
         internet_spec: str = None,
         ip_whitelist: List[str] = None,
     ):
-        # The Internet bandwidth. Unit: MB/s.
+        # The Internet bandwidth specification. Unit: Mb/s.
         # 
-        # This parameter is required only if you set flowOutType to payByBandwidth.
+        # This parameter is required only when the Internet billing type is set to fixed bandwidth billing.
         # 
         # Valid values: 1 to 1000.
         self.flow_out_bandwidth = flow_out_bandwidth
-        # The metering method of Internet usage.
-        # 
-        # Valid values:
-        # 
-        # *   payByBandwidth: pay-by-bandwidth. This value is valid only if you enable Internet access.
-        # *   payByTraffic: pay-by-traffic. This value is valid only if you enable Internet access.
-        # *   uninvolved: No metering method is involved. This value is valid only if you disable Internet access.
+        # The Internet billing type.
         # 
         # This parameter is required.
         self.flow_out_type = flow_out_type
-        # Specifies whether to enable the Internet access feature.
+        # Specifies whether to enable public network access.
         # 
-        # Valid values:
-        # 
-        # *   enable
-        # *   disable
-        # 
-        # By default, ApsaraMQ for RocketMQ allows you to access instances in VPCs. If you enable Internet access for an instance, you can access the instance over the Internet. After you enable this feature, you are charged for outbound Internet traffic. For more information, see [Internet access fees](https://help.aliyun.com/document_detail/427240.html).
+        # By default, instances support VPC access. If you enable public network access, ApsaraMQ for RocketMQ charges fees for public network downstream bandwidth. For more information about billing, see [Public network access fees](https://help.aliyun.com/document_detail/427240.html).
         # 
         # This parameter is required.
         self.internet_spec = internet_spec
-        # The whitelist that includes the CIDR blocks that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use the public endpoint to access the instance.
+        # The public network access IP whitelist. Only public endpoints support IP whitelist configuration. VPC endpoints do not support this feature.
         # 
-        # *   If you do not configure an IP address whitelist, all CIDR blocks are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
-        # *   If you configure an IP address whitelist, only the CIDR blocks in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+        # - If no IP whitelist is configured, all IP address ranges are allowed to access the ApsaraMQ for RocketMQ server over the Internet by default.
+        # - If an IP whitelist is configured, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ server over the Internet.
         self.ip_whitelist = ip_whitelist
 
     def validate(self):
@@ -652,6 +629,9 @@ class CreateInstanceRequestAclInfo(DaraModel):
         self,
         default_vpc_auth_free: bool = None,
     ):
+        # Specifies whether to enable authentication-free access for VPC endpoints when the intelligent identity recognition type is used. Valid values:
+        # - true: Enable authentication-free access.
+        # - false: Disable authentication-free access.
         self.default_vpc_auth_free = default_vpc_auth_free
 
     def validate(self):

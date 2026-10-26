@@ -21,7 +21,7 @@ class GetMessageDetailResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -114,6 +114,7 @@ class GetMessageDetailResponseBodyData(DaraModel):
         message_keys: List[str] = None,
         message_tag: str = None,
         message_type: str = None,
+        priority: int = None,
         region_id: str = None,
         store_host: str = None,
         store_time: str = None,
@@ -125,34 +126,37 @@ class GetMessageDetailResponseBodyData(DaraModel):
         self.body = body
         # The size of the message body.
         self.body_size = body_size
-        # The client on which the message was produced.
+        # The host from which the message originated.
         self.born_host = born_host
-        # The time when the message was generated.
+        # The time when the message was generated, in YYYY-MM-DD HH:mm:ss format.
         self.born_time = born_time
         # The instance ID.
         self.instance_id = instance_id
+        # The lite topic name.
         self.lite_topic_name = lite_topic_name
-        # The sharding key. This parameter is returned only for ordered messages.
+        # The former sharding key. This field applies only to ordered messages.
         self.message_group = message_group
         # The message ID.
         self.message_id = message_id
-        # The message keys.
+        # The message key.
         self.message_keys = message_keys
-        # The tags.
+        # The tag list.
         self.message_tag = message_tag
         # The message type.
         self.message_type = message_type
+        # The priority.
+        self.priority = priority
         # The region ID.
         self.region_id = region_id
-        # The broker on which the message was stored.
+        # The log broker host where the message is stored.
         self.store_host = store_host
-        # The time when the message was stored.
+        # The time when the message was stored in the log broker, in YYYY-MM-DD HH:mm:ss format.
         self.store_time = store_time
-        # The default system attributes.
+        # The default system properties.
         self.system_properties = system_properties
         # The topic name.
         self.topic_name = topic_name
-        # The user attributes.
+        # The user properties.
         self.user_properties = user_properties
 
     def validate(self):
@@ -195,6 +199,9 @@ class GetMessageDetailResponseBodyData(DaraModel):
 
         if self.message_type is not None:
             result['messageType'] = self.message_type
+
+        if self.priority is not None:
+            result['priority'] = self.priority
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
@@ -250,6 +257,9 @@ class GetMessageDetailResponseBodyData(DaraModel):
 
         if m.get('messageType') is not None:
             self.message_type = m.get('messageType')
+
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')

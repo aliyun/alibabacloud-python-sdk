@@ -21,7 +21,7 @@ class GetTraceResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -31,9 +31,9 @@ class GetTraceResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # The request ID. Each request has a unique ID that you can use to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -111,15 +111,15 @@ class GetTraceResponseBodyData(DaraModel):
         region_id: str = None,
         topic_name: str = None,
     ):
-        # The broker trace.
+        # The broker message trace information.
         self.broker_info = broker_info
-        # Consumer trace info.
+        # The consumer message trace information.
         self.consumer_infos = consumer_infos
         # The instance ID.
         self.instance_id = instance_id
         # The message information.
         self.message_info = message_info
-        # The producer trace.
+        # The producer message trace information.
         self.producer_info = producer_info
         # The region ID.
         self.region_id = region_id
@@ -204,7 +204,7 @@ class GetTraceResponseBodyDataProducerInfo(DaraModel):
         self,
         records: List[main_models.GetTraceResponseBodyDataProducerInfoRecords] = None,
     ):
-        # The production records.
+        # The list of producer records.
         self.records = records
 
     def validate(self):
@@ -249,25 +249,25 @@ class GetTraceResponseBodyDataProducerInfoRecords(DaraModel):
         recall_time: str = None,
         user_name: str = None,
     ):
-        # Arrive time.
+        # The time when the message arrived, in YYYY-MM-DD HH:mm:ss format.
         self.arrive_time = arrive_time
-        # Client host.
+        # The hostname.
         self.client_host = client_host
-        # Dead-letter queue message ID.
+        # The dead-letter queue message ID.
         self.dlq_origin_message_id = dlq_origin_message_id
-        # Dead-letter queue topic.
+        # The dead-letter queue topic.
         self.dlq_origin_topic = dlq_origin_topic
-        # Message source.
+        # The message source.
         self.message_source = message_source
-        # Producer duration.
+        # The time taken to send the message.
         self.produce_duration = produce_duration
-        # Producer status.
+        # The send status.
         self.produce_status = produce_status
-        # Producer time.
+        # The time when the message was sent, in YYYY-MM-DD HH:mm:ss format.
         self.produce_time = produce_time
-        # The time when the scheduled message withdrawal request was initiated
+        # The time when the recall request was initiated. This field is non-empty when messageSource is "recall".
         self.recall_time = recall_time
-        # Producer name.
+        # The producer name.
         self.user_name = user_name
 
     def validate(self):
@@ -364,36 +364,37 @@ class GetTraceResponseBodyDataMessageInfo(DaraModel):
         transaction_id: str = None,
         user_properties: Dict[str, str] = None,
     ):
-        # Message body.
+        # The message body.
         self.body = body
-        # Message born host.
+        # The origin of the message.
         self.born_host = born_host
-        # Message born time.
+        # The time when the message was generated, in YYYY-MM-DD HH:mm:ss format.
         self.born_time = born_time
         # The instance ID.
         self.instance_id = instance_id
+        # The lite topic name.
         self.lite_topic_name = lite_topic_name
-        # Message grpup.
+        # The previous sharding key. This field is exclusive to ordered messages.
         self.message_group = message_group
         # The message ID.
         self.message_id = message_id
-        # Message keys.
+        # The message key.
         self.message_keys = message_keys
-        # Message tag.
+        # The list of tags.
         self.message_tag = message_tag
-        # Message type.
+        # The message type.
         self.message_type = message_type
         # The region ID.
         self.region_id = region_id
-        # Message store host.
+        # The log broker address where the message is stored.
         self.store_host = store_host
-        # Message store time.
+        # The time when the message was stored in the log broker, in YYYY-MM-DD HH:mm:ss format.
         self.store_time = store_time
         # The topic name.
         self.topic_name = topic_name
-        # Message transaction id.
+        # The transaction ID.
         self.transaction_id = transaction_id
-        # Message user properties.
+        # The user properties.
         self.user_properties = user_properties
 
     def validate(self):
@@ -515,15 +516,15 @@ class GetTraceResponseBodyDataConsumerInfos(DaraModel):
         dead_message: bool = None,
         records: List[main_models.GetTraceResponseBodyDataConsumerInfosRecords] = None,
     ):
-        # Consume status.
+        # The consumption status.
         self.consume_status = consume_status
         # The consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # Dead letter info.
+        # The dead-letter message information.
         self.dead_letter_info = dead_letter_info
-        # Whether it is a dead letter message.
+        # Indicates whether the message is a dead-letter message.
         self.dead_message = dead_message
-        # Consumer record list.
+        # The list of consumption records.
         self.records = records
 
     def validate(self):
@@ -591,17 +592,17 @@ class GetTraceResponseBodyDataConsumerInfosRecords(DaraModel):
         pop_ck: str = None,
         user_name: str = None,
     ):
-        # Client host.
+        # The hostname.
         self.client_host = client_host
-        # Consume status.
+        # The consumption status.
         self.consume_status = consume_status
-        # Whether to consume fifo.
+        # Indicates whether ordered consumption is enabled.
         self.fifo_enable = fifo_enable
-        # Operation list.
+        # The list of operations.
         self.operations = operations
         # POP_CK
         self.pop_ck = pop_ck
-        # Consumer name.
+        # The consumer name.
         self.user_name = user_name
 
     def validate(self):
@@ -670,13 +671,13 @@ class GetTraceResponseBodyDataConsumerInfosRecordsOperations(DaraModel):
         operate_time: str = None,
         operate_type: str = None,
     ):
-        # Whether it is a dead letter message.
+        # Indicates whether the message is a dead-letter message.
         self.dead_message = dead_message
-        # Invisible time, milliseconds.
+        # The invisible time, in milliseconds.
         self.invisible_time = invisible_time
-        # Operation time.
+        # The operation time, in YYYY-MM-DD HH:mm:ss format.
         self.operate_time = operate_time
-        # Operation type.
+        # The operation type.
         self.operate_type = operate_type
 
     def validate(self):
@@ -724,9 +725,9 @@ class GetTraceResponseBodyDataConsumerInfosDeadLetterInfo(DaraModel):
         to_dlq_time: str = None,
         topic_name: str = None,
     ):
-        # MessageId.
+        # The message ID.
         self.message_id = message_id
-        # Arrival time in the dead letter queue.
+        # The time when the message arrived in the dead-letter queue, in YYYY-MM-DD HH:mm:ss format.
         self.to_dlq_time = to_dlq_time
         # The topic name.
         self.topic_name = topic_name
@@ -771,13 +772,13 @@ class GetTraceResponseBodyDataBrokerInfo(DaraModel):
         preset_delay_time: str = None,
         recall_result: str = None,
     ):
-        # Delay status.
+        # The scheduled message status.
         self.delay_status = delay_status
-        # Operation list.
+        # The list of operations.
         self.operations = operations
-        # Preset delivery time.
+        # The preset delivery time, in YYYY-MM-DD HH:mm:ss format.
         self.preset_delay_time = preset_delay_time
-        # Withdraw scheduled message request result
+        # The recall result. This field is non-empty when a recall record exists.
         self.recall_result = recall_result
 
     def validate(self):
@@ -832,9 +833,9 @@ class GetTraceResponseBodyDataBrokerInfoOperations(DaraModel):
         operate_time: str = None,
         operate_type: str = None,
     ):
-        # Operation time.
+        # The operation time, in YYYY-MM-DD HH:mm:ss format.
         self.operate_time = operate_time
-        # Operation type.
+        # The operation type.
         self.operate_type = operate_type
 
     def validate(self):

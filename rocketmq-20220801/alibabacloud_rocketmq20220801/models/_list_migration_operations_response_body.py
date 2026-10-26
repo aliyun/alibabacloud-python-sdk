@@ -19,13 +19,21 @@ class ListMigrationOperationsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The response data.
         self.data = data
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -100,9 +108,13 @@ class ListMigrationOperationsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The paginated data.
         self.list = list
+        # The current page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -166,16 +178,31 @@ class ListMigrationOperationsResponseBodyDataList(DaraModel):
         stage_type: str = None,
         update_time: str = None,
     ):
+        # The operation business status.
         self.business_status = business_status
+        # The creation time, in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
+        # The migration ID.
         self.migration_id = migration_id
+        # The migration operation ID.
         self.operation_id = operation_id
+        # The primary key of the operation object.
+        # 
+        # 
+        # > 
+        # > - During the message migration stage, the operation object is the topic name.
         self.operation_key = operation_key
+        # The operation parameter.
         self.operation_param = operation_param
+        # The operation result.
         self.operation_result = operation_result
+        # The operation status.
         self.operation_status = operation_status
+        # The operation type.
         self.operation_type = operation_type
+        # The migration stage type.
         self.stage_type = stage_type
+        # The update time, in the format of YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
 
     def validate(self):
@@ -268,6 +295,7 @@ class ListMigrationOperationsResponseBodyDataListOperationResult(DaraModel):
         self,
         result_data: Any = None,
     ):
+        # The operation result.
         self.result_data = result_data
 
     def validate(self):
@@ -295,6 +323,7 @@ class ListMigrationOperationsResponseBodyDataListOperationParam(DaraModel):
         self,
         param_data: Any = None,
     ):
+        # The parameter information.
         self.param_data = param_data
 
     def validate(self):

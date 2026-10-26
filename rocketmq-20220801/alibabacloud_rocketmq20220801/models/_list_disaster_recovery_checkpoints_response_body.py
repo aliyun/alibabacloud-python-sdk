@@ -19,21 +19,21 @@ class ListDisasterRecoveryCheckpointsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code
+        # The error code.
         self.code = code
-        # Response Data
+        # The returned data.
         self.data = data
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the operation was successful
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -108,13 +108,13 @@ class ListDisasterRecoveryCheckpointsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Paged data
+        # The paginated data.
         self.list = list
-        # Current page number
+        # The current page number.
         self.page_number = page_number
-        # Page size
+        # The page size.
         self.page_size = page_size
-        # Total number of records
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -173,17 +173,17 @@ class ListDisasterRecoveryCheckpointsResponseBodyDataList(DaraModel):
         source_progress: main_models.ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress = None,
         target_progress: main_models.ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress = None,
     ):
-        # Consumption Progress ID
+        # The consumer offset checkpoint ID.
         self.checkpoint_id = checkpoint_id
-        # Backup Mapping ID
+        # The ID of the backup mapping.
         self.item_id = item_id
-        # Last synchronization time
+        # The most recent synchronization time. The value is a UNIX timestamp in milliseconds.
         self.last_sync_time = last_sync_time
-        # Backup Plan ID
+        # The ID of the backup plan.
         self.plan_id = plan_id
-        # Source consumption progress
+        # The source consumer offset.
         self.source_progress = source_progress
-        # Target consumption progress
+        # The target consumer offset.
         self.target_progress = target_progress
 
     def validate(self):
@@ -252,21 +252,21 @@ class ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress(DaraMode
         region_id: str = None,
         topic_name: str = None,
     ):
-        # Consumer group ID
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Instance type
-        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
-        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        # The instance type. Valid values:
+        # - ALIYUN_ROCKETMQ: Alibaba Cloud instance.
+        # - EXTERNAL_ROCKETMQ: external instance, open source instance, or open source cluster.
         self.instance_type = instance_type
-        # Latest fetch time
+        # The latest fetch time. The value is a UNIX timestamp in milliseconds.
         self.last_fetch_time = last_fetch_time
-        # Consumption progress data
+        # The consumer offset data.
         self.progress_data = progress_data
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # Topic name
+        # The topic name.
         self.topic_name = topic_name
 
     def validate(self):
@@ -332,7 +332,7 @@ class ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressD
         self,
         consume_timestamp: int = None,
     ):
-        # Latest consumption time
+        # The latest consumption time.
         self.consume_timestamp = consume_timestamp
 
     def validate(self):
@@ -366,19 +366,19 @@ class ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress(DaraMode
         region_id: str = None,
         topic_name: str = None,
     ):
-        # Consumer Group ID
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Instance type
-        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
-        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        # The instance type. Valid values:
+        # - ALIYUN_ROCKETMQ: Alibaba Cloud instance.
+        # - EXTERNAL_ROCKETMQ: external instance, open source instance, or open source cluster.
         self.instance_type = instance_type
-        # Last fetch time
+        # The most recent fetch time. The value is a UNIX timestamp in milliseconds.
         self.last_fetch_time = last_fetch_time
-        # Consumption progress data
+        # The consumer offset data.
         self.progress_data = progress_data
-        # Region ID
+        # The region ID.
         self.region_id = region_id
         # The topic name.
         self.topic_name = topic_name
@@ -446,7 +446,7 @@ class ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressD
         self,
         consume_timestamp: int = None,
     ):
-        # Latest consumption time
+        # The latest consumption time.
         self.consume_timestamp = consume_timestamp
 
     def validate(self):

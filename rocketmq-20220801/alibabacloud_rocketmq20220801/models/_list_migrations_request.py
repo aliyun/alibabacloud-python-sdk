@@ -13,13 +13,22 @@ class ListMigrationsRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
+        # The filter conditions for the query.
         self.filter = filter
+        # The migration type. Valid values:
+        #  - INSTANCE_MIGRATION: instance migration
+        # 
         # This parameter is required.
         self.migration_type = migration_type
+        # The page number of the page to return.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

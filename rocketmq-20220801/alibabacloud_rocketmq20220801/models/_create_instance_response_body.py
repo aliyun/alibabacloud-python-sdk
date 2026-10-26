@@ -16,7 +16,7 @@ class CreateInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call failed.
+        # The error code.
         self.code = code
         # The ID of the created instance.
         self.data = data
@@ -24,13 +24,13 @@ class CreateInstanceResponseBody(DaraModel):
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        # The request ID. Each request ID is unique and can be used to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

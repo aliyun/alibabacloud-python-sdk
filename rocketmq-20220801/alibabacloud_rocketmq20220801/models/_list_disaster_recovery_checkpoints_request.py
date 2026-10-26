@@ -12,15 +12,15 @@ class ListDisasterRecoveryCheckpointsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Filter Condition
+        # The filter condition.
         self.filter = filter
-        # Source Instance ID
+        # The instance ID of the source instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Current page number, starting from 1.
+        # The current page number, starting from 1.
         self.page_number = page_number
-        # Page size, the maximum number of results returned per page.
+        # The page size. The maximum number of results to return per page.
         self.page_size = page_size
 
     def validate(self):

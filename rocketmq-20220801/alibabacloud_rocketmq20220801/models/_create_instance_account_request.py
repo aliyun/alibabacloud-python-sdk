@@ -11,12 +11,13 @@ class CreateInstanceAccountRequest(DaraModel):
         remark: str = None,
         username: str = None,
     ):
-        # The password of the account.
+        # The account password.
         # 
         # This parameter is required.
         self.password = password
+        # The remark.
         self.remark = remark
-        # The username of the account.
+        # The account name.
         # 
         # This parameter is required.
         self.username = username

@@ -21,7 +21,7 @@ class ListTracesResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The returned result.
+        # The returned results.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -108,13 +108,13 @@ class ListTracesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Trace list.
+        # The paginated data.
         self.list = list
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -174,19 +174,19 @@ class ListTracesResponseBodyDataList(DaraModel):
         region_id: str = None,
         topic_name: str = None,
     ):
-        # Message born time.
+        # The time when the message was generated, in YYYY-MM-DD HH:mm:ss format.
         self.born_time = born_time
         # The instance ID.
         self.instance_id = instance_id
-        # Message id.
+        # The message ID.
         self.message_id = message_id
-        # Message keys.
+        # The message key.
         self.message_keys = message_keys
-        # Message tag.
+        # The list of tags.
         self.message_tag = message_tag
         # The region ID.
         self.region_id = region_id
-        # The name of the topic.
+        # The topic name.
         self.topic_name = topic_name
 
     def validate(self):

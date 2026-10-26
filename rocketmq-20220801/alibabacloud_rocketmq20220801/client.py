@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_rocketmq20220801 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
@@ -21,7 +21,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-guangzhou': 'rocketmq.cn-guangzhou.aliyuncs.com	'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('rocketmq', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -208,6 +211,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
+
+    def create_agent_conversation_with_options(
+        self,
+        request: main_models.CreateAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.initial_message):
+            body['initialMessage'] = request.initial_message
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_conversation_with_options_async(
+        self,
+        request: main_models.CreateAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.initial_message):
+            body['initialMessage'] = request.initial_message
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent_conversation(
+        self,
+        request: main_models.CreateAgentConversationRequest,
+    ) -> main_models.CreateAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_agent_conversation_with_options(request, headers, runtime)
+
+    async def create_agent_conversation_async(
+        self,
+        request: main_models.CreateAgentConversationRequest,
+    ) -> main_models.CreateAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_agent_conversation_with_options_async(request, headers, runtime)
 
     def create_consumer_group_with_options(
         self,
@@ -745,6 +832,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_instance_acl_with_options_async(instance_id, username, request, headers, runtime)
 
+    def create_instance_inspection_with_options(
+        self,
+        instance_id: str,
+        request: main_models.CreateInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.items):
+            body['items'] = request.items
+        if not DaraCore.is_null(request.resource_scope):
+            body['resourceScope'] = request.resource_scope
+        if not DaraCore.is_null(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceInspectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_inspection_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.CreateInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.items):
+            body['items'] = request.items
+        if not DaraCore.is_null(request.resource_scope):
+            body['resourceScope'] = request.resource_scope
+        if not DaraCore.is_null(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceInspectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_inspection(
+        self,
+        instance_id: str,
+        request: main_models.CreateInstanceInspectionRequest,
+    ) -> main_models.CreateInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_instance_inspection_with_options(instance_id, request, headers, runtime)
+
+    async def create_instance_inspection_async(
+        self,
+        instance_id: str,
+        request: main_models.CreateInstanceInspectionRequest,
+    ) -> main_models.CreateInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_instance_inspection_with_options_async(instance_id, request, headers, runtime)
+
     def create_instance_ip_whitelist_with_options(
         self,
         instance_id: str,
@@ -920,6 +1107,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_topic_with_options_async(instance_id, topic_name, request, headers, runtime)
+
+    def delete_agent_conversation_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.DeleteAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentConversationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_conversation_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.DeleteAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentConversationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent_conversation(
+        self,
+        conversation_id: str,
+        request: main_models.DeleteAgentConversationRequest,
+    ) -> main_models.DeleteAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_agent_conversation_with_options(conversation_id, request, headers, runtime)
+
+    async def delete_agent_conversation_async(
+        self,
+        conversation_id: str,
+        request: main_models.DeleteAgentConversationRequest,
+    ) -> main_models.DeleteAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_agent_conversation_with_options_async(conversation_id, request, headers, runtime)
 
     def delete_consumer_group_with_options(
         self,
@@ -1443,6 +1702,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_instance_acl_with_options_async(instance_id, username, request, headers, runtime)
 
+    def delete_instance_inspection_with_options(
+        self,
+        instance_id: str,
+        request: main_models.DeleteInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInstanceInspectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instance_inspection_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.DeleteInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInstanceInspectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instance_inspection(
+        self,
+        instance_id: str,
+        request: main_models.DeleteInstanceInspectionRequest,
+    ) -> main_models.DeleteInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_instance_inspection_with_options(instance_id, request, headers, runtime)
+
+    async def delete_instance_inspection_async(
+        self,
+        instance_id: str,
+        request: main_models.DeleteInstanceInspectionRequest,
+    ) -> main_models.DeleteInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_instance_inspection_with_options_async(instance_id, request, headers, runtime)
+
     def delete_instance_ip_whitelist_with_options(
         self,
         instance_id: str,
@@ -1784,6 +2123,322 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.finish_migration_stage_with_options_async(migration_id, stage_type, request, headers, runtime)
+
+    def get_agent_conversation_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentConversationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_conversation_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentConversationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_conversation(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationRequest,
+    ) -> main_models.GetAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_agent_conversation_with_options(conversation_id, request, headers, runtime)
+
+    async def get_agent_conversation_async(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationRequest,
+    ) -> main_models.GetAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_agent_conversation_with_options_async(conversation_id, request, headers, runtime)
+
+    def get_agent_conversation_events_with_sse(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationEventsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.GetAgentConversationEventsResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.after):
+            query['after'] = request.after
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConversationEvents',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/events',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = resp.event.data
+                yield  DaraCore.from_map(
+                    main_models.GetAgentConversationEventsResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def get_agent_conversation_events_with_sse_async(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationEventsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.GetAgentConversationEventsResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.after):
+            query['after'] = request.after
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConversationEvents',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/events',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = resp.event.data
+                yield  DaraCore.from_map(
+                    main_models.GetAgentConversationEventsResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def get_agent_conversation_events_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationEventsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentConversationEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.after):
+            query['after'] = request.after
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConversationEvents',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/events',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentConversationEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_conversation_events_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationEventsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentConversationEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.after):
+            query['after'] = request.after
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConversationEvents',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/events',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentConversationEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_conversation_events(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationEventsRequest,
+    ) -> main_models.GetAgentConversationEventsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_agent_conversation_events_with_options(conversation_id, request, headers, runtime)
+
+    async def get_agent_conversation_events_async(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationEventsRequest,
+    ) -> main_models.GetAgentConversationEventsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_agent_conversation_events_with_options_async(conversation_id, request, headers, runtime)
+
+    def get_agent_conversation_timeline_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationTimelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentConversationTimelineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.after):
+            query['after'] = request.after
+        if not DaraCore.is_null(request.include_image_data):
+            query['includeImageData'] = request.include_image_data
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConversationTimeline',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/timeline',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentConversationTimelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_conversation_timeline_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationTimelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentConversationTimelineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.after):
+            query['after'] = request.after
+        if not DaraCore.is_null(request.include_image_data):
+            query['includeImageData'] = request.include_image_data
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentConversationTimeline',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/timeline',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentConversationTimelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_conversation_timeline(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationTimelineRequest,
+    ) -> main_models.GetAgentConversationTimelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_agent_conversation_timeline_with_options(conversation_id, request, headers, runtime)
+
+    async def get_agent_conversation_timeline_async(
+        self,
+        conversation_id: str,
+        request: main_models.GetAgentConversationTimelineRequest,
+    ) -> main_models.GetAgentConversationTimelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_agent_conversation_timeline_with_options_async(conversation_id, request, headers, runtime)
 
     def get_consume_timespan_with_options(
         self,
@@ -2545,6 +3200,242 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_instance_acl_with_options_async(instance_id, username, request, headers, runtime)
 
+    def get_instance_inspection_with_options(
+        self,
+        instance_id: str,
+        request: main_models.GetInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceInspectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_inspection_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.GetInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceInspectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_inspection(
+        self,
+        instance_id: str,
+        request: main_models.GetInstanceInspectionRequest,
+    ) -> main_models.GetInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_instance_inspection_with_options(instance_id, request, headers, runtime)
+
+    async def get_instance_inspection_async(
+        self,
+        instance_id: str,
+        request: main_models.GetInstanceInspectionRequest,
+    ) -> main_models.GetInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_instance_inspection_with_options_async(instance_id, request, headers, runtime)
+
+    def get_instance_inspection_report_with_options(
+        self,
+        report_id: str,
+        request: main_models.GetInstanceInspectionReportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceInspectionReportResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceInspectionReport',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/reports/{DaraURL.percent_encode(report_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceInspectionReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_inspection_report_with_options_async(
+        self,
+        report_id: str,
+        request: main_models.GetInstanceInspectionReportRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceInspectionReportResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceInspectionReport',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/reports/{DaraURL.percent_encode(report_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceInspectionReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_inspection_report(
+        self,
+        report_id: str,
+        request: main_models.GetInstanceInspectionReportRequest,
+    ) -> main_models.GetInstanceInspectionReportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_instance_inspection_report_with_options(report_id, request, headers, runtime)
+
+    async def get_instance_inspection_report_async(
+        self,
+        report_id: str,
+        request: main_models.GetInstanceInspectionReportRequest,
+    ) -> main_models.GetInstanceInspectionReportResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_instance_inspection_report_with_options_async(report_id, request, headers, runtime)
+
+    def get_instance_inspection_run_with_options(
+        self,
+        instance_id: str,
+        run_id: str,
+        request: main_models.GetInstanceInspectionRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceInspectionRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceInspectionRun',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}/runs/{DaraURL.percent_encode(run_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceInspectionRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_inspection_run_with_options_async(
+        self,
+        instance_id: str,
+        run_id: str,
+        request: main_models.GetInstanceInspectionRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceInspectionRunResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceInspectionRun',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}/runs/{DaraURL.percent_encode(run_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceInspectionRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_inspection_run(
+        self,
+        instance_id: str,
+        run_id: str,
+        request: main_models.GetInstanceInspectionRunRequest,
+    ) -> main_models.GetInstanceInspectionRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_instance_inspection_run_with_options(instance_id, run_id, request, headers, runtime)
+
+    async def get_instance_inspection_run_async(
+        self,
+        instance_id: str,
+        run_id: str,
+        request: main_models.GetInstanceInspectionRunRequest,
+    ) -> main_models.GetInstanceInspectionRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_instance_inspection_run_with_options_async(instance_id, run_id, request, headers, runtime)
+
     def get_instance_ip_whitelist_with_options(
         self,
         instance_id: str,
@@ -2868,6 +3759,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_trace_with_options_async(instance_id, topic_name, message_id, request, headers, runtime)
+
+    def list_agent_conversations_with_options(
+        self,
+        request: main_models.ListAgentConversationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentConversationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.purpose):
+            query['purpose'] = request.purpose
+        if not DaraCore.is_null(request.q):
+            query['q'] = request.q
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentConversations',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentConversationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agent_conversations_with_options_async(
+        self,
+        request: main_models.ListAgentConversationsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentConversationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.purpose):
+            query['purpose'] = request.purpose
+        if not DaraCore.is_null(request.q):
+            query['q'] = request.q
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentConversations',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentConversationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agent_conversations(
+        self,
+        request: main_models.ListAgentConversationsRequest,
+    ) -> main_models.ListAgentConversationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_agent_conversations_with_options(request, headers, runtime)
+
+    async def list_agent_conversations_async(
+        self,
+        request: main_models.ListAgentConversationsRequest,
+    ) -> main_models.ListAgentConversationsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_agent_conversations_with_options_async(request, headers, runtime)
 
     def list_available_zones_with_options(
         self,
@@ -3463,6 +4442,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_disaster_recovery_plans_with_options_async(request, headers, runtime)
 
+    def list_inspection_templates_with_options(
+        self,
+        request: main_models.ListInspectionTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInspectionTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInspectionTemplates',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/templates',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInspectionTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_inspection_templates_with_options_async(
+        self,
+        request: main_models.ListInspectionTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInspectionTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInspectionTemplates',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/templates',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInspectionTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_inspection_templates(
+        self,
+        request: main_models.ListInspectionTemplatesRequest,
+    ) -> main_models.ListInspectionTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_inspection_templates_with_options(request, headers, runtime)
+
+    async def list_inspection_templates_async(
+        self,
+        request: main_models.ListInspectionTemplatesRequest,
+    ) -> main_models.ListInspectionTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_inspection_templates_with_options_async(request, headers, runtime)
+
     def list_instance_account_with_options(
         self,
         instance_id: str,
@@ -3646,6 +4709,302 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_instance_acl_with_options_async(instance_id, request, headers, runtime)
+
+    def list_instance_inspection_resources_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ListInstanceInspectionResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceInspectionResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.run_id):
+            query['runId'] = request.run_id
+        if not DaraCore.is_null(request.template_code):
+            query['templateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceInspectionResources',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}/resources',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceInspectionResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_inspection_resources_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ListInstanceInspectionResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceInspectionResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.run_id):
+            query['runId'] = request.run_id
+        if not DaraCore.is_null(request.template_code):
+            query['templateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceInspectionResources',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}/resources',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceInspectionResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_inspection_resources(
+        self,
+        instance_id: str,
+        request: main_models.ListInstanceInspectionResourcesRequest,
+    ) -> main_models.ListInstanceInspectionResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_instance_inspection_resources_with_options(instance_id, request, headers, runtime)
+
+    async def list_instance_inspection_resources_async(
+        self,
+        instance_id: str,
+        request: main_models.ListInstanceInspectionResourcesRequest,
+    ) -> main_models.ListInstanceInspectionResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_instance_inspection_resources_with_options_async(instance_id, request, headers, runtime)
+
+    def list_instance_inspection_runs_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ListInstanceInspectionRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceInspectionRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.report_status):
+            query['reportStatus'] = request.report_status
+        if not DaraCore.is_null(request.result):
+            query['result'] = request.result
+        if not DaraCore.is_null(request.sort_by):
+            query['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.template_code):
+            query['templateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceInspectionRuns',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}/runs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceInspectionRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_inspection_runs_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ListInstanceInspectionRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceInspectionRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        if not DaraCore.is_null(request.report_status):
+            query['reportStatus'] = request.report_status
+        if not DaraCore.is_null(request.result):
+            query['result'] = request.result
+        if not DaraCore.is_null(request.sort_by):
+            query['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.template_code):
+            query['templateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceInspectionRuns',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}/runs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceInspectionRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_inspection_runs(
+        self,
+        instance_id: str,
+        request: main_models.ListInstanceInspectionRunsRequest,
+    ) -> main_models.ListInstanceInspectionRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_instance_inspection_runs_with_options(instance_id, request, headers, runtime)
+
+    async def list_instance_inspection_runs_async(
+        self,
+        instance_id: str,
+        request: main_models.ListInstanceInspectionRunsRequest,
+    ) -> main_models.ListInstanceInspectionRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_instance_inspection_runs_with_options_async(instance_id, request, headers, runtime)
+
+    def list_instance_inspections_with_options(
+        self,
+        request: main_models.ListInstanceInspectionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceInspectionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceInspections',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceInspectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_inspections_with_options_async(
+        self,
+        request: main_models.ListInstanceInspectionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceInspectionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceInspections',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceInspectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_inspections(
+        self,
+        request: main_models.ListInstanceInspectionsRequest,
+    ) -> main_models.ListInstanceInspectionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_instance_inspections_with_options(request, headers, runtime)
+
+    async def list_instance_inspections_async(
+        self,
+        request: main_models.ListInstanceInspectionsRequest,
+    ) -> main_models.ListInstanceInspectionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_instance_inspections_with_options_async(request, headers, runtime)
 
     def list_instance_ip_whitelist_with_options(
         self,
@@ -4775,6 +6134,390 @@ class Client(OpenApiClient):
         headers = {}
         return await self.reset_consume_offset_with_options_async(instance_id, consumer_group_id, topic_name, request, headers, runtime)
 
+    def respond_agent_conversation_action_with_options(
+        self,
+        conversation_id: str,
+        action_id: str,
+        request: main_models.RespondAgentConversationActionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RespondAgentConversationActionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.answers):
+            body['answers'] = request.answers
+        if not DaraCore.is_null(request.decision):
+            body['decision'] = request.decision
+        if not DaraCore.is_null(request.note):
+            body['note'] = request.note
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RespondAgentConversationAction',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/actions/{DaraURL.percent_encode(action_id)}/respond',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RespondAgentConversationActionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def respond_agent_conversation_action_with_options_async(
+        self,
+        conversation_id: str,
+        action_id: str,
+        request: main_models.RespondAgentConversationActionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RespondAgentConversationActionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.answers):
+            body['answers'] = request.answers
+        if not DaraCore.is_null(request.decision):
+            body['decision'] = request.decision
+        if not DaraCore.is_null(request.note):
+            body['note'] = request.note
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RespondAgentConversationAction',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/actions/{DaraURL.percent_encode(action_id)}/respond',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RespondAgentConversationActionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def respond_agent_conversation_action(
+        self,
+        conversation_id: str,
+        action_id: str,
+        request: main_models.RespondAgentConversationActionRequest,
+    ) -> main_models.RespondAgentConversationActionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.respond_agent_conversation_action_with_options(conversation_id, action_id, request, headers, runtime)
+
+    async def respond_agent_conversation_action_async(
+        self,
+        conversation_id: str,
+        action_id: str,
+        request: main_models.RespondAgentConversationActionRequest,
+    ) -> main_models.RespondAgentConversationActionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.respond_agent_conversation_action_with_options_async(conversation_id, action_id, request, headers, runtime)
+
+    def run_instance_inspection_with_options(
+        self,
+        instance_id: str,
+        request: main_models.RunInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.item_overrides):
+            body['itemOverrides'] = request.item_overrides
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}/runs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunInstanceInspectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_instance_inspection_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.RunInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.item_overrides):
+            body['itemOverrides'] = request.item_overrides
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}/runs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunInstanceInspectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_instance_inspection(
+        self,
+        instance_id: str,
+        request: main_models.RunInstanceInspectionRequest,
+    ) -> main_models.RunInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.run_instance_inspection_with_options(instance_id, request, headers, runtime)
+
+    async def run_instance_inspection_async(
+        self,
+        instance_id: str,
+        request: main_models.RunInstanceInspectionRequest,
+    ) -> main_models.RunInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.run_instance_inspection_with_options_async(instance_id, request, headers, runtime)
+
+    def send_agent_conversation_message_with_sse(
+        self,
+        conversation_id: str,
+        request: main_models.SendAgentConversationMessageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.SendAgentConversationMessageResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.attachments):
+            body['attachments'] = request.attachments
+        if not DaraCore.is_null(request.client_context):
+            body['clientContext'] = request.client_context
+        if not DaraCore.is_null(request.images):
+            body['images'] = request.images
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        if not DaraCore.is_null(request.message_type):
+            body['messageType'] = request.message_type
+        if not DaraCore.is_null(request.ticket_request_id):
+            body['ticketRequestId'] = request.ticket_request_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendAgentConversationMessage',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/messages',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = resp.event.data
+                yield  DaraCore.from_map(
+                    main_models.SendAgentConversationMessageResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def send_agent_conversation_message_with_sse_async(
+        self,
+        conversation_id: str,
+        request: main_models.SendAgentConversationMessageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.SendAgentConversationMessageResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.attachments):
+            body['attachments'] = request.attachments
+        if not DaraCore.is_null(request.client_context):
+            body['clientContext'] = request.client_context
+        if not DaraCore.is_null(request.images):
+            body['images'] = request.images
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        if not DaraCore.is_null(request.message_type):
+            body['messageType'] = request.message_type
+        if not DaraCore.is_null(request.ticket_request_id):
+            body['ticketRequestId'] = request.ticket_request_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendAgentConversationMessage',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/messages',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = resp.event.data
+                yield  DaraCore.from_map(
+                    main_models.SendAgentConversationMessageResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def send_agent_conversation_message_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.SendAgentConversationMessageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SendAgentConversationMessageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.attachments):
+            body['attachments'] = request.attachments
+        if not DaraCore.is_null(request.client_context):
+            body['clientContext'] = request.client_context
+        if not DaraCore.is_null(request.images):
+            body['images'] = request.images
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        if not DaraCore.is_null(request.message_type):
+            body['messageType'] = request.message_type
+        if not DaraCore.is_null(request.ticket_request_id):
+            body['ticketRequestId'] = request.ticket_request_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendAgentConversationMessage',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/messages',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.SendAgentConversationMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_agent_conversation_message_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.SendAgentConversationMessageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SendAgentConversationMessageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.attachments):
+            body['attachments'] = request.attachments
+        if not DaraCore.is_null(request.client_context):
+            body['clientContext'] = request.client_context
+        if not DaraCore.is_null(request.images):
+            body['images'] = request.images
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        if not DaraCore.is_null(request.message_type):
+            body['messageType'] = request.message_type
+        if not DaraCore.is_null(request.ticket_request_id):
+            body['ticketRequestId'] = request.ticket_request_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendAgentConversationMessage',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/messages',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'string'
+        )
+        return DaraCore.from_map(
+            main_models.SendAgentConversationMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_agent_conversation_message(
+        self,
+        conversation_id: str,
+        request: main_models.SendAgentConversationMessageRequest,
+    ) -> main_models.SendAgentConversationMessageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.send_agent_conversation_message_with_options(conversation_id, request, headers, runtime)
+
+    async def send_agent_conversation_message_async(
+        self,
+        conversation_id: str,
+        request: main_models.SendAgentConversationMessageRequest,
+    ) -> main_models.SendAgentConversationMessageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.send_agent_conversation_message_with_options_async(conversation_id, request, headers, runtime)
+
     def start_disaster_recovery_item_with_options(
         self,
         plan_id: str,
@@ -4844,6 +6587,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.start_disaster_recovery_item_with_options_async(plan_id, item_id, headers, runtime)
+
+    def steer_agent_conversation_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.SteerAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SteerAgentConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.command_id):
+            body['commandId'] = request.command_id
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SteerAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/actions/steer',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SteerAgentConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def steer_agent_conversation_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.SteerAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SteerAgentConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.command_id):
+            body['commandId'] = request.command_id
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SteerAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/actions/steer',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SteerAgentConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def steer_agent_conversation(
+        self,
+        conversation_id: str,
+        request: main_models.SteerAgentConversationRequest,
+    ) -> main_models.SteerAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.steer_agent_conversation_with_options(conversation_id, request, headers, runtime)
+
+    async def steer_agent_conversation_async(
+        self,
+        conversation_id: str,
+        request: main_models.SteerAgentConversationRequest,
+    ) -> main_models.SteerAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.steer_agent_conversation_with_options_async(conversation_id, request, headers, runtime)
+
+    def stop_agent_conversation_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.StopAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopAgentConversationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StopAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/actions/stop',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopAgentConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_agent_conversation_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.StopAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopAgentConversationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StopAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/actions/stop',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopAgentConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_agent_conversation(
+        self,
+        conversation_id: str,
+        request: main_models.StopAgentConversationRequest,
+    ) -> main_models.StopAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.stop_agent_conversation_with_options(conversation_id, request, headers, runtime)
+
+    async def stop_agent_conversation_async(
+        self,
+        conversation_id: str,
+        request: main_models.StopAgentConversationRequest,
+    ) -> main_models.StopAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.stop_agent_conversation_with_options_async(conversation_id, request, headers, runtime)
 
     def stop_disaster_recovery_item_with_options(
         self,
@@ -5168,6 +7067,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
+
+    def update_agent_conversation_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.UpdateAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_conversation_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.UpdateAgentConversationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentConversationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.title):
+            body['title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentConversation',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent_conversation(
+        self,
+        conversation_id: str,
+        request: main_models.UpdateAgentConversationRequest,
+    ) -> main_models.UpdateAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_agent_conversation_with_options(conversation_id, request, headers, runtime)
+
+    async def update_agent_conversation_async(
+        self,
+        conversation_id: str,
+        request: main_models.UpdateAgentConversationRequest,
+    ) -> main_models.UpdateAgentConversationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_agent_conversation_with_options_async(conversation_id, request, headers, runtime)
+
+    def update_agent_conversation_share_scope_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.UpdateAgentConversationShareScopeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentConversationShareScopeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.share_scope):
+            body['shareScope'] = request.share_scope
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentConversationShareScope',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/share-scope',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentConversationShareScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_conversation_share_scope_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.UpdateAgentConversationShareScopeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentConversationShareScopeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.share_scope):
+            body['shareScope'] = request.share_scope
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentConversationShareScope',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/share-scope',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentConversationShareScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent_conversation_share_scope(
+        self,
+        conversation_id: str,
+        request: main_models.UpdateAgentConversationShareScopeRequest,
+    ) -> main_models.UpdateAgentConversationShareScopeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_agent_conversation_share_scope_with_options(conversation_id, request, headers, runtime)
+
+    async def update_agent_conversation_share_scope_async(
+        self,
+        conversation_id: str,
+        request: main_models.UpdateAgentConversationShareScopeRequest,
+    ) -> main_models.UpdateAgentConversationShareScopeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_agent_conversation_share_scope_with_options_async(conversation_id, request, headers, runtime)
 
     def update_consumer_group_with_options(
         self,
@@ -5737,6 +7800,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_instance_acl_with_options_async(instance_id, username, request, headers, runtime)
 
+    def update_instance_inspection_with_options(
+        self,
+        instance_id: str,
+        request: main_models.UpdateInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.items):
+            body['items'] = request.items
+        if not DaraCore.is_null(request.resource_scope):
+            body['resourceScope'] = request.resource_scope
+        if not DaraCore.is_null(request.revision):
+            body['revision'] = request.revision
+        if not DaraCore.is_null(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceInspectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_inspection_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.UpdateInstanceInspectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.items):
+            body['items'] = request.items
+        if not DaraCore.is_null(request.resource_scope):
+            body['resourceScope'] = request.resource_scope
+        if not DaraCore.is_null(request.revision):
+            body['revision'] = request.revision
+        if not DaraCore.is_null(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceInspection',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/monitoring/instance-inspections/{DaraURL.percent_encode(instance_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceInspectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_inspection(
+        self,
+        instance_id: str,
+        request: main_models.UpdateInstanceInspectionRequest,
+    ) -> main_models.UpdateInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_instance_inspection_with_options(instance_id, request, headers, runtime)
+
+    async def update_instance_inspection_async(
+        self,
+        instance_id: str,
+        request: main_models.UpdateInstanceInspectionRequest,
+    ) -> main_models.UpdateInstanceInspectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_instance_inspection_with_options_async(instance_id, request, headers, runtime)
+
     def update_topic_with_options(
         self,
         instance_id: str,
@@ -5828,6 +7995,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_topic_with_options_async(instance_id, topic_name, request, headers, runtime)
+
+    def upload_agent_conversation_log_with_options(
+        self,
+        conversation_id: str,
+        request: main_models.UploadAgentConversationLogRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadAgentConversationLogResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content_gzip_b64):
+            body['contentGzipB64'] = request.content_gzip_b64
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        if not DaraCore.is_null(request.time_range_end):
+            body['timeRangeEnd'] = request.time_range_end
+        if not DaraCore.is_null(request.time_range_start):
+            body['timeRangeStart'] = request.time_range_start
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadAgentConversationLog',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/logs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadAgentConversationLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_agent_conversation_log_with_options_async(
+        self,
+        conversation_id: str,
+        request: main_models.UploadAgentConversationLogRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadAgentConversationLogResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content_gzip_b64):
+            body['contentGzipB64'] = request.content_gzip_b64
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        if not DaraCore.is_null(request.time_range_end):
+            body['timeRangeEnd'] = request.time_range_end
+        if not DaraCore.is_null(request.time_range_start):
+            body['timeRangeStart'] = request.time_range_start
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadAgentConversationLog',
+            version = '2022-08-01',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/conversations/{DaraURL.percent_encode(conversation_id)}/logs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadAgentConversationLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_agent_conversation_log(
+        self,
+        conversation_id: str,
+        request: main_models.UploadAgentConversationLogRequest,
+    ) -> main_models.UploadAgentConversationLogResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.upload_agent_conversation_log_with_options(conversation_id, request, headers, runtime)
+
+    async def upload_agent_conversation_log_async(
+        self,
+        conversation_id: str,
+        request: main_models.UploadAgentConversationLogRequest,
+    ) -> main_models.UploadAgentConversationLogResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.upload_agent_conversation_log_with_options_async(conversation_id, request, headers, runtime)
 
     def verify_consume_message_with_options(
         self,

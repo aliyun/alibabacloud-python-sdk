@@ -17,32 +17,21 @@ class CreateDisasterRecoveryPlanRequest(DaraModel):
         plan_type: str = None,
         sync_checkpoint_enabled: bool = None,
     ):
-        # Specifies whether to enable automatic consumer progress synchronization.
+        # Specifies whether to enable automatic consumer automatic synchronization.
         # 
-        # >  This parameter takes effect only when you set `syncCheckpointEnabled` to true.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # > This parameter takes effect only when consumer automatic synchronization is enabled. That is, the `syncCheckpointEnabled` field is set to true.
         self.auto_sync_checkpoint = auto_sync_checkpoint
-        # The instances involved in the Global Replicator task. You must specify this parameter.
+        # The instances involved in the backup plan. This parameter is required.
         self.instances = instances
-        # The description of the Global Replicator task.
+        # The description of the plan.
         self.plan_desc = plan_desc
-        # The name of the Global Replicator task. You must specify this parameter.
+        # The name of the plan. This parameter is required.
         self.plan_name = plan_name
-        # The type of the Global Replicator task. You must specify this parameter. For more information, see [Global Replicator](https://help.aliyun.com/document_detail/2843187.html). Valid values:
-        # 
-        # *   ACTIVE_PASSIVE: one-way backup
-        # *   ACTIVE_ACTIVE: two-way backup
+        # The type of the backup plan. This parameter is required. For more information, see [Global Replicator](https://help.aliyun.com/document_detail/2843187.html). Valid values:
+        #   - ACTIVE_PASSIVE: one-way backup
+        #   - ACTIVE_ACTIVE: two-way backup
         self.plan_type = plan_type
-        # Specifies whether to enable consumer progress synchronization.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable consumer offset synchronization.
         self.sync_checkpoint_enabled = sync_checkpoint_enabled
 
     def validate(self):
@@ -121,55 +110,42 @@ class CreateDisasterRecoveryPlanRequestInstances(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The authentication method. If you set instanceType to ALIYUN_ROCKETMQ and the instance is an ApsaraMQ for RocketMQ 4.0 instance, you do not need to specify this parameter.
-        # 
-        # *   NO_AUTH: no authentication
-        # *   ACL_AUTH: access control list (ACL)-based authentication
-        # 
-        # Valid values:
-        # 
-        # *   NO_AUTH: no authentication
-        # *   ACL_AUTH: access control list (ACL)-based authentication
+        # The authentication method. This parameter is not required if instanceType is set to ALIYUN_ROCKETMQ and the instance version is 4.0. Valid values:
+        #   - NO_AUTH: no authentication
+        #   - ACL_AUTH: ACL authentication
         self.auth_type = auth_type
-        # The ID of the consumer group.
+        # The ID of the consumer group, which is used to pull messages from the source instance.
+        # <notice>This parameter is required for self-managed instances. For Alibaba Cloud instances, this parameter is automatically generated.</notice>
         self.consumer_group_id = consumer_group_id
-        # The instance endpoint. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+        # The endpoint URL. This parameter is not required if instanceType is set to ALIYUN_ROCKETMQ. This parameter is required if instanceType is set to EXTERNAL_ROCKETMQ.
         self.endpoint_url = endpoint_url
-        # The instance ID. This parameter is required only if you set instanceType to ALIYUN_ROCKETMQ.
+        # The instance ID. This parameter is not required if instanceType is set to EXTERNAL_ROCKETMQ. This parameter is required if instanceType is set to ALIYUN_ROCKETMQ.
         self.instance_id = instance_id
-        # The instance role. Valid values:
-        # 
-        # *   ACTIVE: primary instance
-        # *   Passive: secondary instance
+        # The role of the instance. Valid values:
+        #   - ACTIVE: primary
+        #   - PASSIVE: secondary
         self.instance_role = instance_role
-        # The instance type. Valid values:
-        # 
-        # *   ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
-        # *   EXTERNAL_ROCKETMQ: external RocketMQ instance
-        # 
-        # Valid values:
-        # 
-        # *   ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
-        # *   EXTERNAL_ROCKETMQ: external RocketMQ instance
+        # The type of the instance. Valid values:
+        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+        #   - EXTERNAL_ROCKETMQ: external instance, open-source instance, or open-source cluster
         self.instance_type = instance_type
-        # The message attribute. When you synchronize a message to the destination cluster, the system automatically adds the attribute to the message for SQL-based filtering.
+        # The message filtering property. When a message is synchronized to the destination cluster, this property is automatically added to the message for SQL-based filtering during message consumption.
         self.message_property = message_property
-        # The network type. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ. Valid values:
-        # 
-        # *   TCP_INTERNET: Internet over TCP
-        # *   TCP_VPC: virtual private cloud (VPC) over TCP.
+        # The network type. This parameter is not required if instanceType is set to ALIYUN_ROCKETMQ. This parameter is required if instanceType is set to EXTERNAL_ROCKETMQ. Valid values:
+        #   - TCP_INTERNET: TCP over the Internet
+        #   - TCP_VPC: TCP over a VPC
         self.network_type = network_type
-        # The password used for authentication. This parameter is required only if you set authType to ACL_AUTH. If you set instanceType to ALIYUN_ROCKETMQ, you do not need to specify this parameter.
+        # The password for authentication. This parameter is required if authType is set to ACL_AUTH. This parameter is not required if instanceType is set to ALIYUN_ROCKETMQ.
         self.password = password
-        # The region where the instance resides.
+        # The region where the instance is deployed.
         self.region_id = region_id
-        # The ID of the security group to which the instance belongs. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
+        # The ID of the security group. This parameter is required only if instanceType is set to EXTERNAL_ROCKETMQ and networkType is set to TCP_VPC.
         self.security_group_id = security_group_id
-        # The username used for authentication. This parameter is required only if you set authType to ACL_AUTH.
+        # The username for authentication. This parameter is required if authType is set to ACL_AUTH.
         self.username = username
-        # The ID of the vSwitch with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
+        # The ID of the vSwitch with which the instance is associated. This parameter is required only if instanceType is set to EXTERNAL_ROCKETMQ and networkType is set to TCP_VPC.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
+        # The ID of the VPC with which the instance is associated. This parameter is required only if instanceType is set to EXTERNAL_ROCKETMQ and networkType is set to TCP_VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -278,9 +254,9 @@ class CreateDisasterRecoveryPlanRequestInstancesMessageProperty(DaraModel):
         property_key: str = None,
         property_value: str = None,
     ):
-        # The attribute key.
+        # The key of the property.
         self.property_key = property_key
-        # The attribute value.
+        # The value of the property.
         self.property_value = property_value
 
     def validate(self):

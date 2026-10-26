@@ -19,13 +19,21 @@ class ExecuteMigrationOperationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The return result.
         self.data = data
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -107,16 +115,27 @@ class ExecuteMigrationOperationResponseBodyData(DaraModel):
         stage_type: str = None,
         update_time: str = None,
     ):
+        # The operation business status.
         self.business_status = business_status
+        # The creation time, in YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
+        # The migration ID.
         self.migration_id = migration_id
+        # The migration operation ID.
         self.operation_id = operation_id
+        # The primary key of the operation object.
         self.operation_key = operation_key
+        # The operation parameter.
         self.operation_param = operation_param
+        # The operation result.
         self.operation_result = operation_result
+        # The operation status.
         self.operation_status = operation_status
+        # The operation type.
         self.operation_type = operation_type
+        # The migration stage type.
         self.stage_type = stage_type
+        # The modification time, in YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
 
     def validate(self):
@@ -209,6 +228,7 @@ class ExecuteMigrationOperationResponseBodyDataOperationResult(DaraModel):
         self,
         result_data: Any = None,
     ):
+        # The operation result.
         self.result_data = result_data
 
     def validate(self):
@@ -236,6 +256,7 @@ class ExecuteMigrationOperationResponseBodyDataOperationParam(DaraModel):
         self,
         param_data: Any = None,
     ):
+        # The parameter information.
         self.param_data = param_data
 
     def validate(self):

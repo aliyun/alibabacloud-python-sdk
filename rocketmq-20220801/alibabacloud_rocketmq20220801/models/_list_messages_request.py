@@ -16,22 +16,23 @@ class ListMessagesRequest(DaraModel):
         scroll_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query.
+        # The end time of the query time range. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
+        # The lite topic name.
         self.lite_topic_name = lite_topic_name
-        # Message Id.
+        # The message ID.
         self.message_id = message_id
-        # Message key.
+        # The message key.
         self.message_key = message_key
-        # The page number. Pages start from page 1.
+        # The current page number, starting from 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size. The maximum number of results to return per page.
         self.page_size = page_size
-        # The scroll ID of the request.
+        # The scroll ID for the request.
         # 
-        # You do not need to configure this parameter for the first page. This parameter is included in the pagination request based on the result returned for the first page.
+        # You do not need to specify this parameter for the first page request. For subsequent page requests, specify this parameter based on the value returned from the first page.
         self.scroll_id = scroll_id
-        # The beginning of the time range to query.
+        # The start time of the query time range. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
 
     def validate(self):

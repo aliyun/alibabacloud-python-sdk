@@ -17,14 +17,27 @@ class ListMigrationOperationsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The operation business status.
         self.business_status = business_status
+        # The filter condition for the query.
+        # 
+        # >
+        # > - Supports filtering by operationKey, which is the topic name.
         self.filter = filter
+        # The instance ID.
         self.instance_id = instance_id
+        # The operation status.
         self.operation_status = operation_status
+        # The operation type.
+        # 
         # This parameter is required.
         self.operation_type = operation_type
+        # The page number of the results to return.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The page size, which specifies the maximum number of results to return per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

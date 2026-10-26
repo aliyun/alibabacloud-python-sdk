@@ -20,11 +20,11 @@ class GetDisasterRecoveryItemResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+        # The details of the access denial. This parameter is returned only when the request is denied because the RAM user does not have the required permissions.
         self.access_denied_detail = access_denied_detail
         # The error code.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -34,7 +34,7 @@ class GetDisasterRecoveryItemResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -120,19 +120,24 @@ class GetDisasterRecoveryItemResponseBodyData(DaraModel):
         topics: List[main_models.GetDisasterRecoveryItemResponseBodyDataTopics] = None,
         update_time: str = None,
     ):
-        # The time when the topic mapping task was created.
+        # The creation time, in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # Additional Information
+        # The extended information.
         self.ext_info = ext_info
-        # The ID of the topic mapping
+        # The ID of the backup plan.
         self.item_id = item_id
-        # The topic mapping task status.
+        # The status of the backup mapping. Valid values:
+        # - CREATING: Being created.
+        # - CHANGING: Being modified.
+        # - RUNNING: Running.
+        # - MANUAL_STOPPED: Manually stopped.
+        # - OVERDUE_STOPPED: Stopped due to overdue payment.
         self.item_status = item_status
-        # The ID of the global message backup plan.
+        # The mapping ID.
         self.plan_id = plan_id
-        # Topics included in the backup mapping
+        # The topics included in the backup mapping.
         self.topics = topics
-        # The time when the topic mapping task was last updated.
+        # The update time, in the format of YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
 
     def validate(self):
@@ -211,15 +216,15 @@ class GetDisasterRecoveryItemResponseBodyDataTopics(DaraModel):
     ):
         # The consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # The order in which messages are delivered to the target instance. The parameter values ​​are as follows:
-        #   - Concurrently: concurrent delivery
-        #   - Orderly: sequential delivery
+        # The ordering of message delivery to the target instance.
+        # 
+        # The parameter has the following valid values:
+        # - Concurrently: Concurrent delivery.
+        # - Orderly: Ordered delivery.
         self.delivery_order_type = delivery_order_type
         # The instance ID.
         self.instance_id = instance_id
-        # Instance type
-        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
-        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        # The instance type.
         self.instance_type = instance_type
         # regionId
         self.region_id = region_id

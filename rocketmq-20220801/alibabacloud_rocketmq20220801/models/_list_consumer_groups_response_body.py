@@ -19,21 +19,21 @@ class ListConsumerGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The fault code.
         self.code = code
         # The returned data.
         self.data = data
-        # Dynamic error code.
+        # The dynamic fault code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message.
+        # The dynamic fault message.
         self.dynamic_message = dynamic_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The fault message.
         self.message = message
-        # Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
+        # The request ID. Each request has a unique ID, which is active for troubleshooting and locating issues.
         self.request_id = request_id
-        # Indicates whether the execution was successful.
+        # Indicates whether the operation is execute successfully.
         self.success = success
 
     def validate(self):
@@ -108,13 +108,13 @@ class ListConsumerGroupsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The consumer groups.
+        # The paging data.
         self.list = list
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Page size.
+        # The paging size.
         self.page_size = page_size
-        # Total number of returned results.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -177,23 +177,25 @@ class ListConsumerGroupsResponseBodyDataList(DaraModel):
         topic_name: str = None,
         update_time: str = None,
     ):
-        # Consumer group ID.
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # Creation time of the consumer group.
+        # The creation time of the consumer group, in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # The maximum TPS for message sending.
+        # The maximum TPS for consuming messages.
         self.max_receive_tps = max_receive_tps
+        # The consumption pattern.
         self.message_model = message_model
-        # The region ID to which the instance belongs.
+        # The region ID of the instance.
         self.region_id = region_id
-        # Remark information of the consumer group.
+        # The remarks of the consumer group.
         self.remark = remark
-        # Status of the consumer group.
+        # The status of the consumer group.
         self.status = status
+        # The topic name for the lite type.
         self.topic_name = topic_name
-        # Last update time of the consumer group.
+        # The last update time of the consumer group, in the format of YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
 
     def validate(self):

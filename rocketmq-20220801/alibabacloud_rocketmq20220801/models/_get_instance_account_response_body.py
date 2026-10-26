@@ -19,7 +19,7 @@ class GetInstanceAccountResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -29,7 +29,7 @@ class GetInstanceAccountResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # Request ID, each request\\"s ID is unique and can be used for troubleshooting and problem localization.
+        # The unique ID of the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -106,17 +106,13 @@ class GetInstanceAccountResponseBodyData(DaraModel):
         remark: str = None,
         username: str = None,
     ):
-        # The status of the account.
-        # 
-        # Valid values:
-        # 
-        # *   DISABLE
-        # *   ENABLE
+        # The account status.
         self.account_status = account_status
-        # The password of the account.
+        # The account password.
         self.password = password
+        # The remark.
         self.remark = remark
-        # The username of the account.
+        # The username.
         self.username = username
 
     def validate(self):

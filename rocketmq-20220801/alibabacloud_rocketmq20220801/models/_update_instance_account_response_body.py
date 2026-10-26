@@ -17,7 +17,7 @@ class UpdateInstanceAccountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+        # The access denial details. This field is returned only when user access is denied due to lack of RAM permissions.
         self.access_denied_detail = access_denied_detail
         # The error code.
         self.code = code
@@ -31,9 +31,9 @@ class UpdateInstanceAccountResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

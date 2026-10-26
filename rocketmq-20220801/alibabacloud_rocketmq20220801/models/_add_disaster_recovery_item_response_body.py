@@ -17,23 +17,23 @@ class AddDisasterRecoveryItemResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Access denied details, only in the scenario where the user is denied access due to RAM not having permission
+        # The access denial details. This parameter is returned only when user access is denied due to lack of RAM permissions.
         self.access_denied_detail = access_denied_detail
-        # Error code
+        # The error code.
         self.code = code
-        # Return result, mapping task ID
+        # The returned result, which is the ID of the mapping task.
         self.data = data
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID. Each request ID is unique and can be used for troubleshooting.
         self.request_id = request_id
-        # Whether the operation was successful
+        # Indicates whether the execution was successful.
         self.success = success
 
     def validate(self):

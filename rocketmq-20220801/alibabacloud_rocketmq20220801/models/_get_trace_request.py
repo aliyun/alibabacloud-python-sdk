@@ -10,7 +10,9 @@ class GetTraceRequest(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The end time, in YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
+        # The start time, in YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

@@ -12,11 +12,11 @@ class ListDisasterRecoveryItemsRequest(DaraModel):
         page_size: int = None,
         topic_name: str = None,
     ):
-        # The filter condition. Topics are filtered by topic name.
+        # The filter condition. Filters by topicName.
         self.filter = filter
-        # The page number.
+        # The page number of the results to return.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of results to return per page.
         self.page_size = page_size
         # The topic name.
         self.topic_name = topic_name

@@ -12,13 +12,13 @@ class ListDisasterRecoveryPlansRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The filter condition. Global Replicator tasks are filtered by task name or description.
+        # The filter condition. Filters backup plans by backup name or backup description.
         self.filter = filter
         # The instance ID.
         self.instance_id = instance_id
-        # The page number.
+        # The page number of the page to return.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):

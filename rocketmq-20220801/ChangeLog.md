@@ -1,3 +1,36 @@
+2026-10-26 Version: 5.1.0
+- Support API CreateAgentConversation.
+- Support API CreateInstanceInspection.
+- Support API DeleteAgentConversation.
+- Support API DeleteInstanceInspection.
+- Support API GetAgentConversation.
+- Support API GetAgentConversationEvents.
+- Support API GetAgentConversationTimeline.
+- Support API GetInstanceInspection.
+- Support API GetInstanceInspectionReport.
+- Support API GetInstanceInspectionRun.
+- Support API ListAgentConversations.
+- Support API ListInspectionTemplates.
+- Support API ListInstanceInspectionResources.
+- Support API ListInstanceInspectionRuns.
+- Support API ListInstanceInspections.
+- Support API RespondAgentConversationAction.
+- Support API RunInstanceInspection.
+- Support API SendAgentConversationMessage.
+- Support API SteerAgentConversation.
+- Support API StopAgentConversation.
+- Support API UpdateAgentConversation.
+- Support API UpdateAgentConversationShareScope.
+- Support API UpdateInstanceInspection.
+- Support API UploadAgentConversationLog.
+- Update API CreateInstance: add request parameters body.productInfo.adaptiveElasticity.
+- Update API GetInstance: add response parameters Body.data.productInfo.adaptiveElasticity.
+- Update API GetInstance: add response parameters Body.data.productInfo.maxDelayTime.
+- Update API GetMessageDetail: add response parameters Body.data.priority.
+- Update API GetTopic: add response parameters Body.data.priority.
+- Update API UpdateInstance: add request parameters body.productInfo.adaptiveElasticity.
+
+
 2026-05-20 Version: 5.0.8
 - Update API GetInstance: add response parameters Body.data.autoRenew.
 - Update API GetInstance: add response parameters Body.data.autoRenewPeriod.

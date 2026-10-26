@@ -11,15 +11,11 @@ class UpdateInstanceAccountRequest(DaraModel):
         password: str = None,
         remark: str = None,
     ):
-        # The status of the account.
-        # 
-        # Valid values:
-        # 
-        # *   DISABLE
-        # *   ENABLE
+        # The account status.
         self.account_status = account_status
-        # The password of the account.
+        # The account password.
         self.password = password
+        # The remark.
         self.remark = remark
 
     def validate(self):

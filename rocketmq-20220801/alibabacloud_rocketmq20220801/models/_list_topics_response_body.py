@@ -19,21 +19,21 @@ class ListTopicsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # The returned data.
+        # The return result.
         self.data = data
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message.
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
+        # The request ID. Each request has a unique ID that can be used to troubleshoot and locate issues.
         self.request_id = request_id
-        # Indicates whether the execution was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -108,13 +108,13 @@ class ListTopicsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The topics.
+        # The paged data.
         self.list = list
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Total number of results returned.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -177,36 +177,25 @@ class ListTopicsResponseBodyDataList(DaraModel):
         topic_name: str = None,
         update_time: str = None,
     ):
-        # Creation time.
+        # The creation time in YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
+        # The expiration time of a lite topic, in minutes.
         self.lite_topic_expiration = lite_topic_expiration
-        # The maximum TPS for message sending.
+        # The maximum TPS for sending messages.
         self.max_send_tps = max_send_tps
-        # The type of messages in the topic.
-        # 
-        # Valid values:
-        # 
-        # *   TRANSACTION: transactional messages
-        # *   FIFO: ordered messages
-        # *   DELAY: scheduled or delayed messages
-        # *   NORMAL: normal messages
+        # The message type of the topic.
         self.message_type = message_type
-        # The region ID to which the instance belongs.
+        # The ID of the region to which the instance belongs.
         self.region_id = region_id
-        # Remark information of the topic.
+        # The remarks for the topic.
         self.remark = remark
-        # The topic status.
-        # 
-        # Valid values:
-        # 
-        # *   RUNNING
-        # *   CREATING
+        # The status of the topic.
         self.status = status
-        # Topic name.
+        # The topic name.
         self.topic_name = topic_name
-        # Last update time of the topic.
+        # The last modification time of the topic in YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
 
     def validate(self):

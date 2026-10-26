@@ -12,13 +12,13 @@ class DataTopicLagMapValue(DaraModel):
         delivery_duration: int = None,
         last_consume_timestamp: int = None,
     ):
-        # Ready message count
+        # The number of ready messages.
         self.ready_count = ready_count
-        # The number of messages being consumed.
+        # The number of inflight messages.
         self.inflight_count = inflight_count
-        # Delivery delay time, in seconds
+        # The delivery latency. Unit: seconds.
         self.delivery_duration = delivery_duration
-        # lastConsumeTimestamp
+        # The timestamp of the last consumption.
         self.last_consume_timestamp = last_consume_timestamp
 
     def validate(self):

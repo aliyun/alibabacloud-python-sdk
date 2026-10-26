@@ -19,9 +19,9 @@ class ListAvailableZonesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call failed.
+        # The error code.
         self.code = code
-        # The result data that is returned.
+        # The response data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -31,9 +31,9 @@ class ListAvailableZonesResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -114,13 +114,13 @@ class ListAvailableZonesResponseBodyData(DaraModel):
         zone_id: str = None,
         zone_name: str = None,
     ):
-        # The time when the zone was created.
+        # The creation time, in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The time when the zone was last updated.
+        # The update time, in the YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
-        # The ID of the current zone.
+        # The zone ID.
         self.zone_id = zone_id
-        # The name of the current zone.
+        # The zone name.
         self.zone_name = zone_name
 
     def validate(self):

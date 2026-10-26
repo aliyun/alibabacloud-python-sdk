@@ -17,23 +17,23 @@ class DeleteDisasterRecoveryItemResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Access denied details, only in the scenario where the user is denied access due to RAM not having permission
+        # The details of the access denial. This field is returned only when the request is denied due to insufficient RAM permissions.
         self.access_denied_detail = access_denied_detail
-        # Error code
+        # The error code.
         self.code = code
-        # The return data
+        # The returned data.
         self.data = data
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the operation was successful
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

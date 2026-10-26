@@ -16,21 +16,21 @@ class UpdateInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The fault code.
         self.code = code
-        # The result data that is returned.
+        # The returned result.
         self.data = data
-        # The dynamic error code.
+        # The dynamic fault code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message.
+        # The dynamic fault message.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The fault message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # The request ID. Each request ID is unique and active for troubleshooting and locating issues.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the operation is executed successfully.
         self.success = success
 
     def validate(self):

@@ -19,13 +19,21 @@ class ListMigrationsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The response data.
         self.data = data
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -100,9 +108,13 @@ class ListMigrationsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The paged data.
         self.list = list
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -165,15 +177,30 @@ class ListMigrationsResponseBodyDataList(DaraModel):
         update_time: str = None,
         user_id: str = None,
     ):
+        # The creation time, in YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
+        # The current migration stage.
         self.current_stage = current_stage
+        # The migration ID.
         self.migration_id = migration_id
+        # The migration name.
         self.migration_name = migration_name
+        # The migration source.
         self.migration_source = migration_source
+        # The migration status. Valid values:
+        #  - CREATED: Created.
+        #  - MIGRATING: Migrating.
+        #  - COMPLETED: Completed.
+        #  - CANCELLED: Cancelled.
         self.migration_status = migration_status
+        # The migration target.
         self.migration_target = migration_target
+        # The migration type. Valid values:
+        #  - INSTANCE_MIGRATION: instance migration
         self.migration_type = migration_type
+        # The modification time, in YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -264,7 +291,10 @@ class ListMigrationsResponseBodyDataListMigrationTarget(DaraModel):
         target_data: Any = None,
         target_type: str = None,
     ):
+        # The migration target data.
         self.target_data = target_data
+        # The migration target type. Valid values:
+        #  - INTERNAL_INSTANCE: Alibaba Cloud 5.0 instance.
         self.target_type = target_type
 
     def validate(self):
@@ -299,7 +329,11 @@ class ListMigrationsResponseBodyDataListMigrationSource(DaraModel):
         source_data: Any = None,
         source_type: str = None,
     ):
+        # The migration source data.
         self.source_data = source_data
+        # The migration source type. Valid values:
+        #  - EXTERNAL_INSTANCE: External instance.
+        #  - INTERNAL_INSTANCE: Alibaba Cloud 5.0 instance.
         self.source_type = source_type
 
     def validate(self):
@@ -335,8 +369,18 @@ class ListMigrationsResponseBodyDataListCurrentStage(DaraModel):
         stage_status: str = None,
         stage_type: str = None,
     ):
+        # The stage data.
         self.stage_data = stage_data
+        # The stage status. Valid values:
+        #  - INIT: Not started.
+        #  - DOING: In progress.
+        #  - DONE: Completed.
         self.stage_status = stage_status
+        # The stage type. Valid values:
+        #  - CONNECT_NETWORK: Network connection.
+        #  - MIGRATE_METADATA: Metadata migration.
+        #  - REPLACE_ENDPOINT: Endpoint replacement.
+        #  - MIGRATE_MESSAGE: Message migration.
         self.stage_type = stage_type
 
     def validate(self):

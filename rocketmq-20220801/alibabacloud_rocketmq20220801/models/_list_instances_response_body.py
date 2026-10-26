@@ -19,21 +19,21 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call failed.
+        # The error code.
         self.code = code
-        # The data returned.
+        # The response result.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+        # The request ID. Each request has a unique ID that you can use to troubleshoot and locate issues.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -108,13 +108,13 @@ class ListInstancesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The pagination information.
+        # The paged data.
         self.list = list
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The page size.
         self.page_size = page_size
-        # The total number of returned entries.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -188,71 +188,62 @@ class ListInstancesResponseBodyDataList(DaraModel):
         update_time: str = None,
         user_id: str = None,
     ):
-        # The commodity code of the instance. The commodity code of ApsaraMQ for RocketMQ 5.0 instances has a similar format to ons_rmqsub_public_cn.
+        # The commodity code of the ApsaraMQ for RocketMQ 5.x series instance, such as ons_rmqsub_public_cn.
         self.commodity_code = commodity_code
-        # The time when the version of the instance was updated.
+        # The time when the instance version was last updated, in YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The time when the instance expires.
+        # The time when the instance expires, in YYYY-MM-DD HH:mm:ss format.
         self.expire_time = expire_time
-        # The number of consumer groups that are created on the instance.
+        # The number of consumer groups created in the instance.
         self.group_count = group_count
         # The instance ID.
         self.instance_id = instance_id
         # The instance name.
         self.instance_name = instance_name
-        # The billing method of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   PayAsYouGo
-        # *   Subscription
+        # The billing method of the instance. Valid values:
+        # - PayAsYouGo: pay-as-you-go (postpaid).
+        # - Subscription: subscription (prepaid).
         self.payment_type = payment_type
         # The product information.
         self.product_info = product_info
-        # The ID of the region in which the instance resides.
+        # The ID of the region to which the instance belongs.
         self.region_id = region_id
-        # The time when the instance was released.
+        # The time when the instance was released, in YYYY-MM-DD HH:mm:ss format.
         self.release_time = release_time
-        # The instance description.
+        # The remarks for the instance.
         self.remark = remark
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The primary edition of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   standard: Standard Edition
-        # *   ultimate: Enterprise Platinum Edition
-        # *   professional: Professional Edition
+        # The primary series code of the instance. Valid values:
+        # - standard: Standard Edition.
+        # - ultimate: Platinum Edition.
+        # - professional: Professional Edition.
+        # - shared: Shared Edition.
+        # - dedicated: Dedicated Edition.
         self.series_code = series_code
-        # The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
+        # The service code of the instance. The service code for ApsaraMQ for RocketMQ is rmq.
         self.service_code = service_code
-        # The time when the instance was created.
+        # The time when the instance was created, in YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
-        # The status of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   RELEASED
-        # *   RUNNING
-        # *   STOPPED
-        # *   CHANGING
-        # *   CREATING
+        # The instance status. Valid values:
+        # - RELEASED: Released.
+        # - RUNNING: Running.
+        # - STOPPED: Stopped.
+        # - CHANGING: Changing.
+        # - CREATING: Creating.
         self.status = status
-        # The sub-category edition of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   cluster_ha: Cluster High-availability Edition
-        # *   single_node: Standalone Edition
+        # The sub-series code of the instance. Valid values:
+        # - cluster_ha: cluster high-availability edition.
+        # - single_node: single-node edition.
+        # - serverless: serverless edition.
         self.sub_series_code = sub_series_code
-        # The resource tags.
+        # The resource tag list.
         self.tags = tags
-        # The number of topics that are created on the instance.
+        # The number of topics created in the instance.
         self.topic_count = topic_count
-        # The time when the instance was last modified.
+        # The time when the instance was last modified, in YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
-        # The ID of the user who owns the instance.
+        # The ID of the user to whom the instance belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -412,9 +403,9 @@ class ListInstancesResponseBodyDataListTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource.
+        # The key of the resource tag.
         self.key = key
-        # The tag value of the resource.
+        # The value of the resource tag.
         self.value = value
 
     def validate(self):
@@ -449,13 +440,18 @@ class ListInstancesResponseBodyDataListProductInfo(DaraModel):
         capacity_type: str = None,
         trace_on: bool = None,
     ):
+        # The capacity mode. Valid values:
+        # - provisioned: reserved capacity with elastic scaling.
+        # - ondemand: pay-as-you-go.
         self.capacity_type = capacity_type
-        # Indicates whether the message trace feature is enabled. Valid values:
+        # Specifies whether the message trace feature is enabled.
+        # - true: The message trace feature is enabled.
+        # - false: The message trace feature is disabled.
         # 
-        # *   true
-        # *   false
+        # <props="intl">This parameter does not take effect. Regardless of whether this parameter is enabled, the instance supports the message trace feature by default.
+        # <props="china">This parameter takes effect only for Serverless instances. If the message trace feature is enabled, message trace fees are incurred. For more information about billing, see [Serverless billing description](https://help.aliyun.com/document_detail/2586280.html).
         # 
-        # This parameter is not in use. By default, the message trace feature is enabled for ApsaraMQ for RocketMQ instances, regardless of whether this parameter is configured.
+        # <props="china">For pay-as-you-go and subscription instances, this parameter does not take effect. Regardless of whether this parameter is enabled, the message trace feature is supported by default.
         self.trace_on = trace_on
 
     def validate(self):

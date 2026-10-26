@@ -15,14 +15,27 @@ class ListMigrationOperationsShrinkRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The operation business status.
         self.business_status_shrink = business_status_shrink
+        # The filter condition for the query.
+        # 
+        # >
+        # > - Supports filtering by operationKey, which is the topic name.
         self.filter = filter
+        # The instance ID.
         self.instance_id = instance_id
+        # The operation status.
         self.operation_status_shrink = operation_status_shrink
+        # The operation type.
+        # 
         # This parameter is required.
         self.operation_type = operation_type
+        # The page number of the results to return.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The page size, which specifies the maximum number of results to return per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

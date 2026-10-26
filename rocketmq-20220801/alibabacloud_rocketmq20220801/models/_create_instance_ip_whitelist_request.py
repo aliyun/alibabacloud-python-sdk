@@ -11,7 +11,7 @@ class CreateInstanceIpWhitelistRequest(DaraModel):
         self,
         ip_whitelists: List[str] = None,
     ):
-        # The IP address whitelists.
+        # The list of IP address whitelists.
         # 
         # This parameter is required.
         self.ip_whitelists = ip_whitelists

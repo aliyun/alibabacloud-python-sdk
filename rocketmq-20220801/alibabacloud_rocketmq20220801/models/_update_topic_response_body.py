@@ -16,21 +16,21 @@ class UpdateTopicResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Return result.
+        # The returned result.
         self.data = data
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # 动态错误信息
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
+        # The ID of the request. This ID is unique to each request and can be used to troubleshoot issues.
         self.request_id = request_id
-        # Whether the execution result is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

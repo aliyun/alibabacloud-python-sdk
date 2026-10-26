@@ -10,9 +10,9 @@ class DeleteInstanceIpWhitelistShrinkRequest(DaraModel):
         ip_whitelist: str = None,
         ip_whitelists_shrink: str = None,
     ):
-        # The IP address whitelist.
+        # The IP whitelist.
         self.ip_whitelist = ip_whitelist
-        # The IP address whitelist.
+        # The list of IP whitelists.
         self.ip_whitelists_shrink = ip_whitelists_shrink
 
     def validate(self):

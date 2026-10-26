@@ -17,11 +17,11 @@ class DeleteInstanceAclResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial. This parameter is returned only if the access is denied due to the reason that the Resource Access Management (RAM) user does not have the required permissions.
+        # The access denial details. This field is returned only when user access is denied due to insufficient RAM permissions.
         self.access_denied_detail = access_denied_detail
         # The error code.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -33,7 +33,7 @@ class DeleteInstanceAclResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

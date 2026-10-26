@@ -16,21 +16,21 @@ class UpdateConsumerGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code.
+        # The fault code.
         self.code = code
-        # The result returned.
+        # The returned result.
         self.data = data
-        # Dynamic error code.
+        # The dynamic fault code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message.
+        # The dynamic fault message.
         self.dynamic_message = dynamic_message
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The fault message.
         self.message = message
-        # The request ID, which is unique for each request and can be used for troubleshooting and problem localization.
+        # The request ID. Each request has a unique ID that you can use to troubleshoot and locate issues.
         self.request_id = request_id
-        # Indicates whether the execution was successful.
+        # Indicates whether the execution succeeded.
         self.success = success
 
     def validate(self):

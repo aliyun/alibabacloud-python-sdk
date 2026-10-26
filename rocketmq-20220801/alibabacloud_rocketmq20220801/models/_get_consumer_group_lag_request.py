@@ -10,8 +10,9 @@ class GetConsumerGroupLagRequest(DaraModel):
         lite_topic_name: str = None,
         topic_name: str = None,
     ):
+        # The name of the lite topic.
         self.lite_topic_name = lite_topic_name
-        # The topic name.
+        # The name of the topic to which the consumer group subscribes.
         self.topic_name = topic_name
 
     def validate(self):

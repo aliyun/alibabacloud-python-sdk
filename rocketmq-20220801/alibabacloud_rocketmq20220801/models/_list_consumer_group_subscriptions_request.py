@@ -9,7 +9,7 @@ class ListConsumerGroupSubscriptionsRequest(DaraModel):
         self,
         topic_name: str = None,
     ):
-        # The topic name. If you do not specify this parameter, all subscriptions of the consumer group are queried.
+        # The name of the topic. If you do not specify this parameter, all subscription relationships are queried.
         self.topic_name = topic_name
 
     def validate(self):

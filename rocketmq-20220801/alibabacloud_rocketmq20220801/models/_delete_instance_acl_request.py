@@ -10,16 +10,11 @@ class DeleteInstanceAclRequest(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
-        # The name of the resource on which the permissions are granted.
+        # The name of the authorized resource.
         # 
         # This parameter is required.
         self.resource_name = resource_name
-        # The type of the resource on which the permissions are granted.
-        # 
-        # Valid values:
-        # 
-        # *   Group
-        # *   Topic
+        # The type of the authorized resource.
         # 
         # This parameter is required.
         self.resource_type = resource_type

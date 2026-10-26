@@ -17,23 +17,23 @@ class CreateDisasterRecoveryPlanResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Access denied details, provided only in scenarios where access is denied due to lack of RAM permissions
+        # The details of the access denial. This parameter is returned only when the user is denied access due to lack of RAM permissions.
         self.access_denied_detail = access_denied_detail
-        # Error code
+        # The error code.
         self.code = code
-        # The result, which is the backup plan ID
+        # The returned result, which is the ID of the backup plan.
         self.data = data
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

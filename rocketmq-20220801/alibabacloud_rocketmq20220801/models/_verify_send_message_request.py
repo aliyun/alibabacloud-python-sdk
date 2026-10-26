@@ -17,15 +17,19 @@ class VerifySendMessageRequest(DaraModel):
         message_tag: str = None,
         user_properties: Dict[str, Any] = None,
     ):
+        # The delivery time for a delayed message, specified as a UNIX timestamp in milliseconds.
         self.delivery_time_stamp = delivery_time_stamp
+        # The name of the Lite Message Queue topic.
         self.lite_topic_name = lite_topic_name
-        # The message body.
+        # The message content.
         self.message = message
+        # The ID of the message group. This parameter applies only to ordered messages. Messages with the same group ID are consumed in the order they are sent.
         self.message_group = message_group
-        # The message key.
+        # The business key.
         self.message_key = message_key
         # The message tag.
         self.message_tag = message_tag
+        # The user-defined properties of the message.
         self.user_properties = user_properties
 
     def validate(self):

@@ -14,19 +14,12 @@ class ListInstanceAccountRequest(DaraModel):
         username: str = None,
     ):
         # The status of the account.
-        # 
-        # Valid values:
-        # 
-        # *   DISABLE
-        # *   ENABLE
         self.account_status = account_status
-        # The account type.
-        #   - CUSTOMER
-        #   - DEFAULT
+        # The type of the account.
         self.account_type = account_type
-        # The page number. Default value: 1.
+        # The page number. The first page is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The username of the account.
         self.username = username

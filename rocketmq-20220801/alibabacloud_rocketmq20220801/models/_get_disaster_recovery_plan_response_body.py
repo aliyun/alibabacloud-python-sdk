@@ -20,17 +20,17 @@ class GetDisasterRecoveryPlanResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+        # The access denied details. This field is returned only when the request is denied because the RAM user does not have the required permissions.
         self.access_denied_detail = access_denied_detail
         # The error code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The response code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
@@ -124,46 +124,34 @@ class GetDisasterRecoveryPlanResponseBodyData(DaraModel):
         sync_checkpoint_enabled: bool = None,
         update_time: str = None,
     ):
-        # Indicates whether automatic consumer progress synchronization is enabled.
+        # Specifies whether automatic consumer automatic synchronization is enabled.
         # 
-        # >  This parameter takes effect only when `syncCheckpointEnabled` is set to true.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # > This field is valid only when consumer automatic synchronization is enabled, that is, when the `syncCheckpointEnabled` field is set to true.
         self.auto_sync_checkpoint = auto_sync_checkpoint
-        # The time when the query task was created.
+        # The creation time, in YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The extended information.
         self.ext_info = ext_info
-        # The instances involved in the Global Replicator task.
+        # The instances participating in the backup plan.
         self.instances = instances
-        # The description of the Global Replicator task.
+        # The plan description.
         self.plan_desc = plan_desc
-        # The ID of the Global Replicator task.
+        # The plan ID.
         self.plan_id = plan_id
-        # The name of the Global Replicator task.
+        # The plan name.
         self.plan_name = plan_name
-        # The status of the Global Replicator task. Valid values:
-        # 
-        # *   CREATED
-        # *   RUNNING
-        # *   DELETED
+        # The plan status. Valid values:
+        #   - CREATED: created.
+        #   - RUNNING: running.
+        #   - DELETED: deleted.
         self.plan_status = plan_status
-        # The type of the Global Replicator task. Valid values:
-        # 
-        # *   ACTIVE_PASSIVE: one-way backup
-        # *   ACTIVE_ACTIVE: two-way backup
+        # The plan type. Valid values:
+        #   - ACTIVE_PASSIVE: one-way backup.
+        #   - ACTIVE_ACTIVE: two-way backup.
         self.plan_type = plan_type
-        # Indicates whether consumer progress synchronization is enabled.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether consumer offset synchronization is enabled.
         self.sync_checkpoint_enabled = sync_checkpoint_enabled
-        # The time when the query task was last modified.
+        # The modification time, in YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
 
     def validate(self):
@@ -272,11 +260,11 @@ class GetDisasterRecoveryPlanResponseBodyDataInstances(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The authentication type.
+        # The authentication method.
         self.auth_type = auth_type
-        # The consumer Group ID.
+        # The consumer group ID used to pull messages from the source instance.
         self.consumer_group_id = consumer_group_id
-        # The endpoint.
+        # The endpoint address.
         self.endpoint_url = endpoint_url
         # The instance ID.
         self.instance_id = instance_id
@@ -284,21 +272,21 @@ class GetDisasterRecoveryPlanResponseBodyDataInstances(DaraModel):
         self.instance_role = instance_role
         # The instance type.
         self.instance_type = instance_type
-        # The message attribute.
+        # The message filtering property.
         self.message_property = message_property
         # The network type.
         self.network_type = network_type
-        # The password used for authentication.
+        # The authentication password.
         self.password = password
-        # The ID of the region where the instance resides.
+        # The region where the instance resides.
         self.region_id = region_id
         # The security group ID.
         self.security_group_id = security_group_id
-        # The username used for authentication.
+        # The authentication username.
         self.username = username
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID.
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -407,9 +395,9 @@ class GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty(DaraModel)
         property_key: str = None,
         property_value: str = None,
     ):
-        # The attribute key.
+        # The property key.
         self.property_key = property_key
-        # The attribute value.
+        # The property value.
         self.property_value = property_value
 
     def validate(self):

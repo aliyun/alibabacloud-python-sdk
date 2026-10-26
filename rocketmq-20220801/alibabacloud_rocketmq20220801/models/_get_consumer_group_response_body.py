@@ -17,21 +17,21 @@ class GetConsumerGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The fault code.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
-        # The dynamic error code.
+        # The dynamic fault code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message.
+        # The dynamic fault message.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The fault message.
         self.message = message
-        # The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+        # The request ID. Each request has a unique ID, which can be used to troubleshoot and locate faults.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the execute operation was successful.
         self.success = success
 
     def validate(self):
@@ -119,34 +119,29 @@ class GetConsumerGroupResponseBodyData(DaraModel):
         self.consume_retry_policy = consume_retry_policy
         # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # The time when the consumer group was created.
+        # The time when the consumer group was created, in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The message delivery method of the consumer group.
-        # 
-        # Valid values:
-        # 
-        # *   Concurrently: concurrent delivery
-        # *   Orderly: ordered delivery
+        # The delivery order of the consumer group.
         self.delivery_order_type = delivery_order_type
+        # Indicates whether exclusive consumption is enabled.
         self.exclusive = exclusive
-        # The ID of the instance.
+        # The ID of the instance to which the consumer group belongs.
         self.instance_id = instance_id
-        # Maximum received message tps
+        # The maximum TPS for consuming messages.
         self.max_receive_tps = max_receive_tps
+        # The consumption pattern. Valid values:
+        #  - CLUSTERING: clustering consumption.
+        #  - LITE_SELECTIVE: LITE_SELECTIVE.
         self.message_model = message_model
-        # The ID of the region in which the instance resides.
+        # The region ID of the instance.
         self.region_id = region_id
-        # The remarks on the consumer group.
+        # The remarks of the consumer group.
         self.remark = remark
         # The status of the consumer group.
-        # 
-        # Valid values:
-        # 
-        # *   RUNNING
-        # *   CREATING
         self.status = status
+        # The topic name for the lite type.
         self.topic_name = topic_name
-        # The time when the consumer group was last updated.
+        # The time when the consumer group was last updated, in the format of YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
 
     def validate(self):
@@ -253,20 +248,15 @@ class GetConsumerGroupResponseBodyDataConsumeRetryPolicy(DaraModel):
     ):
         # The dead-letter topic.
         # 
-        # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
+        # If a consumer fails to consume a message due to an exception and the message still cannot be consumed after retries, the message is delivered to the dead-letter topic for subsequent business recovery or review. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
-        # Fixed interval retry time,Value range, unit: seconds
-        #  - Concurrently:10-1800
-        #  - Orderly:1-600
+        # The fixed retry interval. Unit: seconds.
+        #  - Concurrently (concurrent delivery): 10-1800
+        #  - Orderly (ordered delivery): 1-600
         self.fixed_interval_retry_time = fixed_interval_retry_time
-        # The maximum number of retries.
+        # The maximum number of retry attempts.
         self.max_retry_times = max_retry_times
-        # The retry policy.
-        # 
-        # Valid values:
-        # 
-        # *   FixedRetryPolicy: fixed-interval retry
-        # *   DefaultRetryPolicy: exponential backoff retry
+        # The retry policy type.
         self.retry_policy = retry_policy
 
     def validate(self):

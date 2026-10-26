@@ -33,7 +33,7 @@ class ListRegionsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -117,19 +117,19 @@ class ListRegionsResponseBodyData(DaraModel):
         tags: List[main_models.ListRegionsResponseBodyDataTags] = None,
         update_time: str = None,
     ):
-        # The time when the ApsaraMQ for RocketMQ instance was created.
+        # The creation time, in the format of YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The region ID.
+        # The region ID, such as cn-hangzhou.
         self.region_id = region_id
-        # The region name.
+        # The Chinese name of the region, such as Hangzhou.
         self.region_name = region_name
-        # Indicates whether ApsaraMQ for RocketMQ V4 is activated.
+        # Indicates whether RocketMQ V4 is activated.
         self.support_rocketmq_v4 = support_rocketmq_v4
-        # Indicates whether ApsaraMQ for RocketMQ V5 is activated.
+        # Indicates whether RocketMQ V5 is activated.
         self.support_rocketmq_v5 = support_rocketmq_v5
         # The region tags.
         self.tags = tags
-        # The time when the ApsaraMQ for RocketMQ instance was last modified.
+        # The update time, in the format of YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
 
     def validate(self):

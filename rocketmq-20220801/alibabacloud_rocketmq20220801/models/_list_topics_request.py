@@ -14,13 +14,13 @@ class ListTopicsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The filter condition for the query. If not provided, all topics under the instance will be queried.
+        # The filter condition for the query. If not specified, all topics in the instance are returned.
         self.filter = filter
         # The message type of the topic.
         self.message_types = message_types
-        # Page number, indicating which page of results to return.
+        # The page number of the results to return.
         self.page_number = page_number
-        # Page size, the maximum number of results to display per page.
+        # The maximum number of results to display per page.
         self.page_size = page_size
 
     def validate(self):

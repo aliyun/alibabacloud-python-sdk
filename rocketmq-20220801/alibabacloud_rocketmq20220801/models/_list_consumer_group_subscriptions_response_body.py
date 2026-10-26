@@ -21,7 +21,7 @@ class ListConsumerGroupSubscriptionsResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
@@ -118,29 +118,33 @@ class ListConsumerGroupSubscriptionsResponseBodyData(DaraModel):
         topic_created: bool = None,
         topic_name: str = None,
     ):
-        # Indicates whether message consumption is consistent. Valid values:
+        # The consistency of the subscription relationship.
         # 
-        # *   false: Unconsumed messages exist in the consumer group.
-        # *   true: No unconsumed message exists in the consumer group.
+        # - false: The subscription relationship is inconsistent.
+        # 
+        # - true: The subscription relationship is consistent.
         self.consistency = consistency
         # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
         # The filter expression.
         self.filter_expression = filter_expression
-        # The type of the filter expression. Valid values:
+        # The type of the filter expression.
         # 
-        # *   SQL: filters messages by using SQL expressions.
-        # *   TAG: filters messages by using tags.
+        # - SQL: SQL filtering.
+        # 
+        # - TAG: Tag filtering.
         self.filter_expression_type = filter_expression_type
-        # The consumption mode of the consumer group. Valid values:
+        # The consumption mode of the consumer group.
         # 
-        # *   BROADCASTING: broadcasting consumption
-        # *   CLUSTERING: clustering consumption
+        # - BROADCASTING: The broadcast consumption mode.
+        # 
+        # - CLUSTERING: The cluster consumption mode.
         self.message_model = message_model
-        # The subscription status. Valid values:
+        # The subscription status.
         # 
-        # *   ONLINE: The consumer group is online. If the consumer group contains multiple consumers, this value is returned as long as one of the consumers is online.
-        # *   OFFLINE: The consumer group is offline. If the consumer group contains multiple consumers, this value is returned only if all consumers are offline.
+        # - ONLINE: The consumer group is online. If a consumer group contains multiple consumers, the group is considered online as long as at least one consumer is online.
+        # 
+        # - OFFLINE: The consumer group is offline. If a consumer group contains multiple consumers, the group is considered offline only when all consumers are offline.
         self.subscription_status = subscription_status
         # Indicates whether the topic is created.
         self.topic_created = topic_created

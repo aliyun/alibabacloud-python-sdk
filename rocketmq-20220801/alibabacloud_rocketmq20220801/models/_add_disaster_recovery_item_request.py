@@ -12,7 +12,7 @@ class AddDisasterRecoveryItemRequest(DaraModel):
         self,
         topics: List[main_models.AddDisasterRecoveryItemRequestTopics] = None,
     ):
-        # Topics included in the backup mapping. Required.
+        # The topics included in the backup mapping. Required.
         self.topics = topics
 
     def validate(self):
@@ -55,21 +55,21 @@ class AddDisasterRecoveryItemRequestTopics(DaraModel):
         region_id: str = None,
         topic_name: str = None,
     ):
-        # Consumer group ID, required for ACTIVE_ACTIVE bidirectional backup
+        # The ID of the consumer group. Required for ACTIVE_ACTIVE bidirectional backup.
         self.consumer_group_id = consumer_group_id
-        # The order in which messages are delivered to the target instance. The parameter values ​​are as follows:
-        #   - Concurrently: concurrent delivery
-        #   - Orderly: sequential delivery
+        # The delivery order of messages to the target instance. Valid values for the parameter:
+        # - Concurrently: concurrent delivery
+        # - Orderly: ordered delivery
         self.delivery_order_type = delivery_order_type
-        # Instance ID, an instance ID will be automatically generated when `instanceType` is `EXTERNAL_ROCKETMQ`, and it can be obtained by querying the backup plan.
+        # The instance ID. If instanceType is set to EXTERNAL_ROCKETMQ, an instance ID is automatically generated. You can obtain this ID by querying the backup plan.
         self.instance_id = instance_id
-        # Instance type
+        # The instance type. Valid values:
         #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
-        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        #   - EXTERNAL_ROCKETMQ: external instance, open-source instance, or open-source cluster
         self.instance_type = instance_type
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # Disaster recovery topic name, required
+        # The name of the disaster recovery topic. Required.
         self.topic_name = topic_name
 
     def validate(self):

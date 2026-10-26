@@ -16,38 +16,33 @@ class ListTracesRequest(DaraModel):
         query_type: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query.
+        # The end time in YYYY-MM-DD HH:mm:ss format.
         # 
         # This parameter is required.
         self.end_time = end_time
+        # The lightweight topic name.
         self.lite_topic_name = lite_topic_name
         # The message ID.
         # 
-        # This parameter is required if you set queryType to MESSAGE_ID.
+        # Required if queryType is set to MESSAGE_ID.
         self.message_id = message_id
         # The message key.
         # 
-        # This parameter is required if you set queryType to MESSAGE_ID.
+        # Required if queryType is set to MESSAGE_KEY.
         self.message_key = message_key
-        # The page number.
+        # The page number of the returned results.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of results to display per page.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The query type.
         # 
-        # Valid values:
-        # 
-        # *   MESSAGE_ID
-        # *   MESSAGE_KEY
-        # *   TOPIC
-        # 
         # This parameter is required.
         self.query_type = query_type
-        # The beginning of the time range to query.
+        # The start time in YYYY-MM-DD HH:mm:ss format.
         # 
         # This parameter is required.
         self.start_time = start_time

@@ -10,7 +10,9 @@ class DataLiteTopicLagMapValue(DaraModel):
         ready_count: int = None,
         delivery_duration: int = None,
     ):
+        # The number of accumulated messages.
         self.ready_count = ready_count
+        # The delivery latency. Unit: seconds.
         self.delivery_duration = delivery_duration
 
     def validate(self):
