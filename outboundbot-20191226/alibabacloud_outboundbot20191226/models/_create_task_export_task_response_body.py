@@ -18,11 +18,11 @@ class CreateTaskExportTaskResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The message returned by the API.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The export task ID.
         self.task_id = task_id

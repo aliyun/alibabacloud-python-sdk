@@ -26,7 +26,7 @@ class CreateCustomScriptTemplateRequest(DaraModel):
         self.model = model
         # The name of the custom scenario.
         self.name = name
-        # The prompt for professional mode.
+        # The prompt in professional mode.
         self.prompt = prompt
         # The agent configuration in JSON format.
         self.prompt_json = prompt_json

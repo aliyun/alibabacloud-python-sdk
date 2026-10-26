@@ -11,8 +11,11 @@ class ListCustomScriptTemplatesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The page number for paging. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page for paging. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

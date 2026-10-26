@@ -35,22 +35,23 @@ class CreateTaskExportTaskRequest(DaraModel):
         task_status_string_list: str = None,
         user_id_match: str = None,
     ):
-        # The start time (inclusive) for searching by call time.
+        # The start time for the dial time search, inclusive.
         self.actual_time_gte = actual_time_gte
-        # The end time (inclusive) for searching by call time.
+        # The end time for the dial time search, inclusive.
         self.actual_time_lte = actual_time_lte
-        # The minimum call duration for the search.
+        # The minimum call duration for the search, in milliseconds.
         self.call_duration_gte = call_duration_gte
-        # The maximum call duration for the search.
+        # The maximum call duration for the search, in milliseconds.
         self.call_duration_lte = call_duration_lte
         # The called number.
         self.called_number = called_number
+        # The calling number.
         self.calling_number = calling_number
         # Specifies whether the call was answered.
         self.has_answered = has_answered
         # Specifies whether the call was hung up due to rejection.
         self.has_hang_up_by_rejection = has_hang_up_by_rejection
-        # Specifies whether the conversation was completed.
+        # Specifies whether the conversation reached the end of the flow.
         self.has_reached_end_of_flow = has_reached_end_of_flow
         # The instance ID.
         # 
@@ -58,11 +59,17 @@ class CreateTaskExportTaskRequest(DaraModel):
         self.instance_id = instance_id
         # The job group ID.
         self.job_group_id = job_group_id
-        # The task name.
+        # The job name.
         self.job_group_name_query = job_group_name_query
         # The job ID.
         self.job_id = job_id
-        # The job status.
+        # The job statuses. Separate multiple values with commas. Valid values:
+        # - Scheduling: The job is being scheduled.
+        # - Executing: The job is being executed.
+        # - Succeeded: The job is completed and the user is reached.
+        # - Paused: The job is stopped.
+        # - Failed: The job is completed but the user is not reached.
+        # - Cancelled: The job is canceled.
         self.job_status_string_list = job_status_string_list
         # The other ID.
         self.other_id = other_id
@@ -76,19 +83,53 @@ class CreateTaskExportTaskRequest(DaraModel):
         self.recording_duration_lte = recording_duration_lte
         # The scenario name.
         self.script_name_query = script_name_query
-        # The field by which to sort the results.
-        self.sort_by = sort_by
         # The sort order. Valid values:
-        # - asr: ascending order
-        # - desc: descending order
+        # 
+        # - asc: ascending order.
+        # 
+        # - desc: descending order. This is the default value.
+        self.sort_by = sort_by
+        # The sort type. asr indicates ascending order, and desc indicates descending order.
         self.sort_order = sort_order
-        # The start time for searching by task creation time.
+        # The start time for the task creation time search.
         self.task_create_time_gte = task_create_time_gte
-        # The end time for searching by task creation time.
+        # The end time for the task creation time search.
         self.task_create_time_lte = task_create_time_lte
         # The task ID.
         self.task_id = task_id
-        # The call status.
+        # The call statuses. Separate multiple values with commas. Note: The Succeeded status is subdivided into specific causes. The general Succeeded: 1 (Connected) status is not displayed. All returned values are specific subdivided cause types. Valid values:
+        # 
+        # - Executing: 0 (dialing).
+        # - Succeeded: 1 (connected).
+        # - NoAnswer: 2 (not connected - no answer).
+        # - NotExist: 3 (not connected - nonexistent number).
+        # - Busy: 4 (not connected - busy).
+        # - Cancelled: 5 (not called - task stopped).
+        # - Failed: 6 (failed).
+        # - NotConnected: 7 (not connected - unreachable).
+        # - PoweredOff: 8 (not connected - powered off).
+        # - OutOfService: 9 (not connected - out of service).
+        # - InArrears: 10 (not connected - overdue payment).
+        # - EmptyNumber: 11 (not called - nonexistent number, no call).
+        # - PerDayCallCountLimit: 12 (not called - daily call limit exceeded).
+        # - ContactBlockList: 13 (not called - on blocklist).
+        # - CallerNotRegistered: 14 (not called - calling number not registered).
+        # - Terminated: 15 (not called - terminated).
+        # - VerificationCancelled: 16 (not called - canceled due to pre-call verification failure).
+        # - OutOfServiceNoCall: 17 (not called - out of service, no call).
+        # - InArrearsNoCall: 18 (not called - overdue payment, no call).
+        # - CallingNumberNotExist: 19 (not called - calling number does not exist).
+        # - SucceededFinish: 20 (connected - completed normally).
+        # - SucceededChatbotHangUpAfterNoAnswer: 21 (connected - chatbot hung up after unrecognized response).
+        # - SucceededChatbotHangUpAfterSilence: 22 (connected - hung up due to silence timeout).
+        # - SucceededClientHangUpAfterNoAnswer: 23 (connected - user hung up after unrecognized response).
+        # - SucceededClientHangUp: 24 (connected - user hung up without reason).
+        # - SucceededTransferByIntent: 25 (connected - transferred to agent due to intent match).
+        # - SucceededTransferAfterNoAnswer: 26 (connected - transferred to agent after unrecognized response).
+        # - SucceededInoInterAction: 27 (connected - no user interaction).
+        # - SucceededError: 28 (connected - interrupted by system error).
+        # - SucceededSpecialInterceptVoiceAssistant: 29 (connected - intercepted due to special condition: voice assistant).
+        # - SucceededSpecialInterceptExtensionNumberTransfer: 30 (connected - intercepted due to special condition: extension transfer).
         self.task_status_string_list = task_status_string_list
         # The user ID.
         self.user_id_match = user_id_match

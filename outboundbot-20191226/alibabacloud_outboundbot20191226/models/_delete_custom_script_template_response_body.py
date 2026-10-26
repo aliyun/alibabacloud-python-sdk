@@ -16,7 +16,7 @@ class DeleteCustomScriptTemplateResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The returned data. No business data is returned if the deletion succeeds.
+        # The returned data. No business data is returned when the deletion is successful.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

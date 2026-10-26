@@ -15,6 +15,7 @@ class DescribeTTSDemoRequest(DaraModel):
         instance_id: str = None,
         nls_service_type: str = None,
         pitch_rate: int = None,
+        sample_rate: int = None,
         script_id: str = None,
         secret_key: str = None,
         speech_rate: int = None,
@@ -22,46 +23,49 @@ class DescribeTTSDemoRequest(DaraModel):
         voice: str = None,
         volume: int = None,
     ):
-        # The AccessKey (AK) of the namespace.
-        # > When the engine is xunfei, enter the AK here.
+        # The AccessKey ID of the namespace.
+        # > When the engine is xunfei, you must enter the AccessKey ID.
         self.access_key = access_key
         # The Alibaba Cloud custom voice, which is the voice invocation ID.
         self.ali_customized_voice = ali_customized_voice
-        # The speech service type.
+        # The speech service type. 
         # 
-        # - When you use **ali** as the custom service, this field stores the appKey of the interactive voice response product project.
+        # - When **ali** is used as the custom service, this field stores the appKey of the interactive voice response product project.
         # 
-        # - When you use **xunfei** as the custom service provider, this field stores the corresponding appKey.
+        # - When **xunfei** is used as the custom service provider, this field stores the corresponding appKey.
         self.app_key = app_key
-        # The storage engine. Valid values: ali, volc, xunfei.
+        # The storage engine. Valid values: **ali**, **volc**, and **xunfei**.
         # 
-        # - When using traditional voices, CosyVoice, or selecting Alibaba Cloud as the custom service, set this to **ali**.
-        # - When using the doubao service, set this to **volc**.
-        # - When using xunfei as the service provider, set this to **xunfei** (can only be used in small model scenarios).
-        # - When using your own service, set this to **dock**, and set NlsServiceType to Authorized.
-        # - When using CV-v3-flash and Qwen voices, set this to **bailian**.
+        # - To use traditional voices, CosyVoice, or Alibaba Cloud as the custom service, enter **ali**.
+        # - To use the doubao service, enter **volc**.
+        # - To use xunfei as the service provider, enter **xunfei**. This option is only available for small model scenarios.
+        # - To use a self-managed service, enter **dock** and set NlsServiceType to Authorized.
+        # - To use CV-v3-flash and Qwen voices, enter **bailian**.
         self.engine = engine
-        # The extended parameter. When Engine is set to **dock**, enter the configuration ID.
+        # The extended parameters. When Engine is set to **dock**, you must enter the configuration ID.
         self.ext_params = ext_params
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The service type.
-        # Managed: the default service (public service) of the outbound robot product.
-        # Authorized: the interactive voice response service purchased by the public cloud customer (custom service), configured through system administration > Third-party Voice Configuration.
+        # Managed: the default service (public service) for the outbound robot product.
+        # Authorized: the interactive voice response service purchased by public cloud customers (custom service). You can configure it in system administration > Third-party Speech Configuration.
         # 
-        # > When using Alibaba Cloud interactive voice response as the custom service provider, set this to Authorized.
+        # > When you need to use Alibaba Cloud interactive voice response, that is, when you use Alibaba Cloud as the custom service provider, you must enter Authorized.
         self.nls_service_type = nls_service_type
-        # The pitch.
+        # The intonation.
         self.pitch_rate = pitch_rate
+        # The sample rate.
+        self.sample_rate = sample_rate
         # The scenario ID.
         self.script_id = script_id
-        # The AccessKey Secret (SK) of the namespace.
+        # The AccessKey secret of the namespace.
         # 
-        # > When the engine is xunfei, enter the SK here.
+        # > When the engine is xunfei, you must enter the AccessKey secret.
         self.secret_key = secret_key
-        # The speech rate. The value is an integer in the range of [-500, 500]. Default value: 0.
+        # The speech rate.
+        # Valid values: integers from -500 to 500. Default value: 0.
         # 
         # A value greater than 0 increases the pitch.
         # 
@@ -71,11 +75,12 @@ class DescribeTTSDemoRequest(DaraModel):
         # 
         # This parameter is required.
         self.text = text
-        # The voice information, such as aixia, siyue, or xiaoyun. For the complete list of available voices, refer to the voice list below.
+        # The voice information, such as aixia, siyue, or xiaoyun. For the complete list of voices, refer to the voice list below.
         # 
-        # > Because the Voice value for cloned voices is a non-fixed value generated during voice cloning, a specific Voice value cannot be provided at this stage. You can obtain the specific VoiceID from the voice cloning page by calling the ListVoiceClone operation.
+        # > Because the Voice value for cloned voices is not fixed and is generated during voice cloning, a specific Voice value cannot be provided at this stage. You must obtain the specific Voice ID from the ListVoiceClone request on the voice cloning page.
         self.voice = voice
-        # The volume. The value is an integer in the range of [0, 100]. Default value: 50.
+        # The volume.
+        # Valid values: integers from 0 to 100. Default value: 50.
         # 
         # A value greater than 50 increases the volume.
         # 
@@ -113,6 +118,9 @@ class DescribeTTSDemoRequest(DaraModel):
 
         if self.pitch_rate is not None:
             result['PitchRate'] = self.pitch_rate
+
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
 
         if self.script_id is not None:
             result['ScriptId'] = self.script_id
@@ -159,6 +167,9 @@ class DescribeTTSDemoRequest(DaraModel):
 
         if m.get('PitchRate') is not None:
             self.pitch_rate = m.get('PitchRate')
+
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
 
         if m.get('ScriptId') is not None:
             self.script_id = m.get('ScriptId')

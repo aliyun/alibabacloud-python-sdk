@@ -19,13 +19,21 @@ class ListCustomScriptTemplatesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Not used.
         self.max_results = max_results
+        # The message returned by the API operation.
         self.message = message
+        # Not used.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -100,9 +108,13 @@ class ListCustomScriptTemplatesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of custom scenario templates.
         self.list = list
+        # The current page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of custom scenario templates.
         self.total_count = total_count
 
     def validate(self):
@@ -165,15 +177,25 @@ class ListCustomScriptTemplatesResponseBodyDataList(DaraModel):
         prompt_json: str = None,
         script_id: str = None,
     ):
+        # The ID of the custom scenario template.
         self.agent_profile_id = agent_profile_id
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The description of the custom scenario template.
         self.description = description
+        # The instance ID to which the template belongs.
         self.instance_id = instance_id
+        # The label description. The value is a string in JSON array format.
         self.labels_json = labels_json
+        # The ID of the model used.
         self.model = model
+        # The name of the custom scenario template.
         self.name = name
+        # The prompt in professional mode.
         self.prompt = prompt
+        # The agent configuration. The value is a string in JSON format.
         self.prompt_json = prompt_json
+        # The ID of the scenario associated with the custom scenario template.
         self.script_id = script_id
 
     def validate(self):

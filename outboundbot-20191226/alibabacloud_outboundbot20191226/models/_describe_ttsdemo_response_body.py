@@ -14,17 +14,17 @@ class DescribeTTSDemoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The URL of the preview audio file.
+        # The URL of the preview file.
         self.audition_url = audition_url
         # The API status code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The API response message.
+        # The API message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

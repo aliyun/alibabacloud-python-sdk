@@ -14,11 +14,17 @@ class ModifyVoiceCloneResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The API status code.
         self.code = code
+        # The ID of the modified voice.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned by the API operation.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

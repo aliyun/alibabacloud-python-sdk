@@ -5127,6 +5127,8 @@ class Client(OpenApiClient):
             query['NlsServiceType'] = request.nls_service_type
         if not DaraCore.is_null(request.pitch_rate):
             query['PitchRate'] = request.pitch_rate
+        if not DaraCore.is_null(request.sample_rate):
+            query['SampleRate'] = request.sample_rate
         if not DaraCore.is_null(request.script_id):
             query['ScriptId'] = request.script_id
         if not DaraCore.is_null(request.secret_key):
@@ -5181,6 +5183,8 @@ class Client(OpenApiClient):
             query['NlsServiceType'] = request.nls_service_type
         if not DaraCore.is_null(request.pitch_rate):
             query['PitchRate'] = request.pitch_rate
+        if not DaraCore.is_null(request.sample_rate):
+            query['SampleRate'] = request.sample_rate
         if not DaraCore.is_null(request.script_id):
             query['ScriptId'] = request.script_id
         if not DaraCore.is_null(request.secret_key):

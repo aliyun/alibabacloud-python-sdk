@@ -12,11 +12,17 @@ class ModifyVoiceCloneRequest(DaraModel):
         voice_id: str = None,
         voice_name: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The status of the voice. Note: For a newly created voice, you must call the ModifyVoiceClone operation and set Status to Enabled before it can be used.
         self.status = status
+        # The ID of the cloned voice to modify.
+        # 
         # This parameter is required.
         self.voice_id = voice_id
+        # The name of the voice.
         self.voice_name = voice_name
 
     def validate(self):
