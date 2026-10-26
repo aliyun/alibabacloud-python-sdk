@@ -1,3 +1,11 @@
+2026-10-26 Version: 1.19.0
+- Support API CreateTicket4AiPro.
+- Support API ModifyAiproEmbedConfig.
+- Support API QueryAiproEmbedConfig.
+- Support API UpdateDataSourceProperties.
+- Update API QueryDatasetInfo: add response parameters Body.Result.CubeTableList.$.ChildTables.
+
+
 2026-10-15 Version: 1.18.0
 - Support API ListAuthConfigByResource.
 - Support API UpdateAuthorizationAttributes.

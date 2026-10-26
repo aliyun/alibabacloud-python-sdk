@@ -16,12 +16,12 @@ class QueryComponentPerformanceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result returned.
+        # The list of component performance logs, including component information and performance statistics information such as query count, query duration, and cache hits.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -98,47 +98,47 @@ class QueryComponentPerformanceResponseBodyResult(DaraModel):
         self.cache_query_count = cache_query_count
         # The component ID.
         self.component_id = component_id
-        # The name of the add-on.
+        # The component name.
         self.component_name = component_name
-        # The average query duration associated with the SQL pattern.
+        # The average query duration.
         self.cost_time_avg = cost_time_avg
         # The number of queries.
         self.query_count = query_count
         # The average number of queries.
         self.query_count_avg = query_count_avg
-        # The query exceeds the 5S number of queries.
+        # The number of queries that take more than 5 seconds.
         self.query_over_five_percent_num = query_over_five_percent_num
-        # Query the proportion of more than 5S.
+        # The percentage of queries that take more than 5 seconds.
         self.query_over_five_sec_percent = query_over_five_sec_percent
-        # The percentage of queries that exceed 10s.
+        # The percentage of queries that take more than 10 seconds.
         self.query_over_ten_sec_percent = query_over_ten_sec_percent
-        # The percentage of queries that exceed 10s.
+        # The number of queries that take more than 10 seconds.
         self.query_over_ten_sec_percent_num = query_over_ten_sec_percent_num
-        # The number of times that the chart query times out.
+        # The number of chart query timeouts.
         self.query_timeout_count = query_timeout_count
-        # The percentage of timeout times for chart queries.
+        # The percentage of chart query timeouts.
         self.query_timeout_count_percent = query_timeout_count_percent
-        # The average time consumed by the Quick engine query.
+        # The average query duration of Quick engine hits.
         self.quick_index_cost_time_avg = quick_index_cost_time_avg
-        # The number of times that the Quick engine is hit.
+        # The number of Quick engine hits.
         self.quick_index_query_count = quick_index_query_count
-        # The proportion of duplicate queries.
+        # The percentage of repeated queries.
         self.repeat_query_percent = repeat_query_percent
-        # The number of duplicate queries.
+        # The number of repeated queries.
         self.repeat_query_percent_num = repeat_query_percent_num
-        # The number of times the query is repeated.
+        # The number of repeated SQL queries.
         self.repeat_sql_query_count = repeat_sql_query_count
-        # The proportion of duplicate queries.
+        # The percentage of repeated queries.
         self.repeat_sql_query_percent = repeat_sql_query_percent
-        # The ID of the work.
+        # The report ID.
         self.report_id = report_id
-        # The name of the report.
+        # The report name.
         self.report_name = report_name
-        # The format of the report.
+        # The report type.
         self.report_type = report_type
-        # The unique ID of the space.
+        # The unique ID of the workspace.
         self.workspace_id = workspace_id
-        # The name of the group.
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

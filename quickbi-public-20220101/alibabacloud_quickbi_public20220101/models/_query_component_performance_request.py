@@ -15,29 +15,23 @@ class QueryComponentPerformanceRequest(DaraModel):
         resource_type: str = None,
         workspace_id: str = None,
     ):
-        # The average duration (minutes).
+        # The average duration, in minutes.
         self.cost_time_avg_min = cost_time_avg_min
-        # The current page number of the workspace member list:
-        # 
-        # *   Pages start from page 1.
-        # *   Default value: 1.
+        # The current page number of the workspace member list. Starting value: 1. Default value: 1.
         self.page_num = page_num
-        # The number of rows per page in a paged query.
-        # 
-        # *   Default value: 10.
-        # *   Maximum value: 1,000.
+        # The number of entries per page for a paged query. Default value: 10. Maximum value: 1000.
         self.page_size = page_size
         # The query type. Valid values:
         # 
-        # *   **lastDay**: Yesterday
-        # *   **sevenDays**: Within seven days
-        # *   **thirtyDays**: Within 30 days
+        # - **lastDay**: yesterday
+        # - **sevenDays**: within the last seven days
+        # - **thirtyDays**: within the last thirty days
         # 
         # This parameter is required.
         self.query_type = query_type
-        # The ID of the work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+        # The ID of the report. Reports include data portals, dashboards, workbooks, and ad hoc queries.
         self.report_id = report_id
-        # The resource types.
+        # The resource type.
         self.resource_type = resource_type
         # The workspace ID.
         # 

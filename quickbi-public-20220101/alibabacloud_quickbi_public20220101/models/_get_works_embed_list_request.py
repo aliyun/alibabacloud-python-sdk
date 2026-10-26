@@ -13,7 +13,7 @@ class GetWorksEmbedListRequest(DaraModel):
         works_type: str = None,
         ws_id: str = None,
     ):
-        # The report name for fuzzy match.
+        # The report name. Fuzzy match is supported.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_no = page_no
@@ -21,12 +21,12 @@ class GetWorksEmbedListRequest(DaraModel):
         self.page_size = page_size
         # The report type. Valid values:
         # 
-        # - page: dashboard.
-        # - screen: data screen.
-        # - report: workbook.
-        # - ANALYSIS: ad hoc analysis.
-        # - dashboardOfflineQuery: self-service data retrieval.
-        # - dataForm: data entry form.
+        # - page: Dashboard.
+        # - screen: Data screen.
+        # - report: Workbook.
+        # - ANALYSIS: Ad hoc analysis.
+        # - dashboardOfflineQuery: Self-service data retrieval.
+        # - dataForm: Data entry.
         self.works_type = works_type
         # The workspace ID.
         self.ws_id = ws_id

@@ -2050,6 +2050,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_ticket_with_options_async(request, runtime)
 
+    def create_ticket_4ai_pro_with_options(
+        self,
+        request: main_models.CreateTicket4AiProRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTicket4AiProResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.account_type):
+            query['AccountType'] = request.account_type
+        if not DaraCore.is_null(request.ai_pro_id):
+            query['AiProId'] = request.ai_pro_id
+        if not DaraCore.is_null(request.custom_param):
+            query['CustomParam'] = request.custom_param
+        if not DaraCore.is_null(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not DaraCore.is_null(request.quick_biuser_id):
+            query['QuickBIUserId'] = request.quick_biuser_id
+        if not DaraCore.is_null(request.system_uid):
+            query['SystemUid'] = request.system_uid
+        if not DaraCore.is_null(request.ticket_num):
+            query['TicketNum'] = request.ticket_num
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTicket4AiPro',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTicket4AiProResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ticket_4ai_pro_with_options_async(
+        self,
+        request: main_models.CreateTicket4AiProRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTicket4AiProResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.account_name):
+            query['AccountName'] = request.account_name
+        if not DaraCore.is_null(request.account_type):
+            query['AccountType'] = request.account_type
+        if not DaraCore.is_null(request.ai_pro_id):
+            query['AiProId'] = request.ai_pro_id
+        if not DaraCore.is_null(request.custom_param):
+            query['CustomParam'] = request.custom_param
+        if not DaraCore.is_null(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not DaraCore.is_null(request.quick_biuser_id):
+            query['QuickBIUserId'] = request.quick_biuser_id
+        if not DaraCore.is_null(request.system_uid):
+            query['SystemUid'] = request.system_uid
+        if not DaraCore.is_null(request.ticket_num):
+            query['TicketNum'] = request.ticket_num
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTicket4AiPro',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTicket4AiProResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ticket_4ai_pro(
+        self,
+        request: main_models.CreateTicket4AiProRequest,
+    ) -> main_models.CreateTicket4AiProResponse:
+        runtime = RuntimeOptions()
+        return self.create_ticket_4ai_pro_with_options(request, runtime)
+
+    async def create_ticket_4ai_pro_async(
+        self,
+        request: main_models.CreateTicket4AiProRequest,
+    ) -> main_models.CreateTicket4AiProResponse:
+        runtime = RuntimeOptions()
+        return await self.create_ticket_4ai_pro_with_options_async(request, runtime)
+
     def create_ticket_4copilot_with_options(
         self,
         request: main_models.CreateTicket4CopilotRequest,
@@ -5454,6 +5552,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.manual_run_mail_task_with_options_async(request, runtime)
 
+    def modify_aipro_embed_config_with_options(
+        self,
+        request: main_models.ModifyAiproEmbedConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAiproEmbedConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.ai_pro_id):
+            query['AiProId'] = request.ai_pro_id
+        if not DaraCore.is_null(request.chat_history_status):
+            query['ChatHistoryStatus'] = request.chat_history_status
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.memory_enabled):
+            query['MemoryEnabled'] = request.memory_enabled
+        if not DaraCore.is_null(request.show_name):
+            query['ShowName'] = request.show_name
+        if not DaraCore.is_null(request.upload_enabled):
+            query['UploadEnabled'] = request.upload_enabled
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAiproEmbedConfig',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAiproEmbedConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_aipro_embed_config_with_options_async(
+        self,
+        request: main_models.ModifyAiproEmbedConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAiproEmbedConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.ai_pro_id):
+            query['AiProId'] = request.ai_pro_id
+        if not DaraCore.is_null(request.chat_history_status):
+            query['ChatHistoryStatus'] = request.chat_history_status
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.memory_enabled):
+            query['MemoryEnabled'] = request.memory_enabled
+        if not DaraCore.is_null(request.show_name):
+            query['ShowName'] = request.show_name
+        if not DaraCore.is_null(request.upload_enabled):
+            query['UploadEnabled'] = request.upload_enabled
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAiproEmbedConfig',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAiproEmbedConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_aipro_embed_config(
+        self,
+        request: main_models.ModifyAiproEmbedConfigRequest,
+    ) -> main_models.ModifyAiproEmbedConfigResponse:
+        runtime = RuntimeOptions()
+        return self.modify_aipro_embed_config_with_options(request, runtime)
+
+    async def modify_aipro_embed_config_async(
+        self,
+        request: main_models.ModifyAiproEmbedConfigRequest,
+    ) -> main_models.ModifyAiproEmbedConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_aipro_embed_config_with_options_async(request, runtime)
+
     def modify_api_datasource_parameters_with_options(
         self,
         request: main_models.ModifyApiDatasourceParametersRequest,
@@ -5773,6 +5965,76 @@ class Client(OpenApiClient):
     ) -> main_models.QueryAccelerationLogByCubeIdResponse:
         runtime = RuntimeOptions()
         return await self.query_acceleration_log_by_cube_id_with_options_async(request, runtime)
+
+    def query_aipro_embed_config_with_options(
+        self,
+        request: main_models.QueryAiproEmbedConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAiproEmbedConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAiproEmbedConfig',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAiproEmbedConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_aipro_embed_config_with_options_async(
+        self,
+        request: main_models.QueryAiproEmbedConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAiproEmbedConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAiproEmbedConfig',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAiproEmbedConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_aipro_embed_config(
+        self,
+        request: main_models.QueryAiproEmbedConfigRequest,
+    ) -> main_models.QueryAiproEmbedConfigResponse:
+        runtime = RuntimeOptions()
+        return self.query_aipro_embed_config_with_options(request, runtime)
+
+    async def query_aipro_embed_config_async(
+        self,
+        request: main_models.QueryAiproEmbedConfigRequest,
+    ) -> main_models.QueryAiproEmbedConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.query_aipro_embed_config_with_options_async(request, runtime)
 
     def query_approval_info_with_options(
         self,
@@ -10075,6 +10337,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDataSourceResponse:
         runtime = RuntimeOptions()
         return await self.update_data_source_with_options_async(request, runtime)
+
+    def update_data_source_properties_with_options(
+        self,
+        request: main_models.UpdateDataSourcePropertiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataSourcePropertiesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.ds_id):
+            query['DsId'] = request.ds_id
+        if not DaraCore.is_null(request.quick_biowner_id):
+            query['QuickBIOwnerId'] = request.quick_biowner_id
+        if not DaraCore.is_null(request.show_name):
+            query['ShowName'] = request.show_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataSourceProperties',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataSourcePropertiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_source_properties_with_options_async(
+        self,
+        request: main_models.UpdateDataSourcePropertiesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataSourcePropertiesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.ds_id):
+            query['DsId'] = request.ds_id
+        if not DaraCore.is_null(request.quick_biowner_id):
+            query['QuickBIOwnerId'] = request.quick_biowner_id
+        if not DaraCore.is_null(request.show_name):
+            query['ShowName'] = request.show_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataSourceProperties',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataSourcePropertiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_source_properties(
+        self,
+        request: main_models.UpdateDataSourcePropertiesRequest,
+    ) -> main_models.UpdateDataSourcePropertiesResponse:
+        runtime = RuntimeOptions()
+        return self.update_data_source_properties_with_options(request, runtime)
+
+    async def update_data_source_properties_async(
+        self,
+        request: main_models.UpdateDataSourcePropertiesRequest,
+    ) -> main_models.UpdateDataSourcePropertiesResponse:
+        runtime = RuntimeOptions()
+        return await self.update_data_source_properties_with_options_async(request, runtime)
 
     def update_embedded_status_with_options(
         self,

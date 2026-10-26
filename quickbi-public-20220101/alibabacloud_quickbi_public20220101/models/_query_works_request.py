@@ -9,7 +9,7 @@ class QueryWorksRequest(DaraModel):
         self,
         works_id: str = None,
     ):
-        # The report ID.
+        # The work ID.
         # 
         # This parameter is required.
         self.works_id = works_id

@@ -136,7 +136,7 @@ class GetWorksEmbedListResponseBodyResultData(DaraModel):
         works_type: str = None,
         workspace_id: str = None,
     ):
-        # The time when the report was embedded, in the format of YYYY-mm-DD hh:MM:ss.
+        # The time when the report was embedded. Format: YYYY-MM-DD hh:mm:ss.
         self.embed_time = embed_time
         # The report ID.
         self.works_id = works_id

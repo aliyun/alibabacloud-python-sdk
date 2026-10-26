@@ -574,6 +574,7 @@ class QueryDatasetInfoResponseBodyResultCubeTableList(DaraModel):
     def __init__(
         self,
         caption: str = None,
+        child_tables: List[main_models.QueryDatasetInfoResponseBodyResultCubeTableListChildTables] = None,
         customsql: bool = None,
         datasource_id: str = None,
         ds_type: str = None,
@@ -587,6 +588,7 @@ class QueryDatasetInfoResponseBodyResultCubeTableList(DaraModel):
         # *   true: data source table
         # *   false: custom table
         self.caption = caption
+        self.child_tables = child_tables
         # The display name of the table.
         self.customsql = customsql
         # The name of the table.
@@ -608,6 +610,103 @@ class QueryDatasetInfoResponseBodyResultCubeTableList(DaraModel):
         # *   odps
         # *   oracle
         # *   ... and other data source types supported by Quick BI
+        self.unique_id = unique_id
+
+    def validate(self):
+        if self.child_tables:
+            for v1 in self.child_tables:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.caption is not None:
+            result['Caption'] = self.caption
+
+        result['ChildTables'] = []
+        if self.child_tables is not None:
+            for k1 in self.child_tables:
+                result['ChildTables'].append(k1.to_map() if k1 else None)
+
+        if self.customsql is not None:
+            result['Customsql'] = self.customsql
+
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+
+        if self.ds_type is not None:
+            result['DsType'] = self.ds_type
+
+        if self.fact_table is not None:
+            result['FactTable'] = self.fact_table
+
+        if self.sql is not None:
+            result['Sql'] = self.sql
+
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+
+        if self.unique_id is not None:
+            result['UniqueId'] = self.unique_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Caption') is not None:
+            self.caption = m.get('Caption')
+
+        self.child_tables = []
+        if m.get('ChildTables') is not None:
+            for k1 in m.get('ChildTables'):
+                temp_model = main_models.QueryDatasetInfoResponseBodyResultCubeTableListChildTables()
+                self.child_tables.append(temp_model.from_map(k1))
+
+        if m.get('Customsql') is not None:
+            self.customsql = m.get('Customsql')
+
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+
+        if m.get('DsType') is not None:
+            self.ds_type = m.get('DsType')
+
+        if m.get('FactTable') is not None:
+            self.fact_table = m.get('FactTable')
+
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+
+        if m.get('UniqueId') is not None:
+            self.unique_id = m.get('UniqueId')
+
+        return self
+
+class QueryDatasetInfoResponseBodyResultCubeTableListChildTables(DaraModel):
+    def __init__(
+        self,
+        caption: str = None,
+        customsql: bool = None,
+        datasource_id: str = None,
+        ds_type: str = None,
+        fact_table: bool = None,
+        sql: str = None,
+        table_name: str = None,
+        unique_id: str = None,
+    ):
+        self.caption = caption
+        self.customsql = customsql
+        self.datasource_id = datasource_id
+        self.ds_type = ds_type
+        self.fact_table = fact_table
+        self.sql = sql
+        self.table_name = table_name
         self.unique_id = unique_id
 
     def validate(self):

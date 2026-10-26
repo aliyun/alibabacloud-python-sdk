@@ -15,29 +15,28 @@ class QueryReportPerformanceRequest(DaraModel):
         resource_type: str = None,
         workspace_id: str = None,
     ):
-        # The average duration (minutes).
+        # The average time consumed in minutes.
         self.cost_time_avg_min = cost_time_avg_min
-        # Current page number for organization member list:
+        # The current page number of the organization member list.
         # 
-        # *   Pages start from page 1.
-        # *   Default value: 1.
+        # - Starting value: 1.
+        # - Default value: 1.
         self.page_num = page_num
-        # The number of rows per page in a paged query.
-        # 
-        # *   Default value: 10.
-        # *   Maximum value: 1,000.
+        # The number of entries per page.
+        # - Default value: 10.
+        # - Maximum value: 1000.
         self.page_size = page_size
         # The query type. Valid values:
         # 
-        # *   **lastDay**: Yesterday
-        # *   **sevenDays**: Within seven days
-        # *   **thirtyDays**: Within 30 days
+        # - **lastDay**: Yesterday.
+        # - **sevenDays**: Within the last 7 days.
+        # - **thirtyDays**: Within the last 30 days.
         # 
         # This parameter is required.
         self.query_type = query_type
-        # The ID of the security report.
+        # The report ID.
         self.report_id = report_id
-        # The resource types.
+        # The resource type.
         self.resource_type = resource_type
         # The workspace ID.
         # 

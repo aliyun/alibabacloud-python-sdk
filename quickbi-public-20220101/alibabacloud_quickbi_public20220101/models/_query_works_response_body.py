@@ -18,10 +18,10 @@ class QueryWorksResponseBody(DaraModel):
         self.request_id = request_id
         # The details of the data work.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -85,50 +85,50 @@ class QueryWorksResponseBodyResult(DaraModel):
         # - 0: Embedding is not enabled.
         # - 1: Embedding is enabled.
         self.auth_3rd_flag = auth_3rd_flag
-        # The remarks of the data work.
+        # The description of the data work.
         self.description = description
-        # The directory to which the data work belongs.
+        # The folder to which the data work belongs.
         self.directory = directory
-        # The array of global parameters.
+        # The global parameter array.
         self.global_param_vo_list = global_param_vo_list
-        # The timestamp when the data work was created, in milliseconds.
+        # The millisecond-level timestamp when the data work was created.
         self.gmt_create = gmt_create
-        # The timestamp when the data work was last modified, in milliseconds.
+        # The millisecond-level timestamp when the data work was updated.
         self.gmt_modify = gmt_modify
-        # The Alibaba Cloud account name of the user who last modified the data work.
+        # The Alibaba Cloud account name of the user who updated the data work.
         self.modify_name = modify_name
-        # The Quick BI UserID of the data work owner.
+        # The Quick BI user ID of the data work owner.
         self.owner_id = owner_id
         # The Alibaba Cloud account name of the data work owner.
         self.owner_name = owner_name
         # Indicates whether the data work is public.
         self.public_flag = public_flag
-        # The expiration date for the public access of the report. This value is a UNIX timestamp in milliseconds.
+        # The expiration date for public access to the report, represented as a UNIX timestamp in milliseconds.
         self.public_invalid_time = public_invalid_time
         # The security policy for collaborative authorization of the data work. Valid values:
         # - 0: Private.
         # - 12: Authorized to specified members.
         # - 1 or 11: Authorized to all workspace members.
         # 
-        # >- If you use the legacy permission model, the return value is 1.
-        # >- If you use the new permission model, the return value is 11.
+        # >- If you use the legacy permissions, the value 1 is returned.
+        # >- If you use the new permissions, the value 11 is returned.
         self.security_level = security_level
-        # The report status. Valid values:
+        # The status of the report. Valid values:
         # 
         # - 0: Unpublished.
         # - 1: Published.
-        # - 2: Modified but not published.
+        # - 2: Modified but unpublished.
         # - 3: Offline.
         self.status = status
         # The name of the data work.
         self.work_name = work_name
-        # The type of the data work. Leave this parameter empty to query all types. Valid values:
+        # The type of the data work to query. Leave this parameter empty to query all types. Valid values:
         # 
-        # - DATAPRODUCT: data portal
-        # - PAGE: dashboard
-        # - FULLPAGE: full-screen dashboard
-        # - REPORT: workbook
-        # - dashboardOfflineQuery: custom query
+        # - DATAPRODUCT: Data portal.
+        # - PAGE: Dashboard.
+        # - FULLPAGE: Full-screen dashboard.
+        # - REPORT: Workbook.
+        # - dashboardOfflineQuery: Self-service data retrieval.
         self.work_type = work_type
         # The ID of the data work.
         self.works_id = works_id
@@ -280,14 +280,14 @@ class QueryWorksResponseBodyResultGlobalParamVoList(DaraModel):
     ):
         # The field type. Valid values:
         # 
-        # - enum: enumeration
-        # - string: text
-        # - number: numeric
-        # - datetime: date
+        # - enum: Enumeration.
+        # - string: Text.
+        # - number: Numeric value.
+        # - datetime: Date and time.
         self.data_type = data_type
-        # The parameter alias.
+        # The alias of the parameter.
         self.param_alias = param_alias
-        # The parameter name.
+        # The name of the parameter.
         self.param_name = param_name
         # Indicates whether the parameter is required.
         self.required = required
@@ -338,13 +338,13 @@ class QueryWorksResponseBodyResultDirectory(DaraModel):
         path_id: str = None,
         path_name: str = None,
     ):
-        # The ID of the directory to which the data work belongs.
+        # The ID of the folder.
         self.id = id
-        # The directory name.
+        # The name of the folder.
         self.name = name
-        # The hierarchical path of the directory IDs, separated by a forward slash (/).
+        # The hierarchical structure of the folder IDs, separated by forward slashes (/).
         self.path_id = path_id
-        # The hierarchical path of the directory names, separated by a forward slash (/).
+        # The hierarchical structure of the folder names, separated by forward slashes (/).
         self.path_name = path_name
 
     def validate(self):

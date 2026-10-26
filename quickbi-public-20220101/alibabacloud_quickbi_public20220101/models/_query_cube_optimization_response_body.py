@@ -16,12 +16,11 @@ class QueryCubeOptimizationResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The query results are returned.
+        # The list of dataset optimization suggestions, which includes dataset performance diagnostics information and corresponding optimization suggestion types.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -71,12 +70,11 @@ class QueryCubeOptimizationResponseBodyResult(DaraModel):
         cube_performance_diagnose_model: main_models.QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel = None,
     ):
         # The type of the suggestion. Valid values:
-        # 
-        # *   **OPEN_CACHE**: Open cache.
-        # *   **OPEN_QUICK_ENGINE**: Open FAST Cache.
-        # *   **INCREASE_CACHE_TIME**: Increase the cache time.
+        # - **OPEN_CACHE**: Enable caching.
+        # - **OPEN_QUICK_ENGINE**: Enable the Quick engine.
+        # - **INCREASE_CACHE_TIME**: Increase the cache duration.
         self.advice_type = advice_type
-        # The diagnostic information about the dataset.
+        # The dataset diagnostics information.
         self.cube_performance_diagnose_model = cube_performance_diagnose_model
 
     def validate(self):
@@ -132,47 +130,47 @@ class QueryCubeOptimizationResponseBodyResultCubePerformanceDiagnoseModel(DaraMo
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The average duration of cache hits.
+        # The average duration for cache hits.
         self.cache_cost_time_avg = cache_cost_time_avg
         # The number of cache hits.
         self.cache_query_count = cache_query_count
-        # The average query duration associated with the SQL pattern.
+        # The average query duration.
         self.cost_time_avg = cost_time_avg
         # The dataset ID.
         self.cube_id = cube_id
-        # The name of the dataset.
+        # The dataset name.
         self.cube_name = cube_name
         # The number of queries.
         self.query_count = query_count
         # The average number of queries.
         self.query_count_avg = query_count_avg
-        # The percentage of the number of queries that exceed the 5S.
+        # The proportion of queries that exceed 5 seconds.
         self.query_over_five_percent_num = query_over_five_percent_num
-        # Query the proportion of more than 5S.
+        # The percentage of queries that exceed 5 seconds.
         self.query_over_five_sec_percent = query_over_five_sec_percent
-        # The percentage of queries that exceed 10s.
+        # The percentage of queries that exceed 10 seconds.
         self.query_over_ten_sec_percent = query_over_ten_sec_percent
-        # The percentage of queries that exceed 10s.
+        # The proportion of queries that exceed 10 seconds.
         self.query_over_ten_sec_percent_num = query_over_ten_sec_percent_num
-        # The number of times that the chart query times out.
+        # The number of chart query timeouts.
         self.query_timeout_count = query_timeout_count
-        # The percentage of timeout times for chart queries.
+        # The percentage of chart query timeouts.
         self.query_timeout_count_percent = query_timeout_count_percent
-        # The average time consumed by the Quick engine query.
+        # The average query duration for Quick engine hits.
         self.quick_index_cost_time_avg = quick_index_cost_time_avg
-        # The number of times that the Quick engine is hit.
+        # The number of Quick engine hits.
         self.quick_index_query_count = quick_index_query_count
-        # The proportion of duplicate queries.
+        # The percentage of repeated queries.
         self.repeat_query_percent = repeat_query_percent
-        # The number of duplicate queries.
+        # The number of repeated queries.
         self.repeat_query_percent_num = repeat_query_percent_num
-        # The number of times the query is repeated.
+        # The number of repeated SQL queries.
         self.repeat_sql_query_count = repeat_sql_query_count
-        # The proportion of duplicate queries.
+        # The percentage of repeated queries.
         self.repeat_sql_query_percent = repeat_sql_query_percent
         # The workspace ID.
         self.workspace_id = workspace_id
-        # The name of the workspace.
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

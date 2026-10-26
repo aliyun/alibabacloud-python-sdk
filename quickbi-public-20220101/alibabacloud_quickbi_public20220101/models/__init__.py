@@ -77,6 +77,9 @@ from ._create_dataset_response import CreateDatasetResponse
 from ._create_ticket_request import CreateTicketRequest
 from ._create_ticket_response_body import CreateTicketResponseBody
 from ._create_ticket_response import CreateTicketResponse
+from ._create_ticket_4ai_pro_request import CreateTicket4AiProRequest
+from ._create_ticket_4ai_pro_response_body import CreateTicket4AiProResponseBody
+from ._create_ticket_4ai_pro_response import CreateTicket4AiProResponse
 from ._create_ticket_4copilot_request import CreateTicket4CopilotRequest
 from ._create_ticket_4copilot_response_body import CreateTicket4CopilotResponseBody
 from ._create_ticket_4copilot_response import CreateTicket4CopilotResponse
@@ -211,6 +214,9 @@ from ._list_workspace_user_roles_by_user_id_response import ListWorkspaceUserRol
 from ._manual_run_mail_task_request import ManualRunMailTaskRequest
 from ._manual_run_mail_task_response_body import ManualRunMailTaskResponseBody
 from ._manual_run_mail_task_response import ManualRunMailTaskResponse
+from ._modify_aipro_embed_config_request import ModifyAiproEmbedConfigRequest
+from ._modify_aipro_embed_config_response_body import ModifyAiproEmbedConfigResponseBody
+from ._modify_aipro_embed_config_response import ModifyAiproEmbedConfigResponse
 from ._modify_api_datasource_parameters_request import ModifyApiDatasourceParametersRequest
 from ._modify_api_datasource_parameters_response_body import ModifyApiDatasourceParametersResponseBody
 from ._modify_api_datasource_parameters_response import ModifyApiDatasourceParametersResponse
@@ -223,6 +229,9 @@ from ._modify_dashboard_nl_2sql_status_response import ModifyDashboardNl2sqlStat
 from ._query_acceleration_log_by_cube_id_request import QueryAccelerationLogByCubeIdRequest
 from ._query_acceleration_log_by_cube_id_response_body import QueryAccelerationLogByCubeIdResponseBody
 from ._query_acceleration_log_by_cube_id_response import QueryAccelerationLogByCubeIdResponse
+from ._query_aipro_embed_config_request import QueryAiproEmbedConfigRequest
+from ._query_aipro_embed_config_response_body import QueryAiproEmbedConfigResponseBody
+from ._query_aipro_embed_config_response import QueryAiproEmbedConfigResponse
 from ._query_approval_info_request import QueryApprovalInfoRequest
 from ._query_approval_info_response_body import QueryApprovalInfoResponseBody
 from ._query_approval_info_response import QueryApprovalInfoResponse
@@ -392,6 +401,9 @@ from ._update_data_level_permission_status_response import UpdateDataLevelPermis
 from ._update_data_source_request import UpdateDataSourceRequest
 from ._update_data_source_response_body import UpdateDataSourceResponseBody
 from ._update_data_source_response import UpdateDataSourceResponse
+from ._update_data_source_properties_request import UpdateDataSourcePropertiesRequest
+from ._update_data_source_properties_response_body import UpdateDataSourcePropertiesResponseBody
+from ._update_data_source_properties_response import UpdateDataSourcePropertiesResponse
 from ._update_embedded_status_request import UpdateEmbeddedStatusRequest
 from ._update_embedded_status_response_body import UpdateEmbeddedStatusResponseBody
 from ._update_embedded_status_response import UpdateEmbeddedStatusResponse
@@ -467,6 +479,7 @@ from ._list_workspace_user_roles_by_user_id_response_body import ListWorkspaceUs
 from ._list_workspace_user_roles_by_user_id_response_body import ListWorkspaceUserRolesByUserIdResponseBodyResult
 from ._query_acceleration_log_by_cube_id_response_body import QueryAccelerationLogByCubeIdResponseBodyResultData
 from ._query_acceleration_log_by_cube_id_response_body import QueryAccelerationLogByCubeIdResponseBodyResult
+from ._query_aipro_embed_config_response_body import QueryAiproEmbedConfigResponseBodyResult
 from ._query_approval_info_response_body import QueryApprovalInfoResponseBodyResultData
 from ._query_approval_info_response_body import QueryApprovalInfoResponseBodyResult
 from ._query_audit_log_response_body import QueryAuditLogResponseBodyResult
@@ -491,6 +504,7 @@ from ._query_data_service_list_response_body import QueryDataServiceListResponse
 from ._query_data_service_list_response_body import QueryDataServiceListResponseBodyResultDataContent
 from ._query_data_service_list_response_body import QueryDataServiceListResponseBodyResultData
 from ._query_data_service_list_response_body import QueryDataServiceListResponseBodyResult
+from ._query_dataset_info_response_body import QueryDatasetInfoResponseBodyResultCubeTableListChildTables
 from ._query_dataset_info_response_body import QueryDatasetInfoResponseBodyResultCubeTableList
 from ._query_dataset_info_response_body import QueryDatasetInfoResponseBodyResultDimensionList
 from ._query_dataset_info_response_body import QueryDatasetInfoResponseBodyResultDirectory
@@ -628,6 +642,9 @@ __all__ = [
     CreateTicketRequest,
     CreateTicketResponseBody,
     CreateTicketResponse,
+    CreateTicket4AiProRequest,
+    CreateTicket4AiProResponseBody,
+    CreateTicket4AiProResponse,
     CreateTicket4CopilotRequest,
     CreateTicket4CopilotResponseBody,
     CreateTicket4CopilotResponse,
@@ -762,6 +779,9 @@ __all__ = [
     ManualRunMailTaskRequest,
     ManualRunMailTaskResponseBody,
     ManualRunMailTaskResponse,
+    ModifyAiproEmbedConfigRequest,
+    ModifyAiproEmbedConfigResponseBody,
+    ModifyAiproEmbedConfigResponse,
     ModifyApiDatasourceParametersRequest,
     ModifyApiDatasourceParametersResponseBody,
     ModifyApiDatasourceParametersResponse,
@@ -774,6 +794,9 @@ __all__ = [
     QueryAccelerationLogByCubeIdRequest,
     QueryAccelerationLogByCubeIdResponseBody,
     QueryAccelerationLogByCubeIdResponse,
+    QueryAiproEmbedConfigRequest,
+    QueryAiproEmbedConfigResponseBody,
+    QueryAiproEmbedConfigResponse,
     QueryApprovalInfoRequest,
     QueryApprovalInfoResponseBody,
     QueryApprovalInfoResponse,
@@ -943,6 +966,9 @@ __all__ = [
     UpdateDataSourceRequest,
     UpdateDataSourceResponseBody,
     UpdateDataSourceResponse,
+    UpdateDataSourcePropertiesRequest,
+    UpdateDataSourcePropertiesResponseBody,
+    UpdateDataSourcePropertiesResponse,
     UpdateEmbeddedStatusRequest,
     UpdateEmbeddedStatusResponseBody,
     UpdateEmbeddedStatusResponse,
@@ -1018,6 +1044,7 @@ __all__ = [
     ListWorkspaceUserRolesByUserIdResponseBodyResult,
     QueryAccelerationLogByCubeIdResponseBodyResultData,
     QueryAccelerationLogByCubeIdResponseBodyResult,
+    QueryAiproEmbedConfigResponseBodyResult,
     QueryApprovalInfoResponseBodyResultData,
     QueryApprovalInfoResponseBodyResult,
     QueryAuditLogResponseBodyResult,
@@ -1042,6 +1069,7 @@ __all__ = [
     QueryDataServiceListResponseBodyResultDataContent,
     QueryDataServiceListResponseBodyResultData,
     QueryDataServiceListResponseBodyResult,
+    QueryDatasetInfoResponseBodyResultCubeTableListChildTables,
     QueryDatasetInfoResponseBodyResultCubeTableList,
     QueryDatasetInfoResponseBodyResultDimensionList,
     QueryDatasetInfoResponseBodyResultDirectory,

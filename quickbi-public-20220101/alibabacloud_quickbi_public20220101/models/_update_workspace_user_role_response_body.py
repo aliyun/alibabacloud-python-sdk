@@ -13,12 +13,12 @@ class UpdateWorkspaceUserRoleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # The execution result of the API operation. Valid values:
         # 
-        # - true: The operation succeeded.
-        # - false: The operation failed.
+        # - true: The execution succeeded.
+        # - false: The execution failed.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
         # - true: The request succeeded.
         # - false: The request failed.

@@ -12,19 +12,19 @@ class QueryOrganizationWorkspaceListRequest(DaraModel):
         page_size: int = None,
         user_id: str = None,
     ):
-        # The keyword of the workspace name.
+        # The keyword for the workspace name.
         self.keyword = keyword
-        # The page number of the workspace list.
+        # The current page number of the workspace list.
         # 
-        # - Minimum value: 1.
-        # - Default value: 1.
+        # - Starting value: 1
+        # - Default value: 1
         self.page_num = page_num
-        # The number of rows per page in a paged query.
+        # The number of entries per page in a paging query:
         # 
-        # - Default value: 10.
-        # - Maximum value: 1000.
+        # - Default value: 10
+        # - Maximum value: 1000
         self.page_size = page_size
-        # The ID of the user in Quick BI.
+        # The ID of the user in Quick BI. If you specify this parameter, the system queries all workspaces of the user in the organization.
         self.user_id = user_id
 
     def validate(self):
