@@ -1179,6 +1179,10 @@ from ._un_tag_data_assets_request import UnTagDataAssetsRequest
 from ._un_tag_data_assets_shrink_request import UnTagDataAssetsShrinkRequest
 from ._un_tag_data_assets_response_body import UnTagDataAssetsResponseBody
 from ._un_tag_data_assets_response import UnTagDataAssetsResponse
+from ._update_agent_session_title_request import UpdateAgentSessionTitleRequest
+from ._update_agent_session_title_shrink_request import UpdateAgentSessionTitleShrinkRequest
+from ._update_agent_session_title_response_body import UpdateAgentSessionTitleResponseBody
+from ._update_agent_session_title_response import UpdateAgentSessionTitleResponse
 from ._update_alert_rule_request import UpdateAlertRuleRequest
 from ._update_alert_rule_shrink_request import UpdateAlertRuleShrinkRequest
 from ._update_alert_rule_response_body import UpdateAlertRuleResponseBody
@@ -1418,9 +1422,12 @@ from ._cancel_agent_session_response_body import CancelAgentSessionResponseBodyJ
 from ._cancel_agent_session_response_body import CancelAgentSessionResponseBodyJsonRpcResponse
 from ._cancel_image_test_response_body import CancelImageTestResponseBodyData
 from ._create_agent_request import CreateAgentRequestCallableAgents
+from ._create_agent_request import CreateAgentRequestExpertSuites
 from ._create_agent_request import CreateAgentRequestSkills
 from ._create_agent_request import CreateAgentRequestTools
 from ._create_agent_request import CreateAgentRequestVisibilityScope
+from ._create_agent_response_body import CreateAgentResponseBodyAgentExpertSuites
+from ._create_agent_response_body import CreateAgentResponseBodyAgentSkills
 from ._create_agent_response_body import CreateAgentResponseBodyAgent
 from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaAgent
 from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaConfigSessionTags
@@ -1428,6 +1435,7 @@ from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaCo
 from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaInitialConfigOptions
 from ._create_agent_session_request import CreateAgentSessionRequestParamsMeta
 from ._create_agent_session_request import CreateAgentSessionRequestParams
+from ._create_agent_session_response_body import CreateAgentSessionResponseBodyJsonRpcResponseError
 from ._create_agent_session_response_body import CreateAgentSessionResponseBodyJsonRpcResponseResult
 from ._create_agent_session_response_body import CreateAgentSessionResponseBodyJsonRpcResponse
 from ._create_alert_rule_request import CreateAlertRuleRequestNotificationReceivers
@@ -1561,6 +1569,7 @@ from ._find_best_match_security_strategy_response_body import FindBestMatchSecur
 from ._find_best_match_security_strategy_response_body import FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy
 from ._find_best_match_security_strategy_response_body import FindBestMatchSecurityStrategyResponseBodyData
 from ._get_agent_response_body import GetAgentResponseBodyAgentCallableAgents
+from ._get_agent_response_body import GetAgentResponseBodyAgentExpertSuites
 from ._get_agent_response_body import GetAgentResponseBodyAgentModel
 from ._get_agent_response_body import GetAgentResponseBodyAgentSkills
 from ._get_agent_response_body import GetAgentResponseBodyAgentTools
@@ -1817,6 +1826,7 @@ from ._list_agent_session_artifacts_response_body import ListAgentSessionArtifac
 from ._list_agent_session_artifacts_response_body import ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult
 from ._list_agent_session_artifacts_response_body import ListAgentSessionArtifactsResponseBodyJsonRpcResponse
 from ._list_agent_sessions_request import ListAgentSessionsRequestParams
+from ._list_agent_sessions_response_body import ListAgentSessionsResponseBodyJsonRpcResponseError
 from ._list_agent_sessions_response_body import ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList
 from ._list_agent_sessions_response_body import ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta
 from ._list_agent_sessions_response_body import ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions
@@ -2222,6 +2232,10 @@ from ._tag_data_assets_request import TagDataAssetsRequestTags
 from ._test_data_source_connectivity_response_body import TestDataSourceConnectivityResponseBodyConnectivityDetailLogs
 from ._test_data_source_connectivity_response_body import TestDataSourceConnectivityResponseBodyConnectivity
 from ._un_tag_data_assets_request import UnTagDataAssetsRequestTags
+from ._update_agent_session_title_request import UpdateAgentSessionTitleRequestParams
+from ._update_agent_session_title_response_body import UpdateAgentSessionTitleResponseBodyJsonRpcResponseError
+from ._update_agent_session_title_response_body import UpdateAgentSessionTitleResponseBodyJsonRpcResponseResult
+from ._update_agent_session_title_response_body import UpdateAgentSessionTitleResponseBodyJsonRpcResponse
 from ._update_alert_rule_request import UpdateAlertRuleRequestNotificationReceivers
 from ._update_alert_rule_request import UpdateAlertRuleRequestNotification
 from ._update_alert_rule_request import UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime
@@ -3534,6 +3548,10 @@ __all__ = [
     UnTagDataAssetsShrinkRequest,
     UnTagDataAssetsResponseBody,
     UnTagDataAssetsResponse,
+    UpdateAgentSessionTitleRequest,
+    UpdateAgentSessionTitleShrinkRequest,
+    UpdateAgentSessionTitleResponseBody,
+    UpdateAgentSessionTitleResponse,
     UpdateAlertRuleRequest,
     UpdateAlertRuleShrinkRequest,
     UpdateAlertRuleResponseBody,
@@ -3773,9 +3791,12 @@ __all__ = [
     CancelAgentSessionResponseBodyJsonRpcResponse,
     CancelImageTestResponseBodyData,
     CreateAgentRequestCallableAgents,
+    CreateAgentRequestExpertSuites,
     CreateAgentRequestSkills,
     CreateAgentRequestTools,
     CreateAgentRequestVisibilityScope,
+    CreateAgentResponseBodyAgentExpertSuites,
+    CreateAgentResponseBodyAgentSkills,
     CreateAgentResponseBodyAgent,
     CreateAgentSessionRequestParamsMetaAgent,
     CreateAgentSessionRequestParamsMetaConfigSessionTags,
@@ -3783,6 +3804,7 @@ __all__ = [
     CreateAgentSessionRequestParamsMetaInitialConfigOptions,
     CreateAgentSessionRequestParamsMeta,
     CreateAgentSessionRequestParams,
+    CreateAgentSessionResponseBodyJsonRpcResponseError,
     CreateAgentSessionResponseBodyJsonRpcResponseResult,
     CreateAgentSessionResponseBodyJsonRpcResponse,
     CreateAlertRuleRequestNotificationReceivers,
@@ -3916,6 +3938,7 @@ __all__ = [
     FindBestMatchSecurityStrategyResponseBodyDataSecurityStrategy,
     FindBestMatchSecurityStrategyResponseBodyData,
     GetAgentResponseBodyAgentCallableAgents,
+    GetAgentResponseBodyAgentExpertSuites,
     GetAgentResponseBodyAgentModel,
     GetAgentResponseBodyAgentSkills,
     GetAgentResponseBodyAgentTools,
@@ -4172,6 +4195,7 @@ __all__ = [
     ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult,
     ListAgentSessionArtifactsResponseBodyJsonRpcResponse,
     ListAgentSessionsRequestParams,
+    ListAgentSessionsResponseBodyJsonRpcResponseError,
     ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList,
     ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta,
     ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions,
@@ -4577,6 +4601,10 @@ __all__ = [
     TestDataSourceConnectivityResponseBodyConnectivityDetailLogs,
     TestDataSourceConnectivityResponseBodyConnectivity,
     UnTagDataAssetsRequestTags,
+    UpdateAgentSessionTitleRequestParams,
+    UpdateAgentSessionTitleResponseBodyJsonRpcResponseError,
+    UpdateAgentSessionTitleResponseBodyJsonRpcResponseResult,
+    UpdateAgentSessionTitleResponseBodyJsonRpcResponse,
     UpdateAlertRuleRequestNotificationReceivers,
     UpdateAlertRuleRequestNotification,
     UpdateAlertRuleRequestTriggerConditionExtensionCycleUnfinishedCycleAndTime,

@@ -49,10 +49,12 @@ class GetAgentResponseBody(DaraModel):
 class GetAgentResponseBodyAgent(DaraModel):
     def __init__(
         self,
+        agent_version: int = None,
         callable_agents: List[main_models.GetAgentResponseBodyAgentCallableAgents] = None,
         creator_id: str = None,
         description: str = None,
         display_name: str = None,
+        expert_suites: List[main_models.GetAgentResponseBodyAgentExpertSuites] = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         metadata: Dict[str, Any] = None,
@@ -66,6 +68,8 @@ class GetAgentResponseBodyAgent(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.GetAgentResponseBodyAgentVisibilityScope = None,
     ):
+        # 本次读取的定义版本。更新当前定义时，将该值作为 UpdateAgent 的 ExpectedVersion，可拒绝覆盖其他调用者已提交的新版本。读取历史快照的版本不代表当前版本。
+        self.agent_version = agent_version
         # A list of callable sub-agents.
         self.callable_agents = callable_agents
         # The creator ID.
@@ -74,6 +78,8 @@ class GetAgentResponseBodyAgent(DaraModel):
         self.description = description
         # **The display name.**
         self.display_name = display_name
+        # Agent 定义绑定的专家套件及固定发布版本。
+        self.expert_suites = expert_suites
         # The creation time, as a Unix timestamp in milliseconds.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
@@ -108,6 +114,10 @@ class GetAgentResponseBodyAgent(DaraModel):
             for v1 in self.callable_agents:
                  if v1:
                     v1.validate()
+        if self.expert_suites:
+            for v1 in self.expert_suites:
+                 if v1:
+                    v1.validate()
         if self.model:
             self.model.validate()
         if self.skills:
@@ -126,6 +136,9 @@ class GetAgentResponseBodyAgent(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_version is not None:
+            result['AgentVersion'] = self.agent_version
+
         result['CallableAgents'] = []
         if self.callable_agents is not None:
             for k1 in self.callable_agents:
@@ -139,6 +152,11 @@ class GetAgentResponseBodyAgent(DaraModel):
 
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+
+        result['ExpertSuites'] = []
+        if self.expert_suites is not None:
+            for k1 in self.expert_suites:
+                result['ExpertSuites'].append(k1.to_map() if k1 else None)
 
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
@@ -184,6 +202,9 @@ class GetAgentResponseBodyAgent(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentVersion') is not None:
+            self.agent_version = m.get('AgentVersion')
+
         self.callable_agents = []
         if m.get('CallableAgents') is not None:
             for k1 in m.get('CallableAgents'):
@@ -198,6 +219,12 @@ class GetAgentResponseBodyAgent(DaraModel):
 
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+
+        self.expert_suites = []
+        if m.get('ExpertSuites') is not None:
+            for k1 in m.get('ExpertSuites'):
+                temp_model = main_models.GetAgentResponseBodyAgentExpertSuites()
+                self.expert_suites.append(temp_model.from_map(k1))
 
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
@@ -341,10 +368,18 @@ class GetAgentResponseBodyAgentSkills(DaraModel):
     def __init__(
         self,
         name: str = None,
+        package_version: str = None,
+        skill_id: str = None,
+        source: str = None,
         version: int = None,
     ):
         # The skill name.
         self.name = name
+        # 指定 AgentVersion 查询已发布快照时返回固定的官方制品版本；查询草稿或自定义 Skill 时不返回。
+        self.package_version = package_version
+        self.skill_id = skill_id
+        # OFFICIAL 表示官方目录资源；省略或 DB 表示原有个人或企业资源。
+        self.source = source
         # The skill version.
         self.version = version
 
@@ -359,6 +394,15 @@ class GetAgentResponseBodyAgentSkills(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
+
+        if self.skill_id is not None:
+            result['SkillId'] = self.skill_id
+
+        if self.source is not None:
+            result['Source'] = self.source
+
         if self.version is not None:
             result['Version'] = self.version
 
@@ -368,6 +412,15 @@ class GetAgentResponseBodyAgentSkills(DaraModel):
         m = m or dict()
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
+
+        if m.get('SkillId') is not None:
+            self.skill_id = m.get('SkillId')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         if m.get('Version') is not None:
             self.version = m.get('Version')
@@ -444,6 +497,94 @@ class GetAgentResponseBodyAgentModel(DaraModel):
 
         if m.get('TopP') is not None:
             self.top_p = m.get('TopP')
+
+        return self
+
+class GetAgentResponseBodyAgentExpertSuites(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        display_name: str = None,
+        name: str = None,
+        package_version: str = None,
+        semantic_version: str = None,
+        source: str = None,
+        suite_id: str = None,
+        version: int = None,
+    ):
+        # 套件已删除、发布快照缺失或调用者无权查看时，不返回套件摘要，仅保留 ID 和版本号。
+        self.description = description
+        self.display_name = display_name
+        self.name = name
+        # 显式查询 Agent 已发布版本时返回固定的官方制品版本；查询草稿或自定义套件时不返回。
+        self.package_version = package_version
+        # 可选套件摘要字段，当前新 DataAgent 应用不返回；缺省不表示版本 0。不可作为 UpdateAgent 的 Version，回写引用时必须省略。官方制品的固定版本请读取 PackageVersion。
+        self.semantic_version = semantic_version
+        # OFFICIAL 表示官方目录资源；省略或 DB 表示个人或企业资源。
+        self.source = source
+        self.suite_id = suite_id
+        # 仅个人或企业套件在引用明确指定版本或读取发布快照时返回；官方套件不返回。未返回不是 0；SDK 若将缺省整数初始化为 0，回写时必须省略。官方项只回写 Source 和 SuiteId，不传 Version、SemanticVersion 或 PackageVersion。
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.package_version is not None:
+            result['PackageVersion'] = self.package_version
+
+        if self.semantic_version is not None:
+            result['SemanticVersion'] = self.semantic_version
+
+        if self.source is not None:
+            result['Source'] = self.source
+
+        if self.suite_id is not None:
+            result['SuiteId'] = self.suite_id
+
+        if self.version is not None:
+            result['Version'] = self.version
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('PackageVersion') is not None:
+            self.package_version = m.get('PackageVersion')
+
+        if m.get('SemanticVersion') is not None:
+            self.semantic_version = m.get('SemanticVersion')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+
+        if m.get('SuiteId') is not None:
+            self.suite_id = m.get('SuiteId')
+
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
 
         return self
 

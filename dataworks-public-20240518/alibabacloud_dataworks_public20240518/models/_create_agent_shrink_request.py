@@ -10,9 +10,11 @@ class CreateAgentShrinkRequest(DaraModel):
         callable_agents_shrink: str = None,
         description: str = None,
         display_name: str = None,
+        expert_suites_shrink: str = None,
         metadata_shrink: str = None,
         model_shrink: str = None,
         name: str = None,
+        publish_immediately: bool = None,
         skills_shrink: str = None,
         system_prompt: str = None,
         tools_shrink: str = None,
@@ -25,6 +27,8 @@ class CreateAgentShrinkRequest(DaraModel):
         self.description = description
         # The display name of the agent.
         self.display_name = display_name
+        # Agent 绑定的已发布专家套件。个人或企业套件使用 SuiteId，可选 Version；官方套件必须显式指定 Source=OFFICIAL 和官方目录中的 SuiteId，不传 Version。未传时创建为空，不会默认加载所有官方套件。
+        self.expert_suites_shrink = expert_suites_shrink
         # The extended metadata in key-value pairs.
         self.metadata_shrink = metadata_shrink
         # The model configuration.
@@ -33,6 +37,8 @@ class CreateAgentShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        # 是否在创建 Agent 后立即发布。true 发布创建的版本；false 或省略保持原有仅创建草稿行为。保存与发布不是原子操作，发布失败时草稿可能已存在；重试前应先查询 Agent，避免重复创建。
+        self.publish_immediately = publish_immediately
         # The list of skills.
         self.skills_shrink = skills_shrink
         # The system prompt.
@@ -64,6 +70,9 @@ class CreateAgentShrinkRequest(DaraModel):
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
 
+        if self.expert_suites_shrink is not None:
+            result['ExpertSuites'] = self.expert_suites_shrink
+
         if self.metadata_shrink is not None:
             result['Metadata'] = self.metadata_shrink
 
@@ -72,6 +81,9 @@ class CreateAgentShrinkRequest(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.publish_immediately is not None:
+            result['PublishImmediately'] = self.publish_immediately
 
         if self.skills_shrink is not None:
             result['Skills'] = self.skills_shrink
@@ -101,6 +113,9 @@ class CreateAgentShrinkRequest(DaraModel):
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
 
+        if m.get('ExpertSuites') is not None:
+            self.expert_suites_shrink = m.get('ExpertSuites')
+
         if m.get('Metadata') is not None:
             self.metadata_shrink = m.get('Metadata')
 
@@ -109,6 +124,9 @@ class CreateAgentShrinkRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('PublishImmediately') is not None:
+            self.publish_immediately = m.get('PublishImmediately')
 
         if m.get('Skills') is not None:
             self.skills_shrink = m.get('Skills')

@@ -144,7 +144,9 @@ class CreateAgentSessionRequestParamsMetaInitialConfigOptions(DaraModel):
         self,
         execution_lane: str = None,
         mode: str = None,
+        model: str = None,
         project_id: str = None,
+        reasoning_effort: str = None,
         resource_group_id: str = None,
         skills: str = None,
     ):
@@ -159,8 +161,10 @@ class CreateAgentSessionRequestParamsMetaInitialConfigOptions(DaraModel):
         # The authorization mode for script execution. OpenAPI currently supports only the yolo mode. Valid values:
         # * yolo: Automatic authorization. No manual intervention is required, and the model processes tasks automatically.
         self.mode = mode
+        self.model = model
         # The DataWorks workspace ID. Used to initialize the session project context. If omitted, the session is treated as having no project context. You can later correct or switch the project context by using PromptAgentSession.
         self.project_id = project_id
+        self.reasoning_effort = reasoning_effort
         # The ID of the resource group used for initialization.
         self.resource_group_id = resource_group_id
         # The names of custom skills to load. Separate multiple skill names with commas (,).
@@ -180,8 +184,14 @@ class CreateAgentSessionRequestParamsMetaInitialConfigOptions(DaraModel):
         if self.mode is not None:
             result['Mode'] = self.mode
 
+        if self.model is not None:
+            result['Model'] = self.model
+
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+
+        if self.reasoning_effort is not None:
+            result['ReasoningEffort'] = self.reasoning_effort
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
@@ -199,8 +209,14 @@ class CreateAgentSessionRequestParamsMetaInitialConfigOptions(DaraModel):
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
 
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+
+        if m.get('ReasoningEffort') is not None:
+            self.reasoning_effort = m.get('ReasoningEffort')
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')

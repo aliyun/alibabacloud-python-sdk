@@ -1468,6 +1468,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.callable_agents):
             request.callable_agents_shrink = Utils.array_to_string_with_specified_style(tmp_req.callable_agents, 'CallableAgents', 'json')
+        if not DaraCore.is_null(tmp_req.expert_suites):
+            request.expert_suites_shrink = Utils.array_to_string_with_specified_style(tmp_req.expert_suites, 'ExpertSuites', 'json')
         if not DaraCore.is_null(tmp_req.metadata):
             request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
         if not DaraCore.is_null(tmp_req.model):
@@ -1485,12 +1487,16 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.display_name):
             body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.expert_suites_shrink):
+            body['ExpertSuites'] = request.expert_suites_shrink
         if not DaraCore.is_null(request.metadata_shrink):
             body['Metadata'] = request.metadata_shrink
         if not DaraCore.is_null(request.model_shrink):
             body['Model'] = request.model_shrink
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.publish_immediately):
+            body['PublishImmediately'] = request.publish_immediately
         if not DaraCore.is_null(request.skills_shrink):
             body['Skills'] = request.skills_shrink
         if not DaraCore.is_null(request.system_prompt):
@@ -1530,6 +1536,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.callable_agents):
             request.callable_agents_shrink = Utils.array_to_string_with_specified_style(tmp_req.callable_agents, 'CallableAgents', 'json')
+        if not DaraCore.is_null(tmp_req.expert_suites):
+            request.expert_suites_shrink = Utils.array_to_string_with_specified_style(tmp_req.expert_suites, 'ExpertSuites', 'json')
         if not DaraCore.is_null(tmp_req.metadata):
             request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'Metadata', 'json')
         if not DaraCore.is_null(tmp_req.model):
@@ -1547,12 +1555,16 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.display_name):
             body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.expert_suites_shrink):
+            body['ExpertSuites'] = request.expert_suites_shrink
         if not DaraCore.is_null(request.metadata_shrink):
             body['Metadata'] = request.metadata_shrink
         if not DaraCore.is_null(request.model_shrink):
             body['Model'] = request.model_shrink
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
+        if not DaraCore.is_null(request.publish_immediately):
+            body['PublishImmediately'] = request.publish_immediately
         if not DaraCore.is_null(request.skills_shrink):
             body['Skills'] = request.skills_shrink
         if not DaraCore.is_null(request.system_prompt):
@@ -11733,6 +11745,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAgentResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.agent_version):
+            body['AgentVersion'] = request.agent_version
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
@@ -11761,6 +11775,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetAgentResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.agent_version):
+            body['AgentVersion'] = request.agent_version
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
@@ -29601,6 +29617,92 @@ class Client(OpenApiClient):
     ) -> main_models.UnTagDataAssetsResponse:
         runtime = RuntimeOptions()
         return await self.un_tag_data_assets_with_options_async(request, runtime)
+
+    def update_agent_session_title_with_options(
+        self,
+        tmp_req: main_models.UpdateAgentSessionTitleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentSessionTitleResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAgentSessionTitleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentSessionTitle',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentSessionTitleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_session_title_with_options_async(
+        self,
+        tmp_req: main_models.UpdateAgentSessionTitleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentSessionTitleResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAgentSessionTitleShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentSessionTitle',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentSessionTitleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent_session_title(
+        self,
+        request: main_models.UpdateAgentSessionTitleRequest,
+    ) -> main_models.UpdateAgentSessionTitleResponse:
+        runtime = RuntimeOptions()
+        return self.update_agent_session_title_with_options(request, runtime)
+
+    async def update_agent_session_title_async(
+        self,
+        request: main_models.UpdateAgentSessionTitleRequest,
+    ) -> main_models.UpdateAgentSessionTitleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_agent_session_title_with_options_async(request, runtime)
 
     def update_alert_rule_with_options(
         self,

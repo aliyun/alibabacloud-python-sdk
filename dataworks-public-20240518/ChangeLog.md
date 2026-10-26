@@ -1,3 +1,27 @@
+2026-10-26 Version: 9.11.0
+- Support API UpdateAgentSessionTitle.
+- Update API CreateAgent: add request parameters ExpertSuites.
+- Update API CreateAgent: add request parameters PublishImmediately.
+- Update API CreateAgent: add request parameters Skills.$.SkillId.
+- Update API CreateAgent: add request parameters Skills.$.Source.
+- Update API CreateAgent: add request parameters Skills.$.Version.
+- Update API CreateAgent: add response parameters Body.Agent.ExpertSuites.
+- Update API CreateAgent: add response parameters Body.Agent.Skills.
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.Model.
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.ReasoningEffort.
+- Update API CreateAgentSession: add response parameters Body.JsonRpcResponse.Error.
+- Update API CreateAgentSession: add response parameters Body.JsonRpcResponse.Timestamp.
+- Update API GetAgent: add request parameters AgentVersion.
+- Update API GetAgent: add response parameters Body.Agent.AgentVersion.
+- Update API GetAgent: add response parameters Body.Agent.ExpertSuites.
+- Update API GetAgent: add response parameters Body.Agent.Skills.$.PackageVersion.
+- Update API GetAgent: add response parameters Body.Agent.Skills.$.SkillId.
+- Update API GetAgent: add response parameters Body.Agent.Skills.$.Source.
+- Update API ListAgentSessions: add request parameters Params.Archived.
+- Update API ListAgentSessions: add response parameters Body.JsonRpcResponse.Error.
+- Update API ListAgentSessions: add response parameters Body.JsonRpcResponse.Result.AgentSessions.$.Meta.Archived.
+
+
 2026-10-23 Version: 9.10.3
 - Generated python 2024-05-18 for dataworks-public.
 

@@ -59,6 +59,7 @@ class ListAgentSessionsRequestParams(DaraModel):
     def __init__(
         self,
         agent_name: str = None,
+        archived: bool = None,
         max_results: int = None,
         next_token: str = None,
         session_id: str = None,
@@ -68,6 +69,8 @@ class ListAgentSessionsRequestParams(DaraModel):
     ):
         # **Agent name** for exact filtering. At least one of this parameter and `SessionSourceList` must be specified.
         self.agent_name = agent_name
+        # true仅返回归档会话；false或省略仅返回未归档会话。
+        self.archived = archived
         # The number of entries per page. Default value: 50.
         self.max_results = max_results
         # The token for the next page. Set this parameter to 1 for the first page.
@@ -91,6 +94,9 @@ class ListAgentSessionsRequestParams(DaraModel):
             result = _map
         if self.agent_name is not None:
             result['AgentName'] = self.agent_name
+
+        if self.archived is not None:
+            result['Archived'] = self.archived
 
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
@@ -116,6 +122,9 @@ class ListAgentSessionsRequestParams(DaraModel):
         m = m or dict()
         if m.get('AgentName') is not None:
             self.agent_name = m.get('AgentName')
+
+        if m.get('Archived') is not None:
+            self.archived = m.get('Archived')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')

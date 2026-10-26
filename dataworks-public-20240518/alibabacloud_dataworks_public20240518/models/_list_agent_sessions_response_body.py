@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Any
 
 from alibabacloud_dataworks_public20240518 import models as main_models
 from darabonba.model import DaraModel
@@ -49,10 +49,12 @@ class ListAgentSessionsResponseBody(DaraModel):
 class ListAgentSessionsResponseBodyJsonRpcResponse(DaraModel):
     def __init__(
         self,
+        error: main_models.ListAgentSessionsResponseBodyJsonRpcResponseError = None,
         id: str = None,
         jsonrpc: str = None,
         result: main_models.ListAgentSessionsResponseBodyJsonRpcResponseResult = None,
     ):
+        self.error = error
         # The ID passed in by the requester. The value is returned as-is.
         self.id = id
         # The JSON-RPC version. Fixed value: 2.0.
@@ -61,6 +63,8 @@ class ListAgentSessionsResponseBodyJsonRpcResponse(DaraModel):
         self.result = result
 
     def validate(self):
+        if self.error:
+            self.error.validate()
         if self.result:
             self.result.validate()
 
@@ -69,6 +73,9 @@ class ListAgentSessionsResponseBodyJsonRpcResponse(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.error is not None:
+            result['Error'] = self.error.to_map()
+
         if self.id is not None:
             result['Id'] = self.id
 
@@ -82,6 +89,10 @@ class ListAgentSessionsResponseBodyJsonRpcResponse(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Error') is not None:
+            temp_model = main_models.ListAgentSessionsResponseBodyJsonRpcResponseError()
+            self.error = temp_model.from_map(m.get('Error'))
+
         if m.get('Id') is not None:
             self.id = m.get('Id')
 
@@ -235,10 +246,12 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions(DaraModel)
 class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta(DaraModel):
     def __init__(
         self,
+        archived: bool = None,
         session_source: str = None,
         session_status: str = None,
         session_tag_list: List[main_models.ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList] = None,
     ):
+        self.archived = archived
         # The session source.
         self.session_source = session_source
         # The session connection status.
@@ -257,6 +270,9 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta(DaraMo
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.archived is not None:
+            result['Archived'] = self.archived
+
         if self.session_source is not None:
             result['SessionSource'] = self.session_source
 
@@ -272,6 +288,9 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta(DaraMo
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Archived') is not None:
+            self.archived = m.get('Archived')
+
         if m.get('SessionSource') is not None:
             self.session_source = m.get('SessionSource')
 
@@ -311,6 +330,57 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSession
         m = m or dict()
         if m.get('SessionTagCode') is not None:
             self.session_tag_code = m.get('SessionTagCode')
+
+        return self
+
+class ListAgentSessionsResponseBodyJsonRpcResponseError(DaraModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Any = None,
+        error_code: str = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.data is not None:
+            result['Data'] = self.data
+
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
 
         return self
 
