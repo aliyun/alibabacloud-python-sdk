@@ -45,41 +45,77 @@ class PaChatCompletionStreamRequest(DaraModel):
         top_logprobs: int = None,
         top_p: float = None,
     ):
+        # The whitelist of token IDs allowed for generation.
         self.allowed_token_ids = allowed_token_ids
+        # The list of words or strings prohibited from generation.
         self.bad_words = bad_words
+        # The vLLM/OpenAI-Compatible template parameter object. Request values are merged with model defaults, with request keys taking precedence, and passed to the model as-is.
         self.chat_template_kwargs = chat_template_kwargs
+        # The frequency penalty parameter passed through to the Mobile Planner Agent model.
         self.frequency_penalty = frequency_penalty
+        # Specifies whether to ignore EOS and continue generation.
         self.ignore_eos = ignore_eos
+        # Specifies whether to request reasoning content from the upstream. The actual capability depends on the model.
         self.include_reasoning = include_reasoning
+        # A model-compatible parameter with the JSON field name logprobs. Whether it is accepted and takes effect depends on the model used by the instance. The current Agent response does not provide token log probability details.
         self.logprobs = logprobs
+        # The maximum number of completion tokens. Must be greater than 0 if provided, and is passed as an OpenAI-compatible model parameter.
         self.max_completion_tokens = max_completion_tokens
+        # The OpenAI-compatible maximum number of generated tokens. Must be greater than 0 if provided.
         self.max_tokens = max_tokens
+        # The list of conversation messages. The first call can submit one turn or an existing multi-turn conversation. When continuing with an existing session ID, retain the complete and unmodified historical message prefix and append the current turn messages. Tool results are associated through role=tool and the corresponding tool_call_id.
+        # 
         # This parameter is required.
         self.messages = messages
+        # The vLLM Min-P sampling parameter.
         self.min_p = min_p
+        # The minimum number of tokens to generate.
         self.min_tokens = min_tokens
+        # The multimodal preprocessor parameters passed through to vLLM as-is by key.
         self.mm_processor_kwargs = mm_processor_kwargs
+        # Reserved for OpenAI client compatibility. Ignored during routing. The actual model is determined by the published instance configuration. The model field in the response is always an empty string.
         self.model = model
+        # Set this parameter to 1. Whether the model accepts this parameter depends on the model. The current Mobile Planner Agent response does not return multiple candidate results. Do not use this parameter for multiple-candidate responses.
         self.n = n
+        # Specifies whether the model is allowed to generate multiple tool calling requests in parallel. The model invokes tools concurrently when this parameter is enabled.
         self.parallel_tool_calls = parallel_tool_calls
+        # The presence penalty parameter, passed through to the Mobile Planner Agent model.
         self.presence_penalty = presence_penalty
+        # A model compatibility parameter. The JSON field is prompt_logprobs. Whether the model accepts this parameter depends on the model. The current Agent response does not return probability details for input tokens.
         self.prompt_logprobs = prompt_logprobs
+        # The OpenAI-compatible reasoning effort level, such as low, medium, or high.
         self.reasoning_effort = reasoning_effort
+        # The vLLM repetition penalty parameter.
         self.repetition_penalty = repetition_penalty
+        # The structured response format, such as json_object or json_schema.
         self.response_format = response_format
+        # The random seed.
         self.seed = seed
+        # Specifies whether to skip special tokens.
         self.skip_special_tokens = skip_special_tokens
+        # The stop sequences. Compatible with a single string or an array of strings. This field is displayed in array format.
         self.stop = stop
+        # The vLLM stop token ID list.
         self.stop_token_ids = stop_token_ids
+        # Specifies whether to use SSE streaming responses. This parameter must be set to true for this operation.
+        # 
         # This parameter is required.
         self.stream = stream
+        # The OpenAI-compatible streaming options.
         self.stream_options = stream_options
+        # The vLLM structured output constraints.
         self.structured_outputs = structured_outputs
+        # The sampling temperature. Passed as an OpenAI-compatible model parameter to override the model default value.
         self.temperature = temperature
+        # The tool choice strategy. Valid values: auto, none, required, or a named selection supported by the model.
         self.tool_choice = tool_choice
+        # The array of function tool definitions available for this request. Mobile Planner Agent registers each named function in the runtime Toolkit and returns tool_calls in the streaming response.
         self.tools = tools
+        # The vLLM Top-K sampling parameter.
         self.top_k = top_k
+        # A model compatibility parameter. The JSON field is top_logprobs. Used for models that support this feature. The current Agent response does not provide candidate token probability details.
         self.top_logprobs = top_logprobs
+        # Top-P sampling parameter. Passed as an OpenAI-compatible model parameter to override the model default value.
         self.top_p = top_p
 
     def validate(self):
@@ -338,7 +374,9 @@ class PaChatCompletionStreamRequestTools(DaraModel):
         function: main_models.PaChatCompletionStreamRequestToolsFunction = None,
         type: str = None,
     ):
+        # The function tool definition, including the name, description, and JSON Schema parameters.
         self.function = function
+        # The tool type. This parameter must be set to function.
         self.type = type
 
     def validate(self):
@@ -377,9 +415,13 @@ class PaChatCompletionStreamRequestToolsFunction(DaraModel):
         parameters: main_models.PaChatCompletionStreamRequestToolsFunctionParameters = None,
         strict: bool = None,
     ):
+        # The description of the function purpose. The model uses this to determine when to call the tool.
         self.description = description
+        # The function name. This parameter is required. Used to match assistant.tool_calls with subsequent tool results.
         self.name = name
+        # The JSON Schema for function parameters, passed to the model as raw JSON. If not provided, an empty object Schema is used.
         self.parameters = parameters
+        # Specifies whether the model must strictly follow the function parameter JSON Schema.
         self.strict = strict
 
     def validate(self):
@@ -429,8 +471,11 @@ class PaChatCompletionStreamRequestToolsFunctionParameters(DaraModel):
         required: List[str] = None,
         type: str = None,
     ):
+        # The property definitions of the JSON Schema.
         self.properties = properties
+        # The array of required field names in the JSON Schema.
         self.required = required
+        # The root Schema type of the function parameters. Typically set to object.
         self.type = type
 
     def validate(self):
@@ -472,6 +517,7 @@ class PaChatCompletionStreamRequestToolsFunctionParametersProperties(DaraModel):
         self,
         city: main_models.PaChatCompletionStreamRequestToolsFunctionParametersPropertiesCity = None,
     ):
+        # The Schema for the sample business parameter city. The actual fields are determined by the caller\\"s tool definition.
         self.city = city
 
     def validate(self):
@@ -502,7 +548,9 @@ class PaChatCompletionStreamRequestToolsFunctionParametersPropertiesCity(DaraMod
         description: str = None,
         type: str = None,
     ):
+        # The sample parameter description.
         self.description = description
+        # The JSON Schema type of the sample city field.
         self.type = type
 
     def validate(self):
@@ -536,6 +584,7 @@ class PaChatCompletionStreamRequestStructuredOutputs(DaraModel):
         self,
         choice: List[str] = None,
     ):
+        # The set of allowed enumeration text values.
         self.choice = choice
 
     def validate(self):
@@ -563,6 +612,7 @@ class PaChatCompletionStreamRequestStreamOptions(DaraModel):
         self,
         include_usage: bool = None,
     ):
+        # Specifies whether to output a usage statistics chunk before data:[DONE].
         self.include_usage = include_usage
 
     def validate(self):
@@ -590,6 +640,7 @@ class PaChatCompletionStreamRequestResponseFormat(DaraModel):
         self,
         type: str = None,
     ):
+        # The response format type, such as text, json_object, or json_schema.
         self.type = type
 
     def validate(self):
@@ -617,6 +668,7 @@ class PaChatCompletionStreamRequestMmProcessorKwargs(DaraModel):
         self,
         max_dynamic_patch: int = None,
     ):
+        # Example: the maximum number of dynamic image patches allowed by the vision model.
         self.max_dynamic_patch = max_dynamic_patch
 
     def validate(self):
@@ -647,9 +699,13 @@ class PaChatCompletionStreamRequestMessages(DaraModel):
         tool_call_id: str = None,
         tool_calls: List[main_models.PaChatCompletionStreamRequestMessagesToolCalls] = None,
     ):
+        # The message content. Mobile Planner Agent supports text and multimodal content. Image URLs or base64 Data URLs are passed through to the Mobile Planner Agent model if it supports multimodal input.
         self.content = content
+        # The message role: user, assistant, tool, system, or developer. system/developer is used for optional per-turn text instruction overrides. If omitted, the instructions from the instance configuration are used. Tool results use tool and are associated with tool_call_id.
         self.role = role
+        # Required when role=tool. Must match an id from the preceding assistant.tool_calls.
         self.tool_call_id = tool_call_id
+        # The list of function invocation entries that can be carried when role=assistant. Used for multi-turn tool invocation continuation.
         self.tool_calls = tool_calls
 
     def validate(self):
@@ -714,8 +770,11 @@ class PaChatCompletionStreamRequestMessagesToolCalls(DaraModel):
         id: str = None,
         type: str = None,
     ):
+        # The function information of a historical tool invocation entry, including name and arguments as a JSON character string. Retain the actual returned values in subsequent turns.
         self.function = function
+        # The tool invocation ID. Subsequent tool messages reference this through tool_call_id.
         self.id = id
+        # The tool invocation type. Currently fixed as function.
         self.type = type
 
     def validate(self):
@@ -758,7 +817,9 @@ class PaChatCompletionStreamRequestMessagesToolCallsFunction(DaraModel):
         arguments: str = None,
         name: str = None,
     ):
+        # The JSON object string of function arguments.
         self.arguments = arguments
+        # The name of the function to call.
         self.name = name
 
     def validate(self):
@@ -794,8 +855,11 @@ class PaChatCompletionStreamRequestMessagesContent(DaraModel):
         text: str = None,
         type: str = None,
     ):
+        # The image reference when type=image_url. Supports HTTPS URLs or data:image/...;base64,... format.
         self.image_url = image_url
+        # The non-empty text when type=text.
         self.text = text
+        # The content part type. Mobile Planner Agent user messages support text or image_url.
         self.type = type
 
     def validate(self):
@@ -837,6 +901,7 @@ class PaChatCompletionStreamRequestMessagesContentImageUrl(DaraModel):
         self,
         url: str = None,
     ):
+        # The image URL. Remote images must use HTTPS. Base64 Data URLs are also accepted.
         self.url = url
 
     def validate(self):
@@ -865,7 +930,9 @@ class PaChatCompletionStreamRequestChatTemplateKwargs(DaraModel):
         enable_thinking: bool = None,
         preserve_thinking: bool = None,
     ):
+        # Controls whether the model generates reasoning_content through chat_template_kwargs. This value is passed to the model used by the Mobile Planner Agent.
         self.enable_thinking = enable_thinking
+        # Specifies whether the model preserves and reuses existing reasoning content in subsequent turns. Passed through as-is per vLLM/Qwen chat_template_kwargs.
         self.preserve_thinking = preserve_thinking
 
     def validate(self):

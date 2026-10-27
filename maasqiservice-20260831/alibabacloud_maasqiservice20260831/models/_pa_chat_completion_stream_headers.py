@@ -15,10 +15,15 @@ class PaChatCompletionStreamHeaders(DaraModel):
         x_qisession_id: str = None,
     ):
         self.common_headers = common_headers
+        # The Agent instance access key used for QICloud Customer API authentication.
+        # 
         # This parameter is required.
         self.x_qiagent_api_key = x_qiagent_api_key
+        # The published Mobile Planner Agent instance ID. Must correspond to the X-QI-Agent-Api-Key.
+        # 
         # This parameter is required.
         self.x_qiinstance_id = x_qiinstance_id
+        # The optional session identifier. Can be omitted for the first turn, in which case the server generates one. Pass it back in subsequent turns to continue the Mobile Planner Agent session.
         self.x_qisession_id = x_qisession_id
 
     def validate(self):

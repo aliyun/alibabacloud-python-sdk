@@ -22,7 +22,7 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('maasqiservice', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -263,6 +263,236 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.AigcChatCompletionStreamHeaders()
         return await self.aigc_chat_completion_stream_with_options_async(request, headers, runtime)
+
+    def cua_chat_completion_stream_with_sse(
+        self,
+        request: main_models.CuaChatCompletionStreamRequest,
+        headers: main_models.CuaChatCompletionStreamHeaders,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.CuaChatCompletionStreamResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.model):
+            body['model'] = request.model
+        if not DaraCore.is_null(request.stream):
+            body['stream'] = request.stream
+        if not DaraCore.is_null(request.stream_options):
+            body['streamOptions'] = request.stream_options
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_qiagent_api_key):
+            real_headers['X-QI-Agent-Api-Key'] = str(headers.x_qiagent_api_key)
+        if not DaraCore.is_null(headers.x_qiinstance_id):
+            real_headers['X-QI-Instance-Id'] = str(headers.x_qiinstance_id)
+        if not DaraCore.is_null(headers.x_qisession_id):
+            real_headers['X-QI-Session-Id'] = str(headers.x_qisession_id)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CuaChatCompletionStream',
+            version = '2026-08-31',
+            protocol = 'HTTPS',
+            pathname = f'/cua/v1/chat/completions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CuaChatCompletionStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def cua_chat_completion_stream_with_sse_async(
+        self,
+        request: main_models.CuaChatCompletionStreamRequest,
+        headers: main_models.CuaChatCompletionStreamHeaders,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.CuaChatCompletionStreamResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.model):
+            body['model'] = request.model
+        if not DaraCore.is_null(request.stream):
+            body['stream'] = request.stream
+        if not DaraCore.is_null(request.stream_options):
+            body['streamOptions'] = request.stream_options
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_qiagent_api_key):
+            real_headers['X-QI-Agent-Api-Key'] = str(headers.x_qiagent_api_key)
+        if not DaraCore.is_null(headers.x_qiinstance_id):
+            real_headers['X-QI-Instance-Id'] = str(headers.x_qiinstance_id)
+        if not DaraCore.is_null(headers.x_qisession_id):
+            real_headers['X-QI-Session-Id'] = str(headers.x_qisession_id)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CuaChatCompletionStream',
+            version = '2026-08-31',
+            protocol = 'HTTPS',
+            pathname = f'/cua/v1/chat/completions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CuaChatCompletionStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def cua_chat_completion_stream_with_options(
+        self,
+        request: main_models.CuaChatCompletionStreamRequest,
+        headers: main_models.CuaChatCompletionStreamHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.CuaChatCompletionStreamResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.model):
+            body['model'] = request.model
+        if not DaraCore.is_null(request.stream):
+            body['stream'] = request.stream
+        if not DaraCore.is_null(request.stream_options):
+            body['streamOptions'] = request.stream_options
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_qiagent_api_key):
+            real_headers['X-QI-Agent-Api-Key'] = str(headers.x_qiagent_api_key)
+        if not DaraCore.is_null(headers.x_qiinstance_id):
+            real_headers['X-QI-Instance-Id'] = str(headers.x_qiinstance_id)
+        if not DaraCore.is_null(headers.x_qisession_id):
+            real_headers['X-QI-Session-Id'] = str(headers.x_qisession_id)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CuaChatCompletionStream',
+            version = '2026-08-31',
+            protocol = 'HTTPS',
+            pathname = f'/cua/v1/chat/completions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CuaChatCompletionStreamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cua_chat_completion_stream_with_options_async(
+        self,
+        request: main_models.CuaChatCompletionStreamRequest,
+        headers: main_models.CuaChatCompletionStreamHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.CuaChatCompletionStreamResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.model):
+            body['model'] = request.model
+        if not DaraCore.is_null(request.stream):
+            body['stream'] = request.stream
+        if not DaraCore.is_null(request.stream_options):
+            body['streamOptions'] = request.stream_options
+        if not DaraCore.is_null(request.tools):
+            body['tools'] = request.tools
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_qiagent_api_key):
+            real_headers['X-QI-Agent-Api-Key'] = str(headers.x_qiagent_api_key)
+        if not DaraCore.is_null(headers.x_qiinstance_id):
+            real_headers['X-QI-Instance-Id'] = str(headers.x_qiinstance_id)
+        if not DaraCore.is_null(headers.x_qisession_id):
+            real_headers['X-QI-Session-Id'] = str(headers.x_qisession_id)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CuaChatCompletionStream',
+            version = '2026-08-31',
+            protocol = 'HTTPS',
+            pathname = f'/cua/v1/chat/completions',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CuaChatCompletionStreamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cua_chat_completion_stream(
+        self,
+        request: main_models.CuaChatCompletionStreamRequest,
+    ) -> main_models.CuaChatCompletionStreamResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.CuaChatCompletionStreamHeaders()
+        return self.cua_chat_completion_stream_with_options(request, headers, runtime)
+
+    async def cua_chat_completion_stream_async(
+        self,
+        request: main_models.CuaChatCompletionStreamRequest,
+    ) -> main_models.CuaChatCompletionStreamResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.CuaChatCompletionStreamHeaders()
+        return await self.cua_chat_completion_stream_with_options_async(request, headers, runtime)
 
     def gui_chat_completion_stream_with_sse(
         self,

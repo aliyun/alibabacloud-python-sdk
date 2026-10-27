@@ -44,40 +44,75 @@ class GuiChatCompletionStreamRequest(DaraModel):
         top_logprobs: int = None,
         top_p: float = None,
     ):
+        # The whitelist of token IDs that are allowed to be generated.
         self.allowed_token_ids = allowed_token_ids
+        # The list of words or strings that are banned from being generated.
         self.bad_words = bad_words
+        # The vLLM or OpenAI-compatible template parameter object. The request values override the default values with the same names in the model and are passed as-is to the primary model of the Mobile-Use Agent.
         self.chat_template_kwargs = chat_template_kwargs
+        # The frequency penalty parameter, which is passed through to the primary model of the Mobile-Use Agent.
         self.frequency_penalty = frequency_penalty
+        # Specifies whether to ignore the end-of-sequence (EOS) token and continue generation.
         self.ignore_eos = ignore_eos
+        # Specifies whether to request the upstream to generate the reasoning field. The client-facing results of the Mobile-Use Agent do not directly expose internal thinking.
         self.include_reasoning = include_reasoning
+        # The model compatibility parameter. The JSON field is logprobs. Whether this parameter is accepted and takes effect depends on the model used by the instance. The current Mobile-Use Agent response does not provide token log probability details.
         self.logprobs = logprobs
+        # The OpenAI-compatible maximum number of completion tokens. If provided, the value must be greater than 0.
         self.max_completion_tokens = max_completion_tokens
+        # The OpenAI-compatible maximum number of generated tokens. If provided, the value must be greater than 0.
         self.max_tokens = max_tokens
+        # The messages for the current Mobile-Use Agent step. The first step can only contain one user message. Subsequent steps can only contain one tool message followed by one user message. Complete multi-round history is not allowed.
+        # 
         # This parameter is required.
         self.messages = messages
+        # The metadata for the Mobile-Use Agent step. Supports screen_width, screen_height, available_apps, and the compatibility field harness_message. The tool receipt and harness_message cannot be passed at the same time.
         self.metadata = metadata
+        # The vLLM Min-P sampling parameter.
         self.min_p = min_p
+        # The minimum number of tokens to generate.
         self.min_tokens = min_tokens
+        # The multimodal preprocessor parameters, passed through to the Mobile-Use Agent primary model as-is by key.
         self.mm_processor_kwargs = mm_processor_kwargs
+        # Reserved for OpenAI client compatibility. This parameter is ignored during routing. The model is determined by the published configuration of the instance, and the model field in the response is always an empty string.
         self.model = model
+        # Set this parameter to 1. Whether this parameter is accepted depends on the model. The current Mobile-Use Agent response does not return multiple candidate actions.
         self.n = n
+        # The model-compatible switch to invoke parallel tool calling. This parameter does not expand the set of Mobile-Use Agent actions active for this operation.
         self.parallel_tool_calls = parallel_tool_calls
+        # The presence penalty parameter, passed through to the Mobile-Use Agent primary model.
         self.presence_penalty = presence_penalty
+        # A model-compatible parameter. The JSON field is prompt_logprobs. Whether this parameter is accepted depends on the model. The current Mobile-Use Agent response does not return input token probability details.
         self.prompt_logprobs = prompt_logprobs
+        # The OpenAI-compatible reasoning effort, such as low, medium, or high.
         self.reasoning_effort = reasoning_effort
+        # The vLLM repetition penalty parameter.
         self.repetition_penalty = repetition_penalty
+        # The model-compatible structured output options. This parameter does not change the final Mobile-Use Agent tool calling structure when you invoke this operation. Avoid output constraint Settings that conflict with the action protocol.
         self.response_format = response_format
+        # The random seed.
         self.seed = seed
+        # Specifies whether to skip special tokens.
         self.skip_special_tokens = skip_special_tokens
+        # The stop sequences. This parameter is compatible with a single string or an array of strings. The array format is shown here.
         self.stop = stop
+        # The list of vLLM stop token IDs.
         self.stop_token_ids = stop_token_ids
+        # Specifies whether to use Server-Sent Events (SSE) for streaming responses. You must set this parameter to true for this operation.
+        # 
         # This parameter is required.
         self.stream = stream
+        # The OpenAI-compatible streaming options.
         self.stream_options = stream_options
+        # The vLLM structured output constraints.
         self.structured_outputs = structured_outputs
+        # The sampling temperature, which overrides the default value of the Mobile-Use Agent primary model.
         self.temperature = temperature
+        # The vLLM Top-K sampling parameter.
         self.top_k = top_k
+        # A model-compatible parameter. The JSON field is top_logprobs. Whether this parameter is accepted depends on the model. The current Mobile-Use Agent response does not return candidate token probability details.
         self.top_logprobs = top_logprobs
+        # The Top-P nucleus sampling parameter, which overrides the default value of the Mobile-Use Agent primary model.
         self.top_p = top_p
 
     def validate(self):
@@ -323,6 +358,7 @@ class GuiChatCompletionStreamRequestStructuredOutputs(DaraModel):
         self,
         choice: List[str] = None,
     ):
+        # The set of allowed enum text values.
         self.choice = choice
 
     def validate(self):
@@ -350,6 +386,7 @@ class GuiChatCompletionStreamRequestStreamOptions(DaraModel):
         self,
         include_usage: bool = None,
     ):
+        # Specifies whether to output the usage statistics block before data:[DONE].
         self.include_usage = include_usage
 
     def validate(self):
@@ -377,6 +414,7 @@ class GuiChatCompletionStreamRequestResponseFormat(DaraModel):
         self,
         type: str = None,
     ):
+        # The response format type, such as text, json_object, or json_schema.
         self.type = type
 
     def validate(self):
@@ -404,6 +442,7 @@ class GuiChatCompletionStreamRequestMmProcessorKwargs(DaraModel):
         self,
         max_dynamic_patch: int = None,
     ):
+        # The maximum number of dynamic image patches allowed by the vision model.
         self.max_dynamic_patch = max_dynamic_patch
 
     def validate(self):
@@ -435,10 +474,15 @@ class GuiChatCompletionStreamRequestMetadata(DaraModel):
         screen_height: int = None,
         screen_width: int = None,
     ):
+        # The compatible alias for available_apps, which is also an array of app name strings.
         self.app_list = app_list
+        # The supplementary list of application names for the Standard Edition of Mobile-Use Agent. The JSON field is available_apps. The newly passed list replaces the previous supplementary items, but the default applications are retained. An empty array does not clear the default applications. The Dedicated Edition of Mobile-Use Agent does not use this list.
         self.available_apps = available_apps
+        # The Mobile-Use Agent Harness receipt text for legacy clients. This cannot be passed at the same time as the preceding tool message. New clients should prioritize using [tool,user] messages.
         self.harness_message = harness_message
+        # The screen height as a positive integer. For Base64 images, the width and height are parsed from the image itself. For URL images, this value is used for the runtime screen size.
         self.screen_height = screen_height
+        # The screen width as a positive integer. For Base64 images, the width and height are parsed from the image itself. For URL images, this value is used for the runtime screen size.
         self.screen_width = screen_width
 
     def validate(self):
@@ -492,8 +536,11 @@ class GuiChatCompletionStreamRequestMessages(DaraModel):
         role: str = None,
         tool_call_id: str = None,
     ):
+        # The message content. For a user message, use a content array that contains exactly one current screenshot and optionally attached task text. Screenshots support public HTTPS URLs or Base64 image data URLs. When role is set to tool, fill in the actual execution result of the previous action, which can be a non-empty string, object, or array.
         self.content = content
+        # The message role. The current input must end with a user message. If an execution receipt from the previous round exists, the preceding message must be a tool message.
         self.role = role
+        # Required when role is set to tool. References the tool_call ID from the previous Mobile-Use Agent response.
         self.tool_call_id = tool_call_id
 
     def validate(self):
@@ -544,9 +591,13 @@ class GuiChatCompletionStreamRequestMessagesContent(DaraModel):
         text: str = None,
         type: str = None,
     ):
+        # The compatible inline image field for input_image. You can pass a Base64 data URL.
         self.image_data = image_data
+        # The screenshot reference. Supports an image_url string or an object containing a url field. The object format is shown here.
         self.image_url = image_url
+        # The text content, which can describe the current operation objective or supplement the current page state.
         self.text = text
+        # The type of the content item. Use text or input_text for text. Use image_url or input_image for screenshots.
         self.type = type
 
     def validate(self):
@@ -594,6 +645,7 @@ class GuiChatCompletionStreamRequestMessagesContentImageUrl(DaraModel):
         self,
         url: str = None,
     ):
+        # A publicly accessible HTTPS image URL or a Base64 image data URL. Each round of user messages must and can only contain one current screenshot. Expired or inaccessible image addresses are rejected.
         self.url = url
 
     def validate(self):
@@ -622,7 +674,9 @@ class GuiChatCompletionStreamRequestChatTemplateKwargs(DaraModel):
         enable_thinking: bool = None,
         preserve_thinking: bool = None,
     ):
+        # chat_template_kwargs.enable_thinking: the request-level switch for model thinking, which overrides the default value with the same name. Enabling this switch does not cause the Mobile-Use Agent response to return reasoning_content.
         self.enable_thinking = enable_thinking
+        # Specifies whether to preserve the existing thinking context in subsequent rounds. This parameter is passed as-is according to the vLLM or Qwen chat_template_kwargs.
         self.preserve_thinking = preserve_thinking
 
     def validate(self):
