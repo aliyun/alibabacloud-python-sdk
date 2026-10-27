@@ -14,19 +14,19 @@ class GetClusterAddonInstanceResponseBody(DaraModel):
         state: str = None,
         version: str = None,
     ):
-        # The custom parameter settings of the component.
+        # The custom parameter settings of the add-on.
         self.config = config
-        # The logging status of the component.
+        # The log feature status of the add-on.
         self.logging = logging
-        # The component instance name.
+        # The name of the add-on instance.
         self.name = name
-        # The component status. Valid values:
-        # - active: The component is installed.
-        # - updating: The component is being modified.
-        # - upgrading: The component is being upgraded.
-        # - deleting: The component is being uninstalled.
+        # The state of the add-on. Valid values:
+        # - active: Installed.
+        # - updating: Updating.
+        # - upgrading: Upgrading.
+        # - deleting: Uninstalling.
         self.state = state
-        # The component instance version.
+        # The version of the add-on instance.
         self.version = version
 
     def validate(self):
@@ -83,21 +83,21 @@ class GetClusterAddonInstanceResponseBodyLogging(DaraModel):
         log_project: str = None,
         logstore: str = None,
     ):
-        # Indicates whether the component supports the logging feature.
+        # Specifies whether the add-on supports the log feature. Valid values:
         # 
         # - true: Supported.
         # 
         # - false: Not supported.
         self.capable = capable
-        # Indicates whether the logging feature is enabled for the component.
+        # Specifies whether the log feature is enabled. Valid values:
         # 
         # - true: Enabled.
         # 
-        # - false: Not enabled.
+        # - false: Disabled.
         self.enabled = enabled
-        # The log project used by the logging feature of the component.
+        # The Log Service project used by the add-on log feature.
         self.log_project = log_project
-        # The Logstore used by the logging feature of the component.
+        # The Logstore used by the add-on log feature.
         self.logstore = logstore
 
     def validate(self):

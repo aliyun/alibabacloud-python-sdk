@@ -73,7 +73,7 @@ class DescribeClusterEventsResponseBodyPageInfo(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The maximum number of results to return per page.
+        # The maximum number of results to display on each page.
         self.page_size = page_size
         # The total number of results.
         self.total_count = total_count
@@ -121,36 +121,36 @@ class DescribeClusterEventsResponseBodyEvents(DaraModel):
         time: str = None,
         type: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The description of the event.
+        # The event description.
         self.data = data
-        # The ID of the event.
+        # The event ID.
         self.event_id = event_id
-        # The source of the event.
+        # The event source.
         self.source = source
-        # The operation object associated with the event.
+        # The object associated with the event.
         self.subject = subject
         # The start time of the event. The time is in ISO 8601 format and includes time zone information.
         self.time = time
         # The event type. Valid values:
         # 
-        # - cluster_create: Creates a cluster.
-        # - cluster_scaleout: Scales out a cluster.
-        # - cluster_attach: Adds existing nodes.
-        # - cluster_delete: Deletes a cluster.
-        # - cluster_upgrade: Upgrades a cluster.
-        # - cluster_migrate: Migrates a cluster.
-        # - cluster_node_delete: Removes a node.
-        # - cluster_node_drain: Drains a node.
-        # - cluster_modify: Modifies a cluster.
-        # - cluster_configuration_modify: Modifies the control configurations of a cluster.
-        # - cluster_addon_install: Installs a component.
-        # - cluster_addon_upgrade: Upgrades a component.
-        # - cluster_addon_uninstall: Uninstalls a component.
-        # - runtime_upgrade: Upgrades the runtime.
-        # - nodepool_upgrade: Upgrades a node pool.
-        # - nodepool_update: Updates a node pool.
+        # - cluster_create: cluster creation
+        # - cluster_scaleout: cluster scale-out
+        # - cluster_attach: addition of existing nodes
+        # - cluster_delete: cluster deletion
+        # - cluster_upgrade: cluster upgrade
+        # - cluster_migrate: cluster migration
+        # - cluster_node_delete: node removal
+        # - cluster_node_drain: node draining
+        # - cluster_modify: cluster modification
+        # - cluster_configuration_modify: cluster management configuration modification
+        # - cluster_addon_install: add-on installation
+        # - cluster_addon_upgrade: add-on upgrade
+        # - cluster_addon_uninstall: add-on uninstallation
+        # - runtime_upgrade: runtime upgrade
+        # - nodepool_upgrade: node pool upgrade
+        # - nodepool_update: node pool update
         self.type = type
 
     def validate(self):
@@ -220,9 +220,9 @@ class DescribeClusterEventsResponseBodyEventsData(DaraModel):
     ):
         # The event level.
         self.level = level
-        # The details of the event.
+        # The event details.
         self.message = message
-        # The status of the event.
+        # The event status.
         self.reason = reason
 
     def validate(self):

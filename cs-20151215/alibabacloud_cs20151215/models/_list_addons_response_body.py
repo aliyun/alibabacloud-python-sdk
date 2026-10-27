@@ -12,7 +12,7 @@ class ListAddonsResponseBody(DaraModel):
         self,
         addons: List[main_models.ListAddonsResponseBodyAddons] = None,
     ):
-        # The list of available add-on components.
+        # The list of available components.
         self.addons = addons
 
     def validate(self):
@@ -57,36 +57,31 @@ class ListAddonsResponseBodyAddons(DaraModel):
     ):
         # The CPU architectures supported by the component.
         self.architecture = architecture
-        # The component categorization. Valid values:
+        # The category of the component. Valid values:
+        # - core: core component
+        # - network: network component
+        # - security: security component
+        # - storage: storage component
+        # - monitor: logging and monitoring component
+        # - application: application component
         # 
-        # - core: core component.
-        # - network: network type component.
-        # - security: security component.
-        # - storage: storage component.
-        # - monitor: logging and monitoring component.
-        # - application: application component.
-        # 
-        # An empty value indicates that the component belongs to another categorization.
+        # An empty value indicates that the component belongs to another category.
         self.category = category
         # The schema of custom parameters for the component.
         self.config_schema = config_schema
         # Indicates whether the component is installed by default. Valid values:
-        # 
-        # - true: The component is installed by default when a cluster is created.
-        # 
+        # - true: The component is installed by default when the cluster is created.
         # - false: The component is not installed by default.
         self.install_by_default = install_by_default
         # Indicates whether the component is managed. Valid values:
-        # 
         # - true: The component is managed.
-        # 
         # - false: The component is not managed.
         self.managed = managed
-        # The component name.
+        # The name of the component.
         self.name = name
         # The operations supported by the component.
         self.supported_actions = supported_actions
-        # The component version.
+        # The version of the component.
         self.version = version
 
     def validate(self):

@@ -9,7 +9,7 @@ class RunClusterInspectRequest(DaraModel):
         self,
         client_token: str = None,
     ):
-        # The idempotence token.
+        # The idempotency token.
         self.client_token = client_token
 
     def validate(self):

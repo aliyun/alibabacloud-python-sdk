@@ -445,6 +445,7 @@ from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestManag
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeComponentsConfigEnvs
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeComponentsConfig
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeComponents
+from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeConfigNodeOsConfig
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodeConfig
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodepoolInfo
 from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroupCpuOptions
@@ -1117,6 +1118,7 @@ __all__ = [
     CreateClusterNodePoolRequestNodeComponentsConfigEnvs,
     CreateClusterNodePoolRequestNodeComponentsConfig,
     CreateClusterNodePoolRequestNodeComponents,
+    CreateClusterNodePoolRequestNodeConfigNodeOsConfig,
     CreateClusterNodePoolRequestNodeConfig,
     CreateClusterNodePoolRequestNodepoolInfo,
     CreateClusterNodePoolRequestScalingGroupCpuOptions,

@@ -12,11 +12,13 @@ class DescribeClusterTasksRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The maximum number of results to return per request.
         self.max_results = max_results
+        # The pagination token. Set the value to the next_token parameter value returned from the previous API call.
         self.next_token = next_token
-        # The current page number.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):

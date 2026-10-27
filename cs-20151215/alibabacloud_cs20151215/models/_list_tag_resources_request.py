@@ -28,11 +28,12 @@ class ListTagResourcesRequest(DaraModel):
         self.resource_ids = resource_ids
         # The resource type.
         # 
-        # CLUSTER: cluster.
+        # Valid values:
+        # - CLUSTER: cluster.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tags to query. A maximum of 20 items can be specified.
+        # The list of tags to query. You can specify a maximum of 20 tags.
         self.tags = tags
 
     def validate(self):

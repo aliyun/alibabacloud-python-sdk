@@ -57,19 +57,19 @@ class DescribeClusterVulsResponseBodyVulRecords(DaraModel):
     ):
         # The list of CVEs.
         self.cve_list = cve_list
-        # The vulnerability severity level.
+        # The severity level of the vulnerability.
         self.necessity = necessity
-        # The number of nodes that have this vulnerability.
+        # The number of nodes that have the vulnerability.
         self.node_count = node_count
-        # The node pool ID.
+        # The ID of the node pool.
         self.nodepool_id = nodepool_id
-        # The node pool name.
+        # The name of the node pool.
         self.nodepool_name = nodepool_name
-        # The vulnerability alias.
+        # The alias of the vulnerability.
         self.vul_alias_name = vul_alias_name
-        # The vulnerability name.
+        # The name of the vulnerability.
         self.vul_name = vul_name
-        # The vulnerability type.
+        # The type of the vulnerability.
         self.vul_type = vul_type
 
     def validate(self):

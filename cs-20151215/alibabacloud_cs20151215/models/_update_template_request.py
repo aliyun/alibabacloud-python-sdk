@@ -13,21 +13,21 @@ class UpdateTemplateRequest(DaraModel):
         template: str = None,
         template_type: str = None,
     ):
-        # The description of the deployment template.
+        # The description of the orchestration template.
         self.description = description
-        # The name of the deployment template.
+        # The name of the orchestration template.
         self.name = name
-        # The tags of the deployment template.
+        # The tags of the orchestration template.
         self.tags = tags
-        # The template content in YAML format.
+        # The content of the template in YAML format.
         self.template = template
         # The templatetype.
         # 
-        # - If you set this parameter to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
+        # - If you set the value to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
         # 
-        # - If you leave this parameter empty or set it to other values, the template is not displayed on the Orchestration Templates page in the console.
+        # - If you do not specify this parameter or set the value to other values, the template is not displayed on the Orchestration Templates page in the console.
         # 
-        # Settings this parameter to `kubernetes` is recommended.
+        # Recommended Settings: `kubernetes`.
         self.template_type = template_type
 
     def validate(self):

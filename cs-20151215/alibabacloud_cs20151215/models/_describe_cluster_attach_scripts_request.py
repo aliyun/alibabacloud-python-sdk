@@ -22,39 +22,39 @@ class DescribeClusterAttachScriptsRequest(DaraModel):
         # 
         # Default value: `amd64`.
         # 
-        # > This parameter is required when the cluster type is managed edge.
+        # > This parameter is required when the cluster type is ACK Edge.
         self.arch = arch
-        # The expiration time of the generated token, in UNIX timestamp format. For example, 1739980800 indicates 2025-02-20 00:00:00.
+        # The expiration time of the generated token. The time is in the UNIX timestamp format. For example, 1739980800 indicates 2025-02-20 00:00:00.
         self.expired = expired
-        # Specifies whether to mount data cloud disks to the instance when manually adding existing instances to the cluster, storing containers and images on the data cloud disks. Valid values:
+        # Specifies whether to mount a data cloud disk to the instance when manually adding an existing instance to the cluster, and store containers and images on the data cloud disk. Valid values:
         # 
-        # - `true`: Mounts data cloud disks to the instance. Existing data on the data cloud disks will be lost. Back up your data in advance.
-        # - `false`: Does not mount data cloud disks to the instance.
+        # - `true`: Mounts a data cloud disk to the instance. The existing data on the data cloud disk will be lost. Back up your data first.
+        # - `false`: Does not mount a data cloud disk to the instance.
         # 
         # Default value: `false`.
         # 
         # Data mounting rules:
         # 
-        # - If the ECS instance already has data cloud disks mounted and the file system of the last data cloud disk is not initialized, the system automatically formats the data cloud disk as ext4 to store the content of /var/lib/docker and /var/lib/kubelet.
-        # - If the ECS instance does not have data cloud disks mounted, no new data cloud disks are mounted.
+        # - If the ECS instance has a data cloud disk mounted and the file system of the last data cloud disk is not initialized, the system automatically formats the data cloud disk to ext4 to store the /var/lib/docker and /var/lib/kubelet directories.
+        # - If the ECS instance does not have a data cloud disk mounted, no new data cloud disk is mounted.
         self.format_disk = format_disk
-        # Specifies whether to retain the instance name when adding existing instances to the cluster. If the instance name is not retained, the instance name format is `worker-k8s-for-cs-<clusterid>`. Valid values:
+        # Specifies whether to retain the instance name when adding an existing instance to the cluster. If you do not retain the instance name, the instance name format is `worker-k8s-for-cs-<clusterid>`. Valid values:
         # 
         # - `true`: Retains the instance name.
-        # - `false`: Does not retain the instance name. The name is replaced based on system rules.
+        # - `false`: Does not retain the instance name. The instance name is replaced based on system rules.
         # 
         # Default value: `true`.
         self.keep_instance_name = keep_instance_name
-        # The node pool ID. When adding a node, you can add the node to the specified node pool.
+        # The node pool ID. You can add the node to a specified node pool when adding nodes.
         # 
         # > If you do not specify a node pool ID, the node is added to the default node pool.
         self.nodepool_id = nodepool_id
         self.one_time_token = one_time_token
-        # The access configuration parameters of the node.
+        # The access configuration parameters for the node.
         # 
-        # > This parameter is required when the cluster type is managed edge.
+        # > This parameter is required when the cluster type is ACK Edge.
         self.options = options
-        # If you specify a list of RDS instances, the ECS nodes in the cluster are automatically added to the RDS whitelist.
+        # If an ApsaraDB RDS instance list is specified, the ECS instances of the cluster nodes are automatically added to the RDS access whitelist.
         self.rds_instances = rds_instances
 
     def validate(self):

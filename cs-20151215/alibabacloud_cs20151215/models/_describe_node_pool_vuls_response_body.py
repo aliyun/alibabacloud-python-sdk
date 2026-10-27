@@ -13,12 +13,11 @@ class DescribeNodePoolVulsResponseBody(DaraModel):
         vul_records: List[main_models.DescribeNodePoolVulsResponseBodyVulRecords] = None,
         vuls_fix_service_purchased: bool = None,
     ):
-        # The list of node pool vulnerabilities.
+        # The list of vulnerabilities in the node pool.
         self.vul_records = vul_records
-        # Indicates whether the China Cloud Security CVE fix service has been purchased.
+        # Indicates whether the Security Center CVE fix service is purchased. Valid values:
         # 
         # - true: Purchased.
-        # 
         # - false: Not purchased.
         self.vuls_fix_service_purchased = vuls_fix_service_purchased
 
@@ -65,7 +64,7 @@ class DescribeNodePoolVulsResponseBodyVulRecords(DaraModel):
     ):
         # The node instance ID.
         self.instance_id = instance_id
-        # The node name, which is the identifier of the node within the cluster.
+        # The name of the node, which identifies the node in the cluster.
         self.node_name = node_name
         # The list of vulnerabilities.
         self.vul_list = vul_list
@@ -120,13 +119,13 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(DaraModel):
         need_reboot: bool = None,
         package_list: List[main_models.DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList] = None,
     ):
-        # The vulnerability alias.
+        # The alias of the vulnerability.
         self.alias_name = alias_name
-        # The list of CVEs associated with the vulnerability.
+        # The list of CVEs corresponding to the vulnerability.
         self.cve_list = cve_list
-        # The vulnerability name.
+        # The name of the vulnerability.
         self.name = name
-        # The vulnerability severity level.
+        # The vulnerability level.
         self.necessity = necessity
         # Indicates whether a restart is required.
         self.need_reboot = need_reboot
@@ -196,7 +195,7 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList(DaraModel):
         self,
         name: str = None,
     ):
-        # The package name.
+        # The name of the package.
         self.name = name
 
     def validate(self):

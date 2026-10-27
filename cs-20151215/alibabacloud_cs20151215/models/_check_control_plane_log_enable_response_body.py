@@ -16,15 +16,15 @@ class CheckControlPlaneLogEnableResponseBody(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.aliuid = aliuid
-        # The list of components for which control plane logging is enabled.
+        # The list of components for which control plane logging is currently enabled.
         # 
         # This parameter is required.
         self.components = components
-        # The name of the SLS project that stores the control plane component logs.
+        # The name of the SLS project where control plane component logs are stored.
         # 
-        # Default value: k8s-log-$Cluster ID.
+        # Default value: k8s-log-$ClusterId.
         self.log_project = log_project
-        # The data retention period of logs in the SLS Logstore. Unit: days.
+        # The retention period of logs in the SLS Logstore. Unit: days.
         self.log_ttl = log_ttl
 
     def validate(self):

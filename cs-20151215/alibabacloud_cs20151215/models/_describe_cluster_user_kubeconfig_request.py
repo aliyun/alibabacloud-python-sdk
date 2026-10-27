@@ -10,14 +10,14 @@ class DescribeClusterUserKubeconfigRequest(DaraModel):
         private_ip_address: bool = None,
         temporary_duration_minutes: int = None,
     ):
-        # Specifies whether to obtain the internal network connection configuration. Valid values:
-        # - `true`: Obtains only the internal network connection credential.
-        # - `false`: Obtains only the public network connection credential. 
+        # Specifies whether to retrieve the internal network connection configuration. Valid values:
+        # - `true`: Retrieves only the internal network connection credentials.
+        # - `false`: Retrieves only the public network connection credentials. 
         # 
         # Default value: `false`.
         self.private_ip_address = private_ip_address
-        # The validity period of the temporary KubeConfig. Unit: minutes. Valid values: 15 (15 minutes) to 4320 (3 days).
-        # >If you do not set this parameter, the system automatically determines a longer validity period. The specific expiration time is determined by the value of the `expiration` field in the response.
+        # The validity period of the temporary kubeconfig file, in minutes. Valid values: 15 (15 minutes) to 4320 (3 days).
+        # > If you do not specify this parameter, the system automatically determines a longer validity period. You can determine the specific expiration time based on the value of the `expiration` field in the response.
         self.temporary_duration_minutes = temporary_duration_minutes
 
     def validate(self):

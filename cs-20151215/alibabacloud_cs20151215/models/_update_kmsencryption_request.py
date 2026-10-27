@@ -17,12 +17,12 @@ class UpdateKMSEncryptionRequest(DaraModel):
         self.disable_encryption = disable_encryption
         # The KMS key ID used for the encryption at rest feature for Secrets.
         # 
-        # >Notice: You cannot use a service key. You must use a master key or a customer master key (CMK). The key type must be `Aliyun_AES_256`, and the key usage must be `ENCRYPT/DECRYPT`.
+        # >Notice: You cannot use a service key. You can only use a master key or a customer master key (CMK). The key type must be `Aliyun_AES_256`, and the key usage must be `ENCRYPT/DECRYPT`.
         # 
         # 
         # 
         # 
-        # >Warning: Do not use the KMS console or OpenAPI to disable or delete this KMS key during the enable or shutdown procedure for encryption at rest, or after the feature is successfully enabled. Otherwise, the cluster API server becomes inactive, which prevents you from retrieving objects such as Secrets and ServiceAccounts and affects the normal operation of your applications.
+        # >Warning: Do not disable or delete the KMS key in the KMS console or by calling API operations during the start or shutdown procedure of the encryption at rest feature, or after the feature is started. Otherwise, the cluster API server becomes inactive. As a result, objects such as Secrets and ServiceAccounts cannot be retrieved, which affects the normal operation of your applications.
         self.kms_key_id = kms_key_id
 
     def validate(self):

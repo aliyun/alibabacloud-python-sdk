@@ -77,7 +77,7 @@ class DescribePolicyInstancesResponseBody(DaraModel):
         total_violations: int = None,
         is_deleted: int = None,
     ):
-        # The UID of the policy instance implementer.
+        # The UID of the policy instance enforcer.
         self.ali_uid = ali_uid
         # The ID of the target cluster.
         self.cluster_id = cluster_id
@@ -93,27 +93,27 @@ class DescribePolicyInstancesResponseBody(DaraModel):
         self.policy_parameters = policy_parameters
         # The governance level of the rule instance.
         self.policy_severity = policy_severity
-        # The scope of the policy instance.
+        # The enforcement scope of the policy instance.
         # 
-        # By default, an asterisk (*) indicates all namespaces in the cluster.
+        # A value of "*" indicates all namespaces in the cluster.
         # 
-        # Otherwise, the names of the namespaces to which the policy applies are returned. Multiple namespaces are separated by commas (,).
+        # Otherwise, the names of the target namespaces are returned, separated by commas (,).
         self.policy_scope = policy_scope
         # The governance action of the rule. Valid values:
         # 
         # - `deny`: Blocks non-compliant deployments.
         # 
-        # - `warn`: Generates an alert.
+        # - `warn`: Triggers an alert.
         self.policy_action = policy_action
-        # The creation time. This parameter is deprecated. Do not use it.
+        # **[Deprecated]** The creation time. Do not use this parameter.
         self.created = created
-        # The update time. This parameter is deprecated. Do not use it.
+        # **[Deprecated]** The update time. Do not use this parameter.
         self.updated = updated
-        # The resource ID. This parameter is deprecated. Do not use it.
+        # **[Deprecated]** The resource ID. Do not use this parameter.
         self.resource_id = resource_id
-        # The number of violations processed in the cluster. This parameter is deprecated. Do not use it.
+        # **[Deprecated]** The number of processed violations in the cluster. Do not use this parameter.
         self.total_violations = total_violations
-        # The deletion status. This parameter is deprecated. Do not use it.
+        # **[Deprecated]** The deletion status. Do not use this parameter.
         self.is_deleted = is_deleted
 
     def validate(self):

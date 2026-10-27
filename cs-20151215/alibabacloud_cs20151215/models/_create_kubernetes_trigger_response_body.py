@@ -13,7 +13,7 @@ class CreateKubernetesTriggerResponseBody(DaraModel):
         project_id: str = None,
         type: str = None,
     ):
-        # The action of the trigger. Example: `redeploy`: Redeployment.
+        # The action of the trigger. For example, `redeploy`: Redeploys the resources.
         self.action = action
         # The cluster ID.
         self.cluster_id = cluster_id
@@ -22,9 +22,8 @@ class CreateKubernetesTriggerResponseBody(DaraModel):
         # The project name of the trigger.
         self.project_id = project_id
         # The type of the trigger. Valid values:
-        # 
-        # - `deployment`: The trigger for stateless applications. 
-        # - `application`: The trigger for Hybrid Cloud Application Center applications.
+        # - `deployment`: The trigger for stateless applications.
+        # - `application`: The trigger for applications in Hybrid Cloud Application Center.
         self.type = type
 
     def validate(self):

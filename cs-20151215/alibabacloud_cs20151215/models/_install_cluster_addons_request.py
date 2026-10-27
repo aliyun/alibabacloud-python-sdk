@@ -52,11 +52,11 @@ class InstallClusterAddonsRequestBody(DaraModel):
     ):
         # The custom parameters of the component, encoded as a JSON string.
         self.config = config
-        # The component name. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query information about available components, including component names and versions.
+        # The name of the component. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query the information about available components, including component names and versions.
         # 
         # This parameter is required.
         self.name = name
-        # The component version. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query information about available components, including component names and versions.
+        # The version of the component. You can call the [ListAddons](https://help.aliyun.com/document_detail/2667939.html) operation to query the information about available components, including component names and versions.
         # 
         # This parameter is required.
         self.version = version

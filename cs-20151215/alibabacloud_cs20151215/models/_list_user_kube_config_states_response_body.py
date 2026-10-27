@@ -13,7 +13,7 @@ class ListUserKubeConfigStatesResponseBody(DaraModel):
         page: main_models.ListUserKubeConfigStatesResponseBodyPage = None,
         states: List[main_models.ListUserKubeConfigStatesResponseBodyStates] = None,
     ):
-        # The pagination information.
+        # The pagination parameters.
         self.page = page
         # The KubeConfig status details of the user.
         self.states = states
@@ -64,16 +64,14 @@ class ListUserKubeConfigStatesResponseBodyStates(DaraModel):
         cluster_name: str = None,
         cluster_state: str = None,
     ):
-        # The expiration time of the KubeConfig certificate. Format: UTC time in RFC 3339 format.
+        # The expiration time of the KubeConfig certificate. The time is displayed in UTC and follows the RFC 3339 standard.
         self.cert_expire_time = cert_expire_time
         # The current status of the KubeConfig certificate. Valid values:
-        # 
         # - Expired: The certificate has expired.
         # - Unexpired: The certificate has not expired.
         # - Unissued: The certificate has not been issued.
         # - Unknown: The status is unknown.
-        # 
-        # - Removed: The certificate has been removed (an issuance record exists for the certificate).
+        # - Removed: The certificate has been removed (the certificate has an issuance record).
         self.cert_state = cert_state
         # The cluster ID.
         self.cluster_id = cluster_id
@@ -87,9 +85,9 @@ class ListUserKubeConfigStatesResponseBodyStates(DaraModel):
         # - `updating`: The cluster is being upgraded.
         # - `updating_failed`: The cluster failed to be upgraded.
         # - `scaling`: The cluster is being scaled.
-        # - `stopped`: The cluster has stopped running.
+        # - `stopped`: The cluster is stopped.
         # - `deleting`: The cluster is being deleted.
-        # - `deleted`: The cluster has been deleted.
+        # - `deleted`: The cluster is deleted.
         # - `delete_failed`: The cluster failed to be deleted.
         self.cluster_state = cluster_state
 
@@ -146,9 +144,9 @@ class ListUserKubeConfigStatesResponseBodyPage(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of results.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

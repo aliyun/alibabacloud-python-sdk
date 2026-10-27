@@ -17,27 +17,27 @@ class DescribePolicyDetailsResponseBody(DaraModel):
         template: str = None,
     ):
         # The governance action of the rule. Valid values:
-        # - `enforce`: blocks non-compliant deployments.
-        # - `inform`: generates alerts.
+        # - `enforce`: Blocks non-compliant deployments.
+        # - `inform`: Triggers alerts.
         self.action = action
-        # The templatetype of the rule.
+        # The rule templatetype.
         self.category = category
         # The description of the rule template.
         self.description = description
         # Indicates whether the rule is deleted. Valid values:
-        # - 0: not deleted.
-        # - 1: deleted.
+        # - 0: Not deleted.
+        # - 1: Deleted.
         self.is_deleted = is_deleted
         # The name of the policy governance rule.
         self.name = name
-        # Indicates whether the policy requires configuration. Valid values: 
-        # - 0: parameter settings required.
-        # - 1: no parameter settings required.
+        # Specifies whether policy configuration is required. Valid values: 
+        # - 0: Parameter settings are required.
+        # - 1: No parameter settings are required.
         self.no_config = no_config
         # The governance severity of the rule. Valid values:
-        # * `high`: high risk.
-        # * `medium`: medium risk.
-        # * `low`: low risk.
+        # * `high`: High-risk.
+        # * `medium`: Medium-risk.
+        # * `low`: Low-risk.
         self.severity = severity
         # The details of the rule template.
         self.template = template

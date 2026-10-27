@@ -80,25 +80,25 @@ class DescribeClusterResourcesResponseBody(DaraModel):
         self.created = created
         # The resource ID.
         self.instance_id = instance_id
-        # The resource information. For source information about the resource, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
+        # The resource information. For more information about the source information of resources, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
         self.resource_info = resource_info
         # The resource type.
         self.resource_type = resource_type
-        # The resource status. Valid values:
+        # The resource state. Valid values:
         # 
-        # - `CREATE_COMPLETE`: The resource was created.
-        # - `CREATE_FAILED`: The resource failed to be created.
+        # - `CREATE_COMPLETE`: The resource is created.
+        # - `CREATE_FAILED`: The resource fails to be created.
         # - `CREATE_IN_PROGRESS`: The resource is being created.
-        # - `DELETE_FAILED`: The resource failed to be deleted.
+        # - `DELETE_FAILED`: The resource fails to be deleted.
         # - `DELETE_IN_PROGRESS`: The resource is being deleted.
-        # - `ROLLBACK_COMPLETE`: The rollback was successful.
-        # - `ROLLBACK_FAILED`: The rollback failed.
+        # - `ROLLBACK_COMPLETE`: The rollback is successful.
+        # - `ROLLBACK_FAILED`: The rollback fails.
         # - `ROLLBACK_IN_PROGRESS`: The rollback is in progress.
         self.state = state
-        # Indicates whether the resource was created by ACK.
+        # Specifies whether the resource is created by ACK. Valid values:
         # 
-        # - 1: The resource was created by ACK.
-        # - 0: The resource is a pre-existing resource.
+        # - 1: The resource is created by ACK.
+        # - 0: The resource is an existing resource.
         self.auto_create = auto_create
         # The list of dependent resources.
         self.dependencies = dependencies
@@ -106,10 +106,10 @@ class DescribeClusterResourcesResponseBody(DaraModel):
         self.associated_object = associated_object
         # The deletion behavior of the resource when the cluster is deleted.
         self.delete_behavior = delete_behavior
-        # The type of the resource creator. Valid values:
-        # - user: Created by the user.
-        # - system: Created by the ACK control system.
-        # - addon: Created by a cluster component.
+        # The type of the creator of the resource. Valid values:
+        # - user: The resource is created by the user.
+        # - system: The resource is created by the ACK control system.
+        # - addon: The resource is created by a cluster component.
         self.creator_type = creator_type
         # The additional information about the resource.
         self.extra_info = extra_info
@@ -220,17 +220,15 @@ class DescribeClusterResourcesResponseBodyDeleteBehavior(DaraModel):
         delete_by_default: bool = None,
         changeable: bool = None,
     ):
-        # Indicates whether the resource is deleted by default when the cluster is deleted.
+        # Specifies whether the resource is deleted by default when the cluster is deleted. Valid values:
         # 
         # - true: The resource is deleted by default.
-        # 
         # - false: The resource is not deleted.
         self.delete_by_default = delete_by_default
-        # Indicates whether the default behavior of `delete_by_default` can be changed.
+        # Specifies whether the default behavior returned in `delete_by_default` can be changed. Valid values:
         # 
-        # - true: The behavior can be changed.
-        # 
-        # - false: The behavior cannot be changed.
+        # - true: The default behavior can be changed.
+        # - false: The default behavior cannot be changed.
         self.changeable = changeable
 
     def validate(self):
@@ -266,7 +264,7 @@ class DescribeClusterResourcesResponseBodyAssociatedObject(DaraModel):
         namespace: str = None,
         name: str = None,
     ):
-        # The object type of the Kubernetes object.
+        # The Kubernetes object type.
         self.kind = kind
         # The namespace of the Kubernetes object.
         self.namespace = namespace

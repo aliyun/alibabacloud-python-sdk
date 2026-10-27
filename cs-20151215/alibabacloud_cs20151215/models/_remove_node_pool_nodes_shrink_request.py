@@ -13,29 +13,29 @@ class RemoveNodePoolNodesShrinkRequest(DaraModel):
         nodes_shrink: str = None,
         release_node: bool = None,
     ):
-        # Specifies whether to remove nodes concurrently.
+        # Specifies whether to remove the nodes concurrently. Valid values:
         # 
-        # - true: Nodes are concurrently removed from the scaling group.
+        # - true: removes the nodes from the scaling group concurrently.
         # 
-        # - false: Nodes are sequentially removed from the scaling group.
+        # - false: removes the nodes from the scaling group sequentially.
         # 
         # Default value: false.
         self.concurrency = concurrency
         # Specifies whether to drain the nodes. Valid values:
-        # - true: Drain the nodes.
-        # - false: Do not drain the nodes.
+        # - true: drains the nodes.
+        # - false: does not drain the nodes.
         self.drain_node = drain_node
-        # The list of instances to remove.
+        # The list of instances to be removed.
         self.instance_ids_shrink = instance_ids_shrink
         # **[Deprecated]**
         # 
-        # The list of nodes to remove.
+        # The list of nodes to be removed.
         # 
-        # >Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>
+        # >Danger: This parameter is deprecated. Use instance_ids instead.</danger>
         self.nodes_shrink = nodes_shrink
         # Specifies whether to release the nodes. Valid values:
-        # - true: Release the nodes.
-        # - false: Do not release the nodes.
+        # - true: releases the nodes.
+        # - false: does not release the nodes.
         self.release_node = release_node
 
     def validate(self):

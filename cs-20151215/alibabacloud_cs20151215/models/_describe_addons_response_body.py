@@ -69,7 +69,7 @@ class DescribeAddonsResponseBodyComponentGroups(DaraModel):
     ):
         # The name of the component group.
         self.group_name = group_name
-        # The names of the components in the group.
+        # The names of the components included in the group.
         self.items = items
 
     def validate(self):

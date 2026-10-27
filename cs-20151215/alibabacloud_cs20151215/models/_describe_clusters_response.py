@@ -91,34 +91,63 @@ class DescribeClustersResponseBody(DaraModel):
         worker_ram_role_name: str = None,
         zone_id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The cluster type.
         self.cluster_type = cluster_type
+        # The time when the cluster was created.
         self.created = created
+        # The current version of the cluster.
         self.current_version = current_version
+        # The data disk category of the node.
         self.data_disk_category = data_disk_category
+        # The data disk size of the node.
         self.data_disk_size = data_disk_size
+        # Indicates whether deletion protection is enabled for the cluster.
         self.deletion_protection = deletion_protection
+        # The Docker version of the cluster.
         self.docker_version = docker_version
+        # The ID of the external load balancing instance used by the cluster.
         self.external_loadbalancer_id = external_loadbalancer_id
+        # The initial version of the cluster.
         self.init_version = init_version
+        # The access address of the cluster API server, including the internal network access address and the public network access address.
         self.master_url = master_url
+        # The metadata of the cluster.
         self.meta_data = meta_data
+        # The name of the cluster.
         self.name = name
+        # The network mode of the cluster.
         self.network_mode = network_mode
+        # Indicates whether Private Zone is enabled for the cluster. Default value: false.
         self.private_zone = private_zone
+        # The subtype of the cluster.
         self.profile = profile
+        # The region ID of the cluster.
         self.region_id = region_id
+        # The resource group ID of the cluster.
         self.resource_group_id = resource_group_id
+        # The security group ID of the cluster.
         self.security_group_id = security_group_id
+        # The current number of nodes in the cluster, including master and worker nodes.
         self.size = size
+        # The state of the cluster.
         self.state = state
+        # The subnet CIDR of the cluster.
         self.subnet_cidr = subnet_cidr
+        # The tags of the cluster.
         self.tags = tags
+        # The time when the cluster was updated.
         self.updated = updated
+        # The VPC ID of the cluster.
         self.vpc_id = vpc_id
+        # The vSwitch CIDR.
         self.vswitch_cidr = vswitch_cidr
+        # The ID of the vSwitch where the cluster is deployed.
         self.vswitch_id = vswitch_id
+        # The name of the RAM role used by the worker nodes.
         self.worker_ram_role_name = worker_ram_role_name
+        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -323,7 +352,9 @@ class DescribeClustersResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the cluster tag.
         self.key = key
+        # The value of the cluster tag.
         self.value = value
 
     def validate(self):

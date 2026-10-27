@@ -12,8 +12,8 @@ class DescribeExternalAgentRequest(DaraModel):
     ):
         # The agent permission mode. Valid values:
         # 
-        # - admin: Administrator mode. Grants all permissions.
-        # - restricted: Restricted mode. Grants only partial permissions.
+        # - admin: Administrator mode. The agent has all permissions.
+        # - restricted: Restricted mode. The agent has only partial permissions.
         # 
         # Default value: admin.
         self.agent_mode = agent_mode

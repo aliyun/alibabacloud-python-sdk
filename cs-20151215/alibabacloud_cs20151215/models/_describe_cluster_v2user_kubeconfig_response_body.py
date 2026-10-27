@@ -9,6 +9,7 @@ class DescribeClusterV2UserKubeconfigResponseBody(DaraModel):
         self,
         config: str = None,
     ):
+        # The kubeconfig content.
         self.config = config
 
     def validate(self):

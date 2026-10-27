@@ -12,9 +12,9 @@ class CreateTriggerRequest(DaraModel):
         project_id: str = None,
         type: str = None,
     ):
-        # The trigger action. Valid values:
+        # The action of the trigger. Valid values:
         # 
-        # `redeploy`: redeploys the resource defined in `project_id`.
+        # - `redeploy`: Redeploys the resources defined in `project_id`.
         # 
         # This parameter is required.
         self.action = action
@@ -22,19 +22,19 @@ class CreateTriggerRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The trigger project name.
+        # The project name of the trigger.
         # 
-        # The value consists of the namespace and application name in the format of `${namespace}/${name}`.
+        # It consists of the namespace and the name of the application, in the format of `${namespace}/${name}`.
         # 
         # Example: `default/test-app`.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The trigger type. Valid values:
+        # The type of the trigger. Valid values:
         # 
-        # - `deployment`: a trigger for stateless applications. 
+        # - `deployment`: The trigger for stateless applications. 
         # 
-        # - `application`: a trigger for App Hub applications.
+        # - `application`: The trigger for Application Center applications.
         # 
         # Default value: `deployment`.
         self.type = type

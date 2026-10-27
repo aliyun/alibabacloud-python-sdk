@@ -12,16 +12,15 @@ class Addon(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The configuration of the component.
+        # The component configuration.
         self.config = config
-        # Specifies whether to disable default installation. When a cluster is created, required components and additional components such as log components are installed by default. You can disable this default behavior and install these components later by calling the component installation API or by using the console. Valid values:
-        # 
+        # Specifies whether to disable default installation. When a cluster is created, in addition to required components, additional components such as log components are installed by default. You can disable this default behavior and install these components later by calling the component installation API or through the console. Valid values:
         # - `true`: Disables default installation.
         # - `false`: Allows default installation.
         self.disabled = disabled
-        # The name of the component.
+        # The component name.
         self.name = name
-        # The version of the component.
+        # The component version.
         self.version = version
 
     def validate(self):

@@ -72,7 +72,7 @@ class ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects(DaraModel):
         self.name = name
         # The namespace to which the object belongs.
         self.namespace = namespace
-        # The Kubernetes API version to which the object belongs.
+        # The Kubernetes API version of the object.
         self.version = version
 
     def validate(self):

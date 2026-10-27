@@ -73,7 +73,7 @@ class DescribeClusterLogsResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The log content.
         self.cluster_log = cluster_log
-        # The time when the log was created.
+        # The time when the log was generated.
         self.created = created
         # The time when the log was updated.
         self.updated = updated

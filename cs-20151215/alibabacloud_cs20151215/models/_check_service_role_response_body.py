@@ -12,7 +12,7 @@ class CheckServiceRoleResponseBody(DaraModel):
         self,
         roles: List[main_models.CheckServiceRoleResponseBodyRoles] = None,
     ):
-        # The service role check results.
+        # The check results of the service roles.
         self.roles = roles
 
     def validate(self):
@@ -50,11 +50,11 @@ class CheckServiceRoleResponseBodyRoles(DaraModel):
         message: str = None,
         name: str = None,
     ):
-        # Indicates whether the role has been authorized.
+        # Indicates whether the service role is authorized.
         self.granted = granted
-        # The message returned when the role is not authorized.
+        # The prompt message when the service role is not authorized.
         self.message = message
-        # The service role name.
+        # The name of the service role.
         self.name = name
 
     def validate(self):

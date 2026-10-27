@@ -22,17 +22,17 @@ class DescribeAddonResponseBody(DaraModel):
     ):
         # The CPU architectures supported by the component.
         self.architecture = architecture
-        # The component category.
+        # The category of the component.
         self.category = category
-        # The schema of custom parameters for the component.
+        # The custom parameter schema of the component.
         self.config_schema = config_schema
         # Indicates whether the component is installed by default.
         self.install_by_default = install_by_default
-        # Indicates whether the component is managed.
+        # Indicates whether the component is a managed component.
         self.managed = managed
         # The name of the component.
         self.name = name
-        # The information about newer versions of the component.
+        # The information about the latest versions of the component.
         self.newer_versions = newer_versions
         # The operations supported by the component.
         self.supported_actions = supported_actions
@@ -124,11 +124,9 @@ class DescribeAddonResponseBodyNewerVersions(DaraModel):
     ):
         # The minimum cluster version required by this component version.
         self.minimum_cluster_version = minimum_cluster_version
-        # Indicates whether the component can be upgraded to this version.
-        # 
-        # - true: The upgrade is supported.
-        # 
-        # - false: The upgrade is not supported.
+        # Indicates whether the component can be upgraded to this version. Valid values:
+        # - true: Supported.
+        # - false: Not supported.
         self.upgradable = upgradable
         # The latest version number of the component.
         self.version = version

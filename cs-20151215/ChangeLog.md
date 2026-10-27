@@ -1,3 +1,9 @@
+2026-10-27 Version: 7.2.3
+- Update API CreateClusterNodePool: add request parameters body.node_config.node_os_config.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.node_config.node_os_config.sysctl.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.node_config.node_os_config.sysctl.
+
+
 2026-10-21 Version: 7.2.2
 - Generated python 2015-12-15 for CS.
 

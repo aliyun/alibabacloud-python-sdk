@@ -14,9 +14,9 @@ class ListNodePoolComponentsResponseBody(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The list of node components.
+        # The node components.
         self.components = components
-        # The maximum number of results to return. Default value: 200.
+        # The maximum number of results per page. Default value: 200.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

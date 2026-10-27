@@ -72,13 +72,13 @@ class DescribeTemplateAttributeResponseBody(DaraModel):
         created: str = None,
         updated: str = None,
     ):
-        # The orchestration template ID. A new ID is generated each time the template is modified.
+        # The ID of the orchestration template. A new template ID is generated each time the template is modified.
         self.id = id
         # The access permissions of the orchestration template. Valid values:
         # 
-        # - `private`: private.
-        # - `public`: public.
-        # - `shared`: shared.
+        # - `private`: Private.
+        # - `public`: Public.
+        # - `shared`: Shared.
         self.acl = acl
         # The name of the orchestration template.
         self.name = name
@@ -88,7 +88,7 @@ class DescribeTemplateAttributeResponseBody(DaraModel):
         # 
         # - If the value is kubernetes, the template is displayed on the Orchestration Templates page in the console.
         # 
-        # - If this parameter is not set or is set to other values, the template is not displayed on the Orchestration Templates page in the console.
+        # - If this parameter is not specified or is set to another value, the template is not displayed on the Orchestration Templates page in the console.
         self.template_type = template_type
         # The description of the orchestration template.
         self.description = description
@@ -98,7 +98,7 @@ class DescribeTemplateAttributeResponseBody(DaraModel):
         self.template_with_hist_id = template_with_hist_id
         # The time when the orchestration template was created.
         self.created = created
-        # The time when the orchestration template was last updated.
+        # The time when the orchestration template was updated.
         self.updated = updated
 
     def validate(self):

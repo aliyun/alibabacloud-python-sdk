@@ -10,7 +10,7 @@ class StartAlertResponseBody(DaraModel):
         msg: str = None,
         status: bool = None,
     ):
-        # The response message.
+        # The returned message.
         self.msg = msg
         # The status.
         self.status = status

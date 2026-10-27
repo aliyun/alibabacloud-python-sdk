@@ -13,7 +13,7 @@ class UpdateContactGroupForAlertResponseBody(DaraModel):
         # The message returned when the operation fails.
         self.msg = msg
         # The status of the update result. Valid values:
-        # - true: The operation is successful.
+        # - true: The operation succeeded.
         # - false: The operation failed.
         self.status = status
 

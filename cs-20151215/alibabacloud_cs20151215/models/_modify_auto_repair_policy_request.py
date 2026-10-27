@@ -58,7 +58,7 @@ class ModifyAutoRepairPolicyRequestRules(DaraModel):
         incidents: List[main_models.ModifyAutoRepairPolicyRequestRulesIncidents] = None,
         repair_procedure: List[main_models.ModifyAutoRepairPolicyRequestRulesRepairProcedure] = None,
     ):
-        # The list of identified faults.
+        # The list of identified incidents.
         self.incidents = incidents
         # The repair procedure.
         self.repair_procedure = repair_procedure
@@ -162,7 +162,7 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention(DaraModel):
         inquiring_label: main_models.ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
-        # The label configuration for authorization confirmation. When you add the following labels to the node, you authorize ACK to execute the operation for this stage. After completing the operation for this stage, ACK automatically removes the authorization inquiry and authorization confirmation labels corresponding to this stage. If you do not promptly add the following labels to grant authorization, ACK will not execute the action for this stage and subsequent actions, and the node may remain in a damaged state.
+        # The label configuration for authorization confirmation. When you add the following labels to the node, you authorize ACK to execute the operation for this stage. After completing the operation for this stage, ACK automatically removes the authorization inquiry and confirmation labels corresponding to this stage. If you do not add the following labels in time to grant authorization, ACK will not execute the action for this stage and subsequent actions, and the node may remain in a damaged state.
         self.approved_label = approved_label
         # Specifies whether to enable manual approval.
         self.enable = enable
@@ -220,7 +220,7 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabe
         key: str = None,
         value: str = None,
     ):
-        # The key value of the label.
+        # The key of the label.
         self.key = key
         # The value of the label.
         self.value = value
@@ -257,7 +257,7 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel
         key: str = None,
         value: str = None,
     ):
-        # The key value of the label.
+        # The key of the label.
         self.key = key
         # The value of the label.
         self.value = value
@@ -294,7 +294,7 @@ class ModifyAutoRepairPolicyRequestRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The name of the fault.
+        # The name of the incident.
         self.name = name
         # The type of manual approval.
         self.type = type

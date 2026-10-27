@@ -13,15 +13,15 @@ class CreateTriggerResponseBody(DaraModel):
         project_id: str = None,
         type: str = None,
     ):
-        # The trigger action.
+        # The action of the trigger.
         self.action = action
         # The cluster ID.
         self.cluster_id = cluster_id
         # The trigger ID.
         self.id = id
-        # The trigger project name.
+        # The project name of the trigger.
         self.project_id = project_id
-        # The trigger type.
+        # The type of the trigger.
         self.type = type
 
     def validate(self):

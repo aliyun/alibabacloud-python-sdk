@@ -16,17 +16,17 @@ class UpdateResourcesDeleteProtectionRequest(DaraModel):
     ):
         # Specifies whether to enable deletion protection for the resource. Valid values:
         # 
-        # - true: Enables deletion protection. After deletion protection is enabled, you must manually disable deletion protection before you can delete the specified resource.
+        # - true: Enables deletion protection. After deletion protection is enabled, you must manually disable it before you can delete the specified resource.
         # 
         # - false: Disables deletion protection.
         # 
         # Default value: false.
         self.enable = enable
-        # The namespace of the resource.
+        # The namespace where the resource resides.
         # 
         # Default value: default.
         self.namespace = namespace
-        # The type of resource to update. Valid values:
+        # The type of the resource to update. Valid values:
         # 
         # - namespaces: namespace.
         # 

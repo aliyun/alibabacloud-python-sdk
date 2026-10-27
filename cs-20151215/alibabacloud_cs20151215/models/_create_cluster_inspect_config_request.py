@@ -19,7 +19,7 @@ class CreateClusterInspectConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.enabled = enabled
-        # The inspection cycle defined by using the RFC5545 Recurrence Rule syntax. You must specify BYHOUR and BYMINUTE. Only FREQ=DAILY is supported. COUNT and UNTIL are not supported.
+        # The inspection cycle defined by using the RFC5545 Recurrence Rule syntax. BYHOUR and BYMINUTE must be specified. Only FREQ=DAILY is supported. COUNT or UNTIL is not supported.
         # 
         # This parameter is required.
         self.recurrence = recurrence

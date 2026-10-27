@@ -10,13 +10,13 @@ class ListUserKubeConfigStatesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The current page number.
+        # The page number.
         # 
         # - Valid values: greater than or equal to 1.
         # 
         # - Default value: 1.
         self.page_number = page_number
-        # The number of results per page.
+        # The number of entries to return on each page.
         # 
         # - Valid values: 1 to 100.
         # 

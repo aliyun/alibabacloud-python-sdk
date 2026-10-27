@@ -12,21 +12,20 @@ class DescribeClusterAddonInstanceResponseBody(DaraModel):
         state: str = None,
         version: str = None,
     ):
-        # The component configuration.
+        # The add-on configuration.
         self.config = config
-        # The component name.
+        # The add-on name.
         self.name = name
-        # The component status. Valid values:
-        # 
+        # The add-on state. Valid values:
         # - initial: Installing.
         # - active: Installed.
-        # - unhealthy: Unhealthy.
+        # - unhealthy: Abnormal.
         # - upgrading: Upgrading.
         # - updating: Updating.
         # - deleting: Uninstalling.
         # - deleted: Deleted.
         self.state = state
-        # The component version.
+        # The add-on version.
         self.version = version
 
     def validate(self):

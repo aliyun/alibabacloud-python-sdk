@@ -15,24 +15,25 @@ class DeleteClusterRequest(DaraModel):
         retain_all_resources: bool = None,
         retain_resources: List[str] = None,
     ):
-        # The deletion options for cluster-associated resources.
+        # The deletion options for the resources associated with the cluster.
         self.delete_options = delete_options
-        # Specifies whether to retain SLB instances. Valid values:
-        # 
-        # - `true`: Retains the created SLB resources.
-        # - `false`: Does not retain the created SLB resources.
+        # Specifies whether to retain the Server Load Balancer (SLB) instances created by using Services.
+        # Valid values:
+        # - `true`: retains the created SLB resources.
+        # - `false`: does not retain the created SLB resources.
         # 
         # Default value: `false`.
-        # Use `SLB` in `delete_options` to manage this setting.
+        # **[Deprecated]** Use `SLB` in `delete_options` instead.
         self.keep_slb = keep_slb
-        # Specifies whether to retain all resources. If this parameter is set to `true`, `retain_resources` is ignored, and cloud resources created through the cluster that are queried by the `DescribeClusterResources` operation are retained. If this parameter is set to `false`, note that resources that are retained by default in `delete_options` are still retained. To delete these resources, set `delete_mode` to `delete` separately in `delete_options`.
+        # Specifies whether to retain all resources. If you set this parameter to `true`, the `retain_resources` parameter is ignored, and all cloud resources created by the cluster that are queried by calling the `DescribeClusterResources` operation are retained. If you set this parameter to `false`, note that the resources that are retained by default in `delete_options` are still retained. To delete these resources, set `delete_mode` to `delete` in `delete_options`.
         # 
-        # - `true`: Retains all resources, including all cloud resources created through the cluster.
-        # - `false`: Does not retain all resources (except resources defined as retained by default in `delete_options`. For example, `ALB` is still retained when this parameter is set to `false`).
+        # Valid values:
+        # - `true`: retains all resources, including all cloud resources created by the cluster.
+        # - `false`: does not retain all resources, except for the resources that are retained by default in `delete_options`. For example, ALB resources are still retained even if this parameter is set to `false`.
         # 
         # Default value: `false`.
         self.retain_all_resources = retain_all_resources
-        # The list of resources. To retain resources when deleting a cluster, specify the IDs of the corresponding resources.
+        # The list of resources. To retain resources when you delete the cluster, specify the IDs of the corresponding resources.
         self.retain_resources = retain_resources
 
     def validate(self):
@@ -87,16 +88,16 @@ class DeleteClusterRequestDeleteOptions(DaraModel):
         delete_mode: str = None,
         resource_type: str = None,
     ):
-        # The deletion policy for this resource type. Valid values:
-        # - delete: Deletes this type of resource.
-        # - retain: Retains this type of resource.
+        # The deletion mode for this type of resource. Valid values:
+        # - `delete`: deletes this type of resource.
+        # - `retain`: retains this type of resource.
         self.delete_mode = delete_mode
-        # The resource type. Valid values:
-        # - SLB: SLB resources created through services. Deleted by default. You can choose to retain them.
-        # - ALB: ALB resources created by ALB Ingress Controller. Retained by default. You can choose to delete them.
-        # - SLS_Data: The Simple Log Service project used by the cluster logging feature. Retained by default. You can choose to delete it.
-        # - SLS_ControlPlane: The Simple Log Service project used by the control plane logs of managed clusters. Retained by default. You can choose to delete it.
-        # - PrivateZone: PrivateZone resources created by ACK Serverless clusters. Retained by default. You can choose to delete them.
+        # The type of the resource. Valid values:
+        # - `SLB`: the SLB resources created by using Services. By default, these resources are deleted. You can choose to retain them.
+        # - `ALB`: the ALB resources created by the ALB Ingress controller. By default, these resources are retained. You can choose to delete them.
+        # - `SLS_Data`: the SLS projects used for the cluster log feature. By default, these resources are retained. You can choose to delete them.
+        # - `SLS_ControlPlane`: the SLS projects used for the control plane logs of managed clusters. By default, these resources are retained. You can choose to delete them.
+        # - `PrivateZone`: the PrivateZone resources created by ACK Serverless clusters. By default, these resources are retained. You can choose to delete them.
         self.resource_type = resource_type
 
     def validate(self):

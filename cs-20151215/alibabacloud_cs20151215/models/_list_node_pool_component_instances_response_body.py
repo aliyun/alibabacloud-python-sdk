@@ -76,7 +76,7 @@ class ListNodePoolComponentInstancesResponseBodyComponentInstances(DaraModel):
         self.config_revision = config_revision
         # The name of the component.
         self.name = name
-        # The state of the component.
+        # The state of the component. Valid values: installing, failed, active, upgrading, updating, and uninstalling.
         self.state = state
         # The version of the component.
         self.version = version

@@ -18,18 +18,18 @@ class DescribeUserQuotaResponseBody(DaraModel):
         node_quota: int = None,
         quotas: Dict[str, main_models.QuotasValue] = None,
     ):
-        # The quota of managed clusters. Default value: 20. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The managed cluster quota. Default value: 20. To increase the quota, [submit an application in Quota Center](https://quotas.console.aliyun.com/products/csk/quotas).
         self.amk_cluster_quota = amk_cluster_quota
-        # The quota of ASK clusters. Default value: 20. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The ASK cluster quota. Default value: 20. To increase the quota, [submit an application in Quota Center](https://quotas.console.aliyun.com/products/csk/quotas).
         self.ask_cluster_quota = ask_cluster_quota
-        # The node pool quota per cluster. Default value: 20. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The node pool quota per cluster. Default value: 20. To increase the quota, [submit an application in Quota Center](https://quotas.console.aliyun.com/products/csk/quotas).
         self.cluster_nodepool_quota = cluster_nodepool_quota
-        # The total cluster quota per account. Default value: 50. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The total cluster quota per account. Default value: 50. To increase the quota, [submit an application in Quota Center](https://quotas.console.aliyun.com/products/csk/quotas).
         self.cluster_quota = cluster_quota
         self.edge_improved_nodepool_quota = edge_improved_nodepool_quota
-        # The node quota per cluster. Default value: 100. If you need to exceed the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The node quota per cluster. Default value: 100. To increase the quota, [submit an application in Quota Center](https://quotas.console.aliyun.com/products/csk/quotas).
         self.node_quota = node_quota
-        # The new quota items. If this field exists, the values in this field take precedence.
+        # The new quota items. If this field is present, it takes precedence.
         self.quotas = quotas
 
     def validate(self):

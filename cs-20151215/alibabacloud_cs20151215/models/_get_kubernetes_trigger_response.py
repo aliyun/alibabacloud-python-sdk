@@ -75,7 +75,7 @@ class GetKubernetesTriggerResponseBody(DaraModel):
         self.name = name
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The trigger project name. It consists of the namespace and the name of the application, in the format of `${namespace}/${name}`. Example: default/test-app.
+        # The trigger project name. It consists of the namespace and name of the application, in the `${namespace}/${name}` format. Example: default/test-app.
         self.project_id = project_id
         # The trigger type. Valid values:
         # 

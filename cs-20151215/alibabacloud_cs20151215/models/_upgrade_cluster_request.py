@@ -14,18 +14,17 @@ class UpgradeClusterRequest(DaraModel):
         rolling_policy: main_models.UpgradeClusterRequestRollingPolicy = None,
         version: str = None,
     ):
-        # **[Deprecated]** You do not need to specify this parameter.
+        # **[Deprecated]** Do not specify this parameter.
         self.component_name = component_name
-        # Specifies whether to upgrade only the control plane.
-        # 
+        # Specifies whether to upgrade only the control plane. Valid values:
         # - true: Upgrades only the control plane.
-        # - false: Upgrades both the control plane and worker nodes.
+        # - false: Upgrades the control plane and worker nodes.
         self.master_only = master_only
         # The target version for the cluster upgrade.
         self.next_version = next_version
-        # The rolling upgrade configuration.
+        # The rolling update configuration.
         self.rolling_policy = rolling_policy
-        # **[Deprecated]** Use the `next_version` parameter instead.
+        # **[Deprecated]** Use the next_version parameter instead.
         self.version = version
 
     def validate(self):
@@ -81,7 +80,7 @@ class UpgradeClusterRequestRollingPolicy(DaraModel):
     ):
         # The maximum number of worker nodes that can be upgraded in parallel per batch.
         # 
-        # During the worker node upgrade, nodes are upgraded in batches based on the specified maximum parallelism. The number of nodes upgraded in each batch increases as follows: 1, 2, 4, 8, and so on until the maximum parallelism is reached. After the maximum parallelism is reached, each subsequent batch upgrades the maximum number of nodes.
+        # During the worker node upgrade process, nodes are upgraded in sequence based on the specified maximum parallelism. The number of nodes upgraded in each batch increases in the sequence of 1, 2, 4, 8, and so on, until the maximum parallelism is reached. After the maximum parallelism is reached, each subsequent batch upgrades the maximum number of nodes in parallel.
         self.max_parallelism = max_parallelism
 
     def validate(self):

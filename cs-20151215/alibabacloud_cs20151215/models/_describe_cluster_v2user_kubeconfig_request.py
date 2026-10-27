@@ -10,6 +10,7 @@ class DescribeClusterV2UserKubeconfigRequest(DaraModel):
         private_ip_address: bool = None,
         temporary_duration_minutes: int = None,
     ):
+        # Specifies whether to access the cluster over the internal network.
         self.private_ip_address = private_ip_address
         self.temporary_duration_minutes = temporary_duration_minutes
 
