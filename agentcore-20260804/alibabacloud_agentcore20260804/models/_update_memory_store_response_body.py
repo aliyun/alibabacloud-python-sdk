@@ -102,7 +102,7 @@ class UpdateMemoryStoreResponseBodyData(DaraModel):
         self.memory_store_id = memory_store_id
         # The MemoryStore name. It cannot be modified after creation.
         self.memory_store_name = memory_store_name
-        # The lifecycle state of the MemoryStore.
+        # The lifecycle status of the MemoryStore.
         self.status = status
         # The last updated time.
         self.updated_at = updated_at

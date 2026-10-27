@@ -9,7 +9,7 @@ class AddMemoriesShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
-        # The memory write request.
+        # The request body for writing to memory.
         # 
         # This parameter is required.
         self.body_shrink = body_shrink

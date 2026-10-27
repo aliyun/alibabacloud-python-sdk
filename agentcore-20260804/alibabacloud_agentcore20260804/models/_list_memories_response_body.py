@@ -23,7 +23,7 @@ class ListMemoriesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The memory list.
+        # The list of memory records.
         self.items = items
         # The maximum number of records per page.
         self.max_results = max_results

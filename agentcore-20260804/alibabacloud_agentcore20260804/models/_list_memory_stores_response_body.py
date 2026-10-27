@@ -129,13 +129,13 @@ class ListMemoryStoresResponseBodyItems(DaraModel):
     ):
         # The creation time.
         self.created_at = created_at
-        # The description of the MemoryStore.
+        # The MemoryStore description.
         self.description = description
         # The custom extraction instructions.
         self.extract_instructions = extract_instructions
         # The MemoryStore ID.
         self.memory_store_id = memory_store_id
-        # The name of the MemoryStore. It cannot be modified after creation.
+        # The MemoryStore name. It cannot be modified after creation.
         self.memory_store_name = memory_store_name
         # The lifecycle state of the MemoryStore.
         self.status = status

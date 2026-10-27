@@ -51,6 +51,12 @@ from ._create_identity_provider_request import CreateIdentityProviderRequest
 from ._create_identity_provider_shrink_request import CreateIdentityProviderShrinkRequest
 from ._create_identity_provider_response_body import CreateIdentityProviderResponseBody
 from ._create_identity_provider_response import CreateIdentityProviderResponse
+from ._create_identity_provider_scimcredential_request import CreateIdentityProviderSCIMCredentialRequest
+from ._create_identity_provider_scimcredential_response_body import CreateIdentityProviderSCIMCredentialResponseBody
+from ._create_identity_provider_scimcredential_response import CreateIdentityProviderSCIMCredentialResponse
+from ._create_identity_provider_sync_job_request import CreateIdentityProviderSyncJobRequest
+from ._create_identity_provider_sync_job_response_body import CreateIdentityProviderSyncJobResponseBody
+from ._create_identity_provider_sync_job_response import CreateIdentityProviderSyncJobResponse
 from ._create_image_cache_request import CreateImageCacheRequest
 from ._create_image_cache_shrink_request import CreateImageCacheShrinkRequest
 from ._create_image_cache_response_body import CreateImageCacheResponseBody
@@ -116,6 +122,9 @@ from ._delete_external_agent_response import DeleteExternalAgentResponse
 from ._delete_identity_provider_request import DeleteIdentityProviderRequest
 from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBody
 from ._delete_identity_provider_response import DeleteIdentityProviderResponse
+from ._delete_identity_provider_scimcredential_request import DeleteIdentityProviderSCIMCredentialRequest
+from ._delete_identity_provider_scimcredential_response_body import DeleteIdentityProviderSCIMCredentialResponseBody
+from ._delete_identity_provider_scimcredential_response import DeleteIdentityProviderSCIMCredentialResponse
 from ._delete_image_cache_request import DeleteImageCacheRequest
 from ._delete_image_cache_response_body import DeleteImageCacheResponseBody
 from ._delete_image_cache_response import DeleteImageCacheResponse
@@ -169,6 +178,16 @@ from ._force_publish_skill_version_request import ForcePublishSkillVersionReques
 from ._force_publish_skill_version_shrink_request import ForcePublishSkillVersionShrinkRequest
 from ._force_publish_skill_version_response_body import ForcePublishSkillVersionResponseBody
 from ._force_publish_skill_version_response import ForcePublishSkillVersionResponse
+from ._get_agent_code_package_download_url_request import GetAgentCodePackageDownloadUrlRequest
+from ._get_agent_code_package_download_url_response_body import GetAgentCodePackageDownloadUrlResponseBody
+from ._get_agent_code_package_download_url_response import GetAgentCodePackageDownloadUrlResponse
+from ._get_agent_code_package_oss_ram_authorize_url_request import GetAgentCodePackageOssRamAuthorizeUrlRequest
+from ._get_agent_code_package_oss_ram_authorize_url_response_body import GetAgentCodePackageOssRamAuthorizeUrlResponseBody
+from ._get_agent_code_package_oss_ram_authorize_url_response import GetAgentCodePackageOssRamAuthorizeUrlResponse
+from ._get_agent_code_package_upload_url_request import GetAgentCodePackageUploadUrlRequest
+from ._get_agent_code_package_upload_url_shrink_request import GetAgentCodePackageUploadUrlShrinkRequest
+from ._get_agent_code_package_upload_url_response_body import GetAgentCodePackageUploadUrlResponseBody
+from ._get_agent_code_package_upload_url_response import GetAgentCodePackageUploadUrlResponse
 from ._get_agent_imchannel_request import GetAgentIMChannelRequest
 from ._get_agent_imchannel_response_body import GetAgentIMChannelResponseBody
 from ._get_agent_imchannel_response import GetAgentIMChannelResponse
@@ -199,6 +218,18 @@ from ._get_external_agent_bootstrap_options_response import GetExternalAgentBoot
 from ._get_identity_provider_request import GetIdentityProviderRequest
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBody
 from ._get_identity_provider_response import GetIdentityProviderResponse
+from ._get_identity_provider_scimrequest import GetIdentityProviderSCIMRequest
+from ._get_identity_provider_scimresponse_body import GetIdentityProviderSCIMResponseBody
+from ._get_identity_provider_scimresponse import GetIdentityProviderSCIMResponse
+from ._get_identity_provider_service_provider_request import GetIdentityProviderServiceProviderRequest
+from ._get_identity_provider_service_provider_response_body import GetIdentityProviderServiceProviderResponseBody
+from ._get_identity_provider_service_provider_response import GetIdentityProviderServiceProviderResponse
+from ._get_identity_provider_sync_job_request import GetIdentityProviderSyncJobRequest
+from ._get_identity_provider_sync_job_response_body import GetIdentityProviderSyncJobResponseBody
+from ._get_identity_provider_sync_job_response import GetIdentityProviderSyncJobResponse
+from ._get_identity_provider_sync_scope_request import GetIdentityProviderSyncScopeRequest
+from ._get_identity_provider_sync_scope_response_body import GetIdentityProviderSyncScopeResponseBody
+from ._get_identity_provider_sync_scope_response import GetIdentityProviderSyncScopeResponse
 from ._get_image_cache_request import GetImageCacheRequest
 from ._get_image_cache_response_body import GetImageCacheResponseBody
 from ._get_image_cache_response import GetImageCacheResponse
@@ -267,6 +298,9 @@ from ._install_workspace_plugin_request import InstallWorkspacePluginRequest
 from ._install_workspace_plugin_shrink_request import InstallWorkspacePluginShrinkRequest
 from ._install_workspace_plugin_response_body import InstallWorkspacePluginResponseBody
 from ._install_workspace_plugin_response import InstallWorkspacePluginResponse
+from ._list_agent_code_runtimes_request import ListAgentCodeRuntimesRequest
+from ._list_agent_code_runtimes_response_body import ListAgentCodeRuntimesResponseBody
+from ._list_agent_code_runtimes_response import ListAgentCodeRuntimesResponse
 from ._list_agent_imchannels_request import ListAgentIMChannelsRequest
 from ._list_agent_imchannels_response_body import ListAgentIMChannelsResponseBody
 from ._list_agent_imchannels_response import ListAgentIMChannelsResponse
@@ -292,6 +326,12 @@ from ._list_custom_agents_response import ListCustomAgentsResponse
 from ._list_external_agents_request import ListExternalAgentsRequest
 from ._list_external_agents_response_body import ListExternalAgentsResponseBody
 from ._list_external_agents_response import ListExternalAgentsResponse
+from ._list_identity_provider_departments_request import ListIdentityProviderDepartmentsRequest
+from ._list_identity_provider_departments_response_body import ListIdentityProviderDepartmentsResponseBody
+from ._list_identity_provider_departments_response import ListIdentityProviderDepartmentsResponse
+from ._list_identity_provider_scimcredentials_request import ListIdentityProviderSCIMCredentialsRequest
+from ._list_identity_provider_scimcredentials_response_body import ListIdentityProviderSCIMCredentialsResponseBody
+from ._list_identity_provider_scimcredentials_response import ListIdentityProviderSCIMCredentialsResponse
 from ._list_identity_providers_request import ListIdentityProvidersRequest
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBody
 from ._list_identity_providers_response import ListIdentityProvidersResponse
@@ -370,6 +410,9 @@ from ._precheck_skill_upload_via_oss_request import PrecheckSkillUploadViaOssReq
 from ._precheck_skill_upload_via_oss_shrink_request import PrecheckSkillUploadViaOssShrinkRequest
 from ._precheck_skill_upload_via_oss_response_body import PrecheckSkillUploadViaOssResponseBody
 from ._precheck_skill_upload_via_oss_response import PrecheckSkillUploadViaOssResponse
+from ._prepare_identity_provider_scimrequest import PrepareIdentityProviderSCIMRequest
+from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBody
+from ._prepare_identity_provider_scimresponse import PrepareIdentityProviderSCIMResponse
 from ._publish_skill_version_request import PublishSkillVersionRequest
 from ._publish_skill_version_shrink_request import PublishSkillVersionShrinkRequest
 from ._publish_skill_version_response_body import PublishSkillVersionResponseBody
@@ -430,6 +473,10 @@ from ._update_identity_provider_request import UpdateIdentityProviderRequest
 from ._update_identity_provider_shrink_request import UpdateIdentityProviderShrinkRequest
 from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBody
 from ._update_identity_provider_response import UpdateIdentityProviderResponse
+from ._update_identity_provider_scimrequest import UpdateIdentityProviderSCIMRequest
+from ._update_identity_provider_scimshrink_request import UpdateIdentityProviderSCIMShrinkRequest
+from ._update_identity_provider_scimresponse_body import UpdateIdentityProviderSCIMResponseBody
+from ._update_identity_provider_scimresponse import UpdateIdentityProviderSCIMResponse
 from ._update_managed_agent_request import UpdateManagedAgentRequest
 from ._update_managed_agent_shrink_request import UpdateManagedAgentShrinkRequest
 from ._update_managed_agent_response_body import UpdateManagedAgentResponseBody
@@ -490,6 +537,13 @@ from ._upload_skill_via_oss_request import UploadSkillViaOssRequest
 from ._upload_skill_via_oss_shrink_request import UploadSkillViaOssShrinkRequest
 from ._upload_skill_via_oss_response_body import UploadSkillViaOssResponseBody
 from ._upload_skill_via_oss_response import UploadSkillViaOssResponse
+from ._validate_agent_code_package_from_oss_request import ValidateAgentCodePackageFromOssRequest
+from ._validate_agent_code_package_from_oss_shrink_request import ValidateAgentCodePackageFromOssShrinkRequest
+from ._validate_agent_code_package_from_oss_response_body import ValidateAgentCodePackageFromOssResponseBody
+from ._validate_agent_code_package_from_oss_response import ValidateAgentCodePackageFromOssResponse
+from ._verify_agent_code_package_oss_ram_authorization_request import VerifyAgentCodePackageOssRamAuthorizationRequest
+from ._verify_agent_code_package_oss_ram_authorization_response_body import VerifyAgentCodePackageOssRamAuthorizationResponseBody
+from ._verify_agent_code_package_oss_ram_authorization_response import VerifyAgentCodePackageOssRamAuthorizationResponse
 from ._verify_connector_request import VerifyConnectorRequest
 from ._verify_connector_shrink_request import VerifyConnectorShrinkRequest
 from ._verify_connector_response_body import VerifyConnectorResponseBody
@@ -569,6 +623,7 @@ from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDat
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataArtifactCode
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataArtifactContainer
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataArtifact
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataCodePackageInfo
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataEnvironmentVariables
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataEnvironment
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataHealthCheck
@@ -610,8 +665,16 @@ from ._create_external_agent_response_body import CreateExternalAgentResponseBod
 from ._create_external_agent_bootstrap_token_response_body import CreateExternalAgentBootstrapTokenResponseBodyDataCms
 from ._create_external_agent_bootstrap_token_response_body import CreateExternalAgentBootstrapTokenResponseBodyData
 from ._create_identity_provider_request import CreateIdentityProviderRequestBodyMetadata
+from ._create_identity_provider_request import CreateIdentityProviderRequestBodySyncScope
 from ._create_identity_provider_request import CreateIdentityProviderRequestBody
+from ._create_identity_provider_response_body import CreateIdentityProviderResponseBodyDataConfiguration
+from ._create_identity_provider_response_body import CreateIdentityProviderResponseBodyDataSaml
+from ._create_identity_provider_response_body import CreateIdentityProviderResponseBodyDataSyncScope
 from ._create_identity_provider_response_body import CreateIdentityProviderResponseBodyData
+from ._create_identity_provider_scimcredential_response_body import CreateIdentityProviderSCIMCredentialResponseBodyDataConfiguration
+from ._create_identity_provider_scimcredential_response_body import CreateIdentityProviderSCIMCredentialResponseBodyDataCredential
+from ._create_identity_provider_scimcredential_response_body import CreateIdentityProviderSCIMCredentialResponseBodyData
+from ._create_identity_provider_sync_job_response_body import CreateIdentityProviderSyncJobResponseBodyData
 from ._create_image_cache_request import CreateImageCacheRequestBody
 from ._create_image_cache_response_body import CreateImageCacheResponseBodyDataError
 from ._create_image_cache_response_body import CreateImageCacheResponseBodyData
@@ -740,6 +803,8 @@ from ._debug_model_response_body import DebugModelResponseBodyData
 from ._delete_credential_response_body import DeleteCredentialResponseBodyData
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyData
 from ._delete_external_agent_response_body import DeleteExternalAgentResponseBodyData
+from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBodyDataConfiguration
+from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBodyDataSaml
 from ._delete_identity_provider_response_body import DeleteIdentityProviderResponseBodyData
 from ._delete_image_cache_response_body import DeleteImageCacheResponseBodyData
 from ._delete_managed_agent_response_body import DeleteManagedAgentResponseBodyData
@@ -753,6 +818,10 @@ from ._disable_connector_response_body import DisableConnectorResponseBodyData
 from ._enable_connector_request import EnableConnectorRequestBody
 from ._enable_connector_response_body import EnableConnectorResponseBodyData
 from ._force_publish_skill_version_request import ForcePublishSkillVersionRequestBody
+from ._get_agent_code_package_download_url_response_body import GetAgentCodePackageDownloadUrlResponseBodyData
+from ._get_agent_code_package_oss_ram_authorize_url_response_body import GetAgentCodePackageOssRamAuthorizeUrlResponseBodyData
+from ._get_agent_code_package_upload_url_request import GetAgentCodePackageUploadUrlRequestBody
+from ._get_agent_code_package_upload_url_response_body import GetAgentCodePackageUploadUrlResponseBodyData
 from ._get_agent_imchannel_response_body import GetAgentIMChannelResponseBodyDataChannelConfig
 from ._get_agent_imchannel_response_body import GetAgentIMChannelResponseBodyDataCredentialSummary
 from ._get_agent_imchannel_response_body import GetAgentIMChannelResponseBodyData
@@ -771,6 +840,7 @@ from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataAgent
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataArtifactCode
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataArtifactContainer
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataArtifact
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataCodePackageInfo
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataEnvironmentVariables
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataEnvironment
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodyDataHealthCheck
@@ -802,8 +872,18 @@ from ._get_external_agent_response_body import GetExternalAgentResponseBodyDataT
 from ._get_external_agent_response_body import GetExternalAgentResponseBodyData
 from ._get_external_agent_bootstrap_options_response_body import GetExternalAgentBootstrapOptionsResponseBodyDataNetworkOptions
 from ._get_external_agent_bootstrap_options_response_body import GetExternalAgentBootstrapOptionsResponseBodyData
+from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyDataConfiguration
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyDataMetadata
+from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyDataSaml
+from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyDataSyncScope
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyData
+from ._get_identity_provider_scimresponse_body import GetIdentityProviderSCIMResponseBodyDataConfiguration
+from ._get_identity_provider_scimresponse_body import GetIdentityProviderSCIMResponseBodyData
+from ._get_identity_provider_service_provider_response_body import GetIdentityProviderServiceProviderResponseBodyData
+from ._get_identity_provider_sync_job_response_body import GetIdentityProviderSyncJobResponseBodyData
+from ._get_identity_provider_sync_scope_response_body import GetIdentityProviderSyncScopeResponseBodyDataSelectedDepartments
+from ._get_identity_provider_sync_scope_response_body import GetIdentityProviderSyncScopeResponseBodyDataSyncScope
+from ._get_identity_provider_sync_scope_response_body import GetIdentityProviderSyncScopeResponseBodyData
 from ._get_image_cache_response_body import GetImageCacheResponseBodyDataError
 from ._get_image_cache_response_body import GetImageCacheResponseBodyData
 from ._get_managed_agent_response_body import GetManagedAgentResponseBodyDataAgenticFsMounts
@@ -938,6 +1018,7 @@ from ._install_workspace_plugin_request import InstallWorkspacePluginRequestBody
 from ._install_workspace_plugin_request import InstallWorkspacePluginRequestBodyConfig
 from ._install_workspace_plugin_request import InstallWorkspacePluginRequestBody
 from ._install_workspace_plugin_response_body import InstallWorkspacePluginResponseBodyData
+from ._list_agent_code_runtimes_response_body import ListAgentCodeRuntimesResponseBodyItems
 from ._list_agent_imchannels_response_body import ListAgentIMChannelsResponseBodyItemsChannelConfig
 from ._list_agent_imchannels_response_body import ListAgentIMChannelsResponseBodyItemsCredentialSummary
 from ._list_agent_imchannels_response_body import ListAgentIMChannelsResponseBodyItems
@@ -952,11 +1033,20 @@ from ._list_connector_models_response_body import ListConnectorModelsResponseBod
 from ._list_connectors_response_body import ListConnectorsResponseBodyItems
 from ._list_credentials_response_body import ListCredentialsResponseBodyItemsResourceRefs
 from ._list_credentials_response_body import ListCredentialsResponseBodyItems
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItemsArtifactCode
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItemsArtifactContainer
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItemsArtifact
+from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItemsCodePackageInfo
 from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItemsProtocolPaths
 from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItemsProtocol
 from ._list_custom_agents_response_body import ListCustomAgentsResponseBodyItems
 from ._list_external_agents_response_body import ListExternalAgentsResponseBodyItems
+from ._list_identity_provider_departments_response_body import ListIdentityProviderDepartmentsResponseBodyItems
+from ._list_identity_provider_scimcredentials_response_body import ListIdentityProviderSCIMCredentialsResponseBodyData
+from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItemsConfiguration
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItemsMetadata
+from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItemsSaml
+from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItemsSyncScope
 from ._list_identity_providers_response_body import ListIdentityProvidersResponseBodyItems
 from ._list_image_caches_response_body import ListImageCachesResponseBodyItemsError
 from ._list_image_caches_response_body import ListImageCachesResponseBodyItems
@@ -1022,6 +1112,9 @@ from ._offline_skill_request import OfflineSkillRequestBody
 from ._online_skill_request import OnlineSkillRequestBody
 from ._precheck_skill_upload_via_oss_request import PrecheckSkillUploadViaOssRequestBody
 from ._precheck_skill_upload_via_oss_response_body import PrecheckSkillUploadViaOssResponseBodyData
+from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBodyDataConfiguration
+from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBodyDataCredential
+from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBodyData
 from ._publish_skill_version_request import PublishSkillVersionRequestBody
 from ._redraft_skill_version_request import RedraftSkillVersionRequestBody
 from ._reset_user_password_request import ResetUserPasswordRequestBody
@@ -1077,6 +1170,7 @@ from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDat
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataArtifactCode
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataArtifactContainer
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataArtifact
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataCodePackageInfo
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataEnvironmentVariables
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataEnvironment
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodyDataHealthCheck
@@ -1116,8 +1210,18 @@ from ._update_external_agent_response_body import UpdateExternalAgentResponseBod
 from ._update_external_agent_response_body import UpdateExternalAgentResponseBodyDataTools
 from ._update_external_agent_response_body import UpdateExternalAgentResponseBodyData
 from ._update_identity_provider_request import UpdateIdentityProviderRequestBodyMetadata
+from ._update_identity_provider_request import UpdateIdentityProviderRequestBodySaml
+from ._update_identity_provider_request import UpdateIdentityProviderRequestBodySyncScope
 from ._update_identity_provider_request import UpdateIdentityProviderRequestBody
+from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBodyDataConfiguration
+from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBodyDataSaml
+from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBodyDataSyncScope
 from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBodyData
+from ._update_identity_provider_scimrequest import UpdateIdentityProviderSCIMRequestBody
+from ._update_identity_provider_scimresponse_body import UpdateIdentityProviderSCIMResponseBodyDataConfiguration
+from ._update_identity_provider_scimresponse_body import UpdateIdentityProviderSCIMResponseBodyDataMetadata
+from ._update_identity_provider_scimresponse_body import UpdateIdentityProviderSCIMResponseBodyDataSaml
+from ._update_identity_provider_scimresponse_body import UpdateIdentityProviderSCIMResponseBodyData
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyAgenticFsMounts
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironmentCredentialReferences
 from ._update_managed_agent_request import UpdateManagedAgentRequestBodyEnvironmentVariables
@@ -1262,6 +1366,9 @@ from ._update_workspace_response_body import UpdateWorkspaceResponseBodyDataNetw
 from ._update_workspace_response_body import UpdateWorkspaceResponseBodyData
 from ._upload_agent_spec_via_oss_request import UploadAgentSpecViaOssRequestBody
 from ._upload_skill_via_oss_request import UploadSkillViaOssRequestBody
+from ._validate_agent_code_package_from_oss_request import ValidateAgentCodePackageFromOssRequestBody
+from ._validate_agent_code_package_from_oss_response_body import ValidateAgentCodePackageFromOssResponseBodyData
+from ._verify_agent_code_package_oss_ram_authorization_response_body import VerifyAgentCodePackageOssRamAuthorizationResponseBodyData
 from ._verify_connector_request import VerifyConnectorRequestBody
 from ._verify_connector_response_body import VerifyConnectorResponseBodyData
 from ._verify_workspace_acr_ram_authorization_response_body import VerifyWorkspaceAcrRamAuthorizationResponseBodyData
@@ -1318,6 +1425,12 @@ __all__ = [
     CreateIdentityProviderShrinkRequest,
     CreateIdentityProviderResponseBody,
     CreateIdentityProviderResponse,
+    CreateIdentityProviderSCIMCredentialRequest,
+    CreateIdentityProviderSCIMCredentialResponseBody,
+    CreateIdentityProviderSCIMCredentialResponse,
+    CreateIdentityProviderSyncJobRequest,
+    CreateIdentityProviderSyncJobResponseBody,
+    CreateIdentityProviderSyncJobResponse,
     CreateImageCacheRequest,
     CreateImageCacheShrinkRequest,
     CreateImageCacheResponseBody,
@@ -1383,6 +1496,9 @@ __all__ = [
     DeleteIdentityProviderRequest,
     DeleteIdentityProviderResponseBody,
     DeleteIdentityProviderResponse,
+    DeleteIdentityProviderSCIMCredentialRequest,
+    DeleteIdentityProviderSCIMCredentialResponseBody,
+    DeleteIdentityProviderSCIMCredentialResponse,
     DeleteImageCacheRequest,
     DeleteImageCacheResponseBody,
     DeleteImageCacheResponse,
@@ -1436,6 +1552,16 @@ __all__ = [
     ForcePublishSkillVersionShrinkRequest,
     ForcePublishSkillVersionResponseBody,
     ForcePublishSkillVersionResponse,
+    GetAgentCodePackageDownloadUrlRequest,
+    GetAgentCodePackageDownloadUrlResponseBody,
+    GetAgentCodePackageDownloadUrlResponse,
+    GetAgentCodePackageOssRamAuthorizeUrlRequest,
+    GetAgentCodePackageOssRamAuthorizeUrlResponseBody,
+    GetAgentCodePackageOssRamAuthorizeUrlResponse,
+    GetAgentCodePackageUploadUrlRequest,
+    GetAgentCodePackageUploadUrlShrinkRequest,
+    GetAgentCodePackageUploadUrlResponseBody,
+    GetAgentCodePackageUploadUrlResponse,
     GetAgentIMChannelRequest,
     GetAgentIMChannelResponseBody,
     GetAgentIMChannelResponse,
@@ -1466,6 +1592,18 @@ __all__ = [
     GetIdentityProviderRequest,
     GetIdentityProviderResponseBody,
     GetIdentityProviderResponse,
+    GetIdentityProviderSCIMRequest,
+    GetIdentityProviderSCIMResponseBody,
+    GetIdentityProviderSCIMResponse,
+    GetIdentityProviderServiceProviderRequest,
+    GetIdentityProviderServiceProviderResponseBody,
+    GetIdentityProviderServiceProviderResponse,
+    GetIdentityProviderSyncJobRequest,
+    GetIdentityProviderSyncJobResponseBody,
+    GetIdentityProviderSyncJobResponse,
+    GetIdentityProviderSyncScopeRequest,
+    GetIdentityProviderSyncScopeResponseBody,
+    GetIdentityProviderSyncScopeResponse,
     GetImageCacheRequest,
     GetImageCacheResponseBody,
     GetImageCacheResponse,
@@ -1534,6 +1672,9 @@ __all__ = [
     InstallWorkspacePluginShrinkRequest,
     InstallWorkspacePluginResponseBody,
     InstallWorkspacePluginResponse,
+    ListAgentCodeRuntimesRequest,
+    ListAgentCodeRuntimesResponseBody,
+    ListAgentCodeRuntimesResponse,
     ListAgentIMChannelsRequest,
     ListAgentIMChannelsResponseBody,
     ListAgentIMChannelsResponse,
@@ -1559,6 +1700,12 @@ __all__ = [
     ListExternalAgentsRequest,
     ListExternalAgentsResponseBody,
     ListExternalAgentsResponse,
+    ListIdentityProviderDepartmentsRequest,
+    ListIdentityProviderDepartmentsResponseBody,
+    ListIdentityProviderDepartmentsResponse,
+    ListIdentityProviderSCIMCredentialsRequest,
+    ListIdentityProviderSCIMCredentialsResponseBody,
+    ListIdentityProviderSCIMCredentialsResponse,
     ListIdentityProvidersRequest,
     ListIdentityProvidersResponseBody,
     ListIdentityProvidersResponse,
@@ -1637,6 +1784,9 @@ __all__ = [
     PrecheckSkillUploadViaOssShrinkRequest,
     PrecheckSkillUploadViaOssResponseBody,
     PrecheckSkillUploadViaOssResponse,
+    PrepareIdentityProviderSCIMRequest,
+    PrepareIdentityProviderSCIMResponseBody,
+    PrepareIdentityProviderSCIMResponse,
     PublishSkillVersionRequest,
     PublishSkillVersionShrinkRequest,
     PublishSkillVersionResponseBody,
@@ -1697,6 +1847,10 @@ __all__ = [
     UpdateIdentityProviderShrinkRequest,
     UpdateIdentityProviderResponseBody,
     UpdateIdentityProviderResponse,
+    UpdateIdentityProviderSCIMRequest,
+    UpdateIdentityProviderSCIMShrinkRequest,
+    UpdateIdentityProviderSCIMResponseBody,
+    UpdateIdentityProviderSCIMResponse,
     UpdateManagedAgentRequest,
     UpdateManagedAgentShrinkRequest,
     UpdateManagedAgentResponseBody,
@@ -1757,6 +1911,13 @@ __all__ = [
     UploadSkillViaOssShrinkRequest,
     UploadSkillViaOssResponseBody,
     UploadSkillViaOssResponse,
+    ValidateAgentCodePackageFromOssRequest,
+    ValidateAgentCodePackageFromOssShrinkRequest,
+    ValidateAgentCodePackageFromOssResponseBody,
+    ValidateAgentCodePackageFromOssResponse,
+    VerifyAgentCodePackageOssRamAuthorizationRequest,
+    VerifyAgentCodePackageOssRamAuthorizationResponseBody,
+    VerifyAgentCodePackageOssRamAuthorizationResponse,
     VerifyConnectorRequest,
     VerifyConnectorShrinkRequest,
     VerifyConnectorResponseBody,
@@ -1836,6 +1997,7 @@ __all__ = [
     CreateCustomAgentResponseBodyDataArtifactCode,
     CreateCustomAgentResponseBodyDataArtifactContainer,
     CreateCustomAgentResponseBodyDataArtifact,
+    CreateCustomAgentResponseBodyDataCodePackageInfo,
     CreateCustomAgentResponseBodyDataEnvironmentVariables,
     CreateCustomAgentResponseBodyDataEnvironment,
     CreateCustomAgentResponseBodyDataHealthCheck,
@@ -1877,8 +2039,16 @@ __all__ = [
     CreateExternalAgentBootstrapTokenResponseBodyDataCms,
     CreateExternalAgentBootstrapTokenResponseBodyData,
     CreateIdentityProviderRequestBodyMetadata,
+    CreateIdentityProviderRequestBodySyncScope,
     CreateIdentityProviderRequestBody,
+    CreateIdentityProviderResponseBodyDataConfiguration,
+    CreateIdentityProviderResponseBodyDataSaml,
+    CreateIdentityProviderResponseBodyDataSyncScope,
     CreateIdentityProviderResponseBodyData,
+    CreateIdentityProviderSCIMCredentialResponseBodyDataConfiguration,
+    CreateIdentityProviderSCIMCredentialResponseBodyDataCredential,
+    CreateIdentityProviderSCIMCredentialResponseBodyData,
+    CreateIdentityProviderSyncJobResponseBodyData,
     CreateImageCacheRequestBody,
     CreateImageCacheResponseBodyDataError,
     CreateImageCacheResponseBodyData,
@@ -2007,6 +2177,8 @@ __all__ = [
     DeleteCredentialResponseBodyData,
     DeleteCustomAgentResponseBodyData,
     DeleteExternalAgentResponseBodyData,
+    DeleteIdentityProviderResponseBodyDataConfiguration,
+    DeleteIdentityProviderResponseBodyDataSaml,
     DeleteIdentityProviderResponseBodyData,
     DeleteImageCacheResponseBodyData,
     DeleteManagedAgentResponseBodyData,
@@ -2020,6 +2192,10 @@ __all__ = [
     EnableConnectorRequestBody,
     EnableConnectorResponseBodyData,
     ForcePublishSkillVersionRequestBody,
+    GetAgentCodePackageDownloadUrlResponseBodyData,
+    GetAgentCodePackageOssRamAuthorizeUrlResponseBodyData,
+    GetAgentCodePackageUploadUrlRequestBody,
+    GetAgentCodePackageUploadUrlResponseBodyData,
     GetAgentIMChannelResponseBodyDataChannelConfig,
     GetAgentIMChannelResponseBodyDataCredentialSummary,
     GetAgentIMChannelResponseBodyData,
@@ -2038,6 +2214,7 @@ __all__ = [
     GetCustomAgentResponseBodyDataArtifactCode,
     GetCustomAgentResponseBodyDataArtifactContainer,
     GetCustomAgentResponseBodyDataArtifact,
+    GetCustomAgentResponseBodyDataCodePackageInfo,
     GetCustomAgentResponseBodyDataEnvironmentVariables,
     GetCustomAgentResponseBodyDataEnvironment,
     GetCustomAgentResponseBodyDataHealthCheck,
@@ -2069,8 +2246,18 @@ __all__ = [
     GetExternalAgentResponseBodyData,
     GetExternalAgentBootstrapOptionsResponseBodyDataNetworkOptions,
     GetExternalAgentBootstrapOptionsResponseBodyData,
+    GetIdentityProviderResponseBodyDataConfiguration,
     GetIdentityProviderResponseBodyDataMetadata,
+    GetIdentityProviderResponseBodyDataSaml,
+    GetIdentityProviderResponseBodyDataSyncScope,
     GetIdentityProviderResponseBodyData,
+    GetIdentityProviderSCIMResponseBodyDataConfiguration,
+    GetIdentityProviderSCIMResponseBodyData,
+    GetIdentityProviderServiceProviderResponseBodyData,
+    GetIdentityProviderSyncJobResponseBodyData,
+    GetIdentityProviderSyncScopeResponseBodyDataSelectedDepartments,
+    GetIdentityProviderSyncScopeResponseBodyDataSyncScope,
+    GetIdentityProviderSyncScopeResponseBodyData,
     GetImageCacheResponseBodyDataError,
     GetImageCacheResponseBodyData,
     GetManagedAgentResponseBodyDataAgenticFsMounts,
@@ -2205,6 +2392,7 @@ __all__ = [
     InstallWorkspacePluginRequestBodyConfig,
     InstallWorkspacePluginRequestBody,
     InstallWorkspacePluginResponseBodyData,
+    ListAgentCodeRuntimesResponseBodyItems,
     ListAgentIMChannelsResponseBodyItemsChannelConfig,
     ListAgentIMChannelsResponseBodyItemsCredentialSummary,
     ListAgentIMChannelsResponseBodyItems,
@@ -2219,11 +2407,20 @@ __all__ = [
     ListConnectorsResponseBodyItems,
     ListCredentialsResponseBodyItemsResourceRefs,
     ListCredentialsResponseBodyItems,
+    ListCustomAgentsResponseBodyItemsArtifactCode,
+    ListCustomAgentsResponseBodyItemsArtifactContainer,
+    ListCustomAgentsResponseBodyItemsArtifact,
+    ListCustomAgentsResponseBodyItemsCodePackageInfo,
     ListCustomAgentsResponseBodyItemsProtocolPaths,
     ListCustomAgentsResponseBodyItemsProtocol,
     ListCustomAgentsResponseBodyItems,
     ListExternalAgentsResponseBodyItems,
+    ListIdentityProviderDepartmentsResponseBodyItems,
+    ListIdentityProviderSCIMCredentialsResponseBodyData,
+    ListIdentityProvidersResponseBodyItemsConfiguration,
     ListIdentityProvidersResponseBodyItemsMetadata,
+    ListIdentityProvidersResponseBodyItemsSaml,
+    ListIdentityProvidersResponseBodyItemsSyncScope,
     ListIdentityProvidersResponseBodyItems,
     ListImageCachesResponseBodyItemsError,
     ListImageCachesResponseBodyItems,
@@ -2289,6 +2486,9 @@ __all__ = [
     OnlineSkillRequestBody,
     PrecheckSkillUploadViaOssRequestBody,
     PrecheckSkillUploadViaOssResponseBodyData,
+    PrepareIdentityProviderSCIMResponseBodyDataConfiguration,
+    PrepareIdentityProviderSCIMResponseBodyDataCredential,
+    PrepareIdentityProviderSCIMResponseBodyData,
     PublishSkillVersionRequestBody,
     RedraftSkillVersionRequestBody,
     ResetUserPasswordRequestBody,
@@ -2344,6 +2544,7 @@ __all__ = [
     UpdateCustomAgentResponseBodyDataArtifactCode,
     UpdateCustomAgentResponseBodyDataArtifactContainer,
     UpdateCustomAgentResponseBodyDataArtifact,
+    UpdateCustomAgentResponseBodyDataCodePackageInfo,
     UpdateCustomAgentResponseBodyDataEnvironmentVariables,
     UpdateCustomAgentResponseBodyDataEnvironment,
     UpdateCustomAgentResponseBodyDataHealthCheck,
@@ -2383,8 +2584,18 @@ __all__ = [
     UpdateExternalAgentResponseBodyDataTools,
     UpdateExternalAgentResponseBodyData,
     UpdateIdentityProviderRequestBodyMetadata,
+    UpdateIdentityProviderRequestBodySaml,
+    UpdateIdentityProviderRequestBodySyncScope,
     UpdateIdentityProviderRequestBody,
+    UpdateIdentityProviderResponseBodyDataConfiguration,
+    UpdateIdentityProviderResponseBodyDataSaml,
+    UpdateIdentityProviderResponseBodyDataSyncScope,
     UpdateIdentityProviderResponseBodyData,
+    UpdateIdentityProviderSCIMRequestBody,
+    UpdateIdentityProviderSCIMResponseBodyDataConfiguration,
+    UpdateIdentityProviderSCIMResponseBodyDataMetadata,
+    UpdateIdentityProviderSCIMResponseBodyDataSaml,
+    UpdateIdentityProviderSCIMResponseBodyData,
     UpdateManagedAgentRequestBodyAgenticFsMounts,
     UpdateManagedAgentRequestBodyEnvironmentCredentialReferences,
     UpdateManagedAgentRequestBodyEnvironmentVariables,
@@ -2529,6 +2740,9 @@ __all__ = [
     UpdateWorkspaceResponseBodyData,
     UploadAgentSpecViaOssRequestBody,
     UploadSkillViaOssRequestBody,
+    ValidateAgentCodePackageFromOssRequestBody,
+    ValidateAgentCodePackageFromOssResponseBodyData,
+    VerifyAgentCodePackageOssRamAuthorizationResponseBodyData,
     VerifyConnectorRequestBody,
     VerifyConnectorResponseBodyData,
     VerifyWorkspaceAcrRamAuthorizationResponseBodyData,

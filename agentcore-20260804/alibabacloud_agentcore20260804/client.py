@@ -1141,6 +1141,154 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_identity_provider_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_identity_provider_scimcredential_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.CreateIdentityProviderSCIMCredentialRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateIdentityProviderSCIMCredentialResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateIdentityProviderSCIMCredential',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning/credentials',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateIdentityProviderSCIMCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_identity_provider_scimcredential_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateIdentityProviderSCIMCredentialRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateIdentityProviderSCIMCredentialResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateIdentityProviderSCIMCredential',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning/credentials',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateIdentityProviderSCIMCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_identity_provider_scimcredential(
+        self,
+        workspace_id: str,
+        request: main_models.CreateIdentityProviderSCIMCredentialRequest,
+    ) -> main_models.CreateIdentityProviderSCIMCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_identity_provider_scimcredential_with_options(workspace_id, request, headers, runtime)
+
+    async def create_identity_provider_scimcredential_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateIdentityProviderSCIMCredentialRequest,
+    ) -> main_models.CreateIdentityProviderSCIMCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_identity_provider_scimcredential_with_options_async(workspace_id, request, headers, runtime)
+
+    def create_identity_provider_sync_job_with_options(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.CreateIdentityProviderSyncJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateIdentityProviderSyncJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateIdentityProviderSyncJob',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/sync-jobs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateIdentityProviderSyncJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_identity_provider_sync_job_with_options_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.CreateIdentityProviderSyncJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateIdentityProviderSyncJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateIdentityProviderSyncJob',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/sync-jobs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateIdentityProviderSyncJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_identity_provider_sync_job(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.CreateIdentityProviderSyncJobRequest,
+    ) -> main_models.CreateIdentityProviderSyncJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_identity_provider_sync_job_with_options(workspace_id, identity_provider_type, request, headers, runtime)
+
+    async def create_identity_provider_sync_job_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.CreateIdentityProviderSyncJobRequest,
+    ) -> main_models.CreateIdentityProviderSyncJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_identity_provider_sync_job_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
+
     def create_image_cache_with_options(
         self,
         tmp_req: main_models.CreateImageCacheRequest,
@@ -2745,6 +2893,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_identity_provider_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
 
+    def delete_identity_provider_scimcredential_with_options(
+        self,
+        workspace_id: str,
+        credential_id: str,
+        request: main_models.DeleteIdentityProviderSCIMCredentialRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteIdentityProviderSCIMCredentialResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteIdentityProviderSCIMCredential',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning/credentials/{DaraURL.percent_encode(credential_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteIdentityProviderSCIMCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_identity_provider_scimcredential_with_options_async(
+        self,
+        workspace_id: str,
+        credential_id: str,
+        request: main_models.DeleteIdentityProviderSCIMCredentialRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteIdentityProviderSCIMCredentialResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteIdentityProviderSCIMCredential',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning/credentials/{DaraURL.percent_encode(credential_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteIdentityProviderSCIMCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_identity_provider_scimcredential(
+        self,
+        workspace_id: str,
+        credential_id: str,
+        request: main_models.DeleteIdentityProviderSCIMCredentialRequest,
+    ) -> main_models.DeleteIdentityProviderSCIMCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_identity_provider_scimcredential_with_options(workspace_id, credential_id, request, headers, runtime)
+
+    async def delete_identity_provider_scimcredential_async(
+        self,
+        workspace_id: str,
+        credential_id: str,
+        request: main_models.DeleteIdentityProviderSCIMCredentialRequest,
+    ) -> main_models.DeleteIdentityProviderSCIMCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_identity_provider_scimcredential_with_options_async(workspace_id, credential_id, request, headers, runtime)
+
     def delete_image_cache_with_options(
         self,
         image_id: str,
@@ -4125,6 +4349,250 @@ class Client(OpenApiClient):
         headers = {}
         return await self.force_publish_skill_version_with_options_async(workspace_id, skill_name, skill_version, request, headers, runtime)
 
+    def get_agent_code_package_download_url_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetAgentCodePackageDownloadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentCodePackageDownloadUrlResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentCodePackageDownloadUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}/code-package/download-url',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentCodePackageDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_code_package_download_url_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetAgentCodePackageDownloadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentCodePackageDownloadUrlResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentCodePackageDownloadUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}/code-package/download-url',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentCodePackageDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_code_package_download_url(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetAgentCodePackageDownloadUrlRequest,
+    ) -> main_models.GetAgentCodePackageDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_agent_code_package_download_url_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def get_agent_code_package_download_url_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.GetAgentCodePackageDownloadUrlRequest,
+    ) -> main_models.GetAgentCodePackageDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_agent_code_package_download_url_with_options_async(workspace_id, agent_id, request, headers, runtime)
+
+    def get_agent_code_package_oss_ram_authorize_url_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetAgentCodePackageOssRamAuthorizeUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentCodePackageOssRamAuthorizeUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.oss_bucket_name):
+            query['ossBucketName'] = request.oss_bucket_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentCodePackageOssRamAuthorizeUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-packages/oss/authorize',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentCodePackageOssRamAuthorizeUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_code_package_oss_ram_authorize_url_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetAgentCodePackageOssRamAuthorizeUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentCodePackageOssRamAuthorizeUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.oss_bucket_name):
+            query['ossBucketName'] = request.oss_bucket_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentCodePackageOssRamAuthorizeUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-packages/oss/authorize',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentCodePackageOssRamAuthorizeUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_code_package_oss_ram_authorize_url(
+        self,
+        workspace_id: str,
+        request: main_models.GetAgentCodePackageOssRamAuthorizeUrlRequest,
+    ) -> main_models.GetAgentCodePackageOssRamAuthorizeUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_agent_code_package_oss_ram_authorize_url_with_options(workspace_id, request, headers, runtime)
+
+    async def get_agent_code_package_oss_ram_authorize_url_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetAgentCodePackageOssRamAuthorizeUrlRequest,
+    ) -> main_models.GetAgentCodePackageOssRamAuthorizeUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_agent_code_package_oss_ram_authorize_url_with_options_async(workspace_id, request, headers, runtime)
+
+    def get_agent_code_package_upload_url_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.GetAgentCodePackageUploadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentCodePackageUploadUrlResponse:
+        tmp_req.validate()
+        request = main_models.GetAgentCodePackageUploadUrlShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentCodePackageUploadUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-packages/upload-url',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentCodePackageUploadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_code_package_upload_url_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.GetAgentCodePackageUploadUrlRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentCodePackageUploadUrlResponse:
+        tmp_req.validate()
+        request = main_models.GetAgentCodePackageUploadUrlShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentCodePackageUploadUrl',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-packages/upload-url',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentCodePackageUploadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_code_package_upload_url(
+        self,
+        workspace_id: str,
+        request: main_models.GetAgentCodePackageUploadUrlRequest,
+    ) -> main_models.GetAgentCodePackageUploadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_agent_code_package_upload_url_with_options(workspace_id, request, headers, runtime)
+
+    async def get_agent_code_package_upload_url_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetAgentCodePackageUploadUrlRequest,
+    ) -> main_models.GetAgentCodePackageUploadUrlResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_agent_code_package_upload_url_with_options_async(workspace_id, request, headers, runtime)
+
     def get_agent_imchannel_with_options(
         self,
         workspace_id: str,
@@ -4896,6 +5364,318 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_identity_provider_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
+
+    def get_identity_provider_scimwith_options(
+        self,
+        workspace_id: str,
+        request: main_models.GetIdentityProviderSCIMRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderSCIMResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderSCIM',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderSCIMResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_scimwith_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetIdentityProviderSCIMRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderSCIMResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderSCIM',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderSCIMResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider_scim(
+        self,
+        workspace_id: str,
+        request: main_models.GetIdentityProviderSCIMRequest,
+    ) -> main_models.GetIdentityProviderSCIMResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_identity_provider_scimwith_options(workspace_id, request, headers, runtime)
+
+    async def get_identity_provider_scim_async(
+        self,
+        workspace_id: str,
+        request: main_models.GetIdentityProviderSCIMRequest,
+    ) -> main_models.GetIdentityProviderSCIMResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_identity_provider_scimwith_options_async(workspace_id, request, headers, runtime)
+
+    def get_identity_provider_service_provider_with_options(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.GetIdentityProviderServiceProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderServiceProviderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.protocol):
+            query['protocol'] = request.protocol
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderServiceProvider',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/service-provider',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderServiceProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_service_provider_with_options_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.GetIdentityProviderServiceProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderServiceProviderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.protocol):
+            query['protocol'] = request.protocol
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderServiceProvider',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/service-provider',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderServiceProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider_service_provider(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.GetIdentityProviderServiceProviderRequest,
+    ) -> main_models.GetIdentityProviderServiceProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_identity_provider_service_provider_with_options(workspace_id, identity_provider_type, request, headers, runtime)
+
+    async def get_identity_provider_service_provider_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.GetIdentityProviderServiceProviderRequest,
+    ) -> main_models.GetIdentityProviderServiceProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_identity_provider_service_provider_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
+
+    def get_identity_provider_sync_job_with_options(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        task_id: str,
+        request: main_models.GetIdentityProviderSyncJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderSyncJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderSyncJob',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/sync-jobs/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderSyncJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_sync_job_with_options_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        task_id: str,
+        request: main_models.GetIdentityProviderSyncJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderSyncJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderSyncJob',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/sync-jobs/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderSyncJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider_sync_job(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        task_id: str,
+        request: main_models.GetIdentityProviderSyncJobRequest,
+    ) -> main_models.GetIdentityProviderSyncJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_identity_provider_sync_job_with_options(workspace_id, identity_provider_type, task_id, request, headers, runtime)
+
+    async def get_identity_provider_sync_job_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        task_id: str,
+        request: main_models.GetIdentityProviderSyncJobRequest,
+    ) -> main_models.GetIdentityProviderSyncJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_identity_provider_sync_job_with_options_async(workspace_id, identity_provider_type, task_id, request, headers, runtime)
+
+    def get_identity_provider_sync_scope_with_options(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.GetIdentityProviderSyncScopeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderSyncScopeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderSyncScope',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/sync-scope',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderSyncScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_sync_scope_with_options_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.GetIdentityProviderSyncScopeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderSyncScopeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderSyncScope',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/sync-scope',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderSyncScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider_sync_scope(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.GetIdentityProviderSyncScopeRequest,
+    ) -> main_models.GetIdentityProviderSyncScopeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_identity_provider_sync_scope_with_options(workspace_id, identity_provider_type, request, headers, runtime)
+
+    async def get_identity_provider_sync_scope_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.GetIdentityProviderSyncScopeRequest,
+    ) -> main_models.GetIdentityProviderSyncScopeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_identity_provider_sync_scope_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
 
     def get_image_cache_with_options(
         self,
@@ -6665,6 +7445,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.install_workspace_plugin_with_options_async(workspace_id, plugin_name, request, headers, runtime)
 
+    def list_agent_code_runtimes_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListAgentCodeRuntimesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentCodeRuntimesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentCodeRuntimes',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-runtimes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentCodeRuntimesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agent_code_runtimes_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListAgentCodeRuntimesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentCodeRuntimesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentCodeRuntimes',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-runtimes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentCodeRuntimesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agent_code_runtimes(
+        self,
+        workspace_id: str,
+        request: main_models.ListAgentCodeRuntimesRequest,
+    ) -> main_models.ListAgentCodeRuntimesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_agent_code_runtimes_with_options(workspace_id, request, headers, runtime)
+
+    async def list_agent_code_runtimes_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListAgentCodeRuntimesRequest,
+    ) -> main_models.ListAgentCodeRuntimesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_agent_code_runtimes_with_options_async(workspace_id, request, headers, runtime)
+
     def list_agent_imchannels_with_options(
         self,
         workspace_id: str,
@@ -7400,6 +8264,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_external_agents_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_identity_provider_departments_with_options(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.ListIdentityProviderDepartmentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIdentityProviderDepartmentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.parent_department_id):
+            query['parentDepartmentId'] = request.parent_department_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListIdentityProviderDepartments',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/departments',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListIdentityProviderDepartmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_identity_provider_departments_with_options_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.ListIdentityProviderDepartmentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIdentityProviderDepartmentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.parent_department_id):
+            query['parentDepartmentId'] = request.parent_department_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListIdentityProviderDepartments',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/identity-providers/{DaraURL.percent_encode(identity_provider_type)}/departments',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListIdentityProviderDepartmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_identity_provider_departments(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.ListIdentityProviderDepartmentsRequest,
+    ) -> main_models.ListIdentityProviderDepartmentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_identity_provider_departments_with_options(workspace_id, identity_provider_type, request, headers, runtime)
+
+    async def list_identity_provider_departments_async(
+        self,
+        workspace_id: str,
+        identity_provider_type: str,
+        request: main_models.ListIdentityProviderDepartmentsRequest,
+    ) -> main_models.ListIdentityProviderDepartmentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_identity_provider_departments_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
+
+    def list_identity_provider_scimcredentials_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListIdentityProviderSCIMCredentialsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIdentityProviderSCIMCredentialsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListIdentityProviderSCIMCredentials',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning/credentials',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListIdentityProviderSCIMCredentialsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_identity_provider_scimcredentials_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListIdentityProviderSCIMCredentialsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIdentityProviderSCIMCredentialsResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListIdentityProviderSCIMCredentials',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning/credentials',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListIdentityProviderSCIMCredentialsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_identity_provider_scimcredentials(
+        self,
+        workspace_id: str,
+        request: main_models.ListIdentityProviderSCIMCredentialsRequest,
+    ) -> main_models.ListIdentityProviderSCIMCredentialsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_identity_provider_scimcredentials_with_options(workspace_id, request, headers, runtime)
+
+    async def list_identity_provider_scimcredentials_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListIdentityProviderSCIMCredentialsRequest,
+    ) -> main_models.ListIdentityProviderSCIMCredentialsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_identity_provider_scimcredentials_with_options_async(workspace_id, request, headers, runtime)
 
     def list_identity_providers_with_options(
         self,
@@ -9737,6 +10765,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.precheck_skill_upload_via_oss_with_options_async(workspace_id, request, headers, runtime)
 
+    def prepare_identity_provider_scimwith_options(
+        self,
+        workspace_id: str,
+        request: main_models.PrepareIdentityProviderSCIMRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PrepareIdentityProviderSCIMResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'PrepareIdentityProviderSCIM',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning/prepare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrepareIdentityProviderSCIMResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def prepare_identity_provider_scimwith_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.PrepareIdentityProviderSCIMRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PrepareIdentityProviderSCIMResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'PrepareIdentityProviderSCIM',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning/prepare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrepareIdentityProviderSCIMResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def prepare_identity_provider_scim(
+        self,
+        workspace_id: str,
+        request: main_models.PrepareIdentityProviderSCIMRequest,
+    ) -> main_models.PrepareIdentityProviderSCIMResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.prepare_identity_provider_scimwith_options(workspace_id, request, headers, runtime)
+
+    async def prepare_identity_provider_scim_async(
+        self,
+        workspace_id: str,
+        request: main_models.PrepareIdentityProviderSCIMRequest,
+    ) -> main_models.PrepareIdentityProviderSCIMResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.prepare_identity_provider_scimwith_options_async(workspace_id, request, headers, runtime)
+
     def publish_skill_version_with_options(
         self,
         workspace_id: str,
@@ -11189,6 +12289,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_identity_provider_with_options_async(workspace_id, identity_provider_type, request, headers, runtime)
 
+    def update_identity_provider_scimwith_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.UpdateIdentityProviderSCIMRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateIdentityProviderSCIMResponse:
+        tmp_req.validate()
+        request = main_models.UpdateIdentityProviderSCIMShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateIdentityProviderSCIM',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateIdentityProviderSCIMResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_identity_provider_scimwith_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.UpdateIdentityProviderSCIMRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateIdentityProviderSCIMResponse:
+        tmp_req.validate()
+        request = main_models.UpdateIdentityProviderSCIMShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateIdentityProviderSCIM',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/scim-provisioning',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateIdentityProviderSCIMResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_identity_provider_scim(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateIdentityProviderSCIMRequest,
+    ) -> main_models.UpdateIdentityProviderSCIMResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_identity_provider_scimwith_options(workspace_id, request, headers, runtime)
+
+    async def update_identity_provider_scim_async(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateIdentityProviderSCIMRequest,
+    ) -> main_models.UpdateIdentityProviderSCIMResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_identity_provider_scimwith_options_async(workspace_id, request, headers, runtime)
+
     def update_managed_agent_with_options(
         self,
         workspace_id: str,
@@ -12636,6 +13824,174 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.upload_skill_via_oss_with_options_async(workspace_id, request, headers, runtime)
+
+    def validate_agent_code_package_from_oss_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.ValidateAgentCodePackageFromOssRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateAgentCodePackageFromOssResponse:
+        tmp_req.validate()
+        request = main_models.ValidateAgentCodePackageFromOssShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateAgentCodePackageFromOss',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-packages/validate-from-oss',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateAgentCodePackageFromOssResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_agent_code_package_from_oss_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.ValidateAgentCodePackageFromOssRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateAgentCodePackageFromOssResponse:
+        tmp_req.validate()
+        request = main_models.ValidateAgentCodePackageFromOssShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateAgentCodePackageFromOss',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-packages/validate-from-oss',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateAgentCodePackageFromOssResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_agent_code_package_from_oss(
+        self,
+        workspace_id: str,
+        request: main_models.ValidateAgentCodePackageFromOssRequest,
+    ) -> main_models.ValidateAgentCodePackageFromOssResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.validate_agent_code_package_from_oss_with_options(workspace_id, request, headers, runtime)
+
+    async def validate_agent_code_package_from_oss_async(
+        self,
+        workspace_id: str,
+        request: main_models.ValidateAgentCodePackageFromOssRequest,
+    ) -> main_models.ValidateAgentCodePackageFromOssResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.validate_agent_code_package_from_oss_with_options_async(workspace_id, request, headers, runtime)
+
+    def verify_agent_code_package_oss_ram_authorization_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyAgentCodePackageOssRamAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyAgentCodePackageOssRamAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.oss_bucket_name):
+            query['ossBucketName'] = request.oss_bucket_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyAgentCodePackageOssRamAuthorization',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-packages/oss/authorize/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyAgentCodePackageOssRamAuthorizationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_agent_code_package_oss_ram_authorization_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyAgentCodePackageOssRamAuthorizationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyAgentCodePackageOssRamAuthorizationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.oss_bucket_name):
+            query['ossBucketName'] = request.oss_bucket_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyAgentCodePackageOssRamAuthorization',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/agent-code-packages/oss/authorize/verify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyAgentCodePackageOssRamAuthorizationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_agent_code_package_oss_ram_authorization(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyAgentCodePackageOssRamAuthorizationRequest,
+    ) -> main_models.VerifyAgentCodePackageOssRamAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.verify_agent_code_package_oss_ram_authorization_with_options(workspace_id, request, headers, runtime)
+
+    async def verify_agent_code_package_oss_ram_authorization_async(
+        self,
+        workspace_id: str,
+        request: main_models.VerifyAgentCodePackageOssRamAuthorizationRequest,
+    ) -> main_models.VerifyAgentCodePackageOssRamAuthorizationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.verify_agent_code_package_oss_ram_authorization_with_options_async(workspace_id, request, headers, runtime)
 
     def verify_connector_with_options(
         self,

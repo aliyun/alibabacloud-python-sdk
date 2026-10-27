@@ -102,9 +102,9 @@ class GetMemoryStoreResponseBodyData(DaraModel):
         self.memory_store_id = memory_store_id
         # The MemoryStore name. It cannot be modified after creation.
         self.memory_store_name = memory_store_name
-        # The MemoryStore lifecycle state.
+        # The lifecycle state of the MemoryStore.
         self.status = status
-        # The last update time.
+        # The last updated time.
         self.updated_at = updated_at
         # The AgentCore workspace ID.
         self.workspace_id = workspace_id

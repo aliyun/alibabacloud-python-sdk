@@ -23,7 +23,7 @@ class ListMemorySessionsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The session list.
+        # The list of sessions.
         self.items = items
         # The maximum number of records per page.
         self.max_results = max_results

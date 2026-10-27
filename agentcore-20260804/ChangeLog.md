@@ -1,3 +1,37 @@
+2026-10-27 Version: 3.0.0
+- Support API CreateIdentityProviderSCIMCredential.
+- Support API DeleteIdentityProviderSCIMCredential.
+- Support API GetIdentityProviderSCIM.
+- Support API GetIdentityProviderServiceProvider.
+- Support API ListIdentityProviderSCIMCredentials.
+- Support API PrepareIdentityProviderSCIM.
+- Support API UpdateIdentityProviderSCIM.
+- Update API CreateIdentityProvider: delete response parameters Body.data.configuration.jitProvisionStatus.
+- Update API CreateIdentityProvider: delete response parameters Body.data.configuration.jitUpdateStatus.
+- Update API CreateIdentityProvider: delete response parameters Body.data.saml.jitProvisionEnabled.
+- Update API CreateIdentityProvider: delete response parameters Body.data.saml.jitUpdateEnabled.
+- Update API CreateWorkspace: add request parameters body.agentSpace.
+- Update API CreateWorkspace: add request parameters body.cmsWorkspace.
+- Update API DeleteIdentityProvider: delete response parameters Body.data.configuration.jitProvisionStatus.
+- Update API DeleteIdentityProvider: delete response parameters Body.data.configuration.jitUpdateStatus.
+- Update API DeleteIdentityProvider: delete response parameters Body.data.saml.jitProvisionEnabled.
+- Update API DeleteIdentityProvider: delete response parameters Body.data.saml.jitUpdateEnabled.
+- Update API GetIdentityProvider: delete response parameters Body.data.configuration.jitProvisionStatus.
+- Update API GetIdentityProvider: delete response parameters Body.data.configuration.jitUpdateStatus.
+- Update API GetIdentityProvider: delete response parameters Body.data.saml.jitProvisionEnabled.
+- Update API GetIdentityProvider: delete response parameters Body.data.saml.jitUpdateEnabled.
+- Update API ListIdentityProviders: delete response parameters Body.items.$.configuration.jitProvisionStatus.
+- Update API ListIdentityProviders: delete response parameters Body.items.$.configuration.jitUpdateStatus.
+- Update API ListIdentityProviders: delete response parameters Body.items.$.saml.jitProvisionEnabled.
+- Update API ListIdentityProviders: delete response parameters Body.items.$.saml.jitUpdateEnabled.
+- Update API UpdateIdentityProvider: delete request parameters body.saml.jitProvisionEnabled.
+- Update API UpdateIdentityProvider: delete request parameters body.saml.jitUpdateEnabled.
+- Update API UpdateIdentityProvider: delete response parameters Body.data.configuration.jitProvisionStatus.
+- Update API UpdateIdentityProvider: delete response parameters Body.data.configuration.jitUpdateStatus.
+- Update API UpdateIdentityProvider: delete response parameters Body.data.saml.jitProvisionEnabled.
+- Update API UpdateIdentityProvider: delete response parameters Body.data.saml.jitUpdateEnabled.
+
+
 2026-10-21 Version: 2.4.0
 - Support API CreateImageCache.
 - Support API DeleteImageCache.

@@ -17,7 +17,7 @@ class CreateMemoryStoreResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The memory store details.
+        # The MemoryStore details.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -94,17 +94,17 @@ class CreateMemoryStoreResponseBodyData(DaraModel):
     ):
         # The creation time.
         self.created_at = created_at
-        # The memory store description.
+        # The MemoryStore description.
         self.description = description
         # The custom extraction instructions.
         self.extract_instructions = extract_instructions
-        # The memory store ID.
+        # The MemoryStore ID.
         self.memory_store_id = memory_store_id
-        # The name of the memory store. The name cannot be modified after creation.
+        # The name of the MemoryStore. The name cannot be modified after creation.
         self.memory_store_name = memory_store_name
-        # The lifecycle status of the memory store.
+        # The lifecycle state of the MemoryStore.
         self.status = status
-        # The last updated time.
+        # The last update time.
         self.updated_at = updated_at
         # The AgentCore workspace ID.
         self.workspace_id = workspace_id

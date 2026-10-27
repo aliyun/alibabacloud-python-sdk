@@ -9,7 +9,7 @@ class CreateIdentityProviderShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
-        # The request body for binding an external identity provider.
+        # The request content for binding an external identity provider.
         self.body_shrink = body_shrink
 
     def validate(self):

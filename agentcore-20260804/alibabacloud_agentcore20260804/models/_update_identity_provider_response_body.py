@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_agentcore20260804 import models as main_models
 from darabonba.model import DaraModel
 
@@ -15,17 +17,17 @@ class UpdateIdentityProviderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code.
+        # The business status code of the API request. SUCCESS indicates that the request is successful, but does not mean that the asynchronous configuration or synchronization task is completed.
         self.code = code
-        # The binding information of the external identity provider after the update.
+        # The currently saved identity provider binding information, including the expected configuration and resource status. The actual update may still be executing in the background.
         self.data = data
-        # The HTTP status code.
+        # The HTTP status code of the API request, which does not represent the execution result of the background task.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request failed.
+        # The response message of the API request. An error description is returned if the request fails.
         self.message = message
-        # The request ID.
+        # The unique identifier of the request. Provide this value when you troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the API request is successful. To check whether the background configuration has taken effect, query the identity provider status separately.
         self.success = success
 
     def validate(self):
@@ -83,31 +85,131 @@ class UpdateIdentityProviderResponseBody(DaraModel):
 class UpdateIdentityProviderResponseBodyData(DaraModel):
     def __init__(
         self,
+        configuration: main_models.UpdateIdentityProviderResponseBodyDataConfiguration = None,
         identity_provider_type: str = None,
         login_enabled: bool = None,
+        protocol: str = None,
+        saml: main_models.UpdateIdentityProviderResponseBodyDataSaml = None,
         status: str = None,
         sync_enabled: bool = None,
+        sync_scope: main_models.UpdateIdentityProviderResponseBodyDataSyncScope = None,
         workspace_id: str = None,
     ):
-        # The type of the external identity provider. Valid values: DingTalk, Feishu.
+        # The actual SAML configuration read back from the upstream. This update operation does not perform the read-back and usually does not return this field. Use GetIdentityProvider to obtain it.
+        self.configuration = configuration
+        # The type of the identity provider. DingTalk: DingTalk. Feishu: Lark. CustomSSO: custom enterprise identity provider connected through SAML. The value must be the same as the type of the identity provider bound to the current workspace.
         self.identity_provider_type = identity_provider_type
-        # Specifies whether workspace users are allowed to log on through this external identity provider.
+        # The currently saved expected value of the logon switch, which alone does not prove that the upstream logon configuration has taken effect.
         self.login_enabled = login_enabled
-        # The binding status. Valid values:
-        # - CONFIGURED: The configuration has been accepted and is waiting for user pool provisioning.
-        # - SYNCING: Organization members are being synchronized.
-        # - SYNCED: Organization member synchronization is complete.
-        # - READY: The binding is active.
-        # - SYNC_FAILED: Organization member synchronization failed.
+        # The currently saved logon protocol for CustomSSO, which is SAML when configured. This field is not returned for DingTalk or Lark.
+        self.protocol = protocol
+        # The saved standardized SAML configuration for CustomSSO. The original metadata XML is not echoed. This field is not returned if no valid configuration is saved or if the identity provider is DingTalk or Lark. This value is the locally saved configuration and is not equivalent to the actual upstream configuration.
+        self.saml = saml
+        # The status of the identity provider resource and logon configuration. Valid values:
+        # - CONFIGURED: The configuration is accepted.
         # - UPDATING: The configuration is being updated.
-        # - UPDATE_FAILED: The configuration update failed.
-        # - DISCONNECTING: The binding is being removed.
-        # - DISCONNECT_FAILED: The unbinding failed.
+        # - SYNCING: Synchronization is in progress.
+        # - SYNCED: The synchronization phase is completed.
+        # - READY: The resource is ready.
+        # - SYNC_FAILED: Synchronization failed.
+        # - UPDATE_FAILED: The update failed.
+        # - DISCONNECTING: Unbinding is in progress.
+        # - DISCONNECT_FAILED: Unbinding failed.
+        # READY alone does not indicate that users have been imported. Query the SCIM operation results for CustomSSO separately.
         self.status = status
-        # Specifies whether to enable organization member synchronization. When enabled, the external identity provider synchronizes organization members as workspace users.
+        # The currently saved expected value of the synchronization switch. For DingTalk and Lark, it is used for subsequent address book change events. The SCIM switch for CustomSSO is managed through UpdateIdentityProviderSCIM, and the operation results are queried through GetIdentityProviderSCIM.
         self.sync_enabled = sync_enabled
-        # The workspace ID.
+        # The saved synchronization scope for DingTalk and Lark. The default value for valid historical configurations is AllAuthorized, and this field may not be returned for corrupted historical configurations. This field is not returned for CustomSSO.
+        self.sync_scope = sync_scope
+        # The ID of the workspace to which the identity provider belongs.
         self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.saml:
+            self.saml.validate()
+        if self.sync_scope:
+            self.sync_scope.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+
+        if self.identity_provider_type is not None:
+            result['identityProviderType'] = self.identity_provider_type
+
+        if self.login_enabled is not None:
+            result['loginEnabled'] = self.login_enabled
+
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+
+        if self.saml is not None:
+            result['saml'] = self.saml.to_map()
+
+        if self.status is not None:
+            result['status'] = self.status
+
+        if self.sync_enabled is not None:
+            result['syncEnabled'] = self.sync_enabled
+
+        if self.sync_scope is not None:
+            result['syncScope'] = self.sync_scope.to_map()
+
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = main_models.UpdateIdentityProviderResponseBodyDataConfiguration()
+            self.configuration = temp_model.from_map(m.get('configuration'))
+
+        if m.get('identityProviderType') is not None:
+            self.identity_provider_type = m.get('identityProviderType')
+
+        if m.get('loginEnabled') is not None:
+            self.login_enabled = m.get('loginEnabled')
+
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+
+        if m.get('saml') is not None:
+            temp_model = main_models.UpdateIdentityProviderResponseBodyDataSaml()
+            self.saml = temp_model.from_map(m.get('saml'))
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
+
+        if m.get('syncEnabled') is not None:
+            self.sync_enabled = m.get('syncEnabled')
+
+        if m.get('syncScope') is not None:
+            temp_model = main_models.UpdateIdentityProviderResponseBodyDataSyncScope()
+            self.sync_scope = temp_model.from_map(m.get('syncScope'))
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+
+        return self
+
+class UpdateIdentityProviderResponseBodyDataSyncScope(DaraModel):
+    def __init__(
+        self,
+        department_ids: List[str] = None,
+        mode: str = None,
+    ):
+        # The list of department IDs in the synchronization scope, obtained from ListIdentityProviderDepartments. In SelectedDepartments mode, at least one non-empty department ID must be provided. In AllAuthorized mode, this parameter should be omitted or an empty array should be passed.
+        self.department_ids = department_ids
+        # The synchronization scope mode. AllAuthorized: all members within the authorization scope of the application address book. SelectedDepartments: the selected departments and all their sub-departments. A valid mode must be provided when syncScope is explicitly submitted.
+        self.mode = mode
 
     def validate(self):
         pass
@@ -117,39 +219,131 @@ class UpdateIdentityProviderResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.identity_provider_type is not None:
-            result['identityProviderType'] = self.identity_provider_type
+        if self.department_ids is not None:
+            result['departmentIds'] = self.department_ids
 
-        if self.login_enabled is not None:
-            result['loginEnabled'] = self.login_enabled
-
-        if self.status is not None:
-            result['status'] = self.status
-
-        if self.sync_enabled is not None:
-            result['syncEnabled'] = self.sync_enabled
-
-        if self.workspace_id is not None:
-            result['workspaceId'] = self.workspace_id
+        if self.mode is not None:
+            result['mode'] = self.mode
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('identityProviderType') is not None:
-            self.identity_provider_type = m.get('identityProviderType')
+        if m.get('departmentIds') is not None:
+            self.department_ids = m.get('departmentIds')
 
-        if m.get('loginEnabled') is not None:
-            self.login_enabled = m.get('loginEnabled')
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
 
-        if m.get('status') is not None:
-            self.status = m.get('status')
+        return self
 
-        if m.get('syncEnabled') is not None:
-            self.sync_enabled = m.get('syncEnabled')
+class UpdateIdentityProviderResponseBodyDataSaml(DaraModel):
+    def __init__(
+        self,
+        binding_type: str = None,
+        entity_id: str = None,
+        login_url: str = None,
+        x_509certificates: List[str] = None,
+    ):
+        # The saved SAML binding type, which is HTTP-Redirect or HTTP-POST.
+        self.binding_type = binding_type
+        # The saved enterprise IdP entity ID, which is different from the entity ID of the service provider (SP).
+        self.entity_id = entity_id
+        # The saved enterprise IdP SSO logon URL.
+        self.login_url = login_url
+        # The list of saved enterprise IdP X.509 signing certificates.
+        self.x_509certificates = x_509certificates
 
-        if m.get('workspaceId') is not None:
-            self.workspace_id = m.get('workspaceId')
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.binding_type is not None:
+            result['bindingType'] = self.binding_type
+
+        if self.entity_id is not None:
+            result['entityId'] = self.entity_id
+
+        if self.login_url is not None:
+            result['loginUrl'] = self.login_url
+
+        if self.x_509certificates is not None:
+            result['x509Certificates'] = self.x_509certificates
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bindingType') is not None:
+            self.binding_type = m.get('bindingType')
+
+        if m.get('entityId') is not None:
+            self.entity_id = m.get('entityId')
+
+        if m.get('loginUrl') is not None:
+            self.login_url = m.get('loginUrl')
+
+        if m.get('x509Certificates') is not None:
+            self.x_509certificates = m.get('x509Certificates')
+
+        return self
+
+class UpdateIdentityProviderResponseBodyDataConfiguration(DaraModel):
+    def __init__(
+        self,
+        binding_type: str = None,
+        entity_id: str = None,
+        login_url: str = None,
+        sso_status: str = None,
+    ):
+        # The actual SAML binding type saved in the upstream, which is HTTP-Redirect or HTTP-POST.
+        self.binding_type = binding_type
+        # The actual enterprise IdP entity ID saved in the upstream.
+        self.entity_id = entity_id
+        # The actual enterprise IdP SSO logon URL saved in the upstream.
+        self.login_url = login_url
+        # The actual SSO logon status in the upstream. Enabled indicates that it is turned on, and Disabled indicates that it is turned off. This should be evaluated separately from the expected value of loginEnabled.
+        self.sso_status = sso_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.binding_type is not None:
+            result['bindingType'] = self.binding_type
+
+        if self.entity_id is not None:
+            result['entityId'] = self.entity_id
+
+        if self.login_url is not None:
+            result['loginUrl'] = self.login_url
+
+        if self.sso_status is not None:
+            result['ssoStatus'] = self.sso_status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bindingType') is not None:
+            self.binding_type = m.get('bindingType')
+
+        if m.get('entityId') is not None:
+            self.entity_id = m.get('entityId')
+
+        if m.get('loginUrl') is not None:
+            self.login_url = m.get('loginUrl')
+
+        if m.get('ssoStatus') is not None:
+            self.sso_status = m.get('ssoStatus')
 
         return self
 

@@ -52,9 +52,9 @@ class UpdateMemoryStoreRequestBody(DaraModel):
         description: str = None,
         extract_instructions: str = None,
     ):
-        # The MemoryStore description. Maximum length: 1,024 characters.
+        # The MemoryStore description, up to 1,024 characters.
         self.description = description
-        # The custom memory extraction instructions. Maximum length: 4,096 characters.
+        # The custom memory extraction instructions, up to 4,096 characters.
         self.extract_instructions = extract_instructions
 
     def validate(self):

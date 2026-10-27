@@ -10,7 +10,7 @@ class CreateWorkspaceShrinkRequest(DaraModel):
         body_shrink: str = None,
         client_token: str = None,
     ):
-        # The workspace creation request body.
+        # The request body for creating a workspace.
         self.body_shrink = body_shrink
         # The client idempotency token.
         self.client_token = client_token

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_agentcore20260804 import models as main_models
 from darabonba.model import DaraModel
 
@@ -17,15 +19,15 @@ class DeleteIdentityProviderResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The binding information of the external identity provider after the unbinding request is accepted.
+        # The external identity provider binding information after the disconnection operation is accepted.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. An error description is returned if the request failed.
+        # The response message. An error description is returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -83,40 +85,48 @@ class DeleteIdentityProviderResponseBody(DaraModel):
 class DeleteIdentityProviderResponseBodyData(DaraModel):
     def __init__(
         self,
+        configuration: main_models.DeleteIdentityProviderResponseBodyDataConfiguration = None,
         identity_provider_type: str = None,
+        protocol: str = None,
+        saml: main_models.DeleteIdentityProviderResponseBodyDataSaml = None,
         status: str = None,
         workspace_id: str = None,
     ):
-        # The type of the external identity provider. Valid values:
-        # 
-        # - DingTalk
-        # - Feishu
+        # The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
+        self.configuration = configuration
+        # The type of the external identity provider. Valid values: DingTalk and Feishu.
         self.identity_provider_type = identity_provider_type
-        # The status. Valid values:
-        # 
-        # - CONFIGURED: The configuration has been accepted and is waiting for the user pool to be provisioned.
-        # - SYNCING: Organization members are being synchronized.
-        # - SYNCED: Organization member synchronization is complete.
-        # - READY: The binding is in effect.
-        # - SYNC_FAILED: Organization member synchronization failed.
-        # - UPDATING: The configuration is being updated.
-        # - UPDATE_FAILED: The configuration update failed.
-        # - DISCONNECTING: The identity provider is being unbound.
-        # - DISCONNECT_FAILED: The unbinding failed.
+        # Currently, only SAML is supported. This parameter may not be returned if no valid configuration is saved. OIDC placeholders are not supported for initialization.
+        self.protocol = protocol
+        # The input supports either XML or complete manual configuration. Queries return the standardized configuration and do not echo the original XML. This parameter can be omitted when not configured.
+        self.saml = saml
+        # The status. Valid values: CONFIGURED (the configuration is accepted and the system is waiting to activate the user pool), SYNCING (synchronizing organization members), SYNCED (organization member synchronization is complete), READY (the binding is effective), SYNC_FAILED (organization member synchronization failed), UPDATING (updating the configuration), UPDATE_FAILED (configuration update failed), DISCONNECTING (disconnecting), and DISCONNECT_FAILED (disconnection failed).
         self.status = status
         # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
-        pass
+        if self.configuration:
+            self.configuration.validate()
+        if self.saml:
+            self.saml.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+
         if self.identity_provider_type is not None:
             result['identityProviderType'] = self.identity_provider_type
+
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+
+        if self.saml is not None:
+            result['saml'] = self.saml.to_map()
 
         if self.status is not None:
             result['status'] = self.status
@@ -128,14 +138,135 @@ class DeleteIdentityProviderResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = main_models.DeleteIdentityProviderResponseBodyDataConfiguration()
+            self.configuration = temp_model.from_map(m.get('configuration'))
+
         if m.get('identityProviderType') is not None:
             self.identity_provider_type = m.get('identityProviderType')
+
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+
+        if m.get('saml') is not None:
+            temp_model = main_models.DeleteIdentityProviderResponseBodyDataSaml()
+            self.saml = temp_model.from_map(m.get('saml'))
 
         if m.get('status') is not None:
             self.status = m.get('status')
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        return self
+
+class DeleteIdentityProviderResponseBodyDataSaml(DaraModel):
+    def __init__(
+        self,
+        binding_type: str = None,
+        entity_id: str = None,
+        login_url: str = None,
+        x_509certificates: List[str] = None,
+    ):
+        # HTTP-Redirect or HTTP-POST. This parameter is required when manually filled in. Queries return the short name.
+        self.binding_type = binding_type
+        # This parameter is required when manually filled in. It must be non-empty and cannot exceed 2,048 characters. Existing configurations do not support replacement. This is different from the Entity ID of the SP queried on our side.
+        self.entity_id = entity_id
+        # This parameter is required when manually filled in. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+        self.login_url = login_url
+        # This parameter is required when manually filled in. It must be a non-empty array and use PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
+        self.x_509certificates = x_509certificates
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.binding_type is not None:
+            result['bindingType'] = self.binding_type
+
+        if self.entity_id is not None:
+            result['entityId'] = self.entity_id
+
+        if self.login_url is not None:
+            result['loginUrl'] = self.login_url
+
+        if self.x_509certificates is not None:
+            result['x509Certificates'] = self.x_509certificates
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bindingType') is not None:
+            self.binding_type = m.get('bindingType')
+
+        if m.get('entityId') is not None:
+            self.entity_id = m.get('entityId')
+
+        if m.get('loginUrl') is not None:
+            self.login_url = m.get('loginUrl')
+
+        if m.get('x509Certificates') is not None:
+            self.x_509certificates = m.get('x509Certificates')
+
+        return self
+
+class DeleteIdentityProviderResponseBodyDataConfiguration(DaraModel):
+    def __init__(
+        self,
+        binding_type: str = None,
+        entity_id: str = None,
+        login_url: str = None,
+        sso_status: str = None,
+    ):
+        # HTTP-Redirect or HTTP-POST. This parameter is required when manually filled in. Queries return the short name.
+        self.binding_type = binding_type
+        # This parameter is required when manually filled in. It must be non-empty and cannot exceed 2,048 characters. Existing configurations do not support replacement. This is different from the Entity ID of the SP queried on our side.
+        self.entity_id = entity_id
+        # This parameter is required when manually filled in. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+        self.login_url = login_url
+        # The actual switch value, which is Enabled or Disabled. This is not equivalent to the expected value of loginEnabled saved in AC.
+        self.sso_status = sso_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.binding_type is not None:
+            result['bindingType'] = self.binding_type
+
+        if self.entity_id is not None:
+            result['entityId'] = self.entity_id
+
+        if self.login_url is not None:
+            result['loginUrl'] = self.login_url
+
+        if self.sso_status is not None:
+            result['ssoStatus'] = self.sso_status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bindingType') is not None:
+            self.binding_type = m.get('bindingType')
+
+        if m.get('entityId') is not None:
+            self.entity_id = m.get('entityId')
+
+        if m.get('loginUrl') is not None:
+            self.login_url = m.get('loginUrl')
+
+        if m.get('ssoStatus') is not None:
+            self.sso_status = m.get('ssoStatus')
 
         return self
 

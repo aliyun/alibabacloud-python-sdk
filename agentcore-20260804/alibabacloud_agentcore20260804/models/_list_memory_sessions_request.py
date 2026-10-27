@@ -12,13 +12,13 @@ class ListMemorySessionsRequest(DaraModel):
         next_token: str = None,
         user_id: str = None,
     ):
-        # The agent ID. If this parameter is not specified, all agents are matched. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain / or *.
+        # The agent ID. If you do not specify this parameter, all agents are matched. The value must be 1 to 128 bytes in length and cannot contain forward slashes (/) or asterisks (*).
         self.agent_id = agent_id
         # The maximum number of records per page. Default value: 100. Valid values: 1 to 100.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
-        # The user ID. If this parameter is not specified, all users are matched. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain / or *.
+        # The user ID. If you do not specify this parameter, all users are matched. The value must be 1 to 128 bytes in length and cannot contain forward slashes (/) or asterisks (*).
         self.user_id = user_id
 
     def validate(self):

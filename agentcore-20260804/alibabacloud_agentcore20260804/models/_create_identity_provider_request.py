@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_agentcore20260804 import models as main_models
 from darabonba.model import DaraModel
 
@@ -10,7 +12,7 @@ class CreateIdentityProviderRequest(DaraModel):
         self,
         body: main_models.CreateIdentityProviderRequestBody = None,
     ):
-        # The request body for binding an external identity provider.
+        # The request content for binding an external identity provider.
         self.body = body
 
     def validate(self):
@@ -42,21 +44,29 @@ class CreateIdentityProviderRequestBody(DaraModel):
         login_enabled: bool = None,
         metadata: main_models.CreateIdentityProviderRequestBodyMetadata = None,
         sync_enabled: bool = None,
+        sync_on_bind: bool = None,
+        sync_scope: main_models.CreateIdentityProviderRequestBodySyncScope = None,
     ):
         # The type of the external identity provider. Valid values: DingTalk and Feishu.
         # 
         # This parameter is required.
         self.identity_provider_type = identity_provider_type
-        # Specifies whether workspace users can log on through the external identity provider.
+        # Specifies whether to allow workspace users to log on through the external identity provider.
         self.login_enabled = login_enabled
-        # The application configuration for the external identity provider. When you bind DingTalk, you must provide appKey, appSecret, and corpId. When you bind Feishu, you must provide appId and appSecret.
+        # The application configuration of the external identity provider. When you bind DingTalk, you must provide appKey, appSecret, and corpId. When you bind Feishu, you must provide appId and appSecret.
         self.metadata = metadata
-        # Specifies whether to enable organization member synchronization. If enabled, organization members are synchronized to workspace users from the external identity provider.
+        # Specifies whether to enable organization member synchronization. After this feature is enabled, the external identity provider synchronizes organization members as workspace users.
         self.sync_enabled = sync_enabled
+        # Controls the first synchronization when DingTalk or Feishu is bound. If this parameter is omitted or set to null, the default value is true. If this parameter is set to false, only the configuration is saved, and synchronization is explicitly triggered later. CustomSSO does not use the vendor pull link.
+        self.sync_on_bind = sync_on_bind
+        # Retains the department-based synchronization scope definition. If this parameter is omitted during creation, the default value is AllAuthorized, and the first vendor synchronization is determined by syncOnBind. If this parameter is omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically perform full synchronization.
+        self.sync_scope = sync_scope
 
     def validate(self):
         if self.metadata:
             self.metadata.validate()
+        if self.sync_scope:
+            self.sync_scope.validate()
 
     def to_map(self):
         result = dict()
@@ -75,6 +85,12 @@ class CreateIdentityProviderRequestBody(DaraModel):
         if self.sync_enabled is not None:
             result['syncEnabled'] = self.sync_enabled
 
+        if self.sync_on_bind is not None:
+            result['syncOnBind'] = self.sync_on_bind
+
+        if self.sync_scope is not None:
+            result['syncScope'] = self.sync_scope.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -92,6 +108,53 @@ class CreateIdentityProviderRequestBody(DaraModel):
         if m.get('syncEnabled') is not None:
             self.sync_enabled = m.get('syncEnabled')
 
+        if m.get('syncOnBind') is not None:
+            self.sync_on_bind = m.get('syncOnBind')
+
+        if m.get('syncScope') is not None:
+            temp_model = main_models.CreateIdentityProviderRequestBodySyncScope()
+            self.sync_scope = temp_model.from_map(m.get('syncScope'))
+
+        return self
+
+class CreateIdentityProviderRequestBodySyncScope(DaraModel):
+    def __init__(
+        self,
+        department_ids: List[str] = None,
+        mode: str = None,
+    ):
+        # When the mode is SelectedDepartments, at least one non-empty department ID must be included, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
+        self.department_ids = department_ids
+        # Valid values:
+        # - AllAuthorized: The full authorization scope, which is limited by the application address book authorization.
+        # - SelectedDepartments: The selected departments and all their sub-departments.
+        # When you explicitly submit syncScope, you must provide a valid mode, which is verified by the backend.
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.department_ids is not None:
+            result['departmentIds'] = self.department_ids
+
+        if self.mode is not None:
+            result['mode'] = self.mode
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('departmentIds') is not None:
+            self.department_ids = m.get('departmentIds')
+
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
+
         return self
 
 class CreateIdentityProviderRequestBodyMetadata(DaraModel):
@@ -104,17 +167,17 @@ class CreateIdentityProviderRequestBodyMetadata(DaraModel):
         encrypt_key: str = None,
         verification_token: str = None,
     ):
-        # The App ID of the Lark application. This parameter is required when the binding type is Feishu.
+        # The app ID of the Feishu application. This parameter is required when the binding type is Feishu.
         self.app_id = app_id
-        # The AppKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
+        # The appKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
         self.app_key = app_key
-        # Required. The application secret of the external identity provider. This parameter is used only for write operations and is not returned by query operations.
+        # Required. The secret of the external identity provider application. This parameter is used only for writing and is not returned by the query API.
         self.app_secret = app_secret
-        # The CorpId of the DingTalk organization. This parameter is required when the binding type is DingTalk.
+        # The corpId of the DingTalk enterprise. This parameter is required when the binding type is DingTalk.
         self.corp_id = corp_id
-        # The data encryption key for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
+        # The data encryption key for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for writing and is not returned by the query API.
         self.encrypt_key = encrypt_key
-        # The verification token for event subscriptions. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
+        # The verification token for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for writing and is not returned by the query API.
         self.verification_token = verification_token
 
     def validate(self):

@@ -9,7 +9,7 @@ class UpdateMemoryShrinkRequest(DaraModel):
         self,
         body_shrink: str = None,
     ):
-        # The request to update a memory.
+        # The update memory request.
         # 
         # This parameter is required.
         self.body_shrink = body_shrink
