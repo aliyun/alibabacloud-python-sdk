@@ -17,7 +17,7 @@ class CreateVirtualClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.active_cluster_id = active_cluster_id
-        # The instance name. Naming rules: must start with a letter, can contain up to 64 characters, and can include letters (case-insensitive), digits, and underscores (_). The name cannot contain two or more consecutive underscores (_), and cluster names must be unique within the same instance.
+        # The cluster name. The name must start with a letter and can be up to 64 characters in length. It can contain letters (case-insensitive), digits, and underscores (_). It cannot contain two or more consecutive underscores (_). Cluster names must be unique within the same instance.
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
@@ -29,7 +29,7 @@ class CreateVirtualClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The secondary cluster ID.
+        # The standby cluster ID.
         # 
         # This parameter is required.
         self.standby_cluster_id = standby_cluster_id

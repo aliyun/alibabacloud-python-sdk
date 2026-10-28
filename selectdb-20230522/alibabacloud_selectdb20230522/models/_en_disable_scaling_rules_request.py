@@ -22,20 +22,14 @@ class EnDisableScalingRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # The cloud service.
+        # The cloud service type.
         self.product = product
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to enable the scheduled scaling policy.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Specifies whether the time-based elastic policy is enabled.
         # 
         # This parameter is required.
         self.scaling_rules_enable = scaling_rules_enable

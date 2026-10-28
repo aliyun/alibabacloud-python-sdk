@@ -12,11 +12,11 @@ class DeleteDBClusterBindingRequest(DaraModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of Cluster 1.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of Cluster 2.
+        # The ID of the other cluster in the binding relationship.
         # 
         # This parameter is required.
         self.dbcluster_id_bak = dbcluster_id_bak

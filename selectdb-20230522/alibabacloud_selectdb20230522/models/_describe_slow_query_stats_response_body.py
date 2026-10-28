@@ -18,21 +18,21 @@ class DescribeSlowQueryStatsResponseBody(DaraModel):
         top_queries: Any = None,
         top_sql_digests: Any = None,
     ):
-        # An array of slow query statistics, grouped by database.
+        # The slow query information by database.
         self.by_database = by_database
-        # An array of slow query statistics, grouped by time bucket.
+        # The slow query information by time bucket.
         self.by_time_bucket = by_time_bucket
-        # An array of slow query statistics, grouped by user.
+        # The slow query information by user.
         self.by_user = by_user
-        # The percentile statistics for query latency.
+        # The query latency percentile information.
         self.percentiles = percentiles
         # The request ID.
         self.request_id = request_id
-        # The summary of slow query statistics.
+        # The summary information.
         self.summary = summary
-        # An array of detailed audit records for the top N slow queries.
+        # The audit information of the top N slow queries.
         self.top_queries = top_queries
-        # An array of statistics for the top N slow queries, grouped by SQL digest. Available for kernel version 5.0 and later.
+        # The classification information of the top N slow query fingerprints. Supported by kernel version 5.0 and later.
         self.top_sql_digests = top_sql_digests
 
     def validate(self):

@@ -11,7 +11,7 @@ class RestartDBClusterResponseBody(DaraModel):
         data: main_models.RestartDBClusterResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned information.
         self.data = data
         # The request ID.
         self.request_id = request_id

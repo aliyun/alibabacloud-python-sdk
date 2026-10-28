@@ -14,7 +14,7 @@ class DescribeDBInstanceNetInfoResponseBody(DaraModel):
         dbinstance_net_infos: List[main_models.DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos] = None,
         request_id: str = None,
     ):
-        # The network information list of the BE instances.
+        # The network information of the BE instances.
         self.dbclusters_net_infos = dbclusters_net_infos
         # The network information of the instance.
         self.dbinstance_net_infos = dbinstance_net_infos
@@ -91,19 +91,19 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos(DaraModel):
         self.ip = ip
         # The network type of the instance. Valid values:
         # 
-        # - **VPC**: virtual private cloud (VPC).
+        # - **VPC**: VPC.
         #                               
         # - **PUBLIC**: Internet.
         self.net_type = net_type
-        # The port objects.
+        # The ports.
         self.port_list = port_list
         # Indicates whether the network information is visible to users. Valid values:
         # 
-        # - **true**: Visible to users.
+        # - **true**: Visible.
         # 
-        # - **false**: Not visible to users.
+        # - **false**: Invisible.
         self.user_visible = user_visible
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The VPC instance ID.
         self.vpc_instance_id = vpc_instance_id
@@ -196,9 +196,9 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList(DaraModel)
         self.port = port
         # The port type. Valid values:
         # 
-        # - **HttpPort**: HTTP protocol port.
+        # - **HttpPort**: HTTP port.
         # 
-        # - **MySQLPort**: MySQL protocol port.
+        # - **MySQLPort**: MySQL port.
         self.protocol = protocol
 
     def validate(self):
@@ -248,11 +248,11 @@ class DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos(DaraModel):
         self.ip = ip
         # The network type.
         self.net_type = net_type
-        # The port list.
+        # The ports.
         self.port_list = port_list
         # Indicates whether the network information is visible to users.
         self.user_visible = user_visible
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The VPC instance ID.
         self.vpc_instance_id = vpc_instance_id

@@ -21,17 +21,18 @@ class ModifyDBClusterRequest(DaraModel):
     ):
         # The reserved cache size.
         self.cache_size = cache_size
+        # The number of cluster nodes. This parameter takes effect only in Serverless mode.
         self.cluster_node_count = cluster_node_count
+        # The cluster node type. This parameter takes effect only in Serverless mode.
         self.cluster_node_type = cluster_node_type
         # The cluster specifications. Valid values:
-        # 
-        # - **selectdb.xlarge**: 4 cores, 32 GB memory.
-        # - **selectdb.2xlarge**: 8 cores, 64 GB memory.
-        # - **selectdb.4xlarge**: 16 cores, 128 GB memory.
-        # - **selectdb.8xlarge**: 32 cores, 256 GB memory.
-        # - **selectdb.16xlarge**: 16 cores, 512 GB memory.
-        # - **selectdb.24xlarge**: 24 cores, 768 GB memory.
-        # - **selectdb.32xlarge**: 32 cores, 1024 GB memory.
+        # - **selectdb.xlarge**: 4 cores and 32 GB.
+        # - **selectdb.2xlarge**: 8 cores and 64 GB.
+        # - **selectdb.4xlarge**: 16 cores and 128 GB.
+        # - **selectdb.8xlarge**: 32 cores and 256 GB.
+        # - **selectdb.16xlarge**: 16 cores and 512 GB.
+        # - **selectdb.24xlarge**: 24 cores and 768 GB.
+        # - **selectdb.32xlarge**: 32 cores and 1024 GB.
         # 
         # This parameter is required.
         self.dbcluster_class = dbcluster_class
@@ -43,14 +44,16 @@ class ModifyDBClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The database type. Set the value to selectdb.
+        # The database engine type. Set the value to selectdb.
         self.engine = engine
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
+        # The maximum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
         self.scale_max = scale_max
+        # The minimum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
         self.scale_min = scale_min
 
     def validate(self):

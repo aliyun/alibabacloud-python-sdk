@@ -12,13 +12,7 @@ class DeleteElasticRuleResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the deletion is successful.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether the deletion was successful.
         self.success = success
 
     def validate(self):

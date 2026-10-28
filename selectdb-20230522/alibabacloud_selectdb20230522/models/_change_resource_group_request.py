@@ -20,11 +20,11 @@ class ChangeResourceGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
-        # The ID of the instance you want to move.
+        # The instance ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Default value: `DBInstance`.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

@@ -14,13 +14,13 @@ class ModifyDBClusterConfigResponseBody(DaraModel):
         dynamic_message: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
-        # The dynamic code. This parameter is not in use. Ignore this parameter.
+        # The dynamic code. This parameter is not used and can be ignored.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not used and can be ignored.
         self.dynamic_message = dynamic_message
         # The request ID.
         self.request_id = request_id

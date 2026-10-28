@@ -11,7 +11,7 @@ class CreateDBClusterBindingResponseBody(DaraModel):
         data: main_models.CreateDBClusterBindingResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -53,7 +53,7 @@ class CreateDBClusterBindingResponseBodyData(DaraModel):
     ):
         # The cluster ID.
         self.db_cluster_id = db_cluster_id
-        # The numeric ID.
+        # The numeric ID of the instance.
         self.db_instance_id = db_instance_id
         # The instance ID.
         self.db_instance_name = db_instance_name

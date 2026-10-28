@@ -18,19 +18,16 @@ class DescribeDBInstancesResponseBody(DaraModel):
     ):
         # The list of instance details.
         self.items = items
-        # The number of entries to return per page. Valid values:
-        # 
-        # - **30** (default value)
-        # 
+        # The number of entries per page. Valid values:
+        # - **30**: Default value.
         # - **50**
-        # 
         # - **100**
         self.page_number = page_number
-        # The number of entries per page.
+        # The page number.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -124,6 +121,7 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
         storage_size: int = None,
         storage_type: str = None,
         tags: List[main_models.DescribeDBInstancesResponseBodyItemsTags] = None,
+        tde_enabled: bool = None,
         tenant_cluster_id: str = None,
         tenant_token: str = None,
         tenant_user_id: str = None,
@@ -132,7 +130,7 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
         zone_id: str = None,
         connection_string: str = None,
     ):
-        # The instance edition. The default value is basic.
+        # The edition of the instance. Default value: basic.
         self.category = category
         # The billing method of the instance. Valid values:
         # 
@@ -144,48 +142,47 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
         self.cluster_count = cluster_count
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The deployment mode of the instance:
+        # The deployment mode of the instance. Valid values:
         # 
-        # - multi_az: zone-redundant storage.
-        # 
-        # - single_az: locally redundant storage.
+        # - multi_az: zone-redundant
+        # - single_az: locally redundant
         self.deploy_scheme = deploy_scheme
         # The description of the instance.
         self.description = description
-        # The database type.
+        # The database engine.
         self.engine = engine
         # The minor engine version of the instance.
         self.engine_minor_version = engine_minor_version
-        # The database version.
+        # The database engine version.
         self.engine_version = engine_version
-        # The expiration time of the cluster.
-        # 
-        # > This parameter is returned only for **Prepaid** (subscription) clusters. For **Postpaid** (pay-as-you-go) clusters, this parameter is empty.
+        # The expiration time of the cluster. The time is displayed in ISO 8601 format and includes the time zone.
+        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription). For clusters whose billing method is **Postpaid** (pay-as-you-go), an empty value is returned.
         self.expire_time = expire_time
+        # The FE cluster list.
         self.fecluster_list = fecluster_list
         # The time when the task was created (GMT).
         self.gmt_created = gmt_created
-        # The time when the task was last modified (GMT).
+        # The time when the task was modified (GMT).
         self.gmt_modified = gmt_modified
-        # The instance usage type.
+        # The usage type of the instance.
         self.instance_used_type = instance_used_type
         # Indicates whether the instance is deleted. Valid values:
         # 
-        # - **true**: The instance is deleted.
+        # - **true**: deleted
         # 
-        # - **false**: The instance is not deleted.
+        # - **fasle**: not deleted
         self.is_deleted = is_deleted
         # The lock mode of the instance.
         self.lock_mode = lock_mode
         # The reason why the instance is locked.
         self.lock_reason = lock_reason
-        # The timestamp that indicates the end of the maintenance window.
+        # The end timestamp of the maintenance window.
         self.maintain_end_time_str = maintain_end_time_str
-        # The end time of the maintenance window for the instance.
+        # Reserved parameter. Not returned. Therefore, the time format does not apply.
         self.maintain_endtime = maintain_endtime
-        # The timestamp that indicates the start of the maintenance window.
+        # The start timestamp of the maintenance window.
         self.maintain_start_time_str = maintain_start_time_str
-        # The start time of the maintenance window for the instance.
+        # Reserved parameter. Not returned. Therefore, the time format does not apply.
         self.maintain_starttime = maintain_starttime
         # The multi-zone configuration.
         self.multi_zone = multi_zone
@@ -195,43 +192,39 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
         self.parent_instance = parent_instance
         # The region ID.
         self.region_id = region_id
-        # The allocated CPU for the resource.
+        # The CPU resources.
         self.resource_cpu = resource_cpu
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The memory size.
+        # The memory resources.
         self.resource_memory = resource_memory
-        # The maximum number of RDS Capacity Units (RCUs) for the instance.
+        # The maximum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
         self.scale_max = scale_max
-        # The minimum number of RDS Capacity Units (RCUs) for the instance.
+        # The minimum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
         self.scale_min = scale_min
-        # This field is redundant.
+        # The redundant field.
         self.scale_replica = scale_replica
         # Indicates whether the instance is a serverless instance.
         self.serverless = serverless
-        # The state of the instance. Valid values:
-        # 
-        # - **CREATING**: The instance is being created.
-        # 
-        # - **ACTIVATION**: The instance is running.
-        # 
-        # - **RESOURCE_CHANGING**: The instance is being upgraded or downgraded.
-        # 
-        # - **ORDER_PREPARING**: The order is being confirmed.
-        # 
-        # - **READONLY_RESOURCE_CHANGING**: The instance configuration is being changed, and the instance is write-locked.
-        # 
-        # - **DELETING**: The instance is being deleted.
+        # The status of the instance. Valid values:
+        # - **CREATING**: Creating.
+        # - **ACTIVATION**: Running.
+        # - **RESOURCE_CHANGING**: Changing specifications.
+        # - **ORDER_PREPARING**: Confirming order.
+        # - **READONLY_RESOURCE_CHANGING**: Changing resources (the instance is locked for write operations).
+        # - **DELETING**: Deleting.
         self.status = status
-        # The storage capacity.
+        # The storage space size.
         self.storage_size = storage_size
-        # The storage class of the instance.
+        # The instance storage type.
         self.storage_type = storage_type
-        # The list of tags of the instance.
+        # The instance tags.
         self.tags = tags
+        # Indicates whether TDE is enabled.
+        self.tde_enabled = tde_enabled
         # The ID of the Prometheus monitoring cluster.
         self.tenant_cluster_id = tenant_cluster_id
-        # The token for connecting to Prometheus monitoring.
+        # The access token for Prometheus monitoring.
         self.tenant_token = tenant_token
         # The user account label for Prometheus monitoring.
         self.tenant_user_id = tenant_user_id
@@ -241,7 +234,7 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
         self.vswitch_id = vswitch_id
         # The zone ID.
         self.zone_id = zone_id
-        # The connection address.
+        # The connection endpoint.
         self.connection_string = connection_string
 
     def validate(self):
@@ -376,6 +369,9 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
         if self.tags is not None:
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
+
+        if self.tde_enabled is not None:
+            result['TdeEnabled'] = self.tde_enabled
 
         if self.tenant_cluster_id is not None:
             result['TenantClusterId'] = self.tenant_cluster_id
@@ -519,6 +515,9 @@ class DescribeDBInstancesResponseBodyItems(DaraModel):
                 temp_model = main_models.DescribeDBInstancesResponseBodyItemsTags()
                 self.tags.append(temp_model.from_map(k1))
 
+        if m.get('TdeEnabled') is not None:
+            self.tde_enabled = m.get('TdeEnabled')
+
         if m.get('TenantClusterId') is not None:
             self.tenant_cluster_id = m.get('TenantClusterId')
 
@@ -625,10 +624,15 @@ class DescribeDBInstancesResponseBodyItemsFEClusterList(DaraModel):
         single_node_memory_in_gb: int = None,
         status: str = None,
     ):
+        # The name of the FE cluster.
         self.db_cluster_id = db_cluster_id
+        # The number of nodes in the FE cluster.
         self.node_count = node_count
+        # The number of CPU cores per node in the FE cluster.
         self.single_node_cpu_cores = single_node_cpu_cores
+        # The memory per node in the FE cluster. Unit: GB.
         self.single_node_memory_in_gb = single_node_memory_in_gb
+        # The status of the FE cluster.
         self.status = status
 
     def validate(self):

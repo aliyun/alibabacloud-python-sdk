@@ -11,6 +11,7 @@ class DescribeAllDBInstanceClassRequest(DaraModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
+        # The SelectDB instance ID. This parameter is required when you create a cluster or change the specifications of a cluster.
         self.dbinstance_id = dbinstance_id
         # The region ID.
         # 

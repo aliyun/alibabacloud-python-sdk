@@ -54,13 +54,13 @@ class CreateElasticRuleResponseBodyData(DaraModel):
         execution_period: str = None,
         rule_id: int = None,
     ):
-        # The target compute resource specification for the cluster.
+        # The target compute resource rule of the cluster.
         self.cluster_class = cluster_class
         # The cluster ID.
         self.cluster_id = cluster_id
         # The instance ID.
         self.db_instance_id = db_instance_id
-        # The start time of the time-based elastic scaling rule.
+        # The start time of the time-based elastic rule. The time is in the HH:mm format.
         self.elastic_rule_start_time = elastic_rule_start_time
         # The execution period.
         self.execution_period = execution_period

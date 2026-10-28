@@ -13,7 +13,7 @@ class AllocateInstancePublicConnectionRequest(DaraModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
-        # The prefix of the endpoint. Set the parameter to the prefix of the value of **ConnectionString**.
+        # The prefix of the target endpoint, which is the prefix of the **ConnectionString** parameter.
         # 
         # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
@@ -21,11 +21,11 @@ class AllocateInstancePublicConnectionRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The network type of the endpoint to be applied for. Set the value to Public.
+        # The network type of the new endpoint. Set the value to Public.
         # 
         # This parameter is required.
         self.net_type = net_type
-        # The region ID of the instance.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

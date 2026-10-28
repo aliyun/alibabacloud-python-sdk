@@ -22,7 +22,7 @@ class GetCreateBEClusterInquiryRequest(DaraModel):
     ):
         # The elastic cache space.
         self.cache_size = cache_size
-        # The billing type.
+        # The billing method.
         # 
         # This parameter is required.
         self.charge_type = charge_type
@@ -42,6 +42,7 @@ class GetCreateBEClusterInquiryRequest(DaraModel):
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # The coupon code.
         self.promotion_option_no = promotion_option_no
         # The quantity.
         # 

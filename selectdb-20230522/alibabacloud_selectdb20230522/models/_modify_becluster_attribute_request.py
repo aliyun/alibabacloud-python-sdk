@@ -22,7 +22,7 @@ class ModifyBEClusterAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The type of the attribute to modify. Set this parameter to DBInstanceDescription.
+        # The type of the attribute to modify. Set the value to DBInstanceDescription.
         # 
         # This parameter is required.
         self.instance_attribute_type = instance_attribute_type

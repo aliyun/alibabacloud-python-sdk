@@ -31,8 +31,8 @@ class UpgradeDBInstanceEngineVersionRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The upgrade mode.
         # 
-        # - If this parameter is left empty, the upgrade is performed immediately.
-        # - If this parameter is set to 1, the upgrade is performed during the maintenance window.
+        # - If you leave this parameter empty, the upgrade is performed immediately.
+        # - If you set this parameter to 1, the upgrade is performed during the maintenance window.
         self.switch_time_mode = switch_time_mode
 
     def validate(self):

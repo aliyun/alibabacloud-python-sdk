@@ -15,19 +15,19 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the instances. This parameter takes effect only when you do not specify TagKey. The default value is false.
+        # Specifies whether to remove all tags from the instance. This parameter takes effect only when TagKey is not specified. Default value: false.
         self.all = all
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # An array of instance IDs.
+        # The array of instance IDs.
         self.resource_id = resource_id
         # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # An array of tag keys.
+        # The array of tag keys.
         self.tag_key = tag_key
 
     def validate(self):

@@ -56,9 +56,11 @@ class GetCreateBEClusterInquiryResponseBodyData(DaraModel):
     ):
         # The currency.
         self.currency = currency
+        # The coupon information.
         self.optional_promotions = optional_promotions
+        # The unit price results of billable items.
         self.pricing_rules = pricing_rules
-        # The trade amount.
+        # The amount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -116,10 +118,17 @@ class GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions(DaraModel):
         promotion_name: str = None,
         promotion_option_no: str = None,
     ):
+        # The discount amount.
+        # 
+        # > This parameter is not applicable to the Chinese site.
         self.can_prom_fee = can_prom_fee
+        # The description of the promotion rule.
         self.option_code = option_code
+        # The coupon description.
         self.promotion_desc = promotion_desc
+        # The coupon name.
         self.promotion_name = promotion_name
+        # The coupon code.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):

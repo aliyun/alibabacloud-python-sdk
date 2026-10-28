@@ -11,7 +11,7 @@ class EnDisableScalingRulesResponseBody(DaraModel):
         data: main_models.EnDisableScalingRulesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -55,13 +55,7 @@ class EnDisableScalingRulesResponseBodyData(DaraModel):
         self.cluster_id = cluster_id
         # The instance ID.
         self.db_instance_id = db_instance_id
-        # Indicates whether the scheduled scaling policy is enabled.
-        # 
-        # Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether the time-based elastic scaling rule is enabled.
         self.scaling_rules_enable = scaling_rules_enable
 
     def validate(self):

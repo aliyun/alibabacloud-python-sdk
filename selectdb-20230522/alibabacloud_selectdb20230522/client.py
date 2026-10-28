@@ -22,31 +22,11 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'ap-northeast-2': 'selectdb.aliyuncs.com',
             'ap-southeast-3': 'selectdb.aliyuncs.com',
             'ap-southeast-7': 'selectdb.aliyuncs.com',
             'cn-heyuan': 'selectdb.aliyuncs.com',
-            'cn-shenzhen': 'selectdb.cn-shenzhen.aliyuncs.com',
-            'cn-wulanchabu': 'selectdb.cn-wulanchabu.aliyuncs.com',
-            'cn-beijing': 'selectdb.cn-beijing.aliyuncs.com',
-            'ap-northeast-1': 'selectdb.ap-northeast-1.aliyuncs.com',
-            'cn-chengdu': 'selectdb.cn-chengdu.aliyuncs.com',
-            'cn-qingdao': 'selectdb.cn-qingdao.aliyuncs.com',
-            'cn-shanghai': 'selectdb.cn-shanghai.aliyuncs.com',
-            'cn-guangzhou': 'selectdb.cn-guangzhou.aliyuncs.com',
-            'cn-hongkong': 'selectdb.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'selectdb.ap-southeast-1.aliyuncs.com',
-            'cn-huhehaote': 'selectdb.cn-huhehaote.aliyuncs.com',
-            'ap-southeast-5': 'selectdb.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-6': 'selectdb.ap-southeast-6.aliyuncs.com',
-            'cn-zhangjiakou': 'selectdb.cn-zhangjiakou.aliyuncs.com',
-            'cn-hangzhou': 'selectdb.aliyuncs.com',
-            'us-west-1': 'selectdb.us-west-1.aliyuncs.com',
-            'us-east-1': 'selectdb.us-east-1.aliyuncs.com',
-            'eu-central-1': 'selectdb.eu-central-1.aliyuncs.com',
-            'eu-west-1': 'selectdb.eu-west-1.aliyuncs.com',
-            'na-south-1': 'selectdb.na-south-1.aliyuncs.com',
-            'cn-shanghai-finance-1': 'selectdb.cn-shanghai-finance-1.aliyuncs.com'
+            'ap-northeast-2': 'selectdb.aliyuncs.com',
+            'cn-hangzhou': 'selectdb.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('selectdb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -792,6 +772,10 @@ class Client(OpenApiClient):
             query['SecurityIPList'] = request.security_iplist
         if not DaraCore.is_null(request.tag_shrink):
             query['Tag'] = request.tag_shrink
+        if not DaraCore.is_null(request.tde_enabled):
+            query['TdeEnabled'] = request.tde_enabled
+        if not DaraCore.is_null(request.tde_mode):
+            query['TdeMode'] = request.tde_mode
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):
@@ -882,6 +866,10 @@ class Client(OpenApiClient):
             query['SecurityIPList'] = request.security_iplist
         if not DaraCore.is_null(request.tag_shrink):
             query['Tag'] = request.tag_shrink
+        if not DaraCore.is_null(request.tde_enabled):
+            query['TdeEnabled'] = request.tde_enabled
+        if not DaraCore.is_null(request.tde_mode):
+            query['TdeMode'] = request.tde_mode
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):

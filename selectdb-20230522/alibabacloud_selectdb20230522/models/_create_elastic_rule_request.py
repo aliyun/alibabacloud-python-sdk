@@ -15,7 +15,7 @@ class CreateElasticRuleRequest(DaraModel):
         region_id: str = None,
         resource_owner_id: int = None,
     ):
-        # The target compute resource specification for the cluster.
+        # The target compute resource rule of the cluster.
         # 
         # This parameter is required.
         self.cluster_class = cluster_class
@@ -27,7 +27,7 @@ class CreateElasticRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # The start time of the time-based elastic scaling rule.
+        # The start time of the time-based elastic rule. The time is in the HH:mm format.
         # 
         # This parameter is required.
         self.elastic_rule_start_time = elastic_rule_start_time

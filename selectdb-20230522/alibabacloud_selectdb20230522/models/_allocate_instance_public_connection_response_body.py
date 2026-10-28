@@ -11,7 +11,7 @@ class AllocateInstancePublicConnectionResponseBody(DaraModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id

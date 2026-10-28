@@ -24,7 +24,7 @@ class CreateDBClusterBindingRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region ID
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

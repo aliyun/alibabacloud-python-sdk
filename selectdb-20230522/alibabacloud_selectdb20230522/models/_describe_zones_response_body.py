@@ -17,9 +17,9 @@ class DescribeZonesResponseBody(DaraModel):
     ):
         # The list of results.
         self.items = items
-        # The number of entries per page for a paged query.
+        # The number of rows per page for paging in a paged query.
         self.max_results = max_results
-        # The token for the next page of results. If this parameter is empty, all results have been returned.
+        # The token used to start the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id

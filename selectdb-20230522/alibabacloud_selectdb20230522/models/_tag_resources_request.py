@@ -19,7 +19,7 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # An array of instance IDs.
+        # The list of instance IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -27,7 +27,7 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # An array of tags.
+        # The list of tags.
         # 
         # This parameter is required.
         self.tag = tag

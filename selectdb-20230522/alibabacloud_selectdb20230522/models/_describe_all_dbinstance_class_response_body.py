@@ -13,7 +13,7 @@ class DescribeAllDBInstanceClassResponseBody(DaraModel):
         class_code_list: List[main_models.DescribeAllDBInstanceClassResponseBodyClassCodeList] = None,
         request_id: str = None,
     ):
-        # The list of instance specifications.
+        # The list of instance types.
         self.class_code_list = class_code_list
         # The request ID.
         self.request_id = request_id
@@ -63,7 +63,7 @@ class DescribeAllDBInstanceClassResponseBodyClassCodeList(DaraModel):
         min_storage_in_gb: int = None,
         step_storage_in_gb: int = None,
     ):
-        # The specification code.
+        # The instance type code.
         self.class_code = class_code
         # The number of CPU cores.
         self.cpu_cores = cpu_cores

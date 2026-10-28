@@ -18,15 +18,15 @@ class ModifySecurityIPListResponseBody(DaraModel):
     ):
         # The name of the instance.
         self.dbinstance_name = dbinstance_name
-        # The name of the whitelist.
+        # The name of the whitelist group.
         self.group_name = group_name
-        # The tag of the whitelist.
+        # The tag of the group.
         self.group_tag = group_tag
         # The request ID.
         self.request_id = request_id
-        # The IP addresses in the whitelist of the instance. Multiple IP addresses are separated by commas (,).
+        # The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
         self.security_iplist = security_iplist
-        # The IP address type.
+        # The type of the IP address.
         self.security_iptype = security_iptype
         # The task ID.
         self.task_id = task_id

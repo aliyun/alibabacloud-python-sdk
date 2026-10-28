@@ -11,11 +11,11 @@ class DescribeQueryExplainResponseBody(DaraModel):
         request_id: str = None,
         sql: str = None,
     ):
-        # The Explain result.
+        # The EXPLAIN result.
         self.explain_result = explain_result
         # The request ID.
         self.request_id = request_id
-        # The SQL statement for which the execution plan is retrieved. Excessively long SQL statements in audit logs may be truncated.
+        # The SQL statement for which the execution plan is queried. Overly long SQL statements in audit logs may be truncated.
         self.sql = sql
 
     def validate(self):

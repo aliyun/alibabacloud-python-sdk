@@ -16,7 +16,7 @@ class DescribeQueryExplainRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The Explain mode.
+        # The EXPLAIN mode.
         self.mode = mode
         # The query ID.
         self.query_id = query_id

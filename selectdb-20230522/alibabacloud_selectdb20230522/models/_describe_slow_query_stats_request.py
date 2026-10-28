@@ -18,17 +18,17 @@ class DescribeSlowQueryStatsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end time. Must be later than the start time. Defaults to the current time.
+        # The end time. It must be later than the start time. Default value: the current time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time. Defaults to 24 hours before the current time.
+        # The start time. Default value: 24 hours ago. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The slow query threshold, in milliseconds. The default value is 5000.
+        # The slow query threshold in milliseconds. Default value: 5000.
         self.threshold_ms = threshold_ms
-        # The number of top slow queries to return. The default value is 10.
+        # The number of top slow queries to return. Default value: 10.
         self.top_n = top_n
 
     def validate(self):

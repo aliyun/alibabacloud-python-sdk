@@ -32,33 +32,28 @@ class CreateDBClusterRequest(DaraModel):
         self.cache_size = cache_size
         # The billing method of the cluster. Valid values:
         # 
-        # - **Postpaid**: pay-as-you-go.
+        # - **Postpaid**: pay-as-you-go
         # 
-        # - **Prepaid**: subscription.
+        # - **Prepaid**: subscription
         # 
         # This parameter is required.
         self.charge_type = charge_type
+        # The number of nodes in the cluster. This parameter takes effect only in Serverless mode.
         self.cluster_node_count = cluster_node_count
+        # The node type of the cluster. This parameter takes effect only in Serverless mode.
         self.cluster_node_type = cluster_node_type
-        # The instance type of the cluster. Valid values:
-        # 
-        # - **selectdb.xlarge**: 4 cores, 32 GB.
-        # 
-        # - **selectdb.2xlarge**: 8 cores, 64 GB.
-        # 
-        # - **selectdb.4xlarge**: 16 cores, 128 GB.
-        # 
-        # - **selectdb.8xlarge**: 32 cores, 256 GB.
-        # 
-        # - **selectdb.16xlarge**: 64 cores, 512 GB.
-        # 
-        # - **selectdb.24xlarge**: 96 cores, 768 GB.
-        # 
-        # - **selectdb.32xlarge**: 128 cores, 1024 GB.
+        # The cluster specifications. Valid values:
+        # - **selectdb.xlarge**: 4 cores and 32 GB memory
+        # - **selectdb.2xlarge**: 8 cores and 64 GB memory
+        # - **selectdb.4xlarge**: 16 cores and 128 GB memory
+        # - **selectdb.8xlarge**: 32 cores and 256 GB memory
+        # - **selectdb.16xlarge**: 64 cores and 512 GB memory
+        # - **selectdb.24xlarge**: 96 cores and 768 GB memory
+        # - **selectdb.32xlarge**: 128 cores and 1024 GB memory
         # 
         # This parameter is required.
         self.dbcluster_class = dbcluster_class
-        # The description of the cluster.
+        # The cluster description.
         # 
         # This parameter is required.
         self.dbcluster_description = dbcluster_description
@@ -66,34 +61,31 @@ class CreateDBClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The database engine type.
+        # The database type.
         self.engine = engine
-        # The database engine version.
+        # The database version.
         # 
         # This parameter is required.
         self.engine_version = engine_version
-        # The billing cycle of the subscription cluster. Valid values:
+        # Specifies whether the subscription cluster is billed on a yearly or monthly basis. Valid values:
         # 
-        # - **Year**: The cluster is billed on a yearly basis.
-        # 
-        # - **Month**: The cluster is billed on a monthly basis.
-        # 
-        # > This parameter is required and takes effect only when **ChargeType** is set to **Prepaid**.
+        # - **Year**: yearly
+        # - **Month**: monthly
+        # > This parameter takes effect and is required only when **ChargeType** is set to **Prepaid**.
         self.period = period
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
+        # The maximum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
         self.scale_max = scale_max
+        # The minimum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
         self.scale_min = scale_min
-        # The subscription duration of the subscription cluster. Valid values:
-        # 
+        # Specifies the purchase duration of the subscription cluster. The unit is specified by Period: Year indicates years, and Month indicates months. Valid values:
         # - If Period is set to Year, valid values for UsedTime are 1, 2, 3, and 5.
-        # 
-        # - If Period is set to Month, the value of UsedTime can be an integer from 1 to 9.
-        # 
-        # > This parameter is required and takes effect only when ChargeType is set to Prepaid.
+        # - If Period is set to Month, valid values for UsedTime are 1 to 9.
+        # > This parameter takes effect and is required only when ChargeType is set to Prepaid.
         self.used_time = used_time
         # The vSwitch ID.
         # 

@@ -16,11 +16,11 @@ class UpgradeDBInstanceDeploySchemeShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # A list of multi-zone configurations.
+        # The list of multiple zones.
         # 
         # This parameter is required.
         self.multi_zone_shrink = multi_zone_shrink
-        # The ID of the region where the instance resides.
+        # The ID of the region in which the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id

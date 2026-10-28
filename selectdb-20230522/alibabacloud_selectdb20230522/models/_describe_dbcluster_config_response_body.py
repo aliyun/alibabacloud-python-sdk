@@ -16,13 +16,13 @@ class DescribeDBClusterConfigResponseBody(DaraModel):
         dynamic_message: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) authentication failed.
+        # The details of the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
-        # The information returned.
+        # The returned data.
         self.data = data
-        # The dynamic code. This parameter is not returned.
+        # The dynamic code. This field is not used and can be ignored.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not returned.
+        # The dynamic message. This field is not used and can be ignored.
         self.dynamic_message = dynamic_message
         # The request ID.
         self.request_id = request_id
@@ -88,7 +88,7 @@ class DescribeDBClusterConfigResponseBodyData(DaraModel):
         self.db_instance_id = db_instance_id
         # The instance ID.
         self.db_instance_name = db_instance_name
-        # The details about each parameter returned.
+        # The user parameters.
         self.params = params
         # The task ID.
         self.task_id = task_id
@@ -157,21 +157,21 @@ class DescribeDBClusterConfigResponseBodyDataParams(DaraModel):
         param_category: str = None,
         value: str = None,
     ):
-        # The comments on the parameter.
+        # The comment of the field.
         self.comment = comment
         # The default value of the parameter.
         self.default_value = default_value
-        # Indicates whether the parameter immediately takes effect without requiring a restart.
+        # Specifies whether the parameter takes effect dynamically without a restart.
         self.is_dynamic = is_dynamic
-        # Indicates whether the parameter is modifiable.
+        # Specifies whether users are allowed to modify the parameter.
         self.is_user_modifiable = is_user_modifiable
-        # The name of the parameter.
+        # The name of the configuration item.
         self.name = name
-        # The value range of the parameter.
+        # The value range.
         self.optional = optional
-        # The category of the parameter.
+        # The category of the configuration item.
         self.param_category = param_category
-        # The current value of the parameter.
+        # The current value.
         self.value = value
 
     def validate(self):

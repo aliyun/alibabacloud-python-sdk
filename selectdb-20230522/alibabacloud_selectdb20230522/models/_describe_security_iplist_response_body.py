@@ -16,7 +16,7 @@ class DescribeSecurityIPListResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The details about each IP address whitelist returned.
+        # The list of whitelist groups.
         self.group_items = group_items
         # The request ID.
         self.request_id = request_id
@@ -76,11 +76,11 @@ class DescribeSecurityIPListResponseBodyGroupItems(DaraModel):
         # 
         # - ipv6 (not supported)
         self.aecurity_iptype = aecurity_iptype
-        # The name of the whitelist.
+        # The name of the whitelist group.
         self.group_name = group_name
-        # The tag of the whitelist.
+        # The group tag.
         self.group_tag = group_tag
-        # The IP addresses in the whitelist. Multiple IP addresses are separated by commas (,).
+        # The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
         self.security_iplist = security_iplist
         # The network type of the whitelist.
         self.whitelist_net_type = whitelist_net_type

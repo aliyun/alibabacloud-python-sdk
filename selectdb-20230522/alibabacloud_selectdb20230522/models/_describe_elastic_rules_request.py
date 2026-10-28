@@ -21,7 +21,7 @@ class DescribeElasticRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_instance_id = db_instance_id
-        # The cloud service.
+        # The cloud service type.
         self.product = product
         # The region ID.
         # 

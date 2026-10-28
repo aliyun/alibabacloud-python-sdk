@@ -1,3 +1,7 @@
+2026-10-28 Version: 5.1.4
+- Update API DescribeDBInstances: add response parameters Body.Items.$.TdeEnabled.
+
+
 2026-08-25 Version: 5.1.2
 - Update API DescribeAllDBInstanceClass: add request parameters DBInstanceId.
 

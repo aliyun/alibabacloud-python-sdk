@@ -16,13 +16,13 @@ class DescribeDBClusterConfigChangeLogsResponseBody(DaraModel):
         dynamic_message: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
-        # The dynamic code. This parameter is not in use. Ignore this parameter.
+        # The dynamic code. This parameter is not in use and can be ignored.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message. This parameter is not in use and can be ignored.
         self.dynamic_message = dynamic_message
         # The request ID.
         self.request_id = request_id
@@ -156,9 +156,9 @@ class DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs(DaraModel
         new_value: str = None,
         old_value: str = None,
     ):
-        # The task creation time (GMT).
+        # The time when the task was created (GMT).
         self.gmt_created = gmt_created
-        # The task modification time (GMT).
+        # The time when the task was modified (GMT).
         self.gmt_modified = gmt_modified
         # The ID of the change record.
         self.id = id

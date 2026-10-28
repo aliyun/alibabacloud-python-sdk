@@ -13,7 +13,7 @@ class DescribeRegionsResponseBody(DaraModel):
         region_model_list: List[main_models.DescribeRegionsResponseBodyRegionModelList] = None,
         request_id: str = None,
     ):
-        # An array of regions.
+        # The list of region data.
         self.region_model_list = region_model_list
         # The request ID.
         self.request_id = request_id
@@ -60,7 +60,7 @@ class DescribeRegionsResponseBodyRegionModelList(DaraModel):
     ):
         # The region ID.
         self.region_id = region_id
-        # An array of zones.
+        # The list of zones.
         self.zones = zones
 
     def validate(self):
@@ -111,7 +111,7 @@ class DescribeRegionsResponseBodyRegionModelListZones(DaraModel):
     ):
         # The zone description.
         self.description = description
-        # Indicates whether the VPC is disabled.
+        # Indicates whether the zone is disabled.
         self.disabled = disabled
         # The label.
         self.label = label
@@ -123,7 +123,7 @@ class DescribeRegionsResponseBodyRegionModelListZones(DaraModel):
         self.sub_domain = sub_domain
         # Indicates whether the VPC is enabled.
         self.vpc_enabled = vpc_enabled
-        # Indicates whether the virtual private cloud (VPC) is available.
+        # Indicates whether the VPC is available.
         self.zone_id = zone_id
 
     def validate(self):
