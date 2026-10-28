@@ -18,12 +18,12 @@ class DescribeDocParserJobStatusResponseBody(DaraModel):
     ):
         # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace **%s** in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned when the call fails.
+        # The error code returned when an error occurs.
         self.err_code = err_code
-        # The error message returned when the call fails.
+        # The error message returned when an error occurs.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -31,13 +31,13 @@ class DescribeDocParserJobStatusResponseBody(DaraModel):
         self.request_id = request_id
         # The status of the DTS document parsing task. Valid values:
         # 
-        # - **NotStarted**: not started.
-        # - **Running**: document parsing in progress.
-        # - **Suspending**: pausing.
-        # - **Failed**: document parsing failed.
-        # - **Finished**: document parsing completed.
+        # - **NotStarted**: Not started.
+        # - **Running**: Parsing documents.
+        # - **Suspending**: Suspending.
+        # - **Failed**: Document parsing failed.
+        # - **Finished**: Document parsing completed.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

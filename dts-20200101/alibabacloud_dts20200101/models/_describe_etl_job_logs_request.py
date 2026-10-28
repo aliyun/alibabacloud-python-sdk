@@ -17,7 +17,7 @@ class DescribeEtlJobLogsRequest(DaraModel):
         self.dts_job_id = dts_job_id
         # The region ID of the DTS instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the list of Alibaba Cloud regions.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -21,13 +21,13 @@ class SkipPreCheckResponseBody(DaraModel):
     ):
         # The error code. This parameter will be deprecated.
         self.code = code
-        # The dynamic error message used to replace the %s variable in the ErrMessage parameter.
+        # The dynamic error message, which is used to replace the %s variable in the error message returned by the ErrMessage parameter.
         # 
-        # > For example, if ErrMessage returns The Value of Input Parameter %s is not valid and DynamicMessage returns JobId, the JobId request parameter is invalid.
+        # > If the ErrMessage parameter returns The Value of Input Parameter %s is not valid and the DynamicMessage parameter returns JobId, the specified JobId request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -37,9 +37,9 @@ class SkipPreCheckResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the precheck task.
         self.schedule_job_id = schedule_job_id
-        # The abbreviated names of the precheck items to suppress or unsuppress.
+        # The abbreviations of the precheck items to skip or unskip.
         self.skip_items = skip_items
-        # The full names of the precheck items to suppress or unsuppress.
+        # The names of the precheck items to skip or unskip.
         self.skip_names = skip_names
         # Indicates whether the request was successful.
         self.success = success

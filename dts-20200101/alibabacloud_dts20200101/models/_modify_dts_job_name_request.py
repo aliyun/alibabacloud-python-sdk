@@ -18,17 +18,17 @@ class ModifyDtsJobNameRequest(DaraModel):
         # This parameter is required.
         self.dts_job_id = dts_job_id
         # The new name of the task.
-        # > Configure a descriptive name that has business meaning (uniqueness is not required) for easy identification.
+        # > Specify a meaningful name for your business to facilitate identification. The name does not need to be unique.
         # 
         # This parameter is required.
         self.dts_job_name = dts_job_name
         # The region ID of the task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
-        # - **true**: The node is a seamless integration (zero-ETL) node.
-        # - **false**: The node is not a seamless integration (zero-ETL) node.
+        # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

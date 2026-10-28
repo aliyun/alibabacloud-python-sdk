@@ -20,7 +20,7 @@ class CountJobByConditionRequest(DaraModel):
     ):
         # The type of the destination database.
         self.dest_db_type = dest_db_type
-        # The parent task ID of a distributed synchronization task.
+        # The ID of the parent task for a distributed synchronization task.
         self.group_id = group_id
         # The task type. Valid values:
         # 
@@ -28,9 +28,9 @@ class CountJobByConditionRequest(DaraModel):
         # - **SYNC**: data synchronization.
         # - **SUBSCRIBE**: change tracking.
         self.job_type = job_type
-        # The query value that corresponds to JobType.
+        # The query value, which corresponds to JobType.
         self.params = params
-        # The region ID used as a filter condition. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID, which is one of the filter conditions. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # This parameter is required.
         self.region = region
@@ -38,66 +38,66 @@ class CountJobByConditionRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. This is a global parameter and does not need to be passed for this API operation.
+        # The resource group ID. This is a global parameter and is not required for this operation.
         self.resource_group_id = resource_group_id
         # The type of the source database.
         self.src_db_type = src_db_type
-        # The instance status of the DTS instance. Valid values:
+        # The DTS instance status. Valid values:
         # 
-        # Data migration node statuses:
+        # Status of a data migration task:
         # - **NotStarted**: not started.
-        # - **Prechecking**: running a dry run.
-        # - **PrecheckFailed**: dry run failed.
-        # - **PreCheckPass**: dry run passed.
+        # - **Prechecking**: performing a precheck.
+        # - **PrecheckFailed**: precheck failed.
+        # - **PreCheckPass**: precheck passed.
         # - **NotConfigured**: not configured.
-        # - **Migrating**: migrating.
-        # - **Suspending**: paused.
+        # - **Migrating**: migrating data.
+        # - **Suspending**: being paused.
         # - **MigrationFailed**: migration failed.
-        # - **Finished**: finished.
-        # - **Retrying**: retrying.
-        # - **Upgrade**: upgrading.
+        # - **Finished**: completed.
+        # - **Retrying**: being retried.
+        # - **Upgrade**: being upgraded.
         # - **Locked**: locked.
-        # - **Downgrade**: downgrading.
+        # - **Downgrade**: being downgraded.
         # 
-        # Data synchronization node statuses:
+        # Status of a data synchronization task:
         # - **NotStarted**: not started.
-        # - **Prechecking**: running a dry run.
-        # - **PrecheckFailed**: dry run failed.
-        # - **PreCheckPass**: dry run passed.
+        # - **Prechecking**: performing a precheck.
+        # - **PrecheckFailed**: precheck failed.
+        # - **PreCheckPass**: precheck passed.
         # - **NotConfigured**: not configured.
         # - **Initializing**: performing initial synchronization.
         # - **InitializeFailed**: initial synchronization failed.
-        # - **Synchronizing**: synchronizing.
+        # - **Synchronizing**: synchronizing data.
         # - **Failed**: synchronization failed.
-        # - **Suspending**: paused.
+        # - **Suspending**: being paused.
         # - **Modifying**: modifying sub-objects.
-        # - **Finished**: finished.
-        # - **Retrying**: retrying.
-        # - **Upgrade**: upgrading.
+        # - **Finished**: completed.
+        # - **Retrying**: being retried.
+        # - **Upgrade**: being upgraded.
         # - **Locked**: locked.
-        # - **Downgrade**: downgrading.
+        # - **Downgrade**: being downgraded.
         # 
-        # Subscribe node statuses:
+        # Status of a change tracking task:
         # - **NotConfigured**: not configured.
         # - **NotStarted**: not started.
-        # - **Prechecking**: running a dry run.
-        # - **PrecheckFailed**: dry run failed.
-        # - **PreCheckPass**: dry run passed.
-        # - **Starting**: starting.
-        # - **Normal**: Normal.
-        # - **Retrying**: retrying.
+        # - **Prechecking**: performing a precheck.
+        # - **PrecheckFailed**: precheck failed.
+        # - **PreCheckPass**: precheck passed.
+        # - **Starting**: being started.
+        # - **Normal**: normal.
+        # - **Retrying**: being retried.
         # - **Abnormal**: abnormal.
-        # - **Upgrade**: upgrading.
+        # - **Upgrade**: being upgraded.
         # - **Locked**: locked.
-        # - **Downgrade**: downgrading.
+        # - **Downgrade**: being downgraded.
         self.status = status
-        # The query type. Valid values:  
+        # Specifies the query type. Valid values:  
         # - **name**: queries by job name.  
         # - **rds**: queries by destination instance ID.  
         # - **instance**: queries by DTS instance ID.
         # - **srcRds**: queries by source instance ID.
         # 
-        # > This parameter corresponds to the **JobType** parameter.
+        # > This parameter corresponds to the query value and **JobType**.
         self.type = type
 
     def validate(self):

@@ -24,25 +24,25 @@ class DescribeDtsServiceLogResponseBody(DaraModel):
     ):
         # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** parameter.
+        # The dynamic error message, which is used to replace **%s** in the **ErrMessage** response parameter.
         self.dynamic_message = dynamic_message
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The current page number.
         self.page_number = page_number
-        # The number of log entries per page.
+        # The number of log entries returned on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The task logs details of the node.
+        # The details of the task logs.
         self.service_log_contexts = service_log_contexts
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of log entries that meet the specified conditions.
+        # The total number of log entries that meet the query conditions.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -140,11 +140,11 @@ class DescribeDtsServiceLogResponseBodyServiceLogContexts(DaraModel):
         state: str = None,
         time: str = None,
     ):
-        # The specific log information.
+        # The log content.
         self.context = context
-        # The status of the log entry.
+        # The state of the log.
         self.state = state
-        # The time when the log was collected, in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The time when the log was collected. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
         self.time = time
 
     def validate(self):

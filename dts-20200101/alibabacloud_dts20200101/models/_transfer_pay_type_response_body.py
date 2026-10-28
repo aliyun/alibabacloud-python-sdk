@@ -19,7 +19,7 @@ class TransferPayTypeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The billing method after conversion. Valid values:
+        # The new billing method. Valid values:
         # - **PrePaid**: subscription.
         # - **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
@@ -27,16 +27,16 @@ class TransferPayTypeResponseBody(DaraModel):
         self.code = code
         # The task ID.
         self.dts_job_id = dts_job_id
-        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** parameter.
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace **%s** in the error message returned in the **ErrMessage** parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the specified request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The time when the subscription instance expires, in UNIX timestamp format.
-        # > - If the instance is converted to pay-as-you-go, this value is empty.
-        # - You can use a search engine to find a UNIX timestamp conversion tool.
+        # The time when the subscription instance expires. The value is a UNIX timestamp.
+        # > - If the modified instance is a pay-as-you-go instance, this value is null.
+        # - You can obtain a UNIX timestamp conversion tool by using a search engine.
         self.end_time = end_time
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code

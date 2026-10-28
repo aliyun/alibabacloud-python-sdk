@@ -20,22 +20,25 @@ class PreCheckCreateGadOrderRequest(DaraModel):
         slave_db_instance_region: str = None,
         slave_engine_arch_type: str = None,
     ):
-        # The ID of the active geo-redundancy instance group.
+        # The ID of the global active instance group.
         self.instance_id = instance_id
+        # The name of the primary database.
         self.master_database_name = master_database_name
         self.master_engine_arch_type = master_engine_arch_type
         self.master_shard_account_name = master_shard_account_name
         self.master_shard_account_password = master_shard_account_password
         self.owner_id = owner_id
-        # The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The name of the secondary database.
         self.slave_database_name = slave_database_name
-        # The instance ID of the database instance that assumes the secondary role.
+        # The instance ID of the secondary database.
         self.slave_db_instance_id = slave_db_instance_id
-        # The region of the database instance that assumes the secondary role.
+        # The region of the secondary database instance.
         self.slave_db_instance_region = slave_db_instance_region
+        # The architecture type of the secondary database engine.
         self.slave_engine_arch_type = slave_engine_arch_type
 
     def validate(self):

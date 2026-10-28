@@ -29,50 +29,48 @@ class DescribePreCheckStatusResponseBody(DaraModel):
         total: int = None,
         total_record_count: int = None,
     ):
-        # The list of assessment tasks.
+        # The list of evaluation tasks.
         self.analysis_job_progress = analysis_job_progress
-        # The task code that represents the queried subtask. Valid values:
-        # 
-        # - **01**: precheck.
-        # - **02**: schema migration or initial schema synchronization.
-        # - **03**: full data migration or initial full data synchronization.
-        # - **04**: incremental data migration or incremental data synchronization.
+        # The task code, which represents the queried subtask. Valid values:
+        # - **01**: Precheck.
+        # - **02**: Schema migration or initialization.
+        # - **03**: Full data migration or initialization.
+        # - **04**: Incremental migration or synchronization.
         self.code = code
-        # The number of items that failed the assessment.
+        # The number of items that failed the evaluation.
         self.error_analysis_item = error_analysis_item
         # The number of specific items that caused the subtask to fail.
         self.error_item = error_item
-        # The full CIDR block check results.
+        # The check result for all CIDR blocks.
         self.full_net_check_job_status = full_net_check_job_status
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the data migration or data synchronization task.
+        # The ID of the migration or synchronization task.
         self.job_id = job_id
         # The name of the queried subtask.
         self.job_name = job_name
-        # The list of specific items of the subtask and their execution progress.
+        # The list of specific items and the execution progress of each item for the subtask.
         self.job_progress = job_progress
         # The network diagnosis result.
         self.network_diagnosis_result = network_diagnosis_result
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. Valid values: an integer greater than **0** and less than or equal to the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The maximum number of records that can be displayed on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
         # The execution status of the subtask. Valid values:
-        # 
-        # - **NotStarted**: not started.
-        # - **Suspending**: suspended.
-        # - **Checking**: being checked.
-        # - **Migrating**: being migrated.
-        # - **Failed**: failed.
-        # - **Catched**: incremental data migration or synchronization in progress.
-        # - **Finished**: completed.
+        # - **NotStarted**: Not started.
+        # - **Suspending**: Suspending.
+        # - **Checking**: Checking.
+        # - **Migrating**: Migrating.
+        # - **Failed**: Failed.
+        # - **Catched**: Incremental migration or synchronization in progress.
+        # - **Finished**: Finished.
         self.state = state
-        # The details of distributed subtasks.
+        # The details of the distributed subtask.
         self.sub_distributed_job_status = sub_distributed_job_status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of subtasks.
         self.total = total
@@ -250,32 +248,31 @@ class DescribePreCheckStatusResponseBodySubDistributedJobStatus(DaraModel):
         state: str = None,
         total: int = None,
     ):
-        # The task code that represents the queried subtask type. Valid values:
+        # The task code, which indicates the type of the queried subtask. Valid values:
         # 
-        # - **01**: precheck.
-        # - **02**: schema migration or initial schema synchronization.
-        # - **03**: full data migration or initial full data synchronization.
-        # - **04**: incremental data migration or incremental data synchronization.
+        # - **01**: Precheck.
+        # - **02**: Schema migration or initial schema synchronization.
+        # - **03**: Full data migration or initial full data synchronization.
+        # - **04**: Incremental data migration or incremental data synchronization.
         self.code = code
-        # The number of tasks that are currently failing.
+        # The number of failed tasks.
         self.error_item = error_item
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
         # The name of the distributed subtask associated with the task.
         self.job_name = job_name
-        # The list of specific items of the subtask and their execution progress.
+        # The list of specific items and the execution progress of each item for the subtask.
         self.job_progress = job_progress
         # The execution status of the subtask. Valid values:
-        # 
-        # - **NotStarted**: not started.
-        # - **Suspending**: suspended.
-        # - **Checking**: being checked.
-        # - **Migrating**: being migrated.
-        # - **Failed**: failed.
-        # - **Catched**: incremental data migration or synchronization in progress.
-        # - **Finished**: completed.
+        # - **NotStarted**: Not started.
+        # - **Suspending**: Suspending.
+        # - **Checking**: Checking.
+        # - **Migrating**: Migrating.
+        # - **Failed**: Failed.
+        # - **Catched**: Incremental migration or synchronization in progress.
+        # - **Finished**: Finished.
         self.state = state
-        # The total number of returned data entries.
+        # The total number of returned records.
         self.total = total
 
     def validate(self):
@@ -371,69 +368,67 @@ class DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress(DaraM
         target_names: str = None,
         total: int = None,
     ):
-        # The time when the specific item was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+        # The start time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.boot_time = boot_time
         # Indicates whether DTS supports skipping the item after it fails. Valid values:
         # * **true**: Yes.
         # * **false**: No.
         self.can_skip = can_skip
-        # The number of subtasks that are currently running.
+        # The number of currently running subtasks.
         self.current = current
-        # The DDL operation that was executed.
+        # The executed DDL operation.
         self.ddl_sql = ddl_sql
-        # The synchronization latency of incremental data migration or incremental data synchronization.
+        # The incremental data migration or synchronization latency.
         self.delay_seconds = delay_seconds
-        # The name of the database to which the migration object belongs in the destination instance.
+        # The name of the database to which the migrated object belongs in the destination instance.
         self.dest_schema = dest_schema
-        # This parameter will be deprecated.
+        # This parameter will be deprecated soon.
         self.diff_row = diff_row
-        # The error details when the specific item encounters an error.
+        # The error details when the specific item fails.
         self.err_detail = err_detail
-        # The error message when the specific item encounters an error.
+        # The error message when the specific item fails.
         self.err_msg = err_msg
-        # The completion time. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+        # The completion time. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.finish_time = finish_time
-        # The ID of the record in the metastore.
+        # The ID of the record in the metadatabase.
         self.id = id
-        # Indicates whether the specific item is directly ignored and the next item is processed. Valid values:
-        # 
+        # Indicates whether the specific item is directly ignored to proceed to the next specific item. Valid values:
         # - **N**: No.
         # - **Y**: Yes.
         self.ignore_flag = ignore_flag
         # The name of the specific item.
         self.item = item
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
-        # The execution logs of the error.
+        # The execution log information for errors.
         self.logs = logs
         # The name of the specific item.
         self.names = names
         # The item number.
         self.order_num = order_num
-        # This parameter will be deprecated.
+        # This parameter will be deprecated soon.
         self.parent_obj = parent_obj
-        # The repair method when the precheck does not pass.
+        # The solution to a precheck failure.
         self.repair_method = repair_method
-        # Indicates whether the item has been skipped. Valid values:
+        # Indicates whether the task is skipped. Valid values:
         # - **true**: Yes.
         # - **false**: No.
         self.skip = skip
-        # The name of the database to which the migration object belongs in the source instance.
+        # The name of the database to which the migrated object belongs in the source instance.
         self.source_schema = source_schema
         # The execution status of the subtask. Valid values:
-        # 
-        # - **NotStarted**: not started.
-        # - **Suspending**: suspended.
-        # - **Checking**: being checked.
-        # - **Migrating**: being migrated.
-        # - **Failed**: failed.
-        # - **Catched**: incremental data migration or synchronization in progress.
-        # - **Finished**: completed.
+        # - **NotStarted**: Not started.
+        # - **Suspending**: Suspending.
+        # - **Checking**: Checking.
+        # - **Migrating**: Migrating.
+        # - **Failed**: Failed.
+        # - **Catched**: Incremental migration or synchronization in progress.
+        # - **Finished**: Finished.
         self.state = state
-        # The progress of sub-items of the specific item.
+        # The progress of the sub-items of the specific item.
         # > If <b>[]</b> is returned, no sub-items exist.
         self.sub = sub
-        # The name of the target object.
+        # The names of the destination objects.
         self.target_names = target_names
         # The total number of items.
         self.total = total
@@ -719,18 +714,18 @@ class DescribePreCheckStatusResponseBodyNetworkDiagnosisResultDiagnosis(DaraMode
         international_doc_url: str = None,
         result: str = None,
     ):
-        # The documentation URL for the China region.
+        # The documentation URL for the China site.
         self.cn_doc_url = cn_doc_url
         # The diagnosis code.
         self.code = code
         # The endpoint type. Valid values:
-        # - **source**: source endpoint.
-        # - **destination**: destination endpoint.
-        # - **unknown**: unknown.
+        # - **source**: The source endpoint.
+        # - **destination**: The destination endpoint.
+        # - **unknown**: Unknown.
         self.endpoint_type = endpoint_type
         # The documentation URL for regions outside China.
         self.international_doc_url = international_doc_url
-        # The reserved field for the diagnosis result. This field is empty by default.
+        # The reserved field for the diagnosis result. Default value: empty.
         self.result = result
 
     def validate(self):
@@ -806,36 +801,35 @@ class DescribePreCheckStatusResponseBodyJobProgress(DaraModel):
         target_names: str = None,
         total: int = None,
     ):
-        # The time when the specific item was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+        # The start time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.boot_time = boot_time
         # Indicates whether DTS supports skipping the specific item after it fails.
         self.can_skip = can_skip
-        # The number of subtasks that are currently running.
+        # The number of currently running subtasks.
         self.current = current
-        # The DDL operation that was executed.
+        # The executed DDL operation.
         self.ddl_sql = ddl_sql
-        # The synchronization latency of incremental data migration or incremental data synchronization.
+        # The incremental migration or synchronization latency.
         self.delay_seconds = delay_seconds
-        # The name of the database to which the migration object belongs in the destination instance.
+        # The name of the database to which the migrated object belongs in the destination instance.
         self.dest_schema = dest_schema
-        # This parameter will be deprecated.
+        # This parameter will be deprecated soon.
         self.diff_row = diff_row
-        # The error details when the specific item encounters an error.
+        # The error details when the specific item fails.
         self.err_detail = err_detail
-        # The error message when the specific item encounters an error.
+        # The error message when the specific item fails.
         self.err_msg = err_msg
-        # The time when the specific item was completed. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>ZZ format in UTC.
+        # The completion time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>ZZ format (UTC).
         self.finish_time = finish_time
-        # The ID of the record in the metastore.
+        # The ID recorded in the metadatabase.
         self.id = id
-        # Indicates whether the specific item is directly ignored and the next item is processed. Valid values:
-        # 
+        # Indicates whether the specific item is directly ignored to proceed to the next specific item. Valid values:
         # - **N**: No.
         # - **Y**: Yes.
         self.ignore_flag = ignore_flag
         # The short name of the specific item.
         self.item = item
-        # The subtask ID.
+        # The ID of the subtask.
         self.job_id = job_id
         # The execution logs of the specific error.
         self.logs = logs
@@ -843,31 +837,30 @@ class DescribePreCheckStatusResponseBodyJobProgress(DaraModel):
         self.names = names
         # The item number.
         self.order_num = order_num
-        # This parameter will be deprecated.
+        # This parameter will be deprecated soon.
         self.parent_obj = parent_obj
-        # The repair method when the specific item does not pass.
+        # The solution if the specific item fails.
         self.repair_method = repair_method
-        # Indicates whether you have set to skip this specific item after it failed. Valid values:
-        # * **true**: Yes.
-        # * **false**: No.
+        # Indicates whether the specific item is configured to be skipped after it fails. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.skip = skip
-        # The name of the database to which the migration object belongs in the source instance.
+        # The name of the database to which the migrated object belongs in the source instance.
         self.source_schema = source_schema
         # The execution progress status of the specific item. Valid values:
-        # 
-        # - **NotStarted**: not started.
-        # - **Checking**: being checked.
-        # - **Migrating**: being migrated.
-        # - **Failed**: failed.
-        # - **Warning**: warning.
-        # - **Success**: completed.
+        # - **NotStarted**: Not started.
+        # - **Checking**: Checking.
+        # - **Migrating**: Migrating.
+        # - **Failed**: Failed.
+        # - **Warning**: Warning.
+        # - **Success**: Successful.
         self.state = state
-        # The progress of sub-items of the specific item.
+        # The progress of the sub-items of the specific item.
         # > If <b>[]</b> is returned, no sub-items exist.
         self.sub = sub
-        # The name of the object to be migrated or synchronized.
+        # The names of the objects to be migrated or synchronized.
         self.target_names = target_names
-        # The total number of specific items in the subtask.
+        # The total number of specific items for the subtask.
         self.total = total
 
     def validate(self):
@@ -1050,9 +1043,9 @@ class DescribePreCheckStatusResponseBodyJobProgressLogs(DaraModel):
         err_type: str = None,
         log_level: str = None,
     ):
-        # The error information.
+        # The error message.
         self.err_data = err_data
-        # The error message returned by DTS when the specific item encounters an error.
+        # The DTS error message when the specific item fails.
         self.err_msg = err_msg
         # The error type.
         self.err_type = err_type
@@ -1115,45 +1108,45 @@ class DescribePreCheckStatusResponseBodyFullNetCheckJobStatus(DaraModel):
         state: str = None,
         total: int = None,
     ):
-        # The task code. **01** indicates precheck.
+        # The task code. A value of **01** indicates a precheck.
         self.code = code
         # The region ID of the destination CIDR block.
         self.dest_region = dest_region
         # The destination CIDR block.
         self.dest_region_cidr = dest_region_cidr
         # The connection method of the destination instance. Valid values:
-        # - **ALIYUN**: **cloud instance**.
-        # - **OTHER**: **public IP address**.
-        # - **ECS**: **self-managed database on ECS**.
-        # - **EXPRESS**: **Express Connect/VPN Gateway/Smart Access Gateway**.
-        # - **CEN**: **Cloud Enterprise Network (CEN)**.
-        # - **DG**: **Database Gateway (DG)**.
+        # - **ALIYUN**: Alibaba Cloud instance.
+        # - **OTHER**: Public IP address.
+        # - **ECS**: Self-managed database hosted on ECS.
+        # - **EXPRESS**: Express Connect circuit, VPN gateway, or Smart Access Gateway.
+        # - **CEN**: Cloud Enterprise Network (CEN).
+        # - **DG**: Database Gateway.
         self.destination_endpoint_type = destination_endpoint_type
         # The number of items that failed the precheck.
         self.error_item = error_item
         # The region ID of the node where the instance runs.
         self.host_region = host_region
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
-        # The task name.
+        # The job name.
         self.job_name = job_name
-        # The list of specific items of the task and their execution progress.
+        # The list of specific items and the execution progress of each item for the task.
         self.job_progress = job_progress
         # The connection method of the source instance. Valid values:
-        # - **ALIYUN**: **cloud instance**.
-        # - **OTHER**: **public IP address**.
-        # - **ECS**: **self-managed database on ECS**.
-        # - **EXPRESS**: **Express Connect/VPN Gateway/Smart Access Gateway**.
-        # - **CEN**: **Cloud Enterprise Network (CEN)**.
-        # - **DG**: **Database Gateway (DG)**.
+        # - **ALIYUN**: Alibaba Cloud instance.
+        # - **OTHER**: Public IP address.
+        # - **ECS**: Self-managed database hosted on ECS.
+        # - **EXPRESS**: Express Connect circuit, VPN gateway, or Smart Access Gateway.
+        # - **CEN**: Cloud Enterprise Network (CEN).
+        # - **DG**: Database Gateway.
         self.source_endpoint_type = source_endpoint_type
         # The region ID of the source CIDR block.
         self.src_region = src_region
         # The source CIDR block.
         self.src_region_cidr = src_region_cidr
         # The check result. Valid values:
-        # - **Failed**: failed.
-        # - **Success**: completed.
+        # - **Failed**: The check failed.
+        # - **Success**: The check succeeded.
         self.state = state
         # The total number of items.
         self.total = total
@@ -1293,63 +1286,62 @@ class DescribePreCheckStatusResponseBodyFullNetCheckJobStatusJobProgress(DaraMod
         target_names: str = None,
         total: int = None,
     ):
-        # The time when the specific item was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+        # The start time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.boot_time = boot_time
         # Indicates whether DTS supports skipping the item after it fails. Valid values:
         # * **true**: Yes.
         # * **false**: No.
         self.can_skip = can_skip
-        # The number of tasks that are currently running.
+        # The number of currently running tasks.
         self.current = current
-        # The DDL operation that was executed.
+        # The executed DDL operation.
         self.ddl_sql = ddl_sql
         # The task latency.
         self.delay_seconds = delay_seconds
-        # The name of the database to which the migration object belongs in the destination instance.
+        # The name of the database to which the migrated object belongs in the destination instance.
         self.dest_schema = dest_schema
-        # This parameter will be deprecated.
+        # This parameter will be deprecated soon.
         self.diff_row = diff_row
-        # The error details when the specific item encounters an error.
+        # The error details when the specific item fails.
         self.err_detail = err_detail
-        # The error message when the specific item encounters an error.
+        # The error message when the specific item fails.
         self.err_msg = err_msg
-        # The time when the task was completed. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
+        # The task completion time. The time follows the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.finish_time = finish_time
-        # The ID of the record in the metastore.
+        # The ID of the record in the metadatabase.
         self.id = id
-        # Indicates whether the specific item is directly ignored and the next item is processed. Valid values:
-        # 
+        # Indicates whether the specific item is directly ignored to proceed to the next specific item. Valid values:
         # - **N**: No.
         # - **Y**: Yes.
         self.ignore_flag = ignore_flag
         # The name of the specific item.
         self.item = item
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
-        # The execution logs of the error.
+        # The execution log information for errors.
         self.logs = logs
         # The name of the specific item.
         self.names = names
         # The item number.
         self.order_num = order_num
-        # This parameter will be deprecated.
+        # This parameter will be deprecated soon.
         self.parent_obj = parent_obj
-        # The repair method when the precheck does not pass.
+        # The solution to a precheck failure.
         self.repair_method = repair_method
-        # Indicates whether you have set to skip this specific item after it failed. Valid values:
-        # * **true**: Yes.
-        # * **false**: No.
+        # Indicates whether the specific item is configured to be skipped after it fails. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.skip = skip
-        # The name of the database to which the migration object belongs in the source instance.
+        # The name of the database to which the migrated object belongs in the source instance.
         self.source_schema = source_schema
         # The check result. Valid values:
-        # - **Failed**: failed.
-        # - **Success**: completed.
+        # - **Failed**: The check failed.
+        # - **Success**: The check succeeded.
         self.state = state
-        # The progress of sub-items of the specific item.
+        # The progress of the sub-items of the specific item.
         # > If <b>[]</b> is returned, no sub-items exist.
         self.sub = sub
-        # The name of the target object.
+        # The names of the destination objects.
         self.target_names = target_names
         # The total number of items.
         self.total = total
@@ -1610,63 +1602,62 @@ class DescribePreCheckStatusResponseBodyAnalysisJobProgress(DaraModel):
         target_names: str = None,
         total: int = None,
     ):
-        # The time when the specific item was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+        # The start time of the specific item, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.boot_time = boot_time
         # Indicates whether the sub-item can be skipped.
         self.can_skip = can_skip
-        # The number of subtasks that are currently running.
+        # The number of currently running subtasks.
         self.current = current
-        # The DDL operation that was executed.
+        # The executed DDL operation.
         self.ddl_sql = ddl_sql
         # The task latency.
         self.delay_seconds = delay_seconds
-        # The name of the database to which the migration object belongs in the destination instance.
+        # The name of the database to which the migrated object belongs in the destination instance.
         self.dest_schema = dest_schema
-        # This parameter will be deprecated.
+        # This parameter will be deprecated soon.
         self.diff_row = diff_row
-        # The error details when the item encounters an error.
+        # The error details when the item fails.
         self.err_detail = err_detail
         # The specific error message.
         self.err_msg = err_msg
-        # The time when the assessment task was completed. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+        # The end time of the evaluation task, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.finish_time = finish_time
-        # The ID of the assessment item in the database.
+        # The ID of the evaluation item in the database.
         self.id = id
-        # Indicates whether the specific item is directly ignored and the next item is processed. Valid values:
-        # 
+        # Indicates whether the specific item is directly ignored to proceed to the next specific item. Valid values:
         # - **N**: No.
         # - **Y**: Yes.
         self.ignore_flag = ignore_flag
-        # The name of the assessment item.
+        # The name of the evaluation item.
         self.item = item
-        # The ID of the assessment task.
+        # The ID of the evaluation task.
         self.job_id = job_id
-        # The sub-assessment items.
+        # The sub-evaluation items.
         self.logs = logs
-        # The name of the assessment item.
+        # The name of the evaluation item.
         self.names = names
-        # The number of the assessment item.
+        # The number of the evaluation item.
         self.order_num = order_num
-        # This parameter will be deprecated.
+        # This parameter will be deprecated soon.
         self.parent_obj = parent_obj
-        # The repair method for the assessment item.
+        # The solution for the evaluation item.
         self.repair_method = repair_method
-        # Indicates whether you have set to skip this assessment item after it failed. Valid values:
-        # * **true**: Yes.
-        # * **false**: No.
+        # Indicates whether the evaluation item is configured to be skipped after it fails. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.skip = skip
-        # The name of the database to which the migration object belongs in the source instance.
+        # The name of the database to which the migrated object belongs in the source instance.
         self.source_schema = source_schema
-        # The result of the assessment item. Valid values:
-        # - **Failed**: failed.
-        # - **Success**: completed.
+        # The result of the evaluation item. Valid values:
+        # - **Failed**: Failed.
+        # - **Success**: Successful.
         self.state = state
-        # The progress of sub-items of the specific item.
+        # The progress of the sub-items of the specific item.
         # > If <b>[]</b> is returned, no sub-items exist.
         self.sub = sub
-        # The name of the target object.
+        # The names of the destination objects.
         self.target_names = target_names
-        # The total number of specific items in the subtask.
+        # The total number of specific items for the subtask.
         self.total = total
 
     def validate(self):
@@ -1849,9 +1840,9 @@ class DescribePreCheckStatusResponseBodyAnalysisJobProgressLogs(DaraModel):
         err_type: str = None,
         log_level: str = None,
     ):
-        # The error information.
+        # The error message.
         self.err_data = err_data
-        # The error message returned by DTS when the specific item encounters an error.
+        # The DTS error message when the specific item fails.
         self.err_msg = err_msg
         # The error type.
         self.err_type = err_type

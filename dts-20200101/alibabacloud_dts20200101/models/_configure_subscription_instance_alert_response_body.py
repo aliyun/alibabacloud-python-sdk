@@ -12,13 +12,13 @@ class ConfigureSubscriptionInstanceAlertResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The error code returned when the call fails.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned when the call fails.
+        # The error message returned if the call fails.
         self.err_message = err_message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

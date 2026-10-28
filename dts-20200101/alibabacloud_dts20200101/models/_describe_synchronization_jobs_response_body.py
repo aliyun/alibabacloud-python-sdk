@@ -106,9 +106,9 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstances(DaraModel)
         synchronization_objects: List[main_models.DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjects] = None,
         tags: List[main_models.DescribeSynchronizationJobsResponseBodySynchronizationInstancesTags] = None,
     ):
-        # The time when the synchronization task was created, in the format of <i>yyyy-MM-dd HH:mm:ss</i>.0 (UTC+8).
+        # The time when the data synchronization task was created. The time is displayed in the <i>yyyy-MM-dd HH:mm:ss</i>.0 format in UTC+8.
         self.create_time = create_time
-        # Indicates whether initial full data synchronization is performed. Valid values:
+        # Specifies whether to perform initial full data synchronization. Valid values:
         # 
         # - **true**: Yes.
         # - **false**: No.
@@ -116,7 +116,7 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstances(DaraModel)
         # The status of initial full data synchronization.
         self.data_initialization_status = data_initialization_status
         # The status of incremental data synchronization.
-        # > This parameter set and its contained parameters have been discontinued.
+        # > **[Deprecated]** This parameter collection and its sub-parameters are deprecated.
         self.data_synchronization_status = data_synchronization_status
         # The synchronization latency, in seconds.
         self.delay = delay
@@ -124,36 +124,36 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstances(DaraModel)
         self.destination_endpoint = destination_endpoint
         # The error message returned when data synchronization fails.
         self.error_message = error_message
-        # The expiration time of the synchronization instance, in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
-        # > This parameter is returned only when the value of the **PayType** parameter is **PrePaid**.
+        # The expiration time of the data synchronization instance. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+        # > This parameter is returned only when the **PayType** parameter is set to **PrePaid**.
         self.expire_time = expire_time
-        # The time when the synchronization instance was created, in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the data synchronization instance was created. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.instance_create_time = instance_create_time
-        # The time when the synchronization task was created, in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the data synchronization task was created. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.job_create_time = job_create_time
-        # The billing method of the synchronization instance. Valid values:
-        # - **PrePaid**: subscription.
-        # - **PostPaid**: pay-as-you-go.
+        # The billing method of the data synchronization instance. Valid values:
+        # - **PrePaid**: Subscription.
+        # - **PostPaid**: Pay-as-you-go.
         self.pay_type = pay_type
-        # The overview information of the synchronization link.
+        # The overview of the synchronization link.
         self.performance = performance
         # The precheck status.
         self.precheck_status = precheck_status
         # The connection information of the source instance.
         self.source_endpoint = source_endpoint
-        # The status of the synchronization instance. Valid values:
-        # - **NotStarted**: not started.
-        # - **Prechecking**: running the precheck.
-        # - **PrecheckFailed**: precheck failed.
-        # - **Initializating**: performing initial synchronization.
-        # - **InitializeFailed**: initial synchronization failed.
-        # - **Synchronizing**: synchronizing.
-        # - **Failed**: synchronization failed.
-        # - **Suspending**: paused.
-        # - **Modifying**: modifying synchronization objects.
-        # - **Finished**: completed.
+        # The status of the data synchronization instance. Valid values:
+        # - **NotStarted**: The instance is not started.
+        # - **Prechecking**: The precheck is in progress.
+        # - **PrecheckFailed**: The precheck failed.
+        # - **Initializating **: The initial synchronization is in progress.
+        # - **InitializeFailed**: The initial synchronization failed.
+        # - **Synchronizing **: The synchronization is in progress.
+        # - **Failed**: The synchronization failed.
+        # - **Suspending**: The instance is suspended.
+        # - **Modifying**: The synchronization objects are being modified.
+        # - **Finished**: The synchronization is completed.
         self.status = status
-        # Indicates whether initial schema synchronization is performed. Valid values:
+        # Specifies whether to perform initial schema synchronization. Valid values:
         # 
         # - **true**: Yes.
         # - **false**: No.
@@ -161,18 +161,18 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstances(DaraModel)
         # The status of initial schema synchronization.
         self.structure_initialization_status = structure_initialization_status
         # The synchronization direction. Valid values:
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # - **Forward**: Forward.
+        # - **Reverse**: Reverse.
         self.synchronization_direction = synchronization_direction
-        # The specification of the synchronization link.
+        # The specifications of the synchronization link.
         self.synchronization_job_class = synchronization_job_class
         # The instance ID of the data synchronization instance.
         self.synchronization_job_id = synchronization_job_id
-        # The name of the synchronization instance.
+        # The name of the data synchronization instance.
         self.synchronization_job_name = synchronization_job_name
         # The synchronization objects.
         self.synchronization_objects = synchronization_objects
-        # The tag collection.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -410,11 +410,11 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchroniza
         table_excludes: List[main_models.DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjectsTableExcludes] = None,
         table_includes: List[main_models.DescribeSynchronizationJobsResponseBodySynchronizationInstancesSynchronizationObjectsTableIncludes] = None,
     ):
-        # The name of the database to which the objects are mapped in the destination database.
+        # The mapped name of the database to be synchronized in the destination database.
         self.new_schema_name = new_schema_name
         # The name of the database to be synchronized.
         self.schema_name = schema_name
-        # The tables that are excluded from the database to be synchronized. These tables are not synchronized.
+        # The tables excluded from the database to be synchronized. These tables are not synchronized.
         self.table_excludes = table_excludes
         # The tables to be synchronized.
         self.table_includes = table_includes
@@ -542,13 +542,13 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesStructureIn
         self.error_message = error_message
         # The progress of initial schema synchronization, in percentage.
         self.percent = percent
-        # The number of tables for which initial schema synchronization has been completed.
+        # The number of tables for which initial schema synchronization is completed.
         self.progress = progress
         # The status of initial schema synchronization. Valid values:
-        # - **NotStarted**: not started.
-        # - **Migrating**: in progress.
-        # - **Failed**: failed.
-        # - **Finished**: completed.
+        # - **NotStarted**: The initial synchronization is not started.
+        # - **Migrating **: The initial synchronization is in progress.
+        # - **Failed **: The initial synchronization failed.
+        # - **Finished**: The initial synchronization is completed.
         self.status = status
 
     def validate(self):
@@ -669,13 +669,13 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckSta
         percent: str = None,
         status: str = None,
     ):
-        # The execution details of each precheck item.
+        # The execution status of each precheck item.
         self.detail = detail
         # The overall progress of the precheck, in percentage.
         self.percent = percent
         # The precheck result. Valid values:
-        # - **Success**: passed.
-        # - **Failed**: failed.
+        # - **Success**: The check item passed.
+        # - **Failed**: The check item failed.
         self.status = status
 
     def validate(self):
@@ -727,16 +727,16 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesPrecheckSta
         repair_method: str = None,
     ):
         # The check result. Valid values:
-        # - **Success**: passed.
-        # - **Failed**: failed.
+        # - **Success**: The check item passed.
+        # - **Failed**: The check item failed.
         self.check_status = check_status
         # The error message returned when the precheck fails.
-        # > This parameter is returned only when the value of the **CheckStatus** parameter is **Failed**.
+        # > This parameter is returned only when the **CheckStatus** parameter is set to **Failed**.
         self.error_message = error_message
         # The precheck item.
         self.item_name = item_name
-        # The repair method when the precheck fails.
-        # > This parameter is returned only when the value of the **CheckStatus** parameter is **Failed**.
+        # The solution for a failed precheck item.
+        # > This parameter is returned only when the **CheckStatus** parameter is set to **Failed**.
         self.repair_method = repair_method
 
     def validate(self):
@@ -783,7 +783,7 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesPerformance
         flow: str = None,
         rps: str = None,
     ):
-        # The volume of data synchronized per second, in MB/s.
+        # The traffic of data synchronized per second, in MB/s.
         self.flow = flow
         # The number of SQL statements synchronized per second, including BEGIN, COMMIT, DML statements (INSERT, DELETE, and UPDATE), and DDL statements.
         self.rps = rps
@@ -830,7 +830,7 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesDestination
         self.ip = ip
         # The instance ID of the destination instance.
         self.instance_id = instance_id
-        # The type of the destination instance.
+        # The destination instance type.
         self.instance_type = instance_type
         # The database service port of the destination instance.
         self.port = port
@@ -895,17 +895,17 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataSynchro
         percent: str = None,
         status: str = None,
     ):
-        # The synchronization latency of incremental data synchronization.
-        # > This parameter has been discontinued.
+        # The incremental data synchronization latency.
+        # > **[Deprecated]** This parameter is deprecated.
         self.delay = delay
         # The error message returned when incremental data synchronization fails.
-        # > This parameter has been discontinued.
+        # > **[Deprecated]** This parameter is deprecated.
         self.error_message = error_message
         # The progress of incremental data synchronization.
-        # > This parameter has been discontinued.
+        # > **[Deprecated]** This parameter is deprecated.
         self.percent = percent
         # The status of incremental data synchronization.
-        # > This parameter has been discontinued.
+        # > **[Deprecated]** This parameter is deprecated.
         self.status = status
 
     def validate(self):
@@ -958,13 +958,13 @@ class DescribeSynchronizationJobsResponseBodySynchronizationInstancesDataInitial
         self.error_message = error_message
         # The progress of initial full data synchronization, in percentage.
         self.percent = percent
-        # The number of records that have been synchronized during initial full data synchronization.
+        # The number of records for which initial full data synchronization is completed.
         self.progress = progress
         # The status of initial full data synchronization. Valid values:
-        # - **NotStarted**: not started.
-        # - **Migrating**: in progress.
-        # - **Failed**: failed.
-        # - **Finished**: completed.
+        # - **NotStarted**: The initial synchronization is not started.
+        # - **Migrating**: The initial synchronization is in progress.
+        # - **Failed**: The initial synchronization failed.
+        # - **Finished**: The initial synchronization is completed.
         self.status = status
 
     def validate(self):

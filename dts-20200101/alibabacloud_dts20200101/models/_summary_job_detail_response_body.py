@@ -21,10 +21,10 @@ class SummaryJobDetailResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the data migration or synchronization task.
+        # The ID of the migration or synchronization task.
         self.job_id = job_id
-        # The array of migration object information.
-        # > The array is returned in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
+        # The returned information about the array of migrated objects.
+        # > The array is returned in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}\\].
         self.progress_summary_details = progress_summary_details
         # The request ID.
         self.request_id = request_id
@@ -98,7 +98,7 @@ class SummaryJobDetailResponseBodyProgressSummaryDetails(DaraModel):
         state: int = None,
         total_count: int = None,
     ):
-        # The object type of the migration object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type** (user-defined type), **Synonym**, **Trigger**, **Function**, **Procedure** (stored procedure), **Package**, **Default**, **Rule**, **PlanGuide** (execute plan), and **Sequence**.
+        # The migrated object type. Valid values: **Table** (table), **Constraint** (constraint), **Index** (index), **View** (view), **Materialize View** (materialized view), **Type** (custom type), **Synonym** (synonym), **Trigger** (trigger), **Function** (function), **Procedure** (stored procedure), **Package** (package), **Default** (default value), **Rule** (rule), **PlanGuide** (execute plan), and **Sequence** (sequence).
         self.key = key
         # The migration status. Valid values:
         # - **0**: finish (completed).
@@ -108,7 +108,7 @@ class SummaryJobDetailResponseBodyProgressSummaryDetails(DaraModel):
         # - **4**: warning (error).
         # - **5**: failed (failed).
         self.state = state
-        # The total number of migration objects.
+        # The total number of migrated objects.
         self.total_count = total_count
 
     def validate(self):

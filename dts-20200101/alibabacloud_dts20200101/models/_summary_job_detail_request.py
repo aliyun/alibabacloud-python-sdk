@@ -18,7 +18,7 @@ class SummaryJobDetailRequest(DaraModel):
     ):
         # The migration or synchronization instance ID.
         self.dts_instance_id = dts_instance_id
-        # The ID of the data migration or synchronization task.
+        # The ID of the migration or synchronization task.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
@@ -28,25 +28,25 @@ class SummaryJobDetailRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_code = job_code
-        # The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The type of schema definition. Valid values:
         # 
-        # - **before**: schema migration or initial schema synchronization.
+        # - **before**: schema migration or initial schema synchronization for databases and tables.
         # - **after**: DDL operations during incremental data migration or synchronization.
         self.struct_type = struct_type
-        # The synchronization direction. Valid values:
+        # The direction of the synchronization link. Valid values:
         # - **Forward**: forward.
         # - **Reverse**: reverse.
         # 
         # > - Default value: **Forward**.
-        # - You can set this parameter to **Reverse** to release the reverse synchronization link only when the topology of the data synchronization instance is two-way synchronization.
+        # - You can set this parameter to **Reverse** to release the reverse synchronization link only when the synchronization topology of the data synchronization instance is two-way.
         self.synchronization_direction = synchronization_direction
-        # Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
-        # - **true**: The node is a seamless integration node.
-        # - **false**: The node is not a seamless integration node.
+        # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
+        # - **true**: yes.
+        # - **false**: no.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

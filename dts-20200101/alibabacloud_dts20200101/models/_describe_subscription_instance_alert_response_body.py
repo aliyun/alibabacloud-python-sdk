@@ -21,31 +21,31 @@ class DescribeSubscriptionInstanceAlertResponseBody(DaraModel):
     ):
         # The mobile phone number of the contact for latency alerts.
         self.delay_alert_phone = delay_alert_phone
-        # Indicates whether latency alerting is enabled. Valid values:
+        # Indicates whether the latency status is monitored. Valid values:
         # 
-        # - **enable**: Enabled.
-        # - **disable**: Disabled.
+        # - **enable**: Yes.
+        # - **disable**: No.
         self.delay_alert_status = delay_alert_status
-        # The threshold for triggering latency alerts. Unit: seconds. The value must be an integer. A value of 10 seconds is recommended.
+        # The threshold for triggering a latency alert. Unit: seconds. The value must be an integer. Recommended value: 10.
         self.delay_over_seconds = delay_over_seconds
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
-        # The mobile phone number of the contact for error alerts.
+        # The mobile phone number of the contact for exception alerts.
         self.error_alert_phone = error_alert_phone
-        # Indicates whether error alerting is enabled. Valid values:
+        # Indicates whether the exception status is monitored. Valid values:
         # 
-        # - **enable**: Enabled.
-        # - **disable**: Disabled.
+        # - **enable**: Yes.
+        # - **disable**: No.
         self.error_alert_status = error_alert_status
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The change tracking instance ID.
         self.subscription_instance_id = subscription_instance_id
         # The name of the change tracking instance.
         self.subscription_instance_name = subscription_instance_name
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

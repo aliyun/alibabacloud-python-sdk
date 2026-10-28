@@ -17,20 +17,20 @@ class UpgradeTwoWayResponseBody(DaraModel):
     ):
         # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic error message. This parameter is used to replace the **%s** variable in the **ErrMessage** parameter.
-        # > For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **InstanceId**, the specified value of the request parameter **InstanceId** is invalid.
+        # The dynamic error message. This parameter is used to replace **%s** in the error message returned by the **ErrMessage** parameter.
+        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **InstanceId**, the **InstanceId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the call failed.
+        # The error code returned when the request fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned when the request fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

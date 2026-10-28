@@ -14,16 +14,16 @@ class DescribeEndpointSwitchStatusRequest(DaraModel):
         resource_group_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated soon.
         self.account_id = account_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can generate the value from your client. Make sure that the value is unique across different requests. The **ClientToken** parameter supports only ASCII characters and can be up to 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
         # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The task ID. This value is returned after you successfully call the [SwitchSynchronizationEndpoint](https://help.aliyun.com/document_detail/201858.html) operation.
+        # The task ID. This value is returned after a successful call to the [SwitchSynchronizationEndpoint](https://help.aliyun.com/document_detail/201858.html) operation.
         # 
         # This parameter is required.
         self.task_id = task_id

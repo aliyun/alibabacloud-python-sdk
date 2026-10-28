@@ -26,58 +26,58 @@ class ModifyDtsJobAdvanceRequest(DaraModel):
         synchronization_direction: str = None,
         zero_etl_job: bool = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the value is unique across different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # Specifies whether to perform full data migration or initial full data synchronization. Valid values:
         # 
         # - **true**: yes.
         # - **false**: no.
         self.data_initialization = data_initialization
-        # Specifies whether to perform incremental data migration or synchronization. Valid values:
+        # Specifies whether to perform incremental data migration or incremental data synchronization. Valid values:
         # 
         # - **false**: no.
         # - **true**: yes.
         self.data_synchronization = data_synchronization
-        # The modified synchronization objects, in JSON format. For more information about the definition, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
-        # - The original DbList is overwritten by the new DbList. Make sure that the new DbList contains all the objects that need to be synchronized. Otherwise, synchronization objects may be lost. Modify this parameter with caution.
-        # - Call [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) to query the current synchronization objects before you modify them based on your business requirements. For example, if the current objects are tables A and B, and you want to add table C, specify tables A, B, and C in this parameter.
-        # - The maximum size of DbList is 1 MB.
-        # - If DbList contains filter conditions, the total length of DbList (including filter conditions) cannot exceed 1 MB.
-        # - For distributed tasks (such as migration or synchronization tasks whose source is PolarDB-X 1.0), DbList is split based on physical shards and multiple subtasks are generated. The maximum size of DbList for each subtask is 1 MB.
+        # The modified synchronization objects, in the format of a JSON string. For detailed definitions, see [Objects for data migration, synchronization, or change tracking](https://help.aliyun.com/document_detail/209545.html).
+        # - The original DbList is overwritten by the new DbList. Make sure that the new DbList contains all the objects to be synchronized. Otherwise, synchronization objects may be lost. Modify the objects with caution.
+        # - We recommend that you call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the current synchronization objects in advance, and then specify the modified synchronization objects based on your business requirements. For example, if the current objects are Table A and Table B, and you want to add Table C, you must specify Table A, Table B, and Table C in this parameter.
+        # - The DbList parameter supports a maximum of 1 MB of data.
+        # - If the DbList contains filter conditions, the total length of the DbList (including the filter conditions) can be up to 1 MB.
+        # - For distributed tasks (such as data migration or synchronization tasks whose source is PolarDB-X 1.0), the DbList is split based on physical table shards to generate multiple subtasks. The DbList of each subtask supports a maximum of 1 MB of data.
         self.db_list = db_list
         # The instance ID of the data synchronization instance.
         # 
         # This parameter is required.
         self.dts_instance_id = dts_instance_id
-        # The ID of the synchronization task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+        # The ID of the synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the ID.
         self.dts_job_id = dts_job_id
-        # A field dedicated to T+1 business scenarios. This is an ETL operator and a business-specific field.
+        # The dedicated field for T+1 business and ETL operators.
         self.etl_operator_column_reference = etl_operator_column_reference
         # The OSS URL of the synchronization file.
         self.file_oss_url_object = file_oss_url_object
         # The name of the table to be filtered.
         self.filter_table_name = filter_table_name
-        # The method used to modify the synchronization task. If this parameter is not specified, the synchronization objects are modified by default. Set this parameter to UPDATE_RESERVED to modify reserved parameters.
+        # Specifies the method to modify the synchronization task. If you do not specify this parameter, the synchronization objects are modified by default. If you set this parameter to UPDATE_RESERVED, the reserved parameters are modified.
         self.modify_type_enum = modify_type_enum
-        # The region in which the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The reserved parameters of DTS. The update method is append rather than overwrite. The value is in the MAP JSON format. You can specify this parameter to meet special requirements, such as whether to automatically start a precheck. The usage is similar to that of the Reserve parameter. For details, see [Reserve parameter description](https://help.aliyun.com/document_detail/273111.html).
+        # The reserved parameters of DTS. The update method is addition rather than overwrite. The format is a MAP JSON string. You can specify this parameter to implement special requirements, such as whether to automatically start the precheck. The usage is similar to the Reserve parameter. For more information, see [Reserve parameter description](https://help.aliyun.com/document_detail/273111.html).
         self.reserved = reserved
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or initial schema synchronization. Valid values:
         # 
         # - **true**: yes.
         # - **false**: no.
         self.structure_initialization = structure_initialization
-        # The synchronization direction. Valid values:
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # Specifies the synchronization direction. Valid values:
+        # - **Forward**: forward synchronization.
+        # - **Reverse**: reverse synchronization.
         # 
         # > - Default value: **Forward**.
         # - This parameter is required only when the synchronization topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
-        # Specifies whether this is a seamless integration (zero-ETL) node. Valid values:
+        # Specifies whether the task is a zero-ETL task. Valid values:
         # - **true**: yes.
         # - **false**: no.
         self.zero_etl_job = zero_etl_job

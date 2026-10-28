@@ -15,7 +15,7 @@ class InitDtsRdsInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The built-in account that DTS uses to connect to the unit node.
+        # The built-in account used by DTS to connect to the unit node.
         self.admin_account = admin_account
         # The password of the built-in account.
         self.admin_password = admin_password
@@ -27,7 +27,7 @@ class InitDtsRdsInstanceResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

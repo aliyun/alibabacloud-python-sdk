@@ -14,9 +14,9 @@ class StopMigrationJobRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be discontinued.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter is about to be deprecated.
         self.account_id = account_id
-        # The client token that is used to ensure the idempotence of the request. Generate a value from your client to ensure uniqueness across different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # Instance ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query instance ID.
         # 
@@ -25,7 +25,7 @@ class StopMigrationJobRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

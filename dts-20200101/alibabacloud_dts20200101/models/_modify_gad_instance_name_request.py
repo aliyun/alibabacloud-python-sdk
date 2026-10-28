@@ -13,14 +13,14 @@ class ModifyGadInstanceNameRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The instance ID of the active geo-redundancy instance group.
+        # The instance ID of the active-active instance group.
         self.instance_id = instance_id
-        # The instance name of the active geo-redundancy instance group.
+        # The name of the active-active instance group.
         self.instance_name = instance_name
         self.owner_id = owner_id
-        # The region ID of the task. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the task resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

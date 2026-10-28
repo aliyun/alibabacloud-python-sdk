@@ -18,47 +18,47 @@ class ListDedicatedClusterRequest(DaraModel):
         state: str = None,
         type: str = None,
     ):
-        # The sort column when the response contains multiple DTS dedicated cluster instances. Valid values:
+        # The sort field when the response contains multiple DTS dedicated cluster instances. Valid values:
         # 
-        # - **gmtCreated**: creation time.
-        # - **orderCount**: number of nodes.
+        # - **gmtCreated**: Creation time.
+        # - **orderCount**: Number of nodes.
         self.order_column = order_column
         # The sort order. Valid values:
         # 
-        # - **asc**: ascending order. This is the default value.
-        # - **desc**: descending order.
+        # - **asc**: Ascending order. This is the default value.
+        # - **desc**: Descending order.
         self.order_direction = order_direction
         self.owner_id = owner_id
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be an integer greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of clusters to display per page.
+        # The number of clusters to return on each page.
         self.page_size = page_size
         # The specific content of the query condition.
         # 
-        # > You must first specify the **Type** parameter to define the query key.
+        # > You must specify **Type** to define the query key.
         self.params = params
-        # The region ID. This parameter is used as a query condition.
+        # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The cluster status. Valid values:
         # 
-        # - **init**: initializing.
-        # - **schedule**: pending scheduling.
-        # - **running**: running.
-        # - **upgrade**: upgrading.
-        # - **downgrade**: downgrading.
-        # - **locked**: locked.
-        # - **releasing**: being released.
-        # - **released**: released.
+        # - **init**: Initializing.
+        # - **schedule**: Pending scheduling.
+        # - **running**: Running.
+        # - **upgrade**: Upgrading.
+        # - **downgrade**: Downgrading.
+        # - **locked**: Locked.
+        # - **releasing**: Releasing.
+        # - **released**: Released.
         self.state = state
         # The query key. Valid values:
         # 
-        # - **NAME**: cluster name.
-        # - **INSTANCE**: cluster instance ID.
-        # - **DEDICATEDCLUSTERID**: dedicated cluster ID.
+        # - **NAME**: The cluster name.
+        # - **INSTANCE**: The cluster instance ID.
+        # - **DEDICATEDCLUSTERID**: The dedicated cluster ID.
         # 
-        # > You must also specify the **Params** parameter to provide the specific content of the query condition.
+        # > You must specify **Params** to define the query condition.
         self.type = type
 
     def validate(self):

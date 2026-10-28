@@ -19,53 +19,53 @@ class ConfigureSynchronizationJobAlertRequest(DaraModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated soon.
         self.account_id = account_id
-        # The mobile phone numbers of contacts for latency alerts. Separate multiple phone numbers with commas (,).
+        # The mobile phone numbers of the contacts to receive latency alerts. Separate multiple mobile phone numbers with commas (,).
         # 
         # Note
-        # This parameter is supported only on the China site (aliyun.com) and only Chinese mainland phone numbers are supported. You can specify up to 10 phone numbers.
-        # China site (Chinese mainland) does not support phone alerts on the China site. You can configure alert rules for DTS tasks only in the CloudMonitor console.
+        # This parameter is currently only supported on the China site. Only mobile phone numbers in the Chinese mainland are supported, and you can specify up to 10 mobile phone numbers.
+        # The international site does not support SMS alerts. You can only configure alert rules for DTS tasks by using CloudMonitor.
         self.delay_alert_phone = delay_alert_phone
         # Specifies whether to monitor the latency status. Valid values:
         # 
-        # - **enable**: yes.
-        # - **disable**: no.
+        # - **enable**: yes
+        # - **disable**: no
         # 
         # > - Default value: **enable**.
         # - You must specify at least one of this parameter and the **ErrorAlertStatus** parameter.
         self.delay_alert_status = delay_alert_status
-        # The threshold for triggering a latency alert. Unit: seconds. The value must be an integer. Set the threshold based on your business requirements. We recommend that you set the threshold to 10 seconds or more to avoid alert fluctuations caused by network issues or database loads.
-        # > This parameter is required when **DelayAlertStatus** is set to **enable**.
+        # The threshold for triggering a latency alert. Unit: seconds. The value must be an integer. You can set the threshold based on your business requirements. Set the threshold to 10 seconds or more to avoid latency fluctuations caused by network issues or database loads.
+        # > This parameter is required when the **DelayAlertStatus** parameter is set to **enable**.
         self.delay_over_seconds = delay_over_seconds
-        # The mobile phone numbers of contacts for exception alerts. Separate multiple phone numbers with commas (,).
+        # The mobile phone numbers of the contacts to receive abnormal status alerts. Separate multiple mobile phone numbers with commas (,).
         # 
         # Note
-        # This parameter is supported only on the China site (aliyun.com) and only Chinese mainland phone numbers are supported. You can specify up to 10 phone numbers.
-        # The China site does not support phone alerts on the international site (alibabacloud.com). You can configure alert rules for DTS tasks only in the CloudMonitor console.
+        # This parameter is currently only supported on the China site. Only mobile phone numbers in the Chinese mainland are supported, and you can specify up to 10 mobile phone numbers.
+        # The international site does not support SMS alerts. You can only configure alert rules for DTS tasks by using CloudMonitor.
         self.error_alert_phone = error_alert_phone
-        # Specifies whether to monitor the exception status. Valid values:
+        # Specifies whether to monitor the abnormal status. Valid values:
         # 
-        # - **enable**: yes.
-        # - **disable**: no.
+        # - **enable**: yes
+        # - **disable**: no
         # 
         # > - Default value: **enable**.
         # - You must specify at least one of this parameter and the **DelayAlertStatus** parameter.
-        # - After you enable exception status monitoring, an alert is triggered when an exception is detected.
+        # - After the abnormal status monitoring feature is enabled, an alert is triggered if an exception is detected.
         self.error_alert_status = error_alert_status
         self.owner_id = owner_id
         # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # - **Forward**: forward
+        # - **Reverse**: reverse
         # 
         # > Default value: **Forward**.
         self.synchronization_direction = synchronization_direction
-        # Instance ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query instance ID.
+        # Instance ID of the data synchronization instance. You can query instance ID by calling the DescribeSynchronizationJobs operation.
         # 
         # This parameter is required.
         self.synchronization_job_id = synchronization_job_id

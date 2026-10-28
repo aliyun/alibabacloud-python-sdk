@@ -22,27 +22,27 @@ class DescribeCheckJobsResponseBody(DaraModel):
         success: bool = None,
         total_record_count: int = None,
     ):
-        # The information about the data validation tasks.
+        # The information about the verification tasks.
         self.check_jobs = check_jobs
         # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** parameter. > If **ErrMessage** returns **The value of input parameter %s is not valid** and **DynamicMessage** returns **[1,2,3]**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace **%s** in the error message of the **ErrMessage** parameter. > If **ErrMessage** returns **The value of input parameter %s is not valid** and **DynamicMessage** returns **[1,2,3]**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The current page number.
         self.page_number = page_number
-        # The maximum number of records that can be displayed on the current page.
+        # The maximum number of entries that can be displayed on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -154,6 +154,7 @@ class DescribeCheckJobsResponseBodyCheckJobs(DaraModel):
         total_count: int = None,
     ):
         # The billing method. Valid values:
+        # 
         # - **POSTPAY**: pay-as-you-go.
         # - **PREPAY**: subscription.
         self.charge_type = charge_type
@@ -161,34 +162,38 @@ class DescribeCheckJobsResponseBodyCheckJobs(DaraModel):
         self.check_point = check_point
         # The data validation method. Valid values:
         # 
-        # - **1**: full data validation.
-        # - **2**: incremental data validation.
+        # - **1**: Full data validation.
+        # - **2**: Incremental data validation.
         self.check_type = check_type
         # The number of rows with data inconsistency.
         self.diff_count = diff_count
         # The progress of initial synchronization, in percentage.
         self.diff_sum = diff_sum
-        # The ID of the data migration, data synchronization, or change tracking instance.
+        # The ID of the data migration, synchronization, or change tracking instance.
         self.dts_instance_id = dts_instance_id
-        # The ID of the data migration, data synchronization, or change tracking task.
+        # The ID of the data migration, synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
-        # The number of rows that have been validated in the table.
+        # The number of verified data rows in the table.
         self.finish_count = finish_count
-        # The DTS task ID. > In most cases, you do not need to specify this parameter.
+        # The ID of the DTS task.
+        # > In most cases, you do not need to specify this parameter.
         self.group_id = group_id
         # The instance specifications.
         self.instance_class = instance_class
-        # The name of the data validation task.
+        # The name of the verification task.
         self.job_name = job_name
-        # The task ID.
+        # The ID of the task.
         self.job_step_id = job_step_id
         # This parameter will be deprecated.
         self.parent_job_type = parent_job_type
         # The region ID.
         self.region_id = region_id
-        # The validation result. Valid values: - **0**: passed. - **1**: failed.
+        # The verification result. Valid values:
+        # 
+        # - **0**: Passed.
+        # - **1**: Failed.
         self.status = status
-        # The total number of rows to be validated.
+        # The total number of verified data rows.
         self.total_count = total_count
 
     def validate(self):

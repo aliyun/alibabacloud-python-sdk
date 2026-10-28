@@ -17,36 +17,36 @@ class ModifyDtsJobPasswordRequest(DaraModel):
         user_name: str = None,
         zero_etl_job: bool = None,
     ):
-        # The instance ID of the data migration, synchronization, or subscribe instance.
+        # The instance ID of the data migration, data synchronization, or subscribe instance.
         self.dts_instance_id = dts_instance_id
-        # The ID of the data migration, synchronization, or change tracking task.
+        # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
-        # The database to which the account belongs. Valid values:
+        # The database to which the account and password to be modified belong. Valid values:
         # 
-        # - **src**: the source database.
-        # - **dest**: the destination database.
+        # - **src**: The source database.
+        # - **dest**: The destination database.
         # 
         # > This parameter is required.
         self.endpoint = endpoint
-        # The new password for the database account.
-        # > This parameter is required and must be different from the current password.
+        # The new password of the database account.
+        # > This parameter is required and cannot be the same as the current password.
         self.password = password
         # The region ID of the instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The synchronization direction. Valid values:
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # Specifies the synchronization direction. Valid values:
+        # - **Forward**: Forward.
+        # - **Reverse**: Reverse.
         # 
         # > - Default value: **Forward**.
         # - This parameter is required only when the synchronization topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
-        # The username of the database account to modify.
+        # The name of the database account.
         self.user_name = user_name
         # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
-        # - **true**
-        # - **false**.
+        # - **true**: Yes.
+        # - **false**: No.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

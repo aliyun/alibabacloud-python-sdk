@@ -16,15 +16,15 @@ class DescribeDataCheckReportUrlResponseBody(DaraModel):
     ):
         # The download URL of the verification report.
         self.dynamic_message = dynamic_message
-        # The error code returned when the call fails.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned when the call fails.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

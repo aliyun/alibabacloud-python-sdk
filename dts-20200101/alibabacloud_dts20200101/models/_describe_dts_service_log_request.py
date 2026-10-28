@@ -19,40 +19,40 @@ class DescribeDtsServiceLogRequest(DaraModel):
         sub_job_type: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the data migration or synchronization task.
+        # The ID of the migration or synchronization task.
         self.dts_job_id = dts_job_id
-        # The end time of the log information. You can call [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) to query the end time.
-        # > - To query the log information of a DTS subtask within a specific time range, call [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) to query the execution time of the DTS subtask.
-        # - The time is a 13-digit UNIX timestamp in milliseconds. You can use a search engine to find a UNIX timestamp converter.
+        # The end time of the logs. You can call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to query the time.
+        # > - To query the logs of a DTS subtask within a specific time range, call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to obtain the execution time of the DTS subtask.
+        # - Specify the time as a 13-digit UNIX timestamp in milliseconds. You can use a search engine to find a UNIX timestamp converter.
         self.end_time = end_time
-        # The keyword used to filter query results.
-        # > Fuzzy match is used and the keyword is case-sensitive.
+        # The keyword used to filter the logs.
+        # > Fuzzy matching is supported and the keyword is case-sensitive.
         self.keyword = keyword
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be a positive integer. Default value: **1**.
         self.page_number = page_number
-        # The number of log entries per page. Valid values: **20**, **50**, **100**, **500**, and **1000**. Default value: **20**.
+        # The number of log entries to return on each page. Valid values: **20**, **50**, **100**, **500**, and **1000**. Default value: **20**.
         self.page_size = page_size
-        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The start time of the log information.
+        # The start time of the logs.
         # 
-        # > - To query the log information of a DTS subtask within a specific time range, call [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) to query the execution time of the DTS subtask.
-        # - The start time is a 13-digit UNIX timestamp in milliseconds. You can use a search engine to find a UNIX timestamp converter.
+        # > - To query the logs of a DTS subtask within a specific time range, call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to obtain the execution time of the DTS subtask.
+        # - Specify the time as a 13-digit UNIX timestamp in milliseconds. You can use a search engine to find a UNIX timestamp converter.
         self.start_time = start_time
-        # The log level of the log information. Separate multiple values with commas (,). Valid values:
+        # The log level. Separate multiple log levels with commas (,). Valid values:
         # 
         # - **NORMAL**: Normal.
         # - **WARN**: Warning.
         # - **ERROR**: Error.
         self.status = status
-        # The type of the DTS task subnode. Valid values:
+        # The specific sub-node type of the DTS task. Valid values:
         # 
         # 
-        # - **DATA_LOAD**: full data migration or initial full data synchronization.
-        # - **ONLINE_WRITER**: incremental data migration.
-        # - **SYNC_WRITER**: incremental data synchronization.
+        # - **DATA_LOAD**: Full data migration or full data synchronization.
+        # - **ONLINE_WRITER**: Incremental data migration.
+        # - **SYNC_WRITER**: Incremental data synchronization.
         self.sub_job_type = sub_job_type
         # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
         # - **true**: Yes.

@@ -19,14 +19,14 @@ class DescribeMigrationJobsResponseBody(DaraModel):
         success: str = None,
         total_record_count: int = None,
     ):
-        # The error code returned if the request failed.
+        # The error code returned if the request fails.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned if the request fails.
         self.err_message = err_message
         self.migration_jobs = migration_jobs
         # The page number.
         self.page_number = page_number
-        # The maximum number of records that can be displayed on the current page.
+        # The maximum number of entries that can be displayed on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id

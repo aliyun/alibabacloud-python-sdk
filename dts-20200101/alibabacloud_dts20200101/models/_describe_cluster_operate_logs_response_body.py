@@ -22,11 +22,11 @@ class DescribeClusterOperateLogsResponseBody(DaraModel):
         success: bool = None,
         total_record_count: int = None,
     ):
-        # The backend error code, which is incrementally numeric.
+        # The backend error code.
         self.code = code
         # The monitoring statistics information.
         self.data_points = data_points
-        # The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
+        # The dynamic error message, which is used to replace the %s placeholder in the ErrMessage parameter.
         self.dynamic_message = dynamic_message
         # The error code returned when the call fails.
         self.err_code = err_code
@@ -36,13 +36,13 @@ class DescribeClusterOperateLogsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The current page number.
         self.page_number = page_number
-        # The number of entries displayed on the current page.
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
         # The call result.
         self.success = success
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -145,21 +145,21 @@ class DescribeClusterOperateLogsResponseBodyDataPoints(DaraModel):
         operation_user: str = None,
         success: int = None,
     ):
-        # The additional remarks.
+        # Additional remarks.
         self.content = content
-        # The primary key of the log record table.
+        # The primary key of the log record.
         self.id = id
         # The timestamp. Unit: milliseconds.
         self.log_datetime = log_datetime
-        # The new parameter value when the operation type is update.
+        # The new parameter value if the operation type is modification.
         self.new_value = new_value
-        # The old parameter value when the operation type is update.
+        # The original parameter value if the operation type is modification.
         self.old_value = old_value
         # The operation type.
         self.operation_name = operation_name
         # The operator.
         self.operation_user = operation_user
-        # The call result. Indicates whether the call was successful. A value of **1** indicates success.
+        # The call result. A value of **1** indicates success.
         self.success = success
 
     def validate(self):

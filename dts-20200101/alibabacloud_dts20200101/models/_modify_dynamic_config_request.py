@@ -14,19 +14,19 @@ class ModifyDynamicConfigRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The rate limit configurations.
+        # The specific rate limiting configurations.
         # 
-        # - **dts.datamove.blaster.qps.max**: the queries per second (QPS) for querying the source database.
-        # - **dts.datamove.source.rps.max**: the records per second (RPS) for full data synchronization or migration.
-        # - **dts.datamove.source.bps.max**: the data volume per second for full data synchronization or migration. Unit: bytes per second.
+        # - **dts.datamove.blaster.qps.max**: the maximum number of queries per second (QPS) for the source database.
+        # - **dts.datamove.source.rps.max**: the maximum number of rows per second (RPS) for full data synchronization or migration.
+        # - **dts.datamove.source.bps.max**: the maximum amount of data per second for full data synchronization or migration, in bytes per second.
         # 
         # > - If **JobCode** is set to **03**, you must set **EnableLimit** to **true** for the three parameters to take effect.
         # - If **JobCode** is set to **04** or **07**, you only need to configure **dts.datamove.source.rps.max** and **dts.datamove.source.bps.max**.
         # - A value of **-1** indicates that no rate limit is applied.
         self.config_list = config_list
-        # The ID of the data synchronization or migration task.
+        # The ID of the synchronization or migration task.
         # 
-        # > You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to obtain the task ID.
+        # > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
@@ -42,9 +42,9 @@ class ModifyDynamicConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_code = job_code
-        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

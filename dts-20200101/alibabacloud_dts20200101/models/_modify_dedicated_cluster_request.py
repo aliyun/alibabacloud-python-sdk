@@ -16,19 +16,19 @@ class ModifyDedicatedClusterRequest(DaraModel):
         resource_group_id: str = None,
     ):
         # The ID of the dedicated cluster.
-        # > Either **InstanceId** or **DedicatedClusterId** must be specified.
+        # > You must specify either the **InstanceId** or **DedicatedClusterId** parameter.
         self.dedicated_cluster_id = dedicated_cluster_id
         # The name of the cluster.
         self.dedicated_cluster_name = dedicated_cluster_name
         # The instance ID of the cluster.
-        # > Either the **InstanceId** or **DedicatedClusterId** parameter must be specified.
+        # > You must specify either the **InstanceId** or **DedicatedClusterId** parameter.
         self.instance_id = instance_id
-        # The overcommit ratio. Unit: %.
+        # The oversubscription ratio. Unit: %.
         self.oversold_ratio = oversold_ratio
         self.owner_id = owner_id
-        # The region in which the DTS instance resides.
+        # The region where the DTS instance resides.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

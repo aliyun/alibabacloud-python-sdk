@@ -14,21 +14,21 @@ class StartSynchronizationJobRequest(DaraModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated.
         self.account_id = account_id
         self.owner_id = owner_id
         # The ID of the region where the data synchronization instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # - **Forward**: Forward.
+        # - **Reverse**: Reverse.
         # 
         # > - Default value: **Forward**.
-        # > - You can set this parameter to **Reverse** to start the reverse synchronization link only if the topology of the data synchronization instance is two-way synchronization.
+        # > - You can set this parameter to **Reverse** to start the reverse synchronization link only when the topology of the data synchronization instance is two-way.
         self.synchronization_direction = synchronization_direction
-        # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
+        # Instance ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query instance ID.
         # 
         # This parameter is required.
         self.synchronization_job_id = synchronization_job_id

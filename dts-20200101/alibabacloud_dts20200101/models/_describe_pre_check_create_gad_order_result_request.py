@@ -13,12 +13,12 @@ class DescribePreCheckCreateGadOrderResultRequest(DaraModel):
         resource_group_id: str = None,
         task_id: str = None,
     ):
-        # The instance ID of the GAD instance group.
+        # The instance ID of the global active database (GAD) instance group.
         self.instance_id = instance_id
         self.owner_id = owner_id
-        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. You can set this parameter to specify the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the precheck task.
         self.task_id = task_id

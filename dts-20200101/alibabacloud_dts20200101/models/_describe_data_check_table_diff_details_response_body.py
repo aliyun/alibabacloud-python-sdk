@@ -22,25 +22,25 @@ class DescribeDataCheckTableDiffDetailsResponseBody(DaraModel):
         success: bool = None,
         tb_name: str = None,
     ):
-        # The name of the database in the source instance that contains the table with inconsistent data.
+        # The name of the source database to which the table with inconsistent data belongs.
         self.db_name = db_name
         # The number of rows with data inconsistency.
         self.diff_count = diff_count
         # The inconsistency details.
         self.diff_details = diff_details
-        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** response element.
+        # The dynamic error message, which is used to replace **%s** in the **ErrMessage** response parameter.
         # 
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **Type**, the request parameter **Type** that you specified is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **Type**, the specified request parameter **Type** is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the call failed.
+        # The error code returned if the request fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the request fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The instance ID.
         self.instance_id = instance_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -142,7 +142,7 @@ class DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails(DaraModel):
         gmt_created: str = None,
         id: int = None,
     ):
-        # The specific inconsistency details, which is a JSON string.
+        # The specific inconsistency details in JSON string format.
         # 
         # - column: the field name.
         # - source: the value in the source database.
@@ -151,7 +151,7 @@ class DescribeDataCheckTableDiffDetailsResponseBodyDiffDetails(DaraModel):
         self.diff = diff
         # The time when the verification was performed.
         self.gmt_created = gmt_created
-        # The auto-increment primary key that identifies a verification result record.
+        # The auto-increment primary key used to identify a verification result record.
         self.id = id
 
     def validate(self):

@@ -22,32 +22,32 @@ class DescribeSynchronizationJobAlertResponseBody(DaraModel):
     ):
         # The mobile phone number of the contact for latency alerts.
         self.delay_alert_phone = delay_alert_phone
-        # Indicates whether latency monitoring is enabled. Valid values:
+        # Indicates whether the latency status is monitored. Valid values:
         # 
-        # - **enable**: enabled.
-        # - **disable**: disabled.
+        # - **enable**: Yes.
+        # - **disable**: No.
         self.delay_alert_status = delay_alert_status
-        # The threshold that triggers a latency alert. Unit: seconds.
+        # The threshold for triggering a latency alert. Unit: seconds.
         self.delay_over_seconds = delay_over_seconds
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
-        # The mobile phone number of the contact for error alerts.
+        # The mobile phone number of the contact for abnormal alerts.
         self.error_alert_phone = error_alert_phone
-        # Indicates whether error status monitoring is enabled. Valid values:
+        # Indicates whether the abnormal status is monitored. Valid values:
         # 
-        # - **enable**: enabled.
-        # - **disable**: disabled.
+        # - **enable**: Yes.
+        # - **disable**: No.
         self.error_alert_status = error_alert_status
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The synchronization direction. Valid values:
         # 
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # - **Forward**: Forward.
+        # - **Reverse**: Reverse.
         # 
         # > Default value: **Forward**.
         self.synchronization_direction = synchronization_direction

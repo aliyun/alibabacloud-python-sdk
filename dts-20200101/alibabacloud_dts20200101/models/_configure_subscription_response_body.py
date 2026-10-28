@@ -15,13 +15,13 @@ class ConfigureSubscriptionResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The instance ID of the subscribe instance.
+        # The change tracking instance ID.
         self.dts_instance_id = dts_instance_id
         # The ID of the change tracking task.
         self.dts_job_id = dts_job_id
-        # The error code returned if the call failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code

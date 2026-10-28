@@ -24,25 +24,25 @@ class DescribeDtsEtlJobVersionInfoResponseBody(DaraModel):
     ):
         # The array of ETL task information objects.
         self.dts_etl_job_version_infos = dts_etl_job_version_infos
-        # The dynamic error code associated with this request.
+        # The dynamic error code associated with the request.
         self.dynamic_code = dynamic_code
-        # The dynamic error message associated with this request.
+        # The dynamic error message associated with the request.
         self.dynamic_message = dynamic_message
-        # The error code returned when the specified ETL task ID is invalid and the corresponding task cannot be found.
+        # The error code returned when the specified ETL task ID is incorrect and the corresponding task cannot be found.
         self.err_code = err_code
-        # The error message returned when the specified ETL task ID is invalid and the corresponding task cannot be found. The task may have been deleted.
+        # The error message returned when the specified ETL task ID is incorrect and the corresponding task cannot be found. The task may have been deleted.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The page number of the instance status list. Default value: 1.
         self.page_number = page_number
-        # The number of records on the current page.
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. A value of false indicates a failure.
+        # Indicates whether the request was successful. If the request fails, false is returned.
         self.success = success
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -149,19 +149,19 @@ class DescribeDtsEtlJobVersionInfoResponseBodyDtsEtlJobVersionInfos(DaraModel):
     ):
         # The timestamp when the ETL task was created.
         self.create_time = create_time
-        # The creator ID.
+        # The ID of the creator.
         self.creator = creator
         # The username of the creator.
         self.creator_name = creator_name
         # The DTS instance ID.
         self.dts_instance_id = dts_instance_id
-        # The ETL task ID.
+        # The ID of the ETL task.
         self.dts_job_id = dts_job_id
         # The name of the ETL task.
         self.dts_job_name = dts_job_name
         # The modification timestamp.
         self.modify_time = modify_time
-        # The safe checkpoint, which indicates the current position of the ETL task.
+        # The security checkpoint, which is the current checkpoint of the ETL task.
         self.safe_checkpoint = safe_checkpoint
         # The log level. Valid values: ERROR, WARN, INFO, and DEBUG.
         self.status = status

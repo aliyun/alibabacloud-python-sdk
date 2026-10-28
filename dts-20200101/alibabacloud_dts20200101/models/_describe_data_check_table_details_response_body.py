@@ -28,16 +28,16 @@ class DescribeDataCheckTableDetailsResponseBody(DaraModel):
         self.diff_table_count = diff_table_count
         # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** response parameter.
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **Type**, the request parameter **Type** is invalid.
+        # The dynamic error message, which is used to replace **%s** in the error message of the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **Type**, the specified **Type** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The number of tables that failed the verification.
         self.failed_table_count = failed_table_count
-        # The total number of rows that have been verified.
+        # The total number of data rows that have been verified.
         self.finished_count = finished_count
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -47,9 +47,9 @@ class DescribeDataCheckTableDetailsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The details of the data consistency verification results for tables.
+        # The details of the data table verification results.
         self.table_details = table_details
-        # The total number of tables to be verified.
+        # The total number of verified tables.
         self.total_count = total_count
 
     def validate(self):
@@ -171,23 +171,22 @@ class DescribeDataCheckTableDetailsResponseBodyTableDetails(DaraModel):
         self.boot_time = boot_time
         # The number of rows with data inconsistency.
         self.diff_count = diff_count
-        # The error code returned when the task fails. Valid values:
+        # The error code returned when an error occurs during task execution. Valid values:
         # 
-        # - **1**: the number of tables without primary key exceeds the limit.
-        # - **2**: the number of rows with data inconsistency exceeds 300.
+        # - **1**: the number of table without primary key exceeds the limit.
+        # - **2**: the number of inconsistent data rows exceeds 300.
         # - **3**: the table to be queried does not exist.
-        # - **4**: the SQL statement used to query data contains a syntax error.
+        # - **4**: an SQL syntax error occurred while querying data.
         self.error_code = error_code
-        # The number of rows that have been verified in the table.
+        # The number of data rows that have been verified in the table.
         self.finish_count = finish_count
-        # The auto-increment primary key that identifies a verification result record.
+        # The auto-increment primary key used to identify a verification result record.
         self.id = id
         # The name of the source database.
         self.source_db_name = source_db_name
         # The name of the source table.
         self.source_tb_name = source_tb_name
         # The status of the verification result. Valid values:
-        # 
         # - **0**: completed.
         # - **2**: initializing.
         # - **3**: running.
@@ -197,7 +196,7 @@ class DescribeDataCheckTableDetailsResponseBodyTableDetails(DaraModel):
         self.target_db_name = target_db_name
         # The name of the destination table.
         self.target_tb_name = target_tb_name
-        # The total number of rows to be verified.
+        # The total number of verified data rows.
         self.total_count = total_count
 
     def validate(self):

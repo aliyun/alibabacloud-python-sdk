@@ -1,3 +1,12 @@
+2026-10-28 Version: 5.12.0
+- Support API CreateGadInstance.
+- Support API CreateGadOrder.
+- Support API DeleteGadInstance.
+- Support API DescribeGadInstanceDbMembers.
+- Support API DescribeGadInstanceDetail.
+- Support API DescribeGadInstanceDtsMembers.
+
+
 2026-09-11 Version: 5.11.7
 - Update API ModifyDtsJobEndpoint: add request parameters EndpointPrimaryVswId.
 - Update API ModifyDtsJobEndpoint: add request parameters EndpointSecondaryVswId.

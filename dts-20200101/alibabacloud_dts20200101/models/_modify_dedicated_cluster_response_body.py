@@ -14,7 +14,7 @@ class ModifyDedicatedClusterResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
         # The error code returned if the call fails.
         self.err_code = err_code
@@ -24,7 +24,7 @@ class ModifyDedicatedClusterResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

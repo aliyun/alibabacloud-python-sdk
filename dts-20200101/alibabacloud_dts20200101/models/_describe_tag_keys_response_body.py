@@ -16,9 +16,9 @@ class DescribeTagKeysResponseBody(DaraModel):
         tag_keys: List[str] = None,
         total_count: int = None,
     ):
-        # The tag type.
+        # The tag category.
         self.category = category
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
         # The number of tags returned per page.
         self.page_size = page_size

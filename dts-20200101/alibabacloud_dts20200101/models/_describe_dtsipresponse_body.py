@@ -16,15 +16,15 @@ class DescribeDTSIPResponseBody(DaraModel):
     ):
         # The internal error code of the service. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The IP addresses of the DTS service.
+        # The IP address of the DTS service.
         self.dynamic_message = dynamic_message
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

@@ -17,6 +17,7 @@ class DescribeGadInstancesRequest(DaraModel):
         resource_group_id: str = None,
         slave_db_instance_id: str = None,
     ):
+        # The list of database engine types. Separate multiple types with commas (,).
         self.db_engine_types = db_engine_types
         # The name of the active geo-redundancy instance group.
         self.instance_name = instance_name
@@ -26,10 +27,11 @@ class DescribeGadInstancesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.page_size = page_size
-        # The region ID. Specify this parameter to query instances in a specific region. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The ID of the secondary database instance.
         self.slave_db_instance_id = slave_db_instance_id
 
     def validate(self):

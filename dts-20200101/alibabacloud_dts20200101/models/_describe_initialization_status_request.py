@@ -15,18 +15,18 @@ class DescribeInitializationStatusRequest(DaraModel):
         resource_group_id: str = None,
         synchronization_job_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be discontinued.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated soon.
         self.account_id = account_id
         self.owner_id = owner_id
-        # The page number. The value must be greater than **0** and cannot exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. Valid values: any integer greater than **0** and less than or equal to the maximum value of the Integer data type. Default value: **1**.
         self.page_num = page_num
         # The number of entries per page. Valid values: **1** to **100**. Default value: **30**.
         self.page_size = page_size
         # The ID of the region where the data synchronization instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+        # Instance ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query instance ID.
         # 
         # This parameter is required.
         self.synchronization_job_id = synchronization_job_id

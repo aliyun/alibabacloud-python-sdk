@@ -12,13 +12,13 @@ class UntagResourcesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the call fails.
+        # The error code returned if the request fails.
         self.err_code = err_code
-        # The error message returned if the call fails.
+        # The error message returned if the request fails.
         self.err_message = err_message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

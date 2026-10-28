@@ -22,38 +22,39 @@ class DescribeMetricListRequest(DaraModel):
     ):
         # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # Ensures the idempotency of the request. Generate a parameter value from your client to make sure that the value is unique among different requests. **ClientToken** supports only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotency of the request. Generate a value on your client and ensure that the value is unique across different requests. **ClientToken** supports only ASCII characters and can be up to 64 characters in length.
         self.client_token = client_token
-        # The ID of the data migration or data synchronization task.
+        # The ID of the migration or synchronization task.
         self.dts_job_id = dts_job_id
-        # The end timestamp, in milliseconds.
+        # The end timestamp in milliseconds.
         self.end_time = end_time
-        # Default value: **ALIYUN**.
+        # The environment. Default value: **ALIYUN**.
         self.env = env
+        # Specifies the metric name. Valid values:
         # - **InternetOut**: outbound Internet traffic, in bytes.
         # - **diskusage_utilization**: disk usage.
         # - **IntranetInRate**: inbound internal network traffic, in bytes.
         # - **InternetIn**: inbound Internet traffic, in bytes.
-        # - **cpu_total**: CPU utilization.
-        # - **memory_usedutilization**: memory utilization.
+        # - **cpu_total**: CPU usage.
+        # - **memory_usedutilization**: memory usage.
         # - **IntranetOutRate**: outbound internal network traffic, in bytes.
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # Specifies whether to query a cluster or a node. Valid values:
+        # Specifies the query target. Valid values:
         # - **CLUSTER**: cluster.
         # - **NODE**: node.
         self.metric_type = metric_type
         self.owner_id = owner_id
-        # The observation value. If **MetricType** is set to **NODE**, the value is **nodeid**.
+        # The observation value. If **MetricType** is **NODE**, the value is the **nodeid**.
         # 
         # This parameter is required.
         self.param = param
         # The observation interval in seconds. The minimum interval is 15 seconds.
         self.period = period
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The start timestamp, in milliseconds.
+        # The start timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

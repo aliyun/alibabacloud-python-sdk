@@ -14,18 +14,18 @@ class ModifyDtsJobResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The DTS task ID.
+        # The ID of the DTS task.
         self.dts_job_id = dts_job_id
-        # The error code returned if the call failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
-        # > The data type of this parameter should be String. An example value is **The request processing has failed due to some unknown error**.
+        # The error message returned when the call fails.
+        # > The data type of this parameter should be String, and the actual example value is **The request processing has failed due to some unknown error**.
         self.err_message = err_message
         # The request ID.
         self.request_id = request_id
-        # The status code.
+        # The HTTP status code.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

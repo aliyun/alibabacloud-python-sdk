@@ -14,16 +14,16 @@ class ModifyConsumptionTimestampRequest(DaraModel):
         resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be deprecated.
+        # The ID of the Alibaba Cloud account. This parameter is not required and will be deprecated.
         self.account_id = account_id
-        # The consumption checkpoint in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The consumption checkpoint. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC time).
         # 
         # This parameter is required.
         self.consumption_timestamp = consumption_timestamp
         self.owner_id = owner_id
-        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
         # 

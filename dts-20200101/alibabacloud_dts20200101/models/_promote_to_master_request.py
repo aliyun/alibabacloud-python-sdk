@@ -13,15 +13,15 @@ class PromoteToMasterRequest(DaraModel):
         resource_group_id: str = None,
         slave_db_instance_id: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Primary instance ID.
+        # The instance ID of the primary instance.
         self.master_db_instance_id = master_db_instance_id
-        # Region ID. Specify this parameter to indicate the region where the instance resides. For more information, see the list of supported regions.
+        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see the list of supported regions.
         self.region_id = region_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Secondary instance ID.
+        # The instance ID of the secondary instance.
         self.slave_db_instance_id = slave_db_instance_id
 
     def validate(self):

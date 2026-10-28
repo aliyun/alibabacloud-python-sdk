@@ -18,29 +18,27 @@ class PreCheckCreateGadOrderResponseBody(DaraModel):
         success: str = None,
         task_id: str = None,
     ):
-        # The dynamic error code. This parameter will be deprecated.
+        # The dynamic error code. This parameter is deprecated and will be phased out.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
+        # The dynamic error message, which is used to replace %s in the error message returned by the ErrMessage parameter.
         # 
-        # > If ErrMessage returns The Value of Input Parameter %s is not valid and DynamicMessage returns JobId, the value of the JobId request parameter is invalid.
+        # > If the ErrMessage parameter returns The Value of Input Parameter %s is not valid and the DynamicMessage parameter returns JobId, the JobId request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the active geo-redundancy instance group.
+        # The ID of the global active instance group.
         self.instance_id = instance_id
-        # The ID of the region in which the instance resides. For more information, see Supported regions.
+        # The ID of the region where the instance resides. For more information, see the list of supported regions.
         self.region_id = region_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - true: The call was successful.
-        # - false: The call failed.
+        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
         self.success = success
-        # The precheck task ID.
+        # The ID of the precheck task.
         self.task_id = task_id
 
     def validate(self):

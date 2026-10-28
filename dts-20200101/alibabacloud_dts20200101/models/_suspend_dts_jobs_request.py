@@ -12,17 +12,17 @@ class SuspendDtsJobsRequest(DaraModel):
         resource_group_id: str = None,
         zero_etl_job: bool = None,
     ):
-        # The IDs of the migration or synchronization tasks.
-        # > - Separate multiple task IDs with commas (,).
-        # - Call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to obtain the DTS task IDs.
+        # The IDs of the data migration and synchronization tasks.
+        # > - If you specify multiple task IDs, separate them with commas (,).
+        # - You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the DTS task IDs.
         # 
         # This parameter is required.
         self.dts_job_ids = dts_job_ids
-        # The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
+        # Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
         # 
         # - **false**: No.
         # - **true**: Yes.

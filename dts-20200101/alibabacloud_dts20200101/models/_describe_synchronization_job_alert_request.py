@@ -15,19 +15,19 @@ class DescribeSynchronizationJobAlertRequest(DaraModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated soon.
         self.account_id = account_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The value can contain a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, and you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The region ID. Specify this parameter to indicate the region where the subscription channel resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. Specify this parameter to indicate the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # - **Forward**: Forward.
+        # - **Reverse**: Reverse.
         # 
         # > Default value: **Forward**.
         self.synchronization_direction = synchronization_direction

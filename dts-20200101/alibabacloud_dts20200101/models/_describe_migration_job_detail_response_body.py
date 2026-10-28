@@ -23,20 +23,20 @@ class DescribeMigrationJobDetailResponseBody(DaraModel):
     ):
         self.data_initialization_detail_list = data_initialization_detail_list
         self.data_synchronization_detail_list = data_synchronization_detail_list
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The page number.
         self.page_number = page_number
-        # The maximum number of migration instances that can be displayed on one page.
+        # The maximum number of migration instances that can be displayed on a single page.
         self.page_record_count = page_record_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         self.structure_initialization_detail_list = structure_initialization_detail_list
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):

@@ -15,34 +15,35 @@ class CreateConsumerChannelRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The name of the consumer group. The name can be up to 128 characters in length. Specify a business-meaningful name for easy identification.
+        # The name of the consumer group. The name can be up to 128 characters in length. Specify a descriptive name for easy identification.
         # 
         # This parameter is required.
         self.consumer_group_name = consumer_group_name
-        # The password of the consumer group account.
+        # The password of the account for the consumer group.
         # 
-        # - The password must contain characters from at least two of the following categories: uppercase letters, lowercase letters, digits, and special characters.
+        # - The password must contain at least two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # - The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.consumer_group_password = consumer_group_password
-        # The username of the consumer group account.
+        # The account name for the consumer group.
         # 
-        # The username can contain uppercase letters, lowercase letters, digits, and underscores (_). The username can be up to 16 characters in length.
+        # The account name can contain uppercase letters, lowercase letters, digits, and underscores.
+        # The account name can be up to 16 characters in length.
         # 
         # This parameter is required.
         self.consumer_group_user_name = consumer_group_user_name
-        # The ID of the change tracking instance. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the instance ID.
-        # > You must specify one of the **DtsInstanceId** and **DtsJobId** parameters.
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+        # > You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_instance_id = dts_instance_id
-        # The ID of the change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
-        # > You must specify one of the **DtsInstanceId** and **DtsJobId** parameters.
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # > You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_job_id = dts_job_id
-        # The ID of the region in which the DTS change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the DTS change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

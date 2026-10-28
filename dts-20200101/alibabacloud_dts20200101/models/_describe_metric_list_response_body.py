@@ -23,38 +23,39 @@ class DescribeMetricListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The backend error code, which is an incrementing number.
+        # The backend error code.
         self.code = code
         # The monitoring statistics information.
         self.data_points = data_points
-        # The dynamic error message, which is used to replace the %s placeholder in the **ErrMessage** error message.
+        # The dynamic error message, which is used to replace the %s placeholder in the **ErrMessage** parameter.
         self.dynamic_message = dynamic_message
         # The error code returned when the call fails.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
-        # The HTTP status code corresponding to the exception.
+        # The HTTP status code for the exception.
         self.http_status_code = http_status_code
+        # Specifies the metric name. Valid values:
         # - **InternetOut**: outbound Internet traffic, in bytes.
         # - **diskusage_utilization**: disk usage.
         # - **IntranetInRate**: inbound internal network traffic, in bytes.
         # - **InternetIn**: inbound Internet traffic, in bytes.
-        # - **cpu_total**: CPU utilization.
-        # - **memory_usedutilization**: memory utilization.
+        # - **cpu_total**: CPU usage.
+        # - **memory_usedutilization**: memory usage.
         # - **IntranetOutRate**: outbound internal network traffic, in bytes.
         self.metric_name = metric_name
-        # Specifies whether to query a cluster or a node. Valid values:
+        # Specifies the query target. Valid values:
         # - **CLUSTER**: cluster.
         # - **NODE**: node.
         self.metric_type = metric_type
         # The observation value.
         # 
-        # - If **MetricType** is set to **NODE**, the value is **nodeid**.
-        # - If **MetricType** is set to **CLUSTER**, the value is the ID of the dedicated cluster, which can be obtained by calling the ListDedicatedCluster operation.
+        # - If **MetricType** is **NODE**, the value is the **nodeid**.
+        # - If **MetricType** is **CLUSTER**, the value is the dedicated cluster ID, which can be obtained by calling the ListDedicatedCluster operation.
         self.param = param
         # The observation interval in seconds. The minimum interval is 15 seconds.
         self.period = period
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the call was successful.
         self.success = success
@@ -161,7 +162,7 @@ class DescribeMetricListResponseBodyDataPoints(DaraModel):
     ):
         # The statistical value.
         self.statistics = statistics
-        # The record timestamp, in milliseconds.
+        # The record timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

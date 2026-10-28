@@ -33,17 +33,17 @@ class DescribeConnectionStatusRequest(DaraModel):
         source_endpoint_user_name: str = None,
     ):
         # This parameter is required only when **SourceEndpointEngineName** is set to **Oracle**. Valid values:
-        # - **SID**: non-cluster architecture.
-        # - **RAC**: Real Application Cluster architecture.
+        # - **SID**: Non-cluster architecture.
+        # - **RAC**: Cluster architecture.
         # 
-        # > The type of this parameter is String, and this parameter is optional.
+        # > The value must be of the String type. This parameter is optional.
         self.destination_endpoint_architecture = destination_endpoint_architecture
-        # The name of the database to be migrated to or the name of the authentication database.
+        # The name of the destination database or the authentication database.
         # > - This parameter is available and required only when **DestinationEndpointEngineName** is set to **PostgreSQL**, **DRDS**, or **MongoDB**, or when **DestinationEndpointInstanceType** is set to **PolarDB_o**.
-        # - When **DestinationEndpointEngineName** is set to **PostgreSQL** or **DRDS**, specify the name of the database to be migrated. When the value is **MongoDB**, specify the name of the authentication database for the database account.
-        # - When **DestinationEndpointInstanceType** is set to **PolarDB_o**, specify the name of the database to be migrated.
+        # - If **DestinationEndpointEngineName** is set to **PostgreSQL** or **DRDS**, specify the name of the database to be migrated. If it is set to **MongoDB**, specify the name of the authentication database for the database account.
+        # - If **DestinationEndpointInstanceType** is set to **PolarDB_o**, specify the name of the database to be migrated.
         self.destination_endpoint_database_name = destination_endpoint_database_name
-        # The database type of the destination database. Valid values: **MySQL**, **DRDS**, **SQLServer**, **PostgreSQL**, **PPAS**, **MongoDB**, and **Redis**.
+        # The database engine type of the destination database. Valid values: **MySQL**, **DRDS**, **SQLServer**, **PostgreSQL**, **PPAS**, **MongoDB**, and **Redis**.
         # > This parameter is available and required only when **DestinationEndpointInstanceType** is set to **RDS**, **DRDS**, **ECS**, **LocalInstance**, or **Express**.
         self.destination_endpoint_engine_name = destination_endpoint_engine_name
         # The endpoint of the destination database.
@@ -51,54 +51,54 @@ class DescribeConnectionStatusRequest(DaraModel):
         self.destination_endpoint_ip = destination_endpoint_ip
         # The instance ID of the destination instance.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
-        # The type of the destination instance. Valid values:
-        # > - **ECS**: self-managed database hosted on an ECS instance.
-        # - **LocalInstance**: self-managed database with a public IP address.
+        # The instance type of the destination database. Valid values:
+        # > - **ECS**: Self-managed database hosted on ECS.
+        # - **LocalInstance**: Self-managed database with a public IP address.
         # - **RDS**: ApsaraDB RDS instance.
         # - **DRDS**: PolarDB-X instance.
         # - **MongoDB**: ApsaraDB for MongoDB instance.
         # - **Redis**: ApsaraDB for Redis instance.
         # - **PetaData**: HybridDB for MySQL instance.
         # - **POLARDB**: PolarDB for MySQL cluster.
-        # - **PolarDB_o**: PolarDB for PostgreSQL (Oracle-Compatible) cluster.
-        # - **AnalyticDB**: AnalyticDB for MySQL V3.0 or V2.0.
-        # - **Greenplum**: AnalyticDB for PostgreSQL.
+        # - **PolarDB_o**: PolarDB for Oracle cluster.
+        # - **AnalyticDB**: AnalyticDB for MySQL cluster of version 3.0 or 2.0.
+        # - **Greenplum**: AnalyticDB for PostgreSQL instance.
         # 
         # This parameter is required.
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
         # This parameter is required only when **DestinationEndpointEngineName** is set to **Oracle**. Valid values:
         # 
-        # - **SID**: non-cluster architecture.
-        # - **RAC**: Real Application Cluster architecture.
+        # - **SID**: Non-cluster architecture.
+        # - **RAC**: Cluster architecture.
         # 
         # 
-        # > The type of this parameter is String, and this parameter is optional.
+        # > The value must be of the String type. This parameter is optional.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
-        # The password of the destination database account.
+        # The password of the database account for the destination database.
         self.destination_endpoint_password = destination_endpoint_password
-        # The service port of the source database.
+        # The service port of the destination database.
         # > This parameter is available and required only when **SourceEndpointInstanceType** is set to **ECS**, **LocalInstance**, or **Express**.
         self.destination_endpoint_port = destination_endpoint_port
-        # The region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.destination_endpoint_region = destination_endpoint_region
         # The database account of the destination database.
         self.destination_endpoint_user_name = destination_endpoint_user_name
-        # The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the DTS instance resides. For details, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # This parameter is required only when **SourceEndpointEngineName** is set to **Oracle**. Valid values:
         # 
-        # - **SID**: non-cluster architecture.
-        # - **RAC**: Real Application Cluster architecture.
+        # - **SID**: Non-cluster architecture.
+        # - **RAC**: Cluster architecture.
         # 
         # 
         # > This parameter is optional.
         self.source_endpoint_architecture = source_endpoint_architecture
-        # The name of the database to be migrated or the name of the authentication database.
+        # The name of the database to be migrated or the authentication database.
         # >- This parameter is available and required only when **SourceEndpointEngineName** is set to **PostgreSQL** or **MongoDB**, or when **SourceEndpointInstanceType** is set to **PolarDB_o**.
-        # - When **SourceEndpointEngineName** is set to **PostgreSQL** or **DRDS**, specify the name of the database to be migrated. When the value is **MongoDB**, specify the name of the authentication database for the database account.
-        # - When **SourceEndpointInstanceType** is set to **PolarDB_o**, specify the name of the database to be migrated.
+        # - If **SourceEndpointEngineName** is set to **PostgreSQL** or **DRDS**, specify the name of the database to be migrated. If it is set to **MongoDB**, specify the name of the authentication database for the database account.
+        # - If **SourceEndpointInstanceType** is set to **PolarDB_o**, specify the name of the database to be migrated.
         self.source_endpoint_database_name = source_endpoint_database_name
         # The database engine type of the source instance. Valid values: **MySQL**, **TiDB**, **SQLServer**, **PostgreSQL**, **Oracle**, **MongoDB**, and **Redis**.
         # 
@@ -111,25 +111,25 @@ class DescribeConnectionStatusRequest(DaraModel):
         self.source_endpoint_instance_id = source_endpoint_instance_id
         # The type of the source instance. Valid values:
         # - **RDS**: ApsaraDB RDS instance.
-        # - **LocalInstance**: self-managed database with a public IP address.
-        # - **ECS**: self-managed database hosted on an ECS instance.
-        # - **Express**: self-managed database connected over Express Connect.
-        # - **dg**: self-managed database connected over Database Gateway.
+        # - **LocalInstance**: Self-managed database.
+        # - **ECS**: Self-managed database hosted on Elastic Compute Service (ECS).
+        # - **Express**: Self-managed database connected over Express Connect.
+        # - **dg**: Self-managed database connected over Database Gateway.
         # - **MongoDB**: ApsaraDB for MongoDB instance.
         # - **POLARDB**: PolarDB for MySQL cluster.
-        # - **PolarDB_o**: PolarDB for PostgreSQL (Oracle-Compatible) cluster.
+        # - **PolarDB_o**: PolarDB for Oracle cluster.
         # 
         # This parameter is required.
         self.source_endpoint_instance_type = source_endpoint_instance_type
-        # The SID of the Oracle database.
+        # The system ID (SID) of the Oracle database.
         # > This parameter is available and required only when **SourceEndpointEngineName** is set to **Oracle** and the Oracle database is a non-RAC instance.
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
-        # The password of the source database account.
+        # The password of the database account for the source database.
         self.source_endpoint_password = source_endpoint_password
         # The service port of the source database.
         # > This parameter is available and required only when **SourceEndpointInstanceType** is set to **ECS**, **LocalInstance**, or **Express**.
         self.source_endpoint_port = source_endpoint_port
-        # The region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.source_endpoint_region = source_endpoint_region
         # The database account of the source database.
         self.source_endpoint_user_name = source_endpoint_user_name

@@ -19,47 +19,47 @@ class TransferPayTypeRequest(DaraModel):
         resource_group_id: str = None,
     ):
         self.auto_pay = auto_pay
-        # The subscription duration of the instance.
-        # - If Period is set to **Year**, valid values are **1** to **5**.
-        # - If Period is set to **Month**, valid values are **1** to **60**.
+        # The subscription duration.
+        # - If **Period** is set to **Year**, valid values are **1** to **5**.
+        # - If **Period** is set to **Month**, valid values are **1** to **60**.
         # 
-        # > This parameter is valid and required only when ChargeType is set to **Prepaid**.
+        # > This parameter is valid and required only when **ChargeType** is set to **Prepaid**.
         self.buy_count = buy_count
-        # The billing method after conversion. Valid values:
+        # The new billing method. Valid values:
         # - **PrePaid**: subscription.
         # - **PostPaid**: pay-as-you-go.
         # <props="china">
-        # - **sync_serverless**: pay-as-you-go Serverless..
+        # - **sync_serverless**: pay-as-you-go Serverless.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The ID of the data synchronization or change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+        # The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
         self.instance_class = instance_class
         # The maximum number of DUs for the Serverless instance. Valid values: 2, 4, 8, and 16.
         # <props="intl">
-        # > This feature is currently not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         # <props="china">
-        # > This parameter is valid and required only when ChargeType is set to **sync_serverless**..
+        # > This parameter is valid and required only when **ChargeType** is set to **sync_serverless**.
         self.max_du = max_du
-        # The minimum number of DTS Units (DUs) for the Serverless instance. Valid values: 1, 2, 4, 8, and 16.
+        # The minimum number of DUs for the Serverless instance. Valid values: 1, 2, 4, 8, and 16.
         # 
         # <props="intl">
-        # > This feature is currently not supported. Do not specify this parameter.
+        # > This feature is not supported. Do not specify this parameter.
         # <props="china">
-        # > This parameter is valid and required only when ChargeType is set to **sync_serverless**..
+        # > This parameter is valid and required only when **ChargeType** is set to **sync_serverless**.
         self.min_du = min_du
         # The billing method of the subscription instance. Valid values:
-        # - **Year**: annual subscription.
-        # - **Month**: monthly subscription.
+        # - **Year**: yearly.
+        # - **Month**: monthly.
         # 
-        # > This parameter is valid and required only when ChargeType is set to **PrePaid** (subscription).
+        # > This parameter is valid and required only when **ChargeType** is set to **PrePaid** (subscription).
         self.period = period
         # The region ID of the instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

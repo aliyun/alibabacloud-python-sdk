@@ -19,21 +19,21 @@ class DescribeEtlJobLogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The dynamic error code associated with this request.
+        # The dynamic error code related to the request.
         self.dynamic_code = dynamic_code
-        # The dynamic error message associated with this request.
+        # The dynamic error message related to the request.
         self.dynamic_message = dynamic_message
-        # The error code returned when the specified ETL task ID is invalid and the corresponding task cannot be found.
+        # The error code returned if the specified ETL task ID is invalid and the corresponding task cannot be found.
         self.err_code = err_code
-        # The error message returned when the specified ETL task ID is invalid and the corresponding task cannot be found. The task may have been deleted.
+        # The error message returned if the specified ETL task ID is invalid and the corresponding task cannot be found. The task may have been deleted.
         self.err_message = err_message
-        # The array of ETL task running log objects.
+        # The array of running log objects for the ETL task.
         self.etl_running_logs = etl_running_logs
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. A value of false indicates a failure.
+        # Indicates whether the request was successful. false is returned if the request fails.
         self.success = success
 
     def validate(self):
@@ -116,9 +116,9 @@ class DescribeEtlJobLogsResponseBodyEtlRunningLogs(DaraModel):
         status: str = None,
         user_id: str = None,
     ):
-        # The description of the ETL task running status.
+        # The description of the running status of the ETL task.
         self.content = content
-        # The status, which indicates the name of the module that generated the log, such as the transformation module of the ETL task.
+        # The status, which indicates the name of the module that generates the log, such as the transformation module of the ETL task.
         self.content_key = content_key
         # The ID of the ETL task.
         self.etl_id = etl_id
@@ -126,7 +126,7 @@ class DescribeEtlJobLogsResponseBodyEtlRunningLogs(DaraModel):
         self.log_datetime = log_datetime
         # The log level. Valid values: ERROR, WARN, INFO, and DEBUG.
         self.status = status
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

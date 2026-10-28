@@ -13,7 +13,7 @@ class DescribeDataCheckReportUrlRequest(DaraModel):
         resource_group_id: str = None,
         tb_name: str = None,
     ):
-        # The data verification method. Currently, only the value **1** is supported, which indicates full verification.
+        # The data validation method. Valid values: **1**: full validation. Currently, only **1** is supported.
         # 
         # This parameter is required.
         self.check_type = check_type
@@ -21,13 +21,13 @@ class DescribeDataCheckReportUrlRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_name = db_name
-        # The ID of the DTS task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to obtain the ID.
+        # The ID of the DTS task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to obtain the task ID.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The name of the table in the source database to be verified.
+        # The name of the table to be verified in the source database.
         # 
         # This parameter is required.
         self.tb_name = tb_name

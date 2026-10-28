@@ -17,7 +17,7 @@ class StopDtsJobsResponseBody(DaraModel):
     ):
         # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the **%s** variable in the **ErrMessage** parameter. > For example, if **ErrMessage** returns **The value of input parameter %s is not valid** and **DynamicMessage** returns **[timeout]**, the request parameter **timeout** is invalid.
+        # The dynamic error message, which is used to replace **%s** in the error message returned in the **ErrMessage** parameter. > If **ErrMessage** returns **the value of input parameter %s is not valid** and **DynamicMessage** returns **[timeout]**, it indicates that the **timeout** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The error code returned if the call fails.
         self.err_code = err_code
@@ -27,7 +27,7 @@ class StopDtsJobsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

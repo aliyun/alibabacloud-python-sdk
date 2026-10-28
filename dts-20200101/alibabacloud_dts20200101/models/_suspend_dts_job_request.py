@@ -14,28 +14,28 @@ class SuspendDtsJobRequest(DaraModel):
         synchronization_direction: str = None,
         zero_etl_job: bool = None,
     ):
-        # The migration, synchronization, or subscribe instance ID.
+        # The instance ID of the data migration, synchronization, or subscribe instance.
         self.dts_instance_id = dts_instance_id
         # The ID of the data migration, synchronization, or change tracking task.
         # 
-        # > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # > You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to retrieve the task ID.
         self.dts_job_id = dts_job_id
-        # The region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # 
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # - **Forward**: Forward.
+        # - **Reverse**: Reverse.
         # 
-        # > - The default value is **Forward**.
-        # - You can set this parameter to **Reverse** to suspend the reverse synchronization link only if the topology of the data synchronization instance is two-way synchronization.
+        # > - Default value: **Forward**.
+        # - You can specify **Reverse** to suspend the reverse synchronization link only when the topology of the data synchronization instance is two-way.
         self.synchronization_direction = synchronization_direction
         # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
         # 
-        # - **false**: no.
-        # - **true**: yes.
+        # - **false**: No.
+        # - **true**: Yes.
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

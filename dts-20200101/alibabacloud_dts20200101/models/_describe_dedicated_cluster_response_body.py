@@ -36,11 +36,11 @@ class DescribeDedicatedClusterResponseBody(DaraModel):
     ):
         # The CPU utilization percentage.
         self.cpu_utilization = cpu_utilization
-        # The cluster ID.
+        # The ID of the dedicated cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # The cluster name.
+        # The name of the dedicated cluster.
         self.dedicated_cluster_name = dedicated_cluster_name
-        # The disk utilization.
+        # The disk usage.
         self.disk_utilization = disk_utilization
         # The instance ID.
         self.dts_instance_id = dts_instance_id
@@ -48,52 +48,51 @@ class DescribeDedicatedClusterResponseBody(DaraModel):
         self.du = du
         # The DU utilization percentage.
         self.du_utilization = du_utilization
-        # The error code returned when the call fails.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned when the call fails.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The creation time.
         self.gmt_created = gmt_created
-        # The end time.
+        # The completion time.
         self.gmt_finished = gmt_finished
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The memory utilization.
+        # The memory usage.
         self.mem_utilization = mem_utilization
-        # The number of nodes in the cluster.
+        # The number of nodes in the dedicated cluster.
         self.node_count = node_count
         # The number of oversold DUs.
         self.oversold_du = oversold_du
-        # The region in which the instance resides.
+        # The region where the instance is deployed.
         self.region_id = region_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The cluster status. Valid values:
-        # 
-        # - **init**: initialization.
-        # - **schedule**: pending scheduling.
-        # - **running**: running.
-        # - **upgrade**: upgrading.
-        # - **downgrade**: downgrading.
-        # - **locked**: locked.
-        # - **releasing**: being released.
-        # - **released**: released.
+        # The status of the dedicated cluster. Valid values:
+        # - **init**: initializing
+        # - **schedule**: pending scheduling
+        # - **running**: running
+        # - **upgrade**: upgrading
+        # - **downgrade**: downgrading
+        # - **locked**: locked
+        # - **releasing**: releasing
+        # - **released**: released
         self.state = state
         # Indicates whether the request was successful.
         self.success = success
         # The total number of CPU cores.
         self.total_cpu_core = total_cpu_core
-        # The total disk size, in GB.
+        # The total disk size in GB.
         self.total_disk_gbsize = total_disk_gbsize
-        # The total memory size, in GB.
+        # The total memory size in GB.
         self.total_mem_gbsize = total_mem_gbsize
         # The number of used CPU cores.
         self.used_cpu_core = used_cpu_core
-        # The used disk size, in GB.
+        # The used disk size in GB.
         self.used_disk_gbsize = used_disk_gbsize
         # The number of used DUs.
         self.used_du = used_du
-        # The used memory size, in GB.
+        # The used memory size in GB.
         self.used_mem_gbsize = used_mem_gbsize
 
     def validate(self):

@@ -12,14 +12,14 @@ class DescribeDedicatedClusterRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the dedicated cluster.
         # 
         # This parameter is required.
         self.dedicated_cluster_id = dedicated_cluster_id
         self.owner_id = owner_id
-        # The region in which the instance resides.
+        # The region ID of the instance.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

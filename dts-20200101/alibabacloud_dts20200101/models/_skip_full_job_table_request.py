@@ -13,17 +13,17 @@ class SkipFullJobTableRequest(DaraModel):
         resource_group_id: str = None,
         zero_etl_job: bool = None,
     ):
-        # The ID of the data migration, synchronization, or change tracking task. This parameter is deprecated and no longer takes effect.
+        # The ID of the data migration, data synchronization, or change tracking task. **[Deprecated]** This parameter is deprecated and no longer takes effect.
         self.dts_job_id = dts_job_id
-        # The primary key ID of JobProgress. Each object in a full data migration task corresponds to a JobProgress entry. Specify this parameter to identify the table to skip.
+        # The primary key ID of JobProgress. Each object in a full data migration task corresponds to a JobProgress record. Specify this parameter to determine the tables to skip.
         self.job_progress_id = job_progress_id
-        # The region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Specifies whether the node is a seamless integration (zero-ETL) node. Valid values:
-        # - **true**: The node is a zero-ETL node.
-        # - **false**: The node is not a zero-ETL node.
+        # Specifies whether the node is a seamless integration (Zero-ETL) node. Valid values:
+        # - **true**: yes
+        # - **false**: no
         self.zero_etl_job = zero_etl_job
 
     def validate(self):

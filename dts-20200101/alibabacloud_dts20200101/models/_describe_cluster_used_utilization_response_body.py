@@ -25,21 +25,21 @@ class DescribeClusterUsedUtilizationResponseBody(DaraModel):
         success: bool = None,
         task_running: int = None,
     ):
-        # The internal error code. The value is incremented.
+        # The backend error code, which increments numerically.
         self.code = code
         # The CPU utilization of the cluster. Unit: %.
         self.cpu_total = cpu_total
-        # The cluster ID.
+        # The ID of the cluster.
         self.dedicated_cluster_id = dedicated_cluster_id
         # The total disk space of the cluster. Unit: GB.
         self.disk_total = disk_total
-        # The disk usage of the cluster. Unit: GB.
+        # The used disk space of the cluster. Unit: GB.
         self.disk_used = disk_used
         # The total number of DUs.
         self.du_total = du_total
         # The number of used DUs.
         self.du_used = du_used
-        # The dynamic error message. This parameter is used to replace the %s placeholder in the ErrMessage response parameter.
+        # The dynamic error message, which is used to replace %s in the error message returned in the ErrMessage parameter.
         self.dynamic_message = dynamic_message
         # The error code returned when the call fails.
         self.err_code = err_code
@@ -47,13 +47,13 @@ class DescribeClusterUsedUtilizationResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The total memory. The value 0 is returned.
+        # The total memory. This parameter temporarily returns 0.
         self.memory_total = memory_total
-        # The memory usage. The value 0 is returned.
+        # The amount of used memory. This parameter temporarily returns 0.
         self.memory_used = memory_used
         # The memory usage percentage.
         self.memory_used_percentage = memory_used_percentage
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the call was successful.
         self.success = success

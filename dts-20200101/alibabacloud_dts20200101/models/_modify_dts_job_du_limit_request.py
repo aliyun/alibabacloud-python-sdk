@@ -13,11 +13,11 @@ class ModifyDtsJobDuLimitRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the DTS migration, synchronization, or change tracking task.
+        # The ID of the DTS data migration, data synchronization, or change tracking task.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The DU upper limit of the task.
+        # The DU limit for the task.
         # 
         # > The minimum value is **1**.
         # 

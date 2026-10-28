@@ -2670,6 +2670,506 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_dts_instance_with_options_async(request, runtime)
 
+    def create_gad_instance_with_options(
+        self,
+        request: main_models.CreateGadInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGadInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.master_db_engine_type):
+            query['MasterDbEngineType'] = request.master_db_engine_type
+        if not DaraCore.is_null(request.master_db_instance_id):
+            query['MasterDbInstanceId'] = request.master_db_instance_id
+        if not DaraCore.is_null(request.master_db_instance_region):
+            query['MasterDbInstanceRegion'] = request.master_db_instance_region
+        if not DaraCore.is_null(request.master_db_zone_id):
+            query['MasterDbZoneId'] = request.master_db_zone_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGadInstance',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGadInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gad_instance_with_options_async(
+        self,
+        request: main_models.CreateGadInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGadInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.master_db_engine_type):
+            query['MasterDbEngineType'] = request.master_db_engine_type
+        if not DaraCore.is_null(request.master_db_instance_id):
+            query['MasterDbInstanceId'] = request.master_db_instance_id
+        if not DaraCore.is_null(request.master_db_instance_region):
+            query['MasterDbInstanceRegion'] = request.master_db_instance_region
+        if not DaraCore.is_null(request.master_db_zone_id):
+            query['MasterDbZoneId'] = request.master_db_zone_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGadInstance',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGadInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gad_instance(
+        self,
+        request: main_models.CreateGadInstanceRequest,
+    ) -> main_models.CreateGadInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.create_gad_instance_with_options(request, runtime)
+
+    async def create_gad_instance_async(
+        self,
+        request: main_models.CreateGadInstanceRequest,
+    ) -> main_models.CreateGadInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_gad_instance_with_options_async(request, runtime)
+
+    def create_gad_order_with_options(
+        self,
+        tmp_req: main_models.CreateGadOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGadOrderResponse:
+        tmp_req.validate()
+        request = main_models.CreateGadOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.serverless_config):
+            request.serverless_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.auto_create_proxy):
+            query['AutoCreateProxy'] = request.auto_create_proxy
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.babelfish_config):
+            query['BabelfishConfig'] = request.babelfish_config
+        if not DaraCore.is_null(request.bpe_enabled):
+            query['BpeEnabled'] = request.bpe_enabled
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cold_data_enabled):
+            query['ColdDataEnabled'] = request.cold_data_enabled
+        if not DaraCore.is_null(request.connection_mode):
+            query['ConnectionMode'] = request.connection_mode
+        if not DaraCore.is_null(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not DaraCore.is_null(request.create_strategy):
+            query['CreateStrategy'] = request.create_strategy
+        if not DaraCore.is_null(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not DaraCore.is_null(request.dbinstance_net_type):
+            query['DBInstanceNetType'] = request.dbinstance_net_type
+        if not DaraCore.is_null(request.dbinstance_storage):
+            query['DBInstanceStorage'] = request.dbinstance_storage
+        if not DaraCore.is_null(request.dbinstance_storage_type):
+            query['DBInstanceStorageType'] = request.dbinstance_storage_type
+        if not DaraCore.is_null(request.dbis_ignore_case):
+            query['DBIsIgnoreCase'] = request.dbis_ignore_case
+        if not DaraCore.is_null(request.dbparam_group_id):
+            query['DBParamGroupId'] = request.dbparam_group_id
+        if not DaraCore.is_null(request.dbtime_zone):
+            query['DBTimeZone'] = request.dbtime_zone
+        if not DaraCore.is_null(request.db_list):
+            query['DbList'] = request.db_list
+        if not DaraCore.is_null(request.db_list_mode):
+            query['DbListMode'] = request.db_list_mode
+        if not DaraCore.is_null(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not DaraCore.is_null(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not DaraCore.is_null(request.engine):
+            query['Engine'] = request.engine
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not DaraCore.is_null(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
+        if not DaraCore.is_null(request.master_account_exist):
+            query['MasterAccountExist'] = request.master_account_exist
+        if not DaraCore.is_null(request.master_account_name):
+            query['MasterAccountName'] = request.master_account_name
+        if not DaraCore.is_null(request.master_account_password):
+            query['MasterAccountPassword'] = request.master_account_password
+        if not DaraCore.is_null(request.master_database_name):
+            query['MasterDatabaseName'] = request.master_database_name
+        if not DaraCore.is_null(request.master_engine_arch_type):
+            query['MasterEngineArchType'] = request.master_engine_arch_type
+        if not DaraCore.is_null(request.master_instance_id):
+            query['MasterInstanceId'] = request.master_instance_id
+        if not DaraCore.is_null(request.master_region):
+            query['MasterRegion'] = request.master_region
+        if not DaraCore.is_null(request.master_shard_account_name):
+            query['MasterShardAccountName'] = request.master_shard_account_name
+        if not DaraCore.is_null(request.master_shard_account_password):
+            query['MasterShardAccountPassword'] = request.master_shard_account_password
+        if not DaraCore.is_null(request.need_create_slave):
+            query['NeedCreateSlave'] = request.need_create_slave
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleARN'] = request.role_arn
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
+        if not DaraCore.is_null(request.slave_account_exist):
+            query['SlaveAccountExist'] = request.slave_account_exist
+        if not DaraCore.is_null(request.slave_account_name):
+            query['SlaveAccountName'] = request.slave_account_name
+        if not DaraCore.is_null(request.slave_account_password):
+            query['SlaveAccountPassword'] = request.slave_account_password
+        if not DaraCore.is_null(request.slave_database_name):
+            query['SlaveDatabaseName'] = request.slave_database_name
+        if not DaraCore.is_null(request.slave_engine_arch_type):
+            query['SlaveEngineArchType'] = request.slave_engine_arch_type
+        if not DaraCore.is_null(request.slave_instance_id):
+            query['SlaveInstanceId'] = request.slave_instance_id
+        if not DaraCore.is_null(request.slave_read_only):
+            query['SlaveReadOnly'] = request.slave_read_only
+        if not DaraCore.is_null(request.slave_region):
+            query['SlaveRegion'] = request.slave_region
+        if not DaraCore.is_null(request.storage_auto_scale):
+            query['StorageAutoScale'] = request.storage_auto_scale
+        if not DaraCore.is_null(request.storage_threshold):
+            query['StorageThreshold'] = request.storage_threshold
+        if not DaraCore.is_null(request.storage_upper_bound):
+            query['StorageUpperBound'] = request.storage_upper_bound
+        if not DaraCore.is_null(request.sync_account_type):
+            query['SyncAccountType'] = request.sync_account_type
+        if not DaraCore.is_null(request.sync_architecture):
+            query['SyncArchitecture'] = request.sync_architecture
+        if not DaraCore.is_null(request.sync_conflict):
+            query['SyncConflict'] = request.sync_conflict
+        if not DaraCore.is_null(request.system_dbcharset):
+            query['SystemDBCharset'] = request.system_dbcharset
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.target_dedicated_host_id_for_log):
+            query['TargetDedicatedHostIdForLog'] = request.target_dedicated_host_id_for_log
+        if not DaraCore.is_null(request.target_dedicated_host_id_for_master):
+            query['TargetDedicatedHostIdForMaster'] = request.target_dedicated_host_id_for_master
+        if not DaraCore.is_null(request.target_dedicated_host_id_for_slave):
+            query['TargetDedicatedHostIdForSlave'] = request.target_dedicated_host_id_for_slave
+        if not DaraCore.is_null(request.target_minor_version):
+            query['TargetMinorVersion'] = request.target_minor_version
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.user_backup_id):
+            query['UserBackupId'] = request.user_backup_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.whitelist_template_list):
+            query['WhitelistTemplateList'] = request.whitelist_template_list
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        if not DaraCore.is_null(request.zone_id_slave_1):
+            query['ZoneIdSlave1'] = request.zone_id_slave_1
+        if not DaraCore.is_null(request.zone_id_slave_2):
+            query['ZoneIdSlave2'] = request.zone_id_slave_2
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGadOrder',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGadOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gad_order_with_options_async(
+        self,
+        tmp_req: main_models.CreateGadOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGadOrderResponse:
+        tmp_req.validate()
+        request = main_models.CreateGadOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.serverless_config):
+            request.serverless_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.serverless_config, 'ServerlessConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.amount):
+            query['Amount'] = request.amount
+        if not DaraCore.is_null(request.auto_create_proxy):
+            query['AutoCreateProxy'] = request.auto_create_proxy
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.babelfish_config):
+            query['BabelfishConfig'] = request.babelfish_config
+        if not DaraCore.is_null(request.bpe_enabled):
+            query['BpeEnabled'] = request.bpe_enabled
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cold_data_enabled):
+            query['ColdDataEnabled'] = request.cold_data_enabled
+        if not DaraCore.is_null(request.connection_mode):
+            query['ConnectionMode'] = request.connection_mode
+        if not DaraCore.is_null(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not DaraCore.is_null(request.create_strategy):
+            query['CreateStrategy'] = request.create_strategy
+        if not DaraCore.is_null(request.dbinstance_class):
+            query['DBInstanceClass'] = request.dbinstance_class
+        if not DaraCore.is_null(request.dbinstance_description):
+            query['DBInstanceDescription'] = request.dbinstance_description
+        if not DaraCore.is_null(request.dbinstance_net_type):
+            query['DBInstanceNetType'] = request.dbinstance_net_type
+        if not DaraCore.is_null(request.dbinstance_storage):
+            query['DBInstanceStorage'] = request.dbinstance_storage
+        if not DaraCore.is_null(request.dbinstance_storage_type):
+            query['DBInstanceStorageType'] = request.dbinstance_storage_type
+        if not DaraCore.is_null(request.dbis_ignore_case):
+            query['DBIsIgnoreCase'] = request.dbis_ignore_case
+        if not DaraCore.is_null(request.dbparam_group_id):
+            query['DBParamGroupId'] = request.dbparam_group_id
+        if not DaraCore.is_null(request.dbtime_zone):
+            query['DBTimeZone'] = request.dbtime_zone
+        if not DaraCore.is_null(request.db_list):
+            query['DbList'] = request.db_list
+        if not DaraCore.is_null(request.db_list_mode):
+            query['DbListMode'] = request.db_list_mode
+        if not DaraCore.is_null(request.dedicated_host_group_id):
+            query['DedicatedHostGroupId'] = request.dedicated_host_group_id
+        if not DaraCore.is_null(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not DaraCore.is_null(request.engine):
+            query['Engine'] = request.engine
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.instance_network_type):
+            query['InstanceNetworkType'] = request.instance_network_type
+        if not DaraCore.is_null(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
+        if not DaraCore.is_null(request.master_account_exist):
+            query['MasterAccountExist'] = request.master_account_exist
+        if not DaraCore.is_null(request.master_account_name):
+            query['MasterAccountName'] = request.master_account_name
+        if not DaraCore.is_null(request.master_account_password):
+            query['MasterAccountPassword'] = request.master_account_password
+        if not DaraCore.is_null(request.master_database_name):
+            query['MasterDatabaseName'] = request.master_database_name
+        if not DaraCore.is_null(request.master_engine_arch_type):
+            query['MasterEngineArchType'] = request.master_engine_arch_type
+        if not DaraCore.is_null(request.master_instance_id):
+            query['MasterInstanceId'] = request.master_instance_id
+        if not DaraCore.is_null(request.master_region):
+            query['MasterRegion'] = request.master_region
+        if not DaraCore.is_null(request.master_shard_account_name):
+            query['MasterShardAccountName'] = request.master_shard_account_name
+        if not DaraCore.is_null(request.master_shard_account_password):
+            query['MasterShardAccountPassword'] = request.master_shard_account_password
+        if not DaraCore.is_null(request.need_create_slave):
+            query['NeedCreateSlave'] = request.need_create_slave
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleARN'] = request.role_arn
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.serverless_config_shrink):
+            query['ServerlessConfig'] = request.serverless_config_shrink
+        if not DaraCore.is_null(request.slave_account_exist):
+            query['SlaveAccountExist'] = request.slave_account_exist
+        if not DaraCore.is_null(request.slave_account_name):
+            query['SlaveAccountName'] = request.slave_account_name
+        if not DaraCore.is_null(request.slave_account_password):
+            query['SlaveAccountPassword'] = request.slave_account_password
+        if not DaraCore.is_null(request.slave_database_name):
+            query['SlaveDatabaseName'] = request.slave_database_name
+        if not DaraCore.is_null(request.slave_engine_arch_type):
+            query['SlaveEngineArchType'] = request.slave_engine_arch_type
+        if not DaraCore.is_null(request.slave_instance_id):
+            query['SlaveInstanceId'] = request.slave_instance_id
+        if not DaraCore.is_null(request.slave_read_only):
+            query['SlaveReadOnly'] = request.slave_read_only
+        if not DaraCore.is_null(request.slave_region):
+            query['SlaveRegion'] = request.slave_region
+        if not DaraCore.is_null(request.storage_auto_scale):
+            query['StorageAutoScale'] = request.storage_auto_scale
+        if not DaraCore.is_null(request.storage_threshold):
+            query['StorageThreshold'] = request.storage_threshold
+        if not DaraCore.is_null(request.storage_upper_bound):
+            query['StorageUpperBound'] = request.storage_upper_bound
+        if not DaraCore.is_null(request.sync_account_type):
+            query['SyncAccountType'] = request.sync_account_type
+        if not DaraCore.is_null(request.sync_architecture):
+            query['SyncArchitecture'] = request.sync_architecture
+        if not DaraCore.is_null(request.sync_conflict):
+            query['SyncConflict'] = request.sync_conflict
+        if not DaraCore.is_null(request.system_dbcharset):
+            query['SystemDBCharset'] = request.system_dbcharset
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.target_dedicated_host_id_for_log):
+            query['TargetDedicatedHostIdForLog'] = request.target_dedicated_host_id_for_log
+        if not DaraCore.is_null(request.target_dedicated_host_id_for_master):
+            query['TargetDedicatedHostIdForMaster'] = request.target_dedicated_host_id_for_master
+        if not DaraCore.is_null(request.target_dedicated_host_id_for_slave):
+            query['TargetDedicatedHostIdForSlave'] = request.target_dedicated_host_id_for_slave
+        if not DaraCore.is_null(request.target_minor_version):
+            query['TargetMinorVersion'] = request.target_minor_version
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.user_backup_id):
+            query['UserBackupId'] = request.user_backup_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.whitelist_template_list):
+            query['WhitelistTemplateList'] = request.whitelist_template_list
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        if not DaraCore.is_null(request.zone_id_slave_1):
+            query['ZoneIdSlave1'] = request.zone_id_slave_1
+        if not DaraCore.is_null(request.zone_id_slave_2):
+            query['ZoneIdSlave2'] = request.zone_id_slave_2
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGadOrder',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGadOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gad_order(
+        self,
+        request: main_models.CreateGadOrderRequest,
+    ) -> main_models.CreateGadOrderResponse:
+        runtime = RuntimeOptions()
+        return self.create_gad_order_with_options(request, runtime)
+
+    async def create_gad_order_async(
+        self,
+        request: main_models.CreateGadOrderRequest,
+    ) -> main_models.CreateGadOrderResponse:
+        runtime = RuntimeOptions()
+        return await self.create_gad_order_with_options_async(request, runtime)
+
     def create_job_monitor_rule_with_options(
         self,
         request: main_models.CreateJobMonitorRuleRequest,
@@ -3539,6 +4039,88 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDtsJobsResponse:
         runtime = RuntimeOptions()
         return await self.delete_dts_jobs_with_options_async(request, runtime)
+
+    def delete_gad_instance_with_options(
+        self,
+        request: main_models.DeleteGadInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGadInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGadInstance',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGadInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_gad_instance_with_options_async(
+        self,
+        request: main_models.DeleteGadInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteGadInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteGadInstance',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteGadInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_gad_instance(
+        self,
+        request: main_models.DeleteGadInstanceRequest,
+    ) -> main_models.DeleteGadInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_gad_instance_with_options(request, runtime)
+
+    async def delete_gad_instance_async(
+        self,
+        request: main_models.DeleteGadInstanceRequest,
+    ) -> main_models.DeleteGadInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_gad_instance_with_options_async(request, runtime)
 
     def delete_migration_job_with_options(
         self,
@@ -6043,6 +6625,252 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeFullProcessListResponse:
         runtime = RuntimeOptions()
         return await self.describe_full_process_list_with_options_async(request, runtime)
+
+    def describe_gad_instance_db_members_with_options(
+        self,
+        request: main_models.DescribeGadInstanceDbMembersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGadInstanceDbMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGadInstanceDbMembers',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGadInstanceDbMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_gad_instance_db_members_with_options_async(
+        self,
+        request: main_models.DescribeGadInstanceDbMembersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGadInstanceDbMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGadInstanceDbMembers',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGadInstanceDbMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_gad_instance_db_members(
+        self,
+        request: main_models.DescribeGadInstanceDbMembersRequest,
+    ) -> main_models.DescribeGadInstanceDbMembersResponse:
+        runtime = RuntimeOptions()
+        return self.describe_gad_instance_db_members_with_options(request, runtime)
+
+    async def describe_gad_instance_db_members_async(
+        self,
+        request: main_models.DescribeGadInstanceDbMembersRequest,
+    ) -> main_models.DescribeGadInstanceDbMembersResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_gad_instance_db_members_with_options_async(request, runtime)
+
+    def describe_gad_instance_detail_with_options(
+        self,
+        request: main_models.DescribeGadInstanceDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGadInstanceDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGadInstanceDetail',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGadInstanceDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_gad_instance_detail_with_options_async(
+        self,
+        request: main_models.DescribeGadInstanceDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGadInstanceDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGadInstanceDetail',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGadInstanceDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_gad_instance_detail(
+        self,
+        request: main_models.DescribeGadInstanceDetailRequest,
+    ) -> main_models.DescribeGadInstanceDetailResponse:
+        runtime = RuntimeOptions()
+        return self.describe_gad_instance_detail_with_options(request, runtime)
+
+    async def describe_gad_instance_detail_async(
+        self,
+        request: main_models.DescribeGadInstanceDetailRequest,
+    ) -> main_models.DescribeGadInstanceDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_gad_instance_detail_with_options_async(request, runtime)
+
+    def describe_gad_instance_dts_members_with_options(
+        self,
+        request: main_models.DescribeGadInstanceDtsMembersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGadInstanceDtsMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGadInstanceDtsMembers',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGadInstanceDtsMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_gad_instance_dts_members_with_options_async(
+        self,
+        request: main_models.DescribeGadInstanceDtsMembersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGadInstanceDtsMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGadInstanceDtsMembers',
+            version = '2020-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGadInstanceDtsMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_gad_instance_dts_members(
+        self,
+        request: main_models.DescribeGadInstanceDtsMembersRequest,
+    ) -> main_models.DescribeGadInstanceDtsMembersResponse:
+        runtime = RuntimeOptions()
+        return self.describe_gad_instance_dts_members_with_options(request, runtime)
+
+    async def describe_gad_instance_dts_members_async(
+        self,
+        request: main_models.DescribeGadInstanceDtsMembersRequest,
+    ) -> main_models.DescribeGadInstanceDtsMembersResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_gad_instance_dts_members_with_options_async(request, runtime)
 
     def describe_gad_instances_with_options(
         self,

@@ -14,19 +14,19 @@ class DescribeDtsEtlJobVersionInfoRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The DTS instance ID. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+        # The ID of the DTS instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.dts_instance_id = dts_instance_id
-        # The ETL task ID. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # The ID of the ETL task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The page number of the instance status list. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Settings this parameter for paging. Default value: 20.
+        # The paging Settings for the number of entries per page in a paged query. Default value: 20.
         self.page_size = page_size
-        # The region ID of the DTS instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query available regions.
+        # The region ID of the DTS instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the list of Alibaba Cloud regions.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

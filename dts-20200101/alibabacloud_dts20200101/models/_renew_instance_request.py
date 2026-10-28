@@ -15,24 +15,24 @@ class RenewInstanceRequest(DaraModel):
         resource_group_id: str = None,
     ):
         # The subscription duration of the renewed instance. Default value: 1.
-        # - If **Period** is set to **Year**, the valid values are **1 to 5**.
-        # - If **Period** is set to **Month**, the valid values are **1 to 60**.
+        # - If **Period** is set to **Year**, valid values are **1** to **5**.
+        # - If **Period** is set to **Month**, valid values are **1** to **60**.
         self.buy_count = buy_count
         # The billing method. Set the value to **PREPAY**, which indicates the subscription billing method.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The ID of the data synchronization or change tracking task. You can call [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) to query the task ID.
+        # The ID of the synchronization or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The billing method for the renewal instance. Valid values:
-        # - **Year**: yearly subscription.
-        # - **Month**: monthly subscription (default).
+        # The billing method for the renewed instance. Valid values:
+        # - **Year**: Yearly.
+        # - **Month**: Monthly. This is the default value.
         self.period = period
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

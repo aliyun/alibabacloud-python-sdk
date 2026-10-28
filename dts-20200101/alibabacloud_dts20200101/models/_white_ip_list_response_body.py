@@ -18,23 +18,23 @@ class WhiteIpListResponseBody(DaraModel):
         src_ip_list: str = None,
         success: bool = None,
     ):
-        # The IP whitelist of the destination adapted for VPC NAT.
+        # The IP address whitelist adapted for the destination VPC NAT gateway.
         self.dest_ip_list = dest_ip_list
         # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic error message used to replace the **%s** variable in the **ErrMessage** parameter.
+        # The dynamic error message, which is used to replace **%s** in the **ErrMessage** response parameter.
         self.dynamic_message = dynamic_message
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The IP whitelist. Multiple IP addresses are separated by commas (,).
+        # The IP address whitelist. Multiple IP addresses are separated by commas (,).
         self.ip_list = ip_list
         # The request ID.
         self.request_id = request_id
-        # The IP whitelist of the source adapted for VPC NAT.
+        # The IP address whitelist adapted for the source VPC NAT gateway.
         self.src_ip_list = src_ip_list
         # Indicates whether the request was successful. Valid values:
         # - **true**: The request was successful.

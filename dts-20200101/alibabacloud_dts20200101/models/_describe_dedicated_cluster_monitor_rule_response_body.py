@@ -20,28 +20,28 @@ class DescribeDedicatedClusterMonitorRuleResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The CPU alert threshold, in percentage.
+        # The CPU alert threshold. Unit: percentage.
         self.cpu_alarm_threshold = cpu_alarm_threshold
         # The cluster ID.
         self.dedicated_cluster_id = dedicated_cluster_id
-        # The disk alert threshold, in percentage.
+        # The disk alert threshold. Unit: percentage.
         self.disk_alarm_threshold = disk_alarm_threshold
-        # The DU alert threshold, in percentage.
+        # The DU alert threshold. Unit: percentage.
         self.du_alarm_threshold = du_alarm_threshold
-        # The error code returned if the call fails.
+        # The error code returned when an error occurs.
         self.err_code = err_code
-        # The error message returned if the call fails.
+        # The error message returned when an error occurs.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The memory alert threshold, in percentage.
+        # The memory alert threshold. Unit: percentage.
         self.mem_alarm_threshold = mem_alarm_threshold
         # The alert switch. Valid values:
         # 
-        # - **1**: enabled.
-        # - **0**: disabled.
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.notice_switch = notice_switch
-        # The phone numbers that receive alerts. If there are multiple phone numbers, they are separated by commas (,).
+        # The phone numbers that receive alert notifications. If multiple phone numbers are specified, separate them with commas (,).
         self.phones = phones
         # The request ID.
         self.request_id = request_id

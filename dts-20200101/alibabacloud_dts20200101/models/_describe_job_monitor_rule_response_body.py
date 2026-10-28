@@ -21,12 +21,12 @@ class DescribeJobMonitorRuleResponseBody(DaraModel):
         success: bool = None,
         topics: List[str] = None,
     ):
-        # The error code. This parameter will be deprecated.
+        # The error code. This parameter will be deprecated soon.
         self.code = code
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
-        # The dynamic error message used to replace the **%s** placeholder in the **ErrMessage** response parameter.
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace **%s** in the **ErrMessage** parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the specified **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The error code returned if the call fails.
         self.err_code = err_code
@@ -34,13 +34,13 @@ class DescribeJobMonitorRuleResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The monitoring rule information of the DTS task.
+        # The monitoring rules of the DTS task.
         self.monitor_rules = monitor_rules
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
         # The Kafka topics.
         self.topics = topics
@@ -140,35 +140,35 @@ class DescribeJobMonitorRuleResponseBodyMonitorRules(DaraModel):
         times: int = None,
         type: str = None,
     ):
-        # The threshold that triggers a latency alert. Unit: seconds.
+        # The threshold that triggers a latency alert, in seconds.
         self.delay_rule_time = delay_rule_time
         # The task ID.
         self.job_id = job_id
         # The task type of the DTS instance. Valid values:
-        # - **normal**: data migration or data synchronization task.
-        # - **full_check**: associated full data validation task.
-        # - **etl_check**: associated incremental data validation task.
+        # - **normal**: Data migration or data synchronization task.
+        # - **full_check**: Associated full data check task.
+        # - **etl_check**: Associated incremental data check task.
         self.job_type = job_type
         # The alert threshold.
         self.notice_value = notice_value
-        # The statistical period of the incremental data validation task. Unit: minutes.
+        # The statistical period of the incremental data check task, in minutes.
         # 
-        # > Valid values: 1, 5, 10, and 30 minutes.
+        # > Valid values are 1, 5, 10, and 30.
         self.period = period
-        # The phone numbers of the contacts to be notified when an alert is triggered. Multiple phone numbers are separated by commas (,).
+        # The mobile phone numbers of the contacts to be notified after an alert is triggered. Separate multiple mobile phone numbers with commas (,).
         self.phone = phone
         # Indicates whether the monitoring rule is enabled. Valid values:
         # 
-        # - **Y**: enabled.
-        # - **N**: disabled.
+        # - **Y**: The monitoring rule is enabled.
+        # - **N**: The monitoring rule is disabled.
         self.state = state
-        # The number of periods for the incremental data validation task.
+        # The number of periods for the incremental data check task.
         self.times = times
         # The type of the monitoring rule. Valid values:
-        # - **delay**: latency alert.
-        # - **error**: anomaly alert.
-        # - **full_timeout**: alert for the runtime of the full data module.
-        # - **warn**: notification alert (the task succeeded but the result did not meet expectations).
+        # - **delay**: Latency alerting.
+        # - **error**: Anomaly alert.
+        # - **full_timeout**: Full module execution duration alerting.
+        # - **warn**: Notification alerting (the node is executed successfully, but the result does not meet expectations).
         self.type = type
 
     def validate(self):

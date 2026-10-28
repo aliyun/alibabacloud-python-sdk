@@ -23,12 +23,13 @@ class ConfigureSubscriptionInstanceRequest(DaraModel):
         self.source_endpoint = source_endpoint
         self.subscription_data_type = subscription_data_type
         self.subscription_instance = subscription_instance
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated soon.
         self.account_id = account_id
         self.owner_id = owner_id
-        # The ID of the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The ID of the region where the change tracking instance resides. For more information, see
+        # [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
         # 
@@ -37,12 +38,12 @@ class ConfigureSubscriptionInstanceRequest(DaraModel):
         # The name of the change tracking instance.
         # > Specify a descriptive name for easy identification. The name does not need to be unique.
         self.subscription_instance_name = subscription_instance_name
-        # The network type of the change tracking instance. The only valid value is **vpc**, which indicates a virtual private cloud (VPC).
+        # The network type of the change tracking instance. Set the value to **vpc**, which specifies a virtual private cloud (VPC).
         # 
-        # > - If you specify this parameter, the change tracking instance is defined as the new version. You must also correctly set the **SubscriptionInstance.VPCId** and **SubscriptionInstance.VSwitchID** parameters. If you do not specify this parameter, the change tracking instance is defined as the legacy version.
-        # > - The legacy version supports change tracking for self-managed MySQL, ApsaraDB RDS for MySQL, and DRDS. The new version supports change tracking for self-managed MySQL, ApsaraDB RDS for MySQL, PolarDB for MySQL, and Oracle.
+        # > - If you specify this parameter, the change tracking instance is defined as a new version instance, and you must also correctly set the **SubscriptionInstance.VPCId** and **SubscriptionInstance.VSwitchID** parameters. If you do not specify this parameter, the change tracking instance is defined as a legacy instance.
+        # - Legacy change tracking instances support tracking data from self-managed MySQL databases, ApsaraDB RDS for MySQL instances, and DRDS instances. New version change tracking instances support tracking data from self-managed MySQL databases, ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and Oracle databases.
         self.subscription_instance_network_type = subscription_instance_network_type
-        # The objects to be subscribed to. The value is a JSON string that supports regular expressions. For more information, see [Subscription object configuration](https://help.aliyun.com/document_detail/141902.html).
+        # The objects to be tracked. The value is a JSON string and supports specific regular expressions. For more information, see [Configure the objects to be tracked](https://help.aliyun.com/document_detail/141902.html).
         # 
         # This parameter is required.
         self.subscription_object = subscription_object
@@ -141,11 +142,11 @@ class ConfigureSubscriptionInstanceRequestSubscriptionInstance(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # 订阅实例的专有网络ID。
-        # > 当**SubscriptionInstanceNetworkType**取值为**vpc**时，本参数才可用且必须传入。
+        # The VPC ID of the change tracking instance.
+        # > This parameter is available and required only when **SubscriptionInstanceNetworkType** is set to **vpc**.
         self.vpcid = vpcid
-        # 订阅实例的虚拟交换机ID。
-        # > 当**SubscriptionInstanceNetworkType**取值为**vpc**时，本参数才可用且必须传入。
+        # The vSwitch ID of the change tracking instance.
+        # > This parameter is available and required only when **SubscriptionInstanceNetworkType** is set to **vpc**.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -180,16 +181,16 @@ class ConfigureSubscriptionInstanceRequestSubscriptionDataType(DaraModel):
         ddl: bool = None,
         dml: bool = None,
     ):
-        # 是否订阅DDL类型的数据，取值：
+        # Specifies whether to track data definition language (DDL) operations. Valid values:
         # 
-        # - **true**：是，为默认值。
-        # - **false**：否。
+        # - **true**: yes. This is the default value.
+        # - **false**: no.
         # 
         # This parameter is required.
         self.ddl = ddl
-        # 是否订阅DML类型的数据，取值：
-        # - **true**：是，为默认值。
-        # - **false**：否。
+        # Specifies whether to track data manipulation language (DML) operations. Valid values:
+        # - **true**: yes. This is the default value.
+        # - **false**: no.
         # 
         # This parameter is required.
         self.dml = dml
@@ -234,41 +235,41 @@ class ConfigureSubscriptionInstanceRequestSourceEndpoint(DaraModel):
         role: str = None,
         user_name: str = None,
     ):
-        # 待订阅的数据库名称。
+        # The name of the database to be tracked.
         self.database_name = database_name
-        # 源数据库的连接地址。
-        # > 当源数据库为自建数据库时，本参数才可用且必须传入。
+        # The endpoint of the source database.
+        # > This parameter is available and required only when the source database is a self-managed database.
         self.ip = ip
-        # 源实例ID。
-        # > 源数据库的实例类型为RDS MySQL、PolarDB-X 1.0、PolarDB MySQL时，本参数才可用且必须传入。
+        # The instance ID of the source instance.
+        # > This parameter is available and required only when the source database is an ApsaraDB RDS for MySQL instance, a PolarDB-X 1.0 instance, or a PolarDB for MySQL cluster.
         self.instance_id = instance_id
-        # 源数据库的实例类型，取值：
-        # - **RDS**：RDS MySQL。
-        # - **PolarDB**：PolarDB MySQL。
-        # - **LocalInstance**：有公网IP的自建数据库。
-        # - **ECS**：ECS上的自建数据库。
-        # - **Express**：通过专线接入的自建数据库。
-        # - **CEN**：通过云企业网CEN接入的自建数据库。
-        # - **dg**：通过数据库网关接入的自建数据库。
+        # The instance type of the source database. Valid values:
+        # - **RDS**: ApsaraDB RDS for MySQL.
+        # - **PolarDB**: PolarDB for MySQL.
+        # - **LocalInstance**: a self-managed database with a public IP address.
+        # - **ECS**: a self-managed database hosted on an ECS instance.
+        # - **Express**: a self-managed database connected over an Express Connect circuit.
+        # - **CEN**: a self-managed database connected over a Cloud Enterprise Network (CEN) instance.
+        # - **dg**: a self-managed database connected over a database gateway.
         # 
-        # > 支持自建数据库的数据库类型为MySQL、Oracle，您需要提前调用[CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html)设置。
+        # > Self-managed MySQL and Oracle databases are supported. You must call the [CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html) operation to configure the database type in advance.
         self.instance_type = instance_type
-        # Oracle数据库的SID信息。
-        # > 当源数据库为自建Oracle时，且Oracle数据库为非RAC实例时，本参数才可用且必须传入。
+        # The system ID (SID) of the Oracle database.
+        # > This parameter is available and required only when the source database is a self-managed Oracle database and the Oracle database is not a Real Application Clusters (RAC) instance.
         self.oracle_sid = oracle_sid
-        # 源实例所属的阿里云账号ID。
-        # > 仅在配置跨阿里云账号的数据订阅时本参数才可用，且必须传入。
+        # The Alibaba Cloud account ID of the source instance.
+        # > This parameter is available and required only when you configure change tracking across Alibaba Cloud accounts.
         self.owner_id = owner_id
-        # 源实例的数据库账号密码。
+        # The password of the database account of the source instance.
         self.password = password
-        # 源数据库的服务端口。
-        # > 当源数据库为自建数据库时，本参数才可用且必须传入。
+        # The service port number of the source database.
+        # > This parameter is available and required only when the source database is a self-managed database.
         self.port = port
-        # 源实例的授权角色。当源实例与配置订阅任务所属阿里云账号不同时，需传入该参数，来指定源实例的授权角色，以允许配置订阅任务所属阿里云账号访问源实例的实例信息。
-        # > 角色所需的权限及授权方式，请参见[跨阿里云账号数据迁移或同步时如何配置RAM授权](https://help.aliyun.com/document_detail/48468.html)。
+        # The RAM role that is authorized to access the source instance. If the source instance and the change tracking task belong to different Alibaba Cloud accounts, you must specify this parameter to authorize the Alibaba Cloud account that owns the change tracking task to access the source instance.
+        # > For more information about the required permissions and authorization methods for the RAM role, see [Configure RAM authorization for cross-account data migration or synchronization](https://help.aliyun.com/document_detail/48468.html).
         self.role = role
-        # 源实例的数据库账号。
-        # > 订阅不同的数据库所需的权限有所差异，详情请参见[DTS数据订阅方案概览](https://help.aliyun.com/document_detail/145715.html)中对应的配置案例。
+        # The database account of the source instance.
+        # > The required permissions vary based on the database to be tracked. For more information, see the corresponding configuration examples in [Overview of DTS change tracking solutions](https://help.aliyun.com/document_detail/145715.html).
         self.user_name = user_name
 
     def validate(self):

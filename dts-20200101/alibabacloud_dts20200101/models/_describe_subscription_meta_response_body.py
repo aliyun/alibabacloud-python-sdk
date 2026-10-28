@@ -17,17 +17,17 @@ class DescribeSubscriptionMetaResponseBody(DaraModel):
         subscription_meta_list: List[main_models.DescribeSubscriptionMetaResponseBodySubscriptionMetaList] = None,
         success: str = None,
     ):
-        # The error code returned if the call failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # The data information about the change tracking subtasks.
+        # The data information of the change tracking subtasks.
         self.subscription_meta_list = subscription_meta_list
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -97,16 +97,16 @@ class DescribeSubscriptionMetaResponseBodySubscriptionMetaList(DaraModel):
         sid: str = None,
         topic: str = None,
     ):
-        # The consumption checkpoint of the subtask, which is the timestamp of the first data record consumed by the client. The value is a UNIX timestamp. Unit: seconds.
-        # > You can use a search engine to find a UNIX timestamp converter.
+        # The consumption checkpoint of the subtask, which is the timestamp when the client consumes the first data record. The value is a UNIX timestamp in seconds.
+        # > You can use a search engine to obtain a UNIX timestamp converter.
         self.checkpoint = checkpoint
-        # The objects of the subtask. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+        # The change tracking objects of the subtask. For more information, see [Objects for data migration, synchronization, and change tracking](https://help.aliyun.com/document_detail/209545.html).
         self.dblist = dblist
         # The network address and port number of the change tracking channel.
         self.dproxy_url = dproxy_url
         # The consumer group ID of the subtask.
         self.sid = sid
-        # The topic of the subtask.
+        # The change tracking topic of the subtask.
         self.topic = topic
 
     def validate(self):

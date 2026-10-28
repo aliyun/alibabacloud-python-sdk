@@ -13,14 +13,14 @@ class DescribeDTSIPRequest(DaraModel):
         source_endpoint_region: str = None,
     ):
         # The region ID of the destination instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
-        # > If the destination instance is a self-managed database that has a public IP address, you can specify **ap-southeast-1** or the region ID that is geographically closest to the self-managed database.
+        # > If the destination instance is a self-managed database with a public IP address, you can specify **cn-hangzhou** or the region ID that is geographically closest to the self-managed database.
         self.destination_endpoint_region = destination_endpoint_region
-        # The region in which the DTS task instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the DTS task instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The region ID of the source instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
-        # > If the source instance is a self-managed database that has a public IP address, you can specify **ap-southeast-1** or the region ID that is geographically closest to the self-managed database.
+        # > If the source instance is a self-managed database with a public IP address, you can specify **cn-hangzhou** or the region ID that is geographically closest to the self-managed database.
         # 
         # This parameter is required.
         self.source_endpoint_region = source_endpoint_region

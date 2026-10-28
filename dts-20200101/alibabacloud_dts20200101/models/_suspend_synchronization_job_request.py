@@ -14,19 +14,19 @@ class SuspendSynchronizationJobRequest(DaraModel):
         synchronization_direction: str = None,
         synchronization_job_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be deprecated.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated soon.
         self.account_id = account_id
         self.owner_id = owner_id
-        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. Set this parameter to specify the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
         # - **Forward**: forward.
         # - **Reverse**: reverse.
         # 
         # > - Default value: **Forward**.
-        # - You can set this parameter to **Reverse** to pause the reverse synchronization link only if the topology of the data synchronization instance is two-way synchronization.
+        # - You can set this parameter to **Reverse** to suspend the reverse synchronization link only when the synchronization topology of the data synchronization instance is two-way.
         self.synchronization_direction = synchronization_direction
         # Instance ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query instance ID.
         # 

@@ -15,18 +15,18 @@ class SwitchPhysicalDtsJobToCloudRequest(DaraModel):
     ):
         # The ID of the migration, synchronization, or change tracking instance.
         self.dts_instance_id = dts_instance_id
-        # The ID of the data migration or synchronization task. You can call the **DescribeDtsJobs** operation to query the ID.
+        # The ID of the data migration or synchronization instance. You can call the **describedtsjobs** operation to query the instance ID.
         self.dts_job_id = dts_job_id
         # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see the list of supported regions.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # - **Forward**: Forward.
+        # - **Reverse**: Reverse.
         # 
         # > - Default value: **Forward**.
-        # - You can set this parameter to **Reverse** to release the reverse synchronization link only when the topology of the data synchronization instance is two-way synchronization.
+        # - You can specify **Reverse** to release the reverse synchronization link only when the topology of the data synchronization instance is two-way.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):

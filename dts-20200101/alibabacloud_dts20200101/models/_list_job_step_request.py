@@ -12,15 +12,15 @@ class ListJobStepRequest(DaraModel):
         resource_group_id: str = None,
         zero_etl_job: bool = None,
     ):
-        # Migration or sync task ID.
+        # The ID of the migration or synchronization task.
         # 
         # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the DTS instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # Resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Indicates whether the job is a seamless integration (Zero-ETL) job. Valid values:
+        # Specifies whether the task is a seamless integration (Zero-ETL) task. Valid values:
         # - **true**: Yes.
         # - **false**: No.
         self.zero_etl_job = zero_etl_job

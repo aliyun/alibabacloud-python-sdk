@@ -18,7 +18,7 @@ class DescribeSubscriptionMetaShrinkRequest(DaraModel):
         # 
         # > This parameter is required.
         self.dts_instance_id = dts_instance_id
-        # The region in which the change tracking instance resides.
+        # The region where the change tracking instance resides.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -26,11 +26,11 @@ class DescribeSubscriptionMetaShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.sid = sid
-        # The IDs of all change tracking subtasks in the distributed change tracking task. Separate multiple IDs with commas (,).
-        # > You must specify at least one of this parameter and **Topics**. We recommend that you specify this parameter.
+        # The IDs of all change tracking subtasks under the distributed change tracking task. Separate multiple subtask IDs with commas (,).
+        # > You must specify at least one of this parameter and the **Topics** parameter. We recommend that you specify this parameter.
         self.sub_migration_job_ids_shrink = sub_migration_job_ids_shrink
-        # All topics of the distributed change tracking task. Separate multiple topics with commas (,).
-        # > You must specify at least one of this parameter and **SubMigrationJobIds**. We recommend that you specify **SubMigrationJobIds**.
+        # All change tracking topics under the distributed change tracking task. Separate multiple topics with commas (,).
+        # > You must specify at least one of this parameter and the **SubMigrationJobIds** parameter. We recommend that you specify the **SubMigrationJobIds** parameter.
         self.topics_shrink = topics_shrink
 
     def validate(self):

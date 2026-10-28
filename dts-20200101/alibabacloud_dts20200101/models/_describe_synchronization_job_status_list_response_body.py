@@ -19,21 +19,21 @@ class DescribeSynchronizationJobStatusListResponseBody(DaraModel):
         synchronization_job_list_status_list: List[main_models.DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStatusList] = None,
         total_record_count: int = None,
     ):
-        # The error code returned if the call failed.
+        # The error code returned if the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned if the call fails.
         self.err_message = err_message
         # The page number.
         self.page_number = page_number
-        # The number of synchronization instances displayed on one page.
+        # The number of synchronization instances returned on each page.
         self.page_record_count = page_record_count
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The status list of synchronization jobs.
+        # The list of synchronization job statuses.
         self.synchronization_job_list_status_list = synchronization_job_list_status_list
-        # The total number of synchronization instances that were queried.
+        # The total number of queried synchronization instances.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -158,26 +158,26 @@ class DescribeSynchronizationJobStatusListResponseBodySynchronizationJobListStat
         status: str = None,
         synchronization_direction: str = None,
     ):
-        # The timestamp of the latest synchronized data, in UNIX timestamp format.
+        # The timestamp when the latest data record is synchronized. The value is a UNIX timestamp.
         # 
-        # > You can use a search engine to find a UNIX timestamp converter.
+        # > You can use a search engine to find a UNIX timestamp conversion tool.
         self.checkpoint = checkpoint
-        # The synchronization status of the synchronization instance in this direction. Valid values:
+        # The synchronization status of the synchronization instance in the specified direction. Valid values:
         # 
-        # - **NotStarted**: not started.
-        # - **Prechecking**: running a precheck.
-        # - **PrecheckFailed**: precheck failed.
-        # - **Initializing**: performing initial synchronization.
-        # - **InitializeFailed**: initial synchronization failed.
-        # - **Synchronizing**: synchronizing.
-        # - **Failed**: synchronization failed.
-        # - **Suspending**: paused.
-        # - **Modifying**: modifying synchronization objects.
-        # - **Finished**: completed.
+        # - **NotStarted**: Not started.
+        # - **Prechecking**: Prechecking.
+        # - **PrecheckFailed**: Precheck failed.
+        # - **Initializing**: Initial synchronization.
+        # - **InitializeFailed**: Initial synchronization failed.
+        # - **Synchronizing**: Synchronizing.
+        # - **Failed**: Failed.
+        # - **Suspending**: Suspending.
+        # - **Modifying**: Modifying synchronization objects.
+        # - **Finished**: Finished.
         self.status = status
         # The synchronization direction. Valid values:
-        # - **Forward**: forward.
-        # - **Reverse**: reverse.
+        # - **Forward**: Forward.
+        # - **Reverse**: Reverse.
         self.synchronization_direction = synchronization_direction
 
     def validate(self):

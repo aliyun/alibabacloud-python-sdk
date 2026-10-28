@@ -18,11 +18,11 @@ class DescribeConnectionStatusResponseBody(DaraModel):
     ):
         # The connectivity test result of the destination database.
         self.destination_connection_status = destination_connection_status
-        # The error code returned if the call failed.
+        # The error code returned when the call fails.
         self.err_code = err_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The connectivity test result of the source database.
         self.source_connection_status = source_connection_status

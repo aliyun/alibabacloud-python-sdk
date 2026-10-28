@@ -15,11 +15,11 @@ class CreateMigrationJobRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be discontinued.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will be deprecated.
         self.account_id = account_id
-        # The client token that is used to ensure the idempotence of the request. Generate a value from your client to ensure that the value is unique among different requests. The **ClientToken** parameter supports only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotence of the request. You can generate the value on your client to ensure that it is unique across different requests. The **ClientToken** parameter supports only ASCII characters and can be up to 64 characters in length.
         self.client_token = client_token
-        # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**.
+        # The specifications of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**.
         # 
         # > - For the test performance of each specification, see [Data migration specifications](https://help.aliyun.com/document_detail/26606.html).
         # - For instance specifications and pricing, see [Pricing](https://help.aliyun.com/document_detail/117780.html).
@@ -27,13 +27,13 @@ class CreateMigrationJobRequest(DaraModel):
         # This parameter is required.
         self.migration_job_class = migration_job_class
         self.owner_id = owner_id
-        # The region of the data migration instance, which is the region of the destination database instance. For more information, see the supported [region list](https://help.aliyun.com/document_detail/141033.html).
+        # The region where the data migration instance resides. This is the region where the destination database instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # This parameter is required.
         self.region = region
-        # The region of the data migration instance. You do not need to specify this parameter. This parameter will be discontinued.
+        # The region where the data migration instance resides. You do not need to specify this parameter because it will be deprecated.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

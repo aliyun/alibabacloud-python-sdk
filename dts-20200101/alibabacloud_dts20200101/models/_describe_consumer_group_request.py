@@ -15,16 +15,16 @@ class DescribeConsumerGroupRequest(DaraModel):
         resource_group_id: str = None,
         subscription_instance_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be deprecated.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter. This parameter will be deprecated soon.
         self.account_id = account_id
         self.owner_id = owner_id
-        # The page number. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be greater than **0** and cannot exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_num = page_num
-        # The number of records per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The ID of the region where the change tracking instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID of the change tracking instance. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
         # 

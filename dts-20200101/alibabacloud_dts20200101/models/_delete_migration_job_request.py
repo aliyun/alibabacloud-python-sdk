@@ -13,16 +13,16 @@ class DeleteMigrationJobRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter is about to be discontinued.
+        # The ID of the Alibaba Cloud account. You do not need to specify this parameter because it will soon be deprecated.
         self.account_id = account_id
-        # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
+        # Instance ID of the data migration instance. You can query instance ID by calling the **DescribeMigrationJobs** operation.
         # 
         # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
-        # The region ID. Specify this parameter to indicate the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # The region ID. Set this parameter to specify the region where the instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

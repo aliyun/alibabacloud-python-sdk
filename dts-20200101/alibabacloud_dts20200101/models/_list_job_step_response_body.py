@@ -17,15 +17,15 @@ class ListJobStepResponseBody(DaraModel):
         success: bool = None,
         use_v2api: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The task step information.
         self.job_steps = job_steps
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
         # Indicates whether the Console 2.0 API is used.
         self.use_v2api = use_v2api
@@ -110,51 +110,51 @@ class ListJobStepResponseBodyJobSteps(DaraModel):
         sub_job_steps: List[main_models.ListJobStepResponseBodyJobStepsSubJobSteps] = None,
         redis_phase_type: str = None,
     ):
-        # The job start time, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the task was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.boot_time = boot_time
-        # Task step identity.
+        # The identifier of the task step.
         self.code = code
-        # The job creation time, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the task was created. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.create_time = create_time
         # The error message.
         self.err_msg = err_msg
-        # The error message.
+        # The fault information.
         self.error_details = error_details
-        # Task end time, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the task was finished. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.finish_time = finish_time
-        # Incremental data latency, in milliseconds.
+        # The incremental data latency, in milliseconds.
         self.inc_latency_milliseconds = inc_latency_milliseconds
-        # Incremental data latency, in seconds.
+        # The incremental data latency, in seconds.
         self.inc_latency_seconds = inc_latency_seconds
-        # The task step ID.
+        # The ID of the task step.
         self.job_step_id = job_step_id
-        # Task step information. Valid values:
+        # The task step information. Valid values:
         # 
-        # - Precheck: precheck phase
-        # - Incremental data service: incremental data collection phase
-        # - dts.step.struct.load: schema migration phase
-        # - dts.step.data.load: full migration phase
-        # - etl-check: extract, transform, and load phase
-        # - Consistency validation: data verification phase
-        # - Synchronization: incremental synchronization phase
+        # - Precheck: The precheck phase.
+        # - Incremental data service: The incremental data collection phase.
+        # - dts.step.struct.load: The schema migration phase.
+        # - dts.step.data.load: The full data migration phase.
+        # - etl-check: The ETL phase.
+        # - Consistency check: The data validation phase.
+        # - Synchronization: The incremental synchronization phase.
         self.job_step_name = job_step_name
-        # The time when the job was updated, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the task was modified. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.modify_time = modify_time
-        # Indicates whether the acceleration feature should be provided.
+        # Indicates whether the acceleration feature is required.
         self.need_acceleration = need_acceleration
         # The progress of the task step.
         self.progress = progress
-        # Task step serial number. Indicates the task execution order. A smaller value indicates an earlier execution order.
+        # The sequence number of the task step. A smaller value indicates an earlier execution order.
         self.serial = serial
-        # Task step status.
+        # The status of the task step.
         self.state = state
-        # The number of sub-jobs.
+        # The number of subtasks.
         self.sub_job_count = sub_job_count
-        # Step information of the sub-job.
+        # The step information of the subtask.
         self.sub_job_steps = sub_job_steps
-        # Used to distinguish between the Redis full and incremental phases. Valid values:
-        # - full: Full phase
-        # - inc: Incremental phase
+        # The phase type used to distinguish between the full data and incremental data phases for Redis. Valid values:
+        # - full: The full data phase.
+        # - inc: The incremental data phase.
         self.redis_phase_type = redis_phase_type
 
     def validate(self):
@@ -315,50 +315,50 @@ class ListJobStepResponseBodyJobStepsSubJobSteps(DaraModel):
         serial: int = None,
         state: str = None,
     ):
-        # The time when the sub-job was started, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the subtask was started. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.boot_time = boot_time
-        # Sub-task step identity.
+        # The identifier of the subtask step.
         self.code = code
-        # The time when the sub-job was created, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the subtask was created. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.create_time = create_time
-        # Error message.
+        # The error message.
         self.err_msg = err_msg
-        # Error message.
+        # The fault information.
         self.error_details = error_details
-        # End time of the sub-task, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the subtask was finished. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.finish_time = finish_time
-        # Incremental data latency, in milliseconds.
+        # The incremental data latency, in milliseconds.
         self.inc_latency_milliseconds = inc_latency_milliseconds
-        # Incremental data latency, in seconds.
+        # The incremental data latency, in seconds.
         self.inc_latency_seconds = inc_latency_seconds
-        # Job ID.
+        # The ID of the job step.
         self.job_step_id = job_step_id
-        # Sub-job step information. Valid values are as follows:
+        # The subtask step information. Valid values:
         # 
-        # - Precheck: precheck phase
-        # - Incremental data service: incremental data collection phase
-        # - dts.step.struct.load: schema migration phase
-        # - dts.step.data.load: full migration phase
-        # - etl-check: extract, transform, and load (ETL) phase
-        # - Consistency validation: data verification phase
-        # - Synchronization: incremental synchronization phase
+        # - Precheck: The precheck phase.
+        # - Incremental data service: The incremental data collection phase.
+        # - dts.step.struct.load: The schema migration phase.
+        # - dts.step.data.load: The full data migration phase.
+        # - etl-check: The ETL phase.
+        # - Consistency check: The data validation phase.
+        # - Synchronization: The incremental synchronization phase.
         self.job_step_name = job_step_name
-        # The time when the sub-job was updated, in the format <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the subtask was modified. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
         self.modify_time = modify_time
         # Indicates whether the acceleration feature is required.
         self.need_acceleration = need_acceleration
-        # Progress of the sub-job step.
+        # The progress of the subtask step.
         self.progress = progress
-        # Serial number of the sub-task step. Indicates the task execution order; the smaller the numeric value, the earlier the execution order.
+        # The sequence number of the subtask step. A smaller value indicates an earlier execution order.
         self.serial = serial
-        # Status of the sub-task step. Valid values:
-        # - Failed: failed.
-        # - Pause: paused.
-        # - Schedule: scheduled.
-        # - Init: initialization.
-        # - Running: synchronizing.
-        # - Catched: waiting for synchronization.
-        # - Finished: ended.
+        # The status of the subtask step. Valid values:
+        # - Failed: Failed.
+        # - Pause: Paused.
+        # - Schedule: Scheduled.
+        # - Init: Initialized.
+        # - Running: Synchronizing.
+        # - Catched: Waiting for synchronization.
+        # - Finished: Finished.
         self.state = state
 
     def validate(self):
@@ -479,9 +479,9 @@ class ListJobStepResponseBodyJobStepsSubJobStepsErrorDetails(DaraModel):
         error_code: str = None,
         help_url: str = None,
     ):
-        # Error code.
+        # The error code.
         self.error_code = error_code
-        # URL of the help document.
+        # The URL of the help document.
         self.help_url = help_url
 
     def validate(self):
@@ -516,9 +516,9 @@ class ListJobStepResponseBodyJobStepsErrorDetails(DaraModel):
         error_code: str = None,
         help_url: str = None,
     ):
-        # Error code.
+        # The error code.
         self.error_code = error_code
-        # URL of the help document.
+        # The URL of the help document.
         self.help_url = help_url
 
     def validate(self):
