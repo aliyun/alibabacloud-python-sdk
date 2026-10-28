@@ -20,6 +20,8 @@ class DescribeScaleOutMigrateTaskListRequest(DaraModel):
         self.dbinstance_name = dbinstance_name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

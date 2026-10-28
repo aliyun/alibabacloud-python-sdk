@@ -96,6 +96,7 @@ class DescribeContext0InfoResponseBodyDataInstance(DaraModel):
         create_time: str = None,
         dbinstance_name: str = None,
         instance_id: str = None,
+        minor_version: str = None,
         node_count: int = None,
         open_search_instance_name: str = None,
         region_id: str = None,
@@ -116,6 +117,8 @@ class DescribeContext0InfoResponseBodyDataInstance(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The instance ID.
         self.instance_id = instance_id
+        # Service 当前已确认的小版本完整 tag，未知时为空。
+        self.minor_version = minor_version
         # The number of nodes.
         self.node_count = node_count
         # The PolarDB-X Search instance name.
@@ -167,6 +170,9 @@ class DescribeContext0InfoResponseBodyDataInstance(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.minor_version is not None:
+            result['MinorVersion'] = self.minor_version
+
         if self.node_count is not None:
             result['NodeCount'] = self.node_count
 
@@ -217,6 +223,9 @@ class DescribeContext0InfoResponseBodyDataInstance(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('MinorVersion') is not None:
+            self.minor_version = m.get('MinorVersion')
 
         if m.get('NodeCount') is not None:
             self.node_count = m.get('NodeCount')

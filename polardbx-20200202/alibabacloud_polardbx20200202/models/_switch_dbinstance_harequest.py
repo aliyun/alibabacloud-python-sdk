@@ -14,13 +14,21 @@ class SwitchDBInstanceHARequest(DaraModel):
         target_primary_azone_id: str = None,
         target_primary_region_id: str = None,
     ):
+        # The name of the PolarDB-X instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The specified switchover time. This parameter is required when SwitchTimeMode is set to 2. The time must be in UTC and in the YYYY-MM-DDThh:mm:ssZ format.
         self.switch_time = switch_time
+        # The switchover mode. Valid values: 0: Immediate switchover. 1: Switchover during the O&M window. 2: Switchover at a specified time.
         self.switch_time_mode = switch_time_mode
+        # The zone ID of the primary node after the switchover.
         self.target_primary_azone_id = target_primary_azone_id
+        # The region ID of the primary node after the switchover.
         self.target_primary_region_id = target_primary_region_id
 
     def validate(self):

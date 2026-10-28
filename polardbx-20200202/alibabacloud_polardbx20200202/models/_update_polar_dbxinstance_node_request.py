@@ -17,12 +17,13 @@ class UpdatePolarDBXInstanceNodeRequest(DaraModel):
         region_id: str = None,
         storage_pool_name: str = None,
     ):
+        # The node specifications of the storage nodes to add.
         self.add_dnspec = add_dnspec
         # The number of compute nodes.
         self.cnnode_count = cnnode_count
-        # The client token, which is an arbitrary random string.
+        # The client token. It can be any random string.
         self.client_token = client_token
-        # The instance name ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
@@ -30,11 +31,13 @@ class UpdatePolarDBXInstanceNodeRequest(DaraModel):
         self.dnnode_count = dnnode_count
         # The target number of nodes for the instance. Valid values: 0 to 99.
         self.db_instance_node_count = db_instance_node_count
+        # The IDs of the storage nodes to remove.
         self.delete_dnids = delete_dnids
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the storage pool.
         self.storage_pool_name = storage_pool_name
 
     def validate(self):

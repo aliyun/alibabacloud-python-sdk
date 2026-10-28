@@ -13,9 +13,13 @@ class DescribeDBInstanceHAResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The high availability deployment information of the instance.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -67,10 +71,15 @@ class DescribeDBInstanceHAResponseBodyData(DaraModel):
         secondary_region_id: str = None,
         topology_type: str = None,
     ):
+        # The zone ID of the primary node.
         self.primary_azone_id = primary_azone_id
+        # The region ID of the primary node.
         self.primary_region_id = primary_region_id
+        # The zone ID of the secondary node.
         self.secondary_azone_id = secondary_azone_id
+        # The region ID of the secondary node.
         self.secondary_region_id = secondary_region_id
+        # The high availability topology type of the instance.
         self.topology_type = topology_type
 
     def validate(self):

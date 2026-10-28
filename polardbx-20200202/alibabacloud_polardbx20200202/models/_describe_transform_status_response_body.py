@@ -63,23 +63,23 @@ class DescribeTransformStatusResponseBodyData(DaraModel):
         self.can_cancel = can_cancel
         # Indicates whether the current task is completed.
         self.can_finish = can_finish
-        # Indicates whether the migration switchover can be performed. Valid values:
-        # - **true**: The migration switchover can be performed.
-        # - **false**: The migration switchover cannot be performed.
+        # Indicates whether a migration switchover can be performed. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         # 
         # > This parameter is used by the one-click upgrade feature of PolarDB.
         self.can_switch = can_switch
-        # Indicates whether the switchover operation can be reverted.
+        # Indicates whether the switchover operation can be undone.
         self.can_undo_switch = can_undo_switch
-        # The Enterprise Edition instance name.
+        # The name of the Enterprise instance.
         self.enterprise_ins_name = enterprise_ins_name
         # The current migration or upgrade phase.
         self.phase = phase
         # The report summary.
         self.report_summary = report_summary
-        # The date when the data report was generated.
+        # The generation date of the data report.
         self.report_time = report_time
-        # The standard instance name.
+        # The name of the standard instance.
         self.standard_ins_name = standard_ins_name
 
     def validate(self):

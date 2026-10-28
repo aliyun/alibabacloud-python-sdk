@@ -18,11 +18,11 @@ class QueryColumnarLogRequest(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The maximum number of result rows to return for this request. Valid values: 1 to 1000. Default value: 100. The actual number of returned rows is also subject to the top-level LIMIT clause in the SQL statement and the current service policy.
         self.max_result_rows = max_result_rows
-        # The region ID of the request. The region ID must be the same as the region where the SQLQuery service is deployed.
+        # The region ID of the request. The value must match the region where the SQLQuery service is deployed.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The read-only query statement to execute. Only a single MySQL SELECT statement is supported, and it must access the fully qualified polardbx_sls table. Multi-statement queries, write operations, locks, user variables, dynamic placeholders, and reserved hints are not supported.
+        # The read-only query statement to execute. Only a single MySQL SELECT statement is supported. Query tables must use the fully qualified form polardbx_sls.<table_name>, and only the following tables are allowed: polardbx_sls.polardbx_log (kernel logs), polardbx_sls.slow_detail_log (slow query logs), polardbx_sls.slow_trans_log (slow transaction logs), and polardbx_sls.sql_audit_log (audit logs). Multi-statement queries, write operations, locks, user variables, dynamic placeholders, and reserved hints are not supported.
         # 
         # This parameter is required.
         self.sql = sql

@@ -11,7 +11,7 @@ class AllocateMem0PublicConnectionResponseBody(DaraModel):
         access_denied_detail: main_models.AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
         # Id of the request
         self.request_id = request_id
@@ -55,13 +55,13 @@ class AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # As described above.
+        # Same as above.
         self.auth_action = auth_action
         # The identity used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # As described above.
+        # Same as above.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # As described above.
+        # Same as above.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message

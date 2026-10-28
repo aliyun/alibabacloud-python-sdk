@@ -13,12 +13,22 @@ class AlignStoragePrimaryAzoneRequest(DaraModel):
         switch_time: str = None,
         switch_time_mode: str = None,
     ):
+        # The name of the PolarDB-X instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the storage instance whose primary node zone needs to be aligned.
         self.storage_instance_name = storage_instance_name
+        # The start time of the switch for the storage primary node, in the UTC time format YYYY-MM-DDThh:mm:ssZ.
         self.switch_time = switch_time
+        # The switchover mode. Valid values:
+        # - 0: immediate switchover
+        # - 1: switchover during the O&M window
+        # - 2: switchover at a specified time
         self.switch_time_mode = switch_time_mode
 
     def validate(self):

@@ -27,11 +27,11 @@ class CreatePolardbxSupabaseInstanceRequest(DaraModel):
         self.auto_renew = auto_renew
         # The idempotency token.
         self.client_token = client_token
-        # The dashboard password.
+        # The Dashboard password.
         # 
         # This parameter is required.
         self.dashboard_password = dashboard_password
-        # The instance description.
+        # The description of the instance.
         self.db_instance_description = db_instance_description
         # The database password.
         # 
@@ -39,16 +39,11 @@ class CreatePolardbxSupabaseInstanceRequest(DaraModel):
         self.db_password = db_password
         # The node specifications.
         self.node_spec = node_spec
-        # The billing type. Valid values:
-        # - PREPAY: subscription.
-        # - POSTPAY: pay-as-you-go.
+        # The billing method. Valid values: PREPAY and POSTPAY.
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The billing cycle. Valid values:
-        # - Year
-        # - Month
-        # - Hour
+        # The billing cycle. Valid values: Year, Month, and Hour.
         self.period = period
         # The region ID.
         # 

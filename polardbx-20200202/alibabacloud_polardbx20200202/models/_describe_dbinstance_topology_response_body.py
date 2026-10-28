@@ -13,7 +13,7 @@ class DescribeDBInstanceTopologyResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceTopologyResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data struct.
+        # The data structure.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -98,7 +98,7 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology(DaraModel)
     ):
         # Indicates that LVS is used for load balancing.
         self.dbinstance_conn_type = dbinstance_conn_type
-        # The instance creation time, in the format of yyyy-MM-dd HH:mm:ss.
+        # The time when the instance was created. The format is yyyy-MM-dd HH:mm:ss.
         self.dbinstance_create_time = dbinstance_create_time
         # The instance description.
         self.dbinstance_description = dbinstance_description
@@ -114,19 +114,21 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology(DaraModel)
         self.dbinstance_storage = dbinstance_storage
         # The engine. Default value: polarx.
         self.engine = engine
-        # The engine version. Default value: 2.0.
+        # The DPI engine version. Default value: 2.0.
         self.engine_version = engine_version
-        # The historical node list.
+        # The list of historical nodes.
         self.history_items = history_items
-        # The node list.
+        # The list of nodes.
         self.items = items
-        # The lock status:
+        # The lock status. Valid values:
+        # - **0**: Unlocked.
+        # - **1**: Locked.
         self.lock_mode = lock_mode
         # The lock reason.
         self.lock_reason = lock_reason
-        # The O&M window end time, in the format of HH:mm:ss.
+        # The end time of the O&M window. The format is HH:mm:ss.
         self.maintain_end_time = maintain_end_time
-        # The O&M window start time, in the format of HH:mm:ss.
+        # The start time of the O&M window. The format is HH:mm:ss.
         self.maintain_start_time = maintain_start_time
 
     def validate(self):
@@ -290,19 +292,22 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         storage_used: str = None,
         version: str = None,
     ):
-        # Indicates whether the node is activated. For the compute layer, only the primary zone node is activated. After a primary/secondary switchover is performed on the instance, the standby compute node becomes the primary node. All storage layer nodes are activated.
+        # Indicates whether the node is enabled. In the compute layer, only the nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary nodes in the compute layer are switched to primary nodes. All nodes in the storage layer are enabled.
         self.activated = activated
-        # The zone of the node. If the node is an RDS node, the zones of multiple child nodes are separated by semicolons (;).
+        # The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons (;).
         self.azone = azone
-        # The data information list of the RDS three-node cluster.
+        # The list of data information for the three-node ApsaraDB RDS deployment.
         self.azone_role_list = azone_role_list
-        # The node property. Valid values:
+        # The node attribute. Valid values:
+        # - **polarx_cn**: Compute node.
+        # - **polarx_store**: Data node.
+        # - **polarx_gms**: GMS node.
         self.character_type = character_type
-        # The data struct.
+        # The data structure.
         self.connection_ip = connection_ip
         # The connection type.
         self.dbinstance_conn_type = dbinstance_conn_type
-        # The instance creation time.
+        # The time when the instance was created.
         self.dbinstance_create_time = dbinstance_create_time
         # The instance description.
         self.dbinstance_description = dbinstance_description
@@ -316,39 +321,64 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         self.dbinstance_status_description = dbinstance_status_description
         # The disk size.
         self.disk_size = disk_size
-        # The engine version. Valid values:
+        # The DPI engine version. Valid values:
+        # - **mysql**
+        # - **polarx_cdc**
+        # - **polarx_dn**
         self.engine = engine
-        # The engine version. Default value: 2.0.
+        # The DPI engine version. Default value: 2.0.
         self.engine_version = engine_version
-        # The instance CN cluster name, such as default.
+        # The name of the CN cluster for the instance, such as default.
         self.instance_cluster_name = instance_cluster_name
-        # Indicates whether the node is locked. Valid values:
+        # The lock status. Valid values:
+        # - **0**: Unlocked.
+        # - **1**: Locked.
         self.lock_mode = lock_mode
         # The lock reason.
         self.lock_reason = lock_reason
-        # The O&M window end time.
+        # The end time of the O&M window.
         self.maintain_end_time = maintain_end_time
-        # The O&M window start time.
+        # The start time of the O&M window.
         self.maintain_start_time = maintain_start_time
         # The maximum number of connections.
         self.max_connections = max_connections
         # The maximum IOPS.
         self.max_iops = max_iops
-        # The node specifications:
+        # The node specifications. Valid values:
+        # - **polarx.x4.medium.2e**: 2 vCPUs and 8 GB of memory.
+        # - **polarx.x4.large.2e**: 4 vCPUs and 16 GB of memory.
+        # - **polarx.x8.large.2e**: 4 vCPUs and 32 GB of memory.
+        # - **polarx.x4.xlarge.2e**: 8 vCPUs and 32 GB of memory.
+        # - **polarx.x8.xlarge.2e**: 8 vCPUs and 64 GB of memory.
+        # - **polarx.x4.2xlarge.2e**: 16 vCPUs and 64 GB of memory.
+        # - **polarx.x8.2xlarge.2e**: 16 vCPUs and 128 GB of memory.
+        # - **polarx.x4.4xlarge.2e**: 32 vCPUs and 128 GB of memory.
+        # - **polarx.x8.4xlarge.2e**: 32 vCPUs and 256 GB of memory.
+        # - **polarx.st.8xlarge.2e**: 60 vCPUs and 470 GB of memory.
+        # - **polarx.st.12xlarge.2e**: 90 vCPUs and 720 GB of memory.
         self.node_class = node_class
-        # The physical instance name.
+        # The name of the physical instance.
         self.phy_instance_name = phy_instance_name
         # The read/write type, such as ReadWrite.
         self.read_type = read_type
-        # The region of the node. If the node is an RDS node, the regions of multiple child nodes are separated by semicolons (;).
+        # The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons (;).
         self.region = region
         # The node role. Valid values:
+        # - **master**: Primary node.
+        # - **standby**: Secondary node.
         self.role = role
-        # The node status:
+        # The node status. Valid values:
+        # - **0**: Running.
+        # - **1**: Creating.
+        # - **2**: Abnormal.
+        # - **3**: Expired.
+        # - **4**: Releasing.
+        # - **5**: Released.
+        # - **6**: Locked.
         self.status = status
-        # The storage usage, in MB.
+        # The amount of used storage space. Unit: MB.
         self.storage_used = storage_used
-        # The log node version.
+        # The version of the logger node.
         self.version = version
 
     def validate(self):
@@ -614,9 +644,12 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneR
         azone: str = None,
         role: str = None,
     ):
-        # The zone of a node in the RDS three-node cluster.
+        # The zone to which a specific node in the three-node ApsaraDB RDS deployment belongs.
         self.azone = azone
-        # The role of a node in the RDS three-node cluster. Valid values:
+        # The role of a specific node in the three-node ApsaraDB RDS deployment. Valid values:
+        # - **leader**: Primary node.
+        # - **follower**: Secondary node.
+        # - **logger**: Logger node.
         self.role = role
 
     def validate(self):
@@ -657,21 +690,26 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItem
         region: str = None,
         role: str = None,
     ):
-        # Indicates whether the node is activated. For the compute layer, only the primary zone node is activated. After a primary/secondary switchover is performed on the instance, the standby compute node becomes the primary node. All storage layer nodes are activated.
+        # Indicates whether the node is enabled. In the compute layer, only the nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary nodes in the compute layer are switched to primary nodes. All nodes in the storage layer are enabled.
         self.activated = activated
-        # The zone of the node. If the node is an RDS node, the zones of multiple child nodes are separated by semicolons (;).
+        # The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons (;).
         self.azone = azone
-        # The node property. Valid values:
+        # The node attribute. Valid values:
+        # - **polarx_cn**: Compute node.
+        # - **polarx_store**: Data node.
+        # - **polarx_gms**: GMS node.
         self.character_type = character_type
         # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The instance name.
         self.dbinstance_name = dbinstance_name
-        # The physical instance name.
+        # The name of the physical instance.
         self.phy_instance_name = phy_instance_name
-        # The region of the node. If the node is an RDS node, the regions of multiple child nodes are separated by semicolons (;).
+        # The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons (;).
         self.region = region
         # The node role. Valid values:
+        # - **master**: Primary node.
+        # - **standby**: Secondary node.
         self.role = role
 
     def validate(self):

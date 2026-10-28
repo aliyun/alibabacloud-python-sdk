@@ -18,7 +18,7 @@ class ModifyContext0SecurityIpsResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -71,9 +71,9 @@ class ModifyContext0SecurityIpsResponseBodyData(DaraModel):
         self.context_0instance_name = context_0instance_name
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
         # The list of task IDs in the task group.
         self.task_ids = task_ids
@@ -135,11 +135,11 @@ class ModifyContext0SecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The identity type used for authentication in the request. Valid values:
+        # The type of identity used for authentication in the request. Valid values:
         # - SubUser: RAM user.
         # - AssumedRoleUser: RAM role.
         # - Federated: SSO federated identity.

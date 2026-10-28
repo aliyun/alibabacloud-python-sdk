@@ -110,8 +110,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether the AI gateway is enabled.
         self.ai_gateway_enabled = ai_gateway_enabled
-        # Indicates whether the In-Memory Column Index feature is supported.
+        # Indicates whether the In-Memory Column Index (IMCI) feature is supported.
         self.can_not_create_columnar = can_not_create_columnar
         # The CN node specifications. Valid values:
         # - **polarx.x4.medium.2e**: 2 cores, 8 GB
@@ -124,7 +125,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
         # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
         # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
-        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
+        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
         self.cn_node_class_code = cn_node_class_code
         # The number of CN nodes.
         self.cn_node_count = cn_node_count
@@ -132,23 +133,23 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         self.columnar_instance_name = columnar_instance_name
         # The column store read-only instance information.
         self.columnar_read_dbinstances = columnar_read_dbinstances
-        # The commodity code of the instance. The value is fixed as drds_polarxpost_public_cn.
+        # The commodity type of the instance. The value is fixed as drds_polarxpost_public_cn.
         self.commodity_code = commodity_code
         # The endpoint information.
         self.conn_addrs = conn_addrs
         # The internal network connection string.
         self.connection_string = connection_string
+        # The processor type. Default value: intel.
         self.cpu_type = cpu_type
         # The creation time.
         self.create_time = create_time
         # The instance type. Valid values:
-        # 
-        # - **ReadWrite**: primary instance.
-        # - **ReadOnly**: read-only instance.
+        # - **ReadWrite**: Primary instance.
+        # - **ReadOnly**: Read-only instance.
         self.dbinstance_type = dbinstance_type
         # The node specifications of the instance.
         self.dbnode_class = dbnode_class
-        # The number of instance nodes.
+        # The number of nodes in the instance.
         self.dbnode_count = dbnode_count
         # The database node information.
         self.dbnodes = dbnodes
@@ -156,10 +157,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         self.dbtype = dbtype
         # The database version.
         self.dbversion = dbversion
-        # The instance description.
+        # The description of the instance.
         self.description = description
-        # Indicates whether the DN nodes of the instance have different specifications. Valid values:
-        # 
+        # Indicates whether the specifications of the DN nodes in the instance are different. Valid values:
         # - true: The specifications are different.
         # - false: The specifications are the same.
         self.different_dnspec = different_dnspec
@@ -178,57 +178,61 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         # - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
         # - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
         # - **mysql.st.8xlarge.25**: 60 cores, 470 GB
-        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
+        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB
         self.dn_node_class_code = dn_node_class_code
         # The number of DN nodes.
         self.dn_node_count = dn_node_count
-        # The disk space of the DN data node, in GB.
+        # The disk space of the storage node. Unit: GB.
         self.dn_storage_space = dn_storage_space
         # The database type. The value is fixed as polarx.
         self.engine = engine
+        # The database engine version. Default value: 2.0.
         self.engine_version = engine_version
-        # The expiration time. Format: yyyy-MM-ddTHH:mm:ss.sss+0000 (UTC).
+        # The expiration time. The format is yyyy-MM-ddTHH:mm:ss.sss+0000 (UTC).
         self.expire_date = expire_date
         # Indicates whether the instance has expired. Valid values:
-        # 
         # - **true**: Expired.
-        # - **false**: Not expired.
+        # - **false**: Normal.
         self.expired = expired
+        # The GDN instance name.
         self.gdn_instance_name = gdn_instance_name
+        # The GDN member list.
         self.gdn_member_list = gdn_member_list
+        # The role in the global database network (GDN).
         self.gdn_role = gdn_role
         # The ID of the primary instance. If this parameter is not returned, the instance is a primary instance.
         self.id = id
-        # The engine version of the instance. This is an internal parameter.
+        # The database engine version of the instance DPI engine. This is an internal parameter.
         self.kind_code = kind_code
+        # The instance version.
+        # 
         # This parameter is required.
         self.ltsversions = ltsversions
-        # The latest minor engine version supported by the instance.
+        # The latest kernel Milvus version supported by the instance.
         self.latest_minor_version = latest_minor_version
         # The lock mode of the instance. Valid values:
-        # 
         # - **Unlock**: Normal.
         # - **ManualLock**: Manually locked.
-        # - **LockByExpiration**: Automatically locked due to instance expiration.
-        # - **LockByRestoration**: Automatically locked before instance rollback.
-        # - **LockByDiskQuota**: Automatically locked due to insufficient disk space.
-        # - **LockReadInstanceByDiskQuota**: Read-only instance automatically locked due to insufficient disk space.
+        # - **LockByExpiration**: Automatically locked due to expiration.
+        # - **LockByRestoration**: Automatically locked before a rollback.
+        # - **LockByDiskQuota**: Automatically locked due to full storage space.
+        # - **LockReadInstanceByDiskQuota**: Automatically locked due to full storage space of the read-only instance.
         self.lock_mode = lock_mode
-        # The end time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+        # The end time of the maintenance window for the instance. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+        # The start time of the maintenance window for the instance. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
         self.maintain_start_time = maintain_start_time
-        # The current minor engine version.
+        # The current kernel Milvus version.
         self.minor_version = minor_version
-        # The network type of the instance. Only VPC is supported, which indicates Virtual Private Cloud.
+        # The network type of the instance. Only VPC is supported, which indicates a virtual private cloud.
         self.network = network
         # The billing method of the instance. Valid values:
-        # 
-        # - **Postpaid**: pay-as-you-go.
-        # - **Prepaid**: subscription.
+        # - **Postpaid**: Pay-as-you-go.
+        # - **Prepaid**: Subscription.
         self.pay_type = pay_type
         # The internal network connection port.
         self.port = port
+        # The primary instance ID.
         self.primary_instance_id = primary_instance_id
         # The primary zone.
         # 
@@ -236,56 +240,55 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         self.primary_zone = primary_zone
         # The list of read-only instance names.
         self.read_dbinstances = read_dbinstances
-        # The region in which the instance resides.
+        # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The three-role mode status. Valid values:
-        # 
+        # Indicates whether the three-role mode is enabled. Valid values:
         # - **false**: Disabled.
         # - **true**: Enabled.
         self.rights_separation_enabled = rights_separation_enabled
         # The three-role mode status. Valid values:
-        # 
         # - **disabled**: Disabled.
         # - **enabled**: Enabled.
-        # - **processing**: Being processed.
-        # - **unknown**: Unknown. This may be caused by the instance being unreachable.
+        # - **processing**: Processing.
+        # - **unknown**: Unknown. This may be caused by a connection failure to the instance.
         self.rights_separation_status = rights_separation_status
         # The secondary zone.
         self.secondary_zone = secondary_zone
         # The instance edition. Valid values:
-        # 
         # - **enterprise**: Enterprise Edition.
         # - **standard**: Standard Edition.
         self.series = series
+        # The specification category. Valid values:
+        # - exclusive: Dedicated.
+        # - general: General-purpose.
         self.spec_category = spec_category
-        # The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/339826.html).
+        # The instance status.
         self.status = status
+        # The storage type.
         self.storage_type = storage_type
         # The used storage space, in bytes.
         self.storage_used = storage_used
         # The tag set.
         self.tag_set = tag_set
-        # The tertiary zone for Three-zone deployment.
+        # The third zone in a Three-zone deployment.
         self.tertiary_zone = tertiary_zone
         # The topology type. Valid values:
-        # 
-        # - **3azones**: three-zone deployment.
-        # - **1azone**: single-zone deployment.
+        # - **3azones**: Three-zone deployment.
+        # - **1azone**: Single-zone deployment.
         # 
         # This parameter is required.
         self.topology_type = topology_type
         # The instance type. Valid values:
-        # 
-        # - **ReadWrite**: primary instance.
-        # - **ReadOnly**: read-only instance.
+        # - **ReadWrite**: Primary instance.
+        # - **ReadOnly**: Read-only instance.
         self.type = type
-        # VPC ID。
+        # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The zone in which the instance resides.
+        # The zone where the instance is deployed.
         self.zone_id = zone_id
 
     def validate(self):
@@ -741,8 +744,14 @@ class DescribeDBInstanceAttributeResponseBodyDBInstanceGdnMemberList(DaraModel):
         role: str = None,
         status: str = None,
     ):
+        # The name of the member, which is the name of the PolarDB-X instance.
         self.member_name = member_name
+        # The role of the node. Valid values:
+        # 
+        # - **master**: The primary node.
+        # - **standby**: The secondary node.
         self.role = role
+        # The status.
         self.status = status
 
     def validate(self):
@@ -797,7 +806,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes(DaraModel):
         self.node_class = node_class
         # The region ID of the node.
         self.region_id = region_id
-        # The zone in which the node resides.
+        # The name of the zone where the node is deployed.
         self.zone_id = zone_id
 
     def validate(self):
@@ -864,13 +873,13 @@ class DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs(DaraModel):
         self.connection_string = connection_string
         # The connection port number.
         self.port = port
-        # The connection type. **VPC** indicates an internal network connection. **PUBLIC** indicates a public network connection.
+        # The connection type. **VPC** indicates an internal network connection, and **PUBLIC** indicates a public network connection.
         self.type = type
-        # VPC ID。
+        # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The internal CloudInstanceId within the VPC. You can ignore this parameter.
+        # The internal CloudInstanceId in the VPC. You can ignore this parameter.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

@@ -12,7 +12,7 @@ class ModifyOpenSearchClassRequest(DaraModel):
         region_id: str = None,
         search_class_code: str = None,
     ):
-        # The target disk size per node, in GB. If not specified, the current disk size is retained.
+        # The target disk size per node, in GB. If this parameter is not specified, the current disk size is retained.
         self.dbinstance_disk_size = dbinstance_disk_size
         # The name of the instance.
         # 
@@ -22,7 +22,7 @@ class ModifyOpenSearchClassRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The node specifications code of the PolarDB-X Search data node. This parameter is required. Active node specifications depend on the region and sales configuration, and must differ from the current node specifications.
+        # The node specifications code for PolarDBX Search data nodes. This parameter is required. The active node specifications depend on the region and sales configuration, and must differ from the current node specifications.
         self.search_class_code = search_class_code
 
     def validate(self):

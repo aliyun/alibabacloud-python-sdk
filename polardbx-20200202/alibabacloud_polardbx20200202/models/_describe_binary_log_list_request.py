@@ -19,20 +19,21 @@ class DescribeBinaryLogListRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The end time of the query for the binary log list.
+        # The end time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         # 
         # This parameter is required.
         self.end_time = end_time
+        # The name of the instance.
         self.instance_name = instance_name
-        # The page number of the current binary log list. Default value: 1.
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of binary logs to return on each page. Default value: 30.
+        # The number of entries per page. Default value: 30.
         self.page_size = page_size
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time of the query for the binary log list.
+        # The start time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         # 
         # This parameter is required.
         self.start_time = start_time

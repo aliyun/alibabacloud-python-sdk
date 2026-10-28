@@ -21,15 +21,15 @@ class ModifyOpenSearchWhitelistGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The list of source IP address restrictions.
+        # The list of source IP addresses.
         # 
         # This parameter is required.
         self.ips = ips
-        # The region in which the instance resides.
+        # The region of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The remarks.
+        # The remark.
         self.remark = remark
 
     def validate(self):

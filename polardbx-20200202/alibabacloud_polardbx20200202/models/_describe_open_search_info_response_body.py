@@ -12,7 +12,7 @@ class DescribeOpenSearchInfoResponseBody(DaraModel):
         data: main_models.DescribeOpenSearchInfoResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The returned result set.
         self.data = data
@@ -118,32 +118,32 @@ class DescribeOpenSearchInfoResponseBodyDataSpec(DaraModel):
     ):
         # The number of coordinator nodes.
         self.coordinator_node_count = coordinator_node_count
-        # The number of CPU cores of a single coordinator node.
+        # The number of CPU cores per coordinator node.
         self.coordinator_node_cpu = coordinator_node_cpu
-        # Indicates whether coordinator nodes are enabled.
+        # Indicates whether the coordinator node is enabled.
         self.coordinator_node_enabled = coordinator_node_enabled
-        # The memory size of a single coordinator node. Unit: GB.
+        # The memory size per coordinator node, in GB.
         self.coordinator_node_memory_gb = coordinator_node_memory_gb
         # The number of data nodes.
         self.data_node_count = data_node_count
-        # The number of CPU cores of a single data node.
+        # The number of CPU cores per data node.
         self.data_node_cpu = data_node_cpu
-        # The memory size of a single data node. Unit: GB.
+        # The memory size per data node, in GB.
         self.data_node_memory_gb = data_node_memory_gb
         # The master node type. Valid values:
-        # - **0**: The master node is a single node.
-        # - **2**: The master node is in Cluster Edition.
+        # - **0**: single-node master
+        # - **2**: cluster-edition master
         self.master_node_count = master_node_count
-        # The number of CPU cores of a single dedicated master node.
+        # The number of CPU cores per dedicated master node.
         self.master_node_cpu = master_node_cpu
-        # Indicates whether dedicated master nodes are enabled.
+        # Indicates whether the dedicated master node is enabled.
         self.master_node_enabled = master_node_enabled
-        # The memory size of a single dedicated master node. Unit: GB.
+        # The memory size per dedicated master node, in GB.
         self.master_node_memory_gb = master_node_memory_gb
-        # The number of replica nodes in the primary zone.
-        # > The **ReplicaCount** and **SlaveReplicaCount** parameters apply only to cloud-native instances. If the instance uses a cluster architecture, these parameters indicate the number of replica nodes of a **single shard** in the primary and secondary zones.
+        # The number of secondary nodes in the primary zone.
+        # > The **ReplicaCount** and **SlaveReplicaCount** parameters apply only to cloud-native instances. If the instance uses a cluster architecture, these parameters indicate the number of secondary nodes per shard in the primary and secondary zones.
         self.replica_count = replica_count
-        # The storage size of a single data node. Unit: GB.
+        # The storage space per data node, in GB.
         self.storage_size_gb = storage_size_gb
         # The storage type.
         self.storage_type = storage_type
@@ -265,16 +265,16 @@ class DescribeOpenSearchInfoResponseBodyDataInstance(DaraModel):
         vswitch_id: str = None,
     ):
         # The billing method. Valid values:
-        # - **POSTPAY**: pay-as-you-go.
-        # - **PREPAY**: subscription.
+        # - **POSTPAY**: pay-as-you-go
+        # - **PREPAY**: subscription
         self.charge_type = charge_type
-        # The OpenSearch-compatible version.
+        # The OpenSearch compatible version.
         self.compatible_version = compatible_version
         # The creation time.
         self.create_time = create_time
         # The deployment mode. Valid values:
-        # - multiple: multi-zone deployment.
-        # - single: single-zone deployment.
+        # - multiple: multi-zone deployment
+        # - single: single-zone deployment
         self.deploy_mode = deploy_mode
         # The DPI engine version. Default value: 2.0.
         self.engine_version = engine_version
@@ -285,17 +285,17 @@ class DescribeOpenSearchInfoResponseBodyDataInstance(DaraModel):
         # The instance name.
         self.instance_name = instance_name
         # The network type of the connection string. Valid values:
-        # * **Public**: public endpoint.
-        # * **Private**: private endpoint.
-        # * **Inner**: private endpoint (classic network).
+        # * **Public**: public endpoint
+        # * **Private**: private endpoint
+        # * **Inner**: private endpoint (classic network)
         self.net_type = net_type
         # The region ID.
         self.region_id = region_id
         # The instance status.
         self.status = status
-        # The time when the last task was updated (in timestamp format).
+        # The last task update time in UNIX timestamp format.
         self.update_time = update_time
-        # The ID of the virtual private cloud (VPC) in which the access endpoint resides.
+        # The ID of the virtual private cloud (VPC) where the access endpoint resides.
         self.vpc_id = vpc_id
         # The vSwitch ID. This parameter is required when you create a DRDS instance of the VPC network type.
         self.vswitch_id = vswitch_id
@@ -409,17 +409,17 @@ class DescribeOpenSearchInfoResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The authentication action.
+        # The authorization action.
         self.auth_action = auth_action
-        # The identity used for authentication in the request.
+        # The identity used for authorization in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authentication principal.
+        # The ID of the owner of the authorization principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The type of the authorization principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The type of access denial.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

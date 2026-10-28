@@ -13,7 +13,7 @@ class DescribeArchiveTableListResponseBody(DaraModel):
         data: main_models.DescribeArchiveTableListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The data.
         self.data = data
         # requestId
         self.request_id = request_id
@@ -58,14 +58,19 @@ class DescribeArchiveTableListResponseBodyData(DaraModel):
         tobe_archived_conut: int = None,
         total: int = None,
     ):
-        # The page index.
+        # The page number.
         self.page_index = page_index
         # The number of entries per page.
         self.page_size = page_size
+        # The number of tables in the PAUSE state.
         self.paused_count = paused_count
+        # The number of tables being archived.
         self.running_count = running_count
+        # The number of successfully archived tables.
         self.success_count = success_count
+        # The list of archived tables.
         self.tables = tables
+        # The number of tables to be archived.
         self.tobe_archived_conut = tobe_archived_conut
         # The total number of entries.
         self.total = total
@@ -151,17 +156,19 @@ class DescribeArchiveTableListResponseBodyDataTables(DaraModel):
         space_size: float = None,
         table_name: str = None,
     ):
+        # The archiving status. Valid values: SUCCESS, PAUSE, and RUNNING.
         self.archive_status = archive_status
-        # The creation time.
+        # The time when the table was created.
         self.created_date = created_date
         # The number of files.
         self.file_count = file_count
+        # The time of the last successful archiving.
         self.last_success_archive_time = last_success_archive_time
-        # The database name.
+        # The name of the database.
         self.schema_name = schema_name
-        # The space size occupied by the table.
+        # The amount of storage space used.
         self.space_size = space_size
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

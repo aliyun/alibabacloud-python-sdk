@@ -14,11 +14,11 @@ class DescribeParameterTemplatesRequest(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The DPI engine version. Default value: 2.0.
         self.engine_version = engine_version
         # The parameter level. Valid values:
-        # 
-        # - **compute**: compute layer.
-        # - **storage**: storage layer.
+        # - **compute**: the compute layer.
+        # - **storage**: the storage layer.
         self.param_level = param_level
         # The region ID of the instance.
         # 

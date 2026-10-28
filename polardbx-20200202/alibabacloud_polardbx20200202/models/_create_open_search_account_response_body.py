@@ -12,9 +12,9 @@ class CreateOpenSearchAccountResponseBody(DaraModel):
         data: main_models.CreateOpenSearchAccountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
-        # The details of the returned policy.
+        # The returned policy details.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -62,7 +62,7 @@ class CreateOpenSearchAccountResponseBodyData(DaraModel):
         account_name: str = None,
         task_id: int = None,
     ):
-        # The account name.
+        # The name of the account.
         self.account_name = account_name
         # The task ID.
         self.task_id = task_id
@@ -114,7 +114,7 @@ class CreateOpenSearchAccountResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The no-permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

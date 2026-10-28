@@ -12,6 +12,7 @@ class DeleteMem0ResponseBody(DaraModel):
         data: main_models.DeleteMem0ResponseBodyData = None,
         request_id: str = None,
     ):
+        # The detailed cause of the access denial.
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
@@ -94,12 +95,19 @@ class DeleteMem0ResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The authentication action.
         self.auth_action = auth_action
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of the authentication principal, such as RAM user SubUser or RAM role AssumedRoleUser.
         self.auth_principal_type = auth_principal_type
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The no-permission type.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

@@ -19,18 +19,18 @@ class CreateDBRequest(DaraModel):
         security_account_password: str = None,
         storage_pool_name: str = None,
     ):
-        # The name of the account that is authorized to access the created database.
+        # The name of the account to be authorized for the new database.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The permissions granted to the account on the new database. Valid values:
+        # The permissions granted to the new account on the database. Valid values:
         # 
         # - **ReadWrite**
         # - **ReadOnly**
         # - **DMLOnly**
         # - **DDLOnly**
         self.account_privilege = account_privilege
-        # The character set. The following character sets are supported:
+        # The character set. Valid values:
         # 
         # - **utf8**
         # - **gbk**
@@ -45,14 +45,14 @@ class CreateDBRequest(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The description of the database.
         self.db_description = db_description
-        # The name of the database to create.
+        # The name of the database to be created.
         # 
         # This parameter is required.
         self.db_name = db_name
         # The mode selected when creating the database. Valid values:
         # 
         # - **auto**: The database supports automatic partitioning. You do not need to specify a partition key when creating a table.
-        # - **drds**: The database does not support automatic partitioning. You must use dedicated table and database sharding syntax and specify sharding keys when creating a table.
+        # - **drds**: The database does not support automatic partitioning. You must use the dedicated database and table sharding syntax and specify the shard keys when creating a table.
         self.mode = mode
         # The region where the instance resides.
         # 
@@ -60,12 +60,13 @@ class CreateDBRequest(DaraModel):
         self.region_id = region_id
         # The name of the security administrator account.
         # 
-        # > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is optional.
+        # > This parameter is required if the three-role mode is enabled. If the three-role mode is not enabled, this parameter is optional.
         self.security_account_name = security_account_name
         # The password of the security administrator account.
         # 
-        # > If the three-role mode is enabled, this parameter is required. If the three-role mode is not enabled, this parameter is optional.
+        # > This parameter is required if the three-role mode is enabled. If the three-role mode is not enabled, this parameter is optional.
         self.security_account_password = security_account_password
+        # The name of the storage pool.
         self.storage_pool_name = storage_pool_name
 
     def validate(self):

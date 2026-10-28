@@ -20,6 +20,9 @@ from ._allocate_instance_public_connection_response import AllocateInstancePubli
 from ._allocate_mem_0public_connection_request import AllocateMem0PublicConnectionRequest
 from ._allocate_mem_0public_connection_response_body import AllocateMem0PublicConnectionResponseBody
 from ._allocate_mem_0public_connection_response import AllocateMem0PublicConnectionResponse
+from ._allocate_pxfs_public_connection_request import AllocatePxfsPublicConnectionRequest
+from ._allocate_pxfs_public_connection_response_body import AllocatePxfsPublicConnectionResponseBody
+from ._allocate_pxfs_public_connection_response import AllocatePxfsPublicConnectionResponse
 from ._attach_columnar_instance_request import AttachColumnarInstanceRequest
 from ._attach_columnar_instance_response_body import AttachColumnarInstanceResponseBody
 from ._attach_columnar_instance_response import AttachColumnarInstanceResponse
@@ -93,6 +96,18 @@ from ._create_open_search_whitelist_group_response import CreateOpenSearchWhitel
 from ._create_polardbx_supabase_instance_request import CreatePolardbxSupabaseInstanceRequest
 from ._create_polardbx_supabase_instance_response_body import CreatePolardbxSupabaseInstanceResponseBody
 from ._create_polardbx_supabase_instance_response import CreatePolardbxSupabaseInstanceResponse
+from ._create_pxfs_request import CreatePxfsRequest
+from ._create_pxfs_response_body import CreatePxfsResponseBody
+from ._create_pxfs_response import CreatePxfsResponse
+from ._create_pxfs_access_token_request import CreatePxfsAccessTokenRequest
+from ._create_pxfs_access_token_response_body import CreatePxfsAccessTokenResponseBody
+from ._create_pxfs_access_token_response import CreatePxfsAccessTokenResponse
+from ._create_pxfs_tenant_request import CreatePxfsTenantRequest
+from ._create_pxfs_tenant_response_body import CreatePxfsTenantResponseBody
+from ._create_pxfs_tenant_response import CreatePxfsTenantResponse
+from ._create_pxfs_user_request import CreatePxfsUserRequest
+from ._create_pxfs_user_response_body import CreatePxfsUserResponseBody
+from ._create_pxfs_user_response import CreatePxfsUserResponse
 from ._create_pxfuse_request import CreatePxfuseRequest
 from ._create_pxfuse_response_body import CreatePxfuseResponseBody
 from ._create_pxfuse_response import CreatePxfuseResponse
@@ -162,6 +177,12 @@ from ._delete_open_search_whitelist_group_response import DeleteOpenSearchWhitel
 from ._delete_polardbx_supabase_instance_request import DeletePolardbxSupabaseInstanceRequest
 from ._delete_polardbx_supabase_instance_response_body import DeletePolardbxSupabaseInstanceResponseBody
 from ._delete_polardbx_supabase_instance_response import DeletePolardbxSupabaseInstanceResponse
+from ._delete_pxfs_request import DeletePxfsRequest
+from ._delete_pxfs_response_body import DeletePxfsResponseBody
+from ._delete_pxfs_response import DeletePxfsResponse
+from ._delete_pxfs_user_request import DeletePxfsUserRequest
+from ._delete_pxfs_user_response_body import DeletePxfsUserResponseBody
+from ._delete_pxfs_user_response import DeletePxfsUserResponse
 from ._delete_pxfuse_request import DeletePxfuseRequest
 from ._delete_pxfuse_response_body import DeletePxfuseResponseBody
 from ._delete_pxfuse_response import DeletePxfuseResponse
@@ -351,6 +372,21 @@ from ._describe_parameters_response import DescribeParametersResponse
 from ._describe_polarx_data_nodes_request import DescribePolarxDataNodesRequest
 from ._describe_polarx_data_nodes_response_body import DescribePolarxDataNodesResponseBody
 from ._describe_polarx_data_nodes_response import DescribePolarxDataNodesResponse
+from ._describe_pxfs_access_tokens_request import DescribePxfsAccessTokensRequest
+from ._describe_pxfs_access_tokens_response_body import DescribePxfsAccessTokensResponseBody
+from ._describe_pxfs_access_tokens_response import DescribePxfsAccessTokensResponse
+from ._describe_pxfs_info_request import DescribePxfsInfoRequest
+from ._describe_pxfs_info_response_body import DescribePxfsInfoResponseBody
+from ._describe_pxfs_info_response import DescribePxfsInfoResponse
+from ._describe_pxfs_security_ips_request import DescribePxfsSecurityIpsRequest
+from ._describe_pxfs_security_ips_response_body import DescribePxfsSecurityIpsResponseBody
+from ._describe_pxfs_security_ips_response import DescribePxfsSecurityIpsResponse
+from ._describe_pxfs_tenant_request import DescribePxfsTenantRequest
+from ._describe_pxfs_tenant_response_body import DescribePxfsTenantResponseBody
+from ._describe_pxfs_tenant_response import DescribePxfsTenantResponse
+from ._describe_pxfs_users_request import DescribePxfsUsersRequest
+from ._describe_pxfs_users_response_body import DescribePxfsUsersResponseBody
+from ._describe_pxfs_users_response import DescribePxfsUsersResponse
 from ._describe_pxfuse_info_request import DescribePxfuseInfoRequest
 from ._describe_pxfuse_info_response_body import DescribePxfuseInfoResponseBody
 from ._describe_pxfuse_info_response import DescribePxfuseInfoResponse
@@ -515,6 +551,9 @@ from ._modify_open_search_whitelist_group_response import ModifyOpenSearchWhitel
 from ._modify_parameter_request import ModifyParameterRequest
 from ._modify_parameter_response_body import ModifyParameterResponseBody
 from ._modify_parameter_response import ModifyParameterResponse
+from ._modify_pxfs_security_ips_request import ModifyPxfsSecurityIpsRequest
+from ._modify_pxfs_security_ips_response_body import ModifyPxfsSecurityIpsResponseBody
+from ._modify_pxfs_security_ips_response import ModifyPxfsSecurityIpsResponse
 from ._modify_pxfuse_security_ips_request import ModifyPxfuseSecurityIpsRequest
 from ._modify_pxfuse_security_ips_response_body import ModifyPxfuseSecurityIpsResponseBody
 from ._modify_pxfuse_security_ips_response import ModifyPxfuseSecurityIpsResponse
@@ -554,6 +593,9 @@ from ._release_instance_public_connection_response import ReleaseInstancePublicC
 from ._release_mem_0public_connection_request import ReleaseMem0PublicConnectionRequest
 from ._release_mem_0public_connection_response_body import ReleaseMem0PublicConnectionResponseBody
 from ._release_mem_0public_connection_response import ReleaseMem0PublicConnectionResponse
+from ._release_pxfs_public_connection_request import ReleasePxfsPublicConnectionRequest
+from ._release_pxfs_public_connection_response_body import ReleasePxfsPublicConnectionResponseBody
+from ._release_pxfs_public_connection_response import ReleasePxfsPublicConnectionResponse
 from ._reset_account_password_request import ResetAccountPasswordRequest
 from ._reset_account_password_response_body import ResetAccountPasswordResponseBody
 from ._reset_account_password_response import ResetAccountPasswordResponse
@@ -575,12 +617,18 @@ from ._restart_data_import_task_response import RestartDataImportTaskResponse
 from ._restart_open_search_request import RestartOpenSearchRequest
 from ._restart_open_search_response_body import RestartOpenSearchResponseBody
 from ._restart_open_search_response import RestartOpenSearchResponse
+from ._restart_pxfs_request import RestartPxfsRequest
+from ._restart_pxfs_response_body import RestartPxfsResponseBody
+from ._restart_pxfs_response import RestartPxfsResponse
 from ._restart_supabase_instance_request import RestartSupabaseInstanceRequest
 from ._restart_supabase_instance_response_body import RestartSupabaseInstanceResponseBody
 from ._restart_supabase_instance_response import RestartSupabaseInstanceResponse
 from ._restore_dbinstance_request import RestoreDBInstanceRequest
 from ._restore_dbinstance_response_body import RestoreDBInstanceResponseBody
 from ._restore_dbinstance_response import RestoreDBInstanceResponse
+from ._revoke_pxfs_access_token_request import RevokePxfsAccessTokenRequest
+from ._revoke_pxfs_access_token_response_body import RevokePxfsAccessTokenResponseBody
+from ._revoke_pxfs_access_token_response import RevokePxfsAccessTokenResponse
 from ._scale_in_open_search_request import ScaleInOpenSearchRequest
 from ._scale_in_open_search_response_body import ScaleInOpenSearchResponseBody
 from ._scale_in_open_search_response import ScaleInOpenSearchResponse
@@ -635,11 +683,16 @@ from ._upgrade_columnar_version_response import UpgradeColumnarVersionResponse
 from ._upgrade_dbinstance_kernel_version_request import UpgradeDBInstanceKernelVersionRequest
 from ._upgrade_dbinstance_kernel_version_response_body import UpgradeDBInstanceKernelVersionResponseBody
 from ._upgrade_dbinstance_kernel_version_response import UpgradeDBInstanceKernelVersionResponse
+from ._upgrade_pxfs_version_request import UpgradePxfsVersionRequest
+from ._upgrade_pxfs_version_response_body import UpgradePxfsVersionResponseBody
+from ._upgrade_pxfs_version_response import UpgradePxfsVersionResponse
 from ._allocate_context_0public_connection_response_body import AllocateContext0PublicConnectionResponseBodyAccessDeniedDetail
 from ._allocate_context_0public_connection_response_body import AllocateContext0PublicConnectionResponseBodyData
 from ._allocate_context_dbpublic_connection_response_body import AllocateContextDBPublicConnectionResponseBodyAccessDeniedDetail
 from ._allocate_context_dbpublic_connection_response_body import AllocateContextDBPublicConnectionResponseBodyData
 from ._allocate_mem_0public_connection_response_body import AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail
+from ._allocate_pxfs_public_connection_response_body import AllocatePxfsPublicConnectionResponseBodyAccessDeniedDetail
+from ._allocate_pxfs_public_connection_response_body import AllocatePxfsPublicConnectionResponseBodyData
 from ._check_cloud_resource_authorized_response_body import CheckCloudResourceAuthorizedResponseBodyData
 from ._close_engine_migration_response_body import CloseEngineMigrationResponseBodyData
 from ._confirm_no_connection_response_body import ConfirmNoConnectionResponseBodyData
@@ -661,6 +714,14 @@ from ._create_open_search_whitelist_group_response_body import CreateOpenSearchW
 from ._create_open_search_whitelist_group_response_body import CreateOpenSearchWhitelistGroupResponseBodyData
 from ._create_polardbx_supabase_instance_response_body import CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail
 from ._create_polardbx_supabase_instance_response_body import CreatePolardbxSupabaseInstanceResponseBodyData
+from ._create_pxfs_response_body import CreatePxfsResponseBodyAccessDeniedDetail
+from ._create_pxfs_response_body import CreatePxfsResponseBodyData
+from ._create_pxfs_access_token_response_body import CreatePxfsAccessTokenResponseBodyAccessDeniedDetail
+from ._create_pxfs_access_token_response_body import CreatePxfsAccessTokenResponseBodyData
+from ._create_pxfs_tenant_response_body import CreatePxfsTenantResponseBodyAccessDeniedDetail
+from ._create_pxfs_tenant_response_body import CreatePxfsTenantResponseBodyData
+from ._create_pxfs_user_response_body import CreatePxfsUserResponseBodyAccessDeniedDetail
+from ._create_pxfs_user_response_body import CreatePxfsUserResponseBodyData
 from ._create_pxfuse_response_body import CreatePxfuseResponseBodyAccessDeniedDetail
 from ._create_pxfuse_response_body import CreatePxfuseResponseBodyData
 from ._create_rpl_inspection_task_response_body import CreateRplInspectionTaskResponseBodyData
@@ -686,6 +747,10 @@ from ._delete_open_search_whitelist_group_response_body import DeleteOpenSearchW
 from ._delete_open_search_whitelist_group_response_body import DeleteOpenSearchWhitelistGroupResponseBodyData
 from ._delete_polardbx_supabase_instance_response_body import DeletePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail
 from ._delete_polardbx_supabase_instance_response_body import DeletePolardbxSupabaseInstanceResponseBodyData
+from ._delete_pxfs_response_body import DeletePxfsResponseBodyAccessDeniedDetail
+from ._delete_pxfs_response_body import DeletePxfsResponseBodyData
+from ._delete_pxfs_user_response_body import DeletePxfsUserResponseBodyAccessDeniedDetail
+from ._delete_pxfs_user_response_body import DeletePxfsUserResponseBodyData
 from ._delete_pxfuse_response_body import DeletePxfuseResponseBodyAccessDeniedDetail
 from ._delete_pxfuse_response_body import DeletePxfuseResponseBodyData
 from ._delete_service_account_response_body import DeleteServiceAccountResponseBodyAccessDeniedDetail
@@ -831,6 +896,21 @@ from ._describe_parameters_response_body import DescribeParametersResponseBodyDa
 from ._describe_parameters_response_body import DescribeParametersResponseBodyDataRunningParameters
 from ._describe_parameters_response_body import DescribeParametersResponseBodyData
 from ._describe_polarx_data_nodes_response_body import DescribePolarxDataNodesResponseBodyDBInstanceDataNodes
+from ._describe_pxfs_access_tokens_response_body import DescribePxfsAccessTokensResponseBodyAccessDeniedDetail
+from ._describe_pxfs_access_tokens_response_body import DescribePxfsAccessTokensResponseBodyDataAccessTokens
+from ._describe_pxfs_access_tokens_response_body import DescribePxfsAccessTokensResponseBodyData
+from ._describe_pxfs_info_response_body import DescribePxfsInfoResponseBodyAccessDeniedDetail
+from ._describe_pxfs_info_response_body import DescribePxfsInfoResponseBodyDataInstanceConnAddrs
+from ._describe_pxfs_info_response_body import DescribePxfsInfoResponseBodyDataInstance
+from ._describe_pxfs_info_response_body import DescribePxfsInfoResponseBodyData
+from ._describe_pxfs_security_ips_response_body import DescribePxfsSecurityIpsResponseBodyAccessDeniedDetail
+from ._describe_pxfs_security_ips_response_body import DescribePxfsSecurityIpsResponseBodyDataGroups
+from ._describe_pxfs_security_ips_response_body import DescribePxfsSecurityIpsResponseBodyData
+from ._describe_pxfs_tenant_response_body import DescribePxfsTenantResponseBodyAccessDeniedDetail
+from ._describe_pxfs_tenant_response_body import DescribePxfsTenantResponseBodyData
+from ._describe_pxfs_users_response_body import DescribePxfsUsersResponseBodyAccessDeniedDetail
+from ._describe_pxfs_users_response_body import DescribePxfsUsersResponseBodyDataUsers
+from ._describe_pxfs_users_response_body import DescribePxfsUsersResponseBodyData
 from ._describe_pxfuse_info_response_body import DescribePxfuseInfoResponseBodyAccessDeniedDetail
 from ._describe_pxfuse_info_response_body import DescribePxfuseInfoResponseBodyDataInstanceConnAddrs
 from ._describe_pxfuse_info_response_body import DescribePxfuseInfoResponseBodyDataInstance
@@ -902,6 +982,8 @@ from ._modify_open_search_class_response_body import ModifyOpenSearchClassRespon
 from ._modify_open_search_class_response_body import ModifyOpenSearchClassResponseBodyData
 from ._modify_open_search_whitelist_group_response_body import ModifyOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail
 from ._modify_open_search_whitelist_group_response_body import ModifyOpenSearchWhitelistGroupResponseBodyData
+from ._modify_pxfs_security_ips_response_body import ModifyPxfsSecurityIpsResponseBodyAccessDeniedDetail
+from ._modify_pxfs_security_ips_response_body import ModifyPxfsSecurityIpsResponseBodyData
 from ._modify_pxfuse_security_ips_response_body import ModifyPxfuseSecurityIpsResponseBodyAccessDeniedDetail
 from ._modify_pxfuse_security_ips_response_body import ModifyPxfuseSecurityIpsResponseBodyData
 from ._modify_supabase_dashboard_password_response_body import ModifySupabaseDashboardPasswordResponseBodyAccessDeniedDetail
@@ -918,14 +1000,20 @@ from ._release_context_0public_connection_response_body import ReleaseContext0Pu
 from ._release_context_dbpublic_connection_response_body import ReleaseContextDBPublicConnectionResponseBodyAccessDeniedDetail
 from ._release_context_dbpublic_connection_response_body import ReleaseContextDBPublicConnectionResponseBodyData
 from ._release_mem_0public_connection_response_body import ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail
+from ._release_pxfs_public_connection_response_body import ReleasePxfsPublicConnectionResponseBodyAccessDeniedDetail
+from ._release_pxfs_public_connection_response_body import ReleasePxfsPublicConnectionResponseBodyData
 from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBodyAccessDeniedDetail
 from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBodyData
 from ._reset_open_search_password_response_body import ResetOpenSearchPasswordResponseBodyAccessDeniedDetail
 from ._reset_open_search_password_response_body import ResetOpenSearchPasswordResponseBodyData
 from ._restart_open_search_response_body import RestartOpenSearchResponseBodyAccessDeniedDetail
 from ._restart_open_search_response_body import RestartOpenSearchResponseBodyData
+from ._restart_pxfs_response_body import RestartPxfsResponseBodyAccessDeniedDetail
+from ._restart_pxfs_response_body import RestartPxfsResponseBodyData
 from ._restart_supabase_instance_response_body import RestartSupabaseInstanceResponseBodyAccessDeniedDetail
 from ._restart_supabase_instance_response_body import RestartSupabaseInstanceResponseBodyData
+from ._revoke_pxfs_access_token_response_body import RevokePxfsAccessTokenResponseBodyAccessDeniedDetail
+from ._revoke_pxfs_access_token_response_body import RevokePxfsAccessTokenResponseBodyData
 from ._scale_in_open_search_response_body import ScaleInOpenSearchResponseBodyAccessDeniedDetail
 from ._scale_out_open_search_response_body import ScaleOutOpenSearchResponseBodyAccessDeniedDetail
 from ._skip_current_step_response_body import SkipCurrentStepResponseBodyData
@@ -941,6 +1029,8 @@ from ._upgrade_cdcversion_response_body import UpgradeCDCVersionResponseBodyData
 from ._upgrade_cdcversion_response_body import UpgradeCDCVersionResponseBodyData
 from ._upgrade_columnar_version_response_body import UpgradeColumnarVersionResponseBodyDataTaskList
 from ._upgrade_columnar_version_response_body import UpgradeColumnarVersionResponseBodyData
+from ._upgrade_pxfs_version_response_body import UpgradePxfsVersionResponseBodyAccessDeniedDetail
+from ._upgrade_pxfs_version_response_body import UpgradePxfsVersionResponseBodyData
 
 __all__ = [
     AlignStoragePrimaryAzoneRequest,
@@ -961,6 +1051,9 @@ __all__ = [
     AllocateMem0PublicConnectionRequest,
     AllocateMem0PublicConnectionResponseBody,
     AllocateMem0PublicConnectionResponse,
+    AllocatePxfsPublicConnectionRequest,
+    AllocatePxfsPublicConnectionResponseBody,
+    AllocatePxfsPublicConnectionResponse,
     AttachColumnarInstanceRequest,
     AttachColumnarInstanceResponseBody,
     AttachColumnarInstanceResponse,
@@ -1034,6 +1127,18 @@ __all__ = [
     CreatePolardbxSupabaseInstanceRequest,
     CreatePolardbxSupabaseInstanceResponseBody,
     CreatePolardbxSupabaseInstanceResponse,
+    CreatePxfsRequest,
+    CreatePxfsResponseBody,
+    CreatePxfsResponse,
+    CreatePxfsAccessTokenRequest,
+    CreatePxfsAccessTokenResponseBody,
+    CreatePxfsAccessTokenResponse,
+    CreatePxfsTenantRequest,
+    CreatePxfsTenantResponseBody,
+    CreatePxfsTenantResponse,
+    CreatePxfsUserRequest,
+    CreatePxfsUserResponseBody,
+    CreatePxfsUserResponse,
     CreatePxfuseRequest,
     CreatePxfuseResponseBody,
     CreatePxfuseResponse,
@@ -1103,6 +1208,12 @@ __all__ = [
     DeletePolardbxSupabaseInstanceRequest,
     DeletePolardbxSupabaseInstanceResponseBody,
     DeletePolardbxSupabaseInstanceResponse,
+    DeletePxfsRequest,
+    DeletePxfsResponseBody,
+    DeletePxfsResponse,
+    DeletePxfsUserRequest,
+    DeletePxfsUserResponseBody,
+    DeletePxfsUserResponse,
     DeletePxfuseRequest,
     DeletePxfuseResponseBody,
     DeletePxfuseResponse,
@@ -1292,6 +1403,21 @@ __all__ = [
     DescribePolarxDataNodesRequest,
     DescribePolarxDataNodesResponseBody,
     DescribePolarxDataNodesResponse,
+    DescribePxfsAccessTokensRequest,
+    DescribePxfsAccessTokensResponseBody,
+    DescribePxfsAccessTokensResponse,
+    DescribePxfsInfoRequest,
+    DescribePxfsInfoResponseBody,
+    DescribePxfsInfoResponse,
+    DescribePxfsSecurityIpsRequest,
+    DescribePxfsSecurityIpsResponseBody,
+    DescribePxfsSecurityIpsResponse,
+    DescribePxfsTenantRequest,
+    DescribePxfsTenantResponseBody,
+    DescribePxfsTenantResponse,
+    DescribePxfsUsersRequest,
+    DescribePxfsUsersResponseBody,
+    DescribePxfsUsersResponse,
     DescribePxfuseInfoRequest,
     DescribePxfuseInfoResponseBody,
     DescribePxfuseInfoResponse,
@@ -1456,6 +1582,9 @@ __all__ = [
     ModifyParameterRequest,
     ModifyParameterResponseBody,
     ModifyParameterResponse,
+    ModifyPxfsSecurityIpsRequest,
+    ModifyPxfsSecurityIpsResponseBody,
+    ModifyPxfsSecurityIpsResponse,
     ModifyPxfuseSecurityIpsRequest,
     ModifyPxfuseSecurityIpsResponseBody,
     ModifyPxfuseSecurityIpsResponse,
@@ -1495,6 +1624,9 @@ __all__ = [
     ReleaseMem0PublicConnectionRequest,
     ReleaseMem0PublicConnectionResponseBody,
     ReleaseMem0PublicConnectionResponse,
+    ReleasePxfsPublicConnectionRequest,
+    ReleasePxfsPublicConnectionResponseBody,
+    ReleasePxfsPublicConnectionResponse,
     ResetAccountPasswordRequest,
     ResetAccountPasswordResponseBody,
     ResetAccountPasswordResponse,
@@ -1516,12 +1648,18 @@ __all__ = [
     RestartOpenSearchRequest,
     RestartOpenSearchResponseBody,
     RestartOpenSearchResponse,
+    RestartPxfsRequest,
+    RestartPxfsResponseBody,
+    RestartPxfsResponse,
     RestartSupabaseInstanceRequest,
     RestartSupabaseInstanceResponseBody,
     RestartSupabaseInstanceResponse,
     RestoreDBInstanceRequest,
     RestoreDBInstanceResponseBody,
     RestoreDBInstanceResponse,
+    RevokePxfsAccessTokenRequest,
+    RevokePxfsAccessTokenResponseBody,
+    RevokePxfsAccessTokenResponse,
     ScaleInOpenSearchRequest,
     ScaleInOpenSearchResponseBody,
     ScaleInOpenSearchResponse,
@@ -1576,11 +1714,16 @@ __all__ = [
     UpgradeDBInstanceKernelVersionRequest,
     UpgradeDBInstanceKernelVersionResponseBody,
     UpgradeDBInstanceKernelVersionResponse,
+    UpgradePxfsVersionRequest,
+    UpgradePxfsVersionResponseBody,
+    UpgradePxfsVersionResponse,
     AllocateContext0PublicConnectionResponseBodyAccessDeniedDetail,
     AllocateContext0PublicConnectionResponseBodyData,
     AllocateContextDBPublicConnectionResponseBodyAccessDeniedDetail,
     AllocateContextDBPublicConnectionResponseBodyData,
     AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail,
+    AllocatePxfsPublicConnectionResponseBodyAccessDeniedDetail,
+    AllocatePxfsPublicConnectionResponseBodyData,
     CheckCloudResourceAuthorizedResponseBodyData,
     CloseEngineMigrationResponseBodyData,
     ConfirmNoConnectionResponseBodyData,
@@ -1602,6 +1745,14 @@ __all__ = [
     CreateOpenSearchWhitelistGroupResponseBodyData,
     CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail,
     CreatePolardbxSupabaseInstanceResponseBodyData,
+    CreatePxfsResponseBodyAccessDeniedDetail,
+    CreatePxfsResponseBodyData,
+    CreatePxfsAccessTokenResponseBodyAccessDeniedDetail,
+    CreatePxfsAccessTokenResponseBodyData,
+    CreatePxfsTenantResponseBodyAccessDeniedDetail,
+    CreatePxfsTenantResponseBodyData,
+    CreatePxfsUserResponseBodyAccessDeniedDetail,
+    CreatePxfsUserResponseBodyData,
     CreatePxfuseResponseBodyAccessDeniedDetail,
     CreatePxfuseResponseBodyData,
     CreateRplInspectionTaskResponseBodyData,
@@ -1627,6 +1778,10 @@ __all__ = [
     DeleteOpenSearchWhitelistGroupResponseBodyData,
     DeletePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail,
     DeletePolardbxSupabaseInstanceResponseBodyData,
+    DeletePxfsResponseBodyAccessDeniedDetail,
+    DeletePxfsResponseBodyData,
+    DeletePxfsUserResponseBodyAccessDeniedDetail,
+    DeletePxfsUserResponseBodyData,
     DeletePxfuseResponseBodyAccessDeniedDetail,
     DeletePxfuseResponseBodyData,
     DeleteServiceAccountResponseBodyAccessDeniedDetail,
@@ -1772,6 +1927,21 @@ __all__ = [
     DescribeParametersResponseBodyDataRunningParameters,
     DescribeParametersResponseBodyData,
     DescribePolarxDataNodesResponseBodyDBInstanceDataNodes,
+    DescribePxfsAccessTokensResponseBodyAccessDeniedDetail,
+    DescribePxfsAccessTokensResponseBodyDataAccessTokens,
+    DescribePxfsAccessTokensResponseBodyData,
+    DescribePxfsInfoResponseBodyAccessDeniedDetail,
+    DescribePxfsInfoResponseBodyDataInstanceConnAddrs,
+    DescribePxfsInfoResponseBodyDataInstance,
+    DescribePxfsInfoResponseBodyData,
+    DescribePxfsSecurityIpsResponseBodyAccessDeniedDetail,
+    DescribePxfsSecurityIpsResponseBodyDataGroups,
+    DescribePxfsSecurityIpsResponseBodyData,
+    DescribePxfsTenantResponseBodyAccessDeniedDetail,
+    DescribePxfsTenantResponseBodyData,
+    DescribePxfsUsersResponseBodyAccessDeniedDetail,
+    DescribePxfsUsersResponseBodyDataUsers,
+    DescribePxfsUsersResponseBodyData,
     DescribePxfuseInfoResponseBodyAccessDeniedDetail,
     DescribePxfuseInfoResponseBodyDataInstanceConnAddrs,
     DescribePxfuseInfoResponseBodyDataInstance,
@@ -1843,6 +2013,8 @@ __all__ = [
     ModifyOpenSearchClassResponseBodyData,
     ModifyOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail,
     ModifyOpenSearchWhitelistGroupResponseBodyData,
+    ModifyPxfsSecurityIpsResponseBodyAccessDeniedDetail,
+    ModifyPxfsSecurityIpsResponseBodyData,
     ModifyPxfuseSecurityIpsResponseBodyAccessDeniedDetail,
     ModifyPxfuseSecurityIpsResponseBodyData,
     ModifySupabaseDashboardPasswordResponseBodyAccessDeniedDetail,
@@ -1859,14 +2031,20 @@ __all__ = [
     ReleaseContextDBPublicConnectionResponseBodyAccessDeniedDetail,
     ReleaseContextDBPublicConnectionResponseBodyData,
     ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail,
+    ReleasePxfsPublicConnectionResponseBodyAccessDeniedDetail,
+    ReleasePxfsPublicConnectionResponseBodyData,
     ResetMem0AccountPasswordResponseBodyAccessDeniedDetail,
     ResetMem0AccountPasswordResponseBodyData,
     ResetOpenSearchPasswordResponseBodyAccessDeniedDetail,
     ResetOpenSearchPasswordResponseBodyData,
     RestartOpenSearchResponseBodyAccessDeniedDetail,
     RestartOpenSearchResponseBodyData,
+    RestartPxfsResponseBodyAccessDeniedDetail,
+    RestartPxfsResponseBodyData,
     RestartSupabaseInstanceResponseBodyAccessDeniedDetail,
     RestartSupabaseInstanceResponseBodyData,
+    RevokePxfsAccessTokenResponseBodyAccessDeniedDetail,
+    RevokePxfsAccessTokenResponseBodyData,
     ScaleInOpenSearchResponseBodyAccessDeniedDetail,
     ScaleOutOpenSearchResponseBodyAccessDeniedDetail,
     SkipCurrentStepResponseBodyData,
@@ -1881,5 +2059,7 @@ __all__ = [
     UpgradeCDCVersionResponseBodyDataTaskList,
     UpgradeCDCVersionResponseBodyData,
     UpgradeColumnarVersionResponseBodyDataTaskList,
-    UpgradeColumnarVersionResponseBodyData
+    UpgradeColumnarVersionResponseBodyData,
+    UpgradePxfsVersionResponseBodyAccessDeniedDetail,
+    UpgradePxfsVersionResponseBodyData
 ]

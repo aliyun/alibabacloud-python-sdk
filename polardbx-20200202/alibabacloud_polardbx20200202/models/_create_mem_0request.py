@@ -14,7 +14,7 @@ class CreateMem0Request(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region where the instance resides.
+        # The region where the instance is located.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -132,18 +132,34 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
     ):
         # The name of the log node.
         self.cdc_instance_name = cdc_instance_name
-        # The CN node specifications.
+        # The CN node specifications. Valid values:
+        # 
+        # - **polarx.x4.medium.2e**: 2 cores, 8 GB
+        # - **polarx.x4.large.2e**: 4 cores, 16 GB
+        # - **polarx.x8.large.2e**: 4 cores, 32 GB
+        # - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+        # - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+        # - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+        # - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+        # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+        # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+        # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
         self.cn_node_class_code = cn_node_class_code
         # The number of CN nodes.
         self.cn_node_count = cn_node_count
         # The name of the column store engine instance.
         self.columnar_instance_name = columnar_instance_name
-        # The column store read-only instance information.
+        # The information about the column store read-only instance.
         self.columnar_read_dbinstances = columnar_read_dbinstances
         # The commodity code.
         self.commodity_code = commodity_code
-        # Specifies whether the instance contains the multi-stream log service. Valid values:
+        # Indicates whether the multi-flow log service is included. Valid values:
+        # 
+        # - **true**: yes
+        # - **false**: no
         self.contain_binlog_x = contain_binlog_x
+        # The CPU architecture.
         self.cpu_type = cpu_type
         # The creation time.
         self.create_time = create_time
@@ -151,16 +167,32 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The database type.
         self.dbtype = dbtype
-        # The database engine version.
+        # The database version.
         self.dbversion = dbversion
         # The database description.
         self.description = description
-        # The DN node specifications.
+        # The DN node specifications. Valid values:
+        # - **mysql.n2.medium.25**: 2 cores, 4 GB
+        # - **mysql.n4.medium.25**: 2 cores, 8 GB
+        # - **mysql.x8.medium.25**: 2 cores, 16 GB
+        # - **mysql.n2.large.25**: 4 cores, 8 GB
+        # - **mysql.n4.large.25**: 4 cores, 16 GB
+        # - **mysql.x8.large.25**: 4 cores, 32 GB
+        # - **mysql.n2.xlarge.25**: 8 cores, 16 GB
+        # - **mysql.n4.xlarge.25**: 8 cores, 32 GB
+        # - **mysql.x8.xlarge.25**: 8 cores, 64 GB
+        # - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
+        # - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
+        # - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
+        # - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
+        # - **mysql.st.8xlarge.25**: 60 cores, 470 GB
+        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB
         self.dn_node_class_code = dn_node_class_code
         # The number of DN nodes.
         self.dn_node_count = dn_node_count
         # The engine type.
         self.engine = engine
+        # The database engine version.
         self.engine_version = engine_version
         # The expiration time.
         self.expire_time = expire_time
@@ -172,7 +204,7 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         self.lock_mode = lock_mode
         # The lock reason.
         self.lock_reason = lock_reason
-        # The current Milvus version.
+        # The current kernel version.
         self.minor_version = minor_version
         # The network type.
         self.network = network
@@ -183,7 +215,11 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         # The list of nodes.
         self.nodes = nodes
         # The billing method of the instance. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go
+        # - **Prepaid**: subscription
         self.pay_type = pay_type
+        # The primary instance ID.
         self.primary_instance_id = primary_instance_id
         # The primary zone.
         # 
@@ -198,29 +234,44 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         # The secondary zone.
         self.secondary_zone = secondary_zone
         # The instance edition. Valid values:
+        # 
+        # - **enterprise**: Enterprise Edition
+        # - **standard**: Standard Edition
         self.series = series
-        # The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/339826.html).
+        # The instance status. For more information, see the following section.
         self.status = status
+        # The storage type.
         self.storage_type = storage_type
         # The storage usage.
         self.storage_used = storage_used
-        # Indicates whether the instance supports multi-stream. Valid values:
+        # Indicates whether the current instance supports multi-stream. Valid values:
+        # 
+        # - **true**: yes
+        # - **false**: no
         self.support_binlog_x = support_binlog_x
-        # The set of tags.
+        # The tag set.
         self.tag_set = tag_set
-        # The tertiary active zone for three-zone deployment.
+        # The third active zone in a Three-zone deployment.
         self.tertiary_zone = tertiary_zone
-        # The topology type.
+        # The topology type. Valid values:
+        # 
+        # - **3azones**: Three-zone deployment (three active zones)
+        # - **1azone**: Single-zone deployment (single active zone)
         # 
         # This parameter is required.
         self.topology_type = topology_type
-        # The instance type.
+        # The instance type. Valid values:
+        # 
+        # - **ReadWrite**: primary instance
+        # - **ReadOnly**: read-only instance
         self.type = type
-        # VPC ID。
+        # The VPC ID.
         self.vpcid = vpcid
         # The zone ID.
         self.zone_id = zone_id
+        # The GDN role.
         self.gdn_role = gdn_role
+        # Indicates whether the instance belongs to a global database network (GDN).
         self.is_in_gdn = is_in_gdn
 
     def validate(self):
@@ -582,10 +633,11 @@ class DescribeDBInstancesResponseBodyDBInstancesNodes(DaraModel):
         region_id: str = None,
         zone_id: str = None,
     ):
-        # The instance specifications.
+        # The instance type.
         self.class_code = class_code
         # The node ID.
         self.id = id
+        # The node name.
         self.name = name
         # The region ID.
         self.region_id = region_id

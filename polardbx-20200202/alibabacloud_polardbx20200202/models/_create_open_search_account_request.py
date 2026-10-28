@@ -16,7 +16,7 @@ class CreateOpenSearchAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The password of the account. The password must be 6 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$&%^*()_+-=).
+        # The password of the account. The password must be 6 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$&%^*()_+-=).
         # 
         # This parameter is required.
         self.account_password = account_password
@@ -24,7 +24,7 @@ class CreateOpenSearchAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region in which the instance resides.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

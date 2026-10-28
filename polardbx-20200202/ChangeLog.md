@@ -1,3 +1,6 @@
+2026-10-28 Version: 3.13.1
+- Generated python 2020-02-02 for polardbx.
+
 2026-08-31 Version: 3.12.0
 - Support API QueryColumnarLog.
 - Support API QueryColumnarLogSSE.

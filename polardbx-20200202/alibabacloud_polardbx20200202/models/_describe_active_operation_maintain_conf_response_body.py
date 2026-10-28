@@ -14,7 +14,7 @@ class DescribeActiveOperationMaintainConfResponseBody(DaraModel):
     ):
         # The configuration information.
         self.config = config
-        # Indicates whether the O&M window has been configured. Valid values:
+        # Specifies whether the settings are configured. Valid values:
         # 
         # - 1: Configured.
         # - 0: Not configured.
@@ -67,17 +67,17 @@ class DescribeActiveOperationMaintainConfResponseBodyConfig(DaraModel):
         modified_time: str = None,
         status: int = None,
     ):
-        # The creation time.
+        # The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
         # The cycle time.
         self.cycle_time = cycle_time
         # The cycle type.
         self.cycle_type = cycle_type
-        # The O&M end time.
+        # The end time of the O&M window. The time is displayed in UTC in the HH:mm:ssZ format.
         self.maintain_end_time = maintain_end_time
-        # The O&M start time.
+        # The start time of the O&M window. The time is displayed in UTC in the HH:mm:ssZ format.
         self.maintain_start_time = maintain_start_time
-        # The modification time.
+        # The update time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.modified_time = modified_time
         # The status.
         self.status = status

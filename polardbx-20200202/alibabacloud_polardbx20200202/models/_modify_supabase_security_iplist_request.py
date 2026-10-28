@@ -13,22 +13,19 @@ class ModifySupabaseSecurityIPListRequest(DaraModel):
         region_id: str = None,
         security_iplist: str = None,
     ):
-        # The instance name.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The whitelist group name.
+        # The name of the whitelist group.
         self.group_name = group_name
-        # The modification mode. Valid values:
-        # - Cover: overwrites the existing whitelist.
-        # - Append: appends entries to the existing whitelist.
-        # - Delete: deletes entries from the existing whitelist.
+        # The modification mode. Valid values: Cover, Append, and Delete.
         self.modify_mode = modify_mode
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IP whitelist. Separate multiple IP addresses with commas (,).
+        # The IP whitelist. Separate multiple IP addresses with commas.
         # 
         # This parameter is required.
         self.security_iplist = security_iplist

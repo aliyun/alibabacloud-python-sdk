@@ -15,7 +15,7 @@ class ResetMem0AccountPasswordRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The API key.
+        # apikey
         self.mem_0api_key = mem_0api_key
         # The region ID.
         # 

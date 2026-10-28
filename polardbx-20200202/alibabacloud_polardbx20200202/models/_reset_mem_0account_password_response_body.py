@@ -12,6 +12,7 @@ class ResetMem0AccountPasswordResponseBody(DaraModel):
         data: main_models.ResetMem0AccountPasswordResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The data struct.
         self.data = data
@@ -103,12 +104,19 @@ class ResetMem0AccountPasswordResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The authentication action.
         self.auth_action = auth_action
+        # The display name of the security principal.
         self.auth_principal_display_name = auth_principal_display_name
+        # The owner ID of the security principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of the security principal, such as RAM user SubUser or RAM role AssumedRoleUser.
         self.auth_principal_type = auth_principal_type
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The type of the missing permission.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

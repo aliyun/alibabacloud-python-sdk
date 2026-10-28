@@ -21,20 +21,25 @@ class SwitchGdnMemberRoleRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The endpoint of the primary node of the target instance.
         self.dst_main_connect_string = dst_main_connect_string
+        # The port number of the primary node of the target instance.
         self.dst_main_port = dst_main_port
+        # Specifies whether the endpoint and port of the source or target instance is simultaneously modified.
         self.is_modify_endpoint = is_modify_endpoint
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The endpoint of the primary node of the source instance.
         self.src_main_connect_string = src_main_connect_string
+        # The port number of the primary node of the source instance.
         self.src_main_port = src_main_port
         # The switchover mode.
         # 
         # This parameter is required.
         self.switch_mode = switch_mode
-        # The timeout period of the switchover task. Unit: seconds.
+        # The timeout period for the switchover task, in seconds.
         self.task_timeout = task_timeout
 
     def validate(self):

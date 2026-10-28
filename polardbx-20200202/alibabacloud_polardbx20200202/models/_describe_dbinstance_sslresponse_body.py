@@ -58,7 +58,7 @@ class DescribeDBInstanceSSLResponseBodyData(DaraModel):
         # - **true**: Enabled.
         # - **false**: Disabled.
         self.sslenabled = sslenabled
-        # The certificate expiration time.
+        # The expiration time of the certificate. The time is in the YYYY-MM-DDTHH:mm:ssZ format and is in UTC.
         self.sslexpired_time = sslexpired_time
 
     def validate(self):

@@ -98,13 +98,13 @@ class DescribeEventsResponseBodyEventItems(DaraModel):
         self.event_id = event_id
         # The event name.
         self.event_name = event_name
-        # The supplementary information.
+        # The additional information.
         self.event_payload = event_payload
         # The reason.
         self.event_reason = event_reason
-        # The record time.
+        # The record time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.event_record_time = event_record_time
-        # The event time.
+        # The event time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.event_time = event_time
         # The event type.
         self.event_type = event_type

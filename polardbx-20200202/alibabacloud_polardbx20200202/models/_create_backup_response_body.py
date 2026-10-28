@@ -15,11 +15,11 @@ class CreateBackupResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # Empty if the request is successful. An error message is returned if the request fails.
+        # The message. If the request is successful, this field is empty. If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -67,6 +67,7 @@ class CreateBackupResponseBodyData(DaraModel):
         self,
         backup_set_id: str = None,
     ):
+        # The ID of the backup set.
         self.backup_set_id = backup_set_id
 
     def validate(self):

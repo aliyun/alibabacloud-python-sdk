@@ -68,19 +68,7 @@ class Client(OpenApiClient):
             'eu-west-1': 'polardbx.aliyuncs.com',
             'eu-west-1-oxs': 'polardbx.aliyuncs.com',
             'me-east-1': 'polardbx.aliyuncs.com',
-            'rus-west-1-pop': 'polardbx.aliyuncs.com',
-            'cn-beijing': 'polardbx.cn-beijing.aliyuncs.com',
-            'cn-qingdao': 'polardbx.cn-qingdao.aliyuncs.com',
-            'cn-shanghai': 'polardbx.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'polardbx.cn-hongkong.aliyuncs.com',
-            'cn-zhangjiakou': 'polardbx.cn-zhangjiakou.aliyuncs.com',
-            'cn-shenzhen': 'polardbx.cn-shenzhen.aliyuncs.com',
-            'cn-chengdu': 'polardbx.cn-chengdu.aliyuncs.com',
-            'ap-southeast-1': 'polardbx.ap-southeast-1.aliyuncs.com',
-            'cn-huhehaote': 'polardbx.cn-huhehaote.aliyuncs.com',
-            'cn-hangzhou': 'polardbx.cn-hangzhou.aliyuncs.com',
-            'us-east-1': 'polardbx.us-east-1.aliyuncs.com',
-            'us-west-1': 'polardbx.us-west-1.aliyuncs.com'
+            'rus-west-1-pop': 'polardbx.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('polardbx', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -616,6 +604,80 @@ class Client(OpenApiClient):
     ) -> main_models.AllocateMem0PublicConnectionResponse:
         runtime = RuntimeOptions()
         return await self.allocate_mem_0public_connection_with_options_async(request, runtime)
+
+    def allocate_pxfs_public_connection_with_options(
+        self,
+        request: main_models.AllocatePxfsPublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocatePxfsPublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocatePxfsPublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocatePxfsPublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allocate_pxfs_public_connection_with_options_async(
+        self,
+        request: main_models.AllocatePxfsPublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocatePxfsPublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocatePxfsPublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocatePxfsPublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allocate_pxfs_public_connection(
+        self,
+        request: main_models.AllocatePxfsPublicConnectionRequest,
+    ) -> main_models.AllocatePxfsPublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.allocate_pxfs_public_connection_with_options(request, runtime)
+
+    async def allocate_pxfs_public_connection_async(
+        self,
+        request: main_models.AllocatePxfsPublicConnectionRequest,
+    ) -> main_models.AllocatePxfsPublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.allocate_pxfs_public_connection_with_options_async(request, runtime)
 
     def attach_columnar_instance_with_options(
         self,
@@ -2899,6 +2961,378 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_polardbx_supabase_instance_with_options_async(request, runtime)
 
+    def create_pxfs_with_options(
+        self,
+        request: main_models.CreatePxfsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.class_code):
+            query['ClassCode'] = request.class_code
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfs',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pxfs_with_options_async(
+        self,
+        request: main_models.CreatePxfsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.class_code):
+            query['ClassCode'] = request.class_code
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        if not DaraCore.is_null(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfs',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pxfs(
+        self,
+        request: main_models.CreatePxfsRequest,
+    ) -> main_models.CreatePxfsResponse:
+        runtime = RuntimeOptions()
+        return self.create_pxfs_with_options(request, runtime)
+
+    async def create_pxfs_async(
+        self,
+        request: main_models.CreatePxfsRequest,
+    ) -> main_models.CreatePxfsResponse:
+        runtime = RuntimeOptions()
+        return await self.create_pxfs_with_options_async(request, runtime)
+
+    def create_pxfs_access_token_with_options(
+        self,
+        request: main_models.CreatePxfsAccessTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfsAccessTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not DaraCore.is_null(request.label):
+            query['Label'] = request.label
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.ttl_seconds):
+            query['TtlSeconds'] = request.ttl_seconds
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfsAccessToken',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfsAccessTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pxfs_access_token_with_options_async(
+        self,
+        request: main_models.CreatePxfsAccessTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfsAccessTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not DaraCore.is_null(request.label):
+            query['Label'] = request.label
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.ttl_seconds):
+            query['TtlSeconds'] = request.ttl_seconds
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfsAccessToken',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfsAccessTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pxfs_access_token(
+        self,
+        request: main_models.CreatePxfsAccessTokenRequest,
+    ) -> main_models.CreatePxfsAccessTokenResponse:
+        runtime = RuntimeOptions()
+        return self.create_pxfs_access_token_with_options(request, runtime)
+
+    async def create_pxfs_access_token_async(
+        self,
+        request: main_models.CreatePxfsAccessTokenRequest,
+    ) -> main_models.CreatePxfsAccessTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.create_pxfs_access_token_with_options_async(request, runtime)
+
+    def create_pxfs_tenant_with_options(
+        self,
+        request: main_models.CreatePxfsTenantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfsTenantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.quota_bytes):
+            query['QuotaBytes'] = request.quota_bytes
+        if not DaraCore.is_null(request.quota_files):
+            query['QuotaFiles'] = request.quota_files
+        if not DaraCore.is_null(request.rate_limit_rps):
+            query['RateLimitRps'] = request.rate_limit_rps
+        if not DaraCore.is_null(request.rate_limit_wbps):
+            query['RateLimitWbps'] = request.rate_limit_wbps
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.tenant_name):
+            query['TenantName'] = request.tenant_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfsTenant',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfsTenantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pxfs_tenant_with_options_async(
+        self,
+        request: main_models.CreatePxfsTenantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfsTenantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.quota_bytes):
+            query['QuotaBytes'] = request.quota_bytes
+        if not DaraCore.is_null(request.quota_files):
+            query['QuotaFiles'] = request.quota_files
+        if not DaraCore.is_null(request.rate_limit_rps):
+            query['RateLimitRps'] = request.rate_limit_rps
+        if not DaraCore.is_null(request.rate_limit_wbps):
+            query['RateLimitWbps'] = request.rate_limit_wbps
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.tenant_name):
+            query['TenantName'] = request.tenant_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfsTenant',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfsTenantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pxfs_tenant(
+        self,
+        request: main_models.CreatePxfsTenantRequest,
+    ) -> main_models.CreatePxfsTenantResponse:
+        runtime = RuntimeOptions()
+        return self.create_pxfs_tenant_with_options(request, runtime)
+
+    async def create_pxfs_tenant_async(
+        self,
+        request: main_models.CreatePxfsTenantRequest,
+    ) -> main_models.CreatePxfsTenantResponse:
+        runtime = RuntimeOptions()
+        return await self.create_pxfs_tenant_with_options_async(request, runtime)
+
+    def create_pxfs_user_with_options(
+        self,
+        request: main_models.CreatePxfsUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfsUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not DaraCore.is_null(request.posix_gid):
+            query['PosixGid'] = request.posix_gid
+        if not DaraCore.is_null(request.posix_uid):
+            query['PosixUid'] = request.posix_uid
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfsUser',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfsUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pxfs_user_with_options_async(
+        self,
+        request: main_models.CreatePxfsUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePxfsUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not DaraCore.is_null(request.posix_gid):
+            query['PosixGid'] = request.posix_gid
+        if not DaraCore.is_null(request.posix_uid):
+            query['PosixUid'] = request.posix_uid
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePxfsUser',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePxfsUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pxfs_user(
+        self,
+        request: main_models.CreatePxfsUserRequest,
+    ) -> main_models.CreatePxfsUserResponse:
+        runtime = RuntimeOptions()
+        return self.create_pxfs_user_with_options(request, runtime)
+
+    async def create_pxfs_user_async(
+        self,
+        request: main_models.CreatePxfsUserRequest,
+    ) -> main_models.CreatePxfsUserResponse:
+        runtime = RuntimeOptions()
+        return await self.create_pxfs_user_with_options_async(request, runtime)
+
     def create_pxfuse_with_options(
         self,
         request: main_models.CreatePxfuseRequest,
@@ -4752,6 +5186,162 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePolardbxSupabaseInstanceResponse:
         runtime = RuntimeOptions()
         return await self.delete_polardbx_supabase_instance_with_options_async(request, runtime)
+
+    def delete_pxfs_with_options(
+        self,
+        request: main_models.DeletePxfsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePxfsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePxfs',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePxfsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_pxfs_with_options_async(
+        self,
+        request: main_models.DeletePxfsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePxfsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePxfs',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePxfsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_pxfs(
+        self,
+        request: main_models.DeletePxfsRequest,
+    ) -> main_models.DeletePxfsResponse:
+        runtime = RuntimeOptions()
+        return self.delete_pxfs_with_options(request, runtime)
+
+    async def delete_pxfs_async(
+        self,
+        request: main_models.DeletePxfsRequest,
+    ) -> main_models.DeletePxfsResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_pxfs_with_options_async(request, runtime)
+
+    def delete_pxfs_user_with_options(
+        self,
+        request: main_models.DeletePxfsUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePxfsUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePxfsUser',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePxfsUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_pxfs_user_with_options_async(
+        self,
+        request: main_models.DeletePxfsUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePxfsUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePxfsUser',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePxfsUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_pxfs_user(
+        self,
+        request: main_models.DeletePxfsUserRequest,
+    ) -> main_models.DeletePxfsUserResponse:
+        runtime = RuntimeOptions()
+        return self.delete_pxfs_user_with_options(request, runtime)
+
+    async def delete_pxfs_user_async(
+        self,
+        request: main_models.DeletePxfsUserRequest,
+    ) -> main_models.DeletePxfsUserResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_pxfs_user_with_options_async(request, runtime)
 
     def delete_pxfuse_with_options(
         self,
@@ -9627,6 +10217,392 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_polarx_data_nodes_with_options_async(request, runtime)
 
+    def describe_pxfs_access_tokens_with_options(
+        self,
+        request: main_models.DescribePxfsAccessTokensRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsAccessTokensResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsAccessTokens',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsAccessTokensResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pxfs_access_tokens_with_options_async(
+        self,
+        request: main_models.DescribePxfsAccessTokensRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsAccessTokensResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.identity_name):
+            query['IdentityName'] = request.identity_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsAccessTokens',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsAccessTokensResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pxfs_access_tokens(
+        self,
+        request: main_models.DescribePxfsAccessTokensRequest,
+    ) -> main_models.DescribePxfsAccessTokensResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pxfs_access_tokens_with_options(request, runtime)
+
+    async def describe_pxfs_access_tokens_async(
+        self,
+        request: main_models.DescribePxfsAccessTokensRequest,
+    ) -> main_models.DescribePxfsAccessTokensResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pxfs_access_tokens_with_options_async(request, runtime)
+
+    def describe_pxfs_info_with_options(
+        self,
+        request: main_models.DescribePxfsInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pxfs_info_with_options_async(
+        self,
+        request: main_models.DescribePxfsInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsInfo',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pxfs_info(
+        self,
+        request: main_models.DescribePxfsInfoRequest,
+    ) -> main_models.DescribePxfsInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pxfs_info_with_options(request, runtime)
+
+    async def describe_pxfs_info_async(
+        self,
+        request: main_models.DescribePxfsInfoRequest,
+    ) -> main_models.DescribePxfsInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pxfs_info_with_options_async(request, runtime)
+
+    def describe_pxfs_security_ips_with_options(
+        self,
+        request: main_models.DescribePxfsSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsSecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pxfs_security_ips_with_options_async(
+        self,
+        request: main_models.DescribePxfsSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsSecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pxfs_security_ips(
+        self,
+        request: main_models.DescribePxfsSecurityIpsRequest,
+    ) -> main_models.DescribePxfsSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pxfs_security_ips_with_options(request, runtime)
+
+    async def describe_pxfs_security_ips_async(
+        self,
+        request: main_models.DescribePxfsSecurityIpsRequest,
+    ) -> main_models.DescribePxfsSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pxfs_security_ips_with_options_async(request, runtime)
+
+    def describe_pxfs_tenant_with_options(
+        self,
+        request: main_models.DescribePxfsTenantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsTenantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsTenant',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsTenantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pxfs_tenant_with_options_async(
+        self,
+        request: main_models.DescribePxfsTenantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsTenantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsTenant',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsTenantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pxfs_tenant(
+        self,
+        request: main_models.DescribePxfsTenantRequest,
+    ) -> main_models.DescribePxfsTenantResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pxfs_tenant_with_options(request, runtime)
+
+    async def describe_pxfs_tenant_async(
+        self,
+        request: main_models.DescribePxfsTenantRequest,
+    ) -> main_models.DescribePxfsTenantResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pxfs_tenant_with_options_async(request, runtime)
+
+    def describe_pxfs_users_with_options(
+        self,
+        request: main_models.DescribePxfsUsersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsUsers',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pxfs_users_with_options_async(
+        self,
+        request: main_models.DescribePxfsUsersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePxfsUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePxfsUsers',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePxfsUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pxfs_users(
+        self,
+        request: main_models.DescribePxfsUsersRequest,
+    ) -> main_models.DescribePxfsUsersResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pxfs_users_with_options(request, runtime)
+
+    async def describe_pxfs_users_async(
+        self,
+        request: main_models.DescribePxfsUsersRequest,
+    ) -> main_models.DescribePxfsUsersResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pxfs_users_with_options_async(request, runtime)
+
     def describe_pxfuse_info_with_options(
         self,
         request: main_models.DescribePxfuseInfoRequest,
@@ -14209,6 +15185,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_parameter_with_options_async(request, runtime)
 
+    def modify_pxfs_security_ips_with_options(
+        self,
+        request: main_models.ModifyPxfsSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPxfsSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPxfsSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPxfsSecurityIpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_pxfs_security_ips_with_options_async(
+        self,
+        request: main_models.ModifyPxfsSecurityIpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPxfsSecurityIpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPxfsSecurityIps',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPxfsSecurityIpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_pxfs_security_ips(
+        self,
+        request: main_models.ModifyPxfsSecurityIpsRequest,
+    ) -> main_models.ModifyPxfsSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return self.modify_pxfs_security_ips_with_options(request, runtime)
+
+    async def modify_pxfs_security_ips_async(
+        self,
+        request: main_models.ModifyPxfsSecurityIpsRequest,
+    ) -> main_models.ModifyPxfsSecurityIpsResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_pxfs_security_ips_with_options_async(request, runtime)
+
     def modify_pxfuse_security_ips_with_options(
         self,
         request: main_models.ModifyPxfuseSecurityIpsRequest,
@@ -15353,6 +16415,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.release_mem_0public_connection_with_options_async(request, runtime)
 
+    def release_pxfs_public_connection_with_options(
+        self,
+        request: main_models.ReleasePxfsPublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleasePxfsPublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleasePxfsPublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleasePxfsPublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_pxfs_public_connection_with_options_async(
+        self,
+        request: main_models.ReleasePxfsPublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleasePxfsPublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleasePxfsPublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleasePxfsPublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_pxfs_public_connection(
+        self,
+        request: main_models.ReleasePxfsPublicConnectionRequest,
+    ) -> main_models.ReleasePxfsPublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.release_pxfs_public_connection_with_options(request, runtime)
+
+    async def release_pxfs_public_connection_async(
+        self,
+        request: main_models.ReleasePxfsPublicConnectionRequest,
+    ) -> main_models.ReleasePxfsPublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.release_pxfs_public_connection_with_options_async(request, runtime)
+
     def reset_account_password_with_options(
         self,
         request: main_models.ResetAccountPasswordRequest,
@@ -15923,6 +17059,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.restart_open_search_with_options_async(request, runtime)
 
+    def restart_pxfs_with_options(
+        self,
+        request: main_models.RestartPxfsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartPxfsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartPxfs',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartPxfsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_pxfs_with_options_async(
+        self,
+        request: main_models.RestartPxfsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartPxfsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartPxfs',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartPxfsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_pxfs(
+        self,
+        request: main_models.RestartPxfsRequest,
+    ) -> main_models.RestartPxfsResponse:
+        runtime = RuntimeOptions()
+        return self.restart_pxfs_with_options(request, runtime)
+
+    async def restart_pxfs_async(
+        self,
+        request: main_models.RestartPxfsRequest,
+    ) -> main_models.RestartPxfsResponse:
+        runtime = RuntimeOptions()
+        return await self.restart_pxfs_with_options_async(request, runtime)
+
     def restart_supabase_instance_with_options(
         self,
         request: main_models.RestartSupabaseInstanceRequest,
@@ -16186,6 +17396,88 @@ class Client(OpenApiClient):
     ) -> main_models.RestoreDBInstanceResponse:
         runtime = RuntimeOptions()
         return await self.restore_dbinstance_with_options_async(request, runtime)
+
+    def revoke_pxfs_access_token_with_options(
+        self,
+        request: main_models.RevokePxfsAccessTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokePxfsAccessTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.token_id):
+            query['TokenId'] = request.token_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokePxfsAccessToken',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokePxfsAccessTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_pxfs_access_token_with_options_async(
+        self,
+        request: main_models.RevokePxfsAccessTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokePxfsAccessTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.token_id):
+            query['TokenId'] = request.token_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokePxfsAccessToken',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokePxfsAccessTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_pxfs_access_token(
+        self,
+        request: main_models.RevokePxfsAccessTokenRequest,
+    ) -> main_models.RevokePxfsAccessTokenResponse:
+        runtime = RuntimeOptions()
+        return self.revoke_pxfs_access_token_with_options(request, runtime)
+
+    async def revoke_pxfs_access_token_async(
+        self,
+        request: main_models.RevokePxfsAccessTokenRequest,
+    ) -> main_models.RevokePxfsAccessTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.revoke_pxfs_access_token_with_options_async(request, runtime)
 
     def scale_in_open_search_with_options(
         self,
@@ -17830,3 +19122,81 @@ class Client(OpenApiClient):
     ) -> main_models.UpgradeDBInstanceKernelVersionResponse:
         runtime = RuntimeOptions()
         return await self.upgrade_dbinstance_kernel_version_with_options_async(request, runtime)
+
+    def upgrade_pxfs_version_with_options(
+        self,
+        request: main_models.UpgradePxfsVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradePxfsVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.minor_version):
+            query['MinorVersion'] = request.minor_version
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradePxfsVersion',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradePxfsVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_pxfs_version_with_options_async(
+        self,
+        request: main_models.UpgradePxfsVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradePxfsVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.minor_version):
+            query['MinorVersion'] = request.minor_version
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradePxfsVersion',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradePxfsVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_pxfs_version(
+        self,
+        request: main_models.UpgradePxfsVersionRequest,
+    ) -> main_models.UpgradePxfsVersionResponse:
+        runtime = RuntimeOptions()
+        return self.upgrade_pxfs_version_with_options(request, runtime)
+
+    async def upgrade_pxfs_version_async(
+        self,
+        request: main_models.UpgradePxfsVersionRequest,
+    ) -> main_models.UpgradePxfsVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.upgrade_pxfs_version_with_options_async(request, runtime)

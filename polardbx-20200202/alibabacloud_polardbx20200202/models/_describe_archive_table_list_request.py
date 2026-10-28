@@ -15,18 +15,27 @@ class DescribeArchiveTableListRequest(DaraModel):
         status: str = None,
         table_name: str = None,
     ):
+        # The name of the PolarDB-X instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         # The page number, starting from 1.
         # 
         # This parameter is required.
         self.page_index = page_index
+        # The number of tables to return on each page. Default value: 20.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The database name used to filter archived tables.
         self.schema_name = schema_name
+        # The archiving status used to filter tables. Valid values: SUCCESS, PAUSE, and RUNNING.
         self.status = status
+        # The table name used to filter archived tables.
         self.table_name = table_name
 
     def validate(self):

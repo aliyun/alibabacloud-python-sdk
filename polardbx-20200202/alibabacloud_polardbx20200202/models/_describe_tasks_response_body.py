@@ -20,7 +20,7 @@ class DescribeTasksResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
@@ -94,24 +94,23 @@ class DescribeTasksResponseBodyItems(DaraModel):
         task_error_message: str = None,
         task_id: str = None,
     ):
-        # The start time of the task, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
+        # The start time of the task. The format is yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.begin_time = begin_time
-        # The database name associated with the task. This parameter is generally empty.
+        # The name of the database associated with the task. This field is usually empty.
         self.dbname = dbname
-        # The end time of the task, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
+        # The end time of the task. The format is yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.finish_time = finish_time
-        # The task progress, in percentage (%).
+        # The task progress, in percentage.
         self.progress = progress
-        # The detailed progress information of the task. This parameter is generally empty.
+        # The detailed progress of the task. This field is usually empty.
         self.progress_info = progress_info
-        # The scale-out ID if the task is a scale-out task. This is a unique key in the backend.
+        # The scale-out token. If the task is a scale-out task, this field returns a scale-out ID, which is a unique backend key.
         self.scale_out_token = scale_out_token
         # The task status. Valid values:
-        # 
         # - **RUNNING**: The task is running.
         # - **FAILED**: The task failed and was interrupted.
         self.status = status
-        # The task action, which is the unique key for the backend task type.
+        # The task action. This is a unique key for the backend task type.
         self.task_action = task_action
         # The error code of the failed task.
         self.task_error_code = task_error_code

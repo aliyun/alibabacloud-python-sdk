@@ -14,7 +14,7 @@ class DescribeContext0SecurityIpsResponseBody(DaraModel):
         data: main_models.DescribeContext0SecurityIpsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
         # The monitoring data.
         self.data = data
@@ -123,7 +123,7 @@ class DescribeContext0SecurityIpsResponseBodyDataGroupItems(DaraModel):
         self.group_name = group_name
         # The tag of the group.
         self.group_tag = group_tag
-        # The details of the whitelist group.
+        # The details of the whitelist in the group.
         self.security_iplist = security_iplist
 
     def validate(self):
@@ -171,17 +171,17 @@ class DescribeContext0SecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):

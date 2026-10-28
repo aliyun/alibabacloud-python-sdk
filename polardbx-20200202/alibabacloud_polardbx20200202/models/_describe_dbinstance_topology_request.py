@@ -17,7 +17,7 @@ class DescribeDBInstanceTopologyRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The end time of the time range for querying historical instances in the topology. Format: yyyy-MM-dd HH:mm:ss.
+        # The end time of the historical instance range for the topology query, in the yyyy-MM-dd HH:mm:ss format.
         self.end_time = end_time
         # Specifies whether to query the historical topology.
         self.minute_simple = minute_simple
@@ -25,7 +25,7 @@ class DescribeDBInstanceTopologyRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time of the time range for querying historical instances in the topology. Format: yyyy-MM-dd HH:mm:ss.
+        # The start time of the historical instance range for the topology query, in the yyyy-MM-dd HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

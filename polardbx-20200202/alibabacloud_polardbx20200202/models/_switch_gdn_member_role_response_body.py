@@ -15,7 +15,7 @@ class SwitchGdnMemberRoleResponseBody(DaraModel):
     ):
         # The data struct.
         self.data = data
-        # The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
+        # The additional information returned by the API operation. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id

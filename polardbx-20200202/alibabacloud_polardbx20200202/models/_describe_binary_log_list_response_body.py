@@ -18,9 +18,9 @@ class DescribeBinaryLogListResponseBody(DaraModel):
     ):
         # The list of binary log files.
         self.log_list = log_list
-        # The page number of the current query.
+        # The current page number.
         self.page_number = page_number
-        # The number of binary logs displayed on the current page.
+        # The number of binary logs returned on the current page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -94,34 +94,34 @@ class DescribeBinaryLogListResponseBodyLogList(DaraModel):
         upload_host: str = None,
         upload_status: int = None,
     ):
-        # The start time of the log.
+        # The start time of the log. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.begin_time = begin_time
-        # The creation time of the file.
+        # The creation time of the file. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.created_time = created_time
-        # The download link of the file. The link is valid for 2 days.
+        # The download URL of the file. The URL is valid for two days.
         self.download_link = download_link
-        # The end time of the current binary log.
+        # The end time of the binary log. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The name of the binary log file.
         self.file_name = file_name
-        # The unique ID of the current record.
+        # The unique ID of the record.
         self.id = id
-        # The size of the current log file.
+        # The size of the log file.
         self.log_size = log_size
-        # The last modified time.
+        # The last update time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.modified_time = modified_time
-        # The purge status. Valid values:
+        # The cleanup status. Valid values:
         # 
-        # - 0: not deleted. 
-        # - 1: deleted.
+        # - 0: Not deleted. 
+        # - 1: Deleted.
         self.purge_status = purge_status
         # The backup host.
         self.upload_host = upload_host
         # The backup status. Valid values:
         # 
-        # - 0: not backed up. 
-        # - 1: being backed up. 
-        # - 2: backed up.
+        # - 0: Not backed up. 
+        # - 1: Being backed up. 
+        # - 2: Backed up.
         self.upload_status = upload_status
 
     def validate(self):

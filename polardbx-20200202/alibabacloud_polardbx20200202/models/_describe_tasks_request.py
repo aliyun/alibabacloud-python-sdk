@@ -18,11 +18,11 @@ class DescribeTasksRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The instance name.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end time of the task.
+        # The end time of the task. The format is YYYY-MM-DD.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -38,7 +38,7 @@ class DescribeTasksRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start time of the task.
+        # The start time of the task. The format is YYYY-MM-DD.
         # 
         # This parameter is required.
         self.start_time = start_time

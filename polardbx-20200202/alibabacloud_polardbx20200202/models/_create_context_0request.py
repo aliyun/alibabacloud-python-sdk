@@ -19,7 +19,7 @@ class CreateContext0Request(DaraModel):
         # 
         # This parameter is required.
         self.open_search_instance_name = open_search_instance_name
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id

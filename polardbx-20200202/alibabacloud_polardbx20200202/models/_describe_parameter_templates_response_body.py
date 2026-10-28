@@ -60,7 +60,7 @@ class DescribeParameterTemplatesResponseBodyData(DaraModel):
         self.engine_version = engine_version
         # The number of parameters.
         self.parameter_count = parameter_count
-        # The parameter list.
+        # The list of parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -122,10 +122,9 @@ class DescribeParameterTemplatesResponseBodyDataParameters(DaraModel):
     ):
         # The validation constraint.
         self.checking_code = checking_code
-        # Indicates whether the parameter is dynamic. Valid values:
-        # 
-        # - **0**: No.
-        # - **1**: Yes.
+        # Specifies whether the parameter is dynamic. Valid values:
+        # - **0**: no.
+        # - **1**: yes.
         self.dynamic = dynamic
         # The parameter description.
         self.parameter_description = parameter_description
@@ -133,12 +132,11 @@ class DescribeParameterTemplatesResponseBodyDataParameters(DaraModel):
         self.parameter_name = parameter_name
         # The parameter value.
         self.parameter_value = parameter_value
-        # Indicates whether the parameter can be modified. Valid values:
-        # 
-        # - **0**: Cannot be modified.
-        # - **1**: Can be modified.
+        # Specifies whether the parameter can be modified. Valid values:
+        # - **0**: The parameter cannot be modified.
+        # - **1**: The parameter can be modified.
         self.revisable = revisable
-        # Indicates whether the parameter can be modified by the user.
+        # Specifies whether the parameter can be modified by the user.
         self.user_changable = user_changable
 
     def validate(self):

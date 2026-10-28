@@ -19,9 +19,9 @@ class AllocateContext0PublicConnectionRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The target node type: service or dashboard.
+        # The target node type. Valid values: service and dashboard.
         self.node_type = node_type
-        # The port.
+        # The port number.
         self.port = port
         # The region ID.
         # 

@@ -21,15 +21,15 @@ class CreateOpenSearchWhitelistGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The list of allowed source IP addresses.
+        # The list of source IP addresses.
         # 
         # This parameter is required.
         self.ips = ips
-        # The ID of the region in which the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The description of the group ID.
+        # The description of the group.
         self.remark = remark
 
     def validate(self):

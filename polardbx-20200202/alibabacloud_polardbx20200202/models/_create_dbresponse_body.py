@@ -11,7 +11,7 @@ class CreateDBResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Empty if the request is successful. An error message is returned if the request fails.
+        # The error message. This parameter is empty if the request is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id

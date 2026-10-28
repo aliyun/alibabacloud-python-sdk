@@ -10,7 +10,7 @@ class DescribeScaleOutMigrateTaskListResponseBody(DaraModel):
         progress: int = None,
         request_id: str = None,
     ):
-        # The migration task progress.
+        # The progress of the migration task.
         self.progress = progress
         # The request ID.
         self.request_id = request_id

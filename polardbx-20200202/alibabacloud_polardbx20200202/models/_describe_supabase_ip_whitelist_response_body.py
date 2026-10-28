@@ -14,7 +14,7 @@ class DescribeSupabaseIpWhitelistResponseBody(DaraModel):
         data: main_models.DescribeSupabaseIpWhitelistResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
         # The whitelist information.
         self.data = data
@@ -110,9 +110,9 @@ class DescribeSupabaseIpWhitelistResponseBodyDataGroupItems(DaraModel):
         group_tag: str = None,
         security_iplist: str = None,
     ):
-        # The group name.
+        # The name of the group.
         self.group_name = group_name
-        # The group tag.
+        # The tag of the group.
         self.group_tag = group_tag
         # The IP whitelist.
         self.security_iplist = security_iplist
@@ -172,7 +172,7 @@ class DescribeSupabaseIpWhitelistResponseBodyAccessDeniedDetail(DaraModel):
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The type of the permission denial.
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):

@@ -83,7 +83,7 @@ class DescribeSupabaseInstanceAttributeResponseBodyData(DaraModel):
     ):
         # The list of endpoints.
         self.conn_addrs = conn_addrs
-        # The time when the instance was created.
+        # The creation time.
         self.create_time = create_time
         # The instance name.
         self.dbinstance_name = dbinstance_name
@@ -392,7 +392,7 @@ class DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail(DaraModel)
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the authentication principal.
+        # The authentication principal type.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message

@@ -62,17 +62,21 @@ class DescribeColdDataBasicInfoResponseBodyData(DaraModel):
         self.backup_set_count = backup_set_count
         # The data size of valid backup sets.
         self.backup_set_space_size = backup_set_space_size
-        # The underlying storage cloud product.
+        # The underlying cloud storage service.
         self.cloud_product = cloud_product
         # The data size of cold storage.
         self.current_space_size = current_space_size
+        # The data redundancy type of cold storage. LRS indicates locally redundant storage.
         self.data_redundancy_type = data_redundancy_type
         # Indicates whether cold storage is enabled.
         self.enable_status = enable_status
+        # The number of read accesses to cold data.
         self.read_access_num = read_access_num
+        # The region ID.
         self.region_id = region_id
-        # The storage volume name.
+        # The name of the storage volume.
         self.volume_name = volume_name
+        # The number of write accesses to cold data.
         self.write_access_num = write_access_num
 
     def validate(self):

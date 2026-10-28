@@ -57,6 +57,7 @@ class DescribeParametersResponseBodyData(DaraModel):
     ):
         # The list of original parameters.
         self.config_parameters = config_parameters
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The engine. Default value: polarx.
         self.engine = engine

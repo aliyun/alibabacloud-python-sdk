@@ -15,7 +15,7 @@ class DescribeSupabaseIpWhitelistRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The whitelist group name.
+        # The name of the whitelist group.
         self.group_name = group_name
         # The region ID.
         # 

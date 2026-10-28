@@ -16,13 +16,13 @@ class DescribeSupabaseInstancesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # The paginated result of the instance list.
+        # The paginated list of instances.
         self.data = data
-        # The maximum number of entries per page for a paged query. Maximum value: 100. Default value: If you do not specify this parameter or specify a value less than 10, the default value is 10. If you specify a value greater than 100, the default value is 100.
+        # The number of entries to return on each page in a paged query. Maximum value: 100. Default value: 10. If you do not specify the Settings or the Settings value is less than 10, the default value is 10. If the Settings value is greater than 100, the default value is 100. This parameter is used for paging.
         self.max_results = max_results
-        # The token for the next query.
+        # The token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -151,7 +151,7 @@ class DescribeSupabaseInstancesResponseBodyDataInstances(DaraModel):
         tenant_mode: bool = None,
         zone_id: str = None,
     ):
-        # The creation time.
+        # The time when the instance was created.
         self.create_time = create_time
         # The instance name.
         self.dbinstance_name = dbinstance_name
@@ -161,7 +161,7 @@ class DescribeSupabaseInstancesResponseBodyDataInstances(DaraModel):
         self.region_id = region_id
         # The instance status.
         self.status = status
-        # The Supabase specification code.
+        # The Supabase instance type code.
         self.supabase_class_code = supabase_class_code
         # The multi-tenant mode.
         self.tenant_mode = tenant_mode
@@ -243,15 +243,15 @@ class DescribeSupabaseInstancesResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The authentication principal type.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The access denial type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

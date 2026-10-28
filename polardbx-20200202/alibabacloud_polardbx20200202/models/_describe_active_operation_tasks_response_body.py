@@ -16,7 +16,7 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of parameters.
+        # The list of items.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -24,7 +24,7 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -110,23 +110,23 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
-        # Indicates whether cancellation is allowed. Valid values:
+        # Indicates whether the event can be canceled. Valid values:
         # 
-        # - **0**: not allowed.
-        # - **1**: allowed.
+        # - **0**: No.
+        # - **1**: Yes.
         self.allow_cancel = allow_cancel
-        # Indicates whether modification is allowed. Valid values:
+        # Indicates whether the time can be modified. Valid values:
         # 
-        # - **0**: not allowed.
-        # - **1**: allowed.
+        # - **0**: No.
+        # - **1**: Yes.
         self.allow_change = allow_change
-        # The change level (can be ignored).
+        # The change level. This parameter can be ignored.
         self.change_level = change_level
         # The change level in English.
         self.change_level_en = change_level_en
         # The change level in Chinese.
         self.change_level_zh = change_level_zh
-        # The creation time.
+        # The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
         # The current availability zone.
         self.current_avz = current_avz
@@ -138,7 +138,7 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.deadline = deadline
         # The task ID.
         self.id = id
-        # The impact (not output).
+        # The impact. This parameter is not returned.
         self.impact = impact
         # The impact in English.
         self.impact_en = impact_en
@@ -148,30 +148,30 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.ins_comment = ins_comment
         # The instance name.
         self.ins_name = ins_name
-        # The modification time.
+        # The modification time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.modified_time = modified_time
         # The preparation interval.
         self.prepare_interval = prepare_interval
         # The region.
         self.region = region
-        # The result information (can be ignored).
+        # The result information. This parameter can be ignored.
         self.result_info = result_info
-        # The start time.
+        # The start time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
         # The status. Valid values:
         # 
-        # - **3**: pending. 
-        # - **4**: running.
+        # - **3**: pending 
+        # - **4**: running
         self.status = status
         # The list of child instances.
         self.sub_ins_names = sub_ins_names
-        # The switchover time.
+        # The switchover time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.switch_time = switch_time
         # The task type.
         self.task_type = task_type
-        # The task type in English (can be ignored).
+        # The task type in English. This parameter can be ignored.
         self.task_type_en = task_type_en
-        # The task type in Chinese (can be ignored).
+        # The task type in Chinese. This parameter can be ignored.
         self.task_type_zh = task_type_zh
 
     def validate(self):

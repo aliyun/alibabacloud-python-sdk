@@ -10,7 +10,7 @@ class CreateGatewayConsumerForPolarDBXRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
-        # The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
+        # The instance ID. You can call the [describedbinstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

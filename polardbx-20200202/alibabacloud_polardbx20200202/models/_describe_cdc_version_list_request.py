@@ -11,10 +11,11 @@ class DescribeCdcVersionListRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
+        # The name of the CDC instance. This parameter specifies the CDC instance for which to query versions.
         self.instance_name = instance_name
-        # The region ID of the instance.
+        # The ID of the region where the instance resides.
         self.region_id = region_id
 
     def validate(self):

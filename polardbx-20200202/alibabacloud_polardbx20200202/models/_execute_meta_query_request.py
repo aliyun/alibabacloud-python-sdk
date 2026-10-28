@@ -17,7 +17,7 @@ class ExecuteMetaQueryRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The maximum number of rows to return. Default value: 100. Valid values: 1 to 1000. The actual number of returned rows is the minimum value among the code hard limit, the Biz DB limit, and the outermost LIMIT clause in the SQL statement. To retrieve data continuously, implement pagination in the SQL statement.
+        # The maximum number of result rows to return for this request. Valid values: 1 to 1000. Default value: 100.
         self.max_result_rows = max_result_rows
         # The region ID.
         # 

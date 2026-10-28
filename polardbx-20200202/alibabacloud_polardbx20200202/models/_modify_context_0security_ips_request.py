@@ -13,23 +13,22 @@ class ModifyContext0SecurityIpsRequest(DaraModel):
         region_id: str = None,
         security_iplist: str = None,
     ):
-        # The instance ID.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         # The name of the whitelist group for the instance.
         self.group_name = group_name
         # The modification mode of the whitelist. Valid values:
-        # 
-        # - 0: overwrites the whitelist group.
-        # - 1: adds a whitelist group.
-        # - 2: deletes a whitelist group.
+        # - 0: Overwrites the whitelist group.
+        # - 1: Adds a whitelist group.
+        # - 2: Deletes a whitelist group.
         self.modify_mode = modify_mode
         # The ID of the region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IP addresses in the whitelist group. Separate multiple IP addresses with commas (,).
+        # The IP addresses in the whitelist. Separate multiple IP addresses with commas (,).
         # 
         # This parameter is required.
         self.security_iplist = security_iplist
