@@ -249,6 +249,9 @@ from ._update_pipeline_response_body import UpdatePipelineResponseBody
 from ._update_pipeline_response import UpdatePipelineResponse
 from ._audit_task_state import AuditTaskStateRuntimeError
 from ._create_context_store_request import CreateContextStoreRequestConfigAudit
+from ._create_context_store_request import CreateContextStoreRequestConfigExtractionPoliciesModel
+from ._create_context_store_request import CreateContextStoreRequestConfigExtractionPoliciesStoragePolicy
+from ._create_context_store_request import CreateContextStoreRequestConfigExtractionPolicies
 from ._create_context_store_request import CreateContextStoreRequestConfigExtractionPolicyModel
 from ._create_context_store_request import CreateContextStoreRequestConfigExtractionPolicy
 from ._create_context_store_request import CreateContextStoreRequestConfigScopePolicy
@@ -291,6 +294,9 @@ from ._execute_query_response_body import ExecuteQueryResponseBodyMetaTruncation
 from ._execute_query_response_body import ExecuteQueryResponseBodyMeta
 from ._get_agent_space_response_body import GetAgentSpaceResponseBodyMseNamespace
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigAudit
+from ._get_context_store_response_body import GetContextStoreResponseBodyConfigExtractionPoliciesModel
+from ._get_context_store_response_body import GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy
+from ._get_context_store_response_body import GetContextStoreResponseBodyConfigExtractionPolicies
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigExtractionPolicyModel
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigExtractionPolicy
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigInnerSource
@@ -380,6 +386,9 @@ from ._preview_pipeline_response_body import PreviewPipelineResponseBodyMeta
 from ._run_pipeline_request import RunPipelineRequestOutput
 from ._search_context_request import SearchContextRequestScope
 from ._update_context_store_request import UpdateContextStoreRequestConfigAudit
+from ._update_context_store_request import UpdateContextStoreRequestConfigExtractionPoliciesModel
+from ._update_context_store_request import UpdateContextStoreRequestConfigExtractionPoliciesStoragePolicy
+from ._update_context_store_request import UpdateContextStoreRequestConfigExtractionPolicies
 from ._update_context_store_request import UpdateContextStoreRequestConfigExtractionPolicyModel
 from ._update_context_store_request import UpdateContextStoreRequestConfigExtractionPolicy
 from ._update_context_store_request import UpdateContextStoreRequestConfigScopePolicy
@@ -663,6 +672,9 @@ __all__ = [
     UpdatePipelineResponse,
     AuditTaskStateRuntimeError,
     CreateContextStoreRequestConfigAudit,
+    CreateContextStoreRequestConfigExtractionPoliciesModel,
+    CreateContextStoreRequestConfigExtractionPoliciesStoragePolicy,
+    CreateContextStoreRequestConfigExtractionPolicies,
     CreateContextStoreRequestConfigExtractionPolicyModel,
     CreateContextStoreRequestConfigExtractionPolicy,
     CreateContextStoreRequestConfigScopePolicy,
@@ -705,6 +717,9 @@ __all__ = [
     ExecuteQueryResponseBodyMeta,
     GetAgentSpaceResponseBodyMseNamespace,
     GetContextStoreResponseBodyConfigAudit,
+    GetContextStoreResponseBodyConfigExtractionPoliciesModel,
+    GetContextStoreResponseBodyConfigExtractionPoliciesStoragePolicy,
+    GetContextStoreResponseBodyConfigExtractionPolicies,
     GetContextStoreResponseBodyConfigExtractionPolicyModel,
     GetContextStoreResponseBodyConfigExtractionPolicy,
     GetContextStoreResponseBodyConfigInnerSource,
@@ -794,6 +809,9 @@ __all__ = [
     RunPipelineRequestOutput,
     SearchContextRequestScope,
     UpdateContextStoreRequestConfigAudit,
+    UpdateContextStoreRequestConfigExtractionPoliciesModel,
+    UpdateContextStoreRequestConfigExtractionPoliciesStoragePolicy,
+    UpdateContextStoreRequestConfigExtractionPolicies,
     UpdateContextStoreRequestConfigExtractionPolicyModel,
     UpdateContextStoreRequestConfigExtractionPolicy,
     UpdateContextStoreRequestConfigScopePolicy,

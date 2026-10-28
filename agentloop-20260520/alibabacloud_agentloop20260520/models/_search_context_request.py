@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, Any
+from typing import Dict, Any, List
 
 from alibabacloud_agentloop20260520 import models as main_models
 from darabonba.model import DaraModel
@@ -17,15 +17,16 @@ class SearchContextRequest(DaraModel):
         query: str = None,
         retrieval_option: str = None,
         scope: main_models.SearchContextRequestScope = None,
+        strategy_ids: List[str] = None,
         threshold: float = None,
     ):
-        # The structured filter conditions. The key is the field name, and the value is the expected matching value.
+        # The structured filter conditions. The key is the field name, and the value is the expected match value.
         self.filter = filter
-        # Specifies whether to structurally format the returned results.
+        # Specifies whether to apply structured formatting to the returned results.
         self.formatted = formatted
-        # Specifies whether to include memories with sourceState=inactive. Default value: false.
+        # Specifies whether to include memories whose sourceState is inactive. Default value: false.
         self.include_inactive = include_inactive
-        # The maximum number of returned results, which corresponds to the Top-N similarity.
+        # The maximum number of returned results, which corresponds to the top N results by similarity.
         self.limit = limit
         # The retrieval query text. Natural language is supported.
         # 
@@ -35,7 +36,9 @@ class SearchContextRequest(DaraModel):
         self.retrieval_option = retrieval_option
         # The recall scope. If a field with the same name conflicts with the filter, a 400 ScopeFilterConflict error is returned.
         self.scope = scope
-        # The similarity threshold. Results with a similarity score lower than this value are filtered out. Valid values: 0 to 1.
+        # Filters results by extraction strategy ID. Multiple IDs in the list are evaluated with an OR condition. If this parameter is not specified, all strategies are recalled. An empty list returns a 400 error. If the format is valid but no matching IDs are found, an empty result is returned. IDs of historically removed strategies are supported.
+        self.strategy_ids = strategy_ids
+        # The similarity threshold. Results with a similarity score below this value are filtered out. Valid values: 0 to 1.
         self.threshold = threshold
 
     def validate(self):
@@ -68,6 +71,9 @@ class SearchContextRequest(DaraModel):
         if self.scope is not None:
             result['scope'] = self.scope.to_map()
 
+        if self.strategy_ids is not None:
+            result['strategyIds'] = self.strategy_ids
+
         if self.threshold is not None:
             result['threshold'] = self.threshold
 
@@ -96,6 +102,9 @@ class SearchContextRequest(DaraModel):
         if m.get('scope') is not None:
             temp_model = main_models.SearchContextRequestScope()
             self.scope = temp_model.from_map(m.get('scope'))
+
+        if m.get('strategyIds') is not None:
+            self.strategy_ids = m.get('strategyIds')
 
         if m.get('threshold') is not None:
             self.threshold = m.get('threshold')

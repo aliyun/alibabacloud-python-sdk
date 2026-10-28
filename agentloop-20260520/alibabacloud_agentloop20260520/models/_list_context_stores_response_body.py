@@ -92,6 +92,7 @@ class ListContextStoresResponseBodyResults(DaraModel):
         source_type: str = None,
         status: str = None,
         storage_mode: str = None,
+        storage_modes: List[str] = None,
         update_time: str = None,
     ):
         # The name of the AgentSpace to which the context store belongs.
@@ -116,6 +117,7 @@ class ListContextStoresResponseBodyResults(DaraModel):
         self.status = status
         # The memory storage mode, such as event or upsert. This parameter has a value only for the memory type.
         self.storage_mode = storage_mode
+        self.storage_modes = storage_modes
         # The time when the context store was last updated, in ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -159,6 +161,9 @@ class ListContextStoresResponseBodyResults(DaraModel):
         if self.storage_mode is not None:
             result['storageMode'] = self.storage_mode
 
+        if self.storage_modes is not None:
+            result['storageModes'] = self.storage_modes
+
         if self.update_time is not None:
             result['updateTime'] = self.update_time
 
@@ -195,6 +200,9 @@ class ListContextStoresResponseBodyResults(DaraModel):
 
         if m.get('storageMode') is not None:
             self.storage_mode = m.get('storageMode')
+
+        if m.get('storageModes') is not None:
+            self.storage_modes = m.get('storageModes')
 
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')

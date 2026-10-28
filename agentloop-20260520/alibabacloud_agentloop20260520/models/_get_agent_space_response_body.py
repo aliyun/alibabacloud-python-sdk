@@ -21,7 +21,7 @@ class GetAgentSpaceResponseBody(DaraModel):
     ):
         # The name of the AgentSpace.
         self.agent_space = agent_space
-        # The CloudMonitor workspace.
+        # The CMS workspace.
         self.cms_workspace = cms_workspace
         # The binding type of the CloudMonitor 2.0 workspace.
         self.cms_workspace_bind_type = cms_workspace_bind_type
@@ -127,6 +127,7 @@ class GetAgentSpaceResponseBodyMseNamespace(DaraModel):
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        # The attach type of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
         self.bind_type = bind_type
         # The ID of the MSE namespace.
         self.namespace_id = namespace_id

@@ -5577,6 +5577,8 @@ class Client(OpenApiClient):
             body['retrievalOption'] = request.retrieval_option
         if not DaraCore.is_null(request.scope):
             body['scope'] = request.scope
+        if not DaraCore.is_null(request.strategy_ids):
+            body['strategyIds'] = request.strategy_ids
         if not DaraCore.is_null(request.threshold):
             body['threshold'] = request.threshold
         req = open_api_util_models.OpenApiRequest(
@@ -5623,6 +5625,8 @@ class Client(OpenApiClient):
             body['retrievalOption'] = request.retrieval_option
         if not DaraCore.is_null(request.scope):
             body['scope'] = request.scope
+        if not DaraCore.is_null(request.strategy_ids):
+            body['strategyIds'] = request.strategy_ids
         if not DaraCore.is_null(request.threshold):
             body['threshold'] = request.threshold
         req = open_api_util_models.OpenApiRequest(
