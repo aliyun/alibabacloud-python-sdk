@@ -1,3 +1,9 @@
+2026-10-28 Version: 1.3.0
+- Support API GetQuotaUtilizationOverview.
+- Support API ListQuotaUtilizationReport.
+- Support API StartQuotaUtilizationReport.
+
+
 2025-09-10 Version: 1.2.2
 - Update API CreateQuotaAlarm: add request parameters OriginalContext.
 
