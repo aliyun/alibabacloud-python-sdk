@@ -43,9 +43,11 @@ class Tensorboard(DaraModel):
     ):
         # The visibility.
         self.accessibility = accessibility
+        # The CPU resources.
         self.cpu = cpu
         # The data source ID.
         self.data_source_id = data_source_id
+        # The dataset type.
         self.data_source_type = data_source_type
         # The display name.
         self.display_name = display_name
@@ -59,14 +61,17 @@ class Tensorboard(DaraModel):
         self.gmt_modify_time = gmt_modify_time
         # The job ID.
         self.job_id = job_id
+        # The maximum running duration in minutes.
         self.max_running_time_minutes = max_running_time_minutes
+        # The memory size in GB.
         self.memory = memory
+        # The extended fields of the dataset in JSON format. Currently, MountPath is supported, which specifies the mount path for a custom dataset.
         self.options = options
-        # The priority of the TensorBoard job.
+        # The priority of the Tensorboard job.
         self.priority = priority
-        # The ID of the resource group used by TensorBoard.
+        # The ID of the resource group used by Tensorboard.
         self.quota_id = quota_id
-        # The name of the resource quota used by TensorBoard.
+        # The name of the resource quota used by Tensorboard.
         self.quota_name = quota_name
         # The status detail code.
         self.reason_code = reason_code
@@ -78,20 +83,23 @@ class Tensorboard(DaraModel):
         self.status = status
         # The file path.
         self.summary_path = summary_path
+        # The absolute path of the summary.
         self.summary_relative_path = summary_relative_path
-        # The datasets mounted to the TensorBoard job.
+        # The datasets mounted to the Tensorboard job.
         self.tensorboard_data_sources = tensorboard_data_sources
-        # Tensorboard ID。
+        # The Tensorboard ID.
         self.tensorboard_id = tensorboard_id
-        # The pay-as-you-go configuration of the TensorBoard job.
+        # The pay-as-you-go configuration for the Tensorboard job.
         self.tensorboard_spec = tensorboard_spec
-        # Tensorboard URL。
+        # The Tensorboard URL.
         self.tensorboard_url = tensorboard_url
+        # The token value.
         self.token = token
         # The ID of the creator.
         self.user_id = user_id
         # The username of the creator.
         self.username = username
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

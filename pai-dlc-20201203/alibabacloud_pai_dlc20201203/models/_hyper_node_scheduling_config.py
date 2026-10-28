@@ -10,7 +10,9 @@ class HyperNodeSchedulingConfig(DaraModel):
         min_available: int = None,
         quality_policy: str = None,
     ):
+        # The minimum number of available instances required when the role participates in HyperNode scheduling. The value must be greater than 0.
         self.min_available = min_available
+        # The quality policy. Currently, only AlwaysRequire is supported.
         self.quality_policy = quality_policy
 
     def validate(self):

@@ -13,13 +13,13 @@ class RLProgressTrainer(DaraModel):
         num_minibatches: int = None,
         sync: main_models.RLProgressSync = None,
     ):
-        # micro-batch 进度
+        # The micro-batch progress.
         self.micro = micro
-        # 当前 mini batch 序号
+        # The current mini-batch ordinal number.
         self.mini_idx = mini_idx
-        # mini-batch 总数
+        # The total number of mini-batches.
         self.num_minibatches = num_minibatches
-        # 参数同步状态
+        # The parameter synchronization status.
         self.sync = sync
 
     def validate(self):

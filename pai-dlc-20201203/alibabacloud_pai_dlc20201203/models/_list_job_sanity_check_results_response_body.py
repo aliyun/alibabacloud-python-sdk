@@ -18,7 +18,7 @@ class ListJobSanityCheckResultsResponseBody(DaraModel):
         self.request_id = request_id
         # All computing power health check results.
         self.sanity_check_results = sanity_check_results
-        # The total number of check results that match the filter conditions.
+        # The total number of health check results that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):

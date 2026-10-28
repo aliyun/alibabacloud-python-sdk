@@ -12,13 +12,13 @@ class AutoscalingMetricSpec(DaraModel):
         target_value: int = None,
         tolerance: str = None,
     ):
-        # The name of the metric for autoscaling. This can be a predefined or a custom metric.
+        # The name of the monitoring metrics used for auto scaling.
         self.metric_name = metric_name
-        # The cooldown period, in seconds, after a scaling activity. This prevents the service from initiating another scaling action before the effects of the previous one are observable, stabilizing resource fluctuations.
+        # The duration of the stabilization window for the auto scaling metric, in seconds.
         self.stabilization_window_seconds = stabilization_window_seconds
-        # The target value for the specified metric. The autoscaling service tries to maintain the metric at or near this value.
+        # The target value of the monitoring metrics for auto scaling.
         self.target_value = target_value
-        # The acceptable deviation from the `TargetValue`, specified as a percentage string. A scaling action is triggered only if the metric value moves outside the range defined by the `TargetValue` and this tolerance. This prevents scaling actions based on minor fluctuations.
+        # The allowed bias ratio for the target value of the monitoring metrics.
         self.tolerance = tolerance
 
     def validate(self):

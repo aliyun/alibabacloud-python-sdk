@@ -12,16 +12,15 @@ class UpdateTensorboardRequest(DaraModel):
         priority: str = None,
         workspace_id: str = None,
     ):
-        # Visibility of the task. Valid values:
-        # 
-        # - PUBLIC: Visible to all users in this workspace.
-        # 
-        # - PRIVATE: Visible only to you and administrators in this workspace.
+        # The visibility of the task. Valid values:
+        # - PUBLIC: The task is visible to all users in the workspace.
+        # - PRIVATE: The task is visible only to you and administrators in the workspace.
         self.accessibility = accessibility
-        # Maximum runtime. Unit: minutes.
+        # The maximum running duration in minutes.
         self.max_running_time_minutes = max_running_time_minutes
+        # The scheduling priority of the TensorBoard task. Valid values: 1 to 9. A value of 1 indicates the lowest priority, and a value of 9 indicates the highest priority.
         self.priority = priority
-        # Workspace ID. For more information about how to get a workspace ID, see [ListWorkspaces]().
+        # The workspace ID. <props="china">For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

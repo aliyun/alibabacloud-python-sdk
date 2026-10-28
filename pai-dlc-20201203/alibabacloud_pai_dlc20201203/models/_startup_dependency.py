@@ -11,8 +11,11 @@ class StartupDependency(DaraModel):
         on_phase: str = None,
         type: str = None,
     ):
+        # The minimum number of dependent roles that must reach the expected phase to be considered satisfied.
         self.min_replicas = min_replicas
+        # The phase that dependent roles must reach to be considered satisfied.
         self.on_phase = on_phase
+        # The type of the dependent role.
         self.type = type
 
     def validate(self):

@@ -13,15 +13,15 @@ class RLProgressFatal(DaraModel):
         subsec_ns: int = None,
         time: int = None,
     ):
-        # 锚点行 agent_collect_time（纳秒字符串，超 JS 安全整数）
+        # The agent_collect_time of the anchor line, represented as a nanosecond string that exceeds the JavaScript safe integer limit.
         self.collect_ns = collect_ns
-        # 错误文案（截断至 500 字符）
+        # The error message, truncated to 500 characters.
         self.message = message
-        # 原始日志行（截断至 2000 字符）；调用 GetRLLogContext 时作为 AnchorMessage 传入
+        # The raw log line, truncated to 2000 characters. It is passed as AnchorMessage when calling GetRLLogContext.
         self.raw_message = raw_message
-        # 同秒内的纳秒偏移，用于同秒日志排序
+        # The nanosecond offset within the same second, used for sorting logs within the same second.
         self.subsec_ns = subsec_ns
-        # 日志时间（unix 秒）
+        # The log time in UNIX seconds.
         self.time = time
 
     def validate(self):

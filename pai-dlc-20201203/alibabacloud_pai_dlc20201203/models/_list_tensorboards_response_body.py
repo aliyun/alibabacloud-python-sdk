@@ -16,9 +16,9 @@ class ListTensorboardsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list and details of Tensorboard instances.
+        # The list and details of TensorBoard instances.
         self.tensorboards = tensorboards
-        # The total number of data sources that match the specified conditions.
+        # The total number of data sources that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):

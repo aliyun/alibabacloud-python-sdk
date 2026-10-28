@@ -14,8 +14,11 @@ class CredentialConfigItem(DaraModel):
         roles: List[main_models.CredentialRole] = None,
         type: str = None,
     ):
+        # The identity key of the credential configuration item.
         self.key = key
+        # The list of associated roles.
         self.roles = roles
+        # The credential type.
         self.type = type
 
     def validate(self):

@@ -16,19 +16,19 @@ class RLProgressStage(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # 阶段耗时（秒，保留 3 位小数）；一个 step 常整体落在同一秒内，故不取整
+        # The duration of the stage in seconds, with three decimal places. A step often falls entirely within the same second, so the value is not rounded to an integer.
         self.duration = duration
-        # 阶段结束时间（unix 秒）
+        # The end time of the stage in UNIX seconds.
         self.end_time = end_time
-        # 阶段标识
+        # The stage identifier.
         self.key = key
-        # 阶段中文名
+        # The Chinese name of the stage.
         self.label = label
-        # 匹配该阶段的日志标记文案
+        # The log marker text used to match the stage.
         self.marker = marker
-        # 是否为可选阶段；可选阶段未出现时状态记为 skipped
+        # Specifies whether the stage is optional. If an optional stage does not occur, its status is recorded as skipped.
         self.optional = optional
-        # 阶段开始时间（unix 秒）
+        # The start time of the stage in UNIX seconds.
         self.start_time = start_time
         # done / running / waiting / pending / skipped
         self.status = status

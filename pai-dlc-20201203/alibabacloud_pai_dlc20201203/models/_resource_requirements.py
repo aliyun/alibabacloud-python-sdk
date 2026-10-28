@@ -12,9 +12,9 @@ class ResourceRequirements(DaraModel):
         limits: Dict[str, str] = None,
         requests: Dict[str, str] = None,
     ):
-        # Resource limits
+        # The resource limits.
         self.limits = limits
-        # Resource requests
+        # The resource requests.
         self.requests = requests
 
     def validate(self):

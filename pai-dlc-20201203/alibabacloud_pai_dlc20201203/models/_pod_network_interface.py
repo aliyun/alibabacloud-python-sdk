@@ -10,7 +10,9 @@ class PodNetworkInterface(DaraModel):
         interface_name: str = None,
         ip: str = None,
     ):
+        # The name of the network interface.
         self.interface_name = interface_name
+        # The IP address of the network interface.
         self.ip = ip
 
     def validate(self):

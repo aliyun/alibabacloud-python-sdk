@@ -11,8 +11,11 @@ class GPUDetail(DaraModel):
         gputype: str = None,
         gputype_full_name: str = None,
     ):
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU type.
         self.gputype = gputype
+        # The full name of the GPU type.
         self.gputype_full_name = gputype_full_name
 
     def validate(self):

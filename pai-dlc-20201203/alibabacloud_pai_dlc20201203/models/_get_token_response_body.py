@@ -12,7 +12,7 @@ class GetTokenResponseBody(DaraModel):
     ):
         # The request ID, which is used for diagnostics and troubleshooting.
         self.request_id = request_id
-        # The task sharing token, which can be used to view information about the shared task.
+        # The sharing token of the job, which can be used to view information about the shared job.
         self.token = token
 
     def validate(self):

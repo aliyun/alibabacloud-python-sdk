@@ -14,10 +14,15 @@ class CredentialRole(DaraModel):
         role_arn: str = None,
         role_type: str = None,
     ):
+        # The account on whose behalf the role is assumed.
         self.assume_role_for = assume_role_for
+        # The user identity information used for role assumption.
         self.assume_user_info = assume_user_info
+        # The access policy attached during role assumption.
         self.policy = policy
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # The role type. Valid values: service and user.
         self.role_type = role_type
 
     def validate(self):

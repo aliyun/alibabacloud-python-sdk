@@ -25,19 +25,33 @@ class PodItem(DaraModel):
         type: str = None,
         supported_profiling_types: str = None,
     ):
+        # The time when the pod was created (UTC).
         self.gmt_create_time = gmt_create_time
+        # The time when the pod was completed (UTC).
         self.gmt_finish_time = gmt_finish_time
+        # The time when the pod was started (UTC).
         self.gmt_start_time = gmt_start_time
+        # The historical pods.
         self.history_pods = history_pods
+        # Pod Ip
         self.ip = ip
+        # The name of the compute node where the pod is located.
         self.node_name = node_name
+        # Pod Id
         self.pod_id = pod_id
+        # The IP address of the pod.
         self.pod_ip = pod_ip
+        # The IP addresses of the pod. For Lingjun AI Computing Service: user VPC net0, management VPC net, and pod-to-pod communication ethx. For general-purpose computing: user VPC eth1 with dedicated gateway default route, management VPC eth0 with public gateway default route, and pod-to-pod communication net eRDMA.
         self.pod_ips = pod_ips
+        # Pod Uid
         self.pod_uid = pod_uid
+        # The status of the pod.
         self.status = status
+        # The substatus of the pod.
         self.sub_status = sub_status
+        # The type of the pod.
         self.type = type
+        # The list of supported profiling types, separated by commas, such as sysom. An empty string indicates that profiling is not supported.
         self.supported_profiling_types = supported_profiling_types
 
     def validate(self):

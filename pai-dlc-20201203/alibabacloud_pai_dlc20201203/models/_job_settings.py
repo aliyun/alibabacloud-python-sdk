@@ -37,32 +37,35 @@ class JobSettings(DaraModel):
         tags: Dict[str, str] = None,
         termination_grace_period_seconds: int = None,
     ):
-        # The extra advanced parameter settings.
+        # The additional advanced parameter settings.
         self.advanced_settings = advanced_settings
-        # Specifies whether to mount all RDMA network interfaces.
+        # Specifies whether to allocate all RDMA NICs.
         self.allocate_all_rdmadevices = allocate_all_rdmadevices
+        # Specifies whether to allow jobs to be scheduled to nodes that are marked as unschedulable or are in the workspace blacklist. If enabled, node status checks are skipped and the corresponding bypass configurations are applied.
         self.allow_unschedulable_nodes = allow_unschedulable_nodes
-        # The user ID associated with the job.
+        # The ID of the user associated with the job.
         self.business_user_id = business_user_id
         # The caller.
         self.caller = caller
-        # The DataJuicer task configuration.
+        # The DataJuicer job configuration.
         self.data_juicer_config = data_juicer_config
-        # Specifies whether to skip inventory check. Valid values:
+        # Specifies whether to skip the ECS inventory check. Valid values:
         # - true
         # - false
         self.disable_ecs_stock_check = disable_ecs_stock_check
         # The NVIDIA driver configuration.
         self.driver = driver
+        # The maximum number of restarts for an elastic spot job.
         self.elastic_spot_job_max_restart_times = elastic_spot_job_max_restart_times
-        # The CPU affinity setting. This setting is effective only when using general computing subscription resources.
+        # The CPU affinity settings. These settings take effect only when general-purpose computing subscription resources are used.
         self.enable_cpuaffinity = enable_cpuaffinity
+        # Specifies whether to enable the DSW development mode for the job. If enabled, a sidecar container is injected into the pod.
         self.enable_dswdev = enable_dswdev
         # Specifies whether to enable fault tolerance monitoring for the job. Valid values:
         # - true
         # - false
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
-        # Specifies whether to allow OSS append write. Valid values:
+        # Specifies whether to allow OSS append writes. Valid values:
         # - true
         # - false
         self.enable_oss_append = enable_oss_append
@@ -70,31 +73,33 @@ class JobSettings(DaraModel):
         # - true
         # - false
         self.enable_rdma = enable_rdma
-        # Specifies whether to enable computing power health check for the job. Valid values:
+        # Specifies whether to enable computing power health checks for the job. Valid values:
         # - true
         # - false
         self.enable_sanity_check = enable_sanity_check
-        # Specifies whether to allow the job to use tidal resources. Valid values:
+        # Specifies whether to allow the job to use tide resources. Valid values:
         # - true
         # - false
         self.enable_tide_resource = enable_tide_resource
-        # The configuration parameters for fault tolerance monitoring after it is enabled, such as whether to enable log hang-based detection.
+        # The configuration parameters for fault tolerance monitoring when it is enabled, such as specifying whether to enable log hang-based detection.
         self.error_monitoring_args = error_monitoring_args
-        # The retention duration after job completion, in minutes.
+        # The retention duration after the job ends, in minutes.
         self.job_reserved_minutes = job_reserved_minutes
-        # The retention policy after job completion.
+        # The retention policy after the job ends.
         self.job_reserved_policy = job_reserved_policy
-        # The output model configuration. This parameter is currently effective only in joint training scenarios.
+        # The output model configuration. This parameter takes effect only in joint training scenarios.
         self.model_config = model_config
-        # The oversold resource usage mode for the job (reject/accept/only accept).
+        # The oversold resource usage mode for the job, which can be not accepted, accepted, or only accepted.
         self.oversold_type = oversold_type
         # The workflow ID.
         self.pipeline_id = pipeline_id
-        # The configuration parameters for computing power health check.
+        # The configuration parameters for computing power health checks.
         self.sanity_check_args = sanity_check_args
+        # The shell used to execute job commands. Valid values: /bin/sh and /bin/bash.
         self.shell = shell
         # The custom tags.
         self.tags = tags
+        # The grace period to wait for the pod to exit when the job is terminated, in seconds.
         self.termination_grace_period_seconds = termination_grace_period_seconds
 
     def validate(self):

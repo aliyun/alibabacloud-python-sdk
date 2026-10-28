@@ -13,12 +13,13 @@ class GetTokenRequest(DaraModel):
         target_type: str = None,
         token_settings: main_models.TokenSettings = None,
     ):
-        # The expiration time of the sharing link in seconds. Default value: 604800. Minimum value: 0.
+        # The expiration time of the sharing link. Default value: 604800 seconds. Minimum value: 0.
         self.expire_time = expire_time
-        # The ID of the task to share.
+        # The ID of the job to be shared.
         self.target_id = target_id
-        # The type of the task to share. Valid values: job and tensorboard.
+        # The type of the shared job. Valid values: job and tensorboard.
         self.target_type = target_type
+        # The permission settings of the sharing token, which controls log download and cross-account access.
         self.token_settings = token_settings
 
     def validate(self):

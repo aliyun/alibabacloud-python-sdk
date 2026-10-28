@@ -110,6 +110,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.display_name):
             body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.elastic_spec):
             body['ElasticSpec'] = request.elastic_spec
         if not DaraCore.is_null(request.envs):
@@ -190,6 +192,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not DaraCore.is_null(request.display_name):
             body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.elastic_spec):
             body['ElasticSpec'] = request.elastic_spec
         if not DaraCore.is_null(request.envs):

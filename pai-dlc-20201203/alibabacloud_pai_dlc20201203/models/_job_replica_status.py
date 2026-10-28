@@ -17,21 +17,21 @@ class JobReplicaStatus(DaraModel):
         queuing: int = None,
         type: str = None,
     ):
-        # The number of active pods for this replica type.
+        # The number of replicas of this role that are currently running.
         self.active = active
-        # The type of spot instance in use, if any.
+        # The currently selected spot instance type (applies only to elastic spot tasks).
         self.current_spot_instance_type = current_spot_instance_type
-        # The number of dequeued pods.
+        # The number of replicas of this role that have been dequeued.
         self.dequeued = dequeued
-        # The estimated auto scaling specification.
+        # The estimated auto-scaling configuration for this role.
         self.estimated_auto_scaling_spec = estimated_auto_scaling_spec
-        # The estimated number of pods for this replica type, used for auto scaling.
+        # The estimated number of pods for this role.
         self.estimated_pod_count = estimated_pod_count
-        # The estimated resource configuration.
+        # The estimated resource configuration for this role.
         self.estimated_resource_config = estimated_resource_config
-        # The number of queued pods.
+        # The number of replicas of this role that are still in the queue.
         self.queuing = queuing
-        # The type of the job replica.
+        # The role type to which the task replicas belong.
         self.type = type
 
     def validate(self):

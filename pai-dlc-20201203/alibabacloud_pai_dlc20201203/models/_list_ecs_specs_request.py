@@ -15,25 +15,25 @@ class ListEcsSpecsRequest(DaraModel):
         resource_type: str = None,
         sort_by: str = None,
     ):
-        # Filters by accelerator type. Valid values:
+        # The accelerator type. Valid values:
         # - CPU
         # - GPU
         self.accelerator_type = accelerator_type
-        # The list of instance types to query. Separate multiple instance types with commas (,).
+        # The instance types to query. Separate multiple instance types with commas (,).
         self.instance_types = instance_types
         # The sort order. Valid values:
-        # - desc: descending order.
-        # - asc: ascending order.
+        # - desc: Descending order.
+        # - asc: Ascending order.
         self.order = order
-        # The page number. The minimum value is 1.
+        # The page number. Minimum value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page in a paged query. This parameter is used for paging.
+        # The number of entries to return per page in a paging query.
         self.page_size = page_size
         # The resource type. Valid values:
         # - ECS
         # - Lingjun
         self.resource_type = resource_type
-        # Sorts by return field. Valid values:
+        # The field by which to sort the returned results. Valid values:
         # - CPU
         # - GPU
         # - Memory

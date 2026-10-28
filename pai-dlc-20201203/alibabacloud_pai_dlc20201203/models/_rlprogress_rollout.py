@@ -12,11 +12,11 @@ class RLProgressRollout(DaraModel):
         processed: main_models.RLProgressProcessed = None,
         rate_per_min: float = None,
     ):
-        # 窗口内完成总数
+        # The total number of completed items within the window.
         self.finished = finished
-        # rollout 已处理计数
+        # The rollout processed count.
         self.processed = processed
-        # 完成速率（条/分钟），由最近 120 条完成事件估算
+        # The completion rate (items per minute), estimated from the last 120 completion events.
         self.rate_per_min = rate_per_min
 
     def validate(self):

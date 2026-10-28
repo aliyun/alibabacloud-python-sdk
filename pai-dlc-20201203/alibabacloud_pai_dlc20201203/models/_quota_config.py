@@ -13,10 +13,15 @@ class QuotaConfig(DaraModel):
         enable_tide_resource: bool = None,
         resource_level: str = None,
     ):
+        # The maximum allowed priority.
         self.allowed_max_priority = allowed_max_priority
+        # Specifies whether DLC is enabled.
         self.enable_dlc = enable_dlc
+        # Specifies whether DSW is enabled.
         self.enable_dsw = enable_dsw
+        # Specifies whether to use tide resources.
         self.enable_tide_resource = enable_tide_resource
+        # The resource level (L0, L1).
         self.resource_level = resource_level
 
     def validate(self):

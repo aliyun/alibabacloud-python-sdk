@@ -10,9 +10,9 @@ class RLProgressMicro(DaraModel):
         current: int = None,
         total: int = None,
     ):
-        # 当前 micro-batch 序号
+        # The current micro-batch ordinal number.
         self.current = current
-        # micro-batch 总数
+        # The micro-batch total count.
         self.total = total
 
     def validate(self):

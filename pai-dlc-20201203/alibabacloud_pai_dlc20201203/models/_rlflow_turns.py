@@ -13,15 +13,15 @@ class RLFlowTurns(DaraModel):
         p_50: int = None,
         p_90: int = None,
     ):
-        # 平均生成轮数
+        # The average number of generation rounds.
         self.avg = avg
-        # 参与统计的轨迹数
+        # The number of traces included in the statistics.
         self.count = count
-        # 最大生成轮数
+        # The maximum number of generation rounds.
         self.max = max
-        # 生成轮数 P50
+        # The P50 of generation rounds.
         self.p_50 = p_50
-        # 生成轮数 P90
+        # The P90 of generation rounds.
         self.p_90 = p_90
 
     def validate(self):

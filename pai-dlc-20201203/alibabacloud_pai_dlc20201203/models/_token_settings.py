@@ -10,7 +10,9 @@ class TokenSettings(DaraModel):
         enable_cross_account_access: bool = None,
         enable_log_download_job: bool = None,
     ):
+        # Specifies whether cross-account access through sharing links is allowed.
         self.enable_cross_account_access = enable_cross_account_access
+        # Specifies whether task logs can be downloaded through sharing links.
         self.enable_log_download_job = enable_log_download_job
 
     def validate(self):

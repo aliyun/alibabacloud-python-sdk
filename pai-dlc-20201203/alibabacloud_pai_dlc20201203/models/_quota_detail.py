@@ -17,11 +17,17 @@ class QuotaDetail(DaraModel):
         gputype_full_name: str = None,
         memory: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU details.
         self.gpudetails = gpudetails
+        # The GPU type.
         self.gputype = gputype
+        # The full name of the GPU type.
         self.gputype_full_name = gputype_full_name
+        # The memory capacity.
         self.memory = memory
 
     def validate(self):

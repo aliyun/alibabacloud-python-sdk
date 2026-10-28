@@ -11,7 +11,9 @@ class ModelConfig(DaraModel):
         model_name: str = None,
         model_template: main_models.ModelTemplate = None,
     ):
+        # The name of the output model. The output model of a joint training job is registered in the Models section of AI Asset Management under this name.
         self.model_name = model_name
+        # The model template configuration. This configuration is required if you want to deploy the output model to Elastic Algorithm Service (EAS) with one click.
         self.model_template = model_template
 
     def validate(self):

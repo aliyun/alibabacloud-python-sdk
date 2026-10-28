@@ -18,7 +18,7 @@ class CreateTensorboardResponseBody(DaraModel):
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
-        # Tensorboard ID。
+        # The TensorBoard ID.
         self.tensorboard_id = tensorboard_id
 
     def validate(self):

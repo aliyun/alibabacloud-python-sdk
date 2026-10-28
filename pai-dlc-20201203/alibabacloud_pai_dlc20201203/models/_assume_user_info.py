@@ -12,9 +12,13 @@ class AssumeUserInfo(DaraModel):
         security_token: str = None,
         type: str = None,
     ):
+        # The AccessKey ID used for role assumption.
         self.access_key_id = access_key_id
+        # The user ID.
         self.id = id
+        # The security token used for role assumption.
         self.security_token = security_token
+        # The user identity type.
         self.type = type
 
     def validate(self):

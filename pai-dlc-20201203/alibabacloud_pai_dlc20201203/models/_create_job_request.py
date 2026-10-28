@@ -18,6 +18,7 @@ class CreateJobRequest(DaraModel):
         debugger_config_content: str = None,
         description: str = None,
         display_name: str = None,
+        dry_run: bool = None,
         elastic_spec: main_models.JobElasticSpec = None,
         envs: Dict[str, str] = None,
         job_max_running_time_minutes: int = None,
@@ -38,38 +39,42 @@ class CreateJobRequest(DaraModel):
         workspace_id: str = None,
     ):
         # The visibility of the job. Valid values:
-        # - PUBLIC: The job is visible to all members in the workspace.
-        # - PRIVATE: The job is visible only to you and administrators in the workspace.
+        # - PUBLIC: Visible to all users in the workspace.
+        # - PRIVATE: Visible only to you and administrators in the workspace.
         self.accessibility = accessibility
-        # The code source used by this job. Before the job nodes start, DLC automatically downloads the code configured in the code source and mounts it to a local directory of the container.
+        # The code source used by the job. Before the nodes of the job start, DLC automatically downloads the code configured in the code source and mounts it to a local directory in the container.
         self.code_source = code_source
         # The access credential configuration.
         self.credential_config = credential_config
+        # The list of custom environment variables.
         self.custom_envs = custom_envs
-        # The list of data sources used by the job.
+        # The list of data sources used to run the job.
         self.data_sources = data_sources
-        # This parameter is not supported and can be ignored.
+        # This parameter is not supported. You can ignore it.
         self.debugger_config_content = debugger_config_content
+        # The description of the job.
         self.description = description
-        # The name of the job. The naming conventions are as follows:
-        # - The name cannot exceed 256 characters in length.
+        # The name of the job. The name must meet the following requirements:
+        # - The name can be up to 256 characters in length.
         # - The name can contain digits, letters, underscores (_), periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.display_name = display_name
-        # This parameter is not supported and can be ignored.
+        # Specifies whether to enable the dry run mode.
+        self.dry_run = dry_run
+        # This parameter is not supported. You can ignore it.
         self.elastic_spec = elastic_spec
         # The environment variable configuration.
         self.envs = envs
-        # The maximum running time of the job. Unit: minutes.
+        # The maximum running duration of the job, in minutes.
         self.job_max_running_time_minutes = job_max_running_time_minutes
-        # **JobSpecs** describes various configurations for the job runtime, such as the image address, startup command, node resource declarations, and number of replicas.
+        # **JobSpecs** describes various configurations when the job runs, such as the image address, startup command, node resource declaration, and number of replicas.
         # 
-        # A DLC job consists of different types of nodes. Nodes of the same type share identical configurations, which is called a JobSpec. **JobSpecs** describes the configurations of all node types and is an array of JobSpec objects.
+        # A DLC job consists of different types of nodes. Nodes of the same type have identical configurations, which are called a JobSpec. **JobSpecs** describes the configurations of all types of nodes and is an array of JobSpecs.
         # 
         # This parameter is required.
         self.job_specs = job_specs
-        # The job type. This parameter is case-sensitive. Currently supported job types:
+        # The type of the job. This parameter is case-sensitive. Valid values:
         # - TFJob
         # - PyTorchJob
         # - MPIJob
@@ -82,32 +87,31 @@ class CreateJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The additional configuration for this node. You can use this parameter to adjust the behavior of mounted data sources. For example, if the node has an OSS data source mounted, you can set this parameter to `fs.oss.download.thread.concurrency=4,fs.oss.download.queue.size=16` to overwrite the default JindoFS parameter settings.
+        # The additional configurations for the job. You can use this parameter to adjust the behavior of mounted data sources. For example, if the node has an OSS data source mounted, you can set this parameter to `fs.oss.download.thread.concurrency=4,fs.oss.download.queue.size=16` to overwrite the default parameter settings of JindoFS.
         self.options = options
-        # The priority of the job. This is an optional parameter. Default value: 1. Valid values: 1 to 9.
-        # 
-        # - 1: the lowest priority.
-        # - 9: the highest priority.
+        # The priority of the job. This parameter is optional. Default value: 1. Valid values: 1 to 9.
+        # - 1: The lowest priority.
+        # - 9: The highest priority.
         self.priority = priority
-        # The resource group ID. This is an optional parameter.
-        # - If this parameter is left empty, the job is submitted to the public resource group.
-        # - If the current workspace is attached to a resource quota, you can specify the corresponding resource quota ID. For details about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+        # The ID of the resource group. This parameter is optional.
+        # - If this parameter is left empty, the job is submitted to a public resource group.
+        # - If you attach a resource quota to the current workspace, you can specify the corresponding resource quota ID here. For details about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
         # The scheduling strategy.
         self.scheduling_strategy = scheduling_strategy
         # The additional parameter settings for the job.
         self.settings = settings
-        # The success policy for distributed multi-node jobs. Currently, only TensorFlow multi-node jobs support this parameter.
-        # - ChiefWorker: The entire job is considered successful when the Chief pod finishes successfully.
-        # - AllWorkers (default): The entire job is considered successful only when all Workers finish successfully.
+        # The success policy for distributed multi-node jobs. Currently, only multi-node TensorFlow jobs are supported. Valid values:
+        # - ChiefWorker: If this value is specified, the entire job is considered successful as long as the chief pod ends successfully.
+        # - AllWorkers: This is the default value. The entire job is considered successful only when all worker pods end successfully.
         self.success_policy = success_policy
-        # The job template ID.
+        # The ID of the job template.
         self.template_id = template_id
-        # The job template version.
+        # The version of the job template.
         self.template_version = template_version
-        # The name of the folder where the Python third-party library (requirements.txt) file is located. Before running the specified UserCommand on each node, PAI-DLC retrieves the requirements.txt file from the specified folder and runs `pip install -r` to install the dependencies.
+        # The name of the folder where the Python third-party library (requirements.txt) file is located. Before each node runs the specified user command, PAI-DLC retrieves the requirements.txt file from the specified folder and runs the `pip install -r` command to install the libraries.
         self.thirdparty_lib_dir = thirdparty_lib_dir
-        # The list of Python third-party libraries to install.
+        # The list of Python third-party libraries to be installed.
         self.thirdparty_libs = thirdparty_libs
         # The startup command for all nodes of the job.
         # 
@@ -174,6 +178,9 @@ class CreateJobRequest(DaraModel):
 
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.elastic_spec is not None:
             result['ElasticSpec'] = self.elastic_spec.to_map()
@@ -267,6 +274,9 @@ class CreateJobRequest(DaraModel):
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
 
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('ElasticSpec') is not None:
             temp_model = main_models.JobElasticSpec()
             self.elastic_spec = temp_model.from_map(m.get('ElasticSpec'))
@@ -340,19 +350,19 @@ class CreateJobRequestUserVpc(DaraModel):
     ):
         # The default routing. Valid values:
         # - eth0: Uses the default network interface controller (NIC) to access external networks through the public gateway.
-        # - eth1: Uses the user elastic network interfaces (ENIs) to access external networks through a private gateway. For the configuration method, see [Configure a DSW instance to access the Internet through a dedicated public gateway](https://help.aliyun.com/document_detail/2525343.html).
+        # - eth1: Uses the user elastic network interfaces (ENIs) to access external networks through the private gateway. For the specific configuration method, see [Configure a DSW instance to access the Internet through a dedicated public gateway](https://help.aliyun.com/document_detail/2525343.html).
         self.default_route = default_route
         # The extended CIDR blocks.
         # - If the vSwitch ID is empty, this parameter is optional. The system automatically retrieves all CIDR blocks in the VPC.
-        # - If the vSwitch ID is specified, this parameter is required. Specify all CIDR blocks in the VPC.
+        # - If the vSwitch ID is not empty, this parameter is required. Specify all CIDR blocks in the VPC.
         self.extended_cidrs = extended_cidrs
-        # The ID of the security group.
+        # The ID of the user security group.
         self.security_group_id = security_group_id
-        # The ID of the vSwitch. This parameter is optional.
-        # - If this parameter is left empty, the system automatically selects an appropriate vSwitch based on inventory.
+        # The ID of the user vSwitch. This parameter is optional.
+        # - If this parameter is empty, the system automatically selects an appropriate vSwitch based on inventory.
         # - You can also specify a vSwitch ID.
         self.switch_id = switch_id
-        # The ID of the VPC.
+        # The ID of the user VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -413,24 +423,27 @@ class CreateJobRequestDataSources(DaraModel):
         role_chain: str = None,
         uri: str = None,
     ):
-        # The access point ID. Currently, only Cloud Parallel File Storage (CPFS) access points for intelligent computing are supported.
+        # The ID of the access point. Currently, only access points of AI CPFS are supported.
         self.access_point_id = access_point_id
-        # The data source ID. <props="china">For information about how to view the data source ID, see [ListDatasets](https://help.aliyun.com/document_detail/457222.html).
+        # The ID of the data source. <props="china">For more information about how to view the data source ID, see [ListDatasets](https://help.aliyun.com/document_detail/457222.html).
         self.data_source_id = data_source_id
+        # The version of the dataset.
         self.data_source_version = data_source_version
+        # Specifies whether to enable the cache service for the data source. This parameter takes effect only when the cluster supports the cache service and a resource group is configured.
         self.enable_cache = enable_cache
-        # The permission when the dataset is mounted. Valid values:
-        # - RO: read-only mount
-        # - RW: read and write mount
+        # The permissions when the dataset is mounted. Valid values:
+        # - RO: Read-only mount.
+        # - RW: Read/write mount.
         self.mount_access = mount_access
-        # The mount path for this job. This is an optional parameter. By default, the mount path configured in the data source is used.
+        # The path to be mounted for the job. This parameter is optional. By default, the mount path configured in the data source is used.
         self.mount_path = mount_path
-        # The custom dataset mount properties. Currently, only OSS is supported.
+        # The mount property of the custom dataset. Currently, only OSS is supported.
         self.options = options
+        # The ARN of the data source role. This parameter is required when OSS and CPFS access point authentication are enabled.
         self.role_arn = role_arn
-        # The role chain, a JSON-formatted string. Example: [{"roleType":"service","roleArn":"acs:ram::cloud-product-resource-account-uid:role/xxxtodlcrole","assumeRoleFor":"cloud-product-resource-account-uid"},{"roleType":"user","roleArn":"acs:ram::cloud-product-service-account-uid:role/roletoassumecustomerrole"},{"roleType":"service","roleArn":"acs:ram::end-user-uid:role/use-bmcpfs-access-ap-role","assumeRoleFor":"end-user-uid"}]
+        # The role chain, which is a JSON-formatted string. Example: [{"roleType":"service","roleArn":"acs:ram::cloud_product_resource_account_uid:role/xxxtodlcrole","assumeRoleFor":"cloud_product_resource_account_uid"},{"roleType":"user","roleArn":"acs:ram::cloud_product_service_account_uid:role/roletoassumecustomerrole"},{"roleType":"service","roleArn":"acs:ram::end_user_uid:role/use-bmcpfs-access-ap-role","assumeRoleFor":"end_user_uid"}].
         self.role_chain = role_chain
-        # The data source path.
+        # The path of the data source.
         self.uri = uri
 
     def validate(self):
@@ -514,8 +527,11 @@ class CreateJobRequestCustomEnvs(DaraModel):
         value: str = None,
         visible: str = None,
     ):
+        # The name of the environment variable.
         self.key = key
+        # The value of the environment variable.
         self.value = value
+        # The visibility of the environment variable. A value of public indicates that the variable is public, and a value of private indicates that the variable is private.
         self.visible = visible
 
     def validate(self):
@@ -559,15 +575,15 @@ class CreateJobRequestCodeSource(DaraModel):
         is_shared_mount_path: bool = None,
         mount_path: str = None,
     ):
-        # The branch of the code repository referenced when the job runs. This is an optional parameter. By default, the branch configured in the code source is used.
+        # The branch of the code repository referenced when the job runs. This parameter is optional. By default, the branch configured in the code source is used.
         self.branch = branch
-        # The code source ID. <props="china">For information about how to obtain the code source ID, see [ListCodeSources](https://help.aliyun.com/document_detail/459922.html).
+        # The ID of the code source. <props="china">For more information about how to obtain the code source ID, see [ListCodeSources](https://help.aliyun.com/document_detail/459922.html).
         self.code_source_id = code_source_id
-        # The commit ID of the code to be downloaded for this job. This is an optional parameter. By default, the commit ID configured in the code source is used.
+        # The commit ID of the code to be downloaded for the job. This parameter is optional. By default, the commit ID configured in the code source is used.
         self.commit = commit
-        # Marks whether the MountPath in CodeSource Settings is a shared cloud storage path. If set to true, the system enables code clone optimization. In multi-node deployment job scenarios, the clone operation is executed on only one node, and other nodes can directly access code through the shared cloud storage path.
+        # Specifies whether the mount path configured for access code source is a shared cloud storage path. If this parameter is set to true, the system enables code clone optimization. In a multi-node job scenario, the clone operation is performed on only one node, and other nodes can directly access access code through the shared cloud storage path.
         self.is_shared_mount_path = is_shared_mount_path
-        # The mount path for this job. This is an optional parameter. By default, the mount path configured in the code source is used.
+        # The path to be mounted for the job. This parameter is optional. By default, the mount path configured in the code source is used.
         self.mount_path = mount_path
 
     def validate(self):

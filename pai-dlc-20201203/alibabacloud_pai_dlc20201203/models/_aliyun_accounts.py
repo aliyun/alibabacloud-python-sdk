@@ -12,9 +12,13 @@ class AliyunAccounts(DaraModel):
         gmt_create_time: str = None,
         gmt_modify_time: str = None,
     ):
+        # The UID of the Alibaba Cloud account.
         self.aliyun_uid = aliyun_uid
+        # The employee ID of the internal user.
         self.employee_id = employee_id
+        # The creation time of the record.
         self.gmt_create_time = gmt_create_time
+        # The last modification time of the record.
         self.gmt_modify_time = gmt_modify_time
 
     def validate(self):

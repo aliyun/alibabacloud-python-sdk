@@ -11,8 +11,11 @@ class SystemDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
+        # The system cloud disk type, such as cloud_essd.
         self.category = category
+        # The performance level of the ESSD cloud disk, such as PL0 and PL1.
         self.performance_level = performance_level
+        # The size of the system cloud disk, in GiB.
         self.size = size
 
     def validate(self):

@@ -36,32 +36,37 @@ class JobSpec(DaraModel):
         use_spot_instance: bool = None,
         user_command: str = None,
     ):
-        # The node scheduling configuration.
+        # The specified node scheduling configuration.
         self.assign_node_spec = assign_node_spec
         # The auto scaling configuration.
         self.auto_scaling_spec = auto_scaling_spec
         # Specifies whether to consider this role when determining job success. This parameter takes effect only when the success policy is set to Partial.
         self.consider_in_success_policy = consider_in_success_policy
+        # The GPU driver version used by the job.
         self.driver = driver
-        # The hardware specification of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed specification list.>Notice: Prices vary depending on the specification.
+        # The hardware specifications of the worker. For a detailed list of specifications, see [PAI-DLC billing overview](https://help.aliyun.com/document_detail/171758.html).>Notice: Prices vary by specification.
         self.ecs_spec = ecs_spec
+        # The list of candidate instance types for this role to participate in elastic spot bidding.
         self.elastic_spot_specs = elastic_spot_specs
-        # The extra pod configuration.
+        # The additional pod configuration.
         self.extra_pod_spec = extra_pod_spec
+        # The hypernode scheduling configuration for this role.
         self.hyper_node_scheduling_config = hyper_node_scheduling_config
-        # The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to retrieve images provided by the PAI platform. You can also specify a third-party public image.
+        # The runtime image URL for this type of worker. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain images provided by the PAI platform. You can also specify a public third-party image.
         self.image = image
         # The private image configuration.
         self.image_config = image_config
-        # **[Deprecated]** This field is deprecated due to a spelling error.
+        # **[Deprecated]** This field is misspelled and deprecated.
         self.is_cheif = is_cheif
-        # Specifies whether the role is the Chief role. Only one Chief role is allowed.
+        # Specifies whether this role is the chief role. Only one chief role is allowed.
         self.is_chief = is_chief
         # The list of local mount configurations.
         self.local_mount_specs = local_mount_specs
+        # The usage type of idle resources.
         self.oversold_type = oversold_type
         # The number of replicas.
         self.pod_count = pod_count
+        # The ID of the resource quota used by the job.
         self.quota_id = quota_id
         # The resource configuration.
         self.resource_config = resource_config
@@ -73,8 +78,9 @@ class JobSpec(DaraModel):
         self.spot_spec = spot_spec
         # The dependencies required before this role starts.
         self.startup_dependencies = startup_dependencies
+        # The system cloud disk configuration for the job replicas.
         self.system_disk = system_disk
-        # The type, which is closely related to the job type. Different job types support different worker types.
+        # The type is closely related to the job type. Different job types support different worker types.
         # 
         # - **TFJob**: Supports Chief, PS, Worker, Evaluator, and GraphLearn.
         # 
@@ -85,7 +91,7 @@ class JobSpec(DaraModel):
         # - **ElasticBatch**: Supports Worker and Master.
         # - **RayJob**: Supports Head, Worker, and Worker[-xxx].
         # 
-        # Master is optional in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch. If not specified, the system automatically designates the first Worker node as Master.
+        # The Master role in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch is optional. If not specified, the system automatically assigns the first worker node as the master.
         self.type = type
         # Specifies whether to use spot instances.
         self.use_spot_instance = use_spot_instance

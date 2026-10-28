@@ -23,20 +23,35 @@ class JobElasticSpec(DaraModel):
         psmax_parallelism: int = None,
         psmin_parallelism: int = None,
     ):
+        # The AIMaster Docker image.
         self.aimaster_docker_image = aimaster_docker_image
+        # The resource specifications for the AIMaster role.
         self.aimaster_type = aimaster_type
+        # The maximum EDP parallelism.
         self.edpmax_parallelism = edpmax_parallelism
+        # The minimum EDP parallelism.
         self.edpmin_parallelism = edpmin_parallelism
+        # The elastic training strategy.
         self.elastic_strategy = elastic_strategy
+        # Specifies whether to enable AIMaster.
         self.enable_aimaster = enable_aimaster
+        # Specifies whether to enable EDP.
         self.enable_edp = enable_edp
+        # Specifies whether to enable elastic training.
         self.enable_elastic_training = enable_elastic_training
+        # Specifies whether to enable the elastic PS feature.
         self.enable_ps_job_elastic_ps = enable_ps_job_elastic_ps
+        # Specifies whether to enable elastic workers for PS jobs.
         self.enable_ps_job_elastic_worker = enable_ps_job_elastic_worker
+        # Specifies whether to enable PS resource estimation.
         self.enable_ps_resource_estimate = enable_ps_resource_estimate
+        # The maximum parallelism.
         self.max_parallelism = max_parallelism
+        # The minimum parallelism.
         self.min_parallelism = min_parallelism
+        # The maximum PS parallelism.
         self.psmax_parallelism = psmax_parallelism
+        # The minimum PS parallelism.
         self.psmin_parallelism = psmin_parallelism
 
     def validate(self):

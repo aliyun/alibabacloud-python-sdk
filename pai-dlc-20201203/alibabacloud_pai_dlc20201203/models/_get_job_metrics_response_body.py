@@ -14,11 +14,11 @@ class GetJobMetricsResponseBody(DaraModel):
         pod_metrics: List[main_models.PodMetric] = None,
         request_id: str = None,
     ):
-        # The node ID.
+        # The job ID.
         self.job_id = job_id
-        # The list of node monitoring data.
+        # The list of job monitoring data.
         self.pod_metrics = pod_metrics
-        # The request ID of this call, used for diagnostics and troubleshooting.
+        # The request ID, which is used for diagnostics and troubleshooting.
         self.request_id = request_id
 
     def validate(self):

@@ -10,7 +10,7 @@ class GetTensorboardSharedUrlResponseBody(DaraModel):
         request_id: str = None,
         tensorboard_shared_url: str = None,
     ):
-        # The request ID. Used for troubleshooting and support inquiries.
+        # The request ID. It is used for troubleshooting and technical support.
         self.request_id = request_id
         # The sharing link for the TensorBoard task.
         self.tensorboard_shared_url = tensorboard_shared_url

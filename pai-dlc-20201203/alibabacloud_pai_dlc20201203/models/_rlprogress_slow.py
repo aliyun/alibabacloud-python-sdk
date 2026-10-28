@@ -14,11 +14,11 @@ class RLProgressSlow(DaraModel):
         elapsed: float = None,
         time: int = None,
     ):
-        # 慢推理明细，最多 20 条
+        # The slow inference details, up to 20 entries.
         self.details = details
-        # 最慢一条的已耗时（秒）
+        # The elapsed time of the slowest entry in seconds.
         self.elapsed = elapsed
-        # 最慢一条的日志时间（unix 秒）
+        # The log timestamp of the slowest entry in UNIX seconds.
         self.time = time
 
     def validate(self):

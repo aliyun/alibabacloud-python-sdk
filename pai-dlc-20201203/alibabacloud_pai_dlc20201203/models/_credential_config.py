@@ -18,7 +18,7 @@ class CredentialConfig(DaraModel):
         self.aliyun_env_role_key = aliyun_env_role_key
         # The list of credential configuration items.
         self.credential_config_items = credential_config_items
-        # Specifies whether to enable credential injection.
+        # Specifies whether credential injection is enabled.
         self.enable_credential_inject = enable_credential_inject
 
     def validate(self):

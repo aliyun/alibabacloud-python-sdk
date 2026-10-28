@@ -29,61 +29,61 @@ class ListTensorboardsRequest(DaraModel):
         workspace_id: str = None,
     ):
         # The visibility of the job. Valid values:
-        # - PUBLIC: Visible to all users in this workspace.
-        # - PRIVATE: Visible only to you and administrators in this workspace.
+        # - PUBLIC: The job is visible to all users in the workspace.
+        # - PRIVATE: The job is visible only to you and administrators in the workspace.
         self.accessibility = accessibility
-        # The display name of the Tensorboard instance.
+        # The display name of the TensorBoard instance.
         self.display_name = display_name
-        # The end time of the query range. The creation time of the Tensorboard instance in UTC is used for filtering. If this parameter is left empty, the default value is the current time.
+        # The end time of the query interval. Filters instances by the UTC creation time of the TensorBoard instance. If this parameter is left empty, the default value is the current time.
         self.end_time = end_time
-        # Filters Tensorboard instances by DLC job ID. See [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
+        # Filters TensorBoard instances by the DLC job ID. Refer to [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
         self.job_id = job_id
         # The sort order. Valid values:
         # - desc: Descending order.
         # - asc: Ascending order.
         self.order = order
-        # The page number of the page to return in a paged query. The value starts from 1.
+        # The page number of the current page in the paged query. Pages start from 1.
         self.page_number = page_number
-        # The number of Tensorboard instances to return per page in a paged query.
+        # The number of TensorBoard instances to return on each page in the paged query.
         self.page_size = page_size
-        # The billing type of the Tensorboard instance. Valid values:
-        # - Free: The Tensorboard instance uses free resources.
-        # - Postpaid: The Tensorboard instance uses pay-as-you-go resources.
+        # The billing method of the TensorBoard instance. Valid values:
+        # - Free: The instance uses free resources.
+        # - Postpaid: The instance uses pay-as-you-go resources.
         self.payment_type = payment_type
         # The resource quota ID.
-        # > - Currently, only whitelisted users can use resource quota resources to create Tensorboard instances. To use this feature, contact us.
-        # > - This value is valid only when the Tensorboard instance uses resource quota resources.
+        # > - Currently, only whitelisted users can use resource quotas to create TensorBoard instances. To use this feature, contact us.
+        # > - This parameter is valid only when the TensorBoard instance uses resources from a resource quota.
         self.quota_id = quota_id
-        # Specifies whether to return only Tensorboard instances created by the current user.
+        # Specifies whether to return only the TensorBoard instances created by the current logged-on user.
         self.show_own = show_own
-        # Sorts the results by the following fields. Valid values:
-        # - DisplayName: The job name.
-        # - GmtCreateTime: The job creation time.
+        # The field by which to sort the returned results. Valid values:
+        # - DisplayName: The name of the job.
+        # - GmtCreateTime: The creation time of the job.
         self.sort_by = sort_by
-        # The data source ID. See [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
+        # The data source ID. Refer to [ListJobs](https://help.aliyun.com/document_detail/459676.html) to obtain the job ID.
         self.source_id = source_id
-        # The data source type. Currently, only DLC training jobs are supported, which means the value is job.
+        # The data source. Currently, only DLC training jobs are supported.
         self.source_type = source_type
-        # The start time of the query range. The creation time of the Tensorboard instance in UTC is used for filtering. If this parameter is left empty, the default value is 7 days before the current time.
+        # The start time of the query interval. Filters instances by the UTC creation time of the TensorBoard instance. If this parameter is left empty, the default value is 7 days before the current time.
         self.start_time = start_time
-        # The Tensorboard status. Valid values:
-        # - Creating: Being created.
-        # - Running: Running.
-        # - Stopped: Stopped.
-        # - Succeeded: Succeeded.
-        # - Failed: Failed.
+        # The status of the TensorBoard instance. Valid values:
+        # - Creating: The instance is being created.
+        # - Running: The instance is running.
+        # - Stopped: The instance is stopped.
+        # - Succeeded: The instance succeeded.
+        # - Failed: The instance failed.
         self.status = status
-        # Filters the Tensorboard list by Tensorboard ID.
+        # Filters TensorBoard instances by the TensorBoard ID.
         self.tensorboard_id = tensorboard_id
         # The user ID.
         self.user_id = user_id
         # The username.
         self.username = username
-        # Specifies whether to show details. Valid values:
-        # - true: Show details.
-        # - false: Do not show details.
+        # Specifies whether to display details. Valid values:
+        # - true: Displays details.
+        # - false: Does not display details.
         self.verbose = verbose
-        # The workspace ID. The Tensorboard list is retrieved based on the workspace ID. <props="china">See [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The workspace ID. Retrieves the list of TensorBoard instances based on the workspace ID. <props="china">Refer to [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

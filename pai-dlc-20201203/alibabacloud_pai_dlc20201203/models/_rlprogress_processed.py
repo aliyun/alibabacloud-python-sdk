@@ -10,9 +10,9 @@ class RLProgressProcessed(DaraModel):
         done: int = None,
         total: int = None,
     ):
-        # 已处理条数
+        # The processed count.
         self.done = done
-        # 总条数
+        # The total count.
         self.total = total
 
     def validate(self):

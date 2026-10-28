@@ -16,15 +16,16 @@ class UpdateJobRequest(DaraModel):
         priority: int = None,
         user_command: str = None,
     ):
-        # The visibility of the node can only be expanded, not reduced. Valid values:
-        # - PUBLIC: Visible to everyone in the workspace.
+        # The visibility of the job can only be increased, not decreased. Valid values:
+        # - PUBLIC: The job is visible to all users in the workspace.
         self.accessibility = accessibility
+        # The description of the job.
         self.description = description
-        # The node specifications.
+        # The job specifications.
         self.job_specs = job_specs
-        # The priority of the node. Valid values: 1 to 9.
-        # - 1: lowest priority.
-        # - 9: highest priority.
+        # The priority of the job. Valid values: 1 to 9.
+        # - 1: The lowest priority.
+        # - 9: The highest priority.
         self.priority = priority
         # The user command.
         self.user_command = user_command

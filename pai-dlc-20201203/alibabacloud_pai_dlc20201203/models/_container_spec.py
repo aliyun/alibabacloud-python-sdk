@@ -19,7 +19,7 @@ class ContainerSpec(DaraModel):
         security_context: main_models.SecurityContext = None,
         working_dir: str = None,
     ):
-        # The command parameters.
+        # The command arguments.
         self.args = args
         # The user command.
         self.command = command
@@ -31,6 +31,7 @@ class ContainerSpec(DaraModel):
         self.name = name
         # The container resources.
         self.resources = resources
+        # The container security context configuration.
         self.security_context = security_context
         # The working directory in the container.
         self.working_dir = working_dir

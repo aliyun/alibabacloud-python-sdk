@@ -13,15 +13,15 @@ class RLProgressBufferDetail(DaraModel):
         tag: int = None,
         total: int = None,
     ):
-        # 已被 trainer 消费的样本数
+        # The number of samples consumed by the trainer.
         self.consumed = consumed
-        # 已完成样本数
+        # The number of finished samples.
         self.finished = finished
-        # 已就绪样本数
+        # The number of ready samples.
         self.ready = ready
-        # buffer 标签，即 global batch 序号
+        # The buffer tag, which is the global batch ordinal number.
         self.tag = tag
-        # 目标样本数
+        # The target number of samples.
         self.total = total
 
     def validate(self):

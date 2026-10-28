@@ -16,10 +16,15 @@ class AutoScalingSpec(DaraModel):
         pods_to_delete: List[str] = None,
         scaling_strategy: str = None,
     ):
+        # The monitoring metrics configuration for autoscaling.
         self.autoscaling_metric_spec = autoscaling_metric_spec
+        # The maximum number of replicas.
         self.max_replicas = max_replicas
+        # The minimum number of replicas.
         self.min_replicas = min_replicas
+        # The Pods to delete for scale-in. This can only be modified through UpdateJob, and the number of Pods to delete must match PodCount.
         self.pods_to_delete = pods_to_delete
+        # The autoscaling policy. Valid values: Default, ScaleByAPI, RayAutoscaler, and CloudMonitorMetric.
         self.scaling_strategy = scaling_strategy
 
     def validate(self):

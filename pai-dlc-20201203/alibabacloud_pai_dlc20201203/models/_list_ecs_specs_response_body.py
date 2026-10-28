@@ -14,11 +14,11 @@ class ListEcsSpecsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of ECS specifications.
+        # The list of ECS instance types.
         self.ecs_specs = ecs_specs
         # The request ID.
         self.request_id = request_id
-        # The total number of entries that match the filter conditions.
+        # The total number of entries that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):

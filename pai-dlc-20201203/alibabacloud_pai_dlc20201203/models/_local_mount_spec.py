@@ -11,8 +11,11 @@ class LocalMountSpec(DaraModel):
         mount_mode: str = None,
         mount_path: str = None,
     ):
+        # The local path on the host. This field is invalid when MountMode is set to Block.
         self.local_path = local_path
+        # The mount mode. Valid values: Block and Filesystem.
         self.mount_mode = mount_mode
+        # The absolute mount path in the container. The path must start with a forward slash (/). When MountMode is set to Block, the path must start with /dev/.
         self.mount_path = mount_path
 
     def validate(self):

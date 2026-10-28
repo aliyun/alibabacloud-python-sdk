@@ -16,9 +16,9 @@ class ListJobsResponseBody(DaraModel):
     ):
         # The job list.
         self.jobs = jobs
-        # The request ID, used for diagnostics and troubleshooting.
+        # The request ID, which is used for diagnostics and troubleshooting.
         self.request_id = request_id
-        # The total number of jobs that match the filter conditions.
+        # The total number of jobs that meet the filtering conditions.
         self.total_count = total_count
 
     def validate(self):

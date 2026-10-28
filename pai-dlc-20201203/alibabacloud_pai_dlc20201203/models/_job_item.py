@@ -85,54 +85,66 @@ class JobItem(DaraModel):
         self.data_sources = data_sources
         # The job name.
         self.display_name = display_name
-        # The job running duration, in seconds.
+        # The job duration in seconds.
         self.duration = duration
         # The elastic job parameters.
         self.elastic_spec = elastic_spec
-        # Indicates whether PreemptibleJob is enabled.
+        # Specifies whether the preemptible job is enabled.
         self.enable_preemptible_job = enable_preemptible_job
-        # Indicates whether debugger analysis is enabled.
+        # Specifies whether debugger analysis is enabled.
         self.enabled_debugger = enabled_debugger
-        # The environment variables injected into the job at runtime.
+        # The environment variables injected during job execution.
         self.envs = envs
         # The job creation time in UTC format.
         self.gmt_create_time = gmt_create_time
-        # The time when the job failed (UTC).
+        # The job failure time in UTC.
         self.gmt_failed_time = gmt_failed_time
-        # The time when the job finished (UTC).
+        # The job end time in UTC.
         self.gmt_finish_time = gmt_finish_time
-        # The time when the job was modified (UTC).
+        # The job modification time in UTC.
         self.gmt_modified_time = gmt_modified_time
-        # The time when the job started running in UTC format.
+        # The job start time in UTC.
         self.gmt_running_time = gmt_running_time
-        # The time when the job was stopped (UTC).
+        # The job stop time in UTC.
         self.gmt_stopped_time = gmt_stopped_time
-        # The job submission time in UTC format.
+        # The job submission time in UTC.
         self.gmt_submitted_time = gmt_submitted_time
-        # The time when the job completed successfully in UTC format.
+        # The job success time in UTC.
         self.gmt_successed_time = gmt_successed_time
-        # Indicates whether the job is deleted.
+        # Specifies whether the job is deleted.
         self.is_deleted = is_deleted
         # The job ID.
         self.job_id = job_id
-        # The maximum job running duration.
+        # The maximum job running time.
         self.job_max_running_time_minutes = job_max_running_time_minutes
+        # The list of replica running statuses for each task role.
         self.job_replica_statuses = job_replica_statuses
-        # The node configurations for the job at runtime.
+        # The node configuration during job execution.
         self.job_specs = job_specs
         # The job type. Valid values:
+        # - TFJob
+        # - PyTorchJob
+        # - MPIJob
+        # - XGBoostJob
+        # - OneFlowJob
+        # - ElasticBatchJob
+        # - RayJob
+        # - SlurmJob
         self.job_type = job_type
         # The number of nodes.
         self.node_count = node_count
         # The node names.
         self.node_names = node_names
-        # Pods。
+        # The pods.
         self.pods = pods
         # The job priority.
         self.priority = priority
-        # The reason code for the job entering its current status. Valid values:
+        # The reason code for the current job status. Valid values:
+        # - InvalidParameter
+        # - JobSucceeded
+        # - JobStoppedByUser
         self.reason_code = reason_code
-        # The detailed description of the reason for the job entering its current status.
+        # The detailed description of the reason for the current job status.
         self.reason_message = reason_message
         # The requested CPU resources.
         self.request_cpu = request_cpu
@@ -140,31 +152,37 @@ class JobItem(DaraModel):
         self.request_gpu = request_gpu
         # The requested memory resources.
         self.request_memory = request_memory
-        # The ID of the resource group in which the job runs.
+        # The ID of the resource group where the job runs.
         self.resource_id = resource_id
-        # The resource level of the job at runtime.
+        # The resource level when the job runs.
         self.resource_level = resource_level
-        # The name of the resource on which the job runs.
+        # The name of the resource where the job runs.
         self.resource_name = resource_name
-        # The resource name.
+        # The name of the resource.
         self.resource_quota_name = resource_quota_name
-        # The resource type. Valid values: ECS, Lingjun, and ACS.
+        # The resource type, such as ECS, Lingjun, or ACS.
         self.resource_type = resource_type
-        # The number of times the job has been restarted.
+        # The number of times the job is restarted.
         self.restart_times = restart_times
+        # The number of retries configured for the node.
         self.retry_count = retry_count
+        # The scheduling strategy of the node.
         self.scheduling_strategy = scheduling_strategy
         # The additional parameters of the job.
         self.settings = settings
         # The job status. Valid values:
+        # - Succeeded
+        # - Failed
         self.status = status
-        # The job status transition information.
+        # The status transition information of the job.
         self.status_history = status_history
-        # The job sub-status, such as preemption retry status.
+        # The substatus of the job, such as the preemptible retry status.
         self.sub_status = sub_status
         # The system environment variable configuration.
         self.system_envs = system_envs
+        # The ID of the node template used to create the node.
         self.template_id = template_id
+        # The name of the node template used to create the node.
         self.template_name = template_name
         # The tenant ID.
         self.tenant_id = tenant_id
@@ -172,11 +190,11 @@ class JobItem(DaraModel):
         self.thirdparty_lib_dir = thirdparty_lib_dir
         # The list of third-party Python libraries installed before the job runs.
         self.thirdparty_libs = thirdparty_libs
-        # Indicates whether the job uses idle resources.
+        # Specifies whether the job uses idle resources.
         self.use_oversold_resource = use_oversold_resource
-        # The startup command that runs on each node of the job.
+        # The startup command run by each node of the job.
         self.user_command = user_command
-        # The UID of the user who owns the job.
+        # The UID of the user to whom the job belongs.
         self.user_id = user_id
         # The user script.
         self.user_script = user_script
@@ -190,6 +208,7 @@ class JobItem(DaraModel):
         self.workspace_id = workspace_id
         # The name of the workspace to which the job belongs.
         self.workspace_name = workspace_name
+        # The list of supported profiling types, separated by commas, such as sysom. An empty string indicates that profiling is not supported.
         self.supported_profiling_types = supported_profiling_types
 
     def validate(self):
@@ -646,7 +665,9 @@ class JobItemUserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The default route. Valid values:
+        # The default routing. Valid values:
+        # - eth0: Uses the default network interface controller (NIC) to access external networks through the public gateway.
+        # - eth1: Uses the user elastic network interfaces (ENIs) to access external networks through the private gateway.
         self.default_route = default_route
         # The extended CIDR blocks to connect.
         self.extended_cidrs = extended_cidrs

@@ -10,7 +10,9 @@ class HyperNodeSpec(DaraModel):
         hyper_node_name: str = None,
         node_names: str = None,
     ):
+        # The name of the HyperNode.
         self.hyper_node_name = hyper_node_name
+        # The comma-separated names of the specified nodes in the HyperNode. If you leave this parameter empty, all nodes in the HyperNode are specified.
         self.node_names = node_names
 
     def validate(self):

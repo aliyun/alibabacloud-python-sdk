@@ -16,10 +16,15 @@ class AssignNodeSpec(DaraModel):
         hyper_nodes: List[main_models.HyperNodeSpec] = None,
         node_names: str = None,
     ):
+        # The list of hyper nodes to avoid during scheduling.
         self.anti_affinity_hyper_nodes = anti_affinity_hyper_nodes
+        # AntiAffinityNodeNames
         self.anti_affinity_node_names = anti_affinity_node_names
+        # EnableAssignNode
         self.enable_assign_node = enable_assign_node
+        # The list of hyper nodes to schedule to.
         self.hyper_nodes = hyper_nodes
+        # NodeNames
         self.node_names = node_names
 
     def validate(self):

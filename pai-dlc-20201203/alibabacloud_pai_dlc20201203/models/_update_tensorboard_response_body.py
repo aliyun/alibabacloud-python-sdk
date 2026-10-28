@@ -10,9 +10,9 @@ class UpdateTensorboardResponseBody(DaraModel):
         request_id: str = None,
         tensorboard_id: str = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Tensorboard ID.
+        # The Tensorboard ID.
         self.tensorboard_id = tensorboard_id
 
     def validate(self):

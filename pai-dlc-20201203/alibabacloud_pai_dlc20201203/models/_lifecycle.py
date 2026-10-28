@@ -13,7 +13,9 @@ class Lifecycle(DaraModel):
         post_start: main_models.LifecyclePostStart = None,
         pre_stop: main_models.LifecyclePreStop = None,
     ):
+        # The post-start action.
         self.post_start = post_start
+        # The pre-stop action.
         self.pre_stop = pre_stop
 
     def validate(self):
@@ -52,6 +54,7 @@ class LifecyclePreStop(DaraModel):
         self,
         exec: main_models.LifecyclePreStopExec = None,
     ):
+        # The exec action.
         self.exec = exec
 
     def validate(self):
@@ -81,6 +84,7 @@ class LifecyclePreStopExec(DaraModel):
         self,
         command: List[str] = None,
     ):
+        # The command.
         self.command = command
 
     def validate(self):
@@ -108,6 +112,7 @@ class LifecyclePostStart(DaraModel):
         self,
         exec: main_models.LifecyclePostStartExec = None,
     ):
+        # The exec action.
         self.exec = exec
 
     def validate(self):
@@ -137,6 +142,7 @@ class LifecyclePostStartExec(DaraModel):
         self,
         command: List[str] = None,
     ):
+        # The command.
         self.command = command
 
     def validate(self):

@@ -12,7 +12,9 @@ class SecurityContextCapabilities(DaraModel):
         add: List[str] = None,
         drop: List[str] = None,
     ):
+        # The list of Linux capabilities to add.
         self.add = add
+        # The list of Linux capabilities to remove.
         self.drop = drop
 
     def validate(self):

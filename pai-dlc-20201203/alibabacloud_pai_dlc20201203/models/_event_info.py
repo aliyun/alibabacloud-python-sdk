@@ -13,10 +13,15 @@ class EventInfo(DaraModel):
         pod_uid: str = None,
         time: str = None,
     ):
+        # The text content of the event.
         self.content = content
+        # The ID of the event, which is used to obtain the related context.
         self.id = id
+        # The ID of the pod to which the event belongs.
         self.pod_id = pod_id
+        # The UID of the pod to which the event belongs.
         self.pod_uid = pod_uid
+        # The timestamp of the event in UTC.
         self.time = time
 
     def validate(self):

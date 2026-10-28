@@ -15,13 +15,13 @@ class RLProgressStages(DaraModel):
         stages: List[main_models.RLProgressStage] = None,
         step_done: bool = None,
     ):
-        # 当前所处阶段的下标
+        # The index of the current stage.
         self.current_index = current_index
-        # disagg / colocate / 空串
+        # The disagg, colocate, or empty string.
         self.mode = mode
-        # 阶段列表，按流水线顺序
+        # The list of stages in pipeline order.
         self.stages = stages
-        # 本 step 的阶段流水线是否已走完
+        # Indicates whether the stage pipeline for this step is completed.
         self.step_done = step_done
 
     def validate(self):

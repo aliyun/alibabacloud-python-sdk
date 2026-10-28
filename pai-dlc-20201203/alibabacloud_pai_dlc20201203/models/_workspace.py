@@ -20,14 +20,23 @@ class Workspace(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The creator.
         self.creator = creator
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The last modification time.
         self.gmt_modify_time = gmt_modify_time
+        # The member list.
         self.members = members
+        # The resource quota list.
         self.quotas = quotas
+        # The total resources.
         self.total_resources = total_resources
+        # The administrator list.
         self.workspace_admins = workspace_admins
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

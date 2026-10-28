@@ -16,13 +16,21 @@ class FreeResourceItem(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
+        # The resource count.
         self.available_number = available_number
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The cluster name.
         self.cluster_name = cluster_name
+        # The idle resource ID.
         self.free_resource_id = free_resource_id
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The update time.
         self.gmt_modify_time = gmt_modify_time
+        # The region ID.
         self.region_id = region_id
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

@@ -11,8 +11,11 @@ class ModelTemplate(DaraModel):
         model_name: str = None,
         provider: str = None,
     ):
+        # The collection where the model template resides. Default value: QuickStartTemplate.
         self.collections = collections
+        # The name of the model template.
         self.model_name = model_name
+        # The provider of the model template. Default value: pai, which indicates that the model template is officially provided by PAI.
         self.provider = provider
 
     def validate(self):
