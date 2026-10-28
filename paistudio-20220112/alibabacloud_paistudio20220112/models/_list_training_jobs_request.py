@@ -24,29 +24,32 @@ class ListTrainingJobsRequest(DaraModel):
         training_job_name: str = None,
         workspace_id: str = None,
     ):
-        # The algorithm name.
+        # The name of the algorithm.
         self.algorithm_name = algorithm_name
         # The algorithm provider.
         self.algorithm_provider = algorithm_provider
-        # The end time of the job creation time range for the query. Default value: current time.
+        # The end time of the creation time range used to query jobs. Default value: the current time. The time is in ISO 8601 format and the UTC time zone.
         self.end_time = end_time
-        # Specifies whether the algorithm is a temporary algorithm.
+        # Specifies whether the algorithm is temporary.
         self.is_temp_algo = is_temp_algo
         # The labels of the training job.
         self.labels = labels
         # The sort order. Valid values:
+        # 
+        # - ASC: Ascending order.
+        # - DESC: Descending order.
         self.order = order
-        # The page number for paging.
+        # The page number for the paging query.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
         # The field by which to sort the results.
         self.sort_by = sort_by
-        # The start time of the job creation time range for the query. Default value: 7 days ago.
+        # The start time of the creation time range used to query jobs. Default value: 7 days ago. The time is in ISO 8601 format and the UTC time zone.
         self.start_time = start_time
         # The status of the training job.
         self.status = status
-        # The training job ID.
+        # The ID of the training job.
         self.training_job_id = training_job_id
         # The name of the training job.
         self.training_job_name = training_job_name

@@ -12,7 +12,9 @@ class UnschedulableNodeDetail(DaraModel):
         nodes: List[str] = None,
         reason: str = None,
     ):
+        # The list of nodes.
         self.nodes = nodes
+        # The failure cause.
         self.reason = reason
 
     def validate(self):

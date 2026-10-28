@@ -13,10 +13,11 @@ class NodeDrainParameters(DaraModel):
         pod_from_sub_products: List[str] = None,
         pod_names: List[str] = None,
     ):
+        # Specifies whether to forcibly drain the node.
         self.force = force
-        # Delete pods of the specified job types
+        # The pods of the specified job types to drain.
         self.pod_from_sub_products = pod_from_sub_products
-        # Delete specified pods
+        # The specified pods to drain.
         self.pod_names = pod_names
 
     def validate(self):

@@ -32,27 +32,49 @@ class NodeViewMetric(DaraModel):
         user_ids: List[str] = None,
         user_number: str = None,
     ):
+        # The CPU utilization.
         self.cpuusage_rate = cpuusage_rate
+        # The node import time.
         self.created_time = created_time
+        # The disk read rate.
         self.disk_read_rate = disk_read_rate
+        # The disk write rate.
         self.disk_write_rate = disk_write_rate
+        # The GPU model.
         self.gputype = gputype
+        # The machine group ID.
         self.machine_group_id = machine_group_id
+        # The memory utilization.
         self.memory_usage_rate = memory_usage_rate
+        # The network inbound rate.
         self.network_input_rate = network_input_rate
+        # The network outbound rate.
         self.network_output_rate = network_output_rate
+        # The node ID.
         self.node_id = node_id
+        # The node status.
         self.node_status = node_status
+        # The GPU type.
         self.node_type = node_type
+        # The used CPU.
         self.request_cpu = request_cpu
+        # The used GPU.
         self.request_gpu = request_gpu
+        # The used memory.
         self.request_memory = request_memory
+        # The node tasks.
         self.task_id_map = task_id_map
+        # The total CPU.
         self.total_cpu = total_cpu
+        # The total GPU.
         self.total_gpu = total_gpu
+        # The total memory.
         self.total_memory = total_memory
+        # The total number of node tasks.
         self.total_tasks = total_tasks
+        # The user list.
         self.user_ids = user_ids
+        # The total number of users.
         self.user_number = user_number
 
     def validate(self):

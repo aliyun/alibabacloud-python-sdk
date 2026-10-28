@@ -28,32 +28,33 @@ class GetResourceGroupResponseBody(DaraModel):
     ):
         # The ID of the cluster to which the resource group belongs.
         self.cluster_id = cluster_id
-        # The provider of computing resources for the resource group.
+        # The type of compute resources for the resource group.
         self.computing_resource_provider = computing_resource_provider
-        # The ID of the user who created the resource group.
+        # The user ID of the creator of the resource group.
         self.creator_id = creator_id
         # The description of the resource group.
         self.description = description
-        # The time when the resource group was created.
+        # The time when the resource group was created. The time follows the ISO 8601 standard in the UTC time zone.
         self.gmt_created_time = gmt_created_time
-        # The time when the resource group was last modified.
+        # The time when the resource group was updated. The time follows the ISO 8601 standard in the UTC time zone.
         self.gmt_modified_time = gmt_modified_time
         # The name of the resource group.
         self.name = name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The type of computing resource for the resource group.
+        # The type of compute resources for the resource group.
         self.resource_type = resource_type
         # The status of the resource group.
         self.status = status
         # Indicates whether the resource group supports RDMA.
         self.support_rdma = support_rdma
-        # A list of tags.
+        # The list of tags.
         self.tags = tags
         # The details of the VPC connected to the resource group.
         self.user_vpc = user_vpc
+        # The version.
         self.version = version
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -177,9 +178,9 @@ class GetResourceGroupResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The tag key of the instance. Valid values of N: 1 to 20.
         self.tag_key = tag_key
-        # The tag value.
+        # The tag value of the instance. Valid values of N: 1 to 20.
         self.tag_value = tag_value
 
     def validate(self):

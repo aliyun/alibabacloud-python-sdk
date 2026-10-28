@@ -12,7 +12,7 @@ class WorkspaceIdName(DaraModel):
     ):
         # The workspace ID.
         self.workspace_id = workspace_id
-        # The workspace name.
+        # The name of the workspace to which the task belongs.
         self.workspace_name = workspace_name
 
     def validate(self):

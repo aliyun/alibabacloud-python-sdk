@@ -20,14 +20,23 @@ class NodeGPUMetric(DaraModel):
         total_memory: float = None,
         used_memory: float = None,
     ):
+        # The accelerator type.
         self.accelerator_type = accelerator_type
+        # The GPU count.
         self.gpucount = gpucount
+        # The GPU metrics.
         self.gpumetrics = gpumetrics
+        # The GPU type.
         self.gputype = gputype
+        # The memory utilization.
         self.memory_util = memory_util
+        # The node ID.
         self.node_id = node_id
+        # The node type.
         self.node_type = node_type
+        # The total memory.
         self.total_memory = total_memory
+        # The used memory.
         self.used_memory = used_memory
 
     def validate(self):

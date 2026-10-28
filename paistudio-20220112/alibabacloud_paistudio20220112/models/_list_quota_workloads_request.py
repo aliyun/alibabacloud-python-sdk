@@ -33,47 +33,53 @@ class ListQuotaWorkloadsRequest(DaraModel):
         workload_type: str = None,
         workspace_ids: str = None,
     ):
-        # Queries the queuing information for instances before a specified workload ID in the queue.
+        # The ID of the workload before which to query the queue information of instances in the queue.
         self.before_workload_id = before_workload_id
-        # The range search for workload dequeue time.
+        # The time range used for a range search on the time when the workloads were dequeued.
         self.gmt_dequeued_time_range = gmt_dequeued_time_range
-        # The range search for workload enqueue time.
+        # The time range used for a range search on the time when the workloads entered the queue.
         self.gmt_enqueued_time_range = gmt_enqueued_time_range
-        # The range search for workload queue position change time.
+        # The time range used for a range search on the time when the queue positions of the workloads changed.
         self.gmt_position_modified_time_range = gmt_position_modified_time_range
+        # The instance ID.
         self.instance_id = instance_id
-        # Searches only for nodes on the specified node.
+        # The name of the node on which to search for workloads.
         self.node_name = node_name
         # The sort order.
         self.order = order
-        # The page number of the query.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page in a paged query.
+        # The number of entries per page for paging in a paged query.
         self.page_size = page_size
+        # The position in the queue.
         self.position = position
+        # The priority of the workload.
         self.priority = priority
-        # Specifies whether to display only the workloads associated with the current resource quota.
+        # Specifies whether to display only the workloads corresponding to this resource quota.
         self.show_own = show_own
         # The field by which to sort the returned results.
         self.sort_by = sort_by
-        # The status in the queue.
+        # The status of the workload in the queue.
         self.status = status
         # The list of sub-resource quota IDs.
         self.sub_quota_ids = sub_quota_ids
+        # Specifies whether the workload uses oversold resources.
         self.use_oversold_resource = use_oversold_resource
-        # The list of user IDs.
+        # The IDs of the users.
         self.user_ids = user_ids
+        # Specifies whether to include historical data.
         self.with_historical_data = with_historical_data
-        # The range search for workload creation time.
+        # The time range used for a range search on the workload creation time.
         self.workload_created_time_range = workload_created_time_range
-        # Queries the queuing information for specified workload IDs.
+        # The IDs of the workloads to query for queue information.
         self.workload_ids = workload_ids
+        # The names of the workloads.
         self.workload_names = workload_names
-        # Filters by workload status.
+        # The workload statuses used to filter the results.
         self.workload_statuses = workload_statuses
-        # Queries the queuing information for instances of a specified sub-product.
+        # The workload type used to query the queue information of instances for the specified sub-product.
         self.workload_type = workload_type
-        # Queries the queuing information for workloads in a specified workspace.
+        # The IDs of the workspaces for which to query the workload queue information.
         self.workspace_ids = workspace_ids
 
     def validate(self):

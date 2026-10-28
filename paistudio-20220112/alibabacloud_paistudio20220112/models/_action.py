@@ -9,6 +9,7 @@ class Action(DaraModel):
         self,
         action_type: str = None,
     ):
+        # The operation type.
         self.action_type = action_type
 
     def validate(self):

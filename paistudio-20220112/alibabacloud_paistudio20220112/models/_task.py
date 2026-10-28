@@ -24,18 +24,31 @@ class Task(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The actions performed by the task.
         self.actions = actions
+        # The description of the task.
         self.description = description
+        # The time when the task was activated.
         self.gmt_activated_time = gmt_activated_time
+        # The time when the task was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the task was updated.
         self.gmt_modified_time = gmt_modified_time
+        # The time when the task was stopped.
         self.gmt_stopped_time = gmt_stopped_time
+        # The ID of the quota.
         self.quota_id = quota_id
+        # The execution rules of the task.
         self.rules = rules
+        # The status of the task.
         self.status = status
+        # The ID of the task.
         self.task_id = task_id
+        # The name of the task.
         self.task_name = task_name
+        # The ID of the user.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):

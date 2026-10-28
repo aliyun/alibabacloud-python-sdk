@@ -14,7 +14,7 @@ class ListResourceGroupMachineGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # A list of machine groups.
+        # The list of machine groups.
         self.machine_groups = machine_groups
         # The request ID.
         self.request_id = request_id

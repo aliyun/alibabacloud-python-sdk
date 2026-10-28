@@ -18,7 +18,7 @@ class ListResourceGroupsResponseBody(DaraModel):
         self.request_id = request_id
         # The list of resource groups.
         self.resource_groups = resource_groups
-        # The total number of matching resource groups.
+        # The total number of resource groups returned.
         # 
         # This parameter is required.
         self.total_count = total_count

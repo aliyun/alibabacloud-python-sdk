@@ -10,7 +10,9 @@ class StatisticsDetails(DaraModel):
         count: int = None,
         idle_num: int = None,
     ):
+        # The count.
         self.count = count
+        # The idle count.
         self.idle_num = idle_num
 
     def validate(self):

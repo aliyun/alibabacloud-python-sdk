@@ -13,8 +13,11 @@ class ResourceLimitDetails(DaraModel):
         resource_limit: Dict[str, Any] = None,
         should_ignore_resource_check: bool = None,
     ):
+        # The GC level.
         self.gclevel = gclevel
+        # The resource limit details.
         self.resource_limit = resource_limit
+        # Specifies whether to ignore the resource check.
         self.should_ignore_resource_check = should_ignore_resource_check
 
     def validate(self):

@@ -16,10 +16,15 @@ class QuotaCluster(DaraModel):
         image: str = None,
         status: str = None,
     ):
+        # The cluster type.
         self.cluster_type = cluster_type
+        # The datasource config.
         self.data_sources = data_sources
+        # The service access endpoints.
         self.endpoints = endpoints
+        # The container image address.
         self.image = image
+        # The status.
         self.status = status
 
     def validate(self):

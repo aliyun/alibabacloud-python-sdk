@@ -31,36 +31,45 @@ class QuotaConfig(DaraModel):
         user_vpc: main_models.UserVpc = None,
         workload_types: List[str] = None,
     ):
-        # The ACS-related configurations.
+        # The ACS-related configuration.
         self.acs = acs
         # The ID of the cluster where the quota resides.
         self.cluster_id = cluster_id
+        # The ID of the control plane cluster.
         self.control_plane_cluster_id = control_plane_cluster_id
-        # The default GPU driver version for the resource quota.
+        # The default driver version of the resource quota.
         self.default_gpudriver = default_gpudriver
+        # Specifies whether GPU sharing is enabled.
         self.enable_gpushare = enable_gpushare
-        # Specifies whether workloads in sub-quotas can be preempted.
+        # Specifies whether sub-quota resources can be preempted.
         self.enable_preempt_subquota_workloads = enable_preempt_subquota_workloads
-        # Specifies whether guaranteed resources within this quota can be preempted.
+        # Specifies whether guaranteed resource preemption for the current quota is enabled.
         self.enable_self_quota_preemption = enable_self_quota_preemption
-        # Specifies whether resources in sub-quotas can be preempted.
+        # Specifies whether sub-quota resources can be preempted.
         self.enable_sub_quota_preemption = enable_sub_quota_preemption
+        # The elastic network interface controller (NIC) cache configuration.
         self.eni_cache_config = eni_cache_config
+        # Specifies whether the resource is encrypted.
         self.is_encrypted_resource = is_encrypted_resource
+        # The off-peak resource usage configuration.
         self.oversold_usage_config = oversold_usage_config
-        # The resource specification templates.
+        # The resource specification template.
         self.resource_specs = resource_specs
+        # The sandbox cache configuration.
         self.sandbox_cache_config = sandbox_cache_config
+        # The self-quota preemption configuration.
         self.self_quota_preemption_config = self_quota_preemption_config
-        # The configuration for the sub-quota preemption task.
+        # The sub-quota task preemption configuration.
         self.sub_quota_preemption_config = sub_quota_preemption_config
-        # The GPU driver versions supported by the resource quota.
+        # The driver versions supported by the resource quota.
         self.support_gpudrivers = support_gpudrivers
         # Specifies whether RDMA is supported.
         self.support_rdma = support_rdma
+        # The scenarios of the resource quota.
         self.use_case = use_case
         # The user VPC information.
         self.user_vpc = user_vpc
+        # The workload types supported by the quota.
         self.workload_types = workload_types
 
     def validate(self):

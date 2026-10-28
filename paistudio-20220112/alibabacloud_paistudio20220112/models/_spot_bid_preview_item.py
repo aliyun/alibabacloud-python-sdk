@@ -19,27 +19,27 @@ class SpotBidPreviewItem(DaraModel):
         phase: str = None,
         replicas: int = None,
     ):
-        # Indicates whether the spot bid is active. If set to `false`, the bid is paused.
+        # Specifies whether it is active.
         self.active = active
-        # Determines whether instances can be deployed across different High-Performance Network (HPN) zones. Defaults to `false`.
+        # Specifies whether cross-super-node zones are allowed.
         self.allow_cross_hpn_zone = allow_cross_hpn_zone
-        # The ID of the cluster where resources are provisioned.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The GC level for the spot instance.
+        # The GC level.
         self.gc_level = gc_level
-        # The type of compute instance.
+        # The instance type.
         self.instance_type = instance_type
-        # The name of the associated job.
+        # The job name.
         self.job_name = job_name
-        # The maximum discount percentage from the on-demand price.
+        # The maximum discount price.
         self.max_discount = max_discount
-        # A message that provides additional details about the current phase.
+        # The message.
         self.message = message
-        # The name of the spot bid preview.
+        # The pre-bid name.
         self.name = name
-        # The current phase of the spot bid preview. Valid values are `Pending`, `Active`, and `Failed`.
+        # The phase.
         self.phase = phase
-        # The number of instance replicas.
+        # The number of replicas.
         self.replicas = replicas
 
     def validate(self):

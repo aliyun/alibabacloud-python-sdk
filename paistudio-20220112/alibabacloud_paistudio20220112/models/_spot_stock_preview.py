@@ -13,10 +13,15 @@ class SpotStockPreview(DaraModel):
         spot_discount: float = None,
         stock_status: str = None,
     ):
+        # The available quantity.
         self.available_quantity = available_quantity
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The spot instance type.
         self.instance_type = instance_type
+        # The current spot instance discount.
         self.spot_discount = spot_discount
+        # The spot instance inventory status.
         self.stock_status = stock_status
 
     def validate(self):

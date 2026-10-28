@@ -16,10 +16,15 @@ class ResourceDiagnosisDetail(DaraModel):
         used: main_models.ResourceAmount = None,
         workload_ids: List[str] = None,
     ):
+        # The exceeded resources.
         self.exceed_resources = exceed_resources
+        # The resource quota.
         self.limit = limit
+        # The diagnosis status.
         self.status = status
+        # The resource usage.
         self.used = used
+        # The related workload IDs.
         self.workload_ids = workload_ids
 
     def validate(self):

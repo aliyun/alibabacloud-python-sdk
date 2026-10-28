@@ -14,10 +14,15 @@ class CredentialRole(DaraModel):
         role_arn: str = None,
         role_type: str = None,
     ):
+        # The entity that uses the role credentials.
         self.assume_role_for = assume_role_for
+        # The user information for role assumption.
         self.assume_user_info = assume_user_info
+        # The access policy.
         self.policy = policy
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # The role type.
         self.role_type = role_type
 
     def validate(self):

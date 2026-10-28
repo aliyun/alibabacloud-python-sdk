@@ -10,9 +10,9 @@ class GetTokenRequest(DaraModel):
         expire_time: int = None,
         training_job_id: str = None,
     ):
-        # Time-to-live (TTL) of the share link in seconds. Default is 604800. Minimum is 0.
+        # The expiration duration of the sharing link, in seconds. Default value: 604800 seconds. Minimum value: 0 seconds.
         self.expire_time = expire_time
-        # ID of the training task.
+        # The ID of the training job.
         # 
         # This parameter is required.
         self.training_job_id = training_job_id

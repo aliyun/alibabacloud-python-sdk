@@ -40,41 +40,43 @@ class Quota(DaraModel):
         self.allocate_strategy = allocate_strategy
         # The ID of the resource quota creator.
         self.creator_id = creator_id
-        # The resource quota description.
+        # The description of the resource quota.
         self.description = description
         # The GPU type.
         self.gputype = gputype
         # The time when the resource quota was created.
         self.gmt_created_time = gmt_created_time
-        # The time when the resource quota was last modified.
+        # The time when the resource quota was updated.
         self.gmt_modified_time = gmt_modified_time
+        # The list of high-performance network zones.
         self.hyper_zones = hyper_zones
-        # The resource quota labels.
+        # The labels of the resource quota.
         self.labels = labels
         # The ID of the latest operation on the resource quota.
         self.latest_operation_id = latest_operation_id
         # The guaranteed resources.
         self.min = min
-        # The parent resource quota ID.
+        # The ID of the parent resource quota.
         self.parent_quota_id = parent_quota_id
         # The queue policy for the quota. Valid values:
-        # - PaiStrategyIntelligent: intelligent policies.
-        # - PaiStrategyBalance: balanced policy.
-        # - PaiStrategyRoundRobin: resource-priority policy.
-        # - PaiStrategyStrictFIFO: FIFO policy.
+        # - PaiStrategyIntelligent: intelligent policies
+        # - PaiStrategyBalance: balanced policy
+        # - PaiStrategyRoundRobin: resource priority policy
+        # - PaiStrategyStrictFIFO: FIFO policy
         self.queue_strategy = queue_strategy
+        # The specifications and status of the cluster composed of resources in the quota.
         self.quota_cluster = quota_cluster
-        # The resource quota configuration.
+        # The configuration of the resource quota.
         self.quota_config = quota_config
-        # The resource quota details.
+        # The details of the resource quota.
         self.quota_details = quota_details
-        # The resource quota ID.
+        # The ID of the resource quota.
         self.quota_id = quota_id
-        # The resource quota name.
+        # The name of the resource quota.
         self.quota_name = quota_name
         # The error code.
         self.reason_code = reason_code
-        # The error reason.
+        # The cause of the error.
         self.reason_message = reason_message
         # The list of resource groups.
         self.resource_group_ids = resource_group_ids
@@ -83,9 +85,9 @@ class Quota(DaraModel):
         # - ECS (default)
         # - ACS
         self.resource_type = resource_type
-        # The resource quota status.
+        # The status of the resource quota.
         self.status = status
-        # The list of sub-quotas under the resource quota.
+        # The list of sub-quotas of the resource quota.
         self.sub_quotas = sub_quotas
         # The version.
         self.version = version

@@ -25,37 +25,33 @@ class CacheService(DaraModel):
         user_id: str = None,
         user_vpc: main_models.UserVpc = None,
     ):
-        # The list of data source cache information connected to the cache service. Each element corresponds to a data source and its access port.
+        # The list of connected data source cache information for the cache service, where each element corresponds to a data source and its access port.
         self.cache_infos = cache_infos
-        # The cache service ID. This is the unique identifier of the cache service.
+        # The ID of the cache service, which is the unique identifier of the cache service.
         self.cache_service_id = cache_service_id
-        # The ID of the cluster where the cache service resides.
+        # The ID of the cluster where the cache service is located.
         self.cluster_id = cluster_id
         # The ID of the resource quota that created the cache service.
         self.created_by = created_by
-        # The time when the cache service was created, in UTC in ISO 8601 format.
+        # The time when the cache service was created, in UTC and ISO 8601 format.
         self.gmt_created = gmt_created
-        # Indicates whether the service discovery of the cache service uses shard mode.
+        # Indicates whether the service discovery of the cache service uses the shard mode.
         self.is_sharded = is_sharded
-        # The type of RDMA network interface controller used by the cache service. This parameter is returned only when SupportRDMA is set to true. Valid values:
-        # - eic: EIC network interface controller.
-        # - mlx: Mellanox network interface controller.
-        # 
-        # This parameter is empty when RDMA is not enabled.
+        # The type of RDMA network interface controller (NIC) used by the cache service. This parameter is returned only when SupportRDMA is true. Valid values: eic: EIC NIC. mlx: Mellanox NIC. If RDMA is not enabled, this parameter is empty.
         self.network_type = network_type
         # The ID of the resource quota to which the cache service belongs.
         self.quota_id = quota_id
         # The current status of the cache service.
         self.status = status
-        # Indicates whether the cache service supports access through RDMA networks.
+        # Indicates whether the cache service supports access over an RDMA network.
         self.support_rdma = support_rdma
         # The list of client quota IDs that are allowed to access the cache service.
         self.supported_client_quota_ids = supported_client_quota_ids
-        # The tenant ID to which the cache service belongs, which is the Alibaba Cloud account ID.
+        # The ID of the tenant to which the cache service belongs, which is the Alibaba Cloud account ID.
         self.tenant_id = tenant_id
         # The ID of the user who created the cache service.
         self.user_id = user_id
-        # The VPC network information of the cache service, including the VPC, vSwitch, and security group configurations.
+        # The user VPC network information of the cache service, including configurations such as the VPC, vSwitch, and security group.
         self.user_vpc = user_vpc
 
     def validate(self):

@@ -14,15 +14,17 @@ class ResourceAmount(DaraModel):
         gputype: str = None,
         memory: str = None,
     ):
-        # Total CPU
+        # The total CPU amount.
         self.cpu = cpu
-        # Total GPU cards
+        # The total number of GPU cards.
         self.gpu = gpu
+        # The GPU memory.
         self.gpumemory = gpumemory
+        # The GPU memory, in bytes.
         self.gpumemory_bytes = gpumemory_bytes
-        # GPU card type
+        # The GPU card type.
         self.gputype = gputype
-        # Total memory
+        # The total memory amount.
         self.memory = memory
 
     def validate(self):

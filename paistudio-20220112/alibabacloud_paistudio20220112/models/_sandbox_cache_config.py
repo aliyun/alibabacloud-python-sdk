@@ -9,6 +9,7 @@ class SandboxCacheConfig(DaraModel):
         self,
         enabled: bool = None,
     ):
+        # Specifies whether the sandbox cache is enabled.
         self.enabled = enabled
 
     def validate(self):

@@ -10,7 +10,9 @@ class Permission(DaraModel):
         is_enabled: bool = None,
         resource_type: str = None,
     ):
+        # IsEnabled
         self.is_enabled = is_enabled
+        # ResourceType
         self.resource_type = resource_type
 
     def validate(self):

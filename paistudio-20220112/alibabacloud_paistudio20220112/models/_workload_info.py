@@ -24,31 +24,31 @@ class WorkloadInfo(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # Specifies whether the workload is scheduled. Valid values are `true` and `false`.
+        # Specifies whether the task is scheduled.
         self.is_scheduled = is_scheduled
-        # The scheduling priority of the workload. A higher value indicates a higher priority.
+        # The task priority.
         self.priority = priority
-        # A list of metadata for the queues associated with the workload.
+        # The information about the queue where the task resides.
         self.queue_metas = queue_metas
-        # The ID of the tenant that contains the workload.
+        # The ID of the Alibaba Cloud account that created the task.
         self.tenant_id = tenant_id
-        # The ID of the user who created the workload.
+        # The ID of the RAM user that created the task.
         self.user_id = user_id
-        # The name of the user who created the workload.
+        # The username of the task creator.
         self.user_name = user_name
-        # The creation time of the workload, in UTC format.
+        # The time when the task was created.
         self.workload_created_time = workload_created_time
-        # The unique, system-generated ID for the workload.
+        # The task ID.
         self.workload_id = workload_id
-        # The user-defined name of the workload.
+        # The task name.
         self.workload_name = workload_name
-        # The current status of the workload. Possible values include `Pending`, `Running`, `Succeeded`, and `Failed`.
+        # The task status.
         self.workload_status = workload_status
-        # The type of the workload.
+        # The task type.
         self.workload_type = workload_type
-        # The ID of the workspace that contains the workload.
+        # The ID of the workspace where the task resides.
         self.workspace_id = workspace_id
-        # The name of the workspace that contains the workload.
+        # The name of the workspace where the task resides.
         self.workspace_name = workspace_name
 
     def validate(self):

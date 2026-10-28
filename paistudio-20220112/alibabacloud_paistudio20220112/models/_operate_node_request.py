@@ -12,7 +12,7 @@ class OperateNodeRequest(DaraModel):
         operation_parameters: main_models.NodeOperationParameters = None,
         resource_group_id: str = None,
     ):
-        # The operation. Valid values:	
+        # The operation to perform. Valid values:	
         # - Cordon: disables scheduling
         # - Uncordon: enables scheduling
         # - Drain: evicts pods

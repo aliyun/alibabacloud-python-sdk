@@ -9,7 +9,7 @@ class ResizeDiskParameters(DaraModel):
         self,
         new_disk_size: str = None,
     ):
-        # The target disk capacity after the change.
+        # The target disk capacity.
         self.new_disk_size = new_disk_size
 
     def validate(self):

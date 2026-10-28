@@ -16,9 +16,9 @@ class SpotStockItem(DaraModel):
     ):
         # The instance type.
         self.instance_type = instance_type
-        # Internal information about the stock of the spot instance type.
+        # The inventory details.
         self.internal_info = internal_info
-        # The stock status of the instance type. Valid values are `Available` and `SoldOut`.
+        # The inventory status.
         self.stock_status = stock_status
 
     def validate(self):

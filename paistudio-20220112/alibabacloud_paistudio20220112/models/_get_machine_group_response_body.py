@@ -28,41 +28,41 @@ class GetMachineGroupResponseBody(DaraModel):
         status: str = None,
         supported_drivers: List[str] = None,
     ):
-        # The number of instances in the machine group.
+        # The quantity.
         self.count = count
-        # The default driver.
+        # The default driver version.
         self.default_driver = default_driver
-        # The subscription duration. This parameter is returned only when `PayType` is `PrePay`.
+        # The purchase duration.
         self.duration = duration
-        # The ECS instance type of the machine group.
+        # The ECS instance type.
         self.ecs_type = ecs_type
-        # The time when the machine group was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The expiration time. This parameter is returned only when `PayType` is `PrePay`.
+        # The expiration time.
         self.gmt_expired = gmt_expired
-        # The time when the machine group was last modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # The time when the machine group started.
+        # The start time.
         self.gmt_started = gmt_started
-        # The ID of the machine group.
+        # The machine group ID.
         self.machine_group_id = machine_group_id
         # The order ID.
         self.order_id = order_id
-        # The instance ID of the order.
+        # The order instance ID.
         self.order_instance_id = order_instance_id
         # The PAI resource ID.
         self.pairesource_id = pairesource_id
-        # The payment type. Valid values: `PostPay` (pay-as-you-go) and `PrePay` (subscription).
+        # The billing type.
         self.pay_type = pay_type
-        # The billing cycle. This parameter is returned only when `PayType` is `PrePay`.
+        # The pricing cycle.
         self.pricing_cycle = pricing_cycle
         # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The status of the machine group.
+        # The status.
         self.status = status
-        # The drivers that the machine group supports.
+        # The supported driver versions.
         self.supported_drivers = supported_drivers
 
     def validate(self):

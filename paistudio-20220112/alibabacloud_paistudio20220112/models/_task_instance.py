@@ -15,12 +15,19 @@ class TaskInstance(DaraModel):
         tenant_id: str = None,
         user_id: str = None,
     ):
+        # The instance creation time.
         self.gmt_created_time = gmt_created_time
+        # The instance end time.
         self.gmt_end_time = gmt_end_time
+        # The task instance status.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The task instance ID.
         self.task_instance_id = task_instance_id
+        # The cloud account ID.
         self.tenant_id = tenant_id
+        # The creator ID.
         self.user_id = user_id
 
     def validate(self):

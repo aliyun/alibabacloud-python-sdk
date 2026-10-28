@@ -27,24 +27,41 @@ class EcsSpec(DaraModel):
         support_rdma: bool = None,
         support_set_network_card_index: bool = None,
     ):
+        # The accelerator type.
         self.accelerator_type = accelerator_type
+        # The number of CPU cores.
         self.cpu = cpu
+        # The ECS image ID.
         self.ecs_image_id = ecs_image_id
+        # The number of Elastic RDMA Interface (ERI) network interface controllers.
         self.eri_quantity = eri_quantity
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU computing unit specifications.
         self.gpu_guspec = gpu_guspec
+        # The GPU memory size.
         self.gpu_memory = gpu_memory
         self.gpu_type = gpu_type
+        # The GPU type alias.
         self.gpu_type_alias = gpu_type_alias
+        # The instance type.
         self.instance_type = instance_type
+        # The machine model.
         self.machine_model = machine_model
+        # The memory resources.
         self.memory = memory
+        # The network mode.
         self.network_mode = network_mode
+        # The planned number of CPU cores.
         self.planned_cpu = planned_cpu
+        # The planned memory size.
         self.planned_memory = planned_memory
+        # The resource type.
         self.resource_type = resource_type
+        # Specifies whether GPU sharing is supported.
         self.support_gpushare = support_gpushare
         self.support_rdma = support_rdma
+        # Specifies whether setting the network interface controller index is supported.
         self.support_set_network_card_index = support_set_network_card_index
 
     def validate(self):

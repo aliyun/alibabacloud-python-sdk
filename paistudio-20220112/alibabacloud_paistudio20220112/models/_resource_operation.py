@@ -22,19 +22,33 @@ class ResourceOperation(DaraModel):
         reason_message: str = None,
         status: str = None,
     ):
+        # The ID of the creator of the resource change.
         self.creator_id = creator_id
+        # The time when the resource change was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the resource change ended.
         self.gmt_end_time = gmt_end_time
+        # The time when the resource change was updated.
         self.gmt_modified_time = gmt_modified_time
+        # The time when the resource change started.
         self.gmt_start_time = gmt_start_time
+        # The object ID of the resource change.
         self.object_id = object_id
+        # The object type of the resource change.
         self.object_type = object_type
+        # The description of the resource change.
         self.operation_description = operation_description
+        # The resource change ID.
         self.operation_id = operation_id
+        # The details of the resource change.
         self.operation_spec_json = operation_spec_json
+        # The type of the resource change.
         self.operation_type = operation_type
+        # The error code.
         self.reason_code = reason_code
+        # The error message.
         self.reason_message = reason_message
+        # The status of the resource change.
         self.status = status
 
     def validate(self):

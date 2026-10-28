@@ -17,11 +17,17 @@ class NodeStatistics(DaraModel):
         schedulable_resources: main_models.StatisticsResources = None,
         system_reserved_resources: main_models.StatisticsResources = None,
     ):
+        # The total resources.
         self.actual_min_resources = actual_min_resources
+        # The GPU idle statistics.
         self.gpudetails = gpudetails
+        # The hypernode idle statistics.
         self.hyper_node_details = hyper_node_details
+        # The idle resources.
         self.idle_resources = idle_resources
+        # The amount of scheduling resources.
         self.schedulable_resources = schedulable_resources
+        # The system reserved resources.
         self.system_reserved_resources = system_reserved_resources
 
     def validate(self):
@@ -109,7 +115,9 @@ class NodeStatisticsHyperNodeDetails(DaraModel):
         count: int = None,
         idle_num: int = None,
     ):
+        # The count.
         self.count = count
+        # The idle count.
         self.idle_num = idle_num
 
     def validate(self):
@@ -144,7 +152,9 @@ class NodeStatisticsGPUDetails(DaraModel):
         count: int = None,
         idle_num: int = None,
     ):
+        # The count.
         self.count = count
+        # The idle count.
         self.idle_num = idle_num
 
     def validate(self):

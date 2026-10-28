@@ -14,11 +14,17 @@ class TaskInstanceEvent(DaraModel):
         status: str = None,
         workload_type: str = None,
     ):
+        # The end time.
         self.gmt_end_time = gmt_end_time
+        # The start time.
         self.gmt_start_time = gmt_start_time
+        # The message content.
         self.message = message
+        # The name of the pod involved in the task.
         self.pod_name = pod_name
+        # The status.
         self.status = status
+        # The sub-product type involved in the task.
         self.workload_type = workload_type
 
     def validate(self):

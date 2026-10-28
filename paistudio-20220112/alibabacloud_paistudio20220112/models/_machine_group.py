@@ -40,53 +40,65 @@ class MachineGroup(DaraModel):
         system_reserved_cpu: int = None,
         system_reserved_memory: int = None,
     ):
+        # The number of allocatable CPU cores.
         self.allocatable_cpu = allocatable_cpu
+        # The allocatable memory size.
         self.allocatable_memory = allocatable_memory
+        # The number of CPU cores in the machine group.
         self.cpu = cpu
-        # Machine group creator ID
+        # The ID of the machine group creator.
         self.creator_id = creator_id
-        # Default driver supported by the machine group
+        # The default driver supported by the machine group.
         self.default_driver = default_driver
+        # The cloud disk size.
         self.disk_capacity = disk_capacity
+        # The cloud disk performance level.
         self.disk_pl = disk_pl
-        # Resource count
+        # The resource count.
         self.ecs_count = ecs_count
-        # ECS specification
+        # The ECS instance type.
         self.ecs_spec = ecs_spec
-        # Creation Time
+        # The creation time.
         self.gmt_created_time = gmt_created_time
-        # Expiration Time
+        # The expiration time.
         self.gmt_expired_time = gmt_expired_time
-        # Update Time
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
-        # Start At
+        # The start time.
         self.gmt_started_time = gmt_started_time
+        # The number of GPUs in the machine group.
         self.gpu = gpu
+        # The GPU memory size of the machine group.
         self.gpu_memory = gpu_memory
+        # The GPU type of the machine group.
         self.gpu_type = gpu_type
-        # Machine Group ID
+        # The machine group ID.
         self.machine_group_id = machine_group_id
+        # The memory size of the machine group.
         self.memory = memory
-        # Order ID
+        # The order ID.
         self.order_instance_id = order_instance_id
-        # Duration
+        # The duration.
         self.payment_duration = payment_duration
-        # Region ID
+        # region ID
         self.payment_duration_unit = payment_duration_unit
-        # Payment type
+        # The billing method.
         self.payment_type = payment_type
-        # Machine group error code
+        # The machine group error code.
         self.reason_code = reason_code
-        # Machine group fault message
+        # The machine group error message.
         self.reason_message = reason_message
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource type.
         self.resource_type = resource_type
-        # Machine group status
+        # The machine group status.
         self.status = status
-        # List of NVIDIA GPU driver versions supported by the machine group
+        # The list of NVIDIA GPU driver versions supported by the machine group.
         self.supported_drivers = supported_drivers
+        # The number of system-reserved CPU cores.
         self.system_reserved_cpu = system_reserved_cpu
+        # The size of system-reserved memory.
         self.system_reserved_memory = system_reserved_memory
 
     def validate(self):

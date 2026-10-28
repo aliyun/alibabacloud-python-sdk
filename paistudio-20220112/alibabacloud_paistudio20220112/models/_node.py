@@ -56,12 +56,13 @@ class Node(DaraModel):
         users: List[main_models.UserInfo] = None,
         workload_num: int = None,
     ):
-        # The accelerator type of the resource node specifications (CPU/GPU).
+        # The accelerator type of the node specifications (CPU/GPU).
         self.accelerator_type = accelerator_type
-        # The number of CPU cores that can be allocated to users.
+        # The number of allocatable CPU cores.
         self.allocatable_cpu = allocatable_cpu
-        # The memory size that can be allocated to users.
+        # The allocatable memory size.
         self.allocatable_memory = allocatable_memory
+        # The number of workloads that use the ancestor quota.
         self.ancestor_quota_workload_num = ancestor_quota_workload_num
         # The zone.
         self.availability_zone = availability_zone
@@ -69,10 +70,13 @@ class Node(DaraModel):
         self.bound_quotas = bound_quotas
         # The number of CPU cores.
         self.cpu = cpu
-        # The creator of the resource node.
+        # The ID of the creator of the resource node.
         self.creator_id = creator_id
+        # The number of workloads that use the descendant quota.
         self.descendant_quota_workload_num = descendant_quota_workload_num
+        # The data cloud disk capacity.
         self.disk_capacity = disk_capacity
+        # The data cloud disk performance level.
         self.disk_pl = disk_pl
         # The number of GPUs.
         self.gpu = gpu
@@ -90,13 +94,13 @@ class Node(DaraModel):
         self.gmt_modified_time = gmt_modified_time
         # The high-speed interconnect zone.
         self.hyper_zone = hyper_zone
-        # Indicates whether the resource node is bound to a quota.
+        # Indicates whether a quota is bound.
         self.is_bound = is_bound
-        # The maximum number of CPU cores.
+        # The limit on the number of CPU cores.
         self.limit_cpu = limit_cpu
-        # The maximum number of GPUs.
+        # The limit on the number of GPU cores.
         self.limit_gpu = limit_gpu
-        # The maximum memory size.
+        # The limit on the memory size.
         self.limit_memory = limit_memory
         # The ID of the machine group to which the resource node belongs.
         self.machine_group_id = machine_group_id
@@ -110,7 +114,7 @@ class Node(DaraModel):
         self.node_name = node_name
         # The status of the resource node.
         self.node_status = node_status
-        # The node specifications type of the resource node.
+        # The type of node specifications of the resource node.
         self.node_type = node_type
         # The order status of the resource node.
         self.order_status = order_status
@@ -122,7 +126,7 @@ class Node(DaraModel):
         self.reason_message = reason_message
         # The number of requested CPU cores.
         self.request_cpu = request_cpu
-        # The number of requested GPUs.
+        # The number of requested GPU cores.
         self.request_gpu = request_gpu
         # The requested memory size.
         self.request_memory = request_memory
@@ -130,12 +134,13 @@ class Node(DaraModel):
         self.resource_group_id = resource_group_id
         # The name of the resource group to which the resource node belongs.
         self.resource_group_name = resource_group_name
+        # The number of workloads that use this quota.
         self.self_quota_workload_num = self_quota_workload_num
         # The names of the child nodes.
         self.sub_nodes = sub_nodes
         # The number of system-reserved CPU cores.
         self.system_reserved_cpu = system_reserved_cpu
-        # The system-reserved memory size.
+        # The size of the system reserved memory.
         self.system_reserved_memory = system_reserved_memory
         # The user information.
         self.users = users

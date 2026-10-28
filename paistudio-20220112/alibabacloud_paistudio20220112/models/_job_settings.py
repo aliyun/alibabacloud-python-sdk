@@ -26,37 +26,37 @@ class JobSettings(DaraModel):
         sanity_check_args: str = None,
         tags: Dict[str, str] = None,
     ):
-        # Additional advanced parameter settings.
+        # The additional advanced parameter settings.
         self.advanced_settings = advanced_settings
-        # User ID associated with the job.
+        # The ID of the user associated with the job.
         self.business_user_id = business_user_id
-        # Caller.
+        # The caller.
         self.caller = caller
-        # NVIDIA driver configuration.
+        # The NVIDIA driver configuration.
         self.driver = driver
-        # Enable job fault tolerance monitoring.
+        # Specifies whether to enable fault tolerance monitoring for the job.
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
-        # Enable OSS append writes.
+        # Specifies whether to enable OSS append writing.
         self.enable_oss_append = enable_oss_append
-        # Enable the job to use RDMA.
+        # Specifies whether to allow the job to use RDMA.
         self.enable_rdma = enable_rdma
-        # Enable computing power health check for the job.
+        # Specifies whether to enable computing power health checks for the job.
         self.enable_sanity_check = enable_sanity_check
-        # Enable the job to use tide resources.
+        # Specifies whether to allow the job to use tide resources.
         self.enable_tide_resource = enable_tide_resource
-        # Specify configuration parameters for fault tolerance monitoring, such as whether to enable log hang-based detection.
+        # The user-specified configuration parameters for fault tolerance monitoring, such as whether to enable log hang-based detection.
         self.error_monitoring_args = error_monitoring_args
-        # Duration in minutes to retain the job after completion.
+        # The retention duration after the job ends, in minutes.
         self.job_reserved_minutes = job_reserved_minutes
-        # Policy for retaining the job after completion.
+        # The retention policy after the job ends.
         self.job_reserved_policy = job_reserved_policy
-        # Job\\"s oversold resource usage method (not accepted, accepted, or only accepted).
+        # The oversold resource usage type for the job, which can be not accepted, accepted, or only accepted.
         self.oversold_type = oversold_type
-        # Workflow ID.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
-        # Configuration parameters for computing power health check.
+        # The configuration parameters for computing power health checks.
         self.sanity_check_args = sanity_check_args
-        # Custom tags.
+        # The custom labels.
         self.tags = tags
 
     def validate(self):

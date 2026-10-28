@@ -11,8 +11,11 @@ class AssignNodeSpec(DaraModel):
         enable_assign_node: bool = None,
         node_names: str = None,
     ):
+        # The anti-affinity node names.
         self.anti_affinity_node_names = anti_affinity_node_names
+        # Specifies whether to enable the specified node.
         self.enable_assign_node = enable_assign_node
+        # The node names.
         self.node_names = node_names
 
     def validate(self):

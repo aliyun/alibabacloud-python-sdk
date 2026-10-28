@@ -19,27 +19,27 @@ class GetAlgorithmResponseBody(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # Algorithm description.
+        # The algorithm description.
         self.algorithm_description = algorithm_description
-        # Algorithm ID.
+        # The algorithm ID.
         self.algorithm_id = algorithm_id
-        # Algorithm name.
+        # The algorithm name.
         self.algorithm_name = algorithm_name
-        # Algorithm provider.
+        # The algorithm provider.
         self.algorithm_provider = algorithm_provider
-        # Display name of the algorithm.
+        # The display name of the algorithm.
         self.display_name = display_name
-        # Time when the algorithm was created.
+        # The time when the algorithm was created. The time follows the ISO 8601 standard in UTC.
         self.gmt_create_time = gmt_create_time
-        # Time when the algorithm was last updated.
+        # The time when the algorithm was last updated. The time follows the ISO 8601 standard in UTC.
         self.gmt_modified_time = gmt_modified_time
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Tenant ID of the algorithm owner.
+        # The ID of the tenant to whom the algorithm belongs.
         self.tenant_id = tenant_id
-        # User ID of the algorithm owner.
+        # The ID of the user to whom the algorithm belongs.
         self.user_id = user_id
-        # Workspace ID.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

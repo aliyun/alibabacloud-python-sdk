@@ -18,15 +18,25 @@ class ResourceInfos(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The ECS instance type information.
         self.ecs_spec = ecs_spec
+        # The GPU card type.
         self.gpu_card_type = gpu_card_type
+        # The machine model.
         self.machine_model = machine_model
+        # The maximum quota.
         self.max_quota = max_quota
+        # The network pod ID.
         self.network_pod_id = network_pod_id
+        # The region ID.
         self.region_id = region_id
+        # The used quota.
         self.used_quota = used_quota
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):

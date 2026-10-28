@@ -12,9 +12,13 @@ class SchedulingRule(DaraModel):
         execute_once: bool = None,
         start_at: str = None,
     ):
+        # The cron tab. Only the minute, hour, day, month, and week fields are currently supported. Second-level configurations are discarded.
         self.cron_tab = cron_tab
+        # The stop time of the task.
         self.end_at = end_at
+        # Specifies whether the task is executed only once.
         self.execute_once = execute_once
+        # The start time of the effective period for the node.
         self.start_at = start_at
 
     def validate(self):

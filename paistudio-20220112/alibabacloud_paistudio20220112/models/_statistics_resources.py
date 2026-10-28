@@ -13,10 +13,15 @@ class StatisticsResources(DaraModel):
         memory: str = None,
         node_num: int = None,
     ):
+        # The amount of CPU resources.
         self.cpu = cpu
+        # The amount of GPU resources.
         self.gpu = gpu
+        # The number of hypernodes.
         self.hyper_node_num = hyper_node_num
+        # The amount of memory resources.
         self.memory = memory
+        # The number of nodes.
         self.node_num = node_num
 
     def validate(self):

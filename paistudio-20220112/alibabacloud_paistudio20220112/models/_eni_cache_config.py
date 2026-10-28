@@ -10,7 +10,9 @@ class EniCacheConfig(DaraModel):
         cache_pool_size: int = None,
         enabled: bool = None,
     ):
+        # The size of the cache pool.
         self.cache_pool_size = cache_pool_size
+        # Specifies whether it is enabled.
         self.enabled = enabled
 
     def validate(self):

@@ -19,16 +19,27 @@ class NodeType(DaraModel):
         system_reserved_cpu: str = None,
         system_reserved_memory: str = None,
     ):
+        # The accelerator type of the resource node specifications (CPU/GPU).
         self.accelerator_type = accelerator_type
+        # The number of allocatable CPU cores.
         self.allocatable_cpu = allocatable_cpu
+        # The allocatable memory size.
         self.allocatable_memory = allocatable_memory
+        # The number of CPU cores.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU memory.
         self.gpumemory = gpumemory
+        # The GPU type.
         self.gputype = gputype
+        # The memory size.
         self.memory = memory
+        # The resource node specifications type.
         self.node_type = node_type
+        # The number of system-reserved CPU cores.
         self.system_reserved_cpu = system_reserved_cpu
+        # The system-reserved memory size.
         self.system_reserved_memory = system_reserved_memory
 
     def validate(self):

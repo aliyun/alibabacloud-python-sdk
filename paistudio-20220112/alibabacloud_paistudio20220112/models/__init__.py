@@ -342,6 +342,8 @@ from ._list_training_jobs_response_body import ListTrainingJobsResponseBodyTrain
 from ._list_training_jobs_response_body import ListTrainingJobsResponseBodyTrainingJobsUserVpc
 from ._list_training_jobs_response_body import ListTrainingJobsResponseBodyTrainingJobs
 from ._tag_resources_request import TagResourcesRequestTag
+from ._update_quota_request import UpdateQuotaRequestClusterSpec
+from ._update_quota_request import UpdateQuotaRequestGracefulUpgradeConfig
 from ._update_training_job_labels_request import UpdateTrainingJobLabelsRequestLabels
 
 __all__ = [
@@ -685,5 +687,7 @@ __all__ = [
     ListTrainingJobsResponseBodyTrainingJobsUserVpc,
     ListTrainingJobsResponseBodyTrainingJobs,
     TagResourcesRequestTag,
+    UpdateQuotaRequestClusterSpec,
+    UpdateQuotaRequestGracefulUpgradeConfig,
     UpdateTrainingJobLabelsRequestLabels
 ]

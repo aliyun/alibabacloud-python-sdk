@@ -10,7 +10,7 @@ class UpdateQuotaResponseBody(DaraModel):
         quota_id: str = None,
         request_id: str = None,
     ):
-        # Quota ID。
+        # The quota ID.
         self.quota_id = quota_id
         # The request ID.
         self.request_id = request_id

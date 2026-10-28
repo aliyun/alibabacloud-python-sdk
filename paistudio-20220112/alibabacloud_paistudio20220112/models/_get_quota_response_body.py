@@ -39,21 +39,21 @@ class GetQuotaResponseBody(DaraModel):
     ):
         # The resource allocation strategy.
         self.allocate_strategy = allocate_strategy
-        # The ID of the quota creator.
+        # The ID of the user who created the quota.
         self.creator_id = creator_id
         # The description of the quota.
         self.description = description
         # The GPU type.
         self.gputype = gputype
-        # The time when the quota was created.
+        # The time when the quota was created, in ISO 8601 format and UTC time zone.
         self.gmt_created_time = gmt_created_time
-        # The time when the quota was last modified.
+        # The time when the quota was last modified, in ISO 8601 format and UTC time zone.
         self.gmt_modified_time = gmt_modified_time
         # The list of high-performance network zones.
         self.hyper_zones = hyper_zones
         # The labels of the quota.
         self.labels = labels
-        # The ID of the latest quota operation.
+        # The ID of the latest operation on the quota.
         self.latest_operation_id = latest_operation_id
         # The minimum quota configuration.
         self.min = min
@@ -61,9 +61,9 @@ class GetQuotaResponseBody(DaraModel):
         self.parent_quota_id = parent_quota_id
         # The queuing strategy for tasks in the quota.
         self.queue_strategy = queue_strategy
-        # The cluster specifications and status composed of resources in the quota.
+        # The specifications and status of the cluster composed of resources in the quota.
         self.quota_cluster = quota_cluster
-        # The quota configuration:
+        # The configuration of the quota:
         # 
         # - VPC information
         # 
@@ -73,25 +73,25 @@ class GetQuotaResponseBody(DaraModel):
         self.quota_config = quota_config
         # The details of the quota.
         self.quota_details = quota_details
-        # The resource quota ID.
+        # The ID of the resource quota.
         self.quota_id = quota_id
         # The name of the resource quota.
         self.quota_name = quota_name
         # The error code.
         self.reason_code = reason_code
-        # The error reason.
+        # The cause of the error.
         self.reason_message = reason_message
         # The request ID.
         self.request_id = request_id
-        # The resource group information associated with the resource quota.
+        # The resource group information corresponding to the resource quota.
         self.resource_group_ids = resource_group_ids
         # The resource type of the quota.
         self.resource_type = resource_type
         # The status of the quota.
         self.status = status
-        # The list of sub-quotas under the quota.
+        # The list of sub-quotas of the quota.
         self.sub_quotas = sub_quotas
-        # The version information. Takes effect when the resource type is ECS.
+        # The version information. This parameter takes effect when the resource type is ECS.
         self.version = version
         # The workspaces associated with the quota.
         self.workspaces = workspaces

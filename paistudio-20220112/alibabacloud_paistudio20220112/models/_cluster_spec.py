@@ -14,8 +14,11 @@ class ClusterSpec(DaraModel):
         data_sources: List[main_models.DataSource] = None,
         image: str = None,
     ):
+        # The cluster type.
         self.cluster_type = cluster_type
+        # The datasource config.
         self.data_sources = data_sources
+        # The container image address.
         self.image = image
 
     def validate(self):

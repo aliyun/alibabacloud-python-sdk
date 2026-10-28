@@ -12,9 +12,13 @@ class AssumeUserInfo(DaraModel):
         security_token: str = None,
         type: str = None,
     ):
+        # The AccessKey ID of the temporary access credential.
         self.access_key_id = access_key_id
+        # The ID of the assumed user.
         self.id = id
+        # The temporary security token.
         self.security_token = security_token
+        # The identity type of the assumed user.
         self.type = type
 
     def validate(self):

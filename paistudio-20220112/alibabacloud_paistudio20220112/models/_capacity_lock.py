@@ -28,25 +28,45 @@ class CapacityLock(DaraModel):
         used_count: int = None,
         zone_id: str = None,
     ):
+        # The number of available instances.
         self.available_count = available_count
+        # The ID of the capacity reservation.
         self.crs_reservation_id = crs_reservation_id
+        # The description of the capacity reservation.
         self.description = description
+        # The expiration time of the capacity reservation.
         self.expire_time = expire_time
+        # The creation time.
         self.gmt_created = gmt_created
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The ID of the capacity reservation lock record.
         self.id = id
+        # The instance type.
         self.instance_type = instance_type
+        # The time of the last reconciliation attempt.
         self.last_reconcile_attempt_time = last_reconcile_attempt_time
+        # The last synchronization time.
         self.last_sync_time = last_sync_time
+        # The lock service provider.
         self.lock_provider = lock_provider
+        # The number of locked instances.
         self.locked_count = locked_count
+        # The operator.
         self.operator = operator
+        # The billing method.
         self.payment_type = payment_type
+        # The ID of the private pool.
         self.private_pool_id = private_pool_id
+        # The number of requested instances.
         self.requested_count = requested_count
+        # The status.
         self.status = status
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The number of used instances.
         self.used_count = used_count
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

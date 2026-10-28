@@ -18,23 +18,22 @@ class CreateResourceGroupRequest(DaraModel):
         user_vpc: main_models.UserVpc = None,
         version: str = None,
     ):
-        # Compute resource type for the resource group.
+        # The compute resource type of the ResourceGroup.
         self.computing_resource_provider = computing_resource_provider
-        # Resource group description.
+        # The description of the ResourceGroup.
         self.description = description
-        # Resource group name.
+        # The name of the ResourceGroup.
         self.name = name
-        # Resource type. Valid values:
+        # The resource type list. Valid values:
         # 
         # - Ecs: general computing resources
-        # 
-        # - Lingjun: Lingjun resources
+        # - Lingjun: Lingjun AI Compute resources
         self.resource_type = resource_type
-        # List of tags to add. Maximum 20 items.
+        # The list of tags to add, containing up to 20 entries.
         self.tag = tag
-        # VPC connectivity information for the resource group.
+        # The VPC peering information of the ResourceGroup.
         self.user_vpc = user_vpc
-        # Resource group version. This parameter takes effect only when the resource type is ECS.
+        # The resource group version. This parameter only takes effect when the resource type is ECS.
         self.version = version
 
     def validate(self):
@@ -110,9 +109,9 @@ class CreateResourceGroupRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the instance. N ranges from 1 to 20.
+        # The tag key of the instance. The value of N ranges from 1 to 20.
         self.key = key
-        # Tag value for the resource group. N ranges from 1 to 20.
+        # The tag value of the instance. The value of N ranges from 1 to 20.
         self.value = value
 
     def validate(self):

@@ -13,9 +13,9 @@ class ListTrainingJobInstanceMetricsResponseBody(DaraModel):
         instance_metrics: List[main_models.ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics] = None,
         request_id: str = None,
     ):
-        # List of all monitoring metrics that match the filter condition.
+        # The list of all monitoring metrics that match the filter conditions.
         self.instance_metrics = instance_metrics
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics(DaraModel):
         metrics: List[main_models.ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics] = None,
         node_name: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # List of instance monitoring metrics.
+        # The list of instance monitoring metrics.
         self.metrics = metrics
-        # Node name.
+        # The node name.
         self.node_name = node_name
 
     def validate(self):
@@ -112,9 +112,9 @@ class ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics(DaraModel
         time: str = None,
         value: float = None,
     ):
-        # UTC time in ISO 8601 format.
+        # The UTC time in ISO 8601 format.
         self.time = time
-        # Metric value.
+        # The metric value.
         self.value = value
 
     def validate(self):

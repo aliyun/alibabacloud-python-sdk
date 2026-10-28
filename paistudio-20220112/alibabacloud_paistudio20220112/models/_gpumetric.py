@@ -12,9 +12,13 @@ class GPUMetric(DaraModel):
         status: int = None,
         usage_rate: float = None,
     ):
+        # The GPU index.
         self.index = index
+        # The GPU model.
         self.model = model
+        # The card status.
         self.status = status
+        # The GPU utilization.
         self.usage_rate = usage_rate
 
     def validate(self):

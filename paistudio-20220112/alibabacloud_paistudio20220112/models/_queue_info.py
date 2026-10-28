@@ -32,28 +32,53 @@ class QueueInfo(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error type.
         self.code_type = code_type
+        # The task creation time.
         self.gmt_created_time = gmt_created_time
+        # The dequeue time.
         self.gmt_dequeued_time = gmt_dequeued_time
+        # The enqueue time.
         self.gmt_enqueued_time = gmt_enqueued_time
+        # The queue position change time.
         self.gmt_position_modified_time = gmt_position_modified_time
+        # The name of the underlying QueueUnit.
         self.name = name
+        # The queue position.
         self.position = position
+        # The task priority.
         self.priority = priority
+        # The dequeue strategy of the queue.
         self.queue_strategy = queue_strategy
+        # The quota used by the task.
         self.quota_id = quota_id
+        # The error message.
         self.reason = reason
+        # The resource usage.
         self.resource = resource
+        # The status.
         self.status = status
+        # Specifies whether the task uses idle resources. Valid values:
+        # - true: Used.
+        # - false: Not used.
         self.use_oversold_resource = use_oversold_resource
+        # The creator information.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
+        # The task ID.
         self.workload_id = workload_id
+        # The task name.
         self.workload_name = workload_name
+        # The specific status of DLC, DSW, or EAS.
         self.workload_status = workload_status
+        # The task type.
         self.workload_type = workload_type
+        # The workspace of the task.
         self.workspace_id = workspace_id
+        # The name of the workspace where the task resides.
         self.workspace_name = workspace_name
 
     def validate(self):

@@ -94,24 +94,27 @@ class ListTrainingJobsResponseBodyTrainingJobs(DaraModel):
         user_vpc: main_models.ListTrainingJobsResponseBodyTrainingJobsUserVpc = None,
         workspace_id: str = None,
     ):
-        # The algorithm name.
+        # The name of the algorithm.
         self.algorithm_name = algorithm_name
         # The algorithm provider.
         self.algorithm_provider = algorithm_provider
         # The algorithm version.
         self.algorithm_version = algorithm_version
+        # The specified node configuration.
         self.assign_node_spec = assign_node_spec
         # The compute resource configuration.
         self.compute_resource = compute_resource
+        # The credential configuration.
         self.credential_config = credential_config
+        # The DLC job ID.
         self.dlc_job_id = dlc_job_id
         # The list of environment variables.
         self.environments = environments
         # The experiment configuration associated with the training job.
         self.experiment_config = experiment_config
-        # The time when the training job was created.
+        # The time when the training job was created, in ISO 8601 format and UTC.
         self.gmt_create_time = gmt_create_time
-        # The time when the training job status was last updated.
+        # The time when the training job status was updated, in ISO 8601 format and UTC.
         self.gmt_modified_time = gmt_modified_time
         # The hyperparameter settings for training.
         self.hyper_parameters = hyper_parameters
@@ -127,19 +130,19 @@ class ListTrainingJobsResponseBodyTrainingJobs(DaraModel):
         self.python_requirements = python_requirements
         # The status code of the training job.
         self.reason_code = reason_code
-        # The error message of the training job.
+        # The error message for the training job.
         self.reason_message = reason_message
-        # The role ARN used for delegated authorization.
+        # The ARN of the role used for authorization.
         self.role_arn = role_arn
-        # The scheduling configuration of the training job.
+        # The scheduling configuration for the training job.
         self.scheduler = scheduler
         # The job status.
         self.status = status
-        # The list of training job status transitions.
+        # The list of status transitions for the training job.
         self.status_transitions = status_transitions
         # The description of the training job.
         self.training_job_description = training_job_description
-        # The training job ID.
+        # The ID of the training job.
         self.training_job_id = training_job_id
         # The name of the training job.
         self.training_job_name = training_job_name
@@ -417,7 +420,7 @@ class ListTrainingJobsResponseBodyTrainingJobsUserVpc(DaraModel):
         self.security_group_id = security_group_id
         # The vSwitch ID.
         self.switch_id = switch_id
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -473,13 +476,13 @@ class ListTrainingJobsResponseBodyTrainingJobsStatusTransitions(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The end time of the status.
+        # The end time of the status, in ISO 8601 format and UTC.
         self.end_time = end_time
         # The status code.
         self.reason_code = reason_code
         # The status update message.
         self.reason_message = reason_message
-        # The start time of the status.
+        # The start time of the status, in ISO 8601 format and UTC.
         self.start_time = start_time
         # The status of the training job.
         self.status = status
@@ -533,7 +536,7 @@ class ListTrainingJobsResponseBodyTrainingJobsScheduler(DaraModel):
         self,
         max_running_time_in_seconds: int = None,
     ):
-        # The maximum training runtime in seconds. A value of 0 indicates no limit on the maximum runtime.
+        # The maximum training duration, in seconds. A value of 0 indicates that the maximum running time is not limited.
         self.max_running_time_in_seconds = max_running_time_in_seconds
 
     def validate(self):
@@ -569,9 +572,11 @@ class ListTrainingJobsResponseBodyTrainingJobsOutputChannels(DaraModel):
         self.dataset_id = dataset_id
         # The output data name.
         self.name = name
-        # The output data URI.
+        # The URI of the output data.
         self.output_uri = output_uri
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # The data version name.
         self.version_name = version_name
 
     def validate(self):
@@ -666,11 +671,13 @@ class ListTrainingJobsResponseBodyTrainingJobsInputChannels(DaraModel):
     ):
         # The dataset ID.
         self.dataset_id = dataset_id
-        # The input data URI.
+        # The URI of the input data.
         self.input_uri = input_uri
         # The input data name.
         self.name = name
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # The data version name.
         self.version_name = version_name
 
     def validate(self):
@@ -805,9 +812,9 @@ class ListTrainingJobsResponseBodyTrainingJobsComputeResource(DaraModel):
         self.ecs_count = ecs_count
         # The ECS instance type.
         self.ecs_spec = ecs_spec
-        # The number of resource quota instances.
+        # The number of instances in the resource quota.
         self.instance_count = instance_count
-        # The resource quota instance specification.
+        # The instance configuration for the resource quota.
         self.instance_spec = instance_spec
         # The resource quota ID.
         self.resource_id = resource_id
@@ -875,15 +882,15 @@ class ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec(DaraMo
         memory: str = None,
         shared_memory: str = None,
     ):
-        # The number of CPU cores of the instance.
+        # The number of CPU cores for the instance.
         self.cpu = cpu
-        # The number of GPUs of the instance.
+        # The number of GPUs for the instance.
         self.gpu = gpu
         # The GPU type of the instance.
         self.gputype = gputype
-        # The memory size of the instance. Unit: GiB.
+        # The memory size of the instance, in GiB.
         self.memory = memory
-        # The shared memory size of the instance. Unit: GiB.
+        # The shared memory size of the instance, in GiB.
         self.shared_memory = shared_memory
 
     def validate(self):

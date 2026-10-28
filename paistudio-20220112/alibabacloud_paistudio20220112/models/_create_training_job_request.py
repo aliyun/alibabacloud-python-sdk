@@ -34,39 +34,41 @@ class CreateTrainingJobRequest(DaraModel):
         user_vpc: main_models.CreateTrainingJobRequestUserVpc = None,
         workspace_id: str = None,
     ):
-        # The algorithm name.
+        # The name of the algorithm.
         self.algorithm_name = algorithm_name
-        # The algorithm provider.
+        # The provider of the algorithm.
         self.algorithm_provider = algorithm_provider
         # The algorithm configuration for the training job.
         self.algorithm_spec = algorithm_spec
-        # The algorithm version.
+        # The version of the algorithm.
         self.algorithm_version = algorithm_version
+        # The specified node configuration.
         self.assign_node_spec = assign_node_spec
-        # The code directory for the training job.
+        # The code configuration for the training job.
         self.code_dir = code_dir
         # The compute resource configuration.
         self.compute_resource = compute_resource
+        # The credential configuration.
         self.credential_config = credential_config
         # The environment variables for the training job.
         self.environments = environments
-        # The experiment configuration associated with the training job.
+        # The associated experiment configuration for the training job.
         self.experiment_config = experiment_config
         # The training hyperparameter settings.
         self.hyper_parameters = hyper_parameters
-        # The training input data configuration.
+        # The input data configuration for training.
         self.input_channels = input_channels
-        # The training job labels.
+        # The labels of the training job.
         self.labels = labels
-        # The training output data configuration.
+        # The output data configuration for training.
         self.output_channels = output_channels
         # The priority of the training job.
         self.priority = priority
         # The Python package configuration for the training job.
         self.python_requirements = python_requirements
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role. Format: acs:ram::$accountID:role/$roleName.
+        # The ARN of the specified role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
-        # The training job scheduling configuration.
+        # The scheduling configuration for the training job.
         self.scheduler = scheduler
         # The additional parameter settings for the training node.
         self.settings = settings
@@ -78,7 +80,7 @@ class CreateTrainingJobRequest(DaraModel):
         self.training_job_name = training_job_name
         # The VPC configuration.
         self.user_vpc = user_vpc
-        # The workspace ID.
+        # The ID of the workspace.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -306,15 +308,15 @@ class CreateTrainingJobRequestUserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The default route interface. eth0 indicates that the default route uses the PAI VPC. eth1 indicates that the default route uses the user VPC. Default value: eth0.
+        # The default route interface. A value of eth0 indicates that the default route uses the PAI VPC. A value of eth1 indicates that the default route uses the user VPC. Default value: eth0.
         self.default_route = default_route
         # The extended CIDR block configuration.
         self.extended_cidrs = extended_cidrs
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.switch_id = switch_id
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -367,9 +369,9 @@ class CreateTrainingJobRequestScheduler(DaraModel):
         max_running_time_in_minutes: int = None,
         max_running_time_in_seconds: int = None,
     ):
-        # The maximum training runtime in minutes. A value of 0 indicates no limit on the maximum runtime.
+        # The maximum training duration, in minutes. A value of 0 indicates that the maximum duration is not limited.
         self.max_running_time_in_minutes = max_running_time_in_minutes
-        # The maximum training runtime in seconds. A value of 0 indicates no limit on the maximum runtime.
+        # The maximum training duration, in seconds. A value of 0 indicates that the maximum duration is not limited.
         self.max_running_time_in_seconds = max_running_time_in_seconds
 
     def validate(self):
@@ -407,13 +409,15 @@ class CreateTrainingJobRequestOutputChannels(DaraModel):
         role_arn: str = None,
         version_name: str = None,
     ):
-        # The dataset ID.
+        # The ID of the dataset.
         self.dataset_id = dataset_id
-        # The output data name.
+        # The name of the output data.
         self.name = name
-        # The output data URI.
+        # The output data configuration.
         self.output_uri = output_uri
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # The name of the data version.
         self.version_name = version_name
 
     def validate(self):
@@ -507,15 +511,17 @@ class CreateTrainingJobRequestInputChannels(DaraModel):
         role_arn: str = None,
         version_name: str = None,
     ):
-        # The dataset ID.
+        # The ID of the dataset.
         self.dataset_id = dataset_id
-        # The input data URI.
+        # The URI of the input data.
         self.input_uri = input_uri
-        # The input data name.
+        # The name of the input data.
         self.name = name
-        # The input data parameter settings.
+        # The parameter settings for the input data.
         self.options = options
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # The name of the data version.
         self.version_name = version_name
 
     def validate(self):
@@ -574,9 +580,9 @@ class CreateTrainingJobRequestHyperParameters(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The parameter name.
+        # The name of the parameter.
         self.name = name
-        # The parameter value.
+        # The value of the parameter.
         self.value = value
 
     def validate(self):
@@ -610,7 +616,7 @@ class CreateTrainingJobRequestExperimentConfig(DaraModel):
         self,
         experiment_id: str = None,
     ):
-        # The experiment ID associated with the training job.
+        # The ID of the experiment associated with the training job.
         self.experiment_id = experiment_id
 
     def validate(self):
@@ -648,11 +654,11 @@ class CreateTrainingJobRequestComputeResource(DaraModel):
         self.ecs_count = ecs_count
         # The ECS instance type.
         self.ecs_spec = ecs_spec
-        # The number of instances used from the resource quota.
+        # The number of instances used in the resource quota.
         self.instance_count = instance_count
-        # The instance specification for the resource quota.
+        # The instance configuration for the resource quota.
         self.instance_spec = instance_spec
-        # The resource quota ID.
+        # The ID of the resource quota.
         self.resource_id = resource_id
         # The spot instance configuration.
         self.spot_spec = spot_spec
@@ -726,11 +732,11 @@ class CreateTrainingJobRequestComputeResourceSpotSpec(DaraModel):
         spot_discount_limit: float = None,
         spot_strategy: str = None,
     ):
-        # The maximum hourly price discount for the instance. This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
+        # Sets the maximum hourly price discount for the instance. This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
         self.spot_discount_limit = spot_discount_limit
-        # The bidding strategy for the spot instance. Valid values:
-        # - SpotWithPriceLimit: a spot instance with a maximum price limit.
-        # - SpotAsPriceGo: the system automatically bids at the current market price.
+        # The preemption policy for the instance. Valid values:
+        # - SpotWithPriceLimit: Sets a maximum price for the spot instance.
+        # - SpotAsPriceGo: The system automatically bids and follows the actual market price.
         self.spot_strategy = spot_strategy
 
     def validate(self):
@@ -772,11 +778,11 @@ class CreateTrainingJobRequestComputeResourceInstanceSpec(DaraModel):
         self.cpu = cpu
         # The number of GPUs for the instance.
         self.gpu = gpu
-        # The GPU type for the instance.
+        # The GPU type of the instance.
         self.gputype = gputype
-        # The memory size of the instance. Unit: GiB.
+        # The memory size of the instance, in GiB.
         self.memory = memory
-        # The shared memory size of the instance. Unit: GB.
+        # The shared memory size of the instance, in GB.
         self.shared_memory = shared_memory
 
     def validate(self):

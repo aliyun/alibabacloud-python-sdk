@@ -1,3 +1,9 @@
+2026-10-28 Version: 2.6.3
+- Update API UpdateQuota: add request parameters body.ClusterSpec.
+- Update API UpdateQuota: add request parameters body.EnableGracefulUpgrade.
+- Update API UpdateQuota: add request parameters body.GracefulUpgradeConfig.
+
+
 2026-09-08 Version: 2.6.2
 - Update API GetQuota: add response parameters Body.GPUType.
 

@@ -12,9 +12,13 @@ class SpotPriceItem(DaraModel):
         timestamp: str = None,
         zone_id: str = None,
     ):
+        # The spot instance type.
         self.instance_type = instance_type
+        # The spot instance discount.
         self.spot_discount = spot_discount
+        # The timestamp of the current spot instance price.
         self.timestamp = timestamp
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

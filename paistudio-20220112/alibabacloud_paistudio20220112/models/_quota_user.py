@@ -13,9 +13,13 @@ class QuotaUser(DaraModel):
         username: str = None,
         workload_count: int = None,
     ):
+        # The resources.
         self.resources = resources
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.username = username
+        # The workload count.
         self.workload_count = workload_count
 
     def validate(self):
@@ -64,7 +68,9 @@ class QuotaUserResources(DaraModel):
         submitted: main_models.ResourceAmount = None,
         used: main_models.ResourceAmount = None,
     ):
+        # The submitted resources.
         self.submitted = submitted
+        # The used resources.
         self.used = used
 
     def validate(self):

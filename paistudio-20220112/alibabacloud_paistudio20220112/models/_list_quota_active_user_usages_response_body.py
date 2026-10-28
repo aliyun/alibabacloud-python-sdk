@@ -17,7 +17,7 @@ class ListQuotaActiveUserUsagesResponseBody(DaraModel):
     ):
         # The list of user resource usage details.
         self.quota_user_usage = quota_user_usage
-        # The user usage information.
+        # The list of user resource usage details.
         self.quota_user_usages = quota_user_usages
         # Id of the request
         self.request_id = request_id

@@ -20,14 +20,23 @@ class NodeSnapshot(DaraModel):
         workload_num: int = None,
         workloads: List[main_models.NodeSnapshotWorkloads] = None,
     ):
+        # The number of workloads using ancestor quotas.
         self.ancestor_quota_workload_num = ancestor_quota_workload_num
+        # The number of workloads using descendant quotas.
         self.descendant_quota_workload_num = descendant_quota_workload_num
+        # The node name.
         self.node_name = node_name
+        # The CPU usage.
         self.request_cpu = request_cpu
+        # The GPU usage.
         self.request_gpu = request_gpu
+        # The memory usage.
         self.request_memory = request_memory
+        # The number of workloads using the current quota.
         self.self_quota_workload_num = self_quota_workload_num
+        # The number of node workloads.
         self.workload_num = workload_num
+        # The node workload snapshot.
         self.workloads = workloads
 
     def validate(self):
@@ -113,8 +122,11 @@ class NodeSnapshotWorkloads(DaraModel):
         workload_id: str = None,
         workload_type: str = None,
     ):
+        # The corresponding queue unit name.
         self.name = name
+        # The workload ID.
         self.workload_id = workload_id
+        # The workload type.
         self.workload_type = workload_type
 
     def validate(self):

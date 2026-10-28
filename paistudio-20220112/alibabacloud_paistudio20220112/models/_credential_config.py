@@ -14,8 +14,11 @@ class CredentialConfig(DaraModel):
         credential_config_items: List[main_models.CredentialConfigItem] = None,
         enable_credential_inject: bool = None,
     ):
+        # The Alibaba Cloud environment role identifier.
         self.aliyun_env_role_key = aliyun_env_role_key
+        # The credential configuration items.
         self.credential_config_items = credential_config_items
+        # Specifies whether credential injection is enabled.
         self.enable_credential_inject = enable_credential_inject
 
     def validate(self):

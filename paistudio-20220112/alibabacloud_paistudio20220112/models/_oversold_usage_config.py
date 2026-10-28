@@ -10,7 +10,9 @@ class OversoldUsageConfig(DaraModel):
         disabled: bool = None,
         disabled_by: str = None,
     ):
+        # Indicates whether it is disabled.
         self.disabled = disabled
+        # The user who disabled it.
         self.disabled_by = disabled_by
 
     def validate(self):

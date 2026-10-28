@@ -13,7 +13,9 @@ class QuotaMetric(DaraModel):
         gputype: str = None,
         metrics: List[main_models.Metric] = None,
     ):
+        # The GPU type.
         self.gputype = gputype
+        # The performance metrics.
         self.metrics = metrics
 
     def validate(self):

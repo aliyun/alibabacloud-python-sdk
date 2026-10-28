@@ -14,8 +14,11 @@ class ResourceGroupMetric(DaraModel):
         metrics: List[main_models.Metric] = None,
         resource_group_id: str = None,
     ):
+        # The GPU type.
         self.gpu_type = gpu_type
+        # The performance metrics.
         self.metrics = metrics
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

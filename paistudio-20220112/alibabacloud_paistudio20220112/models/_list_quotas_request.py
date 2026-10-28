@@ -28,33 +28,35 @@ class ListQuotasRequest(DaraModel):
     ):
         # The cluster type.
         self.cluster_type = cluster_type
+        # The GPU type.
         self.gputype = gputype
+        # Specifies whether the quota contains resources.
         self.has_resource = has_resource
-        # Filters by label key and value. Separate multiple labels with commas (,).
+        # Filters the results by label keys and values. Separate multiple labels with commas (,).
         self.labels = labels
-        # The display mode. Valid values: tree or list.
+        # The display mode. Valid values: tree and list.
         self.layout_mode = layout_mode
-        # The sort order. Valid values: desc or asc.
+        # The sort order. Valid values: desc and asc.
         self.order = order
-        # The page number to query. Minimum value: 1.
+        # The number of the page to return. Minimum value: 1.
         self.page_number = page_number
-        # The number of entries per page. Minimum value: 1.
+        # The number of entries to return on each page. Minimum value: 1.
         self.page_size = page_size
-        # Filters by ParentQuotaId:
+        # Filters the results by ParentQuotaId.
         # 
-        # - Not specified: lists all quotas under the tenant, including root quotas and child quotas.
+        # - If this parameter is not specified, all quotas under the tenant are listed, including root quotas and child quotas.
         # 
-        # - Empty string: lists all root quotas.
+        # - If this parameter is left empty, all root quotas are listed.
         # 
-        # - Non-empty string: lists all child quotas of the specified ParentQuotaId.
+        # - If this parameter is specified, all child quotas of the specified ParentQuotaId are listed.
         self.parent_quota_id = parent_quota_id
-        # Comma-separated QuotaIds for filtering. Only exact match is supported. A maximum of 100 IDs can be specified at a time.
+        # Filters the results by QuotaIds. Separate multiple IDs with commas (,). Only exact matching is supported. A maximum of 100 IDs can be specified at a time.
         self.quota_ids = quota_ids
-        # Filters by QuotaName. Fuzzy match is supported.
+        # Filters the results by QuotaName. Fuzzy matching is supported.
         self.quota_name = quota_name
-        # The resource type of the quota (Lingjun/ECS/ACS). Default value: ECS.
+        # The resource type of the quota. Valid values: Lingjun, ECS, and ACS. Default value: ECS.
         self.resource_type = resource_type
-        # The field by which to sort the results. Valid values:
+        # The field by which to sort the returned results. Valid values:
         # 
         # - QuotaName
         # 
@@ -70,15 +72,15 @@ class ListQuotasRequest(DaraModel):
         # 
         # - GmtModifiedTime
         self.sort_by = sort_by
-        # Comma-separated quota statuses for filtering. Only exact match is supported.
+        # Filters the results by quota statuses. Separate multiple statuses with commas (,). Only exact matching is supported.
         self.statuses = statuses
         # Specifies whether to display details. Valid values:
         # - true: Displays details.
         # - false: Does not display details.
         self.verbose = verbose
-        # Filters by version information.
+        # Filters the results by version information.
         self.versions = versions
-        # Comma-separated WorkspaceIds for filtering. Only exact match is supported. A maximum of 10 IDs can be specified at a time.
+        # Filters the results by WorkspaceIds. Separate multiple IDs with commas (,). Only exact matching is supported. A maximum of 10 IDs can be specified at a time.
         self.workspace_ids = workspace_ids
         # The name of the associated workspace.
         self.workspace_name = workspace_name

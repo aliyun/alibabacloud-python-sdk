@@ -5210,8 +5210,14 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateQuotaResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.cluster_spec):
+            body['ClusterSpec'] = request.cluster_spec
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.enable_graceful_upgrade):
+            body['EnableGracefulUpgrade'] = request.enable_graceful_upgrade
+        if not DaraCore.is_null(request.graceful_upgrade_config):
+            body['GracefulUpgradeConfig'] = request.graceful_upgrade_config
         if not DaraCore.is_null(request.labels):
             body['Labels'] = request.labels
         if not DaraCore.is_null(request.propagate_default_gpudriver):
@@ -5251,8 +5257,14 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateQuotaResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.cluster_spec):
+            body['ClusterSpec'] = request.cluster_spec
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.enable_graceful_upgrade):
+            body['EnableGracefulUpgrade'] = request.enable_graceful_upgrade
+        if not DaraCore.is_null(request.graceful_upgrade_config):
+            body['GracefulUpgradeConfig'] = request.graceful_upgrade_config
         if not DaraCore.is_null(request.labels):
             body['Labels'] = request.labels
         if not DaraCore.is_null(request.propagate_default_gpudriver):

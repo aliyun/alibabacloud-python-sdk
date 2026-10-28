@@ -12,13 +12,13 @@ class SpotStockInternalInfo(DaraModel):
         hpn_zone: str = None,
         total_quantity: int = None,
     ):
-        # The number of available Spot Instances.
+        # The available quantity.
         self.available_quantity = available_quantity
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The ID of the high-performance network (HPN) zone.
+        # The high-performance network zone.
         self.hpn_zone = hpn_zone
-        # The total number of Spot Instances.
+        # The total quantity.
         self.total_quantity = total_quantity
 
     def validate(self):

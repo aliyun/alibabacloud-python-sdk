@@ -36,58 +36,61 @@ class GetResourceGroupMachineGroupResponseBody(DaraModel):
         system_reserved_memory: str = None,
         tags: List[main_models.GetResourceGroupMachineGroupResponseBodyTags] = None,
     ):
+        # The number of allocatable CPU cores on each machine in the machine group.
         self.allocatable_cpu = allocatable_cpu
+        # The allocatable memory size on each machine in the machine group.
         self.allocatable_memory = allocatable_memory
-        # The total number of CPU cores per machine in the machine group.
+        # The total number of CPU cores on each machine in the machine group.
         self.cpu = cpu
-        # The default GPU driver version per machine in the machine group.
+        # The default GPU driver version of each machine in the machine group.
         self.default_driver = default_driver
         # The number of ECS instances.
         self.ecs_count = ecs_count
-        # The ECS spec.
+        # The ECS instance type.
         self.ecs_spec = ecs_spec
-        # The creation time of the machine group.
+        # The time when the machine group was created.
         self.gmt_created_time = gmt_created_time
         # The expiration time of the machine group.
         self.gmt_expired_time = gmt_expired_time
-        # The last modification time of the machine group.
+        # The time when the machine group was updated.
         self.gmt_modified_time = gmt_modified_time
-        # The start time of the machine group.
+        # The time when the machine group was started.
         self.gmt_started_time = gmt_started_time
-        # The number of GPUs per machine in the machine group.
+        # The number of GPU cores on each machine in the machine group.
         self.gpu = gpu
-        # The GPU type per machine in the machine group.
+        # The GPU type of each machine in the machine group.
         self.gpu_type = gpu_type
         # The ID of the machine group.
         self.machine_group_id = machine_group_id
-        # The amount of memory per machine in the machine group.
+        # The memory size of each machine in the machine group.
         self.memory = memory
         # The name of the machine group.
         self.name = name
-        # The payment duration. When PaymentDurationUnit is set to Month, valid values are: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+        # The billing duration. If PaymentDurationUnit is set to Month, valid values are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
         self.payment_duration = payment_duration
-        # The unit of the billing cycle for the machine group.
+        # The billing duration unit of the machine group.
         self.payment_duration_unit = payment_duration_unit
-        # The payment type.
+        # The billing method.
         self.payment_type = payment_type
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the resource group. This ID is globally unique and can be used to retrieve information about the resource group.
+        # The ID of the resource group. Each resource group has a globally unique ID. You can use the resource group ID to retrieve the information about the resource group.
         self.resource_group_id = resource_group_id
-        # The status of the machine group.
-        # Valid values:
-        # Creating: The machine group is being created.
-        # Ready: The machine group is running.
-        # Expiring: The machine group is about to expire.
-        # Expired: The machine group has expired.
-        # Stopping: The machine group is being stopped.
-        # Stopped: The machine group has been stopped.
+        # The instance status. Valid values:
+        # - Creating: The instance is being created.
+        # - Ready: The instance is running.
+        # - Expiring: The instance is about to expire.
+        # - Expired: The instance has expired.
+        # - Stopping: The instance is being stopped.
+        # - Stopped: The instance is stopped.
         self.status = status
-        # The GPU driver versions supported by the machines in the machine group.
+        # The GPU driver versions supported by nodes in the machine group.
         self.supported_drivers = supported_drivers
+        # The number of system-reserved CPU cores on each machine in the machine group.
         self.system_reserved_cpu = system_reserved_cpu
+        # The size of system-reserved memory on each machine in the machine group.
         self.system_reserved_memory = system_reserved_memory
-        # The list of tags attached to the machine group.
+        # The list of tags to query. The value is a JSON string that contains up to 20 tags.
         self.tags = tags
 
     def validate(self):
@@ -268,9 +271,9 @@ class GetResourceGroupMachineGroupResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The key of the tag. Valid values of N: 1 to 20.
         self.tag_key = tag_key
-        # The tag value.
+        # The value of the tag. Valid values of N: 1 to 20.
         self.tag_value = tag_value
 
     def validate(self):

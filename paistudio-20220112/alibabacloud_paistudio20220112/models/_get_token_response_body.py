@@ -10,9 +10,9 @@ class GetTokenResponseBody(DaraModel):
         request_id: str = None,
         token: str = None,
     ):
-        # ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Share token for the training task. Use this token as the Token parameter in the GetJob API to view details of the shared task.
+        # The job sharing token. You can use this token as the Token parameter of the GetJob API to view information about the shared job.
         self.token = token
 
     def validate(self):

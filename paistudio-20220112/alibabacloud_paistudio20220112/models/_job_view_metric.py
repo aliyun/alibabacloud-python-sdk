@@ -28,23 +28,41 @@ class JobViewMetric(DaraModel):
         total_memory: int = None,
         user_id: str = None,
     ):
+        # The CPU utilization.
         self.cpuusage_rate = cpuusage_rate
+        # The disk read rate.
         self.disk_read_rate = disk_read_rate
+        # The disk write rate.
         self.disk_write_rate = disk_write_rate
+        # The GPU utilization.
         self.gpuusage_rate = gpuusage_rate
+        # The job ID.
         self.job_id = job_id
+        # The job type, such as DLC or DSW.
         self.job_type = job_type
+        # The memory utilization.
         self.memory_usage_rate = memory_usage_rate
+        # The network inbound rate.
         self.network_input_rate = network_input_rate
+        # The network outbound rate.
         self.network_output_rate = network_output_rate
+        # The node list.
         self.node_names = node_names
+        # The number of requested CPU cores.
         self.request_cpu = request_cpu
+        # The number of requested GPU cores.
         self.request_gpu = request_gpu
+        # The requested memory in KB.
         self.request_memory = request_memory
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The total number of CPU cores.
         self.total_cpu = total_cpu
+        # The total number of GPU cards.
         self.total_gpu = total_gpu
+        # The total memory in KB.
         self.total_memory = total_memory
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

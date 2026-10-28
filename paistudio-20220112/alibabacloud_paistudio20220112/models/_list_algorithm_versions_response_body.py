@@ -14,7 +14,7 @@ class ListAlgorithmVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of algorithm version details.
+        # The list of algorithm version details.
         self.algorithm_versions = algorithm_versions
         # The request ID.
         self.request_id = request_id
@@ -81,13 +81,13 @@ class ListAlgorithmVersionsResponseBodyAlgorithmVersions(DaraModel):
         self.algorithm_provider = algorithm_provider
         # The algorithm version.
         self.algorithm_version = algorithm_version
-        # The time when the algorithm was created.
+        # The time when the algorithm was created, in ISO 8601 format, in UTC.
         self.gmt_create_time = gmt_create_time
-        # The time when the algorithm was last updated.
+        # The time when the algorithm was last updated, in ISO 8601 format, in UTC.
         self.gmt_modified_time = gmt_modified_time
-        # The tenant ID that owns the algorithm.
+        # The ID of the tenant to which the algorithm belongs.
         self.tenant_id = tenant_id
-        # The user ID that owns the algorithm.
+        # The ID of the user to which the algorithm belongs.
         self.user_id = user_id
 
     def validate(self):

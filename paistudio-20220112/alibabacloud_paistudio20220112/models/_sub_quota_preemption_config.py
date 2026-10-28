@@ -12,7 +12,9 @@ class SubQuotaPreemptionConfig(DaraModel):
         preempted_priority_upper_bound: int = None,
         preempted_products: List[str] = None,
     ):
+        # The maximum priority of preempted nodes.
         self.preempted_priority_upper_bound = preempted_priority_upper_bound
+        # The preemptable node types.
         self.preempted_products = preempted_products
 
     def validate(self):

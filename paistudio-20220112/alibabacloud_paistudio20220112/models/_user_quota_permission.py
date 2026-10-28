@@ -12,7 +12,9 @@ class UserQuotaPermission(DaraModel):
         permissions: List[str] = None,
         quota_id: str = None,
     ):
+        # The permissions.
         self.permissions = permissions
+        # Quota ID
         self.quota_id = quota_id
 
     def validate(self):

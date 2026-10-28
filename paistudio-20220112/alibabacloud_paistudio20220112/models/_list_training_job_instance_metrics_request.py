@@ -13,37 +13,29 @@ class ListTrainingJobInstanceMetricsRequest(DaraModel):
         start_time: str = None,
         time_step: str = None,
     ):
-        # End time in UTC, in ISO 8601 format. If empty, use the current time.
+        # The end UTC time in ISO 8601 format. If left empty, the current time is used.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Metric type:
-        # 
-        # - GpuCoreUsage: POD GPU usage
-        # 
-        # - GpuMemoryUsage: POD GPU memory usage
-        # 
-        # - CpuCoreUsage: POD CPU usage
-        # 
-        # - MemoryUsage: POD memory usage
-        # 
-        # - NetworkInputRate: POD network input rate (TCP/IP) (MB/s)
-        # 
-        # - NetworkOutputRate: POD network output rate (TCP/IP) (MB/s)
-        # 
-        # - DiskReadRate: POD disk read rate (MB/s)
-        # 
-        # - DiskWriteRate: POD disk write rate (MB/s)
+        # The metric type. Valid values:
+        # - GpuCoreUsage: POD GPU utilization.
+        # - GpuMemoryUsage: POD GPU memory utilization.
+        # - CpuCoreUsage: POD CPU utilization.
+        # - MemoryUsage: POD memory utilization.
+        # - NetworkInputRate: POD network write rate (TCP/IP) (MB/s).
+        # - NetworkOutputRate: POD network read rate (TCP/IP) (MB/s).
+        # - DiskReadRate: POD disk read rate (MB/s).
+        # - DiskWriteRate: POD disk write rate (MB/s).
         # 
         # This parameter is required.
         self.metric_type = metric_type
-        # Start time in UTC, in ISO 8601 format. If empty, use the job start time.
+        # The start UTC time in ISO 8601 format. If left empty, the job start time is used.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
-        # Time interval. Valid values: 1h, 30m, 5m, 10s.
+        # The metric collection interval. Valid values: 1h, 30m, 5m, and 10s. h indicates hours, m indicates minutes, and s indicates seconds.
         self.time_step = time_step
 
     def validate(self):

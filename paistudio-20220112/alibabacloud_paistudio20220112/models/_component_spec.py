@@ -20,17 +20,29 @@ class ComponentSpec(DaraModel):
         output_channels: List[main_models.Channel] = None,
         resource_requirements: List[main_models.ConditionExpression] = None,
     ):
+        # The code directory configuration.
         self.code_dir = code_dir
+        # The command used for submit the job.
+        # 
         # This parameter is required.
         self.command = command
+        # The hype parameter used by the algorithm.
         self.hyper_parameters = hyper_parameters
+        # The docker image used by the job of this algorithm.
+        # 
         # This parameter is required.
         self.image = image
+        # The input for the algorithm.
         self.input_channels = input_channels
+        # Job type of the training job while running the algorithm.
+        # 
         # This parameter is required.
         self.job_type = job_type
+        # The output metrics of the algorithm.
         self.metric_definitions = metric_definitions
+        # The outputs of the algorithm.
         self.output_channels = output_channels
+        # Resource requirements.
         self.resource_requirements = resource_requirements
 
     def validate(self):

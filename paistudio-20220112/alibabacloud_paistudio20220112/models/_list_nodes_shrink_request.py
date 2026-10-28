@@ -44,63 +44,73 @@ class ListNodesShrinkRequest(DaraModel):
         # - CPU
         # - GPU
         # 
-        # Default value: empty, which indicates all types.
+        # If this parameter is left empty, all types are queried.
         self.accelerator_type = accelerator_type
+        # The zone where the nodes reside.
         self.availability_zone = availability_zone
+        # The clique ID.
         self.clique_id = clique_id
+        # The performance level (PL) of the cloud disk.
         self.disk_pl = disk_pl
-        # Used together with ResourceGroupIds to display nodes in the resource groups that are bound to the specified quotas.
+        # Used together with ResourceGroupIds to display nodes in the resource group that are bound to specific quotas.
         self.filter_by_quota_id = filter_by_quota_id
-        # Used together with QuotaId to display nodes in the quota that belong to the specified resource groups.
+        # Used together with QuotaId to display nodes in the quota that belong to specific resource groups.
         self.filter_by_resource_group_ids = filter_by_resource_group_ids
-        # The GPU type. Fuzzy match is supported.
+        # The GPU card type. Fuzzy match is supported.
         self.gputype = gputype
         # The number of healthy nodes.
         self.health_count_shrink = health_count_shrink
-        # The health rate of nodes (the proportion of healthy nodes).
+        # The health rate of the nodes, which is the proportion of healthy nodes.
         self.health_rate_shrink = health_rate_shrink
+        # The name of the hypernode.
         self.hyper_node = hyper_node
+        # The hyperzone where the nodes reside.
         self.hyper_zone = hyper_zone
         # The layout mode.
         self.layout_mode = layout_mode
+        # The IDs of the machine groups to which the nodes belong.
         self.machine_group_ids = machine_group_ids
-        # The node names to display, separated by commas.
+        # The names of the nodes to display. Separate multiple names with commas.
         self.node_names = node_names
-        # The node statuses, separated by commas. If this parameter is not specified, nodes in all statuses are returned.
+        # The status of the node. Separate multiple statuses with commas. If you do not specify this parameter, the system returns a list of nodes in all statuses.
         self.node_statuses = node_statuses
-        # The resource node specifications, separated by commas. If this parameter is not configured, nodes of all node specifications are returned.
+        # The list of resource node specifications. Separate multiple specifications with commas. If you do not specify this parameter, the system returns a list of machines of all resource node specifications.
         self.node_types = node_types
         # The sort order. Valid values:
-        # - desc: Descending order.
-        # - asc: Ascending order.
+        # - desc: descending order.
+        # - asc: ascending order.
         self.order = order
         # The order ID information.
         self.order_instance_ids = order_instance_ids
-        # The order statuses of the nodes.
+        # The order status of the node.
         self.order_statuses = order_statuses
-        # The page number, starting from 1.
+        # The page number. Pages start from page 1.
         self.page_number = page_number
-        # The number of entries per page for paged query. This parameter is used for paging.
+        # The number of entries to return on each page in a paged query. This parameter is used for paging.
         self.page_size = page_size
+        # The billing method of the node order.
         self.payment_type = payment_type
+        # The number of pods on the node.
         self.pod_num = pod_num
-        # The resource quota ID to which the node belongs.
+        # The ID of the resource quota to which the node belongs.
         self.quota_id = quota_id
+        # The reason codes for the current status of the nodes.
         self.reason_codes = reason_codes
-        # The IDs of resource groups, separated by commas. Either this parameter or QuotaId is required.
-        # 
+        # The list of resource group IDs. Separate multiple IDs with commas. You must specify either this parameter or QuotaId.
         # Constraints:
-        # 1. The UserId of the specified ResourceGroupId must match the UserId of the request.
-        # 2. The specified resource groups must be of the same type.
-        # 3. The specified resource groups must be associated with the same VPC at this stage.
+        # 1. The user ID of the specified resource group must match the user ID of the request.
+        # 2. The resource groups in the list must be of the same type.
+        # 3. The VPCs associated with the resource groups in the list must be the same.
         self.resource_group_ids = resource_group_ids
         # The name of the resource group.
         self.resource_group_name = resource_group_name
-        # The field used for sorting.
+        # The field based on which the results are sorted.
         self.sort_by = sort_by
         # Specifies whether to return resource usage information. This parameter takes effect only when QuotaId is specified.
         self.verbose = verbose
+        # The number of workloads on the node.
         self.workload_num = workload_num
+        # The ID of the workspace to which the nodes belong.
         self.workspace_id = workspace_id
 
     def validate(self):

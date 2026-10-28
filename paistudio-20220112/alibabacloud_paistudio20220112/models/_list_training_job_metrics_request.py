@@ -14,19 +14,19 @@ class ListTrainingJobMetricsRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The end time in UTC, in ISO 8601 format. If you omit this parameter, the current time is used.
+        # The end time in UTC. The time must be in ISO 8601 format. If this parameter is left empty, the current time is used.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
         # The name of the metric.
         self.name = name
-        # The sort order of returned metrics. Valid values: ASC or DESC.
+        # The time order of the returned metrics. Valid values: ASC and DESC.
         self.order = order
         # The page number.
         self.page_number = page_number
-        # The number of items per page.
+        # The page size.
         self.page_size = page_size
-        # The start time in UTC, in ISO 8601 format. If you omit this parameter, the task start time is used.
+        # The start time in UTC. The time must be in ISO 8601 format. If this parameter is left empty, the start time of the job is used.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time

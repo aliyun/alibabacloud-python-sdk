@@ -11,8 +11,11 @@ class DataSource(DaraModel):
         mount_path: str = None,
         uri: str = None,
     ):
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The mount path of the data source.
         self.mount_path = mount_path
+        # The URI of the data source.
         self.uri = uri
 
     def validate(self):

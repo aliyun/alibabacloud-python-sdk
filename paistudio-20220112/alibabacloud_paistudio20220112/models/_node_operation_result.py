@@ -11,8 +11,11 @@ class NodeOperationResult(DaraModel):
         node_name: str = None,
         status: str = None,
     ):
+        # The node operation status message.
         self.message = message
+        # The node name.
         self.node_name = node_name
+        # The node operation status.
         self.status = status
 
     def validate(self):

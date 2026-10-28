@@ -13,8 +13,11 @@ class SelfQuotaPreemptionConfig(DaraModel):
         preempted_products: List[str] = None,
         preemptor_priorities: List[int] = None,
     ):
+        # The priorities that can be preempted.
         self.preempted_priorities = preempted_priorities
+        # The task types that can be preempted.
         self.preempted_products = preempted_products
+        # The priorities that can initiate preemption.
         self.preemptor_priorities = preemptor_priorities
 
     def validate(self):
