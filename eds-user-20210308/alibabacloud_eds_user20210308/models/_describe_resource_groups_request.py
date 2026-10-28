@@ -20,8 +20,9 @@ class DescribeResourceGroupsRequest(DaraModel):
         resource_group_ids: List[str] = None,
         resource_group_name: str = None,
     ):
+        # The agent subtype of the DesktopAgent resource group. Valid values: JVSClaw and HermesAgent.
         self.agent_type = agent_type
-        # The Alibaba Cloud resource group ID.
+        # The IDs of the cloud platform resource groups.
         self.aliyun_resource_group_ids = aliyun_resource_group_ids
         # The channel tag.
         self.business_channel = business_channel
@@ -32,13 +33,13 @@ class DescribeResourceGroupsRequest(DaraModel):
         # The number of entries per page.
         self.page_size = page_size
         # > Fixed value: AliyunConsole.
-        # > - For Elastic Desktop Service Enterprise Edition, set this parameter to AliyunConsole. Other platforms are not publicly available.
+        # > - For Wuying Enterprise Edition, set this parameter to AliyunConsole. Other platforms are not publicly available.
         self.platform = platform
-        # The resource classification within the resource group.
+        # The resource classification in the resource group.
         self.resource_classification = resource_classification
-        # The list of resource group IDs.
+        # The IDs of the resource groups.
         self.resource_group_ids = resource_group_ids
-        # The resource group name.
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
 
     def validate(self):

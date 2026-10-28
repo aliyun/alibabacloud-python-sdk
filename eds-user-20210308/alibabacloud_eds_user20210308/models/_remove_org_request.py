@@ -10,7 +10,7 @@ class RemoveOrgRequest(DaraModel):
         business_channel: str = None,
         org_id: str = None,
     ):
-        # Channel
+        # The channel.
         self.business_channel = business_channel
         # The organization ID.
         # 

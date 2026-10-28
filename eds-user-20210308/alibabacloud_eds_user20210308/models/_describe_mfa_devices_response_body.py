@@ -14,9 +14,9 @@ class DescribeMfaDevicesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # A list of virtual MFA devices.
+        # The information about the virtual MFA devices.
         self.mfa_devices = mfa_devices
-        # The token that is used to retrieve the next page of results.
+        # The token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -75,18 +75,19 @@ class DescribeMfaDevicesResponseBodyMfaDevices(DaraModel):
         serial_number: str = None,
         status: str = None,
     ):
+        # The information about the AD user associated with the virtual MFA device.
         self.ad_user = ad_user
-        # The number of consecutive failed attempts to bind or authenticate the virtual MFA device.
+        # The number of consecutive failures to bind or authenticate the virtual MFA device.
         self.consecutive_fails = consecutive_fails
-        # The type of the virtual MFA device. Set the value to `TOTP_VIRTUAL`, which indicates a virtual MFA device that complies with the Time-based One-time Password (TOTP) algorithm.
+        # The type of the virtual MFA device. Currently, only `TOTP_VIRTUAL` is supported, which indicates a virtual MFA device that complies with the TOTP algorithm.
         self.device_type = device_type
-        # > This parameter is not in use.
+        # > This parameter is not available.
         self.email = email
-        # The username of the convenience user who uses the virtual MFA device.
+        # The username of the convenience account that uses the virtual MFA device.
         self.end_user_id = end_user_id
-        # The time when the virtual MFA device was enabled. The time is displayed in UTC and is formatted as `yyyy-MM-ddTHH:mm:ssZ`.
+        # The time when the virtual MFA device was enabled. The time is specified in ISO 8601 format in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`.
         self.gmt_enabled = gmt_enabled
-        # The time when the locked virtual MFA device is automatically unlocked. The time is displayed in UTC and is formatted as `yyyy-MM-ddTHH:mm:ssZ`.
+        # The automatic unlock time after the virtual MFA device is locked. The time is specified in ISO 8601 format in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`.
         self.gmt_unlock = gmt_unlock
         # The ID of the virtual MFA device.
         self.id = id
@@ -179,9 +180,13 @@ class DescribeMfaDevicesResponseBodyMfaDevicesAdUser(DaraModel):
         end_user: str = None,
         user_principal_name: str = None,
     ):
+        # The display name of the AD user.
         self.display_name = display_name
+        # The new display name of the AD user.
         self.display_name_new = display_name_new
+        # The AD username.
         self.end_user = end_user
+        # The user principal name of the AD user.
         self.user_principal_name = user_principal_name
 
     def validate(self):

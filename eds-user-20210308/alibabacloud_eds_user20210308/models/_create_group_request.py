@@ -14,13 +14,13 @@ class CreateGroupRequest(DaraModel):
         parent_group_id: str = None,
         solution_id: str = None,
     ):
-        # > This parameter is not publicly available for use.
+        # > This parameter is not publicly available.
         self.biz_type = biz_type
-        # Channel
+        # The channel.
         self.business_channel = business_channel
         # The description of the user group.
         self.description = description
-        # The group name.
+        # The name of the user group.
         self.group_name = group_name
         # > This parameter is not publicly available.
         self.parent_group_id = parent_group_id

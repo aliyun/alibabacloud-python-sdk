@@ -13,9 +13,9 @@ class DescribeOrgByLayerResponseBody(DaraModel):
         orgs: List[main_models.DescribeOrgByLayerResponseBodyOrgs] = None,
         request_id: str = None,
     ):
-        # The organizations.
+        # The list of organization information.
         self.orgs = orgs
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

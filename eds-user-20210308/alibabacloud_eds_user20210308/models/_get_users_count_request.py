@@ -11,8 +11,11 @@ class GetUsersCountRequest(DaraModel):
         business_channel: str = None,
         solution_id: str = None,
     ):
+        # > This parameter is not available.
         self.biz_type = biz_type
+        # The business channel type.
         self.business_channel = business_channel
+        # > This parameter is currently not available.
         self.solution_id = solution_id
 
     def validate(self):

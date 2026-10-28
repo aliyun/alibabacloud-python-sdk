@@ -13,13 +13,13 @@ class CreatePropertyRequest(DaraModel):
         property_key: str = None,
         property_values: List[str] = None,
     ):
-        # Channel
+        # The channel.
         self.business_channel = business_channel
-        # The property name.
+        # The property key.
         # 
         # This parameter is required.
         self.property_key = property_key
-        # The values of the property. You can specify up to 50 values for a property.
+        # The property values. You can add up to 50 different property values to a single property.
         self.property_values = property_values
 
     def validate(self):

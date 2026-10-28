@@ -13,9 +13,9 @@ class RemoveUsersResponseBody(DaraModel):
         remove_users_result: main_models.RemoveUsersResponseBodyRemoveUsersResult = None,
         request_id: str = None,
     ):
-        # The result of removing the convenience user.
+        # The result of deleting the convenience users.
         self.remove_users_result = remove_users_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,12 +50,16 @@ class RemoveUsersResponseBodyRemoveUsersResult(DaraModel):
     def __init__(
         self,
         failed_users: List[main_models.RemoveUsersResponseBodyRemoveUsersResultFailedUsers] = None,
+        processing_users: List[str] = None,
         removed_users: List[str] = None,
+        submitted_users: List[str] = None,
     ):
-        # The convenience users that failed to be removed.
+        # The information about the users that failed to be deleted.
         self.failed_users = failed_users
-        # The convenience users that were removed.
+        self.processing_users = processing_users
+        # The convenience users that are successfully deleted.
         self.removed_users = removed_users
+        self.submitted_users = submitted_users
 
     def validate(self):
         if self.failed_users:
@@ -73,8 +77,14 @@ class RemoveUsersResponseBodyRemoveUsersResult(DaraModel):
             for k1 in self.failed_users:
                 result['FailedUsers'].append(k1.to_map() if k1 else None)
 
+        if self.processing_users is not None:
+            result['ProcessingUsers'] = self.processing_users
+
         if self.removed_users is not None:
             result['RemovedUsers'] = self.removed_users
+
+        if self.submitted_users is not None:
+            result['SubmittedUsers'] = self.submitted_users
 
         return result
 
@@ -86,8 +96,14 @@ class RemoveUsersResponseBodyRemoveUsersResult(DaraModel):
                 temp_model = main_models.RemoveUsersResponseBodyRemoveUsersResultFailedUsers()
                 self.failed_users.append(temp_model.from_map(k1))
 
+        if m.get('ProcessingUsers') is not None:
+            self.processing_users = m.get('ProcessingUsers')
+
         if m.get('RemovedUsers') is not None:
             self.removed_users = m.get('RemovedUsers')
+
+        if m.get('SubmittedUsers') is not None:
+            self.submitted_users = m.get('SubmittedUsers')
 
         return self
 
@@ -98,7 +114,7 @@ class RemoveUsersResponseBodyRemoveUsersResultFailedUsers(DaraModel):
         error_code: str = None,
         error_message: str = None,
     ):
-        # The ID of the convenience user that failed to be removed.
+        # The convenience user that failed to be deleted.
         self.end_user_id = end_user_id
         # The error code.
         self.error_code = error_code

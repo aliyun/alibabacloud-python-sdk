@@ -13,9 +13,9 @@ class ResetUserPasswordResponseBody(DaraModel):
         request_id: str = None,
         reset_users_result: main_models.ResetUserPasswordResponseBodyResetUsersResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The result of resetting the password of the convenience user.
+        # The result of the password reset operation for the convenience users.
         self.reset_users_result = reset_users_result
 
     def validate(self):
@@ -52,9 +52,9 @@ class ResetUserPasswordResponseBodyResetUsersResult(DaraModel):
         failed_users: List[main_models.ResetUserPasswordResponseBodyResetUsersResultFailedUsers] = None,
         reset_users: List[str] = None,
     ):
-        # The information about the convenience users whose passwords failed to be reset.
+        # The list of convenience users for whom the password reset failed.
         self.failed_users = failed_users
-        # The convenience users to which the system sent a password reset email.
+        # The list of convenience users to whom the password reset emails have been sent.
         self.reset_users = reset_users
 
     def validate(self):
@@ -98,7 +98,7 @@ class ResetUserPasswordResponseBodyResetUsersResultFailedUsers(DaraModel):
         error_code: str = None,
         error_message: str = None,
     ):
-        # The ID of the convenience user whose password failed to be reset.
+        # The convenience user for whom the password reset failed.
         self.end_user_id = end_user_id
         # The error code.
         self.error_code = error_code

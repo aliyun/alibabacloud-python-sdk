@@ -15,17 +15,19 @@ class UpdatePropertyRequest(DaraModel):
         property_key: str = None,
         property_values: List[main_models.UpdatePropertyRequestPropertyValues] = None,
     ):
-        # Channel
+        # The business channel.
         self.business_channel = business_channel
-        # The ID of the property that you want to modify. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
+        # The ID of the property to update. You can call [ListProperty](~~ListProperty~~) to query the property ID.
         # 
         # This parameter is required.
         self.property_id = property_id
-        # The new property name.
+        # The updated property name.
         # 
         # This parameter is required.
         self.property_key = property_key
-        # The values of property.
+        # The list of all updated property values for the property.
+        # 
+        # >Notice: The property values specified here overwrite the existing property values instead of appending to them.
         self.property_values = property_values
 
     def validate(self):
@@ -80,9 +82,9 @@ class UpdatePropertyRequestPropertyValues(DaraModel):
         property_value: str = None,
         property_value_id: int = None,
     ):
-        # The new property value.
+        # The updated property value.
         self.property_value = property_value
-        # The ID of property value that you want to modify. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property value ID.
+        # The ID of the updated property value.
         self.property_value_id = property_value_id
 
     def validate(self):

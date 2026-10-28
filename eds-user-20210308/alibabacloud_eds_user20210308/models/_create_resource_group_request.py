@@ -13,6 +13,7 @@ class CreateResourceGroupRequest(DaraModel):
         is_resource_group_with_office_site: int = None,
         platform: str = None,
         resource_classification: str = None,
+        resource_group_description: str = None,
         resource_group_name: str = None,
     ):
         self.agent_type = agent_type
@@ -21,9 +22,12 @@ class CreateResourceGroupRequest(DaraModel):
         self.enable_aliyun_resource_group = enable_aliyun_resource_group
         # > This parameter is not publicly available.
         self.is_resource_group_with_office_site = is_resource_group_with_office_site
-        # For WUYING Workspace Enterprise Edition, set this parameter to `AliyunConsole`. Other platforms are not supported.
+        # For Elastic Desktop Service (EDS) Enterprise Edition, set the value to `AliyunConsole`. Other platforms are not supported.
         self.platform = platform
+        # The resource category.
         self.resource_classification = resource_classification
+        # The description of the resource group. This parameter is optional. The description can be up to 500 characters in length and is saved as-is.
+        self.resource_group_description = resource_group_description
         # The name of the resource group.
         self.resource_group_name = resource_group_name
 
@@ -53,6 +57,9 @@ class CreateResourceGroupRequest(DaraModel):
         if self.resource_classification is not None:
             result['ResourceClassification'] = self.resource_classification
 
+        if self.resource_group_description is not None:
+            result['ResourceGroupDescription'] = self.resource_group_description
+
         if self.resource_group_name is not None:
             result['ResourceGroupName'] = self.resource_group_name
 
@@ -77,6 +84,9 @@ class CreateResourceGroupRequest(DaraModel):
 
         if m.get('ResourceClassification') is not None:
             self.resource_classification = m.get('ResourceClassification')
+
+        if m.get('ResourceGroupDescription') is not None:
+            self.resource_group_description = m.get('ResourceGroupDescription')
 
         if m.get('ResourceGroupName') is not None:
             self.resource_group_name = m.get('ResourceGroupName')

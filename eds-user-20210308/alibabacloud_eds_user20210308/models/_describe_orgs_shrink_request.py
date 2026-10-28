@@ -18,20 +18,21 @@ class DescribeOrgsShrinkRequest(DaraModel):
         parent_org_id: str = None,
         show_extras_shrink: str = None,
     ):
-        # The channel.
+        # The business channel.
         self.business_channel = business_channel
+        # The list of organization IDs to query.
         self.include_org_ids = include_org_ids
         # Specifies whether to query all subordinate organizations when a parent organization is specified.
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
-        # The maximum number of results to return. Valid values: 1 to 100.    
-        # Default value: 100.
+        # The maximum number of results to return. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
+        # The pagination token. Set the value to the NextToken parameter returned by the previous API call.
         self.next_token = next_token
-        # The organization name.
+        # The name of the organization.
         self.org_name = org_name
-        # The parent organization ID.
+        # The ID of the parent organization.
         self.parent_org_id = parent_org_id
+        # The switch mapping for additional response information. This parameter controls whether to return organization paths and resource policy information.
         self.show_extras_shrink = show_extras_shrink
 
     def validate(self):

@@ -13,9 +13,9 @@ class UserBatchQuitGroupRequest(DaraModel):
         end_user_ids: List[str] = None,
         group_id: str = None,
     ):
-        # Channel
+        # The business channel.
         self.business_channel = business_channel
-        # The user IDs.
+        # The list of user IDs.
         self.end_user_ids = end_user_ids
         # The ID of the user group.
         self.group_id = group_id

@@ -17,18 +17,19 @@ class DescribeMfaDevicesRequest(DaraModel):
         next_token: str = None,
         serial_numbers: List[str] = None,
     ):
-        # The AD domain name.
+        # The address of the AD office network.
         self.ad_domain = ad_domain
-        # The business channel.
+        # The channel.
         self.business_channel = business_channel
-        # An array of end user usernames.
+        # The list of usernames of the convenience accounts.
         self.end_user_ids = end_user_ids
+        # Filters the virtual MFA devices by convenience account username.
         self.filter = filter
-        # The maximum number of results to return per page. Valid range: 1–500.<br>Default value: 100.<br>
+        # The maximum number of results to return. Valid values: 1 to 500. Default value: 100.
         self.max_results = max_results
-        # The token for the next page of results. This value is the `NextToken` returned from a previous call.
+        # The query token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
-        # An array of serial numbers for virtual MFA devices.
+        # The list of serial numbers of the virtual MFA devices.
         self.serial_numbers = serial_numbers
 
     def validate(self):

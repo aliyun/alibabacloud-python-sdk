@@ -13,21 +13,21 @@ class SetUserPropertyValueRequest(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # Channel
+        # The business channel.
         self.business_channel = business_channel
-        # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
+        # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.property_id = property_id
-        # The ID of the property value. You can call the [ListProperty](~~ListProperty~~) operation to query the ID of the property value.
+        # The property value ID. You can call the [ListProperty](~~ListProperty~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.property_value_id = property_value_id
-        # The ID of the convenience user. You can call the [DescribeUsers](~~DescribeUsers~~) operation to query the user ID.
+        # The user ID. You can call the [DescribeUsers](~~DescribeUsers~~) operation to obtain this parameter, which corresponds to the value of the `Id` response parameter.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The username of the convenience user.
+        # The username. You can call the [DescribeUsers](~~DescribeUsers~~) operation to obtain this parameter, which corresponds to the value of the `EndUserId` response parameter.
         # 
         # This parameter is required.
         self.user_name = user_name

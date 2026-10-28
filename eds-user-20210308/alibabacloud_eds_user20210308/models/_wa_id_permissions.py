@@ -16,10 +16,15 @@ class WaIdPermissions(DaraModel):
         sub_permissions: List[main_models.WaIdPermissions] = None,
         type: str = None,
     ):
+        # code
         self.code = code
+        # basic
         self.is_basic_child = is_basic_child
+        # name
         self.name = name
+        # subPermissions
         self.sub_permissions = sub_permissions
+        # type
         self.type = type
 
     def validate(self):

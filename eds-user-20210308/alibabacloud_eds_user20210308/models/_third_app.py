@@ -15,9 +15,13 @@ class ThirdApp(DaraModel):
         oidc_sso_config: main_models.ThirdAppOidcSsoConfig = None,
         secrets: List[main_models.ThirdAppSecrets] = None,
     ):
+        # The application ID.
         self.app_key = app_key
+        # The application name.
         self.name = name
+        # The OIDC configuration.
         self.oidc_sso_config = oidc_sso_config
+        # The secrets.
         self.secrets = secrets
 
     def validate(self):
@@ -75,7 +79,9 @@ class ThirdAppSecrets(DaraModel):
         enable: bool = None,
         secret: str = None,
     ):
+        # Specifies whether it is enabled.
         self.enable = enable
+        # The ciphertext.
         self.secret = secret
 
     def validate(self):
@@ -118,15 +124,25 @@ class ThirdAppOidcSsoConfig(DaraModel):
         redirect_uris: List[str] = None,
         refresh_token_effective: int = None,
     ):
+        # 1
         self.access_token_effective_time = access_token_effective_time
+        # 1
         self.code_effective_time = code_effective_time
+        # Specifies whether to enable authorized logon.
         self.enable_auth_login = enable_auth_login
+        # The endpoints.
         self.endpoints = endpoints
+        # The grant scopes.
         self.grant_scopes = grant_scopes
+        # The grant types.
         self.grant_types = grant_types
+        # The signature type.
         self.id_token_algorithm_type = id_token_algorithm_type
+        # 1
         self.id_token_effective_time = id_token_effective_time
+        # The URI whitelist.
         self.redirect_uris = redirect_uris
+        # 1
         self.refresh_token_effective = refresh_token_effective
 
     def validate(self):
@@ -220,14 +236,23 @@ class ThirdAppOidcSsoConfigEndpoints(DaraModel):
         token_endpoint: str = None,
         userinfo_endpoint: str = None,
     ):
+        # The authorization endpoint.
         self.authorization_endpoint = authorization_endpoint
+        # The discovery endpoint.
         self.discovery_endpoint = discovery_endpoint
+        # The guest authorization endpoint.
         self.guest_authorization_endpoint = guest_authorization_endpoint
+        # Issuer
         self.issuer = issuer
+        # The signature public key endpoint.
         self.jwks_endpoint = jwks_endpoint
+        # The logout endpoint.
         self.logout_endpoint = logout_endpoint
+        # The revocation endpoint.
         self.revoke_endpoint = revoke_endpoint
+        # The token endpoint.
         self.token_endpoint = token_endpoint
+        # The user information endpoint.
         self.userinfo_endpoint = userinfo_endpoint
 
     def validate(self):

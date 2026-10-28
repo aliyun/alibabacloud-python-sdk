@@ -21,23 +21,25 @@ class DescribeGroupsRequest(DaraModel):
     ):
         # > This parameter is not publicly available.
         self.biz_type = biz_type
+        # The business channel.
         self.business_channel = business_channel
-        # Specifies whether to exclude user groups that have associated logon policies.
+        # Specifies whether to exclude user groups that are associated with logon policies.
         self.exclude_attached_login_policy_groups = exclude_attached_login_policy_groups
-        # The user group ID.
+        # The ID of the user group.
         self.group_id = group_id
-        # The user group name.
+        # The name of the user group.
         self.group_name = group_name
+        # Filters user groups by the identity provider ID.
         self.idp_id = idp_id
-        # Filters user groups by the specified associated logon policy.
+        # Specifies the ID of the associated logon policy for filtering.
         self.login_policy_id = login_policy_id
-        # The page number for a paged query.
+        # The page number for paging in the paged query.
         self.page_number = page_number
-        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+        # The number of entries per page for paging in the paged query Settings. Maximum value: 100. Default value: 10.
         self.page_size = page_size
         # > This parameter is not publicly available.
         self.solution_id = solution_id
-        # Indicates whether file approval is enabled.
+        # Specifies whether file approval is enabled.
         self.transfer_file_need_approval = transfer_file_need_approval
 
     def validate(self):

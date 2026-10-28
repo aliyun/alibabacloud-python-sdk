@@ -10,17 +10,32 @@ from darabonba.model import DaraModel
 class TransferResourcesOutofGroupRequest(DaraModel):
     def __init__(
         self,
+        app_rule_id: str = None,
         business_channel: str = None,
         platform: str = None,
+        policy_id: str = None,
         resource_group_id: str = None,
         resources: List[main_models.TransferResourcesOutofGroupRequestResources] = None,
         target_resource_group_id: str = None,
+        timer_id: str = None,
     ):
+        # The software blacklists and whitelists rule ID to associate with the resources after they are moved out of the resource group. This parameter is used only for pure move-out operations and cannot be set together with TargetResourceGroupId. If this parameter is left empty, no rule is associated.
+        self.app_rule_id = app_rule_id
+        # The channel.
         self.business_channel = business_channel
+        # > Fixed value: AliyunConsole.
+        # > - For Wuying Enterprise Edition, set this parameter to AliyunConsole. Other platforms are not publicly available.
         self.platform = platform
+        # The policy ID to associate with the resources after they are moved out of the resource group. This parameter is used only for pure move-out operations and cannot be specified together with TargetResourceGroupId. If this parameter is left empty, the system default behavior is used.
+        self.policy_id = policy_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of resources.
         self.resources = resources
+        # The ID of the target resource group to which you want to move the resources.
         self.target_resource_group_id = target_resource_group_id
+        # The scheduled task ID to associate with the resources after they are moved out of the resource group. This parameter is used only for pure move-out operations and cannot be specified together with TargetResourceGroupId. If this parameter is left empty, no scheduled task is associated.
+        self.timer_id = timer_id
 
     def validate(self):
         if self.resources:
@@ -33,11 +48,17 @@ class TransferResourcesOutofGroupRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_rule_id is not None:
+            result['AppRuleId'] = self.app_rule_id
+
         if self.business_channel is not None:
             result['BusinessChannel'] = self.business_channel
 
         if self.platform is not None:
             result['Platform'] = self.platform
+
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
@@ -50,15 +71,24 @@ class TransferResourcesOutofGroupRequest(DaraModel):
         if self.target_resource_group_id is not None:
             result['TargetResourceGroupId'] = self.target_resource_group_id
 
+        if self.timer_id is not None:
+            result['TimerId'] = self.timer_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppRuleId') is not None:
+            self.app_rule_id = m.get('AppRuleId')
+
         if m.get('BusinessChannel') is not None:
             self.business_channel = m.get('BusinessChannel')
 
         if m.get('Platform') is not None:
             self.platform = m.get('Platform')
+
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
@@ -72,6 +102,9 @@ class TransferResourcesOutofGroupRequest(DaraModel):
         if m.get('TargetResourceGroupId') is not None:
             self.target_resource_group_id = m.get('TargetResourceGroupId')
 
+        if m.get('TimerId') is not None:
+            self.timer_id = m.get('TimerId')
+
         return self
 
 class TransferResourcesOutofGroupRequestResources(DaraModel):
@@ -81,8 +114,11 @@ class TransferResourcesOutofGroupRequestResources(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The region ID of the resource.
         self.region_id = region_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

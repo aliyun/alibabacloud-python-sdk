@@ -12,7 +12,7 @@ class ModifyGroupRequest(DaraModel):
         group_id: str = None,
         new_group_name: str = None,
     ):
-        # Channel
+        # The channel.
         self.business_channel = business_channel
         # The new description of the user group.
         self.description = description
@@ -20,7 +20,7 @@ class ModifyGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The name of the new user group.
+        # The new name of the user group.
         # 
         # This parameter is required.
         self.new_group_name = new_group_name

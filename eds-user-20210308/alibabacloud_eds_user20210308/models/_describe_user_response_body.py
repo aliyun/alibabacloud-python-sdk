@@ -13,9 +13,9 @@ class DescribeUserResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.DescribeUserResponseBodyUser = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # User information.
+        # The user information.
         self.user = user
 
     def validate(self):
@@ -63,30 +63,31 @@ class DescribeUserResponseBodyUser(DaraModel):
         status: int = None,
         wy_id: str = None,
     ):
-        # Mailbox.
+        # The email address.
         self.email = email
-        # Username.
+        # The username.
         self.end_user_id = end_user_id
-        # Associated external user information.
+        # The associated external user information.
         self.external_info = external_info
-        # Extension information.
+        # The extended information.
         self.extras = extras
-        # Creation Time.
+        # The creation time.
         self.gmt_create = gmt_create
+        # The display nickname of the convenience user.
         self.nick_name = nick_name
-        # List of organization IDs.
+        # The list of organization IDs.
         self.org_ids = org_ids
-        # List of organizations.
+        # The list of organizations.
         self.org_paths = org_paths
-        # Phone number.
+        # The mobile phone number.
         self.phone = phone
-        # User attributes.
+        # The user properties.
         self.properties = properties
-        # Remarks.
+        # The remark.
         self.remark = remark
-        # User status.
+        # The user status.
         self.status = status
-        # Unique ID of the Wuying user.
+        # The unique ID of the Wuying user.
         self.wy_id = wy_id
 
     def validate(self):
@@ -198,9 +199,9 @@ class DescribeUserResponseBodyUserProperties(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Attribute key.
+        # The property key.
         self.key = key
-        # Attribute value.
+        # The property value.
         self.value = value
 
     def validate(self):
@@ -237,13 +238,13 @@ class DescribeUserResponseBodyUserExternalInfo(DaraModel):
         job_number: str = None,
         sso_type: str = None,
     ):
-        # External User ID.
+        # The external user ID.
         self.external_id = external_id
-        # External information name.
+        # The external information name.
         self.external_name = external_name
-        # Employee ID.
+        # The employee ID.
         self.job_number = job_number
-        # SSO logon type.
+        # The SSO logon type.
         self.sso_type = sso_type
 
     def validate(self):

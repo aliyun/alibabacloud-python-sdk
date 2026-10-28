@@ -13,10 +13,15 @@ class GetUsersCountResponseBody(DaraModel):
         request_id: str = None,
         user_count: int = None,
     ):
+        # The number of user groups.
         self.group_count = group_count
+        # The user quota.
         self.max_user_number = max_user_number
+        # The number of organizations.
         self.org_count = org_count
+        # The request ID.
         self.request_id = request_id
+        # The number of users.
         self.user_count = user_count
 
     def validate(self):

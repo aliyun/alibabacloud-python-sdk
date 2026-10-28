@@ -16,7 +16,7 @@ class GetManagerInfoByAuthCodeResponseBody(DaraModel):
     ):
         # The organization ID.
         self.org_id = org_id
-        # The mobile number.
+        # The phone number.
         self.phone = phone
         # The request ID.
         self.request_id = request_id
@@ -24,7 +24,7 @@ class GetManagerInfoByAuthCodeResponseBody(DaraModel):
         self.team_name = team_name
         # The tenant name.
         self.user_name = user_name
-        # The ID of the Elastic Desktop Service account.
+        # The Wuying account ID of the tenant.
         self.wa_id = wa_id
 
     def validate(self):

@@ -14,11 +14,11 @@ class DescribeGroupsResponseBody(DaraModel):
         groups: List[main_models.DescribeGroupsResponseBodyGroups] = None,
         request_id: str = None,
     ):
-        # The number of entries returned in the query result.
+        # The number of query results.
         self.count = count
         # The list of user groups.
         self.groups = groups
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -75,22 +75,23 @@ class DescribeGroupsResponseBodyGroups(DaraModel):
         upload_need_approval: bool = None,
         user_count: int = None,
     ):
+        # The logon policy associated with the user group.
         self.attached_login_policy = attached_login_policy
-        # The list of assigned resources.
+        # The list of allocated resources.
         self.authed_resources = authed_resources
-        # The creation time.
+        # The creation time in the ISO 8601 standard in the UTC+08:00 time zone.
         self.create_time = create_time
         # The description of the user group.
         self.description = description
-        # Indicates whether download requires approval.
+        # Indicates whether approval is required for downloads.
         self.download_need_approval = download_need_approval
-        # The user group ID.
+        # The ID of the user group.
         self.group_id = group_id
-        # The user group name.
+        # The name of the user group.
         self.group_name = group_name
-        # Indicates whether file approval is enabled.
+        # Specifies whether file approval is enabled.
         self.transfer_file_need_approval = transfer_file_need_approval
-        # Indicates whether upload requires approval.
+        # Indicates whether approval is required for uploads.
         self.upload_need_approval = upload_need_approval
         # The number of members in the user group.
         self.user_count = user_count
@@ -177,7 +178,9 @@ class DescribeGroupsResponseBodyGroupsAttachedLoginPolicy(DaraModel):
         name: str = None,
         policy_id: str = None,
     ):
+        # The Policy Name of the logon policy.
         self.name = name
+        # The ID of the logon policy.
         self.policy_id = policy_id
 
     def validate(self):

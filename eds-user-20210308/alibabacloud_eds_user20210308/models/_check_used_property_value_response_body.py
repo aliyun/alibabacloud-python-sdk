@@ -10,9 +10,9 @@ class CheckUsedPropertyValueResponseBody(DaraModel):
         request_id: str = None,
         use_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of convenience accounts that are associated with the specified custom property value.
+        # The number of convenience accounts associated with the specified custom property value.
         self.use_count = use_count
 
     def validate(self):

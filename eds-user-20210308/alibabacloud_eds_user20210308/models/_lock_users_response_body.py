@@ -13,7 +13,7 @@ class LockUsersResponseBody(DaraModel):
         lock_users_result: main_models.LockUsersResponseBodyLockUsersResult = None,
         request_id: str = None,
     ):
-        # The result of the LockUsers operation.
+        # The result of the lock operation for the convenience accounts.
         self.lock_users_result = lock_users_result
         # The request ID.
         self.request_id = request_id
@@ -52,9 +52,9 @@ class LockUsersResponseBodyLockUsersResult(DaraModel):
         failed_users: List[main_models.LockUsersResponseBodyLockUsersResultFailedUsers] = None,
         locked_users: List[str] = None,
     ):
-        # A list of convenience accounts that failed to lock.
+        # The list of convenience accounts that failed to be locked.
         self.failed_users = failed_users
-        # A list of successfully locked convenience accounts.
+        # The list of convenience accounts that are successfully locked.
         self.locked_users = locked_users
 
     def validate(self):
@@ -98,7 +98,7 @@ class LockUsersResponseBodyLockUsersResultFailedUsers(DaraModel):
         error_code: str = None,
         error_message: str = None,
     ):
-        # The username of the convenience account that failed to lock.
+        # The convenience account that failed to be locked.
         self.end_user_id = end_user_id
         # The error code.
         self.error_code = error_code

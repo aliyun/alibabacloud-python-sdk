@@ -15,13 +15,13 @@ class DescribeGroupUserResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.DescribeGroupUserResponseBodyUsers] = None,
     ):
-        # >  This field is deprecated.
+        # > **[Deprecated]** This field is deprecated.
         self.groups = groups
-        # The token for the next query. If NextToken is empty, all results have been queried.
+        # The token for the next query. If NextToken is empty, all results have been returned.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The members.
+        # The list of members.
         self.users = users
 
     def validate(self):
@@ -93,25 +93,25 @@ class DescribeGroupUserResponseBodyUsers(DaraModel):
         phone: str = None,
         remark: str = None,
     ):
-        # >  This field is deprecated.
+        # > **[Deprecated]** This field is deprecated.
         self.address = address
-        # >  This field is deprecated.
+        # > **[Deprecated]** This field is deprecated.
         self.avatar = avatar
         # The email address.
         self.email = email
-        # The user name.
+        # The username.
         self.end_user_id = end_user_id
         # The time when the user was created.
         self.gmt_created = gmt_created
-        # The time when the user was added to the user group.
+        # The time when the member was added.
         self.gmt_join_group = gmt_join_group
-        # >  This field is deprecated.
+        # > **[Deprecated]** This field is deprecated.
         self.job_number = job_number
         # The display name.
         self.nick_name = nick_name
-        # The mobile number.
+        # The mobile phone number.
         self.phone = phone
-        # The remarks on the user.
+        # The remarks of the user.
         self.remark = remark
 
     def validate(self):
@@ -195,11 +195,11 @@ class DescribeGroupUserResponseBodyGroups(DaraModel):
         group_name: str = None,
         user_count: str = None,
     ):
-        # The user group ID.
+        # The ID of the user group.
         self.group_id = group_id
         # The name of the user group.
         self.group_name = group_name
-        # The number of members in the user group.
+        # The number of members.
         self.user_count = user_count
 
     def validate(self):

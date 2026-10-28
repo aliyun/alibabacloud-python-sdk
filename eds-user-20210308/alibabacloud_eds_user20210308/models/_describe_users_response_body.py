@@ -15,13 +15,13 @@ class DescribeUsersResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.DescribeUsersResponseBodyUsers] = None,
     ):
-        # The total number of users that meet the query conditions
+        # The total number of users that meet the query conditions.
         self.count = count
-        # The pagination token for the next query. An empty NextToken indicates that no more results exist.
+        # The token for the next query. An empty NextToken indicates that no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The collection of convenience account information.
+        # The collection of convenience user information.
         self.users = users
 
     def validate(self):
@@ -99,56 +99,56 @@ class DescribeUsersResponseBodyUsers(DaraModel):
     ):
         # The work address of the user.
         self.address = address
-        # The URL of the user\\"s profile picture.
+        # The URL of the profile picture.
         self.avatar = avatar
         # The email address.
         self.email = email
-        # Indicates whether administrator access permissions are enabled.
+        # Specifies whether to enable administrator access permissions.
         self.enable_admin_access = enable_admin_access
         # The username.
         self.end_user_id = end_user_id
-        # The username imported from an external source.
-        # 
+        # The name of the externally imported user.
         # > This field is not publicly available.
         self.external_name = external_name
-        # The extended user information.
+        # The extended information of the user.
         self.extras = extras
-        # The collection of user groups to which the convenience account belongs.
+        # The collection of user groups to which the convenience user belongs.
         self.groups = groups
-        # The convenience account ID.
+        # The ID of the convenience user.
         self.id = id
-        # Indicates whether the user is a user administrator. If the convenience account is of the administrator-activated type, a user administrator must be specified. Notifications such as password resets initiated by end users through the client are sent to the user administrator\\"s email or phone. For more information, see [Create a convenience account](https://help.aliyun.com/document_detail/214472.html).
+        # Indicates whether the user is a tenant administrator. If the convenience user to be created uses the administrator activation type, you must specify a tenant administrator. Notifications such as password resets initiated by end users through the client are sent to the email address or mobile phone number of the tenant administrator. For more information, see [Create a convenience user](https://help.aliyun.com/document_detail/214472.html).
         self.is_tenant_manager = is_tenant_manager
         # The employee ID of the user.
         self.job_number = job_number
-        # The nickname of the user. The value is determined in the following order:
+        # The nickname of the user. The value is obtained in the following order:
         # - RealNickName
         # - Remark
         # - EndUserId
         self.nick_name = nick_name
-        # The department ID to which the convenience account belongs.
-        # > This parameter will be deprecated soon.
+        # The ID of the department to which the convenience user belongs.
+        # > **[Deprecated]** This parameter will be deprecated soon.
         self.org_id = org_id
-        # The collection of departments to which the convenience account belongs.
+        # The collection of departments to which the convenience user belongs.
         self.orgs = orgs
-        # The convenience account type, which includes:
-        # 
-        # * Administrator-activated type: The administrator sets the username and password. User notifications such as password resets are sent to the administrator\\"s email or phone.
-        # * User-activated type: The administrator sets the username and the user\\"s email or phone for receiving notifications. User notifications such as cloud computer provisioning notifications (including the initial password) are sent to the user\\"s email or phone.
+        # The convenience user type. Valid values:
+        # - CreateFromManager: administrator-activated. The administrator sets the username and password. User notifications such as password reset notifications are sent to the email address or mobile phone number of the administrator.
+        # - Normal: user-activated. The administrator sets the username and the email address or mobile phone number for receiving notifications. User notifications such as cloud desktop activation notifications (including the initial password) are sent to the email address or mobile phone number of the user.
         self.owner_type = owner_type
+        # The password validity period, in days. Valid values: 30 to 365. By default, the password never expires.
         self.password_expire_days = password_expire_days
+        # The remaining days of the password validity period.
         self.password_expire_rest_days = password_expire_rest_days
-        # The phone number. This parameter is not returned if it is not set.
+        # The mobile phone number. This parameter is not returned if it is not configured.
         self.phone = phone
         # The user properties.
         self.properties = properties
         # The display name of the user.
         self.real_nick_name = real_nick_name
-        # The remark of the convenience account.
+        # The remarks for the convenience user.
         self.remark = remark
         # The status.
         self.status = status
-        # The globally unique ID of the convenience account.
+        # The globally unique ID of the convenience user.
         self.wy_id = wy_id
 
     def validate(self):
@@ -376,10 +376,11 @@ class DescribeUsersResponseBodyUsersOrgs(DaraModel):
         org_name: str = None,
         org_name_path: str = None,
     ):
-        # The department ID.
+        # The ID of the department.
         self.org_id = org_id
-        # The department name.
+        # The name of the department.
         self.org_name = org_name
+        # The name path from the root organization to the current organization.
         self.org_name_path = org_name_path
 
     def validate(self):
@@ -420,9 +421,9 @@ class DescribeUsersResponseBodyUsersGroups(DaraModel):
         group_id: str = None,
         group_name: str = None,
     ):
-        # The user group ID.
+        # The ID of the user group.
         self.group_id = group_id
-        # The user group name.
+        # The name of the user group.
         self.group_name = group_name
 
     def validate(self):
@@ -457,8 +458,9 @@ class DescribeUsersResponseBodyUsersExtras(DaraModel):
         assigned_resource_count: Dict[str, Any] = None,
         resource_policy_list: List[main_models.DescribeUsersResponseBodyUsersExtrasResourcePolicyList] = None,
     ):
-        # The number of assigned cloud resources.
+        # The number of allocated cloud resources.
         self.assigned_resource_count = assigned_resource_count
+        # The list of resource policies associated with the user.
         self.resource_policy_list = resource_policy_list
 
     def validate(self):
@@ -501,7 +503,9 @@ class DescribeUsersResponseBodyUsersExtrasResourcePolicyList(DaraModel):
         policy_id: str = None,
         policy_name: str = None,
     ):
+        # The ID of the resource policy.
         self.policy_id = policy_id
+        # The Policy Name of the resource policy.
         self.policy_name = policy_name
 
     def validate(self):

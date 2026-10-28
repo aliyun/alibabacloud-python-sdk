@@ -13,8 +13,9 @@ class LockUsersRequest(DaraModel):
         logout_session: bool = None,
         users: List[str] = None,
     ):
-        # The channel.
+        # The business channel.
         self.business_channel = business_channel
+        # Specifies whether to log off the current session of the convenience account when the account is locked.
         self.logout_session = logout_session
         # The usernames of the convenience accounts to lock.
         # 

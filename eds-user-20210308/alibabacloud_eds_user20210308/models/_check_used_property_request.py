@@ -10,9 +10,9 @@ class CheckUsedPropertyRequest(DaraModel):
         business_channel: str = None,
         property_id: int = None,
     ):
-        # Channel
+        # The channel.
         self.business_channel = business_channel
-        # The ID of the property. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
+        # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query property IDs.
         # 
         # This parameter is required.
         self.property_id = property_id

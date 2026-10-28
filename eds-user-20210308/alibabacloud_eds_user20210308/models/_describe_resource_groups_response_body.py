@@ -14,7 +14,7 @@ class DescribeResourceGroupsResponseBody(DaraModel):
         resource_group: List[main_models.DescribeResourceGroupsResponseBodyResourceGroup] = None,
         total_count: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The list of resource group information.
         self.resource_group = resource_group
@@ -71,30 +71,35 @@ class DescribeResourceGroupsResponseBodyResourceGroup(DaraModel):
         create_time: str = None,
         policies: List[main_models.DescribeResourceGroupsResponseBodyResourceGroupPolicies] = None,
         resource_count: str = None,
+        resource_group_description: str = None,
         resource_group_id: str = None,
         resource_group_name: str = None,
         timers: List[main_models.DescribeResourceGroupsResponseBodyResourceGroupTimers] = None,
     ):
+        # The agent subtype of the DesktopAgent resource group. Valid values: JVSClaw and HermesAgent.
         self.agent_type = agent_type
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
+        # The list of application rules associated with the resource group.
         self.app_rules = app_rules
         # The number of administrators authorized for the resource group.
         self.auth_count = auth_count
-        # The creation time.
+        # The creation time in ISO 8601 UTC format.
         self.create_time = create_time
         # > The policies associated with the resource group.
-        # > - Associated policies take effect on cloud computers in the resource group. If multiple policies are associated, they take effect based on policy priority.
-        # > - If a cloud computer in the resource group already has other policies specified, the policies associated with the resource group take effect first.
+        # > - The associated policies take effect on the cloud computers in the resource group. If multiple policies exist, they take effect based on their priorities.
+        # > - If a cloud computer in the resource group is already assigned another policy, the policy associated with the resource group takes precedence.
         self.policies = policies
         # The resource count in the resource group.
         self.resource_count = resource_count
-        # The resource group ID.
+        # The description of the resource group. If not set, an empty string is returned.
+        self.resource_group_description = resource_group_description
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The resource group name.
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
-        # > The associated scheduled tasks.
-        # > - Associated scheduled tasks take effect on cloud computers in the resource group. If a cloud computer in the resource group already has other scheduled tasks associated, the tasks associated with the resource group take effect first.
+        # > The scheduled tasks associated with the resource group.
+        # > - The associated scheduled tasks take effect on the cloud computers in the resource group. If a cloud computer in the resource group is already associated with another scheduled task, the task associated with the resource group takes precedence.
         self.timers = timers
 
     def validate(self):
@@ -141,6 +146,9 @@ class DescribeResourceGroupsResponseBodyResourceGroup(DaraModel):
         if self.resource_count is not None:
             result['ResourceCount'] = self.resource_count
 
+        if self.resource_group_description is not None:
+            result['ResourceGroupDescription'] = self.resource_group_description
+
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
@@ -183,6 +191,9 @@ class DescribeResourceGroupsResponseBodyResourceGroup(DaraModel):
         if m.get('ResourceCount') is not None:
             self.resource_count = m.get('ResourceCount')
 
+        if m.get('ResourceGroupDescription') is not None:
+            self.resource_group_description = m.get('ResourceGroupDescription')
+
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
@@ -206,12 +217,15 @@ class DescribeResourceGroupsResponseBodyResourceGroupTimers(DaraModel):
         timer_status: str = None,
         type: str = None,
     ):
+        # The association status between the scheduled task and the resource group.
         self.bind_status = bind_status
-        # The scheduled task ID.
+        # The ID of the scheduled task.
         self.id = id
-        # The scheduled task name.
+        # The name of the scheduled task.
         self.name = name
+        # The running status of the scheduled task.
         self.timer_status = timer_status
+        # The type of the scheduled task.
         self.type = type
 
     def validate(self):
@@ -265,9 +279,9 @@ class DescribeResourceGroupsResponseBodyResourceGroupPolicies(DaraModel):
         is_default: bool = None,
         name: str = None,
     ):
-        # The policy ID.
+        # The ID of the policy.
         self.id = id
-        # Indicates whether the policy is the default policy.
+        # Specifies whether the policy is the default policy.
         self.is_default = is_default
         # The policy name.
         self.name = name
@@ -311,8 +325,11 @@ class DescribeResourceGroupsResponseBodyResourceGroupAppRules(DaraModel):
         name: str = None,
         type: int = None,
     ):
+        # The ID of the application rule.
         self.id = id
+        # The name of the application rule.
         self.name = name
+        # The type of the application rule.
         self.type = type
 
     def validate(self):

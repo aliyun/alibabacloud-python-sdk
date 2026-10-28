@@ -14,8 +14,9 @@ class CreateUsersResponseBody(DaraModel):
         create_result: main_models.CreateUsersResponseBodyCreateResult = None,
         request_id: str = None,
     ):
+        # Indicates whether all convenience accounts are created.
         self.all_succeed = all_succeed
-        # The result of creating convenience accounts.
+        # The result of the convenience account creation operation.
         self.create_result = create_result
         # The request ID.
         self.request_id = request_id
@@ -60,9 +61,9 @@ class CreateUsersResponseBodyCreateResult(DaraModel):
         created_users: List[main_models.CreateUsersResponseBodyCreateResultCreatedUsers] = None,
         failed_users: List[main_models.CreateUsersResponseBodyCreateResultFailedUsers] = None,
     ):
-        # The convenience accounts that were successfully created.
+        # The information about the convenience accounts that are created.
         self.created_users = created_users
-        # The convenience accounts that failed to be created.
+        # The information about the convenience accounts that failed to be created.
         self.failed_users = failed_users
 
     def validate(self):
@@ -119,7 +120,7 @@ class CreateUsersResponseBodyCreateResultFailedUsers(DaraModel):
     ):
         # The email address.
         self.email = email
-        # The user name.
+        # The username.
         self.end_user_id = end_user_id
         # The error code.
         self.error_code = error_code
@@ -183,13 +184,13 @@ class CreateUsersResponseBodyCreateResultCreatedUsers(DaraModel):
     ):
         # The email address.
         self.email = email
-        # The user name.
+        # The username.
         self.end_user_id = end_user_id
         # The phone number.
         self.phone = phone
-        # The display name.
+        # The display name of the user.
         self.real_nick_name = real_nick_name
-        # The user\\"s remark.
+        # The user remarks.
         self.remark = remark
 
     def validate(self):

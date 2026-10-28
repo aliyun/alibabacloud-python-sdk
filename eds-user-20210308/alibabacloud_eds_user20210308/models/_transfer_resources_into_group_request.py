@@ -15,9 +15,13 @@ class TransferResourcesIntoGroupRequest(DaraModel):
         resource_group_id: str = None,
         resources: List[main_models.TransferResourcesIntoGroupRequestResources] = None,
     ):
+        # The channel.
         self.business_channel = business_channel
+        # The WUYING product type.
         self.platform = platform
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of resource objects.
         self.resources = resources
 
     def validate(self):
@@ -73,8 +77,11 @@ class TransferResourcesIntoGroupRequestResources(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The region ID of the resource.
         self.region_id = region_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

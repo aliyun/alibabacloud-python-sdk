@@ -14,11 +14,11 @@ class ListPropertyResponseBody(DaraModel):
         properties: List[main_models.ListPropertyResponseBodyProperties] = None,
         request_id: str = None,
     ):
-        # The token that is used for the next query. If this parameter is empty, all results have been returned.
+        # The token used to start the next query. An empty NextToken indicates that no more results are available.
         self.next_token = next_token
-        # The information about the properties.
+        # The property information.
         self.properties = properties
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,11 +68,11 @@ class ListPropertyResponseBodyProperties(DaraModel):
         property_key: str = None,
         property_values: List[main_models.ListPropertyResponseBodyPropertiesPropertyValues] = None,
     ):
-        # The ID of the property.
+        # The property ID.
         self.property_id = property_id
-        # The name of the property.
+        # The property name.
         self.property_key = property_key
-        # Details about the property values.
+        # The property value information.
         self.property_values = property_values
 
     def validate(self):
@@ -121,9 +121,9 @@ class ListPropertyResponseBodyPropertiesPropertyValues(DaraModel):
         property_value: str = None,
         property_value_id: int = None,
     ):
-        # The value of the property.
+        # The property value.
         self.property_value = property_value
-        # The ID of the property value.
+        # The property value ID.
         self.property_value_id = property_value_id
 
     def validate(self):

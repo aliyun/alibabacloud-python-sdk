@@ -9,7 +9,7 @@ class InitTenantAliasRequest(DaraModel):
         self,
         business_channel: str = None,
     ):
-        # Channel
+        # The channel.
         self.business_channel = business_channel
 
     def validate(self):

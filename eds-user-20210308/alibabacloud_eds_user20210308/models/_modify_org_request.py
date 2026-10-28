@@ -11,7 +11,7 @@ class ModifyOrgRequest(DaraModel):
         org_id: str = None,
         org_name: str = None,
     ):
-        # Channel
+        # The channel.
         self.business_channel = business_channel
         # The ID of the organization.
         # 

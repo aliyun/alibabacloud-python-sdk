@@ -11,11 +11,11 @@ class UnlockMfaDeviceRequest(DaraModel):
         business_channel: str = None,
         serial_number: str = None,
     ):
-        # The domain of the Active Directory (AD) workspace.
+        # The address of the AD office network.
         self.ad_domain = ad_domain
-        # Channel
+        # The channel.
         self.business_channel = business_channel
-        # The serial number of the virtual MFA device. The serial number is unique for each device.
+        # The serial number of the virtual MFA device. You can call [DescribeMfaDevices](~~DescribeMfaDevices~~) to obtain the serial number.
         # 
         # This parameter is required.
         self.serial_number = serial_number

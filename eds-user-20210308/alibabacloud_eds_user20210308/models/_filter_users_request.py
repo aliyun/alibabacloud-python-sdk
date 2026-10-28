@@ -32,38 +32,41 @@ class FilterUsersRequest(DaraModel):
     ):
         # The channel.
         self.business_channel = business_channel
-        # The usernames (`EndUserId`) to exclude by exact match.
+        # The list of usernames (EndUserIds) to exclude by exact match.
         self.exclude_end_user_ids = exclude_end_user_ids
-        # The string for a fuzzy search on the username (`EndUserId`) and email address (`Email`). The wildcard character (`*`) is supported. For example, if you set this parameter to `a*m`, the query returns all results where the username or email address starts with `a` and ends with `m`.
+        # The fuzzy search string. This parameter supports matching the username (EndUserId) and email address (Email). Wildcards (*) are supported. For example, if you set this parameter to a*m, all results where the username or email address starts with a and ends with m are returned.
         self.filter = filter
+        # The fuzzy match condition mapping for user information. This parameter supports fields such as the username, remarks, phone number, email address, nickname, and employee ID.
         self.filter_map = filter_map
-        # Specifies whether to return the number of cloud desktops that are assigned to the user.
+        # Specifies whether to return the number of cloud computers assigned to the user.
         self.include_desktop_count = include_desktop_count
-        # Specifies whether to return the number of desktop groups that are assigned to the user.
+        # Specifies whether to return the number of cloud computer pools assigned to the user.
         self.include_desktop_group_count = include_desktop_group_count
+        # The list of convenience account usernames to include in the query results.
         self.include_end_user_ids = include_end_user_ids
-        # Specifies whether to include organization information in the response.
+        # Specifies whether to include organization information.
         self.include_org_info = include_org_info
-        # Specifies whether to include the supported logon types in the response.
+        # Specifies whether to include the supported logon types.
         self.include_support_idps = include_support_idps
         # Specifies whether to query all sub-organizations.
         self.is_query_all_sub_orgs = is_query_all_sub_orgs
-        # The number of entries per page. If you specify a value greater than 100, the system automatically sets this parameter to 100.
+        # The number of entries per page in a paged query. If the value exceeds 100, it is automatically reset to 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If the number of results exceeds the value of the `MaxResults` parameter, a `NextToken` is returned. You can use the `NextToken` to query the next page of results.
+        # The token for the next query. You do not need to specify this parameter when you call this operation for the first time. If the response does not contain all results, a non-empty NextToken is returned. You can use the returned NextToken in subsequent queries to obtain the remaining results.
         self.next_token = next_token
-        # The sorting parameters.
+        # The supported sorting parameters.
         self.order_param = order_param
-        # The organization ID.
+        # The ID of the enterprise organization.
         self.org_id = org_id
         # The account activation type.
         self.owner_type = owner_type
-        # The user properties for a fuzzy search.
+        # The list of user attributes for fuzzy queries.
         self.property_filter_param = property_filter_param
-        # The information about property keys and property values.
+        # The list of attribute names and attribute values.
         self.property_key_value_filter_param = property_key_value_filter_param
+        # The switch mapping for additional response information. This parameter controls whether to include desktop policy information.
         self.show_extras = show_extras
-        # The user status by which to filter the results.
+        # The user status used to filter results.
         self.status = status
 
     def validate(self):
@@ -220,9 +223,9 @@ class FilterUsersRequestPropertyKeyValueFilterParam(DaraModel):
         property_key: str = None,
         property_values: str = None,
     ):
-        # The property key.
+        # The name of the attribute.
         self.property_key = property_key
-        # The property value.
+        # The values of the attribute.
         self.property_values = property_values
 
     def validate(self):
@@ -257,9 +260,9 @@ class FilterUsersRequestPropertyFilterParam(DaraModel):
         property_id: int = None,
         property_value_ids: str = None,
     ):
-        # The property ID.
+        # The ID of the attribute.
         self.property_id = property_id
-        # The property value ID.
+        # The IDs of the attribute values.
         self.property_value_ids = property_value_ids
 
     def validate(self):
@@ -294,9 +297,9 @@ class FilterUsersRequestOrderParam(DaraModel):
         order_field: str = None,
         order_type: str = None,
     ):
-        # The field by which to sort the results.
+        # The field by which to sort.
         self.order_field = order_field
-        # The sort order.
+        # The sort order, which can be ascending or descending.
         self.order_type = order_type
 
     def validate(self):

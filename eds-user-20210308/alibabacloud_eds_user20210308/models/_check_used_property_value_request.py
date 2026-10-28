@@ -11,13 +11,13 @@ class CheckUsedPropertyValueRequest(DaraModel):
         property_id: int = None,
         property_value_id: int = None,
     ):
-        # Channel
+        # The channel.
         self.business_channel = business_channel
-        # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query property ID.
+        # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.property_id = property_id
-        # The ID of the property value. You can call the [ListProperty](~~ListProperty~~) operation to query the ID of the property value.
+        # The property value ID. You can call the [ListProperty](~~ListProperty~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.property_value_id = property_value_id

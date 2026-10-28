@@ -13,9 +13,9 @@ class UnlockUsersResponseBody(DaraModel):
         request_id: str = None,
         unlock_users_result: main_models.UnlockUsersResponseBodyUnlockUsersResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The result of unlocking the convenience user.
+        # The result of the unlock operation for the convenience users.
         self.unlock_users_result = unlock_users_result
 
     def validate(self):
@@ -52,9 +52,9 @@ class UnlockUsersResponseBodyUnlockUsersResult(DaraModel):
         failed_users: List[main_models.UnlockUsersResponseBodyUnlockUsersResultFailedUsers] = None,
         unlocked_users: List[str] = None,
     ):
-        # The convenience users that failed to be unlocked.
+        # The list of convenience users that fail to be unlocked.
         self.failed_users = failed_users
-        # The convenience users that were unlocked.
+        # The list of convenience users that are successfully unlocked.
         self.unlocked_users = unlocked_users
 
     def validate(self):
@@ -98,7 +98,7 @@ class UnlockUsersResponseBodyUnlockUsersResultFailedUsers(DaraModel):
         error_code: str = None,
         error_message: str = None,
     ):
-        # The ID of the convenience user that failed to be unlocked.
+        # The convenience user that fails to be unlocked.
         self.end_user_id = end_user_id
         # The error code.
         self.error_code = error_code

@@ -10,7 +10,9 @@ class GetAdUsersCountResponseBody(DaraModel):
         ad_user_count: int = None,
         request_id: str = None,
     ):
+        # The number of Active Directory (AD) users.
         self.ad_user_count = ad_user_count
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

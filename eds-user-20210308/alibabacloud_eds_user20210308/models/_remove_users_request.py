@@ -10,11 +10,13 @@ class RemoveUsersRequest(DaraModel):
     def __init__(
         self,
         business_channel: str = None,
+        unbind_desktops: bool = None,
         users: List[str] = None,
     ):
-        # Channel
+        # The business channel.
         self.business_channel = business_channel
-        # The usernames of the convenience users that you want to remove.
+        self.unbind_desktops = unbind_desktops
+        # The usernames of the convenience users to delete.
         # 
         # This parameter is required.
         self.users = users
@@ -30,6 +32,9 @@ class RemoveUsersRequest(DaraModel):
         if self.business_channel is not None:
             result['BusinessChannel'] = self.business_channel
 
+        if self.unbind_desktops is not None:
+            result['UnbindDesktops'] = self.unbind_desktops
+
         if self.users is not None:
             result['Users'] = self.users
 
@@ -39,6 +44,9 @@ class RemoveUsersRequest(DaraModel):
         m = m or dict()
         if m.get('BusinessChannel') is not None:
             self.business_channel = m.get('BusinessChannel')
+
+        if m.get('UnbindDesktops') is not None:
+            self.unbind_desktops = m.get('UnbindDesktops')
 
         if m.get('Users') is not None:
             self.users = m.get('Users')

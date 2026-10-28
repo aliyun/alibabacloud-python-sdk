@@ -17,19 +17,19 @@ class CreateUsersRequest(DaraModel):
         password_expire_days: str = None,
         users: List[main_models.CreateUsersRequestUsers] = None,
     ):
-        # The date and time when the system automatically locks the convenience user\\"s account. The value must be in the `yyyy-MM-dd HH:mm:ss` format.
+        # The date when the account is automatically locked. Specify the date in the yyyy-MM-dd HH:mm:ss format.
         self.auto_lock_time = auto_lock_time
-        # The business channel.
+        # The channel.
         self.business_channel = business_channel
-        # Specifies whether to set the convenience user as a local administrator.
+        # Specifies whether to set the convenience account as a local administrator.
         self.is_local_admin = is_local_admin
-        # The initial password. If you do not specify this parameter, the system sends a password reset email to the convenience user\\"s email address.
+        # The initial password. If you do not specify this parameter, a password reset email is sent to the user\\"s email address.
         self.password = password
-        # By default, a convenience user\\"s password does not expire. You can use this parameter to specify a password validity period of 30 to 365 days. After the password expires, the user must reset it to log in again.
+        # The validity period of the password for the user account. By default, the password never expires. You can set this parameter to a value from 30 to 365 to specify the validity period in days. After the password expires, the end user must change the password before logging on again.
         # 
-        # > This feature is in invited preview. To use this feature, submit a ticket.
+        # > This feature is in invitational preview. To use this feature, submit a ticket.
         self.password_expire_days = password_expire_days
-        # Details about the convenience users.
+        # The convenience account information.
         # 
         # This parameter is required.
         self.users = users
@@ -105,34 +105,29 @@ class CreateUsersRequestUsers(DaraModel):
         real_nick_name: str = None,
         remark: str = None,
     ):
-        # The email address of the convenience user. This email address is used for notifications, such as an alert when a cloud computer is assigned. You must specify either this parameter or the `Phone` parameter.
+        # The email address. The email address is used to receive relevant emails, such as notification emails for cloud computer allocation. You must specify either the email address or the phone number.
         self.email = email
-        # The user name. The user name must be 3 to 24 characters long and can contain lowercase letters, digits, and underscores (_).
+        # The username. The username is custom and must be 3 to 24 characters in length. It can contain only lowercase letters, digits, and underscores.
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
+        # The IDs of the user groups to join.
         self.group_id_list = group_id_list
-        # The ID of the organization to which the convenience user belongs.
+        # The organization to which the user belongs.
         self.org_id = org_id
         # The account activation type.
         self.owner_type = owner_type
-        # The password for the convenience user.
+        # The user password.
         # 
-        # > The password must be at least 10 characters long and contain characters from at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (excluding spaces).
+        # > The password must be at least 10 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (excluding spaces).
         self.password = password
-        # <props="china">
+        # <props="china">The phone number. The phone number is used to receive relevant text messages, such as notification text messages for cloud computer allocation. You must specify either the email address or the phone number.
         # 
-        # The phone number of the convenience user. This phone number is used for notifications, such as a text message when a cloud computer is assigned. You must specify either this parameter or the `Email` parameter.
-        # 
-        # 
-        # 
-        # <props="intl">
-        # 
-        # Phone numbers are not supported on the international site.
+        # <props="intl">Phone numbers are not supported on the international site.
         self.phone = phone
-        # The display name of the convenience user.
+        # The display name of the user.
         self.real_nick_name = real_nick_name
-        # A remark for the convenience user.
+        # The user remarks.
         self.remark = remark
 
     def validate(self):

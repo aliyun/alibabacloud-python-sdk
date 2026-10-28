@@ -12,17 +12,17 @@ class DeleteUserPropertyValueRequest(DaraModel):
         property_value_id: int = None,
         user_id: int = None,
     ):
-        # Channel
+        # The channel.
         self.business_channel = business_channel
-        # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
+        # The property ID. You can call [ListProperty](~~ListProperty~~) to obtain this parameter.
         # 
         # This parameter is required.
         self.property_id = property_id
-        # The property value ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property value ID.
+        # The property value ID. You can call [ListProperty](~~ListProperty~~) to obtain this parameter.
         # 
         # This parameter is required.
         self.property_value_id = property_value_id
-        # The user ID. You can call the [DescribeUsers](~~DescribeUsers~~) operation to query the user ID, which is the return value of the `Id` parameter.
+        # The user ID. You can call [DescribeUsers](~~DescribeUsers~~) to obtain this parameter, which corresponds to the value of the `Id` response parameter.
         # 
         # This parameter is required.
         self.user_id = user_id

@@ -14,11 +14,11 @@ class FilterUsersResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.FilterUsersResponseBodyUsers] = None,
     ):
-        # The token for paginated results. If the response is truncated, this parameter is returned. To retrieve the next page of results, include this value in a subsequent request.
+        # The token for the next query. If a query does not return all results, the returned NextToken is not empty. You can pass the returned NextToken in a subsequent query to continue the query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # A list of convenience accounts.
+        # The collection of convenience user information.
         self.users = users
 
     def validate(self):
@@ -86,47 +86,49 @@ class FilterUsersResponseBodyUsers(DaraModel):
         support_login_idps: List[main_models.FilterUsersResponseBodyUsersSupportLoginIdps] = None,
         user_set_properties_models: List[main_models.FilterUsersResponseBodyUsersUserSetPropertiesModels] = None,
     ):
-        # The date the account will be automatically locked.
+        # The date when the account is automatically locked, in the YYYY-MM-DD format.
         self.auto_lock_time = auto_lock_time
-        # The number of cloud desktops assigned to the user.
+        # The number of cloud computers assigned to the user.
         self.desktop_count = desktop_count
-        # The number of desktop groups the user can access. This parameter is returned only when `IncludeDesktopGroupCount` is set to `true`.
+        # The number of cloud computer pools authorized for the user. This value is returned when `IncludeDesktopGroupCount` is set to `true`.
         self.desktop_group_count = desktop_group_count
         # The email address.
         self.email = email
-        # Indicates whether the user has local administrator permissions.
+        # Indicates whether the user is a local administrator.
         self.enable_admin_access = enable_admin_access
-        # The user name.
+        # The username.
         self.end_user_id = end_user_id
-        # External user information.
+        # The extended user information.
         self.external_info = external_info
+        # The list of user groups to which the convenience user belongs.
         self.groups = groups
         # The user ID.
         self.id = id
         # Indicates whether the user is a tenant administrator.
         self.is_tenant_manager = is_tenant_manager
-        # A list of organizations the user belongs to.
+        # The list of organizations to which the user belongs.
         self.org_list = org_list
-        # The account ownership type.
+        # The ownership type of the account.
         self.owner_type = owner_type
-        # The password validity period in days. By default, passwords do not expire. Set this to a value from 30 to 365 to enforce an expiration policy. When a password expires, the user must change it before logging on again.
+        # The password of the user account is valid permanently by default. You can use this parameter to set a password validity period of 30 to 365 days. After the password expires, the end user must change the password before logging on again.
         # 
-        # > This feature is in preview and available by invitation only. To use this feature, submit a ticket.
+        # > This feature is currently in invitational preview. To use this feature, submit a ticket.
         self.password_expire_days = password_expire_days
-        # The number of days until the password expires.
+        # The remaining days of the password validity period for the account.
         self.password_expire_rest_days = password_expire_rest_days
-        # The phone number.
+        # The mobile phone number.
         self.phone = phone
-        # The user\\"s nickname.
+        # The user nickname.
         self.real_nick_name = real_nick_name
-        # The remark about the user.
+        # The user remarks.
         self.remark = remark
+        # The list of resource policies associated with the convenience user.
         self.resource_policy_list = resource_policy_list
-        # The status of the convenience account.
+        # The status of the convenience user.
         self.status = status
-        # A list of identity providers (IdPs) that the user can use to log on.
+        # The supported logon identity sources.
         self.support_login_idps = support_login_idps
-        # A list of user properties.
+        # The collection of user properties.
         self.user_set_properties_models = user_set_properties_models
 
     def validate(self):
@@ -326,17 +328,17 @@ class FilterUsersResponseBodyUsersUserSetPropertiesModels(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # The ID of the user property.
+        # The user property ID.
         self.property_id = property_id
-        # The name of the user property.
+        # The user property name.
         self.property_key = property_key
-        # The type of the user property.
+        # The user property number.
         self.property_type = property_type
-        # The property values.
+        # The user property value.
         self.property_values = property_values
-        # The ID of the user associated with the property.
+        # The ID of the user to which the property is bound.
         self.user_id = user_id
-        # The user name associated with the property.
+        # The username of the user to which the property is bound.
         self.user_name = user_name
 
     def validate(self):
@@ -403,9 +405,9 @@ class FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues(DaraMode
         property_value: str = None,
         property_value_id: int = None,
     ):
-        # The property value.
+        # The user property value.
         self.property_value = property_value
-        # The ID of the property value.
+        # The user property value ID.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -440,9 +442,9 @@ class FilterUsersResponseBodyUsersSupportLoginIdps(DaraModel):
         idp_id: str = None,
         idp_name: str = None,
     ):
-        # The ID of the identity provider (IdP).
+        # The enterprise identity source ID.
         self.idp_id = idp_id
-        # The name of the identity provider (IdP).
+        # The enterprise identity source name.
         self.idp_name = idp_name
 
     def validate(self):
@@ -477,7 +479,9 @@ class FilterUsersResponseBodyUsersResourcePolicyList(DaraModel):
         policy_id: str = None,
         policy_name: str = None,
     ):
+        # The resource policy ID.
         self.policy_id = policy_id
+        # The resource policy name.
         self.policy_name = policy_name
 
     def validate(self):
@@ -513,11 +517,11 @@ class FilterUsersResponseBodyUsersOrgList(DaraModel):
         org_name: str = None,
         org_name_path: str = None,
     ):
-        # The organization ID.
+        # The organization structure ID.
         self.org_id = org_id
-        # The organization name.
+        # The organization structure name.
         self.org_name = org_name
-        # The organization name path.
+        # The organization structure name path.
         self.org_name_path = org_name_path
 
     def validate(self):
@@ -558,7 +562,9 @@ class FilterUsersResponseBodyUsersGroups(DaraModel):
         group_id: str = None,
         group_name: str = None,
     ):
+        # The user group ID.
         self.group_id = group_id
+        # The user group name.
         self.group_name = group_name
 
     def validate(self):
@@ -593,9 +599,9 @@ class FilterUsersResponseBodyUsersExternalInfo(DaraModel):
         external_name: str = None,
         job_number: str = None,
     ):
-        # The name of the mapped external account.
+        # The name of the external account associated with the user.
         self.external_name = external_name
-        # The ID of the external account, such as a student ID or an employee ID.
+        # The external account, student ID, or employee ID associated with the user.
         self.job_number = job_number
 
     def validate(self):

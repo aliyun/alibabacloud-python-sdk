@@ -13,9 +13,9 @@ class UpdatePropertyResponseBody(DaraModel):
         request_id: str = None,
         update_result: main_models.UpdatePropertyResponseBodyUpdateResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The result of the modification.
+        # The update result.
         self.update_result = update_result
 
     def validate(self):
@@ -53,11 +53,11 @@ class UpdatePropertyResponseBodyUpdateResult(DaraModel):
         property_key: str = None,
         save_property_value_model: main_models.UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel = None,
     ):
-        # The ID of the property.
+        # The property ID.
         self.property_id = property_id
-        # The name of the property.
+        # The property name.
         self.property_key = property_key
-        # The result of the property value modification.
+        # The property value update result.
         self.save_property_value_model = save_property_value_model
 
     def validate(self):
@@ -100,9 +100,9 @@ class UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel(DaraModel):
         failed_property_values: List[main_models.UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedPropertyValues] = None,
         save_property_values: List[main_models.UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelSavePropertyValues] = None,
     ):
-        # The property values that failed to be modified.
+        # The property values that failed to update.
         self.failed_property_values = failed_property_values
-        # The property values that were modified.
+        # The successfully updated property values.
         self.save_property_values = save_property_values
 
     def validate(self):
@@ -154,9 +154,9 @@ class UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelSavePropertyVa
         property_value: str = None,
         property_value_id: int = None,
     ):
-        # The value of the property.
+        # The property value.
         self.property_value = property_value
-        # The ID of the property value.
+        # The property value ID.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -197,9 +197,9 @@ class UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedProperty
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The ID of the property.
+        # The property ID.
         self.property_id = property_id
-        # The value of the property.
+        # The property value.
         self.property_value = property_value
 
     def validate(self):

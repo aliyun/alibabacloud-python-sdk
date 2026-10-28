@@ -15,19 +15,19 @@ class DescribeGroupUserRequest(DaraModel):
         next_token: str = None,
         solution_id: str = None,
     ):
-        # >  This parameter is not available for public use.
+        # > This parameter is not publicly available.
         self.biz_type = biz_type
-        # Channel
+        # The channel.
         self.business_channel = business_channel
-        # The fuzzy search string that matches the username (EndUserId) and email address (Email) of the regular user.
+        # The fuzzy search string. This parameter supports matching the username (EndUserId) and email address (Email).
         self.filter = filter
         # The ID of the user group.
         self.group_id = group_id
-        # The number of entries to return on each page.
+        # The number of entries to return per page for paging in a paged query.
         self.max_results = max_results
-        # The token for the next query. You can obtain this parameter from the response parameters of the last call to this operation.
+        # The token for the next query. You can obtain the token from the response parameters of the previous call to this operation.
         self.next_token = next_token
-        # >  This parameter is not available for public use.
+        # > This parameter is not publicly available.
         self.solution_id = solution_id
 
     def validate(self):

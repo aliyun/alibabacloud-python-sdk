@@ -11,13 +11,13 @@ class MoveOrgRequest(DaraModel):
         new_parent_org_id: str = None,
         org_id: str = None,
     ):
-        # Channel
+        # The business channel.
         self.business_channel = business_channel
-        # The ID of the parent organization.
+        # The ID of the target parent organization.
         # 
         # This parameter is required.
         self.new_parent_org_id = new_parent_org_id
-        # The ID of the organization that you want to move.
+        # The ID of the organization to be moved.
         # 
         # This parameter is required.
         self.org_id = org_id

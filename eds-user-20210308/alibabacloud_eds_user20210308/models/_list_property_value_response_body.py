@@ -13,9 +13,9 @@ class ListPropertyValueResponseBody(DaraModel):
         property_value_infos: List[main_models.ListPropertyValueResponseBodyPropertyValueInfos] = None,
         request_id: str = None,
     ):
-        # Details about property values.
+        # The list of property values.
         self.property_value_infos = property_value_infos
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListPropertyValueResponseBodyPropertyValueInfos(DaraModel):
         property_value: str = None,
         property_value_id: int = None,
     ):
-        # The value of the property.
+        # The property value.
         self.property_value = property_value
-        # The ID of the property value.
+        # The property value ID.
         self.property_value_id = property_value_id
 
     def validate(self):

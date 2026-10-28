@@ -12,9 +12,9 @@ class InitTenantAliasResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.alias_info = alias_info
-        # The generated ID of the organization.
+        # The generated organization ID.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -61,18 +61,13 @@ class InitTenantAliasResponseBodyAliasInfo(DaraModel):
         alias_source_type: str = None,
         next_modify_time: str = None,
     ):
-        # The reason why modification is not allowed.
+        # The reason why editing is not allowed.
         self.alias_edit_disabled_reason = alias_edit_disabled_reason
-        # Indicates whether modification is allowed.
+        # Indicates whether editing is allowed.
         self.alias_editable = alias_editable
         # The source of the organization ID.
-        # 
-        # Valid values:
-        # 
-        # *   Generated: auto-generated.
-        # *   Customized: user-defined.
         self.alias_source_type = alias_source_type
-        # The time window during which modification is allowed.
+        # The time when editing is allowed, in the YYYY-MM-DD HH:mm:ss format.
         self.next_modify_time = next_modify_time
 
     def validate(self):

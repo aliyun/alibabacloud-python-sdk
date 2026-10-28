@@ -14,7 +14,7 @@ class DescribeOrgsResponseBody(DaraModel):
         orgs: List[main_models.DescribeOrgsResponseBodyOrgs] = None,
         request_id: str = None,
     ):
-        # The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
+        # The pagination token. Set the value to the NextToken parameter returned by the previous API call.
         self.next_token = next_token
         # The list of organizations.
         self.orgs = orgs
@@ -71,17 +71,17 @@ class DescribeOrgsResponseBodyOrgs(DaraModel):
         parent_org_id: str = None,
         resource_policy_list: List[main_models.DescribeOrgsResponseBodyOrgsResourcePolicyList] = None,
     ):
-        # The access type of the organization node. Valid values:
-        # - MANAGEABLE: indicates a manageable node.
-        # - PATH_ONLY: indicates a node used only to display the full path to the root organization.
+        # The access type of the organization node. A value of MANAGEABLE indicates a manageable node. A value of PATH_ONLY indicates that the node is used only to display the full path to the root organization.
         self.access_type = access_type
         # The organization ID.
         self.org_id = org_id
-        # The organization name.
+        # The name of the organization.
         self.org_name = org_name
+        # The name path from the root organization to the current organization.
         self.org_name_path = org_name_path
-        # The parent organization ID.
+        # The ID of the parent organization.
         self.parent_org_id = parent_org_id
+        # The list of resource policies associated with the organization.
         self.resource_policy_list = resource_policy_list
 
     def validate(self):
@@ -148,7 +148,9 @@ class DescribeOrgsResponseBodyOrgsResourcePolicyList(DaraModel):
         policy_id: str = None,
         policy_name: str = None,
     ):
+        # The resource policy ID.
         self.policy_id = policy_id
+        # The Policy Name.
         self.policy_name = policy_name
 
     def validate(self):

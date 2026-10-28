@@ -13,15 +13,15 @@ class SyncAllEduInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

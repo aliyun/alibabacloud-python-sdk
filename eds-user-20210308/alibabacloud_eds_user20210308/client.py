@@ -613,6 +613,8 @@ class Client(OpenApiClient):
             query['Platform'] = request.platform
         if not DaraCore.is_null(request.resource_classification):
             query['ResourceClassification'] = request.resource_classification
+        if not DaraCore.is_null(request.resource_group_description):
+            query['ResourceGroupDescription'] = request.resource_group_description
         if not DaraCore.is_null(request.resource_group_name):
             query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
@@ -653,6 +655,8 @@ class Client(OpenApiClient):
             query['Platform'] = request.platform
         if not DaraCore.is_null(request.resource_classification):
             query['ResourceClassification'] = request.resource_classification
+        if not DaraCore.is_null(request.resource_group_description):
+            query['ResourceGroupDescription'] = request.resource_group_description
         if not DaraCore.is_null(request.resource_group_name):
             query['ResourceGroupName'] = request.resource_group_name
         req = open_api_util_models.OpenApiRequest(
@@ -3310,12 +3314,16 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.RemoveUsersResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.unbind_desktops):
+            query['UnbindDesktops'] = request.unbind_desktops
         body = {}
         if not DaraCore.is_null(request.business_channel):
             body['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.users):
             body['Users'] = request.users
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3340,12 +3348,16 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.RemoveUsersResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.unbind_desktops):
+            query['UnbindDesktops'] = request.unbind_desktops
         body = {}
         if not DaraCore.is_null(request.business_channel):
             body['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.users):
             body['Users'] = request.users
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3681,16 +3693,22 @@ class Client(OpenApiClient):
     ) -> main_models.TransferResourcesOutofGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.app_rule_id):
+            query['AppRuleId'] = request.app_rule_id
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.resources):
             query['Resources'] = request.resources
         if not DaraCore.is_null(request.target_resource_group_id):
             query['TargetResourceGroupId'] = request.target_resource_group_id
+        if not DaraCore.is_null(request.timer_id):
+            query['TimerId'] = request.timer_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3717,16 +3735,22 @@ class Client(OpenApiClient):
     ) -> main_models.TransferResourcesOutofGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.app_rule_id):
+            query['AppRuleId'] = request.app_rule_id
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
+        if not DaraCore.is_null(request.policy_id):
+            query['PolicyId'] = request.policy_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.resources):
             query['Resources'] = request.resources
         if not DaraCore.is_null(request.target_resource_group_id):
             query['TargetResourceGroupId'] = request.target_resource_group_id
+        if not DaraCore.is_null(request.timer_id):
+            query['TimerId'] = request.timer_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

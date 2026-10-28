@@ -13,11 +13,11 @@ class RemoveGroupRequest(DaraModel):
         group_id: str = None,
         group_ids: List[str] = None,
     ):
-        # Channel
+        # The business channel.
         self.business_channel = business_channel
-        # The ID of the user group to be deleted.
+        # The ID of the user group to delete.
         self.group_id = group_id
-        # The IDs of the user groups to be deleted.
+        # The IDs of the user groups to delete.
         self.group_ids = group_ids
 
     def validate(self):

@@ -13,15 +13,15 @@ class DeleteResourceGroupRequest(DaraModel):
         resource_group_id: str = None,
         resource_group_ids: List[str] = None,
     ):
-        # Channel
+        # The channel.
         self.business_channel = business_channel
-        # >  The ID of the resource group that you want to delete.
+        # The ID of the resource group to delete.
         # 
-        # *   If you also specify ResourceGroupIds, both parameters take effect.
+        # > If the `ResourceGroupIds` parameter is not empty, both parameters take effect.
         self.resource_group_id = resource_group_id
-        # >  The IDs of the resource groups that you want to delete.
+        # The list of IDs of the resource groups to delete.
         # 
-        # *   If you also specify ResourceGroupId, both parameters take effect.
+        # > If the `ResourceGroupIds` parameter is not empty, both parameters take effect.
         self.resource_group_ids = resource_group_ids
 
     def validate(self):

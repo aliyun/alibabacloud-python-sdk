@@ -10,7 +10,7 @@ class CreateGroupResponseBody(DaraModel):
         group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the user group.
+        # The user group ID.
         self.group_id = group_id
         # The request ID.
         self.request_id = request_id

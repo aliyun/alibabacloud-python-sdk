@@ -13,11 +13,11 @@ class UnlockUsersRequest(DaraModel):
         business_channel: str = None,
         users: List[str] = None,
     ):
-        # The date on which the convenience users are automatically locked.
+        # The date when the convenience user is automatically locked. The format is YYYY-MM-DD.
         self.auto_lock_time = auto_lock_time
-        # Channel
+        # The channel.
         self.business_channel = business_channel
-        # The usernames of the convenience users that you want to unlock.
+        # The list of usernames of the convenience users to unlock.
         # 
         # This parameter is required.
         self.users = users
