@@ -17,11 +17,17 @@ class CreateOncallScheduleRequest(DaraModel):
         substitudes: List[main_models.CreateOncallScheduleRequestSubstitudes] = None,
         workspace: str = None,
     ):
+        # The unique identifier of the on-call schedule.
         self.oncall_schedule_id = oncall_schedule_id
+        # The name of the on-call schedule.
         self.oncall_schedule_name = oncall_schedule_name
+        # The list of rotations.
         self.rotations = rotations
+        # The ID of the chatbot for shift reminders.
         self.shift_robot_id = shift_robot_id
+        # The list of substitution rules.
         self.substitudes = substitudes
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -99,9 +105,13 @@ class CreateOncallScheduleRequestSubstitudes(DaraModel):
         replaced_contact_id: str = None,
         start_time: str = None,
     ):
+        # The ID of the substitute contact.
         self.contact_id = contact_id
+        # The end time of the substitution. Format: YYYY-MM-DD HH:mm.
         self.end_time = end_time
+        # The ID of the replaced contact.
         self.replaced_contact_id = replaced_contact_id
+        # The start time of the substitution. Format: YYYY-MM-DD HH:mm.
         self.start_time = start_time
 
     def validate(self):
@@ -155,21 +165,38 @@ class CreateOncallScheduleRequestRotations(DaraModel):
         start_date: str = None,
         time_zone: str = None,
     ):
+        # The days of the week when the rotation is active.
+        # 
         # This parameter is required.
         self.active_days = active_days
+        # The list of contacts.
+        # 
         # This parameter is required.
         self.contacts = contacts
+        # The end time of the rotation. Format: HH:mm.
+        # 
         # This parameter is required.
         self.rotation_end_time = rotation_end_time
+        # The name of the rotation.
+        # 
         # This parameter is required.
         self.rotation_name = rotation_name
+        # The start time of the rotation. Format: HH:mm.
+        # 
         # This parameter is required.
         self.rotation_start_time = rotation_start_time
+        # The length of the shift interval. Use this parameter in conjunction with shiftRecurrenceFrequency. For example, set this parameter to 3 to rotate to the next on-call contact every 3 days.
         self.shift_length = shift_length
+        # The unit of the shift interval. Use this parameter in conjunction with shiftRecurrenceFrequency. For example, set this parameter to week to rotate to the next on-call contact every week.
+        # 
         # This parameter is required.
         self.shift_recurrence_frequency = shift_recurrence_frequency
+        # The start date of the rotation. Format: yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.start_date = start_date
+        # The name of the time zone. The time zone must follow the **IANA Time Zone Database** standard, such as `Asia/Shanghai`.
+        # 
         # This parameter is required.
         self.time_zone = time_zone
 

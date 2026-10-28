@@ -22,18 +22,31 @@ class CreateAlertActionRequest(DaraModel):
         type: str = None,
         webhook_param: main_models.CreateAlertActionRequestWebhookParam = None,
     ):
+        # The unique identifier of the alert action integration.
         self.alert_action_id = alert_action_id
+        # The name of the alert action integration.
+        # 
         # This parameter is required.
         self.alert_action_name = alert_action_name
+        # The event bus parameters.
         self.eb_param = eb_param
+        # The elastic scaling parameters.
         self.ess_param = ess_param
+        # The Function Compute 3.0 parameters.
         self.fc_3param = fc_3param
+        # The Function Compute parameters.
         self.fc_param = fc_param
+        # The Simple Message Queue (formerly MNS) (MSMQ) parameters.
         self.mns_param = mns_param
+        # The PagerDuty parameters.
         self.pager_duty_param = pager_duty_param
+        # The Simple Log Service parameters.
         self.sls_param = sls_param
+        # The type of the alert action integration.
+        # 
         # This parameter is required.
         self.type = type
+        # The webhook parameters.
         self.webhook_param = webhook_param
 
     def validate(self):
@@ -147,9 +160,13 @@ class CreateAlertActionRequestWebhookParam(DaraModel):
         method: str = None,
         url: str = None,
     ):
+        # The data format. This parameter takes effect only when the request method is POST.
         self.content_type = content_type
+        # The request header information.
         self.headers = headers
+        # The webhook request method.
         self.method = method
+        # The alert callback URL.
         self.url = url
 
     def validate(self):
@@ -197,8 +214,11 @@ class CreateAlertActionRequestSlsParam(DaraModel):
         project: str = None,
         region_id: str = None,
     ):
+        # The name of the Logstore in Simple Log Service.
         self.logstore = logstore
+        # The name of the project in Simple Log Service.
         self.project = project
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -239,7 +259,9 @@ class CreateAlertActionRequestPagerDutyParam(DaraModel):
         key: str = None,
         url: str = None,
     ):
+        # The integration key of PagerDuty.
         self.key = key
+        # The integration webhook URL of PagerDuty. Both V1 and V2 are supported.
         self.url = url
 
     def validate(self):
@@ -275,8 +297,14 @@ class CreateAlertActionRequestMnsParam(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
+        # The resource type of Simple Message Queue (formerly MNS) (MSMQ).
         self.mns_type = mns_type
+        # The name of the resource.
+        # 
+        # - If the resource type is queue, the resource name is the queue name.
+        # - If the resource type is topic, the resource name is the topic name.
         self.name = name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -318,8 +346,11 @@ class CreateAlertActionRequestFcParam(DaraModel):
         region_id: str = None,
         service: str = None,
     ):
+        # The name of the function in Function Compute.
         self.function = function
+        # The region ID.
         self.region_id = region_id
+        # The service name of Function Compute.
         self.service = service
 
     def validate(self):
@@ -361,8 +392,11 @@ class CreateAlertActionRequestFc3Param(DaraModel):
         qualifier: str = None,
         region_id: str = None,
     ):
+        # The name of the function in Function Compute.
         self.function = function
+        # The version or alias of the function.
         self.qualifier = qualifier
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -404,8 +438,11 @@ class CreateAlertActionRequestEssParam(DaraModel):
         ess_rule_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the elastic scaling group.
         self.ess_group_id = ess_group_id
+        # The ID of the elastic scaling rule.
         self.ess_rule_id = ess_rule_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -448,9 +485,13 @@ class CreateAlertActionRequestEbParam(DaraModel):
         region_id: str = None,
         subject: str = None,
     ):
+        # The event source.
         self.eb_source = eb_source
+        # The name of the event bus.
         self.event_bus_name = event_bus_name
+        # The region ID.
         self.region_id = region_id
+        # The subject.
         self.subject = subject
 
     def validate(self):

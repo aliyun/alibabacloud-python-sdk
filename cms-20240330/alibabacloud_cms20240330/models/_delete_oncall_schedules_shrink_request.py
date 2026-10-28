@@ -9,6 +9,7 @@ class DeleteOncallSchedulesShrinkRequest(DaraModel):
         self,
         oncall_schedule_ids_shrink: str = None,
     ):
+        # The IDs of the on-call schedules.
         self.oncall_schedule_ids_shrink = oncall_schedule_ids_shrink
 
     def validate(self):

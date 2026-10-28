@@ -10,7 +10,9 @@ class ActiveContactChannelRequest(DaraModel):
         code: str = None,
         site: str = None,
     ):
+        # The activation verification code. This 32-character string is sent by the system to the mobile phone number or email address of the contact.
         self.code = code
+        # The site. Valid values: cn_hangzhou (China site) and ap_southeast_1 (International site). Default value: cn_hangzhou.
         self.site = site
 
     def validate(self):

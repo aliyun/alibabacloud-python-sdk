@@ -13,7 +13,9 @@ class ViewOncallScheduleResponseBody(DaraModel):
         request_id: str = None,
         schedule: Dict[str, List[main_models.ScheduleValue]] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The on-call calendar. The key is the shift name, and the value is a list of on-call shifts for the shift within the queried date range.
         self.schedule = schedule
 
     def validate(self):

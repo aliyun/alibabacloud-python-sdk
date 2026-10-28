@@ -11,6 +11,8 @@ class DeleteAlertNotifyTemplatesRequest(DaraModel):
         self,
         alert_notify_template_ids: List[str] = None,
     ):
+        # The IDs of the notification templates.
+        # 
         # This parameter is required.
         self.alert_notify_template_ids = alert_notify_template_ids
 

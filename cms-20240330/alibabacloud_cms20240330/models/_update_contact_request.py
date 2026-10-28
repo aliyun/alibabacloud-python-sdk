@@ -15,10 +15,15 @@ class UpdateContactRequest(DaraModel):
         name: str = None,
         phone: str = None,
     ):
+        # The email address of the contact.
         self.email = email
+        # The IM user ID mappings. Multiple instant messaging tools are supported.
         self.im_user_ids = im_user_ids
+        # The language.
         self.lang = lang
+        # The name of the contact.
         self.name = name
+        # The mobile phone number of the contact. Only mobile phone numbers in the Chinese mainland are supported.
         self.phone = phone
 
     def validate(self):

@@ -9,6 +9,7 @@ class ListOncallContactsRequest(DaraModel):
         self,
         timestamp: str = None,
     ):
+        # The timestamp of the on-call shift to query. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

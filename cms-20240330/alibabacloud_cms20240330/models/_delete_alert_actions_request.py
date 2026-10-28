@@ -11,6 +11,8 @@ class DeleteAlertActionsRequest(DaraModel):
         self,
         alert_action_ids: List[str] = None,
     ):
+        # The unique identifiers of the alert action integrations to delete.
+        # 
         # This parameter is required.
         self.alert_action_ids = alert_action_ids
 

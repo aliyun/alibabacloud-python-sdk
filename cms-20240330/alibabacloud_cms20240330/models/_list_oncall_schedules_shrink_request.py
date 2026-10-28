@@ -13,10 +13,15 @@ class ListOncallSchedulesShrinkRequest(DaraModel):
         page_size: int = None,
         workspace: str = None,
     ):
+        # The IDs of the on-call schedules.
         self.oncall_schedule_ids_shrink = oncall_schedule_ids_shrink
+        # The name of the on-call schedule.
         self.oncall_schedule_name = oncall_schedule_name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

@@ -16,10 +16,15 @@ class ListAlertNotifyTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The list of notification templates.
         self.alert_notify_templates = alert_notify_templates
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -83,10 +88,25 @@ class ListAlertNotifyTemplatesResponseBodyAlertNotifyTemplates(DaraModel):
         templates: Dict[str, dict] = None,
         type: str = None,
     ):
+        # The notification template ID.
         self.alert_notify_template_id = alert_notify_template_id
+        # The notification template name.
         self.alert_notify_template_name = alert_notify_template_name
+        # The template syntax type. The current template syntax is fixed to GO and uses the Go template syntax.
         self.program_lang = program_lang
+        # The multilingual notification templates. The key is the language code: zh (Chinese) or en (English). The value is the template configuration object for the language. When a notification is sent, the corresponding template is selected based on the recipient\\"s language. The content format varies by type: Markdown for DING, WEIXIN, and FEISHU; HTML for EMAIL; plain text for SMS, CALL, and SLACK; and JSON for CUSTOM.
         self.templates = templates
+        # The notification channel type. Valid values:
+        # - DING
+        # - WEIXIN
+        # - FEISHU
+        # - SLACK
+        # - CUSTOM
+        # - TEAMS
+        # - SMS
+        # - EMAIL
+        # - CALL
+        # - PAGER_DUTY
         self.type = type
 
     def validate(self):

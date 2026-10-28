@@ -15,10 +15,13 @@ class ListSubscriptionsResponseBody(DaraModel):
         request_id: str = None,
         subscription_list: List[main_models.SubscriptionForView] = None,
     ):
+        # The maximum number of records returned for the current request.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The list of subscriptions.
         self.subscription_list = subscription_list
 
     def validate(self):

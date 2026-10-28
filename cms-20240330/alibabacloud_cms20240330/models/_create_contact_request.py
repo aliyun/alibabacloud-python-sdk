@@ -17,12 +17,19 @@ class CreateContactRequest(DaraModel):
         phone: str = None,
         workspace: str = None,
     ):
+        # The ID of the contact.
         self.contact_id = contact_id
+        # The email address.
         self.email = email
+        # The instant messaging (IM) user ID mapping, which supports multi-platform integration. The key is the IM type (such as DING or WEIXIN), and the value is the corresponding user ID.
         self.im_user_ids = im_user_ids
+        # The language.
         self.lang = lang
+        # The name of the contact.
         self.name = name
+        # The mobile phone number. Currently, only mobile phone numbers in the Chinese mainland are supported.
         self.phone = phone
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

@@ -12,6 +12,7 @@ class EnableSubscriptionResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The subscription ID.
         self.subscription_id = subscription_id
 
     def validate(self):

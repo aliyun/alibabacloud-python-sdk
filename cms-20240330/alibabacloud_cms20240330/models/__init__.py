@@ -580,6 +580,10 @@ from ._list_alert_actions_request import ListAlertActionsRequest
 from ._list_alert_actions_shrink_request import ListAlertActionsShrinkRequest
 from ._list_alert_actions_response_body import ListAlertActionsResponseBody
 from ._list_alert_actions_response import ListAlertActionsResponse
+from ._list_alert_histories_request import ListAlertHistoriesRequest
+from ._list_alert_histories_shrink_request import ListAlertHistoriesShrinkRequest
+from ._list_alert_histories_response_body import ListAlertHistoriesResponseBody
+from ._list_alert_histories_response import ListAlertHistoriesResponse
 from ._list_alert_notify_templates_request import ListAlertNotifyTemplatesRequest
 from ._list_alert_notify_templates_shrink_request import ListAlertNotifyTemplatesShrinkRequest
 from ._list_alert_notify_templates_response_body import ListAlertNotifyTemplatesResponseBody
@@ -1175,6 +1179,7 @@ from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlert
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsSlsParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsWebhookParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActions
+from ._list_alert_histories_response_body import ListAlertHistoriesResponseBodyData
 from ._list_alert_notify_templates_response_body import ListAlertNotifyTemplatesResponseBodyAlertNotifyTemplates
 from ._list_alert_robots_response_body import ListAlertRobotsResponseBodyRobots
 from ._list_alert_webhooks_response_body import ListAlertWebhooksResponseBodyWebhooks
@@ -1972,6 +1977,10 @@ __all__ = [
     ListAlertActionsShrinkRequest,
     ListAlertActionsResponseBody,
     ListAlertActionsResponse,
+    ListAlertHistoriesRequest,
+    ListAlertHistoriesShrinkRequest,
+    ListAlertHistoriesResponseBody,
+    ListAlertHistoriesResponse,
     ListAlertNotifyTemplatesRequest,
     ListAlertNotifyTemplatesShrinkRequest,
     ListAlertNotifyTemplatesResponseBody,
@@ -2567,6 +2576,7 @@ __all__ = [
     ListAlertActionsResponseBodyAlertActionsSlsParam,
     ListAlertActionsResponseBodyAlertActionsWebhookParam,
     ListAlertActionsResponseBodyAlertActions,
+    ListAlertHistoriesResponseBodyData,
     ListAlertNotifyTemplatesResponseBodyAlertNotifyTemplates,
     ListAlertRobotsResponseBodyRobots,
     ListAlertWebhooksResponseBodyWebhooks,

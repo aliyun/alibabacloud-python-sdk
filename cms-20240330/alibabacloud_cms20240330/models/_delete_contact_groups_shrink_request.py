@@ -9,6 +9,8 @@ class DeleteContactGroupsShrinkRequest(DaraModel):
         self,
         contact_group_ids_shrink: str = None,
     ):
+        # The IDs of the contact groups.
+        # 
         # This parameter is required.
         self.contact_group_ids_shrink = contact_group_ids_shrink
 

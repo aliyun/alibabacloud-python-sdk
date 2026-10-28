@@ -16,10 +16,15 @@ class ListUserNotifyHistoriesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The notification history list.
         self.history_list = history_list
+        # The maximum number of entries returned by this request.
         self.max_results = max_results
+        # The pagination token for the next page. It is an opaque string generated and encrypted by the server. An empty value indicates that no more data is available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of notification history entries that meet the query conditions.
         self.total = total
 
     def validate(self):
@@ -98,25 +103,65 @@ class ListUserNotifyHistoriesResponseBodyHistoryList(DaraModel):
         timestamp: int = None,
         user_id: str = None,
     ):
+        # The notification channel. The valid values are the same as those of the `channel` request parameter.
         self.channel = channel
+        # The list of contacts. Multiple contacts are separated by commas.
         self.contacts = contacts
+        # The list of contact groups. Multiple contact groups are separated by commas.
         self.groups = groups
+        # The incident ID.
         self.incident_id = incident_id
+        # The notification job ID.
         self.job_id = job_id
+        # Indicates whether the notification record has no actual delivery channel. Valid values:
+        # - true: The notification record has no actual delivery channel, and the notifyResult is NO_CHANNEL.
+        # - false: The notification record has an actual delivery channel.
         self.no_channel = no_channel
+        # The notification policy ID.
         self.notify_strategy_id = notify_strategy_id
+        # The notification policy name.
         self.notify_strategy_name = notify_strategy_name
+        # The recipient address, such as a phone number, email address, or webhook URL, depending on the notification channel.
         self.receiver = receiver
+        # The notification delivery result details. This is the raw response content returned by the channel, such as the API response from a DingTalk or Lark bot.
         self.result = result
+        # The alert rule ID.
         self.rule_id = rule_id
+        # The alert rule name.
         self.rule_name = rule_name
+        # The notification delivery type. Valid values:
+        # - SUBSCRIBE: subscription notifications
+        # - DIRECT: direct event notifications
+        # - ITSM: ticket or action notifications
         self.send_type = send_type
+        # The alert severity. Valid values:
+        # - CRITICAL: critical
+        # - ERROR: error
+        # - WARNING: warning
+        # - INFO: information
         self.severity = severity
+        # The incident status. Valid values:
+        # - TRIGGERED: triggered
+        # - RESOLVED: resolved
+        # - ACK: acknowledged
+        # - ESCALATED: escalated
+        # - MANUAL_RESOLVED: manually resolved
+        # - TIMEOUT: automatically resolved due to timeout
+        # - RETRIGGERED: retriggered
+        # - PARTIAL_RESOLVED: partially resolved
+        # - INVALID: invalid
         self.status = status
+        # The subscription ID.
         self.subscription_id = subscription_id
+        # The subscription name.
         self.subscription_name = subscription_name
+        # Indicates whether the notification was delivered successfully. Valid values:
+        # - true: The notification was delivered successfully.
+        # - false: The notification delivery failed.
         self.success = success
+        # The time when the notification record was generated. The value is a UNIX timestamp in seconds.
         self.timestamp = timestamp
+        # The Alibaba Cloud account ID to which the notification record belongs.
         self.user_id = user_id
 
     def validate(self):

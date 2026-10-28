@@ -35,22 +35,23 @@ class IncidentForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # The expiration time of the notification block.
         self.blocking_expire_timestamp = blocking_expire_timestamp
-        # The details of the incident.
+        # The detailed content of the incident.
         self.content = content
         # The list of escalation policies.
         self.escalations = escalations
         # The group identifier.
         self.group_uuid = group_uuid
-        # The key-value pairs for grouping.
+        # The grouping key-value pairs.
         self.grouping_keys = grouping_keys
         # The unique identifier of the incident.
         self.incident_id = incident_id
-        # The name of the notification policy.
+        # The notification policy name.
         self.notify_strategy_name = notify_strategy_name
-        # The UUID of the associated notification policy, which is used to trigger notifications.
+        # The UUID of the associated notification policy used to trigger notifications.
         self.notify_strategy_uuid = notify_strategy_uuid
-        # The information about the operator.
+        # The operator information.
         self.operator = operator
         # The list of owners.
         self.owners = owners
@@ -64,14 +65,15 @@ class IncidentForView(DaraModel):
         self.root_cause_category = root_cause_category
         # The severity level of the incident.
         self.severity = severity
-        # The description of the solution.
+        # The solution description.
         self.solution = solution
         # The current state of the incident.
         self.state = state
-        # The name of the subscription policy.
+        # The subscription policy name.
         self.subscription_name = subscription_name
         # The UUID of the subscription policy.
         self.subscription_uuid = subscription_uuid
+        # The array of tags.
         self.tags = tags
         # The timestamp when the incident was created.
         self.time = time

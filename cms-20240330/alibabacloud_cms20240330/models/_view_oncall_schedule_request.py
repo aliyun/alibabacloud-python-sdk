@@ -10,7 +10,9 @@ class ViewOncallScheduleRequest(DaraModel):
         end_date: str = None,
         start_date: str = None,
     ):
+        # The end date of the query. Format: yyyy-MM-dd. This parameter must be specified together with startDate.
         self.end_date = end_date
+        # The start date of the query. Format: yyyy-MM-dd. This parameter must be specified together with endDate.
         self.start_date = start_date
 
     def validate(self):

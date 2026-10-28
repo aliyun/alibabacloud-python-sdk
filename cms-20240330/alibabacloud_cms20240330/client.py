@@ -10701,6 +10701,194 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_alert_actions_with_options_async(request, headers, runtime)
 
+    def list_alert_histories_with_options(
+        self,
+        tmp_req: main_models.ListAlertHistoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertHistoriesResponse:
+        tmp_req.validate()
+        request = main_models.ListAlertHistoriesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.label_filter):
+            request.label_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_filter, 'labelFilter', 'json')
+        if not DaraCore.is_null(tmp_req.notification_filter):
+            request.notification_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.notification_filter, 'notificationFilter', 'json')
+        query = {}
+        if not DaraCore.is_null(request.alert_history_id):
+            query['alertHistoryId'] = request.alert_history_id
+        if not DaraCore.is_null(request.alert_rule_id):
+            query['alertRuleId'] = request.alert_rule_id
+        if not DaraCore.is_null(request.biz_source):
+            query['bizSource'] = request.biz_source
+        if not DaraCore.is_null(request.cms_namespace):
+            query['cmsNamespace'] = request.cms_namespace
+        if not DaraCore.is_null(request.cms_product_category):
+            query['cmsProductCategory'] = request.cms_product_category
+        if not DaraCore.is_null(request.display_name_key_word):
+            query['displayNameKeyWord'] = request.display_name_key_word
+        if not DaraCore.is_null(request.instance_key):
+            query['instanceKey'] = request.instance_key
+        if not DaraCore.is_null(request.label_filter_shrink):
+            query['labelFilter'] = request.label_filter_shrink
+        if not DaraCore.is_null(request.latest_level):
+            query['latestLevel'] = request.latest_level
+        if not DaraCore.is_null(request.max_level):
+            query['maxLevel'] = request.max_level
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.migration_status):
+            query['migrationStatus'] = request.migration_status
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.notification_filter_shrink):
+            query['notificationFilter'] = request.notification_filter_shrink
+        if not DaraCore.is_null(request.observe_relation_type):
+            query['observeRelationType'] = request.observe_relation_type
+        if not DaraCore.is_null(request.observe_resource_domain):
+            query['observeResourceDomain'] = request.observe_resource_domain
+        if not DaraCore.is_null(request.observe_resource_global_scope):
+            query['observeResourceGlobalScope'] = request.observe_resource_global_scope
+        if not DaraCore.is_null(request.observe_resource_instance_id):
+            query['observeResourceInstanceId'] = request.observe_resource_instance_id
+        if not DaraCore.is_null(request.observe_resource_type):
+            query['observeResourceType'] = request.observe_resource_type
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.partition_key):
+            query['partitionKey'] = request.partition_key
+        if not DaraCore.is_null(request.start_time_from):
+            query['startTimeFrom'] = request.start_time_from
+        if not DaraCore.is_null(request.start_time_to):
+            query['startTimeTo'] = request.start_time_to
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertHistories',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertHistories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertHistoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alert_histories_with_options_async(
+        self,
+        tmp_req: main_models.ListAlertHistoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertHistoriesResponse:
+        tmp_req.validate()
+        request = main_models.ListAlertHistoriesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.label_filter):
+            request.label_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_filter, 'labelFilter', 'json')
+        if not DaraCore.is_null(tmp_req.notification_filter):
+            request.notification_filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.notification_filter, 'notificationFilter', 'json')
+        query = {}
+        if not DaraCore.is_null(request.alert_history_id):
+            query['alertHistoryId'] = request.alert_history_id
+        if not DaraCore.is_null(request.alert_rule_id):
+            query['alertRuleId'] = request.alert_rule_id
+        if not DaraCore.is_null(request.biz_source):
+            query['bizSource'] = request.biz_source
+        if not DaraCore.is_null(request.cms_namespace):
+            query['cmsNamespace'] = request.cms_namespace
+        if not DaraCore.is_null(request.cms_product_category):
+            query['cmsProductCategory'] = request.cms_product_category
+        if not DaraCore.is_null(request.display_name_key_word):
+            query['displayNameKeyWord'] = request.display_name_key_word
+        if not DaraCore.is_null(request.instance_key):
+            query['instanceKey'] = request.instance_key
+        if not DaraCore.is_null(request.label_filter_shrink):
+            query['labelFilter'] = request.label_filter_shrink
+        if not DaraCore.is_null(request.latest_level):
+            query['latestLevel'] = request.latest_level
+        if not DaraCore.is_null(request.max_level):
+            query['maxLevel'] = request.max_level
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.migration_status):
+            query['migrationStatus'] = request.migration_status
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.notification_filter_shrink):
+            query['notificationFilter'] = request.notification_filter_shrink
+        if not DaraCore.is_null(request.observe_relation_type):
+            query['observeRelationType'] = request.observe_relation_type
+        if not DaraCore.is_null(request.observe_resource_domain):
+            query['observeResourceDomain'] = request.observe_resource_domain
+        if not DaraCore.is_null(request.observe_resource_global_scope):
+            query['observeResourceGlobalScope'] = request.observe_resource_global_scope
+        if not DaraCore.is_null(request.observe_resource_instance_id):
+            query['observeResourceInstanceId'] = request.observe_resource_instance_id
+        if not DaraCore.is_null(request.observe_resource_type):
+            query['observeResourceType'] = request.observe_resource_type
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.partition_key):
+            query['partitionKey'] = request.partition_key
+        if not DaraCore.is_null(request.start_time_from):
+            query['startTimeFrom'] = request.start_time_from
+        if not DaraCore.is_null(request.start_time_to):
+            query['startTimeTo'] = request.start_time_to
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertHistories',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertHistories',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertHistoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alert_histories(
+        self,
+        request: main_models.ListAlertHistoriesRequest,
+    ) -> main_models.ListAlertHistoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_alert_histories_with_options(request, headers, runtime)
+
+    async def list_alert_histories_async(
+        self,
+        request: main_models.ListAlertHistoriesRequest,
+    ) -> main_models.ListAlertHistoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_alert_histories_with_options_async(request, headers, runtime)
+
     def list_alert_notify_templates_with_options(
         self,
         tmp_req: main_models.ListAlertNotifyTemplatesRequest,

@@ -11,6 +11,7 @@ class DeleteContactsRequest(DaraModel):
         self,
         contact_ids: List[str] = None,
     ):
+        # The IDs of the contacts.
         self.contact_ids = contact_ids
 
     def validate(self):

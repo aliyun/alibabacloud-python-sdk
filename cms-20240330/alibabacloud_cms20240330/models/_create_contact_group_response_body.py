@@ -10,8 +10,9 @@ class CreateContactGroupResponseBody(DaraModel):
         contact_group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the contact group.
         self.contact_group_id = contact_group_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

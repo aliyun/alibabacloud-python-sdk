@@ -10,8 +10,9 @@ class DisableSubscriptionResponseBody(DaraModel):
         request_id: str = None,
         subscription_id: str = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the subscription.
         self.subscription_id = subscription_id
 
     def validate(self):

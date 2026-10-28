@@ -9,6 +9,7 @@ class DeleteContactsShrinkRequest(DaraModel):
         self,
         contact_ids_shrink: str = None,
     ):
+        # The IDs of the contacts.
         self.contact_ids_shrink = contact_ids_shrink
 
     def validate(self):

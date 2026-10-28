@@ -11,6 +11,7 @@ class DeleteOncallSchedulesRequest(DaraModel):
         self,
         oncall_schedule_ids: List[str] = None,
     ):
+        # The IDs of the on-call schedules.
         self.oncall_schedule_ids = oncall_schedule_ids
 
     def validate(self):

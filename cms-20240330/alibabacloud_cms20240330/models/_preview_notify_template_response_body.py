@@ -15,10 +15,15 @@ class PreviewNotifyTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The rendering result object, which contains two mappings: success for successfully rendered items and failed for items that failed to render.
         self.data = data
+        # The processing result message. The value is success if the request is successful, or an error message if the request fails.
         self.msg = msg
-        # 请求ID
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -67,7 +72,9 @@ class PreviewNotifyTemplateResponseBodyData(DaraModel):
         failed: Dict[str, Any] = None,
         success: Dict[str, Any] = None,
     ):
+        # The mapping of failed rendering results. The key is the template identifier, and the value is the cause of the failure, such as a template syntax error or a reference to an undefined variable.
         self.failed = failed
+        # The mapping of successful rendering results. The key is the template identifier, which corresponds to templates[].key in the request, and the value is the rendered string content.
         self.success = success
 
     def validate(self):

@@ -14,9 +14,13 @@ class CreateContactGroupRequest(DaraModel):
         name: str = None,
         workspace: str = None,
     ):
+        # The unique identifier of the contact group.
         self.contact_group_id = contact_group_id
+        # The IDs of the contacts.
         self.contacts = contacts
+        # The name of the contact.
         self.name = name
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

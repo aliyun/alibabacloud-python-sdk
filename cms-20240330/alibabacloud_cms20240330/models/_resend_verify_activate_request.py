@@ -9,6 +9,7 @@ class ResendVerifyActivateRequest(DaraModel):
         self,
         channel_type: str = None,
     ):
+        # The channel type.
         self.channel_type = channel_type
 
     def validate(self):

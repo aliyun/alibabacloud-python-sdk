@@ -14,11 +14,17 @@ class ListAlertNotifyTemplatesShrinkRequest(DaraModel):
         program_lang: str = None,
         type: str = None,
     ):
+        # The list of notification template IDs.
         self.alert_notify_template_ids_shrink = alert_notify_template_ids_shrink
+        # The notification template name.
         self.alert_notify_template_name = alert_notify_template_name
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The template locale.
         self.program_lang = program_lang
+        # The type.
         self.type = type
 
     def validate(self):

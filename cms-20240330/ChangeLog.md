@@ -1,3 +1,7 @@
+2026-10-28 Version: 10.8.0
+- Support API ListAlertHistories.
+
+
 2026-10-28 Version: 10.7.0
 - Generated python 2024-03-30 for Cms.
 

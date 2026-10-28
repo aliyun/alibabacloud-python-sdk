@@ -9,6 +9,7 @@ class DisableSubscriptionRequest(DaraModel):
         self,
         workspace: str = None,
     ):
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

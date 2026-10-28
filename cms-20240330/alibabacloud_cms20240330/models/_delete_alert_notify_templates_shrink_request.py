@@ -9,6 +9,8 @@ class DeleteAlertNotifyTemplatesShrinkRequest(DaraModel):
         self,
         alert_notify_template_ids_shrink: str = None,
     ):
+        # The IDs of the notification templates.
+        # 
         # This parameter is required.
         self.alert_notify_template_ids_shrink = alert_notify_template_ids_shrink
 

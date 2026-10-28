@@ -12,9 +12,13 @@ class ScheduleValue(DaraModel):
         end: str = None,
         start: str = None,
     ):
+        # The ID of the on-call contact.
         self.contact_id = contact_id
+        # The name of the on-call contact.
         self.contact_name = contact_name
+        # The end time. Format: yyyy-MM-dd HH:mm:ss.
         self.end = end
+        # The start time. Format: yyyy-MM-dd HH:mm:ss.
         self.start = start
 
     def validate(self):

@@ -11,6 +11,8 @@ class DeleteContactGroupsRequest(DaraModel):
         self,
         contact_group_ids: List[str] = None,
     ):
+        # The IDs of the contact groups.
+        # 
         # This parameter is required.
         self.contact_group_ids = contact_group_ids
 

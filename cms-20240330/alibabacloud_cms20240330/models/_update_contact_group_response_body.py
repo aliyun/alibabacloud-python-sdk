@@ -9,7 +9,7 @@ class UpdateContactGroupResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The unique ID of the request, which is used for log tracing and troubleshooting.
         self.request_id = request_id
 
     def validate(self):
