@@ -1,3 +1,18 @@
+2026-10-28 Version: 4.5.2
+- Update API AddKnowledgeTags: add request parameters FileId.
+- Update API AddKnowledgeUploadUser: add request parameters FileId.
+- Update API DeleteKnowledgeFile: add request parameters FileId.
+- Update API DescribeCompactionServiceSwitch: add request parameters RegionId.
+- Update API DescribeEssdCacheConfig: add request parameters RegionId.
+- Update API DescribeLakeCacheSize: add request parameters RegionId.
+- Update API ListKnowledgeTags: add request parameters FileId.
+- Update API ListKnowledgeUploadUser: add request parameters FileId.
+- Update API ModifyDBCluster: add request parameters ProductVersion.
+- Update API ModifyDBClusterSSL: add request parameters SSLEnabled.
+- Update API RemoveKnowledgeTags: add request parameters FileId.
+- Update API RemoveKnowledgeUploadUser: add request parameters FileId.
+
+
 2026-10-14 Version: 4.5.1
 - Update API CreateDBResourceGroup: add request parameters RayConfig.AuthToken.
 - Update API GetKnowledgeRecall: add request parameters Images.

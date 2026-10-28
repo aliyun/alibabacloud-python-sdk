@@ -26,22 +26,18 @@ class GetViewObjectsRequest(DaraModel):
         self.filter_owner = filter_owner
         # The view name.
         self.filter_view_name = filter_view_name
-        # The view type.
-        # 
-        # Valid values:
-        # 
+        # The view type. Valid values:
         # - VIRTUAL_VIEW
         # - MATERIALIZED_VIEW
         # 
-        # Default value: null.
+        # Default value: empty.
         self.filter_view_type = filter_view_type
-        # The sorting field.
-        # 
-        # Valid values for Type:
+        # The sort field.
+        # Valid values for the sort type:
         # - Asc
         # - Desc
         # 
-        # Valid values for Field:
+        # Valid values for the sort field:
         # - ViewName
         # - CreateTime
         # - UpdateTime
@@ -51,9 +47,9 @@ class GetViewObjectsRequest(DaraModel):
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # * **30** (default).
-        # * **50**.
-        # * **100**.
+        # * **30** (default)
+        # * **50**
+        # * **100**
         self.page_size = page_size
         # The region ID.
         # 

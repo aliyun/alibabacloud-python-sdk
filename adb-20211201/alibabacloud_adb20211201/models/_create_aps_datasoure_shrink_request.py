@@ -53,7 +53,7 @@ class CreateApsDatasoureShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The Simple Log Service (SLS) information for the data source to be created.
+        # The Simple Log Service (SLS) information.
         self.sls_info_shrink = sls_info_shrink
 
     def validate(self):

@@ -87,84 +87,82 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(DaraModel):
     ):
         # The PromQL resource group configuration.
         self.atm_config = atm_config
-        # The automatic stop interval, in the format of a number followed by m (minutes). The value ranges from 0m or 5m to 10080m. A value of 0m indicates that automatic stop is disabled.
+        # The auto-stop interval. The value is in the format of a number followed by "m", which indicates minutes. Valid values range from 0m or 5m to 10080m. A value of 0m indicates that the resource group does not automatically stop.
         self.auto_stop_interval = auto_stop_interval
         # The classification of the resource group. Valid values:
-        # 
         # - SQL
         # - SparkSQL
         # - MultiCluster
         # - AI
         self.classification = classification
-        # A reserved parameter. Not applicable.
+        # The reserved parameter. This parameter is not applicable.
         self.cluster_mode = cluster_mode
-        # A reserved parameter. Not applicable.
+        # The reserved parameter. This parameter is not applicable.
         self.cluster_size_resource = cluster_size_resource
-        # The time when the resource group was created, in UTC. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i>.
+        # The time when the resource group was created. The time is displayed in UTC in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
         self.create_time = create_time
-        # The minimum elastic computing resources, in ACUs.
+        # The minimum elastic compute resources. Unit: ACU.
         self.elastic_min_compute_resource = elastic_min_compute_resource
-        # Indicates whether the spot instance feature is enabled for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Valid values:
-        # - **True**: The spot instance feature is enabled.
-        # - **False**: The spot instance feature is disabled.
+        # Specifies whether to enable the spot instance feature for the resource group. After you enable this feature, the unit price of resources decreases, but the instances may be released. Valid values:
+        # - **True**: enables the spot instance feature.
+        # - **False**: disables the spot instance feature.
         # 
-        # Only Job-type resource groups can be set to True.
+        # This parameter can be set to True only for Job resource groups.
         self.enable_spot = enable_spot
         # The engine type.
         self.engine = engine
         # The engine parameters.
         self.engine_params = engine_params
-        # The GPU time-sharing elastic plan.
+        # The GPU time-based elastic plan.
         self.gpu_elastic_plan = gpu_elastic_plan
-        # The resource group name.
+        # The name of the resource group.
         self.group_name = group_name
         # The resource group type. Valid values:
         # - **Interactive**
         # - **Job**
-        # > For more information about resource groups of the Data Lakehouse Edition, see [Resource group introduction (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
         self.group_type = group_type
         # The Resource Access Management (RAM) users attached to the resource group.
         self.group_users = group_users
-        # A reserved parameter. Not applicable.
+        # The reserved parameter. This parameter is not applicable.
         self.max_cluster_count = max_cluster_count
-        # The maximum reserved computing resources, in ACUs.
+        # The maximum reserved compute resources. Unit: ACU.
         self.max_compute_resource = max_compute_resource
         # The maximum number of GPUs.
         self.max_gpu_quantity = max_gpu_quantity
-        # The job routing rule message.
+        # The message of the job delivery rule.
         # 
         # This parameter is required.
         self.message = message
-        # A reserved parameter. Not applicable.
+        # The reserved parameter. This parameter is not applicable.
         self.min_cluster_count = min_cluster_count
-        # The minimum reserved computing resources, in ACUs.
+        # The minimum reserved compute resources. Unit: ACU.
         self.min_compute_resource = min_compute_resource
         # The minimum number of GPUs.
         self.min_gpu_quantity = min_gpu_quantity
         # The Ray configuration information.
         self.ray_config = ray_config
-        # The job routing rules.
+        # The job delivery rules.
         self.rules = rules
-        # A reserved parameter. Not applicable.
+        # The reserved parameter. This parameter is not applicable.
         self.running_cluster_count = running_cluster_count
-        # The scaling policy of the resource group. Valid values:
-        # 
-        # - AutoScaling: enables the AutoScaling automatic scaling policy.
-        # - Disable: disables automatic scaling.
-        # - MultiCluster: enables the MultiCluster automatic scaling policy.
+        # The scale-out policy of the resource group. Valid values:
+        # - AutoScaling: enables the AutoScaling policy.
+        # - Disable: disables auto scaling.
+        # - MultiCluster: enables the MultiCluster policy.
         self.scale_policy = scale_policy
         # The specification name.
         self.spec_name = spec_name
-        # The resource group status. Valid values:
-        # - **Pending**: being created.
-        # - **Running**: running.
-        # - **Scaling**: being scaled.
-        # - **Deleting**: being deleted.
-        # - **Deleted**: deleted.
+        # The status of the resource group. Valid values:
+        # - **Pending**: The resource group is being created.
+        # - **Running**: The resource group is running.
+        # - **Scaling**: The resource group is being scaled.
+        # - **Deleting**: The resource group is being deleted.
+        # - **Deleted**: The resource group is deleted.
         self.status = status
-        # The name of the target resource group.
+        # The name of the destination resource group.
         self.target_resource_group_name = target_resource_group_name
-        # The time when the resource group was last updated, in UTC. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i>.
+        # The time when the resource group was updated. The time is displayed in UTC in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
         self.update_time = update_time
 
     def validate(self):
@@ -379,11 +377,11 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRules(DaraModel):
         query_time: str = None,
         target_group_name: str = None,
     ):
-        # The resource group name.
+        # The name of the resource group.
         self.group_name = group_name
-        # The query execution time threshold, in milliseconds (ms).
+        # The threshold for query execution time. Unit: milliseconds.
         self.query_time = query_time
-        # The name of the target resource group.
+        # The name of the destination resource group.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -440,30 +438,31 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig(DaraModel):
         self.app_config = app_config
         # The Ray cluster type. Valid values:
         # 
-        # - BASIC: basic type, non-high-availability.
+        # - **BASIC**: the basic type, which is not highly available.
         # 
-        # - HIGH_AVAILABILITY: high-availability type.
+        # - **HIGH_AVAILABILITY**: the high-availability type.
         self.category = category
-        # Indicates whether ENI is enabled.
+        # Specifies whether to enable the elastic network interface (ENI).
         self.enable_user_eni = enable_user_eni
         # The allocation unit of the head node.
         self.head_allocate_unit = head_allocate_unit
-        # The disk capacity of the head node.
+        # The disk size of the head node.
         self.head_disk_capacity = head_disk_capacity
         # The node specifications of the head node.
         self.head_spec = head_spec
         # The resource type of the head node.
         self.head_spec_type = head_spec_type
-        # The Ray cluster address.
+        # The address of the Ray cluster.
         self.ray_cluster_address = ray_cluster_address
-        # The Ray Dashboard address.
+        # The address of the Ray dashboard.
         self.ray_dashboard_address = ray_dashboard_address
-        # The Ray Grafana address.
+        # The address of Ray Grafana.
         self.ray_grafana_address = ray_grafana_address
-        # The Ray Serve public address.
+        # The public endpoint of Ray Serve.
         self.ray_serve_public_address = ray_serve_public_address
-        # The list of storage mounts.
+        # The list of mounted storage.
         self.storage_mounts = storage_mounts
+        # The custom Python dependencies for RayCluster. Specify the content in the requirements.txt format, with one pip dependency per line. A maximum of 200 lines are allowed, and each line cannot exceed 512 characters. Version constraints, extras, PEP 440 direct URLs, and # comments are supported, but shell metacharacters are not supported. This parameter applies only to AI resource groups of the RayCluster type.
         self.user_defined_requirements = user_defined_requirements
         # The list of Ray worker groups.
         self.worker_groups = worker_groups
@@ -605,11 +604,11 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups(DaraMod
         self.max_worker_quantity = max_worker_quantity
         # The minimum number of workers.
         self.min_worker_quantity = min_worker_quantity
-        # The disk capacity per worker.
+        # The disk size of each worker.
         self.worker_disk_capacity = worker_disk_capacity
-        # The worker specification name.
+        # The specification of the worker.
         self.worker_spec_name = worker_spec_name
-        # The Ray worker resource type.
+        # The resource type of the Ray worker.
         self.worker_spec_type = worker_spec_type
 
     def validate(self):
@@ -679,6 +678,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts(DaraMo
         self.mount_path = mount_path
         # The storage ID.
         self.storage_id = storage_id
+        # The name of the mounted storage.
         self.storage_name = storage_name
 
     def validate(self):
@@ -720,9 +720,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfig(DaraModel)
         app_type: str = None,
         image_selector: main_models.DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelector = None,
     ):
-        # The Ray application name.
+        # The name of the Ray application.
         self.app_name = app_name
-        # The Ray application type.
+        # The type of the Ray application.
         self.app_type = app_type
         # The image configuration.
         self.image_selector = image_selector
@@ -772,7 +772,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigAppConfigImageSelect
         self.image = image
         # The inference engine.
         self.inference_engine = inference_engine
-        # The LLM model.
+        # The large language model (LLM).
         self.llm_model = llm_model
 
     def validate(self):
@@ -813,7 +813,7 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan(DaraModel):
         enabled: bool = None,
         rules: List[main_models.DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules] = None,
     ):
-        # Indicates whether the plan is enabled.
+        # Indicates whether the GPU time-based elastic plan is enabled.
         self.enabled = enabled
         # The list of rules.
         self.rules = rules
@@ -858,9 +858,9 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules(DaraModel
         end_cron_expression: str = None,
         start_cron_expression: str = None,
     ):
-        # The end time in cron expression format. The interval must be at least 1 hour.
+        # The end time in cron expression format. The interval must be no less than 1 hour.
         self.end_cron_expression = end_cron_expression
-        # The start time in cron expression format. The interval must be at least 1 hour.
+        # The start time in cron expression format. The interval must be no less than 1 hour.
         self.start_cron_expression = start_cron_expression
 
     def validate(self):
@@ -906,25 +906,25 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig(DaraModel):
     ):
         # The number of authentication nodes.
         self.auth_node_num = auth_node_num
-        # The node specifications of authentication nodes.
+        # The authentication node specifications.
         self.auth_node_spec = auth_node_spec
-        # The number of write nodes.
+        # The number of insert nodes.
         self.insert_node_num = insert_node_num
-        # The node specifications of write nodes.
+        # The insert node specifications.
         self.insert_node_spec = insert_node_spec
-        # The cache size of query nodes.
+        # The cache size of the query node.
         self.select_node_cache_size = select_node_cache_size
         # The number of query nodes.
         self.select_node_num = select_node_num
-        # The node specifications of query nodes.
+        # The query node specifications.
         self.select_node_spec = select_node_spec
-        # The disk size of storage nodes.
+        # The disk size of the storage node.
         self.storage_node_disk_size = storage_node_disk_size
-        # The disk type of storage nodes.
+        # The disk type of the storage node.
         self.storage_node_disk_type = storage_node_disk_type
         # The number of storage nodes.
         self.storage_node_num = storage_node_num
-        # The node specifications of storage nodes.
+        # The storage node specifications.
         self.storage_node_spec = storage_node_spec
 
     def validate(self):

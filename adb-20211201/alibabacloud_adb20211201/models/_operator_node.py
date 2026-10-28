@@ -19,13 +19,21 @@ class OperatorNode(DaraModel):
         parent_id: int = None,
         stats: main_models.OperatorNodeStats = None,
     ):
+        # The child operator queue.
         self.children = children
+        # The operator ID.
         self.id = id
+        # The total number of nodes at the tree level of the operator.
         self.level_width = level_width
+        # The level of the operator in the tree.
         self.node_depth = node_depth
+        # The operator name.
         self.node_name = node_name
+        # The left-to-right position of the node at the corresponding level.
         self.node_width = node_width
+        # The parent operator ID.
         self.parent_id = parent_id
+        # The operator statistics information.
         self.stats = stats
 
     def validate(self):
@@ -110,10 +118,15 @@ class OperatorNodeStats(DaraModel):
         peak_memory: int = None,
         time_cost: int = None,
     ):
+        # The data volume.
         self.bytes = bytes
+        # The number of output rows.
         self.output_rows = output_rows
+        # The operator parameters.
         self.parameters = parameters
+        # The maximum memory size consumed.
         self.peak_memory = peak_memory
+        # The execution time.
         self.time_cost = time_cost
 
     def validate(self):

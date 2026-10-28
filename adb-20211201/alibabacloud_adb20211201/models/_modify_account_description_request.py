@@ -24,7 +24,7 @@ class ModifyAccountDescriptionRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # <props="china">The ID of the cluster. The cluster can be an Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
         # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
@@ -32,8 +32,9 @@ class ModifyAccountDescriptionRequest(DaraModel):
         # The database engine. Valid values:
         # 
         # - **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # - **Clickhouse**: the wide table engine.
+        # - **Clickhouse**: the wide-table engine.
         self.engine = engine
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
 
     def validate(self):

@@ -20,7 +20,7 @@ class GetKnowledgeRecallRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The array of images to retrieve during image retrieval. Currently, only one image is supported.
+        # The array of images to search for image retrieval. Currently, only one image is supported. The image must be Base64-encoded and passed in JSON format. Set the base64 key to the encoded image and the mime_type key to the image format. For more information, see the examples.
         self.images = images
         # The file path prefix. Only files that match the path prefix are retrieved.
         self.path = path

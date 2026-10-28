@@ -10,13 +10,14 @@ class GetSparkAppMetricsRequest(DaraModel):
         app_id: str = None,
         dbcluster_id: str = None,
     ):
-        # The ID of the Spark application.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all clusters in the target region.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):

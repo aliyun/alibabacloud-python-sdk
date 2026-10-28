@@ -14,17 +14,17 @@ class DescribeAccountsRequest(DaraModel):
         resource_group_name: str = None,
     ):
         # The database account.
-        # > If you do not specify this parameter, information about all database accounts is returned.
+        # > If you do not specify this parameter, the information about all database accounts is returned by default.
         self.account_name = account_name
-        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="china">The ID of the cluster. The cluster can be of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
         # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The database engine. Valid values:
         # 
-        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # - **Clickhouse**: the wide table engine.
+        # - **AnalyticDB** (default): AnalyticDB for MySQL engine
+        # - **Clickhouse**: wide-table engine
         self.engine = engine
         self.owner_id = owner_id
         # The name of the resource group.

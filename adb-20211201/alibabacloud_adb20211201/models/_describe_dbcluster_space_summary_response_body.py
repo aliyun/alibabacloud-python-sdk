@@ -11,7 +11,7 @@ class DescribeDBClusterSpaceSummaryResponseBody(DaraModel):
         data: main_models.DescribeDBClusterSpaceSummaryResponseBodyData = None,
         request_id: str = None,
     ):
-        # The queried storage overview information.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class DescribeDBClusterSpaceSummaryResponseBodyData(DaraModel):
         self.data_growth = data_growth
         # The hot data.
         self.hot_data = hot_data
-        # The total data size. Unit: bytes.
+        # The total data volume. Unit: bytes.
         # 
-        # >  Formula: Total data size = Hot data size+ Cold data size.
+        # > Calculation formula: Total data volume = Total hot data volume + Total cold data volume.
         self.total_size = total_size
 
     def validate(self):
@@ -118,17 +118,17 @@ class DescribeDBClusterSpaceSummaryResponseBodyDataHotData(DaraModel):
         primary_key_index_size: int = None,
         total_size: int = None,
     ):
-        # The data size of table records. Unit: bytes.
+        # The data volume of table records. Unit: bytes.
         self.data_size = data_size
-        # The data size of regular indexes. Unit: bytes.
+        # The data volume of regular indexes. Unit: bytes.
         self.index_size = index_size
-        # The data size of other data. Unit: bytes.
+        # The volume of other data. Unit: bytes.
         self.other_size = other_size
-        # The data size of primary key indexes. Unit: bytes.
+        # The data volume of primary key indexes. Unit: bytes.
         self.primary_key_index_size = primary_key_index_size
-        # The hot data size. Unit: bytes.
+        # The total hot data volume. Unit: bytes.
         # 
-        # >  Formula: Hot data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
+        # > Calculation formula: Total hot data volume = Table record data volume + Regular index data volume + Primary key index data volume + Others.
         self.total_size = total_size
 
     def validate(self):
@@ -181,13 +181,13 @@ class DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth(DaraModel):
         day_growth: int = None,
         week_growth: int = None,
     ):
-        # The data growth within the last day. Unit: bytes.
+        # The data growth in the past day. Unit: bytes.
         # 
-        # >  Formula: Data growth within the last day = Current data size - Data size one day ago.
+        # > Calculation formula: Data growth in the past day = Current total data volume - Total data volume 1 day ago.
         self.day_growth = day_growth
-        # The daily data growth within the last seven days. Unit: bytes.
+        # The average daily data growth over the past 7 days. Unit: bytes.
         # 
-        # >  Formula: Daily data growth within the last seven days = (Current data size - Data size seven days ago)/7.
+        # > Calculation formula: Average daily data growth over the past 7 days = (Current total data volume - Total data volume 7 days ago) / 7.
         self.week_growth = week_growth
 
     def validate(self):
@@ -225,17 +225,17 @@ class DescribeDBClusterSpaceSummaryResponseBodyDataColdData(DaraModel):
         primary_key_index_size: int = None,
         total_size: int = None,
     ):
-        # The data size of table records. Unit: bytes.
+        # The data volume of table records. Unit: bytes.
         self.data_size = data_size
-        # The data size of regular indexes. Unit: bytes.
+        # The data volume of regular indexes. Unit: bytes.
         self.index_size = index_size
-        # The data size of other data. Unit: bytes.
+        # The volume of other data. Unit: bytes.
         self.other_size = other_size
-        # The data size of primary key indexes. Unit: bytes.
+        # The data volume of primary key indexes. Unit: bytes.
         self.primary_key_index_size = primary_key_index_size
-        # The cold data size. Unit: bytes.
+        # The total cold data volume. Unit: bytes.
         # 
-        # >  Formula: Cold data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
+        # > Calculation formula: Total cold data volume = Table record data volume + Regular index data volume + Primary key index data volume + Others.
         self.total_size = total_size
 
     def validate(self):

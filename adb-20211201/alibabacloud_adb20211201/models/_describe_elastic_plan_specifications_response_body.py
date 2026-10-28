@@ -15,15 +15,15 @@ class DescribeElasticPlanSpecificationsResponseBody(DaraModel):
         specifications: List[str] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The queried resource specifications.
+        # The list of supported specifications.
         self.specifications = specifications
-        # The total number of entries returned.
+        # The total number of specifications.
         self.total_count = total_count
 
     def validate(self):

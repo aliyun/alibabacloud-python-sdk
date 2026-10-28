@@ -11,22 +11,27 @@ class ModifyDBClusterSSLRequest(DaraModel):
         dbcluster_id: str = None,
         enable_ssl: bool = None,
         region_id: str = None,
+        sslenabled: str = None,
     ):
-        # The private or public endpoint for which the server certificate needs to be created or updated.
+        # The internal or public endpoint for which to create or update a server certificate.
         self.connection_string = connection_string
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable SSL encryption. Valid values:
+        # Specifies whether to enable SSL connection encryption. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
-        # 
-        # This parameter is required.
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.enable_ssl = enable_ssl
         # The region ID.
         self.region_id = region_id
+        # The SSL operation. This parameter and EnableSSL are mutually exclusive. Valid values:
+        # 
+        # - Enable: Enables SSL.
+        # - Disable: Disables SSL.
+        # - Update: Updates the validity period of an enabled SSL certificate and retains the current endpoint bound to the certificate. When you set this parameter to Update, do not specify ConnectionString, or specify an endpoint that is the same as the current endpoint bound to the certificate.
+        self.sslenabled = sslenabled
 
     def validate(self):
         pass
@@ -48,6 +53,9 @@ class ModifyDBClusterSSLRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.sslenabled is not None:
+            result['SSLEnabled'] = self.sslenabled
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +71,9 @@ class ModifyDBClusterSSLRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('SSLEnabled') is not None:
+            self.sslenabled = m.get('SSLEnabled')
 
         return self
 

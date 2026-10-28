@@ -11,11 +11,11 @@ class CancelSparkWarehouseBatchSQLRequest(DaraModel):
         dbcluster_id: str = None,
         query_id: str = None,
     ):
-        # The client name for auxiliary recording. The value is a meaningful string of up to 16 characters.
+        # The client name used for logging purposes. The value is a meaningful string up to 16 characters in length.
         self.agency = agency
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The execution ID of the Spark SQL.
+        # The execution ID of the Spark SQL statement.
         # 
         # This parameter is required.
         self.query_id = query_id

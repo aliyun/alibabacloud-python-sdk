@@ -54,7 +54,7 @@ class CreateApsDatasoureRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The Simple Log Service (SLS) information for the data source to be created.
+        # The Simple Log Service (SLS) information.
         self.sls_info = sls_info
 
     def validate(self):
@@ -179,17 +179,17 @@ class CreateApsDatasoureRequestSlsInfo(DaraModel):
         source_region_id: str = None,
         store: str = None,
     ):
-        # Specifies whether cross-account access is enabled.
+        # Specifies whether cross-account access is used.
         self.across = across
-        # The role name for cross-account access.
+        # The name of the cross-account role.
         self.across_role = across_role
-        # The UID of the cross-account.
+        # The cross-account UID.
         self.across_uid = across_uid
         # The Simple Log Service (SLS) project.
         self.project = project
         # The region ID of the source cluster.
         self.source_region_id = source_region_id
-        # sls logstore。
+        # The Simple Log Service Logstore.
         self.store = store
 
     def validate(self):
@@ -252,7 +252,7 @@ class CreateApsDatasoureRequestRdsMysqlInfo(DaraModel):
         security_group: str = None,
         user_name: str = None,
     ):
-        # The read-only instance endpoint.
+        # The endpoint of the read-only instance.
         self.connect_url = connect_url
         # The instance ID.
         self.instance_id = instance_id
@@ -356,16 +356,16 @@ class CreateApsDatasoureRequestPolarDBMysqlInfo(DaraModel):
         security_group: str = None,
         user_name: str = None,
     ):
-        # Specifies whether cross-account access is enabled. Valid values:
+        # Specifies whether cross-account access is used. Valid values:
         # 
         # - **true**: The current network instance is a cross-account resource.
         # - **false**: The current network instance is a resource within the current account.
         self.across = across
         # The cross-account role.
         self.across_role = across_role
-        # The UID of the cross-account.
+        # The cross-account UID.
         self.across_uid = across_uid
-        # The custom RDS endpoint.
+        # The endpoint of the private custom RDS instance.
         self.connect_url = connect_url
         # The instance ID.
         self.instance_id = instance_id
@@ -454,7 +454,7 @@ class CreateApsDatasoureRequestKafkaInfo(DaraModel):
     ):
         # The Kafka instance ID.
         self.kafka_cluster_id = kafka_cluster_id
-        # The assigned Kafka topic name.
+        # The name of the allocated Kafka topic.
         self.kafka_topic = kafka_topic
 
     def validate(self):
@@ -496,7 +496,7 @@ class CreateApsDatasoureRequestHiveInfo(DaraModel):
         self.cluster_id = cluster_id
         # The host configuration.
         self.host_config = host_config
-        # The MetaStore endpoint.
+        # The metastore endpoint.
         self.meta_store_uri = meta_store_uri
         # The security group.
         self.security_group = security_group

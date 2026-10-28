@@ -14,7 +14,7 @@ class DescribeJobResourceUsageResponseBody(DaraModel):
         data: main_models.DescribeJobResourceUsageResponseBodyData = None,
         request_id: str = None,
     ):
-        # The API status or POP error code.
+        # The API status code or POP error code.
         self.code = code
         # The returned data.
         self.data = data
@@ -69,7 +69,7 @@ class DescribeJobResourceUsageResponseBodyData(DaraModel):
         # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
         # <props="intl">The ID of the Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
-        # The end time. Format: yyyy-MM-ddTHH:mmZ (UTC).
+        # The end time. Format: yyyy-MM-ddTHH:mmZ (UTC time).
         self.end_time = end_time
         # The ACU usage of the job resource group.
         self.job_acu_usage = job_acu_usage
@@ -77,7 +77,7 @@ class DescribeJobResourceUsageResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The start time. Format: yyyy-MM-ddTHH:mmZ (UTC).
+        # The start time. Format: yyyy-MM-ddTHH:mmZ (UTC time).
         self.start_time = start_time
         # The total number of entries.
         self.total_count = total_count
@@ -159,16 +159,17 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(DaraModel):
     ):
         # The ACU resource usage details.
         self.acu_usage_detail = acu_usage_detail
-        # The end time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC).
+        # The end time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC time).
         self.job_end_time = job_end_time
         # The job ID.
         self.job_id = job_id
-        # The start time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC).
+        # The start time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC time).
         self.job_start_time = job_start_time
         # The name of the job resource group.
         self.resource_group_name = resource_group_name
+        # The name of the Spark application.
         self.spark_app_name = spark_app_name
-        # Indicates whether the hot pool is used.
+        # Indicates whether the cache pool is used.
         self.use_cache_pool = use_cache_pool
 
     def validate(self):
@@ -238,15 +239,15 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail(DaraMode
         spot_acu_percentage: float = None,
         total_acu_number: float = None,
     ):
-        # The number of elastic ACU resources.
+        # The number of elastic ACUs.
         self.elastic_acu_number = elastic_acu_number
-        # The number of reserved ACU resources.
+        # The number of reserved ACUs.
         self.reserved_acu_number = reserved_acu_number
-        # The number of spot instance ACU resources.
+        # The number of spot instance ACUs.
         self.spot_acu_number = spot_acu_number
         # The percentage of spot instance resources in the total elastic resources.
         self.spot_acu_percentage = spot_acu_percentage
-        # The total number of ACU resources.
+        # The total number of ACUs.
         self.total_acu_number = total_acu_number
 
     def validate(self):

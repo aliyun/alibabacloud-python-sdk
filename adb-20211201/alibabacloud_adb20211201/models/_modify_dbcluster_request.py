@@ -13,41 +13,46 @@ class ModifyDBClusterRequest(DaraModel):
         dbcluster_id: str = None,
         enable_default_resource_pool: bool = None,
         product_form: str = None,
+        product_version: str = None,
         region_id: str = None,
         reserved_node_count: int = None,
         reserved_node_size: str = None,
         storage_resource: str = None,
     ):
+        # The number of AI nodes.
         self.ainode_number = ainode_number
+        # The AI node specifications.
         self.ainode_spec = ainode_spec
-        # The compute reserved resources. Valid values: 0 ACU to 4096 ACU, in increments of 16. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
+        # The reserved compute resources. Valid values: 0 ACU to 4096 ACU. Step: 16. 1 ACU is approximately equal to 1 core and 4 GB of memory.
         # > Include the unit when you specify this parameter.
         self.compute_resource = compute_resource
         # The ID of the Data Lakehouse Edition cluster.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID of a Data Lakehouse Edition cluster.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to allocate all compute reserved resources to the default resource group (user_default). Valid values:
-        # - true (default): All compute reserved resources are allocated to the default resource group.
-        # - false: Not all compute reserved resources are allocated to the default resource group.
+        # Specifies whether to allocate all reserved compute resources to the default resource group (user_default). Valid values:
+        # - true (default): Yes.
+        # - false: No.
         self.enable_default_resource_pool = enable_default_resource_pool
         # The product form. Valid values:
-        # - **IntegrationForm**: integrated form.
+        # - **IntegrationForm**: Integration form.
         # - **LegacyForm**: Data Lakehouse Edition.
         self.product_form = product_form
+        # The target product version. When you switch from LegacyForm to IntegrationForm Enterprise Edition in-place, set this parameter to enterprise_version and specify ProductForm, ReservedNodeSize, and ReservedNodeCount at the same time.
+        self.product_version = product_version
         # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified Data Lakehouse Edition cluster.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of the specified Data Lakehouse Edition cluster.
         self.region_id = region_id
         # The number of reserved nodes. 
-        # - Enterprise Edition: The default value is 3. The value increases in increments of 3.
-        # - Basic Edition: The default value is 1.
-        # > This parameter is required only when ProductForm is set to IntegrationForm.
+        # - For Enterprise Edition, the default value is 3 and the step is 3.
+        # - For Basic Edition, the default value is 1.
+        # > Specify this parameter only when ProductForm is set to IntegrationForm.
         self.reserved_node_count = reserved_node_count
-        # The node specifications of storage reserved resources. Valid values: 8ACU, 12ACU, and 16ACU.
-        # > Include the unit when you specify this parameter. This parameter is required only when ProductForm is set to IntegrationForm.
+        # The node specifications for reserved storage resources. Valid values: 8 ACU, 12 ACU, and 16 ACU.
+        # > Include the unit when you specify this parameter. Specify this parameter only when ProductForm is set to IntegrationForm.
         self.reserved_node_size = reserved_node_size
-        # The storage reserved resources. Valid values: 0 ACU to 2064 ACU, in increments of 24. 1 ACU is approximately equivalent to 1 core and 4 GB of memory.
+        # The reserved storage resources. Valid values: 0 ACU to 2064 ACU. Step: 24. 1 ACU is approximately equal to 1 core and 4 GB of memory.
         # > Include the unit when you specify this parameter.
         self.storage_resource = storage_resource
 
@@ -76,6 +81,9 @@ class ModifyDBClusterRequest(DaraModel):
 
         if self.product_form is not None:
             result['ProductForm'] = self.product_form
+
+        if self.product_version is not None:
+            result['ProductVersion'] = self.product_version
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -110,6 +118,9 @@ class ModifyDBClusterRequest(DaraModel):
 
         if m.get('ProductForm') is not None:
             self.product_form = m.get('ProductForm')
+
+        if m.get('ProductVersion') is not None:
+            self.product_version = m.get('ProductVersion')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

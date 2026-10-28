@@ -11,7 +11,7 @@ class DescribeApsHiveWorkloadResponseBody(DaraModel):
         aps_workload: main_models.DescribeApsHiveWorkloadResponseBodyApsWorkload = None,
         request_id: str = None,
     ):
-        # The queried job.
+        # The workload information.
         self.aps_workload = aps_workload
         # The request ID.
         self.request_id = request_id
@@ -71,45 +71,45 @@ class DescribeApsHiveWorkloadResponseBodyApsWorkload(DaraModel):
     ):
         # The advanced configurations.
         self.advanced_config = advanced_config
-        # The policy to handle tables with the same name in the destination cluster.
+        # The handling strategy when a database or table with the same name exists at the destination.
         self.conflict_strategy = conflict_strategy
-        # The time when the workload was created.
+        # The creation time.
         self.create_time = create_time
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The data source ID.
         self.datasource_id = datasource_id
-        # The name of the data source.
+        # The data source name.
         self.datasource_name = datasource_name
-        # The ID of the E-MapReduce (EMR) cluster.
+        # The EMR cluster ID.
         self.emr_cluster_id = emr_cluster_id
-        # The number of AnalyticDB compute units (ACUs) required for migration.
+        # The number of ACUs required for migration.
         self.full_compute_unit = full_compute_unit
-        # The URL of the Hive Metastore.
+        # The Hive metastore URL.
         self.meta_store_uri = meta_store_uri
-        # The Object Storage Service (OSS) URL of the AnalyticDB for MySQL cluster data.
+        # The OSS address.
         self.oss_location = oss_location
-        # The number of tasks that are allowed in parallel.
+        # The degree of parallelism.
         self.parallelism = parallelism
         # The region ID.
         self.region_id = region_id
-        # The resource group to which the SQL statement belongs.
+        # The resource pool to which the SQL statement belongs.
         self.resource_group = resource_group
-        # The status of the workload.
+        # The status.
         self.state = state
-        # The expression that manually matches the source database table whitelist.
+        # The whitelist expression for manually matching source databases and tables.
         self.sync_allow_expression = sync_allow_expression
-        # Manually match the blacklist expressions for source database tables.
+        # The blacklist expression for manually matching source databases and tables.
         self.sync_deny_expression = sync_deny_expression
         # The destination type.
         self.target_type = target_type
-        # The name of the vSwitch.
+        # The vSwitch name.
         self.vswitch = vswitch
-        # The job ID.
+        # The data link task ID.
         self.workload_id = workload_id
-        # The name of the workload.
+        # The workload name.
         self.workload_name = workload_name
-        # The name of the workload.
+        # The workload name.
         self.workload_type_name = workload_type_name
 
     def validate(self):

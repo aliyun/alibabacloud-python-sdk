@@ -10,7 +10,9 @@ class SparkOperatorInfo(DaraModel):
         metric_value: int = None,
         operator_name: bytes = None,
     ):
+        # The metric value.
         self.metric_value = metric_value
+        # The operator name.
         self.operator_name = operator_name
 
     def validate(self):

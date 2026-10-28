@@ -52,15 +52,15 @@ class RemoveKnowledgeUploadUserResponseBodyData(DaraModel):
         removed: int = None,
         success: bool = None,
     ):
-        # The location of the knowledge base file.
+        # The address of the knowledge base file.
         self.file_location = file_location
-        # The prompt message.
+        # The message.
         self.message = message
-        # The number of users that were successfully deleted.
+        # The number of successfully deleted users.
         self.removed = removed
-        # Indicates whether the request was successful. Valid values:
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

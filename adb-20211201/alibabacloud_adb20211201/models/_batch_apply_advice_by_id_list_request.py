@@ -14,13 +14,13 @@ class BatchApplyAdviceByIdListRequest(DaraModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The date when the suggestions were generated. Format: yyyyMMdd.
+        # The date when the suggestion was generated. Format: yyyyMMdd.
         self.advice_date = advice_date
-        # The list of suggestion IDs to apply in batches. Separate multiple suggestion IDs with commas (,).
+        # The list of suggestion IDs to be applied in batches. Separate multiple suggestion IDs with commas (,).
         self.advice_id_list = advice_id_list
         # The adoption type.
         self.apply_type = apply_type
-        # Specifies whether to immediately start a build task.
+        # Specifies whether to immediately start the build task.
         self.build_immediately = build_immediately
         # The cluster ID.
         # 

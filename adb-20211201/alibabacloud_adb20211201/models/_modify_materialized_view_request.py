@@ -29,26 +29,23 @@ class ModifyMaterializedViewRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_name = db_name
-        # Enable the refresh delay alert. Valid values:
-        # 
-        # *   true: Enables alert.
-        # *   false: Disables alert.
+        # Specifies whether to enable alerting for refresh latency. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.enable_delay_alert = enable_delay_alert
-        # Specifies whether to send alerts when the refresh task fails. Valid values:
-        # 
-        # *   true: Send alerts.
-        # *   false: Alerts disabled.
+        # Specifies whether to enable alerting for refresh task failures. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.enable_failure_alert = enable_failure_alert
-        # The name of the resource group to which the materialized view is bound.
+        # The name of the resource group bound to the materialized view.
         self.group_name = group_name
-        # Refresh delay tolerance (in minutes).
+        # The refresh latency tolerance in minutes.
         self.latency_tolerance = latency_tolerance
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to enable query rewrite. Valid values:
-        # 
-        # *   true: Enables query rewrite.
-        # *   false: Disables query rewrite.
+        # Specifies whether to enable the rewrite feature. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.query_write = query_write
         # The region ID.
         self.region_id = region_id

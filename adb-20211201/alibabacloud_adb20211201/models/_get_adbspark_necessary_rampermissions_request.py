@@ -10,7 +10,7 @@ class GetADBSparkNecessaryRAMPermissionsRequest(DaraModel):
         dbcluster_id: str = None,
     ):
         # The cluster ID.
-        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all clusters in a specific region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all clusters in the specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

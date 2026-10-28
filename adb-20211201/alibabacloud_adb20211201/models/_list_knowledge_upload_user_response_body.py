@@ -13,7 +13,7 @@ class ListKnowledgeUploadUserResponseBody(DaraModel):
         data: main_models.ListKnowledgeUploadUserResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -54,14 +54,13 @@ class ListKnowledgeUploadUserResponseBodyData(DaraModel):
         success: bool = None,
         users: List[str] = None,
     ):
-        # The location of the knowledge base file.
+        # The address of the knowledge base file.
         self.file_location = file_location
-        # The prompt message.
+        # The message.
         self.message = message
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
         # The list of authorized users.
         self.users = users

@@ -17,7 +17,7 @@ class DescribeControllerDetectionResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The queried detection items and detection results.
+        # The list of detection items and results.
         self.detection_items = detection_items
         # The request ID.
         self.request_id = request_id
@@ -77,15 +77,15 @@ class DescribeControllerDetectionResponseBodyDetectionItems(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # The information about the detection result.
+        # The detection result message.
         self.message = message
         # The name of the detection item.
         self.name = name
-        # The severity level of the detection result. Valid values:
+        # The status of the detection result. Valid values:
         # 
-        # *   NORMAL
-        # *   WARNING
-        # *   CRITICAL
+        # - NORMAL
+        # - WARNING
+        # - CRITICAL
         self.status = status
 
     def validate(self):

@@ -13,13 +13,13 @@ class DescribeUserQuotaResponseBody(DaraModel):
         reserverd_storage_acu: str = None,
         resource_group_count: str = None,
     ):
-        # The available elastic AnalyticDB compute units (ACUs).
+        # The available elastic ACUs.
         self.elastic_acu = elastic_acu
         # The request ID.
         self.request_id = request_id
-        # The available reserved computing resources.
+        # The available reserved compute resources.
         self.reserverd_compte_acu = reserverd_compte_acu
-        # The available reserved storage resources.
+        # The available storage compute resources.
         self.reserverd_storage_acu = reserverd_storage_acu
         # The number of available resource groups.
         self.resource_group_count = resource_group_count

@@ -11,17 +11,17 @@ class ReleaseClusterPublicConnectionRequest(DaraModel):
         engine: str = None,
         resource_group_name: str = None,
     ):
-        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
-        # <props="intl">The ID of the Data Lakehouse Edition cluster.
+        # <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
+        # <props="intl">The cluster ID of the Data Lakehouse Edition.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The database engine. Valid values:
         # 
-        # - **AnalyticDB** (Default): AnalyticDB for MySQL.
-        # 
-        # - **ClickHouse**: a wide table engine.
+        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine.
+        # - **Clickhouse**: the wide-table engine.
         self.engine = engine
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
 
     def validate(self):

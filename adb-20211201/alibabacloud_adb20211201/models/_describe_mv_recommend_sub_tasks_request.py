@@ -17,23 +17,19 @@ class DescribeMvRecommendSubTasksRequest(DaraModel):
         subtask_id: int = None,
         task_name: str = None,
     ):
-        # A static value. This parameter cannot be modified.
+        # A fixed value. This value cannot be modified.
         self.action_inner = action_inner
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # A static value. This parameter cannot be modified.
+        # A fixed value. This value cannot be modified.
         self.from_ = from_
-        # The sorting criteria.
-        # Valid values for \\`Type\\`:
-        # 
+        # The sort field.
+        # Valid values for the sort order:
         # - Asc
-        # 
         # - Desc
         # 
-        # Valid values for \\`Field\\`:
-        # 
+        # Valid values for the sort field:
         # - StartTime
-        # 
         # - EndTime
         self.order_by = order_by
         # The page number.
@@ -42,7 +38,7 @@ class DescribeMvRecommendSubTasksRequest(DaraModel):
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # The subtask ID.
+        # The ID of the subtask.
         self.subtask_id = subtask_id
         # The name of the materialized view recommendation task.
         self.task_name = task_name

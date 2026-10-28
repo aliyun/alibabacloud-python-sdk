@@ -17,17 +17,16 @@ class DescribeAutoRenewalAttributeShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster IDs.
+        # The list of cluster IDs.
         self.dbcluster_id_shrink = dbcluster_id_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. A positive integer greater than 0 and not exceeding the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned on each page. Valid values:
-        # 
-        # *   **30**(Default)
-        # *   **50**
-        # *   **100**
+        # The number of entries to return on each page. Valid values:
+        # - **30** (default)
+        # - **50**
+        # - **100**
         self.page_size = page_size
         # The region ID.
         # 

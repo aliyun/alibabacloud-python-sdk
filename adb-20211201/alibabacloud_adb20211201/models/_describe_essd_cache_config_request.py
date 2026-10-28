@@ -8,11 +8,14 @@ class DescribeEssdCacheConfigRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        region_id: str = None,
     ):
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ID of the region where the instance resides. The value must be the same as the region of the instance specified by DBClusterId.
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -25,12 +28,18 @@ class DescribeEssdCacheConfigRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
 
         return self
 

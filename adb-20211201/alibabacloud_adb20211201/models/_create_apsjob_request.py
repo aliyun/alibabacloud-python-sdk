@@ -20,41 +20,40 @@ class CreateAPSJobRequest(DaraModel):
         source_endpoint_user_name: str = None,
         target_table_mode: str = None,
     ):
-        # The name of the synchronization job.
+        # The name of the task.
         # 
         # This parameter is required.
         self.aps_job_name = aps_job_name
-        # The objects to be synchronized.
+        # The list of synchronization objects.
         # 
         # This parameter is required.
         self.db_list = db_list
-        # The name of the database account of the destination cluster.
+        # The instance ID of the destination database.
         # 
         # This parameter is required.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
-        # The password of the database account of the destination cluster.
+        # The password of the destination instance.
         self.destination_endpoint_password = destination_endpoint_password
-        # The name of the database account of the destination cluster.
+        # The username of the destination instance.
         self.destination_endpoint_user_name = destination_endpoint_user_name
-        # The partitions.
+        # The list of partitions.
         self.partition_list = partition_list
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the source instance or cluster.
+        # The instance ID of the source database.
         # 
         # This parameter is required.
         self.source_endpoint_instance_id = source_endpoint_instance_id
-        # The password of the database account of the source instance.
+        # The password of the source endpoint.
         self.source_endpoint_password = source_endpoint_password
-        # The region ID of the source instance.
+        # The region of the source database.
         self.source_endpoint_region = source_endpoint_region
-        # The name of the database account of the source instance.
+        # The username of the source endpoint.
         self.source_endpoint_user_name = source_endpoint_user_name
-        # The mode of the destination table.
+        # The destination table mode.
         self.target_table_mode = target_table_mode
 
     def validate(self):

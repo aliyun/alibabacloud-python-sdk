@@ -16,42 +16,43 @@ class DescribeTableStatisticsRequest(DaraModel):
         schema_name: str = None,
     ):
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The keyword that is used to query information by table name.
+        # The search keyword. Fuzzy search by table name is supported.
         self.keyword = keyword
-        # The order by which to sort query results. Specify the parameter value in the JSON format.
+        # The sorting rule for a specified field. The value is a JSON array. The array is ordered. Specify the fields to be sorted and the sorting order in sequence:
         # 
-        # Example:
+        # For example:
         # 
-        #     [
+        # ```
+        # [
         # 
-        #         {
+        #     {
         # 
-        #             "Field":"Name",
+        #         "Field":"Name",
         # 
-        #             "Type":"Asc"
+        #         "Type":"Asc"
         # 
-        #         }
+        #     }
         # 
-        #     ]
+        # ]
+        # ```
         # 
-        # Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
+        # Field specifies the name of the field to be sorted. Only the Name field is supported.
+        # Type specifies the sorting order. Desc indicates descending order, and Asc indicates ascending order.
         # 
-        # Field and Type are case-insensitive.
+        # Both parameters are case-insensitive.
         self.order = order
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The region ID
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+        # The region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the region ID.
         self.region_id = region_id
-        # The name of the database.
+        # The database name.
         self.schema_name = schema_name
 
     def validate(self):

@@ -17,30 +17,33 @@ class GetDatabaseObjectsRequest(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The owner of the database.
+        # The owner.
         self.filter_owner = filter_owner
-        # The name of the database.
+        # The database name.
         self.filter_schema_name = filter_schema_name
-        # The order in which you want to sort the query results. Valid values:
+        # The sort field.
+        # Valid values for Type:
+        # - Asc
+        # - Desc
         # 
-        # *   Asc
-        # *   Desc
-        # 
-        # Valid values for Field: DatabaseName, CreateTime, and UpdateTime. -CreateTime; -UpdateTime;
+        # Valid values for Field:
+        # - DatabseName
+        # - CreateTime
+        # - UpdateTime
         # 
         # Default value: {"Type": "Desc","Field": "DatabaseName"}.
         self.order_by = order_by
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The page number. The value must be greater than 0 and no greater than the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # *   30
-        # *   50
-        # *   100
+        # - 30
+        # - 50
+        # - 100
         # 
         # Default value: 30.
         self.page_size = page_size
-        # The region ID of the database.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -13,7 +13,7 @@ class GetSparkAppMetricsResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -53,18 +53,17 @@ class GetSparkAppMetricsResponseBodyData(DaraModel):
         finished: bool = None,
         scan_metrics: main_models.GetSparkAppMetricsResponseBodyDataScanMetrics = None,
     ):
-        # The ID of the Spark application.
+        # The application ID.
         self.app_id = app_id
-        # The attempt ID of the Spark application.
+        # The retry ID of the Spark application.
         self.attempt_id = attempt_id
         # The path of the event log.
         self.event_log_path = event_log_path
-        # Indicates whether parsing is complete. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the parsing is completed. Valid values:
+        # - **true**: Completed.
+        # - **false**: Not completed.
         self.finished = finished
-        # The metrics.
+        # The metric data.
         self.scan_metrics = scan_metrics
 
     def validate(self):
@@ -121,7 +120,7 @@ class GetSparkAppMetricsResponseBodyDataScanMetrics(DaraModel):
     ):
         # The number of scanned rows.
         self.output_rows_count = output_rows_count
-        # The number of scanned bytes.
+        # The size of the scanned data in bytes.
         self.total_read_file_size_in_byte = total_read_file_size_in_byte
 
     def validate(self):

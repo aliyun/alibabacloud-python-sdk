@@ -14,19 +14,15 @@ class DescribeKernelVersionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID.
-        # 
-        # > 
-        # 
-        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # The ID of the cluster.
+        # > * You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all clusters in a specified region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the IDs of available regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

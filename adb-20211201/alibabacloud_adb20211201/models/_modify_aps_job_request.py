@@ -12,15 +12,15 @@ class ModifyApsJobRequest(DaraModel):
         partition_list: str = None,
         region_id: str = None,
     ):
-        # The job ID.
+        # The task ID.
         # 
         # This parameter is required.
         self.aps_job_id = aps_job_id
-        # The objects to be synchronized.
+        # The list of synchronization objects.
         # 
         # This parameter is required.
         self.db_list = db_list
-        # The partitions.
+        # The list of partitions.
         self.partition_list = partition_list
         # The region ID.
         # 

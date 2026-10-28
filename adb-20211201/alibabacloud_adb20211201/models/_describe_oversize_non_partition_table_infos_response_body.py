@@ -20,21 +20,20 @@ class DescribeOversizeNonPartitionTableInfosResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The queried detection items and detection results.
+        # The list of check items and check results.
         self.detection_items = detection_items
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # - **50**
+        # - **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried oversized non-partitioned tables.
+        # The information about unreasonable non-partitioned tables.
         self.tables = tables
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -123,13 +122,13 @@ class DescribeOversizeNonPartitionTableInfosResponseBodyTables(DaraModel):
         space_ratio: float = None,
         table_name: str = None,
     ):
-        # The data size of the table. Unit: bytes.
+        # The size of table data. Unit: bytes.
         self.data_size = data_size
-        # The data size of regular indexes. Unit: bytes.
+        # The size of normal index data. Unit: bytes.
         self.index_size = index_size
         # The size of hot data. Unit: bytes.
         self.local_data_size = local_data_size
-        # The data size of the primary key index. Unit: bytes.
+        # The size of the primary key index. Unit: bytes.
         self.primary_key_size = primary_key_size
         # The size of cold data. Unit: bytes.
         self.remote_data_size = remote_data_size
@@ -137,9 +136,9 @@ class DescribeOversizeNonPartitionTableInfosResponseBodyTables(DaraModel):
         self.row_count = row_count
         # The name of the database.
         self.schema_name = schema_name
-        # The percentage of the table size. Unit: %.
+        # The tablespace proportion. Unit: %.
         # 
-        # >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+        # > Calculation formula: Tablespace proportion = (Total data size of the table / Total data size of the instance) × 100.
         self.space_ratio = space_ratio
         # The name of the table.
         self.table_name = table_name
@@ -219,11 +218,11 @@ class DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems(DaraModel
         name: str = None,
         status: str = None,
     ):
-        # The information about the detection result.
+        # The check result message.
         self.message = message
-        # The name of the detection item.
+        # The name of the check item.
         self.name = name
-        # The severity level of the detection result.
+        # The status of the check result.
         self.status = status
 
     def validate(self):

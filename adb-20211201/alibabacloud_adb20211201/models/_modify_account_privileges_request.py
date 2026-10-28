@@ -25,18 +25,22 @@ class ModifyAccountPrivilegesRequest(DaraModel):
         self.account_name = account_name
         # The list of granted permissions.
         self.account_privileges = account_privileges
-        # <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
-        # <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The list of PromQL write permissions.
         self.promql_insert_privileges = promql_insert_privileges
+        # The percentage of PromQL query nodes.
         self.promql_select_node_percentage = promql_select_node_percentage
+        # The list of PromQL query permissions.
         self.promql_select_privileges = promql_select_privileges
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
 
     def validate(self):
@@ -116,9 +120,9 @@ class ModifyAccountPrivilegesRequestAccountPrivileges(DaraModel):
         privilege_type: str = None,
         privileges: List[str] = None,
     ):
-        # The privilege object, which is a tuple of database, table, and column.
+        # The permission object, which is a triplet of database, table, and column.
         self.privilege_object = privilege_object
-        # The privilege level, obtained from the `DescribeEnabledPrivileges` operation.
+        # The permission level obtained from the `DescribeEnabledPrivileges` operation.
         self.privilege_type = privilege_type
         # The list of granted permissions.
         self.privileges = privileges
@@ -164,11 +168,11 @@ class ModifyAccountPrivilegesRequestAccountPrivilegesPrivilegeObject(DaraModel):
         database: str = None,
         table: str = None,
     ):
-        # The column to which permissions are granted. This parameter is required when the privilege level is column.
+        # The authorized column. This parameter is required when the permission level is column.
         self.column = column
-        # The database to which permissions are granted. This parameter is required when the privilege level is database, table, or column.
+        # The authorized database. This parameter is required when the permission level is database, table, or column.
         self.database = database
-        # The table to which permissions are granted. This parameter is required when the privilege level is table or column.
+        # The authorized table. This parameter is required when the permission level is table or column.
         self.table = table
 
     def validate(self):

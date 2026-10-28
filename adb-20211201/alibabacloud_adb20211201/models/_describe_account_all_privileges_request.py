@@ -12,16 +12,16 @@ class DescribeAccountAllPrivilegesRequest(DaraModel):
         marker: str = None,
         region_id: str = None,
     ):
-        # The database account name for the cluster.
+        # The name of the database account in the cluster.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # <props="china">The cluster ID for the Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
-        # <props="intl">The cluster ID for the Data Lakehouse Edition.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # If the response is truncated, use the `Marker` value from the response in this field to retrieve the next set of results.
+        # If the returned results are truncated, you can set this parameter to the `Marker` value from the response to retrieve the subsequent entries.
         self.marker = marker
         # The region ID.
         # 

@@ -11,24 +11,20 @@ class DescribeElasticPlanSpecificationsRequest(DaraModel):
         resource_group_name: str = None,
         type: str = None,
     ):
-        # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # The ID of the cluster.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the resource group.
         # 
-        # > 
-        # 
-        # *   This parameter must be specified only when you query the resource specifications that are supported by an interactive resource group.
-        # 
-        # *   You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group within a cluster.
+        # >- To query the specifications supported by the elastic plan of an Interactive resource group (compute resource type), you must specify the resource group name. To query the specifications supported by the elastic plan of the storage acceleration service (EIU), you do not need to specify the resource group name.
+        # - You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group name of a specific cluster.
         self.resource_group_name = resource_group_name
-        # The type of the scaling plan. Valid values:
+        # The type of the elastic plan. Valid values:
         # 
-        # *   EXECUTOR: the interactive resource group type, which specifies the computing resource type.
-        # *   WORKER: the elastic I/O unit (EIU) type.
+        # - EXECUTOR: Interactive resource group, which is the compute resource type.
+        # - WORKER: storage acceleration service (EIU).
         # 
         # This parameter is required.
         self.type = type

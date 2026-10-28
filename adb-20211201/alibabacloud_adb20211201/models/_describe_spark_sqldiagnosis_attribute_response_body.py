@@ -19,19 +19,18 @@ class DescribeSparkSQLDiagnosisAttributeResponseBody(DaraModel):
         request_id: str = None,
         root: main_models.OperatorNode = None,
     ):
-        # The information about the request denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The application ID.
-        # 
-        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
+        # > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the ID of the Spark application.
         self.app_id = app_id
-        # The queried diagnostic information.
+        # The collection of diagnostic suggestions.
         self.diagnosis_infos = diagnosis_infos
-        # The execution duration of the query. Unit: milliseconds.
+        # The actual execution time, in milliseconds.
         self.elapsed_time = elapsed_time
-        # The ID of the query executed within the Spark application.
+        # The internal query execution ID of the Spark application.
         self.inner_query_id = inner_query_id
-        # The operators sorted by metrics.
+        # The operator queue sorted by metrics.
         self.operator_list_sorted_by_metrics = operator_list_sorted_by_metrics
         # The request ID.
         self.request_id = request_id
@@ -120,9 +119,9 @@ class DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics(
         operator_list_sorted_by_exclusive_time: List[main_models.SparkOperatorInfo] = None,
         operator_list_sorted_by_max_memory: List[main_models.SparkOperatorInfo] = None,
     ):
-        # The operators sorted by the execution duration.
+        # The operator queue sorted by execution time.
         self.operator_list_sorted_by_exclusive_time = operator_list_sorted_by_exclusive_time
-        # The operators sorted by the maximum memory used.
+        # The operator queue sorted by maximum memory consumption.
         self.operator_list_sorted_by_max_memory = operator_list_sorted_by_max_memory
 
     def validate(self):

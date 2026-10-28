@@ -13,7 +13,7 @@ class GetLakeStorageRequest(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The lake storage ID.
+        # The instance ID.
         self.lake_storage_id = lake_storage_id
         # The region ID.
         self.region_id = region_id

@@ -18,16 +18,16 @@ class DescribeBackupsResponseBody(DaraModel):
         total_backup_size: int = None,
         total_count: str = None,
     ):
-        # The free backup space. Unit: bytes.
+        # The free quota for backup sets. Unit: bytes.
         self.free_backup_size = free_backup_size
         self.items = items
         # The page number.
         self.page_number = page_number
         # The number of backup sets on the current page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total size of the backup sets. Unit: bytes.
+        # The total size of backup sets. Unit: bytes.
         self.total_backup_size = total_backup_size
         # The total number of entries.
         self.total_count = total_count

@@ -14,7 +14,7 @@ class DescribeLakeCacheSizeResponseBody(DaraModel):
         data: main_models.DescribeLakeCacheSizeResponseBodyData = None,
         request_id: str = None,
     ):
-        # The status code. The value 200 indicates that the request is successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
         # The returned data.
         self.data = data
@@ -64,15 +64,15 @@ class DescribeLakeCacheSizeResponseBodyData(DaraModel):
         enable_lake_cache: bool = None,
         instances: List[str] = None,
     ):
-        # The size of the lake cache space. Unit: GB.
+        # The size of the lake storage acceleration cache space, in GB.
         self.capacity = capacity
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The size of the data that occupies the lake cache space. Unit: GB.
+        # The used capacity of the lake storage cache space, in GB.
         self.data_size = data_size
-        # Indicates whether the lake cache feature is enabled.
+        # Indicates whether lake storage acceleration is enabled.
         self.enable_lake_cache = enable_lake_cache
-        # The clusters that share the lake cache space.
+        # The list of instances that share the lake storage cache space.
         self.instances = instances
 
     def validate(self):

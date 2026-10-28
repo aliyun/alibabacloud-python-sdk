@@ -16,69 +16,60 @@ class DescribeSqlPatternRequest(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
-        # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # The cluster ID.
+        # > You can call the DescribeDBClusters operation to query the IDs of all clusters in a specified region.
+        # [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html)
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
+        # Specifies the sorting of query results by a specified field. The format is a JSON character string, such as `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
+        # - Field: the sorting field. Valid values:
+        #     - Pattern: SQL pattern.
+        #     - AccessIP: client IP address.
+        #     - User: username.
+        #     - QueryCount: total number of queries.
+        #     - AvgPeakMemory: average peak memory. Unit: KB.
+        #     - MaxPeakMemory: Peak Volume memory. Unit: KB.
+        #     - AvgCpuTime: average computing duration. Unit: milliseconds.
+        #     - MaxCpuTime: maximum computing duration. Unit: milliseconds.
+        #     - AvgStageCount: average number of stages.
+        #     - MaxStageCount: maximum number of stages.
+        #     - AvgTaskCount: average number of tasks.
+        #     - MaxTaskCount: maximum number of tasks.
+        #     - AvgScanSize: average scan size. Unit: KB.
+        #     - MaxScanSize: maximum scan size. Unit: KB.
         # 
-        # *   `Field` specifies the field by which to sort the query results. Valid values:
+        # - Type: the sorting method. Valid values:
+        #     - Asc: ascending sorting.
+        #     - Desc: descending sorting.
         # 
-        #     *   `Pattern`: the SQL pattern.
-        #     *   `AccessIP`: the IP address of the client.
-        #     *   `User`: the username.
-        #     *   `QueryCount`: the number of queries performed in association with the SQL pattern within the time range to query.
-        #     *   `AvgPeakMemory`: the average peak memory usage of the SQL pattern within the time range to query. Unit: KB.
-        #     *   `MaxPeakMemory`: the maximum peak memory usage of the SQL pattern within the time range to query. Unit: KB.
-        #     *   `AvgCpuTime`: the average execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
-        #     *   `MaxCpuTime`: the maximum execution duration of the SQL pattern within the time range to query. Unit: milliseconds.
-        #     *   `AvgStageCount`: the average number of stages.
-        #     *   `MaxStageCount`: the maximum number of stages.
-        #     *   `AvgTaskCount`: the average number of tasks.
-        #     *   `MaxTaskCount`: the maximum number of tasks.
-        #     *   `AvgScanSize`: the average amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
-        #     *   `MaxScanSize`: the maximum amount of data scanned based on the SQL pattern within the time range to query. Unit: KB.
-        # 
-        # *   `Type` specifies the sorting order. Valid values:
-        # 
-        #     *   `Asc`: ascending order.
-        #     *   `Desc`: descending order.
-        # 
-        # > 
-        # 
-        # *   If you do not specify this parameter, query results are sorted in ascending order of `Pattern`.
-        # 
-        # *   If you want to sort query results by `AccessIP`, you must set the `Type` parameter to `accessip`. If you want to sort query results by `User`, you must leave the `Type` parameter empty or set it to `user`.
+        # > - If no Settings are specified for this parameter, the results are sorted in ascending order by the Pattern field by default.
+        # - To perform sorting by the AccessIP field, you must set the Type parameter to accessip. To perform sorting by the User field, you must leave the Type parameter empty or set it to user.
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Valid values: integers greater than 0 and no greater than the maximum value of the Integer type.
+        # Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # *   **10** (default)
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # - **10** (default)
+        # - **30**
+        # - **50**
+        # - **100**
         self.page_size = page_size
-        # The region ID of the cluster.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The keyword that is used for the query.
-        # 
-        # > If you do not specify this parameter, all SQL patterns of the AnalyticDB for MySQL cluster within the time period specified by `StartTime` are returned.
+        # The keyword that the SQL pattern must contain.
+        # > If this parameter is not specified, the details of all SQL patterns for the cluster on the date specified by the StartTime parameter are returned by default.
         self.sql_pattern = sql_pattern
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd format. The time must be in UTC.
-        # 
-        # > Only data within the last 30 days can be queried.
+        # The start date of the query. The time is in UTC and formatted as yyyy-MM-dd.
+        # > You can only query data within the last 30 days.
         self.start_time = start_time
-        # The dimension by which to aggregate the SQL patterns. Valid values:
+        # Aggregates SQL patterns by a specified dimension. Valid values:
+        #  - user: aggregates by user.
+        #  - accessip: aggregates by access IP address.
         # 
-        # *   `user`: aggregates the SQL patterns by user.
-        # *   `accessip`: aggregates the SQL patterns by client IP address.
-        # 
-        # > If you do not specify this parameter, the SQL patterns are aggregated by `user`.
+        # > If this parameter is not specified, SQL patterns are aggregated by user by default.
         self.type = type
 
     def validate(self):

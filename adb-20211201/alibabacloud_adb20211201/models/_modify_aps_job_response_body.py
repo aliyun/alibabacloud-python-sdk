@@ -16,27 +16,25 @@ class ModifyApsJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The job ID.
+        # The task ID.
         self.aps_job_id = aps_job_id
-        # The status code. A value of 200 indicates that the request is successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
         # The error code.
         self.err_code = err_code
-        # The error message returned if the request failed.
+        # The error message returned when the call fails.
         self.err_message = err_message
-        # The status code. A value of 200 indicates that the request was successful.
+        # The HTTP status code returned. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message. Valid values:
-        # 
-        # *   If the request was successful, a success message is returned.****
-        # *   If the request failed, an error message is returned.
+        # The message about the call result. Valid values:
+        # - **Success**: The request is normal. 
+        # - Specific error message: The request is abnormal.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

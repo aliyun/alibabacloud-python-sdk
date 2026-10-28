@@ -20,11 +20,11 @@ class DescribeApsProgressResponseBody(DaraModel):
         self.aps_hive_progress = aps_hive_progress
         # The request ID.
         self.request_id = request_id
-        # The success rate.
+        # The success percentage.
         self.success_percentage = success_percentage
-        # The total number of migrated tables returned.
+        # The total number of successfully migrated tables.
         self.success_table_count = success_table_count
-        # The total number of tables to be migrated.
+        # The total number of tables.
         self.total_table_count = total_table_count
 
     def validate(self):
@@ -87,13 +87,13 @@ class DescribeApsProgressResponseBodyApsHiveProgress(DaraModel):
         speed: str = None,
         tb_name: str = None,
     ):
-        # The name of the database.
+        # The database name.
         self.db_name = db_name
-        # The migration progress.
+        # The progress.
         self.progress = progress
         # The migration speed.
         self.speed = speed
-        # The name of the table.
+        # The table name.
         self.tb_name = tb_name
 
     def validate(self):

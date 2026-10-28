@@ -11,9 +11,9 @@ class SetSparkAppLogRootPathResponseBody(DaraModel):
         data: main_models.SetSparkAppLogRootPathResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -53,13 +53,13 @@ class SetSparkAppLogRootPathResponseBodyData(DaraModel):
         modified_uid: str = None,
         recorded_log_path: str = None,
     ):
-        # The default log path.
+        # The recommended default path.
         self.default_log_path = default_log_path
-        # Indicates whether a log path exists.
+        # Indicates whether the log path exists.
         self.is_log_path_exists = is_log_path_exists
         # The last modification time.
         self.modified_timestamp = modified_timestamp
-        # The modifier ID.
+        # The ID of the modifier.
         self.modified_uid = modified_uid
         # The recorded log path.
         self.recorded_log_path = recorded_log_path

@@ -16,10 +16,14 @@ class UserSummaryModel(DaraModel):
         status: str = None,
         user_name: str = None,
     ):
+        # The list of access tokens for the user.
         self.access_tokens = access_tokens
         self.host = host
+        # The ID of the associated Alibaba Cloud RAM user.
         self.ram_user = ram_user
+        # The user status.
         self.status = status
+        # The username.
         self.user_name = user_name
 
     def validate(self):

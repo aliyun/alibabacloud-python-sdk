@@ -56,14 +56,13 @@ class ListKnowledgeTagsResponseBodyData(DaraModel):
     ):
         # The location of the knowledge base file.
         self.file_location = file_location
-        # The prompt message.
+        # The message.
         self.message = message
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
-        # The list details.
+        # The details of the list.
         self.tags = tags
 
     def validate(self):

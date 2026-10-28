@@ -51,14 +51,13 @@ class DeleteKnowledgeFileResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The file location. Currently, only OSS paths are supported.
+        # The file path. Currently, only OSS paths are supported.
         self.file_location = file_location
-        # The prompt message.
+        # The message.
         self.message = message
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: Successful.
-        # - **false**: Failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

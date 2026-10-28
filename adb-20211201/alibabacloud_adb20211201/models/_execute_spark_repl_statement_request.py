@@ -13,21 +13,19 @@ class ExecuteSparkReplStatementRequest(DaraModel):
         session_id: int = None,
     ):
         # The application ID.
-        # 
-        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+        # > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query the application ID of Spark.
         self.app_id = app_id
-        # The code that you want to execute.
+        # The code to execute.
         # 
         # This parameter is required.
         self.code = code
         # The language type of the code. Valid values:
-        # 
-        # *   SCALA
-        # *   PYTHON
+        # - SCALA
+        # - PYTHON
         # 
         # This parameter is required.
         self.code_type = code_type
-        # The ID of the session that you want to use to execute the code.
+        # The session ID for executing the code.
         # 
         # This parameter is required.
         self.session_id = session_id

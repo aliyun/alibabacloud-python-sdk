@@ -61,36 +61,33 @@ class CancelSparkReplStatementResponseBodyData(DaraModel):
         start_time: int = None,
         statement_id: int = None,
     ):
-        # The ID of the Alibaba Cloud account that owns the cluster.
+        # The Alibaba Cloud account to which the cluster belongs.
         self.aliyun_uid = aliyun_uid
-        # The code that is executed.
+        # The input code.
         self.code = code
-        # The code execution status. Valid values:
-        # 
-        # *   CANCELLED
-        # *   RUNNING
-        # *   SUCCEEDED
-        # *   ERROR
+        # The execution status of the code. Valid values:
+        # - CANCELLED: The execution is canceled.
+        # - RUNNING: The execution is in progress.
+        # - SUCCEEDED: The execution is successful.
+        # - ERROR: The execution failed.
         self.code_state = code_state
-        # The code type. Valid values:
-        # 
-        # *   SCALA
-        # *   PYTHON
+        # The type of the code. Valid values:
+        # - SCALA
+        # - PYTHON
         self.code_type = code_type
-        # The column names.
+        # The column names of the table when the output is a table.
         self.columns = columns
-        # The end time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end time of the execution, in milliseconds.
         self.end_time = end_time
         # The error message.
         self.error = error
-        # The code execution result, which is a JSON string that conforms to Apache Livy.
+        # The code execution result. The value is a JSON-formatted string that complies with the Apache Livy output standard.
         self.output = output
-        # The execution result type, which is in the JSON format. Valid values:
-        # 
-        # *   TEXT: the text content that conforms to Apache Livy.
-        # *   TABLE: the table content that conforms to Apache Livy.
+        # The serialization format of the execution result. The structure is a JSON object. Valid values:
+        # - TEXT: The output is text content that complies with the Apache Livy standard.
+        # - TABLE: The output is table content that complies with the Apache Livy standard.
         self.output_type = output_type
-        # The start time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the execution, in milliseconds.
         self.start_time = start_time
         # The unique ID of the code block in the Spark job.
         self.statement_id = statement_id

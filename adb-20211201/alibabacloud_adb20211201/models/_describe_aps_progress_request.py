@@ -11,13 +11,13 @@ class DescribeApsProgressRequest(DaraModel):
         region_id: str = None,
         workload_id: str = None,
     ):
-        # The cluster ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The region ID.
         self.region_id = region_id
-        # The job ID.
+        # The ID of the data link task.
         # 
         # This parameter is required.
         self.workload_id = workload_id

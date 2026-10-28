@@ -13,9 +13,9 @@ class SearchSemanticViewsResponseBody(DaraModel):
         data: List[main_models.SemanticViewModel] = None,
         request_id: str = None,
     ):
-        # A list of semantic view objects.
+        # The response data body.
         self.data = data
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

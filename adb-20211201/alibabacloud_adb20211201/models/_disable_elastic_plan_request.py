@@ -11,14 +11,12 @@ class DisableElasticPlanRequest(DaraModel):
         elastic_plan_name: str = None,
     ):
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The name of the scaling plan.
-        # 
-        # >  You can call the [DescribeElasticPlans](https://help.aliyun.com/document_detail/601334.html) operation to query the names of scaling plans.
+        # The name of the elastic plan.
+        # > You can call the [DescribeElasticPlans](https://help.aliyun.com/document_detail/601334.html) operation to query the elastic plan name of the cluster.
         # 
         # This parameter is required.
         self.elastic_plan_name = elastic_plan_name

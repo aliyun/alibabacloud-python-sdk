@@ -15,11 +15,11 @@ class DescribeMvRecommendTasksRequest(DaraModel):
         region_id: str = None,
         task_name: str = None,
     ):
-        # A static field. This parameter cannot be modified.
+        # A fixed value. This parameter cannot be modified.
         self.action_inner = action_inner
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # A static field. This parameter cannot be modified.
+        # A fixed value. This parameter cannot be modified.
         self.from_ = from_
         # The page number.
         self.page_number = page_number

@@ -9,7 +9,7 @@ class CheckSampleDataSetRequest(DaraModel):
         self,
         dbcluster_id: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

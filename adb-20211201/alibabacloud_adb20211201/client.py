@@ -189,6 +189,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.tags):
@@ -221,6 +223,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.tags):
@@ -267,6 +271,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.users):
@@ -299,6 +305,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.users):
@@ -4607,6 +4615,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         req = open_api_util_models.OpenApiRequest(
@@ -4637,6 +4647,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         req = open_api_util_models.OpenApiRequest(
@@ -8221,6 +8233,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8249,6 +8263,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9945,6 +9961,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9973,6 +9991,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10827,6 +10847,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10855,6 +10877,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17937,6 +17961,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         req = open_api_util_models.OpenApiRequest(
@@ -17967,6 +17993,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         req = open_api_util_models.OpenApiRequest(
@@ -18011,6 +18039,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         req = open_api_util_models.OpenApiRequest(
@@ -18041,6 +18071,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         req = open_api_util_models.OpenApiRequest(
@@ -20091,6 +20123,8 @@ class Client(OpenApiClient):
             query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
         if not DaraCore.is_null(request.product_form):
             query['ProductForm'] = request.product_form
+        if not DaraCore.is_null(request.product_version):
+            query['ProductVersion'] = request.product_version
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.reserved_node_count):
@@ -20137,6 +20171,8 @@ class Client(OpenApiClient):
             query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
         if not DaraCore.is_null(request.product_form):
             query['ProductForm'] = request.product_form
+        if not DaraCore.is_null(request.product_version):
+            query['ProductVersion'] = request.product_version
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.reserved_node_count):
@@ -20431,6 +20467,8 @@ class Client(OpenApiClient):
             query['EnableSSL'] = request.enable_ssl
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -20465,6 +20503,8 @@ class Client(OpenApiClient):
             query['EnableSSL'] = request.enable_ssl
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -22023,6 +22063,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.tags):
@@ -22055,6 +22097,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.tags):
@@ -22101,6 +22145,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.users):
@@ -22133,6 +22179,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
         if not DaraCore.is_null(request.file_location):
             query['FileLocation'] = request.file_location
         if not DaraCore.is_null(request.users):

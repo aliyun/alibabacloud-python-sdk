@@ -15,23 +15,22 @@ class ConfigureResultExportRequest(DaraModel):
         sls_info: main_models.ConfigureResultExportRequestSlsInfo = None,
     ):
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the cluster IDs of all AnalyticDB for MySQL clusters in the destination region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The export type. Valid values:
         # 
-        # *   SLS: Specifies that the export destination is SLS.
-        # *   OSS: Specifies that the export destination is OSS.
+        # - SLS: Exports data to SLS.
+        # - OSS: Exports data to OSS.
         self.export_type = export_type
-        # The OSS configuration details if the destination is of the OSS type.
+        # The OSS configuration information when the export destination is OSS.
         self.oss_info = oss_info
-        # The ID of the region where the instance resides.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The SLS configuration details if the destination is of the SLS type.
+        # The SLS configuration information when the export destination is SLS.
         self.sls_info = sls_info
 
     def validate(self):
@@ -90,9 +89,9 @@ class ConfigureResultExportRequestSlsInfo(DaraModel):
         resource_group: str = None,
         sls_project: str = None,
     ):
-        # The expiration time of the Logstore temporarily generated during the result set export. Unit: days. The Logstore is automatically deleted after it expires. Minimum value: 1 day, maximum: 30 days. Values outside this range will result in an error.
+        # The expiration time of the temporary Logstore generated for result set export. Unit: days. The Logstore is automatically deleted after expiration. The minimum value is 1 day and the maximum value is 30 days. An error is returned if the value is out of range.
         self.logstore_ttl = logstore_ttl
-        # The name of the resource group that runs the job.
+        # The name of the resource group in which the export SQL statement is executed.
         self.resource_group = resource_group
         # The name of the SLS project.
         self.sls_project = sls_project
@@ -136,11 +135,11 @@ class ConfigureResultExportRequestOssInfo(DaraModel):
         resource_group: str = None,
         result_file_ttl: int = None,
     ):
-        # The OSS path where the result sets are stored.
+        # The OSS path where the export results are stored.
         self.export_base_path = export_base_path
-        # The name of the resource group that runs the job.
+        # The name of the resource group in which the export SQL statement is executed.
         self.resource_group = resource_group
-        # The expiration time of the OSS file. Unit: days. Minimum: 1 day, maximum: 30 days. Values outside this range will result in an error.
+        # The expiration time of the OSS file. Unit: days. The minimum value is 1 day and the maximum value is 30 days. An error is returned if the value is out of range.
         self.result_file_ttl = result_file_ttl
 
     def validate(self):

@@ -21,26 +21,29 @@ class TableSummaryModel(DaraModel):
         table_type: str = None,
         update_time: str = None,
     ):
-        # Creation time.
+        # The creation time.
         self.create_time = create_time
+        # The creation source of the table or view.
         self.created_by_source = created_by_source
+        # The user who created the table or view.
         self.created_by_user = created_by_user
-        # Description.
+        # The description.
         self.description = description
+        # The materialized view details.
         self.mv_detail_model = mv_detail_model
-        # Owner.
+        # The owner.
         self.owner = owner
-        # SQL for creating the table or view.
+        # The SQL statement used to create the table or view.
         self.sql = sql
-        # Logical database name.
+        # The logical database name.
         self.schema_name = schema_name
-        # Logical table name or logical view name.
+        # The logical table name or logical view name.
         self.table_name = table_name
-        # Table size in bytes.
+        # The table size in bytes.
         self.table_size = table_size
-        # Table or view type.
+        # The table or view type.
         self.table_type = table_type
-        # Update time.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

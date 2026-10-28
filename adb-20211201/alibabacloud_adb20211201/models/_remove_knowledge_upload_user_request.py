@@ -8,6 +8,7 @@ class RemoveKnowledgeUploadUserRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        file_id: str = None,
         file_location: str = None,
         users: str = None,
     ):
@@ -15,9 +16,9 @@ class RemoveKnowledgeUploadUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The location of the knowledge base document.
-        # 
-        # This parameter is required.
+        # The file ID.
+        self.file_id = file_id
+        # The address of the knowledge base document.
         self.file_location = file_location
         # The JSON string of the array of authorized users to delete.
         # 
@@ -35,6 +36,9 @@ class RemoveKnowledgeUploadUserRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+
         if self.file_location is not None:
             result['FileLocation'] = self.file_location
 
@@ -47,6 +51,9 @@ class RemoveKnowledgeUploadUserRequest(DaraModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
 
         if m.get('FileLocation') is not None:
             self.file_location = m.get('FileLocation')

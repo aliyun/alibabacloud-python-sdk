@@ -11,7 +11,7 @@ class DescribeApsJobDetailResponseBody(DaraModel):
         apsjob_detail: main_models.DescribeApsJobDetailResponseBodyAPSJobDetail = None,
         request_id: str = None,
     ):
-        # The queried job.
+        # The job details.
         self.apsjob_detail = apsjob_detail
         # The request ID.
         self.request_id = request_id
@@ -56,21 +56,21 @@ class DescribeApsJobDetailResponseBodyAPSJobDetail(DaraModel):
         status: str = None,
         target_table_mode: str = None,
     ):
-        # The objects that are synchronized.
+        # The list of synchronization objects.
         self.db_list = db_list
-        # The ID of the destination cluster.
+        # The target database instance ID.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
-        # The region of the destination cluster.
+        # The region of the target instance.
         self.destination_endpoint_region = destination_endpoint_region
-        # The partitions.
+        # The list of partitions.
         self.partition_list = partition_list
-        # The ID of the source instance.
+        # The source database instance ID.
         self.source_endpoint_instance_id = source_endpoint_instance_id
-        # The region of the source instance.
+        # The region of the source database.
         self.source_endpoint_region = source_endpoint_region
-        # The status of the job.
+        # The status.
         self.status = status
-        # The mode of the destination table.
+        # The target table mode.
         self.target_table_mode = target_table_mode
 
     def validate(self):

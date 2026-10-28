@@ -22,7 +22,7 @@ class DescribeMvRecommendSubTasksResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -81,7 +81,7 @@ class DescribeMvRecommendSubTasksResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of materialized view recommendation task executions.
+        # The execution list of the materialized view recommendation task.
         self.mv_recommend_sub_task_models = mv_recommend_sub_task_models
         # The page number.
         self.page_number = page_number

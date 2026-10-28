@@ -29,7 +29,7 @@ class QueryFormationInstsByTaskIDResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The task list.
         self.items = items
-        # The response message. OK is returned if the request was successful.
+        # The message. The value is OK when the request is successful.
         self.message = message
         # The page number.
         self.page_number = page_number
@@ -37,7 +37,7 @@ class QueryFormationInstsByTaskIDResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of records.
         self.total_count = total_count
@@ -140,7 +140,7 @@ class QueryFormationInstsByTaskIDResponseBodyData(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The time when the task was created.
+        # The creation time of the task.
         self.create_time = create_time
         # The execution duration of the most recent task.
         self.last_task_inst_cost_time = last_task_inst_cost_time
@@ -155,8 +155,8 @@ class QueryFormationInstsByTaskIDResponseBodyData(DaraModel):
         # The schema ID assigned to the instance by the system.
         self.schema = schema
         # The task source. Valid values:
-        # - **system**: system.
-        # - **custom**: custom.
+        # - **system**: System.
+        # - **custom**: Custom.
         self.source_type = source_type
         # The synchronization time, accurate to milliseconds. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.sync_time = sync_time

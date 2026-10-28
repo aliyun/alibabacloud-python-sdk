@@ -17,21 +17,20 @@ class ConfigureResultExportResponseBody(DaraModel):
     ):
         # The backend error code.
         self.code = code
-        # The path where the result sets are stored.
+        # The configured result set export information.
         self.data = data
-        # The HTTP status code. A value of 200 indicates that the request is successful.
+        # The HTTP status code. A status code of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message. Valid values:
+        # The additional information about the call result. Description:
         # 
-        # *   OK is returned if the request is normal.
-        # *   The specific error code is returned if the request is abnormal,
+        # - If the request is normal, OK is returned.
+        # - If the request is abnormal, a specific error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # *   **true**: Succeeded.
-        # *   **false**: Failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -95,12 +94,12 @@ class ConfigureResultExportResponseBodyData(DaraModel):
     ):
         # The export type. Valid values:
         # 
-        # *   SLS: Indicates that the export destination is SLS.
-        # *   OSS: Indicates that the export destination is OSS.
+        # - SLS: Exports data to SLS.
+        # - OSS: Exports data to OSS.
         self.export_type = export_type
-        # The OSS configuration if the destination is of the OSS type.
+        # The OSS export information configured when the export destination is OSS.
         self.oss_info = oss_info
-        # The SLS configuration if the destination is of the SLS type.
+        # The SLS configuration information when the export destination is SLS.
         self.sls_info = sls_info
 
     def validate(self):
@@ -147,9 +146,9 @@ class ConfigureResultExportResponseBodyDataSlsInfo(DaraModel):
         resource_group: str = None,
         sls_project: str = None,
     ):
-        # The expiration time of the Logstore temporarily generated during the result set export. Unit: days. The Logstore is automatically deleted after it expires. Minimum value: 1 day. Maximum value: 30 days.
+        # The expiration time of the temporary Logstore generated for result set export. Unit: days. The Logstore is automatically deleted after expiration. The minimum value is 1 day and the maximum value is 30 days.
         self.logstore_ttl = logstore_ttl
-        # The name of the resource group that runs the job.
+        # The name of the resource group in which the export SQL statement is executed.
         self.resource_group = resource_group
         # The name of the SLS project.
         self.sls_project = sls_project
@@ -193,11 +192,11 @@ class ConfigureResultExportResponseBodyDataOssInfo(DaraModel):
         resource_group: str = None,
         result_file_ttl: int = None,
     ):
-        # The OSS path where the result sets are stored.
+        # The OSS path where the export results are stored.
         self.export_base_path = export_base_path
-        # The name of the resource group that runs the job.
+        # The name of the resource group in which the export SQL statement is executed.
         self.resource_group = resource_group
-        # The expiration time of the OSS file. Unit: days. Minimum: 1 day, maximum: 30 days.
+        # The expiration time of the OSS file. Unit: days. The minimum value is 1 day and the maximum value is 30 days.
         self.result_file_ttl = result_file_ttl
 
     def validate(self):

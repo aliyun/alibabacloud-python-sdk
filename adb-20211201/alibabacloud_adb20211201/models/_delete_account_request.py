@@ -24,9 +24,10 @@ class DeleteAccountRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The database engine. Valid values:
         # 
-        # - **AnalyticDB** (default): the AnalyticDB for MySQL engine.
-        # - **Clickhouse**: the wide table engine.
+        # - **AnalyticDB** (default): AnalyticDB for MySQL.
+        # - **Clickhouse**: wide table engine.
         self.engine = engine
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
 
     def validate(self):

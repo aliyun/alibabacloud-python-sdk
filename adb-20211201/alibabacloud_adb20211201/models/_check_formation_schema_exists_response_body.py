@@ -20,11 +20,11 @@ class CheckFormationSchemaExistsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. OK is returned if the request was successful.
+        # The returned message. OK is returned if the request is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

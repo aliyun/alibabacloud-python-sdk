@@ -53,27 +53,26 @@ class GetSparkAppStateResponseBodyData(DaraModel):
         message: str = None,
         state: str = None,
     ):
-        # The Spark application ID.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The alert message returned for the operation, such as task execution failure or insufficient resources. If no alert occurs, null is returned.
+        # The alert message returned, such as task execution failure or insufficient resources. This parameter is empty if no alerts are generated.
         self.message = message
-        # The execution state of the application. Valid values:
-        # 
-        # *   **SUBMITTED**
-        # *   **STARTING**
-        # *   **RUNNING**
-        # *   **FAILING**
-        # *   **FAILED**
-        # *   **KILLING**
-        # *   **KILLED**
-        # *   **SUCCEEDING**
-        # *   **COMPLETED**
-        # *   **FATAL**
-        # *   **UNKNOWN**
+        # The execution status of the application. Valid values:
+        # - **SUBMITTED**: Submitted.
+        # - **STARTING**: Starting.
+        # - **RUNNING**: Running.
+        # - **FAILING**: Failing. The task failed and the environment is being cleaned up.
+        # - **FAILED**: Failed.
+        # - **KILLING**: Killing. The task is being terminated and the environment is being cleaned up.
+        # - **KILLED**: Killed.
+        # - **SUCCEEDING**: Succeeding. The task execution is complete and the environment is being cleaned up.
+        # - **COMPLETED**: Completed.
+        # - **FATAL**: Fatal error.
+        # - **UNKNOWN**: Unknown error.
         self.state = state
 
     def validate(self):

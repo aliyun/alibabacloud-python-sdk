@@ -32,65 +32,65 @@ class ModifyDBResourceGroupShrinkRequest(DaraModel):
     ):
         # The PromQL resource group configuration.
         self.atm_config_shrink = atm_config_shrink
-        # The auto-stop interval.
+        # The auto-stop time.
         self.auto_stop_interval = auto_stop_interval
-        # Reserved parameter (not applicable).
+        # Reserved parameter.
         self.cluster_mode = cluster_mode
-        # Reserved parameter (not applicable).
+        # Reserved parameter.
         self.cluster_size_resource = cluster_size_resource
-        # <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
-        # <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the spot instance feature for the resource group. After spot instances are enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
+        # Specifies whether to enable the spot instance feature for the resource group. After you enable this feature, the unit price of resources decreases, but the resources may be released. This feature can be enabled only for Job resource groups. Valid values:
         # - **True**: Enables the spot instance feature.
         # - **False**: Disables the spot instance feature.
         self.enable_spot = enable_spot
-        # The engine configuration.
+        # The engine configurations.
         self.engine_params_shrink = engine_params_shrink
-        # The GPU time-sharing elastic plan.
+        # The GPU time-based elastic plan.
         self.gpu_elastic_plan_shrink = gpu_elastic_plan_shrink
-        # The resource group name.
-        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group names of a specified cluster.
+        # The name of the resource group.
+        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of the resource group for a specified cluster.
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The resource group type. Valid values:
+        # The type of the resource group. Valid values:
         # - **Interactive**
         # - **Job**
-        # > For more information about Data Lakehouse Edition resource groups, refer to [Resource group introduction](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about Data Lakehouse Edition resource groups, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
         # 
         # This parameter is required.
         self.group_type = group_type
-        # Reserved parameter (not applicable).
+        # Reserved parameter.
         self.max_cluster_count = max_cluster_count
         # The maximum reserved computing resources.
-        # - If the resource group type is Interactive, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 16 ACUs.
-        # - If the resource group type is Job, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 8 ACUs.
+        # - If the resource group type is Interactive, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 16 ACUs.
+        # - If the resource group type is Job, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 8 ACUs.
         self.max_compute_resource = max_compute_resource
-        # Reserved parameter (not applicable).
+        # Reserved parameter.
         self.max_gpu_quantity = max_gpu_quantity
-        # Reserved parameter (not applicable).
+        # Reserved parameter.
         self.min_cluster_count = min_cluster_count
         # The minimum reserved computing resources.
-        # - If the resource group type is Interactive, the minimum reserved computing resources are 16 ACUs.
-        # - If the resource group type is Job, the minimum reserved computing resources are 0 ACUs.
+        # - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
+        # - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
         self.min_compute_resource = min_compute_resource
-        # Reserved parameter (not applicable).
+        # Reserved parameter.
         self.min_gpu_quantity = min_gpu_quantity
-        # The Ray configuration. This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
+        # The Ray configuration information. This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
         self.ray_config_shrink = ray_config_shrink
         # The region ID.
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
         self.region_id = region_id
-        # The job routing rules.
+        # The job delivery rules.
         self.rules_shrink = rules_shrink
-        # Reserved parameter (not applicable).
+        # Reserved parameter.
         self.spec_name = spec_name
-        # The resource group status. **starting** indicates that the resource group is being started. **stopping** indicates that the resource group is being stopped.
+        # The status of the resource group. **starting** indicates that the resource group is being started. **stopping** indicates that the resource group is being stopped.
         self.status = status
-        # Reserved parameter (not applicable).
+        # Reserved parameter.
         self.target_resource_group_name = target_resource_group_name
 
     def validate(self):

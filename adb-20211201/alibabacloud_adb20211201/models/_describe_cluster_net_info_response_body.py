@@ -14,7 +14,7 @@ class DescribeClusterNetInfoResponseBody(DaraModel):
         items: main_models.DescribeClusterNetInfoResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The network type of the cluster. The value is always **VPC**, as this is the only supported network type.
+        # The network type of the cluster. Only VPCs are supported. The value is fixed as **VPC**.
         self.cluster_network_type = cluster_network_type
         self.items = items
         # The request ID.

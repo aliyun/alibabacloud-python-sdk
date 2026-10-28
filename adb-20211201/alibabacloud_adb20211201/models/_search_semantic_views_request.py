@@ -11,13 +11,13 @@ class SearchSemanticViewsRequest(DaraModel):
         query_text: str = None,
         top_k: int = None,
     ):
-        # The ID of the AnalyticDB for MySQL cluster.
+        # The ADB cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The search query.
+        # The text content to search.
         self.query_text = query_text
-        # The number of the most relevant semantic views to return.
+        # The number of most relevant documents to return.
         self.top_k = top_k
 
     def validate(self):

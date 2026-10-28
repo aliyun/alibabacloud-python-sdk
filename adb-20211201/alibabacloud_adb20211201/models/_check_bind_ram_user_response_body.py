@@ -10,12 +10,11 @@ class CheckBindRamUserResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The returned result of the request. Valid values:
-        # 
-        # *   **true**: the database account is associated with a RAM user.
-        # *   **false**: the database account is not associated with a RAM user.
+        # The result returned by the node. Valid values:
+        # - **true**: The current Resource Access Management (RAM) user is attached to a database account.
+        # - **false**: The current Resource Access Management (RAM) user is not attached to a database account.
         self.result = result
 
     def validate(self):

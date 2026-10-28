@@ -55,18 +55,17 @@ class AddKnowledgeUploadUserResponseBodyData(DaraModel):
         success: bool = None,
         written: int = None,
     ):
-        # The location of the knowledge base file.
+        # The path of the knowledge base file.
         self.file_location = file_location
-        # The prompt message.
+        # The message.
         self.message = message
         # The list of skipped users.
         self.skipped = skipped
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
-        # The number of users that were successfully added.
+        # The number of successfully added users.
         self.written = written
 
     def validate(self):
@@ -127,7 +126,7 @@ class AddKnowledgeUploadUserResponseBodyDataSkipped(DaraModel):
         reason: str = None,
         user: str = None,
     ):
-        # The reason why the user was skipped.
+        # The reason for skipping.
         self.reason = reason
         # The username of the authorized user.
         self.user = user

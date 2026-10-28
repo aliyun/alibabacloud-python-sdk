@@ -12,6 +12,7 @@ class DescribeAdbMySqlTablesRequest(DaraModel):
         region_id: str = None,
         schema: str = None,
     ):
+        # The name of the external data source.
         self.catalog = catalog
         # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
         # <props="intl">The ID of the Data Lakehouse Edition cluster.
@@ -19,11 +20,11 @@ class DescribeAdbMySqlTablesRequest(DaraModel):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of the specified cluster.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The database name.
+        # The name of the database.
         self.schema = schema
 
     def validate(self):

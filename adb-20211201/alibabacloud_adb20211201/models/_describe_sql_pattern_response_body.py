@@ -16,7 +16,7 @@ class DescribeSqlPatternResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried SQL pattern.
+        # The list details.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -24,7 +24,7 @@ class DescribeSqlPatternResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -99,27 +99,26 @@ class DescribeSqlPatternResponseBodyItems(DaraModel):
         report_date: str = None,
         user: str = None,
     ):
-        # The IP address of the client.
-        # 
-        # >  This parameter is returned only when **Type** is set to **accessip**.
+        # The client IP address.
+        # > This parameter is returned only when the Type parameter is set to accessip.
         self.access_ip = access_ip
-        # The average execution duration of the SQL pattern within the query time range. Unit: milliseconds.
+        # The average execution time. Unit: milliseconds.
         self.avg_cpu_time = avg_cpu_time
-        # The average peak memory usage of the SQL pattern within the query time range. Unit: KB.
+        # The average peak memory. Unit: KB.
         self.avg_peak_memory = avg_peak_memory
-        # The average amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
+        # The average scan size. Unit: KB.
         self.avg_scan_size = avg_scan_size
         # The average number of scanned rows.
         self.avg_stage_count = avg_stage_count
         # The average number of tasks.
         self.avg_task_count = avg_task_count
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The cluster ID.
         self.instance_name = instance_name
-        # The maximum execution duration of the SQL pattern within the query time range. Unit: milliseconds.
+        # The maximum execution time of the SQL statement. Unit: milliseconds.
         self.max_cpu_time = max_cpu_time
-        # The maximum peak memory usage of the SQL pattern within the query time range. Unit: KB.
+        # The Peak Volume memory. Unit: KB.
         self.max_peak_memory = max_peak_memory
-        # The maximum amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
+        # The maximum scan size. Unit: KB.
         self.max_scan_size = max_scan_size
         # The maximum number of stages.
         self.max_stage_count = max_stage_count
@@ -127,13 +126,12 @@ class DescribeSqlPatternResponseBodyItems(DaraModel):
         self.max_task_count = max_task_count
         # The SQL pattern.
         self.pattern = pattern
-        # The number of queries performed in association with the SQL pattern within the query time range.
+        # The total number of queries.
         self.query_count = query_count
-        # The start date of the query.
+        # The query date.
         self.report_date = report_date
         # The username.
-        # 
-        # >  This parameter is returned only when **Type** is left empty or set to **user**.
+        # > This parameter is returned only when the Type parameter is left empty or set to user.
         self.user = user
 
     def validate(self):

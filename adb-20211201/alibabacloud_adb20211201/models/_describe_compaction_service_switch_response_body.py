@@ -49,12 +49,7 @@ class DescribeCompactionServiceSwitchResponseBodyData(DaraModel):
         self,
         enable_compaction_service: bool = None,
     ):
-        # Indicates whether the remote build feature is enabled.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the remote build service is enabled.
         self.enable_compaction_service = enable_compaction_service
 
     def validate(self):

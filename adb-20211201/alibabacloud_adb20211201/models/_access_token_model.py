@@ -13,10 +13,15 @@ class AccessTokenModel(DaraModel):
         expired_at: str = None,
         status: str = None,
     ):
+        # The access token.
         self.access_token = access_token
+        # The comment for the access token.
         self.comment = comment
+        # The creation time of the access token.
         self.created_at = created_at
+        # The expiration time of the access token.
         self.expired_at = expired_at
+        # The status of the access token.
         self.status = status
 
     def validate(self):

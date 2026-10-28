@@ -18,16 +18,16 @@ class GetViewObjectsResponseBody(DaraModel):
     ):
         # The response struct.
         self.data = data
-        # The page number. The value is a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # * **30** (default).
-        # * **50**.
-        # * **100**.
+        # * **30** (default)
+        # * **50**
+        # * **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -84,16 +84,16 @@ class GetViewObjectsResponseBodyData(DaraModel):
         table_summary_models: List[main_models.TableSummaryModel] = None,
         total_count: int = None,
     ):
-        # The page number. The value is a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be a positive integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # * **30** (default).
-        # * **50**.
-        # * **100**.
+        # * **30** (default)
+        # * **50**
+        # * **100**
         self.page_size = page_size
         # The result array.
         self.table_summary_models = table_summary_models
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

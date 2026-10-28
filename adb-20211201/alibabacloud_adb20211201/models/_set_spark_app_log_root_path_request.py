@@ -15,9 +15,9 @@ class SetSparkAppLogRootPathRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The path of Object Storage Service (OSS) logs.
+        # The OSS log path.
         self.oss_log_path = oss_log_path
-        # Specifies whether to use the default OSS log path.
+        # Specifies whether to use the default OSS path.
         self.use_default_oss = use_default_oss
 
     def validate(self):

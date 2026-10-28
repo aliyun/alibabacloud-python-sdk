@@ -24,9 +24,9 @@ class QueryFormationTaskByIDResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

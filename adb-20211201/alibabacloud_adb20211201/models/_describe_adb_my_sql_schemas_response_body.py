@@ -15,8 +15,8 @@ class DescribeAdbMySqlSchemasResponseBody(DaraModel):
         success: bool = None,
     ):
         # The additional information about the call result. Valid values:
-        # - If the request was successful, **Success** is returned. 
-        # - If the request failed, a specific error code is returned.
+        # - **Success**: The request is successful. 
+        # - Specific error code: An exception occurred.
         self.message = message
         # The request ID.
         self.request_id = request_id

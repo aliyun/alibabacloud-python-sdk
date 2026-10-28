@@ -14,23 +14,22 @@ class ConfigureResultExportShrinkRequest(DaraModel):
         sls_info_shrink: str = None,
     ):
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the cluster IDs of all AnalyticDB for MySQL clusters in the destination region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The export type. Valid values:
         # 
-        # *   SLS: Specifies that the export destination is SLS.
-        # *   OSS: Specifies that the export destination is OSS.
+        # - SLS: Exports data to SLS.
+        # - OSS: Exports data to OSS.
         self.export_type = export_type
-        # The OSS configuration details if the destination is of the OSS type.
+        # The OSS configuration information when the export destination is OSS.
         self.oss_info_shrink = oss_info_shrink
-        # The ID of the region where the instance resides.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The SLS configuration details if the destination is of the SLS type.
+        # The SLS configuration information when the export destination is SLS.
         self.sls_info_shrink = sls_info_shrink
 
     def validate(self):

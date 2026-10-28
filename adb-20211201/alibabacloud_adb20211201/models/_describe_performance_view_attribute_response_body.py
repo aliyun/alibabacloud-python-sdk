@@ -18,26 +18,25 @@ class DescribePerformanceViewAttributeResponseBody(DaraModel):
         view_detail: main_models.DescribePerformanceViewAttributeResponseBodyViewDetail = None,
         view_name: str = None,
     ):
-        # The details about the access denial.
-        # 
-        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+        # The details of the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
-        # The type of the view.
+        # The type of the source for the original chart. Valid values:
+        # 
+        # - **Basic**: basic view
+        # - **Advanced**: advanced view
         self.create_from_view_type = create_from_view_type
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to populate the names of the metrics in the original monitoring view when you view the monitoring view. Valid values:
+        # Indicates whether the keys completed in the original monitoring view are populated when you view the monitoring view. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - true
+        # - false
         self.fill_origin_view_keys = fill_origin_view_keys
         # The request ID.
         self.request_id = request_id
-        # The information about the monitoring view.
+        # The details of the monitoring view.
         self.view_detail = view_detail
-        # The name of the view.
+        # The name of the monitoring view.
         self.view_name = view_name
 
     def validate(self):
@@ -105,14 +104,14 @@ class DescribePerformanceViewAttributeResponseBodyViewDetail(DaraModel):
         chart_linked: bool = None,
         charts_per_line: int = None,
     ):
-        # The metric category.
+        # The list of metric categories.
         self.categories = categories
-        # Specifies whether to enable the filter interaction feature. Valid values:
+        # Indicates whether it is a linkage chart. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - true
+        # - false
         self.chart_linked = chart_linked
-        # The number of charts to display in each row.
+        # The number of charts displayed in each row.
         self.charts_per_line = charts_per_line
 
     def validate(self):
@@ -162,13 +161,12 @@ class DescribePerformanceViewAttributeResponseBodyViewDetailCategories(DaraModel
         keys: List[main_models.DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys] = None,
     ):
         # The name of the metric category. Valid values:
-        # 
-        # *   **Node**
-        # *   **DiskData**
-        # *   **WorkLoad**
-        # *   **ResourceGroup**
+        # * **Node**: node resource metrics
+        # * **DiskData**: disk metrics
+        # * **WorkLoad**: workload metrics
+        # * **ResourceGroup**: resource group metrics
         self.category = category
-        # The metrics.
+        # The list of metrics.
         self.keys = keys
 
     def validate(self):
@@ -214,29 +212,17 @@ class DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys(DaraM
         key_name: str = None,
         selected: bool = None,
     ):
-        # Indicates whether the multi-cluster feature is enabled. Valid values:
+        self.enable_auto_mc = enable_auto_mc
+        # The list of applicable cluster engines.
+        self.engine = engine
+        # The list of applicable resource group types.
+        self.group_type = group_type
+        # The key of the metric.
+        self.key_name = key_name
+        # Indicates whether the metric is selected. Valid values:
         # 
         # - true
-        # 
         # - false
-        self.enable_auto_mc = enable_auto_mc
-        # The database engine of the cluster. Valid values:
-        # 
-        # *  AnalyticDB
-        self.engine = engine
-        # The type of the resource group. Valid values:
-        # 
-        # *   **Interactive**
-        # *   **Job**
-        # 
-        # >  For more information about resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
-        self.group_type = group_type
-        # The name of the metric.
-        self.key_name = key_name
-        # Specifies whether to select the metric. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.selected = selected
 
     def validate(self):

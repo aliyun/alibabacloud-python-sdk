@@ -18,17 +18,16 @@ class GetDatabaseObjectsResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The page number. The value is a positive integer. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # - **50**
+        # - **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -85,19 +84,19 @@ class GetDatabaseObjectsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The queried databases.
+        # The result array.
         self.database_summary_models = database_summary_models
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The page number. The value must be greater than 0 and no greater than the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # *   30
-        # *   50
-        # *   100
+        # - 30
+        # - 50
+        # - 100
         # 
         # Default value: 30.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

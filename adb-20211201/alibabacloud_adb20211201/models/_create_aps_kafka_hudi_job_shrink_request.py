@@ -37,75 +37,74 @@ class CreateApsKafkaHudiJobShrinkRequest(DaraModel):
         target_type: str = None,
         workload_name: str = None,
     ):
-        # The RAM role of a trusted entity that is an Alibaba Cloud account. For more information about how to create a RAM role, see Create a RAM role for a trusted Alibaba Cloud account.
-        # The Alibaba Cloud account that owns the AnalyticDB for MySQL cluster must be added as a trusted account to the RAM role.
+        # The RAM role whose trusted entity is an Alibaba Cloud account. For more information about how to create a RAM role, see Create a RAM role for a trusted Alibaba Cloud account.
+        # In the RAM role, the Alibaba Cloud account to which AnalyticDB for MySQL belongs must be configured as a trusted account for the Alibaba Cloud account to which the Kafka instance belongs.
         self.across_role = across_role
         # The ID of the Alibaba Cloud account to which the source Kafka instance belongs.
         self.across_uid = across_uid
-        # The advanced configuration.
+        # The advanced configurations.
         self.advanced_config = advanced_config
         # The column information.
         # 
         # This parameter is required.
         self.columns_shrink = columns_shrink
         # The cluster ID.
-        # 
-        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the cluster IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters in the destination region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The Kafka message type. Valid values: json, general_canal_json, mongo_canal_json, dataworks_json, and shareplex_json.
         self.data_format_type = data_format_type
-        # The valid values and their descriptions are as follows:
-        # Single: The source is a single-line JSON record.
-        # Multi: The source is a JSON array. A single JSON record is returned as the output.
+        # The data output format. Valid values:
+        # - Single: The source is a single-line JSON record.
+        # - Multi: The source is a JSON array. A single JSON record must be output.
         self.data_output_format = data_output_format
         # The data source ID.
         self.datasource_id = datasource_id
-        # The user-defined name of the database.
+        # The custom database name.
         # 
         # This parameter is required.
         self.db_name = db_name
-        # The configuration for full synchronization.
+        # The full synchronization configurations.
         self.full_compute_unit = full_compute_unit
-        # The Hudi configuration for the destination.
+        # The destination Hudi configurations.
         self.hudi_advanced_config = hudi_advanced_config
-        # The configuration for incremental synchronization.
+        # The incremental synchronization configurations.
         # 
         # This parameter is required.
         self.incremental_compute_unit = incremental_compute_unit
-        # The number of nested JSON layers to parse. Valid values:
-        # 0: No parsing is performed.
-        # 1: One layer is parsed.
-        # 2: Two layers are parsed.
-        # 3: Three layers are parsed.
-        # 4: Four layers are parsed.
-        # By default, one layer is parsed. For more information about the JSON parsing policy for nested data, see JSON parsing levels and schema field inference examples.
+        # The nesting parse level for JSON. Valid values:
+        # - 0: No parsing.
+        # - 1: Parse one level.
+        # - 2: Parse two levels.
+        # - 3: Parse three levels.
+        # - 4: Parse four levels.
+        # Default value: 1. For more information about the JSON nesting parse strategy, see JSON parse levels and schema field inference examples.
         self.json_parse_level = json_parse_level
-        # The ID of the Kafka instance. Obtain the ID from the Kafka console.
+        # Instance ID of the Kafka instance. You can obtain instance ID in the Kafka console.
         self.kafka_cluster_id = kafka_cluster_id
-        # The ID of the Kafka topic. Obtain the ID from the Kafka console.
+        # The ID of the Kafka topic. You can obtain the ID in the Kafka console.
         self.kafka_topic = kafka_topic
         # The ID of the lakehouse.
         self.lakehouse_id = lakehouse_id
-        # The number of entries to consume in a single batch.
+        # The maximum number of messages to consume per trigger.
         self.max_offsets_per_trigger = max_offsets_per_trigger
-        # The destination lakehouse address. This must be a complete OSS path.
+        # The destination lakehouse address, which is a complete OSS path.
         self.oss_location = oss_location
         # The output data format.
         self.output_format = output_format
         # The partition information.
         self.partition_specs_shrink = partition_specs_shrink
-        # The primary key settings. This parameter supports the UUID policy and the mapping policy. The policies are described as follows.
-        # UUID policy: "Strategy": "uuid".
-        # Mapping policy:
+        # The primary key settings, including the UUID strategy and the mapping strategy. Details:
+        # UUID strategy: "Strategy": "uuid".
+        # Mapping strategy:
         # "Strategy": "mapping",
         # "Values":[
-        # "f1",
-        # "f2"
+        #  "f1",
+        #  "f2"
         # ],
         # "RecordVersionField","xxx"
-        # \\`RecordVersionField\\` specifies the Hudi record version.
+        # RecordVersionField specifies the Hudi record version.
         self.primary_key_definition = primary_key_definition
         # The region ID.
         # 
@@ -117,20 +116,20 @@ class CreateApsKafkaHudiJobShrinkRequest(DaraModel):
         self.resource_group = resource_group
         # The region ID.
         self.source_region_id = source_region_id
-        # The initial consumer offset for Kafka.
-        # Valid values:
-        # begin_cursor, end_cursor, and timestamp.
-        # These values correspond to the earliest offset, the latest offset, and a specified time.
+        # The starting consumption offset for Kafka. Valid values:
+        # - begin_cursor: The earliest offset.
+        # - end_cursor: The latest offset.
+        # - timestamp: A specified time.
         # 
         # This parameter is required.
         self.starting_offsets = starting_offsets
-        # The user-defined name of the table.
+        # The custom table name.
         # 
         # This parameter is required.
         self.table_name = table_name
-        # The generation rule for the destination.
+        # The destination generation rule.
         self.target_generate_rule = target_generate_rule
-        # The type of the destination.
+        # The destination type.
         self.target_type = target_type
         # The name of the workload.
         # 

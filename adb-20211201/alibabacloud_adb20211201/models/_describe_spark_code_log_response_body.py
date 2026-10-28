@@ -12,19 +12,17 @@ class DescribeSparkCodeLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The content of the log.
+        # The log content.
         self.log = log
-        # The returned message.
-        # 
-        # *   If the request was successful, **Success** is returned.
-        # *   If the request failed, an error message is returned.
+        # The additional information about the call result. Valid values:
+        # - If the request succeeds, **Success** is returned. 
+        # - If an exception occurs, the specific error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
