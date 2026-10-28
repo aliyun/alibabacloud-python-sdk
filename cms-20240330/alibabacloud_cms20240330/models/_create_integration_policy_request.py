@@ -18,8 +18,9 @@ class CreateIntegrationPolicyRequest(DaraModel):
         tags: List[main_models.CreateIntegrationPolicyRequestTags] = None,
         workspace: str = None,
     ):
+        # The policy creation version. Valid values: v1 and v2. If this parameter is not specified or is left empty, v2 is used. If v1 is specified, a v1-compatible environment is created for ECS and Cloud.
         self.api_version = api_version
-        # The entity group used to create the policy. You can quickly create the policy by using the entity group. The clusterId and vpcId parameters are independent of each other.
+        # The entity group used to create the policy. You can use the entity group for quick creation. The clusterId and vpcId parameters are independent of each other.
         self.entity_group = entity_group
         # The policy name.
         self.policy_name = policy_name
@@ -153,8 +154,9 @@ class CreateIntegrationPolicyRequestEntityGroup(DaraModel):
         self.cluster_entity_type = cluster_entity_type
         # The cluster ID.
         self.cluster_id = cluster_id
+        # The namespace where the probe is deployed.
         self.cluster_namespace = cluster_namespace
-        # Specifies whether to disable the unique binding of the policy. If this parameter is set to true, you can create multiple policies for a container cluster.
+        # Specifies whether to disable the unique binding of the policy. If this parameter is set to true, you can create multiple policies for a single container cluster.
         self.disable_policy_share = disable_policy_share
         # The entity group ID.
         self.entity_group_id = entity_group_id

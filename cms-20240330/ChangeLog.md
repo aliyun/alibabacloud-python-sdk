@@ -1,3 +1,6 @@
+2026-10-28 Version: 10.7.0
+- Generated python 2024-03-30 for Cms.
+
 2026-10-26 Version: 10.6.0
 - Support API CreateSubscription.
 - Support API DeleteSubscription.

@@ -14,7 +14,7 @@ class CreateIntegrationPolicyResponseBody(DaraModel):
     ):
         # Indicates whether the policy is created.
         self.created = created
-        # The policy.
+        # The uploaded policy.
         self.policy = policy
         # The request ID.
         self.request_id = request_id
@@ -76,7 +76,7 @@ class CreateIntegrationPolicyResponseBodyPolicy(DaraModel):
         self.region_id = region_id
         # The user ID.
         self.user_id = user_id
-        # The workspace to which the policy belongs.
+        # The workspace where the policy resides.
         self.workspace = workspace
 
     def validate(self):

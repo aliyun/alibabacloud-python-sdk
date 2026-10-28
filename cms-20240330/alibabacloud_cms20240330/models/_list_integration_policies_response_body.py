@@ -104,14 +104,15 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
     ):
         # The names of all add-ons installed in this policy.
         self.addon_names = addon_names
+        # The policy version.
         self.api_version = api_version
-        # The information about the bound resources.
+        # The information about the bound resource.
         self.bind_resource = bind_resource
         # The installation status of umodel in the container environment.
         self.cs_umodel_status = cs_umodel_status
         # The entity group.
         self.entity_group = entity_group
-        # The billing type.
+        # The billing method.
         self.fee_package = fee_package
         # The network management information of the policy.
         self.managed_info = managed_info
@@ -119,7 +120,7 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
         self.policy_id = policy_id
         # The rule name.
         self.policy_name = policy_name
-        # The Access Center policy type.
+        # The access center policy type.
         self.policy_type = policy_type
         # The region ID.
         self.region_id = region_id
@@ -255,7 +256,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease(DaraModel):
     ):
         # The number of ready sub-releases.
         self.ready = ready
-        # The number of rules.
+        # The total number of rules.
         self.total = total
 
     def validate(self):
@@ -291,7 +292,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesManagedInfo(DaraModel):
         security_group_id: str = None,
         vswitch_id: str = None,
     ):
-        # The ID of the elastic network interface (ENI) for the managed probe. Example: eni-xxxx.
+        # The elastic network interface (ENI) ID of the managed probe. Example: eni-xxxx.
         self.eni_id = eni_id
         # The security group ID.
         self.security_group_id = security_group_id
@@ -568,11 +569,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesTags(Dara
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to perform.
+        # The operation to be performed.
         self.op = op
-        # The tag key.
+        # The label key.
         self.tag_key = tag_key
-        # The tag values.
+        # The tag value.
         self.tag_values = tag_values
 
     def validate(self):
@@ -614,11 +615,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesLabels(Da
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to perform.
+        # The operation to be performed.
         self.op = op
-        # The tag key.
+        # The label key.
         self.tag_key = tag_key
-        # The tag values.
+        # The tag value.
         self.tag_values = tag_values
 
     def validate(self):
@@ -699,9 +700,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRule
     ):
         # The unique identifier of the field.
         self.field_key = field_key
-        # The field values. Separate multiple values with commas (,).
+        # The field content. Separate multiple values with commas (,).
         self.field_values = field_values
-        # The operation to perform.
+        # The operation to be performed.
         self.op = op
 
     def validate(self):
@@ -743,11 +744,11 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesAnnotatio
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to perform.
+        # The operation to be performed.
         self.op = op
         # The tag key.
         self.tag_key = tag_key
-        # The tag values.
+        # The tag value.
         self.tag_values = tag_values
 
     def validate(self):

@@ -42,8 +42,6 @@ class Client(OpenApiClient):
             'cn-shanghai': 'metrics.cn-shanghai.aliyuncs.com',
             'cn-hongkong': 'metrics.cn-hongkong.aliyuncs.com',
             'cn-shenzhen': 'metrics.cn-shenzhen.aliyuncs.com',
-            'cn-nanjing': 'metrics.cn-nanjing.aliyuncs.com',
-            'cn-fuzhou': 'metrics.cn-fuzhou.aliyuncs.com',
             'cn-chengdu': 'metrics.cn-chengdu.aliyuncs.com',
             'cn-guangzhou': 'metrics.cn-guangzhou.aliyuncs.com',
             'cn-huhehaote': 'metrics.cn-huhehaote.aliyuncs.com',
@@ -84,6 +82,86 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def active_contact_channel_with_options(
+        self,
+        request: main_models.ActiveContactChannelRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ActiveContactChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.code):
+            query['code'] = request.code
+        if not DaraCore.is_null(request.site):
+            query['site'] = request.site
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ActiveContactChannel',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contacts/action/activate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ActiveContactChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def active_contact_channel_with_options_async(
+        self,
+        request: main_models.ActiveContactChannelRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ActiveContactChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.code):
+            query['code'] = request.code
+        if not DaraCore.is_null(request.site):
+            query['site'] = request.site
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ActiveContactChannel',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contacts/action/activate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ActiveContactChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def active_contact_channel(
+        self,
+        request: main_models.ActiveContactChannelRequest,
+    ) -> main_models.ActiveContactChannelResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.active_contact_channel_with_options(request, headers, runtime)
+
+    async def active_contact_channel_async(
+        self,
+        request: main_models.ActiveContactChannelRequest,
+    ) -> main_models.ActiveContactChannelResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.active_contact_channel_with_options_async(request, headers, runtime)
 
     def add_contexts_with_options(
         self,
@@ -649,6 +727,214 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_agg_task_group_with_options_async(instance_id, request, headers, runtime)
 
+    def create_alert_action_with_options(
+        self,
+        request: main_models.CreateAlertActionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertActionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_action_id):
+            body['alertActionId'] = request.alert_action_id
+        if not DaraCore.is_null(request.alert_action_name):
+            body['alertActionName'] = request.alert_action_name
+        if not DaraCore.is_null(request.eb_param):
+            body['ebParam'] = request.eb_param
+        if not DaraCore.is_null(request.ess_param):
+            body['essParam'] = request.ess_param
+        if not DaraCore.is_null(request.fc_3param):
+            body['fc3Param'] = request.fc_3param
+        if not DaraCore.is_null(request.fc_param):
+            body['fcParam'] = request.fc_param
+        if not DaraCore.is_null(request.mns_param):
+            body['mnsParam'] = request.mns_param
+        if not DaraCore.is_null(request.pager_duty_param):
+            body['pagerDutyParam'] = request.pager_duty_param
+        if not DaraCore.is_null(request.sls_param):
+            body['slsParam'] = request.sls_param
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.webhook_param):
+            body['webhookParam'] = request.webhook_param
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertAction',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertAction',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertActionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_alert_action_with_options_async(
+        self,
+        request: main_models.CreateAlertActionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertActionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_action_id):
+            body['alertActionId'] = request.alert_action_id
+        if not DaraCore.is_null(request.alert_action_name):
+            body['alertActionName'] = request.alert_action_name
+        if not DaraCore.is_null(request.eb_param):
+            body['ebParam'] = request.eb_param
+        if not DaraCore.is_null(request.ess_param):
+            body['essParam'] = request.ess_param
+        if not DaraCore.is_null(request.fc_3param):
+            body['fc3Param'] = request.fc_3param
+        if not DaraCore.is_null(request.fc_param):
+            body['fcParam'] = request.fc_param
+        if not DaraCore.is_null(request.mns_param):
+            body['mnsParam'] = request.mns_param
+        if not DaraCore.is_null(request.pager_duty_param):
+            body['pagerDutyParam'] = request.pager_duty_param
+        if not DaraCore.is_null(request.sls_param):
+            body['slsParam'] = request.sls_param
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.webhook_param):
+            body['webhookParam'] = request.webhook_param
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertAction',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertAction',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertActionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_alert_action(
+        self,
+        request: main_models.CreateAlertActionRequest,
+    ) -> main_models.CreateAlertActionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_alert_action_with_options(request, headers, runtime)
+
+    async def create_alert_action_async(
+        self,
+        request: main_models.CreateAlertActionRequest,
+    ) -> main_models.CreateAlertActionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_alert_action_with_options_async(request, headers, runtime)
+
+    def create_alert_notify_template_with_options(
+        self,
+        request: main_models.CreateAlertNotifyTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertNotifyTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_notify_template_id):
+            body['alertNotifyTemplateId'] = request.alert_notify_template_id
+        if not DaraCore.is_null(request.alert_notify_template_name):
+            body['alertNotifyTemplateName'] = request.alert_notify_template_name
+        if not DaraCore.is_null(request.program_lang):
+            body['programLang'] = request.program_lang
+        if not DaraCore.is_null(request.templates):
+            body['templates'] = request.templates
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertNotifyTemplate',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertNotifyTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertNotifyTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_alert_notify_template_with_options_async(
+        self,
+        request: main_models.CreateAlertNotifyTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertNotifyTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_notify_template_id):
+            body['alertNotifyTemplateId'] = request.alert_notify_template_id
+        if not DaraCore.is_null(request.alert_notify_template_name):
+            body['alertNotifyTemplateName'] = request.alert_notify_template_name
+        if not DaraCore.is_null(request.program_lang):
+            body['programLang'] = request.program_lang
+        if not DaraCore.is_null(request.templates):
+            body['templates'] = request.templates
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertNotifyTemplate',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertNotifyTemplate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertNotifyTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_alert_notify_template(
+        self,
+        request: main_models.CreateAlertNotifyTemplateRequest,
+    ) -> main_models.CreateAlertNotifyTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_alert_notify_template_with_options(request, headers, runtime)
+
+    async def create_alert_notify_template_async(
+        self,
+        request: main_models.CreateAlertNotifyTemplateRequest,
+    ) -> main_models.CreateAlertNotifyTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_alert_notify_template_with_options_async(request, headers, runtime)
+
     def create_alert_robot_with_options(
         self,
         request: main_models.CreateAlertRobotRequest,
@@ -1006,6 +1292,194 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_cloud_resource_with_options_async(headers, runtime)
+
+    def create_contact_with_options(
+        self,
+        request: main_models.CreateContactRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_id):
+            body['contactId'] = request.contact_id
+        if not DaraCore.is_null(request.email):
+            body['email'] = request.email
+        if not DaraCore.is_null(request.im_user_ids):
+            body['imUserIds'] = request.im_user_ids
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            body['phone'] = request.phone
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContact',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contact',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_contact_with_options_async(
+        self,
+        request: main_models.CreateContactRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_id):
+            body['contactId'] = request.contact_id
+        if not DaraCore.is_null(request.email):
+            body['email'] = request.email
+        if not DaraCore.is_null(request.im_user_ids):
+            body['imUserIds'] = request.im_user_ids
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            body['phone'] = request.phone
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContact',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contact',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_contact(
+        self,
+        request: main_models.CreateContactRequest,
+    ) -> main_models.CreateContactResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_contact_with_options(request, headers, runtime)
+
+    async def create_contact_async(
+        self,
+        request: main_models.CreateContactRequest,
+    ) -> main_models.CreateContactResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_contact_with_options_async(request, headers, runtime)
+
+    def create_contact_group_with_options(
+        self,
+        request: main_models.CreateContactGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_group_id):
+            body['contactGroupId'] = request.contact_group_id
+        if not DaraCore.is_null(request.contacts):
+            body['contacts'] = request.contacts
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContactGroup',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contactGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_contact_group_with_options_async(
+        self,
+        request: main_models.CreateContactGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_group_id):
+            body['contactGroupId'] = request.contact_group_id
+        if not DaraCore.is_null(request.contacts):
+            body['contacts'] = request.contacts
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.workspace):
+            body['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContactGroup',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contactGroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_contact_group(
+        self,
+        request: main_models.CreateContactGroupRequest,
+    ) -> main_models.CreateContactGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_contact_group_with_options(request, headers, runtime)
+
+    async def create_contact_group_async(
+        self,
+        request: main_models.CreateContactGroupRequest,
+    ) -> main_models.CreateContactGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_contact_group_with_options_async(request, headers, runtime)
 
     def create_context_store_with_options(
         self,
@@ -1918,6 +2392,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_notify_policy_with_options_async(request, headers, runtime)
+
+    def create_oncall_schedule_with_options(
+        self,
+        request: main_models.CreateOncallScheduleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOncallScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        body = {}
+        if not DaraCore.is_null(request.oncall_schedule_id):
+            body['oncallScheduleId'] = request.oncall_schedule_id
+        if not DaraCore.is_null(request.oncall_schedule_name):
+            body['oncallScheduleName'] = request.oncall_schedule_name
+        if not DaraCore.is_null(request.rotations):
+            body['rotations'] = request.rotations
+        if not DaraCore.is_null(request.shift_robot_id):
+            body['shiftRobotId'] = request.shift_robot_id
+        if not DaraCore.is_null(request.substitudes):
+            body['substitudes'] = request.substitudes
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOncallSchedule',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallschedule',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOncallScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_oncall_schedule_with_options_async(
+        self,
+        request: main_models.CreateOncallScheduleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOncallScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        body = {}
+        if not DaraCore.is_null(request.oncall_schedule_id):
+            body['oncallScheduleId'] = request.oncall_schedule_id
+        if not DaraCore.is_null(request.oncall_schedule_name):
+            body['oncallScheduleName'] = request.oncall_schedule_name
+        if not DaraCore.is_null(request.rotations):
+            body['rotations'] = request.rotations
+        if not DaraCore.is_null(request.shift_robot_id):
+            body['shiftRobotId'] = request.shift_robot_id
+        if not DaraCore.is_null(request.substitudes):
+            body['substitudes'] = request.substitudes
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOncallSchedule',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallschedule',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOncallScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_oncall_schedule(
+        self,
+        request: main_models.CreateOncallScheduleRequest,
+    ) -> main_models.CreateOncallScheduleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_oncall_schedule_with_options(request, headers, runtime)
+
+    async def create_oncall_schedule_async(
+        self,
+        request: main_models.CreateOncallScheduleRequest,
+    ) -> main_models.CreateOncallScheduleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_oncall_schedule_with_options_async(request, headers, runtime)
 
     def create_pipeline_with_options(
         self,
@@ -3105,6 +3679,174 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_agg_task_group_with_options_async(instance_id, group_id, request, headers, runtime)
 
+    def delete_alert_actions_with_options(
+        self,
+        tmp_req: main_models.DeleteAlertActionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertActionsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAlertActionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.alert_action_ids):
+            request.alert_action_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.alert_action_ids, 'alertActionIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.alert_action_ids_shrink):
+            query['alertActionIds'] = request.alert_action_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertActions',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertActions',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertActionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alert_actions_with_options_async(
+        self,
+        tmp_req: main_models.DeleteAlertActionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertActionsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAlertActionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.alert_action_ids):
+            request.alert_action_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.alert_action_ids, 'alertActionIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.alert_action_ids_shrink):
+            query['alertActionIds'] = request.alert_action_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertActions',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertActions',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertActionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_alert_actions(
+        self,
+        request: main_models.DeleteAlertActionsRequest,
+    ) -> main_models.DeleteAlertActionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_alert_actions_with_options(request, headers, runtime)
+
+    async def delete_alert_actions_async(
+        self,
+        request: main_models.DeleteAlertActionsRequest,
+    ) -> main_models.DeleteAlertActionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_actions_with_options_async(request, headers, runtime)
+
+    def delete_alert_notify_templates_with_options(
+        self,
+        tmp_req: main_models.DeleteAlertNotifyTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertNotifyTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAlertNotifyTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.alert_notify_template_ids):
+            request.alert_notify_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.alert_notify_template_ids, 'alertNotifyTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.alert_notify_template_ids_shrink):
+            query['alertNotifyTemplateIds'] = request.alert_notify_template_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertNotifyTemplates',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertNotifyTemplates',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertNotifyTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alert_notify_templates_with_options_async(
+        self,
+        tmp_req: main_models.DeleteAlertNotifyTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertNotifyTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAlertNotifyTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.alert_notify_template_ids):
+            request.alert_notify_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.alert_notify_template_ids, 'alertNotifyTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.alert_notify_template_ids_shrink):
+            query['alertNotifyTemplateIds'] = request.alert_notify_template_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertNotifyTemplates',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertNotifyTemplates',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertNotifyTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_alert_notify_templates(
+        self,
+        request: main_models.DeleteAlertNotifyTemplatesRequest,
+    ) -> main_models.DeleteAlertNotifyTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_alert_notify_templates_with_options(request, headers, runtime)
+
+    async def delete_alert_notify_templates_async(
+        self,
+        request: main_models.DeleteAlertNotifyTemplatesRequest,
+    ) -> main_models.DeleteAlertNotifyTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_notify_templates_with_options_async(request, headers, runtime)
+
     def delete_alert_robots_with_options(
         self,
         tmp_req: main_models.DeleteAlertRobotsRequest,
@@ -3406,6 +4148,174 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_cloud_resource_with_options_async(headers, runtime)
+
+    def delete_contact_groups_with_options(
+        self,
+        tmp_req: main_models.DeleteContactGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactGroupsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteContactGroupsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_group_ids):
+            request.contact_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_group_ids, 'contactGroupIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.contact_group_ids_shrink):
+            query['contactGroupIds'] = request.contact_group_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContactGroups',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contactGroups',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_contact_groups_with_options_async(
+        self,
+        tmp_req: main_models.DeleteContactGroupsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactGroupsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteContactGroupsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_group_ids):
+            request.contact_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_group_ids, 'contactGroupIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.contact_group_ids_shrink):
+            query['contactGroupIds'] = request.contact_group_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContactGroups',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contactGroups',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_contact_groups(
+        self,
+        request: main_models.DeleteContactGroupsRequest,
+    ) -> main_models.DeleteContactGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_contact_groups_with_options(request, headers, runtime)
+
+    async def delete_contact_groups_async(
+        self,
+        request: main_models.DeleteContactGroupsRequest,
+    ) -> main_models.DeleteContactGroupsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_contact_groups_with_options_async(request, headers, runtime)
+
+    def delete_contacts_with_options(
+        self,
+        tmp_req: main_models.DeleteContactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteContactsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_ids):
+            request.contact_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_ids, 'contactIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.contact_ids_shrink):
+            query['contactIds'] = request.contact_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContacts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contacts',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_contacts_with_options_async(
+        self,
+        tmp_req: main_models.DeleteContactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactsResponse:
+        tmp_req.validate()
+        request = main_models.DeleteContactsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_ids):
+            request.contact_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_ids, 'contactIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.contact_ids_shrink):
+            query['contactIds'] = request.contact_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContacts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contacts',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_contacts(
+        self,
+        request: main_models.DeleteContactsRequest,
+    ) -> main_models.DeleteContactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_contacts_with_options(request, headers, runtime)
+
+    async def delete_contacts_async(
+        self,
+        request: main_models.DeleteContactsRequest,
+    ) -> main_models.DeleteContactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_contacts_with_options_async(request, headers, runtime)
 
     def delete_context_with_options(
         self,
@@ -4518,6 +5428,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_notify_policy_with_options_async(request, headers, runtime)
+
+    def delete_oncall_schedules_with_options(
+        self,
+        tmp_req: main_models.DeleteOncallSchedulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOncallSchedulesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteOncallSchedulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.oncall_schedule_ids):
+            request.oncall_schedule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.oncall_schedule_ids, 'oncallScheduleIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.oncall_schedule_ids_shrink):
+            query['oncallScheduleIds'] = request.oncall_schedule_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOncallSchedules',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOncallSchedulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_oncall_schedules_with_options_async(
+        self,
+        tmp_req: main_models.DeleteOncallSchedulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOncallSchedulesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteOncallSchedulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.oncall_schedule_ids):
+            request.oncall_schedule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.oncall_schedule_ids, 'oncallScheduleIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.oncall_schedule_ids_shrink):
+            query['oncallScheduleIds'] = request.oncall_schedule_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOncallSchedules',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOncallSchedulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_oncall_schedules(
+        self,
+        request: main_models.DeleteOncallSchedulesRequest,
+    ) -> main_models.DeleteOncallSchedulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_oncall_schedules_with_options(request, headers, runtime)
+
+    async def delete_oncall_schedules_async(
+        self,
+        request: main_models.DeleteOncallSchedulesRequest,
+    ) -> main_models.DeleteOncallSchedulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_oncall_schedules_with_options_async(request, headers, runtime)
 
     def delete_pipeline_with_options(
         self,
@@ -6627,6 +7621,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_agg_task_group_with_options_async(instance_id, group_id, request, headers, runtime)
 
+    def get_alert_action_with_options(
+        self,
+        alert_action_id: str,
+        request: main_models.GetAlertActionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlertActionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAlertAction',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertAction/{DaraURL.percent_encode(alert_action_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAlertActionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_alert_action_with_options_async(
+        self,
+        alert_action_id: str,
+        request: main_models.GetAlertActionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlertActionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAlertAction',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertAction/{DaraURL.percent_encode(alert_action_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAlertActionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_alert_action(
+        self,
+        alert_action_id: str,
+        request: main_models.GetAlertActionRequest,
+    ) -> main_models.GetAlertActionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_alert_action_with_options(alert_action_id, request, headers, runtime)
+
+    async def get_alert_action_async(
+        self,
+        alert_action_id: str,
+        request: main_models.GetAlertActionRequest,
+    ) -> main_models.GetAlertActionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_alert_action_with_options_async(alert_action_id, request, headers, runtime)
+
     def get_biz_trace_with_options(
         self,
         biz_trace_id: str,
@@ -8135,6 +9201,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_notify_policy_with_options_async(request, headers, runtime)
 
+    def get_oncall_schedule_with_options(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.GetOncallScheduleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOncallScheduleResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOncallSchedule',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule/{DaraURL.percent_encode(oncall_schedule_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOncallScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_oncall_schedule_with_options_async(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.GetOncallScheduleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOncallScheduleResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetOncallSchedule',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule/{DaraURL.percent_encode(oncall_schedule_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetOncallScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_oncall_schedule(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.GetOncallScheduleRequest,
+    ) -> main_models.GetOncallScheduleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_oncall_schedule_with_options(oncall_schedule_id, request, headers, runtime)
+
+    async def get_oncall_schedule_async(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.GetOncallScheduleRequest,
+    ) -> main_models.GetOncallScheduleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_oncall_schedule_with_options_async(oncall_schedule_id, request, headers, runtime)
+
     def get_pipeline_with_options(
         self,
         workspace: str,
@@ -9562,6 +10700,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_alert_actions_with_options_async(request, headers, runtime)
+
+    def list_alert_notify_templates_with_options(
+        self,
+        tmp_req: main_models.ListAlertNotifyTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertNotifyTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.ListAlertNotifyTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.alert_notify_template_ids):
+            request.alert_notify_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.alert_notify_template_ids, 'alertNotifyTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.alert_notify_template_ids_shrink):
+            query['alertNotifyTemplateIds'] = request.alert_notify_template_ids_shrink
+        if not DaraCore.is_null(request.alert_notify_template_name):
+            query['alertNotifyTemplateName'] = request.alert_notify_template_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.program_lang):
+            query['programLang'] = request.program_lang
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertNotifyTemplates',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertNotifyTemplate',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertNotifyTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alert_notify_templates_with_options_async(
+        self,
+        tmp_req: main_models.ListAlertNotifyTemplatesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertNotifyTemplatesResponse:
+        tmp_req.validate()
+        request = main_models.ListAlertNotifyTemplatesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.alert_notify_template_ids):
+            request.alert_notify_template_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.alert_notify_template_ids, 'alertNotifyTemplateIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.alert_notify_template_ids_shrink):
+            query['alertNotifyTemplateIds'] = request.alert_notify_template_ids_shrink
+        if not DaraCore.is_null(request.alert_notify_template_name):
+            query['alertNotifyTemplateName'] = request.alert_notify_template_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.program_lang):
+            query['programLang'] = request.program_lang
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertNotifyTemplates',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertNotifyTemplate',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertNotifyTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alert_notify_templates(
+        self,
+        request: main_models.ListAlertNotifyTemplatesRequest,
+    ) -> main_models.ListAlertNotifyTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_alert_notify_templates_with_options(request, headers, runtime)
+
+    async def list_alert_notify_templates_async(
+        self,
+        request: main_models.ListAlertNotifyTemplatesRequest,
+    ) -> main_models.ListAlertNotifyTemplatesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_alert_notify_templates_with_options_async(request, headers, runtime)
 
     def list_alert_robots_with_options(
         self,
@@ -11559,6 +12801,186 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_notify_policies_with_options_async(request, headers, runtime)
 
+    def list_oncall_contacts_with_options(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.ListOncallContactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOncallContactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.timestamp):
+            query['timestamp'] = request.timestamp
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOncallContacts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule/{DaraURL.percent_encode(oncall_schedule_id)}/contacts',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOncallContactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_oncall_contacts_with_options_async(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.ListOncallContactsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOncallContactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.timestamp):
+            query['timestamp'] = request.timestamp
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOncallContacts',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule/{DaraURL.percent_encode(oncall_schedule_id)}/contacts',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOncallContactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_oncall_contacts(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.ListOncallContactsRequest,
+    ) -> main_models.ListOncallContactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_oncall_contacts_with_options(oncall_schedule_id, request, headers, runtime)
+
+    async def list_oncall_contacts_async(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.ListOncallContactsRequest,
+    ) -> main_models.ListOncallContactsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_oncall_contacts_with_options_async(oncall_schedule_id, request, headers, runtime)
+
+    def list_oncall_schedules_with_options(
+        self,
+        tmp_req: main_models.ListOncallSchedulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOncallSchedulesResponse:
+        tmp_req.validate()
+        request = main_models.ListOncallSchedulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.oncall_schedule_ids):
+            request.oncall_schedule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.oncall_schedule_ids, 'oncallScheduleIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.oncall_schedule_ids_shrink):
+            query['oncallScheduleIds'] = request.oncall_schedule_ids_shrink
+        if not DaraCore.is_null(request.oncall_schedule_name):
+            query['oncallScheduleName'] = request.oncall_schedule_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOncallSchedules',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOncallSchedulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_oncall_schedules_with_options_async(
+        self,
+        tmp_req: main_models.ListOncallSchedulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOncallSchedulesResponse:
+        tmp_req.validate()
+        request = main_models.ListOncallSchedulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.oncall_schedule_ids):
+            request.oncall_schedule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.oncall_schedule_ids, 'oncallScheduleIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.oncall_schedule_ids_shrink):
+            query['oncallScheduleIds'] = request.oncall_schedule_ids_shrink
+        if not DaraCore.is_null(request.oncall_schedule_name):
+            query['oncallScheduleName'] = request.oncall_schedule_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOncallSchedules',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOncallSchedulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_oncall_schedules(
+        self,
+        request: main_models.ListOncallSchedulesRequest,
+    ) -> main_models.ListOncallSchedulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_oncall_schedules_with_options(request, headers, runtime)
+
+    async def list_oncall_schedules_async(
+        self,
+        request: main_models.ListOncallSchedulesRequest,
+    ) -> main_models.ListOncallSchedulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_oncall_schedules_with_options_async(request, headers, runtime)
+
     def list_pipelines_with_options(
         self,
         workspace: str,
@@ -13131,6 +14553,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.preview_data_pipeline_with_options_async(workspace, request, headers, runtime)
 
+    def preview_notify_template_with_options(
+        self,
+        request: main_models.PreviewNotifyTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewNotifyTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.templates):
+            body['templates'] = request.templates
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewNotifyTemplate',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/v1/template/batchRender',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewNotifyTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_notify_template_with_options_async(
+        self,
+        request: main_models.PreviewNotifyTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewNotifyTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.templates):
+            body['templates'] = request.templates
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewNotifyTemplate',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/v1/template/batchRender',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewNotifyTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_notify_template(
+        self,
+        request: main_models.PreviewNotifyTemplateRequest,
+    ) -> main_models.PreviewNotifyTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.preview_notify_template_with_options(request, headers, runtime)
+
+    async def preview_notify_template_async(
+        self,
+        request: main_models.PreviewNotifyTemplateRequest,
+    ) -> main_models.PreviewNotifyTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.preview_notify_template_with_options_async(request, headers, runtime)
+
     def put_workspace_with_options(
         self,
         workspace_name: str,
@@ -13330,6 +14832,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.query_alert_rules_with_options_async(request, headers, runtime)
+
+    def resend_verify_activate_with_options(
+        self,
+        contact_id: str,
+        request: main_models.ResendVerifyActivateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResendVerifyActivateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.channel_type):
+            body['channelType'] = request.channel_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResendVerifyActivate',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contact/{DaraURL.percent_encode(contact_id)}/action/reSendVerifyActivate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResendVerifyActivateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resend_verify_activate_with_options_async(
+        self,
+        contact_id: str,
+        request: main_models.ResendVerifyActivateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResendVerifyActivateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.channel_type):
+            body['channelType'] = request.channel_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResendVerifyActivate',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contact/{DaraURL.percent_encode(contact_id)}/action/reSendVerifyActivate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResendVerifyActivateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resend_verify_activate(
+        self,
+        contact_id: str,
+        request: main_models.ResendVerifyActivateRequest,
+    ) -> main_models.ResendVerifyActivateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.resend_verify_activate_with_options(contact_id, request, headers, runtime)
+
+    async def resend_verify_activate_async(
+        self,
+        contact_id: str,
+        request: main_models.ResendVerifyActivateRequest,
+    ) -> main_models.ResendVerifyActivateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.resend_verify_activate_with_options_async(contact_id, request, headers, runtime)
 
     def search_context_with_options(
         self,
@@ -14067,6 +15649,206 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_agg_task_group_status_with_options_async(instance_id, group_id, request, headers, runtime)
 
+    def update_alert_action_with_options(
+        self,
+        alert_action_id: str,
+        request: main_models.UpdateAlertActionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertActionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_action_name):
+            body['alertActionName'] = request.alert_action_name
+        if not DaraCore.is_null(request.eb_param):
+            body['ebParam'] = request.eb_param
+        if not DaraCore.is_null(request.ess_param):
+            body['essParam'] = request.ess_param
+        if not DaraCore.is_null(request.fc_3param):
+            body['fc3Param'] = request.fc_3param
+        if not DaraCore.is_null(request.fc_param):
+            body['fcParam'] = request.fc_param
+        if not DaraCore.is_null(request.mns_param):
+            body['mnsParam'] = request.mns_param
+        if not DaraCore.is_null(request.pager_duty_param):
+            body['pagerDutyParam'] = request.pager_duty_param
+        if not DaraCore.is_null(request.sls_param):
+            body['slsParam'] = request.sls_param
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.webhook_param):
+            body['webhookParam'] = request.webhook_param
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertAction',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertAction/{DaraURL.percent_encode(alert_action_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertActionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_action_with_options_async(
+        self,
+        alert_action_id: str,
+        request: main_models.UpdateAlertActionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertActionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_action_name):
+            body['alertActionName'] = request.alert_action_name
+        if not DaraCore.is_null(request.eb_param):
+            body['ebParam'] = request.eb_param
+        if not DaraCore.is_null(request.ess_param):
+            body['essParam'] = request.ess_param
+        if not DaraCore.is_null(request.fc_3param):
+            body['fc3Param'] = request.fc_3param
+        if not DaraCore.is_null(request.fc_param):
+            body['fcParam'] = request.fc_param
+        if not DaraCore.is_null(request.mns_param):
+            body['mnsParam'] = request.mns_param
+        if not DaraCore.is_null(request.pager_duty_param):
+            body['pagerDutyParam'] = request.pager_duty_param
+        if not DaraCore.is_null(request.sls_param):
+            body['slsParam'] = request.sls_param
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.webhook_param):
+            body['webhookParam'] = request.webhook_param
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertAction',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertAction/{DaraURL.percent_encode(alert_action_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertActionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert_action(
+        self,
+        alert_action_id: str,
+        request: main_models.UpdateAlertActionRequest,
+    ) -> main_models.UpdateAlertActionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_alert_action_with_options(alert_action_id, request, headers, runtime)
+
+    async def update_alert_action_async(
+        self,
+        alert_action_id: str,
+        request: main_models.UpdateAlertActionRequest,
+    ) -> main_models.UpdateAlertActionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_alert_action_with_options_async(alert_action_id, request, headers, runtime)
+
+    def update_alert_notify_template_with_options(
+        self,
+        alert_notify_template_id: str,
+        request: main_models.UpdateAlertNotifyTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertNotifyTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_notify_template_name):
+            body['alertNotifyTemplateName'] = request.alert_notify_template_name
+        if not DaraCore.is_null(request.templates):
+            body['templates'] = request.templates
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertNotifyTemplate',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertNotifyTemplate/{DaraURL.percent_encode(alert_notify_template_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertNotifyTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_notify_template_with_options_async(
+        self,
+        alert_notify_template_id: str,
+        request: main_models.UpdateAlertNotifyTemplateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertNotifyTemplateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_notify_template_name):
+            body['alertNotifyTemplateName'] = request.alert_notify_template_name
+        if not DaraCore.is_null(request.templates):
+            body['templates'] = request.templates
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertNotifyTemplate',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/alertNotifyTemplate/{DaraURL.percent_encode(alert_notify_template_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertNotifyTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert_notify_template(
+        self,
+        alert_notify_template_id: str,
+        request: main_models.UpdateAlertNotifyTemplateRequest,
+    ) -> main_models.UpdateAlertNotifyTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_alert_notify_template_with_options(alert_notify_template_id, request, headers, runtime)
+
+    async def update_alert_notify_template_async(
+        self,
+        alert_notify_template_id: str,
+        request: main_models.UpdateAlertNotifyTemplateRequest,
+    ) -> main_models.UpdateAlertNotifyTemplateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_alert_notify_template_with_options_async(alert_notify_template_id, request, headers, runtime)
+
     def update_alert_robot_with_options(
         self,
         robot_id: str,
@@ -14358,6 +16140,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_biz_trace_with_options_async(biz_trace_id, request, headers, runtime)
+
+    def update_contact_with_options(
+        self,
+        contact_id: str,
+        request: main_models.UpdateContactRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.email):
+            body['email'] = request.email
+        if not DaraCore.is_null(request.im_user_ids):
+            body['imUserIds'] = request.im_user_ids
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            body['phone'] = request.phone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContact',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contact/{DaraURL.percent_encode(contact_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_contact_with_options_async(
+        self,
+        contact_id: str,
+        request: main_models.UpdateContactRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.email):
+            body['email'] = request.email
+        if not DaraCore.is_null(request.im_user_ids):
+            body['imUserIds'] = request.im_user_ids
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            body['phone'] = request.phone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContact',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contact/{DaraURL.percent_encode(contact_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_contact(
+        self,
+        contact_id: str,
+        request: main_models.UpdateContactRequest,
+    ) -> main_models.UpdateContactResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_contact_with_options(contact_id, request, headers, runtime)
+
+    async def update_contact_async(
+        self,
+        contact_id: str,
+        request: main_models.UpdateContactRequest,
+    ) -> main_models.UpdateContactResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_contact_with_options_async(contact_id, request, headers, runtime)
+
+    def update_contact_group_with_options(
+        self,
+        contact_group_id: str,
+        request: main_models.UpdateContactGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contacts):
+            body['contacts'] = request.contacts
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContactGroup',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contactGroup/{DaraURL.percent_encode(contact_group_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_contact_group_with_options_async(
+        self,
+        contact_group_id: str,
+        request: main_models.UpdateContactGroupRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactGroupResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contacts):
+            body['contacts'] = request.contacts
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContactGroup',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/contactGroup/{DaraURL.percent_encode(contact_group_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_contact_group(
+        self,
+        contact_group_id: str,
+        request: main_models.UpdateContactGroupRequest,
+    ) -> main_models.UpdateContactGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_contact_group_with_options(contact_group_id, request, headers, runtime)
+
+    async def update_contact_group_async(
+        self,
+        contact_group_id: str,
+        request: main_models.UpdateContactGroupRequest,
+    ) -> main_models.UpdateContactGroupResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_contact_group_with_options_async(contact_group_id, request, headers, runtime)
 
     def update_context_with_options(
         self,
@@ -15385,6 +17347,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_notify_strategy_with_options_async(notify_strategy_id, request, headers, runtime)
 
+    def update_oncall_schedule_with_options(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.UpdateOncallScheduleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOncallScheduleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.oncall_schedule_name):
+            body['oncallScheduleName'] = request.oncall_schedule_name
+        if not DaraCore.is_null(request.rotations):
+            body['rotations'] = request.rotations
+        if not DaraCore.is_null(request.shift_robot_id):
+            body['shiftRobotId'] = request.shift_robot_id
+        if not DaraCore.is_null(request.substitudes):
+            body['substitudes'] = request.substitudes
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOncallSchedule',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule/{DaraURL.percent_encode(oncall_schedule_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOncallScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_oncall_schedule_with_options_async(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.UpdateOncallScheduleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOncallScheduleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.oncall_schedule_name):
+            body['oncallScheduleName'] = request.oncall_schedule_name
+        if not DaraCore.is_null(request.rotations):
+            body['rotations'] = request.rotations
+        if not DaraCore.is_null(request.shift_robot_id):
+            body['shiftRobotId'] = request.shift_robot_id
+        if not DaraCore.is_null(request.substitudes):
+            body['substitudes'] = request.substitudes
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOncallSchedule',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule/{DaraURL.percent_encode(oncall_schedule_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOncallScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_oncall_schedule(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.UpdateOncallScheduleRequest,
+    ) -> main_models.UpdateOncallScheduleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_oncall_schedule_with_options(oncall_schedule_id, request, headers, runtime)
+
+    async def update_oncall_schedule_async(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.UpdateOncallScheduleRequest,
+    ) -> main_models.UpdateOncallScheduleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_oncall_schedule_with_options_async(oncall_schedule_id, request, headers, runtime)
+
     def update_pipeline_with_options(
         self,
         workspace: str,
@@ -16310,3 +18364,87 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.upsert_umodel_data_with_options_async(workspace, request, headers, runtime)
+
+    def view_oncall_schedule_with_options(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.ViewOncallScheduleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ViewOncallScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['endDate'] = request.end_date
+        if not DaraCore.is_null(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ViewOncallSchedule',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule/{DaraURL.percent_encode(oncall_schedule_id)}/calendar',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ViewOncallScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def view_oncall_schedule_with_options_async(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.ViewOncallScheduleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ViewOncallScheduleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_date):
+            query['endDate'] = request.end_date
+        if not DaraCore.is_null(request.start_date):
+            query['startDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ViewOncallSchedule',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/oncallSchedule/{DaraURL.percent_encode(oncall_schedule_id)}/calendar',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ViewOncallScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def view_oncall_schedule(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.ViewOncallScheduleRequest,
+    ) -> main_models.ViewOncallScheduleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.view_oncall_schedule_with_options(oncall_schedule_id, request, headers, runtime)
+
+    async def view_oncall_schedule_async(
+        self,
+        oncall_schedule_id: str,
+        request: main_models.ViewOncallScheduleRequest,
+    ) -> main_models.ViewOncallScheduleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.view_oncall_schedule_with_options_async(oncall_schedule_id, request, headers, runtime)

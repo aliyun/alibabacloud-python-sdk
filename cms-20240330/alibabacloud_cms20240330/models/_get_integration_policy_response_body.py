@@ -64,10 +64,11 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # The names of all components installed in the policy.
+        # The names of all components installed in this policy.
         self.addon_names = addon_names
+        # The policy version.
         self.api_version = api_version
-        # The information about the bound resource.
+        # The information about the bound resources.
         self.bind_resource = bind_resource
         # The installation status of umodel in the container environment.
         self.cs_umodel_status = cs_umodel_status
@@ -77,7 +78,7 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         self.managed_info = managed_info
         # The policy ID.
         self.policy_id = policy_id
-        # The policy name.
+        # The rule name.
         self.policy_name = policy_name
         # The access policy type.
         self.policy_type = policy_type
@@ -301,7 +302,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroup(DaraModel):
         self.entity_group_name = entity_group_name
         # The entity rules.
         self.entity_rules = entity_rules
-        # The query.
+        # The query condition.
         self.query = query
         # The region ID.
         self.region_id = region_id
@@ -393,7 +394,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules(DaraModel):
         self.entity_types = entity_types
         # The list of property rules.
         self.field_rules = field_rules
-        # The instance ID.
+        # The instance IDs.
         self.instance_ids = instance_ids
         # The IP matching rule.
         self.ip_match_rule = ip_match_rule
@@ -403,7 +404,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules(DaraModel):
         self.region_ids = region_ids
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tag value.
+        # The tag values.
         self.tags = tags
 
     def validate(self):
@@ -519,7 +520,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags(DaraModel
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to perform.
+        # The operation to be performed.
         self.op = op
         # The tag key of the instance.
         self.tag_key = tag_key
@@ -565,7 +566,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels(DaraMod
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to perform.
+        # The operation to be performed.
         self.op = op
         # The tag key of the instance.
         self.tag_key = tag_key
@@ -652,7 +653,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules(Dar
         self.field_key = field_key
         # The field content.
         self.field_values = field_values
-        # The operation to perform.
+        # The operation to be performed.
         self.op = op
 
     def validate(self):
@@ -694,11 +695,11 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations(Da
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to perform.
+        # The operation to be performed.
         self.op = op
         # The tag key.
         self.tag_key = tag_key
-        # The tag value.
+        # The tag values.
         self.tag_values = tag_values
 
     def validate(self):

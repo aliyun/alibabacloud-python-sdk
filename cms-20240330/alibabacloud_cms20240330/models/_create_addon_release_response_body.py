@@ -75,15 +75,15 @@ class CreateAddonReleaseResponseBodyRelease(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The name of the add-on integrated for monitoring.
+        # The name of the addon for the integrated monitoring component.
         self.addon_name = addon_name
         # The number of alert groups.
         self.alert_rule_count = alert_rule_count
-        # The installation phase information of the component.
+        # The component installation stage information.
         self.conditions = conditions
-        # The configuration of the component.
+        # The component configuration.
         self.config = config
-        # The integration time.
+        # The integration time in ISO 8601 format, including the UTC identifier or time zone offset.
         self.create_time = create_time
         # The number of dashboards.
         self.dashboard_count = dashboard_count
@@ -95,15 +95,15 @@ class CreateAddonReleaseResponseBodyRelease(DaraModel):
         self.environment_id = environment_id
         # The number of plugins.
         self.exporter_count = exporter_count
-        # Indicates whether the component has a configuration.
+        # Indicates whether a configuration exists.
         self.have_config = have_config
         # The ID of the user who installed the component.
         self.install_user_id = install_user_id
         # The language.
         self.language = language
-        # Indicates whether the component is a managed component.
+        # Indicates whether the component is managed.
         self.managed = managed
-        # The parent add-on release ID.
+        # The ID of the parent add-on release.
         self.parent_addon_release_id = parent_addon_release_id
         # The policy environment ID.
         self.policy_id = policy_id
@@ -113,15 +113,15 @@ class CreateAddonReleaseResponseBodyRelease(DaraModel):
         self.release_id = release_id
         # The name of the release.
         self.release_name = release_name
-        # The scenario of the component.
+        # The component scenario.
         self.scene = scene
-        # The status of the component.
+        # The component status.
         self.status = status
-        # The update time.
+        # The update time in ISO 8601 format, including the UTC identifier or time zone offset.
         self.update_time = update_time
-        # The ID of the user who owns the component.
+        # The ID of the owner.
         self.user_id = user_id
-        # The version of the component.
+        # The component version.
         self.version = version
         # The workspace.
         self.workspace = workspace
@@ -310,15 +310,15 @@ class CreateAddonReleaseResponseBodyReleaseConditions(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The time of the first transition.
+        # The first transition time in ISO 8601 format, including the UTC identifier or time zone offset.
         self.first_transition_time = first_transition_time
-        # The time of the last transition.
+        # The last transition time in ISO 8601 format, including the UTC identifier or time zone offset.
         self.last_transition_time = last_transition_time
-        # The detailed information.
+        # The details.
         self.message = message
-        # The status of the phase.
+        # The stage status.
         self.status = status
-        # The type of the phase.
+        # The stage type.
         self.type = type
 
     def validate(self):

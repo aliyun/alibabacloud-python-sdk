@@ -86,7 +86,7 @@ class ListAddonsResponseBodyAddons(DaraModel):
         self.keywords = keywords
         # The language.
         self.language = language
-        # The latest release creation time.
+        # The time of the latest release. The time is in ISO 8601 format and includes the UTC identifier or time zone offset.
         self.latest_release_create_time = latest_release_create_time
         # The name of the integration component.
         self.name = name
@@ -232,7 +232,7 @@ class ListAddonsResponseBodyAddonsEnvironments(DaraModel):
         self.dependencies = dependencies
         # The description of the integration policy type.
         self.description = description
-        # Specifies whether the integration policy type is enabled.
+        # Specifies whether it is enabled.
         self.enable = enable
         # The label of the integration policy type.
         self.label = label
@@ -332,15 +332,15 @@ class ListAddonsResponseBodyAddonsEnvironmentsPolicies(DaraModel):
     ):
         # The enabling status of the default policy for alert rules.
         self.alert_default_status = alert_default_status
-        # Specifies whether to install the component by default.
+        # Specifies whether to install by default.
         self.default_install = default_install
         # Specifies whether to assign a service account for communication with the console API.
         self.enable_service_account = enable_service_account
         # The metric check rule.
         self.metric_check_rule = metric_check_rule
-        # Specifies whether to trigger a pod restart guide immediately after the plug-in installation is completed during integration.
+        # Specifies whether to initiate a pod restart guide immediately after the plug-in installation is completed during integration.
         self.need_restart_after_integration = need_restart_after_integration
-        # The supported protocol types in the configuration.
+        # The supported protocol types for configuration.
         self.protocols = protocols
         # The name of the target add-on.
         self.target_addon_name = target_addon_name
@@ -585,9 +585,9 @@ class ListAddonsResponseBodyAddonsDashboards(DaraModel):
         name: str = None,
         url: str = None,
     ):
-        # The dashboard description.
+        # The description of the dashboard.
         self.description = description
-        # The dashboard name.
+        # The name of the dashboard.
         self.name = name
         # The URL of the dashboard preview image.
         self.url = url

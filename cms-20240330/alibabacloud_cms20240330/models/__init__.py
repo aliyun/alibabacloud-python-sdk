@@ -197,6 +197,10 @@ from ._umodel_entity_filter import UmodelEntityFilter
 from ._umodel_label_filter import UmodelLabelFilter
 from ._uuid_filter import UuidFilter
 from ._workspace_filter_setting import WorkspaceFilterSetting
+from ._schedule_value import ScheduleValue
+from ._active_contact_channel_request import ActiveContactChannelRequest
+from ._active_contact_channel_response_body import ActiveContactChannelResponseBody
+from ._active_contact_channel_response import ActiveContactChannelResponse
 from ._add_contexts_request import AddContextsRequest
 from ._add_contexts_response_body import AddContextsResponseBody
 from ._add_contexts_response import AddContextsResponse
@@ -212,6 +216,12 @@ from ._create_addon_release_response import CreateAddonReleaseResponse
 from ._create_agg_task_group_request import CreateAggTaskGroupRequest
 from ._create_agg_task_group_response_body import CreateAggTaskGroupResponseBody
 from ._create_agg_task_group_response import CreateAggTaskGroupResponse
+from ._create_alert_action_request import CreateAlertActionRequest
+from ._create_alert_action_response_body import CreateAlertActionResponseBody
+from ._create_alert_action_response import CreateAlertActionResponse
+from ._create_alert_notify_template_request import CreateAlertNotifyTemplateRequest
+from ._create_alert_notify_template_response_body import CreateAlertNotifyTemplateResponseBody
+from ._create_alert_notify_template_response import CreateAlertNotifyTemplateResponse
 from ._create_alert_robot_request import CreateAlertRobotRequest
 from ._create_alert_robot_response_body import CreateAlertRobotResponseBody
 from ._create_alert_robot_response import CreateAlertRobotResponse
@@ -223,6 +233,12 @@ from ._create_biz_trace_response_body import CreateBizTraceResponseBody
 from ._create_biz_trace_response import CreateBizTraceResponse
 from ._create_cloud_resource_response_body import CreateCloudResourceResponseBody
 from ._create_cloud_resource_response import CreateCloudResourceResponse
+from ._create_contact_request import CreateContactRequest
+from ._create_contact_response_body import CreateContactResponseBody
+from ._create_contact_response import CreateContactResponse
+from ._create_contact_group_request import CreateContactGroupRequest
+from ._create_contact_group_response_body import CreateContactGroupResponseBody
+from ._create_contact_group_response import CreateContactGroupResponse
 from ._create_context_store_request import CreateContextStoreRequest
 from ._create_context_store_response_body import CreateContextStoreResponseBody
 from ._create_context_store_response import CreateContextStoreResponse
@@ -253,6 +269,9 @@ from ._create_memory_store_response import CreateMemoryStoreResponse
 from ._create_notify_policy_request import CreateNotifyPolicyRequest
 from ._create_notify_policy_response_body import CreateNotifyPolicyResponseBody
 from ._create_notify_policy_response import CreateNotifyPolicyResponse
+from ._create_oncall_schedule_request import CreateOncallScheduleRequest
+from ._create_oncall_schedule_response_body import CreateOncallScheduleResponseBody
+from ._create_oncall_schedule_response import CreateOncallScheduleResponse
 from ._create_pipeline_request import CreatePipelineRequest
 from ._create_pipeline_response_body import CreatePipelineResponseBody
 from ._create_pipeline_response import CreatePipelineResponse
@@ -292,6 +311,14 @@ from ._delete_addon_release_response import DeleteAddonReleaseResponse
 from ._delete_agg_task_group_request import DeleteAggTaskGroupRequest
 from ._delete_agg_task_group_response_body import DeleteAggTaskGroupResponseBody
 from ._delete_agg_task_group_response import DeleteAggTaskGroupResponse
+from ._delete_alert_actions_request import DeleteAlertActionsRequest
+from ._delete_alert_actions_shrink_request import DeleteAlertActionsShrinkRequest
+from ._delete_alert_actions_response_body import DeleteAlertActionsResponseBody
+from ._delete_alert_actions_response import DeleteAlertActionsResponse
+from ._delete_alert_notify_templates_request import DeleteAlertNotifyTemplatesRequest
+from ._delete_alert_notify_templates_shrink_request import DeleteAlertNotifyTemplatesShrinkRequest
+from ._delete_alert_notify_templates_response_body import DeleteAlertNotifyTemplatesResponseBody
+from ._delete_alert_notify_templates_response import DeleteAlertNotifyTemplatesResponse
 from ._delete_alert_robots_request import DeleteAlertRobotsRequest
 from ._delete_alert_robots_shrink_request import DeleteAlertRobotsShrinkRequest
 from ._delete_alert_robots_response_body import DeleteAlertRobotsResponseBody
@@ -305,6 +332,14 @@ from ._delete_biz_trace_response_body import DeleteBizTraceResponseBody
 from ._delete_biz_trace_response import DeleteBizTraceResponse
 from ._delete_cloud_resource_response_body import DeleteCloudResourceResponseBody
 from ._delete_cloud_resource_response import DeleteCloudResourceResponse
+from ._delete_contact_groups_request import DeleteContactGroupsRequest
+from ._delete_contact_groups_shrink_request import DeleteContactGroupsShrinkRequest
+from ._delete_contact_groups_response_body import DeleteContactGroupsResponseBody
+from ._delete_contact_groups_response import DeleteContactGroupsResponse
+from ._delete_contacts_request import DeleteContactsRequest
+from ._delete_contacts_shrink_request import DeleteContactsShrinkRequest
+from ._delete_contacts_response_body import DeleteContactsResponseBody
+from ._delete_contacts_response import DeleteContactsResponse
 from ._delete_context_request import DeleteContextRequest
 from ._delete_context_response_body import DeleteContextResponseBody
 from ._delete_context_response import DeleteContextResponse
@@ -347,6 +382,10 @@ from ._delete_memory_store_response import DeleteMemoryStoreResponse
 from ._delete_notify_policy_request import DeleteNotifyPolicyRequest
 from ._delete_notify_policy_response_body import DeleteNotifyPolicyResponseBody
 from ._delete_notify_policy_response import DeleteNotifyPolicyResponse
+from ._delete_oncall_schedules_request import DeleteOncallSchedulesRequest
+from ._delete_oncall_schedules_shrink_request import DeleteOncallSchedulesShrinkRequest
+from ._delete_oncall_schedules_response_body import DeleteOncallSchedulesResponseBody
+from ._delete_oncall_schedules_response import DeleteOncallSchedulesResponse
 from ._delete_pipeline_request import DeletePipelineRequest
 from ._delete_pipeline_response_body import DeletePipelineResponseBody
 from ._delete_pipeline_response import DeletePipelineResponse
@@ -426,6 +465,9 @@ from ._get_addon_schema_response import GetAddonSchemaResponse
 from ._get_agg_task_group_request import GetAggTaskGroupRequest
 from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBody
 from ._get_agg_task_group_response import GetAggTaskGroupResponse
+from ._get_alert_action_request import GetAlertActionRequest
+from ._get_alert_action_response_body import GetAlertActionResponseBody
+from ._get_alert_action_response import GetAlertActionResponse
 from ._get_biz_trace_request import GetBizTraceRequest
 from ._get_biz_trace_response_body import GetBizTraceResponseBody
 from ._get_biz_trace_response import GetBizTraceResponse
@@ -482,6 +524,9 @@ from ._get_memory_store_response import GetMemoryStoreResponse
 from ._get_notify_policy_request import GetNotifyPolicyRequest
 from ._get_notify_policy_response_body import GetNotifyPolicyResponseBody
 from ._get_notify_policy_response import GetNotifyPolicyResponse
+from ._get_oncall_schedule_request import GetOncallScheduleRequest
+from ._get_oncall_schedule_response_body import GetOncallScheduleResponseBody
+from ._get_oncall_schedule_response import GetOncallScheduleResponse
 from ._get_pipeline_request import GetPipelineRequest
 from ._get_pipeline_response_body import GetPipelineResponseBody
 from ._get_pipeline_response import GetPipelineResponse
@@ -535,6 +580,10 @@ from ._list_alert_actions_request import ListAlertActionsRequest
 from ._list_alert_actions_shrink_request import ListAlertActionsShrinkRequest
 from ._list_alert_actions_response_body import ListAlertActionsResponseBody
 from ._list_alert_actions_response import ListAlertActionsResponse
+from ._list_alert_notify_templates_request import ListAlertNotifyTemplatesRequest
+from ._list_alert_notify_templates_shrink_request import ListAlertNotifyTemplatesShrinkRequest
+from ._list_alert_notify_templates_response_body import ListAlertNotifyTemplatesResponseBody
+from ._list_alert_notify_templates_response import ListAlertNotifyTemplatesResponse
 from ._list_alert_robots_request import ListAlertRobotsRequest
 from ._list_alert_robots_shrink_request import ListAlertRobotsShrinkRequest
 from ._list_alert_robots_response_body import ListAlertRobotsResponseBody
@@ -604,6 +653,13 @@ from ._list_memory_stores_response import ListMemoryStoresResponse
 from ._list_notify_policies_request import ListNotifyPoliciesRequest
 from ._list_notify_policies_response_body import ListNotifyPoliciesResponseBody
 from ._list_notify_policies_response import ListNotifyPoliciesResponse
+from ._list_oncall_contacts_request import ListOncallContactsRequest
+from ._list_oncall_contacts_response_body import ListOncallContactsResponseBody
+from ._list_oncall_contacts_response import ListOncallContactsResponse
+from ._list_oncall_schedules_request import ListOncallSchedulesRequest
+from ._list_oncall_schedules_shrink_request import ListOncallSchedulesShrinkRequest
+from ._list_oncall_schedules_response_body import ListOncallSchedulesResponseBody
+from ._list_oncall_schedules_response import ListOncallSchedulesResponse
 from ._list_pipelines_request import ListPipelinesRequest
 from ._list_pipelines_response_body import ListPipelinesResponseBody
 from ._list_pipelines_response import ListPipelinesResponse
@@ -654,12 +710,18 @@ from ._open_cms_service_response import OpenCmsServiceResponse
 from ._preview_data_pipeline_request import PreviewDataPipelineRequest
 from ._preview_data_pipeline_response_body import PreviewDataPipelineResponseBody
 from ._preview_data_pipeline_response import PreviewDataPipelineResponse
+from ._preview_notify_template_request import PreviewNotifyTemplateRequest
+from ._preview_notify_template_response_body import PreviewNotifyTemplateResponseBody
+from ._preview_notify_template_response import PreviewNotifyTemplateResponse
 from ._put_workspace_request import PutWorkspaceRequest
 from ._put_workspace_response_body import PutWorkspaceResponseBody
 from ._put_workspace_response import PutWorkspaceResponse
 from ._query_alert_rules_request import QueryAlertRulesRequest
 from ._query_alert_rules_shrink_request import QueryAlertRulesShrinkRequest
 from ._query_alert_rules_response import QueryAlertRulesResponse
+from ._resend_verify_activate_request import ResendVerifyActivateRequest
+from ._resend_verify_activate_response_body import ResendVerifyActivateResponseBody
+from ._resend_verify_activate_response import ResendVerifyActivateResponse
 from ._search_context_request import SearchContextRequest
 from ._search_context_response_body import SearchContextResponseBody
 from ._search_context_response import SearchContextResponse
@@ -682,6 +744,12 @@ from ._update_agg_task_group_response import UpdateAggTaskGroupResponse
 from ._update_agg_task_group_status_request import UpdateAggTaskGroupStatusRequest
 from ._update_agg_task_group_status_response_body import UpdateAggTaskGroupStatusResponseBody
 from ._update_agg_task_group_status_response import UpdateAggTaskGroupStatusResponse
+from ._update_alert_action_request import UpdateAlertActionRequest
+from ._update_alert_action_response_body import UpdateAlertActionResponseBody
+from ._update_alert_action_response import UpdateAlertActionResponse
+from ._update_alert_notify_template_request import UpdateAlertNotifyTemplateRequest
+from ._update_alert_notify_template_response_body import UpdateAlertNotifyTemplateResponseBody
+from ._update_alert_notify_template_response import UpdateAlertNotifyTemplateResponse
 from ._update_alert_robot_request import UpdateAlertRobotRequest
 from ._update_alert_robot_response_body import UpdateAlertRobotResponseBody
 from ._update_alert_robot_response import UpdateAlertRobotResponse
@@ -691,6 +759,12 @@ from ._update_alert_webhook_response import UpdateAlertWebhookResponse
 from ._update_biz_trace_request import UpdateBizTraceRequest
 from ._update_biz_trace_response_body import UpdateBizTraceResponseBody
 from ._update_biz_trace_response import UpdateBizTraceResponse
+from ._update_contact_request import UpdateContactRequest
+from ._update_contact_response_body import UpdateContactResponseBody
+from ._update_contact_response import UpdateContactResponse
+from ._update_contact_group_request import UpdateContactGroupRequest
+from ._update_contact_group_response_body import UpdateContactGroupResponseBody
+from ._update_contact_group_response import UpdateContactGroupResponse
 from ._update_context_request import UpdateContextRequest
 from ._update_context_response import UpdateContextResponse
 from ._update_context_store_request import UpdateContextStoreRequest
@@ -723,6 +797,9 @@ from ._update_notify_policy_response import UpdateNotifyPolicyResponse
 from ._update_notify_strategy_request import UpdateNotifyStrategyRequest
 from ._update_notify_strategy_response_body import UpdateNotifyStrategyResponseBody
 from ._update_notify_strategy_response import UpdateNotifyStrategyResponse
+from ._update_oncall_schedule_request import UpdateOncallScheduleRequest
+from ._update_oncall_schedule_response_body import UpdateOncallScheduleResponseBody
+from ._update_oncall_schedule_response import UpdateOncallScheduleResponse
 from ._update_pipeline_request import UpdatePipelineRequest
 from ._update_pipeline_response_body import UpdatePipelineResponseBody
 from ._update_pipeline_response import UpdatePipelineResponse
@@ -753,6 +830,9 @@ from ._upsert_umodel_common_schema_ref_response import UpsertUmodelCommonSchemaR
 from ._upsert_umodel_data_request import UpsertUmodelDataRequest
 from ._upsert_umodel_data_response_body import UpsertUmodelDataResponseBody
 from ._upsert_umodel_data_response import UpsertUmodelDataResponse
+from ._view_oncall_schedule_request import ViewOncallScheduleRequest
+from ._view_oncall_schedule_response_body import ViewOncallScheduleResponseBody
+from ._view_oncall_schedule_response import ViewOncallScheduleResponse
 from ._addon_meta import AddonMetaDashboards
 from ._addon_meta import AddonMetaEnvironmentsCommonSchemaRefs
 from ._addon_meta import AddonMetaEnvironmentsDependencies
@@ -866,6 +946,14 @@ from ._add_memories_response_body import AddMemoriesResponseBodyResults
 from ._create_addon_release_response_body import CreateAddonReleaseResponseBodyReleaseConditions
 from ._create_addon_release_response_body import CreateAddonReleaseResponseBodyRelease
 from ._create_agg_task_group_request import CreateAggTaskGroupRequestTags
+from ._create_alert_action_request import CreateAlertActionRequestEbParam
+from ._create_alert_action_request import CreateAlertActionRequestEssParam
+from ._create_alert_action_request import CreateAlertActionRequestFc3Param
+from ._create_alert_action_request import CreateAlertActionRequestFcParam
+from ._create_alert_action_request import CreateAlertActionRequestMnsParam
+from ._create_alert_action_request import CreateAlertActionRequestPagerDutyParam
+from ._create_alert_action_request import CreateAlertActionRequestSlsParam
+from ._create_alert_action_request import CreateAlertActionRequestWebhookParam
 from ._create_context_store_request import CreateContextStoreRequestConfigSource
 from ._create_context_store_request import CreateContextStoreRequestConfig
 from ._create_context_store_request import CreateContextStoreRequestDataset
@@ -934,6 +1022,8 @@ from ._create_integration_policy_request import CreateIntegrationPolicyRequestEn
 from ._create_integration_policy_request import CreateIntegrationPolicyRequestTags
 from ._create_integration_policy_response_body import CreateIntegrationPolicyResponseBodyPolicy
 from ._create_memory_store_request import CreateMemoryStoreRequestTraceSourceConfig
+from ._create_oncall_schedule_request import CreateOncallScheduleRequestRotations
+from ._create_oncall_schedule_request import CreateOncallScheduleRequestSubstitudes
 from ._create_pipeline_request import CreatePipelineRequestExecutePolicyRunOnce
 from ._create_pipeline_request import CreatePipelineRequestExecutePolicyScheduled
 from ._create_pipeline_request import CreatePipelineRequestExecutePolicy
@@ -971,6 +1061,15 @@ from ._get_addon_schema_response_body import GetAddonSchemaResponseBodyFieldsVal
 from ._get_addon_schema_response_body import GetAddonSchemaResponseBodyFields
 from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBodyAggTaskGroupTags
 from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBodyAggTaskGroup
+from ._get_alert_action_response_body import GetAlertActionResponseBodyAlertActionsEbParam
+from ._get_alert_action_response_body import GetAlertActionResponseBodyAlertActionsEssParam
+from ._get_alert_action_response_body import GetAlertActionResponseBodyAlertActionsFc3Param
+from ._get_alert_action_response_body import GetAlertActionResponseBodyAlertActionsFcParam
+from ._get_alert_action_response_body import GetAlertActionResponseBodyAlertActionsMnsParam
+from ._get_alert_action_response_body import GetAlertActionResponseBodyAlertActionsPagerDutyParam
+from ._get_alert_action_response_body import GetAlertActionResponseBodyAlertActionsSlsParam
+from ._get_alert_action_response_body import GetAlertActionResponseBodyAlertActionsWebhookParam
+from ._get_alert_action_response_body import GetAlertActionResponseBodyAlertActions
 from ._get_cloud_resource_data_response_body import GetCloudResourceDataResponseBodyResponseStatusStatusItem
 from ._get_cloud_resource_data_response_body import GetCloudResourceDataResponseBodyResponseStatus
 from ._get_context_store_response_body import GetContextStoreResponseBodyConfigInnerSource
@@ -1030,6 +1129,8 @@ from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResul
 from ._get_memory_history_response_body import GetMemoryHistoryResponseBodyResults
 from ._get_memory_store_response_body import GetMemoryStoreResponseBodyShortTermStorage
 from ._get_memory_store_response_body import GetMemoryStoreResponseBodyTraceSourceConfig
+from ._get_oncall_schedule_response_body import GetOncallScheduleResponseBodyRotations
+from ._get_oncall_schedule_response_body import GetOncallScheduleResponseBodySubstitudes
 from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicyRunOnce
 from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicyScheduled
 from ._get_pipeline_response_body import GetPipelineResponseBodyExecutePolicy
@@ -1074,6 +1175,7 @@ from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlert
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsSlsParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsWebhookParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActions
+from ._list_alert_notify_templates_response_body import ListAlertNotifyTemplatesResponseBodyAlertNotifyTemplates
 from ._list_alert_robots_response_body import ListAlertRobotsResponseBodyRobots
 from ._list_alert_webhooks_response_body import ListAlertWebhooksResponseBodyWebhooks
 from ._list_contact_groups_response_body import ListContactGroupsResponseBodyContactGroups
@@ -1151,6 +1253,9 @@ from ._list_integration_policy_storage_requirements_response_body import ListInt
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements
 from ._list_memory_stores_response_body import ListMemoryStoresResponseBodyMemoryStores
+from ._list_oncall_schedules_response_body import ListOncallSchedulesResponseBodyOncallSchedulesRotations
+from ._list_oncall_schedules_response_body import ListOncallSchedulesResponseBodyOncallSchedulesSubstitudes
+from ._list_oncall_schedules_response_body import ListOncallSchedulesResponseBodyOncallSchedules
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelines
 from ._list_prometheus_dashboards_response_body import ListPrometheusDashboardsResponseBodyPrometheusDashboards
 from ._list_prometheus_instances_request import ListPrometheusInstancesRequestTag
@@ -1197,10 +1302,20 @@ from ._preview_data_pipeline_request import PreviewDataPipelineRequestSourceConf
 from ._preview_data_pipeline_request import PreviewDataPipelineRequestSource
 from ._preview_data_pipeline_response_body import PreviewDataPipelineResponseBodyDatasetsMeta
 from ._preview_data_pipeline_response_body import PreviewDataPipelineResponseBodyDatasets
+from ._preview_notify_template_request import PreviewNotifyTemplateRequestTemplates
+from ._preview_notify_template_response_body import PreviewNotifyTemplateResponseBodyData
 from ._put_workspace_request import PutWorkspaceRequestTags
 from ._search_memories_response_body import SearchMemoriesResponseBodyRelations
 from ._search_memories_response_body import SearchMemoriesResponseBodyResults
 from ._update_agg_task_group_request import UpdateAggTaskGroupRequestTags
+from ._update_alert_action_request import UpdateAlertActionRequestEbParam
+from ._update_alert_action_request import UpdateAlertActionRequestEssParam
+from ._update_alert_action_request import UpdateAlertActionRequestFc3Param
+from ._update_alert_action_request import UpdateAlertActionRequestFcParam
+from ._update_alert_action_request import UpdateAlertActionRequestMnsParam
+from ._update_alert_action_request import UpdateAlertActionRequestPagerDutyParam
+from ._update_alert_action_request import UpdateAlertActionRequestSlsParam
+from ._update_alert_action_request import UpdateAlertActionRequestWebhookParam
 from ._update_context_store_request import UpdateContextStoreRequestConfigSource
 from ._update_context_store_request import UpdateContextStoreRequestConfig
 from ._update_context_store_request import UpdateContextStoreRequestDataset
@@ -1265,6 +1380,8 @@ from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyP
 from ._update_data_pipeline_response_body import UpdateDataPipelineResponseBodyPipeline
 from ._update_delivery_task_request import UpdateDeliveryTaskRequestSinkList
 from ._update_integration_policy_request import UpdateIntegrationPolicyRequestTags
+from ._update_oncall_schedule_request import UpdateOncallScheduleRequestRotations
+from ._update_oncall_schedule_request import UpdateOncallScheduleRequestSubstitudes
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyRunOnce
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicyScheduled
 from ._update_pipeline_request import UpdatePipelineRequestExecutePolicy
@@ -1472,6 +1589,10 @@ __all__ = [
     UmodelLabelFilter,
     UuidFilter,
     WorkspaceFilterSetting,
+    ScheduleValue,
+    ActiveContactChannelRequest,
+    ActiveContactChannelResponseBody,
+    ActiveContactChannelResponse,
     AddContextsRequest,
     AddContextsResponseBody,
     AddContextsResponse,
@@ -1487,6 +1608,12 @@ __all__ = [
     CreateAggTaskGroupRequest,
     CreateAggTaskGroupResponseBody,
     CreateAggTaskGroupResponse,
+    CreateAlertActionRequest,
+    CreateAlertActionResponseBody,
+    CreateAlertActionResponse,
+    CreateAlertNotifyTemplateRequest,
+    CreateAlertNotifyTemplateResponseBody,
+    CreateAlertNotifyTemplateResponse,
     CreateAlertRobotRequest,
     CreateAlertRobotResponseBody,
     CreateAlertRobotResponse,
@@ -1498,6 +1625,12 @@ __all__ = [
     CreateBizTraceResponse,
     CreateCloudResourceResponseBody,
     CreateCloudResourceResponse,
+    CreateContactRequest,
+    CreateContactResponseBody,
+    CreateContactResponse,
+    CreateContactGroupRequest,
+    CreateContactGroupResponseBody,
+    CreateContactGroupResponse,
     CreateContextStoreRequest,
     CreateContextStoreResponseBody,
     CreateContextStoreResponse,
@@ -1528,6 +1661,9 @@ __all__ = [
     CreateNotifyPolicyRequest,
     CreateNotifyPolicyResponseBody,
     CreateNotifyPolicyResponse,
+    CreateOncallScheduleRequest,
+    CreateOncallScheduleResponseBody,
+    CreateOncallScheduleResponse,
     CreatePipelineRequest,
     CreatePipelineResponseBody,
     CreatePipelineResponse,
@@ -1567,6 +1703,14 @@ __all__ = [
     DeleteAggTaskGroupRequest,
     DeleteAggTaskGroupResponseBody,
     DeleteAggTaskGroupResponse,
+    DeleteAlertActionsRequest,
+    DeleteAlertActionsShrinkRequest,
+    DeleteAlertActionsResponseBody,
+    DeleteAlertActionsResponse,
+    DeleteAlertNotifyTemplatesRequest,
+    DeleteAlertNotifyTemplatesShrinkRequest,
+    DeleteAlertNotifyTemplatesResponseBody,
+    DeleteAlertNotifyTemplatesResponse,
     DeleteAlertRobotsRequest,
     DeleteAlertRobotsShrinkRequest,
     DeleteAlertRobotsResponseBody,
@@ -1580,6 +1724,14 @@ __all__ = [
     DeleteBizTraceResponse,
     DeleteCloudResourceResponseBody,
     DeleteCloudResourceResponse,
+    DeleteContactGroupsRequest,
+    DeleteContactGroupsShrinkRequest,
+    DeleteContactGroupsResponseBody,
+    DeleteContactGroupsResponse,
+    DeleteContactsRequest,
+    DeleteContactsShrinkRequest,
+    DeleteContactsResponseBody,
+    DeleteContactsResponse,
     DeleteContextRequest,
     DeleteContextResponseBody,
     DeleteContextResponse,
@@ -1622,6 +1774,10 @@ __all__ = [
     DeleteNotifyPolicyRequest,
     DeleteNotifyPolicyResponseBody,
     DeleteNotifyPolicyResponse,
+    DeleteOncallSchedulesRequest,
+    DeleteOncallSchedulesShrinkRequest,
+    DeleteOncallSchedulesResponseBody,
+    DeleteOncallSchedulesResponse,
     DeletePipelineRequest,
     DeletePipelineResponseBody,
     DeletePipelineResponse,
@@ -1701,6 +1857,9 @@ __all__ = [
     GetAggTaskGroupRequest,
     GetAggTaskGroupResponseBody,
     GetAggTaskGroupResponse,
+    GetAlertActionRequest,
+    GetAlertActionResponseBody,
+    GetAlertActionResponse,
     GetBizTraceRequest,
     GetBizTraceResponseBody,
     GetBizTraceResponse,
@@ -1757,6 +1916,9 @@ __all__ = [
     GetNotifyPolicyRequest,
     GetNotifyPolicyResponseBody,
     GetNotifyPolicyResponse,
+    GetOncallScheduleRequest,
+    GetOncallScheduleResponseBody,
+    GetOncallScheduleResponse,
     GetPipelineRequest,
     GetPipelineResponseBody,
     GetPipelineResponse,
@@ -1810,6 +1972,10 @@ __all__ = [
     ListAlertActionsShrinkRequest,
     ListAlertActionsResponseBody,
     ListAlertActionsResponse,
+    ListAlertNotifyTemplatesRequest,
+    ListAlertNotifyTemplatesShrinkRequest,
+    ListAlertNotifyTemplatesResponseBody,
+    ListAlertNotifyTemplatesResponse,
     ListAlertRobotsRequest,
     ListAlertRobotsShrinkRequest,
     ListAlertRobotsResponseBody,
@@ -1879,6 +2045,13 @@ __all__ = [
     ListNotifyPoliciesRequest,
     ListNotifyPoliciesResponseBody,
     ListNotifyPoliciesResponse,
+    ListOncallContactsRequest,
+    ListOncallContactsResponseBody,
+    ListOncallContactsResponse,
+    ListOncallSchedulesRequest,
+    ListOncallSchedulesShrinkRequest,
+    ListOncallSchedulesResponseBody,
+    ListOncallSchedulesResponse,
     ListPipelinesRequest,
     ListPipelinesResponseBody,
     ListPipelinesResponse,
@@ -1929,12 +2102,18 @@ __all__ = [
     PreviewDataPipelineRequest,
     PreviewDataPipelineResponseBody,
     PreviewDataPipelineResponse,
+    PreviewNotifyTemplateRequest,
+    PreviewNotifyTemplateResponseBody,
+    PreviewNotifyTemplateResponse,
     PutWorkspaceRequest,
     PutWorkspaceResponseBody,
     PutWorkspaceResponse,
     QueryAlertRulesRequest,
     QueryAlertRulesShrinkRequest,
     QueryAlertRulesResponse,
+    ResendVerifyActivateRequest,
+    ResendVerifyActivateResponseBody,
+    ResendVerifyActivateResponse,
     SearchContextRequest,
     SearchContextResponseBody,
     SearchContextResponse,
@@ -1957,6 +2136,12 @@ __all__ = [
     UpdateAggTaskGroupStatusRequest,
     UpdateAggTaskGroupStatusResponseBody,
     UpdateAggTaskGroupStatusResponse,
+    UpdateAlertActionRequest,
+    UpdateAlertActionResponseBody,
+    UpdateAlertActionResponse,
+    UpdateAlertNotifyTemplateRequest,
+    UpdateAlertNotifyTemplateResponseBody,
+    UpdateAlertNotifyTemplateResponse,
     UpdateAlertRobotRequest,
     UpdateAlertRobotResponseBody,
     UpdateAlertRobotResponse,
@@ -1966,6 +2151,12 @@ __all__ = [
     UpdateBizTraceRequest,
     UpdateBizTraceResponseBody,
     UpdateBizTraceResponse,
+    UpdateContactRequest,
+    UpdateContactResponseBody,
+    UpdateContactResponse,
+    UpdateContactGroupRequest,
+    UpdateContactGroupResponseBody,
+    UpdateContactGroupResponse,
     UpdateContextRequest,
     UpdateContextResponse,
     UpdateContextStoreRequest,
@@ -1998,6 +2189,9 @@ __all__ = [
     UpdateNotifyStrategyRequest,
     UpdateNotifyStrategyResponseBody,
     UpdateNotifyStrategyResponse,
+    UpdateOncallScheduleRequest,
+    UpdateOncallScheduleResponseBody,
+    UpdateOncallScheduleResponse,
     UpdatePipelineRequest,
     UpdatePipelineResponseBody,
     UpdatePipelineResponse,
@@ -2028,6 +2222,9 @@ __all__ = [
     UpsertUmodelDataRequest,
     UpsertUmodelDataResponseBody,
     UpsertUmodelDataResponse,
+    ViewOncallScheduleRequest,
+    ViewOncallScheduleResponseBody,
+    ViewOncallScheduleResponse,
     AddonMetaDashboards,
     AddonMetaEnvironmentsCommonSchemaRefs,
     AddonMetaEnvironmentsDependencies,
@@ -2141,6 +2338,14 @@ __all__ = [
     CreateAddonReleaseResponseBodyReleaseConditions,
     CreateAddonReleaseResponseBodyRelease,
     CreateAggTaskGroupRequestTags,
+    CreateAlertActionRequestEbParam,
+    CreateAlertActionRequestEssParam,
+    CreateAlertActionRequestFc3Param,
+    CreateAlertActionRequestFcParam,
+    CreateAlertActionRequestMnsParam,
+    CreateAlertActionRequestPagerDutyParam,
+    CreateAlertActionRequestSlsParam,
+    CreateAlertActionRequestWebhookParam,
     CreateContextStoreRequestConfigSource,
     CreateContextStoreRequestConfig,
     CreateContextStoreRequestDataset,
@@ -2209,6 +2414,8 @@ __all__ = [
     CreateIntegrationPolicyRequestTags,
     CreateIntegrationPolicyResponseBodyPolicy,
     CreateMemoryStoreRequestTraceSourceConfig,
+    CreateOncallScheduleRequestRotations,
+    CreateOncallScheduleRequestSubstitudes,
     CreatePipelineRequestExecutePolicyRunOnce,
     CreatePipelineRequestExecutePolicyScheduled,
     CreatePipelineRequestExecutePolicy,
@@ -2246,6 +2453,15 @@ __all__ = [
     GetAddonSchemaResponseBodyFields,
     GetAggTaskGroupResponseBodyAggTaskGroupTags,
     GetAggTaskGroupResponseBodyAggTaskGroup,
+    GetAlertActionResponseBodyAlertActionsEbParam,
+    GetAlertActionResponseBodyAlertActionsEssParam,
+    GetAlertActionResponseBodyAlertActionsFc3Param,
+    GetAlertActionResponseBodyAlertActionsFcParam,
+    GetAlertActionResponseBodyAlertActionsMnsParam,
+    GetAlertActionResponseBodyAlertActionsPagerDutyParam,
+    GetAlertActionResponseBodyAlertActionsSlsParam,
+    GetAlertActionResponseBodyAlertActionsWebhookParam,
+    GetAlertActionResponseBodyAlertActions,
     GetCloudResourceDataResponseBodyResponseStatusStatusItem,
     GetCloudResourceDataResponseBodyResponseStatus,
     GetContextStoreResponseBodyConfigInnerSource,
@@ -2305,6 +2521,8 @@ __all__ = [
     GetMemoryHistoryResponseBodyResults,
     GetMemoryStoreResponseBodyShortTermStorage,
     GetMemoryStoreResponseBodyTraceSourceConfig,
+    GetOncallScheduleResponseBodyRotations,
+    GetOncallScheduleResponseBodySubstitudes,
     GetPipelineResponseBodyExecutePolicyRunOnce,
     GetPipelineResponseBodyExecutePolicyScheduled,
     GetPipelineResponseBodyExecutePolicy,
@@ -2349,6 +2567,7 @@ __all__ = [
     ListAlertActionsResponseBodyAlertActionsSlsParam,
     ListAlertActionsResponseBodyAlertActionsWebhookParam,
     ListAlertActionsResponseBodyAlertActions,
+    ListAlertNotifyTemplatesResponseBodyAlertNotifyTemplates,
     ListAlertRobotsResponseBodyRobots,
     ListAlertWebhooksResponseBodyWebhooks,
     ListContactGroupsResponseBodyContactGroups,
@@ -2426,6 +2645,9 @@ __all__ = [
     ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus,
     ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements,
     ListMemoryStoresResponseBodyMemoryStores,
+    ListOncallSchedulesResponseBodyOncallSchedulesRotations,
+    ListOncallSchedulesResponseBodyOncallSchedulesSubstitudes,
+    ListOncallSchedulesResponseBodyOncallSchedules,
     ListPipelinesResponseBodyPipelines,
     ListPrometheusDashboardsResponseBodyPrometheusDashboards,
     ListPrometheusInstancesRequestTag,
@@ -2472,10 +2694,20 @@ __all__ = [
     PreviewDataPipelineRequestSource,
     PreviewDataPipelineResponseBodyDatasetsMeta,
     PreviewDataPipelineResponseBodyDatasets,
+    PreviewNotifyTemplateRequestTemplates,
+    PreviewNotifyTemplateResponseBodyData,
     PutWorkspaceRequestTags,
     SearchMemoriesResponseBodyRelations,
     SearchMemoriesResponseBodyResults,
     UpdateAggTaskGroupRequestTags,
+    UpdateAlertActionRequestEbParam,
+    UpdateAlertActionRequestEssParam,
+    UpdateAlertActionRequestFc3Param,
+    UpdateAlertActionRequestFcParam,
+    UpdateAlertActionRequestMnsParam,
+    UpdateAlertActionRequestPagerDutyParam,
+    UpdateAlertActionRequestSlsParam,
+    UpdateAlertActionRequestWebhookParam,
     UpdateContextStoreRequestConfigSource,
     UpdateContextStoreRequestConfig,
     UpdateContextStoreRequestDataset,
@@ -2540,6 +2772,8 @@ __all__ = [
     UpdateDataPipelineResponseBodyPipeline,
     UpdateDeliveryTaskRequestSinkList,
     UpdateIntegrationPolicyRequestTags,
+    UpdateOncallScheduleRequestRotations,
+    UpdateOncallScheduleRequestSubstitudes,
     UpdatePipelineRequestExecutePolicyRunOnce,
     UpdatePipelineRequestExecutePolicyScheduled,
     UpdatePipelineRequestExecutePolicy,

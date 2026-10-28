@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class IncidentForView(DaraModel):
     def __init__(
         self,
+        blocking_expire_timestamp: int = None,
         content: str = None,
         escalations: List[main_models.IncidentEscalationPolicyForView] = None,
         group_uuid: str = None,
@@ -28,11 +29,13 @@ class IncidentForView(DaraModel):
         state: str = None,
         subscription_name: str = None,
         subscription_uuid: str = None,
+        tags: Dict[str, str] = None,
         time: int = None,
         title: str = None,
         user_id: str = None,
         workspace: str = None,
     ):
+        self.blocking_expire_timestamp = blocking_expire_timestamp
         # The details of the incident.
         self.content = content
         # The list of escalation policies.
@@ -69,6 +72,7 @@ class IncidentForView(DaraModel):
         self.subscription_name = subscription_name
         # The UUID of the subscription policy.
         self.subscription_uuid = subscription_uuid
+        self.tags = tags
         # The timestamp when the incident was created.
         self.time = time
         # The title of the incident.
@@ -105,6 +109,9 @@ class IncidentForView(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.blocking_expire_timestamp is not None:
+            result['blockingExpireTimestamp'] = self.blocking_expire_timestamp
+
         if self.content is not None:
             result['content'] = self.content
 
@@ -167,6 +174,9 @@ class IncidentForView(DaraModel):
         if self.subscription_uuid is not None:
             result['subscriptionUuid'] = self.subscription_uuid
 
+        if self.tags is not None:
+            result['tags'] = self.tags
+
         if self.time is not None:
             result['time'] = self.time
 
@@ -183,6 +193,9 @@ class IncidentForView(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('blockingExpireTimestamp') is not None:
+            self.blocking_expire_timestamp = m.get('blockingExpireTimestamp')
+
         if m.get('content') is not None:
             self.content = m.get('content')
 
@@ -250,6 +263,9 @@ class IncidentForView(DaraModel):
 
         if m.get('subscriptionUuid') is not None:
             self.subscription_uuid = m.get('subscriptionUuid')
+
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
 
         if m.get('time') is not None:
             self.time = m.get('time')

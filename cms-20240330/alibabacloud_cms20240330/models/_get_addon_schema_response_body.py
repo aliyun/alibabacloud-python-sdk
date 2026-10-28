@@ -14,11 +14,11 @@ class GetAddonSchemaResponseBody(DaraModel):
         request_id: str = None,
         type: str = None,
     ):
-        # A list of data table fields.
+        # The list of data table fields.
         self.fields = fields
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The type of the schema.
+        # The schema type.
         self.type = type
 
     def validate(self):
@@ -77,29 +77,29 @@ class GetAddonSchemaResponseBodyFields(DaraModel):
         type: str = None,
         validation: main_models.GetAddonSchemaResponseBodyFieldsValidation = None,
     ):
-        # A list of display conditions.
+        # The list of display conditions.
         self.conditions = conditions
         # The default value.
         self.default_value = default_value
         # The description.
         self.description = description
-        # Specifies whether the field is hidden. Valid values: \\`true\\` (hidden) and \\`false\\` (displayed).
+        # Specifies whether the field is hidden. Valid values: true: Hidden. false: Displayed.
         self.disabled = disabled
-        # The type of the element.
+        # The element type.
         self.element = element
-        # The path of the field.
+        # The field path.
         self.field_path = field_path
         # The display name of the field.
         self.label = label
-        # The name of the field.
+        # The field name.
         self.name = name
-        # The placeholder text.
+        # The input prompt.
         self.placeholder = placeholder
-        # Other properties of the component.
+        # The other properties of the component.
         self.props = props
-        # The type of the field.
+        # The field type.
         self.type = type
-        # The validation rule for the field.
+        # The field validation rules.
         self.validation = validation
 
     def validate(self):
@@ -213,11 +213,11 @@ class GetAddonSchemaResponseBodyFieldsValidation(DaraModel):
         regular: str = None,
         required: bool = None,
     ):
-        # The maximum value. The value is inclusive.
+        # The maximum value of the score range (inclusive).
         self.max = max
-        # The maximum length that is supported by the text control.
+        # The maximum length supported by the text control.
         self.max_length = max_length
-        # The details.
+        # The detailed information.
         self.message = message
         # The minimum value.
         self.min = min
@@ -291,11 +291,11 @@ class GetAddonSchemaResponseBodyFieldsProps(DaraModel):
         related: List[str] = None,
         select_mode: str = None,
     ):
-        # The information about the data source.
+        # The data source information.
         self.data_source = data_source
-        # A collection of related data.
+        # The related data collection.
         self.related = related
-        # The mode.
+        # The selection mode.
         self.select_mode = select_mode
 
     def validate(self):
@@ -346,7 +346,7 @@ class GetAddonSchemaResponseBodyFieldsPropsDataSource(DaraModel):
     ):
         # The label.
         self.label = label
-        # The value of the label.
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -383,11 +383,11 @@ class GetAddonSchemaResponseBodyFieldsConditions(DaraModel):
         op: str = None,
         value: Any = None,
     ):
-        # The control mode of the field.
+        # The field control mode.
         self.action = action
-        # The name of the field.
+        # The field name.
         self.field = field
-        # The operator for the condition.
+        # The condition operator.
         self.op = op
         # The target value for the condition.
         self.value = value

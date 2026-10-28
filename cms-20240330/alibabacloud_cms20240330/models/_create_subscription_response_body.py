@@ -10,8 +10,9 @@ class CreateSubscriptionResponseBody(DaraModel):
         request_id: str = None,
         subscription_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The subscription ID.
         self.subscription_id = subscription_id
 
     def validate(self):

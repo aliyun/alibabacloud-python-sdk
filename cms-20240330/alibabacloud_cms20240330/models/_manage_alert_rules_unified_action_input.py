@@ -46,44 +46,47 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         self.annotations = annotations
         # The ARMS integration configuration.
         self.arms_integration_config = arms_integration_config
-        # The business source (optional). Examples: managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, sls. Provide as needed for CREATE/UPDATE/PATCH.
+        # The business source. Valid values include managed_service_for_prometheus, umodel, application_insights, cloud_monitoring, and sls. Pass this field as needed for CREATE, UPDATE, and PATCH actions.
         self.biz_source = biz_source
-        # The aggregated condition configuration.
+        # The condition aggregation configuration.
         self.condition_config = condition_config
         # The content template.
         self.content_template = content_template
-        # The aggregated data source configuration.
+        # The data source aggregation configuration.
         self.datasource_config = datasource_config
         # The display name.
         self.display_name = display_name
+        # The alert drill evaluation time in Unix milliseconds. This field is required by the backend when drillMode is ONE_SHOT. The time cannot be later than the current time or earlier than 90 days ago.
         self.drill_eval_time = drill_eval_time
+        # The alert drill mode. This field is required by the backend when the action is DRILL_ALERT. Valid values: ONE_SHOT specifies a single point in time to simulate a complete lifecycle consisting of three events: OCCURRED, PERSISTENT, and RECOVERED. TIME_TRAVEL specifies a time range to simulate the lifecycle in multiple rounds based on the rule scheduling interval.
         self.drill_mode = drill_mode
+        # The alert drill time range in Unix milliseconds. This field is required by the backend when drillMode is TIME_TRAVEL. The endTime must be later than the startTime and cannot be later than the current time. The lifecycle is simulated in multiple rounds based on the rule scheduling interval. The maximum number of rounds is 500. If the limit is exceeded, the backend returns a 400 error.
         self.drill_time_range = drill_time_range
         # Specifies whether the rule is enabled.
         self.enabled = enabled
         # The labels.
         self.labels = labels
-        # The aggregated notification configuration.
+        # The notification aggregation configuration.
         self.notify_config = notify_config
         # The observable resource configuration.
         self.observe_resource_config = observe_resource_config
-        # **[Deprecated]** The monitored object instance ID. Use observeResourceConfig.resources instead. Retained only for backward compatibility with legacy SDKs.
+        # **[Deprecated]** The ID of the monitored object instance. For new integrations, use observeResourceConfig.resources instead. This field is retained only for compatibility with legacy SDKs.
         self.observe_resource_instance_id = observe_resource_instance_id
-        # **[Deprecated]** The monitored object resource type. Use observeResourceConfig.entityType instead. Retained only for backward compatibility with legacy SDKs.
+        # **[Deprecated]** The resource type of the monitored object. For new integrations, use observeResourceConfig.entityType instead. This field is retained only for compatibility with legacy SDKs.
         self.observe_resource_type = observe_resource_type
-        # The aggregated query configuration.
+        # The query aggregation configuration.
         self.query_config = query_config
-        # The root cause analysis (RCA) configuration (optional). Provide as needed for CREATE/UPDATE/PATCH.
+        # The root cause analysis (RCA) configuration. Pass this field as needed for CREATE, UPDATE, and PATCH actions.
         self.rca_config = rca_config
-        # The region ID. Aligned with V1 AlertRule.regionId. If not provided, the gateway callerRegionId is used.
+        # The region ID. This aligns with V1 AlertRule.regionId. If not provided, the gateway callerRegionId is used.
         self.region_id = region_id
-        # The aggregated schedule configuration.
+        # The schedule aggregation configuration.
         self.schedule_config = schedule_config
-        # The UUID of the rule. Required for UPDATE/PATCH.
+        # The UUID of the rule. This field is required for UPDATE and PATCH actions.
         self.uuid = uuid
-        # The list of rule UUIDs to delete (BATCH_DELETE).
+        # The list of UUIDs for the rules to be deleted. This is used for the BATCH_DELETE action.
         self.uuid_list = uuid_list
-        # The workspace. Required for CREATE/UPDATE and other actions.
+        # The workspace ID. This field is required for CREATE, UPDATE, PATCH, DELETE, ENABLE, DISABLE, BATCH_DELETE, BATCH_ENABLE, and BATCH_DISABLE actions. It identifies the CloudMonitor workspace to which the rule belongs.
         self.workspace = workspace
 
     def validate(self):
@@ -285,7 +288,9 @@ class ManageAlertRulesUnifiedActionInputDrillTimeRange(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # The drill end time in Unix milliseconds. The end time must be later than the start time.
         self.end_time = end_time
+        # The drill start time in Unix milliseconds.
         self.start_time = start_time
 
     def validate(self):

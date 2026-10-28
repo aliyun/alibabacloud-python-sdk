@@ -20,26 +20,27 @@ class CreateAddonReleaseRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The name of the add-on component to be integrated for monitoring.
+        # The name of the add-on that requires monitoring integration.
         # 
         # This parameter is required.
         self.addon_name = addon_name
         # The language type of the component.
         self.aliyun_lang = aliyun_lang
+        # The catalog version of the add-on. Valid values: v1 and v2.
         self.api_version = api_version
         # Specifies whether to perform a dry run. Default value: false.
         self.dry_run = dry_run
         # The field rules.
         self.entity_rules = entity_rules
-        # The environment type. If the policy type is CS or ECS, the corresponding environment type is used. For other policy types, the value is uniformly set to Cloud.
+        # The environment type. If the policy type is CS or ECS, the corresponding environment type is used. For other policy types, the environment type is uniformly set to Cloud.
         self.env_type = env_type
-        # The parent add-on release ID.
+        # The ID of the parent add-on release.
         self.parent_addon_release_id = parent_addon_release_id
         # The name of the plug-in after integration. If you do not specify this parameter, a default rule name is generated.
         self.release_name = release_name
         # The input metadata.
         self.values = values
-        # The version of the add-on component to be integrated for monitoring.
+        # The version of the add-on that requires monitoring integration.
         # 
         # This parameter is required.
         self.version = version
