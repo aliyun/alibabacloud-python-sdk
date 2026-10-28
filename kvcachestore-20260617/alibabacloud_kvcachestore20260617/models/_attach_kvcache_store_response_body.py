@@ -15,7 +15,7 @@ class AttachKVCacheStoreResponseBody(DaraModel):
     ):
         # The list of mount results.
         self.attach_results = attach_results
-        # The request ID. A request ID is returned regardless of whether the operation is successful.
+        # The request ID. A request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
 
     def validate(self):
@@ -61,15 +61,15 @@ class AttachKVCacheStoreResponseBodyAttachResults(DaraModel):
         status: str = None,
         vsc_id: str = None,
     ):
-        # The error code returned when the operation fails. This value is null when the operation succeeds.
+        # The error code returned upon failure. This value is null upon success.
         self.error_code = error_code
-        # The error message returned when the operation fails. This value is null when the operation succeeds.
+        # The error message returned upon failure. This value is null upon success.
         self.error_message = error_message
         # KVCacheStore KvcsId
         self.kvcs_id = kvcs_id
         # The operation result. Valid values:
         # - ATTACHING: The request has been accepted and the asynchronous mount is in progress.
-        # - ATTACHED: The resource is already mounted (idempotent).
+        # - ATTACHED: Idempotent. The mount is already complete.
         # - Success: The synchronous verification passed and the asynchronous operation is complete.
         # - Failed: The operation failed.
         self.status = status

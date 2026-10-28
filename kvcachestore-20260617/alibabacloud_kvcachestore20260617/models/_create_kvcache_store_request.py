@@ -21,13 +21,13 @@ class CreateKVCacheStoreRequest(DaraModel):
         tag: List[main_models.CreateKVCacheStoreRequestTag] = None,
         zone_id: str = None,
     ):
-        # The storage capacity in GiB. The minimum capacity is 300 TiB (307200 GiB), and the capacity is scaled in increments of 300 TiB.
+        # The storage capacity in GiB. The minimum capacity is 300 TiB (307200 GiB), and the capacity is scaled out in increments of 300 TiB.
         # 
         # This parameter is required.
         self.capacity = capacity
-        # The client token used to ensure idempotence of the request. The token can be up to 64 characters in length. Use a UUID.
+        # The client token that is used to ensure the idempotency of the request. The token can be up to 64 characters in length. We recommend that you use a UUID.
         self.client_token = client_token
-        # The KVCacheStore description. The description must be 2 to 256 characters in length and cannot start with http:// or https://. Default value: empty.
+        # The KVCacheStore description. The description must be 2 to 256 characters in length and can contain English and Chinese characters. The description cannot start with http:// or https://. Default value: empty.
         self.description = description
         # The HPN cluster ID, which is used to create an affinity scheduling relationship between the KVCacheStore and the specified HPN cluster. After creation, the KVCacheStore may have affinity relationships with multiple HPN clusters based on network topology. You can call GetKVCacheStore to query the available HPN clusters.
         # 
@@ -43,7 +43,7 @@ class CreateKVCacheStoreRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The list of resource tag key-value pairs. A maximum of 20 tags are supported. This overrides the parent TagDTO type and uses the same Tag type as the Get/List response.
+        # The list of resource tag key-value pairs. A maximum of 20 tags are supported. This overrides the parent TagDTO type and uses the same Tag type as returned by Get/List operations.
         self.tag = tag
         # The zone ID. You can call DescribeZones to query the list of zones in the specified region.
         # 

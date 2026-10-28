@@ -29,6 +29,9 @@ from ._list_kvcache_store_attach_info_response import ListKVCacheStoreAttachInfo
 from ._list_kvcache_store_available_hpn_zones_request import ListKVCacheStoreAvailableHpnZonesRequest
 from ._list_kvcache_store_available_hpn_zones_response_body import ListKVCacheStoreAvailableHpnZonesResponseBody
 from ._list_kvcache_store_available_hpn_zones_response import ListKVCacheStoreAvailableHpnZonesResponse
+from ._list_kvcache_store_available_vscs_request import ListKVCacheStoreAvailableVscsRequest
+from ._list_kvcache_store_available_vscs_response_body import ListKVCacheStoreAvailableVscsResponseBody
+from ._list_kvcache_store_available_vscs_response import ListKVCacheStoreAvailableVscsResponse
 from ._list_kvcache_stores_request import ListKVCacheStoresRequest
 from ._list_kvcache_stores_response_body import ListKVCacheStoresResponseBody
 from ._list_kvcache_stores_response import ListKVCacheStoresResponse
@@ -48,6 +51,8 @@ from ._get_kvcache_store_response_body import GetKVCacheStoreResponseBodyKvCache
 from ._list_kvcache_store_attach_info_response_body import ListKVCacheStoreAttachInfoResponseBodyAttachInfos
 from ._list_kvcache_store_available_hpn_zones_response_body import ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZonesAvailableHpnZones
 from ._list_kvcache_store_available_hpn_zones_response_body import ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones
+from ._list_kvcache_store_available_vscs_request import ListKVCacheStoreAvailableVscsRequestArns
+from ._list_kvcache_store_available_vscs_response_body import ListKVCacheStoreAvailableVscsResponseBodyVscs
 from ._list_kvcache_stores_response_body import ListKVCacheStoresResponseBodyKVCacheStoresTags
 from ._list_kvcache_stores_response_body import ListKVCacheStoresResponseBodyKVCacheStores
 from ._update_kvcache_store_request import UpdateKVCacheStoreRequestTag
@@ -80,6 +85,9 @@ __all__ = [
     ListKVCacheStoreAvailableHpnZonesRequest,
     ListKVCacheStoreAvailableHpnZonesResponseBody,
     ListKVCacheStoreAvailableHpnZonesResponse,
+    ListKVCacheStoreAvailableVscsRequest,
+    ListKVCacheStoreAvailableVscsResponseBody,
+    ListKVCacheStoreAvailableVscsResponse,
     ListKVCacheStoresRequest,
     ListKVCacheStoresResponseBody,
     ListKVCacheStoresResponse,
@@ -99,6 +107,8 @@ __all__ = [
     ListKVCacheStoreAttachInfoResponseBodyAttachInfos,
     ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZonesAvailableHpnZones,
     ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones,
+    ListKVCacheStoreAvailableVscsRequestArns,
+    ListKVCacheStoreAvailableVscsResponseBodyVscs,
     ListKVCacheStoresResponseBodyKVCacheStoresTags,
     ListKVCacheStoresResponseBodyKVCacheStores,
     UpdateKVCacheStoreRequestTag

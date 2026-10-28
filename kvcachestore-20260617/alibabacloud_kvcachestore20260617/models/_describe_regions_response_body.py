@@ -15,7 +15,7 @@ class DescribeRegionsResponseBody(DaraModel):
     ):
         # The list of regions.
         self.regions = regions
-        # The request ID. A request ID is returned regardless of whether the API call is successful.
+        # The request ID. The request ID is returned regardless of whether the API call is successful.
         self.request_id = request_id
 
     def validate(self):

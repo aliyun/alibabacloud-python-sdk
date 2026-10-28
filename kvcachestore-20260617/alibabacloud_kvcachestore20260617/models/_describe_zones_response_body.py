@@ -13,9 +13,9 @@ class DescribeZonesResponseBody(DaraModel):
         request_id: str = None,
         zones: List[main_models.DescribeZonesResponseBodyZones] = None,
     ):
-        # The request ID. The request ID is returned regardless of whether the API call is successful.
+        # The request ID. This ID is returned regardless of whether the API call is successful.
         self.request_id = request_id
-        # The list of zones.
+        # The list of available zones.
         self.zones = zones
 
     def validate(self):

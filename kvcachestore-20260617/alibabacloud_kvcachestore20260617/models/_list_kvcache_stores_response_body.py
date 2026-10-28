@@ -19,9 +19,9 @@ class ListKVCacheStoresResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of KVCacheStore instances. Each element contains the following fields: KvcsId, Name, Status, ExtraStatus, RegionId, ZoneId, HpnZone, Type, Capacity, PaymentType, MountPointId, CreateTime, and Description.
+        # The list of KVCacheStore instances. Each element contains the following parameters: KvcsId, Name, Status, ExtraStatus, RegionId, ZoneId, HpnZone, Type, Capacity, PaymentType, MountPointId, CreateTime, and Description.
         self.kvcache_stores = kvcache_stores
-        # The maximum number of entries returned per pagination request.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
         # The pagination token for the next page. This value is empty when no more data is available. This parameter is valid only for cursor-based pagination.
         self.next_token = next_token
@@ -29,11 +29,11 @@ class ListKVCacheStoresResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page. This parameter is valid only for page number-based pagination.
         self.page_size = page_size
-        # The total number of pages. This value is returned only for page number-based pagination.
+        # The total number of pages. This parameter is returned only for page number-based pagination.
         self.page_total = page_total
-        # The request ID. A request ID is returned regardless of whether the API call succeeds.
+        # The request ID. A request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
-        # The total number of instances. This value is returned only for page number-based pagination. For cursor-based pagination, the value is -1.
+        # The total number of instances. This parameter is returned only for page number-based pagination. For cursor-based pagination, the value is -1.
         self.total_count = total_count
 
     def validate(self):
@@ -125,7 +125,7 @@ class ListKVCacheStoresResponseBodyKVCacheStores(DaraModel):
         type: str = None,
         zone_id: str = None,
     ):
-        # The storage capacity. Unit: GiB.
+        # The storage capacity, in GiB.
         self.capacity = capacity
         # The creation time in ISO 8601 format.
         self.create_time = create_time
@@ -137,7 +137,7 @@ class ListKVCacheStoresResponseBodyKVCacheStores(DaraModel):
         self.hpn_zone = hpn_zone
         # The instance ID.
         self.kvcs_id = kvcs_id
-        # The file system-level mount point ID. Instances under the same file system share this mount point. For more information, call ListKVCacheInstanceAttachInfo.
+        # The file system-level mount point ID. Instances under the same file system share this mount point. For more information, use the ListKVCacheInstanceAttachInfo operation.
         self.mount_point_id = mount_point_id
         # The instance name.
         self.name = name

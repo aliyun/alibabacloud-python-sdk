@@ -15,25 +15,28 @@ class ListKVCacheStoreAttachInfoRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        vsc_id: str = None,
     ):
-        # The list of KVCacheStore KvcsId values to query. A maximum of 100 values can be specified.
+        # The list of KvcsIds of the KVCacheStores to query. You can specify up to 100 KvcsIds.
         # 
         # This parameter is required.
         self.kvcs_ids = kvcs_ids
-        # The maximum number of entries to return in a single request. Valid values: 1 to 500.
+        # The maximum number of entries to return in a single call. Valid values: 1 to 500.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. If you set NextToken, the PageSize and PageNumber request parameters become ineffective, and the TotalCount value in the response is invalid.
+        # The query token. Set the value to the NextToken value returned from the last call to this operation. You do not need to specify this parameter for the first call. If NextToken is specified, the PageSize and PageNumber request parameters become invalid, and the TotalCount value in the response is invalid.
         self.next_token = next_token
-        # The page number for a paged query. Used together with PageSize. If the value exceeds the total number of pages, the last page of data is returned.
+        # The page number for a paging query. This parameter is used together with PageSize. If the specified page number exceeds the total number of pages, the last page is returned.
         self.page_number = page_number
-        # The number of entries per page for a paged query.
+        # The number of entries per page for a paging query.
         self.page_size = page_size
         # The region ID, such as cn-hangzhou.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the compute-side VSC. If you specify this parameter, the mount records are filtered by the specified VSC.
+        self.vsc_id = vsc_id
 
     def validate(self):
         pass
@@ -61,6 +64,9 @@ class ListKVCacheStoreAttachInfoRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -82,6 +88,9 @@ class ListKVCacheStoreAttachInfoRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
 
         return self
 

@@ -21,11 +21,6 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-beijing': 'kvcachestore.cn-beijing.aliyuncs.com',
-            'cn-shanghai': 'kvcachestore.cn-shanghai.aliyuncs.com',
-            'ap-southeast-1': 'kvcachestore.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('kvcachestore', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -56,6 +51,8 @@ class Client(OpenApiClient):
             query['Arns'] = request.arns
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_ids):
@@ -90,6 +87,8 @@ class Client(OpenApiClient):
             query['Arns'] = request.arns
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_ids):
@@ -618,6 +617,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.vsc_id):
+            query['VscId'] = request.vsc_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -656,6 +657,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.vsc_id):
+            query['VscId'] = request.vsc_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -762,6 +765,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListKVCacheStoreAvailableHpnZonesResponse:
         runtime = RuntimeOptions()
         return await self.list_kvcache_store_available_hpn_zones_with_options_async(request, runtime)
+
+    def list_kvcache_store_available_vscs_with_options(
+        self,
+        request: main_models.ListKVCacheStoreAvailableVscsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKVCacheStoreAvailableVscsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.arns):
+            query['Arns'] = request.arns
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.kvcs_id):
+            query['KvcsId'] = request.kvcs_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKVCacheStoreAvailableVscs',
+            version = '2026-06-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKVCacheStoreAvailableVscsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_kvcache_store_available_vscs_with_options_async(
+        self,
+        request: main_models.ListKVCacheStoreAvailableVscsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKVCacheStoreAvailableVscsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.arns):
+            query['Arns'] = request.arns
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.kvcs_id):
+            query['KvcsId'] = request.kvcs_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKVCacheStoreAvailableVscs',
+            version = '2026-06-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKVCacheStoreAvailableVscsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_kvcache_store_available_vscs(
+        self,
+        request: main_models.ListKVCacheStoreAvailableVscsRequest,
+    ) -> main_models.ListKVCacheStoreAvailableVscsResponse:
+        runtime = RuntimeOptions()
+        return self.list_kvcache_store_available_vscs_with_options(request, runtime)
+
+    async def list_kvcache_store_available_vscs_async(
+        self,
+        request: main_models.ListKVCacheStoreAvailableVscsRequest,
+    ) -> main_models.ListKVCacheStoreAvailableVscsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_kvcache_store_available_vscs_with_options_async(request, runtime)
 
     def list_kvcache_stores_with_options(
         self,
