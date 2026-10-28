@@ -18,7 +18,7 @@ class ListInstanceResourceSchemasResponseBody(DaraModel):
         self.request_id = request_id
         # The list of schemas.
         self.schemas = schemas
-        # The total count of schemas.
+        # The total number of schemas.
         self.total_count = total_count
 
     def validate(self):

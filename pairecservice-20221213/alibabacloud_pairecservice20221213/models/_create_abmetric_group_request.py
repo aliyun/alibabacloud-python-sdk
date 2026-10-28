@@ -14,7 +14,7 @@ class CreateABMetricGroupRequest(DaraModel):
         realtime: bool = None,
         scene_id: str = None,
     ):
-        # The A/B metric IDs. Separate multiple IDs with commas (,).
+        # The IDs of the AB test metrics, separated by commas.
         # 
         # This parameter is required.
         self.abmetric_ids = abmetric_ids
@@ -22,7 +22,7 @@ class CreateABMetricGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # The ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain this ID.
+        # Instance ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -30,11 +30,11 @@ class CreateABMetricGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether the metric group is a real-time metric group.
+        # Specifies whether the metric group is real-time.
         # 
         # This parameter is required.
         self.realtime = realtime
-        # The ID of the scene. You can call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain this ID.
+        # The ID of the scene. You can call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.scene_id = scene_id

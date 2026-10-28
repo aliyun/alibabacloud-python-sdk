@@ -10,9 +10,9 @@ class ListScenesRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
-        # The ID of the instance. You can obtain this ID by calling the `ListInstances` operation.
+        # The instance ID. You can call the ListInstances operation to obtain the instance ID.
         self.instance_id = instance_id
-        # The name of the scene to use as a filter.
+        # The scene name filter.
         self.name = name
 
     def validate(self):

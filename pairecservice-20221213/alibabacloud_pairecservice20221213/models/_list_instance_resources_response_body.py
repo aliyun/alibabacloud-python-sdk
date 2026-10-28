@@ -16,7 +16,7 @@ class ListInstanceResourcesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # A list of resource objects.
+        # The list of resource objects.
         self.resources = resources
         # The total number of resources.
         self.total_count = total_count
@@ -73,7 +73,7 @@ class ListInstanceResourcesResponseBodyResources(DaraModel):
         type: str = None,
         uri: str = None,
     ):
-        # The category of the resource. Valid values:
+        # The resource category. Valid values:
         # 
         # - DataManagement
         # 
@@ -81,15 +81,15 @@ class ListInstanceResourcesResponseBodyResources(DaraModel):
         # 
         # - Monitor
         self.category = category
-        # The configuration of the resource.
+        # The configuration information of the resource.
         self.config = config
         # The creation time.
         self.gmt_create_at = gmt_create_at
         # The update time.
         self.gmt_modified_at = gmt_modified_at
-        # The group of the resource.
+        # The resource group.
         # 
-        # If `Category` is `DataManagement`, valid values are:
+        # If the resource category is DataManagement, valid values are:
         # 
         # - storage
         # 
@@ -99,7 +99,7 @@ class ListInstanceResourcesResponseBodyResources(DaraModel):
         # 
         # - modeltrain
         # 
-        # If `Category` is `Engine`, valid values are:
+        # If the resource category is Engine, valid values are:
         # 
         # - feature
         # 
@@ -109,7 +109,7 @@ class ListInstanceResourcesResponseBodyResources(DaraModel):
         # 
         # - recengine
         # 
-        # If `Category` is `Monitor`, valid values are:
+        # If the resource category is Monitor, valid values are:
         # 
         # - logs
         # 
@@ -121,7 +121,7 @@ class ListInstanceResourcesResponseBodyResources(DaraModel):
         self.group = group
         # The resource ID.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type. Valid values:
         # 
         # - Hologres
         # 
@@ -137,9 +137,9 @@ class ListInstanceResourcesResponseBodyResources(DaraModel):
         # 
         # - DataHub
         # 
-        # - ApsaraMQ for Kafka
+        # - Kafka
         # 
-        # - Realtime Compute for Apache Flink
+        # - Flinkvvp
         # 
         # - ACR
         # 
@@ -151,11 +151,11 @@ class ListInstanceResourcesResponseBodyResources(DaraModel):
         # 
         # - MaxCompute
         # 
-        # - Graph Compute Service
+        # - GraphCompute
         # 
-        # - ApsaraDB for Redis
+        # - Redis
         self.type = type
-        # The resource URI.
+        # The URI of the resource.
         self.uri = uri
 
     def validate(self):

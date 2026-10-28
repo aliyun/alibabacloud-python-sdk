@@ -9,7 +9,7 @@ class ListInstanceResourceSchemasRequest(DaraModel):
         self,
         schema_name: str = None,
     ):
-        # Filters schemas by a name prefix.
+        # The prefix used to filter schema names.
         self.schema_name = schema_name
 
     def validate(self):

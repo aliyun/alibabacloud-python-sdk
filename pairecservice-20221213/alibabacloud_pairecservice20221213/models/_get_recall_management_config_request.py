@@ -9,7 +9,7 @@ class GetRecallManagementConfigRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The instance ID. You can call the ListInstances operation to obtain the instance ID.
+        # The ID of the instance. You can call the ListInstances operation to obtain the instance ID.
         self.instance_id = instance_id
 
     def validate(self):

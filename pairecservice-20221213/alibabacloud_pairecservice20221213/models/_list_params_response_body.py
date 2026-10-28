@@ -72,16 +72,16 @@ class ListParamsResponseBodyParams(DaraModel):
     ):
         # The environment to which the parameter belongs. Valid values:
         # - Daily: daily environment
-        # - Prepub: pre-release environment
+        # - Prepub: staging environment
         # - Product: production environment
         self.environment = environment
-        # The update time. The time is formatted in ISO 8601 and includes the time zone offset.
+        # The update time. The time follows the ISO 8601 standard and includes the time zone offset.
         self.gmt_modified_time = gmt_modified_time
-        # The parameter name.
+        # The name of the parameter.
         self.name = name
         # The parameter ID.
         self.param_id = param_id
-        # The parameter value.
+        # The value of the parameter.
         self.value = value
 
     def validate(self):

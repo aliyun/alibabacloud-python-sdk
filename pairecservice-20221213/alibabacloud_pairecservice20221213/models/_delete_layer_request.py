@@ -9,7 +9,7 @@ class DeleteLayerRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # Instance ID, which can be obtained by calling the ListInstances API.
+        # The instance ID. You can call the ListInstances operation to obtain the instance ID.
         self.instance_id = instance_id
 
     def validate(self):

@@ -16,21 +16,21 @@ class GetABMetricGroupResponseBody(DaraModel):
         request_id: str = None,
         scene_id: str = None,
     ):
-        # A comma-separated list of A/B testing metric IDs.
+        # The IDs of the ABTest metrics, separated by commas.
         self.abmetric_ids = abmetric_ids
-        # A comma-separated list of A/B testing metric names.
+        # The names of the ABTest metrics, separated by commas.
         self.abmetric_names = abmetric_names
-        # The metric group description.
+        # The description of the metric group.
         self.description = description
-        # The metric group name.
+        # The name of the metric group.
         self.name = name
         # The owner.
         self.owner = owner
-        # Whether the metric group is a real-time metric group.
+        # Indicates whether the metric group is real-time.
         self.realtime = realtime
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The scene ID. You can get this ID by calling the [ListScenes](https://icms.alibaba-inc.com/content/learn/pai?l=1\\&m=16768\\&n=4298955) operation.
+        # The ID of the scene. You can obtain the ID by calling the [ListScenes](https://icms.alibaba-inc.com/content/learn/pai?l=1&m=16768&n=4298955) operation.
         self.scene_id = scene_id
 
     def validate(self):

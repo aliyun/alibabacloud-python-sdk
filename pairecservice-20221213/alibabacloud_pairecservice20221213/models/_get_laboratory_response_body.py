@@ -25,30 +25,40 @@ class GetLaboratoryResponseBody(DaraModel):
         # The number of buckets.
         self.bucket_count = bucket_count
         # The bucketing method. Valid values:
+        # - Uid: UID bucketing (default).
+        # - UidHash: UID hashing.
+        # - Filter: Filter condition bucketing.
         self.bucket_type = bucket_type
-        # The assigned buckets.
+        # The assigned bucket numbers.
         self.buckets = buckets
-        # The crowd ID.
+        # The ID of the crowd.
         self.crowd_id = crowd_id
-        # The debug crowd ID.
+        # The ID of the debug crowd.
         self.debug_crowd_id = debug_crowd_id
         # The debug users.
         self.debug_users = debug_users
-        # The laboratory description.
+        # The description of the laboratory.
         self.description = description
-        # The environment. Valid values:
+        # The runtime environment. Valid values:
+        # - Daily: Daily environment.
+        # - Pre: Staging environment.
+        # - Prod: Production environment.
         self.environment = environment
-        # The filter.
+        # The filter condition.
         self.filter = filter
-        # The laboratory name.
+        # The name of the laboratory.
         self.name = name
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The scene ID.
         self.scene_id = scene_id
-        # The status of the laboratory. Valid values:
+        # The status. Valid values:
+        # - Offline: Not online.
+        # - Online: Online.
         self.status = status
-        # The laboratory type. Valid values:
+        # The type of the laboratory. Valid values:
+        # - Base
+        # - NonBase
         self.type = type
 
     def validate(self):

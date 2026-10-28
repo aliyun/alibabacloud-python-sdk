@@ -13,15 +13,13 @@ class GenerateAlgorithmCustomizationScriptRequest(DaraModel):
         instance_id: str = None,
         module_field_types: Dict[str, Any] = None,
     ):
-        # The deployment mode. Valid values:
-        # 
-        # - **EasyDeploy**: Performs a one-click deployment.
-        # 
-        # - **GenerateScript**: Generates a deployment script.
+        # Specifies whether to generate a deployment script or perform one-click deployment. Valid values:
+        # - EasyDeploy: one-click deployment
+        # - GenerateScript: script generation
         self.deploy_mode = deploy_mode
-        # The ID of the instance. To obtain this ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # The instance ID. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
-        # The data types of fields in the JSON configuration.
+        # The types of fields in the JSON configuration.
         self.module_field_types = module_field_types
 
     def validate(self):

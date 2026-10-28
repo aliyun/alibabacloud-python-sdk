@@ -12,7 +12,7 @@ class CloneLaboratoryResponseBody(DaraModel):
     ):
         # The ID of the cloned laboratory.
         self.laboratory_id = laboratory_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

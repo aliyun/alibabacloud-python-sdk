@@ -10,9 +10,9 @@ class CreateCrowdResponseBody(DaraModel):
         crowd_id: str = None,
         request_id: str = None,
     ):
-        # The crowd ID.
+        # The ID of the crowd.
         self.crowd_id = crowd_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

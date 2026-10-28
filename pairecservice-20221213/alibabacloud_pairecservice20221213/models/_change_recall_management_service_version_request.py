@@ -12,7 +12,7 @@ class ChangeRecallManagementServiceVersionRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The recall management service version ID.
+        # The version ID of the recall management service.
         self.recall_management_service_version_id = recall_management_service_version_id
 
     def validate(self):

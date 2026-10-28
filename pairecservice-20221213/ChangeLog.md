@@ -1,3 +1,7 @@
+2026-10-28 Version: 7.3.0
+- Support API CheckRecallManagementService.
+
+
 2026-10-26 Version: 7.2.5
 - Generated python 2022-12-13 for PaiRecService.
 

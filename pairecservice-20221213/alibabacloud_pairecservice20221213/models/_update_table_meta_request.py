@@ -18,9 +18,9 @@ class UpdateTableMetaRequest(DaraModel):
         resource_id: str = None,
         table_name: str = None,
     ):
-        # The description of the data table.
+        # The description of the table.
         self.description = description
-        # The fields of the data table.
+        # The list of table fields.
         # 
         # This parameter is required.
         self.fields = fields
@@ -28,13 +28,13 @@ class UpdateTableMetaRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The module to which the data table belongs.
+        # The module of the data table.
         # 
-        # - ABTest: a data table for A/B testing.
+        # - ABTest: experiment data table.
         # 
-        # - ExperimentTool: a data table for experiment tools.
+        # - ExperimentTool: experiment tool table.
         # 
-        # - DataDiagnosis: a data table for data diagnosis.
+        # - DataDiagnosis: data diagnosis.
         # 
         # This parameter is required.
         self.module = module
@@ -127,23 +127,23 @@ class UpdateTableMetaRequestFields(DaraModel):
     ):
         # The data type of the field.
         self.data_type = data_type
-        # Indicates whether the field is a dimension field.
+        # Specifies whether the field is a dimension field.
         # 
         # This parameter is required.
         self.is_dimension_field = is_dimension_field
-        # Indicates whether the field is a partition field.
+        # Specifies whether the field is a partition field.
         # 
         # This parameter is required.
         self.is_partition_field = is_partition_field
-        # The business meaning of the field.
+        # The meaning of the field.
         # 
         # This parameter is required.
         self.meaning = meaning
-        # The field name.
+        # The name of the field.
         # 
         # This parameter is required.
         self.name = name
-        # The data type of the field.
+        # The type of the field.
         # 
         # This parameter is required.
         self.type = type

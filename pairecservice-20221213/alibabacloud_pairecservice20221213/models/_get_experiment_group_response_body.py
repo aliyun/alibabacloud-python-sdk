@@ -32,31 +32,27 @@ class GetExperimentGroupResponseBody(DaraModel):
         self.config = config
         # The ID of the crowd.
         self.crowd_id = crowd_id
-        # The method for targeting traffic to the experiment group. Valid values:
-        # 
-        # - `All`: all traffic
-        # 
-        # - `Filter`: traffic that matches the filter
-        # 
-        # - `CrowdId`: traffic from the specified crowd
-        # 
-        # - `Random`: a random percentage of traffic
+        # The type of traffic targeting for the experiment group. Valid values:
+        # - All: All traffic.
+        # - Filter: Traffic that uses filter conditions.
+        # - CrowdId: Traffic targeted by a specified crowd ID.
+        # - Random: Random traffic based on a percentage.
         self.crowd_target_type = crowd_target_type
         # The ID of the debug crowd.
         self.debug_crowd_id = debug_crowd_id
-        # The user IDs for debugging, separated by commas.
+        # The debug users. Separate multiple users with commas.
         self.debug_users = debug_users
         # The description of the experiment group.
         self.description = description
-        # The distribution duration.
+        # The time period for traffic distribution.
         self.distribution_time_duration = distribution_time_duration
-        # The traffic distribution method.
-        # ● `UserId`: Distributes traffic by user ID.
-        # ● `TimeDuration`: Distributes traffic by time period.
+        # The traffic distribution method. Valid values:
+        # - UserId: User ID.
+        # - TimeDuration: Time period.
         self.distribution_type = distribution_type
-        # The filter.
+        # The filter conditions.
         self.filter = filter
-        # The bucket IDs that correspond to the `RandomFlow` percentage. This parameter is returned only when `CrowdTargetType` is set to `Random`.
+        # The specific bucket numbers returned based on the RandomFlow value when the traffic targeting type is Random.
         self.holding_buckets = holding_buckets
         # The ID of the laboratory.
         self.laboratory_id = laboratory_id
@@ -64,22 +60,22 @@ class GetExperimentGroupResponseBody(DaraModel):
         self.layer_id = layer_id
         # The name of the experiment group.
         self.name = name
-        # Indicates whether an A/B test is required.
+        # Indicates whether an AB experiment group is required.
         self.need_aa = need_aa
-        # The owner of the experiment group.
+        # The creator.
         self.owner = owner
-        # The percentage of traffic from 0 to 100 that is randomly allocated to this experiment group. This parameter is returned only when `CrowdTargetType` is set to `Random`.
+        # The percentage of random traffic used to match the experiment group when the traffic targeting type is Random. Valid values: 0 to 100.
         self.random_flow = random_flow
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The reserved bucket IDs.
+        # The reserved bucket numbers.
         self.reserved_buckets = reserved_buckets
         # The ID of the scene.
         self.scene_id = scene_id
         # The status of the experiment group. Valid values:
-        # ● `Offline`: The experiment group is not launched.
-        # ● `Online`: The experiment group is launched.
-        # ● `Pushed`: The experiment group is fully launched.
+        # - Offline: Not online.
+        # - Online: Online.
+        # - Pushed: Fully rolled out.
         self.status = status
 
     def validate(self):

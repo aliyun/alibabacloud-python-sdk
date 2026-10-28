@@ -15,13 +15,13 @@ class GetSceneResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
-        # The scene description.
+        # The description of the scenario.
         self.description = description
-        # A list of flows.
+        # The list of flows.
         self.flows = flows
-        # The scene name.
+        # The name of the scenario.
         self.name = name
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +76,9 @@ class GetSceneResponseBodyFlows(DaraModel):
         flow_code: str = None,
         flow_name: str = None,
     ):
-        # The flow code.
+        # The code of the flow.
         self.flow_code = flow_code
-        # The flow name.
+        # The name of the flow.
         self.flow_name = flow_name
 
     def validate(self):

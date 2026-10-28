@@ -19,9 +19,9 @@ class ListFeatureConsistencyCheckJobScoreReportsResponseBody(DaraModel):
         self.data_path = data_path
         # The OSS path.
         self.oss_path = oss_path
-        # A list of score difference reports.
+        # The score comparison report.
         self.reports_of_score_diff = reports_of_score_diff
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81,13 +81,13 @@ class ListFeatureConsistencyCheckJobScoreReportsResponseBodyReportsOfScoreDiff(D
     ):
         # The item ID.
         self.log_item_id = log_item_id
-        # The request ID recorded in the log.
+        # The request ID.
         self.log_request_id = log_request_id
         # The user ID.
         self.log_user_id = log_user_id
         # The score difference.
         self.score_diff = score_diff
-        # The score difference details.
+        # The score comparison details.
         self.score_diff_detail = score_diff_detail
 
     def validate(self):

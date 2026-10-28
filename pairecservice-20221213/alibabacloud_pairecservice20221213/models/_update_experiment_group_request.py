@@ -25,37 +25,35 @@ class UpdateExperimentGroupRequest(DaraModel):
     ):
         # The configuration of the experiment group.
         self.config = config
-        # The ID of the crowd for crowd targeting. You can obtain this ID by calling the ListCrowds API.
+        # The ID of the specified crowd for crowd targeting. You can call the ListCrowds operation to obtain the ID.
         self.crowd_id = crowd_id
-        # The type of crowd targeting for the experiment group. Valid values:
-        # 
-        # - All: all traffic
-        # 
-        # - Filter: traffic that matches the filter condition
-        # 
-        # - CrowdId: traffic from the specified crowd ID
-        # 
-        # - Random: a random percentage of traffic
+        # The type of traffic targeting for the experiment group. Valid values:
+        # * All: All traffic.
+        # * Filter: Traffic that uses filter conditions.
+        # * CrowdId: Traffic specified by a crowd ID.
+        # * Random: Random traffic based on a percentage.
         self.crowd_target_type = crowd_target_type
-        # The ID of the debug crowd. You can obtain this ID by calling the ListCrowds API.
+        # The ID of the debug crowd. You can call the ListCrowds operation to obtain the ID.
         self.debug_crowd_id = debug_crowd_id
-        # A comma-separated list of UIDs for debug users. The UIDs can belong to Alibaba Cloud main accounts or sub-accounts.
+        # The debug users. The value must be the UID of an Alibaba Cloud account or RAM user. Separate multiple UIDs with commas (,).
         self.debug_users = debug_users
         # The description of the experiment group.
         # 
         # This parameter is required.
         self.description = description
-        # The time duration for traffic distribution.
+        # The time period for traffic distribution.
         self.distribution_time_duration = distribution_time_duration
-        # The distribution type. ● UserId: Distributes traffic by user ID. ● TimeDuration: Distributes traffic by time duration.
+        # The traffic distribution method. Valid values:
+        # ● UserId: User ID.
+        # ● TimeDuration: Time period.
         self.distribution_type = distribution_type
-        # The filter condition for crowd targeting.
+        # The filter conditions specified for crowd targeting.
         self.filter = filter
-        # The ID of the instance. You can obtain this ID by calling the ListInstances API.
+        # Instance ID of the instance. You can call the ListInstances operation to obtain instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the layer. You can obtain this ID by calling the ListLayers API.
+        # The ID of the layer. You can call the ListLayers operation to obtain the ID.
         # 
         # This parameter is required.
         self.layer_id = layer_id
@@ -65,9 +63,9 @@ class UpdateExperimentGroupRequest(DaraModel):
         self.name = name
         # Specifies whether an AA experiment group is required.
         self.need_aa = need_aa
-        # If CrowdTargetType is set to Random, this parameter specifies the percentage of traffic (from 0 to 100) to route to the experiment group.
+        # The percentage of random traffic used to match the experiment group when the traffic targeting type is set to Random. Valid values: 0 to 100.
         self.random_flow = random_flow
-        # The reserved buckets.
+        # The reserved bucket numbers.
         self.reservced_buckets = reservced_buckets
 
     def validate(self):

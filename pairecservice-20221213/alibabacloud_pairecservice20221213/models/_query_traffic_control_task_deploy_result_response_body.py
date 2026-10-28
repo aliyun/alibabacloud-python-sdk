@@ -20,35 +20,35 @@ class QueryTrafficControlTaskDeployResultResponseBody(DaraModel):
         stop_status: str = None,
         traffic_control_task_id: str = None,
     ):
-        # The message returned for the Flink platform deployment operation.
+        # The message about the deployment operation on the Flink platform.
         self.deploy_message = deploy_message
         # The status of deploying the draft. Valid values:
-        # - Failed: failed.
-        # - Running: running.
-        # - Success: succeeded.
+        # - `Failed`: Failed.
+        # - `Running`: Running.
+        # - `Success`: Successful.
         self.deploy_status = deploy_status
-        # The message returned for pushing the draft to Flink.
+        # The message about pushing the draft to Flink.
         self.draft_message = draft_message
         # The status of pushing the draft to Flink. Valid values:
-        # - Failed: failed.
-        # - Running: running.
-        # - Success: succeeded.
+        # - `Failed`: Failed.
+        # - `Running`: Running.
+        # - `Success`: Successful.
         self.draft_status = draft_status
-        # The message returned for the preparation phase.
+        # The message about the preparation phase.
         self.prepare_message = prepare_message
         # The status of the preparation phase. Valid values:
-        # - Failed: failed.
-        # - Running: running.
-        # - Success: succeeded.
+        # - `Failed`: Failed.
+        # - `Running`: Running.
+        # - `Success`: Successful.
         self.prepare_status = prepare_status
         # The request ID.
         self.request_id = request_id
-        # The message returned for starting the Flink task.
+        # The message about starting the Flink task.
         self.start_message = start_message
         # The status of starting the Flink task. Valid values:
-        # - Failed: failed.
-        # - Running: running.
-        # - Success: succeeded.
+        # - `Failed`: Failed.
+        # - `Running`: Running.
+        # - `Success`: Successful.
         self.start_status = start_status
         # The stop details.
         self.stop_message = stop_message

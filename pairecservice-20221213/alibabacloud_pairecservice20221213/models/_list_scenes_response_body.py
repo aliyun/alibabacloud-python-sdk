@@ -14,11 +14,11 @@ class ListScenesResponseBody(DaraModel):
         scenes: List[main_models.ListScenesResponseBodyScenes] = None,
         total_count: int = None,
     ):
-        # The unique identifier for the request.
+        # Id of the request
         self.request_id = request_id
         # The list of scenes.
         self.scenes = scenes
-        # The total number of scenes.
+        # The total number of elements in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -69,13 +69,13 @@ class ListScenesResponseBodyScenes(DaraModel):
         name: str = None,
         scene_id: str = None,
     ):
-        # The description of the scene.
+        # The scene description.
         self.description = description
-        # The list of flows associated with the scene.
+        # The list of flows.
         self.flows = flows
-        # The name of the scene.
+        # The scene name.
         self.name = name
-        # The unique ID of the scene.
+        # The scene ID.
         self.scene_id = scene_id
 
     def validate(self):
@@ -130,9 +130,9 @@ class ListScenesResponseBodyScenesFlows(DaraModel):
         flow_code: str = None,
         flow_name: str = None,
     ):
-        # The code of the flow.
+        # The flow code.
         self.flow_code = flow_code
-        # The name of the flow.
+        # The flow name.
         self.flow_name = flow_name
 
     def validate(self):

@@ -18,19 +18,21 @@ class CreateCrowdRequest(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # The instance ID. To get this ID, call the ListInstances operation.
+        # The ID of the instance. You can call the ListInstances operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The crowd label.
+        # The label of the crowd.
         self.label = label
-        # The crowd name.
+        # The name of the crowd.
         # 
         # This parameter is required.
         self.name = name
-        # The source of the user data. Valid values: ● ManualInput: Users are provided in the Users parameter. ● UploadFile: Users are provided from an uploaded file.
+        # The source of the crowd. Valid values:
+        # - ManualInput: Manual input.
+        # - UploadFile: File upload.
         self.source = source
-        # The users to include in the crowd. Separate multiple users with commas (,).
+        # The users included in the crowd. Separate multiple users with commas.
         self.users = users
 
     def validate(self):

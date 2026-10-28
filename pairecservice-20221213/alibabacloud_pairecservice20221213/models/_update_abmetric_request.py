@@ -26,71 +26,63 @@ class UpdateABMetricRequest(DaraModel):
         table_meta_id: str = None,
         type: str = None,
     ):
-        # Specifies whether to aggregate by user dimension when calculating significance. Two aggregation methods are supported: by user and by sample.
+        # Specifies whether to aggregate data by user dimension when calculating significance. There are two logic types: by user and by sample.
         self.aggregation_by_user = aggregation_by_user
-        # The metric definition.
+        # The definition of the metric.
         # 
         # This parameter is required.
         self.definition = definition
-        # The denominator used in significance calculation.
+        # The denominator for significance calculation.
         self.denominator = denominator
-        # The metric description.
+        # The description of the metric.
         # 
         # This parameter is required.
         self.description = description
-        # The instance ID. You can obtain it by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+        # Instance ID of the instance. You can obtain instance ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether the current metric follows a binomial distribution when the metric type is a derived metric. If set to true, the mean and variance of the metric are calculated based on the binomial distribution.
+        # Specifies whether the current metric follows a binomial distribution when the metric type is a derived metric. If yes, the mean and variance of the metric are calculated based on the binomial distribution.
         self.is_binomial_distribution = is_binomial_distribution
-        # The left metric ID of the derived metric.
+        # The ID of the left metric for the derived metric.
         self.left_metric_id = left_metric_id
-        # The metric name.
+        # The name of the metric.
         # 
         # This parameter is required.
         self.name = name
         # Specifies whether to calculate significance.
         self.need_significance = need_significance
-        # The numerator used in significance calculation.
+        # The numerator for significance calculation.
         self.numerator = numerator
         # The operator for derived metric calculation. Valid values:
-        # 
         # - Plus: addition
-        # 
         # - Minus: subtraction
-        # 
         # - Multiplication: multiplication
-        # 
         # - Division: division
         self.operator = operator
         # Specifies whether the metric is a real-time metric. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # - true: yes
+        # - false: no
         # 
         # This parameter is required.
         self.realtime = realtime
-        # The ID of the data source for the write-back data table. You can obtain it by calling the ListInstanceResources operation.
+        # The ID of the data source for the data table write-back. You can obtain the ID by calling the ListInstanceResources operation.
         self.result_resource_id = result_resource_id
-        # The right metric ID of the derived metric.
+        # The ID of the right metric for the derived metric.
         self.right_metric_id = right_metric_id
-        # The scene ID. You can obtain it by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
+        # The ID of the scene. You can obtain the ID by calling the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation.
         # 
         # This parameter is required.
         self.scene_id = scene_id
         # The statistical period.
         self.statistics_cycle = statistics_cycle
-        # The data table ID. You can obtain it by calling the ListTableMetas operation.
+        # The ID of the data table. You can obtain the ID by calling the ListTableMetas operation.
         # 
         # This parameter is required.
         self.table_meta_id = table_meta_id
-        # The metric type. Valid values:
-        # 
-        # - Single: single metric.
-        # 
-        # - Derived: derived metric.
+        # The type of the metric. Valid values:
+        # - Single: single metric
+        # - Derived: derived metric
         # 
         # This parameter is required.
         self.type = type

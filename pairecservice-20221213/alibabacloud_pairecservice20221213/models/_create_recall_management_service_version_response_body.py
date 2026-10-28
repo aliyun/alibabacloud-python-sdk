@@ -12,7 +12,7 @@ class CreateRecallManagementServiceVersionResponseBody(DaraModel):
     ):
         # The ID of the recall management service version.
         self.recall_management_service_version_id = recall_management_service_version_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -20,6 +20,9 @@ from ._chat_conversation_response import ChatConversationResponse
 from ._check_instance_resources_request import CheckInstanceResourcesRequest
 from ._check_instance_resources_response_body import CheckInstanceResourcesResponseBody
 from ._check_instance_resources_response import CheckInstanceResourcesResponse
+from ._check_recall_management_service_request import CheckRecallManagementServiceRequest
+from ._check_recall_management_service_response_body import CheckRecallManagementServiceResponseBody
+from ._check_recall_management_service_response import CheckRecallManagementServiceResponse
 from ._check_traffic_control_task_expression_request import CheckTrafficControlTaskExpressionRequest
 from ._check_traffic_control_task_expression_response_body import CheckTrafficControlTaskExpressionResponseBody
 from ._check_traffic_control_task_expression_response import CheckTrafficControlTaskExpressionResponse
@@ -730,6 +733,9 @@ __all__ = [
     CheckInstanceResourcesRequest,
     CheckInstanceResourcesResponseBody,
     CheckInstanceResourcesResponse,
+    CheckRecallManagementServiceRequest,
+    CheckRecallManagementServiceResponseBody,
+    CheckRecallManagementServiceResponse,
     CheckTrafficControlTaskExpressionRequest,
     CheckTrafficControlTaskExpressionResponseBody,
     CheckTrafficControlTaskExpressionResponse,

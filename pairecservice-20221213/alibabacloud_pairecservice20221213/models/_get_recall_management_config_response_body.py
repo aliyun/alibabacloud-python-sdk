@@ -71,25 +71,25 @@ class GetRecallManagementConfigResponseBodyNetworkConfigs(DaraModel):
         vpc_id: str = None,
         vswitch_ids: Dict[str, str] = None,
     ):
-        # The private endpoint.
+        # The private network endpoint.
         self.private_link_address = private_link_address
-        # The public endpoint.
+        # The public network connection endpoint.
         self.public_endpoint = public_endpoint
         # The network connectivity status. Valid values:
         # 
-        # - Connecting: connecting.
+        # - Connecting: Connecting.
         # 
-        # - Connected: connected.
+        # - Connected: Connected.
         # 
-        # - ConnectionFailed: connection failed.
+        # - ConnectionFailed: Connection failed.
         # 
-        # - Updating: updating.
+        # - Updating: Updating.
         # 
-        # - UpdateFailed: update failed.
+        # - UpdateFailed: Update failed.
         self.status = status
         # The public network connection token.
         self.token = token
-        # The virtual private cloud (VPC) ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
         # The zones.
         self.vswitch_ids = vswitch_ids

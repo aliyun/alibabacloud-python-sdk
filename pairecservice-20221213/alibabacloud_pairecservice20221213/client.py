@@ -589,6 +589,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.check_instance_resources_with_options_async(instance_id, request, headers, runtime)
 
+    def check_recall_management_service_with_options(
+        self,
+        recall_management_service_id: str,
+        request: main_models.CheckRecallManagementServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckRecallManagementServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.context_params):
+            body['ContextParams'] = request.context_params
+        if not DaraCore.is_null(request.exposure_list):
+            body['ExposureList'] = request.exposure_list
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.recall_management_service_version_id):
+            body['RecallManagementServiceVersionId'] = request.recall_management_service_version_id
+        if not DaraCore.is_null(request.recalls):
+            body['Recalls'] = request.recalls
+        if not DaraCore.is_null(request.retain_fields):
+            body['RetainFields'] = request.retain_fields
+        if not DaraCore.is_null(request.uid):
+            body['Uid'] = request.uid
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckRecallManagementService',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/recallmanagementservices/{DaraURL.percent_encode(recall_management_service_id)}/action/check',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckRecallManagementServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_recall_management_service_with_options_async(
+        self,
+        recall_management_service_id: str,
+        request: main_models.CheckRecallManagementServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckRecallManagementServiceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.context_params):
+            body['ContextParams'] = request.context_params
+        if not DaraCore.is_null(request.exposure_list):
+            body['ExposureList'] = request.exposure_list
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.recall_management_service_version_id):
+            body['RecallManagementServiceVersionId'] = request.recall_management_service_version_id
+        if not DaraCore.is_null(request.recalls):
+            body['Recalls'] = request.recalls
+        if not DaraCore.is_null(request.retain_fields):
+            body['RetainFields'] = request.retain_fields
+        if not DaraCore.is_null(request.uid):
+            body['Uid'] = request.uid
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckRecallManagementService',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/recallmanagementservices/{DaraURL.percent_encode(recall_management_service_id)}/action/check',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckRecallManagementServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_recall_management_service(
+        self,
+        recall_management_service_id: str,
+        request: main_models.CheckRecallManagementServiceRequest,
+    ) -> main_models.CheckRecallManagementServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.check_recall_management_service_with_options(recall_management_service_id, request, headers, runtime)
+
+    async def check_recall_management_service_async(
+        self,
+        recall_management_service_id: str,
+        request: main_models.CheckRecallManagementServiceRequest,
+    ) -> main_models.CheckRecallManagementServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.check_recall_management_service_with_options_async(recall_management_service_id, request, headers, runtime)
+
     def check_traffic_control_task_expression_with_options(
         self,
         request: main_models.CheckTrafficControlTaskExpressionRequest,

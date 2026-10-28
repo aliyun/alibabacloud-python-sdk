@@ -10,7 +10,7 @@ class ReleaseTrafficControlTaskRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
-        # The execution environment for the traffic control task. Valid values: `Daily`, `Pre`, and `Prod`.
+        # The environment. Valid values: Daily (daily environment), Pre (staging environment), and Prod (production environment).
         self.environment = environment
         # The instance ID.
         self.instance_id = instance_id

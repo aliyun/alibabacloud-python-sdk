@@ -10,9 +10,9 @@ class CreateABMetricGroupResponseBody(DaraModel):
         abmetric_group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the A/B metric group.
+        # The ID of the metric group.
         self.abmetric_group_id = abmetric_group_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

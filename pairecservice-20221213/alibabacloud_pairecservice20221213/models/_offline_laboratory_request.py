@@ -9,7 +9,7 @@ class OfflineLaboratoryRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The instance ID. Call the `ListInstances` operation to obtain this ID.
+        # Instance ID of the instance. You can call the ListInstances operation to obtain instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

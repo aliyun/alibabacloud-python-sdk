@@ -31,34 +31,34 @@ class GetInstanceResponseBody(DaraModel):
         self.commodity_code = commodity_code
         # The configuration of the instance.
         self.config = config
-        # The time when the instance expires. The time is displayed in UTC and follows the ISO 8601 standard.
+        # The time when the instance expires. The time follows the ISO 8601 standard and is displayed in UTC.
         self.expired_time = expired_time
         # The Feature Store information.
         self.feature_store_info = feature_store_info
-        # The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard.
+        # The time when the instance was created. The time follows the ISO 8601 standard and is displayed in UTC.
         self.gmt_create_time = gmt_create_time
-        # The time when the instance was updated. The time is displayed in UTC and follows the ISO 8601 standard.
+        # The time when the instance was updated. The time follows the ISO 8601 standard and is displayed in UTC.
         self.gmt_modified_time = gmt_modified_time
         # The ID of the instance.
         self.instance_id = instance_id
-        # The configurations of the operations tool.
+        # The configurations related to the operations tool.
         self.operating_tool = operating_tool
         # The recommendation customization configurations.
         self.recommend_customization = recommend_customization
         # The region ID. Valid values:
-        # - cn-shenzhen: Shenzhen.
-        # - cn-hangzhou: Hangzhou.
-        # - cn-beijing: Beijing.
-        # - cn-shanghai: Shanghai.
+        # - cn-shenzhen: Shenzhen
+        # - cn-hangzhou: Hangzhou
+        # - cn-beijing: Beijing
+        # - cn-shanghai: Shanghai
         self.region_id = region_id
         # The ID of the request.
         self.request_id = request_id
         # The instance status. Valid values:
-        # - Initializing: Initializing.
-        # - Stopped: Stopped.
-        # - Running: Running.
+        # - Initializing: Initialization.
+        # - Stopped: The service is stopped.
+        # - Running: The instance is running.
         self.status = status
-        # The instance type. Valid values:
+        # The type of the instance. Valid values:
         # - basic: Basic Edition.
         # - highleve: Upgraded Edition.
         # - advance: Advanced Edition.

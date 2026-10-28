@@ -13,9 +13,9 @@ class QueryRecallManagementTableRecordsRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The primary keys of the records to retrieve.
+        # The primary keys for the query.
         self.primary_keys = primary_keys
-        # The recall management table version ID. If you omit this parameter, the API uses the currently published version.
+        # The version ID of the recall management table. Default value: the current published version.
         self.recall_management_table_version_id = recall_management_table_version_id
 
     def validate(self):

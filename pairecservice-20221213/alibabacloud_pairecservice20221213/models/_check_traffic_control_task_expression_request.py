@@ -11,15 +11,15 @@ class CheckTrafficControlTaskExpressionRequest(DaraModel):
         instance_id: str = None,
         table_meta_id: str = None,
     ):
-        # The expression to validate.
+        # The expression.
         # 
         # This parameter is required.
         self.expression = expression
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the table.
+        # The data table ID.
         # 
         # This parameter is required.
         self.table_meta_id = table_meta_id

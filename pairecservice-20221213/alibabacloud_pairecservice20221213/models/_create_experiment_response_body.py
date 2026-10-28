@@ -12,7 +12,7 @@ class CreateExperimentResponseBody(DaraModel):
     ):
         # The experiment ID.
         self.experiment_id = experiment_id
-        # The unique identifier for the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

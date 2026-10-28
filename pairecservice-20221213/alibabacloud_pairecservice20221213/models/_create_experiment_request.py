@@ -19,29 +19,31 @@ class CreateExperimentRequest(DaraModel):
     ):
         # The experiment configuration.
         self.config = config
-        # The ID of the debug crowd. Call the ListCrowds operation to obtain this ID.
+        # The debug crowd ID. You can call the ListCrowds operation to obtain the debug crowd ID.
         self.debug_crowd_id = debug_crowd_id
-        # The UIDs of Alibaba Cloud accounts or RAM users for debugging. Separate multiple UIDs with a comma.
+        # The debug users. The value must be the UID of an Alibaba Cloud account or RAM user. Separate multiple UIDs with commas.
         self.debug_users = debug_users
-        # The experiment description.
+        # The description of the experiment.
         # 
         # This parameter is required.
         self.description = description
-        # The ID of the experiment group. Call the ListExperimentGroups operation to obtain this ID.
+        # The experiment group ID. You can call the ListExperimentGroups operation to obtain the experiment group ID.
         # 
         # This parameter is required.
         self.experiment_group_id = experiment_group_id
-        # The traffic distribution percentage.
+        # The traffic allocation percentage.
         self.flow_percent = flow_percent
-        # The instance ID. Call the ListInstances operation to obtain this ID.
+        # The instance ID. You can call the ListInstances operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The experiment name.
+        # The name of the experiment.
         # 
         # This parameter is required.
         self.name = name
-        # The experiment type. Valid values:<br>● `Baseline`: Indicates a baseline experiment.<br>● `Normal`: Indicates a normal experiment.<br><br>
+        # The type of the experiment. Valid values:
+        # - Baseline: baseline experiment.
+        # - Normal: normal experiment.
         # 
         # This parameter is required.
         self.type = type

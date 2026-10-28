@@ -13,7 +13,7 @@ class CheckTrafficControlTaskExpressionResponseBody(DaraModel):
     ):
         # Indicates whether the expression is valid.
         self.is_valie = is_valie
-        # If `IsValid` is `false`, this field provides the reason for the failure.
+        # This field is meaningful only when `IsValid` is `false`.
         self.reason = reason
         # The request ID.
         self.request_id = request_id

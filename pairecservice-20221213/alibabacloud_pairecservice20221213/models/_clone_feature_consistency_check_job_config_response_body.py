@@ -10,7 +10,7 @@ class CloneFeatureConsistencyCheckJobConfigResponseBody(DaraModel):
         feature_consistency_check_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the new feature consistency check job configuration.
+        # The new feature consistency check configuration ID after cloning.
         self.feature_consistency_check_id = feature_consistency_check_id
         # The request ID.
         self.request_id = request_id

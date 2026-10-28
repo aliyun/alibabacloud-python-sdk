@@ -25,39 +25,43 @@ class GetExperimentResponseBody(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The alias of the experiment.
+        # The alias of the experiment ID.
         self.alias_experiment_id = alias_experiment_id
-        # A comma-separated list of bucket numbers.
+        # The allocated bucket numbers.
         self.buckets = buckets
-        # The experiment configuration, in JSON format.
+        # The configuration of the experiment.
         self.config = config
-        # The debug crowd ID.
+        # The ID of the debug crowd.
         self.debug_crowd_id = debug_crowd_id
-        # The UIDs of debug users, which can be the UIDs of an Alibaba Cloud main account or a RAM user. Separate multiple UIDs with a comma (,).
+        # The debug users. The value must be the UIDs of Alibaba Cloud accounts or RAM users. Separate multiple UIDs with commas.
         self.debug_users = debug_users
-        # The experiment description.
+        # The description of the experiment.
         self.description = description
-        # The experiment group ID.
+        # The ID of the experiment group.
         self.experiment_group_id = experiment_group_id
-        # The traffic percentage.
+        # The traffic allocation percentage.
         self.flow_percent = flow_percent
-        # The creation time, in ISO 8601 format.
+        # The creation time.
         self.gmt_create_time = gmt_create_time
-        # The modification time, in ISO 8601 format.
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
-        # The laboratory ID.
+        # The ID of the laboratory.
         self.laboratory_id = laboratory_id
-        # The layer ID.
+        # The ID of the layer.
         self.layer_id = layer_id
-        # The experiment name.
+        # The name of the experiment.
         self.name = name
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The scene ID.
+        # The ID of the scene.
         self.scene_id = scene_id
-        # The status of the experiment. Valid values:<br>● Offline<br>● Online<br><br>
+        # The status filter. Valid values:
+        # - Offline: offline
+        # - Online: online
         self.status = status
-        # The type of the experiment. Valid values:<br>● Baseline: a baseline experiment.<br>● Normal: a normal experiment.<br><br>
+        # The type of the experiment. Valid values:
+        # - Baseline: baseline experiment
+        # - Normal: normal experiment
         self.type = type
 
     def validate(self):

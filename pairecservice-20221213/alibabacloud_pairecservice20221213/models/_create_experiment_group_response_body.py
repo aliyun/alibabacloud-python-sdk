@@ -12,7 +12,7 @@ class CreateExperimentGroupResponseBody(DaraModel):
     ):
         # The ID of the experiment group.
         self.experiment_group_id = experiment_group_id
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

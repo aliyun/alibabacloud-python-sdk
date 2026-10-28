@@ -10,7 +10,7 @@ class GenerateTrafficControlTaskCodeRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
-        # The environment type. Valid values: `Daily` (daily environment), `Pre` (pre-release environment), and `Prod` (production environment).
+        # The environment to which the parameter belongs. Valid values: Daily (daily environment), Pre (pre-release environment), and Prod (production environment).
         self.environment = environment
         # The instance ID.
         # 

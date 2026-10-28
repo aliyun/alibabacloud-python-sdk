@@ -10,7 +10,10 @@ class StartTrafficControlTaskRequest(DaraModel):
         environment: str = None,
         instance_id: str = None,
     ):
-        # The target environment. Valid values:
+        # The environment. Valid values:
+        # - Daily: the daily environment.
+        # - Pre: the staging environment.
+        # - Prod: the production environment.
         self.environment = environment
         # The instance ID.
         self.instance_id = instance_id

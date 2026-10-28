@@ -26,66 +26,63 @@ class CreateABMetricRequest(DaraModel):
         table_meta_id: str = None,
         type: str = None,
     ):
+        # Specifies whether to aggregate by user dimension when calculating significance. Two aggregation methods are available: by user and by sample.
         self.aggregation_by_user = aggregation_by_user
-        # The metric definition.
+        # The definition of the metric.
         # 
         # This parameter is required.
         self.definition = definition
+        # The denominator used for significance calculation.
         self.denominator = denominator
-        # The metric description.
+        # The description of the metric.
         # 
         # This parameter is required.
         self.description = description
-        # The instance ID. Call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain this ID.
+        # Instance ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to obtain instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether the current metric follows a binomial distribution when the metric type is a derived metric. If yes, the mean and variance of the metric are calculated based on the binomial distribution.
         self.is_binomial_distribution = is_binomial_distribution
-        # The ID of the left metric used to calculate the derived metric.
+        # The ID of the left metric for a derived metric.
         self.left_metric_id = left_metric_id
-        # The metric name.
+        # The name of the metric.
         # 
         # This parameter is required.
         self.name = name
+        # Specifies whether to calculate significance.
         self.need_significance = need_significance
+        # The numerator used for significance calculation.
         self.numerator = numerator
-        # The operator used to calculate the derived metric. Valid values:
-        # 
-        # - `Plus`: Addition
-        # 
-        # - `Minus`: Subtraction
-        # 
-        # - `Multiplication`: Multiplication
-        # 
-        # - `Division`: Division
+        # The operator used to calculate a derived metric. Valid values:
+        # - Plus: addition.
+        # - Minus: subtraction.
+        # - Multiplication: multiplication.
+        # - Division: division.
         self.operator = operator
         # Specifies whether the metric is a real-time metric. Valid values:
-        # 
-        # - `true`: The metric is real-time.
-        # 
-        # - `false`: The metric is not real-time.
+        # - true: yes.
+        # - false: no.
         # 
         # This parameter is required.
         self.realtime = realtime
-        # The data source ID to which the results are written back. Call the ListInstanceResources operation to obtain this ID.
+        # The ID of the data source to which the data table is written back. You can call the ListInstanceResources operation to obtain the ID.
         self.result_resource_id = result_resource_id
-        # The ID of the right metric used to calculate the derived metric.
+        # The ID of the right metric for a derived metric.
         self.right_metric_id = right_metric_id
-        # The scene ID. Call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain this ID.
+        # The ID of the scene. You can call the [ListScenes](https://help.aliyun.com/document_detail/2402581.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.scene_id = scene_id
-        # The statistics cycle.
+        # The statistical period.
         self.statistics_cycle = statistics_cycle
-        # The data table ID. Call the ListTableMetas operation to obtain this ID.
+        # The ID of the data table. You can call the ListTableMetas operation to obtain the ID.
         # 
         # This parameter is required.
         self.table_meta_id = table_meta_id
-        # The metric type. Valid values:
-        # 
-        # - `Single`: A single metric.
-        # 
-        # - `Derived`: A derived metric.
+        # The type of the metric. Valid values:
+        # - Single: single metric.
+        # - Derived: derived metric.
         # 
         # This parameter is required.
         self.type = type

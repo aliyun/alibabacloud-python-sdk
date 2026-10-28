@@ -10,9 +10,9 @@ class ListFeatureConsistencyCheckJobScoreReportsShrinkRequest(DaraModel):
         exclude_request_ids_shrink: str = None,
         instance_id: str = None,
     ):
-        # A list of request IDs to exclude from the feature comparison.
+        # The list of request IDs to exclude during feature comparison.
         self.exclude_request_ids_shrink = exclude_request_ids_shrink
-        # The ID of the instance. To obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+        # The ID of the instance. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         self.instance_id = instance_id
 
     def validate(self):

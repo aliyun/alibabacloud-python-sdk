@@ -11,7 +11,7 @@ class GenerateAlgorithmCustomizationScriptResponseBody(DaraModel):
         oss_address: str = None,
         request_id: str = None,
     ):
-        # The log ID.
+        # The ID of the generated log.
         self.log_id = log_id
         # The OSS address of the generated package.
         self.oss_address = oss_address

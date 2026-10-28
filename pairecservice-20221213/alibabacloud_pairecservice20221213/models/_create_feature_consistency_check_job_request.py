@@ -12,25 +12,22 @@ class CreateFeatureConsistencyCheckJobRequest(DaraModel):
         instance_id: str = None,
         sampling_duration: int = None,
     ):
-        # The environment where the job runs. Valid values:
-        # 
-        # - Daily: the daily environment
-        # 
-        # - Pre: the pre-production environment
-        # 
-        # - Prod: the production environment
+        # The runtime environment. Valid values:
+        # - Daily: daily environment
+        # - Pre: staging environment
+        # - Prod: production environment
         # 
         # This parameter is required.
         self.environment = environment
-        # The feature consistency check job configuration ID. You can call the [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html) operation to obtain this ID.
+        # The feature consistency check job configuration ID. For information about how to obtain the configuration ID, see [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html).
         # 
         # This parameter is required.
         self.feature_consistency_check_job_config_id = feature_consistency_check_job_config_id
-        # The instance ID. You can obtain the instance ID on the [Instances](https://help.aliyun.com/document_detail/2411819.html) page.
+        # The instance ID. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The sampling duration, in minutes.
+        # The sampling duration in minutes.
         # 
         # This parameter is required.
         self.sampling_duration = sampling_duration
