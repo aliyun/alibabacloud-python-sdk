@@ -16,20 +16,18 @@ class DescribeSlowLogStatisticResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
         # AsyncResult<DBLogRecords<SlowLogStat>>
         self.data = data
-        # The message returned for the request.
-        # 
-        # > If the request is successful, **Successful** is returned. If the request fails, exception information (such as an error code) is returned.
+        # The returned message.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # - **true**: The request is successful.
-        # - **false**: The request fails.
+        # Indicates whether the request was successful. Valid values:
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -94,7 +92,7 @@ class DescribeSlowLogStatisticResponseBodyData(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # Indicates whether the task is finished.
+        # Indicates whether the task is completed.
         self.is_finish = is_finish
         # The error message.
         self.message = message
@@ -102,13 +100,12 @@ class DescribeSlowLogStatisticResponseBodyData(DaraModel):
         self.request_key = request_key
         # The result ID.
         self.result_id = result_id
-        # The current status. Valid values:
-        # 
-        # - **RUNNING**: running.
-        # - **SUCCESS**: succeeded.
-        # - **FAIL**: failed.
+        # The current state. Valid values:
+        # - **RUNNING**: Running.
+        # - **SUCCESS**: Successful.
+        # - **FAIL**: Failed.
         self.state = state
-        # The request time.
+        # The request time, in the format of a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -193,27 +190,24 @@ class DescribeSlowLogStatisticResponseBodyDataData(DaraModel):
         self.db_instance_id = db_instance_id
         # The instance ID.
         self.db_instance_name = db_instance_name
-        # The end time of the query task, in UNIX timestamp format. Unit: milliseconds.
+        # The end time of the query task. The time is in the UNIX timestamp format. Unit: milliseconds.
         # > The end time of the query task must be later than the start time.
         self.end_time = end_time
         # The number of items in the log list on the current page.
         self.items_numbers = items_numbers
         # The name of the operation object.
         self.logs = logs
-        # The maximum number of records per page for the paged query. Valid values: 5 to 100.
+        # The maximum number of records per page for paging. Valid values: 5 to 100.
         self.max_records_per_page = max_records_per_page
         # The node ID.
-        # 
-        # For MongoDB instances, specify a node for storage analysis by using this parameter. Call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/123802.html) operation to query the details of each node in a MongoDB instance.
-        # 
-        # - If you specify the **InsName** (node ID) of the target node, such as `d-bp1872fa24d5****`, this operation analyzes the corresponding Hidden node.
-        # - If you specify the `InsName#RoleId` of the target node, such as `d-bp1872fa24d5****#299****5`, this operation analyzes the specified node.
-        # 
-        # >Notice: For MongoDB replica set instances, if you do not specify this parameter, this operation analyzes the only Hidden node by default. For MongoDB sharded cluster instances, specify this parameter to designate the target node.</notice>
+        # For an ApsaraDB for MongoDB instance, you can specify a node for storage analysis by using this parameter. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/123802.html) operation to query the details of each node in the ApsaraDB for MongoDB instance.
+        # - If you specify the **InsName** (node ID) of the target node, such as `d-bp1872fa24d5****`, the operation analyzes the corresponding hidden node.
+        # - If you specify the `InsName#RoleId` of the target node, such as `d-bp1872fa24d5****#299****5`, the operation analyzes the specified node.
+        # >Notice: If you do not specify this parameter for an ApsaraDB for MongoDB replica set instance, the operation analyzes the only hidden node by default. For an ApsaraDB for MongoDB sharded cluster instance, we recommend that you specify this parameter to identify the target node.</notice>
         self.node_id = node_id
-        # The page number for the paged query. The value starts from 1. Default value: 1.
+        # The page number for paging. Pages start from 1. Default value: 1.
         self.page_numbers = page_numbers
-        # The start time, in UNIX timestamp format. Unit: milliseconds.
+        # The start time. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
         # The total number of records.
         self.total_records = total_records
@@ -407,226 +401,225 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(DaraModel):
     ):
         # The database account.
         self.account_name = account_name
-        # Deprecated.
+        # **[Deprecated]**
         self.avg_cputime = avg_cputime
-        # The average CPU query time. Unit: seconds.
+        # The average CPU query time, in seconds.
         self.avg_cputime_seconds = avg_cputime_seconds
         # The average number of documents scanned.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.avg_doc_examined = avg_doc_examined
-        # The average number of rows fetched.
+        # The average number of pulled rows.
         self.avg_frows = avg_frows
         # The average number of I/O writes.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.avg_iowrites = avg_iowrites
-        # The average number of rows scanned by the index.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # The average number of index entries scanned.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.avg_keys_examined = avg_keys_examined
         # The average number of rows affected by the last statement.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.avg_last_rows_count_affected = avg_last_rows_count_affected
-        # Deprecated.
+        # **[Deprecated]**
         self.avg_lock_time = avg_lock_time
         # The average lock wait time. Unit: seconds.
         self.avg_lock_time_seconds = avg_lock_time_seconds
         # The average number of logical reads.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.avg_logical_ioreads = avg_logical_ioreads
         # The average number of physical reads.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.avg_physical_ioreads = avg_physical_ioreads
-        # Deprecated.
+        # **[Deprecated]**
         self.avg_query_time = avg_query_time
-        # The average query execution duration. Unit: seconds.
+        # The average query duration, in seconds.
         self.avg_query_time_seconds = avg_query_time_seconds
-        # The average size of the request, in bytes. This parameter is valid only for Redis.
+        # The average size of the request, in bytes (valid only for Redis).
         self.avg_request_size = avg_request_size
-        # The average response size, in bytes. This parameter is valid only for Redis.
+        # The average response size, in bytes (valid only for Redis).
         self.avg_response_size = avg_response_size
-        # The average number of rows returned.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # The average number of returned rows.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.avg_return_num = avg_return_num
         # The average number of rows.
         self.avg_rows = avg_rows
-        # The average number of rows affected.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # The average number of affected rows.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.avg_rows_count_affected = avg_rows_count_affected
-        # The average number of rows examined.
+        # The average number of scanned rows.
         self.avg_rows_examined = avg_rows_examined
-        # The average number of rows returned.
+        # The average number of returned rows.
         self.avg_rows_sent = avg_rows_sent
         # The average execution duration.
         self.avg_rt = avg_rt
         # The average number of requests.
         self.avg_scnt = avg_scnt
-        # Deprecated.
+        # **[Deprecated]**
         self.cputime = cputime
-        # The CPU query time. Unit: seconds.
-        # 
-        # > This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # The CPU query time, in seconds.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.cputime_seconds = cputime_seconds
         # The client IP address in the query.
         self.client_ip = client_ip
-        # The command that was executed. This parameter is valid only for Redis.
+        # The executed command (valid only for Redis).
         self.cmd = cmd
         # The slow query statement.
-        # >This field is supported only for ApsaraDB for Tair (Redis® OSS-Compatible) database instances.
+        # > This parameter is supported only by ApsaraDB for Tair (Redis OSS-Compatible) database instances.
         self.command = command
         # The number of elements in the key.
         self.count = count
         # The proportion of executions.
         self.count_rate = count_rate
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
         # The database name.
         self.database = database
-        # The database ID. This parameter is valid only for Redis.
+        # The database ID (valid only for Redis).
         self.db_id = db_id
         # The instance ID.
         self.db_instance_name = db_instance_name
         # The number of documents scanned.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.doc_examined = doc_examined
-        # The number of documents scanned during the MongoDB operation.
+        # The number of documents scanned when the MongoDB operation is executed.
         self.docs_examined = docs_examined
-        # The number of rows fetched by the compute node (CN) of the ApsaraDB for PolarDB-X 2.0 database instance.
+        # The number of rows pulled by the compute node (CN) of the PolarDB-X 2.0 instance.
         # 
-        # > This field is supported only for ApsaraDB for PolarDB-X 2.0 instances.
+        # > This parameter is supported only by ApsaraDB for PolarDB-X 2.0 database instances.
         self.frows = frows
         # The trend chart data.
         self.histogram = histogram
         # The IP address of the client.
         self.host_address = host_address
-        # The host instance ID.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # The ID of the host instance.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.host_ins_id = host_ins_id
         # The number of I/O writes.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.iowrites = iowrites
-        # The shard name.
+        # The name of the shard.
         self.ins_name = ins_name
-        # The instance role.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # The role of the instance.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.ins_role = ins_role
-        # The number of rows scanned by the MongoDB index.
+        # The number of index entries scanned in MongoDB.
         self.keys_examined = keys_examined
         # The number of rows affected by the last statement.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.last_rows_count_affected = last_rows_count_affected
-        # Deprecated.
+        # **[Deprecated]**
         self.lock_time = lock_time
-        # The lock wait time. Unit: seconds.
+        # The lock wait time, in seconds.
         self.lock_time_seconds = lock_time_seconds
         # The number of logical reads.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.logical_ioreads = logical_ioreads
-        # Deprecated.
+        # **[Deprecated]**
         self.max_cputime = max_cputime
-        # The maximum CPU query time. Unit: seconds.
+        # The maximum CPU query time, in seconds.
         self.max_cputime_seconds = max_cputime_seconds
         # The maximum number of documents scanned.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.max_doc_examined = max_doc_examined
-        # The maximum number of rows fetched.
+        # The maximum number of pulled rows.
         self.max_frows = max_frows
         # The maximum number of I/O writes.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.max_iowrites = max_iowrites
-        # The maximum number of rows scanned by the index.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # The maximum number of index entries scanned.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.max_keys_examined = max_keys_examined
         # The maximum number of rows affected by the last statement.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.max_last_rows_count_affected = max_last_rows_count_affected
-        # Deprecated.
+        # **[Deprecated]**
         self.max_lock_time = max_lock_time
         # The maximum lock wait time. Unit: seconds.
         self.max_lock_time_seconds = max_lock_time_seconds
         # The maximum number of logical reads.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.max_logical_ioreads = max_logical_ioreads
         # The maximum number of physical reads.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.max_physical_ioreads = max_physical_ioreads
-        # Deprecated.
+        # **[Deprecated]**
         self.max_query_time = max_query_time
-        # The maximum query execution duration. Unit: seconds.
+        # The maximum query duration, in seconds.
         self.max_query_time_seconds = max_query_time_seconds
-        # The maximum size of the request, in bytes. This parameter is valid only for Redis.
+        # The maximum size of the request, in bytes (valid only for Redis).
         self.max_request_size = max_request_size
-        # The maximum response size, in bytes. This parameter is valid only for Redis.
+        # The maximum response size, in bytes (valid only for Redis).
         self.max_response_size = max_response_size
-        # The maximum number of rows returned.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # The maximum number of returned rows.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.max_return_num = max_return_num
         # The maximum number of rows.
         self.max_rows = max_rows
-        # The maximum number of rows affected.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # The maximum number of affected rows.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.max_rows_count_affected = max_rows_count_affected
-        # The maximum number of rows examined.
+        # The maximum number of scanned rows.
         self.max_rows_examined = max_rows_examined
-        # The maximum number of rows returned.
+        # The maximum number of returned rows.
         self.max_rows_sent = max_rows_sent
         # The maximum execution duration, in seconds.
         self.max_rt = max_rt
         # The maximum number of requests.
         self.max_scnt = max_scnt
         # The namespace.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.namespace = namespace
         # The node type.
-        # > Databases that support this field: ApsaraDB for MongoDB and Tair (Redis® OSS-Compatible).
+        # > This field is currently supported by ApsaraDB for MongoDB and Tair (Redis OSS-Compatible).
         self.node_type = node_type
         # The operation type.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.op_type = op_type
         # The source alias.
         self.origin_alias = origin_alias
         # The number of physical reads.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.physical_ioreads = physical_ioreads
         # The SQL template.
         self.psql = psql
         # The query ID.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.query_id = query_id
-        # The time when the query started. Format: yyyy-MM-dd hh:mm:ss (UTC).
+        # The start time of the query. Format: yyyy-MM-dd hh:mm:ss (UTC).
         self.query_start_time = query_start_time
-        # The query execution time threshold. Unit: milliseconds (ms).
+        # The execution time threshold of the query, in milliseconds.
         self.query_time = query_time
         # The proportion of query duration.
         self.query_time_rate = query_time_rate
-        # The query execution duration. Unit: seconds.
+        # The query duration, in seconds.
         self.query_time_seconds = query_time_seconds
-        # The return item numbers.
+        # The number of returned items.
         self.return_item_numbers = return_item_numbers
-        # The number of rows returned.
-        # >This field is supported only for ApsaraDB for MongoDB instances.
+        # The number of returned rows.
+        # > This parameter is supported only by ApsaraDB for MongoDB instances.
         self.return_num = return_num
-        # The total number of rows updated or returned by the compute nodes of the ApsaraDB for PolarDB-X 2.0 database instance.
+        # The total number of rows updated or returned by the compute node of the PolarDB-X 2.0 database instance.
         # 
-        # > This field is supported only for ApsaraDB for PolarDB-X 2.0 instances.
+        # > This parameter is supported only by ApsaraDB for PolarDB-X 2.0 database instances.
         self.rows = rows
-        # The number of rows affected.
-        # >This field is supported only for ApsaraDB RDS for SQL Server instances.
+        # The number of affected rows.
+        # > This parameter is supported only by ApsaraDB RDS for SQL Server instances.
         self.rows_count_affected = rows_count_affected
-        # The total number of rows examined.
-        # > Databases that currently support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
+        # The total number of scanned rows.
+        # > Databases that support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
         self.rows_examined = rows_examined
-        # The number of rows returned.
+        # The number of returned rows.
         self.rows_sent = rows_sent
         # The rule ID. For more information, see [Query Governance](https://help.aliyun.com/document_detail/290038.html).
         self.rule_id = rule_id
         # The details of the SQL statement.
         self.sqltext = sqltext
-        # HTTP or HTTPS.
+        # The scheme, such as HTTP or HTTPS.
         self.scheme = scheme
-        # The number of DN requests from the compute node (CN) of the ApsaraDB for PolarDB-X 2.0 database instance.
+        # The number of data node (DN) requests made by the compute node (CN) of the PolarDB-X 2.0 instance.
         # 
-        # > This field is supported only for ApsaraDB for PolarDB-X 2.0 instances.
+        # > This parameter is supported only by ApsaraDB for PolarDB-X 2.0 database instances.
         self.scnt = scnt
-        # SQL ID。
+        # The SQL ID.
         self.sql_id = sql_id
         # The tag.
         self.sql_tag = sql_tag
@@ -634,13 +627,13 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogs(DaraModel):
         self.sql_type = sql_type
         # The child instance ID.
         self.sub_instance_id = sub_instance_id
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
-        # The thread_id. This field is available only for PolarDB for MySQL.
+        # The thread ID. This parameter is available only for PolarDB for MySQL.
         self.thread_id = thread_id
-        # The execution time, in UNIX timestamp format. Unit: milliseconds (ms).
+        # The execution time. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.timestamp = timestamp
-        # The total number of records. This parameter is valid only for the Redis engine.
+        # The total number of records (valid only for the Redis engine).
         self.total_count = total_count
         # The slow log trends.
         self.trend = trend
@@ -1287,9 +1280,9 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogsTrend(DaraModel):
         timestamp: int = None,
         value: Any = None,
     ):
-        # The execution time, in UNIX timestamp format. Unit: milliseconds (ms).
+        # The execution time. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.timestamp = timestamp
-        # The value of the filter parameter.
+        # The value of the filter key.
         self.value = value
 
     def validate(self):
@@ -1326,12 +1319,11 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogsSqlTag(DaraModel):
         tags: str = None,
     ):
         # The remarks.
-        # 
-        # The value must be 1 to 300 characters in length.
+        # The remarks must be 1 to 300 characters in length.
         self.comments = comments
-        # SQL ID。
+        # The SQL ID.
         self.sql_id = sql_id
-        # Multiple tags separated by commas.
+        # The comma-separated tags.
         self.tags = tags
 
     def validate(self):
@@ -1389,30 +1381,30 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogsHistogram(DaraModel):
     ):
         # The average lock wait time. Unit: seconds.
         self.avg_lock_time = avg_lock_time
-        # The average number of rows examined.
+        # The average number of scanned rows.
         self.avg_rows_examined = avg_rows_examined
-        # The average number of rows returned.
+        # The average number of returned rows.
         self.avg_rows_sent = avg_rows_sent
         # The average execution duration.
         self.avg_rt = avg_rt
-        # The number of slow logs.
+        # The number of slow query logs.
         self.count = count
-        # The task status.
+        # The task state.
         self.item = item
         # The lock wait time. Unit: milliseconds.
         self.lock_time = lock_time
         # The maximum lock wait time. Unit: seconds.
         self.max_lock_time = max_lock_time
-        # The maximum number of rows examined.
+        # The maximum number of scanned rows.
         self.max_rows_examined = max_rows_examined
-        # The maximum number of rows returned.
+        # The maximum number of returned rows.
         self.max_rows_sent = max_rows_sent
-        # The maximum response time. Unit: ms.
+        # The maximum RT. Unit: milliseconds.
         self.max_rt = max_rt
-        # The total number of rows examined.
-        # > Databases that currently support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
+        # The total number of scanned rows.
+        # > Databases that support this field: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
         self.rows_examined = rows_examined
-        # The number of rows returned.
+        # The number of returned rows.
         self.rows_sent = rows_sent
         # The execution duration. Unit: seconds.
         self.rt = rt
@@ -1420,7 +1412,7 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogsHistogram(DaraModel):
         self.total = total
         # The execution timestamp.
         self.ts = ts
-        # Deprecated.
+        # **[Deprecated]**
         self.ts_end = ts_end
 
     def validate(self):
@@ -1553,7 +1545,7 @@ class DescribeSlowLogStatisticResponseBodyDataDataLogsHistogramItem(DaraModel):
         count: List[int] = None,
         node_id: str = None,
     ):
-        # The number of slow logs.
+        # The number of slow query logs.
         self.count = count
         # The node ID.
         self.node_id = node_id

@@ -14,20 +14,18 @@ class ModifySqlLogConfigResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The status code returned.
+        # The returned status code.
         self.code = code
         # The returned data.
         self.data = data
-        # The response message.
-        # 
-        # > If the request is successful, **Successful** is returned. Otherwise, an error message is returned.
+        # The returned message.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
         # - **true**: The request was successful.
-        # 
         # - **false**: The request failed.
         self.success = success
 
@@ -99,100 +97,73 @@ class ModifySqlLogConfigResponseBodyData(DaraModel):
         support_version: str = None,
         version: str = None,
     ):
-        # Indicates whether the cold data storage is enabled.
-        # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # Indicates whether cold data storage is enabled. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.cold_enable = cold_enable
-        # The retention period of the cold data. Unit: day. This value is calculated by using the following formula: `Retention - HotRetention`.
+        # The cold data storage duration. Unit: days. The value is calculated by using the formula: `Retention - HotRetention`.
         self.cold_retention = cold_retention
-        # The time when the cold data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of cold data storage. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.cold_start_time = cold_start_time
-        # The version of the database collector. Valid values:
-        # 
-        # - **MYSQL_V0**: MySQL V0
-        # 
-        # - **MYSQL_V1**: MySQL V1
-        # 
-        # - **MYSQL_V2**: MySQL V2
-        # 
-        # - **MYSQL_V3**: MySQL V3
-        # 
-        # - **PG_V1**: PostgreSQL V1
-        # 
-        # - **rdspg_v1**: ApsaraDB RDS for PostgreSQL V1
-        # 
-        # - **polarpg_v1**: PolarDB for PostgreSQL V1
+        # The collector version. Valid values:
+        # - **MYSQL_V0**: MySQL V0.
+        # - **MYSQL_V1**: MySQL V1.
+        # - **MYSQL_V2**: MySQL V2.
+        # - **MYSQL_V3**: MySQL V3.
+        # - **PG_V1**: PostgreSQL V1.
+        # - **rdspg_v1**: ApsaraDB RDS for PostgreSQL V1.
+        # - **polarpg_v1**: PolarDB for PostgreSQL V1.
         self.collector_version = collector_version
-        # Indicates whether the hot data storage is enabled.
-        # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # Indicates whether hot data storage is enabled. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.hot_enable = hot_enable
-        # The retention period of the hot data. Unit: day.
+        # The hot data storage duration. Unit: days.
         self.hot_retention = hot_retention
-        # The time when the hot data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of hot data storage. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.hot_start_time = hot_start_time
         # A reserved parameter.
         self.log_filter = log_filter
-        # Indicates whether SQL Explorer is enabled.
-        # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # Indicates whether SQL Explorer is enabled. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.request_enable = request_enable
-        # The time when SQL Explorer was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when SQL Explorer was enabled. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.request_start_time = request_start_time
-        # The expiration time of DAS Enterprise Edition. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The expiration time of DAS Enterprise Edition V1. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.request_stop_time = request_stop_time
-        # The total retention period of data. Unit: day.
+        # The total data storage duration. Unit: days.
         self.retention = retention
-        # Indicates whether DAS Enterprise Edition is enabled.
-        # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # Indicates whether DAS Enterprise Edition is enabled. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.sql_log_enable = sql_log_enable
-        # The source of the audit log.
+        # The source of the enabled audit logs.
         self.sql_log_source = sql_log_source
-        # The data migration state. Valid values:
+        # The data migration status. Valid values:
         # 
-        # - **FINISH**: The historical data is migrated.
-        # 
-        # - **RUNNING**: The historical data is being migrated.
-        # 
-        # - **FAILURE**: The historical data fails to be migrated.
+        # - **FINISH**: Historical data migration is completed.
+        # - **RUNNING**: Historical data migration is in progress.
+        # - **FAILURE**: Historical data migration failed.
         self.sql_log_state = sql_log_state
-        # The time when DAS Enterprise Edition was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when DAS Enterprise Edition was enabled. The time is in the UNIX timestamp format. Unit: milliseconds.
         self.sql_log_visible_time = sql_log_visible_time
-        # The latest supported version of DAS Enterprise Edition. Valid values:
+        # The latest supported DAS Enterprise Edition version. Valid values:
         # 
-        # - **SQL_LOG_V0**: DAS Enterprise Edition V0
-        # 
-        # - **SQL_LOG_V1**: DAS Enterprise Edition V1
-        # 
-        # - **SQL_LOG_V2**: DAS Enterprise Edition V2
-        # 
-        # - **SQL_LOG_V3**: DAS Enterprise Edition V3
-        # 
+        # - **SQL_LOG_V0**: DAS Enterprise Edition V0.
+        # - **SQL_LOG_V1**: DAS Enterprise Edition V1.
+        # - **SQL_LOG_V2**: DAS Enterprise Edition V2.
+        # - **SQL_LOG_V3**: DAS Enterprise Edition V3.
         # - **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
-        # 
         # - **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
         self.support_version = support_version
-        # The current version of DAS Enterprise Edition. Valid values:
+        # The enabled DAS Enterprise Edition version. Valid values:
         # 
-        # - **SQL_LOG_V0**: DAS Enterprise Edition V0
-        # 
-        # - **SQL_LOG_V1**: DAS Enterprise Edition V1
-        # 
-        # - **SQL_LOG_V2**: DAS Enterprise Edition V2
-        # 
-        # - **SQL_LOG_V3**: DAS Enterprise Edition V3
-        # 
+        # - **SQL_LOG_V0**: DAS Enterprise Edition V0.
+        # - **SQL_LOG_V1**: DAS Enterprise Edition V1.
+        # - **SQL_LOG_V2**: DAS Enterprise Edition V2.
+        # - **SQL_LOG_V3**: DAS Enterprise Edition V3.
         # - **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
-        # 
         # - **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
         self.version = version
 

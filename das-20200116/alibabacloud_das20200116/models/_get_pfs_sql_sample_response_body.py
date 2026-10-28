@@ -16,20 +16,19 @@ class GetPfsSqlSampleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
-        # The SQL sample data.
+        # The returned SQL sample data.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         # 
-        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
         # - **true**: The request was successful.
-        # 
         # - **false**: The request failed.
         self.success = success
 
@@ -121,83 +120,79 @@ class GetPfsSqlSampleResponseBodyData(DaraModel):
         user_id: str = None,
         warnings: int = None,
     ):
-        # The number of internal on-disk temporary tables that were created when the SQL statement was executed.
+        # The number of on-disk internal temporary tables created during statement execution.
         self.create_tmp_disk_tables = create_tmp_disk_tables
-        # The number of internal temporary tables that were created when the SQL statement was executed.
+        # The number of internal temporary tables created during statement execution.
         self.create_tmp_tables = create_tmp_tables
-        # The name of the database.
+        # The database name.
         self.db = db
-        # The end ID of the event. By default, the value of this parameter is NULL when the event starts and is changed to the event ID when the event ends.
+        # The end event ID. This parameter is NULL by default when the event starts and is updated to the current event ID of the thread when the event ends.
         self.end_event_id = end_event_id
-        # The number of errors returned for the SQL statement.
+        # The number of errors in the SQL statement.
         self.errors = errors
         # The event ID.
         self.event_id = event_id
-        # The name of the event.
+        # The event name.
         self.event_name = event_name
         # The instance ID.
         self.instance_id = instance_id
-        # The execution duration. Unit: millisecond.
+        # The execution duration, in milliseconds.
         self.latency = latency
-        # The lock wait duration. Unit: millisecond.
+        # The lock wait time, in milliseconds.
         self.lock_latency = lock_latency
-        # The ID of the logical database.
+        # The logical database ID.
         self.logic_id = logic_id
-        # Indicates whether the server failed to find an index that can be used for the SQL statement. Valid values:
+        # Indicates whether the server could not find a good index to use for the statement. Valid values:
         # 
-        # - **1**: yes.
-        # 
-        # - **0**: no.
+        # - **1**: Yes.
+        # - **0**: No.
         self.no_good_index_used = no_good_index_used
-        # Indicates whether table scans were performed when indexes were not used. Valid values:
+        # Indicates whether the statement performed a table scan without using an index. Valid values:
         # 
-        # - **1**: yes.
-        # 
-        # - **0**: no.
+        # - **1**: Yes.
+        # - **0**: No.
         self.no_index_used = no_index_used
         # The node ID.
         # 
         # > This parameter is returned only for ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters.
         self.node_id = node_id
-        # The number of rows affected by the SQL statement.
+        # The number of affected rows.
         self.rows_affected = rows_affected
-        # The number of rows scanned by the SQL statement.
+        # The number of scanned rows.
         self.rows_examined = rows_examined
         # The number of rows returned by the SQL statement.
         self.rows_sent = rows_sent
-        # The number of joins that are used to perform table scans without using indexes.
-        # 
-        # > : This parameter is used for the scenario in which indexes are not used in a union query. If the returned value is not 0, check the indexes of tables.
+        # The number of joins that perform table scans without using indexes.
+        # >Notice: This parameter counts the joins that do not use indexes during a join query. If the value is not 0, check the table indexes.
         self.select_full_join = select_full_join
-        # The number of joins that used ranges on referenced tables.
+        # The number of joins that use a range search on a reference table.
         self.select_full_range_join = select_full_range_join
-        # The number of joins that used ranges on the first table.
+        # The number of joins that use a range on the first table.
         self.select_range = select_range
-        # The number of joins that did not have key values. The keys and values were checked for each row of data.
-        # 
-        # > : This parameter is used for the scenario in which indexes are not used in a union query. If the returned value is not 0, check the indexes of tables.
+        # The number of joins without keys that check for key usage after each row.
+        # >Notice: This parameter counts the joins that do not use indexes during a join query. If the value is not 0, check the table indexes.
         self.select_range_check = select_range_check
         # The number of scans.
         self.select_scan = select_scan
-        # The number of merges that the sorting algorithm must perform.
+        # The number of merge passes that the sort algorithm must perform.
         self.sort_merge_passes = sort_merge_passes
-        # The number of times the data was sorted by using ranges.
+        # The number of sorts that use a range.
         self.sort_range = sort_range
         # The number of sorted rows.
         self.sort_rows = sort_rows
-        # The number of sorts that were performed during table scans.
+        # The number of sort scans.
         self.sort_scan = sort_scan
-        # The sample SQL statement.
+        # The SQL sample.
         self.sql = sql
-        # The SQL statement ID.
+        # The SQL ID.
         self.sql_id = sql_id
         # The thread ID.
         self.thread_id = thread_id
-        # The time when the SQL statement was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the SQL statement was executed. The time is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
         # The user ID.
         self.user_id = user_id
-        # The number of warnings returned for the SQL statement.
+        # The number of warnings for the SQL statement.
         self.warnings = warnings
 
     def validate(self):

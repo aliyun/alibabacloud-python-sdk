@@ -16,21 +16,20 @@ class GetFullRequestStatResultByInstanceIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         # 
-        # > If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -89,31 +88,31 @@ class GetFullRequestStatResultByInstanceIdResponseBodyData(DaraModel):
         state: str = None,
         timestamp: int = None,
     ):
-        # Indicates whether the asynchronous request failed. Valid values:
+        # Indicates whether the request failed. Valid values:
         # 
-        # - **true**
+        # - **true**: yes.
         # 
-        # - **false**
+        # - **false**: no.
         self.fail = fail
-        # Indicates whether the asynchronous request was complete. Valid values:
+        # Indicates whether the asynchronous request is completed. Valid values:
         # 
-        # - **true**
+        # - **true**: yes.
         # 
-        # - **false**
+        # - **false**: no.
         self.is_finish = is_finish
         # The returned full request data.
         self.result = result
-        # The request ID.
+        # The ID of the request.
         self.result_id = result_id
-        # The state of the asynchronous request. Valid values:
+        # The execution status of the asynchronous request. Valid values:
         # 
-        # - **RUNNING**
+        # - **RUNNING**: running.
         # 
-        # - **SUCCESS**
+        # - **SUCCESS**: successful.
         # 
-        # - **FAIL**
+        # - **FAIL**: failed.
         self.state = state
-        # The time when the asynchronous request was sent. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The execution time. The time is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -174,9 +173,9 @@ class GetFullRequestStatResultByInstanceIdResponseBodyDataResult(DaraModel):
         list: List[main_models.GetFullRequestStatResultByInstanceIdResponseBodyDataResultList] = None,
         total: int = None,
     ):
-        # The full request data.
+        # The list of full request data.
         self.list = list
-        # The total number of entries returned.
+        # The total amount of data.
         self.total = total
 
     def validate(self):
@@ -251,11 +250,11 @@ class GetFullRequestStatResultByInstanceIdResponseBodyDataResultList(DaraModel):
     ):
         # The average number of scanned rows.
         # 
-        # > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+        # > This field is supported by the following databases: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
         self.avg_examined_rows = avg_examined_rows
-        # The average number of rows that are fetched by compute nodes from data nodes on the PolarDB-X 2.0 instance.
+        # The average number of rows pulled by the compute node from the data node in the PolarDB-X 2.0 database instance.
         self.avg_fetch_rows = avg_fetch_rows
-        # The average lock wait latency. Unit: seconds.
+        # The average lock wait time, in seconds.
         self.avg_lock_wait_time = avg_lock_wait_time
         # The average number of logical reads.
         self.avg_logical_read = avg_logical_read
@@ -265,31 +264,31 @@ class GetFullRequestStatResultByInstanceIdResponseBodyDataResultList(DaraModel):
         self.avg_physical_sync_read = avg_physical_sync_read
         # The average number of returned rows.
         self.avg_returned_rows = avg_returned_rows
-        # The average execution duration.
+        # The average time to execute.
         self.avg_rt = avg_rt
-        # The average number of SQL statements.
+        # The average SQL count.
         self.avg_sql_count = avg_sql_count
         # The average number of updated rows.
         # 
-        # > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
+        # > This field is supported by the following databases: ApsaraDB RDS for MySQL and PolarDB-X 2.0.
         self.avg_updated_rows = avg_updated_rows
         # The total number of executions.
         self.count = count
-        # The percentage of the total number of executions.
+        # The proportion of times the statements execute.
         self.count_rate = count_rate
         # The name of the database.
         self.database = database
-        # The number of failed executions.
+        # The number of execution errors.
         self.error_count = error_count
         # The total number of scanned rows.
         # 
-        # > This parameter is returned only for ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL databases.
+        # > This field is supported by the following databases: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and PolarDB for MySQL.
         self.examined_rows = examined_rows
-        # The number of rows that are fetched by compute nodes from data nodes on the PolarDB-X 2.0 instance.
+        # The number of rows pulled by the compute node from the data node in the PolarDB-X 2.0 database instance.
         self.fetch_rows = fetch_rows
-        # The IP address of the database instance.
+        # The network address of the instance.
         self.ip = ip
-        # The lock wait latency. Unit: seconds.
+        # The lock wait time, in seconds.
         self.lock_wait_time = lock_wait_time
         # The number of logical reads.
         self.logical_read = logical_read
@@ -297,27 +296,27 @@ class GetFullRequestStatResultByInstanceIdResponseBodyDataResultList(DaraModel):
         self.physical_async_read = physical_async_read
         # The number of physical synchronous reads.
         self.physical_sync_read = physical_sync_read
-        # The port number that is used to connect to the database instance.
+        # The port number.
         self.port = port
         # The SQL template.
         self.psql = psql
-        # The total number of rows updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
+        # The total number of rows updated or returned by the compute node in the PolarDB-X 2.0 database instance.
         self.rows = rows
-        # The number of SQL statements that take longer than 1 second to execute.
+        # The number of SQL statements whose execution time is greater than 1 second.
         self.rt_greater_than_one_second_count = rt_greater_than_one_second_count
-        # The execution duration percentage.
+        # The execution time proportion.
         self.rt_rate = rt_rate
         # The number of SQL statements.
         self.sql_count = sql_count
         # The SQL ID.
         self.sql_id = sql_id
-        # The total number of updated rows.
+        # The total number of changed rows.
         self.sum_updated_rows = sum_updated_rows
-        # The names of tables in the database.
+        # The name of the database table.
         self.tables = tables
-        # The version number.
+        # The version.
         self.version = version
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

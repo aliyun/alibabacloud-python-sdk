@@ -11,10 +11,12 @@ class ChatResponseBody(DaraModel):
         self,
         activity_type: str = None,
         agent_id: str = None,
+        code: str = None,
         content: str = None,
         delta: str = None,
         kind: str = None,
         label: str = None,
+        message: str = None,
         message_id: str = None,
         name: str = None,
         originating_tool_call_id: str = None,
@@ -37,6 +39,7 @@ class ChatResponseBody(DaraModel):
         self.activity_type = activity_type
         # The agent ID.
         self.agent_id = agent_id
+        self.code = code
         # The response content.
         self.content = content
         # Specifies whether the content is incremental.
@@ -45,6 +48,7 @@ class ChatResponseBody(DaraModel):
         self.kind = kind
         # The display name of the child agent for STEP_STARTED.
         self.label = label
+        self.message = message
         # The message ID.
         self.message_id = message_id
         # The extension key.
@@ -94,6 +98,9 @@ class ChatResponseBody(DaraModel):
         if self.agent_id is not None:
             result['AgentId'] = self.agent_id
 
+        if self.code is not None:
+            result['Code'] = self.code
+
         if self.content is not None:
             result['Content'] = self.content
 
@@ -105,6 +112,9 @@ class ChatResponseBody(DaraModel):
 
         if self.label is not None:
             result['Label'] = self.label
+
+        if self.message is not None:
+            result['Message'] = self.message
 
         if self.message_id is not None:
             result['MessageId'] = self.message_id
@@ -167,6 +177,9 @@ class ChatResponseBody(DaraModel):
         if m.get('AgentId') is not None:
             self.agent_id = m.get('AgentId')
 
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
         if m.get('Content') is not None:
             self.content = m.get('Content')
 
@@ -178,6 +191,9 @@ class ChatResponseBody(DaraModel):
 
         if m.get('Label') is not None:
             self.label = m.get('Label')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
 
         if m.get('MessageId') is not None:
             self.message_id = m.get('MessageId')

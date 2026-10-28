@@ -38,97 +38,91 @@ class GetDasSQLLogHotDataRequest(DaraModel):
     ):
         # The database account.
         # 
-        # > You can specify multiple database accounts. Separate multiple accounts with a space. For example: `user1 user2 user3`.
+        # > You can use multiple database accounts for a combined query. Separate multiple database accounts with spaces. Example: `user1 user2 user3`.
         self.account_name = account_name
         # The node ID.
         # 
-        # > This parameter is required if the database instance is a PolarDB for MySQL cluster.
+        # > For a PolarDB for MySQL instance, you must specify the node ID.
         self.child_dbinstance_ids = child_dbinstance_ids
         # The database name.
         # 
-        # > You can specify multiple database names. Separate multiple names with a space. For example: `DB1 DB2 DB3`.
+        # > You can use multiple database names for a combined query. Separate multiple database names with spaces. Example: `DB1 DB2 DB3`.
         self.dbname = dbname
-        # The end of the time range to query. This value must be a Unix timestamp in milliseconds.
+        # The end time of the query. The time is in the UNIX timestamp format. Unit: milliseconds.
         # 
-        # > The end time must be later than the start time. The time range cannot exceed one day.
+        # > The end time must be later than the start time, and the interval between the start time and the end time cannot exceed 1 day.
         # 
         # This parameter is required.
         self.end = end
-        # The SQL execution error code. You can call the [GetAsyncErrorRequestStatByCode](https://help.aliyun.com/document_detail/409804.html) operation to obtain the error code.
+        # The error code returned when the SQL statement is executed. You can call the [GetAsyncErrorRequestStatByCode](https://help.aliyun.com/document_detail/409804.html) operation to obtain the error code.
         self.fail = fail
-        # The client IP address.
+        # The IP address of the client.
         # 
-        # > You can specify multiple client IP addresses. Separate multiple IP addresses with a space. For example: `IP1 IP2 IP3`.
+        # > You can use multiple client IP addresses for a combined query. Separate multiple client IP addresses with spaces. Example: `IP1 IP2 IP3`.
         self.host_address = host_address
-        # The ID of the database instance.
+        # The database instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The logical operator to use with multiple keywords. Valid values:
-        # 
-        # - **or**
-        # 
-        # - **and**
+        # The logical relationship between multiple keywords. Valid values:
+        # - **or**: OR.
+        # - **and**: AND.
         self.logical_operator = logical_operator
-        # The maximum execution time in microseconds. Returns SQL statements that have an execution time less than this value.
+        # The maximum execution duration. Unit: microseconds. This parameter is used to query SQL statements whose execution duration is less than the specified value.
         self.max_latancy = max_latancy
-        # The maximum number of entries per page. Valid values: 5 to 100.
+        # The maximum number of records per page for the paging query. Valid values: 5 to 100.
         self.max_records_per_page = max_records_per_page
-        # A reserved parameter.
+        # The reserved parameter. This parameter is not supported.
         self.max_rows = max_rows
-        # The maximum number of scanned rows. Returns SQL statements that scanned fewer than this number of rows.
+        # The maximum number of scanned rows. This parameter is used to query SQL statements whose number of scanned rows is less than the specified value.
         self.max_scan_rows = max_scan_rows
-        # A reserved parameter.
+        # The reserved parameter. This parameter is not supported.
         self.max_spill_cnt = max_spill_cnt
-        # The minimum execution time in microseconds. Returns SQL statements with an execution time greater than or equal to this value.
+        # The minimum execution duration. Unit: microseconds. This parameter is used to query SQL statements whose execution duration is greater than or equal to the specified value.
         self.min_latancy = min_latancy
-        # A reserved parameter.
+        # The reserved parameter. This parameter is not supported.
         self.min_rows = min_rows
-        # The minimum number of scanned rows. Returns SQL statements that scanned at least this number of rows.
+        # The minimum number of scanned rows. This parameter is used to query SQL statements whose number of scanned rows is greater than or equal to the specified value.
         self.min_scan_rows = min_scan_rows
-        # A reserved parameter.
+        # The reserved parameter. This parameter is not supported.
         self.min_spill_cnt = min_spill_cnt
-        # The page number to return. Pages start from 1. The default value is 1.
+        # The page number for the paging query. Pages start from 1. Default value: 1.
         self.page_numbers = page_numbers
-        # The query keyword.
+        # The keyword.
         # 
-        # > Fuzzy search is supported. You can specify up to 10 keywords. Separate multiple keywords with a space. For example: a1 b2 c3.
+        # > Fuzzy match is supported. You can use a maximum of 10 keywords for a combined query. Separate multiple keywords with spaces. Example: a1 b2 c3.
         self.query_keyword = query_keyword
-        # A reserved parameter.
+        # The reserved parameter. This parameter is not supported.
         self.role = role
         # The sort key. Valid values:
-        # 
-        # - **ScanRows**: scanned rows.
-        # 
-        # - **UpdateRows**: updated rows.
-        # 
-        # - **Consume**: execution time.
-        # 
-        # - **OriginTime**: The execution start time.
-        # 
-        # - **ReturnRows**: returned rows.
+        # - **ScanRows**: the number of scanned rows.
+        # - **UpdateRows**: the number of updated rows.
+        # - **Consume**: the execution duration.
+        # - **OriginTime**: the execution time.
+        # - **ReturnRows**: the number of returned rows.
         self.sort_key = sort_key
         # The sort order. Valid values:
-        # 
-        # - **ASC**: ascending
-        # 
-        # - **DESC**: descending
+        # - **ASC**: ascending order.
+        # - **DESC**: descending order.
         self.sort_method = sort_method
-        # The SQL type.
+        # The type of the SQL statement. Valid values:
+        # - **select**
+        # - **update**
+        # - **delete**
         self.sql_type = sql_type
-        # The start of the time range to query. This value must be a Unix timestamp in milliseconds.
+        # The start time of the query. The time is in the UNIX timestamp format. Unit: milliseconds.
         # 
-        # > You can query only data that is generated after you enable DAS Enterprise Edition. The start time cannot be earlier than seven days before the current time.
+        # > You can only query data generated after DAS Enterprise Edition is enabled. The start time cannot be more than 7 days earlier than the current time.
         # 
         # This parameter is required.
         self.start = start
-        # The execution state. Set this parameter to **0** to query for successfully executed SQL statements. You can also specify an error code to query for the corresponding SQL statements.
+        # The execution result. If you enter **0**, the system queries SQL statements that are successfully executed. You can also enter a specific error code to query the corresponding SQL statements.
         self.state = state
         # The thread ID.
         # 
-        # > You can specify multiple thread IDs. Separate multiple IDs with a space. For example: `657 658 659`.
+        # > You can use multiple thread IDs for a combined query. Separate multiple thread IDs with spaces. Example: `ThreadID1 ThreadID2 ThreadID3`.
         self.thread_id = thread_id
-        # A reserved parameter.
+        # The reserved parameter. This parameter is not supported.
         self.trace_id = trace_id
         # The transaction ID.
         self.transaction_id = transaction_id

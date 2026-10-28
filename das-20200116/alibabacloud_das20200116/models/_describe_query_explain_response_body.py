@@ -16,20 +16,18 @@ class DescribeQueryExplainResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The status code returned. A value of 200 indicates success.
+        # The returned status code. A value of 200 indicates success.
         self.code = code
-        # List of execution plans.
+        # List<ExplainedSqlDO>
         self.data = data
-        # The response message.
-        # 
-        # > If the request succeeds, this parameter returns Successful. If the request fails, this parameter returns error details such as an error code.
+        # The message returned for the request.
+        # > If the request is successful, Successful is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request succeeded.
-        # 
+        # - **true**: The request was successful.
         # - **false**: The request failed.
         self.success = success
 
@@ -120,67 +118,67 @@ class DescribeQueryExplainResponseBodyData(DaraModel):
         type: str = None,
         warnings: str = None,
     ):
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.argument = argument
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.avg_row_size = avg_row_size
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.defined_values = defined_values
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.estimate_cpu = estimate_cpu
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.estimate_executions = estimate_executions
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.estimate_io = estimate_io
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.estimate_rows = estimate_rows
-        # Additional information.
+        # The additional information.
         self.extra = extra
-        # The ID of the query.
+        # The query ID.
         self.id = id
-        # A reserved field for the PostgreSQL engine.
+        # The reserved field for the PostgreSQL engine.
         self.index_list = index_list
-        # The index actually used in the execution plan.
+        # The index that is actually used in the execution plan.
         self.key = key
-        # The length of the index actually used.
+        # The length of the used index.
         self.key_len = key_len
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.logical_op = logical_op
-        # A reserved field for the PolarDB X engine.
+        # The reserved field for the PolarDB-X engine.
         self.logical_plan_list = logical_plan_list
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.node_id = node_id
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.output_list = output_list
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.parallel = parallel
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.parent = parent
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.physical_op = physical_op
-        # The indexes that might be used.
+        # The possible indexes.
         self.possible_keys = possible_keys
-        # A reserved field for the PostgreSQL engine.
+        # The reserved field for the PostgreSQL engine.
         self.query_plan = query_plan
-        # The column used by the index.
+        # The columns used with the index.
         self.ref = ref
         # The number of rows to scan.
         self.rows = rows
-        # The type of the query.
+        # The select type.
         self.select_type = select_type
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.stmt_id = stmt_id
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.stmt_text = stmt_text
-        # The name of the table.
+        # The table name.
         self.table = table
-        # A reserved field for the PostgreSQL engine.
+        # The reserved field for the PostgreSQL engine.
         self.table_list = table_list
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.total_subtree_cost = total_subtree_cost
         # The join type.
         self.type = type
-        # A reserved field for the SQL Server engine.
+        # The reserved field for the SQL Server engine.
         self.warnings = warnings
 
     def validate(self):

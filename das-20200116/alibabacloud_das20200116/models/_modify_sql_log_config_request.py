@@ -18,45 +18,38 @@ class ModifySqlLogConfigRequest(DaraModel):
         request_enable: bool = None,
         retention: int = None,
     ):
-        # Indicates whether to enable DAS Enterprise Edition. Valid values:
+        # Specifies whether to enable DAS Enterprise Edition. Valid values:
         # 
-        # - **true**: enables DAS Enterprise Edition.
-        # 
-        # - **false**: disables DAS Enterprise Edition.
-        # 
-        # > This parameter is required when you enable DAS Enterprise Edition. By default, this operation enables the latest supported version.
+        # - **true**: Yes.
+        # - **false**: No.
+        # > This parameter is required when you enable DAS Enterprise Edition. By default, the latest supported version is enabled.
         self.enable = enable
-        # Indicates whether to enable security audit.
+        # Specifies whether to enable security auditing.
         self.enable_audit = enable_audit
         # A reserved parameter.
         self.filters = filters
-        # The hot storage retention period, in days. The value must be an integer from 1 to 7.
+        # The hot data storage duration. Unit: days. The value is an integer in the range of [1, 7].
         # 
-        # > This parameter is required only if you enable DAS Enterprise Edition V3.
+        # > This parameter is required only when you enable DAS Enterprise Edition V3.
         self.hot_retention = hot_retention
         # The ID of the database instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Indicates whether to enable SQL Explorer. Valid values:
+        # Specifies whether to enable SQL Explorer. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         # 
-        # - **true**: enables SQL Explorer.
-        # 
-        # - **false**: disables SQL Explorer.
-        # 
-        # > This parameter is required only if you enable DAS Enterprise Edition V3.
+        # > This parameter is required only when you enable DAS Enterprise Edition V3.
         self.request_enable = request_enable
-        # The data retention period, in days. Valid values:
+        # The total data storage duration. Unit: days. Valid values:
         # 
         # - 7
-        # 
         # - 30
-        # 
         # - 180
-        # 
         # - 365
         # 
-        # > If you enable DAS Enterprise Edition V3, the value of this parameter must be 30 or greater.
+        # > When you enable DAS Enterprise Edition V3, the value of this parameter must be greater than or equal to 30.
         self.retention = retention
 
     def validate(self):

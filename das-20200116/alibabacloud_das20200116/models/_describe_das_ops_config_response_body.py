@@ -20,14 +20,14 @@ class DescribeDasOpsConfigResponseBody(DaraModel):
         self.data = data
         # The returned message.
         # 
-        # > If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request is successful.
-        # - **false**: The request fails.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -94,21 +94,21 @@ class DescribeDasOpsConfigResponseBodyData(DaraModel):
         # * **true**: Auto-renewal is enabled.
         # * **false** (default): Auto-renewal is disabled.
         self.auto_renew = auto_renew
-        # The payment method.
+        # The billing method.
         self.charge_type = charge_type
-        # The Alibaba Cloud Managed Services instance ID.
+        # The instance ID of Alibaba Cloud Managed Services.
         self.commodity_instance_id = commodity_instance_id
         # Indicates whether DAS Economy Edition is enabled.
         self.eco_enable = eco_enable
-        # Indicates whether the Alibaba Cloud Managed Services is enabled.
+        # Indicates whether Alibaba Cloud Managed Services is enabled.
         self.enable = enable
-        # The end time. The value is a UNIX timestamp. Unit: milliseconds.
+        # The end time. The time is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # Indicates whether the Alibaba Cloud Managed Services is enabled.
+        # Indicates whether Alibaba Cloud Managed Services is enabled.
         self.ops_enable = ops_enable
         # The order ID.
         self.order_id = order_id
-        # The start time. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start time. The time is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

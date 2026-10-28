@@ -18,16 +18,16 @@ class DescribeSqlInsightStatisticResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The envelope for asynchronous query results. The first call returns **ResultId** and **State**. Poll with the exact same request parameters until **State** is **SUCCESS**, then retrieve the statistical details from **List**.
+        # The envelope for the asynchronous query result. The first call returns **ResultId** and **State**. You must poll the API with the exact same request parameters until **State** is **SUCCESS**, and then retrieve the statistical details from **List**.
         self.data = data
-        # The response message. An error description is returned if the request fails.
+        # The response message. An error description is returned when the request fails.
         self.message = message
-        # The unique ID of the request, which can be used for troubleshooting.
+        # The unique identifier of the request, which can be used for troubleshooting.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
         # - **true**: The request was successful.
-        # - **false**: The request failed. Check the **Code** and **Message** fields to determine the cause.
+        # - **false**: The request failed. Check the cause based on **Code** and **Message**.
         self.success = success
 
     def validate(self):
@@ -88,20 +88,20 @@ class DescribeSqlInsightStatisticResponseBodyData(DaraModel):
         state: str = None,
         timestamp: int = None,
     ):
-        # The SQL Explorer statistical query results.
+        # The SQL Explorer statistical query result.
         # 
         # > Returned only when **State** is **SUCCESS**.
         self.data = data
-        # The error code of the asynchronous query failure.
+        # The error code for the failed asynchronous query.
         # 
         # > This field is returned only when the query fails.
         self.error_code = error_code
-        # Indicates whether the asynchronous query has completed. Valid values:
+        # Indicates whether the asynchronous query has finished. Valid values:
         # 
         # - **true**: **State** is **SUCCESS** or **FAIL**.
         # - **false**: **State** is **RUNNING**.
         self.is_finish = is_finish
-        # The error description of the asynchronous query failure.
+        # The error description for the failed asynchronous query.
         # 
         # > This field is returned only when the query fails.
         self.message = message
@@ -109,21 +109,21 @@ class DescribeSqlInsightStatisticResponseBodyData(DaraModel):
         # 
         # > This operation does not return this field. Use **ResultId** to identify the asynchronous query.
         self.request_key = request_key
-        # The asynchronous query result ID, in the format of an async_ prefix followed by a hash value computed from all business parameters of the request.
+        # The asynchronous query result ID, which is in the format of an async_ prefix followed by a hash value. It is calculated based on all business parameters of the current request.
         # 
-        # > Repeated calls with the same parameters return the same query result. Therefore, when polling, you must use exactly the same request parameters as the initial call. Any change in parameters generates a different **ResultId** and triggers a new query.
+        # > Repeated calls with the same parameters hit the same query result. Therefore, you must carry the exact same request parameters as the first call when polling. Any parameter change generates a different **ResultId** and triggers a new query.
         self.result_id = result_id
-        # The current status of the asynchronous query. Valid values:
+        # The current state of the asynchronous query. Valid values:
         # 
-        # - **RUNNING**: The query is in progress. Continue polling.
-        # - **SUCCESS**: The query succeeded. The **Data** field contains data only in this state.
+        # - **RUNNING**: The query is running. Continue polling.
+        # - **SUCCESS**: The query is successful. The **Data** field has a value.
         # - **FAIL**: The query failed.
         # 
-        # > When the query fails, the operation directly returns an error code and error message instead of a normal response body with **State** set to **FAIL**.
+        # > When the query fails, the operation directly returns an error code and an error message, instead of a normal response body with **State** set to **FAIL**.
         self.state = state
-        # The time when the asynchronous query was submitted. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the asynchronous query was submitted, which is a UNIX timestamp in milliseconds.
         # 
-        # > When the query fails, this value indicates the time when the failure occurred.
+        # > When the query fails, this value is the time when the failure occurred.
         self.timestamp = timestamp
 
     def validate(self):
@@ -201,15 +201,15 @@ class DescribeSqlInsightStatisticResponseBodyDataData(DaraModel):
     ):
         # The extended information.
         # 
-        # > This field is not returned by this operation.
+        # > This operation does not return this field.
         self.extra = extra
         # The list of SQL Explorer statistical results. Each element is a statistical entry under an aggregation dimension.
         self.list = list
-        # The current page number, corresponding to the request parameter **PageNo**.
+        # The current page number, which corresponds to the request parameter **PageNo**.
         self.page_no = page_no
-        # The number of entries per page, corresponding to the request parameter **PageSize**.
+        # The number of entries returned per page, which corresponds to the request parameter **PageSize**.
         self.page_size = page_size
-        # The total number of statistical entries that match the query conditions. You can use this value for pagination calculation.
+        # The total number of statistical entries that meet the query conditions, which can be used for pagination.
         self.total = total
 
     def validate(self):
@@ -351,219 +351,219 @@ class DescribeSqlInsightStatisticResponseBodyDataDataList(DaraModel):
         # 
         # > Returned only for Lindorm instances.
         self.affect_rows = affect_rows
-        # The value of the aggregation dimension for this statistical entry, which varies based on the **Type** request parameter. Valid values:
+        # The value of the aggregation dimension for the current statistics. This value varies based on the **Type** request parameter. Valid values:
         # 
         # - When aggregated by SQL template: the SQL template ID, which is the same as **SqlId**.
-        # - When **Type** is set to **FullRequestOrigin**: the access source address.
-        # - When **Type** is set to **FullRequestUser**: the database username.
+        # - When **Type** is **FullRequestOrigin**: the source access address.
+        # - When **Type** is **FullRequestUser**: the database username.
         self.agg_key = agg_key
         # The average number of affected rows.
         # 
-        # > Returned only for Lindorm instances. The value is null for other database engines.
+        # > Returned only for Lindorm instances. For other engines, the value is null.
         self.avg_affect_rows = avg_affect_rows
         # The average CPU time consumed by SQL execution, in microseconds.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.avg_cpu_time = avg_cpu_time
-        # The average number of rows fetched by the PolarDB-X compute node from data nodes.
+        # The average number of rows fetched by PolarDB-X compute nodes from data nodes.
         # 
-        # > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other database engines.
+        # > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
         self.avg_frows = avg_frows
         # The average lock wait time per execution, in milliseconds.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.avg_lock_wait_time = avg_lock_wait_time
         # The average number of logical reads per execution.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.avg_logical_read = avg_logical_read
         # The average number of physical asynchronous reads per execution.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.avg_physical_async_read = avg_physical_async_read
         # The average number of physical reads.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.avg_physical_read = avg_physical_read
         # The average number of physical synchronous reads per execution.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.avg_physical_sync_read = avg_physical_sync_read
-        # The average number of updated rows and returned rows for the PolarDB-X compute node.
+        # The average number of updated and returned rows for PolarDB-X compute nodes.
         # 
-        # > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other database engines.
+        # > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
         self.avg_rows = avg_rows
-        # The average number of rows scanned per execution.
+        # The average number of scanned rows per execution.
         self.avg_rows_examined = avg_rows_examined
-        # The average number of rows returned per execution.
+        # The average number of returned rows per execution.
         self.avg_rows_returned = avg_rows_returned
-        # The average number of rows updated per execution.
+        # The average number of updated rows per execution.
         self.avg_rows_updated = avg_rows_updated
         # The average execution time per execution, in milliseconds.
         self.avg_rt = avg_rt
         # The average number of scanned rows.
         # 
-        # > This field is not returned by this operation. Use **AvgRowsExamined** for the average number of scanned rows.
+        # > This operation does not return this field. To obtain the average number of scanned rows, use **AvgRowsExamined**.
         self.avg_scan_rows = avg_scan_rows
-        # The average number of requests sent by the PolarDB-X compute node to data nodes.
+        # The average number of requests sent from PolarDB-X compute nodes to data nodes.
         # 
-        # > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other database engines.
+        # > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
         self.avg_scnt = avg_scnt
         # The average number of logical writes.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.avg_writes = avg_writes
-        # The total number of executions of the SQL template within the statistical interval.
+        # The total number of executions for the SQL template within the statistical period.
         self.count = count
-        # The ratio of the number of executions of this statistical entry to the total number of executions of all SQL statements on the instance. The value ranges from 0 to 1.
+        # The ratio of the number of times the SQL template in this entry is executed to the total number of times SQL statements execute on the instance. Valid values: 0 to 1.
         self.count_rate = count_rate
         # The total CPU time consumed by SQL execution, in microseconds.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.cpu_time = cpu_time
         # The name of the database where the SQL statement is executed.
         self.database = database
-        # The error code returned by SQL execution.
+        # The error code returned by the SQL execution.
         # 
-        # > The error code is a detail of a single SQL statement. This operation returns template-level aggregated statistics and does not return this field. Use **ErrorCount** for error information.
+        # > Error codes belong to the details of a single SQL statement. This operation returns aggregated statistics at the template level and does not return this field. To check error occurrences, use **ErrorCount**.
         self.error_code = error_code
-        # The number of execution errors for the SQL template within the statistical interval.
+        # The number of execution errors for the SQL template within the statistical period.
         self.error_count = error_count
-        # The time when the SQL template first appeared.
+        # The time when the SQL template first appeared. The time is a UNIX timestamp in milliseconds.
         # 
-        # > This field is not returned by this operation.
+        # > This operation does not return this field.
         self.first_time = first_time
-        # The total number of rows fetched by the PolarDB-X compute node from data nodes.
+        # The total number of rows fetched by PolarDB-X compute nodes from data nodes.
         # 
-        # > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other database engines.
+        # > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
         self.frows = frows
         # The hash value of the SQL template, returned together with the SQL template.
         # 
-        # > This value is generated by the PolarDB-X compute node kernel. The value is empty for non-PolarDB-X compute node instances.
+        # > This value is generated by the kernel of PolarDB-X compute nodes. For instances that are not PolarDB-X compute nodes, the value is empty.
         self.hash = hash
         # The endpoint of the instance to which the statistical data belongs.
         # 
-        # > Whether this field is returned depends on the aggregated storage link of the instance. The value is null for some links.
+        # > Whether this field is returned depends on the converged storage link of the instance. For some links, the value is null.
         self.ip = ip
         # The total lock wait time, in milliseconds.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.lock_wait_time = lock_wait_time
         # The total number of logical reads.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.logical_read = logical_read
-        # The maximum CPU time in a single execution, in microseconds.
+        # The maximum CPU time consumed in a single execution, in microseconds.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.max_cpu_time = max_cpu_time
         # The maximum number of logical reads in a single execution.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.max_logical_read = max_logical_read
         # The maximum number of physical reads in a single execution.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.max_physical_read = max_physical_read
-        # The maximum number of rows scanned in a single execution.
+        # The maximum number of scanned rows in a single execution.
         # 
-        # > This field is not returned by this operation. Use **RowsExamined** and **AvgRowsExamined** for scanned row counts.
+        # > This operation does not return this field. To obtain the number of scanned rows, use **RowsExamined** and **AvgRowsExamined**.
         self.max_rows_examined = max_rows_examined
-        # The maximum number of rows returned in a single execution.
+        # The maximum number of returned rows in a single execution.
         self.max_rows_returned = max_rows_returned
         # The maximum execution time in a single execution, in milliseconds.
         self.max_rt = max_rt
         # The maximum number of logical writes in a single execution.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.max_writes = max_writes
-        # The minimum CPU time in a single execution, in microseconds.
+        # The minimum CPU time consumed in a single execution, in microseconds.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.min_cpu_time = min_cpu_time
         # The minimum number of logical reads in a single execution.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.min_logical_read = min_logical_read
         # The minimum number of physical reads in a single execution.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.min_physical_read = min_physical_read
-        # The minimum number of rows returned in a single execution.
+        # The minimum number of returned rows in a single execution.
         self.min_rows_returned = min_rows_returned
         # The minimum execution time in a single execution, in milliseconds.
         self.min_rt = min_rt
         # The minimum number of logical writes in a single execution.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.min_writes = min_writes
-        # The display alias configured for the access source address.
+        # The display alias configured for the source access address.
         # 
-        # > Returned only when aggregated by access source (when **Type** is set to **FullRequestOrigin**). The value is null in other scenarios.
+        # > Returned only when aggregated by access source (when **Type** is **FullRequestOrigin**). In other scenarios, the value is null.
         self.origin_alias = origin_alias
         # The source address of the client that initiated the SQL statement.
         # 
-        # > When **Type** is set to **FullRequestOrigin**, this field serves as the aggregation dimension for the statistical entry.
+        # > When **Type** is **FullRequestOrigin**, this field is the aggregation dimension for the statistics.
         self.origin_host = origin_host
         # The parameter content of the SQL sample.
         # 
-        # > This operation returns template-level aggregated statistics and does not return this field.
+        # > This operation returns aggregated statistics at the template level and does not return this field.
         self.params = params
         # The total number of physical asynchronous reads.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.physical_async_read = physical_async_read
         # The total number of physical reads.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other database engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.physical_read = physical_read
         # The total number of physical synchronous reads.
         # 
-        # > Data is available only when **Version** is set to **1**.
+        # > Data is available only when **Version** is **1**.
         self.physical_sync_read = physical_sync_read
-        # The port of the instance to which the statistical data belongs.
+        # The connection port of the instance to which the statistical data belongs.
         # 
-        # > Whether this field is returned depends on the aggregated storage link of the instance. The value is null for some links.
+        # > Whether this field is returned depends on the converged storage link of the instance. For some links, the value is null.
         self.port = port
         # The parameterized SQL template text, which is the statement with constants in the SQL replaced by placeholders.
         self.psql = psql
-        # The total number of updated rows and returned rows for the PolarDB-X compute node.
+        # The total number of updated and returned rows for PolarDB-X compute nodes.
         # 
-        # > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other engines.
+        # > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
         self.rows = rows
-        # The total number of rows examined by the SQL template within the statistical interval.
+        # The total number of scanned rows for the SQL template within the statistical period.
         self.rows_examined = rows_examined
-        # The total number of rows returned by the SQL template within the statistical interval.
+        # The total number of returned rows for the SQL template within the statistical period.
         self.rows_returned = rows_returned
-        # The total execution duration of the SQL template within the statistical interval. Unit: milliseconds.
+        # The total execution time of the SQL template within the statistical period, in milliseconds.
         # 
-        # > For PolarDB-X compute nodes (where **Role** is **polarx_cn**) with kernel versions earlier than 5.4.13, this value is converted from microseconds to milliseconds.
+        # > For PolarDB-X compute nodes (where **Role** is **polarx_cn**) with a kernel version earlier than 5.4.13, this value is converted from microseconds to milliseconds.
         self.rt = rt
-        # The number of times the execution duration exceeds 1 second.
+        # The number of times the execution duration exceeded 1 second.
         # 
-        # > Whether this field is returned depends on the aggregation storage link of the instance. The value is null for certain links.
+        # > Whether this field is returned depends on the aggregated storage link of the instance. For some links, the value is null.
         self.rt_greater_than_one_second_count = rt_greater_than_one_second_count
-        # The ratio of the total execution duration of this entry to the total execution duration of all SQL statements on the instance. Valid values: 0 to 1.
+        # The ratio of the total execution time of this statistic to the total execution time of all SQL statements for the instance. Valid values: 0 to 1.
         self.rt_rate = rt_rate
         # The type identifier of the sample data.
         # 
         # > This operation returns aggregated statistics and does not return this field.
         self.sample_type = sample_type
-        # The number of rows scanned by a single SQL statement.
+        # The number of scanned rows for a single SQL statement.
         # 
-        # > This operation returns template-level aggregated statistics and does not return this field. Use the aggregated metrics **RowsExamined** and **AvgRowsExamined** instead.
+        # > This operation returns aggregated statistics at the template dimension and does not return this field. Use the aggregated metrics **RowsExamined** and **AvgRowsExamined** instead.
         self.scan_rows = scan_rows
-        # The total number of requests sent from the PolarDB-X compute node to data nodes.
+        # The total number of requests sent from PolarDB-X compute nodes to data nodes.
         # 
-        # > This metric is exclusive to PolarDB-X compute nodes. The value is null or 0 for other engines.
+        # > This is an exclusive metric for PolarDB-X compute nodes. For other engines, the value is null or 0.
         self.scnt = scnt
         # The original SQL text.
         # 
         # > The statistical results return the SQL template (**Psql**) and do not return this field.
         self.sql = sql
-        # The SQL template ID that uniquely identifies a type of parameterized SQL statement. Multiple executions under the same template are aggregated into a single statistical entry. You can use this ID to correlate the same type of SQL across multi-dimensional queries.
+        # The SQL template ID, which uniquely identifies a category of parameterized SQL statements. Multiple executions under the same template are aggregated into a single statistic. You can use this ID to associate the same category of SQL statements across multi-dimensional queries.
         self.sql_id = sql_id
-        # The SQL text with parameter values uniformly processed, used in sample data scenarios.
+        # The SQL text after unified processing of parameter values, used in sample data scenarios.
         # 
         # > This operation does not return this field.
         self.sql_new = sql_new
@@ -579,60 +579,60 @@ class DescribeSqlInsightStatisticResponseBodyDataDataList(DaraModel):
         # - **delete**
         # - **other**
         self.sql_type = sql_type
-        # The total number of rows updated by the SQL template within the statistical interval.
+        # The total number of updated rows for the SQL template within the statistical period.
         self.sum_rows_updated = sum_rows_updated
         # The list of table names involved in the SQL statement.
         self.tables = tables
         # The database thread ID that executed the SQL statement.
         # 
-        # > The thread ID is a detail of a single SQL statement. This operation returns template-level aggregated statistics and does not return this field.
+        # > The thread ID belongs to the details of a single SQL statement. This operation returns aggregated statistics at the template dimension and does not return this field.
         self.thread_id = thread_id
-        # The execution duration ratio.
+        # The execution time proportion.
         # 
-        # > This operation returns the execution duration ratio through **RtRate** and does not return this field.
+        # > This operation returns the execution time proportion through **RtRate** and does not return this field.
         self.time_rate = time_rate
-        # The data timestamp. This value is a UNIX timestamp. Unit: milliseconds.
+        # The data timestamp, which is a UNIX timestamp in milliseconds.
         # 
-        # > The statistical results are aggregated at the SQL template level and do not return this field.
+        # > The statistical results are aggregated at the SQL template dimension and do not return this field.
         self.timestamp = timestamp
         # The total number of affected rows.
         # 
-        # > This field is returned only for Lindorm instances. The value is null for other engines.
+        # > This field is returned only for Lindorm instances. For other engines, the value is null.
         self.total_affect_rows = total_affect_rows
-        # The total SQL execution duration.
+        # The total execution time of the SQL statement.
         # 
-        # > This operation does not return this field. Use **Rt** for the total execution duration.
+        # > This operation does not return this field. Use **Rt** for the total execution time.
         self.total_rt = total_rt
-        # The total number of rows scanned.
+        # The total number of scanned rows.
         # 
-        # > This operation does not return this field. Use **RowsExamined** for the total number of rows scanned.
+        # > This operation does not return this field. Use **RowsExamined** for the total number of scanned rows.
         self.total_scan_rows = total_scan_rows
-        # The execution count trend sequence of the SQL template, divided into time slices within the query time window.
+        # The trend sequence of execution counts for the SQL template, divided by time slices within the query time window.
         # 
-        # > This field is returned only when the request parameter **DoFillTrend** is set to **true** and the trend padding capability is enabled for the instance. The time slice interval is automatically determined by the query span. Time slices with no data may be padded with zeros.
+        # > This field is returned only when the request parameter **DoFillTrend** is set to **true** and the trend padding feature is enabled for the instance. The time slice interval is automatically determined by the query span. Time slices with no data may be padded with zeros.
         self.trend = trend
-        # The number of rows updated by a single SQL statement.
+        # The number of updated rows for a single SQL statement.
         # 
-        # > This operation returns template-level aggregated statistics and does not return this field. Use the aggregated metrics **SumRowsUpdated** and **AvgRowsUpdated** instead.
+        # > This operation returns aggregated statistics at the template dimension and does not return this field. Use the aggregated metrics **SumRowsUpdated** and **AvgRowsUpdated** instead.
         self.update_rows = update_rows
         # The database username that executed the SQL statement.
         # 
-        # > When **Type** is set to **FullRequestUser**, this field serves as the aggregation dimension for the statistical entry.
+        # > When **Type** is **FullRequestUser**, this field is the aggregation dimension for this statistic.
         self.user = user
-        # The SQL Explorer data collection link version. The value **1** is returned when the instance collects logical read or lock wait data. Otherwise, the value **0** is returned. Valid values:
+        # The version of the SQL Explorer data collection link. If the instance collects logical read or lock wait data, the value is **1**. Otherwise, the value is **0**. Valid values:
         # 
         # - **0**: V0 basic collection link.
-        # - **1**: V1 collection link, which additionally collects four metrics (**LockWaitTime**, **LogicalRead**, **PhysicalSyncRead**, and **PhysicalAsyncRead**) on top of V0.
+        # - **1**: V1 collection link, which collects four additional metrics based on V0: **LockWaitTime**, **LogicalRead**, **PhysicalSyncRead**, and **PhysicalAsyncRead**.
         # 
-        # > When the value is **0**, the extended metrics contain no data.
+        # > When **0** is returned, the preceding extended metrics have no data.
         self.version = version
         # The VPC ID of the instance to which the statistical data belongs.
         # 
-        # > Whether this field is returned depends on the aggregation storage link of the instance. The value is null for certain links.
+        # > Whether this field is returned depends on the aggregated storage link of the instance. For some links, the value is null.
         self.vpc_id = vpc_id
         # The total number of logical writes.
         # 
-        # > This metric is exclusive to SQL Server instances. The value is null for other engines.
+        # > This is an exclusive metric for SQL Server instances. For other engines, the value is null.
         self.writes = writes
 
     def validate(self):
@@ -1137,7 +1137,7 @@ class DescribeSqlInsightStatisticResponseBodyDataDataListTrend(DaraModel):
         timestamp: int = None,
         value: Any = None,
     ):
-        # The timestamp of the trend data point. This value is a UNIX timestamp. Unit: milliseconds.
+        # The timestamp of the trend point, which is a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
         # The number of SQL executions within the time slice.
         self.value = value

@@ -22,9 +22,9 @@ class DescribeSlowLogStatisticRequest(DaraModel):
         template_id: str = None,
         type: str = None,
     ):
-        # Specifies whether to sort results in ascending order. This feature is disabled by default.
+        # Specifies whether to sort the results in ascending order. Default value: false.
         self.asc = asc
-        # The end time of the query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+        # The end time of the query. The time is a UNIX timestamp in UTC. Unit: milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -36,8 +36,8 @@ class DescribeSlowLogStatisticRequest(DaraModel):
         self.instance_id = instance_id
         # The node ID.
         # 
-        # - For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter is applicable only to cluster instances. If you do not specify this parameter, the log details of the primary node are queried by default.
-        # - For PolarDB-X 2.0, set this parameter to **polarx_cn** (compute node) or **polarx_dn** (data node).
+        # - For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter applies only to Cluster Edition instances. If you do not specify this parameter, the slow query logs of the primary node are queried by default.
+        # - For PolarDB-X 2.0, set this parameter to **polarx_cn** for compute nodes or **polarx_dn** for data nodes.
         self.node_id = node_id
         # The sorting method. Valid values:
         # 
@@ -51,11 +51,11 @@ class DescribeSlowLogStatisticRequest(DaraModel):
         # 
         # **RowsSent**
         self.order_by = order_by
-        # The page number. The value starts from 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The maximum number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The start time of the query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
+        # The start time of the query task. The time is a UNIX timestamp in UTC. Unit: milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -63,7 +63,7 @@ class DescribeSlowLogStatisticRequest(DaraModel):
         self.template_id = template_id
         # The task type.
         # 
-        # SQL engine-specific:
+        # Specific to SQL engines:
         # 
         # **SlowLogRequestOrigin**: aggregates logs by source IP address.
         # 
@@ -71,24 +71,23 @@ class DescribeSlowLogStatisticRequest(DaraModel):
         # 
         # **SQL**: aggregates logs by SQL ID.
         # 
-        # 
-        # MongoDB engine-specific:
+        # Specific to MongoDB engines:
         # 
         # **SlowLogRequestOrigin**: aggregates logs by source IP address.
         # 
         # **SlowLogRequestUser**: aggregates logs by source user.
         # 
-        # **SQL**: aggregates logs by Query ID.
+        # **SQL**: aggregates logs by query ID.
         # 
         # **SlowLogRequestOpType**: aggregates logs by operation type.
         # 
         # **SlowLogRequestNamespace**: aggregates logs by namespace.
         # 
-        # Redis engine-specific:
+        # Specific to Redis engines:
         # 
         # **SlowLogRequestNodeId**: aggregates logs by node ID.
         # 
-        # **SlowLogRequestHostInsId**: aggregates logs by HostInsId.
+        # **SlowLogRequestHostInsId**: aggregates logs by host instance ID.
         self.type = type
 
     def validate(self):
@@ -185,9 +184,9 @@ class DescribeSlowLogStatisticRequestFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter parameter.
+        # The filter key.
         self.key = key
-        # The value of the filter parameter.
+        # The value of the filter key.
         self.value = value
 
     def validate(self):

@@ -14,21 +14,21 @@ class EnableDasProResponseBody(DaraModel):
         success: str = None,
         synchro: str = None,
     ):
-        # The HTTP status code returned.
+        # The status code.
         self.code = code
         # The reserved parameter.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         # 
-        # > If the request was successful, **Successful** is returned. If the request failed, an error message that contains information such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**
+        # - **true**: The request was successful.
         # 
-        # - **false**
+        # - **false**: The request failed.
         self.success = success
         # The reserved parameter.
         self.synchro = synchro

@@ -18,15 +18,15 @@ class ModifyForwardSqlLogConfigResponseBody(DaraModel):
         self.code = code
         # ForwardSqlLogResult
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         # 
-        # > If the request is successful, **Successful** is returned. If the request fails, an error message that contains information such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
-        # * true: The request is successful.
-        # * false: The request fails.
+        # Indicates whether the request was successful. Valid values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -82,7 +82,7 @@ class ModifyForwardSqlLogConfigResponseBodyData(DaraModel):
         project: str = None,
         vpc_endpoint: str = None,
     ):
-        # The LogStore name for real-time delivery to Simple Log Service.
+        # The name of the Simple Log Service Logstore for real-time log delivery.
         self.logstore = logstore
         # The project.
         self.project = project

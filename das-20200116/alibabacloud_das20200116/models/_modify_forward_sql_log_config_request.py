@@ -14,8 +14,8 @@ class ModifyForwardSqlLogConfigRequest(DaraModel):
     ):
         # Specifies whether to enable the feature. Valid values:
         # 
-        # - **true**: Enable.
-        # - **false**: Disable.
+        # - **true**: yes.
+        # - **false**: no.
         # 
         # This parameter is required.
         self.enable = enable
@@ -24,12 +24,12 @@ class ModifyForwardSqlLogConfigRequest(DaraModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The service type. Valid values:
-        # DAS_OPS: enables TOP KEY delivery.
+        # - DAS_OPS: enables top key delivery.
         # 
         # This parameter is required.
         self.service = service
-        # The task source. Valid values:
-        # - TOP_KEY: enables TOP KEY delivery.
+        # The source of the task. Valid values:
+        # - TOP_KEY: enables top key delivery.
         # 
         # This parameter is required.
         self.source = source

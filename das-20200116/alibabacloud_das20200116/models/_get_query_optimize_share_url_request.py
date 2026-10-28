@@ -24,87 +24,72 @@ class GetQueryOptimizeShareUrlRequest(DaraModel):
         time: int = None,
         user: str = None,
     ):
-        # Specifies whether to sort the returned entries in ascending order. Default value: **true**. Valid values:
+        # Specifies whether to sort the results in ascending order. Default value: **true**. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: Yes.
+        # - **false**: No.
         self.asc = asc
-        # The name of the database to be queried.
+        # The names of the databases to be queried.
         self.db_names = db_names
         # The database engine. Valid values:
         # 
-        # - **MySQL**: ApsaraDB RDS for MySQL
-        # 
+        # - **MySQL**: RDS MySQL
         # - **PolarDBMySQL**: PolarDB for MySQL
-        # 
-        # - **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+        # - **PostgreSQL**: RDS PostgreSQL
         # 
         # This parameter is required.
         self.engine = engine
-        # The instance IDs. Separate multiple IDs with commas (,).
+        # The instance IDs. Separate multiple instance IDs with commas.
         self.instance_ids = instance_ids
-        # The keywords of the SQL template. Separate multiple keywords with spaces.
+        # The keywords in the SQL text. Separate multiple keywords with spaces.
         self.keywords = keywords
-        # The logical relationship between multiple keywords. Valid values:
+        # The logical relationship between multiple keywords in the SQL text. Valid values:
         # 
-        # - **or**
-        # 
-        # - **and**
+        # - **or**: The OR logical relationship.
+        # - **and**: The AND logical relationship.
         self.logical_operator = logical_operator
-        # Specifies whether to query only SQL templates that need to be optimized. Default value: **false**. Valid values:
+        # Specifies whether to query only the SQL statements that need to be optimized. Default value: **false**. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: Yes.
+        # - **false**: No.
         self.only_optimized_sql = only_optimized_sql
-        # The field by which to sort the returned entries. Default value: **count**. Valid values:
+        # The field by which to sort the results. Default value: **count**. Valid values:
         # 
-        # - **count**: the number of executions.
-        # 
-        # - **maxQueryTime**: the longest execution duration.
-        # 
-        # - **avgQueryTime**: the average execution duration.
-        # 
-        # - **maxLockTime**: the longest lock wait duration.
-        # 
-        # - **avgLockTime**: the average lock wait duration.
-        # 
-        # - **maxRowsExamined**: the largest number of scanned rows.
-        # 
-        # - **avgRowsExamined**: the average number of scanned rows.
-        # 
-        # - **maxRowsSent**: the largest number of returned rows.
-        # 
-        # - **avgRowsSent**: the average number of returned rows.
+        # - **count**: The number of executions.
+        # - **maxQueryTime**: The maximum execution time.
+        # - **avgQueryTime**: The average execution time.
+        # - **maxLockTime**: The maximum lock wait time.
+        # - **avgLockTime**: The average lock wait time.
+        # - **maxRowsExamined**: The maximum number of scanned rows.
+        # - **avgRowsExamined**: The average number of scanned rows.
+        # - **maxRowsSent**: The maximum number of returned rows.
+        # - **avgRowsSent**: The average number of returned rows.
         self.order_by = order_by
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the paging query. Pages start from 1. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Default value: 10.
+        # The maximum number of records per page in a paging query. Default value: 10.
         self.page_size = page_size
-        # The region in which the instance resides. Valid values:
+        # The region where the instance resides. Valid values:
         # 
-        # - **cn-china**: Chinese mainland
+        # - **cn-china**: The Chinese mainland.
+        # - **cn-hongkong**: Hong Kong (China).
+        # - **ap-southeast-1**: Singapore.
         # 
-        # - **cn-hongkong**: China (Hong Kong)
+        # This parameter is valid only when the **InstanceIds** request parameter is empty. If the **InstanceIds** request parameter is empty, data is retrieved based on the region specified by the **Region** parameter, and the default region is **cn-china**. If the **InstanceIds** request parameter is not empty, data is retrieved based on the region of the first instance specified in **InstanceIds**, regardless of the value of the **Region** parameter.
         # 
-        # - **ap-southeast-1**: Singapore
-        # 
-        # This parameter takes effect only if **InstanceIds** is left empty. If you leave **InstanceIds** empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region** does not take effect and the system obtains data from the region in which the first specified instance resides.\\*\\*\\*\\*
-        # 
-        # > If your instances reside in the regions in the Chinese mainland, set this parameter to **cn-china**.
+        # > For instances created in regions in the Chinese mainland, set this parameter to **cn-china**.
         self.region = region
-        # The tags that are used to filter SQL templates. Separate multiple tags with commas (,). For more information, see [Query governance](https://help.aliyun.com/document_detail/290038.html).
+        # The rules to be filtered. Separate multiple rules with commas. For more information, see [Query Governance](https://help.aliyun.com/document_detail/290038.html).
         self.rules = rules
-        # The SQL template IDs. You can call the [GetQueryOptimizeExecErrorStats](https://help.aliyun.com/document_detail/405261.html) operation to obtain the SQL template IDs.
+        # The SQL template IDs. You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the SQL template IDs.
         self.sql_ids = sql_ids
-        # A reserved parameter.
+        # The reserved parameter.
         self.tag_names = tag_names
-        # The date to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The date when the data is queried. The value is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.time = time
-        # The account of the database to be queried.
+        # The database account to be queried.
         self.user = user
 
     def validate(self):

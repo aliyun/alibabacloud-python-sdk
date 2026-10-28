@@ -16,20 +16,19 @@ class DescribeSqlLogRecordsResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code.
+        # The returned HTTP status code.
         self.code = code
         # The returned data.
         self.data = data
         # The returned message.
         # 
-        # > If the request is successful, **Successful** is returned. Otherwise, an error message is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
         # - **true**: The request was successful.
-        # 
         # - **false**: The request failed.
         self.success = success
 
@@ -89,23 +88,22 @@ class DescribeSqlLogRecordsResponseBodyData(DaraModel):
         start_time: int = None,
         total_records: int = None,
     ):
-        # The end time of the query. This value is a UNIX timestamp. Unit: milliseconds.
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # Indicates whether the task is complete. Valid values:
+        # Indicates whether the task is completed. Valid values:
         # 
-        # - **0**: The task is in progress.
+        # - **0**: Not completed.
+        # - **1**: Completed.
         # 
-        # - **1**: The task is complete.
-        # 
-        # > If this parameter is **0** and the **JobId** parameter is returned, the current request is an asynchronous request and you cannot obtain the returned results. You must use the value of **JobId** to initiate another request. Set the **Filters** parameter to the value of **JobId**. Example: `Filters=[{"Key": "JobId", "Value": "******"}]`.
+        # > If **Finish** is 0 and the **JobId** field is included, the current request is an asynchronous request and the result cannot be directly obtained. You must query the result based on **JobId**. When you query the result, use **JobId** as the input value for **Filters**. Example: `Filters=[{"Key": "JobId", "Value": "******"}]`.
         self.finish = finish
-        # The details of the SQL logs.
+        # The list data.
         self.items = items
-        # The asynchronous task ID.
+        # The ID of the asynchronous task.
         self.job_id = job_id
-        # The start time of the query. This value is a UNIX timestamp. Unit: milliseconds.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The total number of entries returned.
+        # The total number of records.
         self.total_records = total_records
 
     def validate(self):
@@ -245,59 +243,60 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(DaraModel):
         self.account_name = account_name
         # The affected columns.
         self.affect_columns = affect_columns
-        # The client IP address.
+        # The client IP address in the SQL log record.
+        # The IP address of the client in the SQL log record.
         self.client_ip = client_ip
-        # The client port.
+        # The port number of the client.
         self.client_port = client_port
-        # This parameter is reserved.
+        # The reserved parameter.
         self.collection = collection
-        # The connection ID.
+        # The connection ID of the SQL log record.
         self.connection_id = connection_id
-        # The execution duration. Unit: microseconds (μs).
+        # The execution duration in microseconds.
         self.consume = consume
-        # The CPU execution time. Unit: microseconds (μs).
+        # The CPU execution time in microseconds.
         self.cpu_time = cpu_time
-        # The database name.
+        # The name of the database.
         self.dbname = dbname
-        # The execution time. The time is in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The execution time in the UTC format: `yyyy-MM-ddTHH:mm:ssZ`.
         self.execute_time = execute_time
-        # The extended information. This parameter is reserved.
+        # The extended information field. This is a reserved parameter.
         self.ext = ext
-        # The number of rows fetched by the compute node (CN) in a PolarDB-X 2.0 instance.
+        # The number of rows pulled by the compute node (CN) in PolarDB-X 2.0.
         self.frows = frows
-        # The client IP address.
+        # The IP address of the client.
         self.host_address = host_address
-        # The lock wait time. Unit: milliseconds.
+        # The lock wait time in milliseconds.
         self.lock_time = lock_time
         # The number of logical reads.
         self.logic_read = logic_read
         # The node ID.
         self.node_id = node_id
-        # The execution time. This value is a UNIX timestamp. Unit: milliseconds.
+        # The execution timestamp. The value is a UNIX timestamp in milliseconds.
         self.origin_time = origin_time
-        # The degree of parallelism (DOP) for the PolarDB for MySQL instance.
+        # The parallel queue time of the PolarDB for MySQL instance in milliseconds.
         self.parallel_degree = parallel_degree
-        # The parallel queue time for the PolarDB for MySQL instance. Unit: milliseconds.
+        # The degree of parallelism of the PolarDB for MySQL instance.
         self.parallel_queue_time = parallel_queue_time
-        # The SQL parameters.
+        # The parameters of the SQL log record.
         self.params = params
-        # The number of asynchronous physical reads.
+        # The number of physical asynchronous reads.
         self.physic_async_read = physic_async_read
         # The number of physical reads.
         self.physic_read = physic_read
-        # The number of synchronous physical reads.
+        # The number of physical synchronous reads.
         self.physic_sync_read = physic_sync_read
-        # The protocol type.
+        # The protocol type of the SQL log record.
         self.protocol = protocol
         # The number of returned rows.
         self.return_rows = return_rows
         # The row key of the SQL log record.
         self.row_key = row_key
-        # The total number of rows updated or returned by the compute node (CN) of a PolarDB-X 2.0 instance.
+        # The total number of rows updated or returned by the compute node of the PolarDB-X 2.0 instance.
         self.rows = rows
         # The number of scanned rows.
         self.scan_rows = scan_rows
-        # The number of requests sent from a compute node (CN) to data nodes (DNs) in a PolarDB-X 2.0 instance.
+        # The number of requests from the compute node (CN) to the data node (DN) in PolarDB-X 2.0.
         self.scnt = scnt
         # The SQL ID.
         self.sql_id = sql_id
@@ -308,28 +307,26 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(DaraModel):
         # The execution status. Valid values:
         # 
         # - **0**: The execution was successful.
-        # 
         # - **1**: The execution failed.
         self.state = state
-        # The name of the table that the SQL statement references.
+        # The table name in the SQL log record.
         self.table_name = table_name
         # The thread ID.
         self.thread_id = thread_id
-        # The trace ID for a PolarDB-X 2.0 instance. This is the ID of the SQL statement that was executed on a data node (DN).
+        # The trace ID in PolarDB-X 2.0, which is the execution ID of the SQL statement on the data node.
         self.trace_id = trace_id
         # The transaction ID.
         self.trx_id = trx_id
         # The number of updated rows.
         self.update_rows = update_rows
-        # Indicates whether an In-Memory Column Index (IMCI) is used for the PolarDB for MySQL instance.
+        # Indicates whether the PolarDB for MySQL instance uses IMCI. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: Yes.
+        # - **false**: No.
         self.use_imci_engine = use_imci_engine
-        # The endpoint that is resolved from the query connection string.
+        # The resolved endpoint address of the query connection.
         self.vip = vip
-        # The number of write operations on an ApsaraDB RDS for SQL Server instance.
+        # The number of writes for the ApsaraDB RDS for SQL Server engine.
         self.writes = writes
 
     def validate(self):

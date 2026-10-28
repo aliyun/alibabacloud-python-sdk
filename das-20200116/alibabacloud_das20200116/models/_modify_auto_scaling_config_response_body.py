@@ -12,19 +12,18 @@ class ModifyAutoScalingConfigResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code returned.
+        # The returned status code.
         self.code = code
         # The returned message.
-        # 
-        # > If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
+        # > If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful:
         # 
-        # - **true**
+        # - **true**: The request was successful.
         # 
-        # - **false**
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

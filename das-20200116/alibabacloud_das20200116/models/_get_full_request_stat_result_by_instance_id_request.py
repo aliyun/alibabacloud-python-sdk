@@ -23,13 +23,13 @@ class GetFullRequestStatResultByInstanceIdRequest(DaraModel):
         start: int = None,
         user_id: str = None,
     ):
-        # Specifies whether to sort the results in ascending order. By default, the results are not sorted in ascending order.
+        # Specifies whether to sort the results in ascending order. Default value: false.
         self.asc = asc
         # The name of the database.
         self.db_name = db_name
-        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end time of the query. The time is a UNIX timestamp in milliseconds.
         # 
-        # > The end time must be later than the start time. The interval cannot exceed one day.
+        # > The end time must be later than the start time, and the interval between the start time and the end time cannot exceed one day.
         # 
         # This parameter is required.
         self.end = end
@@ -37,19 +37,19 @@ class GetFullRequestStatResultByInstanceIdRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The keywords that are used for query.
+        # The query keyword.
         self.keyword = keyword
         # The node ID.
         # 
-        # > You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
+        # > For PolarDB for MySQL instances, the node ID is required.
         self.node_id = node_id
-        # The field by which to sort the returned entries. Default value: **count**. Valid values:
+        # The field by which to sort the results. Default value: **count**.
         # 
         # - **count**: the number of executions.
         # 
-        # - **avgRt**: the average execution duration.
+        # - **avgRt**: the average execution time.
         # 
-        # - **rtRate**: the execution duration percentage.
+        # - **rtRate**: the execution time proportion.
         # 
         # - **rowsExamined**: the total number of scanned rows.
         # 
@@ -57,19 +57,19 @@ class GetFullRequestStatResultByInstanceIdRequest(DaraModel):
         # 
         # - **avgRowsReturned**: the average number of returned rows.
         self.order_by = order_by
-        # The IP address of the client that executes the SQL statement.
+        # The IP address of the client that executed the SQL statement.
         # 
-        # > This parameter is optional. If this parameter is specified, the full request statistics of the specified IP address are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
+        # > This parameter is optional. If you specify a client IP address, the full request data of the specified client IP address is aggregated. If you leave this parameter empty, the full request data of the entire database instance is aggregated.
         self.origin_host = origin_host
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number for the paged query. The paging starts from 1. Default value: 1.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # The number of entries per page. Default value: 20.
+        # The data volume per page for paging in a paged query. Default value: 20.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The role of the node in the PolarDB-X 2.0 instance. Valid values:
+        # The node information of the PolarDB-X 2.0 database instance. Valid values:
         # 
         # - **polarx_cn**: compute node.
         # 
@@ -77,21 +77,21 @@ class GetFullRequestStatResultByInstanceIdRequest(DaraModel):
         self.role = role
         # The SQL ID.
         # 
-        # > If this parameter is specified, the full request statistics of the specified SQL query are collected. If this parameter is left empty, the full request statistics of the entire database instance are collected.
+        # > If you specify an SQL ID, the full request data of the specified SQL ID is aggregated. If you leave this parameter empty, the full request data of the entire database instance is aggregated.
         self.sql_id = sql_id
         # The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **LOGIN**, **LOGOUT**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
         # 
-        # > If your database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL cluster, or a PolarDB-X 2.0 instance, the statistics can be collected based on the SQL statement type.
+        # > If the database instance is an ApsaraDB RDS for MySQL, PolarDB for MySQL, or PolarDB-X 2.0 instance, you can aggregate data by SQL statement type.
         self.sql_type = sql_type
-        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the query. The format is a UNIX timestamp, in milliseconds.
         # 
-        # > The start time can be up to 90 days earlier than the current time.
+        # > The start time must be within the SQL Explorer storage duration for the database instance and cannot be more than 90 days earlier than the current time.
         # 
         # This parameter is required.
         self.start = start
-        # The ID of the Alibaba Cloud account that was used to create the database instance.
+        # The instance ID, which is the ID of the Alibaba Cloud account that created the database instance.
         # 
-        # > This parameter is optional. The system can automatically obtain the Alibaba Cloud account ID based on the value of InstanceId when you call the GetFullRequestOriginStatByInstanceId operation.
+        # > This parameter is optional. After you enter the ID of the target database instance, the system automatically obtains the instance ID when you call the API operation.
         self.user_id = user_id
 
     def validate(self):

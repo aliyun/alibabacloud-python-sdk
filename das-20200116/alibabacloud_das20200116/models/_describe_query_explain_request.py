@@ -13,19 +13,20 @@ class DescribeQueryExplainRequest(DaraModel):
         schema: str = None,
         sql: str = None,
     ):
-        # The name of the database.
+        # The database name.
         self.db_name = db_name
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the node.
+        # The instance ID.
         # 
-        # > For PolarDB for MySQL instances, if you specify a node ID, the system queries the execution plan on that node. Otherwise, it queries the execution plan on a secondary node.For high availability ApsaraDB RDS for MySQL instances, if you specify an instance ID, the system queries the execution plan on that node. Otherwise, it queries the execution plan on a secondary node.
+        # > For a PolarDB for MySQL instance, if a instance ID is specified, the execution plan is queried on the specified node. Otherwise, the execution plan is queried on a secondary node.
+        # > For an ApsaraDB RDS for MySQL High-availability Edition instance, if a instance ID is specified, the execution plan is queried on the specified node. Otherwise, the execution plan is queried on the secondary node.
         self.node_id = node_id
-        # Schema information. This is a reserved parameter.
+        # The schema information. This is a reserved parameter.
         self.schema = schema
-        # The SQL statement for which you want to get the execution plan.
+        # The SQL statement for which to query the execution plan.
         # 
         # This parameter is required.
         self.sql = sql

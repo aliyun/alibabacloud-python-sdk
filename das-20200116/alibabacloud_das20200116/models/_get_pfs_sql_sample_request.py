@@ -13,25 +13,24 @@ class GetPfsSqlSampleRequest(DaraModel):
         sql_id: str = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end time of the query. The time is a UNIX timestamp in milliseconds.
         # 
-        # > The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
+        # > The end time must be later than the start time. You can query data for up to seven days within the last month.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The instance ID.
-        # 
-        # > Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported
+        # > Only ApsaraDB RDS for MySQL and PolarDB for MySQL instances are supported.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The node ID.
         # 
-        # > For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
+        # > For an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster, you must specify the node ID.
         self.node_id = node_id
         # The SQL ID.
         self.sql_id = sql_id
-        # The beginning of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the query. The time is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time
