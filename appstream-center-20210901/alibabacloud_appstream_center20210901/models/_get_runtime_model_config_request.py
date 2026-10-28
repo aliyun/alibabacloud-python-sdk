@@ -12,29 +12,36 @@ class GetRuntimeModelConfigRequest(DaraModel):
         include_risk_info: bool = None,
         runtime_id: str = None,
         runtime_type: str = None,
+        smart_model: bool = None,
     ):
-        # The Agent platform.
+        # The agent platform.
         self.agent_platform = agent_platform
-        # The Agent provider.
+        # The agent provider.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
         # Specifies whether to include risk information.
         self.include_risk_info = include_risk_info
-        # The Agent runtime ID. The ID mappings are as follows:
+        # The ID of the agent runtime. The ID mappings are as follows:
         # 
         # JVS Computer: JVS Computer ID, in the format of jvs-xxxx.
         # 
-        # OpenClaw: Cloud computer ID, in the format of ecd-xxxx.
+        # OpenClaw: Cloud desktop ID, in the format of ecd-xxxx.
         # 
         # Hermes Agent: Hermes Agent ID, in the format of jvs-xxxx.
         # 
         # This parameter is required.
         self.runtime_id = runtime_id
-        # The Agent runtime type.
+        # The type of the agent runtime.
         # 
         # This parameter is required.
         self.runtime_type = runtime_type
+        # The smart model filter. Valid values:
+        # - true: Queries the system wuying-preset provider models based on the business type of the runtime.
+        # - false: Excludes wuying-preset from the effective configuration.
+        # - Empty: Returns both smart and non-smart models in the effective configuration.
+        # The business type is read by the server from runtime.biz_type, and the BizType input parameter is not required. Risk information is still independently controlled by IncludeRiskInfo.
+        self.smart_model = smart_model
 
     def validate(self):
         pass
@@ -59,6 +66,9 @@ class GetRuntimeModelConfigRequest(DaraModel):
         if self.runtime_type is not None:
             result['RuntimeType'] = self.runtime_type
 
+        if self.smart_model is not None:
+            result['SmartModel'] = self.smart_model
+
         return result
 
     def from_map(self, m: dict = None):
@@ -77,6 +87,9 @@ class GetRuntimeModelConfigRequest(DaraModel):
 
         if m.get('RuntimeType') is not None:
             self.runtime_type = m.get('RuntimeType')
+
+        if m.get('SmartModel') is not None:
+            self.smart_model = m.get('SmartModel')
 
         return self
 

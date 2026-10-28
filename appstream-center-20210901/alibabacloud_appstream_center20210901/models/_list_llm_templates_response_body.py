@@ -18,7 +18,7 @@ class ListLlmTemplatesResponseBody(DaraModel):
     ):
         # The list of returned data objects.
         self.data = data
-        # The page number of the current query results.
+        # The page number of the returned query results.
         self.page_number = page_number
         # The number of query results per page.
         self.page_size = page_size
@@ -100,7 +100,7 @@ class ListLlmTemplatesResponseBodyData(DaraModel):
     ):
         # The model configuration JSON object.
         self.config = config
-        # The credit consumption multiplier (rate). An empty value indicates that the model does not participate in credit-based billing.
+        # The credit consumption multiplier. An empty value indicates that the model does not participate in credit billing.
         self.credit_multiplier = credit_multiplier
         # The template description.
         self.description = description
@@ -108,25 +108,25 @@ class ListLlmTemplatesResponseBodyData(DaraModel):
         self.features = features
         # The inference metadata, including request and response modalities.
         self.inference_metadata = inference_metadata
-        # Indicates whether this is the default model under the associated model group.
+        # Indicates whether the model is the default model in the associated model group.
         self.is_default_model = is_default_model
         # The model code.
         self.llm_code = llm_code
         # The model template ID.
         self.llm_template_id = llm_template_id
-        # The model information, such as context window size and maximum input/output tokens.
+        # The model information, such as the context window size and the maximum number of input/output tokens.
         self.model_info = model_info
         # The template name.
         self.name = name
-        # The list of pricing information.
+        # The list of price information.
         self.prices = prices
-        # The ID of the model provider template.
+        # The model provider template ID.
         self.provider_template_id = provider_template_id
-        # The publish time in ISO 8601 format, such as 2026-03-04T06:25:17.000+00:00.
+        # The published time in ISO 8601 format, such as 2026-03-04T06:25:17.000+00:00.
         self.published_time = published_time
-        # The authorization scope of the model group. Valid values: ALL_USER (all users), USER_MIXED (specified users and user groups), and RESOURCE_MIXED (specified resources). Returned only when SmartModel is true.
+        # The authorization scope of the associated model group. Valid values: ALL_USER (all users), USER_MIXED (specified users and user groups), and RESOURCE_MIXED (specified resources). This parameter is returned only when SmartModel is true.
         self.ref_scope = ref_scope
-        # The number of routing policies configured under this model tier. Returned only when SmartModel is true. Returns 0 for tiers with no configured policies.
+        # The number of route policies configured for the model tier. This parameter is returned only when SmartModel is true. If no policies are configured for the tier, 0 is returned.
         self.route_policy_count = route_policy_count
 
     def validate(self):
@@ -253,7 +253,7 @@ class ListLlmTemplatesResponseBodyDataPrices(DaraModel):
         prices: List[main_models.ListLlmTemplatesResponseBodyDataPricesPrices] = None,
         range_name: str = None,
     ):
-        # The list of prices within this range.
+        # The list of prices within the range.
         self.prices = prices
         # The range name, such as Default or 0-1M tokens.
         self.range_name = range_name
@@ -301,9 +301,9 @@ class ListLlmTemplatesResponseBodyDataPricesPrices(DaraModel):
     ):
         # The price in string format, such as 0.2.
         self.price = price
-        # The price name, such as Input, Output, or Image Generation.
+        # The price name, such as input, output, or image generation.
         self.price_name = price_name
-        # The price unit, such as per image or per thousand tokens.
+        # The price unit, such as per image or per 1,000 tokens.
         self.price_unit = price_unit
 
     def validate(self):
@@ -381,9 +381,9 @@ class ListLlmTemplatesResponseBodyDataCreditMultiplier(DaraModel):
         max: float = None,
         min: float = None,
     ):
-        # The maximum multiplier. An empty value indicates no upper limit. For example, Min=1 with an empty Max is displayed as 1x and above.
+        # The maximum multiplier. An empty value indicates no upper limit. For example, if Min is 1 and Max is empty, it is displayed as starting from 1x.
         self.max = max
-        # The minimum multiplier. When equal to Max, it is a fixed multiplier. For example, Min=Max=2 is displayed as 2x.
+        # The minimum multiplier. When it is equal to Max, it is a fixed multiplier. For example, if Min and Max are both 2, it is displayed as 2x.
         self.min = min
 
     def validate(self):

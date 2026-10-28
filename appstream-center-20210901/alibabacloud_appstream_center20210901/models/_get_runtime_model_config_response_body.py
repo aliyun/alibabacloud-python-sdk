@@ -56,17 +56,17 @@ class GetRuntimeModelConfigResponseBodyData(DaraModel):
         model_template_ref_type: str = None,
         resource_group_id: str = None,
     ):
-        # The default model (format: providerName/llmCode).
+        # The default model, in the format of providerName/llmCode.
         self.default_model = default_model
         # The list of model providers.
         self.model_provider_list = model_provider_list
-        # The configured model group ID.
+        # The ID of the configured model group.
         self.model_template_id = model_template_id
-        # The model group name.
+        # The name of the model group.
         self.model_template_name = model_template_name
-        # The model template association type (only when present).
+        # The model template association type.
         self.model_template_ref_type = model_template_ref_type
-        # The resource group ID to which the runtime belongs (null if not assigned to a resource group).
+        # The ID of the resource group to which the runtime belongs. If the runtime does not belong to any resource group, the value is null.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -137,11 +137,11 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderList(DaraModel):
     ):
         # The list of model information.
         self.llm_info_list = llm_info_list
-        # The model provider template ID.
+        # The ID of the model provider template.
         self.model_provider_template_id = model_provider_template_id
-        # The model provider template name.
+        # The name of the model provider template.
         self.name = name
-        # The model provider name.
+        # The name of the model provider.
         self.provider_name = provider_name
 
     def validate(self):
@@ -202,21 +202,21 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList(DaraMode
         published_time: str = None,
         risk_type: str = None,
     ):
-        # The credit consumption multiplier. A null value indicates that the model does not participate in credit-based billing.
+        # The credit consumption multiplier. If this parameter is empty, it indicates that the model does not participate in credit billing.
         self.credit_multiplier = credit_multiplier
         # The model description.
         self.description = description
-        # The list of model features (such as function-calling, web-search, and structured-outputs).
+        # The list of model features, such as function-calling, web-search, and structured-outputs.
         self.features = features
-        # The inference metadata (request and response modalities).
+        # The inference metadata, including request and response modalities.
         self.inference_metadata = inference_metadata
         # The model code.
         self.llm_code = llm_code
         # The model name.
         self.name = name
-        # The publish time (ISO 8601 format).
+        # The published time in ISO 8601 format.
         self.published_time = published_time
-        # The model risk type (returned only when the request parameter IncludeRiskInfo is set to true).
+        # The model risk type. This parameter is returned only when the IncludeRiskInfo request parameter is set to true.
         self.risk_type = risk_type
 
     def validate(self):
@@ -292,9 +292,9 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInference
         request_modality: List[str] = None,
         response_modality: List[str] = None,
     ):
-        # The list of request modalities (such as Text, Image, and Audio).
+        # The list of request modalities, such as Text, Image, and Audio.
         self.request_modality = request_modality
-        # The list of response modalities (such as Text, Image, and Audio).
+        # The list of response modalities, such as Text, Image, and Audio.
         self.response_modality = response_modality
 
     def validate(self):
@@ -329,9 +329,9 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMul
         max: float = None,
         min: float = None,
     ):
-        # The maximum multiplier. A null value indicates no upper limit. For example, Min=1 with a null Max is displayed as 1x and above.
+        # The upper limit of the multiplier. If this parameter is empty, it indicates that there is no upper limit. For example, if Min is 1 and Max is empty, it is displayed as 1x and above.
         self.max = max
-        # The minimum multiplier. When equal to Max, the multiplier is fixed. For example, Min=Max=2 is displayed as 2x.
+        # The lower limit of the multiplier. When it is equal to Max, it is a fixed multiplier. For example, if Min and Max are both 2, it is displayed as 2x.
         self.min = min
 
     def validate(self):

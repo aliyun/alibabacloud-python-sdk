@@ -21,21 +21,21 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         self.auth_notification_enabled = auth_notification_enabled
         # The browser configuration.
         self.browser_config_shrink = browser_config_shrink
-        # The ID of the cloud browser to modify.
+        # The ID of the cloud browser.
         # 
         # This parameter is required.
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
-        # The maximum resource count. This parameter takes effect for monthly active pay-as-you-go billing.
+        # The maximum resource count. This parameter takes effect only for the pay-as-you-go billing method based on monthly active users.
         self.max_amount = max_amount
-        # The network configuration.
+        # The network configurations.
         self.network_shrink = network_shrink
         # The access policy.
         self.policy_shrink = policy_shrink
         # The storage-related policy.
         self.storage_policy_shrink = storage_policy_shrink
-        # The timers.
+        # The timer.
         self.timers_shrink = timers_shrink
 
     def validate(self):

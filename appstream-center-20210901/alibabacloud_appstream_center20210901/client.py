@@ -3328,6 +3328,8 @@ class Client(OpenApiClient):
             query['RuntimeId'] = request.runtime_id
         if not DaraCore.is_null(request.runtime_type):
             query['RuntimeType'] = request.runtime_type
+        if not DaraCore.is_null(request.smart_model):
+            query['SmartModel'] = request.smart_model
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3364,6 +3366,8 @@ class Client(OpenApiClient):
             query['RuntimeId'] = request.runtime_id
         if not DaraCore.is_null(request.runtime_type):
             query['RuntimeType'] = request.runtime_type
+        if not DaraCore.is_null(request.smart_model):
+            query['SmartModel'] = request.smart_model
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4668,6 +4672,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
         if not DaraCore.is_null(request.llm_code):
             query['LlmCode'] = request.llm_code
         if not DaraCore.is_null(request.llm_template_ids_shrink):
@@ -4714,6 +4720,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
         if not DaraCore.is_null(request.llm_code):
             query['LlmCode'] = request.llm_code
         if not DaraCore.is_null(request.llm_template_ids_shrink):
@@ -6868,6 +6876,92 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyNodePoolAttributeResponse:
         runtime = RuntimeOptions()
         return await self.modify_node_pool_attribute_with_options_async(request, runtime)
+
+    def modify_share_image_with_options(
+        self,
+        request: main_models.ModifyShareImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyShareImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.add_account):
+            body['AddAccount'] = request.add_account
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.image_id):
+            body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.remove_account):
+            body['RemoveAccount'] = request.remove_account
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyShareImage',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyShareImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_share_image_with_options_async(
+        self,
+        request: main_models.ModifyShareImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyShareImageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.add_account):
+            body['AddAccount'] = request.add_account
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.image_id):
+            body['ImageId'] = request.image_id
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.remove_account):
+            body['RemoveAccount'] = request.remove_account
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyShareImage',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyShareImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_share_image(
+        self,
+        request: main_models.ModifyShareImageRequest,
+    ) -> main_models.ModifyShareImageResponse:
+        runtime = RuntimeOptions()
+        return self.modify_share_image_with_options(request, runtime)
+
+    async def modify_share_image_async(
+        self,
+        request: main_models.ModifyShareImageRequest,
+    ) -> main_models.ModifyShareImageResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_share_image_with_options_async(request, runtime)
 
     def modify_tenant_config_with_options(
         self,

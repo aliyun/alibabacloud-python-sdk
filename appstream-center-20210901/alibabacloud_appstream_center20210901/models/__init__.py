@@ -223,6 +223,9 @@ from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequest
 from ._modify_node_pool_attribute_shrink_request import ModifyNodePoolAttributeShrinkRequest
 from ._modify_node_pool_attribute_response_body import ModifyNodePoolAttributeResponseBody
 from ._modify_node_pool_attribute_response import ModifyNodePoolAttributeResponse
+from ._modify_share_image_request import ModifyShareImageRequest
+from ._modify_share_image_response_body import ModifyShareImageResponseBody
+from ._modify_share_image_response import ModifyShareImageResponse
 from ._modify_tenant_config_request import ModifyTenantConfigRequest
 from ._modify_tenant_config_response_body import ModifyTenantConfigResponseBody
 from ._modify_tenant_config_response import ModifyTenantConfigResponse
@@ -718,6 +721,9 @@ __all__ = [
     ModifyNodePoolAttributeShrinkRequest,
     ModifyNodePoolAttributeResponseBody,
     ModifyNodePoolAttributeResponse,
+    ModifyShareImageRequest,
+    ModifyShareImageResponseBody,
+    ModifyShareImageResponse,
     ModifyTenantConfigRequest,
     ModifyTenantConfigResponseBody,
     ModifyTenantConfigResponse,

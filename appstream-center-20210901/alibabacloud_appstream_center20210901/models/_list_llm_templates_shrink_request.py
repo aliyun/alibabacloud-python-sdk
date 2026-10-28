@@ -8,6 +8,7 @@ class ListLlmTemplatesShrinkRequest(DaraModel):
     def __init__(
         self,
         biz_type: int = None,
+        language: str = None,
         llm_code: str = None,
         llm_template_ids_shrink: str = None,
         model_template_id: str = None,
@@ -18,23 +19,28 @@ class ListLlmTemplatesShrinkRequest(DaraModel):
     ):
         # The business type. This parameter is required when SmartModel is set to true.
         self.biz_type = biz_type
-        # The model code used for filtering. Fuzzy match is supported.
+        # The display language of the model. Valid values:
+        # - zh-CN: Simplified Chinese.
+        # - en-US: English.
+        # - ja-JP: Japanese.
+        # - zh-TW: Traditional Chinese.
+        # Default value: zh-CN. Currently, zh-TW returns Simplified Chinese, and ja-JP returns English. If the model is not included in Alibaba Cloud Model Studio or the English text is missing, the original source text is retained without automatic translation.
+        self.language = language
+        # The model code for filtering. Fuzzy match is supported.
         self.llm_code = llm_code
-        # The model template IDs used for filtering.
+        # The model template IDs for filtering.
         self.llm_template_ids_shrink = llm_template_ids_shrink
-        # The ID of the associated model group.
+        # The associated model group ID.
         self.model_template_id = model_template_id
-        # The page number. Pages start from page 1. Both 0 and 1 return the same result.
+        # The page number. Pages start from 1. A value of 0 returns the same result as 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the model provider template.
+        # The model provider template ID.
         self.provider_template_id = provider_template_id
         # Specifies whether to query smart models. Valid values:
-        # 
-        # - true: Only LLMs under system preset smart models are returned. In this case, BizType is required.
-        # - false: Smart model filtering is not applied.
-        # 
+        # - true: Only LLMs under system-preset smart models are returned. In this case, BizType is required.
+        # - false: Smart models are not specifically filtered.
         # Default value: false.
         self.smart_model = smart_model
 
@@ -48,6 +54,9 @@ class ListLlmTemplatesShrinkRequest(DaraModel):
             result = _map
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
+
+        if self.language is not None:
+            result['Language'] = self.language
 
         if self.llm_code is not None:
             result['LlmCode'] = self.llm_code
@@ -76,6 +85,9 @@ class ListLlmTemplatesShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
+
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
 
         if m.get('LlmCode') is not None:
             self.llm_code = m.get('LlmCode')

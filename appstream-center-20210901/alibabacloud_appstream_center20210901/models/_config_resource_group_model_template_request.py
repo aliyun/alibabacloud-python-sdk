@@ -10,11 +10,11 @@ class ConfigResourceGroupModelTemplateRequest(DaraModel):
         model_template_id: str = None,
         resource_group_id: str = None,
     ):
-        # The model group ID.
+        # The ID of the model group.
         # 
         # This parameter is required.
         self.model_template_id = model_template_id
-        # The resource group ID.
+        # The ID of the resource group.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id

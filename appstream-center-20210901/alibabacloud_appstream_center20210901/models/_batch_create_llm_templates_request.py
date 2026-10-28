@@ -14,11 +14,11 @@ class BatchCreateLlmTemplatesRequest(DaraModel):
         model_template_id: str = None,
         provider_template_id: str = None,
     ):
-        # The list of model configurations to create.
+        # The list of model configurations to be created.
         self.llm_template_items = llm_template_items
         # The ID of the associated model group.
         self.model_template_id = model_template_id
-        # The ID of the model provider template to which the models belong.
+        # The ID of the model provider template to which the model templates belong.
         # 
         # This parameter is required.
         self.provider_template_id = provider_template_id
@@ -72,13 +72,13 @@ class BatchCreateLlmTemplatesRequestLlmTemplateItems(DaraModel):
         llm_code: str = None,
         name: str = None,
     ):
-        # The model configuration JSON object.
+        # The JSON object for model configuration.
         self.config = config
         # The model description.
         self.description = description
-        # Specifies whether to set the model as the default model. A model group can have at most one default model.
+        # Specifies whether to set the model as the default model. Each model group can have at most one default model.
         self.is_default_model = is_default_model
-        # The model code, which must be unique within the same provider.
+        # The model code. It must be unique under the same provider.
         self.llm_code = llm_code
         # The model name.
         self.name = name

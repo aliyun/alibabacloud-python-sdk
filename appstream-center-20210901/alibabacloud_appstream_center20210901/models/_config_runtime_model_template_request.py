@@ -17,11 +17,11 @@ class ConfigRuntimeModelTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.model_template_id = model_template_id
-        # The list of Agent runtime IDs.
+        # The list of agent runtime IDs.
         # 
         # This parameter is required.
         self.runtime_ids = runtime_ids
-        # The Agent runtime type.
+        # The agent runtime type.
         # 
         # This parameter is required.
         self.runtime_type = runtime_type

@@ -24,21 +24,21 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         self.auth_notification_enabled = auth_notification_enabled
         # The browser configuration.
         self.browser_config = browser_config
-        # The ID of the cloud browser to modify.
+        # The ID of the cloud browser.
         # 
         # This parameter is required.
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
-        # The maximum resource count. This parameter takes effect for monthly active pay-as-you-go billing.
+        # The maximum resource count. This parameter takes effect only for the pay-as-you-go billing method based on monthly active users.
         self.max_amount = max_amount
-        # The network configuration.
+        # The network configurations.
         self.network = network
         # The access policy.
         self.policy = policy
         # The storage-related policy.
         self.storage_policy = storage_policy
-        # The timers.
+        # The timer.
         self.timers = timers
 
     def validate(self):
@@ -171,7 +171,7 @@ class ModifyBrowserInstanceGroupRequestStoragePolicy(DaraModel):
         self,
         user_profile: main_models.ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile = None,
     ):
-        # The user roaming policy.
+        # The user roaming-related policy.
         self.user_profile = user_profile
 
     def validate(self):
@@ -235,6 +235,7 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         disconnect_keep_session_time: int = None,
         file_manager: str = None,
         html_5file_transfer: str = None,
+        multi_screen: str = None,
         no_operation_disconnect: str = None,
         no_operation_disconnect_time: int = None,
         policy_id: str = None,
@@ -243,31 +244,33 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         video_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyVideoPolicy = None,
         watermark_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy = None,
     ):
-        # Specifies whether to enable screenshot protection.
+        # Specifies whether to enable screen capture prevention.
         self.app_content_protection = app_content_protection
         # The server-side access IP address whitelist.
         self.authorize_access_policy_rules = authorize_access_policy_rules
-        # The client type access control settings.
+        # The logon client type control.
         self.client_types = client_types
-        # The clipboard-related policy.
+        # The clipboard policies.
         self.clipboard_policy = clipboard_policy
-        # The data retention policy after disconnection.
+        # The data retention policy upon disconnection.
         self.disconnect_keep_session = disconnect_keep_session
-        # The session retention duration after disconnection.
+        # The session retention duration upon disconnection.
         self.disconnect_keep_session_time = disconnect_keep_session_time
-        # Specifies whether to enable the floating ball file manager.
+        # The floating ball file manager switch.
         self.file_manager = file_manager
         # The file transfer policy for the web client.
         self.html_5file_transfer = html_5file_transfer
-        # Specifies whether to disconnect the session when no operation is performed.
+        # The cloud browser dual-screen switch.
+        self.multi_screen = multi_screen
+        # The no-operation disconnect policy.
         self.no_operation_disconnect = no_operation_disconnect
-        # The idle timeout period before the session is disconnected, in seconds.
+        # The no-operation disconnect time in seconds.
         self.no_operation_disconnect_time = no_operation_disconnect_time
         # The policy ID.
         self.policy_id = policy_id
         # The policy version.
         self.policy_version = policy_version
-        # The server access IP address whitelist rules to revoke.
+        # The server access IP address whitelist to be revoked.
         self.revoke_access_policy_rules = revoke_access_policy_rules
         # The video policy.
         self.video_policy = video_policy
@@ -327,6 +330,9 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         if self.html_5file_transfer is not None:
             result['Html5FileTransfer'] = self.html_5file_transfer
 
+        if self.multi_screen is not None:
+            result['MultiScreen'] = self.multi_screen
+
         if self.no_operation_disconnect is not None:
             result['NoOperationDisconnect'] = self.no_operation_disconnect
 
@@ -384,6 +390,9 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
 
         if m.get('Html5FileTransfer') is not None:
             self.html_5file_transfer = m.get('Html5FileTransfer')
+
+        if m.get('MultiScreen') is not None:
+            self.multi_screen = m.get('MultiScreen')
 
         if m.get('NoOperationDisconnect') is not None:
             self.no_operation_disconnect = m.get('NoOperationDisconnect')
@@ -484,9 +493,9 @@ class ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules(DaraModel):
         cidr_ip: str = None,
         description: str = None,
     ):
-        # The IPv4 address or CIDR block to revoke.
+        # The IPv4 address or CIDR block to be revoked.
         self.cidr_ip = cidr_ip
-        # The description of the access IP address whitelist rule to revoke.
+        # The description of the access IP address whitelist rule to be revoked.
         self.description = description
 
     def validate(self):
@@ -553,25 +562,25 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         self.rich_text_clipboard = rich_text_clipboard
         # The rich text clipboard limit.
         self.rich_text_clipboard_limit = rich_text_clipboard_limit
-        # The size limit for rich text clipboard data transferred from the cloud.
+        # The rich text clipboard read size.
         self.rich_text_clipboard_read_limit = rich_text_clipboard_read_limit
-        # The size unit for rich text clipboard data transferred from the cloud.
+        # The rich text clipboard read size unit.
         self.rich_text_clipboard_read_size_unit = rich_text_clipboard_read_size_unit
         # The rich text clipboard size unit.
         self.rich_text_clipboard_size_unit = rich_text_clipboard_size_unit
-        # The size limit for rich text clipboard data transferred to the cloud.
+        # The rich text clipboard write size.
         self.rich_text_clipboard_write_limit = rich_text_clipboard_write_limit
-        # The size unit for rich text clipboard data transferred to the cloud.
+        # The rich text clipboard write size unit.
         self.rich_text_clipboard_write_size_unit = rich_text_clipboard_write_size_unit
         # The text clipboard policy.
         self.text_clipboard = text_clipboard
-        # The size limit for text clipboard data transferred from the cloud.
+        # The text clipboard read size.
         self.text_clipboard_read_limit = text_clipboard_read_limit
-        # The size unit for text clipboard data transferred from the cloud.
+        # The text clipboard read size unit.
         self.text_clipboard_read_size_unit = text_clipboard_read_size_unit
-        # The size limit for text clipboard data transferred to the cloud.
+        # The text clipboard write size.
         self.text_clipboard_write_limit = text_clipboard_write_limit
-        # The size unit for text clipboard data transferred to the cloud.
+        # The text clipboard write size unit.
         self.text_clipboard_write_size_unit = text_clipboard_write_size_unit
 
     def validate(self):
@@ -778,13 +787,13 @@ class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
         restricted_urls: List[main_models.ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs] = None,
         restricted_urls_file_path: str = None,
     ):
-        # The access restriction type.
+        # The type of access restriction.
         self.access_restriction = access_restriction
         # The list of domain names to remove.
         self.remove_restricted_urlids = remove_restricted_urlids
         # The restricted domain name configurations.
         self.restricted_urls = restricted_urls
-        # The file path of the restricted URLs.
+        # The file path for network-restricted URLs.
         self.restricted_urls_file_path = restricted_urls_file_path
 
     def validate(self):
@@ -839,7 +848,7 @@ class ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs(DaraModel):
         restricted_urlid: str = None,
         url: str = None,
     ):
-        # The domain name configuration ID. This parameter is required only when you modify an existing configuration.
+        # The ID of the domain name configuration. This parameter is required only when you modify the configuration.
         self.restricted_urlid = restricted_urlid
         # The domain name.
         self.url = url
@@ -882,15 +891,15 @@ class ModifyBrowserInstanceGroupRequestBrowserConfig(DaraModel):
     ):
         # The bookmarks.
         self.bookmarks = bookmarks
-        # The bookmark list file path.
+        # The file path of the bookmark list.
         self.bookmarks_file_path = bookmarks_file_path
         # The startup parameters.
         self.browser_param = browser_param
-        # Specifies whether to enable cookies synchronization.
+        # Specifies whether to enable cookie synchronization.
         self.cookies_sync = cookies_sync
         # The homepage.
         self.homepage = homepage
-        # The list of bookmarks to remove.
+        # The list of bookmarks to be removed.
         self.remove_bookmarks = remove_bookmarks
 
     def validate(self):
@@ -961,7 +970,7 @@ class ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks(DaraModel):
     ):
         # The folder to which the bookmark belongs.
         self.bookmark_folder = bookmark_folder
-        # The bookmark ID. This parameter is required only for update operations.
+        # The bookmark ID. This parameter is required only for modification scenarios.
         self.bookmark_id = bookmark_id
         # The bookmark name.
         # 

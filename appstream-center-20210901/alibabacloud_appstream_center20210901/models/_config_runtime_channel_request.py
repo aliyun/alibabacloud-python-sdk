@@ -18,13 +18,13 @@ class ConfigRuntimeChannelRequest(DaraModel):
         runtime_ids: List[str] = None,
         runtime_type: str = None,
     ):
-        # The Agent platform.
+        # The agent platform.
         self.agent_platform = agent_platform
-        # The Agent provider.
+        # The agent provider.
         # 
-        # - JVS Computer: set to OpenClaw.
-        # - OpenClaw: set to OpenClaw.
-        # - Hermes Agent: set to HermesAgent.
+        # - JVS Computer: Set to OpenClaw.
+        # - OpenClaw: Set to OpenClaw.
+        # - Hermes Agent: Set to HermesAgent.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
@@ -32,9 +32,9 @@ class ConfigRuntimeChannelRequest(DaraModel):
         # 
         # This parameter is required.
         self.code = code
-        # The channel configuration JSON string.
+        # The JSON string for channel configuration.
         # 
-        # - Simple configuration mode example:
+        # - Example of the simple configuration mode:
         # ```json
         # {
         #     "appKey": "abc",
@@ -42,7 +42,7 @@ class ConfigRuntimeChannelRequest(DaraModel):
         # }
         # ```
         # 
-        # - Custom configuration mode example:
+        # - Example of the custom configuration mode:
         # ```json
         # {
         #   "enabled": true,
@@ -57,13 +57,13 @@ class ConfigRuntimeChannelRequest(DaraModel):
         self.config_mode = config_mode
         # The channel name.
         # 
-        # If you leave this parameter empty, the system automatically uses the value of Code as the name.
+        # If you do not specify this parameter, the system automatically uses the value of Code as the name.
         self.name = name
         # The list of runtime IDs.
         # 
         # This parameter is required.
         self.runtime_ids = runtime_ids
-        # The Agent runtime type.
+        # The agent runtime type.
         # 
         # This parameter is required.
         self.runtime_type = runtime_type

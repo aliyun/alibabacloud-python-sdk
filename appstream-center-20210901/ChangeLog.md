@@ -1,3 +1,13 @@
+2026-10-28 Version: 5.10.0
+- Support API ModifyShareImage.
+- Update API CreateBrowserInstanceGroup: add request parameters Policy.MultiScreen.
+- Update API GetBrowserInstanceGroup: add response parameters Body.BrowserInstanceGroupModel.Policy.MultiScreen.
+- Update API GetRuntimeModelConfig: add request parameters SmartModel.
+- Update API ListBrowserInstanceGroup: add response parameters Body.BrowserInstanceGroupModels.$.Policy.MultiScreen.
+- Update API ListLlmTemplates: add request parameters Language.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.MultiScreen.
+
+
 2026-09-22 Version: 5.9.0
 - Support API ListAppsByAppInstanceGroupId.
 - Support API ListAuthorizedAppsByUser.

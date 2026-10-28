@@ -21,13 +21,13 @@ class RenewAppInstanceGroupShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # Specifies whether to enable automatic payment.
+        # Specifies whether to enable automatic payment. If RenewMode is set to RENEW_SPECIFIED_NODE_COUNT or RENEW_SPECIFIED_NODE_IDS, this parameter must be set to false.
         self.auto_pay = auto_pay
-        # The numeric part of the resource purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
+        # The numeric part of the resource purchase duration. Use this parameter together with `PeriodUnit` to specify the full purchase duration.
         # 
         # This parameter is required.
         self.period = period
-        # The unit part of the resource purchase duration. This parameter is used together with Period to specify the complete purchase duration. Valid combinations of Period and PeriodUnit:
+        # The unit part of the resource purchase duration. Use this parameter together with `Period` to specify the full purchase duration. The valid combinations of `Period` and `PeriodUnit` are as follows:
         # 
         # - 1 Week (1 week)
         # - 1 Month (1 month)
@@ -38,7 +38,7 @@ class RenewAppInstanceGroupShrinkRequest(DaraModel):
         # - 2 Year (2 years)
         # - 3 Year (3 years)
         # 
-        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the combinations listed above, such as `2 Week`, the call to this operation succeeds, but an error occurs during the order placement phase.
+        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is not. If the request parameters do not match the combinations listed above, such as `2 Week`, the operation call succeeds but an error occurs during order placement.
         # 
         # This parameter is required.
         self.period_unit = period_unit
@@ -46,7 +46,7 @@ class RenewAppInstanceGroupShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.product_type = product_type
-        # The promotion ID. You can obtain this value by calling the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation.
+        # The promotion ID. You can obtain this ID by calling the [GetResourcePrice](https://help.aliyun.com/document_detail/428503.html) operation.
         self.promotion_id = promotion_id
         # The number of nodes to renew.
         self.renew_amount = renew_amount

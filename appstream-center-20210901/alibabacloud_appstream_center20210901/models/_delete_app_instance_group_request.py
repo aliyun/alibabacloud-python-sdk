@@ -10,7 +10,7 @@ class DeleteAppInstanceGroupRequest(DaraModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
-        # The delivery group ID.
+        # The ID of the delivery group.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
