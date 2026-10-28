@@ -10,12 +10,12 @@ class DeleteGroupRequest(DaraModel):
         group_id: int = None,
         source_ip: str = None,
     ):
-        # The ID of the server group that you want to delete.
-        # > To delete a server group, you must specify the server group ID. You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the server group ID.
+        # Specifies the ID of the server group to delete.
+        # > To delete a server group, you must provide the server group ID. You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The source IP address of the request.
+        # The source IP address.
         self.source_ip = source_ip
 
     def validate(self):

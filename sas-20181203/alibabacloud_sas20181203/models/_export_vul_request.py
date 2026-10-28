@@ -33,59 +33,59 @@ class ExportVulRequest(DaraModel):
     ):
         # The name of the vulnerability.
         self.alias_name = alias_name
-        # The asset type where the vulnerability is detected. Separate multiple types with commas (,). Valid values:
-        # - **ECS**: host asset
+        # The asset type where the vulnerability resides. Separate multiple types with commas (,). Valid values:
+        # - **ECS**: server asset
         # - **CONTAINER**: container asset
         self.asset_type = asset_type
-        # The additional vulnerability type when querying application vulnerabilities. This parameter is required when Type is set to app. The value is fixed as **sca**.
+        # The additional vulnerability type when you query application vulnerabilities. You must configure this parameter when you query application vulnerabilities, which means the Type parameter is set to app. Set the value to **sca**.
         # 
-        # > If this parameter is set to **sca**, both application vulnerabilities (**app** type) and software composition analysis (**sca** type) vulnerabilities are queried. If this parameter is not set, only application vulnerabilities are queried.
+        # > If you set this parameter to **sca**, you can query application vulnerabilities (type **app**) and software composition analysis (type **sca**) vulnerabilities. If you do not set this parameter, only application vulnerabilities are queried.
         self.attach_types = attach_types
-        # The name of the container affected by the vulnerability.
+        # The name of the container affected by the vulnerabilities to be queried.
         self.container_name = container_name
-        # The end of the time range during which the first scan was performed.
+        # The end time of the first scan.
         # > The value is a UNIX timestamp. Unit: milliseconds.
         self.create_ts_end = create_ts_end
-        # The start of the time range during which the first scan was performed.
+        # The start time of the first scan.
         # > The value is a UNIX timestamp. Unit: milliseconds.
         self.create_ts_start = create_ts_start
         # The CVE ID.
         self.cve_id = cve_id
-        # Specifies whether the vulnerability is fixed. Valid values:
+        # Specifies whether the vulnerabilities to be queried are fixed. Valid values:
         # 
         # - **y**: fixed
-        # - **n**: not fixed
+        # - **n**: unfixed
         self.dealed = dealed
-        # The ID of the asset group to which the server with the vulnerability belongs.
-        # > Call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain this parameter.
+        # The ID of the asset group to which the servers affected by the vulnerabilities to be queried belong.
+        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the value of this parameter.
         self.group_id = group_id
-        # The name of the image affected by the vulnerability.
+        # The name of the image affected by the vulnerabilities to be queried.
         self.image_name = image_name
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # Specifies the language of the request and response. Default value: **zh**. Valid values:
         # 
         # - zh: Chinese
         # - en: English
         self.lang = lang
-        # The priority of the vulnerability to query. Separate multiple priorities with commas (,). Valid values:
+        # The priorities of the vulnerabilities to be queried. Separate multiple priorities with commas (,). Valid values:
         # 
         # - **asap**: high
         # - **later**: medium
         # - **nntf**: low
         self.necessity = necessity
-        # The path of the process affected by the vulnerability.
+        # The path of the process affected by the vulnerabilities to be queried.
         self.path = path
-        # Specifies whether runtime application self-protection (RASP) supports real-time protection against the vulnerability. Valid values:
+        # Specifies whether Runtime Application Self-Protection (RASP) supports real-time protection against the vulnerability. Valid values:
         # 
-        # - **0**: Not supported.
-        # - **1**: Supported.
+        # - **0**: not supported
+        # - **1**: supported
         self.rasp_defend = rasp_defend
         # The ID of the resource directory account.
         self.resource_directory_account_id = resource_directory_account_id
-        # Filters results by label. Valid values:
+        # The tags used for filtering. Valid values:
         # 
         # <props="china">
         # - Restart required
-        # - Remote utilization
+        # - Remote exploitation
         # - EXP exists
         # - Exploitable
         # - Privilege escalation
@@ -97,10 +97,10 @@ class ExportVulRequest(DaraModel):
         # - **Remote utilization**
         # - **EXP exists**
         # - **Available**
-        # - **Elevation of Privilege**
-        # - **Code Execution**
+        # - **Elevation of privilege**
+        # - **Code execution**
         self.search_tags = search_tags
-        # The type of vulnerabilities to export. Valid values:
+        # The type of the vulnerabilities to be exported. Valid values:
         # 
         # - **cve**: Linux software vulnerability
         # - **sys**: Windows system vulnerability
@@ -110,10 +110,10 @@ class ExportVulRequest(DaraModel):
         # 
         # This parameter is required.
         self.type = type
-        # The UUIDs of the servers to query for vulnerabilities. Separate multiple UUIDs with commas (,).
+        # The UUIDs of the servers on which you want to query vulnerabilities. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
-        # The instance IDs of the VPC-connected instances to query for vulnerabilities. Separate multiple IDs with commas (,).
-        # > Invoke the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain this parameter.
+        # The IDs of the VPC-connected instances where the vulnerabilities to be queried reside. Separate multiple IDs with commas (,).
+        # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain the value of this parameter.
         self.vpc_instance_ids = vpc_instance_ids
         # The list of vulnerability component information.
         self.vul_entity_list = vul_entity_list

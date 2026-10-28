@@ -17,28 +17,27 @@ class ListInstanceCatalogRequest(DaraModel):
         task_sources: List[str] = None,
         types: List[str] = None,
     ):
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type of the request and response messages. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Specifies whether to filter the assets that support custom checks. Valid values:
+        # Specifies whether to filter assets that support custom checks. Valid values:
         # 
-        # *   **true**: Filter assets that support custom checks.
-        # *   **false**: All assets are selected. This is the default value.
+        # - **true**: Filters assets that support custom checks.
+        # - **false**: All check assets. This is the default value.
         self.only_custom = only_custom
-        # The ID of the region in which the asset resides. Valid values:
+        # The ID of the region where the instance to be queried is located. Valid values:
         # 
-        # *   **cn-hangzhou**: International
-        # *   **ap-southeast-1**: Singapore
+        # - **cn-hangzhou**: Center.
+        # - **ap-southeast-1**: Singapore.
         self.region_id = region_id
-        # The IDs of requirement items.
+        # The list of requirement IDs.
         self.requirement_ids = requirement_ids
-        # The IDs of standards.
+        # The list of standard IDs.
         self.standard_ids = standard_ids
-        # List of task sources.
+        # The list of task sources.
         self.task_sources = task_sources
-        # The types of check standards.
+        # The list of types to which the check standards belong.
         self.types = types
 
     def validate(self):

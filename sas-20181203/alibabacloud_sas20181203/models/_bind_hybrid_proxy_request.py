@@ -16,7 +16,7 @@ class BindHybridProxyRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # The UUIDs of servers that you want to add to Security Center over the proxy server.
+        # The UUIDs of the servers connected to the proxy.
         # 
         # This parameter is required.
         self.yundun_uuids = yundun_uuids

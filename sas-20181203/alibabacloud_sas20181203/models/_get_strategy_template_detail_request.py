@@ -9,8 +9,8 @@ class GetStrategyTemplateDetailRequest(DaraModel):
         self,
         strategy_id: int = None,
     ):
-        # The ID of the rule template.
-        # >You can call the [GetOpaStrategyTemplateSummary](~~GetOpaStrategyTemplateSummary~~) operation to obtain this parameter.
+        # The rule template ID.
+        # >Call the [GetOpaStrategyTemplateSummary](~~GetOpaStrategyTemplateSummary~~) operation to obtain this parameter.
         self.strategy_id = strategy_id
 
     def validate(self):

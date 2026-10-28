@@ -18,28 +18,28 @@ class DescribeClusterHostSecuritySummaryRequest(DaraModel):
         self.cluster_id = cluster_id
         # The container search field. Valid values:
         # 
-        # - **instanceId**: instance ID.
-        # - **appName**: application name.
-        # - **clusterId**: cluster ID.
-        # - **regionId**: region.
-        # - **nodeName**: node name.
-        # - **namespace**: namespace.
-        # - **clusterName**: cluster name.
-        # - **image**: image name.
-        # - **imageRepoName**: image repository name.
-        # - **imageRepoNamespace**: image repository namespace.
-        # - **imageRepoTag**: image tag.
-        # - **imageDigest**: image digest.
+        # - **instanceId**: The instance ID.
+        # - **appName**: The application name.
+        # - **clusterId**: The cluster ID.
+        # - **regionId**: The region ID.
+        # - **nodeName**: The node name.
+        # - **namespace**: The namespace.
+        # - **clusterName**: The cluster name.
+        # - **image**: The image name.
+        # - **imageRepoName**: The image repository name.
+        # - **imageRepoNamespace**: The image repository namespace.
+        # - **imageRepoTag**: The image tag.
+        # - **imageDigest**: The image digest.
         self.container_field_name = container_field_name
         # The value of the container search field.
         self.container_field_value = container_field_value
         self.resource_owner_id = resource_owner_id
-        # The IP address of the access source.
+        # The source IP address.
         self.source_ip = source_ip
         # The query type. Valid values:
         # 
-        # - **containerId**: container ID.
-        # - **uuid**: asset ID.
+        # - **containerId**: The container ID.
+        # - **uuid**: The asset ID.
         self.target_type = target_type
 
     def validate(self):

@@ -12,6 +12,7 @@ class ListAgentlessRiskUuidRequest(DaraModel):
         instance_name: str = None,
         internet_ip: str = None,
         intranet_ip: str = None,
+        lang: str = None,
         machine_name: str = None,
         page_size: int = None,
         risk: bool = None,
@@ -28,6 +29,8 @@ class ListAgentlessRiskUuidRequest(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address of the asset to query.
         self.intranet_ip = intranet_ip
+        # 报告语言。取值：zh（中文）、en（英文）。不传或为空时使用 zh。
+        self.lang = lang
         # The instance name.
         self.machine_name = machine_name
         # The maximum number of entries to return per page when using paging.
@@ -70,6 +73,9 @@ class ListAgentlessRiskUuidRequest(DaraModel):
         if self.intranet_ip is not None:
             result['IntranetIp'] = self.intranet_ip
 
+        if self.lang is not None:
+            result['Lang'] = self.lang
+
         if self.machine_name is not None:
             result['MachineName'] = self.machine_name
 
@@ -103,6 +109,9 @@ class ListAgentlessRiskUuidRequest(DaraModel):
 
         if m.get('IntranetIp') is not None:
             self.intranet_ip = m.get('IntranetIp')
+
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
 
         if m.get('MachineName') is not None:
             self.machine_name = m.get('MachineName')

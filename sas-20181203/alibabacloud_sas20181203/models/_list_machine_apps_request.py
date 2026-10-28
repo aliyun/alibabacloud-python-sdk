@@ -16,9 +16,9 @@ class ListMachineAppsRequest(DaraModel):
         page_size: int = None,
         resource_directory_uid: int = None,
     ):
-        # The SAE application ID.
+        # The ID of the SAE application.
         self.app_id = app_id
-        # The SAE application name.
+        # The name of the SAE application.
         self.app_name = app_name
         # The region ID.
         self.app_region_id = app_region_id
@@ -27,15 +27,15 @@ class ListMachineAppsRequest(DaraModel):
         # - **5**: Premium Edition
         # - **3**: Enterprise Edition
         # - **7**: Ultimate Edition
-        # - **10**: value-added service Edition.
+        # - **10**: Value-added Service Edition
         self.auth_version = auth_version
-        # The page number of the current page in a paging query.
+        # The page number of the current page returned during paging in a paged query.
         self.current_page = current_page
         # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The maximum number of entries per page in a paging query.
+        # The maximum number of entries to return per page during paging in a paged query.
         self.page_size = page_size
         # The UID of the resource directory.
         self.resource_directory_uid = resource_directory_uid

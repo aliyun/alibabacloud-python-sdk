@@ -51824,6 +51824,8 @@ class Client(OpenApiClient):
             query['InternetIp'] = request.internet_ip
         if not DaraCore.is_null(request.intranet_ip):
             query['IntranetIp'] = request.intranet_ip
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
         if not DaraCore.is_null(request.machine_name):
             query['MachineName'] = request.machine_name
         if not DaraCore.is_null(request.page_size):
@@ -51870,6 +51872,8 @@ class Client(OpenApiClient):
             query['InternetIp'] = request.internet_ip
         if not DaraCore.is_null(request.intranet_ip):
             query['IntranetIp'] = request.intranet_ip
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
         if not DaraCore.is_null(request.machine_name):
             query['MachineName'] = request.machine_name
         if not DaraCore.is_null(request.page_size):

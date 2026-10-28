@@ -11,17 +11,17 @@ class DescribeSearchConditionRequest(DaraModel):
         source_ip: str = None,
         type: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The source IP address of the request.
+        # The source IP address.
         self.source_ip = source_ip
-        # The type of the asset. Valid values:
+        # The Asset Type to query. Valid values:
         # 
-        # *   **ecs**: Elastic Compute Service (ECS) instances.
-        # *   **cloud_product**: cloud services except ECS.
+        # - **ecs**: queries the filter conditions for all ECS servers.
+        # - **cloud_product**: queries the filter conditions for all other cloud services.
         self.type = type
 
     def validate(self):

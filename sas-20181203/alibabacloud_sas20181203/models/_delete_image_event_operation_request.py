@@ -9,7 +9,7 @@ class DeleteImageEventOperationRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The primary key of the alert disposal rule.
+        # The primary key of the alert handling rule.
         self.id = id
 
     def validate(self):

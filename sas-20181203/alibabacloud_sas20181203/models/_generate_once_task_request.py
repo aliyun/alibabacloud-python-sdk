@@ -12,57 +12,37 @@ class GenerateOnceTaskRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # A JSON string that contains additional parameters for the task.
+        # The extended information field.
         # 
         # This parameter is required.
         self.param = param
-        # The source that initiated the task.
+        # The source of the task.
         self.source = source
-        # The name of the scan task.
-        # 
-        # -
-        # 
-        # -
-        # 
-        # -
-        # 
-        # -
-        # 
-        # -
-        # 
-        # -
-        # 
-        # -
-        # 
-        # -
-        # 
-        # -
-        # 
-        # -
+        # The node name. Valid values:
+        # - **CLIENT_PROBLEM_CHECK**: Client troubleshooting node.
+        # - **CLIENT_DEV_OPS**: Cloud O&M node.
+        # - **ASSET_SECURITY_CHECK**: Asset collection node.
+        # - **ASSETS_COLLECTION**: Asset Fingerprints collection node.
+        # - **IMAGE_SCAN**: Container image scan node.
+        # - **AI_SECURITY_CHECK**: AI asset synchronization node.
+        # - **IDC_PROBE_SCAN**: IDC probe scan node.
+        # - **ATTACK_SURFACE_SCAN**: Attack surface border asset scan node.
+        # - **ASSET_EXPOSURE_SCAN**: Asset exposure scan node.
+        # - **VUL_CHECK_TASK**: Vulnerability scanning node.
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The type of the scan task. Valid values:
-        # 
-        # - **CLIENT_PROBLEM_CHECK**: a client troubleshooting task
-        # 
-        # - **CLIENT_DEV_OPS**: a cloud DevOps task
-        # 
-        # - **ASSET_SECURITY_CHECK**: an asset collection task
-        # 
-        # - **ASSETS_COLLECTION**: an asset fingerprinting task
-        # 
-        # - **IMAGE_SCAN**: a container image scan task
-        # 
-        # - **AI_SECURITY_CHECK**: an AI asset synchronization task
-        # 
-        # - **IDC_PROBE_SCAN**: an IDC probe scan task
-        # 
-        # - **ATTACK_SURFACE_SCAN**: an attack surface scan task
-        # 
-        # - **ASSET_EXPOSURE_SCAN**: an asset exposure scan task
-        # 
-        # - **VUL_CHECK_TASK**: a vulnerability scan task
+        # The node type. Valid values:
+        # - **CLIENT_PROBLEM_CHECK**: Client troubleshooting node.
+        # - **CLIENT_DEV_OPS**: Cloud O&M node.
+        # - **ASSET_SECURITY_CHECK**: Asset collection node.
+        # - **ASSETS_COLLECTION**: Asset Fingerprints collection node.
+        # - **IMAGE_SCAN**: Container image scan node.
+        # - **AI_SECURITY_CHECK**: AI asset synchronization node.
+        # - **IDC_PROBE_SCAN**: IDC probe scan node.
+        # - **ATTACK_SURFACE_SCAN**: Attack surface border asset scan node.
+        # - **ASSET_EXPOSURE_SCAN**: Asset exposure scan node.
+        # - **VUL_CHECK_TASK**: Vulnerability scanning node.
         # 
         # This parameter is required.
         self.task_type = task_type

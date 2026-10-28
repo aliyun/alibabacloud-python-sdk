@@ -16,35 +16,32 @@ class AddImageEventOperationRequest(DaraModel):
         scenarios: str = None,
         source: str = None,
     ):
-        # The rule conditions. The value is in the JSON format. Valid values of keys:
-        # 
-        # *   **condition**: the matching condition.
-        # *   **type**: the matching type.
-        # *   **value**: the matching value.
+        # The rule conditions. The value is in JSON format. Valid keys:
+        # - **condition**: The matching condition.
+        # - **type**: The matching type.
+        # - **value**: The matching value.
         self.conditions = conditions
-        # The keyword of the alert item.
+        # The alert metric keyword.
         self.event_key = event_key
-        # The name of the alert item.
+        # The alert metric name.
         self.event_name = event_name
-        # The alert type.
-        # 
-        # *   Set the value to **sensitiveFile**.
+        # The Alarm Metric for alerting. Valid values:
+        # - **sensitiveFile**: Sensitive file.
         self.event_type = event_type
-        # The remarks that you want to add.
+        # The note to add.
         self.note = note
-        # The operation code.
-        # 
-        # *   Set the value to **whitelist** to add the alert item to the whitelist.
+        # The operation code. Valid values:
+        # - **whitelist**: Whitelist.
         self.operation_code = operation_code
-        # The application scope of the rule. The value is in the JSON format. Valid values of keys:
-        # 
-        # *   **type**
-        # *   **value**
+        # The rule scope. The value is in JSON format. Valid keys:
+        # - **type**: The scope type.
+        # - **value**: The scope value.
+        # > This parameter and **Source** cannot be empty at the same time. If **Source** is set to **agentless**, this parameter does not take effect.
         self.scenarios = scenarios
         # The source of the whitelist. Valid values:
-        # 
-        # *   **image**: image.
-        # *   **agentless**: agentless detection.
+        # - **image**: Image.
+        # - **agentless**: Agentless detection.
+        # > This parameter and **Scenarios** cannot be empty at the same time. If this parameter is set to **agentless**, the **Scenarios** parameter does not take effect.
         self.source = source
 
     def validate(self):

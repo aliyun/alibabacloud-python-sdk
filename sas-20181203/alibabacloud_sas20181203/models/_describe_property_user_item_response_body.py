@@ -18,7 +18,7 @@ class DescribePropertyUserItemResponseBody(DaraModel):
         self.page_info = page_info
         # The account information.
         self.property_items = property_items
-        # The unique identifier that Alibaba Cloud generated for the request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +72,7 @@ class DescribePropertyUserItemResponseBodyPropertyItems(DaraModel):
     ):
         # The number of servers associated with the account.
         self.count = count
-        # The account name.
+        # The name of the account.
         self.user = user
 
     def validate(self):
@@ -109,11 +109,11 @@ class DescribePropertyUserItemResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries on the current page in a paged query.
+        # The number of entries returned on the current page for a paging query.
         self.count = count
-        # The page number of the current page to display in a paged query.
+        # The page number of the current page returned for a paging query.
         self.current_page = current_page
-        # The maximum number of entries displayed on each page in a paged query.
+        # The maximum number of entries returned per page for a paging query.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count

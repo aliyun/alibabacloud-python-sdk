@@ -11,7 +11,7 @@ class GetModuleConfigStatusRequest(DaraModel):
         self,
         module_names: List[str] = None,
     ):
-        # The service modules that you want to query.
+        # The list of product modules to query.
         # 
         # This parameter is required.
         self.module_names = module_names

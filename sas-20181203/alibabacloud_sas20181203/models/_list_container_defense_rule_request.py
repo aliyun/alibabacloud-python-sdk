@@ -19,20 +19,20 @@ class ListContainerDefenseRuleRequest(DaraModel):
     ):
         # The list of conditions.
         self.conditions = conditions
-        # The page number of the page to return. Default value: **1**.
+        # Specifies the page number from which to display the query results. Default value: **1**.
         self.current_page = current_page
-        # Specifies whether the rule is a system default rule.>Notice: This parameter is deprecated..
+        # Specifies whether the rule is a system default rule. <notice>**[Deprecated]**</notice>
         self.is_default_rule = is_default_rule
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
-        # > Do not leave PageSize empty.
+        # Specifies the maximum number of entries to return on each page in a paging query. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
+        # > Specify a value for PageSize.
         self.page_size = page_size
         # The rule type. Valid values:
         # - 1: system rule
-        # - 2: user rule.
+        # - 2: user rule
         self.rule_type = rule_type
 
     def validate(self):
@@ -99,9 +99,9 @@ class ListContainerDefenseRuleRequestConditions(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The condition type. The following type is supported:
+        # The condition type. The following types are supported:
         # 
-        # - **ruleName**: rule name.
+        # - **ruleName**: the rule name.
         self.type = type
         # The condition content.
         self.value = value

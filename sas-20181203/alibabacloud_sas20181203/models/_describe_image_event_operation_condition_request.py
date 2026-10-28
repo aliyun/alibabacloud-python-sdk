@@ -10,11 +10,11 @@ class DescribeImageEventOperationConditionRequest(DaraModel):
         event_type: str = None,
         lang: str = None,
     ):
-        # The alerting type.
-        # - **sensitiveFile**: sensitive file.
+        # The alerting type. Valid values:
+        # - **sensitiveFile**: Sensitive file.
         self.event_type = event_type
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # - **zh**: Chinese
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
         # - **en**: English.
         self.lang = lang
 

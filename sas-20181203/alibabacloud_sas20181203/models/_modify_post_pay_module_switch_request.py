@@ -17,14 +17,13 @@ class ModifyPostPayModuleSwitchRequest(DaraModel):
         post_pay_module_switch: str = None,
         post_pay_module_switch_obj: main_models.ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use different tokens for different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to perform a dry run on the request. Valid values:
-        # - true: Performs a dry run. The system checks the request but does not perform the actual operation.
-        # - false: Performs the request normally.
-        # Default value: false.
+        # Specifies whether to only precheck the request. Valid values:
+        # - true: Only prechecks the request and does not perform the actual operation.
+        # - false: Performs the actual operation.
         self.dry_run = dry_run
-        # The switch configuration of the EDR module.
+        # The switch configuration for the EDR module.
         self.edr_module_switch = edr_module_switch
         # Specifies whether to automatically bind new assets to the host and container protection feature. Valid values:
         # 
@@ -34,15 +33,15 @@ class ModifyPostPayModuleSwitchRequest(DaraModel):
         # The edition to which new assets are automatically bound for host and container protection. Valid values:
         # - **1**: Free Edition 
         # - **3**: Enterprise Edition
-        # - **5**: Advanced Edition
+        # - **5**: Premium Edition
         # - **6**: Anti-virus Edition    
         # - **7**: Ultimate Edition
         self.post_paid_host_auto_bind_version = post_paid_host_auto_bind_version
         # The pay-as-you-go instance ID. This parameter is required.
         # 
-        # > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain the value of this parameter.
+        # > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain this parameter.
         self.post_pay_instance_id = post_pay_instance_id
-        # The switch status of pay-as-you-go modules. The value is a JSON string. Valid values:
+        # The switch status of the pay-as-you-go modules. The value is a JSON string. Valid values:
         # - Key:
         #   - **VUL**: Vulnerability fixing module
         #   - **CSPM**: Cloud Security Posture Management module
@@ -54,14 +53,14 @@ class ModifyPostPayModuleSwitchRequest(DaraModel):
         #   - **RASP**: Application protection module
         #   - **CTDR_STORAGE**: Log management module
         #   - **ANTI_RANSOMWARE**: Anti-ransomware management
-        # - Value: 0 indicates disabled. 1 indicates enabled.
+        # - Value: 0 indicates disabled, and 1 indicates enabled.
         # 
         # > The values of modules that are not specified remain unchanged.
         # 
         # <notice>This parameter has the same meaning as the PostPayModuleSwitchObj parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
         self.post_pay_module_switch = post_pay_module_switch
-        # The switches of pay-as-you-go modules.
-        # >Notice:  This parameter has the same meaning as the PostPayModuleSwitch parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
+        # The switch status of the pay-as-you-go modules.
+        # >Notice: This parameter has the same meaning as the PostPayModuleSwitch parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
         self.post_pay_module_switch_obj = post_pay_module_switch_obj
 
     def validate(self):
@@ -148,7 +147,7 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
         vul: int = None,
         web_lock: int = None,
     ):
-        # The agentless detection module. Valid values:
+        # The Agentless detection module. Valid values:
         # - **0**: disabled
         # - **1**: enabled
         self.agentless = agentless
@@ -162,13 +161,13 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
         # - **0**: disabled
         # - **1**: enabled
         # 
-        # >Notice: You cannot manually change the switch of the basic service module. If any other module is enabled, the enabling status of this module is enabled. If all other modules are shutdown, this module is not in the shutdown state.</notice>
+        # >Notice: The switch for the basic service module cannot be manually modified. This module is enabled when any other module is enabled, and disabled when all other modules are disabled.</notice>
         self.basic_service = basic_service
-        # The Cloud Security Posture Management (CSPM) module. Valid values:
+        # The Cloud Security Posture Management module. Valid values:
         # - **0**: disabled
         # - **1**: enabled
         self.cspm = cspm
-        # The Cloud Threat Detection and Response (CTDR) module. Valid values:
+        # The Cloud Threat Detection and Response module. Valid values:
         # - **0**: disabled
         # - **1**: enabled
         self.ctdr = ctdr
@@ -299,7 +298,7 @@ class ModifyPostPayModuleSwitchRequestEdrModuleSwitch(DaraModel):
         auto_bind: int = None,
         edr_host_usage: int = None,
     ):
-        # Specifies whether to enable automatic binding of new assets to the EDR module. A value of 0 indicates that the feature is disabled. A value of 1 indicates that the feature is enabled.
+        # Specifies whether to enable automatic binding of new assets to the EDR module. Valid values: 0: disabled. 1: enabled.
         self.auto_bind = auto_bind
         # The authorized quota for EDR hosts.
         self.edr_host_usage = edr_host_usage

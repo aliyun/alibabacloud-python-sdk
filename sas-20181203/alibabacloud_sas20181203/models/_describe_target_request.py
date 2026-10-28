@@ -15,9 +15,9 @@ class DescribeTargetRequest(DaraModel):
         # - **cms**: Web-CMS vulnerability
         # - **sys**: Windows system vulnerability
         # - **cve**: Linux software vulnerability
-        # - **emg**: emergency vulnerability.
+        # - **emg**: emergency vulnerability
         self.config = config
-        # The query type. Set this parameter to vul.
+        # The query type. Set the value to vul.
         self.type = type
 
     def validate(self):

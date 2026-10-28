@@ -14,7 +14,7 @@ class DescribeRiskItemTypeRequest(DaraModel):
         # The language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
         # The source IP address of the request.

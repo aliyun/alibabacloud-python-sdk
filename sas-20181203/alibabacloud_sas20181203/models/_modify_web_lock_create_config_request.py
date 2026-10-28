@@ -22,8 +22,8 @@ class ModifyWebLockCreateConfigRequest(DaraModel):
     ):
         # The defense mode. Valid values:
         # 
-        # - **block**: Block mode.
-        # - **audit**: Alert mode.
+        # - **block**: Blocks requests.
+        # - **audit**: Generates alerts.
         # 
         # This parameter is required.
         self.defence_mode = defence_mode
@@ -31,13 +31,13 @@ class ModifyWebLockCreateConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.dir = dir
-        # The folder to exclude from web tamper proofing protection.
-        # > This parameter is required when the Defense mode **Mode** is set to **blacklist** pattern.
+        # The directory that does not require web tamper-proofing (excluded directory).
+        # > If the defense pattern **Mode** is set to **blacklist**, you must configure this parameter.
         self.exclusive_dir = exclusive_dir
-        # The file to exclude from web tamper proofing protection.
-        # > This parameter is required when the Defense mode **Mode** is set to **blacklist** pattern.
+        # The files that do not require web tamper-proofing (excluded files).
+        # > If the defense pattern **Mode** is set to **blacklist**, you must configure this parameter.
         self.exclusive_file = exclusive_file
-        # The file types to exclude from web tamper proofing protection. Separate multiple file types with semicolons (;). Valid values:
+        # The file types that do not require web tamper-proofing (excluded file types). Separate multiple file types with a semicolon. Valid values:
         # - php
         # - jsp
         # - asp
@@ -53,12 +53,12 @@ class ModifyWebLockCreateConfigRequest(DaraModel):
         # - gif
         # - png
         # 
-        # > This parameter is required when the Defense mode **Mode** is set to **blacklist** pattern.
+        # > If the defense pattern **Mode** is set to **blacklist**, you must configure this parameter.
         self.exclusive_file_type = exclusive_file_type
-        # The file to protect.
-        # > This parameter is required when the Defense mode **Mode** is set to **whitelist** pattern.
+        # The files that require protection.
+        # > If the defense pattern **Mode** is set to **whitelist**, you must configure this parameter.
         self.inclusive_file = inclusive_file
-        # The file types to protect with web tamper proofing. Separate multiple file types with semicolons (;). Valid values:
+        # The file types that require web tamper-proofing. Separate multiple file types with a semicolon. Valid values:
         # - php
         # - jsp
         # - asp
@@ -74,21 +74,21 @@ class ModifyWebLockCreateConfigRequest(DaraModel):
         # - gif
         # - png
         # 
-        # > This parameter is required when the Defense mode **Mode** is set to **whitelist** pattern.
+        # > If the defense pattern **Mode** is set to **whitelist**, you must configure this parameter.
         self.inclusive_file_type = inclusive_file_type
-        # The language type of the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The local backup path used for secure backup of the protected directory.
+        # The local backup path used for the secure backup of the protected directory.
         # 
         # This parameter is required.
         self.local_backup_dir = local_backup_dir
-        # The protection directory mode. Valid values:
-        # - **whitelist**: whitelist mode. Protects only the specified directories and file types.
-        # - **blacklist**: blacklist mode. Protects all subdirectories, file types, and specified files under the protected directory that are not excluded.
+        # The protection mode of the directory. Valid values:
+        # - **whitelist**: Whitelist mode. Protects the added protected directories and file types.
+        # - **blacklist**: Blacklist mode. Protects all subdirectories, file types, and specified files under the added protected directory that are not excluded.
         self.mode = mode
-        # The IP address of the access source.
+        # The source IP address.
         self.source_ip = source_ip
         # The UUID of the server for which you want to add a protected directory.
         # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of the server.

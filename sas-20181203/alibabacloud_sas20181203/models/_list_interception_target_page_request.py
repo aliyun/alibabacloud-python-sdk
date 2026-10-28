@@ -20,21 +20,21 @@ class ListInterceptionTargetPageRequest(DaraModel):
     ):
         # The application name of the network object.
         self.app_name = app_name
-        # The page number of the page to return. Default value: **1**, which indicates the first page.
+        # The number of the page to return. Default value: **1**.
         self.current_page = current_page
         # The list of images included in the network object.
         self.image_list = image_list
-        # The namespace of the network object.
+        # The namespace to which the network object belongs.
         self.namespace = namespace
-        # The maximum number of entries per page for paging. Default value: 20. If you leave this parameter empty, 20 entries are returned by default.
-        # > Do not leave PageSize empty.
+        # The maximum number of entries to return per page in a paging query. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
+        # > Do not leave this parameter empty.
         self.page_size = page_size
         # The list of tags included in the network object.
         self.tag_list = tag_list
         # The name of the network object.
         self.target_name = target_name
         # The object type. Valid values:
-        # - IMAGE: image.
+        # - IMAGE: Image.
         self.target_type = target_type
 
     def validate(self):

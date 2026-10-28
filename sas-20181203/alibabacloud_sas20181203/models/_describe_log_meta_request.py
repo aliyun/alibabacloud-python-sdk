@@ -12,22 +12,22 @@ class DescribeLogMetaRequest(DaraModel):
         resource_directory_account_id: int = None,
         source_ip: str = None,
     ):
-        # The source identifier of the request. Default value: **aegis**. Valid values:
+        # Specifies the identifier of the request source. Default value: **aegis**. Valid values:
         # 
         # - **aegis**: Server Guard edition.
         # - **sas**: Security Center edition.
         # 
-        # > Server Guard users should use **aegis**, and Security Center users should use **sas**.
+        # > If you use Server Guard, set this parameter to **aegis**. If you use Security Center, set this parameter to **sas**.
         self.from_ = from_
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # Specifies the language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The ID of the member accounts in the resource directory (Alibaba Cloud account).
-        # >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        # The ID of the member accounts in the resource folder (Alibaba Cloud account).
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The IP address of the access source.
+        # The source IP address.
         self.source_ip = source_ip
 
     def validate(self):

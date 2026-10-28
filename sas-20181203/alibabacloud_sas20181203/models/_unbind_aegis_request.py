@@ -10,7 +10,7 @@ class UnbindAegisRequest(DaraModel):
         uuids: str = None,
     ):
         # The UUIDs of the non-Alibaba Cloud servers that you want to unbind. Separate multiple UUIDs with commas (,).
-        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs.
         # 
         # This parameter is required.
         self.uuids = uuids

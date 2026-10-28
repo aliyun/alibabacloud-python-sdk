@@ -10,15 +10,13 @@ class AddSasModuleTrialRequest(DaraModel):
         lang: str = None,
         module_code: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The code of the feature. Valid values:
-        # 
-        # *   **vulFix**: vulnerability fixing.
-        # *   **cloudSiem**: threat analysis and response.
+        # The module code. Valid values:
+        # - **vulFix**: vulnerability remediation
+        # - **cloudSiem**: threat analysis and response
         self.module_code = module_code
 
     def validate(self):

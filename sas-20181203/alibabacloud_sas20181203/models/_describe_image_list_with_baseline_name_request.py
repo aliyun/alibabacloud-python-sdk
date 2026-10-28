@@ -32,33 +32,33 @@ class DescribeImageListWithBaselineNameRequest(DaraModel):
         # This parameter is required.
         self.baseline_name_key = baseline_name_key
         # The ID of the container cluster to query.
-        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain the value of this parameter.
         self.cluster_id = cluster_id
-        # The cluster name.
+        # The name of the cluster.
         self.cluster_name = cluster_name
-        # The container ID.
+        # The ID of the container.
         self.container_id = container_id
         # The query condition for the baseline.
         self.criteria = criteria
         # The query type for the baseline. Valid values:
         # 
         # - **BaselineNameAlias**: baseline name
-        # - **BaselineClassAlias**: baseline category.
+        # - **BaselineClassAlias**: baseline classification
         self.criteria_type = criteria_type
-        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
+        # The page number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The container image name.
+        # The name of the container image.
         self.image = image
-        # The SHA256 value of the image digest.
+        # The SHA-256 value of the image digest.
         self.image_digest = image_digest
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The namespace.
         self.namespace = namespace
-        # Settings for paged query paging. The number of image baseline check result details to display per page. Default value: **10**, which indicates that 10 image baseline check result details are displayed per page.
+        # The Settings for the number of image baseline check result details to return on each page in a paged query. Default value: **10**, which indicates that 10 image baseline check result details are displayed on each page during paging.
         self.page_size = page_size
         # The pod.
         self.pod = pod

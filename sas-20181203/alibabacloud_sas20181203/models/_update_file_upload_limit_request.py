@@ -9,7 +9,7 @@ class UpdateFileUploadLimitRequest(DaraModel):
         self,
         limit: int = None,
     ):
-        # The QPS throttling threshold for file uploads from the client. Valid values: 100 to 10000.
+        # Sets the QPS limit for client file uploads. Valid values: 100 to 10000.
         # 
         # This parameter is required.
         self.limit = limit

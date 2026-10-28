@@ -144,11 +144,11 @@ class DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageScaVu
     ):
         # The number of application vulnerabilities.
         self.count = count
-        # The warning level. Valid values:
+        # The alert level. Valid values:
         # 
-        # - **asap**: High. Fix the vulnerability at the earliest opportunity.
-        # - **nntf**: Medium. The vulnerability can be temporarily left unfixed.
-        # - **later**: Low. The vulnerability can be left unfixed.
+        # - **asap**: High. Fix as soon as possible.
+        # - **nntf**: Medium. Can be fixed later.
+        # - **later**: Low. Can be left unfixed.
         self.risk_level = risk_level
 
     def validate(self):
@@ -187,9 +187,9 @@ class DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageMalic
         self.count = count
         # The risk level. Valid values:
         # 
-        # - **high**: High.
-        # - **medium**: Medium.
-        # - **low**: Low.
+        # - **high**: High risk.
+        # - **medium**: Medium risk.
+        # - **low**: Low risk.
         self.risk_level = risk_level
 
     def validate(self):
@@ -226,11 +226,11 @@ class DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageCveVu
     ):
         # The number of vulnerabilities.
         self.count = count
-        # The warning level. Valid values:
+        # The alert level. Valid values:
         # 
-        # - **asap**: High. Fix the vulnerability at the earliest opportunity.
-        # - **nntf**: Medium. The vulnerability can be temporarily left unfixed.
-        # - **later**: Low. The vulnerability can be left unfixed.
+        # - **asap**: High. Fix as soon as possible.
+        # - **nntf**: Medium. Can be fixed later.
+        # - **later**: Low. Can be left unfixed.
         self.risk_level = risk_level
 
     def validate(self):
@@ -269,9 +269,9 @@ class DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageBasel
         self.count = count
         # The risk level. Valid values:
         # 
-        # - **high**: High.
-        # - **medium**: Medium.
-        # - **low**: Low.
+        # - **high**: High risk.
+        # - **medium**: Medium risk.
+        # - **low**: Low risk.
         self.risk_level = risk_level
 
     def validate(self):

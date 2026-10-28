@@ -14,18 +14,18 @@ class AddImageEventOperationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code returned.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The API call succeeded.
+        # - **false**: The API call failed.
         self.success = success
 
     def validate(self):
@@ -85,30 +85,26 @@ class AddImageEventOperationResponseBodyData(DaraModel):
         operation_code: str = None,
         scenarios: str = None,
     ):
-        # The rule conditions. The value is in the JSON format. Valid values of keys:
-        # 
-        # *   **condition**: the matching condition.
-        # *   **type**: the matching type.
-        # *   **value**: the matching value.
+        # The rule conditions. The value is in JSON format. Valid keys:
+        # - **condition**: The matching condition.
+        # - **type**: The matching type.
+        # - **value**: The matching value.
         self.conditions = conditions
-        # The keyword of the alert item.
+        # The alert metric keyword.
         self.event_key = event_key
-        # The name of the alert item.
+        # The alert metric name.
         self.event_name = event_name
-        # The alert type.
-        # 
-        # *   Only **sensitiveFile** may be returned.
+        # The Alarm Metric for alerting. Valid values:
+        # - **sensitiveFile**: Sensitive file.
         self.event_type = event_type
         # The primary key of the alert handling rule.
         self.id = id
-        # The operation code.
-        # 
-        # *   Only **whitelist** may be returned, which indicates that the alert item is added to the whitelist.
+        # The operation code. Valid values:
+        # - **whitelist**: Whitelist.
         self.operation_code = operation_code
-        # The application scope of the rule. The value is in the JSON format. Valid values of keys:
-        # 
-        # *   **type**
-        # *   **value**
+        # The rule scope. The value is in JSON format. Valid keys:
+        # - **type**: The scope type.
+        # - **value**: The scope value.
         self.scenarios = scenarios
 
     def validate(self):

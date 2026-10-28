@@ -9,9 +9,9 @@ class DescribeImageCriteriaRequest(DaraModel):
         self,
         value: str = None,
     ):
-        # The fuzzy match value that you enter when querying images.
+        # The fuzzy match value used to query images.
         # 
-        # > This parameter supports fuzzy matching by image ID, image tag, image instance ID, image repository name, image repository ID, image repository namespace, image region, image digest, or image repository type.
+        # > This parameter supports fuzzy queries for image IDs, image tags, image instance IDs, image repository names, image repository IDs, image repository namespaces, image regions, image digests, and image repository types.
         self.value = value
 
     def validate(self):

@@ -24,45 +24,45 @@ class ListVirusScanTaskRequest(DaraModel):
         status_list: List[int] = None,
         task_id: str = None,
     ):
-        # The page number of the results to return. Default value: **1**, which indicates that results start from page 1.
+        # The page number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The timestamp of the task end time to query, in milliseconds.
+        # The end time of the queried task. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The public IP address.
         self.internet_ip = internet_ip
         # The private IP address.
         self.intranet_ip = intranet_ip
-        # The language type of the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The name of the server.
         self.machine_name = machine_name
-        # The number of tasks per page in a paged query. Default value: **20**, which indicates that each page contains 20 tasks.
+        # The paging Settings for the number of nodes per page in a paged query. Default value: **20**, which indicates 20 nodes per page.
         self.page_size = page_size
-        # Specifies whether the task is the root task of the virus scan.
+        # Specifies whether the queried task is the main virus scan task.
         self.root_task = root_task
-        # The root task ID.
-        # > Call [GetVirusScanLatestTaskStatistic](~~GetVirusScanLatestTaskStatistic~~) to obtain this parameter.
+        # The ID of the root task.
+        # > You can call the [GetVirusScanLatestTaskStatistic](~~GetVirusScanLatestTaskStatistic~~) operation to obtain the value of this parameter.
         self.root_task_id = root_task_id
         # The scan type of the virus scan task to query. Valid values:
         # 
-        # - **system**: automatic system scan
-        # - **user**: custom user scan.
+        # - **system**: automatic scan
+        # - **user**: custom scan
         self.scan_type = scan_type
-        # The timestamp of the task start time to query, in milliseconds.
+        # The start time of the queried task. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The execution status of the virus scan task. Valid values:
-        # - **1**: Scanning.
-        # - **2**: Completed.
-        # - **3**: Failed.
-        # - **4**: Timed out.
+        # - **1**: scanning
+        # - **2**: completed
+        # - **3**: failed
+        # - **4**: timed out
         self.status = status
-        # The list of statuses used to filter tasks by multiple statuses.
+        # The list of statuses used to filter the query results.
         self.status_list = status_list
         # The ID of the virus scan task to query.
-        # > Call [ListVirusScanTask](~~ListVirusScanTask~~) to obtain this parameter.
+        # > You can call the [ListVirusScanTask](~~ListVirusScanTask~~) operation to obtain the value of this parameter.
         self.task_id = task_id
 
     def validate(self):

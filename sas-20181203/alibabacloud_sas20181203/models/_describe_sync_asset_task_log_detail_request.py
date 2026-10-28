@@ -18,9 +18,9 @@ class DescribeSyncAssetTaskLogDetailRequest(DaraModel):
         self.current_page = current_page
         # The timestamp of the end time.
         self.end_time = end_time
-        # Specifies the maximum number of entries to return on each page during paging in a paged query. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default. Do not leave PageSize empty.
+        # Specifies the maximum number of entries to return on each page in a paged query. The default number of entries per page for paging is 20. If this parameter is left empty, 20 entries are returned by default. Do not leave this parameter empty.
         self.page_size = page_size
-        # The ID of the IDC scan task to query. You can call the [DescribeSyncAssetTaskList](https://help.aliyun.com/document_detail/141932.html) operation to obtain the task ID.
+        # The ID of the IDC scan task to query. You can call the [DescribeSyncAssetTaskList](https://help.aliyun.com/document_detail/141932.html) operation to obtain the ID of the abnormal task. This parameter is required. If this parameter is not specified, the API returns HTTP 400 and the error code -101.
         self.root_task_id = root_task_id
         # The timestamp of the start time.
         self.start_time = start_time

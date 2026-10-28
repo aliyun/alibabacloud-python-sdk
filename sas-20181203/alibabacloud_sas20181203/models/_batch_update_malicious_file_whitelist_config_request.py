@@ -12,7 +12,7 @@ class BatchUpdateMaliciousFileWhitelistConfigRequest(DaraModel):
         self,
         config_list: List[main_models.BatchUpdateMaliciousFileWhitelistConfigRequestConfigList] = None,
     ):
-        # The whitelist rules.
+        # The list of whitelist rules for sensitive file alerts in agentless detection.
         self.config_list = config_list
 
     def validate(self):
@@ -55,33 +55,28 @@ class BatchUpdateMaliciousFileWhitelistConfigRequestConfigList(DaraModel):
         target_type: str = None,
         target_value: str = None,
     ):
-        # The ID of the whitelist rule. If you do not specify this parameter, a whitelist rule is created.
+        # The ID of the whitelist rule for sensitive file alerts in agentless detection. This parameter is optional. If you do not specify this parameter, a new rule is created. You can call the [ListMaliciousFileWhitelistConfigs](~~ListMaliciousFileWhitelistConfigs~~) operation to obtain the ID of the whitelist rule for sensitive files.
         self.config_id = config_id
-        # The name of the alert.
-        # 
-        # *   Set the value to **ALL**, which indicates all alert types.
+        # The alerting name. Valid values:
+        # - **ALL**: all Alarm Metrics.
         self.event_name = event_name
-        # The field that you want to use in the whitelist rule.
+        # The field used to determine the whitelist for sensitive file alerts.
         self.field = field
-        # The value of the field that you want to use in the whitelist rule.
+        # The expected field value to be whitelisted.
         self.field_value = field_value
-        # The logical operator that you want to use in the whitelist rule.
-        # 
-        # *   Set the value to strEqual, which indicates the equality operator (=).
+        # The operator used to evaluate the rule. Valid values:
+        # - strEqual: equal to.
         self.operator = operator
-        # The feature to which this operation belongs.
-        # 
-        # *   Set the value to agentless, which indicates the agentless detection feature.
+        # The business source. Valid values:
+        # - agentless: agentless detection.
         self.source = source
-        # The type of the assets on which you want the whitelist rule to take effect. Valid values:
-        # 
-        # *   ALL: all assets
-        # *   SELECTION_KEY: selected assets
+        # The type of the target to which the rule applies. Valid values:
+        # - ALL: all assets.
+        # - SELECTION_KEY: assets selected by using the asset selection component.
         self.target_type = target_type
-        # The assets on which you want the whitelist rule to take effect. Valid values:
-        # 
-        # *   ALL: all assets
-        # *   Others: selected assets
+        # The scope of the target to which the rule applies. Valid values:
+        # - ALL: all assets.
+        # - Other values: the key of the asset scope selected by using the asset selection component.
         self.target_value = target_value
 
     def validate(self):

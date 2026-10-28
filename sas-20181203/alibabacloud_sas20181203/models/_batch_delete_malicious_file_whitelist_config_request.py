@@ -11,7 +11,7 @@ class BatchDeleteMaliciousFileWhitelistConfigRequest(DaraModel):
         self,
         config_id_list: List[int] = None,
     ):
-        # The IDs of the whitelist rules. You can call the [ListMaliciousFileWhitelistConfigs](~~ListMaliciousFileWhitelistConfigs~~) operation to query the IDs of whitelist rules.
+        # The list of sensitive file whitelist rule IDs. Call [ListMaliciousFileWhitelistConfigs](~~ListMaliciousFileWhitelistConfigs~~) to obtain the IDs of sensitive file whitelist rules.
         self.config_id_list = config_id_list
 
     def validate(self):

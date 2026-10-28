@@ -14,12 +14,12 @@ class ModifyClearLogstoreStorageRequest(DaraModel):
     ):
         # The identifier of the request source. Set the value to **sas**.
         self.from_ = from_
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # Specifies the language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The name of the user LogStore.
+        # The name of the Logstore for user log storage.
         self.user_log_store = user_log_store
         # The user project.
         self.user_project = user_project

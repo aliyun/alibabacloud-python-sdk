@@ -11,6 +11,7 @@ class GetOpaStrategyDetailNewRequest(DaraModel):
     ):
         # The policy ID.
         # > You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
+        # This parameter is required. If it is not provided, the API returns HTTP 400 with the error code -101.
         self.strategy_id = strategy_id
 
     def validate(self):

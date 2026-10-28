@@ -18,12 +18,12 @@ class DescribeImageRepoListRequest(DaraModel):
         target_type: str = None,
         type: str = None,
     ):
-        # The page number of the page to return. Default value: **1**.
+        # Specifies the number of the page to return. Default value: **1**, which indicates the first page.
         self.current_page = current_page
         # The search field. Valid values:
         # 
-        # - **repoName**: image repository name
-        # - **repoNamespace**: image repository namespace
+        # - **repoName**: image repository name.
+        # - **repoNamespace**: image repository namespace.
         # 
         # > This parameter takes effect only when **OperateType** is set to **other**.
         self.field_name = field_name
@@ -32,21 +32,21 @@ class DescribeImageRepoListRequest(DaraModel):
         self.field_value = field_value
         # The operation type. Valid values:
         # 
-        # - **count**: statistics
+        # - **count**: statistics.
         # - **other**: other.
         self.operate_type = operate_type
-        # The number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page during paging.
-        # > Set PageSize to a non-empty value.
+        # Specifies the maximum number of entries to return on each page in a paging query. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
+        # > Do not leave this parameter empty.
         self.page_size = page_size
         # The name of the image repository.
         self.repo_name = repo_name
         # The namespace of the container image repository.
         self.repo_namespace = repo_namespace
         # Specifies whether the item is selected. Valid values:
-        # - **0**: No.
-        # - **1**: Yes.
+        # - **0**: no.
+        # - **1**: yes.
         self.selected = selected
-        # The dimension of the defense switch configuration. Valid values:
+        # The operation dimension for the defense switch configuration. Valid values:
         # - **image_repo**: image repository ID.
         # 
         # This parameter is required.

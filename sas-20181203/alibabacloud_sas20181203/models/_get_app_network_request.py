@@ -16,11 +16,11 @@ class GetAppNetworkRequest(DaraModel):
         self.cluster_id = cluster_id
         # The timestamp of the end time. Unit: milliseconds.
         # 
-        # > The difference between the start timestamp and the end timestamp cannot exceed **7** days.
+        # > The interval between the start timestamp and the end timestamp cannot exceed **7** days.
         self.end_time = end_time
         # The timestamp of the start time. Unit: milliseconds.
         # 
-        # > The difference between the start timestamp and the end timestamp cannot exceed **7** days.
+        # > The interval between the start timestamp and the end timestamp cannot exceed **7** days.
         self.start_time = start_time
 
     def validate(self):

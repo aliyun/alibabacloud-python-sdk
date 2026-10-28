@@ -12,13 +12,13 @@ class HandleMaliciousFilesRequest(DaraModel):
         file_id_list: List[int] = None,
         operation: str = None,
     ):
-        # The list of file IDs to process.
-        # > You can call [ListAgentlessMaliciousFiles](~~ListAgentlessMaliciousFiles~~) to obtain the IDs.
-        # > -.
+        # The list of IDs of the files to be processed.
+        # > You can call the [ListAgentlessMaliciousFiles](~~ListAgentlessMaliciousFiles~~) operation to obtain the IDs.
+        # > -
         self.file_id_list = file_id_list
-        # The type of operation. Valid values:
-        # - addWhitelist: adds to the whitelist.
-        # - offWhitelist: removes from the whitelist.
+        # The type of the operation. Valid values:
+        # - addWhitelist: Adds the security alerts to the whitelist.
+        # - offWhitelist: Removes the security alerts from the whitelist.
         self.operation = operation
 
     def validate(self):

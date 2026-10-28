@@ -12,7 +12,7 @@ class ListInstanceRiskNumRequest(DaraModel):
         self,
         instance_list: List[main_models.ListInstanceRiskNumRequestInstanceList] = None,
     ):
-        # The instances.
+        # The instance list.
         self.instance_list = instance_list
 
     def validate(self):
@@ -49,9 +49,9 @@ class ListInstanceRiskNumRequestInstanceList(DaraModel):
         instance_id: str = None,
         uuid: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The UUID of the instance.
+        # The UUID of the instance. You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain the UUID of the server.
         self.uuid = uuid
 
     def validate(self):

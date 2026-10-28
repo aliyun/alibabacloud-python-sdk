@@ -13,11 +13,11 @@ class DescribeImageBaselineStrategyRequest(DaraModel):
     ):
         # The language of the request and response. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The data source. If this parameter is left empty, the image baseline policy is queried by default. Valid values:
-        # - **default**: image
-        # - **agentless**: agentless.
+        # - **default**: Image
+        # - **agentless**: Agentless
         self.source = source
         # The ID of the baseline check policy.
         self.strategy_id = strategy_id

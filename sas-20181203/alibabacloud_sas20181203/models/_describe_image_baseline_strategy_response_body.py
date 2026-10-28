@@ -62,21 +62,21 @@ class DescribeImageBaselineStrategyResponseBodyStrategy(DaraModel):
         self.baseline_item = baseline_item
         # The list of baseline items.
         self.baseline_item_list = baseline_item_list
-        # The retention period of baseline risks. Unit: days.
+        # The retention period of baseline risks, in days.
         self.image_vul_clean = image_vul_clean
         # The number of selected baseline check items.
         self.selected_item_count = selected_item_count
         # The ID of the baseline check policy.
         self.strategy_id = strategy_id
-        # The Policy Name.
+        # The policy name.
         self.strategy_name = strategy_name
         # The total number of baseline check items.
         self.total_item_count = total_item_count
         # The type of the baseline check policy. Valid values:
         # 
-        # - **default**: default policy
-        # - **full**: full baseline item policy
-        # - **normal**: common baseline item policy.
+        # - **default**: Default policy
+        # - **full**: Full baseline item policy
+        # - **normal**: Standard baseline item policy
         self.type = type
 
     def validate(self):
@@ -156,11 +156,11 @@ class DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList(DaraMode
         item_key: str = None,
         name_key: str = None,
     ):
-        # The classification key of the baseline main item.
+        # The classification key of the primary baseline item.
         self.class_key = class_key
-        # The key of the baseline subitem.
+        # The key of the sub-baseline item.
         self.item_key = item_key
-        # The name key of the baseline main item.
+        # The name key of the primary baseline item.
         self.name_key = name_key
 
     def validate(self):

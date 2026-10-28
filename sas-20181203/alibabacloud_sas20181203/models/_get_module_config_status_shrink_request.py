@@ -9,7 +9,7 @@ class GetModuleConfigStatusShrinkRequest(DaraModel):
         self,
         module_names_shrink: str = None,
     ):
-        # The service modules that you want to query.
+        # The list of product modules to query.
         # 
         # This parameter is required.
         self.module_names_shrink = module_names_shrink

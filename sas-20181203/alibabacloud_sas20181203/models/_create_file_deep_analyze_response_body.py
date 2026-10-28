@@ -17,11 +17,11 @@ class CreateFileDeepAnalyzeResponseBody(DaraModel):
         self.code = code
         # The analysis result.
         self.data = data
-        # The stage description.
+        # The phase description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The stage status.
+        # The phase status.
         self.status = status
 
     def validate(self):

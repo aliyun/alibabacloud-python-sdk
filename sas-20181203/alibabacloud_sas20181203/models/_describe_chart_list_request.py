@@ -11,13 +11,13 @@ class DescribeChartListRequest(DaraModel):
         project_code: str = None,
         report_id: str = None,
     ):
-        # The language type for the request and response messages. Valid values:
-        # - **zh**: Chinese
+        # The language type of the request and response messages. Valid values:
+        # - **zh**: Chinese.
         # - **en**: English.
         self.lang = lang
         # The project code. Valid values:
         # 
-        # - **customize_report**: custom report.
+        # - **customize_report**: Custom report.
         # 
         # This parameter is required.
         self.project_code = project_code

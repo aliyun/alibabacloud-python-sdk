@@ -18,33 +18,30 @@ class ListClusterCheckResultRequest(DaraModel):
         sort_type: str = None,
         statuses: List[str] = None,
     ):
-        # Fuzzy search key for check items.
+        # The keyword for fuzzy search of check items.
         self.check_key = check_key
-        # Cluster ID.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Page number for the current page in a paginated query. The default value is **1**.
+        # Specifies the page number of the current page during paging in a paged query. Default value: **1**.
         self.current_page = current_page
-        # Language type for requests and responses. The default value is **zh**. Values:
-        # 
-        # - **zh**: Chinese
-        # 
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         # 
         # This parameter is required.
         self.lang = lang
-        # Number of records to display per page when performing a paginated query. The default value is **20**, indicating 20 records per page.
+        # The Settings for paging in a paged query. Specifies the number of records to display on each page. Default value: **20**, which indicates that 20 records are displayed on each page.
         self.page_size = page_size
-        # List of risk levels.
+        # The list of risk levels.
         self.risk_levels = risk_levels
-        # Custom sorting type. Values:
+        # The custom sort type. Valid values:
         # 
         # - **RISK_LEVEL**: Risk level.
-        # 
         # - **STATUS**: Check item status.
         self.sort_type = sort_type
-        # List of check item statuses.
+        # The list of check item statuses.
         self.statuses = statuses
 
     def validate(self):

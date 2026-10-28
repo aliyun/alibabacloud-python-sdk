@@ -11,9 +11,9 @@ class DescribeContainerServiceK8sClusterKritisStatusResponseBody(DaraModel):
         kritis_status: main_models.DescribeContainerServiceK8sClusterKritisStatusResponseBodyKritisStatus = None,
         request_id: str = None,
     ):
-        # The Kritis status information of the ACK cluster.
+        # The Kritis status information of the Container Service for Kubernetes cluster.
         self.kritis_status = kritis_status
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +50,6 @@ class DescribeContainerServiceK8sClusterKritisStatusResponseBodyKritisStatus(Dar
         install: bool = None,
     ):
         # Indicates whether Kritis is installed. Valid values:
-        # 
         # - **true**: Installed.
         # - **false**: Not installed.
         self.install = install

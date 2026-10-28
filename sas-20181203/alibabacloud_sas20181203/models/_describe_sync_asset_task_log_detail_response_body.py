@@ -82,16 +82,16 @@ class DescribeSyncAssetTaskLogDetailResponseBodyTaskRecordDetails(DaraModel):
         # The ID of the task.
         self.leaf_task_id = leaf_task_id
         # The status of the task. Valid values:
-        # - **INIT**: Pending.
-        # - **START**: Started.
-        # - **MESSAGE_SEND**: Command issued.
-        # - **SUCCESS**: Completed.
-        # - **FAIL**: Failed.
-        # - **TIMEOUT**: Timed out.
+        # - **INIT**: pending
+        # - **START**: started
+        # - **MESSAGE_SEND**: command issued
+        # - **SUCCESS**: completed
+        # - **FAIL**: failed
+        # - **TIMEOUT**: timed out
         self.leaf_task_status = leaf_task_status
         # The description of the task.
         self.task_msg = task_msg
-        # The timestamp when the task was reported.
+        # The timestamp of the report time.
         self.task_report_time = task_report_time
         # The number of unprotected assets.
         self.unprotected_asset_count = unprotected_asset_count
@@ -160,11 +160,11 @@ class DescribeSyncAssetTaskLogDetailResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of IDC scan task details returned on the current page.
+        # The number of IDC scan task details displayed on the current page.
         self.count = count
-        # The page number of the current page during paging in a paged query.
+        # The page number of the current page in a paged query during paging.
         self.current_page = current_page
-        # The number of IDC scan node details returned on each page during paging in a paged query. Default value: 20, which indicates that 20 IDC scan node details are returned per page.
+        # The number of IDC scan node details displayed on each page in a paged query. Default value: 20. This indicates that 20 IDC scan node details are displayed on each page during paging.
         self.page_size = page_size
         # The total number of IDC scan task details returned.
         self.total_count = total_count

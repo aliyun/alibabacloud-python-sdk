@@ -27,7 +27,7 @@ class UpdateHoneypotNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_name = node_name
-        # The collection of allowed CIDR blocks.
+        # The list of allowed CIDR blocks.
         self.security_group_probe_ip_list = security_group_probe_ip_list
 
     def validate(self):

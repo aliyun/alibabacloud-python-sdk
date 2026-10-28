@@ -9,7 +9,7 @@ class DeleteCustomizedDictRequest(DaraModel):
         self,
         source_ip: str = None,
     ):
-        # The IP address of the access source.
+        # The source IP address.
         self.source_ip = source_ip
 
     def validate(self):

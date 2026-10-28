@@ -22,22 +22,22 @@ class HandleSimilarMaliciousFilesRequest(DaraModel):
         # - **en**: English.
         self.lang = lang
         # The handling action. Valid values:
-        # - addWhitelist: adds to the whitelist.
-        # - offWhitelist: removes from the whitelist.
-        # - offline_handled: handled offline.
-        # - mark_mis_info: submits as a false positive.
-        # - ignore: ignores the alert.
+        # - addWhitelist: Adds the alert to the whitelist.
+        # - offWhitelist: Removes the alert from the whitelist.
+        # - offline_handled: Marks the alert as handled offline.
+        # - mark_mis_info: Submits the alert as a false positive.
+        # - ignore: Ignores the alert.
         # 
         # This parameter is required.
         self.operation = operation
         # The file source. Valid values:
-        # - agentless: host detection.
-        # - ecs_snapshot: user snapshot detection.
-        # - ecs_image: user custom image detection.
+        # - agentless: Host detection.
+        # - ecs_snapshot: User snapshot detection.
+        # - ecs_image: Custom image detection.
         self.scan_range = scan_range
-        # The batch processing scenario. Valid values:
-        # - same_file_md5: same file MD5.
-        # - default (default value): same alerting type.
+        # The scenario for batch processing. Valid values:
+        # - same_file_md5: The same file MD5.
+        # - default: The same alerting type. This is the default value.
         self.scenario = scenario
 
     def validate(self):

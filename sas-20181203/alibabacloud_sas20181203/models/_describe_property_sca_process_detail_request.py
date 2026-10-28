@@ -17,32 +17,25 @@ class DescribePropertyScaProcessDetailRequest(DaraModel):
     ):
         # The type of the application process. Default value: **java**. Valid values:
         # 
-        # *   **java**: Java process.
-        # *   **php**: PHP process.
+        # - **java**: Java process
+        # - **php**: PHP process
         self.biz_type = biz_type
         # The startup parameter.
-        # 
-        # >  This parameter supports only prefix queries. Fuzzy match is not supported.
+        # > Only prefix match is supported. Fuzzy match is not supported.
         self.cmdline = cmdline
-        # The page number. Default value: **1**.
+        # The page number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The number of entries per page. Default value: 10. If you leave this parameter empty, 10 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page in a paged query. The default number of entries per page for paging is 10. If this parameter is left empty, 10 entries are returned by default.
+        # > Specify a value for this parameter.
         self.page_size = page_size
         # The process ID.
-        # 
-        # >  Only exact match is supported.
+        # > Only exact match is supported.
         self.pid = pid
-        # The information about the server that you want to query. The value can be the public IP address, private IP address, or name of the server. Fuzzy match is supported.
+        # The asset information to query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
         self.remark = remark
         # The UUID of the server.
-        # 
-        # > 
-        # 
-        # *   You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
-        # 
-        # *   Only exact match is supported.
+        # >- You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
+        # >- Only exact match is supported.
         self.uuid = uuid
 
     def validate(self):

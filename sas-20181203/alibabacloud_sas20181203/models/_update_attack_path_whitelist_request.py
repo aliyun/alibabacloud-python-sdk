@@ -18,28 +18,28 @@ class UpdateAttackPathWhitelistRequest(DaraModel):
         whitelist_name: str = None,
         whitelist_type: str = None,
     ):
-        # List of cloud product assets in the attack path.
+        # The list of cloud assets in the attack path.
         self.attack_path_asset_list = attack_path_asset_list
-        # Attack path whitelist ID.
-        # > You can call [ListAttackPathWhitelist](~~ListAttackPathWhitelist~~) to query the attack path whitelist ID.
+        # The ID of the attack path whitelist.
+        # > You can call [ListAttackPathWhitelist](~~ListAttackPathWhitelist~~) to query the ID of the attack path whitelist.
         # 
         # This parameter is required.
         self.attack_path_whitelist_id = attack_path_whitelist_id
-        # Path name.
+        # The path name.
         # 
         # > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path name.
         self.path_name = path_name
-        # Path type.
+        # The path type.
         # > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path type.
         self.path_type = path_type
-        # Remark information.
+        # The remark.
         self.remark = remark
-        # Whitelist name.
+        # The name of the whitelist.
         self.whitelist_name = whitelist_name
-        # Whitelist type. Values:
+        # The whitelist type. Valid values:
         # 
-        # - **ALL_ASSET**: All assets
-        # - **PART_ASSET**: Partial assets
+        # - **ALL_ASSET**: all assets.
+        # - **PART_ASSET**: partial assets.
         self.whitelist_type = whitelist_type
 
     def validate(self):
@@ -116,29 +116,29 @@ class UpdateAttackPathWhitelistRequestAttackPathAssetList(DaraModel):
         region_id: str = None,
         vendor: int = None,
     ):
-        # Subtype of the cloud product asset.
+        # The subtype of the cloud asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud product asset.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud asset.
         self.asset_sub_type = asset_sub_type
-        # Type of the cloud product asset.
+        # The type of the cloud asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud product asset.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud asset.
         self.asset_type = asset_type
-        # Cloud product asset instance ID.
+        # Instance ID of the cloud asset instance.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the cloud product asset instance ID.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query instance ID of the cloud asset instance.
         self.instance_id = instance_id
-        # Node type, with values:
-        # - **start**: Start point.
-        # - **end**: End point.
+        # The node type. Valid values:
+        # - **start**: start node.
+        # - **end**: end node.
         self.node_type = node_type
-        # Region ID of the cloud product asset instance.
+        # The region ID of the cloud asset instance.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud product asset instance.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud asset instance.
         self.region_id = region_id
-        # Vendor of the cloud product asset.
+        # The vendor of the cloud asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud product asset.
+        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the vendor of the cloud asset.
         self.vendor = vendor
 
     def validate(self):

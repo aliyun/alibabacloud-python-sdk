@@ -14,9 +14,13 @@ class ListUuidsByAppIdRequest(DaraModel):
         page_size: int = None,
         resource_directory_uid: int = None,
     ):
-        # The ID of the SAE application.
+        # The SAE application ID.
+        # > You can call the [ListMachineApps](~~ListMachineApps~~) operation to obtain the value of this parameter.
+        # This parameter is required. If it is not provided, the API returns HTTP 400 with the error code -101.
         self.app_id = app_id
         # The region ID.
+        # > You can call the [ListMachineApps](~~ListMachineApps~~) operation to obtain the value of this parameter.
+        # This parameter is required. If it is not provided, the API returns HTTP 400 with the error code -101.
         self.app_region_id = app_region_id
         # The page number of the current page in a paging query.
         self.current_page = current_page
@@ -26,7 +30,7 @@ class ListUuidsByAppIdRequest(DaraModel):
         self.lang = lang
         # The number of entries to return on each page in a paging query.
         self.page_size = page_size
-        # The UID of the resource directory.
+        # The UID of the associated resource directory.
         self.resource_directory_uid = resource_directory_uid
 
     def validate(self):

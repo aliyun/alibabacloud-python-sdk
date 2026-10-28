@@ -11,7 +11,7 @@ class DeleteFileProtectRuleRequest(DaraModel):
         self,
         id: List[int] = None,
     ):
-        # The IDs of the core file monitoring rules that you want to delete.
+        # The IDs of the rules to delete.
         self.id = id
 
     def validate(self):

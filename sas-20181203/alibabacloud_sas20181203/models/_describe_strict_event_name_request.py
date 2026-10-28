@@ -9,10 +9,10 @@ class DescribeStrictEventNameRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # Sets the language type for requests and received messages, default is **zh**. Values:
+        # Specifies the language for requests and response messages. Default value: **zh**. Valid values:
         # 
-        # - **zh**: Chinese
-        # - **en**: English
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

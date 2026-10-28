@@ -9,7 +9,7 @@ class ListPrivateRegistryTypeRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response messages. Valid values:
         # - **zh**: Chinese.
         # - **en**: English.
         self.lang = lang

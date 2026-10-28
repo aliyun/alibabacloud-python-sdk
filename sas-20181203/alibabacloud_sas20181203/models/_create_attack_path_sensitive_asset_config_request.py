@@ -13,12 +13,12 @@ class CreateAttackPathSensitiveAssetConfigRequest(DaraModel):
         attack_path_asset_list: List[main_models.CreateAttackPathSensitiveAssetConfigRequestAttackPathAssetList] = None,
         config_type: str = None,
     ):
-        # List of cloud product assets.
+        # The list of cloud service assets.
         # 
         # This parameter is required.
         self.attack_path_asset_list = attack_path_asset_list
-        # Configuration type. Possible values:
-        # - asset_instance: Asset.
+        # The configuration type. Valid values:
+        # - asset_instance: asset.
         # 
         # This parameter is required.
         self.config_type = config_type
@@ -66,33 +66,33 @@ class CreateAttackPathSensitiveAssetConfigRequestAttackPathAssetList(DaraModel):
         region_id: str = None,
         vendor: int = None,
     ):
-        # Subtype of the cloud product asset.
+        # The subtype of the cloud service asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the subtype of the cloud product asset.
+        # > You can call the [ListCloudAssetInstances](~~ListCloudAssetInstances~~) operation to query the subtype of the cloud service asset.
         # 
         # This parameter is required.
         self.asset_sub_type = asset_sub_type
-        # Type of the cloud product asset.
+        # The type of the cloud service asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the type of the cloud product asset.
+        # > You can call the [ListCloudAssetInstances](~~ListCloudAssetInstances~~) operation to query the type of the cloud service asset.
         # 
         # This parameter is required.
         self.asset_type = asset_type
-        # Cloud product asset instance ID.
+        # The instance ID of the cloud service asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the cloud product asset instance ID.
+        # > You can call the [ListCloudAssetInstances](~~ListCloudAssetInstances~~) operation to query the instance ID of the cloud service asset.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Region ID of the cloud product asset instance.
+        # The region ID of the cloud service asset instance.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the region ID of the cloud product asset instance.
+        # > You can call the [ListCloudAssetInstances](~~ListCloudAssetInstances~~) operation to query the region ID of the cloud service asset instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Cloud product asset vendor.
+        # The vendor of the cloud service asset.
         # 
-        # > You can call [ListCloudAssetInstances](~~ListCloudAssetInstances~~) to query the cloud product asset vendor.
+        # > You can call the [ListCloudAssetInstances](~~ListCloudAssetInstances~~) operation to query the vendor of the cloud service asset.
         # 
         # This parameter is required.
         self.vendor = vendor

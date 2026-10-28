@@ -9,7 +9,7 @@ class GetClusterScannerYamlRequest(DaraModel):
         self,
         cluster_id: str = None,
     ):
-        # The ID of the container cluster to query.
+        # The ID of the container cluster.
         # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         # 
         # This parameter is required.

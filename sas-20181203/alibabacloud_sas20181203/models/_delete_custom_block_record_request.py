@@ -10,7 +10,7 @@ class DeleteCustomBlockRecordRequest(DaraModel):
         id: int = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the record to delete.
+        # The ID of the data to delete.
         # > Call the [DescribeCustomBlockRecords](~~DescribeCustomBlockRecords~~) operation to obtain this parameter.
         # 
         # This parameter is required.

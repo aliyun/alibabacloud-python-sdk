@@ -12,7 +12,7 @@ class ListAssetSelectionSelectedTargetRequest(DaraModel):
         selection_key: str = None,
         target_list: List[str] = None,
     ):
-        # The unique identifier of the asset selection.
+        # The unique identifier for the current asset selection.
         # 
         # This parameter is required.
         self.selection_key = selection_key

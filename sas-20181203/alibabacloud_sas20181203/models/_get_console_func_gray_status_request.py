@@ -10,9 +10,9 @@ class GetConsoleFuncGrayStatusRequest(DaraModel):
         condition: str = None,
         lang: str = None,
     ):
-        # Name of the function module.
+        # The name of the feature module.
         self.condition = condition
-        # Set the language type for request and response messages. Default value: **zh**. Values:
+        # Sets the language for requests and responses. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
         # - **en**: English

@@ -16,7 +16,7 @@ class DescribeImageEventOperationConditionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code of the call.
+        # The return code.
         self.code = code
         # The returned data.
         self.data = data
@@ -24,9 +24,9 @@ class DescribeImageEventOperationConditionResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - **true**: The call was successful.
-        # - **false**: The call failed.
+        # Indicates whether the call is successful. Valid values:
+        # - **true**: The call is successful.
+        # - **false**: The call fails.
         self.success = success
 
     def validate(self):
@@ -83,7 +83,7 @@ class DescribeImageEventOperationConditionResponseBodyData(DaraModel):
         scenarios: List[str] = None,
     ):
         # The alerting type. Valid values:
-        # - **sensitiveFile**: sensitive file.
+        # - **sensitiveFile**: Sensitive file.
         self.event_type = event_type
         # The list of operations.
         self.operations = operations
@@ -140,7 +140,7 @@ class DescribeImageEventOperationConditionResponseBodyDataOperations(DaraModel):
         # The rule conditions.
         self.conditions = conditions
         # The operation code. Valid values:
-        # - **whitelist**: whitelist.
+        # - **whitelist**: Whitelist.
         self.operation_code = operation_code
         # The operation name.
         self.operation_name = operation_name
@@ -194,7 +194,7 @@ class DescribeImageEventOperationConditionResponseBodyDataOperationsConditions(D
     ):
         # The condition key. Valid values:
         # - **MD5**: MD5.
-        # - **PATH**: path.
+        # - **PATH**: Path.
         self.condition_key = condition_key
         # The condition name.
         self.condition_name = condition_name

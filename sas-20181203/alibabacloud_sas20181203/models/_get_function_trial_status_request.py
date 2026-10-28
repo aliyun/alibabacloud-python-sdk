@@ -9,7 +9,7 @@ class GetFunctionTrialStatusRequest(DaraModel):
         self,
         function_name: str = None,
     ):
-        # The name of the function module.
+        # The name of the feature module.
         self.function_name = function_name
 
     def validate(self):

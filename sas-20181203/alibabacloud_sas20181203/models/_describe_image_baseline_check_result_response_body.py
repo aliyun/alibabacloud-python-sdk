@@ -16,7 +16,7 @@ class DescribeImageBaselineCheckResultResponseBody(DaraModel):
     ):
         # The details of the image baseline check results.
         self.baseline_result = baseline_result
-        # The paging information.
+        # The paging information for a paged query.
         self.page_info = page_info
         # The ID of the request.
         self.request_id = request_id
@@ -72,11 +72,11 @@ class DescribeImageBaselineCheckResultResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries on the current page when using paging.
+        # The number of entries returned on the current page when paging in a paged query.
         self.count = count
-        # The page number of the current page when using paging.
+        # The page number of the current page when paging in a paged query.
         self.current_page = current_page
-        # The maximum number of entries per page when using paging.
+        # The maximum number of entries returned per page when paging in a paged query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -134,32 +134,32 @@ class DescribeImageBaselineCheckResultResponseBodyBaselineResult(DaraModel):
         middle_risk_item_count: int = None,
         status: int = None,
     ):
-        # The type key of the baseline item.
+        # The key of the baseline item type.
         self.baseline_class_alias = baseline_class_alias
         # The number of baseline check items.
         self.baseline_item_count = baseline_item_count
         # The alias of the baseline item.
         self.baseline_name_alias = baseline_name_alias
-        # The name key of the baseline item.
+        # The key of the baseline item name.
         self.baseline_name_key = baseline_name_key
         # The risk level of the baseline. Valid values:
         # - **high**: high risk
         # - **medium**: medium risk
-        # - **low**: low risk.
+        # - **low**: low risk
         self.baseline_name_level = baseline_name_level
-        # The timestamp of the first scan, in milliseconds.
+        # The timestamp of the first scan. Unit: milliseconds.
         self.first_scan_time = first_scan_time
         # The number of associated high-risk images.
         self.high_risk_item_count = high_risk_item_count
-        # The timestamp of the most recent scan, in milliseconds.
+        # The timestamp of the latest scan. Unit: milliseconds.
         self.last_scan_time = last_scan_time
         # The number of associated low-risk images.
         self.low_risk_item_count = low_risk_item_count
         # The number of associated medium-risk images.
         self.middle_risk_item_count = middle_risk_item_count
         # The fix status of the baseline risk. Valid values:
-        # - **0**: Unfixed.
-        # - **1**: Fixed.
+        # - **0**: unfixed
+        # - **1**: fixed
         self.status = status
 
     def validate(self):

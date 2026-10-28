@@ -10,14 +10,14 @@ class DescribeCloudVendorTrialConfigRequest(DaraModel):
         auth_id: int = None,
         vendor: str = None,
     ):
-        # Unique ID of the AK.
+        # The unique ID of the AccessKey.
         # 
-        # > You can call [DescribeCloudVendorAccountAKList](~~DescribeCloudVendorAccountAKList~~) to get the AuthId.
+        # > You can call [DescribeCloudVendorAccountAKList](~~DescribeCloudVendorAccountAKList~~) to obtain the AuthId.
         # > -
         # 
         # This parameter is required.
         self.auth_id = auth_id
-        # Cloud asset vendor. Values:
+        # The cloud asset vendor. Valid values:
         # - **Tencent**: Tencent Cloud
         # - **AWS**: Amazon Web Services
         # 

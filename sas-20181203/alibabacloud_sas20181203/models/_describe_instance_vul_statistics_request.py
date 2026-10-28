@@ -10,11 +10,11 @@ class DescribeInstanceVulStatisticsRequest(DaraModel):
         types: str = None,
         uuid: str = None,
     ):
-        # The vulnerability type of the Serverless asset. Valid values:
+        # The vulnerability types for serverless assets. Valid values:
         # 
-        # - **sca**: middleware vulnerability
+        # - **sca**: middleware vulnerabilities
         # 
-        # - **app**: scanner vulnerability
+        # - **app**: scanner vulnerabilities
         # 
         # >Serverless assets currently support only application vulnerability scanning.
         self.types = types

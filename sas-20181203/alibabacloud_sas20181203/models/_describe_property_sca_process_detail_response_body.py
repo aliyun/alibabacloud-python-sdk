@@ -16,9 +16,9 @@ class DescribePropertyScaProcessDetailResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # The processes collected by the asset fingerprints feature.
+        # The list of processes in Asset Fingerprints.
         self.propertys = propertys
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -80,11 +80,11 @@ class DescribePropertyScaProcessDetailResponseBodyPropertys(DaraModel):
     ):
         # The command line of the process.
         self.cmdline = cmdline
-        # The timestamp at which the last asset fingerprint collection is performed. Unit: milliseconds.
+        # The timestamp of the latest scan by Asset Fingerprints. Unit: milliseconds.
         self.create_timestamp = create_timestamp
         # The instance ID of the server.
         self.instance_id = instance_id
-        # The instance name of the server.
+        # The name of the server instance.
         self.instance_name = instance_name
         # The public IP address of the server.
         self.internet_ip = internet_ip
@@ -92,11 +92,11 @@ class DescribePropertyScaProcessDetailResponseBodyPropertys(DaraModel):
         self.intranet_ip = intranet_ip
         # The name of the process.
         self.name = name
-        # The ID of the process.
+        # The process ID.
         self.pid = pid
         # The UUID of the server.
         self.uuid = uuid
-        # The version of web application service.
+        # The version of the web application service.
         self.version = version
 
     def validate(self):
@@ -181,11 +181,11 @@ class DescribePropertyScaProcessDetailResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries returned on the current page for paging in a paged query.
         self.count = count
-        # The page number.
+        # The page number of the current page for paging in a paged query.
         self.current_page = current_page
-        # The number of entries per page. Default value: **10**.
+        # The number of processes returned on each page for paging in a paged query. Default value: **10**.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count

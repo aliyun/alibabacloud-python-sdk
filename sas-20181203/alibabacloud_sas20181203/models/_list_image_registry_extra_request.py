@@ -9,8 +9,8 @@ class ListImageRegistryExtraRequest(DaraModel):
         self,
         registry_id: int = None,
     ):
-        # The image repository ID.
-        # >Call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
+        # The ID of the image registry.
+        # >You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.registry_id = registry_id

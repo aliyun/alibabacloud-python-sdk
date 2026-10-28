@@ -14,19 +14,18 @@ class DeleteBaselineCheckWhiteRecordRequest(DaraModel):
         record_ids: List[int] = None,
         source: str = None,
     ):
-        # The IDs of check items.
+        # The list of check item IDs.
         self.check_ids = check_ids
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The IDs of the whitelist records.
+        # The list of whitelist record IDs.
         self.record_ids = record_ids
         # The data source. Valid values:
-        # 
-        # *   **default**: host baseline
-        # *   **agentless**: agentless detection
+        # - **default**: server baseline
+        # - **agentless**: agentless baseline
         self.source = source
 
     def validate(self):

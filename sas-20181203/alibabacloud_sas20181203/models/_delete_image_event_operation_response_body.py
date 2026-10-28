@@ -14,17 +14,17 @@ class DeleteImageEventOperationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code of the API call.
         self.code = code
         # The returned data.
         self.data = data
-        # The response message.
+        # The message returned in the response.
         self.message = message
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - **true**: Successful.
-        # - **false**: Failed.
+        # Indicates whether the API call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -78,7 +78,7 @@ class DeleteImageEventOperationResponseBodyData(DaraModel):
         self,
         id: int = None,
     ):
-        # The primary key of the alert disposal rule.
+        # The primary key of the alert handling rule.
         self.id = id
 
     def validate(self):

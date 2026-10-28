@@ -27,48 +27,44 @@ class ListCheckItemWarningMachineRequest(DaraModel):
         # 
         # This parameter is required.
         self.check_id = check_id
-        # The name of the field that is used to query containers.
+        # The name of the container security query parameter.
         self.container_field_name = container_field_name
-        # The value of the field that is used to query containers.
+        # The value of the container security query parameter.
         self.container_field_value = container_field_value
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The page number of the page to return. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
-        # The ID of the asset group.
-        # 
-        # > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to query the ID of the asset group.
+        # The ID of the asset group to query.
+        # > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to obtain the value of this parameter.
         self.group_id = group_id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to display on each page during paging in a paged query. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned by default.
+        # > Do not leave this parameter empty.
         self.page_size = page_size
-        # The keyword that is used to query servers in fuzzy match mode.
+        # The fuzzy match keyword for servers.
         self.remark = remark
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+        # The ID of the member accounts in the resource folder (Alibaba Cloud account).
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The type of the check item.
+        # The category to which the check item belongs.
         self.risk_type = risk_type
-        # The data source. Default value: default. Valid values:
-        # 
-        # *   **default**: The check items of baselines for hosts.
-        # *   **agentless**: The check items of baselines for agentless detection.
+        # The data source. If you leave this parameter empty, the baseline check results for servers are queried by default. Valid values:
+        # - **default**: server
+        # - **agentless**: agentless
         self.source = source
-        # The status of the check item. Valid values:
+        # The status of the check item. Default value: null. Valid values:
         # 
-        # *   **1**: failed
-        # *   **2**: verifying
-        # *   **3**: passed
-        # *   **6**: ignored
-        # *   **7**: fixing
-        # *   **8**: fixed
+        # - **1**: failed
+        # - **2**: verifying
+        # - **3**: passed
+        # - **6**: ignored
+        # - **7**: fixing
+        # - **8**: fixed
         self.status = status
-        # The UUID array of the servers.
+        # The list of server UUIDs.
         self.uuid_list = uuid_list
 
     def validate(self):

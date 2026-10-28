@@ -13,21 +13,21 @@ class ListGroupsRequest(DaraModel):
         page_size: int = None,
         use_next_token: bool = None,
     ):
-        # The page number of the current page to return. Minimum value: 1. Default value: 1.
+        # The page number of the returned page. Pages start from 1. Default value: 1.
         self.current_page = current_page
-        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # Specifies the language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The token for the next query. If NextToken is empty, no additional results exist. If NextToken has a value, the value indicates the token to use for the next query.
+        # The pagination token for the next query. If this parameter is empty, no subsequent queries are available. If a value is returned, it is used as the token to start the next query.
         self.next_token = next_token
-        # The maximum number of entries to return on each page in a paging query. Default value: 20. Maximum value: 2000.
+        # The maximum number of entries to return on each page for paging in a paged query. Default value: 20. Maximum value: 2000.
         self.page_size = page_size
-        # Specifies whether to use the NextToken method to retrieve the vulnerability list data. If this parameter is used, TotalCount is no longer returned. Valid values:
+        # Specifies whether to use the NextToken method to retrieve the vulnerability list. If this parameter is used, TotalCount is not returned. Valid values:
         # 
-        # - **true**: Uses the NextToken method.
-        # - **false**: Does not use the NextToken method.
+        # - **true**: Use the NextToken method.
+        # - **false**: Do not use the NextToken method.
         self.use_next_token = use_next_token
 
     def validate(self):

@@ -16,7 +16,8 @@ class GetContainerDefenseRuleDetailRequest(DaraModel):
         # - **en**: English
         self.lang = lang
         # The rule ID.
-        # > You can call the [ListContainerDefenseRule](https://help.aliyun.com/document_detail/2590599.html) API operation to obtain this parameter.
+        # > You can call the [ListContainerDefenseRule](https://help.aliyun.com/document_detail/2590599.html) operation to obtain this parameter.
+        # This parameter is required. If it is not provided, the API returns HTTP 400 and the error code -101.
         self.rule_id = rule_id
 
     def validate(self):

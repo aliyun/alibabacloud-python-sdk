@@ -13,18 +13,18 @@ class BatchDeleteMaliciousFileWhitelistConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+        # The result code. A value of **200** indicates success, whereas any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The HTTP status code. A value of 200 indicates that the request is successful.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The additional message returned for the request result.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The API call is successful.
+        # - **false**: The API call fails.
         self.success = success
 
     def validate(self):

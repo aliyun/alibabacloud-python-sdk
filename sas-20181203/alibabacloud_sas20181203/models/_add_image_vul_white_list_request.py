@@ -14,32 +14,30 @@ class AddImageVulWhiteListRequest(DaraModel):
         type: str = None,
         whitelist: str = None,
     ):
-        # The language of the content within the request and response. Default value: zh. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Default value: zh. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The reason why you add the vulnerability to the whitelist.
+        # The reason for adding the whitelist.
         self.reason = reason
         # The source of the whitelist. Valid values:
-        # - **image**
-        # - **agentless**
+        # - **image**: image
+        # - **agentless**: agentless
         self.source = source
-        # The object on which you want to perform the operation. The value of this parameter is in the JSON format and contains the following fields:
+        # The operation target. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **type**: the object type. The value is fixed to repo.
-        # *   **target**: the object content. The value is in the Namespace/Image repository format.
+        # - **type**: the target type. Set the value to repo.
+        # - **target**: the target content. Format: namespace/image repository.
         self.target = target
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   **cve**: system vulnerability
-        # *   **sca**: application vulnerability
+        # The vulnerability type. Valid values:
+        # - **cve**: system vulnerability
+        # - **sca**: application vulnerability
         self.type = type
-        # The whitelist. The value of this parameter is in the JSON format and contains the following fields:
+        # The whitelist. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **Type**: the vulnerability type. Valid values: cve and sca.
-        # *   **Name**: the name of the vulnerability that is specified in Common Vulnerabilities and Exposures (CVE).
-        # *   **AliasName**: the alias of the vulnerability that is specified in CVE.
+        # - **Type**: the vulnerability type. Valid values: cve and sca.
+        # - **Name**: the name in the vulnerability advisory.
+        # - **AliasName**: the alias in the vulnerability advisory.
         self.whitelist = whitelist
 
     def validate(self):

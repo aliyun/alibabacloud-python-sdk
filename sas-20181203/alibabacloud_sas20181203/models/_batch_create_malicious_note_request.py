@@ -12,7 +12,7 @@ class BatchCreateMaliciousNoteRequest(DaraModel):
         self,
         image_malicious_file_list: List[main_models.BatchCreateMaliciousNoteRequestImageMaliciousFileList] = None,
     ):
-        # The batches.
+        # The batch list.
         self.image_malicious_file_list = image_malicious_file_list
 
     def validate(self):
@@ -49,11 +49,9 @@ class BatchCreateMaliciousNoteRequestImageMaliciousFileList(DaraModel):
         event_id: int = None,
         note: str = None,
     ):
-        # The ID of the alert.
-        # 
-        # >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the alert IDs.
+        # The alert ID. You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query this parameter.
         self.event_id = event_id
-        # The description.
+        # The note.
         self.note = note
 
     def validate(self):

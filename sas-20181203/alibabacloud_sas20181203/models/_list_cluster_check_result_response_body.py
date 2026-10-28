@@ -14,11 +14,11 @@ class ListClusterCheckResultResponseBody(DaraModel):
         page_info: main_models.ListClusterCheckResultResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # Information on check results.
+        # The check result information.
         self.checks = checks
-        # Pagination information.
+        # The pagination information.
         self.page_info = page_info
-        # The ID of the current request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListClusterCheckResultResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of data entries displayed on the current page during pagination.
+        # The number of data entries displayed on the current page during paging in a paged query.
         self.count = count
-        # Page number in the pagination query.
+        # The page number of the current page during paging in a paged query.
         self.current_page = current_page
-        # Number of items per page in the pagination query. The default value is **20**, indicating that 20 items are displayed per page.
+        # The number of alerting events to display on each page during paging in a paged query. Default value: **20**, which indicates that 20 alerting events are displayed on each page.
         self.page_size = page_size
-        # The total number of data entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -137,91 +137,70 @@ class ListClusterCheckResultResponseBodyChecks(DaraModel):
         trial_permission_type: int = None,
         vendor: str = None,
     ):
-        # Subtype of the cloud product.
+        # The subtype of the cloud service.
         self.asset_sub_type = asset_sub_type
-        # Asset type.
+        # The asset type.
         self.asset_type = asset_type
-        # ID of the check item.
+        # The ID of the check item.
         self.check_id = check_id
-        # Information about the standards, requirements, and sections associated with the check result.
+        # The standards, regulations, and sections associated with the check result.
         self.check_policies = check_policies
-        # Name of the check item.
+        # The name of the check item.
         self.check_show_name = check_show_name
-        # Source type of the security check item:
-        # 
-        # - **CUSTOM**:User-defined
-        # 
-        # - **SYSTEM**:Predefined by the Security Platform
+        # The source type of the Threat Detection Service check item. Valid values:
+        #  - **CUSTOM**: Custom.
+        #  - **SYSTEM**: Predefined by the Threat Detection Service platform.
         self.check_type = check_type
-        # Subtype of the cloud product asset. Values:
+        # The asset subtype of the cloud service. Valid values:
         # 
-        # - When **InstanceType** is **ECS**, this parameter can take the following values:
-        # 
-        #   - **INSTANCE**
-        # 
-        #   - **DISK**
-        # 
-        #   - **SECURITY_GROUP**
-        # 
-        # - When **InstanceType** is **ACR**, this parameter can take the following values:
-        # 
-        #   - **REPOSITORY_ENTERPRISE**
-        # 
-        #   - **REPOSITORY_PERSON**
-        # 
-        # - When **InstanceType** is **RAM**, this parameter can take the following values:
-        # 
-        #   - **ALIAS**
-        # 
-        #   - **USER**
-        # 
-        #   - **POLICY**
-        # 
-        #   - **GROUP**
-        # 
-        # - When **InstanceType** is **WAF**, this parameter can take the following values:
-        # 
-        #   - **DOMAIN**
-        # 
-        # - For other **InstanceType** values, this parameter can take the following value:
-        # 
-        #   - **INSTANCE**
+        # - If **InstanceType** is set to **ECS**, valid values are:
+        #     - **INSTANCE**
+        #     - **DISK**
+        #     - **SECURITY_GROUP**
+        # - If **InstanceType** is set to **ACR**, valid values are:
+        #     - **REPOSITORY_ENTERPRISE**
+        #     - **REPOSITORY_PERSON**
+        # - If **InstanceType** is set to **RAM**, valid values are:
+        #     - **ALIAS**
+        #     - **USER**
+        #     - **POLICY**
+        #     - **GROUP**
+        # - If **InstanceType** is set to **WAF**, valid values are:
+        #     - **DOMAIN**
+        # - If **InstanceType** is set to other values, valid values are:
+        #     - **INSTANCE**
         self.instance_sub_type = instance_sub_type
-        # Asset type of the cloud product.
+        # The asset type of the cloud service.
         self.instance_type = instance_type
-        # Timestamp of the latest check, in milliseconds.
+        # The timestamp of the latest check. Unit: milliseconds.
         self.last_check_time = last_check_time
-        # Risk level of the check item. Possible values:
+        # The risk level of the check item. Valid values:
         # 
-        # - **HIGH**:High
-        # 
-        # - **MEDIUM**:Medium
-        # 
-        # - **LOW**:Low
+        # - **HIGH**: High.
+        # - **MEDIUM**: Medium.
+        # - **LOW**: Low.
         self.risk_level = risk_level
-        # Status of the check item. Values:
+        # The status of the check item. Valid values:
         # 
-        # - **PASS**: Passed
-        # 
-        # - **NOT_PASS**: Not passed
-        # 
-        # - **CHECKING**: Checking
-        # 
-        # - **NOT_CHECK**: Not checked
-        # 
-        # - **WHITELIST**: Whitelisted
+        # - **PASS**: Passed.
+        # - **NOT_PASS**: Failed.
+        # - **CHECKING**: Checking.
+        # - **NOT_CHECK**: Not checked.
+        # - **WHITELIST**: Whitelisted.
         self.status = status
-        # Whether the check depends on TRIAL permissions.
+        # Specifies whether the check depends on the TRIAL permission.
         self.trial_permission = trial_permission
-        # Whether the check item requires enabling data delivery of operation audit for more than 30 days to build a behavior baseline.
-        # 
-        # - **1**:Required
-        # 
-        # - **0**:Not Required
+        # Specifies whether the check item requires enabling data delivery for ActionTrail for more than 30 days to build a behavior baseline. Valid values:
+        # - **1**: Yes.
+        # - **0**: No.
         self.trial_permission_type = trial_permission_type
-        # Vendor of the asset. Values:
+        # The vendor of the asset. Valid values:
         # 
-        # 0: Alibaba Cloud 3: Other cloud 4: Other cloud 5: Other cloud 7: Other cloud
+        # 0: Alibaba Cloud.
+        # 3: Other cloud.
+        # 4: Other cloud.
+        # 5: Other cloud.
+        # 7: Other cloud.
         self.vendor = vendor
 
     def validate(self):
@@ -340,17 +319,17 @@ class ListClusterCheckResultResponseBodyChecksCheckPolicies(DaraModel):
         standard_id: int = None,
         standard_show_name: str = None,
     ):
-        # Requirement ID of the check item.
+        # The ID of the regulation for the check item.
         self.requirement_id = requirement_id
-        # Display name of the requirement for the check item.
+        # The display name of the regulation for the check item.
         self.requirement_show_name = requirement_show_name
-        # Section ID of the check item.
+        # The ID of the section for the check item.
         self.section_id = section_id
-        # Display name of the section for the check item.
+        # The display name of the section for the check item.
         self.section_show_name = section_show_name
-        # Standard ID of the check item.
+        # The ID of the standard for the check item.
         self.standard_id = standard_id
-        # Display name of the standard for the check item.
+        # The display name of the standard for the check item.
         self.standard_show_name = standard_show_name
 
     def validate(self):

@@ -12,19 +12,19 @@ class DescribeHoneyPotSuspStatisticsRequest(DaraModel):
         statistics_days: int = None,
         statistics_key_type: str = None,
     ):
-        # The source of the request. Set the value to **honeypot**.
+        # Specifies the source of the request. Set the value to **honeypot**.
         # 
         # This parameter is required.
         self.from_ = from_
-        # The language of the request and response. Default value: **zh**. Valid values:
+        # Specifies the language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The time range of the data to query. Unit: days.
+        # Specifies the time range of the data to query. Unit: days.
         # 
         # This parameter is required.
         self.statistics_days = statistics_days
-        # The Asset Type to query. Valid values:
+        # Specifies the asset type to query. Valid values:
         # - **vpcInstanceId**: VPC-connected instance
         # - **uuid**: server
         # 

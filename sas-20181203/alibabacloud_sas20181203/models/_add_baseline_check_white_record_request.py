@@ -14,25 +14,21 @@ class AddBaselineCheckWhiteRecordRequest(DaraModel):
         target_type: str = None,
     ):
         # The ID of the check item.
-        # 
-        # >  You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to query the IDs of check items.
+        # > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.
         self.check_id = check_id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The reason why the check item is added to the whitelist.
+        # The reason for adding the item to the whitelist.
         self.reason = reason
-        # The data source. If you leave this parameter empty, the default value is used. Valid values:
-        # 
-        # *   **default**: server
-        # *   **agentless**: agentless detection
+        # The data source. If this parameter is left empty, servers are queried by default. Valid values:
+        # - **default**: server
+        # - **agentless**: agentless
         self.source = source
-        # The type of the assets on which the whitelist rule takes effect. Valid values:
-        # 
-        # *   **all_instance**: all servers
-        # *   **instance**: specific servers
+        # The type of the target to which the whitelist applies. Valid values:
+        # - **all_instance**: all servers
+        # - **instance**: specified servers
         self.target_type = target_type
 
     def validate(self):

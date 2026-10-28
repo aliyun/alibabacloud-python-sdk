@@ -9,7 +9,7 @@ class UnbindAegisResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use the request ID to troubleshoot issues.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

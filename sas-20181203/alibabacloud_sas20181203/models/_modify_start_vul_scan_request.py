@@ -13,31 +13,30 @@ class ModifyStartVulScanRequest(DaraModel):
         types: str = None,
         uuids: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You must use different tokens for different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # - true: performs only a dry run without performing the actual operation.
-        # - false: performs the actual request.
-        # 
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # - true: performs a dry run only. The system checks the request but does not perform the actual operation.
+        # - false: performs the request.
         # Default value: false.
         self.dry_run = dry_run
-        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # The ID of the main account of the member accounts in the resource folder.
         # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # Settings for the vulnerability types to be detected by the one-click scan feature. Valid values:
+        # Settings for the vulnerability types to be detected by the quick scan feature. Valid values:
         # - **cve**: Linux software vulnerability.
         # - **sys**: Windows system vulnerability.
         # - **cms**: Web-CMS vulnerability.
-        # - **app**: Application vulnerability detected by the web scanner.
-        # - **emg**: Emergency vulnerability.
-        # - **image**: Container image vulnerability.
-        # - **sca**: Application vulnerability detected by software constituency parsing.
+        # - **app**: Application vulnerabilities detected by web scanners.
+        # - **emg**: Emergency vulnerabilities.
+        # - **image**: Container image vulnerabilities.
+        # - **sca**: Application vulnerabilities detected by software constituency parsing.
         # > If this parameter is left empty, all vulnerability types are detected.
         self.types = types
         # The list of server UUIDs. Separate multiple UUIDs with commas (,).
         # 
         # 
-        # > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/421726.html) operation to obtain this parameter.
+        # > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/421726.html) operation to obtain the UUIDs.
         self.uuids = uuids
 
     def validate(self):

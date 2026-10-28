@@ -16,30 +16,24 @@ class ListCheckStandardRequest(DaraModel):
         task_sources: List[str] = None,
         vendors: List[str] = None,
     ):
-        # The instance IDs of the cloud services to which the check items belong.
+        # The target cloud service instance ID for the check item.
         self.instance_ids = instance_ids
-        # The subtypes of cloud services.
+        # The subtype of the cloud service.
         self.instance_sub_types = instance_sub_types
-        # The asset types of cloud services.
+        # The asset type of the cloud service.
         self.instance_types = instance_types
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # - **zh**: Chinese
-        # 
-        # - **en**: English
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # List of task sources.
+        # The list of task sources.
         self.task_sources = task_sources
-        # The cloud service providers. Valid values:
-        # 
+        # The list of cloud vendors. Valid values:
         # - **ALIYUN**: Alibaba Cloud.
-        # 
         # - **TENCENT**: Tencent Cloud.
-        # 
         # - **HUAWEICLOUD**: Huawei Cloud.
-        # 
-        # - **MICROSOFT**: Microsoft Azure.
-        # 
+        # - **MICROSOFT**: Azure.
         # - **AWS**: Amazon Web Services (AWS).
         self.vendors = vendors
 

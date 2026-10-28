@@ -16,7 +16,7 @@ class UnBindHybridProxyRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # The UUIDs of the servers that you want to remove from the proxy cluster.
+        # The list of Security Center client UUIDs for the machines connected to the proxy.
         # 
         # This parameter is required.
         self.yundun_uuids = yundun_uuids
