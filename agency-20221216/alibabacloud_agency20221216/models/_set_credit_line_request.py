@@ -10,11 +10,11 @@ class SetCreditLineRequest(DaraModel):
         credit_line: str = None,
         uid: int = None,
     ):
-        # New Credit Line
+        # The new credit limit.
         # 
         # This parameter is required.
         self.credit_line = credit_line
-        # The UID of Sub Account.
+        # The UID of the sub-account.
         # 
         # This parameter is required.
         self.uid = uid

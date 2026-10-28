@@ -21,22 +21,54 @@ class GetCustomerOrdersRequest(DaraModel):
         start_date: str = None,
         time_type: int = None,
     ):
+        # The customer account.
         self.customer_account = customer_account
+        # The account manager.
         self.customer_manager = customer_manager
+        # The customer UID.
         self.customer_uid = customer_uid
+        # The end time. This parameter is used in combination with TimeType. Format: yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The order ID.
         self.order_id = order_id
+        # The order source. Valid values:
+        # - 0: Regular customer.
+        # - 1: Enterprise customer.
+        # - 2: Tier-2 distributor.
         self.order_source = order_source
+        # The order status. Valid values:
+        # - 1: Unpaid.
+        # - 2: Canceled.
+        # - 3: Paid.
         self.order_status = order_status
+        # The order type. Valid values:
+        # - BUY: New purchase.
+        # - UPGRADE: Upgrade.
+        # - DOWNGRADE: Downgrade.
+        # - RENEW: Renewal.
+        # - REFUND: Refund.
+        # - OTHERS: Others.
         self.order_type = order_type
+        # The current page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The product detail code.
         self.product_type = product_type
+        # The start time. This parameter is used in combination with TimeType. Format: yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.start_date = start_date
+        # The time type used as the basis for the query. This is not a date or time value. Valid values:
+        # - 1: Payment time.
+        # - 2: Order placement time.
+        # 
         # This parameter is required.
         self.time_type = time_type
 

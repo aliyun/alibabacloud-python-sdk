@@ -9,6 +9,8 @@ class CancelCouponRequest(DaraModel):
         self,
         coupon_id: int = None,
     ):
+        # The coupon ID.
+        # 
         # This parameter is required.
         self.coupon_id = coupon_id
 

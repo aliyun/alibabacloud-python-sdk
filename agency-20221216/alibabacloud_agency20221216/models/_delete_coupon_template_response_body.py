@@ -13,10 +13,15 @@ class DeleteCouponTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code.
         self.code = code
+        # The operation result.
         self.data = data
+        # The result message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

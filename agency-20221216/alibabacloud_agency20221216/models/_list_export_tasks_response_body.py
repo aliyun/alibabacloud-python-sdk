@@ -18,12 +18,19 @@ class ListExportTasksResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The status code of the returned result. A value of 200 indicates success.
         self.code = code
+        # The returned list.
         self.data = data
+        # The description of the returned result.
         self.message = message
+        # The current page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -101,12 +108,22 @@ class ListExportTasksResponseBodyData(DaraModel):
         status_code: str = None,
         url: str = None,
     ):
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
+        # The name of the file.
         self.file_name = file_name
+        # The unique ID of the export task.
         self.id = id
+        # The prompt message.
         self.message = message
+        # The display status of the task.
         self.status = status
+        # The status code of the task. Valid values:
+        # - 2: Exporting.
+        # - 3: Export successful.
+        # - -1: Export failed.
         self.status_code = status_code
+        # The download URL of the file.
         self.url = url
 
     def validate(self):

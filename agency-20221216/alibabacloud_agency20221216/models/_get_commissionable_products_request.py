@@ -18,13 +18,21 @@ class GetCommissionableProductsRequest(DaraModel):
         real_end_month: str = None,
         real_start_month: str = None,
     ):
+        # The commodity codes. Separate multiple codes with commas.
         self.commodity_code_list = commodity_code_list
+        # The fiscal year. If this parameter is left empty, the current fiscal year is used by default.
         self.fiscal_year = fiscal_year
+        # The list of display statuses for commission-eligible commodities.
         self.list_show_status_list = list_show_status_list
+        # The current page number. Pages start from 1.
         self.page_no = page_no
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The product codes. Separate multiple codes with commas.
         self.pip_code_list = pip_code_list
+        # The actual end month in the yyyymm format.
         self.real_end_month = real_end_month
+        # The actual start month in the yyyymm format.
         self.real_start_month = real_start_month
 
     def validate(self):

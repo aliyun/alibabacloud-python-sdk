@@ -11,16 +11,16 @@ class QuotaListExportPagedRequest(DaraModel):
         language: str = None,
         page_size: int = None,
     ):
-        # Pagination, current page number, starting from 1.
+        # The page number. Pages start from page 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Multilingual Parameters, the default language is English.</br>
-        # en: English</br>
-        # zh: Chinese</br>
-        # ja: Japanese </br>
+        # The language. Default value: en. Valid values:
+        # - en: English.
+        # - zh: Chinese.
+        # - ja: Japanese.
         self.language = language
-        # Pagination, record number on each page, maximum 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size

@@ -18,19 +18,19 @@ class QuotaListExportPagedResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Status code of returning result, 200 means success.
+        # The status code of the returned result. A value of 200 indicates success.
         self.code = code
-        # Listed data of returning result
+        # The list of returned results.
         self.data = data
-        # Description of returning result
+        # The description of the returned result.
         self.msg = msg
-        # Current page number
+        # The current page number.
         self.page_no = page_no
-        # Record number on each page
+        # The number of entries per page.
         self.page_size = page_size
-        # ID of the Request
+        # The request ID.
         self.request_id = request_id
-        # Total volume
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -107,20 +107,20 @@ class QuotaListExportPagedResponseBodyData(DaraModel):
         status_code: str = None,
         url: str = None,
     ):
-        # Create Time
+        # The creation time. The time is in the YYYY-MM-DD HH:mm:ss format in the UTC+8 time zone.
         self.create_time = create_time
-        # File Name
+        # The name of the file.
         self.file_name = file_name
-        # Notification Message
+        # The prompt message.
         self.message = message
-        # Display of Task Status
+        # The display status of the task.
         self.status = status
-        # Task Status Enum</br>
-        # 2: Exporting</br>
-        # 3: Export Success</br>
-        # -1: Export Fail</br>
+        # The status code of the task. Valid values:
+        # - 2: Exporting.
+        # - 3: Export succeeded.
+        # - -1: Export failed.
         self.status_code = status_code
-        # The link to download exported file.
+        # The download URL of the file.
         self.url = url
 
     def validate(self):

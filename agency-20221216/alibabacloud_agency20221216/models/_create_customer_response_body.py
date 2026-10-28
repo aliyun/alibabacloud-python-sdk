@@ -13,15 +13,19 @@ class CreateCustomerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Code indicating whether the call was successful.
+        # The code that indicates whether the call is successful.
         self.code = code
-        # Data indicating whether a customer was successfully created. If it\\"s "true", the Message contains CID.
+        # Indicates whether the customer is created. If the value is true, the Message contains the CID.
         self.data = data
-        # Massage indicating whether the call was successful.
+        # The same as the Code parameter.
         self.message = message
-        # Request ID, Alibaba Cloud will track errors with this.
+        # The request ID. Alibaba Cloud uses this ID for error tracking.
         self.request_id = request_id
-        # Candidate Value: True/False, which indicates whether the current API call it self was successful. It does not guarantee the success of subsequent business operations.
+        # Indicates whether the current API call is successful. Valid values:
+        # - True
+        # - False
+        # 
+        # This does not indicate whether the subsequent business operation is successful.
         self.success = success
 
     def validate(self):

@@ -12,11 +12,22 @@ class AutomaticWriteOffRequest(DaraModel):
         customer_uid: int = None,
         language: str = None,
     ):
+        # The automatic write-off amount. This parameter is required if automatic write-off is enabled. Valid values: 100, 500, and 1000.
         self.automatic_write_off_amount = automatic_write_off_amount
+        # Specifies whether to enable automatic write-off and set the automatic write-off amount. Valid values:
+        # - true: Enables automatic write-off and sets the automatic write-off amount.
+        # - false: Disables automatic write-off.
+        # 
         # This parameter is required.
         self.automatic_write_off_enabled = automatic_write_off_enabled
+        # The UID of the customer.
+        # 
         # This parameter is required.
         self.customer_uid = customer_uid
+        # The language. If this parameter is not specified, English is used by default. Valid values:
+        # - en: English.
+        # - zh: Chinese.
+        # - ja: Japanese.
         self.language = language
 
     def validate(self):

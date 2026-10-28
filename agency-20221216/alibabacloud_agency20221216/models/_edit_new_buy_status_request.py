@@ -10,13 +10,12 @@ class EditNewBuyStatusRequest(DaraModel):
         new_buy_status: str = None,
         uid: int = None,
     ):
-        # New Purchase Status</br>
+        # The new purchase status. Valid values:
         # 
-        # - cancelBan: Cancel the restriction for New Purchase request</br>
-        # 
-        # - ban: ban the New Purchase request</br>
+        # - cancelBan: allows new purchases
+        # - ban: prohibits new purchases.
         self.new_buy_status = new_buy_status
-        # Customer UID
+        # The UID of the customer.
         self.uid = uid
 
     def validate(self):

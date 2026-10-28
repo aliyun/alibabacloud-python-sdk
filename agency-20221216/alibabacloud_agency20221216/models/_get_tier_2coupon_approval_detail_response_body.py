@@ -15,9 +15,13 @@ class GetTier2CouponApprovalDetailResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The return code. A value of 200 indicates success. Other values indicate error codes. For more information, see Error codes.
         self.code = code
+        # The response data.
         self.data = data
+        # The message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -71,12 +75,25 @@ class GetTier2CouponApprovalDetailResponseBodyData(DaraModel):
         remaining_quota: str = None,
         total_amount: str = None,
     ):
+        # The basic information of the application.
         self.applicant_info = applicant_info
+        # The reason for the application.
         self.application_reason = application_reason
+        # The ID of the application form.
         self.application_sheet_id = application_sheet_id
+        # The approval status. Valid values:
+        # - 1: Revoked.
+        # - 2: Under review.
+        # - 3: Rejected.
+        # - 4: Approved.
+        # - 5: Approved but issuance failed.
+        # - 8: Pending.
         self.approval_status = approval_status
+        # The list of customer UIDs that receive the coupons.
         self.coupon_receipt_uid_list = coupon_receipt_uid_list
+        # The estimated remaining quota of PoC coupon benefits for new partner customers after the coupons are issued.
         self.remaining_quota = remaining_quota
+        # The requested amount.
         self.total_amount = total_amount
 
     def validate(self):
@@ -152,7 +169,9 @@ class GetTier2CouponApprovalDetailResponseBodyDataCouponReceiptUidList(DaraModel
         nominal_value: str = None,
         uid: int = None,
     ):
+        # The denomination.
         self.nominal_value = nominal_value
+        # The UID of the customer.
         self.uid = uid
 
     def validate(self):
@@ -191,11 +210,22 @@ class GetTier2CouponApprovalDetailResponseBodyDataApplicantInfo(DaraModel):
         t_2partner_uid: int = None,
         valid_until: str = None,
     ):
+        # The applicable products. Valid values:
+        # - UNIVERSAL: All products.
+        # - A specific commodity code.
         self.applicable_products = applicable_products
+        # The timestamp when the application was submitted.
         self.application_time = application_time
+        # The order type for which the coupon is used. Valid values:
+        # - ALL: Alibaba Cloud subscription.
+        # - BILLING: Alibaba Cloud pay-as-you-go bills.
+        # - ALL,BILLING: Alibaba Cloud subscription and pay-as-you-go bills.
         self.order_type = order_type
+        # The name of the tier-2 distributor.
         self.t_2partner_name = t_2partner_name
+        # The UID of the tier-2 distributor.
         self.t_2partner_uid = t_2partner_uid
+        # The validity period, which can be a number of valid days or a valid time range.
         self.valid_until = valid_until
 
     def validate(self):

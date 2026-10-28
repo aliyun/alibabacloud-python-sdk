@@ -13,27 +13,27 @@ class ExportCustomerQuotaRecordRequest(DaraModel):
         operation_type: str = None,
         start_date: str = None,
     ):
-        # End Date Format:  yyyy-MM-dd
+        # The end date. Format: yyyy-MM-dd.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # Customer UID
+        # The UID of the customer.
         # 
         # This parameter is required.
         self.end_user_pk = end_user_pk
-        # Multilingual Parameters, the default language is English.</br>
-        # en: English</br>
-        # zh: Chinese</br>
-        # ja: Japanese </br>
+        # The language parameter. Default value: en. Valid values:
+        # - en: English.
+        # - zh: Chinese.
+        # - ja: Japanese.
         self.language = language
-        # Operation Type Enum</br>
-        # all All types</br>
-        # quota_create Create quota</br>
-        # quota_amount_adjust Adjust the amount of quota</br>
+        # The operation type. Valid values:
+        # - all: All operations.
+        # - quota_create: Creation.
+        # - quota_amount_adjust: Quota amount adjustment.
         # 
         # This parameter is required.
         self.operation_type = operation_type
-        # Start Date Format:  yyyy-MM-dd
+        # The start date. Format: yyyy-MM-dd.
         # 
         # This parameter is required.
         self.start_date = start_date

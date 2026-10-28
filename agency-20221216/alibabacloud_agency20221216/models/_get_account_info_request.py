@@ -12,20 +12,20 @@ class GetAccountInfoRequest(DaraModel):
         uid: int = None,
         user_type: str = None,
     ):
-        # Pagination, current page.
+        # The current page number for pagination.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Pagination, record number on each page, maximum 20.
+        # The number of entries per page for pagination. Maximum value: 20.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Account UID of Distribution Customer. This parameter and the UserType parameter must have one filled. If this parameter is empty, then check all Distribution Customer accounts of the selected UserType.
+        # The UID of the distribution customer account. Either this parameter or the UserType parameter must be specified. If this parameter is empty, all distribution customer accounts of the specified UserType are queried.
         self.uid = uid
-        # Distribution Customer\\"s Account Type:
-        # - 1 End User
-        # - 2 Enterprise
-        # - 3 T2 Partner
+        # The type of the distribution customer account. Valid values:
+        # - 1: End user.
+        # - 2: Enterprise customer. 
+        # - 3: T2 partner.
         self.user_type = user_type
 
     def validate(self):

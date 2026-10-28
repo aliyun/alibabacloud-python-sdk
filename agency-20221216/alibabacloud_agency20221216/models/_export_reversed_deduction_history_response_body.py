@@ -13,9 +13,13 @@ class ExportReversedDeductionHistoryResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code of the response. A value of 200 indicates success.
         self.code = code
+        # The response object.
         self.data = data
+        # The description of the response.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +68,9 @@ class ExportReversedDeductionHistoryResponseBodyData(DaraModel):
         cost: int = None,
         id: int = None,
     ):
+        # The estimated duration, in minutes.
         self.cost = cost
+        # The ID of the export task.
         self.id = id
 
     def validate(self):

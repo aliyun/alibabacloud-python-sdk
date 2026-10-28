@@ -15,9 +15,13 @@ class QueryAutomaticWriteOffChangeRecordsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code of the response. A value of 200 indicates success.
         self.code = code
+        # The list of query results.
         self.data = data
+        # The message of the response.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,9 +78,13 @@ class QueryAutomaticWriteOffChangeRecordsResponseBodyData(DaraModel):
         operate_source: str = None,
         operation_time: str = None,
     ):
+        # The content of the operation.
         self.change_content = change_content
+        # The operator.
         self.operate_id = operate_id
+        # The description of the operation source.
         self.operate_source = operate_source
+        # The time of the operation. Format: YYYY-MM-DD HH:mm:ss UTC+8.
         self.operation_time = operation_time
 
     def validate(self):

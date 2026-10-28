@@ -12,11 +12,18 @@ class GetShutdownPolicyRecordRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The customer UID.
+        # 
         # This parameter is required.
         self.customer_uid = customer_uid
+        # The start time. If left empty, data from the last six months is returned. The time format is yyyy-MM-dd HH:mm:ss.
         self.operation_time = operation_time
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

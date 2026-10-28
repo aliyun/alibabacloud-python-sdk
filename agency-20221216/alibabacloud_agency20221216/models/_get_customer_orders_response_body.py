@@ -20,15 +20,25 @@ class GetCustomerOrdersResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The result code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The message. The value is the same as the Code parameter.
         self.message = message
+        # The message. The value is the same as the Code parameter.
         self.msg = msg
+        # The current page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # - 200: OK.
+        # - 201: Parameter error.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -125,19 +135,45 @@ class GetCustomerOrdersResponseBodyData(DaraModel):
         product_type: str = None,
         time_to_order: str = None,
     ):
+        # The customer account.
         self.customer_account = customer_account
+        # The account manager.
         self.customer_manager = customer_manager
+        # The customer UID.
         self.customer_no = customer_no
+        # The order ID.
         self.order_id = order_id
+        # The order source. Valid values:
+        # - 0: Regular customer.
+        # - 1: Enterprise customer.
+        # - 2: Tier-2 distributor.
         self.order_source = order_source
+        # The order status. Valid values:
+        # - 1: Unpaid.
+        # - 2: Canceled.
+        # - 3: Paid.
         self.order_status = order_status
+        # The order type. Valid values:
+        # - BUY: New purchase.
+        # - UPGRADE: Upgrade.
+        # - DOWNGRADE: Downgrade.
+        # - RENEW: Renewal.
+        # - REFUND: Refund.
+        # - OTHERS: Others.
         self.order_type = order_type
+        # The original order price.
         self.original_cost = original_cost
+        # The payment method.
         self.payment_method = payment_method
+        # The payment time. Format: YYYY-MM-DD HH:mm:ss.
         self.payment_time = payment_time
+        # The payable amount.
         self.pretax_cost = pretax_cost
+        # The product details.
         self.product_detail = product_detail
+        # The product detail code.
         self.product_type = product_type
+        # The order placement time. Format: YYYY-MM-DD HH:mm:ss.
         self.time_to_order = time_to_order
 
     def validate(self):

@@ -14,11 +14,15 @@ class IssueCouponForCustomerResponseBody(DaraModel):
         success: bool = None,
         data: main_models.IssueCouponForCustomerResponseBodyData = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The returned data.
         self.data = data
 
     def validate(self):
@@ -74,8 +78,11 @@ class IssueCouponForCustomerResponseBodyData(DaraModel):
         create_time: str = None,
         uidlist: str = None,
     ):
+        # The ID of the coupon template.
         self.coupon_template_id = coupon_template_id
+        # The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
+        # The UIDs to which the coupons are issued.
         self.uidlist = uidlist
 
     def validate(self):

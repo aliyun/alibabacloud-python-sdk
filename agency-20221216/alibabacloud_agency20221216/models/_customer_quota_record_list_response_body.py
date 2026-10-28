@@ -18,19 +18,19 @@ class CustomerQuotaRecordListResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Status code of returning result, 200 means success.
+        # The status code of the returned result. A value of 200 indicates success.
         self.code = code
-        # Listed data of returning result
+        # The list of returned results.
         self.data = data
-        # Description of returning data
+        # The description of the returned result.
         self.msg = msg
-        # Current page number
+        # The current page number.
         self.page_no = page_no
-        # Record number on each page
+        # The number of entries per page.
         self.page_size = page_size
-        # ID of request
+        # The request ID.
         self.request_id = request_id
-        # Total volume
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -109,24 +109,21 @@ class CustomerQuotaRecordListResponseBodyData(DaraModel):
         update_amount: str = None,
         update_before_amount: str = None,
     ):
-        # The way to submit the quota adjustment operation. API/ACPN
+        # The method used to submit the operation, such as API or ACPN.
         self.operation_submit_type = operation_submit_type
-        # The time of submit the quota adjustment operation.
+        # The time when the operation was performed. Format: YYYY-MM-DD HH:mm:ss UTC+8.
         self.operation_time = operation_time
-        # Operation Type Enum</br>
-        # all All types</br>
-        # quota_create Create quota</br>
-        # quota_amount_adjust Adjust the amount of quota</br>
+        # The code of the change type. Valid values: all: All, quota_create: Create, quota_amount_adjust: Quota adjustment.
         self.operation_type_code = operation_type_code
-        # The description of submitted quota adjustment operation.
+        # The description of the change type.
         self.operation_type_desc = operation_type_desc
-        # The UID of operator(Partner\\"s UID).
+        # The UID of the operator.
         self.operation_uid = operation_uid
-        # Updated quota amount
+        # The amount after the update.
         self.update_after_amount = update_after_amount
-        # The difference amount between updated quota and original quota.
+        # The changed amount.
         self.update_amount = update_amount
-        # Original quota amount
+        # The amount before the update.
         self.update_before_amount = update_before_amount
 
     def validate(self):

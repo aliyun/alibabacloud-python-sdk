@@ -14,10 +14,15 @@ class GetCouponTemplateDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code.
         self.code = code
+        # The operation result.
         self.data = data
+        # The prompt message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -83,18 +88,53 @@ class GetCouponTemplateDetailResponseBodyData(DaraModel):
         valid_until: str = None,
         valid_until_type: str = None,
     ):
+        # The applicable products. Valid values:
+        # 
+        # - UNIVERSAL: all products
+        # 
+        # - a specific commodity code
         self.applicable_products = applicable_products
+        # The party that bears the coupon cost. Valid values:
+        # ● cost_by_self: The cost is borne by the caller.
+        # ● aliyun_poc: The cost is borne by Alibaba Cloud.
         self.cost_bearer = cost_bearer
+        # The remarks of the coupon.
         self.coupon_description = coupon_description
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.created_time = created_time
+        # The face value.
         self.denomination = denomination
+        # The maximum number of coupons that each person can claim. Valid values:
+        # 
+        # - 1: Each person can claim one coupon.
+        # 
+        # - 0: No limit applies.
         self.limit_per_person = limit_per_person
+        # The order type. Valid values:
+        # - ALL: Alibaba Cloud upfront order
+        # - BILLING: Alibaba Cloud pay-as-you-go bill
         self.purchase_type = purchase_type
+        # The reason for the template application.
         self.reason_for_application = reason_for_application
+        # The status. Valid values:
+        # 
+        # - APPROVED: approved
+        # - ABANDONED: voided
         self.status = status
+        # The template ID.
         self.template_id = template_id
+        # The name of the coupon template.
         self.template_name = template_name
+        # The validity period. This parameter is used together with the validity period type.
+        # 
+        # - If the validity period type is relative time, the validity period is the number of valid days.
+        # 
+        # - If the validity period type is absolute time, the validity period is a time period.
         self.valid_until = valid_until
+        # The type of the validity period. Valid values:
+        # 
+        # - 0: relative time
+        # - 1: absolute time
         self.valid_until_type = valid_until_type
 
     def validate(self):

@@ -13,13 +13,13 @@ class SubscriptionBillResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code that is returned.
+        # The status code.
         self.code = code
-        # The data that is returned.
+        # The data returned.
         self.data = data
-        # The message that is returned.
+        # The message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

@@ -13,15 +13,15 @@ class EditZeroCreditShutdownResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # Success or not</br>
+        # The status code.
         self.code = code
-        # Request ID</br>
+        # Indicates whether the operation is successful.
         self.data = data
-        # Message</br>
+        # The prompt message.
         self.message = message
-        # NO_STOP
+        # The prompt message.
         self.msg = msg
-        # success
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

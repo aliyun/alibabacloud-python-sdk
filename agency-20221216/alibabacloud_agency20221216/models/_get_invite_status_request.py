@@ -12,8 +12,7 @@ class GetInviteStatusRequest(DaraModel):
         self,
         invite_status_list: List[main_models.GetInviteStatusRequestInviteStatusList] = None,
     ):
-        # inviteId list</br>
-        # `Sub-levels <= 5`
+        # inviteId list
         # 
         # This parameter is required.
         self.invite_status_list = invite_status_list
@@ -51,7 +50,7 @@ class GetInviteStatusRequestInviteStatusList(DaraModel):
         self,
         invite_id: int = None,
     ):
-        # Invitation ID, From interface InviteSubAccount
+        # The invitation ID, which is obtained from the InviteSubAccount operation.
         self.invite_id = invite_id
 
     def validate(self):

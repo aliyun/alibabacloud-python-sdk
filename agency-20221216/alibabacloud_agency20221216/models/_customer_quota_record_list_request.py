@@ -15,35 +15,37 @@ class CustomerQuotaRecordListRequest(DaraModel):
         page_size: int = None,
         start_date: str = None,
     ):
-        # End Date Format: yyyy-MM-dd
+        # The end date.
+        # Format: yyyy-MM-dd.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # Customer UID
+        # The UID of the customer.
         # 
         # This parameter is required.
         self.end_user_pk = end_user_pk
-        # Multilingual Parameters, the default language is English.</br>
-        # en: English</br>
-        # zh: Chinese</br>
-        # ja: Japanese </br>
+        # The language. Default value: en. Valid values:
+        # - en: English.
+        # - zh: Chinese.
+        # - ja: Japanese.
         self.language = language
-        # Operation Type Enum</br>
-        # all All types</br>
-        # quota_create Create quota</br>
-        # quota_amount_adjust Adjust the amount of quota</br>
+        # The operation type. Valid values:
+        # - all: All.
+        # - quota_create: Create.
+        # - quota_amount_adjust: Quota adjustment.
         # 
         # This parameter is required.
         self.operation_type = operation_type
-        # Pagination, current page number, starting from 1.
+        # The page number. Pages start from 1.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # Pagination, record number on each page. Maximum 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Start Date Format: yyyy-MM-dd
+        # The start date.
+        # Format: yyyy-MM-dd.
         # 
         # This parameter is required.
         self.start_date = start_date

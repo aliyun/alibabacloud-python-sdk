@@ -24,26 +24,73 @@ class CreateCouponTemplateRequest(DaraModel):
         valid_until: str = None,
         value: str = None,
     ):
+        # The accepted language.
+        # Default value: None.
+        # Valid values:
+        # - zh-CN: Chinese.
+        # - en-US: English.
+        # - ja: Japanese.
+        # 
         # This parameter is required.
         self.accept_language = accept_language
+        # The applicable products.
+        # - All Products: All products.
+        # - Custom: Custom products.
+        # 
         # This parameter is required.
         self.applicable_products = applicable_products
+        # The party that bears the coupon cost.
+        # - Partner: Borne by the partner.
+        # - Alibaba Cloud: Borne by Alibaba Cloud.
+        # 
         # This parameter is required.
         self.cost_bearer = cost_bearer
+        # The remark for the coupon.
+        # The field length is limited to 100 characters.
         self.coupon_description = coupon_description
+        # The end time of the effective period.
+        # Format: yyyy-MM-dd.
+        # Example: 2024-08-26.  
+        # This parameter is required when the validity period is set to Custom Timeframe.
         self.expireddate = expireddate
+        # The maximum number of coupons that each person can claim.
+        # - Limited to 1: Limited to one coupon.
+        # - Unlimited: Unlimited.
+        # 
         # This parameter is required.
         self.limit_per_person = limit_per_person
+        # The list of product codes.
         self.product_type = product_type
+        # The order type.
         self.purchase_type = purchase_type
+        # The reason for the template application.
+        # The field length is limited to 100 characters.
+        # 
         # This parameter is required.
         self.reason_for_application = reason_for_application
+        # The template name.
+        # The field length is limited to 30 characters.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # The start time of the effective period.
+        # Format: yyyy-MM-dd.
+        # Example: 2024-08-26.  
+        # This parameter is required when the validity period is set to Custom Timeframe.
         self.vailddate = vailddate
+        # The duration of the relative time in days.
+        # The value must be a positive integer.
+        # This parameter is required when the validity period is set to Validity Duration.
         self.vaildperioddays = vaildperioddays
+        # The validity period of the coupon.
+        # - Validity Duration: From the date of issuance.
+        # - Custom Timeframe: Custom time period.
+        # 
         # This parameter is required.
         self.valid_until = valid_until
+        # The denomination of the coupon.
+        # The value must be an integer.
+        # 
         # This parameter is required.
         self.value = value
 

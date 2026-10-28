@@ -13,11 +13,22 @@ class IssueCouponForCustomerRequest(DaraModel):
         is_use_benefit: bool = None,
         uidlist: str = None,
     ):
+        # The language parameter. Default value: none. Valid values:
+        # - zh-CN: Chinese.
+        # - en-US: English.
         self.accept_language = accept_language
+        # The reason for applying for the coupon. The reason can be up to 500 characters in length. Example: Apply for a coupon for Customer XXX.
         self.application_reason = application_reason
+        # The ID of the coupon template.
+        # 
         # This parameter is required.
         self.coupon_template_id = coupon_template_id
+        # Specifies whether to use the POC privilege quota. Valid values:
+        # - true: Uses the POC privilege quota. If all submitted accounts are marked as approval-exempt, the current coupon application skips the approval process, and the POC privilege quota in your partner benefit package is deducted.
+        # - false: Does not use the POC privilege quota. Regardless of the approval-exempt status of the submitted accounts, your POC coupon benefit quota remains unchanged. In this case, the application follows the standard coupon application approval process.
         self.is_use_benefit = is_use_benefit
+        # The list of UIDs. Separate multiple UIDs with commas (,). Example: 111,2222.
+        # 
         # This parameter is required.
         self.uidlist = uidlist
 

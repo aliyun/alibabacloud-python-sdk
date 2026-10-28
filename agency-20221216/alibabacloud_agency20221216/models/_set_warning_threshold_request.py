@@ -10,11 +10,11 @@ class SetWarningThresholdRequest(DaraModel):
         uid: int = None,
         warning_value: str = None,
     ):
-        # The UID of the partner‘s customer.
+        # The UID of the reseller customer account.
         # 
         # This parameter is required.
         self.uid = uid
-        # Percentage, 1 to 100. When the available credit limit is lower than the credit limit percentage, an email is sent to the main account.
+        # The percentage value. Valid values: 1 to 100. When the available credit drops below this percentage of the total credit limit, an alert email is sent to the reseller partner account.
         # 
         # This parameter is required.
         self.warning_value = warning_value

@@ -14,15 +14,29 @@ class QueryReversedDeductionHistoryRequest(DaraModel):
         start_date: str = None,
         uid: int = None,
     ):
+        # The end date. Format: yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The language. Valid values:
+        # - en: English.
+        # - zh: Chinese.
+        # - ja: Japanese.
         self.language = language
+        # The page number. Pages start from 1.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page. Maximum value: 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The start date. Format: yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.start_date = start_date
+        # The customer UID.
+        # 
         # This parameter is required.
         self.uid = uid
 

@@ -10,13 +10,12 @@ class EditEndUserStatusRequest(DaraModel):
         credit_status: str = None,
         uid: int = None,
     ):
-        # Shutdown Status</br>
+        # ### Shutdown status
         # 
-        # - postPayFreeze, the account have been blocked</br>
-        # 
-        # - postPayThaw, the account have been unlocked</br>
+        # - postPayFreeze: pay-as-you-go resource suspension
+        # - postPayThaw: pay-as-you-go resource resumption.
         self.credit_status = credit_status
-        # UID
+        # The UID of the customer to be processed.
         self.uid = uid
 
     def validate(self):

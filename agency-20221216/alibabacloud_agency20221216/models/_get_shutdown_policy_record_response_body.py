@@ -18,12 +18,19 @@ class GetShutdownPolicyRecordResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The result code.
         self.code = code
+        # Indicates whether the customer was created. If the value is true, the Message contains the CID.
         self.data = data
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -99,10 +106,30 @@ class GetShutdownPolicyRecordResponseBodyData(DaraModel):
         operator: str = None,
         previous_policy: str = None,
     ):
+        # The current policy. Valid values:
+        # - immediatelyStop: immediate shutdown upon overdue payment.
+        # - delayStop: deferred shutdown quota applied.
+        # - noStop: no shutdown upon overdue payment.
+        # [_single.resp.200.props.Data.items.CurrentPolicy.enum.immediatelyStop ]Immediate shutdown upon overdue payment.
+        # [_single.resp.200.props.Data.items.CurrentPolicy.enum.noStop ]No shutdown upon overdue payment.
+        # [_single.resp.200.props.Data.items.CurrentPolicy.enum.delayStop ]Deferred shutdown quota applied.
         self.current_policy = current_policy
+        # The method by which the operation was initiated. Valid values:
+        # - API: API.
+        # - ACPN: ACPN.
+        # - ALIYUN_BIZ: Alibaba Cloud internal.
         self.operation_path = operation_path
+        # The operation time (UTC+8).
         self.operation_time = operation_time
+        # The operator.
         self.operator = operator
+        # The policy before the change. Valid values:
+        # - immediatelyStop: immediate shutdown upon overdue payment.
+        # - delayStop: deferred shutdown quota applied.
+        # - noStop: no shutdown upon overdue payment.
+        # [_single.resp.200.props.Data.items.PreviousPolicy.enum.immediatelyStop ]Immediate shutdown upon overdue payment.
+        # [_single.resp.200.props.Data.items.PreviousPolicy.enum.noStop ]No shutdown upon overdue payment.
+        # [_single.resp.200.props.Data.items.PreviousPolicy.enum.delayStop ]Deferred shutdown quota applied.
         self.previous_policy = previous_policy
 
     def validate(self):

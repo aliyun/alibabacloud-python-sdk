@@ -18,12 +18,19 @@ class CouponApprovalStatusListResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The message.
         self.message = message
+        # The current page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -103,12 +110,26 @@ class CouponApprovalStatusListResponseBodyData(DaraModel):
         template_status: int = None,
         time_of_request: str = None,
     ):
+        # The issuing account.
         self.issuer_account = issuer_account
+        # The UID of the issuing account.
         self.issuer_uid = issuer_uid
+        # The approval comment.
         self.note = note
+        # The ID of the template.
         self.template_id = template_id
+        # The name of the coupon template.
         self.template_name = template_name
+        # The status of the coupon template. Valid values:
+        # - **1**: application revoked
+        # - **2**: under review
+        # - **3**: review rejected
+        # - **4**: review approved
+        # - **5**: review approved but issuance failed
+        # - **6**: automatically approved
+        # - **7**: automatically approved but issuance failed
         self.template_status = template_status
+        # The application time. The format is YYYY-MM-DD HH:mm:ss.
         self.time_of_request = time_of_request
 
     def validate(self):

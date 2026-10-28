@@ -12,8 +12,7 @@ class InviteSubAccountRequest(DaraModel):
         self,
         account_info_list: List[main_models.InviteSubAccountRequestAccountInfoList] = None,
     ):
-        # List of invited account information,  less than 5 accounts at a time.</br>
-        # `Sub-levels <= 5`
+        # The list of account information for the invitation. A maximum of five accounts can be invited at a time.
         # 
         # This parameter is required.
         self.account_info_list = account_info_list
@@ -59,45 +58,47 @@ class InviteSubAccountRequestAccountInfoList(DaraModel):
         sub_account_type: str = None,
         zero_credit_shutdown_policy: str = None,
     ):
-        # The name of Sub Account:</br>
-        # 1. Use the official name of Company, if Sub Account is an enterprise.</br>
-        # 2. Use the official name of Partner, if Sub Account is a T2 reseller.</br>
+        # The name of the distribution customer. Valid values:
+        # - If the distribution customer is an enterprise, this is the company name.
+        # - If the distribution customer is a T2 reseller partner, this is the partner name.
         # 
         # This parameter is required.
         self.account_nickname = account_nickname
-        # The total budget Credit of Sub Account that distributed by Partner.
+        # The total budget quota that the partner allocates to the distribution customer.
         # 
         # This parameter is required.
         self.credit_line = credit_line
+        # The account manager of the customer. Maximum length: 50 characters.
         self.customer_bd = customer_bd
-        # Customer ID, Returning ID from CreateCustomer API.
+        # The customer ID returned by the CreateCustomer API.
         # 
         # This parameter is required.
         self.customer_id = customer_id
-        # The email address of End User,  which will receive the invitation email.
+        # The email address of the distribution customer account. The invitation email is sent to this address.
         # 
         # This parameter is required.
         self.email_address = email_address
-        # Initial Order Status</br>
-        # 1. ban：Ban the new purchase action--After End User finish registration and authorization, they can\\"t issue Cloud Resource order immediately. Partner should manually update the "Order Control" settings as "Normal" to enable new order.</br>
-        # 2. normal：Normal--After End User finished registration and authorization, they can issue Cloud Resource order immediately.</br>
+        # The initial order placement status. Valid values:
+        # 
+        # - ban: Purchase is prohibited. After the customer is registered and associated, the customer cannot immediately place orders to purchase cloud resources. You must set the order control to normal before the customer can place orders.
+        # - normal: Normal. After the customer is registered and associated, the customer can immediately place orders to purchase cloud resources.
         # 
         # This parameter is required.
         self.new_buy_status = new_buy_status
-        # Description of Sub Account.
+        # The description of the distribution customer.
         self.remark = remark
-        # The type of Sub Account</br>
-        # 
-        # 1 Agency\\"s End User</br>
-        # 2 Reseller\\"s End user</br>
-        # 5 Reseller\\"s T2 Partner</br>
+        # The type of the sub-account. Valid values:
+        # - 1: end user of Agency.
+        # - 2: end user of Reseller. 
+        # - 5: T2 partner of Reseller.
         # 
         # This parameter is required.
         self.sub_account_type = sub_account_type
-        # Partner\\"s Shutdown Policy Management for Sub Account.</br>
-        # 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
-        # 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\\"s life-circle of Sub Account.</br>
-        # 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
+        # The shutdown policy that the partner manages for the distribution customer. Valid values:
+        # 
+        # - 1: delayStop. Alibaba Cloud takes over the resources and the customer enjoys a delayed shutdown quota. When the delayed shutdown quota is exhausted, instance shutdown is triggered. If payment is not made within 15 days, storage resources are released.
+        # - 2: noStop. Manual management with no shutdown on overdue payment. The system does not manage the resource lifecycle of the non-trusteeship linked account. The partner must manually manage the instance shutdown status of the customer.
+        # - 3: immediatelyStop. Instances are immediately shut down on overdue payment. When the available quota of the customer account is less than 0, the account enters the overdue payment status and instance shutdown is triggered.
         # 
         # This parameter is required.
         self.zero_credit_shutdown_policy = zero_credit_shutdown_policy

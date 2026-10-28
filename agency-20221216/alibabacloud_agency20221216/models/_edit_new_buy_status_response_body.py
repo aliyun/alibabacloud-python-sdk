@@ -13,15 +13,15 @@ class EditNewBuyStatusResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # Status Code</br>
+        # The status code.
         self.code = code
-        # Success or not</br>
+        # Indicates whether the operation is successful.
         self.data = data
-        # Message</br>
+        # The prompt message.
         self.message = message
-        # Message</br>
+        # The prompt message.
         self.msg = msg
-        # Request ID</br>
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

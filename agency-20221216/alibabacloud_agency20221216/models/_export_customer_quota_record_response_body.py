@@ -13,13 +13,13 @@ class ExportCustomerQuotaRecordResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # Code
+        # code
         self.code = code
-        # Data
+        # The data.
         self.data = data
-        # Description
+        # The description.
         self.msg = msg
-        # ID of the Request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,9 +68,9 @@ class ExportCustomerQuotaRecordResponseBodyData(DaraModel):
         cost: int = None,
         id: int = None,
     ):
-        # Estimated duration, in minutes.
+        # The estimated time required, in minutes.
         self.cost = cost
-        # ID of Export task
+        # The ID of the export task.
         self.id = id
 
     def validate(self):

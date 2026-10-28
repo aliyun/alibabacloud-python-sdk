@@ -16,16 +16,16 @@ class InviteSubAccountResponseBody(DaraModel):
         results: main_models.InviteSubAccountResponseBodyResults = None,
         success: bool = None,
     ):
-        # Error Code: </br>
-        # • 200 OK</br>
-        # • 1109 System Error</br>
+        # The fault code. Valid values:
+        # - 200: OK.
+        # - 1109: System Error.
         self.code = code
-        # Message</br>
+        # The message returned.
         self.message = message
-        # Request ID, Alibaba Cloud will track errors with this ID.
+        # The request ID. Alibaba Cloud uses this ID for fault tracking.
         self.request_id = request_id
         self.results = results
-        # Candidate Values: True/False, this value states if the current API calling action is successful. It does not guarantee the success of subsequent business operations.
+        # Indicates whether the current API invocation is successful. Valid values: True and False. This does not indicate whether the subsequent business operation is successful.
         self.success = success
 
     def validate(self):

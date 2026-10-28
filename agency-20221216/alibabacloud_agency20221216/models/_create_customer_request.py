@@ -13,21 +13,24 @@ class CreateCustomerRequest(DaraModel):
         customer_trade: str = None,
         nation: str = None,
     ):
-        # Customer\\"s name.
+        # The customer name.
         # 
         # This parameter is required.
         self.customer_name = customer_name
-        # The source/channel that allow client to connected with us. Please enumerate with Customer Source.
+        # The customer source.
+        # Use the Customer Source enumeration.
         # 
         # This parameter is required.
         self.customer_source = customer_source
-        # The sub-industry that Customer\\"s business belongs to. Please enumerate with Customer Trade.
+        # The customer sub-industry.
+        # Use the Customer Sub Trade enumeration.
         self.customer_sub_trade = customer_sub_trade
-        # The industry that Customer\\"s business belongs to. Please enumerate with Customer Trade.
+        # The customer industry name.
+        # Use the Customer Trade enumeration.
         # 
         # This parameter is required.
         self.customer_trade = customer_trade
-        # The region that Customer choose to launch the Cloud Service. Please use ListCountries to confirm the valid region list for current UID.
+        # The region to which the customer belongs. Call ListCountries to obtain the list of available regions for the current UID.
         # 
         # This parameter is required.
         self.nation = nation

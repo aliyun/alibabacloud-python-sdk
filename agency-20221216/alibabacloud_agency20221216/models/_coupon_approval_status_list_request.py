@@ -13,12 +13,26 @@ class CouponApprovalStatusListRequest(DaraModel):
         template_name: str = None,
         template_status: str = None,
     ):
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the coupon template.
         self.template_id = template_id
+        # The name of the template.
         self.template_name = template_name
+        # The status of the coupon template. Valid values:
+        # - **1**: application revoked
+        # - **2**: under review
+        # - **3**: review rejected
+        # - **4**: review approved
+        # - **5**: review approved but issuance failed
+        # - **6**: automatically approved
+        # - **7**: automatically approved but issuance failed
         self.template_status = template_status
 
     def validate(self):

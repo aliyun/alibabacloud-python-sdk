@@ -16,11 +16,15 @@ class CreateCouponTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. 200 indicates success.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -85,17 +89,44 @@ class CreateCouponTemplateResponseBodyData(DaraModel):
         valid_until: str = None,
         value: str = None,
     ):
+        # The applicable products.
+        # - All Products: All products.
+        # - Custom: Custom products.
         self.applicable_products = applicable_products
+        # The party that bears the coupon cost.
+        # - Partner: Borne by the partner.
+        # - Alibaba Cloud: Borne by Alibaba Cloud.
         self.cost_bearer = cost_bearer
+        # The ID of the coupon template.
         self.coupon_template_id = coupon_template_id
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
+        # The end time of the effective period.
+        # Format: yyyy-MM-dd.
         self.expireddate = expireddate
+        # The list of product codes.
         self.product_type = product_type
+        # The status of the coupon template. Valid values:
+        # - CREATED: Created.
+        # - APPROVING: Under review.
+        # - APPROVED: Approved.
+        # - UNAPPROVED: Unapproved.
+        # - ABANDONED: Abandoned.
+        # - EXPIRED: Expired.
+        # - EXHAUSTED: Exhausted.
         self.status = status
+        # The name of the coupon template.
         self.template_name = template_name
+        # The start time of the effective period.
+        # Format: yyyy-MM-dd.
         self.vailddate = vailddate
+        # The duration of the relative time in days.
         self.vaildperioddays = vaildperioddays
+        # The validity period of the coupon.
+        # - Validity Duration: From the date of issuance.
+        # - Custom Timeframe: Custom time period.
         self.valid_until = valid_until
+        # The denomination.
         self.value = value
 
     def validate(self):

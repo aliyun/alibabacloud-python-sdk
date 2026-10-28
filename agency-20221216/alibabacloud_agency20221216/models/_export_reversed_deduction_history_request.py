@@ -12,11 +12,21 @@ class ExportReversedDeductionHistoryRequest(DaraModel):
         language: str = None,
         start_date: str = None,
     ):
+        # The end date. Format: yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The UID for which the reversed deduction details are exported.
+        # 
         # This parameter is required.
         self.export_uid = export_uid
+        # The language of the exported content. Valid values:
+        # - en: English.
+        # - zh: Chinese.
+        # - ja: Japanese.
         self.language = language
+        # The start date. Format: yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

@@ -14,8 +14,11 @@ class AutomaticWriteOffResponseBody(DaraModel):
     ):
         # code
         self.code = code
+        # Indicates whether the configuration is successful.
         self.data = data
+        # The message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

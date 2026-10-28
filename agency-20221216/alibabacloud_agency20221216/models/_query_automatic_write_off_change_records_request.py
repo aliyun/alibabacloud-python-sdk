@@ -14,14 +14,28 @@ class QueryAutomaticWriteOffChangeRecordsRequest(DaraModel):
         page_size: int = None,
         start_date: str = None,
     ):
+        # The customer UID.
+        # 
         # This parameter is required.
         self.customer_uid = customer_uid
+        # The end date.
+        # Format: yyyy-MM-dd.
         self.end_date = end_date
+        # The language. If you do not specify this parameter, English is used by default. Valid values:
+        # - en: English.
+        # - zh: Chinese.
+        # - ja: Japanese.
         self.language = language
+        # The page number. Pages start from 1.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page. Maximum value: 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The start date.
+        # Format: yyyy-MM-dd.
         self.start_date = start_date
 
     def validate(self):

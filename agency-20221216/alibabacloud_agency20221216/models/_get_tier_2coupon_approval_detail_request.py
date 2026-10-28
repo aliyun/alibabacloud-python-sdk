@@ -9,6 +9,7 @@ class GetTier2CouponApprovalDetailRequest(DaraModel):
         self,
         application_sheet_id: str = None,
     ):
+        # The ID of the application form.
         self.application_sheet_id = application_sheet_id
 
     def validate(self):

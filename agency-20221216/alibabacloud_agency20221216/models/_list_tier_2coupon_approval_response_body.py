@@ -18,12 +18,19 @@ class ListTier2CouponApprovalResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data object.
         self.data = data
+        # The message.
         self.message = message
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -100,11 +107,23 @@ class ListTier2CouponApprovalResponseBodyData(DaraModel):
         t_2partner_uid: int = None,
         total_amount: str = None,
     ):
+        # The ID of the application form.
         self.application_sheet_id = application_sheet_id
+        # The application time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.application_time = application_time
+        # The approval status. Valid values:
+        # - 1: Revoked.
+        # - 2: Under review.
+        # - 3: Rejected.
+        # - 4: Approved.
+        # - 5: Approved but issuance failed.
+        # - 8: Pending.
         self.approval_status = approval_status
+        # The name of the secondary distributor.
         self.t_2partner_name = t_2partner_name
+        # The UID of the secondary distributor.
         self.t_2partner_uid = t_2partner_uid
+        # The requested amount.
         self.total_amount = total_amount
 
     def validate(self):

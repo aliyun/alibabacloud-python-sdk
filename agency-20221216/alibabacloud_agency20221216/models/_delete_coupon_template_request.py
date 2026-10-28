@@ -9,6 +9,8 @@ class DeleteCouponTemplateRequest(DaraModel):
         self,
         template_id: int = None,
     ):
+        # The coupon template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

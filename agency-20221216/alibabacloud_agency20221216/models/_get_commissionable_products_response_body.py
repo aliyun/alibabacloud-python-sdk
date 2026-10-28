@@ -18,12 +18,19 @@ class GetCommissionableProductsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The status code of the response. A value of 200 indicates success.
         self.code = code
+        # The list of returned data.
         self.data = data
+        # The current page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call is successful. Valid values: True and False. This parameter indicates only the success of the API call and does not indicate the success of subsequent business operations.
         self.success = success
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -98,6 +105,7 @@ class GetCommissionableProductsResponseBodyData(DaraModel):
         commodity_name: str = None,
         eligible_for_commission: str = None,
         eligible_for_discount: str = None,
+        eligible_for_performance: str = None,
         end_month: str = None,
         product_campaign: str = None,
         product_code: str = None,
@@ -105,16 +113,29 @@ class GetCommissionableProductsResponseBodyData(DaraModel):
         seven_core_products: str = None,
         status: str = None,
     ):
+        # The actual start month in the yyyymm format.
         self.actual_start_month = actual_start_month
+        # The commodity code.
         self.commodity_code = commodity_code
+        # The commodity name.
         self.commodity_name = commodity_name
+        # Specifies whether the commodity is eligible for commission.
         self.eligible_for_commission = eligible_for_commission
+        # Specifies whether the commodity is eligible for discounts.
         self.eligible_for_discount = eligible_for_discount
+        # Specifies whether the commodity is counted towards performance.
+        self.eligible_for_performance = eligible_for_performance
+        # The actual end month in the yyyymm format.
         self.end_month = end_month
+        # Specifies whether the commodity is a product line incentive commodity.
         self.product_campaign = product_campaign
+        # The product code.
         self.product_code = product_code
+        # The product name.
         self.product_name = product_name
+        # Specifies whether the product is a core product.
         self.seven_core_products = seven_core_products
+        # The display status of the product.
         self.status = status
 
     def validate(self):
@@ -139,6 +160,9 @@ class GetCommissionableProductsResponseBodyData(DaraModel):
 
         if self.eligible_for_discount is not None:
             result['EligibleForDiscount'] = self.eligible_for_discount
+
+        if self.eligible_for_performance is not None:
+            result['EligibleForPerformance'] = self.eligible_for_performance
 
         if self.end_month is not None:
             result['EndMonth'] = self.end_month
@@ -176,6 +200,9 @@ class GetCommissionableProductsResponseBodyData(DaraModel):
 
         if m.get('EligibleForDiscount') is not None:
             self.eligible_for_discount = m.get('EligibleForDiscount')
+
+        if m.get('EligibleForPerformance') is not None:
+            self.eligible_for_performance = m.get('EligibleForPerformance')
 
         if m.get('EndMonth') is not None:
             self.end_month = m.get('EndMonth')

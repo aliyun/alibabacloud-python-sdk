@@ -16,15 +16,15 @@ class InviteSubResellerResponseBody(DaraModel):
         results: List[main_models.InviteSubResellerResponseBodyResults] = None,
         success: bool = None,
     ):
-        # Result code.
+        # The result code.
         self.code = code
-        # Message.
+        # message
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # 邀请结果信息
+        # The invitation result information.
         self.results = results
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -87,13 +87,13 @@ class InviteSubResellerResponseBodyResults(DaraModel):
         result: main_models.InviteSubResellerResponseBodyResultsResult = None,
         success: bool = None,
     ):
-        # Error code, 200 OK
+        # The error code. A value of 200 indicates success.
         self.code = code
-        # Prompt message, explanation of the code
+        # The prompt message that describes the code.
         self.message = message
-        # Returned invitation result information
+        # The invitation result details.
         self.result = result
-        # Always true
+        # Always true.
         self.success = success
 
     def validate(self):
@@ -143,11 +143,11 @@ class InviteSubResellerResponseBodyResultsResult(DaraModel):
         invite_id: int = None,
         reg_url: str = None,
     ):
-        # Validity period of the registration URL, in days
+        # The validity period of the registration URL, in days.
         self.days = days
-        # Invitation ID, used for querying the invitation status
+        # The invitation ID, which is used to query the invitation status.
         self.invite_id = invite_id
-        # T2 Reseller registration URL
+        # The registration URL of the T2 Reseller.
         self.reg_url = reg_url
 
     def validate(self):

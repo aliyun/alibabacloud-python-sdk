@@ -18,13 +18,20 @@ class GetPurchaseControlRecordResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The result code. Value range:
+        # - 200: OK.
         self.code = code
+        # The returned data.
         self.data = data
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
         # RequestId
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.success = success
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -99,9 +106,15 @@ class GetPurchaseControlRecordResponseBodyData(DaraModel):
         operation_time: str = None,
         operator: str = None,
     ):
+        # The change type. Valid values:
+        # - ban: new purchases are prohibited.
+        # - cancelBan: the purchase prohibition is canceled.
         self.changed_type = changed_type
+        # The method by which the operation was initiated.
         self.operation_path = operation_path
+        # The operation time (UTC+8).
         self.operation_time = operation_time
+        # The operator.
         self.operator = operator
 
     def validate(self):

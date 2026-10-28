@@ -11,10 +11,18 @@ class ProcessApprovalRequest(DaraModel):
         approval_action: str = None,
         approval_comments: str = None,
     ):
+        # The ID of the application form.
+        # 
         # This parameter is required.
         self.application_sheet_id = application_sheet_id
+        # The approval action. Valid values:
+        # - Approve: approved.
+        # - Reject: rejected.
+        # 
         # This parameter is required.
         self.approval_action = approval_action
+        # The approval comments.
+        # 
         # This parameter is required.
         self.approval_comments = approval_comments
 

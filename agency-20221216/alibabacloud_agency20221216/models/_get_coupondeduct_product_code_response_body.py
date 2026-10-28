@@ -16,11 +16,16 @@ class GetCoupondeductProductCodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. Valid values:
+        # 200: OK.
         self.code = code
+        # The data.
         self.data = data
+        # The message information.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class GetCoupondeductProductCodeResponseBodyData(DaraModel):
         self,
         product_type: Any = None,
     ):
+        # The product code.
         self.product_type = product_type
 
     def validate(self):

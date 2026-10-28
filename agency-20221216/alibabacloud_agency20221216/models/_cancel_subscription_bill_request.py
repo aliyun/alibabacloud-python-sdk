@@ -9,7 +9,12 @@ class CancelSubscriptionBillRequest(DaraModel):
         self,
         subscribe_type: str = None,
     ):
-        # The type of the bill to which you want to cancel the subscription. Valid values: PartnerBillingItemDetailForBillingPeriod, PartnerBillingItemDetailMonthly, PartnerInstanceDetailForBillingPeriod, and PartnerInstanceDetailMonthly.
+        # Subscription type.
+        # 
+        # - PartnerBillingItemDetailForBillingPeriod: Billing item bill details.
+        # - PartnerBillingItemDetailMonthly: Billing item monthly bill.
+        # - PartnerInstanceDetailForBillingPeriod: Instance bill details.
+        # - PartnerInstanceDetailMonthly: Instance monthly bill.
         # 
         # This parameter is required.
         self.subscribe_type = subscribe_type

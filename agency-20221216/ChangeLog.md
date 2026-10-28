@@ -1,3 +1,7 @@
+2026-10-28 Version: 1.11.1
+- Update API GetCommissionableProducts: add response parameters Body.Data.$.EligibleForPerformance.
+
+
 2026-05-29 Version: 1.11.0
 - Support API AutomaticWriteOff.
 - Support API QueryAutomaticWriteOffChangeRecords.

@@ -15,17 +15,17 @@ class ListCountriesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error Code
-        # * 200: OK
-        # * 1109: System error
+        # The error code. Valid values:
+        # - 200: OK.
+        # - 1109: System error.
         self.code = code
-        # List of Region Code
+        # The list of region codes.
         self.data = data
-        # Message information
+        # The message information.
         self.message = message
-        # Request ID, Alibaba Cloud will track errors with this.
+        # The request ID. Alibaba Cloud uses this ID for error tracking.
         self.request_id = request_id
-        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+        # Indicates whether the current API call itself is successful. Valid values: True and False. This does not indicate the success of subsequent business operations.
         self.success = success
 
     def validate(self):

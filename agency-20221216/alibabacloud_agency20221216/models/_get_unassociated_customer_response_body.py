@@ -17,18 +17,18 @@ class GetUnassociatedCustomerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error Code, Candidate Value：
-        # * 200: OK
-        # * 1109: System error
+        # The error code. Valid values:
+        # 200: OK.
+        # 1109: System error.
         self.code = code
         self.invite_info_list = invite_info_list
-        # Message information
+        # The message information.
         self.message = message
-        # Pagination Information
+        # The pagination information.
         self.page_info = page_info
-        # Request ID, Alibaba Cloud will track errors with this.
+        # The request ID. Alibaba Cloud uses this ID for error tracking.
         self.request_id = request_id
-        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+        # Indicates whether the current API call itself is successful. Valid values: True and False. This does not indicate the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -93,11 +93,11 @@ class GetUnassociatedCustomerResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # Pagination, current page.
+        # The current page number for pagination.
         self.page = page
-        # Pagination, record number on each page.
+        # The number of records per page.
         self.page_size = page_size
-        # Pagination, page volume in total.
+        # The total number of records.
         self.total = total
 
     def validate(self):

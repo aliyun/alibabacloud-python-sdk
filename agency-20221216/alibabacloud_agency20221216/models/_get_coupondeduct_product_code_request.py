@@ -9,6 +9,11 @@ class GetCoupondeductProductCodeRequest(DaraModel):
         self,
         accept_language: str = None,
     ):
+        # Multi-language parameter. 
+        # Default value: none.
+        #     Chinese: zh-CN
+        #     English: en-US.
+        # 
         # This parameter is required.
         self.accept_language = accept_language
 

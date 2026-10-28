@@ -13,12 +13,25 @@ class ListExportTasksRequest(DaraModel):
         page_size: int = None,
         scene_code: str = None,
     ):
+        # The ID of the export task.
         self.id = id
+        # The language. Valid values:
+        # - en: English.
+        # - zh: Chinese.
+        # - ja: Japanese.
         self.language = language
+        # The current page number. Pages start from 1.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page. Maximum value: 100.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The export scenario code. Valid values:
+        # - intlCustomerQuotaRecord: Customer management, quota transaction export.
+        # - intlExportUsageDeductHistory: Customer management, deduction detail export.
+        # 
         # This parameter is required.
         self.scene_code = scene_code
 

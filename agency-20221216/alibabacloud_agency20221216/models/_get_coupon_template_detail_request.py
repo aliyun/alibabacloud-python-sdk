@@ -9,6 +9,8 @@ class GetCouponTemplateDetailRequest(DaraModel):
         self,
         template_id: int = None,
     ):
+        # The ID of the coupon template.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

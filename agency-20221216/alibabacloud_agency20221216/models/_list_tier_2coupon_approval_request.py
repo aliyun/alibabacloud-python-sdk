@@ -14,13 +14,27 @@ class ListTier2CouponApprovalRequest(DaraModel):
         t_2partner_name: str = None,
         t_2partner_uid: int = None,
     ):
+        # The ID of the application form.
         self.application_sheet_id = application_sheet_id
+        # The approval status. Valid values:
+        # - 1: Revoked.
+        # - 2: Under review.
+        # - 3: Rejected.
+        # - 4: Approved.
+        # - 5: Approved but issuance failed.
+        # - 8: Pending.
         self.approval_status = approval_status
+        # The page number. Pages start from 1.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The name of the secondary distributor.
         self.t_2partner_name = t_2partner_name
+        # The UID of the secondary distributor.
         self.t_2partner_uid = t_2partner_uid
 
     def validate(self):

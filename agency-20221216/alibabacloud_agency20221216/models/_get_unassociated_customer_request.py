@@ -10,11 +10,11 @@ class GetUnassociatedCustomerRequest(DaraModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # Pagination, current page.
+        # The current page number for pagination.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Pagination, record number on each page.
+        # The number of records per page for pagination.
         # 
         # This parameter is required.
         self.page_size = page_size

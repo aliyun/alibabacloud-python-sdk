@@ -18,12 +18,19 @@ class QueryReversedDeductionHistoryResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The status code of the returned result. A value of 200 indicates success.
         self.code = code
+        # The list data.
         self.data = data
+        # The description of the returned result.
         self.message = message
+        # The current page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -98,9 +105,13 @@ class QueryReversedDeductionHistoryResponseBodyData(DaraModel):
         operation_time: str = None,
         operation_uid: str = None,
     ):
+        # The offset amount.
         self.offset_amount = offset_amount
+        # The method used to initiate the operation, such as API or ACPN.
         self.operation_submit_type = operation_submit_type
+        # The operation time. Format: YYYY-MM-DD HH:mm:ss UTC+8.
         self.operation_time = operation_time
+        # The UID of the operator.
         self.operation_uid = operation_uid
 
     def validate(self):

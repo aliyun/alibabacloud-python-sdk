@@ -10,11 +10,11 @@ class DeductOutstandingBalanceRequest(DaraModel):
         deduct_amount: str = None,
         uid: int = None,
     ):
-        # The Deducted Credit to be offset.
+        # The amount of deducted credit to reduce.
         # 
         # This parameter is required.
         self.deduct_amount = deduct_amount
-        # Account UID of Distribution Customer.
+        # The UID of the reseller\\"s customer account.
         # 
         # This parameter is required.
         self.uid = uid

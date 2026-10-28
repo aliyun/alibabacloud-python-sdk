@@ -12,7 +12,7 @@ class InviteSubResellerRequest(DaraModel):
         self,
         account_info_list: List[main_models.InviteSubResellerRequestAccountInfoList] = None,
     ):
-        # List of invited account information, up to 5 at a time.
+        # The list of account information for the invitation. A maximum of five accounts can be specified at a time.
         self.account_info_list = account_info_list
 
     def validate(self):
@@ -57,39 +57,39 @@ class InviteSubResellerRequestAccountInfoList(DaraModel):
         sub_account_type: str = None,
         zero_credit_shutdown_policy: str = None,
     ):
-        # Name of the distribution customer:
-        # - If the distribution customer is a company, this is the company name.
-        # - If the distribution customer is a T2 reseller partner, this is the partner name.
+        # The name of the distribution customer.
+        # - If the distribution customer is an enterprise, this is the company name.
+        # - If the distribution customer is a T2 Reseller partner, this is the partner name.
         self.account_nickname = account_nickname
-        # Total budget quota allocated by the partner to the distribution customer (quota).
+        # The total budget quota that the partner allocates to the distribution customer.
         self.credit_line = credit_line
-        # Reason for applying for cross-regional association.
+        # The reason for applying for a cross-region association.
         self.cross_scope_remark = cross_scope_remark
-        # Customer Business Manager (limited to 50 characters).
+        # The customer account manager. The value can be up to 50 characters in length.
         self.customer_bd = customer_bd
-        # The email address to which the invitation email will be sent.
+        # The email address to which the invitation email is sent.
         self.email_address = email_address
-        # Initial order status:
+        # The initial order placement status. Valid values:
         # 
-        # - ban: Purchase Ban - The customer cannot place orders immediately after successful registration and association. The \\"Order Control\\" must be set to \\"Normal\\" before placing orders.
-        # - normal: Normal - The customer can place orders immediately after successful registration and association.
+        # - ban: Purchase is prohibited. After the customer is registered and associated, the customer cannot place orders to purchase cloud resources immediately. You must set the order control to Normal before the customer can place orders.
+        # - normal: Normal. After the customer is registered and associated, the customer can place orders to purchase cloud resources immediately.
         self.new_buy_status = new_buy_status
-        # Country or region of the invited T2 Reseller. The parameter should comply with the ISO 3166-1 two-letter code (Alpha-2). You can use the ListCountries API to get the current UID contract coverage area list.
+        # The country or region of the invited T2 Reseller. The value must comply with the ISO 3166-1 alpha-2 code. You can call the ListCountries operation to query the contract coverage area list of the current UID.
         # 
-        # The system will automatically determine if the invitation is cross-regional based on whether the `registerNation` parameter is within the T1 contract coverage area:
+        # The system automatically determines whether the invitation is cross-region based on whether this parameter falls within the T1 contract coverage area.
         # 
-        # - If it\\"s a cross-regional invitation, a cross-regional approval process will be initiated. After approval by Alibaba Cloud, an invitation registration email will be sent to the invited email address.
-        # - If it\\"s not a cross-regional invitation, an invitation registration email will be sent directly.
+        # - If the invitation is cross-region, a cross-region invitation approval process is initiated. After the approval is granted, an invitation registration email is sent to the specified email address.
+        # - If the invitation is not cross-region, an invitation registration email is sent directly.
         self.register_nation = register_nation
-        # Description of the distribution customer.
+        # The description of the distribution customer.
         self.remark = remark
-        # Do not fill in, deprecated parameter.
+        # This parameter is deprecated. You do not need to specify this parameter.
         self.sub_account_type = sub_account_type
-        # Management of the shutdown policy for the distribution customer by the partner.
+        # The shutdown policy that the partner sets for the distribution customer.
         # 
-        # - 1: delayStop - Enjoy delayed shutdown with a grace period: Alibaba Cloud takes over the resources, and when the grace period quota is exhausted, the instance will be shut down. If payment is not made within 15 days, the storage resources will be released.
-        # - 2: noStop - Manual management of overdue without stopping: The system does not manage the lifecycle of the sub-account\\"s resources. The partner needs to manually manage the shutdown status of the customer\\"s instances.
-        # - 3: immediatelyStop - Immediate shutdown upon overdue: When the available quota of the customer\\"s account is less than 0, the account enters an overdue state, triggering the shutdown of the instance.
+        # - 1: delayStop. The account uses the delayed shutdown quota for deferred instance shutdown. Alibaba Cloud takes over the resources. When the delayed shutdown quota is exhausted, instance shutdown is triggered. If the payment is not made within 15 days, storage resources are released.
+        # - 2: noStop. Manual management with no shutdown on overdue payment. The system does not manage the resource lifecycle of the non-trusteeship linked account. The partner must manually manage the instance shutdown status of the customer.
+        # - 3: immediatelyStop. Immediate shutdown on overdue payment. When the active quota of the customer account is less than 0, the account enters the overdue payment status and instance shutdown is triggered.
         self.zero_credit_shutdown_policy = zero_credit_shutdown_policy
 
     def validate(self):

@@ -12,8 +12,11 @@ class ProcessApprovalResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The approval result.
         self.data = data
+        # The prompt message.
         self.message = message
         # id of request
         self.request_id = request_id
