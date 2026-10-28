@@ -1,3 +1,6 @@
+2026-10-28 Version: 1.6.6
+- Generated python 2022-10-19 for starrocks.
+
 2026-10-26 Version: 1.6.5
 - Update API DescribeInstances: add response parameters Body.Data.$.EosDate.
 - Update API DescribeInstances: add response parameters Body.Data.$.VersionLifecycleStatus.

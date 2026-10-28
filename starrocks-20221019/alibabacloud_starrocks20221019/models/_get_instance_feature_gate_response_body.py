@@ -109,6 +109,7 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         mount_dlf_meta_token: bool = None,
         support_add_config_types: List[str] = None,
         support_backup: bool = None,
+        support_convert_compute_free_to_post_paid: bool = None,
         support_create_agent: bool = None,
         support_create_non_standard_node_group: bool = None,
         support_eed: bool = None,
@@ -141,6 +142,7 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         # - **1**: Data backup is supported.
         # - **2**: Data backup is not supported.
         self.support_backup = support_backup
+        self.support_convert_compute_free_to_post_paid = support_convert_compute_free_to_post_paid
         # Indicates whether agent creation is supported.
         self.support_create_agent = support_create_agent
         # Indicates whether compute groups of non-standard specifications can be created.
@@ -199,6 +201,9 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
 
         if self.support_backup is not None:
             result['SupportBackup'] = self.support_backup
+
+        if self.support_convert_compute_free_to_post_paid is not None:
+            result['SupportConvertComputeFreeToPostPaid'] = self.support_convert_compute_free_to_post_paid
 
         if self.support_create_agent is not None:
             result['SupportCreateAgent'] = self.support_create_agent
@@ -269,6 +274,9 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
 
         if m.get('SupportBackup') is not None:
             self.support_backup = m.get('SupportBackup')
+
+        if m.get('SupportConvertComputeFreeToPostPaid') is not None:
+            self.support_convert_compute_free_to_post_paid = m.get('SupportConvertComputeFreeToPostPaid')
 
         if m.get('SupportCreateAgent') is not None:
             self.support_create_agent = m.get('SupportCreateAgent')

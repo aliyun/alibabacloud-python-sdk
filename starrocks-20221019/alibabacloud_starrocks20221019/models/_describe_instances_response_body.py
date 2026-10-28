@@ -106,6 +106,7 @@ class DescribeInstancesResponseBodyData(DaraModel):
         ai_function_instance_id: str = None,
         architecture: str = None,
         begin_time: int = None,
+        compute_free: bool = None,
         enable_ai_function: bool = None,
         enable_auto_minor_version_upgrade: bool = None,
         enable_multi_az: bool = None,
@@ -139,9 +140,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
     ):
         # The network access control list (ACL) ID.
         self.acl_id = acl_id
-        # The AI dedicated cluster ID. The ID is prefixed with af-. This parameter is returned if an unreleased dedicated cluster exists, including those being created. If no dedicated cluster is created, this parameter is empty.
+        # The AI dedicated cluster ID. The ID has an af- prefix. This parameter is returned if an unreleased dedicated cluster exists, including those being created. If no dedicated cluster is created, this parameter is empty.
         self.ai_function_cluster_id = ai_function_cluster_id
-        # The internal network connection endpoint of the AI dedicated cluster. The format is fe-{AiFunctionClusterId}-internal.starrocks.aliyuncs.com. This parameter is returned only after the dedicated cluster is created. If no dedicated cluster is created, this parameter is empty.
+        # The internal network endpoint of the AI dedicated cluster. The format is fe-{AiFunctionClusterId}-internal.starrocks.aliyuncs.com. This parameter is returned only after the dedicated cluster is created. If no dedicated cluster is created, this parameter is empty.
         self.ai_function_endpoint = ai_function_endpoint
         # The AI function billing instance ID.
         self.ai_function_instance_id = ai_function_instance_id
@@ -153,18 +154,20 @@ class DescribeInstancesResponseBodyData(DaraModel):
         self.architecture = architecture
         # The time when the cluster was created.
         self.begin_time = begin_time
-        # Specifies whether the AI center is enabled. Default value: false.
+        self.compute_free = compute_free
+        # Indicates whether the AI center is enabled. Default value: false.
         self.enable_ai_function = enable_ai_function
-        # Specifies whether automatic minor version upgrades are allowed.
+        # Indicates whether automatic minor version upgrades are allowed.
         self.enable_auto_minor_version_upgrade = enable_auto_minor_version_upgrade
-        # Specifies whether disaster recovery is enabled.
+        # Indicates whether disaster recovery is enabled.
         self.enable_multi_az = enable_multi_az
-        # Specifies whether SSL is enabled.
+        # Indicates whether SSL is enabled.
         self.enable_ssl = enable_ssl
-        # Specifies whether the audit plug-in is enabled.
+        # Indicates whether the audit plug-in is enabled.
         self.enabled_audit_loader = enabled_audit_loader
-        # Specifies whether encryption is enabled.
+        # Indicates whether encryption is enabled.
         self.encrypted = encrypted
+        # The end-of-support date for the cluster version.
         self.eos_date = eos_date
         # The expiration time of the cluster.
         self.expire_time = expire_time
@@ -175,13 +178,13 @@ class DescribeInstancesResponseBodyData(DaraModel):
         # The instance status. Valid values:
         # 
         # - not_init: Not initialized.
-        # - unpaid: Pending payment.
+        # - unpaid: Unpaid.
         # - paid: Paid.
         # - creating: Creating.
         # - creating_failed: Creation failed.
         # - created: Created.
         # - running: Running.
-        # - updating: Updating.
+        # - updating: Upgrading.
         # - agent_creating: Creating the agent.
         # - agent_scaling_up: Scaling up the agent.
         # - modifying_config: Updating configurations.
@@ -190,14 +193,14 @@ class DescribeInstancesResponseBodyData(DaraModel):
         # - scaling_in: Scaling in.
         # - scaling_up: Scaling up.
         # - scaling_down: Scaling down.
-        # - upgrading: Upgrading.
-        # - enable_public_network: Enabling public network access.
-        # - disable_public_network: Disabling public network access.
+        # - upgrading: Upgrading the version.
+        # - enable_public_network: Enabling the public network.
+        # - disable_public_network: Disabling the public network.
         # - convert_from_trial_to_official: Converting the edition.
         # - migration_cluster_to_serverless: Migrating the cluster.
         # - modifying_timezone: Modifying the time zone.
         # - switch_az: Switching the primary and secondary zones.
-        # - enabling: Resuming.
+        # - enabling: Recovering.
         # - disable: Unavailable.
         # - actively_disabled: Unavailable.
         # - deleting: Deleting.
@@ -205,7 +208,7 @@ class DescribeInstancesResponseBodyData(DaraModel):
         # - deleted_with_error: Ended due to creation failure.
         # - deleted: Deleted.
         self.instance_status = instance_status
-        # Specifies whether read/write splitting is enabled. If enabled, the leader FE node processes write requests and other nodes process read requests.
+        # Indicates whether read/write splitting is enabled. If enabled, the leader FE node processes write requests and other nodes process read requests.
         self.isolate_leader = isolate_leader
         # The KMS key ID.
         self.kms_key_id = kms_key_id
@@ -250,22 +253,23 @@ class DescribeInstancesResponseBodyData(DaraModel):
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The running mode of the cluster. Valid values:
-        # - shared_nothing: Shared-nothing architecture.
-        # - shared_data: Shared-data architecture.
+        # - shared_nothing: Shared-nothing.
+        # - shared_data: Shared-data.
         # - lakehouse: Lakehouse.
         self.run_mode = run_mode
         # The running time of the cluster. Unit: seconds.
         self.running_time = running_time
-        # Specifies whether the security group is a managed security group.
+        # Indicates whether the managed security group is used.
         self.security_group_managed = security_group_managed
         # The security group ID.
         self.sg_id = sg_id
         # The tags bound to the instance.
         self.tags = tags
-        # The list of vSwitches.
+        # The vSwitches.
         self.v_switches = v_switches
         # The cluster version.
         self.version = version
+        # The version lifecycle status.
         self.version_lifecycle_status = version_lifecycle_status
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -302,6 +306,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
 
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
+
+        if self.compute_free is not None:
+            result['ComputeFree'] = self.compute_free
 
         if self.enable_ai_function is not None:
             result['EnableAiFunction'] = self.enable_ai_function
@@ -419,6 +426,9 @@ class DescribeInstancesResponseBodyData(DaraModel):
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
 
+        if m.get('ComputeFree') is not None:
+            self.compute_free = m.get('ComputeFree')
+
         if m.get('EnableAiFunction') is not None:
             self.enable_ai_function = m.get('EnableAiFunction')
 
@@ -524,7 +534,7 @@ class DescribeInstancesResponseBodyDataVSwitches(DaraModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
-        # Specifies whether the vSwitch is the primary vSwitch.
+        # Indicates whether the vSwitch is the primary vSwitch.
         self.primary = primary
         # The vSwitch ID.
         self.vsw_id = vsw_id
