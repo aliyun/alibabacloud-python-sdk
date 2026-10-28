@@ -11,7 +11,7 @@ class ResumeSessionRequest(DaraModel):
         qualifier: str = None,
     ):
         self.file_system_only = file_system_only
-        # The function alias or version associated with the session ID to resume.
+        # The alias or version of the function associated with the session ID to be resumed.
         self.qualifier = qualifier
 
     def validate(self):

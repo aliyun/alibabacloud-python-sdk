@@ -42,7 +42,7 @@ class DescribeRegionsOutputRegions(DaraModel):
         self,
         region: List[main_models.DescribeRegionsOutputRegionsRegion] = None,
     ):
-        # The collection of region information.
+        # The region information collection.
         self.region = region
 
     def validate(self):

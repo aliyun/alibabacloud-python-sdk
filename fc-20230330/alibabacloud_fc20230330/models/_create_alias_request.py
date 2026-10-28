@@ -10,7 +10,7 @@ class CreateAliasRequest(DaraModel):
         self,
         body: main_models.CreateAliasInput = None,
     ):
-        # The request parameters to create an alias.
+        # The request parameters for creating an alias.
         # 
         # This parameter is required.
         self.body = body

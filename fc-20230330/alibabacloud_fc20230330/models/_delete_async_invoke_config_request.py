@@ -9,7 +9,7 @@ class DeleteAsyncInvokeConfigRequest(DaraModel):
         self,
         qualifier: str = None,
     ):
-        # The function version or alias.
+        # The version or alias of the function.
         self.qualifier = qualifier
 
     def validate(self):

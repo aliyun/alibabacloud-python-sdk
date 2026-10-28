@@ -10,7 +10,7 @@ class CreateLayerVersionRequest(DaraModel):
         self,
         body: main_models.CreateLayerVersionInput = None,
     ):
-        # The configuration of the layer.
+        # The layer configuration.
         # 
         # This parameter is required.
         self.body = body

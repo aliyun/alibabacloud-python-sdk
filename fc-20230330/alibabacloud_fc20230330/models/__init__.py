@@ -147,6 +147,7 @@ from ._source_mnsparameters import SourceMNSParameters
 from ._source_mqttparameters import SourceMQTTParameters
 from ._source_rabbit_mqparameters import SourceRabbitMQParameters
 from ._source_rocket_mqparameters import SourceRocketMQParameters
+from ._step import Step
 from ._tlsconfig import TLSConfig
 from ._tag import Tag
 from ._tag_resource import TagResource
@@ -456,6 +457,7 @@ __all__ = [
     SourceMQTTParameters,
     SourceRabbitMQParameters,
     SourceRocketMQParameters,
+    Step,
     TLSConfig,
     Tag,
     TagResource,

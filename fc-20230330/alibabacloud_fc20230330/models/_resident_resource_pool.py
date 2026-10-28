@@ -20,22 +20,22 @@ class ResidentResourcePool(DaraModel):
         resource_pool_config: main_models.ResidentResourceCapacity = None,
         timed_config: main_models.TimedPoolConfig = None,
     ):
-        # The real-time allocation status of the resource pool, including the specific allocation details for each function.
+        # 资源池实时分配情况，包含每个函数的具体分配情况
         self.allocation_status = allocation_status
         self.associated_pool_id = associated_pool_id
-        # The resource property field that represents the creation time.
+        # 代表创建时间的资源属性字段
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.created_time = created_time
-        # The expiration time of the resource pool.
+        # 资源池过期时间
         self.expire_time = expire_time
-        # The last modification time, including operations such as scaling, renewal, and renaming.
+        # 上次修改时间，包含扩容、续费、更名等操作
         self.last_modified_time = last_modified_time
         self.pool_type = pool_type
         self.resident_resource_pool_id = resident_resource_pool_id
-        # The resource property field that represents the resource name.
+        # 代表资源名称的资源属性字段
         self.resident_resource_pool_name = resident_resource_pool_name
-        # The overall specifications of the resource pool.
+        # 资源池总体规格
         self.resource_pool_capacity = resource_pool_capacity
         self.resource_pool_config = resource_pool_config
         self.timed_config = timed_config

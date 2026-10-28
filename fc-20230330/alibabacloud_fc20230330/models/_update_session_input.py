@@ -9,6 +9,7 @@ class UpdateSessionInput(DaraModel):
     def __init__(
         self,
         allow_internet_access: bool = None,
+        auto_pause_file_system_only: bool = None,
         disable_session_id_reuse: bool = None,
         enable_auto_pause: bool = None,
         enable_auto_resume: bool = None,
@@ -21,6 +22,7 @@ class UpdateSessionInput(DaraModel):
         session_ttlin_seconds: int = None,
     ):
         self.allow_internet_access = allow_internet_access
+        self.auto_pause_file_system_only = auto_pause_file_system_only
         # Specifies whether to disable session ID reuse after the session expires. Default value: False, which indicates that after a session expires, you can use the same session ID to initiate requests. The system treats the request as a new session and binds it to a new instance. If you set this parameter to True, the session ID cannot be reused after the session expires.
         self.disable_session_id_reuse = disable_session_id_reuse
         self.enable_auto_pause = enable_auto_pause
@@ -54,6 +56,9 @@ class UpdateSessionInput(DaraModel):
             result = _map
         if self.allow_internet_access is not None:
             result['allowInternetAccess'] = self.allow_internet_access
+
+        if self.auto_pause_file_system_only is not None:
+            result['autoPauseFileSystemOnly'] = self.auto_pause_file_system_only
 
         if self.disable_session_id_reuse is not None:
             result['disableSessionIdReuse'] = self.disable_session_id_reuse
@@ -91,6 +96,9 @@ class UpdateSessionInput(DaraModel):
         m = m or dict()
         if m.get('allowInternetAccess') is not None:
             self.allow_internet_access = m.get('allowInternetAccess')
+
+        if m.get('autoPauseFileSystemOnly') is not None:
+            self.auto_pause_file_system_only = m.get('autoPauseFileSystemOnly')
 
         if m.get('disableSessionIdReuse') is not None:
             self.disable_session_id_reuse = m.get('disableSessionIdReuse')

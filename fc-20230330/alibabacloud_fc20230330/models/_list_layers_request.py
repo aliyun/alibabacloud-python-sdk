@@ -15,13 +15,13 @@ class ListLayersRequest(DaraModel):
     ):
         # The number of layers to return.
         self.limit = limit
-        # The token that marks the start of the next page of results.
+        # The pagination start token.
         self.next_token = next_token
-        # Specifies whether the layer is an official layer. Valid values: true and false.
+        # Specifies whether the layer is an official layer. Valid values: true, false.
         self.official = official
-        # The prefix of the layer name.
+        # The layer name prefix.
         self.prefix = prefix
-        # Specifies whether the layer is public. Valid values: true and false.
+        # Specifies whether the layer is public. Valid values: true, false.
         self.public = public
 
     def validate(self):

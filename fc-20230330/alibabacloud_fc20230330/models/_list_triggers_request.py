@@ -11,11 +11,11 @@ class ListTriggersRequest(DaraModel):
         next_token: str = None,
         prefix: str = None,
     ):
-        # The number of triggers to return.
+        # The number of returned triggers.
         self.limit = limit
-        # The token that marks the start of the next page of results.
+        # The pagination start token.
         self.next_token = next_token
-        # The trigger name prefix.
+        # The prefix of the trigger name.
         self.prefix = prefix
 
     def validate(self):

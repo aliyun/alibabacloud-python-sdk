@@ -23,32 +23,31 @@ class CustomDomain(DaraModel):
         tls_config: main_models.TLSConfig = None,
         waf_config: main_models.WAFConfig = None,
     ):
-        # The ID of the Alibaba Cloud account (primary account).
+        # The ID of your Alibaba Cloud account.
         self.account_id = account_id
         # The API version of Function Compute.
         self.api_version = api_version
         # The authentication configuration.
         self.auth_config = auth_config
-        # The HTTPS certificate configuration.
+        # The HTTPS certificate information.
         self.cert_config = cert_config
-        # The cross-origin resource sharing (CORS) configuration.
         self.cors_config = cors_config
-        # The time when the custom domain was created.
+        # The time when the custom domain name was created.
         self.created_time = created_time
         # The domain name.
         self.domain_name = domain_name
         self.is_e2b = is_e2b
-        # The time when the custom domain was last modified.
+        # The time when the custom domain name was last updated.
         self.last_modified_time = last_modified_time
-        # The protocols that are supported by the domain name. Valid values: HTTP (HTTP only), HTTPS (HTTPS only), and HTTP,HTTPS (both HTTP and HTTPS).
+        # The protocol types supported by the domain name. HTTP: supports only the HTTP protocol. HTTPS: supports only the HTTPS protocol. HTTP,HTTPS: supports both the HTTP and HTTPS protocols.
         self.protocol = protocol
-        # The route table that maps paths to functions.
+        # The route table that maps paths to functions when the custom domain name is accessed.
         self.route_config = route_config
         # The number of subdomains.
         self.subdomain_count = subdomain_count
         # The TLS configuration.
         self.tls_config = tls_config
-        # The Web Application Firewall (WAF) aconfiguration.
+        # The Web Application Firewall (WAF) configuration.
         self.waf_config = waf_config
 
     def validate(self):

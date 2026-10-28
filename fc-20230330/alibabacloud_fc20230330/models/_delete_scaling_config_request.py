@@ -9,7 +9,7 @@ class DeleteScalingConfigRequest(DaraModel):
         self,
         qualifier: str = None,
     ):
-        # The function alias.
+        # The alias of the function.
         self.qualifier = qualifier
 
     def validate(self):

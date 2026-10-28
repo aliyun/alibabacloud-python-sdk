@@ -11,11 +11,11 @@ class ListScalingConfigsRequest(DaraModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # The function name.
+        # The name of the function.
         self.function_name = function_name
-        # The number of auto scaling configurations to return.
+        # The number of elastic configurations to return.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The starting pagination token.
         self.next_token = next_token
 
     def validate(self):

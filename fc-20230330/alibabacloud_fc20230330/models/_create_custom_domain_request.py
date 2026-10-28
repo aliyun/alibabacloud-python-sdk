@@ -10,7 +10,7 @@ class CreateCustomDomainRequest(DaraModel):
         self,
         body: main_models.CreateCustomDomainInput = None,
     ):
-        # The information about the custom domain name.
+        # The custom domain name information.
         # 
         # This parameter is required.
         self.body = body

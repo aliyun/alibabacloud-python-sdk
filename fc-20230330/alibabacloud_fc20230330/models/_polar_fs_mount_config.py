@@ -13,14 +13,15 @@ class PolarFsMountConfig(DaraModel):
         read_only: bool = None,
         remote_dir: str = None,
     ):
+        # The additional mount parameter settings.
         self.extra_options = extra_options
-        # The ID of the PolarFS file system instance to mount.
+        # The PolarFS instance ID.
         self.instance_id = instance_id
-        # The local mount directory in the function\\"s runtime environment.
+        # The local mount directory.
         self.mount_dir = mount_dir
-        # Specifies whether the file system is mounted as read-only. If `true`, write operations are prohibited.
+        # The read-only mount.
         self.read_only = read_only
-        # The directory within the PolarFS file system to mount.
+        # The PolarFS directory.
         self.remote_dir = remote_dir
 
     def validate(self):

@@ -13,11 +13,11 @@ class FunctionLockInfo(DaraModel):
         locked_by: str = None,
         locked_resources: List[str] = None,
     ):
-        # The timestamp when the lock was applied.
+        # The lock time.
         self.locked_at = locked_at
-        # The name of the entity that applied the lock.
+        # The name of the locking entity.
         self.locked_by = locked_by
-        # The list of locked resource types. Valid values include `function`, `trigger`, `version`, and `alias`.
+        # The list of locked resource types.
         self.locked_resources = locked_resources
 
     def validate(self):

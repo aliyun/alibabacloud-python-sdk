@@ -11,7 +11,7 @@ class PauseSessionRequest(DaraModel):
         qualifier: str = None,
     ):
         self.file_system_only = file_system_only
-        # The function alias or version associated with the session ID to save.
+        # The alias or version of the function associated with the session ID to be saved.
         self.qualifier = qualifier
 
     def validate(self):

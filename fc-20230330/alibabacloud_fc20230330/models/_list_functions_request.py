@@ -21,30 +21,29 @@ class ListFunctionsRequest(DaraModel):
         runtime: str = None,
         tags: List[main_models.Tag] = None,
     ):
-        # The function description to filter by.
+        # The description used to filter functions.
         self.description = description
-        # The version to which the function belongs. Valid values:
+        # The version of the function. Valid values:
+        # - v3: Lists only Function Compute 3.0 functions.
+        # - v2: Lists only Function Compute 2.0 functions.
         # 
-        # - v3: lists only FC 3.0 functions.
-        # - v2: lists only FC 2.0 functions.
-        # 
-        # If not specified, both FC 3.0 and FC 2.0 functions are listed.
+        # Default value: empty. An empty value indicates that both Function Compute 3.0 and Function Compute 2.0 functions are listed.
         self.fc_version = fc_version
-        # The function name.
+        # The name of the function.
         self.function_name = function_name
-        # The function GPU type to filter by.
+        # The GPU type used to filter functions.
         self.gpu_type = gpu_type
-        # The number of functions to return. Minimum value: 1. Maximum value: 100.
+        # The number of functions to return. Valid values: 1 to 100.
         self.limit = limit
         # The pagination token.
         self.next_token = next_token
-        # The function name prefix.
+        # The prefix of the function name.
         self.prefix = prefix
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The function runtime to filter by.
+        # The runtime used to filter functions.
         self.runtime = runtime
-        # The function tags to filter by.
+        # The tags used to filter functions.
         self.tags = tags
 
     def validate(self):

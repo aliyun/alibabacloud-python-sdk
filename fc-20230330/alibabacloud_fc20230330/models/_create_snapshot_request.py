@@ -13,7 +13,7 @@ class CreateSnapshotRequest(DaraModel):
     ):
         # The request body for creating a snapshot.
         self.body = body
-        # The function alias.
+        # The alias of the function.
         self.qualifier = qualifier
 
     def validate(self):

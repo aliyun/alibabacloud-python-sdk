@@ -9,13 +9,15 @@ class DescribeRegionsRequest(DaraModel):
         self,
         accept_language: str = None,
     ):
-        # The language in which the list of regions is returned. For more information, see RFC 7231. Valid values:
+        # Specifies the language of the returned region list, such as Chinese or English. For more information, see RFC 7231. Valid values:
         # 
-        # *   zh-CN: Simplified Chinese.
-        # *   en-US: English.
-        # *   ja: Japanese
+        # - zh-CN: Simplified Chinese.
         # 
-        # Default value: en-US
+        # - en-US: English.
+        # 
+        # - ja: Japanese.
+        # 
+        # Default value: zh-CN.
         self.accept_language = accept_language
 
     def validate(self):

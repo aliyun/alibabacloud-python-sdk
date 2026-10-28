@@ -11,9 +11,9 @@ class PutScalingConfigRequest(DaraModel):
         body: main_models.PutScalingConfigInput = None,
         qualifier: str = None,
     ):
-        # Elastic scaling configuration for the function
+        # The elastic configuration for the function.
         self.body = body
-        # Function alias
+        # The function alias.
         self.qualifier = qualifier
 
     def validate(self):

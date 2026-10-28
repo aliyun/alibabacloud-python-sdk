@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_fc20230330 import models as main_models
 from darabonba.model import DaraModel
 
@@ -14,8 +16,9 @@ class MicroSandboxConfig(DaraModel):
         ready_command: str = None,
         registry_config: main_models.RegistryConfig = None,
         start_command: str = None,
+        steps: List[main_models.Step] = None,
     ):
-        # The instance ID of the Container Registry (ACR) Enterprise Edition image repository. This parameter is used together with MicroSandbox images. This parameter is optional. If not provided, the server resolves it as needed.
+        # The ID of the ACR Enterprise Edition image repository instance. It is used in combination with MicroSandbox images. This parameter is optional. If it is not provided, the server resolves it on demand.
         self.acr_instance_id = acr_instance_id
         # The image address.
         self.image = image
@@ -25,12 +28,18 @@ class MicroSandboxConfig(DaraModel):
         self.ready_command = ready_command
         # The image repository configuration.
         self.registry_config = registry_config
-        # The start command.
+        # The startup command.
         self.start_command = start_command
+        # The build steps.
+        self.steps = steps
 
     def validate(self):
         if self.registry_config:
             self.registry_config.validate()
+        if self.steps:
+            for v1 in self.steps:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -55,6 +64,11 @@ class MicroSandboxConfig(DaraModel):
         if self.start_command is not None:
             result['startCommand'] = self.start_command
 
+        result['steps'] = []
+        if self.steps is not None:
+            for k1 in self.steps:
+                result['steps'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -77,6 +91,12 @@ class MicroSandboxConfig(DaraModel):
 
         if m.get('startCommand') is not None:
             self.start_command = m.get('startCommand')
+
+        self.steps = []
+        if m.get('steps') is not None:
+            for k1 in m.get('steps'):
+                temp_model = main_models.Step()
+                self.steps.append(temp_model.from_map(k1))
 
         return self
 

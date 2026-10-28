@@ -15,13 +15,13 @@ class InvokeFunctionHeaders(DaraModel):
         x_fc_log_type: str = None,
     ):
         self.common_headers = common_headers
-        # Asynchronous task ID. Enable asynchronous tasks beforehand.
+        # The ID of the asynchronous task. You must enable asynchronous tasks in advance.
         # 
-        # > When using the SDK for invocation, set a business-related ID. This helps with subsequent operations on the execution. For example, a video processing function can use the video filename as the invocation ID. Use this ID to check if the video processing is complete or to stop it. The ID naming convention must start with an English letter (uppercase or lowercase) or an underscore (_). It can contain English letters (uppercase or lowercase), digits (0-9), underscores (_), and hyphens (-). The ID cannot exceed 128 characters. If you do not set an ID for asynchronous invocation, the system automatically generates one.
+        # > We recommend that you set a business-related ID when you use the SDK to invoke the function, which facilitates subsequent operations on the execution. For example, a video processing function can use the video file name as the invoke ID, through which you can check whether the video processing is complete or stop the video processing. The ID must start with an uppercase or lowercase letter or an underscore (_), and can contain uppercase and lowercase letters, digits (0-9), underscores (_), and hyphens (-). It can be up to 128 characters in length. If you do not specify an ID for the asynchronous invoke, the system automatically generates one.
         self.x_fc_async_task_id = x_fc_async_task_id
-        # Function invocation type. Sync or Async.
+        # The function invoke type. Valid values: Sync and Async.
         self.x_fc_invocation_type = x_fc_invocation_type
-        # Log type returned by function invocation. None or Tail.
+        # The log type returned for function invoke. Valid values: None and Tail.
         self.x_fc_log_type = x_fc_log_type
 
     def validate(self):

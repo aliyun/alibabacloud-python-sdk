@@ -16,11 +16,17 @@ class CORSConfig(DaraModel):
         expose_headers: List[str] = None,
         max_age: int = None,
     ):
+        # Specifies whether to allow sending credentials.
         self.allow_credentials = allow_credentials
+        # The list of allowed request headers.
         self.allow_headers = allow_headers
+        # The list of allowed HTTP methods.
         self.allow_methods = allow_methods
+        # The list of allowed origins.
         self.allow_origins = allow_origins
+        # The list of exposed response headers.
         self.expose_headers = expose_headers
+        # The cache time for preflight requests, in seconds.
         self.max_age = max_age
 
     def validate(self):

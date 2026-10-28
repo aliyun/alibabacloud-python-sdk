@@ -9,6 +9,7 @@ class Session(DaraModel):
     def __init__(
         self,
         allow_internet_access: bool = None,
+        auto_pause_file_system_only: bool = None,
         container_id: str = None,
         created_time: str = None,
         disable_session_id_reuse: bool = None,
@@ -30,6 +31,7 @@ class Session(DaraModel):
         traffic_access_token: str = None,
     ):
         self.allow_internet_access = allow_internet_access
+        self.auto_pause_file_system_only = auto_pause_file_system_only
         # The instance ID of the function associated with the session.
         self.container_id = container_id
         # The time when the session was created.
@@ -87,6 +89,9 @@ class Session(DaraModel):
             result = _map
         if self.allow_internet_access is not None:
             result['allowInternetAccess'] = self.allow_internet_access
+
+        if self.auto_pause_file_system_only is not None:
+            result['autoPauseFileSystemOnly'] = self.auto_pause_file_system_only
 
         if self.container_id is not None:
             result['containerId'] = self.container_id
@@ -151,6 +156,9 @@ class Session(DaraModel):
         m = m or dict()
         if m.get('allowInternetAccess') is not None:
             self.allow_internet_access = m.get('allowInternetAccess')
+
+        if m.get('autoPauseFileSystemOnly') is not None:
+            self.auto_pause_file_system_only = m.get('autoPauseFileSystemOnly')
 
         if m.get('containerId') is not None:
             self.container_id = m.get('containerId')
