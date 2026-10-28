@@ -322,6 +322,8 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
         legacy: bool = None,
         model: str = None,
         output_tokens: int = None,
+        playback_status: str = None,
+        played_answer: str = None,
         played_words: str = None,
         role: str = None,
         session_id: str = None,
@@ -354,6 +356,8 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
         self.model = model
         # The number of output tokens.
         self.output_tokens = output_tokens
+        self.playback_status = playback_status
+        self.played_answer = played_answer
         # The played text.
         self.played_words = played_words
         # The role.
@@ -412,6 +416,12 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
 
         if self.output_tokens is not None:
             result['OutputTokens'] = self.output_tokens
+
+        if self.playback_status is not None:
+            result['PlaybackStatus'] = self.playback_status
+
+        if self.played_answer is not None:
+            result['PlayedAnswer'] = self.played_answer
 
         if self.played_words is not None:
             result['PlayedWords'] = self.played_words
@@ -473,6 +483,12 @@ class GetCallDetailRecordResponseBodyDataTranscripts(DaraModel):
 
         if m.get('OutputTokens') is not None:
             self.output_tokens = m.get('OutputTokens')
+
+        if m.get('PlaybackStatus') is not None:
+            self.playback_status = m.get('PlaybackStatus')
+
+        if m.get('PlayedAnswer') is not None:
+            self.played_answer = m.get('PlayedAnswer')
 
         if m.get('PlayedWords') is not None:
             self.played_words = m.get('PlayedWords')
