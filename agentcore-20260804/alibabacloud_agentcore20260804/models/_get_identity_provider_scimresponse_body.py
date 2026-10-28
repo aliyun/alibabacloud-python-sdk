@@ -85,6 +85,7 @@ class GetIdentityProviderSCIMResponseBodyData(DaraModel):
         self,
         configuration: main_models.GetIdentityProviderSCIMResponseBodyDataConfiguration = None,
         operation_status: str = None,
+        status: str = None,
         sync_enabled: bool = None,
     ):
         # The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
@@ -98,6 +99,8 @@ class GetIdentityProviderSCIMResponseBodyData(DaraModel):
         # - CANCELED: Canceled.
         # If there are no tasks, null is returned or this parameter is not returned. This parameter only indicates the most recent SCIM switch and the first full import task when it is enabled. It does not indicate credential issuance, external provisioning connection tests, or the health of continuous incremental synchronization. The client polls this operation when the status is PENDING or RUNNING.
         self.operation_status = operation_status
+        # UNCONFIGURED：尚未准备完成；WAITING_CONFIGURATION：接收 Enabled、有效 HTTPS URL 和至少一个有效 Token 均已具备，等待外部配置并确认启用；UPDATING：启用或停用任务 PENDING/RUNNING；READY：同步已启用且本次启用任务成功，接收、URL 和 Token 仍可用；DISABLED：停用任务成功，保留配置、凭据和用户；UPDATE_FAILED：操作失败、暂停、取消，或期望启用时配置／凭据不可用。与 SAML/OIDC 状态独立，READY 不证明 Matrix 执行或持续增量链路已验收。
+        self.status = status
         # Specifies whether local synchronization is expected. Do not set this parameter to true during CustomSSO initialization. You can only update this parameter by calling UpdateIdentityProviderSCIM. Determine the result based on operationStatus.
         self.sync_enabled = sync_enabled
 
@@ -116,6 +119,9 @@ class GetIdentityProviderSCIMResponseBodyData(DaraModel):
         if self.operation_status is not None:
             result['operationStatus'] = self.operation_status
 
+        if self.status is not None:
+            result['status'] = self.status
+
         if self.sync_enabled is not None:
             result['syncEnabled'] = self.sync_enabled
 
@@ -129,6 +135,9 @@ class GetIdentityProviderSCIMResponseBodyData(DaraModel):
 
         if m.get('operationStatus') is not None:
             self.operation_status = m.get('operationStatus')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
 
         if m.get('syncEnabled') is not None:
             self.sync_enabled = m.get('syncEnabled')

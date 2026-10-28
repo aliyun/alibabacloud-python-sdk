@@ -1,3 +1,6 @@
+2026-10-28 Version: 3.0.1
+- Generated python 2026-08-04 for AgentCore.
+
 2026-10-27 Version: 3.0.0
 - Support API CreateIdentityProviderSCIMCredential.
 - Support API DeleteIdentityProviderSCIMCredential.

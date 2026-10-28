@@ -92,8 +92,10 @@ class UpdateIdentityProviderSCIMResponseBodyData(DaraModel):
         login_callback_url: str = None,
         login_enabled: bool = None,
         metadata: main_models.UpdateIdentityProviderSCIMResponseBodyDataMetadata = None,
+        operation_status: str = None,
         protocol: str = None,
         saml: main_models.UpdateIdentityProviderSCIMResponseBodyDataSaml = None,
+        scim_status: str = None,
         status: str = None,
         sync_enabled: bool = None,
         updated_at: str = None,
@@ -113,10 +115,14 @@ class UpdateIdentityProviderSCIMResponseBodyData(DaraModel):
         self.login_enabled = login_enabled
         # The standard IdP metadata. Vendor parameters are used for DingTalk and Feishu. CustomSSO updates use protocol and saml, and do not accept this field. The return value does not contain vendor keys.
         self.metadata = metadata
+        # PENDING/RUNNING 时轮询 GetIdentityProviderSCIM；保留失败、暂停和取消事实，不表示 SAML 状态。
+        self.operation_status = operation_status
         # The logon protocol. Currently, only SAML is supported. This field may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
         self.protocol = protocol
         # The SAML logon configuration. The input supports either XML or complete manual entry. The query returns the standardized configuration and does not echo the original XML. This field can be omitted if it is not configured.
         self.saml = saml
+        # 独立 SCIM 状态；不改变原 status 的共享资源及登录配置含义。与查询接口的 data.status 对应。
+        self.scim_status = scim_status
         # The operation status of shared resources and logon configurations. It indicates the user pool lifecycle and logon configuration task status of CustomSSO, and does not represent the SCIM operation result. Query GetIdentityProviderSCIM.operationStatus for the SCIM switch result. You cannot use this field to determine whether all protocols are configured.
         self.status = status
         # Do not set this parameter to true during CustomSSO initialization. You can only update it later by calling UpdateIdentityProviderSCIM. Determine the result based on operationStatus.
@@ -160,11 +166,17 @@ class UpdateIdentityProviderSCIMResponseBodyData(DaraModel):
         if self.metadata is not None:
             result['metadata'] = self.metadata.to_map()
 
+        if self.operation_status is not None:
+            result['operationStatus'] = self.operation_status
+
         if self.protocol is not None:
             result['protocol'] = self.protocol
 
         if self.saml is not None:
             result['saml'] = self.saml.to_map()
+
+        if self.scim_status is not None:
+            result['scimStatus'] = self.scim_status
 
         if self.status is not None:
             result['status'] = self.status
@@ -205,12 +217,18 @@ class UpdateIdentityProviderSCIMResponseBodyData(DaraModel):
             temp_model = main_models.UpdateIdentityProviderSCIMResponseBodyDataMetadata()
             self.metadata = temp_model.from_map(m.get('metadata'))
 
+        if m.get('operationStatus') is not None:
+            self.operation_status = m.get('operationStatus')
+
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
 
         if m.get('saml') is not None:
             temp_model = main_models.UpdateIdentityProviderSCIMResponseBodyDataSaml()
             self.saml = temp_model.from_map(m.get('saml'))
+
+        if m.get('scimStatus') is not None:
+            self.scim_status = m.get('scimStatus')
 
         if m.get('status') is not None:
             self.status = m.get('status')
